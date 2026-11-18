@@ -1,0 +1,99 @@
+﻿VERSION 3.2 - DESIGNLISTE AUSLESEN - BERNINA artista 185 - Anleitung (Windows)
+==============================================================================
+
+WAS IST NEU IN 3.2?
+-------------------
+Test 3.1: Die Maschine hat die Transfer-Anforderung gespeichert, aber
+nicht "bereit" gemeldet. Die Original-Software wechselt direkt davor auf
+115200 Baud - das macht 3.2 jetzt auch. Ausserdem wartet 3.2 bis zu 30 s
+und meldet alle 5 s den Zwischenstand.
+
+GANZ WICHTIG VOR DEM START (laut Bernina-Handbuch S. 262):
+  * NADEL IN DIE HOCHSTELLUNG bringen (Handrad zu sich drehen, bis die
+    Nadel ganz oben steht).
+  * Stickmodus, kein Menue offen.
+  * WAEHREND des Tests auf das DISPLAY schauen: Laut Handbuch wird der
+    Bildschirm bei der Uebertragung dunkel. Bitte notieren, was passiert
+    (dunkel? Meldung? Symbol? unveraendert?) - am besten ein Foto.
+
+WAS WAR NEU IN 3.1?
+-------------------
+Beim Test von Version 3 hat das Stickmodul die Listenbefehle abgelehnt
+(Status 0x1005), weil vorher der "Transfer" nicht angefordert war.
+Die Original-Software macht das immer zuerst: sie schreibt 0x01 in das
+Uebertragungsbyte 0xFFFEE0 und wartet, bis die Maschine "bereit" meldet.
+Version 3.1 macht das jetzt genauso. Moeglicherweise zeigt die Maschine
+dabei eine PC-/Datenuebertragungs-Anzeige - das ist normal.
+Bitte notieren, was auf dem Display der Maschine erscheint.
+
+WAS MACHT VERSION 3?
+--------------------
+Wie Version 2 verbindet sie sich mit der Maschine und schaltet zum Stickmodul durch.
+NEU: Danach liest sie die LISTE DER GESPEICHERTEN DESIGNS aus (Anzahl, Nummer,
+Name, Kennbits, vermutete Farbanzahl) - genau wie der Menuepunkt
+"Card/Machine Read" der Original-Bernina-Software.
+
+WICHTIG - DAS IST NEU GEGENUEBER VERSION 1 UND 2:
+Um die Liste zu bekommen, muss das Programm der Maschine STEUERBEFEHLE geben
+(so wie die Original-Software):
+   - Transfer anfordern (0x01 nach 0xFFFEE0)
+   - Speicherziel waehlen (Maschinenspeicher bzw. Karte)
+   - Speicherbereich ("Bank") waehlen
+   - "Liste laden"
+   - am Ende "PC-Modus verlassen"
+Gespeicherte Designs werden dabei NICHT veraendert, geloescht oder ueberschrieben,
+und es wird nichts formatiert. Bevor der erste Steuerbefehl gesendet wird, fragt
+das Programm nach:  "Fortfahren? (J/N)"  -> mit J und Enter bestaetigen.
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. ZIP entpacken (nicht aus der ZIP heraus starten).
+ 2. SELBSTTEST.bat doppelklicken (ohne Maschine).
+    Am Ende muss stehen: "DESIGNLISTE GELESEN" mit 30 Designs "SIM DESIGN 01..30".
+ 3. Vor Ort: Stickmodul anstecken, Kabel verbinden, Maschine einschalten,
+    Startbildschirm abwarten, Stickmodus waehlen (nicht sticken).
+ 4. START.bat doppelklicken  -> liest den MASCHINENSPEICHER.
+    Bei der Frage "Fortfahren? (J/N)" J eingeben und Enter druecken.
+ 5. Warten bis "FERTIG" erscheint.
+ 6. Maschine AUS- und wieder EINSCHALTEN.
+ 7. Optional, nur wenn eine Design-Karte im Stickmodul steckt:
+    START_KARTE.bat (gleicher Ablauf, liest die Karte), danach wieder aus/ein.
+ 8. Die neuen Dateien schicken:  Ergebnis_....txt  und  Mitschnitt_....log
+ 9. Bitte zusaetzlich aufschreiben: Wie viele eigene Designs zeigt die Maschine
+    selbst an (Maschinenspeicher / Karte)? Und wie heissen/nummerieren sie sich?
+
+
+WAS DIE MELDUNGEN BEDEUTEN
+--------------------------
+ STUFE 1 OK / STUFE 2 OK               Verbindung + Stickmodul wie in Version 2
+ Verbindung bei 115200 Baud ok          neu in 3.2
+ Transfer angefordert - Maschine bereit  muss erscheinen
+ ... warte auf Maschine (5 s ...)        Maschine reagiert noch nicht -> Nadel? Display?
+ Ziel: Maschinenspeicher               jetzt beginnen die Listenbefehle
+ >>> Anzahl Designs (...): X           so viele Designs meldet die Maschine
+ Nr 1  Anzeige '1'  Name roh '...'     ein Design; "Anzeige" = was die Original-
+                                       Software zeigen wuerde, "Name roh" = Rohdaten
+ >>> DESIGNLISTE GELESEN               Ziel erreicht
+ PC-Modus verlassen (Befehl 0x100)     Verbindung sauber beendet
+ "nicht bestaetigt ... (keine Speicherkarte im Stickmodul)"
+                                       bei START_KARTE.bat ohne Karte: normal
+
+
+FEHLERSUCHE
+-----------
+ Haengt nach "Ziel:" oder meldet "nicht bestaetigt"
+     -> Maschine aus/ein, Mitschnitt trotzdem schicken
+ Sonst wie Version 2 (Port belegt -> anderes Fenster schliessen;
+     keine Antwort -> Maschine aus/ein; START.bat -DtrRts)
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:
+   T r M E, R+Adresse, J 0 5 / E B, Y Q        (wie Version 2)
+   W FFFED0 + Befehl 0050/0030/0020/0060/00C0/0100 + ?   (Steuerbefehle wie Original)
+   W <Auswahl> + 01 bzw. Banknummer + ?                    (Auswahl wie Original)
+   W FFFEE0 + 01 + ?                                       (Transfer anfordern wie Original, neu in 3.1)
+ Kein Befehl zum Speichern (0x200), Loeschen (0x800), Formatieren (0x80),
+ Sticken (0x08) oder Daten-Schreiben ist im Programm enthalten.

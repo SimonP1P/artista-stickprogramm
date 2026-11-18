@@ -37,7 +37,7 @@
 | Disassembly BEAGLink.dll / DIALOG.DLL | `Arbeitsdaten/disassembly/`, Einzelfunktionen `Analyse_Teil2/daten/funktionen/` |
 | Entschlüsselte Vorlage NORMAL.AMT, alle 22 Stile | `Arbeitsdaten/entschluesselt/NORMAL.AMT_streams/`, `Analyse/daten/entschluesselt/styles.txt`, `software_defaults_flat.txt` |
 | Echte Gerätetests (Ergebnis + Mitschnitt) | `Arbeitsdaten/geraetetests/`, `Analyse_Teil2/daten/Mitschnitt_artista185_v*.log` |
-| Testprogramme für Windows | `Testprogramm_artista185_Windows/` (v1 Lesetest), `Testprogramm_artista185_Windows_v2/` (v2 + Stickmodul), `Testprogramm_artista185_Windows_v3/` (v3 Designliste – am Gerät gescheitert, Transfer fehlte), `Testprogramm_artista185_Windows_v3_1/` (**v3.1, aktuell**), ZIPs daneben; Quellen in `Arbeitsdaten/testprogramm_quellen/` |
+| Testprogramme für Windows | `Testprogramm_artista185_Windows/` (v1 Lesetest), `Testprogramm_artista185_Windows_v2/` (v2 + Stickmodul), `Testprogramm_artista185_Windows_v3/` (v3 Designliste – am Gerät gescheitert, Transfer fehlte), `Testprogramm_artista185_Windows_v3_1/` (v3.1 – Transfer nicht bestätigt), `Testprogramm_artista185_Windows_v3_2/` (**v3.2, aktuell**: 115200 Baud vor Transfer, 30 s), ZIPs daneben; Quellen in `Arbeitsdaten/testprogramm_quellen/` |
 | Verifikationsprotokoll | `VERIFIKATION.md` |
 | Übersicht Rohdaten | `Arbeitsdaten/README.md` |
 
@@ -54,7 +54,7 @@
 - **INF/BMP/EmbF5 (USB-Stick) gibt es in dieser Software-Version nicht.**
 
 ## 4. Regeln für die Arbeit in diesem Projekt
-1. **Niemals Schreib-, Lösch-, Formatier- oder Befehlsfeld-Zugriffe (0xFFFED0, AUSWAHL) an die Maschine senden, ohne dass der Nutzer ausdrücklich zugestimmt hat.** v1/v2 sind reine Lesetests. v3 sendet mit Zustimmung des Nutzers (18.11.2026) nur die Listen-Befehle 0x50/0xA0, 0x30, 0x20, 0x60, 0xC0, 0x100 und schreibt nur ins Auswahlfeld. v3.1 schreibt zusätzlich 0x01 nach 0xFFFEE0 (Transfer anfordern, wie Original) – vom Nutzer durch Ausführen + J/N-Abfrage freizugeben. Befehle 0x200/0x800/0x80/0x08 und Datenbereich-Schreiben sind weiterhin tabu ohne neue Zustimmung. Nach jedem Test: Maschine aus/ein (bleibt sonst im PC-Modus auf 57600).
+1. **Niemals Schreib-, Lösch-, Formatier- oder Befehlsfeld-Zugriffe (0xFFFED0, AUSWAHL) an die Maschine senden, ohne dass der Nutzer ausdrücklich zugestimmt hat.** v1/v2 sind reine Lesetests. v3 sendet mit Zustimmung des Nutzers (18.11.2026) nur die Listen-Befehle 0x50/0xA0, 0x30, 0x20, 0x60, 0xC0, 0x100 und schreibt nur ins Auswahlfeld. v3.1/v3.2 schreiben zusätzlich 0x01 nach 0xFFFEE0 (Transfer anfordern, wie Original) – vom Nutzer durch Ausführen + J/N-Abfrage freizugeben. Befehle 0x200/0x800/0x80/0x08 und Datenbereich-Schreiben sind weiterhin tabu ohne neue Zustimmung. Nach jedem Test: Maschine aus/ein (bleibt sonst im PC-Modus auf 57600).
 2. Original-CD-Dateien in diesem Ordner (Setup/, ADX/, HASP/, IE6/, Acrobat/, instoem/ …) **nicht verändern**.
 3. Neue Erkenntnisse in die passende Datei aus Abschnitt 2 eintragen (mit Fundstelle + Sicherheit) und hier die Tabelle ergänzen; Rohdaten nach `Arbeitsdaten/`.
 4. Werkzeuge: maßgeblich ist `Arbeitsdaten/werkzeuge/`. Kopien in `Analyse/code/` und `Analyse_Teil2/code/` sind für die Lesbarkeit der Berichte da und müssen identisch bleiben.
@@ -85,6 +85,6 @@ venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink
 |---|---|---|
 | 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll, Lesetest am Gerät | ✅ erledigt, verifiziert (`VERIFIKATION.md`) |
 | 1 Stickdatei erzeugen | Grundlegende Stichberechnung (Lauf, Satin mit Auto-Spacing, Tatami, Unterlage, Zugausgleich) → EXP + Vorschau | ⬜ offen |
-| 2 Übertragung | Weg zur artista 185 festlegen (Kabel/Karte); Schreiben erst nach Zustimmung, zuerst „sticken ohne speichern“; dafür hilfreich: ein echtes Design aus der Maschine lesen (v3 am Gerät: `W`-Schreiben + Befehl 0x50 ok, Listenbefehle abgelehnt, weil Transfer-Anforderung 0xFFFEE0 fehlte → v3.1 ausgeliefert 18.11.2026, Test ausstehend) | 🟡 Ablauf bekannt, nicht getestet |
+| 2 Übertragung | Weg zur artista 185 festlegen (Kabel/Karte); Schreiben erst nach Zustimmung, zuerst „sticken ohne speichern“; dafür hilfreich: ein echtes Design aus der Maschine lesen (v3 am Gerät: `W`-Schreiben + Befehl 0x50 ok, Listenbefehle abgelehnt, weil Transfer-Anforderung 0xFFFEE0 fehlte → v3.1: 0x01 in 0xFFFEE0 angenommen, Bit 0x02 kam nicht → v3.2 (115200 Baud wie Original, Nadel oben) ausgeliefert 18.11.2026, Test ausstehend) | 🟡 Ablauf bekannt, nicht getestet |
 | 3 Alle Sticharten & Funktionen | vollständiger Umfang wie das Vorbild (Lauf, Dreifach, Satin, Tatami/Step, Fancy/Muster, Applikation, Schrift, Unterlagen, Stoffe), Probestickereien zur Kalibrierung – auch feine Arbeiten | ⬜ |
 | 4 Komfort | Oberfläche (Windows + Mac), Rahmenauswahl, Schriften | ⬜ |

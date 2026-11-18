@@ -43,7 +43,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | Ziel | Inhalt | Status | Risiko |
 |---|---|---|---|
 | AUSWAHL +0 / +5 | Designnummer + 1 / Bank | ✅ (Schreiben am Gerät bestätigt) | 🟡 |
-| 0xFFFEE0 | Übertragungsbyte: **0x01 = Transfer anfordern**, Maschine setzt Bit 0x02 = bereit; Pflicht vor allen Befehlen außer 0x50 (Gerätetest v3: sonst 0x1005) | 🟦 (v3.1) | 🟡 |
+| 0xFFFEE0 | Übertragungsbyte: **0x01 = Transfer anfordern**, Maschine setzt Bit 0x02 = bereit; Pflicht vor allen Befehlen außer 0x50 (Gerätetest v3: sonst 0x1005). Test v3.1 bei 57600 Baud: 0x01 gespeichert, Bit 0x02 kam nicht → v3.2 mit 115200 wie Original | 🟦 (v3.2) | 🟡 |
 | DATEN | Design-Datenblock (Stiche usw.) | ⬜ | 🔴 (nur zusammen mit 0x10/0x200 dauerhaft) |
 | ICON | Vorschaubild | ⬜ | 🔴 |
 | INFO + N+1 / 2N+1 / 3N+1 | Farbanzahl, Flags, Name | ⬜ | 🔴 |

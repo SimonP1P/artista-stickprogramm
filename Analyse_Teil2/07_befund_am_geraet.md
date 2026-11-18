@@ -57,3 +57,13 @@ Um die Designliste (Anzahl und Namen) zu lesen, muss man wie die Original-Softwa
 
 **Ursache (hoch, Code 0x10006070 / 0x10005de9):** Die Original-Software ruft nach erfolgreicher SRMV-Erkennung `TransparentMode(1)` auf: optional ChangeBaudrate(115200), dann **0x01 nach 0xFFFEE0 schreiben** und alle 10 ms 0xFFFEE0 lesen, bis **Bit 0x02** gesetzt ist (max. 5000 ms, sonst Fehler 17). Erst danach kommen die Befehle. v3 hat diesen Schritt ausgelassen. **Testprogramm v3.1** holt ihn nach; Gerätetest ausstehend.
 
+## Test v3.1 – Transfer anfordern (18.11.2026, 23:35, Mitschnitt `daten/Mitschnitt_artista185_v3_1_20261118.log`)
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| 0xFFFEE0 vorher | 0x00 | hoch |
+| `W FFFEE0 01 ?` | angenommen, Echo ok; 0xFFFEE0 liest danach **0x01** | hoch |
+| 5 s Abfrage alle ~10 ms | Bit 0x02 **nie gesetzt**, Wert bleibt 0x01 → Original-Fehler 17 | hoch |
+| Befehle | keine gesendet; 0x100 nicht nötig (Bit 0x02 fehlt) | hoch |
+
+**Unterschiede zum Original (Code 0x10005de9):** (1) Das Original wechselt unmittelbar vor `TransparentMode(1)` auf **115200 Baud** (`ChangeBaudrate(0x1C200)`), v3.1 blieb auf 57600. (2) Handbuch S. 262 (PDF 264/265): „Make sure the needle arm is up while downloading“, „The machine touch screen goes blank while the download takes place“ – die Maschine prüft vermutlich ihren Zustand (Nadel oben, kein Menü), bevor sie Bit 0x02 setzt (Vermutung, niedrig). **v3.2** wechselt auf 115200, wartet 30 s und bittet um Beobachtung des Displays.
+
