@@ -1,0 +1,37 @@
+﻿artista Lesetest VERSION 2 – 18.11.2026 20:56:32
+Mitschnitt: C:\Users\Horvat\Downloads\Testprogramm_artista185_Windows_v2\Testprogramm_artista185_Windows_v2\Mitschnitt_20261118_205632.log
+*** SIMULATION – keine echte Maschine, nur Selbsttest des Programms ***
+
+=== Port SIM ===
+  Versuch 1 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 19200 Baud)
+  0x200100: 4E 4D 4D 56 30 34 2E 30 34 00 47 65 72 6D 61 6E 20 20 20 20 20 20 00 46 72 69 74 7A 20 47 65 67 61 75 66 20 53 49 4D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+            'NMMV04.04.German      .Fritz Gegauf SIM.........................'
+  >>> STUFE 1 OK: Nähmaschine antwortet, Firmware '04.04', Sprache 'German'
+  Umschalten zum Stickmodul, Versuch 1 …
+  vereinbare 57600 Baud (J 0 5 … B O S … E B) …
+  schalte zum Stickmodul durch (Y Q) …
+  0x200100: 53 52 4D 56 20 33 2E 30 39 20 53 49 4D 55 4C 41 54 49 4F 4E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+            'SRMV 3.09 SIMULATION............................................'
+  >>> STUFE 2 OK: Stickmodul antwortet – Kennung SRMV, Version-Code 0x309
+  0xFFFD24: 08 14 00 01 E0 00 00 03 00 00 00 03 01 00 00 03 10 00 00 03 20 00 00 05 00 00 00 05 00 00 00 00
+     N (Byte 0)             = 0x8 (8)
+     Byte 1                 = 0x14 (20)
+     Groesse Datenbereich   = 0x1E000 (122880)
+     INFO                   = 0x30000 (196608)
+     AUSWAHL                = 0x30100 (196864)
+     ICON                   = 0x31000 (200704)
+     DATEN                  = 0x32000 (204800)
+     Ende Karte             = 0x50000 (327680)
+     Ende Speicher          = 0x50000 (327680)
+  >>> Verwaltungsblock plausibel (N ≤ 28, Byte1 ≤ 60, Größe ≤ 150000)
+  Zeiger @0x24004: 0x40000
+  Zeiger @0x24040: 0x40100
+  Zeiger @0x24044: 0x40200
+  Zeiger @0x24048: 0x40300
+  Status @Zeiger(0x24004): 00 00 00 00 00 02 00 0C   Byte+5=0x02 Byte+7=0x0C
+  INFO: 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 52 4F 53 45 00 00 00
+  >>> Anzahl gespeicherter Designs laut INFO+0: 3
+  Namensfeld INFO+3N+1: 'ROSE............................'
+
+FERTIG. Bitte die Maschine jetzt AUS- und wieder EINSCHALTEN.

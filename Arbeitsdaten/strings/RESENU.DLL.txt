@@ -1,0 +1,6968 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .rsrc
+A 00000257 @.reloc
+A 00000b77 	It	Iu
+A 000013e1 (((((((
+A 000013eb (((((((
+A 00001407  ((!((((("#($%&'
+A 00001a81 T$0SRS
+A 00001ada L$dPQVW
+A 00001d0c L$$^d
+A 000020f9 w.t"-
+A 0000217e w;t/-E'
+A 0000248a 6wGt;
+A 00002789 IQj<V
+A 000028dc D$0_^]d
+A 000032ea tTHt1Hu`
+A 00003970 u"WVS
+A 000046dc SH33W32.dll
+A 000046ea ??1DLLInterface@@UAE@XZ
+A 00004704 ??0DLLInterface@@QAE@ABVString@@@Z
+A 0000472a ?GetForiegnLanguageOEMDLLName@@YA_NHAAVString@@@Z
+A 0000475e ?GetForiegnLanguageResourceDLLName@@YA_NHAAVString@@@Z
+A 00004798 ?GetMeasurementSystem@MeasurementUnits@@SA?AW4MeasurementSystem@LocaleInformation@@XZ
+A 000047ee Wessys.dll
+A 000047fa MFC42.DLL
+A 00004806 __CxxFrameHandler
+A 0000481a memmove
+A 00004824 strstr
+A 0000482e memchr
+A 00004838 ?_query_new_handler@@YAP6AHI@ZXZ
+A 0000485c ?_query_new_mode@@YAHXZ
+A 00004876 _ftol
+A 0000487c MSVCRT.dll
+A 0000488a ??1type_info@@UAE@XZ
+A 000048a2 _initterm
+A 000048ae _adjust_fdiv
+A 000048be _except_handler3
+A 000048d2 ?terminate@@YAXXZ
+A 000048e6 LocalFree
+A 000048f2 FormatMessageA
+A 00004902 KERNEL32.dll
+A 00004912 LoadStringA
+A 00004920 SetWindowTextA
+A 00004932 GetWindowTextA
+A 00004944 GetClassNameA
+A 00004954 EnumChildWindows
+A 00004966 USER32.dll
+A 00004972 MSVCIRT.dll
+A 00004980 _strupr
+A 00004a76 resource.dll
+A 00004a83 ?GetClassResString@@YA_NIAAVString@@@Z
+A 00004aaa ?GetDescriptorResString@@YA_NIAAVString@@@Z
+A 00004ad6 ?GetDiskTypeResString@@YA_NJAAVString@@@Z
+A 00004b00 ?GetFileTypeResString@@YA_NJAAVString@@@Z
+A 00004b2a ?GetFunctionDisplayStringData@@YAXABVDataItem@@AAV1@@Z
+A 00004b61 ?GetGradeString@DesignGradeUtilities@@YA?AVString@@ABW4DesignSourceGroup@@@Z
+A 00004bae ?GetIconID@DesignGradeUtilities@@YAIABW4DesignSourceGroup@@@Z
+A 00004bec ?GetLanguageResourceString@@YA_NHIAAVString@@_N@Z
+A 00004c1e ?GetOSMessageString@@YA_NIAAVString@@@Z
+A 00004c46 ?GetOutlinesString@DesignGradeUtilities@@YA?AVString@@ABW4DesignSourceGroup@@@Z
+A 00004c96 ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 00004cbf ?GetResourcesHInstance@@YAPAUHINSTANCE__@@XZ
+A 00004cec ?GetSecCmdResString@@YA_NHAAVString@@_N@Z
+A 00004d16 ?GetStitchesString@DesignGradeUtilities@@YA?AVString@@ABW4DesignSourceGroup@@ABW4DesignCondition@@@Z
+A 00004d7b ?GetStopMacroResString@@YA_NIAAVString@@_N@Z
+A 00004da8 ?GetUserUnitSymbol@@YA_NW4MeasurementSystem@LocaleInformation@@W4UnitsBase@MeasurementUnits@@AAVString@@@Z
+A 00004e13 ?GetUserUnitSymbol@@YA_NW4UnitsBase@MeasurementUnits@@AAVString@@@Z
+A 00004e57 ?SetMeasurementUnits@@YAXPAVCWnd@@@Z
+A 00004e7c ?SetMeasurementUnits@@YA_NAAVString@@@Z
+A 00005060 resenu.dll
+A 00005078 .?AVxOSException@@
+A 0000508c Problem opening DLL : %d
+A 000050c8 <METRE_YARD>
+A 000050d8 <METRE_FEET>
+A 000050e8 <MM_INCHES>
+A 000050f4 BUTTON
+A 000050fc STATIC
+A 00005168 .?AVtype_info@@
+A 00022bc9 wwwwwwwwwwwwww
+A 00022bea wwwww
+A 00022bf1 wwwww
+A 00022cca wwwww
+A 00022cd0 wwwwww
+A 00022cda wwwwwx
+A 00022ce1 wwwww
+A 00022cf9 wwwwwwwwwwwwww
+A 00022d19 DDDDDDDDwpwpwp
+A 00022d29 DDDDDDDDwpwpwp
+A 00022d39 DDDDDDDDwpwpwp
+A 00022d49 DDDDDDDDDDDDDD
+A 00022d59 wwwwwwwwwwwwww
+A 00022d78 wwwwwwwwwwwwwwww
+A 00022e89 wwwwwwwwwwwwwww
+A 00022e99 wwwwwwwwwwwwwww
+A 00022ea9 wwwwwwwwwwwwwww
+A 00022eb9 wwwwwwwwwwwwwww
+A 00023021 wwwwww
+A 0002302f xwwwwwww
+A 00023040 wwwwwww
+A 00023058 wwwwwwwwwwwwwww
+A 00023068 wwwwwwwwwwwwwww
+A 00023078 wwwwwwwwwwwwwww
+A 00038df8 wwwwwwwwwwww
+A 00038e05 wwwwwwwwwwwwwww
+A 00038e18 wwwwwwwwwwwpywy
+A 00038e28 wwwwwwwwwwp
+A 00038e38 wwwwwwwww
+A 00038e48 wwwwwwwp
+A 00038e58 wwwww
+A 00038e7f wyywwywpwwyww
+A 00038ea6 pwywwww
+A 00038eaf wwyywwypwywwww
+A 00038ebf wwyywwy
+A 00038ec7 wywwww
+A 00038ed9 wwwwyywww
+A 00038ee9 wwwwyywww
+A 00038ef9 wwwwyywww
+A 00038f09 wwwwyywwwyww
+A 00038f19 wwwwyw
+A 00038f20 wwywpwww
+A 00038f29 wwwwyw
+A 00038f30 wwywpwww
+A 00038f39 wwwwywy
+A 00038f49 wwwwyww
+A 00038f51 wypwwww
+A 00038f59 wwwwywwyw
+A 00038f64 wwwwywwww
+A 00038f73 wwwwwywwww
+A 00038f82 wwwwwwywwww
+A 00038f8e wwpwwwwwwww
+A 00038f9a wwyww
+A 00038fa1 wwwwwwwwyww
+A 00038faf wwwwwwwwwww
+A 00038fbe wwwwwwwwwwww
+A 00038fcc wwwwwwwwwwww
+A 00038fda wwwwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 00039060 wwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003907f wwwwwwwwwwwww	wy
+A 00039090 wwwwwwwwwwwpywy
+A 000390a0 wwwwwwwwwwp
+A 000390b0 wwwwwwwww
+A 000390c0 wwwwwwwp
+A 000390d0 wwwww
+A 000390d8 wwwywyw
+A 000390e5 wwwwwwywyw
+A 000390f0 wwwwwwwwwwwywypwwwwwwwwwwwy
+A 0003910e pwwwwwwwwwww
+A 0003911d wpwwwwwwwwwww
+A 0003912d wpwwwwwwwww
+A 0003913f wwwwwwwwywyy
+A 0003914f wwwwwwy
+A 00039157 ywywwww
+A 00039168 wywwwpwwy
+A 0003917a wwwpww
+A 00039188 wwwww
+A 00039197 wwwwwpwww
+A 000391a5 wwwwwwwpwwwy
+A 000391b2 wwwwwwwwww
+A 000391bd wwwwwwwwwwwwwwpwwwwwwwwwwwwwwp
+A 000391dc wwwwwwwwwwwwww
+A 000391eb wwwwwwwwwwwwww
+A 000391fa wwwwwwwwwwwwwwpwwwwwwwwwwwwww
+A 00039219 wwwwwwwwwwwww
+A 00039227 wwwwwwwwwwwwp
+A 00039236 wwwwwwwwww
+A 00039244 wwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 000392c8 wwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000392e7 wwwwwwwwwwwww	wy
+A 000392f8 wwwwwwwwwwwpywy
+A 00039308 wwwwwwwwwwp
+A 00039318 wwwwwwwww
+A 00039328 wwwwwwwp
+A 00039338 wwwww
+A 00039342 ywyww
+A 00039359 wwwyy
+A 0003936d wwwww
+A 00039382 ywywpwwwwwwwywwy
+A 00039395 wpwwy
+A 000393b7 wywwww
+A 000393c9 wwwwy
+A 000393d9 wwwwy
+A 000393e9 wwwwyywwyyww
+A 000393f9 wwwwyw
+A 00039402 ywpwww
+A 00039409 wwwwywwwwywpwww
+A 00039419 wwwwywwwwy
+A 00039425 wwwywwww
+A 00039434 wwwww
+A 00039444 wwwwwy
+A 0003944d ywwwy
+A 00039453 wwwwwwwwww
+A 00039462 wwwwwwy
+A 0003946e wwpwwwwwww
+A 00039481 wwwwwwwwwwwy
+A 0003948f wwwwwwwwwwwwp
+A 0003949e wwwwwwwwww
+A 000394ac wwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 00039530 wwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003954f wwwwwwwwwwwww	wy
+A 00039560 wwwwwwwwwwwpywy
+A 00039570 wwwwwwwwwwp
+A 00039580 wwwwwwwww
+A 00039590 wwwwwwwp
+A 000395a0 wwwww
+A 000395a9 wyywyw
+A 000395c7 wywwywypwwwy
+A 000395d4 ywywywy
+A 000395f5 wywww
+A 00039614 wwwywyy
+A 00039627 ywyww
+A 00039638 wywywpwwy
+A 0003964a wywpww
+A 0003967c pwwwy
+A 00039682 wwwwy
+A 0003968d wwwwwwy
+A 0003969b pwwwwy
+A 000396bb wwwww
+A 000396ca wwwwww
+A 000396d5 wwwpwwwwwwwy
+A 000396e2 wwwwy
+A 000396e9 wwwwwwwwwwy
+A 000396f7 wwwwwwwwwy
+A 00039706 wwwwwwwwww
+A 00039714 wwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 0003ab30 MS Sans Serif
+A 0003ab8c MS Sans Serif
+A 0003abe8 MS Sans Serif
+A 0003ac48 MS Sans Serif
+A 0003aca4 MS Sans Serif
+A 0003ad00 MS Sans Serif
+A 0003ad60 MS Sans Serif
+A 0003adbc MS Sans Serif
+A 0003ae18 MS Sans Serif
+A 0003ae78 MS Sans Serif
+A 0003aed4 MS Sans Serif
+A 0003d298 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d2c4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d2f0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d31c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d348 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d374 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d3a0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d3cc wwwwwwwww
+A 0003d3ed wwwwwwwwp
+A 0003d3f8 wwwwwpwww
+A 0003d402 wwwwwwwwwwwwwwwwwwwwww
+A 0003d419 wwwwwwwwp
+A 0003d424 wwwww
+A 0003d42e wwwwwwwwwwwwwwwwwwwwww
+A 0003d448 wwwwwp
+A 0003d450 wwwwpwpww
+A 0003d45e wwwwwwwwwwwwwwwwww
+A 0003d474 wwwwwp
+A 0003d48b wwwwwwwwwwwwwwwww
+A 0003d4a0 wwwwwp
+A 0003d4a8 wwwpwwwpw
+A 0003d4b8 wwwwwwwwwwwwwwww
+A 0003d4cc wwwwwp
+A 0003d500 wwwpwwwpw
+A 0003d510 wwwwwwwwwwwwwwww
+A 0003d524 wwwwwp
+A 0003d53b wwwwwwwwwwwwwwwww
+A 0003d550 wwwwwp
+A 0003d558 wwwwpwpww
+A 0003d566 wwwwwwwwwwwwwwwwww
+A 0003d57c wwwwwp
+A 0003d584 wwwww
+A 0003d58e wwwwwwwwwwwwwwwwwwwwww
+A 0003d5a8 wwwwwp
+A 0003d5b0 wwwwwpwww
+A 0003d5ba wwwwwwwwwwwwwwwwwwwwww
+A 0003d5d1 wwwwwwwwp
+A 0003d5dc wwwwwwwww
+A 0003d5fd wwwwwwwwp
+A 0003d608 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d634 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d660 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d68c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d6b8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d6e4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d710 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003d7a8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003d7f8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003d848 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003d898 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003d8e8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003d938 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003d988 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0003d9d8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwww
+A 0003da28 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwww
+A 0003da78 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwww
+A 0003dac8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwp
+A 0003db12 wxwww
+A 0003db18 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003db68 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dbb8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dc08 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dc58 wwwwwwwwwwwwww
+A 0003dc69 wwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dca8 wwwwwwwwwwwwww
+A 0003dcb7 wwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dcf8 wwwwwwwwwwwwwwp
+A 0003dd08 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dd48 wwwwwwwwwwwwwww
+A 0003dd58 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwxwww
+A 0003dd98 wwwwwwwwwwwwwwwp
+A 0003dda9 wwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwx
+A 0003dddd wwwwpwxwww
+A 0003dde8 wwwwwwwwwwwwwwww
+A 0003ddf9 wwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003de38 wwwwwwwwwwwwwwww
+A 0003de49 wwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003de88 wwwwwwwwwwwwww
+A 0003de99 wwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003ded8 wwwwwwwwwwwwwwp
+A 0003dee9 wwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003df28 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003df78 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003dfc8 wwwwwwwx
+A 0003dfea wwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003e018 wwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003e068 wwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003e0b8 wwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003e10d wwxwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwxwpwwwwxwwwwwwwp
+A 0003e145 wwwwwwwxwwwwpwxwww
+A 0003e158 wwwppwwxwwwwwwwwwwwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwwp
+A 0003e193 wwwwwwwwwxwwwwpwxwww
+A 0003e1ae wxwwwwww
+A 0003e1b7 wwwwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwww
+A 0003e1e3 wwwwwwwwwxwwwwpwxwww
+A 0003e1f8 wwpwwpwxwwwwww
+A 0003e208 wwwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwwwp
+A 0003e234 wwwwwwwwxwwwwpwxwww
+A 0003e24f xwwwwww
+A 0003e259 wwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwwww
+A 0003e284 wwwwwwwwxwwwwpwxwww
+A 0003e298 wpwwwwpx
+A 0003e2bf wwwxwpwwwwxwwwwwwwwwp
+A 0003e2d5 wwwwwwwxwwwwpwxwww
+A 0003e2ef xwwwwww
+A 0003e2f9 wwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwwwwp
+A 0003e325 wwwwwwwxwwwwpwxwww
+A 0003e338 wwpwwpwxwwwwww
+A 0003e348 wwwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwwp
+A 0003e375 wwwwwwwxwwwwpwxwww
+A 0003e38e wxwwwwww
+A 0003e397 wwwwwwwwwwwwwwwwwwxwwpwwwwwxwpwwwwxwwwwwwww
+A 0003e3c4 wwwwwwwwxwwwwpwxwww
+A 0003e3d8 wwwppwwx
+A 0003e3fa wwpwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003e42d wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwxwwwwwwwwwwwwwwwwwwxwwwwpwxwww
+A 0003e478 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwx
+A 0003e4bd wwwwpwxwww
+A 0003e4c8 wwwwwwwwwwwwwww
+A 0003e4d8 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e504 wwwwwwwwwwwwwpwxwww
+A 0003e518 wwwwwwwwwwwwwww
+A 0003e528 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e554 wwwwwwwwwwwwwpwxwww
+A 0003e568 wwwwwwwwwwwwwww
+A 0003e578 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e5a4 wwwwwwwwwwwwwpwxwww
+A 0003e5b8 wwwwwwwwwwwwwww
+A 0003e5c8 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e5f4 wwwwwwwwwwwwwpwxwww
+A 0003e608 wwwwwwwwwwwwwww
+A 0003e618 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e644 wwwwwwwwwwwwwpwxwww
+A 0003e658 wwwwwwwwwwwwww
+A 0003e668 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e694 wwwwwwwwwwwwwpwxwww
+A 0003e6a8 wwwwwwwwwwwwww
+A 0003e6b8 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e6e4 wwwwwwwwwwwwwpwxwww
+A 0003e6f8 wwwwwwwwwwwwwwp
+A 0003e708 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e734 wwwwww
+A 0003e73b wwwwwwpwxwww
+A 0003e748 wwwwwwwwwwwwwww
+A 0003e758 wwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e784 wwwwww
+A 0003e78c wwwwwpwxwww
+A 0003e798 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwpwwwwwwwwwwwwww
+A 0003e7d4 wwwwww
+A 0003e7dd wwwwpwxwww
+A 0003e7e8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwp
+A 0003e832 wxwww
+A 0003e838 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwww
+A 0003e874 wwwwww
+A 0003e87d wwwwwwxwww
+A 0003e888 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwww
+A 0003e8c4 wwwwww
+A 0003e8cc wwwwwwwxwww
+A 0003e8d8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwww
+A 0003e914 wwwwww
+A 0003e91b wwwwwwwwxwww
+A 0003e928 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0003e978 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003e9c8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003ea18 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003ea68 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003eaa4 wwwwwwwwwwwwwwwwwww
+A 0003eab8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003eaf4 wwwwwwwwwwwwwwwwwww
+A 0003eb08 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003eb44 wwwwwwwwwwwwwwwwwww
+A 0003eb58 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003eb94 wwwwwwwwwwwwwwwwwww
+A 0003eba8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003ebe4 wwwwwwwwwwwwwwwwwww
+A 0003ebf8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwpp
+A 0003ec34 wwwwwwwwwwwwwwwwwww
+A 0003ec48 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003ec84 wwwwwwwwwwwwwwwwwww
+A 0003ec98 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003ecd4 wwwwwwwwwwwwwwwwwww
+A 0003ece8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0003ed24 wwwwwwwwwwwwwwwwwww
+A 0003ed38 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003ed88 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0003ee59 wwwwwwwww
+A 0003ee65 wwwwwwwww
+A 0003ee71 wwwwwwwww
+A 0003ef0d wwwwwwwww
+A 0003ef19 wwwwwwwww
+A 0003ef25 wwwwwwwww
+A 0003ef31 wwwwwwwww
+A 0003efc9 wwwwwwwww
+A 0003efd5 wwwwwwwww
+A 0003efe1 wwwwwwwww
+A 0003f089 wwwwwwwww
+A 0003f095 wwwwwwwww
+A 0003f0a1 wwwwwwwww
+A 0003f139 wwwwwwwww
+A 0003f145 wwwwwwwww
+A 0003f151 wwwwwwwww
+A 0003f1f9 wwwwwwwww
+A 0003f205 wwwwwwwww
+A 0003f211 wwwwwwwwwx
+A 0003f2a9 wwwwwwwww
+A 0003f2b5 wwwwwwwww
+A 0003f2c1 wwwwwwwww
+A 0003f35d wwwwwwwww
+A 0003f369 wwwwwwwww
+A 0003f375 wwwwwwwww
+A 0003f381 wwwwwwwww
+A 00044748 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000447c7 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000447fe pwwpww
+A 00044813 pwwpww
+A 00044823 pwwwwwp
+A 0004482d wpwww
+A 00044833 pwwwwwpwwpwpwww
+A 00044843 pwwwwwpwwpwpwwpwpwwwwwpww
+A 00044862 wpwwwwwp
+A 0004486d wpwwpwpwwwwww
+A 0004487d wpwww
+A 00044883 pwwwwww
+A 0004488d wpwww
+A 00044893 pwwwwwwppwwpwww
+A 000448a3 pwwwwwwp
+A 000448ac wwpwww
+A 000448b3 pwwpwwwp
+A 000448bc wwpwwpww
+A 000448d7 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 000449b0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 000449eb wwwwwwwwp
+A 000449f6 wwwwp
+A 000449fd wwwwwp
+A 00044a04 wwwwwwwwp
+A 00044a13 wwwwwwwwwwpwwwpwwwwwwwwwwww
+A 00044a32 wwwwwwwwwwwwpww
+A 00044a42 wwwwwwwwwwwwpww
+A 00044a52 wwwwwwwwwwwwpwwpwwwwwwwwwwww
+A 00044a73 wwwwwwwwwwpwwwpp
+A 00044a84 wwwwwwwwp
+A 00044a8e wwwpwp
+A 00044a96 wwwwp
+A 00044a9d wwwwpwwwp
+A 00044aae wwwpwwwwwwwwwp
+A 00044acc wwwwwpp
+A 00044ad6 pwwpw
+A 00044adc wwwwwpwp
+A 00044ae5 wpwww
+A 00044aec wwwwwpww
+A 00044af5 wpwww
+A 00044afc wwwwwpwpwwpwww
+A 00044b0c wwwwwpw
+A 00044b14 wwpwwp
+A 00044b1b pwwwwwpw
+A 00044b2a wpwwpwwppwwwpww
+A 00044b3d wpwwp
+A 00044b43 wwwpwwpww
+A 00044b4f wwpwwwwpwwpwwp
+A 00044b5f wwwwwwwpww
+A 00044b6a wwwwwwwwwwwwp
+A 00044b79 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 00044c18 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00044c42 wwwwwww
+A 00044c5d wpwwpwww
+A 00044c66 pwwpww
+A 00044c6d wpwwpwwpwpwwpw
+A 00044c7d wpwwpww
+A 00044c85 wpwww
+A 00044c95 wpwww
+A 00044ca1 wwpwwwwwwpw
+A 00044cad wpwpwwpwwwwwwpw
+A 00044cc2 wpwwwwwww
+A 00044cd2 wpwpwwwww
+A 00044ce6 wwwwwp
+A 00044ced wwwwwww
+A 00044cf5 wwwwwwwwp
+A 00044d03 wwwwwwwwp
+A 00044d0e wwwwp
+A 00044d15 wwwwwp
+A 00044d1c wwwwwwwwp
+A 00044d2b wwwwwwwwwwpwwwpwwwwwwwwwwww
+A 00044d4a wwwwwwwwwwwwpww
+A 00044d5a wwwwwwwwwwwwpww
+A 00044d6a wwwwwwwwwwwwpwwpwwwwwwwwwwww
+A 00044d8b wwwwwwwwwwpwwwwp
+A 00044d9c wwwwwwwwp
+A 00044da6 wwwwwp
+A 00044dae wwwwp
+A 00044db5 wwwwwwwwp
+A 00044dc3 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 00049518 wwwwwwwwwwwwwwwwwwwwwwy
+A 00049531 wwwwwwwwwwwy
+A 0004953f wwwwwwwwwwww
+A 0004954f wwwwwwwwwww
+A 0004955f wwwwwwwwww
+A 0004957f wwwwwwwwwwww
+A 0004958f wwwpwwwwwwpwwy
+A 0004959f wwwpwwwwwwpwwwwp
+A 000495b1 wpwwwwww
+A 000495bb wwwpwwwpwwwwww
+A 000495d3 wwwwwp
+A 000495e3 wwwwwp
+A 000495f3 wwwwwwpwwwww
+A 00049603 wwwwwwpwwwwwpwpwwwwwwww
+A 0004961b wwwwpwpwwwwwwww
+A 0004962b wwwwpwpwwwwwwwwpwwwww
+A 00049642 wwwwwwwww
+A 00049652 wwwwwwwwwp
+A 0004965d wwwpwwwwwwwwwwwp
+A 0004966f wpwwwwwwwwwwwwwwwwwwwwwww(
+A 000496f0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 00049756 wwwwwwwwwwwp
+A 00049763 wwpwwwww
+A 0004976e wwwwwwpw
+A 0004977b wwpwwwpwwpw
+A 0004978d wwwwpwwpwp
+A 000497a3 wpwwwww
+A 000497ab wwwwwww
+A 000497bb wwwwwwwp
+A 000497cb wwwwwwwpwpw
+A 000497db wwwwwwww
+A 000497eb wwwwwwww
+A 000497fa pwwwwwwwwppw
+A 00049807 wpwpwwpwwwwwppw
+A 0004981c wpwwwwww
+A 0004982e wwwwwwww
+A 00049837 wpwwp
+A 0004983e wwwwwwww
+A 00049847 wpwwwwwwwwwwwww
+A 00049859 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww(
+A 00049958 wwwwwwpw
+A 00049963 wwwwwwwwwwwppwwpwwwwwwwwwwwppwwwwwwwwwwwwwwppwwwwwwwwwwwwwwppwwwwwwwwwwwwwwppwwwwwwwwwwwwwwppwwwwwwwwwwwwwwppwwwwwwwwwwwwwwppwwpwwwwwwwwwwwpw
+A 000499f3 wwwwwwwwwwwpwwwwwwwwwwwwwwwpp
+A 00049a13 wwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwpp
+A 00049a63 wwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwpp
+A 00049aa3 wwwwwwwwwwwpwwwwwwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwppwwpwwwwwwwwwwwpw
+A 00049af3 wwwwwwwwwwwpw
+A 00049b03 wwwwwwwwwwwpw
+A 00049b13 wwwwwwwwwwwpwppwwwwwwwwwwwwpwppwwwwwwwwwwwwpww
+A 00049b42 wwwwwwwwwwwwpww
+A 00049b52 wwwwww(
+A 0004fb10 wwwwwwwwwDwwDwwGwGGwGGwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGtwGtwGwGttwttwtwtGwtGwwwwwwwww(
+A 0004fbf8 wwwwwwwwwwDDDGwwwwDDDDwwwwwwwDGwwwwwwtDwtGwwwwDGtGwwwwtGtGwwwwtGtGwwwwtGtGwwwwtGtGwwwwDGtDwwwtDwwDGwwDGwwtDDDDwwwwDDDGwwwwwwwwww
+A 00057f55 wwwwwwwwww
+A 00057f61 wwwwwwwwww
+A 00057f6d wwwwwwwwww
+A 00057f79 wwwwwwwwww
+A 00057f85 wwwwwwwtGw
+A 00057f91 wwwwwwwDGw
+A 00057f9d wwwwDDtDww
+A 00058021 wwwwDDwwww
+A 0005802d wwwwwwwwww
+A 00058039 wwwwwwwwww
+A 00058045 wwwwwwwwww
+A 000580e9 wwwwwwwwww
+A 000580f5 wwwwwwwwww
+A 00058101 wwwwwwwwww
+A 0005810d wwwwwww
+A 00058119 wwwwwwx
+A 000581b5 wwwwwwwwww
+A 000581c1 wwwwwwwwww
+A 000581cd wwwwwwwwww
+A 000581d9 wwwwwwwwww
+A 00058271 wwwwwwwwww
+A 0005827d wwwwwwwwww
+A 00058289 wwwwwwwwww
+A 00058295 wwwwwwwDww
+A 000582a1 wwwwwwtDww
+A 000582ad wwwtDGDGww
+A 00058331 wwwtDGwwww
+A 0005833d wwwwwwwwww
+A 00058349 wwwwwwwwww
+A 00058355 wwwwwwwwww
+A 00058361 wwwwwwwwww
+A 000583f9 wwwwwwwwww
+A 00058405 wwwwwwwwww
+A 00058411 wwwwwwwwww
+A 0005841d wwwwwwwDww
+A 00058429 wwwwwwtDww
+A 00058435 wwwtDGDGww
+A 000584b9 wwwtDGwwww
+A 000584c5 wwwwwwwwww
+A 000584d1 wwwwwwwwww
+A 000584dd wwwwwwwwww
+A 000584e9 wwwwwwwwww
+A 00058581 wwwwwwwwww
+A 0005858d wwwwwwwwww
+A 00058599 wwwwwwwwww
+A 000585a5 wwwwwww
+A 000585b1 wwwwwwx
+A 0005864d wwwwwwwwww
+A 00058659 wwwwwwwwww
+A 00058665 wwwwwwwwww
+A 00058671 wwwwwwwwww
+A 000586fd wwwwwwwwww
+A 00058709 wwwwwwwwww
+A 00058715 wwwwwwwwww
+A 00058721 wwwwwwwwww
+A 0005872d wwwwwwwtGw
+A 00058739 wwwwwwwDGw
+A 00058745 wwwwDDtDww
+A 000587c9 wwwwDDwwww
+A 000587d5 wwwwwwwwww
+A 000587e1 wwwwwwwwww
+A 000587ed wwwwwwwwww
+A 00058891 wwwwwwwwww
+A 0005889d wwwwwwwwww
+A 000588a9 wwwwwwwwww
+A 000588b5 wwwwwwwDww
+A 000588c1 wwwwwwtDww
+A 000588cd wwwtDGDGww
+A 000588f1 wwODDD
+A 0005892d wwODDD
+A 00058951 wwwtDGwwww
+A 0005895d wwwwwwwwww
+A 00058969 wwwwwwwwww
+A 00058975 wwwwwwwwww
+A 00058981 wwwwwwwwww
+A 00058a19 wwwwwwwwww
+A 00058a25 wwwwwwwwww
+A 00058a31 wwwwwwwwww
+A 00058a3d wwwwwwwwww
+A 00058a49 wwwwwww
+A 00058a55 wwwwwwx
+A 00058af1 wwwwwwwwww
+A 00058afd wwwwwwwwww
+A 00058b09 wwwwwwwwww
+A 00058b95 wwwwwwwwww
+A 00058ba1 wwwwwwwwww
+A 00058bad wwwwwwwwww
+A 00058bb9 wwwwwwwwww
+A 00058bc5 wwwwwwwtGw
+A 00058bd1 wwwwwwwDGw
+A 00058bdd wwwwDDtDww
+A 00058c05 DDOGww
+A 00058c41 DDOGww
+A 00058c61 wwwwDDwwww
+A 00058c6d wwwwwwwwww
+A 00058c79 wwwwwwwwww
+A 00058c85 wwwwwwwwww
+A 00058d11 wwwwwwwwwww
+A 00058d1d wwwwwwwwwww
+A 00058d29 wwwwwwwwwww
+A 00058d35 wwwwwwwwwww
+A 00058d41 wwwwwwwwwww
+A 00058d4d wwwwwwwtGww
+A 00058d59 wwwwwwwDGww
+A 00058d65 wwwwDDtDwww
+A 00058d77 DGwww
+A 00058de3 Dwwww
+A 00058de9 wwwwDDwwwww
+A 00058df5 wwwwwwwwwww
+A 00058e01 wwwwwwwwwww
+A 00058e0d wwwwwwwwwww
+A 00058eb1 wwwwwwwwww
+A 00058ebd wwwwwwwwww
+A 00058ec9 wwwwwwwwww
+A 00058ed5 wwwwwwwwww
+A 00058ee1 wwwwwwtGww
+A 00058eed wwwwwwDGww
+A 00058ef9 wwwDDtDwww
+A 00058f0a DGwww
+A 00058f76 Dwwww
+A 00058f7d wwwDDwwwww
+A 00058f89 wwwwwwwwww
+A 00058f95 wwwwwwwwww
+A 00058fa1 wwwwwwwwww
+A 00059049 wwwwwwwwwwwwwwwwww
+A 0005905d wwwwwwwwwwwwwwwwww
+A 00059071 wwwwww
+A 00059078 wwwwwwwwwww
+A 00059085 wwwwwwf
+A 0005908d wwwwwwwwww
+A 00059099 wwwwwwff
+A 000590a2 wwwwwwwww
+A 000590ad wwwwwwfff
+A 000590b7 wwwwwwww
+A 000590c1 wwwwwwffff
+A 000590cc wwwwwww
+A 000590d5 wwwwwwfffff
+A 000590e1 wwwwww
+A 000590e9 wwwwwwffffffwwwwww
+A 000590fd wwwwwwfffffwwwwwww
+A 00059111 wwwwwwffffwwwwwwww
+A 00059125 wwwwwwfffwwwwwwwww
+A 00059139 wwwwwwffwwwwwwwwww
+A 0005914d wwwwwwfwwwwwwwwwww
+A 00059161 wwwwwwwwwwwwwwwwww
+A 00059175 wwwwwwwwwwwwwwwwww
+A 00059189 wwwwwwwwwwwwwwwwww
+A 00059241 wwwwwwwwwwwwwwwwww
+A 00059255 wwwwwwwwwwwwwwwwww
+A 00059269 wwwwww
+A 00059275 wwwwww
+A 0005927d wwwwwwff
+A 00059286 vf`wwwwww
+A 00059291 wwwwwwff
+A 0005929a vf`wwwwww
+A 000592a5 wwwwwwff
+A 000592ae vf`wwwwww
+A 000592b9 wwwwwwff
+A 000592c2 vf`wwwwww
+A 000592cd wwwwwwff
+A 000592d6 vf`wwwwww
+A 000592e1 wwwwwwff
+A 000592ea vf`wwwwww
+A 000592f5 wwwwwwff
+A 000592fe vf`wwwwww
+A 00059309 wwwwwwff
+A 00059312 vf`wwwwww
+A 0005931d wwwwwwff
+A 00059326 vf`wwwwww
+A 00059331 wwwwwwff
+A 0005933a vf`wwwwww
+A 00059345 wwwwwwff
+A 0005934e vf`wwwwww
+A 00059359 wwwwwwwwwwwwwwwwww
+A 0005936d wwwwwwwwwwwwwwwwww
+A 00059381 wwwwwwwwwwwwwwwwww
+A 00059439 wwwwwwwwwwwwwwwwww
+A 0005944d wwwwwwwwwwwwwwwwww
+A 00059461 wwwwww
+A 0005946d wwwwww
+A 00059475 wwwwwwfffff`wwwwww
+A 00059489 wwwwwwfffff`wwwwww
+A 0005949d wwwwwwfffff`wwwwww
+A 000594b1 wwwwwwfffff`wwwwww
+A 000594c5 wwwwwwfffff`wwwwww
+A 000594d9 wwwwwwfffff`wwwwww
+A 000594ed wwwwwwfffff`wwwwww
+A 00059501 wwwwwwfffff`wwwwww
+A 00059515 wwwwwwfffff`wwwwww
+A 00059529 wwwwwwfffff`wwwwww
+A 0005953d wwwwwwfffff`wwwwww
+A 00059551 wwwwwwwwwwwwwwwwww
+A 00059565 wwwwwwwwwwwwwwwwww
+A 00059579 wwwwwwwwwwwwwwwwww
+A 0005961d wwwwwwwwwwwwwwwwww
+A 00059631 wwwwwwwwwwwwwwwwww
+A 00059645 wwwwwwp
+A 0005964d wwwwwwwwww
+A 00059659 wwwwwwv`
+A 00059662 wwwwwwwww
+A 0005966d wwwwwwvf`
+A 00059677 wwwwwwww
+A 00059681 wwwwwwvff`
+A 0005968c wwwwwww
+A 00059695 wwwwwwvfff`
+A 000596a1 wwwwww
+A 000596a9 wwwwwwvffff`
+A 000596b6 wwwww
+A 000596bd wwwwwwvfffffgwwwww
+A 000596d1 wwwwwwvffffgwwwwww
+A 000596e5 wwwwwwvfffgwwwwwww
+A 000596f9 wwwwwwvffgwwwwwwww
+A 0005970d wwwwwwvfgwwwwwwwww
+A 00059721 wwwwwwvgwwwwwwwwww
+A 00059735 wwwwwwwwwwwwwwwwww
+A 00059749 wwwwwwwwwwwwwwwwww
+A 0005975d wwwwwwwwwwwwwwwwww
+A 00059815 wwwwwwwwwwwwwwwwww
+A 00059829 wwwwwwwwwwwwwwwwww
+A 0005983d wwwwwwp
+A 0005984a wwwww
+A 00059851 wwwwwwvf`wff
+A 0005985e wwwww
+A 00059865 wwwwwwvf`wff
+A 00059872 wwwww
+A 00059879 wwwwwwvf`wff
+A 00059886 wwwww
+A 0005988d wwwwwwvf`wff
+A 0005989a wwwww
+A 000598a1 wwwwwwvf`wff
+A 000598ae wwwww
+A 000598b5 wwwwwwvf`wff
+A 000598c2 wwwww
+A 000598c9 wwwwwwvf`wff
+A 000598d6 wwwww
+A 000598dd wwwwwwvf`wff
+A 000598ea wwwww
+A 000598f1 wwwwwwvf`wff
+A 000598fe wwwww
+A 00059905 wwwwwwvf`wff
+A 00059912 wwwww
+A 00059919 wwwwwwvf`wff
+A 00059926 wwwww
+A 0005992d wwwwwwwwwwwwwwwwww
+A 00059941 wwwwwwwwwwwwwwwwww
+A 00059955 wwwwwwwwwwwwwwwwww
+A 00059a0d wwwwwwwwwwwwwwwwww
+A 00059a21 wwwwwwwwwwwwwwwwww
+A 00059a35 wwwwwwp
+A 00059a42 wwwww
+A 00059a49 wwwwwwvfffff
+A 00059a56 wwwww
+A 00059a5d wwwwwwvfffff
+A 00059a6a wwwww
+A 00059a71 wwwwwwvfffff
+A 00059a7e wwwww
+A 00059a85 wwwwwwvfffff
+A 00059a92 wwwww
+A 00059a99 wwwwwwvfffff
+A 00059aa6 wwwww
+A 00059aad wwwwwwvfffff
+A 00059aba wwwww
+A 00059ac1 wwwwwwvfffff
+A 00059ace wwwww
+A 00059ad5 wwwwwwvfffff
+A 00059ae2 wwwww
+A 00059ae9 wwwwwwvfffff
+A 00059af6 wwwww
+A 00059afd wwwwwwvfffff
+A 00059b0a wwwww
+A 00059b11 wwwwwwvfffff
+A 00059b1e wwwww
+A 00059b25 wwwwwwwwwwwwwwwwww
+A 00059b39 wwwwwwwwwwwwwwwwww
+A 00059b4d wwwwwwwwwwwwwwwwww
+A 00059c19 wwwwwwwwwwwwwwwwww
+A 00059c2d wwwwwwwwwwwwwwwwww
+A 00059c41 wwwwww
+A 00059c4d wwwwww
+A 00059c55 wwwwww
+A 00059c61 wwwwww
+A 00059c69 wwwwww
+A 00059c75 wwwwww
+A 00059c7d wwwwww
+A 00059c89 wwwwww
+A 00059c91 wwwwww
+A 00059c9d wwwwww
+A 00059ca5 wwwwww
+A 00059cb1 wwwwww
+A 00059cb9 wwwwww
+A 00059cc5 wwwwww
+A 00059ccd wwwwww
+A 00059cd9 wwwwww
+A 00059ce1 wwwwww
+A 00059ced wwwwww
+A 00059cf5 wwwwww
+A 00059d01 wwwwww
+A 00059d09 wwwwww
+A 00059d15 wwwwww
+A 00059d1d wwwwww
+A 00059d29 wwwwww
+A 00059d31 wwwwwwwwwwwwwwwwww
+A 00059d45 wwwwwwwwwwwwwwwwww
+A 00059d59 wwwwwwwwwwwwwwwwww
+A 00059e11 wwwwwwwwwwwwwwwwww
+A 00059e25 wwwwwwwwwwwwwwwwww
+A 00059e39 wwwwww
+A 00059e40 wwwwwwwwwww
+A 00059e4d wwwwww
+A 00059e55 wwwwwwwwww
+A 00059e61 wwwwww
+A 00059e6a wwwwwwwww
+A 00059e75 wwwwww
+A 00059e7f wwwwwwww
+A 00059e89 wwwwww
+A 00059e94 wwwwwww
+A 00059e9d wwwwww
+A 00059ea9 wwwwww
+A 00059eb1 wwwwww
+A 00059ebd wwwwww
+A 00059ec5 wwwwww
+A 00059ed0 wwwwwww
+A 00059ed9 wwwwww
+A 00059ee3 wwwwwwww
+A 00059eed wwwwww
+A 00059ef6 wwwwwwwww
+A 00059f01 wwwwww
+A 00059f09 wwwwwwwwww
+A 00059f15 wwwwww
+A 00059f1c wwwwwwwwwww
+A 00059f29 wwwwwwwwwwwwwwwwww
+A 00059f3d wwwwwwwwwwwwwwwwww
+A 00059f51 wwwwwwwwwwwwwwwwww
+A 0005a009 wwwwwwwwwwwwwwwwww
+A 0005a01d wwwwwwwwwwwwwwwwww
+A 0005a031 wwwwww
+A 0005a03d wwwwww
+A 0005a045 wwwwww
+A 0005a051 wwwwww
+A 0005a059 wwwwww
+A 0005a065 wwwwww
+A 0005a06d wwwwww
+A 0005a079 wwwwww
+A 0005a081 wwwwww
+A 0005a08d wwwwww
+A 0005a095 wwwwww
+A 0005a0a1 wwwwww
+A 0005a0a9 wwwwww
+A 0005a0b5 wwwwww
+A 0005a0bd wwwwww
+A 0005a0c9 wwwwww
+A 0005a0d1 wwwwww
+A 0005a0dd wwwwww
+A 0005a0e5 wwwwww
+A 0005a0f1 wwwwww
+A 0005a0f9 wwwwww
+A 0005a105 wwwwww
+A 0005a10d wwwwww
+A 0005a119 wwwwww
+A 0005a121 wwwwwwwwwwwwwwwwww
+A 0005a135 wwwwwwwwwwwwwwwwww
+A 0005a149 wwwwwwwwwwwwwwwwww
+A 0005a201 wwwwwwwwwwwwwwwwww
+A 0005a215 wwwwwwwwwwwwwwwwww
+A 0005a229 wwwwwww
+A 0005a231 wwwwwwwwww
+A 0005a23d wwwwwwwf
+A 0005a246 wwwwwwwww
+A 0005a251 wwwwwwwff
+A 0005a25b wwwwwwww
+A 0005a279 wwvffffffffwwwv
+A 0005a291 wwwfffwwwwv
+A 0005a2a5 wwwffwwwwwv
+A 0005a2b9 wwwfwwwwwwv
+A 0005a2cd wwwwwwwwwwv
+A 0005a2e1 wwwwwwwwwwv
+A 0005a305 wwvffffffffffff
+A 0005a319 wwwwwwwwwwwwwwwwww
+A 0005a32d wwwwwwwwwwwwwwwwww
+A 0005a341 wwwwwwwwwwwwwwwwww
+A 0005a3e5 wwwwwwwwwwwwwwwwww
+A 0005a3f9 wwwwwwwwwwwwwwwwww
+A 0005a40d wwwwwwwp
+A 0005a416 wwwwwwwww
+A 0005a421 wwwwwwwv`
+A 0005a42b wwwwwwww
+A 0005a435 wwwwwwwvf`
+A 0005a440 wwwwwww
+A 0005a455 www`ww
+A 0005a45d wwwffffffffgwww`ww
+A 0005a471 www`wwwvffgwwww`ww
+A 0005a485 www`wwwvfgwwwww`ww
+A 0005a499 www`wwwvgwwwwww`ww
+A 0005a4ad www`wwwwwwwwwww`ww
+A 0005a4c1 www`wwwwwwwwwww`ww
+A 0005a4e9 wwwffffffffffff`ww
+A 0005a4fd wwwwwwwwwwwwwwwwww
+A 0005a511 wwwwwwwwwwwwwwwwww
+A 0005a525 wwwwwwwwwwwwwwwwww
+A 0005a5f1 wwwwwwwwwwwwwwwwww
+A 0005a605 wwwwwwwwwwwwwwwwww
+A 0005a619 wwwwwww
+A 0005a621 wwwwwwwwww
+A 0005a62d wwwwwww
+A 0005a636 wwwwwwwww
+A 0005a641 wwwwwww
+A 0005a64b wwwwwwww
+A 0005a687 wwwwx
+A 0005a69a wwwwwx
+A 0005a6ad wwwwwwx
+A 0005a6bd wwwwwwwwwwx
+A 0005a6d1 wwwwwwwwwwx
+A 0005a709 wwwwwwwwwwwwwwwwww
+A 0005a71d wwwwwwwwwwwwwwwwww
+A 0005a731 wwwwwwwwwwwwwwwwww
+A 0005a7e9 wwwwwwwwwwwwwwwwww
+A 0005a812 wwwww
+A 0005a818 wwwwwwwwww
+A 0005a825 wwwwwwf
+A 0005a82d wwwwwwwwww
+A 0005a83a wwwwwff
+A 0005a842 wwwwwwww
+A 0005a84d wwwwwwfff
+A 0005a857 wwwwwwww
+A 0005a862 wwwwwffff
+A 0005a86c wwwwww
+A 0005a875 wwwwwwfffff
+A 0005a881 wwwwww
+A 0005a88a wwwwwffffffwwwww
+A 0005a89d wwwwwwfffffwwwwwww
+A 0005a8b2 wwwwwffffwwwwwww
+A 0005a8c5 wwwwwwfffwwwwwwwww
+A 0005a8da wwwwwffwwwwwwwww
+A 0005a8ed wwwwwwfwwwwwwwwwww
+A 0005a902 wwwwwwwwwwwwwwww
+A 0005a929 wwwwwwwwwwwwwwwwww
+A 0005a9e1 wwwwwwwwwwwwwwwwww
+A 0005aa0a wwwww
+A 0005aa15 wwwww
+A 0005aa1d wwwwwwfffff`wwwwww
+A 0005aa32 wwwwwfffff`wwwww
+A 0005aa45 wwwwwwfffff`wwwwww
+A 0005aa5a wwwwwfffff`wwwww
+A 0005aa6d wwwwwwfffff`wwwwww
+A 0005aa82 wwwwwfffff`wwwww
+A 0005aa95 wwwwwwfffff`wwwwww
+A 0005aaaa wwwwwfffff`wwwww
+A 0005aabd wwwwwwfffff`wwwwww
+A 0005aad2 wwwwwfffff`wwwww
+A 0005aae5 wwwwwwfffff`wwwwww
+A 0005aafa wwwwwwwwwwwwwwww
+A 0005ab21 wwwwwwwwwwwwwwwwww
+A 0005abd9 wwwwwwwwwwwwwwwwww
+A 0005ac02 wwwww
+A 0005ac0d wwwww
+A 0005ac15 wwwwwwff
+A 0005ac1e vf`wwwwww
+A 0005ac2a wwwwwff
+A 0005ac32 vf`wwwww
+A 0005ac3d wwwwwwff
+A 0005ac46 vf`wwwwww
+A 0005ac52 wwwwwff
+A 0005ac5a vf`wwwww
+A 0005ac65 wwwwwwff
+A 0005ac6e vf`wwwwww
+A 0005ac7a wwwwwff
+A 0005ac82 vf`wwwww
+A 0005ac8d wwwwwwff
+A 0005ac96 vf`wwwwww
+A 0005aca2 wwwwwff
+A 0005acaa vf`wwwww
+A 0005acb5 wwwwwwff
+A 0005acbe vf`wwwwww
+A 0005acca wwwwwff
+A 0005acd2 vf`wwwww
+A 0005acdd wwwwwwff
+A 0005ace6 vf`wwwwww
+A 0005acf2 wwwwwwwwwwwwwwww
+A 0005ad19 wwwwwwwwwwwwwwwwww
+A 0005add1 wwwwwwwwwwwwwwwwww
+A 0005adfa wwwwww
+A 0005ae01 wwwwwwwww
+A 0005ae0d wwwwwwwf
+A 0005ae16 wwwwwwwww
+A 0005ae22 wwwwwwff
+A 0005ae2b wwwwwww
+A 0005ae4a wvffffffffwwwv
+A 0005ae61 wwwfffwwwwv
+A 0005ae75 wwwffwwwwwv
+A 0005ae89 wwwfwwwwwwv
+A 0005ae9d wwwwwwwwwwv
+A 0005aeb1 wwwwwwwwwwv
+A 0005aed5 wwvffffffffffff
+A 0005aeea wwwwwwwwwwwwwwww
+A 0005af11 wwwwwwwwwwwwwwwwww
+A 0005f4a9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f4d1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f4f9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f521 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f549 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 0005f571 wwwwwwwwwwwwwwwww
+A 0005f584 wwwwwwwwwwwwwwwwx
+A 0005f599 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 0005f5c1 wwwwwwwwwwwwwwww
+A 0005f5d5 wwwwwwwwwwwwwwwx
+A 0005f5e9 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 0005f611 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 0005f639 wwwwwwwwwwwwwwwww
+A 0005f64c wwwwwwwwwwwwwwwwx
+A 0005f661 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 0005f689 wwwwwwwwwwwwwwww
+A 0005f69d wwwwwwwwwwwwwwwx
+A 0005f6b1 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 0005f6d9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f701 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f729 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f751 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f779 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f7a1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f8a9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f8d1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f8f9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f921 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005f949 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 0005f971 wwwwwwwwwwwwwwwww
+A 0005f984 wwwwwwwwwwwwwwwwx
+A 0005f999 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 0005f9c1 wwwwwwwwwwwwwwww
+A 0005f9d5 wwwwwwwwwwwwwwwx
+A 0005f9e9 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 0005fa11 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 0005fa39 wwwwwwwwwwwwwwwww
+A 0005fa4c wwwwwwwwwwwwwwwwx
+A 0005fa61 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 0005fa89 wwwwwwwwwwwwwwww
+A 0005fa9d wwwwwwwwwwwwwwwx
+A 0005fab1 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 0005fad9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fb01 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fb29 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fb51 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fb79 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fba1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fca9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fcd1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fcf9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fd21 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005fd49 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 0005fd71 wwwwwwwwwwwwwwwww
+A 0005fd84 wwwwwwwwwwwwwwwwx
+A 0005fd99 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 0005fdc1 wwwwwwwwwwwwwwww
+A 0005fdd5 wwwwwwwwwwwwwwwx
+A 0005fde9 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 0005fe11 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 0005fe39 wwwwwwwwwwwwwwwww
+A 0005fe4c wwwwwwwwwwwwwwwwx
+A 0005fe61 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 0005fe89 wwwwwwwwwwwwwwww
+A 0005fe9d wwwwwwwwwwwwwwwx
+A 0005feb1 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 0005fed9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005ff01 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005ff29 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005ff51 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005ff79 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0005ffa1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000600a9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000600d1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000600f9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060121 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060149 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060171 wwwwwwwwwwwwwwwww
+A 00060184 wwwwwwwwwwwwwwwwx
+A 00060199 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 000601c1 wwwwwwwwwwwwwwww
+A 000601d5 wwwwwwwwwwwwwwwx
+A 000601e9 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060211 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060239 wwwwwwwwwwwwwwwww
+A 0006024c wwwwwwwwwwwwwwwwx
+A 00060261 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 00060289 wwwwwwwwwwwwwwww
+A 0006029d wwwwwwwwwwwwwwwx
+A 000602b1 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 000602d9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060301 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060329 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060351 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060379 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000603a1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000604a9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000604d1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000604f9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060521 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060549 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060571 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060599 wwwwwwwwwwwwwwww
+A 000605ad wwwwwwwwwwwwwwwx
+A 000605c1 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 000605e9 wwwwwwwwwwwwwwwww
+A 000605fc wwwwwwwwwwwwwwwwx
+A 00060611 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060639 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060661 wwwwwwwwwwwwwwww
+A 00060675 wwwwwwwwwwwwwwwx
+A 00060689 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 000606b1 wwwwwwwwwwwwwwwww
+A 000606c4 wwwwwwwwwwwwwwwwx
+A 000606d9 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060701 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060729 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060751 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060779 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000607a1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000608a9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000608d1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000608f9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060921 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060949 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060971 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060999 wwwwwwwwwwwwwwww
+A 000609ad wwwwwwwwwwwwwwwx
+A 000609c1 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 000609e9 wwwwwwwwwwwwwwwww
+A 000609fc wwwwwwwwwwwwwwwwx
+A 00060a11 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060a39 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060a61 wwwwwwwwwwwwwwww
+A 00060a75 wwwwwwwwwwwwwwwx
+A 00060a89 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 00060ab1 wwwwwwwwwwwwwwwww
+A 00060ac4 wwwwwwwwwwwwwwwwx
+A 00060ad9 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060b01 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060b29 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060b51 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060b79 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060ba1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060ca9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060cd1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060cf9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060d21 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060d49 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060d71 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060d99 wwwwwwwwwwwwwwww
+A 00060dad wwwwwwwwwwwwwwwx
+A 00060dc1 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 00060de9 wwwwwwwwwwwwwwwww
+A 00060dfc wwwwwwwwwwwwwwwwx
+A 00060e11 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060e39 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00060e61 wwwwwwwwwwwwwwww
+A 00060e75 wwwwwwwwwwwwwwwx
+A 00060e89 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 00060eb1 wwwwwwwwwwwwwwwww
+A 00060ec4 wwwwwwwwwwwwwwwwx
+A 00060ed9 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00060f01 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060f29 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060f51 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060f79 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00060fa1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000610a9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000610d1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000610f9 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00061121 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00061149 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00061171 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00061199 wwwwwwwwwwwwwwww
+A 000611ad wwwwwwwwwwwwwwwx
+A 000611c1 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 000611e9 wwwwwwwwwwwwwwwww
+A 000611fc wwwwwwwwwwwwwwwwx
+A 00061211 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00061239 wwwwwwwwwwwwwwwpwwwpwwwwwwwwwwwwwwwx
+A 00061261 wwwwwwwwwwwwwwww
+A 00061275 wwwwwwwwwwwwwwwx
+A 00061289 wwwwwwwwwwwwwwwwpwpwwwwwwwwwwwwwwwwx
+A 000612b1 wwwwwwwwwwwwwwwww
+A 000612c4 wwwwwwwwwwwwwwwwx
+A 000612d9 wwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwx
+A 00061301 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00061329 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00061351 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00061379 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000613a1 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00062d58 """""""".
+A 00062d67 "."""""
+A 00062d6f "."""""
+A 00062dbb "**""/"*
+A 00062dc4 "*""/""*
+A 00062dce """"""""""
+A 00062f0c """""""".
+A 00062f1c """""""".
+A 00062f2d ""+"""""
+A 00062f60 +"."".
+A 00062f9f ""+"""".
+A 00062fad "+"""
+A 00062fbd "+""""""""
+A 000634ed """".
+A 00065d91 wwwwwwwwwwwwwx
+A 00065da1 wwwwwwwwwwwwwx
+A 00065dc5 wwwwww
+A 00065e15 wwwwww
+A 00065e33 wwwwwwwwww
+A 00065e48 wwwww
+A 00065e58 wwwww
+A 00065e93 wwywww
+A 00065ea3 wwwwwwy
+A 00065eb3 wwwwwww
+A 00065ec3 wwwwwwwy
+A 00065ed3 wwwwwwww
+A 00065ee3 wwwwwwwwww
+A 00065ef3 wwwwwwwwww
+A 00065f03 wwwwwwwwww
+A 00065f21 wwwwwwwwwwwwwx
+A 00065f31 wwwwwwwwwwwwwx
+A 00066630 """""""
+A 00066639 """""""
+A 00066942 wwwww
+A 00066b19 333333
+A 000675a0 33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+A 000678a0 33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+A 00067ba0 33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+A 00067ea0 33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+A 00068668 wwwwww
+A 00068785 wwwwwwww
+A 000687a5 wwwwwwww
+A 0007a20d 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0007a28d 3 3$3B3L3r3
+A 0007a2a5 4B4L4r4|4
+A 0007a2c5 5=6t6x6|6
+A 0007a2d5 6!7X7\7`7d7h70979
+A 0007a2e9 =0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0007a347 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0)1E1k1w1}1
+A 0007a389 252V2
+A 0007a395 233}3
+A 0007a3a3 4*4=4U4s4
+A 0007a3bb 7)9r;|;
+A 0007a3cd <B<L<r<|<
+A 0007a417 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?
+A 0007a43d 0#1t1x1|1
+A 0007a463 2 2$2(2,202b2
+A 0007a471 2I3n3
+A 0007a481 4+4{4
+A 0007a489 4!545<5r5
+A 0007a497 6G6Q6n6
+A 0007a4a7 7 7+757E7L7Q7i7
+A 0007a4c7 7	818M8Z8{8
+A 0007a4d3 8R9q9
+A 0007a4e9 :A:x:~:
+A 0007a53b 3+464<4G4T4\4q4v4{4
+A 0007a56b 5V6[6
+A 0007a581 808K8u8z8
+A 0007a591 9)9x9
+A 0007a5ac P1T1`1p1|1
+A 0007a5c9 2$2,282T2\2h2
+A 0007a5eb 3$3,3<3D3T3\3p3|3
+A 0007a615 4$4,484T4\4d4l4t4
+A 0007a635 5 5<5H5d5l5
+A 0007a655 0 0$0(0,0004080<0@0D0H0p0
+A 0007a673 0$1(1,1014181<1@1D1H1L1P1`1
+U 0000d2b2 IDD_COLOUR_CHANGE_VALUE
+U 0000d2e2 ARROWU
+U 0000d2f0 ARROWD
+U 0000d2fe ARROWDD
+U 0000d30e ARROWUD
+U 0000d31e IDR_DIGITEST_ICON
+U 0000d342 IDR_SMG_MFCLISTYPE
+U 0000da14 @ @@@`@
+U 0000da24 @ @À@à
+U 0000dc14 À À@À`À
+U 0000dc24 À ÀÀÀà
+U 0000ddaa ÿúÿÿú
+U 0000ddbe ÿúÿÿú
+U 0000ddd2 ÿúÿÿú
+U 0000dde6 ÿúÿÿú
+U 0000e03c @ @@@`@
+U 0000e04c @ @À@à
+U 0000e23c À À@À`À
+U 0000e24c À ÀÀÀà
+U 0000f3be Select Machine Format
+U 0000f3ec MS Sans Serif
+U 0000f45a Cancel
+U 0000f482 Create...
+U 0000f4ae Remove
+U 0000f4d6 Values...
+U 0000f502 Save...
+U 0000f52a Current Format:
+U 0000f562 Available Machine Formats:
+U 0000f5b2 none
+U 0000f5d6 Unable to load design.
+U 0000f606 MS Sans Serif
+U 0000f65a Cancel
+U 0000f69e Current Format:
+U 0000f6d6 Available Machine Formats:
+U 0000f726 none
+U 0000f74a Cannot use this machine type.  Choose another format.
+U 0000f7ce Color Change
+U 0000f7ea MS Sans Serif
+U 0000f81e Enter Thread Number:
+U 0000f89e Cancel
+U 0000f8c6 Needle Height 
+U 0000f8e6 MS Sans Serif
+U 0000f93a Cancel
+U 0000f97e Needle Height Values
+U 0000f9c6 Standard
+U 0000f9da MS Sans Serif
+U 0000fa9a Output Trims
+U 0000face Code
+U 0000faf2 Jumps:
+U 0000fb28 ·I8(
+U 0000fb6e Use Group Addressing
+U 0000fbb2 First CC required
+U 0000fc26 Machine Type:
+U 0000fc5a Format Name:
+U 0000fc8e Comment:
+U 0000fcba Maximum Stitch:
+U 0000fcf2 Format 'Trim' as:
+U 0000fd2e Using:
+U 0000fd56 No. of Needles:
+U 0000fd8e Offset:
+U 0000fdb6 Needle Number:
+U 0000fdee Barudan
+U 0000fe16 Trim
+U 0000fe3a Color Change
+U 0000fe6e Boring
+U 0000fe96 Minimum Stitch:
+U 0000fece Maximum Jump:
+U 0000ff02 Return to Start
+U 0000ff3e Advanced
+U 0000ff52 MS Sans Serif
+U 00010082 Boring Auto Speed Changes:
+U 000100c4 7¡2(
+U 000100e0 7°2 
+U 0001010a Format Name:
+U 0001013e Speed
+U 00010162 Start:
+U 0001018a Fast:
+U 000101ae Color Change Sequence
+U 00010232 0,0 Jump
+U 0001025e 0,0 Jump
+U 0001028a Color Change Code(s)
+U 000102ce Start of Design
+U 00010326 0,0 Jump
+U 00010352 End of Design
+U 000103a6 0,0 Jump
+U 000103d6 Standard
+U 000103ea MS Sans Serif
+U 000104aa Output Trims
+U 000104de Format 'Trim' as Jumps
+U 00010534 ±^8(
+U 0001057a Use Group Addressing
+U 000105be First CC required
+U 000105fa Machine Type:
+U 0001062e Format Name:
+U 00010662 Comment:
+U 0001068e Maximum Stitch:
+U 000106c6 Using:
+U 000106ee No. of Needles:
+U 00010726 Barudan Chenille
+U 00010762 Trim
+U 00010786 Color Change
+U 000107ba Shortcut Angle
+U 000107f2 Chenille
+U 0001081e Minimal Stitch
+U 00010856 Return to Start
+U 0001088e Advanced
+U 000108a2 MS Sans Serif
+U 000109e0 ;¢2 
+U 00010a0a Format Name:
+U 00010a3e Speed
+U 00010a62 Start:
+U 00010a8a Fast:
+U 00010aae Color Change Sequence
+U 00010b32 0,0 Jump
+U 00010b5e 0,0 Jump
+U 00010b8a Color Change Code(s)
+U 00010bce Start of Design
+U 00010c26 0,0 Jump
+U 00010c52 End of Design
+U 00010ca6 0,0 Jump
+U 00010cd6 Standard
+U 00010cea MS Sans Serif
+U 00010d72 Output Trims
+U 00010da6 Format 'Trim' as Jumps:
+U 00010e26 Machine Type:
+U 00010e5a Format Name:
+U 00010e8e Comment:
+U 00010eba Maximum Stitch:
+U 00010ef2 Offset:
+U 00010f1a Tajima
+U 00010f42 Trim
+U 00010f66 Boring
+U 00010f8e End of Design
+U 00010fc2 End of Design
+U 00010ff6 Stop
+U 0001101a Minimum Stitch:
+U 0001108a Maximum Jump:
+U 000110be Advanced
+U 000110d2 MS Sans Serif
+U 00011202 End of Design
+U 00011236 Format Name:
+U 0001126a Color Change Sequence
+U 000112ee 0,0 Jump
+U 0001131a 0,0 Jump
+U 00011346 Color Change Code
+U 00011382 Start of Design
+U 000113da 0,0 Jump
+U 00011426 0,0 Jump
+U 00011456 Standard
+U 0001146a MS Sans Serif
+U 0001152a Output Trims
+U 0001155e Jumps
+U 0001159e Trim Code
+U 000115ca Machine Type:
+U 000115fe Format Name:
+U 00011632 Comment:
+U 0001165e Maximum Stitch:
+U 00011696 Format 'Trim' as:
+U 000116d2 Melco
+U 000116f6 Trim
+U 0001171a Minimum Stitch:
+U 00011752 Maximum Jump:
+U 00011786 Advanced
+U 0001179a MS Sans Serif
+U 000118ca Format Name:
+U 000118fe Color Change Sequence
+U 00011982 0,0 Jump
+U 000119ae 0,0 Jump
+U 000119da Color Change Code(s)
+U 00011a1e Start of Design
+U 00011a76 0,0 Jump
+U 00011aa2 End of Design
+U 00011af6 0,0 Jump
+U 00011b26 Standard
+U 00011b3a MS Sans Serif
+U 00011bfa Output Trims
+U 00011c2e Jumps
+U 00011c6e Trim Code
+U 00011c9a Explicit Value
+U 00011cd2 Machine Type:
+U 00011d06 Format Name:
+U 00011d3a Comment:
+U 00011d66 Maximum Stitch:
+U 00011d9e Format 'Trim' as:
+U 00011dda Melco Chenille
+U 00011e12 Trim
+U 00011e36 Needle Height
+U 00011e6a Shortcut Angle
+U 00011ea2 Minimal Stitch
+U 00011ede Advanced
+U 00011ef2 MS Sans Serif
+U 00012022 Format Name:
+U 00012056 Color Change Sequence
+U 000120da 0,0 Jump
+U 00012106 0,0 Jump
+U 00012132 Color Change Code(s)
+U 00012176 Start of Design
+U 000121ce 0,0 Jump
+U 000121fa End of Design
+U 0001224e 0,0 Jump
+U 0001227e Standard
+U 00012292 MS Sans Serif
+U 00012352 Output Trims
+U 000123f6 Machine Type:
+U 0001242a Format 'Trim' as Jumps:
+U 00012472 Format Name:
+U 000124a6 Comment:
+U 000124d2 Tajima Chenille
+U 0001250a Maximum Stitch:
+U 00012542 Offset:
+U 0001256a Trim
+U 0001258e Boring
+U 000125b6 Shortcut Angle
+U 000125ee Chenille
+U 0001261a Minimal Stitch
+U 00012652 Minimum Stitch:
+U 0001268a Maximum Jump:
+U 000126be Lock Stitch
+U 000126ee Advanced
+U 00012702 MS Sans Serif
+U 00012832 Format Name:
+U 00012866 Color Change Sequence
+U 000128ea 0,0 Jump
+U 00012916 0,0 Jump
+U 00012942 Color Change Code
+U 0001297e Start of Design
+U 000129d6 0,0 Jump
+U 00012a02 End of Design
+U 00012a56 0,0 Jump
+U 00012a86 Standard
+U 00012a9a MS Sans Serif
+U 00012b5a Output Trims
+U 00012baa Machine Type:
+U 00012bde Format Name:
+U 00012c12 Comment:
+U 00012c3e Number of Jumps for 'Trim':
+U 00012c8e Tajima Old Chenille
+U 00012cce Trim
+U 00012cf2 Maximum Stitch:
+U 00012d2a Shortcut Angle
+U 00012d62 Minimal Stitch
+U 00012d9e Advanced
+U 00012db2 MS Sans Serif
+U 00012e72 Format Name:
+U 00012e98 R%k/
+U 00012ea6 Start of Design
+U 00012efe 0,0 Jump
+U 00012f1c RWk-
+U 00012f2a End of Design
+U 00012f7e 0,0 Jump
+U 00012fae Serial Port Setup
+U 00012fd4 MS Sans Serif
+U 00013026 Cancel
+U 0001305c T.-B
+U 00013078 T@-F
+U 00013094 TR-B
+U 000130b0 TdWE
+U 000130da Port:
+U 000130fe Baud:
+U 00013122 Data Bits:
+U 00013152 Stop Bits:
+U 00013182 Parity:
+U 000131aa Handshaking:
+U 000131de "......"
+U 0001320e Stitch To Stitch Manager
+U 00013242 MS Sans Serif
+U 00013292 Setup...
+U 000132da Values...
+U 00013306 Prompt Changing Machine Format
+U 0001335e Options...
+U 000133ae Cancel
+U 000133d6 Connected to:
+U 0001340a port name
+U 00013436 Design Name:
+U 0001346a Machine Identification
+U 000134b2 Output as Machine Format:
+U 000134fe design name
+U 0001352e Machine Format Values Mismatch
+U 0001356e MS Sans Serif
+U 000135a2 Use the Values stored with the Design?
+U 0001360a Use the Default Values?
+U 00013672 Values...
+U 0001369e Help
+U 000136c2 Machine Format:
+U 000136fa 'a format name'
+U 00013732 Values stored with the Design are different from the Default Values.
+U 000137d6 Do you wish to:
+U 0001380e Clear Function
+U 0001382e MS Sans Serif
+U 0001387e Clear
+U 000138a2 Clear All
+U 000138ce Cancel
+U 000138f6 Standard
+U 0001390a MS Sans Serif
+U 000139ca Output Trims
+U 00013a0c ºM5;
+U 00013a6e Machine Type:
+U 00013aa2 Format Name:
+U 00013ad6 Comment:
+U 00013b02 Maximum Stitch:
+U 00013b3a Number of Needles
+U 00013b76 Offset:
+U 00013b9e Zangs
+U 00013bb4 y?|D
+U 00013bc2 Color Change
+U 00013bf6 Boring
+U 00013c1e Using
+U 00013c42 Trim
+U 00013c66 Jumps:
+U 00013c8e Minimum Stitch:
+U 00013cc6 Maximum Jump:
+U 00013cfa Return to Start
+U 00013d36 Advanced
+U 00013d4a MS Sans Serif
+U 00013e96 Tension Control for Boring
+U 00013ee6 Stop before rewind at end
+U 00013f32 Rewind with jump at end
+U 00013f7a Format Name:
+U 00013fae Speed
+U 00013fd2 Start:
+U 00013ffa Color Change Sequence
+U 0001407e 0,0 Jump
+U 000140aa 0,0 Jump
+U 000140d6 Color Change Code(s)
+U 0001411a Start of Design
+U 00014172 0,0 Jump
+U 0001419e End of Design
+U 000141f2 0,0 Jump
+U 0001421e Standard
+U 00014232 MS Sans Serif
+U 000142f2 Output Trims
+U 00014326 Code
+U 0001434a Jumps:
+U 00014380 ¤]D=
+U 000143e2 Machine Type:
+U 00014416 Format Name:
+U 0001444a Comment:
+U 00014476 Maximum Stitch:
+U 000144ae Format 'Trim' as:
+U 000144ea Using:
+U 00014512 No. of Needles:
+U 0001454a Offset:
+U 00014572 ZSK 1
+U 00014596 Trim
+U 000145ba Color Change
+U 000145ee Boring
+U 00014616 Minimum Stitch:
+U 0001464e Maximum Jump:
+U 00014682 Return to Start
+U 000146be Standard
+U 000146d2 MS Sans Serif
+U 00014792 Output Trims
+U 000147c6 Format 'Trim' as:
+U 00014802 Code
+U 00014826 Jumps:
+U 0001485c »]3=
+U 000148be ZSK 2
+U 000148e2 Machine Type:
+U 00014916 Format Name:
+U 0001494a Comment:
+U 00014976 Maximum Stitch:
+U 000149ae Using:
+U 000149d6 No. of Needles:
+U 00014a0e Offset:
+U 00014a36 Trim
+U 00014a5a Color Change
+U 00014a8e Boring
+U 00014ab6 Minimum Stitch:
+U 00014aee Maximum Jump:
+U 00014b22 Return to Start
+U 00014b5e Advanced
+U 00014b72 MS Sans Serif
+U 00014ca2 Stop before rewind at end 
+U 00014cf2 Rewind with jump at end
+U 00014d3a Start of Design
+U 00014d72 Format Name:
+U 00014da6 Color Change Sequence
+U 00014e2a 0,0 Jump
+U 00014e56 0,0 Jump
+U 00014e82 Color Change Code(s)
+U 00014ee6 0,0 Jump
+U 00014f12 End of Design
+U 00014f66 0,0 Jump
+U 00014f96 Advanced
+U 00014faa MS Sans Serif
+U 000150da Stop before rewind at end
+U 00015126 Rewind with jump at end
+U 0001516e Format Name:
+U 000151a2 Color Change Sequence
+U 00015226 0,0 Jump
+U 00015252 0,0 Jump
+U 0001527e Color Change Code(s)
+U 000152c2 Start of Design
+U 0001531a 0,0 Jump
+U 00015346 End of Design
+U 0001539a 0,0 Jump
+U 000153c6 Standard
+U 000153da MS Sans Serif
+U 0001549a Output Trims
+U 000154ce Format 'Trim' as:
+U 0001550a Code
+U 0001552e Jumps:
+U 000155aa ZSK Transport Code
+U 000155ea Machine Type:
+U 0001561e Format Name:
+U 00015652 Comment:
+U 0001567e Maximum Stitch:
+U 000156b6 Using:
+U 000156de No. of Needles:
+U 00015716 Trim
+U 0001573a Color Change
+U 0001576e Minimum Stitch:
+U 000157a6 Maximum Jump:
+U 000157da Return to Start
+U 00015816 Advanced
+U 0001582a MS Sans Serif
+U 000158ea Format Name:
+U 0001591e Color Change Sequence
+U 000159a2 0,0 Jump
+U 000159ce 0,0 Jump
+U 000159fa Color Change Code(s)
+U 00015a3e Standard
+U 00015a52 MS Sans Serif
+U 00015b12 Output Trims
+U 00015b46 Jumps
+U 00015b86 Trim Code
+U 00015bb2 Machine Type:
+U 00015be6 Format Name:
+U 00015c1a Comment:
+U 00015c46 Maximum Stitch:
+U 00015c7e Format 'Trim' as:
+U 00015cba Toyota
+U 00015ce2 Trim
+U 00015d06 Minimum Stitch:
+U 00015d3e Maximum Jump:
+U 00015d76 Advanced
+U 00015d8a MS Sans Serif
+U 00015eba Format Name:
+U 00015eee Color Change Sequence
+U 00015f72 0,0 Jump
+U 00015f9e 0,0 Jump
+U 00015fca Color Change Code(s)
+U 0001600e Start of Design
+U 00016066 0,0 Jump
+U 00016092 End of Design
+U 000160e6 0,0 Jump
+U 00016116 Open Options
+U 00016132 MS Sans Serif
+U 00016186 Cancel
+U 000161ae Machine Type:
+U 0001621a Objects / Outlines
+U 0001625a Recognize
+U 00016286 Jumps as Trim
+U 000162ba Stop
+U 000162de Color Change
+U 00016312 Advanced...
+U 00016342 Define Stop Sequence...
+U 0001638a Stop Code as
+U 000163be Custom
+U 000163e6 Auto Connectors
+U 0001641e Open Options
+U 0001643a MS Sans Serif
+U 0001648e Cancel
+U 000164b6 Machine Type:
+U 00016522 Recognize
+U 0001654e Jumps as Trim
+U 00016582 Stop
+U 000165a6 Color Change
+U 000165da Stop code as:
+U 0001660e Auto Connectors
+U 00016646 Open Options
+U 00016662 MS Sans Serif
+U 000166b6 Cancel
+U 00016716 Jumps as Trim
+U 0001674a Objects / Outlines
+U 0001678a Fast:
+U 000167ae Machine Type:
+U 000167fe Recognize
+U 0001682a Advanced...
+U 0001685a Stop
+U 0001687e Color Change
+U 000168b2 Define Stop Sequence...
+U 000168fa Stop Code as
+U 0001692e Custom
+U 00016956 Auto Connectors
+U 0001698e Open Options
+U 000169aa MS Sans Serif
+U 000169fe Cancel
+U 00016a5e Jumps as Trim
+U 00016a92 Stop code as:
+U 00016ac6 Color Change
+U 00016afa Stop
+U 00016b1e Fast:
+U 00016b34 :z2 
+U 00016b5e Machine Type:
+U 00016b92 Recognize
+U 00016bbe Auto Connectors
+U 00016bf6 Open Options
+U 00016c12 MS Sans Serif
+U 00016c66 Cancel
+U 00016cc6 Jumps as Trim
+U 00016cfa Objects / Outlines
+U 00016d3a Machine Type:
+U 00016d6e Recognize
+U 00016d9a Advanced...
+U 00016dca Stop
+U 00016dee Color Change
+U 00016e22 Stop Code as
+U 00016e56 Fast:
+U 00016e96 Auto Connectors
+U 00016ece Open Options
+U 00016eea MS Sans Serif
+U 00016f3e Cancel
+U 00016f9e Jumps as Trim
+U 00016fd2 Stop code as:
+U 00017006 Color Change
+U 0001703a Stop
+U 0001705e Fast:
+U 00017074 ;z2 
+U 0001709e Machine Type:
+U 000170d2 Recognize
+U 000170fe Auto Connectors
+U 00017136 Open Options
+U 00017152 MS Sans Serif
+U 000171a6 Cancel
+U 000171ce Machine Type:
+U 0001721e Objects / Outlines
+U 0001725e Recognize
+U 0001728a Advanced...
+U 000172ba Auto Connectors
+U 000172f6 Open Options
+U 00017312 MS Sans Serif
+U 00017366 Cancel
+U 0001738e Machine Type:
+U 000173de Open Options
+U 000173fa MS Sans Serif
+U 0001744e Cancel
+U 00017476 Machine Type:
+U 000174c6 Open Options
+U 000174e2 MS Sans Serif
+U 00017536 Cancel
+U 0001755e Recognize
+U 0001758a Objects / Outlines
+U 000175ca Auto Connectors
+U 00017606 Borer In
+U 0001761a MS Sans Serif
+U 0001764e Enter Borer Position:
+U 000176ce Cancel
+U 000176f6 Standard
+U 0001770a MS Sans Serif
+U 00017792 Output Trims
+U 0001781a Machine Type:
+U 0001784e Format Name:
+U 00017882 Comment:
+U 000178ae Maximum Stitch:
+U 000178e6 Number :
+U 00017912 Offset:
+U 0001793a Pfaff
+U 0001795e Trim
+U 00017974 {9gH
+U 00017982 Needles
+U 000179aa Borer Needle:
+U 000179de Minimum Stitch:
+U 00017a4e Maximum Jump:
+U 00017a82 Return to Start
+U 00017aba Colors
+U 00017ae6 Advanced
+U 00017afa MS Sans Serif
+U 00017b66 Set Needle Number
+U 00017bda Frame Out
+U 00017c06 Format Name:
+U 00017c3a Start of Design
+U 00017c84 AT~D
+U 00017c92 End of Design
+U 00017ce6 0,0 Jump
+U 00017d16 Advanced
+U 00017d2a MS Sans Serif
+U 00017e5a Boring Auto Speed Changes:
+U 00017e9c D£2(
+U 00017eb8 D²2 
+U 00017ee2 Format Name:
+U 00017f16 Speed
+U 00017f3a Start:
+U 00017f62 Fast:
+U 00017f86 Color Change Sequence
+U 0001800a 0,0 Jump
+U 00018036 0,0 Jump
+U 00018062 Color Change Code(s)
+U 000180a6 Start of Design
+U 000180fe 0,0 Jump
+U 0001812a End of Design
+U 0001817e 0,0 Jump
+U 000181ae Standard
+U 000181c2 MS Sans Serif
+U 00018282 Output Trims
+U 000182b6 Code
+U 000182da Jumps:
+U 00018310 ·^8(
+U 00018356 First CC required
+U 000183ca Machine Type:
+U 000183fe Format Name:
+U 00018432 Comment:
+U 0001845e Maximum Stitch:
+U 00018496 Format 'Trim' as:
+U 000184d2 Using:
+U 000184fa No. of Needles:
+U 00018532 Offset:
+U 0001855a Needle Number:
+U 00018592 BarudanZ
+U 000185be Trim
+U 000185d4 }MwY
+U 000185e2 Color Change
+U 00018608 }§w2
+U 00018616 Boring
+U 0001863e Minimum Stitch:
+U 00018676 Maximum Jump:
+U 000186aa Return to Start
+U 000186e6 Standard
+U 000186fa MS Sans Serif
+U 00018782 Machine Type:
+U 000187b6 Format Name:
+U 000187ea Comment:
+U 00018816 Maximum Stitch:
+U 0001884e Bernina
+U 00018876 Advanced
+U 0001888a MS Sans Serif
+U 000189ba Format Name:
+U 000189ee Color Change Sequence
+U 00018a72 0,0 Jump
+U 00018a9e 0,0 Jump
+U 00018aca Color Change Code(s)
+U 00018b0e Start of Design
+U 00018b66 0,0 Jump
+U 00018b92 End of Design
+U 00018be6 0,0 Jump
+U 00018c16 Standard
+U 00018c2a MS Sans Serif
+U 00018cb2 Machine Type:
+U 00018ce6 Format Name:
+U 00018d1a Comment:
+U 00018d46 Maximum Stitch:
+U 00018d7e Janome
+U 00018da6 Dialog
+U 00018db6 MS Sans Serif
+U 00018e0a Cancel
+U 00018e6a Insert Before
+U 00018e9e Insert After
+U 00018ed2 Remove
+U 00018efa Component :
+U 00018f2a Sequence :
+U 00018f5a Available Functions:
+U 00018fba Insert On Empty Stitch
+U 00019002 Add To Current Stitch
+U 00019066 Pile Height
+U 00019080 MS Sans Serif
+U 000190b2 Enter Pile Height:
+U 0001912e Cancel
+U 00019156 <MM_INCHES>
+U 00019186 Pile Type
+U 0001919c MS Sans Serif
+U 000191ce Select Pile Type:
+U 00019246 Cancel
+U 0001926e Stitch Length
+U 0001928c MS Sans Serif
+U 000192be Enter Stitch Length:
+U 0001933e Cancel
+U 00019366 <MM_INCHES>
+U 00019396 Standard
+U 000193aa MS Sans Serif
+U 000194fe Machine Type:
+U 00019532 Format Name:
+U 00019566 Comment:
+U 00019592 Tufting
+U 000195ac p;d-
+U 000195ba Tufting Field Size
+U 000195fa Width
+U 0001961e Height
+U 0001967e Stitch Length
+U 000196b2 Minimum
+U 000196da Maximum
+U 00019742 Pile Height
+U 00019772 Minimum
+U 0001979a Maximum
+U 000197b4 qlc-
+U 000197c2 Sharp Corner Overtufting
+U 00019842 msctls_updown32
+U 00019862 Generic1
+U 000198a6 msctls_updown32
+U 000198c6 Generic1
+U 00019956 Recognition - Advanced Options
+U 00019996 MS Sans Serif
+U 000199ca Tatami
+U 000199f2 Recognize Tatami
+U 00019a2e Stitch Spacing
+U 00019a7e msctls_updown32
+U 00019a9e Generic1
+U 00019b22 msctls_updown32
+U 00019b42 Generic1
+U 00019b8e Min Stitch Length
+U 00019be2 msctls_updown32
+U 00019c02 Generic1
+U 00019c4e Random Factor
+U 00019c82 Satin
+U 00019ca6 Recognize Satin
+U 00019cde Stitch Spacing
+U 00019d2e msctls_updown32
+U 00019d4e Generic1
+U 00019dd2 msctls_updown32
+U 00019df2 Generic1
+U 00019e5e Recognize Run
+U 00019e92 Max Stitch Length
+U 00019ee6 msctls_updown32
+U 00019f06 Generic1
+U 00019f52 Length Variation
+U 00019fa6 msctls_updown32
+U 00019fc6 Generic1
+U 0001a00e Effects
+U 0001a036 Parameter Consistency
+U 0001a07a Spacing Rounding
+U 0001a0d2 Stitch Length Rounding
+U 0001a136 Jagged
+U 0001a15e Min Range
+U 0001a1a2 msctls_updown32
+U 0001a1c2 Generic1
+U 0001a20e Splits
+U 0001a236 Recognize Splits
+U 0001a272 Program Splits as User-Defined Splits
+U 0001a2d6 Recognize Autosplits
+U 0001a31a Recognition Level
+U 0001a36e msctls_updown32
+U 0001a38e Generic1
+U 0001a3d6 Segments Resolution/Merging Factors
+U 0001a436 Spacing
+U 0001a476 msctls_updown32
+U 0001a496 Generic1
+U 0001a4c2 Height
+U 0001a502 msctls_updown32
+U 0001a522 Generic1
+U 0001a56e Cancel
+U 0001a596 Reset
+U 0001a5be Open Options
+U 0001a5da MS Sans Serif
+U 0001a62e Cancel
+U 0001a656 Convert Stitches
+U 0001a692 Convert Stitches Into Object Shapes
+U 0001a6f2 Leave Stitches As Individual Stitches
+U 0001a756 Send To Machine Manager
+U 0001a788 MS Sans Serif
+U 0001a7da Cancel
+U 0001a802 Machine Identification
+U 0001a84a Design Name:
+U 0001a87e design name
+U 0001a8ca Output as Machine Format:
+U 0001a932 Connected to:
+U 0001a966 port name
+U 0001a992 Options...
+U 0001a9c2 Prompt Changing Machine Format
+U 0001aa1e Standard
+U 0001aa32 MS Sans Serif
+U 0001ab0e Machine Type:
+U 0001ab42 Format Name:
+U 0001ab76 Comment:
+U 0001aba2 Maximum Stitch:
+U 0001abda Schiffli
+U 0001ac06 Minimum Stitch:
+U 0001ac3e Maximum Jump:
+U 0001ac72 Starting Borer Depth:
+U 0001aca8 xp{A
+U 0001acb6 Boring
+U 0001ad3e Output Trims
+U 0001ad72 Format 'Trim' as Jumps:
+U 0001add6 Trim
+U 0001adfa Numbering:
+U 0001ae46 Advanced
+U 0001ae5a MS Sans Serif
+U 0001aec6 Format Name:
+U 0001aefa 4/4 Repeat
+U 0001af2a Needle Spacing
+U 0001af62 <MM_INCH>
+U 0001af8e Open Options
+U 0001afaa MS Sans Serif
+U 0001affe Cancel
+U 0001b026 Machine Type:
+U 0001b076 Objects / Outlines
+U 0001b0b6 Recognize
+U 0001b0e2 Advanced...
+U 0001b112 Remove Fast / Slow
+U 0001b152 Auto Connectors
+U 0001b18e Open Options
+U 0001b1aa MS Sans Serif
+U 0001b1fe Cancel
+U 0001b226 Machine Type:
+U 0001b276 Remove Fast / Slow
+U 0001b2be Define Stop Sequence
+U 0001b2ee MS Sans Serif
+U 0001b34c Cancel
+U 0001b378 Reset
+U 0001b3a4 Assign Color >>
+U 0001b3e4 Assign Stop >>
+U 0001b410 \vfx
+U 0001b43c SysListView32
+U 0001b458 List1
+U 0001b494 äÐfx
+U 0001b4c4 Color Changes
+U 0001b500 Stops
+U 0001b52c Repeat Sequence
+U 0001b56c Extra Stop codes as
+U 0001b5b4 Find:
+U 0001b5e0 in column:
+U 0001b614 Thread Chart:
+U 0001b650 Thread Colors
+U 0001b68c Building Stop Sequence
+U 0001b6d8 (Placeholder for Stop_seq_grid control - the control will be created dynamically)
+U 0001b796 Standard
+U 0001b7aa MS Sans Serif
+U 0001b7de Machine Type:
+U 0001b84a Objects / Outlines
+U 0001b88a Recognize
+U 0001b8b6 Jumps as Trim
+U 0001b8ea Stop
+U 0001b90e Color Change
+U 0001b942 Advanced...
+U 0001b972 Define Stop Sequence...
+U 0001b9ba Stop Code as
+U 0001b9ee Custom
+U 0001ba16 Auto Connectors
+U 0001ba4e Grid
+U 0001ba5a MS Sans Serif
+U 0001ba8e Show Grid
+U 0001baba Set Reference Point
+U 0001bafa Grid Spacing
+U 0001bb2e Horizontal:
+U 0001bb50 _B=T
+U 0001bb7a <MM_INCHES>
+U 0001bbaa Vertical:
+U 0001bbc8 _S=J
+U 0001bbf2 <MM_INCHES>
+U 0001bc22 Save
+U 0001bc46 Grid
+U 0001bc6a Snap to Grid
+U 0001bc90 _x=J
+U 0001bcba Method:
+U 0001bce6 Auto Scroll
+U 0001bd00 MS Sans Serif
+U 0001bd32 Auto Scroll
+U 0001bd62 Move Pointer After Scroll
+U 0001bdae Autoscroll Response (smaller value faster response)
+U 0001be4a Input AutoScroll Values
+U 0001be92 Move Input Point To:
+U 0001bef6 Security Device
+U 0001bf18 MS Sans Serif
+U 0001bf4a Serial Number:
+U 0001bf82 insert number here
+U 0001bfc2 Identity Code:
+U 0001bffa insert identity code here
+U 0001c046 Version:
+U 0001c072 insert version here
+U 0001c0b2 Enabled Options:
+U 0001c12a Set Options...
+U 0001c162 Import Codes...
+U 0001c19e Auto Start and End
+U 0001c1c6 MS Sans Serif
+U 0001c1fa Use Auto Start and End
+U 0001c242 Maintain Automatically
+U 0001c28a Method
+U 0001c2b2 Auto Center - Start and End
+U 0001c302 Return to Start Point
+U 0001c346 User Defined
+U 0001c37a Match On
+U 0001c3a6 Horizontal
+U 0001c3d6 Vertical
+U 0001c402 Connectors
+U 0001c432 Jump
+U 0001c48e msctls_updown32
+U 0001c4ae Generic1
+U 0001c512 msctls_updown32
+U 0001c532 Generic1
+U 0001c59e Cancel
+U 0001c5c6 Zoom Factor
+U 0001c5e0 MS Sans Serif
+U 0001c612 Scale:
+U 0001c652 msctls_updown32
+U 0001c672 Generic1
+U 0001c6be Cancel
+U 0001c6e6 Set Security Device Options
+U 0001c720 MS Sans Serif
+U 0001c752 Access Code 1:
+U 0001c7a6 Access Code 2:
+U 0001c81a Cancel
+U 0001c846 General
+U 0001c858 MS Sans Serif
+U 0001c88a Auto Save Design Every:
+U 0001c8ea msctls_updown32
+U 0001c90a Generic1
+U 0001c936 minutes
+U 0001c95e Always Create Backup Copy
+U 0001c9aa Relative
+U 0001c9d6 Absolute
+U 0001ca02 Cumulative Stitch Count
+U 0001ca4a Run Small Stitch Filter on Output
+U 0001caa6 Cross Hair Cursor
+U 0001cae2 Object Property Position
+U 0001cb2e Center at Current Stitch
+U 0001cb7a Start at Current Stitch
+U 0001cbc2 Save Options
+U 0001cbf6 Show Values
+U 0001cc26 Paste
+U 0001cc4a Always Check Design Integrity
+U 0001cc9e Show Design Source
+U 0001ccde Input Style
+U 0001cd0e Normal
+U 0001cd36 Continuous Replace
+U 0001cd76 Continuous Add
+U 0001cdae View Design
+U 0001cdc8 MS Sans Serif
+U 0001cdfa No Change
+U 0001ce26 Show Whole Design
+U 0001ce62 Show Selected Objects
+U 0001cea6 Show Unselected Objects
+U 0001ceee Hide Whole Design
+U 0001cf2a TrueView(TM)
+U 0001cf5e Wide Vectors
+U 0001cf92 TrueView(TM) Options
+U 0001cfd6 Wide Vector Options
+U 0001d016 Stitches
+U 0001d042 Outlines
+U 0001d06e Needle Points
+U 0001d0a2 Connectors
+U 0001d0d2 Jumps
+U 0001d0f6 Function Symbols
+U 0001d132 Visibility
+U 0001d166 View Design
+U 0001d180 MS Sans Serif
+U 0001d1b2 No Change
+U 0001d1de Show Whole Design
+U 0001d21a Show Selected Objects
+U 0001d25e Hide Whole Design
+U 0001d29a TrueView(TM)
+U 0001d2ce Wide Vectors
+U 0001d302 TrueView(TM) Options
+U 0001d346 Wide Vector Options
+U 0001d386 Stitches
+U 0001d3b2 Outlines
+U 0001d3de Needle Points
+U 0001d412 Connectors
+U 0001d442 Jumps
+U 0001d466 Function Symbols
+U 0001d4a2 Visibility
+U 0001d4d6 Trueview(TM) Options
+U 0001d502 MS Sans Serif
+U 0001d536 Thread Thickness:
+U 0001d58e Light Source:
+U 0001d5b4 q&0(
+U 0001d5de Max. Number Of Colors
+U 0001d614 q>0(
+U 0001d65e Cancel
+U 0001d686 Scanner
+U 0001d698 MS Sans Serif
+U 0001d6ca Scanning operation
+U 0001d6f0 in progress...
+U 0001d726 Cancel
+U 0001d74e View Drawing
+U 0001d76a MS Sans Serif
+U 0001d79e Drawing Objects
+U 0001d7d6 View Images
+U 0001d806 Dimmed
+U 0001d82e View Drawing Vectors
+U 0001d872 Show true colors
+U 0001d8ae Hoop
+U 0001d8ba MS Sans Serif
+U 0001d8e0 A!¬I
+U 0001d90a Automatic Centering
+U 0001d94a Manual
+U 0001d972 Position
+U 0001d99e Hoop
+U 0001d9c2 Display Hoops
+U 0001d9f6 Set Hoop Center
+U 0001da2e New Hoop...
+U 0001da5e Edit Hoop...
+U 0001da92 Delete Hoop
+U 0001dac6 Repeats
+U 0001dad8 MS Sans Serif
+U 0001db0a Show Repeats
+U 0001db3e Horizontal Repeats
+U 0001db7e Left
+U 0001dbbe Right
+U 0001dbfe Distance
+U 0001dc46 Auto
+U 0001dc6a Manual
+U 0001dc92 Vertical Repeats
+U 0001dd0a Down
+U 0001dd86 Colors
+U 0001ddae Offset
+U 0001de12 Cancel
+U 0001de5a Distance
+U 0001de86 Repeats
+U 0001de98 MS Sans Serif
+U 0001deca Show Repeats
+U 0001defe Horizontal Repeats
+U 0001df3e Number
+U 0001df82 Distance
+U 0001dfca Design Repeat
+U 0001dffe Other
+U 0001e022 Vertical Repeats
+U 0001e05e Number
+U 0001e0de Colors
+U 0001e106 Offset
+U 0001e16a Cancel
+U 0001e1b2 Distance
+U 0001e1de Set Security Device Options
+U 0001e218 MS Sans Serif
+U 0001e24a Access Code 1:
+U 0001e29e Access Code 2:
+U 0001e312 Cancel
+U 0001e33a Serial Number:
+U 0001e372 insert number here
+U 0001e3b2 Identity Code:
+U 0001e3ea insert identity code here
+U 0001e436 Import Codes...
+U 0001e46e Auto Start and End
+U 0001e496 MS Sans Serif
+U 0001e4ca Use Auto Start and End
+U 0001e512 Maintain Automatically
+U 0001e55a Method
+U 0001e582 Auto Start and End
+U 0001e5c2 Return to Start Point
+U 0001e606 Digitize Auto Start/End Point
+U 0001e64c v0:<
+U 0001e676 Match On
+U 0001e6a2 Connectors
+U 0001e6d2 Jump
+U 0001e72e msctls_updown32
+U 0001e74e Generic1
+U 0001e7b2 msctls_updown32
+U 0001e7d2 Generic1
+U 0001e83e Cancel
+U 0001e866 Both Horizontal and Vertical
+U 0001e8ba Horizontal only
+U 0001e8f2 Vertical only
+U 0001e926 Save
+U 0001e94e General
+U 0001e960 MS Sans Serif
+U 0001e992 Auto Save Design Every:
+U 0001e9f2 msctls_updown32
+U 0001ea12 Generic1
+U 0001ea3e minutes
+U 0001ea66 Always Create Backup Copy
+U 0001eab2 Relative
+U 0001eade Absolute
+U 0001eb0a Cumulative Stitch Count
+U 0001eb52 Run Small Stitch Filter on Output
+U 0001ebae Cross Hair Cursor
+U 0001ebea Object Property Position
+U 0001ec36 Shift Pasted Objects
+U 0001ec7a Center at Current Stitch
+U 0001ecc6 Start at Current Stitch
+U 0001ed0e Save Options
+U 0001ed42 Show Values
+U 0001ed72 Paste
+U 0001ed96 Always Check Design Integrity
+U 0001edea Show Design Source
+U 0001ee2a Input Style
+U 0001ee5a Normal
+U 0001ee82 Continuous Replace
+U 0001eec2 Continuous Add
+U 0001eefe Show Stitches
+U 0001ef1c MS Sans Serif
+U 0001ef6e Have Functions
+U 0001efa6 Other
+U 0001efca Longer Than
+U 0001effa Actual X,Y
+U 0001f042 msctls_updown32
+U 0001f062 Generic1
+U 0001f08e Radial
+U 0001f0ce msctls_updown32
+U 0001f0ee Generic1
+U 0001f11a Shorter Than
+U 0001f14e Actual X, Y
+U 0001f196 msctls_updown32
+U 0001f1b6 Generic1
+U 0001f1e2 Radial
+U 0001f222 msctls_updown32
+U 0001f242 Generic1
+U 0001f26e Functions...
+U 0001f2c2 Cancel
+U 0001f2ee Stitch List
+U 0001f308 MS Sans Serif
+U 0001f33a Select All
+U 0001f36a Go To
+U 0001f38e Cancel
+U 0001f3d6 Functions
+U 0001f3ec MS Sans Serif
+U 0001f43e Cancel
+U 0001f462 SysListView32
+U 0001f49e Show Functions
+U 0001f4be MS Sans Serif
+U 0001f4f2 Select All
+U 0001f542 Cancel
+U 0001f566 SysListView32
+U 0001f59e Display
+U 0001f5b0 MS Sans Serif
+U 0001f5fe Background
+U 0001f62e Color
+U 0001f66e Edit...
+U 0001f696 Fabric
+U 0001f6da Browse...
+U 0001f706 Display:
+U 0001f732 Tiled
+U 0001f756 Centered
+U 0001f782 Display Colors
+U 0001f7ba Selection:
+U 0001f806 Color:
+U 0001f84a Edit...
+U 0001f892 Cancel
+U 0001f8be Display
+U 0001f8d0 MS Sans Serif
+U 0001f902 Background
+U 0001f932 Color
+U 0001f972 Edit...
+U 0001f99a Fabric
+U 0001f9de Browse...
+U 0001fa0a Display:
+U 0001fa36 Tiled
+U 0001fa5a Centered
+U 0001faa6 Cancel
+U 0001face Display
+U 0001fae0 MS Sans Serif
+U 0001fb2e Edit...
+U 0001fb56 Background
+U 0001fb86 Color
+U 0001fbca Cancel
+U 0001fbf6 Set Security Options
+U 0001fc22 MS Sans Serif
+U 0001fc56 Access Code 1:
+U 0001fcaa Access Code 2:
+U 0001fd1e Cancel
+U 0001fd46 Serial Number:
+U 0001fd7e insert number here
+U 0001fdbe Please enter Access Codes.
+U 0001fdf6 For some products, the Serial Number must first be reported
+U 0001fe70 to the distributor to receive access codes.
+U 0001fee6 Set Security Options
+U 0001ff12 MS Sans Serif
+U 0001ff46 Access Code 1:
+U 0001ff9a Access Code 2:
+U 0002000e Cancel
+U 00020036 Serial Number:
+U 0002006e insert number here
+U 000200ae Please report your Serial Number to your Distributor
+U 0002011a to receive your Access Codes. Then enter your Access
+U 00020186 Codes to enable your software. Until then, software will
+U 000201fa operate in Demo Mode, with output capabilities disabled.
+U 00020286 Wide Vectors
+U 000202a2 MS Sans Serif
+U 000202d6 Wide filled vectors
+U 00020316 Wide hollow vectors
+U 00020356 Yarn Thickness
+U 000203a6 msctls_updown32
+U 000203c6 Generic1
+U 00020432 Cancel
+U 0002045e Smooth Drawing Curves
+U 0002048c MS Sans Serif
+U 000204be Precision:
+U 00020506 msctls_updown32
+U 00020526 Generic1
+U 00020572 Cancel
+U 000205be Display
+U 000205d0 MS Sans Serif
+U 00020602 Grid && Background
+U 00020642 Display Grid
+U 00020676 Display Center Lines
+U 000206ba Grid Spacing:
+U 00020706 msctls_trackbar32
+U 0002072a Slider1
+U 000207ae Background Colors:
+U 00020826 Hoop
+U 00020866 Mix...
+U 0002088e Display Hoop
+U 000208c6 Autosave
+U 000208da MS Sans Serif
+U 0002090e Auto Save
+U 0002093a Auto Save Design Every
+U 0002099a msctls_updown32
+U 000209ba Generic1
+U 000209e6 minutes
+U 00020a0e Set Security Options
+U 00020a3a MS Sans Serif
+U 00020a6e Access Code 1:
+U 00020ac2 Access Code 2:
+U 00020b36 Cancel
+U 00020b5e Serial Number:
+U 00020b96 insert number here
+U 00020bd6 Please enter Access Codes.
+U 00020c0e For some products, the Serial Number must first be reported
+U 00020c88 to the distributor to receive access codes.
+U 00020cfa Identity Code:
+U 00020d32 insert identity code here
+U 00020d7e Import Codes...
+U 00020db6 Colorway Options
+U 00020dda MS Sans Serif
+U 00020e0e Colorways
+U 00020e3a Selected Colorways
+U 00020e7a All Colorways
+U 00020eea Cancel
+U 00020f16 Write to Magic Box
+U 00020f3e MS Sans Serif
+U 00020f72 Cancel
+U 00020fba Bernina Deco, Babylock, Brother
+U 00021012 Viking / Husqvarna
+U 00021052 Singer XL100/XL1000
+U 00021092 Janome, New Home, Elna, Kenmore
+U 000210ea Bernina Artista
+U 00021122 Pfaff
+U 00021146 Please select the card you wish to write to:
+U 000211be Create / Edit Hoop
+U 000211e6 MS Sans Serif
+U 0002121a Cancel
+U 00021242 Format
+U 00021286 Hoop:
+U 000212aa User provided Hoop Name
+U 000212f2 Dimensions:
+U 00021314  K2~
+U 00021322 HExtens
+U 0002134a Total
+U 00021356 Height
+U 0002137e Width
+U 000213a2 Rectangle
+U 000213b6 Height
+U 000213de Pos 1
+U 00021402 Pos 2
+U 00021426 Pos 3
+U 00021462 msctls_updown32
+U 00021482 Spin1
+U 000214be msctls_updown32
+U 000214de Spin2
+U 0002151a msctls_updown32
+U 0002153a Spin6
+U 0002155e Save Hoop As... 
+U 0002159a Save Hoop
+U 000215de msctls_updown32
+U 000215fe Spin1
+U 00021622 Height
+U 0002164a Sewing Field: 
+U 00021686 Save Hoop As
+U 000216a2 MS Sans Serif
+U 000216d6 Save
+U 000216fa Cancel
+U 00021722 Save As:
+U 0002176e Open Embroidery Disk
+U 0002179a MS Sans Serif
+U 000217ce Look in:
+U 00021816 Diskette Format:
+U 0002186e Auto Detect
+U 000218be Cancel
+U 000218e6 Open Embroidery Disk
+U 00021912 MS Sans Serif
+U 00021946 insert mini edisk error here
+U 0002199a Look in:
+U 000219fe Diskette Format:
+U 00021a2c ^(VF
+U 00021a56 Auto Detect
+U 00021aa6 Cancel
+U 00021ace Format
+U 00021af6 Open From Embroidery Disk
+U 00021b2c MS Sans Serif
+U 00021b5e Look in:
+U 00021ba6 Diskette Format:
+U 00021bfe Auto Detect
+U 00021c2a SysListView32
+U 00021c46 Generic1
+U 00021c72 Designs of Type:
+U 00021ca0 [±V@
+U 00021cca Open
+U 00021cee Cancel
+U 00021d12 msctls_statusbar32
+U 00021d38 User1
+U 00021d5e Options...
+U 00021d8e Open From Embroidery Disk
+U 00021dc4 MS Sans Serif
+U 00021df6 Look in:
+U 00021e3e Diskette Format:
+U 00021e96 Auto Detect
+U 00021ec2 SysListView32
+U 00021ede Generic1
+U 00021f0a Designs of Type:
+U 00021f38 X¯V@
+U 00021f62 Open
+U 00021f86 Cancel
+U 00021faa msctls_statusbar32
+U 00021fd0 User1
+U 00021ff6 Options...
+U 00022018 û:UU
+U 00022042 Preview
+U 0002206e Save to Embroidery Disk
+U 000220a0 MS Sans Serif
+U 000220d2 Look in:
+U 0002211a Diskette Format:
+U 00022172 Auto Detect
+U 000221a2 Format...
+U 000221ca SysListView32
+U 000221e6 Generic1
+U 00022212 Design Name:
+U 00022262 Number:
+U 000222a2 msctls_updown32
+U 000222c2 Generic1
+U 000222ee Filename:
+U 00022336 Machine Format:
+U 0002238a Design Type:
+U 000223da Save
+U 000223fe Cancel
+U 00022426 Values...
+U 0002244e msctls_statusbar32
+U 00022474 User1
+U 0002249a Number:
+U 000224c2 Filename:
+U 000224ee Save Icon
+U 0002251a Options...
+U 0002254e Format Embroidery Disk
+U 0002257e MS Sans Serif
+U 000225b2 Drive:
+U 000225f6 Diskette Format:
+U 0002266e Cancel
+U 00022696 Format Embroidery Disk
+U 000226c6 MS Sans Serif
+U 000226fa insert format error reason here
+U 00022752 Drive:
+U 00022796 Diskette Format:
+U 000227c4 A,VF
+U 0002280e Cancel
+U 0002313e Fill Stitch
+U 0002315c MS Sans Serif
+U 000231b4 Stitch Type:
+U 000231ec Effects...
+U 00023220 Pattern:
+U 00023270 Size X:
+U 000232bc msctls_updown32
+U 000232dc Generic2
+U 0002330c <MM_INCHES>
+U 00023344 Size Y:
+U 00023390 msctls_updown32
+U 000233b0 Generic2
+U 000233e0 <MM_INCHES>
+U 00023418 Column
+U 00023444 Spacing:
+U 00023490 msctls_updown32
+U 000234b0 Generic1
+U 00023504 Offset:
+U 00023550 msctls_updown32
+U 00023570 Generic1
+U 000235ec Spacing:
+U 00023638 msctls_updown32
+U 00023658 Generic1
+U 000236ac Offset:
+U 000236f8 msctls_updown32
+U 00023718 Generic1
+U 0002376c Stitch Values
+U 000237c4 msctls_updown32
+U 000237e4 Generic1
+U 00023838 Stitch Length:
+U 00023890 msctls_updown32
+U 000238b0 Generic1
+U 00023904 Min Stitch Length:
+U 00023964 msctls_updown32
+U 00023984 Generic1
+U 000239d8 Offset A:
+U 00023a28 msctls_updown32
+U 00023a48 Generic1
+U 00023a9c Edit
+U 00023ac4 Layout
+U 00023af0 Delete
+U 00023b1c Stitch Spacing:
+U 00023b7c Combination Split
+U 00023bc0 Standard
+U 00023bf0 Tatami in Tatami
+U 00023c30 Satin in Tatami
+U 00023c70 Random factor
+U 00023cc8 msctls_updown32
+U 00023ce8 Generic1
+U 00023d16 Outline Stitch
+U 00023d36 MS Sans Serif
+U 00023d86 Stitch Type:
+U 00023dba Run Length:
+U 00023e02 msctls_updown32
+U 00023e22 Generic1
+U 00023e4e Variable Run Length
+U 00023e8e Min Length:
+U 00023ed6 msctls_updown32
+U 00023ef6 Generic1
+U 00023f22 Chord Gap:
+U 00023f6a msctls_updown32
+U 00023f8a Generic1
+U 00023fb6 Stitch Values
+U 0002404e Fill Stitch
+U 00024068 MS Sans Serif
+U 000240b6 Stitch Type:
+U 000240ea Effects...
+U 0002411a Stitch Spacing:
+U 0002416a msctls_updown32
+U 0002418a Generic1
+U 000241d6 Stitch Values
+U 0002420e Fill Stitch
+U 00024228 MS Sans Serif
+U 00024276 Stitch Type:
+U 000242aa Effects...
+U 000242da Stitch Spacing:
+U 0002432a msctls_updown32
+U 0002434a Generic1
+U 00024396 Number of Runs:
+U 000243e6 msctls_updown32
+U 00024406 Generic1
+U 00024432 Stitch Values
+U 0002446e Fill Stitch
+U 0002448c MS Sans Serif
+U 000244e4 Stitch Type:
+U 0002451c Effects...
+U 00024550 Stitch Spacing:
+U 000245ac msctls_updown32
+U 000245cc Generic1
+U 00024620 Stitch Length:
+U 00024678 msctls_updown32
+U 00024698 Generic1
+U 000246ec Min Stitch length:
+U 0002474c msctls_updown32
+U 0002476c Generic1
+U 000247c0 Offsets
+U 000247f0 Offset Fraction:
+U 00024830 Partition Line:
+U 000248b0 msctls_updown32
+U 000248d0 Generic1
+U 00024940 msctls_updown32
+U 00024960 Generic1
+U 00024990 Sequence:
+U 000249e4 Angle:
+U 00024a2c msctls_updown32
+U 00024a4c Generic1
+U 00024aa0 Random Factor:
+U 00024b20 Backstitch
+U 00024b54 Diagonal
+U 00024b84 Border.
+U 00024bb4 Midline
+U 00024be4 Stitch Values
+U 00024c46 Fill
+U 00024c56 MS Sans Serif
+U 00024cb0 Vector Type:
+U 00024ce8 Effects...
+U 00024d1c Vector Values
+U 00024d58 Vector Spacing:
+U 00024db4 msctls_updown32
+U 00024dd4 Generic1
+U 00024e04 <MM_INCHES>
+U 00024e3c Vector Length:
+U 00024e94 msctls_updown32
+U 00024eb4 Generic1
+U 00024ee4 <MM_INCHES>
+U 00024f1c Min Vector length:
+U 00024f7c msctls_updown32
+U 00024f9c Generic1
+U 00024fcc <MM_INCHES>
+U 0002501e Outline Stitch
+U 0002503e MS Sans Serif
+U 0002508e Stitch Type:
+U 000250c2 Triple Run Length:
+U 0002511a msctls_updown32
+U 0002513a Generic1
+U 00025186 Stitch Values
+U 000251ba Variable Run Length
+U 000251fa Min Length:
+U 00025242 msctls_updown32
+U 00025262 Generic1
+U 000252ae Chord Gap:
+U 000252f6 msctls_updown32
+U 00025316 Generic1
+U 00025362 Run Count:
+U 00025384 ls2K
+U 000253ae Auto Jump
+U 000253c4 MS Sans Serif
+U 000253f6 Auto Jump
+U 00025422 Maximum Stitch:
+U 00025472 msctls_updown32
+U 00025492 Generic1
+U 000254de Jump Length:
+U 0002552a msctls_updown32
+U 0002554a Generic1
+U 00025596 Length Calculation
+U 000255d6 Axis
+U 000255fa Radius
+U 00025622 Along Axis
+U 00025652 Along Radius
+U 0002568e Jagged Edge
+U 000256ac MS Sans Serif
+U 000256e4 Jagged 
+U 00025714 Jagged Side:
+U 0002573c \/2S
+U 0002576c Roughness:
+U 000257bc msctls_updown32
+U 000257dc Generic1
+U 0002580c Range:
+U 00025854 msctls_updown32
+U 00025874 Generic1
+U 000258ee Auto Underlay
+U 00025910 MS Sans Serif
+U 00025944 {26B6AEDD-15A6-4DE8-9D7D-895ACC8E318F}
+U 000259b0 {26B6AEDD-15A6-4DE8-9D7D-895ACC8E318F}
+U 00025a1e Fill Stitch
+U 00025a38 MS Sans Serif
+U 00025a6a Stitch Type:
+U 00025aba Stitch Values
+U 00025aee Stitch Spacing:
+U 00025b3e msctls_updown32
+U 00025b5e Generic1
+U 00025baa Auto Spacing
+U 00025bde Auto Spacing
+U 00025c12 Values...
+U 00025c3e Adjust:
+U 00025c7e msctls_updown32
+U 00025c9e Generic1
+U 00025ce6 Auto Split
+U 00025d16 Auto Split
+U 00025d46 Length:
+U 00025d86 msctls_updown32
+U 00025da6 Generic1
+U 00025df2 Minimum Stitch:
+U 00025e42 msctls_updown32
+U 00025e62 Generic1
+U 00025eae Effects...
+U 00025ede Satin Count:
+U 00025f04 W>2`
+U 00025f2e Fill Stitch
+U 00025f48 MS Sans Serif
+U 00025f96 Stitch Type: 
+U 00025fca Effects...
+U 00025ffe Outline Stitch
+U 0002601e MS Sans Serif
+U 00026052 Stitch Type:
+U 000260a6 Accordion
+U 000260bc MS Sans Serif
+U 000260ee Accordion Spacing
+U 0002612a Profile
+U 00026152 Dec-Linear
+U 00026182 Linear
+U 000261aa Dec-Exp
+U 000261d2 Inc_Exp
+U 000261fa Concave
+U 00026222 Convex
+U 0002624a Concave - Convex
+U 00026286 Convex - Concave
+U 000262c2 Values
+U 000262ea Maximum Spacing:
+U 0002633e msctls_updown32
+U 0002635e Generic1
+U 000263aa Minimum Spacing:
+U 000263fe msctls_updown32
+U 0002641e Generic1
+U 0002646e Auto Spacing
+U 0002648a MS Sans Serif
+U 000264be Stitch (mm)
+U 000264ee Length:
+U 00026516 Spacing:
+U 0002655a msctls_updown32
+U 0002657a Generic1
+U 000265be msctls_updown32
+U 000265de Generic1
+U 00026622 msctls_updown32
+U 00026642 Generic1
+U 00026686 msctls_updown32
+U 000266a6 Generic1
+U 000266ea msctls_updown32
+U 0002670a Generic1
+U 0002674e msctls_updown32
+U 0002676e Generic1
+U 000267b2 msctls_updown32
+U 000267d2 Generic1
+U 00026816 msctls_updown32
+U 00026836 Generic1
+U 0002687a msctls_updown32
+U 0002689a Generic1
+U 000268de msctls_updown32
+U 000268fe Generic1
+U 00026942 msctls_updown32
+U 00026962 Generic1
+U 000269a6 msctls_updown32
+U 000269c6 Generic1
+U 00026a0a msctls_updown32
+U 00026a2a Generic1
+U 00026a6e msctls_updown32
+U 00026a8e Generic1
+U 00026ad2 msctls_updown32
+U 00026af2 Generic1
+U 00026b36 msctls_updown32
+U 00026b56 Generic1
+U 00026b9a msctls_updown32
+U 00026bba Generic1
+U 00026bfe msctls_updown32
+U 00026c1e Generic1
+U 00026c62 msctls_updown32
+U 00026c82 Generic1
+U 00026cc6 msctls_updown32
+U 00026ce6 Generic1
+U 00026d2a msctls_updown32
+U 00026d4a Generic1
+U 00026d8e msctls_updown32
+U 00026dae Generic1
+U 00026dda Spacing Offset
+U 00026e12 Thread Type A:
+U 00026e62 msctls_updown32
+U 00026e82 Generic1
+U 00026ece Thread Type B:
+U 00026f1e msctls_updown32
+U 00026f3e Generic1
+U 00026f8a Thread Type C:
+U 00026fda msctls_updown32
+U 00026ffa Generic1
+U 00027046 Thread Type D:
+U 00027096 msctls_updown32
+U 000270b6 Generic1
+U 00027122 Cancel
+U 0002714a Reset
+U 0002716e Make Program Split
+U 00027196 MS Sans Serif
+U 000271ca Enter a new name:
+U 00027242 Cancel
+U 0002726e Make Motif
+U 00027286 MS Sans Serif
+U 000272ba Symbol Set :
+U 0002730a Motif Name :
+U 0002735a Remove Functions
+U 00027396 New ...
+U 000273de Cancel
+U 00027406 New Symbol Set
+U 00027426 MS Sans Serif
+U 0002745a New Symbol Set Name :
+U 000274da Cancel
+U 00027506 Outline Stitch
+U 00027526 MS Sans Serif
+U 00027576 Stitch Type:
+U 000275aa Motif
+U 000275ce Symbol Set :
+U 0002763a Motif Name:
+U 000276a2 Select
+U 000276ca Size X:
+U 0002770a msctls_updown32
+U 0002772a Generic2
+U 00027756 <MM_INCHES>
+U 00027786 Size Y:
+U 000277c6 msctls_updown32
+U 000277e6 Generic2
+U 00027812 <MM_INCHES>
+U 00027842 Spacing:
+U 00027886 msctls_updown32
+U 000278a6 Generic1
+U 000278f2 Keep First Motif
+U 0002792e Keep Last Motif
+U 00027966 Fill Stitch
+U 00027980 MS Sans Serif
+U 000279ce Stitch Type:
+U 00027a02 Effects...
+U 00027a32 Stitch Length:
+U 00027a82 msctls_updown32
+U 00027aa2 Generic1
+U 00027aee Coil Spacing:
+U 00027b3a msctls_updown32
+U 00027b5a Generic1
+U 00027ba6 Coil Width:
+U 00027bee msctls_updown32
+U 00027c0e Generic1
+U 00027c56 Stitch Values
+U 00027c8e Fill Stitch
+U 00027ca8 MS Sans Serif
+U 00027cf6 Stitch Type:
+U 00027d2a Effects...
+U 00027d5a Stitch Length:
+U 00027daa msctls_updown32
+U 00027dca Generic1
+U 00027e16 Stitch Spacing:
+U 00027e66 msctls_updown32
+U 00027e86 Generic1
+U 00027ed2 Stitch Values
+U 00027f06 Fill
+U 00027f12 MS Sans Serif
+U 00027f62 Vector Type:
+U 00027f96 Effects...
+U 00027fc6 Vector Values
+U 00027ffa Vector Spacing:
+U 0002804a msctls_updown32
+U 0002806a Generic1
+U 00028096 <MM_INCHES>
+U 000280c6 New Program Split Pattern 
+U 000280fe MS Sans Serif
+U 00028132 Pattern:
+U 0002819a Cancel
+U 000281c2 Properties...
+U 000281f6 Input C
+U 00028208 MS Sans Serif
+U 0002823a Column Width:
+U 00028286 msctls_updown32
+U 000282a6 Generic1
+U 000282d2 <MM_INCHES>
+U 00028302 Input Side
+U 00028332 Center
+U 0002835a Offset
+U 00028382 Corner Fraction:
+U 000283d6 msctls_updown32
+U 000283f6 Generic1
+U 00028422 Round Sharp Corners
+U 00028462 Side 1
+U 0002848a Side 2
+U 000284ca msctls_updown32
+U 000284ea Generic1
+U 0002852e msctls_updown32
+U 0002854e Generic1
+U 00028592 msctls_updown32
+U 000285b2 Generic1
+U 000285f6 msctls_updown32
+U 00028616 Generic1
+U 0002867a <MM_INCHES>
+U 000286aa <MM_INCHES>
+U 000286e8 ¨LO$
+U 00028716 Complex Fill
+U 00028732 MS Sans Serif
+U 00028766 Fill Stitch
+U 00028796 Overlapping Rows:
+U 000287ea msctls_updown32
+U 0002880a Generic1
+U 00028836 Angle:
+U 00028876 msctls_updown32
+U 00028896 Generic1
+U 000288de Complex Fill
+U 000288fa MS Sans Serif
+U 0002892e Fill
+U 00028952 Angle:
+U 00028992 msctls_updown32
+U 000289b2 Generic1
+U 000289fe Fill Stitch
+U 00028a18 MS Sans Serif
+U 00028a66 Stitch Type:
+U 00028a9a Effects...
+U 00028aca Stitch Spacing:
+U 00028b1a msctls_updown32
+U 00028b3a Generic1
+U 00028b66 Stitch Length:
+U 00028bb6 msctls_updown32
+U 00028bd6 Generic1
+U 00028c02 Offset Fraction:
+U 00028c56 msctls_updown32
+U 00028c76 Generic1
+U 00028ca2 Variable Length
+U 00028cda Vary Stitch Length
+U 00028d1a Variable Length:
+U 00028d6e msctls_updown32
+U 00028d8e Generic1
+U 00028dba Chord Gap:
+U 00028e02 msctls_updown32
+U 00028e22 Generic1
+U 00028e4e Random Factor:
+U 00028e9e msctls_updown32
+U 00028ebe Generic1
+U 00028eea Contour
+U 00028f12 Spiral
+U 00028f2c ºOP.
+U 00028f3a Backstitch
+U 00028f6a Varied
+U 00028f92 Square
+U 00028fd6 Type
+U 00028ffa Stitch Values
+U 000290ae Fill
+U 000290ba MS Sans Serif
+U 0002910a Vector Type:
+U 0002913e Effects...
+U 0002916e Vector Spacing:
+U 000291be msctls_updown32
+U 000291de Generic1
+U 0002920a <MM_INCHES>
+U 0002923a Vector Length:
+U 0002928a msctls_updown32
+U 000292aa Generic1
+U 000292d6 <MM_INCHES>
+U 00029306 Contour
+U 0002932e Spiral
+U 00029356 Variable Length
+U 0002938e Vary Vector Length
+U 000293ce Variable Length:
+U 00029422 msctls_updown32
+U 00029442 Generic1
+U 0002946e <MM_INCHES>
+U 0002949e Chord Gap:
+U 000294e6 msctls_updown32
+U 00029506 Generic1
+U 00029532 <MM_INCHES>
+U 00029562 Type
+U 00029586 Vector Values
+U 000295c6 Fill Stitch
+U 000295e4 MS Sans Serif
+U 0002961c Stitch Type:
+U 00029674 Column
+U 000296a0 Spacing:
+U 000296ec msctls_updown32
+U 0002970c Generic1
+U 0002973c <MM_INCHES>
+U 0002979c Spacing:
+U 000297e8 msctls_updown32
+U 00029808 Generic1
+U 00029838 <MM_INCHES>
+U 00029870 Offset:
+U 000298bc msctls_updown32
+U 000298dc Generic1
+U 0002990c <MM_INCHES>
+U 00029944 Scale Motifs to fit Grid
+U 00029994 Clip Motifs to fit Shape
+U 000299e4 Motif 1
+U 00029a14 Symbol Set:
+U 00029a8c Motif:
+U 00029af8 Select...
+U 00029b2c Size X:
+U 00029b78 msctls_updown32
+U 00029b98 Generic2
+U 00029bc8 <MM_INCHES>
+U 00029c00 Size Y:
+U 00029c4c msctls_updown32
+U 00029c6c Generic2
+U 00029c9c <MM_INCHES>
+U 00029cd4 Motif 2
+U 00029d04 Symbol Set:
+U 00029d7c Motif:
+U 00029de8 Select...
+U 00029e1c Size X:
+U 00029e68 msctls_updown32
+U 00029e88 Generic2
+U 00029eb8 <MM_INCHES>
+U 00029ef0 Size Y:
+U 00029f3c msctls_updown32
+U 00029f5c Generic2
+U 00029f8c <MM_INCHES>
+U 00029fc4 Rotation Angle:
+U 0002a020 msctls_updown32
+U 0002a040 Generic1
+U 0002a094 Layout
+U 0002a0e0 Effects...
+U 0002a10e Connectors
+U 0002a126 MS Sans Serif
+U 0002a15a Connector Type and Values
+U 0002a1c2 Jump
+U 0002a21e msctls_updown32
+U 0002a23e Generic1
+U 0002a2a2 msctls_updown32
+U 0002a2c2 Generic1
+U 0002a30e Trim After Object
+U 0002a36a Always Trim
+U 0002a39a Trim If Next Connector Longer Than:
+U 0002a412 msctls_updown32
+U 0002a432 Generic1
+U 0002a47e Tie In Before Object
+U 0002a4e2 Always Tie In
+U 0002a516 Tie In If:
+U 0002a546 After Trim / Color Change
+U 0002a592 Previous Connector Longer Than:
+U 0002a602 msctls_updown32
+U 0002a622 Generic1
+U 0002a66e Values...
+U 0002a69a Tie Off After Object
+U 0002a6fe Always Tie Off
+U 0002a736 Tie Off If:
+U 0002a766 Before Trim / Color Change
+U 0002a7b6 Always Tie Off Last Object
+U 0002a806 Next Connector Longer Than:
+U 0002a86e msctls_updown32
+U 0002a88e Generic1
+U 0002a8da Values...
+U 0002a8f8 úe?&
+U 0002a906 Method
+U 0002a92e Tatami
+U 0002a956 Satin
+U 0002a97e General
+U 0002a990 MS Sans Serif
+U 0002a9da msctls_updown32
+U 0002a9fa Generic1
+U 0002aa3e msctls_updown32
+U 0002aa5e Generic1
+U 0002aaa2 msctls_updown32
+U 0002aac2 Generic1
+U 0002ab06 msctls_updown32
+U 0002ab26 Generic1
+U 0002ab6a msctls_updown32
+U 0002ab8a Generic1
+U 0002abce msctls_updown32
+U 0002abee Generic1
+U 0002ac1a In X
+U 0002ac3e In Y
+U 0002ac7a msctls_updown32
+U 0002ac9a Generic1
+U 0002acde msctls_updown32
+U 0002acfe Generic1
+U 0002ad2a Width:
+U 0002ad52 <MM_INCHES>
+U 0002ad82 Height:
+U 0002adaa <MM_INCHES>
+U 0002adda Rotate By:
+U 0002ae26 Skew By:
+U 0002ae6e Mirror
+U 0002ae96 Position
+U 0002aee2 <MM_INCHES>
+U 0002af32 <MM_INCHES>
+U 0002af9a Dimensions
+U 0002afca Transform
+U 0002aff6 Embroidery
+U 0002b00e MS Sans Serif
+U 0002b042 Stitches
+U 0002b06e Generated
+U 0002b09a Removed
+U 0002b0c2 Embroidery
+U 0002b0f2 Normal
+U 0002b11a Chenille
+U 0002b146 Chain
+U 0002b16a Moss
+U 0002b18e Needle Height:
+U 0002b1de msctls_updown32
+U 0002b1fe Generic1
+U 0002b22a <MM_INCHES>
+U 0002b25a Needles
+U 0002b2c2 Boring
+U 0002b2ea Borer In
+U 0002b316 Borer Out
+U 0002b346 Fill Stitch
+U 0002b360 MS Sans Serif
+U 0002b3ae Stitch Type:
+U 0002b3e2 Effects...
+U 0002b412 Stitch Values
+U 0002b446 Stitch Length:
+U 0002b496 msctls_updown32
+U 0002b4b6 Generic1
+U 0002b502 Coil Spacing:
+U 0002b54e msctls_updown32
+U 0002b56e Generic1
+U 0002b5ba Coil Width:
+U 0002b602 msctls_updown32
+U 0002b622 Generic1
+U 0002b686 Coil Height:
+U 0002b6d2 msctls_updown32
+U 0002b6f2 Generic1
+U 0002b73e Coil Overlap:
+U 0002b78a msctls_updown32
+U 0002b7aa Generic1
+U 0002b7f6 Fill Stitch
+U 0002b810 MS Sans Serif
+U 0002b85e Stitch Type:
+U 0002b892 Effects...
+U 0002b8c2 Stitch Length:
+U 0002b912 msctls_updown32
+U 0002b932 Generic1
+U 0002b97e Stitch Spacing:
+U 0002b9ce msctls_updown32
+U 0002b9ee Generic1
+U 0002ba3a Angle of Second Layer:
+U 0002ba9a msctls_updown32
+U 0002baba Generic1
+U 0002bb02 Stitch Values
+U 0002bb36 Chenille Embroidery
+U 0002bb60 MS Sans Serif
+U 0002bb92 Generate Stitches
+U 0002bbce Chain
+U 0002bbf2 Moss
+U 0002bc32 Needle Height:
+U 0002bc82 msctls_updown32
+U 0002bca2 Generic1
+U 0002bcce <MM_INCHES>
+U 0002bcfe Compound
+U 0002bd12 MS Sans Serif
+U 0002bd46 Compound
+U 0002bd72 Color Gap
+U 0002bdb6 msctls_updown32
+U 0002bdd6 Generic1
+U 0002be02 <MM_INCHES>
+U 0002be32 Outline Values
+U 0002be6a Outline Rows
+U 0002beb6 msctls_updown32
+U 0002bed6 Generic1
+U 0002bf02 First Row
+U 0002bf2e Offset
+U 0002bf56 1/2 Color Gap
+U 0002bfbe msctls_updown32
+U 0002bfde Generic1
+U 0002c00a <MM_INCHES>
+U 0002c03a Other Rows
+U 0002c06a Offset
+U 0002c092 1/2 Color Gap
+U 0002c0fa msctls_updown32
+U 0002c11a Generic1
+U 0002c146 <MM_INCHES>
+U 0002c176 Length
+U 0002c1b6 msctls_updown32
+U 0002c1d6 Generic1
+U 0002c202 <MM_INCHES>
+U 0002c232 Vary
+U 0002c256 Chord Gap:
+U 0002c29e msctls_updown32
+U 0002c2be Generic1
+U 0002c2ea <MM_INCHES>
+U 0002c31a Minimum:
+U 0002c35e msctls_updown32
+U 0002c37e Generic1
+U 0002c3aa <MM_INCHES>
+U 0002c3da Fill Values
+U 0002c40a Fill
+U 0002c42e Offset
+U 0002c456 1/2 Color Gap
+U 0002c4be msctls_updown32
+U 0002c4de Generic1
+U 0002c50a <MM_INCHES>
+U 0002c53e Compound Chenille
+U 0002c564 MS Sans Serif
+U 0002c596 Compound Chenille
+U 0002c5d2 Overlapping Stitches:
+U 0002c62e msctls_updown32
+U 0002c64e Generic1
+U 0002c67a Run Direction
+U 0002c6ee Outline Stitch Length
+U 0002c732 Chain:
+U 0002c772 msctls_updown32
+U 0002c792 Generic1
+U 0002c7be <MM_INCHES>
+U 0002c7ee Moss:
+U 0002c82a msctls_updown32
+U 0002c84a Generic1
+U 0002c876 <MM_INCHES>
+U 0002c8a6 Type
+U 0002c8ca OFFSET (<MM_INCHES>)
+U 0002c90e Needle Height
+U 0002c942 Before Fill
+U 0002c972 Offset 1
+U 0002c990 BO4F
+U 0002c9d2 msctls_updown32
+U 0002c9f2 Generic1
+U 0002ca10 ¼O4A
+U 0002ca3a Offset 2
+U 0002ca58 B[4I
+U 0002ca9a msctls_updown32
+U 0002caba Generic1
+U 0002cad8 ¼[4E
+U 0002cb02 Offset 3
+U 0002cb20 Bg4;
+U 0002cb62 msctls_updown32
+U 0002cb82 Generic1
+U 0002cba0 ¼g4H
+U 0002cbca Stitch Fill
+U 0002cbfa Fill Offset
+U 0002cc42 msctls_updown32
+U 0002cc62 Generic1
+U 0002cc8e After Fill
+U 0002ccbe Offset 4
+U 0002cd1e msctls_updown32
+U 0002cd3e Generic1
+U 0002cd86 Offset 5
+U 0002cda4 B§4J
+U 0002cde6 msctls_updown32
+U 0002ce06 Generic1
+U 0002ce24 ¼§4=
+U 0002ce4e Offset 6
+U 0002ce6c B³4?
+U 0002ceae msctls_updown32
+U 0002cece Generic1
+U 0002ceec ¼³4:
+U 0002cf16 Others
+U 0002cf26 MS Sans Serif
+U 0002cf5a Column width
+U 0002cfca Pull Compensation:
+U 0002cffc n!2=
+U 0002d046 Fractional Spacing
+U 0002d086 Offset Fraction:
+U 0002d0da msctls_updown32
+U 0002d0fa Generic1
+U 0002d126 User Defined Split
+U 0002d166 Split Alternate Stitch Lines
+U 0002d1ba Trapunto
+U 0002d1e6 3D Warp
+U 0002d200 M¥RL
+U 0002d232 MS Sans Serif
+U 0002d266 Stitch Length:
+U 0002d2b6 msctls_updown32
+U 0002d2d6 Generic1
+U 0002d322 Number of Stitches:
+U 0002d37a msctls_updown32
+U 0002d39a Generic1
+U 0002d3e6 Cancel
+U 0002d40e Stitch Angle
+U 0002d42a MS Sans Serif
+U 0002d45e Angle:
+U 0002d49e msctls_updown32
+U 0002d4be Generic1
+U 0002d506 Stitch Angle
+U 0002d546 Flexi Split
+U 0002d564 MS Sans Serif
+U 0002d59c Flexi Split
+U 0002d5d4 Pattern:
+U 0002d5f4 2(?o
+U 0002d624 Size X:
+U 0002d670 msctls_updown32
+U 0002d690 Generic2
+U 0002d6c0 <MM_INCHES>
+U 0002d6f8 Size Y:
+U 0002d744 msctls_updown32
+U 0002d764 Generic2
+U 0002d794 <MM_INCHES>
+U 0002d7cc Column
+U 0002d7f8 Spacing:
+U 0002d844 msctls_updown32
+U 0002d864 Generic1
+U 0002d8b8 Offset:
+U 0002d904 msctls_updown32
+U 0002d924 Generic1
+U 0002d9a0 Spacing:
+U 0002d9ec msctls_updown32
+U 0002da0c Generic1
+U 0002da60 Offset:
+U 0002daac msctls_updown32
+U 0002dacc Generic1
+U 0002db20 Options
+U 0002db50 OneRowDon'tFit
+U 0002db8c OneRowDoFit
+U 0002dbc4 MultiRowDon'tFit
+U 0002dc04 MultiRowDoFit
+U 0002dc60 Shape indent:
+U 0002dcb8 msctls_updown32
+U 0002dcd8 Generic1
+U 0002dd26 Embroidery
+U 0002dd3e MS Sans Serif
+U 0002dd72 Travel Run Length:
+U 0002ddca msctls_updown32
+U 0002ddea Generic1
+U 0002de56 Photo Stitch
+U 0002de72 MS Sans Serif
+U 0002dea6 Max width:
+U 0002deee msctls_updown32
+U 0002df0e Generic1
+U 0002df3a <MM_INCHES>
+U 0002df6a Row spacing:
+U 0002dfb6 msctls_updown32
+U 0002dfd6 Generic1
+U 0002e002 <MM_INCHES>
+U 0002e032 Background
+U 0002e062 Light
+U 0002e086 Dark
+U 0002e0aa Fill Stitch
+U 0002e0da Fill angle:
+U 0002e122 msctls_updown32
+U 0002e142 Generic1
+U 0002e18e Curve Fill
+U 0002e1a6 MS Sans Serif
+U 0002e1da One Curve Fill
+U 0002e212 Nominal
+U 0002e23a Maximum
+U 0002e262 Two Curve Fill
+U 0002e29a Nominal
+U 0002e2c2 Maximum
+U 0002e2ea Curve Fills
+U 0002e31e Curve Fill
+U 0002e336 MS Sans Serif
+U 0002e36a One Curve Fill
+U 0002e3a2 Nominal
+U 0002e3ca Maximum
+U 0002e3f2 Curve Fills
+U 0002e426 Shortening
+U 0002e43e MS Sans Serif
+U 0002e472 Shortening
+U 0002e4a2 If Spacing       <   
+U 0002e4fe msctls_updown32
+U 0002e51e Generic1
+U 0002e566 Max No Of Short Stitches
+U 0002e5ca msctls_updown32
+U 0002e5ea Generic1
+U 0002e616 Shorten Stitch Length To (%)
+U 0002e66a No Of Stitches
+U 0002e6a2 1st Stitch
+U 0002e6d2 2nd Stitch
+U 0002e702 3rd Stitch
+U 0002e732 4th Stitch
+U 0002e762 5th Stitch
+U 0002e7c6 msctls_updown32
+U 0002e7e6 Generic1
+U 0002e846 msctls_updown32
+U 0002e866 Generic1
+U 0002e8aa msctls_updown32
+U 0002e8ca Generic1
+U 0002e92a msctls_updown32
+U 0002e94a Generic1
+U 0002e98e msctls_updown32
+U 0002e9ae Generic1
+U 0002e9f2 msctls_updown32
+U 0002ea12 Generic1
+U 0002ea72 msctls_updown32
+U 0002ea92 Generic1
+U 0002ead6 msctls_updown32
+U 0002eaf6 Generic1
+U 0002eb3a msctls_updown32
+U 0002eb5a Generic1
+U 0002eb9e msctls_updown32
+U 0002ebbe Generic1
+U 0002ec1e msctls_updown32
+U 0002ec3e Generic1
+U 0002ec82 msctls_updown32
+U 0002eca2 Generic1
+U 0002ece6 msctls_updown32
+U 0002ed06 Generic1
+U 0002ed4a msctls_updown32
+U 0002ed6a Generic1
+U 0002edae msctls_updown32
+U 0002edce Generic1
+U 0002edfa Randomize
+U 0002ee26 Auto Applique
+U 0002ee44 MS Sans Serif
+U 0002ee76 Guide Run
+U 0002eea2 Stitch Length:
+U 0002eef2 msctls_updown32
+U 0002ef12 Spin1
+U 0002ef56 Offset:
+U 0002ef96 msctls_updown32
+U 0002efb6 Spin1
+U 0002efda <MM_INCHES>
+U 0002f00a None
+U 0002f02e With Stop
+U 0002f05a With Color Change
+U 0002f096 Frame Out
+U 0002f0fa msctls_updown32
+U 0002f11a Spin1
+U 0002f13e <MM_INCHES>
+U 0002f1a6 msctls_updown32
+U 0002f1c6 Spin1
+U 0002f1ea <MM_INCHES>
+U 0002f21a Tack
+U 0002f23e Stitch Type:
+U 0002f264 HI:n
+U 0002f28e Spacing:
+U 0002f2d2 msctls_updown32
+U 0002f2f2 Spin1
+U 0002f336 Count:
+U 0002f376 msctls_updown32
+U 0002f396 Spin1
+U 0002f3d2 msctls_updown32
+U 0002f3f2 Spin1
+U 0002f416 <MM_INCHES>
+U 0002f446 Width:
+U 0002f486 msctls_updown32
+U 0002f4a6 Spin1
+U 0002f4ca <MM_INCHES>
+U 0002f4fa Inside:
+U 0002f53a msctls_updown32
+U 0002f55a Spin1
+U 0002f57e <MM_INCHES>
+U 0002f5c6 msctls_updown32
+U 0002f5e6 Spin1
+U 0002f626 Outside:
+U 0002f66a msctls_updown32
+U 0002f68a Spin1
+U 0002f6ae <MM_INCHES>
+U 0002f6f6 msctls_updown32
+U 0002f716 Spin1
+U 0002f756 None
+U 0002f77a With Stop
+U 0002f7a6 With Color Change
+U 0002f7e2 Cover
+U 0002f806 Width:
+U 0002f846 msctls_updown32
+U 0002f866 Spin1
+U 0002f88a <MM_INCHES>
+U 0002f8ba Inside:
+U 0002f8fa msctls_updown32
+U 0002f91a Spin1
+U 0002f93e <MM_INCHES>
+U 0002f986 msctls_updown32
+U 0002f9a6 Spin1
+U 0002f9e6 Outside:
+U 0002fa2a msctls_updown32
+U 0002fa4a Spin1
+U 0002fa6e <MM_INCHES>
+U 0002fab6 msctls_updown32
+U 0002fad6 Spin1
+U 0002fb16 Partial Cover
+U 0002fb4a Frame Out:
+U 0002fb7a Frame Out:
+U 0002fbae Outline Stitch
+U 0002fbce MS Sans Serif
+U 0002fc1e Stitch Type:
+U 0002fc52 Run Length:
+U 0002fc9a msctls_updown32
+U 0002fcba Generic1
+U 0002fce6 <MM_INCHES>
+U 0002fd16 Variable Run Length
+U 0002fd56 Min Length:
+U 0002fd9e msctls_updown32
+U 0002fdbe Generic1
+U 0002fdea <MM_INCHES>
+U 0002fe1a Chord Gap:
+U 0002fe62 msctls_updown32
+U 0002fe82 Generic1
+U 0002feae <MM_INCHES>
+U 0002fede Stitch Values
+U 0002ff16 Outline Stitch
+U 0002ff36 MS Sans Serif
+U 0002ff86 Stitch Type:
+U 0002ffba Motif
+U 0002ffde Font Name:
+U 00030046 Motif Name:
+U 000300ae Select
+U 000300d6 Size X:
+U 00030116 msctls_updown32
+U 00030136 Generic2
+U 00030162 <MM_INCHES>
+U 00030192 Size Y:
+U 000301d2 msctls_updown32
+U 000301f2 Generic2
+U 0003021e <MM_INCHES>
+U 0003024e Spacing:
+U 00030292 msctls_updown32
+U 000302b2 Generic1
+U 000302de <MM_INCHES>
+U 0003030e Keep First Motif
+U 0003034a Keep Last Motif
+U 00030386 Underlay
+U 0003039a MS Sans Serif
+U 000303ce Underlay
+U 000303fa Stitch Type:
+U 00030420 @"eT
+U 0003044a Stitch Length:
+U 0003049a msctls_updown32
+U 000304ba Generic1
+U 00030516 MS Sans Serif
+U 00030570 First Underlay:
+U 000305d0 Margins
+U 00030644 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 000306f8 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 000307ac {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030840 Stitch Values
+U 00030886 MS Sans Serif
+U 000308c0 Length:
+U 000308ec {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030980 Vary Run Length
+U 000309c0 Min Length:
+U 000309f4 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030a88 Chord Gap:
+U 00030ab8 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030b56 MS Sans Serif
+U 00030b90 Spacing:
+U 00030bbc {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030c50 Length:
+U 00030c7c {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030d10 Angle:
+U 00030d38 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030dcc Midline
+U 00030dfc Border
+U 00030e28 Diagonal
+U 00030e58 Backstitch:       
+U 00030ea6 MS Sans Serif
+U 00030ee0 Spacing:
+U 00030f34 Length:
+U 00030f84 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 00030ff0 {3FBB9573-BB6F-4B94-A2A2-96692D417A98}
+U 0003105e Border
+U 00031082 Stitch Type:
+U 000310a8 P!^n
+U 000310d2 Border
+U 000310fa Color:
+U 0003af56 Smart Corners
+U 0003af74 MS Sans Serif
+U 0003afa6 Smart Corner Stitching
+U 0003afee Mitre Corner
+U 0003b022 Mitre below Angle :
+U 0003b07a msctls_updown32
+U 0003b09a Spin1
+U 0003b0be Mitre Overlap :
+U 0003b10e msctls_updown32
+U 0003b12e Spin2
+U 0003b152 Cap Corner
+U 0003b182 Cap below Angle :
+U 0003b1d6 msctls_updown32
+U 0003b1f6 Spin1
+U 0003b21a Capping overlap :
+U 0003b26e msctls_updown32
+U 0003b28e Spin1
+U 0003b2b2 Max Capping stitch length :
+U 0003b31a msctls_updown32
+U 0003b33a Spin1
+U 0003b3fe Feathering
+U 0003b41a MS Sans Serif
+U 0003b454 Feathered
+U 0003b488 Max. Width:
+U 0003b4dc msctls_updown32
+U 0003b4fc Generic1
+U 0003b550 Raggedness:
+U 0003b584 msctls_trackbar32
+U 0003b5a8 Slider1
+U 0003b600 medium
+U 0003b62c high
+U 0003b654 Feathered Side:
+U 0003b694 left
+U 0003b6bc right
+U 0003b706 Dimensions
+U 0003b71e MS Sans Serif
+U 0003b752 Position
+U 0003b7b6 msctls_updown32
+U 0003b7d6 Generic1
+U 0003b802 <MM_INCHES>
+U 0003b86a msctls_updown32
+U 0003b88a Generic1
+U 0003b8b6 <MM_INCHES>
+U 0003b8e6 Dimensions
+U 0003b916 Width:
+U 0003b956 msctls_updown32
+U 0003b976 Generic1
+U 0003b9a2 <MM_INCHES>
+U 0003ba0a Height:
+U 0003ba4a msctls_updown32
+U 0003ba6a Generic1
+U 0003ba96 <MM_INCHES>
+U 0003bafe Change Stitch Length
+U 0003bb2a MS Sans Serif
+U 0003bb5e Maximum Stitch:
+U 0003bbf2 Cancel
+U 0003bc26 Fill Stitch
+U 0003bc44 MS Sans Serif
+U 0003bcdc Satin Fill
+U 0003bd10 Weave Fill
+U 0003bd44 Embossed Fill
+U 0003bda8 Standard
+U 0003bdd8 High
+U 0003be28 100%
+U 0003be50 200%
+U 0003be78 Stitch Density:
+U 0003beb4 msctls_trackbar32
+U 0003bed8 Slider1
+U 0003bf08 Pattern:
+U 0003bf54 msctls_updown32
+U 0003bf74 Spin1
+U 0003bfa0 Stitch Spacing:
+U 0003bffc msctls_updown32
+U 0003c01c Spin1
+U 0003c048 Stitch Length:
+U 0003c0a0 msctls_updown32
+U 0003c0c0 Spin1
+U 0003c0ec Pattern:
+U 0003c10c @«Vi
+U 0003c13c Size
+U 0003c180 msctls_updown32
+U 0003c1a0 Spin1
+U 0003c1cc Spacing
+U 0003c23c msctls_updown32
+U 0003c25c Spin1
+U 0003c2c8 msctls_updown32
+U 0003c2e8 Spin1
+U 0003c314 Rotate
+U 0003c35c msctls_updown32
+U 0003c37c Generic1
+U 0003c3ac degrees
+U 0003c3cc ±Wq:
+U 0003c3ec ±©q:
+U 0003c488 <MM_INCHES>
+U 0003c4e4 Auto Split
+U 0003c516 Line Stitch
+U 0003c530 MS Sans Serif
+U 0003c59a Satin Line
+U 0003c5ca Run Line
+U 0003c5f6 Width:
+U 0003c636 msctls_updown32
+U 0003c656 Spin1
+U 0003c69a Standard
+U 0003c6c6 High
+U 0003c70a 100%
+U 0003c72e 200%
+U 0003c752 Stitch Density:
+U 0003c786 msctls_trackbar32
+U 0003c7aa Slider1
+U 0003c7d2 Stitch Length:
+U 0003c822 msctls_updown32
+U 0003c842 Spin2
+U 0003c866 Single
+U 0003c88e Triple
+U 0003c8d6 <MM_INCHES>
+U 0003c906 Auto Split
+U 0003c93e Parallel Fill
+U 0003c960 MS Sans Serif
+U 0003c998 Fill Stitch Angle:
+U 0003c9f8 msctls_updown32
+U 0003ca18 Spin1
+U 0003ca34 c.zP
+U 0003ca86 Appliqué
+U 0003ca9a MS Sans Serif
+U 0003cace Cover Stitch
+U 0003cb02 Width:
+U 0003cb42 msctls_updown32
+U 0003cb62 Spin1
+U 0003cb86 Inside:
+U 0003cba0 2 (¢
+U 0003cbca Outside:
+U 0003cbe8 ¶ (¢
+U 0003cc12 <MM_INCHES>
+U 0003cc7e Drawing Object
+U 0003cc9e MS Sans Serif
+U 0003ccd2 Line
+U 0003ccf6 Style:
+U 0003cd3a Width:
+U 0003cd7a msctls_updown32
+U 0003cdb6 Color...
+U 0003cdfe Fill
+U 0003ce22 Style:
+U 0003ce66 Color...
+U 0003ceae <MM_INCHES>
+U 0003cede Color Gradient
+U 0003cefe MS Sans Serif
+U 0003cf32 Accordion Spacing
+U 0003cf6e Profile
+U 0003cf96 Dec-Linear
+U 0003cfc6 Linear
+U 0003cfee Values
+U 0003d016 Maximum Spacing:
+U 0003d06a msctls_updown32
+U 0003d08a Generic1
+U 0003d0d6 Minimum Spacing is preset to 0.4mm
+U 0003d136 Anti Stretch
+U 0003d152 MS Sans Serif
+U 0003d186 Pull Compensation:
+U 0003d1b8 ]'2=
+U 0003d202 Overlap Allowance:
+U 0003f3ae Layout
+U 0003f3be MS Sans Serif
+U 0003f412 Cancel
+U 0003f43a Baseline
+U 0003f482 Length:
+U 0003f4c2 msctls_updown32
+U 0003f4e2 Generic1
+U 0003f50e <MM_INCHES>
+U 0003f53e Line Angle:
+U 0003f586 msctls_updown32
+U 0003f5a6 Generic1
+U 0003f5ee Radius X:
+U 0003f632 msctls_updown32
+U 0003f652 Generic1
+U 0003f67e <MM_INCHES>
+U 0003f6ae Radius Y:
+U 0003f6f2 msctls_updown32
+U 0003f712 Generic1
+U 0003f73e <MM_INCHES>
+U 0003f76e Justif. Angle:
+U 0003f7be msctls_updown32
+U 0003f7de Generic1
+U 0003f826 Tilt:
+U 0003f862 msctls_updown32
+U 0003f882 Generic1
+U 0003f8ca Arc Angle:
+U 0003f912 msctls_updown32
+U 0003f932 Generic1
+U 0003f97a Position
+U 0003f9a6 Below
+U 0003f9ca Through
+U 0003f9f2 Above
+U 0003fa16 Spacing
+U 0003fa3e Letter Spacing:
+U 0003fa8e msctls_updown32
+U 0003faae Generic1
+U 0003fada % of Height
+U 0003fb22 msctls_updown32
+U 0003fb42 Generic1
+U 0003fb6e <MM_INCHES>
+U 0003fb9e Word Spacing:
+U 0003fbea msctls_updown32
+U 0003fc0a Generic1
+U 0003fc36 % of Height
+U 0003fc7e msctls_updown32
+U 0003fc9e Generic1
+U 0003fcca <MM_INCHES>
+U 0003fcfa Line Spacing:
+U 0003fd46 msctls_updown32
+U 0003fd66 Generic1
+U 0003fd92 % of Height
+U 0003fdda msctls_updown32
+U 0003fdfa Generic1
+U 0003fe26 <MM_INCHES>
+U 0003fe56 Orientation
+U 0003fe86 Baseline
+U 0003feb2 Design
+U 0003ff0e msctls_updown32
+U 0003ff2e Generic1
+U 0003ff76 New Alphabet
+U 0003ff92 MS Sans Serif
+U 0003ffc6 Alphabet Name:
+U 0004001a Default Letter Spacing:
+U 0004007a msctls_updown32
+U 0004009a Generic1
+U 000400c6 % of Height
+U 000400f6 Default Join Type:
+U 00040128 `9dH
+U 00040172 Cancel
+U 0004019a List Alphabets of Type
+U 000401d4 `MdM
+U 000401fe Modify Alphabet
+U 00040220 MS Sans Serif
+U 00040252 Name:
+U 00040292 Default Letter Spacing:
+U 000402f2 msctls_updown32
+U 00040312 Generic1
+U 0004033e % of Height
+U 0004036e Rename...
+U 0004039a Delete
+U 000403c2 Name:
+U 000403d8 ]mVC
+U 00040402 Rename...
+U 0004042e Delete
+U 00040476 Cancel
+U 0004049e Save
+U 000404c2 Alphabet
+U 000404ee Letter
+U 00040516 Default Join Type:
+U 00040548 ]KVH
+U 00040576 Rename Alphabet
+U 00040598 MS Sans Serif
+U 000405ca Old Alphabet:
+U 000405fe insert alphabet name here
+U 0004064a New Alphabet:
+U 000406ba Cancel
+U 000406e6 Rename Letter
+U 00040704 MS Sans Serif
+U 00040736 Alphabet:
+U 00040762 insert alphabet name here
+U 000407ae Old Letter:
+U 000407de insert old letter name here
+U 0004082e New Letter:
+U 0004089a Cancel
+U 000408c6 Symbol Selection
+U 000408ea MS Sans Serif
+U 0004091e Symbol Set :
+U 000409fa Selection :
+U 00040a5e msctls_updown32
+U 00040a7e Generic1
+U 00040aaa <MM_INCHES>
+U 00040ada Make Current
+U 00040b0e Cancel
+U 00040b36 Delete
+U 00040b5e Copy
+U 00040b82 Paste
+U 00040b98 «ÓI#
+U 00040ba6 Border Width
+U 00040bde Make Letter
+U 00040bf8 MS Sans Serif
+U 00040c2a Alphabet Name:
+U 00040c7e New...
+U 00040ca6 Letter:
+U 00040cea Reference Height:
+U 00040d3e msctls_updown32
+U 00040d5e Generic1
+U 00040d8a <MM_INCHES>
+U 00040dba Digitize Reference Height
+U 00040e26 Cancel
+U 00040e4e Remove Functions
+U 00040e8e Lettering
+U 00040ea4 MS Sans Serif
+U 00040ef2 Alphabet:
+U 00040f10 7KK}
+U 00040f3a Height:
+U 00040f7a msctls_updown32
+U 00040f9a Generic1
+U 00040fc6 <MM_INCHES>
+U 00040ff6 Width:
+U 00041036 msctls_updown32
+U 00041056 Generic1
+U 0004109e Italic:
+U 000410de msctls_updown32
+U 000410fe Generic1
+U 00041146 Letter Spacing:
+U 00041196 msctls_updown32
+U 000411b6 Generic1
+U 000411e2 <MM_INCHES>
+U 00041204  L#"
+U 0004124a Baseline
+U 00041276 Free
+U 0004129a CCWcircle
+U 00041306 Vertical Fixed
+U 0004133e Predefined
+U 00041360 ËHp,
+U 0004136e Justification
+U 000413a2 Left
+U 000413c6 Right
+U 000413ea Center
+U 00041412 Full
+U 00041436 Values...
+U 00041462 Select Character...
+U 000414a2 Baseline Radius:
+U 000414f6 msctls_updown32
+U 00041516 Generic1
+U 00041542 <MM_INCHES>
+U 00041576 Sequence
+U 0004158a MS Sans Serif
+U 000415de Cancel
+U 00041606 Letter Sequence
+U 0004163e In Line
+U 00041666 Left To Right
+U 0004169a Right To Left
+U 000416ce Center Out
+U 00041752 Line By Line
+U 00041786 Top Down
+U 000417b2 Bottom Up
+U 000417de Snake
+U 00041802 Stitch Method
+U 00041836 Join
+U 0004184c ßbIH
+U 00041876 Original Stitch Values
+U 000418be Convert TrueType Font
+U 000418ec Helv
+U 0004190e &Font:
+U 00041952 Font st&yle:
+U 000419a2 Sample
+U 000419ca AaBbYyZz
+U 000419f6 Conversion Values...
+U 00041a3a Font name:
+U 00041a86 Character Set
+U 00041aba Extended ASCII
+U 00041af2 All characters
+U 00041b4a Cancel
+U 00041b72 &Size:
+U 00041bb6 &Apply
+U 00041bde &Help
+U 00041c02 Effects
+U 00041c2a Stri&keout
+U 00041c5a &Underline
+U 00041c8a &Color:
+U 00041cea Sc&ript:
+U 00041d36 Conversion Values
+U 00041d5c MS Sans Serif
+U 00041d8e Style
+U 00041dce                                  
+U 00041e2a Turning Strokes
+U 00041e62 Match Ends
+U 00041e92 Separate Serifs
+U 00041eca Break Angle:
+U 00041f16 msctls_updown32
+U 00041f36 Generic1
+U 00041f7e Corner Detection Angle:
+U 00041fde msctls_updown32
+U 00041ffe Generic1
+U 00042046 Corner Fraction:
+U 0004209a msctls_updown32
+U 000420ba Generic1
+U 000420e6 Create Overlaps
+U 0004211e "T" junctions:
+U 0004216e msctls_updown32
+U 0004218e Generic1
+U 000421ba <MM_INCHES>
+U 000421ea "O" joins:
+U 00042232 msctls_updown32
+U 00042252 Generic1
+U 0004227e rows
+U 000422a2 Suggest Values
+U 000422da                           
+U 0004232a Complex Fill
+U 0004235e Angle:
+U 0004239e msctls_updown32
+U 000423be Generic1
+U 00042426 Cancel
+U 00042452 MS Sans Serif
+U 000424a2 Add ...
+U 000424ca Delete
+U 000424f2 Rename ...
+U 00042522 Group Members
+U 00042552 SysListView32
+U 0004258a Add ...
+U 000425b2 Delete
+U 000425da Edit ...
+U 00042606 Quick Names...
+U 0004263e Add >
+U 00042662 Add All >>
+U 00042684 É")0
+U 000426a0 ö")1
+U 000426e6 Team Members
+U 00042716 SysListView32
+U 0004274e Remove 
+U 00042776 Remove All 
+U 000427c6 Down
+U 000427ea Show Properties...
+U 0004284a Cancel
+U 00042872 Naming Order
+U 000428a6 Group
+U 000428ce Create Designs
+U 000428ee MS Sans Serif
+U 00042942 Cancel
+U 00042966 SysListView32
+U 0004299e Preview
+U 000429b0 MS Sans Serif
+U 00042a02 Cancel
+U 00042a26 SysListView32
+U 00042a5e Quick Names
+U 00042a78 MS Sans Serif
+U 00042ae6 Cancel
+U 00042b0e Group Member Add/Edit
+U 00042b3c MS Sans Serif
+U 00042b6e Name 1:
+U 00042bb2 Name 2:
+U 00042bf6 Name 3:
+U 00042c5a Cancel
+U 00042c86 Group Name
+U 00042c9e MS Sans Serif
+U 00042cd2 Group Name:
+U 00042d3e Cancel
+U 00042d66 Lettering
+U 00042d7c MS Sans Serif
+U 00042dca Insert Symbol...
+U 00042e22 Alphabet:
+U 00042e40 d_u}
+U 00042e6a Height:
+U 00042eaa msctls_updown32
+U 00042eca Generic1
+U 00042ef6 <MM_INCHES>
+U 00042f26 Width:
+U 00042f66 msctls_updown32
+U 00042f86 Generic1
+U 00042fce Italic:
+U 0004300e msctls_updown32
+U 0004302e Generic1
+U 00043076 Baseline:
+U 00043094 c¤P[
+U 000430be Justification
+U 000430f2 Left
+U 00043116 Center
+U 0004313e Right
+U 00043162 Full
+U 00043186 Conversion Values...
+U 000431bc åw  
+U 00043202 Layout...
+U 0004322e Sequence...
+U 00044f34 333f3
+U 00044f40 3Ì3ÿ
+U 00044fc0 f3fff
+U 00044fcc fÌfÿ
+U 0004503a ÌÌÿÿÌ
+U 000450ca 3ÌfÌ
+U 0004514e ÿÌ3ÿfÿ
+U 00045934 333f3
+U 00045940 3Ì3ÿ
+U 000459c0 f3fff
+U 000459cc fÌfÿ
+U 00045a3a ÌÌÿÿÌ
+U 00045aca 3ÌfÌ
+U 00045b4e ÿÌ3ÿfÿ
+U 00046334 333f3
+U 00046340 3Ì3ÿ
+U 000463c0 f3fff
+U 000463cc fÌfÿ
+U 0004643a ÌÌÿÿÌ
+U 000464ca 3ÌfÌ
+U 0004654e ÿÌ3ÿfÿ
+U 00046d64 333f3
+U 00046d70 3Ì3ÿ
+U 00046df0 f3fff
+U 00046dfc fÌfÿ
+U 00046e6a ÌÌÿÿÌ
+U 00046efa 3ÌfÌ
+U 00046f7e ÿÌ3ÿfÿ
+U 00047794 333f3
+U 000477a0 3Ì3ÿ
+U 00047820 f3fff
+U 0004782c fÌfÿ
+U 0004789a ÌÌÿÿÌ
+U 0004792a 3ÌfÌ
+U 000479ae ÿÌ3ÿfÿ
+U 00048194 333f3
+U 000481a0 3Ì3ÿ
+U 00048220 f3fff
+U 0004822c fÌfÿ
+U 0004829a ÌÌÿÿÌ
+U 0004832a 3ÌfÌ
+U 000483ae ÿÌ3ÿfÿ
+U 00048b94 333f3
+U 00048ba0 3Ì3ÿ
+U 00048c20 f3fff
+U 00048c2c fÌfÿ
+U 00048c9a ÌÌÿÿÌ
+U 00048d2a 3ÌfÌ
+U 00048dae ÿÌ3ÿfÿ
+U 0004a0bc [Ø[³
+U 0004a206 Ð[aA
+U 0004a210 [Ü[nAÿ
+U 0004a21e è[ÁA
+U 0004a228 [ô[ÜAÿ
+U 0004a240 [ô[%Aÿ
+U 0004a8f4 [Ø[³
+U 0004aa3e Ð[aA
+U 0004aa48 [Ü[nAÿ
+U 0004aa56 è[ÁA
+U 0004aa60 [ô[ÜAÿ
+U 0004aa78 [ô[%Aÿ
+U 0004b12c [Ø[³
+U 0004b276 Ð[aA
+U 0004b280 [Ü[nAÿ
+U 0004b28e è[ÁA
+U 0004b298 [ô[ÜAÿ
+U 0004b2b0 [ô[%Aÿ
+U 0004b964 [Ø[³
+U 0004baae Ð[aA
+U 0004bab8 [Ü[nAÿ
+U 0004bac6 è[ÁA
+U 0004bad0 [ô[ÜAÿ
+U 0004bae8 [ô[%Aÿ
+U 0004c19c [Ø[³
+U 0004c2e6 Ð[aA
+U 0004c2f0 [Ü[nAÿ
+U 0004c2fe è[ÁA
+U 0004c308 [ô[ÜAÿ
+U 0004c320 [ô[%Aÿ
+U 0004c9d4 [Ø[³
+U 0004cb1e Ð[aA
+U 0004cb28 [Ü[nAÿ
+U 0004cb36 è[ÁA
+U 0004cb40 [ô[ÜAÿ
+U 0004cb58 [ô[%Aÿ
+U 0004d20c [Ø[³
+U 0004d356 Ð[aA
+U 0004d360 [Ü[nAÿ
+U 0004d36e è[ÁA
+U 0004d378 [ô[ÜAÿ
+U 0004d390 [ô[%Aÿ
+U 0004da44 [Ø[³
+U 0004db8e Ð[aA
+U 0004db98 [Ü[nAÿ
+U 0004dba6 è[ÁA
+U 0004dbb0 [ô[ÜAÿ
+U 0004dbc8 [ô[%Aÿ
+U 0004e27c [Ø[³
+U 0004e3c6 Ð[aA
+U 0004e3d0 [Ü[nAÿ
+U 0004e3de è[ÁA
+U 0004e3e8 [ô[ÜAÿ
+U 0004e400 [ô[%Aÿ
+U 0004eab4 [Ø[³
+U 0004ebfe Ð[aA
+U 0004ec08 [Ü[nAÿ
+U 0004ec16 è[ÁA
+U 0004ec20 [ô[ÜAÿ
+U 0004ec38 [ô[%Aÿ
+U 0004f2b6 CND Save Options
+U 0004f2da MS Sans Serif
+U 0004f30e Superstar Compatible
+U 0004f352 Output Tatami As Complex Fill
+U 0004f3a6 EMB Save Options
+U 0004f3ca MS Sans Serif
+U 0004f41e Cancel
+U 0004f462 Version Number
+U 0004f49e ART Save Options
+U 0004f4c2 MS Sans Serif
+U 0004f516 Cancel
+U 0004f55a Version Number
+U 0004f596 CSD Save Options
+U 0004f5ba MS Sans Serif
+U 0004f616 Smart Design
+U 0004f636 MS Sans Serif
+U 0004f66c SysListView32
+U 0004f688 List1
+U 0004f6a4 T<:t
+U 0004f6b0 SysListView32
+U 0004f6cc List2
+U 0004f6f4 SysListView32
+U 0004f710 List3
+U 0004f73c Values...
+U 0004f770 Image Information
+U 0004f7b4 Width:
+U 0004f7e0 1234.00
+U 0004f810 Image Colors:
+U 0004f874 Height:
+U 0004f8a4 1234.00
+U 0004f8d4 Stitching Options
+U 0004f938 Thread Colors
+U 0004f974 Match Colors to Palette
+U 0004f9c4 Add Colors To Palette
+U 0004fa34 Cancel
+U 0004fa60 Save
+U 0004fa8a MS Sans Serif
+U 0004fc82 xdº^
+U 0004fc98 MS Sans Serif
+U 0004fcca Select Template:
+U 0004fd42 Cancel
+U 0004fd6e Condensed File Input Values
+U 0004fda8 MS Sans Serif
+U 0004fdda Scale Factor
+U 0004fe46 msctls_updown32
+U 0004fe66 Generic1
+U 0004feca msctls_updown32
+U 0004feea Generic1
+U 0004ff16 Adjust
+U 0004ff3e Satin Spacing:
+U 0004ff8e msctls_updown32
+U 0004ffae Generic1
+U 0004fff6 Run Stitch Length:
+U 0005004e msctls_updown32
+U 0005006e Generic1
+U 000500b6 Tatami Spacing:
+U 00050106 msctls_updown32
+U 00050126 Generic1
+U 0005016e Tatami Length:
+U 000501be msctls_updown32
+U 000501de Generic1
+U 00050226 Auto Color Merge
+U 0005027e Effects
+U 000502a6 Autospacing
+U 000502d6 Short Stitches
+U 0005030e Fractional Spacing
+U 0005034e Offset Fraction:
+U 0005037c ÜJ0?
+U 00050398 ¼_ @
+U 000503a6 Default Values
+U 000503de Satin Spacing:
+U 0005042e msctls_updown32
+U 0005044e Generic8
+U 0005047a Stitch Length:
+U 000504ca msctls_updown32
+U 000504ea Generic7
+U 00050516 Maximum Stitch Length:
+U 00050576 msctls_updown32
+U 00050596 Generic2
+U 000505e2 Cancel
+U 0005060a Reset
+U 0005062e Save
+U 00050652 Define Stop Sequence...
+U 0005069a Custom
+U 000506c2 From File
+U 000506ee Revert Design?
+U 0005070e MS Sans Serif
+U 00050782 line 1
+U 000507aa line 2
+U 000507d6 Small Stitches
+U 000507f6 MS Sans Serif
+U 0005084a Cancel
+U 00050872 All stitches smaller than the minimum stitch will be removed from the design
+U 00050926 Minimum Stitch:
+U 00050976 msctls_updown32
+U 00050996 Generic1
+U 000509e2 Dont translate! (Allowed values are from %s to %s mm.)
+U 00050a6e Process
+U 00050a80 MS Sans Serif
+U 00050ab2 Stitch Values
+U 00050ae6 Target Stitches:
+U 00050b3a msctls_updown32
+U 00050b5a Generic1
+U 00050bba msctls_updown32
+U 00050bda Generic1
+U 00050c06 Satin Spacing:
+U 00050c56 msctls_updown32
+U 00050c76 Generic1
+U 00050cd6 msctls_updown32
+U 00050cf6 Generic1
+U 00050d42 Auto Spacing
+U 00050d76 Zigzag Spacing:
+U 00050dc6 msctls_updown32
+U 00050de6 Generic1
+U 00050e46 msctls_updown32
+U 00050e66 Generic1
+U 00050eb2 Tatami Spacing:
+U 00050f02 msctls_updown32
+U 00050f22 Generic1
+U 00050f82 msctls_updown32
+U 00050fa2 Generic1
+U 00050fee Tatami Length:
+U 0005103e msctls_updown32
+U 0005105e Generic1
+U 000510be msctls_updown32
+U 000510de Generic1
+U 0005112a Program Split Spacing:
+U 0005118a msctls_updown32
+U 000511aa Generic1
+U 0005120a msctls_updown32
+U 0005122a Generic1
+U 00051276 Program Split Length:
+U 000512d2 msctls_updown32
+U 000512f2 Generic1
+U 00051352 msctls_updown32
+U 00051372 Generic1
+U 000513be Run Stitch Length:
+U 00051416 msctls_updown32
+U 00051436 Generic1
+U 00051496 msctls_updown32
+U 000514b6 Generic1
+U 00051502 Pull Compensation:
+U 0005155a msctls_updown32
+U 0005157a Generic1
+U 000515a6 +/- mm
+U 000515e6 msctls_updown32
+U 00051606 Generic1
+U 00051652 Dimensions
+U 00051682 Width:
+U 000516c2 msctls_updown32
+U 000516e2 Generic1
+U 00051742 msctls_updown32
+U 00051762 Generic1
+U 0005178e <MM_INCHES>
+U 000517be Height:
+U 000517fe msctls_updown32
+U 0005181e Generic1
+U 0005187e msctls_updown32
+U 0005189e Generic1
+U 000518ca <MM_INCHES>
+U 0005191a Cancel
+U 00051942 Recognition...
+U 0005197e Adjust Stitching
+U 000519a2 MS Sans Serif
+U 000519d6 Adjust densities
+U 00051a2a msctls_updown32
+U 00051a4a Generic1
+U 00051a92 Pull Compensation:
+U 00051aea msctls_updown32
+U 00051b0a Generic1
+U 00051b76 Cancel
+U 00051b9e Tablet Setup
+U 00051bba MS Sans Serif
+U 00051bee Drawing Scale
+U 00051c3a msctls_updown32
+U 00051c5a Generic1
+U 00051c86 Resize Design to match Drawing
+U 00051cde Drawing Position
+U 00051d1a Register Drawing
+U 00051d56 Shift Drawing
+U 00051d8a Menu Chart
+U 00051dba Register Menu
+U 00051e0e Cancel
+U 00051e36 Save as defaults
+U 00051e72 Defaults
+U 00051e9e Choose Product
+U 00051ebe MS Sans Serif
+U 00051f12 Cancel
+U 00051f3a &All Options
+U 00051f6e &No Options
+U 00051fba Cost Options
+U 00051fee Available Products
+U 0005202e Choose Model
+U 0005204a MS Sans Serif
+U 0005209e Cancel
+U 000520e2 Available Product Models
+U 00052136 About
+U 00052148 MS Sans Serif
+U 000521a4 DON'T TRANSLATE Through trial and error this static control is representative of the bitmap
+U 0005225c Invisible to be sure.
+U 000522e6 Choose Read Tape Type
+U 00052314 MS Sans Serif
+U 00052366 Cancel
+U 000523aa Choose input machine
+U 000523ee Transform
+U 00052404 MS Sans Serif
+U 00052436 &Size
+U 00052472 msctls_updown32
+U 00052492 Generic1
+U 000524be <MM_INCHES>
+U 000524ee &Angle
+U 0005252e msctls_updown32
+U 0005254e Generic1
+U 00052596 Mirror
+U 000525de Cancel
+U 00052626 Choose Write Tape Type
+U 00052656 MS Sans Serif
+U 000526aa Cancel
+U 000526ee Choose output machine
+U 00052736 Print Options
+U 00052754 MS Sans Serif
+U 00052786 Production Summary
+U 000527c6 Production Worksheet
+U 0005280a Colorways...
+U 0005283e Information to Print
+U 00052882 &Full Information
+U 000528be &Short Information
+U 000528fe Stop Se&quence
+U 00052936 &None
+U 0005295a Customize ...
+U 0005298e Current Colorway
+U 000529ca Selected Colorways
+U 000529fc Ü"nG
+U 00052a0a Zoom
+U 00052a2e &1.0
+U 00052a52 Show &All
+U 00052a7e &Custom:
+U 00052ac2 msctls_updown32
+U 00052ae2 Generic1
+U 00052b0e Graphics
+U 00052b3a Outlines
+U 00052b66 Stitches
+U 00052b92 Needle Points
+U 00052bc6 Connectors
+U 00052bf6 Functions
+U 00052c22 Standard
+U 00052c4e Drawings
+U 00052c7a Background
+U 00052caa Crop to design
+U 00052ce2 TrueView(TM)
+U 00052d16 Draft Quality
+U 00052d4a Display Repeats...
+U 00052d7c Üong
+U 00052d8a General
+U 00052db2 Print in &English
+U 00052dee Extents Box Around Design
+U 00052e3a Company &Name:
+U 00052e64 â§\a
+U 00052e8e Color Film
+U 00052ede Cancel
+U 00052f06 Print
+U 00052f14 MS Sans Serif
+U 00052f46 Printer
+U 00052f6e &Name:
+U 00052fb2 &Properties
+U 00052fe2 Status:
+U 00053026 Type:
+U 00053066 Where:
+U 000530aa Comment:
+U 000530f2 Print to fi&le
+U 0005312a Print range
+U 0005315a &All
+U 0005317e Pa&ges
+U 000531a6 &Selection
+U 000531d6 &from:
+U 0005321a &to:
+U 0005324c  \x@
+U 0005325a Copies
+U 00053282 Number of &copies:
+U 000532fa C&ollate
+U 00053346 Cancel
+U 0005336e Options...
+U 0005339e Chenille Shortcut Filter
+U 000533d2 MS Sans Serif
+U 00053406 Shortcut Angle:
+U 00053456 msctls_updown32
+U 00053476 Generic1
+U 000534be Small Stitches:
+U 0005350e msctls_updown32
+U 0005352e Generic1
+U 0005355a <MM_INCHES>
+U 000535aa Cancel
+U 000535d6 Toolbars
+U 000535ea MS Sans Serif
+U 0005363e Standard
+U 0005366a Stitch Types
+U 0005369e Chenille Option
+U 000536d6 Chenille
+U 00053702 Generate
+U 0005372e Styles
+U 00053756 Left
+U 0005377a Show Vertical
+U 000537ae Pointer
+U 000537d6 Input Method
+U 0005380a Travel
+U 00053832 Drawing
+U 0005385a Bottom
+U 00053882 Color
+U 000538a6 Colorways
+U 000538d2 Status Line 
+U 00053906 Prompt Message
+U 0005395e Cancel
+U 00053986 Shaping
+U 000539ae Toolbars
+U 000539c2 MS Sans Serif
+U 00053a16 Standard
+U 00053a42 Tufting
+U 00053a6a Styles
+U 00053a92 Left
+U 00053ab6 Show Vertical
+U 00053aea Pointer
+U 00053b12 Input
+U 00053b36 Travel
+U 00053b5e Drawing
+U 00053b86 Bottom
+U 00053bae Color
+U 00053bd2 Status Line 
+U 00053c06 Prompt Message
+U 00053c5e Cancel
+U 00053c86 PES Hoop Type
+U 00053ca4 MS Sans Serif
+U 00053cf6 Cancel
+U 00053d1e Standard PES Hoops
+U 00053d5e User Defined Hoops
+U 00053d9e PES 100 x 100
+U 00053dd2 PES 180 x 130
+U 00053e06 PES 260 x 160
+U 00053e52 msctls_updown32
+U 00053e72 Spin1
+U 00053eae msctls_updown32
+U 00053ece Spin1
+U 00053ef2 Hoop Type:
+U 00053f22 Height
+U 00053f4a Width
+U 00053f6e Move Stitch
+U 00053f88 MS Sans Serif
+U 00053fba Stitch Number  
+U 0005400a msctls_updown32
+U 0005402a Generic1
+U 0005406e msctls_updown32
+U 0005408e Generic2
+U 000540da Cancel
+U 0005413e DXF File Options
+U 00054162 MS Sans Serif
+U 000541b6 Cancel
+U 000541fa DXF Units of Measurement
+U 0005424e Slow Redraw
+U 0005426c MS Sans Serif
+U 00054324  Speed:              (s/s)
+U 00054394 msctls_trackbar32
+U 000543b8 Slider1
+U 000543e8 Options
+U 00054418 HideBefore
+U 0005444c AutoScroll
+U 0005447e Select By Stitch Type
+U 000544ac MS Sans Serif
+U 000544de Stitch &Types
+U 0005454e Cancel
+U 00054576 Slow Redraw
+U 00054590 MS Sans Serif
+U 000545c2 Cancel
+U 000545ee DST Save Options
+U 00054612 MS Sans Serif
+U 00054646 Save Condition File
+U 00054686 Design Integrity Check
+U 000546b6 MS Sans Serif
+U 000546ea Close
+U 0005470e Error(s) detected:
+U 0005478e Image
+U 0005479c MS Sans Serif
+U 000547ce Scale/Rotate options
+U 00054812 No smoothing
+U 00054846 Smoothing (dark lines)
+U 0005488e Smoothing (light lines)
+U 000548d6 Holes
+U 000548e4 MS Sans Serif
+U 00054916 Offset :
+U 0005495a msctls_updown32
+U 0005497a Generic1
+U 000549e6 Cancel
+U 00054a0e Offset Object
+U 00054a2c MS Sans Serif
+U 00054a5e Offset :
+U 00054aa2 msctls_updown32
+U 00054ac2 Generic1
+U 00054b2e Cancel
+U 00054b56 Object Type:
+U 00054ba6 Resequence By Number
+U 00054bd2 MS Sans Serif
+U 00054c06 Position
+U 00054c32 Before
+U 00054c5a After
+U 00054c7e the object #
+U 00054cca msctls_updown32
+U 00054cea Generic1
+U 00054d36 Cancel
+U 00054d5e Customize
+U 00054d74 MS Sans Serif
+U 00054da6 Blocks to Print
+U 00054dde Left/Right/Up/Down
+U 00054e1e End X/Y
+U 00054e46 Max/Min Stitch
+U 00054e7e Thread Chart Type
+U 00054eba Thread Usage
+U 00054eee Total Bobbin
+U 00054f22 Columns in Stop Sequence
+U 00054f6e Stitch Count
+U 00054fa2 Needle Number
+U 00054fd6 Brand
+U 00054ffa Element Name
+U 0005502e Use Left Side
+U 00055062 Show Colors in Summary
+U 000550ca Cancel
+U 000550f6 Customize Worksheet
+U 00055120 MS Sans Serif
+U 00055152 Blocks to Print
+U 0005518a Left/Right/Up/Down
+U 000551ca Max/Min Vector
+U 00055202 Yarn Chart Type
+U 0005523a Columns in Stop Sequence
+U 00055286 Vector Count
+U 000552ba Element Name
+U 000552ee Use Left Side
+U 00055342 Cancel
+U 0005536e Design Repeat
+U 0005538c MS Sans Serif
+U 000553de Cancel
+U 00055406 Repeat
+U 0005544a Repeat Distance
+U 0005549e Needle Spacing
+U 00055536 Print Options
+U 00055554 MS Sans Serif
+U 000555a6 Cancel
+U 000555ce Zoom
+U 00055612 Fit To Page
+U 00055642 Graphics
+U 0005566e 3D View
+U 00055696 Hoop
+U 000556ba Border
+U 000556e2 Start / End Markers
+U 00055726 Resequence
+U 0005573e MS Sans Serif
+U 00055772 View
+U 00055796 Objects
+U 000557be Colors
+U 000557e2 SysListView32
+U 000557fe Generic1
+U 00055826 SysListView32
+U 00055842 Generic1
+U 000558ae Down
+U 000558d2 Bottom
+U 0005591a Cancel
+U 00055942 Delete
+U 0005596e Select Colors
+U 0005598c MS Sans Serif
+U 000559de Cancel
+U 00055a26 Automatic Stitching Values
+U 00055a5e MS Sans Serif
+U 00055a92 Object Stitching Selection
+U 00055ae2 Style:
+U 00055b0a Maximum Width:
+U 00055b42 Minimum Width:
+U 00055b9a Line Objects
+U 00055c1c Û0`9
+U 00055c46 Narrow Objects
+U 00055c7e ThkLnMxWid
+U 00055cfc ÛN`:
+U 00055d26 Wide Objects 
+U 00055d5a ThkLnMxWid
+U 00055dd8 Û]`<
+U 00055e02 Other Objects 
+U 00055e3a ThkLnMxWid
+U 00055e7c Ûk`;
+U 00055ea6 Object Options 
+U 00055ede Detect lines in objects
+U 00055f26 Complex Fill above width:
+U 00055fae Preferred stitch angle:
+U 00056012 Object Sequence
+U 0005604a Maximum travel path length:
+U 000560d6 Stitch under objects below width:
+U 0005616e Filter small objects below width:
+U 00056226 Cancel
+U 0005626e Print Options
+U 0005628c MS Sans Serif
+U 000562be                                             
+U 00056332 Template Mode
+U 00056366 Design Mode
+U 000563b6 Cancel
+U 000563de Help
+U 00056402 Display Actual Size
+U 00056442 Fit To Page
+U 00056472 Display Hoop
+U 000564a6 Display Image
+U 000564de Capture Design Bitmap
+U 0005650c MS Sans Serif
+U 0005655e Cancel
+U 00056586 Selection
+U 000565b2 Whole Design (1:1)
+U 000565f2 Current Design Window
+U 00056636 Custom
+U 0005665e Include background/fabric
+U 000566aa Output
+U 000566d2 Save to disk
+U 00056706 Send via email
+U 0005673e Both Save and Send
+U 0005677e Format
+U 000567c6 Touch Up
+U 000567da MS Sans Serif
+U 0005682e Cancel
+U 00056856 Paint
+U 0005687a Edit picture using
+U 000568ba Photopaint
+U 000568ea Paint Shop Pro
+U 00056926 Show Stitches
+U 00056944 MS Sans Serif
+U 00056976 Longer Than
+U 000569a6 Shorter Than
+U 000569da Axial X,Y
+U 00056a06 Radial
+U 00056a46 msctls_updown32
+U 00056a66 Spin1
+U 00056ac2 msctls_updown32
+U 00056ae2 Spin1
+U 00056b26 Axial X,Y
+U 00056b52 Radial
+U 00056b92 msctls_updown32
+U 00056bb2 Spin1
+U 00056c0e msctls_updown32
+U 00056c2e Spin1
+U 00056c92 Cancel
+U 00056cc6 Reduce Colors
+U 00056ce8 MS Sans Serif
+U 00056d44 Reduce Colors
+U 00056d80 By Number
+U 00056dd4 Automatic selection
+U 00056e18 msctls_trackbar32
+U 00056e3c Slider1
+U 00056ed0 Cancel
+U 00056efc Save Bitmap As ...
+U 00056fe0 Noise Filtering
+U 00057020 Min. Color Area:
+U 00057060 sq mm
+U 0005708c Min. line length:
+U 000570f4 Color Count:
+U 00057154 Less
+U 0005717c More
+U 000571a6 Sharpen Outlines
+U 000571ce MS Sans Serif
+U 00057204 msctls_trackbar32
+U 00057228 Slider2
+U 00057258 Show Color Areas
+U 000572fc Cancel
+U 00057328 Save Bitmap As ...
+U 0005736c zoom_in
+U 0005739c zoom_out
+U 000573cc zoom_box
+U 000573fc show_all
+U 000574bc Color Count:
+U 0005751c Solid Color
+U 00057554 Outline Appearance
+U 00057598 Min. Color Area:
+U 000575d8 sq mm
+U 00057604 Min. line length:
+U 00057666 Color Blending
+U 00057686 MS Sans Serif
+U 000576ba Profiles
+U 000576e6 Bottom Layer:
+U 0005771a Linear
+U 00057742 Inc_Exp
+U 0005776a Convex
+U 00057792 Convex - Concave
+U 000577ce Top Layer:
+U 000577fe Dec-Linear
+U 0005782e Dec-Exp
+U 00057856 Concave
+U 0005787e Concave - Convex
+U 000578d6 Maximum Spacing:
+U 0005792a msctls_updown32
+U 0005794a Generic1
+U 00057996 Bottom Layer
+U 000579ca Top Layer
+U 00057a12 Maximum Spacing:
+U 00057a66 msctls_updown32
+U 00057a86 Generic1
+U 00057af2 Cancel
+U 00057b1e Schiffli Arrangement
+U 00057b4a MS Sans Serif
+U 00057b7e Parts
+U 00057b9e SysListView32
+U 00057bba Generic1
+U 00057be2 SysListView32
+U 00057bfe Generic1
+U 00057c4a Cancel
+U 00057c72 Create Expanded Design
+U 00057cbe Add Borders
+U 00057cd8 MS Sans Serif
+U 00057d2a Cancel
+U 00057d52 Offset :
+U 00057d96 msctls_updown32
+U 00057db6 Generic1
+U 00057e06 Set name of the object(s)
+U 00057e3c MS Sans Serif
+U 00057e6e Name
+U 00057ece Cancel
+U 0005b054 333f3
+U 0005b060 3Ì3ÿ
+U 0005b0e0 f3fff
+U 0005b0ec fÌfÿ
+U 0005b15a ÌÌÿÿÌ
+U 0005b1ea 3ÌfÌ
+U 0005b26e ÿÌ3ÿfÿ
+U 0005b5ac 333f3
+U 0005b5b8 3Ì3ÿ
+U 0005b638 f3fff
+U 0005b644 fÌfÿ
+U 0005b6b2 ÌÌÿÿÌ
+U 0005b742 3ÌfÌ
+U 0005b7c6 ÿÌ3ÿfÿ
+U 0005b986 Open
+U 0005b992 Helv
+U 0005b9b2 File &Name:
+U 0005ba1a &Directories:
+U 0005ba5c d \D
+U 0005ba86 List Files of &Type:
+U 0005bae6 Dri&ves:
+U 0005bb04 dr\D
+U 0005bb4e Cancel
+U 0005bb76 &Help
+U 0005bb9a &Read Only
+U 0005bbca Net&work...
+U 0005bbfa &Options...
+U 0005bc56 MS Sans Serif
+U 0005bdc8 &Options...
+U 0005be20 Preview
+U 0005be50 As Bitmap
+U 0005be84 Flatten
+U 0005bebe MS Sans Serif
+U 0005bf18 &Options...
+U 0005bf50 Save Icon
+U 0005bf8e MS Sans Serif
+U 0005bff6 MS Sans Serif
+U 0005c050 Preview
+U 0005c14c <MM_INCHES>
+U 0005c1c8 <MM_INCHES>
+U 0005c200 Flatten
+U 0005c230 As Bitmap
+U 0005c26e MS Sans Serif
+U 0005c2ca MS Sans Serif
+U 0005c2fe Select Open/Save folder
+U 0005c35e SysListView32
+U 0005c37a List1
+U 0005c3de X <--
+U 0005c41e Select the drive inserted ATA PC Card
+U 0005c4d6 Write
+U 0005c4fa Read
+U 0005c51e Erase
+U 0005c546 Organize Styles
+U 0005c568 MS Sans Serif
+U 0005c59a Available Styles
+U 0005c5f2 Close
+U 0005c616 New...
+U 0005c63e Edit...
+U 0005c666 Rename
+U 0005c68e Remove
+U 0005c6b6 Remove All
+U 0005c6e6 Merge...
+U 0005c712 Favorites...
+U 0005c746 Organize Favorites
+U 0005c76e MS Sans Serif
+U 0005c7a2 Favorites
+U 0005c80a Cancel
+U 0005c832 Move Up
+U 0005c85a Move Down
+U 0005c886 Add...
+U 0005c8ae Remove
+U 0005c8d6 Use Object Style
+U 0005c8fa MS Sans Serif
+U 0005c92e Select Object Style:
+U 0005c9ae Cancel
+U 0005c9d6 New Object Style
+U 0005c9fa MS Sans Serif
+U 0005ca2e Style Name
+U 0005ca7a Based On Style
+U 0005cace Add to Favorites
+U 0005cb2a Cancel
+U 0005cb56 Rename Object Style
+U 0005cb80 MS Sans Serif
+U 0005cbb2 Old Name
+U 0005cbfa New Name
+U 0005cc62 Cancel
+U 0005cc8e Fabric Settings
+U 0005ccb0 MS Sans Serif
+U 0005cce2 Fabric Type
+U 0005cd2e Use Standard Settings
+U 0005cd72 Adjust Settings To
+U 0005cdca msctls_updown32
+U 0005cdea Spin1
+U 0005ce0e Apply to Lettering Objects
+U 0005ce7e Cancel
+U 0005cec6 Garment
+U 0005ced8 MS Sans Serif
+U 0005cf26 Stretchiness
+U 0005cf56 msctls_trackbar32
+U 0005cf7a Slider1
+U 0005cfc2 medium
+U 0005cfea high
+U 0005d00e Examples
+U 0005d03a Static
+U 0005d062 Save
+U 0005d0a6 Cancel
+U 0005d0ce Colorways
+U 0005d0e4 MS Sans Serif
+U 0005d116 Threads in Palette:
+U 0005d16e msctls_updown32
+U 0005d18e Generic1
+U 0005d1ee {AB0054D5-3135-11D4-AD27-008048FB12C0}
+U 0005d28e New...
+U 0005d2b6 Rename...
+U 0005d2e2 Delete...
+U 0005d30e Edit...
+U 0005d3aa Assign
+U 0005d3d2 Find:
+U 0005d412 in column:
+U 0005d45a SysListView32
+U 0005d476 List1
+U 0005d49a Match
+U 0005d4da Modify Charts...
+U 0005d516 Match Drawing Color
+U 0005d540 MS Sans Serif
+U 0005d572 Threads in Palette:
+U 0005d5ca msctls_updown32
+U 0005d5ea Generic1
+U 0005d64a {AB0054D5-3135-11D4-AD27-008048FB12C0}
+U 0005d706 Assign
+U 0005d72e Find:
+U 0005d76e in column:
+U 0005d7b6 SysListView32
+U 0005d7d2 List1
+U 0005d7f6 Match
+U 0005d836 Modify Charts...
+U 0005d892 Cancel
+U 0005d8be New Colorway
+U 0005d8da MS Sans Serif
+U 0005d90e New Colorway Name:
+U 0005d96a Based on Colorway:
+U 0005d99c U!YP
+U 0005d9e6 Cancel
+U 0005da0e Rename Colorway
+U 0005da30 MS Sans Serif
+U 0005da62 Old Name:
+U 0005daaa New Name:
+U 0005db12 Cancel
+U 0005db3e Thread Colors
+U 0005db5c MS Sans Serif
+U 0005db8e Threads in Design:
+U 0005dbe6 msctls_updown32
+U 0005dc06 Generic1
+U 0005dc4a {AB0054D5-3135-11D4-AD27-008048FB12C0}
+U 0005dcea Edit...
+U 0005dd66 Thread Chart:
+U 0005ddb6 Assign
+U 0005ddde Modify Charts...
+U 0005de16 SysListView32
+U 0005de32 List1
+U 0005de56 Search:
+U 0005de9a Code
+U 0005debe Description
+U 0005deee Edit Thread
+U 0005df08 MS Sans Serif
+U 0005df56 Mix...
+U 0005dfc4 IY/M
+U 0005e00e Cancel
+U 0005e036 Code:
+U 0005e05a Brand:
+U 0005e082 Description:
+U 0005e0b6 Thickness:
+U 0005e0e6 Thread
+U 0005e10e Color:
+U 0005e136 Modify Thread Chart
+U 0005e160 MS Sans Serif
+U 0005e1ae Rename...
+U 0005e1da New...
+U 0005e202 Delete
+U 0005e226 SysListView32
+U 0005e242 List1
+U 0005e274 Ò£`x
+U 0005e29e Add...
+U 0005e2c6 Remove
+U 0005e2ee Edit...
+U 0005e316 Copy From...
+U 0005e34a Clear All
+U 0005e376 Close
+U 0005e39a Find:
+U 0005e3be in column:
+U 0005e3ee Name:
+U 0005e412 Thread Chart
+U 0005e446 Threads
+U 0005e46e Rename Thread Chart
+U 0005e498 MS Sans Serif
+U 0005e4ca Old Name:
+U 0005e4f6 .........
+U 0005e522 New Name:
+U 0005e58a Cancel
+U 0005e5b6 New Thread Chart
+U 0005e5da MS Sans Serif
+U 0005e60e Name:
+U 0005e66e Cancel
+U 0005e696 Copy From
+U 0005e6ac MS Sans Serif
+U 0005e6f6 SysListView32
+U 0005e712 List1
+U 0005e78e Cancel
+U 0005e7b6 Find:
+U 0005e7da in column:
+U 0005e80a Name:
+U 0005e82e Thread Chart
+U 0005e866 Modify Thread Chart
+U 0005e890 MS Sans Serif
+U 0005e8de Rename...
+U 0005e90a New...
+U 0005e932 Delete
+U 0005e956 SysListView32
+U 0005e972 List1
+U 0005e9b2 Add...
+U 0005e9da Remove
+U 0005ea02 Edit...
+U 0005ea2a Copy From...
+U 0005ea5e Clear All
+U 0005ea8a Close
+U 0005eaae Search
+U 0005ead6 Name:
+U 0005eafa Thread Chart
+U 0005eb2e Threads
+U 0005eb56 Code
+U 0005eb7a Description
+U 0005ebae Set Color
+U 0005ebc4 MS Sans Serif
+U 0005ebf6 Apply to
+U 0005ec22 &Selected object only
+U 0005ec66 &All consecutive objects of the same color
+U 0005ecd6 Colors
+U 0005ed3a Cancel
+U 0005ed6a MS Sans Serif
+U 0005edda Cancel
+U 0005ee02 Thread
+U 0005ee2a Code
+U 0005ee4e Brand
+U 0005ee72 Description
+U 0005eea2 Thickness
+U 0005eed2 MS Sans Serif
+U 0005ef42 Cancel
+U 0005ef6a Move Up
+U 0005ef92 Move Down
+U 0005efbe Thread
+U 0005efe6 Code
+U 0005f00a Brand
+U 0005f02e Description
+U 0005f05e Thickness
+U 0005f092 MS Sans Serif
+U 0005f102 Cancel
+U 0005f12a Thread
+U 0005f152 Code
+U 0005f176 Brand
+U 0005f19a Description
+U 0005f1ca Thickness
+U 0005f1f6 View By Color
+U 0005f214 MS Sans Serif
+U 0005f282 Cancel
+U 0005f2aa All Colors
+U 0005f2da Thread
+U 0005f302 Code
+U 0005f326 Brand
+U 0005f34a Description
+U 0005f37a Thickness
+U 000613f6 VS_VERSION_INFO
+U 00061452 StringFileInfo
+U 00061476 040904B0
+U 0006148e CompanyName
+U 000614ae FileDescription
+U 000614d0 CTEST1 MFC Application
+U 00061506 FileVersion
+U 00061520 1, 0, 0, 1
+U 0006153e InternalName
+U 00061558 CTEST1
+U 0006156e LegalCopyright
+U 0006158c Copyright © 1995
+U 000615b6 LegalTrademarks
+U 000615de OriginalFilename
+U 00061600 CTEST1.EXE
+U 0006161e ProductName
+U 00061638 CTEST1 Application
+U 00061666 ProductVersion
+U 00061684 1, 0, 0, 1
+U 000616a2 VarFileInfo
+U 000616c2 Translation
+U 000616f6 Hardware Setup
+U 00061716 MS Sans Serif
+U 0006174a Close
+U 0006176a SysListView32
+U 00061786 Generic1
+U 000617b2 New...
+U 000617da Delete
+U 00061802 Values...
+U 0006184a Type:
+U 0006186e Digitizer Setup
+U 00061890 MS Sans Serif
+U 000618c2 Name:
+U 00061902 Comment:
+U 0006194a Format
+U 00061972 List of Formats
+U 0006199c QIPX
+U 000619c6 Modify...
+U 000619f2 Delete
+U 00061a1a New...
+U 00061a42 Input Mode:
+U 00061a8e Connected To
+U 00061ac2 Port:
+U 00061ad8 Q¨2I
+U 00061b02 Setup...
+U 00061b4e Cancel
+U 00061b76 Digitizer User-Defined Format Setup
+U 00061bc0 MS Sans Serif
+U 00061bf2 Format Name
+U 00061c3e Format String
+U 00061c8e Scale
+U 00061cca msctls_updown32
+U 00061cea Generic1
+U 00061d16 Button Map
+U 00061d5e msctls_updown32
+U 00061d7e Generic1
+U 00061dc2 msctls_updown32
+U 00061de2 Generic1
+U 00061e26 msctls_updown32
+U 00061e46 Generic1
+U 00061e8a msctls_updown32
+U 00061eaa Generic1
+U 00061ef6 Cancel
+U 00061f1e Melco Network Card Setup
+U 00061f52 MS Sans Serif
+U 00061f86 Card:
+U 00061faa Melnet
+U 00061fd2 IRQ:
+U 00062012 Base Address:
+U 00062038 O&6?
+U 00062062 DMA:
+U 00062078 O56=
+U 000620c2 Cancel
+U 000620ee Screen Calibration
+U 00062116 MS Sans Serif
+U 0006214a To calibrate the screen, measure the dimensions of this dialog box with a ruler and enter the measured values here: 
+U 0006224e Width:
+U 00062276 Height:
+U 000622ba <MM_INCHES>
+U 00062306 <MM_INCHES>
+U 00062356 Cancel
+U 0006237e Embroidery Machine Connection
+U 000623bc MS Sans Serif
+U 00062434 Qb]B
+U 00062492 msctls_updown32
+U 000624ce Setup...
+U 00062524 ±¿`,
+U 0006258a Cancel
+U 000625b2 Connected to
+U 00062606 Machine Identification
+U 0006264e Machine Type
+U 00062682 Port:
+U 000626a6 Protocol:
+U 000626d2 Name:
+U 000626f6 Comment:
+U 00062722 Available:
+U 00062752 For this machine:
+U 000627aa Peripheral Name:
+U 000627e6 Find...
+U 0006280e Auto Delete
+U 0006283e Auto Queue
+U 0006286e Auto Download
+U 000628a6 Melco Ethernet Network
+U 000628d6 MS Sans Serif
+U 0006290a Cancel
+U 00062932 Searching for machines on the Melco Ethernet Network. This may take a couple of minutes.
+U 000629e4 Please wait...
+U 0006375a MS Sans Serif
+U 0006378e &Print...
+U 000637ba &Next Page
+U 000637ea Pre&v Page
+U 00063836 Zoom &In
+U 00063862 Zoom &Out
+U 0006388e &Close
+U 000638b6 Option&s...
+U 0006390a MS Sans Serif
+U 0006393e &Print...
+U 0006396a &Next Page
+U 0006399a Pre&v Page
+U 000639e6 Zoom &In
+U 00063a12 Zoom &Out
+U 00063a3e &Close
+U 00063a86 Stop Sequence
+U 00063aa4 MS Sans Serif
+U 00063ad6 Colorway:
+U 00063b1e Background:
+U 00063b82 SysListView32
+U 00063b9e Generic1
+U 00063bca Click on the 'Element' value to edit Element Name of the color.
+U 00063c66 Information
+U 00063c80 MS Sans Serif
+U 00063cb2 Design Name:
+U 00063d1e Stitches
+U 00063d66 Colors
+U 00063daa Machine
+U 00063dd2 MachName
+U 00063dfe Total Thread
+U 00063e4e Stops
+U 00063e8e Trims
+U 00063ece Objects
+U 00063f12 Total Bobbin
+U 00063f62 From start point:
+U 00063f9e Left
+U 00063fde Right
+U 0006401e End X
+U 0006405e End Y
+U 000640da Down
+U 0006411a Height
+U 0006415e Width
+U 000641d6 Color Changes
+U 00064226 Maximum Stitch Length
+U 0006426a Minimum Stitch Length
+U 000642ae Jump Length
+U 00064332 Version
+U 0006435a V5.0x
+U 0006437e Repeat
+U 000643c2 Length Calculation
+U 00064406 Summary
+U 00064418 MS Sans Serif
+U 0006444a Author:
+U 000644aa Keywords:
+U 000644d6 Comments
+U 000644f4 K.È3
+U 00064556 Title
+U 00064596 Subject
+U 000645de Design
+U 000645ee MS Sans Serif
+U 00064622 Design Name:
+U 00064672 Version
+U 0006469a V5.0x
+U 000646be Stitches
+U 00064706 Color Changes
+U 00064772 Colors
+U 000647b6 From start point:
+U 000647f2 Left
+U 00064832 Right
+U 00064872 End X
+U 000648b2 End Y
+U 0006492e Down
+U 0006496e Height
+U 000649b2 Width
+U 00064a2a ART Grade:
+U 00064a76 Pure ART Outlines
+U 00064ab2 Pure ART Stitches
+U 00064b0e Design Information
+U 00064b36 MS Sans Serif
+U 00064b6a Design Name:
+U 00064b9e Stitches
+U 00064bca Colors
+U 00064bf2 Stops
+U 00064c16 Color Changes
+U 00064c4a Machine
+U 00064c72 xxxxxxxx
+U 00064d0e MachName
+U 00064d56 Design Information
+U 00064d96 Design Information
+U 00064dbe MS Sans Serif
+U 00064df2 Design Name:
+U 00064e42 Vectors
+U 00064e86 Colors
+U 00064eca Stops
+U 00064f0a Jumps
+U 00064f4a Objects
+U 00064f8e From start point:
+U 00064fca Height
+U 0006500e Width
+U 0006506a Color Changes
+U 000650be Length Calculation
+U 000650e6 MS Sans Serif
+U 0006511a Top Thread Fabric Thickness:
+U 0006516e <MM_INCHES>
+U 000651b6 msctls_updown32
+U 000651d6 Generic1
+U 00065202 Adjust Bobbin Thread Length:
+U 0006528a msctls_updown32
+U 000652aa Generic1
+U 000652f6 Cancel
+U 0006531e Save
+U 00065646 About Tape Manager
+U 0006566e MS Sans Serif
+U 000656be Tape Manager Version 5.1
+U 0006570a Copyright © 1996-1997
+U 0006576e Tape Manager
+U 0006578a MS Sans Serif
+U 000657f6 &Read
+U 0006581a &Punch
+U 00065842 E&xit
+U 00065866 Confirm Setup
+U 0006589a Reader Setup
+U 000658ce Reader Name:
+U 000658f4 (bZA
+U 0006591e Setup...
+U 0006594a Punch Setup:
+U 0006597e Punch Name:
+U 000659ca Setup...
+U 000659f6 With Label
+U 00065a26 Reverse Direction
+U 00065a62 AutoRewind at Start
+U 00065abe Serial Port Setup
+U 00065ae4 MS Sans Serif
+U 00065b36 Cancel
+U 00065b6c F--B
+U 00065b88 E@-F
+U 00065ba4 ER-B
+U 00065bc0 Ed`E
+U 00065bea Port:
+U 00065c0e Baud:
+U 00065c32 Data Bits:
+U 00065c62 Stop Bits:
+U 00065c92 Parity:
+U 00065cba Handshaking:
+U 00065ffe &File
+U 0006600e E&xit
+U 0006601c &Test Disk
+U 00066036 &All ...
+U 0006604c &MelCheck...
+U 00066068 &Help
+U 00066078 &About TestDisk...
+U 000660b6 About TestDisk
+U 000660d6 MS Sans Serif
+U 00066126 TestDisk Version 1.1
+U 0006616a Copyright © 1996, 1997
+U 000661d6 Disk Format Test Selection
+U 0006620e MS Sans Serif
+U 00066262 Cancel
+U 0006628a Floppy Disk Drive
+U 000662e2 Disk Format Type
+U 0006637e Melco
+U 000663a2 Select One or More Formats to be Tested
+U 0006640e Melco Floppy Disk Check
+U 00066440 MS Sans Serif
+U 00066492 Cancel
+U 000664ba Floppy Disk Drive
+U 00066512 This is a quick test to confirm that your computer can use Melco Floppy Disks.
+U 00066c46 &File
+U 00066c56 Save &As...
+U 00066c78 &Print...
+U 00066c8c Ctrl+P
+U 00066c9e Print Pre&view
+U 00066cc0 P&rint Setup...
+U 00066cea E&xit
+U 00066cf8 Digitizer
+U 00066d10 Setup
+U 00066d20 Start
+U 00066d30 Stop
+U 00066d3c &Help
+U 00066d4c &About DigiTest...
+U 00066d8e About DigiTest
+U 00066dae MS Sans Serif
+U 00066dfe DigiTest Version 1.1
+U 00066e42 Copyright © 1996,1997
+U 00066ea6 Digitizer Setup
+U 00066ec8 MS Sans Serif
+U 00066f1a Cancel
+U 00066f6c }¬-F
+U 00066f88 }¿-B
+U 00066fa4 }-`E
+U 00066fce Port:
+U 00066ff2 Baud:
+U 00067016 Data Bits:
+U 00067046 Stop Bits:
+U 00067076 Parity:
+U 0006709e Handshaking:
+U 000670c4 }s-H
+U 000670ee Connected To:
+U 00067114 }Ò`E
+U 0006715a Digitizer Setup
+U 00067192 Input Mode:
+U 000671c2 Digitizer Format:
+U 000671fe Interpret Digitizer Data
+U 0006813e &File
+U 0006814e Auto Exit
+U 0006816c E&xit
+U 0006817c &Cancel
+U 0006818e &Help
+U 0006819e &About Stitch Manager...
+U 000681e6 About Stitch Manager
+U 00068212 MS Sans Serif
+U 00068262 Stitch Manager Version 1.1
+U 000682b2               
+U 000682ea Copyright © 1996,1997
+U 0006834e Initialize Machine
+U 00068376 MS Sans Serif
+U 000683ca Static
+U 000683f2 Static
+U 0006841e Stitch Manager
+U 0006843e MS Sans Serif
+U 000684b2 Designs are still being stitched.
+U 0006850e Do you wish to cancel all designs?
+U 0006886e Dialog
+U 0006887e MS Sans Serif
+U 0006890e Dialog
+U 0006891e MS Sans Serif
+U 00068952 &Resume
+U 0006897a E&xit
+U 000689d6 Dialog
+U 000689e6 MS Sans Serif
+U 00068a56 Cancel
+U 00068a9e Setup
+U 00068aac MS Sans Serif
+U 00068ade Verifying the security device ......
+U 00068b5e Setup
+U 00068b6c MS Sans Serif
+U 00068b9e Upgrading the security device ......
+U 00068c14 Warning
+U 00068c28 Small
+U 00068c44 Save
+U 00068c5e Close
+U 00068c6a Enter first point of the box
+U 00068ca4 Enter second point of the box
+U 00068ce0 Default
+U 00068d04 V3.0 artista Designs (*.ART)
+U 00068d3e DG/ML Sizer
+U 00068d56 DG/ML Viewer
+U 00068d70 No effects available
+U 00068d9a Happy File (HAP)
+U 00068dbc Happy File (BRD)
+U 00068dde Happy File (ZSK)
+U 00068e0c Vectors:
+U 00068e1e Size :   
+U 00068e38 Barudan Punchant LE
+U 00068e60 Ring
+U 00068e74 Omit
+U 00068e7e Fill
+U 00068e88 Details
+U 00068e98 Satin
+U 00068ea4 Double Run
+U 00068eba Input C
+U 00068eca Save Capture Screen
+U 00068ef2 You have not entered the Renewal Access Codes for this version. New features 
+U 00068f8e are not accessible until the Renewal Access Codes have been entered. 
+U 0006901c If you have the Renewal Access Codes, enter them now through 
+U 00069098 the security dialog. Otherwise, please see your dealer!<This application cannot be run as a Terminal Services Client
+U 00069184 OESD Digitizing Magician Plus
+U 000691c2 BERNINA artista Designer Plus
+U 000691fe OESD Auto Magician
+U 00069226 DThis design is in an invalid state.
+U 00069270 Please report it to your vendor.
+U 000692b2 Read Error
+U 000692c8 Print Cut Applique
+U 000692f2 The selected file is not valid
+U 00069332 Complex Shape
+U 0006934e Tatami Complex FillSThis design may contain internal inconsistencies.
+U 000693da Please contact technical support.
+U 0006941e Design Warehouse Professional
+U 00069460 @Stitching feedback details may be lost.
+U 000694b2 Do you want to continue?
+U 000694e4 %7lu
+U 00069506 Colorway:
+U 0006952a Customer :
+U 00069540 Required By :
+U 0006955c Colorway
+U 0006956e Fabric Color
+U 00069588 Stop
+U 00069592 Filename :
+U 000695a8 Read/Write .CSD file
+U 000695d2 Cross Stitch Files (*.EMX)
+U 00069608 Cross Stitch
+U 00069622 Proel DOS (*.PUM)
+U 00069646 Proel DOS
+U 0006965a Gunold Wings (*.MLS)
+U 00069684 Gunold Wings
+U 0006969e Bits & Volts (*.BRO)
+U 000696c8 Bits & Volts"artista Cross Stitch Files (*.ARX)
+U 0006972a Standard Serial
+U 0006974a Toyota Serial
+U 00069766 Barudan Parallel
+U 00069788 Tajima Parallel
+U 000697a8 Melco StarLAN Network
+U 000697d4 Melco Ethernet Network
+U 00069802 Toyota Disk Emulation
+U 00069848 JANOME alphabets (*.D2F)
+U 0006987a Descr
+U 00069886 Code
+U 00069890 Thread
+U 0006989e Object Details
+U 000698bc Lettering Details
+U 000698e0 Work Environment
+U 00069906 Choose Product Model Exit?This design does not fit the Hoop
+U 0006997e Do you still wish to save it?
+U 000699ba Save Design
+U 000699d2 Cannot Save Design
+U 000699fc KThis design may have limitations in scaling.
+U 00069a58 See Documentation for details.
+U 00069a96 Design Warning$Failed to lauch the Internet browser
+U 00069afe Multihead Direct Connect
+U 00069b30 OESD Digitizing Magician
+U 00069b62 OESD Editing Magician
+U 00069b8e OESD Sizing Magician
+U 00069bba Color
+U 00069bc6 Description
+U 00069bde Element
+U 00069bee Please select an alphabet?The filename entered is invalid
+U 00069c62 or there are too many filenames
+U 00069ca2 The filename entered is invalid
+U 00069cea Enter pt %d on Side %d
+U 00069d1a Enter pt %d 
+U 00069d34 Enter width  pt %d 
+U 00069d5e Enter point %d on boundary %d
+U 00069d9a Enter Entry point
+U 00069dbe Enter angle point 2
+U 00069de6 Enter angle point 1?Digitize stitch angle %d using left/right-clicks (corner/curve)
+U 00069e8e Enter Exit  point 
+U 00069eb4 Enter Center Point
+U 00069eda Read/Write .JAN file
+U 00069f04 Read/Write (HOME) files
+U 00069f34 EMF Files (*.emf)
+U 00069f58 <MM_INCHES>
+U 00069f70 L=%7.2f X=%7.2f Y=%7.2f
+U 00069fa4 Thread ID
+U 00069fb8 Object Count
+U 00069fd2 Enter point %d of the hole %d
+U 0006a00e Current color?Digitize the border line using left/right-clicks (corner/curve)
+U 0006a0b2 Curve Fill Shape Is Not Set
+U 0006a0ea Enter auto start/end point
+U 0006a120 Wilcom TS-600 Designer
+U 0006a156 Machine Files (*.TMF)
+U 0006a182 Free Line Vertical
+U 0006a1a8 Fixed Line Vertical
+U 0006a1d0 Old Machine Format (*.PMC)
+U 0006a20a Design Files (*.TSD)
+U 0006a234 Templates (*.TDT)
+U 0006a25a Enter point %d on the lasso
+U 0006a2f2 Top Left
+U 0006a304 Top Middle
+U 0006a31a Top Right
+U 0006a332 Middle Left
+U 0006a34a Center
+U 0006a358 Middle Right
+U 0006a372 Bottom Left
+U 0006a38a Bottom Middle
+U 0006a3a6 Bottom Right
+U 0006a3c0 Enter point %d on the polyline
+U 0006a402 Deco, Brother, Babylock (*.PES)
+U 0006a442 Deco, Brother, Babylock (*.PEC)
+U 0006a482 Husqvarna/Viking (*.HUS)
+U 0006a4b4 Pfaff (*.PCS)
+U 0006a4d0 &(Allowed values are from %.1f to %.1f)
+U 0006a520 Function
+U 0006a536 Dakota Collectibles (*.DAK)%Dakota Collectibles Templates (*.DMT)
+U 0006a5ba Repeat
+U 0006a5c8 Pfaff (*.PCD)
+U 0006a5e4 Pfaff (*.PCQ)"Poem, Huskygram, Singer EU (*.CSD)
+U 0006a646 Poem, Viking Huskygram TYPE I)Poem, Viking Huskygram, Singer EU TYPE II Dakota Collectibles SynchroSizer%Dakota Collectibles SynchroSizer Plus$Dakota Collectibles SynchroSizer Pro)Dakota Collectibles SynchroSizer Pro Plus
+U 0006a802 Native design
+U 0006a81e Imported outlines%Inconsistent min and max satin values
+U 0006a89a Janome/Elna/Kenmore (*.SEW)
+U 0006a8de Descr & Code
+U 0006a8f8 Brand
+U 0006a904 Element
+U 0006a914 Mixed
+U 0006a920 -Please wait while Machine Manager shuts down.
+U 0006a97e Generating report...
+U 0006a9a8 Machine Name Already ExistsFA Machine already exists with that name.
+U 0006aa32 Machine names must be unique.
+U 0006aa6e Proel (*.PMU)
+U 0006aa94 5Dakota Collectibles SynchroSizer Pro Plus - Demo Mode0Dakota Collectibles SynchroSizer Pro - Demo Mode1Dakota Collectibles SynchroSizer Plus - Demo Mode,Dakota Collectibles SynchroSizer - Demo Mode
+U 0006ac22 Design Information
+U 0006ac48 Stop Sequence
+U 0006ac64 Summary
+U 0006ac7a  No motif is selected
+U 0006aca6 Straight
+U 0006acbe STRAIGHT
+U 0006acd2 Enter point %d on the curve
+U 0006ad0a Barudan
+U 0006ad1a Barudan
+U 0006ad2a Pfaff (*.T09)
+U 0006ad46 Pfaff (*.KSM)
+U 0006ad86 Move: L %6.2f
+U 0006ada2 Move: L %6.2f@Digitize the free outline using left/right-clicks (corner/curve)8Select and move one or several control points to reshape
+U 0006aeb2 Empty Design
+U 0006aee2 Imported stitches
+U 0006af06 Processed stitches
+U 0006af2c Unknown source
+U 0006af4a Input B
+U 0006af64 Dakota
+U 0006af72 Dakota Template
+U 0006af92 Schiffli
+U 0006afa6 Attempt to insert in a group
+U 0006afe0 Design Files V6.2 (*.EMB)
+U 0006b014 This set of access codes has been successfully entered.
+U 0006b086 If you have more sets of access codes, open the security
+U 0006b0f8 dialog box again and enter the next set.
+U 0006b14c Otherwise, click OK then exit the software.
+U 0006b1a4 When you re-open the software the new features will be active.
+U 0006b222 Melco (*.CND)
+U 0006b23e Tajima (*.T01)
+U 0006b25c T02 (*.T02)
+U 0006b274 Barudan (*.T03)
+U 0006b294 Zangs (*.T04)
+U 0006b2b0 ZSK (*.T05)
+U 0006b2c8 Start of Design
+U 0006b2e8 Empty Design
+U 0006b302 Design Properties
+U 0006b326 Machine Format Values
+U 0006b352 Lettering Effects
+U 0006b376 Enter rectangle origin
+U 0006b3a4 Enter rectangle corner"Failed to launch the online manual
+U 0006b418 Wilcom (*.INP)
+U 0006b436 Toyota (*.10O)
+U 0006b45a <PRESET_ZIGZAG_1>
+U 0006b47e <PRESET_ZIGZAG_2>
+U 0006b4a2 <PRESET_ZIGZAG_3>
+U 0006b4c6 <PRESET_ZIGZAG_4>
+U 0006b4ea <PRESET_RUN_1>
+U 0006b508 <PRESET_RUN_2>
+U 0006b526 <PRESET_RUN_3>
+U 0006b544 <PRESET_RUN_4>#Incorrect defaults for this version
+U 0006b5aa Incorrect defaults
+U 0006b5d0 Enter the zoom box origin
+U 0006b604 Drag to complete the zoom box
+U 0006b658 More...
+U 0006b66a No enclosing boundary
+U 0006b696 Boundary overlaps itself
+U 0006b6c8 Intersecting boundaries'Boundaries do not enclose single region
+U 0006b748 Internal Error
+U 0006b766 Insufficient number of points
+U 0006b7a4 Invalid Input
+U 0006b7c2 take up on
+U 0006b7d8 take up off
+U 0006b7f0 borer in
+U 0006b802 borer out
+U 0006b816 sequin on
+U 0006b82a drop sequin
+U 0006b842 feed sequin
+U 0006b862 Gunold APS PCH
+U 0006b880 Gunold APS (*.PCH)'Reshape of this Object is not possible.
+U 0006b8f6 end jump
+U 0006b908 begin jump
+U 0006b91e stepp
+U 0006b92a blatt
+U 0006b936 set bor pos
+U 0006b952 Schiffli
+U 0006b964 Wilcom ESL (*.ESL)
+U 0006b98a Demo Mode
+U 0006b99e Read/Write .DAK file
+U 0006b9cc Postscript (*.PS)
+U 0006b9f0 First Underlay:
+U 0006ba10 Second Underlay:
+U 0006ba32 PNG Files (*.png)
+U 0006ba56 Bad reshape
+U 0006ba70 Design Files V7.2 (*.EMB)
+U 0006baaa Color
+U 0006bab6 Part
+U 0006bac0 Part
+U 0006baca # Rows
+U 0006bad8 Mirror X
+U 0006bafa Wilcom Plauen (*.T10)
+U 0006bb26 Wilcom Saurer (*.T15)
+U 0006bb52 Wilcom ESS (*.ESS)
+U 0006bb78 Hiraoka DAT (*.DAT)
+U 0006bba0 Hiraoka VDT (*.VDT)
+U 0006bbc8 Saurer SLC (*.SAS)
+U 0006bbee Saurer SHC (*.PAT)
+U 0006bc14 Laesser MST (*.MST)
+U 0006bc56 ZSK TC
+U 0006bc64 Shaping Tools Click and drag to create Outline%Cropping Outline does not touch image
+U 0006bd12 Stop
+U 0006bd2a Yes/No
+U 0006bd38 No/Yes
+U 0006bd46 Stop
+U 0006bd50 Pause
+U 0006bd62 Invalid part name This part name is used elsewhereLSchiffli Arrangement out of sync with the design -
+U 0006be2e using default arrangementPSchiffli Arrangement out of sync with the design.
+U 0006bec6 Save with default arrangement?
+U 0006bf04 Open Options
+U 0006bf2a T11 (*.T11)
+U 0006bf42 T12 (*.T12)
+U 0006bf5a T13 (*.T13)
+U 0006bf72 T18 (*.T18)
+U 0006bf8a T20 (*.T20)
+U 0006bfa2 T22 (*.T22)
+U 0006bfba Time & Space MJD (*.MJD)
+U 0006bfec Wilcom DHT (*.DHT)
+U 0006c012 Hiraoka VEP (*.VEP)
+U 0006c05e $Professional Save Formats (DST, EXP)
+U 0006c0aa Rectangle
+U 0006c0be Oval
+U 0006c0c8 3 Position
+U 0006c0de Sliding
+U 0006c108 Plauen
+U 0006c116 Saurer
+U 0006c124 Enter reference point
+U 0006c150 Enter wreath center,Do you want to merge the overlapped objects?
+U 0006c1d8 Blackwork Fill
+U 0006c1f6 Candlewicking Fill
+U 0006c21c Lacework
+U 0006c22e Blackwork Border
+U 0006c250 Candlewicking Border
+U 0006c27e Pattern Fill
+U 0006c298 Pattern Run
+U 0006c2b2 <PRESET_MOTIF_FILL_1>
+U 0006c2de <PRESET_MOTIF_FILL_2>
+U 0006c30a <PRESET_MOTIF_FILL_3>
+U 0006c33a <PRESET_MOTIF_RUN_1>
+U 0006c364 <PRESET_MOTIF_RUN_2>
+U 0006c392 <PRESET_STANDARD_MOTIF_FILL>
+U 0006c3cc <PRESET_STANDARD_MOTIF_RUN>
+U 0006c404 Select Pattern
+U 0006c424 PhotoStar
+U 0006c438 PhotoWave
+U 0006c44c PhotoSatin
+U 0006c462 Border
+U 0006c470 PhotoContour
+U 0006c48a PES Hoop Type
+U 0006c4a6 Hoop Type:
+U 0006c4bc Height
+U 0006c4ca Width
+U 0006c4d6 Design Files V8.0 (*.EMB)
+U 0006c516 Backstitch
+U 0006c52c Stemstitch
+U 0006c562 @Machine is not supported in output version
+U 0006c5ba Please change machinedThe design %s was created with a later version of the software.
+U 0006c666 This version cannot open this design)The design %s has an inconsistent header.OCannot open design %s.
+U 0006c732 The design was created with a newer version of software.
+U 0006c7a4 Intersecting offsets
+U 0006c7d2 Circle
+U 0006c7e0 Star
+U 0006c7ec ¹Can't stitch fill area because fill offset intersects other offsets or itself. 
+U 0006c890 Please, check the result and change the object and/or stitching parameters 
+U 0006c928 to get rid of intersections.
+U 0006c962 #Do you want to run Machine Manager?#There are no existing Machine Units&Do you want to add a new Machine Unit?
+U 0006ca42 PT(%s)
+U 0006ca50 PH(%4.2lf)
+U 0006ca66 SL(%4.2lf)
+U 0006ca7c CC(%d)
+U 0006caa2 Curves Intersect Shape
+U 0006cad0 None
+U 0006cada Offset:
+U 0006caea Width:
+U 0006caf8 encoding design...
+U 0006cb1e writing
+U 0006cb2e reading
+U 0006cb3e Design Files V5.0 (*.EMB)
+U 0006cb72 Design Files V5.1 (*.EMB)
+U 0006cba6 Design Files V5.2 (*.EMB)
+U 0006cbda Design Files V5.3 (*.EMB)
+U 0006cc0e Design Files V5.5 (*.EMB)
+U 0006cc42 Design Files V6.0 (*.EMB)
+U 0006cc76 V1.0 artista Designs (*.ART)
+U 0006ccb0 V2.0 artista Designs (*.ART)!Writing Into Older Version Format
+U 0006cd32 Enter Point on Circumference,Press <Enter> for Circle or Enter Oval Point
+U 0006cdc6 Press <Enter>
+U 0006cde2 Press mouse button to start pan
+U 0006ce22 Drag pan box
+U 0006ce3c Enter point %d on curve %d1 or Press Enter to use default User Defined Split Changing Rotation Angle, Skewing
+U 0006cf18 Scaling, Changing Origin
+U 0006cf4a Editing Column Spacing, Scaling'Editing Row Spacing and Offset, Scaling%The pattern already exists.Overwrite?
+U 0006d026 Please Enter Correct Name 
+U 0006d05c Enter start point of the line1Enter end point of the line (<CTRL> to constrain)
+U 0006d0fc Enter point %d of the curve
+U 0006d13a col change
+U 0006d150 pile type
+U 0006d164 pile height
+U 0006d17c stitch len
+U 0006d192 Pile Type
+U 0006d1a6 Pile Height
+U 0006d1be Stitch Length
+U 0006d1da Tufting Machine
+U 0006d202 loop
+U 0006d20c u.d.
+U 0006d216 decoding design...
+U 0006d23c Image
+U 0006d248 Formatting disk.../Curve Fill Effect Is Not Valid For Some Objects
+U 0006d2d2 Janome
+U 0006d2e0 Color Film
+U 0006d2f6  Insufficient memory for printing2The same color cannot appear together irrespectiveYof how many stops are between them.
+U 0006d3e8 Please remove the duplicate colors before continuing.
+U 0006d454 Invalid Stop Sequence Color(s)PThe custom stop sequence you have defined does not match
+U 0006d504 the input stitch file.
+U 0006d532 CYou may have misplaced a Stop or a Color. Please check your design.
+U 0006d5bc Stop Sequence Warning
+U 0006d5e8 WMF Files (*.wmf)
+U 0006d60c Fabric :
+U 0006d61e Hoop :
+U 0006d62c Max Stitch :
+U 0006d646 Min Stitch :
+U 0006d660 Design Ref :$Curved-Line Tatami for Complex-Fill:
+U 0006d6c4 Add To Favorites
+U 0006d6e6  / Values
+U 0006d6fa Gunold APS STC
+U 0006d718 Gunold APS (*.STC)
+U 0006d73e Auto Applique
+U 0006d75a Mode
+U 0006d764 Height
+U 0006d772 Length
+U 0006d780 Vectors&The target object belongs to selection
+U 0006d7e0 Auto Start/End point :
+U 0006d81c Enter cover fill start point
+U 0006d856 Enter cover fill end point
+U 0006d88c Enter frame out position
+U 0006d8da =This operation will affect all new designs based on template 
+U 0006d958 generating outline...
+U 0006d98c Barudan Punchant VisualHInvalid fabric file name. Please select a valid file, or choose 'Color'.­Nested Objects!
+U 0006da6e Object manually inserted in the middle of another object will be re-sequenced.
+U 0006db0c To preserve the sequence, digitize the original shape as two separate objects.
+U 0006dbac .EMBroidery Author
+U 0006dbd2 .EMBroidery Processor
+U 0006dbfe .EMBroidery TrueSizer
+U 0006dc2a CCould not delete selected motif.
+U 0006dc6e The motif is currently being used.
+U 0006dcb8 >Smart Corner: can not turn off Mitre and Cap at the same time.
+U 0006dd38 Save Image As
+U 0006dd78 offset
+U 0006dd86 offset
+U 0006dd94 Datastitch (*.STX)
+U 0006ddba Datastitch (STX)
+U 0006ddf4 importing True Type font...
+U 0006de2c Alphabet 
+U 0006de40  has been created
+U 0006de64  Import True Type Font
+U 0006de9c     #       
+U 0006debc Do you want to quit now?
+U 0006deee Distributor Exit&You cannot rename the borders alphabet&You cannot delete the borders alphabet
+U 0006dfac Advanced Chenille
+U 0006dfd0 [Options On]
+U 0006dfea [Options Off]
+U 0006e006 Overwrite?#The motif already exists.Overwrite?9The selected shape can't be used 
+U 0006e0a8 as a User Defined Split
+U 0006e0d8 Old Format (*.ESD)
+U 0006e0fe Tajima (*.DST)
+U 0006e11c Barudan (*.DSB)
+U 0006e13c ZSK (*.DSZ)
+U 0006e154 Melco (*.EXP)
+U 0006e182 ZSK TC
+U 0006e190 ZSK TC (*.Z??)
+U 0006e1ae Needle #: 10
+U 0006e1c8 Needle #: 11
+U 0006e1e2 Needle #: 12
+U 0006e1fc Needle #: 13
+U 0006e216 Needle #: 14
+U 0006e230 Needle #: 15
+U 0006e24c Husqvarna/Viking (*.SHV)
+U 0006e27e Husqvarna/Viking
+U 0006e2a0 Cross Stitch
+U 0006e2ba Auto Design Creation
+U 0006e2e4 Schiffli RCC Format
+U 0006e30c Janome/Elna/Kenmore (*.JEF)
+U 0006e346 DElement names may not be as was saved, due to user action on design.
+U 0006e3d2 Element Names
+U 0006e3f0 Cannot Export to File.
+U 0006e41e Export As...
+U 0006e43a Exporting...
+U 0006e45a Renewal Codes
+U 0006e476 You have not entered the Renewal Access Codes for this version.
+U 0006e4f8 The software is not accessible until the Renewal Access Codes have been entered.
+U 0006e59a Failed to register the following components:
+U 0006e5fc Please reinstall the software. If the problem persists, 
+U 0006e66e please contact your distributor.
+U 0006e6b0 Setup
+U 0006e6bc Setup has been canceled.>Security device error! 
+U 0006e720 Setup failed. Please see your dealer!
+U 0006e786   (No Line)
+U 0006e79e (No Fill)
+U 0006e7b2 GIF/TIFF Format"No stitches meet selected criteria
+U 0006e818  Speed: %5d (s/s) 
+U 0006e83e Convert
+U 0006e852 Design Files V7.0 (*.EMB)
+U 0006e888 Design Files V7.1 (*.EMB)
+U 0006e8ce Enter Anchor Point
+U 0006e8f4 Enter Guide Point7This type of baseline is applicable only for a new text
+U 0006e988 Enter grid reference point
+U 0006e9ca Error
+U 0006e9d6 Transfer Error : %sSError %d occured while transfering.
+U 0006ea46 The design will be removed from Stitch Manager.zThe device %s is not available.
+U 0006eae6 The design will be removed from Stitch Manager.
+U 0006eb46 Close the device and restart the transfer.
+U 0006eb9c Transfer Time out : %sYTimeout occured while transfering design.
+U 0006ec1e The design will be removed from Stitch Manager.
+U 0006ec7e Design Name
+U 0006ec96 Machine
+U 0006eca6 Status
+U 0006ecb4 Progress'ERROR Unknown Port- contact distributor
+U 0006ed16 Unknown Subitem
+U 0006ed36 No Process Found
+U 0006ed5c Enter Hoop Center Point
+U 0006ed96 Motif Fill
+U 0006edb2 Manual
+U 0006edc0 Triple Manual
+U 0006eddc Unable to create motif
+U 0006ee0a Globe In
+U 0006ee1c Globe Out
+U 0006ee30 Perspective
+U 0006ee48 Unknown disk error: %ld
+U 0006ee78 Confirm File Delete"Are you sure you want to delete %s
+U 0006eee6 Confirm Multiple File Delete
+U 0006ef26 Connector
+U 0006ef3a Parallel Tatami
+U 0006ef5a Jagged Edge Effect
+U 0006ef82 Scale: X %6.2f Y %6.2f
+U 0006efb0 Rotate: A %6.2f
+U 0006efd0 Skew: A %6.2f
+U 0006eff8 .Are you sure you want to delete these %d files
+U 0006f05c Could not save file.
+U 0006f086 Cannot Record Design
+U 0006f0b0 Cannot find Design Librarian!Librarian could not record design
+U 0006f12e DDE Error occurred
+U 0006f154 Unknown error
+U 0006f170 Pick the first reference point
+U 0006f1ae Pick the second reference point"Pick the new first reference point#Pick the new second reference point
+U 0006f27c DG/ML Level 5
+U 0006f298 DG/ML Level 4
+U 0006f2b4 DG/ML Level 1
+U 0006f2d0 /Incorrect Security Device for this Installation
+U 0006f332 Invalid Product
+U 0006f352 Enter start point of the arc0Enter end point of the arc (<CTRL> to constrain)
+U 0006f3ee Enter text
+U 0006f404 Free Line
+U 0006f418 Fixed Line
+U 0006f42e Arc CW
+U 0006f43c Arc CCW
+U 0006f44c Circle CW
+U 0006f460 Circle CCW
+U 0006f476 Any Shape
+U 0006f48a Predefined
+U 0006f4a0 As Digitized
+U 0006f4ba Closest Join
+U 0006f4d4 Bottom Join
+U 0006f4f2 Enter point on arc
+U 0006f518  or Press Enter to Finish # or Press Enter to Start New Curve 
+U 0006f5c2 No alphabets installed-The selected shape can't be used as a pattern
+U 0006f64c Error creating alphabet
+U 0006f67c Error renaming alphabet
+U 0006f6ac Error renaming alphabet file
+U 0006f6e6 Error deleting alphabet
+U 0006f716 Error modifying alphabet
+U 0006f748 Error writing letter
+U 0006f772 Error renaming letter
+U 0006f79e Error deleting letter
+U 0006f7ca Letter   has been saved to the alphabet 
+U 0006f81c Make Letter
+U 0006f836  has been created
+U 0006f85a [Error renaming alphabet.
+U 0006f88e The new name differs in case of the letters only.
+U 0006f8f2 Use unique name."Cannot paste symbols onto themself symbol already exist, overwrite?
+U 0006f9b0  Press mouse button to start text
+U 0006f9f4 Digitize first reference point
+U 0006fa32 Digitize second reference point
+U 0006fa72 Digitize reference height
+U 0006faaa Needle No & Jump
+U 0006facc Stop & Jump
+U 0006fae4 No Functions Selected
+U 0006fb10 Digitize first target point
+U 0006fb48 Digitize second target point
+U 0006fb82 Trim & Needle No
+U 0006fbaa Trim & Stop
+U 0006fbea Digitize 'from' point
+U 0006fc16 Digitize 'to' point The format name entered is empty"The format string entered is empty
+U 0006fcc6 Confirm format delete
+U 0006fcf2 Color changes:
+U 0006fd12 Object Outline
+U 0006fd30 needle 10+
+U 0006fd46 Select Symbols
+U 0006fd66 Select Border
+U 0006fd82 Select By Color
+U 0006fda2 Select Color
+U 0006fdbc Elcode
+U 0006fddc Auto Detect
+U 0006fdf4 Numonics 2210
+U 0006fe10 Stylus Pen
+U 0006fe26 Calcomp C,D,E,A0,A13ES must be restarted for the changes to take effect
+U 0006fed2 Barudan FDR
+U 0006feea Barudan FMC
+U 0006ff02 Tajima
+U 0006ff10 Toyota
+U 0006ff32 Melco
+U 0006ff3e Unknown
+U 0006ff4e None
+U 0006ff60 Even
+U 0006ff6a Mark
+U 0006ff74 Space
+U 0006ff92 None
+U 0006ff9c Xon/Xoff
+U 0006ffae Hardware
+U 0006ffc0 Tajima 8RP Punch
+U 0006ffe2 Tajima 8RP Reader-%s is not accessible
+U 00070030 The device is not ready.
+U 00070062 Diskette format unknown
+U 00070092 The diskette is write protected
+U 000700d2 Diskette error has occurred: %d
+U 00070112 Diskette Error 
+U 00070132 Tajima DST
+U 00070148 Eltac
+U 0007015e Zangs
+U 0007016a Expanded
+U 00070184 DCI Serial2Cannot record untitled design.
+U 000701d8 Please save design.
+U 00070200 Embroidery Machine
+U 00070226 DTR/DSR
+U 00070236 Do you wish to modify it now?
+U 00070272 Disk not DOS compatible©This design contains stitching effects
+U 000702f0 that cannot be recorded exactly
+U 00070330 in CND format.
+U 0007034e They have been output 
+U 0007037c as Walk stitch instead.
+U 000703ac  Check the CND file for suitability.
+U 000703f6 CAUTION:
+U 00070408 Barudan 2HD
+U 00070420 Barudan HD
+U 00070436 Barudan (*.U??)
+U 00070456 This file's format does not match the expected format for this extension.
+U 000704ec Native designs may have been created in a more recent version, and updating your system may allow the design to be opened.  For other design files, the source software may be creating non-standard formats.  Check with the source of the file.
+U 000706d0 Generic Write Error
+U 000706f8 User defined
+U 00070712 TRIPLE_MANUAL
+U 00070732 Condensed
+U 00070746 Toyota Header
+U 00070762 Fortron
+U 00070772 ZSK/Zangs
+U 0007078e Directory>One or more support programs are missing.
+U 000707f6 Re-install software.
+U 00070820 Cannot delete file
+U 00070846 File: %s
+U 00070858 Cannot delete directory1Directory: %s
+U 000708a4 Use Explorer to delete directories.
+U 000708ec Confirm File DeletionCThe file %s is read-only or hidden.
+U 00070960 Do you want to delete the file?
+U 000709a2 Barudan DSB
+U 000709ba Tajima DSZ
+U 000709d2 Toyota
+U 00070a00 T05 Embroidery Diskette Format Error.Diskette in %s is not a %s formatted diskette.
+U 00070aaa The filename is not valid.
+U 00070ae0 This file already exists.
+U 00070b16 Replace existing file?
+U 00070b44 Disk %c: is write-protected.2
+U 00070b80 A file cannot be saved on a write-protected disk.+Not enough disk space to save the %s file.
+U 00070c3a _Delete one or more files to increase available disk
+U 00070ca4 space or save the file to a different disk.
+U 00070cfc Format %s embroidery disk?'Press OK to format the disk in drive %s'Invalid file name or unknown file type.
+U 00070de6 Revert %s to original?
+U 00070e16 Revert Design
+U 00070e3a \DESIGNER
+U 00070e4e Item
+U 00070e58 artista.vxd
+U 00070e70 Bernina BE
+U 00070e86 Object Properties - Lettering
+U 00070ec2 Connector After Object
+U 00070ef0 Connector Inside Object:Disk %c: has too many files.
+U 00070f5a  Cannot make Directory entry.
+U 00070f96 Tie Off Values
+U 00070fb4 Tie In Values
+U 00070fd0 Error saving image
+U 00070ff6 Brother Serial
+U 00071022 calculating
+U 0007103a changing machine...
+U 00071062 loading...
+U 00071078 recognizing...
+U 000710b8 3Are you sure you want to remove the selected Group?
+U 00071122 Group Member Add
+U 00071146 Name 1
+U 00071154 Name 2
+U 00071162 Name 3
+U 00071174 Import failed-Some unsupported elements could not be loaded
+U 000711ec Could not find import filter
+U 00071226 calculating areas
+U 0007125e Save Options
+U 00071278 Design part only
+U 0007129e Unable to write the file&Inconsistent min and max tatami values
+U 0007132e Inches
+U 0007133c Millimeters
+U 00071356 Alphabet Merging Utility9Do you want to override
+U 000713b8 a letter: %1
+U 000713d2 from
+U 000713dc an alphabet: %2<Could not modify chart.
+U 0007142c Make sure the file is not read-only.
+U 00071476 Happy (*.TAP)
+U 00071492 Happy
+U 0007149e Happy File>The cropping area is too small. The object will not be created
+U 00071532 Barudan
+U 00071542 Melco
+U 0007154e Tajima
+U 0007155c Happy
+U 00071568 Toyota
+U 0007157e Tajima TMCE-600
+U 0007159e Zangs
+U 000715aa ZSK 1
+U 000715b6 ZSK 2
+U 000715c2 Melco Chenille
+U 000715e0 Barudan Chenille
+U 00071602 Tajima TMCE-100
+U 00071622 Pfaff
+U 0007162e Barudan Z Series
+U 00071650 Melco EP
+U 00071662 BERNINA
+U 000716aa Needle No
+U 000716be Stops
+U 000716ca Fast
+U 000716d4 Slow
+U 000716de Speed1
+U 000716ec Speed2
+U 000716fa Untitled
+U 0007170c Machine Format Values
+U 0007173a Empty Format Name
+U 0007175e This Format already exists
+U 00071794 Replace existing Format?
+U 000717cc Stitch Design
+U 000717ec Security Error
+U 0007180a Security Device Not Found No Machine Connection specified.#Please run Machine Connection Setup
+U 000718c8 Remove Machine Format+Are you sure you want to remove the format?
+U 0007194c Tablet Punching
+U 00071972 Complex Shape Fill
+U 00071998 Program Pattern Split
+U 000719c4 User Defined Split
+U 000719ea Circle, Ring, Star
+U 00071a10 No Functions
+U 00071a2c Standard Lettering
+U 00071a52 Motif Fill
+U 00071a68 Distributor
+U 00071a80 Multihead Tape Code
+U 00071aa8 Simple Editing
+U 00071ac6 Advanced Editing
+U 00071ae8 Stitch Processing
+U 00071b0c Scanner Punching
+U 00071b2e Standard Chenille Punching
+U 00071b64 Drawing Tools
+U 00071b82 Pick Graphic Object
+U 00071baa Design Library Database
+U 00071bda Advanced Lettering
+U 00071c00 User Defined Alphabet
+U 00071c2c Special Alphabet Pack 1
+U 00071c5c Special Alphabet Pack 2
+U 00071c8c Accordion Spacing
+U 00071cb0 Standard Schiffli Access Code Successfully Entered
+U 00071d16 Invalid Access Code
+U 00071d3e Set Security Device Options
+U 00071d76 Incorrect Trysoft Settings Security: Unable To Run Software
+U 00071e14 Direct Machine Connection
+U 00071e48 Digitizer
+U 00071e5c Tape Reader
+U 00071e7a Tape Punch
+U 00071e90 Point
+U 00071e9c Stream
+U 00071eaa Tape Manager
+U 00071ec6 )Are you sure you want to delete the item?
+U 00071f1c Delete
+U 00071f2a Display Monitor
+U 00071f5a ignored
+U 00071f6a Unknown Function
+U 00071f8c Start Design
+U 00071fa6 End Design
+U 00071fbc Color Change
+U 00071fd6 Trim
+U 00071fe0 Trim Top
+U 00071ff2 Trim Top & Bottom
+U 00072016 Jump (M)
+U 00072028 Stop
+U 00072032 Sequin On
+U 00072046 Sequin Off
+U 0007205c Group 1
+U 0007206c Group 2
+U 0007207c Group 3
+U 0007208c Group 4
+U 000720a2 Slow
+U 000720ac Fast
+U 000720b6 End Jump
+U 000720c8 Begin Jump
+U 000720de Borer In
+U 000720f0 Borer Out
+U 00072104 Chenille Off
+U 0007211e Tie Off
+U 0007212e Tie In
+U 0007213c Trim Top (& Bottom)
+U 00072168 Drop Sequin
+U 00072180 Feed Sequin
+U 00072198 Cut Sequin
+U 000721ae Stepp
+U 000721ba Pause
+U 000721c6 Fadenleiter Plus
+U 000721e8 Fadenleiter Minus
+U 0007220c Start Boring Tension
+U 00072236 End Boring Tension
+U 0007225c RPM Plus
+U 0007226e RPM Minus
+U 00072282 Stuepfel In
+U 0007229a Stuepfel Out
+U 000722b4 Cord In
+U 000722c4 Cord Out
+U 000722d6 Festoon In
+U 000722ec Festoon Out
+U 00072304 Thread Roller Plus
+U 0007232a Thread Roller Minus
+U 00072352 Thread Brake Plus
+U 0007237a Thread Brake Minus
+U 000723a0 Medium
+U 000723ae Wide
+U 000723dc jump
+U 000723e6 speed1
+U 000723f4 speed2
+U 00072402 trim
+U 0007240c trim T1
+U 0007241c trim T2
+U 0007242c stop
+U 00072436 Needle #: 1
+U 0007244e Needle #: 2
+U 00072466 Needle #: 3
+U 0007247e Needle #: 4
+U 0007249a Needle #: 5
+U 000724b2 Needle #: 6
+U 000724ca Needle #: 7
+U 000724e2 Needle #: 8
+U 000724fa Needle #: 9
+U 00072512 group1
+U 00072520 group2
+U 0007252e group3
+U 0007253c group4
+U 0007254a sub end
+U 0007255a rewind
+U 00072568 rew-stop
+U 0007257a empty
+U 00072586 used
+U 00072590 sequin
+U 0007259e empty jump
+U 000725ba Needle #: 16
+U 000725d4 Needle #: 17
+U 000725ee Needle #: 18
+U 00072608 Needle #: 19
+U 00072622 Needle #: 20
+U 0007263c Needle #: 21
+U 00072656 Needle #: 22
+U 00072670 Needle #: 23
+U 0007268a Needle #: 24
+U 000726a4 Needle #: 25
+U 000726be Needle #: 26
+U 000726d8 Needle #: 27
+U 000726f2 Needle #: 28
+U 0007270c Needle #: 29
+U 00072726 Needle #: 30
+U 00072740 Needle #: 31
+U 0007275a Needle #: 32
+U 00072774 loop on
+U 00072784 loop off
+U 00072796 coil on
+U 000727a6 coil off
+U 000727b8 head type
+U 000727cc repeat jump
+U 000727e4 fixing stitch
+U 00072800 speed
+U 0007280c Loop On
+U 0007281c Loop Off
+U 0007282e Coil On
+U 0007283e Coil Off
+U 00072850 Speed
+U 0007285c Head Type
+U 00072870 Repeat Jump
+U 0007289c Portr&ait
+U 000728b0 L&andscape
+U 000728c6 In X
+U 000728d0 In Y
+U 000728da In X and Y
+U 000728f2 pause
+U 00072902 fadenleiter plus
+U 00072924 fadenleiter minus
+U 00072948 start boring tension
+U 00072972 end boring tension
+U 00072998 rpm plus
+U 000729aa rpm minus
+U 000729be stuepfel in
+U 000729d6 stuepfel out
+U 000729f0 cord in
+U 00072a00 cord out
+U 00072a12 festoon in
+U 00072a28 festoon out
+U 00072a40 thread roller plus
+U 00072a66 thread roller minus
+U 00072a8e thread brake plus
+U 00072ab2 thread brake minus
+U 00072af4 Chain
+U 00072b00 Moss
+U 00072b0a Needle Height
+U 00072b2a Fixing Stitch
+U 00072b6a pos 4
+U 00072b76 open tension
+U 00072b90 close tension
+U 00072bac Size Conversion Ratio Too High Could not load the %s menu chart!The %s menu chart file is invalid"Digitize the ORIGIN of the drawing4Digitize the ROTATION REFERENCE point of the drawing&Digitize reference point 1 of the menu&Digitize reference point 2 of the menu&Digitize reference point 3 of the menu&Error when writing pattern to the disk#Error connecting the digitizer port
+U 00072ea0 The pattern will not be saved
+U 00072ede Cannot Save Program Splits File
+U 00072f20 9Invalid Security Device setting for this software version
+U 00072f96 Convert VectorDraw Objects
+U 00072fcc File: 
+U 00072fda Stops: 
+U 00072fea Trims: 
+U 00072ffa Colors: 
+U 0007300c Stitches: 
+U 00073022 Machine: 
+U 00073036 Left: 
+U 00073044 Down: 
+U 00073052 Right: 
+U 00073062 Up: 
+U 0007306c EndX: 
+U 0007307a EndY: 
+U 00073088 Date: 
+U 0007309a Total Bobbin: 
+U 000730c8 # C Description & Code
+U 000730f8    From Start Point
+U 00073120 %3d %3d %7lu %s 
+U 00073142 Start:   
+U 00073156 End:     
+U 0007316a Clear
+U 00073176 Clear Function
+U 000731a4 Barudan 
+U 000731ca DG/ML Level 2
+U 000731e6 DG/ML Level 3
+U 00073202 TD-22
+U 0007320e TD-27
+U 0007321a Barudan Punchant Pro
+U 00073244 Barudan Punchant Jr
+U 0007326c Barudan Punchant Editor
+U 0007329c Wilcom ES-65 Designer
+U 000732c8 Wilcom ES-45 Designer
+U 000732f4 Wilcom ES-25 Designer
+U 00073320 Wilcom ES-28 Designer
+U 0007334c Wilcom ES-21L Designer
+U 0007337a Wilcom ES-21E Designer
+U 000733a8 Wilcom ES-21D Designer
+U 000733d6 Wilcom ES-10 Designer
+U 00073402 Wilcom ES-5 Designer
+U 00073432 Insert Function
+U 00073452 Edit Function
+U 0007346e slow
+U 00073478 fast
+U 00073482 DG/ML Level 5C
+U 000734a0 DG/ML Level 4C
+U 000734be Function
+U 000734d0   #  
+U 000734dc   X 
+U 000734e6   Y 
+U 000734f0 Actual length
+U 00073512 Barudan Punchant Basic
+U 00073546 BERNINA artista Designer
+U 00073578 Pending
+U 0007358a Stitching
+U 000735a0 Timed Out
+U 000735b6 ERROR
+U 000735c4 Finished
+U 000735d8 UNKNOWN)Prepare machine %s for transfer of design
+U 0007363c ERROR NUMBER OF COLOURS > 255 
+U 0007367a Error recovering design
+U 000736aa Unable to Open Design File
+U 000736e0 Error saving design"File %s not found or inconsistent.
+U 0007374e Path %s not found.
+U 00073774 artista Designs (*.ART)
+U 000737a4 Sequence By Color
+U 000737c8 The last stitch line entered is invalid.
+U 0007381a Stitch lines may not cross one another,
+U 0007386a and must pass through the object exactly once.,Some stitch line do not intersect the object Changing the Machine Format into>This Machine Connection has become unusable. Please run Setup.
+U 000739e2 ES alphabets (*.ESA)
+U 00073a0c BERNINA alphabets (*.ESB)
+U 00073a40 BERNINA artista Editor
+U 00073a6e artista Templates (*.AMT)
+U 00073aa2 Grid
+U 00073ab6 BERNINA artista AutoDesigner
+U 00073af0 Failed to launch Cross Stitch
+U 00073b42 Threads]Error while reading the image from the server application.
+U 00073bc8 Changes to the image will be lost.fThere are images open in external editors.
+U 00073c66 Do you want to close these images and discard the changes?øThe Adobe Acrobat Reader application required to display the 
+U 00073d58 online manual and online release notes cannot be found. 
+U 00073dcc Either you do not have Acrobat Reader installed on your
+U 00073e3c computer, or it has become corrupted.
+U 00073e8a Would you like to install it now?
+U 00073ece Adobe Acrobat Reader0Error launching the Acrobat Reader Setup program£Please insert your Embroidery Software CD-ROM
+U 00073fb8 If the Embroidery Software installation program starts
+U 00074026 automatically, cancel it. (See the installation instructions)
+U 000740a2 BERNINA artista ARTlink
+U 000740d2 Hollow
+U 000740e0 Continuous
+U 000740f6 Dash
+U 00074108 Dash Dot
+U 0007411a Dash Dot Dot
+U 00074134 Hollow
+U 00074142 Solid
+U 00074158 Max Jump: 
+U 00074170 Some images will not be saved
+U 000741ac Input C
+U 000741bc Motif Run
+U 000741d0 Read/Write .ART file
+U 000741fa Clp Files (*.clp)
+U 0007421e Bmp Files (*.bmp)
+U 00074242 Gif Files (*.gif)
+U 00074266 Jpeg Files (*.jpg)
+U 0007428c Pcx Files (*.pcx)
+U 000742b0 Tiff Files (*.tif)
+U 000742d6 DXF Files (*.dxf)
+U 000742fa cut sequin
+U 00074310 sequin off
+U 00074326 chain
+U 00074332 moss
+U 0007433e stop&trim
+U 00074352 thread change
+U 0007436e extend frame
+U 00074388 retract frame
+U 000743a6 start embr
+U 000743bc beg long st
+U 000743d4 end long st
+U 000743ec pos 1
+U 000743f8 pos 2
+U 00074404 pos 3
+U 00074412 Blatt
+U 0007441e Rewind / Stop
+U 0007443a Stop & Trim
+U 00074452 Auto Frame
+U 00074468 Open Tension
+U 00074482 Close Tension
+U 0007449e Extend Frame
+U 000744b8 Retract Frame
+U 000744d4 Empty
+U 000744e0 Empty Jump
+U 000744f6 Borer Depth
+U 00074538 Cannot open file
+U 0007455a Cannot open design
+U 00074580 Error
+U 0007458c Cannot Save Template File
+U 000745c0 Cannot Save Program Splits File5File %s does not exist. Please specify new path name.
+U 0007466c Stitches: %lu (%ld selected in %d range(s))
+U 000746c4 Segments: %ld
+U 000746e0 Objects: %ld (%ld selected) Curves: %ld Points: %ld
+U 00074748 Total mem: %ld  Avail mem: %ld
+U 00074786 Statistics
+U 0007479c Auto Save DisabledUAuto Save Disabled.
+U 000747ea To enable Auto Save please save the file to a different location.
+U 0007486e Cannot Open Program Splits File
+U 000748ae Cannot Open Template File
+U 000748e2 Backup File Error
+U 00074906 Could not backup design
+U 00074936 Autosave Error,Could not autosave %s
+U 00074980 Please manually save.
+U 000749ac #Not enough memory for the operation
+U 000749f8 1Points too close.
+U 00074a1e Please re-enter the last point.
+U 00074a5e "Failed to create event for thread!
+U 00074aa6 TTY Error!jSystem is running low on virtual memory.
+U 00074b0e All previous operations except the last one will not be undoable.3No Security Device Driver.
+U 00074bc8 Re-Install the software.
+U 00074bfa Incorrect Directory Name
+U 00074c2e Error reading file 
+U 00074c60 Style name empty or duplicate
+U 00074cb2 *Do you want to remove all existing styles?
+U 00074d0a NIt is impossible to create non-overlapping stitching between these two curves.ECan't create enough curved stitching to cover the complex-fill shape.jCan't stitch to these boundaries without self-intersection and/or crossing outside the complex-fill shape.KThis profile curve leads to stitching whose spacing varies by up to %.0f%%.JThis profile curve leads to stitching whose spacing varies by up to %.1%%.
+U 0007503a Toyota Disk Emulation
+U 0007506a XThis file cannot be accessed
+U 000750a6 Make sure you have security privileges on the network drive
+U 0007511e This file is read only (%s)
+U 00075156 TD-24
+U 00075162 The file is corrupt.
+U 0007518c Decode mismatch error
+U 000751b8 Decode mismatch error
+U 000751e4 Wilcom ES-EPL Designer
+U 00075212 Wilcom ES-EPE Designer
+U 00075240 Wilcom ES-EPD Designer.The size of the Design is larger than the Hoop
+U 000752cc Design Size Exceeded
+U 00075302 Delete the style?
+U 00075326 Do you wish to delete alphabet?
+U 00075366 Delete Alphabet
+U 00075386 Do you wish to delete letter?
+U 000753c2 Delete Letter
+U 000753e6 Letter name is invalid.
+U 00075416 Please check that the letter name is not empty,
+U 00075476 does not contain spaces
+U 000754a6 and is no longer than 30 chars.?
+U 000754e8 Letter with this name already exists.
+U 00075534 Replace existing letter?K
+U 00075568 Alphabet name is empty or has illegal characters.
+U 000755cc Please enter valid name.9
+U 00075600  alphabet name already exists.
+U 0007563e Please enter unique name.b
+U 00075674 The alphabet name entered is empty or consists of illegal characters.
+U 00075700 Please rename the alphabet.>
+U 0007573a This alphabet name already exists.
+U 00075780 Replace existing alphabet?H
+U 000757b8 The entered letter name is empty or too long.
+U 00075814 Please rename the letter.T
+U 0007584a This letter name has not changed.
+U 0007588e Please reenter the letter name, or choose Cancel.
+U 000758fa Do you wish to delete motif?
+U 00075934 Delete Motif
+U 0007594e Do you wish to delete border?
+U 0007598a Delete Border
+U 000759c2 Corner
+U 000759d0 Above
+U 000759dc Thin
+U 000759e6 Normal
+U 000759f4 Thick
+U 00075a00 Any Machine
+U 00075a1c <PRESET_SATIN_1>
+U 00075a3e <PRESET_SATIN_2>
+U 00075a60 <PRESET_SATIN_3>
+U 00075a82 <PRESET_SATIN_4>
+U 00075aa4 <PRESET_TATAMI_1>
+U 00075ac8 <PRESET_TATAMI_2>
+U 00075aec <PRESET_TATAMI_3>
+U 00075b10 <PRESET_TATAMI_4>
+U 00075b3a DLL Freed %d
+U 00075b54 DLL NOT Loaded %d
+U 00075b78 TWAIN_32.DLL NOT Found/Function not available
+U 00075bd4 for this Security Device,Are you sure you want to delete the pattern?*Are you sure you want to delete the motif?
+U 00075cca Access Code length error.
+U 00075cfe Listing terminated by user. Invalid option number specified.
+U 00075d78 Read error: 
+U 00075d92 Read error: Invalid unit ID.
+U 00075dcc Complete.
+U 00075de0 Option date Invalid.
+U 00075e0a Enabled   
+U 00075e20 Disabled  
+U 00075e36 Numeric   
+U 00075e4c Timed %5d Hours. 
+U 00075e70 Date   %2d/%2d/%4d. Trysoft Minder: Bad mesg length.
+U 00075eda Minder: polled $%X in idle.
+U 00075f12 Minder: polled $%X in IO.
+U 00075f46 Minder: Invalid state: %d.
+U 00075f82 Trysoft error %d: %s
+U 00075fae Reply_wait: timeout.
+U 00075fd8 Bad checksum in reply mesg.
+U 00076010 Reply: Error code %X
+U 0007603a L1 Encrypt: invalid char.
+U 0007606e L1 Decrypt: invalid char.
+U 000760a2 Startup failed: No 1st char.!Startup failed: Bad 1st char: $%X
+U 00076120 Polling: Rx buffer overflow."Polling: Unexpected Trysoft reset.
+U 000761a0 Polling: Bad char: $%X.
+U 000761d0 Polling: No ACK from Trysoft.
+U 0007620c Receive error
+U 00076228 Random reset
+U 00076242 Char Out of Range: $%X.
+U 00076272 Missing ACK from Trysoft.
+U 000762aa Rx overflow.
+U 000762c4 Trysoft reset.
+U 000762e2 Incorrect char: $%X.
+U 0007630c Trysoft message retry failed.
+U 00076348 TS_get_4: arg error
+U 00076370 TS_get_96: arg error
+U 0007639a TS2_get_3: arg error
+U 000763f0 Read_96: Queue full
+U 00076418 TS_lock
+U 00076428 TS_unlock
+U 0007643c TS_put
+U 0007644a TS_reset
+U 00076462 TS_sync
+U 00076472 TS_perror
+U 00076486 for %d Hours
+U 000764a0 since 
+U 000764ae until 
+U 000764bc Invalid Date
+U 000764d6 Barudan direct
+U 000764f4 Tajima direct
+U 00076510 Serial
+U 0007651e Toyota serial
+U 0007653a Melco Network
+U 00076556 UNKNOWN
+U 00076566 CENTER
+U 00076574 MIDWAY
+U 00076582 CORNER
+U 00076590 Design Files (*.EMB)
+U 000765ba Templates (*.EMT)
+U 000765de Red:
+U 000765e8 Green:
+U 000765f6 Blue:
+U 00076602 Hue:
+U 0007660c Lightness:
+U 00076622 Saturation:
+U 0007663a Design
+U 00076648 Number
+U 00076656 Type
+U 00076660 Stitches
+U 00076672 Merge With Style
+U 00076694 None Available
+U 000766b2 No Trysoft
+U 000766c8 Background
+U 000766de Selected
+U 000766f4 Borer
+U 00076700 Save
+U 0007670a Both Sides
+U 00076720 Side 1
+U 0007672e Side 2
+U 0007673c Center Run
+U 00076754 Zigzag
+U 00076762 Double Zigzag
+U 0007677e None
+U 0007678e Color
+U 0007679a Stitches
+U 000767ac Length
+U 000767bc Author: 
+U 000767ce Last Saved: 
+U 000767e8 Printed: 
+U 000767fc Fabric type, color: 
+U 00076826 Element
+U 00076838 Auto Applique
+U 00076854 One Curve Fill Effect
+U 00076880 Two Curve Fill Effect
+U 000768ac Auto Object
+U 000768c4 Input B
+U 000768d4 Option B
+U 000768e6 Machine Feedback
+U 00076908 Team Lettering
+U 00076926 Convert TTF
+U 00076942 Description
+U 0007695a Code
+U 00076964 Brand
+U 00076970 Thickness
+U 00076984 %6.2f mm
+U 00076996  L: %5.2f mm 
+U 000769b2  Max %4.2f Jump %4.2f
+U 000769de  %s %6.2f mm
+U 000769f8  Length %6.2f mm
+U 00076a1a  Auto %5.2f % 
+U 00076a38  Len %5.2f mm
+U 00076a54  Auto %5.2f %
+U 00076a70 CONNECTOR
+U 00076a84 CONTOUR
+U 00076a94 E STITCH
+U 00076aa6 MANUAL
+U 00076ab8 ×One or more Auto Stitch Styles are invalid. Please press Stitching Values button and select apropriate styles in the dialog. If no style is available press CANCEL to exit dialogs and create some user defined styles.
+U 00076c6a Incorrect Input
+U 00076c8a Please, select styles for autostitching. If no user defined style exists, press CANCEL to exit dialog and create some new user defined style(s).
+U 00076dac Incorrect Input
+U 00076dcc Chart
+U 00076de0 1Are you sure you want to delete the colorway:
+U 00076e46 Delete Colorway
+U 00076e68 Colorway: %s
+U 00076e82 Threads Used in Design: %dWThe colorway was not updated.
+U 00076ef4 There are many colors to add, remove some then try again.
+U 00076f6a Clip Fill
+U 00076f7e Motif Fill
+U 00076f94 PROGRAM SPLIT
+U 00076fb4 SATIN
+U 00076fc0 ZIGZAG
+U 00076fce Trapunto
+U 00076fe6 Enter Anchor Point
+U 0007700c Enter Guide Point
+U 00077030 Effects
+U 00077040 Object Properties
+U 00077064 Options
+U 0007707a    Name                     $   Comment                          
+U 000770fe Cutting
+U 00077110 &About Tape Manager...
+U 0007713e Anritsu DPT610A
+U 0007715e AutoRewind
+U 00077176 Barudan
+U 00077186 Baud
+U 00077194 Tape Read Completed
+U 000771bc Tape Write Completed
+U 000771e6 Data Bits
+U 000771fe Device
+U 00077210 Direction
+U 00077228 DSI ReaderqError connecting the Comms Port %s
+U 00077286 Error may be:
+U 000772a2  - Port does not exist
+U 000772d0  - Port Already Used by Another Process
+U 00077322 Port
+U 00077330 Punch
+U 0007733c Punch Status
+U 00077356 Punch to Tape
+U 00077372 Reader
+U 00077380 Reader Status
+U 0007739c Read from Tape
+U 000773ba Reverse
+U 000773ca Stop Bits
+U 000773e2 Tajima 8RP
+U 000773f8 Tajima 8RP II
+U 00077414 Tape Manager
+U 00077436 Fail...
+U 00077446 Pass
+U 00077450 No Error
+U 00077462 Incomplete Setup4Communication Fault
+U 000774ac Please Check Communication Cable
+U 000774ee Disk File Error
+U 0007750e Error - Timeout
+U 0007752e Unknown Error
+U 0007754a Cancel has been activated
+U 0007757e Facit
+U 0007758a Facit N 5000
+U 000775a4 File
+U 000775b2 Forward
+U 000775c2 GNT 4604
+U 000775d4 GNT 4610
+U 000775e6 Hand Shake
+U 000775fe Label
+U 00077614 Parity
+U 0007762a Invalid Media - Fail
+U 00077654 Unable to determine media type'Disk Not inserted
+U 000776b6 Insert disk and Retry3Disk is Write Protected
+U 00077712 Write Enable Disk and Retry
+U 0007774a Invalid Operation for this Disk!Disk is in use by another process
+U 000777ce Read Compare failed
+U 000777f6 Unknown error
+U 00077812 Not Tested
+U 00077828 Format
+U 00077836 Write
+U 00077842 Read
+U 0007784c Disk
+U 00077856 Test Results for %c:
+U 00077880 NO tests done
+U 000778a4 Ready
+U 000778d4 TestDiskYDigiTest
+U 000778f8 DigiData
+U 0007790a DigiTest
+U 0007791c DigiTest Data (*.dmp)
+U 00077948 .dmp
+U 00077952 DigiTest Document
+U 00077976 DigiTest Document
+U 0007799a Stitch Manager
+U 000779d2 Type
+U 000779e4 Object
+U 000779fa Drawing
+U 00077a12 Input A
+U 00077a22 Complex Fill
+U 00077a3c Group
+U 00077a48 Manual
+U 00077a56 Input C
+U 00077a66 Text
+U 00077a72 Triple Run
+U 00077a88 Motif Run
+U 00077a9c Triple Manual
+U 00077ab8 Rectangle
+U 00077acc Ellipse
+U 00077adc Polygon
+U 00077aec PolylineMAccess Code Successfully Entered.
+U 00077b44 Please restart now to enable the software.FFound objects not supported in output version
+U 00077bf6 Do you want to continue?
+U 00077c62 Machine (Function) Error
+U 00077c94 Stitch Model Corrupted
+U 00077cc2 Object Model Corrupted
+U 00077cf0 Wrong External Connector Style
+U 00077d2e Wrong Internal Connector Style
+U 00077d6c No cover Style for an object
+U 00077da6 Underlay style error
+U 00077dd0 Wrong Cover style
+U 00077df4 Wrong Underlay style
+U 00077e1e Redundant Function in Design
+U 00077e58 Objects out of Stitching order
+U 00077e96 Repeated Function Error
+U 00077ec6 Spacing:
+U 00077ed8 Count:
+U 00077ee6 Stitch Length:
+U 00077f04 Number of Runs:
+U 00077f2a Error
+U 00077f36 Warning"Could not delete selected machine.
+U 00077fa0 Barudan Parallel
+U 00077fc2 Standard Serial
+U 00077fe2 Tajima Parallel
+U 00078002 Tajima Feedback Serial
+U 00078030 Toyota Feedback Serial
+U 0007805e Toyota Serial
+U 0007807a Toyota Disk Emulation
+U 000780a6 Melco StarLan Network
+U 000780d2 Melco Ethernet Network
+U 00078100 DCI Serial'Tajima Summary View
+U 0007813e Tajima Summary View7Tajima Machine Manager View
+U 0007819e Tajima Machine Manager View
+U 000781d6 Network
+U 000781e6 Ethernet
+U 000781f8 Confirm Machine Delete
+U 00078226 Confirm Multiple Machine Delete
+U 00078266 Confirm Design Delete
+U 00078292 Confirm Multiple Design Delete;Are you sure you want to delete design '%s' from the queue?
+U 00078348 @Are you sure you want to delete these %d designs from the queue?
+U 000783cc Brother Serial
+U 000783ea Confirm Design Queue Delete4Are you sure you want to delete these design queues?7Are you sure you want to delete these %d machine units?2Are you sure you want to delete machine unit '%s'?
+U 00078562 eBox Xmodem Serial
+U 0007858a In the queue
+U 000785b2 Change the window size
+U 000785e0 Change the window position
+U 00078616 Reduce the window to an icon
+U 00078650 Enlarge the window to full size"Switch to the next document window&Switch to the previous document window9Close the active window and prompts to save the documents
+U 000787ac !Restore the window to normal size
+U 000787f2 Activate Task List
+U 0007882e Activate this window
+U 00078862 'Close print preview mode
+U 00078896 Cancel Preview
+U 000788c8 UOLE initialization failed.  Make sure that the OLE libraries are the correct version.QFailed to create object.  Make sure the object is entered in the system registry.
+U 00078a3a Internal Connect Error
+U 00078a68 Trimming Error
+U 00078a86 Thermal Error
+U 00078aa2 Limit Error
+U 00078aba Data Format Error
+U 00078ade Needle Change Error
+U 00078b06 Needle Drop Error
+U 00078b2a Lower Thread Run Out
+U 00078b54 Stitching...
+U 00078b6e  @One or more designs could not be found.
+U 00078bc2 They will not be added.
+U 00078bf4 Design Files Missing
+U 00078c1e Save Machine Manager State?TThe Machine Manager has one or more designs in queues
+U 00078cc2 Do you want to save the state?
+U 00078d00 WarningJThe current downloading design will be cancelled.
+U 00078d74 Do you want to continue?
+U 00078dae Downloading...
+U 00078dd0 Port Failure
+U 00078df8 Stitching...
+U 00078e12 Idle
+U 00078e1c Idle
+U 00078e26 Repeat End
+U 00078e42 Repeat End
+U 00078e60 Auto Offset
+U 00078e78 Abnormal Stop
+U 00078e94 Stop Switch
+U 00078eac Thread Break
+U 00078ec6 Emergency stop
+U 00078ee4 Sewing Motor Lock
+U 00078f08 X Motor Lock
+U 00078f22 Y Motor Lock
+U 00078f3c Needle Case Error
+U 00078f60 Thread Break
+U 00078f7a RAM Check Error
+U 00078f9a RS232C Com Error
+U 00078fbc Internal Com Error
+U 00078fe2 RS232C Connect Error
+U 00079022 Reference
+U 00079036 Tot.Stitches
+U 00079050 Tot.Stops
+U 00079064 Tot.Thread Breaks
+U 00079088 Tot.Mins Stopped
+U 000790aa Tot.Mins Operated
+U 000790ce Invalid 'from' date
+U 000790f6 Invalid 'to' date
+U 0007911a Invalid date range!Error opening statistics database!Error writing statistics database!Error reading statistics database
+U 0007920c Please select a format1File name is empty or contains invalid characters
+U 0007929e Error writing report"Error creating statistics database)The database already exists. Recreate it? The database is missing or empty
+U 000793a4 Create a new database?( Machine Manager - Loading Saved Designs>Please wait while the  Machine Manager restores saved designs. Machine Manager - Saving Designs5Please wait while the  Machine Manager saves designs.
+U 00079550 Machine Manager - Shutting down
+U 00079590 .Embroidery Files (*.emb)|*.emb|All Files|*.*||
+U 000795f0 An existed statistics database has been detected, but it is not supported by this version 
+U 000796a6 application. A new empty statistics database will be created for the system.  
+U 00079746 The old database has been saved in the following file. Please backup it if necessary. 
+U 000797f4 ¢Fail to backup the statistics database due to the file system error. The database will not be available. 
+U 000798cc Warning: The system is not safe to run the application!
+U 00079944 Embroidery Machine Connection!Updating Settings. Please Wait...
+U 000799d8 XHoop name is empty, has illegal characters or already exists.
+U 00079a56 Please enter a valid name.
+U 00079a8c Height
+U 00079a9a Rectangle
+U 00079aae Height
+U 00079abc Sewing
+U 00079aca Field
+U 00079af2 Hatch Horizontal
+U 00079b14 Hatch Vertical
+U 00079b32 Hatch Cross
+U 00079b4a Hatch 45° Downward
+U 00079b70 Hatch 45° Upward
+U 00079b92 Hatch 45° Cross
+U 00079bb4 Janome
+U 00079bc2 Janome Template
+U 00079be2 Design (*.JAN)
+U 00079c00 Template (*.JMT)
+U 00079c28 Digitizer 10000 - EasyDesign
+U 00079c62 Digitizer 10000 - EasyEdit
+U 00079c9a artista Cross Stitch
+U 00079cc4 Janome (*.JSF)
+U 00079ce2 Janome
+U 00079cf0 Encapsulated Postscript (*.EPS)
+U 00079d4a Used
+U 00079d54 Code
+U 00079d5e Brand
+U 00079d6a Description
+U 00079d82 Thickness
+U 00079d96 Color
+U 00079db6 Selected object not stitched
+U 00079dfa Merge
+U 00079e06 Building copies/reflections
+U 00079e58 #Are you sure you want to delete %s?
+U 00079eda SCRL
+U 00079f0c &One Page
+U 00079f20 &Two Page
+U 00079f70 Perform All tests on a disk
+U 00079fa8 3Check if Melco Disks are supported on this computer
+U 0007a016 0Start or Stop the Digitizer
+U 0007a050 Start/Stop Digitizer
+U 0007a07a Set Up for the Digitizer
+U 0007a0ac Enable Digitizer Input
+U 0007a0da Stop Digitizer Input

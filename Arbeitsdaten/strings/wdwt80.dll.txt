@@ -1,0 +1,3837 @@
+A 00000050 This program must be run under Win32
+A 0000021f `DATA
+A 00000270 .idata
+A 00000298 .edata
+A 000002bf P.reloc
+A 000002e7 P.rsrc
+A 00000406 Boolean
+A 0000041b False
+A 00000442 Smallint
+A 0000045a Integer
+A 0000049a Cardinal
+A 000004b2 Double
+A 000004c2 Currency
+A 000004d2 String
+A 000004de WideString
+A 000004ee Variant
+A 00000545 TObjectP
+A 00000552 TObjectD
+A 00000564 System
+A 00000572 IInterface
+A 00000592 System
+A 00000635 TInterfacedObject
+A 0000064e TBoundArray
+A 0000066a Systemt
+A 00000675 	TDateTime
+A 000008d4 SVWUQ
+A 0000093e Z]_^[
+A 000009d0 YZ]_^[
+A 00000af5 w;;t$
+A 00000c00 SVWUQ
+A 00000c77 Z]_^[
+A 00000d07 YZ]_^[
+A 000015dd Uh(#@
+A 00001732 _^[YY]
+A 000018d8 _^[Y]
+A 00001aa8 YZ]_^[
+A 00001ad9 Uha'@
+A 00001b6b _^[Y]
+A 00001e50 ,$YXZ
+A 00001f9a Ht Ht.
+A 00001fe5 F$d+@
+A 000023cf ~ExC[)
+A 0000247a YZXt5
+A 000024e8                                                                 
+A 000027a0 BkU'9
+A 000028c5 Uh	5@
+A 00002930 SOFTWARE\Borland\Delphi\RTL
+A 0000294c FPUMaskValue
+A 00002af3 Uh`7@
+A 00002b69 _^[YY]
+A 00002e11 PPRTj
+A 00002f9f YZXtp
+A 0000312a YZXtm1
+A 00003143 PhP=@
+A 000031ea ZTUWVSPRTj
+A 000032c6 t=HtN
+A 00003442 Uhn@@
+A 00003a28 t-Rf;
+A 00003a2e t f;J
+A 00003b7c SVWRP
+A 00003bf2 Z_^[X
+A 00003d9e tVSVWU
+A 00003dfe t1SVW
+A 00004034 t-Rf;
+A 0000403a t f;J
+A 00004098 SVWUQ
+A 000040f1 Z]_^[
+A 000047dc USVW1
+A 000048a4 USVW1
+A 00004fee t@hl]@
+A 0000515c kernel32.dll
+A 0000516c GetLongPathNameA
+A 000053b0 Software\Borland\Locales
+A 000053cc Software\Borland\Delphi\Locales
+A 000054d3 _^[YY]
+A 000054f5 UhPa@
+A 0000572f FFF;M
+A 0000573c ^[YY]
+A 00005840 @t7;u
+A 00005854 u$F;u
+A 00005895 Uh'e@
+A 00005d90 borlndmm.dll
+A 00005da0 @Borlndmm@SysGetMem$qqri
+A 00005dbc @Borlndmm@SysFreeMem$qqrpv
+A 00005dd8 @Borlndmm@SysReallocMem$qqrpvi
+A 000067f9 ]$SQRPj
+A 0000689e _^[Y]
+A 000068a8 Magellan MSWHEEL
+A 000068bc MouseZ
+A 000068c4 MSWHEEL_ROLLMSG
+A 000068d4 MSH_WHEELSUPPORT_MSG
+A 000068ec MSH_SCROLL_LINES_MSG
+A 00006909 Uh)u@
+A 00006cf2 	ExceptionHy@
+A 00006d49 EAbort
+A 00006d9d EHeapException
+A 00006df9 EOutOfMemory
+A 00006e55 EInOutError
+A 00006eac 	EExternal
+A 00006f05 EExternalException
+A 00006f64 	EIntError
+A 00006fbd EDivByZero
+A 00007015 ERangeErrorl|@
+A 0000706d EIntOverflow
+A 000070c9 EMathError
+A 00007121 EInvalidOp
+A 00007179 EZeroDivide
+A 000071d0 	EOverflow
+A 00007229 EUnderflow
+A 00007281 EInvalidPointer
+A 000072dd EInvalidCast
+A 00007339 EConvertError
+A 00007395 EAccessViolation
+A 000073f5 EPrivilege
+A 0000744d EStackOverflow
+A 000074a8 	EControlC
+A 00007501 EVariantError
+A 0000755d EAssertionFailed
+A 000075bd EAbstractError
+A 00007619 EIntfCastError
+A 00007675 EOSError
+A 000076cd ESafecallException
+A 000076fa SysUtils
+A 0000771e SysUtils
+A 000077fc $TMultiReadExclusiveWriteSynchronizer
+A 00007aa1 SWSVj
+A 00007d8a $Z_^[
+A 00007db6 $Z_^[
+A 00007dec ^[YY]
+A 000082d8 <*t"<0r=<9w9i
+A 00008890 INFNAN
+A 000089dd QS<$t
+A 00008a0b $*@@@*$@@@$ *@@* $@@($*)@-$*@@$-*@@$*-@@(*$)@-*$@@*-$@@*$-@@-* $@-$ *@* $-@$ *-@$ -*@*- $@($ *)(* $)
+A 00009044 _^[YY]
+A 000091a7 _^[YY]
+A 000091d8 $YZ_^[
+A 000099a4 t%HtIHtm
+A 00009eb8 AM/PM
+A 0000a0fa _^[YY]
+A 0000a1d0 SVWUQ
+A 0000a21b $Z]_^[
+A 0000a99b _^[Y]
+A 0000a9a9 QQQQQQSVW3
+A 0000ac31 QQQQQSVW
+A 0000b027 D$PPj
+A 0000b080 D$LPj
+A 0000b154 _^[Y]
+A 0000b222 _^[YY]
+A 0000b285 	TErrorRec
+A 0000b306 TExceptRec
+A 0000b484 t<HtH
+A 0000bb2e $YZ^[
+A 0000bb8e $YZ^[
+A 0000bcc6 WUWSj
+A 0000bd04 YZ]_^[
+A 0000be42 _^[Y]
+A 0000c2c0 m/d/yy
+A 0000c2d0 mmmm d, yyyy
+A 0000c318  AMPM
+A 0000c328 AMPM 
+A 0000c344 :mm:ss
+A 0000c5a8 kernel32.dll
+A 0000c5b8 GetDiskFreeSpaceExA
+A 0000c641 TThreadLocalCounter2
+A 0000c6c0 SVWUQ
+A 0000c730 (Z]_^[
+A 0000ca50 ;B$t&
+A 0000cc24 _^[Y]
+A 0000d425 TCustomVariantType
+A 0000d43e TCustomVariantType
+A 0000d45b Variants
+A 0000d46e TVarDataArray
+A 0000d48c Variants
+A 0000d5c1 TInvokeableVariantType
+A 0000d625 EVariantInvalidOpError
+A 0000d689 EVariantTypeCastError
+A 0000d6ed EVariantOverflowError
+A 0000d751 EVariantInvalidArgError
+A 0000d7b5 EVariantBadVarTypeError
+A 0000d819 EVariantBadIndexError
+A 0000d87d EVariantArrayLockedError
+A 0000d8e5 EVariantArrayCreateError
+A 0000d94d EVariantNotImplError
+A 0000d9b1 EVariantOutOfMemoryError
+A 0000da19 EVariantUnexpectedError|
+A 0000da7d EVariantDispatchError
+A 0000dd21 tSHtv
+A 0000edb6 _^[YY]
+A 0000eef4 _^[YY]
+A 0000f0b8 SVWUQ
+A 0000f150 Z]_^[
+A 0000f3ab FSVWQ
+A 0000f9a9 _^[YY]
+A 000119fa Uh3&A
+A 00011b4f UhM,A
+A 0001241d UhS0A
+A 000125f7 Uh62A
+A 000127b5 QQQQSV
+A 000127c1 UhT4A
+A 000128d7 Uh$5A
+A 000129ed Uh?6A
+A 00012be0 Uh!8A
+A 00012ed9 Uh@;A
+A 00013359 Ht3Ht[
+A 0001379c SVWUQ
+A 0001392c $Z]_^[
+A 000139d6 Uh?FA
+A 00013c0b Uh_HA
+A 00014534 Empty
+A 00014554 Smallint
+A 00014568 Integer
+A 00014578 Single
+A 00014588 Double
+A 00014598 Currency
+A 000145bc OleStr
+A 000145cc Dispatch
+A 000145e0 Error
+A 000145f0 Boolean
+A 00014600 Variant
+A 00014610 Unknown
+A 00014620 Decimal
+A 0001463c ShortInt
+A 00014670 LongWord
+A 00014684 Int64
+A 000147c8 String
+A 000147e4 ByRef 
+A 000147f4 Array 
+A 00014a1b _^[Y]
+A 00014cd7 UhTYA
+A 00014f2a ]_^[]
+A 00014fcd $YZ]_^[
+A 00014fd8 SVWUQ
+A 00015024 Z]_^[
+A 000156fe Variants
+A 0001571e UhkcA
+A 000157fb _^[YY]
+A 0001583d _^[Y]
+A 00015848 SVWUQ
+A 0001587b Z]_^[
+A 00015cee TStringDesc
+A 00015d26 Variants
+A 000160e6 Uh5mA
+A 00016305 UhpoA
+A 0001637a _^[Y]
+A 00016399 UhVpA
+A 000163b5 Uh9pA
+A 000167e9 Uh	tA
+A 0001691d TPublishableVariantType
+A 00016981 EPropertyError
+A 000169dd EPropertyConvertError
+A 000169fc False
+A 000171ae _^[Y]
+A 000174d8 YZ_^[
+A 0001790b _^[Y]
+A 00017963 _^[Y]
+A 00017e96 _^[YY]
+A 000180ff $YZ^[
+A 00018166 tagEXCEPINFO 
+A 000181fd 	TBiDiMode
+A 00018215 bdLeftToRight
+A 00018223 bdRightToLeft
+A 00018231 bdRightToLeftNoAlign
+A 00018246 bdRightToLeftReadingOnly
+A 0001825f Classes
+A 0001826e THelpContext
+A 00018289 	THelpType
+A 000182a0 	htKeyword	htContext
+A 000182b5 Classes
+A 000182c1 	TShortCut
+A 000182da TNotifyEvent
+A 000182ea Sender
+A 000182f1 TObjectD
+A 00018345 EStreamError
+A 000183a1 EFCreateError
+A 000183fd EFOpenErrorT
+A 00018455 EFilerError
+A 000184ad EReadError
+A 00018505 EWriteError\
+A 0001855d EClassNotFound
+A 000185b9 EResNotFound
+A 00018615 EListError
+A 0001866d EBitsError
+A 000186c5 EStringListError
+A 00018725 EComponentError
+A 00018781 EOutOfResources
+A 000187dd EInvalidOperation
+A 0001884d TList
+A 000188a1 TThreadList
+A 000188f9 TBits
+A 00018967 TPersistent
+A 0001897a TPersistentL
+A 00018990 Classes
+A 00018a5f TInterfacedPersistentx
+A 00018a7a TInterfacedPersistent<
+A 00018a9a Classes
+A 00018b45 TCollectionT
+A 00018b56 TCollection
+A 00018b6c Classes
+A 00018b7e IStringsAdapterl
+A 00018ba3 Classes
+A 00018c8f TStrings
+A 00018c9e TStrings
+A 00018cb1 Classes
+A 00018cc2 TStringItem
+A 00018dc5 TStringList
+A 00018dd6 TStringList,
+A 00018dec Classes
+A 00018e61 TStream
+A 00018ed1 THandleStream
+A 00018f49 TFileStream
+A 00018fbd TCustomMemoryStream
+A 0001903d TMemoryStream
+A 000190b5 TResourceStream
+A 0001924d TStreamAdapter
+A 000192a9 TClassFinder
+A 00019315 TFiler
+A 000193a3 TReader
+A 0001941f TWriter
+A 00019475 EThread
+A 00019482 TComponentName
+A 00019496 IDesignerNotifyl
+A 000194bb Classes
+A 00019661 TComponent
+A 00019672 TComponent
+A 00019687 Classes
+A 000196ab NameT
+A 0001973d TBasicActionLink
+A 000197ed TBasicAction
+A 00019802 TBasicAction
+A 00019819 Classes
+A 0001982a TIdentMapEntry
+A 00019920 	TRegGroup
+A 00019979 TRegGroups
+A 000199e8 YZ]_^[
+A 00019a55 _^[Y]
+A 00019ad4 _^[Y]
+A 00019b1c SVWUQ
+A 00019b4c u%CNu
+A 00019b75 Z]_^[
+A 00019b7c SVWUQ
+A 00019bb8 $Z]_^[
+A 00019d44 SVWUQ
+A 00019d87 Z]_^[
+A 00019e60 SVWUQ
+A 00019e9e Z]_^[
+A 00019ea4 SVWUQ
+A 00019ee2 Z]_^[
+A 0001a064 SVWUQ
+A 0001a09e $Z]_^[
+A 0001a311 _^[YY]
+A 0001a608 	TIntConst
+A 0001a6ec _^[Y]
+A 0001a768 _^[Y]
+A 0001a7a8 _^[Y]
+A 0001a7ea _^[YY]
+A 0001a92d _^[Y]
+A 0001b2f0 SVWUQ
+A 0001b38c Z]_^[
+A 0001b7b4 _^[Y]
+A 0001b8b7 _^[Y]
+A 0001bc92 W<CNu
+A 0001be20 Strings
+A 0001bf6f _^[Y]
+A 0001c394 S$_^[Y]
+A 0001c499 ^[YY]
+A 0001c548 _^[YY]
+A 0001c578 Sd]_^[
+A 0001c92c SVWUQ
+A 0001c986 $Z]_^[
+A 0001d13a ^[YY]
+A 0001d8a4 _^[Y]
+A 0001d9db TPropFixup
+A 0001da39 TPropIntfFixup
+A 0001dc2c _^[YY]
+A 0001dc3c Owner
+A 0001df0e _^[YY]
+A 0001df96 _^[Y]
+A 0001e3ed C0_^[
+A 0001ee28 False
+A 0001f296 _^[YY]
+A 0001f2e5 QQQQ3
+A 0001f75c %s_%d
+A 0001fb43 _^[YY]
+A 0001fc60 ^[YY]
+A 0001fc79 Uh?	B
+A 00020461 QQQQQQQS
+A 00020949 _^[YY]
+A 00020997 _^[Y]
+A 00020fc4 False
+A 00021309 _^[Y]
+A 00021489 UhE!B
+A 0002171b Uht#B
+A 0002188e _^[Y]
+A 0002189c Owner
+A 000218b8 .Owner
+A 0002196d QQQQQ3
+A 00021ba2 UhL(B
+A 00021c71 QQQQQ3
+A 00021c78 Uho)B
+A 00021ec9 QQQQS3
+A 00021ed0 Uh?+B
+A 00021f55 QQQQ3
+A 000222c6 UhU0B
+A 00022340 UhD0B
+A 00022621 UhY2B
+A 0002278a UhF4B
+A 00022b78 SVWUQ
+A 00022bcc Z]_^[
+A 00022c37 _^[Y]
+A 00022d3f S _^[
+A 00022d64 SVWUQ
+A 00022dab Z]_^[
+A 00022e39 YZ_^[
+A 00022ee4 SVWUQ
+A 00022f2d Z]_^[
+A 00023249 G0_^[
+A 0002329f ;CDt:
+A 000232dc R0_^[]
+A 00023513 _^[YY]
+A 00023527 UhfAB
+A 00023593 UhmCB
+A 000235c2 UhFCB
+A 000235fd Uh5CB
+A 000238ee ulj@h
+A 0002396f S	_^[]
+A 0002398c TPUtilWindow
+A 00026aba TColor
+A 00026b19 EInvalidGraphictwB
+A 00026b75 EInvalidGraphicOperation
+A 00026b96 TFontPitch
+A 00026bad 	fpDefault
+A 00026bb8 fpVariable
+A 00026bc3 fpFixed
+A 00026bcb Graphics
+A 00026bd9 	TFontName
+A 00026bea TFontCharset
+A 00026c06 TFontStyle
+A 00026c1e fsBold
+A 00026c25 fsItalic
+A 00026c2e fsUnderline
+A 00026c3a fsStrikeOut
+A 00026c46 Graphics
+A 00026c56 TFontStyles
+A 00026c6d 	TPenStyle
+A 00026c85 psSolid
+A 00026c8d psDash
+A 00026c94 psDot	psDashDot
+A 00026ca4 psDashDotDot
+A 00026cb1 psClear
+A 00026cb9 psInsideFrame
+A 00026cc7 Graphics
+A 00026cd6 TPenMode
+A 00026cec pmBlack
+A 00026cf4 pmWhite
+A 00026cfc pmNop
+A 00026d02 pmNot
+A 00026d08 pmCopy	pmNotCopy
+A 00026d19 pmMergePenNot
+A 00026d27 pmMaskPenNot
+A 00026d34 pmMergeNotPen
+A 00026d42 pmMaskNotPen
+A 00026d4f pmMerge
+A 00026d57 pmNotMerge
+A 00026d62 pmMask	pmNotMask
+A 00026d73 pmXor
+A 00026d79 pmNotXor
+A 00026d82 Graphics
+A 00026d92 TBrushStyle
+A 00026dab bsSolid
+A 00026db3 bsClear
+A 00026dbb bsHorizontal
+A 00026dc8 bsVertical
+A 00026dd3 bsFDiagonal
+A 00026ddf bsBDiagonal
+A 00026deb bsCross
+A 00026df3 bsDiagCross
+A 00026dff Graphics
+A 00026e69 TGraphicsObject|zB
+A 00026e7e TGraphicsObjectTzB
+A 00026e98 Graphics
+A 00026eaa IChangeNotifierl
+A 00026ecf Graphics
+A 00026f4f TFontX{B
+A 00026f5a TFont({B
+A 00026f6a Graphics
+A 00026f8f Charset
+A 00026fb1 ColorT
+A 00026fd1 Height
+A 00027011 PitchT
+A 00027031 SizePxB
+A 00027050 Style
+A 000270cd Graphics
+A 000270f2 Color
+A 00027112 ModehxB
+A 00027131 StyleT
+A 00027151 Width
+A 000271b1 TBrush
+A 000271be TBrush
+A 000271cf Graphics
+A 000271f4 Color
+A 00027214 Style
+A 00027281 TCanvas
+A 0002728e TCanvash~B
+A 000272a0 Graphics
+A 000272c5 BrushT
+A 000272e5 CopyModeT{B
+A 00027459 TGraphic
+A 0002746a TGraphic
+A 0002747d Graphics
+A 000274d9 TSharedImage
+A 00027539 TBitmapImage
+A 00027605 TBitmap
+A 00027612 TBitmap
+A 00027624 Graphics
+A 00027681 TIconImage
+A 0002773d TIcon
+A 0002774a TIcon
+A 0002775a Graphics
+A 000277c5 TResourceManager
+A 00027942 ^[YY]
+A 00027a68 _^[YY]
+A 00027ad3 _^[Y]
+A 00027bec ^[YY]
+A 00027bfc clBlack
+A 00027c0c clMaroon
+A 00027c20 clGreen
+A 00027c30 clOlive
+A 00027c40 clNavy
+A 00027c50 clPurple
+A 00027c64 clTeal
+A 00027c74 clGray
+A 00027c84 clSilver
+A 00027c98 clRed
+A 00027ca8 clLime
+A 00027cb8 clYellow
+A 00027ccc clBlue
+A 00027cdc clFuchsia
+A 00027cf0 clAqua
+A 00027d00 clWhite
+A 00027d10 clMoneyGreen
+A 00027d28 clSkyBlue
+A 00027d3c clCream
+A 00027d4c clMedGray
+A 00027d60 clActiveBorder
+A 00027d78 clActiveCaption
+A 00027d90 clAppWorkSpace
+A 00027da8 clBackground
+A 00027dc0 clBtnFace
+A 00027dd4 clBtnHighlight
+A 00027dec clBtnShadow
+A 00027e00 clBtnText
+A 00027e14 clCaptionText
+A 00027e2c clDefault
+A 00027e40 clGradientActiveCaption
+A 00027e60 clGradientInactiveCaption
+A 00027e84 clGrayText
+A 00027e98 clHighlight
+A 00027eac clHighlightText
+A 00027ec4 clHotLight
+A 00027ed8 clInactiveBorder
+A 00027ef4 clInactiveCaption
+A 00027f10 clInactiveCaptionText
+A 00027f30 clInfoBk
+A 00027f44 clInfoText
+A 00027f58 clMenu
+A 00027f68 clMenuBar
+A 00027f7c clMenuHighlight
+A 00027f94 clMenuText
+A 00027fa8 clNone
+A 00027fb8 clScrollBar
+A 00027fcc cl3DDkShadow
+A 00027fe4 cl3DLight
+A 00027ff8 clWindow
+A 0002800c clWindowFrame
+A 00028024 clWindowText
+A 000280a0 ANSI_CHARSET
+A 000280b8 DEFAULT_CHARSET
+A 000280d0 SYMBOL_CHARSET
+A 000280e8 MAC_CHARSET
+A 000280fc SHIFTJIS_CHARSET
+A 00028118 HANGEUL_CHARSET
+A 00028130 JOHAB_CHARSET
+A 00028148 GB2312_CHARSET
+A 00028160 CHINESEBIG5_CHARSET
+A 0002817c GREEK_CHARSET
+A 00028194 TURKISH_CHARSET
+A 000281ac HEBREW_CHARSET
+A 000281c4 ARABIC_CHARSET
+A 000281dc BALTIC_CHARSET
+A 000281f4 RUSSIAN_CHARSET
+A 0002820c THAI_CHARSET
+A 00028224 EASTEUROPE_CHARSET
+A 00028240 OEM_CHARSET
+A 000286a8 Default
+A 00028fa6 _^[Y]
+A 000291c2 $YZ^[
+A 00029a87 E$PVSj
+A 00029c1a YZ_^[
+A 00029f17 $Z_^[
+A 0002a171 _^[YY]
+A 0002a52c C ;C$s
+A 0002ac4d TBitmapCanvas
+A 0002ac62 TBitmapCanvas4
+A 0002ac7a Graphics
+A 0002bd28 @pPV3
+A 0002c525 _^[YY]
+A 0002cb0d <$BMt
+A 0002cd26 T]_^[
+A 0002cd37 s(;~ t8
+A 0002d03b D$*Ph
+A 0002d69f C(_^[Y]
+A 0002d7b0 \$4Vj
+A 0002d7c4 SVWjH
+A 0002d881 TPatternManagerSV
+A 0002d9b7 _^[YY]
+A 0002dde5 TObjectList<
+A 0002de49 TOrderedList
+A 0002deb1 TStack
+A 0002e1fc _^[Y]
+A 0002e20c GetMonitorInfoA
+A 0002e290 GetSystemMetrics
+A 0002e324 MonitorFromRect
+A 0002e3b8 MonitorFromWindow
+A 0002e450 MonitorFromPoint
+A 0002e4ae >(r[j
+A 0002e520 GetMonitorInfo
+A 0002e530 DISPLAY
+A 0002e582 >(r[j
+A 0002e5f4 GetMonitorInfoA
+A 0002e604 DISPLAY
+A 0002e656 >(r[j
+A 0002e6c8 GetMonitorInfoW
+A 0002e6d8 DISPLAY
+A 0002e7fc EnumDisplayMonitors
+A 0002e870 USER32.DLL
+A 0002e8fa IHelpSelectorl
+A 0002e91b :	HelpIntfs
+A 0002e932 IHelpSysteml
+A 0002e951 :	HelpIntfs
+A 0002e966 ICustomHelpViewerl
+A 0002e98b :	HelpIntfs	
+A 0002e9a2 IExtendedHelpViewer`
+A 0002e9c9 :	HelpIntfs
+A 0002e9de ISpecialWinHelpViewer
+A 0002ea07 :	HelpIntfs
+A 0002ea1e IHelpManagerl
+A 0002ea3e :	HelpIntfs
+A 0002ea9d EHelpSystemException
+A 0002eb13 THelpViewerNode
+A 0002ec8b THelpManager
+A 0002efff R,GKu
+A 0002f047 R(FKu
+A 0002f83f _^[Y]
+A 0002fbc8 comctl32.dll
+A 0002fbd8 InitializeFlatSB
+A 0002fbec UninitializeFlatSB
+A 0002fc00 FlatSB_GetScrollProp
+A 0002fc18 FlatSB_SetScrollProp
+A 0002fc30 FlatSB_EnableScrollBar
+A 0002fc48 FlatSB_ShowScrollBar
+A 0002fc60 FlatSB_GetScrollRange
+A 0002fc78 FlatSB_GetScrollInfo
+A 0002fc90 FlatSB_GetScrollPos
+A 0002fca4 FlatSB_SetScrollPos
+A 0002fcb8 FlatSB_SetScrollInfo
+A 0002fcd0 FlatSB_SetScrollRange
+A 0002fd2d UhM	C
+A 0002ff35 TTimer
+A 0002ff42 TTimer
+A 0002ff53 ExtCtrls
+A 0002ff78 Enabled
+A 0002ff9a Interval
+A 0002ffbd OnTimerSV
+A 000300b9 _^[Y]
+A 000302d1 TCommonDialog
+A 000302e6 TCommonDialogp
+A 000302fe Dialogs
+A 00030322 Ctl3Dh
+A 00030342 HelpContext
+A 00030368 OnClose
+A 0003038a OnShowSV
+A 000304af _^[Y]
+A 0003062c Cancel
+A 0003063c Abort
+A 0003064c Retry
+A 0003065c Ignore
+A 00030678 NoToAll
+A 00030688 YesToAll
+A 00030708 commdlg_help
+A 00030718 commdlg_FindReplace
+A 0003072c WndProcPtr%.8X%.8X
+A 000308f0 Delphi Picture
+A 00030900 Delphi Component
+A 000309ed THintAction
+A 000309fe THintAction
+A 00030a14 StdActns
+A 00030c47 TWinHelpViewer
+A 00030d17 _^[Y]
+A 00030e69 _^[YY]
+A 00030ffc IE(AL("%s",4),"AL(\"%0:s\",3)","JK(\"%1:s\",\"%0:s\")")
+A 000310e5 _^[Y]
+A 000311f0 JumpID("","%s")
+A 0003126b _^[YY]
+A 000312fb _^[Y]
+A 00031464 MS_WINHELP
+A 000314c0 #32770
+A 000314fe Uh^!C
+A 000315a6 Php C
+A 000315f7 Uhi"C
+A 00031711 Uho#C
+A 0003177e TCursor
+A 00031796 TAlign
+A 000317aa alNone
+A 000317b1 alTop
+A 000317b7 alBottom
+A 000317c0 alLeft
+A 000317c7 alRight
+A 000317cf alClient
+A 000317d8 alCustom
+A 000317e1 Controls
+A 0003185d TDragObject
+A 000318d9 TDragObjectEx
+A 00031961 TBaseDragControlObject
+A 000319f1 TDragControlObject
+A 00031a7d TDragControlObjectEx
+A 00031b1d TDragDockObjectx'C
+A 00031bb5 TDragDockObjectEx
+A 00031c2d TControlCanvas
+A 00031c42 TControlCanvas
+A 00031c5b Controls
+A 00031d31 TControlActionLink
+A 00031d49 	TDragMode
+A 00031d61 dmManual
+A 00031d6a dmAutomatic
+A 00031d76 Controls
+A 00031d85 	TDragKind
+A 00031d9d dkDrag
+A 00031da4 dkDock
+A 00031dab Controls
+A 00031db9 	TTabOrder
+A 00031dd2 TCaption
+A 00031de2 TAnchorKind
+A 00031dfb akLeft
+A 00031e02 akTop
+A 00031e08 akRight
+A 00031e10 akBottom
+A 00031e19 Controls
+A 00031e2a TAnchors
+A 00031e3e TConstraintSize
+A 00031eb9 TSizeConstraints
+A 00031ed2 TSizeConstraints
+A 00031eed Controls
+A 00031f11 	MaxHeight8*C
+A 00031f36 MaxWidth8*C
+A 00031f58 	MinHeight8*C
+A 00031f7d MinWidth
+A 00031f8e TMouseEvent
+A 00031f9d Sender
+A 00031fa4 TObject
+A 00031fad Button
+A 00031fb4 TMouseButton
+A 00031fc2 Shift
+A 00031fc8 TShiftState
+A 00031fd7 Integer
+A 00031fe2 Integer
+A 00031ff2 TMouseMoveEvent
+A 00032005 Sender
+A 0003200c TObject
+A 00032015 Shift
+A 0003201b TShiftState
+A 0003202a Integer
+A 00032035 Integer@,C
+A 00032041 	TKeyEvent
+A 0003204f Sender
+A 00032056 TObject
+A 00032069 Shift
+A 0003206f TShiftState
+A 00032082 TKeyPressEvent
+A 00032094 Sender
+A 0003209b TObject
+A 000320b2 TDragOverEvent
+A 000320c4 Sender
+A 000320cb TObject
+A 000320d4 Source
+A 000320db TObject
+A 000320e6 Integer
+A 000320f1 Integer
+A 000320fa State
+A 00032100 TDragState
+A 0003210c Accept
+A 00032113 Boolean
+A 00032122 TDragDropEvent
+A 00032134 Sender
+A 0003213b TObject
+A 00032144 Source
+A 0003214b TObject
+A 00032156 Integer
+A 00032161 Integerl-C
+A 0003216e TStartDragEvent
+A 00032181 Sender
+A 00032188 TObject	
+A 00032191 DragObject
+A 0003219c TDragObject
+A 000321ae TEndDragEvent
+A 000321bf Sender
+A 000321c6 TObject
+A 000321cf Target
+A 000321d6 TObject
+A 000321e1 Integer
+A 000321ec Integer
+A 000321fa TDockDropEvent
+A 0003220c Sender
+A 00032213 TObject
+A 0003221c Source
+A 00032223 TDragDockObject
+A 00032236 Integer
+A 00032241 IntegerL.C
+A 0003224e TDockOverEvent
+A 00032260 Sender
+A 00032267 TObject
+A 00032270 Source
+A 00032277 TDragDockObject
+A 0003228a Integer
+A 00032295 Integer
+A 0003229e State
+A 000322a4 TDragState
+A 000322b0 Accept
+A 000322b7 Boolean
+A 000322c6 TUnDockEvent
+A 000322d6 Sender
+A 000322dd TObject
+A 000322e6 Client
+A 000322ed TControl
+A 000322f6 	NewTarget
+A 00032301 TWinControl
+A 0003230e Allow
+A 00032314 Boolean
+A 00032322 TStartDockEvent
+A 00032335 Sender
+A 0003233c TObject	
+A 00032345 DragObject
+A 00032350 TDragDockObject
+A 00032366 TGetSiteInfoEvent
+A 0003237b Sender
+A 00032382 TObject
+A 0003238b DockClient
+A 00032396 TControl
+A 000323a0 InfluenceRect
+A 000323ae TRect
+A 000323b5 MousePos
+A 000323be TPoint
+A 000323c6 CanDock
+A 000323ce Boolean
+A 000323de TCanResizeEvent
+A 000323f1 Sender
+A 000323f8 TObject
+A 00032401 NewWidth
+A 0003240a Integer
+A 00032412 	NewHeight
+A 0003241d Integer
+A 00032426 Resize
+A 0003242d Boolean80C
+A 0003243a TConstrainedResizeEvent
+A 00032455 Sender
+A 0003245c TObject
+A 00032465 MinWidth
+A 0003246e Integer
+A 00032476 	MinHeight
+A 00032481 Integer
+A 0003248a MaxWidth
+A 00032493 Integer
+A 0003249b 	MaxHeight
+A 000324a6 Integer
+A 000324b6 TMouseWheelEvent
+A 000324ca Sender
+A 000324d1 TObject
+A 000324da Shift
+A 000324e0 TShiftState
+A 000324ed WheelDelta
+A 000324f8 Integer
+A 00032501 MousePos
+A 0003250a TPoint
+A 00032512 Handled
+A 0003251a Boolean
+A 0003252a TMouseWheelUpDownEvent
+A 00032544 Sender
+A 0003254b TObject
+A 00032554 Shift
+A 0003255a TShiftState
+A 00032567 MousePos
+A 00032570 TPoint
+A 00032578 Handled
+A 00032580 Boolean
+A 0003258e TContextPopupEvent
+A 000325a4 Sender
+A 000325ab TObject
+A 000325b4 MousePos
+A 000325bd TPoint
+A 000325c5 Handled
+A 000325cd Boolean 2C
+A 0003288b TControl
+A 0003289a TControl 2C
+A 000328ad Controls	
+A 000328d2 LeftT
+A 0003290f WidthT
+A 0003292f Heightx#C
+A 00032950 Cursor
+A 00032990 HelpType
+A 000329b3 HelpKeywordh
+A 000329d9 HelpContext06C
+A 00032aad TWinControlActionLink
+A 00032aca TImeName
+A 00032ada TBorderWidth
+A 00032af5 	TBevelCut
+A 00032b0d bvNone	bvLowered
+A 00032b1e bvRaised
+A 00032b27 bvSpace
+A 00032b2f Controls
+A 00032b3e TBevelEdge
+A 00032b56 beLeft
+A 00032b5d beTop
+A 00032b63 beRight
+A 00032b6b beBottom
+A 00032b74 Controls
+A 00032b82 TBevelEdges
+A 00032b9a TBevelKind
+A 00032bb2 bkNone
+A 00032bb9 bkTile
+A 00032bc0 bkSoft
+A 00032bc7 bkFlat
+A 00032bce Controls
+A 00032bde TBevelWidth
+A 00032bfa IDockManagerl
+A 00032c1c Controls
+A 00032fc5 TWinControl
+A 00032fd6 TWinControlt8C
+A 00032fec Controls
+A 00033115 TCustomControl
+A 0003312a TCustomControlD<C
+A 00033143 Controls
+A 00033293 THintWindow
+A 000332a6 THintWindow
+A 000332bc Controls
+A 00033314 	TDockZone
+A 0003348c 	TDockTree
+A 000334e5 TMouse
+A 00033640 crDefault
+A 00033654 crArrow
+A 00033664 crCross
+A 00033674 crIBeam
+A 00033684 crSizeNESW
+A 00033698 crSizeNS
+A 000336ac crSizeNWSE
+A 000336c0 crSizeWE
+A 000336d4 crUpArrow
+A 000336e8 crHourGlass
+A 000336fc crDrag
+A 0003370c crNoDrop
+A 00033720 crHSplit
+A 00033734 crVSplit
+A 00033748 crMultiDrag
+A 0003375c crSQLWait
+A 00033780 crAppStart
+A 00033794 crHelp
+A 000337a4 crHandPoint
+A 000337b8 crSizeAll
+A 000337cc crSize
+A 00033944 	TSiteList
+A 000339fe _^[YY]
+A 00033ae0 SPhdHC
+A 00033b7e tPHt8
+A 00033ca7 _^[Y]
+A 00033d79 S$_^[]
+A 0003407b ;B0t'
+A 00034587 ;B8t=
+A 00034749 CQ tA
+A 00034a0a YZ_^[
+A 00034fac YZ]_^[
+A 00035025 YZ_^[
+A 00035134 Uh^]C
+A 000351f5 UhE^C
+A 0003536c t%Jt?Jt[
+A 00035508 %s (%s)
+A 0003551a UhwaC
+A 000355a9 Z:Pjt
+A 000359fa YZ]_^[
+A 00035a1d $:Cat
+A 00035ba7 u$;~|u
+A 00035c97 tr;s@u
+A 00035cae ;CLtX3
+A 0003601f Qh_^[
+A 000361fe YZ_^[
+A 0003622a YZ_^[
+A 00036480 V:P\t
+A 000364ad Uh.qC
+A 000364ba GP t;
+A 00036535 _^[YY]
+A 00036557 CH+D$
+A 00036562 CL+D$
+A 0003658a ;s0t=;
+A 000365d7 :_Wt+
+A 000366ed Uh5sC
+A 000368bc f;Pxt
+A 000369d5 UhZvC
+A 00036aae CP@t2
+A 00036c83 KHQRP
+A 000371b4 Uh{~C
+A 000379ee Ht7Ht
+A 00037bd4 IsControl
+A 00037d1f _^[YY]
+A 00038326 YZ_^[
+A 0003866d _^[YY]
+A 0003881b _^[Y]
+A 00038909 8]_^[
+A 00038add ,]_^[
+A 00038b10 YZ_^[
+A 00038c70 ^[YY]
+A 00038ed4 RD;PD
+A 00038ef2 R@;P@
+A 000393fa :_[up
+A 00039768 +WH+W@
+A 00039b7c SVWUQ
+A 00039bb6 Z]_^[
+A 0003a06b :GauOFKu
+A 0003a0c2 _^[Y]
+A 0003a11c DesignSize
+A 0003a477 _^[YY]
+A 0003a531 _^[Y]
+A 0003a6b0 ;x0u%
+A 0003a730 t2HtY
+A 0003aa58 @P@t%
+A 0003ad3e  ]_^[
+A 0003b536 _^[Y]
+A 0003b6e3 _^[Y]
+A 0003b73e $Z_^[
+A 0003b7f2 _^[YY]
+A 0003b957 _^[Y]
+A 0003baef ^[YY]
+A 0003bb20 SVWUQ
+A 0003bb7f Z]_^[
+A 0003bbf0 SVWUQ
+A 0003bc4f Z]_^[
+A 0003bcb8 SVWUQ
+A 0003bd16 Z]_^[
+A 0003bde2 _^[YY]
+A 0003be3d ;XDt#
+A 0003bf7c SVWUQ
+A 0003bfcb Z]_^[
+A 0003c29f t&j7j
+A 0003c3c1 YZ]_^[
+A 0003c485 YZ]_^[
+A 0003c7aa YZ]_^[
+A 0003c7f9  t4VS
+A 0003d087 YZ]_^[
+A 0003d206 ^[YY]
+A 0003d2d0 S8_^[]
+A 0003d460 +CH+E
+A 0003d4c4 +SL+U
+A 0003e279 _^[Y]
+A 0003e430 f;Pht
+A 0003e4a0 _^[Y]
+A 0003e4c3 t9;wlt4
+A 0003e56d YZ_^[
+A 0003ec00 ;Bdt*
+A 0003ec2a ;Bh|3
+A 0003f329 R|_^[
+A 0003f401 FLVh(
+A 0003f4d1 _^[Y]
+A 0003f77a Y_^[]
+A 0003fc9e Y[YY]
+A 00040021 t$;C8u
+A 00040051 QQQQSVW
+A 00040187 ;Fdu;
+A 0004050e ^[YY]
+A 0004059f Q8FKu
+A 00040678 ;Xdt>
+A 00040730 t#;^dt
+A 000407af YZ_^[
+A 000409e2 Y_^[]
+A 00040a32 ^[YY]
+A 00040bbe +W$;U
+A 00040c15 +G$;E
+A 00040c66 _^[Y]
+A 00040d7b BP_^[]
+A 000414b8 USER32
+A 000414c0 WINNLSEnableIME
+A 000414d0 IMM32.DLL
+A 000414dc ImmGetContext
+A 000414ec ImmReleaseContext
+A 00041500 ImmGetConversionStatus
+A 00041518 ImmSetConversionStatus
+A 00041530 ImmSetOpenStatus
+A 00041544 ImmSetCompositionWindow
+A 0004155c ImmSetCompositionFontA
+A 00041574 ImmGetCompositionStringA
+A 00041590 ImmIsIME
+A 0004159c ImmNotifyIME
+A 0004169b YZ_^[
+A 000418cc Delphi%.8X
+A 000418e0 ControlOfs%.8X%.8X
+A 000418f4 USER32
+A 000418fc AnimateWindow
+A 00041911 Uhk%D
+A 00041ac5 TContainedAction
+A 00041ade TContainedActionP&D
+A 00041af9 ActnList
+A 00041b1e Category
+A 00041bc7 TCustomActionList
+A 00041bde TCustomActionListt'D
+A 00041bfa ActnList
+A 00041ce9 TShortCutList
+A 00041cfe TShortCutListP(D
+A 00041d16 ActnList
+A 00041df1 TCustomAction
+A 00041e06 TCustomActionl)D
+A 00041e1e ActnList
+A 00041eed TActionLinkSV
+A 0004220f ^[YY]
+A 000422bb u*;~8u
+A 00042356 R0GNu
+A 00042390 SVWUQ
+A 00042416 Z]_^[
+A 000426e6 QLGNu
+A 000426fc R0Z_^[
+A 0004276f QPFOu
+A 000427cd ;Blu	3
+A 00042803 _^[Y]
+A 00042817 $:Cjt_
+A 00042869 QTGNu
+A 0004287a R0Z_^[
+A 000428ce Q`FOu
+A 000428e3 R0]_^[
+A 000428f7 $;Ctt?
+A 00042929 Q\GNu
+A 0004293a R0Z_^[
+A 00042986 QhGNu
+A 0004299c R0Z_^[
+A 000429e4 QlGNu
+A 000429f8 R0Z_^[
+A 00042a00 SVWQf
+A 00042a44 QpGNu
+A 00042a5a R0Z_^[
+A 00042aa9 QtFOu
+A 00042aba R0]_^[
+A 00042be8 SVWUQ
+A 00042c22 $Z]_^[
+A 00042c31 UhQ8D
+A 00042cdd TChangeLink
+A 00042cee TImageIndex
+A 00042d95 TCustomImageList
+A 00042dae TCustomImageListP9D
+A 00042dc9 ImgList
+A 00042ed6 Uhy;D
+A 00042fae Uh9<D
+A 0004311b Rd_^[
+A 00043174 s8VV3
+A 000432f9 Uhk?D
+A 0004361f S0_^[]
+A 000436b1 UhvCD
+A 00043972 R ;C0|
+A 0004397e R,;C4}!
+A 00043a36 S`]_^[
+A 00043c50 PhlMD
+A 00043c7c Bitmap
+A 00043f3c UhxKD
+A 0004425d Uh}ND
+A 000442dd EMenuError
+A 000442ee TMenuBreak
+A 00044306 mbNone
+A 0004430d mbBreak
+A 00044315 mbBarBreak
+A 00044320 Menus
+A 0004432e TMenuChangeEvent
+A 00044342 Sender
+A 00044349 TObject
+A 00044352 Source	TMenuItem
+A 00044364 Rebuild
+A 0004436c Boolean
+A 0004437a TMenuDrawItemEvent
+A 00044390 Sender
+A 00044397 TObject
+A 000443a0 ACanvas
+A 000443a8 TCanvas
+A 000443b1 ARect
+A 000443b7 TRect
+A 000443be Selected
+A 000443c7 Boolean
+A 000443d6 TAdvancedMenuDrawItemEvent
+A 000443f4 Sender
+A 000443fb TObject
+A 00044404 ACanvas
+A 0004440c TCanvas
+A 00044415 ARect
+A 0004441b TRect
+A 00044422 State
+A 00044428 TOwnerDrawState
+A 0004443e TMenuMeasureItemEvent
+A 00044457 Sender
+A 0004445e TObject
+A 00044467 ACanvas
+A 0004446f TCanvas
+A 00044478 Width
+A 0004447e Integer
+A 00044487 Height
+A 0004448e Integer
+A 0004449e TMenuItemAutoFlag
+A 000444bd maAutomatic
+A 000444c9 maManual
+A 000444d2 maParent
+A 000444db Menus
+A 000444e6 TMenuAutoFlag
+A 00044501 Menus
+A 000445d1 TMenuActionLink,RD
+A 000446ba 	TMenuItem
+A 000446c9 	TMenuItem,RD
+A 000446de Menus
+A 00044700 Action
+A 00044720 	AutoCheck
+A 00044745 AutoHotkeys
+A 0004476b AutoLineReduction
+A 00044797 Bitmap
+A 000447b8 Break
+A 000447d8 Caption
+A 000447fa Checked
+A 0004481c SubMenuImages
+A 00044844 Default
+A 00044866 Enabledl
+A 00044888 GroupIndexh
+A 000448ad HelpContext
+A 000448f2 ImageIndex
+A 00044916 	RadioItem
+A 0004493b ShortCut
+A 0004495e Visible
+A 00044980 OnClicktOD
+A 000449a2 OnDrawItem
+A 000449c7 OnAdvancedDrawItem8PD
+A 000449f4 OnMeasureItem
+A 00044ab3 TMenu
+A 00044abe TMenuPVD
+A 00044ace Menus
+A 00044af0 Items
+A 00044b80 	TMainMenu
+A 00044b91 	TMainMenuDWD
+A 00044ba6 Menus
+A 00044bc8 AutoHotkeys
+A 00044bee AutoLineReduction
+A 00044c19 	AutoMerge
+A 00044c3e BiDiMode
+A 00044c61 Images
+A 00044c81 	OwnerDraw
+A 00044ca6 ParentBiDiMode(OD
+A 00044ccf OnChange
+A 00044cde TPopupAlignment
+A 00044cfb paLeft
+A 00044d02 paRight
+A 00044d0a paCenter
+A 00044d13 Menus
+A 00044d1e TTrackButton
+A 00044d38 tbRightButton
+A 00044d46 tbLeftButton
+A 00044d53 Menus\YD
+A 00044d5e TMenuAnimations
+A 00044d7b maLeftToRight
+A 00044d89 maRightToLeft
+A 00044d97 maTopToBottom
+A 00044da5 maBottomToTop
+A 00044db3 maNone
+A 00044dba Menus
+A 00044dc6 TMenuAnimation
+A 00044e6d TPopupMenu
+A 00044e7e TPopupMenu(ZD
+A 00044e93 Menus
+A 00044eb4 	Alignment
+A 00044ed9 AutoHotkeys
+A 00044eff AutoLineReduction
+A 00044f2a 	AutoPopup
+A 00044f4f BiDiModeh
+A 00044f72 HelpContext
+A 00044f98 Images
+A 00044fb9 MenuAnimation
+A 00044fe0 	OwnerDraw
+A 00045005 ParentBiDiMode
+A 0004502e TrackButton(OD
+A 00045054 OnChange
+A 00045077 OnPopup
+A 000450e1 TPopupList
+A 00045145 TMenuItemStack
+A 0004515c 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ
+A 0004527b UhQ`D
+A 000455ac _^[YY]
+A 0004591e f;B`t
+A 00045c1e Uh_jD
+A 00045e35 CPPVj
+A 00045f21 Uh^kD
+A 000460ab Q<]_^[
+A 000460b4 SVWUQ
+A 000460df :X?s&
+A 00046108 X?ENu
+A 0004610e Z]_^[
+A 00046194 ShortCutText
+A 000463fe UhLxD
+A 00046c53 _^[Y]
+A 00046f5b UhC|D
+A 000474f5 _^[Y]
+A 0004790e P?:S?u
+A 0004792b :^8tB
+A 0004797f :^9tg
+A 000479e9 Q<_^[
+A 000479f7 :^?t1
+A 00047a80 f;P`t
+A 00047b74 :]:tJ
+A 00047bc1 Q<]_^[
+A 00047c21 @?:F?v
+A 00047c84 Q<]_^[
+A 00047cf9 Q<_^[
+A 00047f96 R@FKu
+A 0004835f ;~hu	3
+A 0004848d W<CNu
+A 0004895f SpFOu
+A 00048c47 $YZ]_^[
+A 00048d4e _^[Y]
+A 00048e98 _^[Y]
+A 00048ed0 SVWUQ
+A 00048f37 Z]_^[
+A 00049192 _^[YY]
+A 000495bd S0^[]
+A 000499b7 _^[Y]
+A 00049ae8 _^[Y]
+A 00049b14 Ih;J4u
+A 00049ba7 _^[Y]
+A 0004a345 YZ]_^[
+A 0004a463 S0_^[
+A 0004a5ce ^[YY]
+A 0004a766 TScrollBarInc
+A 0004a782 TScrollBarStyle
+A 0004a79e 	ssRegular
+A 0004a7a9 ssFlat
+A 0004a7b0 ssHotTrack
+A 0004a7bb Forms
+A 0004a819 TControlScrollBar
+A 0004a832 TControlScrollBar
+A 0004a84e Forms
+A 0004a870 ButtonSize
+A 0004a895 Color`
+A 0004a8b4 	Increment
+A 0004a8d9 Margin
+A 0004a8fa ParentColorT
+A 0004a920 PositionT
+A 0004a943 Range
+A 0004a963 SmoothT
+A 0004a984 Size|
+A 0004a9a3 StyleT
+A 0004a9c2 	ThumbSize
+A 0004a9e7 Tracking
+A 0004aa0a Visible
+A 0004aa1a TWindowState
+A 0004aa34 wsNormal
+A 0004aa3d wsMinimized
+A 0004aa49 wsMaximized
+A 0004aa55 Forms
+A 0004ab9f TScrollingWinControl
+A 0004abba TScrollingWinControl
+A 0004abd9 Forms
+A 0004abfb HorzScrollBar,
+A 0004ac23 VertScrollBar4
+A 0004ac36 TFormBorderStyle
+A 0004ac54 bsNone
+A 0004ac5b bsSingle
+A 0004ac64 bsSizeable
+A 0004ac6f bsDialog
+A 0004ac78 bsToolWindow
+A 0004ac85 bsSizeToolWin
+A 0004ac93 Forms
+A 0004ac9e TBorderStyle
+A 0004acb8 Forms
+A 0004adeb TScrollBox
+A 0004adfe TScrollBox
+A 0004ae13 Forms6
+A 0004ae35 Align$*C
+A 0004ae55 Anchors
+A 0004ae77 AutoScroll
+A 0004ae9c AutoSize|7C
+A 0004aebf BevelEdges
+A 0004aee4 BevelInner
+A 0004af09 BevelOuter
+A 0004af2d 	BevelKind
+A 0004af52 BevelWidth
+A 0004af77 BiDiMode
+A 0004af9a BorderStyle
+A 0004afc0 Constraints
+A 0004afe6 DockSitex#C
+A 0004b009 DragCursor
+A 0004b02e DragKindD)C
+A 0004b051 DragMode
+A 0004b074 Enabled
+A 0004b096 Color
+A 0004b0b6 Ctl3DT{B
+A 0004b0f5 ParentBiDiMode
+A 0004b11e ParentColor
+A 0004b144 ParentCtl3D
+A 0004b16a ParentFont
+A 0004b18f ParentShowHintxZD
+A 0004b1b7 	PopupMenu
+A 0004b1dc ShowHint
+A 0004b1ff TabOrder
+A 0004b222 TabStop
+A 0004b244 Visible
+A 0004b266 OnCanResize
+A 0004b28c OnClick40C
+A 0004b2ae OnConstrainedResize
+A 0004b2dc OnContextPopup
+A 0004b305 OnDblClick
+A 0004b32a OnDockDropH.C
+A 0004b34f OnDockOver
+A 0004b374 OnDragDrop
+A 0004b399 OnDragOver
+A 0004b3bd 	OnEndDock
+A 0004b3e1 	OnEndDrag
+A 0004b406 OnEnter
+A 0004b428 OnExit`/C
+A 0004b449 OnGetSiteInfo
+A 0004b471 OnMouseDown
+A 0004b497 OnMouseMove
+A 0004b4bc 	OnMouseUp
+A 0004b4e1 OnMouseWheel$1C
+A 0004b508 OnMouseWheelDown$1C
+A 0004b533 OnMouseWheelUp
+A 0004b55c OnResize
+A 0004b57f OnStartDockh-C
+A 0004b5a5 OnStartDrag
+A 0004b5cb OnUnDock
+A 0004b5da IDesignerHook
+A 0004b5fd Forms	
+A 0004b60e IOleForml
+A 0004b62c Forms
+A 0004b63e TFormStyle
+A 0004b656 fsNormal
+A 0004b65f fsMDIChild	fsMDIForm
+A 0004b674 fsStayOnTop
+A 0004b680 Forms
+A 0004b68e TBorderIcon
+A 0004b6a7 biSystemMenu
+A 0004b6b4 biMinimize
+A 0004b6bf biMaximize
+A 0004b6ca biHelp
+A 0004b6d1 Forms
+A 0004b6de TBorderIcons
+A 0004b6f5 	TPosition
+A 0004b70d poDesigned	poDefault
+A 0004b722 poDefaultPosOnly
+A 0004b733 poDefaultSizeOnly
+A 0004b745 poScreenCenter
+A 0004b754 poDesktopCenter
+A 0004b764 poMainFormCenter
+A 0004b775 poOwnerFormCenter
+A 0004b787 Forms
+A 0004b792 TDefaultMonitor
+A 0004b7ae 	dmDesktop	dmPrimary
+A 0004b7c3 dmMainForm
+A 0004b7ce dmActiveForm
+A 0004b7db Forms
+A 0004b7e6 TPrintScale
+A 0004b7ff poNone
+A 0004b806 poProportional
+A 0004b815 poPrintToFit
+A 0004b822 Forms
+A 0004b82e TCloseEvent
+A 0004b83d Sender
+A 0004b844 TObject
+A 0004b84d Action
+A 0004b854 TCloseActiond
+A 0004b866 TCloseQueryEvent
+A 0004b87a Sender
+A 0004b881 TObject
+A 0004b88a CanClose
+A 0004b893 Boolean
+A 0004b8a2 TShortCutEvent
+A 0004b8b8 TWMKey
+A 0004b8c0 Handled
+A 0004b8c8 Boolean
+A 0004b8d6 THelpEvent
+A 0004b8e4 Command
+A 0004b8f7 Integer
+A 0004b900 CallHelp
+A 0004b909 Boolean
+A 0004b911 Booleand
+A 0004bbe7 TCustomForm
+A 0004bbfa TCustomFormd
+A 0004bc10 Forms
+A 0004bd55 TForm
+A 0004bd62 TFormd
+A 0004bd72 FormsS
+A 0004bd94 Action
+A 0004bdb5 ActiveControl
+A 0004bddd Align
+A 0004bdfd AlphaBlendl
+A 0004be22 AlphaBlendValue$*C
+A 0004be4c Anchors
+A 0004be6e AutoScroll
+A 0004be93 AutoSize
+A 0004beb6 BiDiMode
+A 0004bed9 BorderIcons0
+A 0004beff BorderStyle
+A 0004bf25 BorderWidth
+A 0004bf4b CaptionT
+A 0004bf6d ClientHeightT
+A 0004bf94 ClientWidth
+A 0004bfba Color
+A 0004bfda TransparentColor
+A 0004c005 TransparentColorValue
+A 0004c035 Constraints
+A 0004c05b Ctl3D
+A 0004c07b UseDockManager
+A 0004c0a4 DefaultMonitor
+A 0004c0cd DockSite
+A 0004c0f0 DragKindD)C
+A 0004c113 DragMode
+A 0004c136 Enabled
+A 0004c158 ParentFontT{B
+A 0004c17d Font8
+A 0004c19b 	FormStyleT
+A 0004c1c0 Height
+A 0004c1e1 HelpFile,
+A 0004c204 HorzScrollBarD
+A 0004c24b KeyPreview
+A 0004c28f OldCreateOrder
+A 0004c2b8 ObjectMenuItem
+A 0004c2e1 ParentBiDiModeT
+A 0004c30a PixelsPerInchxZD
+A 0004c331 	PopupMenu
+A 0004c356 Position
+A 0004c379 PrintScale
+A 0004c39e Scaled
+A 0004c3bf ShowHint,
+A 0004c3e2 VertScrollBar
+A 0004c40a VisibleT
+A 0004c42c Width
+A 0004c44c WindowState
+A 0004c472 WindowMenu
+A 0004c497 OnActivate
+A 0004c4bc OnCanResize
+A 0004c4e2 OnClick(
+A 0004c504 OnClose`
+A 0004c526 OnCloseQuery40C
+A 0004c54d OnConstrainedResize
+A 0004c57b OnContextPopup
+A 0004c5a4 OnCreate
+A 0004c5c7 OnDblClick
+A 0004c5eb 	OnDestroy
+A 0004c610 OnDeactivate
+A 0004c637 OnDockDropH.C
+A 0004c65c OnDockOver
+A 0004c681 OnDragDrop
+A 0004c6a6 OnDragOver
+A 0004c6ca 	OnEndDock`/C
+A 0004c6ef OnGetSiteInfo
+A 0004c717 OnHide
+A 0004c738 OnHelp<,C
+A 0004c758 	OnKeyDown|,C
+A 0004c77d OnKeyPress<,C
+A 0004c7a2 OnKeyUp
+A 0004c7c4 OnMouseDown
+A 0004c7ea OnMouseMove
+A 0004c80f 	OnMouseUp
+A 0004c834 OnMouseWheel$1C
+A 0004c85b OnMouseWheelDown$1C
+A 0004c886 OnMouseWheelUp
+A 0004c8af OnPaint
+A 0004c8d1 OnResize
+A 0004c8f4 OnShortCut
+A 0004c919 OnShow
+A 0004c93a OnStartDock
+A 0004c960 OnUnDock
+A 0004cadd TCustomDockForm
+A 0004caf2 TCustomDockForm
+A 0004cb0c Forms
+A 0004cb2e PixelsPerInch
+A 0004cb89 TMonitor
+A 0004cc23 TScreen
+A 0004cc32 TScreen
+A 0004cc44 Forms
+A 0004cc51 	THintInfo@
+A 0004cd23 TApplication
+A 0004cd36 TApplication
+A 0004cd4d Forms
+A 0004cf38 ;X0t@S
+A 0004d06a t:GNu
+A 0004d1f3 ^[YY]
+A 0004da18 ;S$t6
+A 0004db54 ;S0t6
+A 0004dfff +WH+W@
+A 0004e34f  ]_^[
+A 0004ec42 _^[Y]
+A 0004eca0 _^[Y]
+A 0004ee89 ;B@t/
+A 0004f0c8 PixelsPerInch
+A 0004f0e0 TextHeight
+A 0004f0f4 IgnoreFontProperty
+A 0004f432 _^[YY]
+A 0004f69d S,_^[]
+A 0005000c SVWUQ
+A 000500ec $Z]_^[
+A 0005054a ;Cpu'
+A 00050b51 F(Z_^[
+A 00050c98 MDICLIENT
+A 00050f33 _^[Y]
+A 0005122d _^[Y]
+A 00051376 ;ADti
+A 000514eb Uh~!E
+A 00051509 Uh[!E
+A 00051665 f#CTf
+A 00051a9e _^[Y]
+A 00051e0c UhT+E
+A 0005202d Uh[,E
+A 000526c5 _^[YY]
+A 000528bf t"GNu
+A 000528e5 $Z_^[
+A 000528fa UhX5E
+A 0005297a _^[YY]
+A 00052d44 _^[Y]
+A 00052d9f R@GNu
+A 00052dad Y_^[]
+A 00052e99 _^[Y]
+A 00052f99 _^[Y]
+A 00053476 _^[YY]
+A 000535a5 Uh^BE
+A 00053a2c Ch;Ctt
+A 00053a4f Cd;Cpt
+A 00053beb C\_^[
+A 00053cc1 Uh[IE
+A 00053db0 System\CurrentControlSet\Control\Keyboard Layouts\%.8x
+A 00053de8 layout text
+A 00053eaf f;sDtsf
+A 00053f0c PWj W
+A 00053f29 CHYZ]_^[
+A 00053f5d UhyLE
+A 000540d8 RD;PD
+A 000540f6 R@;P@
+A 0005440c _^[YY]
+A 00054524 UhmQE
+A 0005482c TApplication
+A 00054a1c MAINICON
+A 00054b7b Sh`\E
+A 00054cf7 XD;PHu
+A 00054d32 sx;P`u
+A 00054d62 ;B0uGj
+A 00054de7 PhHYE
+A 00055705 _^[YY]
+A 00055714 vcltest3.dll
+A 00055724 RegisterAutomation
+A 0005579e t<j@j
+A 00055ad8 SVWUQ
+A 00055b3a $Z]_^[
+A 000560fa UhDmE
+A 0005614d _^[Y]
+A 000561b5 _^[Y]
+A 000562a4 ;sHtK
+A 000562f6 YZ_^[
+A 0005650f Uh=qE
+A 00056626 Y_^[Y]
+A 00056717 ;^`u0
+A 000567cd  ]_^[
+A 00056b0b UhZzE
+A 00056f2c YZ]_^[
+A 00056fa8 User32.dll
+A 00056fb4 SetLayeredWindowAttributes
+A 00057015 Uhc|E
+A 000570a0 TaskbarCreated
+A 0005714d Uht}E
+A 0005721d Uh=~E
+A 00057256 TCharArray
+A 00057271 CommonTypesU
+A 00057390 	EOleError
+A 000573e9 EOleSysError
+A 0005745f EOleException
+A 00057474 Apartment
+A 000574a8 Neutral
+A 00057660 _^[Y]
+A 00057710 ole32.dll
+A 0005771c CoCreateInstanceEx
+A 00057730 CoInitializeEx
+A 00057740 CoAddRefServerProcess
+A 00057758 CoReleaseServerProcess
+A 00057770 CoResumeClassObjects
+A 00057788 CoSuspendClassObjects
+A 000577a5 QQQQQQQQSV
+A 00058349 TSQLTimeStampVariantType
+A 000583bd TSQLTimeStampData
+A 000583d6 TSQLTimeStampData
+A 000583f2 SqlTimSt	
+A 00058417 AsDateTime
+A 0005843c AsString
+A 0005847c 	Fractions
+A 000584c0 Minute
+A 000584e1 Month
+A 00058501 Second<
+A 0005905b ^[YY]
+A 00059109 EBcdException
+A 00059165 EBcdOverflowException
+A 00059219 TFMTBcdVariantType
+A 00059285 TFMTBcdData
+A 00059296 TFMTBcdDatax
+A 000592ac FMTBcd
+A 000592cf AsCurrency
+A 000592f4 AsDoubleT
+A 00059316 	AsInteger<
+A 0005933b AsSmallInt
+A 00059360 AsStringU
+A 00059969 t)j j
+A 0005a11e _^[Y]
+A 0005a17a _^[Y]
+A 0005aa1d PSQRW
+A 0005aa6e _ZY[X
+A 0005b273 _^[Y]
+A 0005b317 VWSQR
+A 0005b3ee ZY[_^]
+A 0005b43b [_^Y]
+A 0005b6ff QVWSQRf
+A 0005b7a7 ZY[_^Y]
+A 0005b7b7 QVWSQRf
+A 0005b85f ZY[_^Y]
+A 0005b86f QVWSRf
+A 0005bb09 _^[YY]
+A 0005bd13 D$$Pj
+A 0005bd2b \$&US3
+A 0005bd4e H]_^[
+A 0005beeb _^[YY]
+A 0005c06f _^[YY]
+A 0005c087 D$/Pj
+A 0005c1bf T]_^[
+A 0005c67c Unknown
+A 0005c68c String
+A 0005c69c SmallInt
+A 0005c6b0 Integer
+A 0005c6d0 Boolean
+A 0005c6e0 Float
+A 0005c6f0 Currency
+A 0005c730 DateTime
+A 0005c744 Bytes
+A 0005c754 VarBytes
+A 0005c768 AutoInc
+A 0005c798 Graphic
+A 0005c7a8 FmtMemo
+A 0005c7b8 ParadoxOle
+A 0005c7cc dBaseOle
+A 0005c7e0 TypedBinary
+A 0005c7f4 Cursor
+A 0005c804 FixedChar
+A 0005c818 WideString
+A 0005c82c LargeInt
+A 0005c84c Array
+A 0005c85c Reference
+A 0005c870 DataSet
+A 0005c880 HugeBlob
+A 0005c894 HugeClob
+A 0005c8a8 Variant
+A 0005c8b8 Interface
+A 0005c8cc Dispatch
+A 0005c8f0 SQLTimeStamp
+A 0005c908 FMTBcdField
+A 0005ca43 TDefaultDBScreenApplication
+A 0005cbc9 TStringManager
+A 0005cd61 TConverter
+A 0005cf17 TRandomizer
+A 0005d1e1 TFileManager
+A 0005d24d TEquivalentDirectoriesList
+A 0005d409 TMiscellaneous
+A 0005d55d TSortableList
+A 0005dae0 MAPI32.DLL
+A 0005dc29 TConversion8
+A 0005dc3a TConversionFormat
+A 0005dd83 TTaggedString
+A 0005ddf9 TTaggedStringList
+A 0005de59 TTranslatorSV
+A 00068229 _^[YY]
+A 00068371 TLocaleManager
+A 000688ad TRegistryManager
+A 000689b2 _^[Y]
+A 00068e54 Runtime error     at 00000000
+A 00068e74 Error
+A 00068e7c 0123456789ABCDEF
+A 00068f98 %.*d,w@
+A 00069430 MS Sans Serif
+A 0006bf88 kernel32.dll
+A 0006bf98 DeleteCriticalSection
+A 0006bfb0 LeaveCriticalSection
+A 0006bfc8 EnterCriticalSection
+A 0006bfe0 InitializeCriticalSection
+A 0006bffc VirtualFree
+A 0006c00a VirtualAlloc
+A 0006c01a LocalFree
+A 0006c026 LocalAlloc
+A 0006c034 GetCurrentThreadId
+A 0006c04a InterlockedDecrement
+A 0006c062 InterlockedIncrement
+A 0006c07a VirtualQuery
+A 0006c08a WideCharToMultiByte
+A 0006c0a0 MultiByteToWideChar
+A 0006c0b6 lstrlenA
+A 0006c0c2 lstrcpynA
+A 0006c0ce LoadLibraryExA
+A 0006c0e0 GetThreadLocale
+A 0006c0f2 GetStartupInfoA
+A 0006c104 GetProcAddress
+A 0006c116 GetModuleHandleA
+A 0006c12a GetModuleFileNameA
+A 0006c140 GetLocaleInfoA
+A 0006c152 GetLastError
+A 0006c162 GetCommandLineA
+A 0006c174 FreeLibrary
+A 0006c182 FindFirstFileA
+A 0006c194 FindClose
+A 0006c1a0 ExitProcess
+A 0006c1ae WriteFile
+A 0006c1ba UnhandledExceptionFilter
+A 0006c1d6 SetFilePointer
+A 0006c1e8 SetEndOfFile
+A 0006c1f8 RtlUnwind
+A 0006c204 ReadFile
+A 0006c210 RaiseException
+A 0006c222 GetStdHandle
+A 0006c232 GetFileSize
+A 0006c240 GetFileType
+A 0006c24e CreateFileA
+A 0006c25c CloseHandle
+A 0006c268 user32.dll
+A 0006c276 GetKeyboardType
+A 0006c288 LoadStringA
+A 0006c296 MessageBoxA
+A 0006c2a4 CharNextA
+A 0006c2ae advapi32.dll
+A 0006c2be RegQueryValueExA
+A 0006c2d2 RegOpenKeyExA
+A 0006c2e2 RegCloseKey
+A 0006c2ee oleaut32.dll
+A 0006c2fe SysFreeString
+A 0006c30e SysReAllocStringLen
+A 0006c324 SysAllocStringLen
+A 0006c336 kernel32.dll
+A 0006c346 TlsSetValue
+A 0006c354 TlsGetValue
+A 0006c362 TlsFree
+A 0006c36c TlsAlloc
+A 0006c378 LocalFree
+A 0006c384 LocalAlloc
+A 0006c390 borlndmm.dll
+A 0006c3a0 @Borlndmm@SysGetMem$qqri
+A 0006c3ba kernel32.dll
+A 0006c3ca GetProcAddress
+A 0006c3dc GetModuleHandleA
+A 0006c3ee advapi32.dll
+A 0006c3fe RegQueryValueExA
+A 0006c412 RegOpenKeyExA
+A 0006c422 RegCloseKey
+A 0006c42e kernel32.dll
+A 0006c43e lstrlenA
+A 0006c44a lstrcpyA
+A 0006c456 WriteFile
+A 0006c462 WaitForSingleObject
+A 0006c478 VirtualQuery
+A 0006c488 VirtualAlloc
+A 0006c498 Sleep
+A 0006c4a0 SizeofResource
+A 0006c4b2 SetThreadLocale
+A 0006c4c4 SetFilePointer
+A 0006c4d6 SetEvent
+A 0006c4e2 SetErrorMode
+A 0006c4f2 SetEndOfFile
+A 0006c502 ResetEvent
+A 0006c510 ReadFile
+A 0006c51c MultiByteToWideChar
+A 0006c532 MulDiv
+A 0006c53c LockResource
+A 0006c54c LoadResource
+A 0006c55c LoadLibraryExA
+A 0006c56e LoadLibraryA
+A 0006c57e LeaveCriticalSection
+A 0006c596 InitializeCriticalSection
+A 0006c5b2 GlobalUnlock
+A 0006c5c2 GlobalReAlloc
+A 0006c5d2 GlobalHandle
+A 0006c5e2 GlobalLock
+A 0006c5f0 GlobalFree
+A 0006c5fe GlobalFindAtomA
+A 0006c610 GlobalDeleteAtom
+A 0006c624 GlobalAlloc
+A 0006c632 GlobalAddAtomA
+A 0006c644 GetVersionExA
+A 0006c654 GetVersion
+A 0006c662 GetTickCount
+A 0006c672 GetThreadLocale
+A 0006c684 GetSystemInfo
+A 0006c694 GetStringTypeExA
+A 0006c6a8 GetStdHandle
+A 0006c6b8 GetProcAddress
+A 0006c6ca GetModuleHandleA
+A 0006c6de GetModuleFileNameA
+A 0006c6f4 GetLocaleInfoA
+A 0006c706 GetLocalTime
+A 0006c716 GetLastError
+A 0006c726 GetDiskFreeSpaceA
+A 0006c73a GetDateFormatA
+A 0006c74c GetCurrentThreadId
+A 0006c762 GetCurrentProcessId
+A 0006c778 GetCPInfo
+A 0006c784 GetACP
+A 0006c78e FreeResource
+A 0006c79e FreeLibrary
+A 0006c7ac FormatMessageA
+A 0006c7be FindResourceA
+A 0006c7ce EnumCalendarInfoA
+A 0006c7e2 EnterCriticalSection
+A 0006c7fa DeleteCriticalSection
+A 0006c812 CreateThread
+A 0006c822 CreateFileA
+A 0006c830 CreateEventA
+A 0006c840 CompareStringA
+A 0006c852 CloseHandle
+A 0006c85e gdi32.dll
+A 0006c86a UnrealizeObject
+A 0006c87c StretchBlt
+A 0006c88a SetWindowOrgEx
+A 0006c89c SetViewportOrgEx
+A 0006c8b0 SetTextColor
+A 0006c8c0 SetStretchBltMode
+A 0006c8d4 SetROP2
+A 0006c8de SetPixel
+A 0006c8ea SetDIBColorTable
+A 0006c8fe SetBrushOrgEx
+A 0006c90e SetBkMode
+A 0006c91a SetBkColor
+A 0006c928 SelectPalette
+A 0006c938 SelectObject
+A 0006c948 SaveDC
+A 0006c952 RestoreDC
+A 0006c95e RectVisible
+A 0006c96c RealizePalette
+A 0006c97e PatBlt
+A 0006c988 MoveToEx
+A 0006c994 MaskBlt
+A 0006c99e LineTo
+A 0006c9a8 IntersectClipRect
+A 0006c9bc GetWindowOrgEx
+A 0006c9ce GetTextMetricsA
+A 0006c9e0 GetTextExtentPoint32A
+A 0006c9f8 GetSystemPaletteEntries
+A 0006ca12 GetStockObject
+A 0006ca24 GetPixel
+A 0006ca30 GetPaletteEntries
+A 0006ca44 GetObjectA
+A 0006ca52 GetDeviceCaps
+A 0006ca62 GetDIBits
+A 0006ca6e GetDIBColorTable
+A 0006ca82 GetDCOrgEx
+A 0006ca90 GetCurrentPositionEx
+A 0006caa8 GetClipBox
+A 0006cab6 GetBrushOrgEx
+A 0006cac6 GetBitmapBits
+A 0006cad6 ExcludeClipRect
+A 0006cae8 DeleteObject
+A 0006caf8 DeleteDC
+A 0006cb04 CreateSolidBrush
+A 0006cb18 CreatePenIndirect
+A 0006cb2c CreatePalette
+A 0006cb3c CreateHalftonePalette
+A 0006cb54 CreateFontIndirectA
+A 0006cb6a CreateDIBitmap
+A 0006cb7c CreateDIBSection
+A 0006cb90 CreateCompatibleDC
+A 0006cba6 CreateCompatibleBitmap
+A 0006cbc0 CreateBrushIndirect
+A 0006cbd6 CreateBitmap
+A 0006cbe6 BitBlt
+A 0006cbee user32.dll
+A 0006cbfc WindowFromPoint
+A 0006cc0e WinHelpA
+A 0006cc1a WaitMessage
+A 0006cc28 UpdateWindow
+A 0006cc38 UnregisterClassA
+A 0006cc4c UnhookWindowsHookEx
+A 0006cc62 TranslateMessage
+A 0006cc76 TranslateMDISysAccel
+A 0006cc8e TrackPopupMenu
+A 0006cca0 SystemParametersInfoA
+A 0006ccb8 ShowWindow
+A 0006ccc6 ShowScrollBar
+A 0006ccd6 ShowOwnedPopups
+A 0006cce8 ShowCursor
+A 0006ccf6 SetWindowsHookExA
+A 0006cd0a SetWindowPos
+A 0006cd1a SetWindowPlacement
+A 0006cd30 SetWindowLongA
+A 0006cd42 SetTimer
+A 0006cd4e SetScrollRange
+A 0006cd60 SetScrollPos
+A 0006cd70 SetScrollInfo
+A 0006cd80 SetRect
+A 0006cd8a SetPropA
+A 0006cd96 SetMenuItemInfoA
+A 0006cdaa SetMenu
+A 0006cdb4 SetForegroundWindow
+A 0006cdca SetFocus
+A 0006cdd6 SetCursor
+A 0006cde2 SetClassLongA
+A 0006cdf2 SetCapture
+A 0006ce00 SetActiveWindow
+A 0006ce12 SendMessageA
+A 0006ce22 ScrollWindow
+A 0006ce32 ScreenToClient
+A 0006ce44 RemovePropA
+A 0006ce52 RemoveMenu
+A 0006ce60 ReleaseDC
+A 0006ce6c ReleaseCapture
+A 0006ce7e RegisterWindowMessageA
+A 0006ce98 RegisterClipboardFormatA
+A 0006ceb4 RegisterClassA
+A 0006cec6 RedrawWindow
+A 0006ced6 PtInRect
+A 0006cee2 PostQuitMessage
+A 0006cef4 PostMessageA
+A 0006cf04 PeekMessageA
+A 0006cf14 OffsetRect
+A 0006cf22 OemToCharA
+A 0006cf30 MessageBoxA
+A 0006cf3e MapWindowPoints
+A 0006cf50 MapVirtualKeyA
+A 0006cf62 LoadStringA
+A 0006cf70 LoadKeyboardLayoutA
+A 0006cf86 LoadIconA
+A 0006cf92 LoadCursorA
+A 0006cfa0 LoadBitmapA
+A 0006cfae KillTimer
+A 0006cfba IsZoomed
+A 0006cfc6 IsWindowVisible
+A 0006cfd8 IsWindowEnabled
+A 0006cfea IsWindow
+A 0006cff6 IsRectEmpty
+A 0006d004 IsIconic
+A 0006d010 IsDialogMessageA
+A 0006d024 IsChild
+A 0006d02e InvalidateRect
+A 0006d040 IntersectRect
+A 0006d050 InsertMenuItemA
+A 0006d062 InsertMenuA
+A 0006d070 InflateRect
+A 0006d07e GetWindowThreadProcessId
+A 0006d09a GetWindowTextA
+A 0006d0ac GetWindowRect
+A 0006d0bc GetWindowPlacement
+A 0006d0d2 GetWindowLongA
+A 0006d0e4 GetWindowDC
+A 0006d0f2 GetTopWindow
+A 0006d102 GetSystemMetrics
+A 0006d116 GetSystemMenu
+A 0006d126 GetSysColor
+A 0006d134 GetSubMenu
+A 0006d142 GetScrollRange
+A 0006d154 GetScrollPos
+A 0006d164 GetScrollInfo
+A 0006d174 GetPropA
+A 0006d180 GetParent
+A 0006d18c GetWindow
+A 0006d198 GetMenuStringA
+A 0006d1aa GetMenuState
+A 0006d1ba GetMenuItemInfoA
+A 0006d1ce GetMenuItemID
+A 0006d1de GetMenuItemCount
+A 0006d1f2 GetMenu
+A 0006d1fc GetLastActivePopup
+A 0006d212 GetKeyboardState
+A 0006d226 GetKeyboardLayoutList
+A 0006d23e GetKeyboardLayout
+A 0006d252 GetKeyState
+A 0006d260 GetKeyNameTextA
+A 0006d272 GetIconInfo
+A 0006d280 GetForegroundWindow
+A 0006d296 GetFocus
+A 0006d2a2 GetDesktopWindow
+A 0006d2b6 GetDCEx
+A 0006d2c0 GetDC
+A 0006d2c8 GetCursorPos
+A 0006d2d8 GetCursor
+A 0006d2e4 GetClientRect
+A 0006d2f4 GetClassNameA
+A 0006d304 GetClassInfoA
+A 0006d314 GetCapture
+A 0006d322 GetActiveWindow
+A 0006d334 FrameRect
+A 0006d340 FindWindowA
+A 0006d34e FillRect
+A 0006d35a EqualRect
+A 0006d366 EnumWindows
+A 0006d374 EnumThreadWindows
+A 0006d388 EndPaint
+A 0006d394 EnableWindow
+A 0006d3a4 EnableScrollBar
+A 0006d3b6 EnableMenuItem
+A 0006d3c8 DrawTextA
+A 0006d3d4 DrawMenuBar
+A 0006d3e2 DrawIconEx
+A 0006d3f0 DrawIcon
+A 0006d3fc DrawFrameControl
+A 0006d410 DrawEdge
+A 0006d41c DispatchMessageA
+A 0006d430 DestroyWindow
+A 0006d440 DestroyMenu
+A 0006d44e DestroyIcon
+A 0006d45c DestroyCursor
+A 0006d46c DeleteMenu
+A 0006d47a DefWindowProcA
+A 0006d48c DefMDIChildProcA
+A 0006d4a0 DefFrameProcA
+A 0006d4b0 CreateWindowExA
+A 0006d4c2 CreatePopupMenu
+A 0006d4d4 CreateMenu
+A 0006d4e2 CreateIcon
+A 0006d4f0 ClientToScreen
+A 0006d502 CheckMenuItem
+A 0006d512 CallWindowProcA
+A 0006d524 CallNextHookEx
+A 0006d536 BeginPaint
+A 0006d544 CharNextA
+A 0006d550 CharLowerA
+A 0006d55e CharUpperBuffA
+A 0006d570 AdjustWindowRectEx
+A 0006d586 ActivateKeyboardLayout
+A 0006d59e kernel32.dll
+A 0006d5ae Sleep
+A 0006d5b4 oleaut32.dll
+A 0006d5c4 SafeArrayPtrOfIndex
+A 0006d5da SafeArrayPutElement
+A 0006d5f0 SafeArrayGetElement
+A 0006d606 SafeArrayGetUBound
+A 0006d61c SafeArrayGetLBound
+A 0006d632 SafeArrayRedim
+A 0006d644 SafeArrayCreate
+A 0006d656 VarBstrFromBool
+A 0006d668 VarBstrFromDate
+A 0006d67a VarBstrFromCy
+A 0006d68a VarBoolFromStr
+A 0006d69c VarCyFromStr
+A 0006d6ac VarDateFromStr
+A 0006d6be VarR8FromStr
+A 0006d6ce VarI4FromStr
+A 0006d6de VarNot
+A 0006d6e8 VarNeg
+A 0006d6f2 VariantChangeTypeEx
+A 0006d708 VariantCopyInd
+A 0006d71a VariantCopy
+A 0006d728 VariantClear
+A 0006d738 VariantInit
+A 0006d744 ole32.dll
+A 0006d750 CoUninitialize
+A 0006d762 CoInitialize
+A 0006d770 oleaut32.dll
+A 0006d780 GetErrorInfo
+A 0006d790 SysFreeString
+A 0006d79e comctl32.dll
+A 0006d7ae ImageList_SetIconSize
+A 0006d7c6 ImageList_GetIconSize
+A 0006d7de ImageList_Write
+A 0006d7f0 ImageList_Read
+A 0006d802 ImageList_GetDragImage
+A 0006d81c ImageList_DragShowNolock
+A 0006d838 ImageList_SetDragCursorImage
+A 0006d858 ImageList_DragMove
+A 0006d86e ImageList_DragLeave
+A 0006d884 ImageList_DragEnter
+A 0006d89a ImageList_EndDrag
+A 0006d8ae ImageList_BeginDrag
+A 0006d8c4 ImageList_Remove
+A 0006d8d8 ImageList_DrawEx
+A 0006d8ec ImageList_Draw
+A 0006d8fe ImageList_GetBkColor
+A 0006d916 ImageList_SetBkColor
+A 0006d92e ImageList_ReplaceIcon
+A 0006d946 ImageList_Add
+A 0006d956 ImageList_GetImageCount
+A 0006d970 ImageList_Destroy
+A 0006d984 ImageList_Create
+A 0006da50 wdwt80.dll
+A 0006da5b ChangeLocale
+A 0006da68 FinalizeTranslator
+A 0006da7b InitializeTranslator
+A 0006da90 TranslatorString
+A 0006dc0b 0(0<0T0l0
+A 0006dc25 1$1(1,1014181<1@1L1Y1l1
+A 0006dc51 2 2$2(2,202H2e2p2
+A 0006dc89 3"3*323:3B3J3R3Z3b3j3r3z3
+A 0006dcc1 4&4.474X4`4
+A 0006dcd5 6#767
+A 0006dcdd 718e8q8
+A 0006dcfd ;-;@;J;P;^;d;l;~;
+A 0006dd29 <'<8<><F<P<g<r<
+A 0006dd41 <*=@=
+A 0006dd4f ?7?=?V?_?h?s?|?
+A 0006dd7b 061<1L1U1
+A 0006dd8f 1&2P2j2
+A 0006ddb1 3H3N3`3x3
+A 0006ddc9 4&4,424d4
+A 0006dddd 5)52585H5Q5
+A 0006de05 6I7O7W7{7
+A 0006de1b 8!8'8.848;8A8
+A 0006de2f 9Z:c:
+A 0006de43 =P=W=
+A 0006de54 %0-060
+A 0006de77 5'5a5
+A 0006de87 : :8:F:Z:
+A 0006de9d ;D;M;
+A 0006deb7 =E=L=l=
+A 0006dec3 >S?{?
+A 0006dedd 0/0D0
+A 0006def5 1"12171<1A1F1T1^1
+A 0006df0f 242?2\2f2
+A 0006df2f 3#3E3Y3
+A 0006df6d 3"3*3;3F3N3V3^3f3n3v3~3
+A 0006df99 >U>w>
+A 0006dfab 0$040;0
+A 0006dfbf 1*111
+A 0006dfef 7(717B7L7V7^7f7n7v7~7
+A 0006e011 8#8H8P8^8c8|8
+A 0006e031 9"9*929:9G9L9X9f9u9
+A 0006e06d ;";*;2;:;B;J;R;Z;b;j;r;z;
+A 0006e0ad <"<*<2<:<B<J<R<Z<b<j<r<z<
+A 0006e0ed ="=*=2=:=B=J=R=Z=b=j=r=z=
+A 0006e12d >">*>2>:>B>J>R>Z>b>j>r>z>
+A 0006e16d ?"?*?2?:?B?J?R?Z?b?j?r?z?
+A 0006e1b7 0"0*020:0B0J0R0Z0b0j0r0z0
+A 0006e1f7 1"1*121:1B1J1R1Z1b1j1r1z1
+A 0006e237 2"2*222:2B2J2R2Z2b2j2r2z2
+A 0006e277 3"3*323:3B3
+A 0006e283 4 4,4;4G4
+A 0006e28f 5$565<5D5L5T5\5d5l5t5|5
+A 0006e2cd 6$6,646<6D6L6T6\6d6l6t6|6
+A 0006e30d 7$7,747<7D7L7T7\7d7l7t7|7
+A 0006e34d 8$8,848<8D8L8T8c8o8|8
+A 0006e381 9$9(9,9094989<9@9D9P9p9x9|9
+A 0006e3c1 :(:0:4:8:<:@:D:H:L:P:`:
+A 0006e403 ;8;@;D;H;L;P;T;X;\;`;p;
+A 0006e443 < <@<H<L<P<T<X<\<`<d<h<|<
+A 0006e485 =,=L=T=X=\=`=d=h=l=p=t=
+A 0006e4c3 > >$>4>T>\>`>d>h>l>p>t>x>|>
+A 0006e4fd ? ?$?(?,?0?4?H?h?p?t?x?|?
+A 0006e541 0 0(0,0004080<0@0D0H0\0|0
+A 0006e583 10181<1@1D1H1L1P1T1X1p1
+A 0006e5c3 2(2H2P2T2X2\2`2d2h2l2p2
+A 0006e5fb 3t3x3|3
+A 0006e623 3H4h4
+A 0006e639 =A?E?I?M?Q?U?Y?]?a?e?i?m?q?u?y?}?
+A 0006e679 324a4|4
+A 0006e69d :(:G:
+A 0006e6d9 4	4F4J4N4R4V4Z4^4b4f4j4n4r4v4z4~4
+A 0006e705 626c6
+A 0006e739 ;C;N;Y;
+A 0006e757 ?'?J?y?
+A 0006e777 1*1<1T1
+A 0006e793 3,3z4
+A 0006e7a1 6/646N6s6
+A 0006e7b1 7+7J7\7
+A 0006e7c3 8A8a8
+A 0006e7cb 8(9A9N9g9v9
+A 0006e7e3 ;.;?;H;
+A 0006e7ed <B<]<f<
+A 0006e80d ?7???M?
+A 0006e82d 0(1B1Q1
+A 0006e837 2i2{2
+A 0006e841 3<3K3Z3v3
+A 0006e871 4)424>4C4L4X4]4f4o4x4
+A 0006e899 4*5J5t5
+A 0006e8a5 6#6t6
+A 0006e8bf 9%:I:U:n:x:
+A 0006e8e3 ;O;m;
+A 0006e8ef ;'<5<P<Y<t<
+A 0006e909 =&=>=G=[=i=}=
+A 0006e921 >.>>>F>[>c>
+A 0006e94b 191R1r1
+A 0006e961 2 2$2(2,2024282<2
+A 0006e989 8R8c8
+A 0006e9bf 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0006ea2b : :(:,:4:8:@:D:L:P:X:\:d:h:p:t:|:
+A 0006ea81 ;$;(;0;4;<;@;H;L;T;X;`;d;l;p;x;|;
+A 0006eabf <!<+<6<@<K<U<`<j<u<
+A 0006eaed =#=+=5=@=H=M=s=
+A 0006eb0b >/>G>f>n>v>~>
+A 0006eb3d ?'?4?F?n?r?v?
+A 0006eb87 0 080P0T0h0
+A 0006eba1 1(1,1H1P1T1X1\1`1d1h1l1p1t1x1|1
+A 0006ebf3 2 2<2\2d2h2l2p2t2x2|2
+A 0006ec23 3$3,3034383<3@3D3H3L3h3
+A 0006ec63 404P4X4\4`4d4h4l4p4t4x4
+A 0006ec91 5 5(5,5054585<5@5D5H5d5
+A 0006ecd1 606P6X6\6`6d6h6l6p6t6x6
+A 0006ecf1 7?7N7e7
+A 0006ed01 7/8>8U8}8
+A 0006ed23 :+:B:Q:e:t:
+A 0006ed37 :I;n;
+A 0006ed4b ?N?d?
+A 0006ed83 4"4&4*4.42464:4>4W5
+A 0006ed9d 6L6j6
+A 0006eddd :!:9:=:A:E:I:M:
+A 0006eded ;6;_;
+A 0006ef03 9=:v;
+A 0006ef09 ;><W<o<
+A 0006ef29 ="=&=*=.=2=6=:=>=B=o=
+A 0006ef71 ?&?=?T?
+A 0006efb5 1H2Z3^3b3f3j3n3r3v3z3~3
+A 0006f01b 7U7r8v8z8~8
+A 0006f04f :";;;T;
+A 0006f07b < <$<(<y<
+A 0006f085 <f=}=
+A 0006f0b5 =C>i>
+A 0006f0cb 1)1-1115191=1A1E1I1M1Q1U1Y1]1a1e1i1m1q1u1y1}1t3x3|3
+A 0006f12f 6Q7m7q7u7y7}7
+A 0006f195 =?>T>k>o>s>w>{>
+A 0006f1ad >,?l?
+A 0006f1bd 0F0t0
+A 0006f1c5 1O1v1
+A 0006f1d1 2)2z2d3
+A 0006f1eb 6>7|7
+A 0006f229 :I;M;U;f<
+A 0006f258 $1D1\1u1
+A 0006f265 2'223y3
+A 0006f28b 626`6}6
+A 0006f2af :%;);-;1;5;9;=;A;E;I;M;Q;U;Y;];a;e;i;m;q;u;y;a<e<i<m<q<u<y<}<
+A 0006f379 2f3}3
+A 0006f385 6H8q8
+A 0006f38b 8G9H:
+A 0006f395 <;=J=X=
+A 0006f39d =<>@>D>H>L>P>T>X>\>`>d>
+A 0006f3c5 02161:1>1B1F1J1N1R1V1Z1
+A 0006f3e7 3 3@3\3a354
+A 0006f3f9 5!5V5e5t5
+A 0006f413 6-6<6X6
+A 0006f425 6>7K7f7l7
+A 0006f439 9!9B9U;
+A 0006f443 <W<v<
+A 0006f449 <%=N>o>}>
+A 0006f459 ?3?I?a?f?
+A 0006f478 *0/0I0w0
+A 0006f49d 1!1&1+11161;1B1J1R1Z1b1j1r1z1
+A 0006f4e1 2"2*222:2E2P2[2f2q2|2
+A 0006f513 3$3,343<3D3L3T3\3d3l3t3|3
+A 0006f54b 4M4Q4U4Y4q4
+A 0006f595 545T5\5`5d5h5l5p5t5x5|5
+A 0006f5c1 536:6
+A 0006f5dd 7!7%7)7-7175797=7A7
+A 0006f627 ;@<v<
+A 0006f62f =)=A=K=R=
+A 0006f639 =0>E>
+A 0006f64b 0)1f1
+A 0006f661 4&5O5
+A 0006f69b :#:':+:/:3:
+A 0006f6ab ="=,=7=I=Z=`=z=
+A 0006f6df ? ?$?(?,?0?4?8?<?@?T?t?|?
+A 0006f729 0(0004080<0@0D0H0L0P0`0
+A 0006f76b 10181<1@1D1H1L1P1T1X1l1
+A 0006f7ab 2 2@2H2L2P2T2X2\2`2d2h2x2
+A 0006f7eb 3 343T3\3`3d3h3l3p3t3x3|3
+A 0006f821 4 4$4(4,4044484<4@4D4H4T4t4|4
+A 0006f869 5 5(5,5054585<5@5D5H5L5P5T5^5b5t5
+A 0006f8a3 6 6$6(6,6064686<6@6D6H6V6t6
+A 0006f8f1 7"74787<7@7P7a7e7x7
+A 0006f931 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8
+A 0006f97d 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0006f9d9 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:h:
+A 0006fa2d ; ;$;(;,;0;4;8;<;@;D;T;t;|;
+A 0006fa7d < <$<(<,<0<4<8<L<l<t<x<|<
+A 0006fae5 > >$>(>,>0>4>8><>@>D>H>\>|>
+A 0006fb31 ?(?<?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0006fb8b 0(0H0P0T0X0\0`0d0h0l0p0|0
+A 0006fbab 1 1$1(1,101H1d1p1t1|1
+A 0006fbf1 1 2$2(2,2024282<2@2D2H2L2P2T2X2\2l2|2
+A 0006fc33 3 3$3(3,3034383P3`3l3p3x3|3
+A 0006fc87 4$4@4
+A 0006fca1 5,5L5T5X5\5`5d5h5l5p5t5
+A 0006fcbf 7&8-8N8
+A 0006fccf :2;D;[;
+A 0006fcd7 <_=o=|=
+A 0006fce7 =$>)>
+A 0006fcf3 >6?Q?`?w?
+A 0006fd13 0'020D0Z0_0{0
+A 0006fd33 1#121D1I1h1u1
+A 0006fd5d 2\2h2
+A 0006fd6d 3O3T3
+A 0006fd79 4'464@4U4^4n4
+A 0006fd91 5G5r5.6<6
+A 0006fda5 7?7_7d7
+A 0006fdb1 768F8_8o8
+A 0006fdc1 :+:E:W:
+A 0006fdcd ;9<v<
+A 0006fdd3 <E=q=
+A 0006fddd >V>v>
+A 0006fdf7 1!1m1
+A 0006fe0b 384Q4
+A 0006fe1d 6L7<8R8
+A 0006fe3b ;2;[;
+A 0006fe43 ;!<><x<
+A 0006fe6d 0 0h0
+A 0006fe83 2C2U2r2
+A 0006fe8d 2/3V3
+A 0006feaf 7d8|8-9E9
+A 0006febf ;5<<<
+A 0006fec9 =b=i=
+A 0006fedd ?,?K?
+A 0006ff07 4p5|5
+A 0006ff31 6 6$6(6,60646
+A 0006ff53 9)999
+A 0006ff5d :/:4:N:S:}:
+A 0006ff6f :$;,;;;
+A 0006ff8b >Y>^>
+A 0006ff93 >$?Y?v?
+A 0006ffa4 V0-141l1
+A 0006ffc5 6&797^7
+A 0006ffe7 9	:&;q;
+A 0006fff1 ;"<)<@<k<
+A 0007000f >"?G?
+A 00070021 0I0h0
+A 00070065 5N6S6m6
+A 0007006f 6-7^7e7
+A 00070077 7L8{8*9l9
+A 000700b3 <(<V<
+A 000700bb =b=i=
+A 000700cb >4?D?
+A 000700e1 0+0r0
+A 00070113 2%2<2
+A 00070137 9(9D9X9
+A 00070145 :C:;;W;r;
+A 00070155 =1>c>
+A 00070183 3"4>4\4z4v5
+A 0007019f 878z8
+A 000701a5 8J9#:
+A 000701ad :2;];
+A 000701b5 <D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 000701df =R=V=Z=^=b=f=j=n=
+A 000701f3 >#?2?B?W?g?
+A 00070208 /0\0c0
+A 00070211 0	1%1#2L2|2
+A 0007021d 2@3\3c3s3
+A 00070235 4)474<4r4G5
+A 00070259 9b:i:
+A 0007027d 3K4Z4
+A 0007028f 5X5~5
+A 000702c5 7"7*747@7J7Q7[7b7l7s7}7
+A 00070303 8$8,848<8D8L8T8\8d8l8t8|8
+A 00070343 9$9,949<9D9L9T9\9d9l9t9|9
+A 00070383 :$:,:4:<:D:L:T:\:d:l:t:|:
+A 000703c3 ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 00070403 <$<,<4<<<D<L<T<\<d<l<t<|<
+A 00070443 =$=,=4=<=D=L=T=\=d=l=t=|=
+A 00070483 >$>,>4><>D>L>T>\>d>l>t>|>
+A 000704c3 ?$?,?4?<?D?L?T?\?d?l?t?|?
+A 0007050b 0$0,040<0D0L0T0\0d0l0t0|0
+A 0007054b 1$1,141<1D1L1T1\1d1l1t1|1
+A 0007058b 2$2,242<2D2L2T2\2d2l2t2|2
+A 000705cb 3$3,343<3D3L3T3\3d3l3t3|3
+A 0007060b 4$4,444<4D4L4T4\4d4l4t4|4
+A 0007064b 5$5,545<5D5L5T5\5d5l5t5|5
+A 0007068b 6$6,646<6D6L6T6\6d6l6t6|6
+A 000706cb 7$7,747<7D7L7T7\7d7l7t7|7
+A 0007070b 8$8,848<8D8L8T8\8d8l8t8|8
+A 0007074b 9$9,949<9D9L9T9\9d9l9t9|9
+A 0007078b :$:,:4:<:D:L:T:\:d:l:t:|:
+A 000707cb ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 0007080b <$<,<4<<<D<L<T<\<d<l<t<|<
+A 0007084b =$=,=4=<=D=L=T=\=d=l=t=|=
+A 0007088b >$>,>4><>D>L>T>\>d>l>t>|>
+A 000708cb ?$?,?4?<?D?L?T?\?d?l?t?|?
+A 00070913 0$0,040<0D0L0T0\0d0l0t0|0
+A 00070953 1$1,141<1D1L1T1\1d1l1t1|1
+A 00070993 2$2,242<2D2L2T2\2d2l2t2|2
+A 000709d3 3$3,343<3D3L3T3\3d3l3t3|3
+A 00070a13 4$4,444<4D4L4T4\4d4l4t4|4
+A 00070a53 5$5,545<5D5L5T5\5d5l5t5|5
+A 00070a93 6$6,646<6D6L6T6\6d6l6t6|6
+A 00070ad3 7$7,747<7D7L7T7\7d7l7t7|7
+A 00070b13 8$8,848<8D8L8T8\8d8l8t8|8
+A 00070b53 9$9,949<9D9L9T9\9d9l9t9|9
+A 00070b93 :$:,:4:<:D:L:T:\:d:l:t:|:
+A 00070bd3 ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 00070c13 <$<,<4<<<D<L<T<\<d<l<t<|<
+A 00070c53 =$=,=4=<=D=L=T=\=d=l=t=|=
+A 00070c93 >$>,>4><>D>L>T>\>d>l>t>|>
+A 00070cd3 ?$?,?4?<?D?L?T?\?d?l?t?|?
+A 00070d1b 0$0,040<0D0L0T0\0d0l0t0|0
+A 00070d5b 1$1,141<1D1L1T1\1d1l1t1|1
+A 00070d9b 2$2,242<2D2L2T2\2d2l2t2|2
+A 00070ddb 3$3,343<3D3L3T3\3d3l3t3|3
+A 00070e15 4$4,444<4D4L4T4\4d4l4t4|4
+A 00070e55 5$5,545<5D5L5T5\5d5l5t5|5
+A 00070e95 6$6,646<6D6L6T6\6d6l6t6
+A 00070ecb 7(7H7P7T7X7\7`7d7h7l7p7
+A 00070eed 8P8b8h8
+A 00070f01 :$:(:0:4:8:<:@:D:H:L:P:T:X:\:d:x:
+A 00070f41 ; ;$;(;,;0;>;J;T;_;c;t;x;|;
+A 00070f77 <5<9<=<X<h<x<
+A 00070fb1 =6=:=>=X=h=x=
+A 00070fe9 >,><>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 0007101f ?k?o?s?w?{?
+A 0007106b 0 0$0(0,0004080<0@0D0H0L0T0d0r0v0
+A 000710af 1 1$1(1,10141H1X1h1p1t1x1|1
+A 00071111 202P2X2\2`2d2h2l2p2t2x2|2
+A 00071165 3 3$3(3,3034383D3O3S3j3x3
+A 00071193 4+5p5
+A 000711a3 6.7V7f7
+A 000711b1 7G<W<O>_>z>5?:???S?
+A 000711d5 0I0f0
+A 000711df 0 1>1K1
+A 000711e9 1Z2_2
+A 000711ef 2_4d4
+A 000711fd 5-5J5
+A 00071209 6+6I6
+A 00071211 6+707g7
+A 00071223 8Z8j8|8
+A 00071233 98:L:Y:m:z:
+A 00071245 :J;W;
+A 00071255 =B=s=
+A 0007125d =%>*>Q>^>
+A 0007126b ?X?x?
+A 00071280 10M0T0
+A 00071291 2%212E2S2b2y2
+A 000712b5 5;697
+A 000712e9 0<0_0
+A 000712f3 2'3:4{4
+A 000712fb 5s5	6
+A 00071301 606@6
+A 00071323 8 8$8(8,8084888<8@8D8H8\8o8s8
+A 0007134b 9@9O9
+A 00071375 181@2
+A 0007137b 3&3P3
+A 0007139d 8U92:W:}:
+A 000713a7 :`;,<K<
+A 000713cd 1X2a3z3
+A 0007140f 1D2T2
+A 00071417 2$383[3h3w3
+A 00071433 444T4\4`4d4h4l4p4t4x4|4(5
+A 00071455 6@7Y7w7
+A 00071479 8"848F8W8a8r8~8
+A 000714a7 9!9+90959W9c9p9
+A 000714dd : :$:(:,:0:4:8:<:@:D:X:x:
+A 00071513 <(<:<B<J<R<Z<b<j<r<
+A 00071549 =.=N=`=i=v=~=
+A 00071563 =%>->3>?>F>
+A 0007157b ?D?L?R?^?f?
+A 00071599 0.0u0}0
+A 000715ab 0I1Q1W1c1k1
+A 000715bd 2%2+272?2{2
+A 000715d5 3@3K3
+A 000715dd 4!4%4+4/45494?4C4I4M4S4W4]4a4g4k4
+A 00071611 5,5=5`5w5
+A 00071623 6*6P6p6x6|6
+A 00071677 8$8(808D8L8P8T8X8\8`8d8h8l8z8
+A 000716a7 9+9`9j9t9y9
+A 000716b9 :N:]:l:
+A 000716c5 ;";K;a;
+A 000716f9 001V1]1
+A 00071707 1E2h2o2
+A 00071715 2>3s3
+A 0007171b 3)4K5W5_5i5v5
+A 0007173d 6&6A6N6g6{6
+A 0007176f 7,757:7?7M7V7[7`7n7w7|7
+A 0007179d 9/9;9H9Z9g9s9
+A 000717c1 :(:::G:S:`:r:
+A 00071801 ; ;$;(;0;<;H;L;];e;
+A 0007183f >$>4>@>D>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 0007188b ?'?M?o?
+A 0007189d 0 0z0
+A 000718a3 011F1X1f1y1
+A 000718bf 2D3H3P3T3\3`3h3l3t3x3
+A 00071903 4(434E4V4^4n4s4
+A 00071927 5'545F5L5\5l5t5x5|5
+A 00071981 6D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 000719bd 8 8$8(868>8
+A 000719cf 9S9o9{9
+A 000719e1 :):N:
+A 000719e9 :#;W;
+A 000719ef ;A<n<v<
+A 00071a05 >'>A>U>
+A 00071a41 3)33383G3X3j3x3
+A 00071a5d 4 4$4(4,4044484<4@4D4H4L4P4T4X4h4
+A 00071aaf 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5x5
+A 00071afd 6$6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6
+A 00071b5b 7,7L7T7X7\7`7d7h7l7p7t7x7|7
+A 00071bad 8 8$8(8<8P8T8h8
+A 00071c05 9 9$9(9,9D9\9
+A 00071c1d 9$:3:8:X:h:x:
+A 00071c51 ;#;>;F;b;j;
+A 00071c5f ;<<|<
+A 00071ca3 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00071ced 2^3b3f3j3n3r3v3z3~3
+A 00071d4f 4"4&4*4.42464:4>4B4F4J4N4R4V4Z4^4b4f4j4n4r4v4z4~4
+A 00071d99 555=5V5b5u5
+A 00071dbd 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00071e0b 787Q7|7
+A 00071e1d 8(84888D8H8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00071e8f 9 9$9(9,90949B9J9$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00071f1d ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00071f7d < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00071ff5 =$=8=<=P=`=l=p=x=|=
+A 00072057 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>
+A 000720d1 040<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00072115 1J1R1a1i1
+A 0007214d 5 5$5(5,5054585<5@5
+A 0007216d 8Y8r8
+A 0007218d =B>]>p>z>
+A 00072197 >5?G?R?
+A 000721b5 0F0X0a0
+A 000721c3 1'1B1
+A 000721d9 2.272?2M2R2\2k2y2
+A 000721ff 303=3Q3[3s3
+A 0007221d 4C4L4U4u4
+A 0007225b 6"6*6;6Y6|6
+A 0007227d 8(818Z8f8x8
+A 000722a3 9 9=9L9o9
+A 000722c1 :':1:;:D:W:\:h:n:v:
+A 000722ef ;";3;
+A 000722f5 ;3<C<
+A 00072305 <6=Q=w=|=
+A 00072311 =6>;>}>&?
+A 00072325 090L0l0
+A 00072331 1E1j1
+A 0007233d 3$3B3
+A 0007234b 4/4`4
+A 0007235b 7397;
+A 0007236b =>>|>
+A 0007239d 6M6^8
+A 000723a9 969?9\9t9{9
+A 000723db 506;6I6
+A 0007241b 477z7
+A 00072429 8C8j9z9
+A 00072431 :6:S:
+A 000724a1 9'9]9
+A 000724ad :L:l:
+A 000724c5 =N>c>
+A 000724e5 2G4O4b415
+A 000724f5 ;q>|>2?
+A 00072519 0"1H1S1j1
+A 00072525 1Y3b4
+A 0007253d ;);@<m<
+A 00072563 6	;S;
+A 00072587 353O3
+A 00072595 8#848K8\8
+A 000725a3 96:W:
+A 000725af ;	<A<S<9=x=
+A 000725bf =9?E?Z?i?
+A 000725db 2#3H4
+A 000725eb 9O:a:
+A 00072631 9`<r<
+A 0007263f <q= >
+A 00072659 0,1L1\1
+A 00072661 1&2@2u3
+A 00072677 ;E<J<O=
+A 00072689 =J>g>J?i?u?}?
+A 000726c5 0&0+000;0@0E0P0U0Z0e0j0o0z0
+A 000726f1 2,2A2L2W2h2y2
+A 00072719 3 3+333S3s3
+A 0007273d 4(414<4G4R4Y4g4l4q4{4
+A 0007275b 5&555@5J5T5f5{5
+A 00072785 6 6$6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 000727d5 7(787D7H7P7T7X7\7`7d7h7l7p7t7x7|7
+A 0007281d 8$8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00072883 9 9,909<9@9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 000728d9 :(:H:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00072933 <7=F=Z=3>
+A 00072963 2(3]3
+A 0007297b 738?8L8^8g8l8w8|8
+A 000729ab 9 9$9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 000729ef ;P;l;
+A 000729f5 ;)<i=
+A 00072a05 >+>;>
+A 00072a11 ?#?^?
+A 00072a25 2]2j2z2
+A 00072a41 507@7W7g7
+A 00072a4f 7I8R8`8
+A 00072a69 :.;>;k;
+A 00072a73 ;G<W<
+A 00072a89 =_>k>x>
+A 00072aab ?(?t?
+A 00072ac7 1(1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00072b2f 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2~2
+A 00072b79 3*323P3X3|3
+A 00072b99 4	4)414K4S4W4m4u4
+A 00072bbb 5 5(5,5C5K5O5e5q5
+A 00072bd7 6 6$6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00072c21 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00072c67 8#8+8/8F8N8g8o8
+A 00072c81 939X9v9
+A 00072c9f : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:x:
+A 00072cdb ;4;<;@;W;[;_;};
+A 00072cf7 <9<\<
+A 00072d25 = =$=(=,=0=4=8=<=@=
+A 00072d3d ? ?3?N?i?
+A 00072d5f 1)1B1
+A 00072d69 1R3l3
+A 00072d73 474g4
+A 00072d81 7+7^7
+A 00072d87 7 8o8
+A 00072d93 9)979C9R9^9j9
+A 00072daf ;#;Q;o<
+A 00072db7 <"=H=q=|=
+A 00072dc1 =1>>>
+A 00072de5 7?8x8
+A 00072ded 8J;];3<
+A 00072e05 0E1O1Y1l1v1
+A 00072e19 4m4G5
+A 00072e21 5E6i6V7
+A 00072e53 0-1X1]1e1j1
+A 00072e67 1;2m2
+A 00072e77 3z3^4
+A 00072e85 5G6|6
+A 00072eaf >1>>>`>e>
+A 00072edb 6A6M6a6m6r7
+A 00072ef7 :^:n:
+A 00072f01 :	;y;
+A 00072f0f ;'<D<
+A 00072f1f >5>Q>{>
+A 00072f3f 0*1}1
+A 00072f69 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2o2{2
+A 00072faf 3 3,363=3G3N3X3`3|3
+A 00072fe1 4,4C4G4U4]4z4
+A 00072ffd 5(50545H5i5q5
+A 00073019 6/6\6l6x6|6
+A 00073071 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7
+A 000730b7 808O8
+A 000730e3 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0007314d :":::B:F:\:d:
+A 0007316b ;7;?;\;h;
+A 00073183 <6<Y<e<{<
+A 000731a1 =)=1=O=W=t=|=
+A 000731c1 >)>1>5>K>q>}>
+A 000731d5 ?4?Y?~?
+A 000731ed 0.0V0|0
+A 000731fb 1A1d1
+A 0007320b 282Q2
+A 00073223 3(4`4
+A 0007322d 5$5(54585@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 000732a5 6 6$6(6,6064686<6@6D6H6L6P6^6f6n6
+A 000732dd 7"7&7*7.72767:7>7B7F7J7N7R7V7Z7^7b7f7j7n7r7v7z7~7
+A 00073347 8(888@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 000733bb 9 9$9(9,9094989<9@9D9H9L9P9\9g9k9y9
+A 000733f1 :1:9:=:S:[:_:x:
+A 00073413 ;0;4;8;<;R;V;Z;^;y;};
+A 0007343b <"<@<H<L<`<h<
+A 00073455 ='===E=b=j=n=
+A 0007347b >0><>U>]>a>t>
+A 00073499 ?#?;?C?G?^?j?
+A 000734cd 01090=0W0_0c0|0
+A 000734ed 121`1
+A 00073503 2A2f2r2
+A 00073517 3>3J3b3n3
+A 00073531 4@4k4
+A 00073545 5E5h5x5
+A 00073597 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 000735f7 7<7\7d7h7l7p7t7x7|7
+A 00073641 8,898=8L8c8l8x8|8
+A 00073689 909B9F9U9]9
+A 0007369f :!:H:Q:Y:`:h:v:
+A 000736b9 :-;4;_;h;p;y;
+A 000736d9 <7<M<q<
+A 000736ed >7>b>q>
+A 0007371d 5	5+616#7A7g7m7%868g8
+A 00073739 9J:`:
+A 0007373f :k;{;W<
+A 00073767 2'3v3
+A 00073775 3 424I4
+A 00073781 415e5y5
+A 000737a9 9#9`9
+A 000737bb ;9<n<y<
+A 000737d8 }041d1
+A 000737eb 3l4|4
+A 00073805 686X6e8
+A 00073815 9X;n;
+A 00073845 2%2E2P2k2
+A 00073857 3'3E3X3
+A 00073869 404B4_4r4
+A 0007388d 6'6}6
+A 00073895 6L7s7
+A 0007389b 7(8>8
+A 000738a7 9'9^9
+A 000738c3 <"<*<9<L<l<{<
+A 000738db > >P?`?r?
+A 000738f7 1F1k1H2_2
+A 00073905 6j6x6
+A 0007391b ; ;5;G;
+A 00073925 ;/<L<i=
+A 00073937 >\>x>
+A 00073941 ?9?y?
+A 00073953 080Q0
+A 0007395b 0,1G1l1
+A 0007396f 3-3o3
+A 00073977 3E4O4
+A 00073987 6M6U6
+A 0007399b 7'7?7U7
+A 000739a5 8 818?8Q8h8r8
+A 000739bb 9r:r;;=X=
+A 000739d9 1Q2=3y3
+A 000739f3 4&484J4l4|4
+A 000739ff 4C5O5{5
+A 00073a1b 6/7D7
+A 00073a2f :.:6:F:R:F;N;_;k;u;^<d<o<
+A 00073a49 =P>T>X>\>`>d>h>
+A 00073a65 0&1U1
+A 00073a73 2<2F2x2
+A 00073a8b 3#303A3J3R3_3e3m3~3
+A 00073aa3 3b4n4w4|4
+A 00073ab9 5;5L5
+A 00073abf 5D6I6U6h6m6z6
+A 00073acf 6V7n7}7
+A 00073ae9 8%8S8
+A 00073af3 8^9t9
+A 00073b03 :!;H;U;\;{;
+A 00073b21 = =$=(=,=0=4=8=<=@=D=H=L=P=T=
+A 00073b48 90Z0G1
+A 00073b67 9N:s:
+A 00073b6d ;9;H;
+A 00073b77 <7=d=
+A 00073b85 ?^?o?
+A 00073b99 060X0
+A 00073ba1 101i1q1
+A 00073bc9 7~87:P:p:
+A 00073be7 <#<+<9<A<L<^<n<v<
+A 00073c1b =$=(=0=4=<=@=O=[=o=
+A 00073c45 >+>8>J>P>l>
+A 00073c6b ?,?>?D?d?l?p?t?x?|?
+A 00073cab 0 0$0(0,0004080<0@0N0V0+1[1
+A 00073cc9 152s2
+A 00073ce9 3R4i4
+A 00073d09 9,939
+A 00073d13 :2:_:S;
+A 00073d3d ;^<g<m<v<~<
+A 00073d65 =(=3=E=V=c=i=p=v={=
+A 00073d8b =	>#>/><>N>T>\>d>l>{>
+A 00073dcf ? ?$?(?,?0?4?8?<?@?D?d?t?
+A 00073e17 0!0%0)0D0L0b0j0
+A 00073e43 2H2T2
+A 00073e55 7"7O7o7
+A 00073e5d 7%8X8
+A 00073e67 :+:F:U:l:
+A 00073e79 <+<B<k<w<~<
+A 00073ea3 =8=@=D=H=L=P=T=X=\=`=|=
+A 00073ef5 >,><>L>T>X>\>`>d>h>l>p>t>x>|>
+A 00073f2b ? ?$?(?E?I?M?}?
+A 00073f4c &1P1x1
+A 00073f61 3<4l4
+A 00073f67 4,5E5
+A 00073f75 616n6
+A 00073f81 7H8a8}8
+A 00073f97 :U;a;
+A 00073faf ?M?n?
+A 00073fe1 6<7S7
+A 00073feb 8G8[8K9
+A 00074003 :C;u;
+A 0007400b ;A<Q=c=
+A 0007401d >%>@>_>
+A 0007404b ; <V<
+A 00074053 >;?b?|?
+A 00074068 W0h0y0
+A 00074077 2#2/262H2Z2d2n2|5
+A 000740b1 6 6$6(6,6:6
+A 000740cf 7 7%7/757:7L7|7
+A 000740f1 7B8N8X8b8
+A 00074109 949<9@9D9H9L9P9T9X9\9
+A 00074125 9&:1:=:g:s:
+A 00074169 ='=;=N=c=o=|=
+A 00074195 > >$>(>,>0>4>8><>@>D>H>
+A 000741b5 ?:?E?Q?{?
+A 000741e3 0"0.080B0r0}0
+A 000741ff 1 1$1(1,1014181<1@1D1H1L1P1T1X1
+A 00074225 5"5/5;5H5Z5g5s5
+A 00074247 6'636:6E6W6j6
+A 00074269 7,7>7K7W7_7h7p7
+A 00074299 8 8$848S8
+A 000742bb 9(9<9D9H9L9P9T9X9\9`9d9r9z9
+A 000742fb :,:4:8:<:@:D:H:L:P:T:
+A 00074319 ;';>;U;l;
+A 0007432f <$<;<R<i<
+A 00074345 =!=8=O=f=}=
+A 0007435b >3>P>m>
+A 0007436d ?8?U?r?
+A 00074385 0 0=0Z0w0
+A 00074397 1%1B1_1|1
+A 000743a9 2*2G2d2
+A 000743bb 3/3L3i3
+A 000743cd 444Q4n4
+A 000743df 595V5s5
+A 000743ef 6!6>6[6x6
+A 000743ff 6	7&7C7`7}7
+A 00074413 8+8H8e8
+A 00074425 909M9j9
+A 00074437 :5:R:o:
+A 00074449 ;:;W;t;
+A 00074459 <"<?<\<y<
+A 0007446b ='=D=a=~=
+A 0007447d >,>I>f>
+A 0007448f ?1?N?k?
+A 000744a9 060S0p0
+A 000744bb 1;1X1u1
+A 000744cb 2#2@2]2z2
+A 000744dd 3(3E3b3
+A 000744ef 4-4J4g4
+A 00074501 525O5l5
+A 00074513 676T6q6
+A 00074525 7<7Y7v7
+A 00074535 8$8A8^8{8
+A 00074547 9)9F9c9
+A 00074559 :.:K:h:
+A 0007456b ;3;P;m;
+A 0007457d <8<U<r<
+A 0007458d = ===Z=w=
+A 0007459f >%>B>_>|>
+A 000745b1 ?*?G?d?
+A 000745cd 0/0L0i0
+A 000745df 141Q1n1
+A 000745f1 292V2s2
+A 00074601 3!3>3[3x3
+A 00074611 3	4&4C4`4}4
+A 00074625 5+5H5e5
+A 00074637 606M6j6
+A 00074649 757R7o7
+A 0007465b 8:8W8t8
+A 0007466b 9"9?9\9y9
+A 0007467d :':D:a:~:
+A 0007468f ;,;I;f;
+A 000746a1 <1<N<k<
+A 000746b3 =6=S=p=
+A 000746c5 >;>X>u>
+A 000746d5 ?#?@?]?z?
+A 000746f1 0(0E0b0
+A 00074703 1-1J1g1
+A 00074715 222O2l2
+A 00074727 373T3q3
+A 00074739 4<4Y4v4
+A 00074749 5$5A5^5{5
+A 0007475b 6)6F6c6
+A 0007476d 7.7K7h7
+A 0007477f 838P8m8
+A 00074791 989U9r9
+A 000747a1 : :=:Z:w:
+A 000747b3 ;%;B;_;|;
+A 000747c5 <*<G<d<
+A 000747d7 =/=L=i=
+A 000747e9 >4>Q>n>
+A 000747fb ?9?V?s?
+A 00074815 0!0>0[0x0
+A 00074825 0	1&1C1`1}1
+A 00074839 2+2H2e2
+A 0007484b 303M3j3
+A 0007485d 454R4o4
+A 0007486f 5:5W5t5
+A 0007487f 6"6?6\6y6
+A 00074891 7'7D7a7~7
+A 000748a3 8,8I8f8
+A 000748b5 919N9k9
+A 000748c7 :6:S:p:
+A 000748d9 ;;;X;u;
+A 000748e9 <#<@<]<z<
+A 000748fb =(=E=b=
+A 0007490d >->J>g>
+A 0007491f ?2?O?l?
+A 00074939 070T0q0
+A 0007494b 1<1Y1v1
+A 0007495b 2$2A2^2{2
+A 0007496d 3)3F3c3
+A 0007497f 4.4K4h4
+A 00074991 535P5m5
+A 000749a3 686U6r6
+A 000749b3 7 7=7Z7w7
+A 000749c5 8%8B8_8|8
+A 000749d7 9*9G9d9
+A 000749e9 :/:L:i:
+A 000749fb ;4;Q;n;
+A 00074a0d <9<V<s<
+A 00074a1d =!=>=[=x=
+A 00074a2d =	>&>C>`>}>
+A 00074a41 ?+?H?e?
+A 00074a5d 000M0j0
+A 00074a6f 151R1o1
+A 00074a81 2:2W2t2
+A 00074a91 3"3?3\3y3
+A 00074aa3 4'4D4a4~4
+A 00074ab5 5,5I5f5
+A 00074ac7 616N6k6
+A 00074ad9 767S7p7
+A 00074aeb 8;8X8u8
+A 00074afb 9#9@9]9z9
+A 00074b0d :(:E:b:
+A 00074b1f ;-;J;g;
+A 00074b31 <2<O<l<
+A 00074b43 =7=T=q=
+A 00074b55 ><>Y>v>
+A 00074b65 ?$?A?^?{?
+A 00074b81 0)0F0c0
+A 00074b93 1.1K1h1
+A 00074ba5 232P2m2
+A 00074bb7 383U3r3
+A 00074bc7 4 4=4Z4w4
+A 00074bd9 5%5B5_5|5
+A 00074beb 6*6G6d6
+A 00074bfd 7/7L7i7
+A 00074c0f 848Q8n8
+A 00074c21 999V9s9
+A 00074c31 :!:>:[:x:
+A 00074c41 :	;&;C;`;};
+A 00074c55 <+<H<e<
+A 00074c67 =0=M=j=
+A 00074c79 >5>R>o>
+A 00074c8b ?:?W?t?
+A 00074ca5 0"0?0\0y0
+A 00074cb7 1'1D1a1~1
+A 00074cc9 2,2I2f2
+A 00074cdb 313N3k3
+A 00074ced 464S4p4
+A 00074cff 5;5X5u5
+A 00074d0f 6#6@6]6z6
+A 00074d21 7(7E7b7
+A 00074d33 8-8J8g8
+A 00074d45 929O9l9
+A 00074d57 :7:T:q:
+A 00074d69 ;<;Y;v;
+A 00074d79 <$<A<^<{<
+A 00074d8b =)=F=c=
+A 00074d9d >.>K>h>
+A 00074daf ?3?P?m?
+A 00074dc9 080U0r0
+A 00074dd9 1 1=1Z1w1
+A 00074deb 2%2B2_2|2
+A 00074dfd 3*3G3d3
+A 00074e0f 4/4L4i4
+A 00074e21 545Q5n5
+A 00074e33 696V6s6
+A 00074e43 7!7>7[7x7
+A 00074e53 7	8&8C8`8}8
+A 00074e67 9+9H9e9
+A 00074e79 :0:M:j:
+A 00074e95 <&=[=
+A 00074ea1 >:>G>z>
+A 00074eaf ?$?D?L?P?T?X?\?`?d?h?l?
+A 00074edd 0"1-191c1o1
+A 00074efd 2'242F2S2_2l2~2
+A 00074f21 3&333C3v3
+A 00074f3b 4"4/4;4H4Z4`4
+A 00074f61 4'535G5Z5v5
+A 00074fb1 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00075031 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 000750b1 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9|9
+A 000750ec ,00040
+A 000750f9 0D1L1P1t1x1
+A 00075145 2 2$2(2,202l2t2|2
+A 0007517b 385<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 000751ad 6 6X6`6h6p6x6
+A 000751e1 7 7(70787@7H7P7X7`7h7p7x7
+A 00075221 8 8(80888@8H8P8X8`8h8p8x8
+A 0007523b 84989<9@9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0007528b : :(:0:8:@:H:P:X:`:
+A 000752ad = =$=(=,=0=4=X=\=`=d=
+A 000752e1 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 0007535d ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 000753e7 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00075467 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 000754e7 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00075567 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 000755e7 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00075667 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 000756e7 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00075767 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 000757e7 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00075867 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 000758e7 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00075967 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 000759e7 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00075a67 = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 00075ae7 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00075b67 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 00075bef 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00075c6f 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00075cef 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00075d6f 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 00075def 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00075e6f 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 00075eef 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00075f6f 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00075fef 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00078844 333333333333333333
+A 0007885b 33333333?333333
+A 00078879 33?33
+A 000788d7 33338
+A 000788eb 33333
+A 000788f1 33833
+A 000788ff 333338
+A 00078913 33333833
+A 00078927 33333
+A 0007893c 333838
+A 00078970 3333339
+A 00078984 3333333333333338
+A 00078998 333333333333333333
+A 00078a14 334C33333338
+A 00078a21 33333
+A 00078a28 33B$3333333
+A 00078a3c 34""C33333833
+A 00078a50 3B""$33333
+A 00078a64 4"*""C3338
+A 00078a7c "C3338
+A 00078a8c :*"*"$3338
+A 00078aa5 "C338
+A 00078ab7 "*"$33
+A 00078ac8 "*:"$
+A 00078ae0 "J"$3
+A 00078af0 :33:"$
+A 00078af7 "C8338
+A 00078b09 "J"C3333
+A 00078b18 3333:"$
+A 00078b20 #33338
+A 00078b2c 33333
+A 00078b32 "J333333
+A 00078b40 33333:"$3333338
+A 00078b54 333333
+A 00078b5b $3333333
+A 00078b68 333333:"33333338
+A 00078b7c 3333333
+A 00078b84 33333333
+A 00078bf8 333333333333333333
+A 00078c0f 33333333?333333
+A 00078c2d 33?33
+A 00078c8b 33338
+A 00078c9f 33333
+A 00078ca5 33833
+A 00078cb3 333338
+A 00078cc7 33333833
+A 00078cdb 33333
+A 00078cf0 333838
+A 00078d24 3333339
+A 00078d38 3333333333333338
+A 00078d4c 333333333333333333
+A 00078ecc 33DDDDD3333
+A 00078ee0 33333333333
+A 00078efa 333333?
+A 00078f0e 333333
+A 00078f22 333333
+A 00078f98 3333f3333333?
+A 00078fac 3336Dc3333338
+A 00078fc0 333>fC333333
+A 00078fd9 c333333
+A 00078fe8 3333333333338
+A 00078ffc 3333Dc3333333
+A 00079010 3336fC3333338
+A 00079024 333>fC333333
+A 00079038 333>fd333333
+A 00079051 fC33333
+A 00079060 3333>fd333338
+A 00079074 334C3
+A 0007907a fC333?3
+A 00079088 33fd3>fC333
+A 0007909f fDFfC338
+A 000790b0 33>ffffc338
+A 000790c8 fff3333
+A 000790d1 33833
+A 000790df 33338
+A 000790ec 3333333333338
+A 00079168 4DF334DC33
+A 0007917f 333*C33
+A 00079193 c33*C333
+A 0007919d 338?3
+A 000791bf 33338?383
+A 000791d0 F*F333383
+A 000791e4 "$c33333
+A 000791f9 "dc3333833
+A 0007920d CjC338
+A 00079221 CjC338
+A 00079235 D*C33383
+A 0007924b 33333
+A 00079258 3332*
+A 0007925e C33333833?33
+A 0007926c 3333"
+A 00079272 3333333
+A 00079280 3334JC33333338?333
+A 00079299 C3333333
+A 000792ad C3333333
+A 000792bc 3333fc33333338
+A 00079338 333333333333?
+A 00079352 33333?
+A 0007947e 333333
+A 0007948c 333333333333333333
+A 00079508 333333333333333333
+A 0007951c 333333333333
+A 00079529 33333
+A 00079530 334C33333338
+A 0007953d 33333
+A 00079544 33B$3333333
+A 00079558 34""C33333833
+A 0007956c 3B""$33333
+A 00079580 4"*""C3338
+A 00079598 "C3338
+A 000795a8 :*3:"$3338
+A 000795c1 "C333
+A 000795d0 3333:"$3333338
+A 000795e4 33333
+A 000795ea "C333333
+A 000795f8 33333:"$3333338
+A 0007960c 333333
+A 00079613 "C333333
+A 00079620 333333:"C3333338
+A 00079634 3333333
+A 0007963c #3333333
+A 00079648 3333333:3333333383
+A 0007965c 333333333333333333
+A 000796d8 333DDD33333?
+A 000796ec 2C4"""D338
+A 00079700 2$B""""C38
+A 0007973c 2""333:"C8
+A 00079747 83338
+A 00079750 2""#33:DC8
+A 00079768 333338
+A 00079771 33333
+A 00079778 333333333333333
+A 0007978c 333333DDD3
+A 000797a0 :DC33:""$8
+A 000797b4 :"C333
+A 000797ca $334B"$3
+A 000797de "DDB""$3
+A 000797f0 3:"""""
+A 0007981e 333333
+A 0007982c 333333333333333333
+A 000798a8 333333333333333333
+A 000798bc 333333333333
+A 000798c9 33333
+A 000798d0 334C33333338
+A 000798dd 33333
+A 000798e4 33B$3333333
+A 000798f8 34""C33333833
+A 0007990c 3B""$33333
+A 00079920 4"*""C3338
+A 00079938 "C3338
+A 00079948 :*3:"$3338
+A 00079961 "C333
+A 00079970 3333:"$3333338
+A 00079984 33333
+A 0007998a "C333333
+A 00079998 33333:"$3333338
+A 000799ac 333333
+A 000799b3 "C333333
+A 000799c0 333333:"C3333338
+A 000799d4 3333333
+A 000799dc #3333333
+A 000799e8 3333333:3333333383
+A 000799fc 333333333333333333
+A 00079a91 wwwwww
+A 00079b49 wwwwww
+A 00079c29 wwwwwp
+A 00079c32 {{{{p
+A 00079c42 {{{{{
+A 00079df1 wwwwww
+A 00079e11 wwwww
+A 00079ec1 wwwwww
+A 00079ed1 wwwwww
+A 0007a071 wwwwww
+A 0007a109 wwwwwp
+A 0007a1d8 33333333
+A 0007a2e9 pppppw
+A 0007a380 33330
+A 0007a3a8 33330
+A 0007a418 33330
+A 0007a440 33330
+A 000a3678 {<:y&q?	
+A 000a3691 twdwt
+A 000a36a0 System
+A 000a36a9 SysInit
+A 000a36b2 KWindows
+A 000a36bc UTypes
+A 000a36c4 ^Classes
+A 000a36ce "RTLConsts
+A 000a36db SysConst
+A 000a36e5 3Messages
+A 000a36f1 SysUtils
+A 000a36fb CVariants
+A 000a3706 $VarUtils
+A 000a3711 QTypInfo
+A 000a371b sActiveX
+A 000a3725 dStdCtrls
+A 000a3731 Consts
+A 000a3739 &Controls
+A 000a3745 Forms
+A 000a3754 Printers
+A 000a375e WWinSpool
+A 000a3769 +Graphics
+A 000a3775 CommCtrl
+A 000a3780 FlatSB
+A 000a3789 StdActns
+A 000a3794 Clipbrd
+A 000a379d YStrUtils
+A 000a37a8 *ShellAPI
+A 000a37b3 EActnList
+A 000a37be vMenus
+A 000a37c7 Contnrs
+A 000a37d1 ImgList
+A 000a37db Dialogs
+A 000a37e5 ExtCtrls
+A 000a37ef IDlgs
+A 000a37f6 3CommDlg
+A 000a3800 (ShlObj
+A 000a380a RegStr
+A 000a3812 ?WinInet
+A 000a381d UrlMon
+A 000a3826 WinHelpViewer
+A 000a3835 RHelpIntfs
+A 000a3848 MultiMon
+A 000a3853 Buttons
+A 000a385c )CheckLst
+A 000a3867 XGrids
+A 000a3876 5MaskUtils
+A 000a3882 nComCtrls
+A 000a388e ComStrs
+A 000a3898 ExtActns
+A 000a38a2 0Mapi
+A 000a38aa ExtDlgs
+A 000a38b3 8Registry
+A 000a38bf IniFiles
+A 000a38ca RichEdit
+A 000a38d5 ToolWin
+A 000a38df ListActns
+A 000a38ef wDBConsts
+A 000a38fa FComObj
+A 000a3903 qComConst
+A 000a390e rSqlTimSt
+A 000a3919 _DateUtils
+A 000a3925 dFMTBcd
+A 000a392f TlHelp32
+A 000a393a FileCtrl
+A 000a3945 UFileSearch
+A 000a3953 URandomizer
+A 000a3961 UTracer
+A 000a396b CommonTypes
+A 000a3979 UControlManager
+A 000a398a 6UMiscellaneous
+A 000a399c UFileManager
+A 000a39ab UStringManager
+A 000a39bc UConverter
+A 000a39c9 URegistryManager
+A 000a39dc RegistryConstants
+A 000a39f0 RunTimeParameters
+A 000a3a04 ProductConstants
+A 000a3a16 6MessageConstants
+A 000a3a2a Constants
+A 000a3a36 ULocaleManager
+A 000a3a47 USortableList
+A 000a3a56 5UTranslator
+A 000a3a64 1TranslatorResources
+A 000a3a7b UTranslationRegistry
+A 000a3a92 ShareMem
+U 0000c34f jjjjj
+U 0000c7c2 jjjj
+U 0001702b jjjj
+U 000239fd jjjjjjh
+U 0002b6b7  Ìjj
+U 0002b98e  Ìjj
+U 0002d3d4 jjjj
+U 0002f1f7 jjjj
+U 0002f62f jjjj
+U 00032d60 9-+,
+U 0003a27d jjjj
+U 0003af7a  Ìjj
+U 0003c189 jjjjj
+U 0003c2a3 jjjjj
+U 0003ca0d jjjj
+U 0003ca6a jjjj
+U 000434c2 jjjj
+U 000496bb jjjj
+U 0004cd9b jjjjj
+U 0004f35f jjjj
+U 00050c7a jjjj
+U 000518b6 jjjjj
+U 00052600 jjjjj
+U 00052659 jjjjj
+U 00052b5f jjh°
+U 000534e1 jjjjj
+U 0005470f jjjj
+U 00054c02 jjjj
+U 00054e36 jjjj
+U 00054eb3 jjjj
+U 00055313 jjh°
+U 00056584 jjjjj
+U 00057daf jjjj
+U 0005ab23 jjjj
+U 00077da2 BBABORT
+U 00077db2 BBALL
+U 00077dbe BBCANCEL
+U 00077dd0 BBCLOSE
+U 00077de0 BBHELP
+U 00077dee BBIGNORE
+U 00077e00 BBNO
+U 00077e0a BBOK
+U 00077e14 BBRETRY
+U 00077e24 BBYES
+U 00077e30 CDROM
+U 00077e3c CLOSEDFOLDER
+U 00077e56 CURRENTFOLDER
+U 00077e72 EXECUTABLE
+U 00077e88 FLOPPY
+U 00077e96 HARD
+U 00077ea0 KNOWNFILE
+U 00077eb4 NETWORK
+U 00077ec4 OPENFOLDER
+U 00077eda PREVIEWGLYPH
+U 00077efc SPINDOWN
+U 00077f0e SPINUP
+U 00077f1c UNKNOWNFILE
+U 00077f34 DLGTEMPLATE
+U 00077f4c DVCLAL
+U 00077f5a PACKAGEINFO
+U 0007a542 MS Sans Serif
+U 0007a57c .Method '%s' not supported by automation object/Variant does not reference an automation object7Dispatch methods do not support more than 64 parameters
+U 0007a6ac BCD overflow
+U 0007a6c6 %s is not a valid BCD value$Could not parse SQL TimeStamp string
+U 0007a748 Invalid SQL date/time values
+U 0007a7b2 Shift+
+U 0007a7c0 Ctrl+
+U 0007a7cc Alt+ Clipboard does not support Icons/Menu '%s' is already being used by another form
+U 0007a878 Docked control must have a name%Error removing control from dock tree
+U 0007a904  - Dock zone not found
+U 0007a932  - Dock zone has no control"Unable to find a Table of Contents
+U 0007a9b0 No help found for %s#No context-sensitive help installed$No topic-based help system installed
+U 0007aa6c OLE error %.8x
+U 0007aaaa &All
+U 0007aab4 N&o to All
+U 0007aaca Yes to &All
+U 0007aae2 BkSp
+U 0007aafc Enter
+U 0007ab08 Space
+U 0007ab14 PgUp
+U 0007ab1e PgDn
+U 0007ab30 Home
+U 0007ab3a Left
+U 0007ab4a Right
+U 0007ab56 Down
+U 0007ab82 &Retry
+U 0007ab90 Abort
+U 0007ab9c &All
+U 0007aba6 Cannot drag a form
+U 0007abcc Warning
+U 0007abdc Error
+U 0007abe8 Information
+U 0007ac00 Confirm
+U 0007ac10 &Yes
+U 0007ac28 Cancel
+U 0007ac36 &Help
+U 0007ac42 &Abort
+U 0007ac50 &Retry
+U 0007ac5e &Ignore
+U 0007ac8c )Cannot change Visible in OnShow or OnHide"Cannot make a visible window modal
+U 0007ad28 Menu index out of range
+U 0007ad58 Menu inserted twice
+U 0007ad80 Sub-menu is not in menu
+U 0007adb0 Not enough timers available@GroupIndex cannot be less than a previous menu item's GroupIndex5Cannot create form. No MDI forms are currently active*A control cannot have itself as its parent
+U 0007af32 Cancel
+U 0007af40 &Yes
+U 0007af52 &Help
+U 0007af5e &Close
+U 0007af6c &Ignore
+U 0007af9e Bitmap image is not valid
+U 0007afd2 Icon image is not valid!Cannot change the size of an icon
+U 0007b046 Unsupported clipboard format
+U 0007b080 Out of system resources
+U 0007b0b0 Canvas does not allow drawing
+U 0007b0ec Invalid image size
+U 0007b112 Invalid ImageList
+U 0007b136 Invalid ImageList Index)Failed to read ImageList data from stream(Failed to write ImageList data to stream$Error creating window device context
+U 0007b256 Error creating window class+Cannot focus a disabled or invisible window!Control '%s' has no parent window
+U 0007b32a Cannot hide an MDI Child Form
+U 0007b384 '<AutoRecord.Failed>Recording %s Failed.<<AutoRecord.NotActive>Auto recording has not been activated.4<AutoRecord.NoDesign>There are no designs to record.7<AutoRecord.ProblemFile>%s has been moved to %s folder.><AutoRecord.CannotChangeStatus>Cannot change the status of %s./<AutoRecord.InvalidDirectory>Invalid directory:;<AutoRecord.NoDesignFolder>Cannot access the target folder.;<AutoRecord.NoSourceFolder>Cannot access the source folder.6<AutoRecord.NoDBConnection>Cannot connect to database.K<AutoRecord.WrongSourceTarget>The source and target directory are the same.?<AutoRecord.SearchingFiles>Searching designs files to record..._<AutoRecord.StatusNoFound>The auto recording status is not found. Designs are recorded as <%s>.0<AutoRecord.ProgressForm.Caption>Design RecorderZ<AutoRecord.ProgressForm.RecordStarted>Design Recording started: Source = %s; Target = %s.B<AutoRecord.ProgressForm.RecordFinished>Design Recording finished.B<AutoRecord.ProgressForm.StatusMsg>Design Processed - %d out of %d
+U 0007bb80 ?<AutoRecord.OptionForm.AutoRecord>&Automatically Record Designs-<AutoRecord.OptionForm.Options>Record Optionsl<AutoRecord.OptionForm.FolderMessage>&Specify the folder that you want to automatically record designs from.'<AutoRecord.OptionForm.Browse>Browse...(<AutoRecord.OptionForm.Database>Database½<AutoRecord.OptionForm.OptionMesssage>Designs in the database must be uniquely named. When recording a design with the same name, choose the option which best depicts the desired behaviour.3<AutoRecord.OptionForm.OptionSkip>S&kip that Design?<AutoRecord.OptionForm.OptionUpdate>&Update the Existing DesignN<AutoRecord.OptionForm.ChooseDatabase>&Choose a database to record designs to.P<AutoRecord.OptionForm.DirectoryNotExist>The specified directory does not exist.F<AutoRecord.OptionForm.Status>Specify the status of &recorded designs.;<AutoRecord.DBEngineFailed>Failed to start database engine.8<AutoRecord.DBEngineStarting>Starting database engine...!<AutoRecord.Recorded>%s Recorded.
+U 0007c33a <AutoRecord.Skipped>%s Skipped.
+U 0007c37a <AutoRecord.Updated>%s Updated.
+U 0007c3da <Operator.Alternative.Like2>*$<Operator.Alternative.Range1>THROUGH!<Operator.Alternative.Range2>THRU
+U 0007c4a4 <Operator.Alternative.Range3>TO
+U 0007c4e4 <Operator.Value.Null>NULL
+U 0007c518 <Operator.Value.Empty>EMPTY
+U 0007c550 <Operator.Value.Blank>BLANKz<Engine.Confirm.ReallyFormatEmbroideryDisk>Are you sure you want to Format the disk in drive %1 as a "%2" Embroidery Disk?¡<Engine.Confirm.ReallyFormatNonABEmbroideryDisk>Are you REALLY sure? Drive %1 isn't usually a floppy disk drive. Are you sure you are formatting the right drive?&<ZipDesigns.Title>Create a Zip Archive
+U 0007c810 <ZipDesigns.Question>Do you want to create one archive to contain all the selected files, or create individual archives for each file?
+U 0007c91e <ZipDesigns.Decision.Single>One)<ZipDesigns.Decision.Multiple>Individuals#<ZipDesigns.Decision.Cancel>&Cancel
+U 0007c9fa <ZipFile.Confirm.CopyBack>The file "%1" from the zip archive "%2" has been modified. Do you want to update the copy in the archive?0<AutoRecord.OptionForm.Caption>Recording Designs
+U 0007cb84 1<Operator.Alternative.LessEqual3>NOT GREATER THAN+<Operator.Alternative.Greater1>GREATER THAN&<Operator.Alternative.Greater2>GREATER$<Operator.Alternative.Greater3>AFTER<<Operator.Alternative.GreaterEqual1>GREATER THAN OR EQUAL TO1<Operator.Alternative.GreaterEqual2>GREATER EQUAL1<Operator.Alternative.GreaterEqual3>NOT LESS THAN%<Operator.Alternative.Equal1>EQUAL TO#<Operator.Alternative.Equal2>EQUALS"<Operator.Alternative.Equal3>EQUAL
+U 0007cef6 <Operator.Alternative.Equal4>==,<Operator.Alternative.NotEqual1>NOT EQUAL TO"<Operator.Alternative.NotEqual2>!=)<Operator.Alternative.NotEqual3>NOT EQUAL#<Operator.Alternative.NotEqual4>NOT$<Operator.Alternative.Like1>CONTAINS
+U 0007d0de <Operator.Standard.Less><
+U 0007d112 <Operator.Standard.LessEqual><=
+U 0007d152 <Operator.Standard.Equal>=
+U 0007d188 <Operator.Standard.NotEqual><>
+U 0007d1c6 <Operator.Standard.Greater>>"<Operator.Standard.GreaterEqual>>=
+U 0007d246 <Operator.Standard.Like>LIKE)<Operator.Standard.StartsWith>STARTS WITH%<Operator.Standard.EndsWith>ENDS WITH
+U 0007d320 <Operator.Standard.Range>..'<Operator.Standard.RangeNonInclusive>__%<Operator.Alternative.Less1>LESS THAN <Operator.Alternative.Less2>LESS"<Operator.Alternative.Less3>BEFORE6<Operator.Alternative.LessEqual1>LESS THAN OR EQUAL TO+<Operator.Alternative.LessEqual2>LESS EQUAL
+U 0007d560 2<DataDictionary.PASP.RecordLocation>RecordLocation0<DataDictionary.PASP.ScalableIcons>ScalableIcons$<DataDictionary.PASP.Columns>Columns
+U 0007d674 <DataDictionary.PASP.Rows>Rows8<DataDictionary.PASP.ReservedPatternId>ReservedPatternId:<DataDictionary.PASP.ReservedDesignType>ReservedDesignType6<DataDictionary.PASP.RememberPassword>RememberPassword
+U 0007d808 <DataDictionary.Select>Select(<DataDictionary.Select.UniqueId>UniqueId
+U 0007d896 <DataDictionary.Select.Tab>Tab.<DataDictionary.Select.TabUniqueId>TabUniqueId)<About.Message.Copyright.1><<Copyright1>>)<About.Message.Copyright.2><<Copyright2>>)<About.Message.Copyright.3><<Copyright3>>r<About.Message.Warning.1>WARNING : This computer program is protected by copyright law and international treaties.Ü<About.Message.Warning.2>Unauthorised reproduction or distribution of this program or any part of it may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law.
+U 0007dcec )<DataDictionary.ItemChild.Deleted>Deleted%<DataDictionary.ItemParent>ItemParent,<DataDictionary.ItemParent.ParentId>ParentId0<DataDictionary.ItemParent.ParentName>ParentName%<DataDictionary.MultiLevel>MultiLevel,<DataDictionary.MultiLevel.SubItems>SubItems*<DataDictionary.MultiLevel.ClassId>ClassId.<DataDictionary.MultiLevel.ItemIndex>ItemIndex$<DataDictionary.MultiLevel.Text>Text*<DataDictionary.MultiLevel.Deleted>Deleted
+U 0007e044 <DataDictionary.PASP>PASP"<DataDictionary.PASP.UserId>UserId&<DataDictionary.PASP.UserName>UserName$<DataDictionary.PASP.Passwrd>Passwrd,<DataDictionary.PASP.AccessLevel>AccessLevel.<DataDictionary.PASP.RecordOption>RecordOption
+U 0007e22c *<DataDictionary.DSAD.ClassName2>ClassName2*<DataDictionary.DSAD.ClassName3>ClassName3*<DataDictionary.DSAD.ClassName4>ClassName4&<DataDictionary.DSAD.Discount>Discount,<DataDictionary.DSAD.CompanyLogo>CompanyLogo,<DataDictionary.DSAD.CompanyName>CompanyName2<DataDictionary.DSAD.CompanyAddress>CompanyAddress*<DataDictionary.DSAD.CompanyTel>CompanyTel*<DataDictionary.DSAD.CompanyFax>CompanyFax
+U 0007e544 <DataDictionary.DSGNCAT>DSGNCAT)<DataDictionary.DSGNCAT.UniqueId>UniqueId+<DataDictionary.DSGNCAT.ItemIndex>ItemIndex#<DataDictionary.ItemChild>ItemChild)<DataDictionary.ItemChild.ChildId>ChildId-<DataDictionary.ItemChild.ChildName>ChildName+<DataDictionary.ItemChild.ParentId>ParentId
+U 0007e7a0 +<DataDictionary.Designs.JumpCount>JumpCount-<DataDictionary.Designs.TrimsCount>TrimsCount+<DataDictionary.Designs.TrimJumps>TrimJumps)<DataDictionary.Designs.LockedBy>LockedBy%<DataDictionary.DesThreads>DesThreads,<DataDictionary.DesThreads.UniqueId>UniqueId$<DataDictionary.DesThreads.Stop>Stop(<DataDictionary.DesThreads.Stitch>Stitch,<DataDictionary.DesThreads.UpThread>UpThread&<DataDictionary.DesThreads.Color>Color$<DataDictionary.DesThreads.Code>Code2<DataDictionary.DesThreads.Description>Description&<DataDictionary.DesThreads.Brand>Brand*<DataDictionary.DesThreads.Density>Density
+U 0007ec40 <DataDictionary.DSAD>DSAD*<DataDictionary.DSAD.ClassName1>ClassName1
+U 0007ece8 )<DataDictionary.Designs.Customer>Customer%<DataDictionary.Designs.Fabric>Fabric!<DataDictionary.Designs.Hoop>Hoop'<DataDictionary.Designs.Machine>Machine+<DataDictionary.Designs.LastUsedD>LastUsedD+<DataDictionary.Designs.MediaType>MediaType)<DataDictionary.Designs.FileType>FileType%<DataDictionary.Designs.Repeat>Repeat!<DataDictionary.Designs.Misc>Misc%<DataDictionary.Designs.Review>Review+<DataDictionary.Designs.Copyright>Copyright-<DataDictionary.Designs.DesignDate>DesignDate'<DataDictionary.Designs.Puncher>Puncher+<DataDictionary.Designs.RecordedD>RecordedD-<DataDictionary.Designs.LastChange>LastChange%<DataDictionary.Designs.Thread>Thread
+U 0007f220 )<DataDictionary.Designs.MaxAreaL>MaxAreaL)<DataDictionary.Designs.MaxAreaR>MaxAreaR)<DataDictionary.Designs.MaxAreaB>MaxAreaB)<DataDictionary.Designs.MaxAreaT>MaxAreaT'<DataDictionary.Designs.OriginX>OriginX'<DataDictionary.Designs.OriginY>OriginY1<DataDictionary.Designs.MaxStitchLen>MaxStitchLen1<DataDictionary.Designs.MinStitchLen>MinStitchLen-<DataDictionary.Designs.MaxJumpLen>MaxJumpLen
+U 0007f536 <DataDictionary.Designs.ATH>ATH#<DataDictionary.Designs.Filed>Filed%<DataDictionary.Designs.Locked>Locked/<DataDictionary.Designs.OfflinePath>OfflinePath/<DataDictionary.Designs.UnderThread>UnderThread1<DataDictionary.Designs.CurrentStage>CurrentStage%<DataDictionary.Designs.BitMap>BitMap
+U 0007f798 )<DataDictionary.Customers.Deleted>Deleted
+U 0007f7ee <DataDictionary.Designs>Designs)<DataDictionary.Designs.UniqueId>UniqueId+<DataDictionary.Designs.PatternId>PatternId'<DataDictionary.Designs.AltName>AltName-<DataDictionary.Designs.DesignType>DesignType/<DataDictionary.Designs.Description>Description#<DataDictionary.Designs.Note1>Note1+<DataDictionary.Designs.DesignRef>DesignRef%<DataDictionary.Designs.Stitch>Stitch!<DataDictionary.Designs.Stop>Stop#<DataDictionary.Designs.Color>Color#<DataDictionary.Designs.AreaX>AreaX#<DataDictionary.Designs.AreaY>AreaY)<DataDictionary.Designs.Applique>Applique-<DataDictionary.Designs.TotalPrice>TotalPrice
+U 0007fcbc *<DataDictionary.DMCatLnk.CategLnk>CategLnk!<DataDictionary.DMCatgry>DMCatgry.<DataDictionary.DMCatgry.ClassGroup>ClassGroup,<DataDictionary.DMCatgry.EntryCode>EntryCode.<DataDictionary.DMCatgry.ParentCode>ParentCode,<DataDictionary.DMCatgry.CategName>CategName!<DataDictionary.DMSsqnce>DMSsqnce(<DataDictionary.DMSsqnce.UniqKey>UniqKey.<DataDictionary.DMSsqnce.StSequence>StSequence(<DataDictionary.DMSsqnce.Element>Element#<DataDictionary.Customers>Customers'<DataDictionary.Customers.CustId>CustId#<DataDictionary.Customers.Name>Name)<DataDictionary.Customers.Address>Address!<DataDictionary.Customers.Tel>Tel!<DataDictionary.Customers.Fax>Fax
+U 000801e8 ,<DataDictionary.DMMaster.TrimCount>TrimCount,<DataDictionary.DMMaster.TrimJumps>TrimJumps&<DataDictionary.DMMaster.Online>Online.<DataDictionary.DMMaster.OnlinePath>OnlinePath*<DataDictionary.DMMaster.FileName>FileName(<DataDictionary.DMMaster.FileExt>FileExt.<DataDictionary.DMMaster.OfflineDsk>OfflineDsk.<DataDictionary.DMMaster.OfflinFile>OfflinFile.<DataDictionary.DMMaster.SysOfflDsk>SysOfflDsk.<DataDictionary.DMMaster.SysOfflTyp>SysOfflTyp"<DataDictionary.DMMaster.Icon>Icon!<DataDictionary.DmSValsD>DmSValsD,<DataDictionary.DmSValsD.FieldName>FieldName.<DataDictionary.DmSValsD.FieldValue>FieldValue!<DataDictionary.DMCatLnk>DMCatLnk,<DataDictionary.DMCatLnk.DesignLnk>DesignLnk
+U 00080768 ,<DataDictionary.DMMaster.RecordedD>RecordedD.<DataDictionary.DMMaster.LastChange>LastChange&<DataDictionary.DMMaster.Fabric>Fabric"<DataDictionary.DMMaster.Hoop>Hoop&<DataDictionary.DMMaster.Thread>Thread,<DataDictionary.DMMaster.TotBobbin>TotBobbin"<DataDictionary.DMMaster.Left>Left$<DataDictionary.DMMaster.Right>Right <DataDictionary.DMMaster.Top>Top&<DataDictionary.DMMaster.Bottom>Bottom"<DataDictionary.DMMaster.EndX>EndX"<DataDictionary.DMMaster.EndY>EndY(<DataDictionary.DMMaster.Machine>Machine,<DataDictionary.DMMaster.MaxStitch>MaxStitch,<DataDictionary.DMMaster.MinStitch>MinStitch,<DataDictionary.DMMaster.JumpCount>JumpCount
+U 00080c88 *<DataDictionary.DMMaster.StitchNo>StitchNo(<DataDictionary.DMMaster.StopsNo>StopsNo*<DataDictionary.DMMaster.ColorsNo>ColorsNo&<DataDictionary.DMMaster.Height>Height$<DataDictionary.DMMaster.Width>Width,<DataDictionary.DMMaster.Appliques>Appliques&<DataDictionary.DMMaster.Repeat>Repeat$<DataDictionary.DMMaster.Notes>Notes,<DataDictionary.DMMaster.Miscellan>Miscellan&<DataDictionary.DMMaster.Review>Review*<DataDictionary.DMMaster.Customer>Customer$<DataDictionary.DMMaster.Price>Price,<DataDictionary.DMMaster.Copyright>Copyright.<DataDictionary.DMMaster.DesignDate>DesignDate(<DataDictionary.DMMaster.Puncher>Puncher,<DataDictionary.DMMaster.LastUsedD>LastUsedD
+U 000811de <Product.String.TD.Copyright.3>TrueView
+U 0008122e  is a trademark of Wilcom Pty Ltd. All rights reserved. This program uses international format EMB files.U<Product.String.BP.Copyright.1>Copyright © 2001 Barudan Co. Ltd. All rights reserved.Ä<Product.String.BP.Copyright.2>Stitch Processor in this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved.
+U 00081538 <Product.String.BP.Copyright.3>TrueView
+U 00081588  is a trademark of Wilcom Pty Ltd. All rights reserved. This program uses international format EMB files.z<Product.String.OE.Copyright.1>Copyright © 2001 OESD Inc. USA. - Oklahoma Embroidery Supply & Design. All rights reserved.Ì<Product.String.OE.Copyright.2>Stitch Processor portion of this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved._<Product.String.OE.Copyright.3>TrueView
+U 0008193c  is a trademark of Wilcom Pty Ltd. All rights reserved.P<Product.String.JN.Copyright.1>Copyright © 2001 Janome Inc. All rights reserved.Ì<Product.String.JN.Copyright.2>Stitch Processor portion of this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved.c<Product.String.JN.Copyright.3>ArtisticView
+U 00081c40  is a trademark of Wilcom Pty Ltd. All rights reserved.!<DataDictionary.DMMaster>DMMaster(<DataDictionary.DMMaster.UniqKey>UniqKey,<DataDictionary.DMMaster.Selection>Selection*<DataDictionary.DMMaster.DesignId>DesignId*<DataDictionary.DMMaster.Descript>Descript,<DataDictionary.DMMaster.DesignRef>DesignRef
+U 00081ec4 )<Product.String.OE.TrueView>Artistic View)<Product.String.JN.TrueView>Artistic ViewT<Product.String.ES.Copyright.1>Copyright © 2003 Wilcom Pty Ltd. All rights reserved.Ä<Product.String.ES.Copyright.2>Stitch Processor in this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved._<Product.String.ES.Copyright.3>TrueView
+U 000821f2  is a trademark of Wilcom Pty Ltd. All rights reserved.k<Product.String.BE.Copyright.1>Copyright © 1997-2003 Wilcom Pty Ltd, Sydney Australia. All rights reserved.Ì<Product.String.BE.Copyright.2>Stitch Processor portion of this product is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved.
+U 000824d4 <Product.String.BE.Copyright.3>T<Product.String.DG.Copyright.1>Copyright © 2001 Wilcom Pty Ltd. All rights reserved.Ä<Product.String.DG.Copyright.2>Stitch Processor in this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved.
+U 00082748 <Product.String.DG.Copyright.3>TrueView
+U 00082798  is a trademark of Wilcom Pty Ltd. All rights reserved. This program uses international format EMB files.T<Product.String.ML.Copyright.1>Copyright © 2001 Wilcom Pty Ltd. All rights reserved.Ä<Product.String.ML.Copyright.2>Stitch Processor in this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved.
+U 00082aa0 <Product.String.ML.Copyright.3>TrueView
+U 00082af0  is a trademark of Wilcom Pty Ltd. All rights reserved. This program uses international format EMB files.T<Product.String.TD.Copyright.1>Copyright © 2001 Wilcom Pty Ltd. All rights reserved.Ä<Product.String.TD.Copyright.2>Stitch Processor in this program is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029491, European Patent No. EP 0221163. All rights reserved.
+U 00082e1a <Mapper.Log.Start>Start
+U 00082e4a <Mapper.Log.Finished>Finished$<Mapper.Log.Erased>Erased table "%1"+<Mapper.Log.SelectingSQL>Selecting SQL "%1"/<Mapper.Log.SelectingTable>Selecting Table "%1"#<Mapper.Log.Running>Running... "%1"1<Mapper.Prompt.SelectingRecords>Selecting records2<EnforceDataDictionary.Process>Validating DatabaseJ<EnforceDataDictionary.PromptNoRebuild>Validating Database Structure (%1%)`<EnforceDataDictionary.PromptYesRebuild>Validating Database Structure & Rebuilding Indices (%1%)%<Product.String.ES.TrueView>True View%<Product.String.DG.TrueView>True View%<Product.String.ML.TrueView>True View%<Product.String.TD.TrueView>True View)<Product.String.BE.TrueView>Artistic View%<Product.String.BP.TrueView>True View
+U 000833e0 8<Mapper.Error.NoFieldInTable>No field "%1" in table "%2" <Mapper.Log.Error.Prefix>##ERROR<<Mapper.Log.Error.CantGetBitmap>Couldn't get bitmap for "%1"E<Mapper.Log.Error.CantGetDesignName>Couldn't get design name for "%1"@<Mapper.Log.Error.CantGetFileSize>Couldn't get file size of "%1"><Mapper.Log.Error.CantCopyFile>Couldn't copy file "%1" to "%2"E<Mapper.Log.Error.CantGetLiteralValue>Couldn't get literal value "%1"A<Mapper.Log.Error.CantGetFieldValue>Couldn't get field value "%1"M<Mapper.Log.Error.CantFindFieldInTable>Couldn't find field "%1" in table "%2"2<Mapper.Log.Error.Unexpected>Unexpected error "%1"a<Mapper.Log.Error.CheckForLCK>Check for outdated .LCK and .NET files and ensure exclusive access.q<Mapper.Log.Error.CheckForWritePermission>Make sure you have write permission in the old database directory "%1".
+U 00083a56 <Mapper.Log.Error.ConsiderUsingBDE>If you are using the Microsof Data Acess Components, then try again but choose the Borland Database Engine. <Mapper.Log.Success>Success "%1"
+U 00083bb6 <Mapper.Log.Failed>Failed  "%1"
+U 00083bf6 <Mapper.Log.Aborted>**Aborted**
+U 00083c56 <Search.Special.Year>Year;<ListItem.Title.DeleteOrReplace>Delete List Item References
+U 00083d02 <ListItem.Question.DeleteOrReplace>Do you want to delete the old references to the item "%1" completely or replace them with another value?%<ListItem.Decision.DeleteItem>&Delete*<ListItem.Decision.ReplaceItem>&Replace... <ListItem.Decision.Cancel>CancelK<AllowWideStrings.Decision.Title>Multi-Byte (Unicode) Character Set SupportÆ<AllowWideStrings.Decision.Question>Click "Support" if you want to be able to store multi-byte (unicode) characters (like Japanese, Chinese, etc...) in the database. Click "No Support" if you don't.(<AllowWideStrings.Decision.Allow>Support.<AllowWideStrings.Decision.Disallow>No Support)<AllowWideStrings.Decision.Cancel>&CancelC<Mapper.Message.UnrecognizedKeyword>Unrecognised keyword "%1", [%2][<Mapper.Message.CantConnectToDatabase>Can't connect to the database "%2" on the server "%1" <Mapper.Action.Updating>Updating
+U 000843aa <Mapper.Action.Mapping>Mapping:<Mapper.Error.CantCopyFile>Couldn't copy file "%1" to "%2"
+U 0008447e <Export.Decision.Cancel>Cancel'<FileDrag.Title.MoveOrCopy>Move or CopyX<FileDrag.Question.MoveOrCopy>Do you want move the designs to "%1" or make copies there?
+U 000845be <FileDrag.Decision.Move>&Move
+U 000845fa <FileDrag.Decision.Copy>&Copy <FileDrag.Decision.Cancel>Cancel&<Access.Denied.Read>**NO READ ACCESS**(<Access.Denied.Write>**NO WRITE ACCESS**
+U 00084718 <Search.Special.Today>Today!<Search.Special.Tomorrow>Tomorrow#<Search.Special.Yesterday>Yesterday
+U 000847dc <Search.Special.Last>Last
+U 00084810 <Search.Special.This>This
+U 00084844 <Search.Special.Next>Next
+U 00084878 <Search.Special.Week>Week
+U 000848ac <Search.Special.Month>Month
+U 00084904 1<ChooseServer.Label.UseNTSecurity>Use NT Security!<ChooseLocale.Title>Choose Locale-<ChooseLocale.Label.Locales>Installed Locales.<ChooseLocale.Label.Default>Use Default Locale.<FileDescription.Udl>Microsoft Data Link Files <FileDescription.Text>Text Files:<Administration.Title.CompleteRefresh>Validate and Refresh
+U 00084b7e <Administration.Question.CompleteRefresh>Do you want to force a complete refresh or only generate those files which are missing or out of date?'<Administration.Decision.Cancel>&Cancel*<Administration.Decision.Complete>Complete(<Administration.Decision.Missing>MissingM<Administration.Message.ItemExists>The item "%1" already exists in this list!-<Export.Title.TABorCSV>Export to File Optionsk<Export.Question.TABorCSV>Do you want to export in a TAB delimited or a Comma delimited (for Excel) format?
+U 00084f66 <Export.Decision.TAB>&TABs
+U 00084f9c <Export.Decision.CSV>&Commas
+U 00084ff4 "<EditTableForm.Label.Values>Values
+U 0008503c <EditTableForm.Button.Add>&Add&<EditTableForm.Button.Delete>Delete...(<EditTableForm.Button.Replace>Replace...+<EditTableForm.Button.AddChild>Add "&Child""<EditTableForm.Button.Edit>&Rename-<EditTableForm.Edit.Caption>Enter a New Value$<EditTableForm.Edit.Prompt>New Value&<EditTableForm.Button.Import>Import...&<EditTableForm.Button.Export>Export...+<EditTableForm.Button.NoParent>&No "Parent"8<EditStatusForm.Button.BackgroundColor>&Background Color!<ChooseServer.Title>Choose Server*<ChooseServer.Label.ServerName>Server Name&<ChooseServer.Label.UserName>User Name%<ChooseServer.Label.Password>Password
+U 0008551a <Sort.SortBy.Status>Status
+U 00085550 <Sort.Label.SortBy>Sort By
+U 00085586 <Sort.Label.AndThen>And Then By
+U 000855c6 <Sort.Label.Ascending>Ascending!<Sort.Label.Descending>Descending)<SelectFormMultiple.Title>Select Multiple'<SelectFormMultiple.Label.Values>Values+<SelectFormMultiple.Label.Selected>Selected'<SelectFormMultiple.Button.SelectOne>&>'<SelectFormMultiple.Button.SelectAll>>>'<SelectFormMultiple.Button.RemoveOne>&<'<SelectFormMultiple.Button.RemoveAll><<%<SelectFormSingle.Title>Select Single%<SelectFormSingle.Label.Values>Values
+U 0008591e <EditTableForm.Title>Edit List <EditTableForm.Label.Value>Value
+U 000859be <Sort.Title>Sort
+U 000859e0 <Sort.SortBy.None>None
+U 00085a0e <Sort.SortBy.Name>Design Name'<Sort.SortBy.DateDesigned>Date Designed'<Sort.SortBy.DateRecorded>Date Recorded
+U 00085aea <Sort.SortBy.Customer>Customer
+U 00085b28 <Sort.SortBy.Stitches>Stitches
+U 00085b66 <Sort.SortBy.Colors>Colors
+U 00085b9c <Sort.SortBy.Height>Height
+U 00085bd2 <Sort.SortBy.Width>Width$<Sort.SortBy.TypeOfWork>Type Of Work
+U 00085c4e <Sort.SortBy.Type>File Type
+U 00085c86 <Sort.SortBy.Size>File Size
+U 00085cbe <Sort.SortBy.Location>File Name$<Sort.SortBy.Description>Description
+U 00085d48 <Sort.SortBy.Version>Version
+U 00085da0  <Search.Label.Customer>C&ustomer*<Search.Label.Miscellaneous>&Miscellaneous
+U 00085e3a <Search.Label.Price>&Price%<Search.Label.Recorded>Date &Recorded"<Search.Label.Digitizer>Di&gitizer#<Search.Label.Location>Design &File
+U 00085f4a <Search.Label.Version>&Version&<Search.Label.Description>D&escription$<Search.Label.Classified>Classi&fied
+U 00086020 <Search.Label.Notes>&Notes><Search.Label.OR>&1. Designs which match any of these criteria?<Search.Label.AND>&2. Designs which match all of these criteriaH<Search.Label.NOTANY>&3. Designs which don't match any of these criteriaS<Search.Label.NOTALL>&4. All designs except those which match all of these criteria
+U 0008628e <Search.Button.Browse>...
+U 000862c2 <Search.Button.Clear>Reset
+U 0008631a <Search.Label.Stops>S&tops
+U 00086350 <Search.Label.Height>&Height
+U 0008638a <Search.Label.Width>&Width%<Search.Label.Designed>Date &Designed"<Search.Label.Appliques>&Appliques
+U 00086452 <Search.Label.Repeat>&Repeat!<Search.Label.LastUsed>Last &Used
+U 000864d0 <Search.Label.Review>&Review
+U 0008650a <Search.Label.Design>&Design"<Search.Label.Reference>&Reference <Search.Label.Category>&Category <Search.Label.Keywords>&Keywords&<Search.Label.TypeOfWork>Type Of &Work"<Search.Label.DesignGroup>Catalo&g
+U 000866a2 <Search.Label.Status>&Status
+U 000866dc <Search.Label.License>&License
+U 00086738 &<Record.Label.Description>&Description <Record.Label.Customer>C&ustomer"<Record.Label.Reference>Re&ference <Record.Label.Category>&Category <Record.Label.Keywords>&Keywords&<Record.Label.TypeOfWork>Type Of &Work
+U 000868e2 <Record.Label.Status>&Status"<Record.Label.DesignGroup>Catalo&g
+U 00086962 <Record.Label.License>L&icense*<Record.Label.Miscellaneous>&Miscellaneous
+U 000869f6 <Record.Label.Notes>&Notes"<Record.Label.Digitizer>Di&gitizerT<Record.Message.DBNotAvailable>This database is not available for recording designs.
+U 00086b1c <Search.Title>Search Database <Search.Label.Stitches>&Stitches
+U 00086b9a <Search.Label.Colors>&Colors
+U 00086bf4  <Record.Label.Databases>Database
+U 00086c38 <Record.Label.Design>Design
+U 00086c70 <Record.Label.Stitches>Stitches
+U 00086cb0 <Record.Label.Colors>Colors
+U 00086ce8 <Record.Label.Stops>Stops
+U 00086d1c <Record.Label.Height>Height
+U 00086d54 <Record.Label.Width>Width$<Record.Label.Designed>Date Designed"<Record.Label.Appliques>&Appliques
+U 00086e18 <Record.Label.Repeat>&Repeat
+U 00086e52 <Record.Label.Thread>&Thread
+U 00086e8c <Record.Label.Fabric>&Fabric
+U 00086ec6 <Record.Label.Hoop>&Hoop
+U 00086ef8 <Record.Label.Price>&Price
+U 00086f2e <Record.Label.Review>Re&view%<Record.Label.LastChange>&Last Change
+U 00086fd4 G<PropertiesDatabase.ButtonHint.PreviousDesign>Go to the previous design?<PropertiesDatabase.ButtonHint.LastDesign>Go to the last designN<PropertiesDatabase.ButtonHint.SlideShowForwards>Start the slide show forwards@<PropertiesDatabase.ButtonHint.SlideShowStop>Stop the slide showQ<PropertiesDatabase.ButtonHint.SlideShowBackwards>Start the slide show in reverseM<PropertiesDatabase.ButtonHint.SlideShowFaster>Make the slide show run fasterM<PropertiesDatabase.ButtonHint.SlideShowSlower>Make the slide show run slowerI<PropertiesDatabase.ButtonHint.Print>Print the properties for this design+<PropertiesDatabase.Label.Selected>SelectedR<PropertiesDatabase.ButtonHint.FirstSelectedDesign>Go to the first selected designP<PropertiesDatabase.ButtonHint.NextSelectedDesign>Go to the next selected designX<PropertiesDatabase.ButtonHint.PreviousSelectedDesign>Go to the previous selected designP<PropertiesDatabase.ButtonHint.LastSelectedDesign>Go to the last selected design
+U 0008776a <Record.Title>Record Designs
+U 000877a4 <Record.Button.Clear>Clear
+U 000877da <Record.Button.Browse>...
+U 0008782c -<Administration.Report.ImageFiles>Image Filesa<Administration.Report.NotValid>This is not a valid design database. (It has not been formatted)."<HtmlCatalog.Title>Publish Options
+U 00087994 <HtmlCatalog.Scale>Scale (%)
+U 000879ce <HtmlCatalog.Rows>Rows
+U 000879fc <HtmlCatalog.Cols>Columns
+U 00087a30 <HtmlCatalog.Detailed>Detailed"<HtmlCatalog.CatalogName>File Name)<PrintCatalog.Title>Print Designs Options
+U 00087b08 <PrintCatalog.Scale>Scale (%)
+U 00087b44 <PrintCatalog.Detailed>Summary(<Caption.RecordFromCSV>Choose a CSV File,<Caption.SelectADirectory>Select a Directory$<PropertiesDatabase.Title>PropertiesA<PropertiesDatabase.ButtonHint.FirstDesign>Go to the first design?<PropertiesDatabase.ButtonHint.NextDesign>Go to the next design
+U 00087d9c "<Administration.Report.Other>Other"<Administration.Report.Total>TOTAL0<Administration.Report.NotLoggedIn>Not logged in1<Administration.Report.NotConnected>Not connected0<Administration.Report.UdlFileName>UDL File Namem<Administration.Report.NotAdministrator>Only administrators are allowed to view the remainder of this summaryA<Administration.Report.RecordingPreferences>Recording Preferences-<Administration.Report.FileAction>File Action-<Administration.Report.NameAction>Name Action3<Administration.Report.FileLocations>File Locations&<Administration.Report.Designs>Designs,<Administration.Report.Thumbnails>Thumbnails/<Administration.Report.TrueViews><<True View>>s-<Administration.Report.StitchOuts>Stitch Outs&<Administration.Report.Artwork>Artwork1<Administration.Report.MachineFiles>Machine Files
+U 0008840a <StitchOptions.Machine>Machine
+U 00088448 <StitchOptions.Format>Format
+U 00088482 <StitchOptions.Error.NoMachines>It doesn't look like you have setup any machines in the Designer. Setup a machine and try again.
+U 00088584 <Format.Title>Format Disk
+U 000885b8 <Format.Disk>Disk
+U 000885dc <Format.Format>Format
+U 00088608 <Format.Confirm.AreYouSure>Are you sure you want to format "%1" to be a "%2" disk? ALL data already on the disk will be lost. There is no undo.¤<Message.DesignEditorVersion>%1 needs to know which version of %2 you using. Please check the "Help About" from %3. You must enter the number AND letter (eg. 8.0A).2<Caption.DesignEditorVersion>Design Editor VersionB<Prompt.DesignEditorVersion>Please enter the Design Editor Versionµ<Message.BadDesignEditorVersion>Since you didn't provide the vesion number for the Design Editor, some features might not be available. You will be asked again next time you run %1.¬<Message.OverrideDesignEditorVersion>You can also override the version question by adding a command line parameter to your shortcut command. For example "%1 version=8.0A"'.&<Caption.Administration>AdministrationI<Administration.Message.BackupDirectory>Choose a directory for the backupJ<Administration.Message.RestoreDirectory>Choose a directory for the backup(<Administration.Report.Licensed>Licensed
+U 00088e0c 0<DatabaseDirectories.StitchOuts>Stitch Out Files*<DatabaseDirectories.Artwork>Artwork Files/<DatabaseDirectories.MachineFiles>Machine Files+<DatabaseDirectories.ImageFiles>Image Files,<DatabaseDirectories.Synchronize>Synchronize
+U 00088fd8 <DatabaseDirectories.WarningMessage>Some of these directories cannot be created. Make sure they will be available when designs are recorded in the future.!<PunchOptions.Title>Punch Options
+U 00089152 <PunchOptions.Machine>Machine
+U 0008918e <PunchOptions.Error.NoMachines>It doesn't look like you have setup any punching machines in the Designer. Setup a machine and try again."<ConvertForm.Title>Convert Options-<ConvertForm.Label.Path>Destination Directory <ConvertForm.Label.Format>Format
+U 00089384 <ConvertForm.Button.Browse>...*<CustomFileMaskForm.Title>Custom File Mask#<CustomFileMaskForm.Label.Mask>Mask#<StitchOptions.Title>Stitch Options
+U 000894c8 (<ChangePassword.NewPassword>New PasswordX<ChangePassword.PasswordsDontMatch>Sorry, the two new passwords aren't exactly the same.'<UserPreferences.Title>User Preferences)<UserPreferences.IconScale>Icon Scale (%)9<UserPreferences.CreateOfflineFiles>Cache Thumbnail Files2<UserPreferences.HighlightInFull>Highlight in Full5<UserPreferences.RememberPasswords>Remember Passwords8<UserPreferences.ShowMissingDesigns>Show Missing DesignsK<UserPreferences.UseTempForCache>Use your "TEMP" directory for cached files;<UserPreferences.DoubleClickOpens>Double Click Opens DesignD<UserPreferences.DoubleClickProperties>Double Click Shows Properties/<DatabaseDirectories.Title>Database DirectoriesL<DatabaseDirectories.MoveExistingDesigns>Copy All Designs to These Locations)<DatabaseDirectories.Designs>Design Files/<DatabaseDirectories.Thumbnails>Thumbnail Files2<DatabaseDirectories.TrueViews><<True View>> Files
+U 00089bf8 )<ValidateOptions.TabSheet.Options>Options%<ValidateOptions.TabSheet.Scope>Scope%<AccessLevel.LogonCaption>Logon To %1
+U 00089ce6 <AccessLevel.UserName>User Name
+U 00089d26 <AccessLevel.Password>Password+<Administration.Caption>User Administration
+U 00089dbc <Administration.Button.Add>&Add!<Administration.Button.Edit>&Edit%<Administration.Button.Delete>&Delete!<UserDetails.Caption>User Details
+U 00089ed0 <UserDetails.User>User Name%<UserDetails.AccessLevel>Access Level*<UserDetails.Password>Password (Encrypted)-<UserDetails.LicensedDesigns>Licensed Designs'<ChangePassword.Caption>Change Password(<ChangePassword.OldPassword>Old Password
+U 0008a0c8 .<RecordingOptions.TabSheet.Images>Images Files
+U 0008a128 <RecordingOptions.MachineFilesIntro>Stitch files for specific machine formats can be created as Designs are recorded to the database.,<RecordingOptions.MachineFiles>Machine Files¶<RecordingOptions.AutoImageDesc1>Create palletised 1:1 scale image files of embroidery designs, with the properties; 256 colors, 1st pallet color generated from the background color;
+U 0008a3fc <RecordingOptions.AutoImageDesc2>colors are displayed in color stop sequence. This non-TrueView
+U 0008a4bc  simulation image is commonly used in your 3rd party software0<RecordingOptions.AutomaticImage>Automatic Image/<RecordingOptions.ImageFormat>Image File Format-<RecordingOptions.AutomaticBMP>*.BMP - Bitmap@<RecordingOptions.AutomaticPNG>*.PNG - Portable Network Graphics3<ValidateOptions.Title>Validate and Refresh Options/<ValidateOptions.Information>Design Information&<ValidateOptions.Thumbnails>Thumbnails)<ValidateOptions.TrueViews><<True View>>s+<ValidateOptions.MachineFiles>Machine Files1<ValidateOptions.Missing>Missing Information Only*<ValidateOptions.Complete>Complete Refresh
+U 0008a976 <PrintPreview.Close>Close)<RecordingOptions.Title>Recording Options¹<RecordingOptions.DesignNameIntro>Designs in the database must be uniquely named. When recording a design with the same name, choose the option which best depicts the desired behaviour.L<RecordingOptions.DesignName>When a design in the database has the same name<<RecordingOptions.DesignFile>Location of the recorded design.<RecordingOptions.Rename>Rename the New Design'<RecordingOptions.Skip>Skip that Design(<RecordingOptions.AskMe>Ask Me Each Time6<RecordingOptions.Overwrite>Update the Existing Design@<RecordingOptions.Copy>Copy Design Files to Database Directories@<RecordingOptions.Move>Move Design Files to Database Directories=<RecordingOptions.Leave>Leave the Design Files where they are&<RecordingOptions.TabSheet.Names>Names3<RecordingOptions.TabSheet.DesignFiles>Design Files5<RecordingOptions.TabSheet.MachineFiles>Machine Files2<RecordingOptions.TabSheet.Directories>Directories
+U 0008b11c #<PrintOptions.Customize.Brand>Brand0<PrintOptions.Customize.ElementName>Element Name=<PrintOptions.Customize.ColorInSummary>Show Colors in Summary1<PrintOptions.Customize.UseLeftSide>Use Left Side-<PrintOptions.Colorway.Title>Colorway Options;<PrintOptions.Colorway.SelectedColorways>Selected Colorways
+U 0008b37c <PrintOptions.Hoop>Hoop
+U 0008b3ac <PrintOptions.Picture>Picture$<PrintOptions.ZoomActual>Actual Size#<PrintOptions.ZoomToFit>Fit To Page9<PrintPreview.Title>Print Catalog Preview - Page %d of %d <PrintPreview.Printer>Printer..."<PrintPreview.Settings>Settings... <PrintPreview.Previous>&Previous
+U 0008b5b8 <PrintPreview.Next>&Next
+U 0008b5ea <PrintPreview.Print>Print
+U 0008b63c (<PrintOptions.CustomerName>Customer Name"<PrintOptions.ColorFilm>Color Film,<PrintOptions.Worksheet>Production Worksheet(<PrintOptions.Summary>Production Summary(<PrintOptions.SaveAsDefault>Save Default'<PrintOptions.Customize.Title>Customize3<PrintOptions.Customize.BlockToPrint>Block to Print8<PrintOptions.Customize.Columns>Columns in Stop Sequence4<PrintOptions.Customize.StartFrom>Left/Right/Up/Down#<PrintOptions.Customize.End>End X/Y-<PrintOptions.Customize.MaxMin>Max/Min Stitch5<PrintOptions.Customize.ThreadChart>Thread Chart Type0<PrintOptions.Customize.ThreadUsage>Thread Usage0<PrintOptions.Customize.TotalBobbin>Total Bobbin0<PrintOptions.Customize.StitchCount>Stitch Count2<PrintOptions.Customize.NeedleNumber>Needle Number
+U 0008bc26 <PrintOptions.Zoom1>&1.0
+U 0008bc58 <PrintOptions.ZoomAll>Show &All$<PrintOptions.ZoomCustom>&Custom (%)'<PrintOptions.StandardGraphics>Standard-<PrintOptions.PrintInEnglish>Print In English
+U 0008bd8e <PrintOptions.Drawings>Drawings#<PrintOptions.Background>Background)<PrintOptions.CropToDesign>Crop to Design(<PrintOptions.DraftQuality>Draft Quality$<PrintOptions.TrueView><<True View>>
+U 0008bf06 <PrintOptions.Outlines>Outlines
+U 0008bf46 <PrintOptions.Stitches>Stitches&<PrintOptions.NeedlePoint>Needle Point#<PrintOptions.Connectors>Connectors&<PrintOptions.FunctionSymbols>Function2<PrintOptions.ExtentsBox>Extents Box Around Design
+U 0008c0f0 +<DirectoryLabel.MyNetwork>My Network Places(<DirectoryLabel.MyDatabases>My Databases,<DirectoryLabel.EntireNetwork>Entire Network
+U 0008c1f6 <PrintDialog.Options>Options...!<PrintOptions.Title>Print Options5<PrintOptions.InformationToPrint>Information to Print
+U 0008c2e6 <PrintOptions.Zoom>Zoom
+U 0008c316 <PrintOptions.Graphics>Graphics
+U 0008c356 <PrintOptions.General>General(<PrintOptions.FullInfo>&Full Information*<PrintOptions.ShortInfo>&Short Information)<PrintOptions.StopSequence>Stop Se&quence
+U 0008c48e <PrintOptions.None>&None$<PrintOptions.Customize>Customize...#<PrintOptions.Colorway>Colorways...)<PrintOptions.AllColorways>A&ll Colorways
+U 0008c5c4 V<Message.DeleteUDLFile>Do you also want to permanently delete the Data Link File "%1"?J<Message.StillProcessing>Sorry, the last command is still being processed.5<Message.ErrorContinue>"%1". Do you want to continue?^<Message.OnlyOneInstanceAllowed>There is already an instance of "%1" running on this computer.L<Message.DeleteDirectory>Are you sure you want to delete the directory "%1"?4<Message.CouldntFindFile>Couldn't find the file "%1"I<Message.FailureRecordDesign>Couldn't record the design file "%1" as "%2"O<Message.SuccessRecordDesign>Successfully recorded the design file "%1" as "%2"D<Message.FileNameWasBlank>Skipping blank file name (for design "%1")
+U 0008caf6 <Message.ReferencesToListItemCouldntBeDeleted>The references to the item "%1" couldn't be deleted or modified. The item cannot be deleted.f<Message.UnsupportedSQLVersion>This SQL Server cannot be used because we require %1 and it is only %2.ª<Message.CouldntDetectSQLVersion>we couldn't detect the SQL Server version information of this server. It should be at least SQL Server 7.0 or MSDE 1 with service pack 2.£<Message.YouShouldValidateAndRefresh>You should "Validate and Refresh" to make sure the thumbnails and file information are up to date. Do you want to do that now?4<Message.RefreshingDesign>Refreshing design - %s ...X<Common.Message.WouldYouLikeALogFile>Would you like to record the results in a log file?&<DirectoryLabel.MyComputer>My Computer
+U 0008d100 ª<Message.BackupFileWasntCreated>The backup file (%1) wasn't created. Make sure there is space available. Make sure that the MSDE/SQL Server account has write permissions.Ì<Message.BackupFileWasntCreatedCorrectly>The backup file (%1) was created but its size looks incorrect. Make sure there is space available. Make sure that the MSDE/SQL Server account has write permission.Å<Message.BackupFileTimestampIsBad>The backup file (%1) was created but its time stamp looks incorrect. There may be nothing wrong but you should check that the file looks OK using Windows Explorer.Ã<Message.CompleteRebuild>Do you want to completely regenerate all Thumbnails and <<True View>>s for this database? (If you answer "No", only those files which are out of date will be regenerated)I<Message.FileIsReadOnly>The file "%1" is read only, and cannot be renamedA<Message.CouldntRenameFile>Couldn't rename the file "%1" to "%2".R<Message.DesignExists>The design "%1" already exists. Please choose a unique name.Y<Message.LocaleNotSupported>Sorry, but the locale "%1" is not supported by this software.y<Message.LocaleHasBadTimeStamp>Sorry, but the files for the locale "%1" seem to be from a different build of the program.
+U 0008da6c <Message.CouldntMoveDirectory>Sorry, the directory "%1" couldn't be moved to "%2". Maybe you don't have permission, or maybe the destination is read only.S<Message.NoDesignsMatchSearch>No designs matched the search criteria you specified.B<Message.CouldntFindPath>Couldn't find any location to match "%1".
+U 0008dcd0 <Message.DeleteOldTemproaryDesigns>There are %1 temporary copies of designs in your temporary directory. Do you want them deleted?½<Message.CantBackupRestoreOtherServers>Sorry, You cannot backup or restore databases which are on other servers. The database you are trying to backup is on "%1", and your computer is "%2".Z<Message.DataExceedsFieldLength>This value is too long, it can only be %1 characters long.z<Message.DesignNameNotAlphaNumeric>Design names must be alpha-numeric. The name "%1" has some non alpa-numeric characters.
+U 0008e11c [<Confirm.RetainExistingDesigns>Do you want to retain the existing copies of this design(s)?~<Confirm.EraseDatabase>Are you sure you want to format this database? This action will delete ALL the data from this database.t<Confirm.EraseDatabaseReally>Are you REALLY sure you want to FORMAT this database? There is no undo for this action.
+U 0008e3be <Confirm.RestoreDatabase>Are you sure you want to restore this database? This action will delete ALL the current data from this database.w<Confirm.RestoreDatabaseReally>Are you REALLY sure you want to restore this database? There is no undo for this action.1<Confirm.Cancel>Are you sure you want to stop %1?S<Confirm.RenameDesignFiles>Do you want to rename the actual design file(s) as well?t<Confirm.ConvertInPlace>Do you want the converted designs to REPLACE the designs currently recorded in the database?6<Message.ChooseAUniqueName>Please choose a unique name
+U 0008e826 <Message.DesignName>Design Name9<Message.HighLevelError>An unexpected error occurred [%1]\<Message.NoDatabaseConnected>You can't record because you haven't connected to any databases
+U 0008e994 <Message.ExclusiveAccess>You must have exclusive access to this database to continue. Make sure no other users are accessing this database.¨<Message.BackupFilesManually>You must also backup the design and image files associated with this database. There is no facility for doing that inside this application.c<Message.BackupCantBeUsedYet>This backup file can't be used for restoring until you have exited %1.Æ<Message.CouldntCreateBackupFile>Couldn't create the backup file "%1". Make sure the directory is not read only, that it has some space available, and that you have permission to create files there.
+U 0008ee74 9<MainForm.Mask.SEWFiles>Janome/Elna/Kenmore Files (*.SEW)-<MainForm.Mask.DSBFiles>Barudan Files (*.DSB))<MainForm.Mask.DSZFiles>ZSK Files (*.DSZ),<MainForm.Mask.INPFiles>Wilcom Files (*.INP),<MainForm.Mask.JANFiles>Design Files (*.JAN)9<MainForm.Mask.JEFFiles>Janome/Elna/Kenmore Files (*.JEF)A<MainForm.Mask.CSDFiles>Poem ,Huskygram, Singerr EU Files (*.JEF)2<MainForm.Mask.EMXFiles>Cross Stitch Files (*.EMX),<MainForm.Mask.ZIPFiles>Zip Archives (*.ZIP),<MainForm.FileMask.Caption>Enter a File Mask
+U 0008f260 <MainForm.FileMask.Prompt>Mask%<MainForm.Label.StitchesAbbreviated>S#<MainForm.Label.ColorsAbbreviated>C#<MainForm.Label.HeightAbbreviated>H"<MainForm.Label.WidthAbbreviated>Wn<Confirm.OverwriteExistingDesign>The design "%1" already exists in this database. Do you want to overwrite it?
+U 0008f4bc ,<MainForm.Mask.10OFiles>Toyota Files (*.10O)+<MainForm.Mask.KSMFiles>Pfaff Files (*.KSM)+<MainForm.Mask.T04Files>Zangs Files (*.T04))<MainForm.Mask.T05Files>ZSK Files (*.T05)+<MainForm.Mask.T09Files>Pfaff Files (*.T09),<MainForm.Mask.T10Files>Plauen Files (*.T10),<MainForm.Mask.T15Files>Saurer Files (*.T15),<MainForm.Mask.STCFiles>Gunold Files (*.STC)0<MainForm.Mask.STXFiles>Datastitch Files (*.STX).<MainForm.Mask.XXXFiles>Compucon Files (*.XXX)5<MainForm.Mask.ARTFiles>Bernina artista Files (*.ART))<MainForm.Mask.ArtworkFiles>Artwork Files=<MainForm.Mask.PESFiles>Deco, Brother, Babylock Files (*.PES)=<MainForm.Mask.PECFiles>Deco, Brother, Babylock Files (*.PEC)6<MainForm.Mask.HUSFiles>Husqvarna/Viking Files (*.HUS)+<MainForm.Mask.PCSFiles>Pfaff Files (*.PCS)
+U 0008fae0 u<PropertiesForm.Filter.Artwork>Bitmap Files (*.bmp)|*.bmp|JPeg Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|All Files (*.*)|*.*;"<MainForm.Status.Selected>Selected
+U 0008fc14 <MainForm.Status.Design>Design <MainForm.Status.Designs>Designs"<MainForm.Status.Filtered>Filtered,<MainForm.Mask.EMBFiles>Design Files (*.EMB).<MainForm.Mask.AllDesignFiles>All Design Files#<MainForm.Mask.Special>Customize....<MainForm.Mask.EMTFiles>Template Files (*.EMT)0<MainForm.Mask.ESDFiles>Old Design Files (*.ESD)+<MainForm.Mask.EXPFiles>Melco Files (*.EXP)+<MainForm.Mask.CNDFiles>Melco Files (*.CND),<MainForm.Mask.DSTFiles>Tajima Files (*.DST),<MainForm.Mask.T01Files>Tajima Files (*.T01)-<MainForm.Mask.U__Files>Barudan Files (*.U??)-<MainForm.Mask.T03Files>Barudan Files (*.T03)
+U 000900d4 O<MainForm.ButtonHint.RunWithoutEditor>Don't make any calls to the Design Editor:<MainForm.ButtonHint.Sort>Sort the current list of designs@<MainForm.ButtonHint.ToggleTreeView>Hide/Show the Directory TreeR<MainForm.ButtonHint.CreateArchive>Create a Zip archive using the selected designs <PropertiesForm.Column.Name>Name)<PropertiesForm.Column.Location>File Name <PropertiesForm.Column.Size>Size <PropertiesForm.Column.Date>Date(<PropertiesForm.Column.Stitches>Stitches(<PropertiesForm.Column.Customer>Customer.<PropertiesForm.Column.TypeOfWork>Type Of Work*<PropertiesForm.Column.Extension>File Type.<PropertiesForm.Column.Description>Description&<PropertiesForm.Column.Version>Version$<PropertiesForm.Column.Status>Statusw<PropertiesForm.Filter.StitchOut>Bitmap Files (*.bmp)|*.bmp|JPeg Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|All Files (*.*)|*.*;
+U 0009078c ,<MainForm.ButtonHint.New>Create a new design7<MainForm.ButtonHint.Cut>Cut selection to the clipboard9<MainForm.ButtonHint.Copy>Copy selection to the clipboard3<MainForm.ButtonHint.Paste>Paste from the clipboardE<MainForm.ButtonHint.IconsDetailed>View thumbnails and design details9<MainForm.ButtonHint.IconsSimple>View just the thumbnails><MainForm.ButtonHint.Details>View the design details in a listL<MainForm.ButtonHint.Properties>View the properties for the selected designs5<MainForm.ButtonHint.Print>Print the selected designs7<MainForm.ButtonHint.Stitch>Stitch the selected designs5<MainForm.ButtonHint.Punch>Punch the selected designs9<MainForm.ButtonHint.Convert>Convert the selected designs<<MainForm.ButtonHint.Directory>Browse designs in a directory><MainForm.ButtonHint.Database>Browse designs from the databaseg<MainForm.ButtonHint.Search>Search the database for particular designs matching your specified criteriaF<MainForm.ButtonHint.ClearSearch>Clear the Search and show all designs
+U 00090f7c %<PropertiesForm.Label.Version>Version/<PropertiesForm.Label.FitToWindow>Fit To Window8<PropertiesForm.Label.ThreadCount>Threads Used in Design'<PropertiesForm.Label.ColorWay>Colorway)<PropertiesForm.Label.BackgroundColor>BKG6<PropertiesForm.Title.StitchOut>Open a Stitch Out File2<PropertiesForm.Title.Artwork>Open an Artwork File.<Properties.Print.Title.DesignFile>Design File'<Properties.Print.Title.General>General2<Properties.Print.Title.RelatedFiles>Related Files:<Properties.Print.Title.TechnicalDetails>Technical Details#<Properties.Print.Title.Dates>Dates%<Properties.Print.Title.Sewing>Sewing!<PropertiesForm.Button.Browse>...><MainForm.ButtonHint.Open>Open the design in the Design Editor"<MainForm.ButtonHint.Close>Exit %1
+U 00091558  <PropertiesForm.Label.EndY>End Y*<PropertiesForm.Label.Digitizer>Di&gitizer*<PropertiesForm.Label.ThumbNail>Thumb Nail,<PropertiesForm.Label.TrueView><<True View>>!<PropertiesForm.Label.Image>Image0<PropertiesForm.label.StitchOut>Stitch Out &File+<PropertiesForm.label.Classified>Classified+<PropertiesForm.label.Artwork>Artwork &File4<PropertiesForm.Label.StitchOutDate>Stitch Out &Date-<PropertiesForm.Label.Description>Description'<PropertiesForm.Label.Selected>Selected1<PropertiesForm.Label.GeneralNotes>General &Notes/<PropertiesForm.Label.SewingNotes>Sewing &Notes5<PropertiesForm.Label.TechnicalNotes>Technical &Notes6<PropertiesForm.Label.StitchOutNotes>Stitch Out &Notes1<PropertiesForm.Label.ArtworkNotes>Artwork &Notes
+U 00091b30 2<PropertiesForm.Label.Miscellaneous>&Miscellaneous"<PropertiesForm.Label.Price>&Price%<PropertiesForm.Label.Machine>Machine
+U 00091c2a <PropertiesForm.Label.Max>Max
+U 00091c66 <PropertiesForm.Label.Min>Min!<PropertiesForm.Label.Jumps>Jumps!<PropertiesForm.Label.Trims>Trims1<PropertiesForm.Label.TrimsForJump>Trims for Jump'<PropertiesForm.Label.Recorded>Recorded&<PropertiesForm.Label.Last>Last Change*<PropertiesForm.Label.Location>Design File
+U 00091e82 <PropertiesForm.Label.Left>Left!<PropertiesForm.Label.Right>Right
+U 00091f06 <PropertiesForm.Label.Up>Up
+U 00091f3e <PropertiesForm.Label.Down>Down <PropertiesForm.Label.EndX>End X
+U 00091fe0 $<PropertiesForm.Label.Thread>&Thread$<PropertiesForm.Label.Fabric>&Fabric <PropertiesForm.Label.Hoop>&Hoop#<PropertiesForm.Label.Repeat>Repeat(<PropertiesForm.Label.LastUsed>Last Used'<PropertiesForm.Label.Modified>Modified$<PropertiesForm.Label.Review>Re&view#<PropertiesForm.Label.Design>Design*<PropertiesForm.Label.Reference>Re&ference(<PropertiesForm.Label.Category>&Category(<PropertiesForm.Label.Keywords>&Keywords.<PropertiesForm.Label.TypeOfWork>Type Of &Work*<PropertiesForm.Label.DesignGroup>Catalo&g$<PropertiesForm.Label.Status>&Status&<PropertiesForm.Label.License>&License(<PropertiesForm.Label.Customer>C&ustomer
+U 000924ec 2<PropertiesForm.TabSheetTrueViewPage><<True View>>0<PropertiesForm.TabSheetStitchOutPage>Stitch Out+<PropertiesForm.TabSheetArtworkPage>Artwork.<PropertiesForm.TabSheetColorwayPage>Colorways2<PropertiesForm.Label.StitchesAbbreviated>Stitches.<PropertiesForm.Label.ColorsAbbreviated>Colors(<PropertiesForm.Label.StopsAbbreviated>/.<PropertiesForm.Label.HeightAbbreviated>Height,<PropertiesForm.Label.WidthAbbreviated>Width&<PropertiesForm.Label.Stitches>Stiches#<PropertiesForm.Label.Colors>Colors!<PropertiesForm.Label.Stops>Stops,<PropertiesForm.Label.Designed>Date Designed)<PropertiesForm.Label.Appliques>Appliques*<PropertiesForm.Label.Bobbin>Bobbin Length0<PropertiesForm.Label.ThreadLength>Thread Length
+U 00092a9a <MainMenu.Lists>&Lists'<MainMenu.Item.Categories>Categories...#<MainMenu.Item.Keywords>Keywords...+<MainMenu.Item.TypesOfWork>Types Of Work...&<MainMenu.Item.DesignGroups>Catalog...!<MainMenu.Item.Statuses>Status...#<MainMenu.Item.Licenses>Licenses...%<MainMenu.Item.Customers>Customers...!<MainMenu.Item.Threads>Threads...!<MainMenu.Item.Fabrics>Fabrics...
+U 00092d66 <MainMenu.Item.Hoops>Hoops...'<MainMenu.Item.Digitizers>Digitizers...'<MainMenu.Item.Currencies>Currencies...B<PropertiesForm.TabSheetGeneralInformationPage>General InformationB<PropertiesForm.TabSheetSewingInstructionsPage>Sewing Instructions><PropertiesForm.TabSheetTechnicalDetailsPage>Technical Details
+U 00092fec N<MainMenu.Item.EnforceDataDictionary>Validate Dictionary and Optimize &Indexes
+U 0009308c <MainMenu.Item.Rename>Rename...3<MainMenu.Item.AddSubDirectory>Add Sub Directory...2<MainMenu.Item.DeleteDirectory>Delete Directory...
+U 0009319a <MainMenu.Setup>&Setup
+U 000931c8 <MainMenu.Tools>&Tools2<MainMenu.Item.DecodingOptions>Decoding Options...4<MainMenu.Item.RecordingOptions>Recording Options...,<MainMenu.Item.ChangeUserName>Change User...0<MainMenu.Item.ChangePassword>Change Password...2<MainMenu.Item.UserPreferences>User Preferences...8<MainMenu.Item.UserAdministration>User Administration...:<MainMenu.Item.DatabaseDirectories>Database Directories...
+U 000934d0 <MainMenu.Help>&Help
+U 000934fa <MainMenu.Item.Help>&Help...!<MainMenu.Item.About>&About %1...
+U 00093598 /<MainMenu.Item.EraseDatabase>Format Database... <MainMenu.Item.Search>&Search...(<MainMenu.Item.ClearSearch>&Clear Search)<MainMenu.Item.RecordDesign>Record Design4<MainMenu.Item.RecordFromCSV>Record From CSV File...2<MainMenu.Item.ChangeLocation>Move Design Files...
+U 000937b2 <MainMenu.Item.Reports>&Reports(<MainMenu.Item.Properties>&Properties.../<MainMenu.Item.Administration>Administration...E<MainMenu.Item.ValidateNewDesigns>Validate and Refresh New Designs...9<MainMenu.Item.ValidateAndRefresh>Validate and Refresh...
+U 000939a4 <MainMenu.Item.Backup>Backup...!<MainMenu.Item.Restore>Restore...:<MainMenu.Item.AutoRecordOptions>Auto Recording Options...3<MainMenu.Item.GroupProperties>&Group Properties...9<MainMenu.Item.LocateMissingFiles>Locate Missing Files...
+U 00093b98 B<MainMenu.Item.SewingInstructionsPage>&2. Sewing Instructions Page><MainMenu.Item.TechnicalDetailsPage>&3. Technical Details Page
+U 00093c9e <MainMenu.Item.Refresh>&Refresh4<MainMenu.Item.RefreshThumbNails>Refresh Thumb Nails,<MainMenu.Item.RefreshNode>Refresh Tree Node0<MainMenu.Item.BrowseLocation>Browse Location...5<MainMenu.Item.ConnectLocation>Connect to Location...1<MainMenu.Item.ToggleDirectoryTree>Directory Tree,<MainMenu.Item.ChangeLocale>Change Locale...
+U 00093f2e <MainMenu.Database>&Database+<MainMenu.Item.NewDatabase>&New Database....<MainMenu.Item.OpenDatabase>&Add a Database...1<MainMenu.Item.RemoveDatabase>&Remove Database... <MainMenu.Item.Remove>&Remove...1<MainMenu.Item.RemoveShortcut>&Remove Shortcut...1<MainMenu.Item.CreateShortcut>Create &Shortcut...
+U 000941ae <MainMenu.Item.Paste>&Paste
+U 000941e6 <MainMenu.Item.Delete>Delete#<MainMenu.Item.SelectAll>Select All'<MainMenu.Item.DeselectAll>Deselect All
+U 000942b8 <MainMenu.View>&View2<MainMenu.Item.DesignsInFolders>Designs in Folders4<MainMenu.Item.DesignsInDatabase>Designs in Database <MainMenu.Item.Icons>&Thumbnails6<MainMenu.Item.IconsAndSummary>Thumbnails and &Summary
+U 00094462 <MainMenu.Item.Details>&Details!<MainMenu.Item.ArrangeBy>&Sort...)<MainMenu.Item.ArrangeByName>Sort by Name)<MainMenu.Item.ArrangeByType>Sort by Type)<MainMenu.Item.ArrangeBySize>Sort by Size)<MainMenu.Item.ArrangeByDate>Sort by DateB<MainMenu.Item.GeneralInformationPage>&1. General Information Page
+U 000946dc ,<MainMenu.Item.PrintCatalog>Print Designs...-<MainMenu.Item.HtmlCatalog>Publish Designs...3<MainMenu.Item.StitchToMachine>Stitch to Machine...2<MainMenu.Item.SendToCard>Write to Card/Machine...+<MainMenu.Item.PunchToTape>Punch to Tape...!<MainMenu.Item.Convert>Convert...><MainMenu.Item.FormatEmbroideryDisk>&Format Embroidery Disk...
+U 0009497c <MainMenu.Item.Exit>E&xitA<MainMenu.Item.ImportDataFromOld>Import Data from Old Database...@<MainMenu.Item.ImportDataFromCSV>Record Designs from CSV File....<MainMenu.Item.ExportCatalog>Export Designs...2<MainMenu.Item.CreateArchive>Create Zip Archive...4<MainMenu.Item.ExtractArchive>Extract Zip Archive...
+U 00094be4 <MainMenu.Edit>&Edit
+U 00094c0e <MainMenu.Item.Cut>Cu&t
+U 00094c3e <MainMenu.Item.Copy>&Copy
+U 00094c92 <Global.Button.Help>&Help
+U 00094cc6 <Global.Button.Edit>&Edit...
+U 00094d00 <Global.Button.Yes>&Yes
+U 00094d30 <Global.Button.No>&No
+U 00094d5c <Global.Button.Browse>...
+U 00094d90 <Global.Button.Retry>&Retry
+U 00094dc8 <Confirm.Title>Confirm
+U 00094df6 <Error.Title>Error²<Interbase.Message.CreateDatabaseNotSupported>Interbase doesn't support run time creation of databases. Check your manual, and use the Interbase utilities to create the database.M<Interbase.Message.CantCreateDatabase>Couldn't create the database (%1) [%2].G<Interbase.Message.CantExecuteDSQL>Couldn't execute the DSQL "%1" [%2].
+U 000950ae <MainMenu.File>&File
+U 000950d8 <MainMenu.Item.New>&New0<MainMenu.Item.OpenWithDesigner>&Open with %1...(<MainMenu.Item.OpenWithExplorer>&Open...
+U 000951bc <MainMenu.Item.Print>&Print...
+U 00095218 ¡<Database.Confirm.ReallyEraseDatabase>Are you sure you really want to erase the existing database "%1". This will delete ALL the data currently in that database.y<Database.Confirm.CantConnectDatabase>Couldn't connect to the database "%1". Do you want to see the actual error message?$<Database.ChooseFromListTitle>Choose
+U 0009549c <Database.ChooseOne>Choose2<Database.Title.ConnectionFailed>Connection Failedr<Database.Question.ConnectionFailed>The attempt to connect to the database timed out. Would you like to try again?
+U 0009561e <Database.Decision.Retry>&Retry!<Database.Decision.Cancel>&Cancel
+U 000956a2 <Database.Error.NoSQLDMO>This function requires "SQLDMO" but can't locate it. Please make sure you have either MSDE or SQL Server Client Utilities installed.8<Global.Message.FileNotFound>Couldn't find the file "%1"7<Global.Message.SQL>Couldn't execute this SQL "%1" [%2]Z<Global.Message.CouldntFindProcedureInDll>Couldn't find the procedure "%1" in the dll "%2"9<Global.Message.CouldntLoadDll>Couldn't load the dll "%1"
+U 000959ea <Global.Button.OK>&OK
+U 00095a16 <Global.Button.Cancel>Cancel
+U 00095a50 <Global.Button.Apply>&Apply
+U 00095aa8 Q<Database.Message.CouldntRestoreDatabase>Couldn't restore the database "%1" [%2].Ã<Database.Message.CouldntRestoreDatabaseFromUNCFile>Couldn't restore the database "%1" because only local files can be used for restore. Copy the backup file to this computer first and try again.Ú<Database.Message.CanOnlyRestoreFromFixedDrives>Couldn't restore the database "%1" because only SQL Server will only restore from fixed hard drives.  Copy the backup file to a hard drive on this computer and try again.O<Database.Message.CouldntBackupDatabase>Couldn't backup the database "%1" [%2].G<Database.Message.CouldntSQLExecute>Couldn't execute the SQL "%1" [%2].B<Database.Message.CouldntSQLCount>Couldn't SELECT COUNT "%1" [%2].9<Database.Message.ChooseNewDatabase>Choose a New DatabaseD<Database.Message.ChooseExistingDatabase>Choose an Existing Database.<Database.Message.ChooseServer>Choose a ServerN<Database.Message.CouldntAddConstraints>Couldn't add constraints to "%1" [%2].<<Database.Message.ConnectingToDatabase>Connecting to "%1"...x<Database.Message.DatabaseNameMustStartWithAlpha>"%1" is either blank, or it doesn't start with an alphabetic character.X<Database.Message.DatabaseNameCantHaveSpaces>Sorry, database names can't contain spaces.±<Database.Message.UnexpectedError>Unexpected database error has occurred. Please contact customer support quoting the following error "%1", and also this debug information (%2).³<Database.Message.IndexesMightBeCorrupted>The id field of the last insert seems to be incorrect. The item might not have been successfully added. Please contact Technical Support.z<Database.Confirm.DatabaseExistsEraseIt>The database "%1" already exists. Do you want to erase it before adding this data?
+U 0009683c T<Engine.Log.Recording.DesignExisted>The design "%1" already existed in the database.P<Engine.Log.ValidateAndRefresh.MissingDesign>Couldn't find the design file "%1".E<Engine.Log.LocateMissing.CouldntFind>Couldn't find a file like "%1".8<Engine.Log.LocateMissing.Found>Replaced "%1" with "%2".R<Engine.Log.Converting.CouldntRecordDesign>**ERROR** Couldn't record the file "%1"@<Engine.Log.Converting>Converting "%1" to "%2" using "%3" formatN<Database.Message.CantConnectDatabase>Can't connect to the database "%1" [%2].O<Database.Message.CouldntCreateDatabase>Couldn't create the database "%1" [%2].D<Database.Message.CantEraseTable>Couldn't erase the table "%1" [%2].@<Database.Message.CouldntSQLSelect>Couldn't do SELECT "%1" [%2].@<Database.Message.CouldntSQLInsert>Couldn't do INSERT "%1" [%2].@<Database.Message.CouldntSQLUpdate>Couldn't do UPDATE "%1" [%2].@<Database.Message.CouldntSQLDelete>Couldn't do DELETE "%1" [%2].J<Database.Message.CouldntSQLIdentity>Couldn't do SELECT IDENTITY "%1" [%2]_<Database.Message.CouldntCreateIndex>Couldn't create the index for table "%1", field "%2" [%3].[<Database.Message.CouldntDropIndex>Couldn't drop the index for table "%1", field "%2" [%3].
+U 000971ac "<Engine.Log.Finished>Finished "%1"'<Engine.Log.Cancelled>User Aborted "%1"C<Engine.Log.CouldntWriteFile>**ERROR** Couldn't write the file "%1";<Engine.Log.RefreshColorwayFailed>Refresh Colorways Failed.U<Engine.Log.Convert.ConversionFailed>**ERROR** Couldn't convert the file "%1" to "%2"G<Engine.Log.ValidateAndRefresh.RefreshingThumbnail>Refreshing ThumbnailN<Engine.Log.ValidateAndRefresh.RefreshingMachineFiles>Refreshing Machine FilesJ<Engine.Log.ValidateAndRefresh.RefreshingTrueView>Refreshing <<True View>>K<Engine.Log.ValidateAndRefresh.RefreshingInformation>Refreshing InformationN<Engine.Log.ValidateAndRefresh.RefreshingAutoImage>Refreshing Auto Image FilesG<Engine.Log.ValidateAndRefresh.RefreshingColorways>Refreshing Colorwayst<Engine.Log.Recording.Skipped>Skipped the design "%1" (%2). A design with that name already existed in the database.
+U 00097864 <Engine.Log.Recording.Placeholder>The design file "%2" could be located, so a placeholder record was added for the design "%1".U<Engine.Log.Recording.Success>The design file "%2" was recorded successfully as "%1".2<Engine.Log.Recording.Finished>Finished recording.L<Engine.Log.Recording.Failure>FAILED to record the design file "%2" as "%1".
+U 00097b32 <Engine.Decision.Cancel>&Cancel%<Engine.Decision.Overwrite>&Overwrite
+U 00097bbe <Engine.Decision.Rename>&Rename
+U 00097bfe <Engine.Decision.Skip>&Skip+<Engine.Decision.OverwriteAll>Overwrite All!<Engine.Decision.Skipall>Skip All!<Engine.Decision.MoveIt>Move Them!<Engine.Decision.CopyIt>Copy Them#<Engine.Decision.LeaveIt>Leave Them-<Thumbnail.Message.MissingFile>Missing Design-<Thumbnail.Message.InvalidIcon>Unknown Format0<Thumbnail.Message.MissingIcon>Invalid Thumbnail,<Thumbnail.Message.AbortedRedraw>ALT is down!<RenameDesign.Title>Rename Design
+U 00097f5a <RenameDesign.Prompt>Name"<Engine.Log.Starting>Starting "%1"
+U 00097ff4 +<Engine.Prompt.ReadingEmbDisk>Reading (%1%))<Engine.Prompt.GroupUpdate>Updating (%1%)&<Engine.Prompt.ZipDesigns>Adding (%1%)-<Engine.Prompt.DeleteOriginals>Deleting (%1%)5<Engine.Prompt.NoNewDesigns>There are no new designs.I<Engine.Prompt.ValidateNewDesignsSucceed>New designs have been validated.!<EditForm.Caption>Select And Edit
+U 00098290 <EditForm.Button.Add>Add
+U 000982c2 <EditForm.Button.Delete>Delete
+U 00098300 <EditForm.Button.Rename>Rename
+U 0009833e <EditForm.Button.Select>Select
+U 0009837c <EditForm.Button.Done>Done9<Engine.Title.ChangedDirectories>Directories Have Changedu<Engine.Question.OverwriteExistingDesign>The design "%1" already exists in the database "%2". What do you want to do?i<Engine.Question.RecordingFileAction>What do you want to do with the design file(s) as they are recorded?d<Engine.Question.ChangedDirectories>Do you want to move all the existing files to the new locations?
+U 000986d0 0<Engine.Prompt.OpenDesigns>Opening Designs (%1%)1<Engine.Prompt.CloseDesigns>Closing Designs (%1%)0<Engine.Prompt.CopyDesigns>Copying Designs (%1%)1<Engine.Prompt.PasteDesigns>Pasting Designs (%1%)3<Engine.Prompt.DeleteDesigns>Deleting Designs (%1%)2<Engine.Prompt.PunchDesigns>Punching Designs (%1%)4<Engine.Prompt.StitchDesigns>Stitching Designs (%1%)2<Engine.Prompt.PrintDesigns>Printing Designs (%1%)5<Engine.Prompt.RecordFromCSV>Recording from CSV (%1%)D<Engine.Prompt.RelocatingDesigns>Relocating Designs and Images (%1%)0<Engine.Prompt.Validate>Validating Designs (%1%)1<Engine.Prompt.ExportToCSV>Exporting To CSV (%1%).<Engine.Prompt.LoadingDesignData>Loading (%1%)0<Engine.Prompt.SkippingDesignData>Skipping (%1%).<Engine.Prompt.BuildingListView>Building (%1%)4<Engine.Prompt.LocatingMissingDesigns>Locating (%1%)
+U 00098d60 4<Engine.Process.ExportToCSV>Exporting Designs to CSV><Engine.Process.LoadingMainDesignData>Loading Main Design DataN<Engine.Process.LoadingSupplimentalDesignData>Loading Supplimental Design Data7<Engine.Process.SkippingDesignData>Skipping Design Data3<Engine.Process.BuildingListView>Building List View?<Engine.Process.LocatingMissingDesigns>Locating Missing Designs6<Engine.Process.ReadingEmbDisk>Reading Embroidery Disk6<Engine.Process.GroupUpdate>Updating Design Properties8<Engine.Process.ZipDesigns>Adding Designs to Zip Archive7<Engine.Process.DeleteOriginals>Deleting Original Files8<Engine.Prompt.EstimatedTime>Estimated time remaining %26<Engine.Prompt.PrintCatalog>Printing the Designs (%1%)?<Engine.Prompt.CreatingHtmlCatalog>Publishing the Designs (%1%)5<Engine.Prompt.RefreshBitmaps>Refreshing Images (%1%)6<Engine.Prompt.ConvertDesigns>Converting Designs (%1%)4<Engine.Prompt.RecordDesigns>Recording Designs (%1%)
+U 000994c0 *<Engine.Process.PrintCatalog>Print Designs1<Engine.Process.CreateHtmlCatalog>Publish Designs-<Engine.Process.RefreshBitmaps>Refresh Images.<Engine.Process.ConvertDesigns>Convert Designs,<Engine.Process.RecordDesigns>Record Designs(<Engine.Process.OpenDesigns>Open Designs*<Engine.Process.CloseDesigns>Close Designs(<Engine.Process.CopyDesigns>Copy Designs*<Engine.Process.PasteDesigns>Paste Designs,<Engine.Process.DeleteDesigns>Delete Designs*<Engine.Process.PunchDesigns>Punch Designs,<Engine.Process.StitchDesigns>Stitch Designs*<Engine.Process.PrintDesigns>Print Designs-<Engine.Process.RecordFromCSV>Record From CSV?<Engine.Process.RelocatingDesigns>Relocating Designs and Images6<Engine.Process.Validate>Validating Design Information
+U 00099aa8 P<Engine.Message.CSVFileMustHaveField>The CSV file MUST have a column titled "%1"1<Engine.Message.DesignAlreadyExists>Design ExistsW<Engine.Message.CantConvertArtworkFile>"%1" is an artwork file! It cannot be converted![<Engine.Message.CantPunchArtworkFile>"%1" is an artwork file! It cannot be punched to tape!b<Engine.Message.CantStitchArtworkFile>"%1" is an artwork file! It cannot be stitched to a machine!|<Engine.Message.TrueViewFailed>Sorry, but some <<True View>>s weren't generated due to internal errors in the design editor.Ê<Engine.Message.InternalDesignerError>The true view for the design "%1" couldn't be generated due to an internal error in the Design Editor. True Views will not be generated for subsequent designs. [%2]Q<Engine.Message.ChooseRelocationDirectory>Choose the new location for the designsK<Engine.Message.RecordingFileAction>Choose what to do with the design filese<Engine.Message.ConfirmDeleteDesignFilesDirectory>Are you sure you want to delete these Design Files?
+U 0009a276 <Engine.Message.ConfirmDeleteDesignFilesDatabase>Do you also want to delete the actual Design Files associated with these records?C<Engine.Message.CouldntCopyFile>Couldn't copy the file "%1" to "%2"s<Engine.Message.CantWriteNonDOSDisks>Sorry this application currently does not support writing to Embroidery disks.¥<Engine.Message.NotReadyToRecordPleaseComeBackLater>The design cannot be recorded because it appears that %1 is still starting up. Please try again in a few seconds.t<Engine.Message.InvalidDatabaseSchema>It appears that the database you try to access is not at the required version.·<Engine.Message.ValidateDictionary>Please ask the system administrator to run the Validate Dictionary and Optimize Indexes command within the Administrator Application then try again.
+U 0009a8b0 -<DataDictionary.tColorwayThreads.fBrand>Brand+<DataDictionary.tColorwayThreads.fCode>Code1<DataDictionary.tColorwayThreads.fDensity>Density9<DataDictionary.tColorwayThreads.fDescription>DescriptionX<Engine.Message.CantLinkDatabaseEngine>Can't set the links with the Database Engine "%1"G<Engine.Message.CantGetLink>Can't get the Database Engine link for "%1"@<Engine.Message.CouldntDrawGrid>Couldn't draw the icon grid [%1]C<Engine.Message.CouldntPrintCatalog>Couldn't print the designs [%1]I<Engine.Message.CouldntHtmlCatalog>Couldn't publish the designs "%1" [%2]M<Engine.Message.CouldntDrawDesign>Couldn't draw the icon for this design [%1]o<Engine.Message.NoActiveDatabase>You haven't connected to any database. Please select a database and try again.P<Engine.Message.InvalidUserName>Sorry, but the user name "%1" is not recognised.v<Engine.Message.InvalidPassword>Sorry, but that is not the correct password for "%1". Please check your CAPS LOCK key.¢<Engine.Message.InsufficientAccessRights>Sorry, you don't have sufficient access rights for this task. The task requires level "%1", but you only have level "%2".W<Engine.Message.ChooseConversionDirectory>Choose the location for the converted designss<Engine.Message.ConfirmDeleteDesignFiles>Do you also want to delete the Design Files associated with these records?
+U 0009b328 &<DataDictionary.tCurrencies>Currencies3<DataDictionary.tCurrencies.fCurrencyId>Currency Id.<DataDictionary.tCurrencies.fCurrency>Currency,<DataDictionary.tCurrencies.fDefault>Default$<DataDictionary.tColorways>Colorways2<DataDictionary.tColorways.fColorwayId>Colorway Id.<DataDictionary.tColorways.fDesignId>Design Id-<DataDictionary.tColorways.fColorway>Colorway<<DataDictionary.tColorways.fBackgroundColor>Background Color><DataDictionary.tColorways.fBackgroundFabric>Background Fabric1<DataDictionary.tColorwayThreads>Colorway ThreadsE<DataDictionary.tColorwayThreads.fColorwayThreadId>Colorway Thread Id8<DataDictionary.tColorwayThreads.fColorwayId>Colorway Id6<DataDictionary.tColorwayThreads.fIndex>Colorway Index2<DataDictionary.tColorwayThreads.fUsed>Thread Used)<DataDictionary.tColorwayThreads.fRGB>RGB
+U 0009b9a4 6<DataDictionary.tDirectories.fDirectoryId>Directory Id1<DataDictionary.tDirectories.fDirectory>Directory'<DataDictionary.tDirectories.fPath>Path+<DataDictionary.tMachineFiles>Machine Files<<DataDictionary.tMachineFiles.fMachineFileId>Machine File Id7<DataDictionary.tMachineFiles.fMachineFile>Machine File<<DataDictionary.tMachineFileLocations>Machine File Locations6<DataDictionary.tMachineFileLocations.fRecId>Record Id9<DataDictionary.tMachineFileLocations.fDesignId>Design Id9<DataDictionary.tMachineFileLocations.fFileName>File Name9<DataDictionary.tMachineFileLocations.fFileType>File Type4<DataDictionary.tDesigns.fGeneralNotes>General Notes2<DataDictionary.tDesigns.fSewingNotes>Sewing Notes8<DataDictionary.tDesigns.fTechnicalNotes>Technical Notes9<DataDictionary.tDesigns.fStitchOutNotes>Stitch Out Notes4<DataDictionary.tDesigns.fArtworkNotes>Artwork Notes
+U 0009c08c *<DataDictionary.tTypesOfWork>Types Of Work:<DataDictionary.tTypesOfWork.fTypeOfWorkId>Type Of Work Id5<DataDictionary.tTypesOfWork.fTypeOfWork>Type Of Work1<DataDictionary.tRecordingPreferences>PreferencesT<DataDictionary.tRecordingPreferences.fRecordingPreferenceId>Recording Preference IdO<DataDictionary.tRecordingPreferences.fRecordingPreference>Recording Preference2<DataDictionary.tRecordingPreferences.fValue>Value-<DataDictionary.tDesignKeyword>Design Keyword2<DataDictionary.tDesignKeyword.fDesignId>Design Id4<DataDictionary.tDesignKeyword.fKeywordId>Keyword IdA<DataDictionary.tDesignKeyword.fDesignKeywordId>Design Keyword Id1<DataDictionary.tDesignDesignGroup>Design CatalogI<DataDictionary.tDesignDesignGroup.fDesignDesignGroupId>Design Catalog Id6<DataDictionary.tDesignDesignGroup.fDesignId>Design Id<<DataDictionary.tDesignDesignGroup.fDesignGroupId>Catalog Id(<DataDictionary.tDirectories>Directories
+U 0009c7dc /<DataDictionary.tLicenses.fLicenseId>License Id*<DataDictionary.tLicenses.fLicense>License&<DataDictionary.tDigitizers>Digitizers5<DataDictionary.tDigitizers.fDigitizerId>Digitizer Id0<DataDictionary.tDigitizers.fDigitizer>Digitizer*<DataDictionary.tDigitizers.fActive>Active <DataDictionary.tThreads>Threads,<DataDictionary.tThreads.fThreadId>Thread Id'<DataDictionary.tThreads.fThread>Thread&<DataDictionary.tDesignGroups>Catalogs7<DataDictionary.tDesignGroups.fDesignGroupId>Catalog Id2<DataDictionary.tDesignGroups.fDesignGroup>Catalog&<DataDictionary.tCategories>Categories3<DataDictionary.tCategories.fCategoryId>Category Id.<DataDictionary.tCategories.fCategory>Category/<DataDictionary.tCategories.fParentId>Parent Id
+U 0009cda8 0<DataDictionary.tUsers.fAccessLevel>Access Level8<DataDictionary.tUsers.fLicensedDesigns>Licensed Designs <DataDictionary.tFabrics>Fabrics,<DataDictionary.tFabrics.fFabricId>Fabric Id'<DataDictionary.tFabrics.fFabric>Fabric
+U 0009cf6a <DataDictionary.tHoops>Hoops%<DataDictionary.tHoops.fHoopId>HoopId!<DataDictionary.tHoops.fHoop>Hoop"<DataDictionary.tMachines>Machines/<DataDictionary.tMachines.fMachineId>Machine Id*<DataDictionary.tMachines.fMachine>Machine"<DataDictionary.tStatuses>Statuses-<DataDictionary.tStatuses.fStatusId>Status Id(<DataDictionary.tStatuses.fStatus>StatusD<DataDictionary.tStatuses.fIconBackgroundColor>Icon Background Color"<DataDictionary.tLicenses>Licenses
+U 0009d314 +<DataDictionary.tStopSequences.fBrand>Brand)<DataDictionary.tStopSequences.fCode>Code1<DataDictionary.tStopSequences.fDensity>Thickness)<DataDictionary.tStopSequences.fRGB>Color3<DataDictionary.tStopSequences.fElementName>Element$<DataDictionary.tCustomers>Customers2<DataDictionary.tCustomers.fCustomerId>Customer Id-<DataDictionary.tCustomers.fCustomer>Customer)<DataDictionary.tCustomers.fActive>Active"<DataDictionary.tKeywords>Keywords/<DataDictionary.tKeywords.fKeywordId>Keyword Id*<DataDictionary.tKeywords.fKeyword>Keyword
+U 0009d73e <DataDictionary.tUsers>Users&<DataDictionary.tUsers.fUserId>User Id!<DataDictionary.tUsers.fUser>User)<DataDictionary.tUsers.fPassword>Password
+U 0009d87c 6<DataDictionary.tDesigns.fTrimsForJump>Trims for Jumps0<DataDictionary.tDesigns.fCreatedById>Created By2<DataDictionary.tDesigns.fRecordedById>Recorded By#<DataDictionary.tDesigns.fGuid>Guid)<DataDictionary.tDesigns.fVersion>Version?<DataDictionary.tDesigns.fCurrentColorwayId>Current Colorway Id,<DataDictionary.tDesigns.fStatusId>Status Id6<DataDictionary.tDesigns.fBatchValidate>Batch Validate-<DataDictionary.tStopSequences>Stop Sequences<<DataDictionary.tStopSequences.fStopSequenceId>Stop Sequence2<DataDictionary.tStopSequences.fDesignId>Design Id)<DataDictionary.tStopSequences.fStop>Stop1<DataDictionary.tStopSequences.fStitches>Stitches-<DataDictionary.tStopSequences.fLength>Length+<DataDictionary.tStopSequences.fColor>Color7<DataDictionary.tStopSequences.fDescription>Description
+U 0009ded0 5<DataDictionary.tDesigns.fDateLastUsed>Date Last Used4<DataDictionary.tDesigns.fDateDesigned>Date Designed4<DataDictionary.tDesigns.fDateModified>Date Modified4<DataDictionary.tDesigns.fDateRecorded>Date Recorded,<DataDictionary.tDesigns.fFileType>File Type'<DataDictionary.tDesigns.fRepeat>Repeat5<DataDictionary.tDesigns.fMiscellaneous>Miscellaneous'<DataDictionary.tDesigns.fReview>Review+<DataDictionary.tDesigns.fLicenseId>License-<DataDictionary.tDesigns.fCategoryId>Category3<DataDictionary.tDesigns.fTypeOfWorkId>Type Of Work/<DataDictionary.tDesigns.fDigitizerId>Digitizer0<DataDictionary.tDesigns.fLastChange>Last Change)<DataDictionary.tDesigns.fThreadId>Thread%<DataDictionary.tDesigns.fJumps>Jumps%<DataDictionary.tDesigns.fTrims>Trims
+U 0009e4cc ;<DataDictionary.tDesigns.fMinStitchLength>Min Stitch Length;<DataDictionary.tDesigns.fMaxStitchLength>Max Stitch Length4<DataDictionary.tDesigns.fBobbinLength>Bobbin Length4<DataDictionary.tDesigns.fThreadLength>Thread Length8<DataDictionary.tDesigns.fThumbNail>Thumb Nail File Name6<DataDictionary.tDesigns.fTrueView>True View File Name8<DataDictionary.tDesigns.fStitchOut>Stitch Out File Name/<DataDictionary.tDesigns.fImage>Image File Name9<DataDictionary.tDesigns.fDateStitchedOut>Stitch Out Date3<DataDictionary.tDesigns.fArtwork>Artwork File Name-<DataDictionary.tDesigns.fCustomerId>Customer1<DataDictionary.tDesigns.fDescription>Description)<DataDictionary.tDesigns.fFabricId>Fabric%<DataDictionary.tDesigns.fHoopId>Hoop+<DataDictionary.tDesigns.fMachineId>Machine2<DataDictionary.tDesigns.fDateCreated>Date Created
+U 0009eb5c -<DataDictionary.tDesigns.fReference>Reference-<DataDictionary.tDesigns.fCurrencyId>Currency+<DataDictionary.tDesigns.fStitches>Stitches%<DataDictionary.tDesigns.fStops>Stops'<DataDictionary.tDesigns.fColors>Colors%<DataDictionary.tDesigns.fWidth>Width'<DataDictionary.tDesigns.fHeight>Height-<DataDictionary.tDesigns.fAppliques>Appliques%<DataDictionary.tDesigns.fPrice>Price/<DataDictionary.tDesigns.fClassified>Classified
+U 0009eeae <DataDictionary.tDesigns.fUp>Up#<DataDictionary.tDesigns.fLeft>Left#<DataDictionary.tDesigns.fDown>Down%<DataDictionary.tDesigns.fRight>Right$<DataDictionary.tDesigns.fEndX>End X$<DataDictionary.tDesigns.fEndY>End Y
+U 0009f07c %<EmbroideryDisk.Decision.Retry>&Retry'<EmbroideryDisk.Decision.Cancel>&Cancel'<EmbroideryDisk.Decision.Format>&Formatì<EmbroideryDisk.Confirm.FormatDisk>The disk in drive %1 is either not recognised or is not the correct format for the operation you specified. Do you want to format the disk in drive %2 now? WARNING: All data on the disk will be erased..<DataDictionary.tIdentification>IdentificationC<DataDictionary.tIdentification.fIdentificationId>Identification Id><DataDictionary.tIdentification.fIdentification>Identification,<DataDictionary.tIdentification.fValue>Value <DataDictionary.tDesigns>Designs,<DataDictionary.tDesigns.fDesignId>Design Id'<DataDictionary.tDesigns.fDesign>Design6<DataDictionary.tDesigns.fAlternateName>Alternate Name<<DataDictionary.tDesigns.fOriginalLocation>Original Location3<DataDictionary.tDesigns.fLocation>Design File Name-<DataDictionary.tDesigns.fExtension>Extension,<DataDictionary.tDesigns.fFileSize>File Size
+U 0009f814 :<EmbroideryDisk.Error.NoDisk>There is no disk in the drive3<EmbroideryDisk.Error.FileWontFit>The file wont fit@<EmbroideryDisk.Error.WriteProtected>The disk is write protected8<EmbroideryDisk.Error.FileExists>The file already exists0<EmbroideryDisk.Error.UnknownError>Unknown error8<EmbroideryDisk.Error.IllegalOperation>Illegal operation2<EmbroideryDisk.Error.InvalidHandle>Invalid handle9<EmbroideryDisk.Error.FileNotFound>The file was not found:<EmbroideryDisk.Error.InvalidStructures>Invalid structuresr<EmbroideryDisk.Error.WriteProtectOrSharingViolation>The disk is write protected, or there was a sharing violationB<EmbroideryDisk.Error.OldTajimaDisk>The disk is an old Tajima diskJ<EmbroideryDisk.Error.AccessDenied>You don't have permission to do that...;<EmbroideryDisk.Error.Unknown>An unknown error has occurred·<EmbroideryDisk.Message.OnlyRemovableDrivesCanBeFormatted>The disk "%1" doesn't appear to be removable. For your protection only removeable disks can be formatted as Embroidery disks.1<EmbroideryDisk.Error.Title>An error has occurredz<EmbroideryDisk.Error.Question>%1. Try to correct this if you can (maybe change disks) and then choose to retry or cancel.
+U 000a0170 H<Interface.Message.CantOpenDesignFile>Couldn't open the design file "%1"Ò<Interface.Message.CouldntDeleteUser>Couldn't delete the user details for "%1". That user is probably referenced elsewhere in the database. You can effectively delete them by setting their access level to zero.ê<Interface.Message.LiteVersionIsLimitedToThisComputer>Sorry, the Lite version of this product can only connect to databases on this computer. The database you are attempting to connect to seems to be on "%1" but your computer is "%2";1<Interface.Message.EnforceDataDictionaryDone>Done+<Interface.Process.WaitingForES>Starting %1-<Interface.Process.WritingFiles>Writing Files)<Interface.Prompt.WaitingForES>Waiting...,<Interface.Prompt.WritingFiles>Writing (%1%)#<EmbroideryDisk.Error.None>No error0<EmbroideryDisk.Error.InvalidMedia>Invalid media0<EmbroideryDisk.Error.UnknownMedia>Unknown media7<EmbroideryDisk.Error.InvalidFileName>Invalid file nameO<EmbroideryDisk.Error.SomethingIsMissing>A required file or resource is missingG<EmbroideryDisk.Error.CantDeleteDirectory>Couldn't delete the directory=<EmbroideryDisk.Error.CantDeleteFile>Couldn't delete the fileN<EmbroideryDisk.Error.ConfirmDeleteFile>Do you really want to delete the file?
+U 000a0b2c H<Interface.Message.CouldntPrintDesign>Couldn't print the design #%2 [%1]?<Interface.Message.BadMacro>Didn't recognise the DDE macro "%1"`<Interface.Message.CouldntCreateNewDesign>Couldn't create a new design in the Design Editor [%1]O<Interface.Message.CouldntConvert>Couldn't convert the design "%2" to "%3" [%1]
+U 000a0da2 <Interface.Message.CouldntGetDiskTypeInformation>Couldn't get the required list of available disk types from the design editor [%1]U<Interface.Message.CouldntFindFirstFreeFile>Couldn't execute "FindFirstFreeFile" [%1]S<Interface.Message.CouldntFindNextFreeFile>Couldn't execute "FindNextFreeFile" [%1]C<Interface.Message.CouldntOpenDisk>Couldn't execute "OpenDisk" [%1]I<Interface.Message.CouldntPunchDesign>Couldn't punch the design "%2" [%1]u<Interface.Message.CouldntGetPunchTapeMachineList>Couldn't get the list of Tape Punch Machines from the Designer [%1]v<Interface.Message.CouldntGetMachineConnectionList>Couldn't get the list of Machine Connections from the Designer [%1]K<Interface.Message.CouldntStitchDesign>Couldn't stitch the design "%2" [%1]V<Interface.Message.CouldntFormatDisk>Couldn't format the disk "%1" to format "%2" [%3]O<Interface.Message.CouldntGetSummaryInfo>Couldn't get the summary info #%2 [%1]G<Interface.Message.CouldntViewDesign>Couldn't view the design "%2" [%1]`<Interface.Message.CantDeleteYourself>Sorry, you're not allowed to delete your own user details!
+U 000a164c $%s not in a class registration group
+U 000a1698 Property %s does not exist
+U 000a16ce Stream write error)<TranslatorTimeStamp>4/04/2003 9:42:50 AMN<Security.Message.Failure>Couldn't establish communications with Design EditorY<Security.Message.Timeout>Timed out trying to establish communications with Design Editor]<Security.Confirm.RunWithoutEditor>Do you want to try to run without trying to connect to %1?O<Security.EMBEngine.ConnectFailure>Couldn''t connect with the Embroidery Engine<<Interface.Message.FileMissing>Couldn't find the file "%1".'¯<Interface.Message.OldLibintf>The file "libintf.dll" in your %1 directory (%2) appears to be an old one. Please copy the new version from your %3 directory (%4) and try again.p<Interface.Message.CouldntInitialiseCommunication>Couldn't initialise communications with the Design Editor [%1]L<Interface.Message.CouldntOpenDesign>Couldn't open the design file "%2" [%1]H<Interface.Message.CouldntCloseDesign>Couldn't close the design #%2 [%1]F<Interface.Message.CouldntLoadDesign>Couldn't load the design #%2 [%1]M<Interface.Message.CouldntGetDesignInfo>Couldn't get the design info #%2 [%1]M<Interface.Message.CouldntGetDesignIcon>Couldn't get the design icon #%2 [%1]
+U 000a1fc6 Invalid stream format$''%s'' is not a valid component name
+U 000a203c Invalid property element: %s
+U 000a2076 Invalid property path
+U 000a20a2 Invalid property type: %s
+U 000a20d6 Invalid property value List capacity out of bounds (%d)
+U 000a2146 List count out of bounds (%d)
+U 000a2182 List index out of bounds (%d)+Out of memory while expanding memory stream
+U 000a2216 Error reading %s%s%s: %s
+U 000a2248 Stream read error
+U 000a226c Property is read-only
+U 000a2298 Resource %s not found
+U 000a22c4 %s.Seek not implemented$Operation not allowed on sorted list
+U 000a235e Wednesday
+U 000a2372 Thursday
+U 000a2384 Friday
+U 000a2392 Saturday
+U 000a23a4 Ancestor for '%s' not found
+U 000a23dc Cannot assign a %s to a %s
+U 000a2412 Bits index out of range*Can't write to a read-only resource streamECheckSynchronize called from thread $%x, which is NOT the main thread
+U 000a2524 Class %s not found
+U 000a254a A class named %s already exists%List does not allow duplicates ($0%x)#A component named %s already exists%String list does not allow duplicates
+U 000a266a Cannot create file %s
+U 000a2696 Cannot open file %s
+U 000a26de July
+U 000a26e8 August
+U 000a26f6 September
+U 000a270a October
+U 000a271a November
+U 000a272c December
+U 000a2776 Sunday
+U 000a2784 Monday
+U 000a2792 Tuesday
+U 000a2812 January
+U 000a2822 February
+U 000a2834 March
+U 000a2840 April
+U 000a2854 June
+U 000a287e Variant overflow
+U 000a28a0 Invalid argument
+U 000a28c2 Invalid variant type
+U 000a28ec Operation not supported
+U 000a291c Unexpected variant error
+U 000a294e External exception %x
+U 000a297a Assertion failed
+U 000a299c Interface not supported
+U 000a29cc Exception in safecall method
+U 000a2a06 %s (%s, line %d)
+U 000a2a28 Abstract Error?Access violation at address %p in module '%s'. %s of address %p
+U 000a2ac6 System Error.  Code: %d.
+U 000a2b00 A call to an OS function failed
+U 000a2b70 "Variant method calls not supported
+U 000a2bb8 Read
+U 000a2bc2 Write
+U 000a2bce Error creating variant array!Variant array index out of bounds
+U 000a2c4c Variant array is locked
+U 000a2c7c Invalid variant type conversion
+U 000a2cbc Invalid variant operation!Invalid variant operation ($%.8x)
+U 000a2d34 Variant is not an array*Custom variant type (%.4x) is out of range-Custom variant type (%.4x) already used by %s(Custom variant type (%.4x) is not usable2Too many custom variant types have been registered5Could not convert variant of type (%s) into type (%s)=Overflow while converting variant of type (%s) into type (%s)
+U 000a2fd6 Range check error
+U 000a2ffa Integer overflow Invalid floating point operation
+U 000a305e Floating point division by zero
+U 000a309e Floating point overflow
+U 000a30ce Floating point underflow
+U 000a3100 Invalid pointer operation
+U 000a3134 Invalid class typecast0Access violation at address %p. %s of address %p
+U 000a31c4 Stack overflow
+U 000a31e2 Control-C hit
+U 000a31fe Privileged instruction(Exception %s in module %s at %p.
+U 000a3270 %s%s
+U 000a327e Application Error1Format '%s' invalid or incompatible with argument
+U 000a3306 No argument for format '%s'
+U 000a335c !'%s' is not a valid integer value('%s' is not a valid floating point value"'%s' is not a valid currency value!'%g' is not a valid date and time
+U 000a347e Invalid argument to time encode
+U 000a34be Invalid argument to date encode
+U 000a34fe Out of memory
+U 000a351a I/O error %d
+U 000a3534 File not found
+U 000a3552 Invalid filename
+U 000a3574 Too many open files
+U 000a359c File access denied
+U 000a35c2 Read beyond end of file
+U 000a35f2 Disk full
+U 000a3606 Invalid numeric input
+U 000a3632 Division by zero

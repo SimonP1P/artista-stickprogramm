@@ -1,0 +1,2330 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.rdata
+A 000001c7 @.data
+A 000001f0 .idata
+A 00000218 Shared
+A 00000240 .rsrc
+A 00000267 @.reloc
+A 00000727 Vf9l$0W
+A 00000ba9 t$,RPV
+A 00001353 RuTjF
+A 0000137d Fu*j?
+A 000016fa L$(QS
+A 00001af8 <0r#<9w
+A 00001b1f <Ar#<Fw
+A 00002122 T$ Rj?
+A 00002230 uMjOj
+A 00002245 u8jEj
+A 00002a46 L$<UQ
+A 00002a9b L$<UQ
+A 00002ab9 T$,j2
+A 00002abf D$<UP
+A 00002ae3 T$<UR
+A 00002b79 l$$vh
+A 00002d08 ;t$(}\;t$ u
+A 00002d43 L$8PF
+A 00002d66 ;t$(t
+A 00002e07 L$8Rf
+A 00003042 D$xIH
+A 0000305d D$XSPh.
+A 00003330 SUVWh
+A 0000348b SUVW3
+A 00003867 D$Kpf
+A 00003f70 QSUVW
+A 00003f7f _^][Y
+A 0000412e _^][Y
+A 00004137 _^][Y
+A 00004747 }JjOj
+A 00004812 $SUVW
+A 0000494a t&<0|
+A 00004c5b u<9\$
+A 000052f2 D$$Rj PV
+A 000055f7 t$DW3
+A 00005618 f9|$P
+A 0000576b \$Pf;
+A 000057b4 D$,j2P
+A 000057d1 \$Pf9|$H
+A 000057df f9|$Pt:
+A 00005884 s0~Q3
+A 000058db D$H_^][
+A 00005c19 \$HVj
+A 00005ca2 ;|$T}
+A 00005fb2 RuhjF
+A 00005fe6 Fu4j?
+A 00006022 T$ Af
+A 00006076 l$8V3
+A 00006184 <0|6<9
+A 00006190 <0|*<9
+A 000064d1 D$ PU
+A 0000678d \$DVSU
+A 000067ff l$8u;
+A 00006831 D$P~	
+A 00006840 D$PPU
+A 00006c33 T$Hhb
+A 00006e47 T$(RU
+A 00006eb1 9t$Xu
+A 00006fdc T$PQRW
+A 00007057 L$h@;
+A 0000705e D$ u!
+A 000071ff T$<PUSQRV
+A 00007224 D$Th 
+A 00007369 L$LWPQVVVh
+A 00007397 |$LRPWQSUj
+A 000073b2 9t$Pu
+A 00007547 _^][Y
+A 00007629 _^][Y
+A 0000762f _^]f3
+A 0000773c T$4S3
+A 00007748 L$8V3
+A 000078c4 D$D;8t
+A 00007a45 QVRPSU
+A 00007aad _^]f3
+A 00007b95 T$ QRV
+A 00007e5e ;L$4s
+A 00007e87 u1;t$
+A 00008f82 @SUVW
+A 0000958e _^][Y
+A 000095b4 _^][Y
+A 000095c2 8;Qb~
+A 000095ca _^][Y
+A 000095e7 _^][Y
+A 000095f1 _^][Y
+A 000095fa AT_^][Y
+A 000097ff L4,RV
+A 00009882 ;D$ }
+A 00009b53 ;t$D}
+A 00009bb3 L$,_^]d
+A 00009cff T$pQR
+A 00009eda T$pWR
+A 0000a0b6 L$lPF
+A 0000a0c6 L$,PS
+A 0000a0d1 D$(G;
+A 0000a1fe ;|$$}V;|$
+A 0000a20f D;|$Hu
+A 0000a23e D$ CG
+A 0000a382 L$,PU
+A 0000a38d D$$CEH
+A 0000a6ba L$$IQ
+A 0000ab5d L$$RPQj
+A 0000ab85 D$(SRPW
+A 0000ac58 Ff_^][
+A 0000ae33 t";t$
+A 0000aedc u+9^Lt&h
+A 0000af0e D$0SPQ
+A 0000afc5 RSPVQ
+A 0000afdf D$XRSPQV
+A 0000affc D$XRSPVQ
+A 0000b018 RPQVS
+A 0000b190 L$0PE
+A 0000b225 L$XRU
+A 0000b2f1 t$\j2V
+A 0000b30f l$\Uj
+A 0000b373 L$H_^]d
+A 0000b45a u*9uLt%h
+A 0000b50e L$,_^]2
+A 0000bbaa SUVWh
+A 0000d644 L$l^d
+A 0000d91b SUVWh
+A 0000e200 FI< t
+A 0000ee39 "u4@3
+A 0000ee88 T$Lh`!
+A 0000ef37 "uDA3
+A 0000f828 T$0QR
+A 0000f848 |$(tPHt*H
+A 0000f90f ;|$(}N
+A 0000f9dd <a|/<f
+A 0000fc5d tU;|$
+A 0000fdbb _^][Y
+A 00010059 j VQU
+A 0001056d t,;|$$}&
+A 00010694 L$0Ph
+A 00010975 t9Ht$Ht
+A 00010b89 L$(h '
+A 00010be3 D$(hT&
+A 000112cb T$(h(%
+A 00011353 R`[^_
+A 00011562 <SUVW
+A 000115c0 SSj1Q
+A 0001162b SWj0R
+A 00011644 SWj0R
+A 00011657 _^]f3
+A 0001182c PQRjw
+A 0001195c PQRja
+A 00011a97 u&FOu
+A 00011b56 L$%$?
+A 00011ec1 D$,h 
+A 00011f76 K<RQP
+A 00012305 tBShy
+A 00012b83 [9] r#
+A 00013494 @u-;u
+A 000139d8 t!C;u
+A 00013b46 YY_^[
+A 00013c41 HtWHt5H
+A 00013e1b 	9X w
+A 00013ed3 9G4_^d
+A 000141b2 9x u	f
+A 000147c2 59H8u
+A 00014cda F8+F0
+A 00014e46 ^PSh0
+A 00015810 9^xt{
+A 00015a7d V`_^[]
+A 00015f47 N8+F,+N0
+A 0001693c 9u t	
+A 000169d7 9^@t83
+A 000169f7 G;~8|
+A 00016f84 W9^@t93
+A 000170d1 9^8~#
+A 00017133 SRVh|
+A 0001714a W [^_
+A 00017835 HtDHt=
+A 00017855 t)Ht"Ht#HHt
+A 00017f43 SVWUj
+A 00017fac t.;t$$t(
+A 00018044 D$,VP
+A 00018475 \$(VW
+A 000184bf D$ VP
+A 000186ca WVPQR
+A 000187f0 _^][Y
+A 000188bb D$ _^][Y
+A 000188d9 _^][Y
+A 000188f4 _^][Y
+A 00018906 _^][Y
+A 00018a50 _^][Y
+A 00018b40 D$ _^][Y
+A 00018b5e _^][Y
+A 00018b70 _^][Y
+A 00018c60 H_^][
+A 00018e70 u"WVS
+A 000196a6 uRFGHt
+A 00019734 D$$VW
+A 0001985c <xt	<X
+A 00019af4 D$,VP
+A 00019eb3 SUVWj
+A 0001abd1 T$ VR
+A 0001abdc T$$RP
+A 0001ac02 T$ QRP
+A 0001ac24 D$,SUV
+A 0001ac32 l$$|	
+A 0001ac38 L$H;i
+A 0001acfa D$LQURP
+A 0001ae42 L$PVR
+A 0001ae48 T$TPQRS
+A 0001aeb1 L$HUR
+A 0001aeb7 T$LPQRS
+A 0001aec5  _^][
+A 0001af08 T$ UWSP
+A 0001af10 D$,QRP
+A 0001af32 QRPWS
+A 0001af7a T$$UWV
+A 0001af87 D$4SQ
+A 0001af8d L$8RPQ
+A 0001b0b6 D$,PVU
+A 0001b109 L$$PSQVU
+A 0001b5e4 tBjtj
+A 0001b69a uRjtj
+A 0001bec8 D$XRP
+A 0001bf0c |$\-u
+A 0001c16b PVWj 
+A 0001c18c D$*RP
+A 0001c1a7 QVWj0
+A 0001c1d3 T$HPR
+A 0001c21d QRWj 
+A 0001c95b SUVWP
+A 0001cabe l$$V3
+A 0001cac4 VVVVUPQ
+A 0001d020 QSUVW3
+A 0001d0d5 _^][Y
+A 0001d2fd <St	<C
+A 0001d319 D$$t.
+A 0001d3fb D$,]B
+A 0001d416 L$\un
+A 0001d42a L$,B:
+A 0001d442 :L$Lw3
+A 0001d4bd |$${u
+A 0001d4cf |$(HUS
+A 0001d584 T$VQR
+A 0001d7ad |$$ou
+A 0001d981 |$$Fu
+A 0001e085 																								
+A 0001e09e 													
+A 0001e0ae 													
+A 0001e0bd 										
+A 0001e0c8 					
+A 0001e0d0 SUVWj
+A 0001e2b2 HSUVWh
+A 0001e320 f9|$F
+A 0001e839 /;t$$u
+A 0001eaea L$ _^]+
+A 0001ec38 _^][Y
+A 0001ed6a 8"uV@
+A 0001eee2 D$ _^]
+A 0001ef99 WSUVj
+A 0001f12f SUVW3
+A 0001f3d6 PPPPPPPP
+A 0001f4a5 QVWRP
+A 0001f4da VWj	U
+A 0001f50b WSVPj
+A 0001f561 RWSUP
+A 0001f5ab VRWSUP
+A 0001f5f3 D$0PVQh 
+A 0001fadb _^][Y
+A 0001faf4 _^][Y
+A 0001fbf7 _^][Y
+A 0001fc35 _^][Y
+A 0001ff50 VC20XC00U
+A 00020256 PPPPPPPP
+A 00020296 PPPPPPPP
+A 000203f3 _^][Y
+A 00020420 T$(SSSSWQh 
+A 0002043d _^][Y
+A 00020456 _^][Y
+A 00020468 VUWPh 
+A 000204d0 T$$WSR
+A 000204fe _^][Y
+A 0002056a L$ RQP
+A 00020572 _^][Y
+A 0002059b WWURj	S
+A 000205c3 VWUPj
+A 000205f3 _^][Y
+A 00020608 _^][Y
+A 000207b0 QUVW3
+A 00020850 f9=*A
+A 000209cc :ucEU
+A 00020a04 :u+EU
+A 0002170b t!EUS
+A 00021a36 1_^][
+A 00021bab SVWPQ
+A 00021d09 D$HUV
+A 00022075 L$,u	
+A 00022241 D$TRVP
+A 00022330 T$DQPR
+A 00022493 SUVWj
+A 00022645 Iu1Sj
+A 000226fb It	Iu
+A 00022cff L$ UQSRP
+A 0002310b _^][Y
+A 00023154 _^][Y
+A 00023184 UWUVh 
+A 000231b4 H_^][Y
+A 000231f1 _^][Y
+A 00023226 D$$RPj
+A 0002326e _^][Y
+A 0002328a _^][Y
+A 000232bf H_^][Y
+A 000232d4 _^][Y
+A 00023487 VPj1Sj
+A 0002349b Qj2Sj
+A 000234ae Rj3Sj
+A 000234c1 Pj4Sj
+A 000234d4 Qj5Sj
+A 000234e7 Rj6Sj
+A 000234f7 Wj7Sj
+A 00023508 G Pj*Sj
+A 0002351d Qj+Sj
+A 00023530 Rj,Sj
+A 00023541 G,Pj-Sj
+A 00023556 Qj.Sj
+A 00023569 Rj/Sj
+A 0002357c Pj0Sj
+A 0002358f QjDSj
+A 000235a2 RjESj
+A 000235b3 G@PjFSj
+A 000235c8 QjGSj
+A 000235db RjHSj
+A 000235ec GLPjISj
+A 00023601 QjJSj
+A 00023614 RjKSj
+A 00023625 GXPjLSj
+A 0002363a QjMSj
+A 0002364d RjNSj
+A 0002365e GdPjOSj
+A 00023673 Qj8Sj
+A 00023686 Rj9Sj
+A 00023697 GpPj:Sj
+A 000236ac Qj;Sj
+A 000236bf Rj<Sj
+A 000236d0 G|Pj=Sj
+A 000236e8 Qj>Sj
+A 000236fe Rj?Sj
+A 00023714 Pj@Sj
+A 0002372a QjASj
+A 00023740 RjBSj
+A 00023756 PjCSj
+A 0002376c Qj(Sj
+A 00023782 Rj)Sj
+A 000237ae Qj Uj
+A 00023a2d Pj#Wj
+A 00023a51 Qj%Wj
+A 00023e97 S RjPVj
+A 00023eaa C$PjQVj
+A 00023ee3 C*PjTVj
+A 00023ef8 QjUVj
+A 00023f0b RjVVj
+A 00023f1c C-PjWVj
+A 00023f31 QjRVj
+A 00023f44 SjSVj
+A 00024017  SUVW3
+A 000249b6 L$ PQF
+A 00024a95 T$ QR
+A 00024ac4 KK<5|1;
+A 00024ae0 D$HCf
+A 00024b64 T$(SUVf
+A 00024bd7 *_^][
+A 00024c2d *_^][
+A 00024cd7 l$0u)
+A 00024d5f f9|$(w
+A 00024d79 9D$*u,9D$.
+A 00025119 zuTVVVSU
+A 0002533d T$$PPj
+A 0002536a D$ Pj
+A 000254a5 T$,PQj
+A 00025561 UVWuNj
+A 000255bd l$4VU
+A 000255db D$<WP
+A 00025601 D$,WQVURP
+A 00025746 VUj	S
+A 0002577d D$<VPj
+A 00025797 QRj	S
+A 000257bd T$<VPQRj
+A 000257d6 T$0VP
+A 000257dc D$4UQRP
+A 00025820 QSUVW
+A 00025898 _^][Y
+A 000258a4 _^][Y
+A 000259d0 _^][Y
+A 000259d8 _^][Y
+A 00025a5a 8<=t!
+A 00025c43 t8<#u
+A 00025c7d 9|$(u*V
+A 00025dd1 dt&~?
+A 00025de7 nt(Ht
+A 0002688c 0SVW3
+A 00026ab9 ~<j j
+A 00026c4f SSSSS
+A 0002739b t$$SS
+A 00027767 PPPPS
+A 000277b0 PPPPS
+A 000277c4 Wp_^][Y
+A 000277ff 9y`u	;qdu
+A 00027868 VVUVS
+A 00027987 _^][Y
+A 00027b2f tlHHt
+A 00027b60 t;9_Pt6
+A 00027bdc 9X tn
+A 00027cc6 ~0PPW
+A 00027e92 E SVj
+A 000281ac u,9=X<
+A 00028477 PQQQQQ
+A 000286bf tBShy
+A 00028e4d t	9p$u
+A 0002a14c P`_^[
+A 0002a200 u*9] t
+A 0002a51b 97uT3
+A 0002a69e u-h70
+A 0002ac46 tQFFf
+A 0002ac9f PPPPhd
+A 0002acec SUVWj
+A 0002ad3f trWWWWU
+A 0002ad4e uc9|$
+A 0002adc1 ti9|$
+A 0002ae18 WWWWU
+A 0002ae3c F,_^][
+A 0002b424 t	9A8u
+A 0002b581 QQQSV3
+A 0002bd3b X_^[]
+A 0002bee3 QQSVW
+A 0002c4c4 tBShy
+A 0002c8f8 >w5t,
+A 0002c932 kw=t7
+A 0002c944 @t{HtxHtXHtYH
+A 0002c95b PtdHHt`
+A 0002c965 tBHtXHH
+A 0002c974 owUt0
+A 0002caff %%%%%%%%%%%%
+A 0002cb0e  %!"#$
+A 0002cb87 tBShy
+A 0002d37f tBShy
+A 0002dcba ~h_^[
+A 0002de07 t@jxP
+A 0002de4d t?jxP
+A 0002e1ab ^$_^[]
+A 0002e1e9 9F$t<9V
+A 0002e228 F$_^[
+A 0002e4ce WWWWh
+A 0002e56f QQSVW
+A 0002ed08 <A|2<Z
+A 0002ed21 1GG;E
+A 0002ed77 <A|@<Z
+A 0002ed90 1FF;E
+A 0002eec2 +t|HtlHt\Ht>Ht%
+A 0002efe4 +tJHt:Ht*
+A 0002f50e 9nPtWWS
+A 0002f615 9HPtL9L$
+A 0002f77e t+UUhl
+A 0002f7c1 _^][YY
+A 0002f8d1 [_^]Y
+A 0002fb29 X_^[]
+A 0002fb7b &95d<
+A 0002fed3 P`_^[
+A 00030513 PSSSSS
+A 00030b92 SSSSS
+A 00030bd3 t1Ht'Ht
+A 00030da9 9\$ t
+A 00030e0f D$$	D$
+A 000310fb FXWPj
+A 00031126 VHtNHteHub3
+A 00031135 u 9QX
+A 000317a5 _j X;
+A 00031f6d QQSUV
+A 00032078 _^][YY
+A 000323ba QQQSV
+A 00032580 9^xu2
+A 00032636 <:u	V
+A 000327e7 PWVWWW
+A 0003280a WVWWW
+A 00032ced VVUSVV
+A 00032d06 t$ PUSVV
+A 00032d33 VVUSVV
+A 00032d51 PUSVV
+A 000331a8 ~`j,j
+A 00033351 N(;N,r
+A 00033866 D$4W;F8v
+A 00033884 tj9~(te
+A 0003391b X_^][
+A 00033d60 HVHSWt	
+A 00033f6d VWj j
+A 00034890 ^,_^][
+A 00036f40 ffffff
+A 00037210 CDialog
+A 00037538 CRichEditCtrl
+A 00037548 CImageList
+A 00037554 CStatusBarCtrl
+A 00037564 CToolBarCtrl
+A 00037574 CListCtrl
+A 00037580 CTreeCtrl
+A 0003758c CTabCtrl
+A 00037598 CAnimateCtrl
+A 000375a8 CHotKeyCtrl
+A 000375b4 CHeaderCtrl
+A 000375c0 CProgressCtrl
+A 000375d0 CSliderCtrl
+A 000375dc CSpinButtonCtrl
+A 000375ec CDragListBox
+A 000377a0 CScrollBar
+A 000377ac CEdit
+A 000377b4 CComboBox
+A 000377c0 CListBox
+A 000377cc CButton
+A 000377d4 CStatic
+A 00037b28 Recent File List
+A 00037b40 File%d
+A 00037b48 Settings
+A 00037b58 PreviewPages
+A 00037be8 CWinApp
+A 00037cc0 CWinThread
+A 00037e60 CCmdTarget
+A 00037f38 AfxWnd42s
+A 00037f48 AfxControlBar42s
+A 00037f60 AfxMDIFrame42s
+A 00037f70 AfxFrameOrView42s
+A 00037f88 AfxOleControl42s
+A 00037fa0 AfxOldWndProc
+A 00038278 commctrl_DragListMsg
+A 00038354 Afx:%x:%x:%x:%x:%x
+A 00038368 Afx:%x:%x
+A 000383d8 CNotSupportedException
+A 000383f0 CMemoryException
+A 00038404 CException
+A 000385b0 CPalette
+A 000385bc CBitmap
+A 000385c4 CFont
+A 000385cc CBrush
+A 000385dc CGdiObject
+A 000385e8 CPaintDC
+A 000385f4 CWindowDC
+A 00038600 CClientDC
+A 00038610 CUserException
+A 00038620 CResourceException
+A 00038890 CObject
+A 000388b0 combobox
+A 000388bc System
+A 000388e0 CMapPtrToPtr
+A 00038968 Software
+A 000389d0 CFile
+A 00039358 CMemFile
+A 000393f8 CPtrList
+A 00039438 CMenu
+A 00039500 CScrollView
+A 0003950c WheelScrollLines
+A 00039520 Control Panel\Desktop
+A 00039538 MouseZ
+A 00039540 Magellan MSWHEEL
+A 00039554 MSH_SCROLL_LINES_MSG
+A 000395f0 CToolTipCtrl
+A 00039618 CFileException
+A 00039700 COleDispatchException
+A 00039788 UUUUUU
+A 00039858 RichEdit Text and Objects
+A 00039874 Rich Text Format
+A 00039888 FileNameW
+A 00039894 FileName
+A 000398a0 Link Source Descriptor
+A 000398b8 Object Descriptor
+A 000398cc Link Source
+A 000398d8 Embed Source
+A 000398e8 Embedded Object
+A 000398f8 ObjectLink
+A 00039904 OwnerLink
+A 00039910 Native
+A 00039d70 CControlBar
+A 00039d7c CView
+A 00039d84 CFrameWnd
+A 00039d90 MSWHEEL_ROLLMSG
+A 0003a038 CCtrlView
+A 0003a044 CSplitterWnd
+A 0003a070 CMapStringToPtr
+A 0003a098 CArchiveException
+A 0003a0c8 COleException
+A 0003a220 COleObjectFactory
+A 0003a2e8 CDocument
+A 0003a328 COleBusyDialog
+A 0003a338 COleDialog
+A 0003a510 %2\CLSID
+A 0003a520 %2\Insertable
+A 0003a530 %2\protocol\StdFileEditing\verb\0
+A 0003a552 &Edit
+A 0003a558 %2\protocol\StdFileEditing\server
+A 0003a580 CLSID\%1
+A 0003a590 CLSID\%1\ProgID
+A 0003a5a8 CLSID\%1\InprocHandler32
+A 0003a5c1 ole32.dll
+A 0003a5d0 CLSID\%1\LocalServer32
+A 0003a5f0 CLSID\%1\Verb\0
+A 0003a600 &Edit,0,2
+A 0003a610 CLSID\%1\Verb\1
+A 0003a620 &Open,0,2
+A 0003a630 CLSID\%1\Insertable
+A 0003a648 CLSID\%1\AuxUserType\2
+A 0003a668 CLSID\%1\AuxUserType\3
+A 0003a688 CLSID\%1\DefaultIcon
+A 0003a69d %3,%7
+A 0003a6a8 CLSID\%1\MiscStatus
+A 0003a6c0 CLSID\%1\InProcServer32
+A 0003a6e0 CLSID\%1\DocObject
+A 0003a6f8 %2\DocObject
+A 0003a708 CLSID\%1\Printable
+A 0003a720 CLSID\%1\DefaultExtension
+A 0003a73a %9, %8
+A 0003a900 COleStreamFile
+A 0003a928 CSharedFile
+A 0003a970 commdlg_LBSelChangedNotify
+A 0003a98c commdlg_ShareViolation
+A 0003a9a4 commdlg_FileNameOK
+A 0003a9b8 commdlg_ColorOK
+A 0003a9c8 commdlg_help
+A 0003a9d8 commdlg_SetRGBColor
+A 0003a9f0 %s\shell\open\%s
+A 0003aa08 %s\shell\print\%s
+A 0003aa20 %s\shell\printto\%s
+A 0003aa38 %s\DefaultIcon
+A 0003aa48 %s\ShellNew
+A 0003aa58 command
+A 0003aa60  "%1"
+A 0003aa68  /p "%1"
+A 0003aa78  /pt "%1" "%2" "%3" "%4"
+A 0003aa98  /dde
+A 0003aaa0 ddeexec
+A 0003aaa8 [open("%1")]
+A 0003aab8 [print("%1")]
+A 0003aac8 [printto("%1","%2","%3","%4")]
+A 0003aae8 NullFile
+A 0003ab48 CDocManager
+A 0003ab70 CFileDialog
+A 0003ab90 IsTNT
+A 0003ab98 kernel32.dll
+A 0003abc8 H:mm:ss
+A 0003abd0 dddd, MMMM dd, yyyy
+A 0003abe4 M/d/yy
+A 0003abf4 December
+A 0003ac00 November
+A 0003ac0c October
+A 0003ac14 September
+A 0003ac20 August
+A 0003ac38 April
+A 0003ac40 March
+A 0003ac48 February
+A 0003ac54 January
+A 0003ac8c Saturday
+A 0003ac98 Friday
+A 0003aca0 Thursday
+A 0003acac Wednesday
+A 0003acb8 Tuesday
+A 0003acc0 Monday
+A 0003acc8 Sunday
+A 0003adb1  (8PX
+A 0003adb9 700WP
+A 0003adc9 `h````
+A 0003add1 ppxxxx
+A 0003adfc (null)
+A 0003ae0f ?IsProcessorFeaturePresent
+A 0003ae2c KERNEL32
+A 0003ae40 e+000
+A 0003ae48 runtime error 
+A 0003ae5c TLOSS error
+A 0003ae6c SING error
+A 0003ae7c DOMAIN error
+A 0003ae8c R6028
+A 0003ae93 - unable to initialize heap
+A 0003aeb4 R6027
+A 0003aebb - not enough space for lowio initialization
+A 0003aeec R6026
+A 0003aef3 - not enough space for stdio initialization
+A 0003af24 R6025
+A 0003af2b - pure virtual function call
+A 0003af4c R6024
+A 0003af53 - not enough space for _onexit/atexit table
+A 0003af84 R6019
+A 0003af8b - unable to open console device
+A 0003afb0 R6018
+A 0003afb7 - unexpected heap error
+A 0003afd4 R6017
+A 0003afdb - unexpected multithread lock error
+A 0003b004 R6016
+A 0003b00b - not enough space for thread data
+A 0003b032 abnormal program termination
+A 0003b054 R6009
+A 0003b05b - not enough space for environment
+A 0003b080 R6008
+A 0003b087 - not enough space for arguments
+A 0003b0ac R6002
+A 0003b0b3 - floating point not loaded
+A 0003b0d4 Microsoft Visual C++ Runtime Library
+A 0003b100 Runtime Error!
+A 0003b110 Program: 
+A 0003b120 <program name unknown>
+A 0003b140 SunMonTueWedThuFriSat
+A 0003b158 JanFebMarAprMayJunJulAugSepOctNovDec
+A 0003b184 LC_TIME
+A 0003b18c LC_NUMERIC
+A 0003b198 LC_MONETARY
+A 0003b1a4 LC_CTYPE
+A 0003b1b0 LC_COLLATE
+A 0003b1bc LC_ALL
+A 0003b1d4 frexp
+A 0003b1e4 _hypot
+A 0003b1ec _cabs
+A 0003b1f4 ldexp
+A 0003b20c floor
+A 0003b230 atan2
+A 0003b268 log10
+A 0003b2a0 GetLastActivePopup
+A 0003b2b4 GetActiveWindow
+A 0003b2c4 MessageBoxA
+A 0003b2d0 user32.dll
+A 0003b2dc united-states
+A 0003b2ec united-kingdom
+A 0003b2fc united states
+A 0003b30c united kingdom
+A 0003b320 turkey
+A 0003b32c taiwan
+A 0003b334 switzerland
+A 0003b340 sweden
+A 0003b350 spain
+A 0003b358 south-korea
+A 0003b364 south korea
+A 0003b374 singapore
+A 0003b380 russia
+A 0003b38c pr-china
+A 0003b398 pr china
+A 0003b3a4 portugal
+A 0003b3b0 poland
+A 0003b3c4 norway
+A 0003b3cc new-zealand
+A 0003b3d8 new zealand
+A 0003b3e4 netherlands
+A 0003b3f0 mexico
+A 0003b3fc korea
+A 0003b404 japan
+A 0003b40c italy
+A 0003b418 ireland
+A 0003b420 iceland
+A 0003b428 hungary
+A 0003b430 hong-kong
+A 0003b43c hong kong
+A 0003b448 holland
+A 0003b454 greece
+A 0003b45c great britain
+A 0003b470 germany
+A 0003b47c france
+A 0003b484 finland
+A 0003b48c england
+A 0003b498 denmark
+A 0003b4a8 china
+A 0003b4b4 canada
+A 0003b4c0 britain
+A 0003b4c8 brazil
+A 0003b4d4 belgium
+A 0003b4e4 austria
+A 0003b4ec australia
+A 0003b4fc america
+A 0003b510 turkish
+A 0003b51c swiss
+A 0003b524 swedish
+A 0003b530 spanish-modern
+A 0003b540 spanish-mexican
+A 0003b550 spanish
+A 0003b558 slovak
+A 0003b564 russian
+A 0003b578 portuguese-brazilian
+A 0003b590 portuguese
+A 0003b59c polish
+A 0003b5a8 norwegian-nynorsk
+A 0003b5bc norwegian-bokmal
+A 0003b5d0 norwegian
+A 0003b5ec korean
+A 0003b5fc japanese
+A 0003b60c italian-swiss
+A 0003b61c italian
+A 0003b62c irish-english
+A 0003b63c icelandic
+A 0003b648 hungarian
+A 0003b658 greek
+A 0003b660 german-swiss
+A 0003b670 german-austrian
+A 0003b680 german
+A 0003b68c french-swiss
+A 0003b69c french-canadian
+A 0003b6ac french-belgian
+A 0003b6bc french
+A 0003b6d0 finnish
+A 0003b6f4 english-usa
+A 0003b700 english-us
+A 0003b70c english-uk
+A 0003b718 english-nz
+A 0003b724 english-ire
+A 0003b730 english-can
+A 0003b73c english-aus
+A 0003b748 english-american
+A 0003b75c english
+A 0003b774 dutch-belgian
+A 0003b784 dutch
+A 0003b798 danish
+A 0003b7a4 czech
+A 0003b7b8 chinese-traditional
+A 0003b7cc chinese-singapore
+A 0003b7e0 chinese-simplified
+A 0003b7f4 chinese-hongkong
+A 0003b808 chinese
+A 0003b818 canadian
+A 0003b824 belgian
+A 0003b82c australian
+A 0003b838 american-english
+A 0003b84c american english
+A 0003b860 american
+A 0003b880 1#QNAN
+A 0003b888 1#INF
+A 0003b890 1#IND
+A 0003b898 1#SNAN
+A 0003ba7f FBEAGLINK Windows Dynamic Link Library
+A 00040188 BEAGLink.dll
+A 00040195 BuildImage
+A 000401a0 BuildImageA20_File
+A 000401b3 BuildImageBE_File
+A 000401c5 COMBufferEmpty
+A 000401d4 CardType
+A 000401dd ChangeBaudrate
+A 000401ec DeleteDesign
+A 000401f9 DlgBuildImage
+A 00040207 EnterDesign
+A 00040213 ExitCOM
+A 0004021b ExtractDesign
+A 00040229 ExtractImage
+A 00040236 FormatImage
+A 00040242 GetBMP_Length
+A 00040250 GetBaudRate
+A 0004025c GetComPortNr
+A 00040269 GetMonitorChar
+A 00040278 ImageDesignCount
+A 00040289 InitImage
+A 00040293 Lese32Bytes
+A 0004029f McCardChanged
+A 000402ad McChangeBaudrate
+A 000402be McCheck
+A 000402c6 McProtect
+A 000402d0 McReadData
+A 000402db McReadVersion
+A 000402e9 McSendInstr
+A 000402f5 McWriteATMEL
+A 00040302 McWriteData
+A 0004030e McWriteSRAM
+A 0004031a MoveBMP
+A 00040322 NewBaudRate
+A 0004032e OpenComInterface
+A 0004033f PowerUpWithBIOS
+A 0004034f ProgramFlash
+A 0004035c ReadByte
+A 00040365 ReadComBytes
+A 00040372 ReadFromCOM
+A 0004037e ReadImageBitmap
+A 0004038e ReadImageName
+A 0004039c ReadTransparentComBytes
+A 000403b4 ReleaseImage
+A 000403c1 SetComPortNr
+A 000403ce SetErrorCredits
+A 000403de SetParity
+A 000403e8 ShowCreditErrors
+A 000403f9 SoftwareReset
+A 00040407 TransparentMode
+A 00040417 UpdateArtista
+A 00040425 WriteBufferToCOM
+A 00040436 WriteComBytes
+A 00040444 WriteToCOM
+A 0004044f WriteTransparentComBytes
+A 00040468 _CardAdministration
+A 0004047c _CardChanged
+A 00040489 _DeletePcDesign
+A 00040499 _ExclusiveAccess
+A 000404aa _FormatCard
+A 000404b6 _GetBEAGLink_Version
+A 000404cb _GetBitmap
+A 000404d6 _GetColorCount
+A 000404e5 _GetDesignCount
+A 000404f5 _GetSettings
+A 00040502 _InitCOM
+A 0004050b _MakeExclusiveAccess
+A 00040520 _MovePcDesign
+A 0004052e _ReadAllDesigns
+A 0004053e _ReadDesignIndex
+A 0004054f _ReleaseBuffer
+A 0004055e _ReleaseExclusiveAccess
+A 00040576 _RetrieveDesign
+A 00040586 _SetSettings
+A 00040593 _StartExclusiveAccess
+A 000405a9 _StopExclusiveAccess
+A 000405be _Version_BEAGLink
+A 000405d0 _WriteAllDesigns
+A 000405e1 _WriteDesign
+A 000405ee _WriteDesignToPc
+A 000405ff lpExtractedDesign
+A 00040611 lpImageFileBuffer
+A 000408cc COM%d
+A 000408dc Program Error
+A 000408ec BEAGLink
+A 00040900 Another process uses the serial port.
+A 00040926 Please, close all other processes and try again.
+A 00040958 %200s
+A 00040968 00000000
+A 00040974 NO DONGLE
+A 00040980 0000 BERNINA EMBROIDERY 01.01.1997
+A 000409b0 .PAVCException@@
+A 000409c4 program error
+A 000409d4 %d %c
+A 000409e0 Sewing machine
+A 00040a08 Embroidery frame
+A 00040a30 Sewing machine and embroidery frame
+A 00040a64 [embroidery]
+A 00040a74 [pattern]
+A 00040a80 [languages]
+A 00040a90 File "UpdateBE.ini" not found
+A 00040ab0 UpdateBE.ini
+A 00040ac0 Sorry, the update was not successful.
+A 00040ae6 Try next time with the other update speed.
+A 00040b14 Update was successful.
+A 00040b30 Update sewing machine.
+A 00040b48 Starting download...(do not interrupt!)
+A 00040b70 Update embroidery frame.
+A 00040b8a Starting download...(do not interrupt!)
+A 00040bb4 Update sewing machine.
+A 00040bcc Turn now your sewing machine off and on again.
+A 00040bfb (To stop: press Cancel)
+A 00040c14 Update embroidery frame.
+A 00040c2e Turn now your sewing machine off and on again.
+A 00040c5d (To stop: press Cancel)
+A 00040c84 *.A20;*.BIN;*.BE
+A 00040c95 *.A20;*.BIN;*.BE
+A 00040ca8 Could not read file "%.80s" properly.
+A 00040ce0 Cannot create file "%.80s"
+A 00040d04 Save file
+A 00040d10 File "%.80s" not found.
+A 00040d28 Don't forget to turn the sewing machine off and on again.
+A 00040d63 To update an other machine press OK;
+A 00040d88 to exit press Cancel.
+A 00040da0 Please wait while reading data.
+A 00040dc0 Need file name for updating.
+A 00040de0 Choose the correct settings and press OK.
+A 00040e14 The sewing machine is on.
+A 00040e2f Reading versions of software now.
+A 00040e54 Welcome to the artista update procedure.
+A 00040e7e If the sewing machine is switched off, please turn it on now.
+A 00040ebd If the sewing machine is switched on for at least 5 seconds, please advance by pressing Cancel.
+A 00040f20 Welcome to the artista update procedure.
+A 00040f4a If the sewing machine is switched off, please turn it on now.
+A 00040f88 MS Sans Serif
+A 00040f9a BERNINA RWUSER
+A 00040fb8 .?AVCObject@@
+A 00040fd0 .?AVCCmdTarget@@
+A 00040ff0 .?AVCWnd@@
+A 00041008 .?AVCDialog@@
+A 00041020 .?AVCListBox@@
+A 00041038 .?AVCGdiObject@@
+A 00041058 .?AVCProgressCtrl@@
+A 00041078 .?AVCImageList@@
+A 000410b0 .?AVCButton@@
+A 000410c8 .?AVCComboBox@@
+A 000410e0 .?AVCEdit@@
+A 000410f8 .?AVCNoTrackObject@@
+A 00041118 .?AV_AFX_WIN_STATE@@
+A 00041138 .?AVCWinThread@@
+A 00041158 .?AVCWinApp@@
+A 00041170 .?AV_AFX_CTL3D_STATE@@
+A 00041190 .?AV_AFX_CTL3D_THREAD@@
+A 000411b8 .?AVCCmdUI@@
+A 000411d0 .?AVCOccManager@@
+A 000411f0 .?AV_AFX_THREAD_STATE@@
+A 00041210 .?AVAFX_MODULE_STATE@@
+A 00041230 .?AVAFX_MODULE_THREAD_STATE@@
+A 00041258 .?AV_AFX_BASE_MODULE_STATE@@
+A 00041280 .?AVCTestCmdUI@@
+A 000412a0 .PAVCUserException@@
+A 000412c0 .?AVCException@@
+A 000412f0 .PAVCObject@@
+A 00041308 .PAVCSimpleException@@
+A 00041328 .PAVCMemoryException@@
+A 00041348 .PAVCNotSupportedException@@
+A 00041370 .?AVCSimpleException@@
+A 00041390 .?AVCMemoryException@@
+A 000413b0 .?AVCNotSupportedException@@
+A 000413d8 .?AVCDC@@
+A 000413f0 .?AVCClientDC@@
+A 00041408 .?AVCWindowDC@@
+A 00041420 .?AVCPaintDC@@
+A 00041438 .PAVCResourceException@@
+A 00041460 .?AVCResourceException@@
+A 00041488 .?AVCUserException@@
+A 000414a8 .?AUCThreadData@@
+A 000414c8 .?AVCMapPtrToPtr@@
+A 000414e8 .?AUIUnknown@@
+A 00041500 .?AUISequentialStream@@
+A 00041520 .?AUIStream@@
+A 00041538 .?AVCArchiveStream@@
+A 00041558 .?AVCFile@@
+A 00041570 .?AVCFileException@@
+A 00041598 .?AUIParseDisplayName@@
+A 000415b8 .?AUIOleContainer@@
+A 000415d8 .?AVXOleContainer@COleControlContainer@@
+A 00041610 .?AUIOleWindow@@
+A 00041630 .?AUIOleInPlaceUIWindow@@
+A 00041658 .?AUIOleInPlaceFrame@@
+A 00041678 .?AVXOleIPFrame@COleControlContainer@@
+A 000416a8 .?AVCOleControlContainer@@
+A 000416d0 .?AVCFont@@
+A 000416e8 .?AVCEnumArray@@
+A 00041708 .?AVCEnumUnknown@@
+A 00041728 .?AUINotifyDBEvents@@
+A 00041748 .?AVXNotifyDBEvents@COleControlSite@@
+A 00041778 .?AUIBoundObjectSite@@
+A 00041798 .?AVXBoundObjectSite@COleControlSite@@
+A 000417c8 .?AVXEventSink@COleControlSite@@
+A 000417f8 .?AUIPropertyNotifySink@@
+A 00041820 .?AVXPropertyNotifySink@COleControlSite@@
+A 00041858 .?AUIDispatch@@
+A 00041870 .?AVXAmbientProps@COleControlSite@@
+A 000418a0 .?AUIOleControlSite@@
+A 000418c0 .?AVXOleControlSite@COleControlSite@@
+A 000418f0 .?AUIOleInPlaceSite@@
+A 00041910 .?AVXOleIPSite@COleControlSite@@
+A 00041940 .?AUIOleClientSite@@
+A 00041960 .?AVXOleClientSite@COleControlSite@@
+A 00041990 .?AVCOleControlSite@@
+A 000419b0 .?AVCDataSourceControl@@
+A 000419d8 .?AVCMemFile@@
+A 000419f0 .?AVCPtrList@@
+A 00041a08 .?AVCMenu@@
+A 00041a20 .PAVCFileException@@
+A 00041a40 .PAVCOleException@@
+A 00041a60 .?AVCOleDispatchException@@
+A 00041a88 .PAVCOleDispatchException@@
+A 00041ae8 .?AUIEnumVOID@@
+A 00041b00 .?AVXEnumVOID@CEnumArray@@
+A 00041b28 .?AVCFrameWnd@@
+A 00041b40 .?AVCOleException@@
+A 00041b60 .?AVCOleMessageFilter@@
+A 00041b80 .?AUIMessageFilter@@
+A 00041ba0 .?AVXMessageFilter@COleMessageFilter@@
+A 00041bd0 .?AVCCommonDialog@@
+A 00041bf0 .?AVCOleDialog@@
+A 00041c10 .?AVCOleBusyDialog@@
+A 00041c30 .?AV_AFX_OLE_STATE@@
+A 00041c78 .?AVtype_info@@
+A 000454d6 z?aUY
+A 00045518 zc%C1
+A 0004556b -64OS
+A 000461f2 Sleep
+A 000461fa GetTickCount
+A 0004620a CloseHandle
+A 00046218 SetCommState
+A 00046228 GetCommState
+A 00046238 SetCommTimeouts
+A 0004624a SetupComm
+A 00046256 SetCommMask
+A 00046264 CreateFileA
+A 00046272 GetOverlappedResult
+A 00046288 WaitForSingleObject
+A 0004629e GetLastError
+A 000462ae ReadFile
+A 000462ba ClearCommError
+A 000462cc WriteFile
+A 000462d8 CreateEventA
+A 000462e8 GlobalFree
+A 000462f6 GlobalAlloc
+A 00046304 GetSystemDefaultLangID
+A 0004631e LockResource
+A 0004632e LoadResource
+A 0004633e FindResourceExA
+A 00046350 GlobalLock
+A 0004635e GlobalUnlock
+A 0004636e lstrcpyA
+A 0004637a FindResourceA
+A 0004638a lstrlenA
+A 00046396 InterlockedIncrement
+A 000463ae InterlockedDecrement
+A 000463c6 WideCharToMultiByte
+A 000463dc MultiByteToWideChar
+A 000463f2 GetCurrentThreadId
+A 00046408 GetCurrentThread
+A 0004641c lstrcmpiA
+A 00046428 lstrcmpA
+A 00046434 GlobalDeleteAtom
+A 00046448 lstrcatA
+A 00046454 GetVersion
+A 00046462 SetLastError
+A 00046472 lstrcpynA
+A 0004647e LocalFree
+A 0004648a FormatMessageA
+A 0004649c MulDiv
+A 000464a6 LocalAlloc
+A 000464b4 InitializeCriticalSection
+A 000464d0 TlsAlloc
+A 000464dc DeleteCriticalSection
+A 000464f4 GlobalHandle
+A 00046504 TlsFree
+A 0004650e LeaveCriticalSection
+A 00046526 GlobalReAlloc
+A 00046536 EnterCriticalSection
+A 0004654e TlsSetValue
+A 0004655c LocalReAlloc
+A 0004656c TlsGetValue
+A 0004657a SetErrorMode
+A 0004658a GetModuleFileNameA
+A 000465a0 GlobalFlags
+A 000465ae WritePrivateProfileStringA
+A 000465cc GetProcessVersion
+A 000465e0 DuplicateHandle
+A 000465f2 GetCurrentProcess
+A 00046606 SetFilePointer
+A 00046618 FlushFileBuffers
+A 0004662c LockFile
+A 00046638 UnlockFile
+A 00046646 SetEndOfFile
+A 00046656 FreeLibrary
+A 00046664 GetProcAddress
+A 00046676 LoadLibraryA
+A 00046686 FindClose
+A 00046692 FindFirstFileA
+A 000466a4 GetVolumeInformationA
+A 000466bc GetFullPathNameA
+A 000466d0 GetThreadLocale
+A 000466e2 GetVersionExA
+A 000466f2 GetFileAttributesA
+A 00046708 GetFileSize
+A 00046716 GetFileTime
+A 00046724 FileTimeToSystemTime
+A 0004673c FileTimeToLocalFileTime
+A 00046756 GlobalAddAtomA
+A 00046768 GlobalGetAtomNameA
+A 0004677e RtlUnwind
+A 0004678a GetCommandLineA
+A 0004679c GetModuleHandleA
+A 000467b0 HeapAlloc
+A 000467bc HeapFree
+A 000467c8 ExitProcess
+A 000467d6 TerminateProcess
+A 000467ea RaiseException
+A 000467fc HeapSize
+A 00046808 HeapReAlloc
+A 00046816 GetCPInfo
+A 00046822 GetACP
+A 0004682c GetOEMCP
+A 00046838 GetTimeZoneInformation
+A 00046852 SetHandleCount
+A 00046864 GetStdHandle
+A 00046874 GetFileType
+A 00046882 GetStartupInfoA
+A 00046894 FreeEnvironmentStringsA
+A 000468ae FreeEnvironmentStringsW
+A 000468c8 GetEnvironmentStrings
+A 000468e0 GetEnvironmentStringsW
+A 000468fa HeapDestroy
+A 00046908 HeapCreate
+A 00046916 VirtualFree
+A 00046924 LCMapStringA
+A 00046934 LCMapStringW
+A 00046944 VirtualAlloc
+A 00046954 SetUnhandledExceptionFilter
+A 00046972 GetStringTypeA
+A 00046984 GetStringTypeW
+A 00046996 IsBadReadPtr
+A 000469a6 IsBadWritePtr
+A 000469b6 IsBadCodePtr
+A 000469c6 SetStdHandle
+A 000469d6 GetLocaleInfoA
+A 000469e8 GetLocaleInfoW
+A 000469fa CompareStringA
+A 00046a0c CompareStringW
+A 00046a1e SetEnvironmentVariableA
+A 00046a36 KERNEL32.dll
+A 00046a46 SetCapture
+A 00046a54 GetCursor
+A 00046a60 SetCursor
+A 00046a6c SetFocus
+A 00046a78 DispatchMessageA
+A 00046a8c TranslateMessage
+A 00046aa0 PeekMessageA
+A 00046ab0 GetFocus
+A 00046abc GetCapture
+A 00046aca SendMessageA
+A 00046ada ReleaseDC
+A 00046ae6 GetDC
+A 00046aee MessageBoxA
+A 00046afc EnableWindow
+A 00046b0c BringWindowToTop
+A 00046b20 ReleaseCapture
+A 00046b32 SetActiveWindow
+A 00046b44 GetActiveWindow
+A 00046b56 IsWindowEnabled
+A 00046b68 MessageBeep
+A 00046b76 UpdateWindow
+A 00046b86 InvalidateRect
+A 00046b98 GetDlgItem
+A 00046ba6 GetWindowLongA
+A 00046bb8 GetParent
+A 00046bc4 DestroyWindow
+A 00046bd4 CreateDialogIndirectParamA
+A 00046bf2 GetSystemMetrics
+A 00046c06 IsWindow
+A 00046c12 EndDialog
+A 00046c1e GetNextDlgTabItem
+A 00046c32 GetClientRect
+A 00046c42 PostQuitMessage
+A 00046c54 PostMessageA
+A 00046c64 ShowOwnedPopups
+A 00046c76 SetWindowsHookExA
+A 00046c8a GetCursorPos
+A 00046c9a IsWindowVisible
+A 00046cac ValidateRect
+A 00046cbc CallNextHookEx
+A 00046cce GetKeyState
+A 00046cdc GetMessageA
+A 00046cea EnableMenuItem
+A 00046cfc CheckMenuItem
+A 00046d0c SetMenuItemBitmaps
+A 00046d22 ModifyMenuA
+A 00046d30 GetMenuState
+A 00046d40 LoadBitmapA
+A 00046d4e GetMenuCheckMarkDimensions
+A 00046d6c GetWindow
+A 00046d78 SetWindowPos
+A 00046d88 MapDialogRect
+A 00046d98 UnhookWindowsHookEx
+A 00046dae RegisterWindowMessageA
+A 00046dc8 SetWindowLongA
+A 00046dda GetWindowRect
+A 00046dea GetMessagePos
+A 00046dfa GetMessageTime
+A 00046e0c RemovePropA
+A 00046e1a CallWindowProcA
+A 00046e2c GetPropA
+A 00046e38 SetForegroundWindow
+A 00046e4e GetForegroundWindow
+A 00046e64 GetLastActivePopup
+A 00046e7a SetPropA
+A 00046e86 CreateWindowExA
+A 00046e98 DefWindowProcA
+A 00046eaa GetDlgCtrlID
+A 00046eba GetWindowTextA
+A 00046ecc GetWindowTextLengthA
+A 00046ee4 GetMenu
+A 00046eee GetMenuItemID
+A 00046efe GetSubMenu
+A 00046f0c GetMenuItemCount
+A 00046f20 RegisterClassA
+A 00046f32 GetClassInfoA
+A 00046f42 wsprintfA
+A 00046f4e WinHelpA
+A 00046f5a IsChild
+A 00046f64 GetTopWindow
+A 00046f74 SetScrollPos
+A 00046f84 GetScrollPos
+A 00046f94 SetScrollRange
+A 00046fa6 ShowScrollBar
+A 00046fb6 SetScrollInfo
+A 00046fc6 ScrollWindow
+A 00046fd6 ScreenToClient
+A 00046fe8 EndDeferWindowPos
+A 00046ffc CopyRect
+A 00047008 BeginDeferWindowPos
+A 0004701e DeferWindowPos
+A 00047030 EqualRect
+A 0004703c AdjustWindowRectEx
+A 00047052 GetSysColor
+A 00047060 MapWindowPoints
+A 00047072 SystemParametersInfoA
+A 0004708a SendDlgItemMessageA
+A 000470a0 LoadIconA
+A 000470ac IsDialogMessageA
+A 000470c0 SetWindowTextA
+A 000470d2 MoveWindow
+A 000470e0 ShowWindow
+A 000470ee GetWindowDC
+A 000470fc BeginPaint
+A 0004710a EndPaint
+A 00047116 TabbedTextOutA
+A 00047128 DrawTextA
+A 00047134 GrayStringA
+A 00047142 UnregisterClassA
+A 00047156 GetClassNameA
+A 00047166 PtInRect
+A 00047172 ClientToScreen
+A 00047184 GetDesktopWindow
+A 00047198 LoadStringA
+A 000471a6 LoadCursorA
+A 000471b4 GetSysColorBrush
+A 000471c8 CharUpperA
+A 000471d6 GetNextDlgGroupItem
+A 000471ec OffsetRect
+A 000471fa CharNextA
+A 00047206 CopyAcceleratorTableA
+A 0004721e SetRect
+A 00047228 DestroyMenu
+A 00047236 FindWindowA
+A 00047244 WindowFromPoint
+A 00047256 RegisterClipboardFormatA
+A 00047272 SetRectEmpty
+A 00047282 LoadAcceleratorsA
+A 00047296 TranslateAcceleratorA
+A 000472ae LoadMenuA
+A 000472ba SetMenu
+A 000472c4 ReuseDDElParam
+A 000472d6 UnpackDDElParam
+A 000472e8 IsIconic
+A 000472f4 PostThreadMessageA
+A 00047308 USER32.dll
+A 00047316 GetDIBits
+A 00047322 RealizePalette
+A 00047334 SelectPalette
+A 00047344 CreateDIBitmap
+A 00047356 DeleteObject
+A 00047366 GetDeviceCaps
+A 00047376 DeleteDC
+A 00047382 LineTo
+A 0004738c BitBlt
+A 00047396 MoveToEx
+A 000473a2 PatBlt
+A 000473ac SelectObject
+A 000473bc CreateCompatibleDC
+A 000473d2 GetObjectA
+A 000473e0 CreateCompatibleBitmap
+A 000473fa CreatePen
+A 00047406 StretchBlt
+A 00047414 CreateBitmap
+A 00047424 CreateFontIndirectA
+A 0004743a SetDIBitsToDevice
+A 0004744e SetTextColor
+A 0004745e SetBkColor
+A 0004746c SaveDC
+A 00047476 RestoreDC
+A 00047482 GetStockObject
+A 00047494 SetMapMode
+A 000474a2 SetViewportOrgEx
+A 000474b6 OffsetViewportOrgEx
+A 000474cc SetViewportExtEx
+A 000474e0 ScaleViewportExtEx
+A 000474f6 SetWindowExtEx
+A 00047508 ScaleWindowExtEx
+A 0004751c GetClipBox
+A 0004752a GetViewportExtEx
+A 0004753e GetWindowExtEx
+A 00047550 PtVisible
+A 0004755c RectVisible
+A 0004756a TextOutA
+A 00047576 ExtTextOutA
+A 00047584 Escape
+A 0004758e GetMapMode
+A 0004759c DPtoLP
+A 000475a6 GetTextColor
+A 000475b6 GetBkColor
+A 000475c4 LPtoDP
+A 000475cc GDI32.dll
+A 000475d8 GetOpenFileNameA
+A 000475ec GetFileTitleA
+A 000475fa comdlg32.dll
+A 0004760a ClosePrinter
+A 0004761a DocumentPropertiesA
+A 00047630 OpenPrinterA
+A 0004763e WINSPOOL.DRV
+A 0004764e RegCloseKey
+A 0004765c RegCreateKeyExA
+A 0004766e RegOpenKeyExA
+A 0004767e RegQueryValueExA
+A 00047692 RegSetValueExA
+A 000476a2 ADVAPI32.dll
+A 000476b2 DragFinish
+A 000476c0 DragQueryFileA
+A 000476d0 SHELL32.dll
+A 000476de ImageList_Destroy
+A 000476f0 COMCTL32.dll
+A 000476fe oledlg.dll
+A 0004770c CLSIDFromProgID
+A 0004771e CLSIDFromString
+A 00047730 StgOpenStorageOnILockBytes
+A 0004774e StgCreateDocfileOnILockBytes
+A 0004776e CreateILockBytesOnHGlobal
+A 0004778a CoGetClassObject
+A 0004779e CoTaskMemFree
+A 000477ae CoTaskMemAlloc
+A 000477c0 OleInitialize
+A 000477d0 OleUninitialize
+A 000477e2 CoFreeUnusedLibraries
+A 000477fa CoRegisterMessageFilter
+A 00047814 CoRevokeClassObject
+A 0004782a OleFlushClipboard
+A 0004783e OleIsCurrentClipboard
+A 00047854 ole32.dll
+A 0004785e OLEAUT32.dll
+A 0004c6bf wwwwww
+A 0004c6cd wwwwww
+A 0004c6d4 wwwwww
+A 0004ca60 wwwwww
+A 0004ca67 wwwwww
+A 0004ca6e wwwwww
+A 0004ca75 wwwwww
+A 0004ca7c wwwwww
+A 00050009 0!010C0
+A 00050021 1Q1[1`1e1q1v1
+A 00050045 2'212_2k2u2
+A 00050059 3:3D3L3e3k3
+A 00050067 324<4A4L4R4W4^4d4j4
+A 0005008d 5'5]5h516A6G6M6Z6e6s6
+A 000500b7 7$7H7Q7_7f7l7v7
+A 000500cf 8 8<8S8X8c8i8n8t8|8
+A 0005010b :*:;:F:M:W:_:x:}:
+A 0005012f ;(;5;A;T;`;g;p;w;
+A 0005014f <!<-<4<><F<\<q<y<
+A 00050179 =(=,=0=4=B=G=V=l=r=
+A 000501a3 >8?M?
+A 000501b9 0%0E0R0\0
+A 000501d3 2-2G2d2
+A 00050201 5,5P5T5X5\5
+A 00050217 6&6;6b6u6
+A 00050227 7;7R7b7
+A 00050235 728F8Y8
+A 00050241 9(9>9S9j9
+A 00050257 ;E;h;
+A 00050263 <4<K<]<
+A 00050285 >'><>Q>h>
+A 00050295 ?9?_?r?
+A 000502ad 0,0\0f0
+A 000502b7 091G1W1\1
+A 000502c3 1J2Y2
+A 000502d9 4#4X4m4
+A 000502e7 4'5>5E5X5z5
+A 00050303 7:7M7T7r7
+A 00050321 8G8s8
+A 0005034d ;(;1;J;b;
+A 0005035b <T<c<x<
+A 0005037f 0)0G0
+A 00050391 1 131O1x1
+A 000503ab 2'2K2c2t2
+A 000503c1 3)3H3_3l3w3
+A 000503f7 5'5H5N5d5s5{5
+A 00050415 6 6?6J6f6|6
+A 00050441 8C8T8l8s8z8
+A 00050465 9&9|9
+A 0005046d 9	:%:X:w:
+A 00050485 <3<E<\<s<
+A 00050499 =.>C>{>
+A 000504bd 3_3w3
+A 000504cf 4*4Q4]4
+A 000504df 5F5n5s5
+A 000504eb 5	6-6A6b6
+A 00050503 7 7+7>7E7M7V7[7f7y7
+A 0005051d 7(8e8m8
+A 00050533 989I9^9s9
+A 00050549 :%:+:F:
+A 00050559 ;";H;u;
+A 0005056b <,<I<h<x<
+A 00050583 >*>8>>>X>
+A 00050593 >"?4?l?y?
+A 000505b3 1 1%1.1
+A 000505bd 1;2C2U2i2
+A 000505c9 3'3,3Y3z3
+A 000505d9 516C6
+A 000505e9 7V7b7
+A 000505f5 7S8x8
+A 00050601 90:;:[:
+A 00050617 >#>(>2>B>M>R>
+A 0005062b ?@?L?W?q?x?
+A 0005064f 1e1n1
+A 0005066f 252<2v2
+A 0005067b 3@3Q3X3`3f3
+A 0005069d 4G4M4b4t4{4
+A 000506c5 5=6I6o6
+A 000506ef 7$7*71767<7E7K7R7`7p7z7
+A 0005070f 7	8.8D8M8X8b8s8
+A 00050727 919L9g9z9
+A 00050743 :8:N:]:b:m:s:x:
+A 00050765 ;%;*;5;;;B;Z;i;y;
+A 0005078d <%<3<E<N<e<k<p<v<
+A 000507a7 =4=?=K=g=
+A 000507bb =@>\>s>
+A 000507e1 0 060C0V0b0i0
+A 00050803 1P1W1y1
+A 00050817 2;2I2O2W2s2
+A 00050841 415?5T5[5b5k5
+A 0005085d 6`6w6
+A 0005086f 7U7l7
+A 00050885 8#848I8g8~8
+A 00050895 8I9m9u9
+A 000508a7 :):D:
+A 000508bd ;D;q;
+A 000508cb ;1<\<z<
+A 000508ef >#>j>
+A 00050905 454v4
+A 00050911 6.7B7K7v7
+A 0005091d 7!818A8
+A 0005092d 8a<q<
+A 00050967 8p9{9X:f:
+A 00050979 ;,;T?
+A 00050988 T0g0w0}0
+A 00050991 0Q1X1n1s1
+A 000509a5 232g2
+A 000509ab 3E3Z3_3e3l334
+A 000509bf 555E5K5a5g5
+A 000509d5 606A6S6g6
+A 000509e1 6%7=7i7x7
+A 000509f3 999O9`9g9
+A 00050a07 :7:O:g:
+A 00050a23 =3=9=D=Y=
+A 00050a31 =	>?>
+A 00050a43 ?%?8?V?s?
+A 00050a59 0I0~0
+A 00050a61 0)1V1
+A 00050a73 313=3
+A 00050a85 6?6W6o6
+A 00050aa1 8#9L9]9f9
+A 00050ab5 :C:S;y<
+A 00050ad3 ???W?o?
+A 00050af7 1'191K1b1w1
+A 00050b0f 2.3;3
+A 00050b21 5 5D5l5
+A 00050b45 7 868p8
+A 00050b55 979N9[9A:
+A 00050b69 ;@;S;c;};
+A 00050b77 <,<><Q<c<
+A 00050b87 <A=Z=
+A 00050b9d ?>?K?
+A 00050bad 0)0D0~0
+A 00050bb7 161<1G1\1
+A 00050bd1 3c3d4N5y6
+A 00050bdd 7#7R7u7
+A 00050be7 7c8h8~8
+A 00050bf3 879u9
+A 00050c05 ;)<4<Y<
+A 00050c19 =!=<=^=
+A 00050c2d >>>T>l>
+A 00050c37 > ?%?2?<?T?d?t?
+A 00050c6f 657Y7
+A 00050c79 8W9a9
+A 00050c97 <r=|=
+A 00050cb3 1&2D2N2
+A 00050ccb 6c6o6
+A 00050ce1 7e7s7
+A 00050ce9 7(8O8j8
+A 00050cfb 8(9f9t9
+A 00050d17 ;);Y;s;
+A 00050d23 <Y<x<
+A 00050d2d <H=Z=
+A 00050d49 0$020:0N0U0
+A 00050d67 2r2s5
+A 00050d7d 7!7m7
+A 00050d83 7#808J8W8
+A 00050d99 9<:L:a:k:
+A 00050dbb <4=D=
+A 00050dc5 >->k>
+A 00050dd1 >	?.?j?
+A 00050de9 0D0t0
+A 00050df9 141k1
+A 00050e01 2L4X4c4M5
+A 00050e27 ;';>;N;j;
+A 00050e37 </<><K<b<
+A 00050e45 <"=>=
+A 00050e75 1@1i1~1
+A 00050e85 3,4p4}4
+A 00050e91 4 5g5
+A 00050e97 5?6y6
+A 00050ea3 9=:}:
+A 00050eb1 :1;8;>;m;
+A 00050ebf <N=s=
+A 00050ecd >!?%?)?-?1?5?9?=?A?E?I?M?Q?U?Y?]?b?{?
+A 00050f23 4d5t5#656
+A 00050f31 6(727<7F7P7Z7l7w7~7
+A 00050f49 8#8x8
+A 00050f53 :,:J:q:
+A 00050f67 <%=C=
+A 00050f75 >&?4?J?m?
+A 00050f8f 0B1|1
+A 00050f95 1;2Q2y2
+A 00050fad 6'7-7L7
+A 00050fbb 8G8a9
+A 00050fd3 ;A<G<
+A 00050fe3 >F?r?
+A 00050ff1 060B0
+A 00050ffb 1n1y1
+A 00051003 2I2p2
+A 00051021 5n6|6
+A 0005102b 6#7b7
+A 00051037 8N8b8
+A 00051049 >-><>K>
+A 00051071 6$6=6Z6b6
+A 0005107f 7	7#7F7L7S7_7j7r7
+A 000510c1 =H=`=g=o=t=x=|=
+A 000510e5 >R>X>\>`>d>
+A 000510fd ?!?K?}?
+A 0005112f 1)1/1I3S3
+A 00051157 90959@9E9k9q9
+A 00051187 <5<<<@<D<H<L<P<T<X<
+A 000511a5 =%=@=G=L=P=T=q=
+A 000511c7 =:>@>D>H>L>
+A 000511e1 0D0N0
+A 000511e9 0!1,111>1C1
+A 0005120b 2 2*2?3k3
+A 0005122f 848g8}8
+A 0005123b 9R9h9
+A 00051251 ;2;c;l;
+A 0005126b ;#<4<X<^<
+A 00051291 =2=9=X=\=`=d=h=
+A 000512bc <0J0U0
+A 000512c7 0E1Z1|1
+A 000512d9 5%6,6
+A 000512e1 ;6=;=
+A 00051301 262B2H2g2
+A 00051325 364;4^4
+A 00051333 5J6Y6p6
+A 00051353 ;l>p>t>x>|>
+A 0005138b ? ?$?(?,?0?4?8?<?
+A 000513a5 1!1'10171g1
+A 000513b5 1(2p3{3
+A 000513bf 4b7w7
+A 000513cd 8$8)858=8E8M8f8n8w8
+A 000513ef 9)909G9N9U9p9
+A 00051407 :!:?:
+A 00051411 :5<G<`<
+A 00051421 = >\>c>t?{?
+A 00051438 L1z1?3[3
+A 00051449 4`6u6
+A 0005145d 8\9`9d9h9l9p9t9x9|9
+A 00051487 9!:A:
+A 0005148d ;l;s;'<-<\<`<d<h<l<p<t<x<|<
+A 000514af ='=C=O=`=e=r=x=
+A 000514c1 =d>q>
+A 000514cf ?Y?b?{?
+A 000514e9 0*020k0
+A 00051511 4{5'6
+A 00051519 7<7S7
+A 00051523 8*8K8S8Y8_8c8m8
+A 00051543 ;.;|;
+A 0005154f <4<[<b<s<z<
+A 0005156b =+=>=G=R=e=
+A 0005157d =;>I>n>
+A 00051597 0*0I0V0h0
+A 000515a7 121h1
+A 000515bf 3!3+3/343>3B3K3Q3Z3
+A 000515d9 42484C4I4b4i4q4
+A 000515ef 465U5f5
+A 00051611 ;*;]<u<
+A 0005162d <6=Q=
+A 00051651 010t0
+A 0005165d 1.1E1W1
+A 0005166f 2,2q3
+A 00051687 4*474<4L4S4Z4f4u4}4
+A 000516a9 475i5{5
+A 000516b9 6:6E6M6[6m6
+A 000516d1 7 7'7.7I7P7]7f7v7}7
+A 000516fb 8#8,858H8
+A 0005170b 9]9p9
+A 00051719 :$:K:^:|:
+A 0005172d :&;,;:;
+A 00051739 <-<a<l<
+A 00051749 =*=;=K=U=\=k=t=
+A 00051767 =0>K>i>t>
+A 0005177c Q0o0u0z0
+A 0005178d 1.1E1
+A 00051793 1I6i6
+A 0005179d :2:9:S:
+A 000517ad ;F;l;
+A 000517bd <<=X=`?d?h?l?p?t?x?|?
+A 000517f8 4080<0@0D0
+A 00051817 202M2a2u2
+A 00051827 3V3l3
+A 00051833 3"4-4A4X4
+A 00051857 5%686b6
+A 00051865 7w8	9
+A 0005186b 9"9(9
+A 0005188d ;%;,;1;B;a;t<z<
+A 000518a5 =\=y=
+A 000518b5 >3>u>
+A 000518bd >#?/?B?
+A 000518d3 0!0+01050@0R0n0u0!707<7P7d7x7
+A 0005190b 8'8-8:8F8U8g8m8s8
+A 0005192f 9!9n9x9
+A 00051957 <,<5<;<
+A 00051987 ?)?2?B?K?[?d?
+A 0005199f 0=0C0
+A 000519b5 0<1O1W1}1
+A 000519d5 5(5+:9:
+A 000519e3 <C<R<
+A 000519ef =&>I>q>z>
+A 000519ff ?,?J?v?
+A 00051a19 030_0
+A 00051a23 0Q1]1i1p1
+A 00051a37 112~2>3
+A 00051a3f 3S4a4s4
+A 00051a55 646q6
+A 00051a5d 6"7(7.747:7@7F7L7R7
+A 00051a7b 9[;m;
+A 00051ac9 3&3<3
+A 00051ad7 495B5Z5
+A 00051ae5 6h6x6
+A 00051aed 637B7^7
+A 00051b0f :M;z;
+A 00051b3d 030G0s0
+A 00051b89 9;9M9h9
+A 00051bad <T<d<{<
+A 00051bbb =S=^=
+A 00051be1 ?$?;?F?S?\?b?y?
+A 00051c05 0I0h0
+A 00051c19 152:2G2P2l2q2
+A 00051c45 6 6%6
+A 00051c51 7/7a7
+A 00051c6b 8'8,8H8P8X8r8w8
+A 00051c87 :':/:N;T;
+A 00051c93 ;-<B<
+A 00051c9f =K=c=o>t>
+A 00051caf ?>?`?k?
+A 00051cc7 030:0I0[0
+A 00051cfd 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00051d47 7<8A8
+A 00051d53 8Q9_9j9	:
+A 00051d5d :D:Y:l:
+A 00051d6b ;A;l;
+A 00051d75 ;B<M<
+A 00051dc1 2(2P2U2
+A 00051dd9 4k5w5
+A 00051df5 7'7E7
+A 00051e03 929H9d9
+A 00051e19 ;F;p;
+A 00051e21 ;D<i<
+A 00051e35 >+>R>
+A 00051e3f ?$?C?f?
+A 00051e5b 1@1x1
+A 00051e61 1L2Q2
+A 00051e8f 9S9{9
+A 00051ea1 :H:Z:y:
+A 00051eb1 ;*;C;R<d<
+A 00051ec1 <'=6=R=a=z=
+A 00051ed7 >+>6>V>a>
+A 00051ee7 ?#?9?E?U?
+A 00051f13 3/4_4
+A 00051f1f 5?6C6G6K6O6S6W6[6_6c6g6k6o6s6w6{6
+A 00051f6b 6"7-7l7
+A 00051f75 7Z8l8
+A 00051f81 899?9~9
+A 00051f8b :>:w:
+A 00051f99 ;U<o<|<
+A 00051fa7 =/=O=^=
+A 00051fb9 >U>g>z>
+A 00051fc9 ?,?d?
+A 00051fdc Q0^0f0
+A 00051ff3 1 121B1j1
+A 00052009 2%292O2f2q2
+A 00052023 3%3*303:3H3M3}3
+A 0005203f 4-464;4
+A 0005204f 6.6o7
+A 00052065 ?#?Z?l?
+A 00052089 234H4
+A 00052093 455>5R5Y5r5
+A 000520a3 569C9
+A 000520b1 :e:w:Y;
+A 000520bb ;D<V<
+A 000520cd =@=r=
+A 000520e1 >I>O>T>\>e>k>
+A 000520f1 >M?_?
+A 00052107 0(1.1@1K1
+A 00052127 4B4H4Y4
+A 0005213d 6j6x6
+A 00052151 8$9P9
+A 00052167 >">u>
+A 00052187 252F2e2z2
+A 000521a7 6;7|7
+A 000521bd 9(949?9a9h9v9
+A 000521cb 9l:}:
+A 000521d9 :*;7;J;V;
+A 000521e5 <Q=`=n=
+A 000521f1 >.>N>X>
+A 000521ff >2?8?>?p?v?|?
+A 0005222d 1G1X1^1o1
+A 00052237 1\2a2
+A 00052243 2	3E3Z3m3
+A 0005224f 4#41464@4W4x4
+A 0005226f 5E6Z6l6
+A 00052287 8E8J8[8`8u8
+A 0005229f 9#9-9D9O9[9e9|9
+A 000522c3 :,:9:?:
+A 000522d1 ;$;L;U;\;f;
+A 000522f5 =C=U=
+A 00052311 ?%?/?P?m?y?
+A 0005232c B0X0r0y0
+A 00052345 2X2j2w2
+A 0005236d 3&33393@3G3Y3`3i3s3
+A 0005238f 4n4u4
+A 000523ad 5B5d5
+A 000523c3 6'6,6B6N6h6t6
+A 000523ef 7 7*747>7P7{7
+A 000523fd 768<8\8c8k8s8{8
+A 00052417 8#9+9C9e9w9
+A 0005242d :*:6:t:
+A 0005243d :=<j<
+A 00052449 <.=Q=
+A 00052483 202B2l2
+A 0005248f 2u3{3
+A 0005249d 545I5{5
+A 000524b1 767y7
+A 000524d9 8 8$8(8,8084888<8@8D8H8M8
+A 000524f7 9::S:
+A 0005252d ;&<0<
+A 00052535 <E=Z=
+A 00052565 1o2s2w2{2
+A 000525bf 3#3'3=3O3e3
+A 000525e3 5(6W627
+A 000525f9 :9:Y:
+A 00052605 ;	<)<Q<q<
+A 0005261f >N?i?
+A 0005263b 0	1]2
+A 00052643 2^3y3
+A 00052649 3f4|4
+A 0005265b 535F5Y5m5
+A 00052673 6!666I6^6r6
+A 00052685 6*7>7\7i7
+A 0005269f 8*8?8Q8e8y8
+A 000526b7 8	9(959I9U9a9m9
+A 000526d5 :%:1:=:Q:p:}:
+A 000526eb ; ;N;a;u;
+A 00052707 <#<8<N<a<u<
+A 0005271d =9=a=m=
+A 00052731 >)>>>j>
+A 00052745 ?"?5?L?d?z?
+A 0005275b 080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 000527b5 1,1D1\1t1
+A 000527fb 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0005287b 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3t3
+A 000528c7 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0005293b 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 0005298b 6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 000529fb 7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00052a63 8 8$8(8,8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00052ad7 9 9$9<9T9l9
+A 00052b19 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00052b5f ;$;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00052bcd < <$<<<X<\<`<d<h<l<p<t<x<|<
+A 00052c37 =4=L=d=|=
+A 00052c4b > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00052cbd ?$?@?D?\?x?|?
+A 00052ce5 0(000@0H0X0`0p0x0
+A 00052d11 1 101
+A 00052d25 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00052d9d 3 3(383@3P3X3h3p3
+A 00052dd3 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00052e53 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 00052ed1 6 6$6(6,6064686<6@6D6H6L6P6T6X6`6d6h6l6p6t6x6|6
+A 00052f4f 7 7h7l7
+A 00052f77 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00052fe7 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9l9
+A 0005301b :,:H:X:p:t:x:|:
+A 00053073 ; ;$;(;,;0;4;
+A 0005308b <,<D<\<t<
+A 000530a1 =4=L=d=|=
+A 000530b5 >$>8><>X>d>h>
+A 00053109 ? ?$?(?,?0?4?8?<?@?D?H?L?P?x?|?
+A 0005314b 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0
+A 00053195 1(101@1H1X1`1p1x1
+A 000531ab 182<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0005321f 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0005329f 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4
+A 000532e1 5(5,5054585<5@5D5H5L5P5T5X5\5`5
+A 00053327 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6h6x6|6
+A 00053389 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7x7|7
+A 00053407 8 8$8(8,8084888
+A 00053429 = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 000534a5 > >$>(>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00053521 ? ?$?(?,?0?4?8?@?P?h?l?p?t?x?|?
+A 00053587 0 0,000@0D0H0L0P0T0X0\0`0d0|0
+A 000535ad 0p1t1
+A 000535c7 3 3$3(3,30343
+A 000535ff 4 4$4(4,40484<4@4D4H4L4P4T4
+A 0005361d 545L5d5|5
+A 00053631 6$6<6T6l6
+A 00053647 7,7D7\7t7
+A 0005365d 848L8d8|8
+A 00053673 9(94989@9P9X9h9
+A 000536c1 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 0005370d ;$;<;T;l;
+A 00053725 < <0<X<h<
+A 00053745 <8=<=@=P=T=X=\=`=d=h=l=p=t=x=|=
+A 0005379f >8><>@>P>T>X>h>l>
+A 000537bf ? ?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 00053837 0 0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 000538a7 1H3L3P3T3X3\3`3d3h3l3x3|3
+A 00053901 4 4$4(4,40484<4H4L4P4T4`4d4h4p4t4x4|4
+A 0005395d 5 585<5T5
+A 0005396b 707@7X7h7
+A 00053979 9 90989<9D9H9T9X9h9p9t9
+A 000539af 7,7<7@7H7`7x7|7
+A 000539d5 8 8$8<8L8P8T8l8|8
+A 00053a05 9 989<9@9D9\9l9p9x9
+A 00053a2f :,:0:4:L:\:`:h:
+A 00053a5b ;(;,;D;T;X;`;x;|;
+A 00053a81 <$<(<0<H<L<d<t<x<
+A 00053aa9 = =8=<=T=d=h=p=
+A 00053ad5 >,><>@>H>`>d>|>
+A 00053afb ? ?$?(?,?D?T?X?`?x?|?
+A 00053b31 0 040D0H0P0h0l0p0
+A 00053b61 141D1H1P1h1l1
+A 00053b83 2 282P2T2X2\2t2
+A 00053bab 3$3(303H3`3x3|3
+A 00053bcf 4 4$4(4<4L4P4X4p4t4x4
+A 00053bfb 5(5,50545L5\5`5h5
+A 00053c25 6,60686P6T6X6l6|6
+A 00053c4b 7 7$7(7<7L7P7X7p7
+A 00053c75 8$8(808H8`8d8h8|8
+A 00053c9d 9$9(909H9L9P9d9t9x9
+A 00053cc7 : :8:<:@:T:d:h:p:
+A 00053cf3 ;(;,;0;4;L;\;`;h;
+A 00053d1f < <8<<<@<T<d<h<p<
+A 00053d53 =,=<=@=H=`=d=|=
+A 00053d77 >4><>D>L>T>`>|>
+A 00053d9f ?4?<?D?L?T?\?d?l?t?|?
+A 00053ddf 0$0,080T0\0d0l0t0|0
+A 00053e13 1(1D1L1T1\1d1l1t1|1
+A 00053e3f 242@2\2h2
+A 00053e63 3$3,383T3\3d3l3t3
+A 00053e8f 444@4\4h4
+A 00053eb3 5(5D5L5X5t5
+A 00053ed7 6,646<6D6L6T6\6d6l6t6|6
+A 00053f09 7(7D7P7l7t7|7
+A 00053f29 8 8<8H8d8l8t8|8
+A 00053f4d 9$9,949<9D9L9X9t9
+A 00053f7b :$:,:4:<:D:L:T:\:d:l:t:|:
+A 00053fa9 ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 00053fd7 <$<,<4<<<D<L<T<\<d<p<
+A 00053ffd =4=<=X=d=l=x=
+A 00054019 > ><>H>d>p>
+A 00054033 ?,?8?T?`?|?
+A 00054057 0(0D0P0l0x0
+A 00054073 1(1D1L1X1t1|1
+A 00054095 2(202`2l2t2
+A 000540b1 3(3D3P3X3
+A 000540cd 4$40484h4t4|4
+A 000540e9 5<5\5`5d5h5l5|5
+A 0005410d 6 6<6H6d6p6
+A 00054127 7,787T7\7|7
+A 00054149 888D8L8X8t8|8
+A 00054167 9@9L9T9`9h9
+A 00054183 :,:8:T:`:|:
+A 0005419d ;$;0;L;X;`;
+A 000541bb <@<L<T<`<|<
+A 000541d7 =,=4=<=H=d=l=t=|=
+A 000541f9 >,>H>T>\>h>
+A 00054217 ? ?<?H?P?
+A 0005423f 0(000`0l0t0
+A 0005425b 1$101L1X1`1
+A 00054277 2$202L2X2t2
+A 00054291 3 3<3H3d3p3
+A 000542af 4$4D4H4L4P4d4p4
+A 000542d1 5$5,585T5\5d5l5t5
+A 000542f5 6,686@6p6|6
+A 0005430f 6 7,747@7\7h7
+A 00054331 8(8D8P8l8x8
+A 0005434f 9,989T9`9h9|9
+A 0005436d : :<:
+A 00054389 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 000543cb 1X2\2`2
+A 000543db 808P8p8
+A 000543ef 909P9h9
+A 000543ff :(:P:x:
+A 0005440f ; ;@;h;
+A 00054421 <0<X<
+A 00054431 =0=P=h=
+A 0005443f >(>P>p>
+A 0005444d ? ?@?p?
+A 00054465 0P0h0
+A 00054471 181X1
+A 00054481 282X2
+A 0005448b 2 383X3x3
+A 0005449b 4(4`4d4h4p4
+A 000544bd 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 0005451b :<:L:\:
+A 00054525 ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 00054563 = =$=(=,=0=4=8=<=@=D=H=L=P=T=t>|>
+A 000545ab ?$?,?4?<?D?
+A 000545df 3 3(30383@3H3P3X3`3h3p3x3
+A 0005461f 4 4(40484@4H4P4X4`4h4p4x4
+A 0005465f 5 5(50585@5H5P5X5`5h5p5x5
+A 0005469f 6 6(60686@6H6P6X6`6h6p6x6
+A 000546df 7 7(70787@7H7P7X7`7h7p7x7
+A 0005471f 8 8(80888@8H8P8X8`8h8p8x8
+U 00006c1c Ffjj
+U 00006d1f Ffjj
+U 00006d55 Ffjj
+U 00006e26  Ìjj
+U 00007261  Ìjj
+U 00007a65  Ìjj
+U 00007f82 jjjh
+U 0000d7ad jjjjj
+U 00021a8d $jjjj
+U 00021acd $jjjj
+U 00025056 jjjj
+U 0003adec (null)
+U 00040128  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO
+U 0004200a          (((((                  H
+U 00049456 VS_VERSION_INFO
+U 000494b2 StringFileInfo
+U 000494d6 040904b0
+U 000494ee CompanyName
+U 0004950e FileDescription
+U 00049530 BEAGLINK DLL
+U 00049552 FileVersion
+U 0004956c 1, 0, 0, 1
+U 0004958a InternalName
+U 000495a4 BEAGLINK
+U 000495be LegalCopyright
+U 000495dc Copyright © 1997, BERNINA ELECTRONIC AG
+U 00049632 OriginalFilename
+U 00049654 BEAGLINK.DLL
+U 00049676 ProductName
+U 00049690 BEAGLINK Dynamic Link Library
+U 000496d2 ProductVersion
+U 000496f0 2, 0, 3,0
+U 0004970a VarFileInfo
+U 0004972a Translation
+U 0004975e Card Administration
+U 00049788 MS Sans Serif
+U 000497da Delete All
+U 0004980a Rename
+U 00049832 Delete
+U 0004985a Design Info
+U 0004988a Embroider
+U 000498b6 Design Card
+U 000498e6 Selected Design
+U 00049910 Ø'2)
+U 0004993a Name: 
+U 0004999a Internal designs
+U 000499d6 Design Info
+U 000499f0 MS Sans Serif
+U 00049a42 Name: Fencer
+U 00049a76 Number of Stitches: 3447
+U 00049ac2 Estimated Embroidery Time: 9 min
+U 00049b1e Category: Regular Bernina Stock Design
+U 00049b86 Width:  125 mm
+U 00049bbe Current Size
+U 00049bf2 Height:   91 mm
+U 00049c2a Possible: YES
+U 00049c5e Max. Width: 150 mm
+U 00049c90 ÍEL.
+U 00049c9e Stitch Processing
+U 00049cda Max Height: 109 mm
+U 00049d1a Colors
+U 00049d42 Total Number of Colors: 4
+U 00049daa #        Description            Brand             Code
+U 00049e32 Download Design
+U 00049e54 MS Sans Serif
+U 00049e86 Cancel
+U 00049eae Administration
+U 00049ee6 Design Info
+U 00049f16 Embroider
+U 00049f42 Download
+U 00049f8a Design Card
+U 00049fba Design To Download
+U 00049fec Ø'2)
+U 0004a016 Name: 
+U 0004a05a Internal designs
+U 0004a096 Rename Design
+U 0004a0b4 MS Sans Serif
+U 0004a122 Cancel
+U 0004a166 Old Name: 
+U 0004a196 New Name: 
+U 0004a1c6 Retrieve Design
+U 0004a1e8 MS Sans Serif
+U 0004a21a Cancel
+U 0004a242 Administration
+U 0004a27a Design Info
+U 0004a2aa Retrieve
+U 0004a2f2 Selected Design
+U 0004a31c Ø'2)
+U 0004a346 Name: 
+U 0004a38a Design Card
+U 0004a3ba Internal designs
+U 0004a3f6 Loading data
+U 0004a412 MS Sans Serif
+U 0004a442 msctls_progress32
+U 0004a466 Progress1
+U 0004a4ae Serial Port
+U 0004a4c8 MS Sans Serif
+U 0004a51a Cancel
+U 0004a542 Port
+U 0004a566 COM1
+U 0004a58a COM2
+U 0004a5ae COM3
+U 0004a5d2 COM4
+U 0004a5f6 Artista Software Update 
+U 0004a62a MS Sans Serif
+U 0004a650 ­^âN
+U 0004a65e Welcome to the software update procedure.
+U 0004a6ca Cancel
+U 0004a712 Settings
+U 0004a73e Verify
+U 0004a766 Fast update
+U 0004a7b2 Language of dialogs (sewing machine) 
+U 0004a832 Devices to update
+U 0004a88a Pattern collection (embroidery frame)
+U 0004a90a Software versions
+U 0004a946 Sewing machine
+U 0004a97e Embroidery frame
+U 0004a9ba Pattern collection
+U 0004aa32 Actual
+U 0004aa5a After update
+U 0004aae2 Card-ROM Image
+U 0004ab02 MS Sans Serif
+U 0004ab56 Abbrechen
+U 0004ab82 Copyright information
+U 0004abe2 BERNINA serial number
+U 0004ac26 Dongle code
+U 0004ac8e Extract EMB data
+U 0004acca ROM card image file
+U 0004ad0a Karten Administration
+U 0004ad38 MS Sans Serif
+U 0004ad8a Alles löschen
+U 0004adbe Name ändern
+U 0004adee Löschen
+U 0004ae16 Information
+U 0004ae46 Sticken
+U 0004ae6e Stickmusterkarte
+U 0004aeaa Ausgewähltes Muster
+U 0004aedc Ø'2)
+U 0004af06 Name: 
+U 0004af66 Muster aus dem Stickrahmen
+U 0004afb6 Serielle Schnittstelle
+U 0004afe6 MS Sans Serif
+U 0004b03a Abbruch
+U 0004b062 Schnittstelle
+U 0004b096 COM1
+U 0004b0ba COM2
+U 0004b0de COM3
+U 0004b102 COM4
+U 0004b126 Stickmuster speichern
+U 0004b154 MS Sans Serif
+U 0004b186 Abbruch
+U 0004b1ae Administration
+U 0004b1e6 Design Info
+U 0004b216 Sticken
+U 0004b23e Speichern
+U 0004b286 Stickmusterkarte
+U 0004b2c2 Zu speicherndes Muster
+U 0004b2fc Ø'2)
+U 0004b326 Name: 
+U 0004b36a Muster aus dem Stickrahmen
+U 0004b3ba Ändern des Namens
+U 0004b3e0 MS Sans Serif
+U 0004b44e Abbruch
+U 0004b492 Alter Name:
+U 0004b4c2 Neuer Name:
+U 0004b4f2 Stickmuster laden
+U 0004b518 MS Sans Serif
+U 0004b54a Abbruch
+U 0004b572 Administration
+U 0004b5aa Information
+U 0004b5da Laden
+U 0004b61a Ausgewähltes Muster
+U 0004b64c Ø'2)
+U 0004b676 Name: 
+U 0004b6ba Stickmuster
+U 0004b6ea Muster aus dem Stickrahmen
+U 0004b73a Daten werden geladen
+U 0004b766 MS Sans Serif
+U 0004b796 msctls_progress32
+U 0004b7ba Progress1
+U 0004b802 Administration des cartes
+U 0004b838 MS Sans Serif
+U 0004b88a Annuler tous
+U 0004b8be Changer nom
+U 0004b8ee Supprimer
+U 0004b91a Dessin Info
+U 0004b94a Broder
+U 0004b972 Carte de dessins
+U 0004b9ae Dessin sélectionné
+U 0004b9e0 Ø'2)
+U 0004ba0a Nom: 
+U 0004ba66 Dessins internes
+U 0004baa2 Port sériel
+U 0004babc MS Sans Serif
+U 0004bb0e Annuler
+U 0004bb36 Port
+U 0004bb5a COM1
+U 0004bb7e COM2
+U 0004bba2 COM3
+U 0004bbc6 COM4
+U 0004bbea Sauvegarder dessin
+U 0004bc12 MS Sans Serif
+U 0004bc46 Annuler
+U 0004bc6e Administration
+U 0004bca6 Dessin Info
+U 0004bcd6 Broder
+U 0004bcfe Sauvegarder
+U 0004bd4a Carte de dessins
+U 0004bd86 Dessin à sauvegarder
+U 0004bdbc Ø'2)
+U 0004bde6 Nom: 
+U 0004be26 Dessins internes
+U 0004be62 En ouvrant des fichiers
+U 0004be94 MS Sans Serif
+U 0004bec2 msctls_progress32
+U 0004bee6 Progress1
+U 0004bf2e Changer de nom du dessin
+U 0004bf62 MS Sans Serif
+U 0004bfd2 Annuler
+U 0004c016 Vieux nom
+U 0004c042 Nouveau nom
+U 0004c072 Ouvrir dessin
+U 0004c090 MS Sans Serif
+U 0004c0c2 Annuler
+U 0004c0ea Administration
+U 0004c122 Dessin Info
+U 0004c152 Ouvrir
+U 0004c196 Dessin sélectionné
+U 0004c1c8 Ø'2)
+U 0004c1f2 Nom: 
+U 0004c232 Carte de dessins
+U 0004c26e Dessins internes
+U 0004caa4 MS Sans Serif
+U 0004cad6 &Neu
+U 0004cb36 Abbrechen
+U 0004cb62 &Hilfe
+U 0004cee0 Design not copied
+U 0004cf04 Cannot embroider design
+U 0004cf34 Design not deleted
+U 0004cf5a Card not formatted
+U 0004cf80 Design not downloaded
+U 0004cfac Design not renamed$Impossible to install exit procedure
+U 0004d01c Serial port is engaged-Cannot read the parameters of the serial port
+U 0004d0a6 Cannot initialize serial port
+U 0004d0e2 Serial port: read error
+U 0004d112 Serial port: write error
+U 0004d144 No link to serial port 
+U 0004d174 Serial port: buffer not empty
+U 0004d1b0 Serial port: wrong echo
+U 0004d1e2 Serial port: wrong protocol)Serial port: synchronization not possible
+U 0004d26e Wrong software version
+U 0004d29c Faulty memory card
+U 0004d2c2 Too much designs
+U 0004d2e4 Program error!&No memory card in the embroidery modul
+U 0004d350 Card not formatted
+U 0004d376 No flashcard
+U 0004d390 Card is full
+U 0004d3b2 Embroider modul not connected
+U 0004d3ee Design is too big
+U 0004d412 Data not saved properly
+U 0004d442 Could not free memory
+U 0004d46e Could not synchronize
+U 0004d49a Not enough memory
+U 0004d4be Power supply is too lowHWarning: Only a limitated functionality is given with very long designs.
+U 0004d596 $Das Stickmuster wurde nicht kopiert.-Das Stickmuster konnte nicht gestickt werden.%Das Stickmuster wurde nicht gelöscht.!Die Karte wurde nicht formatiert.*Das Stickmuster wurde nicht abgespeichert.
+U 0004d724 Der Name wurde nicht geändert.+Exit-Prozedur kann nicht installiert werden*Keinen Zugriff zur seriellen Schnittstelle;Parameter der seriellen Schnittstelle sind nicht erhältlich9Die serielle Schnittstelle kann nicht konfiguriert werden
+U 0004d8fc Lesefehler
+U 0004d912 Schreibfehler
+U 0004d92e Empfang unterbrochen
+U 0004d958 Puffer nicht leer
+U 0004d97c ungleiches Echo
+U 0004d99e falsches Protokoll
+U 0004d9c4 Synchronisation nicht möglich
+U 0004da00 falsche Version
+U 0004da20 fehlerhafte Memory-Karte
+U 0004da52 zu viele Stickmuster
+U 0004da7c Programm-Fehler!"Keine Karte im Stickmodul gefunden
+U 0004dae4 Karte ist nicht formatiert
+U 0004db1a Karte nicht vorhanden
+U 0004db46 Die Karte ist voll
+U 0004db72 'Das Stickmodul ist nicht angeschlossen.
+U 0004dbc4 Das Stickmuster ist zu gross.
+U 0004dc08 !Spannung am Interface ist zu tiefcWarnung: Das Stickmuster hat eine Überlänge. Dies hat eine eingeschränkte Funktionalität zur Folge.
+U 0004dd2a (Le patron de broderie n'a pas été copié./Le patron de broderie ne pouvait pas été brodé.+Le patron de broderie n'était pas supprimé.
+U 0004de36 La carte n'a pas été éffacée.-Le patron de broderie n'a pas été sauvegardé.
+U 0004dece Le nom n'a pas été modifié.
+U 0004df06 Faute de systeme
+U 0004df28 Port sériel est occupé..Paramètres du port sériel ne sont pas lisible.+Le port sériel ne peut pas être initialisé.
+U 0004e00e Port sériel: Faute de lire
+U 0004e044 Port sériel: Faute d'écrire
+U 0004e07c Interruption de réception
+U 0004e0b0 Tampon pas vide
+U 0004e0d0 Different écho
+U 0004e0ee Incorrect protocole
+U 0004e116 Synchronisation pas possible
+U 0004e150 Incorrecte version
+U 0004e176 Incorrecte carte de sauvegardé
+U 0004e1b4 Trop de patrons de broderie
+U 0004e1ec Faute de programme!
+U 0004e214 Pas de PCMCIA
+U 0004e230 Carte n'a pas été formatté.
+U 0004e268 Pas de flashcard
+U 0004e28a Carte est plein
+U 0004e2b0 &Module de broderie n'ést pas connecté.
+U 0004e300 Design is too big
+U 0004e32e Voltage est trop bas
+U 0004e36e Öffnen
+U 0004e37c Speichern unter
+U 0004e39c Alle Dateien (*.*)
+U 0004e3c2 Unbenannt
+U 0004e3da eine unbenannte Datei
+U 0004e41c &Verbergen
+U 0004e44e Keine Fehlermeldung verfügbar.AEs wurde versucht, eine nicht unterstützte Operation auszuführen.-Eine benötigte Ressource ist nicht verfügbar.
+U 0004e56c Nicht genügend Speicher.(Ein unerwarteter Fehler ist aufgetreten.
+U 0004e606 Ungültiger Dateiname.!Fehler beim Öffnen des Dokuments.$Fehler beim Speichern des Dokuments.
+U 0004e6c0 Änderungen in %1 speichern?,Fehler beim Erzeugen eines leeren Dokuments.!Die Datei ist zu groß zum Öffnen./Der Druckauftrag konnte nicht gestartet werden.)Die Hilfe konnte nicht aufgerufen werden.
+U 0004e84a Interner Anwendungsfehler.
+U 0004e880 Befehl fehlgeschlagen.<Nicht genügend Speicher vorhanden, um Operation auszuführen.hEinträge in der Systemregistrierung wurden entfernt, und die INI-Datai (falls vorhanden) wurde gelöscht.\Es wurde nicht jeder Eintrag in der Systemregistrierung (oder die ganze INI-Datei) entfernt.RDieses Programm benötigt die Datei %s, die auf diesem System nicht gefunden wurde.
+U 0004eb5a Programm verbunden mit Export-%s (fehlt) in Datei %s. Auf diesem Computer ist evtl. eine nichtkompatible Version von %s installiert.
+U 0004ec7c <Lesen ist wegen der Eigenschaft Nur-Schreiben nicht möglich.<Schreiben ist wegen der Eigenschaft Nur-Lesen nicht möglich.
+U 0004ed76 Unerwartetes Dateiformat.p%1
+U 0004edb0 Diese Datei konnte nicht gefunden werden.
+U 0004ee04 Überprüfen Sie, ob der korrekte Pfad und Dateiname angegeben wurde.
+U 0004ee8c Das Ziellaufwerk ist voll.ALesen von %1 ist nicht möglich, da von anderem Anwender geöffnet.[Schreiben auf %1 ist nicht möglich, da schreibgeschützt oder von anderem Anwender geöffnet.:Beim Lesen von %1 ist ein unerwarteter Fehler aufgetreten.>Beim Schreiben von %1 ist ein unerwarteter Fehler aufgetreten.
+U 0004f104 $Geben Sie bitte eine ganze Zahl ein.
+U 0004f150 Geben Sie bitte eine Zahl ein.7Geben Sie bitte eine ganze Zahl zwischen %1 und %2 ein.1Geben Sie bitte eine Zahl zwischen %1 und %2 ein..Geben Sie bitte nicht mehr als %1 Zeichen ein.#Wählen Sie bitte eine Schaltfläche.7Geben Sie bitte eine ganze Zahl zwischen 0 und 255 ein.-Geben Sie bitte eine positive ganze Zahl ein.1Geben Sie bitte ein Datum und/oder eine Zeit ein.!Geben Sie bitte eine Währung ein.
+U 0004f48a Kein Fehler aufgetreten.;Ein unbekannter Fehler ist beim Zugriff auf %1 aufgetreten.
+U 0004f534 %1 wurde nicht gefunden.%%1 enthält eine ungültige Pfadangabe.C%1 konnte nicht geöffnet werden, da zu viele Dateien geöffnet sind.
+U 0004f63a Zugriff auf %1 wurde verwehrt.1Eine ungültige Dateikennung war mit %1 verbunden.UDas Verzeichnis %1 konnte nicht entfernt werden, da es das aktuelle Verzeichnis ist. =%1 konnte nicht erstellt werden, da das Verzeichnis voll ist.
+U 0004f804 Positionierungsfehler auf %1.CEin Hardware-E/A-Fehler wurde während des Zugriffs auf %1 gemeldet.DEine Zugriffsverletzung ist während des Zugriffs auf %1 aufgetreten.AEine Sperrverletzung ist während des Zugriffs auf %1 aufgetreten.:Beim Zugriff auf %1 wurde ein voller Datenträger gemeldet.FEs wurde versucht, auf eine Stelle hinter dem Ende von %1 zuzugreifen.
+U 0004fade Kein Fehler aufgetreten.;Ein unbekannter Fehler ist beim Zugriff auf %1 aufgetreten.:%1 ist nur lesbar. Es wurde versucht, darauf zu schreiben.FEs wurde versucht, auf eine Stelle hinter dem Ende von %1 zuzugreifen.8%1 ist lesegeschützt. Es wurde versucht, davon zu lesen.
+U 0004fcfe %1 besitzt ein falsches Format.$%1 enthielt ein unerwartetes Objekt.
+U 0004fd88 %1 enthält ein falsches Schema.
+U 0004fdd8 ESystemunterstützung für elektronische Post kann nicht geladen werden.3Die System-DLL für elektronische Post ist ungültig.8"Nachricht senden" scheiterte beim Senden der Nachricht.
+U 0004ff5a Pixel

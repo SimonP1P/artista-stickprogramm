@@ -1,0 +1,64 @@
+﻿artista Lesetest – 18.11.2026 20:10:28
+Mitschnitt: C:\Users\Horvat\Downloads\Testprogramm_artista185_Windows\Testprogramm_artista185_Windows\Mitschnitt_20261118_201028.log
+Gefundene COM-Ports: COM1, COM3
+
+=== Port COM1 ===
+  Versuch 1 : Transfermodus (T r M E) …
+  keine passende Antwort – synchronisiere (R / F / ?) …
+  … wechsle auf 57600 Baud
+  … wechsle auf 115200 Baud
+  … wechsle auf 4800 Baud
+  … wechsle auf 19200 Baud
+  … wechsle auf 57600 Baud
+  … wechsle auf 115200 Baud
+  … wechsle auf 4800 Baud
+  … wechsle auf 19200 Baud
+  keine Synchronisation möglich
+  Versuch 2 : Transfermodus (T r M E) …
+  keine passende Antwort – synchronisiere (R / F / ?) …
+  … wechsle auf 57600 Baud
+  … wechsle auf 115200 Baud
+  … wechsle auf 4800 Baud
+  … wechsle auf 19200 Baud
+  … wechsle auf 57600 Baud
+  … wechsle auf 115200 Baud
+  … wechsle auf 4800 Baud
+  … wechsle auf 19200 Baud
+  keine Synchronisation möglich
+  Versuch 3 : Transfermodus (T r M E) …
+  keine passende Antwort – synchronisiere (R / F / ?) …
+  … wechsle auf 57600 Baud
+  … wechsle auf 115200 Baud
+  … wechsle auf 4800 Baud
+  … wechsle auf 19200 Baud
+  … wechsle auf 57600 Baud
+  … wechsle auf 115200 Baud
+  … wechsle auf 4800 Baud
+  … wechsle auf 19200 Baud
+  keine Synchronisation möglich
+  Keine Verbindung über COM1.
+
+=== Port COM3 ===
+  Versuch 1 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 19200 Baud)
+  0x200100: 4E 4D 4D 56 30 34 2E 30 34 00 47 65 72 6D 61 6E 20 20 20 20 20 20 00 46 72 69 74 7A 20 47 65 67
+            'NMMV04.04.German      .Fritz Geg'
+  >>> Kennung SRMV NICHT gefunden (Analyse an dieser Stelle prüfen)
+  0xFFFD24: FB 0C FC 2C 00 63 E9 A6 E7 67 A6 00 DF FF 84 FC C3 FF F8 80 7A F1 DB D7 F7 D2 F7 40 81 7E 40 F7
+     N (Byte 0)             = 0xFB (251)
+     Byte 1                 = 0xC (12)
+     Groesse Datenbereich   = 0xFC2C0063 (4230742115)
+     INFO                   = 0xE9A6E767 (3920029543)
+     AUSWAHL                = 0xA600DFFF (2785075199)
+     ICON                   = 0x84FCC3FF (2231157759)
+     DATEN                  = 0xF8807AF1 (4169169649)
+     Ende Karte             = 0xDBD7F7D2 (3688363986)
+     Ende Speicher          = 0xF740817E (4148199806)
+  >>> Verwaltungsblock NICHT plausibel
+  Zeiger @0x24004: 0x0
+  Zeiger @0x24040: 0x0
+  Zeiger @0x24044: 0x0
+  Zeiger @0x24048: 0x4B0000
+  Status @Zeiger(0x24004): 00 00 03 EC 00 00 18 2E   Byte+5=0x00 Byte+7=0x2E
+
+FERTIG. Bitte die Maschine jetzt AUS- und wieder EINSCHALTEN.

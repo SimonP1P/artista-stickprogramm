@@ -1,0 +1,66 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000429 VWSh 0@
+A 00000443 SVWhL0@
+A 00000797 D$ RP
+A 00000b20 L$\_^
+A 00000c32 @_^][
+A 0000171e ??1CommandLineArgs@@QAE@XZ
+A 0000173c ?CreateESProcess@@YAXABVString@@PAU_PROCESS_INFORMATION@@PAU_STARTUPINFOA@@K_NPAX@Z
+A 00001792 ?FileExists@DOSDiskTools@@SA_NABVString@@@Z
+A 000017c0 ??0WorkingBitmap@@QAE@H_N@Z
+A 000017de ?ParseCommandLine@@YAXABVCommandLineArgs@@AAVCCommandLineInfo@@@Z
+A 00001822 ??0CommandLineArgs@@QAE@XZ
+A 00001840 ?TestDoesAppExist@@YA_NPAD@Z
+A 00001860 ??1FileParse@@QAE@XZ
+A 00001878 ?Complete@FileParse@@QBE?AVString@@PBV2@000@Z
+A 000018a8 ?Name@FileParse@@QBE?AVString@@XZ
+A 000018cc ?Extension@FileParse@@QBE?AVString@@XZ
+A 000018f6 ??0FileParse@@QAE@ABVString@@_N@Z
+A 0000191a ?GetBinPathA@@YAPBDXZ
+A 00001930 Wessys.dll
+A 0000193c MFC42.DLL
+A 00001948 _snprintf
+A 00001954 __CxxFrameHandler
+A 00001968 toupper
+A 00001972 vsprintf
+A 0000197c MSVCRT.dll
+A 0000198a __dllonexit
+A 00001998 _onexit
+A 000019a2 _exit
+A 000019aa _XcptFilter
+A 000019c0 _acmdln
+A 000019ca __getmainargs
+A 000019da _initterm
+A 000019e6 __setusermatherr
+A 000019fa _adjust_fdiv
+A 00001a0a __p__commode
+A 00001a1a __p__fmode
+A 00001a28 __set_app_type
+A 00001a3a _except_handler3
+A 00001a4e _controlfp
+A 00001a5c DebugBreak
+A 00001a6a Sleep
+A 00001a72 GetTickCount
+A 00001a82 LoadLibraryExA
+A 00001a94 GetModuleHandleA
+A 00001aa8 GetStartupInfoA
+A 00001ab8 KERNEL32.dll
+A 00001ac8 MessageBoxA
+A 00001ad6 UpdateWindow
+A 00001ae6 FindWindowA
+A 00001af2 USER32.dll
+A 00001afe MSVCIRT.dll
+A 00001b0c _setmbcp
+A 00001c23 File:	%s
+A 00001c2c line:	%d
+A 00001c38 Assertion failed:
+A 00001c4c %s(%d): Assertion Failed: %s
+A 00001c6c mkMSITStore167
+A 00001c7c Security Error
+A 00001c8c D:\Geneva_integration\mfcwesp\inc\sys\cmdline.hpp
+A 00001cc0 index out of range
+A 00001cd4 THE_1_AND_ONLY_DESGNEDIT
+A 00001cf8 %sres.dll

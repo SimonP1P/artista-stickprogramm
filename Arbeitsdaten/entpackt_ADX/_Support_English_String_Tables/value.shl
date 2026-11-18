@@ -1,0 +1,14 @@
+[General]
+Type=STRINGTABLESPECIFIC
+Version=1.00.000
+Language=0009
+
+[Data]
+TITLE_MAIN=Artista Data eXchange (ADX) for Artista Designer
+TITLE_CAPTIONBAR=Artista Data eXchange (ADX) for Artista Designer Setup
+COMPANY_NAME=BERNINA
+PRODUCT_NAME=Artista Data eXchange (ADX) for Artista Designer
+PRODUCT_KEY=
+PRODUCT_VERSION=0.84
+FOLDER_NAME=Artista Data eXchange (ADX) for Artista Designer
+

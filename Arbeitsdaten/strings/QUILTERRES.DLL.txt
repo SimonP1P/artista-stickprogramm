@@ -1,0 +1,1924 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000000a7 9Rich
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .rsrc
+A 00000257 @.reloc
+A 00000650 u"WVS
+A 000008c0 MFC42.DLL
+A 000008cc __CxxFrameHandler
+A 000008de MSVCRT.dll
+A 000008f4 _initterm
+A 00000900 malloc
+A 0000090a _adjust_fdiv
+A 00000952 QuilterRes.dll
+A 00000961 ?GetQuilterResourcesHInstance@@YAPAUHINSTANCE__@@XZ
+A 000032d8 wwwwwwwwwwwwwwwwwwwuUUwwwwwwwwwwwp
+A 000032fc UUwwwwwwwwwwwwwwwwwwwwwWX
+A 00003316 Wwwww0
+A 0000331d wwwp0
+A 00003338 wwu}W
+A 0000333e Wwwwws
+A 00003366 Uwwwws
+A 0000338e uwwwws
+A 000033a1 {{{{{x
+A 000033b7 Wwww3
+A 000033d2 {{{{p
+A 000033f1 {{{{{x
+A 00003407 Uwwqq
+A 0000340d 0wwS0
+A 00003441 {{{{{x
+A 00003472 {{{{{
+A 0000347e Pwr"""""* p]
+A 000034a7 ww""*""
+A 000034af  wUUP
+A 000034d4 *"""w
+A 000034e4 wwwww
+A 000034ed wwwwuP
+A 000034fe "wwuP
+A 0000350c wwwwwx
+A 00003514 wwwwwp
+A 0000351b UPwwwww"ZR"'wwp
+A 0000352b UPwwwwwwwwwwwwwwwwwwwww
+A 00003545 wwwwwwwwwwwww
+A 000041e8 ffffffffffffffff`
+A 00004211 {{{{{x
+A 00004221 {{{{{x
+A 00004231 {{{{{x
+A 00004254 fffff
+A 0000425c ffffffffffff
+A 000045e0 AVI LIST
+A 000045ec hdrlavih8
+A 00004638 strlstrh8
+A 00004644 vidsRLE 
+A 0000467c strfh
+A 00004dcb qLIST
+A 00004dd4 movi00dc*
+A 0000550a 00dch
+A 0000567a 00dc(
+A 000057aa 00dc"
+A 000058d4 00dc$
+A 00005a00 00dc 
+A 00005b28 00dc$
+A 00005f9e 00dc<
+A 000060e2 00dcX
+A 00006566 00dcz
+A 000066e8 00dcr
+A 00006862 00dcb
+A 0000b470 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDI
+A 0000b540 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000b568 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDD
+A 0000b638 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000b660 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000b730 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000b758 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtDwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000b834 wwwwwtDDwwDDGwwwwwwwwwwwwww
+A 0000b850 wwwwwwwDGwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwt
+A 0000b8a8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtDwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtDDDD
+A 0000b92c wwwwwt
+A 0000b938 Gwwwwwwwwwwwwww
+A 0000b948 wwwwwwwO
+A 0000b951 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwp
+A 0000b983 wwwwwwwwwwwwwwwwwwwwwwwwwwDO
+A 0000b9a0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwL
+A 0000b9dc Gwwwwwwwwwwwwwwwwwwwwwww
+A 0000b9fb wwwwtwwwtwwwxwww
+A 0000ba24 wwwwwt
+A 0000ba30 Gwwwwwwwwwwwwww
+A 0000ba40 wwwwwwt
+A 0000ba48 Gwwwwww{{
+A 0000ba52 wwwwwwwwwwwtDDDDDwwwwwww
+A 0000ba6c wwwwwwwwwwwww
+A 0000ba7c wwwwwwwww3
+A 0000ba88 37wwwwwwwwwwwO
+A 0000ba98 wwwwtDDDDDDDDDGwwwwDDDwDDDwwwwwwwwDDDwwwwwwwwwwwwwwtGwwwwtL
+A 0000bad4 Gwwwwwwwwwwwwwwwwwwwwwww
+A 0000baf3 wwwwtwwwtwwwxwww
+A 0000bb1c wwwwwtO
+A 0000bb28 Gwwwwwwwwwwwwww
+A 0000bb38 wwwwwwt
+A 0000bb40 Gwwwwwwwww
+A 0000bb4c wwwwwwwwwtwwGwtwwwwwwwp
+A 0000bb65 wwwwwwwwwwwp
+A 0000bb75 wwwwwwws
+A 0000bb82 wwwwwwwwwwwO
+A 0000bb90 wwwwt
+A 0000bb9e GwwwwO
+A 0000bba6 wDDDwwwwwwwD
+A 0000bbb5 DwwwwwwwwwwwwDOGwwwwD
+A 0000bbcc Gwwwwwwwwwwwwwwwwwwwwww
+A 0000bbec wwwtwwwtwwwxwwwI
+A 0000bc14 wwwwwwD
+A 0000bc1f Dwwwww
+A 0000bc30 wwwwGwO
+A 0000bc38 wwwwwwwwwwp
+A 0000bc44 wwwwwwwwwtwwGwtwwwwwwwp
+A 0000bc5d wwwwwwwwwww
+A 0000bc6e wwwwww;U
+A 0000bc7a 7wwwwwwwwwwO
+A 0000bc88 wwwwt
+A 0000bc96 Gwwwwt
+A 0000bc9e wDDGwwwwwwD
+A 0000bcae DwwwwwwwwwtD
+A 0000bcbc GwwwwL
+A 0000bcc4 GwwtDwwwww
+A 0000bccf wwwwwwwu
+A 0000bce4 wwwtwwwtwwwxwwwD
+A 0000bd0c wwwwwwtODD
+A 0000bd17 Gwwwww
+A 0000bd28 wwwwDwO
+A 0000bd30 wwwwwwwwww
+A 0000bd3d wwwwwwwwtwwGwtwwwwwwww
+A 0000bd56 wwwwwwwwwp
+A 0000bd67 wwwww;U
+A 0000bd73 wwwwwwwwwwO
+A 0000bd7f Gwwwwt
+A 0000bd8e Gwwwwt
+A 0000bd96 wDDGwwwwwt
+A 0000bda7 GwwwwwwwDO
+A 0000bdb4 GwwwtL
+A 0000bdc1 wwww|
+A 0000bdc7 GwwwwwwY
+A 0000bddc wwwtwwwtwwwxwwwDI
+A 0000be04 wwwwwwDDDDDDwwwww
+A 0000be20 wwwwOD
+A 0000be27 Gwwwwwwwwwp
+A 0000be33 {pwwwwwwwwtwwGwtwwwwwwwwp
+A 0000be4e wwwwwwwww
+A 0000be5e wwwwww;
+A 0000be6b 7wwwwwwwwwO
+A 0000be77 wwwwwt
+A 0000be86 Gwwwwt
+A 0000be8e wDDGwwwwwt
+A 0000be9f GwwwwwtD
+A 0000beac Gwwwt
+A 0000bec0 wwwwwu
+A 0000bed4 wwwtwwwtwwwxwwwDD
+A 0000befc wwwwwtO
+A 0000bf08 Gwwww
+A 0000bf18 wwwwO
+A 0000bf1f Gwwwwwwwww
+A 0000bf2e wwwwwwwtDDDDDwwwwwwwww
+A 0000bf47 wwwwwwwp
+A 0000bf56 wwwwww;
+A 0000bf64 wwwwwwwwwOGwwwwwt
+A 0000bf7e GwwwwwO
+A 0000bf86 wDDwwwwwwL
+A 0000bf98 wwwwtDDDDDDDGwwwD
+A 0000bfb1 wwwww
+A 0000bfb7 wwwwwwwu
+A 0000bfcc wwwtwwwtwwwxwww
+A 0000c000 Gwwwwx
+A 0000c010 wwwwO
+A 0000c018 Dwwwwwwwp
+A 0000c026 wwwwwwwtwwGwtwwwwwwwwwp
+A 0000c03f wwwwwwwp
+A 0000c04f wwwwws
+A 0000c05c wwwwwwwwwDwwwwwwt
+A 0000c076 GwwwwwO
+A 0000c07e wDDwwwwwwL
+A 0000c090 wwwwwwwwwwwwwwwwL
+A 0000c0a9 Gwwww
+A 0000c0af wwwwwwwu
+A 0000c0c4 wwwtDDDDwwwxwtG
+A 0000c0f6 DOGwwwww
+A 0000c108 wwwwO
+A 0000c111 wwwwwww
+A 0000c11f wwwwwwtwwGwtwwwwwwwwww
+A 0000c139 wwwwwp
+A 0000c146 wwwwwwp
+A 0000c154 wwwwwwwwwGwwwwwwt
+A 0000c16e GwwwwwO
+A 0000c176 wDDwwwwwwL
+A 0000c188 wwwwwwwwwwwwwwwwL
+A 0000c1a1 Gwwww
+A 0000c1a7 wwwwwwwu
+A 0000c1bb wwwwxwwwwwwwtGOG
+A 0000c1ee GDGwwwwx
+A 0000c200 wwwwO
+A 0000c208 Gwwwwwwp
+A 0000c217 wwwwwwtwwGwtwwwwwwwwwwp
+A 0000c231 wwwwwp
+A 0000c23e wwwwwww
+A 0000c24c wwwwwwtDDwwwwwwwt
+A 0000c266 Gwwwwwt
+A 0000c26e wDGwwwwwwL
+A 0000c280 wwwwtDDDDDDDGwwwD
+A 0000c29a wwww|GwwwwwwYwwwwwp
+A 0000c2ae wwwwwwwwwxwwwwwwwt
+A 0000c2e6 Gwwwwww
+A 0000c2f8 wwwwO
+A 0000c300 wwwwwwwww
+A 0000c30c wpwwwwwwwtwwGwtwwwwwwwwwww
+A 0000c329 wwwwwp{
+A 0000c335 wwwwwwww
+A 0000c344 wwwwwwt
+A 0000c34d wwwwwwwt
+A 0000c35e Gwwwwwt
+A 0000c366 wDGwwwwwwL
+A 0000c378 wwwwwtDDDDDDGwwwt
+A 0000c392 wwww|GwwwwwwYwwwwwwp
+A 0000c3a7 wwwwwwwwxwwwwwwwt
+A 0000c3de Gwwwwww
+A 0000c3f0 wwwwO
+A 0000c3f7 Gwwwwwwwwww
+A 0000c407 wwwwwwtDDDDDwwwwwwwwwwwp
+A 0000c422 wwwww
+A 0000c42d wwwwwwww
+A 0000c43b 7wwwwwwt
+A 0000c445 wwwwwwwt
+A 0000c456 Gwwwwwt
+A 0000c45e wDGwwwwwwL
+A 0000c470 wwwwwwwDDDDDGwwwtL
+A 0000c48a Gwwww
+A 0000c490 wwwwwu
+A 0000c497 wwwwwwwp
+A 0000c4a0 wwwwwwwxwwwwwwwt
+A 0000c4c3 wwwwwwwpwwwp
+A 0000c4d4 DDwwwwwww
+A 0000c4e8 wwwwO
+A 0000c4ef wwwwwwwwwwwpwpD@wwwwwwtwwGwtwwwwwwwwwww
+A 0000c51a wwwwww
+A 0000c524 wwwwwwwww
+A 0000c533 7wwwwwwt
+A 0000c53d Gwwwwwwt
+A 0000c54e GwwwwwwDwDwwwwwwwt
+A 0000c567 GwwwwwwwwtDDDGwwwwL
+A 0000c582 Gwwww|DwwwuYwwwwwwwwwp
+A 0000c599 wwwwwwxwwwwwwwt
+A 0000c5bb wwwwwwwp
+A 0000c5cc wwwwwwwww
+A 0000c5e0 wwwwO
+A 0000c5e6 Gwwwwwwwwwwww
+A 0000c5f8 wwwwwtwwGwtwwwwwwwwwwwwp
+A 0000c612 wwwwwww
+A 0000c61c wwwwwwwww
+A 0000c62b wwwwwwwDDDtwwwwwwt
+A 0000c646 GwwwwwwDwDwwwwwwwt
+A 0000c65f GwwwwwwwwwwDDGwwwwD
+A 0000c67a Gwwwww
+A 0000c686 wwwwwwwwwwp
+A 0000c692 wwwwwxwwwwwwwt
+A 0000c6b4 wwwww
+A 0000c6c4 wwwwwwwwwww
+A 0000c6d2 wwwww
+A 0000c6d8 wwwwO
+A 0000c6de wwwwwwwwwwwwwwwpD
+A 0000c6f0 wwwwwtwwGwtwwwwwwwwwwwwp
+A 0000c70a wwwwwwww
+A 0000c713 wwwwwwwwww
+A 0000c720 w37wwwwwwtwwwwGwwwwwtDDDDDDDDDGwwwwwwDwDwwwwwwwwD
+A 0000c756 DwwwwwwwwwwwwtGwwwwtL
+A 0000c773 wwwwww
+A 0000c77d wwwwwwwwwwwwp
+A 0000c78b wwwwxwwwwwwwt
+A 0000c7ab wwwwwwwp
+A 0000c7bc wwwwwwwwwww
+A 0000c7ca wwwww
+A 0000c7d0 wwwwOGwwwwwwwwwwwwwwww
+A 0000c7e7 wwwwwwtwwGwtwwwwwwwwwwwww
+A 0000c802 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwGwwwwtwwwwwwwwwwwwwwwwwwwwwwtwGwwwwwwwwwD
+A 0000c84d DwwwwwwwwwwwwwwwwwwwwD
+A 0000c867 wwtGwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000c884 wwwxwwwwwwwtGww
+A 0000c8a3 wwwwwwwpwwww
+A 0000c8b6 wwwwwwwwwx
+A 0000c8c2 wwwww
+A 0000c8c8 wwwwDwwwwwwwwwwwwwwwwwwwwwwwwtDDDDDwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000c910 wwwwwwwwtwwwwwwwwwwwwwwwwwwwwwwwwwwwwtwGwwwwwwwwwwDDDwwwwwwwwwwwwwwwwwwwwwtL
+A 0000c95e Gwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0000c998 wwwwwwwwwwwwwwwwwwwww
+A 0000c9ae wwwwwwwwwwwwwwwww
+A 0000c9c0 wwwwGwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDLDwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000ca8e DIwwwwwwwwwwwwwwwwwwpwppwwwwwwwwwwwwwwwww
+A 0000cab8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDGwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000cb86 DDwwwwwwwwwwwwwwwwwww
+A 0000cb9d wwwwwwwwwwwwwwwwww
+A 0000cbb0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000cc7f Dwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000cca8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000cd77 Dwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000ce08 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000ce2f wwwwwwwwwwwwwwwwwwwwwwwww
+A 0000ce4e wwwwwwwwww
+A 0000ce5c wwwwwwwwwwwwwwwww|wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtwwwwwwp
+A 0000ce9f wwwwwwwwwww
+A 0000ceae wwwwwwwwww
+A 0000ceb9 wpwwpwwwwwwwwwwpwww
+A 0000cecd wwwwwwwwwwwwwwww
+A 0000cede wwwwwwGwwww
+A 0000ceef wwGDDDDGwwwp
+A 0000ceff wwtDDDDwwwww
+A 0000cf0f wwtDDDDtwwwpwww
+A 0000cf1f wwwwwwwww
+A 0000cf2f wwwwwwwww
+A 0000cf3c pwwwwwwwwwwwwwww|
+A 0000cf50 wwwwGwwww
+A 0000cf66 Gwwwp
+A 0000cf8e pwwtDDwwww
+A 0000cf9a wpwwpwwtDGwwwwpwwp
+A 0000cfae wwwDDDDDDwwwwww
+A 0000cfc0 wwDDDDGwwww
+A 0000cfd6 Gwwww
+A 0000cff6 tw|wpwww
+A 0000d013 GtDGww
+A 0000d01d wwwwwwwwwwwp
+A 0000d036 Gwwww
+A 0000d04f wwtDDDDwww|w
+A 0000d07b wwwwwwt
+A 0000d086 GwwpwwpwwwwtDDtDGww
+A 0000d09a wwpww
+A 0000d0a0 wwODDOGww|
+A 0000d0af wwGDDDDGww
+A 0000d0bf wwwwtwwwww|p
+A 0000d0cf wwtDDDDtw|wpwww
+A 0000d0e4 tDGww
+A 0000d0ea wwwwwwtD
+A 0000d115 OGww|w
+A 0000d11f wwGwwwwwww|w
+A 0000d12f wwwwtwwwww|p
+A 0000d13f wwwwwwwtw|w
+A 0000d166 Gwwwwww|
+A 0000d185 ODGw|w
+A 0000d18f wwGDDGwwww|p
+A 0000d19f wwwtDDwwww|ww|wwwwwwtDDtw|wpwwp
+A 0000d1c6 Gwwwpwww
+A 0000d1d3 GtDGwwwwww
+A 0000d1e4 tDGwp
+A 0000d1f5 OGww|ww|wwwwGO
+A 0000d204 Gwwww|p
+A 0000d21e wwwwwt
+A 0000d226 tw||w
+A 0000d22f wwtDDtDGwww
+A 0000d23e pwwtDGwwwwp
+A 0000d254 wwwww
+A 0000d260 wwODDOGww|ww|wwwwGO
+A 0000d274 Gwwww|ww|wwwwwt
+A 0000d28e wwwwwt
+A 0000d29b pwwpwwwwwwwwwwwpwwp
+A 0000d2b0 wwwwwwwww
+A 0000d2c4 wwwwp
+A 0000d2df wwGDDGwwww
+A 0000d2ee wwwwtDDwwwww|
+A 0000d2fc wwwwwwwtDDtw|
+A 0000d310 wDDDDDDwwww
+A 0000d31f wwwwwwwwwwpwwpww|wtDDwwwww
+A 0000d340 wwDDDDGww
+A 0000d34f wwGwwwwwww
+A 0000d35e wwwwwtwwwwww
+A 0000d36d wwwwwwwwwtww|
+A 0000d37b wwwwwwwwwwwwwwwwpwwpwwwwwwwwwww
+A 0000d39e w|wwwwwwwwwpwwpwwwwwwwGwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww|
+A 0000d3dc wwwwwwwwwwwww|wwwwwwwwwwwwwwwwww
+A 0000d400 wwwwwwwwwwp
+A 0000d410 wwwwwwwwww
+A 0000d41e wwwwwwGwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000d44c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000d48e wwwwwwwwww(
+A 0000d500 wwwwwwp
+A 0000d508 wwwwwwp
+A 0000d510 wwwwwwp
+A 0000d51d wwwwwwp
+A 0000d528 wwwwwwwwwwwwwwwwwwwwww
+A 0000d540 wwwwww
+A 0000d548 wwwwww
+A 0000d555 wwwwwwp" wpwwwwwwwwwwwpwwwwww
+A 0000d58d wwwwwwp" wpp
+A 0000d5a5 wwwwp
+A 0000d5c5 wwwwwwp" wppwwwwww
+A 0000d5fd wwwwwwp" wpwwwwwwwwwwwpwwwwx
+A 0000d635 wwwwwwp
+A 0000d640 pwwwwww
+A 0000d648 wpwpwpwwpwpwp
+A 0000d65f wpwwww
+A 0000d667 wwwwww
+A 0000d673 wwwwwpwwwwww
+A 0000d687 wpwpppw
+A 0000d69f wwwGww
+A 0000d6a9 " wwtwwwwwwwwwwp
+A 0000d6bf wp~pwpw
+A 0000d6d7 wwtDww
+A 0000d6e1 " wwDGwpwwwwww
+A 0000d6f7 wp~pppw
+A 0000d707 wp~wwww
+A 0000d70f wwDDGw
+A 0000d719 " wtDDwpwwwwww
+A 0000d728 wpwpwpwwx
+A 0000d747 wwwGww
+A 0000d753 wwtwwwwwwwwwwwwwpwwwww
+A 0000d77e wwwwGww
+A 0000d789 wpwwtwwpwwwwww
+A 0000d79d wwwwp
+A 0000d7b6 wwwwtww
+A 0000d7c1 wpwwGwwp
+A 0000d7d5 wwwww
+A 0000d7dd wwwww
+A 0000d7e5 wwwww
+A 0000d7ed wwwwwwDG
+A 0000d7f9 wptDwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000d833 wwwwwwwwwwwwwwwwwwwww(
+A 0000d8b0 wwwwwwwwwwwwwwwwwwwwwwwwtDDDDwwwwwwwwwwwwDDDDwwwtwtw
+A 0000d8e7 wwwtD
+A 0000d8ef wwtGw
+A 0000d8f7 wtwtw
+A 0000d907 wwwtG
+A 0000d90f wtwtw
+A 0000d91f wwwwt
+A 0000d927 wtDDD
+A 0000d937 wwDDD
+A 0000d93f wtwtwp
+A 0000d94f wwtGwp
+A 0000d957 wtwtwpw
+A 0000d967 wwwtGpw
+A 0000d96f wtwtwpw
+A 0000d97f wwwwt@w
+A 0000d987 wtDDDD
+A 0000d996 wwwDDDD
+A 0000d99e wwtwtwtwwwD
+A 0000d9ad GwwwtGwwwwwtwtwtwwwt
+A 0000d9c6 GwwwtGwwwwtwtwtwwwtLDGD
+A 0000d9de GwwwwtGwwwtDDDDwwwwtGwtLGwwDDDDwwwwwwwwwwwwwwwwDGwwwwwwwww(
+A 0000da80 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtwtGwwwwwwwwwwwwwwwwp
+A 0000db40 wwwwwwwwp
+A 0000db58 wwwwwwwwp
+A 0000db68 wwwwwtGwp
+A 0000db78 wwwwwwwwwwwwwwwwp
+A 0000db98 wwwwOGO
+A 0000dbb0 pppppw
+A 0000dbb8 pppppw
+A 0000dbc0 pppppw
+A 0000dbc8 pppppw
+A 0000dbd0 pppppw
+A 0000dbd8 wwwwwwwwpppppw
+A 0000dbe8 pppppw
+A 0000dbf0 tDDGtDDGpppppw
+A 0000dc00 wwwwtGGwpppppw
+A 0000dc10 wwwwwwwwwwwwwwwwpppppw
+A 0000dc28 pppppw
+A 0000dc37 Gpppppw
+A 0000dc40 pppppw
+A 0000dc48 pppppp
+A 0000dc50 pppppp
+A 0000dc58 pppppp
+A 0000dc60 pppppp
+A 0000dc68 pppppp
+A 0000dc70 wwwwwwwwpppppp
+A 0000dc80 pppppp
+A 0000dc88 twwGtDDGpppppp
+A 0000dc98 wwwtGwGwpppppp
+A 0000dca8 ww|GwwwwwwwwwYwwpppppp
+A 0000dcc0 pppppp
+A 0000dcc8 wwwwO
+A 0000dccf wpppppp
+A 0000dcd8 pppppp
+A 0000dce0 ppppp
+A 0000dce8 ppppp
+A 0000dcf0 ppppp
+A 0000dcf8 ppppp
+A 0000dd00 ppppp
+A 0000dd08 wwwwwwwwppppp
+A 0000dd18 ppppp
+A 0000dd20 wGwGtDDwppppp
+A 0000dd30 wwtGwwGwppppp
+A 0000dd44 wwwwwwwwu
+A 0000dd4f wppppp
+A 0000dd58 ppppp
+A 0000dd60 wwwwDDODppppp
+A 0000dd70 ppppp
+A 0000dda0 wwwwwwwwp
+A 0000ddb8 wGwGtDDwp
+A 0000ddc8 wtGwwwGwp
+A 0000ddd8 ww|GwwwwwwwwwYwwp
+A 0000de10 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtwGtDGwwwwwwwwwwDDDDDGwwwwwwwwwww|GwwwwwwwwwYwwwwwwwwwwwwwwwwwww
+A 0000de98 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtwGtDGwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000df0c wwwwwwwwu
+A 0000df16 wwwwwwwwwwwwwwwwwww
+A 0000df2f Dwwwwwwwwwwwwwwwww
+A 0000df67 wwwwwwwwww
+A 0000df7f wwwGGtDwww
+A 0000df8f wwDDDDDGww
+A 0000dfa4 wwwwwwwwu
+A 0000dfff wwwwwwwwww
+A 0000e017 wwwGGtDwww
+A 0000e027 wwtDDDDGww
+A 0000e037 wwww|GwwwwwwwYwwww
+A 0000e097 wwwwwwwwww
+A 0000e0af wwwtGtGwww
+A 0000e0bf wwwtDDDGww
+A 0000e0cf wwwww
+A 0000e0d5 wwwwwwy
+A 0000e12f wwwwwwwwww
+A 0000e147 wwwtGtGwww
+A 0000e157 wwwwtDDGww
+A 0000e167 wwwww|
+A 0000e16e wwwww
+A 0000e174 wwwww
+A 0000e1c7 wwwwwwwwww
+A 0000e1df wwwwGtwwww
+A 0000e1ef wwwwwtDGww
+A 0000e1ff wwwwwwwwwwwwwwwwww
+A 0000e237 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtGwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000e2bf wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000e355 wwwwwwwwwwwwwwwwwww(
+A 0000e3d0 wwwwwwwwwwwwwwwww
+A 0000e3ef wwwwwt
+A 0000e3f7 wwwtGwwwwwwwwwwwwwwwtDDDDwwwwwwwwwwwwwwwwwGwGwGwGwwwwwwwwwwx
+A 0000e438 wwwwwww
+A 0000e440 wwwwwwwwwwwwwww
+A 0000e450 wwwwwwp
+A 0000e458 wwwwwwp
+A 0000e473 UUXwwww
+A 0000e49a wwwppww
+A 0000e4a7 wwwGtwDwwwwwtDDDDw
+A 0000e4bc wwwtwwwwwwwwwwwwwwwwtDDDDDDDy
+A 0000e4f0 wwwwww
+A 0000e4f8 wwwwwwp
+A 0000e500 wwwwww
+A 0000e508 wwwwww
+A 0000e556 pwwwGttwGwwwwtwwwtp884tDDtwwwwwwwwwwwwwwwwwGwGwGwGy
+A 0000e5f7 wpwwwww
+A 0000e606 pwwwGttwGwwwwtp
+A 0000e61c wwwtwwwwwwwwwwwwwwwwwGwGwGwGy
+A 0000e6a7 wpwwwww
+A 0000e6b6 pwwwtDtwGwp
+A 0000e6c4 wwwtp884tDtDwwwwwwGwwtwwwwwwwGwGwGwGy
+A 0000e766 pwwwwttDwwpwwtp
+A 0000e77c wwttwDDGwwtwwGwwtDDwtDDDDDDDw
+A 0000e7e2 wwwwy
+A 0000e807 wpwwwwppp
+A 0000e816 pwwwwt
+A 0000e81d wwwpp
+A 0000e824 wwwtp884wwtGwDDwwwtwwGwwwDDwwGwGwGwGwy
+A 0000e86a www~pwpw
+A 0000e877 wpwppp
+A 0000e892 wwwwx
+A 0000e8c6 pwwwww
+A 0000e8cd wwwpwwtp
+A 0000e8e0 wDGwwwtwwGwwwtDwwGwGwGwGw
+A 0000e927 wpwpwpw
+A 0000e942 wwwwx
+A 0000e967 wwpwwwppp
+A 0000e976 pwwwwp
+A 0000e97d wwwpp
+A 0000e984 wwGGp888888
+A 0000e990 wDtwwwtwwGwwwGDwwGwGwGwGy
+A 0000e9d7 wp~pwpw
+A 0000e9f2 wwwww8
+A 0000ea26 pwwwwppwwwpwwtwwDwp
+A 0000ea40 wGwDwwGwwtwwDwtwtDDDDDDDy
+A 0000ea7b wwwpwp~
+A 0000ea87 wp~pppw
+A 0000eaa2 wwwwwx
+A 0000ead6 pwwww
+A 0000eae4 DDGwp8
+A 0000eaf0 wwwwDDwwwwDDwwwwwGwGwGwGy
+A 0000eb50 x8wwww{8
+A 0000eb66 wwwwwwwww
+A 0000eb77 wwwpp
+A 0000eb8e wwpww
+A 0000eba0 wwwwwwwwwwwwwwwwwGwGwGwGy
+A 0000ebc0 yyyyywwwwwp
+A 0000ec16 wwwwwwpwppp
+A 0000ec27 wwwpwwwpww
+A 0000ec3e wwpww
+A 0000ec44 wwwww
+A 0000ec4f wwwwwwwwwwwwwwwwwwGwGwGwGwwy
+A 0000ec6e wwyywyw
+A 0000ecae wwws8
+A 0000ecc5 wwwwwwww
+A 0000ece5 xwwwww
+A 0000ecf4 wwwwwww
+A 0000ecfd wwwwwwwwwwwwwwwwwwwtDDDDDDDwwy
+A 0000ed26 wwwwwwwwwwww
+A 0000ed35 wwwwwx
+A 0000ed45 wwwww
+A 0000ed4d wwwwp
+A 0000ed5e wwwx8
+A 0000ed6f wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwGwGwGwGwww
+A 0000edcd wwwwwwwwwww
+A 0000eddd wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000ee0e wwwww
+A 0000ee15 wwwwwp
+A 0000ee88 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000eeb4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000eee0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000ef0c wwwwwwwwwwwwwwwwwwDDwwwwwwwwwwwwwwwwwwwwp
+A 0000ef38 wwwwwwwwwwwwwwwwwDL
+A 0000ef4c wwwwwwwwwtDDDDDGwwwwp
+A 0000ef64 wwtDDDDDwwwwwwwwtL
+A 0000ef77 GwwwwwwwwwwtDwwwwwwwwp
+A 0000ef90 wwtwwGwtwwwwwwwwD
+A 0000efa3 wwwwwwwwwwwwwDGwwwwwwp
+A 0000efbc wwtwwGwtwwwwwwwtL
+A 0000efcf wwwwwwwwwwwwwwtGwwwwwp
+A 0000efe8 wwtwwGwtwwwwwwwt
+A 0000f002 wwwtDDDDDGwwwwp
+A 0000f014 wwtwwGwtw
+A 0000f02e wwwwtGwwwwp
+A 0000f040 wwtDDDDDw
+A 0000f05a wwwwwtDGwwp
+A 0000f06c wwtwwGwtw
+A 0000f086 wwwwwwwtGwp
+A 0000f098 wwtwwGwtw
+A 0000f0b2 wwwtDDDDDGp
+A 0000f0c4 wwtwwGwtwp
+A 0000f0de wwwwtGwwwww
+A 0000f0f0 wwtwwGwtwpw
+A 0000f10a wwwwwtDGwww
+A 0000f11c wwtDDDDDwpw
+A 0000f135 wwwwwwwwtGww
+A 0000f148 wwtwwGwtww
+A 0000f153 wwwwt
+A 0000f15f wwwwwwtDDDDDGwp
+A 0000f174 wwtwwGwtwwwwwwwt
+A 0000f18c wwwwwwtGwwwwwwwwp
+A 0000f1a0 wwtwwGwtwwwwwwwtL
+A 0000f1b8 GwwwwwwtDGwwwwwwp
+A 0000f1cc wwtwwGwtwwwwwwwwD
+A 0000f1e5 wwwwwwwwtGwwwwwp
+A 0000f1f8 wwtDDDDDwwwwwwwwtL
+A 0000f211 wwwwtDDDDDGwwwwp
+A 0000f224 wwwwwwwwwwwwwwwwwDL
+A 0000f239 GwtDwwwwwwwwwwwwwwwp
+A 0000f250 wwwwwwwwwwwwwwwwwwDDDGwwwwwwwwwwwwwwwwwwp
+A 0000f27c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000f2a8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000f2d4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000f368 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000f3a8 wwwwwwww
+A 0000f3c1 wwwwwwpwww
+A 0000f3d9 {{{{pww
+A 0000f3e1 DwwtGwpwwp
+A 0000f3f1 {{{{{{
+A 0000f419 {{{{pww
+A 0000f421 wwwwwwpwp
+A 0000f431 {p{{{{
+A 0000f441 DwwtGwpw
+A 0000f459 {{{{ppw
+A 0000f481 wwwwwwpwp
+A 0000f4a1 DwwtGwpww
+A 0000f4b1 {p{{{{
+A 0000f4db wpppw
+A 0000f4e1 wwwwwwpwww
+A 0000f4f7 wwwww
+A 0000f508 wwwwwwwwp
+A 0000f514 wwwwwwwwwpww
+A 0000f521 DDDDDD@wwwwwwwww
+A 0000f534 wwwwwwwwwwww
+A 0000f548 wwwwwwwwwwwwwwwwwwwwwpwwwwwwwwww(
+A 0000f5d0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 0000f600 wwwwp
+A 0000f606 wwwwwwp
+A 0000f60e wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp	
+A 0000f638 wwwp	
+A 0000f63f wwwwp	
+A 0000f647 wwwwwpwwwwwww
+A 0000f656 wwwwww
+A 0000f65e wwwwww
+A 0000f665 wwwwwwp
+A 0000f677 wwwwp
+A 0000f67f wwwwwww
+A 0000f697 wwwwwwpwwwww	
+A 0000f6b8 wwwpwwwwwww	
+A 0000f6c7 wwww	
+A 0000f6d4 wwwwwww	
+A 0000f6f0 wwwwwww
+A 0000f707 wwwwwwwpwwww	
+A 0000f718 wwwww	
+A 0000f743 wwwwwwwwp
+A 0000f75f wwww	
+A 0000f76f wwwwwp
+A 0000f77b wwwww
+A 0000f797 wwwwp
+A 0000f7a7 wwwwwp
+A 0000f7df wpwwwp
+A 0000f7fd wwww	
+A 0000f806 wwwwwwp
+A 0000f816 wwwwwww
+A 0000f835 wwww	
+A 0000f83e wwwwwwwwwwp
+A 0000f84d wwwwwwwwwwww
+A 0000f86b wwwwww
+A 0000f87a wwwwwwp
+A 0000f885 wwwpwwwwwwww
+A 0000f8a4 wwwwwwwwwwwwww
+A 0000f8bd wwwwpw
+A 0000f8c4 pwwww
+A 0000f8dc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0000f914 wwww(
+A 0000fff1 wwwwwwx
+A 0000fff9 wwwwwwx
+A 00010001 wwwwwwx
+A 00010009 wwwwwwx
+A 00010011 wwpwwwx
+A 00010021 wwwpwwx
+A 00010031 wwwpwwx
+A 00010041 wwpwwwx
+A 00010049 wwwwwwx
+A 00010051 wwwwwwx
+A 00010059 wwwwwwx
+A 000100d9 wwwwww
+A 000100e1 wwwwww
+A 000100e9 wwwwww
+A 000100f1 wwwwww
+A 000100f9 wwpwww
+A 00010109 wwwpww
+A 00010119 wwwpww
+A 00010129 wwpwww
+A 00010131 wwwwww
+A 00010139 wwwwww
+A 00010141 wwwwww
+A 000101c1 wwwwwwx
+A 000101c9 wwwwwwx
+A 000101d1 wwwwwwx
+A 000101d9 wwwwwwx
+A 00010219 wwwwwwx
+A 00010221 wwwwwwx
+A 00010229 wwwwwwx
+A 000102a9 wwwwww
+A 000102b1 wwwwww
+A 000102b9 wwwwww
+A 000102c1 wwwwww
+A 00010301 wwwwww
+A 00010309 wwwwww
+A 00010311 wwwwww
+A 00010391 wwwwwwx
+A 00010399 wwwwwwx
+A 000103a1 wwwwwwx
+A 000103a9 wwwwwwx
+A 000103cb pwwwx
+A 000103e9 wwwwwwx
+A 000103f1 wwwwwwx
+A 000103f9 wwwwwwx
+A 00010479 wwwwww
+A 00010481 wwwwww
+A 00010489 wwwwww
+A 00010491 wwwwww
+A 000104d1 wwwwww
+A 000104d9 wwwwww
+A 000104e1 wwwwww
+A 00010561 wwwwwwx
+A 00010569 wwwwwwx
+A 00010571 wwwwwwx
+A 00010581 wwpwwwx
+A 00010591 wpwwwwx
+A 000105a1 wwpwwwx
+A 000105b1 wwwwwwx
+A 000105b9 wwwwwwx
+A 000105c1 wwwwwwx
+A 000105c9 wwwwwwx
+A 00010649 wwwwww
+A 00010651 wwwwww
+A 00010659 wwwwww
+A 00010669 wwpwww
+A 00010679 wpwwww
+A 00010689 wwpwww
+A 00010699 wwwwww
+A 000106a1 wwwwww
+A 000106a9 wwwwww
+A 000106b1 wwwwww
+A 00010728 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001076c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000107b8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000107fc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010840 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010884 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000108c8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001090c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010950 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010994 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000109d8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010a1c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010a60 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010aa4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010ae8 wwwwwwwwwwwwwwwww
+A 00010afe wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010b2c wwwwwwwwwwwwwwwww
+A 00010b41 pwwwwwwwwwwwwwwp
+A 00010b70 wwwwwwwwwwwwwwwww
+A 00010b85 pwwwwwwwwwwwwwwwwwwwwwww
+A 00010b9e wwwwwwwwwww
+A 00010bb4 wwwwwwwwwwwwwwwww
+A 00010bc9 pwwwwwwwwwwwwwwwwwwwwwww
+A 00010be2 wwwwwwwwwww
+A 00010bf8 wwwwwwwwwwwwwwwww
+A 00010c0d pwwwwwwwwwwwwww{
+A 00010c3c wwwwwwwwwwwwwwwww	
+A 00010c52 wwwwwwwwwwwwww{
+A 00010c80 wwwwwwwwwwwwwwwww
+A 00010c95 pwwwwwwwwwwwwwwwwwwwwwww
+A 00010cae wwwwwwwwwww
+A 00010cc4 wwwwwwwwwwwwwwwww
+A 00010cd9 pwwwwwwwwwwwwwwwwwwwwwww
+A 00010cf2 wwwwwwwwwww
+A 00010d08 wwwwwwwwwwwwwwwww
+A 00010d1d pwwwwwwwwwwwwww{
+A 00010d4c wwwwwwwwwwwwwwwww
+A 00010d61 pwwwwwwwwwwwwww{
+A 00010d90 wwwwwwwwwwwwwwwww
+A 00010da6 wwwwwwwwwwwwwwp
+A 00010dd4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010e18 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010e5c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010ea0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010ee4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010f28 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010f6c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010fb0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00010ff4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011038 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000110e0 wwwwwwwwwp
+A 000110f8 pwwwwwwwpp
+A 00011104 pwwwwwwwpp
+A 00011110 pwwwwwwwpp
+A 0001111c pwwwwwwwpp
+A 00011128 pwwwwwwwpp
+A 00011140 pwwwwwwwpp
+A 0001114c pwwwwwwwpp
+A 00011158 pwwwwwwwpp
+A 00011164 pwwwwwwwpp
+A 00011170 pwwwwwwwpp
+A 00011188 wwwwwwwwwp
+A 00011200 wwwwwwwwwp
+A 00011218 pwwwywwwpp
+A 00011224 pwwwywwwpp
+A 00011230 pwwwywwwpp
+A 0001123c pwwwywwwpp
+A 00011248 pwwwywwwpp
+A 00011254 pwwwywwwpp
+A 00011260 pwwwywwwpp
+A 0001126c pwwwywwwpp
+A 00011278 pwwwywwwpp
+A 00011284 pwwwywwwpp
+A 00011290 pwwwywwwpp
+A 000112a8 wwwwwwwwwp
+A 00011320 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001136a wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 000113ae wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwpw
+A 000113f0 wswwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7w
+A 00011437 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 0001147b wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 000114bf wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011504 wwwwwwwwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwwwwwwwwwwx7
+A 00011548 wwwwwwwwwwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwwwwwww
+A 0001158a wpwwwwwwwwwwwwwwwwwwwwwwwww
+A 000115a7 wwwwwwwwwwwwwwwwwwwwww
+A 000115d1 wwwwwwwwwwwwwwwwwwwwwwwx
+A 000115eb wwwwwwwwwwwwwwwwwwwwwx
+A 00011615 wwwwwwwwwwwwwwwwwwwwwwwp
+A 0001162e pwwwwwwwwwwwwwwwwwwwww
+A 00011659 wwwwwwwwwwwwwwwwwwwwwww8
+A 00011672 x7wwwwwwwwwwwwwwwwwwww
+A 0001169c w7wwwwwwwwwwwwwwwwwwwwwx
+A 000116b8 wwwwwwwwwwwwwwwwwwwsw
+A 000116e2 wwwwwwwwwwwwwwwwwwwwwp
+A 000116fb pwwwwwwwwwwwwwwwwwww
+A 00011727 wwwwwwwwwwwwwwwwwwww
+A 00011741 wwwwwwwwwwwwwwwwwp
+A 00011758 xwwww
+A 00011760 wwwwp
+A 0001176b wwwwwwwwwwwwwwwwwwwp
+A 00011785 wwwwwwwwwwwwwwwww
+A 000117a4 wwwwx
+A 000117af wwwwwwwwwwwwwwwwwwww
+A 000117c9 wwwwwwwwwwwwwwwww
+A 000117e8 wwwww
+A 000117f4 wwwwwwwwwwwwwwwwwwwp
+A 0001180b pwwwwwwwwwwwwwwwwwp
+A 00011824 wwwww
+A 0001182c wwwwwp
+A 00011838 wwwwwwwwwwwwwwwwwwwx
+A 00011850 wwwwwwwwwwwwwwwww
+A 00011868 wwwww
+A 00011870 wwwwww
+A 0001187d wwwwwwwwwwwwwwwwwww8
+A 00011892 x7wwwwwwwwwwwwwwwwx
+A 000118aa pwwwwww
+A 000118b4 wwwwww
+A 000118bf wwwwwwwwwwwwwwwwwwwwwp
+A 000118d6 pwwwwwwwwwwwwwwwwwww
+A 000118ef wwwwww
+A 000118f8 wwwwwwp
+A 00011905 wwwwwwwwwwwwwwwwwwwx
+A 0001191b wwwwwwwwwwwwwwwww
+A 00011933 wwwwww
+A 0001193c wwwwwww
+A 0001194a wwwwwwwwwwwwwwwwwww
+A 0001195f wwwwwwwwwwwwwwwwx
+A 00011975 pwwwwwww
+A 00011980 wwwwwww
+A 0001198e wwwwwwwwwwwwwwwwwwwpwwwwwwwwwwwwwwwwwp
+A 000119ba wwwwwww
+A 000119c4 wwwwwwwx
+A 000119d2 wwwwwwwwwwwwwwwwwwwxwwwwwwwwwwwwwwwww
+A 000119fe wwwwwww
+A 00011a08 wwwwwwww
+A 00011a17 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwx
+A 00011a40 pwwwwwwww
+A 00011a4c wwwwwwww
+A 00011a5b wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011a85 wwwwwwww
+A 00011a90 wwwwwwwwx
+A 00011a9e wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011ac9 wwwwwwww
+A 00011ad4 wwwwwwwww
+A 00011ae2 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011b0b pwwwwwwwww
+A 00011b18 wwwwwwwww
+A 00011b25 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011b50 wwwwwwwww
+A 00011b5c wwwwwwwwwx
+A 00011b68 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011b94 wwwwwwwww
+A 00011ba0 wwwwwwwwww
+A 00011bac wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011bd7 wwwwwwwwww
+A 00011be4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011c28 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00011cd8 wwwwpwwwwp
+A 00011cfc wwpwwwpwwp
+A 00011d16 wwwwwp
+A 00011d20 pwwwwwwwpp
+A 00011d38 pwwwwwwwpp
+A 00011d46 wwwwwp
+A 00011d5c wwpwwwpwwp
+A 00011d80 wwwwpwwwwp
+A 00011df8 wwwwpwwwwp
+A 00011e04 wwww	
+A 00011e1c wwpwywpwwp
+A 00011e36 wwywwp
+A 00011e40 pwwwywwwpp
+A 00011e4d wwwywwww
+A 00011e58 pwwwywwwpp
+A 00011e66 wwywwp
+A 00011e7c wwpwywpwwp
+A 00011e94 wwww	
+A 00011ea0 wwwwpwwwwp
+A 00011f54 wwwwwwwwywwwwwwwp
+A 00011f68 wwwwwwwwywwwwwwwp
+A 00011fa4 wwwwwwwwywwwwwwwp
+A 00011fb8 wwwwwwwwywwwwwwwp
+A 00011ff4 wwwwwwwwywwwwwwwp
+A 00012008 wwwwwwwwywwwwwwwp
+A 00012044 wwwwwwwwywwwwwwwp
+A 00012058 wwwwwwwwywwwwwwwp
+A 000120e8 wwwwwwwwwwwww
+A 000120f8 wwwwwwwwwwwww
+A 00012108 wwwwwwwwwwwww
+A 00012118 wwwwwwwwwwwww
+A 00012128 wwwwwwwwwwwww
+A 00012138 wwwwwwwwwwwww
+A 00012148 wwwwwwr""wwww
+A 00012158 wwwwwr""""www
+A 00012168 wwwwwr""""www
+A 00012178 wwwww"""""'ww
+A 00012188 wwwww"""""'ww
+A 00012198 wwwww"""""'ww
+A 000121a8 wwwwr"""""'ww
+A 000121b8 wwwwr""""""ww
+A 000121c8 wwwwr""""""ww
+A 000121d8 wwwwr""""""ww
+A 000121e8 wwww""
+A 000121f8 wwww*
+A 00012228 wwwwz
+A 00012238 wwwwww
+A 00012248 wwwwwwwwwwwww
+A 00012258 wwwwwwwwwwwww
+A 00012268 wwwwwwwwwwwww
+A 00012278 wwwwwwwwwwwww
+A 00012288 wwwwwwwwwwwww
+A 00012298 wwwwwwwwwwwww
+A 000122a8 wwwwwwwwwwwww
+A 000122b8 wwwwwwwwwwwww
+A 00012906 !!,$'*..1177::;;?ACCFFIIKKMMPPRRTTUUXZ]Z]]_accd^d^`^`WYQSQSLNEH==59++#%
+A 00012975   2BOO[[eehmmooqqsv{y}}
+A 00012a22 |xturrppkkgibbVJ3<")
+A 00012a3f !$''**..1177:;??AACCFFIIKKMPPRTTUUXXZZ]]]_aac^c^^^^WWWWQQLLEE==55++##
+A 00012aad  22BBOO[ehhjmmooqsvvyy}
+A 00012b59 z|wtrrpplngibbVVDJ""
+A 00012b76 (!$'4*..1177::;?AACCFFIIKKMMPPRRTTUUZXZ]]]_accdcd^`^`WYWYQSLNEE=@55+/##
+A 00012be5  22BOO[[ehjmmooqqssvy~}
+A 00012c92 |xturrpnkkgibfJJ<<")
+A 00012caf $$''**..1177;;??AACCFFIIKKMGRRTTUUXXZZ]]__aac^c^^^^WWWWQQLLEE==55++##
+A 00012d1e  2BBOO[[ehjmmooqsvvyy}
+A 00012dc9 ||wxtrppnngibbVVJ<")
+A 00012de6 !!,$'*..1177::;;?ACCFFIIKKMMPPRRTTUUXZ]Z]]_accd^d^`^`WYQSQSLNEH==59++#%
+A 00012e55   2BOO[[eehmmooqqsv{y}}
+A 00012f02 |xturrppkkgibbVJ3<")
+A 00012f1f !$''**..1177:;??AACCFFIIKKMPPRTTUUXXZZ]]]_aac^c^^^^WWWWQQLLEE==55++##
+A 00012f8d  22BBOO[ehhjmmooqsvvyy}
+A 00013039 z|wtrrpplngibbVVDJ""
+A 00013056 (!$'4*..1177::;?AACCFFIIKKMMPPRRTTUUZXZ]]]_accdcd^`^`WYWYQSLNEE=@55+/##
+A 000130c5  22BOO[[ehjmmooqqssvy~}
+A 00013172 |xturrpnkkgibfJJ<<")
+A 00013370 kooooooooolkkkkkkkkkkkkkgggggggggggggfcccccccccc^]]]]]]]]]ZZZZZZZZZZXXXXXXXXXTRRRRRRRROOOOOOOOMIIIIIIIIGGGGGGGGFFFFFFFFFCCCCCCCCC@????????=<<<<<<<:9999999999555555555333333333222222221.........********'&&&&&&&&%%%%%%%%#        
+A 000134ac koooooooookkkkkkkkkkkkkkigggggggggggggcccccccccc`]]]]]]]]][ZZZZZZZZYXXXXXXXXXTRRRRRRRROOOOOOOOIIIIIIIIHGGGGGGGGFFFFFFFFFCCCCCCCCC@????????=<<<<<<<:9999999997555555555333333333222222222..........********&&&&&&&&%%%%%%%%%        
+A 000135e8 kooooooooonkkkkkkkkkkkkkhggggggggggggfcccccccccc_]]]]]]]]]ZZZZZZZZZXXXXXXXXXXURRRRRRRRQOOOOOOOIIIIIIIIIGGGGGGGGGFFFFFFFFFCCCCCCCC@????????=<<<<<<<:9999999998555555555433333333222222222.........*********&&&&&&&&&%%%%%%%#       
+A 00013724 kooooooooomkkkkkkkkkkkkkkgggggggggggggcccccccccc_]]]]]]]]]\ZZZZZZZZXXXXXXXXXXRRRRRRRRROOOOOOOOJIIIIIIIIGGGGGGGGGFFFFFFFFCCCCCCCCC@????????=<<<<<<<:9999999996555555555333333333222222220.........,*******(&&&&&&&&%%%%%%%%"        
+A 00013860 kooooooooonkkkkkkkkkkkkkhggggggggggggdcccccccccca]]]]]]]]]ZZZZZZZZZXXXXXXXXXXRRRRRRRRROOOOOOOOLIIIIIIIIGGGGGGGGFFFFFFFFFDCCCCCCCCA????????=<<<<<<<:9999999999555555555333333333222222222.........*********&&&&&&&&&%%%%%%%$        
+A 0001399c kooooooooonkkkkkkkkkkkkkgggggggggggggdccccccccccc]]]]]]]]]ZZZZZZZZZZXXXXXXXXXTRRRRRRRROOOOOOOOMIIIIIIIIGGGGGGGGGFFFFFFFFCCCCCCCCC@????????=<<<<<<<:9999999999555555555333333333222222222.........*********&&&&&&&&%%%%%%%%%        
+A 00013ad8 koooooooookkkkkkkkkkkkkkkgggggggggggggcccccccccc_]]]]]]]]][ZZZZZZZZXXXXXXXXXXXRRRRRRRROOOOOOOOLIIIIIIIHGGGGGGGGFFFFFFFFFECCCCCCCC@????????=<<<<<<<:999999999955555555533333333322222222/.........,*******(&&&&&&&&%%%%%%%%$        
+A 00013c80 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013cba wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013cee wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013d22 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013d56 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013d8a wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013dbe wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013df2 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013e26 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013e5a wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013e8e wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013ec2 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013ef6 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00013f2a wwwwwwwwwwwwwwwwwwwwwwwww
+A 00013f5e wwwwwwwwwwwwwwwwwwwwwwwww
+A 00013f92 wwwwwwwwwwwwwwwwwwwwwwwww
+A 00013fc6 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwywwwwwwwwww
+A 00013ffa wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwywwwwwwwwww
+A 0001402e wwwwwwwwwwwwwwwwwwwwwwwww
+A 00014062 wwwwwwwwwwwwwwwwwwwwwwwww
+A 00014096 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwywwwwwwwwww
+A 000140ca wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwywwwwwwwwww
+A 000140fe wwwwwwwwwwwwwwwwwwwwwwwww
+A 00014132 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00014166 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001419a wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000141ce wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00014202 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00014236 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001426a wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001429e wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000142d2 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00014306 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0001433a wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00014368 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00015848 Rectangular
+A 0001585c On Point
+A 0001ce08 	0%0a0m0s0}0
+A 0001ce2b 1'141<1Q1V1[1`1j1s1
+U 00002e7a LIBIMPORT_TEMPLATE
+U 00002ea8 FILEOPEN_TEMPLATE
+U 00002ed6 VS_VERSION_INFO
+U 00002f32 StringFileInfo
+U 00002f56 040904B0
+U 00002f6e FileDescription
+U 00002f90 QuilterRes DLL
+U 00002fb6 FileVersion
+U 00002fd0 1, 0, 0, 1
+U 00002fee InternalName
+U 00003008 QuilterRes
+U 00003026 LegalCopyright
+U 00003044 Copyright (C) 2003
+U 00003072 OriginalFilename
+U 00003094 QuilterRes.DLL
+U 000030ba ProductName
+U 000030d4 QuilterRes Dynamic Link Library
+U 0000311a ProductVersion
+U 00003138 1, 0, 0, 1
+U 00003156 VarFileInfo
+U 00003176 Translation
+U 000031b2 MS Sans Serif
+U 000031e6 Import all image files from the selected folder
+U 0000325e Import
+U 0000426e IDR_LIBMNGR_TREECTRL_MENU
+U 000042a6 Copy
+U 000042b4 Paste
+U 000042ca Rename
+U 000042dc Delete
+U 000042f4 Import...
+U 0000430c Export...
+U 0000432a New Library
+U 00004346 Open Library
+U 0000436a Close
+U 0000437e IDR_LIBMNGR_LISTCTRL_MUNE
+U 000043b4 View
+U 000043c2 Large Icons
+U 000043de Small Icons
+U 000043fa Details
+U 00004414 Copy
+U 00004422 Paste
+U 00004438 Rename
+U 0000444a Delete
+U 00004462 Import...
+U 0000447a Export...
+U 00004498 New Category
+U 00007676 Grid
+U 00007686 MS Sans Serif
+U 000076c0 Show grid
+U 000076f4 Set reference point
+U 0000773c Horizontal
+U 000077b4 Vertical
+U 00007828 Snap to grid
+U 00007860 Grid spacing
+U 00007898 Smart snap
+U 000078c6 About
+U 000078d4 MS Sans Serif
+U 00007926 Bernina Quilter Version 1.0
+U 00007976 Copyright (C) 2003
+U 000079d6 General
+U 000079e8 MS Sans Serif
+U 00007a1a Save design
+U 00007a4a Autosave period
+U 00007a9e Relative
+U 00007aca Absolute
+U 00007af6 minutes
+U 00007b1e Autosave
+U 00007b4a Show Digitizing Position
+U 00007b96 Adjust Hue/Brightness
+U 00007bc4 MS Sans Serif
+U 00007c16 Cancel
+U 00007c3e Preview
+U 00007c62 msctls_trackbar32
+U 00007c86 Slider1
+U 00007caa msctls_trackbar32
+U 00007cce Slider1
+U 00007d16 Brightness
+U 00007d46 Hide Color
+U 00007df6 MS Sans Serif
+U 00007e3e MS Sans Serif
+U 00007e86 MS Sans Serif
+U 00007ec2 MS Sans Serif
+U 00007ef6 Initialise scanner ......
+U 00007f5e Save As
+U 00007f70 MS Sans Serif
+U 00007fa2 Save
+U 00007fc6 Cancel
+U 0000800a Save as:
+U 0000805e Tile Fabric
+U 0000807c MS Sans Serif
+U 000080d4 Tile Height:
+U 0000810c Tile Width:
+U 00008144 Tile Area:
+U 00008178 Tile Size:
+U 000081c8 msctls_updown32
+U 000081e8 Spin1
+U 00008230 msctls_updown32
+U 00008250 Spin1
+U 0000827c Static
+U 000082a8 Static
+U 000082d4 Save 
+U 00008300 Save As...
+U 00008334 Cancel
+U 00008360 pixels
+U 0000838c pixels
+U 000083dc pixels
+U 00008408 Tile Area
+U 0000843c Tile Size
+U 00008478 MS Sans Serif
+U 000084ca Cancel
+U 000084f2 Select Template:
+U 0000854e Summary
+U 00008560 MS Sans Serif
+U 00008592 Author:
+U 000085d6 Keywords:
+U 0000861e Comments:
+U 00008666 Title:
+U 000086aa Subject:
+U 0000872e Screen Calibration
+U 00008756 MS Sans Serif
+U 000087aa Cancel
+U 000087d2 To calibrate the screen, measure the dimensions of this dialog box with a ruler and enter the measured values here:
+U 000088d2 Width:
+U 00008936 Height:
+U 0000899e Quilt
+U 000089ac MS Sans Serif
+U 000089de Design name:
+U 00008a12 Version:
+U 00008a3e Length:
+U 00008a66 Width:
+U 00008a8e Blocks:
+U 00008ab6 Blocks used:
+U 00008aea Patches:
+U 00008b16 Applique:
+U 00008b42 Embroidery designs:
+U 00008b82 Total stitches:
+U 00008cd6 Object Properties
+U 00008cfc MS Sans Serif
+U 00008d4e Cancel
+U 00008d76 Dimensions
+U 00008da6 Width:
+U 00008e42 Height:
+U 00008ede Transform
+U 00008f0a Rotate by:
+U 00008f56 Skew by:
+U 00008f9e Position
+U 000090be Print Preview
+U 000090dc MS Sans Serif
+U 0000912e Cancel
+U 00009156 Print preview what
+U 00009196 Blocks
+U 000091be Block Construction
+U 000091fe Applique
+U 0000922a Whole Quilt
+U 0000925a Yardage
+U 00009282 Options...
+U 000092ce Print Options - Yardage
+U 00009300 MS Sans Serif
+U 00009352 Cancel
+U 0000937a Width
+U 000093da Allowance
+U 00009422 Fabric
+U 0000944a Seam
+U 0000946e Print details
+U 000094c2 Preview
+U 000094ee Print Options - Whole Quilt
+U 00009528 MS Sans Serif
+U 0000957a Cancel
+U 000095a2 Scaling
+U 000095ca Fit to page
+U 00009632 % normal size
+U 00009666 Print
+U 0000968a Blocks
+U 000096b2 Applique
+U 000096de Embroidery
+U 0000970e Preview
+U 00009736 Print Options - Block Construction
+U 0000977e MS Sans Serif
+U 000097d2 Cancel
+U 000097fa Actual size
+U 00009862 Show
+U 00009886 Seam
+U 000098aa Print guide
+U 000098f6 Allowance
+U 00009942 Selection
+U 0000996e Print
+U 00009992 to a page
+U 000099de Preview
+U 00009a06 Print Options - Blocks
+U 00009a36 MS Sans Serif
+U 00009a8a Cancel
+U 00009ab2 Actual size
+U 00009b1a Colour
+U 00009b42 Outline
+U 00009b8a Selection
+U 00009bb6 Show
+U 00009bda Style
+U 00009bfe Print
+U 00009c22 Print guide
+U 00009c52 to a page
+U 00009c7e Preview
+U 00009ca6 Print Options - Applique
+U 00009cda MS Sans Serif
+U 00009d2e Cancel
+U 00009d56 Actual size
+U 00009d86 Fit to page
+U 00009db6 Show
+U 00009dda Seam
+U 00009dfe Print guide
+U 00009e4a Allowance
+U 00009e96 Selection
+U 00009ec2 Print
+U 00009f06 Preview
+U 00009f2e Print
+U 00009f3c MS Sans Serif
+U 00009f6e Printer
+U 00009f96 &Name:
+U 00009fda &Properties
+U 0000a00a Status:
+U 0000a04e Type:
+U 0000a08e Where:
+U 0000a0d2 Comment:
+U 0000a11a Print to fi&le
+U 0000a152 Print range
+U 0000a182 &All
+U 0000a1a6 Pa&ges
+U 0000a1ce &from:
+U 0000a212 &to:
+U 0000a244 ¢¥x@
+U 0000a252 Copies
+U 0000a27a Number of &copies:
+U 0000a2f2 C&ollate
+U 0000a33e Cancel
+U 0000a366 Print what
+U 0000a396 Blocks
+U 0000a3be Block Construction
+U 0000a3fe Applique
+U 0000a42a Whole Quilt
+U 0000a45a Yardage
+U 0000a482 Options...
+U 0000a4b6 Dialog
+U 0000a4c6 MS Sans Serif
+U 0000a4fa Cancel
+U 0000a51e SysAnimate32
+U 0000a538 Animate1
+U 0000a57a msctls_progress32
+U 0000a59e Progress1
+U 0000a5ea MS Sans Serif
+U 0000a65a Import
+U 0000a682 Cancel
+U 0000a6be MS Sans Serif
+U 0000a6f8 Colors
+U 0000a724 Fabrics
+U 0000a754 Blocks
+U 0000a780 Dark
+U 0000a7d0 Light
+U 0000a81c Blank
+U 0000a868 To palette
+U 0000a896 Quilt Layout
+U 0000a8b2 MS Sans Serif
+U 0000a980 Å°EK
+U 0000a9aa Sash border
+U 0000a9fa Delete
+U 0000aa22 Insert
+U 0000aaa2 Cancel
+U 0000aaca Format
+U 0000aaf2 Borders
+U 0000ab1a Selected:
+U 0000ab9e Style:
+U 0000abc6 Width:
+U 0000ac26 Quilt
+U 0000aca2 Width
+U 0000acc6 Height
+U 0000ace0 ¡+sT
+U 0000acee Blocks
+U 0000ad16 Blocks across:
+U 0000ad4e Blocks down:
+U 0000ad82 Width:
+U 0000adaa Height:
+U 0000add2 Sashes
+U 0000adfa Width:
+U 0000ae22 Style:
+U 0000b02a Across
+U 0000b052 Down
+U 0000b076 Height
+U 0000b09e Width
+U 0000b13a Square
+U 0000b162 Square
+U 0000b202 MS Sans Serif
+U 0000b272 MS Sans Serif
+U 0000b2a6 &Print...
+U 0000b2d2 &Next Page
+U 0000b302 Pre&v Page
+U 0000b34e Zoom &In
+U 0000b37a Zoom &Out
+U 0000b3a6 &Close
+U 0000b3ce Option&s...
+U 0000fb76 ÿÿÿð
+U 0001266e ÿÿÿ÷ÿïÿÿ÷æÿ
+U 00012692 ÿÖÿÿïÎÿÅÿ½ÿÿæ
+U 000126b6 ÿ­ÿÿÞ¥ÿ
+U 000126e2 ÿ{ÿÿÎsÿ
+U 000126f4 kÿcÿÿÅ
+U 00012702 ÿZÿRÿÿ½JÿBÿ
+U 0001271c :ÿÿµ
+U 00012734 )ÿ!ÿÿ­
+U 00012770 ÿ{ÿs
+U 0001277c ÿkÿc
+U 00012788 ÿZÿR
+U 00012794 ÿJÿB
+U 000127a8 ÿ1ÿ)ÿ!ÿ
+U 000143a6 RIGHT_CLICK_BLOCK
+U 000143ce Cu&t
+U 000143d8 Ctrl+X
+U 000143ea &Copy
+U 000143f6 Ctrl+C
+U 00014408 &Paste
+U 00014416 Ctrl+V
+U 0001442c Transform
+U 00014444 Mirror &Vertical
+U 0001446a Mirror &Horizontal
+U 00014494 Rotate 90 &Left
+U 000144b8 Rotate 90 &Right
+U 000144e4 &Properties...
+U 0001450e RIGHT_CLICK_ADORNMENT_MENU
+U 00014548 Cu&t
+U 00014552 Ctrl+X
+U 00014564 &Copy
+U 00014570 Ctrl+C
+U 00014582 &Paste
+U 00014590 Ctrl+V
+U 000145a6 Transform
+U 000145be Mirror &Vertical
+U 000145e4 Mirror Horizontal
+U 0001460c Rotate 90 &Left
+U 00014630 Rotate 90 &Right
+U 00014654 Order
+U 00014664 Bring to Fron&t
+U 00014684 Shift+PgUp
+U 0001469e Bring &Forward
+U 000146bc PgUp
+U 000146ca Send &Backward
+U 000146e8 PgDown
+U 000146fa Send to Bac&k
+U 00014716 Shift+PgDown
+U 0001473a &Properties...
+U 0001475e &File
+U 0001476e &New Quilt
+U 00014784 Ctrl+N
+U 00014796 &Open...
+U 000147a8 Ctrl+O
+U 000147ba &Close
+U 000147d2 &Insert Embroidery
+U 000147fc Load Picture...
+U 00014820 &Save
+U 0001482c Ctrl+S
+U 0001483e Save &As...
+U 00014860 Quilt Properties...
+U 0001488c &Print...
+U 000148a0 Ctrl+P
+U 000148b2 Print Pre&view...
+U 000148e0 &Tile Fabric
+U 000148fe Manage &Fabrics
+U 00014922 Manage &Blocks
+U 0001494a Recent File
+U 0001496c E&xit
+U 0001497a &Edit
+U 0001498a &Undo
+U 00014996 Ctrl+Z
+U 000149a8 Redo
+U 000149b2 Ctrl+Y
+U 000149ca Cu&t
+U 000149d4 Ctrl+X
+U 000149e6 &Copy
+U 000149f2 Ctrl+C
+U 00014a04 &Paste
+U 00014a12 Ctrl+V
+U 00014a24 Duplicate
+U 00014a38 Ctrl+D
+U 00014a4a Delete
+U 00014a6a Select All Applique
+U 00014a92 Ctrl+A
+U 00014aa4 Lock Applique
+U 00014ac0 Ctrl+Shift+A
+U 00014ade Lock Embroidery
+U 00014afe Ctrl+Shift+E
+U 00014b1c Lock Quilt
+U 00014b32 Ctrl+Shift+Q
+U 00014b50 Deselect All
+U 00014b78 Edit Embroidery
+U 00014b9e &View
+U 00014bae Show 1:1
+U 00014bc8 Show All
+U 00014be2 Zoom In 2X
+U 00014c00 Zoom Out 2X
+U 00014c18 Shift+Z
+U 00014c2c Zoom Box
+U 00014c4c Picture
+U 00014c64 Grid...
+U 00014c7e Measure
+U 00014c9a &Toolbars
+U 00014cb2 &Standard
+U 00014cca &Edit
+U 00014cda &Arrange
+U 00014cf0 &Lock
+U 00014cfe &Arrange
+U 00014d14 Mirror &Horizontal
+U 00014d3e Mirror &Vertical
+U 00014d6a &Group
+U 00014d78 Ctrl+G
+U 00014d8a &Ungroup
+U 00014d9c Ctrl+U
+U 00014dae &Regroup
+U 00014dc0 Ctrl+R
+U 00014dd8 Bring to Fron&t
+U 00014df8 Shift+PgUp
+U 00014e12 Bring &Forward
+U 00014e30 PgUp
+U 00014e3e Send &Backward
+U 00014e5c PgDown
+U 00014e6e Send to Bac&k
+U 00014e8a Shift+PgDown
+U 00014ea6 &Settings
+U 00014ebe Object &properties...
+U 00014eee &Options...
+U 00014f10 &Display setup...
+U 00014f38 &Scanner setup...
+U 00014f5e &Window
+U 00014f72 &New Window
+U 00014f8e &Cascade
+U 00014fa4 Tile &Horizontally
+U 00014fce Tile &Vertically
+U 00014ff4 &Arrange Icons
+U 00015014 &Help
+U 00015024 Help Topics...
+U 00015046 Online Manual
+U 00015066 &About...
+U 00015084 Bernina International Homepage
+U 000150c6 Bernina of America Homepage
+U 00015102 Embroidery Online
+U 00015130 Access Code Order Form
+U 00015166 &File
+U 00015176 &New Quilt
+U 0001518c Ctrl+N
+U 0001519e &Open...
+U 000151b0 Ctrl+O
+U 000151c8 Manage &Fabrics
+U 000151ec Manage &Blocks
+U 00015214 Recent File
+U 00015236 E&xit
+U 00015244 &View
+U 00015252 &Toolbars
+U 0001526a &Standard
+U 00015282 &Edit
+U 00015292 &Alignment
+U 000152ac &Lock
+U 000152ba &Help
+U 000152ca Help Topics...
+U 000152ec Online Manual
+U 0001530c &About...
+U 0001532a Bernina International Homepage
+U 0001536c Bernina of America Homepage
+U 000153a8 Embroidery Online
+U 000153d6 Access Code Order Form
+U 00017f92 Align Left
+U 00017fa8 Align Left
+U 00017fbe Align Center
+U 00017fd8 Align Center
+U 00017ff2 Align Right
+U 0001800a Align Right
+U 00018022 Align Top
+U 00018036 Align Top
+U 0001804a Align Middle
+U 00018064 Align Middle
+U 0001807e Align Bottom
+U 00018098 Align Bottom
+U 000180b2 Align Centers
+U 000180ce Align Centers
+U 00018106 Union
+U 00018112 Union
+U 0001811e Divide
+U 0001812c Divide
+U 0001813a Back - front
+U 00018154 Back - front
+U 0001816e Front - back
+U 00018188 Front - back
+U 000181a2 Intersection
+U 000181cc Flatten
+U 000181dc Flatten
+U 00018212 Copy
+U 0001821c Copy
+U 00018226 Paste
+U 00018232 Paste
+U 0001823e Duplicate
+U 00018252 Duplicate
+U 00018266 Delete
+U 00018274 Delete
+U 00018288 Copy as EMF
+U 000182a0 Copy As EMF
+U 000182ce Undo
+U 000182d8 Undo
+U 000182e2 Redo
+U 000182ec Redo
+U 0001832a Zoom In 2X
+U 00018340 Zoom In 2X
+U 00018356 Zoom Out 2X
+U 0001836e Zoom Out 2X
+U 00018386 Zoom Box
+U 00018398 Zoom Box
+U 000183aa Show All
+U 000183bc Show All
+U 000183ce Show 1:1
+U 000183e0 Show 1:1
+U 0001840e Paintbrush
+U 00018424 Paintbrush
+U 0001843a Eyedropper
+U 00018450 Eyedropper
+U 00018470 #Embroidery Window
+U 00018496 Embroidery Window
+U 00018512 Open
+U 0001851c Open
+U 00018526 Save
+U 00018530 Save
+U 0001853a Save As...
+U 00018550 Save As...
+U 00018566 Load Picture
+U 00018580 Load Picture
+U 000185d4 )Rectangluar Applique
+U 00018600 Rectangluar Applique
+U 0001862a Oval Applique
+U 00018646 Oval Applique
+U 00018662 Draw Applique
+U 0001867e Draw Applique!Reshape Applique
+U 000186bc Reshape Applique
+U 000186fa Select Object 
+U 00018718 Select Object 
+U 00018736 Deselect All
+U 00018750 Deselect All#Deselect Applique
+U 0001878e Deselect Applique
+U 000187b2 Select Applique
+U 000187d2 Select Applique
+U 000187f2 Deselect Blocks
+U 00018812 Deselect Blocks
+U 0001884e Lock Applique
+U 0001886a Lock Applique
+U 00018886 Lock Embroidery
+U 000188a6 Lock Embroidery
+U 000188c6 Lock Quilt
+U 000188dc Lock Quilt
+U 000188f2 Dim Pictures
+U 0001890c Dim Pictures!Show/Hide Images
+U 00018948 Show/Hide Images%Show/Hide Outlines
+U 00018990 Show/Hide Outlines
+U 000189d0 #Mirror Horizontal
+U 000189f6 Mirror Horizontal
+U 00018a1a Mirror Vertical
+U 00018a3a Mirror Vertical-Rotate 90 Left / Right
+U 00018a88 Rotate 90 Left / Right-Rotate 90 Left / Right
+U 00018ae4 Rotate 90 Left / Right-Scale by 20% Down / Up
+U 00018b40 Scale by 20% Down / Up-Scale by 20% Down / Up
+U 00018b9c Scale by 20% Down / Up
+U 00018bca Send to Back
+U 00018be4 Send to Back
+U 00018bfe Send Backward
+U 00018c1a Send Backward
+U 00018c36 Bring Forward
+U 00018c52 Bring Forward
+U 00018c6e Bring to Front
+U 00018c8c Bring to Front
+U 00018cbc 5Show/Hide Standard Toolbar
+U 00018cf4 Show/Hide Standard Toolbar-Show/Hide Edit Toolbar
+U 00018d58 Show/Hide Edit Toolbar3Show/Hide Boolean Toolbar
+U 00018dba Show/Hide Boolean Toolbar3Show/Hide Arrange Toolbar
+U 00018e22 Show/Hide Arrange Toolbar-Show/Hide Lock Toolbar
+U 00018e84 Show/Hide Lock Toolbar
+U 00018ed2 Show Grid
+U 00018ee6 Show Grid#Object Properties
+U 00018f1e Object Properties!Quilt Properties
+U 00018f64 Quilt Properties
+U 00018f86 Options...
+U 00018f9c Options...
+U 00018fb2 Grid Options...
+U 00018fd2 Grid Options...!Display Setup...
+U 00019014 Display Setup...!Scanner Setup...
+U 00019058 Scanner Setup...
+U 0001907a Scan Picture
+U 00019094 Scan Picture
+U 000190c6 Group
+U 000190d2 Group
+U 000190de Ungroup
+U 000190ee Ungroup
+U 000190fe Regroup
+U 0001910e Regroup
+U 00019142 Library
+U 00019152 Library
+U 00019162 Quilt Layout
+U 0001917c Quilt Layout
+U 00019196 /Adjust Hue / Brightness
+U 000191c8 Adjust Hue / Brightness
+U 000191fa Show Quilt
+U 00019210 Show Quilt
+U 00019226 Show Material
+U 00019242 Show Material
+U 0001925e Measure
+U 0001926e Measure
+U 0001927e Show Fabric 1:1
+U 0001929e Show Fabric 1:1
+U 000192be Fabric 1:1
+U 000192d4 Fabric 1:13Show Fabric Average Color
+U 0001931e Show Fabric Average Color
+U 00019352 Show Outlines
+U 0001936e Show Outlines
+U 000193bc +Insert New Embroidery
+U 000193ea Insert New Embroidery
+U 00019416 Edit Embroidery
+U 00019436 Edit Embroidery
+U 0001945a Help
+U 00019464 Help
+U 0001946e Manual
+U 0001947c Manual!Bernina Homepage
+U 000194ac Bernina Homepage
+U 000194ce Bernina USA\Bernina USA#Online Embroidery
+U 00019522 Online Embroidery
+U 00019546 Access Order
+U 00019560 Access Order
+U 0001959a 'Close print preview mode
+U 000195ce Cancel Preview
+U 00019604 Borders
+U 00019614 Failed to load libraries.*Failed to load and initialise TWAIN32.DLL.BThe library element already exists. 
+U 000196e8 Replace the existing element?
+U 00019724 The path '%s' doesn't exist.
+U 0001975e The file format was invalid.BEnhanced metafiles (*.emf)|*.emf|Windows metafiles (*.wmf)|*.wmf||
+U 0001981e %d, %d, %d
+U 00019836 Block number:
+U 00019854 &Preview
+U 00019866 Name or pathname is too long.
+U 000198a2 Zoom 1:1
+U 000198b4 Zoom In
+U 000198c4 Zoom Out
+U 000198d6 Rectangles
+U 000198ec (modified)
+U 00019902 Import from the current folder
+U 00019940 Artista Quilter fabric library (*.flb)|*.flb|Bitmap Files (*.bmp)|*.bmp|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|EMF Files (*.emf)|*.emf|WMF Files (*.wmf)|*.wmf|PCX Files (*.pcx)|*.pcx|All Picture Files|*.bmp; *.jpg; *.png; *.emf; *.wmf; *.pcx|All Files (*.*)|*.*||
+U 00019b6a false
+U 00019b76 Enter center point
+U 00019b9c Enter point on circumference,Press <Enter> for circle or enter oval point
+U 00019c30 Enter point %d on boundary %d8Select and move one or several control points to reshape
+U 00019cde Enter grid reference point
+U 00019d14 Enter rectangle origin
+U 00019d42 Enter rectangle corner
+U 00019d70 Enter zoom box
+U 00019d8e No scanner installed.
+U 00019dcc %2.1f
+U 00019dd8 Load Picture
+U 00019df2 The library is already opened!2Cannot perform the operation! Unknown file format.X%s
+U 00019e9c This file is open for editing and cannot be overwritten.
+U 00019f0e Please use a different name.9%s
+U 00019f4e The file already existes! Please use a different name.GAre you sure you want to discard all your changes 
+U 0001a022 on the library '%s'.
+U 0001a04c Adding elements ...
+U 0001a076 Skipping elements ...
+U 0001a0a4 Updating the library 
+U 0001a0d2 Backing up the library 
+U 0001a104 Name
+U 0001a10e Type
+U 0001a118 New Category
+U 0001a132 Bernina]Cannot delete! The element '%s' is being used. 
+U 0001a1a4 Do you want to suppress this message window?[Cannot move! The element '%s' is being used. 
+U 0001a25c Do you want to suppress this message window?
+U 0001a2b6 true
+U 0001a2d6 Blocks Used
+U 0001a2ee Colors Used
+U 0001a306 Fabrics Used
+U 0001a320 Rectangular
+U 0001a338 On Point
+U 0001a34a None
+U 0001a35a Sash squares
+U 0001a374 Horizontal on Top
+U 0001a398 Horizontal
+U 0001a3ae Vertical on Top
+U 0001a3ce Vertical
+U 0001a3e0 Forward
+U 0001a3f0 Backward
+U 0001a402 Mitered
+U 0001a412 Corner Squares
+U 0001a430 Horizontal
+U 0001a446 Vertical
+U 0001a458 Could not load graphics file
+U 0001a492 Squares
+U 0001a4a2 Library
+U 0001a4b2 Options
+U 0001a4c2 User Fabrics
+U 0001a4e2 User Fabrics\Scanned
+U 0001a50c 'Artista Quilter designs (*.arq)|*.arq||;Artista Quilter designs (*.arq)|*.arq|All Files (*.*)|*.*||
+U 0001a5d6 .amq
+U 0001a5e0 .arq
+U 0001a5ea  - Continued
+U 0001a606 Quilt name:
+U 0001a622 Author:
+U 0001a638 Version:
+U 0001a64e Block:
+U 0001a662 Size:
+U 0001a67a  inches.
+U 0001a68e Color:
+U 0001a6a2 Length:
+U 0001a6bc Width:
+U 0001a6cc bThere was a problem saving the design to disk.
+U 0001a72c Make sure there is sufficient disk space available.
+U 0001a794 BERNINA Quilter - Disk ErrorøThe Adobe Acrobat Reader application required to display the 
+U 0001a84a online manual and online release notes cannot be found. 
+U 0001a8be Either you do not have Acrobat Reader installed on your
+U 0001a92e computer, or it has become corrupted.
+U 0001a97c Would you like to install it now?0Error launching the Acrobat Reader Setup program£Please insert your Embroidery Software CD-ROM
+U 0001aa80 If the Embroidery Software installation program starts
+U 0001aaee automatically, cancel it. (See the installation instructions)*This application cannot be run standalone.
+U 0001abd2 %4.2f in
+U 0001ac08 Z %3.2f
+U 0001ac24 Bitmap Files (*.bmp)|*.bmp|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|PCX Files (*.pcx)|*.pcx|All Picture Files|*.bmp; *.jpg; *.png; *.pcx||
+U 0001ad4a %4.2f
+U 0001ad5c Portr&ait
+U 0001ad70 L&andscape
+U 0001ad88 Sashes
+U 0001ad9c Material:
+U 0001adb2 inches squared.
+U 0001add2 Palette
+U 0001ade2 Edit
+U 0001adec Standard
+U 0001adfe Arrange
+U 0001ae0e Lock
+U 0001ae18 X=%7.2f Y=%7.2f L=%7.2f A=%6.1f
+U 0001ae58 Move: L=%7.2f
+U 0001ae74 Scale: X%7.2f Y%7.2f
+U 0001ae9e Rotate: A%7.2f
+U 0001aebc Skew: A%7.2f
+U 0001aed6 Blocks Used
+U 0001aeee Quilt Properties
+U 0001af10 V%3.1f
+U 0001af1e %4.2f in
+U 0001af32 QBERNINA Quilter
+U 0001af5e Arq Files (*.arq)
+U 0001af82 .arq
+U 0001af8c BERNINA_Quilter.Document
+U 0001afbe Arq Document
+U 0001affa BERNINA Quilter
+U 0001b01a Ready
+U 0001b042 Create a new document
+U 0001b076 Open an existing document
+U 0001b0aa Open
+U 0001b0b4 Close the active document
+U 0001b0e8 Close
+U 0001b0f4 Save the active document
+U 0001b126 Save0Save the active document with a new name
+U 0001b182 Save As&Change the printing options
+U 0001b1ca Page Setup3Change the printer and printing options
+U 0001b230 Print Setup
+U 0001b248 Print the active document
+U 0001b27c Print
+U 0001b288  Display full pages
+U 0001b2b0 Print Preview
+U 0001b2da Open this document
+U 0001b300 Open this document
+U 0001b326 Open this document
+U 0001b34c Open this document
+U 0001b372 Open this document
+U 0001b398 Open this document
+U 0001b3be Open this document
+U 0001b3e4 Open this document
+U 0001b40a Open this document
+U 0001b430 Open this document
+U 0001b456 Open this document
+U 0001b47c Open this document
+U 0001b4a2 Open this document
+U 0001b4c8 Open this document
+U 0001b4ee Open this document
+U 0001b514 Open this document
+U 0001b53a Erase the selection
+U 0001b562 Erase
+U 0001b56e Erase everything
+U 0001b590 Erase All3Copy the selection and put it on the Clipboard
+U 0001b602 Copy1Cut the selection and put it on the Clipboard
+U 0001b670 Find the specified text
+U 0001b6a0 Find
+U 0001b6aa Insert Clipboard contents
+U 0001b6de Paste
+U 0001b6ee Repeat the last action
+U 0001b71c Repeat1Replace specific text with different text
+U 0001b77e Replace%Select the entire document
+U 0001b7c4 Select All
+U 0001b7da Undo the last action
+U 0001b804 Undo&Redo the previously undone action
+U 0001b852 Redo
+U 0001b860 6Open another window for the active document
+U 0001b8ba New Window7Arrange icons at the bottom of the window
+U 0001b924 Arrange Icons/Arrange windows so they overlap
+U 0001b980 Cascade WindowsBArrange windows horizontally as non-overlapping tiles
+U 0001ba0c Tile Windows@Arrange windows vertically as non-overlapping tiles
+U 0001ba8e Tile Windows(Split the active window into panes
+U 0001baee Split
+U 0001bb10 ?Display program information, version number and copyright
+U 0001bb86 About4Quit the application; prompts to save documents
+U 0001bbf2 Exit
+U 0001bc18 (Switch to the next window pane
+U 0001bc58 Next Pane5Switch back to the previous window pane
+U 0001bcbc Previous Pane
+U 0001bd12 SCRL
+U 0001bd40 'Show or hide the toolbar
+U 0001bd74 Toggle ToolBar,Show or hide the status bar
+U 0001bdca Toggle StatusBar
+U 0001be0a Change the window size
+U 0001be38 Change the window position
+U 0001be6e Reduce the window to an icon
+U 0001bea8 Enlarge the window to full size"Switch to the next document window&Switch to the previous document window9Close the active window and prompts to save the documents
+U 0001c004 !Restore the window to normal size
+U 0001c04a Activate Task List
+U 0001c09e Tile fabric
+U 0001c0b6 Tile Fabric
+U 0001c0d2 3Manage fabrics in the fabric library
+U 0001c11e Manage Fabrics0Manage blocks in the block library
+U 0001c182 Manage Blocks
+U 0001c1aa Select
+U 0001c1b8 Select'Move/Edit Selection
+U 0001c1ee Move/Edit Selection
+U 0001c216 Zoom 1:1
+U 0001c228 Zoom 1:1
+U 0001c23a Zoom In 2X
+U 0001c250  Zoom In 2X
+U 0001c268 Zoom Out 2X
+U 0001c280 Zoom Out 2X
+U 0001c298 Rotate 90 Left
+U 0001c2b6 Rotate 90 Left
+U 0001c2d4 Rotate 90 Right
+U 0001c2f4 Rotate 90 Right
+U 0001c322 Artista Quilter block library (*.blb)|*.blb|Enhanced metafiles (*.emf)|*.emf|Windows metafiles (*.wmf)|*.wmf|All Metafiles|*.emf;*.wmf|*.All Files (*.*)|*.*||
+U 0001c460 Export to the current folder
+U 0001c49a Import
+U 0001c4a8 Export
+U 0001c4b6 Move
+U 0001c4c0 Copy
+U 0001c4ca Delete
+U 0001c4d8 Backup
+U 0001c4e6 Update
+U 0001c4f4 Fabric Library
+U 0001c512 Block Library
+U 0001c52e Library name:  '%s'
+U 0001c556 The library is already opened.]Cannot copy! The destination folder is the parent folder or a subfolder of the source folder.
+U 0001c650 Confirm Item DeleteCAre you sure you want to remove the item '%s' and all its contents?
+U 0001c700 DAre you sure you want to remove these %d items and all its contents?
+U 0001c78c Failed to export the library.
+U 0001c7c8 Manage Fabrics
+U 0001c7e6 Manage Blocks
+U 0001c802 Look in:-Artista Quilter Fabric Library (*.flb)|*.flb|,Artista Quilter Block Library (*.blb)|*.blb|
+U 0001c8ca All Files (*.*)|*.*|[Enhanced Metafiles (*.emf)|*.emf|Windows Metafiles (*.wmf)|*.wmf|All Metafiles|*.emf;*.wmf|
+U 0001c9ac Bitmap Files (*.bmp)|*.bmp|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|PCX Files (*.pcx)|*.pcx|All Image Files|*.bmp;*.jpg;*.png;*.pcx|
+U 0001cac6 Confirm Cancel
+U 0001cae4 Fabric
+U 0001caf2 Block
+U 0001cafe Category
+U 0001cb10 Save in:JCannot perform the operation! The nested subfolder level is limited to %d.
+U 0001cbce View Menu
+U 0001cbe2 View Menu
+U 0001cbf6 Up One Level
+U 0001cc10 Up One Level'Create New Category
+U 0001cc52 Create New Category7Go To Last Category Visited
+U 0001ccb2 Go To Last Category Visited

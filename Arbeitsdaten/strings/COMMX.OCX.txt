@@ -1,0 +1,4643 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001c0 .text
+A 000001e7 `.rdata
+A 0000020f @.data
+A 00000238 .rsrc
+A 0000025f @.reloc
+A 0000050e YYt&8
+A 00000870 YYt&8
+A 00001411 QSVWj<
+A 00002041 QVWjP
+A 00002482 QVWjX
+A 000024f0 QVWjL
+A 00002a1d QVWjT
+A 00002a8b QVWhl
+A 00002b00 QVWht
+A 00002b71 QVWjH
+A 000031ae RXUUSh
+A 000031c9 RHUUSh
+A 00003202 R@UUSh
+A 00003259 R(UUSh
+A 00003271 R0UUSh
+A 00003289 R8UUSh
+A 0000332a QVWjP
+A 00003398 QVWjD
+A 0000352e WPQRV
+A 00003805 R UUSh
+A 0000384e n(_^]3
+A 00003891 QVWjL
+A 000038ff QVWjH
+A 00004187 QVWjP
+A 000041f5 QVWjH
+A 00004585 QVWjP
+A 000045f3 QVWjH
+A 0000496b ^(_^3
+A 00004980 QVWjP
+A 00004b77 Pj4h|
+A 00005e17 90u'9p
+A 00005f8f 90u'9p
+A 00006e2b 90u'9p
+A 0000702e 90u'9p
+A 000071fb 90u'9p
+A 00007d72 Y_^[Y
+A 00007eb6 Y_^[Y
+A 00008474 90u'9p
+A 00008641 90u'9p
+A 0000880e 90u'9p
+A 000089e8 90u'9p
+A 00008bb5 90u'9p
+A 00008d82 90u'9p
+A 0000aa8e tZ9{L
+A 0000ac6d QQSVW
+A 0000acfa WWj&P
+A 0000ae69 tN9{L
+A 0000aef1 HtnHt\HtJHt8Ht&Ht
+A 0000b181 AY|EW
+A 0000b358 At#Ht Ht
+A 0000b390 mt.Ht$
+A 0000b4c3 `fIQf
+A 0000b5bd |3f;U
+A 0000b5cb |%f;M
+A 0000b7e0 t\HtI
+A 0000b7e8 t4Ht1HHt
+A 0000bc35 9K$s-
+A 0000be3e ^(_^[
+A 0000c603 WWWPP
+A 0000ce0a WWVVP
+A 0000d265 Ht	Ht
+A 0000d2d4 t/Ht$Ht
+A 0000d42a t'Ht$Ht!Ht
+A 0000d480 t/Ht$Ht
+A 0000e369 SVt)f
+A 0000e522 SVt)f
+A 0000ed84 ^D_^3
+A 0000f7c0 Ht_HHtPHtBHt4Ht&Ht
+A 0000f92e Ht\HHtMHt?Ht1Ht#Ht
+A 0000f9e9 SV@WP
+A 0000fa8e t/Ht%Ht
+A 0000fae7 Wt/Ht%Ht
+A 0000fbeb Wt%Ht
+A 000103f5 1RRRj
+A 00011090 PVVhx
+A 000110cc PVVh`
+A 000110ee PVVhT
+A 00011294 PSSh0
+A 000113fb PWWh0
+A 00011473 PWWh`
+A 00011494 PWWhT
+A 000114f5 PWWh8
+A 00011586 PSSh`
+A 000115b2 PSShT
+A 000117ba PSShx
+A 000117ea PSSh0
+A 00011a10 PWWh`
+A 00011a39 PWWhT
+A 00011a9a PWWh8
+A 00011b2c PSSh`
+A 00011b55 PSShT
+A 00011f64 :H	uT
+A 000128c7 t#SPhP
+A 00012982 t#SPhP
+A 00013436 ~T_^3
+A 00013da2 PVQPP
+A 00013e9b 	9N8t
+A 00013ebf 	9N<t
+A 00013ee3 	9N@t
+A 00013f07 	9NDt
+A 000140fb ti<'u
+A 0001437a PPPPPPPQPPP
+A 000143b4 VPVVVVVV
+A 000143dc PVVVV
+A 00014420 ?=u/W
+A 00014ab0 8%tKP
+A 00014bf5 {uE9]
+A 00015013 t$ PP
+A 00015040 F@j&P
+A 00015052 Ffj P
+A 00016ad5 Q@SSh
+A 00017191 QSVW3
+A 000171b0 F<98t
+A 0001756c V9M u
+A 00017614 \SVW3
+A 00017aff QSVWj
+A 00017b62 QSVWj
+A 00017ddb F@_^[
+A 000181a8 D$xj\P
+A 000181de D$xj\P
+A 0001837d QX_^3
+A 00018ec4 WWWWPW
+A 000191ad }{f9}
+A 0001958f SVW||f
+A 0001a2c0 YY|,f
+A 0001a5fd mt`HtRHtDHt3Ht"Ht
+A 0001a66e tTHHtEHt7
+A 0001a679 	t'HHt
+A 0001a7ad Ht	Ht
+A 0001a809 mt`HtRHtDHt3Ht"Ht
+A 0001a87a tQHHtBHt4
+A 0001a885 	t$HHt
+A 0001aefd SVWt)f
+A 0001b882 PPPQj
+A 0001b8a0 QQSVW
+A 0001b8fc QSUVW3
+A 0001b967 _^][Y
+A 0001c041 9~Dt:
+A 0001c05b NLQPh
+A 0001c075 NPQPh
+A 0001c087 F4PWVh]
+A 0001c09e PWVhM
+A 0001c759 0SVW3
+A 0001c8b0 t!9^Dt
+A 0001c8f1 u!9^Dt
+A 0001c99b xSVW3
+A 0001c9c2 9^Dt>S
+A 0001ca7f Ht%Hu
+A 0001cc90 0< uE
+A 0001cdb2 F@ t8
+A 0001ce81 98u29}
+A 0001d0a6 ~XS+~d
+A 0001d19a u69\$
+A 0001db53 8\t<9
+A 0001de25 QQSVW
+A 0001e715 YYt&8
+A 0001eba8 ItHPhx
+A 0001ed36 At@Ht4Ht(Q
+A 0001ede0 }!8\$
+A 00020058 t Wh0
+A 00020289 t 8\$
+A 000203c1 }>8\$
+A 0002052d YYjhS
+A 000205e8 YYjhj
+A 000206ea QQSVW
+A 00020e3c Y_^][Y
+A 00020f7d D$04a
+A 00020fc0 L$D_^]d
+A 0002144d D$0da
+A 00021490 L$D_^]d
+A 00021b33 SVWUj
+A 00021b9c t.;t$$t(
+A 00021cda WVPQR
+A 00022b34 D$,VP
+A 00022d4b D$ QU
+A 00022e25 L$@PQ
+A 00022e3d D$$RP
+A 00022eac 9\$<tz
+A 00022eb7 T$8QR
+A 00022ecf L$$PQ
+A 00022f37 9\$4u
+A 00022f4a L$0PQ
+A 00022f62 D$$RP
+A 00022fca L$,UQ
+A 000233f6 uRFGHt
+A 000234a0 tlHt.
+A 00023903 SUVWj
+A 00023ab5 Iu1Sj
+A 00023b6b It	Iu
+A 00023db0 QSUVW3
+A 00023e65 _^][Y
+A 00024240 _^][Y
+A 0002430b D$ _^][Y
+A 00024329 _^][Y
+A 00024344 _^][Y
+A 00024356 _^][Y
+A 000243c0 _^][Y
+A 000244b0 D$ _^][Y
+A 000244ce _^][Y
+A 000244e0 _^][Y
+A 00024690 u"WVS
+A 00024874 D$$VW
+A 00024947 T$ VR
+A 00024952 T$$RP
+A 00024978 T$ QRP
+A 00024994 D$,SUV
+A 000249a2 l$$|	
+A 000249a8 L$H;i
+A 00024a6a D$LQURP
+A 00024bb2 L$PVR
+A 00024bb8 T$TPQRS
+A 00024c21 L$HUR
+A 00024c27 T$LPQRS
+A 00024c35  _^][
+A 00024c78 T$ UWSP
+A 00024c80 D$,QRP
+A 00024ca2 QRPWS
+A 00024cea T$$UWV
+A 00024cf7 D$4SQ
+A 00024cfd L$8RPQ
+A 00024e06 D$,PVU
+A 00024e59 L$$PSQVU
+A 00025334 tBjtj
+A 000253ea uRjtj
+A 00025b05 																								
+A 00025b1e 													
+A 00025b2e 													
+A 00025b3d 										
+A 00025b48 					
+A 00025b50 SUVWj
+A 00026030 VC20XC00U
+A 000265bb _^][Y
+A 000265d4 _^][Y
+A 000266d7 _^][Y
+A 00026715 _^][Y
+A 00026a15 QVWRP
+A 00026a55 VBWRU
+A 00026a86 WSVQj
+A 00026ad9 D$(PWSUQ
+A 00026b24 VPWSUQ
+A 00026b6c D$8QVRh 
+A 00027128 D$XRP
+A 0002716c |$\-u
+A 000273cb PVWj 
+A 000273ec D$*RP
+A 00027407 QVWj0
+A 00027433 T$HPR
+A 0002747d QRWj 
+A 00027730 _^][Y
+A 00027884 _^][Y
+A 0002789c H_^][Y
+A 000278af _^][Y
+A 00027d90 QUVW3
+A 00027fac :ucEU
+A 00027fe4 :u+EU
+A 00028aeb SUVWP
+A 00028c82 HSUVWh
+A 00028cf0 f9|$F
+A 000291ba L$ _^]+
+A 0002951d <St	<C
+A 00029539 D$$t.
+A 0002961b D$,]B
+A 00029636 L$\un
+A 0002964a L$,B:
+A 00029662 :L$Lw3
+A 000296dd |$${u
+A 000296ef |$(HUS
+A 000297a4 T$VQR
+A 000299cd |$$ou
+A 00029ba1 |$$Fu
+A 0002a449 /;t$$u
+A 0002a5b8 _^][Y
+A 0002a6ea 8"uV@
+A 0002a862 D$ _^]
+A 0002a873 SUVWj
+A 0002ae29 WSUVj
+A 0002af2f SUVW3
+A 0002b50f L$ UQSRP
+A 0002b7c7 VPj1Sj
+A 0002b7db Qj2Sj
+A 0002b7ee Rj3Sj
+A 0002b801 Pj4Sj
+A 0002b814 Qj5Sj
+A 0002b827 Rj6Sj
+A 0002b837 Wj7Sj
+A 0002b848 G Pj*Sj
+A 0002b85d Qj+Sj
+A 0002b870 Rj,Sj
+A 0002b881 G,Pj-Sj
+A 0002b896 Qj.Sj
+A 0002b8a9 Rj/Sj
+A 0002b8bc Pj0Sj
+A 0002b8cf QjDSj
+A 0002b8e2 RjESj
+A 0002b8f3 G@PjFSj
+A 0002b908 QjGSj
+A 0002b91b RjHSj
+A 0002b92c GLPjISj
+A 0002b941 QjJSj
+A 0002b954 RjKSj
+A 0002b965 GXPjLSj
+A 0002b97a QjMSj
+A 0002b98d RjNSj
+A 0002b99e GdPjOSj
+A 0002b9b3 Qj8Sj
+A 0002b9c6 Rj9Sj
+A 0002b9d7 GpPj:Sj
+A 0002b9ec Qj;Sj
+A 0002b9ff Rj<Sj
+A 0002ba10 G|Pj=Sj
+A 0002ba28 Qj>Sj
+A 0002ba3e Rj?Sj
+A 0002ba54 Pj@Sj
+A 0002ba6a QjASj
+A 0002ba80 RjBSj
+A 0002ba96 PjCSj
+A 0002baac Qj(Sj
+A 0002bac2 Rj)Sj
+A 0002baee Qj Uj
+A 0002bd6d Pj#Wj
+A 0002bd91 Qj%Wj
+A 0002c1d7 S RjPVj
+A 0002c1ea C$PjQVj
+A 0002c223 C*PjTVj
+A 0002c238 QjUVj
+A 0002c24b RjVVj
+A 0002c25c C-PjWVj
+A 0002c271 QjRVj
+A 0002c284 SjSVj
+A 0002c357  SUVW3
+A 0002c726 PPPPPPPP
+A 0002c7a6 PPPPPPPP
+A 0002c853 _^][Y
+A 0002c880 T$(SSSSWQh 
+A 0002c89d _^][Y
+A 0002c8b6 _^][Y
+A 0002c8c8 VUWPh 
+A 0002c930 T$$WSR
+A 0002c95e _^][Y
+A 0002c9cd L$ RQP
+A 0002c9d5 _^][Y
+A 0002ca0b U@RPS
+A 0002ca31 VWUQj
+A 0002ca43 T$$RP
+A 0002ca49 D$ WP
+A 0002ca61 _^][Y
+A 0002ca76 _^][Y
+A 0002cf9b _^][Y
+A 0002cfe4 _^][Y
+A 0002d014 UWUVh 
+A 0002d044 H_^][Y
+A 0002d081 _^][Y
+A 0002d0b6 D$$RPj
+A 0002d0fe _^][Y
+A 0002d11a _^][Y
+A 0002d14f H_^][Y
+A 0002d164 _^][Y
+A 0002d68b t!EUS
+A 0002d9b6 1_^][
+A 0002db2b SVWPQ
+A 0002dfa4 tShlm
+A 0002e3f9 zuTVVVSU
+A 0002e6c0 FGQPS
+A 0002e9e9 D$HUV
+A 0002ed55 L$,u	
+A 0002ef21 D$TRVP
+A 0002f010 T$DQPR
+A 0002f356 L$ PQF
+A 0002f435 T$ QR
+A 0002f464 KK<5|1;
+A 0002f480 D$HCf
+A 0002f63d T$$PPj
+A 0002f66a D$ Pj
+A 0002f7a5 T$,PQj
+A 0002f7f1 UVWuNj
+A 0002f84d l$4VU
+A 0002f86b D$<WP
+A 0002f891 D$,WQVURP
+A 0002f9d6 VUj	S
+A 0002fa0d D$<VPj
+A 0002fa27 QRj	S
+A 0002fa4d T$<VPQRj
+A 0002fa66 T$0VP
+A 0002fa6c D$4UQRP
+A 0002fae0 QSUVW
+A 0002fb58 _^][Y
+A 0002fb64 _^][Y
+A 0002fc90 _^][Y
+A 0002fc98 _^][Y
+A 0002fd1a 8<=t!
+A 0002fde4 T$(SUVf
+A 0002fe57 *_^][
+A 0002fead *_^][
+A 0002ff57 l$0u)
+A 0002ffdf f9|$(w
+A 0002fff9 9D$*u,9D$.
+A 00031ea1 RDEST
+A 00031eb1 RDEST
+A 00031ec1 RDEST
+A 00031ed1 RDEST
+A 00031ee1 RDEST
+A 00031ef1 RDEST
+A 00031f01 RDEST
+A 00031f14 ${vWb
+A 00031f21 RDEST
+A 00031f31 RDEST
+A 00031f51 SDEST
+A 00031f61 RDEST
+A 00031f71 SDEST
+A 00031f84 ${vWA
+A 00034830 ProgID
+A 00034838 VersionIndependentProgID
+A 00034858 LocalServer32
+A 00034868 InprocServer32
+A 00034878 ThreadingModel
+A 00034888 AUTPRX32.DLL
+A 00034898 Apartment
+A 00034b40 string too long
+A 00034b70 invalid string position
+A 00034bec Unknown exception
+A 00034ca0 LC_TIME
+A 00034ca8 LC_NUMERIC
+A 00034cb4 LC_MONETARY
+A 00034cc0 LC_CTYPE
+A 00034ccc LC_COLLATE
+A 00034cd8 LC_ALL
+A 00034d09  (8PX
+A 00034d11 700WP
+A 00034d21 `h````
+A 00034d29 ppxxxx
+A 00034d54 (null)
+A 00034d60 SunMonTueWedThuFriSat
+A 00034d78 JanFebMarAprMayJunJulAugSepOctNovDec
+A 00034daf ?IsProcessorFeaturePresent
+A 00034dcc KERNEL32
+A 00034de0 e+000
+A 00034de8 runtime error 
+A 00034dfc TLOSS error
+A 00034e0c SING error
+A 00034e1c DOMAIN error
+A 00034e2c R6028
+A 00034e33 - unable to initialize heap
+A 00034e54 R6027
+A 00034e5b - not enough space for lowio initialization
+A 00034e8c R6026
+A 00034e93 - not enough space for stdio initialization
+A 00034ec4 R6025
+A 00034ecb - pure virtual function call
+A 00034eec R6024
+A 00034ef3 - not enough space for _onexit/atexit table
+A 00034f24 R6019
+A 00034f2b - unable to open console device
+A 00034f50 R6018
+A 00034f57 - unexpected heap error
+A 00034f74 R6017
+A 00034f7b - unexpected multithread lock error
+A 00034fa4 R6016
+A 00034fab - not enough space for thread data
+A 00034fd2 abnormal program termination
+A 00034ff4 R6009
+A 00034ffb - not enough space for environment
+A 00035020 R6008
+A 00035027 - not enough space for arguments
+A 0003504c R6002
+A 00035053 - floating point not loaded
+A 00035074 Microsoft Visual C++ Runtime Library
+A 000350a0 Runtime Error!
+A 000350b0 Program: 
+A 000350c0 <program name unknown>
+A 000350d8 Paraguay
+A 000350e4 Uruguay
+A 000350ec Chile
+A 000350f4 Ecuador
+A 000350fc Argentina
+A 00035110 Colombia
+A 0003511c Venezuela
+A 00035128 Dominican Republic
+A 0003513c South Africa
+A 0003514c Panama
+A 00035154 Luxembourg
+A 00035160 Costa Rica
+A 0003516c Switzerland
+A 00035178 Guatemala
+A 00035184 Canada
+A 0003518c Spanish - Modern Sort
+A 000351a4 Australia
+A 000351b0 English
+A 000351b8 Austria
+A 000351c0 German
+A 000351c8 Belgium
+A 000351d0 Mexico
+A 000351d8 Spanish
+A 000351e0 Basque
+A 000351e8 Sweden
+A 000351f0 Swedish
+A 000351f8 Iceland
+A 00035200 Icelandic
+A 0003520c France
+A 00035214 French
+A 0003521c Finland
+A 00035224 Finnish
+A 0003522c Spain
+A 00035234 Spanish - Traditional Sort
+A 00035250 united-states
+A 00035260 united-kingdom
+A 00035270 trinidad & tobago
+A 00035284 south-korea
+A 00035290 south-africa
+A 000352a0 south korea
+A 000352ac south africa
+A 000352bc slovak
+A 000352c4 puerto-rico
+A 000352d0 pr-china
+A 000352dc pr china
+A 000352ec new-zealand
+A 000352f8 hong-kong
+A 00035304 holland
+A 0003530c great britain
+A 0003531c england
+A 00035324 czech
+A 0003532c china
+A 00035334 britain
+A 0003533c america
+A 00035350 swiss
+A 00035358 swedish-finland
+A 00035368 spanish-venezuela
+A 0003537c spanish-uruguay
+A 0003538c spanish-puerto rico
+A 000353a0 spanish-peru
+A 000353b0 spanish-paraguay
+A 000353c4 spanish-panama
+A 000353d4 spanish-nicaragua
+A 000353e8 spanish-modern
+A 000353f8 spanish-mexican
+A 00035408 spanish-honduras
+A 0003541c spanish-guatemala
+A 00035430 spanish-el salvador
+A 00035444 spanish-ecuador
+A 00035454 spanish-dominican republic
+A 00035470 spanish-costa rica
+A 00035484 spanish-colombia
+A 00035498 spanish-chile
+A 000354a8 spanish-bolivia
+A 000354b8 spanish-argentina
+A 000354cc portuguese-brazilian
+A 000354e4 norwegian-nynorsk
+A 000354f8 norwegian-bokmal
+A 0003550c norwegian
+A 00035518 italian-swiss
+A 00035528 irish-english
+A 00035538 german-swiss
+A 00035548 german-luxembourg
+A 0003555c german-lichtenstein
+A 00035570 german-austrian
+A 00035580 french-swiss
+A 00035590 french-luxembourg
+A 000355a4 french-canadian
+A 000355b4 french-belgian
+A 000355c4 english-usa
+A 000355d0 english-us
+A 000355dc english-uk
+A 000355e8 english-trinidad y tobago
+A 00035604 english-south africa
+A 0003561c english-nz
+A 00035628 english-jamaica
+A 00035638 english-ire
+A 00035644 english-caribbean
+A 00035658 english-can
+A 00035664 english-belize
+A 00035674 english-aus
+A 00035680 english-american
+A 00035694 dutch-belgian
+A 000356a4 chinese-traditional
+A 000356b8 chinese-singapore
+A 000356cc chinese-simplified
+A 000356e0 chinese-hongkong
+A 000356f4 chinese
+A 00035704 canadian
+A 00035710 belgian
+A 00035718 australian
+A 00035724 american-english
+A 00035738 american english
+A 0003574c american
+A 00035758 GetLastActivePopup
+A 0003576c GetActiveWindow
+A 0003577c MessageBoxA
+A 00035788 user32.dll
+A 00035794 H:mm:ss
+A 0003579c dddd, MMMM dd, yyyy
+A 000357b0 M/d/yy
+A 000357c0 December
+A 000357cc November
+A 000357d8 October
+A 000357e0 September
+A 000357ec August
+A 00035804 April
+A 0003580c March
+A 00035814 February
+A 00035820 January
+A 00035858 Saturday
+A 00035864 Friday
+A 0003586c Thursday
+A 00035878 Wednesday
+A 00035884 Tuesday
+A 0003588c Monday
+A 00035894 Sunday
+A 000358b8 1#QNAN
+A 000358c0 1#INF
+A 000358c8 1#IND
+A 000358d0 1#SNAN
+A 0003835e GetTickCount
+A 0003836e DisableThreadLibraryCalls
+A 0003838a InitializeCriticalSection
+A 000383a6 DeleteCriticalSection
+A 000383be LeaveCriticalSection
+A 000383d6 InterlockedIncrement
+A 000383ee EnterCriticalSection
+A 00038406 InterlockedDecrement
+A 0003841e LockResource
+A 0003842e LoadResource
+A 0003843e FindResourceA
+A 0003844e lstrlenW
+A 0003845a lstrlenA
+A 00038466 MulDiv
+A 00038470 lstrcpyA
+A 0003847c FindClose
+A 00038488 FindNextFileA
+A 00038498 FindFirstFileA
+A 000384aa WideCharToMultiByte
+A 000384c0 MultiByteToWideChar
+A 000384d6 GetVersion
+A 000384e4 lstrcmpiA
+A 000384f0 lstrcatA
+A 000384fc lstrcmpA
+A 00038508 CreateThread
+A 00038518 lstrcpynA
+A 00038524 FreeLibrary
+A 00038532 SizeofResource
+A 00038544 GetLastError
+A 00038554 LoadLibraryExA
+A 00038566 CloseHandle
+A 00038574 CreateFileA
+A 00038582 OutputDebugStringA
+A 00038598 GetCurrentThreadId
+A 000385ae GetModuleFileNameA
+A 000385c4 GetModuleHandleA
+A 000385d8 GetCurrentProcess
+A 000385ec WaitForSingleObject
+A 00038602 HeapDestroy
+A 00038610 GlobalUnlock
+A 00038620 GlobalLock
+A 0003862e GlobalAlloc
+A 0003863c CreateEventA
+A 0003864c SetCommState
+A 0003865c SetupComm
+A 00038668 SetCommTimeouts
+A 0003867a GetCommState
+A 0003868a GetCommTimeouts
+A 0003869c PurgeComm
+A 000386a8 WaitForMultipleObjects
+A 000386c2 SetEvent
+A 000386ce ResetEvent
+A 000386dc GetOverlappedResult
+A 000386f2 ClearCommBreak
+A 00038704 Sleep
+A 0003870c SetCommBreak
+A 0003871c WriteFile
+A 00038728 ReadFile
+A 00038734 WaitCommEvent
+A 00038744 SetCommMask
+A 00038752 GetCommModemStatus
+A 00038768 ClearCommError
+A 0003877a SetFileTime
+A 00038788 DosDateTimeToFileTime
+A 000387a0 GetTimeZoneInformation
+A 000387b8 KERNEL32.dll
+A 000387c8 DestroyWindow
+A 000387d8 IsWindow
+A 000387e4 ShowWindow
+A 000387f2 MoveWindow
+A 00038800 WinHelpA
+A 0003880c IsDialogMessageA
+A 00038820 LoadStringA
+A 0003882e GetDialogBaseUnits
+A 00038844 CreateDialogParamA
+A 0003885a GetWindow
+A 00038866 GetTopWindow
+A 00038876 GetParent
+A 00038882 MessageBoxA
+A 00038890 SendDlgItemMessageA
+A 000388a6 GetDlgItemInt
+A 000388b6 GetDlgItem
+A 000388c4 ReleaseDC
+A 000388d0 GetDC
+A 000388d8 PtInRect
+A 000388e4 UnionRect
+A 000388f0 DefWindowProcA
+A 00038902 GetKeyState
+A 00038910 MessageBeep
+A 0003891e DrawTextA
+A 0003892a DrawIconEx
+A 00038938 LoadImageA
+A 00038946 DrawEdge
+A 00038952 FillRect
+A 0003895e DialogBoxParamA
+A 00038970 SetDlgItemTextA
+A 00038982 SetDlgItemInt
+A 00038992 DrawIcon
+A 0003899e LoadIconA
+A 000389aa wsprintfA
+A 000389b6 GetSysColor
+A 000389c4 CheckDlgButton
+A 000389d6 EnableWindow
+A 000389e6 PostMessageA
+A 000389f6 SetWindowTextA
+A 00038a08 CharNextA
+A 00038a14 DispatchMessageA
+A 00038a28 TranslateMessage
+A 00038a3c PeekMessageA
+A 00038a4c SetFocus
+A 00038a58 SetWindowPos
+A 00038a68 SetWindowRgn
+A 00038a78 OffsetRect
+A 00038a86 EqualRect
+A 00038a92 IntersectRect
+A 00038aa2 InvalidateRect
+A 00038ab4 EndPaint
+A 00038ac0 GetClientRect
+A 00038ad0 BeginPaint
+A 00038ade SendMessageA
+A 00038aee GetWindowRect
+A 00038afe SetWindowLongA
+A 00038b10 GetWindowTextA
+A 00038b22 GetWindowTextLengthA
+A 00038b3a RegisterClassExA
+A 00038b4e LoadCursorA
+A 00038b5c GetClassInfoExA
+A 00038b6e CallWindowProcA
+A 00038b80 CreateWindowExA
+A 00038b92 EndDialog
+A 00038b9e SetTimer
+A 00038baa SetCaretPos
+A 00038bb8 KillTimer
+A 00038bc4 ShowCaret
+A 00038bd0 GetFocus
+A 00038bdc HideCaret
+A 00038be8 CreateCaret
+A 00038bf6 DestroyCaret
+A 00038c06 ScrollWindowEx
+A 00038c18 InflateRect
+A 00038c26 FrameRect
+A 00038c32 wvsprintfA
+A 00038c3e USER32.dll
+A 00038c4c DeleteObject
+A 00038c5c GetTextExtentPointA
+A 00038c72 GetTextMetricsA
+A 00038c84 SelectObject
+A 00038c94 CreateFontIndirectA
+A 00038caa GetDeviceCaps
+A 00038cba SetBkMode
+A 00038cc6 TextOutA
+A 00038cd2 SetTextColor
+A 00038ce2 SetBkColor
+A 00038cf0 CreateRectRgnIndirect
+A 00038d08 DeleteMetaFile
+A 00038d1a CloseMetaFile
+A 00038d2a RestoreDC
+A 00038d36 SetWindowExtEx
+A 00038d48 SetWindowOrgEx
+A 00038d5a SaveDC
+A 00038d64 CreateMetaFileA
+A 00038d76 DeleteDC
+A 00038d82 SetViewportOrgEx
+A 00038d96 SetMapMode
+A 00038da4 LPtoDP
+A 00038dae CreateDCA
+A 00038dba Rectangle
+A 00038dc6 CreatePen
+A 00038dd2 CreateSolidBrush
+A 00038de6 GetTextFaceA
+A 00038df6 CreateFontA
+A 00038e04 AddFontResourceA
+A 00038e18 RemoveFontResourceA
+A 00038e2e ExtTextOutA
+A 00038e3c GetStockObject
+A 00038e4e GetTextExtentPoint32A
+A 00038e64 GDI32.dll
+A 00038e70 RegCloseKey
+A 00038e7e RegEnumValueA
+A 00038e8e RegOpenKeyExA
+A 00038e9e RegQueryValueExA
+A 00038eb2 RegEnumKeyExA
+A 00038ec2 RegQueryInfoKeyA
+A 00038ed6 RegDeleteKeyA
+A 00038ee6 RegDeleteValueA
+A 00038ef8 RegCreateKeyExA
+A 00038f0a RegSetValueExA
+A 00038f1a ADVAPI32.dll
+A 00038f2a CoUninitialize
+A 00038f3c CoGetInterfaceAndReleaseStream
+A 00038f5e CoInitialize
+A 00038f6e CoTaskMemFree
+A 00038f7e CoTaskMemAlloc
+A 00038f90 OleRegEnumVerbs
+A 00038fa2 OleRegGetUserType
+A 00038fb6 OleRegGetMiscStatus
+A 00038fcc CreateDataAdviseHolder
+A 00038fe6 CoTaskMemRealloc
+A 00038ffa WriteClassStm
+A 0003900a OleSaveToStream
+A 0003901c OleLoadFromStream
+A 00039030 StringFromCLSID
+A 00039042 ProgIDFromCLSID
+A 00039054 CreateOleAdviseHolder
+A 0003906c CoMarshalInterThreadInterfaceInStream
+A 00039092 ole32.dll
+A 0003909c OLEAUT32.dll
+A 000390ac timeGetTime
+A 000390b8 WINMM.dll
+A 000390c4 RtlUnwind
+A 000390d0 HeapFree
+A 000390dc FileTimeToSystemTime
+A 000390f4 FileTimeToLocalFileTime
+A 0003910e GetDriveTypeA
+A 0003911e GetSystemTime
+A 0003912e GetLocalTime
+A 0003913e HeapReAlloc
+A 0003914c HeapAlloc
+A 00039158 SetStdHandle
+A 00039168 GetFileType
+A 00039176 GetCommandLineA
+A 00039188 RaiseException
+A 0003919a TlsSetValue
+A 000391a8 TlsAlloc
+A 000391b4 TlsFree
+A 000391be SetLastError
+A 000391ce TlsGetValue
+A 000391dc ExitProcess
+A 000391ea TerminateProcess
+A 000391fe HeapSize
+A 0003920a HeapCreate
+A 00039218 VirtualFree
+A 00039226 VirtualAlloc
+A 00039236 LCMapStringA
+A 00039246 LCMapStringW
+A 00039256 GetFullPathNameA
+A 0003926a GetCurrentDirectoryA
+A 00039282 GetProcAddress
+A 00039294 SetHandleCount
+A 000392a6 GetStdHandle
+A 000392b6 GetStartupInfoA
+A 000392c8 FlushFileBuffers
+A 000392dc SetFilePointer
+A 000392ee GetCPInfo
+A 000392fa GetACP
+A 00039304 GetOEMCP
+A 00039310 FreeEnvironmentStringsA
+A 0003932a FreeEnvironmentStringsW
+A 00039344 GetEnvironmentStrings
+A 0003935c GetEnvironmentStringsW
+A 00039376 SetUnhandledExceptionFilter
+A 00039394 IsBadReadPtr
+A 000393a4 IsBadWritePtr
+A 000393b4 IsBadCodePtr
+A 000393c4 GetLocaleInfoA
+A 000393d6 GetStringTypeA
+A 000393e8 GetStringTypeW
+A 000393fa LoadLibraryA
+A 0003940a SetEndOfFile
+A 0003941a GetLocaleInfoW
+A 0003942c CompareStringA
+A 0003943e CompareStringW
+A 00039450 SetEnvironmentVariableA
+A 000394c0 CommX.OCX
+A 000394ca DllCanUnloadNow
+A 000394da DllGetClassObject
+A 000394ec DllRegisterServer
+A 000394fe DllUnregisterServer
+A 00039690 Ascii
+A 00039698 Port is not open
+A 000396ac Sent %d files
+A 000396bc Failed to open file
+A 000396d4 Opening file %s for writing
+A 000396f4 Opening file %s for reading
+A 00039860 CComClassFactory
+A 00039874 Error
+A 0003987c ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+A 00039e08 CPortCtl
+A 00039e14 _CComEnum
+A 00039e20 CPortProp
+A 0003a260 CFileXferCtl
+A 0003a270 CPortProp2
+A 0003a27c CPortProp3
+A 0003a584 CTermCtl
+A 0003a590 CTermProp
+A 0003a59c CTermProp2
+A 0003a5a8 CFileXferProp
+A 0003a5b8 CFileXferProp2
+A 0003a5c8 CFileXferProp3
+A 0003a5e8 Bad state in ansi_process_input
+A 0003a608 Parse error in state DONE_WITH_CHARS
+A 0003a630 Parse error in state FIRST_DIGIT
+A 0003a654 Parse error in state ESCAPE
+A 0003a670 Error parsing ansi command
+A 0003a68c Parse error in clear screen handler
+A 0003a6b0 GotoXY command error
+A 0003a6c8 Error in 1st parm of cursor move command
+A 0003a6f4 Error in leading parm of cursor move command
+A 0003a724 Error parsing in clear to eol command
+A 0003a74c Error parsing in cursor_report_command
+A 0003a774 %c[%d;%dR
+A 0003a780 Error parsing in save_position_command
+A 0003a7a8 Error parsing in restore position command
+A 0003a7d4 Error parsing in set attribute command
+A 0003a810 File Xfer
+A 0003a81c Zmodem
+A 0003a824 False
+A 0003a834 Don't Overwrite
+A 0003a844 Date/Length Differs
+A 0003a858 When Newer
+A 0003a864 Always
+A 0003a86c Append
+A 0003a874 CRCsDiffer
+A 0003a880 New Or Longer
+A 0003a890 Default
+A 0003a898 Unknown protocol selected!
+A 0003a8b4 Attempt to set Port property to incorrect object type!
+A 0003a8ec Attempt to set Terminal property to incorrect object type!
+A 0003a928 CRCs Differ
+A 0003a938 Greenleaf Port
+A 0003a948 Illegal port number
+A 0003a95c Illegal baud rate
+A 0003a970 Invalid parity setting
+A 0003a988 Invalid number of data bits
+A 0003a9a4 Invalid number of stop bits
+A 0003a9c0 COM%d
+A 0003a9e4 Space
+A 0003aa10 Cannot change while port is open
+A 0003aa34 Error enumerating registry data
+A 0003aa54 Error reading registry key HKEY_LOCAL_MACHINE
+A 0003aa84 Port Control error
+A 0003aa98 SYSTEM\CurrentControlSet\Enum\HTREE\Root
+A 0003aac4 HARDWARE\DEVICEMAP\SERIALCOMM
+A 0003aae4 Error allocating memory for registry value
+A 0003ab10 Error opening hardware registry key
+A 0003ab34 Error enumerating registry keys
+A 0003ab54 DeviceDesc
+A 0003ab60 FriendlyName
+A 0003ab70 Unknown
+A 0003ab78 Class
+A 0003ab80 ROOT\LEGACY_SERIAL\0000
+A 0003ab98 System\CurrentControlSet\Enum\
+A 0003abb8 AttachedComponents
+A 0003abcc Mouse
+A 0003abd4 Modem
+A 0003abdc Ports
+A 0003abe4 DriverDesc
+A 0003abf0 PortName
+A 0003abfc PortSubClass
+A 0003ac0c System\CurrentControlSet\Control\
+A 0003ac30 Driver
+A 0003ac38 AttachedTo
+A 0003ac44 System\CurrentControlSet\Control\Class\
+A 0003ac6c Error reading registry key HKEY_DYN_DATA
+A 0003ac98 Config Manager\Enum
+A 0003acac Enum\
+A 0003acb4 HardWareKey
+A 0003acc0 System\CurrentControlSet\Services\Class\
+A 0003acec VerifyKey
+A 0003acf8 ComInfo
+A 0003ad00 0123456789
+A 0003ad1c Don't show
+A 0003ad28  Receiving
+A 0003ad34  Sending
+A 0003ad40 HKEY_CURRENT_CONFIG
+A 0003ad54 HKEY_DYN_DATA
+A 0003ad64 HKEY_PERFORMANCE_DATA
+A 0003ad7c HKEY_USERS
+A 0003ad88 HKEY_LOCAL_MACHINE
+A 0003ad9c HKEY_CURRENT_USER
+A 0003adb0 HKEY_CLASSES_ROOT
+A 0003ae00 TYPELIB
+A 0003ae08 CLSID
+A 0003ae10 Delete
+A 0003ae18 NoRemove
+A 0003ae24 ForceRemove
+A 0003ae40  - failed
+A 0003ae4c (CLSID???) 
+A 0003ae58 Interface
+A 0003ae88 Unknown Error
+A 0003aea0 DISPLAY
+A 0003aea8 ATL:%8.8X
+A 0003afd0 Bold White
+A 0003afdc Bold Cyan
+A 0003afe8 Bold Magenta
+A 0003aff8 Bold Blue
+A 0003b004 Bold Yellow
+A 0003b010 Bold Green
+A 0003b01c Bold Red
+A 0003b028 Low White
+A 0003b034 Low Cyan
+A 0003b040 Low Magenta
+A 0003b04c Low Blue
+A 0003b058 Low Yellow
+A 0003b064 Low Green
+A 0003b070 Low Red
+A 0003b078 Black
+A 0003b080 Terminal
+A 0003b08c Greenleaf OEM
+A 0003b09c CommX.fon
+A 0003b0a8 Attempt to assign invalid row value
+A 0003b0cc Attempt to assign invalid column value
+A 0003b0f4 %02x 
+A 0003b104 White
+A 0003b114 Magenta
+A 0003b124 Yellow
+A 0003b12c Green
+A 0003b148 %d - %d x %d
+A 0003b158 Not reading
+A 0003b164 Reading
+A 0003b16c %d - %s
+A 0003b174 15 - Murky Magenta
+A 0003b198 Status thread didn't die!
+A 0003b1b4 Read thread didn't die!
+A 0003b1d0 Write thread didn't die!
+A 0003b1f4 Sleeping for %d milliseconds
+A 0003b214 WriteFile gave me this: %d
+A 0003b230 Bad result from GetOverlappedResult in status thread
+A 0003b268 Event mask = %016lx
+A 0003b2c0 b$C4 
+A 0003b399 P%@Fpg`
+A 0003b3bb RwbVr
+A 0003b3d8 ftGd$T
+A 0003b430 uJTZ7j
+A 0003b453 ld\EL
+A 0003b471 n6~UNt^
+A 0003b5c1 Qkkbal
+A 0003b81d wn>Jj
+A 0003b884 <none>
+A 0003b88c Timeout error sending buffer
+A 0003b8ac %d sec to complete WriteBuffer
+A 0003b8cc %d sec left to WriteCharProtocol
+A 0003b8f0 Abort due to lost carrier!
+A 0003b90c User abort!
+A 0003b918 Opening file %s
+A 0003b944 Received %d files
+A 0003b958 %ld %lo
+A 0003b960 OpenLink: Got ZRINIT
+A 0003b978 OpenLink: got %d instead of ZRINIT
+A 0003b99c OpenLink: Error sending ZRQINIT
+A 0003b9d0 ReadFrameHeader: Frame type %d
+A 0003b9f0 GetPad: Exceeded garbage count
+A 0003ba10 ReadFrameHeader: Header Type <%d>
+A 0003ba34 ReadFrameHeader: Header Type %c
+A 0003ba54 GetPad: timeout on ZPAD
+A 0003ba6c GetPad: Remote end sent 5-CAN
+A 0003ba8c GetPad: incoming garbage
+A 0003baa8 ReadBinaryHeaderData: bad CRC-16
+A 0003bacc ReadBinaryHeaderData: bad CRC-32
+A 0003baf0 ReadHexFrameHeaderData: bad CRC-16
+A 0003bb14 ReadByte: Remote end sent 5-CAN
+A 0003bb34 GetHeaderType: error char %d
+A 0003bb54 %s%c%ld %s 0
+A 0003bb64 Stripped filename: %s
+A 0003bb7c SendFile: sending filename & size
+A 0003bba0 Error sending ZFIN frame
+A 0003bbbc CloseLink: got %d instead of ZFIN
+A 0003bbe0 Resuming at offset %ld
+A 0003bbf8 Appending at offset %ld
+A 0003bc14 SendFile: received a ZSKIP frame
+A 0003bc38 SendFile: read frame type %d
+A 0003bc58 Sending with CRC-32
+A 0003bc6c Error sending CRC-16
+A 0003bc84 Error sending CRC-32
+A 0003bc9c Error sending terminator
+A 0003bcb8 Error sending ZDLE
+A 0003bccc Error sending encoded character
+A 0003bcec SendFile: received an ACK frame
+A 0003bd0c SendFileData: ZRPOS location %ld
+A 0003bd30 SendFile: frame type %d
+A 0003bd48 BackChannel: backtalk ZCAN/ZPAD
+A 0003bd68 SendDataFrame: Received a ZACK at EOF
+A 0003bd90 SendDataFrame: sending @%ld
+A 0003bdac BackChannel: exceeded garbage count
+A 0003bdd0 BackChannel: garbage detected
+A 0003bdf0 GetFileName: Error sending RINIT
+A 0003be14 GetFileName: ZSINIT + bad packet
+A 0003be38 GetFileName: good ZSINIT
+A 0003be54 GetFileName: frame_type=%d
+A 0003be78 GetFileName: sending RINIT
+A 0003be94 ReadFileData: Fatal error on header
+A 0003beb8 Sending a new file offset!!!
+A 0003bed8 ReadFileData: frame_type=%d
+A 0003bef4 ZEOF at wrong position
+A 0003bf0c Sending a ZACK
+A 0003bf1c ReadFileData: read @%ld
+A 0003bf34 NEW BYTE COUNT: %lx
+A 0003bf48 ReadFileData: Mismatch in rx_pos
+A 0003bf6c ReadFileData: Error sending ZRPOS
+A 0003bf90 ReadFileData: reading name
+A 0003bfac ReadCrc32:  good CRC-32
+A 0003bfc4 ReadCrc32: bad CRC-32
+A 0003bfe8 .?AVexception@@
+A 0003c000 .?AVlogic_error@std@@
+A 0003c020 .?AVlength_error@std@@
+A 0003c040 .?AVout_of_range@std@@
+A 0003c0a0 .?AVtype_info@@
+A 0003f73e z?aUY
+A 0003f780 zc%C1
+A 0003f7d3 -64OS
+A 000408d1 	PortCtl.PortCtl.1 = s 'PortCtl Class'
+A 000408fd 		CLSID = s '{1995BE3C-B47D-11D0-A052-444553540000}'
+A 00040937 	PortCtl.PortCtl = s 'PortCtl Class'
+A 00040961 		CurVer = s 'PortCtl.PortCtl.1'
+A 00040987 	NoRemove CLSID
+A 0004099c 		ForceRemove {1995BE3C-B47D-11D0-A052-444553540000} = s 'PortCtl Class'
+A 000409eb 			ProgID = s 'PortCtl.PortCtl.1'
+A 00040a0e 			VersionIndependentProgID = s 'PortCtl.PortCtl'
+A 00040a41 			ForceRemove 'Programmable'
+A 00040a60 			InprocServer32 = s '%MODULE%'
+A 00040a88 				val ThreadingModel = s 'Apartment'
+A 00040ab6 			ForceRemove 'Control'
+A 00040ad0 			ForceRemove 'Insertable'
+A 00040aed 			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+A 00040b21 			'MiscStatus' = s '0'
+A 00040b40 			    '1' = s '131473'
+A 00040b5f 			'TypeLib' = s '{C6C1CCE3-B646-11D0-A052-444553540000}'
+A 00040b9a 			'Version' = s '1.1'
+A 00040bb2 			'Verb'
+A 00040bc3 			    '0' = s '&Properties,0,2'
+A 00040be5      		}
+A 00040c09 	PortProp.PortProp.1 = s 'PortProp Class'
+A 00040c38 		CLSID = s '{8B3F8A21-B6D9-11D0-A052-444553540000}'
+A 00040c72 	PortProp.PortProp = s 'PortProp Class'
+A 00040c9f 		CurVer = s 'PortProp.PortProp.1'
+A 00040cc7 	NoRemove CLSID
+A 00040cdc 		ForceRemove {8B3F8A21-B6D9-11D0-A052-444553540000} = s 'PortProp Class'
+A 00040d2c 			ForceRemove 'Programmable'
+A 00040d4b 			InprocServer32 = s '%MODULE%'
+A 00040d73 				val ThreadingModel = s 'Apartment'
+A 00040db9 	FileXferCtl.FileXferCtl.1 = s 'FileXferCtl Class'
+A 00040df1 		CLSID = s '{576B8362-B743-11D0-A052-444553540000}'
+A 00040e2b 	FileXferCtl.FileXferCtl = s 'FileXferCtl Class'
+A 00040e61 		CurVer = s 'FileXferCtl.FileXferCtl.1'
+A 00040e8f 	NoRemove CLSID
+A 00040ea4 		ForceRemove {576B8362-B743-11D0-A052-444553540000} = s 'FileXferCtl Class'
+A 00040ef7 			ProgID = s 'FileXferCtl.FileXferCtl.1'
+A 00040f22 			VersionIndependentProgID = s 'FileXferCtl.FileXferCtl'
+A 00040f5d 			ForceRemove 'Programmable'
+A 00040f7c 			InprocServer32 = s '%MODULE%'
+A 00040fa4 				val ThreadingModel = s 'Apartment'
+A 00040fd2 			ForceRemove 'Control'
+A 00040fec 			ForceRemove 'Insertable'
+A 00041009 			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 3'
+A 0004103d 			'MiscStatus' = s '0'
+A 0004105c 			    '1' = s '131473'
+A 0004107b 			'TypeLib' = s '{C6C1CCE3-B646-11D0-A052-444553540000}'
+A 000410b6 			'Version' = s '1.1'
+A 000410ce 			'Verb'
+A 000410df 			    '0' = s '&Properties,0,2'
+A 00041101      		}
+A 00041121 	PortProp2.PortProp2.1 = s 'PortProp2 Class'
+A 00041153 		CLSID = s '{9BE647A1-BC75-11D0-A052-444553540000}'
+A 0004118d 	PortProp2.PortProp2 = s 'PortProp2 Class'
+A 000411bd 		CurVer = s 'PortProp2.PortProp2.1'
+A 000411e7 	NoRemove CLSID
+A 000411fc 		ForceRemove {9BE647A1-BC75-11D0-A052-444553540000} = s 'PortProp2 Class'
+A 0004124d 			ForceRemove 'Programmable'
+A 0004126c 			InprocServer32 = s '%MODULE%'
+A 00041294 				val ThreadingModel = s 'Apartment'
+A 000412d9 	PortProp3.PortProp3.1 = s 'PortProp3 Class'
+A 0004130b 		CLSID = s '{F22F6CE5-F6CC-11D0-A052-00A0247B7657}'
+A 00041345 	PortProp3.PortProp3 = s 'PortProp3 Class'
+A 00041375 		CurVer = s 'PortProp3.PortProp3.1'
+A 0004139f 	NoRemove CLSID
+A 000413b4 		ForceRemove {F22F6CE5-F6CC-11D0-A052-00A0247B7657} = s 'PortProp3 Class'
+A 00041405 			ForceRemove 'Programmable'
+A 00041424 			InprocServer32 = s '%MODULE%'
+A 0004144c 				val ThreadingModel = s 'Apartment'
+A 00041491 	TermCtl.TermCtl.1 = s 'TermCtl Class'
+A 000414bd 		CLSID = s '{386D1283-2E62-11D1-A052-444553540000}'
+A 000414f7 	TermCtl.TermCtl = s 'TermCtl Class'
+A 00041521 		CurVer = s 'TermCtl.TermCtl.1'
+A 00041547 	NoRemove CLSID
+A 0004155c 		ForceRemove {386D1283-2E62-11D1-A052-444553540000} = s 'TermCtl Class'
+A 000415ab 			ProgID = s 'TermCtl.TermCtl.1'
+A 000415ce 			VersionIndependentProgID = s 'TermCtl.TermCtl'
+A 00041601 			ForceRemove 'Programmable'
+A 00041620 			InprocServer32 = s '%MODULE%'
+A 00041648 				val ThreadingModel = s 'Apartment'
+A 00041676 			ForceRemove 'Control'
+A 00041690 			ForceRemove 'Insertable'
+A 000416ad 			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 2'
+A 000416e1 			'MiscStatus' = s '0'
+A 00041700 			    '1' = s '131473'
+A 0004171f 			'TypeLib' = s '{C6C1CCE3-B646-11D0-A052-444553540000}'
+A 0004175a 			'Version' = s '1.1'
+A 00041772 			'Verb'
+A 00041783 			    '0' = s '&Properties,0,2'
+A 000417a5      		}
+A 000417c9 	TermProp.TermProp.1 = s 'TermProp Class'
+A 000417f8 		CLSID = s '{C606CB41-51CB-11D1-A053-444553540000}'
+A 00041832 	TermProp.TermProp = s 'TermProp Class'
+A 0004185f 		CurVer = s 'TermProp.TermProp.1'
+A 00041887 	NoRemove CLSID
+A 0004189c 		ForceRemove {C606CB41-51CB-11D1-A053-444553540000} = s 'TermProp Class'
+A 000418ec 			ForceRemove 'Programmable'
+A 0004190b 			InprocServer32 = s '%MODULE%'
+A 00041933 				val ThreadingModel = s 'Apartment'
+A 00041979 	PortProp.PortProp.1 = s 'PortProp Class'
+A 000419a8 		CLSID = s '{8B3F8A21-B6D9-11D0-A052-444553540000}'
+A 000419e2 	PortProp.PortProp = s 'PortProp Class'
+A 00041a0f 		CurVer = s 'PortProp.PortProp.1'
+A 00041a37 	NoRemove CLSID
+A 00041a4c 		ForceRemove {8B3F8A21-B6D9-11D0-A052-444553540000} = s 'PortProp Class'
+A 00041a9c 			ForceRemove 'Programmable'
+A 00041abb 			InprocServer32 = s '%MODULE%'
+A 00041ae3 				val ThreadingModel = s 'Apartment'
+A 00041b29 	TermProp2.TermProp2.1 = s 'TermProp2 Class'
+A 00041b5b 		CLSID = s '{46345E81-69FB-11D1-9481-00A0247B7657}'
+A 00041b95 	TermProp2.TermProp2 = s 'TermProp2 Class'
+A 00041bc5 		CurVer = s 'TermProp2.TermProp2.1'
+A 00041bef 	NoRemove CLSID
+A 00041c04 		ForceRemove {46345E81-69FB-11D1-9481-00A0247B7657} = s 'TermProp2 Class'
+A 00041c55 			ForceRemove 'Programmable'
+A 00041c74 			InprocServer32 = s '%MODULE%'
+A 00041c9c 				val ThreadingModel = s 'Apartment'
+A 00041ce1 	FileXferProp.FileXferProp.1 = s 'FileXferProp Class'
+A 00041d1c 		CLSID = s '{5DC9C941-73E7-11D1-9481-00A0247B7657}'
+A 00041d56 	FileXferProp.FileXferProp = s 'FileXferProp Class'
+A 00041d8f 		CurVer = s 'FileXferProp.FileXferProp.1'
+A 00041dbf 	NoRemove CLSID
+A 00041dd4 		ForceRemove {5DC9C941-73E7-11D1-9481-00A0247B7657} = s 'FileXferProp Class'
+A 00041e28 			ForceRemove 'Programmable'
+A 00041e47 			InprocServer32 = s '%MODULE%'
+A 00041e6f 				val ThreadingModel = s 'Apartment'
+A 00041eaf "HKCR
+A 00041eb9 	FileXferProp2.FileXferProp2.1 = s 'FileXferProp2 Class'
+A 00041ef7 		CLSID = s '{D1034EC1-750B-11D1-9481-00A0247B7657}'
+A 00041f31 	FileXferProp2.FileXferProp2 = s 'FileXferProp2 Class'
+A 00041f6d 		CurVer = s 'FileXferProp2.FileXferProp2.1'
+A 00041f9f 	NoRemove CLSID
+A 00041fb4 		ForceRemove {D1034EC1-750B-11D1-9481-00A0247B7657} = s 'FileXferProp2 Class'
+A 00042009 			ForceRemove 'Programmable'
+A 00042028 			InprocServer32 = s '%MODULE%'
+A 00042050 				val ThreadingModel = s 'Apartment'
+A 00042099 	FileXferProp3.FileXferProp3.1 = s 'FileXferProp3 Class'
+A 000420d7 		CLSID = s '{D1034EC2-750B-11D1-9481-00A0247B7657}'
+A 00042111 	FileXferProp3.FileXferProp3 = s 'FileXferProp3 Class'
+A 0004214d 		CurVer = s 'FileXferProp3.FileXferProp3.1'
+A 0004217f 	NoRemove CLSID
+A 00042194 		ForceRemove {D1034EC2-750B-11D1-9481-00A0247B7657} = s 'FileXferProp3 Class'
+A 000421e9 			ForceRemove 'Programmable'
+A 00042208 			InprocServer32 = s '%MODULE%'
+A 00042230 				val ThreadingModel = s 'Apartment'
+A 0004230d """""
+A 0004231c """""""
+A 0004232a """"""""" 
+A 0004233a """"""""""
+A 0004234a """""""""" 
+A 0004235a """""""""""
+A 0004236c """"""""" 
+A 00042379 ""/"""""""""
+A 00042389 ""/"""""""""
+A 0004239d """""""" 
+A 000423ad """""""""
+A 000423b9 """/"""""""""
+A 000423ce """""""" 
+A 000423d9 """"/""""""" 
+A 000423e9 """""
+A 000423ef """""""
+A 000423f9 """"""
+A 00042400 """"""
+A 00042409 """""""
+A 00042411 """""
+A 00042419 """"""""
+A 00042429 """"""""/
+A 00042439 """""""""/"""
+A 0004244a """""""""
+A 0004245a """""""""/""
+A 0004246a """"""""""""
+A 0004247b """""""""""
+A 0004248b """"""""""" 
+A 0004249b """"""""""" 
+A 000424af """"""""
+A 000425d1 """""
+A 000425d9 """"" 
+A 000425e1 """"""
+A 000425e9 /"""" 
+A 000425f1 """"""
+A 000425fb """" 
+A 00042601 "/""""
+A 00042609 ""/"""
+A 00042611 """"""
+A 00042621 """"/"
+A 0004262a """"" 
+A 00042819 s30?3
+A 000430c2 wwwww
+A 00043112 wwwww
+A 00043132 33333
+A 00043142 33333
+A 000433b8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwpwwwwwwwwwwwww
+A 00043461 wpwwwwwwwwwwwwwp
+A 00043472 pwwwwwwwwww
+A 00043483 wwwwwwwwwwwwwp
+A 00043492 pwwwwwwwwwwwww
+A 000434a1 wpwwwwwwwwww
+A 000434ae wwwwpwwwwwwwwww
+A 000434be wwwwwwwwwwwwwww
+A 000434d0 wwwwwwwwwwwww
+A 000434e0 wwwwwwwwwwwww
+A 000434f3 wwwwwwwwww
+A 00043500 wwwwwwwwwwwww
+A 00043510 wwwwwwwwwwwww
+A 0004351e wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000436a0 wwwwwwwwwwwwwwpwwwww
+A 000436b5 wpwwwwwp
+A 000436c7 wwwwwp
+A 000436ce pwwwww
+A 000436da wwwwpww
+A 000436e2 wwwwwww
+A 000436ec wwwww
+A 000436f4 wwwww
+A 00043704 wwwww
+A 0004370c wwwww
+A 00043712 wwwwwwwwwwwwww
+A 00044f88 115200
+A 00044f97 57600
+A 00044fa5 38400
+A 00044fb3 19200
+A 00045033 Space
+A 00045041 5 Bits
+A 00045050 6 Bits
+A 0004505f 7 Bits
+A 0004506e 8 Bits
+A 0004507d 1.5 Stop Bits
+A 00045093 1 Stop Bit
+A 000450a6 2 Stop Bits
+A 000450c0 Ascii
+A 000450ce Zmodem
+A 00045159 """""
+A 00045161 """""(
+A 00045169 """"""
+A 00045171 +""""(
+A 00045179 """"""
+A 00045183 """"(
+A 00045189 "+""""
+A 00045191 ""+"""
+A 00045199 """"""
+A 000451a9 """"+"
+A 000451b2 """""(
+A 00045230 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 0004530a fffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00045347 fffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00045384 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000453c1 fffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000453f5 wwwwx
+A 000453fe fffffffffffffffffffffffffffffffffffffffffffffffff
+A 0004543b fffffffffffffffffffffffffffffffffffffffffffffff
+A 00045478 fffffffffffffffffffffffffffffffffffffffffffff
+A 000454b5 fffffffffffffffffffffffffffffffffffffffffff
+A 000454f2 fffffffffffffffffffffffffffffffffffffffff
+A 0004552f fffffffffffffffffffffffffffffffffffffff
+A 0004555f wwwwx
+A 0004556c fffffffffffffffffffffffffffffffffffff`w
+A 000455a9 ffffffffffffffffffffffffffffffffffffo
+A 000455e6 fffffffffffffffffffffffffffffffffffop
+A 00045622 fffffffffffffffffffffffffffffffffffop
+A 0004565e fffffffffffffffffffffffffffffffffffop
+A 0004569a fffffffffffffffffffffffffffffffffffow
+A 000456c8 33333
+A 000456d5 pfffffffffffffffffffffffffffffffffffo
+A 00045704 333333
+A 00045712 fffffffffffffffffffffffffffffffffffo
+A 00045740 s333333
+A 0004574e ffffffffffffffffffffffffffffffffffffo
+A 0004577d 3333333
+A 0004578a fffffffffffffffffffffffffffffffffffffo
+A 000457b9 s333333
+A 000457c6 ffffffffffffffffffffffffffffffffffffffo
+A 000457f6 333330
+A 00045801 fffffffffffffffffffffff
+A 0004581a ffffffffffffffo
+A 00045832 s3333
+A 00045839 s30fffffffffffffffffffffff
+A 00045857 fffffffffffffo
+A 00045879 fffffffffffffffffffff
+A 00045894 ffffffffffffo
+A 000458b5 ffffffffffffffffffff
+A 000458d1 fffffffffffo
+A 000458e8 330;;s3
+A 000458f1 fffffffffffffffffff
+A 0004590e fffffffffff
+A 0004592d ffffffffffffffffff
+A 0004594b ffffffffffo
+A 00045969 fffffffffffffffff
+A 00045988 ffffffffff
+A 000459a5 fffffffffffffffffww
+A 000459c5 fffffffffo
+A 000459e1 fffffffffffffffffw
+A 00045a02 fffffffff
+A 00045a1d ffffffffffffffffffw
+A 00045a3f ffffffffo
+A 00045a59 fffffffffffffffffffw
+A 00045a7c fffffff`
+A 00045a95 ffffffffffffffffffffw
+A 00045ab8 fffffff
+A 00045ad0 ffffffffffffffffffffffw
+A 00045af4 ffffff`
+A 00045b0d ffffffffffffffffffffffw
+A 00045b2e Vfffffffo
+A 00045b49 fffffffffffffffffffffffw
+A 00045b69 Vffffffffo
+A 00045b86 fffffffffffffffffffffffw
+A 00045ba4 Vfffffffffo
+A 00045bc2 ffffffffffffffffffffffffw
+A 00045bdf Vffffffffffo
+A 00045bfe fffffffffffffffffffffffffw
+A 00045c1a Vfffffffffffo
+A 00045c3b fffffffffffffffffffffffffwVfffffffffffff
+A 00045c70 fffffl
+A 00045c77 ffffffffffffffffffffffffffffffffffffffff
+A 00045cab fffffff
+A 00045cb3 ffffffffffffffffffffffffffffffffffffffffo
+A 00045ce6 ffffffff
+A 00045cf0 ffffffffffffffffffffffffffffffffffffffff
+A 00045d21 fffffffffl
+A 00045d2c ffffffffffffffffffffffffffffffffffffffffo
+A 00045d5c ffffffffffl
+A 00045d68 fffffffffffffffffffffffffffffffffffffffff
+A 00045d96 fffffffffffff
+A 00045da4 ffffffffffffffffffffffffff
+A 00045dc0 fffffffffffffffffffffffffffffff
+A 00045de1 ffffffffffffffffffffffff
+A 00045dfc fffffffffffffffffffffffffffffffl
+A 00045e1d fffffffffffffffffffffff
+A 00045e37 fffffffffffffffffffffffffffffffff
+A 00045e59 ffffffffffffffffffffff
+A 00045e73 fffffffffff`
+A 00045e80 ffffffffffffffffffff
+A 00045e96 ffffffffffffffffffff
+A 00045eae fffffffffff`
+A 00045ebd fffffffffffffffffffl
+A 00045ed2 fffffffffffffffffff
+A 00045ee9 fffffffffff`
+A 00045efa ffffffffffffffffffl
+A 00045f0e ffffffffffffffffff
+A 00045f24 fffffffffff`
+A 00045f37 fffffffffffffffffl
+A 00045f4a fffffffffffffffff
+A 00045f5f fffffffffff`
+A 00045f74 fffffffffffffffff
+A 00045f86 ffffffffffffffff
+A 00045f9a fffffffffff`
+A 00045fb1 ffffffffffffffff
+A 00045fc2 fffffffffffffff
+A 00045fd5 fffffffffff`
+A 00045fee fffffffffffffff
+A 00045ffe ffffffffffffff
+A 00046010 fffffffffff`
+A 0004601e wwwww
+A 0004602b ffffffffffffff
+A 0004603b ffffffffffff
+A 0004604b fffffffffff`
+A 00046059 wwwwww
+A 00046068 fffffffffffffl
+A 00046077 ffffffffffff
+A 00046086 fffffffffff`
+A 00046094 wwwwwww
+A 000460a5 ffffffffffffl
+A 000460b3 ffffffffffff
+A 000460c0 Ffffffffffff`
+A 000460cf wwwwwwww
+A 000460e2 fffffffffffl
+A 000460ef ffffffffffffffffffffffff`
+A 0004610a wwwwwwwww
+A 0004611f fffffffffff
+A 0004612b fffffffffffffffffffffff`
+A 00046145 wwwwww
+A 0004615c ffffffffff
+A 00046167 ffffffffffffffffffffff`
+A 00046180 wwwwww
+A 00046199 fffffffff
+A 000461a3 fffffffffffffffffffff`
+A 000461bb wwwwww
+A 000461d6 ffffffff
+A 000461df ffffffffffffffffffff`
+A 000461f6 wwwwww
+A 00046213 fffffff
+A 0004621b fffffffffffffffffff`
+A 00046231 wwwwww
+A 00046250 ffffff
+A 00046257 ffffffffffffffffff`
+A 0004626c wwwwww
+A 0004628c ffffff
+A 00046293 fffffffffffffffff`
+A 000462a7 wwwwwwwx
+A 000462b5 wwwww
+A 000462c8 ffffff
+A 000462cf ffffffffffffffff`
+A 000462e2 wwwwwwwwwwww
+A 000462f0 wwwwwww
+A 00046304 ffffff
+A 0004630b fffffffffffffff`
+A 0004631d wwwwwwwwwwww
+A 00046340 ffffff
+A 00046347 fffffffffffffffo
+A 00046358 wwwwwwwwwwww
+A 0004637c fffffl
+A 00046383 fffffffffffffffowwwwwwwwwwww
+A 000463b8 fffffl
+A 000463bf fffffffffffffffowwwwwwwwwww
+A 000463f4 fffffl
+A 000463fb fffffffffffffffowwwwwwwwww
+A 00046430 fffff
+A 00046437 fffffffffffffffowwwwwwwww
+A 0004646c ffffl
+A 00046472 ffffffffffffffffowr'wwwww
+A 000464a8 ffffl
+A 000464ae ffffffffffffffffowz
+A 000464ea ffffffffffffffffowwwwww
+A 00046525 fffffffffffffffffowwwww
+A 00046561 fffffffffffffffffowwww
+A 00046582 wwwwx
+A 0004659c ffffffffffffffffffowww
+A 000465bd wwwwwx
+A 000465d7 fffffffffffffffffffoww
+A 000465f8 ww"wwwx
+A 00046612 ffffffffffffffffffffow
+A 0004664d fffffffffffffffffffffo
+A 0004666e wwwww
+A 00046688 ffffffffffffffffffffffo
+A 000466a9 wwwww
+A 000466c2 fffffffffffffffffffffffffo
+A 000466e4 wwwww
+A 000466fb fffffffffffffffffffffffffffffo
+A 0004671f wwwww
+A 00046736 fffffffffffffffffffffffffffffffo
+A 0004675a wwwww
+A 00046771 fffffffffffffffffffffffffffffffffo
+A 00046795 wwwww
+A 000467ae ffffffffffffffffffffffffffffffff
+A 000467d0 wwwww
+A 000467eb ffffffffffffffffffffffffffffff
+A 0004680b wwwww
+A 00046828 fffffffffffffffffffffffffffff
+A 00046846 wwwww
+A 00046865 ffffffffffffffffffffffffffff
+A 000468a1 ffffffffffffffffffffffffffff
+A 000468dd ffffffffffffffffffffffffffff
+A 00046919 ffffffffffffffffffffffffffff
+A 00046955 ffffffffffffffffffffffffffff
+A 00046991 ffffffffffffffffffffffffffff
+A 000469cd ffffffffffffffffffffffffffff
+A 00046a09 ffffffffffffffffffffffffffff
+A 00046a45 ffffffffffffffffffffffffffff
+A 00046a81 ffffffffffffffffffffffffffff
+A 00046abd ffffffffffffffffffffffffffff
+A 00046af9 ffffffffffffffffffffffffffff
+A 00046b35 ffffffffffffffffffffffffffff
+A 00046b71 ffffffffffffffffffffffffffff
+A 00046bad ffffffffffffffffffffffffffff
+A 00046bea fffffffffffffffffffffffffff
+A 00046c26 fffffffffffffffffffffffffff
+A 00046c62 fffffffffffffffffffffffffff
+A 00046c9e fffffffffffffffffffffffffff
+A 00046cc6 wwwwx
+A 00046cda fffffffffffffffffffffffffff
+A 00046d01 wwwww
+A 00046d16 fffffffffffffffffffffffffff
+A 00046d3c wwwww
+A 00046d52 fffffffffffffffffffffffffff
+A 00046d77 wwwww
+A 00046d8e fffffffffffffffffffffffffff
+A 00046db2 wwwww
+A 00046db8 wwwwwx
+A 00046dca fffffffffffffffffffffffffff
+A 00046ded wwwww
+A 00046df3 wwwwwwwx
+A 00046e06 fffffffffffffffffffffffffff
+A 00046e28 wwwww
+A 00046e2e wwwwwwwww
+A 00046e42 fffffffffffffffffffffffffff
+A 00046e63 wwwww
+A 00046e69 wwwwwwwww
+A 00046e7e fffffffffffffffffffffffffff
+A 00046e9e wwwww
+A 00046ea4 wwwwwwwww
+A 00046eba fffffffffffffffffffffffffff
+A 00046ed9 wwwww
+A 00046edf wwwwwwwww
+A 00046ee9 wwwwx
+A 00046ef6 fffffffffffffffffffffffffff
+A 00046f12 wwwwwww
+A 00046f1a wwwwwwwww
+A 00046f24 wwwwwwx
+A 00046f32 fffffffffffffffffffffffffff
+A 00046f4e wwwwww
+A 00046f55 wwwwwwwww
+A 00046f5f wwwwwwwwx
+A 00046f6e fffffffffffffffffffffffffff
+A 00046f8a wwwww
+A 00046f90 wwwwwwwww
+A 00046f9a wwwwwwwwwwx
+A 00046faa fffffffffffffffffffffffffff
+A 00046fcb wwwwwwwww
+A 00046fd5 wwwwwwwwwwwwx
+A 00046fe6 fffffffffffffffffffffffffff
+A 00047006 wwwwwwwww
+A 00047010 wwwwwwwwwwwwwwx
+A 00047022 fffffffffffffffffffffffffff
+A 00047041 wwwwwwwww
+A 0004704b wwwwwwwwwwwwwwwwx
+A 0004705e fffffffffffffffffffffffffff
+A 0004707c wwwwwwwww
+A 00047086 wwwwwwwwwwwwwwwwwwx
+A 0004709a fffffffffffffffffffffffffff
+A 000470b7 wwwwwwwww
+A 000470c1 wwwwwwwwwwwwwwwwwww
+A 000470d6 fffffffffffffffffffffffffff
+A 000470f2 wwwwwwwww
+A 000470fc wwwwwwwwwwwwwwwwwww
+A 00047111 fffffffffffffffffffffffffffff
+A 0004712f wwwwwww
+A 00047137 wwwwwwwwwwwwwwwwwww
+A 0004714c fffffffffffffffffffffffffffffff
+A 0004716c wwwww
+A 00047172 wwwwwwwwwwwwwwwwwww
+A 00047187 fffffffffffffffffffffffffffffffff
+A 000471ad wwwwwwwwwwwwwwwwwww
+A 000471c2 fffffffffffffffffffffffffffffffffff
+A 000471ec wwwwwwwwwwwwwww
+A 000471fd fffffffffffffffffffffffffffffffffffff
+A 00047223 ffffo
+A 0004722a wwwwwwwwwwww
+A 00047238 ffffffffffffffffffffffffffffffffffffffffffffff
+A 00047269 wwwwwwww
+A 00047273 fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 000472a7 wwwww
+A 000472ae fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000472e9 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 00047324 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00047678 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047e1f fffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047e5c fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047e99 fffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047ed6 fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047f13 fffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047f50 fffffffffffffffffffffffffffffffffffffffffffffff`
+A 00047f8d ffffffffffffffffffffffffffffffffffffffffffffffgw
+A 00047fca fffffffffffffffffffffffffffffffffffffffffffffg
+A 00048007 fffffffffffffffffffffffffffffffffffffffffffffg
+A 00048044 fffffffffffffffffffffffffffffffffffffffffffffg
+A 00048081 fffffffffffffffffffffffffffffffffffffffffffffg
+A 000480bd ffffffffffffffffffffffffffffffffffffffffffffffg
+A 000480f8 Pfffffffffffffffffffffffffffffffffffffffffffffffg
+A 00048133 Ufffffffffffffffffffffffffffffffffffffff
+A 0004815d ffffffffg
+A 0004816e Ufffffffffffffffffffffffffffffffffffffff
+A 00048199 fffffffffg
+A 000481a9 Ufffffffffffffffffffffffffffffffffffffff
+A 000481d4 fffffffffffg
+A 000481e4 Ufffffffffffffffffffffffffffffffffffffff
+A 00048210 ffffffffffffg}
+A 0004821f Ufffffffffffffffffffffffffffffffffffffff
+A 0004824b ffffffffffffffgufffffffffffffffffffffffffffffffffffffff
+A 00048286 fffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000482c1 fffff`
+A 000482c8 ffffffffffffffffffffffffffffffffffffffffffffffff
+A 000482fc fffff`
+A 00048305 ffffffffffffffffffffffffffffffffffffffffffffff
+A 00048337 fffff`
+A 00048342 ffffffffffffffffffffffffffffffffffffffffffff
+A 00048372 fffff`
+A 0004837f ffffffffffffffffffffffffffffffffffffffffff
+A 000483ad fffff`
+A 000483bc ffffffffffffffffffffffffffffffffffffffff
+A 000483e8 fffff`
+A 000483f9 fffffffffffffffffffffffffffffffffffffff
+A 00048423 fffff`
+A 00048436 ffffffffffffffffffffffffffffffffffffff
+A 0004845d Ffffff`
+A 00048466 wwwww
+A 00048473 fffffffffffffffffffffffffffffffffffffffffff`
+A 000484a1 wwwwww
+A 000484b0 fffffffffffffffffffffffffffffffffffffffff`
+A 000484dc wwwwwww
+A 000484ed fffffffffffffffffffffffffffffffffffffff`
+A 00048517 wwwwwwww
+A 0004852a fffffffffffffffffffffffffffffffffffff`
+A 00048552 wwwwwwwww
+A 00048567 fffffffffffffffffffffffffffffffffff`
+A 0004858d wwwwww
+A 000485a4 fffffffffffffffffffffffffffffffff`
+A 000485c8 wwwwww
+A 000485e1 fffffffffffffffffffffffffffffff`
+A 00048603 wwwwww
+A 0004861e fffffffffffffffffffffffffffff`
+A 0004863e wwwwww
+A 0004865b fffffffffffffffffffffffffff`
+A 00048679 wwwwww
+A 00048698 fffffffffffffffffffffffff
+A 000486b4 wwwwww
+A 000486d4 ffffffffffffffffffffffff
+A 000486ef wwwwwwwx
+A 000486fd wwwww
+A 00048710 fffffffffffffffffffffff
+A 00048729 wwwwwwwwwwwww
+A 00048738 wwwwwww
+A 0004874c ffffffffffffffffffffff
+A 00048764 wwwwwwwwwwwww
+A 00048788 ffffffffffffffffffffff
+A 0004879f wwwwwwwwwwwww
+A 000487c4 ffffffffffffffffffffff
+A 000487db wwwwwwwwwwww
+A 00048800 ffffffffffffffffffffff
+A 00048817 wwwwwwwwwww
+A 0004883c ffffffffffffffffffffff
+A 00048853 wwwwwwwwww
+A 00048878 ffffffffffffffffffffff
+A 0004888f wwwwwwwww
+A 000488b4 ffffffffffffffffffffff
+A 000488cb w"wwwwww
+A 000488f0 ffffffffffffffffffffff
+A 00048909 wwwww
+A 0004892c ffffffffffffffffffffff
+A 00048943 wwwwww
+A 00048968 ffffffffffffffffffffff
+A 0004897f wwwww
+A 000489a4 ffffffffffffffffffffff
+A 000489ca wwwwx
+A 000489e0 ffffffffffffffffffffff
+A 00048a05 wwwwwx
+A 00048a1c ffffffffffffffffffffff
+A 00048a40 ww"wwwx
+A 00048a57 fffffffffffffffffffffff
+A 00048a92 ffffffffffffffffffffffff
+A 00048ab6 wwwww
+A 00048acd fffffffffffffffffffffffffo
+A 00048af1 wwwww
+A 00048b08 fffffffffffffffffffffffffffo
+A 00048b2c wwwww
+A 00048b43 fffffffffffffffffffffffffffffo
+A 00048b67 wwwww
+A 00048b7e fffffffffffffffffffffffffffffffo
+A 00048ba2 wwwww
+A 00048bb9 fffffffffffffffffffffffffffffffffo
+A 00048bdd wwwww
+A 00048bf6 ffffffffffffffffffffffffffffffff
+A 00048c18 wwwww
+A 00048c33 ffffffffffffffffffffffffffffff
+A 00048c53 wwwww
+A 00048c70 fffffffffffffffffffffffffffff
+A 00048c8e wwwww
+A 00048cad ffffffffffffffffffffffffffff
+A 00048ce9 ffffffffffffffffffffffffffff
+A 00048d25 ffffffffffffffffffffffffffff
+A 00048d61 ffffffffffffffffffffffffffff
+A 00048d9d ffffffffffffffffffffffffffff
+A 00048dd9 ffffffffffffffffffffffffffff
+A 00048e15 ffffffffffffffffffffffffffff
+A 00048e51 ffffffffffffffffffffffffffff
+A 00048e8d ffffffffffffffffffffffffffff
+A 00048ec9 ffffffffffffffffffffffffffff
+A 00048f05 ffffffffffffffffffffffffffff
+A 00048f41 ffffffffffffffffffffffffffff
+A 00048f7d ffffffffffffffffffffffffffff
+A 00048fb9 ffffffffffffffffffffffffffff
+A 00048ff5 ffffffffffffffffffffffffffff
+A 00049032 fffffffffffffffffffffffffff
+A 0004906e fffffffffffffffffffffffffff
+A 000490aa fffffffffffffffffffffffffff
+A 000490e6 fffffffffffffffffffffffffff
+A 0004910e wwwwx
+A 00049122 fffffffffffffffffffffffffff
+A 00049149 wwwww
+A 0004915e fffffffffffffffffffffffffff
+A 00049184 wwwww
+A 0004919a fffffffffffffffffffffffffff
+A 000491bf wwwww
+A 000491d6 fffffffffffffffffffffffffff
+A 000491fa wwwww
+A 00049200 wwwwwx
+A 00049212 fffffffffffffffffffffffffff
+A 00049235 wwwww
+A 0004923b wwwwwwwx
+A 0004924e fffffffffffffffffffffffffff
+A 00049270 wwwww
+A 00049276 wwwwwwwww
+A 0004928a fffffffffffffffffffffffffff
+A 000492ab wwwww
+A 000492b1 wwwwwwwww
+A 000492c6 fffffffffffffffffffffffffff
+A 000492e6 wwwww
+A 000492ec wwwwwwwww
+A 00049302 fffffffffffffffffffffffffff
+A 00049321 wwwww
+A 00049327 wwwwwwwww
+A 00049331 wwwwx
+A 0004933e fffffffffffffffffffffffffff
+A 0004935a wwwwwww
+A 00049362 wwwwwwwww
+A 0004936c wwwwwwx
+A 0004937a fffffffffffffffffffffffffff
+A 00049396 wwwwww
+A 0004939d wwwwwwwww
+A 000493a7 wwwwwwwwx
+A 000493b6 fffffffffffffffffffffffffff
+A 000493d2 wwwww
+A 000493d8 wwwwwwwww
+A 000493e2 wwwwwwwwwwx
+A 000493f2 fffffffffffffffffffffffffff
+A 00049413 wwwwwwwww
+A 0004941d wwwwwwwwwwwwx
+A 0004942e fffffffffffffffffffffffffff
+A 0004944e wwwwwwwww
+A 00049458 wwwwwwwwwwwwwwx
+A 0004946a fffffffffffffffffffffffffff
+A 00049489 wwwwwwwww
+A 00049493 wwwwwwwwwwwwwwwwx
+A 000494a6 fffffffffffffffffffffffffff
+A 000494c4 wwwwwwwww
+A 000494ce wwwwwwwwwwwwwwwwwwx
+A 000494e2 fffffffffffffffffffffffffff
+A 000494ff wwwwwwwww
+A 00049509 wwwwwwwwwwwwwwwwwww
+A 0004951e fffffffffffffffffffffffffff
+A 0004953a wwwwwwwww
+A 00049544 wwwwwwwwwwwwwwwwwww
+A 00049559 fffffffffffffffffffffffffffff
+A 00049577 wwwwwww
+A 0004957f wwwwwwwwwwwwwwwwwww
+A 00049594 fffffffffffffffffffffffffffffff
+A 000495b4 wwwww
+A 000495ba wwwwwwwwwwwwwwwwwww
+A 000495cf fffffffffffffffffffffffffffffffff
+A 000495f5 wwwwwwwwwwwwwwwwwww
+A 0004960a fffffffffffffffffffffffffffffffffff
+A 00049634 wwwwwwwwwwwwwww
+A 00049645 fffffffffffffffffffffffffffffffffffff
+A 0004966b ffffo
+A 00049672 wwwwwwwwwwww
+A 00049680 ffffffffffffffffffffffffffffffffffffffffffffff
+A 000496b1 wwwwwwww
+A 000496bb fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 000496ef wwwww
+A 000496f6 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00049731 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0004976c ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00049ac0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a267 fffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a2a4 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a2e1 fffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a31e fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a35b fffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a398 fffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004a3d5 ffffffffffffffffffffffffffffffffffffffffffffffgw
+A 0004a412 ffffffffffffffffffffhffffffffffffffffffffffffg
+A 0004a44f fffffffffffffffffff
+A 0004a464 ffffffffffffffffffffffffg
+A 0004a48c fffffffffffffffffh
+A 0004a4a1 ffffffffffffffffffffffffg
+A 0004a4c9 ffffffffffffffff
+A 0004a4dd fffffffffffffffffffffffffg
+A 0004a505 fffffffffffffffhs3
+A 0004a51a fffffffffffffffffffffffffg
+A 0004a540 Pfffffffffffffff
+A 0004a555 xffffffffffffffffffffffffffg
+A 0004a57b Ufffffffffffffffhx3
+A 0004a593 ffffffffffffffff
+A 0004a5a5 ffffffffg
+A 0004a5b6 Uffffffffffffffff
+A 0004a5cf fffffffffffffff
+A 0004a5e1 fffffffffg
+A 0004a5f1 Uffffffffffffffffh
+A 0004a60a vffffffffffffff
+A 0004a61c fffffffffffg
+A 0004a62c Ufffffffffffffffff
+A 0004a646 vfffffffffffff
+A 0004a658 ffffffffffffg}
+A 0004a667 Uffffffffffffffffff`
+A 0004a683 ffffffffffff
+A 0004a693 ffffffffffffffguffffffffffffffffffff
+A 0004a6be vfffffffffff
+A 0004a6ce fffffffffffffffffffffffffffffffffffff
+A 0004a6fb ffffffffff
+A 0004a709 fffff`
+A 0004a710 fffffffffffffffffffffffffffffff`
+A 0004a737 fffffffff
+A 0004a744 fffff`
+A 0004a74d fffffffffffffffffffffffffffffff
+A 0004a774 fffffff
+A 0004a77f fffff`
+A 0004a78a ffffffffffffffffffffffffffffff`
+A 0004a7b0 ffffff
+A 0004a7ba fffff`
+A 0004a7c7 ffffffffffffffffffffffffffffff
+A 0004a7f5 fffff`
+A 0004a804 fffffffffffffffffffffffffffffffff
+A 0004a830 fffff`
+A 0004a841 fffffffffffffffffffffffffffffffff
+A 0004a86b fffff`
+A 0004a87e fffffffffffffffffffffffffffffffff
+A 0004a8a5 Ffffff`
+A 0004a8ae wwwww
+A 0004a8bb fffffffffffffffffffffffffffffffhwvfffffffff`
+A 0004a8e9 wwwwww
+A 0004a8f8 ffffffffffffffffffffffffffffffh
+A 0004a919 ffffffff`
+A 0004a924 wwwwwww
+A 0004a935 fffffffffffffffffffffffffffff
+A 0004a955 fffffff`
+A 0004a95f wwwwwwww
+A 0004a972 ffffffffffffffffffffffffffffgw
+A 0004a991 ffffff`
+A 0004a99a wwwwwwwww
+A 0004a9af ffffffffffffffffffffffh
+A 0004a9cd fffff`
+A 0004a9d5 wwwwww
+A 0004a9ec fffffffffffffffffffff
+A 0004aa02 wwwwwpfffff`
+A 0004aa10 wwwwww
+A 0004aa29 fffffffffffffffffffh
+A 0004aa44 ffff`
+A 0004aa4b wwwwww
+A 0004aa66 ffffffffffffffffff
+A 0004aa7f ffff`
+A 0004aa86 wwwwww
+A 0004aaa3 ffffffffffffffffh
+A 0004aab9 `ffff`
+A 0004aac1 wwwwww
+A 0004aae0 fffffffffffffffh
+A 0004aaf2 fffffff
+A 0004aafc wwwwww
+A 0004ab1c fffffffffffffffhw
+A 0004ab2e ffffff
+A 0004ab37 wwwwwwwx
+A 0004ab45 wwwww
+A 0004ab58 fffffffffffffff
+A 0004ab6a fffff
+A 0004ab71 wwwwwwwwwwwww
+A 0004ab80 wwwwwww
+A 0004ab94 fffffffffffffff
+A 0004abac wwwwwwwwwwwww
+A 0004abd0 fffffffffffffffg
+A 0004abe7 wwwwwwwwwwwww
+A 0004ac0c fffffffffffffff`
+A 0004ac1d vffff
+A 0004ac23 wwwwwwwwwwww
+A 0004ac48 ffffffffffffffffwxffff
+A 0004ac5f wwwwwwwwwww
+A 0004ac84 ffffffffffffffff
+A 0004ac9b wwwwwwwwww
+A 0004acc0 ffffffffffffffffh
+A 0004acd7 wwwwwwwww
+A 0004acfc fffffffffffffffff
+A 0004ad13 w"wwwwww
+A 0004ad38 fffffffffffffffffhw
+A 0004ad51 wwwww
+A 0004ad74 ffffffffffffffffff
+A 0004ad8b wwwwww
+A 0004adb0 ffffffffffffffffff`
+A 0004adc7 wwwww
+A 0004adec fffffffffffffffffff`
+A 0004ae12 wwwwx
+A 0004ae28 ffffffffffffffffffff
+A 0004ae4d wwwwwx
+A 0004ae64 ffffffffffffffffffff`
+A 0004ae88 ww"wwwx
+A 0004ae9f ffffffffffffffffffffff
+A 0004aeda ffffffffffffffffffffffff
+A 0004aefe wwwww
+A 0004af15 fffffffffffffffffffffffffo
+A 0004af39 wwwww
+A 0004af50 fffffffffffffffffffffffffffo
+A 0004af74 wwwww
+A 0004af8b fffffffffffffffffffffffffffffo
+A 0004afaf wwwww
+A 0004afc6 fffffffffffffffffffffffffffffffo
+A 0004afea wwwww
+A 0004b001 fffffffffffffffffffffffffffffffffo
+A 0004b025 wwwww
+A 0004b03e ffffffffffffffffffffffffffffffff
+A 0004b060 wwwww
+A 0004b07b ffffffffffffffffffffffffffffff
+A 0004b09b wwwww
+A 0004b0b8 fffffffffffffffffffffffffffff
+A 0004b0d6 wwwww
+A 0004b0f5 ffffffffffffffffffffffffffff
+A 0004b131 ffffffffffffffffffffffffffff
+A 0004b16d ffffffffffffffffffffffffffff
+A 0004b1a9 ffffffffffffffffffffffffffff
+A 0004b1e5 ffffffffffffffffffffffffffff
+A 0004b221 ffffffffffffffffffffffffffff
+A 0004b25d ffffffffffffffffffffffffffff
+A 0004b299 ffffffffffffffffffffffffffff
+A 0004b2d5 ffffffffffffffffffffffffffff
+A 0004b311 ffffffffffffffffffffffffffff
+A 0004b34d ffffffffffffffffffffffffffff
+A 0004b389 ffffffffffffffffffffffffffff
+A 0004b3c5 ffffffffffffffffffffffffffff
+A 0004b401 ffffffffffffffffffffffffffff
+A 0004b43d ffffffffffffffffffffffffffff
+A 0004b47a fffffffffffffffffffffffffff
+A 0004b4b6 fffffffffffffffffffffffffff
+A 0004b4f2 fffffffffffffffffffffffffff
+A 0004b52e fffffffffffffffffffffffffff
+A 0004b556 wwwwx
+A 0004b56a fffffffffffffffffffffffffff
+A 0004b591 wwwww
+A 0004b5a6 fffffffffffffffffffffffffff
+A 0004b5cc wwwww
+A 0004b5e2 fffffffffffffffffffffffffff
+A 0004b607 wwwww
+A 0004b61e fffffffffffffffffffffffffff
+A 0004b642 wwwww
+A 0004b648 wwwwwx
+A 0004b65a fffffffffffffffffffffffffff
+A 0004b67d wwwww
+A 0004b683 wwwwwwwx
+A 0004b696 fffffffffffffffffffffffffff
+A 0004b6b8 wwwww
+A 0004b6be wwwwwwwww
+A 0004b6d2 fffffffffffffffffffffffffff
+A 0004b6f3 wwwww
+A 0004b6f9 wwwwwwwww
+A 0004b70e fffffffffffffffffffffffffff
+A 0004b72e wwwww
+A 0004b734 wwwwwwwww
+A 0004b74a fffffffffffffffffffffffffff
+A 0004b769 wwwww
+A 0004b76f wwwwwwwww
+A 0004b779 wwwwx
+A 0004b786 fffffffffffffffffffffffffff
+A 0004b7a2 wwwwwww
+A 0004b7aa wwwwwwwww
+A 0004b7b4 wwwwwwx
+A 0004b7c2 fffffffffffffffffffffffffff
+A 0004b7de wwwwww
+A 0004b7e5 wwwwwwwww
+A 0004b7ef wwwwwwwwx
+A 0004b7fe fffffffffffffffffffffffffff
+A 0004b81a wwwww
+A 0004b820 wwwwwwwww
+A 0004b82a wwwwwwwwwwx
+A 0004b83a fffffffffffffffffffffffffff
+A 0004b85b wwwwwwwww
+A 0004b865 wwwwwwwwwwwwx
+A 0004b876 fffffffffffffffffffffffffff
+A 0004b896 wwwwwwwww
+A 0004b8a0 wwwwwwwwwwwwwwx
+A 0004b8b2 fffffffffffffffffffffffffff
+A 0004b8d1 wwwwwwwww
+A 0004b8db wwwwwwwwwwwwwwwwx
+A 0004b8ee fffffffffffffffffffffffffff
+A 0004b90c wwwwwwwww
+A 0004b916 wwwwwwwwwwwwwwwwwwx
+A 0004b92a fffffffffffffffffffffffffff
+A 0004b947 wwwwwwwww
+A 0004b951 wwwwwwwwwwwwwwwwwww
+A 0004b966 fffffffffffffffffffffffffff
+A 0004b982 wwwwwwwww
+A 0004b98c wwwwwwwwwwwwwwwwwww
+A 0004b9a1 fffffffffffffffffffffffffffff
+A 0004b9bf wwwwwww
+A 0004b9c7 wwwwwwwwwwwwwwwwwww
+A 0004b9dc fffffffffffffffffffffffffffffff
+A 0004b9fc wwwww
+A 0004ba02 wwwwwwwwwwwwwwwwwww
+A 0004ba17 fffffffffffffffffffffffffffffffff
+A 0004ba3d wwwwwwwwwwwwwwwwwww
+A 0004ba52 fffffffffffffffffffffffffffffffffff
+A 0004ba7c wwwwwwwwwwwwwww
+A 0004ba8d fffffffffffffffffffffffffffffffffffff
+A 0004bab3 ffffo
+A 0004baba wwwwwwwwwwww
+A 0004bac8 ffffffffffffffffffffffffffffffffffffffffffffff
+A 0004baf9 wwwwwwww
+A 0004bb03 fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0004bb37 wwwww
+A 0004bb3e fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 0004bb79 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0004bbb4 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 0004bf08 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c2e8 fffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c325 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c362 fffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c39f fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c3dc fffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c419 fffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c456 ffffffffffffffffffffffffffffffffffffffffffffffgw
+A 0004c493 fffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c4d0 fffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c50d fffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c54a fffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c586 ffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c5c1 Pfffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c5fc Ufffffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c637 Ufffffffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c672 Ufffffffffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004c6ad Ufffffffffffffffffffffffffffffffffffffffffffffffffffffffg}
+A 0004c6e8 Ufffffffffffffffffffffffffffffffffffffffffffffffffffffffffgufffffffff`
+A 0004c72f fffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c76c fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c7a9 fffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c7e6 fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c823 fffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c860 fffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004c891 wwqyw
+A 0004c89d ffffffffffffffffffffffffff
+A 0004c8b9 fffffffffffffffff`
+A 0004c8cc wwqyww
+A 0004c8da ffffffffffffffffffffffff
+A 0004c8f5 ffffffffffffffff`
+A 0004c917 ffffffffffffffffffffff
+A 0004c930 ffffffffffffffff`
+A 0004c954 ffffffffffffffffffff@;
+A 0004c96c ffffffffffffffffgw
+A 0004c984 wwwww
+A 0004c991 ffffffffffffffffff
+A 0004c9a7 fffffffffffffffffg
+A 0004c9ce ffffffffffffffff`3
+A 0004c9e1 Bffffffffffffffffffo
+A 0004ca0b ffffffffffffff`
+A 0004ca1c 4ffffffffffffffffffg
+A 0004ca48 ffffffffffff`
+A 0004ca57 4fffffffffffffffffffg
+A 0004ca84 fffffffffff`
+A 0004ca92 Bffffffffffffffffffffg
+A 0004cac0 ffffffffff`
+A 0004cace fffffffffffffffffffffgw
+A 0004caee 33330
+A 0004cafc fffffffff`
+A 0004cb08 `ffffffffffffffffffffffg
+A 0004cb2a 333330
+A 0004cb38 ffffffff`
+A 0004cb43 Hffffffffffffffffff`
+A 0004cb58 ffffww
+A 0004cb66 3333330
+A 0004cb74 ffffffffaHHffffffffffffffffff`
+A 0004cba2 s3333330
+A 0004cbb0 ffffffffi
+A 0004cbba ffffffffffffffffff`
+A 0004cbdf 3333330
+A 0004cbeb ffffffffffffffffffffffffffff`
+A 0004cc1c 33333
+A 0004cc26 ffffffffffffffffffffffffffff`
+A 0004cc58 33330
+A 0004cc62 fffffffffffffffffffffffffff`
+A 0004cc94 s3330
+A 0004cc9b 330ffffffffffffffffffffffffff`
+A 0004ccd9 0fffffffffffffffffffffffff`
+A 0004ccf6 wwwww
+A 0004cd16 ffffffffffffffffffffffff`
+A 0004cd31 wwwwww
+A 0004cd4f 330fffffffffffffffffffffff`
+A 0004cd6c wwwwwww
+A 0004cd8b 330ffffffffffffffffffffff`
+A 0004cda7 wwwwwwww
+A 0004cdc7 330fffffffffffffffffffff`
+A 0004cde2 wwwwwwwww
+A 0004ce03 330ffffffffffffffffffff`
+A 0004ce1d wwwwww
+A 0004ce41 0fffffffffffffffffff`
+A 0004ce58 wwwwww
+A 0004ce7e ffffffffffffffffff`
+A 0004ce93 wwwwww
+A 0004ceba fffffffffffffffff`
+A 0004cece wwwwww
+A 0004cef6 ffffffffffffffff`
+A 0004cf09 wwwwww
+A 0004cf31 ffffffffffffffff`
+A 0004cf44 wwwwww
+A 0004cf6d fffffffffffffff`
+A 0004cf7f wwwwwwwx
+A 0004cf8d wwwww
+A 0004cfa8 fffffffffffffff`
+A 0004cfba wwwwwwwwwwww
+A 0004cfc8 wwwwwww
+A 0004cfe4 ffffffffffffff`
+A 0004cff5 wwwwwwwwwwww
+A 0004d01f fffffffffffffffo
+A 0004d030 wwwwwwwwwwww
+A 0004d05a ffffffffffffffffowwwwwwwwwwww
+A 0004d096 ffffffffffffffffowwwwwwwwwww
+A 0004d0d1 fffffffffffffffffowwwwwwwwww
+A 0004d10c ffffffffffffffffffowwwwwwwww
+A 0004d147 fffffffffffffffffffowr'wwwww
+A 0004d181 fffffffffffffffffffffowz
+A 0004d1bc ffffffffffffffffffffffowwwwww
+A 0004d1f8 ffffffffffffffffffffffowwwww
+A 0004d234 ffffffffffffffffffffffowwww
+A 0004d25a wwwwx
+A 0004d270 ffffffffffffffffffffffowww
+A 0004d295 wwwwwx
+A 0004d2ac ffffffffffffffffffffffoww
+A 0004d2d0 ww"wwwx
+A 0004d2e7 fffffffffffffffffffffffow
+A 0004d322 ffffffffffffffffffffffffo
+A 0004d346 wwwww
+A 0004d35d fffffffffffffffffffffffffo
+A 0004d381 wwwww
+A 0004d398 fffffffffffffffffffffffffffo
+A 0004d3bc wwwww
+A 0004d3d3 fffffffffffffffffffffffffffffo
+A 0004d3f7 wwwww
+A 0004d40e fffffffffffffffffffffffffffffffo
+A 0004d432 wwwww
+A 0004d449 fffffffffffffffffffffffffffffffffo
+A 0004d46d wwwww
+A 0004d486 ffffffffffffffffffffffffffffffff
+A 0004d4a8 wwwww
+A 0004d4c3 ffffffffffffffffffffffffffffff
+A 0004d4e3 wwwww
+A 0004d500 fffffffffffffffffffffffffffff
+A 0004d51e wwwww
+A 0004d53d ffffffffffffffffffffffffffff
+A 0004d579 ffffffffffffffffffffffffffff
+A 0004d5b5 ffffffffffffffffffffffffffff
+A 0004d5f1 ffffffffffffffffffffffffffff
+A 0004d62d ffffffffffffffffffffffffffff
+A 0004d669 ffffffffffffffffffffffffffff
+A 0004d6a5 ffffffffffffffffffffffffffff
+A 0004d6e1 ffffffffffffffffffffffffffff
+A 0004d71d ffffffffffffffffffffffffffff
+A 0004d759 ffffffffffffffffffffffffffff
+A 0004d795 ffffffffffffffffffffffffffff
+A 0004d7d1 ffffffffffffffffffffffffffff
+A 0004d80d ffffffffffffffffffffffffffff
+A 0004d849 ffffffffffffffffffffffffffff
+A 0004d885 ffffffffffffffffffffffffffff
+A 0004d8c2 fffffffffffffffffffffffffff
+A 0004d8fe fffffffffffffffffffffffffff
+A 0004d93a fffffffffffffffffffffffffff
+A 0004d976 fffffffffffffffffffffffffff
+A 0004d99e wwwwx
+A 0004d9b2 fffffffffffffffffffffffffff
+A 0004d9d9 wwwww
+A 0004d9ee fffffffffffffffffffffffffff
+A 0004da14 wwwww
+A 0004da2a fffffffffffffffffffffffffff
+A 0004da4f wwwww
+A 0004da66 fffffffffffffffffffffffffff
+A 0004da8a wwwww
+A 0004da90 wwwwwx
+A 0004daa2 fffffffffffffffffffffffffff
+A 0004dac5 wwwww
+A 0004dacb wwwwwwwx
+A 0004dade fffffffffffffffffffffffffff
+A 0004db00 wwwww
+A 0004db06 wwwwwwwww
+A 0004db1a fffffffffffffffffffffffffff
+A 0004db3b wwwww
+A 0004db41 wwwwwwwww
+A 0004db56 fffffffffffffffffffffffffff
+A 0004db76 wwwww
+A 0004db7c wwwwwwwww
+A 0004db92 fffffffffffffffffffffffffff
+A 0004dbb1 wwwww
+A 0004dbb7 wwwwwwwww
+A 0004dbc1 wwwwx
+A 0004dbce fffffffffffffffffffffffffff
+A 0004dbea wwwwwww
+A 0004dbf2 wwwwwwwww
+A 0004dbfc wwwwwwx
+A 0004dc0a fffffffffffffffffffffffffff
+A 0004dc26 wwwwww
+A 0004dc2d wwwwwwwww
+A 0004dc37 wwwwwwwwx
+A 0004dc46 fffffffffffffffffffffffffff
+A 0004dc62 wwwww
+A 0004dc68 wwwwwwwww
+A 0004dc72 wwwwwwwwwwx
+A 0004dc82 fffffffffffffffffffffffffff
+A 0004dca3 wwwwwwwww
+A 0004dcad wwwwwwwwwwwwx
+A 0004dcbe fffffffffffffffffffffffffff
+A 0004dcde wwwwwwwww
+A 0004dce8 wwwwwwwwwwwwwwx
+A 0004dcfa fffffffffffffffffffffffffff
+A 0004dd19 wwwwwwwww
+A 0004dd23 wwwwwwwwwwwwwwwwx
+A 0004dd36 fffffffffffffffffffffffffff
+A 0004dd54 wwwwwwwww
+A 0004dd5e wwwwwwwwwwwwwwwwwwx
+A 0004dd72 fffffffffffffffffffffffffff
+A 0004dd8f wwwwwwwww
+A 0004dd99 wwwwwwwwwwwwwwwwwww
+A 0004ddae fffffffffffffffffffffffffff
+A 0004ddca wwwwwwwww
+A 0004ddd4 wwwwwwwwwwwwwwwwwww
+A 0004dde9 fffffffffffffffffffffffffffff
+A 0004de07 wwwwwww
+A 0004de0f wwwwwwwwwwwwwwwwwww
+A 0004de24 fffffffffffffffffffffffffffffff
+A 0004de44 wwwww
+A 0004de4a wwwwwwwwwwwwwwwwwww
+A 0004de5f fffffffffffffffffffffffffffffffff
+A 0004de85 wwwwwwwwwwwwwwwwwww
+A 0004de9a fffffffffffffffffffffffffffffffffff
+A 0004dec4 wwwwwwwwwwwwwww
+A 0004ded5 fffffffffffffffffffffffffffffffffffff
+A 0004defb ffffo
+A 0004df02 wwwwwwwwwwww
+A 0004df10 ffffffffffffffffffffffffffffffffffffffffffffff
+A 0004df41 wwwwwwww
+A 0004df4b fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0004df7f wwwww
+A 0004df86 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 0004dfc1 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0004dffc ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 0004e350 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004e672 ffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004e6ac xffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004e6e9 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004e724 ffffffffff`
+A 0004e730 fffffffffffffffffffffffffffffffffffffffffff`
+A 0004e75f ffffffffff`
+A 0004e76d fffffffffffffffffffffffffffffffffffffffff`
+A 0004e79a ffffffffff`
+A 0004e7aa fffffffffffffffffffffffffffffffffffffff`
+A 0004e7d5 ffffffffff`
+A 0004e7e7 fffffffffffffffffffffffffffffffffffff`
+A 0004e810 ffffffffff`
+A 0004e824 fffffffffffffffffffffffffffffffffff`
+A 0004e84b ffffffffff`
+A 0004e861 fffffffffffffffffffffffffffffffff`
+A 0004e886 ffffffffff`
+A 0004e89e fffffffffffffffffffffffffffffff`
+A 0004e8c1 fffffffffffgw
+A 0004e8db fffffffffffffffffffffffffffff`
+A 0004e8fb Hffffffffffffg
+A 0004e918 ffffffffffffffffffffffffffffaHHffffffffffffffg
+A 0004e955 fffffffffffffffffffffffffffi
+A 0004e972 ffffffffffffffffg
+A 0004e992 fffffffffffffffffffffffffffffffffffffffffffffg
+A 0004e9ce ffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004ea09 Pfffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004ea44 Ufffffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004ea7f Ufffffffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004eaba Ufffffffffffffffffffffffffffffffffffffffffffffffffffffg
+A 0004eaf5 Ufffffffffffffffffffffffffffffffffffffffffffffffffffffffg}
+A 0004eb30 Ufffffffffffffffffffffffffffffffffffffffffffffffffffffffffgufffffffff`
+A 0004eb77 fffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004ebb4 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004ebf1 fffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004ec2e fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004ec6b fffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0004eca8 fffffffffffffff
+A 0004ecb8 fffffffffffffffffffffffffffffff`
+A 0004ecd9 wwqyw
+A 0004ece5 fffffffffffffh
+A 0004ecf4 ffffffffffffffffffffffffffffff`
+A 0004ed14 wwqyww
+A 0004ed22 ffffffffffff
+A 0004ed31 ffffffffffffffffffffffffffff`
+A 0004ed5f ffffffffffh
+A 0004ed6e ffffffffffffffffffffffffff`
+A 0004ed9c fffffffff
+A 0004eda6 38wxffffffffffffffffffffffffffgw
+A 0004edcc wwwww
+A 0004edd9 fffffffh
+A 0004ede7 fffffffffffffffffffffffffg
+A 0004ee16 ffffff
+A 0004ee22 xfffffffffffffffffffffffffo
+A 0004ee53 ffffhs3
+A 0004ee5e xffffffffffffffffffffffffg
+A 0004ee9b ffffffffffffffffffffffffg
+A 0004eed7 ffffffffffffffffffffffffg
+A 0004ef10 xwxffffffffffffffffffffffffgw
+A 0004ef36 33330
+A 0004ef4f ffffffffffffffffffffffffg
+A 0004ef72 333330
+A 0004ef8b fffffffffffffffffff`
+A 0004efa0 ffffww
+A 0004efae 3333330
+A 0004efc4 wwxffffffffffffffffff`
+A 0004efea s3333330
+A 0004eff8 ffff`
+A 0004f004 ffffffffffffffff`
+A 0004f027 3333330
+A 0004f033 ffffff
+A 0004f041 ffffffffffffff`
+A 0004f064 33333
+A 0004f06e fffffff`
+A 0004f07d fffffffffffff`
+A 0004f0a0 33330
+A 0004f0aa fffffffffff`
+A 0004f0b7 wxffffffffffff`
+A 0004f0dc s3330
+A 0004f0e3 330ffffffffffff`
+A 0004f0f6 ffffffffff`
+A 0004f121 0fffffffffffffg
+A 0004f131 ffffffffff`
+A 0004f13e wwwww
+A 0004f15e fffffffffffff
+A 0004f16c wfffffffff`
+A 0004f179 wwwwww
+A 0004f197 330fffffffffffff
+A 0004f1a9 ffffffff`
+A 0004f1b4 wwwwwww
+A 0004f1d3 330ffffffffffffh
+A 0004f1e6 ffffff`
+A 0004f1ef wwwwwwww
+A 0004f20f 330fffffffffffffwpffffff`
+A 0004f22a wwwwwwwww
+A 0004f24b 330ffffffff
+A 0004f25b wpfffff`
+A 0004f265 wwwwww
+A 0004f289 0fffffffh
+A 0004f293 wwwww
+A 0004f299 ffff`
+A 0004f2a0 wwwwww
+A 0004f2c6 fffffff
+A 0004f2d3 pffff`
+A 0004f2db wwwwww
+A 0004f302 ffffffh
+A 0004f316 wwwwww
+A 0004f33e ffffff
+A 0004f351 wwwwww
+A 0004f379 fffffff
+A 0004f383 ffffff`
+A 0004f38c wwwwww
+A 0004f3b5 fffffff
+A 0004f3bd xffffff`
+A 0004f3c7 wwwwwwwx
+A 0004f3d5 wwwww
+A 0004f3f0 fffffffh
+A 0004f3fa fffff`
+A 0004f402 wwwwwwwwwwww
+A 0004f410 wwwwwww
+A 0004f42c fffffff`
+A 0004f435 xffff`
+A 0004f43d wwwwwwwwwwww
+A 0004f467 fffffffff
+A 0004f472 ffffo
+A 0004f478 wwwwwwwwwwww
+A 0004f4a2 ffffffffff
+A 0004f4ae ffffowwwwwwwwwwww
+A 0004f4de ffffffffffgw
+A 0004f4eb fffowwwwwwwwwww
+A 0004f519 fffffffffffh
+A 0004f526 xfffowwwwwwwwww
+A 0004f554 fffffffffffff
+A 0004f564 ffowwwwwwwww
+A 0004f58f ffffffffffffffh
+A 0004f5a1 fowr'wwwww
+A 0004f5c9 fffffffffffffffff
+A 0004f5dc wfowz
+A 0004f604 ffffffffffffffffffh
+A 0004f61a owwwwww
+A 0004f640 fffffffffffffffffff
+A 0004f655 wowwwww
+A 0004f67c ffffffffffffffffffff
+A 0004f6a2 wwwwx
+A 0004f6b8 ffffffffffffffffffff`
+A 0004f6dd wwwwwx
+A 0004f6f4 fffffffffffffffffffff
+A 0004f718 ww"wwwx
+A 0004f72f ffffffffffffffffffffff`
+A 0004f76a ffffffffffffffffffffffffo
+A 0004f78e wwwww
+A 0004f7a5 fffffffffffffffffffffffffo
+A 0004f7c9 wwwww
+A 0004f7e0 fffffffffffffffffffffffffffo
+A 0004f804 wwwww
+A 0004f81b fffffffffffffffffffffffffffffo
+A 0004f83f wwwww
+A 0004f856 fffffffffffffffffffffffffffffffo
+A 0004f87a wwwww
+A 0004f891 fffffffffffffffffffffffffffffffffo
+A 0004f8b5 wwwww
+A 0004f8ce ffffffffffffffffffffffffffffffff
+A 0004f8f0 wwwww
+A 0004f90b ffffffffffffffffffffffffffffff
+A 0004f92b wwwww
+A 0004f948 fffffffffffffffffffffffffffff
+A 0004f966 wwwww
+A 0004f985 ffffffffffffffffffffffffffff
+A 0004f9c1 ffffffffffffffffffffffffffff
+A 0004f9fd ffffffffffffffffffffffffffff
+A 0004fa39 ffffffffffffffffffffffffffff
+A 0004fa75 ffffffffffffffffffffffffffff
+A 0004fab1 ffffffffffffffffffffffffffff
+A 0004faed ffffffffffffffffffffffffffff
+A 0004fb29 ffffffffffffffffffffffffffff
+A 0004fb65 ffffffffffffffffffffffffffff
+A 0004fba1 ffffffffffffffffffffffffffff
+A 0004fbdd ffffffffffffffffffffffffffff
+A 0004fc19 ffffffffffffffffffffffffffff
+A 0004fc55 ffffffffffffffffffffffffffff
+A 0004fc91 ffffffffffffffffffffffffffff
+A 0004fccd ffffffffffffffffffffffffffff
+A 0004fd0a fffffffffffffffffffffffffff
+A 0004fd46 fffffffffffffffffffffffffff
+A 0004fd82 fffffffffffffffffffffffffff
+A 0004fdbe fffffffffffffffffffffffffff
+A 0004fde6 wwwwx
+A 0004fdfa fffffffffffffffffffffffffff
+A 0004fe21 wwwww
+A 0004fe36 fffffffffffffffffffffffffff
+A 0004fe5c wwwww
+A 0004fe72 fffffffffffffffffffffffffff
+A 0004fe97 wwwww
+A 0004feae fffffffffffffffffffffffffff
+A 0004fed2 wwwww
+A 0004fed8 wwwwwx
+A 0004feea fffffffffffffffffffffffffff
+A 0004ff0d wwwww
+A 0004ff13 wwwwwwwx
+A 0004ff26 fffffffffffffffffffffffffff
+A 0004ff48 wwwww
+A 0004ff4e wwwwwwwww
+A 0004ff62 fffffffffffffffffffffffffff
+A 0004ff83 wwwww
+A 0004ff89 wwwwwwwww
+A 0004ff9e fffffffffffffffffffffffffff
+A 0004ffbe wwwww
+A 0004ffc4 wwwwwwwww
+A 0004ffda fffffffffffffffffffffffffff
+A 0004fff9 wwwww
+A 0004ffff wwwwwwwww
+A 00050009 wwwwx
+A 00050016 fffffffffffffffffffffffffff
+A 00050032 wwwwwww
+A 0005003a wwwwwwwww
+A 00050044 wwwwwwx
+A 00050052 fffffffffffffffffffffffffff
+A 0005006e wwwwww
+A 00050075 wwwwwwwww
+A 0005007f wwwwwwwwx
+A 0005008e fffffffffffffffffffffffffff
+A 000500aa wwwww
+A 000500b0 wwwwwwwww
+A 000500ba wwwwwwwwwwx
+A 000500ca fffffffffffffffffffffffffff
+A 000500eb wwwwwwwww
+A 000500f5 wwwwwwwwwwwwx
+A 00050106 fffffffffffffffffffffffffff
+A 00050126 wwwwwwwww
+A 00050130 wwwwwwwwwwwwwwx
+A 00050142 fffffffffffffffffffffffffff
+A 00050161 wwwwwwwww
+A 0005016b wwwwwwwwwwwwwwwwx
+A 0005017e fffffffffffffffffffffffffff
+A 0005019c wwwwwwwww
+A 000501a6 wwwwwwwwwwwwwwwwwwx
+A 000501ba fffffffffffffffffffffffffff
+A 000501d7 wwwwwwwww
+A 000501e1 wwwwwwwwwwwwwwwwwww
+A 000501f6 fffffffffffffffffffffffffff
+A 00050212 wwwwwwwww
+A 0005021c wwwwwwwwwwwwwwwwwww
+A 00050231 fffffffffffffffffffffffffffff
+A 0005024f wwwwwww
+A 00050257 wwwwwwwwwwwwwwwwwww
+A 0005026c fffffffffffffffffffffffffffffff
+A 0005028c wwwww
+A 00050292 wwwwwwwwwwwwwwwwwww
+A 000502a7 fffffffffffffffffffffffffffffffff
+A 000502cd wwwwwwwwwwwwwwwwwww
+A 000502e2 fffffffffffffffffffffffffffffffffff
+A 0005030c wwwwwwwwwwwwwww
+A 0005031d fffffffffffffffffffffffffffffffffffff
+A 00050343 ffffo
+A 0005034a wwwwwwwwwwww
+A 00050358 ffffffffffffffffffffffffffffffffffffffffffffff
+A 00050389 wwwwwwww
+A 00050393 fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 000503c7 wwwww
+A 000503ce fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00050409 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 00050444 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00050798 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00050ca1 ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00050cde ffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00050d1b fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00050d57 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00050d93 ffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00050dcf ffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00050e0c fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00050e48 ffffffffffffffffffffffffffffffffffffffff
+A 00050e72 fffffffff`
+A 00050e85 ffffffffffffffffffffffffffffffffffffff
+A 00050eaf ffffffff`
+A 00050ec1 fffffffffffffffffffffffffffffffffffff
+A 00050eec ffffffff
+A 00050efe fffffffffffffffffffffffffffffffffff
+A 00050f29 fffffff`w
+A 00050f3a ffffffffffffffffffffffffffffffffff
+A 00050f66 ffffff`w
+A 00050f75 xfffffffffffffffffffffffffffffffff
+A 00050fa3 ffffff
+A 00050fb1 xffffffffffffffffffffffffffffffff
+A 00050fe0 fffff`
+A 00050fee ffffffffffffffffffffffffffffffffww
+A 0005101d fffff
+A 0005102a ffffffffffffffffffffffffffffffffw
+A 0005105a ffff`
+A 00051065 ffffffffffffffffffffffffffffffffffw
+A 000510a2 ffffffffffffffffffffffffffffffffffw
+A 000510df ffffffffffffffffffffffffffffffffffw
+A 00051110 ffffffffff`fffffffffffffffffffffffffffffffffffw
+A 0005114c ffffffffff`ffffffffffffffffffffffffffffffffffffw
+A 00051186 Vffffffffff`
+A 00051193 fffffffffffffffffffffffffffffffffffffw
+A 000511c1 Vfffffffffff
+A 000511ce fffffffffffffffffffffffffffffffffffffffw
+A 000511fc Vfffffffffff`fffffffffffffffffffffffffffffffffffffffffw
+A 00051237 Vffffffffffff`ffffffffffffffffffffffffffffffffffffffffffw
+A 00051272 Vfffffffffffff`fffffffffffffffffffffffffffffffffffffffffffwVffffffffffffff`fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00051336 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000513af fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000513e8 ff`fffffffffffffffffffffffffffffffffffffffffff
+A 00051418 fffffffff`
+A 00051428 fffffffffffffffffffffffffffffffffffffffff
+A 00051454 ffffffff`
+A 00051465 fffffffffffffffffffffffffffffffffffffff
+A 0005148f ffffffff`
+A 000514a2 fffffffffffffffffffffffffffffffffffff
+A 000514cb fffffff`
+A 000514df fffffffffffffffffffffffffffffffffff
+A 00051506 fffffff`
+A 0005151c fffffffffffffffffffffffffffffffff
+A 00051541 fffffff`
+A 00051559 fffffffffffffffffffffffffffffff
+A 0005157c fffffff`
+A 00051586 wwwww
+A 00051596 fffffffffffffffffffffffffffff
+A 000515b7 fffffff`
+A 000515c1 wwwwww
+A 000515d3 fffffffffffffffffffffffffff
+A 000515f2 fffffff`
+A 000515fc wwwwwww
+A 00051611 ffffffffffffffffffffffff
+A 0005162d fffffff`
+A 00051637 wwwwwwww
+A 0005164e ffffffffffffffffffffff
+A 00051668 fffffff`
+A 00051672 wwwwwwwww
+A 0005168c fffffffffffffffffff
+A 000516a3 fffffff`
+A 000516ad wwwwww
+A 000516c9 ffffffffffffffffff
+A 000516de fffffff`
+A 000516e8 wwwwww
+A 00051701 fff`ffffffffffffffffff
+A 00051718 Ffffffff`
+A 00051723 wwwwww
+A 00051742 fffffffffffffffffffffffff`
+A 0005175e wwwwww
+A 0005177e ffffffffffffffffffffffff`
+A 00051799 wwwwww
+A 000517ba fffffffffffffffffffffff`
+A 000517d4 wwwwww
+A 000517f6 ffffffffffffffffffffff`
+A 0005180f wwwwwwwx
+A 0005181d wwwww
+A 00051831 ffffffffffffffffffffff`
+A 0005184a wwwwwwwwwwww
+A 00051858 wwwwwww
+A 0005186c ffffffffffffffffffffff`
+A 00051885 wwwwwwwwwwww
+A 000518a8 ffffffffffffffffffffffo
+A 000518c0 wwwwwwwwwwww
+A 000518e4 ffffffffffffffffffffffowwwwwwwwwwww
+A 00051920 ffffffffffffffffffffffowwwwwwwwwww
+A 0005195c ffffffffffffffffffffffowwwwwwwwww
+A 00051998 ffffffffffffffffffffffowwwwwwwww
+A 000519d4 ffffffffffffffffffffffowr'wwwww
+A 00051a10 ffffffffffffffffffffffowz
+A 00051a4c ffffffffffffffffffffffowwwwww
+A 00051a88 ffffffffffffffffffffffowwwww
+A 00051ac4 ffffffffffffffffffffffowwww
+A 00051aea wwwwx
+A 00051b00 ffffffffffffffffffffffowww
+A 00051b25 wwwwwx
+A 00051b3c ffffffffffffffffffffffoww
+A 00051b60 ww"wwwx
+A 00051b77 fffffffffffffffffffffffow
+A 00051bb2 ffffffffffffffffffffffffo
+A 00051bd6 wwwww
+A 00051bed fffffffffffffffffffffffffo
+A 00051c11 wwwww
+A 00051c28 fffffffffffffffffffffffffffo
+A 00051c4c wwwww
+A 00051c63 fffffffffffffffffffffffffffffo
+A 00051c87 wwwww
+A 00051c9e fffffffffffffffffffffffffffffffo
+A 00051cc2 wwwww
+A 00051cd9 fffffffffffffffffffffffffffffffffo
+A 00051cfd wwwww
+A 00051d16 ffffffffffffffffffffffffffffffff
+A 00051d38 wwwww
+A 00051d53 ffffffffffffffffffffffffffffff
+A 00051d73 wwwww
+A 00051d90 fffffffffffffffffffffffffffff
+A 00051dae wwwww
+A 00051dcd ffffffffffffffffffffffffffff
+A 00051e09 ffffffffffffffffffffffffffff
+A 00051e45 ffffffffffffffffffffffffffff
+A 00051e81 ffffffffffffffffffffffffffff
+A 00051ebd ffffffffffffffffffffffffffff
+A 00051ef9 ffffffffffffffffffffffffffff
+A 00051f35 ffffffffffffffffffffffffffff
+A 00051f71 ffffffffffffffffffffffffffff
+A 00051fad ffffffffffffffffffffffffffff
+A 00051fe9 ffffffffffffffffffffffffffff
+A 00052025 ffffffffffffffffffffffffffff
+A 00052061 ffffffffffffffffffffffffffff
+A 0005209d ffffffffffffffffffffffffffff
+A 000520d9 ffffffffffffffffffffffffffff
+A 00052115 ffffffffffffffffffffffffffff
+A 00052152 fffffffffffffffffffffffffff
+A 0005218e fffffffffffffffffffffffffff
+A 000521ca fffffffffffffffffffffffffff
+A 00052206 fffffffffffffffffffffffffff
+A 0005222e wwwwx
+A 00052242 fffffffffffffffffffffffffff
+A 00052269 wwwww
+A 0005227e fffffffffffffffffffffffffff
+A 000522a4 wwwww
+A 000522ba fffffffffffffffffffffffffff
+A 000522df wwwww
+A 000522f6 fffffffffffffffffffffffffff
+A 0005231a wwwww
+A 00052320 wwwwwx
+A 00052332 fffffffffffffffffffffffffff
+A 00052355 wwwww
+A 0005235b wwwwwwwx
+A 0005236e fffffffffffffffffffffffffff
+A 00052390 wwwww
+A 00052396 wwwwwwwww
+A 000523aa fffffffffffffffffffffffffff
+A 000523cb wwwww
+A 000523d1 wwwwwwwww
+A 000523e6 fffffffffffffffffffffffffff
+A 00052406 wwwww
+A 0005240c wwwwwwwww
+A 00052422 fffffffffffffffffffffffffff
+A 00052441 wwwww
+A 00052447 wwwwwwwww
+A 00052451 wwwwx
+A 0005245e fffffffffffffffffffffffffff
+A 0005247a wwwwwww
+A 00052482 wwwwwwwww
+A 0005248c wwwwwwx
+A 0005249a fffffffffffffffffffffffffff
+A 000524b6 wwwwww
+A 000524bd wwwwwwwww
+A 000524c7 wwwwwwwwx
+A 000524d6 fffffffffffffffffffffffffff
+A 000524f2 wwwww
+A 000524f8 wwwwwwwww
+A 00052502 wwwwwwwwwwx
+A 00052512 fffffffffffffffffffffffffff
+A 00052533 wwwwwwwww
+A 0005253d wwwwwwwwwwwwx
+A 0005254e fffffffffffffffffffffffffff
+A 0005256e wwwwwwwww
+A 00052578 wwwwwwwwwwwwwwx
+A 0005258a fffffffffffffffffffffffffff
+A 000525a9 wwwwwwwww
+A 000525b3 wwwwwwwwwwwwwwwwx
+A 000525c6 fffffffffffffffffffffffffff
+A 000525e4 wwwwwwwww
+A 000525ee wwwwwwwwwwwwwwwwwwx
+A 00052602 fffffffffffffffffffffffffff
+A 0005261f wwwwwwwww
+A 00052629 wwwwwwwwwwwwwwwwwww
+A 0005263e fffffffffffffffffffffffffff
+A 0005265a wwwwwwwww
+A 00052664 wwwwwwwwwwwwwwwwwww
+A 00052679 fffffffffffffffffffffffffffff
+A 00052697 wwwwwww
+A 0005269f wwwwwwwwwwwwwwwwwww
+A 000526b4 fffffffffffffffffffffffffffffff
+A 000526d4 wwwww
+A 000526da wwwwwwwwwwwwwwwwwww
+A 000526ef fffffffffffffffffffffffffffffffff
+A 00052715 wwwwwwwwwwwwwwwwwww
+A 0005272a fffffffffffffffffffffffffffffffffff
+A 00052754 wwwwwwwwwwwwwww
+A 00052765 fffffffffffffffffffffffffffffffffffff
+A 0005278b ffffo
+A 00052792 wwwwwwwwwwww
+A 000527a0 ffffffffffffffffffffffffffffffffffffffffffffff
+A 000527d1 wwwwwwww
+A 000527db fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0005280f wwwww
+A 00052816 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00052851 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0005288c ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00052be0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00053080 fffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000530bd fffffffffffffffffffffffffffffffffffffffff
+A 000530e9 fffffffffff`
+A 000530fa fffffffffffffffffffffffffffffffffffffff
+A 00053126 fffffffff`
+A 00053137 fffffffffffffffffffffffffffffffffffff`
+A 00053163 fffffff`
+A 00053174 ffffffffffffffffffffffffffffffffffff
+A 0005319f ffffff`
+A 000531b1 fffffffffffffffffffffffffffffffffff
+A 000531db fffff`
+A 000531ee fffffffffffffffffffffffffffffffff`
+A 00053217 fffffgw
+A 0005322b ffffffffffffffffffffffffffffffff`
+A 00053254 ffffg
+A 00053268 fffffffffffffffffffffffffffffff`
+A 00053290 fffffg
+A 000532a5 ffffffffffffffffffffffffffffff`
+A 000532cd fffffg
+A 000532e2 fffffffffffffffffffffffffffff`
+A 00053309 ffffffg
+A 0005331e ffffffffffffffffffffffffffffff
+A 00053346 ffffffg
+A 00053359 Pffffffffffffffffffffffffffffff`w
+A 00053382 fffffffg
+A 00053394 Ufffffffffffffffffffffffffffffff`w
+A 000533bd xffffffffg
+A 000533cf Ufffffffffffffffffffffffffffffffff
+A 000533f9 xfffffffffg
+A 0005340a Uffffffffffffffffffffffffffffffffff`
+A 00053436 ffffffffffg
+A 00053445 Uffffffffffffffffffffffffffffffffffff
+A 00053472 fffffffffffg}
+A 00053480 Ufffffffffffffffffffffffffffffffffffff`
+A 000534ad fffffffffffffgufffffffffffffffffffffffffffffffffffffff
+A 000534ea ffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00053527 fffffffffffffffffffffffffffffffhfffffffffffffffffffffffffff`fffffffffffffffffffffffffffffff
+A 00053584 ffffffffffffffffffffffffff`ffffffffffffffffffffffffffffffh
+A 000535c1 ffffffffffffffffffffffff`
+A 000535db ffffffffffffffffffffffffffffff
+A 000535fd ffffffffffffffffffffffff
+A 00053616 ffffffffffffffffffffffffffffffhs3
+A 0005363a ffffffffffffffffffffff`fffffffffffffffffffffffffffffff
+A 00053675 xffffffffffffffffffffff`ffffffffffffffffffffffffffffffhx3
+A 000536b3 ffffffffffffffff
+A 000536c5 fff`ffffffffffffffffffffffffffffff
+A 000536ef fffffffffffffff
+A 00053701 fff`fffffffffffffffffffffffffffffh
+A 0005372a vffffffffffffff
+A 0005373c ffff`fffffffffffffffffffffffffffff
+A 00053766 vfffffffffffff
+A 00053778 fffff
+A 0005377e ffffffffffffffffffffffffffff`
+A 000537a3 ffffffffffff
+A 000537b3 ffffff`fffffffffffffffffffffffffffff
+A 000537de vfffffffffff
+A 000537ee ffffffff
+A 000537f7 ffffffffffffffffffffffffffff
+A 0005381b ffffffffff
+A 00053829 fffff`
+A 00053830 ff`ffffffffffffffffffffffffffff`
+A 00053857 fffffffff
+A 00053864 fffff`
+A 00053870 ffffffffffffffffffffffffffff
+A 00053894 fffffff
+A 0005389f fffff`
+A 000538ad fffffffffffffffffffffffffff`
+A 000538d0 ffffff
+A 000538da fffff`
+A 000538ea fffffffffffffffffffffffffff
+A 00053915 fffff`
+A 00053927 ffffffffffffffffffffffffffffff
+A 00053950 fffff`
+A 00053964 ffffffffffffffffffffffffffffff
+A 0005398b fffff`
+A 000539a1 ffffffffffffffffffffffffffffff
+A 000539c5 Ffffff`
+A 000539ce wwwww
+A 000539de ffffffffffffffffffffffffffffhwvfffffffff`
+A 00053a09 wwwwww
+A 00053a1b fffffffffffffffffffffffffffh
+A 00053a39 ffffffff`
+A 00053a44 wwwwwww
+A 00053a59 fffffffffffffffffffffffff
+A 00053a75 fffffff`
+A 00053a7f wwwwwwww
+A 00053a96 ffffffffffffffffffffffffgw
+A 00053ab1 ffffff`
+A 00053aba wwwwwwwww
+A 00053ad4 fffffffffffffffffh
+A 00053aed fffff`
+A 00053af5 wwwwww
+A 00053b11 ffffffffffffffff
+A 00053b22 wwwwwpfffff`
+A 00053b30 wwwwww
+A 00053b49 fff`fffffffffffffffh
+A 00053b64 ffff`
+A 00053b6b wwwwww
+A 00053b8a ffffffffffffff
+A 00053b9f ffff`
+A 00053ba6 wwwwww
+A 00053bc6 fffffffffffffh
+A 00053bd9 `ffff`
+A 00053be1 wwwwww
+A 00053c02 fffffffffffffh
+A 00053c12 fffffff
+A 00053c1c wwwwww
+A 00053c3e fffffffffffffhw
+A 00053c4e ffffff
+A 00053c57 wwwwwwwx
+A 00053c65 wwwww
+A 00053c79 ffffffffffffff
+A 00053c8a fffff
+A 00053c91 wwwwwwwwwwwww
+A 00053ca0 wwwwwww
+A 00053cb4 fffffffffffffff
+A 00053ccc wwwwwwwwwwwww
+A 00053cf0 fffffffffffffffg
+A 00053d07 wwwwwwwwwwwww
+A 00053d2c fffffffffffffff`
+A 00053d3d vffff
+A 00053d43 wwwwwwwwwwww
+A 00053d68 ffffffffffffffffwxffff
+A 00053d7f wwwwwwwwwww
+A 00053da4 ffffffffffffffff
+A 00053dbb wwwwwwwwww
+A 00053de0 ffffffffffffffffh
+A 00053df7 wwwwwwwww
+A 00053e1c fffffffffffffffff
+A 00053e33 w"wwwwww
+A 00053e58 fffffffffffffffffhw
+A 00053e71 wwwww
+A 00053e94 ffffffffffffffffff
+A 00053eab wwwwww
+A 00053ed0 ffffffffffffffffff`
+A 00053ee7 wwwww
+A 00053f0c fffffffffffffffffff`
+A 00053f32 wwwwx
+A 00053f48 ffffffffffffffffffff
+A 00053f6d wwwwwx
+A 00053f84 ffffffffffffffffffff`
+A 00053fa8 ww"wwwx
+A 00053fbf ffffffffffffffffffffff
+A 00053ffa ffffffffffffffffffffffff
+A 0005401e wwwww
+A 00054035 fffffffffffffffffffffffffo
+A 00054059 wwwww
+A 00054070 fffffffffffffffffffffffffffo
+A 00054094 wwwww
+A 000540ab fffffffffffffffffffffffffffffo
+A 000540cf wwwww
+A 000540e6 fffffffffffffffffffffffffffffffo
+A 0005410a wwwww
+A 00054121 fffffffffffffffffffffffffffffffffo
+A 00054145 wwwww
+A 0005415e ffffffffffffffffffffffffffffffff
+A 00054180 wwwww
+A 0005419b ffffffffffffffffffffffffffffff
+A 000541bb wwwww
+A 000541d8 fffffffffffffffffffffffffffff
+A 000541f6 wwwww
+A 00054215 ffffffffffffffffffffffffffff
+A 00054251 ffffffffffffffffffffffffffff
+A 0005428d ffffffffffffffffffffffffffff
+A 000542c9 ffffffffffffffffffffffffffff
+A 00054305 ffffffffffffffffffffffffffff
+A 00054341 ffffffffffffffffffffffffffff
+A 0005437d ffffffffffffffffffffffffffff
+A 000543b9 ffffffffffffffffffffffffffff
+A 000543f5 ffffffffffffffffffffffffffff
+A 00054431 ffffffffffffffffffffffffffff
+A 0005446d ffffffffffffffffffffffffffff
+A 000544a9 ffffffffffffffffffffffffffff
+A 000544e5 ffffffffffffffffffffffffffff
+A 00054521 ffffffffffffffffffffffffffff
+A 0005455d ffffffffffffffffffffffffffff
+A 0005459a fffffffffffffffffffffffffff
+A 000545d6 fffffffffffffffffffffffffff
+A 00054612 fffffffffffffffffffffffffff
+A 0005464e fffffffffffffffffffffffffff
+A 00054676 wwwwx
+A 0005468a fffffffffffffffffffffffffff
+A 000546b1 wwwww
+A 000546c6 fffffffffffffffffffffffffff
+A 000546ec wwwww
+A 00054702 fffffffffffffffffffffffffff
+A 00054727 wwwww
+A 0005473e fffffffffffffffffffffffffff
+A 00054762 wwwww
+A 00054768 wwwwwx
+A 0005477a fffffffffffffffffffffffffff
+A 0005479d wwwww
+A 000547a3 wwwwwwwx
+A 000547b6 fffffffffffffffffffffffffff
+A 000547d8 wwwww
+A 000547de wwwwwwwww
+A 000547f2 fffffffffffffffffffffffffff
+A 00054813 wwwww
+A 00054819 wwwwwwwww
+A 0005482e fffffffffffffffffffffffffff
+A 0005484e wwwww
+A 00054854 wwwwwwwww
+A 0005486a fffffffffffffffffffffffffff
+A 00054889 wwwww
+A 0005488f wwwwwwwww
+A 00054899 wwwwx
+A 000548a6 fffffffffffffffffffffffffff
+A 000548c2 wwwwwww
+A 000548ca wwwwwwwww
+A 000548d4 wwwwwwx
+A 000548e2 fffffffffffffffffffffffffff
+A 000548fe wwwwww
+A 00054905 wwwwwwwww
+A 0005490f wwwwwwwwx
+A 0005491e fffffffffffffffffffffffffff
+A 0005493a wwwww
+A 00054940 wwwwwwwww
+A 0005494a wwwwwwwwwwx
+A 0005495a fffffffffffffffffffffffffff
+A 0005497b wwwwwwwww
+A 00054985 wwwwwwwwwwwwx
+A 00054996 fffffffffffffffffffffffffff
+A 000549b6 wwwwwwwww
+A 000549c0 wwwwwwwwwwwwwwx
+A 000549d2 fffffffffffffffffffffffffff
+A 000549f1 wwwwwwwww
+A 000549fb wwwwwwwwwwwwwwwwx
+A 00054a0e fffffffffffffffffffffffffff
+A 00054a2c wwwwwwwww
+A 00054a36 wwwwwwwwwwwwwwwwwwx
+A 00054a4a fffffffffffffffffffffffffff
+A 00054a67 wwwwwwwww
+A 00054a71 wwwwwwwwwwwwwwwwwww
+A 00054a86 fffffffffffffffffffffffffff
+A 00054aa2 wwwwwwwww
+A 00054aac wwwwwwwwwwwwwwwwwww
+A 00054ac1 fffffffffffffffffffffffffffff
+A 00054adf wwwwwww
+A 00054ae7 wwwwwwwwwwwwwwwwwww
+A 00054afc fffffffffffffffffffffffffffffff
+A 00054b1c wwwww
+A 00054b22 wwwwwwwwwwwwwwwwwww
+A 00054b37 fffffffffffffffffffffffffffffffff
+A 00054b5d wwwwwwwwwwwwwwwwwww
+A 00054b72 fffffffffffffffffffffffffffffffffff
+A 00054b9c wwwwwwwwwwwwwww
+A 00054bad fffffffffffffffffffffffffffffffffffff
+A 00054bd3 ffffo
+A 00054bda wwwwwwwwwwww
+A 00054be8 ffffffffffffffffffffffffffffffffffffffffffffff
+A 00054c19 wwwwwwww
+A 00054c23 fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 00054c57 wwwww
+A 00054c5e fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00054c99 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 00054cd4 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00055028 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00055531 ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 0005556e ffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000555ab fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000555e7 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00055623 ffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0005565f ffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0005569c fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000556d8 ffffffffffffffffffffffffffffffffffffffff
+A 00055702 fffffffff`
+A 00055715 ffffffffffffffffffffffffffffffffffffff
+A 0005573f ffffffff`
+A 00055751 fffffffffffffffffffffffffffffffffffff
+A 0005577c ffffffff
+A 0005578e fffffffffffffffffffffffffffffffffff
+A 000557b9 fffffff`w
+A 000557ca ffffffffffffffffffffffffffffffffff
+A 000557f6 ffffff`w
+A 00055805 xfffffffffffffffffffffffffffffffff
+A 00055833 ffffff
+A 00055841 xfffffffffff`
+A 0005584f fffffffffffffffffff
+A 00055870 fffff`
+A 0005587e ffffffffff`
+A 0005588c ffffffffffffffffffww
+A 000558ad fffff
+A 000558ba fffffffff`
+A 000558c9 fffffffffffffffffw
+A 000558ea ffff`
+A 000558f5 fffffffff`
+A 00055906 fffffffffffffffffw
+A 00055932 fffffff`
+A 00055943 fffffffffffffffffw
+A 0005596f fffff`
+A 00055980 fffffffffffffffffw
+A 000559a0 ffffffffff`ffff`
+A 000559b1 wwqyw
+A 000559bd fffffffffffffffffw
+A 000559dc ffffffffff`fff`
+A 000559ec wwqyww
+A 000559fa fffffffffffffffffw
+A 00055a16 Vffffffffff`
+A 00055a37 fffffffffffffffffw
+A 00055a51 Vfffffffffff
+A 00055a74 fffffffffffffffffw
+A 00055a8c Vfffffffffff`fffgw
+A 00055aa4 wwwww
+A 00055ab1 fffffffffffffffffw
+A 00055ac7 Vffffffffffff`fffg
+A 00055aee fffffffffffffffffw
+A 00055b02 Vfffffffffffff`fffo
+A 00055b2b fffffffffffffffffwVffffffffffffff`ffg
+A 00055b68 ffffffffffffffffffffffffffffffff`ffg
+A 00055ba4 fffffffffffffffffffffffffffffffff
+A 00055be0 fffffffffffffffffffffffffffffffff`fgw
+A 00055c0e 33330
+A 00055c1c ffffffffffffffffffffffffffffffffff
+A 00055c4a 333330
+A 00055c58 ffffffffffffffffffffffffffffff`
+A 00055c78 ff`fww
+A 00055c86 3333330
+A 00055c94 ffffffffffffffffff
+A 00055ca8 fffffffff`
+A 00055cc2 s3333330
+A 00055cd0 fffffffffffffffff
+A 00055ce4 ffffffff`
+A 00055cff 3333330
+A 00055d0b fffffffffffffffff
+A 00055d1f ffffffff`
+A 00055d3c 33333
+A 00055d46 fffffffffffffffff
+A 00055d5b fffffff`
+A 00055d78 33330
+A 00055d82 ffffffffffffffff
+A 00055d96 fffffff`
+A 00055db4 s3330
+A 00055dbb 330fffffffffffffff
+A 00055dd1 fffffff`
+A 00055df9 0ffffffffffffff
+A 00055e0c fffffff`
+A 00055e16 wwwww
+A 00055e36 fffffffffffff
+A 00055e47 fffffff`
+A 00055e51 wwwwww
+A 00055e6f 330ffffffffffff
+A 00055e82 fffffff`
+A 00055e8c wwwwwww
+A 00055eab 330fffffffffff
+A 00055ebd fffffff`
+A 00055ec7 wwwwwwww
+A 00055ee7 330ffffffffff
+A 00055ef8 fffffff`
+A 00055f02 wwwwwwwww
+A 00055f23 330fffffffff
+A 00055f33 fffffff`
+A 00055f3d wwwwww
+A 00055f61 0fffffffff
+A 00055f6e fffffff`
+A 00055f78 wwwwww
+A 00055f9e fffffffff
+A 00055fa8 Ffffffff`
+A 00055fb3 wwwwww
+A 00055fda fffffffffffffffff`
+A 00055fee wwwwww
+A 00056016 ffffffffffffffff`
+A 00056029 wwwwww
+A 00056051 ffffffffffffffff`
+A 00056064 wwwwww
+A 0005608d fffffffffffffff`
+A 0005609f wwwwwwwx
+A 000560ad wwwww
+A 000560c8 fffffffffffffff`
+A 000560da wwwwwwwwwwww
+A 000560e8 wwwwwww
+A 00056104 ffffffffffffff`
+A 00056115 wwwwwwwwwwww
+A 0005613f fffffffffffffffo
+A 00056150 wwwwwwwwwwww
+A 0005617a ffffffffffffffffowwwwwwwwwwww
+A 000561b6 ffffffffffffffffowwwwwwwwwww
+A 000561f1 fffffffffffffffffowwwwwwwwww
+A 0005622c ffffffffffffffffffowwwwwwwww
+A 00056267 fffffffffffffffffffowr'wwwww
+A 000562a1 fffffffffffffffffffffowz
+A 000562dc ffffffffffffffffffffffowwwwww
+A 00056318 ffffffffffffffffffffffowwwww
+A 00056354 ffffffffffffffffffffffowwww
+A 0005637a wwwwx
+A 00056390 ffffffffffffffffffffffowww
+A 000563b5 wwwwwx
+A 000563cc ffffffffffffffffffffffoww
+A 000563f0 ww"wwwx
+A 00056407 fffffffffffffffffffffffow
+A 00056442 ffffffffffffffffffffffffo
+A 00056466 wwwww
+A 0005647d fffffffffffffffffffffffffo
+A 000564a1 wwwww
+A 000564b8 fffffffffffffffffffffffffffo
+A 000564dc wwwww
+A 000564f3 fffffffffffffffffffffffffffffo
+A 00056517 wwwww
+A 0005652e fffffffffffffffffffffffffffffffo
+A 00056552 wwwww
+A 00056569 fffffffffffffffffffffffffffffffffo
+A 0005658d wwwww
+A 000565a6 ffffffffffffffffffffffffffffffff
+A 000565c8 wwwww
+A 000565e3 ffffffffffffffffffffffffffffff
+A 00056603 wwwww
+A 00056620 fffffffffffffffffffffffffffff
+A 0005663e wwwww
+A 0005665d ffffffffffffffffffffffffffff
+A 00056699 ffffffffffffffffffffffffffff
+A 000566d5 ffffffffffffffffffffffffffff
+A 00056711 ffffffffffffffffffffffffffff
+A 0005674d ffffffffffffffffffffffffffff
+A 00056789 ffffffffffffffffffffffffffff
+A 000567c5 ffffffffffffffffffffffffffff
+A 00056801 ffffffffffffffffffffffffffff
+A 0005683d ffffffffffffffffffffffffffff
+A 00056879 ffffffffffffffffffffffffffff
+A 000568b5 ffffffffffffffffffffffffffff
+A 000568f1 ffffffffffffffffffffffffffff
+A 0005692d ffffffffffffffffffffffffffff
+A 00056969 ffffffffffffffffffffffffffff
+A 000569a5 ffffffffffffffffffffffffffff
+A 000569e2 fffffffffffffffffffffffffff
+A 00056a1e fffffffffffffffffffffffffff
+A 00056a5a fffffffffffffffffffffffffff
+A 00056a96 fffffffffffffffffffffffffff
+A 00056abe wwwwx
+A 00056ad2 fffffffffffffffffffffffffff
+A 00056af9 wwwww
+A 00056b0e fffffffffffffffffffffffffff
+A 00056b34 wwwww
+A 00056b4a fffffffffffffffffffffffffff
+A 00056b6f wwwww
+A 00056b86 fffffffffffffffffffffffffff
+A 00056baa wwwww
+A 00056bb0 wwwwwx
+A 00056bc2 fffffffffffffffffffffffffff
+A 00056be5 wwwww
+A 00056beb wwwwwwwx
+A 00056bfe fffffffffffffffffffffffffff
+A 00056c20 wwwww
+A 00056c26 wwwwwwwww
+A 00056c3a fffffffffffffffffffffffffff
+A 00056c5b wwwww
+A 00056c61 wwwwwwwww
+A 00056c76 fffffffffffffffffffffffffff
+A 00056c96 wwwww
+A 00056c9c wwwwwwwww
+A 00056cb2 fffffffffffffffffffffffffff
+A 00056cd1 wwwww
+A 00056cd7 wwwwwwwww
+A 00056ce1 wwwwx
+A 00056cee fffffffffffffffffffffffffff
+A 00056d0a wwwwwww
+A 00056d12 wwwwwwwww
+A 00056d1c wwwwwwx
+A 00056d2a fffffffffffffffffffffffffff
+A 00056d46 wwwwww
+A 00056d4d wwwwwwwww
+A 00056d57 wwwwwwwwx
+A 00056d66 fffffffffffffffffffffffffff
+A 00056d82 wwwww
+A 00056d88 wwwwwwwww
+A 00056d92 wwwwwwwwwwx
+A 00056da2 fffffffffffffffffffffffffff
+A 00056dc3 wwwwwwwww
+A 00056dcd wwwwwwwwwwwwx
+A 00056dde fffffffffffffffffffffffffff
+A 00056dfe wwwwwwwww
+A 00056e08 wwwwwwwwwwwwwwx
+A 00056e1a fffffffffffffffffffffffffff
+A 00056e39 wwwwwwwww
+A 00056e43 wwwwwwwwwwwwwwwwx
+A 00056e56 fffffffffffffffffffffffffff
+A 00056e74 wwwwwwwww
+A 00056e7e wwwwwwwwwwwwwwwwwwx
+A 00056e92 fffffffffffffffffffffffffff
+A 00056eaf wwwwwwwww
+A 00056eb9 wwwwwwwwwwwwwwwwwww
+A 00056ece fffffffffffffffffffffffffff
+A 00056eea wwwwwwwww
+A 00056ef4 wwwwwwwwwwwwwwwwwww
+A 00056f09 fffffffffffffffffffffffffffff
+A 00056f27 wwwwwww
+A 00056f2f wwwwwwwwwwwwwwwwwww
+A 00056f44 fffffffffffffffffffffffffffffff
+A 00056f64 wwwww
+A 00056f6a wwwwwwwwwwwwwwwwwww
+A 00056f7f fffffffffffffffffffffffffffffffff
+A 00056fa5 wwwwwwwwwwwwwwwwwww
+A 00056fba fffffffffffffffffffffffffffffffffff
+A 00056fe4 wwwwwwwwwwwwwww
+A 00056ff5 fffffffffffffffffffffffffffffffffffff
+A 0005701b ffffo
+A 00057022 wwwwwwwwwwww
+A 00057030 ffffffffffffffffffffffffffffffffffffffffffffff
+A 00057061 wwwwwwww
+A 0005706b fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0005709f wwwww
+A 000570a6 fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 000570e1 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 0005711c ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00057470 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057792 ffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000577cc xffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057809 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057844 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0005787f fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000578ba fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 000578f5 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057930 fffffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 0005796b fffffffffff
+A 00057979 fffffffffffffffffffffffffffffffffffffffff`
+A 000579a6 fffffffffff
+A 000579b6 fffffffffffffffffffffffffffffffffffffff`
+A 000579e1 fffffffffff`
+A 000579f3 fffffffffffffffffffffffffffffffffffff`
+A 00057a1b Hffffffffffff
+A 00057a2f fffffffffffffffffffffffffffffffffffffaHHfffffffffffff
+A 00057a6b fffffffffffffffffffffffffffffffffffffi
+A 00057a92 fffffffffffff`
+A 00057aa7 ffffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057ae4 fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057b20 fffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057b5d ffffffffffffffffffffffffffffffffffffffffffffffffff`
+A 00057b99 fffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00057bd6 ffffffffffffffffffffffffffffffffffffffffffffffffff`w
+A 00057c12 ffffffffffffffffffffffffffffffffffffffffffffffffff`w
+A 00057c4d xfffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00057c89 xfffffffffff`
+A 00057c97 ffffffffffffffffffffffffffffffffffffff`
+A 00057cc6 ffffffffff`
+A 00057cd4 ffffffffffffffffffffffffffffffffffffff
+A 00057d02 fffffffff`
+A 00057d11 fffffffffffffffffffffffffffffffffffff`
+A 00057d3d fffffffff`
+A 00057d4e fffffffffffffffffffffffffffffffffffff
+A 00057d7a fffffff`
+A 00057d8b fffffffffffffffffffffffffffffffffffff
+A 00057db7 fffff`
+A 00057dc8 fffffffffffffff
+A 00057dd8 ffffffffffffffffffffffffff`ffff`
+A 00057df9 wwqyw
+A 00057e05 fffffffffffffh
+A 00057e14 ffffffffffffffffffffffffff`fff`
+A 00057e34 wwqyww
+A 00057e42 ffffffffffff
+A 00057e51 ffffffffffffffffffffffff`
+A 00057e7f ffffffffffh
+A 00057e8e fffffffffffffffffffffff
+A 00057ebc fffffffff
+A 00057ec6 38wxffffffffffffffffffffff`fffgw
+A 00057eec wwwww
+A 00057ef9 fffffffh
+A 00057f07 fffffffffffffffffffff`fffg
+A 00057f36 ffffff
+A 00057f42 xfffffffffffffffffffff`fffo
+A 00057f73 ffffhs3
+A 00057f7e xfffffffffffffffffffff`ffg
+A 00057fbb fffffffffffffffffffff`ffg
+A 00057ff7 ffffffffffffffffffffff
+A 00058030 xwxffffffffffffffffffffff`fgw
+A 00058056 33330
+A 0005806f fffffffffffffffffffffff
+A 00058092 333330
+A 000580ab fffffffffffffffffff`
+A 000580c0 ff`fww
+A 000580ce 3333330
+A 000580e4 wwxffffffffffffffffff`
+A 0005810a s3333330
+A 00058118 ffff`
+A 00058124 ffffffffffffffff`
+A 00058147 3333330
+A 00058153 ffffff
+A 00058161 ffffffffffffff`
+A 00058184 33333
+A 0005818e fffffff`
+A 0005819d fffffffffffff`
+A 000581c0 33330
+A 000581ca fffffffffff`
+A 000581d7 wxffffffffffff`
+A 000581fc s3330
+A 00058203 330ffffffffffff`
+A 00058216 ffffffffff`
+A 00058241 0fffffffffffffg
+A 00058251 ffffffffff`
+A 0005825e wwwww
+A 0005827e fffffffffffff
+A 0005828c wfffffffff`
+A 00058299 wwwwww
+A 000582b7 330fffffffffffff
+A 000582c9 ffffffff`
+A 000582d4 wwwwwww
+A 000582f3 330ffffffffffffh
+A 00058306 ffffff`
+A 0005830f wwwwwwww
+A 0005832f 330fffffffffffffwpffffff`
+A 0005834a wwwwwwwww
+A 0005836b 330ffffffff
+A 0005837b wpfffff`
+A 00058385 wwwwww
+A 000583a9 0fffffffh
+A 000583b3 wwwww
+A 000583b9 ffff`
+A 000583c0 wwwwww
+A 000583e6 fffffff
+A 000583f3 pffff`
+A 000583fb wwwwww
+A 00058422 ffffffh
+A 00058436 wwwwww
+A 0005845e ffffff
+A 00058471 wwwwww
+A 00058499 fffffff
+A 000584a3 ffffff`
+A 000584ac wwwwww
+A 000584d5 fffffff
+A 000584dd xffffff`
+A 000584e7 wwwwwwwx
+A 000584f5 wwwww
+A 00058510 fffffffh
+A 0005851a fffff`
+A 00058522 wwwwwwwwwwww
+A 00058530 wwwwwww
+A 0005854c fffffff`
+A 00058555 xffff`
+A 0005855d wwwwwwwwwwww
+A 00058587 fffffffff
+A 00058592 ffffo
+A 00058598 wwwwwwwwwwww
+A 000585c2 ffffffffff
+A 000585ce ffffowwwwwwwwwwww
+A 000585fe ffffffffffgw
+A 0005860b fffowwwwwwwwwww
+A 00058639 fffffffffffh
+A 00058646 xfffowwwwwwwwww
+A 00058674 fffffffffffff
+A 00058684 ffowwwwwwwww
+A 000586af ffffffffffffffh
+A 000586c1 fowr'wwwww
+A 000586e9 fffffffffffffffff
+A 000586fc wfowz
+A 00058724 ffffffffffffffffffh
+A 0005873a owwwwww
+A 00058760 fffffffffffffffffff
+A 00058775 wowwwww
+A 0005879c ffffffffffffffffffff
+A 000587c2 wwwwx
+A 000587d8 ffffffffffffffffffff`
+A 000587fd wwwwwx
+A 00058814 fffffffffffffffffffff
+A 00058838 ww"wwwx
+A 0005884f ffffffffffffffffffffff`
+A 0005888a ffffffffffffffffffffffffo
+A 000588ae wwwww
+A 000588c5 fffffffffffffffffffffffffo
+A 000588e9 wwwww
+A 00058900 fffffffffffffffffffffffffffo
+A 00058924 wwwww
+A 0005893b fffffffffffffffffffffffffffffo
+A 0005895f wwwww
+A 00058976 fffffffffffffffffffffffffffffffo
+A 0005899a wwwww
+A 000589b1 fffffffffffffffffffffffffffffffffo
+A 000589d5 wwwww
+A 000589ee ffffffffffffffffffffffffffffffff
+A 00058a10 wwwww
+A 00058a2b ffffffffffffffffffffffffffffff
+A 00058a4b wwwww
+A 00058a68 fffffffffffffffffffffffffffff
+A 00058a86 wwwww
+A 00058aa5 ffffffffffffffffffffffffffff
+A 00058ae1 ffffffffffffffffffffffffffff
+A 00058b1d ffffffffffffffffffffffffffff
+A 00058b59 ffffffffffffffffffffffffffff
+A 00058b95 ffffffffffffffffffffffffffff
+A 00058bd1 ffffffffffffffffffffffffffff
+A 00058c0d ffffffffffffffffffffffffffff
+A 00058c49 ffffffffffffffffffffffffffff
+A 00058c85 ffffffffffffffffffffffffffff
+A 00058cc1 ffffffffffffffffffffffffffff
+A 00058cfd ffffffffffffffffffffffffffff
+A 00058d39 ffffffffffffffffffffffffffff
+A 00058d75 ffffffffffffffffffffffffffff
+A 00058db1 ffffffffffffffffffffffffffff
+A 00058ded ffffffffffffffffffffffffffff
+A 00058e2a fffffffffffffffffffffffffff
+A 00058e66 fffffffffffffffffffffffffff
+A 00058ea2 fffffffffffffffffffffffffff
+A 00058ede fffffffffffffffffffffffffff
+A 00058f06 wwwwx
+A 00058f1a fffffffffffffffffffffffffff
+A 00058f41 wwwww
+A 00058f56 fffffffffffffffffffffffffff
+A 00058f7c wwwww
+A 00058f92 fffffffffffffffffffffffffff
+A 00058fb7 wwwww
+A 00058fce fffffffffffffffffffffffffff
+A 00058ff2 wwwww
+A 00058ff8 wwwwwx
+A 0005900a fffffffffffffffffffffffffff
+A 0005902d wwwww
+A 00059033 wwwwwwwx
+A 00059046 fffffffffffffffffffffffffff
+A 00059068 wwwww
+A 0005906e wwwwwwwww
+A 00059082 fffffffffffffffffffffffffff
+A 000590a3 wwwww
+A 000590a9 wwwwwwwww
+A 000590be fffffffffffffffffffffffffff
+A 000590de wwwww
+A 000590e4 wwwwwwwww
+A 000590fa fffffffffffffffffffffffffff
+A 00059119 wwwww
+A 0005911f wwwwwwwww
+A 00059129 wwwwx
+A 00059136 fffffffffffffffffffffffffff
+A 00059152 wwwwwww
+A 0005915a wwwwwwwww
+A 00059164 wwwwwwx
+A 00059172 fffffffffffffffffffffffffff
+A 0005918e wwwwww
+A 00059195 wwwwwwwww
+A 0005919f wwwwwwwwx
+A 000591ae fffffffffffffffffffffffffff
+A 000591ca wwwww
+A 000591d0 wwwwwwwww
+A 000591da wwwwwwwwwwx
+A 000591ea fffffffffffffffffffffffffff
+A 0005920b wwwwwwwww
+A 00059215 wwwwwwwwwwwwx
+A 00059226 fffffffffffffffffffffffffff
+A 00059246 wwwwwwwww
+A 00059250 wwwwwwwwwwwwwwx
+A 00059262 fffffffffffffffffffffffffff
+A 00059281 wwwwwwwww
+A 0005928b wwwwwwwwwwwwwwwwx
+A 0005929e fffffffffffffffffffffffffff
+A 000592bc wwwwwwwww
+A 000592c6 wwwwwwwwwwwwwwwwwwx
+A 000592da fffffffffffffffffffffffffff
+A 000592f7 wwwwwwwww
+A 00059301 wwwwwwwwwwwwwwwwwww
+A 00059316 fffffffffffffffffffffffffff
+A 00059332 wwwwwwwww
+A 0005933c wwwwwwwwwwwwwwwwwww
+A 00059351 fffffffffffffffffffffffffffff
+A 0005936f wwwwwww
+A 00059377 wwwwwwwwwwwwwwwwwww
+A 0005938c fffffffffffffffffffffffffffffff
+A 000593ac wwwww
+A 000593b2 wwwwwwwwwwwwwwwwwww
+A 000593c7 fffffffffffffffffffffffffffffffff
+A 000593ed wwwwwwwwwwwwwwwwwww
+A 00059402 fffffffffffffffffffffffffffffffffff
+A 0005942c wwwwwwwwwwwwwww
+A 0005943d fffffffffffffffffffffffffffffffffffff
+A 00059463 ffffo
+A 0005946a wwwwwwwwwwww
+A 00059478 ffffffffffffffffffffffffffffffffffffffffffffff
+A 000594a9 wwwwwwww
+A 000594b3 fffffffffffffffffffffffffffffffffffffffffffffffffo
+A 000594e7 wwwww
+A 000594ee fffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00059529 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffo
+A 00059564 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+A 00059aaa wwwwp
+A 00059ada wwwwp
+A 0005a3ad RDEST
+A 0005a3c5 RDEST
+A 0005a40d RDEST
+A 0005a425 RDEST
+A 0005a43d RDEST
+A 0005a485 RDEST
+A 0005a49d RDEST
+A 0005a4b5 RDEST
+A 0005a4d0 ${vW 
+A 0005a4e5 SDEST
+A 0005a4fd RDEST
+A 0005a515 RDEST
+A 0005a52d SDEST
+A 0005a560 ${vWx
+A 0005a590 ${vW@
+A 0005a6a2 stdole2.tlbWWW
+A 0005a8bc CommXLib
+A 0005a8d0 _PortEventsW
+A 0005a8e8 HandleChange
+A 0005a8ff Znew_handleWW
+A 0005a918 ParameterChangeW
+A 0005a932 :adispidWW
+A 0005a948 forcedWW
+A 0005a95c IncomingBreakWWW
+A 0005a978 CtsChangeWWW
+A 0005a98f Anew_valueWWW
+A 0005a9a7 7DsrChangeWWW
+A 0005a9c0 CdChange
+A 0005a9d2 W4Ring
+A 0005a9e4 IncomingData
+A 0005a9fb _LineStatusErrorW
+A 0005aa18 errorsWW
+A 0005aa2b *IncomingFlagChar
+A 0005aa47 >TransmitBufferEmptyWd
+A 0005aa68 PortCtlW
+A 0005aa7c IPortCtl
+A 0005aa8f gPortNumberWW
+A 0005aab7 $BaudRate
+A 0005aacc ParityWW
+A 0005aae0 DataBits
+A 0005aaf4 StopBits
+A 0005ab08 XonXoffW
+A 0005ab1c DtrDsrWW
+A 0005ab30 RtsCtsWW
+A 0005ab63 \CdWW
+A 0005ab83 ^RiWW
+A 0005aba4 OverrunError
+A 0005abbc ParityErrorW
+A 0005abd2 X#FramingError
+A 0005abeb QBreakDetectW
+A 0005ac04 ShowModemPortsWW
+A 0005ac20 ShowMousePortsWW
+A 0005ac3c ShowUnattachedPortsW
+A 0005ac5b JPortHandleWW
+A 0005ac74 SpaceFreeInRxBufferW
+A 0005ac94 SpaceFreeInTxBufferW
+A 0005acb4 SpaceUsedInRxBufferW
+A 0005acd4 SpaceUsedInTxBufferW
+A 0005acf4 DesignModeWW
+A 0005ad1c handleWW
+A 0005ad30 CloseWWW
+A 0005ad43 +statusWW
+A 0005ad57 XReadByte
+A 0005ad6a urresultWW
+A 0005ad80 ReadByteTimedWWW
+A 0005ad9c timeout_in_millisecondsW
+A 0005adbf QWriteByteWWW
+A 0005add7 ;data
+A 0005ade8 WriteByteTimedWW
+A 0005ae04 WriteByteBufferW
+A 0005ae20 bufferWW
+A 0005ae34 lengthWW
+A 0005ae47 PWriteByteBufferTimed
+A 0005ae68 timeoutW
+A 0005ae7a >RReadByteBufferWW
+A 0005ae98 ReadByteBufferTimedW
+A 0005aeb6 0vcountWWW
+A 0005aecc IssueBreakDetectEventWWW
+A 0005aef0 IssueCtsChangeEventW
+A 0005af10 IssueDsrChangeEventW
+A 0005af30 IssueLineStatusErrorEventWWW
+A 0005af56 +5IssueRingEventWW
+A 0005af74 IssueCdChangeEventWW
+A 0005af92 XuIssueRxDataEvent
+A 0005afb0 IssueRxTriggerEventW
+A 0005afd0 RxTriggerCharWWW
+A 0005afec IssueTxBufferEmptyEventW
+A 0005b010 ClearLineStatusW
+A 0005b02c ConfigureWWW
+A 0005b044 ClearTxBufferWWW
+A 0005b060 PeekByte
+A 0005b074 SendBreakWWW
+A 0005b08c milliseconds
+A 0005b0a4 ClearRxBufferWWW
+A 0005b0c0 WriteStringW
+A 0005b0d6 zpWriteStringTimed
+A 0005b0f4 ReadStringWW
+A 0005b10c max_countWWW
+A 0005b123 ;retvalWW
+A 0005b137 eReadStringTimedW
+A 0005b153 xLocalEchoWWW
+A 0005b16c EventModeWWW
+A 0005b183 A_OnFireIncomingDataW
+A 0005b1a4 _OnFireIncomingBreak
+A 0005b1c2 Nr_OnFireCtsChange
+A 0005b1e0 _OnFireDsrChange
+A 0005b1fb P_OnFireCdChangeW
+A 0005b218 _OnFireRingW
+A 0005b22e M__OnFireLineStatusErrorWW
+A 0005b254 _OnFireIncomingFlagCharW
+A 0005b277 b_OnFireTransmitBufferEmptyWW,
+A 0005b29f $PortProp
+A 0005b2b3 \_FileXferEventsW
+A 0005b2d0 SendFileStartWWW
+A 0005b2ec FileName
+A 0005b2ff 9ReceiveFileStart
+A 0005b31c SendFileComplete
+A 0005b337 zReceiveFileCompleteW
+A 0005b358 StatusUpdate
+A 0005b370 MessageW
+A 0005b384 MessageTextW
+A 0005b39c FileXferCtlWX
+A 0005b3b4 IFileXferCtlX
+A 0005b3cc PortX
+A 0005b3db oSendFileNamesWWWX
+A 0005b3f6 3!ReceiveFileNameWX
+A 0005b413 ]SendFilesWWWX
+A 0005b42b oReceiveFilesX
+A 0005b444 ProtocolX
+A 0005b457 &StripPathOnReceiveWWX
+A 0005b478 MonitorCarrierWWX
+A 0005b493 8IncludeSubdirectoriesWWWX
+A 0005b4b8 AsciiStripIncomingLFX
+A 0005b4d8 AsciiReceiveTimeoutWX
+A 0005b4f6 IxAsciiTransmitLineDelayWWX
+A 0005b51c ZmodemCrashRecoveryWX
+A 0005b53b NZmodemOverwriteModeWX
+A 0005b55a .7ZmodemWindowSizeX
+A 0005b578 MaxErrorsWWWX
+A 0005b58e B-TerminalX
+A 0005b5a2 l.FileNameDelimitersWWX
+A 0005b5c4 AbortXferWWWX
+A 0005b5dc CurrentFileNameWX
+A 0005b5f8 CurrentFileLengthWWWX
+A 0005b618 CurrentByteCountX
+A 0005b633 !StripPathOnSendWX
+A 0005b64f )CurrentErrorCountWWWX
+A 0005b66f dDownloadDirectoryWWWX
+A 0005b68f SCurrentFileCountX
+A 0005b6ab XCreateProgressWindowX
+A 0005b6cc ProgressDialogParentHandleWWX
+A 0005b6f2 8?ProgressWaitForOKWWWX
+A 0005b713 pFileXferPortX
+A 0005b72c FileXferTerminalX
+A 0005b748 _OnFireSendFileStart
+A 0005b768 nameX
+A 0005b778 _OnFireSendFileCompleteWX
+A 0005b79c _OnFireMessageWW
+A 0005b7b7 ?msg_textX
+A 0005b7cc _OnFireStatusUpdateWX
+A 0005b7ec _OnFireReceiveFileStartWX
+A 0005b810 _OnFireReceiveFileCompleteWW
+A 0005b838 PortProp2WWW 
+A 0005b850 PortProp3WWW
+A 0005b865 87R_TermEventsW
+A 0005b87f 8IncomingTriggerW
+A 0005b89a i{trigger_idWW
+A 0005b8b4 KeyEvent
+A 0005b8c8 key_eventWWW
+A 0005b8de ! NewSizeW
+A 0005b8f4 new_cxWW
+A 0005b908 new_cyWW
+A 0005b91c TermCtlWL
+A 0005b92d 8m{ITermCtlL
+A 0005b943 ]TestModeL
+A 0005b958 ForegroundColorWL
+A 0005b973 BBackgroundColorWL
+A 0005b990 BorderColorWL
+A 0005b9a8 BoldL
+A 0005b9b7 SBlinkWWWL
+A 0005b9ca V6EmulationWWWL
+A 0005b9e2 ]\ClearWindowWL
+A 0005b9fc CursorRowWWWL
+A 0005ba14 CursorColumnL
+A 0005ba2c SetCursorPositionWWW
+A 0005ba5c colWL
+A 0005ba6c ClearToEolWWL
+A 0005ba84 SetNormalWWWL
+A 0005ba9c FontL
+A 0005baac TestPatternWL
+A 0005bac3 AInvisibleWWWL
+A 0005badb 	ReverseVideoL
+A 0005baf2 TyDesiredRowsWL
+A 0005bb0c DesiredColumnsWWL
+A 0005bb28 ActualRowsWWL
+A 0005bb40 ActualColumnsWWWL
+A 0005bb5c BorderXPixelsWWWL
+A 0005bb78 BorderYPixelsWWWL
+A 0005bb93 HSetDesiredSizeWW
+A 0005bbaf Urows
+A 0005bbbe p9columnsWL
+A 0005bbd4 DeleteBorderL
+A 0005bbea WyWrapL
+A 0005bbfc SetToDesiredSizeL
+A 0005bc16 =jReadingPortWL
+A 0005bc2e m:ReadingKeyboardWL
+A 0005bc4c AddTriggerString
+A 0005bc68 trigger_bytesWWWL
+A 0005bc84 AddVirtualKeyMacroWW
+A 0005bca3 Tvkey
+A 0005bcb2 l`shiftedW
+A 0005bcc7 &controlledWW
+A 0005bce0 macroWWWL
+A 0005bcf4 AddKeyMacroW
+A 0005bd0c keyWL
+A 0005bd1b NRemoveTriggerStringW
+A 0005bd3b ]idWWL
+A 0005bd4b MRemoveVirtualKeyMacroWWWL
+A 0005bd70 RemoveKeyMacroWWL
+A 0005bd8a b'AddVirtualKeyCommand
+A 0005bdab ]commandWL
+A 0005bdc0 RemoveVirtualKeyCommandWL
+A 0005bde2 >QAddKeyCommandWWWL
+A 0005bdff cRemoveKeyCommandL
+A 0005be1c AddTriggerBStringWWW
+A 0005be3c triggerWL
+A 0005be50 AddVirtualKeyBMacroWL
+A 0005be70 AddKeyBMacroL
+A 0005be88 DisplayStringWWWL
+A 0005bea4 DisplayByteBufferWWWL
+A 0005bec4 TermPort
+A 0005bed8 TermProp
+A 0005beec TermProp2WWWx
+A 0005bf04 FileXferProp
+A 0005bf1b pFileXferProp2WWW@
+A 0005bf37 pFileXferProp3WWW
+A 0005bf4a Greenleaf Comm Control
+A 0005bf62 Event interface for PortCtlWWW
+A 0005bf82 Greenleaf Port Control
+A 0005bf9a IPortCtl Interface
+A 0005bfae property PortNumberWWW
+A 0005bfc6 property BaudRateW
+A 0005bfda property ParityWWW
+A 0005bfee property DataBitsW
+A 0005c002 property StopBitsW
+A 0005c016 property XonXoffWW
+A 0005c02a property DtrDsrWWW
+A 0005c03e property RtsCtsWWW
+A 0005c052 property DtrWW
+A 0005c062 property RtsWW
+A 0005c072 property CdWWW
+A 0005c082 property CtsWW
+A 0005c092 property RiWWW
+A 0005c0a2 property DsrWW
+A 0005c0b2 property OverrunErrorW
+A 0005c0ca property ParityErrorWW
+A 0005c0e2 property FramingErrorW
+A 0005c0fa property BreakDetectWW
+A 0005c112 property ShowModemPortsWWW
+A 0005c12e property ShowMousePortsWWW
+A 0005c14a property ShowUnattachedPortsWW
+A 0005c16a property PortHandleWWW
+A 0005c182 property SpaceFreeInRxBufferWW
+A 0005c1a2 property SpaceFreeInTxBufferWW
+A 0005c1c2 property SpaceUsedInRxBufferWW
+A 0005c1e2 property SpaceUsedInTxBufferWW
+A 0005c202 property DesignModeWWW
+A 0005c21a method OpenWWW
+A 0005c22a method CloseWW
+A 0005c23a method ReadByteWWW
+A 0005c24e method ReadByteTimedWW
+A 0005c266 method WriteByteWW
+A 0005c27a method WriteByteTimedW
+A 0005c292 method WriteByteBuffer
+A 0005c2aa method WriteByteBufferTimedWWW
+A 0005c2ca method ReadByteBufferW
+A 0005c2e2 method ReadByteBufferTimed
+A 0005c2fe property IssueBreakDetectEvent
+A 0005c31e property IssueCtsChangeEventWW
+A 0005c33e property IssueDsrChangeEventWW"
+A 0005c35e property IssueLineStatusErrorEvent
+A 0005c382 property IssueRingEventWWW
+A 0005c39e property IssueCdChangeEventWWW
+A 0005c3be property IssueRxDataEventW
+A 0005c3da property IssueRxTriggerEventWW
+A 0005c3fa property RxTriggerChar 
+A 0005c412 property IssueTxBufferEmptyEventWW
+A 0005c436 method ClearLineStatus
+A 0005c44e method ConfigureWW
+A 0005c462 method ClearTxBufferWW
+A 0005c47a method PeekByteWWW
+A 0005c48e method SendBreakWW
+A 0005c4a2 method ClearRxBufferWW
+A 0005c4ba method WriteString
+A 0005c4ce method WriteStringTimedWWW
+A 0005c4ea method ReadStringW
+A 0005c4fe method ReadStringTimed
+A 0005c516 property LocalEcho
+A 0005c52a property EventMode
+A 0005c53e PortProp Class
+A 0005c54e Event interface for FileXferCtlWWW
+A 0005c572 Greenleaf FileXferCtl ControlW
+A 0005c592 IFileXferCtl Interface
+A 0005c5aa property PortW
+A 0005c5ba property SendFileNames
+A 0005c5d2 property ReceiveFileNameWW
+A 0005c5ee method SendFilesWW
+A 0005c602 method ReceiveFilesWWW
+A 0005c61a property ProtocolW
+A 0005c62e property StripPathOnReceiveWWW
+A 0005c64e property MonitorCarrierWWW
+A 0005c66a property IncludeSubdirectories
+A 0005c68a property AsciiStripIncomingLFW
+A 0005c6aa property AsciiReceiveTimeoutWW
+A 0005c6ca property AsciiTransmitLineDelayWWW
+A 0005c6ee property ZmodemCrashRecoveryWW
+A 0005c70e property ZmodemOverwriteModeWW
+A 0005c72e property ZmodemWindowSizeW
+A 0005c74a property MaxErrors
+A 0005c75e property TerminalW
+A 0005c772 property FileNameDelimitersWWW
+A 0005c792 method AbortXferWW
+A 0005c7a6 property CurrentFileNameWW
+A 0005c7c2 property CurrentFileLength
+A 0005c7de property CurrentByteCountW
+A 0005c7fa property StripPathOnSendWW
+A 0005c816 property CurrentErrorCount
+A 0005c832 property DownloadDirectory
+A 0005c84e property CurrentFileCountW
+A 0005c86a property CreateProgressWindowW
+A 0005c88a property ProgressDialogParentW
+A 0005c8aa property ProgressWaitForOK
+A 0005c8c6 property FileXferPortW
+A 0005c8de property FileXferTerminalW
+A 0005c8fa PortProp2 ClassWWW
+A 0005c90e PortProp3 ClassWWW
+A 0005c922 Event interface for TermCtlWWW
+A 0005c942 TermCtl ClassW
+A 0005c952 ITermCtl Interface
+A 0005c966 property TestModeW
+A 0005c97a property ForegroundColorWW
+A 0005c996 property BackgroundColorWW
+A 0005c9b2 property BorderColorWW
+A 0005c9ca property BoldW
+A 0005c9da property Blink
+A 0005c9ea property Emulation
+A 0005c9fe method ClearWindow
+A 0005ca12 property CursorRow
+A 0005ca26 property CursorColumnW
+A 0005ca3e method SetCursorPositionWW
+A 0005ca5a method ClearToEolW
+A 0005ca6e method SetNormalWW
+A 0005ca82 property FontW
+A 0005ca92 method TestPattern
+A 0005caa6 property Invisible
+A 0005caba property ReverseVideoW
+A 0005cad2 property DesiredRowsWW
+A 0005caea property DesiredColumnsWWW
+A 0005cb06 property ActualRowsWWW
+A 0005cb1e property ActualColumns
+A 0005cb36 property BorderXPixels
+A 0005cb4e property BorderYPixels
+A 0005cb66 method SetDesiredSizeW
+A 0005cb7e method DeleteBorderWWW
+A 0005cb96 property WrapW
+A 0005cba6 method SetToDesiredSizeWWW
+A 0005cbc2 property ReadingPortWW
+A 0005cbda property ReadingKeyboardWW
+A 0005cbf6 method AddTriggerStringWWW
+A 0005cc12 method AddVirtualKeyMacroW
+A 0005cc2e method AddKeyMacro
+A 0005cc42 method RemoveTriggerString
+A 0005cc5e method RemoveVirtualKeyMacroWW
+A 0005cc7e method RemoveKeyMacroW
+A 0005cc96 method AddVirtualKeyCommandWWW
+A 0005ccb6 method RemoveVirtualKeyCommand
+A 0005ccd6 method AddKeyCommandWW
+A 0005ccee method RemoveKeyCommandWWW
+A 0005cd0a method AddTriggerBStringWW
+A 0005cd26 method AddVirtualKeyBMacro
+A 0005cd42 method AddKeyBMacroWWW
+A 0005cd5a method DisplayStringWW
+A 0005cd72 method DisplayByteBufferWW
+A 0005cd8e property TermPortW
+A 0005cda2 TermProp Class
+A 0005cdb2 TermProp2 ClassWWW
+A 0005cdc6 FileXferProp Class
+A 0005cdda FileXferProp2 ClassWWW
+A 0005cdf2 FileXferProp3 ClassWWW
+A 00060609 080r0|0
+A 00060619 041}1
+A 0006061f 1f2s2d3
+A 00060627 4+424<4`4
+A 00060635 4"5=5L5i5v5
+A 00060647 6L6&7x7
+A 0006065d :#;k;
+A 00060663 ;'<S<n<
+A 00060673 ?$?B?I?R?W?f?t?
+A 0006069d 0}1"272L2d2|2
+A 000606b9 3N3T3f3o3
+A 000606d3 4%5/565<5
+A 000606e5 5s6}6
+A 000606ff ;8<f<p<w<}<
+A 0006070b ="=,=4=;=
+A 00060729 0>0H0O0\0l0y0
+A 0006073b 1&1,1
+A 00060753 3F4e4
+A 00060761 565@5M5
+A 0006078f 8&9S9}=
+A 000607c7 3_4i4p4
+A 000607d3 4$5.555;5
+A 000607e5 5*;2;];g;n;~;
+A 000607ff >$>+>1>
+A 0006080f >]?g?n?~?
+A 00060823 0N1|1
+A 0006082b 2"2)2/2
+A 0006083b 2[3e3l3|3
+A 0006085b 727<7I7b7{7
+A 00060879 8&8-848;8B8I8S8]8g8q8{8
+A 0006089d 9-9M9w9
+A 000608d5 =v=|=
+A 000608e3 ? ?+?3?>?I?T?
+A 00060901 1"1,171L1X1
+A 00060929 3-4?4a4
+A 00060935 5&5/565=5G5^5d5
+A 00060949 5H6i6
+A 00060953 7)7N7W7]7
+A 00060967 808B8I8P8W8^8e8l8s8z8
+A 00060993 8T9i9~9
+A 000609b9 ;*;3;@;
+A 000609c1 <$<*<1<8<?<F<M<T<[<b<i<s<}<
+A 000609ed <#=>=^=
+A 000609fd =6>F>
+A 00060a05 >,?{?
+A 00060a29 1'1?1E1r1x1$2^2
+A 00060a3b 2z3b4
+A 00060a43 4	5)535=5H5]5i5
+A 00060a6f 7%7@7I7P7W7a7x7D8V8]8d8k8r8y8
+A 00060aa9 9h9}9
+A 00060ac5 :0;=;W;m;
+A 00060aed =$=:=N=U=a=g=m=
+A 00060b03 =?>Y>_>f>m>t>{>
+A 00060b2f >(?X?s?
+A 00060b49 0C0a0
+A 00060b51 0)1e1
+A 00060b5b 2;3?3C3G3K3O3S3W3n3t3
+A 00060b7b 5L5\5
+A 00060b8d 727>7
+A 00060ba3 8!8;8J8Y8!9+9
+A 00060bb1 9E:W:
+A 00060bf3 ?'?7?
+A 00060c1b 0C1P1j1
+A 00060c43 373M3a3h3t3z3
+A 00060c59 3R4d4k4t4
+A 00060c69 5'5;5B5N5T5Z5q5
+A 00060c7d 5,6>6E6N6[6
+A 00060c95 7!7'7>7P7Y7f7
+A 00060cc1 9&939
+A 00060ceb ;!;+;5;?;I;a;n;u;|;
+A 00060d1b <O<\<c<j<q<x<
+A 00060d43 =3=T=
+A 00060d93 6(7i7s7y758S9
+A 00060da9 :F;S;
+A 00060db3 =B=g=p=v=">+>6>
+A 00060ddb 9&9?9
+A 00060e19 5#6K6~6
+A 00060e2d :E;{;
+A 00060e3f =#=;=M=i=
+A 00060e4f >*>=>
+A 00060e73 181a1
+A 00060e83 3	4'4T4c4
+A 00060e91 516X6
+A 00060e9f 898B8M8Y8
+A 00060ead 939\9
+A 00060eb9 :):4:P:Y:
+A 00060ed1 :U;\;c;
+A 00060ee9 = ='=.=5=<=C=W=[=_=c=g=k=o=s=
+A 00060f1b =1>5>9>=>A>E>I>M>u>
+A 00060f2f >f?}?
+A 00060f43 1#1Q1V1[1
+A 00060f4d 113_3d3i3
+A 00060f5f 5>6j6
+A 00060f6f 6"7g7
+A 00060f7f 898B8S8b8
+A 00060f93 8%9>9
+A 00060f9b 9*:t:
+A 00060fad </<><h<
+A 00060fcb =	>h>
+A 00060fd7 ?X?~?
+A 00060fed 0#0(0-0R0h0
+A 00061001 171<1A1U1
+A 00061015 2!2=2
+A 00061029 4%404<4k4
+A 0006103b 5%6N7W7b7n7
+A 00061065 8-9B9
+A 00061075 :$:B:N:m:x:
+A 0006108b ;V;[;`;
+A 00061095 <5<:<?<
+A 0006109f =K=n=s=x=	>F>|>
+A 000610cf 3:4Q4d4
+A 000610fb 7 737
+A 00061125 9"959
+A 00061135 :O:V:]:
+A 0006115b 1k2v2
+A 00061177 596~6
+A 00061189 989O9]9f9q9
+A 0006119b 94:K:d:
+A 000611af ;	;E;V;
+A 000611c3 <"<)<=<Y<l<s<
+A 000611d9 <"=/=8=G=o=
+A 000611ff >$>@>\>
+A 00061213 ?T?e?
+A 00061228 !0(0<0X0w0
+A 00061249 202:2?2M2
+A 00061261 3.373@3M3T3h3
+A 00061279 474A4L4l4
+A 00061289 4!565U5
+A 00061297 6=6R6h6
+A 000612a3 6&707Y7~7
+A 000612b1 848y8
+A 000612bf 9(9<9B9
+A 000612cd :+:J:V:[:
+A 000612e9 <G<Y<f<{<
+A 0006130f >[?v?
+A 00061325 0+0G0
+A 00061337 1#141H1Q1
+A 0006134b 2\2h2q2|2
+A 00061361 4V6m6
+A 00061371 797X7{7
+A 00061385 8+8J8m8w8
+A 0006139b 9<9_9i9v9
+A 000613af :+:N:X:e:
+A 000613c3 <E<Z<q<{<
+A 000613e3 =A>Z>l>
+A 00061419 1*161c1
+A 00061423 2D2M2
+A 00061431 243S3v3
+A 00061441 4$414
+A 00061451 525U5|5
+A 00061461 5&6?6Q6u6~6
+A 00061477 707C7
+A 00061483 8B8b8r8
+A 00061497 969=9Z9d9j9w9
+A 000614ab 9_:n:t:
+A 000614b3 :u;6<?<J<d<
+A 000614d9 ?&?9?G?S?`?
+A 0006150f 5(6E6c6
+A 00061519 6Y7v7b8t8
+A 00061533 9U:|:
+A 00061551 =-=7=V=y=
+A 00061583 060I031C1L1U1o1x1
+A 000615a1 162<2
+A 000615ab 3(3/3?3R3
+A 000615bb 4X4_4j4
+A 000615c9 6$646I6V6m6
+A 000615dd 6	777
+A 000615e7 8H8X8n8w8
+A 000615f1 8<9w:
+A 000615fd :$;L;
+A 0006160f <C=c=>>M>w>}>
+A 00061623 ?E?R?
+A 00061643 2,2C2
+A 0006164b 2P4[4f4q4
+A 0006168f <0=k=
+A 000616b1 0/0H0R0e0
+A 000616c5 3#3=3J3X3t3
+A 000616db 4	5=5L5u5
+A 000616f3 7'7j7p7
+A 000616ff 858M8l8
+A 00061711 8 9&9f9
+A 00061743 <?<H<N<g<q<
+A 00061767 >'>=>C>V>[>
+A 00061791 2/242:2s2
+A 0006179d 3$3y3
+A 000617a9 3+4H4N4`4#5^5g5
+A 000617ed >$>,>1>6>
+A 0006181f 5J6W6
+A 00061831 8t9{9
+A 00061857 :#:5:>:C:J:Q:X:_:f:m:t:z:
+A 00061881 :&;/;4;;;B;I;P;W;^;e;y;};
+A 000618bd ;S<W<[<_<c<g<k<o<
+A 000618d9 <j=q=
+A 000618e9 >!>'>:>
+A 000618fb ?+?2?;?B?K?`?
+A 00061915 0#0\0c0
+A 00061929 0j1q1
+A 00061945 9;9d9
+A 00061980 /080C0O0~0
+A 00061993 2@2w2
+A 0006199f 2_3j3q3
+A 000619b1 4#4J4X4f4p4y4
+A 000619cb 5T5c5
+A 000619d1 5h6q6|6
+A 000619e9 8@8X8d8
+A 00061a03 9C:`:
+A 00061a09 :/;L;S;d;w;
+A 00061a23 <"<V<`<z<
+A 00061a35 <0=?=O=U=h=n=
+A 00061a53 > ?r?
+A 00061a77 282L2y2
+A 00061a91 3.3?3N3r3
+A 00061aa3 4'4G4h4
+A 00061aab 4"5+5>5R5m5
+A 00061abf 5!6V6a6s6
+A 00061ad7 797W7^7
+A 00061ae5 8>9V:c:s:
+A 00061aef ;I;v;
+A 00061af9 ;#<I<W<
+A 00061b09 =(=G=Q=h=
+A 00061b17 =T>j>
+A 00061b4d 111E1Q1e1o1
+A 00061b5f 1'2.2E2o2
+A 00061b71 2E3L3[3d3o3{3:4~4
+A 00061ba1 7N7{7
+A 00061bb1 9F9Z9
+A 00061bbb 95:b:
+A 00061bc7 :$;8;U;_;
+A 00061bdb >!>0>M>Z>i>
+A 00061bed ?7?W?
+A 00061c0b 0R1u1
+A 00061c15 1#2Z2u2
+A 00061c41 707}7
+A 00061c4b 7]8e8
+A 00061c53 8Q9X9
+A 00061c5d :C;c;j;
+A 00061c67 <P=e=
+A 00061c79 0/0N0w0
+A 00061c87 051<1l1
+A 00061c93 2A2\2k2
+A 00061c9f 3"3C3o3~3
+A 00061cad 4"4?4
+A 00061cbd 747S7
+A 00061cc7 :):C:
+A 00061cf1 2<3X3
+A 00061cfb 3!434G4
+A 00061d1d :/:a:
+A 00061d2d ;9;Z;s;
+A 00061d3f <&=T=
+A 00061d49 >#>i>
+A 00061d51 ?3?^?
+A 00061d64 	0*0C0P0
+A 00061d79 212?2I2T2^2i2s2~2
+A 00061d9f 3!31354
+A 00061dab 5<7}7
+A 00061db3 8	8x:
+A 00061dcb ; ;$;(;,;0;4;8;
+A 00061de7 < <'<,<0<4<Q<{<
+A 00061e09 = =$=(=,=
+A 00061e21 >;>U>\>`>d>h>l>p>t>x>
+A 00061e3f >:?E?`?g?l?p?t?
+A 00061e6d 0Z0`0d0h0l0
+A 00061e83 1#1/1:1B1~1
+A 00061eb1 6!6Y6n6
+A 00061ec5 9R9b9
+A 00061ecb 9,:D:
+A 00061ed3 :Q;i;
+A 00061eed = =\=f=o=u={=
+A 00061efd ><>~>
+A 00061f0d 1;2E2
+A 00061f1f 3 3&3*30343:3>3C3Q3
+A 00061f37 4Z4t4
+A 00061f3f 4"5c5z5
+A 00061f4f 6/6u6
+A 00061f5d 6%787`7
+A 00061f69 7"8)8S8m8
+A 00061f7b 95:G:
+A 00061f99 1'1,191?1X1]1h1m1
+A 00061fb3 1#2H2
+A 00061fcd 469;9
+A 00061fd9 <&>+>(?0?I?Q?d?
+A 00062005 0+0A0Q0j0
+A 0006201d 1o2w2
+A 00062025 2Q3X3a3j3r3
+A 00062047 474E4L4h4o4
+A 00062063 5%5@5r5
+A 00062087 7`7t7
+A 0006209b 718O8
+A 000620a9 9a:l:q:~:
+A 000620c1 ;!;-;2;?;D;`;j;
+A 000620d5 ="=3=:=T=Y=r=y=
+A 000620fb >">+>1>:>
+A 0006210f ?#?)?B?I?Q?f?
+A 0006212d 050F0
+A 00062155 5<6\6
+A 0006215f 6,7V7z7
+A 00062181 <O</=M=d=
+A 000621b3 1 1$1(1\1`1d1h1l1p1t1x1|1
+A 000621dd 3W3h3p3
+A 000621ed 4T4b4
+A 000621f5 5_5l5
+A 00062203 6>7x7
+A 00062209 7)828;8~8
+A 00062217 8 9Q9a9s9
+A 00062235 :,:3:::F:U:]:c:i:p:{:
+A 00062253 ;I;[;
+A 00062263 <%<-<;<M<
+A 0006227f =)=0===F=V=]=m=x=
+A 000622a9 >(>v>{>
+A 000622b3 >=?P?
+A 000622cd 0+0>0\0u0
+A 000622df 0u1|1!2
+A 000622f3 3%3G3
+A 00062309 8)929K9V9
+A 0006231d :;:y:
+A 0006232d ;@;J;
+A 0006233f >!><>L>Z>k>{>
+A 00062359 >??Z?
+A 00062369 0@0|0
+A 0006237b 3_5{5
+A 000623c7 <A<a<!=?=
+A 000623d5 >!>?>
+A 000623dd >(?2?
+A 00062405 1O2U2
+A 0006241b 5#5(5Q5Z5q5z5
+A 00062437 5	6-636U6_6j6p6u6{6
+A 0006245f 7	7(7,7074787Y7d7i7n7s7x7}7
+A 00062481 8-8C8`8w8
+A 0006249b 9'999B9M9U9
+A 000624af :3:I:W:
+A 000624bf ;+;>;G;R;e;
+A 000624d1 ;;<I<n<
+A 000624df <-=E=a=g=l=
+A 000624f5 >">i>z>
+A 000624ff >&???
+A 00062517 1'12181
+A 0006252d 2=3C3O3a3k3q3u3
+A 00062543 3a:p:|:
+A 0006255f ;%;7;L;Q;Y;^;g;m;z;
+A 00062587 <#<8<G<Q<a<
+A 000625a9 ="=&=1=C=[=
+A 000625b5 >Q?l?u?{?
+A 000625cf 0,121:1J1P1g1
+A 000625f1 4"444o4
+A 000625ff 5r5{5
+A 0006260f 6:6P6
+A 00062623 7+7I7T7s7
+A 0006264b ;	< <P<h<
+A 0006265d =%=?=
+A 00062679 0	0F0a0
+A 00062699 8$9*9/959>9
+A 000626ab :*:4:;:e:x:q;
+A 000626cf ;#<*<0<9<I<R<b<k<{<
+A 000626e3 <9=?=]=c=
+A 000626fd >K?j?
+A 00062713 1)1)2
+A 0006271f 2+363c3r3j6
+A 00062731 737a7
+A 0006273d 7&8L8
+A 0006274f :8:@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00062785 = =$= >->7>^>k>
+A 000627a9 1q1z1
+A 000627b5 2,2J2v2
+A 000627c5 333_3
+A 000627d9 4!4(4<4
+A 000627eb 7!737D7u7
+A 00062801 819B9U9
+A 0006280b <1=y="?I?e?q?
+A 0006282d 0$0;0O0c0
+A 00062843 1;1O1k1
+A 00062857 2!252I2e2
+A 0006286f 4!454I4]4t4
+A 00062887 515G5Y5
+A 00062893 6(6=6T6l6
+A 000628a7 6	7%7;7
+A 000628b1 818E8\8t8
+A 000628c7 9(9@9U9l9
+A 000628dd :(:G:\:{:
+A 000628f1 ;+;=;S;e;y;
+A 00062913 =#>5>I>]>q>
+A 0006292d ?5?I?]?q?
+A 0006294f 0!151Y1m1
+A 00062961 152a2
+A 00062973 3=3Q3e3y3
+A 00062991 5=5Q5q5
+A 000629a8 p4t4x4|4
+A 000629db 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6x6|6
+A 00062a55 7 7$7(7,70787<7@7D7H7L7P7T7X7\7`7d7h7l7p7x7|7
+A 00062acb 8 8$8(8,8084888<8@8D8H8L8P8T8X8`8d8h8l8p8x8|8
+A 00062b45 9 9$9(9,9094989<9@9D9H9L9P9X9\9`9d9h9l9p9t9x9|9
+A 00062bc1 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:h:l:p:t:x:
+A 00062c3d ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00062cbb < <$<(<,<0<4<8<<<@<H<L<P<T<X<`<d<h<l<p<x<|<
+A 00062d2b = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 00062dab > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00062e09 ?$?0?<?H?T?`?l?x?
+A 00062e43 0 0(0,000<0D0`0d0h0l0p0t0x0|0
+A 00062ea9 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00062f25 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00062f9f 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0006301f 4 4$4(4,4044484<4@4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0006309b 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 0006311b 6 6$6(6,6064686<6@6D6H6T6\6h6t6
+A 00063155 7(747@7L7h7l7p7|7
+A 00063197 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00063213 9 9$9(9,9094989<9@9D9H9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0006328f : :$:(:,:0:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00063309 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00063385 < <$<(<0<4<8<<<@<H<L<P<T<X<`<d<h<l<p<x<|<
+A 000633ef = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 0006346f > >$>(>,>0>4>8><>@>D>H>L>P>T>X>d>l>x>
+A 000634ad ? ?,?8?D?P?\?x?|?
+A 000634f5 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0l0t0
+A 00063555 1 1$1(1,1014181<1@1D1L1T1p1t1x1|1
+A 000635c1 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0006363d 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 000636b7 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00063737 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 000637b1 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 0006382d 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 000638a9 8 8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00063927 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 000639a3 : :$:(:,:0:4:8:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:
+A 00063a1f ; ;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00063a99 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00063b07 = =$=(=,=0=4=8=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 00063b94 014181<1P1T1X1\1`1d1h1l1
+A 00063bbd 2,202@2H2L2T2X2d2h2x2
+A 00063be1 ? ?$?(?<?L?P?X?\?t?
+A 00063c19 0(0<0L0P0`0|0
+A 00063c35 1,181T1`1|1
+A 00063c4f 2$202L2T2`2|2
+A 00063c6b 3$303L3T3`3|3
+A 00063c8b 4 4<4D4P4l4x4
+A 00063ca9 5(5D5L5X5t5
+A 00063cc5 6(6D6P6l6t6
+A 00063ce7 7(7D7L7T7\7h7
+A 00063d0f 8$808L8X8t8
+A 00063d29 9 9<9H9d9p9
+A 00063d43 :,:4:@:\:d:p:
+A 00063d69 ;$;0;L;X;t;
+A 00063d83 < <<<H<d<p<
+A 00063d9d =,=4=@=\=d=p=
+A 00063dc3 >$>,>4><>H>d>p>
+A 00063de1 ?,?8?T?`?|?
+A 00063e03 0(0D0P0l0x0
+A 00063e1d 141@1\1h1
+A 00063e39 242@2\2d2p2
+A 00063e55 3 3<3H3d3l3x3
+A 00063e71 444<4H4d4p4
+A 00063e8f 5$5,545<5H5d5l5t5|5
+A 00063eb3 6,646<6D6L6T6\6d6l6t6
+A 00063ee1 7,787T7`7|7
+A 00063efb 8(8D8P8l8x8
+A 00063f17 9(9D9P9l9x9
+A 00063f33 :$:0:L:T:\:d:l:t:|:
+A 00063f61 ;(;D;L;T;\;d;l;t;|;
+A 00063f87 <4<@<\<d<l<x<
+A 00063fa3 =4=<=H=d=l=t=|=
+A 00063fcb > ><>D>L>T>`>|>
+A 00063feb ?,?8?T?\?h?
+A 0006400f 0,080T0`0|0
+A 0006402f 1$1,141<1D1P1l1t1|1
+A 00064053 2,242@2\2d2l2x2
+A 00064079 3 3<3D3P3l3t3x3
+A 000640a1 4$404L4
+A 000640bd 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0h0l0p0|0
+A 000640ef 1(1,1014181D1H1L1P1T1`1d1h1l1p1|1
+A 00064149 2$2(2,20242@2
+A 0006415b 3 3$3H6P6T6X6`6d6h6p6t6x6
+A 000641af 7 7$7(7074787@7D7H7P7T7X7`7d7h7p7t7x7
+A 00064203 8(;0;4;8;@;D;H;P;T;X;`;d;h;p;t;x;
+A 0006425f < <$<(<0<4<8<@<D<T<X<
+A 0006427d <p>x>|>
+A 000642bf ? ?(?,?0?8?<?@?H?L?P?X?\?h?l?|?
+A 000642f1 8 9$9(9,9094989<9@9D9H9L9P9T9X9\9
+A 00064323 :8:x:|:
+A 00064377 =0?4?
+A 00064384 0141X1\1`1d1h1l1
+A 00064397 1$5,545<5D5L5T5\5d5l5t5|5
+A 000643bb 5@6H6P6X6`6h6p6x6
+A 000643f3 7 7(70787@7H7P7X7`7h7p7x7
+A 00064433 8 8(80888@8H8P8X8`8h8p8x8
+A 0006446b 8$9,9P9X9|9
+A 00064483 :,:4:X:`:
+A 0006449b ;4;<;`;h;
+A 000644b3 <<<D<h<p<
+A 000644c9 = =D=L=p=x=
+A 000644d7 =`>d>h>l>p>t>x>|>
+A 00064533 ? ?$?(?,?0?4?8?<?H?
+U 0002da0d $jjjj
+U 0002da4d $jjjj
+U 0002e776 jjjj
+U 00034d44 (null)
+U 00039934 EventMode
+U 00039948 LocalEcho
+U 0003995c IssueTxBufferEmptyEvent
+U 0003998c RxTriggerChar
+U 000399a8 IssueRxTriggerEvent
+U 000399d0 IssueRxDataEvent
+U 000399f4 IssueCdChangeEvent
+U 00039a1c IssueRingEvent
+U 00039a3c IssueLineStatusErrorEvent
+U 00039a70 IssueDsrChangeEvent
+U 00039a98 IssueCtsChangeEvent
+U 00039ac0 IssueBreakDetectEvent
+U 00039aec ShowUnattachedPorts
+U 00039b14 ShowMousePorts
+U 00039b34 ShowModemPorts
+U 00039b64 Rts/Cts Handshaking
+U 00039b8c Dtr/Dsr Handshaking
+U 00039bb4 Xon/Xoff Handshaking
+U 00039be0 Stop Bits
+U 00039bf4 Data Bits
+U 00039c08 Parity
+U 00039c18 BaudRate
+U 00039c2c Port Number
+U 00039de8 Contents
+U 00039eac WaitForOK
+U 00039ec0 CreateProgressWindow
+U 00039eec DownloadDirectory
+U 00039f10 StripPathOnSend
+U 00039f30 FileNameDelimiters
+U 00039f58 MaxErrors
+U 00039f6c ZmodemWindowSize
+U 00039f90 ZmodemOverwriteMode
+U 00039fb8 ZmodemCrashRecovery
+U 00039fe0 AsciiTransmitLineDelay
+U 0003a010 AsciiReceiveTimeout
+U 0003a038 AsciiStripIncomingLF
+U 0003a064 IncludeSubdirectories
+U 0003a090 MonitorCarrier
+U 0003a0b0 StripPathOnReceive
+U 0003a0d8 Protocol
+U 0003a0ec ReceiveFileName
+U 0003a10c SendFileNames
+U 0003a304 Reading Keyboard
+U 0003a328 Reading Port
+U 0003a344 Wrap
+U 0003a350 Desired Columns
+U 0003a370 Desired Rows
+U 0003a38c Reverse Video
+U 0003a3a8 Invisible
+U 0003a3bc Font
+U 0003a3c8 Emulation
+U 0003a3dc Blink
+U 0003a3e8 Bold
+U 0003a3f4 Border Color
+U 0003a410 Background Color
+U 0003a434 Foreground Color
+U 0003a458 Test Mode
+U 0003ae64 REGISTRY
+U 0003ae78 Module
+U 0003e322          (((((                  H
+U 000405ca REGISTRY
+U 000405dc TYPELIB
+U 000405f6 VS_VERSION_INFO
+U 00040652 StringFileInfo
+U 00040676 040904b0
+U 0004068e CompanyName
+U 000406a8 Greenleaf Software, Inc.
+U 000406e2 FileDescription
+U 00040704 CommX Module
+U 00040726 FileVersion
+U 00040740 1, 1, 0, 1
+U 0004075e InternalName
+U 00040778 COMMX
+U 0004078a LegalCopyright
+U 000407a8 Copyright 1997-1998
+U 000407d6 OriginalFilename
+U 000407f8 COMMX.OCX
+U 00040812 ProductName
+U 0004082c CommX Module
+U 0004084e ProductVersion
+U 0004086c 1, 1, 0, 1
+U 0004088a VarFileInfo
+U 000408aa Translation
+U 000437a2 MS Sans Serif
+U 0004380e Port:
+U 00043832 Baud Rate:
+U 00043854 6+AUË
+U 0004387e Parity:
+U 00043898 6<AUÌ
+U 000438c2 Data Bits:
+U 000438e4 6MAUÍ
+U 0004390e Stop Bits:
+U 0004393e Handshaking
+U 00043960 ¸(4Q
+U 0004397c ¸94Q
+U 00043998 ¸J4Q
+U 000439c2 Xon/Xoff:
+U 000439ee Rts/Cts:
+U 00043a1a Dtr/Dsr:
+U 00043a56 MS Sans Serif
+U 00043a90 Ports to display
+U 00043ac0 G*?QÖ
+U 00043ae0 G<?Q×
+U 00043b00 GL?QØ
+U 00043b30 Unattached ports:
+U 00043b74 Modem ports:
+U 00043bac Mouse ports:
+U 00043be4 This property page lets you determine which types of ports are shown in the drop down list when choosing a port..  It also allows you to enable or disable the port's local echo option.
+U 00043d74 Local Echo
+U 00043db6 MS Sans Serif
+U 00043df0 This property page lets you control the DTR and RTS lines. If you are using hardware hansdhaking, you might see that the ability to change the control line's state here has been disabled.
+U 00043fda MS Sans Serif
+U 00044038 E&Q>ß
+U 00044062 Foreground color:
+U 0004409e Border color:
+U 000440d2 Background color:
+U 0004410e Bold:
+U 0004414e Font:
+U 00044172 Blink:
+U 0004419a Ansi:
+U 000441be Reverse Video:
+U 000441f6 Invisible:
+U 0004425e Desired Rows:
+U 00044292 Desired Columns:
+U 000442ea Actual Rows:
+U 0004433a Actual Columns:
+U 000443aa Border X Pixels:
+U 000443e6 Border Y Pixels:
+U 00044422 Wrap:
+U 0004444a MS Sans Serif
+U 0004447e Clear Screen
+U 000444b2 Test Pattern
+U 000444e6 No Border
+U 00044512 Right Size
+U 00044542 Test Mode:
+U 00044572 Reading from Keyboard:
+U 000445ba Reading from Port:
+U 00044602 MS Sans Serif
+U 00044652 Strip Path On Receive:
+U 0004469a Protocol:
+U 000446c6 Monitor Carrier:
+U 00044702 Include Subdirectories:
+U 00044766 Max Errors:
+U 000447b2 Send File Name(s):
+U 0004480e Receive File Name:
+U 0004484e Strip Path On Send:
+U 000448aa Download Directory:
+U 000448ea Create Progress Window:
+U 00044932 Filename Delimiters:
+U 00044992 Wait for Progress OK:
+U 000449da MS Sans Serif
+U 00044a1c _(KHð
+U 00044a46 File Overwrite Policy:
+U 00044a8e Zmodem Window size:
+U 00044aea Enable Crash Recovery:
+U 00044b3a MS Sans Serif
+U 00044ba6 Ascii RX Timeout (msec):
+U 00044c0e Ascii TX Line Delay (msec):
+U 00044c5e Ascii Strip Incoming LF:
+U 00044cae Monitor Dialog
+U 00044cce MS Sans Serif
+U 00044d22 Abort
+U 00044d62 File Name:
+U 00044dae File Length:
+U 00044dfe File Byte Count:
+U 00044e3a Error Count:
+U 00044e8a File Count:
+U 00044ef2 Message:
+U 00044f18 ümsctls_progress32
+U 00044f3e Progress1
+U 00044f6a Progress:
+U 0006029a CommX
+U 000602a8 Port
+U 000602b2 Help File Name
+U 000602d0 Port Properties
+U 000602f6 Misc
+U 00060300 Help File Name
+U 0006031e Miscellaneous Properties
+U 00060354 Control Lines
+U 00060370 Help File Name
+U 0006038e Your Help String
+U 000603b6 Setup
+U 000603c2 Help File Name
+U 000603e0 Terminal Control Properties
+U 0006041c Title
+U 0006042a Your Help String
+U 00060454 Debug
+U 00060460 Help File Name
+U 0006047e Your Help String
+U 000604a4 FileXfer
+U 000604b8 Your Help String
+U 000604de Zmodem
+U 000604fa Ascii

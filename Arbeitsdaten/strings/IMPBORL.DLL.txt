@@ -1,0 +1,34 @@
+A 00000050 This program must be run under Win32
+A 0000021f `DATA
+A 00000248 .edata
+A 0000026f @.reloc
+A 000006d9 r,u"h
+A 00000897 _^[YY]
+A 00000aff ;C u.
+A 00000d5b r/uN3
+A 00000e24 j@hX	B
+A 0000156c Y_^[]
+A 00001682 ^[YY]
+A 00001800 PKWARE Data Compression Library for Win32
+A 0000182b Copyright 1989-1995 PKWARE Inc.  All Rights Reserved
+A 00001861 Patent No. 5,051,745
+A 00001877 PKWARE Data Compression Library Reg. U.S. Pat. and Tm. Off.
+A 000018b4 Version 1.11
+A 00001a05 Qkkbal
+A 00001c61 wn>Jj
+A 00002094 PKWARE Data Compression Library for Win32
+A 000020bf Copyright 1989-1995 PKWARE Inc.  All Rights Reserved.
+A 000020f6 Patent No. 5,051,745
+A 0000210c PKWARE Data Compression Library Reg. U.S. Pat. and Tm. Off.
+A 00002149 Version 1.11
+A 00002508 PKWARE Data Compression Library for Win32
+A 00002533 Copyright 1989-1995 PKWARE Inc.  All Rights Reserved
+A 00002569 Patent No. 5,051,745
+A 0000257f PKWARE Data Compression Library Reg. U.S. Pat. and Tm. Off.
+A 000025bc Version 1.11
+A 00002646 impborl.dll
+A 00002652 _crc32
+A 00002659 _explode
+A 00002662 _implode
+A 0000280d 1%1=1S1i1
+A 00002819 5c7s7

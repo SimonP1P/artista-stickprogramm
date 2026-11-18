@@ -1,0 +1,493 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.bss
+A 000001c8 .rdata
+A 000001ef @.data
+A 00000218 .idata
+A 00000240 .edata
+A 00000267 @.rsrc
+A 0000028f @.reloc
+A 00002e35  SVWh
+A 00003359 8SVWh4
+A 00004b62 @0PjB
+A 00004cf4 @0PjB
+A 000059d7 @dPjB
+A 00005add @dPjB
+A 00005b7c @dPjB
+A 00005d77 @dPjB
+A 00005f78 @dPjB
+A 00006c79 WU950
+A 00006d03 WUWSV
+A 000076c3 SVWUj
+A 0000772c t ;t$$t
+A 00007d8d < v4F
+A 000083e4 tGjpj
+A 00008442 uLjpj
+A 000089c4 t$8WV
+A 000089de D$09E
+A 00008a02 t$8WU
+A 00008c06 t$(WV
+A 00009282 ;=t?Q
+A 00009533 T$ ]_^[
+A 00009870 VC20XC00U
+A 00009a65 SVWj	
+A 0000a088 SVWUuJh
+A 0000a16b t$(PW
+A 0000a1a5 t$$PV
+A 0000abe0 "TWAIN DDE 16/32 THUNKER 1995"
+A 0000ac08 FileLock::FileLock - Get Windows Directory Failed
+A 0000ac3c FileLock::FileLock - pathAndFile String Limit
+A 0000ac70 FileLock::FileLock - Invalid inDirFlag
+A 0000ac9c FileLock::FileLock - pathAndFile String Limit
+A 0000accc FileLock::FileLock - Invalid inOpenFlag
+A 0000acf8 FileLock::Close - _close Failed
+A 0000ad1c FileLock::Lock - Already Locked
+A 0000ad40 FileLock::Lock - _locking Failed
+A 0000ad64 FileLock::LockOrRetry - WARNING
+A 0000ad88 FileLock::Open - _sopen Failed
+A 0000adac FileLock::Open - _sopen Failed
+A 0000add0 FileLock::Read - _read Failed
+A 0000adf0 FileLock::Read - Invalid inLockFlag
+A 0000ae18 FileLock::Read - Invalid inUnlockFlag
+A 0000ae40 FileLock::Remove - _remove Failed
+A 0000ae64 FileLock::Seek - _lseek Failed
+A 0000ae88 FileLock::Unlock - _locking Failed
+A 0000aeb0 FileLock::Write - _write Failed
+A 0000aed4 FileLock::Write - Invalid inLockFlag
+A 0000aefc FileLock::Write - Invalid inUnlockFlag
+A 0000af28 FILELOCK.TMP
+A 0000af38 FileLock--FileLockGetShareAllowed - New File Lock Failed
+A 0000af74 FileLock--FileLockGetShareAllowed - File Sharing Disabled
+A 0000afb0 FileLock--FileLockGetShareAllowed - Open Test File Failed
+A 0000afec FileLock--FileLockGetShareAllowed - File Sharing Disabled
+A 0000b028 FileLock--FileLockGetShareAllowed - Lock Test File Failed
+A 0000b064 FileLock--FileLockGetShareAllowed - System Probably Does Not Support File Sharing
+A 0000b0b8 TwDdeSer::TwDdeSer - Invalid Parameter
+A 0000b0e4 Twunk Item Close DS Req
+A 0000b0fc Twunk Item Xfer Ready
+A 0000b114 TwDdeSer::TwDdeSer - New TwDs Failed
+A 0000b13c TwDdeSer::ProcessMessage - DdePostAdvise Failed
+A 0000b170 TwDdeSer::ProcessMessage - DdePostAdvise Failed
+A 0000b1a4 TwDdeSer::CB_AdvReqHandler - CloseDsReq Not Started
+A 0000b1dc TwDdeSer::CB_AdvReqHandler - XferReady Not Started
+A 0000b214 TwDdeSer::CB_AdvReqHandler - Unknown Item
+A 0000b240 TwDdeSer::CB_AdvStartHandler - CloseDsReq Already Started
+A 0000b27c TwDdeSer::CB_AdvStartHandler - XferReady Already Started
+A 0000b2b8 TwDdeSer::CB_AdvStartHandler - Unknown Item
+A 0000b2e8 TwDdeSer::CB_AdvStopHandler - CloseDsReq Not Started
+A 0000b320 TwDdeSer::CB_AdvStartHandler - XferReady Not Started
+A 0000b358 TwDdeSer::CB_AdvStopHandler - Unknown Item
+A 0000b388 DdeCli  ::CB_PokeHandler - HugeAllocAndLock PokeData Failed
+A 0000b3c8 DdeCli  ::CB_PokeHandler - HugeAllocAndLock PokeData Failed
+A 0000b408 DdeCli  ::CB_PokeHandler - Out Of Sequence
+A 0000b444 TwDdeSer::CB_RequestHandler - Invalid Command
+A 0000b474 TwDdeSer--DsmEntry_CloseDsm - Failed
+A 0000b49c TwDdeSer--DsmEntry_OpenDsm - GetProcAddress Failed
+A 0000b4d4 TwDdeSer--DsmEntry_OpenDsm - Failed
+A 0000b4fc TwDdeSer::PcGetFirst - CreateDataHandle Failed
+A 0000b530 TwDdeSer::PcGetNexe - CreateDataHandle Failed
+A 0000b564 DdeSer  ::~DdeSer - Disconnect Failed
+A 0000b58c DdeSer  ::RegisterService - Failed
+A 0000b5b4 DdeSer  ::UnregisterService - Failed
+A 0000b5dc DdeSer  --CPP_DdeSerCallBack - No holdDdeSerPtr
+A 0000b610 DdeSer  --CPP_DdeSerCallBack - Unhandled uType
+A 0000b64c Global  --GetGlobalStatus - New Failed - NULL
+A 0000b67c Global  --GetGlobalStatus - New Failed - ClassError
+A 0000b6b4  - ERROR   - 
+A 0000b6c4  - MESSAGE - 
+A 0000b6d4 Invalid Name Len
+A 0000b714 TWUNK_32.EXE
+A 0000b724 TWAIN.LOG
+A 0000b730 Twunk Startup Complete
+A 0000b748 Twunk Startup Failed
+A 0000b760 Twunk Shutdown Complete
+A 0000b778 Twunk   --WinMain - RegisterWindowMessage Failed
+A 0000b7ac Twunk   --WinMain - Posting Startup Failed To Twain
+A 0000b7e4 Twunk   --WinMain - PostMessage Failed
+A 0000b810 Twunk   --WinMain - Posting Startup Complete To Twain
+A 0000b848 Twunk   ::InitApplication - PostMessage Failed
+A 0000b87c Twunk   --WinMain - Posting Shutdown Complete To Twain
+A 0000b8b8 Twunk   --WinMain - PostMessage Failed
+A 0000b8ec Twunk   --InitApplication - Application In Use
+A 0000b920 Debug Mode
+A 0000b92c Twain
+A 0000b934 Twunk002.MTX
+A 0000b944 Twunk   --InitFileLocks - New twainFileLockPtr Failed
+A 0000b97c Twunk   --InitFileLocks - Not Started By Twain
+A 0000b9b0 Twunk003.MTX
+A 0000b9c0 Twunk   --InitFileLocks - New twunkFileLockPtr Failed
+A 0000b9f8 Twunk   --InitFileLocks - Another Twunker Already Running
+A 0000ba34 Twunk_Icon
+A 0000ba40 Twunk   --InitWindow - wc Setup Failed
+A 0000ba6c Twain Twunk_32
+A 0000ba7c Twunk   --InitWindow - Register Class Failed
+A 0000baac Twain Twunk_32
+A 0000babc Twain Twunk_32
+A 0000bacc Twunk   --InitWindow - Create Window Failed
+A 0000bafc &Restore
+A 0000bb08 Ma&ximize
+A 0000bb14 &Close
+A 0000bb1c TWAIN_32.DLL
+A 0000bb2c Twunk   --InitTwainDll - Load TWAIN_32.DLL Failed
+A 0000bb60 Twunk001.MTX
+A 0000bb70 Twunk   --InitApplication - CallingAppFileLock Failed
+A 0000bba8 Twunk   --InitApplication - CallingAppFileLock Read Failed
+A 0000bbe8 Twunk   --InitApplication - Invalid App Identity Size
+A 0000bc20 Twunk Item Name
+A 0000bc30 Twunk Topic Name
+A 0000bc44 Twunk Service Name
+A 0000bc58 Twunk   --InitApplication - New twDdeSerPtr Failed
+A 0000bc90 Twunk   --DeleteGlobals - FreeLibrary Failed
+A 0000bcc0 Twunk004.MTX
+A 0000bcd0 TwDdeCom::CreateDdeHandle - Win95KludgeFileLock Failed
+A 0000bd0c Twunk Win95 Kludge Message 
+A 0000bd2c %s%ld
+A 0000bd34 TwDs    ::Execute - DdeCreateDataHandle Failed
+A 0000bd68 DdeCom  ::CreateStringHandle - Failed
+A 0000bd90 DdeCom  ::FreeStringHandle - Failed
+A 0000bdb8 DdeCom  ::GetLastError - Failed
+A 0000bddc DdeCom  ::GetLastError - ADVACKTIMEOUT
+A 0000be08 DdeCom  ::GetLastError - BUSY
+A 0000be28 DdeCom  ::GetLastError - DATAACKTIMEOUT
+A 0000be54 DdeCom  ::GetLastError - DLL_NOT_INITIALIZED
+A 0000be84 DdeCom  ::GetLastError - DLL_USAGE
+A 0000beac DdeCom  ::GetLastError - EXECACKTIMEOUT
+A 0000bed8 DdeCom  ::GetLastError - INVALIDPARAMETER
+A 0000bf04 DdeCom  ::GetLastError - LOW_MEMORY
+A 0000bf2c DdeCom  ::GetLastError - MEMORY_ERROR
+A 0000bf54 DdeCom  ::GetLastError - NOTPROCESSED
+A 0000bf7c DdeCom  ::GetLastError - NO_CONV_ESTABLISHED
+A 0000bfac DdeCom  ::GetLastError - POKEACKTIMEOUT
+A 0000bfd8 DdeCom  ::GetLastError - POSTMSG_FAILED
+A 0000c004 DdeCom  ::GetLastError - REENTRANCY
+A 0000c02c DdeCom  ::GetLastError - SERVER_DIED
+A 0000c054 DdeCom  ::GetLastError - SYS_ERROR
+A 0000c07c DdeCom  ::GetLastError - UNADVACKTIMEOUT
+A 0000c0a8 DdeCom  ::GetLastError - UNFOUND_QUEUE_ID
+A 0000c0d4 DdeCom  ::GetLastError - UNKWOWN ERROR CODE
+A 0000c104 DdeCom  ::CreateDataHandle - Invalid AppBit
+A 0000c134 DdeCom  ::Initialize - Incomplete Parameter List
+A 0000c168 DdeCom  ::Initialilze - Failed
+A 0000c18c DdeCom  ::Uninitialize - Failed
+A 0000c1b4 DdeCli  ::AsyncClientTransaction - Transaction Already Pending
+A 0000c1f8 DdeCli  ::AsyncClientTransaction - inLpbData == NULL && Invalid uType
+A 0000c240 DdeCli  ::AsyncClientTransaction - inLpbData != NULL && Invalid uType
+A 0000c288 DdeCli  ::AsyncClientTransaction - Failed
+A 0000c2b4 DdeCli  ::Connect - Client Already Connected
+A 0000c2e4 DdeCli  ::Connect - Connect Failed
+A 0000c30c DdeCli  ::Disconnect - Disconnect Failed
+A 0000c338 DdeCli  ::GetLastDdeError - QueryConvInfo:
+A 0000c368 cb               : %ld
+A 0000c384 hUser            : %ld
+A 0000c3a0 hConvPartner     : %ld
+A 0000c3bc hszSvcPartner    : %ld
+A 0000c3d8 hszServiceReq    : %ld
+A 0000c3f4 hszTopic         : %ld
+A 0000c410 hszItem          : %ld
+A 0000c42c wFmt             : %ld
+A 0000c448 wType            : %ld
+A 0000c464 wStatus          : %ld
+A 0000c480 wConvst          : %ld
+A 0000c49c wLastError       : %ld
+A 0000c4b8 DdeCli  ::CB_XactCompleteHandler - UnlockAndFree Failed
+A 0000c4f4 TwDs    ::CB_XactCompleteHandler - HugeAllocAndLock Failed
+A 0000c534 Twunk Win95 Kludge Message 
+A 0000c554 Twunk004.MTX
+A 0000c564 DdeCli  ::CB_XactCompleteHandler - Win95KludgeFileLock Failed
+A 0000c5a4 DdeCli  ::CB_XactCompleteHandler - atol Failed
+A 0000c5d8 DdeCli  ::CB_XactCompleteHandler - UnlockAndFree Failed
+A 0000c614 TwDs    ::CB_XactCompleteHandler - HugeAllocAndLock Failed
+A 0000c654 DdeCli  ::CB_XactCompleteHandler - Win95KludgeFileLock Read Failed
+A 0000c69c DdeCli  ::CB_XactCompleteHandler - Invalid Transaction Size
+A 0000c6dc DdeCli  ::CB_XactCompleteHandler - UnlockAndFree Failed
+A 0000c718 DdeCli  --CPP_DdeCliCallBack - No holdDdeCliPtr
+A 0000c74c DdeCli  --CPP_DdeCliCallBack - Unhandled uType
+A 0000c780 TwDs    ::TwDs - Invalid Parameter
+A 0000c7a8 TwDs    ::Execute - HugeAllocAndLock Container Failed
+A 0000c7e0 TwDs    ::Execute - GlobalAlloc MemXfer Failed
+A 0000c814 TwDs    ::Execute - HugeGlobalLock MemXfer Failed
+A 0000c848 TwDs    ::Execute - Invalid MemXfer Flags Specification
+A 0000c884 TwDs    ::Execute - CreateDataHandle Failed
+A 0000c8b4 TwDs    ::GetCapability - GlobalSize Container Failed
+A 0000c8ec TwDs    ::GetCapabilty - HugeGlobalLock Container Failed
+A 0000c928 TwDs    ::GetCapability - HugeAllocAndLock twunkReturnPtr Failed
+A 0000c96c TwDs    ::GetErrorHandler - HugeAllocAndLock twunkReturnPtr Failed
+A 0000c9b4 TwDs    ::GetMemXfer - HugeAllocAndLock twunkReturnPtr Failed
+A 0000c9f4 TwDs    ::GetMemXfer - HugeGlobalLock MemXfer Failed
+A 0000ca2c TwDs    ::GetMemXfer - Invalid MemXfer Flags Specification
+A 0000ca6c TwDs    ::GetNativeXfer - GlobalSize Failed
+A 0000ca9c TwDs    ::GetNativeXfer - HugeAllocAndLock twunkReturnPtr Failed
+A 0000cae0 TwDs    ::GetNativeXfer - HugeGlobalLock Failed
+A 0000cb14 TwDs    ::GetReturnData - HugeAllocAndLock twunkReturnPtr Failed
+A 0000cb58 Util    ::UtilGlobalAlloc - GlobalAlloc Failed
+A 0000cb8c Util    ::UtilGlobalFree - Invalid Parameter
+A 0000cbbc Util    ::UtilGlobalFree - Cannot Free Locked Handle
+A 0000cbf4 TwDs    ::UtilGlobalFree - GlobalFree Failed
+A 0000cc24 Util    ::UtilGlobalLock - Invalid Parameter
+A 0000cc54 Util    ::UtilGlobalLock - GlobalLock Failed
+A 0000cc84 Util    ::UtilGlobalUnlock - Invalid Parameter
+A 0000ccb8 Util    ::UtilGlobalUnlockAndFree - Cannot Free Locked Handle
+A 0000ccf8 Util    ::UtilHugeGlobalLock - Invalid Parameter
+A 0000cd2c Util    ::UtilHugeGlobalLock - GlobalLock Failed
+A 0000cd60 Util    ::UtilHmemcpy - Invalid Parameter
+A 0000cd8c Util    ::UtilMemcpy - Invalid Parameter
+A 0000cdb8 Util    ::UtilWinExecErrorHandler - Winexec Failed - Low System Memory
+A 0000ce04 Util    ::UtilWinExecErrorHandler - Winexec Failed - File Not Found
+A 0000ce4c Util    ::UtilWinExecErrorHandler - Winexec Failed - Path Not Found
+A 0000ce94 Util    ::UtilWinExecErrorHandler - Winexec Failed - Dynamic Link Or Sharing Violation
+A 0000cef0 Util    ::UtilWinExecErrorHandler - Winexec Failed - Library Data Segments
+A 0000cf40 Util    ::UtilWinExecErrorHandler - Winexec Failed - Insufficient Memory
+A 0000cf8c Util    ::UtilWinExecErrorHandler - Winexec Failed - Incorrect Windows Version
+A 0000cfe0 Util    ::UtilWinExecErrorHandler - Winexec Failed - Executable Invalid
+A 0000d02c Util    ::UtilWinExecErrorHandler - Winexec Failed - Wrong Operating System
+A 0000d07c Util    ::UtilWinExecErrorHandler - Winexec Failed - Designed For DOS 4.0
+A 0000d0c8 Util    ::UtilWinExecErrorHandler - Winexec Failed - Executable File Type Unknown
+A 0000d11c Util    ::UtilWinExecErrorHandler - Winexec Failed - Real Mode Application
+A 0000d16c Util    ::UtilWinExecErrorHandler - Winexec Failed - Compressed Application
+A 0000d1bc Util    ::UtilWinExecErrorHandler - Winexec Failed - Required DLL Invalid
+A 0000d208 Util    ::UtilWinExecErrorHandler - Winexec Failed - Application Requires 32-Bit Extensions
+A 0000d268 Util    ::UtilWinExecErrorHandler - Winexec Failed - Unknown Return Code
+A 0000d2b4 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Low System Memory
+A 0000d308 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - File Not Found
+A 0000d358 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Path Not Found
+A 0000d3a8 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Dynamic Link Or Sharing Violation
+A 0000d40c Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Library Data Segments
+A 0000d464 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Insufficient Memory
+A 0000d4b8 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Incorrect Windows Version
+A 0000d514 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Executable Invalid
+A 0000d568 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Wrong Operating System
+A 0000d5c0 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Designed For DOS 4.0
+A 0000d618 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Executable File Type Unknown
+A 0000d678 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Real Mode Application
+A 0000d6d0 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Load Second Instance Segments
+A 0000d730 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Compressed Application
+A 0000d788 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Required DLL Invalid
+A 0000d7e0 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Application Requires 32-Bit Extensions
+A 0000d848 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Unknown Return Code
+A 0000da14 runtime error
+A 0000ea70 R6002
+A 0000ea77 - floating point not loaded
+A 0000ea98 R6008
+A 0000ea9f - not enough space for arguments
+A 0000eac4 R6009
+A 0000eacb - not enough space for environment
+A 0000eaf2 abnormal program termination
+A 0000eb14 R6016
+A 0000eb1b - not enough space for thread data
+A 0000eb40 R6017
+A 0000eb47 - unexpected multithread lock error
+A 0000eb70 R6018
+A 0000eb77 - unexpected heap error
+A 0000eb94 R6019
+A 0000eb9b - unable to open console device
+A 0000ebc0 R6024
+A 0000ebc7 - not enough space for _onexit/atexit table
+A 0000ebf4 R6025
+A 0000ebfb - pure virtual function call
+A 0000ec1c DOMAIN error
+A 0000ec2c SING error
+A 0000ec3c TLOSS error
+A 0000ec50 runtime error 
+A 0000ece4 _ValidateRead( %p, %d ): Invalid Pointer!
+A 0000ed10 _ValidateWrite( %p, %d ): Invalid Pointer!
+A 0000ed3c _ValidateExecute( %p ): Invalid Function Address!
+A 0000ed88 kernel32.dll
+A 0000ed98 GetStringTypeA
+A 0000edac GetStringTypeW
+A 0000f312 lstrcatA
+A 0000f31e GetWindowsDirectoryA
+A 0000f336 lstrcmpA
+A 0000f342 GetProcAddress
+A 0000f354 GetProfileIntA
+A 0000f366 GetLastError
+A 0000f376 LoadLibraryA
+A 0000f386 FreeLibrary
+A 0000f394 GlobalSize
+A 0000f3a2 GetVersion
+A 0000f3b0 GlobalAlloc
+A 0000f3be GlobalFree
+A 0000f3cc GlobalFlags
+A 0000f3da GlobalLock
+A 0000f3e8 GlobalUnlock
+A 0000f3f6 KERNEL32.dll
+A 0000f406 PeekMessageA
+A 0000f416 DdePostAdvise
+A 0000f426 DdeCmpStringHandles
+A 0000f43c DdeGetData
+A 0000f44a DdeDisconnect
+A 0000f45a DdeNameService
+A 0000f46c PostMessageA
+A 0000f47c DispatchMessageA
+A 0000f490 TranslateMessage
+A 0000f4a4 GetMessageA
+A 0000f4b2 RegisterWindowMessageA
+A 0000f4cc DefWindowProcA
+A 0000f4de PostQuitMessage
+A 0000f4f0 ShowWindow
+A 0000f4fe ChangeMenuA
+A 0000f50c GetSystemMenu
+A 0000f51c CreateWindowExA
+A 0000f52e RegisterClassA
+A 0000f540 LoadCursorA
+A 0000f54e LoadIconA
+A 0000f55a DdeCreateDataHandle
+A 0000f570 wsprintfA
+A 0000f57c DdeCreateStringHandleA
+A 0000f596 DdeFreeStringHandle
+A 0000f5ac DdeGetLastError
+A 0000f5be DdeInitializeA
+A 0000f5d0 DdeUninitialize
+A 0000f5e2 DdeClientTransaction
+A 0000f5fa DdeConnect
+A 0000f608 DdeQueryConvInfo
+A 0000f61a USER32.dll
+A 0000f628 GetStockObject
+A 0000f638 GDI32.dll
+A 0000f644 CloseHandle
+A 0000f652 Sleep
+A 0000f65a LockFile
+A 0000f666 UnlockFile
+A 0000f674 GetFileType
+A 0000f682 CreateFileA
+A 0000f690 ReadFile
+A 0000f69c DeleteFileA
+A 0000f6aa SetFilePointer
+A 0000f6bc WriteFile
+A 0000f6c8 RtlUnwind
+A 0000f6d4 GetModuleHandleA
+A 0000f6e8 GetStartupInfoA
+A 0000f6fa GetEnvironmentStrings
+A 0000f712 GetCommandLineA
+A 0000f724 InitializeCriticalSection
+A 0000f740 EnterCriticalSection
+A 0000f758 LeaveCriticalSection
+A 0000f770 ExitProcess
+A 0000f77e GetStdHandle
+A 0000f78e SetStdHandle
+A 0000f79e SetEndOfFile
+A 0000f7ae GetCurrentThreadId
+A 0000f7c4 TlsSetValue
+A 0000f7d2 TlsAlloc
+A 0000f7de TlsGetValue
+A 0000f7ec UnhandledExceptionFilter
+A 0000f808 GetModuleFileNameA
+A 0000f81e GetACP
+A 0000f828 GetOEMCP
+A 0000f834 GetCPInfo
+A 0000f840 VirtualFree
+A 0000f84e VirtualAlloc
+A 0000f85e SetUnhandledExceptionFilter
+A 0000f87c IsBadReadPtr
+A 0000f88c IsBadWritePtr
+A 0000f89c IsBadCodePtr
+A 0000f8ac MultiByteToWideChar
+A 0000f8c2 MessageBoxA
+A 0000fa46 TWUNK_32.EXE
+A 0000fa53 C_DdeCliCallBack
+A 0000fa64 C_DdeSerCallBack
+A 0000fa75 TwunkWndProc
+A 0000fd79 wwwwwwwwwwwwwwp
+A 0000ff49 wwwwwwwwwwwwwwp
+A 00010429 213B4
+A 00010435 5 6I7
+A 00010449 ;C<Y<`<
+A 0001045d =D=S=a=p=
+A 000104a1 6A7~7
+A 000104a9 8A8N8q8~8
+A 000104c1 <%=W=s=z=
+A 000104cd >1>h>
+A 000104e9 1"2*2G2O2l2t2
+A 00010509 3:3B3W3_3|3
+A 00010533 6?6k6r6
+A 00010547 757Y7}7
+A 0001055b 8J8U8^8
+A 0001056d 999O9V9c9}9
+A 00010589 :::A:N:T:Y:^:d:i:n:t:y:
+A 000105af ; ;1;=;L;k;|;
+A 000105cd <<<g<n<r<v<z<~<
+A 000105ed =!=-=B=
+A 00010601 >:>G>R>[>u>
+A 00010619 ?!?7?^?c?j?z?
+A 0001063b 0*0M0R0Z0_0e0q0
+A 00010665 1=1]1
+A 00010693 4,4H4R4q4}4
+A 000106b5 647[7
+A 000106c5 9$989L9`9t9
+A 000106df :(:<:P:}:
+A 00010719 ?9?@?
+A 0001073d 2S3d3q3
+A 00010753 464C4`4m4
+A 0001076b 525?5
+A 00010787 94:^:
+A 00010797 ;-;5;J;R;g;o;
+A 000107b3 <	<c<
+A 000107d1 4/5I5
+A 000107fc (0A0U0n0}0
+A 0001080d 1.1L1Z1
+A 00010817 1c2|2
+A 0001081f 2 3j3~3
+A 00010835 424F4Z4n4
+A 0001086f 5;5O5c5w5
+A 00010887 6+6?6S6g6{6
+A 000108c7 7$7*70767<7B7H7N7T7Z7
+A 000108dd 738=8f8}8
+A 000108e7 9+959M9
+A 000108fb ;@<(=Q=^=
+A 00010907 =C>W>l>}>
+A 00010917 >^?d?n?
+A 0001093d 0P1i1
+A 0001096f 8P8T8X8\8`8
+A 00010989 9!9*9/9^9c9n9s9
+A 0001099d 9a:j:u:
+A 000109b5 ;+;O;
+A 000109cf <'<<<M<[<t<
+A 000109e5 =/=`=h=r=s>
+A 000109fd ?+?3?<?E?X?_?d?q?v?
+A 00010a23 0 030:0X0_0i0
+A 00010a39 2#2=2G2R2
+A 00010a45 6/848
+A 00010a4b 8p9u9_;d;
+A 00010a69 >N>g>
+A 00010a77 ?d?j?
+A 00010a8d 1?1R1\1i1s1
+A 00010aa1 162I2V2d2
+A 00010ab7 373<3I3W3m3r3y3
+A 00010ad5 4!4J4`4h4K5Y5b5q5
+A 00010aff 7&7,7g7o7u7}7
+A 00010b13 8,858O8d8j8p8
+A 00010b2b 9#9X9^9o9u9{9
+A 00010b47 9\:q:v:
+A 00010b57 ;c;h;l;p;t;
+A 00010b87 =%=@=W=^=r=
+A 00010ba5 ?N?U?f?x?
+A 00010bd5 1u1{1
+A 00010be5 1S2X2x2~2
+A 00010c01 0,080T0X0\0`0d0h0l0p0t0x0|0
+A 00010c55 1 1<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00010cb9 2(2D2P2l2x2
+A 00010cf9 3 3$3(3,3034383<3@3D3H3L3P3T3\3`3l3p3
+A 00010d41 >L>\>l>
+A 00010d57 ;H>L>
+A 00010d64 d0l0t0|0
+U 00000901 jjjj
+U 0000e592          (((((                  H
+U 0000fcea TWUNK_ICON
+U 00010002 VS_VERSION_INFO
+U 0001005e StringFileInfo
+U 00010082 040904b4
+U 0001009a CompanyName
+U 000100b4 Twain Working Group
+U 000100e2 FileDescription
+U 00010104 Twain.dll Client's 32-Bit Thunking Server
+U 0001015e FileVersion
+U 00010178 1,6,0,1
+U 0001018e InternalName
+U 000101a8 Twunk_32
+U 000101c2 OriginalFilename
+U 000101e4 Twunk_32.exe
+U 00010206 ProductName
+U 00010220 Twain Thunker
+U 00010242 ProductVersion
+U 00010260 1,6,0,1
+U 00010276 VarFileInfo
+U 00010296 Translation

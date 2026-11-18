@@ -1,0 +1,481 @@
+                                   BERNINA
+
+
+
+
+                                    ADX
+                   Artista Data eXchange
+
+
+
+
+                                  Version 1
+
+
+
+
+BERNINA Artista Data eXchange User Guide      1
+                                       BERNINA
+
+
+
+
+© Copyright 2002 by Fritz Gegauf AG CH-8266 Steckborn. All rights reserved.
+
+BERNINA ® ADX Artista Data eXchange
+
+Micorsoft ®
+
+Subject to alteration.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                      2
+                                          BERNINA
+
+
+1. INTRODUCTION TO ADX                                           5
+
+1.1.     Using this guide                                        5
+
+
+2. INSTALLING YOUR SOFTWARE                                      5
+
+2.1.     Installing BERNINA ADX                                  5
+
+2.2.      Setup Connections for artista 200                      6
+   2.2.1.      ActiveSync                                        6
+   2.2.2.      USB cable                                         6
+
+2.3.     Setup Connections for artista 165 to 185 and R/W box    6
+
+
+3. DOWNLOADING A DESIGN TO YOUR EMBROIDERY SYSTEM                7
+
+3.1.      To download a design to your machine                   7
+   3.1.1.      Open a design, for example Eagle.ART              7
+   3.1.2.      Click Write to Machine                            8
+   3.1.3.      Click Embroider                                   9
+   3.1.4.      Click Download                                    9
+   3.1.5.      More Functionality                                9
+
+
+4. UPLOADING A DESIGN FROM EMBROIDERY SYSTEM                    10
+
+4.1.      Open a design on an embroidery system                 10
+   4.1.1.     Setup your embroidery system                      10
+   4.1.2.     Click Card/Machine Read..                         10
+   4.1.3.     Select a storage device                           11
+   4.1.4.     Select a folder                                   11
+   4.1.5.     Click Edit                                        11
+   4.1.6.     Other embroidery system                           11
+
+
+5. ADMINISTERING YOUR DESIGNS                                   12
+
+5.1.     Startup Design Manager                                 12
+
+5.2.      Designs and Folders                                   13
+   5.2.1.      Licensed Designs                                 13
+   5.2.2.      Design Types and Formats                         13
+   5.2.3.      Design Selection                                 13
+   5.2.4.      Memory usage for designs                         13
+   5.2.5.      Folder navigation                                14
+   5.2.6.      New folder                                       14
+   5.2.7.      Rename file or folder                            14
+
+
+
+
+BERNINA Artista Data eXchange User Guide                         3
+                                         BERNINA
+  5.2.8.         Delete file or folder             14
+  5.2.9.         Design information                14
+  5.2.10.        Copy file or folder               14
+
+5.3.        Close a Dialog                         15
+
+5.4.        Limitations                            15
+
+
+
+
+BERNINA Artista Data eXchange User Guide           4
+                                         BERNINA
+
+
+1. Introduction to ADX
+Welcome to BERNINA® ADX, a universal interface between the BERNINA® embroidery software and
+BERNINA® embroidery systems. ADX stands for Artista Data eXchange and handles the connection
+between computer and several embroidery devices.
+
+
+1.1. Using this guide
+BERNINA® ADX has flexible exchange capabilities, which make it easy to transfer or administer
+designs on storage devices.
+
+       This guide is divided into chapters that apply to the various features of design exchange and can
+       be invoked by the F1 key or the help button.
+
+
+
+2. Installing your Software
+BERNINA® ADX is installed as an interface function library of the BERNINA® Embroidery Software.
+For more details on software installation and computer requirements refer to the BERNINA®
+Embroidery Software User Manual.
+
+
+2.1. Installing BERNINA® ADX
+The installation of BERNINA® ADX is part of the Setup CD of the BERNINA® Embroidery System.
+See more details on the Setup CD.
+
+For proper use of BERNINA® ADX, the following items have to be installed:
+
+   ♦     BERNINA® Embroidery Software - Service Pack 3.1 or higher
+   ♦     Acrobat Reader 4.0 or higher
+   ♦     Microsoft ® ActiveSync Version 3.1 for Windows 95, Version 3.5 for Windows 98 ... or higher
+   ♦     Microsoft ® Internet Explorer 5.0 or higher
+
+Check the following setup:
+
+   ♦     USB or serial cable is connected between BERNINA® Embroidery System and computer
+   ♦     Both systems are switched on and ready
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                               5
+                                        BERNINA
+
+
+2.2. Setup Connections for artista 200
+The communication between BERNINA® Embroidery Software and BERNINA® Embroidery System
+devices like
+
+   ♦     artista 200 sewing computer with embroidery module
+   ♦     BERNINA® artista Design Card
+   ♦     CD-ROM
+
+will be done by Microsoft ® ActiveSync. A USB cable is used for the physical connection between your
+computer and the BERNINA® Embroidery System.
+
+2.2.1.     Microsoft ®ActiveSync
+This software can be found on the Setup CD and has to be
+installed on your computer in advance. Details can be found on
+the ActiveSync help pages.
+
+
+2.2.2.     USB cable
+The connection between your computer and your Embroidery
+System has to be done with the standard USB cable.
+Plug the cable into the USB ports on the artista 200 and your
+computer.
+Microsoft ® ActiveSync is automatically activated and connects the artista 200 to your computer.
+
+
+   Whenever a connection fails, plug in the cable again and the
+   automatic connecting process starts - check the green
+   symbol in the task bar on your computer.
+
+
+
+
+2.3. Setup Connections for artista 165 to 185 and R/W box
+The communication between BERNINA® Embroidery Software and BERNINA® Embroidery System
+devices like
+
+   ♦     artista 165, 170, 180 or 185 sewing computer with embroidery module
+   ♦     BERNINA® artista Design Card
+
+will be done by a serial interface R232. A serial cable is used for the physical connection between your
+computer and the BERNINA® Embroidery System.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                              6
+                                        BERNINA
+
+
+3. Downloading a design to your embroidery system
+
+
+3.1. To download a design to your machine
+
+
+3.1.1.    Open a design, for example Eagle.ART
+See To open a design in the BERNINA® Embroidery Software manual for details.
+
+
+
+
+Click Design mode if you are not already working in Design mode.
+The opened design is displayed in actual size, in the center of the large hoop.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                          7
+                                        BERNINA
+
+
+3.1.2.     Click Write to Machine
+                  Use "Card/Machine Write" on the file menu or
+                  "Write to Machine" icon to write a design to a BERNINA® artista device.
+
+
+          If no Embroidery System is preselected, you have to select
+         one first. To set an Embroidery System for the next start and
+         keep the dialog suppressed, just activate the checkbox under
+         “Next Start".
+
+
+
+If you do not have the BERNINA® Embroidery System attached to the
+computer correctly, an error dialog opens. Check that the cable is
+connected correctly - refer to page 6.
+
+
+
+The Write to Embroidery System dialog opens. Note that the dialog will look different depending on
+the selected Embroidery System.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                             8
+                                       BERNINA
+
+
+3.1.3.    Click Embroider
+
+         The design is downloaded and opened on your embroidery system. When the transfer is
+         complete a confirmation dialog opens. The BERNINA® Embroidery System takes over the
+         control for the final stitchout or further modifications. Refer to the help on the BERNINA®
+Embroidery System. The Write to Embroidery System dialog closes automatically.
+
+
+
+3.1.4.    Click Download
+
+          Instead of Embroider use the download function to copy the design to the active storage
+          location. The Write to Embroidery System dialog closes automatically. More details about
+          design exchange and folder selection see page 12 (Administering Designs).
+
+
+
+3.1.5.    More Functionality
+More functionality on this dialog is similar or the same as in the Read from Embroidery System and
+Design Manager Dialog described in the following chapters.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                               9
+                                       BERNINA
+
+
+4. Uploading a design from embroidery system
+Use Card/Machine Read to upload a design from your embroidery systems memory and customize
+designs stored on your embroidery system using BERNINA® Embroidery Software.
+
+
+4.1. Open a design on an embroidery system
+
+
+4.1.1.    Setup your embroidery system
+Your embroidery system must be on and connected with your computer.
+
+4.1.2.    Click Card/Machine Read..
+                          Use Card/Machine Read on the file menu to read a design from an embroidery
+                          system storage device. If no embroidery system is preselected, you have to
+select it first. Refer to page 8.
+
+The dialog Read from Embroidery System and Design Manager opens.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                           10
+                                        BERNINA
+
+4.1.3.    Select a storage device
+Choose one of the following devices. The active device is highlighted.
+
+Embroidery System               Personal Design Card             CD-ROM
+
+
+
+
+4.1.4.    Select a folder
+                               Choose appropriate folder.
+
+
+
+All navigation functions will be described in more detail on page 13.
+
+4.1.5.    Click Edit
+      To transfer the selected design to BERNINA® Embroidery Software click this button.
+
+The selected design will be automatically opened to the BERNINA® Embroidery Software Design
+screen as a new design.
+
+To edit the design follow the instructions in the BERNINA® Embroidery Software manual.
+To save or stitch out the modified design refer to page 9.
+
+4.1.6.    Other embroidery system
+
+                              To connect another embroidery system double click on shown device
+                              and follow the instruction. The ADX function must be restarted.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                          11
+                                         BERNINA
+
+
+5. Administering your designs
+Designs can be stored in different storage devices on the embroidery system or your computer.
+Designs can be renamed, deleted or even moved to other folders. The design files are arranged in
+folders and can be handled in a manner similar to file manager.
+Some limitations have been placed to ensure proper use.
+
+
+5.1. Startup Design Manager
+                      Use Card/Machine Read on the file menu to start the design manager.
+
+
+
+
+The dialog shows two design file areas.
+♦ Upper area shows designs in a storage device like the BERNINA® embroidery system, personal
+   design card or CD-ROM.
+♦ Lower area shows designs on your computer.
+
+With this dialog you can copy single design files in both directions. Every time a transferable design is
+selected, the appropriate arrow button gets activated, shown by a color change from gray to blue, and
+the copy operation can be performed by pressing this arrow button.
+
+      This dialog is also used for editing a design on your embroidery system using the edit button.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                               12
+                                         BERNINA
+
+
+5.2. Designs and Folders
+
+
+5.2.1.     Licensed Designs
+           ®
+BERNINA Embroidery Designs have two license Level. This levels are shown by the thumbnails.
+
+         Level 1: Copy protected design
+         This designs can be edited in the artista 200 and the BERNINA® Embroidery Software.
+         Designs can only be saved to the internal memory of the artista 200 (not to computer or
+         Personal Design Card).
+
+         Level 2: Copy and change protected design
+         This designs can not be edited. Designs can only be saved to the internal memory of the
+         artista 200 (not to computer or Personal Design Card).
+
+
+
+5.2.2.     Design Types and Formats
+         BERNINA® offers several type of designs. The thumbnails look different. Alphabet designs are
+         marked with an "α" and two different design file formats can be recognized on the thumbnail
+         by the letters "Exp" or "Art".
+
+
+
+5.2.3.     Design Selection
+            Designs can be found on three different storage devices.
+            A design is selected by a mouse button click.
+
+
+
+Whenever a design is selected, it will be displayed in the Selected Design
+field.
+
+
+
+5.2.4.     Memory usage for designs
+The user has full control over the actual free memory space for designs on the embroidery
+system. The usage bar shows the percentage of memory used. A yellow line indicates the
+memory forecast depending on the selected designs.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                           13
+                                          BERNINA
+
+5.2.5.    Folder navigation
+The navigation is very similar to typical hierarchical structures.
+
+                                         To get into a folder just click on the folder object or a tab.
+
+      You press on this button to move to a parent folder.
+
+      Use this button to get access to all folders in your computer network.
+
+
+
+5.2.6.    New folder
+      A new folder can be defined by pressing this button. The name of the new folder starts with the
+      standard name "folder". It is recommended to change the name to meaningful text.
+
+5.2.7.    Rename file or folder
+      Each object can be renamed by pressing this button. The existing name is highlighted and can
+      be edited. The rename function is also available by using the right mouse button and clicking on
+the object.
+
+5.2.8.    Delete file or folder
+      Selected objects can be deleted by pressing this button. The delete function is also available by
+      using the right mouse button and clicking on the object.
+
+5.2.9.    Design information
+      Information on a design can be displayed by pressing
+      this button. The properties function is also available by
+using the right mouse button on the object. Width, height,
+number of stitches, number of colors and size of a single
+design are displayed.
+
+
+
+
+5.2.10. Copy file or folder
+
+                       Selected objects can be easily copied by pressing the arrow button.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                                  14
+                                       BERNINA
+
+
+5.3. Close a Dialog
+      Dialogs might be closed by pressing this button or the standard Windows™ close button.
+
+
+
+
+5.4. Limitations
+To ensure proper use, some limitations have been applied in administering your designs:
+
+♦   The three main folders "Alphabets, Motifs, My Designs" can not be deleted or renamed.
+
+♦   Alphabets in folder "Alphabets" can not be deleted or renamed.
+
+♦   Only six folders can be created on the artista 200 Embroidery System.
+
+
+
+
+BERNINA Artista Data eXchange User Guide                                                       15
+

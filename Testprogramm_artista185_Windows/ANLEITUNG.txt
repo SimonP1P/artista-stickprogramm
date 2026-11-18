@@ -1,0 +1,52 @@
+﻿# Lesetest für die BERNINA artista 185 – Anleitung (Windows)
+
+## Was das Programm macht
+Es verbindet sich über das serielle PC-Kabel mit der artista 185, genau so wie die Original-Software „artista Designer“ das tut, und **liest nur**:
+1. die Firmware-Kennung der Maschine (erwartet: „SRMV“ und eine Versionsnummer),
+2. den Verwaltungsblock des Stickspeichers,
+3. die Anzahl der gespeicherten Designs.
+
+**Es wird nichts in die Maschine geschrieben, nichts gelöscht und nichts verändert.** Jedes Zeichen, das hin- und hergeht, landet mit Uhrzeit in einer Mitschnitt-Datei. Diese Datei brauche ich für die Auswertung.
+
+## Was du brauchst
+| | |
+|---|---|
+| Windows-PC (Windows 7, 10 oder 11) | PowerShell ist dort schon eingebaut; es muss nichts installiert werden |
+| das **Original-PC-Kabel** der artista | an der PC-Seite ein 9-poliger serieller Stecker (D-Sub) |
+| eine **serielle Schnittstelle** am PC | ältere PCs haben hinten einen 9-poligen „COM“-Anschluss. Fehlt er: **USB-Seriell-Adapter (RS-232)**, am besten mit FTDI- oder Prolific-Chip, ca. 10–20 € |
+| artista 185 mit **angeschlossenem Stickmodul** | |
+
+## Falls du nicht vor Ort bist
+Kopiere den ganzen Ordner `Testprogramm_artista185_Windows` auf den PC zu Hause, z. B. per Cloud-Speicher oder USB-Stick über jemanden vor Ort. Steuern kannst du den PC dann per Fernwartung (z. B. Chrome Remote Desktop, AnyDesk oder TeamViewer). **Vor Ort muss nur jemand**: Kabel einstecken, die Maschine einschalten und am Ende aus- und wieder einschalten.
+
+## Schritt für Schritt
+1. **Selbsttest (ohne Maschine):** Doppelklick auf `SELBSTTEST.bat`. Erscheint am Ende „SRMV gefunden … Version-Code 0x309“ und „SIMULATION“, läuft das Programm auf diesem PC. (Windows fragt eventuell „Möchten Sie diese Datei ausführen?“ → *Ausführen* bzw. *Weitere Informationen → Trotzdem ausführen*.)
+2. **Adapter:** USB-Seriell-Adapter einstecken (falls nötig) und warten, bis Windows den Treiber installiert hat. Im *Geräte-Manager* unter „Anschlüsse (COM & LPT)“ steht dann z. B. „USB Serial Port (COM3)“. Diese Nummer merken.
+3. **Kabel:** PC-Kabel an Adapter bzw. COM-Anschluss und an die artista stecken.
+4. **Maschine:** Stickmodul anstecken, Maschine einschalten, warten, bis der Startbildschirm fertig ist. Den Stickmodus wählen (so, wie man es zum Sticken tun würde). **Nicht** sticken lassen.
+5. **Test starten:** Doppelklick auf `START.bat`. Das Programm probiert alle COM-Ports selbst durch. Mit fester Nummer geht es so: Eingabeaufforderung im Ordner öffnen und `START.bat -Port COM3` eingeben.
+6. Warten, bis „FERTIG“ erscheint. Das dauert meist nur Sekunden; antwortet an einem Port nichts, probiert das Programm dort etwa eine halbe Minute lang alle Geschwindigkeiten durch.
+7. **Maschine aus- und wieder einschalten.** Das Programm verlässt den Übertragungsmodus absichtlich nicht selbst, weil das ein Schreibbefehl wäre.
+8. **Mir schicken:** die Dateien `Ergebnis_….txt` und `Mitschnitt_….log` aus dem Ordner.
+
+## Was die Ausgabe bedeutet
+| Meldung | Bedeutung |
+|---|---|
+| `VERBUNDEN (Transfermodus aktiv, 19200 Baud)` | die Maschine hat geantwortet und den PC-Modus angenommen |
+| `>>> Firmware-Kennung SRMV gefunden – ANALYSE BESTÄTIGT` | **das Protokoll aus der Analyse stimmt** |
+| `>>> Verwaltungsblock plausibel` | auch die Speicheradressen stimmen |
+| `>>> Anzahl gespeicherter Designs …` | Vergleich mit der Anzahl, die die Maschine selbst anzeigt |
+| `Keine Verbindung über COMx` | an diesem Port kam keine Antwort |
+
+## Fehlersuche
+| Problem | Lösung |
+|---|---|
+| „KEIN COM-Port gefunden“ | Adapter einstecken, Treiber installieren (Hersteller-Website des Adapters), Geräte-Manager prüfen |
+| „Port lässt sich nicht öffnen“ | ein anderes Programm benutzt den Port (z. B. alte Bernina-Software, Modem-Programm) → schließen |
+| keine Antwort | Kabel fest? Maschine an, Stickmodul dran, Startbildschirm fertig? Dann `START.bat -Port COM3 -DtrRts` probieren (schaltet zwei Steuerleitungen ein, die manche Kabel brauchen) |
+| Antwort, aber „SRMV NICHT gefunden“ | trotzdem beide Dateien schicken: genau das ist für die Analyse interessant |
+
+## Sicherheit
+- Gesendet werden nur diese Zeichenfolgen: `T r M E` (Übertragungsmodus), `R` + Adresse (Lesen), bei Bedarf `R F ?` (Synchronisieren). Die Original-Software sendet sie genauso.
+- Kein Schreib-, Lösch- oder Formatierbefehl ist im Programm enthalten.
+- Schlimmstenfalls bleibt die Maschine im PC-Modus hängen. Aus- und Einschalten behebt das.

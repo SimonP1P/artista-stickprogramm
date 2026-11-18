@@ -1,0 +1,502 @@
+A 0000004d !This program requires Microsoft Windows.
+A 0000016d TWAIN
+A 0000017b ___EXPORTEDSTUB
+A 00000197 KERNEL
+A 000001a3 WIN87EM
+A 000001ab DDEML
+A 000001de TWAIN_16 Data Source Manager.
+A 000001fd 	DSM_ENTRY
+A 0000020a INFOHOOK
+A 00000215 CHOOSEDLGPROC
+A 00000225 ABOUTDLGPROC
+A 00000233 	WGDLGPROC
+A 00002cc8 n1-*=
+A 0000310b 9f._^
+A 0000342d &#G2&#W4=
+A 000036de n194=
+A 00003dbe 9*;_^
+A 00003ddb ?;VWh
+A 00005a8e 6wWRPj
+A 00006005 n3Y]=
+A 0000890c V &9G
+A 0000894d &9W u
+A 00008cd1 &9G(t
+A 00008cda &9W*u
+A 0000dc5a 5, <Xw
+A 0000dd96 <st'<ntQ<pt`<Et
+A 0000e1c8   SPRQ
+A 0000e1dc t2PPP
+A 0000eb84 PSQR2
+A 0000ee8a )"!![
+A 0000f27b   PQR
+A 0000f39f   VQRP
+A 0000f62d QSRUVP
+A 0000f8b1 AkU'9
+A 0000f929 ?S;uD
+A 0000f97c zc%C1
+A 0000fb68 <+t	<-u
+A 0000fbb3 <0r!<9w
+A 0000fc1b <+t	<-u
+A 0000fc29 <0r?<9w;
+A 0000fc37 <0r$<9w ,0
+A 0000ff78 z?aUY
+A 0000ffba zc%C1
+A 0001000d -64OS
+A 00010827 ;`M&;
+A 0001082d N*;zO.;
+A 00010845 UB;zVF;hWJ;
+A 00010e32 CApplication
+A 00010e46 CDataSrc
+A 00010e54 CDataSrc::IDataSrc - Duplicate Product Name Ignored: %s
+A 00010eae CMessenger
+A 00010ebe Twain001.Mtx
+A 00010ecb Cmessngr::CMessenger - New FileLock Failed
+A 00010efa Cmessngr--IMessenger - atol Failed
+A 00010f1f Cmessngr--IMessenger - ltoa Failed
+A 00010f46 CObject
+A 00010f52 LogWnd
+A 00010f59 LogWndClass
+A 00010f6b CTRACE  --%s = %d.%3u
+A 00010f81 CTRACE  --%s = %d
+A 00010f97 CTWTRACE--NULL to NULL:
+A 00010faf CTWTRACE--NULL to %s(%ld):
+A 00010fca CTWTRACE--%s(%ld) to NULL:
+A 00010fe5 CTWTRACE--%s(%ld) to %s(%ld):
+A 00011003 CTWTRACE--
+A 00011011 CONTROL
+A 0001101c IMAGE
+A 00011025 [ %04x ]
+A 00011031 CAPABILITY
+A 0001103f EVENT
+A 00011048 IDENTITY
+A 00011054 PARENT
+A 0001105e PENDINGXFERS
+A 0001106e SETUPMEMXFER
+A 0001107e SETUPFILEXFER
+A 0001108f STATUS
+A 00011099 USERINTERFACE
+A 000110aa XFERGROUP
+A 000110b7 IMAGEINFO
+A 000110c4 IMAGELAYOUT
+A 000110d3 IMAGEMEMXFER
+A 000110e3 IMAGENATIVEXFER
+A 000110f6 IMAGEFILEXFER
+A 00011107 CIECOLOR
+A 00011113 GRAYRESPONSE
+A 00011123 RGBRESPONSE
+A 00011132 JPEGCOMPRESSION
+A 00011145 PALETTE8
+A 00011151 [ %04x ]
+A 00011164 GETCURRENT
+A 00011172 GETDEFAULT
+A 00011180 GETFIRST
+A 0001118c GETNEXT
+A 0001119e RESET
+A 000111a7 XFERREADY
+A 000111b4 CLOSEDSREQ
+A 000111c2 CHECKSTATUS
+A 000111d1 OPENDSM
+A 000111dc CLOSEDSM
+A 000111e8 OPENDS
+A 000111f2 CLOSEDS
+A 000111fd USERSELECT
+A 0001120b DISABLEDS
+A 00011218 ENABLEDS
+A 00011224 PROCESSEVENT...
+A 00011237 ENDXFER
+A 00011242 [ %04x ]
+A 0001124b COMPRESSION
+A 0001125a PIXELTYPE
+A 00011267 PIXELFLAVOR
+A 00011276 UNITS
+A 0001127f XFERMECH
+A 0001128b IMAGEFILEFORMAT
+A 0001129e BRIGHTNESS
+A 000112ac CONTRAST
+A 000112b8 HIGHLIGHT
+A 000112c5 SHADOW
+A 000112cf XNATIVERESOLUTION
+A 000112e4 YNATIVERESOLUTION
+A 000112f9 XRESOLUTION
+A 00011308 YRESOLUTION
+A 00011317 XSCALING
+A 00011323 YSCALING
+A 0001132f FEEDERLOADED
+A 0001133f FEEDERENABLED
+A 00011350 FEEDPAGE
+A 0001135c CLEARPAGE
+A 00011369 AUTOFEED
+A 00011375 XFERCOUNT
+A 00011382 [ %04x ]
+A 0001138c Twunk Startup Complete
+A 000113a3 Twunk Startup Failed
+A 000113b8 Twunk Shutdown Complete
+A 000113d0 CTwunk  ::CTwunk - RegisterWindowMessage Failed
+A 00011402 CTwunk  ::AppInitialize - Reset Log
+A 00011428 CTwunk  ::AppInitialize - New twDdeCli Failed
+A 00011458 CTwunk  ::AppInitialize - New TwDs Failed
+A 00011484 CTwunk  ::DsEntry - We're Not The Calling App
+A 000114b4 CTwunk  ::DsEntry - Dde Setup Incomplete
+A 000114e7 CTwunk  ::CloseServer - Server Not Executing
+A 00011516 Twain Twunk_32
+A 00011525 Twain Twunk_32
+A 00011534 CTwunk  ::CloseServer - Why Can't We Find The Thunker Window?
+A 00011574 CTwunk  ::CloseServer - Posting Close To Thunker
+A 000115a7 CTwunk  ::CloseServer - PostMessage Failed
+A 000115d4 CTwunk  ::CloseServer - Calling Application Window Does Not Exist
+A 00011618 CTwunk  ::CloseServer - Aborting Thunker Shutdown Process
+A 00011654 CTwunk  ::CloseServer - Discarded Message %X
+A 00011683 CTwunk  ::CloseServer - Discarded Message %X
+A 000116b2 CTwunk  ::CloseServer - Serviced Message %X
+A 000116e0 CTwunk  ::CloseServer - Received Shutdown Complete From Thunker
+A 00011722 CTwunk  ::DsmRegisterDS - new dsPtr Failed
+A 0001174f CTwunk  ::DsmRegisterDS - IDataSrc Failed
+A 0001177b CTwunk  ::DsmRegisterDS - IMessenger Failed
+A 000117a9 CTwunk  ::DsmRegisterDS - add Failed
+A 000117d0 CTwunk  ::OpenFileLocks - Already Open
+A 000117f9 Twunk002.MTX
+A 00011806 Ctwunk  ::OpenFileLocks - New twainFileLockPtr Failed
+A 0001183e CTwunk  ::OpenServer - Already Executing
+A 00011869 Twunk001.MTX
+A 00011876 Ctwunk  ::OpenServer - CallingAppFileLock Failed
+A 000118a9 CTwunk  ::OpenServer - Can't Get Windows Directory
+A 000118de CTwunk  ::CTwunk - twunkPathAndFile String Limit
+A 00011913 Twunk_32.exe
+A 00011920 CTwunk  ::CTwunk - twunkPathAndFile String Limit
+A 00011953 CTwunk  ::OpenServer - Starting Thunker
+A 0001197d CTwunk  ::OpenServer - Calling Application Window Does Not Exist
+A 000119c0 CTwunk  ::OpenServer - Aborting Thunker Startup Process
+A 000119fa CTwunk  ::OpenServer - Discarded Message %X
+A 00011a28 CTwunk  ::OpenServer - Discarded Message %X
+A 00011a56 CTwunk  ::OpenServer - Serviced Message %X
+A 00011a83 CTwunk  ::OpenServer - Received Startup Complete From Thunker
+A 00011ac3 CTwunk  ::OpenServer - Serviced Message %X
+A 00011af0 CTwunk  ::OpenServer - Received Startup Failed From Thunker
+A 00011b2f DSM     --DSM_Entry - Not Initialized
+A 00011b57 DSM     --DSM_Entry - Invalid lpSrc
+A 00011b7d DSM     --DSM_Entry - Nested Call From Source Allowed
+A 00011bb5 DSM     ::DSM_Entry - Nested Process Event Ignored
+A 00011bea DSM     --DSM_Entry - Nested Call Blocked
+A 00011c16 DSM     ::DSM_Entry - Serviced Message %X
+A 00011c42 DSM     ::DSM_Entry - Unserviced Message %X
+A 00011c70 DSM     --DSM_Entry - Nested Call Unblocked
+A 00011c9f DSM     --DsmEntryDiagExit (RC = %X, CC = %X)
+A 00011cd0 TWAIN_16.DLL
+A 00011cdd TWAIN.LOG
+A 00011ce7 DDEML.DLL
+A 00011cf1 DSMINIT -- CreateGlobalOjbect - LoadLibrary DDEML.DLL Failed
+A 00011d30 Twunk Item Name
+A 00011d40 Twunk Topic Name
+A 00011d51 Twunk Service Name
+A 00011d64 TwDdeCli::CB_AdvDataHandler - PostMessage ClosedDsReq Failed
+A 00011da3 TwDdeCli::CB_AdvDataHandler - Received ClosedDsReq
+A 00011dd8 TwDdeCli::CB_AdvDataHandler - PostMessage XferReady Failed
+A 00011e15 TwDdeCli::CB_AdvDataHandler - Received XferReady
+A 00011e48 TwDdeCli::CB_AdvDataHandler - Unknown Item
+A 00011e75 TwDdeCli::WaitForAsync... - Discarded Message %X
+A 00011ea8 TwDdeCli::WaitForAsync... - Discarded Message %X
+A 00011edb TwDdeCli::WaitForAsync... - Serviced Message %X
+A 00011f0d TwDdeCli::InitAdviseHandling - hszItem's Not Null
+A 00011f41 Twunk Item Close DS Req
+A 00011f59 TwDdeCli::InitAdviseHandling - DdeClientTransaction Failed
+A 00011f96 Twunk Item Xfer Ready
+A 00011fac TwDdeCli::InitAdviseHandling - DdeClientTransaction Failed
+A 00011fe9 TwDdeCli::UninitAdviseHandling - DdeClientTransaction Failed
+A 00012028 TwDdeCli::UninitAdviseHandling - DdeClientTransaction Failed
+A 00012068 %d.%d
+A 00012070  (16-
+A 00012080 InfoHook
+A 00012089 Version: %s
+A 00012095 Protocol: %d.%d
+A 000120ae DdeCli  ::AsyncClientTransaction - Transaction Already Pending
+A 000120ef DdeCli  ::AsyncClientTransaction - inLpbData == NULL && Invalid uType
+A 00012137 DdeCli  ::AsyncClientTransaction - inLpbData != NULL && Invalid uType
+A 0001217f DdeCli  ::AsyncClientTransaction - Failed
+A 000121ab DdeCli  ::Connect - Client Already Connected
+A 000121da DdeCli  ::Connect - Connect Failed
+A 000121ff DdeCli  ::Disconnect - Disconnect Failed
+A 0001222a DdeCli  ::GetLastDdeError - QueryConvInfo:
+A 00012257 cb               : %ld
+A 00012270 hUser            : %ld
+A 00012289 hConvPartner     : %ld
+A 000122a2 hszSvcPartner    : %ld
+A 000122bb hszServiceReq    : %ld
+A 000122d4 hszTopic         : %ld
+A 000122ed hszItem          : %ld
+A 00012306 wFmt             : %ld
+A 0001231f wType            : %ld
+A 00012338 wStatus          : %ld
+A 00012351 wConvst          : %ld
+A 0001236a wLastError       : %ld
+A 00012383 DdeCli  ::CB_XactCompleteHandler - UnlockAndFree Failed
+A 000123bd TwDs    ::CB_XactCompleteHandler - HugeAllocAndLock Failed
+A 000123fa Twunk Win95 Kludge Message 
+A 00012417 Twunk004.MTX
+A 00012424 DdeCli  ::CB_XactCompleteHandler - Win95KludgeFileLock Failed
+A 00012464 DdeCli  ::CB_XactCompleteHandler - atol Failed
+A 00012495 DdeCli  ::CB_XactCompleteHandler - UnlockAndFree Failed
+A 000124cf TwDs    ::CB_XactCompleteHandler - HugeAllocAndLock Failed
+A 0001250c DdeCli  ::CB_XactCompleteHandler - Win95KludgeFileLock Read Failed
+A 00012551 DdeCli  ::CB_XactCompleteHandler - Invalid Transaction Size
+A 0001258f DdeCli  ::CB_XactCompleteHandler - UnlockAndFree Failed
+A 000125c9 DdeCli  --CPP_DdeCliCallBack - No holdDdeCliPtr
+A 000125fb DdeCli  --CPP_DdeCliCallBack - Unhandled uType
+A 0001262c Twunk004.MTX
+A 00012639 TwDdeCom::CreateDdeHandle - Win95KludgeFileLock Failed
+A 00012672 Twunk Win95 Kludge Message 
+A 0001268f %s%ld
+A 00012695 TwDs    ::Execute - DdeCreateDataHandle Failed
+A 000126c6 DdeCom  ::CreateStringHandle - Failed
+A 000126ee DdeCom  ::FreeStringHandle - Failed
+A 00012714 DdeCom  ::GetLastError - Failed
+A 00012736 DdeCom  ::GetLastError - ADVACKTIMEOUT
+A 0001275f DdeCom  ::GetLastError - BUSY
+A 0001277f DdeCom  ::GetLastError - DATAACKTIMEOUT
+A 000127a9 DdeCom  ::GetLastError - DLL_NOT_INITIALIZED
+A 000127d8 DdeCom  ::GetLastError - DLL_USAGE
+A 000127fd DdeCom  ::GetLastError - EXECACKTIMEOUT
+A 00012827 DdeCom  ::GetLastError - INVALIDPARAMETER
+A 00012853 DdeCom  ::GetLastError - LOW_MEMORY
+A 00012879 DdeCom  ::GetLastError - MEMORY_ERROR
+A 000128a1 DdeCom  ::GetLastError - NOTPROCESSED
+A 000128c9 DdeCom  ::GetLastError - NO_CONV_ESTABLISHED
+A 000128f8 DdeCom  ::GetLastError - POKEACKTIMEOUT
+A 00012922 DdeCom  ::GetLastError - POSTMSG_FAILED
+A 0001294c DdeCom  ::GetLastError - REENTRANCY
+A 00012972 DdeCom  ::GetLastError - SERVER_DIED
+A 00012999 DdeCom  ::GetLastError - SYS_ERROR
+A 000129be DdeCom  ::GetLastError - UNADVACKTIMEOUT
+A 000129e9 DdeCom  ::GetLastError - UNFOUND_QUEUE_ID
+A 00012a15 DdeCom  ::GetLastError - UNKWOWN ERROR CODE
+A 00012a43 DdeCom  ::CreateDataHandle - Invalid AppBit
+A 00012a71 DdeCom  ::Initialize - Incomplete Parameter List
+A 00012aa4 DdeCom  ::Initialilze - Failed
+A 00012ac5 DdeCom  ::Uninitialize - Failed
+A 00012aeb FileLock::FileLock - Get Windows Directory Failed
+A 00012b1f FileLock::FileLock - pathAndFile String Limit
+A 00012b51 FileLock::FileLock - Invalid inDirFlag
+A 00012b7a FileLock::FileLock - pathAndFile String Limit
+A 00012baa FileLock::FileLock - Invalid inOpenFlag
+A 00012bd4 FileLock::Close - _close Failed
+A 00012bf6 FileLock::Lock - Already Locked
+A 00012c18 FileLock::Lock - _locking Failed
+A 00012c3b FileLock::LockOrRetry - WARNING
+A 00012c5d FileLock::Open - _sopen Failed
+A 00012c7e FileLock::Open - _sopen Failed
+A 00012c9f FileLock::Read - _read Failed
+A 00012cbf FileLock::Read - Invalid inLockFlag
+A 00012ce5 FileLock::Read - Invalid inUnlockFlag
+A 00012d0d FileLock::Remove - _remove Failed
+A 00012d31 FileLock::Seek - _lseek Failed
+A 00012d52 FileLock::Unlock - _locking Failed
+A 00012d77 FileLock::Write - _write Failed
+A 00012d99 FileLock::Write - Invalid inLockFlag
+A 00012dc0 FileLock::Write - Invalid inUnlockFlag
+A 00012de9 FILELOCK.TMP
+A 00012df6 FileLock--FileLockGetShareAllowed - New File Lock Failed
+A 00012e31 FileLock--FileLockGetShareAllowed - File Sharing Disabled
+A 00012e6d FileLock--FileLockGetShareAllowed - Open Test File Failed
+A 00012ea9 FileLock--FileLockGetShareAllowed - File Sharing Disabled
+A 00012ee5 FileLock--FileLockGetShareAllowed - Lock Test File Failed
+A 00012f21 FileLock--FileLockGetShareAllowed - System Probably Does Not Support File Sharing
+A 00012f7b Global  --GetGlobalStatus - New Failed - NULL
+A 00012faa Global  --GetGlobalStatus - New Failed - ClassError
+A 00012fdf  - ERROR   - 
+A 00012fed  - MESSAGE - 
+A 00012ffb Invalid Name Len
+A 0001300c TwDs    ::TwDs - Invalid Parameter
+A 00013035 TwDs    ::Execute - No Dde Return Structure
+A 00013063 TwDs    ::GetPData - HugeGlobalLock Failed
+A 00013090 TwDs    ::GetPData - GlobalUnLock Failed
+A 000130bb TwDs    ::GetPDataSize - GlobalSize Container Failed
+A 000130f2 TwDs    ::GetPDataSize - Unknown DG_CONTROL Twunk Message
+A 0001312e TwDs    ::GetPDataSize - Cannot Compute size of TW_CIECOLOR
+A 0001316c TwDs    ::GetPDataSize - Cannot Compute size of TW_GRAYRESPONSE
+A 000131ae TwDs    ::GetPDataSize - Cannot Compute size of TW_RGBRESPONSE
+A 000131ef TwDs    ::GetPDataSize - Cannot Compute size of TW_JPEGCOMPRESSION
+A 00013234 TwDs    ::GetPDataSize - Unknown DG_IMAGE Twunk Message
+A 0001326e TwDs    ::GetPDataSize - Unknown DG_ Twunk Message
+A 000132a3 TwDs    ::GetReturnData - No BitMap Returned
+A 000132d2 TwDs    ::GetReturnData - HugeAllocAndLock BitMap Failed
+A 0001330d TwDs    ::GetReturnData - Hmemcpy BitMap Failed
+A 0001333f TwDs    ::GetReturnData - Unlock BitMap Failed
+A 00013370 TwDs    ::GetReturnData - GlobalLock MemXfer Failed
+A 000133a6 TwDs    ::GetReturnData - Hmemcpy MemXfer Failed
+A 000133d9 TwDs    ::GetReturnData - Unlock MemXfer Failed
+A 0001340b TwDs    ::GetReturnData - Invalid MemXfer Flags
+A 0001343d TwDs    ::GetReturnData - GlobalLock Failed
+A 0001346b TwDs    ::GetReturnData - Unlock Container Failed
+A 0001349f TwDs    ::GetReturnData - HugeAllocAndLock Container Failed
+A 000134dd TwDs    ::GetReturnData - Unlock Container Failed
+A 00013511 TwDs    ::GetReturnData - Unserviced Twunk Message - Capability
+A 00013553 TwDs    ::Init - HugeAllocAndLock twunkParams Failed
+A 0001358a TwDs    ::Init - SetAppAndDs Failed
+A 000135b0 Util    ::UtilGlobalAlloc - GlobalAlloc Failed
+A 000135e1 Util    ::UtilGlobalFree - Invalid Parameter
+A 00013610 Util    ::UtilGlobalFree - Cannot Free Locked Handle
+A 00013647 TwDs    ::UtilGlobalFree - GlobalFree Failed
+A 00013676 Util    ::UtilGlobalLock - Invalid Parameter
+A 000136a5 Util    ::UtilGlobalLock - GlobalLock Failed
+A 000136d4 Util    ::UtilGlobalUnlock - Invalid Parameter
+A 00013705 Util    ::UtilGlobalUnlockAndFree - Cannot Free Locked Handle
+A 00013745 Util    ::UtilHugeGlobalLock - Invalid Parameter
+A 00013778 Util    ::UtilHugeGlobalLock - GlobalLock Failed
+A 000137ab Util    ::UtilHmemcpy - Invalid Parameter
+A 000137d7 Util    ::UtilMemcpy - Invalid Parameter
+A 00013802 Util    ::UtilWinExecErrorHandler - Winexec Failed - Low System Memory
+A 0001384b Util    ::UtilWinExecErrorHandler - Winexec Failed - File Not Found
+A 00013891 Util    ::UtilWinExecErrorHandler - Winexec Failed - Path Not Found
+A 000138d7 Util    ::UtilWinExecErrorHandler - Winexec Failed - Dynamic Link Or Sharing Violation
+A 00013930 Util    ::UtilWinExecErrorHandler - Winexec Failed - Library Data Segments
+A 0001397d Util    ::UtilWinExecErrorHandler - Winexec Failed - Insufficient Memory
+A 000139c8 Util    ::UtilWinExecErrorHandler - Winexec Failed - Incorrect Windows Version
+A 00013a19 Util    ::UtilWinExecErrorHandler - Winexec Failed - Executable Invalid
+A 00013a63 Util    ::UtilWinExecErrorHandler - Winexec Failed - Wrong Operating System
+A 00013ab1 Util    ::UtilWinExecErrorHandler - Winexec Failed - Designed For DOS 4.0
+A 00013afd Util    ::UtilWinExecErrorHandler - Winexec Failed - Executable File Type Unknown
+A 00013b51 Util    ::UtilWinExecErrorHandler - Winexec Failed - Real Mode Application
+A 00013b9e Util    ::UtilWinExecErrorHandler - Winexec Failed - Compressed Application
+A 00013bec Util    ::UtilWinExecErrorHandler - Winexec Failed - Required DLL Invalid
+A 00013c38 Util    ::UtilWinExecErrorHandler - Winexec Failed - Application Requires 32-Bit Extensions
+A 00013c96 Util    ::UtilWinExecErrorHandler - Winexec Failed - Unknown Return Code
+A 00013ce1 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Low System Memory
+A 00013d33 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - File Not Found
+A 00013d82 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Path Not Found
+A 00013dd1 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Dynamic Link Or Sharing Violation
+A 00013e33 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Library Data Segments
+A 00013e89 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Insufficient Memory
+A 00013edd Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Incorrect Windows Version
+A 00013f37 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Executable Invalid
+A 00013f8a Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Wrong Operating System
+A 00013fe1 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Designed For DOS 4.0
+A 00014036 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Executable File Type Unknown
+A 00014093 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Real Mode Application
+A 000140e9 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Load Second Instance Segments
+A 00014147 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Compressed Application
+A 0001419e Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Required DLL Invalid
+A 000141f3 Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Application Requires 32-Bit Extensions
+A 0001425a Util    ::UtilLoadLibararyErrorHandler - LoadLibrary Failed - Unknown Return Code
+A 00014349   0PX
+A 00014351 000WP
+A 00014361 ``````
+A 00014369 ppxxxx
+A 00014381 (null)
+A 000143cd e+000
+A 000143e1          (((((                  H
+A 00014538 1#SNAN
+A 0001453f 1#QNAN
+A 00014546 1#INF
+A 0001454c 1#IND
+A 00014774 <<NMSG>>
+A 0001477e R6025
+A 00014785 - pure virtual function call
+A 000147a6 R6000
+A 000147ad - stack overflow
+A 000147c2 R6003
+A 000147c9 - integer divide by 0
+A 000147e3 R6009
+A 000147ea - not enough space for environment
+A 00014811 R6018
+A 00014818 - unexpected heap error
+A 00014839 run-time error 
+A 0001484b R6002
+A 00014852 - floating-point support not loaded
+A 0001487a M6101: MATH
+A 00014887 - floating-point error: invalid
+A 000148ab M6102: MATH
+A 000148b8 - floating-point error: denormal
+A 000148dd M6103: MATH
+A 000148ea - floating-point error: divide by 0
+A 00014912 M6104: MATH
+A 0001491f - floating-point error: overflow
+A 00014944 M6105: MATH
+A 00014951 - floating-point error: underflow
+A 00014977 M6106: MATH
+A 00014984 - floating-point error: inexact
+A 000149a8 M6107: MATH
+A 000149b5 - floating-point error: unemulated
+A 000149dc M6108: MATH
+A 000149e9 - floating-point error: square root
+A 00014a11 M6109: MATH
+A 00014a1e - floating-point error: integer overflow
+A 00014a4b M6110: MATH
+A 00014a58 - floating-point error: stack overflow
+A 00014a83 M6111: MATH
+A 00014a90 - floating-point error: stack underflow
+A 00014abc M6100: MATH
+A 00014ac9 - floating-point error: explicitly generated
+A 00014ccf Select Source
+A 00014cec Select
+A 00014d03 Cancel
+A 00014d1a Sources:
+A 00014d4f About Twain
+A 00014d71 The Twain Image Acquisition Interface
+A 00014da7 1991-1995  Aldus, Caere,
+A 00014dd0 Eastman Kodak, Hewlett-Packard
+A 00014dff and Logitech Corporations.
+A 00014e2a Source Manager 1,6,0,3, Aug, 1995
+A 00014e6d This Source:
+A 00014eef About Twain
+A 00014f11 The Twain Image Acquisition Interface
+A 00014f47 1991-1995  Aldus, Caere,
+A 00014f70 Eastman Kodak, Hewlett-Packard
+A 00014f9f and Logitech Corporations.
+A 00014fca Source Manager 1,6,0,3, Aug, 1995
+A 0001500d No Sources.
+A 0001503f Twain is brought to you by....
+A 00015074 The Working Group:
+A 00015097 Kevin Bier, Jim Graham, Mike Niquette
+A 000150cd Jim Zamiska, Eric Robinson
+A 000150f8 Dominique Pitteloud, Jim McCarthy
+A 0001512a Morris Jones
+A 00015147 Tom Napoli, John Bulter
+A 0001516f -  Hewlett-Packard
+A 00015192 -  Aldus
+A 000151ab -  Logitech
+A 000151c7 -  Caere
+A 000151e0 -  Eastman Kodak
+A 00015201 And Special Thanks To:
+A 00015228 John Carnes - Adobe, Carl Nelson - Software Architects, and
+A 00015274 the Twain marketing folks from Aldus, Caere, Eastman Kodak
+A 000152bf Hewlett-Packard and Logitech.
+A 00015308 DSMAPPMESSAGE
+A 0001532a Twain
+A 00015345 Twain
+A 0001534b Default Source
+A 0001535a Debug Mode
+A 00015377 DS_Entry
+A 0001539e Twain Version 1,6,0,3
+A 000153c4 VS_VERSION_INFO
+A 0001540c StringFileInfo
+A 00015420 040904e4
+A 00015430 CompanyName
+A 0001543c Twain Working Group
+A 00015454 FileDescription
+A 00015464 Twain Source Manager (Image Acquisition Interface)
+A 0001549c FileVersion
+A 000154a8 1,6,0,3
+A 000154b4 InternalName
+A 000154cc OriginalFilename
+A 000154e0 Twain.dll
+A 000154f0 ProductName
+A 000154fc Twain Source Manager
+A 00015518 ProductVersion
+A 00015528 1,6,0,3
+A 00015534 VarFileInfo
+A 00015544 Translation
+U 000000a0 c@Xì
+U 00005638 jjjj
+U 00006c2a jjjj
+U 00007155 jjjj
+U 000071ef qjjjj
+U 00007296 jjjj
+U 00007332 jjjj
+U 00008a08 jjjjjj
+U 00009eaa wjjj
+U 00009f74 jjjj
+U 0000a2fa Vjjj
+U 0000a509 vjjj
+U 0000a6b4 Pjjj
+U 00014cc5 @<ÌV
+U 00014d45 22°{
+U 00014ee5 22°]

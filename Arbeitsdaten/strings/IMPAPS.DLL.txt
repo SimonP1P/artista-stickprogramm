@@ -1,0 +1,264 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.rdata
+A 000001c7 @.data
+A 000001f0 .idata
+A 00000218 .rsrc
+A 0000023f @.reloc
+A 00000599 SUVWt
+A 0000075d CSURP
+A 00000b74 Hx WV
+A 00000dc9 FlPhq
+A 000013d1 L$$SVW
+A 00002353 T$,QR
+A 000023bf T$dQR
+A 00002778 L$`VWP
+A 00002842 \$HVWS
+A 00002924 D$dVW
+A 0000307b D$XQRP
+A 0000319f D$$_^][
+A 00003413 U@PVWQR
+A 00003496 E@QVWRP
+A 000035b9  9\$T
+A 000036cb M@RVWPQ
+A 000037da E@QVWRP
+A 00003acc U@PQR
+A 00003be2 <SUVW
+A 00003c54 L$tRPQ
+A 00003eb7 H_^][
+A 00004bd4 L$0SUV
+A 00004f94 D$LVW
+A 000050cc SUVW3
+A 00005987 D$ UV
+A 00005990 D$,u'
+A 00005be2 4SUVW
+A 0000601b l$ VW
+A 00006106 N|WPQ
+A 000062b7 SUVWj
+A 00006823 R0_^]
+A 00006923 P<h@8
+A 000069c5 R0_^]3
+A 00006c08 D$(SP
+A 00006c2e D$(SP
+A 00006e58 L$8_^]3
+A 00007365 @_^][
+A 000075ff tlWVU
+A 00007669 []^_Y
+A 0000799f L$$PQV
+A 000079dc T$ hx
+A 00007da5 L$ h7
+A 00008020 SUVWj
+A 00008ffa l$PVW
+A 0000920a L$8WQ
+A 00009257 T$8QR
+A 0000929a L$,PQ
+A 00009329 |$ Cj
+A 00009330 D$8SP
+A 0000934b L$8WQ
+A 00009535 D$<SP
+A 00009566 T$<SR
+A 0000959d L$<PQ
+A 000095b7 D$<RP
+A 00009639 T$<QR
+A 0000970c L$<VQ
+A 00009732 D$<RP
+A 00009748 L$<SQ
+A 000097ca T$<VR
+A 0000980f SUVW3
+A 0000991d T$0RWV
+A 0000992c D$@GPWV
+A 00009986 u!9L$4u
+A 00009999 9T$8u
+A 000099e3 D$@PWV
+A 000099f2 L$PGQWV
+A 00009cc2 T$@j0
+A 00009cc8 D$4RP
+A 00009e7e L$ VQ
+A 00009e9b T$ VR
+A 00009eb1 D$ VP
+A 00009edf QRSVP
+A 00009ef2 L$ SQ
+A 00009f68 PQSVR
+A 0000a085 D$ RP
+A 0000a1c6 D$$Pj
+A 0000a286 T$$Rj
+A 0000a6a9 Kd_][
+A 0000a8a0 ^d9^x
+A 0000af70 u"WVS
+A 0000b5ff ?PERT
+A 0000b63c MbP?333333
+A 0000b647 ?PERT
+A 0000b96f ?PERT
+A 0000b988 333333
+A 0000b99f ?PERT
+A 0000b9aa f)zj?@s7
+A 0000b9b7 ?PERT
+A 0000c062 APSFILECONVERSION.dll
+A 0000c078 ?DegAngle@@YAHVCDpoint@@0@Z
+A 0000c094 ?ImportApsFile@@YAEPADP6AHIKPAX@Z@Z
+A 0000c0b8 ?ang_is_inside@@YAHNNN@Z
+A 0000c0d1 ?angle@@YANVCDline@@@Z
+A 0000c0e8 ?angle@@YANVCDpoint@@000@Z
+A 0000c103 ?angle@@YANVCDpoint@@00@Z
+A 0000c11d ?angle@@YANVCDpoint@@0@Z
+A 0000c136 ?angle@@YANVCDpoint@@@Z
+A 0000c14e ?arc_extents@@YAXVCArc@@PAVCLpoint@@1@Z
+A 0000c176 ?curve_generator@@YAXPAVCLpoint@@HH0HHHH@Z
+A 0000c1a1 ?displace@@YAXVCArc@@PAVCLpoint@@HHJH@Z
+A 0000c1c9 ?displace@@YAXVCLpoint@@0PAV1@1JH@Z
+A 0000c1ed ?fit_point@@YAPAVCLpoint@@PAV1@0J@Z
+A 0000c211 ?half_plane@@YAHPAVCLpoint@@00@Z
+A 0000c232 ?half_plane@@YAHVCDpoint@@VCDline@@@Z
+A 0000c258 ?intersect@@YAHVCArc@@0PAVCDpoint@@1@Z
+A 0000c27f ?intersect@@YAHVCArc@@0PAVCDpoint@@HH@Z
+A 0000c2a7 ?intersect@@YAHVCArc@@0PAVCLpoint@@1@Z
+A 0000c2ce ?intersect@@YAHVCDline@@0PAVCDpoint@@@Z
+A 0000c2f6 ?intersect@@YAHVCDline@@0PAVCDpoint@@HH@Z
+A 0000c320 ?intersect@@YAHVCDline@@0PAVCLpoint@@@Z
+A 0000c348 ?intersect@@YAHVCDline@@VCArc@@PAVCDpoint@@2@Z
+A 0000c377 ?intersect@@YAHVCDline@@VCArc@@PAVCDpoint@@HH@Z
+A 0000c3a7 ?intersect@@YAHVCDline@@VCArc@@PAVCLpoint@@2@Z
+A 0000c3d6 ?intersect@@YAHVCDline@@VCArc@@PAVCLpoint@@HH@Z
+A 0000c406 ?intersect@@YAHVCLine@@0PAVCLpoint@@HH@Z
+A 0000c42f ?length@@YANVCArc@@0@Z
+A 0000c446 ?length@@YANVCArc@@@Z
+A 0000c45c ?length@@YANVCDline@@0@Z
+A 0000c475 ?length@@YANVCDline@@@Z
+A 0000c48d ?length@@YANVCDline@@VCArc@@@Z
+A 0000c4ac ?length@@YANVCDpoint@@0@Z
+A 0000c4c6 ?length@@YANVCDpoint@@@Z
+A 0000c4df ?length@@YANVCDpoint@@VCArc@@@Z
+A 0000c4ff ?length@@YANVCDpoint@@VCDline@@@Z
+A 0000c521 ?length@@YANVCLpoint@@0@Z
+A 0000c53b ?length@@YANVCLpoint@@@Z
+A 0000c554 ?length@@YANVCLpoint@@VCWindow@@@Z
+A 0000c577 ?length@@YANVCPoint@@0@Z
+A 0000c590 ?length@@YANVCPoint@@@Z
+A 0000c5a8 ?length@@YANVCSize@@@Z
+A 0000c5bf ?lmod@@YAJJJ@Z
+A 0000c5ce ?locus@@YAXPAVCDpoint@@V1@NN@Z
+A 0000c5ed ?locus@@YAXPAVCLpoint@@0NN@Z
+A 0000c60a ?locus@@YAXPAVCLpoint@@PAVCDpoint@@NN@Z
+A 0000c632 ?mid_point@@YAPAVCLpoint@@PAV1@00@Z
+A 0000c656 ?mid_point@@YAXVCArc@@NPAVCDpoint@@@Z
+A 0000c67c ?mid_point@@YAXVCArc@@NPAVCLpoint@@@Z
+A 0000c6a2 ?mid_point@@YAXVCDpoint@@0NPAV1@@Z
+A 0000c6c5 ?mid_point@@YAXVCLpoint@@0NPAV1@@Z
+A 0000c6e8 ?mod_line@@YAXPAVCLpoint@@0JJ@Z
+A 0000c708 ?p_inside_box@@YAHVCLpoint@@0000@Z
+A 0000c72b ?perp@@YAHPAVCLpoint@@000@Z
+A 0000c747 ?perp@@YAHVCDpoint@@00PAV1@@Z
+A 0000c765 ?perp@@YAHVCDpoint@@00PAVCLpoint@@@Z
+A 0000c78a ?perp_dist@@YANPAVCLpoint@@000@Z
+A 0000c7ab ?point_before_line@@YAHPAVCLpoint@@00@Z
+A 0000c7d3 ?point_length@@YANVCArc@@0PAVCLpoint@@@Z
+A 0000c7fc ?point_length@@YANVCLine@@0PAVCLpoint@@@Z
+A 0000c826 ?point_length@@YANVCLine@@VCArc@@PAVCLpoint@@@Z
+A 0000c856 ?point_prox@@YAHVCDpoint@@0H@Z
+A 0000c875 ?sort_angles@@YAXPAN00@Z
+A 0000c88e ?split_arc@@YAXPAVCArc@@HPAVCLpoint@@HH@Z
+A 0000c8b8 ?split_line@@YAXPAVCLpoint@@0H0HH@Z
+A 0000c8dc ?xchg_point@@YAPAVCLpoint@@PAV1@0@Z
+A 0000cd22 e 8G7
+A 0000d04a e 8G7
+A 0000d37a e 8G7
+A 0000d3a8 Not Enough Data Points
+A 0000d6b2 e 8G7
+A 0000db7a e 8G7
+A 0000e070 MFC42.DLL
+A 0000e07c __CxxFrameHandler
+A 0000e090 tmpnam
+A 0000e09a memmove
+A 0000e0a4 _ftol
+A 0000e0ac _hypot
+A 0000e0b6 srand
+A 0000e0ce _splitpath
+A 0000e0da MSVCRT.dll
+A 0000e0f0 _initterm
+A 0000e0fc malloc
+A 0000e106 _adjust_fdiv
+A 0000e116 SendMessageA
+A 0000e126 EnableWindow
+A 0000e136 DispatchMessageA
+A 0000e14a TranslateMessage
+A 0000e15e PeekMessageA
+A 0000e16c USER32.dll
+A 0000e17a _stricmp
+A 0000ea08 90T0z0
+A 0000ea23 3,3|3
+A 0000ea2b 5%5Q5h5w5
+A 0000ea45 6/656N6T6d6s6
+A 0000ea5f 7*70757=7J7W7#8r8
+A 0000ea77 839!:1:Y:
+A 0000ea89 ;1=[=
+A 0000ea8f >'>4>
+A 0000eaad 1'1j2
+A 0000eadf 6"6,6=6E6
+A 0000eaf1 7H8~8
+A 0000eb01 ;	<`<l<>=h>t>1?
+A 0000eb3d 4E6[6c6m6~6
+A 0000eb4d 768X8
+A 0000eb5d :+>F?
+A 0000eb87 <$<1<2=C=K=U=f=n=
+A 0000ebb5 5L6`6h6r6
+A 0000ebc9 9;:o:%;;;C;M;^;f;X<n<v<
+A 0000ebe7 =+=E=_=
+A 0000ebf1 >,>4>>>O>W>
+A 0000ec18 0080@0
+A 0000ec25 0=1J1R1\1m1u1f2t2
+A 0000ec45 3E3T3\3o3
+A 0000ec51 384I4Q4f4y4
+A 0000ec63 5l7t7
+A 0000ec77 : :,:h:
+A 0000ec7f <E<f<
+A 0000ec8d >#>[>r>
+A 0000eca9 8%8^8e8l:p:t:x:|:
+A 0000eced >h>n>
+A 0000ed1f 637O7
+A 0000ed34 Q0D1H1L1P1T1X1\1`1d1h1l1p1
+A 0000ed63 9V?h?
+A 0000edad 7 7$7(7,70747B7H7N7T7Z7`7f7l7r7x7~7
+A 0000ee03 8 8&8,82888>8D8J8P8V8\8b8h8n8t8z8
+A 0000ee59 9"9(9.949:9@9F9L9R9X9^9d9j9p9v9|9
+A 0000ee97 9+:6:<:G:T:\:q:v:{:
+A 0000eecd </=I=i=
+A 0000eedd >)>K>k>
+A 0000eef9 080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 0000ef6d 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 0000f015 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3h3l3p3t3x3
+A 0000f08f 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4
+A 0000f10d 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5
+A 0000f13d 6 6<6H6d6l6t6|6
+A 0000f163 7,747<7D7P7l7t7|7
+A 0000f183 8$808L8X8t8|8
+A 0000f19f 9$909L9X9t9|9
+U 0000c020  !"#$%&'()*+,-./0123456789:;<=>?@
+U 0000e2f6 VS_VERSION_INFO
+U 0000e352 StringFileInfo
+U 0000e376 040904b0
+U 0000e38e Comments
+U 0000e3a0 Converts APS STC and PCH files
+U 0000e3e6 CompanyName
+U 0000e400 CadCam Technology Ltd.
+U 0000e436 FileDescription
+U 0000e458 APSFILECONVERSION DLL
+U 0000e48a FileVersion
+U 0000e4a4 1, 0, 0, 2
+U 0000e4c2 InternalName
+U 0000e4dc APSFILECONVERSION
+U 0000e506 LegalCopyright
+U 0000e524 Copyright © 1998
+U 0000e54e OriginalFilename
+U 0000e570 APSFILECONVERSION.DLL
+U 0000e5a2 ProductName
+U 0000e5bc APSFILECONVERSION Dynamic Link Library
+U 0000e612 ProductVersion
+U 0000e630 1, 0, 0, 2
+U 0000e64e VarFileInfo
+U 0000e66e Translation
+U 0000e6a2 APS File Conversion
+U 0000e6cc MS Sans Serif
+U 0000e6fe Cancel
+U 0000e722 msctls_progress32
+U 0000e746 Generic1
+U 0000e7b4 APS File Conversion V1.02'Copyright © CadCam Technology Ltd. 1998

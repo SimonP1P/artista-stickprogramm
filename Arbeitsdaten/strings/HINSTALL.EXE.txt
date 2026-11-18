@@ -1,0 +1,7962 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000099 ,+a9,*a
+A 000000a5 ,*a\3!a
+A 000000ad ,*a70$a
+A 000000b5 ,*a\3 a
+A 000000cd ,*aRich
+A 000001e8 .text
+A 0000020f `.rdata
+A 00000237 @.data
+A 00000260 .rsrc
+A 00003fec SVWh 
+A 0000417d SVWhH
+A 00004219 SVWhd
+A 00004365 SVWht
+A 00008b03 SVWj 
+A 0000907d Ph@4\
+A 000090aa Ph@4\
+A 000090d8 Ph@4\
+A 00009293 Ph@4\
+A 00009364 Ph@4\
+A 00009396 Ph@4\
+A 000093c5 Ph@4\
+A 00009404 Ph4DK
+A 000094d5 Ph\DK
+A 0000a1f0 Ph$EK
+A 0000a24d Ph8EK
+A 0000a38b PhLEK
+A 0000a3c2 @PhTEK
+A 0000a49f PhXEK
+A 0000a4c4 Ph@f\
+A 0000a517 PhdEK
+A 0000a56a Sh|EK
+A 0000a618 Ph@f\
+A 0000a6ea Ph@3\
+A 0000a76e Sh0FK
+A 0000a7d4 Ph<FK
+A 0000a90e Ph\FK
+A 0000a939 PhlFK
+A 0000a9c3 Ph|FK
+A 0000aebe Ph@4\
+A 0000afb2 @PhxCK
+A 0000ba1c SVWhxCK
+A 0000bed6 Ph@4\
+A 0000bf72 Ph@4\
+A 0000bf9d Ph@4\
+A 0000c142 Ph$JK
+A 0000c222 PhDJK
+A 0000c308 Ph|JK
+A 0000c98f Ph@4\
+A 0000ca88 @PhxCK
+A 0000d16d Ph@4\
+A 0000d1cb @Ph8LK
+A 0000e17c jh|/S
+A 0000eba7 Ph@*\
+A 0000f116 Qhp1S
+A 0000f75e QhP2S
+A 0000f776 Rhd2S
+A 0000f94f u>h(3S
+A 0000fba8 Qht3S
+A 0000fc0b Ph($H
+A 0000fe1c Ph($H
+A 0000fe6e Rh<4S
+A 0000fea1 PhH4S
+A 000101de RhP5S
+A 000104c7 Qh`6S
+A 00010fb8 Xhh8S
+A 000112eb }h`9S
+A 00011370 Qhp9S
+A 000115e6 j	hD:S
+A 00011631 Qh@,\
+A 0001201e Ph@*\
+A 000120d6 Qh8<S
+A 0001210a Qh@<S
+A 0001218f <hL<S
+A 00012ae2 Qh@*\
+A 00013ff6 Ph 1\
+A 0001460c t:hTAS
+A 000149d9 Ph@*\
+A 00014a11 t$h4BS
+A 00014a4d t$hLBS
+A 00014a8f Qh\BS
+A 0001508a ujh<CS
+A 000152f1 Ph 1\
+A 0001537c Ph 1\
+A 00015609 Ph@*\
+A 00015a6f Ph@*\
+A 0001ad91 						
+A 0001c739 <SVWh
+A 0001d9ab $SVWh
+A 0001da39 SVWh,
+A 0001e9c3 PhP$@
+A 0001ed4b PhP$@
+A 0001fb0d $SVWf
+A 0001fcca $SVWf
+A 00020a47 wDVSU
+A 00020f66 uRFGHt
+A 00021269 PSRVR
+A 000212ab PSRVj
+A 00021361 PSSSj
+A 0002171c w	f=A
+A 00021726  AABBf
+A 000217f8 FGQPS
+A 00021bd0 ?=t"U
+A 00021d24 8"uF@
+A 00021ef2 SS@SSPVSS
+A 00021f14 t#SSUP
+A 00021f1b t$$VSS
+A 00021f97 _^][YY
+A 00021fa0 DSUVWh
+A 0002218b SVWUj
+A 000221f4 t.;t$$t(
+A 00022278 VC20XC00U
+A 00023363 HHtpHHtl
+A 0002361a  Yt	f
+A 00023b0e uFWWj
+A 00023b33 "WWShP
+A 00023c1f tMWWS
+A 000245ad btHHt.
+A 000246ce WVVVV
+A 000247de eYt,F
+A 00024c28 rRf=Z
+A 00024cb7 ^}%95
+A 0002508d Wj@Y3
+A 00025260 VWuBh
+A 00025aab QSUVW3
+A 00025afe <f9-&
+A 00025c75 >:uNFV
+A 00025ca0 >:u#FV
+A 00025d03 _^][Y
+A 00025d4e Qf9=x
+A 00025d9d WQPWS
+A 00025db0 ,f9=$
+A 0002627a t-Ht!Ht
+A 0002652c SVWj 
+A 00026655 SVWj 
+A 00026b22 +ttHHtd
+A 00026b60 	j	XO
+A 000270ca uFVVj
+A 000270ef "VVShP
+A 00027162 E VVVV
+A 00027e2f WWWWj
+A 00027e4e t/WWUPj
+A 00027e79 _^][Y
+A 00027f33 PWPSS
+A 00027f50 PWPSS
+A 000281a5 QQSVW3
+A 0002865c SVWh 
+A 00029794 (SVWh
+A 00029f24 t=SWj
+A 0002a13c vBWSSSj
+A 0002a5fe YY_[]
+A 0002a8a6 PPPPPPPP
+A 0002b5ec runtime error 
+A 0002b600 TLOSS error
+A 0002b610 SING error
+A 0002b620 DOMAIN error
+A 0002b630 R6028
+A 0002b637 - unable to initialize heap
+A 0002b658 R6027
+A 0002b65f - not enough space for lowio initialization
+A 0002b690 R6026
+A 0002b697 - not enough space for stdio initialization
+A 0002b6c8 R6025
+A 0002b6cf - pure virtual function call
+A 0002b6f0 R6024
+A 0002b6f7 - not enough space for _onexit/atexit table
+A 0002b728 R6019
+A 0002b72f - unable to open console device
+A 0002b754 R6018
+A 0002b75b - unexpected heap error
+A 0002b778 R6017
+A 0002b77f - unexpected multithread lock error
+A 0002b7a8 R6016
+A 0002b7af - not enough space for thread data
+A 0002b7d6 abnormal program termination
+A 0002b7f8 R6009
+A 0002b7ff - not enough space for environment
+A 0002b824 R6008
+A 0002b82b - not enough space for arguments
+A 0002b850 R6002
+A 0002b857 - floating point not loaded
+A 0002b878 Microsoft Visual C++ Runtime Library
+A 0002b8a4 Runtime Error!
+A 0002b8b4 Program: 
+A 0002b8c4 <program name unknown>
+A 0002b8fd  (8PX
+A 0002b905 700WP
+A 0002b915 `h````
+A 0002b91d ppxxxx
+A 0002b948 (null)
+A 0002b986 GAIsProcessorFeaturePresent
+A 0002b9a4 KERNEL32
+A 0002b9b8 e+000
+A 0002b9c0 GetLastActivePopup
+A 0002b9d4 GetActiveWindow
+A 0002b9e4 MessageBoxA
+A 0002b9f0 user32.dll
+A 0002ba0c SunMonTueWedThuFriSat
+A 0002ba24 JanFebMarAprMayJunJulAugSepOctNovDec
+A 0002ba68 1#QNAN
+A 0002ba70 1#INF
+A 0002ba78 1#IND
+A 0002ba80 1#SNAN
+A 0002bae0 Illegal byte sequence
+A 0002baf8 Directory not empty
+A 0002bb0c Function not implemented
+A 0002bb28 No locks available
+A 0002bb3c Filename too long
+A 0002bb50 Resource deadlock avoided
+A 0002bb6c Result too large
+A 0002bb80 Domain error
+A 0002bb90 Broken pipe
+A 0002bb9c Too many links
+A 0002bbac Read-only file system
+A 0002bbc4 Invalid seek
+A 0002bbd4 No space left on device
+A 0002bbec File too large
+A 0002bbfc Inappropriate I/O control operation
+A 0002bc20 Too many open files
+A 0002bc34 Too many open files in system
+A 0002bc54 Invalid argument
+A 0002bc68 Is a directory
+A 0002bc78 Not a directory
+A 0002bc88 No such device
+A 0002bc98 Improper link
+A 0002bca8 File exists
+A 0002bcb4 Resource device
+A 0002bcc4 Unknown error
+A 0002bcd4 Bad address
+A 0002bce0 Permission denied
+A 0002bcf4 Not enough space
+A 0002bd08 Resource temporarily unavailable
+A 0002bd2c No child processes
+A 0002bd40 Bad file descriptor
+A 0002bd54 Exec format error
+A 0002bd68 Arg list too long
+A 0002bd7c No such device or address
+A 0002bd98 Input/output error
+A 0002bdac Interrupted function call
+A 0002bdc8 No such process
+A 0002bdd8 No such file or directory
+A 0002bdf4 Operation not permitted
+A 0002be0c No error
+A 0002c0be RegCloseKey
+A 0002c0cc RegQueryValueExA
+A 0002c0e0 RegOpenKeyA
+A 0002c0ee RegSetValueExA
+A 0002c100 RegOpenKeyExA
+A 0002c110 RegDeleteValueA
+A 0002c122 RegCreateKeyExA
+A 0002c134 CloseServiceHandle
+A 0002c14a OpenSCManagerA
+A 0002c15c RegCreateKeyA
+A 0002c16c RegDeleteKeyA
+A 0002c17c RegEnumKeyExA
+A 0002c18c CreateServiceA
+A 0002c19e QueryServiceStatus
+A 0002c1b4 ControlService
+A 0002c1c6 StartServiceA
+A 0002c1d6 OpenServiceA
+A 0002c1e6 DeleteService
+A 0002c1f4 ADVAPI32.dll
+A 0002c204 FreeLibrary
+A 0002c212 GetProcAddress
+A 0002c224 LoadLibraryA
+A 0002c234 GetFileAttributesA
+A 0002c24a SetLastError
+A 0002c25a LocalFree
+A 0002c266 WideCharToMultiByte
+A 0002c27c GetLastError
+A 0002c28c DeleteFileA
+A 0002c29a SetFileAttributesA
+A 0002c2b0 CopyFileA
+A 0002c2bc GetWindowsDirectoryA
+A 0002c2d4 GetSystemDirectoryA
+A 0002c2ea lstrcpyA
+A 0002c2f6 GetModuleHandleA
+A 0002c30a OpenFile
+A 0002c316 lstrlenA
+A 0002c322 LocalAlloc
+A 0002c330 RemoveDirectoryA
+A 0002c344 WriteFile
+A 0002c350 CloseHandle
+A 0002c35e ReadFile
+A 0002c36a GlobalFree
+A 0002c378 CreateFileA
+A 0002c386 GlobalAlloc
+A 0002c394 Sleep
+A 0002c39c FindClose
+A 0002c3a8 FindFirstFileA
+A 0002c3ba MoveFileA
+A 0002c3c6 CreateDirectoryA
+A 0002c3da DeviceIoControl
+A 0002c3ec GetVersion
+A 0002c3fa OpenProcess
+A 0002c408 TerminateProcess
+A 0002c41c CreateEventA
+A 0002c42c LocalReAlloc
+A 0002c43c GetCurrentProcessId
+A 0002c452 WaitForSingleObject
+A 0002c468 SetEvent
+A 0002c474 GetVersionExA
+A 0002c484 GetModuleFileNameA
+A 0002c49a GetStartupInfoA
+A 0002c4ac GetCommandLineA
+A 0002c4be ExitProcess
+A 0002c4cc HeapFree
+A 0002c4d8 GetCurrentProcess
+A 0002c4ec HeapAlloc
+A 0002c4f8 HeapReAlloc
+A 0002c506 GetTimeZoneInformation
+A 0002c520 GetSystemTime
+A 0002c530 GetLocalTime
+A 0002c540 UnhandledExceptionFilter
+A 0002c55c FreeEnvironmentStringsA
+A 0002c576 FreeEnvironmentStringsW
+A 0002c590 GetEnvironmentStrings
+A 0002c5a8 GetEnvironmentStringsW
+A 0002c5c2 SetHandleCount
+A 0002c5d4 GetStdHandle
+A 0002c5e4 GetFileType
+A 0002c5f2 HeapDestroy
+A 0002c600 HeapCreate
+A 0002c60e VirtualFree
+A 0002c61c RtlUnwind
+A 0002c628 VirtualAlloc
+A 0002c638 MultiByteToWideChar
+A 0002c64e LCMapStringA
+A 0002c65e LCMapStringW
+A 0002c66e SetFilePointer
+A 0002c680 GetCPInfo
+A 0002c68c GetACP
+A 0002c696 GetOEMCP
+A 0002c6a2 GetStringTypeA
+A 0002c6b4 GetStringTypeW
+A 0002c6c6 SetStdHandle
+A 0002c6d6 FlushFileBuffers
+A 0002c6ea SetEndOfFile
+A 0002c6fa CompareStringA
+A 0002c70c CompareStringW
+A 0002c71e SetEnvironmentVariableA
+A 0002c736 KERNEL32.dll
+A 0002c746 DestroyWindow
+A 0002c756 ShowWindow
+A 0002c764 UpdateWindow
+A 0002c774 EndPaint
+A 0002c780 BeginPaint
+A 0002c78e CreateWindowExA
+A 0002c7a0 SystemParametersInfoA
+A 0002c7b8 RegisterClassA
+A 0002c7ca LoadCursorA
+A 0002c7d8 LoadIconA
+A 0002c7e4 DefWindowProcA
+A 0002c7f6 PostQuitMessage
+A 0002c808 MessageBoxA
+A 0002c816 DialogBoxParamA
+A 0002c828 EndDialog
+A 0002c834 SendMessageA
+A 0002c844 GetDlgItem
+A 0002c852 GetKeyboardType
+A 0002c864 EnumWindows
+A 0002c872 GetWindowTextA
+A 0002c884 GetParent
+A 0002c890 IsWindowVisible
+A 0002c8a2 GetWindowThreadProcessId
+A 0002c8be PeekMessageA
+A 0002c8ce SendMessageCallbackA
+A 0002c8e6 SetForegroundWindow
+A 0002c8fc FindWindowA
+A 0002c908 USER32.dll
+A 0002c916 TextOutA
+A 0002c922 SetBkColor
+A 0002c92e GDI32.dll
+A 0002c93a VerQueryValueA
+A 0002c94c GetFileVersionInfoA
+A 0002c962 GetFileVersionInfoSizeA
+A 0002c97a VERSION.dll
+A 0002c988 FileTimeToSystemTime
+A 0002c9a0 FileTimeToLocalFileTime
+A 0002c9ba GetDriveTypeA
+A 0002c9ca GetFullPathNameA
+A 0002c9de GetCurrentDirectoryA
+A 0002d030 \help
+A 0002d038 \help
+A 0002d040 hinstall
+A 0002d04c HASP Device Driver install utility
+A 0002d070 Please Wait...
+A 0002d080 hinstall.exe
+A 0002d090 HASP Device Driver installation status:
+A 0002d0bd Hardlock Driver is installed also
+A 0002d0e8 Version installed:	
+A 0002d100 Driver Path:	
+A 0002d111 Installation date:	
+A 0002d129 Computer name:	
+A 0002d13d Computer type:	
+A 0002d150 IBM computer
+A 0002d160 NEC computer
+A 0002d170 Unknown
+A 0002d179 Port Mode:	
+A 0002d188 Normal
+A 0002d1a4 Unknown
+A 0002d1ad Key Search:	
+A 0002d1c0 Parallel
+A 0002d1cc USB-Parallel
+A 0002d1e4 Not supported
+A 0002d1f4 Unknown
+A 0002d200 LPT1:		
+A 0002d210 LPT2:		
+A 0002d220 LPT3:		
+A 0002d22c Aladdin Device Driver is not installed.
+A 0002d25c Aladdin Device Driver Installation Utility for Win32
+A 0002d294 Aladdin Device Driver Installation Utility for Win32
+A 0002d2cc Aladdin Device Driver Installation Utility for Win32
+A 0002d304 Aladdin Device Driver Installation Utility for Win32
+A 0002d33c Aladdin Device Driver Installation Utility for Win32
+A 0002d374 Aladdin Device Driver Installation Utility for Win32
+A 0002d3ac Aladdin Device Driver Installation Utility for Win32
+A 0002d3e4 Aladdin Device Driver Installation Utility for Win32
+A 0002d41c Aladdin Device Driver Installation Utility for Win32
+A 0002d454                     
+A 0002d49c In order to take effect you must restart your system
+A 0002d4f8 - Install the HASP Device Driver.
+A 0002d520 unsigned
+A 0002d52c - Install the HASP Device Driver.
+A 0002d584 serverpath
+A 0002d594 serverswitches
+A 0002d5a8 autodetect
+A 0002d5b4 =y|n|yes|no - Set auto search of parallel port on/off.
+A 0002d5f0 computertype
+A 0002d600 =<type>
+A 0002d608 	type:
+A 0002d60f 		IBM	-	Install on IBM computer.
+A 0002d630 		NEC	-	Install on NEC computer.
+A 0002d658 driverpath
+A 0002d664 =<full path> -	Set the Aladdin Device Driver to full path.
+A 0002d6a4 sourcepath
+A 0002d6b0 =<full path> -	Set the Aladdin Device Driver source full path.
+A 0002d6f4 hardlockonly
+A 0002d704 - Install Hardlock Device Driver only.
+A 0002d72c alldrv
+A 0002d734 alldrv
+A 0002d73c - Install HASP and Hardlock Device Driver.
+A 0002d774 - Display this screen.
+A 0002d794 - Display this screen.
+A 0002d7bc - Display installation status.
+A 0002d7e0 remove
+A 0002d7e8 - Remove the Aladdin Device Driver.
+A 0002d810 keysearch
+A 0002d81c =<type>
+A 0002d824 	type:
+A 0002d82b 		USB-Parallel - Search at the USB port and then at the Parallel port.
+A 0002d872 		Parallel - Search at the Parallel port only.
+A 0002d8a1 		USB - Search at the USB port only.
+A 0002d8cc killprocess
+A 0002d8d8 -	allows the installation program to kill processes accessing the driver.
+A 0002d934 <x>=Addr	- Set Lpt<x> to defined address.
+A 0002d980 nomsg
+A 0002d988 nomsg
+A 0002d990 -	Disables message display.  No messages are displayed when this switch is used.
+A 0002d9e8 criticalmsg
+A 0002d9f4 -	Displays only critical messages, such as the instruction to reboot.
+A 0002da40 portmode
+A 0002da4c =<type>
+A 0002da54 	type:
+A 0002da5b 		Normal	-	Specified Normal port mode.
+A 0002da82 		ECP	-	Specified ECP port mode.
+A 0002daa3 		BiDi	-	Specified BiDi port mode.
+A 0002dac6 		Auto	-	Specified Auto search for port mode.
+A 0002daf8 contention
+A 0002db04 =<yes/no> - Enable better port sharing between HASP access and printing.
+A 0002db94 checkmouse
+A 0002dba4 usecli
+A 0002dbb0 ecpretry
+A 0002dbbc - Sets the loop count the device driver will wait for the ECP queue
+A 0002dc00 to be empty.
+A 0002dc14 portdelay
+A 0002dc28 portallocretrycount
+A 0002dc3c - Sets the number of seconds the device driver retries to gain control of the
+A 0002dc8a port from the printer driver if there are access conflicts between them.
+A 0002dcd8 portallocfunctionality
+A 0002dcf0 - Sets the method with which the device driver will try to gain control of the
+A 0002dd3f port from the printer driver if there are access conflicts between them.
+A 0002dd8c usecompaq
+A 0002dd9c useusb
+A 0002ddb8 setparameters
+A 0002ddd0 controlport
+A 0002dddc =<yes/no> - Enable control port configuration
+A 0002de10 ecpdmaint
+A 0002de1c =<enable/disable> - Disable ECP DMA Interrupt
+A 0002de50 usepci
+A 0002de5d Aladdin Knowledge Systems Ltd. (c) 2002
+A 0002de86 Usage: Hinstall <options>
+A 0002dea1 Options:
+A 0002deac switch character can be also '/'
+A 0002ded0 Hinstall utility 
+A 0002df20 USB-Parallel
+A 0002df34 Parallel
+A 0002df48 Normal
+A 0002dfc4 enable
+A 0002dfcc disable
+A 0002dff8 Failed to access the SYSTEM.INI file
+A 0002e020 Failed to access previously installed HASP Device Driver
+A 0002e05c Failed to install the Virtual Device Driver
+A 0002e088 Failed to remove the Virtual Device Driver
+A 0002e0b4 The HASP Device Driver is not installed yet
+A 0002e0e0 Warning: You removed the HASP Device Driver while the NetHASP LM loader was still installed
+A 0002e13c Failed to verify the OS type
+A 0002e15c The call to GetVersionEx() failed
+A 0002e180 Unknown platform detected
+A 0002e19c Invalid parameter in the function call
+A 0002e1c4 This service/parameter is not supported under the current OS
+A 0002e204 Failed to read from the Database Registry
+A 0002e230 The operation failed. Some processes accessing the driver are open.
+A 0002e274 Failed to update a value in the Database Registry
+A 0002e2a8 Failed to write hasp95.vxd to the disk.
+A 0002e2d0 Failed to write hasp95dl.vxd to the disk.
+A 0002e2fc Failed to remove hasp95.vxd from the disk.
+A 0002e328 Failed to remove hasp95dl.vxd from the disk.
+A 0002e358 Failed to remove the USB driver from the disk.
+A 0002e388 Failed to write the USB driver to the disk.
+A 0002e3b4 Failed to remove the USB information file from the disk.
+A 0002e3f0 Failed to write the USB information file to the disk.
+A 0002e428 Failed to remove the PCCard information file from the disk.
+A 0002e464 Failed to write the PCCard information file to the disk.
+A 0002e4a0 Failed to write the PCCard driver signature file to the disk.
+A 0002e4e0 Failed to write the PCCard driver file to the disk.
+A 0002e514 Failed to write the hasp95.vxd value inthe VMM32Files key in the Database Registry
+A 0002e568 Failed to write the HASP95 key in the Database Registry
+A 0002e5a0 Failed to write the Parameters key in the Database Registry
+A 0002e5dc Failed to delete the hasp95.vxd value fromthe VMM32Files key in the Database Registry
+A 0002e634 Failed to delete the HASP95 key from the Database Registry
+A 0002e670 Failed to write keys or values to the Database Registry
+A 0002e6a8 Failed to write haspnt.sys to the disk.
+A 0002e6d0 Failed to remove haspnt.sys from the disk.
+A 0002e6fc Failed to write the HASP Virtual Device Driver to the disk.
+A 0002e738 Failed to remove the HASP Virtual Device Driver from the disk.
+A 0002e778 Failed to write into the Event Log in the Database Registry
+A 0002e7b4 Failed to write the Haspnt key in the Database Registry
+A 0002e7ec Failed to write the Pcmcia key in the Database Registry
+A 0002e824 Failed to write the HASP value in the DOS Devices key in the Database Registry
+A 0002e874 Failed to work in conjunction with the Service Control Manager.
+A 0002e8b4 Failed to stop the HASP Device Driver.
+A 0002e8dc Failed to remove the Aladdin Device Driver from the Service Control Manager Database.
+A 0002e934 Failed to start the Aladdin Device Driver.
+A 0002e960 Failed to delete the HASP value from the DOS Devices key in the Database Registry
+A 0002e9b4 Failed to remove the Virtual Device Driver
+A 0002e9e0 Failed to delete the Haspnt key from the Database Registry
+A 0002ea1c Failed to delete the Pcmcia key from the Database Registry
+A 0002ea58 Failed to delete the Haspnt from the Event Log key in the Database Registry
+A 0002eaa4 Failed to write the hasp.386 device in system.ini
+A 0002ead8 Failed to remove hasp.386 device from system.ini
+A 0002eb0c Failed to write hasput16.dll to the disk.
+A 0002eb38 Failed to write hasp.386 to the disk.
+A 0002eb60 Failed to remove hasput16.dll from the disk.
+A 0002eb90 Failed to remove hasp.386 from the disk.
+A 0002ebbc Failed to add the NetHASP LM loader object into the Service Control Manager Database
+A 0002ec14 Warning: You installed the NetHASP LM loader object without the HASP Device Driver being installed
+A 0002ec78 The HASP Device Driver you want to install is older than the one currently installed
+A 0002ecd0 Failed to remove the NetHASP LM loader object from the Service Control Manager Database
+A 0002ed28 User has no access to the Database Registry
+A 0002ed54 Cannot write hsrvldr.exe to the disk.
+A 0002ed7c Cannot remove hsrvldr.exe from the disk.
+A 0002eda8 The HASP Device Driver is not installed.
+A 0002edd4 Failed to write hardlock.vxd to the disk.
+A 0002ee00 Failed to delete the Hardlock key from the Database Registry
+A 0002ee40 Failed to write the Hardlock key in the Database Registry
+A 0002ee7c Failed to write the hardlock.vxd device in system.ini
+A 0002eeb4 Failed to remove the hardlock.vxd device from system.ini
+A 0002eef0 Failed to remove the Hardlock Virtual Device Driver from the disk.
+A 0002ef34 Failed to write hardlock.sys to the disk.
+A 0002ef60 Failed to remove hardlock.sys from the disk.
+A 0002ef90 The Windows 95/98 Device Driver was installed successfully. 
+A 0002efcd  In order for it to take effect you must restart your system.
+A 0002f00c The Windows 95/98 Device Driver was removed successfully. 
+A 0002f047  In order for the procedure to take effect you must restart your system.
+A 0002f090 The Device Driver was installed successfully. 
+A 0002f0bf  In order for it to take effect you must restart your system.
+A 0002f100 The Device Driver was removed successfully. 
+A 0002f12d  In order for the procedure to take effect you must restart your system.
+A 0002f178 Failed to write api_1lnm.dll to the disk.
+A 0002f1a4 Failed to remove api_1lnm.dll from the disk.
+A 0002f1d4 Failed to remove hardlock.vxd from the disk.
+A 0002f204 Failed to terminate processes accessing the driver.
+A 0002f238 HL-Server is loaded. You must stop it first.
+A 0002f268 Failed to install the Aladdin Device Driver in the Service Control Manager Database.
+A 0002f2c0 The operation was completed successfully.
+A 0002f2ec Failed to read from the system.ini
+A 0002f310 Failed to delete a value from the system.ini
+A 0002f340 Failed to write a value to the system.ini
+A 0002f36c Failed to query processes accessing the driver.
+A 0002f39c The Windows NT Device Driver was installed successfully. 
+A 0002f3d6  In order for it to take effect you must restart your system.
+A 0002f414 Installation of USB drivers via setupapi failed.
+A 0002f448 Removal of USB drivers via setupapi failed.
+A 0002f474 Unknown error
+A 0002f75c Cannot access the file as it is ReadOnly
+A 0002f788 Failed to execute GetFileAttribute()
+A 0002f7b0 System.ini not found
+A 0002f7c8 Cannot load library
+A 0002f7dc Cannot get the proc address
+A 0002f7f8 Cannot free the library
+A 0002f810 Failed to call the version proc
+A 0002f830 Failed to call the GetDateFormat proc
+A 0002f858 Cannot allocate memory
+A 0002f870 Failed to open the registry
+A 0002f88c Failed to close the registry
+A 0002f8ac Failed to set a value in the registry
+A 0002f8d4 Failed to create a key in the registry
+A 0002f8fc Failed to delete a value from the registry
+A 0002f928 Failed to delete a key from the registry
+A 0002f954 Failed to query the registry
+A 0002f974 Failed to open the Service Control Manager Database
+A 0002f9a8 Failed to close a service in the Service Control Manager Database
+A 0002f9ec Failed to create a service in the Service Control Manager Database
+A 0002fa30 Failed to close a service in the Service Control Manager Database
+A 0002fa74 Failed to open a service in the Service Control Manager Database
+A 0002fab8 Failed to stop a service in the Service Control Manager Database
+A 0002fafc Failed to start a service in the Service Control Manager Database
+A 0002fb40 Failed to delete a service from the Service Control Manager Database
+A 0002fb88 Failed to close the Service Control Manager Database
+A 0002fbc0 Cannot delete file
+A 0002fbd4 Cannot move file
+A 0002fbe8 Cannot create file
+A 0002fbfc Cannot write to file
+A 0002fc14 Cannot close file
+A 0002fc28 Cannot open file
+A 0002fc3c Cannot copy file
+A 0002fc50 Cannot get the file size
+A 0002fc6c Cannot set the file pointer
+A 0002fc88 Cannot read from file
+A 0002fca0 Cannot access file
+A 0002fcb4 Fatal error occurred
+A 0002fccc Cannot find a section in system.ini
+A 0002fcf0 Cannot find the Parameters signature in hasp.386
+A 0002fd24 NetHASP License Manager does not exist
+A 0002fd70 Cannot retrieve device information set
+A 0002fd98 Cannot get device properties
+A 0002fdb8 Cannot call class installer
+A 0002fdd4 Another installation is already in progress
+A 0002fe00 Cannot update driver
+A 0002fe18 No more items in device list
+A 0002fe38 Cannot install root enumerated drivers
+A 0002fe60 Unknown error
+A 00030050 KERNEL32.DLL
+A 00030060 GetVersionExA
+A 00030084 Manual
+A 0003008c Normal
+A 000300b8 Normal
+A 00030125 !This program cannot be run in DOS mode.
+A 00030250 .text
+A 00030277 `.data
+A 000302a0 .idata
+A 000302c8 .rsrc
+A 000302ef B.reloc
+A 000304d8 fSfQfRf
+A 00030508 fZfYf[
+A 00030952 hWdm h
+A 00030cbe 										
+A 00030e76 X(hWdm 
+A 00030ea5 hWdm jPj
+A 00030fb4 F(8X	t?hWdm 
+A 00030fc1 X	j(S
+A 00031053 hWdm 
+A 000314a0 hWdm jPW
+A 000314b8 hWdm j
+A 00031521 hWdm Sj
+A 00031c5a PWVQR
+A 00031cab SVWhWdm jPj
+A 00031f47 hWdm 
+A 00032648 X(WhWdm Qj
+A 000327e3 P(SV3
+A 00032896 hWdm jPj
+A 000329a1 v!hWdm Pj
+A 00032a00 hWdm Pj
+A 00032a6c hWdm 
+A 00032d04 SVWtV
+A 00032e91 WhWdm j j
+A 00032f09 Pj SQ
+A 00033106 hWdm j j
+A 0003315d Pj VQ
+A 00033925 SVWhWdm j j
+A 00033985 Pj VS
+A 00033da8 $Id: usbpd.c,v 1.94 2001/10/19 08:53:01 horatiu Exp $
+A 00034016 KeInitializeMutex
+A 0003402a KeSetEvent
+A 00034038 InterlockedDecrement
+A 00034050 IofCallDriver
+A 00034060 IofCompleteRequest
+A 00034076 KeWaitForSingleObject
+A 0003408e KeInitializeEvent
+A 000340a2 KeReleaseMutex
+A 000340b4 IoDeleteDevice
+A 000340c6 IoDetachDevice
+A 000340d8 ExFreePool
+A 000340e6 ExAllocatePoolWithTag
+A 000340fe PoCallDriver
+A 0003410e PoStartNextPowerIrp
+A 00034124 PoSetPowerState
+A 00034136 PoRequestPowerIrp
+A 0003414a InterlockedIncrement
+A 00034162 IoDeleteSymbolicLink
+A 0003417a RtlInitUnicodeString
+A 00034192 IoAttachDeviceToDeviceStack
+A 000341b0 IoCreateDevice
+A 000341c2 IoCancelIrp
+A 000341d0 IoBuildDeviceIoControlRequest
+A 000341f0 IoFreeIrp
+A 000341fc IoAllocateIrp
+A 0003420c KeTickCount
+A 0003421a IoCreateSymbolicLink
+A 00034232 KeDelayExecutionThread
+A 0003424a ntoskrnl.exe
+A 0003425a _USBD_CreateConfigurationRequestEx@8
+A 00034282 _USBD_ParseConfigurationDescriptorEx@28
+A 000342aa USBD.SYS
+A 000346e0 "5/5K5R5Y5`5f5p5x5~5
+A 000346fb 696N6
+A 00034709 7G7v7
+A 0003471b 808I8v8
+A 00034727 8:9D9^9w9
+A 00034735 :,:K:U:b:h:n:v:
+A 0003474f ;3;S;{;
+A 0003476d ;/<;<P<x<
+A 00034781 =)===B=L=V=\=g=r={=
+A 00034795 =Q>_>
+A 000347a1 ?E?K?Q?i?
+A 000347c1 0#0Z0~0
+A 000347cd 1G2Q2
+A 000347d7 2*3O3u3
+A 000347e1 3E4S4
+A 00034819 839I9V9}9
+A 0003482f :6:Z:
+A 0003484b <!=,=<=a=
+A 0003486d 020G0
+A 0003487b 2P2i2
+A 00034881 2 353
+A 0003488b 3%4B4T4
+A 00034899 525}5
+A 000348c4 !090H0_0
+A 000348cd 1)101B1`1w1
+A 000348e7 293d3y3
+A 000348ef 354w5
+A 00034905 7"8[8
+A 0003490b 8#9:9A9
+A 00034ad8 ; $Id: aksusb.inf,v 1.4.2.2 2002/10/30 19:36:09 chris Exp $
+A 00034b18 ; INF File for USB Hardlock
+A 00034b35 ;---------------------------
+A 00034b56 ; (c) Copyright 1997,1998 by Aladdin Knowledge Systems
+A 00034b91 ; $Revision: 1.4.2.2 $
+A 00034ba9 ; $Date: 2002/10/30 19:36:09 $
+A 00034bc9 ; $Author: chris $
+A 00034be0 ; $Log: aksusb.inf,v $
+A 00034bf8 ; Revision 1.4.2.2  2002/10/30 19:36:09  chris
+A 00034c28 ; removed CopyFiles entries
+A 00034c48 ; Revision 1.4.2.1  2002/10/30 12:16:50  chris
+A 00034c78 ; merge with HEAD as of 30-oct-2002
+A 00034ca0 ; Revision 1.5  2002/08/26 16:56:36  gerhard
+A 00034cce ; start value set to 3
+A 00034ce9 ; Revision 1.11  2002/08/26 12:15:33  horatiu
+A 00034d18 ; bugfix: StartType is 3 for Win2K
+A 00034d3f ; Revision 1.10  2000/11/22 15:29:40  Horatiu
+A 00034d6e ; removed Horg- signing lines
+A 00034d93 ; Revision 1.9  2000/11/22 15:28:17  Horatiu
+A 00034dc1 ; add changes required for signing as comments - lines are marked 
+A 00034e05 ; with  Horg - signing. 
+A 00034e23 ; Revision 1.8  1998/05/13 15:33:50  chris
+A 00034e4f ; removed hardlock.vxd entries
+A 00034e73 ; Revision 1.7  1998/03/11 14:00:26  chris
+A 00034e9f ; usbpd -> aksusb name change
+A 00034ec1 ; Revision 1.6  1998/03/09 13:31:01  chris
+A 00034eed ; added NT 5 Beta support
+A 00034f0b ; Revision 1.5  1998/03/06 13:08:59  chris
+A 00034f37 ; added hardlock.vxd to copylist
+A 00034f5e [Version]
+A 00034f69 signature="$CHICAGO$"
+A 00034f80 Provider=%Fast%
+A 00034f91 LayoutFile=LAYOUT.INF
+A 00034fa8 Class=USB
+A 00034fb5 ; Table of Contents
+A 00034fca [Manufacturer]
+A 00034fda %FastMfg%=Aladdin
+A 00034fef [PreCopySection]
+A 00035001 HKR,,NoSetupUI,,1
+A 00035016 [DestinationDirs]
+A 00035029 aksusb.CopyList = 10,system32\drivers
+A 00035050 aksusb.CopyList.NT = 10,system32\drivers
+A 0003507a ;DefaultDestDir=10,system32\drivers
+A 000350a1 [Aladdin]
+A 000350ac %USB\VID_0529&PID_0001.DeviceDesc%=aksusb, USB\VID_0529&PID_0001 ;USB Protection Device
+A 00035107 [NODRIVER]
+A 00035115 [ControlFlags]
+A 00035125 ExcludeFromSelect=USB\VID_0529&PID_0001
+A 00035150 [aksusb]
+A 0003515a ;;CopyFiles=aksusb.CopyList
+A 00035177 AddReg=aksusb.AddReg
+A 0003518f [aksusb.NT]
+A 0003519c ;;CopyFiles=aksusb.CopyList.NT
+A 000351bc AddReg=aksusb.AddReg.NT
+A 000351d7 [aksusb.AddReg]
+A 000351e8 HKR,,DevLoader,,*ntkern
+A 00035201 HKR,,NTMPDriver,,aksusb.sys
+A 0003521e ;HKR,,MyLittleTag,,MyEntryInTheRegistry
+A 00035249 [aksusb.AddReg.NT]
+A 0003525d ;BUGBUG: PropPageProvider stuff not enabled for setupapi yet!
+A 0003529c HKR,,EnumPropPages32,,"sysclass.dll,USBEnumPropPages"
+A 000352d5 [aksusb.CopyList]
+A 000352e8 aksusb.sys
+A 000352f6 [aksusb.CopyList.NT]
+A 0003530c aksusb.sys
+A 0003531a [aksusb.NT.Services]
+A 00035330 AddService=aksusb,0x02,aksusb.addservices
+A 0003535d [aksusb.addservices]
+A 00035373 DisplayName    = %svcdesc%
+A 0003538f ServiceType    = 1		;SERVICE_KERNEL_DRIVER
+A 000353bb StartType      = 3		;SERVICE_AUTO_START
+A 000353e4 ErrorControl   = 1		;SERVICE_ERROR_NORMAL
+A 0003540f ServiceBinary  = %12%\aksusb.sys
+A 00035431 LoadOrderGroup = Base
+A 0003544a [Strings]
+A 00035455 Fast="Aladdin Knowledge Systems"
+A 00035477 FastMfg="Aladdin Knowledge Systems"
+A 0003549c svcdesc="Aladdin USB Key"
+A 000354b7 USB\VID_0529&PID_0001.DeviceDesc="Aladdin USB Key"
+A 000354f0 ; HASP/Hardlock USB driver
+A 0003550c ; Copyright (c) 2001 Aladdin Knowledge Systems
+A 0003553e [Version]
+A 00035549 signature="$CHICAGO$"
+A 00035560 Provider=%Fast%
+A 00035571 ;LayoutFile=LAYOUT.INF
+A 00035589 Class=USB
+A 00035594 ClassGuid={36fc9e60-c465-11cf-8056-444553540000}
+A 000355c6 CatalogFile=aksusb.cat        ; new catalog file name
+A 000355fd DriverVer=10/20/2001,1.28     ; new DriverVer directive
+A 00035638 ; Table of Contents
+A 0003564d [Manufacturer]
+A 0003565d %FastMfg%=Aladdin
+A 00035672 [ControlFlags]
+A 00035682 ExcludeFromSelect.NTx86=*
+A 0003569f [Aladdin]
+A 000356aa %USB\VID_0529&PID_0001.DeviceDesc%=aksusb, USB\VID_0529&PID_0001 ;USB Protection Device
+A 00035705 ;;****************************************************************************
+A 00035755 ;; Windows 9x
+A 00035764 ;;****************************************************************************
+A 000357b4 [aksusb]
+A 000357be AddReg=aksusb.AddReg
+A 000357d4 CopyFiles=aksusb.CopyList.W9X
+A 000357f5 [aksusb.CopyList.W9x]
+A 0003580c aksusb.sys,,,0x0000022
+A 00035828 ;;****************************************************************************
+A 00035878 ;; NT 5.0
+A 00035883 ;;****************************************************************************
+A 000358d3 [aksusb.NT]
+A 000358e0 AddReg=aksusb.AddReg.NT
+A 000358f9 CopyFiles=aksusb.CopyList.NT
+A 00035919 [aksusb.CopyList.NT]
+A 0003592f aksusb.sys,,,0x00000022
+A 0003594a [aksusb.NT.Services]
+A 00035960 AddService=aksusb,0x02,aksusb.addservices
+A 0003598d ;;----------------------------------------------------------------------------
+A 000359dd ;; aksusb Parameters
+A 000359f3 ;;----------------------------------------------------------------------------
+A 00035a43 ;;****************************************************************************
+A 00035a93 ;; Windows 9x parameters
+A 00035aad ;;****************************************************************************
+A 00035aff [aksusb.AddReg]
+A 00035b10 HKR,,DevLoader,,*ntkern
+A 00035b29 HKR,,NTMPDriver,,aksusb.sys
+A 00035b46 ;HKR,,MyLittleTag,,MyEntryInTheRegistry
+A 00035b73 ;;****************************************************************************
+A 00035bc3 ;; NT 5.0
+A 00035bce ;;****************************************************************************
+A 00035c20 [aksusb.AddReg.NT]
+A 00035c34 ;BUGBUG: PropPageProvider stuff not enabled for setupapi yet!
+A 00035c73 HKR,,EnumPropPages32,,"sysclass.dll,USBEnumPropPages"
+A 00035cac [aksusb.addservices]
+A 00035cc2 DisplayName    = %svcdesc%
+A 00035cde ServiceType    = 1		;SERVICE_KERNEL_DRIVER
+A 00035d0a StartType      = 3		;SERVICE_AUTO_START
+A 00035d33 ErrorControl   = 1		;SERVICE_ERROR_NORMAL
+A 00035d5e ServiceBinary  = %12%\aksusb.sys
+A 00035d80 LoadOrderGroup = Base
+A 00035d9b ;;****************************************************************************
+A 00035deb ;; common definitions
+A 00035e02 ;;****************************************************************************
+A 00035e54 ;;****************************************************************************
+A 00035ea4 ;; Destination Directory
+A 00035ebe ;;****************************************************************************
+A 00035f0e [DestinationDirs]
+A 00035f21 aksusb.CopyList.NT          = 10,System32\Drivers
+A 00035f56 DefaultDestDir              = 12        ; LDID_SYS
+A 00035f8a aksusb.CopyList.W9x         = 10,System32\Drivers
+A 00035fbf ;;****************************************************************************
+A 0003600f ;; Source Files
+A 00036020 ;;****************************************************************************
+A 00036070 [sourcedisksnames]
+A 00036084 1=%INSTDISK%,,,""
+A 00036099 [SourceDisksFiles]
+A 000360ad aksusb.sys=1
+A 000360c3 [Strings]
+A 000360ce Fast="Aladdin Knowledge Systems"
+A 000360f0 FastMfg="Aladdin Knowledge Systems"
+A 00036115 svcdesc="Aladdin USB Key"
+A 00036130 INSTDISK="Aladdin Install Disk"
+A 00036151 USB\VID_0529&PID_0001.DeviceDesc="Aladdin USB Key"
+A 000361eb 011027145004Z0
+A 000362e4 1S0Q0,
+A 00036315 >0!0	
+A 000364d9 1[0Y04
+A 00036512 >0!0	
+A 00036679 VeriSign Trust Network1
+A 0003669a VeriSign, Inc.1,0*
+A 000366b2 #VeriSign Time Stamping Service Root1402
+A 000366e0 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 00036710 970512000000Z
+A 0003671f 040107235959Z0
+A 0003673a VeriSign Trust Network1
+A 0003675b VeriSign, Inc.1,0*
+A 00036773 #VeriSign Time Stamping Service Root1402
+A 000367a1 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 000367ee h|,-.
+A 0003692a 0p1+0)
+A 00036936 "Copyright (c) 1997 Microsoft Corp.1
+A 00036964 Microsoft Corporation1!0
+A 00036984 Microsoft Root Authority0
+A 000369a0 971001070000Z
+A 000369af 021231070000Z0
+A 000369c9 "Copyright (c) 1997 Microsoft Corp.1A0?
+A 000369f6 8Microsoft Windows Hardware Compatibility Intermediate CA1
+A 00036a3a Microsoft Corporation110/
+A 00036a59 (Microsoft Windows Hardware Compatibility0
+A 00036b5a r0p1+0)
+A 00036b67 "Copyright (c) 1997 Microsoft Corp.1
+A 00036b95 Microsoft Corporation1!0
+A 00036bb5 Microsoft Root Authority
+A 00036c6a VR\]t
+A 00036d0d ;%qh0
+A 00036d2d "Copyright (c) 1997 Microsoft Corp.1A0?
+A 00036d5a 8Microsoft Windows Hardware Compatibility Intermediate CA1
+A 00036d9e Microsoft Corporation110/
+A 00036dbd (Microsoft Windows Hardware Compatibility0
+A 00036dea 010314080000Z
+A 00036df9 020412080000Z0
+A 00036e21 Washington1
+A 00036e36 Redmond1
+A 00036e48 Microsoft Corporation1+0)
+A 00036e67 "Copyright (c) 2001 Microsoft Corp.1
+A 00036ea5 2Microsoft Windows Hardware Compatibility Publisher0
+A 00036fa1 r0p1+0)
+A 00036fae "Copyright (c) 1997 Microsoft Corp.1
+A 00036fdc Microsoft Corporation1!0
+A 00036ffc Microsoft Root Authority
+A 0003709e iB0iUw
+A 000370f4 zm\ob
+A 00037120 VeriSign Trust Network1
+A 00037141 VeriSign, Inc.1,0*
+A 00037159 #VeriSign Time Stamping Service Root1402
+A 00037187 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 000371b7 010228000000Z
+A 000371c6 040106235959Z0
+A 000371e1 VeriSign, Inc.1
+A 000371fa VeriSign Trust Network1;09
+A 0003721a 2Terms of use at https://www.verisign.com/rpa (c)011'0%
+A 00037258 VeriSign Time Stamping Service0
+A 0003733e TBZze{
+A 000373af 40200
+A 000373bf $http://ocsp.verisign.com/ocsp/status0	
+A 000373f7 =0;09
+A 00037419 https://www.verisign.com/rpa0
+A 00037488 |z 02
+A 00037517 0p1+0)
+A 00037523 "Copyright (c) 1997 Microsoft Corp.1
+A 00037551 Microsoft Corporation1!0
+A 00037571 Microsoft Root Authority0
+A 0003758d 970110070000Z
+A 0003759c 201231070000Z0p1+0)
+A 000375b5 "Copyright (c) 1997 Microsoft Corp.1
+A 000375e3 Microsoft Corporation1!0
+A 00037603 Microsoft Root Authority0
+A 00037768 r0p1+0)
+A 00037775 "Copyright (c) 1997 Microsoft Corp.1
+A 000377a3 Microsoft Corporation1!0
+A 000377c3 Microsoft Root Authority
+A 000378e0 Z38nM
+A 0003791b "Copyright (c) 1997 Microsoft Corp.1A0?
+A 00037948 8Microsoft Windows Hardware Compatibility Intermediate CA1
+A 0003798c Microsoft Corporation110/
+A 000379ab (Microsoft Windows Hardware Compatibility
+A 000379e2 ;%qh0
+A 00037a7c http://www.microsoft.com/hcl/ 0
+A 00037b5b VeriSign Trust Network1
+A 00037b7c VeriSign, Inc.1,0*
+A 00037b94 #VeriSign Time Stamping Service Root1402
+A 00037bc2 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.
+A 00037bf1 zm\ob
+A 00037c3b 011108005715Z0
+A 00037cb9 *7y1VE
+A 00037cfa ~E yQ\
+A 00037dcd !This program cannot be run in DOS mode.
+A 00037f48 .rsrc
+A 00037f70 .protect
+A 00038180 le is paU
+A 000381e3 dI-ry
+A 00038273 hNwiT
+A 00038303 z(>CI
+A 00038314 44ZWw
+A 00038355 ;P#6X
+A 00038378 ATE67
+A 000383af ,Em/P
+A 000383ca oo)S~
+A 000383e2 {ZcQ-#
+A 00038406 qe*LV
+A 00038794 	apWJ
+A 0003894a McmoO
+A 000389ad u7{7(
+A 00038ad2 Cx./t)z
+A 00038dd7 ':/{K
+A 00038de3 DglU]1
+A 00038df1 Bx|8Ji
+A 00038e42 s8G"&C
+A 00038eef ]_I{}
+A 0003908e >3RzR
+A 000390d3 ?f{DJc
+A 000391b7 b)U' K
+A 00039351 F>KdF
+A 000393b3 jq_yf
+A 0003949d Ed=,[
+A 000395a6 h6WIUv
+A 00039627 !RE7t
+A 00039958 q)UT7
+A 00039bf5 z)(q[E3
+A 00039e2b 91w7>
+A 00039f65 bm\|=
+A 00039fe4 $7DOv
+A 0003a006 qcD{X
+A 0003a21e |!,g>1cj
+A 0003a259 nz(g1
+A 0003a37c 	r;m'
+A 0003a640 L/!t:
+A 0003a669 tDf2l
+A 0003a6f4 [ILzli6`
+A 0003a77e $G\?n
+A 0003a7bf QVXf>m
+A 0003a7f4 mwN>\
+A 0003a997 Txx(B
+A 0003a9d2 pP5`S
+A 0003aa5d 0.No,3Dt=
+A 0003aaf3 0C7$v
+A 0003ad20 niTUO
+A 0003aec5 B{3&.a-
+A 0003af54 ]]&Uzq
+A 0003b110 GjIKA
+A 0003b183 aHF]A
+A 0003b1d4 OI$on
+A 0003b208 CwHF~z
+A 0003b27d Los G
+A 0003b33a pR}G3}
+A 0003b3f7 ,9DNT
+A 0003b52b "EuwKw$
+A 0003b68a RKbLp
+A 0003b6e3 u/tBY
+A 0003b73b 	5>tz
+A 0003b772 T<:K5
+A 0003b7b8 (sPx-
+A 0003ba16 uM=t^
+A 0003baa0 4"Wb]1
+A 0003bac2 k/,DW
+A 0003bb15 ck:6n
+A 0003bd66 m8>Q]O
+A 0003be10 kxIQ}
+A 0003bea3 w^K=<s
+A 0003bf28 JBdIJ
+A 0003bf81 0ftZ60
+A 0003bfa2 0/%b_
+A 0003c00e &(llxY
+A 0003c2c3 {l.Vd
+A 0003c405 W"7kBg
+A 0003c4af }9IM3
+A 0003c5f3 t^!3x
+A 0003c75e 79~fK
+A 0003c788 vu!G2
+A 0003c987 iN1E@
+A 0003c9b3 7!^Fb\
+A 0003cca6 TT~1wP,I
+A 0003ccbd cUGi?
+A 0003cde8 Q]q^>2f
+A 0003ce8d -sZBo
+A 0003cf0f \2o\)
+A 0003cf15 4VAWibE 
+A 0003cf71 sqopO,
+A 0003d06e )f[@`
+A 0003d10c 	8M(r
+A 0003d24c 5oj&<
+A 0003d388 yRG08
+A 0003d3e3 q`>Fuz
+A 0003d54f {	Pd{
+A 0003d583 j;5z+
+A 0003d701 J1Z^w
+A 0003d71f ,mgx>(
+A 0003d747 p(!0k
+A 0003d7d5 $t2y7!
+A 0003da12 @[~l~
+A 0003db77 I^	}sQ
+A 0003dcee iu,'-
+A 0003dd9c >CL]R
+A 0003de9f 2)gN?
+A 0003decb G;bdw
+A 0003defa E|IE[!
+A 0003e090 )gZE&j
+A 0003e2f6 13.X>
+A 0003e3eb H,_Ew
+A 0003e44a !$ Tcu*Q
+A 0003e4f8 'B5"+
+A 0003e642 e,x)t
+A 0003e6ae K>Xl_
+A 0003e74c ,7 Kn
+A 0003e91d )	"3w@?
+A 0003ed1b t+wQB
+A 0003ee9b xNDoIJ_
+A 0003eec1 U[(F N
+A 0003eedc N{%W}0
+A 0003efa4 <WFlKZ
+A 0003f024 gwL$C
+A 0003f06c O$w)'
+A 0003f0bc hS^kL
+A 0003f11f jJ3>I
+A 0003f174 wA=NB
+A 0003f208 6yX.#E
+A 0003f2ef Eiu5O
+A 0003f364 	%dz9
+A 0003f61c vAq,%
+A 0003f91c qx4kx
+A 0003f956 vV^+$
+A 0003fb7a A/>wh]
+A 0003fcb8 ntVGU
+A 0003fef2 xLrfX
+A 0003ff39 \lN\Q
+A 0003ff4f lXI@%f
+A 000400cd yGa I
+A 000401a4 1JUz@
+A 0004021b MK,0h$
+A 00040232 <F#4b
+A 000402a6 A$@	<
+A 00040801 lPguB
+A 00040931  ud,/
+A 00040a8a z:@&b
+A 00040ad9 "k)K7lK
+A 00040b96 ;?Yb4
+A 00040bdd x.wID
+A 00040d9a Jol{R{t
+A 00040f57 _~eqr
+A 00040fbc {K^jf
+A 000410b4 b"O?*Z
+A 000410bd [=l M
+A 00041194 !P io
+A 00041205 au5s0\
+A 00041477 arlT%
+A 000414a1 X%TD	
+A 000414fe YxGv&
+A 00041674 Dt[hG
+A 000416a2 `/<+$
+A 000416d2 `^ja4
+A 00041719 0=^zfDI
+A 00041884 L${;e
+A 00041b43 laOwLP;
+A 00041bfb ?.#*c
+A 00041d41 7`JA 
+A 00041df6 q[{R|(w
+A 00041e9f y{|%ib
+A 000422aa fHFg9(Y
+A 00042306 _I\2_
+A 000423d4 w$^qH
+A 000424c0 s#V^|
+A 000424c7 (0<>V
+A 0004264c .z(vW
+A 000428af ;xidAp
+A 00042a98 JBJLSK
+A 00042af4 !?T@$Jm
+A 00042c92 9+"j7
+A 00042d38 U@ZN(
+A 00042dbb  t<<U"
+A 00042e2d .jBd6G
+A 00042e49 V@P.F!
+A 00042e7f Bw	nL
+A 00042f27 6?zS:
+A 000431af C5Iwi
+A 0004334a _H|My
+A 0004338a H5#I\J>z
+A 000433c8 0N(9?
+A 0004355d 1[8j}
+A 000435e3 Y +T)
+A 00043710 jM+zu
+A 00043732 ?_[XT
+A 00043760 C4@6j
+A 000438d9 \iE'{
+A 00043a00 $8G|*
+A 00043a16 gN"A]
+A 00043b43 =>b4`
+A 00043cbc 30#e`l
+A 00043dd4 Q	>)3
+A 00043e04 	8{c\h
+A 00043faf +,<x{
+A 0004409c @Z`(7
+A 00044272 	/oZd$
+A 0004429c Xi)}F?=
+A 000442d4 Cv%~X
+A 000442e3 lvoi>
+A 00044372 .<IqP
+A 000443d9 (|dO1	
+A 000443ea DYYWu
+A 000445bb kj`;C
+A 0004471e QlD8y
+A 000447ac mau4*
+A 0004485b Yr~,0
+A 000448c4 tZc2@
+A 0004496b 3j`9(
+A 000449ab EIlMr
+A 00044a12 bP{;a1
+A 00044b1e `POlx{
+A 00044bb9 vf?(p
+A 00044c70 e[G/P
+A 00044d3f xlXd9
+A 00044d95 #gPw 
+A 00044e45 f<P5H
+A 00044e4c OF\`=
+A 000450a5 WoD0:X
+A 000451c8 v S}PY@1
+A 000451e1 !GH9L
+A 00045207 P=tZd
+A 00045230 EE&;lDN
+A 00045250 )irFr0
+A 000452b2 Lp1wwl
+A 0004531c &](=zjfr
+A 00045331 pr0=F
+A 0004533a +cW_W
+A 0004540c ?L+lS
+A 0004547c e*{K>{:
+A 00045628 *&*+]
+A 0004564d 'ZYYk
+A 00045668 wP\+Q
+A 00045670 /)+{/
+A 00045683 MqThz
+A 000456d9 5Oy`X
+A 0004573e pzmAm
+A 00045757 .5q[@~
+A 00045783 OM{T4x=
+A 0004579d y=O/]J
+A 00045835 pc?B2
+A 0004596d \[Bn/
+A 000459ad )+\R&{
+A 000459c4 Hk'#V
+A 00045a78 JLbP~
+A 00045abe 0Z!td
+A 00045bc3 ^m>5}iO
+A 00045cb3 Q?(($
+A 00045cdd g5"*K}-j
+A 00045e09 O9+Me
+A 00045f09 }}p_l
+A 0004637d `Vc:R
+A 00046397 @UBa2
+A 000464d0 ="0eVK
+A 00046562 -]7e,
+A 0004686c 0p~I~
+A 00046a0a $,O^T
+A 00046bf0 6U"&)
+A 00046c20 5nV"K
+A 00046d6e Q7-*E
+A 00046da8  I(3J%e'Oyp_
+A 00046dfd h~)cqX
+A 00046eea &_M'G
+A 00046fcc Jsj/#
+A 000470c0 TkJ+GA
+A 000471d4 m&Oz,6
+A 0004723b V;8rG
+A 0004727b glY5BN
+A 0004737e f(Sf$
+A 000473a5 G"(bn
+A 000474e0 <GkN;i
+A 000474e7 lv{{_+
+A 00047531 2%kIfw
+A 0004760b ]!!j'
+A 00047765 1r9_)
+A 00047771 7Je[D
+A 0004786d (xRsQ
+A 00047a82 Y/ m"
+A 00047de7 <ZoF\
+A 00047f0d eS@w%
+A 00048015 `"^PY
+A 00048204 qe@=}H
+A 00048226 8BCE<,
+A 0004826c fDc9';HOS
+A 00048312 yR7gX
+A 00048391 g ^`1eb
+A 00048426 h^>_b
+A 00048450 l(^7@
+A 00048687 c>WvEZs/
+A 00048740 f}j*t
+A 00048914 6g>uG
+A 00048a0c rn)T<
+A 00048a42 gc7	>
+A 00048ad5 %Za*x
+A 00048f2e k##[{4
+A 00049087 Qx2o8
+A 0004914e (>lH!
+A 0004917c W;#}+
+A 00049216 _^tJ[O
+A 0004921f g]&}m
+A 00049351 Oq@df
+A 00049455 ~z?}v
+A 0004954f k"vjz
+A 0004957c G7LLz
+A 0004958c KK_vJL
+A 0004961a eDL{c
+A 000497e1 2Ol_#
+A 000498e8 )s#l6}:Y7#
+A 0004994e stcTmK
+A 000499ac ryliA
+A 00049b8b Lk~fy
+A 00049bc9 uP=:Fv
+A 00049c3f &BzbEP
+A 00049c51 2%Vb_
+A 00049f45 aW)gOm
+A 00049f90 ~t(Aj
+A 00049fff P,m+:
+A 0004a020 zD{*E
+A 0004a0fe /OXo\b
+A 0004a16f EW`[I :
+A 0004a1da ULVe9
+A 0004a302 {hqa:y
+A 0004a361 0Y,6]
+A 0004a3d4 5@(1r
+A 0004a623 6XH	[5
+A 0004a652 e|g{m
+A 0004a751 +TE"-
+A 0004ad72 dcamA
+A 0004adc2 M~H y;
+A 0004afe8 #S?K{5E
+A 0004b00d Z--r	
+A 0004b159 Kv`,Hi
+A 0004b23d vws$k
+A 0004b2e9 z[5o!j
+A 0004b3d1 TfsB9T
+A 0004b521 eKC<e
+A 0004b565 15aDy
+A 0004b5dd v'6qZ
+A 0004b62f Ux0EZD
+A 0004b6a9 LgI`-3
+A 0004b6b2 C}&QS
+A 0004b749 j)3A{S
+A 0004ba17 ik?(	
+A 0004babb !i. 3T
+A 0004bd9e \9ta1y
+A 0004c01b +Ff^3
+A 0004c116 1XzmZ
+A 0004c1a7 $L*W@[
+A 0004c1f7 Z]t(	aB
+A 0004c21b pZ<aF
+A 0004c281 U|Jaw~
+A 0004c3a3 Q7VK96
+A 0004c3b6 v:OyPF
+A 0004c478 mvj,X
+A 0004c5b0 jAKp*u!
+A 0004c704 N/|%{
+A 0004c70d 519g/	
+A 0004c8e7 :w ; 
+A 0004c943 `_kFG*
+A 0004cd2b MKAEi5
+A 0004cd81 *5G"^
+A 0004ce39 [%"wv
+A 0004cefa S$jp,8
+A 0004cf3f gw8+d)
+A 0004d145 Hh>&C
+A 0004d2bc Io)-Ta{
+A 0004d554  OKqkU
+A 0004d598 IngLZ
+A 0004d5c4 $ZbA,
+A 0004d663 $s:VX
+A 0004d6d8 eLOX <u
+A 0004d6fc cm7sM
+A 0004d7df t9BlK
+A 0004d8cb <?077
+A 0004d9f3 /uQWt
+A 0004db4e f 6Vr
+A 0004db5b l5w"B
+A 0004dbbd U(Hfr
+A 0004de5c EC!kv
+A 0004df85 0I1)g
+A 0004e0a2 6;KB>
+A 0004e0dc ^0i4,
+A 0004e158 )yx [3
+A 0004e167 ;-&yv
+A 0004e18c WAwmu
+A 0004e2a8 ^xf,]
+A 0004e78d Z_F^+
+A 0004e7b3 <X[FH
+A 0004e94f FM`z~
+A 0004e9b2 z>%R@
+A 0004e9da SO>!J)
+A 0004ea36 !5j(G
+A 0004ea5a 8Uj{j9
+A 0004ea99 U^8n{P\= 
+A 0004eb21 6QUn$
+A 0004ec12 74T@&
+A 0004ec5b w"o|Gw
+A 0004ee07 _U2j4
+A 0004eede A,!Zc
+A 0004ef45 e8g\ 9P
+A 0004efb0 vy/wY
+A 0004f0a2 e~yap-
+A 0004f0c3 {/8$CO
+A 0004f148 	%U_/A
+A 0004f16a Ej)?m
+A 0004f1fe n_;*q
+A 0004f260 p-4;i$
+A 0004f3ae !<kuZ
+A 0004f426 fAk&08
+A 0004f494 a&xH7
+A 0004f4b6 Z(5n_
+A 0004f5e9 F`qKE
+A 0004f658 ;SSNpYe?
+A 0004f76a INpo=6F
+A 0004f863 ;Xdy|
+A 0004f8a8 ~1vEi
+A 0004f8eb c/zcY
+A 0004f9d3 0"c,&o
+A 0004fbd7 k8SH.A
+A 0004fcd8 `V,t1
+A 0004fd50 7??>V|
+A 0004fdd3 M6.g2
+A 0004ff1c RF	r@4
+A 0005020b -6	~/
+A 00050261 gJ9&U1
+A 000503ae o)z."
+A 000503da :l"ND
+A 000504df plh\M
+A 00050545 d~3)-
+A 000506d9 L2RHo
+A 000507a0 J1Xg$
+A 000508b1 bylc?
+A 0005091c mR$zGb8:
+A 0005093d fU|Iz]
+A 00050998 `U\Z$
+A 00050a1b 5sl_%
+A 00050a42 <7z$s
+A 00050b97 cUyub#4o{
+A 00050cee RfYcko
+A 00050d96 w9+EG
+A 00050f4f Ar0DZ[~'
+A 0005108c T>u`k
+A 000510e8 s=WK/
+A 000510fb 9aK%3
+A 00051139 X6IK 
+A 000514a9 CXhR3
+A 0005161c bUnLK
+A 0005164d -qJ;]
+A 0005166c xUp)N
+A 000516bb BPu&9C
+A 00051874 Hoj6:Ca
+A 00051883 hhc*z
+A 00051953 * ;;DI
+A 00051a88 1Z}a=
+A 00051ce2 cOuf5
+A 00051d22 TY1mH
+A 00051df6 &ee)_
+A 00051e21 K9;G|2
+A 00051e78 @]i-Q
+A 00051e7e {nDUEC
+A 00051f16 vP6:0
+A 00052033 H-<AM
+A 000520a2 xc.3i
+A 00052135 =mTM0
+A 00052284 zuO-_
+A 00052310 $'3[)_
+A 00052356 O-zb%
+A 00052408 :x$&'
+A 0005248b pX3E*
+A 00052688 (/q8	
+A 000526c4 qb 1B.?N
+A 0005298a i$!2k
+A 000529c3 bL!'V
+A 00052c85 VE\@Q@}
+A 00052d62 a5sOm
+A 00052db7 '#rmZ
+A 00052e99 ;|+ud
+A 00052f91 S`#&?
+A 0005306e D, "}^
+A 00053168 +jDDm
+A 000532fd \v%%H
+A 00053320 @!D6$
+A 000534c3 1IWZO
+A 000534d5 1jiEMI
+A 0005361f aJA~"
+A 0005364d rv]1( 
+A 00053695 ]1[R!
+A 00053785 .B[=w	
+A 00053791 \KBr0
+A 000537b6 ykqiV
+A 000537fb l6}-SI
+A 0005389b zm$Et&
+A 000538b3 :usgO
+A 00053a59 4"Ce1)
+A 00053a69 &A"Dm
+A 00053c9b !{JJ5
+A 00053d23 @#g[:
+A 00053dba XF=G]
+A 00053dda z[W((+
+A 00053eae ]TFVE
+A 00053ed2 1Yt ,
+A 00053fbf lyB@nw
+A 00053fe9 0Ko	B
+A 0005417b 	_(7u
+A 000541a5 ~&imzg
+A 00054320 VJV<A
+A 000545bb 0af5n
+A 000545ce v-+R1
+A 00054696 iiTn	
+A 000546b5 lUi<)
+A 00054704 /GZh0N
+A 00054799 Y*!b:
+A 000547d2 (r>	U
+A 0005495d yi0xRBN
+A 00054aac *jz34
+A 00054de5 rDa~9
+A 00054e24 V|#*kSp
+A 00054e6c +\z"y
+A 00054ea1 JXh2(x_p
+A 00054ec3 h=xJy
+A 00054f11 C_:/?
+A 00054fa1 j<X/k|
+A 00054fbf GdYQ8Kz
+A 00055038 |\ 4!H
+A 0005504a :w;_H
+A 0005505b 1}tj`
+A 000550c9 ddvtKL
+A 000550da #&;rB
+A 0005515f e:pj>c
+A 00055166 .1m{C
+A 0005531c UyFMS
+A 0005548a 6xpW\
+A 000555e1 whI:y93`
+A 00055770 iz"T{C
+A 0005579d |}#[W
+A 0005598f G%8h_a
+A 00055a3e n3;V'
+A 00055a50 )1WG5
+A 00055a94 Lcv`?
+A 00055c47 p(M5_I
+A 00055d80 o* &~
+A 00056005 w,ow%<
+A 000562c3 $G3yit
+A 000563ff J[q's7
+A 0005647f Wdwf,
+A 0005654b s<#w3xX
+A 00056670 g11a1
+A 0005678f (Rd	k
+A 00056921 7$PKg
+A 00056ba7 _lv|F@
+A 00056c02 OVNJ'a]+
+A 00056e18 eB&[}RT
+A 00056fa2 +[eY2
+A 0005701c g%}ld
+A 00057057 	!+ g
+A 00057123 %V/Nk!
+A 0005724a okek[
+A 00057294 m0ay[
+A 000573b6 ;@+oOU
+A 0005744e d 4P)
+A 00057458 uQv}?B
+A 0005756c ?FuoQ
+A 000576a7 HN<I+
+A 000576bd Z>yMFG
+A 000576e6 >kx%d
+A 000578aa VQgBQ;
+A 00057902 (y\$O
+A 0005796f &q+#T
+A 00057a60 fy~KRd
+A 00057a79 D?Z ]P
+A 00057a92 "{gTs
+A 00057b12 @rc\Z
+A 00057b98 <<lvp
+A 00057b9e n?JK}2
+A 00057c98 oo\lq
+A 00057cd9 T:<L#?
+A 00057cf2 568t~
+A 00057d4c Shy$D
+A 00057e30 t8k+o
+A 00057e49 _k:x`z
+A 00057ec5 !Hm&?R
+A 00057f28 ?\QP1#
+A 000581f6 KEz%i
+A 0005829a  ,=~L
+A 000582f8 x	;}&
+A 0005830f s}$9II
+A 00058386 :q3Zl^
+A 0005856d qS\z?
+A 0005883b F;<m5
+A 00058850 ^0bVz'
+A 00058889 W(Mff
+A 0005889e btTqQ
+A 000589e4 _h3Vn$(
+A 00058a3a $=nZ2
+A 00058c33 OT+}y
+A 00058df0 ]$96g
+A 00058f02 NaAGbYj[
+A 00058faa v=/$Qy
+A 00059072 J g^V!%O
+A 000593bb .,GrU
+A 000593e4 I|hT8
+A 0005944e ,n1-'
+A 0005948a d&HU?
+A 00059527 ~L}bT6F
+A 00059554 g}rUsB
+A 00059650 ~J#~R
+A 00059a2b g:GSd
+A 00059a9e R!".tN
+A 00059b01 /S:N]:
+A 00059c8f *4oX*j 
+A 00059ce8 Z1<C0J
+A 00059d46 C#E#W
+A 00059d87 TN*~#h
+A 00059da1 g-f@2
+A 00059e7f 5@83^
+A 00059f7a _6ZLJc
+A 0005a1ce +[g3R
+A 0005a2b9 Vzc{\
+A 0005a434 J{R3U
+A 0005a447 Sz	aH
+A 0005a47e z$+cej
+A 0005a9c6 }5}~t
+A 0005a9f0 G~iF /
+A 0005aae0 (,PHu
+A 0005ac69 {/W-=!
+A 0005ac70 44Aq 
+A 0005ad0c 0~xGN
+A 0005ad3e :DV^,SK1
+A 0005ae70 g=$*>
+A 0005ae9e #n$+>
+A 0005af7b crm*W
+A 0005b013 c36ux
+A 0005b05e AA=1HB
+A 0005b080 '9U7$
+A 0005b113 ;2}Y7
+A 0005b20e a`7fl\_
+A 0005b563 yS~?u
+A 0005b5a3 {/pF^
+A 0005b877 LvWeM
+A 0005b9c4 /Fqg;
+A 0005bbf5 I0}ft
+A 0005bcc7 |`CkQ,~
+A 0005bee4 lEG{4G
+A 0005bfbb IQB[bX
+A 0005bfc5 |)&q,B
+A 0005c02f WE8YbLR
+A 0005c1af cEB2$l
+A 0005c1f4 h*c<>
+A 0005c432 j#7JJ
+A 0005c4bf =	e|(
+A 0005c621 ]]-5R	
+A 0005c6da wwYs`
+A 0005c70e 'g"X3
+A 0005c740 3DHY|E
+A 0005c74f 	v+X=M
+A 0005c771 V\QA&
+A 0005c7ec Tg3SD
+A 0005c844 X*K!0
+A 0005c917 .0bL$!
+A 0005ca02 [;rk9i
+A 0005ca29 _P3S9
+A 0005ca4a gsGo#e
+A 0005cbfb <	X{1
+A 0005cc19 L	8/1
+A 0005cdb6 +Vu+x
+A 0005ceac #fok,G
+A 0005ced3 .E.2|
+A 0005cf3f kr/?M
+A 0005cfc9 	w/rx
+A 0005d07e dN@3:!
+A 0005d0f7 A@k'J
+A 0005d1c7 -M5lO3
+A 0005d1d7 M=4`r1a
+A 0005d20c Zc60]o
+A 0005d264 ?N$R7
+A 0005d33f mb'r6
+A 0005d3bb "=[ C
+A 0005d3d0 F[&p?
+A 0005d4cf cMUY+
+A 0005d4f3 %M(rW
+A 0005d53c ?*iqP(
+A 0005d594 3^mvJ?
+A 0005d5bd :t%"&
+A 0005d5cd H+;"]
+A 0005d6d2 BK/m1
+A 0005d72d .e^~$
+A 0005d84b ]:6]'f
+A 0005d900 wj&.P*>
+A 0005da52 U~)to
+A 0005daef fYh,419ptI
+A 0005db3d 6JnFcB
+A 0005dd09 f%Jx"
+A 0005dd4d wg"bv
+A 0005df9c '[G]Y
+A 0005dfc3 *b-}>
+A 0005e065 W@:?O
+A 0005e126 J1R(E
+A 0005e1e6 zbue*
+A 0005e398 #q/$^
+A 0005e4b6 (~;Fu\
+A 0005e5bc Hh 4B
+A 0005e5d9 w@sGS%
+A 0005e67d }O21 
+A 0005e6b7 4uu)`
+A 0005e6f9 "fHSpL
+A 0005e71b SwzT 
+A 0005e759 ^<unft
+A 0005e86f `|_Yy"
+A 0005e8ba _}*U#
+A 0005e8f6 `>{k%
+A 0005e9e3 z5>zX
+A 0005ea9a ,MY+5
+A 0005eaff 9^qT{
+A 0005eb71 ,,J'h(
+A 0005ec2e F $A9
+A 0005ee1a cIjFx
+A 0005ee66 AG0ua
+A 0005eecc qaxx>
+A 0005ef96 	p&LZ
+A 0005f0ee G%F|"R
+A 0005f187 M%x23&
+A 0005f37d 5D{fK
+A 0005f653 <BGg3
+A 0005f6e9 _*LwS
+A 0005f72b |zz}0
+A 0005f79a |	yGx
+A 0005f910 <iw+1
+A 0005fb12 >9.G=
+A 0005fcc8 fZ@	G
+A 0005fcfd I2ULy
+A 0005fd27 Bo$-x
+A 0005fd2f sk]q<
+A 0005fd45 B@~<c
+A 0005fdde zR:Eud
+A 0005fdf5 am'(;
+A 0005fefb .?F?[
+A 0005ff59 n'%_L
+A 0006003d *wye:
+A 00060083 2%G@!
+A 000601ff +#*Jt
+A 0006038b omxjB
+A 000603df Z[:F&
+A 000605af E_.<s
+A 0006065c w)n_ob
+A 00060730 +1S)oL
+A 000607c4 ._]8R
+A 000607ce )o9A&
+A 000608a7 \	".)
+A 00060a1f /`*Q`
+A 00060a49 JLG7D
+A 00060aa1 wgY<=
+A 00060c12 sC,{s
+A 00060c6e c,;K:
+A 00060cbb h;k.E
+A 00060d1b .cze^
+A 00060d80 meUGP
+A 00060ea9 4TM&R:)I
+A 00060f77 2+l2k
+A 00060f85 /:`nl
+A 00061058 A%w"D
+A 000611ef Ae)x;X
+A 000613aa U&m:bJ
+A 00061515 :*2,z;
+A 00061663 #B={Q
+A 000616f2 0EBdB
+A 0006172f r|[^l
+A 00061836 >R2ou
+A 000618fb 58_M<
+A 000619f8 	k0,9
+A 00061a66 1+DRi
+A 00061ab6 MIg?Jc~
+A 00061ac5 9T+*n
+A 00061bef @.ye.
+A 00061dcb eXetE
+A 00061dd1 8%j`dS
+A 00061f57 #+6&,/}
+A 00061f90 h23I	
+A 00062069 :+]4G
+A 0006208b `zW73p
+A 00062119 m$C7"
+A 000621b9 |:AuQ
+A 00062256 fpuE$
+A 000622ea H;y#hZv$
+A 000622f6 6*aPNx
+A 0006245d EZF>_
+A 0006249d KCjlI
+A 000624d8 Bra3s
+A 00062589 3J[l5
+A 000626c7 ti>o	
+A 000626fc r%``v
+A 000628f1 U9J',K
+A 000628f9 ]-y!49i
+A 0006290d (R-@rVc
+A 0006298b #wTc{
+A 00062a0b 1S$Q	
+A 00062ae2 W,4fAP6@
+A 00062b14 #IQ$;
+A 00062bf8 p#PfR
+A 00062c6a tUv5h
+A 00062c98 xN@`j
+A 00062f99 y5$c708
+A 00062fa8 0bm?/
+A 00063047 >GgcSz
+A 0006316a )'P[X
+A 000631c4 LLvYg
+A 00063223 <jQ}M_
+A 000634a7 RU;k^??
+A 00063564 t7;z}
+A 000637c1 d/\cqx
+A 000638b4 @:NV>
+A 000638c4 ^@^!W
+A 000638ed :e8}Y
+A 00063ada 32qd:
+A 00063ae3 =}aYu
+A 00063b67 _.aiGtVr
+A 00063b98 5_<}b:~
+A 00063c75 >xQsibi
+A 00063c80 X,!rk+
+A 00063daf LJUH"
+A 00063dbd 1SFT#
+A 00063eb1 4>hJ'8
+A 00063f4f IQwcsm
+A 000640ad q./#b
+A 000640fd 9.Bno
+A 000645f8 KERNEL32.DLL
+A 00064605 USER32.dll
+A 00064612 LoadLibraryA
+A 00064620 GetProcAddress
+A 00064630 MessageBoxA
+A 000648b2 HLVDD.dll
+A 000648bc HLDispatch
+A 000648c7 HLInit
+A 000648ce HLM_CHECKALLSLOTS
+A 000648e0 HLM_CHECKCOUNTER
+A 000648f1 HLM_CHECKEXPDATE
+A 00064902 HLM_CHECKSLOT
+A 00064910 HLM_FREESLOT
+A 0006491d HLM_GETRUSINFO
+A 0006492c HLM_ISRUSHL
+A 00064938 HLM_LOGIN
+A 00064942 HLM_LOGOUT
+A 0006494d HLM_OCCUPYSLOT
+A 0006495c HLM_WRITELICENSE
+A 0006496d HLRegisterInit
+A 0006497c HLVDDGetVersion
+A 0006498c HL_ABORT
+A 00064995 HL_ACCINF
+A 0006499f HL_AVAIL
+A 000649a8 HL_CALC
+A 000649b0 HL_CODE
+A 000649b8 HL_ERRMSG
+A 000649c2 HL_ERRMSGB
+A 000649cd HL_HLSVERS
+A 000649d8 HL_LMLOGIN
+A 000649e3 HL_LOGIN
+A 000649ec HL_LOGOUT
+A 000649f6 HL_MAXUSER
+A 00064a01 HL_MEMINF
+A 00064a0b HL_OFF
+A 00064a12 HL_ON
+A 00064a18 HL_PORTINF
+A 00064a23 HL_RD
+A 00064a29 HL_READ
+A 00064a31 HL_READBL
+A 00064a3b HL_READID
+A 00064a45 HL_SELECT
+A 00064a4f HL_SERVERLICENSES
+A 00064a61 HL_SSUBINF
+A 00064a6c HL_SUBINF
+A 00064a76 HL_SUBLOG
+A 00064a80 HL_USERINF
+A 00064a8b HL_VERSION
+A 00064a96 HL_WR
+A 00064a9c HL_WRITE
+A 00064aa5 HL_WRITEBL
+A 00064ab0 INT_OFF
+A 00064ab8 INT_ON
+A 00064abf K_EYE
+A 00064ac5 LT_ABORT
+A 00064ace LT_AVAIL
+A 00064ad7 LT_LOGIN
+A 00064ae0 LT_LOGOUT
+A 00064aea LT_PORTINF
+A 00064af5 LT_READ
+A 00064afd LT_READBL
+A 00064b07 LT_VERSION
+A 00064b12 LT_WRITE
+A 00064b1b LT_WRITEBL
+A 00064b26 _API_DLL
+A 0006541d ._Z*M
+A 00065437 {H,08D
+A 00065514 +XQ<_
+A 00065631 QYk[:
+A 00065695 t{F=]
+A 000656d3 y4M-N
+A 000657c9 e1'"C%
+A 000658be y+}!M
+A 000658d2 PVn"e
+A 00065986 |~G,>
+A 00065aa4 kernel32
+A 00065ab0 user32
+A 00065b26 GetProcAddress
+A 00065b38 GetModuleHandleA
+A 00065b4a KERNEL32.dll
+A 00065b5a MessageBoxA
+A 00065b66 USER32.dll
+A 00065b88 J2O2U2Z2`2l2s2
+A 00065bc3 31373R3X3^3
+A 00065e3b lsj%=
+A 000663fc ip}%RL
+A 00066566 M/T/.
+A 000665c8 gkgUL
+A 00066665 ;sf1z
+A 000666ef 1^b)Gv
+A 0006677f WtPI1&
+A 00066844 877Ua
+A 00066ba0 i{R1,
+A 00066c56 }oVL|
+A 00066cd2 "zLQq
+A 00066d8e @gFRJ
+A 00066e83 T{sbR
+A 00066f45 HKv	8m
+A 0006704d T}dij
+A 0006719a b~Y{m
+A 000671c5  uA_c
+A 0006722f %%.Qv
+A 0006727c Q	AeI
+A 0006730e 	'-t&
+A 0006738c Ii-ca
+A 00067392 2EcD>O~
+A 000673aa tw-+L
+A 00067660 DZOk?
+A 00067719 ]d_7{
+A 000677f9 OUOad
+A 00067867 cZSk 
+A 000679f7 E"kZ=dEs
+A 00067a60 qNi&4
+A 00067a94 X^G>7
+A 00067b52 2;H|Xg
+A 00067b85 aEto=
+A 00067c1c o8Wd!
+A 00067c85 YJ{~9
+A 00067d24 7C7\Re
+A 00067fb4 0	q"Og_+a
+A 0006807a 8*DF<
+A 0006816a :pg$;Z
+A 00068199 {4I5MG
+A 000681ca ;oj*<B
+A 00068262 2X[8<
+A 0006828e PNV&8
+A 00068295 78^uS
+A 0006867d 9ev/%2
+A 000688da :F0pu
+A 00068940 ETz^G
+A 00068ae9 D|	{[+
+A 00068b5f U0;/$
+A 00068bfe x!dBjQ
+A 00068c0e  I>/*
+A 00068dd7 g*b		
+A 00068e39 M}2:B)
+A 00068f41 0OT%n
+A 00068fd0 3[gce
+A 0006901e t	~tY
+A 000690b1 AqG^F.h
+A 0006917b 4Dmhgj
+A 000691ef :ml3:
+A 00069259 qIkp%
+A 00069293 	<o&j/
+A 000692c7 QX|"]b
+A 00069541 xVmU\
+A 000695c8 ~*;R-+<!
+A 00069723 gWrX	
+A 000698ef `|B.}j
+A 00069903 &)Us'
+A 00069c8f n0Q, %q
+A 00069f53 j^G:Fi
+A 0006a060 %"[nIMVr
+A 0006a173 2kv+Y
+A 0006a334 ~$x4}Ms4
+A 0006a693 nBqC-
+A 0006a6a9 X^k=s
+A 0006a6b3 #x{*z
+A 0006a704 DmVKP0xr<'
+A 0006a7ce 3%P."
+A 0006a855 l"1VT
+A 0006aa3a kbOi1\h
+A 0006aba4 y6UOOZ
+A 0006ad28 0~?5)
+A 0006b1ae 4JXq3
+A 0006b261 {wKC4
+A 0006b2e7 'F9_Z
+A 0006b404 	``_	
+A 0006b462 E852*
+A 0006b4ae bZ0Ap2
+A 0006b4d7 Qr'wX|
+A 0006b9e7 eOwvtD&
+A 0006bacd z?qN#u
+A 0006bc5d dq>'(
+A 0006bce5 THY.l
+A 0006bcf6 /q%eh
+A 0006bda2 Gbr.J
+A 0006be96 	76 g
+A 0006bf3c ev@3n
+A 0006c177 O3r1"
+A 0006c1b3 jXBm0
+A 0006c244 4Q<I}
+A 0006c265 f!$:s
+A 0006c374 dwh5y
+A 0006c3a3 0x6t2
+A 0006c40b =Ro@<(
+A 0006c42c ]LabR5B
+A 0006c4d0 7\N+AQ
+A 0006c501 7bvpTc_d$
+A 0006c54c *.r<J
+A 0006c656 ,E(\c
+A 0006c982 ]@m-;
+A 0006c9aa N*NZo~
+A 0006cbfa (N;d$5
+A 0006cc4b _HjeI
+A 0006cc69 ))#^Q;
+A 0006cc90 u20sMd
+A 0006cce7 Yw{hr;
+A 0006cdfc H+a4a
+A 0006ce31 )DR|2
+A 0006cf17 59-qZ
+A 0006cf1d 6Z$cQ
+A 0006cfc3 7z%pmG#
+A 0006d220 ,V[?"
+A 0006d285 BTPMy
+A 0006d2cd ~_rN!<
+A 0006d37e T",?JG
+A 0006d471  2!U,@
+A 0006d4a2 HeM}Eg
+A 0006d516 M5<Y}Y
+A 0006d52c G32b[9
+A 0006d61a 4@`8D
+A 0006d7a0 ~d!*2
+A 0006d8e7 X6aFF
+A 0006d99b [OUmw
+A 0006db01 ``pA9
+A 0006dd0b r,8Z&>
+A 0006dd91 Fv1\}
+A 0006de92 ,`_3|
+A 0006dec4 FR]B7
+A 0006df03 `,r<i
+A 0006df12 HNTd+q>B
+A 0006df21 jP9?4
+A 0006df51 _b0ON
+A 0006df65 "Vhj-
+A 0006dfb5 1,F}k
+A 0006e029 |xk^4f
+A 0006e0ab YuUY:
+A 0006e0c8 U&dc	
+A 0006e27d "E(o}b
+A 0006e2e1 nd2faC
+A 0006e2eb "l+:'
+A 0006e5f6 jLsPf
+A 0006e678 V>iKf|X
+A 0006e6ee :Lp9{
+A 0006e758 q7)N.P
+A 0006e836 IPD^%
+A 0006e8c7 lU8s]
+A 0006eaf2 3Hi4wb
+A 0006ec3a P$8eM"
+A 0006ec85 UK'FJQ
+A 0006eeab \O]1P]_4W
+A 0006ef36 ]#lB0
+A 0006ef70 BG%*Qc@
+A 0006ef9e {xZ,7
+A 0006efbb *]Ofn
+A 0006f042 nim1%
+A 0006f068 ,3`(b
+A 0006f13b lxS5:k
+A 0006f276 SJcR6!
+A 0006f413 CW6;1
+A 0006f429 Z4I	`
+A 0006f5d1 )fjFn
+A 0006f629 /| cfx
+A 0006f692 6M?^}2*e
+A 0006f7b6 #lp]u
+A 0006f8c8 m#yqx
+A 0006f916 ul_	F
+A 0006f998 xdI-M
+A 0006fa0b Z{J@KUB
+A 0006fbec 2pV,)Wd1bL
+A 0006fbfd {~)Rz
+A 0006fcc0 #6I-\
+A 0006fd0d Z9zlm
+A 0006fef4 ddM}V
+A 0006ffca w>i&nC
+A 0007000f =a<	w
+A 00070039 >~N?GZ
+A 0007012e ob52]
+A 00070144 uL6}7D
+A 0007024b K0Z/O
+A 000702a2 S[lQQ
+A 00070380 Efn4N
+A 00070508 -tm~Nm=
+A 0007056c JlI$NJiC
+A 0007064e qC<3M
+A 000706a3 Z9oD!
+A 0007071f 50o42vO
+A 00070759  SjFo}
+A 00070765 vm(Ub
+A 000707ad ta6.4Tlh&7
+A 000707fc 6/qd696
+A 00070928 odqbf
+A 000709be +kV_q[O
+A 00070b0b _:v=}#66
+A 000710e6 {I7I]
+A 000711de -S%Jy
+A 00071217 ]#~dI
+A 000712e5 ulD~q
+A 0007130a eN/2R
+A 000713f9 WiErW
+A 0007150a ][r_QI
+A 0007152f gkTq f
+A 00071729 GBC:$&[
+A 00071808 G>($&
+A 00071946 0Lc;_
+A 00071bd6 ~fK)y3
+A 00071d23 	D+T^
+A 00071d77 6DMQ"E
+A 00071dc6 :W}X.
+A 00071e4e b2U#u
+A 00071fbf AENMX
+A 0007200d U<GL`c
+A 000720bc ~j9<%
+A 00072259 vhFfr
+A 000722c1 @@ljJ
+A 00072396 Rmq?,i
+A 00072408 6D`u(
+A 00072454 s`*P;?
+A 0007255f T(@dv
+A 000726fe J=H0b
+A 00072723 :LE>|ZP
+A 00072734 rPp'F
+A 0007281c %%@:w@G,!8
+A 0007287e #Sw J
+A 000728a9 '~/69
+A 000729b8 dPw.(
+A 00072a02 Nc96Nvd%
+A 00072aaf *	?i$
+A 00072b1a ?)U/;
+A 00072c03 PY+\/
+A 00072d3a )BUm\I
+A 00072df2 #]dz2
+A 00072e31 +'dKbv
+A 00072f5f r[r)}
+A 00072f73 hTG<ER
+A 0007306f Hh*^sf
+A 000730c4 e-mf)
+A 000732e6 xQOZp
+A 000733b2 m1Z\Z
+A 000733c1 0.>A|5
+A 000733e7 E&^VA7
+A 000733fa bu4`)pCn
+A 0007345e o{5%3
+A 0007349a  9c0R
+A 000734e1 ~O/=V7
+A 00073566 8XA(q
+A 00073617 wb@mh8[
+A 000737cb !I=#{
+A 00073a12 Z0#0H
+A 00073a80 Pde=s*
+A 00073b55 ;DD	u
+A 00073b76 s>jl7
+A 00073bfa jmCOxW
+A 00073cba vG}]	
+A 00073d73 E;nEd
+A 00073dcc 'f"Wj#
+A 00073fb7 t6oo9
+A 00073fc0 ts]p#:4
+A 00073fe1 }V.i}
+A 00074011 x?]SL
+A 00074032 Vw-+D
+A 0007403c s*cfH
+A 00074245 Xia8s
+A 000744ed tDxpq
+A 000746ba O2])g
+A 000748cd nY &;
+A 000749ee _a 9A
+A 00074ac8 *%o\S
+A 00074b9a $as	u
+A 00074c4c FELRI
+A 00074cac 'H{q`
+A 00074d4b 3$`;(c
+A 00074d94 GrlA;tfD
+A 00074e0f 2adm`(}q
+A 00074f9a Y#m<rztM>*`;2
+A 000750bf [f|AE
+A 00075203 L/U02vT
+A 00075346 CZJ]>
+A 0007540e 7/}Y!W
+A 000755da F2w+K
+A 0007567c yd01YV>
+A 000756e3 &S%tk
+A 000757e9 |BnJ.Wg
+A 00075965 .*r2,+
+A 00075b09 E-#K&
+A 00075b73 <F#"LW_+
+A 00075bdf Xf`4@
+A 00075c2a _sb8f+
+A 00075c6b Ey7oPz
+A 00075cab {oo:[sH!
+A 00075d4c /F#mem
+A 00075e57 \r"9E
+A 00075f0e 9kY^Z
+A 00075fa3 !i6!_
+A 000760c9 M(#n3\
+A 00076165 1,qaG
+A 0007667b *I)xw[v
+A 000766a2 MZx@#X
+A 000767f3 >*Q~s
+A 00076aec 4%?"&
+A 00076afe 	g0n*
+A 00076d67 ]aN#7Ai
+A 00076e14 `-wp=
+A 00076e38 +kTf^
+A 00076ea0 &^b^/
+A 00076ec0 Ad+`ncH(^Y
+A 00076ed7 ?-`jxsh
+A 0007702f jOj4!
+A 000771d8 {0lu9
+A 000772bd HZ7IS
+A 000775d6 deKgb
+A 000777c2 K!MAt{
+A 000779a9 r|MES
+A 00077b62 u"~%g
+A 00077c2d |y,qt
+A 00077c75 y`cJpXv
+A 00077da1 [3[9l
+A 00077de4 v;B2-@
+A 00077f05 e(Mph
+A 00077f0c 'e,)vs
+A 00077f9a c	-`m
+A 00077fbe /07En_
+A 00077fcb ~qhe,f
+A 00078052 (XBgU3
+A 000780d3 ~&{oh
+A 00078126 O)\aR
+A 000781c0 d\fUT
+A 000781cf f6IAp
+A 00078303 #M`l'
+A 00078322 vyR#|V
+A 0007837f .m.&GjCh
+A 000783fa GetVersion
+A 00078406 KERNEL32.dll
+A 00078439 4=5I5Z5u5
+A 00078443 5'6/6S6z6
+A 00078463 9 919:9
+A 00078483 ;9<]<u<
+A 000785ec &9|U^
+A 000787ca  nN	1
+A 00078834 l*DasI\
+A 000788be zPkO2
+A 00078c63 P*vBy
+A 00078ce3 s.K!@3ect
+A 00078cf0 2;EkI
+A 00078df4 U	]m`
+A 00078ef3 5X*0p
+A 00078f29 stPhmb
+A 00078f4f zc<Jo
+A 00078fed eEv.f7
+A 00079018 H&Ijq
+A 000791b2 0]pn:
+A 000791c9 n]\?G5J
+A 00079256 /`?-H
+A 00079541 xF:-)
+A 00079561  G$Wt
+A 000795f8 i+dSpw
+A 00079628 ^kqy0
+A 0007988b >kV;;V
+A 00079a71 ]n2w*w
+A 00079b16 #A.\KE
+A 00079c82 *"<'T
+A 00079cde Ii-j	
+A 00079d0b 5Omz~
+A 00079d2e |7/K\
+A 00079d34 -F8+xzq
+A 00079d42 %J"vg
+A 0007a023 #hYY_
+A 0007a075 q+\2w|vc
+A 0007a1af J{3hu
+A 0007a30c Qr#H&h
+A 0007a37d r-l1*
+A 0007a39b <k8!8
+A 0007a3c1 /A(Ut
+A 0007a438 [9^p>#>
+A 0007a46f ?t\>K
+A 0007a64e 7]j@w
+A 0007a6df i@{<c\
+A 0007a800 FS%0,
+A 0007a97c rAL8H
+A 0007a994 !qK_Z
+A 0007aada ~o/_2
+A 0007ab20 ?r"uU
+A 0007ab3b >C?[e
+A 0007ab5f W4W00
+A 0007ab89 t$5h<\
+A 0007ac33 ?/^eq
+A 0007ae8c jR^$g
+A 0007b019 a+D&c
+A 0007b083 p._MK
+A 0007b26b _=g.`8s4
+A 0007b354 Jrd$[L
+A 0007b48b -	37*0)
+A 0007b4e2 7lES'
+A 0007b5d2 fcGjB
+A 0007b5dc lMcKr\
+A 0007b775 Y9zjh
+A 0007b7ed Y"qLp
+A 0007b7fc 3'ehN
+A 0007b81c @8(M/
+A 0007b8cc a9?Hl
+A 0007b958 K }?)
+A 0007b9f0 krN/5
+A 0007baf4 a%%b3!
+A 0007bbaf |Dh)'
+A 0007bca8 6=5K1E
+A 0007bda1 $X&@#
+A 0007bf11 i&4_ 
+A 0007bffc `sL31
+A 0007c076 	dG)p
+A 0007c0f2 99}Vl
+A 0007c216 _G"xt
+A 0007c3a6 9~M4)
+A 0007c4c7 8v1{$
+A 0007c762 BopF[
+A 0007c889 4F>	H
+A 0007c8bc !SFv.
+A 0007c97a yjlvN
+A 0007c9c4 "|<vX
+A 0007cae6 eNDd.
+A 0007caf7 {qB{xNc
+A 0007cb3a 3I-3n
+A 0007cbcc hKpkgc
+A 0007ccb5 5thF&
+A 0007cda6 A7Iu?>
+A 0007cdc4 0z`'8
+A 0007cdd2 f9T;U
+A 0007cf0d )U1Mw5
+A 0007cfa5 xSV56J]
+A 0007cfae \G4	\Xhd
+A 0007cfcb !2'8[;e
+A 0007cfe0 nPqTHw
+A 0007d010 V8 BzK
+A 0007d182 }CfG[a
+A 0007d2a1 V`jh<r
+A 0007d2dd {QB!+
+A 0007d326 izCx,
+A 0007d332 $uG]4
+A 0007d33e (=a.Y
+A 0007d43e o;~s0
+A 0007d8b9 yjk[ +
+A 0007dba8 [.N8B?ph
+A 0007dc76 @<&TG
+A 0007dd3a %D:C<
+A 0007ddb2 @[V-|/
+A 0007de0d o'rXm
+A 0007de5b f% 5EB
+A 0007deb1 H)zabKF
+A 0007df97 3NCH"
+A 0007dfe3 &"?aZ
+A 0007e0bc jU9!cnL
+A 0007e0f7 IO0	f
+A 0007e578 aAN09:E
+A 0007e5a7 []hNS;
+A 0007e5b3 <04H>c
+A 0007e5d5 OE^Hp
+A 0007e5e9 sN25i}
+A 0007e79a MF%\~g
+A 0007e9c6 Edl/.;
+A 0007eadb r#$a/
+A 0007eb2a vjhzX
+A 0007ebbd HjI]n
+A 0007ebdd whwQ@
+A 0007ed07 M_3N3
+A 0007ed42  Fu0&
+A 0007ee28 KERNEL32.DLL
+A 0007ee37 LoadLibraryA
+A 0007ee44 USER32.dll
+A 0007ee51 MessageBoxA
+A 0007ef80 ; HSPCMCIA.INF
+A 0007ef93 ; Windows 95 Setup information file for HASP PCMCIA (PC-Card).
+A 0007efd3 ; Version 1.0, 06-Mai-99
+A 0007efed ; Aladdin
+A 0007effa [Version]
+A 0007f005 Signature=$Chicago$
+A 0007f01a Class=Ports
+A 0007f027 Provider=%String0%
+A 0007f03d [DestinationDirs]
+A 0007f050 DefaultDestDir=17
+A 0007f065 [Manufacturer]
+A 0007f075 %String1%=Std
+A 0007f086 [Std]
+A 0007f08d %String2%=LptPort1,PCMCIA\Aladdin_Knowledge_Systems_Ltd.-PC-CardHASP_V1.1-A809
+A 0007f0df ;---------------- WIN95 specific -----------------
+A 0007f113 [LptPort1]
+A 0007f11f AddReg=Ports.AddReg
+A 0007f134 LogConfig=lsnn
+A 0007f146 [LptPort2]
+A 0007f152 AddReg=Ports.AddReg
+A 0007f167 LogConfig=lsnn
+A 0007f179 ;----------------- WIN NT specific ----------------
+A 0007f1b0 [LptPort1.NT]
+A 0007f1bf AddReg=Ports.AddReg
+A 0007f1d4 LogConfig=lsnn
+A 0007f1e6 [LptPort2.NT]
+A 0007f1f5 AddReg=Ports.AddReg
+A 0007f20a LogConfig=lsnn
+A 0007f21c [LptPort3.NT]
+A 0007f22b AddReg=Ports.AddReg
+A 0007f240 LogConfig=lsnn
+A 0007f252 [LptPort1.NT.Services]
+A 0007f26a AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 0007f2e3 [LptPort2.NT.Services]
+A 0007f2fb AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 0007f374 [LptPort3.NT.Services]
+A 0007f38c AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 0007f405 [Parport_EventLog_Inst]
+A 0007f41e AddReg = Parport_EventLog_AddReg
+A 0007f442 [Parport_EventLog_AddReg]
+A 0007f45d HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\parport.sys"
+A 0007f4d2 HKR,,TypesSupported,0x00010001,7
+A 0007f4f6 [Service_Inst]
+A 0007f506 LoadOrderGroup = System Bus Extender
+A 0007f52c DisplayName    = %Parport.SVCDESC%
+A 0007f550 ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+A 0007f58b StartType      = 1                ; SERVICE_SYSTEM_START (BUGBUG--should be SERVICE_DEMAND_START, 0x3)
+A 0007f5f3 ErrorControl   = 0                ; SERVICE_ERROR_IGNORE (BUGBUG--should be SERVICE_ERROR_NORMAL, 0x1)
+A 0007f65b ServiceBinary  = %12%\parport.sys
+A 0007f67e LoadOrderGroup = Parallel arbitrator
+A 0007f6a6 ;----------------------------------------------------
+A 0007f6dd [Ports.AddReg]
+A 0007f6ed HKR,,NoSetupUI,0,1
+A 0007f701 HKR,,PortSubClass,1,00
+A 0007f71b [lsnn]
+A 0007f723 ConfigPriority=HARDRECONFIG
+A 0007f740 IOConfig=3bc-3be(3ff::),378-37a(3ff::),278-27a(3ff::)
+A 0007f779 [ControlFlags]
+A 0007f78b [Strings]
+A 0007f796 String0="Aladdin Knowledge Systems Ltd."
+A 0007f7c0 String1="Aladdin Knowledge Systems Ltd."
+A 0007f7ea String2="PC-CardHASP (PCMCIA)"
+A 0007f80a String3="PC-CardHASP (PCMCIA)"
+A 0007f82a PortsClassName="PC-CardHASP (PCMCIA)"
+A 0007f851 ;(eof)
+A 0007f860 ; HLPCMCIA.INF
+A 0007f873 ; Windows 95 Setup information file for Hardlock PCMCIA (PC-Card).
+A 0007f8b7 ; Version 1.04, 07-Nov-97
+A 0007f8d2 ; FAST Software Security - Group Aladdin
+A 0007f8fe [Version]
+A 0007f909 Signature=$Chicago$
+A 0007f91e Class=Ports
+A 0007f92b Provider=%String0%
+A 0007f941 [DestinationDirs]
+A 0007f954 DefaultDestDir=17
+A 0007f969 [Manufacturer]
+A 0007f979 %String1%=Std
+A 0007f98a [Std]
+A 0007f991 %String2%=LptPort1,PCMCIA\FAST_Electronic-Hardlock_V1.0-E258
+A 0007f9cf %String3%=LptPort2,PCMCIA\FAST_Electronic-Hardlock_V1.0-9586
+A 0007fa0d %String4%=LptPort3,PCMCIA\Aladdin_Knowledge_Systems_Ltd.-Hardlock_V2.0-73FD
+A 0007fa5c ;---------------- WIN95 specific -----------------
+A 0007fa90 [LptPort1]
+A 0007fa9c AddReg=Ports.AddReg
+A 0007fab1 LogConfig=lsnn
+A 0007fac3 [LptPort2]
+A 0007facf AddReg=Ports.AddReg
+A 0007fae4 LogConfig=lsnn
+A 0007faf6 ;----------------- WIN NT specific ----------------
+A 0007fb2d [LptPort1.NT]
+A 0007fb3c AddReg=Ports.AddReg
+A 0007fb51 LogConfig=lsnn
+A 0007fb63 [LptPort2.NT]
+A 0007fb72 AddReg=Ports.AddReg
+A 0007fb87 LogConfig=lsnn
+A 0007fb99 [LptPort3.NT]
+A 0007fba8 AddReg=Ports.AddReg
+A 0007fbbd LogConfig=lsnn
+A 0007fbcf [LptPort1.NT.Services]
+A 0007fbe7 AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 0007fc60 [LptPort2.NT.Services]
+A 0007fc78 AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 0007fcf1 [LptPort3.NT.Services]
+A 0007fd09 AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 0007fd82 [Parport_EventLog_Inst]
+A 0007fd9b AddReg = Parport_EventLog_AddReg
+A 0007fdbf [Parport_EventLog_AddReg]
+A 0007fdda HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\parport.sys"
+A 0007fe4f HKR,,TypesSupported,0x00010001,7
+A 0007fe73 [Service_Inst]
+A 0007fe83 LoadOrderGroup = System Bus Extender
+A 0007fea9 DisplayName    = %Parport.SVCDESC%
+A 0007fecd ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+A 0007ff08 StartType      = 1                ; SERVICE_SYSTEM_START (BUGBUG--should be SERVICE_DEMAND_START, 0x3)
+A 0007ff70 ErrorControl   = 0                ; SERVICE_ERROR_IGNORE (BUGBUG--should be SERVICE_ERROR_NORMAL, 0x1)
+A 0007ffd8 ServiceBinary  = %12%\parport.sys
+A 0007fffb LoadOrderGroup = Parallel arbitrator
+A 00080023 ;----------------------------------------------------
+A 0008005a [Ports.AddReg]
+A 0008006a HKR,,NoSetupUI,0,1
+A 0008007e HKR,,PortSubClass,1,00
+A 00080098 [lsnn]
+A 000800a0 ConfigPriority=HARDRECONFIG
+A 000800bd IOConfig=3bc-3be(3ff::),378-37a(3ff::),278-27a(3ff::)
+A 000800f6 [ControlFlags]
+A 00080108 [Strings]
+A 00080113 String0="FAST Security"
+A 0008012c String1="FAST Security"
+A 00080145 String2="Hardlock PCMCIA (PC-Card)"
+A 0008016a String3="Hardlock PCMCIA (PC-Card)"
+A 0008018f String4="Hardlock PCMCIA (PC-Card)"
+A 000801b4 PortsClassName="Hardlock Card"
+A 000801d4 ;(eof)
+A 000801e0 ; AKS_MF.INF
+A 000801f1 ; Windows 2000 Setup Multifunction INF file for Aladdin PCMCIA (PC-Card).
+A 0008023c ; (c) Copyright 2000 by Aladdin Knowledge Systems
+A 00080274 [Version]
+A 0008027f Signature  =   "$Windows NT$"
+A 0008029e Class      =   MultiFunction
+A 000802bc ClassGUID  =   {4d36e971-e325-11ce-bfc1-08002be10318}
+A 000802f3 Provider   =   %MSFT%
+A 0008030c [Manufacturer]
+A 0008031c %AKS% = Aks
+A 0008032b [ControlFlags]
+A 0008033b ExcludeFromSelect = PCMCIA\FAST_Electronic-Hardlock_V1.0-E258, \
+A 0008037d                     PCMCIA\FAST_Electronic-Hardlock_V1.0-9586, \
+A 000803bf 		    PCMCIA\Aladdin_Knowledge_Systems_Ltd.-Hardlock_V2.0-73FD, \
+A 00080402 		    PCMCIA\Aladdin_Knowledge_Systems_Ltd.-PC-CardHASP_V1.1-A809
+A 00080447 [Aks]
+A 0008044e %Tip1.DevDesc%=Hlhs.mf,PCMCIA\FAST_Electronic-Hardlock_V1.0-E258
+A 00080490 %Tip2.DevDesc%=Hlhs.mf,PCMCIA\FAST_Electronic-Hardlock_V1.0-9586
+A 000804d2 %Tip3.DevDesc%=Hlhs.mf,PCMCIA\Aladdin_Knowledge_Systems_Ltd.-Hardlock_V2.0-73FD
+A 00080523 %Tip4.DevDesc%=hs.mf,PCMCIA\Aladdin_Knowledge_Systems_Ltd.-PC-CardHASP_V1.1-A809
+A 00080577 ;-------------------------------------------------------------------------------
+A 000805c9 ; Hlhs multifunction config
+A 000805e9 [Hlhs.mf]
+A 000805f4 LogConfig=Hlhs.mf.LogConfig
+A 00080613 [Hlhs.mf.Services]
+A 00080627 AddService = mf, 2, mf_Service_Inst
+A 0008064e [Hlhs.mf.HW]
+A 0008065c AddReg=Hlhs.mf.RegHW
+A 00080674 [Hlhs.mf.RegHW]	
+A 00080686 HKR,Child0000,HardwareID,,MF\HLKPCMCIA_DEV0
+A 000806b3 HKR,Child0000,ResourceMap,1,00
+A 000806d5 [Hlhs.mf.LogConfig]
+A 000806ea LogConfig=Hlhs.mf.LogConf
+A 00080707 [hs.mf]
+A 00080710 LogConfig=hs.mf.LogConfig
+A 0008072d [hs.mf.Services]
+A 0008073f AddService = mf, 2, mf_Service_Inst
+A 00080766 [hs.mf.HW]
+A 00080772 AddReg=hs.mf.RegHW
+A 00080788 [hs.mf.RegHW]	
+A 00080798 HKR,Child0000,HardwareID,,MF\HSPCMCIA_DEV0
+A 000807c4 HKR,Child0000,ResourceMap,1,00
+A 000807e6 [hs.mf.LogConfig]
+A 000807f9 LogConfig=hs.mf.LogConf
+A 00080814 ;-------------------------------------------------------------------------------
+A 00080866 ; Multifunction Service 
+A 00080883 [mf_Service_Inst]
+A 00080896 ServiceType    = 1
+A 000808aa StartType      = 3
+A 000808be ErrorControl   = 1
+A 000808d2 ServiceBinary  = %12%\mf.sys
+A 000808f0 LoadOrderGroup = System Bus Extender
+A 00080918 ;-------------------------------------------------------------------------------
+A 0008096a ; Override Config 
+A 00080981 [Hlhs.mf.LogConf]    
+A 00080998 ConfigPriority=DESIRED
+A 000809b0 IOConfig=3bc-3be(3ff::),378-37a(3ff::),278-27a(3ff::)
+A 000809ed ;-------------------------------------------------------------------------------
+A 00080a3f ; Localizable Strings
+A 00080a59 [Strings]
+A 00080a64 AKS            = "Aladdin_Knowledge_Systems_Ltd."
+A 00080a97 MSFT           = "Microsoft"
+A 00080ab5 Tip1.DevDesc   = "Hardlock PCMCIA (PC-Card)"
+A 00080ae3 Tip2.DevDesc   = "Hardlock PCMCIA (PC-Card)"
+A 00080b11 Tip3.DevDesc   = "Hardlock PCMCIA (PC-Card)"
+A 00080b3f Tip4.DevDesc   = "HASP PCMCIA (PC-Card)"
+A 00080b69 MFClassName    = "Multifunction PCMCIA Device Driver"
+A 00080ba0 ; HLNTCARD.INF
+A 00080bb3 ; Windows 2000 Setup information file for Hardlock PCMCIA (PC-Card).
+A 00080bfc ; (c) Copyright 2000 by Aladdin Knowledge Systems
+A 00080c31 [Version]
+A 00080c3c Signature=$Windows NT$
+A 00080c54 Class=Ports
+A 00080c61 Provider=%String0%
+A 00080c77 [DestinationDirs]
+A 00080c8a DefaultDestDir=17
+A 00080c9f [Manufacturer]
+A 00080caf %String1%=Std
+A 00080cc0 [Std]
+A 00080cc7 %String2%=LptPort,MF\HLKPCMCIA_DEV0
+A 00080cee [ControlFlags]
+A 00080cfe ExcludeFromSelect = MF\HLKPCMCIA_DEV0
+A 00080d27 ;----------------- WIN NT specific ----------------
+A 00080d5e [LptPort.NT]
+A 00080d6c AddReg=Ports.AddReg
+A 00080d81 LogConfig=lsnn
+A 00080d93 [LptPort.NT.Services]
+A 00080daa AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 00080e23 [Parport_EventLog_Inst]
+A 00080e3c AddReg = Parport_EventLog_AddReg
+A 00080e60 [Parport_EventLog_AddReg]
+A 00080e7b HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\parport.sys"
+A 00080ef0 HKR,,TypesSupported,0x00010001,7
+A 00080f14 [Service_Inst]
+A 00080f24 LoadOrderGroup = System Bus Extender
+A 00080f4a DisplayName    = %Parport.SVCDESC%
+A 00080f6e ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+A 00080fa9 StartType      = 1                ; SERVICE_SYSTEM_START (BUGBUG--should be SERVICE_DEMAND_START, 0x3)
+A 00081011 ErrorControl   = 0                ; SERVICE_ERROR_IGNORE (BUGBUG--should be SERVICE_ERROR_NORMAL, 0x1)
+A 00081079 ServiceBinary  = %12%\parport.sys
+A 0008109c LoadOrderGroup = Parallel arbitrator
+A 000810c4 ;----------------------------------------------------
+A 000810fb [Ports.AddReg]
+A 0008110b HKR,,NoSetupUI,0,1
+A 0008111f HKR,,PortSubClass,1,00
+A 00081139 [lsnn]
+A 00081141 ConfigPriority=DESIRED
+A 00081159 IOConfig=3bc-3be(3ff::),378-37a(3ff::),278-27a(3ff::)
+A 00081194 [Strings]
+A 0008119f String0="Aladdin Knowledge Systems"
+A 000811c4 String1="Aladdin Knowledge Systems"
+A 000811e9 String2="Hardlock PCMCIA (PC-Card)"
+A 0008120e PortsClassName="Hardlock Card"
+A 0008122e ;(eof)
+A 00081238 ; HSNTCARD.INF
+A 0008124b ; Windows 2000 Setup information file for HASP PCMCIA (PC-Card).
+A 00081290 ; (c) Copyright 2000 by Aladdin Knowledge Systems
+A 000812c5 [Version]
+A 000812d0 Signature=$Windows NT$
+A 000812e8 Class=Ports
+A 000812f5 Provider=%String0%
+A 0008130b [DestinationDirs]
+A 0008131e DefaultDestDir=17
+A 00081333 [Manufacturer]
+A 00081343 %String1%=Std
+A 00081354 [Std]
+A 0008135b %String2%=LptPort,MF\HSPCMCIA_DEV0
+A 00081381 [ControlFlags]
+A 00081391 ExcludeFromSelect = MF\HSPCMCIA_DEV0
+A 000813b9 ;----------------- WIN NT specific ----------------
+A 000813f0 [LptPort.NT]
+A 000813fe AddReg=Ports.AddReg
+A 00081413 LogConfig=lsnn
+A 00081425 [LptPort.NT.Services]
+A 0008143c AddService = Parport, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 000814b5 [Parport_EventLog_Inst]
+A 000814ce AddReg = Parport_EventLog_AddReg
+A 000814f2 [Parport_EventLog_AddReg]
+A 0008150d HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\parport.sys"
+A 00081582 HKR,,TypesSupported,0x00010001,7
+A 000815a6 [Service_Inst]
+A 000815b6 LoadOrderGroup = System Bus Extender
+A 000815dc DisplayName    = %Parport.SVCDESC%
+A 00081600 ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+A 0008163b StartType      = 1                ; SERVICE_SYSTEM_START (BUGBUG--should be SERVICE_DEMAND_START, 0x3)
+A 000816a3 ErrorControl   = 0                ; SERVICE_ERROR_IGNORE (BUGBUG--should be SERVICE_ERROR_NORMAL, 0x1)
+A 0008170b ServiceBinary  = %12%\parport.sys
+A 0008172e LoadOrderGroup = Parallel arbitrator
+A 00081756 ;----------------------------------------------------
+A 0008178d [Ports.AddReg]
+A 0008179d HKR,,NoSetupUI,0,1
+A 000817b1 HKR,,PortSubClass,1,00
+A 000817cb [lsnn]
+A 000817d3 ConfigPriority=DESIRED
+A 000817eb IOConfig=3bc-3be(3ff::),378-37a(3ff::),278-27a(3ff::)
+A 00081826 [Strings]
+A 00081831 String0="Aladdin Knowledge Systems"
+A 00081856 String1="Aladdin Knowledge Systems"
+A 0008187b String2="HASP PCMCIA (PC-Card)"
+A 0008189c PortsClassName="HASP Card"
+A 000818b8 ;(eof)
+A 000818c0 ; akspccard.inf
+A 000818d4 ; Windows 2000 & XP Setup information file for Aladdin Hasp & Hardlock PCMCIA (PC-Card).
+A 00081931 ; (c) Copyright 2000 - 2001 by Aladdin Knowledge Systems
+A 0008196d [Version]
+A 00081978 Signature=$Windows NT$
+A 00081990 ;Class=Ports
+A 0008199e Provider=%String0%
+A 000819b2 DriverVer=12/20/2001,1.01
+A 000819cd catalogfile=akspccard.cat
+A 000819e8 ;ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+A 00081a1b Class=PCMCIA
+A 00081a29 ClassGUID={4d36e977-e325-11ce-bfc1-08002be10318}
+A 00081a5d ;;****************************************************************************
+A 00081aad ;; Source Files
+A 00081abe ;;****************************************************************************
+A 00081b0e [sourcedisksnames]
+A 00081b22 1=%INSTDISK%,,,""
+A 00081b37 [SourceDisksFiles]
+A 00081b4b akspccard.sys=1
+A 00081b5e [DestinationDirs]
+A 00081b71 LptPort.CopyList.NT = 10,system32\drivers
+A 00081b9e [LptPort.CopyList.NT]
+A 00081bb5 akspccard.sys,,,0x00000022
+A 00081bd3 [Manufacturer]
+A 00081be3 %String1%=Std
+A 00081bf4 [Std]
+A 00081bfb %Tip1.DevDesc%=LptPort,PCMCIA\FAST_Electronic-Hardlock_V1.0-E258
+A 00081c3d %Tip2.DevDesc%=LptPort,PCMCIA\FAST_Electronic-Hardlock_V1.0-9586
+A 00081c7f %Tip3.DevDesc%=LptPort,PCMCIA\Aladdin_Knowledge_Systems_Ltd.-Hardlock_V2.0-73FD
+A 00081cd0 %Tip4.DevDesc%=LptPort,PCMCIA\Aladdin_Knowledge_Systems_Ltd.-PC-CardHASP_V1.1-A809
+A 00081d2a [ControlFlags]
+A 00081d3a ExcludeFromSelect = PCMCIA\FAST_Electronic-Hardlock_V1.0-E258, \
+A 00081d7c 	                    PCMCIA\FAST_Electronic-Hardlock_V1.0-9586, \
+A 00081dbf 		    PCMCIA\Aladdin_Knowledge_Systems_Ltd.-Hardlock_V2.0-73FD, \
+A 00081e02 		    PCMCIA\Aladdin_Knowledge_Systems_Ltd.-PC-CardHASP_V1.1-A809
+A 00081e47 ;----------------- WIN NT specific ----------------
+A 00081e7e [LptPort.NT]
+A 00081e8c AddReg=Ports.AddReg
+A 00081ea1 LogConfig=lsnn
+A 00081eb1 CopyFiles=LptPort.CopyList.NT
+A 00081ed2 [LptPort.NT.Services]
+A 00081ee9 AddService = akspccard, 0x00000002, Service_Inst, Parport_EventLog_Inst ; Port Driver (function driver for this device)
+A 00081f64 [Parport_EventLog_Inst]
+A 00081f7d AddReg = Parport_EventLog_AddReg
+A 00081fa1 [Parport_EventLog_AddReg]
+A 00081fbc HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\akspccard.sys"
+A 00082033 HKR,,TypesSupported,0x00010001,7
+A 00082057 [Service_Inst]
+A 00082067 DisplayName    = %SVCDESC%
+A 00082083 ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+A 000820bd StartType      = 3                  ; SERVICE_SYSTEM_START (BUGBUG--should be SERVICE_DEMAND_START, 0x3)
+A 00082127 ErrorControl   = 0                 ; SERVICE_ERROR_IGNORE (BUGBUG--should be SERVICE_ERROR_NORMAL, 0x1)
+A 00082190 ServiceBinary  = %12%\akspccard.sys
+A 000821b5 LoadOrderGroup = Parallel arbitrator
+A 000821dd ;----------------------------------------------------
+A 00082214 [Ports.AddReg]
+A 00082224 HKR,,NoSetupUI,0,1
+A 00082238 ;HKR,,PortSubClass,1,00
+A 00082255 [lsnn]
+A 0008225d ConfigPriority=DESIRED
+A 00082275 IOConfig=3bc-3be(3ff::),378-37a(3ff::),278-27a(3ff::)
+A 000822b0 [Strings]
+A 000822bb String0="Aladdin Knowledge Systems"
+A 000822e0 String1="Aladdin Knowledge Systems"
+A 00082305 Tip1.DevDesc   = "Hardlock PCMCIA (PC-Card)"
+A 00082333 Tip2.DevDesc   = "Hardlock PCMCIA (PC-Card)"
+A 00082361 Tip3.DevDesc   = "Hardlock PCMCIA (PC-Card)"
+A 0008238f Tip4.DevDesc   = "HASP PCMCIA (PC-Card)"
+A 000823b9 PortsClassName="Aladdin PC Card"
+A 000823db INSTDISK="Aladdin Install Disk"
+A 000823fc SVCDESC="Aladdin PC Card Key"
+A 0008241b ;(eof)
+A 00082475 !This program cannot be run in DOS mode.
+A 000825f8 .text
+A 0008261f h.rdata
+A 00082647 H.data
+A 00082670 PAGEPARW
+A 00082697 `INIT
+A 000826c0 .rsrc
+A 000826e7 B.reloc
+A 00082757 F0PSh
+A 00082c1e PPT_BREAK_ON_DRIVER_ENTRY - BreakPoint requested
+A 00082c65 hParPWh
+A 00082ffc k:\muell\pcmciazip\drv\akspccard\fdoclose.c
+A 000831bf jPY9H
+A 0008321a j Y9H
+A 0008343a SSSSW
+A 0008384c k:\muell\pcmciazip\drv\akspccard\fdopnp.c
+A 00083939 lhParPj
+A 00083a2f PPPPV
+A 00083aee V(IIW
+A 00083af4 zLt"Iu
+A 00083b0a C`$SW
+A 00083c6f NtRNt
+A 00083cd1 9Atta9
+A 00083d02 ;qt}S
+A 00083ea8 @LSVWj
+A 00083f53 QQSVW
+A 00083f71 w vGV
+A 0008433e k:\muell\pcmciazip\drv\akspccard\utils.c
+A 0008459c ParPS
+A 0008468a CWCSj
+A 00084924 PHASE_INTERRUPT_HOST
+A 0008493c PHASE_DATA_NOT_AVAIL
+A 00084954 PHASE_DATA_AVAILABLE
+A 0008496c PHASE_TERMINATE
+A 0008497c PHASE_REV_TO_FWD
+A 00084990 PHASE_REVERSE_XFER
+A 000849a4 PHASE_REVERSE_IDLE
+A 000849b8 PHASE_FWD_TO_REV
+A 000849cc PHASE_FORWARD_XFER
+A 000849e0 PHASE_FORWARD_IDLE
+A 000849f4 PHASE_SETUP
+A 00084a00 PHASE_NEGOTIATION
+A 00084a14 PHASE_UNKNOWN
+A 00084a24 0x18 - IRP_MN_QUERY_LEGACY_BUS_INFORMATION
+A 00084a50 0x17 - IRP_MN_SURPRISE_REMOVAL
+A 00084a70 0x16 - IRP_MN_DEVICE_USAGE_NOTIFICATION
+A 00084a98 0x15 - IRP_MN_QUERY_BUS_INFORMATION
+A 00084abc 0x14 - IRP_MN_QUERY_PNP_DEVICE_STATE
+A 00084ae4 0x13 - IRP_MN_QUERY_ID
+A 00084afc 0x12 - IRP_MN_SET_LOCK
+A 00084b14 0x11 - IRP_MN_EJECT
+A 00084b28 0x10 - IRP_MN_WRITE_CONFIG
+A 00084b44 0x0F - IRP_MN_READ_CONFIG
+A 00084b60 0x0E - unused Pnp MinorFunction
+A 00084b80 0x0D - IRP_MN_FILTER_RESOURCE_REQUIREMENTS
+A 00084bac 0x0C - IRP_MN_QUERY_DEVICE_TEXT
+A 00084bcc 0x0B - IRP_MN_QUERY_RESOURCE_REQUIREMENTS
+A 00084bf8 0x0A - IRP_MN_QUERY_RESOURCES
+A 00084c18 0x09 - IRP_MN_QUERY_CAPABILITIES
+A 00084c3c 0x08 - IRP_MN_QUERY_INTERFACE
+A 00084c5c 0x07 - IRP_MN_QUERY_DEVICE_RELATIONS
+A 00084c84 0x06 - IRP_MN_CANCEL_STOP_DEVICE
+A 00084ca8 0x05 - IRP_MN_QUERY_STOP_DEVICE
+A 00084cc8 0x04 - IRP_MN_STOP_DEVICE
+A 00084ce4 0x03 - IRP_MN_CANCEL_REMOVE_DEVICE
+A 00084d08 0x02 - IRP_MN_REMOVE_DEVICE
+A 00084d24 0x01 - IRP_MN_QUERY_REMOVE_DEVICE
+A 00084d48 0x00 - IRP_MN_START_DEVICE
+A 00084d70 MFG:IMG;CMD:;MDL:VP0;CLS:SCSIADAPTER;DES:IOMEGA PARALLEL PORT
+A 00084dbf \RSDS
+A 00084dd8 K:\muell\pcmciaZip\drv\akspccard\objfre\i386\akspccard.pdb
+A 00085067 .9M s
+A 0008524a KeInitializeEvent
+A 0008525e IoAttachDeviceToDeviceStack
+A 0008527c IoRegisterDeviceInterface
+A 00085298 IoReleaseRemoveLockEx
+A 000852b0 IofCallDriver
+A 000852c0 IoAcquireRemoveLockEx
+A 000852d8 DbgBreakPoint
+A 000852e8 DbgPrint
+A 000852f4 ExRegisterCallback
+A 0008530a ExCreateCallback
+A 0008531e RtlInitUnicodeString
+A 00085336 RtlCopyUnicodeString
+A 0008534e ExAllocatePoolWithTag
+A 00085366 _allmul
+A 00085370 IoWriteErrorLogEntry
+A 00085388 IoAllocateErrorLogEntry
+A 000853a2 IoReleaseCancelSpinLock
+A 000853bc IoAcquireCancelSpinLock
+A 000853d6 KeSynchronizeExecution
+A 000853f0 IoSetDeviceInterfaceState
+A 0008540c IoDeleteDevice
+A 0008541e IoDetachDevice
+A 00085430 ExFreePoolWithTag
+A 00085444 RtlFreeUnicodeString
+A 0008545c IoWMIRegistrationControl
+A 00085478 ObfDereferenceObject
+A 00085490 KeWaitForSingleObject
+A 000854a8 KeSetEvent
+A 000854b6 IofCompleteRequest
+A 000854cc PoStartNextPowerIrp
+A 000854e2 PoRequestPowerIrp
+A 000854f6 PoSetPowerState
+A 00085508 PoCallDriver
+A 00085518 KeClearEvent
+A 00085528 ZwClose
+A 00085532 IoOpenDeviceRegistryKey
+A 0008554c memmove
+A 00085556 RtlQueryRegistryValues
+A 00085570 ExUnregisterCallback
+A 00085588 IoGetConfigurationInformation
+A 000855a8 IoDisconnectInterrupt
+A 000855c0 KeInitializeDpc
+A 000855d2 IoInitializeRemoveLockEx
+A 000855ee IoCreateDevice
+A 000855fe ntoskrnl.exe
+A 0008560e _except_handler3
+A 00085622 ExReleaseFastMutex
+A 00085638 ExAcquireFastMutex
+A 0008564c HAL.dll
+A 00085656 WmiSystemControl
+A 0008566a WmiCompleteRequest
+A 0008567e WMILIB.SYS
+A 000860b1 343=3R3t3J8S8i8n8u8{8
+A 000860f3 9 9'91969;9B9L9Q9V9]9g9l9q9x9
+A 00086125 : :*:0:6:;:H:O:Y:`:g:n:u:|:
+A 00086157 ;#<1<D<d<
+A 00086167 =">F>R>c>
+A 00086173 >;?^?j?
+A 0008618f 0!0*050Q0b0h0z0
+A 000861a7 1'1N1d1
+A 000861bd 3P3\3
+A 000861c5 4g4r4
+A 000861d7 5B5R5a5h5u5
+A 000861eb 61686B6Y6c6
+A 00086219 ;+<?<
+A 00086225 ="=2=7=B=H=N=X=^=c=i=
+A 0008624f ?Q?\?
+A 00086267 0&0>0^0
+A 00086275 1"1.1
+A 00086285 2J2W2j2
+A 00086291 3,373T3a3
+A 000862af : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 0008650b 020116123848Z0
+A 0008666e 1[0Y04
+A 000866a7 >0!0	
+A 000867a9 1S0Q0,
+A 000867da >0!0	
+A 00086b83 VeriSign Trust Network1
+A 00086ba4 VeriSign, Inc.1,0*
+A 00086bbc #VeriSign Time Stamping Service Root1402
+A 00086bea +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 00086c1a 970512000000Z
+A 00086c29 040107235959Z0
+A 00086c44 VeriSign Trust Network1
+A 00086c65 VeriSign, Inc.1,0*
+A 00086c7d #VeriSign Time Stamping Service Root1402
+A 00086cab +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 00086cf8 h|,-.
+A 00086e34 0p1+0)
+A 00086e40 "Copyright (c) 1997 Microsoft Corp.1
+A 00086e6e Microsoft Corporation1!0
+A 00086e8e Microsoft Root Authority0
+A 00086eaa 971001070000Z
+A 00086eb9 021231070000Z0
+A 00086ed3 "Copyright (c) 1997 Microsoft Corp.1A0?
+A 00086f00 8Microsoft Windows Hardware Compatibility Intermediate CA1
+A 00086f44 Microsoft Corporation110/
+A 00086f63 (Microsoft Windows Hardware Compatibility0
+A 00087064 r0p1+0)
+A 00087071 "Copyright (c) 1997 Microsoft Corp.1
+A 0008709f Microsoft Corporation1!0
+A 000870bf Microsoft Root Authority
+A 00087174 VR\]t
+A 00087217 ;%qh0
+A 00087237 "Copyright (c) 1997 Microsoft Corp.1A0?
+A 00087264 8Microsoft Windows Hardware Compatibility Intermediate CA1
+A 000872a8 Microsoft Corporation110/
+A 000872c7 (Microsoft Windows Hardware Compatibility0
+A 000872f4 010314080000Z
+A 00087303 020412080000Z0
+A 0008732b Washington1
+A 00087340 Redmond1
+A 00087352 Microsoft Corporation1+0)
+A 00087371 "Copyright (c) 2001 Microsoft Corp.1
+A 000873af 2Microsoft Windows Hardware Compatibility Publisher0
+A 000874ab r0p1+0)
+A 000874b8 "Copyright (c) 1997 Microsoft Corp.1
+A 000874e6 Microsoft Corporation1!0
+A 00087506 Microsoft Root Authority
+A 000875a8 iB0iUw
+A 000875fe zm\ob
+A 0008762a VeriSign Trust Network1
+A 0008764b VeriSign, Inc.1,0*
+A 00087663 #VeriSign Time Stamping Service Root1402
+A 00087691 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 000876c1 010228000000Z
+A 000876d0 040106235959Z0
+A 000876eb VeriSign, Inc.1
+A 00087704 VeriSign Trust Network1;09
+A 00087724 2Terms of use at https://www.verisign.com/rpa (c)011'0%
+A 00087762 VeriSign Time Stamping Service0
+A 00087848 TBZze{
+A 000878b9 40200
+A 000878c9 $http://ocsp.verisign.com/ocsp/status0	
+A 00087901 =0;09
+A 00087923 https://www.verisign.com/rpa0
+A 00087992 |z 02
+A 00087a21 0p1+0)
+A 00087a2d "Copyright (c) 1997 Microsoft Corp.1
+A 00087a5b Microsoft Corporation1!0
+A 00087a7b Microsoft Root Authority0
+A 00087a97 970110070000Z
+A 00087aa6 201231070000Z0p1+0)
+A 00087abf "Copyright (c) 1997 Microsoft Corp.1
+A 00087aed Microsoft Corporation1!0
+A 00087b0d Microsoft Root Authority0
+A 00087c72 r0p1+0)
+A 00087c7f "Copyright (c) 1997 Microsoft Corp.1
+A 00087cad Microsoft Corporation1!0
+A 00087ccd Microsoft Root Authority
+A 00087dea Z38nM
+A 00087e25 "Copyright (c) 1997 Microsoft Corp.1A0?
+A 00087e52 8Microsoft Windows Hardware Compatibility Intermediate CA1
+A 00087e96 Microsoft Corporation110/
+A 00087eb5 (Microsoft Windows Hardware Compatibility
+A 00087eec ;%qh0
+A 00087f86 http://www.microsoft.com/hcl/ 0
+A 00087fee bFaC)c$
+A 00088065 VeriSign Trust Network1
+A 00088086 VeriSign, Inc.1,0*
+A 0008809e #VeriSign Time Stamping Service Root1402
+A 000880cc +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.
+A 000880fb zm\ob
+A 00088145 020214082626Z0
+A 00088191 TN6^E
+A 0008827a 0s>m%
+A 00088288 SYSTEM\CurrentControlSet\Services\
+A 000882ac Haspnt
+A 000882b4 Vxd\Hasp95
+A 000882c0 Version
+A 000882c8 Unknown
+A 000882d8 Unknown
+A 000882e0 ImagePath
+A 000882ec Unknown
+A 000882f4 \Parameters
+A 00088300 ComputerType
+A 00088318 ProcessorType
+A 00088328 Unknown
+A 00088330 PortMode
+A 0008833c Normal
+A 00088358 KeySearch
+A 00088364 USB-Parallel
+A 00088374 Parallel
+A 000883a4 Unknown
+A 000883ac AutoDetect
+A 000883f4 PortMode
+A 00088410 ComputerType
+A 00088428 SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers
+A 00088464 HLVDD.DLL
+A 00088474 SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers
+A 000884b0 HLVDD.DLL
+A 000884bc HLVDD.DLL
+A 0008851d !This program requires Microsoft Windows.
+A 000885b9 HASPUT16
+A 000885ca ___EXPORTEDSTUB
+A 000885e2 KERNEL
+A 0008860e A16-bit side of Universal Thunk interface to an Win32s application
+A 00088653 GETUT16VERSION
+A 00088664 UT16INIT
+A 0008866f UT16PROC
+A 00089039   VQRP
+A 00089199 PWSQRV3
+A 00089286 ^ZY[_X
+A 000892b3 `PQRW
+A 0008937a nwipxspx.dll
+A 00089389 IPXInitialize
+A 0008939b IPXGetLocalTarget
+A 000895f0 <	t.&
+A 000897f3 SQRVWQ
+A 00089925 XY_^ZY[
+A 0008992f kernel.dll
+A 0008993c LoadLibraryEx32W
+A 00089951 FreeLibrary32W
+A 00089964 GetProcAddress32W
+A 0008997a CallProc32W
+A 0008998a GetVDMPointer32W
+A 0008999f haspvdd.dll
+A 000899af CALLNEWVDDHASP
+A 00089a9d  "(PU
+A 0008a400 0PRQW
+A 0008a412 _YZXs
+A 0008a745 .N6Vf:Zjr<\ltx
+A 0008a879 wJ)UO
+A 0008a8b3 YT_Y!
+A 0008a991 HASPDOSDRV
+A 0008ad5c }6	O>
+A 0008ad9a :/rO<
+A 0008ade8 :brJ<
+A 0008ae36 :lrJ<
+A 0008af03 r^sYp|h
+A 0008b136 @T{9yw
+A 0008b2a2 dB39Hs
+A 0008b36e 8YlvH
+A 0008b5e3 j@Ec(
+A 0008b6f7 uMlwG
+A 0008b70a p-XC\IWD
+A 0008b782 k"NZ0
+A 0008b8cb KeXoc8
+A 0008ba3b r"PL<>
+A 0008bb38 =_Ck~
+A 0008bbc4 6{Ezwp
+A 0008bca8 @}{Fy!
+A 0008bd5a Tma}p
+A 0008bd92 9t(py
+A 0008bdc0 )!'}Hm
+A 0008be54 VPWT\Z}
+A 0008be79 vdZ_^
+A 0008beab X[YZ_^
+A 0008bec2 t&VRQP
+A 0008bee6 XYZ^>
+A 0008bf31 [_Y[X^VPSQ
+A 0008bf77 [_Y[X^VPSQ
+A 0008bfbd [_Y[X^>
+A 0008bfca tFVPSQ
+A 0008c00c [_Y[X^>
+A 0008c019 tFVPSQ
+A 0008c05b [_Y[X^>
+A 0008c068 tFVPSQ
+A 0008c0aa [_Y[X^VPSQ
+A 0008c0f0 [_Y[X^
+A 0008c0f7 VWRQSP
+A 0008c272 VWRQSP
+A 0008c2cc w0}vm
+A 0008c354 Y!_XO
+A 0008c398 h0}vm
+A 0008c3bb 3qLz3
+A 0008c405 [XY[_^>
+A 0008c412 tDVWSQ
+A 0008c452 [XY[_^>
+A 0008c45f tDVWSQ
+A 0008c49f [XY[_^PR
+A 0008c4bc ZXX[YZ_^
+A 0008c784 A	q{9yw
+A 0008c79c (cL"I
+A 0008c899 1&s3<
+A 0008c8d3 K@X8@AL
+A 0008c8f9 8]rF<
+A 0008c91c |~s"=
+A 0008c9b7 >Qxo{Y
+A 0008cb82 %wUt	
+A 0008cc63 m!O<2
+A 0008cd75 {:y!;
+A 0008cedd WvRqz
+A 0008cee3 g2|*d
+A 0008cefd w;oA	H
+A 0008cf54 u%KvU
+A 0008e72d Aladi
+A 0008f550 QIJEPA
+A 0008f5a3 RfJb+q
+A 0008f620 v-?r$
+A 0008f64f @1/E#
+A 0008f8f4 MEo:x
+A 0008f961 Gy+:W
+A 0008f9fd -H^Fw
+A 0008fa47 L=Gn8
+A 0008fad5 F5QC7
+A 0008fb9d ^XZR[vh
+A 0008fe84  `/v<
+A 0008fe9c ?s{n|m
+A 0008ff52 }Py"T
+A 0009008b ;4:y>
+A 000900e7 _)[3~
+A 000901b8 .~.Gm
+A 000902dd 45GqH*
+A 0009033c 3@|TaYF
+A 00090859 `\;H->T
+A 0009090e >?7J`
+A 00090ace .jft&
+A 00090c74 4JE;*
+A 00090d36 J\v]t}
+A 00090e41 >7A}>
+A 000911ab nWiXhh
+A 00091219 D5WqH
+A 000913f1 s^oXp|h
+A 00091477 lde':q
+A 000914d6 |XwVck
+A 000914fb adZ&:u
+A 00091528 5"J:rZ`
+A 00091624 .j`y}
+A 00091665 W L4R
+A 00091ef1 PZVo2x
+A 00091fbd C:9~8
+A 000921eb :As#t
+A 00092245 D;hSS
+A 000922a9 " 8=0
+A 0009235c {k1p3.
+A 000923d3 4 F=E
+A 000924e0 mT1'2
+A 000925a7 K*ss/Cw,
+A 000925f5 K*@s_
+A 000926b3 /cwLQS
+A 000927f3 K*>s_|o
+A 00092881 C}~3p
+A 000928c6 S_jV2E
+A 00092943 >lb'BY
+A 00092c0c mP5.2
+A 00092f80 >)@q4+
+A 000930a3  FIq;
+A 00093123 3Qlo>&Eh
+A 000932c6 A9cH'
+A 000933ed `	4s+
+A 00093512 _eK;:[
+A 00093572 _eK;:[
+A 000935d2 _eK;:[
+A 00093632 `eK;:[
+A 00093692 `eK;:[
+A 00093777 dtE;<
+A 0009386c >~>Gm
+A 00093a2c UlVSD
+A 00093cc0 3zqAs
+A 00093ce5 $p=FY
+A 00093d20 7zuAw
+A 00093eef eANGy
+A 00093ffa +~9;ra`(
+A 000944fb Wj7/Hb
+A 0009484a ]T(d_
+A 00094851 Y_VH\
+A 00094964 O~.u5
+A 000949bf >nnDs
+A 000949ed x5}E;
+A 00094f4a 5zsAu
+A 000950fd V|GHm
+A 0009524a oNrfJ
+A 000952d4 +zHcD
+A 0009549e M%.mt
+A 00095759 bUvVB
+A 00095775 r~X=P
+A 0009595d t^RQSP
+A 00095964 NeX[YZP
+A 00095a58 EP]_^
+A 00095d50 <<NMSG>>
+A 00095d5a R6000
+A 00095d61 - stack overflow
+A 00095d76 R6003
+A 00095d7d - integer divide by 0
+A 00095d97 R6009
+A 00095d9e - not enough space for environment
+A 00095dc5 R6018
+A 00095dcc - unexpected heap error
+A 00095ded run-time error 
+A 00095dff R6002
+A 00095e06 - floating-point support not loaded
+A 000960d4 VS_VERSION_INFO
+A 0009611c StringFileInfo
+A 00096130 040904e4
+A 00096140 CompanyName
+A 0009614c Aladdin Knowledge Systems.
+A 0009616c FileDescription
+A 0009617c The HASP Universal Thunk for Win32s.
+A 000961a8 FileVersion
+A 000961c0 InternalName
+A 000961d0 HASPUT16
+A 000961e0 LeagalCopyright
+A 000961f0 Aladdin Knowledge Systems Ltd. (c).
+A 00096218 LeagalTrademarks
+A 0009622c HASP is a trademark of Aladdin.
+A 00096250 OriginalFilename
+A 00096264 HASPUT16.DLL
+A 00096278 ProductName
+A 00096284 HASP Universal Thunk DLL
+A 000962a4 ProductVersion
+A 000962c0 VarFileInfo
+A 000962d0 Translation
+A 0009651d !This program cannot be run in DOS mode.
+A 00096628 vxdp9
+A 00096640 PCOD\
+A 000978d7 F@Y^f
+A 00097bbc d<au	
+A 00097bc9 W<Nu	
+A 00097bd6 O<nu	
+A 00097be3 B<Bu	
+A 00097bf0 5<bu	
+A 00097bfd (<Eu	
+A 00097c29 PSQRV
+A 00097c6b ^ZY[X
+A 00097d99 _^ZX]
+A 00097ed4 SQRVW_^ZY[
+A 00097ee0 SQRVW_^ZY[
+A 00098069 \\.\HASP95
+A 00098076 HASP95DL.VXD
+A 00098083 HARDLOCK.VXD
+A 000982bb .N6Vf:Zjr<\ltx
+A 000983ed wJ)UO
+A 00098427 YT_Y!
+A 000989b9 Bloop
+A 00099393 PSQWf>
+A 00099418 _Y[Xf>
+A 000995c5 xD}B~5
+A 0009966d 4t;f>E
+A 000996ac hI6SuCu
+A 000996cc >8|9z;x
+A 000996eb =tFf>E
+A 000996fc |tD}B
+A 000997af 	\4a{
+A 00099800 tzf>E
+A 00099810 AtD}B
+A 00099842 t8f>E
+A 0009987b 	\4a{
+A 000998dd r^sYp|h
+A 000998f2 {WT%G
+A 00099b6a <z|9z9zf>
+A 00099c07 }r{u{ZIB
+A 00099c2b }r{s{Z%B
+A 00099cba u0{P{>bG
+A 00099d70 |9zy:&>K
+A 00099dc3 }X{Y{
+A 00099e36 |9zy:&>K
+A 00099ebd fdaG'
+A 00099f67 }n{gzV?`
+A 00099f98 |9z9zf>
+A 00099fb6 |9z9zfS
+A 00099fe5 }X{X{
+A 0009a005 s	dS~F
+A 0009a014 bE`Ch
+A 0009a1f2 Jg"aG
+A 0009a297 .Qu(u
+A 0009a4b5 eqm1v
+A 0009a581 Hc?moW
+A 0009a692 "QF)F
+A 0009a7c7 9z9zf>
+A 0009a7df :z:b)E
+A 0009a800 lKVCV
+A 0009a85b &K}B}
+A 0009a887 9z9zf>
+A 0009a89f :z:biD
+A 0009a8c0 lKVCV
+A 0009a8de zl|uz
+A 0009a8ff Wk\[i
+A 0009a9ed }n{n|S=%
+A 0009aa0b &K}B}
+A 0009aa18 V{4z>?
+A 0009aa35 &K}B}
+A 0009aa68 e6MGl
+A 0009aa88 lKVCV
+A 0009aab0 Jg")GA
+A 0009aaf8 e6MGl
+A 0009ab18 lKVCV
+A 0009ab31 }n{n|S=
+A 0009ab4f &K}B}
+A 0009abaf }a{hf
+A 0009abce |:z:=f{
+A 0009ac77 pf?Mwl
+A 0009ac9b If<Mwl
+A 0009acf2 !E:C;
+A 0009ad86 r%\6%
+A 0009add6 `EbCe
+A 0009ae2b uas3[
+A 0009af07 D}B}Q
+A 0009af9f S5UkE
+A 0009afb8 ` K\{
+A 0009afdd }u8SU
+A 0009b0a0 9z9z>
+A 0009b0e5 bE`C_
+A 0009b112 GrQY4a{Y
+A 0009b162 /T}@{
+A 0009b1e2 }B{C{
+A 0009b203 ACB]|9z!
+A 0009b243 fXf^e
+A 0009b3a1 DfMfPf
+A 0009b3e6 hHf_f^
+A 0009b417 fXf[fYfZf_f^
+A 0009b438 t-VRQP
+A 0009b463 XYZ^f>
+A 0009b4c8 [_Y[X^VPSQ
+A 0009b525 [_Y[X^VPSQ
+A 0009b582 [_Y[X^f>
+A 0009b592 t]VPSQ
+A 0009b5eb [_Y[X^f>
+A 0009b5fb t]VPSQ
+A 0009b654 [_Y[X^f>
+A 0009b664 t]VPSQ
+A 0009b6bd [_Y[X^VPSQ
+A 0009b71a [_Y[X^fVfWfRfQfSfP
+A 0009b781 fVfWfRfQfSfP
+A 0009b800 [XY[_^VWSQ
+A 0009b85d [XY[_^VWSQ
+A 0009b8ba [XY[_^VWSQ
+A 0009b917 [XY[_^
+A 0009b92c t]VWSQ
+A 0009b985 [XY[_^f>
+A 0009b995 t]VWSQ
+A 0009b9ee [XY[_^f>
+A 0009b9fe t]VWSQ
+A 0009ba57 [XY[_^fXf[fYfZf_f^
+A 0009ba73 f5Wtf
+A 0009ba79 TTf5"
+A 0009badc 5t:f>E
+A 0009bb1e }5{6{
+A 0009bb97 tuf>E
+A 0009bc63 UPQNi
+A 0009bc98 mXo]{
+A 0009bcc8 }Z{[{B
+A 0009bd69 -D C!
+A 0009bd99 I[|9z
+A 0009bdab p=bpT
+A 0009be25 D}B|8B
+A 0009be6c f[fYf
+A 0009be89 {tkf?
+A 0009be90 \D}B~6
+A 0009bea1 {u"f?
+A 0009bea9 D}B|9
+A 0009bf2c }K{K{
+A 0009bf74 |	{	c
+A 0009bf86 0|:z;
+A 0009bf9f u9f>E
+A 0009bfa9 |u.f>
+A 0009bfe0 }@{@{
+A 0009c003 <6|9z9zf>
+A 0009c015 tj|qz
+A 0009c05e }a{ff1{
+A 0009c09a }b{ec
+A 0009c154 2tLf>E
+A 0009c165 ~zD}B}Q
+A 0009c1d8 zD}B}
+A 0009c209 |:z;7
+A 0009c23c wO*aq
+A 0009c2e9 Jg")G
+A 0009c38f |qzYS
+A 0009c3a3 Jg")G
+A 0009c3f5 tvrt>ht
+A 0009c4e9 bE`Ch
+A 0009c513 tfQf>
+A 0009c587 E}B~5:u
+A 0009c5a3 TEnCn
+A 0009c5d7 Jg")G!
+A 0009c63b E}B~5
+A 0009c66a }:{;{"$
+A 0009c744 vr}Y4a{=
+A 0009c761 |9z9zf>
+A 0009c7b3 PErCv
+A 0009c844 }r{u{Z
+A 0009c874 }r{t{Z{
+A 0009c892 }r{r{Z]
+A 0009c9ca }Z{Z{
+A 0009c9fb S}B~5
+A 0009ca55 u*f>E
+A 0009ca80 m2?UGm
+A 0009caa9 |9z9zf>
+A 0009cb21 |9z9zf>
+A 0009cb55 |u(f>
+A 0009cded zWS%G
+A 0009ce44 _^ZY[}h3|+g
+A 0009ce80 G E#"*
+A 0009cec2 k}:z:
+A 0009d096 _Wg!]Yp
+A 0009d0b6 B{:{G
+A 0009d52e <s@vv
+A 0009d655 V{V{>
+A 0009d763 bvZHm8
+A 0009d85b @r1G'
+A 0009d86a bl?Qb
+A 0009d8ea dif#%
+A 0009d9a5 Lf#%O
+A 0009d9b4 Quwt_
+A 0009da1c dif#%
+A 0009dac4 {wH?2
+A 0009dbae WlaS4a{C
+A 0009dbe2 &K}B}
+A 0009dcc2 WlaS4a{C
+A 0009de30 WlaS4a{C
+A 0009dea2 WlaS4a{C
+A 0009df38 9z9zf>
+A 0009df72 &K}B}
+A 0009df8a &K}B}
+A 0009dfa8 &K}B}
+A 0009dfc5 lKVCVRLiz
+A 0009dfe6 Wk\[U
+A 0009e032 &K}B}
+A 0009e0c5 ,'={Zs
+A 0009e0e2 WlaS4a{C
+A 0009e163 6]~j=t%
+A 0009e28c WlaS4a{C
+A 0009e2df |:z:bc
+A 0009e367 lM\.Zl
+A 0009e795 v=f7E
+A 0009ec51 2t'f>
+A 0009ecca 2tDf>
+A 0009ecd5 3t9f>
+A 0009ece0 Lt.f>
+A 0009eceb Mt#f>
+A 0009ed27 fVfWfU
+A 0009ed32 f]f_f^f]
+A 0009ed54 VHASPD  
+A 0009ed80 KeyType
+A 0009edc5 AutoDetect
+A 0009edd0 ComputerType
+A 0009eddd PortMode
+A 0009ee0b UseCLI
+A 0009ee12 UseCompaq
+A 0009ee1c UseUSB
+A 0009ee23 PortDelay
+A 000a0804 GenuineDevil
+A 000a0820 PQRWU
+A 000a088e ]_ZYX
+A 000a0990 GenuineDevil
+A 000a09aa PQRWU
+A 000a0a82 ]_ZYX
+A 000a0b40 8WhPhQ
+A 000a0b90 tBZYX
+A 000a0bc1 X]_ZYX
+A 000a0bd4 ZYXUP
+A 000a0cad ]_ZYX
+A 000a0e61 ,d)0m
+A 000a0f1e Gd[3H
+A 000a101e Gd[3H
+A 000a111e Gd[3H
+A 000a114f QVt3l
+A 000a121e Gd[3H
+A 000a124f QVt3l
+A 000a131e Gd[3H
+A 000a147e Gd[3H
+A 000a165b |h^wm
+A 000a1725 '+0hzCx9u
+A 000a17d0 Y]_ZYX
+A 000a1916 TheEvilHASPkernel
+A 000a852d !Win386 HASP Device (Version 3.10)
+A 000a8552 VHASPD_DDB
+A 000a856f VS_VERSION_INFO
+A 000a85b7 StringFileInfo
+A 000a85cb 040904e4
+A 000a85db CompanyName
+A 000a85e7 Aladdin Knowledge Systems.
+A 000a8607 FileDescription
+A 000a8617 HASP Device Driver for Windows 3.x.
+A 000a863f FileVersion
+A 000a8657 InternalName
+A 000a8673 LeagalCopyright
+A 000a8683 Aladdin Knowledge Systems Ltd. (c).
+A 000a86ab LeagalTrademarks
+A 000a86bf HASP is a trademark of Aladdin.
+A 000a86e3 OriginalFilename
+A 000a86f7 HASP.386
+A 000a8707 ProductName
+A 000a8713 Windows 3.x HASP Device Driver
+A 000a8737 ProductVersion
+A 000a8753 VarFileInfo
+A 000a8763 Translation
+A 000a87c8 This program must be run under Microsoft Windows.
+A 000a8879 API_1LNM
+A 000a888a KERNEL
+A 000a8954 Hardlock API High/Low-Level DLL
+A 000a897c _API_DLL
+A 000a8987 HL_CALC
+A 000a8991 INT_OFF
+A 000a899b INT_ON
+A 000a89a4 HL_RD
+A 000a89ac HL_WR
+A 000a89b4 K_EYE
+A 000a89bc HL_OFF	
+A 000a89c5 HL_ON
+A 000a89cd HL_HLSVERS
+A 000a89da HL_VERSION
+A 000a89e7 HL_ABORT
+A 000a89f2 HL_WRITEBL
+A 000a89fe 	HL_READBL
+A 000a8a0b HL_READ
+A 000a8a15 HL_WRITE
+A 000a8a20 HL_CODE
+A 000a8a29 	HL_MEMINF
+A 000a8a36 HL_MAXUSER
+A 000a8a43 HL_USERINF
+A 000a8a4f 	HL_ACCINF
+A 000a8a5c HL_PORTINF
+A 000a8a69 HL_AVAIL
+A 000a8a73 	HL_LOGOUT
+A 000a8a80 HL_LOGIN
+A 000a8a8a 	HLW32PROC
+A 000a8a96 	HL_SELECT
+A 000a8aa3 HL_LMLOGIN
+A 000a8aaf 	HL_READID
+A 000a8abc HLW16DLLGETVERSION
+A 000aa302 u}&9W
+A 000aa31f u`&9W
+A 000aa348 &)7P&
+A 000ab20c HARDLOCK.VXD
+A 000ab219 HLRegisterInit
+A 000ab228 HLVDD.DLL
+A 000ab232 HLDispatch
+A 000ab23d HL_SEARCH=
+A 000ab24c NETBIOS
+A 000ab33d X@GG=@
+A 000ab521 X@GG=@
+A 000ab58c @FF=@
+A 000ab679 PSQRVW
+A 000ab6dc _^ZY[X
+A 000ab820 D,3T&3D$3T*3D(
+A 000ab849 PSQRVWU
+A 000ab8eb ]_^ZY[X
+A 000ab8f3 USQRWV
+A 000ab979 ^_ZY[]
+A 000ab9b3 ]^[X3
+A 000abaa2 $`<`u
+A 000abe0b uMPSQRW
+A 000abe55 _ZY[X^
+A 000abefd SQRVWU
+A 000abf85 ]_^ZY[
+A 000ac035 D 9| ^
+A 000ac20f $`<`t
+A 000ac285 VPSQR
+A 000ac2a8 ZY[X^
+A 000ac2b0 VPSQR
+A 000ac2cf GZY[X^
+A 000ac51a SQRVWU
+A 000ac60b ]_^ZY[+
+A 000ac7d3 PSQRVWU
+A 000ac7e3 ]_^ZY[X
+A 000ac7fb tMSQ&
+A 000ac930 API16
+A 000ac936 HLS_IPADDR=
+A 000ac942 HLS_WAIT=
+A 000ac94c HLS_RETRIES=
+A 000ac97e SQRVW
+A 000ac998 r6OG&
+A 000ac9d5 _^ZY[
+A 000aca3c PPSQRVWU
+A 000aca6c ]_^ZY[XX
+A 000aca75 PSQRVWU
+A 000acaba ]_^ZY[X3
+A 000acba3 PSQRVWU
+A 000acc1c ]_^ZY[X
+A 000accb4 HLSERVER
+A 000acd29 PSQRVWU
+A 000acd45 ]_^ZY[X
+A 000acd4d PSQRVWU
+A 000acd8e ]_^ZY[XPSQRVWU
+A 000acdb2 ]_^ZY[X
+A 000acdba PSQRVWU
+A 000acdd2 ]_^ZY[X
+A 000acdda PSQRVWU
+A 000ace0d ]_^ZY[X
+A 000acf5a WINSOCK.DLL
+A 000acf8c WSASTARTUP
+A 000acfbb SOCKET
+A 000acfe6 CloseSocket
+A 000ad03f select
+A 000ad069 	recvfrom
+A 000ad097 sendto
+A 000ad0c2 htons
+A 000ad0ec inet_addr
+A 000ad11a inet_ntoa
+A 000ad148 gethostname
+A 000ad178 gethostbyname
+A 000ad1aa WSACleanup
+A 000ad2f7 PPSQRVWU
+A 000ad31f ]_^ZY[XX
+A 000ad328 PSQRVWU
+A 000ad3f9 ]_^ZY[X
+A 000aeeb8 XXXXXXXXXXWPSQ
+A 000aeeea SQRVW
+A 000aef00 _^ZY[<
+A 000aef2e SQRVWU
+A 000aef3f ]_^ZY[
+A 000aef57 SQRVWU
+A 000aef71 ]_^ZY[3
+A 000af2c8 SQRVWU
+A 000af2e6 t4SQRVWU
+A 000af311 ]_^ZY[=
+A 000af391 ]_^ZY[
+A 000af6da PSQRWV
+A 000af727 ^_ZY[X
+A 000af7ef SQRVWU
+A 000af8c9 ]_^ZY[
+A 000af8e1 t4SQRVWU
+A 000af905 ]_^ZY[
+A 000af91a SQRVWU
+A 000af934 ]_^ZY[
+A 000af93b SQRVWU
+A 000af951 ]_^ZY[
+A 000af958 SQRVWU
+A 000af980 ]_^ZY[
+A 000afbca SQRVWU
+A 000afbe8 t-SQRVWU
+A 000afc0c ]_^ZY[=
+A 000afc7e ]_^ZY[
+A 000afe78 SQRVWU
+A 000afede ]_^ZY[
+A 000b01b4 N"HLS_RETRIES=
+A 000b01c3 HLS_WAITTICKS=
+A 000b026d SQRVWU
+A 000b02ac ,0<	w
+A 000b02cc ]_^ZY[
+A 000b02dc <PtX<StT&
+A 000b02ea <0rJ<Pt.<St2<Fw><9v
+A 000b02fe <Ar6,7
+A 000b03ac PSQRVWU
+A 000b03d8 ]_^ZY[X
+A 000b03e3 PSQRVWU
+A 000b03ec SQWVU
+A 000b0417 ]^_Y[
+A 000b0420 ]^_Y[
+A 000b046c ]_^ZY[X
+A 000b0494 PSQRVU
+A 000b04aa ]^ZY[X
+A 000b0502 <0r{<PtP<ItV<XtM<StX<Nt^<Eu
+A 000b0523 tN<Cu
+A 000b052e t9<FwM<9v
+A 000b0538 <ArE,7
+A 000b05e3 PSQRVWU
+A 000b0637 ]_^ZY[X
+A 000b06b8 SQVWU
+A 000b0708 ]_^Y[
+A 000b0932 s`fPf
+A 000b0972 fSfQfR
+A 000b097a fZfYf[%
+A 000b09ef PSQRVWU
+A 000b0a02 ]_^ZY[XPSQRVWU
+A 000b0a50 ]_^ZY[X
+A 000b0a58 PSQRVWU
+A 000b0a6b ]_^ZY[XPSQRVWU
+A 000b0abf ]_^ZY[X
+A 000b0ac7 PSQRVWU
+A 000b0b12 ]_^ZY[X
+A 000b0b62 SoWieSo?
+A 000b0b7e PSQRVWU
+A 000b0bfa ]_^ZY[XPSQRVWU
+A 000b0c11 ]_^ZY[XPSQRVWU
+A 000b0c4c ]_^ZY[XX
+A 000b0c5d ]_^ZY[XX
+A 000b0c6a ]_^ZY[XX
+A 000b0c83 PSQRVWU
+A 000b0d1d ]_^ZY[XPSQRVWU
+A 000b0d39 ]_^ZY[XPSQRVWU
+A 000b0d5b ]_^ZY[XX
+A 000b0d6c ]_^ZY[XX
+A 000b0d79 ]_^ZY[XX
+A 000b0dbe PSQRVWU
+A 000b0de3 ]_^ZY[Xs
+A 000b0def PSQRVWU
+A 000b0e13 ]_^ZY[XPSQRVWU
+A 000b0e99 ]_^ZY[XX
+A 000b0eaa ]_^ZY[XX
+A 000b0eb7 ]_^ZY[XX
+A 000b0efc fPfSfQfRfVfWfU
+A 000b0f14 *GPCf
+A 000b0f1a *ZAMf
+A 000b0f26 TSAFf+
+A 000b0f31 f]f_f^fZfYf[fXr
+A 000b0f48 KfPfSfQfRfVfWfU
+A 000b0f61 *GPCf
+A 000b0f67 *ZAMf
+A 000b0f73 TSAFf+
+A 000b0f7e f]f_f^fZfYf[fXrn
+A 000b0f9f ]_^ZY[XfPfSfQfRfVfWfU
+A 000b0fc5 *GPCf
+A 000b0fcb *ZAMf
+A 000b0fd7 TSAFf
+A 000b0fe6 f]f_f^fZfYf[fXX
+A 000b1004 SQRVWU
+A 000b1092 ]_^ZY[
+A 000b1178 ]8&;]"u
+A 000b11c8 PSQRVWU
+A 000b136f ]_^ZY[X3
+A 000b139a ]_^ZY[X
+A 000b13a6 SQRVWU
+A 000b13da ]_^ZY[
+A 000b1461 **CPG_HK_AK_HV_MAZ_GBS_TS_TC_HG*14-Apr-1998*V3.68**
+A 000b1499 UWVRQ
+A 000b17e0 YZ^_]
+A 000b1d9d Borland C++ - Copyright 1991 Borland Intl.
+A 000b1ecc WIN32S16.DLL
+A 000b1ed9 UTLinearToSelectorOffset
+A 000b1ef2 Load function UTLinearToSelectorOffset failed.
+A 000b1f21 Hardlock Functions
+A 000b1f34 Load library WIN32S16.DLL failed.
+A 000b1f56 Hardlock Functions
+A 000b1f92 MS-DOS
+A 000b1f9d KERNEL.DLL
+A 000b1fa8 ToolHelpHook
+A 000b2f5a ),(((((),(((
+A 000b3f7c VS_VERSION_INFO
+A 000b3fc4 StringFileInfo
+A 000b3fd8 040904B0
+A 000b3fe8 CompanyName
+A 000b3ff4 Aladdin Knowledge Systems
+A 000b4014 FileDescription
+A 000b4024 Aladdin Hardlock Win16 DLL
+A 000b4044 FileVersion
+A 000b4050 3.68 
+A 000b4058 InternalName
+A 000b4068 api_1lnm.dll7
+A 000b4078 LegalTrademarks
+A 000b4088 Hardlock is a trademark of AKS Ltd.
+A 000b40b0 LegalCopyright
+A 000b40c0 Copyright 1994-1998 Aladdin Knowledge Systems.
+A 000b40f4 OriginalFilename
+A 000b4108 api_1lnm.dll"
+A 000b4118 ProductName
+A 000b4124 Hardlock Win16 DLL
+A 000b413c ProductVersion
+A 000b4154 Comments
+A 000b4164 VarFileInfo
+A 000b4174 Translation
+A 000b4380 KeyType
+A 000b4388 \system.ini
+A 000b4394 [haspdd]
+A 000b43a0 [hasp]
+A 000b43a8 [haspdd]
+A 000b43b4 [haspdd]
+A 000b43c0 [haspdd]
+A 000b43cc [hasp]
+A 000b43d4 [hasp]
+A 000b43dc [hasp]
+A 000b43e4 [hasp]
+A 000b43ec [haspdd]
+A 000b43fc \system.ini
+A 000b4408 hardlock.vxd
+A 000b4418 hasp.386
+A 000b4424 [hasp]
+A 000b442c Version
+A 000b4434 Version
+A 000b443c Version
+A 000b4454 HWType
+A 000b445c HWType
+A 000b4464 HWType
+A 000b4480 hardlock.vxd
+A 000b4494 hardlock.vxd
+A 000b44a8 hardlock.vxd
+A 000b44b8 \Api_1lnm.dll
+A 000b44c8 \Api_1lnm.dll
+A 000b44d8 \hasp.386
+A 000b44e4 \hasp.386
+A 000b44f0 \hasput16.dll
+A 000b4500 \hasput16.dll
+A 000b4510 \system.ini
+A 000b4524 hasp.386
+A 000b4530 device=
+A 000b4538 device=
+A 000b4540 hasp.386
+A 000b454c [hasp]
+A 000b4558 [HARDLOCK]
+A 000b4564 [386Enh]
+A 000b4570 [386Enh]
+A 000b457c [386Enh]
+A 000b4588 [386Enh]
+A 000b4594 device=hasp.386
+A 000b45a4 [386Enh]
+A 000b45b0 device=hasp.386
+A 000b45c0 device=hasp.386
+A 000b45d0 [386Enh]
+A 000b45dc device=hasp.386
+A 000b45ec device=hasp.386
+A 000b45fc device=
+A 000b4608 hardlock.vxd
+A 000b4618 [386Enh]
+A 000b4624 [386Enh]
+A 000b4630 [386Enh]
+A 000b463c [HARDLOCK]
+A 000b4648 [HARDLOCK]
+A 000b465c [hasp]
+A 000b4664 HWType
+A 000b466c HWType
+A 000b4674 HWType
+A 000b467c hardlock.vxd
+A 000b468c device=
+A 000b4694 device=
+A 000b469c hardlock.vxd
+A 000b46b4 [hasp]
+A 000b46bc HWType
+A 000b46c4 HWType
+A 000b46cc HWType
+A 000b46d4 [HARDLOCK]
+A 000b46e4 \system.ini
+A 000b46f0 [hasp]
+A 000b46f8 [HARDLOCK]
+A 000b470c \hasp.386
+A 000b4718 \hasput16.dll
+A 000b4728 \hasp.386
+A 000b4734 \hasput16.dll
+A 000b4748 hardlock.vxd
+A 000b4758 \Api_1lnm.dll
+A 000b4768 \system.ini
+A 000b4774 \hasp.386
+A 000b4780 January
+A 000b4788 February
+A 000b4794 March
+A 000b479c April
+A 000b47b8 August
+A 000b47c0 September
+A 000b47cc October
+A 000b47d4 November
+A 000b47e0 December
+A 000b4800 [hasp]
+A 000b4808 Version
+A 000b4810 HWType
+A 000b4824 AutoDetect
+A 000b4850 ComputerType
+A 000b487c PortMode
+A 000b4888 =AUTO
+A 000b4890 ProcessorType
+A 000b48a8 UseCLI
+A 000b48b4 UseCompaq
+A 000b48c4 [hasp]
+A 000b48cc Version
+A 000b48d4 HWType
+A 000b48f4 AutoDetect
+A 000b4934 ComputerType
+A 000b4968 PortMode
+A 000b4974 =AUTO
+A 000b497c ProcessorType
+A 000b4994 UseCLI
+A 000b49a0 UseCompaq
+A 000b49b0 \system.ini
+A 000b49bc [386Enh]
+A 000b49c8 hasp.386
+A 000b49d4 [hasp]
+A 000b49dc [haspdd]
+A 000b49e8 Unknown
+A 000b49f0 Unknown
+A 000b49f8 Unknown
+A 000b4a04 Version
+A 000b4a0c Version
+A 000b4a14 Version
+A 000b4a1c Unknown
+A 000b4a3c Unknown
+A 000b4a44 ProcessorType
+A 000b4a54 ProcessorType
+A 000b4a64 ProcessorType
+A 000b4a74 Unknown
+A 000b4a7c ComputerType
+A 000b4a8c ComputerType
+A 000b4aa4 PortMode
+A 000b4ab0 PortMode
+A 000b4ad0 ProcessorType
+A 000b4b04 ComputerType
+A 000b4b48 AutoDetect
+A 000b4b5c PortMode
+A 000b4b6c UseCLI
+A 000b4b78 UseCompaq
+A 000b4b84 \system.ini
+A 000b4b90 [hasp]
+A 000b4b98 [HARDLOCK]
+A 000b4bbc hardlock.vxd
+A 000b4bcc \Api_1lnm.dll
+A 000b4be0 hasput16.dll
+A 000b4bf0 KERNEL32.DLL
+A 000b4c00 UTRegister
+A 000b4c18 \system.ini
+A 000b4c24 [hasp]
+A 000b4c2c [HARDLOCK]
+A 000b4ca1 !This program cannot be run in DOS mode.
+A 000b4dcc .text
+A 000b4df3 `.bss
+A 000b4e1c .data
+A 000b4e44 .idata
+A 000b4e6c .rsrc
+A 000b4e93 B.reloc
+A 000b5237 hDdk j0j
+A 000b5246 hDdk 
+A 000b5365 hDdk f
+A 000b549a yt3hH
+A 000b5903 <Nt@<nt<<Et/<et+<Bt
+A 000b5c86 9p(vI
+A 000b5cce F9p(w
+A 000b5cf4 hDdk 
+A 000b5d3f hDdk h
+A 000b5e42 hDdk 
+A 000b5e8d hDdk h
+A 000b6064 hDdk f
+A 000b6255 hDdk j
+A 000b6574 VhDdk j
+A 000b7c18 GenuineDevil
+A 000b7c34 PQRWU
+A 000b7cc1 ]_ZYX
+A 000b7dc3 GenuineDevil
+A 000b7ddd PQRWU
+A 000b7eb5 ]_ZYX
+A 000b7f92 8WhPhQ
+A 000b7fe2 taZYX
+A 000b8032 X]_ZYX
+A 000b8045 ZYXUP
+A 000b813d ]_ZYX
+A 000b8305 ,d)0m
+A 000b83e2 Gd[3H
+A 000b8502 Gd[3H
+A 000b85a1 {68Kg
+A 000b85b0 1IxqA
+A 000b8622 Gd[3H
+A 000b8653 QVt3l
+A 000b8742 Gd[3H
+A 000b8773 QVt3l
+A 000b87b8 	M+7PK
+A 000b87f3 .RQ]4-
+A 000b8862 Gd[3H
+A 000b89e2 Gd[3H
+A 000b8bdf |h^wm
+A 000b8db3 Y]_ZYX
+A 000b8f24 WVRQSP3
+A 000b8f52 X[YZ^_
+A 000b8f89 PSQWf
+A 000b8fbd  ~SP1
+A 000b8ff4 j[Xaf
+A 000b9027 3%T*A'
+A 000b90be ''3d!NK
+A 000b90e4 3RV5WU3#c
+A 000b90fe <SvB=vEX
+A 000b92ec L#/ROd
+A 000b9312 &Q:p{
+A 000b9328 &MQJqIS
+A 000b933b 3JR/+
+A 000b947a JV#04+
+A 000b9481 drJjr%
+A 000b94f3 "2"V"
+A 000b956e H$S+YZ
+A 000b9651 (t/FXA\
+A 000b9703 I=O*"
+A 000b9806 gZIi O
+A 000b980f (rIR#
+A 000b9859 5Wtt8
+A 000b98cc 2}I7&
+A 000b9903 N9r^T
+A 000b995b IR;		
+A 000b997d ZWXId
+A 000b9a1b dLr "$
+A 000b9a43 ^ .zD
+A 000b9a6a !4d*, 
+A 000b9c62 jj\@X
+A 000b9cfc ~Ph*K
+A 000b9d28 *;(Zr
+A 000b9d4e /u	1=
+A 000b9daa sKjtO
+A 000b9dea PLxsM
+A 000b9ec5 )Q,]L
+A 000ba07c pFwPZ/
+A 000ba0a6 S'p>|
+A 000ba145 tWPQ'
+A 000ba286 Vf:Zjr
+A 000ba2a2 	hrsVl
+A 000ba396 /qDV|
+A 000ba3a1 B?NEq'#W
+A 000be886 thhDdk 
+A 000bea8c QVQVPh
+A 000bece4 (w#WV
+A 000bf774 wJ)UO
+A 000bf7ae YT_Y!
+A 000bf9f2 ZwClose
+A 000bf9fc ZwQueryValueKey
+A 000bfa0e RtlEqualUnicodeString
+A 000bfa26 ZwOpenKey
+A 000bfa32 RtlAppendUnicodeToString
+A 000bfa4e RtlAppendUnicodeStringToString
+A 000bfa70 ExAllocatePoolWithTag
+A 000bfa88 IoQueryDeviceDescription
+A 000bfaa4 RtlInitUnicodeString
+A 000bfabc ZwSetValueKey
+A 000bfacc ExFreePool
+A 000bfada RtlIntegerToUnicodeString
+A 000bfaf6 MmMapIoSpace
+A 000bfb06 IoWriteErrorLogEntry
+A 000bfb1e memmove
+A 000bfb28 IoAllocateErrorLogEntry
+A 000bfb42 IoCreateSymbolicLink
+A 000bfb5a IoCreateDevice
+A 000bfb6c IoDeleteDevice
+A 000bfb7e IoDeleteSymbolicLink
+A 000bfb96 IofCompleteRequest
+A 000bfbac KeSetEvent
+A 000bfbba KeWaitForSingleObject
+A 000bfbd2 PsCreateSystemThread
+A 000bfbea KeInitializeEvent
+A 000bfbfe KeDelayExecutionThread
+A 000bfc18 ObfDereferenceObject
+A 000bfc30 ObReferenceObjectByHandle
+A 000bfc4c PsThreadType
+A 000bfc5c MmUnmapIoSpace
+A 000bfc6e PsTerminateSystemThread
+A 000bfc88 KeNumberProcessors
+A 000bfc9e ZwSetInformationThread
+A 000bfcb8 KeBugCheck
+A 000bfcc6 KeQuerySystemTime
+A 000bfcda MmIsAddressValid
+A 000bfcee IofCallDriver
+A 000bfcfe IoBuildDeviceIoControlRequest
+A 000bfd1e IoGetDeviceObjectPointer
+A 000bfd38 ntoskrnl.exe
+A 000bfd48 WRITE_PORT_UCHAR
+A 000bfd5c READ_PORT_UCHAR
+A 000bfd6e HalTranslateBusAddress
+A 000bfd86 HAL.dll
+A 000c025d 474K4]4c4n4
+A 000c027b 505B5W5\5k5{5
+A 000c0299 6b6p6
+A 000c02a5 7'707;7@7Y7_7d7j7o7v7{7
+A 000c02c5 8 8J8O8t8
+A 000c02d7 8[9f9
+A 000c02ed ;=;H;
+A 000c02fb <$<]<h<
+A 000c0305 =	=U=i=p=
+A 000c0319 >%>\>t>
+A 000c032b ? ?%?*?2?9?C?H?Q?X?m?r?w?
+A 000c036d 1 1/141<1N1W1]1b1g1t1y1~1
+A 000c038f 1#2*232N2S2c2k2s2
+A 000c03af 2>3V3
+A 000c03b7 4#4>4L4i4
+A 000c03c3 5.5:5D5`5
+A 000c03df 696C6M6W6h6
+A 000c03ff 7'7.7A7H7P7h7x7|7
+A 000c041b 7$8(8,8084888
+A 000c0435 9,929=9E9S9_9l9r9y9
+A 000c045d :$:,:8:a:q:v:~:
+A 000c047b <%<9<C<I<O<Y<a<q<
+A 000c049f ; ;$;(;,;0;4;8;u<y<}<
+A 000c04b9 <K>r>x>
+A 000c04e3 ?4?B?H?u?z?
+A 000c050b ;%;B;H;`;
+A 000c051d =,=0=4=8=
+A 000c0535 >D>S>o>
+A 000c054d ?8?A?
+A 000c056b 1014181<1
+A 000c06a1 !This program cannot be run in DOS mode.
+A 000c07fc .text
+A 000c084b `PAGE
+A 000c0873 `CONST
+A 000c089b `.rdata
+A 000c08c4 .data
+A 000c08ec .rsrc
+A 000c0914 .reloc
+A 000c093c .protectTT
+A 000c0b72 XW0=<
+A 000c0ba2 m\1p_
+A 000c0d98 c~b!r
+A 000c0e33 T,xpN
+A 000c101f jB")U
+A 000c1092 ~+2{r
+A 000c1155 p2I0<
+A 000c11f7 nV~@:[
+A 000c1278 rHJSBS
+A 000c12bf U/;seG
+A 000c131e S/O{3hE
+A 000c140c :tn),
+A 000c170c @5_bt
+A 000c1762 U9mM=
+A 000c17b2 e)S2M
+A 000c1900 >;E{V
+A 000c1937 aSw4&5
+A 000c1a09 X3"Ip
+A 000c1b42 |dy dP
+A 000c1b6b @V3lOjhSW
+A 000c1c1e ( ;IQ
+A 000c1e8e 1:y^T
+A 000c1ed7 xb6%_
+A 000c1efc hc.s'
+A 000c1f14 zg#`T
+A 000c1f1a m9,GN
+A 000c1f3f >}%Br
+A 000c209f 8[o1y
+A 000c20f5 yrDf?
+A 000c21c1 9G[^"
+A 000c22fe _smC;
+A 000c23ad 	B|S_E
+A 000c23cb 3VX@cc\
+A 000c23dd , C!d
+A 000c2435 #}I~k
+A 000c2529 "=j?^T:
+A 000c25f7 5R,Vzra
+A 000c261a FGjz/
+A 000c265e ,<en!M8
+A 000c2815 aXO"J
+A 000c2902 lDRyy
+A 000c2a26 1M_>e
+A 000c2c1a BM^S)
+A 000c2ce0 S|j*i
+A 000c2d75 $[\emB
+A 000c2e28 _MSLujt
+A 000c2e38 y( !M
+A 000c2e7e pR8L>
+A 000c2f7c [bpiG
+A 000c2f8f a-6EjLl
+A 000c2f9e etrc#
+A 000c33c3 {Mr]U
+A 000c33de *;S>h
+A 000c347e F~@?/3
+A 000c3536 qB>!X
+A 000c36c3 <9)_D#
+A 000c36e3 A'$5k
+A 000c380b ~bk: 
+A 000c3888 W mIl|H
+A 000c3b0c DcOCU
+A 000c3b6c +?m"?
+A 000c3c24 0BBM!W$
+A 000c3cb5 ;M[a\
+A 000c3dee 4]DT+P
+A 000c3f55 8<LN@
+A 000c421e A,9)\
+A 000c42a6 _l#6=
+A 000c42da kK5	S
+A 000c4300 D8u\.
+A 000c43b7 ):0l!+
+A 000c4405 a(KSi
+A 000c4479 :|L.y
+A 000c4522 2RTc/
+A 000c45f0 @&I3F_
+A 000c46b0 ?7T#8	
+A 000c48ae S7(H3*
+A 000c4b5b |k;C+
+A 000c4b7f u	LtlD
+A 000c4bf9 r:oM3u
+A 000c4cb1 ghU8dy
+A 000c4de1 /A}O_
+A 000c4edc 3|a}b
+A 000c4f7b X9CK>
+A 000c5086 3%sz'
+A 000c5345 *v}@y
+A 000c544e iLK0Q4^a8
+A 000c54e6 #:P'(
+A 000c5538  ^<+'
+A 000c55e7 ;t	}o
+A 000c566a ;x[W$
+A 000c574d 8:Ob\
+A 000c58a6 lv|%.>
+A 000c5975 jt51mZ
+A 000c59cc ;dTA?p:
+A 000c5a77 TT82%
+A 000c5ab8 >$l.i3h
+A 000c5b4b *jq'Xz
+A 000c5b55 r`#.)
+A 000c5bcf Cagch
+A 000c5d51 ^9Nts
+A 000c5e17 K+6WZk"
+A 000c5e25 \	.wN
+A 000c5e4a 'rnCV
+A 000c5fa4 y`%~$
+A 000c5fdd qj;iH
+A 000c6223 :NtX(<
+A 000c6250 A!<El
+A 000c626f cLOp@ 
+A 000c62e3 hoR>G
+A 000c6353 EUEfn
+A 000c638f L|=w!
+A 000c63a5 F{x9}b2
+A 000c6412 ikq@&
+A 000c6457 lgq+#
+A 000c649e PFF@=w
+A 000c64a6 i5#s\&K
+A 000c6533 GTY${K
+A 000c6553 yw9jrg,
+A 000c65a8 '+S;2l
+A 000c6760 V/h;Qz
+A 000c6886 pKu.s
+A 000c6a06 =@g?5C
+A 000c6a95 l {/aNkRit
+A 000c6f02 qC-jja;
+A 000c6f0b  [uhmo
+A 000c7187 Lquu]
+A 000c7230 x:['|
+A 000c7249 A~P3q
+A 000c7333 00x1ut
+A 000c755f jW_?*
+A 000c7826 4>2RN
+A 000c789d F6Y4\
+A 000c78dc Olo$gDn
+A 000c78ee r]l)q
+A 000c7934  y"~Q
+A 000c7a21 aVrkkD8
+A 000c7b73 k7V_e
+A 000c7bb6 Dl5'"
+A 000c7d86 rY:2YR
+A 000c8005 ?uI)k^k
+A 000c803e 0\gv*
+A 000c8074 	=C-n.$
+A 000c8109 Ru"]B3
+A 000c81c2 yP9Z^
+A 000c823f Yk)sq
+A 000c82ff .'Ili2t
+A 000c837c M4sD"~\
+A 000c8558 gAN`4ji
+A 000c85ba nB/5D
+A 000c876e pcyN~
+A 000c897f (JxTV0
+A 000c89bf =E#pu
+A 000c8ae6 s0ppam
+A 000c8afc %X7^"
+A 000c8c58 moAT}
+A 000c8fe0 ;Q1~K
+A 000c9079 .`"-c
+A 000c9122 Tb7Yc
+A 000c92a3 jqakd
+A 000c9466 FNWqv
+A 000c94b3 =b`ecw
+A 000c951f MzUPd
+A 000c9593 bRJ3Y
+A 000c9602 C&LT6
+A 000c967e `h=Ew
+A 000c9d19 3TJ%K:
+A 000c9d58 xB/I	pp
+A 000c9dd2 !Dj/o:
+A 000ca16e <>`(%u
+A 000ca22c Wsv|au
+A 000ca26c T\YBl7ES
+A 000ca2be o2Xuv
+A 000ca2d4 cc{ZX
+A 000ca36c 5D	WU
+A 000ca459 "a!p/
+A 000ca48e fRlgH+t|E
+A 000ca591 h<G1"a
+A 000ca735 t{x ,6
+A 000ca76f 1;ch}&
+A 000ca800 !P^46
+A 000ca80d Bv{64
+A 000ca85d ',Lv,$|Zr
+A 000ca87e uoqI8
+A 000cab98 0b_E^u
+A 000cabb5 /e Rr<5
+A 000cad19 '$J#9a
+A 000cad8d jqD/%
+A 000cada0 n,,1#
+A 000cadda Hd.xW
+A 000cae12 .6$x8
+A 000cb010 =GeD]Z
+A 000cb020 HrBMI5#
+A 000cb052 e/>Xx
+A 000cb1f5 0*N{:
+A 000cb256 +3|?4b%
+A 000cb307 ?)0Z}Je
+A 000cb3fa j,uD{
+A 000cb41a *9\@V
+A 000cb426 J}R!f a
+A 000cb459 &W*}Q
+A 000cb817 v;kd1
+A 000cbab1 [nh~:
+A 000cbb33 Fk5u&
+A 000cbc94 6e6	M
+A 000cbcfd q8"j%
+A 000cbd2c v3]*Kq
+A 000cbef8 3#Vt1 
+A 000cbf4b C {Ni#
+A 000cc061 q9*dB/
+A 000cc095 qG/'pb
+A 000cc0a2 ?toOv;
+A 000cc0c1 m^S4z
+A 000cc2ab %Mm|O
+A 000cc2f5 '>u8\%;
+A 000cc36c yoW3|
+A 000cc496 )4isn
+A 000cc50a +LA(2
+A 000cc6af jK&X&a
+A 000cc76c UXJXk`
+A 000cc794 1gwnG
+A 000cc7cc eggT{%
+A 000cc8fa oulkW
+A 000cc998 =H90}
+A 000ccd57 ^a*Gj_G
+A 000cce83 Sa^UJO"
+A 000ccfbc )^7m)
+A 000cd04a Mg~H2
+A 000cd140 H-L7b.
+A 000cd5a7 ubc~*bJ
+A 000cd61b *N gh
+A 000cd6f6 &RPN(
+A 000cd737 0e:oe&
+A 000cd813 .FlrC
+A 000cd8a2 T*nsz
+A 000cd8f7  7 1	K\"
+A 000cd950 gc&<qG
+A 000cd965 J$d"a[
+A 000cd9d2 ;vVe!+'7
+A 000cd9ec H1L@#x
+A 000cda3c -zfh8
+A 000cdaf8 u`;3q
+A 000cdc5c &a'5t#1U
+A 000cdefb VMs0&
+A 000ce000 |pj[s[
+A 000ce065 ;Ye|b
+A 000ce11a a*D^x
+A 000ce391 &\.:<m##a
+A 000ce425 #|1l{
+A 000ce45f )S+7D
+A 000ce49b ;R zT
+A 000ce622  8O+ve	Sh
+A 000ce766 =G?@$
+A 000ce8c6 x?H4Y4
+A 000ce8fd T"_:|
+A 000cea18 s(UW{
+A 000cea74 F`[z3
+A 000ceaf6 5Ukm\
+A 000cecb3 $`4{F|ib
+A 000cecea 8_-# O
+A 000ced3a I2MA0
+A 000cedfe u]Y_c6
+A 000cf2b2 d:&GL
+A 000cf70c E{fs[
+A 000cf7bf z#W.)9_
+A 000cf7cf K{(N	
+A 000cf961 `X^+CZi
+A 000cf9bd 1=V;P"
+A 000cfa1e L$qKp
+A 000cfb00 k9dmI
+A 000cfbd4 X4I]%
+A 000cfc54 QIR="
+A 000cfc7b B2O=w
+A 000cff16 Cr{L,T
+A 000cff93 k*!]E
+A 000d0079 .!./c
+A 000d00d8 )(<(?]
+A 000d01da `)I(M
+A 000d01f2 l	+u0]
+A 000d024b 0=?&W
+A 000d02d6 LJ	<;K*
+A 000d038f ~vS19
+A 000d039c C3t1c
+A 000d03c2 >8<:9
+A 000d0405 U%-Ur%
+A 000d0440 #mi.j	`'
+A 000d04a0 @CK|L
+A 000d065a 9b>O*L
+A 000d066d E	e	d
+A 000d07b4 9zJ&sv;
+A 000d07dd x%!]e
+A 000d0b44 ypM\7
+A 000d0bf7 "Qv	m
+A 000d0c07 |sJe2
+A 000d10e4 RV ,<k
+A 000d13b3 cm&H?r
+A 000d13f5 1o`PB
+A 000d141f mE9<>Xk#
+A 000d14c7 <Tfik,
+A 000d14ef S:9y;
+A 000d1518 oRgf]ef*
+A 000d15fa Qo=c<&s
+A 000d1729 d+^zs
+A 000d17fe gV3#_
+A 000d186d KQ\(uN
+A 000d1aba ',dX=
+A 000d1c1c b%$O3
+A 000d1c2b "r=1H1P
+A 000d1c8f D;{^>
+A 000d1d34 |-fGpY
+A 000d1efa  i'#R
+A 000d224a +k-%a
+A 000d2354 U8k[g
+A 000d23ce CP.{b
+A 000d2450 ewVY*
+A 000d2547 4xGW*
+A 000d256f $Om_:
+A 000d2678 ;pgHx
+A 000d26ae ;z0WX
+A 000d26be  `kC7
+A 000d26d5 fA6!k
+A 000d2734 '01x~
+A 000d276f c(!xu
+A 000d27cc 	hVM+
+A 000d297d u`SCA\
+A 000d29a9 "h8OV/
+A 000d2a26 h1>9\/
+A 000d2a32 W7+l7-
+A 000d2ac9 FKnI|
+A 000d2bab `|!)L
+A 000d2bc0 3nI~N
+A 000d2c13 MCr,P
+A 000d2c65 ms|MDF5
+A 000d2c91 o_G6ek
+A 000d2d62 ]H-=K
+A 000d2e7c Qxw-_
+A 000d2e98 }K+i<
+A 000d2ece 8a(Hu4
+A 000d2f56 >Pg@'
+A 000d2f8e *`N@a6
+A 000d2fde <;?Z?W
+A 000d3017 /m0lA
+A 000d307d d!hxo
+A 000d31c1 Ef(se0
+A 000d3317 4p6gR
+A 000d335e OhHopT+I
+A 000d33f7 yf&%iu
+A 000d34ac p^Fl#
+A 000d34f8 g7(X@
+A 000d36a3 ?:MCn
+A 000d376e .Xz/p
+A 000d3993 =vKQW
+A 000d3b91 JDasb
+A 000d3bdf jW7m"
+A 000d3ce0 R|Su/Yi
+A 000d3d05 Zt-ugz2
+A 000d3d3d )plcv
+A 000d3d48 W0x3m><
+A 000d3d90 ^t/9v
+A 000d3e0d 	'6&C
+A 000d4016 Lgz3^=
+A 000d40bb tU?I/+
+A 000d40d6 5`S?T<
+A 000d4307 $idDN
+A 000d436c A8&Ym
+A 000d4429 &S%ucNk
+A 000d44be /Z	Vb
+A 000d4557  +i qB
+A 000d45e2 Vpbg?
+A 000d4684 Y}-6g
+A 000d46e2 W/cZW`
+A 000d4781 8**";E?x3
+A 000d47ea NFEZ"
+A 000d480d 7;"37
+A 000d486b `a&[g
+A 000d4886 {6?Fe(/d(l
+A 000d494f i4Zel
+A 000d4b3a a)[Ihy
+A 000d4b4a KU*xw
+A 000d4b65 T`u0tB
+A 000d4c31 ]0|r)
+A 000d4ef2 UvfW2
+A 000d4f54 .87LO
+A 000d4f88 0<zGZ
+A 000d4fd4 )(Uz_
+A 000d4ff2 oQ:DW
+A 000d5029 kA4>:
+A 000d5075 riFBN
+A 000d5089 G9>P1+
+A 000d5090 '1[!&n@
+A 000d51b9 V1	Xfg
+A 000d5341 <hqB/
+A 000d5462 0l_<=
+A 000d54c2 _zV428
+A 000d55b1 x@22i}
+A 000d561a F0.O&w
+A 000d5645 >ngZ~
+A 000d56ab C7xvbM
+A 000d5734 d$:jh
+A 000d5775 e'k`$F(
+A 000d581e B0BN7a
+A 000d5832 \xytW
+A 000d58a2 _bK+<+i-eAE
+A 000d58c7 3:>YQ
+A 000d58fe Y9HoH;
+A 000d5934 qLk#x
+A 000d59bd 5:vfS
+A 000d5ad5 abR%r
+A 000d5bd8 (V.?	{%
+A 000d5c1a coxIg*`
+A 000d5c8b ]KkXv
+A 000d5d2a E6)-}
+A 000d5dfe Q%{kq$
+A 000d5e1f *X!bi
+A 000d5e66 o~mJJ
+A 000d5e87 dgwv+L
+A 000d5ef4 6U6)/
+A 000d5fce [C1qK
+A 000d612e #-F4,T
+A 000d62b2 g:amO
+A 000d6392 |/f^m~
+A 000d640c @t@"!
+A 000d64e3 fc^>/
+A 000d658c U|i3[
+A 000d65e3 p&|4[
+A 000d6717 \yZfA
+A 000d67c1 Uj~;u
+A 000d6821 C*\gu
+A 000d698b oELR~
+A 000d6a28 a=ZxM
+A 000d6a5d [x\zE
+A 000d6a91 <V6'Q
+A 000d6ac6 }l50oi
+A 000d6b5c z\r0a
+A 000d6b7c Skq{D
+A 000d6b8e [+_mt
+A 000d6cd5 X,rMhdd
+A 000d6cec }lTp&V_
+A 000d6e84 _B)<v
+A 000d6fae 4[W1{
+A 000d709e 5euM,
+A 000d70b0 L+E(oJ
+A 000d71ac 0%o[P
+A 000d7258 `&,,'
+A 000d72e5 7"jheF
+A 000d73d9 }}}]2
+A 000d73f4 9Lub~	wB
+A 000d7537 +u4t@
+A 000d7a52 /P&ee
+A 000d7b1e ZdAxE
+A 000d7b79 l%HyE
+A 000d7b99 wnhl4
+A 000d7bf2 u.z/t
+A 000d7d35 Ma1/O
+A 000d7d3d +7ukvg9
+A 000d7dcf D%fhtb
+A 000d7e2f Z('eQ
+A 000d7ef5 .dY@L
+A 000d7f12 3<>^{
+A 000d7f9d .'g{.P^
+A 000d804b TJ1N=
+A 000d80b7 J0^kJ
+A 000d8223 9}mT!
+A 000d82df AcA$9
+A 000d857a Yie{=
+A 000d86dc 9|9s~
+A 000d8773 HiT$//H
+A 000d87e7 |DpN2
+A 000d87f2 ZO.*KY
+A 000d881d `2,5O
+A 000d893c QB0Wp3
+A 000d8a51 ^j_b9R
+A 000d8a69 =uX\#
+A 000d8abb AM@[	Qz
+A 000d8cb6 dMH(<
+A 000d8cea vN)!/
+A 000d8d34 S	~x0"
+A 000d8e3c &[kL&	
+A 000d8e91 -vkN]
+A 000d903e %@iAV
+A 000d909a n[VFt
+A 000d90b5 V<qU}
+A 000d91c8 pQ[JtQp
+A 000d9364 \boX'
+A 000d942d a0f2BW
+A 000d9625  g*n6
+A 000d966c #yU,b
+A 000d96ec ~oa_(R]
+A 000d9832 4X\_v
+A 000d98fa %''bW
+A 000d9923 0/Ez$
+A 000d992f 7N(IBs
+A 000d9991 )<`DF
+A 000d999e xpo9d
+A 000d99cd i.zdCd
+A 000d9b15 q-K3&
+A 000d9c85 pDh)g[
+A 000d9f1b )<#QQ
+A 000d9f8d =$}Yrr~7r
+A 000d9f9a dmUEq
+A 000da0bf =HNSd
+A 000da13a r^NZf
+A 000da1a5 oi?<O
+A 000da1be ]!g/5\E
+A 000da295 YB;).I
+A 000da363 S8zgB
+A 000da3e1 C*2*w
+A 000da48a uX2EnK
+A 000da58d  9[h7T
+A 000da721 =ghms!:
+A 000da8da ,.zu5
+A 000da8e9 */{UGp4
+A 000da9aa ;eX=PV
+A 000da9d2 CvTKxgi
+A 000daa31 !lvnfY
+A 000daac5 ZHn\p
+A 000dac7d }aExrNgI
+A 000daec9 +lW0cq
+A 000daf30 li_%aH
+A 000db031 |;?*)
+A 000db085 F$z+r
+A 000db100 ]Qm;p
+A 000db1cf y?b[r
+A 000db29c #,	=*7
+A 000db2b5 -`rC@
+A 000db2df F/o?d
+A 000db407 lJAYw
+A 000db430 kPX1*
+A 000db457 1&3Pk
+A 000db86d  Q\2G
+A 000dbaef C_F-}
+A 000dbc0a puJD!`'
+A 000dbc40 .j;y;
+A 000dbc6d L|/6>
+A 000dbc78 h@y?>
+A 000dbd62 ^&)T!SB
+A 000dbfd3 y1,aI
+A 000dc09a %TFH8
+A 000dc123 {!459
+A 000dc19e 7r3pO
+A 000dc24c S! xG/<
+A 000dc283 $fQ4^%
+A 000dc2a9 sm[(s
+A 000dc3f2 pL*l}2
+A 000dc592 ~H1Mbq
+A 000dc71f >W_m`Y
+A 000dc7c8 O27`f/
+A 000dc7d6 >0fK&g
+A 000dc8a3 F	f~mZ
+A 000dc8bd d44l%U
+A 000dc8e0 \YfLj
+A 000dc90e z"T/k
+A 000dcac6 }l5Hdi
+A 000dcd33 |0[Kt#
+A 000dcd74 oB^N: 
+A 000dcf63 j8cjZ7
+A 000dcfc2 /%1RJ_
+A 000dd057 r\ua5u
+A 000dd0ef %G68O
+A 000dd172 %Sr9A
+A 000dd1ff lCj9fq
+A 000dd235 H'	M7
+A 000dd317 ,gWbr
+A 000dd37d 4s.|#
+A 000dd4f7 k4[u&
+A 000dd59a \!_yHn
+A 000dd5f3 'm|s{]-#
+A 000dd663 ty)L?
+A 000dd679 c5B4,
+A 000dd70c o|tXU
+A 000dd841 gqG9L
+A 000dd8fd 1E/FC
+A 000dd9f5 L^(PX
+A 000dd9ff it v#
+A 000ddbfa M8=]4
+A 000ddcbd EMf<5lI
+A 000ddd26 RmV_l6
+A 000ddd40 xAT[)
+A 000dde6d k>Pf}
+A 000ddf21 n_S#d
+A 000ddf35 kdHrP
+A 000de12e Byc?j
+A 000de21c #q955+
+A 000de309 `jF9A)
+A 000de37d GsSHB
+A 000de7d1 .jkf4
+A 000de8ec UGjj_
+A 000de947 =JG%+
+A 000deac1 MNF2EJ
+A 000dece1 qsZx6
+A 000dee32 V:LY;
+A 000dee6b ^6<XM
+A 000dee8b zEEl*[
+A 000def62 k}+#s 
+A 000df095 *A2\a
+A 000df22c @&)s@e
+A 000df3e9 ,$Aj/
+A 000df4c3 q3?w7
+A 000df4ee ?7!wd
+A 000df524 =aYZ+
+A 000df6ca h=-"Oj
+A 000df916 Uz[.t
+A 000dfb43 5e$dzBNOF
+A 000dfb67 y39O/A
+A 000dfcf9 <Tx.w
+A 000dfd33 \VSB3F
+A 000dfd91 /6r@X(
+A 000dfe00 LiqJ 
+A 000dff7b A8c6G
+A 000dff96 8`{2\
+A 000dffd1 `ar}$
+A 000e005a &P!D'
+A 000e00b3 `'F3~
+A 000e00c5 `VeO^N
+A 000e01ad XoEA\S
+A 000e01f1 <OG*`
+A 000e03e8 2l4o 
+A 000e0430 x	MH(
+A 000e0436 EZL:7
+A 000e0457 )e\Q@
+A 000e04ce o!/;Ga
+A 000e06b3 sI.-'
+A 000e06fa )#je5
+A 000e075b y>'&O
+A 000e07a9 -Q9 [
+A 000e07dd C=ztv
+A 000e080d n!>s9.w
+A 000e0891 %G}L"
+A 000e0c1d T.|6:Q
+A 000e0d9a w  J^
+A 000e0ee9 G+ NL|
+A 000e12c7 =4APC
+A 000e1454 QX8mg
+A 000e14fa <f#S.
+A 000e152e td-^`E
+A 000e161a KG[s+
+A 000e177d %7/CV
+A 000e1796 SiGV!
+A 000e17b3 JG0M_
+A 000e181f o3]T I
+A 000e18b4 ag.Iw
+A 000e19d7 8'dY	BQ
+A 000e1a2d VjCj2;maU
+A 000e1b2c .dD8g
+A 000e1b70 mDRD@
+A 000e1bc0 #wWz9q
+A 000e1ce0 S8{Zi
+A 000e1d6b ,fF ')
+A 000e1e0e ;{tNa
+A 000e1ed4 8Lg|6
+A 000e1fca wLu[3
+A 000e2056 [7\n+
+A 000e207d cL_1@
+A 000e20a2 +tEN8?
+A 000e2168 YPQI=%
+A 000e2528 9d%go
+A 000e25fc rbx>g
+A 000e2809 DQh>A
+A 000e2baf iS8P+
+A 000e2c23 kX=NA
+A 000e2c99 #&)(:!
+A 000e2d74 "&wvXc
+A 000e2e36 $9'^$
+A 000e2e94 2A9rH
+A 000e2ee0 YexQ|
+A 000e3175 C9fd/
+A 000e3420 38lGI
+A 000e34f2 fcC^d
+A 000e3549 NQr4-
+A 000e35a3 b%I$IA
+A 000e3650 K@Y.v
+A 000e3677 YNE#t
+A 000e3854 -jqTC
+A 000e387e zeHHc
+A 000e3bba K~z&3+
+A 000e3c68 C|:O\]
+A 000e3d4e d?1Z:
+A 000e3f4a Q!h=?
+A 000e40cb vy8+>
+A 000e40eb pU(LIAb
+A 000e4103 Xm`Oy|
+A 000e4117 MHv(a
+A 000e437d 3s!JmZ	
+A 000e4480 C9*8Y
+A 000e4769 22(T-
+A 000e4792 C}dcM
+A 000e47be Uz`va
+A 000e49d1 6:&wX
+A 000e4b12 }]VC:'
+A 000e4c09 luv-%E
+A 000e4c45 Kv73&lUcY
+A 000e4c6f M6fj4
+A 000e4c7c H8\;J-f
+A 000e4c9a 2T\;p
+A 000e4d88 ztq*x
+A 000e4dbd i]WK*
+A 000e4de2 _Tm+.yr3
+A 000e4e15 X7Rr7
+A 000e4ef4 @	r-"
+A 000e50fc t7;5u
+A 000e5114 D2YJmL
+A 000e5344 n5OSWh
+A 000e5423 wYksE-
+A 000e5723 In0WJ pw
+A 000e57dc `7	/|
+A 000e57eb jM'vf
+A 000e57fa zbgAw
+A 000e5840 ={hPv
+A 000e58fa pM!Ud
+A 000e590f |[;,u
+A 000e5a76 $[SBq
+A 000e5abc vLKIY
+A 000e5bf8 WuX^m
+A 000e5de8 t5d1`
+A 000e5e5e ECY7.
+A 000e5e84 Lv%e-
+A 000e5eaa }qC*V'
+A 000e5eda 6d=3)
+A 000e605f B{Ti]
+A 000e613a V#&8a
+A 000e6336 w~xjFu
+A 000e6380 hji}\V
+A 000e63e0 - 5P'
+A 000e647c n^E~c
+A 000e651d D)vZ--
+A 000e65df q;/J"
+A 000e66eb aP:Z#
+A 000e66fc ~ 3q`wq:6ix}
+A 000e68f4 __f?X
+A 000e6968 pFah;
+A 000e6d8d <Hv_3
+A 000e6d9d :?	F}^
+A 000e71b2 "iibyJ
+A 000e7217 ;rIR.,v
+A 000e7253 ``cbs
+A 000e727e $%C#CoYX\
+A 000e744e i+|1Q
+A 000e7476 rJnDY0
+A 000e7582 tP:)\^
+A 000e7596 y4z5`
+A 000e75c4 B~OV}
+A 000e7615 cW{sT
+A 000e76b0 j=t*0~
+A 000e76d5 h}29B
+A 000e7709 %lY8e@ 
+A 000e78a1 }	D{i
+A 000e7970 2i2/ux
+A 000e79f8 WBBxNs)+
+A 000e7ae9 R5@}-
+A 000e7b7a 2:XE:
+A 000e7ba0 	Xl0d
+A 000e7c3f J#?2?
+A 000e7cba &ZMKO
+A 000e7cc7 "$0}R5
+A 000e7d40 Had=|
+A 000e7d4d +or![
+A 000e7d70 {wZF	m
+A 000e7e09 XIr1D
+A 000e7e4f h)}A;)PI{
+A 000e7e7a rvwU=
+A 000e7f09 Moj58A
+A 000e803e "EAyq
+A 000e80d3 $ {4a
+A 000e8129 whQL 
+A 000e8285 |x-zDT
+A 000e8332 JWMY1
+A 000e8389 	-ctj
+A 000e8404 "C<hQA
+A 000e8495 eTLaa
+A 000e85c1 '+K"4h
+A 000e861d ~>p-N
+A 000e8829 4~aVme2
+A 000e884d |(xY-
+A 000e8866 q7?d8
+A 000e88d6 gzbg6
+A 000e8902 S;1&$
+A 000e8938 Q*^dl
+A 000e8ea5 d)eI*
+A 000e9049 5_04j
+A 000e90dc G]	Z]
+A 000e9258 	a*iM
+A 000e94d0 yg;41
+A 000e9521 l[,rr
+A 000e9551 ",wvM5X
+A 000e955b vF%XK
+A 000e9586 4A}bU
+A 000e95a9 	_dzE
+A 000e95c6 _[>m'
+A 000e961f G[Qrd8
+A 000e96a3 f	'hX
+A 000e9784 D%2Tc
+A 000e979d i`8J6MX
+A 000e97f3 mvbKX>N
+A 000e9927 .%rw6
+A 000e992d ADhkh
+A 000e99e6 b@1s.
+A 000e9a7e ;<g9#
+A 000e9aa9 YH?>'
+A 000e9af3 kB|5`T
+A 000e9b12 &6#Nr
+A 000e9b4b frN:l;K
+A 000e9b9e .n\F<RrW\
+A 000e9bc2 =$a(y
+A 000e9c29 ;ofV(.S
+A 000e9ed5 !q8j]
+A 000e9fc9 kOK$"
+A 000ea064 7( m Z
+A 000ea076 <-i.$
+A 000ea16d ]w=O[R
+A 000ea24a 3Na0D
+A 000ea2b1 x8\QU7
+A 000ea388 	Xt!m
+A 000ea40b Yvc51
+A 000ea69a j^&}"
+A 000ea71f 	\{&UQ8S=
+A 000ea81c 6J1$P
+A 000ea87d JxURJ
+A 000ea8d1 -tX,rcw
+A 000ea980 K-$5v
+A 000eaba3 ]uUGo
+A 000eabca +csx)
+A 000eac1c Q19>7t4
+A 000eac70 rLxL9@
+A 000eac9a -3>[Gj
+A 000eaf83 W[hnke
+A 000eaf94 vR+a)
+A 000eb093 /3s*!
+A 000eb19a O)$TV~s*
+A 000eb252 s,7SZ
+A 000eb47b ,)AOf*
+A 000eb5a1 4"4B]
+A 000eb8fd 2\NPkC
+A 000eb922 }IMEd
+A 000ebac2 0i~=Vx
+A 000ebc1a Mkn;7/
+A 000ebcb6 u6$C~k
+A 000ebd0b |5G7o4%u
+A 000ebe38 sQ~ZpCv
+A 000ec05f (@i1AODM?@F
+A 000ec114 ]I]u*zD
+A 000ec137 -T&~-
+A 000ec252 8u``j)B
+A 000ec2ab ,5k|;
+A 000ec2de Rnt":b
+A 000ec48c Eo[Vzn
+A 000ec577 /i|CY"
+A 000ec712 Aq\&7
+A 000ec7c3 5#!mo
+A 000ec82e e59QD^
+A 000eca48 ]lRkw
+A 000eca9c +kuQ{
+A 000ecc4f h!Y}%[
+A 000ece14 Y]% :,
+A 000ece80 Cm\P}F
+A 000ececd "Dx-6h
+A 000ecf1f 5,^xp
+A 000ecfa2 ^jR3F*sm-
+A 000ecfcd CN;kx54
+A 000ecff1 !o:uUV
+A 000ed17e ;E``V
+A 000ed1a4 zOE& 
+A 000ed3ab }tSiP
+A 000ed3db Sf5~M5s
+A 000ed47e -nW2jL
+A 000ed503 ?-o;A
+A 000ed8fa pMT-a
+A 000ed9f7 8=FN\
+A 000eda11 M9LS>
+A 000edbab }_AG]
+A 000edc60 #&`7U
+A 000edce1 tcTOY
+A 000edf85 iEFs@
+A 000ee079 .p<.c)uF
+A 000ee17d srpHV
+A 000ee39b c0#ju1C
+A 000ee45f 0P`{`
+A 000ee4cf Ap7qI
+A 000ee518 piuNlQ
+A 000ee596 T5G2;q^g"
+A 000ee6a2 H8M@\
+A 000ee74f OLp'tW
+A 000ee766 UM	L3
+A 000ee8c2 `y:7]
+A 000ee958 [S"C05
+A 000eebd3 +|?ih
+A 000eee7b s- q#C
+A 000eef7b _	^^T
+A 000ef07b i[d(b
+A 000ef129 B|=t}	
+A 000ef18e kS\?t`
+A 000ef1a2 *w(kD
+A 000ef254 a`tIR
+A 000ef36c Uy	tk
+A 000ef48e ga$.EY
+A 000ef5be y}	B~k
+A 000ef5e3 J"4RJ
+A 000ef8e6  IZ^9M
+A 000efa38 Ib]%n
+A 000efb44 yrQ A
+A 000efbd8 X?%^J}E<Na
+A 000efc90 f3@	N2
+A 000efcd1 *BL_lI
+A 000efe5c V7p/1
+A 000eff31 -=z bR1;
+A 000eff4f !"."s
+A 000eff73 ?kqsv&
+A 000f0091 b8gSr
+A 000f01af 3[CV)7
+A 000f0233 $2?v1"
+A 000f025c qflc(
+A 000f03b1 |^E^Fi
+A 000f0464 ;^4PA.
+A 000f04f0 (u}t/
+A 000f056b Yw6uw
+A 000f06ab ;'e7j
+A 000f06cf ^NCJ(
+A 000f06e0 c]^!+
+A 000f0893 f4MQy
+A 000f0914 @8CKuv
+A 000f0aab aaY$tt
+A 000f0acd ifRrgC
+A 000f0c08 >|;AE
+A 000f0d0b s[TB k#R
+A 000f0d61 hR:d#
+A 000f0d9b ]}%-_
+A 000f0df4 gv[3U
+A 000f0e19 ^8?K*S
+A 000f0e59 zFyrJ'
+A 000f0f32 $XBWs"
+A 000f1040 jP~5R
+A 000f1047 u5?.+
+A 000f106c P{vH3Q
+A 000f1075 D0*%j9
+A 000f1162 -AUiN)4u
+A 000f13ca 	Y%-@\
+A 000f1480 F&gf<
+A 000f14de Q|+wI'
+A 000f154d kPF:e
+A 000f155f fXZ;M
+A 000f177a jV <`[
+A 000f17d4 .>JjI
+A 000f18d3 n@H^b
+A 000f1c7e TCgX?Q
+A 000f1ca3 .Jnbug~
+A 000f1cba 	CrZ:
+A 000f1d63 ZOVc1
+A 000f1e53 <QE(sgz
+A 000f1e84 ]BLSkw
+A 000f1eba /Tu^_}+
+A 000f1ef8 ZsQ*S
+A 000f1fa8 w4'ia
+A 000f2114 m@B1]r
+A 000f215c x_f20
+A 000f21e6 X03B;
+A 000f237e ORUN^
+A 000f2411 H&OX5`
+A 000f2621 LDX	[ZOaL
+A 000f2648 Q$-DNTVU!
+A 000f2682 T\zb+E
+A 000f26d1 EIOA*
+A 000f26fe xbuwXd>|=
+A 000f2711 \+*uT
+A 000f28c9 ;21&\
+A 000f28f1 ([8(3
+A 000f291f  H-f<
+A 000f2bb7 T B$QR
+A 000f2d0d |] -1A
+A 000f2d3a -~TAh'bvUa}
+A 000f2f13 %<N3f
+A 000f2f8d +)S-9
+A 000f3158 ~;vL%
+A 000f319b $iupv1E
+A 000f325a LDIM5[
+A 000f3265 @C]>(
+A 000f32b6 s4~O}9
+A 000f32d2 cI,0HK
+A 000f3307 JgA*Z
+A 000f347f TiBTK
+A 000f34d7 6c8o=
+A 000f34f8 _L6hO
+A 000f3553 92Ex"
+A 000f3669 YNRN>X#!R
+A 000f369b bhCg,z
+A 000f3741 t+ow )
+A 000f382b jU?Mfx
+A 000f39fe zOMKs
+A 000f3b6b L67l<
+A 000f3b96 3a%sxl]
+A 000f3b9e f!s/*
+A 000f3cd7 y~O>J
+A 000f3d86 ru05Y"
+A 000f3ef7 k(Jp@7{W
+A 000f3f20 P^xbL
+A 000f3f53 Fz}>L
+A 000f3f9c WX(Zxcl
+A 000f41a9 "Mu,*/
+A 000f427e }	C$Z
+A 000f435d eFBwW
+A 000f43b3 v7y,V
+A 000f4591 '=ECW
+A 000f464d htaG.#
+A 000f4cdc &9GvnM
+A 000f4ff8 WG.Em
+A 000f51c1 mk;x $
+A 000f5246 ~P0?N%
+A 000f5351 v/0)M[4
+A 000f5476 r_A@Y
+A 000f54b4 aPHawq
+A 000f5632 s9O1.
+A 000f5707 jj+VzH
+A 000f577d Z`QU4
+A 000f5859 <9.=5
+A 000f58a5 )IGpg
+A 000f58fd Vq Zh
+A 000f5921 u	0|^
+A 000f59d6 ZW_g.
+A 000f5a02 PgXe[
+A 000f5a68 XoxZU#q
+A 000f5dca T&9Cp
+A 000f5e28 FJ~%2Y`
+A 000f5fd9 i^@dT
+A 000f6007 3";+m
+A 000f608f :GGsu
+A 000f6099 7^		-E>Oa,
+A 000f60ec cA]`c
+A 000f6408 L9O^"=
+A 000f6412 JOso-
+A 000f6418 S]%sv} n
+A 000f64ed G|Q"u
+A 000f659c TpK_w1-
+A 000f66c4 +>&#ev
+A 000f66dc ;E?,]
+A 000f675f k.->&
+A 000f67f0 /M:tE
+A 000f6807 fTOpB
+A 000f6825 BXWDx
+A 000f685f C baw*
+A 000f68b5 7/]$G
+A 000f68c9 8)1[o
+A 000f691f ;]#}Q 
+A 000f69a1 qg?`/
+A 000f69bc i2?a"
+A 000f69e4 Cd|M]
+A 000f6b56 `uhI	
+A 000f6d27 JTF34b
+A 000f6e0d _&'j2y
+A 000f6e99 YGnvq
+A 000f6efc |VgDx
+A 000f6f27 =8z9E
+A 000f6f72 ^7x5s
+A 000f6f7c C\	HC
+A 000f7044 s?dLZ
+A 000f7217 /+ozd
+A 000f72ab m?k>-S
+A 000f73b1 q#edyA
+A 000f73e0 uNX	=
+A 000f75f2 ~6A#&
+A 000f7746 KI,_,
+A 000f77a0 sVA[X
+A 000f77d8 S_5|?
+A 000f7927 {"AC6wvB
+A 000f7acd 	2ca[
+A 000f7cb4 W7azx
+A 000f7e00 l}~@y
+A 000f7e79 t^GpQ<i
+A 000f7f0c EO?l_
+A 000f813c MWe|I
+A 000f8146 3r"507
+A 000f81fc i.Ak{
+A 000f824f x_q:	
+A 000f82fd wohd,p
+A 000f8420 3lvBI$b
+A 000f8454 Pf8m)
+A 000f8635 Kge^1t
+A 000f8922 }}BMd
+A 000f8bd9 H/(2z
+A 000f8cdf MbCjCk
+A 000f8dd3 Z^[9p
+A 000f8e77 tn#{zub
+A 000f8f51 >^ 7?
+A 000f9081 S3D[H
+A 000f921b (pZ9]Zo
+A 000f92f4 0|vFx
+A 000f9361  p|8|
+A 000f9403 fW>W/
+A 000f9412 SG{PM-
+A 000f942a @,(Dxj
+A 000f943e @MSjF
+A 000f95fd r4Lk@k
+A 000f977d &>^W$
+A 000f9856 nT/S[	
+A 000f9895 o>b y
+A 000f9916 [Azfs
+A 000f9c68 oa&$=Z
+A 000f9c87 a^,lK
+A 000f9cea 7:oq/
+A 000f9d26 ]F{UEi
+A 000f9f68 p"B=`E
+A 000fa03e #/0]	
+A 000fa0dc Pm>s8
+A 000fa1bf 2-/qz=d4
+A 000fa21e #H6) 
+A 000fa284 XX%_s
+A 000fa2db kk(r;~
+A 000fa451 UX&Uf
+A 000fa468 t'*KO
+A 000fa563 GXFL:
+A 000fa576 d)ga%
+A 000fa618 U]KGfh$qs
+A 000fa622 ?>Nt,f_
+A 000fa70c q{^bK
+A 000fa739 uQ(yf<
+A 000fa7a2 _+I!4?
+A 000fa800 #bv}9
+A 000fa870 ofB:]b|
+A 000fa992 "I5-^%
+A 000fa9f8 WB[kiwe(
+A 000fabe9 TFsQ9_?
+A 000fac00 , A]{
+A 000fac9c vMQ(Y
+A 000fad4f 5lK:S@
+A 000fadc4 8Nf3P
+A 000fb0fe %y$bP
+A 000fb1be K;c/3
+A 000fb282 }1hI]M
+A 000fb6df q<v|%c
+A 000fb74f +9}DtU
+A 000fb905 cL:$!
+A 000fb9bd &g#-[
+A 000fbb98 kY_hL
+A 000fbce0 ZxjQr
+A 000fbd86 rS=CV
+A 000fbd8c wHOBS
+A 000fbe34 Oa}tH7&
+A 000fbef5 i7PR+
+A 000fbf11 +N|(\
+A 000fbf85 )./6u
+A 000fbfaa j*0Z3
+A 000fc048 $Ov@Y
+A 000fc0c1 |N5oC
+A 000fc315 -FbIC
+A 000fc42a 4EGD0l
+A 000fc494 H.5{}
+A 000fc4de .:*C *
+A 000fc5ac w3	D;
+A 000fc639 UFqU"
+A 000fc77b vbGl/
+A 000fc8c8 h.	7Q
+A 000fc940 qZyCsi5
+A 000fc9eb ;P_+z5*
+A 000fca30 sm.d#
+A 000fca80 CS	e}0
+A 000fcb98 G Ym];E"s
+A 000fcbc0 #m`y9
+A 000fcbee 0C+n:
+A 000fce0a `h[l.Z
+A 000fce80 z6qeEcZ
+A 000fce8e OADaD?
+A 000fcfdc =#LSS
+A 000fd0c4 ]FPOHT4
+A 000fd18f j*6@]
+A 000fd2ac 5SSED$
+A 000fd5a6  keu~
+A 000fd5c7 [dk5U
+A 000fd7e2 (=e(.
+A 000fd8c7 C\-97
+A 000fdaaa :a1?h)Lt$
+A 000fdb10 [nbrq
+A 000fdc1c >S)<#
+A 000fdc70 /m!Fc
+A 000fdd3a I1jD0
+A 000fde2a xL{Xf
+A 000fde55 =R;}{
+A 000fdf42 .O{P=
+A 000fdfca gI5DN[h|5
+A 000fdfde kn4MRD
+A 000fe076 <1:2$"-c
+A 000fe1e5 ,T0Cb;
+A 000fe25d ElcrNP
+A 000fe2da kK0`V
+A 000fe3bc LG#\[
+A 000fe4ca U 2tI
+A 000fe506 LjG6A
+A 000fe63a g"Y;N
+A 000fe6ad ~3NE4
+A 000fe8c6 5GvuT
+A 000fe8ce Kbd~w
+A 000feaae vQqhs
+A 000feb32 6.$LP
+A 000fee25 LPt`	<o
+A 000fef43 aYL6v
+A 000fef55 c~-VX
+A 000fef98 Ge=L]
+A 000fefff |o=NS
+A 000ff06e "h?8)
+A 000ff0d7 ++(_P9]
+A 000ff1c3 !@9=wS8
+A 000ff22d M.Fs8
+A 000ff32d (/a3"W
+A 000ff493 :[nQl
+A 000ff504 +ys!(HG
+A 000ff58d (fnD`
+A 000ff5d5 P\Lr*
+A 000ff6e1 7oW#nV
+A 000ff7c8 I7R>l
+A 000ffa25 %(6l#
+A 000ffb3e 9W\*F
+A 000ffbdb ki_M}I
+A 000ffcdd )#J*nL	
+A 000ffcf3 5@u^~
+A 000ffd9e UZ4AA
+A 000ffdb5 w6P04Y
+A 000fff8a *Lzt`
+A 00100060 qh*7n
+A 00100074 ,,@-s.$
+A 00100115 `bqcFH
+A 0010017c %A0tAOWd
+A 0010025c 6<&[\
+A 001002bf &3apI
+A 0010030c Ee-|[
+A 00100331 C^z"x
+A 0010041a [+F$c
+A 001004d5 	[U(>3+\
+A 001006ad 2q|Y!
+A 0010078f z)h-<MY*
+A 001007bf wtDoS
+A 0010089d =@rhsS
+A 00100913 (!2)>$pt
+A 0010091d \H0xi>
+A 00100947 z`\y5f:
+A 00100b85 \r7V&
+A 00100d0c 	h_)x3
+A 00100d6f i^3-*
+A 00100dc8 OsaUe
+A 00100f25 Mz7!L
+A 00100f7b I.UUJT
+A 00101322 DL>s'`&
+A 00101593 p>wZ&V
+A 001015b2 3IXZe
+A 0010162b fm=NS~S
+A 0010166f 6P`Ybz/l
+A 001016af lK>5"a
+A 0010170c Efja[
+A 001017b9 G@3rx
+A 001017eb LJ$Xyd
+A 001019be j@KMz1<
+A 00101bc0 Bm~t[N
+A 00101c15 g71B=
+A 00101cba ~o.NY
+A 00101df9 t&Mf??
+A 00101e03 @qwilR"BG
+A 00101e26 p'8Oo
+A 00101eca 1aL$	
+A 001020b4 @:pMm
+A 00102177 nZP9%
+A 001021fa $5F*k
+A 001022ba 9Z]J"
+A 001022f7 m-=n1zG
+A 0010236d )(h)^
+A 00102450 1Y<y`
+A 001025cb z"-|O
+A 001026f0 Esl!VI
+A 00102ab9 iU0bc
+A 00102c8d !ss`RZ(
+A 00102d04 qZne/:
+A 00102d86 6SeG7
+A 00102d9b {nsn*
+A 00102efe W7[-N
+A 00102fb7 %~8D.
+A 001030a5 6Q*ui
+A 0010325d Il?!~
+A 001032aa >v97(
+A 001032d8 'fgP=
+A 0010336c Y_i?k
+A 001033f7 wKMv,
+A 0010347a YIiX@~
+A 0010349b p-"z%>
+A 001034d8 :Vc1:<S
+A 001035ca y,|lbb
+A 00103690 |k\,X
+A 001036d8 yNE^$x
+A 00103734 +YU}C
+A 00103a1a \HT@`
+A 00103b45 $d3PQKE
+A 00103efc *;IHh
+A 00104156 GMP	V
+A 001042e7 {h=CS
+A 00104315 +)XGb
+A 00104499 -{(+,cf[@
+A 001044c6 ,~|G|
+A 00104569 S8uS-
+A 001046a2 F!fnF
+A 00104784 ?<	Buc
+A 0010478b +v.}a
+A 001047bf z`PN*
+A 001048d0 (uny?
+A 00104a78 f{\%^
+A 00104a91 Fl5Rz
+A 00104ad4 -h\4f
+A 00104bb0 X79eOPb`xX\
+A 00104bf2 e'D@m
+A 00104d22 9I= .
+A 00104d6f CUviD
+A 00104d9a Hda;m
+A 00104e12 Vwye|
+A 00104ebe !+$$<
+A 001050ec U2U-gi<
+A 00105114 s	?(r
+A 001051c8 GW}<i
+A 001054c0 8`pUR
+A 001054e1 T.iCQ
+A 00105571 |;SDd
+A 00105757 )iA*\
+A 00105770 tmQi@
+A 00105776 b%_6CQ*AJO
+A 00105838 7<|bMr#
+A 00105958 ?]M	9Dsp4b
+A 00105980 C=|c_
+A 001059d1 +|p@h
+A 00105b87  _f e
+A 00105be1 ])e]*
+A 00105c52 x}{& 
+A 00105d14 u.e8xl
+A 00105da6 :C$0<
+A 00105fd8 "4@/<
+A 00106008 (w2XRR<
+A 0010604a Qg	(5
+A 001060ed 16`+N
+A 00106117 yY8;o{
+A 0010633e 	~epUv3Y
+A 00106454 QBzmg
+A 00106522 G=Y3/
+A 0010666a \e!GN
+A 001067a9 HaL_$W`%
+A 001067b9 6_LOPY
+A 00106807 d1#m=H
+A 00106830 I6,xiC
+A 00106a27 	@wW`
+A 00106adf O|qDP
+A 00106b01 WuS|2
+A 00106c0e zqbRu
+A 00106c9e ]cS<l
+A 00106ca6 FV{*,s
+A 00106cf6 f0%5d
+A 00106d12 C.	+$
+A 00106d26 k6tu&r
+A 00106d2f (p4C+
+A 00106d9b ;<4;a
+A 00106e8d >f!&ttd
+A 00106ff6 5Fh= 
+A 001070f1 1prL-
+A 00107224 'RL?$
+A 0010722a -_R;S+
+A 0010727a DY29g
+A 00107306 ~Q/0f
+A 00107331 ChB x
+A 00107453 PJ"%c
+A 00107596 y]G2`>
+A 00107619 vKGj[.
+A 0010772a ?+xvca
+A 00107848 x@9B(
+A 00107855 r	A9;
+A 00107adf 1Qjw%X3]_
+A 00107cb3 'U6Z0
+A 00107df9 wjE\lo
+A 00107f9a a'UL 
+A 00107fe6 kM=Y9
+A 00108022 -L6*E1
+A 001080bd  E#M2
+A 001080ea ede[]'
+A 00108394 xtX|2`C
+A 001083ee 2iFa.
+A 001084ef Cj%;b
+A 0010862e  l'J+:v8
+A 00108a0a s}$\m
+A 00108b0d IC<](.
+A 00108b6b .U3l`
+A 00108e67 ,>j2`V
+A 00109211  $]{C
+A 001093a5 9h%<u
+A 001093da ;xv8,,sy
+A 0010942e 0\sL3
+A 00109468 ze9EO
+A 001094a9 D2I5&
+A 0010958d lYO{8sYq
+A 001097da ql_DU!
+A 00109801 !v}ATX2:
+A 00109868 V.3)B{
+A 00109a1c ^ czPQJ6
+A 00109a60 L^ F-
+A 00109b10 [R}bq
+A 00109c54 w%3]b
+A 00109e6d h')c7^
+A 00109ef0 XljaK
+A 00109f19 Sy(R[
+A 00109f5b $y~y7hWf`
+A 0010a09d bI>3A,
+A 0010a191 T`h}FI
+A 0010a1f8 'm7V6
+A 0010a290 +oh-?R
+A 0010a2c4 JrWO<7
+A 0010a2f1 poI.X
+A 0010a325 _RG;S!a
+A 0010a3b6 _*&5ol
+A 0010a412 9SRBH
+A 0010a41a }.Y4"iD
+A 0010a568 ufvaS
+A 0010a624 )seuy
+A 0010a639 6SXj(
+A 0010a680 lV<),/E$-X
+A 0010a6b5 Ha\?xK
+A 0010a6fc -|CBE
+A 0010a934 ay7o[R
+A 0010a9b8 S2 F?
+A 0010a9fb sqQD<
+A 0010ab5b qSJGJ
+A 0010ab61 KjlPkUa
+A 0010ab80 FZ{`N3
+A 0010ac1b Rt{Py
+A 0010ad4f .dm>N
+A 0010ad90 |z+r]
+A 0010ade3 1  !H
+A 0010ae46 KhOz%
+A 0010afcc &C>sM
+A 0010afd7 9+a{S
+A 0010b0ab )ydI`
+A 0010b190 @?!Ac,
+A 0010b401 0*J<z?
+A 0010b540 c/&C,
+A 0010b6af HKC=F4`
+A 0010b6d3 #M1\c	
+A 0010b7d8 }H,q_
+A 0010b7f2 Brh1Ao
+A 0010b949 YCSQ=
+A 0010b9a1 "=7fE
+A 0010b9f2 ,J4vY
+A 0010ba7b CxUu2
+A 0010bb50 &8rBh
+A 0010bb62 Ld[BO
+A 0010bbe2 ld*_@
+A 0010bc8a t}QT~n
+A 0010bd53 	{q|S
+A 0010be05 Tl`bCC
+A 0010be46 @{0C&
+A 0010be7a jyEUYHC
+A 0010bf27 XlVC#;
+A 0010c0c6 S0D8;
+A 0010c140 .,q~9y
+A 0010c38d l~(+Y
+A 0010c4e0 S5yM<VW^8
+A 0010c686 (AA q#
+A 0010c6d8 oq[s 
+A 0010c790 LU<\Ef
+A 0010c7c1 -->=\B
+A 0010cbce gGXLV
+A 0010cd57 WT-m<
+A 0010cdf3 aV$v|	h
+A 0010cee3 =t$nH
+A 0010cf93 Lz^Z4
+A 0010d007 *B_g%
+A 0010d07a qNf'40
+A 0010d15b _:d`Ig
+A 0010d28b {$Jk]b
+A 0010d320 {E@Lp
+A 0010d429 zW]ri
+A 0010d434 sO<rN.
+A 0010d476 &0dDAn
+A 0010d4de IWS5yM<VW^8
+A 0010d614 0.E}R
+A 0010d688 =]MuLx
+A 0010d72f X\Ai%|L
+A 0010d8f5 ,/v0k
+A 0010d957 LU*oL
+A 0010dd08 ZimKj
+A 0010de13 5bKL9
+A 0010de73 *"LMB
+A 0010dedf ?t'05nb
+A 0010df34 nxw^0
+A 0010df81 x*(g|
+A 0010df9a Wlw<p*x
+A 0010e170 t_<5}
+A 0010e21f @rHN2
+A 0010e2a2 areQ2
+A 0010e347 !71D]~
+A 0010e47f & Kg]
+A 0010e566 	y"T>M
+A 0010e83b qVWHZ
+A 0010e881 MJ/,A
+A 0010e8f4 Cz e?
+A 0010ec7e R)F96
+A 0010ecef o!hAi:
+A 0010ef60 !WmJF
+A 0010f08d o=PKL
+A 0010f186 _+oZD
+A 0010f1b6 duKV:
+A 0010f1ee =@+Gz
+A 0010f2b7 |9k!z
+A 0010f425 KpG?43/
+A 0010f70c [_*:k
+A 0010f9d8 /p!vZ
+A 0010fa7e {OnXqB
+A 0010fafd k'URI
+A 0010fb36 '4j_k
+A 0010fb99 1SB #
+A 0010fce6 M.nW;
+A 0010fd4b #_MY)5xL0
+A 0010fd55 kdiE2
+A 0010fd89 HeJ5"G
+A 0010ff06 *[u[T
+A 0010ffc2 #bt1o#
+A 0011023e daXHP
+A 00110392 R33:du
+A 001103ae lh= N
+A 00110435 ($d5r&
+A 00110501 qAuE)"*
+A 0011051e \f&X\
+A 001105ea dWPyF
+A 00110636 N 7Z`m
+A 0011071d dzTb_
+A 0011078f (F'V?
+A 001107f0 +,NNA
+A 00110884 XXh>v
+A 001108ab "4k5zJ
+A 00110aaa /$5v^ZK
+A 00110b1c uZ.8L
+A 00110bc0 #E_48z
+A 00110c1a FG`N(
+A 00110c96 @/tF2
+A 00110d68 ?@q~Su 5q
+A 00110d9e EYdEk
+A 00110de7 `wIi>
+A 0011101d  c CTJ
+A 001110ed P	@Y,
+A 001112c2 3KhV}'
+A 00111610 RCkS~j
+A 00111760 <==zk
+A 001117d7 ,6Yi&
+A 00111a8a k2z*|<a
+A 00111bf0 +,RnA
+A 00111c37 YG!qnn
+A 00111c52 @D{UU
+A 00111cbd n<m(33
+A 00111d28 7ZamT
+A 00111f37 YwG8U
+A 00112037 Q0?,6
+A 00112090 h/4fO
+A 0011209c dg+s$%S
+A 001121bd CeB2Q
+A 001122d0 h;p<^oU
+A 00112336 8+=NP
+A 0011235a "C	=	
+A 00112520 iQI5Qx*
+A 001125f8 ]u`^m
+A 0011263e caO<J
+A 00112706 3hcLy
+A 00112743 s`@};
+A 001127a0 {:KMB
+A 00112913 +'}XME(6~VUV
+A 001129c2 \a9~K
+A 00112a4c }>MdKkd
+A 00112a9e ]O9At4
+A 00112ba8 wN3+i!
+A 00112c0e g'Q=>V8
+A 00112d00 0:4|/
+A 00112d24 ux=*(0
+A 00112e19 FWGf}
+A 00112ef7 c=(>^J}
+A 00112f14 -U0^Hu
+A 00112fa4 px6d 
+A 00112fc4 ZzOx^
+A 0011320d 2k48X
+A 0011321d NZ$7@6q
+A 00113239 '<s)'8
+A 001133f8 ibb |
+A 00113508 iO3@1HE
+A 0011359b cm!R,
+A 001135d0 ^8r)Go
+A 0011361d  Nh;E+
+A 00113698 j|w[x
+A 00113731 !K|0[S
+A 00113762 Z8mu\
+A 001137ae b"<<#
+A 00113a77 Y~P$`m
+A 00113bf5 y+rSI
+A 00113d57 s/^R(
+A 00113f4f 1d,`qr
+A 001140ab Ny/&|
+A 001141fa 	1D(m>
+A 0011427c w9ze/
+A 0011432e ZskZ%W
+A 00114423 0;aLv
+A 00114558 O&j	R
+A 0011456e P)cx$
+A 001145e7 az/uf
+A 00114603 Nuk2;
+A 00114665 %qr[DR'
+A 00114733 C!h`W
+A 0011485e 8RTwn
+A 00114897 J&)Bs
+A 0011491d kzmFW
+A 00114a39 nu93G
+A 00114acb 6v!}u
+A 00114c33 _7)0E
+A 00114da8  <np6!
+A 00115108 }Gw]E{^T
+A 00115166 E<TO6O
+A 001151cc 	(DT4q
+A 001151d7  "d]]
+A 0011535d w4pqN
+A 001154b9 8d-fg&
+A 001154e9 _q"WIn
+A 00115556 aI0pT
+A 00115715 .Zzsm
+A 00115800 -lq[G
+A 001158a9 '`[nWG
+A 001158f9 EpG-{WO
+A 001159a8 YbC	.b
+A 00115a1d xEJJ;%AH
+A 00115c34 %O|R8
+A 00115e50 k!Yx<
+A 00115e94 1MP3$s
+A 00115ecd fR.}C7
+A 00115fa5 X2BT 
+A 00116140 h-*;{bt
+A 0011616a $ZgRM
+A 001161e5 &g@L,
+A 0011627a eYJ!}
+A 001162e4 ?+VMN
+A 00116329 PiM~fewkA8$#
+A 00116339 ]j6Ja
+A 0011647e +=XNR
+A 0011661c k1?\>
+A 0011666a e7Usk
+A 001166ce 0G(H2
+A 00116903 .yac(@!
+A 001169d6 ,o#nb_
+A 00116a08 y"RaF
+A 00116a3c //\6P
+A 00116aa2 <x[uDI3
+A 00116ba1 3yZ\R
+A 00116dcb xgYepz
+A 00116e25 tc$dET}
+A 00116ede n59!+'Nq~
+A 00116f20 55Lxkb
+A 00116fb2 i+\*-{
+A 00117037 ='rW1;KWy
+A 001171bc 9Q]qK
+A 0011726b 8H\\Ve
+A 00117325 A'r6vh/T
+A 00117380 A+id[
+A 001173cb ]f;;]
+A 00117429 ;_]k7
+A 00117544 y dg`TK
+A 0011758a ?DfU{
+A 001175ba _j/DxH
+A 0011765e O+hD.
+A 00117724 $`;{o%
+A 0011794c s")%D&
+A 001179f2 8Rhr@
+A 00117a4b M4jZG
+A 00117a54 f}bQc
+A 00117a69 :im&Gaa
+A 00117b4e dVk)~
+A 00117b76 *1~8>
+A 00117bcc {5j D
+A 00117ca9 B~F2d
+A 00117cbd b.-	/
+A 00117ccc /eoX8
+A 00117d85 !5'4[c
+A 00117e30 KoJ0n!{
+A 00117e7e G~L*?3hgR
+A 00117f97 ~,8-FYg
+A 00118143 t`KTqe
+A 00118245 CG%P:8
+A 0011825e 75^P v
+A 0011840e WQh|B
+A 00118472 Glc"*
+A 001187bd =S>#:B
+A 00118832 G/e"/A
+A 00118955 +)Q8G
+A 0011897b -Q=/B
+A 00118be1 Z*dsp
+A 00118cb6 s7VSA+
+A 00118cf9 j,iOgZ
+A 00118d40 5'kE<
+A 00118d5b iOt%&
+A 00118ec3 GUMnG
+A 00118f35 A$~'{4|
+A 00118fd5 ^nHv3h
+A 00119033 |bF+8
+A 00119088 W=	.`
+A 001191be 6z2UD+
+A 001191c7 +6Ss\N 
+A 0011938f c*`:&jN
+A 001193d8 2Sq61D
+A 0011951e ~;y#d-
+A 001195f5 L.-Uj
+A 00119972 j"FIR
+A 001199bd [BlK\s
+A 00119a09 _ET[}
+A 00119a1d m3p4e
+A 00119a76 <ZJ4$
+A 00119b0b SEsO	[X
+A 00119bbb p0:)U
+A 00119be8 QG;DZ|"N
+A 00119c50 ;*eKQ*C
+A 00119d38 7vF@Mf)
+A 00119dc4 7fyJs 
+A 00119e6a 1JF:xB
+A 00119eb2 A)B-%U
+A 00119f5b beh`>
+A 00119f87 psYjFN
+A 00119fb2 4~*azS
+A 0011a084 SPmx~,c
+A 0011a522 <|J!t
+A 0011a53d kK!XR
+A 0011a592 )P3FORH{
+A 0011a5e9 xSI)J
+A 0011a61c Uo*6J0Q
+A 0011a68d &|sdCe
+A 0011a737 G`9Sl
+A 0011a84e XP 3D9
+A 0011a8d2 1ytg'2
+A 0011a924 mv89B
+A 0011ab6a uHUn\
+A 0011abaa Bi1o8
+A 0011abb0 %#$Bfl
+A 0011ac84 Y|#{o3q(
+A 0011acb2 @AaLs
+A 0011ad9b u832,C
+A 0011aead '1rC&N
+A 0011b01e Ekt/~:
+A 0011b0a2 %U	Ns
+A 0011b168 "&*,RfLh
+A 0011b1bb j94$@
+A 0011b254 QP2Ug
+A 0011b4cb !,Fda?/T
+A 0011b51e eNcU.
+A 0011b69b vl?-	
+A 0011b864 .=)P(6
+A 0011b8d7 %mv<Yn
+A 0011b8ec h2!+mV
+A 0011ba0e {zUokP
+A 0011baae %/mD0)
+A 0011bb30 VxIe!%
+A 0011bb4e LW;,J
+A 0011bd80 aIR1/{
+A 0011bdf6 ey!j;\x
+A 0011be7b u=uL:
+A 0011bf61 IoKbU
+A 0011c014 W~e?$@
+A 0011c183 5%8dGe"
+A 0011c5d9 I>,3x
+A 0011c6e2 FZic#
+A 0011c733 ~!kb17
+A 0011c7b3 	(wtH
+A 0011c89d of#5:
+A 0011c936 #ghT*Sa
+A 0011c9d0 7qK=K
+A 0011cd25 %6TDku
+A 0011cfe8 ?"t[w
+A 0011d191 w0m<A
+A 0011d1a1 jFeg*
+A 0011d1db /?#W!Sy<
+A 0011d27e ter=_
+A 0011d322 _w'67\>Y
+A 0011d352 K=&;:
+A 0011d388 (Y#O&F
+A 0011d82c ['kcqT
+A 0011d866 (oH.jU
+A 0011d988 m|Xtx C
+A 0011da08 K	ID4
+A 0011da31 ="hbO
+A 0011daee 5n_ew
+A 0011db17 tiZ*L
+A 0011db2d O/I0~g
+A 0011dd43 w6su]
+A 0011dd55 'kOISR
+A 0011df18 ygQ.fR
+A 0011df64 W	L^fTJ
+A 0011e0bd yQBQcB
+A 0011e148 1YS*-
+A 0011e1da n`kJU
+A 0011e2f8 x rM"
+A 0011e331 A18!9
+A 0011e363 !mK`1d
+A 0011e54b `{eKuR
+A 0011e579 W2ACsh
+A 0011e5aa >8^z/{;UI
+A 0011e902 s(ZZ,
+A 0011e90b 7HHz[
+A 0011e99a +4XdW
+A 0011e9a4 bO1QfC
+A 0011e9c7 ^vv"1
+A 0011ea0c F\B6$
+A 0011eb64 )jgrC
+A 0011ec43 	$qD/nR
+A 0011ed06 Z=/0B
+A 0011ed82 xEV]hB
+A 0011edad ?.Io%y
+A 0011ee24 6e$,W
+A 0011eeff V@dQDg
+A 0011ef90 ~Dnk6
+A 0011efa2 "r'L1 R
+A 0011eff2 s<Az&
+A 0011f256 &Tg15
+A 0011f307 m/Fc!EA
+A 0011f3f2 e#A![
+A 0011f475 ^GCb:0
+A 0011f555 2is#a)7?
+A 0011f665 .kr=dR'
+A 0011f692 \8%:H
+A 0011f736 a1?-I
+A 0011f89a /N@sm
+A 0011f8b4 X5hVu
+A 0011f939 /Fp6	 p
+A 0011f948 HEjR+Z
+A 0011fa44 2e;/(`+tp
+A 0011fa9e !W\1e
+A 0011fabe ~CeZ2V
+A 0011fb8b  tv	z
+A 0011fcf1 Fh%_Nce.)
+A 0011fd26 TxEX1p
+A 0011fd54 y'Nrb
+A 0011fdc0 0\"`B4
+A 00120341 0G$%g.
+A 00120369 FO5ux6
+A 00120516 144`f
+A 0012056c |f*>C
+A 0012065e LS*c=
+A 00120735 Z^#yAq
+A 00120760 c+|yS
+A 00120785 '=x)j
+A 001207f6 <+]W/
+A 0012086c tO@nC
+A 0012087b DzlZH
+A 0012091f LvZI>
+A 0012099a *~NcsU/Mb
+A 001209c6 +VF9B
+A 00120afd >IU:g}
+A 00120b33 3wB0IxdO
+A 00120bad ^Yom^x
+A 00120cb2 w	eflyJ>
+A 00120d05 {Z[a*n
+A 00120e22 }.K}TIV
+A 001211de wlB7k!#l
+A 00121206 T}NJV2q
+A 0012134e YoMKx$c
+A 00121496 $a,L/
+A 00121664 r%gZOZ
+A 0012168f kvmB E
+A 0012174d + V^a
+A 0012181e  5=)X
+A 00121884 XXwto
+A 001218f5 &{>U\g
+A 0012191c s:OOVoa
+A 00121a65 ::AWp]
+A 00121aed GwH{}
+A 00121b75 T?Ngv&
+A 00121bab ~F<63DqP
+A 00121c35 Hj:@~
+A 00121c95 B5/yx
+A 00121cca "_>*I
+A 00121db2 j[QSS
+A 00121e14 1Y^rs`
+A 00121ec2 +iLKE
+A 00121f85 ?(	[tI
+A 0012200a I[`LN
+A 001221de rl*7c!?l
+A 0012224e Gv|Fin
+A 00122386 rA3>Y
+A 0012251f x:\x,R
+A 00122796 D0G%+
+A 001229b2 |I)\df
+A 00122a64 \;-A~p_
+A 00122b9c ]gG_s
+A 00122bc4 9zOpO
+A 00122d0c E{^b[
+A 00122e54 Q|mTg
+A 00122f9c ]}|Fs
+A 00123198 G{[h]
+A 001232e0 S|jZi
+A 00123428 _}yLu
+A 00123884 YXtto
+A 0012390c Ee){[
+A 00123a54 Qf8mg
+A 00123a7c -y@~C
+A 00123b9c ]gG_s
+A 00123bc4 9zOpO
+A 00123d0c E{^b[
+A 00123e54 Q|mTg
+A 00123f9c ]}|Fs
+A 00124198 G{[h]
+A 001242e0 S|jZi
+A 00124428 _}yLu
+A 00124884 YXtto
+A 0012490c Ee){[
+A 00124a54 Qf8mg
+A 00124a7c -y@~C
+A 00124b9c ]gG_s
+A 00124bc4 9zOpO
+A 00124d0c E{^b[
+A 00124e54 Q|mTg
+A 00124f9c ]}|Fs
+A 00125198 G{[h]
+A 001252e0 S|jZi
+A 00125428 _}yLu
+A 00125aa8 Entered full 3.5 operation mode.
+A 00125ad0 Not enough memory was available to allocate internal storage needed for the device %1.
+A 00125b30 Entered old operation mode because a parallel port class driver was not found.
+A 00125b88 Old operation mode was forced by the user.
+A 00125bbc Unable to create the symbolic link for %1.
+A 00125bf0 Unable to create the device map entry for %1.
+A 00125c24 Entered old operation mode because a parallel port class driver was not found.
+A 00125c7c Old operation mode was forced by the user.
+A 00125cb0 Unable to create the symbolic link for %1.
+A 00125ce4 Unable to create the device map entry for %1.
+A 00125d18 Unable to get device object pointer for port object.
+A 00125d54 Original message lost. It was too long to log! This is an internal error! Please contact your dealer.
+A 00125dc0 Dataloader load collision with module %2.
+A 00125df0 Dataloader unload collision.
+A 00125e14 Dataloader install error %2.
+A 00125e38 Dataloader load collision with module %2.
+A 00125e68 Dataloader unload collision.
+A 00125e8c Dataloader install error %2.
+A 001260f8 G>;$tV
+A 00126158 %nT~o
+A 00126180 UC(mE
+A 0012618c +<rN	q
+A 001263bd $	Hhik
+A 00126410 }A:q+
+A 00126482 @(yBO
+A 00126555 K6L?q
+A 001265b6 EF%^F
+A 00126674 %	kU	R
+A 001266fe [\5G;)
+A 001268a6 mm;UC0b
+A 00126907 q'P*:U
+A 00126ba2 >sA1M
+A 00126cde t)EUe
+A 00126dc0 k0sS%}n
+A 00127116 !zT8/5
+A 00127142 m,.`7
+A 00127240 <Q4~}
+A 0012724c m0l_	
+A 001272a0 H]L|'
+A 001272c8 }B=m;
+A 0012730d <V`[	z-
+A 00127335 )MS)tr
+A 0012741c 	>Nn!u
+A 0012747f dHs48
+A 001275b6 [B7ZB
+A 001275ef i%o7+[
+A 0012760e Y7P:g
+A 001276f6 `6M1	
+A 0012775f i	]e&
+A 0012777e (0]%}
+A 001278f4 LiwFZ
+A 00127954 DgpR2
+A 001279dc $S|Gp
+A 00127ae5 #R"uv
+A 00127b24 OS"T~
+A 00127ccc =^Qtx
+A 00127d3e )#~S3
+A 00127d7c {N`lE
+A 00127d88 a({N6bO
+A 00127e3b P6]lz
+A 00127e49 $x_%r;*
+A 00127f0e +:]]*
+A 0012800c {LPp?
+A 0012801b n/`Y%
+A 001281ed .UAeuN
+A 00128218 	b2}7
+A 00128240 'OFjm
+A 00128328 QHds?
+A 00128334 7)vSQ|O&CCh
+A 0012835f @ja%	
+A 001283bf X5y2-
+A 0012847d /xcwuX(QB
+A 001284dc ).>iE{
+A 0012852e n]}S3
+A 001285b5 }SBgJf
+A 0012864f dog|1=
+A 001286af v+uA;
+A 001286bd `x$oyh
+A 001287e5 t{\NB;
+A 001287f5 !#|Yn}
+A 00128b42 ibi+a7
+A 00128c18 1;QIwv&
+A 00128d2c =dpzr
+A 00128d89 (9K@~j
+A 00128ea9 /s[%t| GA{
+A 00128fa9 M5eWc
+A 00129158 ,j=zq
+A 00129275 "BE(h)
+A 0012928a |2uac
+A 0012935e TFNbY
+A 00129397 _L~"%
+A 001295b4 M}SB/JN
+A 00129617 H3LM,
+A 0012964c 5&U|W},3A
+A 001296d6 nm1h{8
+A 00129794 !)Trs|
+A 001297e5 wCPeB
+A 00129906 1s	Pf
+A 001299dc WVtFA
+A 00129b30 ;6-Ki
+A 00129b84 5i4ne
+A 00129bac eD\_@
+A 00129bcb gE$:*
+A 00129d61 6RI?{[
+A 00129de8 (#9@wx`
+A 00129ea9 ;9W|t$ 
+A 00129f0b aw~#.MK5
+A 00129ff5 tH>ANT
+A 0012a01a x^7`Y#a
+A 0012a0d0 9}%s'
+A 0012a158 T^Tn+
+A 0012a1ed *]AiuV
+A 0012a240 3S:ve
+A 0012a2c8 [^g}Y
+A 0012a46f OH	A4
+A 0012a7bf a+Q9,
+A 0012a80c  c=@l
+A 0012a8b2 uFw+}
+A 0012a8f4 }fn]L
+A 0012a906 Us#Pl
+A 0012a9fa `Tc.\ 
+A 0012ac8b pY(T;
+A 0012aead u	"^A
+A 0012b01a xR5`_/g
+A 0012b2c8 IF	gc
+A 0012b41d "DR-w
+A 0012b45a H?wWQ
+A 0012b488 cHZra
+A 0012b5c7 v/rc>iGL
+A 0012b636 C'm%Y
+A 0012b76a DHs<|
+A 0012b796 \~Al%
+A 0012b81e #oa[,:
+A 0012b8cc ]|vS3
+A 0012b8f4 rbqIQ
+A 0012b906 Us9P^>C
+A 0012c13b >	qkK
+A 0012c16c *2/252:2@2L2S2^2h2q2w2|2
+A 0012c1c4 W-XD|
+A 0012c2df _P%CV
+A 0012c380 ~v~&w}ge
+A 0012c3b2 >-i,'-SA
+A 0012c3bb h~uu@
+A 0012c4b9 z@G{@La'
+A 0012c5c6 lr{r$8S
+A 0012c5f1 #We1}
+A 0012c637 e}"7x
+A 0012c6f1 C[J'P
+A 0012c7a7 }7wZ\
+A 0012c822 s)_3j}
+A 0012c82f j7M	f
+A 0012c955 9HMMJ|
+A 0012cc96 h)mO2"
+A 0012ceb6 x61b')
+A 0012cf24 63A(qx@
+A 0012d0ea 4m8|e
+A 0012d253 6PI`s
+A 0012d477 RAXC{.
+A 0012d497 A$mQM
+A 0012d4e2 gqL57
+A 0012d531 z?flU
+A 0012d540 kal:x
+A 0012d549 B6F~M
+A 0012d573 JT7%T
+A 0012d6d8 `zt\]
+A 0012d79b +N[U_
+A 0012d7d9 0aV!`
+A 0012dd6e Kd$9}&U
+A 0012dda5 Rs$(S
+A 0012de3e C|tq5
+A 0012de85 Dc3)m[
+A 0012dea8  <PF%3
+A 0012ded5 L1T3p;
+A 0012df59 2M9Rg
+A 0012e09f LwZM;xM!|
+A 0012e185 !^~,^g3"C
+A 0012e21c %i~!|
+A 0012e2c9 z}Y#2
+A 0012e380 sKMZ6:9
+A 0012e4aa bi3Vs
+A 0012e5be K.0,m
+A 0012e672 }D?*	m
+A 0012e7b8 f!\T}
+A 0012e976 RtlUnicodeStringToAnsiString
+A 0012e996 RtlQueryRegistryValues
+A 0012e9b0 RtlFreeAnsiString
+A 0012e9c4 ExFreePool
+A 0012e9d2 ExAllocatePoolWithTag
+A 0012e9ea ZwClose
+A 0012e9f4 ZwUnmapViewOfSection
+A 0012ea0c KeServiceDescriptorTable
+A 0012ea28 ZwMapViewOfSection
+A 0012ea3e ZwCreateSection
+A 0012ea50 ZwCreateFile
+A 0012ea60 RtlAppendUnicodeStringToString
+A 0012ea82 RtlInitUnicodeString
+A 0012ea9a PsGetVersion
+A 0012eaa8 ntoskrnl.exe
+A 0012ead7 R|iKC
+A 0012eb0c K2\2f2l2q2v2|2
+A 0012eb4b 4 4.464=4C4T4^4d4u4
+A 0012eb61 5.5]5
+A 0012eb69 5F6L6U6y6
+A 0012eb75 6R7k7
+A 0012eb9f :';6;N;];
+A 0012ebcd =C>q>r?~?
+A 0012ebed 2'202H2S2v2
+A 0012ec03 3J3r4
+A 0012ec82 loa4=
+A 0012ef2a 9Ri2^
+A 0012f0c4 8Wzyj
+A 0012f116 3`LrCp
+A 0012f193 qAY@z
+A 0012f1b1 SR:4a
+A 0012f1f7 |OP.O
+A 0012f27a n4nc[2Q=f
+A 0012f739 9>`@j
+A 0012f7c2 rE-*R
+A 0012f7d2 Qj7`~
+A 0012f873 +E*&h
+A 0012fa30 <6|q:
+A 0012fae4 Hk$<Y
+A 0012faeb N)esE[
+A 0012fc2e xUby7
+A 0012fd04 /|($w
+A 0012ff96 MkZMj
+A 00130206 _:)I2GLq
+A 0013033c gra?p
+A 0013042f h/S0-
+A 00130559 63Hca^
+A 00130575 =Qe%u
+A 001305fe [2y_t
+A 001308c1 !h$pF
+A 0013099e TZ_`*
+A 00130a47 [QtM6;
+A 00130a67 YB)k0
+A 00130c40 $e*o~
+A 00130d0c i [Fz[
+A 00130d58 m0l-?
+A 00130da9 Tp/%^K
+A 00130e7f N*e|g3
+A 00130fa5 	r~a;
+A 00131064 ntoskrnl.exe
+A 00131073 IoFileObjectType
+A 00131084 HAL.dll
+A 0013108e KeStallExecutionProcessor
+A 001312a1 !This program cannot be run in DOS mode.
+A 001313cc .text
+A 001313f3 `.bss
+A 0013141c .rdata
+A 00131443 @.data
+A 0013146c .idata
+A 00131494 .edata
+A 001314bb @.rsrc
+A 001314e3 B.reloc
+A 00131716 0SVWUj
+A 00131a16 N$t*f
+A 00131a77 SVWUj
+A 00131c54 VDD for NT-MVDM
+A 00131e68 \\.\HASP
+A 00131e74 \\.\HASP
+A 00131e80 HASPVDD Error
+A 00131e90 Internal Error
+A 00132142 setCF
+A 0013214a setCX
+A 00132152 MGetVdmPointer
+A 00132164 getDI
+A 0013216c getES
+A 00132174 getCX
+A 0013217c getDX
+A 00132182 ntvdm.exe
+A 0013218e CloseHandle
+A 0013219c VirtualUnlock
+A 001321ac ReadFile
+A 001321b8 VirtualLock
+A 001321c6 CreateFileA
+A 001321d4 DeviceIoControl
+A 001321e4 KERNEL32.dll
+A 001321f4 MessageBoxA
+A 00132200 USER32.dll
+A 001322b8 HASPVDD.dll
+A 001322c4 CALLNEWVDDHASP
+A 001322d3 CALLVDDHASP
+A 001322df GetVDDVersion
+A 001322ed VDDDispatch
+A 001322f9 VDDInitialize
+A 00132307 VDDRegisterInit
+A 00132a6f 1+141;1B1H1N1U1c1n1t1
+A 00132a93 1;2Q2Z2j2w2
+A 00132ac1 3Q3r3
+A 00132acd 4:4@4{4
+A 00132adf 5%5*565?5e5p5u5
+A 00132c5e HASPDOSDRV
+A 00132c6c HASPVDD.DLL
+A 00132c78 VDDRegisterInit
+A 00132c88 VDDDispatch
+A 00132dd4 haspdos.sys
+A 00132df0 PCMCIA\FAST_Electronic-Hardlock_V1.0-E258
+A 00132e1c PCMCIA\FAST_Electronic-Hardlock_V1.0-9586
+A 00132e48 PCMCIA\Aladdin_Knowledge_Systems_Ltd.-Hardlock_V2.0-73FD
+A 00132e84 PCMCIA\Aladdin_Knowledge_Systems_Ltd.-PC-CardHASP_V1.1-A809
+A 00132ec0 Haspnt
+A 00132ec8 hardlock
+A 00132ef8 SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 00132f30 SYSTEM\CurrentControlSet\Services\Haspnt
+A 00132f5c Version
+A 00132f7c HWType
+A 00132f84 SYSTEM\CurrentControlSet\Services\Haspnt
+A 00132fb0 version
+A 00132fc0 HWType
+A 00132fc8 hardlock
+A 00132fd4 Haspnt
+A 00132fdc hardlock
+A 00132ff8 Haspnt
+A 00133010 hardlock
+A 0013301c hardlock
+A 00133028 hardlock
+A 00133034 hardlock
+A 00133040 \setup\aladdin\
+A 00133050 aksusb.sys
+A 0013305c aksusb.inf
+A 00133068 aksusb.cat
+A 00133074 akspccard.sys
+A 00133084 akspccard.inf
+A 00133094 akspccard.cat
+A 001330a4 aksusb.sys
+A 001330b0 akspccard.sys
+A 001330c0 \setup\aladdin
+A 001330d0 setupapi.DLL
+A 001330e0 SetupDiGetClassDevsA
+A 001330f8 SetupDiEnumDeviceInfo
+A 00133110 SetupDiGetDeviceRegistryPropertyA
+A 00133134 SetupDiCallClassInstaller
+A 00133150 SetupDiDestroyDeviceInfoList
+A 00133170 USB\Vid_0529&Pid_0001
+A 00133188 MF\HLKPCMCIA_DEV0
+A 0013319c MF\HSPCMCIA_DEV0
+A 001331b0 setupapi.DLL
+A 001331c0 SetupDiGetClassDevsA
+A 001331d8 SetupDiEnumDeviceInfo
+A 001331f0 SetupDiGetDeviceRegistryPropertyA
+A 00133214 SetupDiCallClassInstaller
+A 00133230 SetupDiDestroyDeviceInfoList
+A 00133250 MF\HLKPCMCIA_DEV0
+A 00133264 MF\HSPCMCIA_DEV0
+A 00133278 SYSTEM\CurrentControlSet\Services\PerfProc\Performance
+A 001332b0 Disable Performance Counters
+A 001332d0 Disable Performance Counters
+A 001332f0 SYSTEM\CurrentControlSet\Services\PerfProc\Performance
+A 00133328 Disable Performance Counters
+A 00133348 \pcrdhasp.inf
+A 00133358 \aks_mf.inf
+A 00133364 \hsntcard.inf
+A 00133374 \akspccard.cat
+A 00133384 \akspccard.inf
+A 00133394 \akspccard.sys
+A 001333a4 \pcrdhasp.inf
+A 001333b4 \aks_mf.inf
+A 001333c0 \hsntcard.inf
+A 001333d0 \hlpcmcia.inf
+A 001333e0 \aks_mf.inf
+A 001333ec \hlntcard.inf
+A 001333fc \akspccard.cat
+A 0013340c \akspccard.inf
+A 0013341c \akspccard.sys
+A 0013342c \pcrdhasp.inf
+A 0013343c \aks_mf.inf
+A 00133448 \hlntcard.inf
+A 00133458 IoPortAddress0
+A 0013346c SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 001334a4 UseUSB
+A 001334ac SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 001334e4 EcpRetry
+A 001334f0 SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 00133550 SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 001335b8 SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 001335f0 Haspnt
+A 001335fc hardlock
+A 00133608 \pcrdhasp.inf
+A 00133618 \aks_mf.inf
+A 00133624 \hsntcard.inf
+A 00133634 \hlpcmcia.inf
+A 00133644 \aks_mf.inf
+A 00133650 \hlntcard.inf
+A 00133660 SYSTEM\CurrentControlSet\Services\
+A 00133684 hardlock
+A 00133690 SYSTEM\CurrentControlSet\Services\Pcmcia\DataBase\Aladdin Knowledge Systems Ltd.
+A 001336e4 SYSTEM\CurrentControlSet\Services\Pcmcia\DataBase\FAST Electronic
+A 00133728 SYSTEM\CurrentControlSet\Services\Pcmcia\DataBase
+A 0013375c FAST Electronic\Hardlock V1.0
+A 0013377c hardlock
+A 00133788 hardlock
+A 00133794 Driver
+A 0013379c Aladdin Knowledge Systems Ltd.\Hardlock V2.0
+A 001337cc hardlock
+A 001337d8 hardlock
+A 001337e4 Driver
+A 001337f0 device=%SystemRoot%\system32\haspdos.sys
+A 00133820 config.nt
+A 0013382c config.hsp
+A 0013383c config.nt
+A 0013384c config.nt
+A 0013385c config.nt
+A 00133868 SYSTEM\CurrentControlSet\Services\
+A 0013388c Haspnt
+A 00133894 SYSTEM\CurrentControlSet\Control\Session Manager\DOS Devices
+A 001338d4 Parallel arbitrator
+A 001338e8 Version
+A 001338f8 KERNEL32.DLL
+A 00133908 GetDateFormatA
+A 00133918 MMMM d', ' yyyy
+A 00133938 Start
+A 00133944 Group
+A 0013394c Parallel arbitrator
+A 00133960 ErrorControl
+A 00133970 SYSTEM\CurrentControlSet\Services\
+A 00133994 Haspnt
+A 0013399c \Parameters
+A 001339a8 ProcessorType
+A 001339bc EcpRetry
+A 001339c8 PortAllocRetryCount
+A 001339dc PortAllocFunctionality
+A 001339f4 USB-Parallel
+A 00133a04 KeySearch
+A 00133a10 SYSTEM\CurrentControlSet\Services\Haspnt\Parameters
+A 00133a44 Parallel
+A 00133a50 KeySearch
+A 00133a5c SYSTEM\CurrentControlSet\Services\Haspnt\Parameters
+A 00133a98 \Device\hasp
+A 00133aa8 SYSTEM\CurrentControlSet\Services\
+A 00133acc Haspnt
+A 00133ad4 SYSTEM\CurrentControlSet\Services\EventLog\System\
+A 00133b08 SYSTEM\CurrentControlSet\Control\Session Manager\DOS Devices
+A 00133b48 Parallel arbitrator
+A 00133b64 %SystemRoot%\System32\Drivers\
+A 00133b84 Haspnt
+A 00133b98 Haspnt
+A 00133ba8 SYSTEM\CurrentControlSet\Services\EventLog\System\
+A 00133bdc Haspnt
+A 00133be4 EventMessageFile
+A 00133bf8 TypesSupported
+A 00133c0c \drivers\
+A 00133c18 hardlock.sys
+A 00133c28 Haspnt
+A 00133c38 Haspnt
+A 00133c40 hardlock
+A 00133c4c SYSTEM\CurrentControlSet\Services\Hardlock
+A 00133c78 \Security
+A 00133c84 Haspnt
+A 00133c8c Haspnt
+A 00133c94 Haspnt
+A 00133c9c hardlock
+A 00133ca8 SYSTEM\CurrentControlSet\Services\HaspCheck
+A 00133cd4 SYSTEM\CurrentControlSet\Services\HaspCheck
+A 00133d00 Aladdin_TestX.ttt
+A 00133d14 SYSTEM\CurrentControlSet\Services\Haspnt\Parameters
+A 00133d4c CheckMouse
+A 00133d78 CheckMouse
+A 00133da4 SYSTEM\CurrentControlSet\Services\
+A 00133dc8 Pcmcia\DataBase\Aladdin Knowledge Systems Ltd.\PC-CardHASP V1.1
+A 00133e08 Driver
+A 00133e10 Haspnt
+A 00133e18 SYSTEM\CurrentControlSet\Services\Pcmcia\DataBase\Aladdin Knowledge Systems Ltd.
+A 00133e6c \Drivers\
+A 00133e78 \Drivers\
+A 00133e84 Haspnt
+A 00133e98 haspvdd
+A 00133eac haspdos.sys
+A 00133eb8 \Drivers\
+A 00133ec4 hardlock.sys
+A 00133ed8 HLVDD.DLL
+A 00133ee4 \drivers
+A 00133ef0 \aksusb.sys
+A 00133efc \..\inf
+A 00133f04 \aksusb.inf
+A 00133f14 \drivers\
+A 00133f20 Haspnt
+A 00133f30 \drivers\
+A 00133f3c Haspnt
+A 00133f50 Haspnt
+A 00133f64 \drivers\
+A 00133f70 hardlock.sys
+A 00133f80 \drivers\
+A 00133f8c hardlock
+A 00133fa4 hardlock.sys
+A 00133fb8 haspvdd
+A 00133fcc haspvdd
+A 00133fe0 haspvdd
+A 00133ff4 haspvdd
+A 00134008 haspvdd
+A 0013401c hlvdd
+A 00134030 hlvdd
+A 00134044 hlvdd
+A 00134058 hlvdd
+A 0013406c hlvdd
+A 00134080 haspdos.sys
+A 00134090 haspdos.sys
+A 0013409c \setup\aladdin
+A 001340ac \setup\aladdin
+A 001340bc \drivers
+A 001340c8 \aksusb.sys
+A 001340d4 \setup\aladdin
+A 001340e4 \..\inf
+A 001340ec \aksusb.inf
+A 001340f8 \setup\aladdin
+A 00134108 \aksusb.cat
+A 00134114 \aksusb.inf
+A 00134120 \aksusb.sys
+A 0013412c \aksusb.cat
+A 0013413c haspvdd.dll
+A 00134148 haspvdd.dll
+A 00134154 GetVDDVersion
+A 00134164 \\.\hasp
+A 00134170 \setup\aladdin
+A 00134180 \drivers
+A 0013418c \aksusb.sys
+A 00134198 \setup\aladdin
+A 001341a8 \drivers
+A 001341b4 \akspccard.sys
+A 001341c4 SYSTEM\CurrentControlSet\Services\
+A 001341e8 Haspnt
+A 001341f0 hardlock
+A 001341fc ImagePath
+A 00134208 \SystemRoot\
+A 00134218 \SystemRoot\
+A 0013423c \DosDevices\
+A 0013424c \DosDevices\
+A 0013425c SYSTEM\CurrentControlSet\Services\
+A 00134280 Haspnt
+A 00134288 hardlock
+A 00134294 ImagePath
+A 001342a0 \DosDevices\
+A 001342b4 \DosDevices\
+A 001342c4 \drivers\
+A 001342d0 Haspnt
+A 001342e0 hardlock.sys
+A 001342f0 Haspnt
+A 001342f8 hardlock
+A 00134304 \akspccard.cat
+A 00134314 \setup\aladdin
+A 00134324 \setup\aladdin
+A 00134334 \..\inf
+A 0013433c \setup\aladdin
+A 0013434c \setup\aladdin
+A 0013435c \drivers
+A 00134368 \setup\aladdin
+A 00134378 \..\inf
+A 00134380 \setup\aladdin
+A 00134390 newdev.DLL
+A 0013439c UpdateDriverForPlugAndPlayDevicesA
+A 001343c0 cfgmgr32.DLL
+A 001343d0 CMP_WaitNoPendingInstallEvents
+A 001343f0 setupapi.DLL
+A 00134400 SetupCopyOEMInfA
+A 00134414 \setup\aladdin\aksusb.inf
+A 00134430 USB\Vid_0529&Pid_0001
+A 00134448 USB\Vid_0529&Pid_0001
+A 00134460 \setup\aladdin\aksusb.inf
+A 0013447c newdev.DLL
+A 00134488 UpdateDriverForPlugAndPlayDevicesA
+A 001344ac cfgmgr32.DLL
+A 001344bc CMP_WaitNoPendingInstallEvents
+A 001344dc setupapi.DLL
+A 001344ec SetupCopyOEMInfA
+A 00134500 \setup\aladdin\akspccard.inf
+A 00134520 setupapi.DLL
+A 00134530 SetupDiGetINFClassA
+A 00134544 SetupDiCreateDeviceInfoListA
+A 00134564 SetupDiCreateDeviceInfo
+A 0013457c SetupDiSetDeviceRegistryPropertyA
+A 001345a0 SetupDiCallClassInstallerA
+A 001345bc SetupDiDestroyDeviceInfoListA
+A 001345dc setupapi.DLL
+A 001345ec SetupDiDestroyDeviceInfoList
+A 0013460c SetupDiGetClassDevsA
+A 00134624 SetupDiEnumDeviceInfo
+A 0013463c SetupDiGetDeviceRegistryPropertyA
+A 00134660 aksusb.sys
+A 0013466c setupapi.DLL
+A 0013467c SetupDiGetClassDevsA
+A 00134694 SetupDiEnumDeviceInfo
+A 001346ac SetupDiGetDeviceRegistryPropertyA
+A 001346d0 SetupDiCallClassInstaller
+A 001346ec SetupDiDestroyDeviceInfoList
+A 0013470c USB\Vid_0529&Pid_0001
+A 00134775 !This program cannot be run in DOS mode.
+A 001348a0 .text
+A 001348c7 `.data
+A 001348f0 .idata
+A 00134918 .rsrc
+A 0013493f B.reloc
+A 00134b28 fSfQfRf
+A 00134b58 fZfYf[
+A 00134deb hWdm h
+A 00135126 										
+A 00135226 p(hWdm 
+A 00135255 hWdm jPj
+A 00135364 F(8X	t?hWdm 
+A 00135371 X	j(S
+A 00135403 hWdm 
+A 00135840 hWdm jPW
+A 00135858 hWdm j
+A 001358c1 hWdm Sj
+A 00135963 H(SV3
+A 00135984 hWdm 3
+A 00135a27 hWdm 
+A 00135fda PWVQR
+A 0013602b SVWhWdm jPj
+A 001362b7 hWdm 
+A 001369b8 X(WhWdm Qj
+A 00136b53 P(SV3
+A 00136c06 hWdm jPj
+A 00136d11 v!hWdm Pj
+A 00136d70 hWdm Pj
+A 00136ddc hWdm 
+A 00137074 SVWtV
+A 00137201 WhWdm j j
+A 00137279 Pj SQ
+A 00137476 hWdm j j
+A 001374cd Pj VQ
+A 00137c95 SVWhWdm j j
+A 00137cf5 Pj VS
+A 00137ff8 $Id: usbpd.c,v 1.94 2001/10/19 08:53:01 horatiu Exp $
+A 00138226 KeInitializeMutex
+A 0013823a KeSetEvent
+A 00138248 InterlockedDecrement
+A 00138260 IofCallDriver
+A 00138270 IofCompleteRequest
+A 00138286 KeWaitForSingleObject
+A 0013829e KeInitializeEvent
+A 001382b2 KeReleaseMutex
+A 001382c4 IoDeleteDevice
+A 001382d6 IoDetachDevice
+A 001382e8 ExFreePool
+A 001382f6 ExAllocatePoolWithTag
+A 0013830e InterlockedIncrement
+A 00138326 IoDeleteSymbolicLink
+A 0013833e RtlInitUnicodeString
+A 00138356 IoAttachDeviceToDeviceStack
+A 00138374 IoCreateDevice
+A 00138386 IoCancelIrp
+A 00138394 IoBuildDeviceIoControlRequest
+A 001383b4 IoCreateSymbolicLink
+A 001383cc KeDelayExecutionThread
+A 001383e4 ntoskrnl.exe
+A 001383f4 USBD_ParseConfigurationDescriptor
+A 00138416 USBD.SYS
+A 00138930 "5/5K5R5Y5`5f5p5x5~5
+A 0013894b 6)606W6d6y6
+A 00138969 8(8J8i8s8
+A 00138983 939Q9q9
+A 001389a3 9P:l:
+A 001389c3 <P<p<
+A 001389d1 <	=0=>=D=X=w=
+A 001389f9 0%0z0
+A 00138a01 0"1:1
+A 00138a0d 2V2w2
+A 00138a1f 3L4l4
+A 00138a41 7&7J7f7
+A 00138a5f 9::^:
+A 00138a75 <'=R=g=
+A 00138a7f >,>v>=?p?
+A 00138a95 0@0U0
+A 00138a9f 1E1b1t1
+A 00138aa9 1&2:2R2
+A 00138acf <A=Y=h=
+A 00138ad7 =2>I>P>b>
+A 00138ae7 ?1?<?U?
+A 00138b1b 5B5{5
+A 00138b21 5C6Z6a6
+A 00138d2b ; INF File for USB Hardlock / Windows95 OSR2 - Detroit
+A 00138d63 ;-----------------------------------------------------
+A 00138d9e ; (c) Copyright 1997-1998 by Aladdin Knowledge Systems Germany
+A 00138de1 ; $Revision: 1.4 $
+A 00138df5 ; $Date: 2001/11/07 14:16:31 $
+A 00138e15 ; $Author: gerhard $
+A 00138e2e ; $Log: aksusb95.inf,v $
+A 00138e48 ; Revision 1.4  2001/11/07 14:16:31  gerhard
+A 00138e76 ; HDD 4.65
+A 00138e85 ; Revision 1.2  1999/12/23 06:28:48  GILF
+A 00138eb0 ; The hinstall inf file no need to copylist
+A 00138ee3 ; Revision 1.1  1999/10/27 13:44:49  GILF
+A 00138f0e ; Initial revision
+A 00138f22 ; Revision 1.3  1998/08/30 06:09:51  CHARLIEH
+A 00138f51 ; Revision 1.2  1998/07/28 08:59:16  CHARLIEH
+A 00138f80 ; Change usbpd to aksusb95
+A 00138f9c ; Revision 1.4  1998/05/13 15:32:33  chris
+A 00138fc8 ; removed hardlock.vxd from copylist
+A 00138ff2 ; Revision 1.3  1998/03/11 14:00:37  chris
+A 0013901e ; usbpd -> aksusb name change
+A 00139040 ; Revision 1.2  1998/03/06 13:09:13  chris
+A 0013906c ; added hardlock.vxd to copylist
+A 00139093 [Version]
+A 0013909e signature="$CHICAGO$"
+A 001390b5 Provider=%Fast%
+A 001390c6 LayoutFile=LAYOUT.INF
+A 001390dd Class=USB
+A 001390ea ; Table of Contents
+A 001390ff [Manufacturer]
+A 0013910f %FastMfg%=Aladdin
+A 00139124 [PreCopySection]
+A 00139136 HKR,,NoSetupUI,,1
+A 0013914b [DestinationDirs]
+A 0013915e aksusb95.CopyList = 11
+A 00139176 DefaultDestDir=10,system
+A 00139192 [Aladdin]
+A 0013919d %USB\VID_0529&PID_0001.DeviceDesc%=aksusb95, USB\VID_0529&PID_0001 ;USB Protection Device
+A 001391fa [NODRIVER]
+A 00139208 [ControlFlags]
+A 00139218 ExcludeFromSelect=USB\VID_0529&PID_0001
+A 00139243 [aksusb95]
+A 0013924f ;;CopyFiles=aksusb95.CopyList
+A 0013926e AddReg=aksusb95.AddReg
+A 00139288 [aksusb95.AddReg]
+A 0013929b HKR,,DevLoader,,*ntkern
+A 001392b4 HKR,,NTMPDriver,,aksusb95.sys
+A 001392d3 HKR,,MyLittleTag,,MyEntryInTheRegistry
+A 001392fd [aksusb95.CopyList]
+A 00139312 aksusb95.sys
+A 00139322 [Strings]
+A 0013932d Fast="Aladdin Knowledge Systems"
+A 0013934f FastMfg="Aladdin Knowledge Systems"
+A 00139374 USB\VID_0529&PID_0001.DeviceDesc="Aladdin USB Key"
+A 001393fd !This program cannot be run in DOS mode.
+A 00139569 HASP95
+A 0013a712 PSQRV
+A 0013a753 ^ZY[X
+A 0013ac91 d<au	
+A 0013ac9e W<Nu	
+A 0013acab J<nu	
+A 0013acb8 =<Bu	
+A 0013acc5 0<bu	
+A 0013acd2 #<Eu	
+A 0013acf9 PSQRWV
+A 0013af1c t$PRQW
+A 0013af6a ^_ZY[X
+A 0013af8c y	C5t
+A 0013b030 hasp95  
+A 0013b060 verPP
+A 0013b068 1vsR2vsR3vsR
+A 0013b078 ComputerType
+A 0013b085 AutoDetect
+A 0013b090 PortMode
+A 0013b0bc CheckMouse
+A 0013b0cc UseCLI
+A 0013b0d3 UseCompaq
+A 0013b0dd HASP95DL.VXD
+A 0013b0ea HARDLOCK.VXD
+A 0013b107 System\CurrentControlSet\Services\VxD\HASP95\Parameters
+A 0013b1db PSQRWV
+A 0013b228 ]^_ZY[X]
+A 0013b2d3 SQRVW_^ZY[
+A 0013b2df SQRVW_^ZY[
+A 0013b468 \\.\HASP95
+A 0013b475 HASP95DL.VXD
+A 0013b482 HARDLOCK.VXD
+A 0013b502 d3V*j
+A 0013b6ba .N6Vf:Zjr<\ltx
+A 0013b7fc wJ)UO
+A 0013b836 YT_Y!
+A 0013bdce Bloop
+A 0013c7be PSQWf>
+A 0013c843 _Y[Xf>
+A 0013ca55 et-f>
+A 0013ca60 ft"f>
+A 0013ca9c 2tof>
+A 0013caa7 3tFf>
+A 0013cab2 4t;f>
+A 0013cb25 <tof>
+A 0013cb30 =tFf>
+A 0013cb3b >t;f>
+A 0013cc4f ytof>
+A 0013cc5a ztdf>
+A 0013cc65 {tYf>
+A 0013cc70 |tNf>
+A 0013cccb PSRVWUf>
+A 0013cd22 ]_^Z[X
+A 0013d12e 0fPf>
+A 0013d203 "fQf>
+A 0013d2f1 "fQf>
+A 0013d38f YfPf>
+A 0013d79e VWSP>
+A 0013d7b6 X[_^f
+A 0013dfc7 fVfPf>
+A 0013e016 t.kf>
+A 0013e059 t.3f>
+A 0013e07d t.Ef>
+A 0013e162 t)fBf>
+A 0013e193 fPfSfRf>
+A 0013e1ed fZf[fX
+A 0013e1f4 fRfP>
+A 0013e24d t8fRfP>
+A 0013e30e fVfPf>
+A 0013e3e5 fFf>;
+A 0013e4da fVfPf>
+A 0013e566 fFf>;
+A 0013e677 fVfWfQfSfPf3
+A 0013e721 fXf[fYf_f^
+A 0013e72c fVfWfPf3
+A 0013e765 fXf_f^
+A 0013e796 fXf[fYfZf_f^
+A 0013e7b7 t-VRQP
+A 0013e7e2 XYZ^f>
+A 0013e7f0 fVfWfRfQfSfP
+A 0013e851 fVfWfRfQfSfP
+A 0013e879 fXf[fYfZf_f^
+A 0013e88f f5Wtf
+A 0013e895 TTf5"
+A 0013e8d7 (rxf>
+A 0013e8e2 0vPf>
+A 0013e8ed 4tEf>
+A 0013e8f8 5t:f>
+A 0013e903 6t/f>
+A 0013e90e QrAf>
+A 0013e924 xr+f>
+A 0013e9bd 7tjf>
+A 0013e9c8 8t_f>
+A 0013e9d3 9tTf>
+A 0013e9eb iv<f>
+A 0013e9f6 lt1f>
+A 0013ea01 mt&f>
+A 0013eaf9 XYZ^f>
+A 0013eb4a fVfRfQfSf>
+A 0013ecb8 f[fYfZf^f>
+A 0013eccd f[fYfZf^f>
+A 0013ef22 t.EfXf>;
+A 0013ef4c t.EfXf>;
+A 0013ef76 t.EfXf>;
+A 0013f115 "PSQRj
+A 0013f134 ZY[X>
+A 0013f68a 2tLf>
+A 0013f695 <trf>
+A 0013fa5c fRfQfP>
+A 0013fa8e fXfYfZ
+A 0013fa95 fVfPf>
+A 0013fd63 "fQf>
+A 00140918 PSQRVW
+A 00140a26 _^ZY[X
+A 00140a2d PSQRVWV
+A 00140a43 _^ZY[X
+A 00140a90 PSQRVW
+A 00140b9d _^ZY[X
+A 00140ba4 PSQRVWV
+A 00140bbf _^ZY[X
+A 00140c21 fPfSfQfRfWfVf>
+A 00140c84 f^f_fZfYf[fX
+A 00140ce1 VWQfS>
+A 00140ee0 f[Y_^
+A 0014110f fWfQ>
+A 0014121f >YZX>
+A 0014131d fRQfP3
+A 0014136f fXYfZ
+A 0014141e fPfQVW3
+A 00141456 _^fYfX
+A 00141c2e GfAf;
+A 00141c9e f[fP>
+A 00141ccd fXGfAf;
+A 00141cdb fQfS2
+A 00141d18 RQSW3
+A 00141faa fQfP2
+A 001421bd fSfPf>
+A 00142498 WPQf>
+A 001424e2 VPQf>
+A 00142775 2t'f>
+A 001427cf )PSQRj
+A 0014284c 2tDf>
+A 00142857 3t9f>
+A 00142862 Lt.f>
+A 0014286d Mt#f>
+A 001428a9 fVfWfU
+A 001428b4 f]f_f^f]
+A 001443b4 'Aladdin Windows 95 Kernel Device Driver
+A 001443df hasp95_DDB
+A 001443fc VS_VERSION_INFO
+A 00144444 StringFileInfo
+A 00144458 040904e4
+A 00144468 CompanyName
+A 00144474 Aladdin Knowledge Systems.
+A 00144494 FileDescription
+A 001444a4 HASP Static Device Driver for Windows 9x.
+A 001444d4 FileVersion
+A 001444ec InternalName
+A 001444fc HASP95
+A 00144508 LeagalCopyright
+A 00144518 Aladdin Knowledge Systems Ltd. (c).
+A 00144540 LeagalTrademarks
+A 00144554 HASP is a trademark of Aladdin.
+A 00144578 OriginalFilename
+A 0014458c HASP95.VXD
+A 0014459c ProductName
+A 001445a8 Windows 9x HASP Static Device Driver
+A 001445d4 ProductVersion
+A 001445f0 VarFileInfo
+A 00144600 Translation
+A 0014465d !This program cannot be run in DOS mode.
+A 001447b5 HASP95DL
+A 0014491f &	/	t	}	
+A 00145895 PCI u	
+A 00145a9e u"PQR
+A 00145e25 PSQRWV
+A 001461b4 tDPRQW
+A 00146212 ^_ZY[X]
+A 00146263 d<au	
+A 00146270 W<Nu	
+A 0014627d J<nu	
+A 0014628a =<Bu	
+A 00146297 0<bu	
+A 001462a4 #<Eu	
+A 0014654c VPh|#
+A 001466a3 PSQRV
+A 001466e4 ^ZY[X
+A 00146844 hasp95dl
+A 00146874 verPP
+A 0014687c 1vsR2vsR3vsR
+A 00146990 ComputerType
+A 0014699d AutoDetect
+A 001469a8 PortMode
+A 001469d4 CheckMouse
+A 001469df UseCLI
+A 001469e6 UseCompaq
+A 001469f0 KeySearch
+A 001469fa USB-Parallel
+A 00146a0b Parallel
+A 00146a19 Contention
+A 00146a24 EcpRetry
+A 00146a2d PortDelay
+A 00146a67 System\CurrentControlSet\Services\VxD\HASP95\Parameters
+A 00147e34 GenuineDevil
+A 00147e50 PQRWU
+A 00147ebe ]_ZYX
+A 00147eed 	%&}&
+A 00147fc0 GenuineDevil
+A 00147fda PQRWU
+A 001480b2 ]_ZYX
+A 00148170 8WhPhQ
+A 001481c0 tBZYX
+A 001481f1 X]_ZYX
+A 00148204 ZYXUP
+A 001482dd ]_ZYX
+A 00148491 ,d)0m
+A 0014854e Gd[3H
+A 0014864e Gd[3H
+A 0014874e Gd[3H
+A 0014877f QVt3l
+A 0014884e Gd[3H
+A 0014887f QVt3l
+A 0014894e Gd[3H
+A 00148aae Gd[3H
+A 00148c8b |h^wm
+A 00148d55 '+0hzCx9u
+A 00148e00 Y]_ZYX
+A 00148f71 WVRQSP3
+A 00148f9f X[YZ^_
+A 00148fd6 PSQWf
+A 0014900a  ~SP1
+A 00149041 j[Xaf
+A 00149074 3%T*A'
+A 0014910b ''3d!NK
+A 00149131 3RV5WU3#c
+A 0014914b <SvB=vEX
+A 00149339 L#/ROd
+A 0014935f &Q:p{
+A 00149375 &MQJqIS
+A 00149388 3JR/+
+A 001494c7 JV#04+
+A 001494ce drJjr%
+A 00149540 "2"V"
+A 001495bb H$S+YZ
+A 0014969e (t/FXA\
+A 00149750 I=O*"
+A 00149853 gZIi O
+A 0014985c (rIR#
+A 001498a6 5Wtt8
+A 00149919 2}I7&
+A 00149950 N9r^T
+A 001499a8 IR;		
+A 001499ca ZWXId
+A 00149a68 dLr "$
+A 00149a90 ^ .zD
+A 00149ab7 !4d*, 
+A 00149caf jj\@X
+A 00149d49 ~Ph*K
+A 00149d75 *;(Zr
+A 00149d9b /u	1=
+A 00149df7 sKjtO
+A 00149e37 PLxsM
+A 00149f12 )Q,]L
+A 0014a0c9 pFwPZ/
+A 0014a0f3 S'p>|
+A 0014a192 tWPQ'
+A 0014a2d3 Vf:Zjr
+A 0014a2ef 	hrsVl
+A 0014e7dd XSVWf
+A 0014f7c8 hardlock.vxd
+A 0014f7d8 hardlock.vxd
+A 0014f7f8 wJ)UO
+A 0014f832 YT_Y!
+A 00150628 'Aladdin Windows 95 Kernel Device Driver
+A 00150653 hasp95dl_DDB
+A 00150672 VS_VERSION_INFO
+A 001506ba StringFileInfo
+A 001506ce 040904E4
+A 001506de CompanyName
+A 001506ea Aladdin Knowledge Systems
+A 0015070a FileDescription
+A 0015071a HASP Dynamic Device Driver for Windows 9x.
+A 0015074a FileVersion
+A 00150762 InternalName
+A 00150772 hasp95dl.vxd
+A 00150786 LegalCopyright
+A 00150796 Copyright 1994-2001 Aladdin Knowledge Systems.
+A 001507ca OriginalFilename
+A 001507de hasp95dl.vxd
+A 001507f2 ProductName
+A 001507fe Windows 9x HASP Dynamic Device Driver
+A 0015082a ProductVersion
+A 00150846 VarFileInfo
+A 00150856 Translation
+A 00150868 \hardlock.vxd
+A 00150878 System\CurrentControlSet\Services\VxD\HASP95
+A 001508a8 version
+A 001508c8 HWType
+A 001508e8 System\CurrentControlSet\Services\VxD\HASP95
+A 00150918 HWType
+A 00150920 Software\hardlock
+A 00150934 EcpRetry
+A 00150940 System\CurrentControlSet\Control\VMM32Files
+A 0015096c hasp95.vxd
+A 00150978 System\CurrentControlSet\Services\VxD\HASP95
+A 001509a8 Start
+A 001509b0 hasp95.vxd
+A 001509bc StaticVxD
+A 001509d0 Version
+A 001509d8 HWType
+A 001509e0 KERNEL32.DLL
+A 001509f0 GetDateFormatA
+A 00150a00 MMMM d', ' yyyy
+A 00150a18 \hasp95.vxd
+A 00150a24 ImagePath
+A 00150a30 System\CurrentControlSet\Services\VxD\HASP95\Parameters
+A 00150a68 ProcessorType
+A 00150a7c EcpRetry
+A 00150a88 USB-Parallel
+A 00150a98 Parallel
+A 00150aa4 \\.\hasp95.vxd
+A 00150abc \hasp95.vxd
+A 00150ac8 \hasp95.vxd
+A 00150ad4 \hasp95dl.vxd
+A 00150ae4 \hasp95dl.vxd
+A 00150af4 \hasp95dl.vxd
+A 00150b04 \pcrdhasp.inf
+A 00150b14 \pcrdhasp.inf
+A 00150b2c \hardlock.vxd
+A 00150b3c \hardlock.vxd
+A 00150b4c \hardlock.vxd
+A 00150b60 HLVDD.DLL
+A 00150b70 HLVDD.DLL
+A 00150b7c \hlpcmcia.inf
+A 00150b8c \hlpcmcia.inf
+A 00150b9c \aksusb95.sys
+A 00150bac \aksusb95.sys
+A 00150bc4 \aksusb95.inf
+A 00150bd4 \aksusb95.inf
+A 00150be4 \system32\drivers
+A 00150bf8 \aksusb.sys
+A 00150c04 \aksusb.sys
+A 00150c18 \aksusb.inf
+A 00150c24 \aksusb.inf
+A 00150c30 hasp95.vxd
+A 00150c3c System\CurrentControlSet\Control\VMM32Files
+A 00150c68 System\CurrentControlSet\Services\VxD\HASP95
+A 00150c98 Software\hardlock
+A 00150cac \hasp95.vxd
+A 00150cc0 \pcrdhasp.inf
+A 00150cd0 \hasp95dl.vxd
+A 00150ce8 \hardlock.vxd
+A 00150cf8 \hlpcmcia.inf
+A 00150d08 \hlvdd.dll
+A 00150d14 \aksusb.sys
+A 00150d20 \aksusb.inf
+A 00150d2c \system32\drivers
+A 00150d40 \aksusb.sys
+A 00150d4c \aksusb95.sys
+A 00150d5c \aksusb95.inf
+A 00150d74 \aksusb95.inf
+A 00150d84 \hasp95dl.vxd
+A 00150d94 \hasp95.vxd
+A 00150da0 \hardlock.vxd
+A 00150db0 \hlvdd.dll
+A 00150dbc \system32\drivers
+A 00150dd0 \aksusb.sys
+A 00150ddc \aksusb95.sys
+A 00150dec \\.\hasp95dl.vxd
+A 00150e04 \\.\HASP95DL.VXD
+A 00150e65 !This program cannot be run in DOS mode.
+A 00151b29 HARDLOCK
+A 00164614 hasp.ch
+A 0016461c FALSE
+A 00164624 %s failed on %s line %d
+A 00164640 hasp.ch
+A 00164648 len <= 2
+A 00164654 %s failed on %s line %d
+A 00164670 hasp.ch
+A 00164678 FALSE
+A 00164680 %s failed on %s line %d
+A 0016469c hasp.ch
+A 001646a4 FALSE
+A 001646ac %s failed on %s line %d
+A 001646c8 hasp.ch
+A 001646d0 FALSE
+A 001646d8 %s failed on %s line %d
+A 001646f4 hasp.ch
+A 001646fc FALSE
+A 00164704 %s failed on %s line %d
+A 00164720 hasp.ch: p1 = %x
+A 00164734 hasp.ch: status = %x
+A 0016474c hasp.ch
+A 00164754 FALSE
+A 0016475c %s failed on %s line %d
+A 00164780 hasp.ch
+A 00164788 FALSE
+A 00164790 %s failed on %s line %d
+A 001647aa ecp_crit.ch
+A 001647b6 sysdep_ptr != NULL
+A 001647ca %s failed on %s line %d
+A 001647e6 ecp_crit.ch
+A 001647f2 sysdep_ptr != NULL
+A 00164806 %s failed on %s line %d
+A 00164822 hasp.ch
+A 0016482a FALSE
+A 00164832 %s failed on %s line %d
+A 0016484e eyecp.ch
+A 0016485a buf != 0
+A 00164866 %s failed on %s line %d
+A 00164882 eyecp.ch
+A 0016488e redata != 0
+A 0016489a %s failed on %s line %d
+A 001648b6 eyecp.ch
+A 001648c2 as != 0
+A 001648ca %s failed on %s line %d
+A 001648e6 eyecp.ch
+A 001648f2 portStruct != 0
+A 00164902 %s failed on %s line %d
+A 0016491e eyecp.ch
+A 0016492a FALSE
+A 00164932 %s failed on %s line %d
+A 0016494e eyecp.ch
+A 0016495a FALSE
+A 00164962 %s failed on %s line %d
+A 0016497e eyecp.ch
+A 0016498a FALSE
+A 00164992 %s failed on %s line %d
+A 001649ae eyecp.ch
+A 001649ba FALSE
+A 001649c2 %s failed on %s line %d
+A 00164b2b CPG-HV/AK*AJ=MAZ!
+A 00164d97 UseCLI
+A 00164d9f Contention
+A 00164dab ControlPort
+A 00164db7 UseUSB
+A 00164dbf EcpRetry
+A 00164dcb PortAllocFunctionality
+A 00164de3 PortAllocRetryCount
+A 00164df7 PortMode
+A 00164e03 EcpDmaInt
+A 00164e0f Flags
+A 00164e17 UsePCI
+A 00164e1f UseCLI
+A 00164e27 Contention
+A 00164e33 ControlPort
+A 00164e3f KeySearch
+A 00164e4b EcpRetry
+A 00164e57 PortAllocFunctionality
+A 00164e6f PortAllocRetryCount
+A 00164e83 PortMode
+A 00164e8f EcpDmaInt
+A 00164e9b Flags
+A 00164ea3 UsePCI
+A 00164ead eyecp.ch
+A 00164eb9 redata != 0
+A 00164ec5 %s failed on %s line %d
+A 00164ee1 eyecp.ch
+A 00164eed as != 0
+A 00164ef5 %s failed on %s line %d
+A 00164f11 eyecp.ch
+A 00164f1d sys_dep != 0
+A 00164f2d %s failed on %s line %d
+A 00164f49 eyecp.ch
+A 00164f55 sys_dep->portStruct != 0
+A 00164f71 %s failed on %s line %d
+A 00164f8d hasp.ch
+A 00164f95 FALSE
+A 00164f9d %s failed on %s line %d
+A 00164fb9 hasp.ch
+A 00164fc1 len <= 2
+A 00164fcd %s failed on %s line %d
+A 00164fe9 hasp.ch
+A 00164ff1 FALSE
+A 00164ff9 %s failed on %s line %d
+A 00165015 hasp.ch
+A 0016501d FALSE
+A 00165025 %s failed on %s line %d
+A 00165041 hasp.ch
+A 00165049 FALSE
+A 00165051 %s failed on %s line %d
+A 0016506d hasp.ch
+A 00165075 FALSE
+A 0016507d %s failed on %s line %d
+A 001650a1 GCGCGCGC
+A 001650ad GCGCGCGC
+A 001650b9 GCGCGCGC
+A 001650cd hasp.ch
+A 001650d5 FALSE
+A 001650dd %s failed on %s line %d
+A 00165231 HARDLOCK.VXD
+A 00165241 Please reconnect the HARDLOCK 
+A 00165260 to the same port and try again.
+A 00165295 UseCLI
+A 0016529d Contention
+A 001652a9 ControlPort
+A 001652b5 UseUSB
+A 001652bd EcpRetry
+A 001652c9 PortAllocFunctionality
+A 001652e1 PortAllocRetryCount
+A 001652f5 PortMode
+A 00165301 EcpDmaInt
+A 0016530d Flags
+A 00165315 UsePCI
+A 0016531d UseCLI
+A 00165325 Contention
+A 00165331 ControlPort
+A 0016533d KeySearch
+A 00165349 EcpRetry
+A 00165355 PortAllocFunctionality
+A 0016536d PortAllocRetryCount
+A 00165381 PortMode
+A 0016538d EcpDmaInt
+A 00165399 Flags
+A 001653a1 UsePCI
+A 001653ac ..\..\inc\hasp2hlk.ch
+A 001653c4 ListItem != NULL
+A 001653d8 %s failed on %s line %d
+A 001653f4 PORTNAME
+A 00165404 ECPDevice
+A 00165410 w95_drv.c
+A 0016541c cmconf.wNumIOPorts == 2
+A 00165434 %s failed on %s line %d
+A 0016566d UseCLI
+A 00165675 Contention
+A 00165681 ControlPort
+A 0016568d UseUSB
+A 00165695 EcpRetry
+A 001656a1 PortAllocFunctionality
+A 001656b9 PortAllocRetryCount
+A 001656cd PortMode
+A 001656d9 EcpDmaInt
+A 001656e5 Flags
+A 001656ed UsePCI
+A 001656f5 UseCLI
+A 001656fd Contention
+A 00165709 ControlPort
+A 00165715 KeySearch
+A 00165721 EcpRetry
+A 0016572d PortAllocFunctionality
+A 00165745 PortAllocRetryCount
+A 00165759 PortMode
+A 00165765 EcpDmaInt
+A 00165771 Flags
+A 00165779 UsePCI
+A 00165781 Software\Hardlock
+A 00165795 System\CurrentControlSet\Services\VxD\HASP95\Parameters
+A 001657d0 USB-Parallel
+A 001657e0 USB-Parallel
+A 001657f0 Parallel
+A 001657fc Parallel
+A 00165828 Normal
+A 00165830 Normal
+A 00165860 ..\..\inc\hasp2hlk.ch
+A 00165878 porttable->usagecount != 0
+A 00165894 %s failed on %s line %d
+A 001658ad ..\..\inc\drvcomon.ch
+A 001658c5 pLDI != 0
+A 001658d1 %s failed on %s line %d
+A 001658ed ..\..\inc\drvcomon.ch
+A 00165905 portentry != NULL
+A 00165919 %s failed on %s line %d
+A 00165935 ..\..\inc\hasp2hlk.ch
+A 0016594d porttable != NULL
+A 00165961 %s failed on %s line %d
+A 0016597d PORTNAME
+A 00165991 ECPDevice
+A 0016599d w95_drv.c
+A 001659a9 cmconf.wNumIOPorts == 2
+A 001659c1 %s failed on %s line %d
+A 00165a29 $Id: eyeusb.c,v 1.65 2002/06/07 14:06:17 chris Exp $
+A 00165afc F$f3F(
+A 001677f2 }Xj5W
+A 00169071 t?V^f1
+A 001694db /_^[]
+A 0016a473 j@j@j
+A 0016b230  RZSf
+A 0016b529 AQW_h
+A 0016b93d &/dPX
+A 0016dc97 4-f1F.
+A 0016dd83 ]$S[f
+A 0016ed39 N$eIS
+A 0016f0a3 F(f3F,
+A 0016f0bb F&f3F*
+A 0016f749 oVef1
+A 0016fb8d &MUQY
+A 0017189f C(f3C,
+A 00171baf QPXRf
+A 00171cfb _^[]f
+A 0017235a ^ f3F*
+A 001723d8 EPhn3
+A 00172b62 pf1C.
+A 00172b71 C$f3C(
+A 00172c1b 5|_^[
+A 00173171 D7!4~
+A 001734b8 &HKPX
+A 001738a6 4,hB`
+A 001745eb N f1^,
+A 001745fc ^"f1V.
+A 00175b44 o2\'%
+A 00175c46 &j}U]U
+A 001782cc _^[]f
+A 00179450 _S[^[
+A 00179a6f >^[]f
+A 00179d22 Eo_^[
+A 00179d8a UUUUf
+A 0017cfb3 OQY+f
+A 0017d3be vdWjO
+A 0017d3fa @Wj}h
+A 0017d8ce j~jHj
+A 0017e502 _^[PX
+A 00180150 yrW_f
+A 00181216 &33RZ
+A 00182020 fCf;]
+A 001827d8 &erhz
+A 0018468a %,_^[
+A 001848ed j j h
+A 00184b51 qf3C*
+A 00186a58 W_fCh
+A 001877a4 xx_^[f
+A 00187ec9 @Lh\u
+A 001883de _W_^[
+A 00188c29 U]_^[
+A 00188d56 U]_^]
+A 0018a010 \Uf@P
+A 0018ad13 %U_^[
+A 0018b844 N,U]f
+A 0018bfb7 NhfIS
+A 0018fbaf PA_^[]
+A 001919fa j~jHj
+A 001928a3 2bf-2b
+A 0019434b ZY[f%
+A 00194368 CyriZY[t
+A 00194e5b &naV^f
+A 00195a0a ]bdkf
+A 00197167 |6NhoH
+A 0019832d QYjPj
+A 00199709 &xuW_
+A 0019fdb2 &T?U]
+A 001a0c9e X-S[h	
+A 001a2ae4 +++++++++++++++++++++++++++++++
+A 001a2b11 ++++++
+A 001a2b19 ++++++
+A 001a2b2a ++++++ ++!"++++++#++++++$%+++++&++'++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++(++)*
+A 001a4575 5Zh]	
+A 001a45bd &r.S[
+A 001a4ce8 46f!D
+A 001abe63 &^uPX
+A 001abebf 51h3E
+A 001ac343 8SoWi
+A 001ae265 }\V^f
+A 001b43f8 .N6Vf:Zjr<\ltx
+A 001b442a HARDLOCK
+A 001b445a verPP
+A 001b4462 1vsR2vsR3vsR
+A 001b448e HARDLOCK
+A 001b4497 Software\Hardlock
+A 001b44a9 ControlPort
+A 001b44b5 UseCLI
+A 001b44bc WithSerial
+A 001b44c7 Contention
+A 001b44d2 FixTI
+A 001b44d8 EcpRetry
+A 001b44e1 EcpDmaInt
+A 001b44eb UseUSB
+A 001b44f2 Mouse
+A 001b490c XY[t.f
+A 001b4946 [YPQS
+A 001b4a66 PCI u	
+A 001b4d31 !u	`U
+A 001b4e7c QSVWf
+A 001b4ec1 QSVWf
+A 001b4f07 QSVWf
+A 001b4f50 QSVWf
+A 001b4f99 QSVWf
+A 001b4fd9 QSVWf
+A 001b501f QSVWf
+A 001b506c QSVWf
+A 001b6540 ZY_^[
+A 001b6e93 QSVWVWP
+A 001b78de J,_^[
+A 001b875c 																
+A 001b8772 																
+A 001b8b04 u j.j
+A 001b9a31 SVW_^[
+A 001b9d56 SVW_^[
+A 001b9e8c  SVWf
+A 001b9ede SVWf3
+A 001b9ef3 SVWf3
+A 001b9f08 SVWf3
+A 001b9f1d SVWf3
+A 001b9f34  SVWf
+A 001b9f7a  SVWf
+A 001ba01c  SVWf
+A 001ba0a2  SVWf
+A 001ba116 SVWf3
+A 001ba12b SVWf3
+A 001ba140 SVWf3
+A 001ba155 SVWf3
+A 001ba16a SVWf3
+A 001ba17f SVWf3
+A 001ba194 SVWf3
+A 001bac2a &///FAST Hardlock Device Support Driver
+A 001bac54 HARDLOCK_DDB
+A 001bac63 InfoAreaStart
+A 001bac73 InitArea
+A 001bac8e VS_VERSION_INFO
+A 001bacd6 StringFileInfo
+A 001bacea 040904E4
+A 001bacfa CompanyName
+A 001bad06 Aladdin Knowledge Systems
+A 001bad26 FileDescription
+A 001bad36 Hardlock VxD for Win95 / Win98
+A 001bad5a FileVersion
+A 001bad72 InternalName
+A 001bad82 hardlock.vxd
+A 001bad96 LegalCopyright
+A 001bada6 Copyright 1994-2002 Aladdin Knowledge Systems.
+A 001badda OriginalFilename
+A 001badee hardlock.vxd
+A 001bae02 ProductName
+A 001bae0e Hardlock Copy Protection
+A 001bae2e ProductVersion
+A 001bae4a VarFileInfo
+A 001bae5a Translation
+A 001bae94 ENABLE
+A 001bae9c DISABLE
+A 001baea8 Manual
+A 001baeb4 Normal
+A 001baedc Parallel
+A 001baef0 USB-Parallel
+A 001baf0c USB-Parallel
+A 001baf20 USB-Parallel
+A 001baf3c SYSTEM\CurrentControlSet\Services\Haspnt\Parameters
+A 001baf70 SYSTEM\CurrentControlSet\Services\Hardlock\Parameters
+A 001bafa8 SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers
+A 001bafe0 System\CurrentControlSet\Services\VxD\HASP95\Parameters
+A 001bb018 Software\hardlock
+A 001bb02c CheckMouse
+A 001bb038 UseCLI
+A 001bb040 PortDelay
+A 001bb04c EcpRetry
+A 001bb058 PortAllocRetryCount
+A 001bb06c PortAllocFunctionality
+A 001bb084 UseCompaq
+A 001bb090 UseUSB
+A 001bb098 UsePCI
+A 001bb0a0 DisableDPA
+A 001bb0ac IoPortAddress
+A 001bb0bc IoPortCount
+A 001bb0c8 NT31Mode
+A 001bb0d8 ControlPort
+A 001bb0e4 FixTI
+A 001bb0ec Mouse
+A 001bb0f4 ComputerType
+A 001bb104 PortMode
+A 001bb110 AutoDetect
+A 001bb124 Contention
+A 001bb130 KeySearch
+A 001bb13c EcpDmaInt
+A 001bb148 Flags
+A 001bb150 Flags
+A 001bb15c ENABLE
+A 001bb174 DISABLE
+A 001bb194 HLVDD.DLL
+A 001bb1a8 040904E4
+A 001bb1b4 ProductVersion
+A 001bb1d4 %SystemRoot%\system32\drivers\hardlock.sys
+A 001bb200 %SystemRoot%\system32\hlvdd.dll
+A 001bb220 %SystemRoot%\system32\hlvdd.dll
+A 001bb240 %SystemRoot%\system32\drivers\hardlock.sys
+A 001bb26c SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers
+A 001bb2a8 HLVDD.DLL
+A 001bb2b4 HLVDD.DLL
+A 001bb2c4 SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers
+A 001bb300 HLVDD.DLL
+A 001bb310 hardlock
+A 001bb31c SYSTEM\CurrentControlSet\Services\Pcmcia\DataBase
+A 001bb354 FAST Electronic\Hardlock V1.0
+A 001bb374 Driver
+A 001bb380 Aladdin Knowledge Systems Ltd.\Hardlock V2.0
+A 001bb3b0 Driver
+A 001bb3b8 SYSTEM\CurrentControlSet\Services\Pcmcia\DataBase
+A 001bb3ec FAST Electronic\Hardlock V1.0
+A 001bb40c FAST Electronic
+A 001bb41c Aladdin Knowledge Systems Ltd.\Hardlock V2.0
+A 001bb44c Aladdin Knowledge Systems Ltd.
+A 001bb46c IoPortAddress0
+A 001bb47c Extended Base
+A 001bb48c Hardlock
+A 001bb498 Hardlock
+A 001bb4a4 Hardlock
+A 001bb4b0 SYSTEM\CurrentControlSet\Services\Hardlock
+A 001bb4dc Security
+A 001bb4e8 Parameters
+A 001bb4fc DisableDPA
+A 001bb508 Hardlock
+A 001bb514 Hardlock
+A 001bb520 Hardlock
+A 001bb52c kernel32.dll
+A 001bb53c IsTNT
+A 001bb544 Borland32
+A 001bb550 \\.\FEnteDev
+A 001bb59c \\.\FEnteDev
+A 001bb5fc \HLVDD.DLL
+A 001bb608 HLVDDGetVersion
+A 001bb618 \\.\FEnteDev
+A 001bb628 ntvdm
+A 001bb630 \\.\HARDLOCK.VXD
+A 001bb644 \\.\USBPDCOM
+A 001bb654 HL-Server for Win32
+A 001bb668 HLServer
+A 001bb674 \hardlock.sys
+A 001bb684 \haspnt.sys
+A 001bb690 \hlvdd.dll
+A 001bb69c \api_1lnm.dll
+A 001bb6ac \haspvdd.dll
+A 001bb6bc \haspvdd.dll
+A 001bb6cc \haspvdd.dll
+A 001bb6dc \hasput16.dll
+A 001bb6ec \aksusb.sys
+A 001bb6f8 \akspccard.sys
+A 001bb708 \aksusb95.sys
+A 001bb718 \hardlock.vxd
+A 001bb728 \hasp95dl.vxd
+A 001bb738 \hasp.386
+A 001bb744 \hasp95.vxd
+A 001bb754 ProductName
+A 001bb760 FileDescription
+A 001bb770 Comments
+A 001bb77c CompanyName
+A 001bb788 FileVersion
+A 001bb794 InternalName
+A 001bb7a4 LegalCopyright
+A 001bb7b4 LegalTrademarks
+A 001bb7c4 OriginalFilename
+A 001bb7d8 PrivateBuild
+A 001bb7e8 ProductVersion
+A 001bb7f8 SpecialBuild
+A 001bb808 040904B0
+A 001bb814 \StringFileInfo\
+A 001bb830 ProductVersion
+A 001bb840 040904E4
+A 001bb84c ProductVersion
+A 001bc446 z?aUY
+A 001bc488 zc%C1
+A 001bc4db -64OS
+A 001bc568 Unknown argument "%s"
+A 001bc580 Unknown option "%s"
+A 001bc598 Internal Error: Broken switch map
+A 001bc5c0 memory allocation error %s
+A 001bc5e0 memory allocation error %s
+A 001bc5fc Intarnal parser error: Broken option map
+A 001bc62c %s: %s
+A 001bc634 Recursive configuration file detected
+A 001bc65c Configuration file error: %s
+A 001bc67c option %s: bad number format
+A 001bc69c option %s: %s
+A 001bc6ac option %s: Missing argument
+A 001bc6cc option %s: Missing argument
+A 001bc6ec option %s: missing argument
+A 001bc70c option %s: missing argument
+A 001bc72c option %s: missing argument
+A 001bc74c option %s: missing argument
+A 001bc76c option %s: missing argument
+A 001bc78c option %s: missing argument
+A 001bc7c0 parsrtmp.
+U 0000789c jjjj
+U 00007933 jjjj
+U 000079c9 jjjj
+U 00007a5f jjjj
+U 00007af5 jjjj
+U 00007b8b jjjj
+U 00007c21 jjjj
+U 00007cb7 jjjj
+U 00007d4d jjjj
+U 00007e56 jjjj
+U 00011aa1 jjjj
+U 00011b44 jjjjj
+U 000125b4 jjjj
+U 0001264c jjjj
+U 000126e4 jjjj
+U 0001277c jjjj
+U 0001576a jjjjj
+U 00015bd0 jjjjj
+U 0001d642 jjjj
+U 0001db01 jjjj
+U 0001ec82 Bjjj
+U 0002b938 (null)
+U 00030916 jjjj
+U 00030b31 jjjj
+U 0003137f jjjj
+U 000332d9 jjjj
+U 000333b8 jjjj
+U 00033653 jjjj
+U 00033de0 \DosDevices\USBPDCOM
+U 00033e0c \Device\USBPD0
+U 00033e2c \DosDevices\USBPDCOM
+U 0003433e VS_VERSION_INFO
+U 0003439a StringFileInfo
+U 000343be 040904B0
+U 000343d6 CompanyName
+U 000343f0 Aladdin Knowledge Systems
+U 0003442a FileDescription
+U 0003444c Aladdin USB Key Driver
+U 00034482 FileVersion
+U 0003449c 1.28
+U 000344ae InternalName
+U 000344c8 aksusb.sys
+U 000344e6 LegalCopyright
+U 00034504 Copyright 1994-2001 Aladdin Knowledge Systems.
+U 0003456a OriginalFilename
+U 0003458c aksusb.sys
+U 000345aa ProductName
+U 000345c4 Hardlock WDM Device Driver for USB Protection Devices
+U 00034636 ProductVersion
+U 00034654 1.28
+U 00034666 VarFileInfo
+U 00034686 Translation
+U 00036212 5631787EF554EB5BEF76ADFB4740EB542118FEBE
+U 0003627d OSAtt
+U 00036290 2:5.1
+U 000362c0 aksusb.inf
+U 000362fb <<<Obsolete>>
+U 0003634c L{DE351A42-8E59-11D0-8C47-00C04FC295EE
+U 000363a3 ADD38E5E10C482E834FD848FFF7FC842C990E82F
+U 0003640e OSAtt
+U 00036421 2:5.1
+U 00036451 aksusb.sys
+U 0003647a L{C689AAB8-8E78-11D0-8C47-00C04FC295EE
+U 000364f8 <<<Obsolete>>
+U 00036553 HWID
+U 00036564 USB\VID_0529&PID_0001
+U 000365a5 mercclien
+U 000365c0 01.00.0271
+U 000365eb Compan
+U 0003661d ProcI
+U 00036630 538812
+U 00037a67 WHQL Tes
+U 000641e2 VS_VERSION_INFO
+U 0006423e StringFileInfo
+U 00064262 040904B0
+U 0006427a CompanyName
+U 00064294 Aladdin Knowledge Systems
+U 000642ce FileDescription
+U 000642f0 Aladdin Hardlock Win32 DLL
+U 0006432e FileVersion
+U 00064348 2.17
+U 0006435a InternalName
+U 00064374 hlvdd.dll
+U 0006438e LegalTrademarks
+U 000643b0 Hardlock is a trademark of AKS Ltd.
+U 000643fe LegalCopyright
+U 0006441c Copyright 1994-2002 Aladdin Knowledge Systems.
+U 00064482 OriginalFilename
+U 000644a4 hlvdd.dll
+U 000644be ProductName
+U 000644d8 Hardlock Win32 DLL
+U 00064506 ProductVersion
+U 00064524 2.17
+U 00064536 Comments
+U 00064548 ** Tobias **
+U 0006456a VarFileInfo
+U 0006458a Translation
+U 00064840 820/.4159-3
+U 00064880 ,):+'(
+U 000648a4  "#&!$
+U 000828ee Trace
+U 000828fa Akspcmci\Parameters
+U 00082922 Break
+U 0008292e Akspcmci\Parameters
+U 00082956 DbgMaskFdo
+U 0008296e Akspcmci\Parameters
+U 00082996 DbgMaskRawPort
+U 000829b6 Akspcmci\Parameters
+U 000829de DbgMaskDaisyChain0
+U 00082a06 Akspcmci\Parameters
+U 00082a2e DbgMaskDaisyChain1
+U 00082a56 Akspcmci\Parameters
+U 00082a7e DbgMaskEndOfChain
+U 00082aa2 Akspcmci\Parameters
+U 00082aca DbgMaskLegacyZip
+U 00082aee Akspcmci\Parameters
+U 00082b16 DbgMaskNoDevice
+U 00082b36 Akspcmci\Parameters
+U 00082b5e AllowAsserts
+U 00082b7a Akspcmci\Parameters
+U 00082ba2 AcquirePortTimeout
+U 00082bca Akspcmci\Parameters
+U 00082bf2 \Callback\PowerState
+U 0008364c FilterResourceMethod
+U 0008574e VS_VERSION_INFO
+U 000857aa StringFileInfo
+U 000857ce 040904B0
+U 000857e6 CompanyName
+U 00085800 Aladdin Knowledge Systems
+U 0008583a FileDescription
+U 0008585c Aladdin PCCard PnP Driver
+U 00085896 FileVersion
+U 000858b0 1.01 built by: WinDDK
+U 000858e2 InternalName
+U 000858fc akspccard.sys
+U 0008591e LegalCopyright
+U 0008593c Copyright 1994-2001 Aladdin Knowledge Systems.
+U 000859a2 OriginalFilename
+U 000859c4 akspccard.sys
+U 000859e6 ProductName
+U 00085a00 Aladdin PCCard Device Driver for Windows NT
+U 00085a5e ProductVersion
+U 00085a7c 1.01
+U 00085a8e VarFileInfo
+U 00085aae Translation
+U 00085b14 User configuration data is overriding firmware configuration data.
+U 00085ba4 Disabling port %1 as requested by the configuration data.
+U 00085c20 Interrupt conflict detected for %1.
+U 00085c70 Not enough memory was available to allocate internal storage needed for the device %1.
+U 00085d28 The hardware locations for %1 could not be translated to something the memory management system could understand.
+U 00085e14 The hardware addresses for %1 are already in use by another device.
+U 00085ea4 Some firmware configuration information was incomplete.
+U 00085f1c The user specified port is way too high in physical memory.
+U 00085f9c The control registers for the port overlaps with a previous ports control registers.
+U 00086532 6872DFF77BB1395260EFFBB96C35C707D2D524C7
+U 0008659d OSAtt
+U 000865b0 2:5.1
+U 000865e0 akspccard.sys
+U 0008660f L{C689AAB8-8E78-11D0-8C47-00C04FC295EE
+U 0008668d <<<Obsolete>>
+U 000866d1 DFE1366127CE73454EC924A93F7D22818889A1D3
+U 0008673c OSAtt
+U 0008674f 2:5.1
+U 0008677f akspccard.inf
+U 000867c0 <<<Obsolete>>
+U 00086811 L{DE351A42-8E59-11D0-8C47-00C04FC295EE
+U 00086882 HWID
+U 00086893 PCMCIA\ALADDIN_KNOWLEDGE_SYSTEMS_LTD.-PC-CARDHASP_V1.1-A809
+U 00086923 HWID
+U 00086934 PCMCIA\ALADDIN_KNOWLEDGE_SYSTEMS_LTD.-HARDLOCK_V2.0-73FD
+U 000869bb HWID
+U 000869cc PCMCIA\FAST_ELECTRONIC-HARDLOCK_V1.0-9586
+U 00086a35 HWID
+U 00086a46 PCMCIA\FAST_ELECTRONIC-HARDLOCK_V1.0-E258
+U 00086aaf mercclien
+U 00086aca 01.00.0275
+U 00086af5 Compan
+U 00086b27 ProcI
+U 00086b3a 564915
+U 00087f71 WHQL Tes
+U 00088570 l@Ph
+U 0008a725 =@=@A@A@
+U 00097efc \Device\Hasp
+U 0009829b =@=@A@A@
+U 0009887c 22233
+U 00098890 ³³³°°
+U 000988a4 »»»²²
+U 000a882a @Xp|
+U 000b54b2 jjjj
+U 000b58cf jjjjj
+U 000b5f04 jjjj
+U 000b65b7 jjjj
+U 000b6648 jjjj
+U 000bf454 \DosDevices\hasp
+U 000bf49c AutoDetect
+U 000bf4dc System\CurrentControlSet\Services\HaspNt
+U 000bf530 AutoDetect
+U 000bf548 ComputerType
+U 000bf564 PortDelay
+U 000bf578 EcpRetry
+U 000bf58c PortAllocRetryCount
+U 000bf5b4 PortAllocFunctionality
+U 000bf5e4 PortMode
+U 000bf5f8 UseCLI
+U 000bf608 UseCompaq
+U 000bf61c Contention
+U 000bf634 KeySearch
+U 000bf648 USB-Parallel
+U 000bf66c Parallel
+U 000bf680 Wave
+U 000bf690 Parameters
+U 000bf6d8 \DosDevices\hasp
+U 000bf6fc \Device\Hasp
+U 000bf72c \Device\FNT0
+U 000bf748 \Device\FNT0
+U 000bfeba VS_VERSION_INFO
+U 000bff16 StringFileInfo
+U 000bff3a 040904B0
+U 000bff52 CompanyName
+U 000bff6c Aladdin Knowledge Systems
+U 000bffa6 FileDescription
+U 000bffc8 HASP Kernel Device Driver for Windows NT
+U 000c0022 FileVersion
+U 000c003c 4.65
+U 000c004e InternalName
+U 000c0068 HASPNT
+U 000c007e LegalCopyright
+U 000c009c Copyright 1994-2001 Aladdin Knowledge Systems.
+U 000c0102 OriginalFilename
+U 000c0124 HASPNT.SYS
+U 000c0142 ProductName
+U 000c015c Windows NT HASP Kernel Device Driver
+U 000c01ae ProductVersion
+U 000c01cc 4.65
+U 000c01de VarFileInfo
+U 000c01fe Translation
+U 001256fa VS_VERSION_INFO
+U 00125756 StringFileInfo
+U 0012577a 040904B0
+U 00125792 CompanyName
+U 001257ac Aladdin Knowledge Systems
+U 001257e6 FileDescription
+U 00125808 Hardlock Device Driver for Windows NT
+U 0012585a FileVersion
+U 00125874 3.00
+U 00125886 InternalName
+U 001258a0 hardlock.sys
+U 001258c2 LegalCopyright
+U 001258e0 Copyright 1994-2002 Aladdin Knowledge Systems.
+U 00125946 OriginalFilename
+U 00125968 hardlock.sys
+U 0012598a ProductName
+U 001259a4 Hardlock Device Driver for Windows NT
+U 001259f6 ProductVersion
+U 00125a14 3.00
+U 00125a26 VarFileInfo
+U 00125a46 Translation
+U 001324ba VS_VERSION_INFO
+U 00132516 StringFileInfo
+U 0013253a 040904e4
+U 00132552 CompanyName
+U 0013256c Aladdin Knowledge Systems.
+U 001325aa FileDescription
+U 001325cc HASP Virtual Device Driver for Windows NT.
+U 0013262a FileVersion
+U 00132644 4.65
+U 00132656 InternalName
+U 00132670 HASPVDD
+U 00132686 LeagalCopyright
+U 001326a8 Aladdin Knowledge Systems Ltd. (c).
+U 001326f6 LeagalTrademarks
+U 00132718 HASP is a trademark of Aladdin.
+U 0013275e OriginalFilename
+U 00132780 HASPVDD.DLL
+U 0013279e ProductName
+U 001327b8 Windows NT HASP Virtual Device Driver
+U 0013280a ProductVersion
+U 00132828 4.65
+U 0013283a VarFileInfo
+U 0013285a Translation
+U 00132c9c ½½½Ä½½½½½½½½ê
+U 00132cb8 ½½ÀÀ½ÀÀÀ½½
+U 00133528 PortAllocRetryCount
+U 00133588 PortAllocFunctionality
+U 00134daf jjjj
+U 00134f9f jjjj
+U 0013571f jjjj
+U 00137649 jjjj
+U 00137728 jjjj
+U 001379c3 jjjj
+U 00138030 \DosDevices\USBPDCOM
+U 0013805c \Device\USBPD0
+U 0013807c \DosDevices\USBPDCOM
+U 0013858e VS_VERSION_INFO
+U 001385ea StringFileInfo
+U 0013860e 040904B0
+U 00138626 CompanyName
+U 00138640 Aladdin Knowledge Systems
+U 0013867a FileDescription
+U 0013869c Aladdin USB Key Driver
+U 001386d2 FileVersion
+U 001386ec 1.28
+U 001386fe InternalName
+U 00138718 aksusb.sys
+U 00138736 LegalCopyright
+U 00138754 Copyright 1994-2001 Aladdin Knowledge Systems.
+U 001387ba OriginalFilename
+U 001387dc aksusb.sys
+U 001387fa ProductName
+U 00138814 Hardlock WDM Device Driver for USB Protection Devices
+U 00138886 ProductVersion
+U 001388a4 1.28
+U 001388b6 VarFileInfo
+U 001388d6 Translation
+U 00139868 '=¢¸
+U 0013b2fb \Device\Hasp
+U 0013b69a =@=@A@A@
+U 0013bc91 22233
+U 0013bca5 ³³³°°
+U 0013bcb9 »»»²²
+U 00144b06 7>^e'
+U 00153f97 Cs·Û
+U 00154744 8@½Å
+U 001571a8 9Eóÿ
+U 00159541 ÁÍÙå
+U 0015aa1c ÒÞðü'
+U 0015aeca UiËÓ'
+U 0015f613 '?²¾
+U 00160529 $-PZ
+U 001605cc )GPe
+U 001605d8 ªÊÙð
+U 001605fe -;Ut
+U 0016060a ³¾×ðþ'
+U 00160744  pÇ'
+U 0016076e  ¬²'
+U 001609c6 ÄÖßä
+U 00160a4e ¿ßæì
+U 00160aac  ½ÅËî÷
+U 00160ac5 (7CWc
+U 00160b85 æìù'
+U 001649db \REGISTRY\MACHINE\System\CurrentControlSet\Services\HaspNt
+U 00165109 \REGISTRY\MACHINE\System\CurrentControlSet\Services\HaspNt
+U 00165509 \REGISTRY\MACHINE\System\CurrentControlSet\Services\HaspNt
+U 001659f5 \DosDevices\USBPDCOM
+U 00165a75 \Device\WaveGateWay0
+U 00165aa9 \DosDevices\AKSCPC
+U 0016a455 jjjj
+U 0017aa14 jjjj
+U 00187203 jjjj
+U 001b9cd9 jjj¡
+U 001ba613 jjj¡
+U 001ba777 jjj¡
+U 001bb562 0<could not determine name>
+U 001bb5ae 0<could not determine name>
+U 001bb5e8 HLVDD.DLL
+U 001bb9de          (((((                  H
+U 001bd0b6 Aladdin Device Driver Installation Utility for Win32
+U 001bd122 MS Shell Dlg
+U 001bd17e VS_VERSION_INFO
+U 001bd1da StringFileInfo
+U 001bd1fe 040904e4
+U 001bd216 CompanyName
+U 001bd230 Aladdin Knowledge Systems.
+U 001bd26e FileDescription
+U 001bd290 Aladdin Device Driver Custom Installation API.
+U 001bd2f6 FileVersion
+U 001bd310 4.81
+U 001bd322 InternalName
+U 001bd33c HINSTALL
+U 001bd356 LeagalCopyright
+U 001bd378 Aladdin Knowledge Systems Ltd. (c).
+U 001bd3c6 LeagalTrademarks
+U 001bd3e8 HASP is a trademark of Aladdin.
+U 001bd42e OriginalFilename
+U 001bd450 HINSTALL.EXE
+U 001bd472 ProductName
+U 001bd48c Aladdin Device Driver Custom Installation API
+U 001bd4ee ProductVersion
+U 001bd50c 4.81
+U 001bd51e VarFileInfo
+U 001bd53e Translation

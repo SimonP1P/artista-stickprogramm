@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-simonhorvat-AI-Projekte-Bernina-Test-Bernina-Artista-v4/f98a5b6c-0104-4a45-b9f1-aaf938f439e4/scratchpad/tools/resdump.py", line 32, in <module>
+    for t in p.DIRECTORY_ENTRY_RESOURCE.entries:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PE' object has no attribute 'DIRECTORY_ENTRY_RESOURCE'. Did you mean: 'DIRECTORY_ENTRY_EXPORT'?

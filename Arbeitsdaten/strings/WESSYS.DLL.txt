@@ -1,0 +1,3986 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .rsrc
+A 00000257 @.reloc
+A 00001027 T$(QR
+A 0000127b PSVW3
+A 00001a90 T$ QR
+A 00001b2f T$$PQ
+A 00001b35 D$$RP
+A 00001d29 L$(QR
+A 000028d4 G,uZh@s
+A 0000293e uZh@s
+A 000029a4 G4uZh@s
+A 000029bf D$,	P
+A 000033eb 9\$@u
+A 00003467 D$DVPQRU
+A 000034f2 L$DWQVU
+A 00003560 L$,_^]d
+A 00003597  SUVW
+A 00003657 L$HVQURP
+A 00003691 L$ WQj
+A 000036bf T$HWRVP
+A 00003713 D$HWPVQ
+A 00003759 9l$Hs
+A 00003788 L$0_^]d
+A 0000380c D$8s%
+A 0000385b D$<PW
+A 00003997 T$,QSQ
+A 00003a8b |$$t<
+A 00003aa6 t$0t!
+A 0000443a 9;tQj,
+A 00004760 F,QRP
+A 000048a1 VL_^d
+A 00004980 F$QRP
+A 00004a40 _^][Y
+A 00004a64 D$(UU
+A 00004e25 t!8^Au
+A 0000559a \$0UV
+A 00005622 L$,_^]d
+A 000067ca \$0UV
+A 00006852 L$,_^]d
+A 00006a44 9;tQj,
+A 00006c60 F(QRP
+A 00006e90 F QRP
+A 00006f50 _^][Y
+A 00006f74 D$(UU
+A 00007178 QQSVW
+A 00007882 L$,QW
+A 00008051 L$PPQ
+A 000080d9 D$$S3
+A 00008684 D$,RP
+A 000088bf T$(Rh
+A 000088e0 L$,Qh
+A 000088ff |$XPR
+A 00008b7c \$pttU
+A 00008b98 L$ PQ
+A 000093fb L$ PQh
+A 00009420 D$$RP
+A 00009900 D$8hHu
+A 000099c2 T$,QR
+A 000099c8 D$$h,u
+A 000099e6 T$TQR
+A 00009ae5 L$p_^d
+A 00009d61 uPh@s
+A 00009ec1 u]h@s
+A 00009f33 L$$_^]d
+A 0000a4a2 L$(_^d
+A 0000b2aa T$<QR
+A 0000b60c T$$Ph
+A 0000b6db T$ Ph
+A 0000b6ef L$<PQR
+A 0000b9b6 D$LVPh0
+A 0000ba81 L$<@d
+A 0000be63 T$$RP
+A 0000cf88 ]t3@u
+A 0000d041 t@<[t
+A 0000d261 T$ RP
+A 0000d331 T$ RP
+A 0000d401 T$ RP
+A 0000d4d1 T$ RP
+A 0000d8d2 D$PhX
+A 0000dd16 L$$PQ
+A 0000dd8b L$ hX
+A 0000ddac _^][Y
+A 0000df2b t$@WV
+A 0000df3d D$@PV
+A 0000e2e8 SUVWj|
+A 0000e723 D$dPjdQ
+A 0000e8e1 T$8PRW
+A 0000e936 T$0QR
+A 0000ebff L$$PQ
+A 0000ec43 D$0RP
+A 0000ec95 L$(_^d
+A 0000edd1 D$\hkB
+A 0000edf6 L$@hlB
+A 0000ee00 L$4RPQ
+A 0000ee83 WSURQP
+A 0000f069 L$dSUV
+A 0000f1fe L$ SQ
+A 0000f22c L$d_^]d
+A 0000f549 D$$SUV
+A 00010d67 l$lB;
+A 00010df6 L$lRP
+A 00010e1d L$XWV
+A 00010e23 D$|UP
+A 00010f02 D$<SSWP
+A 00010f17 SQVUR
+A 00010fc2 D$\	P
+A 0001101b L$T]^_d
+A 00011073 L$hRP
+A 00011099 L$TWVU
+A 000110a0 D$|SP
+A 00011181 D$<WWVP
+A 000111ad L$@PUSQ
+A 00011243 D$\	Q
+A 0001129c L$T[]^_d
+A 0001163c L$$_^d
+A 00012500 L$(PQ
+A 000125b1 L$PQURP
+A 000126be D$hWP
+A 000126f8 L$0Vj
+A 00012897 t$@PQV
+A 0001299b t$@PQRV
+A 00012a2e D$tWP
+A 00012a68 L$4Vj
+A 0001317d SPSSSSh$
+A 0001332c L$T_d
+A 00013773 L$0RQ
+A 000137b4 tKh|x
+A 000137e7 T$,RQ
+A 000142d4 D$(PQ
+A 0001438d T$,PRV
+A 00014f65 QSUVW
+A 00015079 D$0Vj
+A 0001559d L$8VP
+A 000155a3 T$DQR
+A 0001562b l$hV3
+A 00015757 D$tUP
+A 00015810 L$pPSSSQ
+A 000158e9 D$<SVW
+A 00015aaa t,9;}(
+A 00016016 ]_^[Y
+A 0001777b PSVW3
+A 00017e3d L$hh8
+A 0001866b QRPh@
+A 0001889c L$@C+
+A 0001894d QRPSVh
+A 000189ff D$8VUS3
+A 00018ca3 L$(_d
+A 00018d3a Q@RPh8
+A 00018fd7 N Qh 
+A 00019502 L$\_d
+A 00019d4a L$(PQW
+A 00019de9 t$ RP
+A 00019e49 D$,SVW3
+A 0001a57a \$,UVW3
+A 0001a597 |$4UUUUW
+A 0001a5d6 |$8UUUW
+A 0001a726 L$<UQPW
+A 0001af99 D$<VW
+A 0001afe1 |$DPj
+A 0001b0e2 SUVWj
+A 0001c07d Rj@PQ
+A 0001c995 tWWVU
+A 0001cdf8 L$,Ph
+A 0001ce5e L$0PQ
+A 0001cea4 L$4Rh
+A 0001cf0a L$<VR
+A 0001cf4f D$4RP
+A 0001cf79 D$L	Q
+A 0001cfba L$(PQ
+A 0001d0a9 L$ PQ
+A 0001d104 L$D_^]d
+A 0001d175 tWWVU
+A 0001d2e5 QSUVW
+A 0001d689 D$(SUV
+A 0001d9b9 NxRPQ
+A 0001db20 D$$h 
+A 0001dc56 L$\_^]d
+A 0001df3c L$(_^
+A 0001e089 L$ _^]d
+A 0001e5d8 QQSVW
+A 0001e6c8 QQSVW
+A 0001e901 L$(RQ
+A 0001ea52 D$(hd
+A 0001eca2 uSh@s
+A 0001fe27 (SUVW3
+A 0001fe5c D$ WP
+A 0001fed8 D$ h 
+A 0001ff46 T$PWR
+A 00020023 L$4^]d
+A 00020209 D$4SVP
+A 00020279 D$@RVj
+A 00021d3b SUVW3
+A 00021f74 D$0WP
+A 00022225 t8UVh
+A 00022529 _^][Y
+A 00022a9d D$PWV3
+A 00023bb1 n SPh
+A 00023dc0 L$pPh
+A 00023e19 F SPh
+A 00024109 D$$SV
+A 00024c84 It/Pj1VP
+A 00024cfc L$0_^]d
+A 00024f06 D$ WP
+A 00025357 L$4_^d
+A 00025430 T$@PQ
+A 00025469 L$pSUV
+A 00025473 D$HWPj
+A 00025538 L$0PQ
+A 00025582 D$PUWj
+A 000255dd D$|UWRP
+A 00025629 D$<hF
+A 0002568a T$xhF
+A 000256a5 UWQRP
+A 000256de T$0QR
+A 000256f4 L$@PQ
+A 0002576a L$d_^]d
+A 00025809 D$4QR
+A 00025897 (SUVW
+A 000258e4 T$(RP
+A 000258f4 T$(ABQ
+A 000258fb D$$RP
+A 0002590c T$0AJQR
+A 0002591f L$(@AP
+A 00025926 T$$QR
+A 00025937 L$(HAPQ
+A 0002596d L$(HAP
+A 00025974 T$$QR
+A 00025985 L$0HIPQ
+A 00025998 D$0BHR
+A 0002599f L$$PQ
+A 000259b0 D$0JHRP
+A 00025a09 L$8_^]d
+A 00025a85 QSVWj 
+A 000264b7 t29_8}
+A 00026b30 PTPUj
+A 0002735c L$@_d
+A 00027656 L$$_d
+A 000278b5 ]^_[Y
+A 0002794e ]^_[Y
+A 00027992 L$4Pf
+A 000279c6 L$ ^d
+A 00027a52 L$ ^d
+A 00027ae2 L$ ^d
+A 00027e99 D$(RPQ
+A 00027f69 D$(RPQ
+A 0002809f D$(QRP
+A 000280e9 F,t#j
+A 00028490 L$,_^]d
+A 00028c00 L$0RP
+A 00028d8b SQSSPS
+A 00028e18 L$p_^]d
+A 00028eb7 \$8Wj
+A 00028f9d D$@_^]d
+A 0002912b T$@RV
+A 0002993a _^][Y
+A 00029976 t$$W3
+A 00029b3a _^][Y
+A 0002ac20 L$8Vj
+A 0002ac52 L$@h,
+A 0002ac74 T$<VR
+A 0002aca0 L$(_^]d
+A 0002ad87 dSUV3
+A 0002addc L$TSP
+A 0002b289 D$4Sj
+A 0002b46d WWWPQ
+A 0002b7aa WSPQR
+A 0002b7c0 ;F(}.
+A 0002ba0e L$X^d
+A 0002bce1 L$8Qh$
+A 0002bced L$8Qh
+A 0002bd00 L$8Qh
+A 0002c08e \$l|+
+A 0002c094 D$$VP
+A 0002c0dc L$,QR
+A 0002cdd5 8\t=h
+A 0002cf72 L$(Pj
+A 0002d209 8\uCj
+A 0002d615 QVVVPR
+A 0002d823 QSRSP
+A 0002d971 QSSSPR
+A 0002e0bf D$ SPh
+A 0002e105 L$(SQh
+A 0002e2b4 N SQh
+A 0002e2d2 V$SRh
+A 0002e30e N(SQh
+A 0002e599 L$<RQ
+A 0002e8b9 D$dSVW
+A 0002e9c0 D$h	uS;
+A 0002ea47 L$`_^
+A 0002ede4 F,uZh@s
+A 0002ee4e uZh@s
+A 0002eeb4 F8uZh@s
+A 0002f71b 9\$@u
+A 0002f797 D$DVPQRU
+A 0002f822 L$DWQVU
+A 0002f88a L$,_^]d
+A 0002f8f7  SUVW
+A 0002f9c1 D$HVPUQS
+A 0002f9f9 T$ WRj
+A 0002fa1b D$HWPVS
+A 0002fa53 T$HWRVS
+A 0002fa99 9l$Hs
+A 0002fad7 L$0_^]d
+A 0002ff94 JJJJJJJJJJJJ
+A 0002ffa3  J!"#$J%J&'()*J+,JJJJJJJJ-J.JJ/0J1JJJJJJJJJJJJJJJJJJ23JJ4567JJ8JJJJJ9:;JJJJJ<=JJJJJJJJJJJ>?JJJJJJJJ@JJJJJJAJJJJJBJJCJJJJJJJJJJJDEJJJJJJJFJGJJJJJJJJJJJJHJI
+A 000306fb 1_^][
+A 00030e20 _^][Y
+A 00030e9e _^][Y
+A 0003133d ]^_[Y
+A 000314ed u=Vj 
+A 00031889 L$8_^2
+A 000318a9 \$$VW
+A 00031b39 L$0_^]
+A 00031c89 D$<VWj
+A 00031e6b xSVW3
+A 00032ff1 T$ RP
+A 00033097 (SUV3
+A 000332ad L$8_^]d
+A 000335a8 Ht!Hu>
+A 00033737 Ht=Ht
+A 0003447f D$,WP
+A 00034982 @SUVW
+A 000349c0 D$(j(P
+A 000359df L$l_d
+A 00035c18 D$\WQQP
+A 00035c8b T$0SR
+A 00035cac L$0SQ
+A 00035d02 T$0QR
+A 00035db2 D$0RP
+A 00036ca4 NTPQRS
+A 00036e57 W9^\t
+A 00036f0c ~I8^Tu
+A 00037b12 @_^][
+A 00037ef5 QSUVW
+A 00038590 _^][Y
+A 00038671 +_^][
+A 000395da tTHt1Hu`
+A 0003a852 L$(Ph
+A 0003adb8 D$@S3
+A 0003adf8 \$,j8h
+A 0003afc3 W(9W$u
+A 0003b1b0 t]9H tX9H$tS
+A 0003b9a5 U0SQR
+A 0003bcf9 _^][Y
+A 0003bd0f _^][Y
+A 0003bd26 l$ VW
+A 0003bdb6 D$(8D
+A 0003bfbc Fdf+F\
+A 0003c2af _^][Y
+A 0003c2c3 _^][Y
+A 0003c3cd ~(9~$u
+A 0003cec0 |$ WUSV
+A 0003cffd @APQV
+A 0003d24c T$ RV
+A 0003d344 D$$SUV
+A 0003d4ef D$0tc
+A 0003d751 _^][Y
+A 0003e7ea D$8RP
+A 0003e80a T$4PQR
+A 0003e90f L$HPQS
+A 0003ed35 T$DQR
+A 0003edfe L$DRPS
+A 0003ee94 L$LQP
+A 0003effc T$LRQS
+A 0003f111 T$LRP
+A 0003f150 L$LQP
+A 0003f259 T$HPRS
+A 0003f288 K4PVS
+A 0003f485 \$ UV
+A 0003f5d0 L$,A;
+A 0003f6a9 L$,A;
+A 0003f72f L$,A;
+A 0003f7eb L$,A;
+A 0003f89a T$0RSV
+A 0003f913 AH;N,
+A 0003f97e T$0RSV
+A 0003fa29 T$0RSV
+A 0003fac2 T$0RSV
+A 0003fb01 T$0RSV
+A 0003fb36 V4PSV
+A 0003fc91 L$ RUPj
+A 0003fcc3 ]^_[Y
+A 0003fced ]^_[Y
+A 0003fd72 9t$Du
+A 0003fd8b *_^][
+A 0003fdad 9(u	A
+A 0003fe00 D+3x%A
+A 000400a3 ;D$<s
+A 000400c1 ;D$<r
+A 00040103 T$$O#
+A 000401b0 QSUVW
+A 000401dd _^][Y
+A 000401fb T$,PQh
+A 00040249 D$0Qh
+A 00040289 _^][Y
+A 000402a8 _^][Y
+A 000402cc _^][Y
+A 000402f0 _^][Y
+A 0004030f _^][Y
+A 00040333 _^][Y
+A 000403c8 K<UWQ
+A 00040454 K<UVQ
+A 000404b8 L$(SU
+A 0004112a Uj VW
+A 0004141c SVWPQj
+A 00041ab1 _^][Y
+A 00041ad2 _^][Y
+A 00041b11 Eh_^][Y
+A 00041b29 El@u	U
+A 00041d5f MxQRU
+A 00041e5f BPARQVU
+A 00041e80 @PQRU
+A 00042005 SUVW3
+A 000420bb _^][Y
+A 000420db \$HUVWt
+A 00042542 HtpHtAHt
+A 00042945 t^Ht/Hur
+A 00043021 Fp@t=
+A 00043466 \$,v~
+A 0004362e HHIIN
+A 00043bd5 L$ FI
+A 00043c6c L$ FI
+A 00043ce3 T$(u	f;
+A 00044016 L$,u	f;
+A 000440f5 D$ EA
+A 00044188 D$<FA
+A 000442ae T$$Ou
+A 000443cf T$$Ou
+A 000444e4 T$$Ou
+A 00044581 T$ f;B
+A 00044714 l$ f;M
+A 0004471b u7f;U
+A 00044721 u1f;u
+A 0004480c l$ f;M
+A 00044813 u5f;U
+A 00044819 u/f;u
+A 000449ca L$DFf
+A 00045209 _^][Y
+A 000452ad D$ u4
+A 00045367 D$ u6
+A 00045423 D$ u 
+A 00045840 QSUVW
+A 00045adc _^][Y
+A 00045bcf tL8P	uG
+A 00045c24 tv8P	uq
+A 00045c96 _^][Y
+A 00045cc4 _^][Y
+A 0004600e D$(wO
+A 000460a6 D$ G;
+A 0004678f NPPQRU
+A 000467e1 NlQRPU
+A 0004687a NxQRPU
+A 00046b7c SVWPQj
+A 00046d20 ~AWVU
+A 000470a4 SUVW3
+A 00047145 \$HUV
+A 00047ce0 tqWVj
+A 0004816c _^][Y
+A 00048a5d t$\PQV
+A 00048b1d t$\PQV
+A 00048fdf GTPVj
+A 000491f5 |$PVU
+A 00049684 $_^][
+A 00049a9f _^][Y
+A 00049b00 _^][Y
+A 00049b39 _^][Y
+A 00049b5f _^][Y
+A 00049baa _^][Y
+A 00049bda  t h|
+A 00049ff5 T$$UP
+A 0004a000 L$`RPQV
+A 0004a360 QSUVW
+A 0004a3e6 _^][Y
+A 0004a451 _^][Y
+A 0004a49c _^][Y
+A 0004a4a5 T$$USRW
+A 0004a4be _^][Y
+A 0004a4e4 _^][Y
+A 0004a535 _^][Y
+A 0004a578 \$,VSW
+A 0004add4 RPWSV
+A 0004aee4 RPWSV
+A 0004af98 |$(VWS
+A 0004b0cd ;t$0w
+A 0004b0db ;t$0w
+A 0004b10d t$(UP
+A 0004b11f L$<RPVQS
+A 0004b20f D$$PQ
+A 0004b251 D$$GPW
+A 0004b2c0 L$4RPQS
+A 0004b51c L$ QS
+A 0004b550 QSUVW
+A 0004b5fb QVRSUW
+A 0004b656 _^][Y
+A 0004b665 \$ UV
+A 0004b6a9  u'US
+A 0004b703 t$4VS
+A 0004b715 t$ VPS
+A 0004b7a7 D$4PS
+A 0004b7c6 <)rE<zwA<Zv
+A 0004b7d9 <)r2<zw.<Zv
+A 0004b83c SUVWu>
+A 0004b99e T$ GF
+A 0004ba61 T$ GF
+A 0004bb20 T$ GF
+A 0004bb54 D$(VW3
+A 0004c334 ExPRU
+A 0004c418 Eh_^][Y
+A 0004c685 Fl_^][
+A 0004c88c \$$UVW
+A 0004c9a0 |$<@t
+A 0004c9a6 9|$<t
+A 0004ca88 D$DQhp
+A 0004ccc1 Gh_^]
+A 0004cdc7 L$(QPW
+A 0004cf80 t$Pt*
+A 0004d065 t$Pt*
+A 0004d083 D$PPS
+A 0004d251 L$$QPS
+A 0004d755 L$$h(
+A 0004db25 \$8UV
+A 0004dbd2 < u h
+A 0004dbf0 NM< t
+A 0004dc14 FM< t
+A 0004dc22 t.< u
+A 0004de06 PQWUV
+A 0004df2d l$$VW|
+A 0004df9b D$0~E
+A 0004dfe6 L$,Qh
+A 0004e01e D$ RP
+A 0004e089 L$0QU
+A 0004e0c6 WPQhH
+A 0004e0dd T$(PQhH
+A 0004e15b T$(QRV
+A 0004e6b7 l$ sR
+A 0004e7e0 l$ sN
+A 0004e869 []^_Y
+A 0004e9fb L$4u{
+A 0004ead0 D$0;F
+A 0004eb04 t$H@BGA;F
+A 0004ec10 L$Hu|
+A 0004edbc AFGMu
+A 0004edea AEFGKu
+A 0004ee21 L$4uv
+A 0004ef2d AEFG=
+A 0004f0e6 D$0AH
+A 0004f1d6 t$4vG
+A 0004f38e t$DUV
+A 0004f58f GTPVj
+A 0004f75c WVUIS
+A 0004f866 l$4VW
+A 0004f9b4 L$D@I
+A 000505c0 u"WVS
+A 0005070e u j@h|
+A 00050803 T$HQPh
+A 00050852 T$$PQR
+A 00050897 D$HQP
+A 0005093a T$HPQj
+A 0005096f D$ QRh
+A 00050983 T$<QR
+A 00050aa0 SVWUh
+A 00058341 RDEST
+A 00058369 RDEST
+A 0005860c MbP?{
+A 00058b57 ?ffffff9@
+A 00058fe8  deflate 1.1.3 Copyright 1995-1998 Jean-loup Gailly 
+A 00059708 								
+A 00059b30  inflate 1.1.3 Copyright 1995-1998 Mark Adler 
+A 00059d50 1.2.0
+A 00059fb8 0123456789ABCDEF
+A 0005a1a1 Qkkbal
+A 0005a3fd wn>Jj
+A 00064b28 accugnt5.dll
+A 00064b36 SH33W32.dll
+A 00064b44 ?FreeMemory@Dib@@MAEXXZ
+A 00064b5e ?CreateDib@Dib@@MBEPAV1@HHHABVColorList@@@Z
+A 00064b8c ?ReplaceColoursInColourTable@Dib@@UAEXABV?$SimpleIxList@VTColor@@@@VTColor@@@Z
+A 00064bde ?Dim@Dib@@UAEX_N@Z
+A 00064bf4 ?GetNearestColorTableIndex@Dib@@UBEHABVTColor@@@Z
+A 00064c28 ?SetColorTable@Dib@@UAEXABVColorList@@@Z
+A 00064c54 ?SetPixelsPerMeter@Dib@@UAEXABVIntegerPoint@@@Z
+A 00064c86 ?Clone@Dib@@UBEPAV1@XZ
+A 00064ca0 ??1Dib@@UAE@XZ
+A 00064cb2 ??1DibColorList@@QAE@XZ
+A 00064ccc ?CommonInit@Dib@@IAEXXZ
+A 00064ce6 ??0DibColorList@@QAE@H@Z
+A 00064d02 ?PostProcessImage@Dib@@IAEXXZ
+A 00064d22 ?SetBasicAttributes@Dib@@IAEXHHH@Z
+A 00064d48 ?BitsPixelToNumColorTableEntries@Dib@@SAHH@Z
+A 00064d78 ?SizePixels@Dib@@QBE?AVLongPoint@@XZ
+A 00064da0 ?CopyMembers@Dib@@IAEXABV1@@Z
+A 00064dbe image.dll
+A 00064dca PathMatchSpecA
+A 00064dda SHLWAPI.dll
+A 00064de8 PlaySoundA
+A 00064df6 midiOutGetDevCapsA
+A 00064e0c midiOutGetNumDevs
+A 00064e20 waveOutGetDevCapsA
+A 00064e36 waveOutGetNumDevs
+A 00064e4a sndPlaySoundA
+A 00064e58 WINMM.dll
+A 00064e64 OleRun
+A 00064e6e CoCreateInstance
+A 00064e82 IIDFromString
+A 00064e92 CoTaskMemFree
+A 00064ea2 CoCreateGuid
+A 00064eb0 ole32.dll
+A 00064eba MFC42.DLL
+A 00064ec6 __CxxFrameHandler
+A 00064eda _purecall
+A 00064ee6 _CxxThrowException
+A 00064efc _mbscmp
+A 00064f06 sprintf
+A 00064f18 strtok
+A 00064f22 sscanf
+A 00064f2c isspace
+A 00064f36 isdigit
+A 00064f40 _mbsstr
+A 00064f4a memchr
+A 00064f54 _CIpow
+A 00064f5e strncpy
+A 00064f68 _ftol
+A 00064f70 toupper
+A 00064f7a vsprintf
+A 00064f86 wcsncpy
+A 00064f90 wcsrchr
+A 00064f9a wcscpy
+A 00064fa4 ?set_terminate@@YAP6AXXZP6AXXZ@Z
+A 00064fc8 strncat
+A 00064fd2 swprintf
+A 00064fde _wopen
+A 00064fe8 _open
+A 00064ff0 wcscat
+A 00064ffa localtime
+A 00065016 _exit
+A 0006501e _mbschr
+A 00065028 strstr
+A 00065032 _strlwr
+A 0006503c memmove
+A 00065046 _splitpath
+A 00065054 strchr
+A 0006505e isalpha
+A 00065068 _fmode
+A 00065072 setlocale
+A 00065086 wcsstr
+A 00065090 strrchr
+A 0006509a fclose
+A 000650a4 fread
+A 000650ac fopen
+A 000650b4 _beginthreadex
+A 000650c6 _mbsnbcpy
+A 000650d2 islower
+A 000650dc tolower
+A 000650e6 isupper
+A 000650f0 strcmp
+A 000650fa wcslen
+A 00065104 wcscmp
+A 0006510e towupper
+A 0006511a wcschr
+A 00065124 iswlower
+A 00065130 ?_query_new_handler@@YAP6AHI@ZXZ
+A 00065154 ?_query_new_mode@@YAHXZ
+A 0006516e _setjmp3
+A 0006517a longjmp
+A 00065184 fprintf
+A 00065196 strtod
+A 000651a0 fwrite
+A 000651aa fflush
+A 000651b2 MSVCRT.dll
+A 000651c0 ??1type_info@@UAE@XZ
+A 000651d8 __dllonexit
+A 000651e6 _onexit
+A 000651f0 _except_handler3
+A 00065204 ?terminate@@YAXXZ
+A 00065218 _initterm
+A 00065224 _adjust_fdiv
+A 00065234 EnterCriticalSection
+A 0006524c LeaveCriticalSection
+A 00065264 GetLastError
+A 00065274 CreateEventA
+A 00065284 CloseHandle
+A 00065292 ResetEvent
+A 000652a0 SetEvent
+A 000652ac SetupComm
+A 000652b8 SetCommMask
+A 000652c6 SetCommState
+A 000652d6 GetCommState
+A 000652e6 Sleep
+A 000652ee EscapeCommFunction
+A 00065304 GetOverlappedResult
+A 0006531a WaitForSingleObject
+A 00065330 WaitForMultipleObjects
+A 0006534a WriteFile
+A 00065356 ClearCommError
+A 00065368 ReadFile
+A 00065374 SetCommTimeouts
+A 00065386 GetCommandLineA
+A 00065398 GetTickCount
+A 000653a8 WaitCommEvent
+A 000653b8 GetCommMask
+A 000653c6 InterlockedExchange
+A 000653dc PurgeComm
+A 000653e8 InterlockedDecrement
+A 00065400 InterlockedIncrement
+A 00065418 InitializeCriticalSection
+A 00065434 DeleteCriticalSection
+A 0006544c GetLocalTime
+A 0006545c FileTimeToSystemTime
+A 00065474 GetSystemTime
+A 00065484 GetCurrentThreadId
+A 0006549a QueryPerformanceCounter
+A 000654b4 QueryPerformanceFrequency
+A 000654d0 ReleaseMutex
+A 000654e0 GlobalFree
+A 000654ee GlobalLock
+A 000654fc GlobalAlloc
+A 0006550a GlobalUnlock
+A 0006551a LocalFree
+A 00065526 LocalAlloc
+A 00065534 GetDriveTypeA
+A 00065544 GetLogicalDrives
+A 00065558 VirtualFree
+A 00065566 SetFilePointer
+A 00065578 VirtualAlloc
+A 00065588 DeviceIoControl
+A 0006559a GetProcAddress
+A 000655ac CopyFileA
+A 000655b8 MoveFileA
+A 000655c4 DeleteFileA
+A 000655d2 GetFileAttributesA
+A 000655e8 FindFirstFileA
+A 000655fa GetFileSize
+A 00065608 GetTempPathA
+A 00065618 GetTempFileNameA
+A 0006562c GetShortPathNameA
+A 00065640 SetFileAttributesA
+A 00065656 CreateDirectoryA
+A 0006566a FreeLibrary
+A 00065678 LoadLibraryA
+A 00065688 GetDiskFreeSpaceA
+A 0006569c SetVolumeLabelA
+A 000656ae GetCurrentDirectoryA
+A 000656c6 SetCurrentDirectoryA
+A 000656de SetUnhandledExceptionFilter
+A 000656fc SetErrorMode
+A 0006570c GetModuleFileNameA
+A 00065722 VirtualQuery
+A 00065732 GetVolumeInformationA
+A 0006574a OpenEventA
+A 00065758 OutputDebugStringA
+A 0006576e CreateMutexA
+A 0006577e SystemTimeToFileTime
+A 00065796 GetLocaleInfoA
+A 000657a8 CreateSemaphoreA
+A 000657bc UnmapViewOfFile
+A 000657ce CreateFileMappingA
+A 000657e4 OpenFileMappingA
+A 000657f8 MapViewOfFile
+A 00065808 CreateFileA
+A 00065816 CreateProcessA
+A 00065828 LoadLibraryExA
+A 0006583a GetShortPathNameW
+A 0006584e GetModuleHandleA
+A 0006586a GetCommModemStatus
+A 00065880 GetCommProperties
+A 00065894 GetSystemInfo
+A 000658a4 SetThreadPriority
+A 000658b8 ResumeThread
+A 000658c8 SuspendThread
+A 000658d8 GetThreadPriority
+A 000658ec GetVersion
+A 000658fa GetVersionExA
+A 0006590a FindClose
+A 00065916 FindNextFileA
+A 00065926 LockResource
+A 00065936 LoadResource
+A 00065946 FindResourceA
+A 00065956 WideCharToMultiByte
+A 0006596c MultiByteToWideChar
+A 00065980 KERNEL32.dll
+A 00065990 DdeGetData
+A 0006599e MessageBoxA
+A 000659ac DdeConnect
+A 000659ba DdeDisconnect
+A 000659ca DdeFreeDataHandle
+A 000659de DdeGetLastError
+A 000659f0 DdeClientTransaction
+A 00065a08 DdeInitializeA
+A 00065a1a DdeUninitialize
+A 00065a2c DdeCreateDataHandle
+A 00065a42 DdeNameService
+A 00065a54 DdeCreateStringHandleA
+A 00065a6e DdeFreeStringHandle
+A 00065a84 FillRect
+A 00065a90 MessageBoxW
+A 00065a9e GetActiveWindow
+A 00065ab0 BringWindowToTop
+A 00065ac4 GetSysColor
+A 00065ad2 LoadImageA
+A 00065ae0 ReleaseDC
+A 00065aec GetClientRect
+A 00065afc GetDC
+A 00065b04 GetKeyState
+A 00065b12 DispatchMessageA
+A 00065b26 TranslateMessage
+A 00065b3a PeekMessageA
+A 00065b4a InvalidateRect
+A 00065b5c MessageBeep
+A 00065b6a SetCursorPos
+A 00065b7a UpdateWindow
+A 00065b8a GetWindowRect
+A 00065b9a GetSystemMetrics
+A 00065bae GetDesktopWindow
+A 00065bc2 DrawTextA
+A 00065bce EnableWindow
+A 00065bdc USER32.dll
+A 00065bea RealizePalette
+A 00065bfc GetDIBits
+A 00065c08 GetObjectA
+A 00065c16 DeleteObject
+A 00065c26 PlayEnhMetaFile
+A 00065c38 CreateSolidBrush
+A 00065c4c SelectObject
+A 00065c5c CreateCompatibleBitmap
+A 00065c76 CreateCompatibleDC
+A 00065c8c SelectPalette
+A 00065c9c CreatePalette
+A 00065cac GetEnhMetaFilePaletteEntries
+A 00065ccc GetEnhMetaFileHeader
+A 00065ce4 GetDeviceCaps
+A 00065cf4 GetEnhMetaFileBits
+A 00065d0a GetEnhMetaFileA
+A 00065d1c SetWinMetaFileBits
+A 00065d32 DeleteEnhMetaFile
+A 00065d46 BitBlt
+A 00065d50 SetDIBitsToDevice
+A 00065d64 CreateBitmap
+A 00065d74 GetPaletteEntries
+A 00065d88 GetSystemPaletteEntries
+A 00065da2 CreateDIBSection
+A 00065db6 GetNearestPaletteIndex
+A 00065dd0 GetTextExtentPoint32A
+A 00065de8 GetTextMetricsA
+A 00065dfa CreatePen
+A 00065e06 StretchDIBits
+A 00065e14 GDI32.dll
+A 00065e20 EnumPortsA
+A 00065e2c WINSPOOL.DRV
+A 00065e3c CloseServiceHandle
+A 00065e52 UnlockServiceDatabase
+A 00065e6a LockServiceDatabase
+A 00065e80 OpenSCManagerA
+A 00065e92 RegCloseKey
+A 00065ea0 RegSetValueExA
+A 00065eb2 RegCreateKeyExA
+A 00065ec4 RegOpenKeyExA
+A 00065ed4 RegQueryValueExA
+A 00065ee8 RegDeleteKeyA
+A 00065ef8 RegDeleteValueA
+A 00065f08 ADVAPI32.dll
+A 00065f18 DragFinish
+A 00065f26 DragQueryPoint
+A 00065f38 DragQueryFileA
+A 00065f48 SHELL32.dll
+A 00065f56 ??_Distream@@QAEXXZ
+A 00065f6c ??1ios@@UAE@XZ
+A 00065f7e ??0istream@@IAE@XZ
+A 00065f94 ??0ios@@IAE@XZ
+A 00065fa6 ??1istream@@UAE@XZ
+A 00065fbc ??_Dostream@@QAEXXZ
+A 00065fd2 ??0ostream@@IAE@XZ
+A 00065fe8 ??1ostream@@UAE@XZ
+A 00065ffe ??_Dofstream@@QAEXXZ
+A 00066016 ??1ofstream@@UAE@XZ
+A 0006602c ??6ostream@@QAEAAV0@PBD@Z
+A 00066048 ??0ofstream@@QAE@PBDHH@Z
+A 00066064 ?openprot@filebuf@@2HB
+A 0006607e ?write@ostream@@QAEAAV1@PBDH@Z
+A 000660a0 ?read@istream@@QAEAAV1@PADH@Z
+A 000660c0 ?close@ofstream@@QAEXXZ
+A 000660da ??0ofstream@@QAE@H@Z
+A 000660f2 ??_Difstream@@QAEXXZ
+A 0006610a ??1ifstream@@UAE@XZ
+A 00066120 ?unlock@ios@@QAAXXZ
+A 00066136 ?get@istream@@IAEAAV1@PADHH@Z
+A 00066156 ?lock@ios@@QAAXXZ
+A 0006616a ??0ifstream@@QAE@PBDHH@Z
+A 00066186 ?close@ifstream@@QAEXXZ
+A 000661a0 ?seekg@istream@@QAEAAV1@J@Z
+A 000661be _mtunlock
+A 000661ca _mtlock
+A 000661d4 ?init@ios@@IAEXPAVstreambuf@@@Z
+A 000661f6 ?doallocate@streambuf@@MAEHXZ
+A 00066216 ?pbackfail@streambuf@@UAEHH@Z
+A 00066236 ?xsgetn@streambuf@@UAEHPADH@Z
+A 00066256 ?xsputn@streambuf@@UAEHPBDH@Z
+A 00066276 ?seekpos@streambuf@@UAEJJH@Z
+A 00066296 ?setbuf@streambuf@@UAEPAV1@PADH@Z
+A 000662ba ?sync@streambuf@@UAEHXZ
+A 000662d4 ??1streambuf@@UAE@XZ
+A 000662ec ??0streambuf@@IAE@XZ
+A 00066304 ?setb@streambuf@@IAEXPAD0H@Z
+A 00066324 ?allocate@streambuf@@IAEHXZ
+A 00066340 MSVCIRT.dll
+A 0006634c OLEAUT32.dll
+A 0006635c _strupr
+A 00066366 _itoa
+A 0006636e _strnicmp
+A 0006637a _wcsupr
+A 00066384 GetModuleHandleW
+A 00066398 LocalUnlock
+A 000663a6 LocalLock
+A 000663b2 GetSystemDirectoryA
+A 000663c8 wsprintfA
+A 00069464 Wessys.dll
+A 0006946f ??0ApplicationDDEConversation@@QAE@KABVString@@@Z
+A 000694a1 ??0ApplicationDDEServer@@QAE@ABVString@@@Z
+A 000694cc ??0AutoDeleteFile@@IAE@ABVString@@@Z
+A 000694f1 ??0AutoDeleteFile@@QAE@HABVString@@PBD@Z
+A 0006951a ??0AutoDeleteFile@@QAE@HPBD@Z
+A 00069538 ??0AutoDeleteFile@@QAE@XZ
+A 00069552 ??0B1SerialPortParameters@@QAE@AAVSerialPort@@KK@Z
+A 00069585 ??0B1SportMan@@QAE@XZ
+A 0006959b ??0BinaryStream@@IAE@XZ
+A 000695b3 ??0CMemFile4@@QAE@I@Z
+A 000695c9 ??0CSVDataSource@@QAE@XZ
+A 000695e2 ??0CSetLocale@@QAE@ABV0@@Z
+A 000695fd ??0CSetLocale@@QAE@HK@Z
+A 00069615 ??0ComResource@@IAE@XZ
+A 0006962c ??0CommandErrorEntry@@QAE@K@Z
+A 0006964a ??0CommandErrorEntry@@QAE@XZ
+A 00069667 ??0CommandLineArgs@@QAE@PBD@Z
+A 00069685 ??0CommandLineArgs@@QAE@XZ
+A 000696a0 ??0CommsBuffer2@@QAE@UCommsBuffer2Parms@@PAVSerialPortParameters@@@Z
+A 000696e5 ??0CommsBuffer3@@QAE@UCommsBuffer3Parms@@PAVSerialPortParameters@@@Z
+A 0006972a ??0CommsBuffer@@QAE@UCommsBufferParms@@PAVB1SerialPortParameters@@@Z
+A 0006976f ??0CriticalSectionObject@@QAE@XZ
+A 00069790 ??0DDEClientConversation@@QAE@PAVDDEClientInterface@@ABVString@@@Z
+A 000697d3 ??0DDEClientInterface@@QAE@ABVString@@@Z
+A 000697fc ??0DDECommandString@@QAE@ABV0@@Z
+A 0006981d ??0DDECommandString@@QAE@XZ
+A 00069839 ??0DDEConversation@@IAE@KABVString@@@Z
+A 00069860 ??0DDEConversation@@QAE@ABV0@@Z
+A 00069880 ??0DDEExecuteParser@@QAE@PBD@Z
+A 0006989f ??0DDEInterface@@QAE@K@Z
+A 000698b8 ??0DDEServerInterface@@QAE@ABVString@@@Z
+A 000698e1 ??0DDEString@@QAE@KABVString@@@Z
+A 00069902 ??0DLLInterface@@QAE@ABVString@@@Z
+A 00069925 ??0DLLInterface@@QAE@XZ
+A 0006993d ??0DataSourceObject@@QAE@XZ
+A 00069959 ??0DebugCPUTimer@@QAE@PBDH0KPAVDebugLogger@@@Z
+A 00069988 ??0DebugCPUTimer@@QAE@PBDHKPAVDebugLogger@@@Z
+A 000699b6 ??0DebugCriticalSectionBlock@@QAE@AAVCriticalSectionObject@@PBDHKPAVDebugLogger@@@Z
+A 00069a0a ??0DebugLogString@@QAE@ABVDebugLogEntry@@ABVString@@@Z
+A 00069a41 ??0DebugLogString@@QAE@ABVDebugLogEntry@@PBD@Z
+A 00069a70 ??0DebugMutexBlock@@QAE@AAVMutexObject@@PBDHKPAVDebugLogger@@@Z
+A 00069ab0 ??0DesignerClientConversation@@QAE@PAVDDEClientInterface@@@Z
+A 00069aed ??0DesignerDDEClient@@QAE@ABVString@@@Z
+A 00069b15 ??0DesignerDDEServer@@QAE@XZ
+A 00069b32 ??0DirEntry@@QAE@ABV0@@Z
+A 00069b4b ??0DirEntry@@QAE@ABVUniqueFileId@@@Z
+A 00069b70 ??0DirEntry@@QAE@XZ
+A 00069b84 ??0DirectoryFilter@@QAE@ABV0@@Z
+A 00069ba4 ??0DirectoryFilter@@QAE@ABVString@@ABVDirEntryList@@@Z
+A 00069bdb ??0DirectoryStack@@QAE@XZ
+A 00069bf5 ??0DiskOSFile@@QAE@ABVString@@KKK@Z
+A 00069c19 ??0DiskUnit@@QAE@ABVString@@@Z
+A 00069c38 ??0DiskUnit@@QAE@D@Z
+A 00069c4d ??0DropFilesData@@QAE@PAVCOleDataObject@@@Z
+A 00069c79 ??0DropImagesData@@QAE@PAVCOleDataObject@@@Z
+A 00069ca6 ??0ESDArchive@@QAE@PAVCFile@@IHPAX@Z
+A 00069ccb ??0ESDArchiveStream@@QAE@AAVESDArchive@@@Z
+A 00069cf6 ??0ErrorEntry@@QAE@W4EntryType@0@@Z
+A 00069d1a ??0FileDebugStringLogger@@QAE@ABVString@@@Z
+A 00069d46 ??0FileParse@@QAE@ABV0@@Z
+A 00069d60 ??0FileParse@@QAE@ABVString@@_N@Z
+A 00069d82 ??0FileParse@@QAE@XZ
+A 00069d97 ??0FileSystemInfo@@QAE@PBD@Z
+A 00069db4 ??0FindReplaceText@@AAE@ABV0@@Z
+A 00069dd4 ??0FindReplaceText@@QAE@AAVCString@@H@Z
+A 00069dfc ??0FindReplaceText@@QAE@PBD@Z
+A 00069e1a ??0IPCMessage@@QAE@ABVIPCMessageHeader@@ABVDataItem@@ABVMemoryMapFrame@@@Z
+A 00069e65 ??0IPCMessage@@QAE@XZ
+A 00069e7b ??0IPCMessageData@@QAE@XZ
+A 00069e95 ??0IPCMessageQueue@@QAE@ABVString@@_N@Z
+A 00069ebd ??0InDesignOnMediaStream@@QAE@ABVString@@@Z
+A 00069ee9 ??0InDesignOnMediaStream@@QAE@XZ
+A 00069f0a ??0InFileStream@@QAE@ABVString@@H@Z
+A 00069f2e ??0InFileStream@@QAE@XZ
+A 00069f46 ??0InMemoryMappedFileStream@@QAE@PAPAXK@Z
+A 00069f70 ??0InMemoryMappedFileStream@@QAE@XZ
+A 00069f94 ??0InStreamBuf@@QAE@AAVStream@@KI@Z
+A 00069fb8 ??0InStreamBuf@@QAE@XZ
+A 00069fcf ??0InStreamBufIter@@QAE@PBX@Z
+A 00069fed ??0InStreamBufIter@@QAE@XZ
+A 0006a008 ??0LocaleInformation@@QAE@ABV0@@Z
+A 0006a02a ??0LocaleInformation@@QAE@K@Z
+A 0006a048 ??0MapiWrap@@QAE@XZ
+A 0006a05c ??0MeasurementUnits@@QAE@XZ
+A 0006a078 ??0MelcoEthernet@@QAE@ABV0@@Z
+A 0006a096 ??0MelcoEthernet@@QAE@XZ
+A 0006a0af ??0MelcoEthernetController@@QAE@PAUHWND__@@@Z
+A 0006a0dd ??0MelcoEthernetSettings@@QAE@ABVComResourceId@@@Z
+A 0006a110 ??0MelcoEthernetSettings@@QAE@ABVDataItem@@@Z
+A 0006a13e ??0MelcoEthernetSettings@@QAE@ABVString@@@Z
+A 0006a16a ??0MelcoNetworkMachine@@QAE@ABVComResourceId@@@Z
+A 0006a19b ??0MelcoNetworkMachine@@QAE@ABVDataItem@@@Z
+A 0006a1c7 ??0MelcoNetworkMachine@@QAE@HABVMelcoStarlanNetworkCard@@@Z
+A 0006a203 ??0MemoryErrorEntry@@QAE@XZ
+A 0006a21f ??0MemoryMappedFile@@QAE@ABVString@@H@Z
+A 0006a247 ??0MemoryMappedFile@@QAE@H@Z
+A 0006a264 ??0MessageErrorEntry@@QAE@ABVString@@@Z
+A 0006a28c ??0MessageErrorEntry@@QAE@XZ
+A 0006a2a9 ??0Metafile@@QAE@ABV0@@Z
+A 0006a2c2 ??0Metafile@@QAE@ABVString@@_N@Z
+A 0006a2e3 ??0Metafile@@QAE@PAUHENHMETAFILE__@@_N@Z
+A 0006a30c ??0Metafile@@QAE@XZ
+A 0006a320 ??0MouseDragDropEvt@@IAE@PAVCOleDataObject@@ABVLongPoint@@@Z
+A 0006a35d ??0MouseDragDropEvt@@QAE@ABV0@@Z
+A 0006a37e ??0MouseDragEvt@@QAE@ABV0@@Z
+A 0006a39b ??0MouseDragEvt@@QAE@PAVCOleDataObject@@KABVLongPoint@@@Z
+A 0006a3d5 ??0MouseDropEvt@@QAE@ABV0@@Z
+A 0006a3f2 ??0MouseDropEvt@@QAE@PAVCOleDataObject@@KABVLongPoint@@@Z
+A 0006a42c ??0MouseErrorEntry@@QAE@ABVMouseEvt@@W4ButtonDir@0@@Z
+A 0006a462 ??0MouseErrorEntry@@QAE@XZ
+A 0006a47d ??0NTDriverOSFile@@QAE@ABVString@@@Z
+A 0006a4a2 ??0ODBCDataSource@@QAE@XZ
+A 0006a4bc ??0ODBCTable@@QAE@PBUODBCFieldDescription@@H@Z
+A 0006a4eb ??0OSFile@@QAE@ABVString@@KKKK_N@Z
+A 0006a50e ??0OleImageServerHelper@@QAE@XZ
+A 0006a52e ??0OutDesignOnMediaStream@@QAE@ABVString@@@Z
+A 0006a55b ??0OutDesignOnMediaStream@@QAE@XZ
+A 0006a57d ??0OutFileStream@@QAE@ABVString@@H@Z
+A 0006a5a2 ??0OutFileStream@@QAE@XZ
+A 0006a5bb ??0OutMemoryMappedFileStream@@QAE@PAPAX@Z
+A 0006a5e5 ??0OutStreamBuf@@QAE@AAVStream@@I@Z
+A 0006a609 ??0OutStreamBuf@@QAE@XZ
+A 0006a621 ??0OutStreamBufIter@@QAE@PAX@Z
+A 0006a640 ??0OutStreamBufIter@@QAE@XZ
+A 0006a65c ??0Palette@@QAE@XZ
+A 0006a66f ??0PaperTapeManagerClientConversation@@QAE@PAVDDEClientInterface@@@Z
+A 0006a6b4 ??0PaperTapeManagerDDEClient@@QAE@XZ
+A 0006a6d9 ??0ParallelOSFile@@QAE@ABVString@@@Z
+A 0006a6fe ??0ParallelPort@@QAE@ABVComResourceId@@@Z
+A 0006a728 ??0ParallelPort@@QAE@ABVDataItem@@@Z
+A 0006a74d ??0ParallelPort@@QAE@ABVString@@@Z
+A 0006a770 ??0ParallelPort@@QAE@W4PortNumber@@@Z
+A 0006a796 ??0ParallelPort@@QAE@XZ
+A 0006a7ae ??0ParallelStream@@QAE@PAVParallelPort@@@Z
+A 0006a7d9 ??0PasteDataObject@@QAE@XZ
+A 0006a7f4 ??0PermanentInFileStream@@QAE@ABVString@@H@Z
+A 0006a821 ??0PermanentOutFileStream@@QAE@ABVString@@H@Z
+A 0006a84f ??0PortStatus@@QAE@ABV0@@Z
+A 0006a86a ??0PortStatus@@QAE@ABVDataItem@@@Z
+A 0006a88d ??0PortStatus@@QAE@W4PortStatusCode@@W4OwnerState@ComResource@@@Z
+A 0006a8cf ??0PortStatus@@QAE@XZ
+A 0006a8e5 ??0RecordIter@@QAE@AAVRecordFile@@@Z
+A 0006a90a ??0RecordStreamRef@@QAE@ABV0@@Z
+A 0006a92a ??0RecordStreamRef@@QAE@PAUIStream@@@Z
+A 0006a951 ??0RecordStreamRef@@QAE@XZ
+A 0006a96c ??0RegistryKey@@QAE@ABV0@@Z
+A 0006a988 ??0RegistryKey@@QAE@ABV0@ABVString@@@Z
+A 0006a9af ??0RegistryKey@@QAE@ABVDataItem@@@Z
+A 0006a9d3 ??0RegistryKey@@QAE@PAUHKEY__@@ABVString@@@Z
+A 0006aa00 ??0RegistryKey@@QAE@XZ
+A 0006aa17 ??0SerialOSFile@@QAE@ABVString@@@Z
+A 0006aa3a ??0SerialOSFile@@QAE@XZ
+A 0006aa52 ??0SerialPort@@AAE@IW4Baud@@W4Parity@@W4DataBits@@W4StopBits@@W4HandShake@@@Z
+A 0006aaa0 ??0SerialPort@@QAE@ABVComResourceId@@@Z
+A 0006aac8 ??0SerialPort@@QAE@ABVDataItem@@@Z
+A 0006aaeb ??0SerialPort@@QAE@ABVString@@@Z
+A 0006ab0c ??0SerialPort@@QAE@I@Z
+A 0006ab23 ??0SerialPort@@QAE@XZ
+A 0006ab39 ??0SerialPortParameters@@QAE@VPSharedComResource@@KK@Z
+A 0006ab70 ??0SerialStream@@QAE@PAVSerialPort@@J@Z
+A 0006ab98 ??0SportMan@@QAE@XZ
+A 0006abac ??0StreamBufIter@@QAE@PAX@Z
+A 0006abc8 ??0StreamBufIter@@QAE@XZ
+A 0006abe1 ??0StreamBuffer@@QAE@XZ
+A 0006abf9 ??0StreamException@@QAE@W4Cause@0@J@Z
+A 0006ac1f ??0TemporaryOutFileStream@@QAE@H@Z
+A 0006ac42 ??0TextDiskFile@@QAE@ABVString@@KKK@Z
+A 0006ac68 ??0ThreadObj@@QAE@XZ
+A 0006ac7d ??0TransactionErrorEntry@@QAE@XZ
+A 0006ac9e ??0UNCVolume@@QAE@ABV0@@Z
+A 0006acb8 ??0UNCVolume@@QAE@ABVString@@@Z
+A 0006acd8 ??0UnhandledErrorEntry@@QAE@XZ
+A 0006acf7 ??0UnsafeFileDebugStringLogger@@QAE@ABVString@@H@Z
+A 0006ad2a ??0VxDOSFile@@QAE@ABVString@@@Z
+A 0006ad4a ??0WDate@@QAE@ABU_FILETIME@@@Z
+A 0006ad69 ??0WDate@@QAE@ABU_SYSTEMTIME@@@Z
+A 0006ad8a ??0WDate@@QAE@ABVCTime@@@Z
+A 0006ada5 ??0WDate@@QAE@HHH@Z
+A 0006adb9 ??0WDate@@QAE@XZ
+A 0006adca ??0WTime@@QAE@ABU_FILETIME@@@Z
+A 0006ade9 ??0WTime@@QAE@ABU_SYSTEMTIME@@@Z
+A 0006ae0a ??0WTime@@QAE@ABVCTime@@@Z
+A 0006ae25 ??0WTime@@QAE@HHHH@Z
+A 0006ae3a ??0WTime@@QAE@XZ
+A 0006ae4b ??0WildCard@@QAE@ABVString@@K@Z
+A 0006ae6b ??0WildCard@@QAE@ABVWideString@@K@Z
+A 0006ae8f ??0Win95VxDInterface@@QAE@XZ
+A 0006aeac ??0WinDib@@QAE@AAVStream@@@Z
+A 0006aec9 ??0WinDib@@QAE@ABV0@@Z
+A 0006aee0 ??0WinDib@@QAE@ABVDib@@@Z
+A 0006aefa ??0WinDib@@QAE@HHHABVColorList@@@Z
+A 0006af1d ??0WinDib@@QAE@HHHPBVCPalette@@@Z
+A 0006af3f ??0WinDib@@QAE@I@Z
+A 0006af52 ??0WinDib@@QAE@PBUtagBITMAPINFOHEADER@@PBUtagRGBQUAD@@PBX@Z
+A 0006af8e ??0WinVersionInfo@@QAE@XZ
+A 0006afa8 ??0WorkingBitmap@@QAE@H_N@Z
+A 0006afc4 ??0WorkingMessage@@QAE@ABVString@@0@Z
+A 0006afea ??0xBadVolInfo@@QAE@XZ
+A 0006b001 ??0xDiskException@@QAE@ABVxOSException@@@Z
+A 0006b02c ??0xDiskException@@QAE@W4ExceptionType@xOSException@@@Z
+A 0006b064 ??0xDiskException@@QAE@XZ
+A 0006b07e ??1AccDib@@MAE@XZ
+A 0006b090 ??1ApplicationDDEConversation@@UAE@XZ
+A 0006b0b6 ??1ApplicationDDEServer@@UAE@XZ
+A 0006b0d6 ??1AutoDeleteFile@@UAE@XZ
+A 0006b0f0 ??1B1SerialPortParameters@@QAE@XZ
+A 0006b112 ??1BinaryStream@@UAE@XZ
+A 0006b12a ??1CSVDataSource@@UAE@XZ
+A 0006b143 ??1CSetLocale@@UAE@XZ
+A 0006b159 ??1ComResource@@UAE@XZ
+A 0006b170 ??1CommandLineArgs@@QAE@XZ
+A 0006b18b ??1CommsBuffer2@@UAE@XZ
+A 0006b1a3 ??1CommsBuffer3@@UAE@XZ
+A 0006b1bb ??1CommsBuffer@@UAE@XZ
+A 0006b1d2 ??1CriticalSectionObject@@QAE@XZ
+A 0006b1f3 ??1DDEClientConversation@@QAE@XZ
+A 0006b214 ??1DDEClientInterface@@UAE@XZ
+A 0006b232 ??1DDECommandString@@QAE@XZ
+A 0006b24e ??1DDEExecuteParser@@QAE@XZ
+A 0006b26a ??1DDEInterface@@UAE@XZ
+A 0006b282 ??1DDEServerInterface@@UAE@XZ
+A 0006b2a0 ??1DDEString@@QAE@XZ
+A 0006b2b5 ??1DLLInterface@@UAE@XZ
+A 0006b2cd ??1DataSourceObject@@UAE@XZ
+A 0006b2e9 ??1DebugCPUTimer@@QAE@XZ
+A 0006b302 ??1DebugCriticalSectionBlock@@QAE@XZ
+A 0006b327 ??1DebugMutexBlock@@QAE@XZ
+A 0006b342 ??1DirectoryFilter@@QAE@XZ
+A 0006b35d ??1DirectoryStack@@QAE@XZ
+A 0006b377 ??1ErrorEntry@@UAE@XZ
+A 0006b38d ??1FileParse@@QAE@XZ
+A 0006b3a2 ??1FileSystemInfo@@QAE@XZ
+A 0006b3bc ??1FindReplaceText@@UAE@XZ
+A 0006b3d7 ??1IPCMessage@@UAE@XZ
+A 0006b3ed ??1IPCMessageQueue@@QAE@XZ
+A 0006b408 ??1InDesignOnMediaStream@@UAE@XZ
+A 0006b429 ??1InFileStream@@UAE@XZ
+A 0006b441 ??1InMemoryMappedFileStream@@UAE@XZ
+A 0006b465 ??1InStreamBuf@@QAE@XZ
+A 0006b47c ??1LocaleInformation@@QAE@XZ
+A 0006b499 ??1MapiWrap@@QAE@XZ
+A 0006b4ad ??1MelcoEthernet@@QAE@XZ
+A 0006b4c6 ??1MelcoEthernetController@@QAE@XZ
+A 0006b4e9 ??1MemoryMapSection@@QAE@XZ
+A 0006b505 ??1MemoryMappedFile@@UAE@XZ
+A 0006b521 ??1Metafile@@QAE@XZ
+A 0006b535 ??1ODBCDataSource@@UAE@XZ
+A 0006b54f ??1ODBCTable@@UAE@XZ
+A 0006b564 ??1OSFile@@UAE@XZ
+A 0006b576 ??1OleImageServerHelper@@QAE@XZ
+A 0006b596 ??1OutDesignOnMediaStream@@UAE@XZ
+A 0006b5b8 ??1OutFileStream@@UAE@XZ
+A 0006b5d1 ??1OutMemoryMappedFileStream@@UAE@XZ
+A 0006b5f6 ??1OutStreamBuf@@QAE@XZ
+A 0006b60e ??1ParallelStream@@UAE@XZ
+A 0006b628 ??1PasteDataObject@@QAE@XZ
+A 0006b643 ??1PermanentInFileStream@@UAE@XZ
+A 0006b664 ??1PermanentOutFileStream@@UAE@XZ
+A 0006b686 ??1RecordFile@@UAE@XZ
+A 0006b69c ??1RecordIter@@QAE@XZ
+A 0006b6b2 ??1RecordStreamRef@@QAE@XZ
+A 0006b6cd ??1SerialPortParameters@@QAE@XZ
+A 0006b6ed ??1SerialStream@@UAE@XZ
+A 0006b705 ??1StreamBuffer@@QAE@XZ
+A 0006b71d ??1StreamException@@UAE@XZ
+A 0006b738 ??1TemporaryOutFileStream@@UAE@XZ
+A 0006b75a ??1TextDiskFile@@UAE@XZ
+A 0006b772 ??1ThreadObj@@UAE@XZ
+A 0006b787 ??1UnsafeFileDebugStringLogger@@UAE@XZ
+A 0006b7ae ??1WildCard@@QAE@XZ
+A 0006b7c2 ??1Win95VxDInterface@@QAE@XZ
+A 0006b7df ??1WinDib@@UAE@XZ
+A 0006b7f1 ??1WorkingBitmap@@UAE@XZ
+A 0006b80a ??4CSetLocale@@QAEAAV0@ABV0@@Z
+A 0006b829 ??4DDECommandString@@QAEAAV0@ABV0@@Z
+A 0006b84e ??4DDEConversation@@QAEAAV0@ABV0@@Z
+A 0006b872 ??4DirEntry@@QAEAAV0@ABV0@@Z
+A 0006b88f ??4DirEntry@@QAEAAV0@ABVUniqueFileId@@@Z
+A 0006b8b8 ??4DirectoryFilter@@QAEAAV0@ABV0@@Z
+A 0006b8dc ??4FileParse@@QAEAAV0@ABV0@@Z
+A 0006b8fa ??4FileSystemInfo@@QAEAAV0@ABV0@@Z
+A 0006b91d ??4FindReplaceText@@AAEXABV0@@Z
+A 0006b93d ??4InStreamBufIter@@QAEXPBX@Z
+A 0006b95b ??4LocaleInformation@@QAEAAV0@ABV0@@Z
+A 0006b981 ??4MelcoEthernet@@QAEAAV0@ABV0@@Z
+A 0006b9a3 ??4Metafile@@QAEAAV0@ABV0@@Z
+A 0006b9c0 ??4MouseDragDropEvt@@QAEAAV0@ABV0@@Z
+A 0006b9e5 ??4MouseDragEvt@@QAEAAV0@ABV0@@Z
+A 0006ba06 ??4MouseDropEvt@@QAEAAV0@ABV0@@Z
+A 0006ba27 ??4OutStreamBufIter@@QAEXPAX@Z
+A 0006ba46 ??4PortStatus@@QAEAAV0@ABV0@@Z
+A 0006ba65 ??4PortStatus@@QAEAAV0@ABVDataItem@@@Z
+A 0006ba8c ??4RecordStreamRef@@QAEXABV0@@Z
+A 0006baac ??4RegistryKey@@QAEAAV0@ABV0@@Z
+A 0006bacc ??4StreamBufIter@@QAEXPAX@Z
+A 0006bae8 ??4UNCVolume@@QAEAAV0@ABV0@@Z
+A 0006bb06 ??4WinDib@@QAEAAV0@ABV0@@Z
+A 0006bb21 ??4xDiskException@@QAEAAV0@ABVxOSException@@@Z
+A 0006bb50 ??5BinaryStream@@QAEAAV0@AAD@Z
+A 0006bb6f ??5BinaryStream@@QAEAAV0@AAE@Z
+A 0006bb8e ??5InStreamBufIter@@QAEAAV0@AAC@Z
+A 0006bbb0 ??5InStreamBufIter@@QAEAAV0@AAD@Z
+A 0006bbd2 ??5InStreamBufIter@@QAEAAV0@AAE@Z
+A 0006bbf4 ??5InStreamBufIter@@QAEAAV0@AAF@Z
+A 0006bc16 ??5InStreamBufIter@@QAEAAV0@AAG@Z
+A 0006bc38 ??5InStreamBufIter@@QAEAAV0@AAJ@Z
+A 0006bc5a ??5InStreamBufIter@@QAEAAV0@AAK@Z
+A 0006bc7c ??5InStreamBufIter@@QAEAAV0@AAM@Z
+A 0006bc9e ??5InStreamBufIter@@QAEAAV0@AAN@Z
+A 0006bcc0 ??5InStreamBufIter@@QAEAAV0@AA_N@Z
+A 0006bce3 ??5StreamBufIter@@QAEAAV0@AAC@Z
+A 0006bd03 ??5StreamBufIter@@QAEAAV0@AAD@Z
+A 0006bd23 ??5StreamBufIter@@QAEAAV0@AAE@Z
+A 0006bd43 ??5StreamBufIter@@QAEAAV0@AAF@Z
+A 0006bd63 ??5StreamBufIter@@QAEAAV0@AAG@Z
+A 0006bd83 ??5StreamBufIter@@QAEAAV0@AAJ@Z
+A 0006bda3 ??5StreamBufIter@@QAEAAV0@AAK@Z
+A 0006bdc3 ??5StreamBufIter@@QAEAAV0@AAM@Z
+A 0006bde3 ??5StreamBufIter@@QAEAAV0@AAN@Z
+A 0006be03 ??6@YAAAVDebugLogger@@AAV0@ABVByteBuffer@@@Z
+A 0006be30 ??6@YAAAVDebugLogger@@AAV0@ABVCString@@@Z
+A 0006be5a ??6@YAAAVDebugLogger@@AAV0@ABVDebugLogString@@@Z
+A 0006be8b ??6@YAAAVDebugLogger@@AAV0@ABVString@@@Z
+A 0006beb4 ??6@YAAAVDebugLogger@@AAV0@PBD@Z
+A 0006bed5 ??6BinaryStream@@QAEAAV0@AAD@Z
+A 0006bef4 ??6BinaryStream@@QAEAAV0@AAE@Z
+A 0006bf13 ??6BinaryStream@@QAEAAV0@ABD@Z
+A 0006bf32 ??6BinaryStream@@QAEAAV0@ABE@Z
+A 0006bf51 ??6OutStreamBufIter@@QAEAAV0@C@Z
+A 0006bf72 ??6OutStreamBufIter@@QAEAAV0@D@Z
+A 0006bf93 ??6OutStreamBufIter@@QAEAAV0@E@Z
+A 0006bfb4 ??6OutStreamBufIter@@QAEAAV0@F@Z
+A 0006bfd5 ??6OutStreamBufIter@@QAEAAV0@G@Z
+A 0006bff6 ??6OutStreamBufIter@@QAEAAV0@J@Z
+A 0006c017 ??6OutStreamBufIter@@QAEAAV0@K@Z
+A 0006c038 ??6OutStreamBufIter@@QAEAAV0@M@Z
+A 0006c059 ??6OutStreamBufIter@@QAEAAV0@N@Z
+A 0006c07a ??6OutStreamBufIter@@QAEAAV0@_N@Z
+A 0006c09c ??6StreamBufIter@@QAEAAV0@C@Z
+A 0006c0ba ??6StreamBufIter@@QAEAAV0@D@Z
+A 0006c0d8 ??6StreamBufIter@@QAEAAV0@E@Z
+A 0006c0f6 ??6StreamBufIter@@QAEAAV0@F@Z
+A 0006c114 ??6StreamBufIter@@QAEAAV0@G@Z
+A 0006c132 ??6StreamBufIter@@QAEAAV0@K@Z
+A 0006c150 ??6StreamBufIter@@QAEAAV0@M@Z
+A 0006c16e ??6StreamBufIter@@QAEAAV0@N@Z
+A 0006c18c ??8@YA_NABVIPCMessageId@@0@Z
+A 0006c1a9 ??8@YA_NABVIPCTimeStamp@@0@Z
+A 0006c1c6 ??8WDate@@QBE_NABV0@@Z
+A 0006c1dd ??8WTime@@QAEHABV0@@Z
+A 0006c1f3 ??BDDEClientConversation@@QBEPAUHCONV__@@XZ
+A 0006c21f ??BDDEString@@QBEPAUHSZ__@@XZ
+A 0006c23d ??BInStreamBufIter@@QAEPAEXZ
+A 0006c25a ??BInStreamBufIter@@QBEPBEXZ
+A 0006c277 ??BOSFile@@QBEPAXXZ
+A 0006c28b ??BOutStreamBufIter@@QBEPAEXZ
+A 0006c2a9 ??BStreamBufIter@@QBEPAEXZ
+A 0006c2c4 ??BWildCard@@QBEHXZ
+A 0006c2d8 ??EWildCard@@QAEAAV0@XZ
+A 0006c2f0 ??M@YA_NABVIPCTimeStamp@@0@Z
+A 0006c30d ??MWDate@@QBE_NABV0@@Z
+A 0006c324 ??NWDate@@QBE_NABV0@@Z
+A 0006c33b ??OWDate@@QBE_NABV0@@Z
+A 0006c352 ??PWDate@@QBE_NABV0@@Z
+A 0006c369 ??YRegistryKey@@QAEAAV0@ABVString@@@Z
+A 0006c38f ??_7CSetLocale@@6B@
+A 0006c3a3 ??_7FindReplaceText@@6B@
+A 0006c3bc ??_C@_02JBML@?$CFc?$AA@
+A 0006c3d4 ??_C@_03HDDO@FAT?$AA@
+A 0006c3ea ??_C@_04GDDA@NTFS?$AA@
+A 0006c401 ??_C@_04PEIG@HPFS?$AA@
+A 0006c418 ??_C@_05HOHM@FAT32?$AA@
+A 0006c430 ??_C@_08IGKH@Ethernet?$AA@
+A 0006c44b ??_C@_09PMGB@LIB_TOPIC?$AA@
+A 0006c467 ??_C@_0BA@JFN@TAPE_MGR_SERVER?$AA@
+A 0006c48a ??_C@_0BB@EBMP@Memory?5exception?$AA@
+A 0006c4b0 ??_C@_0BE@MPDG@Unhandled?5exception?$AA@
+A 0006c4d9 ??_C@_0BG@HPGK@Transaction?5exception?$AA@
+A 0006c504 ??_C@_0BH@MJDB@Cannot?5get?5Volume?5Info?$AA@
+A 0006c532 ??_C@_0L@HKAG@Disk?5error?$AA@
+A 0006c551 ??_C@_0N@GEKB@MelcoNetwork?$AA@
+A 0006c571 ??_C@_0P@HKDD@DESIGNER_TOPIC?$AA@
+A 0006c593 ??_C@_0P@LJAA@c?3?2tmp?2out?4dmp?$AA@
+A 0006c5b9 ??_FCMemFile4@@QAEXXZ
+A 0006c5cf ??_FCSetLocale@@QAEXXZ
+A 0006c5e6 ??_FFileDebugStringLogger@@QAEXXZ
+A 0006c608 ??_FLocaleInformation@@QAEXXZ
+A 0006c626 ??_FStreamException@@QAEXXZ
+A 0006c642 ??_FTemporaryOutFileStream@@QAEXXZ
+A 0006c665 ??_FUnsafeFileDebugStringLogger@@QAEXXZ
+A 0006c68d ?Activate@MultiThreadProgressMonitor@@UAEXPAVModelReporter@@@Z
+A 0006c6cc ?AddOneChar@FileParse@@ABEXAAVString@@D@Z
+A 0006c6f6 ?AddOpcode@DDEExecuteParser@@AAEXPBD0@Z
+A 0006c71e ?AddOpcodeString@DDEExecuteParser@@AAEXPBD0@Z
+A 0006c74c ?AddParameter@DDEExecuteParser@@AAEXPBD0@Z
+A 0006c777 ?Adjust@Palette@@QAEXABVColorList@@@Z
+A 0006c79d ?Adjust@Palette@@QAEXABVDataItem@@@Z
+A 0006c7c2 ?Adjust@Palette@@QAEXPBUtagPALETTEENTRY@@H@Z
+A 0006c7ef ?Adjust@Palette@@QAEXPBUtagRGBQUAD@@H@Z
+A 0006c817 ?Adjust@Palette@@QAEXPBVCPalette@@@Z
+A 0006c83c ?AdjustDefaultSQLForOpen@ExcelDataSource@@MBEXAAVString@@@Z
+A 0006c878 ?AdjustDefaultSQLForOpen@TextDataSource@@MBEXAAVString@@@Z
+A 0006c8b3 ?Alloc@CMemFile4@@MAEPAEK@Z
+A 0006c8cf ?AllocateData@DDEInterface@@IAEPAUHDDEDATA__@@PAEIK@Z
+A 0006c905 ?Append@ODBCDataSource@@UAEXABVDataItem@@@Z
+A 0006c931 ?AppendPath@FileParse@@QBE?AVString@@ABV2@@Z
+A 0006c95e ?AsPtr@InStreamBufIter@@QAEAAPBEXZ
+A 0006c981 ?AsPtr@OutStreamBufIter@@QAEAAPAEXZ
+A 0006c9a5 ?AutoDelete@MelcoEthernetSettings@@QBEHXZ
+A 0006c9cf ?AutoQueue@MelcoEthernetSettings@@QBEHXZ
+A 0006c9f8 ?BackupDataSourceFile@AccessDataSource@@MBE_NABVString@@0AAV2@0H@Z
+A 0006ca3b ?BackupDataSourceFile@CSVDataSource@@MBE_NABVString@@0AAV2@0H@Z
+A 0006ca7b ?BackupDataSourceFile@ExcelDataSource@@MBE_NABVString@@0AAV2@0H@Z
+A 0006cabd ?BackupDataSourceFile@TextDataSource@@MBE_NABVString@@0AAV2@0H@Z
+A 0006cafe ?BufPtr@StreamBuffer@@QBEPAEXZ
+A 0006cb1d ?BufSize@StreamBuffer@@QBEIXZ
+A 0006cb3b ?BufStartPos@InStreamBuf@@QBEKXZ
+A 0006cb5c ?BuildUniqueId@@YA_NAAVDataItem@@H@Z
+A 0006cb81 ?Button1@Sound@@SAXXZ
+A 0006cb97 ?Button2@Sound@@SAXXZ
+A 0006cbad ?Button3@Sound@@SAXXZ
+A 0006cbc3 ?Button4@Sound@@SAXXZ
+A 0006cbd9 ?BytePack@InStreamBufIter@@QAEXAAJ@Z
+A 0006cbfe ?BytePack@InStreamBufIter@@QAEXAAK@Z
+A 0006cc23 ?BytePack@OutStreamBufIter@@QAEXJ@Z
+A 0006cc47 ?BytePack@OutStreamBufIter@@QAEXK@Z
+A 0006cc6b ?CheckDllVersion@@YA_NPBDHH@Z
+A 0006cc89 ?CheckExtensionMatch@FileParse@@SA?AW4ExtensionMatch@@AAVString@@0@Z
+A 0006ccce ?CheckFileExistence@DOSDiskTools@@SA_NABVString@@@Z
+A 0006cd02 ?CheckKeyExists@@YA_NABVRegistryKey@@@Z
+A 0006cd2a ?CheckPost@IPCMessageQueue@@QAE_NAAVIPCMessage@@@Z
+A 0006cd5d ?Clear@CommsBuffer2@@QAEXXZ
+A 0006cd79 ?Clear@CommsBuffer3@@QAEXXZ
+A 0006cd95 ?Clear@CommsBuffer@@QAEXXZ
+A 0006cdb0 ?ClearPost@IPCMessageQueue@@QAE_NAAVIPCMessage@@@Z
+A 0006cde3 ?ClearRxBuffer@CommsBuffer3@@QAEXXZ
+A 0006ce07 ?ClearTxBuffer@CommsBuffer3@@QAEXXZ
+A 0006ce2b ?Clone@CommsBuffer2@@QBEPAV1@XZ
+A 0006ce4b ?Clone@CommsBuffer3@@QBEPAV1@XZ
+A 0006ce6b ?Clone@Palette@@QBEPAV1@XZ
+A 0006ce86 ?Clone@SerialPortParameters@@QBEPAV1@XZ
+A 0006ceae ?Clone@WinDib@@UBEPAVDib@@XZ
+A 0006cecb ?Close@RecordFile@@UAEXXZ
+A 0006cee5 ?Close@RecordStreamRef@@QAEXXZ
+A 0006cf04 ?Close@Win95VxDInterface@@QAEXXZ
+A 0006cf25 ?CloseDataSource@ODBCDataSource@@UAEXXZ
+A 0006cf4d ?ClosePort@B1SportMan@@QAEXPAVB1SerialPortParameters@@@Z
+A 0006cf86 ?ClosePort@SportMan@@QAEXPAVSerialPortParameters@@@Z
+A 0006cfbb ?CloseTable@ODBCDataSource@@UAEXXZ
+A 0006cfde ?Commit@MultiThreadProgressMonitor@@UAEXN@Z
+A 0006d00a ?CommitEstimation@MultiThreadProgressMonitor@@UAEXN@Z
+A 0006d040 ?CommonInit@WinDib@@AAEXXZ
+A 0006d05b ?CommsDevice@B1SerialPortParameters@@QBEPAXXZ
+A 0006d089 ?Complete@FileParse@@QBE?AVString@@ABVUNCVolume@@PBV2@11@Z
+A 0006d0c4 ?Complete@FileParse@@QBE?AVString@@PBV2@000@Z
+A 0006d0f2 ?Complete@FileParse@@QBE?AVString@@VDiskUnit@@PBV2@11@Z
+A 0006d12a ?CompleteExtension@FileParse@@QBE?AVString@@ABV2@@Z
+A 0006d15e ?CompleteFile@FileParse@@QBE?AVString@@ABV2@@Z
+A 0006d18d ?CompleteFileName@FileParse@@QBE?AVString@@ABV2@@Z
+A 0006d1c0 ?CompletePath@FileParse@@QBE?AVString@@ABV2@@Z
+A 0006d1ef ?Compress@DibTools@@SAPAXPBVWinDib@@AAJ_N2@Z
+A 0006d21c ?Connect@CommsBuffer2@@UAE?AW4PortStatusCode@@XZ
+A 0006d24d ?Connect@CommsBuffer3@@UAE?AW4PortStatusCode@@XZ
+A 0006d27e ?Connect@CommsBuffer@@UAE?AW4PortStatusCode@@XZ
+A 0006d2ae ?Connect@DDEClientConversation@@QAEHXZ
+A 0006d2d5 ?Connect@DDEClientInterface@@QBEHPAVDDEClientConversation@@@Z
+A 0006d313 ?ConvertFromDirEntryList@@YAXAAVDirEntryDataList@@ABVDirEntryList@@@Z
+A 0006d359 ?ConvertFromUserUnits@MeasurementUnits@@SANNW4UnitsBase@1@@Z
+A 0006d396 ?ConvertFromUserUnits@MeasurementUnits@@SANW4MeasurementSystem@LocaleInformation@@NW4UnitsBase@1@@Z
+A 0006d3fa ?ConvertMouseFlags@@YAII@Z
+A 0006d415 ?ConvertToDirEntryList@@YAXABVDirEntryDataList@@AAVDirEntryList@@@Z
+A 0006d459 ?ConvertToUserUnits@MeasurementUnits@@SANNW4UnitsBase@1@@Z
+A 0006d494 ?ConvertToUserUnits@MeasurementUnits@@SANW4MeasurementSystem@LocaleInformation@@NW4UnitsBase@1@@Z
+A 0006d4f6 ?ConvertWindowsMessage@@YAII@Z
+A 0006d515 ?CopyFileA@DOSDiskTools@@SAXABVString@@0@Z
+A 0006d540 ?Create@IPCMessageQueue@@QAE_NXZ
+A 0006d561 ?Create@MemoryMappedFile@@QAE_NABVString@@@Z
+A 0006d58e ?CreateCopyOfFileName@@YAXABVString@@AAV1@@Z
+A 0006d5bb ?CreateData@WinDib@@QBEXAAVDataItem@@@Z
+A 0006d5e3 ?CreateDataSource@CSVDataSource@@UAE_NABVString@@00ABVODBCTable@@@Z
+A 0006d627 ?CreateDataSource@ODBCDataSource@@UAE_NABVString@@00ABVODBCTable@@@Z
+A 0006d66c ?CreateDib@DibTools@@SAPAVWinDib@@ABVString@@@Z
+A 0006d69c ?CreateDib@DibTools@@SAPAVWinDib@@PBUtagBITMAPINFOHEADER@@@Z
+A 0006d6d9 ?CreateDib@DibTools@@SAPAVWinDib@@PBVCBitmap@@PAVCDC@@@Z
+A 0006d712 ?CreateDib@WinDib@@MBEPAVDib@@HHHABVColorList@@@Z
+A 0006d744 ?CreateDibFromMetafile@DibTools@@SAPAVWinDib@@AAVMetafile@@ABVIntegerPoint@@@Z
+A 0006d793 ?CreateDibFromMetafile@DibTools@@SAPAVWinDib@@ABVString@@ABVIntegerPoint@@@Z
+A 0006d7e0 ?CreateDibFromMetafile@DibTools@@SAPAVWinDib@@PAUHENHMETAFILE__@@ABVIntegerPoint@@@Z
+A 0006d835 ?CreateDirectoryA@DOSDiskTools@@SA_NABVString@@@Z
+A 0006d867 ?CreateDiskUnitFromNumber@DiskUnit@@SA?AV1@H@Z
+A 0006d896 ?CreateESProcess@@YAXABVString@@PAU_PROCESS_INFORMATION@@PAU_STARTUPINFOA@@K_NPAX@Z
+A 0006d8ea ?CreateFrame@MemoryMapFrame@@QBE_NHHAAV1@@Z
+A 0006d916 ?CreateFrame@MemoryMapSection@@QBE_NHHAAVMemoryMapFrame@@@Z
+A 0006d952 ?CreateFromSystemPalette@Palette@@QAEXPAVCDC@@@Z
+A 0006d983 ?CreateFullFrame@MemoryMapSection@@QBE_NAAVMemoryMapFrame@@@Z
+A 0006d9c1 ?CreateHBITMAP@WinDib@@QBEPAUHBITMAP__@@XZ
+A 0006d9ec ?CreateMetafile@Metafile@@QAE_NABVString@@@Z
+A 0006da19 ?CreateNextFrame@MemoryMapFrame@@QBE_NABV1@AAV1@H@Z
+A 0006da4d ?CreateNextFrame@MemoryMapSection@@QBE_NABVMemoryMapFrame@@AAV2@H@Z
+A 0006da91 ?CreateNextSection@MemoryMappedFile@@QAE_NABVMemoryMapSection@@AAV2@H@Z
+A 0006dad9 ?CreateOtherProcess@@YAXABVString@@PAU_PROCESS_INFORMATION@@PAU_STARTUPINFOA@@K_NPAX@Z
+A 0006db30 ?CreateRecentFileList@@YAPAVCRecentFileList@@PBV1@@Z
+A 0006db65 ?CreateRecord@RecordFile@@QAE?AVRecordStreamRef@@PBG@Z
+A 0006db9c ?CreateSection@MemoryMappedFile@@QAE_NHHAAVMemoryMapSection@@@Z
+A 0006dbdc ?CreateSemaphoreA@@YAPAXPAD@Z
+A 0006dbfa ?CreateStandardPalette@Palette@@QAEXH@Z
+A 0006dc22 ?CreateString@DDEExecuteParser@@AAEXAAVString@@PBD1@Z
+A 0006dc58 ?CreateThread@OSThreadManager@@SAXPAVThreadObj@@PAXIH@Z
+A 0006dc90 ?DataEndPtr@InStreamBuf@@QBEPBEXZ
+A 0006dcb2 ?Day@WDate@@QBEHXZ
+A 0006dcc5 ?Deactivate@MultiThreadProgressMonitor@@UAE_NPAVModelReporter@@@Z
+A 0006dd07 ?Decompress@DibTools@@SAPAVWinDib@@PAXH_N@Z
+A 0006dd33 ?DecrementPriority@OSThreadManager@@SAXPAVThreadObj@@@Z
+A 0006dd6b ?Deinitialise@MelcoEthernet@@QAEHXZ
+A 0006dd8f ?DeleteFileA@DOSDiskTools@@SA_NABVString@@_N@Z
+A 0006ddbe ?DeleteImage@Metafile@@QAEXXZ
+A 0006dddc ?DeleteKey@@YA_NABVRegistryKey@@ABVString@@@Z
+A 0006de0a ?DeleteKeyValue@@YA_NABVRegistryKey@@ABVString@@@Z
+A 0006de3d ?DeleteRecord@RecordFile@@QAEXPBG@Z
+A 0006de61 ?DeregisterConversation@DDEServerInterface@@QAEHAAVDDEConversation@@@Z
+A 0006dea8 ?DeregisterService@DDEInterface@@IAEHABVDDEString@@@Z
+A 0006dede ?DetachMemoryHandle@WinDib@@QAEPAXXZ
+A 0006df03 ?Device@FileParse@@QBE?AVString@@XZ
+A 0006df27 ?Dim@WinDib@@UAEX_N@Z
+A 0006df3d ?DisableRead@CommsBuffer2@@UAEXXZ
+A 0006df5f ?DisableWrite@CommsBuffer2@@UAEXXZ
+A 0006df82 ?Disconnect@CommsBuffer2@@UAEXXZ
+A 0006dfa3 ?Disconnect@CommsBuffer3@@UAEXXZ
+A 0006dfc4 ?Disconnect@CommsBuffer@@UAEXXZ
+A 0006dfe4 ?DiskDirList@DOSDiskTools@@SAXABVString@@KPAVDirEntryList@@P6AXAAVDirEntry@@@Z@Z
+A 0006e035 ?DiskFormatType@DOSDiskTools@@SA?AW4FormatType@1@ABVString@@@Z
+A 0006e074 ?DoCopy@CopyDataObject@@QAEXXZ
+A 0006e093 ?DoDragDrop@DragDataObject@@QAE?AW4ESDropEffect@@XZ
+A 0006e0c7 ?DoDrop@DropDataObject@@QAE_NXZ
+A 0006e0e7 ?DoIExist@@YA_NPAD@Z
+A 0006e0fc ?DoIExist@MelcoEthernet@@AAEHPAD@Z
+A 0006e11f ?DoPaste@PasteDataObject@@QAE_NXZ
+A 0006e141 ?DownloadDesign@MelcoEthernet@@QAEHPAD00EE@Z
+A 0006e16e ?DrawBitmap@@YAXAAVCDC@@HHABVDib@@@Z
+A 0006e193 ?DrawBitmap@@YAXAAVCDC@@HHABVWinDib@@@Z
+A 0006e1bb ?DrawBitmap@@YAXAAVCDC@@HHPAUHBITMAP__@@K@Z
+A 0006e1e7 ?DrawEmbossedBitmap@@YAXAAVCDC@@HHAAVCBitmap@@_N@Z
+A 0006e21a ?DrawShadows@@YAXAAVCWnd@@@Z
+A 0006e237 ?DumpHeldCriticalSections@@YAXPAVDebugLogger@@@Z
+A 0006e268 ?Empty@DirectoryStack@@QAEXXZ
+A 0006e286 ?EmptyString@FileParse@@SAPBVString@@XZ
+A 0006e2ae ?EnableRead@CommsBuffer2@@UAEXXZ
+A 0006e2cf ?EnableWrite@CommsBuffer2@@UAEXXZ
+A 0006e2f1 ?Enter@CriticalSectionObject@@QAEXXZ
+A 0006e316 ?ErrnoToException@StreamException@@CA?AW4Cause@1@H@Z
+A 0006e34b ?Extension@FileParse@@QBE?AVString@@XZ
+A 0006e372 ?FileDateModified@DOSDiskTools@@SAXABVString@@AAVWDate@@@Z
+A 0006e3ad ?FileExists@AccessDataSource@@MBE_NABVString@@0@Z
+A 0006e3df ?FileExists@DOSDiskTools@@SA_NABVString@@@Z
+A 0006e40b ?FileExists@ExcelDataSource@@MBE_NABVString@@0@Z
+A 0006e43c ?FileExists@TextDataSource@@MBE_NABVString@@0@Z
+A 0006e46c ?FileName@FileParse@@QBE?AVString@@XZ
+A 0006e492 ?FileSize@DOSDiskTools@@SAXABVString@@AAUFileSizeType@@@Z
+A 0006e4cc ?FileSize@DOSDiskTools@@SAXPAVOSFile@@AAUFileSizeType@@@Z
+A 0006e506 ?FileSize@DOSDiskTools@@SAXPAXAAUFileSizeType@@@Z
+A 0006e538 ?FileSystemName@FileSystemInfo@@IAEPADXZ
+A 0006e561 ?FileTimeModified@DOSDiskTools@@SAXABVString@@AAVWTime@@@Z
+A 0006e59c ?FillZero@OutStreamBufIter@@QAEXI@Z
+A 0006e5c0 ?Find@FindReplaceText@@AAEHXZ
+A 0006e5de ?Find@FindReplaceText@@QAEHPBDH@Z
+A 0006e600 ?FindMessage@MapiWrap@@QAEHXZ
+A 0006e61e ?FindNext@FindReplaceText@@QAEHXZ
+A 0006e640 ?Flush@OutStreamBuf@@QAEXXZ
+A 0006e65c ?ForceReadTimeOut@B1SerialPortParameters@@QAEXK@Z
+A 0006e68e ?ForceReadTimeOut@SerialPortParameters@@QAEXK@Z
+A 0006e6be ?ForceWriteTimeOut@B1SerialPortParameters@@QAEXK@Z
+A 0006e6f1 ?ForceWriteTimeOut@SerialPortParameters@@QAEXK@Z
+A 0006e722 ?Form@CommandErrorEntry@@UBEPBDXZ
+A 0006e744 ?Form@MessageErrorEntry@@UBEPBDXZ
+A 0006e766 ?Form@MouseErrorEntry@@UBEPBDXZ
+A 0006e786 ?FormatDialog@DOSDiskTools@@SA_NIPAUHWND__@@VUNCVolume@@@Z
+A 0006e7c1 ?Free@CMemFile4@@MAEXPAE@Z
+A 0006e7dc ?FreeBuffer@MapiWrap@@QAEHXZ
+A 0006e7f9 ?FreeMemory@AccDib@@MAEXXZ
+A 0006e814 ?FreeMemory@WinDib@@MAEXXZ
+A 0006e82f ?FullPath@FileParse@@QBE?AVString@@XZ
+A 0006e855 ?GenerateByteBufferWindowList@ByteBufferWindowFactory@@SA_NVPSharedByteBuffer@@HAAVByteBufferWindowList@@H@Z
+A 0006e8c2 ?GenerateId@IPCMessageId@@QAE_NXZ
+A 0006e8e4 ?Get@HighLevelFormatDictionary@@SAXAAH0H@Z
+A 0006e90f ?GetAccessCodesPathA@@YAPBDXZ
+A 0006e92d ?GetAccessCodesPathW@@YAPBGXZ
+A 0006e94b ?GetAllocationGranularity@SysInfo@@SAKXZ
+A 0006e974 ?GetApplicationNameA@@YAPBDXZ
+A 0006e992 ?GetApplicationNameW@@YAPBGXZ
+A 0006e9b0 ?GetArgs@DDECommandString@@QBEABVStringList@@XZ
+A 0006e9e0 ?GetAsDataItem@MelcoEthernetSettings@@UBE_NAAVDataItem@@@Z
+A 0006ea1b ?GetAsDataItem@MelcoNetworkMachine@@UBE_NAAVDataItem@@@Z
+A 0006ea54 ?GetAsDataItem@ParallelPort@@UBE_NAAVDataItem@@@Z
+A 0006ea86 ?GetAsDataItem@RegistryKey@@QBE_NAAVDataItem@@@Z
+A 0006eab7 ?GetAsDataItem@SerialPort@@UBE_NAAVDataItem@@@Z
+A 0006eae7 ?GetAsDirEntry@@YAXVDirEntryDataItem@@AAVDirEntry@@@Z
+A 0006eb1d ?GetAspectRatio@Metafile@@QBENXZ
+A 0006eb3e ?GetAttributes@DirEntry@@QBEKXZ
+A 0006eb5e ?GetAutosavePathA@@YAPBDXZ
+A 0006eb79 ?GetAutosavePathW@@YAPBGXZ
+A 0006eb94 ?GetBITMAPINFO@WinDib@@QAEPAUtagBITMAPINFO@@XZ
+A 0006ebc3 ?GetBITMAPINFO@WinDib@@QBEPBUtagBITMAPINFO@@XZ
+A 0006ebf2 ?GetBITMAPINFOHEADER@WinDib@@QAEPAUtagBITMAPINFOHEADER@@XZ
+A 0006ec2d ?GetBITMAPINFOHEADER@WinDib@@QBEPBUtagBITMAPINFOHEADER@@XZ
+A 0006ec68 ?GetBackupPathA@@YAPBDXZ
+A 0006ec81 ?GetBackupPathW@@YAPBGXZ
+A 0006ec9a ?GetBaud@SerialPort@@QBE?AW4Baud@@XZ
+A 0006ecbf ?GetBinPathA@@YAPBDXZ
+A 0006ecd5 ?GetBinPathW@@YAPBGXZ
+A 0006eceb ?GetBuffer@MemoryMapFrame@@QAEPAEXZ
+A 0006ed0f ?GetBuffer@MemoryMapFrame@@QBEPBEXZ
+A 0006ed33 ?GetBuildNumber@SysInfo@@SAKXZ
+A 0006ed52 ?GetBuildNumber@WinVersionInfo@@SAKXZ
+A 0006ed78 ?GetComLineState@CommsBuffer2@@QBE_NH@Z
+A 0006eda0 ?GetComLineState@CommsBuffer3@@QAE_NH@Z
+A 0006edc8 ?GetCommand@CommandErrorEntry@@QBEKXZ
+A 0006edee ?GetCommand@DDECommandString@@QBEABVString@@XZ
+A 0006ee1d ?GetCommandList@DDEExecuteParser@@QBEABVDDECommandList@@XZ
+A 0006ee58 ?GetComplete@DDECommandString@@QBEABVString@@XZ
+A 0006ee88 ?GetCreateInfo@AccessDataSource@@MBEPBDABVString@@0AA_N@Z
+A 0006eec2 ?GetCreateInfo@ExcelDataSource@@MBEPBDABVString@@0AA_N@Z
+A 0006eefb ?GetCreateInfo@TextDataSource@@MBEPBDABVString@@0AA_N@Z
+A 0006ef33 ?GetCurrentDirectoryA@DOSDiskTools@@SA?AVString@@XZ
+A 0006ef67 ?GetCurrentPosi@FindReplaceText@@QBEHXZ
+A 0006ef8f ?GetCurrentStatus@MultiThreadProgressMonitor@@UAENXZ
+A 0006efc4 ?GetData@IPCMessageData@@QBEXAAVDataItem@@@Z
+A 0006eff1 ?GetData@SerialPort@@QBE?AW4DataBits@@XZ
+A 0006f01a ?GetDataItemDate@@YA_NAAVWDate@@ABVDataItem@@G@Z
+A 0006f04b ?GetDatabase@ODBCDataSource@@AAEAAVCDatabase@@XZ
+A 0006f07c ?GetDateFromString@@YAHAAVWDate@@ABVString@@@Z
+A 0006f0ab ?GetDateModified@DirEntry@@QBE?AVWDate@@XZ
+A 0006f0d6 ?GetDateString@@YA_NABVWDate@@AAVString@@@Z
+A 0006f102 ?GetDateWord@@YA_NABVWDate@@AAH@Z
+A 0006f124 ?GetDayString@@YAPBDH@Z
+A 0006f13c ?GetDecimalSymbol@LocaleInformation@@QBE?AVCString@@XZ
+A 0006f173 ?GetDefaultsPathA@@YAPBDXZ
+A 0006f18e ?GetDefaultsPathW@@YAPBGXZ
+A 0006f1a9 ?GetDeviceCapsPPM@@YA?AVIntegerPoint@@PAVCDC@@@Z
+A 0006f1da ?GetDiskGeometry@DOSDiskTools@@SA?AU_DISK_GEOMETRY@@ABVUNCVolume@@@Z
+A 0006f21f ?GetDllVersion@@YAXPBDAAH1@Z
+A 0006f23c ?GetDriveNumber@UNCVolume@@QBEGXZ
+A 0006f25e ?GetDriverInfo@AccessDataSource@@MBEPBDXZ
+A 0006f288 ?GetDriverInfo@ExcelDataSource@@MBEPBDXZ
+A 0006f2b1 ?GetDriverInfo@TextDataSource@@MBEPBDXZ
+A 0006f2d9 ?GetDriverInstallInfo@AccessDataSource@@MBEPBDXZ
+A 0006f30a ?GetDriverInstallInfo@ExcelDataSource@@MBEPBDXZ
+A 0006f33a ?GetDriverInstallInfo@TextDataSource@@MBEPBDXZ
+A 0006f369 ?GetDropFileTypes@DropFilesData@@SAXPAVCOleDataObject@@AAVUIntIxList@@@Z
+A 0006f3b2 ?GetEffect@MouseDropEvt@@QBE?AW4ESDropEffect@@XZ
+A 0006f3e3 ?GetEndOfQuotedText@DDEExecuteParser@@AAEPBDPBD@Z
+A 0006f415 ?GetEntry@WildCard@@QBE?AVDirEntry@@XZ
+A 0006f43c ?GetFabricsPathA@@YAPBDXZ
+A 0006f456 ?GetFabricsPathW@@YAPBGXZ
+A 0006f470 ?GetFileAttributesA@DOSDiskTools@@SAKABVString@@@Z
+A 0006f4a3 ?GetFileName@AutoDeleteFile@@QBEABVString@@XZ
+A 0006f4d1 ?GetFileNameFromFileType@@YA?AVString@@ABV1@I@Z
+A 0006f501 ?GetFileSize@DirEntry@@QBEKXZ
+A 0006f51f ?GetFileSystemInfo@SysInfo@@SA?AVFileSystemInfo@@VString@@@Z
+A 0006f55c ?GetFileTypeFromFileExtension@@YAIABVString@@@Z
+A 0006f58c ?GetFileTypeFromFilename@@YAIABVString@@@Z
+A 0006f5b7 ?GetFileTypesWithIconList@@YAABVIntIxList@@XZ
+A 0006f5e5 ?GetFirstLine@TextDiskFile@@QAEXAAVMBString@@@Z
+A 0006f615 ?GetFloppyDisksInSystem@@YAXAAV?$SimpleIxList@VDiskUnit@@@@@Z
+A 0006f653 ?GetForiegnLanguageOEMDLLName@@YA_NHAAVString@@@Z
+A 0006f685 ?GetForiegnLanguageResourceDLLName@@YA_NHAAVString@@@Z
+A 0006f6bc ?GetFreeDiskSpace@DOSDiskTools@@SA?AT_ULARGE_INTEGER@@ABVString@@@Z
+A 0006f700 ?GetFunctionAddress@DLLInterface@@QBEP6GHXZABVString@@@Z
+A 0006f739 ?GetHandShake@SerialPort@@QBE?AW4HandShake@@XZ
+A 0006f768 ?GetHandle@Metafile@@QBEPAUHENHMETAFILE__@@XZ
+A 0006f796 ?GetHeader@IPCMessage@@QBEXAAVIPCMessageHeader@@@Z
+A 0006f7c9 ?GetInstanceHandle@DLLInterface@@QBEPAUHINSTANCE__@@XZ
+A 0006f800 ?GetIter@InStreamBuf@@QAEXAAVInStreamBufIter@@I@Z
+A 0006f832 ?GetIter@InStreamBuf@@QAEXAAVInStreamBufIter@@IAAI@Z
+A 0006f867 ?GetIter@OutStreamBuf@@QAEXAAVOutStreamBufIter@@IAAI@Z
+A 0006f89e ?GetKeyData@@YA_NABVRegistryKey@@ABVString@@AAK@Z
+A 0006f8d0 ?GetKeyData@@YA_NABVRegistryKey@@ABVString@@AAV2@@Z
+A 0006f904 ?GetKeyData@@YA_NABVRegistryKey@@ABVString@@AAVDataItem@@@Z
+A 0006f940 ?GetKeyData@@YA_NABVRegistryKey@@ABVString@@PADH@Z
+A 0006f973 ?GetKeyState@MouseDragEvt@@QBEKXZ
+A 0006f995 ?GetLastError@InDesignOnMediaStream@@QBEKXZ
+A 0006f9c1 ?GetLastError@OutDesignOnMediaStream@@QBEKXZ
+A 0006f9ee ?GetLastLine@TextDiskFile@@QAEXAAVMBString@@@Z
+A 0006fa1d ?GetLocaleInformation@SysInfo@@SAAAVLocaleInformation@@XZ
+A 0006fa57 ?GetMMGSavePathA@@YAPBDXZ
+A 0006fa71 ?GetMMGSavePathW@@YAPBGXZ
+A 0006fa8b ?GetMMGStatPathA@@YAPBDXZ
+A 0006faa5 ?GetMMGStatPathW@@YAPBGXZ
+A 0006fabf ?GetMMGStatRptPathA@@YAPBDXZ
+A 0006fadc ?GetMMGStatRptPathW@@YAPBGXZ
+A 0006faf9 ?GetMSDOSDriveNumber@UNCVolume@@QBEGXZ
+A 0006fb20 ?GetMachineNames@MelcoEthernetController@@QAE_NAAVDataItem@@@Z
+A 0006fb5f ?GetMajor@WinVersionInfo@@SAHXZ
+A 0006fb7f ?GetMaxSize@IPCMessageData@@SAHXZ
+A 0006fba1 ?GetMeasurementSystem@LocaleInformation@@QBE?AW4MeasurementSystem@1@XZ
+A 0006fbe8 ?GetMeasurementSystem@MeasurementUnits@@SA?AW4MeasurementSystem@LocaleInformation@@XZ
+A 0006fc3e ?GetMessageData@IPCMessage@@QBEXAAVIPCMessageData@@@Z
+A 0006fc74 ?GetMinPageSize@MemoryMapSection@@SAHXZ
+A 0006fc9c ?GetMinor@WinVersionInfo@@SAHXZ
+A 0006fcbc ?GetMonthString@@YAPBDH@Z
+A 0006fcd6 ?GetNTDeviceName@DiskUnit@@QBE?AVString@@XZ
+A 0006fd02 ?GetNTDeviceName@UNCVolume@@QBE?AVString@@XZ
+A 0006fd2f ?GetName@InDesignOnMediaStream@@QBEABVString@@XZ
+A 0006fd60 ?GetName@OutDesignOnMediaStream@@QBEABVString@@XZ
+A 0006fd92 ?GetName@RegistryKey@@QBEPBDXZ
+A 0006fdb1 ?GetNearestColorTableIndex@WinDib@@MBEHABVTColor@@@Z
+A 0006fde6 ?GetNextAvailCopyOfFileName@@YAXABVString@@AAV1@@Z
+A 0006fe19 ?GetNextAvailFileNameInBackupPool@@YA_NABVString@@AAV1@H0@Z
+A 0006fe55 ?GetNextLine@TextDiskFile@@QAEXAAVMBString@@@Z
+A 0006fe84 ?GetOSName@WinVersionInfo@@SA?AW4OsName@1@XZ
+A 0006feb1 ?GetObjectA@MouseDragDropEvt@@QBEPAVCOleDataObject@@XZ
+A 0006fee8 ?GetPageSize@SysInfo@@SAKXZ
+A 0006ff04 ?GetPalette@WinDib@@QBEPAVCPalette@@XZ
+A 0006ff2b ?GetParent@RegistryKey@@QBEPAUHKEY__@@XZ
+A 0006ff54 ?GetParity@SerialPort@@QBE?AW4Parity@@XZ
+A 0006ff7d ?GetPathNameFromFileType@@YA?AVString@@ABV1@I@Z
+A 0006ffad ?GetPeripheralName@MelcoEthernet@@QAEXHPAD@Z
+A 0006ffda ?GetPeripheralNode@MelcoEthernet@@QAEXHPAD@Z
+A 00070007 ?GetPortError@PortStatus@@QBE?AW4PortStatusCode@@XZ
+A 0007003b ?GetPortList@@YA_NAAVDataItem@@@Z
+A 0007005d ?GetPortNameByNumber@@YA?AVString@@IW4PortType@@@Z
+A 00070090 ?GetPortNumber@ParallelPort@@QBE?AW4PortNumber@@XZ
+A 000700c3 ?GetPortNumber@SerialPort@@QBEIXZ
+A 000700e5 ?GetPortNumberByName@@YAIPBD@Z
+A 00070104 ?GetPortNumberFromName@SerialPort@@CAIABVString@@@Z
+A 00070138 ?GetPortOwnerState@PortStatus@@QBE?AW4OwnerState@ComResource@@XZ
+A 00070179 ?GetPortStatus@CommsBuffer2@@QBEXAAVPortStatus@@@Z
+A 000701ac ?GetPortStatus@CommsBuffer3@@QBEXAAVPortStatus@@@Z
+A 000701df ?GetPortString@MelcoEthernetSettings@@ABE?AVString@@XZ
+A 00070216 ?GetPortString@MelcoNetworkMachine@@ABE?AVString@@XZ
+A 0007024b ?GetPortString@ParallelPort@@ABE?AVString@@XZ
+A 00070279 ?GetPortString@SerialPort@@ABE?AVString@@XZ
+A 000702a5 ?GetPortTypeByName@@YA?AW4PortType@@PBD@Z
+A 000702cf ?GetPrevLine@TextDiskFile@@QAEXAAVMBString@@@Z
+A 000702fe ?GetQuadTable@WinDib@@QBEPBUtagRGBQUAD@@XZ
+A 00070329 ?GetReadTimeOut@B1SerialPortParameters@@QBEKXZ
+A 00070358 ?GetReadTimeOut@SerialPortParameters@@QBEKXZ
+A 00070385 ?GetRecoverPathA@@YAPBDXZ
+A 0007039f ?GetRecoverPathW@@YAPBGXZ
+A 000703b9 ?GetResPathA@@YAPBDXZ
+A 000703cf ?GetResPathW@@YAPBGXZ
+A 000703e5 ?GetRevChar@WinVersionInfo@@SADXZ
+A 00070407 ?GetRootDirA@@YAPBDXZ
+A 0007041d ?GetRootDirW@@YAPBGXZ
+A 00070433 ?GetSerialPort@SerialPortParameters@@QBEPBVSerialPort@@XZ
+A 0007046d ?GetServerClassId@OleImageServerHelper@@QBE_NW4ServerId@1@AAU_GUID@@@Z
+A 000704b4 ?GetShortBinPathA@@YAPBDXZ
+A 000704cf ?GetShortBinPathW@@YAPBGXZ
+A 000704ea ?GetShortFileName@AutoDeleteFile@@QBE?AVString@@XZ
+A 0007051d ?GetShortFileName@DOSDiskTools@@SA?AVString@@ABV2@@Z
+A 00070552 ?GetShortPathNameA@DOSDiskTools@@SA?AVString@@ABV2@@Z
+A 00070588 ?GetShortTempPath@DOSDiskTools@@SA?AVString@@XZ
+A 000705b8 ?GetShutdownFunction@@YAP6AXXZXZ
+A 000705d9 ?GetSize@IPCMessageData@@QBEHXZ
+A 000705f9 ?GetSize@MemoryMapSection@@QBEHXZ
+A 0007061b ?GetSoundInfo@SysInfo@@SAABVSoundInfo@@XZ
+A 00070645 ?GetState@ComResource@@QBE?AW4OwnerState@1@XZ
+A 00070673 ?GetStitchCount@DirEntry@@QBEKXZ
+A 00070694 ?GetStop@SerialPort@@QBE?AW4StopBits@@XZ
+A 000706bd ?GetStretchBltMode@WinDib@@QBEHXZ
+A 000706df ?GetString@@YA_NABVDataItem@@AAVCString@@@Z
+A 0007070b ?GetTempFileNameWithExtension@DOSDiskTools@@SA?AVString@@PBDABV2@@Z
+A 0007074f ?GetTempFileNameWithExtension@DOSDiskTools@@SA?AVString@@PBDH@Z
+A 0007078f ?GetTempFileNameWithPathAndExtension@DOSDiskTools@@SA?AVString@@PBDABV2@1@Z
+A 000707db ?GetTempFileNameWithPathAndExtension@DOSDiskTools@@SA?AVString@@PBDABV2@H@Z
+A 00070827 ?GetTempPathA@DOSDiskTools@@SA?AVString@@XZ
+A 00070853 ?GetTemplatePathA@@YAPBDXZ
+A 0007086e ?GetTemplatePathW@@YAPBGXZ
+A 00070889 ?GetTemporaryPathA@@YAPBDXZ
+A 000708a5 ?GetTemporaryPathW@@YAPBGXZ
+A 000708c1 ?GetTextBuf@FindReplaceText@@QBEPBDXZ
+A 000708e7 ?GetTextLength@FindReplaceText@@QAEHXZ
+A 0007090e ?GetThreadPriority@OSThreadManager@@SAHPAVThreadObj@@@Z
+A 00070946 ?GetTime@@YA?AVCTime@@ABVDataItem@@H@Z
+A 0007096d ?GetTime@IPCTimeStamp@@QBE?AT_ULARGE_INTEGER@@XZ
+A 0007099e ?GetTimeModified@DirEntry@@QBE?AVWTime@@XZ
+A 000709c9 ?GetTimeStamp@IPCMessage@@QBEXAAVIPCTimeStamp@@@Z
+A 000709fb ?GetTimeStamp@IPCMessage@@SAXABVMemoryMapFrame@@AAVIPCTimeStamp@@@Z
+A 00070a3f ?GetUNCName@UNCVolume@@QBEABVString@@XZ
+A 00070a67 ?GetVolumeLabel@DOSDiskTools@@SAXABVString@@AAV2@@Z
+A 00070a9b ?GetWordDate@@YA_NAAVWDate@@H@Z
+A 00070abb ?GetWriteTimeOut@B1SerialPortParameters@@QBEKXZ
+A 00070aeb ?GetWriteTimeOut@SerialPortParameters@@QBEKXZ
+A 00070b19 ?Handle@Win95VxDInterface@@IAEPAVVxDOSFile@@XZ
+A 00070b48 ?HandleData@CommsBuffer2@@EAEXXZ
+A 00070b69 ?HandleData@CommsBuffer@@UAEXXZ
+A 00070b89 ?HandleRead@CommsBuffer2@@MAEXXZ
+A 00070baa ?HandleRead@CommsBuffer@@MAEXXZ
+A 00070bca ?HandleWrite@CommsBuffer2@@MAEXXZ
+A 00070bec ?HandleWrite@CommsBuffer@@MAEXXZ
+A 00070c0d ?HasDevice@FileParse@@QBE_NXZ
+A 00070c2b ?HasMapping@UNCVolume@@QBE_NXZ
+A 00070c4a ?HasPartner@Win95VxDInterface@@QAE_NXZ
+A 00070c71 ?HasRecord@RecordFile@@QBE_NPBG@Z
+A 00070c93 ?Hour@WTime@@QBEHXZ
+A 00070ca7 ?IDInst@DDEConversation@@IBEKXZ
+A 00070cc7 ?IDInst@DDEInterface@@QBEKXZ
+A 00070ce4 ?ILLEGAL_DATE@WDate@@2V1@A
+A 00070cff ?ILLEGAL_TIME@WTime@@2V1@A
+A 00070d1a ?InQueueEmptySize@CommsBuffer2@@QBEKXZ
+A 00070d41 ?InQueueEmptySize@CommsBuffer3@@QAEKXZ
+A 00070d68 ?InQueueEmptySize@CommsBuffer@@QBEKXZ
+A 00070d8e ?InQueueWaitSize@CommsBuffer2@@QBEKXZ
+A 00070db4 ?InQueueWaitSize@CommsBuffer3@@QBEKXZ
+A 00070dda ?InQueueWaitSize@CommsBuffer@@QBEKXZ
+A 00070dff ?IncrementPriority@OSThreadManager@@SAXPAVThreadObj@@@Z
+A 00070e37 ?InformCloseDocument@DesignerClientConversation@@QAE_NABVString@@K@Z
+A 00070e7c ?InformSaveAsDocument@DesignerClientConversation@@QAE_NABVString@@K@Z
+A 00070ec2 ?InformSaveDocument@DesignerClientConversation@@QAE_NABVString@@K@Z
+A 00070f06 ?Init@InStreamBuf@@QAEXAAVStream@@KI@Z
+A 00070f2d ?Init@OutStreamBuf@@QAEXAAVStream@@I@Z
+A 00070f54 ?Init@StreamBuffer@@QAEXI@Z
+A 00070f70 ?InitSmartHeap@@YAXXZ
+A 00070f86 ?Initialise@MelcoEthernet@@QAEHXZ
+A 00070fa8 ?Initialise@Sound@@SA_N_N@Z
+A 00070fc4 ?InitialiseErrorHandler@@YAXP6AXXZ0PBD1@Z
+A 00070fee ?InitialiseErrorHandlerWithProductNumber@@YAXPBD@Z
+A 00071021 ?InsertAfter@FindReplaceText@@QAEXPBDH@Z
+A 0007104a ?IsAltPressed@@YA_NXZ
+A 00071060 ?IsBOF@ODBCDataSource@@UBE_NXZ
+A 0007107f ?IsBOF@TextDiskFile@@QAE_NXZ
+A 0007109c ?IsBad@CommsBuffer2@@QBE_NXZ
+A 000710b9 ?IsBad@CommsBuffer3@@QBE_NXZ
+A 000710d6 ?IsBad@CommsBuffer@@QBE_NXZ
+A 000710f2 ?IsBreak@CommsBuffer2@@QAE_NXZ
+A 00071111 ?IsCancelled@MultiThreadProgressMonitor@@UBE_NXZ
+A 00071142 ?IsClearToSend@CommsBuffer2@@QBE_NXZ
+A 00071167 ?IsClearToSend@CommsBuffer3@@QAE_NXZ
+A 0007118c ?IsClient@DDEServerInterface@@MBEHXZ
+A 000711b1 ?IsConnected@B1SerialPortParameters@@QBE_NXZ
+A 000711de ?IsConnected@DDEClientConversation@@QBEHXZ
+A 00071209 ?IsConnected@SerialPortParameters@@QBE_NXZ
+A 00071234 ?IsControlPressed@@YA_NXZ
+A 0007124e ?IsDownloadDone@MelcoEthernet@@QAEHPAD@Z
+A 00071277 ?IsEOF@FindReplaceText@@QBEHXZ
+A 00071296 ?IsEOF@ODBCDataSource@@UBE_NXZ
+A 000712b5 ?IsEOF@TextDiskFile@@QAE_NXZ
+A 000712d2 ?IsEmpty@DirectoryStack@@QBE_NXZ
+A 000712f3 ?IsEmpty@ODBCDataSource@@UBE_NXZ
+A 00071314 ?IsEmptyUNCFileName@FileParse@@ABE_NABVString@@@Z
+A 00071346 ?IsFAT32@FileSystemInfo@@QBE_NXZ
+A 00071367 ?IsFAT@FileSystemInfo@@QBE_NXZ
+A 00071386 ?IsFATFileSystem@DOSDiskTools@@SA_NABVString@@@Z
+A 000713b7 ?IsFloppyDisk@@YA_NABVDiskUnit@@@Z
+A 000713da ?IsHPFS@FileSystemInfo@@QBE_NXZ
+A 000713fa ?IsHPFSFileSystem@DOSDiskTools@@SA_NABVString@@@Z
+A 0007142c ?IsLeapYear@WDate@@QBE_NXZ
+A 00071447 ?IsNT@SysInfo@@SA_NXZ
+A 0007145d ?IsNT@WinVersionInfo@@SA_NXZ
+A 0007147a ?IsNTFS@FileSystemInfo@@QBE_NXZ
+A 0007149a ?IsNTFSFileSystem@DOSDiskTools@@SA_NABVString@@@Z
+A 000714cc ?IsOleImageServerAvailable@OleImageServerHelper@@QBE_NW4ServerId@1@@Z
+A 00071512 ?IsOpen@InDesignOnMediaStream@@QBE_NXZ
+A 00071539 ?IsOpen@ODBCDataSource@@UBE_NXZ
+A 00071559 ?IsOpen@OutDesignOnMediaStream@@QBE_NXZ
+A 00071581 ?IsOpen@RecordFile@@QBE_NXZ
+A 0007159d ?IsOpenForWrite@RecordFile@@QBE_NXZ
+A 000715c1 ?IsPathRelative@FileParse@@QBE_NXZ
+A 000715e4 ?IsPreWin95OSR2@SysInfo@@SA_NXZ
+A 00071604 ?IsRecordFile@RecordFile@@SA_NPBG@Z
+A 00071628 ?IsRegistryModificationAllowed@@YA_NXZ
+A 0007164f ?IsRoot@FileParse@@QBE_NXZ
+A 0007166a ?IsRsaDone@MelcoEthernet@@QAEHPAD@Z
+A 0007168e ?IsServer@DDEServerInterface@@MBEHXZ
+A 000716b3 ?IsShiftPressed@@YA_NXZ
+A 000716cb ?IsTapeFile@@YA_NABVString@@@Z
+A 000716ea ?IsTapeFileType@@YA_NH@Z
+A 00071703 ?IsTemplateFile@HighLevelFormatDictionary@@SA_NABVString@@@Z
+A 00071740 ?IsTimeout@CommsBuffer2@@QBE_NXZ
+A 00071761 ?IsTimeout@CommsBuffer3@@QBE_NXZ
+A 00071782 ?IsTimeout@CommsBuffer@@QBE_NXZ
+A 000717a2 ?IsUNCServerName@FileParse@@QBE_NXZ
+A 000717c6 ?IsUnicodeFileSystem@FileSystemInfo@@QBE_NXZ
+A 000717f3 ?IsValid@Metafile@@QBE_NXZ
+A 0007180e ?IsValid@WDate@@SA_NABV1@@Z
+A 0007182a ?IsValid@WTime@@SAHABV1@@Z
+A 00071845 ?IsWin32API@WinVersionInfo@@SA_NXZ
+A 00071868 ?IsWin32s@WinVersionInfo@@SA_NXZ
+A 00071889 ?IsWin95@SysInfo@@SA_NXZ
+A 000718a2 ?IsWin95@WinVersionInfo@@SA_NXZ
+A 000718c2 ?IsWriteable@DOSDiskTools@@SA_NABVString@@@Z
+A 000718ef ?KillLibrarian@DesignerClientConversation@@QAE_NXZ
+A 00071922 ?KindOf@ErrorEntry@@QBE?AW4EntryType@1@XZ
+A 0007194c ?Leave@CriticalSectionObject@@QAEXXZ
+A 00071971 ?Length@OutMemoryMappedFileStream@@QBEKXZ
+A 0007199b ?Load@DLLInterface@@QAEXABVString@@@Z
+A 000719c1 ?LoadDataItemFile@@YAKABVString@@PAVDataItem@@@Z
+A 000719f2 ?LoadMappedBitmap@@YA_NAAVCBitmap@@I@Z
+A 00071a19 ?LoadMappedBitmap@@YA_NAAVCBitmap@@PBD@Z
+A 00071a42 ?LockDisk@DOSDiskTools@@SA_NABVString@@K@Z
+A 00071a6d ?LogOff@MapiWrap@@QAEHXZ
+A 00071a86 ?LogOn@MapiWrap@@QAEHXZ
+A 00071a9e ?Machine@MelcoNetworkMachine@@QBEHXZ
+A 00071ac3 ?MachineName@MelcoEthernetSettings@@QBE?AVString@@XZ
+A 00071af8 ?MakeDataItemFromVariant@@YAXABUtagVARIANT@@AAVDataItem@@@Z
+A 00071b34 ?MakeVariantFromDataItem@@YAXABVDataItem@@AAUtagVARIANT@@@Z
+A 00071b70 ?MaxPathLen@FileSystemInfo@@QBEHXZ
+A 00071b93 ?Measure@DebugCPUTimer@@QBENPBDH0K@Z
+A 00071bb8 ?Measure@DebugCPUTimer@@UBENXZ
+A 00071bd7 ?MelcoMonitor@MelcoEthernetController@@QAEXXZ
+A 00071c05 ?MilliSecond@WTime@@QBEHXZ
+A 00071c20 ?Minute@WTime@@QBEHXZ
+A 00071c36 ?Monitor@MelcoEthernet@@QAEXXZ
+A 00071c55 ?Month@WDate@@QBEHXZ
+A 00071c6a ?MoveFileA@DOSDiskTools@@SA_NABVString@@0@Z
+A 00071c96 ?MoveFirst@ODBCDataSource@@UAEXXZ
+A 00071cb8 ?MoveLast@ODBCDataSource@@UAEXXZ
+A 00071cd9 ?MoveNext@ODBCDataSource@@UAEXXZ
+A 00071cfa ?MovePrev@ODBCDataSource@@UAEXXZ
+A 00071d1b ?Name@FileParse@@QBE?AVString@@XZ
+A 00071d3d ?NameW@WildCard@@QBE?AVWideString@@XZ
+A 00071d63 ?NetworkCard@MelcoNetworkMachine@@QBEABVMelcoStarlanNetworkCard@@XZ
+A 00071da7 ?Next@RecordIter@@QAEPBGXZ
+A 00071dc2 ?NumEntries@Palette@@QBEHXZ
+A 00071dde ?NumRecords@RecordFile@@QBEHXZ
+A 00071dfd ?OleErrorToException@StreamException@@CA?AW4Cause@1@AAJ@Z
+A 00071e37 ?OnConnect@DDEInterface@@MAEHPAUHSZ__@@AAUtagCONVCONTEXT@@H@Z
+A 00071e75 ?OnConnect@DDEServerInterface@@MAEHPAUHSZ__@@AAUtagCONVCONTEXT@@H@Z
+A 00071eb9 ?OnConnectConfirm@DDEInterface@@MAEHPAUHCONV__@@PAUHSZ__@@H@Z
+A 00071ef7 ?OnConnectConfirm@DDEServerInterface@@MAEHPAUHCONV__@@PAUHSZ__@@H@Z
+A 00071f3b ?OnExecute@ApplicationDDEConversation@@EAEKPAUHDDEDATA__@@@Z
+A 00071f78 ?OnExecute@DDEConversation@@MAEKPAUHDDEDATA__@@@Z
+A 00071faa ?OnPoke@DDEConversation@@MAEKIPAUHSZ__@@PAUHDDEDATA__@@@Z
+A 00071fe4 ?OnRegister@DDEClientInterface@@MAEHPAUHSZ__@@0@Z
+A 00072016 ?OnRegister@DDEInterface@@MAEHPAUHSZ__@@0@Z
+A 00072042 ?OnRequest@DDEConversation@@MAEPAUHDDEDATA__@@IPAUHSZ__@@@Z
+A 0007207e ?OnUnregister@DDEClientInterface@@MAEHPAUHSZ__@@0@Z
+A 000720b2 ?OnUnregister@DDEInterface@@MAEHPAUHSZ__@@0@Z
+A 000720e0 ?Open@IPCMessageQueue@@QAE_NH@Z
+A 00072100 ?Open@MemoryMappedFile@@QAE_NABVString@@@Z
+A 0007212b ?Open@OSFile@@IAEXABVString@@@Z
+A 0007214b ?Open@OSFile@@IAEXXZ
+A 00072160 ?Open@SerialOSFile@@QAEXABVString@@@Z
+A 00072186 ?Open@Win95VxDInterface@@QAE_NQBD00@Z
+A 000721ac ?OpenDataSource@ODBCDataSource@@UAE_NABVString@@@Z
+A 000721df ?OpenForRead@RecordFile@@QAEXPBG@Z
+A 00072202 ?OpenForReadWrite@RecordFile@@QAEXPBG@Z
+A 0007222a ?OpenForWrite@RecordFile@@QAEXPBG@Z
+A 0007224e ?OpenOrCreate@RecordFile@@IAEXPBG_N@Z
+A 00072274 ?OpenPort@B1SportMan@@QAEKPAVB1SerialPortParameters@@PAVThreadObj@@HHH@Z
+A 000722bd ?OpenPort@SportMan@@QAEKPAVSerialPortParameters@@PAVThreadObj@@HHH@Z
+A 00072302 ?OpenRecordForRead@RecordFile@@QAE?AVRecordStreamRef@@PBG@Z
+A 0007233e ?OpenTable@ODBCDataSource@@UAE_NAAVODBCTable@@ABVString@@@Z
+A 0007237a ?OsErrorToException@StreamException@@CA?AW4Cause@1@J@Z
+A 000723b1 ?OutQueueEmptySize@CommsBuffer2@@QBEKXZ
+A 000723d9 ?OutQueueEmptySize@CommsBuffer3@@QAEKXZ
+A 00072401 ?OutQueueEmptySize@CommsBuffer@@QBEKXZ
+A 00072428 ?OutQueueWaitSize@CommsBuffer2@@ABEKXZ
+A 0007244f ?OutQueueWaitSize@CommsBuffer3@@QBEKXZ
+A 00072476 ?OutQueueWaitSize@CommsBuffer@@QBEKXZ
+A 0007249c ?PaletteChanged@Palette@@QAEXPAVCWnd@@_N@Z
+A 000724c7 ?Parent@DDEClientConversation@@IBEPAVDDEClientInterface@@XZ
+A 00072503 ?ParseCommandLine@@YAXABVCommandLineArgs@@AAVCCommandLineInfo@@@Z
+A 00072545 ?ParseCommandString@DDEExecuteParser@@AAEPBDPBD@Z
+A 00072577 ?ParseDDEMessage@DDEExecuteParser@@AAEXPBD@Z
+A 000725a4 ?ParseOpcodeString@DDEExecuteParser@@AAEPBDPBD@Z
+A 000725d5 ?ParseParameter@DDEExecuteParser@@AAEPBDPBD@Z
+A 00072603 ?Path@FileParse@@QBE?AVString@@XZ
+A 00072625 ?PathAndDevice@FileParse@@QBE?AVString@@XZ
+A 00072650 ?Pop@DirectoryStack@@QAEXXZ
+A 0007266c ?Post@IPCMessageQueue@@QAE_NHABVDataItem@@AAV2@H@Z
+A 0007269f ?PostProcessSpawnDOS@Win95VxDInterface@@MAE_NAAU_PROCESS_INFORMATION@@_N@Z
+A 000726ea ?PreProcessSpawnDOS@Win95VxDInterface@@MAEXAAU_STARTUPINFOA@@AAU_PROCESS_INFORMATION@@@Z
+A 00072743 ?Ptr@InStreamBufIter@@QAEPAEXZ
+A 00072762 ?Ptr@InStreamBufIter@@QBEPBEXZ
+A 00072781 ?Ptr@OutStreamBufIter@@QBEPAEXZ
+A 000727a1 ?Ptr@StreamBufIter@@QBEPAEXZ
+A 000727be ?Push@DirectoryStack@@QAEXXZ
+A 000727db ?PutLine@TextDiskFile@@QAEXABVMBString@@@Z
+A 00072806 ?Read12BitPacked@@YAXAAPBEAAK1@Z
+A 00072827 ?Read12BitPacked@@YAXAAPBEJJ@Z
+A 00072846 ?Read@CommandErrorEntry@@UAE_NAAVifstream@@@Z
+A 00072874 ?Read@ESDArchiveStream@@UAEIPAXI@Z
+A 00072897 ?Read@InStreamBuf@@QAEIPAXI@Z
+A 000728b5 ?Read@InStreamBufIter@@QAEXPAXI@Z
+A 000728d7 ?Read@MessageErrorEntry@@UAE_NAAVifstream@@@Z
+A 00072905 ?Read@MouseErrorEntry@@UAE_NAAVifstream@@@Z
+A 00072931 ?Read@ODBCDataSource@@UAEXAAVDataItem@@@Z
+A 0007295b ?Read@ParallelStream@@UAEIPAXI@Z
+A 0007297c ?Read@RecordStreamRef@@UAEIPAXI@Z
+A 0007299e ?Read@SerialStream@@UAEIPAXI@Z
+A 000729bd ?Read@StreamBufIter@@QAEXPAXI@Z
+A 000729dd ?ReadBase@CommandErrorEntry@@MAE_NAAVifstream@@@Z
+A 00072a0f ?ReadBase@ErrorEntry@@MAE_NAAVifstream@@@Z
+A 00072a3a ?ReadBase@MessageErrorEntry@@MAE_NAAVifstream@@@Z
+A 00072a6c ?ReadBase@MouseErrorEntry@@MAE_NAAVifstream@@@Z
+A 00072a9c ?ReadBufSize@CommsBuffer2@@QBEIXZ
+A 00072abe ?ReadBytePacked@@YAXAAPBEAAJ@Z
+A 00072add ?ReadBytePacked@@YAXAAPBEAAK@Z
+A 00072afc ?ReadCommBlock@B1SportMan@@QAEKPADIPAVB1SerialPortParameters@@H@Z
+A 00072b3e ?ReadCommBlock@B1SportMan@@QAEKPADIPAVB1SerialPortParameters@@PAK@Z
+A 00072b82 ?ReadCommBlock@SportMan@@QAEKPADIPAVSerialPortParameters@@PAK@Z
+A 00072bc2 ?ReadFloppySectors@@YAXABVDiskUnit@@HHHHPAEHH@Z
+A 00072bf2 ?ReadFromTape@PaperTapeManagerClientConversation@@QAE_NJ@Z
+A 00072c2d ?ReadMessage@MapiWrap@@QAEHXZ
+A 00072c4b ?ReadWordPacked@@YAXAAPBEAAJ@Z
+A 00072c6a ?ReadWordPacked@@YAXAAPBEAAK@Z
+A 00072c89 ?Realloc@CMemFile4@@MAEPAEPAEK@Z
+A 00072caa ?Reclaim@AutoDeleteFile@@QAEXXZ
+A 00072cca ?RecordDesign@DesignerClientConversation@@QAE_NABVString@@K@Z
+A 00072d08 ?Register@ComResource@@QAEXABVPSharedComResource@@@Z
+A 00072d3d ?RegisterConversation@DDEServerInterface@@QAEHAAVDDEConversation@@@Z
+A 00072d82 ?RegisterService@DDEInterface@@IAEHABVDDEString@@@Z
+A 00072db6 ?Regsvr32@@YAHPBD_N@Z
+A 00072dcc ?Release@InStreamBuf@@QAEXAAVInStreamBufIter@@@Z
+A 00072dfd ?Release@OutStreamBuf@@QAEXAAVOutStreamBufIter@@@Z
+A 00072e30 ?RemoveDataSource@ODBCDataSource@@UAEXABVString@@00@Z
+A 00072e66 ?RemoveDataSourceFile@AccessDataSource@@MAEXABVString@@0@Z
+A 00072ea1 ?RemoveDataSourceFile@ExcelDataSource@@MAEXABVString@@0@Z
+A 00072edb ?RemoveDataSourceFile@TextDataSource@@MAEXABVString@@0@Z
+A 00072f14 ?RemoveIllegalCharacters@@YAXAAVString@@@Z
+A 00072f3f ?RenameFile@DOSDiskTools@@SA_NABVString@@0@Z
+A 00072f6c ?RenameRecord@RecordFile@@QAEXPBG0@Z
+A 00072f91 ?Replace@FindReplaceText@@QAEXPBD@Z
+A 00072fb5 ?ReplaceColoursInColourTable@WinDib@@UAEXABV?$SimpleIxList@VTColor@@@@VTColor@@@Z
+A 00073007 ?ReplyPost@IPCMessageQueue@@QAE_NAAVIPCMessage@@@Z
+A 0007303a ?Reset@RecordIter@@QAEXXZ
+A 00073054 ?ResetFloppyController@@YAXABVDiskUnit@@H@Z
+A 00073080 ?RestoreWindowToTop@@YA_NPAVCWnd@@@Z
+A 000730a5 ?ResumeThread@OSThreadManager@@SAHPAVThreadObj@@@Z
+A 000730d8 ?SaveDataItemFile@@YAKABVString@@PBVDataItem@@@Z
+A 00073109 ?Second@WTime@@QBEHXZ
+A 0007311f ?Seek@ESDArchive@@QAEXJI@Z
+A 0007313a ?Seek@ESDArchiveStream@@UAEXJW4seek_dir@Stream@@@Z
+A 0007316d ?Seek@InStreamBuf@@QAEXJW4seek_dir@Stream@@@Z
+A 0007319b ?Seek@OutStreamBuf@@QAEXJW4seek_dir@Stream@@@Z
+A 000731ca ?Seek@RecordStreamRef@@UAEXJW4seek_dir@Stream@@@Z
+A 000731fc ?SendExecute@DDEClientInterface@@QAEHPAVDDEClientConversation@@ABVString@@K@Z
+A 0007324a ?SendMessageA@MapiWrap@@QAEHABVString@@0@Z
+A 00073275 ?SendPoke@DDEClientInterface@@QAEHPAVDDEClientConversation@@ABVString@@PAEKK@Z
+A 000732c4 ?SendRequest@DDEClientInterface@@QAEHPAVDDEClientConversation@@ABVString@@PAEKK@Z
+A 00073316 ?SerialPortParams@B1SerialPortParameters@@QBE?AVSerialPort@@XZ
+A 00073355 ?Server@FileParse@@QBE?AVString@@XZ
+A 00073379 ?Service@DDEClientInterface@@QBEPAVDDEString@@XZ
+A 000733aa ?SetAttributes@DirEntry@@QAEXK@Z
+A 000733cb ?SetBad@BinaryStream@@IAEXXZ
+A 000733e8 ?SetBaud@SerialPort@@QAEXW4Baud@@@Z
+A 0007340c ?SetColorTable@WinDib@@QAEXPBUtagPALETTEENTRY@@H@Z
+A 0007343f ?SetColorTable@WinDib@@QAEXPBUtagRGBQUAD@@H@Z
+A 0007346d ?SetColorTable@WinDib@@QAEXPBVCPalette@@H@Z
+A 00073499 ?SetColorTable@WinDib@@UAEXABVColorList@@@Z
+A 000734c5 ?SetComLineState@CommsBuffer2@@QBE_NH@Z
+A 000734ed ?SetComLineState@CommsBuffer3@@QAE_NH@Z
+A 00073515 ?SetCurrentDirectoryA@DOSDiskTools@@SAXABVString@@@Z
+A 0007354a ?SetCurrentPosi@FindReplaceText@@QAEXH@Z
+A 00073573 ?SetData@IPCMessageData@@QAE_NABVDataItem@@@Z
+A 000735a1 ?SetData@SerialPort@@QAEXW4DataBits@@@Z
+A 000735c9 ?SetDataItemDate@@YA_NABVWDate@@AAVDataItem@@G@Z
+A 000735fa ?SetDateModified@DirEntry@@QAEXABVWDate@@@Z
+A 00073626 ?SetEOF@BinaryStream@@IAEXXZ
+A 00073643 ?SetError@DDEExecuteParser@@AAEXK@Z
+A 00073667 ?SetEventTimeout@CommsBuffer2@@AAEXK@Z
+A 0007368e ?SetEventTimeout@CommsBuffer@@QAEXK@Z
+A 000736b4 ?SetFail@BinaryStream@@IAEXXZ
+A 000736d2 ?SetFileAttributesA@DOSDiskTools@@SAXABVString@@K@Z
+A 00073706 ?SetFileSize@DirEntry@@QAEXK@Z
+A 00073725 ?SetGood@BinaryStream@@IAEXXZ
+A 00073743 ?SetHandle@Metafile@@QAEXPAUHENHMETAFILE__@@@Z
+A 00073772 ?SetHandshake@SerialPort@@QAEXW4HandShake@@@Z
+A 000737a0 ?SetMessageData@IPCMessage@@QAE_NABVDataItem@@@Z
+A 000737d1 ?SetParity@SerialPort@@QAEXW4Parity@@@Z
+A 000737f9 ?SetPermanent@TemporaryOutFileStream@@QAEXXZ
+A 00073826 ?SetPixelsPerMeter@WinDib@@UAEXABVIntegerPoint@@@Z
+A 00073859 ?SetPortError@PortStatus@@QAEXW4PortStatusCode@@@Z
+A 0007388c ?SetPortNumber@SerialPort@@QAEXI@Z
+A 000738af ?SetPortOwnerState@PortStatus@@QAEXW4OwnerState@ComResource@@@Z
+A 000738ef ?SetPriority@CommsBuffer2@@EAEXK@Z
+A 00073912 ?SetPriority@CommsBuffer@@UAEXK@Z
+A 00073934 ?SetReadTimeout@CommsBuffer2@@AAEXK@Z
+A 0007395a ?SetReadTimeout@CommsBuffer@@QAEXK@Z
+A 0007397f ?SetReply@IPCMessage@@IAEXXZ
+A 0007399c ?SetRsaPath@MelcoEthernet@@QAEXPAD@Z
+A 000739c1 ?SetServerCallback@DDEInterface@@KAXP6GPAUHDDEDATA__@@IIPAUHCONV__@@PAUHSZ__@@1PAU2@KK@Z@Z
+A 00073a1c ?SetState@ComResource@@UAEXW4OwnerState@1@@Z
+A 00073a49 ?SetStitchCount@DirEntry@@QAEXK@Z
+A 00073a6b ?SetStop@SerialPort@@QAEXW4StopBits@@@Z
+A 00073a93 ?SetSystemData@@YA_NABVDataItem@@@Z
+A 00073ab7 ?SetTemporary@TemporaryOutFileStream@@QAEXXZ
+A 00073ae4 ?SetThreadPriority@OSThreadManager@@SAXPAVThreadObj@@H@Z
+A 00073b1d ?SetTimeModified@DirEntry@@QAEXABVWTime@@@Z
+A 00073b49 ?SetTimeOuts@B1SportMan@@QAEXPAVB1SerialPortParameters@@@Z
+A 00073b84 ?SetTimeOuts@SportMan@@QAEXPAVSerialPortParameters@@@Z
+A 00073bbb ?SetTimeout@BinaryStream@@IAEXXZ
+A 00073bdc ?SetToNow@IPCTimeStamp@@QAEXXZ
+A 00073bfb ?SetVolumeLabelA@DOSDiskTools@@SAXABVString@@0@Z
+A 00073c2c ?SetWriteTimeout@CommsBuffer2@@AAEXK@Z
+A 00073c53 ?SetWriteTimeout@CommsBuffer@@QAEXK@Z
+A 00073c79 ?SetupForNext@DirectoryFilter@@AAEXXZ
+A 00073c9f ?SignPack@@YAKABJ@Z
+A 00073cb3 ?Silence@Sound@@SAXJ@Z
+A 00073cca ?Size@HighLevelFormatDictionary@@SAHXZ
+A 00073cf1 ?Size@RecordStreamRef@@QAEKXZ
+A 00073d0f ?Skip@FindReplaceText@@QAEHH@Z
+A 00073d2e ?Skip@InStreamBufIter@@QAEXI@Z
+A 00073d4d ?Skip@OutStreamBufIter@@QAEXI@Z
+A 00073d6d ?Skip@RecordIter@@QAEXI@Z
+A 00073d87 ?Skip@StreamBufIter@@QAEXI@Z
+A 00073da4 ?SliceCommandLineA@@YAXABVString@@AAV1@1@Z
+A 00073dcf ?SliceCommandLineW@@YAXABVWideString@@AAV1@1@Z
+A 00073dfe ?StackDumpToFile@@YAXPBDK@Z
+A 00073e1a ?StartTapeManager@@YAXXZ
+A 00073e33 ?Store12BitPacked@@YAXAAPAEJJ@Z
+A 00073e53 ?Store12BitPacked@@YAXAAPAEKK@Z
+A 00073e73 ?StoreBytePacked@@YAXAAPAEJ@Z
+A 00073e91 ?StoreBytePacked@@YAXAAPAEK@Z
+A 00073eaf ?StoreKeyData@@YA_NABVRegistryKey@@ABVString@@1_N@Z
+A 00073ee3 ?StoreKeyData@@YA_NABVRegistryKey@@ABVString@@ABVDataItem@@_N@Z
+A 00073f23 ?StoreKeyData@@YA_NABVRegistryKey@@ABVString@@KPBD_N@Z
+A 00073f5a ?StoreKeyData@@YA_NABVRegistryKey@@ABVString@@K_N@Z
+A 00073f8e ?StoreWordPacked@@YAXAAPAEJ@Z
+A 00073fac ?StoreWordPacked@@YAXAAPAEK@Z
+A 00073fca ?SuspendThread@OSThreadManager@@SAHPAVThreadObj@@@Z
+A 00073ffe ?Tell@ESDArchiveStream@@UAEJXZ
+A 0007401d ?Tell@InStreamBuf@@QBEJXZ
+A 00074037 ?Tell@OutStreamBuf@@QBEKXZ
+A 00074052 ?Tell@RecordStreamRef@@UAEJXZ
+A 00074070 ?TestDiskExistence@@YA_NABVDiskUnit@@@Z
+A 00074098 ?TestDoesAppExist@@YA_NPAD@Z
+A 000740b5 ?ThreadHandle@ThreadObj@@IAEAAPAXXZ
+A 000740d9 ?ThreadID@ThreadObj@@IAEAAKXZ
+A 000740f7 ?ThreadStart@ThreadObj@@IAEKK@Z
+A 00074117 ?ThrowErrno@StreamException@@SAXH@Z
+A 0007413b ?ThrowOleError@StreamException@@SAXJ@Z
+A 00074162 ?ThrowOsError@StreamException@@SAXJ@Z
+A 00074188 ?ThrowStreamException@@YAXABVInDesignOnMediaStream@@@Z
+A 000741bf ?ThrowStreamException@@YAXABVInFileStream@@@Z
+A 000741ed ?ThrowStreamException@@YAXABVOutDesignOnMediaStream@@@Z
+A 00074225 ?ThrowStreamException@@YAXABVOutFileStream@@@Z
+A 00074254 ?Topic@DDEConversation@@QBEPAUHSZ__@@XZ
+A 0007427c ?TranslateDiskBIOSError@@YA?AW4ExceptionType@xOSException@@G@Z
+A 000742bb ?UNCName@DiskUnit@@QBE?AVString@@XZ
+A 000742df ?UnitLetter@DiskUnit@@QBEDXZ
+A 000742fc ?UnitNumber@DiskUnit@@QBEHXZ
+A 00074319 ?Unload@DLLInterface@@QAEXXZ
+A 00074336 ?UnlockDisk@DOSDiskTools@@SA_NABVString@@@Z
+A 00074362 ?UpdateExeWithAppDir@@YA?AVString@@ABV1@@Z
+A 0007438d ?ValidateExtentionChar@FileSystemInfo@@QBE_ND@Z
+A 000743bd ?ValidateFAT32ExtentionChar@FileSystemInfo@@IBE_ND@Z
+A 000743f2 ?ValidateFAT32NameChar@FileSystemInfo@@IBE_ND@Z
+A 00074422 ?ValidateFAT32PathChar@FileSystemInfo@@IBE_ND@Z
+A 00074452 ?ValidateFAT@FileSystemInfo@@IBE_NABVString@@@Z
+A 00074482 ?ValidateFATExtentionChar@FileSystemInfo@@IBE_ND@Z
+A 000744b5 ?ValidateFATNameChar@FileSystemInfo@@IBE_ND@Z
+A 000744e3 ?ValidateFATPathChar@FileSystemInfo@@IBE_ND@Z
+A 00074511 ?ValidateFilename@FileSystemInfo@@QBE_NABVString@@@Z
+A 00074546 ?ValidateNTFS@FileSystemInfo@@IBE_NABVString@@@Z
+A 00074577 ?ValidateNTFSChar@FileSystemInfo@@IBE_ND@Z
+A 000745a2 ?ValidateNameChar@FileSystemInfo@@QBE_ND@Z
+A 000745cd ?ValidatePathChar@FileSystemInfo@@QBE_ND@Z
+A 000745f8 ?VerifyFloppySectors@@YAXABVDiskUnit@@HHHHH@Z
+A 00074626 ?VolumeName@FileSystemInfo@@QBEPBDXZ
+A 0007464b ?VolumeSerialNumber@FileSystemInfo@@QBEHXZ
+A 00074676 ?VolumeSpecifier@FileParse@@QBE?AVString@@XZ
+A 000746a3 ?WaitForReply@IPCMessage@@IBE_NH@Z
+A 000746c6 ?WaitForSet@ThreadObj@@MBE_NJ@Z
+A 000746e6 ?WaitForTerminate@ThreadObj@@QBEKK@Z
+A 0007470b ?WaitUntilSet@ThreadObj@@MBEXXZ
+A 0007472b ?Where@MouseDragDropEvt@@QBE?AVLongPoint@@XZ
+A 00074758 ?WordPack@InStreamBufIter@@QAEXAAJ@Z
+A 0007477d ?WordPack@InStreamBufIter@@QAEXAAK@Z
+A 000747a2 ?WordPack@OutStreamBufIter@@QAEXJ@Z
+A 000747c6 ?WordPack@OutStreamBufIter@@QAEXK@Z
+A 000747ea ?Write@CommandErrorEntry@@UBE_NAAVofstream@@@Z
+A 00074819 ?Write@DibTools@@SAKPBVWinDib@@ABVString@@H_N@Z
+A 00074849 ?Write@ESDArchiveStream@@UAEXPBXI@Z
+A 0007486d ?Write@MessageErrorEntry@@UBE_NAAVofstream@@@Z
+A 0007489c ?Write@MouseErrorEntry@@UBE_NAAVofstream@@@Z
+A 000748c9 ?Write@OutStreamBuf@@QAEXPBXI@Z
+A 000748e9 ?Write@OutStreamBufIter@@QAEXPBXI@Z
+A 0007490d ?Write@ParallelStream@@UAEIPBXI@Z
+A 0007492f ?Write@RecordStreamRef@@UAEXPBXI@Z
+A 00074952 ?Write@SerialStream@@UAEIPBXI@Z
+A 00074972 ?Write@StreamBufIter@@QAEXPBXI@Z
+A 00074993 ?Write@WinDib@@QBEKAAVStream@@@Z
+A 000749b4 ?WriteBase@CommandErrorEntry@@MBE_NAAVofstream@@@Z
+A 000749e7 ?WriteBase@ErrorEntry@@MBE_NAAVofstream@@@Z
+A 00074a13 ?WriteBase@MessageErrorEntry@@MBE_NAAVofstream@@@Z
+A 00074a46 ?WriteBase@MouseErrorEntry@@MBE_NAAVofstream@@@Z
+A 00074a77 ?WriteBufSize@CommsBuffer2@@QBEIXZ
+A 00074a9a ?WriteCommBlock@B1SportMan@@QAEKPBDIPAVB1SerialPortParameters@@PAK@Z
+A 00074adf ?WriteCommBlock@SportMan@@QAEKPBDIPAVSerialPortParameters@@PAK@Z
+A 00074b20 ?WriteFloppySectors@@YAXABVDiskUnit@@HHHHPBEHH@Z
+A 00074b51 ?WriteToTape@PaperTapeManagerClientConversation@@QAE_NABVString@@J@Z
+A 00074b96 ?X_ReadBytePacked@@YIXAAPBEAAK@Z
+A 00074bb7 ?X_ReadWordPacked@@YIXAAPBEAAK@Z
+A 00074bd8 ?X_StoreBytePacked@@YIXAAPAEK@Z
+A 00074bf8 ?X_StoreWordPacked@@YIXAAPAEK@Z
+A 00074c18 ?Year@WDate@@QBEHXZ
+A 00074c2c ?appPaths@@3VRegistryKey@@A
+A 00074c48 ?b1sportMan@@3VB1SportMan@@A
+A 00074c65 ?bad@BinaryStream@@QBEHXZ
+A 00074c7f ?close@CommsBuffer2@@UAEXXZ
+A 00074c9b ?close@CommsBuffer@@UAEXXZ
+A 00074cb6 ?close@InDesignOnMediaStream@@QAEXXZ
+A 00074cdb ?close@OutDesignOnMediaStream@@QAEXXZ
+A 00074d01 ?close@ParallelStream@@UAEXXZ
+A 00074d1f ?close@SerialStream@@UAEXXZ
+A 00074d3b ?debugLogger@@3PAVDebugLogger@@A
+A 00074d5c ?eController@@3PAVMelcoEthernetController@@A
+A 00074d89 ?emptyString@FileParse@@0VString@@A
+A 00074dad ?eof@BinaryStream@@QBEHXZ
+A 00074dc7 ?fail@BinaryStream@@QBEHXZ
+A 00074de2 ?flush@CommsBuffer2@@UAEXXZ
+A 00074dfe ?flush@CommsBuffer@@UAEXXZ
+A 00074e19 ?flush@ParallelStream@@UAEXXZ
+A 00074e37 ?flush@SerialStream@@UAEXXZ
+A 00074e53 ?get@CommsBuffer2@@UAEHXZ
+A 00074e6d ?get@CommsBuffer3@@UAEHXZ
+A 00074e87 ?get@CommsBuffer@@UAEHXZ
+A 00074ea0 ?get@ParallelStream@@MAEXAAD@Z
+A 00074ebf ?get@ParallelStream@@MAEXAAE@Z
+A 00074ede ?get@SerialStream@@MAEXAAD@Z
+A 00074efb ?get@SerialStream@@MAEXAAE@Z
+A 00074f18 ?good@BinaryStream@@QBEHXZ
+A 00074f33 ?idinst@DDEInterface@@0KA
+A 00074f4d ?isnt@WinVersionInfo@@0_NA
+A 00074f68 ?iswin32s@WinVersionInfo@@0_NA
+A 00074f87 ?iswin95@WinVersionInfo@@0_NA
+A 00074fa5 ?linfo@SysInfo@@0PAVLocaleInformation@@A
+A 00074fce ?major@WinVersionInfo@@0HA
+A 00074fe9 ?minor@WinVersionInfo@@0HA
+A 00075004 ?open@InFileStream@@QAEXABVString@@H@Z
+A 0007502b ?open@InMemoryMappedFileStream@@QAEXPAPAXK@Z
+A 00075058 ?open@OutFileStream@@QAEXABVString@@H@Z
+A 00075080 ?osBuildNumber@WinVersionInfo@@0KA
+A 000750a3 ?osName@WinVersionInfo@@0W4OsName@1@A
+A 000750c9 ?peek@CommsBuffer3@@QAEHXZ
+A 000750e4 ?put@CommsBuffer2@@UAEHH@Z
+A 000750ff ?put@CommsBuffer3@@UAEHH@Z
+A 0007511a ?put@CommsBuffer@@UAEHH@Z
+A 00075134 ?put@ParallelStream@@MAEXAAD@Z
+A 00075153 ?put@ParallelStream@@MAEXAAE@Z
+A 00075172 ?put@SerialStream@@MAEXAAD@Z
+A 0007518f ?put@SerialStream@@MAEXAAE@Z
+A 000751ac ?putBuffer@CommsBuffer3@@UAEHPAEJ@Z
+A 000751d0 ?sInfo@SysInfo@@0U_SYSTEM_INFO@@A
+A 000751f2 ?sndInfo@SysInfo@@0PAVSoundInfo@@A
+A 00075215 ?sportMan@@3VSportMan@@A
+A 0007522e ?timeout@BinaryStream@@QBEHXZ
+A 000755bc CREATE_DB=
+A 000755d8 UNKNOWN
+A 000755e0 Microsoft Access Driver (*.mdb)
+A 00075600 Driver=odbcjt32.dll
+A 00075614 Setup=odbcjt32.dll
+A 00075627 FileUsage=2
+A 00075633 FileExtns=*.mdb
+A 00075648 Microsoft Access Driver (*.mdb)
+A 00075670 %s%03d
+A 00075680 .?AVxOSException@@
+A 00075694 DESIGNER_TOPIC
+A 000756b0 .?AVWException@@
+A 000756d0 .?AVStreamException@@
+A 000756f0 .PAVCFileException@@
+A 00075710 .?AVSimpleException@@
+A 00075730 .?AVxOSEvent@@
+A 00075740 xOSEvent
+A 00075758 .?AVxOSThread@@
+A 00075770 .?AVxOSFile@@
+A 000758e0 %d %s %d
+A 000758ec c:\tmp\out.dmp
+A 000758fc <<<1 Dumping known acquired critical sections
+A 0007592c ACQUIRED for %f seconds
+A 00075948 >>>1 Dumping known acquired critical sections
+A 00075978 DBGCRIT.cpp
+A 00075984  CritsectionRelease : secs %f
+A 000759b0 .?AVxOSMutex@@
+A 000759c0 xOSMutex
+A 000759cc  MutexRelease : secs %f
+A 000759e8 %s(%d) : (%8.8x ) 
+A 000759fc %s (DebugCPUTimer) : secs %f
+A 00075a1c DebugCPUTimer : secs %f
+A 00075a38 DebugCPUMeasured : secs %f
+A 00075a54 DebugCPUMeasured %s : secs %f
+A 00075a74 DebugCPUTimer Created %s
+A 00075a90 DebugCPUTimer Created
+A 00075ab0 .?AVxDDEExcept@@
+A 00075ac4 Initialization error
+A 00075adc Cannot register service
+A 00075af4 LIB_TOPIC
+A 00075b00 [record(%s,%ld)]
+A 00075b14 [close(%s,%ld)]
+A 00075b24 [save(%s,%ld)]
+A 00075b34 [saveas(%s,%ld)]
+A 00075b48 [kill]
+A 00075b50 DESIGNER_SERVER
+A 00075ba8 \\.\%c:
+A 00075bb0 Disk error
+A 00075bc0 FAT32
+A 00075be0 .?AVxDiskException@@
+A 00075c00 .?AVCOMException@@
+A 00075c14 COMException
+A 00075c30 .?AVxDLLException@@
+A 00075c44 DLL execption
+A 00075c58 Cannot get Volume Info
+A 00075c74 x.xxx
+A 00075c7c GetDiskFreeSpaceExA
+A 00075c90 KERNEL32.DLL
+A 00075ca8 .?AVxBadVolInfo@@
+A 00075cbc SHFormatDrive
+A 00075ccc SHELL32.DLL
+A 00075cd8 Memory exception
+A 00075cec Transaction exception
+A 00075d04 Unhandled exception
+A 00075d18 (%d, %d) : %s
+A 00075d2c DOWN 
+A 00075d34 RIGHT 
+A 00075d3c LEFT 
+A 00075d44 NONE 
+A 000766f0 MaxScanRows=20
+A 00076700 FileType=Excel
+A 00076710 Microsoft Excel Driver (*.xls)
+A 0007672f Driver=odbcjt32.dll
+A 00076743 Setup=odexl32.dll
+A 00076755 FileUsage=1
+A 00076761 FileExtns=*.xls
+A 00076774 Microsoft Excel Driver (*.xls)
+A 000767a8 EAX = %8.8lx EBX = %8.8lx ECX = %8.8lx 
+A 000767d0 EDX = %8.8lx EDI = %8.8lx ESI = %8.8lx
+A 000767f8 GS = %8.8lx FS = %8.8lx ES = %8.8lx DS = %8.8lx
+A 00076874 ErrorName : 
+A 00076884 Starting log file
+A 00076898 Re-entered exception handler
+A 000768b8 C++ ExceptionTerminate ()
+A 000768d4 EXCPTHND.cpp
+A 000768e4 After calling shut down
+A 000768fc Before calling shut down
+A 00076918 Re-entered unhandled exception handler
+A 00076940 UnhandledExceptionTerminate ()
+A 00076960 Unrecoverable error. Shutting down
+A 00076984 System Error
+A 000769b0 C:\ESDUMP.DMP
+A 000769c0 Product Name : %s
+A 000769d4 FullFaultAddress : %04X:%08X %s
+A 000769f8 Startup Address : %p
+A 00076a10 ExceptionFlags : %lx
+A 00076a25 ExceptionAddress : %p
+A 00076a3b NumberParameters : %lx
+A 00076a57 ExceptionCode : %lx
+A 00076a6c ErrorName : 
+A 00076a7c Startup Address : %p
+A 00076a91 Offset of Exception : %p
+A 00076aac CONTROL C EXIT
+A 00076abc EXCEPTION STACK OVERFLOW
+A 00076ad8 EXCEPTION PRIV INSTRUCTION
+A 00076af4 EXCEPTION INT OVERFLOW
+A 00076b0c EXCEPTION INT DIVIDE BY ZERO
+A 00076b2c EXCEPTION FLOAT UNDERFLOW
+A 00076b48 EXCEPTION FLOAT STACK CHECK
+A 00076b64 EXCEPTION FLOAT OVERFLOW
+A 00076b80 EXCEPTION FLOAT INVALID OPERATION
+A 00076ba4 EXCEPTION FLOAT INEXACT RESULT
+A 00076bc4 EXCEPTION FLOAT DIVIDE BY ZERO
+A 00076be4 EXCEPTION FLOAT DENORMAL OPERAND
+A 00076c08 EXCEPTION ARRAY BOUNDS EXCEEDED
+A 00076c28 EXCEPTION NONCONTINUABLE EXCEPTION
+A 00076c4c EXCEPTION INVALID DISPOSITION
+A 00076c6c EXCEPTION ILLEGAL INSTRUCTION
+A 00076c8c EXCEPTION IN PAGE ERROR
+A 00076ca4 EXCEPTION ACCESS VIOLATION
+A 00076cc0 EXCEPTION GUARD PAGE
+A 00076cd8 EXCEPTION SINGLE STEP
+A 00076cf0 EXCEPTION BREAKPOINT
+A 00076d08 EXCEPTION DATATYPE MISALIGNMENT
+A 00076d28 CS:EIP = %8.8lx:%8.8lx
+A 00076d40 SS:ESP = %8.8lx:%8.8lx EBP = %8.8lx
+A 00076d68 Flags = %8.8lx
+A 00076d78 Register Dump
+A 00076d88 Register Dumps
+A 00076d9c End Stack Dump2 error
+A 00076db4 End Stack Dump2
+A 00076dc8 Ring 3
+A 00076dd0 %08X  %08X  %04X:%08X %s
+A 00076dec Stack Dump2
+A 00076dfc .2.MLG
+A 00076e04 \errlog2.mlg
+A 00076e14 .1.MLG
+A 00076e20 \errlog1.mlg
+A 00076e5c iform error
+A 00076e68 b4 _exit
+A 00076e74 ******* After Calling gShutDown : %p
+A 00076e9c B4 Calling gShutDown : %p
+A 00076eb8 End of Toolhelp Info
+A 00076ed0 End of Module Info
+A 00076ee4 Module size  : %ld
+A 00076ef8 Base Address : %p
+A 00076f0c EXE path     : %s
+A 00076f20 Module name  : %s
+A 00076f34 Module info
+A 00076f44 Toolhelp Info
+A 00076f54 c:\tmp\except.doit
+A 00076f68 Exception handler debug message
+A 00076f88 %s (%d) : %s
+A 00076f98 TAPEMGR.EXE
+A 00076fd4 Copy (%d) of %s
+A 00076fe4 Copy of %s
+A 00077020 ?"<>*|
+A 00077028 ?"/\<>*|:
+A 00077034 $% '-_@~`!(){}^#&+,;=[]
+A 00077050 .$%`-_@{}~'!#()
+A 00077060 $%`-_@{}~'!#()
+A 00077070 \imgsvr.ole
+A 0007707c AutoConvertTo
+A 0007708c CLSID
+A 00077094 SERVER_INIT
+A 000770a0 Audit : 
+A 000770a9 messagesPosted = %d
+A 000770bd messagesReplied = %d
+A 000770d2 messagesChecked = %d
+A 000770e7 messagesReceived = %d
+A 000770fd  highestSlot = %d
+A 0007710f ** End Audit **
+A 00077120 POSTED
+A 00077128 err : %d
+A 00077134 QUEUE_IS_POSTING_CS
+A 00077148 QUEUE_ACCESS_CS
+A 00077158 POST_NOTIFY
+A 00077164 %s_%d_%s
+A 00077170 Wait For Reply : event was replied to - but not the message slot.
+A 000771b4 Wait For Reply : event was not replied to
+A 000771e0 UNKNOWN_KOBJ
+A 000771f0 SEMAPHORE
+A 000771fc MEMFILE
+A 00077204 MUTEX
+A 0007720c EVENT
+A 00077214 _CWCY_KOBJ_
+A 00077258 REPLY
+A 00077264 RES%s
+A 000773e8 RES%s.DLL
+A 000773f4 ??RES%s
+A 00077404 MAPIResolveName
+A 00077414 MAPIDetails
+A 00077420 MAPIAddress
+A 0007742c MAPIFreeBuffer
+A 0007743c MAPIDeleteMail
+A 0007744c MAPISaveMail
+A 0007745c MAPIReadMail
+A 0007746c MAPIFindNext
+A 0007747c MAPISendDocuments
+A 00077490 MAPISendMail
+A 000774a0 MAPILogoff
+A 000774ac MAPILogon
+A 000774b8 MAPI32.DLL
+A 000774c4 Ethernet
+A 000774d0 %s_%s
+A 000774d8 _MelEthGetPeripheralNode@8
+A 000774f4 _MelEthGetPeripheralName@8
+A 00077510 _MelEthDownloadDesign@20
+A 0007752c _MelEthIsDownloadDone@4
+A 00077544 _MelEthSetRsaPath@4
+A 00077558 _MelEthIsRsaDone@4
+A 0007756c _MelEthMonitor@4
+A 00077580 _MelEthDeInitialize@4
+A 00077598 _MelEthInitialize@8
+A 000775ac meldll32.dll
+A 000775bc Melco ethernet DLL does not work in NT
+A 000775e4 MELCO_ETHERNET_1281
+A 000775f8 MelcoNetwork
+A 00077608 %s_%d_%d
+A 00077614 xOSFile
+A 0007761c Error %d when creating memory map section. 
+A 000776d0 dummyFilename
+A 000776e8 Out of memory. Close some Windows.
+A 0007770c Memory Error
+A 00077720 CREATE TABLE 
+A 00077730 ODBC;
+A 00077754 TEXT(%d)
+A 00077768 INTEGER
+A 00077788 DllUnregisterServer
+A 0007779c DllRegisterServer
+A 000777f8 wessys
+A 00077808 1.2.0
+A 0007781c LPT%d
+A 00077824 COM%d
+A 00077834 Network
+A 0007783c StgOpenStorage
+A 0007784c OLE32
+A 00077854 StgCreateDocfile
+A 00077868 StgIsStorageFile
+A 0007787c \SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths
+A 000778d0 button1.wav
+A 000778dc button2.wav
+A 000778e8 button3.wav
+A 000778f4 button4.wav
+A 00077904 DllGetVersion
+A 00077920 DefaultDir=
+A 0007792c Microsoft Text Driver (*.txt; *.csv)
+A 00077951 Driver=odbcjt32.dll
+A 00077965 Setup=odtext32.dll
+A 00077978 FileUsage=1
+A 00077984 FileExtns=*.,*.asc,*.csv,*.tab,*.txt,*.csv
+A 000779b4 Microsoft Text Driver (*.txt; *.csv)
+A 000779dc schema.ini
+A 000779f0 schema
+A 00077a00 xOSThread
+A 00077a0c Module32Next
+A 00077a1c Module32First
+A 00077a2c CreateToolhelp32Snapshot
+A 00077a48 TAPE_MGR_SERVER
+A 00077a58 [ptread(%d)]
+A 00077a68 [ptpunch(%s,%d)]
+A 00077a7c \\.\%s:
+A 00077a84 \\.\VWIN32
+A 00077a90 Static
+A 00077aa8 .?AVCMemoryException@@
+A 00077ac0  %ld 
+A 00077ac8 1.0.4
+A 00077ad4 1.1.3
+A 00077adc need dictionary
+A 00077aec incorrect data check
+A 00077b04 incorrect header check
+A 00077b1c invalid window size
+A 00077b30 unknown compression method
+A 00077b78 incompatible version
+A 00077b90 buffer error
+A 00077ba0 insufficient memory
+A 00077bb4 data error
+A 00077bc0 stream error
+A 00077bd0 file error
+A 00077bdc stream end
+A 00077c2c invalid bit length repeat
+A 00077c48 too many length or distance symbols
+A 00077c6c invalid stored block lengths
+A 00077c8c invalid block type
+A 00077ca0 invalid distance code
+A 00077cb8 invalid literal/length code
+A 00078de0 incomplete dynamic bit lengths tree
+A 00078e04 oversubscribed dynamic bit lengths tree
+A 00078e2c incomplete literal/length tree
+A 00078e4c oversubscribed literal/length tree
+A 00078e70 empty distance tree with lengths
+A 00078e94 incomplete distance tree
+A 00078eb0 oversubscribed distance tree
+A 00078f60 Unknown zlib error
+A 00078f74 zlib version error
+A 00078f88 zlib memory error
+A 00078f9c Incompatible libpng version in application and library
+A 00078fd4 Application  is running with png.c from libpng-%.20s
+A 0007900c Application was compiled with png.h from libpng-%.20s
+A 00079044 Missing PLTE before IDAT
+A 00079060 Missing IHDR before IDAT
+A 0007907c PNG file corrupted by ASCII conversion
+A 000790a4 Not a PNG file
+A 000790b4 Extra compressed data
+A 000790cc Decompression error
+A 000790e0 Not enough image data
+A 000790f8 Invalid attempt to read row data
+A 00079140 png_do_dither returned rowbytes=0
+A 00079164 png_do_rgb_to_gray found nongray pixel
+A 0007918c NULL row buffer for row %ld, pass %d
+A 000791b4 Width too large for libpng to process image data.
+A 000791e8 MNG features are not allowed in a PNG datastream
+A 0007921c Unable to write international text
+A 00079240 Valid palette required for paletted images
+A 0007926c No IDATs written into file
+A 00079288 zlib error
+A 00079294 Unknown filter heuristic method
+A 000792b4 Setting gamma=0
+A 000792c4 Palette size 0, hIST allocation skipped.
+A 000792f0 Width too large to process image data; rowbytes will overflow.
+A 00079330 Invalid filter method in IHDR
+A 00079350 Unknown filter method in IHDR
+A 00079370 Unknown compression method in IHDR
+A 00079394 Unknown interlace method in IHDR
+A 000793b8 Invalid color type/bit depth combination in IHDR
+A 000793ec Invalid color type in IHDR
+A 00079408 Invalid bit depth in IHDR
+A 00079424 Invalid image size in IHDR
+A 00079440 Image width or height is zero in IHDR
+A 00079468 iTXt chunk not supported.
+A 0007968a  0@P`p
+A 0007969a !1AQaq
+A 000796aa "2BRbr
+A 000796ba #3CScs
+A 000796ca $4DTdt
+A 000796da %5EUeu
+A 000796ea &6FVfv
+A 000796fa '7GWgw
+A 0007970a (8HXhx
+A 0007971a )9IYiy
+A 0007972a *:JZjz
+A 0007973a +;K[k{
+A 0007974a ,<L\l|
+A 0007975a -=M]m}
+A 0007976a .>N^n~
+A 0007977a /?O_o
+A 00079788 libpng error: %s
+A 0007979c libpng error: %s, offset=%d
+A 000797bc libpng error no. %s: %s
+A 000797d8 libpng warning: %s
+A 000797ec libpng warning no. %s: %s
+A 00079808 Out of Memory!
+A 00079818 Out of Memory
+A 00079828 Call to NULL read function
+A 00079844 same structure.  Resetting write_data_fn to NULL.
+A 00079878 It's an error to set both read_data_fn and write_data_fn in the 
+A 000798bc Read Error
+A 000798c8 Error decoding compressed text
+A 000798e8 CRC error
+A 000798f4 Unknown zTXt compression type %d
+A 00079918 Incomplete compressed datastream in %s chunk
+A 00079948 Data error in compressed datastream in %s chunk
+A 00079978 Buffer error in compressed datastream in %s chunk
+A 000799ac Invalid IHDR chunk
+A 000799c0 Out of place IHDR
+A 000799d4 Truncating incorrect info tRNS chunk length
+A 00079a00 Truncating incorrect tRNS chunk length
+A 00079a28 Invalid palette chunk
+A 00079a40 Ignoring PLTE chunk in grayscale PNG
+A 00079a68 Duplicate PLTE chunk
+A 00079a80 Invalid PLTE after IDAT
+A 00079a98 Missing IHDR before PLTE
+A 00079ab4 Incorrect IEND chunk length
+A 00079ad0 No image in file
+A 00079ae4 Duplicate gAMA chunk
+A 00079afc Out of place gAMA chunk
+A 00079b14 Invalid gAMA after IDAT
+A 00079b2c gamma = (%d/100000)
+A 00079b44 Ignoring incorrect gAMA value when sRGB is also present
+A 00079b7c Ignoring gAMA chunk with gamma=0
+A 00079ba0 Incorrect gAMA chunk length
+A 00079bbc Missing IHDR before gAMA
+A 00079bd8 Duplicate sBIT chunk
+A 00079bf0 Out of place sBIT chunk
+A 00079c08 Invalid sBIT after IDAT
+A 00079c20 Incorrect sBIT chunk length
+A 00079c3c Missing IHDR before sBIT
+A 00079c58 Duplicate cHRM chunk
+A 00079c70 Missing PLTE before cHRM
+A 00079c8c Invalid cHRM after IDAT
+A 00079ca4 Invalid cHRM white point
+A 00079cc0 Invalid cHRM red point
+A 00079cd8 Invalid cHRM green point
+A 00079cf4 Invalid cHRM blue point
+A 00079d0c gx=%f, gy=%f, bx=%f, by=%f
+A 00079d28 wx=%f, wy=%f, rx=%f, ry=%f
+A 00079d44 Ignoring incorrect cHRM value when sRGB is also present
+A 00079d7c Incorrect cHRM chunk length
+A 00079d98 Missing IHDR before cHRM
+A 00079db4 Duplicate sRGB chunk
+A 00079dcc Out of place sRGB chunk
+A 00079de4 Invalid sRGB after IDAT
+A 00079dfc incorrect gamma=(%d/100000)
+A 00079e1c Unknown sRGB intent
+A 00079e30 Incorrect sRGB chunk length
+A 00079e4c Missing IHDR before sRGB
+A 00079e68 Duplicate iCCP chunk
+A 00079e80 Out of place iCCP chunk
+A 00079e98 Invalid iCCP after IDAT
+A 00079eb0 Ignoring truncated iCCP profile.
+A 00079ed4 Profile size field missing from iCCP chunk
+A 00079f00 Ignoring nonzero compression type in iCCP chunk
+A 00079f30 Malformed iCCP chunk
+A 00079f48 Missing IHDR before iCCP
+A 00079f64 Invalid sPLT after IDAT
+A 00079f7c sPLT chunk has bad length
+A 00079f98 malformed sPLT chunk
+A 00079fb0 Missing IHDR before sPLT
+A 00079fcc Duplicate tRNS chunk
+A 00079fe4 Invalid tRNS after IDAT
+A 00079ffc tRNS chunk not allowed with alpha channel
+A 0007a028 Zero length tRNS chunk
+A 0007a040 Incorrect tRNS chunk length
+A 0007a05c Missing PLTE before tRNS
+A 0007a078 Missing IHDR before tRNS
+A 0007a094 Duplicate bKGD chunk
+A 0007a0ac Missing PLTE before bKGD
+A 0007a0c8 Invalid bKGD after IDAT
+A 0007a0e0 Incorrect bKGD chunk index value
+A 0007a104 Incorrect bKGD chunk length
+A 0007a120 Missing IHDR before bKGD
+A 0007a13c Duplicate hIST chunk
+A 0007a154 Missing PLTE before hIST
+A 0007a170 Invalid hIST after IDAT
+A 0007a188 Incorrect hIST chunk length
+A 0007a1a4 Missing IHDR before hIST
+A 0007a1c0 Duplicate pHYs chunk
+A 0007a1d8 Invalid pHYs after IDAT
+A 0007a1f0 Incorrect pHYs chunk length
+A 0007a20c Missing IHDR before pHYs
+A 0007a228 Duplicate oFFs chunk
+A 0007a240 Invalid oFFs after IDAT
+A 0007a258 Incorrect oFFs chunk length
+A 0007a274 Missing IHDR before oFFs
+A 0007a290 Duplicate pCAL chunk
+A 0007a2a8 Invalid pCAL after IDAT
+A 0007a2c0 Unrecognized equation type for pCAL chunk
+A 0007a2ec Invalid pCAL parameters for equation type
+A 0007a318 Invalid pCAL data
+A 0007a32c Missing IHDR before pCAL
+A 0007a348 Duplicate sCAL chunk
+A 0007a360 Invalid sCAL after IDAT
+A 0007a378 Invalid sCAL data
+A 0007a38c malformed height string in sCAL chunk
+A 0007a3b4 malformed width string in sCAL chunk
+A 0007a3dc Missing IHDR before sCAL
+A 0007a3f8 Duplicate tIME chunk
+A 0007a410 Incorrect tIME chunk length
+A 0007a42c Out of place tIME chunk
+A 0007a444 Missing IHDR before tEXt
+A 0007a460 Unknown compression type in zTXt chunk
+A 0007a488 Zero length zTXt chunk
+A 0007a4a0 Missing IHDR before zTXt
+A 0007a4bc unknown critical chunk
+A 0007a4d4 invalid chunk type
+A 0007a4e8 Ignoring bad adaptive filter type
+A 0007a50c Extra compression data
+A 0007a524 Decompression Error
+A 0007a538 Invalid interlace type specified
+A 0007a55c Invalid filter type specified
+A 0007a57c Invalid compression type specified
+A 0007a5a0 Invalid image color type specified
+A 0007a5c4 Invalid bit depth for RGBA image
+A 0007a5e8 Invalid bit depth for grayscale+alpha image
+A 0007a614 Invalid bit depth for paletted image
+A 0007a63c Invalid bit depth for RGB image
+A 0007a65c Invalid bit depth for grayscale image
+A 0007a684 Ignoring request to write a PLTE chunk in grayscale PNG
+A 0007a6bc Invalid number of colors in palette
+A 0007a6e0 Invalid sRGB rendering intent specified
+A 0007a708 Empty keyword in iCCP chunk
+A 0007a724 Unknown compression type in iCCP chunk
+A 0007a74c Unknown compression type %d
+A 0007a768 Empty keyword in sPLT chunk
+A 0007a784 Invalid sBIT depth specified
+A 0007a7a4 white_x=%f, white_y=%f
+A 0007a7bc Invalid cHRM white point specified
+A 0007a7e0 Invalid cHRM red point specified
+A 0007a804 Invalid cHRM green point specified
+A 0007a828 Invalid cHRM blue point specified
+A 0007a84c Can't write tRNS with an alpha channel
+A 0007a874 Ignoring attempt to write 16-bit tRNS chunk when bit_depth is 8
+A 0007a8b4 Ignoring attempt to write tRNS chunk out-of-range for bit_depth
+A 0007a8f4 Invalid number of transparent colors specified
+A 0007a924 Ignoring attempt to write bKGD chunk out-of-range for bit_depth
+A 0007a964 Ignoring attempt to write 16-bit bKGD chunk when bit_depth is 8
+A 0007a9a4 Invalid background palette index
+A 0007a9c8 Invalid number of histogram entries specified
+A 0007a9f8 zero length keyword
+A 0007aa0c keyword length must be 1 - 79 characters
+A 0007aa38 Zero length keyword
+A 0007aa4c extra interior spaces removed from keyword
+A 0007aa78 leading spaces removed from keyword
+A 0007aa9c trailing spaces removed from keyword
+A 0007aac4 invalid keyword character 0x%02X
+A 0007aae8 Empty keyword in tEXt chunk
+A 0007ab04 Empty keyword in zTXt chunk
+A 0007ab20 Unrecognized unit type for oFFs chunk
+A 0007ab48 %12.12e
+A 0007ab50 Unrecognized unit type for pHYs chunk
+A 0007ab78 Invalid time specified for tIME chunk
+A 0007aba0 Call to NULL write function
+A 0007abbc the same structure.  Resetting read_data_fn to NULL.
+A 0007abf4 Attempted to set both read_data_fn and write_data_fn in
+A 0007ac2c Write Error
+A 0007ac48 .?AVtype_info@@
+A 0007ac58 SQLConfigDataSource
+A 0007ac6c SQLInstallDriverEx
+A 0007ac80 odbccp32.dll
+A 0007ac98 The program %s, or one of its DLLs attempted to call the function %s which is not supported in the loaded ODBC installer DLL (%s).  Press OK to proceed.
+A 0007ad34 The ODBC installer DLL (ODBCCP32.DLL) is not installed on this system.
+A 0007ad7c ODBC Installer Error
+A 0007ad94 %s\%s
+A 0007ad9c VerQueryValueA
+A 0007adac GetFileVersionInfoA
+A 0007adc0 GetFileVersionInfoSizeA
+A 0007add8 version.dll
+A 0007adf0 .?AV_com_error@@
+A 0007b3c0 WAVEfmt 
+A 0007b3eb $s#T$	$T$
+A 0007b3ff "5%T$
+A 0007b405 #	$	$T$
+A 0007b41b &5%5%
+A 0007b45f $T$5%
+A 0007b497 $f!	$(#
+A 0007b4a7 &s#s#
+A 0007b4ad &(#s#T$
+A 0007b4b9 $5%5%
+A 0007b4df $B'B'
+A 0007b4ed &5%a&
+A 0007b4f3 &5%a&a&a&
+A 0007b4ff &5%a&5%
+A 0007b515 %a&B'
+A 0007b53d %5%T$
+A 0007b54b #T$(#T$(#	$	$a&	$
+A 0007b585 %a&O)
+A 0007b58d &	$a&a&5%a&
+A 0007b5b7 &a&5%
+A 0007b5c1 $5%T$a&T$
+A 0007b5f5 #(#5%
+A 0007b615 %5%s#T$s#5%s#
+A 0007b63b $B'T$
+A 0007b64b %5%5%a&T$a&
+A 0007b671 $T$T$	$
+A 0007b691 %a&a&
+A 0007b6a3 #T$5%
+A 0007b6b5 $T$T$
+A 0007b6c7 $5%T$a&5%T$
+A 0007b709 %5%	$5%5%	$
+A 0007b739 $T$	$5%
+A 0007b741 $T$a&
+A 0007b74b &5%a&
+A 0007b757 #a&s#
+A 0007b761 %s#(#	$s#
+A 0007b7ad %5%5%5%a&
+A 0007b7bd &	$T$
+A 0007b7c9 $	$#(
+A 0007b7f1 %	$T$
+A 0007b81d &5%s#
+A 0007b823 %	$a&	$
+A 0007b863 %T$	$
+A 0007b869 %5%T$T$
+A 0007b889 &5%5%
+A 0007b8af "(#T$a&	$
+A 0007b8b9 $a&s#
+A 0007b8f9 &s#a&
+A 0007b911 $	$s#
+A 0007b971 %5%s#s#(#
+A 0007b97f $5%T$a&T$T$5%a&a&
+A 0007b997 &B'a&
+A 0007b9e3 &s#a&
+A 0007b9e9 $B'5%a&
+A 0007b9fb $	$	$
+A 0007ba0f #s#T$
+A 0007ba19 $T$(#
+A 0007ba4d &#(5%
+A 0007ba5b &a&a&T$5%
+A 0007ba71 &	$	$
+A 0007ba77 &s#5%
+A 0007ba7d &5%5%
+A 0007ba83 &a&5%
+A 0007ba8f %	$B'
+A 0007ba97 %5%a&
+A 0007baa1 &5%a&
+A 0007bab5 $(#	$T$
+A 0007bac5 $s#	$
+A 0007bacb $(#5%
+A 0007bad3 $5%5%
+A 0007baef &5%a&a&
+A 0007bb01 %a&5%
+A 0007bb1f %s#	$
+A 0007bb41 &	$5%
+A 0007bb49 $5%a&
+A 0007bb57 &(#	$T$
+A 0007bb71 $T$T$	$
+A 0007bb79 #	$T$T$
+A 0007bb85 $	$a&
+A 0007bb93 &a&	$5%a&
+A 0007bb9d &B'5%B'
+A 0007bbc9 RQcfl
+A 0007bbfd Q}d(n
+A 0007bc15 .eOpb
+A 0007bc2f /SR}d
+A 0007bc51 q%b&44
+A 0007bc7c E3'Qpb
+A 0007bc9f ~ns1Gc
+A 0007bcb9 }5poE
+A 0007bcd1 vW{sn
+A 0007bce4 f!>Ikg0u
+A 0007bd05 u8|	o
+A 0007bd6d oOtYj
+A 0007bd83 Fc`snOtxiPF
+A 0007bd9f `:k#s
+A 0007bdbd tkg$E
+A 0007bdd5 j5p?foE
+A 0007bdef hTo?f$E
+A 0007be21 X^e:kpboE
+A 0007bea7 epb]H5%F
+A 0007bedb `V^>Ia&
+A 0007bf23 3jJ"V
+A 0007bf29 ^h[KK
+A 0007bf56 v/|G"V
+A 0007bf5f [XMW0
+A 0007bf79 ZjJJ.
+A 0007bf91 W[YXM
+A 0007bfa9 RNW<Z9N
+A 0007bffb UXMd2p
+A 0007c02f P,LR5}
+A 0007c03f 	a&y;
+A 0007c05b $.;|G
+A 0007c077 8bCKK
+A 0007c091 7bCjJ9N
+A 0007c0c3  &4UA]HKK|G
+A 0007c0f9 2g>|G
+A 0007c101 Fl9(#
+A 0007c12d 0y;)@
+A 0007c1af &E3M:
+A 0007c1b5 ?t@y;
+A 0007c1cd 8g>g>y;i-L
+A 0007c1e3 $W0l9
+A 0007c1e9 <M:M:
+A 0007c205 <y;W0: 
+A 0007c217 "+/R5
+A 0007c21d 7M:_7i-
+A 0007c235 2~6l9_7v/(#
+A 0007c26b 7~6@8
+A 0007c2b9 1q4E3
+A 0007c2e9 (=,v/d2
+A 0007c307 2q4E3
+A 0007c33f 1v/B'-
+A 0007c3bf 2q4d2
+A 0007c3d9 0d2W00*
+A 0007c406 5%i-J.
+A 0007c411 3{*G"
+A 0007c445 1J.s#
+A 0007c473 081E3
+A 0007c493 2v/a&: 
+A 0007c4c3 1d2&4+/
+A 0007c4e1 281B'G"
+A 0007c531 1=,	$
+A 0007c561 3W0d2J.B'
+A 0007c5a8 WAVEfmt 
+A 0007c5c4 datat'
+A 0007c5cd $T$B'
+A 0007c5ed %H&H&
+A 0007c607 $(#T$
+A 0007c60d %T$Z#
+A 0007c61f %T$T$
+A 0007c671 &Z#H&
+A 0007c6e9 %B'B'
+A 0007c6f3 &t'T$
+A 0007c751 %T$H&Z#
+A 0007c75d #(#T$
+A 0007c789 $H&Z#
+A 0007c78f %H&B'
+A 0007c7d9 %Z#H&H&H&
+A 0007c809 #T$T$
+A 0007c811 #(#(#
+A 0007c81f #(#(#(#
+A 0007c8cb &T$T$
+A 0007c91f %T$T$(#
+A 0007c98b &H&H&
+A 0007ca13 %T$Z#
+A 0007ca8b %H&H&
+A 0007cab3 $T$Z#
+A 0007cb65 $H&(#
+A 0007cb6b #H&Z#
+A 0007cb97 %t'H&
+A 0007cbef &H&T$
+A 0007cc0b %(#T$
+A 0007cc31 #Z#Z#
+A 0007cc4d %n(n(t'B'
+A 0007cc57 &t'B'B'
+A 0007cca5 &B't'
+A 0007ccc7 $(#T$T$T$
+A 0007cd1d &T$t'
+A 0007cd45 %B't'
+A 0007cd8b %H&T$
+A 0007cd99 $T$B'
+A 0007ce5f %t'H&H&
+A 0007ce9f $(#t'H&H&
+A 0007cee7 #Z#T$
+A 0007cef3 $T$B'
+A 0007cf0f &B'H&
+A 0007cf73 %T$T$H&
+A 0007cf83 $T$Z#
+A 0007cf89 #T$T$
+A 0007cfff \V^BY
+A 0007d01b H4SBY
+A 0007d025 W^L>0
+A 0007d05f 9 NTV
+A 0007d06b ZDHn(
+A 0007d081 /VE:R
+A 0007d0cb Q"VBYBYNW
+A 0007d0eb CFP"V
+A 0007d0f1 UzXTV
+A 0007d10d =^L`TTVBY
+A 0007d153 @,L4S
+A 0007d1a3 R|Gv/D
+A 0007d1bd JxP:R
+A 0007d1c3 SrQ2K
+A 0007d207 Q:RLO
+A 0007d291 W|GZ<
+A 0007d2f5 [0\:R$E
+A 0007d319 \NW>I.;>0(#z
+A 0007d339 PBYNW
+A 0007d39b "v/<A
+A 0007d3a7 Hr8v/
+A 0007d3ed A&46)
+A 0007d403 #81z?2K
+A 0007d427 +~6bC
+A 0007d455 >d2t'
+A 0007d46b (v/Z<
+A 0007d491 5t@>I2K
+A 0007d4bb J"=|.
+A 0007d523 C.;J.Z#~
+A 0007d585 :H?bC<A
+A 0007d5af :J.f!d
+A 0007d5c9 7Z<z?
+A 0007d5d1 >d2H&&
+A 0007d60b /R5F7
+A 0007d617 8b*l 
+A 0007d637 <`;P-
+A 0007d655 7"=H?
+A 0007d671 )81@8Z<z?N>"=r8
+A 0007d6bd <N>Z<
+A 0007d6c3 <R5H&
+A 0007d6e5 :F70*
+A 0007d701 8.;"=
+A 0007d771 :X4H&
+A 0007d78f :`;.;~6P-
+A 0007d7d5 <N>.;@8\+
+A 0007d7fb <l9v/
+A 0007d81d <`;~6b*
+A 0007d859 *R5r8
+A 0007d8a5 :`;`;
+A 0007d8e9 8r8.;
+A 0007d8ef :4:81
+A 0007d90f :4:4:&4B'L
+A 0007d933 ;`;F7
+A 0007d959 9j1t'~
+A 0007d97b 9F7|.."
+A 0007d9bb 7r8.;l9~6J.
+A 0007da1e $,X4@8
+A 0007da6d 8l9r8
+A 0007da8b 6l94:
+A 0007daa9 !P-d2~6
+A 0007db7b $|.d2
+A 0007db81 6l9l9
+A 0007dbc5 3R5r8
+A 0007dc0b 4R5l9l9r8
+A 0007dc35 6r881b*
+A 0007dc59 5X4P-
+A 0007dc77 5@8F7@8,30*
+A 0007dcc3 6X4b*Z#R
+A 0007dcff ,,3d2~6~6
+A 0007dd47 3X4~6
+A 0007dd95 4X4P-
+A 0007ddad 'P-d2R5~6
+A 0007ddd1 ->0,3X4
+A 0007de43 3R5&4\+l ^
+A 0007de5b !n(v/81&4
+A 0007de67 4,3J.
+A 0007de7f &$,d2R5,3
+A 0007dea0 : 0*>0
+A 0007dead 3,3J.
+A 0007dec9 0&4X4
+A 0007def3 4R5>06)f!^
+A 0007df0b !n(|.81j1d2&4
+A 0007df33 1,3&4R5
+A 0007df3b 4d2P-T$
+A 0007df79 0d2&4
+A 0007df99 '\+v/d2
+A 0007dfc1 0d2j1
+A 0007dfc9 1J.n(
+A 0007dfde H&J.81
+A 0007e003 (|.d2
+A 0007e009 0,3,3
+A 0007e04f 2j1d2
+A 0007e0d9 /8181
+A 0007e11f -|.d2d2
+A 0007e141 +v/81
+A 0007e147 281d281\+
+A 0007e18d 2j181d2J.
+A 0007e1d5 2j181P-B'
+A 0007e215 )|.>0
+A 0007e21b /j181v/\+T$
+A 0007e23b ->0>0
+A 0007e243 /|.t': 
+A 0007e27d %b*|.v/
+A 0007e287 0>0>0
+A 0007e29f  B'$,
+A 0007e2a7 0>0j1d2
+A 0007e2af -B'f!
+A 0007e2e7 &$,J.v/j1
+A 0007e30b &\+P-
+A 0007e311 0|.J.
+A 0007e335 0>0j1
+A 0007e379 ,v/v/>0v/
+A 0007e39f /v/v/
+A 0007e3c7 -$,B'."@
+A 0007e3ed *t'Z#
+A 0007e400 (#6)$,|.
+A 0007e429 +v/P-J.|.
+A 0007e44b +J.v/|.
+A 0007e4df -J.P-\+B'
+A 0007e53f !H&0*
+A 0007e551 ((#l 
+A 0007e567 *$,$,
+A 0007e56d -P-P-
+A 0007e589 'b*\+
+A 0007e5ad *$,$,v/
+A 0007e5f9 ,|.|.
+A 0007e617 (b*$,$,
+A 0007e661 *6)b*
+A 0007e6a9 +P-$,
+A 0007e6b1 )n(T$
+A 0007e6d3 +b*t'
+A 0007e708 .": T$
+A 0007e72f !(#B'
+A 0007e73d *$,B'
+A 0007e79f )P-b*
+A 0007e7c5 (\+0*b*
+A 0007e7e5 &0*6)
+A 0007e7ed '6)6)
+A 0007e800 : f!(#n(
+A 0007e80f +\+0*
+A 0007e82f )\+\+
+A 0007e83d #."(#
+A 0007e845 !f!l l 
+A 0007e857 +b*0*
+A 0007e879 )6)6)
+A 0007e88f  l ."Z#
+A 0007e897 (t'n(
+A 0007e8ff #B't'6)0*B'
+A 0007e933 '(#T$
+A 0007e96d )n(6)
+A 0007e977 *6)B'
+A 0007e97f !f!: ."@
+A 0007e997 (0*B't'
+A 0007e9ab !f!."
+A 0007e9df (n(n(
+A 0007ea1f )n(6)6)
+A 0007ea4f )6)H&
+A 0007ea71 &B'T$
+A 0007ea9b $Z#f!Z#
+A 0007eaa5 #(#."H&
+A 0007eaad %B't'
+A 0007eac3 $."."(#
+A 0007eb23 &B'H&
+A 0007eb2f "(#."Z#(#
+A 0007eb41 &H&H&
+A 0007eb55 $Z#T$Z#
+A 0007eb97 $Z#(#Z#(#
+A 0007ebab &B'B'H&
+A 0007ebc3 #Z#Z#
+A 0007ebd9 &(#(#
+A 0007ebeb #T$T$
+A 0007ec0f &H&H&H&n(t'
+A 0007ec49 &Z#T$
+A 0007ec57 %B'B'
+A 0007ec65 (H&B'
+A 0007ec6f #B'B'(#
+A 0007ecc3 &T$H&
+A 0007eccb %H&B'
+A 0007ecdb &H&T$
+A 0007ecfd $T$T$t'
+A 0007ed1d &Z#T$."T$
+A 0007ee0b 0B0b0
+A 0007ee1f 1B1L1r1|1
+A 0007ee37 3/334J4a4
+A 0007ee57 6#7<7S7
+A 0007ee63 7F8a8
+A 0007ee71 9A:Q:a:s:
+A 0007ee85 ;0;F;
+A 0007ee91 <J<`<
+A 0007eec1 161<1Y1a1|1
+A 0007eed5 1 2.2<2c2
+A 0007eee7 3F3L3i3q3
+A 0007eef9 3	404>4L4s4
+A 0007ef13 6?6S6
+A 0007ef1d 6E7d7
+A 0007ef3b :B:V:
+A 0007ef43 ;";;;
+A 0007ef55 =&=w=
+A 0007ef6b ?!?Q?
+A 0007ef87 232`2
+A 0007ef9d 4A4n4
+A 0007efad 5$5A5l5
+A 0007efbf 5;6S6o6
+A 0007efcd 7Y7~7
+A 0007efdb 808X8n8
+A 0007efe9 989N9s9
+A 0007eff5 :+:P:f:
+A 0007effd :3;c;
+A 0007f00f <)=N=
+A 0007f02b >	?O?d?
+A 0007f04d 1a2o2
+A 0007f05f 3b4l4
+A 0007f067 4 535
+A 0007f093 1Q2s2
+A 0007f099 223f3
+A 0007f09f 464{4
+A 0007f0bb 8*898Q8v8
+A 0007f0c7 849m9
+A 0007f0d1 ;;;l;
+A 0007f10d 131D1
+A 0007f113 1Z2z2
+A 0007f11f 3S3o3
+A 0007f131 5/6t6
+A 0007f143 8 8.8
+A 0007f14d 8!9M9
+A 0007f15f ;4;a;
+A 0007f16b <7<e<
+A 0007f181 >3>c>
+A 0007f1a5 1C1u1
+A 0007f1bd 3:3w3
+A 0007f1dd 728f8/9F9
+A 0007f1f9 ;Q<\<
+A 0007f203 <D=f=
+A 0007f20b =K>u>
+A 0007f21d ?(?:?]?
+A 0007f22f 0O0j0y0
+A 0007f23f 0!111A1S1
+A 0007f249 1#2G2g2
+A 0007f25b 3/3Y3e3z3
+A 0007f26f 4%464A4K4Q4
+A 0007f287 5,5`5x5
+A 0007f295 5#6B6G6`6|6
+A 0007f2ad 7	7D7T7u7
+A 0007f2cd 8	9]9i9o9u9
+A 0007f2f9 <B=o=
+A 0007f301 >	?v?
+A 0007f32b 3*4C4
+A 0007f337 515;5
+A 0007f33f 5p6t6x6|6
+A 0007f34d 7#7l7D8
+A 0007f36b =W>g>
+A 0007f371 ?#?Z?
+A 0007f38d 0'090A0
+A 0007f39b 1#2:2
+A 0007f3c3 5	6g6
+A 0007f3c9 627A7Q7_7i7
+A 0007f3dd 8M8[8a8
+A 0007f3eb 9F9L9P9V9]9d9
+A 0007f40d :L:d:q:
+A 0007f423 ;!;s;
+A 0007f433 <A<Q<W<[<b<s<
+A 0007f443 <C=r=
+A 0007f451 >5>p>x>
+A 0007f45f ?0?X?n?
+A 0007f477 060H0_0h0
+A 0007f487 1C1}1
+A 0007f48d 1	2(2B2c2
+A 0007f49b 233q3~3
+A 0007f4b5 5Y5~5
+A 0007f4c5 5=6C6T6s6
+A 0007f4db 7,7K7^7
+A 0007f4e7 8#848C8Y8b8i8
+A 0007f4f9 8/9P9V9s9
+A 0007f505 9$:*:V:w:
+A 0007f52b =$=j=
+A 0007f537 =H>f>
+A 0007f569 3#4]4}4
+A 0007f571 4S5u5z5
+A 0007f587 6I6\6|6
+A 0007f597 7$717K7i7
+A 0007f5a3 7(8c8
+A 0007f5b1 9<:t:x:|:
+A 0007f5cb <9<B<c<
+A 0007f5d9 =B=K=X={=
+A 0007f5eb >&>C>x>~>
+A 0007f5f7 >5?s?
+A 0007f611 0%1p1
+A 0007f63d 9?:F:
+A 0007f64f :G;N;
+A 0007f665 =/=m=
+A 0007f66d =#>\>k>
+A 0007f677 >,?;?X?
+A 0007f697 0c1}1
+A 0007f69f 2,2m2
+A 0007f6ab 323<3b3l3
+A 0007f6bf 3"4,4Z4c4
+A 0007f6cf 5$5d5F6y6
+A 0007f6e9 8D8Y8z8
+A 0007f6f7 8;9D9
+A 0007f71b =>=F=
+A 0007f759 2,3@3u3
+A 0007f76b 314A4x4
+A 0007f787 5F5Z5
+A 0007f799 6C6_6v6
+A 0007f7af 9A:m:
+A 0007f7cb =C>v>
+A 0007f7e3 031j1
+A 0007f7ed 3;3z3I4w4S5
+A 0007f7fd 6C6Y6a6s6Y7
+A 0007f825 ;!<c<
+A 0007f831 =?=a=q=
+A 0007f845 >1>S>p>
+A 0007f853 ?G?q?
+A 0007f873 0b0z0
+A 0007f87d 021J1R1
+A 0007f88b 2"2s2
+A 0007f897 2A3Q3a3}3
+A 0007f8a5 3C4Z4s4
+A 0007f8af 435:5
+A 0007f8d5 7C7`7
+A 0007f8f5 ;';D;V;m;v;
+A 0007f90b ;9<?<
+A 0007f913 =9=z=
+A 0007f925 >&>->J>\>s>|>
+A 0007f95f 2!2S2
+A 0007f973 3&4;4q4
+A 0007f985 5:5I5a5
+A 0007f993 6(6>6b6
+A 0007f9a3 6 7(7J7Y7q7
+A 0007f9b3 8:8f8
+A 0007f9bf 9!9E9[9e9o9
+A 0007f9e1 ;*;C;h;
+A 0007f9ef ;"<)<X<d<o<
+A 0007fa07 >->A>I>n>
+A 0007fa15 ?.?C?P?j?t?
+A 0007fa6f 8"8E8W8q8z8
+A 0007fa85 9&:-:F:c:
+A 0007fa97 <V<m<
+A 0007faa1 <,=s=
+A 0007fad5 0=1C2j3
+A 0007fae9 3%4;4C4Y4s4
+A 0007faf7 5/5i5
+A 0007fb09 6,6u6|6
+A 0007fb17 607C7K7
+A 0007fb2b 8!8F8
+A 0007fb39 8?9f9
+A 0007fb5d ;T;];l;
+A 0007fb69 ;	<,<C<L<_<S=
+A 0007fb81 =6>^>
+A 0007fb9f 1:1x1
+A 0007fba7 1'272
+A 0007fbb3 2$303H3
+A 0007fbc1 3$404H4
+A 0007fbcf 4$505H5
+A 0007fbfd 888o8|8
+A 0007fc13 :5:::@:H:a:q:
+A 0007fc23 :!;1;A;S;
+A 0007fc31 <1<A<Q<c<
+A 0007fc3b <$=A=L=t=
+A 0007fc57 >!>>>
+A 0007fc65 ?L?R?v?
+A 0007fc7c .080A0W0]0p0x0
+A 0007fc93 2B2\2n2
+A 0007fcab 303J3Q3w3
+A 0007fcdb 526?6J6f6x6
+A 0007fcef 7!7,777@7I7n7
+A 0007fd13 9#:6:>:t:
+A 0007fd27 <i=o=
+A 0007fd49 >.?4?B?H?^?y?
+A 0007fd67 0)0/0T0
+A 0007fd7b 0/1K1`1p1
+A 0007fd93 292?2
+A 0007fdad 3)3/3
+A 0007fdc3 464Y4_4x4
+A 0007fdd5 5B5[5y5
+A 0007fde9 6)6/6v6
+A 0007fdfb 6$7^7d7r7x7
+A 0007fe0f 8!8@8Y8y8
+A 0007fe25 9)9/9v9
+A 0007fe37 9$:^:d:r:x:
+A 0007fe4b ;!;@;Y;y;
+A 0007fe61 <)</<v<
+A 0007fe73 <$=^=d=r=x=
+A 0007fe87 >!>@>Y>y>
+A 0007fe9d ?)?/?v?
+A 0007feb9 0#0:0V0t0
+A 0007fed9 232I2
+A 0007ff05 6'6,626:6?6E6[6f6}6
+A 0007ff25 7/787E7N7d7
+A 0007ff47 8?8O8X8a8k8}8
+A 0007ff67 9 9,969g9|9
+A 0007ff81 :8:A:H:V:_:d:n:x:
+A 0007ff9d ;G;f;
+A 0007ffad < <-<J<v<
+A 0007ffbf =,=N=b=k=
+A 0007ffcf >L>q>
+A 0007ffd9 >;?~?
+A 00080007 0#0)0/050;0A0G0M0T0X0\0`0d0h0l0p0t0x0|0
+A 00080043 1$2D2o2
+A 00080053 3 3>3K3T3a3u3~3
+A 0008006d 3%4B4
+A 00080077 5S5v5
+A 00080085 596?6I6T6f6t6
+A 0008009d 7'727;7U7e7l7z7
+A 000800b7 8#8E8O8Z8c8}8
+A 000800cd 9&9?9D9J9R9f9
+A 000800df :5:H:O:b:i:y:
+A 00080105 ;';1;A;Q;q;
+A 00080121 <,<?<X<e<
+A 00080133 <)=6=C=N=
+A 00080147 >8>T>r>
+A 00080157 ?&?D?L?P?T?X?\?`?d?h?l?p?
+A 00080180 !090>0D0N0S0[0c0z0
+A 00080193 01161<1Q1b1p1u1
+A 000801ab 2(292P2c2
+A 000801bf 2#3S3k3
+A 000801cf 4,4m4
+A 000801df 6A6h6
+A 000801eb 7/7K7
+A 000801f1 7J8w8
+A 000801ff 93:p:
+A 00080219 <	<)<`<f<
+A 00080229 =4=`=f=
+A 00080237 =,>X>|>
+A 00080241 ?3?M?U?
+A 00080269 2;2S2Y2
+A 00080285 4<5I5
+A 00080291 5!6,656a6
+A 000802a1 7C7Q7
+A 000802af 8.868
+A 000802bf 9/9R9W9\9
+A 000802d5 :4:J:{:
+A 000802e1 <'=4=
+A 000802e7 =W>]>
+A 00080305 1;1F1
+A 0008030f 1O2\2
+A 0008031d 3U465
+A 00080333 7=8c8
+A 0008033f 9u:&;
+A 0008034f =(=>=
+A 00080359 >*?Q?
+A 0008036d 0!1A1a1z1
+A 0008037f 212J2
+A 00080393 4?5c5#6k6
+A 000803bb :<;^;
+A 000803cd >K?}?
+A 000803f1 2A2s2
+A 000803f9 3$3U3v3
+A 00080403 3&4,4E4L4
+A 00080415 5,5S5
+A 00080421 696y6
+A 00080439 8(8?8H8s8
+A 0008044d 9/9E9c9
+A 0008045d 9&:/:
+A 0008046d ;%;.;Y;
+A 0008047f <-<6<
+A 00080487 =&=1===U=_=~=
+A 0008049b >G>k>
+A 000804bd 0_0k0
+A 000804df 4C5l5
+A 000804e9 5@6V6y6
+A 000804f1 6/7G7
+A 000804fd 8/878
+A 0008050d 8'909E9N9h9|9
+A 00080521 :%:g:
+A 0008054f =-=N=d=
+A 00080567 ?<?V?
+A 00080587 10181L1
+A 00080593 1#2K2P2W2^2e2l2
+A 000805b3 4?4Z4e4|4
+A 000805c7 5)5G5P5e5y5
+A 000805e5 5(6u7
+A 000805eb 898|8
+A 00080605 :@;l;
+A 00080615 =&=q=
+A 00080627 >Y?a?r?}?
+A 0008064f 0#0<0O0Z0l0w0
+A 00080673 1'1@1R1d1n1x1
+A 00080695 2*2<2N2X2b2j2|2
+A 000806b7 3&383B3L3T3f3p3
+A 000806d9 4"4,464>4P4Z4s4
+A 000806fd 5 5(5:5D5]5o5
+A 00080721 6$6.6G6Y6k6u6
+A 00080745 717C7U7_7i7q7
+A 00080767 8-8?8I8S8[8m8w8
+A 00080789 9)939=9E9W9a9z9
+A 000807ad :':/:A:K:d:v:
+A 000807d1 ;+;5;N;`;r;|;
+A 000807f5 <8<J<\<f<p<x<
+A 00080813 <	="=4=F=P=Z=b=t=~=
+A 00080839 >0>:>D>L>^>h>
+A 0008085b ?$?.?6?H?R?k?}?
+A 00080889 0 020<0U0g0y0
+A 000808a7 1%1A1I1e1m1
+A 000808c3 2!2=2E2a2i2
+A 000808e1 393A3V3m3
+A 000808fd 454=4Y4a4}4
+A 00080919 51595U5]5y5
+A 00080935 6*6<6Q6Y6u6}6
+A 00080951 7)717M7U7q7y7
+A 0008096b 8	8%8-8I8Q8m8u8
+A 0008098b 9#9b9
+A 00080993 97:1;
+A 0008099d <1=G=
+A 000809a7 =6>X>
+A 000809bc ,0[0c0h0
+A 000809cb 2!2q2
+A 000809d9 3!3@3e3k3
+A 000809ef 434P4m4
+A 00080a13 9/:F:a:
+A 00080a4b 0#1i1w1
+A 00080a5b 2 2&2?2E2V2[2f2t2
+A 00080a77 2H3`304=4N4w435u5
+A 00080a95 6!7s7
+A 00080a9b 7*8:8i8
+A 00080ab1 <1=D=b=z=
+A 00080ac1 =#>@>h>~>
+A 00080acf ? ?&?<?M?j?
+A 00080aed 0.0;0L0X0u0
+A 00080b01 1!1S1
+A 00080b11 2(2E2X2j2
+A 00080b23 3)464?4Y4
+A 00080b35 5*5C5[5`536
+A 00080b45 75:<:b:
+A 00080b51 :b;m;
+A 00080b69 ="=,=R=\=
+A 00080b98 ;0S0}0
+A 00080bcb 5#6?6V6s6
+A 00080bd9 7g8t8
+A 00080be7 9+9S9
+A 00080bfd :O:s:
+A 00080c0d ;);4;K;c;
+A 00080c1f <5<L<`<h<
+A 00080c35 =0===d=
+A 00080c3f >K>f>
+A 00080c69 0)040K0c0
+A 00080c7b 1!181L1T1{1
+A 00080c91 242B2p2}2
+A 00080ca7 5*505
+A 00080cbd 6D6s6
+A 00080cc9 7"8A8g8v8
+A 00080cd7 8#9c:
+A 00080ce1 ;#;K;
+A 00080cf3 <)=s=
+A 00080d1d 1 1$1X1h1
+A 00080d37 3 3V3
+A 00080d45 3$4(4,404{4
+A 00080d59 5X5\5`5d5s5
+A 00080d65 5y6#7Q7
+A 00080d81 8&9+9G9b9s9
+A 00080d97 :/:F:y:
+A 00080dab ;I;q;{;
+A 00080dbb ;"<8<s<
+A 00080dc3 <S=o=
+A 00080dc9 >$>Y>
+A 00080dd5 ?+?>?P?
+A 00080dfb 4I4O4m4|4
+A 00080e0b 4A5s5
+A 00080e15 5#6U6[6
+A 00080e21 7#7B7P7
+A 00080e29 7i8 9?9X9o9
+A 00080e3f 9F:T:m:
+A 00080e51 :	;(;?;H;p;
+A 00080e63 <><U<
+A 00080e77 =2=H=a=x=
+A 00080e95 313\3
+A 00080eb5 667d7
+A 00080ec9 =/=F=q=
+A 00080edb >d?s?
+A 00080ef3 0#1]1
+A 00080f01 2+3s3
+A 00080f09 4#5v5
+A 00080f13 646Y6
+A 00080f31 9,929?9V9s9
+A 00080f59 < <*<1<8<><J<P<c<w<
+A 00080f77 <"=B=b=l=
+A 00080f8b =">,>R>\>s>
+A 00080f97 >H?M?T?t?~?
+A 00080fb9 2(2/2b2i2s2{2
+A 00080fdb 4#5s5#6
+A 00080fe3 688?8X8z8
+A 00080ffb 9?9t9x9|9
+A 00081015 :9<Q<
+A 0008101f >B>G>
+A 00081027 >K?Q?Z?`?i?p?u?|?
+A 00081053 0 0)00050<0b0
+A 00081069 324i4
+A 00081075 717q7
+A 00081081 858s8
+A 00081089 9C9u9
+A 00081091 9$:Q:
+A 000810a7 =7=Q=
+A 000810af =2>`>~>
+A 000810bf ?e?y?
+A 000810d9 0`0w0
+A 000810e5 001E1Q1q1
+A 000810f5 2@2y2
+A 000810ff 2=3V3n3|3
+A 0008110d 4.4c4y4
+A 0008111b 5a5j5
+A 00081129 6^6i6u6
+A 00081137 7)757U7c7
+A 00081163 ;K=y=
+A 00081169 =T>a>
+A 0008117d 1#1S1^1S2p2Q4
+A 0008119b 7k7p7
+A 000811af 8!818[8`8q8
+A 000811c9 9!919S9
+A 000811d9 :+:4:Q:|:
+A 000811ed ;(;S;s;
+A 000811f7 <.<;<`<
+A 00081229 0#090
+A 00081231 0`1t1x1|1
+A 00081265 6$6J6\6
+A 0008126d 6 7M7
+A 00081295 9L9P9T9X9\9`9d9h9l9p9t9
+A 000812b1 :#:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00081323 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;@<D<H<L<P<T<
+A 00081371 8S8o8
+A 00081379 :@:h:t:
+A 00081383 :!;1<U<k<}<
+A 00081397 =M=s=
+A 000813a7 >5?a?q?
+A 000813c5 0-0Y0
+A 000813d1 0(1F1}1
+A 000813dd 2=2U2
+A 000813e7 293Z3k3
+A 00081403 4"454
+A 0008141f 626y6
+A 0008142d 7@7i7
+A 00081437 8+8s8
+A 00081441 9+9P9_9
+A 00081469 >b>h>
+A 00081477 >8?b?~?
+A 00081490  0(0J0Y0q0
+A 000814a1 181N1
+A 000814af 2 2N2g2
+A 000814bf 3\3`3d3h3l3
+A 000814e7 6g6p6u6{6
+A 000814f5 858q8
+A 000814ff 9<9v9
+A 00081525 =7=u=
+A 00081537 >0?:?|?
+A 0008154d 0*151
+A 00081557 212X2n2y2
+A 00081581 3	464?4W4a4}4
+A 00081597 5A5S5j5
+A 000815ad 536L6c6
+A 000815c1 697n7y7
+A 000815e1 :2;<;b;
+A 000815f5 <2<<<b<l<
+A 00081609 = =9=
+A 00081615 =)>/>>>W>u>
+A 00081629 ?'?-?H?
+A 00081640 "0(080X0s0
+A 0008164f 0)1/1>1a1i1z1
+A 00081667 2A2I2X2f2n2{2
+A 00081693 4:4v4
+A 0008169b 435O5l5
+A 000816a3 637H8
+A 000816bf =A=V=
+A 000816d5 >R?\?
+A 000816f0 "0,0R0\0
+A 0008170d 232=2P2|2
+A 0008171d 3Z3n3t3
+A 00081731 404L4o4
+A 0008173b 4C5h5
+A 00081749 6A6{6
+A 0008174f 6#7?7
+A 00081757 7!8/8M8
+A 00081767 :(;4;D;K;c;
+A 0008177f <!<-<c<
+A 00081795 =2=p=
+A 000817a5 >#>7>?>f>~>
+A 000817bd ?D?f?
+A 000817cd 0"0H0c0
+A 000817e1 161s1
+A 000817f5 2C2f2
+A 00081809 3P3d3
+A 0008181d 4F4^4d4j4
+A 0008182f 4$5F5z5
+A 00081839 6(6C6a6y6
+A 0008184d 757S7
+A 00081873 :4;?;v;
+A 000818a0 N0_0p0
+A 000818b9 203>3
+A 000818c1 3Y4r4
+A 000818e3 6I7h7
+A 000818e9 738b8
+A 000818f3 8C9z9
+A 000818fb :-:5:N:y:
+A 00081913 <I<j<
+A 0008191d <-=y=
+A 00081933 >M?s?
+A 00081955 6 7P7h7
+A 0008195f 8>8H8V8d8
+A 0008197d =	?t?y?
+A 000819b5 6H7v7{7(8,8084888<8@8S8
+A 000819cd 8D9H9L9P9T9X9\9
+A 000819e7 : :$:
+A 00081a21 1&111A1a1f1s1x1}1
+A 00081a3f 234t4
+A 00081a45 435	6
+A 00081a4b 7"7B7b7
+A 00081a5b 8"8B8b8
+A 00081aa1 <%<9<
+A 00081ab7 1G1l1
+A 00081abd 1V3y4
+A 00081af3 :X;];
+A 00081b03 5o52<
+A 00081b0f =K>Y>
+A 00081b29 :T;a<
+A 00081b6d 8 8$8(8,8
+A 00081b7d >N>S>
+A 00081b8b ?F?Q?c?i?
+A 00081bab 3^4q4
+A 00081bbb 5'505;5E5U5\5a5y5
+A 00081bd5 5!6=6J6k6
+A 00081bdf 6B7a7v7
+A 00081bf5 818h8n8t8z8
+A 00081c31 1,141S1
+A 00081c5b 3H3u3
+A 00081c69 4>4h4
+A 00081c75 5:5d5
+A 00081c81 666`6
+A 00081c97 838W8
+A 00081cd1 2-232S2b2h2
+A 00081ceb 3	3-3:3@3a5i5
+A 00081cfd 5,6f6
+A 00081d39 1'>>>E>
+A 00081d4f > >$>(>,>0>4>8><>@>
+A 00081d75 2 2$2
+A 00081d7d 9&9d9q9w9
+A 00081d8f :::Z:g:m:
+A 00081db3 =#>6>
+A 00081dc9 0T1:3
+A 00081dd5 8B8S8i8t8
+A 00081e0c .0=0J0R0i0o0
+A 00081e33 2&222x2
+A 00081e59 585]5
+A 00081e78 \2h2t2
+A 00081e95 708=8D8S8\8c8q8z8
+A 00081ead 9(:::
+A 00081ebf ;3=J=
+A 00081ed1 080P0c0j0
+A 00081edd 0B1W1
+A 00081ef7 3$3o3
+A 00081efd 4:4r4
+A 00081f07 445^5j5v5}5
+A 00081f1d 6D7j7
+A 00081f3d ;/;?;k;#<D<e<
+A 00081f51 =G=^=
+A 00081f65 ?;?u?
+A 00081f87 2+3s3
+A 00081f95 4F5s5
+A 00081f9f 6y6J7z7
+A 00081fb1 9Z9q9
+A 00081fb7 9":j:
+A 00081fbf :4;w;
+A 00081fd3 >+>Y>n>
+A 00082005 ;3=L=P=T=X=\=
+A 00082015 =0>6>
+A 00082047 5<5S5o5
+A 00082081 878R8p8
+A 0008208b 969<9_9
+A 00082097 9#:|:
+A 000820b0 L0^0v0
+A 000820c5 1)1A1V1k1
+A 000820df 272L2R2l2u2
+A 000820f9 3 3C3Y3o3
+A 0008210d 4 4T4|4
+A 00082117 5(5u5
+A 0008211f 6,6_6
+A 00082131 7^8~8
+A 00082139 809y9
+A 00082155 =X>s>
+A 00082183 3'4B4H4
+A 00082197 0,1F1R1g1
+A 000821bf : :&:,:2:8:>:D:J:P:V:\:b:h:n:t:z:
+A 00082215 ;";(;.;4;:;@;F;L;R;X;^;d;j;p;v;|;
+A 0008226b <$<*<0<6<<<B<H<N<T<Z<`<f<l<r<x<~<
+A 000822bf = =&=,=2=8=>=D=J=P=V=\=b=h=n=t=z=
+A 00082307 =">2>@>M>R>
+A 00082315 >6?;?
+A 00082349 1#1,1S1x1
+A 00082363 2"2(2.242:2@2F2L2R2X2^2d2j2p2
+A 0008238b 3 383@3V3]3g3
+A 000823b5 4]5u5
+A 000823e5 7"7(7.7W7
+A 000823f3 708J8b8
+A 00082403 9:9U9o9
+A 00082413 :):I:i:
+A 00082421 ;!;y;
+A 00082433 <T<Y<
+A 0008244f =+>I>a>q>
+A 00082465 >_?y?
+A 0008247d 090g0
+A 00082485 0	1)1I1i1
+A 00082493 1	2A2Q2
+A 0008249f 3,3A3i3
+A 000824b1 494Y4y4
+A 000824bf 5/5L5i5
+A 000824cf 6!616Q6i6
+A 000824dd 6	7,7T7y7
+A 000824f3 8)9K9l9
+A 00082501 9	:i:
+A 0008250b :,;w;
+A 00082515 ;	<)<I<q<
+A 00082529 =?=s=x=
+A 00082535 =!>a>|>
+A 00082543 >$?<?
+A 00082559 040I0l0
+A 00082569 111Q1q1
+A 00082577 2-292B2G2c2o2t2
+A 0008258d 2	3)3b3y3
+A 000825a5 5@5_5
+A 000825af 6A6w6
+A 000825bb 6	7)7I7i7
+A 000825c9 7)8I8i8
+A 000825d7 8	9!999
+A 000825e3 :!:Q:i:
+A 000825f3 ;I;i;
+A 000825fd ; <R<
+A 00082603 < =h=
+A 0008262f 0Q1z1
+A 00082639 1	2)2Y2y2
+A 00082649 3$3D3a3
+A 00082655 4X4y4
+A 00082661 5!5A5a5
+A 00082671 6)6Q6i6
+A 00082681 7)7Q7i7
+A 000826a5 9)9A9Q9
+A 000826b7 9):I:i:
+A 000826c9 ;0<`<
+A 000826d1 =)=I=
+A 000826db >)>I>
+A 000826f0 10L0a0y0
+A 000826fd 0.1u1
+A 00082705 2)2Q2
+A 0008270d 203y3
+A 00082717 4d4y4
+A 00082729 5)6i6
+A 00082731 6)7I7l7
+A 0008273f 8,9L9a9y9
+A 0008275d ;,<I<q<
+A 0008276d =)=A=d=q=
+A 0008277d =	>a>y>
+A 00082789 >	?6?K?X?
+A 000827a3 0T0v0
+A 000827af 1)1I1i1
+A 000827bf 2X2y2
+A 000827c9 2!3G3a3
+A 000827d9 4,4Y4|4
+A 000827e7 4A5i5
+A 000827f5 6,6R6X6y6
+A 00082803 7<7Y7y7
+A 00082811 7)8Y8
+A 0008281b 9@9i9
+A 00082823 9P:i:
+A 0008282f :	;);I;
+A 00082839 ;,<`<
+A 00082845 <	=)=I=i=
+A 00082859 >!>1>A>Q>a>q>
+A 0008286b >)?a?
+A 0008287c  0O0i0
+A 0008288d 1!292Y2y2
+A 000828a3 393d3|3
+A 000828af 3	414p4
+A 000828b7 445Y5y5
+A 000828c7 616Y6
+A 000828d3 6!797
+A 000828e1 8A8a8
+A 000828f1 8#9/989=9c9o9x9}9
+A 00082911 9#:/:8:=:c:o:x:}:
+A 0008292b :.;:;C;H;i;
+A 0008293f <)<y<
+A 0008294d =3=v={=
+A 0008295d >#>S>
+A 0008296f ?S?q?
+A 00082985 090Y0y0
+A 00082993 1,1W1l1
+A 000829a1 2I2i2
+A 000829cd 9 9$9(9,9094989@9D9H9L9P9T9X9\9`9d9h9l9p9x9|9
+A 00082a39 : :$:(:,:0:4:8:<:@:H:L:P:T:X:\:`:d:h:p:t:x:|:
+A 00082ab3 ; ;$;(;,;0;H;L;P;T;X;\;
+A 00082b17 < <$<(<0<4<8<<<@<`<d<h<l<p<x<|<
+A 00082b6d = =$=(=0=4=8=@=D=H=L=P=T=X=`=d=h=l=p=t=x=
+A 00082ba3 =(>,>0>4>8>@>D>H>L>P>X>\>`>d>h>l>p>t>x>|>
+A 00082c19 ? ?$?(?,?0?4?8?<?@?H?L?P?T?X?\?`?d?h?x?|?
+A 00082c8d 0p0x0|0
+A 00082cd3 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00082d39 2 2(2,2024282<2@2D2H2
+A 00082d93 3 3(3,3034383<3@3
+A 00082daf 3H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00082e19 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 00082e99 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00082eff 7 7$7(7,70787<7(848@8L8X8d8p8|8
+A 00082f33 8 808X8\8`<x<
+A 00082f55 =$=,=8=T=`=|=
+A 00082f71 >$>,>8>T>\>d>l>x>
+A 00082f9d ?0?D?P?l?x?
+A 00082fc3 0$000L0T0`0|0
+A 00082fe5 1$10181L1T1x1
+A 00083007 2@2T2\2p2|2
+A 00083027 3 3P3\3d3p3x3
+A 00083043 4 4(4X4l4x4
+A 0008305d 5$5,5@5L5`5l5
+A 0008308d 6$6,686T6`6|6
+A 000830a9 7(7D7P7l7t7
+A 000830cb 8,848<8D8L8X8t8
+A 000830e9 9 9<9D9L9T9\9h9
+A 0008310b :(:0:`:t:
+A 0008312f ; ;<;H;d;p;x;
+A 0008314f < <P<d<p<
+A 00083167 =,=8=T=`=|=
+A 00083181 >(>D>L>X>t>|>
+A 0008319d ?$?0?L?T?\?h?
+A 000831c5 000D0P0X0
+A 000831df 1(1D1L1T1`1|1
+A 000831ff 2 2<2D2L2X2t2|2
+A 00083225 3$3,343X3l3x3
+A 00083249 4$404L4T4\4d4l4x4
+A 00083269 545@5\5h5
+A 0008328d 6(6D6L6T6\6d6l6t6|6
+A 000832b9 7$7,787T7\7d7l7t7|7
+A 000832e1 8$8,888T8`8|8
+A 000832fd 9$90989L9T9x9
+A 0008331b :(:0:D:L:T:x:
+A 0008333b ;,;4;<;H;d;l;t;
+A 0008335b <,<4<<<D<L<T<`<|<
+A 0008337b =$=,=@=L=T=\=h=
+A 000833a1 >(><>H>d>l>t>|>
+A 000833c3 ?4?@?\?h?
+A 000833eb 0$000L0T0`0|0
+A 0008340b 1 1<1D1L1T1\1d1p1
+A 00083435 2 242@2\2d2l2x2
+A 00083455 3<3h3|3
+A 0008346b 4 4<4H4d4l4t4
+A 0008348b 5,585T5\5d5l5t5|5
+A 000834b5 646@6\6d6p6
+A 000834d7 747<7H7d7l7t7|7
+A 000834fb 8$808L8X8t8|8
+A 00083517 9(9D9P9l9t9
+A 00083539 :$:0:L:X:t:
+A 00083557 ;,;4;@;\;h;p;
+A 0008357d <4<@<\<d<l<t<|<
+A 000835ad =$=,=4=@=H=d=l=t=
+A 000835d5 >0><>@>D>H>T>\>h>
+A 000835fb ?$?@?T?\?p?|?
+A 0008362b 0,080T0\0d0l0x0
+A 0008364d 1,141@1H1\1l1t1|1
+A 00083671 2$2,242<2D2L2T2\2d2l2x2
+A 000836a1 3,343<3D3L3X3t3|3
+A 000836cb 4 4<4D4P4l4t4
+A 000836ef 5 5,545@5\5d5l5t5|5
+A 0008371b 646<6D6L6T6\6h6
+A 00083743 7$7,747H7T7\7h7p7
+A 00083769 8(848<8H8d8l8t8|8
+A 00083793 949@9\9h9
+A 000837b3 :,:8:T:\:d:l:x:
+A 000837cf ; ;<;D;P;l;t;
+A 000837f1 < <<<D<L<T<\<d<l<t<
+A 00083817 =,=4=<=H=d=l=x=
+A 0008383b >4><>H>d>l>t>
+A 0008385d ? ?<?D?P?l?x?
+A 00083883 0(0D0L0X0t0
+A 0008389f 1$101L1T1`1|1
+A 000838bf 2,242<2D2L2T2\2d2l2t2
+A 000838e3 3H3\3h3p3
+A 000838fb 4 4<4D4`4t4
+A 00083915 5,585@5p5
+A 00083935 6H6\6h6p6
+A 0008394b 7 7<7D7P7X7t7|7
+A 0008396d 8 8,848D8P8l8x8
+A 0008398f 9,949<9D9L9T9`9|9
+A 000839bb :$:,:4:@:\:d:p:
+A 000839e7 ;4;@;\;h;
+A 00083a0b <(<D<P<l<x<
+A 00083a33 =$=,=8=T=\=d=l=t=|=
+A 00083a69 >$>,>P>d>p>
+A 00083a89 ?$?,?8?T?`?|?
+A 00083ab3 0$000L0T0\0d0l0t0|0
+A 00083ae1 1$1,141<1D1P1l1t1|1
+A 00083b0d 242@2\2d2l2t2|2
+A 00083b37 3$3,343<3H3d3l3t3|3
+A 00083b65 4$4,444@4H4l4
+A 00083b87 5(5<5H5P5d5t5
+A 00083ba7 6 6(6D6L6T6\6d6l6t6|6
+A 00083bcd 7$7,747<7D7L7T7\7d7l7
+A 00083bf7 8$80888T8\8d8l8t8|8
+A 00083c1b 9 9(9<9D9L9T9d9l9t9|9
+A 00083c41 : :<:D:L:T:\:d:l:t:|:
+A 00083c6b ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 00083c97 <0<D<P<l<x<
+A 00083cb9 =(=D=L=T=\=d=p=
+A 00083ce3 >@>T>`>|>
+A 00083d05 ?4?<?D?L?T?\?d?l?t?|?
+A 00083d3f 0,080T0\0h0
+A 00083d5f 1$1,141P1d1p1
+A 00083d7d 242@2\2h2
+A 00083d9f 343<3D3L3X3t3
+A 00083dc1 4 4$4,444@4H4\4d4t4|4
+A 00083de7 5$505L5T5`5h5
+A 00083e0d 6$6D6L6T6\6d6
+A 00083e2b 7(7D7P7l7x7
+A 00083e47 8(8D8P8l8t8|8
+A 00083e63 9$9,989T9\9h9
+A 00083e83 : :<:H:d:p:
+A 00083e9f ; ;<;D;P;l;t;
+A 00083ec1 < <<<D<L<X<t<
+A 00083ee3 =(=D=P=l=x=
+A 00083f03 >4><>D>L>T>\>h>
+A 00083f21 ?$?0?L?T?`?|?
+A 00083f4b 0$000L0T0\0d0p0
+A 00083f73 1$101L1T1\1d1l1x1
+A 00083f9f 2 2<2H2d2l2t2
+A 00083fb9 3$303L3X3t3|3
+A 00083fd7 4,444<4D4L4T4\4d4l4t4|4
+A 00084007 545<5H5d5l5x5
+A 00084023 646@6\6h6
+A 0008403b 7$747D7P7l7t7|7
+A 00084057 8,888@8p8
+A 0008406d 8 949@9H9x9
+A 00084085 9(:<:H:P:
+A 000840a3 ;,;4;<;H;d;l;t;
+A 000840cf <$<,<4<@<\<d<p<
+A 000840f7 =$=,=4=<=D=P=l=x=
+A 00084125 >$>,>8>T>`>h>|>
+A 0008414b ?$?4?<?D?P?l?t?
+A 00084171 0 0<0H0d0p0
+A 0008418d 1 141X1l1x1
+A 000841a7 2$2,282T2`2|2
+A 000841cb 3$3,343<3D3L3T3\3d3l3t3|3
+A 000841ff 4(4D4L4T4\4h4
+A 00084219 5$545@5\5h5
+A 00084237 6(6D6L6T6`6|6
+A 00084259 7$707L7T7\7d7l7t7
+A 00084281 8$808L8X8t8|8
+A 000842a1 9 9<9D9P9l9t9
+A 000842c5 :$:,:4:<:`:t:
+A 000842e7 ;$;,;8;@;T;\;d;l;
+A 00084309 <,<<<L<X<`<t<|<
+A 00084327 = =<=H=d=p=x=
+A 00084347 >4><>H>d>l>x>
+A 00084363 ? ?<?D?L?T?\?d?l?x?
+A 00084399 0$0,0X0l0|0
+A 000843b9 1(1<1H1d1t1
+A 000843d7 1 242D2T2`2|2
+A 000843fb 3,3P3d3p3x3
+A 00084413 4$40484T4\4l4t4
+A 00084437 5 5<5H5d5l5x5
+A 00084453 6 6<6H6d6p6
+A 0008446f 747@7\7d7p7
+A 0008448d 8$808L8T8`8|8
+A 000844c5 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00084545 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00084593 3(3P3h3
+A 000845bb 4 4$4(4,4044484<4@4H4L4P4T4X4\4`4
+A 000845e7 8\9l9|9
+A 00084601 :,:<:L:\:l:|:
+A 00084621 ;,;<;L;\;l;|;
+A 00084641 <,<<<L<\<l<|<
+A 00084661 =,=<=L=\=l=|=
+A 00084681 >,><>L>\>l>|>
+A 000846a1 ?,?<?L?\?l?|?
+A 00084707 3,404
+A 00084713 6P7T7X7\7`7d7h7l7p7t7
+A 0008473c  ;$;(;,;0;4;8;<;@;D;H;L;
+U 0000edb7 jjjj
+U 0002295c jjjj
+U 0003750d jjjjjj
+U 00039132 jjjj
+U 00068af8  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+U 00068bf8  ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+U 00076628 \RES
+U 00076634 \RECOVER
+U 00076648 \TEMPLATE
+U 0007665c \BACKUP
+U 0007666c \FABRICS
+U 00076680 \MMGSAVE
+U 00076694 \ACCESSCODES
+U 000766b0 \MmgStat
+U 000766c4 \MmgStatRpt
+U 0007682c ERROR
+U 00076838 Could not open log file : %s
+U 00076994 C:\ESDUMP.DMP
+U 00076e38 %02d%02d%02u%02u
+U 0007721e _xxxxxxxxxxxx_SetToNow_MUTEX
+U 000777d4 .BAT
+U 000777e0 .COM
+U 000777ec .EXE
+U 0007b0d2 WAVE
+U 0007b0e6 VS_VERSION_INFO
+U 0007b142 StringFileInfo
+U 0007b166 040904b0
+U 0007b17e CompanyName
+U 0007b19e FileDescription
+U 0007b1c0 WESSYS DLL
+U 0007b1de FileVersion
+U 0007b1f8 1, 0, 0, 1
+U 0007b216 InternalName
+U 0007b230 WESSYS
+U 0007b246 LegalCopyright
+U 0007b264 Copyright © 1996,1997,1998
+U 0007b2a2 OriginalFilename
+U 0007b2c4 WESSYS.DLL
+U 0007b2e2 ProductName
+U 0007b2fc WESSYS Dynamic Link Library
+U 0007b33a ProductVersion
+U 0007b358 5, 0, 0, 1
+U 0007b376 VarFileInfo
+U 0007b396 Translation

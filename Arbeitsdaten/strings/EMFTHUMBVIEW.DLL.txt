@@ -1,0 +1,560 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001c0 .text
+A 000001e7 `.rdata
+A 0000020f @.data
+A 00000238 .rsrc
+A 0000025f @.reloc
+A 00000415 0tNVVV
+A 00000885 SVWj<
+A 00000c7c 90u'9p
+A 00001260 _^][Y
+A 0000132b D$ _^][Y
+A 00001349 _^][Y
+A 00001364 _^][Y
+A 00001376 _^][Y
+A 0000165a WVPQR
+A 00001ce6 uRFGHt
+A 00001f80 u"WVS
+A 000026eb _^][Y
+A 00002704 _^][Y
+A 00002807 _^][Y
+A 00002845 _^][Y
+A 00002be0 QSUVW3
+A 00002c95 _^][Y
+A 00002fb9 /;t$$u
+A 000030e2 HSUVWh
+A 00003150 f9|$F
+A 000035d5 																								
+A 000035ee 													
+A 000035fe 													
+A 0000360d 										
+A 00003618 					
+A 00003620 SUVWj
+A 00003bab SUVWP
+A 00003da5 QVWRP
+A 00003de5 VBWRU
+A 00003e16 WSVQj
+A 00003e69 D$(PWSUQ
+A 00003eb4 VPWSUQ
+A 00003efc D$8QVRh 
+A 00004184 tBjtj
+A 0000423a uRjtj
+A 00004438 _^][Y
+A 0000456a 8"uV@
+A 000046e2 D$ _^]
+A 000046f3 SUVWj
+A 00004ca9 WSUVj
+A 00004daf SUVW3
+A 00005063 SUVWj
+A 00005215 Iu1Sj
+A 000052cb It	Iu
+A 000056da L$ _^]+
+A 0000595f L$ UQSRP
+A 00005dfb t!EUS
+A 00006126 1_^][
+A 0000629b SVWPQ
+A 00006807 VPj1Sj
+A 0000681b Qj2Sj
+A 0000682e Rj3Sj
+A 00006841 Pj4Sj
+A 00006854 Qj5Sj
+A 00006867 Rj6Sj
+A 00006877 Wj7Sj
+A 00006888 G Pj*Sj
+A 0000689d Qj+Sj
+A 000068b0 Rj,Sj
+A 000068c1 G,Pj-Sj
+A 000068d6 Qj.Sj
+A 000068e9 Rj/Sj
+A 000068fc Pj0Sj
+A 0000690f QjDSj
+A 00006922 RjESj
+A 00006933 G@PjFSj
+A 00006948 QjGSj
+A 0000695b RjHSj
+A 0000696c GLPjISj
+A 00006981 QjJSj
+A 00006994 RjKSj
+A 000069a5 GXPjLSj
+A 000069ba QjMSj
+A 000069cd RjNSj
+A 000069de GdPjOSj
+A 000069f3 Qj8Sj
+A 00006a06 Rj9Sj
+A 00006a17 GpPj:Sj
+A 00006a2c Qj;Sj
+A 00006a3f Rj<Sj
+A 00006a50 G|Pj=Sj
+A 00006a68 Qj>Sj
+A 00006a7e Rj?Sj
+A 00006a94 Pj@Sj
+A 00006aaa QjASj
+A 00006ac0 RjBSj
+A 00006ad6 PjCSj
+A 00006aec Qj(Sj
+A 00006b02 Rj)Sj
+A 00006b2e Qj Uj
+A 00006dad Pj#Wj
+A 00006dd1 Qj%Wj
+A 00007217 S RjPVj
+A 0000722a C$PjQVj
+A 00007263 C*PjTVj
+A 00007278 QjUVj
+A 0000728b RjVVj
+A 0000729c C-PjWVj
+A 000072b1 QjRVj
+A 000072c4 SjSVj
+A 00007397  SUVW3
+A 00007756 PPPPPPPP
+A 000077d6 PPPPPPPP
+A 00007883 _^][Y
+A 000078b0 T$(SSSSWQh 
+A 000078cd _^][Y
+A 000078e6 _^][Y
+A 000078f8 VUWPh 
+A 00007960 T$$WSR
+A 0000798e _^][Y
+A 000079fd L$ RQP
+A 00007a05 _^][Y
+A 00007a3b U@RPS
+A 00007a61 VWUQj
+A 00007a73 T$$RP
+A 00007a79 D$ WP
+A 00007a91 _^][Y
+A 00007aa6 _^][Y
+A 00008019 D$HUV
+A 00008385 L$,u	
+A 00008551 D$TRVP
+A 00008640 T$DQPR
+A 00008986 L$ PQF
+A 00008a65 T$ QR
+A 00008a94 KK<5|1;
+A 00008ab0 D$HCf
+A 00008b89 zuTVVVSU
+A 00008e60 FGQPS
+A 00008f34 T$(SUVf
+A 00008fa7 *_^][
+A 00008ffd *_^][
+A 000090a7 l$0u)
+A 0000912f f9|$(w
+A 00009149 9D$*u,9D$.
+A 0000934d T$$PPj
+A 0000937a D$ Pj
+A 000094b5 T$,PQj
+A 00009b88 ProgID
+A 00009b90 VersionIndependentProgID
+A 00009bb0 LocalServer32
+A 00009bc0 InprocServer32
+A 00009bd0 ThreadingModel
+A 00009be0 AUTPRX32.DLL
+A 00009bf0 Apartment
+A 00009c6f ?IsProcessorFeaturePresent
+A 00009c8c KERNEL32
+A 00009ca0 e+000
+A 00009ca8 LC_TIME
+A 00009cb0 LC_NUMERIC
+A 00009cbc LC_MONETARY
+A 00009cc8 LC_CTYPE
+A 00009cd4 LC_COLLATE
+A 00009ce0 LC_ALL
+A 00009cf4 runtime error 
+A 00009d08 TLOSS error
+A 00009d18 SING error
+A 00009d28 DOMAIN error
+A 00009d38 R6028
+A 00009d3f - unable to initialize heap
+A 00009d60 R6027
+A 00009d67 - not enough space for lowio initialization
+A 00009d98 R6026
+A 00009d9f - not enough space for stdio initialization
+A 00009dd0 R6025
+A 00009dd7 - pure virtual function call
+A 00009df8 R6024
+A 00009dff - not enough space for _onexit/atexit table
+A 00009e30 R6019
+A 00009e37 - unable to open console device
+A 00009e5c R6018
+A 00009e63 - unexpected heap error
+A 00009e80 R6017
+A 00009e87 - unexpected multithread lock error
+A 00009eb0 R6016
+A 00009eb7 - not enough space for thread data
+A 00009ede abnormal program termination
+A 00009f00 R6009
+A 00009f07 - not enough space for environment
+A 00009f2c R6008
+A 00009f33 - not enough space for arguments
+A 00009f58 R6002
+A 00009f5f - floating point not loaded
+A 00009f80 Microsoft Visual C++ Runtime Library
+A 00009fac Runtime Error!
+A 00009fbc Program: 
+A 00009fcc <program name unknown>
+A 00009fe4 Paraguay
+A 00009ff0 Uruguay
+A 00009ff8 Chile
+A 0000a000 Ecuador
+A 0000a008 Argentina
+A 0000a01c Colombia
+A 0000a028 Venezuela
+A 0000a034 Dominican Republic
+A 0000a048 South Africa
+A 0000a058 Panama
+A 0000a060 Luxembourg
+A 0000a06c Costa Rica
+A 0000a078 Switzerland
+A 0000a084 Guatemala
+A 0000a090 Canada
+A 0000a098 Spanish - Modern Sort
+A 0000a0b0 Australia
+A 0000a0bc English
+A 0000a0c4 Austria
+A 0000a0cc German
+A 0000a0d4 Belgium
+A 0000a0dc Mexico
+A 0000a0e4 Spanish
+A 0000a0ec Basque
+A 0000a0f4 Sweden
+A 0000a0fc Swedish
+A 0000a104 Iceland
+A 0000a10c Icelandic
+A 0000a118 France
+A 0000a120 French
+A 0000a128 Finland
+A 0000a130 Finnish
+A 0000a138 Spain
+A 0000a140 Spanish - Traditional Sort
+A 0000a15c united-states
+A 0000a16c united-kingdom
+A 0000a17c trinidad & tobago
+A 0000a190 south-korea
+A 0000a19c south-africa
+A 0000a1ac south korea
+A 0000a1b8 south africa
+A 0000a1c8 slovak
+A 0000a1d0 puerto-rico
+A 0000a1dc pr-china
+A 0000a1e8 pr china
+A 0000a1f8 new-zealand
+A 0000a204 hong-kong
+A 0000a210 holland
+A 0000a218 great britain
+A 0000a228 england
+A 0000a230 czech
+A 0000a238 china
+A 0000a240 britain
+A 0000a248 america
+A 0000a25c swiss
+A 0000a264 swedish-finland
+A 0000a274 spanish-venezuela
+A 0000a288 spanish-uruguay
+A 0000a298 spanish-puerto rico
+A 0000a2ac spanish-peru
+A 0000a2bc spanish-paraguay
+A 0000a2d0 spanish-panama
+A 0000a2e0 spanish-nicaragua
+A 0000a2f4 spanish-modern
+A 0000a304 spanish-mexican
+A 0000a314 spanish-honduras
+A 0000a328 spanish-guatemala
+A 0000a33c spanish-el salvador
+A 0000a350 spanish-ecuador
+A 0000a360 spanish-dominican republic
+A 0000a37c spanish-costa rica
+A 0000a390 spanish-colombia
+A 0000a3a4 spanish-chile
+A 0000a3b4 spanish-bolivia
+A 0000a3c4 spanish-argentina
+A 0000a3d8 portuguese-brazilian
+A 0000a3f0 norwegian-nynorsk
+A 0000a404 norwegian-bokmal
+A 0000a418 norwegian
+A 0000a424 italian-swiss
+A 0000a434 irish-english
+A 0000a444 german-swiss
+A 0000a454 german-luxembourg
+A 0000a468 german-lichtenstein
+A 0000a47c german-austrian
+A 0000a48c french-swiss
+A 0000a49c french-luxembourg
+A 0000a4b0 french-canadian
+A 0000a4c0 french-belgian
+A 0000a4d0 english-usa
+A 0000a4dc english-us
+A 0000a4e8 english-uk
+A 0000a4f4 english-trinidad y tobago
+A 0000a510 english-south africa
+A 0000a528 english-nz
+A 0000a534 english-jamaica
+A 0000a544 english-ire
+A 0000a550 english-caribbean
+A 0000a564 english-can
+A 0000a570 english-belize
+A 0000a580 english-aus
+A 0000a58c english-american
+A 0000a5a0 dutch-belgian
+A 0000a5b0 chinese-traditional
+A 0000a5c4 chinese-singapore
+A 0000a5d8 chinese-simplified
+A 0000a5ec chinese-hongkong
+A 0000a600 chinese
+A 0000a610 canadian
+A 0000a61c belgian
+A 0000a624 australian
+A 0000a630 american-english
+A 0000a644 american english
+A 0000a658 american
+A 0000a664 GetLastActivePopup
+A 0000a678 GetActiveWindow
+A 0000a688 MessageBoxA
+A 0000a694 user32.dll
+A 0000a6a0 1#QNAN
+A 0000a6a8 1#INF
+A 0000a6b0 1#IND
+A 0000a6b8 1#SNAN
+A 0000a6c0 H:mm:ss
+A 0000a6c8 dddd, MMMM dd, yyyy
+A 0000a6dc M/d/yy
+A 0000a6ec December
+A 0000a6f8 November
+A 0000a704 October
+A 0000a70c September
+A 0000a718 August
+A 0000a730 April
+A 0000a738 March
+A 0000a740 February
+A 0000a74c January
+A 0000a784 Saturday
+A 0000a790 Friday
+A 0000a798 Thursday
+A 0000a7a4 Wednesday
+A 0000a7b0 Tuesday
+A 0000a7b8 Monday
+A 0000a7c0 Sunday
+A 0000a7e8 SunMonTueWedThuFriSat
+A 0000a800 JanFebMarAprMayJunJulAugSepOctNovDec
+A 0000a9e2 WideCharToMultiByte
+A 0000a9f8 DisableThreadLibraryCalls
+A 0000aa14 InitializeCriticalSection
+A 0000aa30 DeleteCriticalSection
+A 0000aa48 LeaveCriticalSection
+A 0000aa60 InterlockedIncrement
+A 0000aa78 EnterCriticalSection
+A 0000aa90 InterlockedDecrement
+A 0000aaa8 MultiByteToWideChar
+A 0000aabe GetCurrentThreadId
+A 0000aad4 GetModuleHandleA
+A 0000aae8 GetModuleFileNameA
+A 0000aafe GetLastError
+A 0000ab0e GetCurrentProcess
+A 0000ab22 CloseHandle
+A 0000ab2e KERNEL32.dll
+A 0000ab3e FillRect
+A 0000ab48 USER32.dll
+A 0000ab56 DeleteEnhMetaFile
+A 0000ab6a DeleteDC
+A 0000ab76 PlayEnhMetaFile
+A 0000ab88 CreateSolidBrush
+A 0000ab9c SelectObject
+A 0000abac CreateCompatibleDC
+A 0000abc2 CreateBitmap
+A 0000abd2 SetWinMetaFileBits
+A 0000abe8 GetEnhMetaFileA
+A 0000abf8 GDI32.dll
+A 0000ac02 ADVAPI32.dll
+A 0000ac10 ole32.dll
+A 0000ac1a OLEAUT32.dll
+A 0000ac28 ATL.DLL
+A 0000ac32 HeapAlloc
+A 0000ac3e HeapFree
+A 0000ac4a GetCommandLineA
+A 0000ac5c GetVersion
+A 0000ac6a HeapDestroy
+A 0000ac78 HeapCreate
+A 0000ac86 VirtualFree
+A 0000ac94 ExitProcess
+A 0000aca2 VirtualAlloc
+A 0000acb2 ReadFile
+A 0000acbe SetHandleCount
+A 0000acd0 GetStdHandle
+A 0000ace0 GetFileType
+A 0000acee GetStartupInfoA
+A 0000ad00 SetFilePointer
+A 0000ad12 GetProcAddress
+A 0000ad24 LCMapStringA
+A 0000ad34 LCMapStringW
+A 0000ad44 TerminateProcess
+A 0000ad58 TlsSetValue
+A 0000ad66 TlsAlloc
+A 0000ad72 TlsFree
+A 0000ad7c SetLastError
+A 0000ad8c TlsGetValue
+A 0000ad9a GetCPInfo
+A 0000ada6 GetACP
+A 0000adb0 GetOEMCP
+A 0000adbc FreeEnvironmentStringsA
+A 0000add6 FreeEnvironmentStringsW
+A 0000adf0 GetEnvironmentStrings
+A 0000ae08 GetEnvironmentStringsW
+A 0000ae22 WriteFile
+A 0000ae2e SetStdHandle
+A 0000ae3e FlushFileBuffers
+A 0000ae52 CreateFileA
+A 0000ae60 GetLocaleInfoA
+A 0000ae72 GetStringTypeA
+A 0000ae84 GetStringTypeW
+A 0000ae96 LoadLibraryA
+A 0000aea6 SetEndOfFile
+A 0000aeb6 GetLocaleInfoW
+A 0000af20 EMFThumbView.DLL
+A 0000af31 DllCanUnloadNow
+A 0000af41 DllGetClassObject
+A 0000af53 DllRegisterServer
+A 0000af65 DllUnregisterServer
+A 0000e69e z?aUY
+A 0000e6e0 zc%C1
+A 0000e733 -64OS
+A 0000ec69 	EMFThmShlExt.EMFThmShlExt.1 = s 'EMFThmShlExt Class'
+A 0000eca4 		CLSID = s '{29FD36E7-3761-48C4-9710-59C69EA74AFB}'
+A 0000ecde 	EMFThmShlExt.EMFThmShlExt = s 'EMFThmShlExt Class'
+A 0000ed17 		CurVer = s 'EMFThmShlExt.EMFThmShlExt.1'
+A 0000ed47 	NoRemove CLSID
+A 0000ed5c 		ForceRemove {29FD36E7-3761-48C4-9710-59C69EA74AFB} = s 'EMFThmShlExt Class'
+A 0000edb0 			ProgID = s 'EMFThmShlExt.EMFThmShlExt.1'
+A 0000eddd 			VersionIndependentProgID = s 'EMFThmShlExt.EMFThmShlExt'
+A 0000ee1a 			ForceRemove 'Programmable'
+A 0000ee39 			InprocServer32 = s '%MODULE%'
+A 0000ee61 				val ThreadingModel = s 'Apartment'
+A 0000ee9a 	'.emf'
+A 0000eea7 		'ShellEx'
+A 0000eeb9 			'{BB2E617C-0920-11d1-9A0B-00C04FC2D6C1}' = s '{29FD36E7-3761-48C4-9710-59C69EA74AFB}'
+A 0000ef1e 	'.wmf'
+A 0000ef2b 		'ShellEx'
+A 0000ef3d 			'{BB2E617C-0920-11d1-9A0B-00C04FC2D6C1}' = s '{29FD36E7-3761-48C4-9710-59C69EA74AFB}'
+A 0000f2de stdole2.tlbWWW
+A 0000f4f8 EMFTHUMBVIEWLibW
+A 0000f514 EMFThmShlExtd
+A 0000f52c IEMFThmShlExtWWW
+A 0000f53e EMFThumbView 1.0 Type LibraryW
+A 0000f55e EMFThmShlExt Class
+A 0000f572 IEMFThmShlExt InterfaceWWW
+A 0000f609 0u0~0
+A 0000f61d 2;2I2P2Y2
+A 0000f639 4-4=4X4i4v4
+A 0000f647 5 515[5a5s5|5
+A 0000f661 6#6*606x6
+A 0000f66d 637>7D7P7V7]7d7q7
+A 0000f68f 8"8/8
+A 0000f6a7 9>:D:
+A 0000f6ad :N;V;^;j;p;v;|;
+A 0000f6ef 3A3_3e3j3p3y3
+A 0000f719 6%6,6064686<6@6D6H6
+A 0000f739 70777<7@7D7a7
+A 0000f759 7*8084888<8
+A 0000f771 :):/:H:M:X:]:
+A 0000f797 <"<3<:<T<Y<r<y<
+A 0000f7c5 =(=J=w=
+A 0000f7df >B>W>^>e>
+A 0000f7f5 >*?1?;???D?N?R?[?a?j?
+A 0000f81b 0B0H0S0Y0r0y0
+A 0000f831 0F1e1v1
+A 0000f845 3#3t3
+A 0000f85b 8 8e8w8
+A 0000f869 9=:D:
+A 0000f875 ;O<\<
+A 0000f87f =4=L=
+A 0000f88f =">:>Z>b>
+A 0000f8a1 >D?Q?o?
+A 0000f8b3 0:0`0
+A 0000f8bb 0w1}1
+A 0000f8d3 102D2]2w2
+A 0000f8e7 2V3q3w3
+A 0000f907 9*979M9h9
+A 0000f917 :=:s:
+A 0000f929 <!<.<3<y<
+A 0000f95d >$>+>2>P>X>k>{>
+A 0000f971 >(?A?J?S?
+A 0000f989 0*0K0S0Y0_0c0m0
+A 0000f9a5 3V3g3u3
+A 0000f9bf 4$4)4.454x4
+A 0000f9e1 5&555?5J5T5^5d5
+A 0000fa1b 6*727?7L7U7b7j7
+A 0000fa47 8"9D9a9p9
+A 0000fa5f :e:z:
+A 0000fa69 :.;B;K;g;
+A 0000fa87 <4<F<
+A 0000fa93 <7=\=n=t=
+A 0000faa5 >1>E>
+A 0000fab1 >&?<?
+A 0000facd 0(0`0j0
+A 0000fadf 3,3A3L3
+A 0000fae7 344;4
+A 0000faed 4i5w5
+A 0000fb03 79=Y=
+A 0000fb11 00070?0D0H0L0u0
+A 0000fb33 0"1(1,10141
+A 0000fb4f 2M2T2X2\2`2d2h2l2p2
+A 0000fb6b 213}3
+A 0000fb93 ;%;7;=;C;P;W;e;w;
+A 0000fbc1 </<:<W<c<x<
+A 0000fbdb =!=3=<=D=M=U=[=b=f=q=
+A 0000fc08 H0T0v0
+A 0000fc0f 1l1r1z1
+A 0000fc23 2%272=2
+A 0000fc2d 4.4I4R4d4
+A 0000fc3b 5(5F5
+A 0000fc4b 5"6B6j6
+A 0000fc5b 7Y7j7
+A 0000fc79 8,8?8G8m8{8
+A 0000fc91 =B=I=c=
+A 0000fc9d =&>->V>|>
+A 0000fcb9 0L0h0p2t2x2|2
+A 0000fceb 3D3H3L3P3T3P4]4g4
+A 0000fd0b 7J8d8l8
+A 0000fd17 869<9J9
+A 0000fd21 9$:*:8:
+A 0000fd3b ?<?Z?
+A 0000fd54 +0C0o0
+A 0000fd68 @1D1H1L1P1X1\1`1d1h1l1p1t1x1
+A 0000fda1 2 2$2(2024282<2@2D2H2L2P2X2\2`2d2h2l2p2x2|2
+A 0000fdfb 3 3$3(3,30383<3@3D3H3L3P3X3\3`3
+A 0000fe29 00040H0L0P0T0`0
+A 0000fe47 0h1l1p1t1
+A 0000fe59 1 3$3(3,30343@3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0000fea7 8$8,848<8@8H8
+A 0000febf ; ;(;0;8;@;H;P;X;`;h;p;x;
+A 0000feff < <(<0<8<@<H<P<X<`<h<p<x<
+A 0000ff3f = =(=0=8=@=H=P=X=`=h=p=x=
+A 0000ff6b >,>4>X>`>
+A 0000ff83 ?4?<?`?h?
+A 0000ffa3 0<0D0h0p0
+A 0000ffb9 1 1D1L1p1x1
+A 0000ffcf 1 2(2L2T2
+A 0000ffeb 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+U 0000617d $jjjj
+U 000061bd $jjjj
+U 0000d4a2          (((((                  H
+U 0000e932 REGISTRY
+U 0000e944 TYPELIB
+U 0000e966 VS_VERSION_INFO
+U 0000e9c2 StringFileInfo
+U 0000e9e6 040904B0
+U 0000e9fe CompanyName
+U 0000ea1e FileDescription
+U 0000ea40 EMFThumbView Module
+U 0000ea6e FileVersion
+U 0000ea88 1, 0, 0, 1
+U 0000eaa6 InternalName
+U 0000eac0 EMFTHUMBVIEW
+U 0000eae2 LegalCopyright
+U 0000eb00 Copyright 1997
+U 0000eb26 OriginalFilename
+U 0000eb48 EMFTHUMBVIEW.DLL
+U 0000eb72 ProductName
+U 0000eb8c EMFThumbView Module
+U 0000ebba ProductVersion
+U 0000ebd8 1, 0, 0, 1
+U 0000ebf6 OLESelfRegister
+U 0000ec1e VarFileInfo
+U 0000ec3e Translation
+U 0000f59a EMFThumbView

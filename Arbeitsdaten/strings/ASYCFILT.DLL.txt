@@ -1,0 +1,1045 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.data
+A 00000208 .rsrc
+A 0000022f @.reloc
+A 000021e5 A<e A<epB<e
+A 00002205 B<epB<e0?<e`C<e
+A 00002219 C<e@C<ePC<e
+A 00002231 F<e0?<e
+A 00002239 C<e0?<e
+A 00002242 =epF<e
+A 00002249 F<e0?<e
+A 00002251 C<eP?<e@?<e0?<e
+A 00002269 ?<ep?<e
+A 0000227d @<e ><e
+A 00002285 C<e0D<e
+A 0000238d A<e A<epB<e
+A 000023ad B<epB<e0?<e`C<e
+A 000023c1 C<e@C<ePC<e
+A 000023d9 F<e0?<e
+A 000023e1 C<e0?<epg<epF<e
+A 000023f1 F<e0?<e
+A 000023f9 C<eP?<e@?<e0?<e
+A 00002411 ?<ep?<e
+A 00002431 `<e`j<e`J<e
+A 00002444 BM<eHM<e
+A 00002475 A<e A<epB<e
+A 00002495 B<epB<e0?<e`C<e
+A 000024a9 C<e@C<ePC<e
+A 000024c1 F<e0?<e
+A 000024c9 C<e0?<e
+A 000024d1 o<epF<e
+A 000024d9 F<e0?<e
+A 000024e5 j<e@?<e0?<e
+A 000024f9 ?<ep?<e
+A 0000250d @<e@h<e
+A 00002515 C<e0D<e
+A 00002609 @Qm6t
+A 000028cc %&'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+A 0000298f &'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+A 00003067 FIsTNT
+A 00003070 kernel32.dll
+A 0000308c (Press Retry to debug the application - JIT must be enabled)
+A 000030cc For information on how your program can cause an assertion
+A 00003107 failure, see the Visual C++ documentation on asserts
+A 0000313c Microsoft Visual C++ Runtime Library
+A 00003164 Expression: 
+A 00003174 Line: 
+A 0000317c File: 
+A 00003184 <program name unknown>
+A 0000319c Program: 
+A 000031a8 Assertion failed!
+A 000031bc runtime error 
+A 000031d0 TLOSS error
+A 000031e0 SING error
+A 000031f0 DOMAIN error
+A 00003200 R6028
+A 00003207 - unable to initialize heap
+A 00003228 R6027
+A 0000322f - not enough space for lowio initialization
+A 00003260 R6026
+A 00003267 - not enough space for stdio initialization
+A 00003298 R6025
+A 0000329f - pure virtual function call
+A 000032c0 R6024
+A 000032c7 - not enough space for _onexit/atexit table
+A 000032f8 R6019
+A 000032ff - unable to open console device
+A 00003324 R6018
+A 0000332b - unexpected heap error
+A 00003348 R6017
+A 0000334f - unexpected multithread lock error
+A 00003378 R6016
+A 0000337f - not enough space for thread data
+A 000033a6 abnormal program termination
+A 000033c8 R6009
+A 000033cf - not enough space for environment
+A 000033f4 R6008
+A 000033fb - not enough space for arguments
+A 00003420 R6002
+A 00003427 - floating point not loaded
+A 00003448 Runtime Error!
+A 00003458 Program: 
+A 00003464 GetLastActivePopup
+A 00003478 GetActiveWindow
+A 00003488 MessageBoxA
+A 00003494 user32.dll
+A 000034a4 L5=e`5=e
+A 000034b7 ?IsProcessorFeaturePresent
+A 000034d4 KERNEL32
+A 000034e8 e+000
+A 00003511  (8PX
+A 00003519 700WP
+A 00003529 `h````
+A 00003531 ppxxxx
+A 0000355c (null)
+A 0000356c LC_TIME
+A 00003574 LC_NUMERIC
+A 00003580 LC_MONETARY
+A 0000358c LC_CTYPE
+A 00003598 LC_COLLATE
+A 000035a4 LC_ALL
+A 000035b0 1#QNAN
+A 000035b8 1#INF
+A 000035c0 1#IND
+A 000035c8 1#SNAN
+A 000035d0 united-states
+A 000035e0 united-kingdom
+A 000035f0 united states
+A 00003600 united kingdom
+A 00003614 turkey
+A 00003620 taiwan
+A 00003628 switzerland
+A 00003634 sweden
+A 00003644 spain
+A 0000364c south-korea
+A 00003658 south korea
+A 00003668 singapore
+A 00003674 russia
+A 00003680 pr-china
+A 0000368c pr china
+A 00003698 portugal
+A 000036a4 poland
+A 000036b8 norway
+A 000036c0 new-zealand
+A 000036cc new zealand
+A 000036d8 netherlands
+A 000036e4 mexico
+A 000036f0 korea
+A 000036f8 japan
+A 00003700 italy
+A 0000370c ireland
+A 00003714 iceland
+A 0000371c hungary
+A 00003724 hong-kong
+A 00003730 hong kong
+A 0000373c holland
+A 00003748 greece
+A 00003750 great britain
+A 00003764 germany
+A 00003770 france
+A 00003778 finland
+A 00003780 england
+A 0000378c denmark
+A 0000379c china
+A 000037a8 canada
+A 000037b4 britain
+A 000037bc brazil
+A 000037c8 belgium
+A 000037d8 austria
+A 000037e0 australia
+A 000037f0 america
+A 00003804 turkish
+A 00003810 swiss
+A 00003818 swedish
+A 00003824 spanish-modern
+A 00003834 spanish-mexican
+A 00003844 spanish
+A 0000384c slovak
+A 00003858 russian
+A 0000386c portuguese-brazilian
+A 00003884 portuguese
+A 00003890 polish
+A 0000389c norwegian-nynorsk
+A 000038b0 norwegian-bokmal
+A 000038c4 norwegian
+A 000038e0 korean
+A 000038f0 japanese
+A 00003900 italian-swiss
+A 00003910 italian
+A 00003920 irish-english
+A 00003930 icelandic
+A 0000393c hungarian
+A 0000394c greek
+A 00003954 german-swiss
+A 00003964 german-austrian
+A 00003974 german
+A 00003980 french-swiss
+A 00003990 french-canadian
+A 000039a0 french-belgian
+A 000039b0 french
+A 000039c4 finnish
+A 000039e8 english-usa
+A 000039f4 english-us
+A 00003a00 english-uk
+A 00003a0c english-nz
+A 00003a18 english-ire
+A 00003a24 english-can
+A 00003a30 english-aus
+A 00003a3c english-american
+A 00003a50 english
+A 00003a68 dutch-belgian
+A 00003a78 dutch
+A 00003a8c danish
+A 00003a98 czech
+A 00003aac chinese-traditional
+A 00003ac0 chinese-singapore
+A 00003ad4 chinese-simplified
+A 00003ae8 chinese-hongkong
+A 00003afc chinese
+A 00003b0c canadian
+A 00003b18 belgian
+A 00003b20 australian
+A 00003b2c american-english
+A 00003b40 american english
+A 00003b54 american
+A 00003b64 H:mm:ss
+A 00003b6c dddd, MMMM dd, yyyy
+A 00003b80 M/d/yy
+A 00003b90 December
+A 00003b9c November
+A 00003ba8 October
+A 00003bb0 September
+A 00003bbc August
+A 00003bd4 April
+A 00003bdc March
+A 00003be4 February
+A 00003bf0 January
+A 00003c28 Saturday
+A 00003c34 Friday
+A 00003c3c Thursday
+A 00003c48 Wednesday
+A 00003c54 Tuesday
+A 00003c5c Monday
+A 00003c64 Sunday
+A 00003c88 SunMonTueWedThuFriSat
+A 00003ca0 JanFebMarAprMayJunJulAugSepOctNovDec
+A 00003e0b T <eh
+A 00003e8f \ <eh
+A 0000401c ` <e_^
+A 00004065 ` <e_
+A 00004261 A<e'B<e
+A 00004415 ~d;~ds
+A 0000441d ~d_^][
+A 00004435 hX#<ehX
+A 00004733 @(0`<e
+A 00004840 h#<et	P
+A 000048c9 X0<e3
+A 00004904 8%<e3
+A 00004929 H%<e3
+A 00004947 X%<e3
+A 00004965 H0<e3
+A 00004983 h%<e3
+A 000049b1 _^][Y
+A 000049bd _^][Y
+A 00004a65 h@$<ehX
+A 00004d5f pZ<e3
+A 00004dbd M<e*K<exK<e
+A 00004dcd K<eGL<e~L<e
+A 00004dd9 L<e&L<e*K<e	K<e
+A 00004fad s _^][Y
+A 00004fd9 s _^][Y
+A 00005000 s _^][Y
+A 0000518a _^][Y
+A 000051ce <!t2<,t
+A 000052d9 R<eqR<e
+A 000054b7 |$$RP
+A 000054ff `<e_^][
+A 00005527 P`<e_^][
+A 0000554b 0`<e_^][
+A 000056b8 _^][Y
+A 00005fab pZ<e3
+A 00006186 , <e3
+A 000061a9 G VPj
+A 000061dd $ <ef
+A 00006292 G VPj
+A 000063ea |$ SW
+A 0000646f F WUS
+A 00006572 D$4WQ
+A 0000658c D$TPS
+A 000065b0 D$Ptn
+A 00006689 D$Ptb
+A 000066f9 L$<PQ
+A 00006890 P$<et
+A 00006909 X0<e3
+A 00006940 8%<e3
+A 0000695e H%<e3
+A 0000697c X%<e3
+A 0000699a H0<e3
+A 000069c8 _^][Y
+A 000069d4 _^][Y
+A 00006ab8 `j<eS
+A 00006ebb F(jBj
+A 0000720a 5t <e3
+A 00007261 =p <e
+A 000073fb t(It"Iu"
+A 000075eb Fx;F`s
+A 000078c6 T;F |
+A 00007ab5 ;NH}<
+A 00007ee6 Gp9^ 
+A 00007f14 tPA@@
+A 00008531 ItZIt0IIt
+A 0000853b ;F$u_
+A 000085e4 Fh_^[
+A 000085ed QQSVW
+A 000089d2 <e~@W
+A 00008a4a HtLHt@HHt3
+A 00009087 (j	YQVP
+A 0000918d (j	ZRQP
+A 000092a1 (j	ZRQP
+A 0000966a YtcHt6Hu]8_
+A 00009682 8XQtI
+A 0000969c v|90~.
+A 00009840 T;^ Y|
+A 00009865 ;F YY|
+A 00009989 T;F |
+A 00009c6a tGHtkH
+A 00009d00 ;FHr-
+A 00009d30 ~H_^[]
+A 0000a29f V8XPu
+A 0000a408 								
+A 0000b0f1 9^ ~Q
+A 0000b140 T;^ Y|
+A 0000b19d ~l_^[
+A 0000b1dd X9A\u39
+A 0000b1f0 %9A`u 9
+A 0000b284 8^@u	
+A 0000b294 tp8^At
+A 0000b306 8^Au&8_
+A 0000b325 FZYPV
+A 0000b384 8^AYYu	SV
+A 0000b3ac tA8^@u<
+A 0000b4a2 8^Jt;9^tu68^Pt
+A 0000b4f6 8^AYuO8_
+A 0000b514 8^JYt
+A 0000b623 QQSVW
+A 0000b746 )E ;] v
+A 0000be6a +j	XPWR
+A 0000c0a4 (j	YQ
+A 0000c3d3 )j	YQ
+A 0000c693 FdPSj
+A 0000c6d6 tLIIt-It
+A 0000c723 58XJt$9^
+A 0000c731 <eu$j
+A 0000cb5c F`+~\;
+A 0000cb6c )E ;} v
+A 0000dbd8 F,_^[
+A 0000ded5 YjxSW
+A 0000df32 YjxSW
+A 0000e5be <eY9Nd~
+A 0000e95e N\9~d
+A 0000e9b7 HtNHt
+A 0000ea00 ;~dY|
+A 0000ea2d Y9o4u
+A 0000ea50 <e_^][
+A 0000ec83 F0YY3
+A 0000f095 NL9NLu!
+A 0000f0bc Y_^][
+A 0000f3bd GQSWVP
+A 0000f3d8 QPSWV
+A 0000f42b BBAOu
+A 0000fa31 _p_^[]
+A 0000fab3 u*G;}
+A 000100ad ~)WVS
+A 00010157 hp0<e
+A 00010166 hh0<eP
+A 00010310 u"WVS
+A 00010402  <e^Y
+A 000105e8 <v@j1
+A 00010833 h<1<e
+A 000108f4 uQ_^[
+A 00010963 SVWUj
+A 0001096b hx	=e
+A 000109cc t.;t$$t(
+A 00010a50 VC20XC00U
+A 00010bff  <e_^
+A 00010dee C =02CVu
+A 00010e55 B 02CV
+A 00010f02 =e 6=e
+A 0001104b  <e^][
+A 000111e4 D$,VP
+A 00011362 =etBjtj
+A 0001141a uRjtj
+A 00011522 HSUVWh
+A 0001158c L <ef9|$F
+A 00011721  <e_^][
+A 00011733 -\ <eVW
+A 00011795 >eSUV
+A 00011878 _^][Y
+A 000119aa 8"uV@
+A 00011b22 D$ _^]
+A 00011b33 SUVWj
+A 00011d83 %H <e
+A 00011e4a  <eV3
+A 00011ee9 WSUVj
+A 00012011  <e_^
+A 0001207d =eSUVW3
+A 00012198 h<1<e
+A 00012238  <e_^][
+A 00012257 5T <eP
+A 00012283 =\ <e
+A 0001236f d <e_]
+A 00012390 ` <e]
+A 000123d0 d <e]
+A 00012402 d <e]
+A 00012440 ` <e]
+A 00012472 ` <e]
+A 00012497 >eh  
+A 000125d9  <e_^3
+A 00012603  <e95
+A 000128ab _^][Y
+A 000128c4 _^][Y
+A 000129c7 _^][Y
+A 00012a05 _^][Y
+A 00012d90 QSUVW3
+A 00012e28 $>eF;
+A 00012e45 _^][Y
+A 00013119 /=ew/=e
+A 000131a0 =| <eh
+A 000131b2 >etShx4<eV
+A 000131be hd4<eV
+A 00013203 >e_^[
+A 00013517 4<ehX
+A 00013a2b SUVWP
+A 00014138 D$XRP
+A 0001417c |$\-u
+A 000143db PVWj 
+A 000143fc D$*RP
+A 00014417 QVWj0
+A 00014443 T$HPR
+A 0001448d QRWj 
+A 000144e1 <=e	==er==e
+A 000144f9 >=eE==eT==e6==e'==ec==e
+A 0001452d >=e(>=e
+A 0001457d A=es?=e
+A 00014754 =ew<j	
+A 000147ee =\ <eS
+A 0001484a $>eF;
+A 00014bbd <St	<C
+A 00014bd9 D$$t.
+A 00014cbb D$,]B
+A 00014cd6 L$\un
+A 00014cea L$,B:
+A 00014d02 :L$Lw3
+A 00014d7d |$${u
+A 00014d8f |$(HUS
+A 00014e44 T$VQR
+A 0001506d |$$ou
+A 00015241 |$$Fu
+A 0001561c pK=ezK=e=K=e`K=ezK=e'K=efK=ejK=evK=e
+A 000156a9 O=ehL=e
+A 000156b5 N=e|L=e
+A 000157d8 >ePRP
+A 00015883 >eUVW
+A 00015b4a L$ _^]+
+A 00015fdf =X <e
+A 0001626b t!EUS
+A 00016596 1_^][
+A 0001670b SVWPQ
+A 0001692d i=e|i=eti=eli=edi=e\i=eTi=eLi=e
+A 00016a3c Hj=ehj=e
+A 00016a61 0k=e.
+A 00016abd 0k=e.
+A 00016add k=e'k=e
+A 00016b30 @k=eHk=eXk=elk=e
+A 00016be4 =X <e
+A 00016ee4 =X <e
+A 00016fdc >eVj	P
+A 00016fed =euZ;
+A 0001726e !<eUVWuNj
+A 00017278 hd5<ej
+A 0001727f hd5<ej
+A 0001729c hh5<ej
+A 000172a3 hh5<ej
+A 000172cd l$4VU
+A 000172eb D$<WP
+A 00017311 D$,WQVURP
+A 00017456 VUj	S
+A 0001748d D$<VPj
+A 000174a7 QRj	S
+A 000174cd T$<VPQRj
+A 000174e6 T$0VP
+A 000174ec D$4UQRP
+A 00017560 QSUVW
+A 000175d8 _^][Y
+A 000175e4 _^][Y
+A 00017710 _^][Y
+A 00017718 _^][Y
+A 0001779a 8<=t!
+A 00017867 >eSV;
+A 000178ab It	Iu
+A 000179ad d <e_^[
+A 000179fc 5$!<e;
+A 00017a0d hh5<ej
+A 00017a28 hd5<ej
+A 00017a63 _^][Y
+A 00017a90 T$(SSSSWQh 
+A 00017aad _^][Y
+A 00017ac6 _^][Y
+A 00017ad8 VUWPh 
+A 00017b26  !<ef
+A 00017b40 T$$WSR
+A 00017b6e _^][Y
+A 00017b84 >eSUV
+A 00017b8a 5 !<eW3
+A 00017b9d hd5<ej
+A 00017bda L$ RQP
+A 00017be2 _^][Y
+A 00017c0b WWURj	S
+A 00017c33 VWUPj
+A 00017c52 $!<eW
+A 00017c63 _^][Y
+A 00017c78 _^][Y
+A 00017c85 hh5<ej
+A 00017cb8 (!<eUVW
+A 00017cc9 hd5<eh
+A 00017ce8 hh5<eh
+A 00017d45 QVWRP
+A 00017d7a VWj	U
+A 00017dab WSVPj
+A 00017e01 RWSUP
+A 00017e4b VRWSUP
+A 00017e93 D$0PVQh 
+A 000180d9 D$HUV
+A 00018445 L$,u	
+A 00018611 D$TRVP
+A 00018700 T$DQPR
+A 00018a46 L$ PQF
+A 00018b25 T$ QR
+A 00018b54 KK<5|1;
+A 00018b70 D$HCf
+A 00018f19 /;t$$u
+A 00018fa3 >eSVW
+A 00019197 VPj1Sj
+A 000191ab Qj2Sj
+A 000191be Rj3Sj
+A 000191d1 Pj4Sj
+A 000191e4 Qj5Sj
+A 000191f7 Rj6Sj
+A 00019207 Wj7Sj
+A 00019218 G Pj*Sj
+A 0001922d Qj+Sj
+A 00019240 Rj,Sj
+A 00019251 G,Pj-Sj
+A 00019266 Qj.Sj
+A 00019279 Rj/Sj
+A 0001928c Pj0Sj
+A 0001929f QjDSj
+A 000192b2 RjESj
+A 000192c3 G@PjFSj
+A 000192d8 QjGSj
+A 000192eb RjHSj
+A 000192fc GLPjISj
+A 00019311 QjJSj
+A 00019324 RjKSj
+A 00019335 GXPjLSj
+A 0001934a QjMSj
+A 0001935d RjNSj
+A 0001936e GdPjOSj
+A 00019383 Qj8Sj
+A 00019396 Rj9Sj
+A 000193a7 GpPj:Sj
+A 000193bc Qj;Sj
+A 000193cf Rj<Sj
+A 000193e0 G|Pj=Sj
+A 000193f8 Qj>Sj
+A 0001940e Rj?Sj
+A 00019424 Pj@Sj
+A 0001943a QjASj
+A 00019450 RjBSj
+A 00019466 PjCSj
+A 0001947c Qj(Sj
+A 00019492 Rj)Sj
+A 000194be Qj Uj
+A 0001973d Pj#Wj
+A 00019761 Qj%Wj
+A 00019833 >eSV3
+A 000198e9 >et-P
+A 00019a0a >e_^[
+A 00019be7 S RjPVj
+A 00019bfa C$PjQVj
+A 00019c33 C*PjTVj
+A 00019c48 QjUVj
+A 00019c5b RjVVj
+A 00019c6c C-PjWVj
+A 00019c81 QjRVj
+A 00019c94 SjSVj
+A 00019cbf >etQP
+A 00019d27  SUVW3
+A 00019d3e >eu!3
+A 00019f0b =et	P
+A 00019fe6 PPPPPPPP
+A 0001a066 PPPPPPPP
+A 0001a0a4 T$(SUVf
+A 0001a117 *_^][
+A 0001a16d *_^][
+A 0001a217 l$0u)
+A 0001a29f f9|$(w
+A 0001a2b9 9D$*u,9D$.
+A 0001a519 zuTVVVSU
+A 0001a673 >eSUV
+A 0001a73d T$$PPj
+A 0001a76a D$ Pj
+A 0001a7a3 >eSUV
+A 0001a8a5 T$,PQj
+A 0001ab6a ReleaseStgMedium
+A 0001ab7c ole32.dll
+A 0001ab88 UnionRect
+A 0001ab92 USER32.dll
+A 0001aba0 DeleteObject
+A 0001abb0 PatBlt
+A 0001abba GetCurrentObject
+A 0001abce SelectObject
+A 0001abde CreateSolidBrush
+A 0001abf2 GetObjectA
+A 0001ac00 GetNearestPaletteIndex
+A 0001ac1a SetDIBColorTable
+A 0001ac2e GetNearestColor
+A 0001ac40 SelectPalette
+A 0001ac50 SetDIBitsToDevice
+A 0001ac64 StretchDIBits
+A 0001ac74 SetStretchBltMode
+A 0001ac88 SetMapMode
+A 0001ac96 SetDIBits
+A 0001aca0 GDI32.dll
+A 0001acac InterlockedIncrement
+A 0001acc4 InitializeCriticalSection
+A 0001ace0 InterlockedDecrement
+A 0001acf8 DeleteCriticalSection
+A 0001ad10 LeaveCriticalSection
+A 0001ad28 EnterCriticalSection
+A 0001ad40 GetTickCount
+A 0001ad50 lstrlenA
+A 0001ad5c GlobalDeleteAtom
+A 0001ad70 GlobalAddAtomA
+A 0001ad82 GetCommandLineA
+A 0001ad94 GetProcAddress
+A 0001ada6 GetModuleHandleA
+A 0001adba GetVersion
+A 0001adc8 HeapFree
+A 0001add4 GetModuleFileNameA
+A 0001adea RtlUnwind
+A 0001adf6 HeapAlloc
+A 0001ae02 HeapReAlloc
+A 0001ae10 ExitProcess
+A 0001ae1e TerminateProcess
+A 0001ae32 GetCurrentProcess
+A 0001ae46 GetCurrentThreadId
+A 0001ae5c TlsSetValue
+A 0001ae6a TlsAlloc
+A 0001ae76 TlsFree
+A 0001ae80 SetLastError
+A 0001ae90 TlsGetValue
+A 0001ae9e GetLastError
+A 0001aeae SetHandleCount
+A 0001aec0 GetStdHandle
+A 0001aed0 GetFileType
+A 0001aede GetStartupInfoA
+A 0001aef0 GetCPInfo
+A 0001aefc GetACP
+A 0001af06 GetOEMCP
+A 0001af12 FreeEnvironmentStringsA
+A 0001af2c MultiByteToWideChar
+A 0001af42 FreeEnvironmentStringsW
+A 0001af5c GetEnvironmentStrings
+A 0001af74 GetEnvironmentStringsW
+A 0001af8e WideCharToMultiByte
+A 0001afa4 HeapDestroy
+A 0001afb2 HeapCreate
+A 0001afc0 VirtualFree
+A 0001afce WriteFile
+A 0001afda VirtualAlloc
+A 0001afea LoadLibraryA
+A 0001affa FlushFileBuffers
+A 0001b00e SetFilePointer
+A 0001b020 CompareStringA
+A 0001b032 CompareStringW
+A 0001b044 SetEnvironmentVariableA
+A 0001b05e SetStdHandle
+A 0001b06e GetStringTypeA
+A 0001b080 GetStringTypeW
+A 0001b092 LCMapStringA
+A 0001b0a2 LCMapStringW
+A 0001b0b2 CloseHandle
+A 0001b0c0 ReadFile
+A 0001b0cc GetLocaleInfoA
+A 0001b0de GetLocaleInfoW
+A 0001b0ee KERNEL32.dll
+A 0001b13c ASYCFILT.dll
+A 0001b149 DllCanUnloadNow
+A 0001b159 FilterCreateInstance
+A 0001c030 c:\oa\src\stdtypes\filtbase.cpp
+A 0001c050 NULL != m_dib
+A 0001c060 c:\oa\src\stdtypes\filtbase.cpp
+A 0001c080 NULL != m_dc
+A 0001c090 c:\oa\src\stdtypes\filtbase.cpp
+A 0001c0b0 NULL != new_brush
+A 0001c0c4 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c0e4 FALSE
+A 0001c0ec c:\oa\src\stdtypes\filtgif.cpp
+A 0001c10c NULL != hdr
+A 0001c118 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c138 NULL != sd
+A 0001c144 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c164 pal_entries <= MAX_GIF_PALETTE_ENTRIES
+A 0001c18c c:\oa\src\stdtypes\filtgif.cpp
+A 0001c1ac NULL != m_bminfo
+A 0001c1c0 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c1e0 bytes_read == bytes_needed
+A 0001c1fc c:\oa\src\stdtypes\filtgif.cpp
+A 0001c21c m_decompress_info.first_code < m_decompress_info.clear_code
+A 0001c258 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c278 *(m_decompress_info.code_sp) < m_decompress_info.clear_code
+A 0001c2b4 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c2d4 m_decompress_info.code_sp < &(m_decompress_info.code_stack[GIF_STACK_SIZE])
+A 0001c320 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c340 code != m_decompress_info.code_table[0][code]
+A 0001c370 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c390 *(m_decompress_info.code_sp) < m_decompress_info.clear_code
+A 0001c3f0 NULL != m_dib
+A 0001c400 NULL != m_dc
+A 0001c410 c:\oa\src\stdtypes\filtgif.cpp
+A 0001c430 c:\oa\src\stdtypes\filtjpeg.cpp
+A 0001c450 NULL != m_bminfo
+A 0001c464 c:\oa\src\stdtypes\filtjpeg.cpp
+A 0001c484 NULL != m_pCurLine
+A 0001c498 c:\oa\src\stdtypes\filtjpeg.cpp
+A 0001c4b8 NULL != m_buffer
+A 0001c4cc c:\oa\src\stdtypes\filtjpeg.cpp
+A 0001c4ec NULL != m_dc
+A 0001c4fc c:\oa\src\stdtypes\filtjpeg.cpp
+A 0001c51c NULL != m_dib
+A 0001c52c MS_AsyncImage_DCWait
+A 0001c544 MS_AsyncImage_Display
+A 0001c55c MS_AsyncImage_Abnormal
+A 0001c574 MS_AsyncImage_Finished
+A 0001c58c Bogus message code %d
+A 0001c5a4 Sorry, there are legal restrictions on arithmetic coding
+A 0001c5e0 ALIGN_TYPE is wrong, please fix
+A 0001c600 MAX_ALLOC_CHUNK is wrong, please fix
+A 0001c628 Bogus buffer control mode
+A 0001c644 Invalid component ID %d in SOS
+A 0001c664 IDCT output block size %d not supported
+A 0001c68c Bogus input colorspace
+A 0001c6a4 Bogus JPEG colorspace
+A 0001c6bc Bogus marker length
+A 0001c6d0 Sampling factors too large for interleaved scan
+A 0001c700 Invalid memory pool code %d
+A 0001c71c Unsupported JPEG data precision %d
+A 0001c740 Invalid progressive parameters Ss=%d Se=%d Ah=%d Al=%d
+A 0001c778 Invalid progressive parameters at scan script entry %d
+A 0001c7b0 Bogus sampling factors
+A 0001c7c8 Invalid scan script at entry %d
+A 0001c7e8 Improper call to JPEG library in state %d
+A 0001c814 Bogus virtual array access
+A 0001c830 Buffer passed to JPEG library is too small
+A 0001c85c Suspension not allowed here
+A 0001c878 CCIR601 sampling not implemented yet
+A 0001c8a0 Too many color components: %d, max %d
+A 0001c8c8 Unsupported color conversion request
+A 0001c8f0 Bogus DAC index %d
+A 0001c904 Bogus DAC value 0x%x
+A 0001c91c Bogus DHT counts
+A 0001c930 Bogus DHT index %d
+A 0001c944 Bogus DQT index %d
+A 0001c958 Empty JPEG image (DNL not supported)
+A 0001c980 Read from EMS failed
+A 0001c998 Write to EMS failed
+A 0001c9ac Didn't expect more than one scan
+A 0001c9d0 Input file read error
+A 0001c9e8 Output file write error --- out of disk space?
+A 0001ca18 Fractional sampling not implemented yet
+A 0001ca40 Huffman code size table overflow
+A 0001ca64 Missing Huffman code table entry
+A 0001ca88 Maximum supported image dimension is %u pixels
+A 0001cab8 Empty input file
+A 0001cacc Premature end of input file
+A 0001cae8 Cannot transcode due to multiple use of quantization table %d
+A 0001cb28 Scan script does not transmit all data
+A 0001cb50 Invalid color quantization mode change
+A 0001cb78 Not implemented yet
+A 0001cb8c Requested feature was omitted at compile time
+A 0001cbbc Backing store not supported
+A 0001cbd8 Huffman table 0x%02x was not defined
+A 0001cc00 JPEG datastream contains no image
+A 0001cc24 Quantization table 0x%02x was not defined
+A 0001cc50 Not a JPEG file: starts with 0x%02x 0x%02x
+A 0001cc7c Insufficient memory (case %d)
+A 0001cc9c Cannot quantize more than %d color components
+A 0001cccc Cannot quantize to fewer than %d colors
+A 0001ccf4 Cannot quantize to more than %d colors
+A 0001cd1c Invalid JPEG file structure: two SOF markers
+A 0001cd4c Invalid JPEG file structure: missing SOS marker
+A 0001cd7c Unsupported JPEG process: SOF type 0x%02x
+A 0001cda8 Invalid JPEG file structure: two SOI markers
+A 0001cdd8 Invalid JPEG file structure: SOS before SOF
+A 0001ce04 Failed to create temporary file %s
+A 0001ce28 Read failed on temporary file
+A 0001ce48 Seek failed on temporary file
+A 0001ce68 Write failed on temporary file --- out of disk space?
+A 0001cea0 Application transferred too few scanlines
+A 0001cecc Unsupported marker type 0x%02x
+A 0001ceec Virtual array controller messed up
+A 0001cf10 Image too wide for this implementation
+A 0001cf38 Read from XMS failed
+A 0001cf50 Write to XMS failed
+A 0001cf64 Copyright (C) 1995, Thomas G. Lane
+A 0001cf88 6  2-Aug-95
+A 0001cf94 Caution: quantization tables are too coarse for baseline JPEG
+A 0001cfd4 Adobe APP14 marker: version %d, flags 0x%04x 0x%04x, transform %d
+A 0001d018 Unknown APP0 marker (not JFIF), length %u
+A 0001d044 Unknown APP14 marker (not Adobe), length %u
+A 0001d070 Define Arithmetic Table 0x%02x: 0x%02x
+A 0001d098 Define Huffman Table 0x%02x
+A 0001d0b4 Define Quantization Table %d  precision %d
+A 0001d0e0 Define Restart Interval %u
+A 0001d0fc Freed EMS handle %u
+A 0001d110 Obtained EMS handle %u
+A 0001d128 End Of Image
+A 0001d138         %3d %3d %3d %3d %3d %3d %3d %3d
+A 0001d160 JFIF APP0 marker, density %dx%d  %d
+A 0001d184 Warning: thumbnail image size does not match data length %u
+A 0001d1c0 Unknown JFIF minor revision number %d.%02d
+A 0001d1ec     with %d x %d thumbnail image
+A 0001d210 Skipping marker 0x%02x, length %u
+A 0001d234 Unexpected marker 0x%02x
+A 0001d250         %4u %4u %4u %4u %4u %4u %4u %4u
+A 0001d278 Quantizing to %d = %d*%d*%d colors
+A 0001d29c Quantizing to %d colors
+A 0001d2b4 Selected %d colors for quantization
+A 0001d2d8 At marker 0x%02x, recovery action %d
+A 0001d300 RST%d
+A 0001d308 Smoothing not supported with nonstandard sampling ratios
+A 0001d344 Start Of Frame 0x%02x: width=%u, height=%u, components=%d
+A 0001d380     Component %d: %dhx%dv q=%d
+A 0001d3a0 Start of Image
+A 0001d3b0 Start Of Scan: %d components
+A 0001d3d0     Component %d: dc=%d ac=%d
+A 0001d3f0   Ss=%d, Se=%d, Ah=%d, Al=%d
+A 0001d410 Closed temporary file %s
+A 0001d42c Opened temporary file %s
+A 0001d448 Unrecognized component IDs %d %d %d, assuming YCbCr
+A 0001d47c Freed XMS handle %u
+A 0001d490 Obtained XMS handle %u
+A 0001d4a8 Unknown Adobe color transform code %d
+A 0001d4d0 Inconsistent progression sequence for component %d coefficient %d
+A 0001d514 Corrupt JPEG data: %u extraneous bytes before marker 0x%02x
+A 0001d550 Corrupt JPEG data: premature end of data segment
+A 0001d584 Corrupt JPEG data: bad Huffman code
+A 0001d5a8 Warning: unknown JFIF revision number %d.%02d
+A 0001d5d8 Premature end of JPEG file
+A 0001d5f4 Corrupt JPEG data: found marker 0x%02x instead of RST%d
+A 0001d62c Invalid SOS parameters for sequential JPEG
+A 0001d658 Application transferred too many scanlines
+A 0001d688 JPEGMEM
+A 0001d690 %ld%c
+A 0001d6a0 Assertion failed: %s, file %s, line %d
+A 0001d6ee =e`j<e`j<e
+A 0001fc35 k=e\5<eL5<e 	-
+A 000200aa >epZ<e
+A 000200c6 =et5<e
+A 000200d2 =el5<e
+A 000201f8 T;<e	
+A 00020200 @;<e	
+A 00020208 ,;<e	
+A 00020210  ;<e	
+A 000202c0 `:<e	
+A 000202c8 \:<e	
+A 000202d0 X:<e	
+A 000202d8 P:<e	
+A 000202e0 <:<e	
+A 000202e8 0:<e	
+A 000202f0 $:<e	
+A 000203d8  9<e	
+A 000205c8 x7<ef
+A 000205d8 p7<e!
+A 000205e0 l7<e,
+A 000205e8 d7<e1
+A 000205f8 P7<e,
+A 00020608 D7<eT
+A 00020618 07<eT
+A 00020620 $7<eT
+A 00020628 H9<e$
+A 00020700 |6<e_
+A 00020718 h6<eA
+A 00020720 d6<eA
+A 00020728 L8<e*
+A 00020730 X6<eR
+A 00020738 L6<eR
+A 00020740 D6<e"
+A 00020748 @6<e*
+A 00020750 <6<e.
+A 00020758 46<e.
+A 00020760 (6<e)
+A 00020768  6<ev
+A 000209f5 <<e|<<ex<<et<<ep<<el<<ed<<e\<<eT<<eH<<e<<<e4<<e(<<e$<<e <<e
+A 00020a91 ;<el;<ed;<e
+A 00020cce z?aUY
+A 00020d10 zc%C1
+A 00020d63 -64OS
+A 00022035 2 2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 000220ad 3 3$3(3,3034383<3@3D3H3L3P3T3`3h3l3p3t3x3
+A 00022123 4 4$4(4,4044484D4H4P4T4X4\4`4h4l4p4t4x4|4
+A 000221a7 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00022227 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00022297 =.=;=E=[=h=
+A 000222b3 >H>Q>X>_>f>m>
+A 000222d5 0A0e0
+A 000222e3 242X2\2`2d2h2
+A 000222f1 364;4
+A 00022301 5+505C5V5b5
+A 00022315 6E6`657
+A 0002232b 8$8+82898@8
+A 0002233b 9)9G9e9
+A 00022343 9f:k:
+A 00022349 :Y;^;_=
+A 00022383 ?9?>?
+A 00022398 f0k0f2m2
+A 000223ab 4'5K5
+A 000223b3 :$:;:r<
+A 000223bd <y>~>
+A 000223d8 11=1P1a1
+A 00022405 4	5%5
+A 00022413 6+6s6
+A 00022421 7,7<7N7
+A 00022433 8k8t8{8
+A 0002243f 8	9.9@9^9|9
+A 00022459 <'>,>J>O>f>
+A 00022478 ^0e0l0s0z0
+A 0002248d 2!2&2-232:2@2G2M2U2b2g2{2
+A 000224ab 2Q8X8
+A 000224c5 4Z5t5
+A 000224d9 :q>x>
+A 00022511 0%01080F0N0
+A 0002255f ;<<E<T<]<
+A 00022574 "1*1B1X4
+A 0002257d 4s5c6
+A 00022597 :O:K?R?Y?`?g?w?
+A 000225b5 ; ;';.;5;<;C;J;Q;X;_;{;
+A 000225cd ;\<e<
+A 000225e9 :E:N:
+A 00022614 /151:1X1^1g1n1
+A 00022637 212<2E2
+A 00022641 2%3A3P3p3
+A 0002264f 404<4B4H4N4Y4f4
+A 00022677 748>8
+A 00022681 9)9.9;9l9
+A 0002268d :0:9:A;
+A 0002269d =%=|=
+A 000226bd ?!?,?1?>?C?
+A 000226e7 0$0@0J0
+A 000226f3 1*1;1K1U1\1k1t1
+A 0002270d 2X3`3y3
+A 00022725 40484K4[4q4
+A 00022737 5N5V5t5
+A 00022747 5$676b6z6
+A 00022757 7 747;7
+A 00022765 7[8j8
+A 00022781 :N;~;
+A 00022795 <+<3<9<C<I<O<g<
+A 000227b5 =%=.=5=V=e=o=z=
+A 000227df >#>(>A>I>U>~>
+A 00022811 0%010@0R0{0
+A 00022827 051J1
+A 00022837 272Q2X2a2j2r2
+A 0002285b 373E3L3h3o3
+A 00022877 4%4@4r4
+A 00022897 5!5*5
+A 000228ab 62696A6V6
+A 000228bb 7%767
+A 000228e3 >S?Z?`?i?y?
+A 00022913 1 1$1L1
+A 00022943 676U6e6
+A 0002294d 6@8K8_8
+A 0002296f >$>a>
+A 00022984 %0_0?1]1t1
+A 000229a9 5(5,5054585l5p5t5x5|5
+A 000229d5 5E7R7
+A 000229e5 8+8:8I8
+A 000229ef 8-9:9
+A 000229fd ;#;4<;<b<v<
+A 00022a19 0^0Q1g1
+A 00022a23 1 353n3
+A 00022a2f 3i4~4
+A 00022a39 6 6$6(6,6064686<6
+A 00022a75 8!9?9
+A 00022a7d :\;};
+A 00022a87 <[<"?7?
+A 00022aa4 &0A0y0
+A 00022ac5 9%9,9094989<9@9D9H9
+A 00022ae5 :0:7:<:@:D:a:
+A 00022b05 :*;0;4;8;<;
+A 00022b1d ;0<K<i<t<
+A 00022b2b =$>1>Z>q>|>
+A 00022b59 0(0R0o0_1l1a2m2y2
+A 00022b93 7Z7t7
+A 00022b9d 7e8x8
+A 00022ba9 9b9i9
+A 00022bbb :):2:D:
+A 00022bd9 <<<R<
+A 00022bef ="=l=
+A 00022bfb >S>}>
+A 00022c13 2	2#2Q2w2
+A 00022c33 5(5074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7
+A 00022c71 9'9N9[9~9
+A 00022caf 111;1A1E1P1b1~1
+A 00022cbf 118@8L8`8t8
+A 00022ce1 9!9)9.979=9J9V9e9w9}9
+A 00022d09 :!:q:
+A 00022d21 ;%;+;2;6;A;S;k;
+A 00022d31 <!=<=E=K=
+A 00022d6f 5&6I6q6z6
+A 00022d7f 7,7J7v7
+A 00022d8f 838_8
+A 00022d99 869<9J9
+A 00022de7 ;$;,;4;<;\;l;|;
+A 00022e09 < <$<(<,<0<4<8<<<P>T>
+A 00022e55 2 2(20282@2H2P2X2`2h2p2x2
+A 00022e95 3 3(30383@3H3P3X3`3h3p3x3
+A 00022ed5 4 4(40484@4H4P4X4`4h4p4x4
+A 00022f15 5 5(50585@5H5P5X5`5h5p5x5
+A 00022f55 6 6(60686@6H6P6X6`6h6p6x6
+A 00022f95 7 7(70787@7H7P7X7`7h7p7x7
+A 00022fd5 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 0002302b :0>4>
+A 0002400c asycfilt.dbg
+A 00024019 asycfilt.dll
+U 0000354c (null)
+U 00015816 jjjj
+U 000165ed $jjjj
+U 0001662d $jjjj
+U 0001fe5a          (((((                  H
+U 00021066 VS_VERSION_INFO
+U 000210c2 StringFileInfo
+U 000210e6 040904E4
+U 000210fe CompanyName
+U 00021118 Microsoft Corporation
+U 0002114a FileDescription
+U 0002116c Microsoft OLE 2.30  for Windows NT(TM) and Windows 95(TM) Operating Systems
+U 0002120a FileVersion
+U 00021224 2.30.4261
+U 0002123e InternalName
+U 00021258 ASYCFILT.DLL
+U 0002127a LegalCopyright
+U 00021298 Copyright © Microsoft Corp. 1993-1998.
+U 000212ee LegalTrademarks
+U 00021310 Microsoft® is a registered trademark of Microsoft Corporation. Windows NT(TM) and Windows 95(TM) are trademarks of Microsoft Corporation.
+U 0002142a ProductName
+U 00021444 Microsoft OLE 2.30  for Windows NT(TM) and Windows 95(TM) Operating Systems
+U 000214e2 ProductVersion
+U 00021500 2.30.4261
+U 0002151a Comments
+U 0002152c Microsoft OLE 2.30  for Windows NT(TM) and Windows 95(TM) Operating Systems
+U 000215ca VarFileInfo
+U 000215ea Translation

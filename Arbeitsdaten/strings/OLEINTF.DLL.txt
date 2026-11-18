@@ -1,0 +1,454 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001c0 .text
+A 000001e7 `.rdata
+A 0000020f @.data
+A 00000238 .rsrc
+A 0000025f @.reloc
+A 00000fdc HtT-Q
+A 00001291 L$`_^d
+A 00001341 T$ PR
+A 00001389 T$ PR
+A 000013ce T$ PR
+A 0000141c L$ PQ
+A 000014c1 T$ PR
+A 0000150c T$ PR
+A 0000155f T$ PR
+A 00001a62 K,jAVj
+A 00001a8a _^][Y
+A 00002208 D$4RP
+A 00002329 L$p_^
+A 00002f40 NHQh	
+A 00003073 V<Rha
+A 000030b4 V@Rhe
+A 000031c2 L$,_^
+A 0000334e qLVhxB
+A 000033a8 L$@^d
+A 00003436 D$ Ph
+A 00003449 L$$Qh
+A 0000345c T$(Rh
+A 00003a07 @SUVW
+A 00003a46 WWWh~
+A 00004c5b l$hVW
+A 00004fa5 L$\_^]d
+A 00005e5f uF9l$
+A 00005ea8 L$ ;Y
+A 00005ed5 T$,VR
+A 00006046 T$,WR
+A 00006084 D$ UPV
+A 0000609d L$,WQ
+A 000061d1 T$8PR
+A 0000621c L$DPQ
+A 00006263 T$PPR
+A 000062bb T$\PR
+A 000062f7 T$dURP
+A 0000633b D$dPSQV
+A 00006354 T$\PR
+A 00006fde L$8UQV
+A 00007025 D$DPV
+A 0000703e L$0PQ
+A 0000707e T$<RP
+A 000070fb L$ PQ
+A 0000718e L$4QRW
+A 000071e0 L$$_2
+A 000073a9 D$$VP
+A 00007591 Q$SVW
+A 00008192 I,Vj	
+A 00008b90 _^][Y
+A 00008d73 _^][Y
+A 000098ca tTHt1Hu`
+A 0000a660 u"WVS
+A 0000d17e ??1StreamException@@UAE@XZ
+A 0000d19c ?ThrowOleError@StreamException@@SAXJ@Z
+A 0000d1c6 ??1RecordStreamRef@@QAE@XZ
+A 0000d1e4 ?Close@RecordStreamRef@@QAEXXZ
+A 0000d206 ?OpenRecordForRead@RecordFile@@QAE?AVRecordStreamRef@@PBG@Z
+A 0000d244 ?Close@RecordFile@@UAEXXZ
+A 0000d260 ??1RecordFile@@UAE@XZ
+A 0000d278 ?OpenForRead@RecordFile@@QAEXPBG@Z
+A 0000d29e ?GetFileTypeFromFilename@@YAIABVString@@@Z
+A 0000d2cc ?OleErrorToException@StreamException@@CA?AW4Cause@1@AAJ@Z
+A 0000d308 ?OsErrorToException@StreamException@@CA?AW4Cause@1@J@Z
+A 0000d340 Wessys.dll
+A 0000d34e ??1ESDLoader@@QAE@XZ
+A 0000d366 ?GetESDDesignInfo@ESDLoader@@QAE_NABVString@@PAUDesignInformation@@@Z
+A 0000d3ae ??0ESDLoader@@QAE@XZ
+A 0000d3c4 esdrdr.dll
+A 0000d3d2 ?GetAsDataItem@ProductVersion@@QBE_NAAVDataItem@@F@Z
+A 0000d40a ??0ProductVersion@@QAE@ABVDataItem@@@Z
+A 0000d434 ??4ProductVersion@@QAEAAV0@ABV0@@Z
+A 0000d45a ?LegacyProductVersion@@YA?AVProductVersion@@ABVString@@@Z
+A 0000d496 ??0ProductVersion@@QAE@ABV0@@Z
+A 0000d4b8 ??0ProductVersion@@QAE@XZ
+A 0000d4d4 ??0ProductVersionString@@QAE@ABVProductVersion@@@Z
+A 0000d508 versndll.dll
+A 0000d516 SH33W32.dll
+A 0000d522 MFC42.DLL
+A 0000d52e __CxxFrameHandler
+A 0000d542 _CxxThrowException
+A 0000d558 _purecall
+A 0000d564 wcscpy
+A 0000d56e wcslen
+A 0000d578 sprintf
+A 0000d582 sscanf
+A 0000d58c memmove
+A 0000d596 ?_query_new_handler@@YAP6AHI@ZXZ
+A 0000d5ba ?_query_new_mode@@YAHXZ
+A 0000d5d4 _ftol
+A 0000d5dc ??1type_info@@UAE@XZ
+A 0000d5f2 MSVCRT.dll
+A 0000d600 _except_handler3
+A 0000d614 ?terminate@@YAXXZ
+A 0000d628 _initterm
+A 0000d634 _adjust_fdiv
+A 0000d644 GetACP
+A 0000d64e GetVersion
+A 0000d65c GlobalUnlock
+A 0000d66c GlobalLock
+A 0000d67a GlobalFree
+A 0000d688 GlobalAlloc
+A 0000d696 WideCharToMultiByte
+A 0000d6ac MultiByteToWideChar
+A 0000d6c0 KERNEL32.dll
+A 0000d6ce USER32.dll
+A 0000d6dc CloseMetaFile
+A 0000d6ec PlayMetaFile
+A 0000d6fc SetWindowExtEx
+A 0000d70e SetMapMode
+A 0000d71c CreateMetaFileA
+A 0000d72e DeleteMetaFile
+A 0000d740 GetMetaFileBitsEx
+A 0000d754 SetMetaFileBitsEx
+A 0000d766 GDI32.dll
+A 0000d772 StgOpenStorage
+A 0000d782 ole32.dll
+A 0000d78c MSVCIRT.dll
+A 0000de76 oleintf.dll
+A 0000de82 ??0CSummInfo@@QAE@XZ
+A 0000de97 ??0DesignDetails@@QAE@XZ
+A 0000deb0 ??0DesignInfoPropertySet@@QAE@XZ
+A 0000ded1 ??0DesignProperties@@QAE@AAVCSummInfo@@AAVDesignInfoPropertySet@@@Z
+A 0000df15 ??0DesignProperties@@QAE@ABV0@@Z
+A 0000df36 ??0DesignProperties@@QAE@XZ
+A 0000df52 ??0OLEPropertyInfo@@QAE@U_GUID@@0@Z
+A 0000df76 ??0StorageRecordFile@@QAE@PAUIStorage@@_N@Z
+A 0000dfa2 ??0ThumbNail@@QAE@ABV0@@Z
+A 0000dfbc ??0ThumbNail@@QAE@PAUtagMETAFILEPICT@@@Z
+A 0000dfe5 ??0ThumbNail@@QAE@XZ
+A 0000dffa ??1CSummInfo@@UAE@XZ
+A 0000e00f ??1DesignDetails@@QAE@XZ
+A 0000e028 ??1DesignProperties@@QAE@XZ
+A 0000e044 ??1OLEPropertyInfo@@UAE@XZ
+A 0000e05f ??1StorageRecordFile@@UAE@XZ
+A 0000e07c ??1ThumbNail@@QAE@XZ
+A 0000e091 ??4DesignProperties@@QAEAAV0@ABV0@@Z
+A 0000e0b6 ??4ThumbNail@@QAEAAV0@ABV0@@Z
+A 0000e0d4 ??4ThumbNail@@QAEAAV0@PAUtagMETAFILEPICT@@@Z
+A 0000e101 ?BuildFunctionArray@@YAXABVDesignInfoPropertySet@@PAUFunctionEntry@@H@Z
+A 0000e149 ?ConvertToDesignInformation@@YAXABVDesignInfoPropertySet@@PAUDesignInformation@@@Z
+A 0000e19c ?ConvertToSummaryInformation@@YAXABVCSummInfo@@PAUSummaryInformation@@@Z
+A 0000e1e5 ?CreateEmbroideryMachineStopList@DesignDetails@@AAEXAAVDataItem@@@Z
+A 0000e229 ?CreateEmbroideryMachineStopListHead@DesignDetails@@AAEXAAVDataItem@@@Z
+A 0000e271 ?FormatType@ThumbNail@@QBEHXZ
+A 0000e28f ?GetActualProductVersion@DesignInfoPropertySet@@QBE_NAAVProductVersion@@@Z
+A 0000e2da ?GetActualProductVersion@DesignProperties@@QBE?AVProductVersion@@XZ
+A 0000e31e ?GetAdjustBobbin@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e351 ?GetAdjustBobbin@DesignProperties@@QBEJXZ
+A 0000e37b ?GetAppname@CSummInfo@@QBE?AVString@@XZ
+A 0000e3a3 ?GetAuthor@CSummInfo@@QBE?AVMBString@@XZ
+A 0000e3cc ?GetAuthor@DesignProperties@@QBEABVMBString@@XZ
+A 0000e3fc ?GetBobbinLength@DesignInfoPropertySet@@QBE_NAAN@Z
+A 0000e42f ?GetBobbinLength@DesignProperties@@QBENXZ
+A 0000e459 ?GetClassID@OLEPropertyInfo@@QBE?AU_GUID@@XZ
+A 0000e486 ?GetComments@CSummInfo@@QBE?AVMBString@@XZ
+A 0000e4b1 ?GetComments@DesignProperties@@QBEABVMBString@@XZ
+A 0000e4e3 ?GetDesignInfo@DesignProperties@@QBE_NAAVDesignInfoPropertySet@@@Z
+A 0000e526 ?GetDesignInformation@DesignDetails@@QBEABUDesignInformation@@XZ
+A 0000e567 ?GetDown@DesignInfoPropertySet@@QBE_NAAN@Z
+A 0000e592 ?GetDown@DesignProperties@@QBENXZ
+A 0000e5b4 ?GetEndX@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e5df ?GetEndX@DesignProperties@@QBEJXZ
+A 0000e601 ?GetEndY@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e62c ?GetEndY@DesignProperties@@QBEJXZ
+A 0000e64e ?GetFabricThickness@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e684 ?GetFabricThickness@DesignProperties@@QBEJXZ
+A 0000e6b1 ?GetFiletype@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e6e0 ?GetFiletype@DesignProperties@@QBEJXZ
+A 0000e706 ?GetFormatID@OLEPropertyInfo@@QBE?AU_GUID@@XZ
+A 0000e734 ?GetFuncCount@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e764 ?GetFunctionEntryArray@DesignDetails@@QBEPBUFunctionEntry@@XZ
+A 0000e7a2 ?GetFunctionInfo@DesignInfoPropertySet@@QBE_NAAVFunctionEntryList@@@Z
+A 0000e7e8 ?GetFunctionList@DesignProperties@@QBEPAVFunctionEntryList@@XZ
+A 0000e827 ?GetHeight@DesignInfoPropertySet@@QBE_NAAN@Z
+A 0000e854 ?GetHeight@DesignProperties@@QBENXZ
+A 0000e878 ?GetInfoItem@DesignProperties@@QBEXAAVDataItem@@ABV2@@Z
+A 0000e8b0 ?GetInfoStore@DesignInfoPropertySet@@QBE_NAAVDataItem@@@Z
+A 0000e8ea ?GetJumpsForTrims@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e91e ?GetJumpsForTrims@DesignProperties@@QBEJXZ
+A 0000e949 ?GetKeyWords@DesignProperties@@QBEABVMBString@@XZ
+A 0000e97b ?GetKeywords@CSummInfo@@QBE?AVMBString@@XZ
+A 0000e9a6 ?GetLastAuthor@CSummInfo@@QBE?AVMBString@@XZ
+A 0000e9d3 ?GetLeft@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000e9fe ?GetLeft@DesignProperties@@QBEJXZ
+A 0000ea20 ?GetLongestStitch@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ea54 ?GetLongestStitch@DesignProperties@@QBEJXZ
+A 0000ea7f ?GetMachName@DesignProperties@@QBE?AVMBString@@XZ
+A 0000eab1 ?GetMachineName@DesignInfoPropertySet@@QBE_NAAVWideString@@@Z
+A 0000eaef ?GetMaxJumpLength@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000eb23 ?GetMaxJumpLength@DesignProperties@@QBEJXZ
+A 0000eb4e ?GetNumColours@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000eb7f ?GetNumColours@DesignProperties@@QBEJXZ
+A 0000eba7 ?GetNumObjects@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ebd8 ?GetNumObjects@DesignProperties@@QBEJXZ
+A 0000ec00 ?GetNumStitches@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ec32 ?GetNumStitches@DesignProperties@@QBEJXZ
+A 0000ec5b ?GetNumStops@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ec8a ?GetNumStops@DesignProperties@@QBEJXZ
+A 0000ecb0 ?GetNumTrims@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ecdf ?GetNumTrims@DesignProperties@@QBEJXZ
+A 0000ed05 ?GetNumberOfCC@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ed36 ?GetNumberOfCC@DesignProperties@@QBEJXZ
+A 0000ed5e ?GetNumberOfFunctions@DesignDetails@@QBEHXZ
+A 0000ed8a ?GetProductVersion@DesignInfoPropertySet@@QBE_NAAVProductVersion@@@Z
+A 0000edcf ?GetProductVersion@DesignProperties@@QBE?AVProductVersion@@XZ
+A 0000ee0d ?GetRevNum@CSummInfo@@QBE?AVString@@XZ
+A 0000ee34 ?GetRight@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000ee60 ?GetRight@DesignProperties@@QBEJXZ
+A 0000ee83 ?GetSecurity@CSummInfo@@QBE?AVString@@XZ
+A 0000eeac ?GetShortestStitch@DesignInfoPropertySet@@QBE_NAAJ@Z
+A 0000eee1 ?GetShortestStitch@DesignProperties@@QBEJXZ
+A 0000ef0d ?GetSubject@CSummInfo@@QBE?AVMBString@@XZ
+A 0000ef37 ?GetSubject@DesignProperties@@QBEABVMBString@@XZ
+A 0000ef68 ?GetSummaryInfo@DesignProperties@@QBE_NAAVCSummInfo@@@Z
+A 0000efa0 ?GetSummaryInformation@DesignDetails@@QBEABUSummaryInformation@@XZ
+A 0000efe3 ?GetTemplate@CSummInfo@@QBE?AVMBString@@XZ
+A 0000f00e ?GetThreadLength@DesignInfoPropertySet@@QBE_NAAN@Z
+A 0000f041 ?GetThreadLength@DesignProperties@@QBENXZ
+A 0000f06b ?GetThumbNail@CSummInfo@@UAEPBVThumbNail@@XZ
+A 0000f098 ?GetTitle@CSummInfo@@QBE?AVMBString@@XZ
+A 0000f0c0 ?GetTitle@DesignProperties@@QBEABVMBString@@XZ
+A 0000f0ef ?GetUnitsInfo@DesignInfoPropertySet@@QBE_NAAUUnitsInformation@@@Z
+A 0000f131 ?GetUp@DesignInfoPropertySet@@QBE_NAAN@Z
+A 0000f15a ?GetUp@DesignProperties@@QBENXZ
+A 0000f17a ?GetWidth@DesignInfoPropertySet@@QBE_NAAN@Z
+A 0000f1a6 ?GetWidth@DesignProperties@@QBENXZ
+A 0000f1c9 ?Good@ThumbNail@@QBEHXZ
+A 0000f1e1 ?IncrRevNum@CSummInfo@@QAEHXZ
+A 0000f1ff ?OpenOLEStorageForRead@@YAKPBDPAPAUIStorage@@K@Z
+A 0000f230 ?OpenOLEStorageForWrite@@YAKPBDPAPAUIStorage@@K@Z
+A 0000f262 ?PlayMetaFile@ThumbNail@@QAEHPAUHDC__@@@Z
+A 0000f28c ?QueryInfo@DesignDetails@@QAE_NAAVDataItem@@@Z
+A 0000f2bb ?Read@DesignDetails@@QAEKABVString@@@Z
+A 0000f2e2 ?ReadAllDocProperties@@YA_NPAVDesignProperties@@AAVRecordFile@@@Z
+A 0000f324 ?ReadFromStorage@OLEPropertyInfo@@QAEXAAVRecordFile@@@Z
+A 0000f35c ?Serialize@ThumbNail@@QBEHPAE@Z
+A 0000f37c ?SetActualProductVersion@DesignInfoPropertySet@@QAE_NABVProductVersion@@@Z
+A 0000f3c7 ?SetAdjustBobbin@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f3f8 ?SetAppname@CSummInfo@@QAEHPBD@Z
+A 0000f419 ?SetAuthor@CSummInfo@@QAEHPBD@Z
+A 0000f439 ?SetBobbinLength@DesignInfoPropertySet@@QAE_NN@Z
+A 0000f46a ?SetComments@CSummInfo@@QAEHPBD@Z
+A 0000f48c ?SetDetails@DesignDetails@@QAEXABUSummaryInformation@@ABUDesignInformation@@ABVFunctionEntryList@@@Z
+A 0000f4f1 ?SetDown@DesignInfoPropertySet@@QAE_NN@Z
+A 0000f51a ?SetEndX@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f543 ?SetEndY@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f56c ?SetFabricThickness@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f5a0 ?SetFiletype@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f5cd ?SetFuncCount@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f5fb ?SetFunctionEntryArray@DesignDetails@@AAEXABVFunctionEntryList@@@Z
+A 0000f63e ?SetFunctionInfo@DesignInfoPropertySet@@QAE_NABVFunctionEntryList@@@Z
+A 0000f684 ?SetHeight@DesignInfoPropertySet@@QAE_NN@Z
+A 0000f6af ?SetInfoStore@DesignInfoPropertySet@@QAE_NABVDataItem@@@Z
+A 0000f6e9 ?SetJumpsForTrims@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f71b ?SetKeywords@CSummInfo@@QAEHPBD@Z
+A 0000f73d ?SetLastAuthor@CSummInfo@@QAEHPBD@Z
+A 0000f761 ?SetLeft@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f78a ?SetLongestStitch@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f7bc ?SetMachineName@DesignInfoPropertySet@@QAE_NABVWideString@@@Z
+A 0000f7fa ?SetMaxJumpLength@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f82c ?SetNumColours@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f85b ?SetNumObjects@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f88a ?SetNumStitches@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f8ba ?SetNumStops@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f8e7 ?SetNumTrims@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f914 ?SetNumberOfCC@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f943 ?SetProductVersion@DesignInfoPropertySet@@QAE_NABVProductVersion@@@Z
+A 0000f988 ?SetRight@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000f9b2 ?SetSecurity@CSummInfo@@QAEHK@Z
+A 0000f9d2 ?SetShortestStitch@DesignInfoPropertySet@@QAE_NJ@Z
+A 0000fa05 ?SetSubject@CSummInfo@@QAEHPBD@Z
+A 0000fa26 ?SetTemplate@CSummInfo@@QAEHPBD@Z
+A 0000fa48 ?SetThreadLength@DesignInfoPropertySet@@QAE_NN@Z
+A 0000fa79 ?SetThumbNail@CSummInfo@@UAEHABVThumbNail@@@Z
+A 0000faa7 ?SetTitle@CSummInfo@@QAEHPBD@Z
+A 0000fac6 ?SetUp@DesignInfoPropertySet@@QAE_NN@Z
+A 0000faed ?SetWidth@DesignInfoPropertySet@@QAE_NN@Z
+A 0000fb17 ?Size@ThumbNail@@QBEIXZ
+A 0000fb2f ?UnSerialize@ThumbNail@@QAEHPAEHH@Z
+A 0000fb53 ?UpdateFromDataItem@DesignProperties@@QAE_NABVDataItem@@0@Z
+A 0000fb8f ?WriteAllDocProperties@@YA_NPBVDesignProperties@@PAUIStorage@@@Z
+A 0000fbd0 ?WriteToStorage@OLEPropertyInfo@@QBEXPAUIStorage@@@Z
+A 0000fc05 GetDesignInformation
+A 0000fc1a GetFunctionInformation
+A 0000fc31 GetSummaryInformation
+A 0000fc47 PutDesignInformation
+A 0000fc5c PutFunctionInformation
+A 0000fc73 PutFunctionInformationLPS
+A 0000fc8d PutSummaryInformation
+A 0000fe68 .?AVCMemoryException@@
+A 0000fe88 .PAVCMemoryException@@
+A 0000fed8 AdjustBobbin
+A 0000fee8 FabricThickness
+A 0000fef8 InfoStore
+A 0000ff04 Filetype
+A 0000ff10 Actual Creator Version
+A 0000ff28 Number of colour changes
+A 0000ff44 Intended Version
+A 0000ff58 Number of Jumps per trim
+A 0000ff74 Longest stitch in design
+A 0000ff90 Shortest stitch in design
+A 0000ffac Number of funtions in the file
+A 0000ffcc Unit conversion info
+A 0000ffe4 Embroidery machine name
+A 0000fffc Sequence list
+A 0001000c Design width
+A 0001001c Design height
+A 0001002c End Y
+A 00010034 End X
+A 0001003c Design down
+A 00010048 Design up
+A 00010054 Design right
+A 00010064 Design left
+A 00010070 Bobbin length
+A 00010080 Thread length
+A 00010090 Number of objects
+A 000100a4 Number of stitches
+A 000100b8 Number of trims
+A 000100c8 Number of stops
+A 000100d8 Number of colours
+A 000100f8 .?AVWException@@
+A 00010118 .?AVStreamException@@
+A 00010150 Tajima Chenille
+A 00010160 Barudan Chenille
+A 00010178 Zangs
+A 00010180 Melco
+A 00010188 Toyota
+A 00010190 Barudan
+A 00010198 Tajima
+A 000101a8 .PAVCException@@
+A 00010248 .?AVtype_info@@
+A 00010813 121<1b1l1
+A 0001083b 4&5-5s9z9
+A 00010863 =0=4=8=<=@=D=H=c=
+A 0001088f 3R4`4n4|4
+A 000108ad 5$525@5N5\5j5x5
+A 000108d1 :9;h;
+A 000108d9 >->2>
+A 000108e3 >Y?i?
+A 000108f4 40D0I0	1
+A 00010909 5C6x6
+A 00010933 >0>4>8><>I>v>
+A 00010949 >9?f?w?|?
+A 00010979 6&7V7
+A 0001098b :9;Y<t<
+A 0001099b =&><>l>
+A 000109a3 >>?m?
+A 000109bb 0%0H0Z0{0
+A 000109c9 0+1=1
+A 000109d9 222<2b2l2
+A 00010a03 808C8
+A 00010a09 :7:D:
+A 00010a1f =;>M>~>
+A 00010a40 80J0{0
+A 00010a4b 061l1
+A 00010a57 2E2U2
+A 00010a5f 2)3c3
+A 00010a77 5*616
+A 00010a89 6074787<7@7D7H7L7P7T7X7\7`7d7
+A 00010aa7 7*8;8Q8o8v8
+A 00010ae5 ; ;$;(;,;0;4;8;<;@;
+A 00010b05 <%=,=
+A 00010b0d =.>u>
+A 00010b3c 90N0e0~0
+A 00010b4d 03191E1N1W1
+A 00010b5d 1C2_2
+A 00010b6d 5E6o6
+A 00010b75 607e7
+A 00010bac 30O0l0~0
+A 00010be9 7#8?8\8s8
+A 00010c07 9'989
+A 00010c17 :C:`:
+A 00010c1f =%=,=S=Z=U>\>
+A 00010c45 1#1;1L1W1e1r1
+A 00010c5d 2D2w2
+A 00010c6f 2"3[3d3
+A 00010c83 4g5t5
+A 00010c9f <N=W=`=k=u=
+A 00010cb9 >)>Q>m>z>
+A 00010ce3 010a0
+A 00010cff 0	2t2y2	3t3
+A 00010d2d 9,:0:4:8:<:@:D:
+A 00010d67 ?$?*?0?6?<?B?H?N?T?Z?`?f?l?r?x?~?
+A 00010da3 1&1,171D1L1a1f1k1p1z1
+A 00010dd1 2B3H3N3T3Z3a3q3
+A 00010de3 4S5q5
+A 00010ded 5%6<6l6
+A 00010df7 7|7$8a8
+A 00010e03 8	9o9
+A 00010e0d :;:Q:q:
+A 00010e23 ;%<2<M<f<s<
+A 00010e45 >1>I>k>
+A 00010e55 ?+?E?J?i?
+A 00010e71 0$0O0|0
+A 00010e93 1 2$2(2,2024282@2D2H2L2P2X2\2`2d2h2p2t2x2|2
+A 00010edb 3(3<3L3P3`3h3
+A 00010ef9 4$404L4T4\4d4l4t4|4
+A 00010f33 5(5D5L5T5\5d5l5x5
+A 00010f5f 6 6<6H6d6p6
+A 00010f81 747<7D7P7l7x7
+A 00010fab 8$8,848<8H8d8l8t8|8
+A 00010fdf 9$909L9T9\9d9p9
+A 00011001 :$:,:4:<:D:L:T:\:h:
+A 0001102d ;4;@;H;x;
+A 0001104f <P<d<t<|<
+A 0001106b =$=,=<=H=P=d=l=
+A 00011095 >,>4>H>T>\>l>x>
+A 000110c1 ?$?,?4?@?\?h?p?
+A 000110f1 0$0,0<0X0d0l0|0
+A 00011115 1,181T1`1|1
+A 00011133 2 2<2D2L2T2`2|2
+A 0001114d 3,3<3H3P3l3
+A 0001116b 4,484T4`4|4
+A 00011189 5 5`5t5
+A 000111a1 6(6D6P6l6x6
+A 000111bb 707D7P7X7l7t7
+A 000111db 8$8,8<8H8d8l8x8
+A 00011211 0 0$0(0,0004080<0@0D0H0`0
+A 00011231 3034383<3@3D3H3L3
+A 00011257 4 4$4@4
+U 00008ff2 jjjj
+U 0000dd60  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+U 0000de60  ¡¢£¤¥¦§¨©ª
+U 0000fea2 WilcomDesignInformationDDD
+U 000101c2 SummaryInformation
+U 00010466 VS_VERSION_INFO
+U 000104c2 StringFileInfo
+U 000104e6 040904b0
+U 000104fe CompanyName
+U 0001051e FileDescription
+U 00010540 OLEINTF DLL
+U 0001055e FileVersion
+U 00010578 1, 0, 0, 1
+U 00010596 InternalName
+U 000105b0 OLEINTF
+U 000105c6 LegalCopyright
+U 000105e4 Copyright © 1996
+U 0001060e LegalTrademarks
+U 00010630 Wilcom
+U 00010646 OriginalFilename
+U 00010668 OLEINTF.DLL
+U 00010686 ProductName
+U 000106a0 OLEINTF Dynamic Link Library
+U 000106e2 ProductVersion
+U 00010700 1, 0, 0, 1
+U 0001071e VarFileInfo
+U 0001073e Translation

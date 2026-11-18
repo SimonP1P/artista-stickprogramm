@@ -1,0 +1,88 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .rsrc
+A 00000257 @.reloc
+A 00000677 ,SUVW3
+A 000006a2 D$ Ph
+A 000007a2 L$<_^]
+A 00000a1d tg=`	
+A 00000ae9 L$ ^d
+A 00000b89 l$ UP
+A 00000bcb vlSSh
+A 000016ba tTHt1Hu`
+A 00001f92 L$<^d
+A 0000202d L$ ^d
+A 000024f0 QSVWj
+A 00002a10 u"WVS
+A 0000390a ?DoModalDialog@@YAHPAVCWnd@@IPAVDICallBackObj@@@Z
+A 0000393c Dialog.dll
+A 0000394a ?GetGlobalDefaultData@@YA_NIAAVDataItem@@@Z
+A 00003978 ?PutGlobalDefaultData@@YA_NIABVDataItem@@@Z
+A 000039a6 ?ValidateSaveDefaultFormat@FormatManager@@SA_NABVDataItem@@AAV2@@Z
+A 000039ec ?SaveFormatAsDefault@FormatManager@@SAXABVDataItem@@@Z
+A 00003a26 ?GetFormatStatus@FormatManager@@SAHABVDataItem@@@Z
+A 00003a5a defmgr.dll
+A 00003a66 SH33W32.dll
+A 00003a74 ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 00003a9e resource.dll
+A 00003aac MFC42.DLL
+A 00003ab8 __CxxFrameHandler
+A 00003acc ?_query_new_handler@@YAP6AHI@ZXZ
+A 00003af0 ?_query_new_mode@@YAHXZ
+A 00003b0a _ftol
+A 00003b10 MSVCRT.dll
+A 00003b1e __dllonexit
+A 00003b2c _onexit
+A 00003b36 _initterm
+A 00003b42 _adjust_fdiv
+A 00003b52 _except_handler3
+A 00003b66 ?terminate@@YAXXZ
+A 00003b78 KERNEL32.dll
+A 00003b86 USER32.dll
+A 00003b92 MSVCIRT.dll
+A 00003bd2 hwrsetup.dll
+A 00003bdf ?PerformSetup@@YAHPAVCWnd@@@Z
+A 00004208 90T0z0
+A 00004217 141O1r1
+A 00004221 2*2D2c2
+A 00004231 505I5P5Y5i5y5
+A 00004251 6)7J7
+A 00004259 8T8X8\8`8d8
+A 00004271 :>;G;P;[;e;u;|;
+A 00004295 <9<a<}<
+A 000042b1 >">->Q>
+A 0000431d 1#3R4X4^4d4j4r4
+A 00004343 5 5*535F5P5e5s5|5
+A 00004357 5%6B6H6V6[6
+A 00004369 72888>8D8J8[8y8
+A 00004381 9I9l9
+A 00004391 ;2<l<
+A 000043b9 1$101L1X1t1
+A 000043d3 2 2<2D2L2X2t2
+A 000043f7 3$3,343<3D3L3T3\3d3l3t3|3
+A 00004429 444<4D4L4T4\4d4l4t4|4
+A 00004465 5$505L5T5\5d5l5t5|5
+A 0000448d 0 0D0H0L0P0T0X0\0`0d0h0l0p0
+U 00003e66 VS_VERSION_INFO
+U 00003ec2 StringFileInfo
+U 00003ee6 040904B0
+U 00003efe CompanyName
+U 00003f1e FileDescription
+U 00003f40 HSTP_DLL DLL
+U 00003f62 FileVersion
+U 00003f7c 1, 0, 0, 1
+U 00003f9a InternalName
+U 00003fb4 HSTP_DLL
+U 00003fce LegalCopyright
+U 00003fec Copyright © 1996
+U 00004016 LegalTrademarks
+U 0000403e OriginalFilename
+U 00004060 HSTP_DLL.DLL
+U 00004082 ProductName
+U 0000409c HSTP_DLL Dynamic Link Library
+U 000040de ProductVersion
+U 000040fc 1, 0, 0, 1
+U 0000411a VarFileInfo
+U 0000413a Translation

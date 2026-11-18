@@ -1,0 +1,1200 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.rdata
+A 000001c7 @.data
+A 000001f0 .idata
+A 00000218 .reloc
+A 0000053c D$DVW
+A 000007d3 W(9W$u
+A 000009e8 @0WVP
+A 00000ac0 t]9H tX9H$tS
+A 00000ba6 9_|t93
+A 00001545 U0SQR
+A 00001899 _^][Y
+A 000018af _^][Y
+A 000018c6 l$ VW
+A 00001955 D$(8D
+A 00001b4c Fdf+F\
+A 00001e3f _^][Y
+A 00001e53 _^][Y
+A 00001e94 D$`SUVW
+A 00001fd3 j8h0p
+A 00002032 j8h0p
+A 00002098 }\wu=
+A 000020b9 RQhHp
+A 0000216a ~\wuK
+A 000022d8 F8_^[
+A 0000231c F8_^[
+A 000023dc F\<wu
+A 0000274d ~\wuy
+A 00002773 FHQWj
+A 000027af VLSUR
+A 00002911 NHPWj
+A 00002978 F8_^][
+A 000029d2 ~\wug
+A 00002afa ~\ruN
+A 00002c01 ~\wu/j
+A 00002d7a CP_^][
+A 00002faa D$8RP
+A 00002fca T$4PQR
+A 000030cf L$HPQS
+A 000034f5 T$DQR
+A 000035be L$DRPS
+A 00003654 L$LQP
+A 000037bc T$LRQS
+A 000038d1 T$LRP
+A 00003910 L$LQP
+A 00003a19 T$HPRS
+A 00003a5a K4PVS
+A 00003ca5 \$ UV
+A 00003df0 L$,A;
+A 00003ec9 L$,A;
+A 00003f4f L$,A;
+A 0000400b L$,A;
+A 000040ba T$0RSV
+A 00004133 AH;N,
+A 0000419e T$0RSV
+A 00004249 T$0RSV
+A 000042e2 T$0RSV
+A 00004321 T$0RSV
+A 0000433c V4PSV
+A 00004468 L$(SU
+A 000048ed ~(9~$u
+A 00004ff1 L$ RUPj
+A 00005023 ]^_[Y
+A 0000504d ]^_[Y
+A 000050d2 9t$Du
+A 000050eb *_^][
+A 0000510d 9(u	A
+A 00005160 D+3x%A
+A 00005402 ;D$<s
+A 00005420 ;D$<r
+A 00005462 T$$O#
+A 00005510 QSUVW
+A 0000553d _^][Y
+A 0000555b T$,PQh
+A 000055a9 D$0Qh
+A 000055e9 _^][Y
+A 00005608 _^][Y
+A 0000562c _^][Y
+A 00005650 _^][Y
+A 0000566f _^][Y
+A 00005693 _^][Y
+A 00005728 K<UWQ
+A 000057b4 K<UVQ
+A 00005bdd t$XPQV
+A 00005c9d t$XPQV
+A 0000679b L/ QV
+A 000068dd Cd_^[
+A 0000692b Cd_^[
+A 000069a7 Cx_^[
+A 00006a09 Cd_^[
+A 00006a57 Cd_^[
+A 00006aa5 Cd_^[
+A 00006af3 Cd_^[
+A 00006b41 Cd_^[
+A 00006b8f Cd_^[
+A 00006bdd Cd_^[
+A 00006c2b Cd_^[
+A 00006c79 Cd_^[
+A 00006cc7 Cd_^[
+A 00006d15 Cd_^[
+A 00006d63 Cd_^[
+A 00006d97 Cd_^[
+A 00006dcb Cd_^[
+A 00006ded Cd_^[
+A 000072fd Cd_^[
+A 000073cc Fd_^]
+A 0000744b @QRPWV
+A 0000746b @PQRV
+A 00007f1c j8h0p
+A 00007fd5 D/ VPS
+A 00008336 Fd@u	V
+A 00008365 @d@u	P
+A 00008389 Ed@u	U
+A 000085b9 MpQRU
+A 000086ac BQ@RPVU
+A 000086cd @PQRU
+A 0000885c ~=WVU
+A 00008b74 SUVW3
+A 00008c1b \$HUVWt
+A 00008f1f G\PVj
+A 00009094 D$8SUV
+A 000090ac Nhu%SV
+A 00009111 T$D|s
+A 000093ac l$ SV
+A 000095cb D$<F;
+A 000095fc ;\$@~
+A 00009610 ;\$@~ 
+A 0000968e t$4QV
+A 0000983f t$4SV
+A 00009a4c l$$uW
+A 00009aad HtpHtAHt
+A 00009f76 \$$t^Ht/Hur
+A 0000a63b Fh@t=
+A 0000ab38 uPWV3
+A 0000ac5e IIHHG
+A 0000b13f D$ f;H
+A 0000b1aa D$ f;H
+A 0000b217 D$ f;H
+A 0000b27c |$ f3
+A 0000b301 T$ f;J
+A 0000b36e T$ f;B
+A 0000b4b9 l$ f;M
+A 0000b4c0 u7f;U
+A 0000b4c6 u1f;u
+A 0000b5b7 |$ f;O
+A 0000b5be u5f;W
+A 0000b5c4 u/f;w
+A 0000b79c L$DFf
+A 0000bff1 _^][Y
+A 0000c0c4 _^][Y
+A 0000c14a _^][Y
+A 0000c192 _^][Y
+A 0000c218 _^][Y
+A 0000c249 _^][Y
+A 0000c28f _^][Y
+A 0000c3c0 _^][Y
+A 0000c3e7 _^][Y
+A 0000c42e _^][Y
+A 0000ca37 tX8O	uS
+A 0000ca9f tz8O	uu
+A 0000cb25 t#8O	u
+A 0000ce10 D$(wK
+A 0000cea7 D$ G;
+A 0000d4af L$@SPWQV
+A 0000d4be $_^][
+A 0000d5cd VUUUj
+A 0000d89f _^][Y
+A 0000d91a _^][Y
+A 0000d940 _^][Y
+A 0000d98b _^][Y
+A 0000d9ab t$`W3
+A 0000de7d L$<RPQh
+A 0000deba T$LPQRh
+A 0000ded1 (_^][
+A 0000df24 T$\PQRUV
+A 0000df33 H_^][
+A 0000e44a PQRUV
+A 0000e894 RPWSV
+A 0000e9a4 RPWSV
+A 0000ea58 |$(VWS
+A 0000eb8d ;t$0w
+A 0000eb9b ;t$0w
+A 0000ebcd t$(UP
+A 0000ebdf L$<RPVQS
+A 0000ee36 l$TVW
+A 0000ee77 t$\WVU
+A 0000f128 L$(hd
+A 0000f13a T$$RU
+A 0000f206 <)rE<zwA<Zv
+A 0000f219 <)r2<zw.<Zv
+A 0000f27c SUVWu:
+A 0000f3df \$ ;T$
+A 0000f3e9 T$$EF
+A 0000f4aa \$ ;T$
+A 0000f4b4 T$$EF
+A 0000f571 \$ ;T$
+A 0000f57b T$$EF
+A 0000f775 L$8;L$
+A 0000f896 \$ ;L$
+A 0000f9a1 L$8;L$
+A 0000fbc6 L$,AF@
+A 0000fdfa EpPRU
+A 0000fed5 E`_^][Y
+A 000100d9 Fd_^][
+A 00010d3f G\PVj
+A 00010f02 NPPQRU
+A 00010f54 NlQRPU
+A 00010fb7 VxRPQU
+A 00011340 ~AWVU
+A 00011785 \$HUV
+A 00012042 ,SUVW
+A 000121d1 \$Dv]
+A 00012222 \$DCF;
+A 0001271c \$$UVW
+A 0001280d |$89|$<t
+A 000128e8 T$DPh
+A 000129bc j8h0p
+A 00012afc G`_^[
+A 00012f95 L$$h(
+A 00013275 \$4UV
+A 0001330f < u h\
+A 0001332d NO< t
+A 00013351 FO< t
+A 0001335f t&< u
+A 000133c9 T$<h$
+A 00013494 D$TS3
+A 0001349c l$XV;
+A 00013505 D$,hd
+A 00013517 L$(QU
+A 00013685 |$ t 
+A 000138ec j	Qh 
+A 0001391d l$$VW|
+A 0001398b D$0~E
+A 000139d6 L$,Qh(
+A 00013a0e D$ RP
+A 00013a79 L$0QU
+A 00013aec j	Qh0
+A 00013d42 Fx_^[
+A 000143ac |$D@BEA;G
+A 00014472 L$(uz
+A 0001454e D$DBEG;P
+A 00014620 L$(u{3
+A 0001470c D$ ;B
+A 0001475a T$D@GECA;B
+A 00014822 L$4uz
+A 000148d3 |$$vE
+A 00014926 l$0;Q
+A 000149e0 T$(@CGFB
+A 00014aaa t$@WV
+A 00015080 |$ WUSV
+A 000151bf @APQV
+A 0001543c T$ RV
+A 00015534 D$$SUV
+A 000156df D$0tc
+A 00015941 _^][Y
+A 000167cc T$<VW
+A 00016c9a WVPQR
+A 00016e64 D$,VP
+A 00016f20 _^][Y
+A 00017010 D$ _^][Y
+A 0001702e _^][Y
+A 00017040 _^][Y
+A 000170b0 _^][Y
+A 0001717b D$ _^][Y
+A 00017199 _^][Y
+A 000171b4 _^][Y
+A 000171c6 _^][Y
+A 00017304 D$,VP
+A 00017490 QSUVW3
+A 00017545 _^][Y
+A 0001773e C =02CVu
+A 000178f9 B 02CV
+A 00017fc0 u"WVS
+A 00018262 HSUVWh
+A 000182d0 f9|$F
+A 00018b88 D$XRP
+A 00018bcc |$\-u
+A 00018e2b PVWj 
+A 00018e4c D$*RP
+A 00018e67 QVWj0
+A 00018e93 T$HPR
+A 00018edd QRWj 
+A 00019170 SUVWj
+A 000193d5 																								
+A 000193ee 													
+A 000193fe 													
+A 0001940d 										
+A 00019418 					
+A 00019434 tBjtj
+A 000194ea uRjtj
+A 00019abb _^][Y
+A 00019ad4 _^][Y
+A 00019bd7 _^][Y
+A 00019c15 _^][Y
+A 0001a10a L$ _^]+
+A 0001a489 /;t$$u
+A 0001a6f3 SVWUj
+A 0001a75c t.;t$$t(
+A 0001aefb SUVWP
+A 0001b9c8 _^][Y
+A 0001bafa 8"uV@
+A 0001bc72 D$ _^]
+A 0001bc83 SUVWj
+A 0001c039 WSUVj
+A 0001c15f SUVW3
+A 0001c333 SUVWj
+A 0001c4e5 Iu1Sj
+A 0001c59b It	Iu
+A 0001c710 SVWh8
+A 0001caaf L$ UQSRP
+A 0001ccf0 VC20XC00U
+A 0001d01b WVSh8
+A 0001d2bb t!EUS
+A 0001d5e6 1_^][
+A 0001d75b SVWPQ
+A 0001e984 L$dSV
+A 0001f053 _^][Y
+A 0001f080 T$(SSSSWQh 
+A 0001f09d _^][Y
+A 0001f0b6 _^][Y
+A 0001f0c8 VUWPh 
+A 0001f130 T$$WSR
+A 0001f15e _^][Y
+A 0001f1ca L$ RQP
+A 0001f1d2 _^][Y
+A 0001f1fb WWURj	S
+A 0001f223 VWUPj
+A 0001f253 _^][Y
+A 0001f268 _^][Y
+A 0001f335 QVWRP
+A 0001f36a VWj	U
+A 0001f39b WSVPj
+A 0001f3f1 RWSUP
+A 0001f43b VRWSUP
+A 0001f483 D$0PVQh 
+A 0001f6f9 D$HUV
+A 0001fa65 L$,u	
+A 0001fc31 D$TRVP
+A 0001fd20 T$DQPR
+A 00020066 L$ PQF
+A 00020145 T$ QR
+A 00020174 KK<5|1;
+A 00020190 D$HCf
+A 00020214 SUVW3
+A 00020a57 VPj1Sj
+A 00020a6b Qj2Sj
+A 00020a7e Rj3Sj
+A 00020a91 Pj4Sj
+A 00020aa4 Qj5Sj
+A 00020ab7 Rj6Sj
+A 00020ac7 Wj7Sj
+A 00020ad8 G Pj*Sj
+A 00020aed Qj+Sj
+A 00020b00 Rj,Sj
+A 00020b11 G,Pj-Sj
+A 00020b26 Qj.Sj
+A 00020b39 Rj/Sj
+A 00020b4c Pj0Sj
+A 00020b5f QjDSj
+A 00020b72 RjESj
+A 00020b83 G@PjFSj
+A 00020b98 QjGSj
+A 00020bab RjHSj
+A 00020bbc GLPjISj
+A 00020bd1 QjJSj
+A 00020be4 RjKSj
+A 00020bf5 GXPjLSj
+A 00020c0a QjMSj
+A 00020c1d RjNSj
+A 00020c2e GdPjOSj
+A 00020c43 Qj8Sj
+A 00020c56 Rj9Sj
+A 00020c67 GpPj:Sj
+A 00020c7c Qj;Sj
+A 00020c8f Rj<Sj
+A 00020ca0 G|Pj=Sj
+A 00020cb8 Qj>Sj
+A 00020cce Rj?Sj
+A 00020ce4 Pj@Sj
+A 00020cfa QjASj
+A 00020d10 RjBSj
+A 00020d26 PjCSj
+A 00020d3c Qj(Sj
+A 00020d52 Rj)Sj
+A 00020d7e Qj Uj
+A 00020ffd Pj#Wj
+A 00021021 Qj%Wj
+A 00021467 S RjPVj
+A 0002147a C$PjQVj
+A 000214b3 C*PjTVj
+A 000214c8 QjUVj
+A 000214db RjVVj
+A 000214ec C-PjWVj
+A 00021501 QjRVj
+A 00021514 SjSVj
+A 000215e7  SUVW3
+A 000218a6 PPPPPPPP
+A 00021926 PPPPPPPP
+A 000219d4 T$(SUVf
+A 00021a47 *_^][
+A 00021a9d *_^][
+A 00021b47 l$0u)
+A 00021bcf f9|$(w
+A 00021be9 9D$*u,9D$.
+A 00021d79 zuTVVVSU
+A 00021f9d T$$PPj
+A 00021fca D$ Pj
+A 00022105 T$,PQj
+A 00022541 Qkkbal
+A 0002279d wn>Jj
+A 000227ff - deflate 1.1.2 Copyright 1995-1998 Jean-loup Gailly 
+A 00022900  inflate 1.1.2 Copyright 1995-1998 Mark Adler 
+A 00022b20 0123456789ABCDEF
+A 000232c0 								
+A 00023698 IsTNT
+A 000236a0 kernel32.dll
+A 000236d1  (8PX
+A 000236d9 700WP
+A 000236e9 `h````
+A 000236f1 ppxxxx
+A 0002371c (null)
+A 0002373f ?IsProcessorFeaturePresent
+A 0002375c KERNEL32
+A 00023770 e+000
+A 000237df @runtime error 
+A 000237f4 TLOSS error
+A 00023804 SING error
+A 00023814 DOMAIN error
+A 00023824 R6028
+A 0002382b - unable to initialize heap
+A 0002384c R6027
+A 00023853 - not enough space for lowio initialization
+A 00023884 R6026
+A 0002388b - not enough space for stdio initialization
+A 000238bc R6025
+A 000238c3 - pure virtual function call
+A 000238e4 R6024
+A 000238eb - not enough space for _onexit/atexit table
+A 0002391c R6019
+A 00023923 - unable to open console device
+A 00023948 R6018
+A 0002394f - unexpected heap error
+A 0002396c R6017
+A 00023973 - unexpected multithread lock error
+A 0002399c R6016
+A 000239a3 - not enough space for thread data
+A 000239ca abnormal program termination
+A 000239ec R6009
+A 000239f3 - not enough space for environment
+A 00023a18 R6008
+A 00023a1f - not enough space for arguments
+A 00023a44 R6002
+A 00023a4b - floating point not loaded
+A 00023a6c Microsoft Visual C++ Runtime Library
+A 00023a98 Runtime Error!
+A 00023aa8 Program: 
+A 00023ab8 <program name unknown>
+A 00023ae8 GetLastActivePopup
+A 00023afc GetActiveWindow
+A 00023b0c MessageBoxA
+A 00023b18 user32.dll
+A 00023b24 LC_TIME
+A 00023b2c LC_NUMERIC
+A 00023b38 LC_MONETARY
+A 00023b44 LC_CTYPE
+A 00023b50 LC_COLLATE
+A 00023b5c LC_ALL
+A 00023b70 1#QNAN
+A 00023b78 1#INF
+A 00023b80 1#IND
+A 00023b88 1#SNAN
+A 00023b9c frexp
+A 00023bac _hypot
+A 00023bb4 _cabs
+A 00023bbc ldexp
+A 00023bd4 floor
+A 00023bf8 atan2
+A 00023c30 log10
+A 00023c60 united-states
+A 00023c70 united-kingdom
+A 00023c80 united states
+A 00023c90 united kingdom
+A 00023ca4 turkey
+A 00023cb0 taiwan
+A 00023cb8 switzerland
+A 00023cc4 sweden
+A 00023cd4 spain
+A 00023cdc south-korea
+A 00023ce8 south korea
+A 00023cf8 singapore
+A 00023d04 russia
+A 00023d10 pr-china
+A 00023d1c pr china
+A 00023d28 portugal
+A 00023d34 poland
+A 00023d48 norway
+A 00023d50 new-zealand
+A 00023d5c new zealand
+A 00023d68 netherlands
+A 00023d74 mexico
+A 00023d80 korea
+A 00023d88 japan
+A 00023d90 italy
+A 00023d9c ireland
+A 00023da4 iceland
+A 00023dac hungary
+A 00023db4 hong-kong
+A 00023dc0 hong kong
+A 00023dcc holland
+A 00023dd8 greece
+A 00023de0 great britain
+A 00023df4 germany
+A 00023e00 france
+A 00023e08 finland
+A 00023e10 england
+A 00023e1c denmark
+A 00023e2c china
+A 00023e38 canada
+A 00023e44 britain
+A 00023e4c brazil
+A 00023e58 belgium
+A 00023e68 austria
+A 00023e70 australia
+A 00023e80 america
+A 00023e94 turkish
+A 00023ea0 swiss
+A 00023ea8 swedish
+A 00023eb4 spanish-modern
+A 00023ec4 spanish-mexican
+A 00023ed4 spanish
+A 00023edc slovak
+A 00023ee8 russian
+A 00023efc portuguese-brazilian
+A 00023f14 portuguese
+A 00023f20 polish
+A 00023f2c norwegian-nynorsk
+A 00023f40 norwegian-bokmal
+A 00023f54 norwegian
+A 00023f70 korean
+A 00023f80 japanese
+A 00023f90 italian-swiss
+A 00023fa0 italian
+A 00023fb0 irish-english
+A 00023fc0 icelandic
+A 00023fcc hungarian
+A 00023fdc greek
+A 00023fe4 german-swiss
+A 00023ff4 german-austrian
+A 00024004 german
+A 00024010 french-swiss
+A 00024020 french-canadian
+A 00024030 french-belgian
+A 00024040 french
+A 00024054 finnish
+A 00024078 english-usa
+A 00024084 english-us
+A 00024090 english-uk
+A 0002409c english-nz
+A 000240a8 english-ire
+A 000240b4 english-can
+A 000240c0 english-aus
+A 000240cc english-american
+A 000240e0 english
+A 000240f8 dutch-belgian
+A 00024108 dutch
+A 0002411c danish
+A 00024128 czech
+A 0002413c chinese-traditional
+A 00024150 chinese-singapore
+A 00024164 chinese-simplified
+A 00024178 chinese-hongkong
+A 0002418c chinese
+A 0002419c canadian
+A 000241a8 belgian
+A 000241b0 australian
+A 000241bc american-english
+A 000241d0 american english
+A 000241e4 american
+A 000241f0 H:mm:ss
+A 000241f8 dddd, MMMM dd, yyyy
+A 0002420c M/d/yy
+A 0002421c December
+A 00024228 November
+A 00024234 October
+A 0002423c September
+A 00024248 August
+A 00024260 April
+A 00024268 March
+A 00024270 February
+A 0002427c January
+A 000242b4 Saturday
+A 000242c0 Friday
+A 000242c8 Thursday
+A 000242d4 Wednesday
+A 000242e0 Tuesday
+A 000242e8 Monday
+A 000242f0 Sunday
+A 00024318 SunMonTueWedThuFriSat
+A 00024330 JanFebMarAprMayJunJulAugSepOctNovDec
+A 00024a22 LPng101.dll
+A 00024a2e adler32
+A 00024a36 compress
+A 00024a3f compress2
+A 00024a49 crc32
+A 00024a4f deflate
+A 00024a57 deflateCopy
+A 00024a63 deflateEnd
+A 00024a6e deflateInit2_
+A 00024a7c deflateInit_
+A 00024a89 deflateParams
+A 00024a97 deflateReset
+A 00024aa4 deflateSetDictionary
+A 00024ab9 get_crc_table
+A 00024ac7 gzclose
+A 00024acf gzdopen
+A 00024ad7 gzeof
+A 00024add gzerror
+A 00024ae5 gzflush
+A 00024aed gzgetc
+A 00024af4 gzgets
+A 00024afb gzopen
+A 00024b02 gzprintf
+A 00024b0b gzputc
+A 00024b12 gzputs
+A 00024b19 gzread
+A 00024b20 gzrewind
+A 00024b29 gzseek
+A 00024b30 gzsetparams
+A 00024b3c gztell
+A 00024b43 gzwrite
+A 00024b4b inflate
+A 00024b53 inflateEnd
+A 00024b5e inflateInit2_
+A 00024b6c inflateInit_
+A 00024b79 inflateReset
+A 00024b86 inflateSetDictionary
+A 00024b9b inflateSync
+A 00024ba7 inflateSyncPoint
+A 00024bb8 png_build_grayscale_palette
+A 00024bd4 png_check_sig
+A 00024be2 png_chunk_error
+A 00024bf2 png_chunk_warning
+A 00024c04 png_close_file
+A 00024c13 png_convert_from_struct_tm
+A 00024c2e png_convert_from_time_t
+A 00024c46 png_convert_to_rfc1123
+A 00024c5d png_create_info_struct
+A 00024c74 png_create_read_struct
+A 00024c8b png_create_write_struct
+A 00024ca3 png_destroy_info_struct
+A 00024cbb png_destroy_read_struct
+A 00024cd3 png_destroy_write_struct
+A 00024cec png_error
+A 00024cf6 png_free
+A 00024cff png_get_IHDR
+A 00024d0c png_get_PLTE
+A 00024d19 png_get_bKGD
+A 00024d26 png_get_bit_depth
+A 00024d38 png_get_cHRM
+A 00024d45 png_get_channels
+A 00024d56 png_get_color_type
+A 00024d69 png_get_compression_type
+A 00024d82 png_get_error_ptr
+A 00024d94 png_get_filter_type
+A 00024da8 png_get_gAMA
+A 00024db5 png_get_hIST
+A 00024dc2 png_get_image_height
+A 00024dd7 png_get_image_width
+A 00024deb png_get_interlace_type
+A 00024e02 png_get_io_ptr
+A 00024e11 png_get_oFFs
+A 00024e1e png_get_pCAL
+A 00024e2b png_get_pHYs
+A 00024e38 png_get_pixel_aspect_ratio
+A 00024e53 png_get_pixels_per_meter
+A 00024e6c png_get_progressive_ptr
+A 00024e84 png_get_rowbytes
+A 00024e95 png_get_sBIT
+A 00024ea2 png_get_sRGB
+A 00024eaf png_get_signature
+A 00024ec1 png_get_tIME
+A 00024ece png_get_tRNS
+A 00024edb png_get_text
+A 00024ee8 png_get_valid
+A 00024ef6 png_get_x_offset_microns
+A 00024f0f png_get_x_offset_pixels
+A 00024f27 png_get_x_pixels_per_meter
+A 00024f42 png_get_y_offset_microns
+A 00024f5b png_get_y_offset_pixels
+A 00024f73 png_get_y_pixels_per_meter
+A 00024f8e png_init_io
+A 00024f9a png_malloc
+A 00024fa5 png_memcpy_check
+A 00024fb6 png_memset_check
+A 00024fc7 png_open_file
+A 00024fd5 png_process_data
+A 00024fe6 png_progressive_combine_row
+A 00025002 png_read_end
+A 0002500f png_read_image
+A 0002501e png_read_info
+A 0002502c png_read_row
+A 00025039 png_read_rows
+A 00025047 png_read_update_info
+A 0002505c png_set_IHDR
+A 00025069 png_set_PLTE
+A 00025076 png_set_bKGD
+A 00025083 png_set_background
+A 00025096 png_set_bgr
+A 000250a2 png_set_cHRM
+A 000250af png_set_compression_level
+A 000250c9 png_set_compression_mem_level
+A 000250e7 png_set_compression_method
+A 00025102 png_set_compression_strategy
+A 0002511f png_set_compression_window_bits
+A 0002513f png_set_crc_action
+A 00025152 png_set_dither
+A 00025161 png_set_error_fn
+A 00025172 png_set_expand
+A 00025181 png_set_filler
+A 00025190 png_set_filter
+A 0002519f png_set_filter_heuristics
+A 000251b9 png_set_flush
+A 000251c7 png_set_gAMA
+A 000251d4 png_set_gamma
+A 000251e2 png_set_gray_to_rgb
+A 000251f6 png_set_hIST
+A 00025203 png_set_interlace_handling
+A 0002521e png_set_invert_alpha
+A 00025233 png_set_invert_mono
+A 00025247 png_set_oFFs
+A 00025254 png_set_pCAL
+A 00025261 png_set_pHYs
+A 0002526e png_set_packing
+A 0002527e png_set_packswap
+A 0002528f png_set_progressive_read_fn
+A 000252ab png_set_read_fn
+A 000252bb png_set_read_status_fn
+A 000252d2 png_set_read_user_transform_fn
+A 000252f1 png_set_sBIT
+A 000252fe png_set_sRGB
+A 0002530b png_set_sRGB_gAMA_and_cHRM
+A 00025326 png_set_shift
+A 00025334 png_set_sig_bytes
+A 00025346 png_set_strip_16
+A 00025357 png_set_strip_alpha
+A 0002536b png_set_swap
+A 00025378 png_set_swap_alpha
+A 0002538b png_set_tIME
+A 00025398 png_set_tRNS
+A 000253a5 png_set_text
+A 000253b2 png_set_write_fn
+A 000253c3 png_set_write_status_fn
+A 000253db png_set_write_user_transform_fn
+A 000253fb png_sig_cmp
+A 00025407 png_start_read_image
+A 0002541c png_warning
+A 00025428 png_write_chunk
+A 00025438 png_write_chunk_data
+A 0002544d png_write_chunk_end
+A 00025461 png_write_chunk_start
+A 00025477 png_write_end
+A 00025485 png_write_flush
+A 00025495 png_write_image
+A 000254a5 png_write_info
+A 000254b4 png_write_row
+A 000254c2 png_write_rows
+A 000254d1 uncompress
+A 000254dc zError
+A 000254e3 zlibVersion
+A 00025630 1.1.2
+A 00025648 %c%c%c%c%c%c%c%c%c%c
+A 00025660 <fd:%d>
+A 0002566c invalid bit length repeat
+A 00025688 too many length or distance symbols
+A 000256ac invalid stored block lengths
+A 000256cc invalid block type
+A 000256e0 invalid distance code
+A 000256f8 invalid literal/length code
+A 00025714 need dictionary
+A 00025724 incorrect data check
+A 0002573c incorrect header check
+A 00025754 invalid window size
+A 00025768 unknown compression method
+A 00026890 incomplete dynamic bit lengths tree
+A 000268b4 oversubscribed dynamic bit lengths tree
+A 000268dc incomplete literal/length tree
+A 000268fc oversubscribed literal/length tree
+A 00026920 empty distance tree with lengths
+A 00026944 incomplete distance tree
+A 00026960 oversubscribed distance tree
+A 000269c8 1.0.1
+A 00026b24 Too many bytes for PNG signature.
+A 00026b48 libpng error: %s
+A 00026b5c libpng warning: %s
+A 00026b70 Width too large for libpng to process image data.
+A 00026ba4 Out of Memory
+A 00026bb4 PNG file corrupted by ASCII conversion
+A 00026bdc Not a PNG file
+A 00026bec Too many IDAT's found
+A 00026c04 Not enough compressed data
+A 00026c20 Extra compressed data
+A 00026c38 Decompression Error
+A 00026c4c Extra compression data
+A 00026c64 Out of place tEXt
+A 00026c78 Out of place zTXt
+A 00026c8c unknown critical chunk
+A 00026ca4 Unknown zlib error
+A 00026cb8 zlib version error
+A 00026ccc zlib memory error
+A 00026ce0 Incompatible libpng version in application and library
+A 00026d18 Missing PLTE before IDAT
+A 00026d34 Missing IHDR before IDAT
+A 00026d50 Decompression error
+A 00026d64 Not enough image data
+A 00026d7c Invalid attempt to read row data
+A 00026da0 Call to NULL read function
+A 00026dbc Read Error
+A 00026de8 Can't discard critical data on CRC error.
+A 00026e14 Application must supply a known background gamma
+A 00026e48 png_do_dither returned rowbytes=0
+A 00026e6c NULL row buffer for row %ld, pass %d
+A 00026e98 Error decoding zTXt chunk
+A 00026eb4 CRC error
+A 00026ec0 Unknown filter method in IHDR
+A 00026ee0 Unknown compression method in IHDR
+A 00026f04 Unknown interlace method in IHDR
+A 00026f28 Invalid color type/bit depth combination in IHDR
+A 00026f5c Invalid color type in IHDR
+A 00026f78 Invalid bit depth in IHDR
+A 00026f94 Invalid image size in IHDR
+A 00026fb0 Invalid IHDR chunk
+A 00026fc4 Out of place IHDR
+A 00026fd8 Invalid palette chunk
+A 00026ff0 Truncating incorrect tRNS chunk length
+A 00027018 Duplicate PLTE chunk
+A 00027030 Invalid PLTE after IDAT
+A 00027048 Missing IHDR before PLTE
+A 00027064 Incorrect IEND chunk length
+A 00027080 No image in file
+A 00027094 Duplicate gAMA chunk
+A 000270ac Out of place gAMA chunk
+A 000270c4 Invalid gAMA after IDAT
+A 000270dc igamma = %lu
+A 000270ec Ignoring incorrect gAMA value when sRGB is also present
+A 00027124 Incorrect gAMA chunk length
+A 00027140 Missing IHDR before gAMA
+A 0002715c Duplicate sBIT chunk
+A 00027174 Out of place sBIT chunk
+A 0002718c Invalid sBIT after IDAT
+A 000271a4 Incorrect sBIT chunk length
+A 000271c0 Missing IHDR before sBIT
+A 000271dc Duplicate cHRM chunk
+A 000271f4 Missing PLTE before cHRM
+A 00027210 Invalid cHRM after IDAT
+A 00027228 Invalid cHRM white point
+A 00027244 Invalid cHRM red point
+A 0002725c Invalid cHRM green point
+A 00027278 Invalid cHRM blue point
+A 00027290 gx=%f, gy=%f, bx=%f, by=%f
+A 000272ac wx=%f, wy=%f, rx=%f, ry=%f
+A 000272c8 Ignoring incorrect cHRM value when sRGB is also present
+A 00027300 Incorrect cHRM chunk length
+A 0002731c Duplicate sRGB chunk
+A 00027334 Out of place sRGB chunk
+A 0002734c Invalid sRGB after IDAT
+A 00027364 gamma=%f
+A 00027370 Unknown sRGB intent
+A 00027384 Incorrect sRGB chunk length
+A 000273a0 Missing IHDR before sRGB
+A 000273bc Duplicate tRNS chunk
+A 000273d4 Invalid tRNS after IDAT
+A 000273ec tRNS chunk not allowed with alpha channel
+A 00027418 Incorrect tRNS chunk length
+A 00027434 Missing PLTE before tRNS
+A 00027450 Missing IHDR before tRNS
+A 0002746c Duplicate bKGD chunk
+A 00027484 Missing PLTE before bKGD
+A 000274a0 Invalid bKGD after IDAT
+A 000274b8 Incorrect bKGD chunk length
+A 000274d4 Missing IHDR before bKGD
+A 000274f0 Duplicate hIST chunk
+A 00027508 Missing PLTE before hIST
+A 00027524 Invalid hIST after IDAT
+A 0002753c Incorrect hIST chunk length
+A 00027558 Missing IHDR before hIST
+A 00027574 Duplicate pHYS chunk
+A 0002758c Invalid pHYS after IDAT
+A 000275a4 Incorrect pHYs chunk length
+A 000275c0 Missing IHDR before pHYS
+A 000275dc Duplicate oFFs chunk
+A 000275f4 Invalid oFFs after IDAT
+A 0002760c Incorrect oFFs chunk length
+A 00027628 Missing IHDR before oFFs
+A 00027644 Duplicate pCAL chunk
+A 0002765c Invalid pCAL after IDAT
+A 00027674 Unrecognized equation type for pCAL chunk
+A 000276a0 Invalid pCAL parameters for equation type
+A 000276cc Invalid pCAL data
+A 000276e0 Missing IHDR before pCAL
+A 000276fc Duplicate tIME chunk
+A 00027714 Incorrect tIME chunk length
+A 00027730 Out of place tIME chunk
+A 00027748 Missing IHDR before tEXt
+A 00027764 Unknown zTXt compression type %d
+A 00027788 Zero length zTXt chunk
+A 000277a0 Missing IHDR before zTXt
+A 000277bc invalid chunk type
+A 000277d0 Bad adaptive filter type
+A 000277ec Width too large to process image data; rowbytes will overflow.
+A 00027a32  0@P`p
+A 00027a42 !1AQaq
+A 00027a52 "2BRbr
+A 00027a62 #3CScs
+A 00027a72 $4DTdt
+A 00027a82 %5EUeu
+A 00027a92 &6FVfv
+A 00027aa2 '7GWgw
+A 00027ab2 (8HXhx
+A 00027ac2 )9IYiy
+A 00027ad2 *:JZjz
+A 00027ae2 +;K[k{
+A 00027af2 ,<L\l|
+A 00027b02 -=M]m}
+A 00027b12 .>N^n~
+A 00027b22 /?O_o
+A 00027b30 Call to NULL write function
+A 00027b4c Write Error
+A 00027b58 Valid palette required for paletted images
+A 00027b84 No IDATs written into file
+A 00027ba0 %d %s %d %02d:%02d:%02d +0000
+A 00027bc0 zlib error
+A 00027bcc Unknown custom filter method
+A 00027bec Can't add Paeth filter after starting
+A 00027c14 Can't add Average filter after starting
+A 00027c3c Can't add Up filter after starting
+A 00027c60 Unknown row filter for method 0
+A 00027c80 Unknown filter heuristic method
+A 00027ca0 Only compression windows <= 32k supported by PNG
+A 00027cd4 Only compression method 8 is supported by PNG
+A 00027d04 Invalid interlace type specified
+A 00027d28 Invalid filter type specified
+A 00027d48 Invalid compression type specified
+A 00027d6c Invalid image color type specified
+A 00027d90 Invalid bit depth for RGBA image
+A 00027db4 Invalid bit depth for grayscale+alpha image
+A 00027de0 Invalid bit depth for paletted image
+A 00027e08 Invalid bit depth for RGB image
+A 00027e28 Invalid bit depth for grayscale image
+A 00027e50 Invalid number of colors in palette
+A 00027e74 Invalid sRGB rendering intent specified
+A 00027e9c Invalid sBIT depth specified
+A 00027ebc Invalid cHRM white point specified
+A 00027ee0 Invalid cHRM red point specified
+A 00027f04 Invalid cHRM green point specified
+A 00027f28 Invalid cHRM blue point specified
+A 00027f4c Can't write tRNS with an alpha channel
+A 00027f74 Invalid number of transparent colors specified
+A 00027fa4 Invalid background palette index
+A 00027fc8 Invalid number of histogram entries specified
+A 00027ff8 keyword length must be 1 - 79 characters
+A 00028024 zero length keyword
+A 00028038 leading spaces removed from keyword
+A 0002805c trailing spaces removed from keyword
+A 00028084 invalid keyword character 0x%02X
+A 000280a8 Empty keyword in tEXt chunk
+A 000280c4 Empty keyword in zTXt chunk
+A 000280e0 Unrecognized unit type for oFFs chunk
+A 00028108 Unrecognized unit type for pHYs chunk
+A 00028130 Invalid time specified for tIME chunk
+A 000281c8 incompatible version
+A 000281e0 buffer error
+A 000281f0 insufficient memory
+A 00028204 data error
+A 00028210 stream error
+A 00028220 file error
+A 0002822c stream end
+A 0002bbde z?aUY
+A 0002bc20 zc%C1
+A 0002bc73 -64OS
+A 0002bffa HeapAlloc
+A 0002c006 HeapFree
+A 0002c012 GetCommandLineA
+A 0002c024 GetProcAddress
+A 0002c036 GetModuleHandleA
+A 0002c04a GetVersion
+A 0002c058 InitializeCriticalSection
+A 0002c074 DeleteCriticalSection
+A 0002c08c EnterCriticalSection
+A 0002c0a4 LeaveCriticalSection
+A 0002c0bc ExitProcess
+A 0002c0ca SetHandleCount
+A 0002c0dc GetStdHandle
+A 0002c0ec GetFileType
+A 0002c0fa GetStartupInfoA
+A 0002c10c GetLastError
+A 0002c11c SetFilePointer
+A 0002c12e GetCurrentThreadId
+A 0002c144 TlsSetValue
+A 0002c152 TlsAlloc
+A 0002c15e TlsFree
+A 0002c168 SetLastError
+A 0002c178 TlsGetValue
+A 0002c186 HeapDestroy
+A 0002c194 HeapCreate
+A 0002c1a2 VirtualFree
+A 0002c1b0 VirtualAlloc
+A 0002c1c0 WriteFile
+A 0002c1cc ReadFile
+A 0002c1d8 CloseHandle
+A 0002c1e6 FlushFileBuffers
+A 0002c1fa RtlUnwind
+A 0002c206 TerminateProcess
+A 0002c21a GetCurrentProcess
+A 0002c22e GetModuleFileNameA
+A 0002c244 GetCPInfo
+A 0002c250 GetACP
+A 0002c25a GetOEMCP
+A 0002c266 FreeEnvironmentStringsA
+A 0002c280 MultiByteToWideChar
+A 0002c296 FreeEnvironmentStringsW
+A 0002c2b0 GetEnvironmentStrings
+A 0002c2c8 GetEnvironmentStringsW
+A 0002c2e2 WideCharToMultiByte
+A 0002c2f8 SetStdHandle
+A 0002c308 InterlockedDecrement
+A 0002c320 InterlockedIncrement
+A 0002c338 CreateFileA
+A 0002c346 LoadLibraryA
+A 0002c356 SetEndOfFile
+A 0002c366 GetStringTypeA
+A 0002c378 GetStringTypeW
+A 0002c38a LCMapStringA
+A 0002c39a LCMapStringW
+A 0002c3aa RaiseException
+A 0002c3bc GetLocaleInfoA
+A 0002c3ce GetLocaleInfoW
+A 0002c3de KERNEL32.dll
+A 0002c40b 2L2l2
+A 0002c431 7f8<9`9
+A 0002c43b :%>1>@>O>
+A 0002c491 3!4W5|7
+A 0002c4cf 0 0$0(0,00040
+A 0002c4f1 4[5#6g6
+A 0002c537 2:2c2}2
+A 0002c545 2 4s4E8O8
+A 0002c555 93;u>
+A 0002c567 2T3X3\3`3d3h3
+A 0002c57b 475]5
+A 0002c595 8!9o9
+A 0002c59f =&?Y?
+A 0002c5d9 ;);G;L;S;Z;
+A 0002c601 ===c=
+A 0002c60d =!>G>m>
+A 0002c629 0C0p0
+A 0002c639 1,213S3
+A 0002c651 5@5X5{5
+A 0002c65f 6*6M6p6
+A 0002c675 :3;d;
+A 0002c6ab 7@7H7
+A 0002c6c1 8,898?8a8n8t8
+A 0002c6db ;&<`<
+A 0002c6e7 =B=e=
+A 0002c6f1 ? ?$?(?
+A 0002c747 < <$<(<
+A 0002c758 4080<0@0D0H0L0
+A 0002c771 8$8*8R8~8
+A 0002c7a9 >O?z?
+A 0002c7d5 101o1
+A 0002c7e3 2R3a3f3
+A 0002c7f5 4%5K5p5
+A 0002c7ff 5"6Q6_6x6
+A 0002c80f 6,7:7S7h7
+A 0002c821 8.8C8\8u8
+A 0002c833 9/9H9{9
+A 0002c851 :%:6:>:N:
+A 0002c861 :=;];~;
+A 0002c86f <W<n<
+A 0002c87f =/=7=N=V=m=u=
+A 0002c8a1 >->Q>x>
+A 0002c8ab >(?T?
+A 0002c8c5 1)2Y2
+A 0002c8dd 4*5A5
+A 0002c8e9 6"7F7
+A 0002c903 <,=[=
+A 0002c915 1i2l3
+A 0002c937 9::T:
+A 0002c943 ;M;S;~>
+A 0002c957 5(545
+A 0002c9b3 7^8m8z8
+A 0002c9cd 2+3;3B3G3_3
+A 0002c9fd 6 6$6(6,606D6H6L6P6T6X6\6`6
+A 0002ca1b 6 7J7v7|7
+A 0002ca37 9&9,9F9O9i9
+A 0002ca53 :4:I:^:w:
+A 0002ca6b ;&;7;=;W;`;
+A 0002ca81 <0<j<
+A 0002ca89 <&=D=
+A 0002caac 10z0	1p1
+A 0002caeb =6=>=
+A 0002cafd 8 8!:/:T;b;
+A 0002cb17 6_7">
+A 0002cb31 3a4~4i5
+A 0002cb4b 8 8$8(8,8
+A 0002cb5d 94:>:
+A 0002cb77 1'1i2s2
+A 0002cb91 4%4D4V4{4
+A 0002cbb3 6,696 7w7
+A 0002cbbf 7u8|8E9R9
+A 0002cbd9 :>:O:T:a:g:
+A 0002cbf5 :S;x;
+A 0002cbff < <1<8<A<J<R<d<i<u<}<
+A 0002cc25 =%=,=H=O=i=p=
+A 0002cc41 > >R>
+A 0002cc51 ?+?6?d?w?
+A 0002cc6d 0Y0`0t0{0
+A 0002cc8b 252@2
+A 0002cc93 303l3s3m4t4
+A 0002cc9f 4=5D5
+A 0002ccaf 7,;0;4;8;<;@;D;H;L;P;T;X;\;`;x;|;
+A 0002cd11 >w?}?
+A 0002cd34 (000I0Q0d0
+A 0002cd51 1+1A1Q1j1
+A 0002cd61 2"232:2T2Y2r2y2
+A 0002cd87 3"3+313:3
+A 0002cd9b 4#4)4B4I4Q4f4
+A 0002cdaf 555F5
+A 0002cdcd :m:z:
+A 0002cddb ===\=
+A 0002cdeb ?h?r?
+A 0002ce05 1Q2h2
+A 0002ce1b 3\4o4w4
+A 0002ce33 5Y5i5p5
+A 0002ce5b 7%757W7
+A 0002ce71 <A=x=
+A 0002ce9b 2&2j2{2
+A 0002ceb1 343E3M3_3
+A 0002cecb 4*5<5
+A 0002cedf 5_6e6
+A 0002cef5 939<9V9_9n9{9
+A 0002cf11 :(:.:P:[:a:f:l:u:~:
+A 0002cf35 ;	;(;,;0;4;8;Y;d;i;n;s;x;
+A 0002cf57 <C<Y<g<
+A 0002cf65 = =2=[=n=w=
+A 0002cf79 >*>k>y>
+A 0002cf9d 0,0>0D0_0
+A 0002cfb1 1U1h1
+A 0002cfbd 2R2Y2
+A 0002cfd3 3%3.3p3
+A 0002cff1 6;7B7D8H8L8P8T8
+A 0002d00b <%<*<0<9<v<
+A 0002d039 555[5u5|5
+A 0002d059 5Z6e6
+A 0002d073 7 7$7(7,707z7
+A 0002d089 8^8f8u8}8
+A 0002d0a1 0Y1t1
+A 0002d0a7 1f2p2
+A 0002d0b1 4,4}4!5+5M5
+A 0002d0db 9!9&90979?9E9L9Q9b9
+A 0002d0fb <"<4<o<
+A 0002d109 =r={=
+A 0002d117 >,>B>v>~>
+A 0002d12f ?\?q?
+A 0002d14f 3"4)4C4q4
+A 0002d15f 565\5
+A 0002d16f 6,7H7P9T9X9\9`9d9h9l9p9t9x9|9
+A 0002d1a1 9$:(:,:0:4:0;=;G;n;{;
+A 0002d1cb 04181<1@1
+A 0002d1db 2;2H2M2c2
+A 0002d1f7 305B5T5
+A 0002d20f 6"6>6E6
+A 0002d21b = =4=H=[=g=u=
+A 0002d245 >%>7>=>C>P>[>o>
+A 0002d263 >>?H?T?_?f?q?
+A 0002d2ad 3Y4^4c4h4t4
+A 0002d2c1 8s9::T:\:
+A 0002d2d5 ;K;c;
+A 0002d2e3 <2<D<{<
+A 0002d308 @4L4X4d4p4|4
+A 0002d340 X;\;p;t;
+A 0002d36c (0,000L0T0t0
+A 0002d37b 04181H1L1P1T1
+A 0002d3c7 4$4(4,4n7r7v7z7~7
+A 0002d427 8"8&8*8.82868:8>8B8F8J8N8R8V8Z8^8b8f8j8
+A 0002d477 :$:,:4:<:D:L:T:\:d:l:t:|:
+A 0002d4ad ; ;(;0;8;@;H;P;X;`;h;p;x;
+A 0002d4ed < <(<0<8<@<H<P<X<`<h<p<x<
+A 0002d52d = =(=0=8=@=H=P=X=`=h=p=x=
+A 0002d56d > >(>0>8>@>H>P>X>`>h>p>x>
+A 0002d5ad ? ?(?0?8?@?H?P?X?`?h?p?x?
+A 0002d5f7 0 0(00080@0H0P0X0`0h0p0x0
+A 0002d637 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0002d691 3@7D7
+U 000020ab jjjjjj
+U 0001d63d $jjjj
+U 0001d67d $jjjj
+U 0002370c (null)
+U 00024910  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+U 00024a10  ¡¢£¤¥¦§¨
+U 0002aa32          (((((                  H

@@ -1,0 +1,763 @@
+--- RES type=None name=4239 len=9484
+--- MENU 4001 (676 bytes)
+   &File | 鵬&New Quilt	Ctrl+N | &Open...	Ctrl+O | ꁞManage &Fabrics | ꁟManage &Blocks | Recent File | E&xit | &View | &Toolbars | 鹦&Standard | 鹧&Edit | 鹩&Alignment | 鹪&Lock | &Help | 齠Help Topics... | 齡Online Manual | &About... | 齢Bernina International Homepage | 齣Bernina of America Homepage | 齤Embroidery Online | 齥Access Code Order Form
+--- MENU 4047 (354 bytes)
+   RIGHT_CLICK_BLOCK | 鲤Cu&t	Ctrl+X | 鲥&Copy	Ctrl+C | 鲦&Paste	Ctrl+V | Transform | 鸵Mirror &Vertical | 鸴Mirror &Horizontal | 鸷Rotate 90 &Left | 鸶Rotate 90 &Right | 麙&Properties...
+--- MENU 4048 (592 bytes)
+   RIGHT_CLICK_ADORNMENT_MENU | 鲤Cu&t	Ctrl+X | 鲥&Copy	Ctrl+C | 鲦&Paste	Ctrl+V | Transform | 鸵Mirror &Vertical | 鸴Mirror Horizontal | 鸷Rotate 90 &Left | 鸶Rotate 90 &Right | Order | 鸽Bring to Fron&t	Shift+PgUp | 鸼Bring &Forward	PgUp | 鸻Send &Backward	PgDown | 鸺Send to Bac&k	Shift+PgDown | 麙&Properties...
+--- MENU 4179 (2566 bytes)
+   &File | 鵬&New Quilt	Ctrl+N | &Open...	Ctrl+O | &Close | 鼮&Insert Embroidery | 鵱Load Picture... | &Save	Ctrl+S | Save &As... | 麚Quilt Properties... | &Print...	Ctrl+P | Print Pre&view... | ꁚ&Tile Fabric | ꁞManage &Fabrics | ꁟManage &Blocks | Recent File | E&xit | &Edit | 鳖&Undo	Ctrl+Z | 鳗Redo	Ctrl+Y | 鲤Cu&t	Ctrl+X | 鲥&Copy	Ctrl+C | 鲦&Paste	Ctrl+V | 鲧Duplicate	Ctrl+D | 鲨Delete	Del | 鷓Select All Applique	Ctrl+A | 鸂Lock Applique	Ctrl+Shift+A | 鸃Lock Embroidery	Ctrl+Shift+E | 鸄Lock Quilt	Ctrl+Shift+Q | 鷑Deselect All	X | 鼯Edit Embroidery	E | &View | 鴍Show 1:1	1 | 鴌Show All	0 | 鴉Zoom In 2X	Z | 鴊Zoom Out 2X	Shift+Z | 鴋Zoom Box	B | 鸆Picture	D | 麜Grid... | 鼂Measure	M | &Toolbars | 鹦&Standard | 鹧&Edit | 鹩&Arrange | 鹪&Lock | &Arrange | 鸴Mirror &Horizontal | 鸵Mirror &Vertical | 黊&Group	Ctrl+G | 黋&Ungroup	Ctrl+U | 黌&Regroup	Ctrl+R | 鸽Bring to Fron&t	Shift+PgUp | 鸼Bring &Forward	PgUp | 鸻Send &Backward	PgDown | 鸺Send to Bac&k	Shift+PgDown | &Settings | 麙Object &properties... | 麛&Options... | 麝&Display setup... | 麞&Scanner setup... | &Window | &New Window | &Cascade | Tile &Horizontally | Tile &Vertically | &Arrange Icons | &Help | 齠Help Topics... | 齡Online Manual | &About... | 齢Bernina International Homepage | 齣Bernina of America Homepage | 齤Embroidery Online | 齥Access Code Order Form
+--- MENU 4237 (270 bytes)
+   IDR_LIBMNGR_TREECTRL_MENU | ꂢCopy | ꂣPaste | ꂤRename | ꂥDelete | ꂦImport... | ꂧExport... | ꂠNew Library | ꂨOpen Library | ꂩClose
+--- MENU 4238 (314 bytes)
+   IDR_LIBMNGR_LISTCTRL_MUNE | View | ꂌLarge Icons | ꂍSmall Icons | ꂎDetails | ꂔCopy | ꂕPaste | ꂐRename | ꂖDelete | ꂑImport... | ꂒExport... | ꂘNew Category
+--- DLG FILEOPEN_TEMPLATE
+DIALOG "" 95x15
+   [BUTTON id=4220] "" @10,2 81x9
+   [STATIC id=1119] "" @0,2 8x8
+--- DLG LIBIMPORT_TEMPLATE
+DIALOG "" 290x18
+   [BUTTON id=4224] "Import all image files from the selected folder" @7,4 150x8
+   [BUTTON id=4225] "Import" @217,4 40x8
+--- DLG 4000
+DIALOG "About" 191x45
+   [BUTTON id=1] "OK" @143,10 32x14
+   [STATIC id=65535] "Bernina Quilter Version 1.0" @40,11 84x8
+   [STATIC id=65535] "Copyright (C) 2003" @40,24 59x8
+   [STATIC id=65535] "#4004" @10,12 20x20
+--- DLG 4008
+DIALOG "" 180x23
+--- DLG 4031
+DIALOG "" 206x326
+   [BUTTON id=4067] "Colors" @21,30 40x10
+   [BUTTON id=4068] "Fabrics" @21,45 39x10
+   [BUTTON id=4069] "Blocks" @21,15 39x10
+   [BUTTON id=4064] "Dark" @80,37 31x10
+   [BUTTON id=4065] "Mid" @80,47 27x10
+   [BUTTON id=4066] "Light" @80,57 31x10
+   [STATIC id=4061] "" @128,2 66x62
+   [STATIC id=4294967295] "Blank" @89,26 19x8
+   [STATIC id=4062] "" @85,2 28x22
+   [BUTTON id=4175] "To palette" @78,308 50x14
+--- DLG 4034
+DIALOG "" 180x23
+--- DLG 4035
+DIALOG "" 180x23
+--- DLG 4036
+DIALOG "Quilt Layout" 399x242
+   [COMBO id=4076] "" @175,21 84x66
+   [EDIT id=4089] "" @245,51 26x14
+   [EDIT id=4091] "" @245,67 25x14
+   [EDIT id=4093] "" @225,87 36x14
+   [EDIT id=4095] "" @225,105 36x14
+   [EDIT id=4101] "" @220,140 38x14
+   [COMBO id=4056] "" @197,176 69x75
+   [BUTTON id=4103] "Sash border" @190,193 54x10
+   [BUTTON id=4077] "Add" @300,23 25x14
+   [BUTTON id=4078] "Delete" @329,23 25x14
+   [BUTTON id=4079] "Insert" @358,23 25x14
+   [COMBO id=4082] "" @302,74 78x58
+   [EDIT id=4083] "" @335,90 36x14
+   [BUTTON id=1] "OK" @13,221 50x14
+   [BUTTON id=2] "Cancel" @71,221 50x14
+   [BUTTON id=65535] "Format" @161,9 116x30
+   [BUTTON id=65535] "Borders" @292,12 97x148
+   [STATIC id=65535] "Selected:" @295,39 31x8
+   [EDIT id=4080] "" @310,49 22x14
+   [STATIC id=65535] "of" @336,52 8x8
+   [EDIT id=4081] "" @352,49 22x14
+   [STATIC id=65535] "Style:" @294,64 18x8
+   [STATIC id=4251] "Width:" @297,92 22x8
+   [EDIT id=4271] "" @298,138 30x14
+   [EDIT id=4272] "" @348,138 29x14
+   [BUTTON id=65535] "Quilt" @287,164 102x39
+   [EDIT id=4087] "" @292,177 33x14
+   [STATIC id=65535] "by" @333,180 8x8
+   [EDIT id=4088] "" @345,177 33x14
+   [STATIC id=65535] "Width" @299,192 20x8
+   [STATIC id=65535] "Height" @351,192 22x8
+   [BUTTON id=65535] "Blocks" @161,43 115x84
+   [STATIC id=65535] "Blocks across:" @173,54 47x8
+   [STATIC id=65535] "Blocks down:" @173,72 44x8
+   [STATIC id=65535] "Width:" @173,89 22x8
+   [STATIC id=65535] "Height:" @173,108 24x8
+   [BUTTON id=65535] "Sashes" @162,131 114x77
+   [STATIC id=65535] "Width:" @169,143 22x8
+   [STATIC id=65535] "Style:" @171,178 18x8
+   [STATIC id=65535] "" @155,6 240x208
+   [STATIC id=65535] "" @3,7 145x208
+   [STATIC id=4104] "" @10,14 132x193
+   [STATIC id=65535] "in" @262,90 8x8
+   [STATIC id=65535] "in" @262,109 8x8
+   [STATIC id=65535] "in" @261,142 8x8
+   [STATIC id=4246] "in" @372,93 8x8
+   [STATIC id=4253] "in" @329,141 8x8
+   [STATIC id=4254] "in" @378,141 8x8
+   [STATIC id=65535] "in" @379,180 8x8
+   [STATIC id=65535] "in" @325,180 8x8
+   [STATIC id=4190] "#4039" @206,90 11x8
+   [STATIC id=4189] "#4040" @206,108 11x8
+   [STATIC id=4188] "#4043" @183,155 78x20
+   [EDIT id=4241] "" @299,100 28x14
+   [EDIT id=4242] "" @349,100 28x14
+   [STATIC id=4243] "Across" @299,89 22x8
+   [STATIC id=4244] "Down" @345,89 20x8
+   [STATIC id=4257] "Height" @298,118 22x8
+   [STATIC id=4247] "Width" @347,118 20x8
+   [EDIT id=4248] "" @298,128 31x14
+   [EDIT id=4249] "" @347,129 30x14
+   [STATIC id=4255] "in" @329,132 8x8
+   [STATIC id=4256] "in" @378,134 8x8
+   [BUTTON id=4250] "Square" @297,147 38x10
+   [BUTTON id=4252] "Square" @347,147 39x10
+   [STATIC id=4274] "#4273" @308,109 67x22
+   [STATIC id=4279] "" @339,99 1x58
+   [STATIC id=4281] "#4039" @371,118 13x9
+   [STATIC id=4280] "#4040" @321,118 13x9
+--- DLG 4106
+DIALOG "New" 186x137
+   [BUTTON id=1] "OK" @129,7 50x14
+   [BUTTON id=2] "Cancel" @129,24 50x14
+   [STATIC id=65535] "Select Template:" @13,14 54x8
+   [LISTBOX id=4105] "" @18,34 101x83
+--- DLG 4108
+DIALOG "Object Properties" 294x199
+   [BUTTON id=1] "OK" @91,178 50x14
+   [BUTTON id=2] "Cancel" @151,178 50x14
+   [BUTTON id=65535] "Dimensions" @21,19 248x67
+   [STATIC id=65535] "Width:" @27,35 22x8
+   [EDIT id=4109] "" @69,33 54x14
+   [STATIC id=65535] "in" @127,36 8x8
+   [EDIT id=4113] "" @180,34 48x14
+   [STATIC id=65535] "%" @231,37 8x8
+   [STATIC id=65535] "Height:" @28,61 24x8
+   [EDIT id=4111] "" @69,61 54x14
+   [STATIC id=65535] "in" @127,63 8x8
+   [EDIT id=4115] "" @180,60 47x14
+   [STATIC id=65535] "%" @230,63 8x8
+   [BUTTON id=65535] "Transform" @21,99 120x68
+   [STATIC id=65535] "Rotate by:" @27,119 34x8
+   [EDIT id=4117] "" @69,117 54x14
+   [STATIC id=65535] "Skew by:" @27,141 30x8
+   [EDIT id=4119] "" @69,140 54x14
+   [BUTTON id=65535] "Position" @156,99 113x68
+   [STATIC id=65535] "X:" @164,118 8x8
+   [EDIT id=4121] "" @180,116 48x14
+   [STATIC id=65535] "in" @232,119 8x8
+   [STATIC id=65535] "Y:" @163,141 8x8
+   [EDIT id=4123] "" @180,141 48x14
+   [STATIC id=65535] "in" @232,142 8x8
+   [STATIC id=65535] "°" @125,119 8x8
+   [STATIC id=65535] "°" @125,143 8x8
+--- DLG 4117
+DIALOG "Summary" 247x175
+   [STATIC id=65535] "Author:" @31,17 24x8
+   [EDIT id=4118] "" @75,14 135x14
+   [STATIC id=65535] "Keywords:" @30,40 34x8
+   [EDIT id=4119] "" @75,35 135x14
+   [STATIC id=65535] "Comments:" @30,60 36x8
+   [EDIT id=4120] "" @75,55 135x45
+   [STATIC id=65535] "Title:" @30,125 16x8
+   [EDIT id=4121] "" @75,120 135x14
+   [STATIC id=65535] "Subject:" @30,145 27x8
+   [EDIT id=4122] "" @75,140 135x14
+   [BUTTON id=65535] "" @20,5 205x100
+   [BUTTON id=65535] "" @20,110 205x50
+--- DLG 4123
+DIALOG "General" 217x146
+   [BUTTON id=4125] "Save design" @25,25 55x10
+   [STATIC id=65535] "Autosave period" @25,45 52x8
+   [EDIT id=4126] "" @94,41 50x14
+   [BUTTON id=4129] "Relative" @25,96 42x10
+   [BUTTON id=4130] "Absolute" @25,115 43x10
+   [STATIC id=65535] "minutes" @160,45 25x8
+   [BUTTON id=65535] "Autosave" @10,10 195x65
+   [BUTTON id=65535] "Show Digitizing Position" @10,80 195x55
+--- DLG 4124
+DIALOG "Grid" 207x141
+   [BUTTON id=4131] "Show grid" @15,16 47x10
+   [BUTTON id=4132] "Set reference point" @15,35 76x10
+   [STATIC id=4294967295] "Horizontal" @20,65 32x8
+   [EDIT id=4135] "" @65,64 60x14
+   [STATIC id=4294967295] "in" @135,65 8x8
+   [STATIC id=4294967295] "Vertical" @20,86 24x8
+   [EDIT id=4127] "" @65,85 60x14
+   [STATIC id=4294967295] "in" @135,86 8x8
+   [BUTTON id=4136] "Snap to grid" @15,120 54x10
+   [BUTTON id=4294967295] "Grid spacing" @10,50 140x60
+   [BUTTON id=4270] "Smart snap" @110,121 51x10
+--- DLG 4125
+DIALOG "Quilt" 232x167
+   [STATIC id=65535] "Design name:" @20,10 44x8
+   [STATIC id=65535] "Version:" @20,25 26x8
+   [STATIC id=65535] "Length:" @20,39 25x8
+   [STATIC id=65535] "Width:" @20,55 22x8
+   [STATIC id=65535] "Blocks:" @20,70 24x8
+   [STATIC id=65535] "Blocks used:" @20,85 42x8
+   [STATIC id=65535] "Patches:" @20,100 29x8
+   [STATIC id=65535] "Applique:" @20,114 30x8
+   [STATIC id=65535] "Embroidery designs:" @20,130 64x8
+   [STATIC id=65535] "Total stitches:" @20,143 45x8
+   [STATIC id=4126] "" @140,10 64x8
+   [STATIC id=4127] "" @140,25 64x8
+   [STATIC id=4128] "" @140,39 64x8
+   [STATIC id=4109] "" @140,55 64x8
+   [STATIC id=4069] "" @140,70 64x8
+   [STATIC id=4129] "" @140,85 64x8
+   [STATIC id=4130] "" @140,100 64x8
+   [STATIC id=4131] "" @140,114 64x8
+   [STATIC id=4133] "" @139,129 64x8
+   [STATIC id=4116] "" @139,145 64x8
+--- DLG 4137
+DIALOG "Adjust Hue/Brightness" 235x165
+   [BUTTON id=1] "OK" @113,121 50x14
+   [BUTTON id=2] "Cancel" @171,121 50x14
+   [BUTTON id=4138] "Preview" @12,133 41x10
+   [msctls_trackbar32 id=4139] "Slider1" @37,41 115x15
+   [msctls_trackbar32 id=4140] "Slider1" @37,86 115x15
+   [STATIC id=65535] "Hue" @42,31 14x8
+   [STATIC id=65535] "Brightness" @42,71 34x8
+   [BUTTON id=4141] "Hide Color" @9,112 50x14
+   [EDIT id=4185] "" @155,43 40x14
+   [EDIT id=4186] "" @155,89 40x14
+   [STATIC id=4258] "#4240" @10,7 209x6
+   [STATIC id=4259] "#4241" @10,19 209x4
+--- DLG 4148
+DIALOG "Print Options - Blocks" 186x150
+   [BUTTON id=1] "OK" @129,7 50x14
+   [BUTTON id=2] "Cancel" @129,24 50x14
+   [BUTTON id=4149] "Actual size" @20,16 50x10
+   [BUTTON id=4150] "" @20,30 10x14
+   [EDIT id=4151] "" @30,30 28x14
+   [BUTTON id=4153] "Colour" @20,80 36x10
+   [BUTTON id=4154] "Outline" @20,65 38x10
+   [BUTTON id=4155] "All" @20,110 23x10
+   [BUTTON id=4156] "Selection" @20,126 45x10
+   [BUTTON id=65535] "Show" @10,5 95x45
+   [BUTTON id=65535] "Style" @10,55 95x40
+   [BUTTON id=65535] "Print" @10,100 95x40
+   [BUTTON id=4157] "Print guide" @120,60 49x10
+   [STATIC id=65535] "to a page" @60,33 31x8
+   [BUTTON id=4138] "Preview" @127,124 50x14
+--- DLG 4158
+DIALOG "Print Options - Block Construction" 186x151
+   [BUTTON id=1] "OK" @129,7 50x14
+   [BUTTON id=2] "Cancel" @129,24 50x14
+   [BUTTON id=4149] "Actual size" @20,16 50x10
+   [BUTTON id=4150] "" @20,30 10x14
+   [EDIT id=4151] "" @30,30 31x14
+   [BUTTON id=65535] "Show" @10,5 95x45
+   [BUTTON id=65535] "Seam" @10,100 95x40
+   [BUTTON id=4157] "Print guide" @120,60 49x10
+   [EDIT id=4159] "" @50,115 37x14
+   [STATIC id=65535] "Allowance" @15,117 34x8
+   [BUTTON id=4155] "All" @19,67 23x10
+   [BUTTON id=4156] "Selection" @19,83 45x10
+   [BUTTON id=65535] "Print" @9,57 95x40
+   [STATIC id=65535] "to a page" @66,33 31x8
+   [STATIC id=65535] "in" @89,117 8x8
+   [BUTTON id=4138] "Preview" @127,126 50x14
+--- DLG 4161
+DIALOG "Print Options - Applique" 186x151
+   [BUTTON id=1] "OK" @129,7 50x14
+   [BUTTON id=2] "Cancel" @129,24 50x14
+   [BUTTON id=4149] "Actual size" @20,16 50x10
+   [BUTTON id=4194] "Fit to page" @20,30 50x14
+   [BUTTON id=65535] "Show" @10,5 95x45
+   [BUTTON id=65535] "Seam" @10,100 95x40
+   [BUTTON id=4157] "Print guide" @120,60 49x10
+   [EDIT id=4159] "" @50,115 39x14
+   [STATIC id=65535] "Allowance" @15,117 34x8
+   [BUTTON id=4155] "All" @19,67 23x10
+   [BUTTON id=4156] "Selection" @19,83 45x10
+   [BUTTON id=65535] "Print" @9,57 95x40
+   [STATIC id=65535] "in" @91,117 8x8
+   [BUTTON id=4138] "Preview" @126,126 50x14
+--- DLG 4162
+DIALOG "Print Options - Whole Quilt" 186x106
+   [BUTTON id=1] "OK" @129,7 50x14
+   [BUTTON id=2] "Cancel" @129,24 50x14
+   [BUTTON id=65535] "Scaling" @4,1 116x46
+   [BUTTON id=4163] "Fit to page" @17,16 49x10
+   [BUTTON id=4164] "" @17,33 10x8
+   [EDIT id=4165] "" @30,30 36x14
+   [STATIC id=65535] "% normal size" @70,33 43x8
+   [BUTTON id=65535] "Print" @4,54 116x50
+   [BUTTON id=4167] "Blocks" @28,64 37x10
+   [BUTTON id=4168] "Applique" @28,75 43x10
+   [BUTTON id=4169] "Embroidery" @28,87 51x10
+   [BUTTON id=4138] "Preview" @128,90 50x14
+--- DLG 4170
+DIALOG "Print Options - Yardage" 186x103
+   [BUTTON id=1] "OK" @129,7 50x14
+   [BUTTON id=2] "Cancel" @129,24 50x14
+   [STATIC id=65535] "Width" @29,25 20x8
+   [EDIT id=4171] "" @51,22 40x14
+   [STATIC id=65535] "in" @94,25 8x8
+   [STATIC id=65535] "Allowance" @23,71 34x8
+   [EDIT id=4159] "" @63,69 40x14
+   [BUTTON id=65535] "Fabric" @15,9 106x37
+   [BUTTON id=65535] "Seam" @15,54 106x40
+   [BUTTON id=4173] "Print details" @131,58 52x10
+   [STATIC id=65535] "in" @105,71 8x8
+   [BUTTON id=4138] "Preview" @127,80 50x14
+--- DLG 4180
+DIALOG "Screen Calibration" 222x95
+   [BUTTON id=1] "OK" @167,7 50x14
+   [BUTTON id=2] "Cancel" @167,24 50x14
+   [STATIC id=65535] "To calibrate the screen, measure the dimensions of this dialog box with a ruler and enter the measured values here:" @4,5 155x28
+   [STATIC id=65535] "Width:" @7,46 22x8
+   [EDIT id=4181] "" @47,43 49x14
+   [STATIC id=65535] "in" @99,47 8x8
+   [STATIC id=65535] "Height:" @7,68 24x8
+   [EDIT id=4182] "" @47,66 49x14
+   [STATIC id=65535] "in" @99,69 8x8
+--- DLG 4191
+DIALOG "" 419x16
+   [BUTTON id=58116] "&Print..." @1,1 46x14
+   [BUTTON id=58114] "&Next Page" @49,1 43x14
+   [BUTTON id=58115] "Pre&v Page" @95,1 45x14
+   [BUTTON id=58113] "" @142,1 43x14
+   [BUTTON id=58117] "Zoom &In" @187,1 42x14
+   [BUTTON id=58118] "Zoom &Out" @231,1 44x14
+   [BUTTON id=58112] "&Close" @277,1 46x14
+   [BUTTON id=41011] "Option&s..." @324,1 44x14
+   [BUTTON id=41012] "" @370,1 44x14
+--- DLG 4192
+DIALOG "Print Preview" 282x95
+   [BUTTON id=1] "OK" @168,78 50x14
+   [BUTTON id=2] "Cancel" @223,78 50x14
+   [BUTTON id=65535] "Print preview what" @3,3 270x70
+   [BUTTON id=4142] "Blocks" @23,18 37x10
+   [BUTTON id=4143] "Block Construction" @23,33 75x10
+   [BUTTON id=4144] "Applique" @23,49 43x10
+   [BUTTON id=4145] "Whole Quilt" @143,18 53x10
+   [BUTTON id=4146] "Yardage" @143,33 43x10
+   [BUTTON id=4147] "Options..." @219,54 50x14
+   [EDIT id=1154] "" @1000,1000 32x12
+--- DLG 4193
+DIALOG "Print" 288x261
+   [BUTTON id=1075] "Printer" @8,4 272x84
+   [STATIC id=1093] "&Name:" @16,20 36x8
+   [COMBO id=1139] "" @52,18 152x152
+   [BUTTON id=1025] "&Properties" @212,17 60x14
+   [STATIC id=1095] "Status:" @16,36 36x10
+   [STATIC id=1099] "" @52,36 224x10
+   [STATIC id=1094] "Type:" @16,48 36x10
+   [STATIC id=1098] "" @52,48 224x10
+   [STATIC id=1097] "Where:" @16,60 36x10
+   [STATIC id=1101] "" @52,60 224x10
+   [STATIC id=1096] "Comment:" @16,72 36x10
+   [STATIC id=1100] "" @52,72 152x10
+   [BUTTON id=1040] "Print to fi&le" @212,70 64x12
+   [BUTTON id=1072] "Print range" @10,165 144x63
+   [BUTTON id=1056] "&All" @18,178 64x12
+   [BUTTON id=1058] "Pa&ges" @18,194 36x12
+   [STATIC id=1089] "&from:" @54,197 20x8
+   [EDIT id=1152] "" @76,194 26x12
+   [STATIC id=1090] "&to:" @102,197 16x8
+   [EDIT id=1153] "" @120,194 26x12
+   [BUTTON id=1073] "Copies" @162,165 120x64
+   [STATIC id=1092] "Number of &copies:" @170,181 68x8
+   [EDIT id=1154] "" @242,178 32x12
+   [STATIC id=1086] "" @163,196 76x24
+   [BUTTON id=1041] "C&ollate" @242,202 36x12
+   [BUTTON id=1] "OK" @182,237 48x14
+   [BUTTON id=2] "Cancel" @234,237 48x14
+   [BUTTON id=65535] "Print what" @10,95 270x70
+   [BUTTON id=4142] "Blocks" @30,110 37x10
+   [BUTTON id=4143] "Block Construction" @30,125 75x10
+   [BUTTON id=4144] "Applique" @30,140 43x10
+   [BUTTON id=4145] "Whole Quilt" @150,110 53x10
+   [BUTTON id=4146] "Yardage" @150,125 43x10
+   [BUTTON id=4147] "Options..." @225,145 50x14
+--- DLG 4200
+DIALOG "Tile Fabric" 480x305
+   [BUTTON id=4294967295] "" @7,7 173x75
+   [STATIC id=4294967295] "Tile Height:" @15,18 46x9
+   [STATIC id=4294967295] "Tile Width:" @15,34 46x9
+   [STATIC id=4294967295] "Tile Area:" @15,50 46x9
+   [STATIC id=4294967295] "Tile Size:" @15,66 46x9
+   [EDIT id=4203] "" @67,18 46x12
+   [msctls_updown32 id=4205] "Spin1" @101,13 11x11
+   [EDIT id=4204] "" @67,34 46x12
+   [msctls_updown32 id=4206] "Spin1" @102,30 11x11
+   [STATIC id=4209] "Static" @7,93 174x179
+   [STATIC id=4210] "Static" @195,7 277x296
+   [BUTTON id=4201] "Save " @9,283 41x14
+   [BUTTON id=4202] "Save As..." @73,283 41x14
+   [BUTTON id=2] "Cancel" @137,283 41x14
+   [STATIC id=4294967295] "pixels" @118,34 31x9
+   [STATIC id=4294967295] "pixels" @118,18 31x9
+   [STATIC id=4294967295] "KB" @118,66 31x9
+   [STATIC id=4294967295] "pixels" @118,50 31x9
+   [STATIC id=4207] "Tile Area" @67,50 46x9
+   [STATIC id=4208] "Tile Size" @67,66 46x9
+--- DLG 4212
+DIALOG "" 143x31
+   [STATIC id=65535] "Initialise scanner ......" @44,12 87x10
+   [STATIC id=65535] "#4213" @10,5 20x20
+--- DLG 4214
+DIALOG "Save As" 366x209
+   [BUTTON id=1] "Save" @299,174 50x14
+   [BUTTON id=2] "Cancel" @299,191 50x14
+   [EDIT id=4216] "" @42,174 242x13
+   [STATIC id=65535] "Save as:" @5,174 33x9
+   [STATIC id=4229] "" @5,5 356x164
+--- DLG 4231
+DIALOG "" 368x209
+   [STATIC id=4221] "" @3,4 358x179
+   [BUTTON id=4282] "OK" @235,192 50x14
+   [BUTTON id=4227] "Import" @164,192 50x14
+   [BUTTON id=2] "Cancel" @306,192 50x14
+--- DLG 4232
+DIALOG "Dialog" 267x105
+   [BUTTON id=2] "Cancel" @210,84 50x14
+   [SysAnimate32 id=4222] "Animate1" @7,7 253x31
+   [STATIC id=4223] "" @7,55 253x23
+   [msctls_progress32 id=4226] "Progress1" @7,84 194x11
+   [STATIC id=4230] "" @7,41 253x10
+STR 1002: Blocks Used
+STR 1003: Colors Used
+STR 1004: Fabrics Used
+STR 1005: Rectangular
+STR 1006: On Point
+STR 1007: None
+STR 1008: Sash squares
+STR 1009: Horizontal on Top
+STR 1010: Horizontal
+STR 1011: Vertical on Top
+STR 1012: Vertical
+STR 1013: Forward
+STR 1014: Backward
+STR 1015: Mitered
+STR 1016: Corner Squares
+STR 1017: Horizontal
+STR 1018: Vertical
+STR 1019: Could not load graphics file
+STR 1020: Squares
+STR 1021: Library
+STR 1022: Options
+STR 1023: User Fabrics
+STR 1024: User Fabrics\Scanned
+STR 1026: Artista Quilter designs (*.arq)|*.arq||
+STR 1027: Artista Quilter designs (*.arq)|*.arq|All Files (*.*)|*.*||
+STR 1028: .amq
+STR 1029: .arq
+STR 1030:  - Continued
+STR 1031: 	Quilt name:	
+STR 1032: 	Author:		
+STR 1033: 	Version:	
+STR 1034: 	Block:		
+STR 1035: 	Size:		
+STR 1036:  x 
+STR 1037:  inches.
+STR 1038: 	Color:		
+STR 1039: 	Length:		
+STR 1040: 	Material:	
+STR 1041: inches squared.
+STR 1042: Palette
+STR 1043: Edit
+STR 1044: Standard
+STR 1045: Arrange
+STR 1046: Lock
+STR 1047: X=%7.2f Y=%7.2f L=%7.2f A=%6.1f
+STR 1048: Move: L=%7.2f
+STR 1049: Scale: X%7.2f Y%7.2f
+STR 1050: Rotate: A%7.2f
+STR 1051: Skew: A%7.2f
+STR 1052: Blocks Used
+STR 1053: Quilt Properties
+STR 1054: V%3.1f
+STR 1055: %4.2f in
+STR 1056: %4.2f in
+STR 1057: %d
+STR 1058: %d
+STR 1059: %d
+STR 1060: %d
+STR 1061: %d
+STR 1062: %d
+STR 1063: Z %3.2f
+STR 1064: %d
+STR 1065: %d
+STR 1066: Bitmap Files (*.bmp)|*.bmp|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|PCX Files (*.pcx)|*.pcx|All Picture Files|*.bmp; *.jpg; *.png; *.pcx||
+STR 1067: %4.2f
+STR 1068: %d
+STR 1069: Portr&ait
+STR 1070: L&andscape
+STR 1071: 	Sashes
+STR 1072: 	Borders
+STR 1073: Failed to load libraries.
+STR 1074: Failed to load and initialise TWAIN32.DLL.
+STR 1075: The library element already exists. \nReplace the existing element?
+STR 1076: The path '%s' doesn't exist.
+STR 1077: The file format was invalid.
+STR 1078: Enhanced metafiles (*.emf)|*.emf|Windows metafiles (*.wmf)|*.wmf||
+STR 1079: %d, %d, %d
+STR 1080: 	Block number:	
+STR 1081: &Preview
+STR 1082: Name or pathname is too long.
+STR 1083: Zoom 1:1\nZoom In\nZoom Out
+STR 1084: Rectangles
+STR 1085: (modified)
+STR 1086: Import from the current folder
+STR 1087: Artista Quilter fabric library (*.flb)|*.flb|Bitmap Files (*.bmp)|*.bmp|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|EMF Files (*.emf)|*.emf|WMF Files (*.wmf)|*.wmf|PCX Files (*.pcx)|*.pcx|All Picture Files|*.bmp; *.jpg; *.png; *.emf; *.wmf; *.pcx|All Files (*.*)|*.*||
+STR 1088: Artista Quilter block library (*.blb)|*.blb|Enhanced metafiles (*.emf)|*.emf|Windows metafiles (*.wmf)|*.wmf|All Metafiles|*.emf;*.wmf|*.All Files (*.*)|*.*||
+STR 1089: Export to the current folder
+STR 1090: Import
+STR 1091: Export
+STR 1092: Move
+STR 1093: Copy
+STR 1094: Delete
+STR 1095: Backup
+STR 1096: Update
+STR 1097: Fabric Library
+STR 1098: Block Library
+STR 1099: Library name:  '%s'
+STR 1100: The library is already opened.
+STR 1101: Cannot copy! The destination folder is the parent folder or a subfolder of the source folder.
+STR 1102: Confirm Item Delete
+STR 1103: Are you sure you want to remove the item '%s' and all its contents?
+STR 1104: Are you sure you want to remove these %d items and all its contents?
+STR 1105: Failed to export the library.
+STR 1106: Manage Fabrics
+STR 1107: Manage Blocks
+STR 1108: Look in:
+STR 1109: Artista Quilter Fabric Library (*.flb)|*.flb|
+STR 1110: Artista Quilter Block Library (*.blb)|*.blb|
+STR 1111: All Files (*.*)|*.*|
+STR 1112: Enhanced Metafiles (*.emf)|*.emf|Windows Metafiles (*.wmf)|*.wmf|All Metafiles|*.emf;*.wmf|
+STR 1113: Bitmap Files (*.bmp)|*.bmp|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|PCX Files (*.pcx)|*.pcx|All Image Files|*.bmp;*.jpg;*.png;*.pcx|
+STR 1114: Confirm Cancel
+STR 1115: Fabric
+STR 1116: Block
+STR 1117: Category
+STR 1118: Save in:
+STR 1119: Cannot perform the operation! The nested subfolder level is limited to %d.
+STR 1120: The library is already opened!
+STR 1121: Cannot perform the operation! Unknown file format.
+STR 1122: %s\nThis file is open for editing and cannot be overwritten.\nPlease use a different name.
+STR 1123: %s\nThe file already existes! Please use a different name.
+STR 1124: Are you sure you want to discard all your changes \non the library '%s'.
+STR 1125: Adding elements ...\n
+STR 1126: Skipping elements ...\n
+STR 1127: Updating the library \n
+STR 1128: Backing up the library \n
+STR 1129: Name
+STR 1130: Type
+STR 1131: New Category
+STR 1132: Bernina
+STR 1133: Cannot delete! The element '%s' is being used. \n\nDo you want to suppress this message window?
+STR 1134: Cannot move! The element '%s' is being used. \n\nDo you want to suppress this message window?
+STR 1135: true
+STR 1136: false
+STR 1137: Enter center point
+STR 1138: Enter point on circumference
+STR 1139: Press <Enter> for circle or enter oval point
+STR 1140: Enter point %d on boundary %d
+STR 1141: Select and move one or several control points to reshape
+STR 1142: Enter grid reference point
+STR 1143: Enter rectangle origin
+STR 1144: Enter rectangle corner
+STR 1145: Enter zoom box
+STR 1146: No scanner installed.
+STR 1147: W:
+STR 1148: H:
+STR 1149: V:
+STR 1150: %2.1f
+STR 1151: Load Picture
+STR 1152: 	Width:		
+STR 1153: There was a problem saving the design to disk.\nMake sure there is sufficient disk space available.
+STR 1154: BERNINA Quilter - Disk Error
+STR 1155: The Adobe Acrobat Reader application required to display the \nonline manual and online release notes cannot be found. \n\nEither you do not have Acrobat Reader installed on your\ncomputer, or it has become corrupted.\n\nWould you like to install it now?
+STR 1156: Error launching the Acrobat Reader Setup program
+STR 1157: Please insert your Embroidery Software CD-ROM\n\nIf the Embroidery Software installation program starts\nautomatically, cancel it. (See the installation instructions)
+STR 1158: This application cannot be run standalone.
+STR 4001: BERNINA Quilter\n\nArq\nArq Files (*.arq)\n.arq\nBERNINA_Quilter.Document\nArq Document
+STR 40000: Align Left\nAlign Left
+STR 40001: Align Center\nAlign Center
+STR 40002: Align Right\nAlign Right
+STR 40003: Align Top\nAlign Top
+STR 40004: Align Middle\nAlign Middle
+STR 40005: Align Bottom\nAlign Bottom
+STR 40006: Align Centers\nAlign Centers
+STR 40050: Union\nUnion
+STR 40051: Divide\nDivide
+STR 40052: Back - front\nBack - front
+STR 40053: Front - back\nFront - back
+STR 40054: Intersection
+STR 40055: XOR\nXOR
+STR 40056: Flatten\nFlatten
+STR 40100: Cut\nCut
+STR 40101: Copy\nCopy
+STR 40102: Paste\nPaste
+STR 40103: Duplicate\nDuplicate
+STR 40104: Delete\nDelete
+STR 40108: Copy as EMF\nCopy As EMF
+STR 40150: Undo\nUndo
+STR 40151: Redo\nRedo
+STR 40200: Pan\nPan
+STR 40201: Zoom In 2X\nZoom In 2X
+STR 40202: Zoom Out 2X\nZoom Out 2X
+STR 40203: Zoom Box\nZoom Box
+STR 40204: Show All\nShow All
+STR 40205: Show 1:1\nShow 1:1
+STR 40250: Paintbrush\nPaintbrush
+STR 40251: Eyedropper\nEyedropper
+STR 40300: New\nNew
+STR 40301: New\nNew
+STR 40302: Open\nOpen
+STR 40303: Save\nSave
+STR 40304: Save As...\nSave As...
+STR 40305: Load Picture\nLoad Picture
+STR 40350: Rectangluar Applique\nRectangluar Applique
+STR 40351: Oval Applique\nOval Applique
+STR 40352: Draw Applique\nDraw Applique
+STR 40353: Reshape Applique\nReshape Applique
+STR 40400: Select Object \nSelect Object 
+STR 40401: Deselect All\nDeselect All
+STR 40402: Deselect Applique\nDeselect Applique
+STR 40403: Select Applique\nSelect Applique
+STR 40404: Deselect Blocks\nDeselect Blocks
+STR 40450: Lock Applique\nLock Applique
+STR 40451: Lock Embroidery\nLock Embroidery
+STR 40452: Lock Quilt\nLock Quilt
+STR 40453: Dim Pictures\nDim Pictures
+STR 40454: Show/Hide Images\nShow/Hide Images
+STR 40455: Show/Hide Outlines\nShow/Hide Outlines
+STR 40500: Mirror Horizontal\nMirror Horizontal
+STR 40501: Mirror Vertical\nMirror Vertical
+STR 40502: Rotate 90 Left / Right\nRotate 90 Left / Right
+STR 40503: Rotate 90 Left / Right\nRotate 90 Left / Right
+STR 40504: Scale by 20% Down / Up\nScale by 20% Down / Up
+STR 40505: Scale by 20% Down / Up\nScale by 20% Down / Up
+STR 40506: Send to Back\nSend to Back
+STR 40507: Send Backward\nSend Backward
+STR 40508: Bring Forward\nBring Forward
+STR 40509: Bring to Front\nBring to Front
+STR 40550: Show/Hide Standard Toolbar\nShow/Hide Standard Toolbar
+STR 40551: Show/Hide Edit Toolbar\nShow/Hide Edit Toolbar
+STR 40552: Show/Hide Boolean Toolbar\nShow/Hide Boolean Toolbar
+STR 40553: Show/Hide Arrange Toolbar\nShow/Hide Arrange Toolbar
+STR 40554: Show/Hide Lock Toolbar\nShow/Hide Lock Toolbar
+STR 40600: Show Grid\nShow Grid
+STR 40601: Object Properties\nObject Properties
+STR 40602: Quilt Properties\nQuilt Properties
+STR 40603: Options...\nOptions...
+STR 40604: Grid Options...\nGrid Options...
+STR 40605: Display Setup...\nDisplay Setup...
+STR 40606: Scanner Setup...\nScanner Setup...
+STR 40607: Scan Picture\nScan Picture
+STR 40650: Group\nGroup
+STR 40651: Ungroup\nUngroup
+STR 40652: Regroup\nRegroup
+STR 40700: Library\nLibrary
+STR 40701: Quilt Layout\nQuilt Layout
+STR 40703: Adjust Hue / Brightness\nAdjust Hue / Brightness
+STR 40704: Show Quilt\nShow Quilt
+STR 40705: Show Material\nShow Material
+STR 40706: Measure\nMeasure
+STR 40707: Show Fabric 1:1\nShow Fabric 1:1
+STR 40708: Fabric 1:1\nFabric 1:1
+STR 40709: Show Fabric Average Color\nShow Fabric Average Color
+STR 40710: Show Outlines\nShow Outlines
+STR 40750: Insert New Embroidery\nInsert New Embroidery
+STR 40751: Edit Embroidery\nEdit Embroidery
+STR 40752: Embroidery Window\nEmbroidery Window
+STR 40800: Help\nHelp
+STR 40801: Manual\nManual
+STR 40802: Bernina Homepage\nBernina Homepage
+STR 40803: Bernina USA\Bernina USA
+STR 40804: Online Embroidery\nOnline Embroidery
+STR 40805: Access Order\nAccess Order
+STR 41050: Tile fabric\nTile Fabric
+STR 41054: Manage fabrics in the fabric library\nManage Fabrics
+STR 41055: Manage blocks in the block library\nManage Blocks
+STR 41060: Select\nSelect
+STR 41061: Move/Edit Selection\nMove/Edit Selection
+STR 41062: Zoom 1:1\nZoom 1:1
+STR 41063: Zoom In 2X\n Zoom In 2X
+STR 41064: Zoom Out 2X\nZoom Out 2X
+STR 41065: Rotate 90 Left\nRotate 90 Left
+STR 41066: Rotate 90 Right\nRotate 90 Right
+STR 41130: View Menu\nView Menu
+STR 41131: Up One Level\nUp One Level
+STR 41132: Create New Category\nCreate New Category
+STR 41133: Go To Last Category Visited\nGo To Last Category Visited
+STR 57344: BERNINA Quilter
+STR 57345: Ready
+STR 57600: Create a new document\nNew
+STR 57601: Open an existing document\nOpen
+STR 57602: Close the active document\nClose
+STR 57603: Save the active document\nSave
+STR 57604: Save the active document with a new name\nSave As
+STR 57605: Change the printing options\nPage Setup
+STR 57606: Change the printer and printing options\nPrint Setup
+STR 57607: Print the active document\nPrint
+STR 57609: Display full pages\nPrint Preview
+STR 57616: Open this document
+STR 57617: Open this document
+STR 57618: Open this document
+STR 57619: Open this document
+STR 57620: Open this document
+STR 57621: Open this document
+STR 57622: Open this document
+STR 57623: Open this document
+STR 57624: Open this document
+STR 57625: Open this document
+STR 57626: Open this document
+STR 57627: Open this document
+STR 57628: Open this document
+STR 57629: Open this document
+STR 57630: Open this document
+STR 57631: Open this document
+STR 57632: Erase the selection\nErase
+STR 57633: Erase everything\nErase All
+STR 57634: Copy the selection and put it on the Clipboard\nCopy
+STR 57635: Cut the selection and put it on the Clipboard\nCut
+STR 57636: Find the specified text\nFind
+STR 57637: Insert Clipboard contents\nPaste
+STR 57640: Repeat the last action\nRepeat
+STR 57641: Replace specific text with different text\nReplace
+STR 57642: Select the entire document\nSelect All
+STR 57643: Undo the last action\nUndo
+STR 57644: Redo the previously undone action\nRedo
+STR 57648: Open another window for the active document\nNew Window
+STR 57649: Arrange icons at the bottom of the window\nArrange Icons
+STR 57650: Arrange windows so they overlap\nCascade Windows
+STR 57651: Arrange windows horizontally as non-overlapping tiles\nTile Windows
+STR 57652: Arrange windows vertically as non-overlapping tiles\nTile Windows
+STR 57653: Split the active window into panes\nSplit
+STR 57664: Display program information, version number and copyright\nAbout
+STR 57665: Quit the application; prompts to save documents\nExit
+STR 57680: Switch to the next window pane\nNext Pane
+STR 57681: Switch back to the previous window pane\nPrevious Pane
+STR 59136: EXT
+STR 59137: CAP
+STR 59138: NUM
+STR 59139: SCRL
+STR 59140: OVR
+STR 59141: REC
+STR 59392: Show or hide the toolbar\nToggle ToolBar
+STR 59393: Show or hide the status bar\nToggle StatusBar
+STR 61184: Change the window size
+STR 61185: Change the window position
+STR 61186: Reduce the window to an icon
+STR 61187: Enlarge the window to full size
+STR 61188: Switch to the next document window
+STR 61189: Switch to the previous document window
+STR 61190: Close the active window and prompts to save the documents
+STR 61202: Restore the window to normal size
+STR 61203: Activate Task List
+STR 61445: Close print preview mode\nCancel Preview
+--- RES type=9 name=4001 len=288
+--- RES type=240 name=4036 len=39
+--- RES type=241 name=4003 len=46
+--- RES type=241 name=4016 len=66
+--- RES type=241 name=4017 len=36
+--- RES type=241 name=4045 len=14
+--- RES type=241 name=4046 len=22
+--- RES type=241 name=4176 len=46
+--- RES type=241 name=4178 len=14
+--- RES type=241 name=4211 len=22
+--- RES type=241 name=4240 len=16

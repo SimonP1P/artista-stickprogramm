@@ -1,0 +1,185 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b0 .text
+A 000001d7 `.rdata
+A 000001ff @.data
+A 00000228 .rsrc
+A 0000024f @.reloc
+A 000007f6 L$(]d
+A 0000089a \$DUV
+A 00000975 D$PPh
+A 00000a36 T$PVRh
+A 00000a43 D$PVPh
+A 00000a50 D$LV;
+A 00000a59 L$TQh
+A 00000a65 T$TRh
+A 00000a71 D$PVPh
+A 00000a7e L$PVQh
+A 00000cd4 L$8_^]d
+A 00000dde t$(WRPV
+A 0000171a r_^][
+A 00001ea6 _^][Y
+A 0000235a L$$^d
+A 000025ca l$DVW
+A 00002616 T$LQR
+A 000026ba T$TRP
+A 000026ea L$<_^3
+A 00002869 D$0SVW
+A 00002a22 |$LPj
+A 00002c30 _^][Y
+A 00002d2a tTHt1Hu`
+A 000033d0 u"WVS
+A 000041ff b`^o&
+A 00004926 ??1DesignDetails@@QAE@XZ
+A 00004942 ??0DesignDetails@@QAE@XZ
+A 0000495e ?Read@DesignDetails@@QAEKABVString@@@Z
+A 00004988 ?QueryInfo@DesignDetails@@QAE_NAAVDataItem@@@Z
+A 000049b8 oleintf.dll
+A 000049c6 ?GetMeasurementSystem@MeasurementUnits@@SA?AW4MeasurementSystem@LocaleInformation@@XZ
+A 00004a1e ?ConvertToUserUnits@MeasurementUnits@@SANW4MeasurementSystem@LocaleInformation@@NW4UnitsBase@1@@Z
+A 00004a82 ??0WinDib@@QAE@PBUtagBITMAPINFOHEADER@@PBUtagRGBQUAD@@PBX@Z
+A 00004ac0 ?GetFileTypeFromFilename@@YAIABVString@@@Z
+A 00004aec Wessys.dll
+A 00004afa InitialiseLibIntf
+A 00004b0e GetDesignFileIcon
+A 00004b22 OpenDesignFile
+A 00004b32 libintf.dll
+A 00004b40 ?BitsPixelToNumColorTableEntries@Dib@@SAHH@Z
+A 00004b70 ?SizePixels@Dib@@QBE?AVLongPoint@@XZ
+A 00004b96 image.dll
+A 00004ba2 ?GetStitchesString@DesignGradeUtilities@@YA?AVString@@ABW4DesignSourceGroup@@ABW4DesignCondition@@@Z
+A 00004c0a ?GetOutlinesString@DesignGradeUtilities@@YA?AVString@@ABW4DesignSourceGroup@@@Z
+A 00004c5c ?GetGradeString@DesignGradeUtilities@@YA?AVString@@ABW4DesignSourceGroup@@@Z
+A 00004cac ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 00004cd8 ?GetUserUnitSymbol@@YA_NW4MeasurementSystem@LocaleInformation@@W4UnitsBase@MeasurementUnits@@AAVString@@@Z
+A 00004d46 ?GetResourcesHInstance@@YAPAUHINSTANCE__@@XZ
+A 00004d74 resource.dll
+A 00004d82 MFC42.DLL
+A 00004d8e __CxxFrameHandler
+A 00004da2 _purecall
+A 00004dae memmove
+A 00004db8 _ftol
+A 00004dbe MSVCRT.dll
+A 00004dcc __dllonexit
+A 00004dda _onexit
+A 00004dec _initterm
+A 00004df8 malloc
+A 00004e02 _adjust_fdiv
+A 00004e12 _except_handler3
+A 00004e26 ?terminate@@YAXXZ
+A 00004e3a GetLastError
+A 00004e4a GlobalFree
+A 00004e58 GlobalLock
+A 00004e64 KERNEL32.dll
+A 00004e74 MessageBoxA
+A 00004e82 EnumChildWindows
+A 00004e96 SetWindowTextA
+A 00004ea8 GetDlgCtrlID
+A 00004eb8 GetClassNameA
+A 00004ec8 ReleaseDC
+A 00004ed4 GetClientRect
+A 00004ee4 GetDC
+A 00004eec UpdateWindow
+A 00004efc InvalidateRect
+A 00004f0e GetDlgItem
+A 00004f1c PostMessageA
+A 00004f2c GetParent
+A 00004f38 SetWindowLongA
+A 00004f4a EndPaint
+A 00004f56 BeginPaint
+A 00004f64 GetWindowLongA
+A 00004f74 USER32.dll
+A 00004f82 StretchDIBits
+A 00004f92 RealizePalette
+A 00004fa2 GDI32.dll
+A 00004fae DragQueryFileA
+A 00004fbe SHELL32.dll
+A 00004fcc DestroyPropertySheetPage
+A 00004fe8 CreatePropertySheetPageA
+A 00005002 COMCTL32.dll
+A 00005012 ReleaseStgMedium
+A 00005024 ole32.dll
+A 0000502e MSVCIRT.dll
+A 0000503c _strcmpi
+A 00005096 EMBInfo.dll
+A 000050a2 DllCanUnloadNow
+A 000050b2 DllGetClassObject
+A 000050c4 DllRegisterServer
+A 000052a8 ?No Value?
+A 000052b4 %6.2f %s
+A 000052c0 %6.1f %s
+A 000052cc Could not get class name
+A 000052e5 Winerror : %d (0x%x)
+A 000052fc Could not get dlg ctrl id.
+A 00005317 Winerror : %d (0x%x)
+A 0000532c static
+A 00005338 Failed to Initialize LibIntf.dll
+A 0000535c Error
+A 00005364 Could not register
+A 00005378 OLE Factory Error
+A 00005394 EMBPropPage
+A 000053a0 .EMB V%s
+A 000053b4 EMBInfoPropSheet
+A 0000580b 0B0b0
+A 0000581f 1B1L1r1|1
+A 0000583f 3(303R3Y3f3
+A 00005853 465z5
+A 00005867 7+7o7
+A 00005895 9 9$9(9,90949p9t9x9|9
+A 000058b5 : :4:
+A 000058cd ;(;1;B;V;f;s;};
+A 000058ed < <4<D<Q<[<q<z<
+A 0000590f =,=;=M=V=g={=
+A 0000592f >'>0>A>U>e>r>
+A 0000594b ?+?P?p?
+A 00005964  0I0n0
+A 00005973 1?1_1
+A 00005983 2/2Z2p2
+A 00005993 525<5b5l5
+A 000059a7 5"6,6I6x6
+A 000059bd 7)7r7|7
+A 000059cf 8B8L8r8|8
+A 000059e1 8Q9a9s9
+A 000059f5 ;+;c;
+A 00005a03 <'<6<F<X<
+A 00005a11 <#=v=
+A 00005a1b >T>i>
+A 00005a45 0"010B0P0U0a0q0
+A 00005a63 2$2_2p2
+A 00005a7d 4:5}5
+A 00005a87 5.656G6
+A 00005a93 6&8w8@9
+A 00005aa3 = =&=,=2=8=>=D=J=P=V=\=b=h=n=t=z=
+A 00005af9 >">0>=>B>r>x>
+A 00005b21 ?%?3?<?c?
+A 00005b3f 0B1H1N1T1Z1l1
+A 00005b53 2G2^2{2
+A 00005b61 2$3X3y3
+A 00005b71 494Y4y4
+A 00005b80 (2,202p2|2
+A 00005ba1 3X3\3`3d3h3p3t3x3|3
+A 00005bff 484D4H4X8t8
+A 00005c21 9$9,989T9`9|9
+A 00005c41 :4:<:D:P:l:t:
+A 00005c5f ;$;0;L;X;t;|;
+A 00005c91 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t041
+U 00005466 VS_VERSION_INFO
+U 000054c2 StringFileInfo
+U 000054e6 040904B0
+U 000054fe CompanyName
+U 0000551e FileDescription
+U 00005540 EMBInfo DLL
+U 0000555e FileVersion
+U 00005578 1, 0, 0, 1
+U 00005596 InternalName
+U 000055b0 EMBInfo
+U 000055c6 LegalCopyright
+U 000055e4 Copyright (C) 1998
+U 00005612 LegalTrademarks
+U 0000563a OriginalFilename
+U 0000565c EMBInfo.DLL
+U 0000567a ProductName
+U 00005694 EMBInfo Dynamic Link Library
+U 000056d6 ProductVersion
+U 000056f4 1, 0, 0, 1
+U 00005712 VarFileInfo
+U 00005732 Translation

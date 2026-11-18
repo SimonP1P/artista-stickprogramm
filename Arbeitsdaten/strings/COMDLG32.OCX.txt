@@ -1,0 +1,1430 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.data
+A 000001c8 .rsrc
+A 000001f0 .reloc
+A 00000938 Common Dialog Help Property Page
+A 0000095c Common Dialog Font Property Page
+A 00000980 Common Dialog Print Property Page
+A 000009a4 Common Dialog Color Property Page
+A 000009c8 Common Dialog Open Property Page
+A 000009ec CmDialogWndClass
+A 00000a00 cmdlg98.chm
+A 00000a0c Microsoft Common Dialog Control, version 6.0
+A 00000a3c CommonDialog
+A 00000b13  0{!;
+A 00000bb3 8"z!t
+A 00000bd1 8"z!Y
+A 00000e05 "z!`O
+A 00000f6a F4Sh8#z!P
+A 00001063 H#z!t
+A 0000107e H#z!Y
+A 0000114a z!./z!
+A 00001151 0z!8/z!
+A 000011c2 z!86z!+8z!G
+A 000011d2 z!B6z!
+A 000011f9 Zz!o=z!
+A 0000120a z!8$z!B$z!
+A 0000125a z!58z!V@z!)
+A 0000126a z!5Iz!kIz!
+A 00001281 Iz!=Hz!aHz!
+A 0000128d Qz!:Qz!Q
+A 000012a5 Bz!	Oz!
+A 000012b9 Dz!CDz!_Dz!
+A 000012d9 Rz!`Rz!tRz!
+A 000012e9 Qz!QEz!eEz!BCz!^Cz!
+A 00001305 Sz!2Sz!
+A 0000130d Tz!*Tz!
+A 00001319 Ez!4Jz!HJz![Sz!mSz!xPz!
+A 000013f0 yTz!L$z!V$z!
+A 0000144e z!~Tz!
+A 0000145e z!q#z!
+A 00001476 z!`$z!0
+A 00001481 4z!=8z!^@z!|
+A 0000148e z!sAz!
+A 000014a1 7z!VXz!!>z!
+A 0000150a z!8/z!
+A 000015b1 Zz!o=z!
+A 000016d6 z!~Tz!(
+A 000016e6 z!q#z!
+A 000016fe z!`$z!
+A 00001709 5z![8z!
+A 00001716 z!sAz!
+A 00001778 ~Tz!*
+A 00001786 z!q#z!
+A 000017a9 5z![8z!
+A 000017da z!70z!
+A 00001801 5z![8z!
+A 0000182a z!G@z!
+A 00001919 jz!5kz!rkz!
+A 00001a8e 5 0{!
+A 00001bf6 F8x z!
+A 00001bfd F<X z!
+A 00001c04 F@( z!
+A 00001d2a !z!t;W
+A 00001d9d 5 0{!
+A 00001dab =P1{!
+A 00001e9a u8WVj
+A 00001eea ()z!t
+A 00001f05 ()z!Y
+A 00001f9d =P1{!
+A 00002021 0z!u(j
+A 000020d4 5 0{!hP
+A 00002295 0{!XWf
+A 000022f7 F884z!
+A 0000231a FL`3z!
+A 00002321 FP83z!
+A 00002369 F8x z!
+A 00002370 F<X z!
+A 00002377 F@( z!
+A 0000250d =`5{!
+A 00002520 `5{!V
+A 0000262e Pp_^[]
+A 000026df Fcommdlg_help
+A 00002d6d 5 0{!
+A 00002e0d 5 0{!
+A 00002e75 6z!Y3
+A 00002f7e hh<z!
+A 00002fa3 hh<z!VV
+A 00003189 hh<z!V
+A 000031f0 u	C@@f
+A 000033a1 SVWjd
+A 000033ec Qh,7{!V
+A 00003416 YY_^3
+A 00003438 Ph84{!
+A 0000369f 6z!Y3
+A 00003775 =(Cz!
+A 0000381c T1{!j
+A 000038b5 Rh0Cz!
+A 0000390b h@Cz!
+A 00003b72 | f;H$t
+A 00003c44 h@7{!P
+A 00003cc1 hL7{!P
+A 00003d58 hX7{!P
+A 00003db9 =d7{!
+A 00003ddd 5d7{!h
+A 00003e5a h@Cz!
+A 00003edf h@Cz!
+A 00003f5e h@Cz!
+A 00003fde h@Cz!
+A 00004054 | f;H*t
+A 00004134 SVWjBZ
+A 0000429f pNz!PhxNz!V
+A 0000434c hh7{!j
+A 0000443c Oz!PV
+A 00004470 Windows
+A 00004478 Device
+A 00004480 %s,%s,%s
+A 0000448c %s.drv
+A 00004498 WINSPOOL.DRV
+A 000044a8 DocumentPropertiesA
+A 000044c0 DeviceCapabilitiesA
+A 000044d8 OpenPrinterA
+A 000044e8 ClosePrinter
+A 000044f8 Ports
+A 00004500 NotFound
+A 0000462b PhHPz!R
+A 000046d7 | f;H
+A 00004733 h@Cz!
+A 000047a9 | f;H"t
+A 00004821 f;~(t
+A 00004880 | f;H t
+A 000048df | f;H
+A 0000493b f;H&t
+A 000049b0 h@Cz!
+A 00004a23 h@Cz!
+A 00004bbc Ph84{!V
+A 00005154 MbP?hhctrl.ocx
+A 00005168 CLSID\{ADB880A6-D8FF-11CF-9377-00AA003B7A11}\InprocServer32
+A 000051fe 5 0{!
+A 00005212 5 0{!
+A 00005222 5 0{!
+A 000052cb X"z!3
+A 000052e2 H"z!3
+A 000052f9 h"z!3
+A 00005338 x"z!3
+A 00005dec 5 0{!
+A 00005e04 5 0{!
+A 0000626f =xzz!
+A 00006284 xzz!3
+A 000062b0 =hzz!
+A 000062c5 hzz!3
+A 000062f1 =Xzz!
+A 00006306 Xzz!3
+A 00006332 =Hzz!
+A 00006343 Hzz!3
+A 00006367 =8zz!
+A 00006378 8zz!3
+A 00006574 5 0{!
+A 000065a3 5 0{!
+A 000065e0 5 0{!
+A 000065f4 ()z!u
+A 000065fd ()z!Y
+A 00006640 Qh()z!V
+A 0000667f 5 0{!
+A 000066ab 5 0{!
+A 0000674e 5 0{!
+A 000067b4 5 0{!
+A 00006808 8"z!u
+A 00006811 8"z!Y
+A 000068b1 8"z!u
+A 000068ba 8"z!Y3
+A 0000695a COMDLG32.OCX
+A 00006967 DLLGetDocumentation
+A 0000697b DllCanUnloadNow
+A 0000698b DllGetClassObject
+A 0000699d DllRegisterServer
+A 000069af DllUnregisterServer
+A 000069f8 MSComDlg
+A 00006a04 NewHelpWindow
+A 00006ab8 NewHelpClass
+A 00006d6a z!{%08lX-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+A 00006da0 CtlFrameWork_ReflectWindow
+A 00006f95 =sRSj
+A 00006fa5 =sRWj
+A 000071c0 1{!;=
+A 00007248 Wt79T$
+A 00007606 PPPP3
+A 00007678 5 0{!
+A 000076f8 5 0{!
+A 00007758 5 0{!
+A 00007768 tJSVP
+A 000077c4 5 0{!
+A 000077d2 5 0{!
+A 000077e3 5 0{!
+A 000079ac h@Cz!
+A 000079ea 5 0{!
+A 00007a71 h@Cz!
+A 00007aa9 5 0{!
+A 00007ae6 h@Cz!
+A 00007b1e 5 0{!
+A 00007b2c D$$tq
+A 00007b57 h@Cz!
+A 00007b6a t6SSSS
+A 00007b8b 5 0{!
+A 00007bc9 5 0{!
+A 00007bdc 5 0{!
+A 00007be3 9\$(t
+A 00007bef 5 0{!
+A 00007bf6 9\$ t
+A 00007c02 5 0{!
+A 00007c09 9\$$t
+A 00007c15 5 0{!
+A 00007c45 8|uKP
+A 00007c92 z!SSSS
+A 00007ca0 t$,SS
+A 00007cb1 5 0{!
+A 00007cdb t$,SS
+A 00007d68 D$4Pj
+A 00007e1b 9\$,~MS
+A 00007e2a t$4USS
+A 00007e67 t$ SS
+A 00007e89 D$|SP
+A 00007e9b D$PYf
+A 0000809a %([z!
+A 00008186 5 0{!
+A 000081bd tz!hxNz!hpNz!
+A 0000826e z![^_
+A 00008293 h@Cz!
+A 000082ac h@Cz!
+A 000083a1 5 0{!
+A 000083c1 5 0{!
+A 0000856e 9~@tF
+A 0000859d R0_^]
+A 0000869a h@Cz!
+A 00008862 tz!WV
+A 000088a4 1{!VVVVj
+A 00008c39 F08uz!
+A 00008c74 5 0{!
+A 00008c9a yz!u)j
+A 00008ca3 yz!Y3
+A 00008cfb RhH#z!P
+A 00008dda 5 0{!j8
+A 00008e1b F0Puz!
+A 00008e3e 5 0{!
+A 00008e5d A0Puz!V
+A 00008e74 Hxz!t
+A 00008f77 SHVHW
+A 000094f6 z!jiS
+A 000095d3 5 0{!
+A 000095f3 5 0{!
+A 00009613 5 0{!
+A 00009633 5 0{!
+A 00009658 5 0{!
+A 00009683 5 0{!
+A 000096a3 5 0{!
+A 000096c3 5 0{!
+A 000096e3 5 0{!
+A 00009708 5 0{!
+A 00009779 5 0{!j8
+A 000097dd 5 0{!
+A 000098be SHVHW
+A 00009b2d 5 0{!j8
+A 00009b6e F00vz!
+A 00009b91 5 0{!
+A 00009bb0 A00vz!
+A 00009cc3 SHVHW
+A 0000a0df WPjyS
+A 0000a0ea WPjxS
+A 0000a0f7 z!f9E
+A 0000a1da hp>{!j
+A 0000a1fc 5 0{!j8
+A 0000a260 5 0{!
+A 0000a395 SHVHW
+A 0000a8a6 z!j~W
+A 0000a915 PSjjW
+A 0000a9c4 5 0{!
+A 0000a9f2 5 0{!
+A 0000aa5a 5 0{!j0
+A 0000aac7 5 0{!
+A 0000ae0e 5 0{!
+A 0000ae36 5 0{!
+A 0000ae4e t	HHt
+A 0000aeca hwz!P
+A 0000aef4 5 0{!
+A 0000af1a 5 0{!j 
+A 0000b0cc 5 0{!
+A 0000b108 5 0{!
+A 0000b1cb %@[z!
+A 0000b1df H[z!SP
+A 0000b1f0 P[z!P
+A 0000b32a SSQPV
+A 0000b3a1 SSSPV
+A 0000b442 Y98Yt#
+A 0000b63c 5 0{!
+A 0000b683 5 0{!
+A 0000b70f hlwz!P
+A 0000b820 =P1{!
+A 0000b917 >{!tI;
+A 0000ba36 =P1{!
+A 0000bb46 5 0{!
+A 0000bba7 t0WWj
+A 0000bd7b :{!Vh$8{!
+A 0000bdc6 h48{!j
+A 0000bdcd Vh@8{!
+A 0000be12 hP8{!
+A 0000be83 h`8{!P
+A 0000bed8 hd8{!P
+A 0000bf27 :{!Vhp8{!
+A 0000bf8e :{!Vhx8{!
+A 0000c07f :{!Vh
+A 0000c137 :{!Vh
+A 0000c1a9 :{!Vh
+A 0000c21e :{!Vh
+A 0000c275 :{!Vh
+A 0000c30f Ph(zz!WVh
+A 0000c3e2 9]8t6
+A 0000c3ee PSVSh
+A 0000c3f4 :{!Sh
+A 0000c424 PSVSh
+A 0000c42a :{!Sh
+A 0000c47e PSVSh
+A 0000c484 :{!Sh
+A 0000c4aa h 9{!P
+A 0000c4e2 z!9]4
+A 0000c4f4 z!9]8
+A 0000c522 h$9{!P
+A 0000c549 PSVSh
+A 0000c54f :{!Sh,9{!
+A 0000c599 Ph(zz!j
+A 0000c5d2 @;{!}
+A 0000c658 9]$t	
+A 0000c6b8 h<9{!h
+A 0000c6ec hD9{!P
+A 0000c761 hT9{!P
+A 0000c7b2 h`9{!P
+A 0000c7f4 hh9{!P
+A 0000c852 hx9{!P
+A 0000c966 j [9]
+A 0000cb10 z!PVV
+A 0000ce03 Yt_VS
+A 0000ce09 5 0{!
+A 0000ce6d 5 0{!
+A 0000cf6f h(:{!
+A 0000cf83 h4:{!P
+A 0000d039 5 0{!
+A 0000d05b T1{!f
+A 0000d0f8 T1{!f9XHu+
+A 0000d123 T1{!f
+A 0000d186 T1{!9XX
+A 0000d24d 1{!SQ
+A 0000d2e2 GPSSSSS
+A 0000d357 >{!Vj
+A 0000d590 -t/v	
+A 0000d5bc X_^[]
+A 0000d668 t HHuEj
+A 0000d712 Vh()z!Q
+A 0000da6e PT_^3
+A 0000dbda T1{!j
+A 0000dc08 5 0{!
+A 0000dc32 5 0{!
+A 0000dcf1 5 0{!
+A 0000dd0e 5 0{!
+A 0000ddd5 5 0{!
+A 0000de50 5 0{!j@
+A 0000df65 CT;{Pu
+A 0000df78 9Ktu>
+A 0000df84 te9Kht0
+A 0000dff8 sPQQQP
+A 0000e11d T1{!f9x>t
+A 0000e48f F8WWP
+A 0000e60c z!QRj
+A 0000e663 QRRRP
+A 0000e75c T1{!Qf
+A 0000e8d3 h0xz!P
+A 0000e917 h0xz!P
+A 0000e9a4 SVHWt
+A 0000ea35 QH9u$
+A 0000ec08 T1{!f9H<
+A 0000ecc3 SSShD:{!
+A 0000eccf z!_^[
+A 0000ee17 5 0{!
+A 0000ee4a 5 0{!
+A 0000ee67 5 0{!
+A 0000ee87 5 0{!
+A 0000ef05 5 0{!
+A 0000ef25 5 0{!
+A 0000ef42 5 0{!
+A 0000ef62 5 0{!
+A 0000efa9 5 0{!
+A 0000efd1 5 0{!
+A 0000f061 5 0{!
+A 0000f078 5 0{!
+A 0000f08e 5 0{!
+A 0000f0a8 Yt?h_
+A 0000f0b5 h({z!
+A 0000f0d6 5 0{!
+A 0000f0fd 8{z!u
+A 0000f106 8{z!Y
+A 0000f115 8"z!u(j
+A 0000f11e 8"z!Y
+A 0000f186 hH#z!
+A 0000f1bd 5 0{!
+A 0000f1e1 5 0{!j@
+A 0000f1ff QhH{z!
+A 0000f221 5 0{!
+A 0000f331 5 0{!
+A 0000f355 h{z!W
+A 0000f365 h{z!3
+A 0000f371 X{z!u0j
+A 0000f37d X{z!3
+A 0000f4a4 T1{!f
+A 0000f4bc T1{!Yj
+A 0000f4d7 T1{!Yj
+A 0000f5a9 5 0{!
+A 0000f63a WPQRj
+A 0000f6fa z!hL:{!P
+A 0000f7aa hP:{!P
+A 0000f7ff 5 0{!
+A 0000f822 hT:{!
+A 0000f87e hX:{!P
+A 0000f8a2 h\:{!P
+A 0000fc19 G;~,r
+A 0000fc25 5 0{!
+A 0000fd2e =(Cz!
+A 0000fd3c 1{!_^
+A 0000fda6 0{!u,h
+A 0000fdad 0{!hxyz!j
+A 0000fdb7 Whhyz!
+A 0000fe10 RhXyz!P
+A 0000ffb9 0{!WV
+A 0000ffcd wz!u@j
+A 00010044 DPQSQ
+A 0001005b 0{!WS
+A 0001006b 1{!u_j
+A 000100af 1{!VVVVVVh
+A 000100d8 1{!_^[
+A 00010142 5 0{!
+A 000101f3 5 0{!
+A 0001021d 8"z!u2
+A 0001022b 8"z!3
+A 000102f5 5 0{!3
+A 00010369 ;{!uA
+A 0001039c hX[z!
+A 000103fc Vhh[z!h
+A 000105c4 0{!WV
+A 000105e0 T1{!Qf
+A 0001067d WVVhK
+A 0001072a ;{!VVS
+A 0001079a 5 0{!
+A 00010879 z!^_h
+A 000108a0 z!Pj(
+A 000108f1 u(<:u
+A 00010974 1{!t!
+A 00010a3f 5 0{!
+A 00010a5c t	f98t
+A 00010c60 KERNEL32.dll
+A 00010c6e USER32.dll
+A 00010c7a ole32.dll
+A 00010c84 ADVAPI32.dll
+A 00010c92 OLEAUT32.dll
+A 00010ca0 comdlg32.dll
+A 00010cae GDI32.dll
+A 00010f76 InitializeCriticalSection
+A 00010f92 DeleteCriticalSection
+A 00010faa FreeLibrary
+A 00010fb8 HeapFree
+A 00010fc4 WideCharToMultiByte
+A 00010fda lstrlenW
+A 00010fe6 HeapAlloc
+A 00010ff2 LeaveCriticalSection
+A 0001100a EnterCriticalSection
+A 00011022 GetProcessHeap
+A 00011034 GetCurrentThreadId
+A 0001104a MultiByteToWideChar
+A 00011060 lstrcpynA
+A 0001106c GetProfileStringA
+A 00011080 GlobalFree
+A 0001108e WriteProfileStringA
+A 000110a4 GlobalUnlock
+A 000110b4 GlobalLock
+A 000110c2 lstrcatA
+A 000110ce lstrcpyA
+A 000110da lstrlenA
+A 000110e6 lstrcmpiA
+A 000110f2 GetProcAddress
+A 00011104 LoadLibraryA
+A 00011114 IsBadWritePtr
+A 00011124 GlobalAlloc
+A 00011132 DisableThreadLibraryCalls
+A 0001114e GetVersion
+A 0001115c GetFileAttributesA
+A 00011172 GetModuleFileNameA
+A 00011188 GetWindowsDirectoryA
+A 000111a0 GetLocaleInfoA
+A 000111b2 InterlockedIncrement
+A 000111ca InterlockedDecrement
+A 000111e2 HeapReAlloc
+A 000111f0 GetLastError
+A 00011200 LockResource
+A 00011210 LoadResource
+A 00011220 FindResourceA
+A 00011230 IsDBCSLeadByte
+A 00011242 CompareStringA
+A 00011254 CompareStringW
+A 00011266 lstrcmpA
+A 00011272 UnregisterClassA
+A 00011286 DefWindowProcA
+A 00011298 LoadStringA
+A 000112a6 RegisterWindowMessageA
+A 000112c0 GetSystemMetrics
+A 000112d4 DestroyIcon
+A 000112e2 DrawIcon
+A 000112ee LoadIconA
+A 000112fa ReleaseDC
+A 00011306 GetDC
+A 0001130e RegisterClassA
+A 00011320 LoadCursorA
+A 0001132e GetWindowThreadProcessId
+A 0001134a GetActiveWindow
+A 0001135c CharNextA
+A 00011368 SendMessageTimeoutA
+A 0001137e wsprintfA
+A 0001138a WinHelpA
+A 00011396 SetActiveWindow
+A 000113a8 DestroyWindow
+A 000113b8 IsWindowEnabled
+A 000113ca GetWindow
+A 000113d6 GetDesktopWindow
+A 000113ea EnableWindow
+A 000113fa DialogBoxParamA
+A 0001140c ShowWindow
+A 0001141a SetWindowLongA
+A 0001142c CreateWindowExA
+A 0001143e GetWindowRect
+A 0001144e GetWindowLongA
+A 00011460 MessageBoxA
+A 0001146e SendMessageA
+A 0001147e GetDlgItem
+A 0001148c SetDlgItemInt
+A 0001149c SetDlgItemTextA
+A 000114ae GetDlgItemInt
+A 000114be GetDlgItemTextA
+A 000114d0 EndDialog
+A 000114dc RegisterClipboardFormatA
+A 000114f8 SetWindowPos
+A 00011508 IsWindowVisible
+A 0001151a SetParent
+A 00011526 EndPaint
+A 00011532 GetClientRect
+A 00011542 BeginPaint
+A 00011550 SetFocus
+A 0001155c MoveWindow
+A 0001156a ClientToScreen
+A 0001157c GetParent
+A 00011588 OffsetRect
+A 00011596 EqualRect
+A 000115a2 IntersectRect
+A 000115b2 SetWindowRgn
+A 000115c2 PtInRect
+A 000115ce IsDialogMessageA
+A 000115e2 GetNextDlgTabItem
+A 000115f6 IsChild
+A 00011600 GetKeyState
+A 0001160e CreateDialogIndirectParamA
+A 0001162c MessageBeep
+A 0001163a PostMessageA
+A 0001164a SendDlgItemMessageA
+A 00011660 GetWindowTextA
+A 00011672 ReleaseStgMedium
+A 00011686 CoTaskMemFree
+A 00011696 CoTaskMemAlloc
+A 000116a8 CoCreateInstance
+A 000116bc CreateOleAdviseHolder
+A 000116d4 RegDeleteValueA
+A 000116e6 RegCloseKey
+A 000116f4 RegSetValueExA
+A 00011706 RegCreateKeyExA
+A 00011718 RegOpenKeyExA
+A 00011728 RegDeleteKeyA
+A 00011738 RegEnumKeyExA
+A 00011748 RegQueryValueExA
+A 0001175c RegOpenKeyA
+A 0001176a RegQueryValueA
+A 0001177c CommDlgExtendedError
+A 00011794 GetSaveFileNameA
+A 000117a8 GetOpenFileNameA
+A 000117bc ChooseColorA
+A 000117cc ChooseFontA
+A 000117da PrintDlgA
+A 000117e6 GetDeviceCaps
+A 000117f6 DeleteDC
+A 00011802 DeleteObject
+A 00011812 SelectObject
+A 00011822 CreateBitmap
+A 00011832 CreateCompatibleDC
+A 00011848 StretchDIBits
+A 00011858 GetDIBits
+A 00011864 GetSystemPaletteEntries
+A 0001187e GetObjectA
+A 0001188c CreateDCA
+A 00011898 EnumFontFamiliesA
+A 000118ac CreateRectRgnIndirect
+A 000118c4 GetViewportExtEx
+A 000118d8 GetWindowExtEx
+A 000118ea LPtoDP
+A 000118f4 SetMapMode
+A 00011902 SetViewportExtEx
+A 00011916 SetWindowExtEx
+A 00011928 SetViewportOrgEx
+A 0001193c SetWindowOrgEx
+A 00011e80 (2{!,
+A 00011e98 @2{!0
+A 00011eb0 X2{!4
+A 00011ec8 p2{!8
+A 00011fd0 x3{! 
+A 000120a8  4{!L
+A 00012108 (6z!Licenses
+A 00012140 %s%s.DLL
+A 0001214c %s%s.DLL
+A 00012158 %u\%s.dll
+A 000121c0 CtlFrameWork_Parking
+A 000121d8 {%08lX-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+A 0001220c CLSID\%s
+A 00012218 %s Object
+A 00012224 InprocServer32
+A 00012234 Apartment
+A 00012240 ThreadingModel
+A 00012250 ThreadingModel
+A 00012264 %s Object
+A 00012270 CLSID
+A 00012278 CurVer
+A 00012280 %s.%s.%ld
+A 0001228c %s Object
+A 00012298 CLSID
+A 000122a0 CLSID\%s
+A 000122ac VersionIndependentProgID
+A 000122c8 %s.%s
+A 000122d0 ProgID
+A 000122d8 %s.%s.%ld
+A 000122e4 TypeLib
+A 000122ec Version
+A 000122f4 %ld.%ld
+A 000122fc CLSID\%s
+A 00012308 Control
+A 00012310 MiscStatus
+A 0001232c ToolboxBitmap32
+A 0001233c CLSID
+A 00012344 \InprocServer32
+A 00012354 %s.%s.%ld
+A 00012360 %s.%s
+A 00012368 %s.%s\CurVer
+A 00012378 %s.%s.%ld
+A 00012384 %s.%s.%ld
+A 00012390 %s.%s.%ld
+A 0001239c %s.%s
+A 000123a4 \HELP
+A 000123ac CLSID\%s
+A 000123b8 Implemented Categories
+A 000123d0 %s\InprocServer
+A 000123e4 VERSION.DLL
+A 000123f0 GetFileVersionInfoSizeA
+A 00012408 VERSION.DLL
+A 00012414 GetFileVersionInfoA
+A 00012428 VERSION.DLL
+A 00012434 VerQueryValueA
+A 00012444 DISPLAY
+A 0001245c >LangRef
+A 00012468 CtlFrameWork_Parking
+A 00012480 CtlFrameWork_Parking
+A 00012498 %ld - %s
+A 00012584 (2{!(
+A 000125a0 @2{!,
+A 000125bc X2{!0
+A 000125d8 p2{!4
+A 0001270c x3{! 
+A 000133ca wwwwwwwwwwwwp
+A 000133da wwwwwwwwwwwwp
+A 00014d74 +3o`d
+A 00014da4 +3o`,
+A 00014ee6 stdole2.tlbWWW
+A 000150ff WMSComDlg
+A 00015114 PrinterConstantsd
+A 0001512f (ColorConstantsWW
+A 0001514c FileOpenConstantsWWW,
+A 0001516c FontsConstantsWW
+A 00015188 ErrorConstantsWW
+A 000151a4 HelpConstantsWWWX
+A 000151c0 PrinterOrientationConstantsW
+A 000151e5 8`7ICommonDialogWWW 
+A 00015204 ICommonDialogEventsW
+A 00015223 oCommonDialog
+A 0001523c ICommonDialog11W
+A 00015257 lcdlPDAllPagesWWW
+A 00015271 0f[cdlPDCollate
+A 0001528b McdlPDDisablePrintToFileW
+A 000152af FcdlPDHidePrintToFile
+A 000152d0 cdlPDNoPageNumsW
+A 000152ec cdlPDNoSelection
+A 00015308 cdlPDNoWarningWW
+A 00015323 PcdlPDPageNumsWWW
+A 00015340 cdlPDPrintSetupW
+A 0001535b :cdlPDPrintToFile
+A 00015375 0&wcdlPDReturnDCWWW
+A 00015394 cdlPDReturnDefaultWW
+A 000153b3 wcdlPDReturnICWWW
+A 000153cd 0RkcdlPDSelectionWW
+A 000153ec cdlPDHelpButtonW
+A 00015407 vcdlPDUseDevModeCopiesWWWd
+A 00015429 0/UcdlCCRGBInitd
+A 00015444 cdlCCFullOpenWWWd
+A 00015460 cdlCCPreventFullOpend
+A 0001547d 05vcdlCCHelpButtonW
+A 0001549c cdlOFNReadOnlyWW
+A 000154b5 0F4cdlOFNOverwritePromptWWW
+A 000154dc cdlOFNHideReadOnlyWW
+A 000154f9 0X|cdlOFNNoChangeDirWWW
+A 0001551b vcdlOFNHelpButton
+A 00015538 cdlOFNNoValidate
+A 00015553 $cdlOFNAllowMultiselectWW
+A 00015577 [cdlOFNExtensionDifferent
+A 0001559c cdlOFNPathMustExistW
+A 000155bc cdlOFNFileMustExistW
+A 000155dc cdlOFNCreatePromptWW
+A 000155f9 0&KcdlOFNShareAware
+A 00015618 cdlOFNNoReadOnlyReturnWW
+A 0001563c cdlOFNNoLongNamesWWW
+A 0001565c cdlOFNExplorerWW
+A 00015678 cdlOFNNoDereferenceLinks
+A 0001569c cdlOFNLongNamesW,
+A 000156b8 cdlCFScreenFonts,
+A 000156d4 cdlCFPrinterFontsWWW,
+A 000156f4 cdlCFBothWWW,
+A 0001570b 2cdlCFHelpButtonW,
+A 00015728 cdlCFEffects,
+A 00015740 cdlCFApplyWW,
+A 00015758 cdlCFANSIOnlyWWW,
+A 00015771 0)(cdlCFNoVectorFontsWW,
+A 00015794 cdlCFNoSimulationsWW,
+A 000157b4 cdlCFLimitSizeWW,
+A 000157d0 cdlCFFixedPitchOnlyW,
+A 000157ed 0<acdlCFWYSIWYG,
+A 00015805 0& cdlCFForceFontExistW,
+A 00015825 0>?cdlCFScalableOnlyWWW,
+A 00015848 cdlCFTTOnlyW,
+A 00015860 cdlCFNoFaceSelWW,
+A 0001587c cdlCFNoStyleSelW,
+A 00015898 cdlCFNoSizeSelWW
+A 000158b4 cdlInvalidPropertyValueW
+A 000158d8 cdlGetNotSupportedWW
+A 000158f5 0{+cdlSetNotSupportedWW
+A 00015918 cdlAlloc
+A 0001592c cdlCancelWWW
+A 00015944 cdlDialogFailure
+A 00015960 cdlFindResFailureWWW
+A 00015980 cdlHelpW
+A 00015994 cdlInitializationWWW
+A 000159b1 0:-cdlLoadResFailureWWW
+A 000159d4 cdlLoadStrFailureWWW
+A 000159f1 0M|cdlLockResFailureWWW
+A 00015a11 0B.cdlMemAllocFailureWW
+A 00015a34 cdlMemLockFailureWWW
+A 00015a53 .cdlNoFontsWW
+A 00015a6b )cdlBufferTooSmallWWW
+A 00015a8c cdlInvalidFileNameWW
+A 00015aab jcdlSubclassFailureWW
+A 00015acc cdlCreateICFailureWW
+A 00015aec cdlDndmMismatchW
+A 00015b08 cdlGetDevModeFailWWW
+A 00015b28 cdlInitFailureWW
+A 00015b44 cdlLoadDrvFailureWWW
+A 00015b64 cdlNoDefaultPrnW
+A 00015b7f mcdlNoDevices
+A 00015b97 )cdlParseFailureW
+A 00015bb1 0i7cdlPrinterCodesW
+A 00015bcf *cdlPrinterNotFoundWW
+A 00015bf0 cdlRetDefFailure
+A 00015c0c cdlSetupFailureW
+A 00015c28 cdlNoTemplateWWW
+A 00015c43 zcdlNoInstanceWWW
+A 00015c60 cdlInvalidSafeModeProcCallWW
+A 00015c88 cdlHelpContextWW
+A 00015ca3 ;cdlHelpQuitW
+A 00015cbc cdlHelpIndex
+A 00015cd4 cdlHelpContentsW
+A 00015cf0 cdlHelpHelpOnHelpWWW
+A 00015d10 cdlHelpSetIndexW
+A 00015d2c cdlHelpSetContentsWW
+A 00015d4c cdlHelpContextPopupW
+A 00015d6c cdlHelpForceFile
+A 00015d88 cdlHelpKeyWW
+A 00015da0 cdlHelpCommandHelpWW
+A 00015dc0 cdlHelpPartialKeyWWWX
+A 00015de0 cdlPortraitWX
+A 00015df8 cdlLandscape
+A 00015e10 _ActionW
+A 00015e24 psAction
+A 00015e38 FileName
+A 00015e4a [	pbstrFileNameWWW
+A 00015e68 DialogTitleW
+A 00015e7f rpbstrDialogTitle
+A 00015e9b ;FilterWW
+A 00015eb0 pbstrFilterW
+A 00015ec7 yDefaultExtWW
+A 00015ede  &pbstrDefaultExtW
+A 00015efc InitDirW
+A 00015f10 pbstrInitDir
+A 00015f26 2FColorWWW
+A 00015f3c clrColor
+A 00015f4f oFlagsWWW
+A 00015f64 plFlagsW
+A 00015f78 FontName
+A 00015f8b ApbstrFontNameWWW
+A 00015fa8 FontBold
+A 00015fbb )pbFontBoldWW
+A 00015fd4 FontItalicWW
+A 00015fec pbFontItalic
+A 00016004 FontStrikeThruWW
+A 00016020 pbFontStrikeThru
+A 0001603c FontUnderLineWWW
+A 00016058 pbFontUnderLineW
+A 00016073 GFromPage
+A 00016087 ;psFromPageWW
+A 000160a0 ToPageWW
+A 000160b4 psToPage
+A 000160d8 psMinWWW
+A 000160fc psMaxWWW
+A 0001610f ?CopiesWW
+A 00016124 psCopies
+A 00016138 CancelErrorW
+A 0001614f $pbCancelErrorWWW
+A 0001616c HelpFile
+A 0001617f MpbstrHelpFileWWW
+A 0001619b >HelpCommandW
+A 000161b4 psHelpCommandWWW
+A 000161d0 HelpKeyW
+A 000161e4 pbstrHelpKey
+A 000161fc PrinterDefaultWW
+A 00016218 pbPrinterDefault
+A 00016234 FilterIndexW
+A 0001624b ZpsFilterIndexWWW
+A 00016266 /OHelpContextW
+A 00016280 plHelpContextWWW
+A 0001629c FontSize
+A 000162b0 pfFontSizeWW
+A 000162c7 RActionWW
+A 000162dc MaxFileSizeW
+A 000162f4 psMaxFileSizeWWW
+A 00016320 pihDCWWW
+A 00016334 FileTitleWWW
+A 0001634b opbstrFileTitleWW
+A 00016367 ~ShowOpen
+A 0001637b GShowSave
+A 00016390 ShowColorWWW
+A 000163a8 ShowFont
+A 000163bc ShowPrinterW
+A 000163d4 ShowHelp
+A 000163e8 AboutBox
+A 000163fb wOrientationW
+A 00016413 }pOrientation)
+A 00016422 Microsoft Common Dialog Control 6.0 (SP3)W
+A 0001644e ComDlg32.OcxWW
+A 0001645e cmdlg98.chmWWW
+A 0001646e Printer Dialog Box ConstantsWW
+A 0001648e Color Dialog Box Constants#
+A 000164aa File Open/Save Dialog Box ConstantsWWW
+A 000164d2 Fonts Dialog Box Constants
+A 000164ee Common Dialog Error ConstantsW
+A 0001650e Help Constants
+A 0001651e Printer Orientation ConstantsW1
+A 0001653e Sets or returns state of All Pages option button.W+
+A 00016572 Sets or returns state of Collate check box.WWW%
+A 000165a2 Disables the Print to File check box.W-
+A 000165ca The Print to File check box is not displayed.W4
+A 000165fa Sets or returns the state of the Pages option buttonWW%
+A 00016632 Disables the Selection option button.W<
+A 0001665a Prevents a warning message when there is no default printer.WW5
+A 0001669a Sets or returns the state of the Pages option button.WE
+A 000166d2 Displays the Print Setup dialog box rather than the Print dialog box.W9
+A 0001671a Sets or returns the state of the Print to File check box.W3
+A 00016756 Returns a device context for the printer selection.WWW
+A 0001678e Returns default printer name.W9
+A 000167ae Returns an information context for the printer selection.W9
+A 000167ea Sets or returns the state of the Selection option button.W$
+A 00016826 Dialog box displays the Help button.WW!
+A 0001684e Sets support for multiple copies.W,
+A 00016872 Sets initial color value for the dialog box.WWK
+A 000168a2 Entire dialog box is displayed, including the Define Custom Colors section.WWW<
+A 000168f2 Disables the Define Custom Colors section of the dialog box.WW"
+A 00016932 Dialog box displays a Help button.=
+A 00016956 Checks Read Only check box for Open and Save As dialog boxes.W<
+A 00016996 Generates a message box if the selected file already exists.WW
+A 000169d6 Hides the Read Only check box.J
+A 000169f6 Sets the current directory to what it was when the dialog box was invoked.1
+A 00016a42 Causes the dialog box to display the Help button.W4
+A 00016a76 Allows invalid characters in the returned file name.WW:
+A 00016aae Allows the File Name list box to have multiple selections.L
+A 00016aea Extension of returned file name is different from the one set by DefaultExt.WW%
+A 00016b3a User can enter only valid path names.W,
+A 00016b62 User can enter only names of existing files.WWF
+A 00016b92 Asks if the user wants to create a file that does not currently exist.)
+A 00016bda Sharing violation errors will be ignored.W<
+A 00016c06 The returned file will not have the Read Only attribute set.WW
+A 00016c46 No long filenames.+
+A 00016c5a Windows 95 Open A File dialog box template.WWW
+A 00016c8a No shortcuts.W
+A 00016c9a Long filenames.WWW;
+A 00016cae Dialog box lists only screen fonts supported by the system.WWW5
+A 00016cee Dialog box lists only fonts supported by the printer.W4
+A 00016d26 Dialog box lists available screen and printer fonts.WW7
+A 00016d5e Dialog enables strikeout, underline, and color effects.WWW$
+A 00016d9a Dialog box enables the Apply button.WW@
+A 00016dc2 Dialog box allows only fonts that use the Windows character set.WW3
+A 00016e06 Dialog box should not allow vector-font selections.WWWL
+A 00016e3e Dialog box should not allow graphic device interface (GDI) font simulations.WWH
+A 00016e8e Selects font sizes within the range specified by Min and Max properties.WW0
+A 00016eda Dialog box should select only fixed-pitch fonts.WWL
+A 00016f0e Allows only the selection of fonts available to both the screen and printer.WWG
+A 00016f5e Displays an error if a user selects a font or style that doesn't exist.WWW>
+A 00016faa Dialog box should allow only the selection of scaleable fonts.>
+A 00016fea Dialog box should allow only the selection of True Type fonts.
+A 0001702a No font name selected.
+A 00017042 No font style selected.WWW
+A 0001705e No font size selected.
+A 00017076 Invalid property value
+A 0001708e Property is write-only
+A 000170a6 Property is read-onlyW0
+A 000170be Couldn't allocate memory for FileName or Filter.WW
+A 000170f2 Cancel was selected.WW!
+A 0001710a Failed to show the common dialog.W1
+A 0001712e The function failed to load a specified resource.W
+A 00017162 Call to Windows Help failed.WW*
+A 00017182 The function failed during initialization./
+A 000171ae The function failed to load a specified string.WWW1
+A 000171e2 The function failed to lock a specified resource.WH
+A 00017216 The function was unable to allocate memory for internal data structures.WWD
+A 00017262 The function was unable to lock the memory associated with a handle.WW
+A 000172aa No fonts exist.WWW=
+A 000172be The buffer at which the member LpstrFile points is too small.W
+A 000172fe File name is invalid.WC
+A 00017316 An attempt to subclass a listbox failed due to insufficient memory.WWWB
+A 0001735e The PrintDlg function failed when creating an information context.E
+A 000173a2 DevMode and DevNames data structures describe two different printers.WH
+A 000173ea The printer-device driver failed to initialize a DEVMODE data structure.WW3
+A 00017436 The PrintDlg function failed during initialization.WWWK
+A 0001746e The PrintDlg function failed to load the specified printer's device driver.WWW!
+A 000174be A default printer does not exist.W%
+A 000174e2 No printer device-drivers were found.WB
+A 0001750a The Common Dialog function failed to parse the strings in WIN.INI.H
+A 0001754e The printer device driver failed to initialize a DevMode data structure.WWK
+A 0001759a The [devices] section of WIN.INI does not contain an entry for the printer.WWW:
+A 000175ea The PDReturnDefault flag was set, but a field was nonzero.
+A 00017626 Setup failedWW(
+A 00017636 No template provided by the application.WW/
+A 00017662 Application did not provide an instance handle.WWW#
+A 00017696 Invalid procedure call in safe modeWWW%
+A 000176be Displays Help for a particular topic.WO
+A 000176e6 Notifies the Help application that the specified Help file is no longer in use.WWW.
+A 0001773a Displays the index of the specified Help file.5
+A 0001776a Displays the contents topic in the current Help file.W3
+A 000177a2 Display Help for using the Help application itself.WWW+
+A 000177da Set the current Index for multi-index Help.WWW2
+A 0001780a Designates a specific topic as the contents topic.0
+A 0001783e Displays a topic identified by a context number.WW8
+A 00017872 Creates a Help file that displays text in only one font.WW'
+A 000178ae Displays Help for a particular keyword.WWW'
+A 000178da Displays Help for a particular command.WWW'
+A 00017906 Call the search engine in Windows Help.WWW"
+A 00017932 Portrait printer paper orientation#
+A 00017956 Landscape printer paper orientationWWW6
+A 0001797e Returns/sets the path and filename of a selected file.=
+A 000179b6 Sets the string displayed in the title bar of the dialog box.WQ
+A 000179f6 Returns/sets the filters that are displayed in the Type list box of a dialog box.W?
+A 00017a4a Returns/sets the default filename extension for the dialog box.WWW(
+A 00017a8e Returns/sets the initial file directory.WW 
+A 00017aba Returns/sets the selected color.WW"
+A 00017ade Sets the options for a dialog box.L
+A 00017b02 Specifies the name of the font that appears in each row for the given level.WW
+A 00017b52 Returns/sets bold font styles. 
+A 00017b72 Returns/sets italic font styles.WW'
+A 00017b96 Returns/sets strikethrough font styles.WWW#
+A 00017bc2 Returns/sets underline font styles.WWW8
+A 00017bea Returns/sets the value for the first page to be printed.WWR
+A 00017c26 Sets the smallest allowable font size (Font dialog) or print range (Print dialog).O
+A 00017c7a Returns/sets the maximum font size (Font dialog) or print range (Print dialog).WWWH
+A 00017cce Returns/sets a value that determines the number of copies to be printed.WWP
+A 00017d1a Indicates whether an error is generated when the user chooses the Cancel button.WWC
+A 00017d6e Returns/sets the name of the Help file associated with the project.WWW/
+A 00017db6 Returns/sets the type of online Help requested.WWWB
+A 00017dea Returns/sets the keyword that identifies the requested Help topic.f
+A 00017e2e Determines if user selections in the Print dialog box are used to change the default printer settings.@
+A 00017e96 Returns/sets a default filter for an Open or Save As dialog box.WW8
+A 00017eda Returns/sets the context ID of the requested Help topic.WWX
+A 00017f16 Specifies the size (in points) of the font that appears in each row for the given level.WW4
+A 00017f72 Returns/sets the type of dialog box to be displayed.WWT
+A 00017faa Returns/sets the maximum size of the filename opened using the CommonDialog control.WWI
+A 00018002 Returns a handle (from Microsoft Windows) to the object's device context.WQ
+A 0001804e Returns/sets the name (without the path) of the file to open or save at run time.W4
+A 000180a2 Displays the CommonDialog control's Open dialog box.WW7
+A 000180da Displays the CommonDialog control's Save As dialog box.WWW5
+A 00018116 Displays the CommonDialog control's Color dialog box.W3
+A 0001814e Displays the CommonDialog control's Font dialog boxWWW7
+A 00018186 Displays the CommonDialog control's Printer dialog box.WWW8
+A 000181c2 Runs Winhelp.EXE and displays the Help file you specify.WW&
+A 000181fe Returns/sets printer paper orientation
+A 0001f831 5$545:5B5G5X5^5m5s5|5
+A 0001f84b 5?6K6W6c6o6{6
+A 0001f85d 7L7S7Y7i7
+A 0001f86d 8G8[8
+A 0001f875 8n9}9c:~:
+A 0001f8b5 ; ;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0001f92f < <$<(<,<0<4<8<<<@<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 0001f9ad = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 0001fa29 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>h>l>p>t>x>|>
+A 0001faa5 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0001fb27 0 0$0(0,0004080<0@0D0H0L0P0X0\0`0d0h0l0p0x0|0
+A 0001fba1 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1x1|1
+A 0001fc19 2 2$2(2,202
+A 0001fc2f 3 3$3Y3i3
+A 0001fc5f 5'515;5E5O5
+A 0001fc79 6"6)60676>6E6L6
+A 0001fc8d 7)71787B7Z7e7k7q7w7~7
+A 0001fcbb 8,828=8a8v8
+A 0001fceb : :):P:]:|:
+A 0001fcfb ;:;D;N;X;b;r;};
+A 0001fd4d =#=*=1=8=?=F=O=]=d=k=r=y=
+A 0001fd79 =O>V>y>
+A 0001fd91 ? ?'?
+A 0001fdc5 1 1$1(1,1014181<1@1D1H1L1P1X1\1`1d1h1p1t1x1|1
+A 0001fe41 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0001fec1 3 3$3(3,3034383<3@3D3H3L3P3T3X3`3d3h3l3p3t3x3
+A 0001ff39 4 4$4(4,40484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0001ff83 455;5H5d5j5
+A 0001ff95 6n7t7
+A 0001ff9d 8g8t8
+A 0001ffb1 9=9D9p9
+A 0001ffcd ;'=.=4=B=H=
+A 0001ffdb =:>x>
+A 0001ffed 0:1U1v1
+A 00020009 2;2Q2
+A 00020023 5!6'6E6L6]6c6
+A 00020039 7%7Y7`7
+A 00020055 8K8[8i8
+A 00020069 9D9N9_9e9s9
+A 00020085 <%<M<
+A 0002009b <E=M=T=Y=y=
+A 000200b3 >1>;>E>M>N?Y?
+A 000200d0 -0:0d0$141B1U1_1
+A 000200ed 4$424E4O4
+A 000200f7 5-5G5b5
+A 00020103 7:7Y7
+A 00020117 <#<)<3<R<l<x<
+A 0002012d =8=0>
+A 00020147 1+242n2w2
+A 00020157 243=3
+A 00020161 7)7.777L7
+A 00020173 8'8Y8
+A 00020189 9$9*909=9B9J9\9
+A 000201a1 :!:,:<:D:
+A 000201b1 ;7;G;t;
+A 000201c1 </<C<p<
+A 000201d1 =3=C=h=x=
+A 000201e7 ?:?J?u?{?
+A 00020207 0B0^0
+A 00020213 0O1U1
+A 0002021f 2$2.2`2f2
+A 00020253 5 5$5(5,5054585<5@5D5H5P5T5X5\5`5h5l5p5t5x5|5
+A 000202c9 6 6$6(6,6064686<6@6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00020341 7 7$7(7,7074787<7@7D7H7P7T7X7\7`7d7h7H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 000203bb 9 9$9(9,90989<9@9D9H9L9P9y;
+A 000203fb ?L?V?\?x?~?
+A 00020415 0%0E0T0y0
+A 00020425 1Y1_1y1
+A 00020437 2-262>2U2f2
+A 00020449 3j3p3}3
+A 00020457 3r4x4
+A 00020465 5%5X5^5
+A 0002047b 6"6L6_6f6q6
+A 0002048f 7$888
+A 00020497 8<9M9_9q9
+A 000204a5 :*:<:
+A 000204dd =+>?>v>
+A 0002050d 2#2,222D2K2a2i2}2
+A 0002052f 3\4;6E6L6S6u6{6
+A 0002054d 8?8E8Q8X8_8k8t8
+A 00020567 8,9H9O9
+A 00020581 <3<e<
+A 00020597 >%?h?o?x?
+A 000205b1 040Y0l0
+A 000205bf 0	1z1
+A 000205d3 102v2
+A 000205e9 374t4
+A 000205f1 4.5b5i5p5
+A 00020605 5U6{6
+A 0002060d 7%7l7
+A 00020615 758w8
+A 00020621 9%9,9[9y9
+A 00020639 ;1<8<?<a<g<s<z<
+A 0002064b <8=?=G=
+A 00020659 >?>_>
+A 00020663 >*?D?v?
+A 000206a9 4.595R5
+A 000206b7 536S6
+A 000206bf 6:7U7
+A 000206f9 ;-<9<p>D?O?X?m?y?
+A 00020718 =0C0m0
+A 0002073d 1!20252m2t2
+A 0002074f 383E3T3l3
+A 0002075f 374H4O4T4
+A 00020773 4&5,5G5M5
+A 0002078f 6	777J7Q7z7
+A 000207ab 8%8j8y8
+A 000207bf 8&9,959y9
+A 000207d9 :=:D:~:
+A 000207ef ;6;<;E;^;e;
+A 00020809 <#<,<`<t<z<
+A 00020825 =*=F=
+A 00020837 >)>/>8>O>
+A 00020853 ?#?*?>?N?T?]?u?
+A 0002087d 0b0p0
+A 0002088b 1S1b1
+A 00020895 2.2=2S2f2~2
+A 000208a9 3=3M3|3
+A 000208bb 494d4t4
+A 000208c9 545N5i5z5
+A 000208d9 6Q6X6q6
+A 000208ef 7!7W7]7
+A 000208f9 8:8n8t8
+A 00020927 9 9'949J9R9Y9_9g9p9v9}9
+A 00020947 9::@:[:
+A 00020959 ;#;0;y;
+A 00020963 <&<;<L<
+A 00020975 <*=B=V=`=
+A 000209a1 171W1e1
+A 000209ad 3L4S4Z4b4
+A 000209c3 63696M6{6
+A 000209eb 8<8Q8c8r8
+A 000209fd ;+;>;
+A 00020a11 ?5?u?|?
+A 00020a25 0(0;091D1U1\1m1s1}1
+A 00020a39 1;2`2
+A 00020a43 3N4\4j4x4
+A 00020a5d 6;6p6
+A 00020a6f 838K8h8
+A 00020a7d 9&9C9c9
+A 00020a93 :b:h:y:
+A 00020aad ;\;h;
+A 00020abd <"<(<
+A 00020ac9 =2=8=U=e=q=}=
+A 00020ad7 >)>T>i>
+A 00020b07 121`1
+A 00020b19 2#252[2n2t2
+A 00020b2d 2"3{3
+A 00020b3d 374F4R4z4
+A 00020b51 5>5O5b5m5x5
+A 00020b6d 5&6,6F6[6d6i6
+A 00020b7b 6/7;7C7L7S7Z7k7v7
+A 00020bdb :!:K:Z:b:j:{:
+A 00020bfd ;C;I;p;
+A 00020c1b <]=h=|=
+A 00020c33 =	>">+>;>p>
+A 00020c43 ?!?:?A?J?
+A 00020c6d 1)1=1W1^1w1
+A 00020c7f 282]2w2
+A 00020c9f 4@4F4m4s4y4
+A 00020cb8 (0,00080H0L0P0l0t0
+A 00020ce7 1 1(1,181H1T1\1d1l1t1|1
+A 00020d07 184P4h4
+A 00020d1b 5(5@5X5p5
+A 00020d31 606H6`6x6
+A 00020d3f 7h7l7p7t7x7|7
+A 00020d55 ; ;$;(;0;L;h;
+A 00020d6d <,<H<d<
+A 00020d7f =(=D=`=|=
+A 00020e0c ocx\ComDlg32.dbg
+A 00020f51 Y0W03
+A 00020fe5 Internet1
+A 00020ff8 VeriSign, Inc.1301
+A 00021010 *VeriSign Commercial Software Publishers CA0
+A 0002103f 960409000000Z
+A 0002104e 040107235959Z0a1
+A 00021068 Internet1
+A 0002107b VeriSign, Inc.1301
+A 00021093 *VeriSign Commercial Software Publishers CA0
+A 000211ee qd1<<0
+A 0002122e VeriSign Trust Network1
+A 0002124f VeriSign, Inc.1,0*
+A 00021267 #VeriSign Time Stamping Service Root1402
+A 00021295 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 000212c5 970512070000Z
+A 000212d4 991231070000Z0
+A 000212ef VeriSign Trust Network1
+A 00021310 VeriSign, Inc.1,0*
+A 00021328 #VeriSign Time Stamping Service Root1402
+A 00021356 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 000213a3 h|,-.
+A 000214f3 VeriSign Trust Network1
+A 00021514 VeriSign, Inc.1,0*
+A 0002152c #VeriSign Time Stamping Service Root1402
+A 0002155a +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 0002158a 970512070000Z
+A 00021599 991231070000Z0
+A 000215b4 VeriSign Time Stamping Service1
+A 000215dd VeriSign Trust Network1402
+A 000215fd +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.1
+A 00021634 VeriSign, Inc.1
+A 0002164d Internet0
+A 000216ea GBh[-}
+A 00021711 {p+b#
+A 00021758 &;-%2
+A 00021781 UApF-,~0
+A 000217c3 Internet1
+A 000217d6 VeriSign, Inc.1301
+A 000217ee *VeriSign Commercial Software Publishers CA0
+A 0002181d 990319000000Z
+A 0002182c 000416235959Z0
+A 00021848 Internet1
+A 0002185b VeriSign, Inc.1301
+A 00021873 *VeriSign Commercial Software Publishers CA1F0D
+A 000218a8 =www.verisign.com/repository/RPA Incorp. by Ref.,LIAB.LTD(c)981>0<
+A 000218f0 5Digital ID Class 3 - Microsoft Software Validation v21
+A 0002193e Washington1
+A 00021953 Redmond1
+A 00021965 Microsoft Corporation1
+A 00021985 Microsoft Corporation0
+A 00021a24 g?lM"r
+A 00021a89 Internet1
+A 00021a9c VeriSign, Inc.1301
+A 00021ab4 *VeriSign Commercial Software Publishers CA
+A 00021b41 'https://www.verisign.com/repository/CPS
+A 00021b71 This certificate incorporates by reference, and its use is strictly
+A 00021bb5 subject to, the VeriSign Certification Practice Statement (CPS)
+A 00021bf5 version 1.0, available in the VeriSign repository at:
+A 00021c2b https://www.verisign.com; by E-mail at CPS-requests@verisign.com; or
+A 00021c70 by mail at VeriSign, Inc., 2593 Coast Ave., Mountain View, CA 94043
+A 00021cb4 USA Copyright (c)1996 VeriSign, Inc.  All Rights Reserved. CERTAIN
+A 00021cf7 WARRANTIES DISCLAIMED AND LIABILITY LIMITED.
+A 00021d25 WARNING: THE USE OF THIS CERTIFICATE IS STRICTLY SUBJECT TO THE
+A 00021d65 VERISIGN CERTIFICATION PRACTICE STATEMENT.  THE ISSUING AUTHORITY
+A 00021da7 DISCLAIMS CERTAIN IMPLIED AND EXPRESS WARRANTIES, INCLUDING WARRANTIES
+A 00021dee OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, AND WILL NOT
+A 00021e33 BE LIABLE FOR CONSEQUENTIAL, PUNITIVE, AND CERTAIN OTHER DAMAGES. SEE
+A 00021e79 THE CPS FOR DETAILS.
+A 00021e8f Contents of the VeriSign registered nonverifiedSubjectAttributes
+A 00021ed0 extension value shall not be considered as accurate information
+A 00021f10 validated by the IA.
+A 00021f28 4https://www.verisign.com/repository/verisignlogo.gif06
+A 00021f65 /0-0+
+A 00021f6f %http://status.verisign.com/class1.crl0
+A 00021fe7 mra4f
+A 0002204b 0u0a1
+A 0002205a Internet1
+A 0002206d VeriSign, Inc.1301
+A 00022085 *VeriSign Commercial Software Publishers CA
+A 0002212a @(!0d
+A 00022170 "http://msdn.microsoft.com/vstudio/0
+A 000221fc %Ig9HW
+A 00022254 VeriSign Trust Network1
+A 00022275 VeriSign, Inc.1,0*
+A 0002228d #VeriSign Time Stamping Service Root1402
+A 000222bb +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.
+A 00022339 990507192432Z0
+A 0002238b q/^J[
+U 00003218 DB4C0D00-400B-101B-A3C9-08002B2F49FB
+U 00003268 4D553650-6ABE-11cf-8ADB-00AA00C00905
+U 000032b8 28C4C820-401A-101B-A3C9-08002B2F49FB
+U 00005108 _Version
+U 00006e30 Contents
+U 00011bf0 CancelError
+U 00011c08 Color
+U 00011c18 Copies
+U 00011c28 DefaultExt
+U 00011c40 DialogTitle
+U 00011c58 FileName
+U 00011c70 Filter
+U 00011c80 FilterIndex
+U 00011c98 Flags
+U 00011ca8 FontBold
+U 00011cc0 FontItalic
+U 00011cd8 FontName
+U 00011cf0 FontSize
+U 00011d08 FontStrikeThru
+U 00011d28 FontUnderLine
+U 00011d48 FromPage
+U 00011d60 HelpCommand
+U 00011d78 HelpContext
+U 00011d90 HelpFile
+U 00011da8 HelpKey
+U 00011db8 InitDir
+U 00011dd8 MaxFileSize
+U 00011df0 PrinterDefault
+U 00011e10 ToPage
+U 00011e20 Orientation
+U 00012118 _ExtentX
+U 0001212c _ExtentY
+U 00012198 _ExtentX
+U 000121ac _ExtentY
+U 0001317a TYPELIB
+U 000131aa Invalid property value
+U 000131dc Property is read-only
+U 0001321a P&roperties
+U 00013232 CmDlg
+U 00013642 Microsoft Common Dialog Control
+U 00013684 MS Sans Serif
+U 000136f2 Common Dialog Custom ActiveX Control - Version 6.0 (SP3)
+U 0001377e Copyright © 1991-1997, Microsoft Corp.
+U 000137e6 All Rights Reserved.
+U 0001381e ,uûL
+U 0001382e MS Sans Serif
+U 00013862 &Copies:
+U 000138aa &Flags:
+U 000138ee F&romPage:
+U 0001393a To&Page:
+U 00013982 Mi&n:
+U 000139c2 Ma&x:
+U 00013a02 Printer&Default
+U 00013a3a Cancel&Error
+U 00013a6e &Orientation:
+U 00013a94 -7d(
+U 00013ab2 +uú>
+U 00013ac2 MS Sans Serif
+U 00013af6 F&ontName:
+U 00013b42 FontSi&ze:
+U 00013b8e Mi&n:
+U 00013bce Ma&x:
+U 00013c0e &Flags:
+U 00013c52 Cancel&Error
+U 00013c86 S&tyle
+U 00013cae &Bold
+U 00013cd2 &Italic
+U 00013cfa &Underline
+U 00013d2a &Strikethru
+U 00013d4e ,vún
+U 00013d5e MS Sans Serif
+U 00013d92 Dialog&Title:
+U 00013de2 F&ileName:
+U 00013e2e Init&Dir:
+U 00013e76 Filte&r:
+U 00013ebe &Flags:
+U 00013f02 Defa&ultExt:
+U 00013f52 &MaxFileSize:
+U 00013fa2 FilterI&ndex:
+U 00013ff2 Cancel&Error
+U 0001401a ,uú>
+U 0001402a MS Sans Serif
+U 0001405e HelpConte&xt:
+U 000140ae Help&Command:
+U 000140fe Help&Key:
+U 00014146 HelpF&ile:
+U 00014196 MS Sans Serif
+U 000141ca &Color:
+U 0001420e &Flags:
+U 00014252 Cancel&Error
+U 00014276 VS_VERSION_INFO
+U 000142d2 StringFileInfo
+U 000142f6 040904E4
+U 0001430e CompanyName
+U 00014328 Microsoft Corporation
+U 0001435a FileDescription
+U 0001437c CMDialog ActiveX Control DLL
+U 000143be FileVersion
+U 000143d8 6.00.8418
+U 000143f2 InternalName
+U 0001440c CMDIALOG
+U 00014426 LegalCopyright
+U 00014444 Copyright © 1987-1998 Microsoft Corp.
+U 00014496 LegalTrademarks
+U 000144b8 Microsoft® is a registered trademark of Microsoft Corporation. Windows(TM) is a trademark of Microsoft Corporation
+U 000145a6 OriginalFilename
+U 000145c8 COMDLG32.OCX
+U 000145ea ProductName
+U 00014604 CMDIALOG
+U 0001461e ProductVersion
+U 0001463c 6.00.8418
+U 00014656 Comments
+U 00014668 February 22, 1999
+U 00014692 OLESelfRegister
+U 000146ba VarFileInfo
+U 000146da Translation
+U 0001aa28 )Microsoft Common Dialog Control 6.0 (SP3)
+U 0001aa7e Printer Dialog Box Constants1Sets or returns state of All Pages option button.+Sets or returns state of Collate check box.%Disables the Print to File check box.-The Print to File check box is not displayed.4Sets or returns the state of the Pages option button%Disables the Selection option button.<Prevents a warning message when there is no default printer.5Sets or returns the state of the Pages option button.EDisplays the Print Setup dialog box rather than the Print dialog box.9Sets or returns the state of the Print to File check box.3Returns a device context for the printer selection.
+U 0001af20 Returns default printer name.9Returns an information context for the printer selection.9Sets or returns the state of the Selection option button.
+U 0001b04c TThe lStructSize member of the corresponding common-dialog data structure is invalid.,Application did not provide a hook function.
+U 0001b152 )Couldn't determine procedure address(es).!Failed to show the common dialog.HThe printer device driver failed to initialize a DevMode data structure.
+U 0001b27e Setup failed
+U 0001b29c Common Dialog Property Page&Returns/sets printer paper orientation
+U 0001b322 Printer Orientation Constants$Dialog box displays the Help button.!Sets support for multiple copies.
+U 0001b3ec Color Dialog Box Constants,Sets initial color value for the dialog box.KEntire dialog box is displayed, including the Define Custom Colors section.<Disables the Define Custom Colors section of the dialog box."Dialog box displays a Help button.#File Open/Save Dialog Box Constants=Checks Read Only check box for Open and Save As dialog boxes.<Generates a message box if the selected file already exists.
+U 0001b712 Hides the Read Only check box.JSets the current directory to what it was when the dialog box was invoked.1Causes the dialog box to display the Help button.4Allows invalid characters in the returned file name.:Allows the File Name list box to have multiple selections.LExtension of returned file name is different from the one set by DefaultExt.
+U 0001b9c4 %User can enter only valid path names.,User can enter only names of existing files.FAsks if the user wants to create a file that does not currently exist.)Sharing violation errors will be ignored.<The returned file will not have the Read Only attribute set.+Windows 95 Open A File dialog box template.
+U 0001bc20 No shortcuts.
+U 0001bc3c Long filenames.
+U 0001bc5c Fonts Dialog Box Constants;Dialog box lists only screen fonts supported by the system.5Dialog box lists only fonts supported by the printer.4Dialog box lists available screen and printer fonts."Dialog box displays a Help button.7Dialog enables strikeout, underline, and color effects.$Dialog box enables the Apply button.@Dialog box allows only fonts that use the Windows character set.QReturns/sets the name (without the path) of the file to open or save at run time.4Displays the CommonDialog control's Open dialog box.7Displays the CommonDialog control's Save As dialog box.5Displays the CommonDialog control's Color dialog box.3Displays the CommonDialog control's Font dialog box7Displays the CommonDialog control's Printer dialog box.8Runs Winhelp.EXE and displays the Help file you specify.
+U 0001c296 No long filenames.
+U 0001c2cc 3Dialog box should not allow vector-font selections.LDialog box should not allow graphic device interface (GDI) font simulations.HSelects font sizes within the range specified by Min and Max properties.0Dialog box should select only fixed-pitch fonts.LAllows only the selection of fonts available to both the screen and printer.GDisplays an error if a user selects a font or style that doesn't exist.>Dialog box should allow only the selection of scaleable fonts.>Dialog box should allow only the selection of True Type fonts.
+U 0001c6ea No font name selected.
+U 0001c718 No font style selected.
+U 0001c748 No font size selected.
+U 0001c776 Common Dialog Error Constants0Couldn't allocate memory for FileName or Filter.
+U 0001c814 (No template provided by the application.1The function failed to load a specified resource.
+U 0001c8cc "Portrait printer paper orientation#Landscape printer paper orientation
+U 0001c97c BThe Common Dialog function failed to parse the strings in WIN.INI.
+U 0001ca04 KThe [devices] section of WIN.INI does not contain an entry for the printer.:The PDReturnDefault flag was set, but a field was nonzero./Application did not provide an instance handle.
+U 0001cb74 Help Constants%Displays Help for a particular topic.ONotifies the Help application that the specified Help file is no longer in use..Displays the index of the specified Help file.5Displays the contents topic in the current Help file.3Display Help for using the Help application itself.+Set the current Index for multi-index Help.2Designates a specific topic as the contents topic.0Displays a topic identified by a context number.
+U 0001ced0 8Creates a Help file that displays text in only one font.'Displays Help for a particular keyword.'Displays Help for a particular command.'Call the search engine in Windows Help.6Returns/sets the path and filename of a selected file.=Sets the string displayed in the title bar of the dialog box.QReturns/sets the filters that are displayed in the Type list box of a dialog box.?Returns/sets the default filename extension for the dialog box.(Returns/sets the initial file directory. Returns/sets the selected color."Sets the options for a dialog box.LSpecifies the name of the font that appears in each row for the given level.
+U 0001d3b6 Returns/sets bold font styles. Returns/sets italic font styles.'Returns/sets strikethrough font styles.#Returns/sets underline font styles.8Returns/sets the value for the first page to be printed.8Returns/sets the value for the first page to be printed.RSets the smallest allowable font size (Font dialog) or print range (Print dialog).OReturns/sets the maximum font size (Font dialog) or print range (Print dialog).HReturns/sets a value that determines the number of copies to be printed.PIndicates whether an error is generated when the user chooses the Cancel button.CReturns/sets the name of the Help file associated with the project./Returns/sets the type of online Help requested.BReturns/sets the keyword that identifies the requested Help topic.fDetermines if user selections in the Print dialog box are used to change the default printer settings.@Returns/sets a default filter for an Open or Save As dialog box.8Returns/sets the context ID of the requested Help topic.XSpecifies the size (in points) of the font that appears in each row for the given level.4Returns/sets the type of dialog box to be displayed.TReturns/sets the maximum size of the filename opened using the CommonDialog control.IReturns a handle (from Microsoft Windows) to the object's device context.
+U 0001ddca Property is write-only
+U 0001de00 *Low on memory!  Can't bring up the dialog!BCouldn't determine procedure address(es). 
+U 0001deae Select a different DLL. DLL Selected couldn't be loaded.
+U 0001df20 Cancel was selected.£The ENABLEHOOK flag was set in the Flags member of a common-dialog data structure but the application failed to provide a pointer to a corresponding hook function.RThe common dialog function was unable to lock the memory associated with a handle.VThe common dialog function was unable to allocate memory for internal data structures.?The common dialog function failed to lock a specified resource.?The common dialog function failed to load a specified resource.?The common dialog function failed to find a specified resource.=The common dialog function failed to load a specified string.
+U 0001e3e2 The ENABLETEMPLATE flag was set in the Flags member of a common-dialog data structure, but the application failed to provide a corresponding instance handle.
+U 0001e51e The ENABLETEMPLATE flag was set in the Flags member of a common-dialog data structure but the application failed to provide a corresponding template.wThe common dialog function failed during initialization. This error often occurs when insufficient memory is available.TThe lStructSize member of the corresponding common-dialog data structure is invalid.
+U 0001e7e6 Call to Windows Help failed.*The function failed during initialization.1The function failed to load a specified resource./The function failed to load a specified string.1The function failed to lock a specified resource.HThe function was unable to allocate memory for internal data structures.DThe function was unable to lock the memory associated with a handle.
+U 0001eaba =The buffer at which the member LpstrFile points is too small.
+U 0001eb38 File name is invalid.
+U 0001eb64 BThe PrintDlg function failed when creating an information context.EDevMode and DevNames data structures describe two different printers.HThe printer-device driver failed to initialize a DEVMODE data structure.
+U 0001ed2a No fonts exist.
+U 0001ed64 [The FileName buffer is too small to store the selected file name(s). (Increase MaxFileSize)
+U 0001ee1e Invalid filenameCAn attempt to subclass a listbox failed due to insufficient memory.
+U 0001ef08 ]The [devices] section of the file WIN.INI did not contain an entry for the requested printer.PThe PrintDlg function failed when it attempted to create an information context.VThe data in the DEVMODE and DEVNAMES data structures describes two different printers.!A default printer does not exist.%No printer device-drivers were found.3The PrintDlg function failed during initialization.©The printer device-driver failed to initialize a DEVMODE data structure. (This error constant only applies to printer drivers written for Windows 3.0 or later versions.)KThe PrintDlg function failed to load the specified printer's device driver.
+U 0001f3fa The PD_RETURNDEFAULT flag was set in the Flags member of the PRINTDLG data structure but either the hDevMode or hDevNames field were nonzero.dThe common dialog function failed to parse the strings in the [devices] section of the file WIN.INI.
+U 0001f5f4 #Invalid procedure call in safe mode
+U 0001f66a 'Help call fail.  Check Help properties.
+U 0001f6c0 Common Dialogs Control
+U 0001f71a Open / Save As
+U 0001f75e Color
+U 0001f77e Print
+U 0001f79e Help
+U 0001f7ba Font
+U 00020f6e <<<Obsolete>>
+U 00022142 *Common Dialog Contro

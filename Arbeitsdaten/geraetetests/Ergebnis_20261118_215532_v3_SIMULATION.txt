@@ -1,0 +1,70 @@
+﻿artista Designliste VERSION 3 – 18.11.2026 21:55:32
+Mitschnitt: C:\Users\Horvat\Downloads\Testprogramm_artista185_Windows_v3\Testprogramm_artista185_Windows_v3\Mitschnitt_20261118_215532.log
+*** SIMULATION – keine echte Maschine, nur Selbsttest des Programms ***
+
+=== Port SIM ===
+  Versuch 1 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 19200 Baud)
+  0x200100: 4E 4D 4D 56 30 34 2E 30 34 00 47 65 72 6D 61 6E 20 20 20 20 20 20 00 46 72 69 74 7A 20 47 65 67 61 75 66 20 53 49 4D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+            'NMMV04.04.German      .Fritz Gegauf SIM.........................'
+  >>> STUFE 1 OK: Nähmaschine antwortet, Firmware '04.04', Sprache 'German'
+  Umschalten zum Stickmodul, Versuch 1 …
+  vereinbare 57600 Baud (J 0 5 … B O S … E B) …
+  schalte zum Stickmodul durch (Y Q) …
+  0x200100: 53 52 4D 56 20 33 2E 30 39 20 53 49 4D 55 4C 41 54 49 4F 4E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+            'SRMV 3.09 SIMULATION............................................'
+  >>> STUFE 2 OK: Stickmodul antwortet – Kennung SRMV, Version-Code 0x309
+  0xFFFD24: 1C 3C 00 01 B3 42 00 02 40 80 00 02 01 EA 00 02 44 80 00 02 8E 9A 00 01 FD 7A 00 02 38 12 00 00
+     N (Byte 0)             = 0x1C (28)
+     Byte 1                 = 0x3C (60)
+     Groesse Datenbereich   = 0x1B342 (111426)
+     INFO                   = 0x24080 (147584)
+     AUSWAHL                = 0x201EA (131562)
+     ICON                   = 0x24480 (148608)
+     DATEN                  = 0x28E9A (167578)
+     Ende Karte             = 0x1FD7A (130426)
+     Ende Speicher          = 0x23812 (145426)
+  >>> Verwaltungsblock plausibel (N ≤ 28, Byte1 ≤ 60, Größe ≤ 150000)
+  Zeiger @0x24004: 0xFFFED4
+  Zeiger @0x24040: 0x40100
+  Zeiger @0x24044: 0x40200
+  Zeiger @0x24048: 0x40300
+  Status @Zeiger(0x24004): 00 00 00 00 00 86 00 04   Byte+5=0x86 Byte+7=0x04
+  Ziel: Maschinenspeicher
+  >>> Anzahl Designs (Maschinenspeicher): 30
+  Bank 0 (Statusbyte 0x04: Namen werden angezeigt)
+   Nr   1  Anzeige 'SIM DESIGN 01'  Name roh 'SIM DESIGN 01'  Flags 0x08  Farben? 3
+   Nr   2  Anzeige 'SIM DESIGN 02'  Name roh 'SIM DESIGN 02'  Flags 0x08  Farben? 3
+   Nr   3  Anzeige 'SIM DESIGN 03'  Name roh 'SIM DESIGN 03'  Flags 0x08  Farben? 3
+   Nr   4  Anzeige 'SIM DESIGN 04'  Name roh 'SIM DESIGN 04'  Flags 0x08  Farben? 3
+   Nr   5  Anzeige 'SIM DESIGN 05'  Name roh 'SIM DESIGN 05'  Flags 0x08  Farben? 3
+   Nr   6  Anzeige 'SIM DESIGN 06'  Name roh 'SIM DESIGN 06'  Flags 0x08  Farben? 3
+   Nr   7  Anzeige 'SIM DESIGN 07'  Name roh 'SIM DESIGN 07'  Flags 0x08  Farben? 3
+   Nr   8  Anzeige 'SIM DESIGN 08'  Name roh 'SIM DESIGN 08'  Flags 0x08  Farben? 3
+   Nr   9  Anzeige 'SIM DESIGN 09'  Name roh 'SIM DESIGN 09'  Flags 0x08  Farben? 3
+   Nr  10  Anzeige 'SIM DESIGN 10'  Name roh 'SIM DESIGN 10'  Flags 0x08  Farben? 3
+   Nr  11  Anzeige 'SIM DESIGN 11'  Name roh 'SIM DESIGN 11'  Flags 0x08  Farben? 3
+   Nr  12  Anzeige 'SIM DESIGN 12'  Name roh 'SIM DESIGN 12'  Flags 0x08  Farben? 3
+   Nr  13  Anzeige 'SIM DESIGN 13'  Name roh 'SIM DESIGN 13'  Flags 0x08  Farben? 3
+   Nr  14  Anzeige 'SIM DESIGN 14'  Name roh 'SIM DESIGN 14'  Flags 0x08  Farben? 3
+   Nr  15  Anzeige 'SIM DESIGN 15'  Name roh 'SIM DESIGN 15'  Flags 0x08  Farben? 3
+   Nr  16  Anzeige 'SIM DESIGN 16'  Name roh 'SIM DESIGN 16'  Flags 0x08  Farben? 3
+   Nr  17  Anzeige 'SIM DESIGN 17'  Name roh 'SIM DESIGN 17'  Flags 0x08  Farben? 3
+   Nr  18  Anzeige 'SIM DESIGN 18'  Name roh 'SIM DESIGN 18'  Flags 0x08  Farben? 3
+   Nr  19  Anzeige 'SIM DESIGN 19'  Name roh 'SIM DESIGN 19'  Flags 0x08  Farben? 3
+   Nr  20  Anzeige 'SIM DESIGN 20'  Name roh 'SIM DESIGN 20'  Flags 0x08  Farben? 3
+   Nr  21  Anzeige 'SIM DESIGN 21'  Name roh 'SIM DESIGN 21'  Flags 0x08  Farben? 3
+   Nr  22  Anzeige 'SIM DESIGN 22'  Name roh 'SIM DESIGN 22'  Flags 0x08  Farben? 3
+   Nr  23  Anzeige 'SIM DESIGN 23'  Name roh 'SIM DESIGN 23'  Flags 0x08  Farben? 3
+   Nr  24  Anzeige 'SIM DESIGN 24'  Name roh 'SIM DESIGN 24'  Flags 0x08  Farben? 3
+   Nr  25  Anzeige 'SIM DESIGN 25'  Name roh 'SIM DESIGN 25'  Flags 0x08  Farben? 3
+   Nr  26  Anzeige 'SIM DESIGN 26'  Name roh 'SIM DESIGN 26'  Flags 0x08  Farben? 3
+   Nr  27  Anzeige 'SIM DESIGN 27'  Name roh 'SIM DESIGN 27'  Flags 0x08  Farben? 3
+  Bank 1 (Statusbyte 0x04: Namen werden angezeigt)
+   Nr  28  Anzeige 'SIM DESIGN 28'  Name roh 'SIM DESIGN 28'  Flags 0x08  Farben? 3
+   Nr  29  Anzeige 'SIM DESIGN 29'  Name roh 'SIM DESIGN 29'  Flags 0x08  Farben? 3
+   Nr  30  Anzeige 'SIM DESIGN 30'  Name roh 'SIM DESIGN 30'  Flags 0x08  Farben? 3
+  >>> DESIGNLISTE GELESEN
+  PC-Modus verlassen (Befehl 0x100)
+
+FERTIG. Bitte die Maschine jetzt AUS- und wieder EINSCHALTEN.

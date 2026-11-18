@@ -1,0 +1,1530 @@
+[0x0000 f=0 list] (3)
+  [0x000c f=0 list] (2)
+    [0x4278 f=0 list] (3)
+      [0x427c f=0 long] = 1
+      [0x4285 f=0 list] (6)
+        [0x427e f=0 long] = 7
+        [0x4272 f=0 list] (4)
+          [0x4279 f=0 long] = 8
+          [0x427a f=0 long] = 0
+          [0x427b f=0 long] = 67
+          [0x4287 f=0 long] = 0
+        [0x4284 f=0 list] (3)
+          [0x0000 f=0 ulong] = 2001
+          [0x0000 f=0 ulong] = 11
+          [0x0000 f=0 ulong] = 14
+        [0x427d f=0 str] = '[DEBUG DRAFT (_o_) ]'
+        [0x4281 f=0 str] = '[DEBUG DRAFT (_o_) ]'
+        [0x4282 f=0 str] = '[DEBUG DRAFT (_o_) ]'
+      [0x4286 f=0 list] (1)
+        [0x4280 f=0 long] = -1
+    [0x000d f=0 long] = 10
+  [0x000b f=0 list] (1)
+    [0x0064 f=0 list] (20)
+      [0x07d0 f=0 list] (38)
+        [0x07d1 f=0 long] = 3
+        [0x07d2 f=0 str] = 'Barudan'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 3
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 3
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 1
+        [0x07db f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07de f=0 list] (2)
+          [0x07df f=32768 long] = 1
+          [0x07df f=0 long] = 2
+        [0x07dd f=0 long] = 2
+        [0x07e4 f=0 list] (2)
+          [0x07e5 f=32768 long] = 0
+          [0x07e5 f=0 long] = 1
+        [0x07e6 f=0 long] = 7
+        [0x07e7 f=0 long] = 0
+        [0x07e8 f=0 long] = 0
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = -12.0
+        [0x07f0 f=0 long] = -1
+        [0x07f1 f=0 long] = 1
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x0816 f=0 long] = 0
+        [0x0817 f=0 list] (2)
+          [0x0818 f=32768 long] = 1
+          [0x0818 f=0 long] = 2
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 1
+        [0x07d2 f=0 str] = 'Tajima'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 1
+        [0x07d6 f=0 list] (3)
+          [0x07d7 f=0 long] = 1
+          [0x07d7 f=0 long] = 2
+          [0x07d7 f=0 long] = 12
+        [0x07d4 f=0 double] = 12.1
+        [0x07da f=0 long] = 1
+        [0x07dd f=0 long] = 3
+        [0x081e f=0 long] = 0
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = -12.0
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 7.0
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 19
+        [0x07d2 f=0 str] = 'SWF'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 19
+        [0x07d6 f=0 list] (3)
+          [0x07d7 f=0 long] = 1
+          [0x07d7 f=0 long] = 2
+          [0x07d7 f=0 long] = 12
+        [0x07d4 f=0 double] = 12.1
+        [0x07da f=0 long] = 1
+        [0x07dd f=0 long] = 3
+        [0x081e f=0 long] = 0
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = -12.0
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 7.0
+      [0x07d0 f=0 list] (31)
+        [0x07d1 f=0 long] = 4
+        [0x07d2 f=0 str] = 'Tajima TMCE-600'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 4
+        [0x07d6 f=0 list] (3)
+          [0x07d7 f=0 long] = 1
+          [0x07d7 f=0 long] = 2
+          [0x07d7 f=0 long] = 12
+        [0x07d4 f=0 double] = 12.1
+        [0x0834 f=0 double] = 0.8
+        [0x0835 f=0 double] = 12.1
+        [0x0839 f=0 long] = 3
+        [0x0826 f=0 long] = 60
+        [0x07da f=0 long] = 1
+        [0x07dd f=0 long] = 3
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = -12.0
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x083a f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 7.0
+        [0x0836 f=0 double] = 5.0
+      [0x07d0 f=0 list] (48)
+        [0x07d1 f=0 long] = 10
+        [0x07d2 f=0 str] = 'Barudan Chenille'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 10
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 21
+        [0x07d4 f=0 double] = 4.0
+        [0x0834 f=0 double] = 0.8
+        [0x0835 f=0 double] = 4.0
+        [0x0839 f=0 long] = 3
+        [0x0826 f=0 long] = 60
+        [0x07da f=0 long] = 1
+        [0x07dd f=0 long] = 2
+        [0x07e4 f=0 list] (2)
+          [0x07e5 f=32768 long] = 0
+          [0x07e5 f=0 long] = 1
+        [0x07e6 f=0 long] = 7
+        [0x07e7 f=0 long] = 0
+        [0x07e8 f=0 long] = 0
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = -12.0
+        [0x07f0 f=0 long] = -1
+        [0x07f1 f=0 long] = 1
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x083a f=0 long] = 1
+        [0x083b f=0 long] = 0
+        [0x083c f=0 long] = 0
+        [0x083d f=0 long] = 0
+        [0x083e f=0 long] = 0
+        [0x083f f=0 long] = 0
+        [0x0840 f=0 long] = 0
+        [0x0841 f=0 long] = 0
+        [0x0842 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x0816 f=0 long] = 0
+        [0x0817 f=0 list] (2)
+          [0x0818 f=32768 long] = 1
+          [0x0818 f=0 long] = 2
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 1.0
+        [0x0828 f=0 double] = 4.0
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 2
+        [0x07d2 f=0 str] = 'Melco'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 2
+        [0x07d6 f=0 list] (2)
+          [0x07d7 f=0 long] = 7
+          [0x07d7 f=0 long] = 8
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 1
+        [0x07dc f=0 long] = 1
+        [0x07dd f=0 long] = 2
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x07ea f=0 double] = 0.0
+        [0x07eb f=0 double] = 0.0
+      [0x07d0 f=0 list] (21)
+        [0x07d1 f=0 long] = 8
+        [0x07d2 f=0 str] = 'Toyota'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 8
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 9
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 1
+        [0x07db f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07dd f=0 long] = 3
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+      [0x07d0 f=0 list] (32)
+        [0x07d1 f=0 long] = 5
+        [0x07d2 f=0 str] = 'Zangs'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 5
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 4
+        [0x07d4 f=0 double] = 6.6
+        [0x07da f=0 long] = 1
+        [0x07dd f=0 long] = 3
+        [0x07e4 f=0 list] (4)
+          [0x07e5 f=0 long] = 0
+          [0x07e5 f=0 long] = 1
+          [0x07e5 f=32768 long] = 2
+          [0x07e5 f=0 long] = 3
+        [0x07e6 f=0 long] = 5
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = 18.0
+        [0x07f8 f=0 long] = 1
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x0817 f=0 list] (2)
+          [0x0818 f=32768 long] = 1
+          [0x0818 f=0 long] = 2
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 6.6
+        [0x081b f=0 long] = 0
+        [0x081c f=0 long] = 0
+        [0x081d f=0 long] = 0
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (32)
+        [0x07d1 f=0 long] = 6
+        [0x07d2 f=0 str] = 'ZSK 1'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 6
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 5
+        [0x07da f=0 long] = 1
+        [0x07db f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07d4 f=0 double] = 12.7
+        [0x07dd f=0 long] = 3
+        [0x07e4 f=0 list] (4)
+          [0x07e5 f=0 long] = 0
+          [0x07e5 f=0 long] = 1
+          [0x07e5 f=32768 long] = 2
+          [0x07e5 f=0 long] = 3
+        [0x07e6 f=0 long] = 5
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = 18.0
+        [0x07f8 f=0 long] = 1
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x081c f=0 long] = 0
+        [0x081d f=0 long] = 0
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (32)
+        [0x07d1 f=0 long] = 7
+        [0x07d2 f=0 str] = 'ZSK 2'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 7
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 6
+        [0x07da f=0 long] = 1
+        [0x07db f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07d4 f=0 double] = 12.7
+        [0x07dd f=0 long] = 3
+        [0x07e4 f=0 list] (4)
+          [0x07e5 f=0 long] = 0
+          [0x07e5 f=0 long] = 1
+          [0x07e5 f=32768 long] = 2
+          [0x07e5 f=0 long] = 3
+        [0x07e6 f=0 long] = 5
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = 18.0
+        [0x07f8 f=0 long] = 1
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x081c f=0 long] = 0
+        [0x081d f=0 long] = 0
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (40)
+        [0x07d1 f=0 long] = 14
+        [0x07d2 f=0 str] = 'Pfaff'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 14
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 14
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07dd f=0 long] = 2
+        [0x0825 f=0 long] = 100
+        [0x07e4 f=0 list] (2)
+          [0x07e5 f=32768 long] = 0
+          [0x07e5 f=0 long] = 1
+        [0x07e6 f=0 long] = 8
+        [0x07e0 f=0 long] = 0
+        [0x07e1 f=0 long] = 0
+        [0x07e2 f=0 long] = 0
+        [0x07e8 f=0 long] = 1
+        [0x07e9 f=0 long] = 1
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = 0.0
+        [0x07f0 f=0 long] = -1
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x0816 f=0 long] = 0
+        [0x081b f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0a91 f=0 long] = 3
+        [0x0a90 f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (38)
+        [0x07d1 f=0 long] = 15
+        [0x07d2 f=0 str] = 'Barudan Z Series'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 15
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 15
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 1
+        [0x07db f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07de f=0 list] (2)
+          [0x07df f=32768 long] = 1
+          [0x07df f=0 long] = 2
+        [0x07dd f=0 long] = 2
+        [0x07e4 f=0 list] (2)
+          [0x07e5 f=32768 long] = 0
+          [0x07e5 f=0 long] = 1
+        [0x07e6 f=0 long] = 15
+        [0x07e7 f=0 long] = 0
+        [0x07e8 f=0 long] = 0
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = -12.0
+        [0x07f0 f=0 long] = -1
+        [0x07f1 f=0 long] = 1
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x0816 f=0 long] = 0
+        [0x0817 f=0 list] (2)
+          [0x0818 f=32768 long] = 1
+          [0x0818 f=0 long] = 2
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x0845 f=0 long] = 0
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 12
+        [0x07d2 f=0 str] = 'Tajima TMCE-100'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 12
+        [0x07d6 f=0 list] (3)
+          [0x07d7 f=0 long] = 23
+          [0x07d7 f=0 long] = 2
+          [0x07d7 f=0 long] = 12
+        [0x07d4 f=0 double] = 5.0
+        [0x0834 f=0 double] = 0.8
+        [0x0835 f=0 double] = 5.0
+        [0x0839 f=0 long] = 3
+        [0x0826 f=0 long] = 60
+        [0x07da f=0 long] = 0
+        [0x07dd f=0 long] = 0
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x083a f=0 long] = 1
+        [0x0843 f=0 long] = 1
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 5.0
+        [0x0836 f=0 double] = 5.0
+      [0x07d0 f=0 list] (29)
+        [0x07d1 f=0 long] = 11
+        [0x07d2 f=0 str] = 'Melco Chenille'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 11
+        [0x07d6 f=0 list] (2)
+          [0x07d7 f=0 long] = 7
+          [0x07d7 f=0 long] = 8
+        [0x07d4 f=0 double] = 12.7
+        [0x0834 f=0 double] = 0.8
+        [0x07da f=0 long] = 1
+        [0x07dc f=0 long] = 1
+        [0x07dd f=0 long] = 2
+        [0x0839 f=0 long] = 0
+        [0x0844 f=0 long] = 0
+        [0x083a f=0 long] = 1
+        [0x0826 f=0 long] = 60
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 16
+        [0x07d2 f=0 str] = 'Melco EP1'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 16
+        [0x07d6 f=0 list] (2)
+          [0x07d7 f=0 long] = 7
+          [0x07d7 f=0 long] = 8
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 1
+        [0x07dc f=0 long] = 1
+        [0x07dd f=0 long] = 2
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x07ea f=0 double] = 139.7
+        [0x07eb f=0 double] = 241.3
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 17
+        [0x07d2 f=0 str] = 'Bernina'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 17
+        [0x07d6 f=0 list] (2)
+          [0x07d7 f=0 long] = 16
+          [0x07d7 f=0 long] = 7
+        [0x07d4 f=0 double] = 12.7
+        [0x07da f=0 long] = 0
+        [0x07dc f=0 long] = 0
+        [0x07dd f=0 long] = 0
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x07ea f=0 double] = 0.0
+        [0x07eb f=0 double] = 0.0
+      [0x07d0 f=0 list] (21)
+        [0x07d1 f=0 long] = 70
+        [0x07d2 f=0 str] = 'Tufting'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 70
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 101
+        [0x07d4 f=0 double] = 10000.0
+        [0x089b f=0 long] = 1
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 10000.0
+        [0x0a29 f=0 double] = 0.0
+        [0x0a2a f=0 double] = 25.4
+        [0x0a2b f=0 double] = 0.0
+        [0x0a2c f=0 double] = 12.7
+        [0x07ea f=0 double] = 5000.0
+        [0x07eb f=0 double] = 4000.0
+        [0x0a31 f=0 double] = 4.0
+        [0x0a32 f=0 double] = 2.0
+      [0x07d0 f=0 list] (17)
+        [0x07d1 f=0 long] = 40
+        [0x07d2 f=0 str] = 'Schiffli'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 40
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 201
+        [0x07d4 f=0 double] = 16.5
+        [0x07da f=0 long] = 0
+        [0x07dd f=0 long] = 0
+        [0x07ee f=0 double] = 0.0
+        [0x07ef f=0 double] = 0.0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.5
+        [0x0828 f=0 double] = 16.5
+        [0x0a8d f=0 double] = 27.07
+        [0x0a8e f=0 long] = 6
+        [0x0a91 f=0 long] = 12
+        [0x0a90 f=0 long] = 1
+      [0x07d0 f=0 list] (26)
+        [0x07d1 f=0 long] = 18
+        [0x07d2 f=0 str] = 'Janome'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 18
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 7
+        [0x07d4 f=0 double] = 12.6
+        [0x07da f=0 long] = 0
+        [0x07dc f=0 long] = 0
+        [0x07dd f=0 long] = 0
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x0802 f=0 long] = 0
+        [0x0803 f=0 long] = 0
+        [0x0804 f=0 long] = 0
+        [0x0805 f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 1
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x07ea f=0 double] = 0.0
+        [0x07eb f=0 double] = 0.0
+      [0x07d0 f=0 list] (24)
+        [0x07d1 f=0 long] = 20
+        [0x07d2 f=0 str] = 'ZSK TC'
+        [0x07d3 f=0 str] = ''
+        [0x07d5 f=0 long] = 20
+        [0x07d6 f=0 list] (1)
+          [0x07d7 f=0 long] = 24
+        [0x07da f=0 long] = 1
+        [0x07db f=0 long] = 1
+        [0x07dc f=0 long] = 0
+        [0x07d4 f=0 double] = 12.7
+        [0x07dd f=0 long] = 3
+        [0x07e4 f=0 list] (4)
+          [0x07e5 f=32768 long] = 0
+          [0x07e5 f=0 long] = 1
+          [0x07e5 f=0 long] = 2
+          [0x07e5 f=0 long] = 3
+        [0x07e6 f=0 long] = 15
+        [0x07f8 f=0 long] = 0
+        [0x07f9 f=0 long] = 0
+        [0x07fa f=0 long] = 0
+        [0x07fb f=0 long] = 0
+        [0x080c f=0 long] = 0
+        [0x080d f=0 long] = 0
+        [0x080e f=0 long] = 0
+        [0x080f f=0 long] = 0
+        [0x089b f=0 long] = 1
+        [0x0827 f=0 double] = 0.3
+        [0x0828 f=0 double] = 12.7
+        [0x0845 f=0 long] = 0
+  [0x000a f=0 list] (34)
+    [0x008c f=0 list] (1)
+      [0x008c f=0 list] (3)
+        [0x4395 f=0 long] = 65
+        [0x4396 f=0 long] = 67174545
+        [0x4394 f=0 long] = 0
+    [0x0078 f=0 list] = None
+    [0x006e f=0 list] (6)
+      [0x0fb1 f=32768 long] = 1
+      [0x0fbf f=0 list] (11)
+        [0x0fc9 f=0 long] = 110
+        [0x0fc9 f=0 long] = 300
+        [0x0fc9 f=0 long] = 600
+        [0x0fc9 f=0 long] = 1200
+        [0x0fc9 f=0 long] = 2400
+        [0x0fc9 f=0 long] = 4800
+        [0x0fc9 f=32768 long] = 9600
+        [0x0fc9 f=0 long] = 14400
+        [0x0fc9 f=0 long] = 19200
+        [0x0fc9 f=0 long] = 38400
+        [0x0fc9 f=0 long] = 56000
+      [0x0fc0 f=0 list] (3)
+        [0x0fca f=0 long] = 6
+        [0x0fca f=32768 long] = 7
+        [0x0fca f=0 long] = 8
+      [0x0fc1 f=0 list] (3)
+        [0x0fcb f=0 long] = 0
+        [0x0fcb f=0 long] = 1
+        [0x0fcb f=32768 long] = 2
+      [0x0fc2 f=0 list] (3)
+        [0x0fcc f=32768 long] = 0
+        [0x0fcc f=0 long] = 1
+        [0x0fcc f=0 long] = 2
+      [0x0fc3 f=0 list] (7)
+        [0x0fcd f=32768 long] = 0
+        [0x0fcd f=0 long] = 1
+        [0x0fcd f=0 long] = 2
+        [0x0fcd f=0 long] = 5
+        [0x0fcd f=0 long] = 6
+        [0x0fcd f=0 long] = 3
+        [0x0fcd f=0 long] = 4
+    [0x006f f=0 list] (1)
+      [0x0fb1 f=0 long] = 2
+    [0x0070 f=0 list] (4)
+      [0x0fb1 f=32768 long] = 3
+      [0x0fc4 f=0 list] (9)
+        [0x0fce f=0 long] = 3
+        [0x0fce f=0 long] = 4
+        [0x0fce f=0 long] = 5
+        [0x0fce f=0 long] = 7
+        [0x0fce f=0 long] = 9
+        [0x0fce f=0 long] = 10
+        [0x0fce f=32768 long] = 11
+        [0x0fce f=0 long] = 12
+        [0x0fce f=0 long] = 15
+      [0x0fc5 f=0 list] (5)
+        [0x0fcf f=0 long] = 544
+        [0x0fcf f=0 long] = 560
+        [0x0fcf f=0 long] = 576
+        [0x0fcf f=0 long] = 800
+        [0x0fcf f=32768 long] = 992
+      [0x0fc6 f=0 list] (3)
+        [0x0fd0 f=32768 long] = 0
+        [0x0fd0 f=0 long] = 1
+        [0x0fd0 f=0 long] = 3
+    [0x0082 f=0 long] = 17
+    [0x0083 f=0 0] = None
+    [0x00c8 f=0 long] = 1
+    [0x0079 f=0 list] (1)
+      [0x109a f=0 list] (7)
+        [0x10a0 f=0 0] = None
+        [0x109b f=0 str] = 'Digitizer'
+        [0x109c f=0 str] = ''
+        [0x0fb0 f=0 str] = 'COM1'
+        [0x0fb7 f=0 list] (6)
+          [0x0fb1 f=0 long] = 1
+          [0x0fc9 f=0 long] = 9600
+          [0x0fca f=0 long] = 7
+          [0x0fcb f=0 long] = 2
+          [0x0fcc f=0 long] = 0
+          [0x0fcd f=0 long] = 0
+        [0x109f f=0 long] = 0
+        [0x10a2 f=0 list] (16)
+          [0x0000 f=32768 list] (1)
+            [0x10b8 f=0 long] = 10
+          [0x0000 f=0 list] (1)
+            [0x10b8 f=0 long] = 20
+          [0x0000 f=0 list] (1)
+            [0x10b8 f=0 long] = 30
+          [0x0000 f=0 list] (1)
+            [0x10b8 f=0 long] = 35
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Format1'
+            [0x10ba f=0 str] = '@XXXX,YYYY,F'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 2
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 8
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Format2'
+            [0x10ba f=0 str] = '@F,XXXX,YYYY'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 8
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 2
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Summa MM 1105-A'
+            [0x10ba f=0 str] = 'SXXXXX,SYYYYY,F,I'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 3
+              [0x0000 f=0 long] = 2
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Calcomp 4 Digit'
+            [0x10ba f=0 str] = 'XXXX,YYYY,F'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 8
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 2
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Format5'
+            [0x10ba f=0 str] = '@F,XXXXX,YYYYY'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 2
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 8
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'GTCO Super LII'
+            [0x10ba f=0 str] = 'FXXXXX YYYYY'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 8
+              [0x0000 f=0 long] = 2
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Calcomp 9100'
+            [0x10ba f=0 str] = 'FIXXXXXYYYYY'
+            [0x10bb f=0 double] = 4.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 0
+              [0x0000 f=0 long] = 3
+              [0x0000 f=0 long] = 2
+              [0x0000 f=0 long] = 1
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Summa MM 1105-A!'
+            [0x10ba f=0 str] = 'SXXXX.XXX,SYYYY.YYY,F,I'
+            [0x10bb f=0 double] = 1000.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 2
+              [0x0000 f=0 long] = 3
+              [0x0000 f=0 long] = 4
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Fortron'
+            [0x10ba f=0 str] = '+XXXXX,+YYYYY,FF'
+            [0x10bb f=0 double] = 10.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 3
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 2
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Calcomp 5 Digit (User)'
+            [0x10ba f=0 str] = 'XXXXX,YYYYY,F'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 8
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 2
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Numonics 2210 (User)'
+            [0x10ba f=0 str] = 'SXXXXX,SYYYYY,FF,I'
+            [0x10bb f=0 double] = 1.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 2
+              [0x0000 f=0 long] = 16
+              [0x0000 f=0 long] = 8
+              [0x0000 f=0 long] = 4
+          [0x10c1 f=0 list] (5)
+            [0x10b8 f=0 long] = 5
+            [0x10b9 f=0 str] = 'Seiko'
+            [0x10ba f=0 str] = 'FXXXX YYYY'
+            [0x10bb f=0 double] = 4.0
+            [0x10bc f=0 list] (4)
+              [0x0000 f=0 long] = 1
+              [0x0000 f=0 long] = 4
+              [0x0000 f=0 long] = 8
+              [0x0000 f=0 long] = 2
+    [0x007a f=0 list] = None
+    [0x007b f=0 list] = None
+    [0x007c f=0 list] (2)
+      [0x12c0 f=0 double] = 262.0
+      [0x12c1 f=0 double] = 197.0
+    [0x0096 f=0 list] (1)
+      [0x0096 f=0 list] (6)
+        [0x10ae f=0 list] (2)
+          [0x0000 f=0 long] = 0
+          [0x0000 f=0 long] = 0
+        [0x10af f=0 list] (2)
+          [0x0000 f=0 long] = 0
+          [0x0000 f=0 long] = 0
+        [0x10b0 f=0 list] (2)
+          [0x0000 f=0 long] = 0
+          [0x0000 f=0 long] = 0
+        [0x1068 f=0 double] = 3.0
+        [0x106d f=0 long] = 1
+        [0x10b1 f=0 long] = 0
+    [0x00a0 f=0 list] (19)
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 1
+        [0x1328 f=0 list] (5)
+          [0x1327 f=0 long] = 1
+          [0x1327 f=0 long] = 20
+          [0x1327 f=0 long] = 45
+          [0x1327 f=0 long] = 64
+          [0x1327 f=0 long] = 217
+        [0x07d1 f=0 long] = 1
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (6)
+        [0x1326 f=0 long] = 2
+        [0x1328 f=0 list] (7)
+          [0x1327 f=0 long] = 3
+          [0x1327 f=0 long] = 21
+          [0x1327 f=0 long] = 42
+          [0x1327 f=0 long] = 43
+          [0x1327 f=0 long] = 44
+          [0x1327 f=0 long] = 51
+          [0x1327 f=0 long] = 65
+        [0x07d1 f=0 long] = 3
+        [0x132a f=0 long] = 2
+        [0x132d f=0 long] = 1
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 3
+        [0x1328 f=0 list] (3)
+          [0x1327 f=0 long] = 10
+          [0x1327 f=0 long] = 12
+          [0x1327 f=0 long] = 217
+        [0x07d1 f=0 long] = 2
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 4
+        [0x1328 f=0 list] (2)
+          [0x1327 f=0 long] = 4
+          [0x1327 f=0 long] = 66
+        [0x07d1 f=0 long] = 5
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 6
+        [0x1328 f=0 list] (2)
+          [0x1327 f=0 long] = 5
+          [0x1327 f=0 long] = 66
+        [0x07d1 f=0 long] = 7
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 7
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 22
+        [0x07d1 f=0 long] = 5
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 8
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 50
+        [0x07d1 f=0 long] = 5
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 5
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 61
+        [0x07d1 f=0 long] = 8
+        [0x132a f=0 long] = 0
+      [0x1325 f=0 list] (17)
+        [0x1326 f=0 long] = 102
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 30
+        [0x07d1 f=0 long] = 2
+        [0x0c9f f=0 double] = 1.0
+        [0x0ca0 f=0 double] = 1.0
+        [0x0ca1 f=0 double] = 1.0
+        [0x0ca2 f=0 double] = 1.0
+        [0x0ca3 f=0 double] = 1.0
+        [0x0ca4 f=0 double] = 1.0
+        [0x0ca5 f=0 long] = 1
+        [0x0ca6 f=0 long] = 1
+        [0x0ca7 f=0 long] = 1
+        [0x0ca8 f=0 double] = 0.5
+        [0x0caa f=0 double] = 0.42
+        [0x0cab f=0 double] = 4.0
+        [0x0cac f=0 double] = 12.7
+        [0x1332 f=0 str] = None
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 101
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 31
+        [0x07d1 f=0 long] = 2
+        [0x132a f=0 long] = 2
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 103
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 201
+        [0x07d1 f=0 long] = 0
+        [0x132a f=0 long] = 2
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 9
+        [0x1328 f=0 list] (2)
+          [0x1327 f=0 long] = 8
+          [0x1327 f=0 long] = 11
+        [0x07d1 f=0 long] = 14
+        [0x132a f=0 long] = 3
+      [0x1325 f=0 list] (3)
+        [0x1326 f=0 long] = 104
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 306
+        [0x0db5 f=0 long] = 4882
+      [0x1325 f=0 list] (6)
+        [0x1326 f=0 long] = 10
+        [0x1328 f=0 list] (16)
+          [0x1327 f=0 long] = 6
+          [0x1327 f=0 long] = 348
+          [0x1327 f=0 long] = 349
+          [0x1327 f=0 long] = 350
+          [0x1327 f=0 long] = 7
+          [0x1327 f=0 long] = 351
+          [0x1327 f=0 long] = 352
+          [0x1327 f=0 long] = 353
+          [0x1327 f=0 long] = 340
+          [0x1327 f=0 long] = 341
+          [0x1327 f=0 long] = 342
+          [0x1327 f=0 long] = 343
+          [0x1327 f=0 long] = 344
+          [0x1327 f=0 long] = 345
+          [0x1327 f=0 long] = 346
+          [0x1327 f=0 long] = 354
+        [0x07d1 f=0 long] = 40
+        [0x1331 f=0 long] = 0
+        [0x132a f=0 long] = 1
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 11
+        [0x1328 f=0 list] (13)
+          [0x1327 f=0 long] = 33
+          [0x1327 f=0 long] = 32
+          [0x1327 f=0 long] = 34
+          [0x1327 f=0 long] = 35
+          [0x1327 f=0 long] = 80
+          [0x1327 f=0 long] = 37
+          [0x1327 f=0 long] = 81
+          [0x1327 f=0 long] = 39
+          [0x1327 f=0 long] = 40
+          [0x1327 f=0 long] = 70
+          [0x1327 f=0 long] = 53
+          [0x1327 f=0 long] = 71
+          [0x1327 f=0 long] = 91
+        [0x07d1 f=0 long] = 17
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (6)
+        [0x1326 f=0 long] = 12
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 81
+        [0x07d1 f=0 long] = 17
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 20
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 10
+        [0x07d1 f=0 long] = 18
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 21
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 20
+        [0x07d1 f=0 long] = 18
+        [0x132a f=0 long] = 2
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 6
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 54
+        [0x07d1 f=0 long] = 20
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+    [0x00a1 f=0 list] (19)
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 1
+        [0x1328 f=0 list] (5)
+          [0x1327 f=0 long] = 1
+          [0x1327 f=0 long] = 20
+          [0x1327 f=0 long] = 45
+          [0x1327 f=0 long] = 64
+          [0x1327 f=0 long] = 217
+        [0x07d1 f=0 long] = 1
+        [0x132a f=0 long] = 3
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (6)
+        [0x1326 f=0 long] = 2
+        [0x1328 f=0 list] (7)
+          [0x1327 f=0 long] = 3
+          [0x1327 f=0 long] = 21
+          [0x1327 f=0 long] = 42
+          [0x1327 f=0 long] = 43
+          [0x1327 f=0 long] = 44
+          [0x1327 f=0 long] = 51
+          [0x1327 f=0 long] = 65
+        [0x07d1 f=0 long] = 3
+        [0x132a f=0 long] = 2
+        [0x132d f=0 long] = 1
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 3
+        [0x1328 f=0 list] (3)
+          [0x1327 f=0 long] = 10
+          [0x1327 f=0 long] = 12
+          [0x1327 f=0 long] = 217
+        [0x07d1 f=0 long] = 2
+        [0x132a f=0 long] = 2
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 4
+        [0x1328 f=0 list] (2)
+          [0x1327 f=0 long] = 4
+          [0x1327 f=0 long] = 66
+        [0x07d1 f=0 long] = 5
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 6
+        [0x1328 f=0 list] (2)
+          [0x1327 f=0 long] = 5
+          [0x1327 f=0 long] = 66
+        [0x07d1 f=0 long] = 7
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 7
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 22
+        [0x07d1 f=0 long] = 5
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 8
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 50
+        [0x07d1 f=0 long] = 5
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 5
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 61
+        [0x07d1 f=0 long] = 8
+        [0x132a f=0 long] = 3
+      [0x1325 f=0 list] (17)
+        [0x1326 f=0 long] = 102
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 30
+        [0x07d1 f=0 long] = 2
+        [0x0c9f f=0 double] = 1.0
+        [0x0ca0 f=0 double] = 1.0
+        [0x0ca1 f=0 double] = 1.0
+        [0x0ca2 f=0 double] = 1.0
+        [0x0ca3 f=0 double] = 1.0
+        [0x0ca4 f=0 double] = 1.0
+        [0x0ca5 f=0 long] = 1
+        [0x0ca6 f=0 long] = 1
+        [0x0ca7 f=0 long] = 1
+        [0x0ca8 f=0 double] = 0.5
+        [0x0caa f=0 double] = 0.42
+        [0x0cab f=0 double] = 4.0
+        [0x0cac f=0 double] = 12.7
+        [0x1332 f=0 str] = None
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 101
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 31
+        [0x07d1 f=0 long] = 2
+        [0x132a f=0 long] = 2
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 103
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 201
+        [0x07d1 f=0 long] = 0
+        [0x132a f=0 long] = 2
+      [0x1325 f=0 list] (4)
+        [0x1326 f=0 long] = 9
+        [0x1328 f=0 list] (2)
+          [0x1327 f=0 long] = 8
+          [0x1327 f=0 long] = 11
+        [0x07d1 f=0 long] = 14
+        [0x132a f=0 long] = 3
+      [0x1325 f=0 list] (3)
+        [0x1326 f=0 long] = 104
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 306
+        [0x0db5 f=0 long] = 4882
+      [0x1325 f=0 list] (6)
+        [0x1326 f=0 long] = 10
+        [0x1328 f=0 list] (16)
+          [0x1327 f=0 long] = 6
+          [0x1327 f=0 long] = 348
+          [0x1327 f=0 long] = 349
+          [0x1327 f=0 long] = 350
+          [0x1327 f=0 long] = 7
+          [0x1327 f=0 long] = 351
+          [0x1327 f=0 long] = 352
+          [0x1327 f=0 long] = 353
+          [0x1327 f=0 long] = 340
+          [0x1327 f=0 long] = 341
+          [0x1327 f=0 long] = 342
+          [0x1327 f=0 long] = 343
+          [0x1327 f=0 long] = 344
+          [0x1327 f=0 long] = 345
+          [0x1327 f=0 long] = 346
+          [0x1327 f=0 long] = 354
+        [0x07d1 f=0 long] = 40
+        [0x1331 f=0 long] = 0
+        [0x132a f=0 long] = 1
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 11
+        [0x1328 f=0 list] (13)
+          [0x1327 f=0 long] = 33
+          [0x1327 f=0 long] = 32
+          [0x1327 f=0 long] = 34
+          [0x1327 f=0 long] = 35
+          [0x1327 f=0 long] = 80
+          [0x1327 f=0 long] = 37
+          [0x1327 f=0 long] = 81
+          [0x1327 f=0 long] = 39
+          [0x1327 f=0 long] = 40
+          [0x1327 f=0 long] = 70
+          [0x1327 f=0 long] = 53
+          [0x1327 f=0 long] = 71
+          [0x1327 f=0 long] = 91
+        [0x07d1 f=0 long] = 17
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (6)
+        [0x1326 f=0 long] = 12
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 81
+        [0x07d1 f=0 long] = 17
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+        [0x0819 f=0 list] (2)
+          [0x081a f=32768 long] = 2
+          [0x081a f=0 long] = 3
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 20
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 10
+        [0x07d1 f=0 long] = 18
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 21
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 20
+        [0x07d1 f=0 long] = 18
+        [0x132a f=0 long] = 2
+        [0x132d f=0 long] = 1
+      [0x1325 f=0 list] (5)
+        [0x1326 f=0 long] = 6
+        [0x1328 f=0 list] (1)
+          [0x1327 f=0 long] = 54
+        [0x07d1 f=0 long] = 20
+        [0x132a f=0 long] = 0
+        [0x132d f=0 long] = 1
+    [0x00d2 f=0 list] (5)
+      [0x1519 f=0 list] (5)
+        [0x151a f=0 long] = 500
+        [0x151c f=0 list] (1)
+          [0x151b f=0 long] = 30
+        [0x151d f=0 long] = 0
+        [0x152f f=0 long] = 0
+        [0x1536 f=0 list] (23)
+          [0x1658 f=0 long] = 1
+          [0x166e f=0 long] = 1
+          [0x1659 f=0 long] = 1
+          [0x165a f=0 ulong] = 18
+          [0x165b f=0 ulong] = 180
+          [0x165c f=0 ulong] = 360
+          [0x165d f=0 long] = 1
+          [0x165e f=0 long] = 1
+          [0x165f f=0 ulong] = 18
+          [0x1660 f=0 ulong] = 270
+          [0x1661 f=0 long] = 1
+          [0x1662 f=0 ulong] = 900
+          [0x1663 f=0 double] = 0.25
+          [0x1664 f=0 ulong] = 1
+          [0x1665 f=0 ulong] = 36
+          [0x1666 f=0 long] = 0
+          [0x1667 f=0 ulong] = 18
+          [0x1668 f=0 long] = 0
+          [0x1669 f=0 long] = 1
+          [0x166c f=0 long] = 1
+          [0x166d f=0 double] = 0.9
+          [0x166a f=0 double] = 3.0
+          [0x166b f=0 double] = 2.0
+      [0x1519 f=0 list] (4)
+        [0x151a f=0 long] = 501
+        [0x151c f=0 list] (1)
+          [0x151b f=0 long] = 20
+        [0x151e f=0 long] = 0
+        [0x1521 f=0 list] (2)
+          [0x0000 f=0 ulong] = 83820785
+          [0x0000 f=32768 ulong] = 67240081
+      [0x1519 f=0 list] (3)
+        [0x151a f=0 long] = 502
+        [0x151c f=0 list] (1)
+          [0x151b f=0 long] = 200
+        [0x1520 f=0 long] = 0
+      [0x1519 f=0 list] (3)
+        [0x151a f=0 long] = 503
+        [0x151c f=0 list] (1)
+          [0x151b f=0 long] = 208
+        [0x1520 f=0 long] = 1
+      [0x1519 f=0 list] (3)
+        [0x151a f=0 long] = 500
+        [0x151c f=0 list] (1)
+          [0x151b f=0 long] = 80
+        [0x1537 f=0 long] = 0
+    [0x007d f=0 list] (21)
+      [0x12d5 f=0 ulong] = 600000
+      [0x12d6 f=0 long] = 1
+      [0x130d f=0 long] = 1
+      [0x12d7 f=0 long] = 1
+      [0x1645 f=0 long] = 0
+      [0x12d4 f=0 list] (14)
+        [0x131f f=0 long] = 0
+        [0x12f7 f=0 long] = 0
+        [0x12fb f=0 long] = 0
+        [0x12f9 f=0 long] = 1
+        [0x12f6 f=0 long] = 0
+        [0x12f8 f=0 long] = 1
+        [0x1304 f=0 long] = 1
+        [0x130c f=0 long] = 1
+        [0x130e f=0 long] = 1
+        [0x12f3 f=0 long] = 1
+        [0x16a0 f=0 long] = 1
+        [0x1320 f=0 long] = 0
+        [0x12fe f=0 long] = 0
+        [0x16c0 f=0 long] = 1
+      [0x1652 f=0 long] = 1
+      [0x1654 f=0 long] = 0
+      [0x12ff f=0 double] = 3.0
+      [0x1300 f=0 long] = 1
+      [0x1301 f=0 long] = 1
+      [0x1302 f=0 long] = 1
+      [0x1305 f=0 long] = 0
+      [0x12e4 f=0 long] = 0
+      [0x131e f=0 long] = 0
+      [0x1697 f=0 ulong] = 12632256
+      [0x1649 f=0 long] = 0
+      [0x1676 f=0 long] = 1
+      [0x1699 f=0 long] = 101
+      [0x16b7 f=0 long] = 1
+      [0x1656 f=0 list] (14)
+        [0x0000 f=0 ulong] = 16777215
+        [0x0000 f=0 ulong] = 13828050
+        [0x0000 f=0 ulong] = 16765650
+        [0x0000 f=0 ulong] = 10742014
+        [0x0000 f=0 ulong] = 13565951
+        [0x0000 f=0 ulong] = 16777151
+        [0x0000 f=0 ulong] = 16762623
+        [0x0000 f=0 ulong] = 193171
+        [0x0000 f=0 ulong] = 39168
+        [0x0000 f=0 ulong] = 6723993
+        [0x0000 f=0 ulong] = 3368601
+        [0x0000 f=0 ulong] = 16715021
+        [0x0000 f=0 ulong] = 10027008
+        [0x0000 f=0 ulong] = 0
+    [0x0084 f=0 long] = 1
+    [0x0075 f=0 list] (4)
+      [0x12d8 f=0 long] = 0
+      [0x12d9 f=0 long] = 0
+      [0x12da f=0 long] = 3
+      [0x12db f=0 long] = 1
+    [0x0074 f=0 list] (3)
+      [0x1646 f=0 ulong] = 0
+      [0x1647 f=0 ulong] = 0
+      [0x1648 f=0 long] = 10012
+    [0x0073 f=0 list] (3)
+      [0x12fc f=0 long] = 2
+      [0x12fd f=0 long] = 0
+      [0x131c f=0 long] = 13
+    [0x0072 f=0 list] (2)
+      [0x164f f=0 long] = 1
+      [0x1650 f=0 double] = 0.5
+    [0x0080 f=0 list] (2)
+      [0x131a f=0 0] = None
+      [0x131b f=0 0] = None
+    [0x00a2 f=0 list] (23)
+      [0x1658 f=0 long] = 1
+      [0x166e f=0 long] = 1
+      [0x1659 f=0 long] = 1
+      [0x165a f=0 ulong] = 18
+      [0x165b f=0 ulong] = 180
+      [0x165c f=0 ulong] = 360
+      [0x165d f=0 long] = 1
+      [0x165e f=0 long] = 1
+      [0x165f f=0 ulong] = 18
+      [0x1660 f=0 ulong] = 270
+      [0x1661 f=0 long] = 1
+      [0x1662 f=0 ulong] = 900
+      [0x1663 f=0 double] = 0.25
+      [0x1664 f=0 ulong] = 1
+      [0x1665 f=0 ulong] = 36
+      [0x1666 f=0 long] = 0
+      [0x1667 f=0 ulong] = 18
+      [0x1668 f=0 long] = 0
+      [0x1669 f=0 long] = 1
+      [0x166c f=0 long] = 1
+      [0x166d f=0 double] = 0.9
+      [0x166a f=0 double] = 3.0
+      [0x166b f=0 double] = 2.0
+    [0x0081 f=0 list] (18)
+      [0x1303 f=0 str] = ''
+      [0x1319 f=0 list] = None
+      [0x169e f=0 long] = 0
+      [0x169f f=0 long] = 1
+      [0x0d03 f=0 long] = 4
+      [0x0d05 f=0 long] = 0
+      [0x0d07 f=0 double] = 1.0
+      [0x0d09 f=0 long] = 0
+      [0x0d0b f=0 long] = 0
+      [0x0d0e f=0 long] = 1
+      [0x0d0f f=0 long] = 1
+      [0x0d10 f=0 long] = 1
+      [0x0d0d f=0 long] = 0
+      [0x16a1 f=0 long] = 0
+      [0x0d0c f=0 list] (3)
+        [0x0000 f=0 list] (11)
+          [0x044e f=0 long] = 1
+          [0x044f f=0 long] = 1
+          [0x0451 f=0 long] = 1
+          [0x0452 f=0 long] = 0
+          [0x03ec f=0 long] = 1
+          [0x03ed f=0 long] = 1
+          [0x03ee f=0 long] = 1
+          [0x03f0 f=0 long] = 0
+          [0x03f2 f=0 long] = 0
+          [0x03f3 f=0 long] = 1
+          [0x045a f=0 long] = 1
+        [0x0005 f=0 list] (6)
+          [0x044f f=0 long] = 1
+          [0x0452 f=0 long] = 0
+          [0x0401 f=0 long] = 1
+          [0x0402 f=0 long] = 1
+          [0x03f0 f=0 long] = 0
+          [0x03f2 f=0 long] = 0
+        [0x0006 f=0 list] (2)
+          [0x03f1 f=0 long] = 1
+          [0x03f3 f=0 long] = 1
+      [0x131d f=0 long] = 1
+      [0x16a2 f=0 long] = 0
+      [0x12d4 f=0 list] (14)
+        [0x131f f=0 long] = 0
+        [0x12f7 f=0 long] = 0
+        [0x12fb f=0 long] = 0
+        [0x12f9 f=0 long] = 1
+        [0x12f6 f=0 long] = 0
+        [0x12f8 f=0 long] = 0
+        [0x1304 f=0 long] = 1
+        [0x130c f=0 long] = 0
+        [0x130e f=0 long] = 1
+        [0x12f3 f=0 long] = 0
+        [0x16a0 f=0 long] = 0
+        [0x1320 f=0 long] = 0
+        [0x12fe f=0 long] = 0
+        [0x16c0 f=0 long] = 1
+    [0x00dc f=0 list] (1)
+      [0x152d f=0 list] (3)
+        [0x1524 f=0 long] = 5414
+        [0x152c f=0 long] = 1
+        [0x1532 f=0 list] (3)
+          [0x0000 f=0 long] = 0
+          [0x0000 f=0 long] = 1
+          [0x0000 f=0 long] = 2
+    [0x00b4 f=0 long] = 1
+    [0x01c2 f=0 0] = None
+    [0x00dd f=0 list] (1)
+      [0x09e1 f=0 list] = None
+    [0x00a3 f=0 long] = 0
+    [0x00a4 f=0 long] = 1
+    [0x00a5 f=0 long] = 1
+    [0x00a6 f=0 str] = 'BMP'
+    [0x0df3 f=0 double] = 0.5

@@ -1,0 +1,2443 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001c0 .text
+A 000001e7 `.rdata
+A 0000020f @.data
+A 00000238 .rsrc
+A 0000025f @.reloc
+A 000007db v/SPV
+A 000007ff _^][Y
+A 00001181 xRQPj
+A 00001315 _^][Y
+A 00001484 x_^][
+A 00001653 HSUVWh
+A 000016ba xf9|$F
+A 00001748 x_^][
+A 000017eb WSUVj
+A 0000185a SUVWj
+A 00001b45 VBWRU
+A 00001b74 WSVQj
+A 00001bd1 VPWSUQ
+A 00001bff D$8QVRh 
+A 00001d82 _^][Y
+A 000020fc QUVW3
+A 0000219b xf9=:
+A 00002280 U@RPS
+A 000022ae VWUQj
+A 000022c4 T$$RP
+A 000022ca D$ WP
+A 000022e2 _^][Y
+A 000023ce l$4VU
+A 000023e6 D$<WP
+A 00002440 VUj	S
+A 0000246d D$<VPj
+A 0000248b QRj	S
+A 000024b9 T$<VPQRj
+A 000024d6 T$0VP
+A 000024dc D$4UQRP
+A 00002a76 L$ _^]+
+A 00002dd4 PVWj 
+A 00002dec D$*RP
+A 00002fa3 QVWj0
+A 000031c5 T$(SUVf
+A 000032e5 l$0u)
+A 00003323 f9|$(
+A 00003371 VWjtj
+A 00003481 D$,VP
+A 0000369e _^][Y
+A 00003bcf H_^][
+A 00003bda \$(VW
+A 00003c18 D$ VP
+A 00003c6c l$$V3
+A 00003c72 VVVVUPQ
+A 00003cef D$HUV
+A 00003dd6 D$TRVP
+A 00003e36 T$DQPR
+A 00004660 QVWRP
+A 000046cb QSUVW3
+A 0000476f _^][Y
+A 00004de1 L$$UQS
+A 00004e94 UVWSP
+A 00004f77 x_^][
+A 00005278 xj@Vh
+A 00005297 N@j@Qh
+A 000054af ~5WVU
+A 000054ef  SUVW3
+A 0000572a _^][Y
+A 000059c2 H_^][Y
+A 000059f2 _^][Y
+A 00005b24 H_^][
+A 00005be8 WPQVR3
+A 00005c7f L$ RPSQ
+A 00005e39 _^][Y
+A 00005e43 D$`SU3
+A 00005fd0 T$xRP
+A 00005fea D$x_^][
+A 00006339 _^][Y
+A 00006372 _^][Y
+A 0000664f QSUVW
+A 00006784 _^][Y
+A 000068ef $ < t
+A 00006924 WVPQR
+A 00006941 SUVWj
+A 00006ab9 																								
+A 00006ad2 													
+A 00006ae2 													
+A 00006af1 										
+A 00006afc 					
+A 00006bf0 L$ UQSRP
+A 00006cf4 SUVWj
+A 00007098 l$(r6+t$$
+A 00007979 H_^][
+A 00007cdc D$ _^]
+A 00007eab SVWUj
+A 00008312 D$,VP
+A 00008358 D$$VW
+A 00008457 T$ QRP
+A 0000846b D$,SUV
+A 00008483 L$H;i
+A 000084ea D$LQURP
+A 000085ff L$PVR
+A 00008605 T$TPQRS
+A 000086e9 D$,PVU
+A 0000873d L$$PSQVU
+A 00008cf6 QSUVW
+A 00008e8d l$0VW
+A 00009130 S RjPVj
+A 00009143 C$PjQVj
+A 0000917c C*PjTVj
+A 00009191 QjUVj
+A 000091a4 RjVVj
+A 000091b5 C-PjWVj
+A 000091ca QjRVj
+A 000091dd SjSVj
+A 000093a0 T$,PQj
+A 00009613 VPj1Sj
+A 00009627 Qj2Sj
+A 0000963a Rj3Sj
+A 0000964d Pj4Sj
+A 00009660 Qj5Sj
+A 00009673 Rj6Sj
+A 00009683 Wj7Sj
+A 00009694 G Pj*Sj
+A 000096a9 Qj+Sj
+A 000096bc Rj,Sj
+A 000096cd G,Pj-Sj
+A 000096e2 Qj.Sj
+A 000096f5 Rj/Sj
+A 00009708 Pj0Sj
+A 0000971b QjDSj
+A 0000972e RjESj
+A 0000973f G@PjFSj
+A 00009754 QjGSj
+A 00009767 RjHSj
+A 00009778 GLPjISj
+A 0000978d QjJSj
+A 000097a0 RjKSj
+A 000097b1 GXPjLSj
+A 000097c6 QjMSj
+A 000097d9 RjNSj
+A 000097ea GdPjOSj
+A 000097ff Qj8Sj
+A 00009812 Rj9Sj
+A 00009823 GpPj:Sj
+A 00009838 Qj;Sj
+A 0000984b Rj<Sj
+A 0000985c G|Pj=Sj
+A 00009874 Qj>Sj
+A 0000988a Rj?Sj
+A 000098a0 Pj@Sj
+A 000098b6 QjASj
+A 000098cc RjBSj
+A 000098e2 PjCSj
+A 000098f8 Qj(Sj
+A 0000990e Rj)Sj
+A 0000993a Qj Uj
+A 0000996a Pj#Wj
+A 0000998e Qj%Wj
+A 00009a8c xPh4c
+A 00009b67 _^][Y
+A 00009d5d _^][Y
+A 00009daa _^][Y
+A 00009e88 _^][Y
+A 0000a354 _^][Y
+A 0000a35a _^][Y
+A 0000a39f _^][Y
+A 0000a3c6 UWUVh 
+A 0000a3f6 H_^][Y
+A 0000a42c D$$RPj
+A 0000a478 _^][Y
+A 0000a494 _^][Y
+A 0000a4c9 H_^][Y
+A 0000a52a x_^][
+A 0000aa74 QVWRP
+A 0000aaa0 D$(PWSUQ
+A 0000ad03 :ucEU
+A 0000ad3b :u+EU
+A 0000adc7 L$ RQP
+A 0000adcf _^][Y
+A 0000adeb _^][Y
+A 0000ae8a D$,WQVURP
+A 0000b5cc D$XRP
+A 0000b610 |$\-u
+A 0000b769 T$HPR
+A 0000b7b3 QRWj 
+A 0000b8b0 *_^][
+A 0000b914 *_^][
+A 0000b983 9D$*u59D$.
+A 0000b98e L$*u"f
+A 0000c1f5 L$,u	
+A 0000c31f |$ t#
+A 0000c633 1_^][
+A 0000c83e WUVQh 
+A 0000c893 |$$UWQ
+A 0000c8c1 D$(RP
+A 0000c8f4 L$ PPVQj
+A 0000c92d D$$RVPj
+A 0000cc81 T$ UR
+A 0000ce0d <.tph
+A 0000cf14 xj@h@
+A 0000d1c7 T$(SSSSWQh 
+A 0000d1e4 _^][Y
+A 0000d1fd _^][Y
+A 0000d20f VUWPh 
+A 0000d277 T$$WSR
+A 0000d29b _^][Y
+A 0000d35b _^][Y
+A 0000d437 _^][Y
+A 0000d6b0 <\u;j\S
+A 0000d74b L$ PQSR
+A 0000d76d tGj\S
+A 0000d93f D$ QRUP
+A 0000d985 _^][Y
+A 0000d9d5 _^][Y
+A 0000db7f D$x_^][
+A 0000dba6 D$x_^][
+A 0000dbc1 D$x_^][
+A 0000e0ff _^][Y
+A 0000e11a _^][Y
+A 0000e1b6 _^][Y
+A 0000efc3 FGQPS
+A 0000f2d1 T$ VR
+A 0000f2dc T$$RP
+A 0000f402 L$HUR
+A 0000f408 T$LPQRS
+A 0000f416  _^][
+A 0000f802 zu"VVVSU
+A 0000f9a5 T$$PPj
+A 0000f9d2 D$ Pj
+A 0000ffaa j4hPc
+A 0001010f L$ PQh
+A 0001025c D$0f	5l 
+A 00010310 tL<@tH
+A 0001039e t8<@t*
+A 0001058e j@h\ 
+A 000108a5 D$lRP
+A 000108ab L$Tj Q
+A 000108e6 L$,j,
+A 000108ec T$XQR
+A 0001090b D$tj,
+A 00010911 L$8PQ
+A 00010930 T$<j,
+A 00010936 D$PRP
+A 00010955 L$\j)
+A 0001095b T$pQR
+A 00010a9f T$,QRh
+A 00010b2e D$$j'P
+A 00010b82 T$tj'R
+A 00010c40 L$dj'Q
+A 00010cdd L$LPQ
+A 00010d0a T$DQR
+A 00010dd3 <0|!<9
+A 00010e00 tM<A|(<P
+A 00010fcf D$,j>P
+A 00011093 tA<@t=;
+A 00011143 <Xu?Bh@h
+A 000111c9 L$<PRh,h
+A 000111e0 D$Dh*h
+A 000112d8 T$%jdR
+A 000112ec D$%<-
+A 000112f2 D$$uG
+A 00011318 D$0RP
+A 000116ed t$dSVj
+A 000117ba L$8PRj 
+A 00011816 T$8j,PQR
+A 0001181f D$@j{P
+A 00011854 <AtGj
+A 000118bb T$HhHi
+A 000118f4 L$@PQj 
+A 00011910 D$0RP
+A 00011916 L$0j Q
+A 000119cb L$HPQh
+A 00011aa0 L$HPQh
+A 00011b1b D$HRPhth
+A 00011b79 D$HRPhPh
+A 00011c55 x$`<`
+A 00011c8b T$TPR
+A 00011cc7 D$LRP
+A 00011d10 D$HSPj 
+A 00011d6b D$LPhDi
+A 00011e17 T$TPR
+A 00011e8f T$PWR
+A 00011ed8 T$HQRh8i
+A 00011ef3 D$@j,P
+A 00011f0d L$PhHi
+A 00011f3c D$LPj(
+A 00011f4f L$Xj)Q
+A 000120b7 T$PPQj R
+A 0001212c T$Xj'
+A 00012132 D$TRP
+A 00012140 L$PPj`Q
+A 00012216 L$XPj
+A 00012299 D$`j{P
+A 0001239a L$HPQhDi
+A 0001252f D$@WP
+A 00012554 L$TPQ
+A 0001256a L$(RPj Q
+A 0001266b L$HPQhhh
+A 000126ee L$HPQh\h
+A 00012867 tA<@t=
+A 00012881 T$(QR
+A 00012ab3 <?tt<Xt
+A 00012aef t$(h@h
+A 00012b0d PVhXi
+A 00012b56 D$(RP
+A 00012bf8 t$,PVj
+A 00012cba t$,RVj
+A 00012d02 t$,APV
+A 00012d29 t~<XuQ
+A 00012d46 t$,h@h
+A 00012d5f t$0VhXi
+A 00012d94 L$0QV
+A 00012dae t$,PVj
+A 00012deb D$ Qj
+A 00012df2 D$,RP
+A 00012e22 t$,QVj
+A 0001307b <@tO<ZtK;
+A 00013206 PRhxi
+A 0001321a t$ j)V
+A 00013231 t$ j)V
+A 00013328 D$ VPj 
+A 000133d8 L$ PQh
+A 000134db t$4PVj
+A 0001363b T$ Ij
+A 0001377a D$$ROPh|j
+A 000137c3 T$,QRhtj
+A 000137f5 L$LPQhhj
+A 00013827 L$LPQh`j
+A 000138c0 T$4QRhXj
+A 00013900 T$<QRhPj
+A 000139a8 T$TQh
+A 000139e9 L$LPQh0j
+A 00013a47 t$HPVj
+A 00013ac2 t$HQVj
+A 00013bb7 D$ Pj 
+A 00013bce T$<QR
+A 00013c86 L$4PRj 
+A 00013ccf D$8RP
+A 00013cfd D$,RPj(
+A 00013d15 L$4j)Q
+A 00013d56 T$$VR
+A 00013d71 L$,PQj(
+A 0001402f tW<XuSA
+A 0001404a t$4h@h
+A 00014069 QVhXi
+A 000140d3 t$4PV
+A 000140f2 L$ j]
+A 00014107 D$4j[P
+A 0001413b T$(QR
+A 00014141 D$(j)
+A 0001414d T$,j(R
+A 000141a1 T$$Qj
+A 000141b8 T$,j(R
+A 000141dc t$4PV
+A 000141f6 L$$Pj
+A 00014217 t$4PV
+A 00014445 L$ Rj
+A 000144c7 RPhhj
+A 000144f9 RPh`j
+A 0001456b D$$VP
+A 00014571 L$4j Q
+A 000146bc D$,j P
+A 000146dd t$<Vj
+A 00014711 t$<Vj
+A 000147ef T$$j]R
+A 000148cd t$0PV
+A 000148e2 D$$j]P
+A 000149e9 D$ PQ
+A 000149ff L$,RPj Q
+A 00014a89 L$$PRj`
+A 00014e7d t3<_t$<$t <a|
+A 000159b4 t!WSP
+A 00015b42 T$ UWSP
+A 00015b4a D$,QRP
+A 00015b6c QRPWS
+A 00015bb4 T$$UWV
+A 00015bc1 D$4SQ
+A 00015bc7 L$8RPQ
+A 0001664d "ut@3
+A 00016816 8"uof
+A 00016824 "t&f;
+A 00016a62 xSUVW3
+A 00016c1e x_^][
+A 00016d2b VWjtj
+A 00016fbd <\t&</t"<:t
+A 00017036 tHhhn
+A 0001704c <\tl<:th</tdV
+A 000170b6 _^][Y
+A 000170d7 tFSUP
+A 00017122 _^][Y
+A 00017138 _^][Y
+A 00017147 _^][Y
+A 0001733c 8"uof
+A 0001734a "t&f;
+A 00017667 tOhtn
+A 00017682 tlf=:
+A 00017688 tff=/
+A 000176ea _^][Y
+A 0001770a t3VUSP
+A 00017742 _^][Y
+A 00017758 _^][Y
+A 00017767 _^][Y
+A 00017c5b SUVW3
+A 00017c99 u[9|$
+A 00017d1c 4*;3u
+A 00018337 uQ_^[
+A 00018368 QRPhp
+A 000186f2 x_^]3
+A 000186fd QSUVW
+A 00018740 _^][Y
+A 0001874e _^][Y
+A 000187d2 _^][Y
+A 000187fe _^][Y
+A 0001882a _^][Y
+A 00018856 _^][Y
+A 00018882 _^][Y
+A 000188ae _^][Y
+A 000188da _^][Y
+A 000188f3 _^][Y
+A 00018903 x_^][Y
+A 00018c81 _^][Y
+A 00018c8d _^][Y
+A 00018db1 _^][Y
+A 00018db9 _^][Y
+A 0001905b PPPPPPPP
+A 000191d6 L$ WPQ
+A 00019237 D$ WRP
+A 000192bb D$(WPWQh
+A 00019448 PQVRW
+A 0001945d PQVRW
+A 00019490 D$$PUW
+A 000194a1 D$$PUW
+A 000199f6 xSUVW
+A 00019a85 QVSRP
+A 00019b29 UPVQh 
+A 00019b76 VPQRh 
+A 00019bb7 VWUSRP
+A 0001a2fd x_^][
+A 0001a445 PPPPPPPP
+A 0001a4bd xSUVW
+A 0001aa57 9\$(vl
+A 0001aa9a D$(BFH
+A 0001aab5 D$(BFH
+A 0001aac0 D$(9\$(w
+A 0001aad9 9\$(v]
+A 0001aaef _^][Y
+A 0001b062 xSUVW3
+A 0001b1eb QSWRP
+A 0001b205 _^][Y
+A 0001b42e QSUVW
+A 0001b4ee _^][Y
+A 0001b878 D$0QRP
+A 0001b8b9 D$4QRP
+A 0001b968 D$4QRP
+A 0001b998 T$4QR
+A 0001ba11 L$8PQ
+A 0001bae0 D$\QRP
+A 0001bb1f D$\QRP
+A 0001bff8 xQj	P
+A 0001c1e2 H_^][
+A 0001c2e6 xVj	P
+A 0001c638 t$0Wj
+A 0001c6c1 L$$WQ
+A 0001c707 0_^][
+A 0001d01d D$	:P
+A 0001d2b9 tKhpx
+A 0001d2cb t6hhx
+A 0001d2dd t$h`x
+A 0001d32d VWh|x
+A 0001d376 D$ QU
+A 0001d42f L$,UQ
+A 0001d4a3 L$@PQ
+A 0001d4bb D$$RP
+A 0001d52a 9\$<tz
+A 0001d535 T$8QR
+A 0001d54d L$$PQ
+A 0001d5b5 9\$4u
+A 0001d5d2 L$0PQ
+A 0001d5e6 D$$RP
+A 0001d6f9 VWh|x
+A 0001d742 D$ QU
+A 0001d7fb L$,UQ
+A 0001d888 L$@PQ
+A 0001d8a0 D$$RP
+A 0001d90f 9\$<tz
+A 0001d91a T$8QR
+A 0001d932 L$$PQ
+A 0001d99a 9\$4u
+A 0001d9b7 L$0PQ
+A 0001d9cb D$$RP
+A 0001e06a D$,PW
+A 0001e121 D$,WP
+A 0001e197 D$@RP
+A 0001e1af T$$QR
+A 0001e21e 9l$<tz
+A 0001e229 L$8PQ
+A 0001e241 D$$RP
+A 0001e2a9 9l$4u
+A 0001e2c6 D$0RP
+A 0001e2da T$$QR
+A 0001e45c D$,PW
+A 0001e513 D$,WP
+A 0001e5a0 D$@RP
+A 0001e5b8 T$$QR
+A 0001e627 9l$<tz
+A 0001e632 L$8PQ
+A 0001e64a D$$RP
+A 0001e6b2 9l$4u
+A 0001e6cf D$0RP
+A 0001e6e3 T$$QR
+A 0001ebaf _^][Y
+A 0001ebbe _^][Y
+A 0001ece1 D$$vz
+A 0001eefb D$(vf
+A 0001f0f4 u~j:U
+A 0001f1a0 D$$RPS
+A 0001f290 T$$QRU
+A 0001f329 WPQV3
+A 0001f3dd <\uAj\S
+A 0001f47b L$ QS
+A 0001f490 t?j\S
+A 0001f699 QSUVW
+A 0001f6c6 uQj:W
+A 0001f6f8 _^][Y
+A 0001f768 _^][Y
+A 0001f799 _^][Y
+A 0001f88f VWPQU3
+A 0001f919 t!f=;
+A 0001fa9f QSUVW
+A 0001facc uQj:W
+A 0001fafe _^][Y
+A 0001fb73 _^][Y
+A 0001fba4 _^][Y
+A 0001fcac VWPQUR3
+A 0001fe07 _^][Y
+A 0001ff7d D$`SU3
+A 0002014d D$x_^][
+A 0002016e T$xRP
+A 00020188 D$x_^][
+A 000201af D$x_^][
+A 000201ca D$x_^][
+A 0002037f _^][Y
+A 000203c0 _^][Y
+A 00020416 t,f9\h
+A 00020526 x_^[Y
+A 00020a7f QSVWj
+A 00020afe xSUVW
+A 00020c26 xSUVW
+A 00020c87 _^][Y
+A 00020cd8 _^][Y
+A 00020d04 _^][Y
+A 00020d91 _^][Y
+A 00020dd4 _^][Y
+A 000211b7 T$hSR
+A 0002120e D$,Pf
+A 00021267 L$@PQ
+A 000212e5 9\$<tr
+A 000212f0 T$8QR
+A 00021366 u@9\$4u:
+A 000213ad L$0PQ
+A 00021565 T$hSR
+A 0002161c D$@RP
+A 0002169a 9\$<tr
+A 000216a5 L$8PQ
+A 0002171b uW9\$4uQ
+A 00021779 D$0RP
+A 00021839 SUVWt
+A 000218bf tCf9\$
+A 00021ae2 xf91t
+A 00021ef2 8_^]3
+A 00021f06 Pj@QR
+A 00021f66 L$,PQ
+A 000222d1 Pj@QR
+A 00022328 tBHt5Hud
+A 000224d0 L$ UQSRP
+A 000236af H_^][
+A 00023701 QPVSWj
+A 0002399a H_^][
+A 000239ec QPVSWj
+A 00023e3b C =02CV
+A 00023f97 B 02CV
+A 000246fd t2f=/
+A 000247e7 _^][Y
+A 00024877 _^][Y
+A 00024d02 FAOtD
+A 00024f15 D$<w5
+A 00025170 L$\PQ
+A 000251ed D$&RP
+A 00025233 T$HPR
+A 0002524c T$HQPR
+A 00025461 D$XRP
+A 000254a5 |$\-u
+A 0002598a <St	<C
+A 000259b0 l$4t!
+A 00025afc D$$]B
+A 00025b37 L$$B:
+A 00025b44 D$L:L$Lw3
+A 00025ba9 |$(JS
+A 00025c4f T$VQR
+A 00025d5d D$0_^][
+A 00025fc4 |$4ou*
+A 00026359 EQHRP
+A 00026414 D$0_^][
+A 0002649b xSUV;
+A 000264df <atV<rt
+A 000264e7 <wtN3
+A 00026843 SUVW3
+A 00026a7c D$$uD
+A 00026c7f QSVWj
+A 00026ec6 D$(VR
+A 00026f4c SUVW3
+A 00027287 D$(VR
+A 00027313 xSUV;
+A 0002744f WVPQR
+A 000274b5 Vj@PQ
+A 000274db SUVW3
+A 0002771a D$$uD
+A 0002797e QSUVW3
+A 00027b0e _^][Y
+A 00027b75 _^][Y
+A 00028206 L$	VQ
+A 0002832c _^][Y
+A 000283d8 D$ _^][Y
+A 00028415 _^][Y
+A 00028430 _^][Y
+A 00028442 _^][Y
+A 0002847c Vj@PQ
+A 0002881b _^][Y
+A 00028880 D$ _^][Y
+A 000288f2 _^][Y
+A 0002893d _^][Y
+A 000289f8 SUVWh
+A 00028bd2 D$,VP
+A 00028ef9 t@j P
+A 000291a0 D$,VP
+A 00029384 D$Hw;
+A 0002952a 86u!f
+A 0002955f T$ RPS
+A 000295cf D$@t8
+A 000295e4 D$`RP
+A 000296aa L$ QVSj 
+A 000296bf T$ RV
+A 000296c5 L$<PQ
+A 000296df T$ RVSj0
+A 00029715 T$@QWR
+A 00029735 D$ PQR
+A 0002975b T$ RPSj 
+A 00029914 D$XRP
+A 00029a4e D$XPUWV
+A 00029beb L$ QVWU
+A 00029f99 u*;T$
+A 0002a1e8 ~/WPU
+A 0002a429 <St	<C
+A 0002a445 D$$t"
+A 0002a5a6 D$,]B
+A 0002a5e1 L$,B:
+A 0002a5ee D$L:L$Lw3
+A 0002a64a |$${u
+A 0002a65c |$(HUS
+A 0002a71e T$VQR
+A 0002aaf9 |$$ou*
+A 0002b328 D$$t)
+A 0002b48b |$${u
+A 0002b52d |$${u
+A 0002b546 l$,KPV
+A 0002bc88 |$Pu/f
+A 0002bd4f L$BPh
+A 0002bd61 f9t$B
+A 0002c2de L$ PQ
+A 0002c33e D$ RP
+A 0002c46d _^][Y
+A 0002c4e7 _^][Y
+A 0002c592 _^][Y
+A 0002c5ae _^][Y
+A 0002c5d9 L$ WPQ
+A 0002c63a D$ WRP
+A 0002c6be D$(WPWQh
+A 0002c793 L$ WPQ
+A 0002c818 xWQWRh
+A 0002c939 _^][Y
+A 0002c9b3 _^][Y
+A 0002ca5e _^][Y
+A 0002ca7a _^][Y
+A 0002ca94 L$ PQ
+A 0002caf4 D$ RP
+A 0002cd6f L$ WPQ
+A 0002cdd0 D$ WRP
+A 0002ce54 D$(WPWQh
+A 0002cf72 thHtb
+A 0002d17d SVWuA
+A 0002d35b PPPPPPPP
+A 0002d3bd L$(PWQ
+A 0002d439 D$(RWP
+A 0002d4cf L$4Qj
+A 0002d525 L$ PQ
+A 0002d585 D$ RP
+A 0002d6ea L$(PVQ
+A 0002d75e D$(RVP
+A 0002d7ca l$4Wj
+A 0002d7ea xSPPj
+A 0002d924 L$,PQf
+A 0002d9a6 L$,PQf
+A 0002d9d6 T$$QRj
+A 0002e141 SUVWP3
+A 0002e169 _^][Y
+A 0002e189 D$ RPV
+A 0002e19d L$$QVUW
+A 0002e1e0 _^][Y
+A 0002e3e4 L$ PQF
+A 0002e4ab T$ QR
+A 0002e4da KK<5|K;
+A 0002e4f6 D$HCf
+A 0002e7f7 SVWPQ
+A 0002ecf7 SUVWP
+A 0002f047 <$tSf
+A 0002f164 <$tmf
+A 0002f6f7 <$tmf
+A 0002f85f <$tqf
+A 000306bb SUVWh
+A 0003084a T$HPQRj
+A 00030859 $_^][
+A 0003089b D$HQRPj
+A 000308aa $_^][
+A 000308ea D$0SQ
+A 000308ff L$HRPQj
+A 0003090e $_^][
+A 00030968 T$DVUWRj
+A 00030978 $_^][
+A 000309b5 D$4SRVUWP
+A 00030a39 QSVWh
+A 00030a7f u)VWSj%
+A 00030aba $WSj%j
+A 00030af5 $QRj%j
+A 00030b4d SUVWh
+A 00030bdf $UPVWj&j
+A 00030bef $_^][
+A 00030cec D$(PQR
+A 00030d2b SQRUPVWj&j
+A 00030d3d $_^][
+A 00030ddf D$(PQR
+A 00030e1e SQRUPVWj&j
+A 00030e30 $_^][
+A 00030e54 L$0SUQVWj&
+A 000314d8 tWItLIu
+A 00031a9d |$ VW
+A 00031b27 l$,_^
+A 00031c29 L$(_^
+A 00031c5f |$$VW
+A 00031d34 D$0QRPj"
+A 00031de4 |$ VW
+A 00031e6e D$,_^
+A 00031ea2 D$0QRPj#
+A 00031f66 |$ VW
+A 00031ff0 D$,_^
+A 0003223c QRPj$
+A 0003228b L$(_^[
+A 000322b3 L$(_^[
+A 000322f4 \$0~E
+A 000323d7 u-SVWj
+A 0003246d SRPVWj
+A 000324c5 HtZHt<HVt%
+A 000325b5 u-SVWj
+A 0003264b SRPVWj
+A 000326b2 u1VWSj
+A 000326cf xVRPWSj
+A 00032735 QSVWh
+A 0003278e QRWSj
+A 000327bf L$ PQWSj
+A 000327d1 $_^[Y
+A 0003286d L$ PQWSj
+A 0003287f $_^[Y
+A 000328c2 RPQWSj
+A 000328d2 $_^[Y
+A 000328f1 D$ RPWSj
+A 00032903 $_^[Y
+A 00032946 QRPWSj
+A 00032956 $_^[Y
+A 0003298d SUVWj
+A 000329fa u3UWS
+A 00032a43 D$ QPWSj
+A 000334cd L$ Qj
+A 00033538 L$ RPQj
+A 0003357e t$`WPQV
+A 000335a6 L$DPW
+A 00033635 L$tSUV
+A 0003363c t$hWPQV
+A 00033683 D$xPUVQR
+A 000336d8 WSRQUP
+A 000336e5 $_^][
+A 0003371f SUVW3
+A 00033a13 t>It!IuB
+A 00034136 L$dSV
+A 00034582 										
+A 00034db1 																								
+A 00034dca 													
+A 00034dda 													
+A 00034de9 										
+A 00034df4 					
+A 00035444 IsProcessorFeaturePresent
+A 00035460 KERNEL32
+A 00035491  (8PX
+A 00035499 700WP
+A 000354a9 `h````
+A 000354b1 ppxxxx
+A 00035543 xnew_p == 0
+A 00035550 setnewh.cpp
+A 00035693 x Complete Object Locator'
+A 000356b0  Class Hierarchy Descriptor'
+A 000356d0  Base Class Array'
+A 000356e4  Base Class Descriptor at (
+A 00035700  Type Descriptor'
+A 00035714 `local vftable constructor closure'
+A 00035738 `local vftable'
+A 00035748 `RTTI
+A 00035754 `udt returning'
+A 00035764 `copy constructor closure'
+A 00035780 `eh vector vbase constructor iterator'
+A 000357a8 `eh vector destructor iterator'
+A 000357c8 `eh vector constructor iterator'
+A 000357ec `virtual displacement map
+A 00035808 `vector vbase constructor iterator'
+A 0003582c `vector destructor iterator'
+A 0003584c `vector constructor iterator'
+A 0003586c `scalar deleting destructor'
+A 0003588c `default constructor closure'
+A 000358ac `vector deleting destructor'
+A 000358cc `vbase destructor'
+A 000358e0 `string'
+A 000358ec `local static guard'
+A 00035904 `typeof'
+A 00035910 `vcall'
+A 00035918 `vbtable'
+A 00035924 `vftable'
+A 00035994 operator
+A 000359b4  delete
+A 000359c4 __fastcall
+A 000359d0 __thiscall
+A 000359dc __stdcall
+A 000359e8 __pascal
+A 000359f4 __cdecl
+A 000359fc __based(
+A 00035a14 `anonymous namespace'
+A 00035a2c `template-parameter
+A 00035a50 [thunk]:
+A 00035a5c public: 
+A 00035a68 protected: 
+A 00035a74 private: 
+A 00035a80 virtual 
+A 00035a8c static 
+A 00035a94 `template static data member destructor helper'
+A 00035ac4 `template static data member constructor helper'
+A 00035af8 `local static destructor helper'
+A 00035b24 {for 
+A 00035b2c `adjustor{
+A 00035b38 `vtordisp{
+A 00035b4c {flat}
+A 00035b58 void 
+A 00035b60 volatile
+A 00035b78  throw(
+A 00035b80 UNKNOWN
+A 00035b88 wchar_t
+A 00035b90 __int128
+A 00035b9c __int64
+A 00035ba4 __int32
+A 00035bac __int16
+A 00035bb4 __int8
+A 00035bc4 double
+A 00035bcc long 
+A 00035bd4 float
+A 00035be8 short
+A 00035bf0 ptr64
+A 00035bf8  ptr64
+A 00035c00  volatile
+A 00035c0c const
+A 00035c14 signed 
+A 00035c1c unsigned 
+A 00035c30 enum 
+A 00035c40 short 
+A 00035c48 char 
+A 00035c50 class 
+A 00035c58 struct 
+A 00035c60 const 
+A 00035c68 volatile 
+A 00035c74 union 
+A 00035c7c `unknown ecsu'
+A 00035cb7 x ?? 
+A 00035d23 xruntime error 
+A 00035d38 TLOSS error
+A 00035d48 SING error
+A 00035d58 DOMAIN error
+A 00035d68 R6028
+A 00035d6f - unable to initialize heap
+A 00035d90 R6027
+A 00035d97 - not enough space for lowio initialization
+A 00035dc8 R6026
+A 00035dcf - not enough space for stdio initialization
+A 00035e00 R6025
+A 00035e07 - pure virtual function call
+A 00035e28 R6024
+A 00035e2f - not enough space for _onexit/atexit table
+A 00035e60 R6019
+A 00035e67 - unable to open console device
+A 00035e8c R6018
+A 00035e93 - unexpected heap error
+A 00035eb0 R6017
+A 00035eb7 - unexpected multithread lock error
+A 00035ee0 R6016
+A 00035ee7 - not enough space for thread data
+A 00035f0e abnormal program termination
+A 00035f30 R6009
+A 00035f37 - not enough space for environment
+A 00035f5c R6008
+A 00035f63 - not enough space for arguments
+A 00035f88 R6002
+A 00035f8f - floating point not loaded
+A 00035fb0 Microsoft Visual C++ Runtime Library
+A 00035fdc Runtime Error!
+A 00035fec Program: 
+A 00035ff8 <program name unknown>
+A 00036010 MSVCRT.DLL for Win32
+A 00036026 Error: MSVCRT.DLL is not compatible with Win32s.
+A 0003608b xUnknown exception
+A 000360c0 (Press Retry to debug the application - JIT must be enabled)
+A 00036100 For information on how your program can cause an assertion
+A 0003613b failure, see the Visual C++ documentation on asserts
+A 00036170 Expression: 
+A 00036180 Line: 
+A 00036188 File: 
+A 00036190 Program: 
+A 0003619c Assertion failed!
+A 000361b0 GetLastActivePopup
+A 000361c4 GetActiveWindow
+A 000361d4 MessageBoxA
+A 000361e0 user32.dll
+A 00036200 (null)
+A 00036208 SunMonTueWedThuFriSat
+A 00036220 JanFebMarAprMayJunJulAugSepOctNovDec
+A 00036248 LC_TIME
+A 00036250 LC_NUMERIC
+A 0003625c LC_MONETARY
+A 00036268 LC_CTYPE
+A 00036274 LC_COLLATE
+A 00036280 LC_ALL
+A 00036290 Paraguay
+A 0003629c Uruguay
+A 000362a4 Chile
+A 000362ac Ecuador
+A 000362b4 Argentina
+A 000362c8 Colombia
+A 000362d4 Venezuela
+A 000362e0 Dominican Republic
+A 000362f4 South Africa
+A 00036304 Panama
+A 0003630c Luxembourg
+A 00036318 Costa Rica
+A 00036324 Switzerland
+A 00036330 Guatemala
+A 0003633c Canada
+A 00036344 Spanish - Modern Sort
+A 0003635c Australia
+A 00036368 English
+A 00036370 Austria
+A 00036378 German
+A 00036380 Belgium
+A 00036388 Mexico
+A 00036390 Spanish
+A 00036398 Basque
+A 000363a0 Sweden
+A 000363a8 Swedish
+A 000363b0 Iceland
+A 000363b8 Icelandic
+A 000363c4 France
+A 000363cc French
+A 000363d4 Finland
+A 000363dc Finnish
+A 000363e4 Spain
+A 000363ec Spanish - Traditional Sort
+A 00036408 united-states
+A 00036418 united-kingdom
+A 00036428 trinidad & tobago
+A 0003643c south-korea
+A 00036448 south-africa
+A 00036458 south korea
+A 00036464 south africa
+A 00036474 slovak
+A 0003647c puerto-rico
+A 00036488 pr-china
+A 00036494 pr china
+A 000364a4 new-zealand
+A 000364b0 hong-kong
+A 000364bc holland
+A 000364c4 great britain
+A 000364d4 england
+A 000364dc czech
+A 000364e4 china
+A 000364ec britain
+A 000364f4 america
+A 00036508 swiss
+A 00036510 swedish-finland
+A 00036520 spanish-venezuela
+A 00036534 spanish-uruguay
+A 00036544 spanish-puerto rico
+A 00036558 spanish-peru
+A 00036568 spanish-paraguay
+A 0003657c spanish-panama
+A 0003658c spanish-nicaragua
+A 000365a0 spanish-modern
+A 000365b0 spanish-mexican
+A 000365c0 spanish-honduras
+A 000365d4 spanish-guatemala
+A 000365e8 spanish-el salvador
+A 000365fc spanish-ecuador
+A 0003660c spanish-dominican republic
+A 00036628 spanish-costa rica
+A 0003663c spanish-colombia
+A 00036650 spanish-chile
+A 00036660 spanish-bolivia
+A 00036670 spanish-argentina
+A 00036684 portuguese-brazilian
+A 0003669c norwegian-nynorsk
+A 000366b0 norwegian-bokmal
+A 000366c4 norwegian
+A 000366d0 italian-swiss
+A 000366e0 irish-english
+A 000366f0 german-swiss
+A 00036700 german-luxembourg
+A 00036714 german-lichtenstein
+A 00036728 german-austrian
+A 00036738 french-swiss
+A 00036748 french-luxembourg
+A 0003675c french-canadian
+A 0003676c french-belgian
+A 0003677c english-usa
+A 00036788 english-us
+A 00036794 english-uk
+A 000367a0 english-trinidad y tobago
+A 000367bc english-south africa
+A 000367d4 english-nz
+A 000367e0 english-jamaica
+A 000367f0 english-ire
+A 000367fc english-caribbean
+A 00036810 english-can
+A 0003681c english-belize
+A 0003682c english-aus
+A 00036838 english-american
+A 0003684c dutch-belgian
+A 0003685c chinese-traditional
+A 00036870 chinese-singapore
+A 00036884 chinese-simplified
+A 00036898 chinese-hongkong
+A 000368ac chinese
+A 000368bc canadian
+A 000368c8 belgian
+A 000368d0 australian
+A 000368dc american-english
+A 000368f0 american english
+A 00036904 american
+A 00036918 H:mm:ss
+A 00036920 dddd, MMMM dd, yyyy
+A 00036934 M/d/yy
+A 00036944 December
+A 00036950 November
+A 0003695c October
+A 00036964 September
+A 00036970 August
+A 00036988 April
+A 00036990 March
+A 00036998 February
+A 000369a4 January
+A 000369dc Saturday
+A 000369e8 Friday
+A 000369f0 Thursday
+A 000369fc Wednesday
+A 00036a08 Tuesday
+A 00036a10 Monday
+A 00036a18 Sunday
+A 00036a40 am/pm
+A 00036ac0 Access violation - no RTTI data!
+A 00036af3 xBad read pointer - no RTTI data!
+A 00036b18 Attempted a typeid of NULL pointer!
+A 00036b4b xBad dynamic_cast!
+A 00036bd4 cmd.exe
+A 00036bdc command.com
+A 00036bec COMSPEC
+A 00036c03 xCONIN$
+A 00036c0c CONOUT$
+A 00036c18 Illegal byte sequence
+A 00036c30 Directory not empty
+A 00036c44 Function not implemented
+A 00036c60 No locks available
+A 00036c74 Filename too long
+A 00036c88 Resource deadlock avoided
+A 00036ca4 Result too large
+A 00036cb8 Domain error
+A 00036cc8 Broken pipe
+A 00036cd4 Too many links
+A 00036ce4 Read-only file system
+A 00036cfc Invalid seek
+A 00036d0c No space left on device
+A 00036d24 File too large
+A 00036d34 Inappropriate I/O control operation
+A 00036d58 Too many open files
+A 00036d6c Too many open files in system
+A 00036d8c Invalid argument
+A 00036da0 Is a directory
+A 00036db0 Not a directory
+A 00036dc0 No such device
+A 00036dd0 Improper link
+A 00036de0 File exists
+A 00036dec Resource device
+A 00036dfc Unknown error
+A 00036e0c Bad address
+A 00036e18 Permission denied
+A 00036e2c Not enough space
+A 00036e40 Resource temporarily unavailable
+A 00036e64 No child processes
+A 00036e78 Bad file descriptor
+A 00036e8c Exec format error
+A 00036ea0 Arg list too long
+A 00036eb4 No such device or address
+A 00036ed0 Input/output error
+A 00036ee4 Interrupted function call
+A 00036f00 No such process
+A 00036f10 No such file or directory
+A 00036f2c Operation not permitted
+A 00036f44 No error
+A 00036f68 1#QNAN
+A 00036f70 1#INF
+A 00036f78 1#IND
+A 00036f80 1#SNAN
+A 00036f90 e+000
+A 000370e4 frexp
+A 000370f4 _hypot
+A 000370fc _cabs
+A 00037104 ldexp
+A 0003711c floor
+A 00037140 atan2
+A 00037178 log10
+A 000391b0 MSVCRT.dll
+A 000391bb ??0__non_rtti_object@@QAE@ABV0@@Z
+A 000391dd ??0__non_rtti_object@@QAE@PBD@Z
+A 000391fd ??0bad_cast@@QAE@ABQBD@Z
+A 00039216 ??0bad_cast@@QAE@ABV0@@Z
+A 0003922f ??0bad_typeid@@QAE@ABV0@@Z
+A 0003924a ??0bad_typeid@@QAE@PBD@Z
+A 00039263 ??0exception@@QAE@ABQBD@Z
+A 0003927d ??0exception@@QAE@ABV0@@Z
+A 00039297 ??0exception@@QAE@XZ
+A 000392ac ??1__non_rtti_object@@UAE@XZ
+A 000392c9 ??1bad_cast@@UAE@XZ
+A 000392dd ??1bad_typeid@@UAE@XZ
+A 000392f3 ??1exception@@UAE@XZ
+A 00039308 ??1type_info@@UAE@XZ
+A 0003931d ??2@YAPAXI@Z
+A 0003932a ??3@YAXPAX@Z
+A 00039337 ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
+A 0003935d ??4bad_cast@@QAEAAV0@ABV0@@Z
+A 0003937a ??4bad_typeid@@QAEAAV0@ABV0@@Z
+A 00039399 ??4exception@@QAEAAV0@ABV0@@Z
+A 000393b7 ??8type_info@@QBEHABV0@@Z
+A 000393d1 ??9type_info@@QBEHABV0@@Z
+A 000393eb ??_7__non_rtti_object@@6B@
+A 00039406 ??_7bad_cast@@6B@
+A 00039418 ??_7bad_typeid@@6B@
+A 0003942c ??_7exception@@6B@
+A 0003943f ??_E__non_rtti_object@@UAEPAXI@Z
+A 00039460 ??_Ebad_cast@@UAEPAXI@Z
+A 00039478 ??_Ebad_typeid@@UAEPAXI@Z
+A 00039492 ??_Eexception@@UAEPAXI@Z
+A 000394ab ??_G__non_rtti_object@@UAEPAXI@Z
+A 000394cc ??_Gbad_cast@@UAEPAXI@Z
+A 000394e4 ??_Gbad_typeid@@UAEPAXI@Z
+A 000394fe ??_Gexception@@UAEPAXI@Z
+A 00039517 ?_query_new_handler@@YAP6AHI@ZXZ
+A 00039538 ?_query_new_mode@@YAHXZ
+A 00039550 ?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z
+A 00039576 ?_set_new_mode@@YAHH@Z
+A 0003958d ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
+A 000395ce ?before@type_info@@QBEHABV1@@Z
+A 000395ed ?name@type_info@@QBEPBDXZ
+A 00039607 ?raw_name@type_info@@QBEPBDXZ
+A 00039625 ?set_new_handler@@YAP6AXXZP6AXXZ@Z
+A 00039648 ?set_terminate@@YAP6AXXZP6AXXZ@Z
+A 00039669 ?set_unexpected@@YAP6AXXZP6AXXZ@Z
+A 0003968b ?terminate@@YAXXZ
+A 0003969d ?unexpected@@YAXXZ
+A 000396b0 ?what@exception@@UBEPBDXZ
+A 000396ca $I10_OUTPUT
+A 000396d6 _CIacos
+A 000396de _CIasin
+A 000396e6 _CIatan
+A 000396ee _CIatan2
+A 000396f7 _CIcos
+A 000396fe _CIcosh
+A 00039706 _CIexp
+A 0003970d _CIfmod
+A 00039715 _CIlog
+A 0003971c _CIlog10
+A 00039725 _CIpow
+A 0003972c _CIsin
+A 00039733 _CIsinh
+A 0003973b _CIsqrt
+A 00039743 _CItan
+A 0003974a _CItanh
+A 00039752 _CxxThrowException
+A 00039765 _EH_prolog
+A 00039770 _Getdays
+A 00039779 _Getmonths
+A 00039784 _Gettnames
+A 0003978f _HUGE
+A 00039795 _Strftime
+A 0003979f _XcptFilter
+A 000397ab __CxxFrameHandler
+A 000397bd __CxxLongjmpUnwind
+A 000397d0 __RTCastToVoid
+A 000397df __RTDynamicCast
+A 000397ef __RTtypeid
+A 000397fa __STRINGTOLD
+A 00039807 __argc
+A 0003980e __argv
+A 00039815 __badioinfo
+A 00039821 __crtCompareStringA
+A 00039835 __crtGetLocaleInfoW
+A 00039849 __crtLCMapStringA
+A 0003985b __dllonexit
+A 00039867 __doserrno
+A 00039872 __fpecode
+A 0003987c __getmainargs
+A 0003988a __initenv
+A 00039894 __isascii
+A 0003989e __iscsym
+A 000398a7 __iscsymf
+A 000398b1 __lc_codepage
+A 000398bf __lc_handle
+A 000398cb __lconv_init
+A 000398d8 __mb_cur_max
+A 000398e5 __p___argc
+A 000398f0 __p___argv
+A 000398fb __p___initenv
+A 00039909 __p___mb_cur_max
+A 0003991a __p___wargv
+A 00039926 __p___winitenv
+A 00039935 __p__acmdln
+A 00039941 __p__amblksiz
+A 0003994f __p__commode
+A 0003995c __p__daylight
+A 0003996a __p__dstbias
+A 00039977 __p__environ
+A 00039984 __p__fileinfo
+A 00039992 __p__fmode
+A 0003999d __p__iob
+A 000399a6 __p__mbcasemap
+A 000399b5 __p__mbctype
+A 000399c2 __p__osver
+A 000399cd __p__pctype
+A 000399d9 __p__pgmptr
+A 000399e5 __p__pwctype
+A 000399f2 __p__timezone
+A 00039a00 __p__tzname
+A 00039a0c __p__wcmdln
+A 00039a18 __p__wenviron
+A 00039a26 __p__winmajor
+A 00039a34 __p__winminor
+A 00039a42 __p__winver
+A 00039a4e __p__wpgmptr
+A 00039a5b __pioinfo
+A 00039a65 __pxcptinfoptrs
+A 00039a75 __set_app_type
+A 00039a84 __setlc_active
+A 00039a93 __setusermatherr
+A 00039aa4 __threadhandle
+A 00039ab3 __threadid
+A 00039abe __toascii
+A 00039ac8 __unDName
+A 00039ad2 __unguarded_readlc_active
+A 00039aec __wargv
+A 00039af4 __wgetmainargs
+A 00039b03 __winitenv
+A 00039b0e _abnormal_termination
+A 00039b24 _access
+A 00039b2c _acmdln
+A 00039b34 _adj_fdiv_m16i
+A 00039b43 _adj_fdiv_m32
+A 00039b51 _adj_fdiv_m32i
+A 00039b60 _adj_fdiv_m64
+A 00039b6e _adj_fdiv_r
+A 00039b7a _adj_fdivr_m16i
+A 00039b8a _adj_fdivr_m32
+A 00039b99 _adj_fdivr_m32i
+A 00039ba9 _adj_fdivr_m64
+A 00039bb8 _adj_fpatan
+A 00039bc4 _adj_fprem
+A 00039bcf _adj_fprem1
+A 00039bdb _adj_fptan
+A 00039be6 _adjust_fdiv
+A 00039bf3 _aexit_rtn
+A 00039bfe _amsg_exit
+A 00039c09 _assert
+A 00039c11 _atodbl
+A 00039c19 _atoi64
+A 00039c21 _atoldbl
+A 00039c2a _beep
+A 00039c30 _beginthread
+A 00039c3d _beginthreadex
+A 00039c4c _c_exit
+A 00039c54 _cabs
+A 00039c5a _callnewh
+A 00039c64 _cexit
+A 00039c6b _cgets
+A 00039c72 _chdir
+A 00039c79 _chdrive
+A 00039c82 _chgsign
+A 00039c8b _chmod
+A 00039c92 _chsize
+A 00039c9a _clearfp
+A 00039ca3 _close
+A 00039caa _commit
+A 00039cb2 _commode
+A 00039cbb _control87
+A 00039cc6 _controlfp
+A 00039cd1 _copysign
+A 00039cdb _cprintf
+A 00039ce4 _cputs
+A 00039ceb _creat
+A 00039cf2 _cscanf
+A 00039cfa _ctype
+A 00039d01 _cwait
+A 00039d08 _daylight
+A 00039d12 _dstbias
+A 00039d20 _dup2
+A 00039d26 _ecvt
+A 00039d2c _endthread
+A 00039d37 _endthreadex
+A 00039d44 _environ
+A 00039d52 _errno
+A 00039d59 _except_handler2
+A 00039d6a _except_handler3
+A 00039d7b _execl
+A 00039d82 _execle
+A 00039d8a _execlp
+A 00039d92 _execlpe
+A 00039d9b _execv
+A 00039da2 _execve
+A 00039daa _execvp
+A 00039db2 _execvpe
+A 00039dbb _exit
+A 00039dc1 _expand
+A 00039dc9 _fcloseall
+A 00039dd4 _fcvt
+A 00039dda _fdopen
+A 00039de2 _fgetchar
+A 00039dec _fgetwchar
+A 00039df7 _filbuf
+A 00039dff _fileinfo
+A 00039e09 _filelength
+A 00039e15 _filelengthi64
+A 00039e24 _fileno
+A 00039e2c _findclose
+A 00039e37 _findfirst
+A 00039e42 _findfirsti64
+A 00039e50 _findnext
+A 00039e5a _findnexti64
+A 00039e67 _finite
+A 00039e6f _flsbuf
+A 00039e77 _flushall
+A 00039e81 _fmode
+A 00039e88 _fpclass
+A 00039e91 _fpieee_flt
+A 00039e9d _fpreset
+A 00039ea6 _fputchar
+A 00039eb0 _fputwchar
+A 00039ebb _fsopen
+A 00039ec3 _fstat
+A 00039eca _fstati64
+A 00039ed4 _ftime
+A 00039edb _ftol
+A 00039ee1 _fullpath
+A 00039eeb _futime
+A 00039ef3 _gcvt
+A 00039ef9 _get_osfhandle
+A 00039f08 _get_sbh_threshold
+A 00039f1b _getch
+A 00039f22 _getche
+A 00039f2a _getcwd
+A 00039f32 _getdcwd
+A 00039f3b _getdiskfree
+A 00039f48 _getdllprocaddr
+A 00039f58 _getdrive
+A 00039f62 _getdrives
+A 00039f6d _getmaxstdio
+A 00039f7a _getmbcp
+A 00039f83 _getpid
+A 00039f8b _getsystime
+A 00039f97 _getw
+A 00039f9d _getws
+A 00039fa4 _global_unwind2
+A 00039fb4 _heapadd
+A 00039fbd _heapchk
+A 00039fc6 _heapmin
+A 00039fcf _heapset
+A 00039fd8 _heapused
+A 00039fe2 _heapwalk
+A 00039fec _hypot
+A 00039ff3 _i64toa
+A 00039ffb _i64tow
+A 0003a003 _initterm
+A 0003a012 _inpd
+A 0003a018 _inpw
+A 0003a023 _isatty
+A 0003a02b _isctype
+A 0003a034 _ismbbalnum
+A 0003a040 _ismbbalpha
+A 0003a04c _ismbbgraph
+A 0003a058 _ismbbkalnum
+A 0003a065 _ismbbkana
+A 0003a070 _ismbbkprint
+A 0003a07d _ismbbkpunct
+A 0003a08a _ismbblead
+A 0003a095 _ismbbprint
+A 0003a0a1 _ismbbpunct
+A 0003a0ad _ismbbtrail
+A 0003a0b9 _ismbcalnum
+A 0003a0c5 _ismbcalpha
+A 0003a0d1 _ismbcdigit
+A 0003a0dd _ismbcgraph
+A 0003a0e9 _ismbchira
+A 0003a0f4 _ismbckata
+A 0003a0ff _ismbcl0
+A 0003a108 _ismbcl1
+A 0003a111 _ismbcl2
+A 0003a11a _ismbclegal
+A 0003a126 _ismbclower
+A 0003a132 _ismbcprint
+A 0003a13e _ismbcpunct
+A 0003a14a _ismbcspace
+A 0003a156 _ismbcsymbol
+A 0003a163 _ismbcupper
+A 0003a16f _ismbslead
+A 0003a17a _ismbstrail
+A 0003a186 _isnan
+A 0003a18d _itoa
+A 0003a193 _itow
+A 0003a1a5 _kbhit
+A 0003a1ac _lfind
+A 0003a1b3 _loaddll
+A 0003a1bc _local_unwind2
+A 0003a1cb _lock
+A 0003a1d1 _locking
+A 0003a1da _logb
+A 0003a1e0 _longjmpex
+A 0003a1eb _lrotl
+A 0003a1f2 _lrotr
+A 0003a1f9 _lsearch
+A 0003a202 _lseek
+A 0003a209 _lseeki64
+A 0003a213 _ltoa
+A 0003a219 _ltow
+A 0003a21f _makepath
+A 0003a229 _mbbtombc
+A 0003a233 _mbbtype
+A 0003a23c _mbcasemap
+A 0003a247 _mbccpy
+A 0003a24f _mbcjistojms
+A 0003a25c _mbcjmstojis
+A 0003a269 _mbclen
+A 0003a271 _mbctohira
+A 0003a27c _mbctokata
+A 0003a287 _mbctolower
+A 0003a293 _mbctombb
+A 0003a29d _mbctoupper
+A 0003a2a9 _mbctype
+A 0003a2b2 _mbsbtype
+A 0003a2bc _mbscat
+A 0003a2c4 _mbschr
+A 0003a2cc _mbscmp
+A 0003a2d4 _mbscoll
+A 0003a2dd _mbscpy
+A 0003a2e5 _mbscspn
+A 0003a2ee _mbsdec
+A 0003a2f6 _mbsdup
+A 0003a2fe _mbsicmp
+A 0003a307 _mbsicoll
+A 0003a311 _mbsinc
+A 0003a319 _mbslen
+A 0003a321 _mbslwr
+A 0003a329 _mbsnbcat
+A 0003a333 _mbsnbcmp
+A 0003a33d _mbsnbcnt
+A 0003a347 _mbsnbcoll
+A 0003a352 _mbsnbcpy
+A 0003a35c _mbsnbicmp
+A 0003a367 _mbsnbicoll
+A 0003a373 _mbsnbset
+A 0003a37d _mbsncat
+A 0003a386 _mbsnccnt
+A 0003a390 _mbsncmp
+A 0003a399 _mbsncoll
+A 0003a3a3 _mbsncpy
+A 0003a3ac _mbsnextc
+A 0003a3b6 _mbsnicmp
+A 0003a3c0 _mbsnicoll
+A 0003a3cb _mbsninc
+A 0003a3d4 _mbsnset
+A 0003a3dd _mbspbrk
+A 0003a3e6 _mbsrchr
+A 0003a3ef _mbsrev
+A 0003a3f7 _mbsset
+A 0003a3ff _mbsspn
+A 0003a407 _mbsspnp
+A 0003a410 _mbsstr
+A 0003a418 _mbstok
+A 0003a420 _mbstrlen
+A 0003a42a _mbsupr
+A 0003a432 _memccpy
+A 0003a43b _memicmp
+A 0003a444 _mkdir
+A 0003a44b _mktemp
+A 0003a453 _msize
+A 0003a45a _nextafter
+A 0003a465 _onexit
+A 0003a46d _open
+A 0003a473 _open_osfhandle
+A 0003a483 _osver
+A 0003a48a _outp
+A 0003a490 _outpd
+A 0003a497 _outpw
+A 0003a49e _pclose
+A 0003a4a6 _pctype
+A 0003a4ae _pgmptr
+A 0003a4b6 _pipe
+A 0003a4bc _popen
+A 0003a4c3 _purecall
+A 0003a4cd _putch
+A 0003a4d4 _putenv
+A 0003a4dc _putw
+A 0003a4e2 _putws
+A 0003a4e9 _pwctype
+A 0003a4f2 _read
+A 0003a4f8 _rmdir
+A 0003a4ff _rmtmp
+A 0003a506 _rotl
+A 0003a50c _rotr
+A 0003a512 _safe_fdiv
+A 0003a51d _safe_fdivr
+A 0003a529 _safe_fprem
+A 0003a535 _safe_fprem1
+A 0003a542 _scalb
+A 0003a549 _searchenv
+A 0003a554 _seh_longjmp_unwind
+A 0003a568 _set_error_mode
+A 0003a578 _set_sbh_threshold
+A 0003a58b _seterrormode
+A 0003a599 _setjmp
+A 0003a5a1 _setjmp3
+A 0003a5aa _setmaxstdio
+A 0003a5b7 _setmbcp
+A 0003a5c0 _setmode
+A 0003a5c9 _setsystime
+A 0003a5d5 _sleep
+A 0003a5dc _snprintf
+A 0003a5e6 _snwprintf
+A 0003a5f1 _sopen
+A 0003a5f8 _spawnl
+A 0003a600 _spawnle
+A 0003a609 _spawnlp
+A 0003a612 _spawnlpe
+A 0003a61c _spawnv
+A 0003a624 _spawnve
+A 0003a62d _spawnvp
+A 0003a636 _spawnvpe
+A 0003a640 _splitpath
+A 0003a64b _stat
+A 0003a651 _stati64
+A 0003a65a _statusfp
+A 0003a664 _strcmpi
+A 0003a66d _strdate
+A 0003a676 _strdup
+A 0003a67e _strerror
+A 0003a688 _stricmp
+A 0003a691 _stricoll
+A 0003a69b _strlwr
+A 0003a6a3 _strncoll
+A 0003a6ad _strnicmp
+A 0003a6b7 _strnicoll
+A 0003a6c2 _strnset
+A 0003a6cb _strrev
+A 0003a6d3 _strset
+A 0003a6db _strtime
+A 0003a6e4 _strupr
+A 0003a6ec _swab
+A 0003a6f2 _sys_errlist
+A 0003a6ff _sys_nerr
+A 0003a709 _tell
+A 0003a70f _telli64
+A 0003a718 _tempnam
+A 0003a721 _timezone
+A 0003a72b _tolower
+A 0003a734 _toupper
+A 0003a73d _tzname
+A 0003a745 _tzset
+A 0003a74c _ui64toa
+A 0003a755 _ui64tow
+A 0003a75e _ultoa
+A 0003a765 _ultow
+A 0003a76c _umask
+A 0003a773 _ungetch
+A 0003a77c _unlink
+A 0003a784 _unloaddll
+A 0003a78f _unlock
+A 0003a797 _utime
+A 0003a79e _vsnprintf
+A 0003a7a9 _vsnwprintf
+A 0003a7b5 _waccess
+A 0003a7be _wasctime
+A 0003a7c8 _wchdir
+A 0003a7d0 _wchmod
+A 0003a7d8 _wcmdln
+A 0003a7e0 _wcreat
+A 0003a7e8 _wcsdup
+A 0003a7f0 _wcsicmp
+A 0003a7f9 _wcsicoll
+A 0003a803 _wcslwr
+A 0003a80b _wcsncoll
+A 0003a815 _wcsnicmp
+A 0003a81f _wcsnicoll
+A 0003a82a _wcsnset
+A 0003a833 _wcsrev
+A 0003a83b _wcsset
+A 0003a843 _wcsupr
+A 0003a84b _wctime
+A 0003a853 _wenviron
+A 0003a85d _wexecl
+A 0003a865 _wexecle
+A 0003a86e _wexeclp
+A 0003a877 _wexeclpe
+A 0003a881 _wexecv
+A 0003a889 _wexecve
+A 0003a892 _wexecvp
+A 0003a89b _wexecvpe
+A 0003a8a5 _wfdopen
+A 0003a8ae _wfindfirst
+A 0003a8ba _wfindfirsti64
+A 0003a8c9 _wfindnext
+A 0003a8d4 _wfindnexti64
+A 0003a8e2 _wfopen
+A 0003a8ea _wfreopen
+A 0003a8f4 _wfsopen
+A 0003a8fd _wfullpath
+A 0003a908 _wgetcwd
+A 0003a911 _wgetdcwd
+A 0003a91b _wgetenv
+A 0003a924 _winmajor
+A 0003a92e _winminor
+A 0003a938 _winver
+A 0003a940 _wmakepath
+A 0003a94b _wmkdir
+A 0003a953 _wmktemp
+A 0003a95c _wopen
+A 0003a963 _wperror
+A 0003a96c _wpgmptr
+A 0003a975 _wpopen
+A 0003a97d _wputenv
+A 0003a986 _wremove
+A 0003a98f _wrename
+A 0003a998 _write
+A 0003a99f _wrmdir
+A 0003a9a7 _wsearchenv
+A 0003a9b3 _wsetlocale
+A 0003a9bf _wsopen
+A 0003a9c7 _wspawnl
+A 0003a9d0 _wspawnle
+A 0003a9da _wspawnlp
+A 0003a9e4 _wspawnlpe
+A 0003a9ef _wspawnv
+A 0003a9f8 _wspawnve
+A 0003aa02 _wspawnvp
+A 0003aa0c _wspawnvpe
+A 0003aa17 _wsplitpath
+A 0003aa23 _wstat
+A 0003aa2a _wstati64
+A 0003aa34 _wstrdate
+A 0003aa3e _wstrtime
+A 0003aa48 _wsystem
+A 0003aa51 _wtempnam
+A 0003aa5b _wtmpnam
+A 0003aa64 _wtoi
+A 0003aa6a _wtoi64
+A 0003aa72 _wtol
+A 0003aa78 _wunlink
+A 0003aa81 _wutime
+A 0003aa95 abort
+A 0003aaa4 asctime
+A 0003aab6 atan2
+A 0003aabc atexit
+A 0003aad2 bsearch
+A 0003aada calloc
+A 0003aae6 clearerr
+A 0003aaef clock
+A 0003aafe ctime
+A 0003ab04 difftime
+A 0003ab1f fclose
+A 0003ab2b ferror
+A 0003ab32 fflush
+A 0003ab39 fgetc
+A 0003ab3f fgetpos
+A 0003ab47 fgets
+A 0003ab4d fgetwc
+A 0003ab54 fgetws
+A 0003ab5b floor
+A 0003ab66 fopen
+A 0003ab6c fprintf
+A 0003ab74 fputc
+A 0003ab7a fputs
+A 0003ab80 fputwc
+A 0003ab87 fputws
+A 0003ab8e fread
+A 0003ab99 freopen
+A 0003aba1 frexp
+A 0003aba7 fscanf
+A 0003abae fseek
+A 0003abb4 fsetpos
+A 0003abbc ftell
+A 0003abc2 fwprintf
+A 0003abcb fwrite
+A 0003abd2 fwscanf
+A 0003abdf getchar
+A 0003abe7 getenv
+A 0003abf3 getwc
+A 0003abf9 getwchar
+A 0003ac02 gmtime
+A 0003ac09 is_wctype
+A 0003ac13 isalnum
+A 0003ac1b isalpha
+A 0003ac23 iscntrl
+A 0003ac2b isdigit
+A 0003ac33 isgraph
+A 0003ac3b isleadbyte
+A 0003ac46 islower
+A 0003ac4e isprint
+A 0003ac56 ispunct
+A 0003ac5e isspace
+A 0003ac66 isupper
+A 0003ac6e iswalnum
+A 0003ac77 iswalpha
+A 0003ac80 iswascii
+A 0003ac89 iswcntrl
+A 0003ac92 iswctype
+A 0003ac9b iswdigit
+A 0003aca4 iswgraph
+A 0003acad iswlower
+A 0003acb6 iswprint
+A 0003acbf iswpunct
+A 0003acc8 iswspace
+A 0003acd1 iswupper
+A 0003acda iswxdigit
+A 0003ace4 isxdigit
+A 0003acf2 ldexp
+A 0003acfd localeconv
+A 0003ad08 localtime
+A 0003ad16 log10
+A 0003ad1c longjmp
+A 0003ad24 malloc
+A 0003ad2b mblen
+A 0003ad31 mbstowcs
+A 0003ad3a mbtowc
+A 0003ad41 memchr
+A 0003ad48 memcmp
+A 0003ad4f memcpy
+A 0003ad56 memmove
+A 0003ad5e memset
+A 0003ad65 mktime
+A 0003ad71 perror
+A 0003ad7c printf
+A 0003ad88 putchar
+A 0003ad95 putwc
+A 0003ad9b putwchar
+A 0003ada4 qsort
+A 0003adaa raise
+A 0003adb5 realloc
+A 0003adbd remove
+A 0003adc4 rename
+A 0003adcb rewind
+A 0003add2 scanf
+A 0003add8 setbuf
+A 0003addf setlocale
+A 0003ade9 setvbuf
+A 0003adf1 signal
+A 0003ae01 sprintf
+A 0003ae0e srand
+A 0003ae14 sscanf
+A 0003ae1b strcat
+A 0003ae22 strchr
+A 0003ae29 strcmp
+A 0003ae30 strcoll
+A 0003ae38 strcpy
+A 0003ae3f strcspn
+A 0003ae47 strerror
+A 0003ae50 strftime
+A 0003ae59 strlen
+A 0003ae60 strncat
+A 0003ae68 strncmp
+A 0003ae70 strncpy
+A 0003ae78 strpbrk
+A 0003ae80 strrchr
+A 0003ae88 strspn
+A 0003ae8f strstr
+A 0003ae96 strtod
+A 0003ae9d strtok
+A 0003aea4 strtol
+A 0003aeab strtoul
+A 0003aeb3 strxfrm
+A 0003aebb swprintf
+A 0003aec4 swscanf
+A 0003aecc system
+A 0003aee1 tmpfile
+A 0003aee9 tmpnam
+A 0003aef0 tolower
+A 0003aef8 toupper
+A 0003af00 towlower
+A 0003af09 towupper
+A 0003af12 ungetc
+A 0003af19 ungetwc
+A 0003af21 vfprintf
+A 0003af2a vfwprintf
+A 0003af34 vprintf
+A 0003af3c vsprintf
+A 0003af45 vswprintf
+A 0003af4f vwprintf
+A 0003af58 wcscat
+A 0003af5f wcschr
+A 0003af66 wcscmp
+A 0003af6d wcscoll
+A 0003af75 wcscpy
+A 0003af7c wcscspn
+A 0003af84 wcsftime
+A 0003af8d wcslen
+A 0003af94 wcsncat
+A 0003af9c wcsncmp
+A 0003afa4 wcsncpy
+A 0003afac wcspbrk
+A 0003afb4 wcsrchr
+A 0003afbc wcsspn
+A 0003afc3 wcsstr
+A 0003afca wcstod
+A 0003afd1 wcstok
+A 0003afd8 wcstol
+A 0003afdf wcstombs
+A 0003afe8 wcstoul
+A 0003aff0 wcsxfrm
+A 0003aff8 wctomb
+A 0003afff wprintf
+A 0003b007 wscanf
+A 0003b128 KERNEL32.dll
+A 0003b37e Sleep
+A 0003b386 RtlUnwind
+A 0003b392 IsBadReadPtr
+A 0003b3a2 IsBadWritePtr
+A 0003b3b2 IsBadCodePtr
+A 0003b3c2 SetUnhandledExceptionFilter
+A 0003b3e0 GetModuleFileNameA
+A 0003b3f6 GetModuleFileNameW
+A 0003b40c ExitProcess
+A 0003b41a TerminateProcess
+A 0003b42e GetCurrentProcess
+A 0003b442 WriteFile
+A 0003b44e GetStdHandle
+A 0003b45e GetCommandLineA
+A 0003b470 GetVersion
+A 0003b47e InitializeCriticalSection
+A 0003b49a DeleteCriticalSection
+A 0003b4b2 EnterCriticalSection
+A 0003b4ca LeaveCriticalSection
+A 0003b4e2 GetLastError
+A 0003b4f2 ResumeThread
+A 0003b502 CreateThread
+A 0003b512 TlsSetValue
+A 0003b520 ExitThread
+A 0003b52e CloseHandle
+A 0003b53c GetCurrentThreadId
+A 0003b552 TlsAlloc
+A 0003b55e TlsFree
+A 0003b568 SetLastError
+A 0003b578 TlsGetValue
+A 0003b586 GetCurrentThread
+A 0003b59a FindNextFileA
+A 0003b5aa FindFirstFileA
+A 0003b5bc FindClose
+A 0003b5c8 FindNextFileW
+A 0003b5d8 FindFirstFileW
+A 0003b5ea HeapFree
+A 0003b5f6 HeapAlloc
+A 0003b602 HeapDestroy
+A 0003b610 HeapCreate
+A 0003b61e VirtualFree
+A 0003b62c VirtualAlloc
+A 0003b63c SetHandleCount
+A 0003b64e GetFileType
+A 0003b65c GetStartupInfoA
+A 0003b66e GetCPInfo
+A 0003b67a GetACP
+A 0003b684 GetOEMCP
+A 0003b690 GetProcAddress
+A 0003b6a2 LoadLibraryA
+A 0003b6b2 MultiByteToWideChar
+A 0003b6c8 GetCommandLineW
+A 0003b6da FreeEnvironmentStringsA
+A 0003b6f4 FreeEnvironmentStringsW
+A 0003b70e GetEnvironmentStrings
+A 0003b726 GetEnvironmentStringsW
+A 0003b740 WideCharToMultiByte
+A 0003b756 UnhandledExceptionFilter
+A 0003b772 LCMapStringA
+A 0003b782 LCMapStringW
+A 0003b792 GetStringTypeA
+A 0003b7a4 GetStringTypeW
+A 0003b7b6 SetConsoleCtrlHandler
+A 0003b7ce SetEnvironmentVariableW
+A 0003b7e8 InterlockedDecrement
+A 0003b800 InterlockedIncrement
+A 0003b818 HeapReAlloc
+A 0003b826 FlushFileBuffers
+A 0003b83a SetFilePointer
+A 0003b84c SetStdHandle
+A 0003b85c RaiseException
+A 0003b86e CompareStringA
+A 0003b880 CompareStringW
+A 0003b892 GetLocaleInfoA
+A 0003b8a4 GetLocaleInfoW
+A 0003b8b6 IsValidLocale
+A 0003b8c6 IsValidCodePage
+A 0003b8d8 EnumSystemLocalesA
+A 0003b8ee GetUserDefaultLCID
+A 0003b904 GetVersionExA
+A 0003b914 GetTimeZoneInformation
+A 0003b92e SetEnvironmentVariableA
+A 0003b950 FileTimeToSystemTime
+A 0003b968 FileTimeToLocalFileTime
+A 0003b982 GetDiskFreeSpaceA
+A 0003b996 GetLogicalDrives
+A 0003b9aa SetErrorMode
+A 0003b9ba GetFileAttributesA
+A 0003b9d0 GetCurrentDirectoryA
+A 0003b9e8 SetCurrentDirectoryA
+A 0003ba00 SetFileAttributesA
+A 0003ba16 GetFullPathNameA
+A 0003ba2a GetDriveTypeA
+A 0003ba3a GetCurrentProcessId
+A 0003ba50 CreateDirectoryA
+A 0003ba64 RemoveDirectoryA
+A 0003ba78 DeleteFileA
+A 0003ba86 GetFileAttributesW
+A 0003ba9c GetCurrentDirectoryW
+A 0003bab4 SetCurrentDirectoryW
+A 0003bacc SetFileAttributesW
+A 0003bae2 GetFullPathNameW
+A 0003baf6 CreateDirectoryW
+A 0003bb0a DeleteFileW
+A 0003bb18 MoveFileW
+A 0003bb24 RemoveDirectoryW
+A 0003bb38 GetDriveTypeW
+A 0003bb48 MoveFileA
+A 0003bb54 GetExitCodeProcess
+A 0003bb6a WaitForSingleObject
+A 0003bb80 FreeLibrary
+A 0003bb8e CreateProcessA
+A 0003bba0 CreateProcessW
+A 0003bbb2 HeapValidate
+A 0003bbc2 HeapCompact
+A 0003bbd0 HeapWalk
+A 0003bbdc HeapSize
+A 0003bbe8 ReadConsoleA
+A 0003bbf8 SetConsoleMode
+A 0003bc0a GetConsoleMode
+A 0003bc1c SetEndOfFile
+A 0003bc2c WriteConsoleA
+A 0003bc3c DuplicateHandle
+A 0003bc4e GetFileInformationByHandle
+A 0003bc6c PeekNamedPipe
+A 0003bc7c ReadConsoleInputA
+A 0003bc90 PeekConsoleInputA
+A 0003bca4 GetNumberOfConsoleInputEvents
+A 0003bcc4 LockFile
+A 0003bcd0 UnlockFile
+A 0003bcde CreateFileA
+A 0003bcec CreatePipe
+A 0003bcfa ReadFile
+A 0003bd06 CreateFileW
+A 0003bd14 GetLocalTime
+A 0003bd24 SetFileTime
+A 0003bd32 LocalFileTimeToFileTime
+A 0003bd4c SystemTimeToFileTime
+A 0003bd64 SetLocalTime
+A 0003bd74 GetSystemTime
+A 0003bd84 GetModuleHandleA
+A 0003f118 .?AVexception@@
+A 0003f130 .?AVtype_info@@
+A 0003f148 .?AVbad_cast@@
+A 0003f160 .?AVbad_typeid@@
+A 0003f180 .?AV__non_rtti_object@@
+A 0003f270 Assertion failed: %s, file %s, line %d
+A 0004036e z?aUY
+A 000403b0 zc%C1
+A 00040403 -64OS
+A 000404b8 log10
+A 00040842 FlR!<B
+A 00040864 I:!A9
+A 000408a2 FlR!<B
+A 000408eb ub8c@
+A 0004096f @hcjz
+A 000409af @~dV=x
+A 00040b57 ?JIE]0\
+A 00040bcd /&A2/
+A 00040c21 atan2
+A 00041408 (0Q0^0f0l0
+A 00041425 1&1-1S1e1l1
+A 00041447 4(525
+A 00041457 6"626]6j6u6
+A 0004146d 849I9
+A 00041473 9(:/:
+A 0004147d ;(;5;>;N;U;\;w;~;
+A 000414a1 <%<d<j<o<u<
+A 000414bb >'>=>M>Z>
+A 000414d7 ?%?2?
+A 000414ed 0'0.070@0H0y0
+A 00041503 0-1>1E1R1Z1f1
+A 0004151b 2 282u2
+A 00041535 3V3n3x3
+A 0004154b 424I4v4~4
+A 00041561 4	5L5}5
+A 0004156d 6?6L6^6i6
+A 0004157b 6e7t7
+A 000415bb :):.:4:L:r:
+A 000415c9 ;";+;L;R;`;f;v;
+A 000415f5 </<7<I<
+A 00041617 ?#?1?@?
+A 00041629 0 0?0d0o0
+A 0004163b 1>2P2
+A 00041659 5`5o5
+A 00041663 5/666n6u6
+A 00041671 7$777>7
+A 0004169b : :T:X:\:`:d:h:l:p:t:x:|:
+A 000416cf >:>d><?Q?\?e?
+A 000416e8 $0*0/0
+A 000416f1 0L1x1
+A 000416fb 1N2T2
+A 0004170b 2P3]3
+A 00041737 4F5~5
+A 00041749 8094989<9@9D9H9L9P9T9X9\9
+A 00041767 =*>=>C>H>W>
+A 00041777 >%?O?
+A 00041795 0?0s0
+A 000417a5 1*1v1}1
+A 000417b7 1)2F2P2W2\2w2
+A 000417d7 2'3E3Q3W3d3i3t3
+A 000417ff 4C4L4d4k4
+A 0004180b 5;5H5L5P5T5X5\5`5d5h5l5p5x5|5
+A 00041845 6V7[7g7
+A 00041853 738;8\8m8
+A 00041861 8#989?9U9[9l9t9
+A 00041885 ;';;;z;
+A 00041899 ;(<6<?<V<`<u<
+A 000418b7 =:=G=|=
+A 000418d8 !0/050=0D0J0X0
+A 0004190f 2.3_3q3
+A 0004192f 4+5k5
+A 00041935 5 8/8\8
+A 00041959 :G;O;
+A 00041963 <<<F<Y<
+A 0004196f =H>S>Y>g>
+A 000419a5 1+2I2
+A 000419af 2Q3c3m3
+A 000419d1 4m5t5
+A 000419d9 6P6W6
+A 000419e9 7b7y7
+A 000419f9 9":):`:
+A 00041a11 =(><>C>`>d>h>l>
+A 00041a25 ?3?@?W?
+A 00041a39 0_0l0y0
+A 00041a47 1B2g2
+A 00041a51 2	3:3R3
+A 00041a59 3	4@4`4j4p4v4
+A 00041a77 4I5O5
+A 00041a89 717C7Q7X7
+A 00041aa3 9&9+919d9~9
+A 00041abc g1l1P2r2
+A 00041ad1 4C5H5
+A 00041ae5 6C8O8U8r8z8p9v9
+A 00041af7 9):^:h:t:
+A 00041b17 ===U=
+A 00041b23 =)>2>w>
+A 00041b3f ? ?)?/?7?F?P?
+A 00041b61 0S4u4}4
+A 00041b79 4I5V5_5n5t5z5
+A 00041b91 6"6'6,61666
+A 00041bb1 9.:p:v:
+A 00041bc3 <,<5<B<K<T<g<
+A 00041bd3 =*=b=n=
+A 00041be3 >%>9>
+A 00041bf1 ?"?'?6?A?H?P?^?t?x?
+A 00041c21 0%0,0P0[0
+A 00041c3b 2M2V2l2r2
+A 00041c51 3A3K3V3\3a3g3p3y3~3
+A 00041c73 414?4
+A 00041c93 7!7G7R7q7|7
+A 00041cab 8@8P8W8k8
+A 00041cb9 9E:O:
+A 00041cbf :0<Q<p<
+A 00041ce5 506`6i6r6
+A 00041cf9 717{7
+A 00041d33 :	;2;9;S;
+A 00041d51 >D>H>L>P>T>
+A 00041d75 0#1)1
+A 00041d83 2J2h2
+A 00041d97 3+4C4J4k4
+A 00041da3 44585<5
+A 00041daf 5$6W6c6
+A 00041dcf 9*919;9t9
+A 00041deb <?<]<,=8=n=v=
+A 00041e0b ?%?-?9?F?R?
+A 00041e29 0*272
+A 00041e4d 8 9B9J9_9g9
+A 00041e5f ;+;>;Q;`;
+A 00041e6b ;$=*=
+A 00041e93 1"1=1j1~1
+A 00041ea3 2.3z4
+A 00041edf 151;1B1N1
+A 00041efd 2*3S3k3
+A 00041f0b 4n4z4
+A 00041f27 5*555I5Y5d5
+A 00041f45 8b9j9}9
+A 00041f5b :#:):/:u:~:
+A 00041f73 ;G;N;U;`;f;k;u;
+A 00041f93 <1<E<b<
+A 00041fa9 =`>y>
+A 00041fb3 ?%?:?
+A 00041fc9 0+0:0
+A 00041fd3 1*11191\1}1
+A 00041fe1 1:2I2S2c2s2
+A 00042003 5o6~6
+A 0004200d 7B7j7q7
+A 00042019 8(8b8
+A 0004203f :";I;S;];j;
+A 00042051 <0<><E<p<G=r=
+A 00042071 ?%?|?
+A 000420c3 ;b;o;
+A 000420eb 0_1v1
+A 000420f3 2_2|2
+A 000420fb 263a3u3
+A 00042107 3T4g4
+A 00042115 515B5
+A 0004212d 7!767J7d7
+A 00042143 8;9C9
+A 0004214d :&:0:6:u:
+A 0004215b ;H;X;
+A 00042165 ;	<?<c<
+A 0004217f =a>t>
+A 0004218d ?!?4?G?U?
+A 000421b3 0(0D0
+A 000421bd 1&141
+A 000421d5 3]3b3q3
+A 00042209 :8:N:l:
+A 00042215 =9=C=
+A 0004221f =	>i>
+A 00042230 H1Q1r1
+A 00042239 344B4a4
+A 00042249 5/5<5
+A 0004225d =~>\?
+A 00042285 4_6d6
+A 00042297 9%9m9
+A 0004229f 9%:y:
+A 000422bf >7>?>E>K>O>Y>
+A 000422df 0'1/151;1?1J1
+A 000422f1 4'494_4r4{4
+A 00042305 5.5o5}5
+A 00042315 6=6M6Y6`6s6
+A 00042347 7 7&7a7i7y7
+A 0004235d 7S8~8
+A 00042373 9"9=9K9U9e9
+A 0004237f :':9:);n;x;
+A 0004239d <"<.<4<<<E<L<R<`<t<|<
+A 000423c5 ?G?L?T?o?}?
+A 000423dc O0X0j0I1
+A 000423f3 2#2)222:2B2N2T2\2e2l2r2
+A 0004241f 5#5B5H5S5Y5r5y5
+A 00042437 5A6b6p6
+A 00042441 8&8O8e8q8w8}8
+A 00042457 9)9d9
+A 0004245f 95:k:
+A 00042471 <p<B=S=l=q=~=
+A 00042485 >#>->4><>B>I>N>_>~>
+A 000424bd 0p1v1
+A 000424c9 3\3a3
+A 000424d9 4K4T4d4m4}4
+A 000424e9 595?5
+A 000424ef 576E6[6k6
+A 00042507 8N8_8r8
+A 0004252b ?"?+?m?
+A 00042549 0#0,0i0v0
+A 0004255d 162M2
+A 00042569 2c3m3
+A 0004259f 7+7O7X7k7
+A 000425bb 8%828E8M8W8o8u8
+A 000425e5 9$9,969Y9^9i9p9
+A 0004260b :':-:3:<:P:f:
+A 0004262b :!;7;K;S;Y;_;h;
+A 0004264d <"<T<
+A 00042659 <$=a=p=
+A 0004267d 4 4*404;4A4u4
+A 0004268d 50565]5d5
+A 000426a7 7)7I7W7v7
+A 000426b7 8&8R8`8
+A 000426c5 8B9a9n9
+A 000426df <t<z<
+A 000426e7 < =A=L=p=
+A 000426f1 =9>X>
+A 000426f9 >e?t?
+A 0004270b 000=0Z0g0
+A 00042723 141D1d1t1
+A 00042735 2%2Q2
+A 00042743 5A5M5t5z5
+A 00042759 5%6c6
+A 0004276d 7;7I7
+A 00042775 7-8]8}8
+A 0004278b :%:;:A:F:L:U:
+A 0004279f ;";I;o;y;
+A 000427e3 1@1F1A2R2i2s2
+A 000427f3 2c3p3
+A 0004282d 9-:E:
+A 00042843 <6<@<
+A 0004284f <0=}=
+A 0004285b ><?T?
+A 00042875 0I1Y1
+A 0004287f 2!393
+A 00042889 3.4>4
+A 00042895 5b5v5
+A 000428b7 9%9/9
+A 000428c3 9 :q:
+A 000428cf ;0<H<
+A 000428d9 <==M=
+A 000428df >c>s>
+A 000428fd 0F1V1
+A 00042905 2A2F2
+A 00042915 3N3r3
+A 00042933 94;A;)<i<{=
+A 00042941 ?.?=?I?S?
+A 00042975 9K9S9Z9
+A 00042987 ;2;e;u;
+A 0004298f =f=u=
+A 0004299f ?#?j?x?
+A 000429bb 0T0[0i0
+A 000429cf 1!2'20262J2t2|2
+A 000429e1 2,4K4
+A 000429f7 5#6?6
+A 000429ff 7I7Z7a7k7
+A 00042a0f 8A8`8
+A 00042a25 ;/<9<^<x<Q>o>
+A 00042a45 0-0/2F2W2u2
+A 00042a5d 3,333D3
+A 00042a7b 5&535H5q5
+A 00042a8b 5K6U6h6
+A 00042aa9 :?:^:~:
+A 00042abb =H=O=
+A 00042ac9 >S?Z?
+A 00042ad8 b0h0m0
+A 00042aed 1-272K2r2
+A 00042b07 464W4
+A 00042b13 4)525W5x5
+A 00042b21 5;6i6
+A 00042b2f 7#7>7Q7`7k7
+A 00042b87 0&1s1
+A 00042b8f 1<2_2
+A 00042ba3 3$3-353A3N3Z3m3
+A 00042bbf 5;5r5
+A 00042be5 ;G;Q;d;	=3=E=d=
+A 00042c19 678<8
+A 00042c2d :4;;;
+A 00042c53 4?4F4
+A 00042c59 4 6E6z6
+A 00042c6f ;/<=<V<_<
+A 00042c81 =#>O>
+A 00042c8b ?.?5?
+A 00042ca0 M0Z0z0
+A 00042cb9 1	2(2
+A 00042cc5 3@3K3`3
+A 00042cd1 4?4h4
+A 00042ce1 4V5c5
+A 00042cef 797>7H7
+A 00042cfd 8(868S9P:
+A 00042d0d ;';0;9;k;s;
+A 00042d21 =\?x?
+A 00042d41 141<1C1O1y1
+A 00042d57 2!3,3c3h3r3
+A 00042d71 4>5N5Y5
+A 00042d7d 6%6_6p6
+A 00042dbb 4.4E4K4R4Z4`4g4u4
+A 00042dd3 5+5:5
+A 00042de1 7.7S7
+A 00042ded 8%8>8f8
+A 00042dfd 9):_:8;E;^;m;{;#<0<I<X<f<z<
+A 00042e25 <n=y=
+A 00042e4b 393Q3
+A 00042e51 6.757
+A 00042e57 8l9s9
+A 00042e63 ;+<X<
+A 00042e87 1I1"3
+A 00042e91 5(6@6n6M7
+A 00042ecf 3e4N5x5
+A 00042ed9 6J7T7
+A 00042eef ;F<L<
+A 00042f03 =#=W=
+A 00042f0d >%>7>t>z>
+A 00042f45 0 1H1N1S1Y1b1x1
+A 00042f59 2W2x2
+A 00042f5f 3@3F3K3T3Z3q3
+A 00042f71 4e4k4
+A 00042f85 5H5q5
+A 00042f8f 5-63686A6G6[6
+A 00042fa1 60767b7
+A 00042fb5 7%8N8
+A 00042ff1 ?:?@?E?K?T?j?
+A 0004300d 0K0l0
+A 0004301b 1$1;1q1w1
+A 00043029 1M2S2
+A 0004305d =)=@=M=V=
+A 00043071 0L3j3
+A 0004307b 4.595M5
+A 00043089 909M9
+A 00043099 :U:_:q:
+A 000430a9 ;%;r;
+A 000430bb ;+<2<9<P<w<~<
+A 000430d5 = =G=R=_=
+A 000430e9 >+>T>
+A 00043109 1%101K1]1z1
+A 0004311d 2m2}2
+A 0004312d 3_3g3v3~3
+A 0004313b ;X<s<
+A 00043141 <e=o=
+A 0004314b ?+?p?
+A 00043158  0*0X0	1$1^1v1
+A 0004316d 4<6s6
+A 00043183 =t?{?
+A 00043195 0Q1X1
+A 0004319b 2<3G3Q3
+A 000431a3 4;4Q4X4r4}4
+A 000431c1 646?6F6s6z6
+A 000431d3 7$7*7P7f7m7
+A 000431eb 8,828
+A 000431fd 9+9;9F9M9z9
+A 0004320f 9Y:f:
+A 00043215 <+<1<
+A 00043239 1E2M2
+A 00043243 354i4
+A 0004325b 8#888e8
+A 00043281 <L<]<e<
+A 00043295 = =1=9=K=
+A 000432bd 003u3$51565L5u5
+A 000432d9 6)666;6Q6
+A 000432f9 ;X<\<`<d<h<l<p<t<
+A 0004331f =\=`=d=h=l=p=t=x=|=
+A 0004334f =@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00043387 >@?D?H?L?P?T?X?\?`?d?
+A 000433d3 0$0(0,0004080
+A 00043417 1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 0004345d 2l2p2t2x2|2
+A 0004348f 3 3$3(3@3D3H3L3p3t3x3|3
+A 000434c9 4 4$4(4,4044484<4@4D4`4d4h4l4p4
+A 00043509 4 5$5(5,5054585<5@5
+A 0004353f 6P6T6X6\6`6d6
+A 00043577 7 7$7(7,7074787<7@7
+A 000435af 8p8t8x8|8
+A 000435d9 84989<9@9D9H9L9P9T9X9\9`9
+A 0004362f : :$:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00043669 3,303<3@3`3d3h3l3p3t3x3
+A 000436cf 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0004373d ; ;\>`>
+A 0004375b 8D9H9d9h9
+A 00043767 :T=X=
+A 00043783 0,000D0H0P0h0l0
+A 000437ad 1$181D1X1d1x1
+A 000437e7 0l1x1|1
+A 000437fc p5x5 9$9094989<9@9D9T9h9l9p9t9
+A 00043829 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>
+A 0004385f 3(3@3X3x3
+A 00043887 4$4,404
+A 00043897 4@5H5P5X5`5h5p5x5
+A 000438cf 6 6(60686@6H6P6X6`6h6p6x6
+A 0004390f 7 7(70787@7H7P7X7`7h7p7x7
+A 00043947 7$8,8P8X8|8
+A 0004395f 9,949X9`9
+A 00043977 :4:<:`:h:
+A 0004398f ;<;D;h;p;
+A 000439a5 < <D<L<p<x<
+A 000439df = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 00043a63 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00043a9f 4p6t6x6|6
+A 00043abf 6>7B7F7J7N7R7V7Z7^7b7f7j7n7r7v7z7~7
+A 00043b31 8"8&8*8.82868:80>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>
+A 00043b7f ?$?,?4?<?D?L?T?\?d?l?t?|?
+A 00043c0c msvcrt.dbg
+A 00043c17 \bbt\msvcrt.dll
+U 0000c801 jjjj
+U 00019ae8 jjjj
+U 00019b41 jjjj
+U 0001b578 jjjj
+U 0002440b jjjj
+U 0002e751 $jjjj
+U 0002e789 $jjj
+U 0002e7c1 $jjjj
+U 0003597e *&+-
+U 000361f0 (null)
+U 00036a80 .com
+U 00036a8c .bat
+U 00036a98 .cmd
+U 00036aa4 .exe
+U 00036b88 PATH
+U 00036b94 cmd.exe
+U 00036ba4 command.com
+U 00036bc4 COMSPEC
+U 00036f5e PTMP
+U 00038c0a  !"#$%&'()*+,-./123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+U 00038d08  ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+U 0003e9aa          (((((                  H
+U 0003fe20     
+U 0003fe31 ;T^h<U_i=V`j>Wak?Xbl@YcmAZdnB[eoC\fpD]gq
+U 00041066 VS_VERSION_INFO
+U 000410c2 StringFileInfo
+U 000410e6 040904B0
+U 000410fe CompanyName
+U 00041118 Microsoft Corporation
+U 0004114a FileDescription
+U 0004116c Microsoft (R) C Runtime Library
+U 000411b2 FileVersion
+U 000411cc 5.00.7303
+U 000411e6 InternalName
+U 00041200 MSVCRT.DLL
+U 0004121e LegalCopyright
+U 0004123c Copyright (C) Microsoft Corp. 1981-1997
+U 00041292 OriginalFilename
+U 000412b4 MSVCRT.DLL
+U 000412d2 ProductName
+U 000412ec Microsoft (R) Visual C++
+U 00041326 ProductVersion
+U 00041344 5.00.7303
+U 0004135e VarFileInfo
+U 0004137e Translation

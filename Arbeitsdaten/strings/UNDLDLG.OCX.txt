@@ -1,0 +1,249 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b0 .text
+A 000001d7 `.rdata
+A 000001ff @.data
+A 00000228 .rsrc
+A 0000024f @.reloc
+A 000008ee R _^[
+A 00000ba1 Rx_^][Y
+A 00000f4f Sx_^][
+A 0000177d R(_^[
+A 00001b69 PQjPV
+A 00001f66 Nhh<b
+A 00001f73 Nhh?b
+A 000024f6 QRPh@s
+A 000025b3 N@Rh@s
+A 00002b88 W QPh
+A 000046d0 u"WVS
+A 00005c80 UNDLDLG.UndlDlgCtrl.1
+A 00006038 UNDLDLG.UndlDlgPropPage.1
+A 00006d2a ??0ComboItemBox@@QAE@XZ
+A 00006d44 ??1ComboItemBox@@UAE@XZ
+A 00006d5e ?SetCurrentSelection@ComboItemBox@@QAE_NJ@Z
+A 00006d8c ?UNDEFINED@ComboItemBox@@2JB
+A 00006dac ?SetValue@SpinEditUtilities@@YAXPAVCWnd@@JM@Z
+A 00006ddc ?SetEnabled@SpinEditUtilities@@YAXPAVCWnd@@JH@Z
+A 00006e0e ?Enable@ComboItemBox@@QAEXH@Z
+A 00006e2e ?GetCurrentSelection@ComboItemBox@@QBEHAAJ@Z
+A 00006e5e ?FindStringWithData@ComboItemBox@@QBE_NJ@Z
+A 00006e8c ?AddStringWithData@ComboItemBox@@QAE_NABVString@@J@Z
+A 00006ec4 ?DeleteStringWithData@ComboItemBox@@QAE_NJ@Z
+A 00006ef4 ?GetValue@SpinEditUtilities@@YAMPAVCWnd@@J@Z
+A 00006f24 ??1BitmapButton@@UAE@XZ
+A 00006f3e ?DrawItem@BitmapButton@@MAEXPAUtagDRAWITEMSTRUCT@@@Z
+A 00006f76 ?GetMessageMap@BitmapButton@@MBEPBUAFX_MSGMAP@@XZ
+A 00006faa ??0BitmapButton@@QAE@XZ
+A 00006fc4 ?GetEnabled@SpinEditUtilities@@YAHPAVCWnd@@J@Z
+A 00006ff6 ?LoadBitmapA@BitmapButton@@QAE_NPBD@Z
+A 0000701e ?SubclassDlgItem@BitmapButton@@QAEHIPAVCWnd@@@Z
+A 0000704e controls.dll
+A 0000705e ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 0000708a ?GetDescriptorResString@@YA_NIAAVString@@@Z
+A 000070b8 ?GetResourcesHInstance@@YAPAUHINSTANCE__@@XZ
+A 000070e6 resource.dll
+A 000070f4 MFC42.DLL
+A 00007100 __CxxFrameHandler
+A 00007114 _purecall
+A 00007120 _EH_prolog
+A 0000712c MSVCRT.dll
+A 0000713a _except_handler3
+A 0000714e ?terminate@@YAXXZ
+A 00007162 __dllonexit
+A 00007170 _onexit
+A 00007182 _initterm
+A 0000718e malloc
+A 00007198 _adjust_fdiv
+A 000071a8 ??1type_info@@UAE@XZ
+A 000071c0 LocalFree
+A 000071cc LocalAlloc
+A 000071d8 KERNEL32.dll
+A 000071e8 MapDialogRect
+A 000071f8 SendMessageA
+A 00007208 IsWindowVisible
+A 0000721a EnableWindow
+A 0000722a IsWindow
+A 00007236 GetDialogBaseUnits
+A 0000724c GetClientRect
+A 0000725c PostMessageA
+A 0000726c GetAsyncKeyState
+A 0000727e USER32.dll
+A 0000728a OLEAUT32.dll
+A 00007298 MSVCIRT.dll
+A 00007300 UNDLDLG.OCX
+A 0000730c DllCanUnloadNow
+A 0000731c DllGetClassObject
+A 0000732e DllRegisterServer
+A 00007340 DllUnregisterServer
+A 00007440 NeedUnderlayString
+A 00007458 IsUnderlayEnabled
+A 00007470 UnderlayChanged
+A 00007480 AboutBox
+A 0000748c Enabled
+A 0000749c StitchAngleEnabled
+A 000074b0 VaryStitchLength
+A 000074c4 BackstitchType
+A 000074d4 ChordGap
+A 000074e0 StitchAngle
+A 000074ec StitchSpacing
+A 000074fc MaxStitchLength
+A 0000750c MinStitchLength
+A 0000751c StitchLength
+A 00007530 AddUnderlayString
+A 00007548 IsAllowedType
+A 00007558 Clear
+A 00007560 EmbroideryInputType
+A 00007574 EnableCheckbox
+A 00007584 UnderlayStatus
+A 00007594 UnderlayMargin3
+A 000075a4 UnderlayMargin2
+A 000075b4 UnderlayMargin1
+A 000075c4 TitleText
+A 000075d0 ShowCheckbox
+A 000075e0 UnderlayType
+A 000075f0 UnderlayDlgCtrl
+A 00007600 UnderlayDlgPropPage
+A 00007620 .?AVCNoTrackObject@@
+A 00007640 .?AVAFX_MODULE_STATE@@
+A 00007660 .?AV_AFX_DLL_MODULE_STATE@@
+A 00007688 .?AVtype_info@@
+A 000083a0 wwwwwwwwwwwwwwww
+A 00008408 pwwwwwwpp
+A 00008418 wwwwwwww
+A 0000888a stdole2.tlbWWW`
+A 000088a6 olepro32.dllWW
+A 00008ac0 UNDLDLGLibWW
+A 00008ad7 S_DUndlDlgWWW
+A 00008aef \UnderlayType
+A 00008b06 t.ShowCheckbox
+A 00008b1e H(TitleTextWWW
+A 00008b38 UnderlayMargin1W
+A 00008b54 UnderlayMargin2W
+A 00008b70 UnderlayMargin3W
+A 00008b9c EnabledW
+A 00008bb0 UnderlayStatusWW
+A 00008bcb 9EnableCheckboxWW
+A 00008be6 H)EmbroideryInputTypeW
+A 00008c08 StitchLength
+A 00008c20 MinStitchLengthW
+A 00008c3c MaxStitchLengthW
+A 00008c58 StitchSpacingWWW
+A 00008c74 StitchAngleW
+A 00008c8c ChordGap
+A 00008c9f #BackstitchTypeWW
+A 00008cbc ClearWWW
+A 00008ccf ZVaryStitchLength
+A 00008ceb eIsAllowedTypeWWW
+A 00008d08 StitchAngleEnabledWW
+A 00008d27 fAddUnderlayStringWWW
+A 00008d47 +newStringWWW
+A 00008d60 AboutBoxd
+A 00008d71 8Sh_DUndlDlgEventsWd
+A 00008d8f dUnderlayChangedW
+A 00008daa n~newUnderlayTypeWd
+A 00008dc6 |HIsUnderlayEnabledWWW
+A 00008de7 :newStated
+A 00008dfc NeedUnderlayStringWW
+A 00008e1c UndlDlgW
+A 00008e26 UndlDlg.hlpWWW
+A 00008e36 UndlDlg ActiveX Control module&
+A 00008e56 Dispatch interface for UndlDlg Control#
+A 00008e7e Event interface for UndlDlg ControlWWW
+A 00008ea6 UndlDlg ControlWWW
+A 0000980b 0#0Y0
+A 0000981b 1C274=4L4^4o4~4
+A 00009837 6F6x6
+A 00009847 7>8Y8
+A 00009853 9!9?9c9
+A 00009863 :	;z;
+A 0000986d < <$<(<,<
+A 00009877 <:=e=
+A 00009883 >3>\>
+A 000098a9 2	2+2
+A 000098b9 3.3@3r3
+A 000098c3 4!4@4a4r4
+A 000098d3 5 5A5z5
+A 000098dd 686P6W6t6}6
+A 000098f9 7.8Q8a8h8~8
+A 00009913 :0:Q:b:
+A 0000991d ;$;T;
+A 0000992d <1=A=I=[=
+A 0000993d >">@>a>r>
+A 0000994d ?!?1?A?Q?a?
+A 00009989 0"0P0
+A 000099bd 2C3_3
+A 000099d5 5#6(7/777R7s7
+A 000099ed 7I8q8
+A 000099f5 839_9
+A 00009a2f 4!515A5Q5q5x5}5
+A 00009a57 6b7h7n7t7z7
+A 00009a97 8"8(8.848:8@8F8L8R8X8^8d8j8p8v8|8
+A 00009aed 9$9*90969<9B9H9N9T9Z9`9f9l9r9x9~9
+A 00009b41 : :&:,:2:8:>:D:J:P:V:\:b:h:n:t:z:
+A 00009b97 ;";(;.;4;:;@;F;L;R;X;^;d;j;p;v;|;
+A 00009bed <$<*<0<6<<<B<H<N<T<Z<`<f<l<r<x<~<
+A 00009c2f =)=5=?=K=
+A 00009c4b ?.?B?V?[?
+A 00009c63 021@1M1R1
+A 00009c87 2%232<2c2
+A 00009c93 2"3(3.343:3@3R3X3^3d3j3p3v3|3
+A 00009cc1 384>4Y4
+A 00009cd1 4	5)5`5
+A 00009cdd 5	6;6Y6y6
+A 00009ced 6!797Y7{7
+A 00009d0f 5,5D5x5|5
+A 00009d67 6 6$6(6,6064686<6@6D6H6L6X6\6t6
+A 00009dc7 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00009e47 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8x8|8
+A 00009e93 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9h9l9p9t9x9|9
+A 00009f11 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00009f87 ;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00009ff9 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 0000a049 = =0=4=@=P=T=`=p=t=
+A 0000a079 > >0>4>@>P>`>h>p>
+A 0000a0af ? ?(?0?4?@?H?P?T?`?h?p?t?
+A 0000a0ef 0H0L0X0\0h0l0
+A 0000a123 1 1$1(1,1014181<1@1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 0000a1a1 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0000a221 3 3$3(3,3034383<3X3\3`3d3h3l3p3t3x3|3
+A 0000a28d 4h4l4p4t4x4|4
+A 0000a2e7 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 0000a34d 6 686P6h6l6p6
+A 0000a36f 747<7H7d7l7t7
+A 0000a38b 8 8<8D8P8X8l8t8
+A 0000a3ab 949@9\9d9l9x9
+A 0000a3c7 :4:@:\:h:
+A 0000a3e1 ;,;8;T;\;h;
+A 0000a409 282X2
+U 00007a6a TYPELIB
+U 00007b76 About UndlDlg Control
+U 00007ba4 MS Sans Serif
+U 00007bf2 UndlDlg Control, Version 1.0
+U 00007c46 Copyright (C) 2001, Wilcom Pty Ltd
+U 00007cca MS Sans Serif
+U 00007cee VS_VERSION_INFO
+U 00007d4a StringFileInfo
+U 00007d6e 040904B0
+U 00007d86 CompanyName
+U 00007da0 Wilcom Pty Ltd
+U 00007dc6 FileDescription
+U 00007de8 UndlDlg ActiveX Control Module
+U 00007e2e FileVersion
+U 00007e48 1, 0, 0, 1
+U 00007e66 InternalName
+U 00007e80 UndlDlg
+U 00007e96 LegalCopyright
+U 00007eb4 Copyright (C) 2001
+U 00007ee2 LegalTrademarks
+U 00007f0a OriginalFilename
+U 00007f2c UndlDlg.OCX
+U 00007f4a ProductName
+U 00007f64 UndlDlg ActiveX Control Module
+U 00007faa ProductVersion
+U 00007fc8 1, 0, 0, 1
+U 00007fe6 OLESelfRegister
+U 0000800e VarFileInfo
+U 0000802e Translation
+U 0000954c UndlDlg Control
+U 0000956c UndlDlg Property Page
+U 00009598 Underlay Dialog Control
+U 000095c8 Wilcom Underlay Dialog Control

@@ -1,0 +1,453 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001c0 .text
+A 000001e7 `.rdata
+A 0000020f @.data
+A 00000238 .rsrc
+A 0000025f @.reloc
+A 0000041b SUVWh
+A 00000547 L$$PW
+A 000005d0 D$HRP
+A 000006e8 L$$PV
+A 00000739 L$$VW
+A 000016ae D$ H"
+A 000016bf L$@_^d
+A 00001862 L$,PPj
+A 000019a7 D$ P"
+A 000019de D$ L"
+A 000019fe D$(H"
+A 00001a13 L$L^d
+A 00001c61 _^][Y
+A 00001c82 _^][Y
+A 00001d07 u"SSj
+A 000020cb \$tPjd
+A 00002265 L$l[d
+A 00002482 L$P_^]d
+A 000024df D$`SU3
+A 000027d8 L$T_^]d
+A 0000288a \$lUVWS
+A 00002aad L$xQW
+A 00002b56 L$h_^]d
+A 00002b8c SUVWh
+A 00002ba9 \$ 9X
+A 00002c27 L$(u@
+A 00002fef L$T_^]d
+A 00003152 D$$SPS
+A 000031d9 D$tSUV3
+A 0000342c L$p_^]d
+A 00003459 D$tSUV3
+A 000036a8 L$p_^]d
+A 000037f3 tuh`a
+A 00003ae7 tuh`a
+A 00003e87 HSUVW3
+A 00003e8f L$ WWWW
+A 00003ea0 |$`Ph
+A 00003f47 T$ WR
+A 00003f59 D$ WPh
+A 000040e1 L$X_^]d
+A 0000420f D$$SP
+A 00004368 SUVWhKJ
+A 000043c9 9l$<t2
+A 00004413 L$,_^]
+A 0000449d T$ URh
+A 000044c1 tf9.tF
+A 00004577 XSUVW
+A 00004729 D$4SPj
+A 00004775 L$h_^]2
+A 000047a9 L$HSUV
+A 000047cd L$$hda
+A 00004843 T$ RP
+A 000048d4 L$H_^]d
+A 00004909 D$,VWP
+A 000050fb WVUSh
+A 0000523f T$4Rh
+A 00005289 []^_d
+A 000052e5 WVUSh
+A 0000545d []^_d
+A 000055ef T$<H#
+A 0000562f D$4UP
+A 0000563e L$(Qh
+A 000057b9 L$XQR
+A 000057cc D$tPQ
+A 000057df T$<RP
+A 00005801 D$ Ph
+A 00005a70 D$ H"
+A 00005b7f D$ H"
+A 00005fe7 L$(PQ
+A 0000602a T$8RP
+A 0000618a WWPha"
+A 000061d3 WWha"
+A 000062b9 uTVPPPhl
+A 00006379 uEPPPhl
+A 0000641d \$`P3
+A 00006497 L$X_^
+A 000065bb L$<^d
+A 00006a8d L$$_2
+A 00006c09 L$$^2
+A 00006eeb L$@[]_
+A 00006f27 <SUVW
+A 000070af L$L_^]d
+A 000072cb _^][Y
+A 000072ed _^][Y
+A 00007357 TShKJ
+A 000073a5 D$,V;
+A 0000746b l$<VW
+A 000074ab t$D9s
+A 00007518 L$0_^]
+A 00007549 D$0SUV
+A 000075f1 L$,_^]d
+A 00007c40 _^][Y
+A 00007e83 _^][Y
+A 000088ca tTHt1Hu`
+A 00008f20 QSUVW
+A 00008f8b _^][Y
+A 00008f95 _^][Y
+A 000090f0 _^][Y
+A 00009100 _^][Y
+A 0000972e L$$^3
+A 00009937 DSUVW3
+A 00009976 T$$hXb
+A 00009997 D$$hPb
+A 000099b6 L$$hLb
+A 000099d5 T$$hHb
+A 00009b2d L$ Qj
+A 00009b4b L$T_^]d
+A 00009c48 L$(_d
+A 00009cfe SSShJ
+A 0000a188 D$@S3
+A 0000a1c8 \$,j8hdb
+A 0000a483 W(9W$u
+A 0000a670 t]9H tX9H$tS
+A 0000ae65 U0SQR
+A 0000b1b9 _^][Y
+A 0000b1cf _^][Y
+A 0000b1e6 l$ VW
+A 0000b276 D$(8D
+A 0000b47c Fdf+F\
+A 0000b76f _^][Y
+A 0000b783 _^][Y
+A 0000b88d ~(9~$u
+A 0000c380 |$ WUSV
+A 0000c4bd @APQV
+A 0000c70c T$ RV
+A 0000c804 D$$SUV
+A 0000c9af D$0tc
+A 0000cc11 _^][Y
+A 0000dcaa D$8RP
+A 0000dcca T$4PQR
+A 0000ddcf L$HPQS
+A 0000e1f5 T$DQR
+A 0000e2be L$DRPS
+A 0000e354 L$LQP
+A 0000e4bc T$LRQS
+A 0000e5d1 T$LRP
+A 0000e610 L$LQP
+A 0000e719 T$HPRS
+A 0000e748 K4PVS
+A 0000e945 \$ UV
+A 0000ea90 L$,A;
+A 0000eb69 L$,A;
+A 0000ebef L$,A;
+A 0000ecab L$,A;
+A 0000ed5a T$0RSV
+A 0000edd3 AH;N,
+A 0000ee3e T$0RSV
+A 0000eee9 T$0RSV
+A 0000ef82 T$0RSV
+A 0000efc1 T$0RSV
+A 0000eff6 V4PSV
+A 0000f151 L$ RUPj
+A 0000f183 ]^_[Y
+A 0000f1ad ]^_[Y
+A 0000f232 9t$Du
+A 0000f24b *_^][
+A 0000f26d 9(u	A
+A 0000f2c0 D+3x%A
+A 0000f563 ;D$<s
+A 0000f581 ;D$<r
+A 0000f5c3 T$$O#
+A 0000f670 QSUVW
+A 0000f69d _^][Y
+A 0000f6bb T$,PQh
+A 0000f709 D$0Qh
+A 0000f749 _^][Y
+A 0000f768 _^][Y
+A 0000f78c _^][Y
+A 0000f7b0 _^][Y
+A 0000f7cf _^][Y
+A 0000f7f3 _^][Y
+A 0000f888 K<UWQ
+A 0000f914 K<UVQ
+A 0000f978 L$(SU
+A 000101b0 u"WVS
+A 000114b8  deflate 1.1.3 Copyright 1995-1998 Jean-loup Gailly 
+A 00011bd8 								
+A 00012000  inflate 1.1.3 Copyright 1995-1998 Mark Adler 
+A 000139da ?Free@CMemFile4@@MAEXPAE@Z
+A 000139f8 ?Realloc@CMemFile4@@MAEPAEPAEK@Z
+A 00013a1c ?Alloc@CMemFile4@@MAEPAEK@Z
+A 00013a3a ??1InStreamBuf@@QAE@XZ
+A 00013a54 ?Read@InStreamBuf@@QAEIPAXI@Z
+A 00013a74 ?Init@InStreamBuf@@QAEXAAVStream@@KI@Z
+A 00013a9e ??0StreamBuffer@@QAE@XZ
+A 00013ab8 ??0ESDArchiveStream@@QAE@AAVESDArchive@@@Z
+A 00013ae6 ??0ESDArchive@@QAE@PAVCFile@@IHPAX@Z
+A 00013b0e ??1OutStreamBuf@@QAE@XZ
+A 00013b28 ?Write@OutStreamBuf@@QAEXPBXI@Z
+A 00013b4a ?Init@OutStreamBuf@@QAEXAAVStream@@I@Z
+A 00013b74 ?FileExists@DOSDiskTools@@SA_NABVString@@@Z
+A 00013ba2 ??8WTime@@QAEHABV0@@Z
+A 00013bba ?FileTimeModified@DOSDiskTools@@SAXABVString@@AAVWTime@@@Z
+A 00013bf8 ??0WTime@@QAE@XZ
+A 00013c0c ?GetDefaultsPathW@@YAPBGXZ
+A 00013c2a ??1FileParse@@QAE@XZ
+A 00013c42 ?MoveFileA@DOSDiskTools@@SA_NABVString@@0@Z
+A 00013c70 ?GetTempFileNameWithPathAndExtension@DOSDiskTools@@SA?AVString@@PBDABV2@1@Z
+A 00013cbe ?Complete@FileParse@@QBE?AVString@@PBV2@000@Z
+A 00013cee ?emptyString@FileParse@@0VString@@A
+A 00013d14 ?Extension@FileParse@@QBE?AVString@@XZ
+A 00013d3e ??0FileParse@@QAE@ABVString@@_N@Z
+A 00013d62 ?LoadDataItemFile@@YAKABVString@@PAVDataItem@@@Z
+A 00013d96 ?SaveDataItemFile@@YAKABVString@@PBVDataItem@@@Z
+A 00013dca ?GetPortList@@YA_NAAVDataItem@@@Z
+A 00013dee ?BuildUniqueId@@YA_NAAVDataItem@@H@Z
+A 00013e14 Wessys.dll
+A 00013e22 ?QueryInfo@ProductConfigurationManager@@SA_NAAVDataItem@@@Z
+A 00013e5e product.dll
+A 00013e6a SH33W32.dll
+A 00013e76 MFC42.DLL
+A 00013e82 __CxxFrameHandler
+A 00013e96 _CxxThrowException
+A 00013eac wcslen
+A 00013eb6 strstr
+A 00013ec0 sprintf
+A 00013eca wcscpy
+A 00013ed4 wcscat
+A 00013ede memmove
+A 00013ee8 strcmp
+A 00013ef2 _stricmp
+A 00013efe ?_query_new_handler@@YAP6AHI@ZXZ
+A 00013f22 ?_query_new_mode@@YAHXZ
+A 00013f3c _ftol
+A 00013f44 _mbscmp
+A 00013f4c MSVCRT.dll
+A 00013f5a __dllonexit
+A 00013f68 _onexit
+A 00013f72 ??1type_info@@UAE@XZ
+A 00013f8a _except_handler3
+A 00013f9e ?terminate@@YAXXZ
+A 00013fb2 _initterm
+A 00013fbe _adjust_fdiv
+A 00013fce GetLastError
+A 00013fde CreateMutexA
+A 00013fee WaitForSingleObject
+A 00014004 CloseHandle
+A 00014012 ReleaseMutex
+A 00014022 WideCharToMultiByte
+A 00014038 MultiByteToWideChar
+A 0001404c KERNEL32.dll
+A 0001405c MessageBoxA
+A 00014068 USER32.dll
+A 00014074 MSVCIRT.dll
+A 000141de defmgr.dll
+A 000141e9 ?AddMachineUnit@MMGDefaults@@SA_NABVMachineUnitInfo@@@Z
+A 00014221 ?AddUniqueId@MMGDefaults@@SA_NABVMachineUnitInfo@@@Z
+A 00014256 ?BuildFormatNameList@FormatManager@@SAXAAVDataItem@@@Z
+A 0001428d ?BuildFormatNameListByEncScheme@FormatManager@@SAXAAVDataItem@@H@Z
+A 000142d0 ?BuildFormatNameListByMachineType@FormatManager@@SAXAAVDataItem@@H@Z
+A 00014315 ?FormatsAreEqual@FormatManager@@SA_NABVDataItem@@0@Z
+A 0001434a ?GetCompleteDocument@MMGDefaults@@SA_NAAVDataItem@@@Z
+A 00014380 ?GetDefaultData@MMGDefaults@@SA_NHAAVDataItem@@@Z
+A 000143b2 ?GetDesignTitle@FormatManager@@SA_NAAVDataItem@@@Z
+A 000143e5 ?GetFileName@MMGDefaults@@SAABVWideString@@XZ
+A 00014413 ?GetFormatDescriptor@FormatManager@@SAABVDataItem@@PBVDesignDocument@@@Z
+A 0001445c ?GetFormatStatus@FormatManager@@SAHABVDataItem@@@Z
+A 0001448f ?GetFormatUniqueId@FormatManager@@SAABVDataItem@@PBVDesignDocument@@@Z
+A 000144d6 ?GetFormatUniqueSuffix@FormatManager@@SAXAAVDataItem@@@Z
+A 0001450f ?GetGlobalDefaultData@@YA_NIAAVDataItem@@@Z
+A 0001453b ?GetMachineFormatByUniqId@FormatManager@@SAPBVDataItem@@ABV2@@Z
+A 0001457b ?GetMachineUnitsUniqueIds@MMGDefaults@@SA_NAAVDataItem@@@Z
+A 000145b6 ?GetNextMachineUnitUniqueId@MMGDefaults@@SA_NAAVDataItem@@@Z
+A 000145f3 ?GetPreferredFormat@FormatManager@@SAXAAVDataItem@@@Z
+A 00014629 ?ModifyMachineUnit@MMGDefaults@@SA_NABVMachineUnitInfo@@@Z
+A 00014664 ?NoMoreTransactions@MMGDefaults@@CAXXZ
+A 0001468b ?NotifyDocumentClosed@FormatManager@@SAXPBVDesignDocument@@@Z
+A 000146c9 ?NotifyTitleChanged@FormatManager@@SAXPBVDesignDocument@@ABVString@@@Z
+A 00014710 ?NotifyUpdateFormat@FormatManager@@SAXPBVDesignDocument@@ABVString@@ABVDataItem@@_N@Z
+A 00014766 ?PutGlobalDefaultData@@YA_NIABVDataItem@@@Z
+A 00014792 ?RemoveDefaultFormatByUniqId@FormatManager@@SA_NABVDataItem@@@Z
+A 000147d2 ?RemoveMachineUnit@MMGDefaults@@SA_NABVMachineUnitId@@@Z
+A 0001480b ?SaveFormatAsDefault@FormatManager@@SAXABVDataItem@@@Z
+A 00014842 ?StoreCompleteDocument@MMGDefaults@@CA_NABVDataItem@@@Z
+A 0001487a ?ValidateSaveDefaultFormat@FormatManager@@SA_NABVDataItem@@AAV2@@Z
+A 000148bd ?mmgDefPathName@MMGDefaults@@0VWideString@@A
+A 00014a40 DEFAULT_FILE_MUTEX
+A 00014a60 .?AVWException@@
+A 00014a80 .?AVSimpleException@@
+A 00014aa0 .?AVxOSException@@
+A 00014ac0 .?AVxOSMutex@@
+A 00014ad0 xOSMutex
+A 00014adc Defaults file Missing
+A 00014af4 No Defaults Dir Specified
+A 00014b10 Default Manager
+A 00014b3c Can't write the Defaults file
+A 00014b68 MMG_DEFAULTS_MUTEX
+A 00014b90 Can't write the MMG Defaults file : winerr (%d)
+A 00014bc0 No MMG Defaults Dir Specified
+A 00014be0 MMG Defaults
+A 00014c50 Network
+A 00014c58 Ethernet
+A 00014c64 1.0.4
+A 00014c70 1.1.3
+A 00014c78 need dictionary
+A 00014c88 incorrect data check
+A 00014ca0 incorrect header check
+A 00014cb8 invalid window size
+A 00014ccc unknown compression method
+A 00014d10 incompatible version
+A 00014d28 buffer error
+A 00014d38 insufficient memory
+A 00014d4c data error
+A 00014d58 stream error
+A 00014d68 file error
+A 00014d74 stream end
+A 00014dc4 invalid bit length repeat
+A 00014de0 too many length or distance symbols
+A 00014e04 invalid stored block lengths
+A 00014e24 invalid block type
+A 00014e38 invalid distance code
+A 00014e50 invalid literal/length code
+A 00015f78 incomplete dynamic bit lengths tree
+A 00015f9c oversubscribed dynamic bit lengths tree
+A 00015fc4 incomplete literal/length tree
+A 00015fe4 oversubscribed literal/length tree
+A 00016008 empty distance tree with lengths
+A 0001602c incomplete distance tree
+A 00016048 oversubscribed distance tree
+A 000160b8 .?AVtype_info@@
+A 00016609 0/0W0
+A 00016637 8d8j8p8u8z8
+A 00016657 9'929?9r9
+A 00016665 9!:&:3:i:
+A 0001667d ;[;r;
+A 00016689 < <H<^<
+A 00016697 <)=N=d=
+A 000166a5 =7>S>m>
+A 000166b7 ?"?P?s?
+A 000166d0 E0L0a0q0
+A 000166e5 0&1:1@1J1O1Y1d1o1t1|1
+A 0001670f 2%2,292T2^2{2
+A 00016729 323_3u3
+A 00016747 4#4B4V4]4w4
+A 00016761 5#5+5H5[5q5x5
+A 0001677b 6>6U6
+A 0001679d :!:F:
+A 000167bf >v?{?
+A 000167d7 1K1-2
+A 000167e1 4R4y4
+A 00016817 >I?~?
+A 00016827 0l1q1
+A 0001684d ;O<q<U=
+A 00016857 =Z>S?
+A 00016868 >0*1i1
+A 00016877 3>4J4
+A 00016891 9A:b:q:
+A 000168ad ;1;A;Q;s;x;};
+A 000168cf <(<8<=<D<b<|<
+A 000168f5 235I5Z5`5x5
+A 0001690f 6!6A6S6j6s6
+A 00016929 7%7/7L7b7y7
+A 0001693d 868P8b8y8~8
+A 00016957 969A9H9X9o9x9
+A 00016975 :':E:X:l:t:
+A 00016989 <y>9?
+A 000169a3 1.3|3
+A 000169f1 6Y7)8s9
+A 00016a09 =#=)=E=d=j=
+A 00016a19 =<>@>D>H>	?,?C?t?
+A 00016a34 S031L3B5H5N5X6o6
+A 00016a45 6)7P7
+A 00016a5d <#=*=~=
+A 00016a79 >$>*>0>6>B>V>y>
+A 00016aa5 0&0.070R0]0
+A 00016ac3 1d2i2	3t3
+A 00016b17 =s>D?H?L?P?T?X?\?
+A 00016b35 090>081<1@1D1H1L1P1
+A 00016b4d 2#5q5z5
+A 00016b81 0.2F3
+A 00016b87 4@4z4
+A 00016b8d 5E7Q7`7o7
+A 00016bbb 899|9
+A 00016bdd 9P;`;j;A=O=e>s>
+A 00016c11 1O2^2
+A 00016c31 0!1W2l4p4t4x4|4
+A 00016c5b 8	;S;
+A 00016c87 3\3{3
+A 00016c95 4#4)4
+A 00016c9d 5+6`6
+A 00016caf 9$9*90969<9B9H9N9T9Z9`9f9l9r9x9~9
+A 00016cfd :":r:
+A 00016d05 :6;;;
+A 00016d0d ;k<v<|<
+A 00016d2f =C=h=
+A 00016d47 >r>w>
+A 00016d53 ?9?Y?y?
+A 00016d68 	0)0y0
+A 00016d75 191[1
+A 00016d97 5D5i5
+A 00016da3 6)6I6i6
+A 00016db1 6,7a7
+A 00016db9 798Y8
+A 00016dc1 8(9a9y9
+A 00016dd1 :9:Y:
+A 00016ddd :	;);I;l;
+A 00016ded ;	<)<Q<i<
+A 00016e2b 2 2$2(2,2024282<2@2D2H2L2P2X2\2`2d2h2p2t2x2|2
+A 00016e5f 3(343@3L3X3d3
+A 00016e74  0$000<0@0P0X0p0
+A 00016e9f 1,141<1D1L1T1\1d1
+A 00016ec1 202<2P2\2p2|2
+A 00016eeb 343@3\3h3
+A 00016f07 4 4<4H4d4l4t4|4
+A 00016f31 5$5,545<5D5L5T5`5|5
+A 00016f55 6(6<6H6d6l6x6
+A 00016f79 7(7D7L7T7\7d7l7x7
+A 00016fa3 8,888T8\8d8l8x8
+A 00016fcd 949<9D9L9T9\9d9p9
+A 00016ffd :$:,:4:<:D:P:l:t:
+A 0001701f ;$;,;4;<;D;P;l;t;
+A 00017041 <(<D<P<l<t<
+A 00017063 =$=,=4=<=H=d=l=t=|=
+A 00017091 >$>,>4><>D>L>T>\>h>
+A 000170c3 ?0?<?D?P?l?t?|?
+A 000170f7 0,080T0`0|0
+A 00017115 141@1\1h1
+A 00017131 242<2D2P2l2x2
+A 0001714d 343<3H3d3p3
+A 00017169 444<4D4L4T4`4|4
+A 0001718b 585L5
+A 000171a5 0 0$0(0X0x0
+A 000171b9 2 2$2(2,2024282<2@2D2l2
+U 00008022 jjjj
+U 00014b1e r\DEFAULTS.DFL
+U 00014b7c MMG.MMG
+U 00016266 VS_VERSION_INFO
+U 000162c2 StringFileInfo
+U 000162e6 040904B0
+U 000162fe CompanyName
+U 0001631e FileDescription
+U 00016340 DEFMGR DLL
+U 0001635e FileVersion
+U 00016378 1, 0, 0, 1
+U 00016396 InternalName
+U 000163b0 DEFMGR
+U 000163c6 LegalCopyright
+U 000163e4 Copyright © 1996
+U 0001640e LegalTrademarks
+U 00016436 OriginalFilename
+U 00016458 DEFMGR.DLL
+U 00016476 ProductName
+U 00016490 DEFMGR Dynamic Link Library
+U 000164ce ProductVersion
+U 000164ec 1, 0, 0, 1
+U 0001650a VarFileInfo
+U 0001652a Translation

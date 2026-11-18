@@ -1,0 +1,270 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 0000009f 9Rich
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .reloc
+A 00000744 <xu&8
+A 00000778 <yu)8
+A 00000b54 T$$QRW
+A 00000c40 T$,_^
+A 0000131c t$hW3
+A 0000135e \$dPjy
+A 00001430 L$\_^]d
+A 00001633 D$ QRP
+A 0000169f EN;w |_
+A 00001707 t	;w 
+A 00001728 D$$RP
+A 000017ef U _^][
+A 00001822 @ _^[
+A 0000184d D$$PS
+A 000019a4 L$ SQW
+A 000019d0 D$ SPS
+A 00001a04 D$8RP
+A 00001ae0 t-9~d}(
+A 00001aff ^d@MC
+A 00001e56 T$(QR
+A 00002282 |$,WPQh
+A 00002323 |$0PQWh
+A 000023fc D$$SV
+A 00002407 |$0PWQRh 
+A 0000242e <-t	3
+A 0000245a <-uD8N
+A 000024e8 T$$VQ
+A 000024ee L$(RQP
+A 0000255c t$ PQSh
+A 0000261d t$$UPWh
+A 000026e7 t$ WSUPQhh
+A 00002708 D$0<Dt
+A 00002718 D$,<Uu
+A 000027c7 |$4PWQRh
+A 00002818 <-t	3
+A 00002844 <-uQ8N
+A 000028c4 |$4WSUh
+A 00002902 <0+uj
+A 000029a8 T$$VQ
+A 000029ae L$(RQP
+A 00002a15 WSPQh0
+A 00002acc D$$SV
+A 00002adc D$(WQRPV
+A 00002afa <-t	3
+A 00002b26 <-u78N
+A 00002cdf \$Du?
+A 00002e15 L$<_^2
+A 00003829 D$0UU
+A 00003962 D$ RP
+A 000039e6 L$<_^]3
+A 00003c0b L$$RPQ
+A 00003d04 D$<SV
+A 00003df6 T$,QR
+A 0000414d ^@_^][
+A 0000432e T$(RQ
+A 0000439d L$(Rj!P
+A 000043dd L$$PQ
+A 00004459 L$$PQ
+A 0000457a L$$PQ
+A 00004b40 L$$PQW
+A 00004b5b L$$PQ
+A 00004bec |$;GP
+A 00004e65 L$\_d
+A 00005268 QQSVW
+A 00005681 D$$jx
+A 000056a0 t>h@b
+A 000056ee D$ PQ
+A 00005990 _^][Y
+A 0000618a tTHt1Hu`
+A 000067c0 u"WVS
+A 00007ea2 ?SetState@ComResource@@UAEXW4OwnerState@1@@Z
+A 00007ed2 ?GetAsDataItem@SerialPort@@UBE_NAAVDataItem@@@Z
+A 00007f04 ??1ComResource@@UAE@XZ
+A 00007f1e ??0ComResource@@IAE@XZ
+A 00007f38 ??0SerialPort@@QAE@ABVDataItem@@@Z
+A 00007f5e ?IncrementPriority@OSThreadManager@@SAXPAVThreadObj@@@Z
+A 00007f98 ?DecrementPriority@OSThreadManager@@SAXPAVThreadObj@@@Z
+A 00007fd2 ?WaitUntilSet@ThreadObj@@MBEXXZ
+A 00007ff4 ?WaitForSet@ThreadObj@@MBE_NJ@Z
+A 00008016 ??1ThreadObj@@UAE@XZ
+A 0000802e ??1B1SerialPortParameters@@QAE@XZ
+A 00008052 ??0B1SerialPortParameters@@QAE@AAVSerialPort@@KK@Z
+A 00008088 ??0ThreadObj@@QAE@XZ
+A 000080a0 ?WaitForTerminate@ThreadObj@@QBEKK@Z
+A 000080c8 ?ClosePort@B1SportMan@@QAEXPAVB1SerialPortParameters@@@Z
+A 00008104 ?b1sportMan@@3VB1SportMan@@A
+A 00008124 ?OpenPort@B1SportMan@@QAEKPAVB1SerialPortParameters@@PAVThreadObj@@HHH@Z
+A 00008170 ?CommsDevice@B1SerialPortParameters@@QBEPAXXZ
+A 000081a0 ?ReadCommBlock@B1SportMan@@QAEKPADIPAVB1SerialPortParameters@@H@Z
+A 000081e4 ??1FileParse@@QAE@XZ
+A 000081fc ?Complete@FileParse@@QBE?AVString@@PBV2@000@Z
+A 0000822c ?Name@FileParse@@QBE?AVString@@XZ
+A 00008250 ?Extension@FileParse@@QBE?AVString@@XZ
+A 0000827a ??0FileParse@@QAE@ABVString@@_N@Z
+A 0000829e ?GetResPathA@@YAPBDXZ
+A 000082b6 ?Button4@Sound@@SAXXZ
+A 000082ce ?Button3@Sound@@SAXXZ
+A 000082e6 ?Button2@Sound@@SAXXZ
+A 000082fe ?Button1@Sound@@SAXXZ
+A 00008314 Wessys.dll
+A 00008322 ?QueryInfo@ProductConfigurationManager@@SA_NAAVDataItem@@@Z
+A 0000835e product.dll
+A 0000836c ?GetGlobalDefaultData@@YA_NIAAVDataItem@@@Z
+A 00008398 defmgr.dll
+A 000083a6 ?Init@AffineTransform@@QAEXXZ
+A 000083c6 ?Scale@AffineTransform@@QAEXNN@Z
+A 000083ea ?Rotate@AffineTransform@@QAEXNN@Z
+A 0000840e ?ApplyTo@AffineTransform@@QBEXAAVRealPoint@@@Z
+A 00008440 ?Move@AffineTransform@@QAEXABVLongVect@@@Z
+A 0000846e ?Rotate@AffineTransform@@QAEXN@Z
+A 00008492 ?ApplyTo@AffineTransform@@QBEXAAVLongPoint@@@Z
+A 000084c2 geometry.dll
+A 000084d0 SH33W32.dll
+A 000084de ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 00008508 resource.dll
+A 00008516 MFC42.DLL
+A 00008522 toupper
+A 0000853c isdigit
+A 00008546 strchr
+A 00008550 _ftol
+A 00008558 _CxxThrowException
+A 0000856e __CxxFrameHandler
+A 00008582 sscanf
+A 0000858c _purecall
+A 000085a0 isspace
+A 000085aa vsprintf
+A 000085b6 memmove
+A 000085c0 _stricmp
+A 000085cc ?_query_new_handler@@YAP6AHI@ZXZ
+A 000085f0 ?_query_new_mode@@YAHXZ
+A 00008608 MSVCRT.dll
+A 00008616 __dllonexit
+A 00008624 _onexit
+A 0000862e ??1type_info@@UAE@XZ
+A 00008646 _initterm
+A 00008652 _adjust_fdiv
+A 00008662 _except_handler3
+A 00008676 ?terminate@@YAXXZ
+A 0000868a WaitForSingleObject
+A 000086a0 Sleep
+A 000086a8 SetEvent
+A 000086b4 CreateEventA
+A 000086c4 GetLastError
+A 000086d4 CloseHandle
+A 000086e2 ResetEvent
+A 000086f0 WaitCommEvent
+A 00008700 GetOverlappedResult
+A 00008716 SetCommMask
+A 00008722 KERNEL32.dll
+A 00008732 MessageBoxA
+A 00008740 PostMessageA
+A 00008750 GetAsyncKeyState
+A 00008764 keybd_event
+A 00008770 USER32.dll
+A 0000877e ??_Difstream@@QAEXXZ
+A 00008796 ??1ios@@UAE@XZ
+A 000087a8 ??1ifstream@@UAE@XZ
+A 000087be ?close@ifstream@@QAEXXZ
+A 000087d8 ??0ifstream@@QAE@PBDHH@Z
+A 000087f4 ?openprot@filebuf@@2HB
+A 0000880e _mtunlock
+A 0000881a ?get@istream@@IAEAAV1@PADHH@Z
+A 0000883a _mtlock
+A 00008842 MSVCIRT.dll
+A 000088be DIGI.dll
+A 000088c7 ??0DigiEvtQ@@QAE@XZ
+A 000088db ??1DigiEvtQ@@QAE@XZ
+A 000088ef ?Get@DigiEvtQ@@QAE_NAAVDigiEvt@@@Z
+A 00008912 GetAbstractDigitiserInterface
+A 00008930 ?Put@DigiEvtQ@@QAEXABVDigiEvt@@@Z
+A 00008952 ?Serve@DigiEvtQ@@UAEXABVDigiEvt@@@Z
+A 00008976 ?SynchHandle@DigiEvtQ@@QAEPAXXZ
+A 00008a20 %ld,%ld,%hd,%c
+A 00008a30 %ld,%ld,%hd
+A 00008a3c %5ld,%5ld,%1d
+A 00008a4c %d,%d,%2d
+A 00008a58 %f,%f,%1d,%c
+A 00008a68 %1c%1c%5d%5d
+A 00008a78 %1d%4d %4d
+A 00008a84 @%1d%ld%ld
+A 00008a90 %4ld,%4ld,%1d
+A 00008aa0 %d,%d,%1d,%c
+A 00008ab0 @%1d,%4d,%4d
+A 00008ac0 @%4d,%4d,%1d
+A 00008ad0 @%ld,%ld,%hd
+A 00008ae0 @%hd,%ld,%ld
+A 00008af0 @%hd%ld%ld
+A 00008afc %1d%ld %ld
+A 00008b08 %f,%f,%d,%c
+A 00008b14 %ld,%ld,%2d
+A 00008b20 Digitiser Format String Error
+A 00008b40 No Y identifier. Format string does not contain 'Y'
+A 00008b78 No X identifier. Format string does not contain 'X'
+A 00008bb0 No Flag identifier. Format string does not contain 'F'
+A 00008be8 Too many signs.  Max of 2 'S' per fromat string
+A 00008c1c Unknown Syntax error
+A 00008c40 .?AVWException@@
+A 00008c60 .?AVSimpleException@@
+A 00008c80 .?AVxOSException@@
+A 00008ca0 .?AVxOSEvent@@
+A 00008cb0 xOSEvent
+A 00008ce0 .?AW4PortStatusCode@@
+A 00008cf8 chartId
+A 00008d10 %s %d
+A 00008d18 Large
+A 00008d20 Small
+A 00008d88 .?AVtype_info@@
+A 00008e0d 2E5j5
+A 00008e45 0&1c1
+A 00008e4f 283?314H4S4e4
+A 00008e5f 4%545
+A 00008e73 5!6/6C6}6
+A 00008e8f :9;H;
+A 00008e9d <-<d<s<
+A 00008eab =J=Y=
+A 00008eb7 =1><>@>D>H>L>P>T>X>\>`>d>h>
+A 00008ed5 >*?1?
+A 00008ee9 0c1j1$2+2
+A 00008f0d 8H9b9}9
+A 00008f21 :	;$;J;
+A 00008f31 < <H<^<
+A 00008f41 =0=X=n=
+A 00008f51 >@>H>j>y>
+A 00008f61 ?0?X?n?
+A 00008f77 0F1i1r1
+A 00008f85 2=2`2t2
+A 00008f93 303N3]3v3
+A 00008fa7 4=4S4
+A 00008faf 4%505M5p5z5
+A 00008fbf 666e6
+A 00008fd5 868X8v809
+A 00008fef <$<o<
+A 00009023 0@1f1
+A 0000902b 2N2`2
+A 00009041 4Q5k5
+A 00009061 9.9F9
+A 00009075 :3;j;
+A 0000907f <%<U<
+A 000090b0 a0f0q0w0
+A 000090df 6C6J6
+A 000090f5 62787>7D7J7P7V7b7v7
+A 0000911b 9$9F9N9W9r9}9
+A 00009133 : :&:,:
+A 00009141 ;4<\<a<P=T=X=\=`=d=h=l=
+A 00009185 2b2{2
+A 000091a5 3#3,3S3x3
+A 000091bb 4V5[5
+A 000091c9 526{6
+A 000091d5 7;7Y7y7
+A 000091e1 7	8)8E8e8u8z8
+A 000091fd :3:I:l:
+A 0000920d ;,;L;
+A 00009233 2 2$2(2,20242@2D2H2L2P2T2X2`2d2h2l2p2t2
+A 0000927d 3 383L3\3`3p3x3
+A 000092a1 4$4,484T4\4h4p4
+A 000092c1 5$5,585T5\5p5|5
+A 000092e7 6$606L6X6t6
+A 00009305 7,787@7T7d7l7t7
+A 00009325 8,848<8D8P8X8t8
+A 00009343 9$9,949<9D9L9T9\9d9l9t9|9
+A 00009379 :,:8:T:`:|:
+A 00009395 ;4;@;\;d;p;
+A 000093b3 04282X2x2
+A 000093bf 2P3T3X3\3`3d3h3l3p3t3x3|3

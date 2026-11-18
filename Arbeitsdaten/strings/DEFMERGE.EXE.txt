@@ -1,0 +1,464 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b0 .text
+A 000001d7 `.rdata
+A 000001ff @.data
+A 00000228 .rsrc
+A 0000083b SUVWh
+A 00000967 L$$PW
+A 000009f0 D$HRP
+A 00000b08 L$$PV
+A 00000b59 L$$VW
+A 0000146d L$ _^
+A 00001937 L$ _d
+A 00001ca9 ShhQA
+A 00001cb9 ChPQA
+A 00001cc9 3h<QA
+A 00001cd9 #h0QA
+A 00001ece L$|^d
+A 00001fbf SUVW3
+A 000020fa t1SWh
+A 0000238b L$HQW
+A 00002778 D$dSP
+A 000027c9 D$dRP
+A 0000282b D$dRP
+A 000028a4 L$P_^d
+A 00002c5d SSPhE
+A 00003098 SSPhJ
+A 00003307 L$$QR
+A 000033ce L$@QR
+A 000033e1 D$\PQ
+A 000034e9 D$8VP
+A 00003588 uZPPh
+A 000035f9 |$Xhe
+A 00003602 L$,WQ
+A 0000363a D$,WP
+A 0000366e T$,WR
+A 000036a2 L$,WQ
+A 000036f2 L$D_^d
+A 0000372f SUVW3
+A 0000380f D$ RP
+A 000038a9 SQRhe
+A 000038d7 D$8PQ
+A 000038eb T$8RP
+A 00003cfb 8SVW3
+A 00003f77 DSUVW
+A 00004063 L$T_^]d
+A 000045c8 D$ 9H
+A 00004686 L$HVQjd
+A 000047cf D$`PQ
+A 0000485c u1PPh
+A 00004881 D$4VP
+A 000048d0 L$|_^]
+A 00004af7 TSUVW
+A 00004b7d L$HQR
+A 00004b96 9\$8t
+A 00004bc9 L$d_^]
+A 00004caf L$4_^]d
+A 00004dff L$4_^]d
+A 000051d0 L$(PQ
+A 0000525d L$P_^]
+A 00005349 Ht	Hu
+A 00005384 Ht	Hu
+A 00005b7b PQSWj
+A 00005c0f D$$I+
+A 00005c5a L$<_^]
+A 00006530 _^][Y
+A 00006b1a tTHt1Hu`
+A 00007120 QSUVW
+A 0000718b _^][Y
+A 00007195 _^][Y
+A 000072f0 _^][Y
+A 00007300 _^][Y
+A 000078a9 _^][Y
+A 000078e1 _^][Y
+A 000078f2 _^][Y
+A 00007bbd T$$RP
+A 00007bee D$\PQ
+A 00007dee L$$^3
+A 00007e67  SUVW
+A 0000815e SSShJ
+A 00008b37 DSUVW3
+A 00008d2d L$ Qj
+A 00008d4b L$T_^]d
+A 00008e68 D$@S3
+A 00008ea8 \$,j8h
+A 00009163 W(9W$u
+A 00009350 t]9H tX9H$tS
+A 00009b45 U0SQR
+A 00009e99 _^][Y
+A 00009eaf _^][Y
+A 00009ec6 l$ VW
+A 00009f56 D$(8D
+A 0000a15c Fdf+F\
+A 0000a44f _^][Y
+A 0000a463 _^][Y
+A 0000a56d ~(9~$u
+A 0000b060 |$ WUSV
+A 0000b19d @APQV
+A 0000b3ec T$ RV
+A 0000b4e4 D$$SUV
+A 0000b68f D$0tc
+A 0000b8f1 _^][Y
+A 0000c98a D$8RP
+A 0000c9aa T$4PQR
+A 0000caaf L$HPQS
+A 0000ced5 T$DQR
+A 0000cf9e L$DRPS
+A 0000d034 L$LQP
+A 0000d19c T$LRQS
+A 0000d2b1 T$LRP
+A 0000d2f0 L$LQP
+A 0000d3f9 T$HPRS
+A 0000d428 K4PVS
+A 0000d625 \$ UV
+A 0000d770 L$,A;
+A 0000d849 L$,A;
+A 0000d8cf L$,A;
+A 0000d98b L$,A;
+A 0000da3a T$0RSV
+A 0000dab3 AH;N,
+A 0000db1e T$0RSV
+A 0000dbc9 T$0RSV
+A 0000dc62 T$0RSV
+A 0000dca1 T$0RSV
+A 0000dcd6 V4PSV
+A 0000de31 L$ RUPj
+A 0000de63 ]^_[Y
+A 0000de8d ]^_[Y
+A 0000df12 9t$Du
+A 0000df2b *_^][
+A 0000df4d 9(u	A
+A 0000dfa0 D+3x%A
+A 0000e243 ;D$<s
+A 0000e261 ;D$<r
+A 0000e2a3 T$$O#
+A 0000e350 QSUVW
+A 0000e37d _^][Y
+A 0000e39b T$,PQh
+A 0000e3e9 D$0Qh
+A 0000e429 _^][Y
+A 0000e448 _^][Y
+A 0000e46c _^][Y
+A 0000e490 _^][Y
+A 0000e4af _^][Y
+A 0000e4d3 _^][Y
+A 0000e568 K<UWQ
+A 0000e5f4 K<UVQ
+A 0000e658 L$(SU
+A 00011400  deflate 1.1.3 Copyright 1995-1998 Jean-loup Gailly 
+A 00011b20 								
+A 00011f48  inflate 1.1.3 Copyright 1995-1998 Mark Adler 
+A 00013a50 SH33W32.dll
+A 00013a5e ?Free@CMemFile4@@MAEXPAE@Z
+A 00013a7c ?Realloc@CMemFile4@@MAEPAEPAEK@Z
+A 00013aa0 ?Alloc@CMemFile4@@MAEPAEK@Z
+A 00013abe ??1InStreamBuf@@QAE@XZ
+A 00013ad8 ?Read@InStreamBuf@@QAEIPAXI@Z
+A 00013af8 ?Init@InStreamBuf@@QAEXAAVStream@@KI@Z
+A 00013b22 ??0StreamBuffer@@QAE@XZ
+A 00013b3c ??0ESDArchiveStream@@QAE@AAVESDArchive@@@Z
+A 00013b6a ??0ESDArchive@@QAE@PAVCFile@@IHPAX@Z
+A 00013b92 ??1OutStreamBuf@@QAE@XZ
+A 00013bac ?Write@OutStreamBuf@@QAEXPBXI@Z
+A 00013bce ?Init@OutStreamBuf@@QAEXAAVStream@@I@Z
+A 00013bf8 ?SetState@ComResource@@UAEXW4OwnerState@1@@Z
+A 00013c28 ?GetAsDataItem@SerialPort@@UBE_NAAVDataItem@@@Z
+A 00013c5a ??1ComResource@@UAE@XZ
+A 00013c74 ??0ComResource@@IAE@XZ
+A 00013c8e ??1FileParse@@QAE@XZ
+A 00013ca6 ?CompleteFileName@FileParse@@QBE?AVString@@ABV2@@Z
+A 00013cdc ??0FileParse@@QAE@ABVString@@_N@Z
+A 00013d00 ??0MelcoEthernetSettings@@QAE@ABVDataItem@@@Z
+A 00013d30 ??0MelcoNetworkMachine@@QAE@ABVDataItem@@@Z
+A 00013d5e ??0SerialPort@@QAE@ABVDataItem@@@Z
+A 00013d84 ??0ParallelPort@@QAE@ABVDataItem@@@Z
+A 00013dac ?SaveDataItemFile@@YAKABVString@@PBVDataItem@@@Z
+A 00013de0 ?FileExists@DOSDiskTools@@SA_NABVString@@@Z
+A 00013e0e ?LoadDataItemFile@@YAKABVString@@PAVDataItem@@@Z
+A 00013e42 ??0SerialPort@@AAE@IW4Baud@@W4Parity@@W4DataBits@@W4StopBits@@W4HandShake@@@Z
+A 00013e90 Wessys.dll
+A 00013e9e ??1Filer@@QAE@XZ
+A 00013eb2 ??0Filer@@QAE@PBDJ@Z
+A 00013eca ?getdat@Filer@@AAEAAV1@PAXJ@Z
+A 00013eea ?Record@Filer@@QAE_NJ@Z
+A 00013f04 ?newget@Filer@@QAEPAXAAJ@Z
+A 00013f20 esdrdr.dll
+A 00013f2e ??0ProductVersion@@QAE@XZ
+A 00013f4a ??4ProductVersion@@QAEAAV0@ABV0@@Z
+A 00013f70 ?LegacyProductVersion@@YA?AVProductVersion@@ABVString@@@Z
+A 00013faa versndll.dll
+A 00013fb8 MFC42.DLL
+A 00013fc4 __CxxFrameHandler
+A 00013fd8 _mbscmp
+A 00013fea getenv
+A 00013ff4 toupper
+A 00013ffe strtok
+A 00014008 ?_query_new_handler@@YAP6AHI@ZXZ
+A 0001402c ?_query_new_mode@@YAHXZ
+A 00014046 islower
+A 00014050 vsprintf
+A 0001405c memmove
+A 00014066 _ftol
+A 0001406e _CxxThrowException
+A 00014082 MSVCRT.dll
+A 00014090 __dllonexit
+A 0001409e _onexit
+A 000140a8 _except_handler3
+A 000140bc ?terminate@@YAXXZ
+A 000140d0 _exit
+A 000140d8 _XcptFilter
+A 000140ee _acmdln
+A 000140f8 __getmainargs
+A 00014108 _initterm
+A 00014114 __setusermatherr
+A 00014128 _adjust_fdiv
+A 00014138 __p__commode
+A 00014148 __p__fmode
+A 00014156 __set_app_type
+A 00014168 _controlfp
+A 00014176 lstrcpyA
+A 00014182 MulDiv
+A 0001418c WideCharToMultiByte
+A 000141a2 MultiByteToWideChar
+A 000141b8 GetModuleHandleA
+A 000141cc GetStartupInfoA
+A 000141dc KERNEL32.dll
+A 000141ec EnableWindow
+A 000141fc MessageBoxA
+A 0001420a ReleaseDC
+A 00014216 GetDC
+A 0001421e InvalidateRect
+A 0001422e USER32.dll
+A 0001423c CreateDCA
+A 00014248 GetTextExtentPointA
+A 0001425e GetTextMetricsA
+A 00014270 GetDeviceCaps
+A 00014280 DeleteDC
+A 0001428c LPtoDP
+A 00014296 DPtoLP
+A 000142a0 CreateFontIndirectA
+A 000142b6 GetViewportOrgEx
+A 000142c8 GDI32.dll
+A 000142d2 MSVCIRT.dll
+A 000142e0 _setmbcp
+A 00014454 Defaults Files (*.dfl)|*.dfl|All Files (*.*)|*.*||
+A 00014498 CDefMergeDoc
+A 000144a8 Invalid command line arguments
+A 000144c8 DefMerge Error
+A 000144d8 /ADMIN
+A 000144e0 CDefMergeView
+A 000144f0 CMainFrame
+A 000144fc Merge Error
+A 00014508 Merge Error = %s (%d)
+A 00014520 Unknown (%d)
+A 00014530 MERR_FATAL
+A 0001453c MERR_CORRUPT_FILE
+A 00014550 MERR_CANNOT_OPEN_FILE
+A 00014568 MERR_NEW_NOT_SUPPORTED
+A 00014580 MERR_OLD_NOT_SUPPORTED
+A 00014598 MERR_NONE
+A 000145a4 defes60.dfl
+A 000145b0 defnew.dfl
+A 000145bc POINT
+A 000145c4 STREAM
+A 000145cc DIGITISER_MODE
+A 000145ec mmg.mmg
+A 000145fc display
+A 00014608 WTextDoc
+A 00014614 WScrollTextView
+A 00014624 Courier New
+A 00014688 Network
+A 00014690 Ethernet
+A 0001469c 1.0.4
+A 000146a8 1.1.3
+A 000146b0 need dictionary
+A 000146c0 incorrect data check
+A 000146d8 incorrect header check
+A 000146f0 invalid window size
+A 00014704 unknown compression method
+A 00014748 incompatible version
+A 00014760 buffer error
+A 00014770 insufficient memory
+A 00014784 data error
+A 00014790 stream error
+A 000147a0 file error
+A 000147ac stream end
+A 000147fc invalid bit length repeat
+A 00014818 too many length or distance symbols
+A 0001483c invalid stored block lengths
+A 0001485c invalid block type
+A 00014870 invalid distance code
+A 00014888 invalid literal/length code
+A 000159b0 incomplete dynamic bit lengths tree
+A 000159d4 oversubscribed dynamic bit lengths tree
+A 000159fc incomplete literal/length tree
+A 00015a1c oversubscribed literal/length tree
+A 00015a40 empty distance tree with lengths
+A 00015a64 incomplete distance tree
+A 00015a80 oversubscribed distance tree
+A 00016189 wwwwwwwwwwwwwx
+A 00016199 wwwwwp
+A 000161a9 wwwwwp
+A 000161b9 wwwwwp
+A 000161c9 wwwwwp
+A 000161d9 wwwwwp
+A 000161e9 wwwwwp
+A 000161f9 wwwwwp
+A 00016209 wwwwwp
+A 00016212 wwwwx
+A 00016219 wwwwwp
+A 00016222 wwwwx
+A 0001625d pwwww
+A 0001626d wwwwwwpwwx
+A 00016279 wwwwwwwwwwwwwx
+A 0001629f wwwpwpwx
+A 000162af wwwpwpwx
+A 000162bf wwwpwpwx
+A 000162cf wwwpwpwx
+A 000162df wwwpD@wx
+A 000162ef wwwtptwx
+A 000162fe wwwwt
+A 0001630e wwwwtptwx
+A 0001631d wwwwwwDGwx
+A 00016329 wwwwwwwwwwwwwx
+A 00016489 wwwwwwwwwwwwwx
+A 00016499 wwwwwp
+A 000164a9 wwwwwp
+A 000164b9 wwwwwp
+A 000164c9 wwwwwp
+A 000164d9 wwwwwp
+A 000164e9 wwwwwp
+A 000164f9 wwwwwp
+A 00016509 wwwwwp
+A 00016512 wwwwx
+A 00016519 wwwwwp
+A 00016522 wwwwx
+A 0001655d pwwww
+A 0001656d wwwwwwpwwx
+A 00016579 wwwwwwwwwwwwwx
+A 0001659f wwwpwpwx
+A 000165af wwwpwpwx
+A 000165bf wwwpwpwx
+A 000165cf wwwpwpwx
+A 000165df wwwpD@wx
+A 000165ef wwwtptwx
+A 000165fe wwwwt
+A 0001660e wwwwtptwx
+A 0001661d wwwwwwDGwx
+A 00016629 wwwwwwwwwwwwwx
+U 00006690 Ajjjj
+U 000166f6 &File
+U 00016706 &New
+U 00016710 Ctrl+N
+U 00016722 &Open...
+U 00016734 Ctrl+O
+U 00016746 &Save
+U 00016752 Ctrl+S
+U 00016764 Save &As...
+U 00016786 &Print...
+U 0001679a Ctrl+P
+U 000167ac Print Pre&view
+U 000167d4 Recent File
+U 000167f6 E&xit
+U 00016804 &Edit
+U 00016814 &Undo
+U 00016820 Ctrl+Z
+U 00016838 Cu&t
+U 00016842 Ctrl+X
+U 00016854 &Copy
+U 00016860 Ctrl+C
+U 00016872 &Paste
+U 00016880 Ctrl+V
+U 00016890 Test
+U 0001689e &Merge
+U 000168b0 &Dump Defaults
+U 000168d0 &Help
+U 000168e0 &About DefMerge...
+U 00016986 About DefMerge
+U 000169a6 MS Sans Serif
+U 000169f6 DefMerge Version 1.0
+U 00016a3a Copyright © 1996
+U 00016a96 Choose Path Dialog
+U 00016abe MS Sans Serif
+U 00016b12 Cancel
+U 00016b3a Browse...
+U 00016b66 Browse...
+U 00016bbc E40?
+U 00016be6 Old Defaults
+U 00016c1a New Defaults
+U 00016c5e VS_VERSION_INFO
+U 00016cba StringFileInfo
+U 00016cde 040904b0
+U 00016cf6 CompanyName
+U 00016d16 FileDescription
+U 00016d38 DEFMERGE MFC Application
+U 00016d72 FileVersion
+U 00016d8c 1, 0, 0, 1
+U 00016daa InternalName
+U 00016dc4 DEFMERGE
+U 00016dde LegalCopyright
+U 00016dfc Copyright © 1996 Wilcom
+U 00016e32 OriginalFilename
+U 00016e54 DEFMERGE.EXE
+U 00016e76 ProductName
+U 00016e90 DEFMERGE Application
+U 00016ec2 ProductVersion
+U 00016ee0 1, 0, 0, 1
+U 00016efe VarFileInfo
+U 00016f1e Translation
+U 00016f70 MDefMerge
+U 00016f86 DefMer
+U 00016f94 DataItem dump (*.dat)
+U 00016fc0 .dat
+U 00016fca DefMerge.Document
+U 00016fee DefMer Document
+U 00017032 DefMerge
+U 00017044 Ready
+U 0001708a SCRL
+U 000170ba Create a new document
+U 000170ee Open an existing document
+U 00017122 Open
+U 0001712c Close the active document
+U 00017160 Close
+U 0001716c Save the active document
+U 0001719e Save0Save the active document with a new name
+U 000171fa Save As
+U 0001720e Print the active document
+U 00017242 Print
+U 00017260 ?Display program information, version number and copyright
+U 000172d6 About4Quit the application; prompts to save documents
+U 00017342 Exit
+U 0001736a Open this document
+U 00017390 Open this document
+U 000173b6 Open this document
+U 000173dc Open this document
+U 00017418 (Switch to the next window pane
+U 00017458 Next Pane5Switch back to the previous window pane
+U 000174bc Previous Pane
+U 00017502 (Split the active window into panes
+U 0001754a Split
+U 0001756a Erase the selection
+U 00017592 Erase
+U 0001759e Erase everything
+U 000175c0 Erase All3Copy the selection and put it on the Clipboard
+U 00017632 Copy1Cut the selection and put it on the Clipboard
+U 000176a0 Find the specified text
+U 000176d0 Find
+U 000176da Insert Clipboard contents
+U 0001770e Paste
+U 0001771e Repeat the last action
+U 0001774c Repeat1Replace specific text with different text
+U 000177ae Replace%Select the entire document
+U 000177f4 Select All
+U 0001780a Undo the last action
+U 00017834 Undo&Redo the previously undone action
+U 00017882 Redo
+U 00017892 Change the window size
+U 000178c0 Change the window position
+U 000178f6 Reduce the window to an icon
+U 00017930 Enlarge the window to full size"Switch to the next document window&Switch to the previous document window9Close the active window and prompts to save the documents
+U 00017a8c !Restore the window to normal size
+U 00017ad2 Activate Task List
+U 00017b1c Dump a defaults file'
+U 00017b48  Display full pages
+U 00017b70 Print Preview

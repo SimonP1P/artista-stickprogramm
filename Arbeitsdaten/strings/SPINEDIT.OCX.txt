@@ -1,0 +1,226 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000000a7 CRich
+A 000001b0 .text
+A 000001d7 `.rdata
+A 000001ff @.data
+A 00000228 .rsrc
+A 0000024f @.reloc
+A 000008b7 <SUVW
+A 0000097c D$`PV
+A 00000a78 L$L_^]d
+A 00000d78 T$ PRh4
+A 00000da7 I Phi
+A 00001267 T$0QRU
+A 00001451 t*Hu{
+A 0000154b t$h\b
+A 00001763 $QRh(a
+A 0000179f u1h$a
+A 000024a5 N hHa
+A 000024b7 V hDa
+A 00003050 u"WVS
+A 00003c20 SPINEDIT.SpinEditCtrl.1
+A 000041a0 SPINEDIT.SpinEditPropPage.1
+A 00004cda ?isnt@WinVersionInfo@@0_NA
+A 00004cf8 ?ConvertToUserUnits@MeasurementUnits@@SANNW4UnitsBase@1@@Z
+A 00004d36 ?ConvertFromUserUnits@MeasurementUnits@@SANNW4UnitsBase@1@@Z
+A 00004d76 ?GetMeasurementSystem@MeasurementUnits@@SA?AW4MeasurementSystem@LocaleInformation@@XZ
+A 00004dcc Wessys.dll
+A 00004dd8 MFC42.DLL
+A 00004de4 __CxxFrameHandler
+A 00004df8 isdigit
+A 00004e0a sprintf
+A 00004e14 _EH_prolog
+A 00004e20 MSVCRT.dll
+A 00004e2e __dllonexit
+A 00004e3c _onexit
+A 00004e4e _initterm
+A 00004e5a malloc
+A 00004e64 _adjust_fdiv
+A 00004e74 ??1type_info@@UAE@XZ
+A 00004e8c LocalFree
+A 00004e98 LocalAlloc
+A 00004ea4 KERNEL32.dll
+A 00004eb4 FrameRect
+A 00004ec0 FillRect
+A 00004ecc SendMessageA
+A 00004edc GetClientRect
+A 00004eec UpdateWindow
+A 00004efc MessageBeep
+A 00004f0a IsWindow
+A 00004f16 PostMessageA
+A 00004f26 GetParent
+A 00004f32 GetAsyncKeyState
+A 00004f46 EnableWindow
+A 00004f54 USER32.dll
+A 00004f62 GetTextMetricsA
+A 00004f74 GetStockObject
+A 00004f84 GDI32.dll
+A 00004f8e OLEAUT32.dll
+A 00004ff0 SPINEDIT.OCX
+A 00004ffd DllCanUnloadNow
+A 0000500d DllGetClassObject
+A 0000501f DllRegisterServer
+A 00005031 DllUnregisterServer
+A 00005240 AboutBox
+A 0000524c Enabled
+A 00005260 SetRange
+A 0000526c Clear
+A 00005274 IsValid
+A 0000527c IsBlank
+A 00005284 Units
+A 0000528c Value
+A 0000529c MaxLineLength
+A 000052ac DecimalPlaces
+A 000052bc MaxRange
+A 000052c8 MinRange
+A 000052d4 SpinEditCtrl
+A 00005300 SpinEdit
+A 0000530c DisplayValue
+A 00005328 %*.*f
+A 00005330 SpinEditPropPage
+A 00005348 Current
+A 00005358 inches
+A 00005370 .?AVCNoTrackObject@@
+A 00005390 .?AVAFX_MODULE_STATE@@
+A 000053b0 .?AV_AFX_DLL_MODULE_STATE@@
+A 000053d8 .?AVtype_info@@
+A 00005a88 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00005aba wwwwwwww
+A 00005aca wwwwwwww
+A 00005ada wwwwwwww
+A 00005aea wwwwwwww
+A 00005afa wwwwwwww
+A 00005b0a wwwwwwww
+A 00005b1a wwwwwwww
+A 00005b2a wwwwwwww
+A 00005b3a wwwwwwww
+A 00005b4a wwwwwwww
+A 00005b5a wwwwwwww
+A 00005b6a wwwwwwww
+A 00005b7a wwwwwwww
+A 00005b8a wwwwwwww
+A 00005b9a wwwwwwww
+A 00005baa wwwwwwww
+A 00005bba wwwwwwww
+A 00005bca wwwwwwww
+A 00005bda wwwwwwww
+A 00005bea wwwwwwww
+A 00005bfa wwwwwwww
+A 00005c0a wwwwwwww
+A 00005c1a wwwwwwww
+A 00005c2a wwwwwwww
+A 00005c3a wwwwwwww
+A 00005c4a wwwwwwww
+A 00005c68 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00005d70 wwwwwwww
+A 00005de8 wwwwwwww
+A 00006752 stdole2.tlbWWW`
+A 0000676e olepro32.dllWW
+A 00006986 P(SPINEDITLibW
+A 000069a0 _DSpinEditWW
+A 000069b8 MinRange
+A 000069ca YnMaxRange
+A 000069df [DecimalPlacesWWW
+A 000069fc MaxLineLengthWWW
+A 00006a17 3Step
+A 00006a38 EnabledW
+A 00006a4b KValueWWW
+A 00006a60 UnitsWWW
+A 00006a72 e,IsBlankW
+A 00006a86 @NIsValidW
+A 00006a9c ClearWWW
+A 00006ab0 SetRange
+A 00006ac4 AboutBoxd
+A 00006ad8 _DSpinEditEvents
+A 00006af3 \SpinEdit
+A 00006afe SpinEdit.hlpWW
+A 00006b0e SpinEdit ActiveX Control moduleWWW'
+A 00006b32 Dispatch interface for SpinEdit ControlWWW$
+A 00006b5e Event interface for SpinEdit ControlWW
+A 00006b86 SpinEdit ControlWW
+A 00007009 0a0q0
+A 0000702d 1$1*151:1@1K1q1x1}1
+A 00007053 2+222:2@2S2u2
+A 00007065 2#3h3m3
+A 0000708d 7&7@7W7n7
+A 000070ad <'=Z=
+A 000070b5 >.>^>
+A 000070c7 ?;?~?
+A 000070e5 0N1c1
+A 000070f5 2	3g3n3
+A 00007103 586v6
+A 0000710d 7P7^7
+A 00007115 7J8l8}8
+A 00007121 9o9}9
+A 00007131 :h:x:
+A 00007141 ;C<l<
+A 00007147 <Q=a=q=
+A 00007159 =!>2>@>E>V>^>g>p>
+A 00007195 1b2h2n2t2z2
+A 000071d5 3"3(3.343:3@3F3L3R3X3^3d3j3p3v3|3
+A 0000722b 4$4*40464<4B4H4N4T4Z4`4f4l4r4x4~4
+A 0000727f 5 5&5,52585>5D5J5P5V5\5b5h5n5t5z5
+A 000072d5 6"6(6.646:6@6F6L6R6X6^6d6j6p6v6|6
+A 0000732b 7$7*70767<7B7H7N7T7Z7`7f7l7r7x7~7
+A 0000737f 8 8&8,82888>8D8S8c8r8
+A 0000739f 9-9l9
+A 000073a9 :^:i:s:
+A 000073bf ;';4;<;Q;V;[;`;j;s;
+A 00007415 >'>9>Y>
+A 00007425 ?)?I?k?
+A 00007445 5 5(5,5D5\5t5
+A 0000745d 6 6$6(6,606@6D6P6`6d6p6
+A 00007491 7 707@7P7`7p7x7
+A 000074ef 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0000756f : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 000075ef ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0000766f < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 000076e3 = =$=(=,=0=4=8=<=@=D=H=P=\=`=h=l=
+A 0000772d > >$>(>,>0>4>8><>@>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 000077ab ? ?$?(?,?0?8?<?@?D?X?p?
+A 000077e1 0(0D0P0l0x0
+A 000077fd 1(1D1L1X1t1|1
+A 0000781b 2,282T2`2|2
+A 00007835 3$303L3
+A 0000784d 0d1h1
+U 000052e4 MS Sans Serif
+U 0000569a TYPELIB
+U 000056b6 VS_VERSION_INFO
+U 00005712 StringFileInfo
+U 00005736 040904B0
+U 0000574e CompanyName
+U 00005768 Wilcom Pty Ltd
+U 0000578e FileDescription
+U 000057b0 SpinEdit ActiveX Control Module
+U 000057f6 FileVersion
+U 00005810 1, 0, 0, 1
+U 0000582e InternalName
+U 00005848 SpinEdit
+U 00005862 LegalCopyright
+U 00005880 Copyright (C) 2001
+U 000058ae LegalTrademarks
+U 000058d6 OriginalFilename
+U 000058f8 SpinEdit.OCX
+U 0000591a ProductName
+U 00005934 SpinEdit ActiveX Control Module
+U 0000597a ProductVersion
+U 00005998 1, 0, 0, 1
+U 000059b6 OLESelfRegister
+U 000059de VarFileInfo
+U 000059fe Translation
+U 00005f4e About SpinEdit Control
+U 00005f7e MS Sans Serif
+U 00005fce SpinEdit Control, Version 1.0
+U 00006022 Copyright (C) 2001, Wilcom Pty Ltd
+U 000060aa MS Sans Serif
+U 000060de Line Length:
+U 0000612e Decimal Places:
+U 00006182 Step Size:
+U 000061ce Min Range:
+U 0000623a Max Range:
+U 000062a6 Units:
+U 000062ea Value:
+U 0000632e DesignLength
+U 00006d9c SpinEdit Control
+U 00006dbe SpinEdit Property Page
+U 00006e1a General

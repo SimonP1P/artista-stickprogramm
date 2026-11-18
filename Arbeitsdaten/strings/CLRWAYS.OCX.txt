@@ -1,0 +1,316 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b0 .text
+A 000001d7 `.rdata
+A 000001ff @.data
+A 00000228 .rsrc
+A 0000024f @.reloc
+A 00000bd5 L$ _^]d
+A 00000d5b $SUVW
+A 00000d94 T$(jZR
+A 00000e68 WSSjd
+A 00000e6e T$ VRh
+A 00000e91 D$ VPh
+A 00000ee9 L$4_^]d
+A 00000f1a D$ RPh
+A 0000141a D$ SUVW
+A 000016cb L$ _^]d
+A 00001865 QSUVW
+A 000025cc l$$SU
+A 000031a3 |$htC
+A 000032db T$PUWR
+A 0000334f L$,SQ
+A 00003365 T$@WR
+A 000034d4 L$`_^]d
+A 0000391e _^][Y
+A 000039e0 _^][Y
+A 00004721 L$ PQ
+A 00005230 u"WVS
+A 000068a0 CLRWAYS.ClrWaysCtrl.1
+A 00006cd8 CLRWAYS.ClrWaysPropPage.1
+A 00007bfc MFC42.DLL
+A 00007c08 __CxxFrameHandler
+A 00007c1c _EH_prolog
+A 00007c2a __dllonexit
+A 00007c38 _onexit
+A 00007c40 MSVCRT.dll
+A 00007c56 _initterm
+A 00007c62 malloc
+A 00007c6c _adjust_fdiv
+A 00007c7c ??1type_info@@UAE@XZ
+A 00007c94 LocalFree
+A 00007ca0 LocalAlloc
+A 00007cac KERNEL32.dll
+A 00007cbc DrawEdge
+A 00007cc8 PostMessageA
+A 00007cd8 SendMessageA
+A 00007ce8 InflateRect
+A 00007cf6 EnableWindow
+A 00007d04 USER32.dll
+A 00007d12 GetDeviceCaps
+A 00007d22 CreateCompatibleBitmap
+A 00007d3c CreateCompatibleDC
+A 00007d50 GDI32.dll
+A 00007d5a OLEAUT32.dll
+A 00007dc0 CLRWAYS.OCX
+A 00007dcc DllCanUnloadNow
+A 00007ddc DllGetClassObject
+A 00007dee DllRegisterServer
+A 00007e00 DllUnregisterServer
+A 00008090 ThreadChanged
+A 000080a0 EditColorwayElement
+A 000080b4 ViewTypeChanged
+A 000080c4 ColorwayChanged
+A 000080d4 AboutBox
+A 000080e8 enableViewToggle
+A 000080fc getThreadDensity
+A 00008110 setThreadDensity
+A 00008124 setColorHeader
+A 00008134 setDensityHeader
+A 00008148 setDescriptionHeader
+A 00008160 setBrandHeader
+A 00008170 setUsedHeader
+A 00008180 setCodeHeader
+A 00008194 setThreadsHeader
+A 000081a8 syncBackground
+A 000081bc setRedraw
+A 000081c8 setSelectedColor
+A 000081dc getObjectOutlineColor
+A 000081f4 getBackgroundShowDib
+A 0000820c setBackgroundDibArrangement
+A 00008228 getBackgroundDibArrangement
+A 00008244 getThreadUsed
+A 00008254 setThreadUsed
+A 00008264 setThreadDescription
+A 0000827c syncThreadTally
+A 0000828c setBackgroundColor
+A 000082a0 getBackgroundColor
+A 000082b4 getBackgroundDibFilename
+A 000082d0 setBackgroundDibFilename
+A 000082f0 setBackgroundShowDib
+A 00008308 getGridColor
+A 00008318 setGridColor
+A 00008328 setObjectOutlineColor
+A 00008340 getUnsewnColor
+A 00008350 getSelectedColor
+A 00008364 setUnsewnColor
+A 00008374 getBorerColor
+A 00008388 setBorerColor
+A 00008398 getThreadDescription
+A 000083b0 getThreadBrand
+A 000083c0 setThreadBrand
+A 000083d0 getThreadCode
+A 000083e4 setThreadCode
+A 000083f8 setColorwayName
+A 0000840c getColorwayName
+A 00008420 getThreadColor
+A 00008434 setThreadColor
+A 00008448 deleteColorway
+A 00008458 addColorway
+A 00008464 ViewToggle
+A 00008470 HighLight
+A 0000847c ElementCurrentId
+A 00008490 ColorwayCurrentIdx
+A 000084a4 ThreadsNb
+A 000084b0 ColorwaysNb
+A 000084bc ViewType
+A 000084d0 CClrWaysCtrl
+A 000084e0 Colorway OCX - Version 1.0 (C++)
+A 0000851c Threads
+A 00008524 Density
+A 0000852c Description
+A 00008538 Brand
+A 00008548 Color
+A 00008550 CClrWaysPropPage
+A 000086d4 CMSFlexGrid
+A 000086f0 .?AVCNoTrackObject@@
+A 00008710 .?AVAFX_MODULE_STATE@@
+A 00008730 .?AV_AFX_DLL_MODULE_STATE@@
+A 00008758 .?AVtype_info@@
+A 0000906c DDLLDDDL
+A 0000907c LLDDLD
+A 0000909e DDLDLD
+A 000090ac LDDDDDDD
+A 000090bc DDDDDDDDD
+A 000090cb DDDDDDDDDDD
+A 000090da DDDDDDDDDDDDD
+A 000090e9 DDDDDDD
+A 00009246 DDDD@
+A 0000924e DDDDD@
+A 00009a98 0 - Unused
+A 00009aab 1 - View1
+A 00009abd 2 - View2
+A 00009acf 0 - Disable
+A 00009ae3 1 - Enable 
+A 00009f1e stdole2.tlbWWW`
+A 00009f3a olepro32.dllWW<
+A 0000a153 \CLRWAYSLibWW
+A 0000a168 	8)__DClrWaysWWW
+A 0000a194 ViewType
+A 0000a1a6 KcColorwaysNbW
+A 0000a1c0 ThreadsNbWWW
+A 0000a1d8 ColorwayCurrentIdxWW
+A 0000a1f8 ElementCurrentId
+A 0000a214 HighLightWWW
+A 0000a22a !!ViewToggleWW
+A 0000a243 $addColorwayW
+A 0000a25b QdeleteColorwayWW
+A 0000a276 u,colorwayIdxW
+A 0000a290 setThreadColorWW
+A 0000a2aa uythreadIdxWWW
+A 0000a2c4 threadColorW
+A 0000a2db CgetThreadColorWW
+A 0000a2f8 getColorwayNameW
+A 0000a314 setColorwayNameW
+A 0000a340 setThreadCodeWWW
+A 0000a36a ,7getThreadCodeWWW
+A 0000a388 setThreadBrandWW
+A 0000a3a4 brandWWW
+A 0000a3b8 getThreadBrandWW
+A 0000a3d4 getThreadDescription
+A 0000a3f4 setBorerColorWWW
+A 0000a40e 2FcolorWWW
+A 0000a424 getBorerColorWWW
+A 0000a440 setUnsewnColorWW
+A 0000a45c getSelectedColor
+A 0000a478 getUnsewnColorWW
+A 0000a494 setObjectOutlineColorWWW
+A 0000a4b8 setGridColor
+A 0000a4d0 getGridColor
+A 0000a4e7 nsetBackgroundShowDib
+A 0000a508 showDibW
+A 0000a51a ?ZsetBackgroundDibFilename
+A 0000a540 fileName
+A 0000a554 getBackgroundDibFilename
+A 0000a577 AgetBackgroundColorWW
+A 0000a598 setBackgroundColorWW
+A 0000a5b8 syncThreadTallyW
+A 0000a5d4 setThreadDescription
+A 0000a5f3  descriptionW
+A 0000a60c setThreadUsedWWW
+A 0000a637 2getThreadUsedWWW
+A 0000a654 getBackgroundDibArrangementW
+A 0000a67a &AsetBackgroundDibArrangementW
+A 0000a6a2 qFarrangementW
+A 0000a6bb ]getBackgroundShowDib
+A 0000a6dc getObjectOutlineColorWWW
+A 0000a700 setSelectedColor
+A 0000a71c setRedrawWWW
+A 0000a734 syncBackgroundWW
+A 0000a750 setThreadsHeader
+A 0000a76b ZstrNameW
+A 0000a780 setCodeHeaderWWW
+A 0000a79c setUsedHeaderWWW
+A 0000a7b8 setBrandHeaderWW
+A 0000a7d4 setDescriptionHeader
+A 0000a7f3 AsetDensityHeader
+A 0000a810 setColorHeaderWW
+A 0000a82c setThreadDensity
+A 0000a848 strDensityWW
+A 0000a860 getThreadDensity
+A 0000a87c AboutBoxd
+A 0000a890 _DClrWaysEventsWd
+A 0000a8ac ColorwayChangedWd
+A 0000a8c8 ViewTypeChangedWd
+A 0000a8e3 NEditColorwayElementW
+A 0000a902 "HcolorawyIdxW
+A 0000a91b BelementIdxWWd
+A 0000a933 cThreadChangedWWW
+A 0000a950 ClrWaysW
+A 0000a95a ClrWays.hlpWWW
+A 0000a96a ClrWays ActiveX Control module&
+A 0000a98a Dispatch interface for ClrWays Control#
+A 0000a9b2 Event interface for ClrWays ControlWWW
+A 0000a9da ClrWays ControlWWW
+A 0000b609 0!010\0
+A 0000b627 3!313Q3W3[3`3f3j3q3|3
+A 0000b663 4"4P4a4r4
+A 0000b683 5s5z5
+A 0000b69b 7;8@8
+A 0000b6ad :A:L:\:z:
+A 0000b6b9 : ;#<6<
+A 0000b6d1 0J2x2
+A 0000b6e3 7#8c9
+A 0000b704 #0{061
+A 0000b725 ;9<s=
+A 0000b753 8#9?9V9x9
+A 0000b763 :!:1:Q:X:]:b:
+A 0000b77f ; ;s;
+A 0000b787 ;)<z<
+A 0000b791 <3=j=
+A 0000b7a7 >&?F?f?
+A 0000b7c3 1'1G1f1
+A 0000b7d3 2<2j2
+A 0000b7e5 3"4(4.444:4@4F4L4R4X4^4d4j4p4v4|4
+A 0000b83b 5$5*50565<5B5H5N5T5Z5`5f5l5r5x5~5
+A 0000b88f 6 6&6,62686>6D6J6P6V6\6b6h6n6t6z6
+A 0000b8e5 7"7(7.747:7@7F7L7R7X7^7d7j7p7v7|7
+A 0000b93b 8$8*80868<8B8H8N8T8Z8`8f8l8r8x8~8
+A 0000b98f 9 9&9,92989>9D9J9P9V9\9b9h9n9t9z9
+A 0000b9e5 :":1:A:P:y:
+A 0000ba03 ;<<G<Q<
+A 0000ba1f =1=6=;=@=J=S=f=p=
+A 0000ba7d 0T0i0
+A 0000ba89 021T1
+A 0000ba99 292Y2y2
+A 0000bab1 4;4g4y4
+A 0000bae3 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 0000bb2f 6,6D6`6d6h6p6
+A 0000bb4f 7 7`7d7h7l7p7
+A 0000bb79 8 8$808@8D8P8`8p8x8
+A 0000bba9 9 90989@9P9X9`9p9x9
+A 0000bbd9 : :0:8:@:P:X:`:p:x:
+A 0000bc09 ; ;0;8;@;P;X;`;p;x;
+A 0000bc39 < <0<8<@<P<X<`<p<x<
+A 0000bc69 = =0=8=@=P=X=`=p=x=
+A 0000bc97 > >X>\>h>x>|>
+A 0000bcc3 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?`?d?h?l?p?t?x?|?
+A 0000bd4b 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 0000bdcb 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1p1t1x1|1
+A 0000be3f 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2p2t2x2|2
+A 0000be8f 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3
+A 0000bf0d 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4p4|4
+A 0000bf51 5 5(5@5T5d5h5x5
+A 0000bf6f 646@6\6d6l6t6
+A 0000bf8d 7$707L7X7t7|7
+A 0000bfaf 8(8D8P8l8x8
+A 0000bfc9 949@9\9d9l9x9
+A 0000bfed :$:0:L:T:\:d:p:
+A 0000c00d ; ;<;H;d;l;x;
+A 0000c029 < <<<D<P<l<x<
+A 0000c04f 7(7P7
+U 00008048 72E67120-5959-11cf-91F6-C2863C385E30
+U 00008b5a TYPELIB
+U 00008b76 VS_VERSION_INFO
+U 00008bd2 StringFileInfo
+U 00008bf6 040904b0
+U 00008c0e CompanyName
+U 00008c28 Wilcom Pty. Ltd.
+U 00008c52 FileDescription
+U 00008c74 ClrWays ActiveX Control Module
+U 00008cba FileVersion
+U 00008cd4 1, 0, 0, 1
+U 00008cf2 InternalName
+U 00008d0c CLRWAYS
+U 00008d22 LegalCopyright
+U 00008d40 Copyright (C) 1900
+U 00008d6e OriginalFilename
+U 00008d90 CLRWAYS.OCX
+U 00008dae ProductName
+U 00008dc8 ClrWays ActiveX Control Module
+U 00008e0e ProductVersion
+U 00008e2c 1, 0, 0, 1
+U 00008e4a VarFileInfo
+U 00008e6a Translation
+U 000097be About ClrWays Control
+U 000097ec MS Sans Serif
+U 0000983a ClrWays Control, Version 1.0
+U 0000988e Copyright (C) 1900, Wilcom Pty. Ltd.
+U 0000991a MS Sans Serif
+U 0000994e View Type:
+U 0000999a Colorway Num:
+U 000099ea Thread Num:
+U 00009a36 View Toggle:
+U 00009a5c ©&:0Õ
+U 0000b56c ClrWays Control
+U 0000b58c ClrWays Property Page
+U 0000b5e2 General

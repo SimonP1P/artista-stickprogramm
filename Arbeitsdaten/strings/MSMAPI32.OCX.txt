@@ -1,0 +1,958 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.data
+A 000001c8 .rsrc
+A 000001f0 .reloc
+A 00000b47 FMicrosoft MAPI controls
+A 00000d74 Licenses
+A 00001ddb 7u};5X)
+A 000020d1 Sl]_^[
+A 00002151 P|]_^[
+A 00003c88 SVWUP
+A 000042b4 Y(93t$
+A 00004aa4 %s%s.DLL
+A 00004c65 SVWUf
+A 00004c99 S,]_^[
+A 00004ec9 }$_^]
+A 00005692 tVf9/tQUUUUj
+A 000056c3 QQSPj
+A 0000717a !Ph`F
+A 00007dbd FCFOC
+A 00007e08 @H9H(
+A 00007e4e FOFOC
+A 00007f0d PH9J(v
+A 00007f97 PH9J(v
+A 00008432 PH9J ~
+A 000084a3 PH9J ~
+A 00008533 PH9J ~
+A 00008f44 SVWUh
+A 0000916a fGf9}
+A 000095e1 SVWt,
+A 00009b00 |R9~(vM
+A 00009b52 N(_^[
+A 00009b65 |N9~ vI
+A 00009bb3 N _^[
+A 0000a146 u	h8}
+A 0000a190 PPSPW
+A 0000a2e9 u	h9}
+A 0000a377 !t"PWSPU
+A 0000a3ca u	h9}
+A 0000a5d1 PPQPV
+A 0000ac22 SVWt"
+A 0000b38c !VWSh
+A 0000b39d !VWSh
+A 0000c0f1 SVWt"
+A 0000c1aa |df9}
+A 0000cea6 &u$<:u
+A 0000cfbf +]_^[
+A 0000da01 GQPPPPP
+A 0000df25 !Wh0$
+A 0000e0df !VWVSVh
+A 0000e146 PQVWVSVh
+A 0000e1cd WVSVRh
+A 0000e244 !VSVWVh
+A 0000e2d5 VSVWVPh
+A 0000e2f4 PQVSVWVh
+A 0000e366 PQVSVWVht$
+A 0000e3db PQVSVWVhl$
+A 0000e433 PQVh?
+A 0000e43b VWVhd$
+A 0000e4f8 | h@'
+A 0000e5db !VSWSh
+A 0000e60c QSVSWSh
+A 0000e65f PQSVSWSh
+A 0000e71e QRSVSWSh
+A 0000e9df VVPQV
+A 0000ed22 SVWte
+A 0000eea4 2f9NFv)3
+A 0000f23a sPPWWWR
+A 0000f86a PSSSQ
+A 0000fd88 9]$tQ8]
+A 00010886 +]_^[
+A 00010b96 QPVRj
+A 000113da DPQh`F
+A 0001144b !PPPPPPh
+A 000117e8 MSMAPI
+A 000119f8 CtlFrameWork_Parking
+A 00011a14 ThreadingModel
+A 00011a24 Apartment
+A 00011a30 InprocServer32
+A 00011a40 %s Object
+A 00011a50 CLSID\%s
+A 00011a5c %ld.%ld
+A 00011a64 Version
+A 00011a6c TypeLib
+A 00011a74 ProgID
+A 00011a7c %s.%s
+A 00011a84 VersionIndependentProgID
+A 00011aa0 %s.%s.%ld
+A 00011aac CurVer
+A 00011ab4 CLSID
+A 00011ac0 ToolboxBitmap32
+A 00011ae0 MiscStatus
+A 00011aec Control
+A 00011af4 \InprocServer32
+A 00011b04 \HELP
+A 00011b0c Implemented Categories
+A 00011b24 %s\InprocServer
+A 00011bd4 DISPLAY
+A 00011c77 !>LangRef
+A 00011ced =sRSj
+A 00011cfd =sRWj
+A 00011e9a msmapi32.Ocx
+A 00011ea7 DLLGetDocumentation
+A 00011ebb DllCanUnloadNow
+A 00011ecb DllGetClassObject
+A 00011edd DllRegisterServer
+A 00011eef DllUnregisterServer
+A 0001208c KERNEL32.dll
+A 0001209a USER32.dll
+A 000120a6 ole32.dll
+A 000120b0 ADVAPI32.dll
+A 000120be OLEAUT32.dll
+A 000120cc GDI32.dll
+A 00012336 GetProcessHeap
+A 00012348 OpenFile
+A 00012354 lstrcatA
+A 00012360 GetModuleFileNameA
+A 00012376 GetWindowsDirectoryA
+A 0001238e GetLocaleInfoA
+A 000123a0 DisableThreadLibraryCalls
+A 000123bc GetVersion
+A 000123ca GetLastError
+A 000123da LockResource
+A 000123ea LoadResource
+A 000123fa FindResourceA
+A 0001240a HeapReAlloc
+A 00012418 IsBadWritePtr
+A 00012428 lstrcmpA
+A 00012434 LeaveCriticalSection
+A 0001244c DeleteFileA
+A 0001245a EnterCriticalSection
+A 00012472 lstrlenA
+A 0001247e IsDBCSLeadByte
+A 00012490 MultiByteToWideChar
+A 000124a6 InterlockedIncrement
+A 000124be InterlockedDecrement
+A 000124d6 lstrcpyA
+A 000124e2 HeapAlloc
+A 000124ee DeleteCriticalSection
+A 00012506 FreeLibrary
+A 00012514 HeapFree
+A 00012520 WideCharToMultiByte
+A 00012536 InitializeCriticalSection
+A 00012552 lstrlenW
+A 0001255e SetErrorMode
+A 0001256e LoadLibraryA
+A 0001257e GetProcAddress
+A 00012590 lstrcpynA
+A 0001259c ReleaseDC
+A 000125a8 GetDC
+A 000125b0 GetActiveWindow
+A 000125c2 OffsetRect
+A 000125d0 GetWindowRect
+A 000125e0 ClientToScreen
+A 000125f2 MoveWindow
+A 00012600 GetParent
+A 0001260c SetWindowRgn
+A 0001261c EqualRect
+A 00012628 IntersectRect
+A 00012638 ShowWindow
+A 00012646 PtInRect
+A 00012652 DefWindowProcA
+A 00012664 GetDlgItemInt
+A 00012674 WinHelpA
+A 00012680 CharNextA
+A 0001268c EndDialog
+A 00012698 GetNextDlgTabItem
+A 000126ac GetKeyState
+A 000126ba IsWindowEnabled
+A 000126cc CreateDialogIndirectParamA
+A 000126ea DialogBoxParamA
+A 000126fc LoadIconA
+A 00012708 DrawEdge
+A 00012714 DrawIcon
+A 00012720 LoadCursorA
+A 0001272e RegisterClassA
+A 00012740 PostMessageA
+A 00012750 SendMessageA
+A 00012760 GetDlgItem
+A 0001276e SetDlgItemTextA
+A 00012780 GetDlgItemTextA
+A 00012792 MessageBeep
+A 000127a0 MessageBoxA
+A 000127ae SendDlgItemMessageA
+A 000127c4 CheckDlgButton
+A 000127d6 SetDlgItemInt
+A 000127e6 BeginPaint
+A 000127f4 LoadStringA
+A 00012802 IsDlgButtonChecked
+A 00012818 SetParent
+A 00012824 IsWindowVisible
+A 00012836 CreateWindowExA
+A 00012848 SetWindowPos
+A 00012858 SetWindowLongA
+A 0001286a DestroyWindow
+A 0001287a UnregisterClassA
+A 0001288e GetWindow
+A 0001289a GetWindowTextA
+A 000128ac IsDialogMessageA
+A 000128c0 IsChild
+A 000128ca wsprintfA
+A 000128d6 RegisterClipboardFormatA
+A 000128f2 GetSystemMetrics
+A 00012906 SetFocus
+A 00012912 EndPaint
+A 0001291e GetClientRect
+A 0001292e GetWindowLongA
+A 00012940 CreateOleAdviseHolder
+A 00012958 CoCreateInstance
+A 0001296c CoTaskMemAlloc
+A 0001297e ReleaseStgMedium
+A 00012992 CoTaskMemFree
+A 000129a2 RegDeleteKeyA
+A 000129b2 RegQueryValueA
+A 000129c4 RegOpenKeyA
+A 000129d2 RegEnumKeyExA
+A 000129e2 RegCloseKey
+A 000129f0 RegOpenKeyExA
+A 00012a00 RegSetValueExA
+A 00012a12 RegCreateKeyExA
+A 00012a24 RegDeleteValueA
+A 00012a36 SetWindowExtEx
+A 00012a48 SetViewportOrgEx
+A 00012a5c SetMapMode
+A 00012a6a SetViewportExtEx
+A 00012a7e CreateDCA
+A 00012a8a LPtoDP
+A 00012a94 GetViewportExtEx
+A 00012aa8 SetWindowOrgEx
+A 00012aba GetWindowExtEx
+A 00012acc CreateRectRgnIndirect
+A 00012ae4 DeleteDC
+A 00012af0 GetDeviceCaps
+A 00012c00 MAPISession General Propery Page
+A 00012c24 mapiSesWndClass
+A 00012c34 Microsoft MAPI Session Control, version 5.0
+A 00012c60 MAPISession
+A 00012c6c MAPIMessages General Propery Page
+A 00012c90 mapiMsgWndClass
+A 00012ca0 MAPI96.HLP
+A 00012cac Microsoft MAPI Messages Control, version 5.0
+A 00012cdc MAPIMessages
+A 00012e4c {%08lX-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+A 00012e80 MAPI32.DLL
+A 00013040 MAPIFreeBuffer
+A 00013068 MAPIReadMail
+A 0001307c MAPISendMail
+A 00013090 MAPIDeleteMail
+A 000130a4 MAPIDetails
+A 000130b4 MAPIResolveName
+A 000130c8 MAPISaveMail
+A 000130dc MAPIFindNext
+A 000130f0 MAPIAddress
+A 00013208 MAPILogoff
+A 0001322c MAPILogon
+A 00013260 CtlFrameWork_ReflectWindow
+A 0001454a stdole2.tlbWWW8
+A 00014764 MSMAPIWW
+A 00014778 DeleteConstantsWd
+A 00014794 MessagesActionConstantsW
+A 000147b7 VMAPIErrorsWW,
+A 000147d0 ErrorConstantsWW
+A 000147e9 8}bRecipTypeConstantsWW
+A 0001480c AttachTypeConstantsWX
+A 0001482c SessionActionConstantsWW
+A 0001484d 82GIMapiSession 
+A 00014868 MAPISessionEventsWWW
+A 00014888 MAPISessionW
+A 000148a0 IMapiMessagesWWWL
+A 000148bc MAPIMessagesEventsWW
+A 000148dc MAPIMessages
+A 000148f1 0\KmapMessageDelete
+A 00014910 mapRecipientDeleteWW
+A 0001492f BmapAttachmentDeleteWd
+A 0001494f 'mapFetchd
+A 00014961 0wAmapSendDialogWWWd
+A 00014980 mapSendWd
+A 00014994 mapSaveWd
+A 000149a8 mapCopyWd
+A 000149bb emapComposeWWd
+A 000149d4 mapReplyd
+A 000149e8 mapReplyAllWd
+A 000149ff MmapForwardWWd
+A 00014a14 	0hHmapDeleteWWWd
+A 00014a2f @mapShowAddressBookWWd
+A 00014a50 mapShowRecipDetailsWd
+A 00014a6d 0A$mapResolveNameWWd
+A 00014a8b emapDeleteRecipWWd
+A 00014aa7 -mapDeleteAttachmentW
+A 00014ac8 mapSuccessSuccessWWW
+A 00014ae8 mapUserAbort
+A 00014b00 mapFailureWW
+A 00014b18 mapLoginFail
+A 00014b30 mapDiskFullW
+A 00014b48 mapInsufficientMemWW
+A 00014b68 mapAccessDeniedW
+A 00014b84 mapGeneralFailureWWW
+A 00014ba4 mapTooManySessionsWW
+A 00014bc1 0$WmapTooManyFilesW
+A 00014be0 mapTooManyRecipients
+A 00014c00 mapAttachmentNotFoundWWW
+A 00014c24 mapAttachmentOpenFailure
+A 00014c48 mapAttachmentWriteFailureWWW
+A 00014c70 mapUnknownRecipientW
+A 00014c8f kmapBadRecipTypeW
+A 00014ca9 0**mapNoMessagesWWW
+A 00014cc8 mapInvalidMessageWWW
+A 00014ce7 $mapTextTooLargeW
+A 00014d04 mapInvalidSessionWWW
+A 00014d24 mapTypeNotSupportedW
+A 00014d44 mapAmbiguousRecipientWWW
+A 00014d68 mapMessageInUseW
+A 00014d83 MmapNetworkFailureWWW
+A 00014da4 mapInvalidEditFields
+A 00014dc4 mapInvalidRecips
+A 00014de0 mapNotSupportedW
+A 00014dfb rmapSessionExistW
+A 00014e18 mapInvalidBuffer
+A 00014e31 0>gmapInvalidReadBufferActionWW
+A 00014e5b %mapNoSession
+A 00014e73 8mapInvalidRecipientW
+A 00014e94 mapInvalidComposeBufferActionWWW
+A 00014ebd 02omapControlFailureWWW
+A 00014ee0 mapNoRecipientsW
+A 00014efb ;mapNoAttachmentW,
+A 00014f17 xmpeOutOfMemoryWW,
+A 00014f34 mpeErrorLoadingMAPIW,
+A 00014f53 <mpeInvalidPropertyValueW,
+A 00014f78 mpeInvalidPropertyArrayIndex,
+A 00014fa0 mpeSetNotSupportedWW,
+A 00014fbd 0HampeGetNotSupportedWW,
+A 00014fdf &mpeUserCancelled,
+A 00014ffc mpeUnspecifiedFailureWWW,
+A 00015020 mpeLoginFailedWW,
+A 0001503c mpeDiskFullW,
+A 00015054 mpeInsufficientMemoryWWW,
+A 00015078 mpeAccessDeniedW,
+A 00015091 0\smpeMAPIFailureWW,
+A 000150af KmpeTooManySessionsWW,
+A 000150cf {mpeTooManyFilesW,
+A 000150ec mpeTooManyRecipients,
+A 0001510c mpeAttachmentNotFoundWWW,
+A 00015130 mpeFailedOpeningAttachmentWW,
+A 00015158 mpeFailedWritingAttachmentWW,
+A 00015180 mpeUnknownRecipientW,
+A 000151a0 mpeInvalidRecipientTypeW,
+A 000151c3 `mpeNoMessagesWWW,
+A 000151e0 mpeInvalidMessageWWW,
+A 000151ff 9mpeTextTooLargeW,
+A 0001521c mpeInvalidSessionWWW,
+A 0001523b %mpeTypeNotSupportedW,
+A 0001525b )mpeAmbiguousRecipientWWW,
+A 00015280 mpeMessageInUseW,
+A 0001529b #mpeNetworkFailureWWW,
+A 000152bb TmpeInvalidEditFields,
+A 000152dc mpeInvalidRecipients,
+A 000152fc mpeNotSupportedW,
+A 00015318 mpeUserAbortedAction,
+A 00015338 mpeMAPIMissingWW,
+A 00015354 mpeLogonFailureW,
+A 00015370 mpePropertyIsReadOnlyWWW,
+A 00015394 mpeInvalidAction,
+A 000153b0 mpeNoValidSessionIDW,
+A 000153d0 mpeNoOriginatorW,
+A 000153ec mpeActionNotValidWWW,
+A 00015409 086mpeNoMessageList,
+A 00015428 mpeNoRecipientsW,
+A 00015444 mpeNoAttachments
+A 0001545d 0emmapOrigListW
+A 00015474 	0^lmapToListWWW
+A 0001548c 	0%#mapCcListWWW
+A 000154a7 $mapBccListWW
+A 000154bd 0>amapDataW
+A 000154d3 pmapEOLEW
+A 000154e7 ?mapSOLEWX
+A 000154fb 'mapSignOnWWWX
+A 00015514 mapSignOffWW
+A 0001552c DownLoadMail
+A 00015542 Y|pbDownloadMailWW
+A 00015560 LogonUIW
+A 00015573 wpbLogonUIWWW
+A 0001558a pbNewSessionWW
+A 000155a4 pbNewSession
+A 000155bb RActionWW
+A 000155d0 psAction
+A 000155e3 ;SessionIDWWW
+A 000155fa o$plSessionIDW
+A 00015614 Password
+A 00015626 b$pbstrPasswordWWW
+A 00015644 UserName
+A 00015657 ;pbstrUserNameWWW
+A 00015673 gSignOnWW
+A 00015687 fSignOffW
+A 0001569c AboutBox
+A 000156b0 AddressCaptionWW
+A 000156cc pbstrAddressCaptionW
+A 000156ec AddressEditFieldCountWWW
+A 0001570f :psAddressEditFieldCountW
+A 00015733 .AddressLabel
+A 0001574b bpbstrAddressLabelWWW
+A 0001576c AddressModifiableWWW
+A 0001578c pbAddressModifiableW
+A 000157ac AddressResolveUI
+A 000157c7 QpbAddressResolveUIWW
+A 000157e6 ]fAttachmentCountW
+A 00015803 NplAttachmentCountWWW
+A 00015824 AttachmentIndexW
+A 00015840 plAttachmentIndexWWW
+A 00015860 AttachmentNameWW
+A 0001587a 9ApbstrAttachmentNameW
+A 0001589c AttachmentPathNameWW
+A 000158bb zpbstrAttachmentPathNameW
+A 000158df sAttachmentPositionWW
+A 00015900 plAttachmentPosition
+A 00015920 AttachmentTypeWW
+A 0001593c psAttachmentType
+A 00015958 FetchMsgType
+A 00015970 pbstrFetchMsgTypeWWW
+A 0001598f TFetchSortedW
+A 000159a8 pbFetchSortedWWW
+A 000159c2 |4FetchUnreadOnlyW
+A 000159df 'pbFetchUnreadOnlyWWW
+A 00015a00 MsgConversationIDWWW
+A 00015a1e qhpbstrMsgConversationIDWW
+A 00015a44 MsgCount
+A 00015a58 plMsgCountWW
+A 00015a70 MsgDateReceivedW
+A 00015a8c pbstrMsgDateReceived
+A 00015aac MsgIDWWW
+A 00015ac0 pbstrMsgIDWW
+A 00015ad8 MsgIndex
+A 00015aec plMsgIndexWW
+A 00015b02 ,UMsgNoteTextW
+A 00015b1b BpbstrMsgNoteText
+A 00015b38 MsgOrigAddressWW
+A 00015b54 pbstrMsgOrigAddressW
+A 00015b72 w^MsgOrigDisplayNameWW
+A 00015b94 pbstrMsgOrigDisplayNameW
+A 00015bb8 MsgReadW
+A 00015bcb 7pbMsgReadWWW
+A 00015be4 MsgReceiptRequestedW
+A 00015c04 pbMsgReceiptRequestedWWW
+A 00015c27 rMsgSentW
+A 00015c3c pbMsgSentWWW
+A 00015c53 NRecipAddress
+A 00015c6c pbstrRecipAddressWWW
+A 00015c8c RecipCountWW
+A 00015ca2 dKplRecipCount
+A 00015cbc RecipDisplayName
+A 00015cd7 _pbstrRecipDisplayNameWWW
+A 00015cfa =;RecipIndexWW
+A 00015d14 plRecipIndex
+A 00015d2c RecipTypeWWW
+A 00015d43 NpsRecipTypeW
+A 00015d5b =MsgSubjectWW
+A 00015d74 pbstrMsgSubjectW
+A 00015d90 MsgTypeW
+A 00015da4 pbstrMsgType
+A 00015dbc ComposeW
+A 00015ddf xDeleteWW
+A 00015df2 kivObj
+A 00015e02 3lFetchWWW
+A 00015e18 ForwardW
+A 00015e2b /ReplyWWW
+A 00015e3e p|ReplyAll
+A 00015e52 "\ResolveNameW
+A 00015e8c vDetails
+A 00015eb0 vDialogW
+A 00015eba Microsoft MAPI Controls 5.0WWW
+A 00015eda MSMapi32.OCXWW
+A 00015eea MAPI96.HLP
+A 00015ef6 Constants for DeleteWW/
+A 00015f0e Constants for Messages control Action property.WWW
+A 00015f42 MAPI Error CodesWW
+A 00015f56 Error ConstantsWWW 
+A 00015f6a Constants for RecipType PropertyWW!
+A 00015f8e Constants for AttachType PropertyW.
+A 00015fb2 Constants for Session control Action property.
+A 00015fe2 Microsoft MAPI Session Control
+A 00016002 Microsoft MAPI Messages ControlWWW3
+A 00016026 Event interface for Microsoft MAPI Messages ControlWWW
+A 0001605e Delete current message
+A 00016076 Fill compose buffer as FORWARD:
+A 00016096 Creates a message set from selected messages in the Inbox.:
+A 000160d2 Shows the Send dialog for composing and sending a message.2
+A 0001610e Sends the message currently in the Compose buffer.G
+A 00016142 Saves the message currently in the compose buffer (with MsgIndex = -1).WWW;
+A 0001618e Copies the currently indexed message to the compose buffer.WWW
+A 000161ce Composes a message.WWW
+A 000161e6 Replies to a message.W"
+A 000161fe Replies to all message recipients.
+A 00016222 Forwards a message.WWW&
+A 0001623a Deletes the currently indexed message.
+A 00016262 Shows the Address Book.WWW4
+A 0001627e Shows details about the currently indexed recipient.WW5
+A 000162b6 Resolves the name of the currently indexed recipient.W(
+A 000162ee Deletes the currently indexed recipient.WW)
+A 0001631a Deletes the currently indexed attachment.W
+A 00016346 Command completed successfully
+A 00016366 User aborted previous actionWW 
+A 00016386 Unspecified Failure has occurredWW
+A 000163aa Login failureW	
+A 000163ba Disk fullW
+A 000163c6 Insufficient memoryWWW
+A 000163de Access deniedW
+A 000163ee General FailureWWW
+A 00016402 Too many sessionsW
+A 00016416 Too many files
+A 00016426 Too many recipientsWWW
+A 0001643e Attachment not foundWW
+A 00016456 Attachment open failureWWW
+A 00016472 Attachment write failureWW
+A 0001648e Unknown recipientW
+A 000164a2 Bad recipient type
+A 000164b6 No message
+A 000164c2 Invalid messageWWW
+A 000164d6 Text too large
+A 000164e6 Invalid sessionWWW
+A 000164fa Type not supported
+A 0001650e Ambiguous recipientWWW
+A 00016526 Message in use
+A 00016536 Network failureWWW
+A 0001654a Invalid edit fieldsWWW
+A 00016562 Invalid recipients
+A 00016576 Current action not supportedWW
+A 00016596 Session ID already existsW
+A 000165b2 Read-only in read bufferWW
+A 000165ce Valid in compose buffer onlyWW
+A 000165ee No valid session IDWWW$
+A 00016606 Originator information not availableWW"
+A 0001662e Action not valid in compose buffer
+A 00016652 Control failureWWW
+A 00016666 No recipientsW
+A 00016676 No attachments
+A 00016686 Out of memoryW
+A 00016696 Error in loading MAPI DLLW
+A 000166b2 Invalid property value
+A 000166ca Invalid property array indexWW
+A 000166ea Property is read-onlyW
+A 00016702 Property is write-only
+A 0001671a User cancelled process
+A 00016732 Login has failedWW
+A 00016746 Disk is fullWW
+A 00016756 MAPI failureWW
+A 00016766 Failure on opening attachmentW)
+A 00016786 Failure attempting to write an attachmentW
+A 000167b2 Invalid recipient type
+A 000167ca No messagesWWW
+A 000167da Text is too largeW
+A 000167ee Invalid recipients.WWW
+A 00016806 Not supportedW(
+A 00016816 The user has aborted the previous actionWWM
+A 00016842 A MAPI compliant messaging system is required. MAPI32.DLL couldn't be loaded.W.
+A 00016892 Logon failure: valid session ID already existsF
+A 000168c2 Property is read only when not using compose buffer. Set MsgIndex = -17
+A 0001690a Action only valid for compose buffer. Set MsgIndex = -1WWW-
+A 00016946 MAPI Failure: valid session ID does not existW#
+A 00016976 No originator in the compose bufferWWW#
+A 0001699e Action not valid for compose bufferWWW*
+A 000169c6 Cannot perform action, no messages in list$
+A 000169f2 Cannot perform action, no recipientsWW%
+A 00016a1a Cannot perform action, no attachmentsW
+A 00016a42 Message originator 
+A 00016a56 Recipient is a primary recipientWW
+A 00016a7a Recipient is a copy recipientW#
+A 00016a9a Recipient is a blind copy recipientWWW
+A 00016ac2 Attachment is a data fileW$
+A 00016ade Attachment is an embedded OLE objectWW!
+A 00016b06 Attachment is a static OLE objectW
+A 00016b2a Log user into account.
+A 00016b42 End messaging session.O
+A 00016b5a Specifies if any new mail should be downloaded when a new session is initiated.WWW>
+A 00016bae Specifies whether or not a dialog box is provided for sign-on.e
+A 00016bee Specifies whether a new mail session should be established, even if a valid session currently exists.WN
+A 00016c56 Determines what action is performed when the MAPI messages control is invoked.,
+A 00016ca6 Stores the current messaging session handle.WWE
+A 00016cd6 Specifies the account password associated with the UserName property.W 
+A 00016d1e Specifies the account user name.WWq
+A 00016d42 Starts the messaging session and signs the user on the account specified by the UserName and Password properties.Wp
+A 00016db6 Ends the messaging session and signs the user off the account specified by the UserName and Password properties.WWJ
+A 00016e2a Specifies the caption appearing at the top of the Address Book dialog box.[
+A 00016e76 Specifies the number of edit controls available to the user in the Address Book dialog box.WWWD
+A 00016ed6 Specifies the appearance of the To edit control in the Address Book.WW3
+A 00016f1e Specifies whether the Address Book can be modified.WWW
+A 00016f56 Specifies whether a dialog box is displayed for recipient name resolution during addressing when the ResolveName method is specified.WX
+A 00016fde Specifies the total number of attachments associated with the currently indexed message.WW&
+A 0001703a Sets the currently indexed attachment.<
+A 00017062 Specifies the name of the currently indexed attachment file.WW@
+A 000170a2 Specifies the full path name of the currently indexed attachmentWWR
+A 000170e6 Specifies the position of the currently indexed attachment within the message body<
+A 0001713a Specifies the type of the currently indexed file attachment.WW7
+A 0001717a Specifies the message type to populate the message set.WWWY
+A 000171b6 Specifies the message order when populating the message set with messages from the Inbox.WW
+A 00017212 Determines whether to restrict the messages in the message set to unread messages only.WWWY
+A 0001726e Specifies the conversation thread identification value for the currently indexed message.Wg
+A 000172ca Indicates the total number of messages present in the message set during the current messaging session.WWWG
+A 00017336 Specifies the date on which the currently indexed message was received.WWWA
+A 00017382 Specifies the string identifier of the currently indexed message.W<
+A 000173c6 Specifies the index number of the currently indexed message.WW'
+A 00017406 Specifies the text body of the message.WWWM
+A 00017432 Indicates the mail address of the originator of the currently indexed messageWA
+A 00017482 Specifies the originator's name for the currently indexed messageW4
+A 000174c6 Indicates whether the message has already been read.WWR
+A 000174fe Specifies whether a return receipt is requested for the currently indexed message.i
+A 00017552 Specifies whether the currently indexed message has already been sent to the mail server for distributionWI
+A 000175be Specifies the electronic mail address of the currently indexed recipient.WK
+A 0001760a Specifies the total number of recipients for the currently indexed message.WWW6
+A 0001765a Specifies the name of the currently indexed recipient.$
+A 00017692 Sets the currently indexed recipientWW6
+A 000176ba Specifies the type of the currently indexed recipient._
+A 000176f2 Specifies the subject line for the currently indexed message as displayed in the message headerWWW4
+A 00017756 Specifies the type of the currently indexed message.WW6
+A 0001778e Specifies what action is performed by the MAPI Control,
+A 000177c6 Deletes a message, recipient, or attachment.WW2
+A 000177f6 Shows details about recipient or the Address Book.
+A 0001a8f5 333333333333330
+A 0001a93a wwwwwwwwx
+A 0001ac36 wwwxho
+A 0001acc4 xxxwww
+A 0001acd4 wwwwww
+A 0001acf4 ????????8x
+A 0001ad13 ??????????0{
+A 0001ad31 {{{{{{{{{{{{{{
+A 0001f008 @2F2U2c2v2
+A 0001f031 3'3.373>3G3N3V3[3f3t3{3
+A 0001f051 4*4Z4m4s4
+A 0001f085 6R6Z6
+A 0001f08d 737\7e7
+A 0001f09b 8:9]9
+A 0001f0bb :#:):/:^:h:r:
+A 0001f10f ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0001f18b < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 0001f203 = =$=(=,=0=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 0001f263 >&>->4>;>B>I>P>V>\>e>x>
+A 0001f2b7 ? ?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0001f313 0!0(0.040;0B0I0O0V0]0d0k0(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1p1t1x1|1
+A 0001f39f 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0001f41b 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3x3|3
+A 0001f495 4 4$4(4,404S4[4`4f4
+A 0001f4d1 5!5*545H5L5P5X5\5`5d5h5r5
+A 0001f4f1 666C6P6
+A 0001f4fd 6Y7d7
+A 0001f529 9?:F:
+A 0001f52f :/;=;
+A 0001f53f ="=(=2===D=K=Q=Y=_=r=
+A 0001f555 =0>>>G>_>f>m>t>{>
+A 0001f593 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0001f61b 0 0$0(0,0004080<0@0D0H0L0P0T0l0y0
+A 0001f63d 0!102;2B2I2P2W2^2e2l2s2z2
+A 0001f66d 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0001f6ed 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4p4t4x4|4
+A 0001f769 5 5$5(5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 0001f7a7 6"7)7<7C7J7Q7X7_7f7m7t7{7
+A 0001f7fd 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8
+A 0001f875 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0001f8f1 :$:-:4:;:B:I:P:W:^:e:l:s:z:
+A 0001f90d : ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0001f989 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 0001f9e5 = =$=(=,=0=4=<=J=P=V=^=d=n=
+A 0001fa1d =">*>1>8>?>F>M>T>[>b>i>p>w>~>
+A 0001fa67 ? ?$?(?,?0?4?8?<?@?D?H?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0001faeb 0 0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0
+A 0001fb63 1 1$1(1,1014181<1@1I1O1U1`1d1h1l1p1t1x1|1
+A 0001fb9b 252>2
+A 0001fba3 2d3y3
+A 0001fbad 3&4^4
+A 0001fbbd 6$7^7}7%8/8V8f8u8
+A 0001fbff <	=v=
+A 0001fc10 +0M0f0~0
+A 0001fc1d 061A1Q1n1
+A 0001fc2f 2.2{2
+A 0001fc4b 3#3C3I3g3n3
+A 0001fc63 4!4:4N4e4q4w4
+A 0001fca3 9"9&9*9.92969:9>9B9u>
+A 0001fce1 >">I>}>
+A 0001fcf9 ?6?V?
+A 0001fd10 &010\0g0
+A 0001fd1f 1=1H1~1
+A 0001fd2f 252@2
+A 0001fd3b 20373
+A 0001fd45 5%5.5T5Z5
+A 0001fd53 646=6F6^667?7N7q7w7
+A 0001fd6f 7 8'8U8\8v8~8'9-9F9Q9]9m9z9
+A 0001fd8d :":X:g:x:
+A 0001fd9d :A;J;V;[;a;g;m;w;};
+A 0001fdb9 ;m<s<
+A 0001fdc7 < =&=k=q=<>L>R>e>k>u>
+A 0001fde1 >P?X?e?r?
+A 0001fe05 5E6K6
+A 0001fe13 :U;[;
+A 0001fe19 <%<c<p<
+A 0001fe31 4T4Z4q4~4
+A 0001fe4b 415B5l5
+A 0001fe59 5>6D6Z6w6
+A 0001fe63 6?7J7P7y7
+A 0001fe79 9$9b9
+A 0001fe91 :-:>:O:V:\:Y<
+A 0001fea1 =9=L=U=
+A 0001feb9 1f2l2i3o3R4X4
+A 0001fecb 616a6
+A 0001fee3 9G9U9b9h9z9
+A 0001fef7 :i;q;~;
+A 0001ff0b <Q=_=l=t=
+A 0001ff15 =E>L>Y>a>z>
+A 0001ff3c X0f0s0y0
+A 0001ff49 0+121?1E1i1
+A 0001ff7d 4B4M4Z4`4n4
+A 0001ff89 525A5N5T5h5
+A 0001ff9d 596Q6
+A 0001ffa7 8$81878E8y8
+A 0001ffbb 9v<}<
+A 0001ffd7 =$=*=
+A 0001ffe5 =9>z>
+A 0001ffed >=?~?
+A 0001fffd 0B0c0
+A 0002000b 1&1@1h1
+A 00020013 1H2e2t2
+A 0002001d 2>3s3
+A 00020023 4Q5v5}5
+A 0002002f 6=6o6
+A 00020037 6%7y7
+A 0002003d 7)8b9x9
+A 00020061 <">)>0>Y>`>f>
+A 00020071 >2?p?
+A 0002008f 1:1J1
+A 00020099 1@2j2
+A 000200a7 414_4
+A 000200b9 6%6?6J6e6t6
+A 000200c9 6,7n7
+A 000200d5 838L8X8d8
+A 00020107 =	='=d=s=
+A 0002011b >2>k>y>
+A 0002012b ?6?M?|?
+A 0002014b 0&0^0p0
+A 00020165 2%2:2E2K2
+A 00020171 2-3>3D3P3z3
+A 00020189 4B4[4k4u425`5n5
+A 000201a3 7D7m7}7
+A 000201ab 7&808
+A 000201bf 9"9(919G9M9s9{9
+A 000201db 9):.:;:M:g:t:
+A 000201f7 ;+;<;N;W;m;z;
+A 00020213 <'<A<K<T<f<y<
+A 0002022f =%=5=K=\=n=w=
+A 0002024d >)>?>H>[>j>
+A 0002028b 0J0g0p0
+A 000202a7 1&1/1G1]1q1y1
+A 000202bd 132B2
+A 000202cb 2*373d3q3
+A 000202db 4.4M4Y4l4
+A 000202f3 555B5`5r5
+A 0002030b 7#8.8A8P8V8x8~8
+A 00020323 9 9:9A9\9b9
+A 0002032f 9,:2:L:f:z:
+A 0002033f :3;C<
+A 00020347 =W=f=z=
+A 00020361 041C1\1r1|1
+A 00020375 1F2q2
+A 00020383 3L4m4L5
+A 0002038b 5[6t6
+A 0002039f 8$858B8O8Z8
+A 000203af 9N:T:
+A 000203c1 ;S;e;};
+A 000203cd ;*<Q<W<
+A 000203df <E=]=c=
+A 000203fd >&?2?T?]?|?
+A 00020419 0(0U0[0
+A 00020439 1]2f2
+A 00020443 3;3R3|3
+A 00020451 4#4L4w4
+A 0002045f 475_5
+A 00020467 5-6F6L6}6
+A 00020493 81898
+A 000204a5 9&949C9
+A 000204bb :!:-:7:H:Q:X:]:j:p:w:}:
+A 000204db ;*;A;K;Q;
+A 000204f7 </<5<;<I<R<W<]<c<w<}<
+A 00020519 <D=K=Q=e=s=z=
+A 0002053f >">.>:>H>\>a>f>l>q>
+A 00020561 >[?d?v?|?
+A 00020593 2 2$2(2,2024282<2@2H2L2P2T2X2\2`2d2h2p2t2x2|2
+A 000205f1 2`3d3h3l3p3x3|3
+A 00020653 6 6$6(6,6064686<6@6D6H6L6P6T6X6`6d6h6l6p6t6
+A 000206dd 10181H1L1X1d1p1t1x1
+A 0002070d 2(2,2024282 3@3`3
+A 00020727 4 5H5h5
+A 0002080c msmapi32.dbg
+U 00000ca8 DB4C0D00-400B-101B-A3C9-08002B2F49FB
+U 00003904 _ExtentY
+U 00003918 _ExtentX
+U 00003af8 AddressCaption
+U 00003b18 AddressEditFieldCount
+U 00003b48 AddressLabel
+U 00003b68 AddressModifiable
+U 00003b90 AddressResolveUI
+U 00003bb8 FetchMsgType
+U 00003bd8 FetchSorted
+U 00003bf0 FetchUnreadOnly
+U 00003da0 DownloadMail
+U 00003dc0 LogonUI
+U 00003dd0 NewSession
+U 00003de8 Password
+U 00003e00 UserName
+U 00003f58 899B3E80-6AC6-11cf-8ADB-00AA00C00905
+U 00003fa8 mgkgtgnnmnmninigthkgogggvmkhinjggnvm
+U 00011b98 Contents
+U 00011bac _ExtentY
+U 00011bc0 _ExtentX
+U 00013054 _Version
+U 00013100 Message
+U 00013110 Address
+U 00013218 _Version
+U 0001323c User
+U 00013248 Session
+U 00013a8a TYPELIB
+U 0001ae8a About Microsoft MapiMessages Control
+U 0001aed6 MS Sans Serif
+U 0001af26 MapiMessages Control, Version 5.0
+U 0001af82 Copyright © 1997, Microsoft
+U 0001aff2 About Microsoft MapiSession Control
+U 0001b03c MS Sans Serif
+U 0001b08a MapiSession Control, Version 5.0
+U 0001b0e6 Copyright © 1997, Microsoft
+U 0001b15a MS Sans Serif
+U 0001b18e &UserName:
+U 0001b1da &Password:
+U 0001b226 &DownloadMail
+U 0001b25a &LogonUI
+U 0001b286 &NewSession
+U 0001b2ba MS Sans Serif
+U 0001b2ee A&ddressCaption:
+U 0001b346 AddressEditField&Count:
+U 0001b3aa Address&Label:
+U 0001b3fe Address&Modifiable
+U 0001b43e Address&ResolveUI
+U 0001b47a FetchMsg&Type
+U 0001b4ca Fetch&Sorted
+U 0001b4fe Fetch&UnreadOnly
+U 0001b52a VS_VERSION_INFO
+U 0001b586 StringFileInfo
+U 0001b5aa 040904B0
+U 0001b5c2 CompanyName
+U 0001b5dc Microsoft Corporation
+U 0001b60e FileDescription
+U 0001b630 MSMAPI Controls
+U 0001b656 FileVersion
+U 0001b670 5.00.3721
+U 0001b68a InternalName
+U 0001b6a4 MSMAPI32.OCX
+U 0001b6c6 LegalCopyright
+U 0001b6e4 Copyright © 1987-1997 Microsoft Corp.
+U 0001b736 LegalTrademarks
+U 0001b758 Microsoft® is a registered trademark of Microsoft Corporation. Windows(TM) is a trademark of Microsoft Corporation
+U 0001b846 ProductName
+U 0001b860 MSMAPI Controls Library
+U 0001b896 ProductVersion
+U 0001b8b4 5.00.3721
+U 0001b8ce Comments
+U 0001b8e0 January 21, 1997
+U 0001b90a OLESelfRegister
+U 0001b932 VarFileInfo
+U 0001b952 Translation
+U 0001b972 Microsoft MAPI Controls 5.0
+U 0001b9aa Constants for Delete
+U 0001b9d4 Delete current message
+U 0001ba02 Fill compose buffer as FORWARD
+U 0001ba40 Delete current message
+U 0001ba6e MAPI Error Codes
+U 0001ba90 Command completed successfully Unspecified Failure has occurred
+U 0001bb10 Login failure
+U 0001bb2c Disk full
+U 0001bb40 Insufficient memory
+U 0001bb68 Access denied
+U 0001bb84 General Failure
+U 0001bba4 Too many sessions
+U 0001bbc8 Too many files
+U 0001bbe6 Too many recipients&Deletes the currently indexed message.
+U 0001bc5c Shows the Address Book.4Shows details about the currently indexed recipient.(Deletes the currently indexed recipient.)Deletes the currently indexed attachment./Constants for Messages control Action property.
+U 0001bdfc MAPI Property Page
+U 0001be44 Out of memory
+U 0001be8a Invalid property value
+U 0001beb8 Invalid property array index
+U 0001bef4 Property is read-only
+U 0001bf22 Error in loading MAPI DLL
+U 0001bf8a Property is write-only
+U 0001bfc4 User cancelled process Unspecified Failure has occurred
+U 0001c034 Login has failed
+U 0001c056 Disk is full
+U 0001c070 Insufficient memory
+U 0001c098 Access denied
+U 0001c0b4 MAPI failure
+U 0001c0ce Too many sessions
+U 0001c0f2 Too many files
+U 0001c110 Too many recipients
+U 0001c138 Attachment not found
+U 0001c162 Failure on opening attachment)Failure attempting to write an attachment
+U 0001c1f2 Unknown recipient
+U 0001c216 Invalid recipient type
+U 0001c246 No messages
+U 0001c25e Invalid message
+U 0001c27e Text is too large
+U 0001c2a2 Invalid session
+U 0001c2c2 Type not supported
+U 0001c2e8 Ambiguous recipient
+U 0001c310 Message in use
+U 0001c32e Network failure
+U 0001c34e Invalid edit fields
+U 0001c376 Invalid recipients.
+U 0001c39e Not supported(The user has aborted the previous action
+U 0001c414 MA MAPI compliant messaging system is required. MAPI32.DLL couldn't be loaded.
+U 0001c4b2 .Logon failure: valid session ID already existsFProperty is read only when not using compose buffer. Set MsgIndex = -17Action only valid for compose buffer. Set MsgIndex = -1-MAPI Failure: valid session ID does not exist#No originator in the compose buffer#Action not valid for compose buffer*Cannot perform action, no messages in list$Cannot perform action, no recipients%Cannot perform action, no attachments
+U 0001c7f2 Attachment not found
+U 0001c81c Attachment open failure
+U 0001c84c Attachment write failure
+U 0001c87e Unknown recipient
+U 0001c8a2 Bad recipient type
+U 0001c8c8 No message
+U 0001c8de Invalid message
+U 0001c8fe Text too large
+U 0001c91c Invalid session
+U 0001c93c Type not supported
+U 0001c962 Ambiguous recipient
+U 0001c98a Message in use
+U 0001c9a8 Network failure
+U 0001c9c8 Invalid edit fields
+U 0001c9f0 Invalid recipients
+U 0001ca16 Current action not supported
+U 0001ca52 User aborted previous action
+U 0001ca8c Session ID already exists
+U 0001cac0 Read-only in read buffer
+U 0001caf2 Valid in compose buffer only
+U 0001cb2c No valid session ID$Originator information not available"Action not valid in compose buffer
+U 0001cbe4 Control failure
+U 0001cc04 No recipients
+U 0001cc20 No attachments Constants for RecipType Property
+U 0001cc80 Message originator Recipient is a primary recipient
+U 0001cce8 Recipient is a copy recipient#Recipient is a blind copy recipient!Constants for AttachType Property
+U 0001cdb2 Attachment is a data file$Attachment is an embedded OLE object!Attachment is a static OLE object.Constants for Session control Action property.
+U 0001ced2 Log user into account.
+U 0001cf00 End messaging session.
+U 0001cf2e Microsoft MAPI Session Control Specifies the account user name.OSpecifies if any new mail should be downloaded when a new session is initiated.>Specifies whether or not a dialog box is provided for sign-on.eSpecifies whether a new mail session should be established, even if a valid session currently exists.NDetermines what action is performed when the MAPI messages control is invoked.,Stores the current messaging session handle.ESpecifies the account password associated with the UserName property.qStarts the messaging session and signs the user on the account specified by the UserName and Password properties.pEnds the messaging session and signs the user off the account specified by the UserName and Password properties.
+U 0001d4e2 Microsoft MAPI Messages ControlJSpecifies the caption appearing at the top of the Address Book dialog box.[Specifies the number of edit controls available to the user in the Address Book dialog box.DSpecifies the appearance of the To edit control in the Address Book.3Specifies whether the Address Book can be modified.
+U 0001d762 Specifies whether a dialog box is displayed for recipient name resolution during addressing when the ResolveName method is specified.XSpecifies the total number of attachments associated with the currently indexed message.&Sets the currently indexed attachment.<Specifies the name of the currently indexed attachment file.@Specifies the full path name of the currently indexed attachmentRSpecifies the position of the currently indexed attachment within the message body<Specifies the type of the currently indexed file attachment.7Specifies the message type to populate the message set.YSpecifies the message order when populating the message set with messages from the Inbox.WDetermines whether to restrict the messages in the message set to unread messages only.YSpecifies the conversation thread identification value for the currently indexed message.gIndicates the total number of messages present in the message set during the current messaging session.GSpecifies the date on which the currently indexed message was received.ASpecifies the string identifier of the currently indexed message.<Specifies the index number of the currently indexed message.'Specifies the text body of the message.MIndicates the mail address of the originator of the currently indexed messageASpecifies the originator's name for the currently indexed message4Indicates whether the message has already been read.RSpecifies whether a return receipt is requested for the currently indexed message.iSpecifies whether the currently indexed message has already been sent to the mail server for distributionISpecifies the electronic mail address of the currently indexed recipient.KSpecifies the total number of recipients for the currently indexed message.6Specifies the name of the currently indexed recipient.$Sets the currently indexed recipient6Specifies the type of the currently indexed recipient.,Stores the current messaging session handle.
+U 0001e670 _Specifies the subject line for the currently indexed message as displayed in the message header4Specifies the type of the currently indexed message.6Specifies what action is performed by the MAPI Control
+U 0001e80a Composes a message.;Copies the currently indexed message to the compose buffer.,Deletes a message, recipient, or attachment.:Creates a message set from selected messages in the Inbox.
+U 0001e97a Forwards a message.
+U 0001e9a2 Replies to a message."Replies to all message recipients.5Resolves the name of the currently indexed recipient.GSaves the message currently in the compose buffer (with MsgIndex = -1).2Shows details about recipient or the Address Book.2Sends the message currently in the Compose buffer.
+U 0001ebdc Error Constants:Shows the Send dialog for composing and sending a message.
+U 0001ec82 P&roperties
+U 0001ec9a MSMpi
+U 0001ecb4 General/General properties for the MapiMessages control.General properties for the MapiSession control
+U 0001ed82 Microsoft MAPI Controls
+U 0001edd2 Unknown error message
+U 0001ee08 RE: 
+U 0001ee12 FW: 
+U 0001ee1e Error #%d
+U 0001ee32 Invalid entry for %s
+U 0001ee70 (Parameter passed to Method is incorrect.

@@ -1,0 +1,3559 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001f8 .text
+A 0000021f `.rdata
+A 00000247 @.data
+A 00000270 .rsrc
+A 00001177 SUVWP
+A 00001642 D$b(Of
+A 000017b3 D$>08f
+A 00001995 l$8VU
+A 00001a2c T$PRV
+A 00001a53 D$DPVW
+A 000020b1 _^][d
+A 00002155 F`jPP
+A 00002693 ;L$$}
+A 0000269a L$$;L$
+A 000033ed _^][d
+A 00003472 <A|><F
+A 000034c0 QSUVW3
+A 0000353d _^][Y
+A 00003a1b SUVW3
+A 00003a58 L$<~S
+A 00003f3f L$lPQ
+A 0000401a L$lPQ
+A 000040ee L$lPQ
+A 000041c2 L$lPQ
+A 0000424a L$hPhX
+A 000042d9 L$hPhX
+A 00004361 L$hPhX
+A 000043e9 L$hPhX
+A 00004476 L$hPhX
+A 000044e7 L$hPhX
+A 00004551 L$hPhX
+A 000045bb L$hPhX
+A 00004ecf L$XPQ
+A 00004faf L$pPQ
+A 0000513d _^][d
+A 0000522e t8Hu0
+A 00005237 f=/uu&
+A 00005ba9 _^][d
+A 00005d36 L$h^d
+A 00005e27 L$h^d
+A 00005f06 L$h^d
+A 00005fe6 L$h^d
+A 0000623f _^][d
+A 0000684a 9L$\~
+A 0000687e 9T$X~
+A 000068ce T$X~D
+A 000069cb T$(h`
+A 00006a30 9T$X~
+A 00006a85 T$X~>
+A 00006ff6 _^][d
+A 000070a0 j@h0u
+A 000070b1 D$ hd
+A 0000710d L$t][_^d
+A 0000727c L$t][_^d
+A 0000732e L$ hd
+A 00007392 L$l_^d
+A 00007493 L$t][_^d
+A 00007590 L$t][_^d
+A 00007690 L$t][_^d
+A 00007eb4 L$hPQ
+A 0000842a _^][d
+A 0000848f u(Vh 
+A 0000851f u(Vh 
+A 000085af u(Vh 
+A 0000863f u(Vh 
+A 000086cf u(Vh 
+A 0000875f u(Vh 
+A 000088ee jzjzPV
+A 00008aae jzjzPV
+A 00008c6e jzjzPV
+A 00008e2e jzjzPV
+A 00009294 _^][d
+A 0000973e L$pPQ
+A 000099bd _^][d
+A 0000a216 PPPh0
+A 0000b330 QSUVW3
+A 0000b3c2 _^][Y
+A 0000c115 _^][d
+A 0000c166 N`jPQ
+A 0000d6a9 U$_^][
+A 0000e3cb 9|$8u
+A 0000e3e3 Q$_^][
+A 0000e4c4 D$ j	P
+A 0000ed4c u>j	W
+A 0000ef2c }(WPU
+A 0000f04d LL @;
+A 0000f07c f9T$ft)h
+A 0000f2bd ~3SUV
+A 0000fa01 D$ x'I
+A 0000fb6d L$$_^]
+A 00010278 &&&&&
+A 0001028c &&			
+A 000102cd &&&  
+A 000102fc &&&&&
+A 00010501 T$4t"f
+A 00010711 T$0QRWV
+A 0001074e D$8VP
+A 00011489 D$(Z)
+A 00011584 D$tPj
+A 00011592 L$`UQj
+A 00011656 t$ ~p3
+A 0001189f T$pQRj
+A 000118b2 L$`PQj
+A 00011a8d T$pQRj
+A 00011aa0 L$`PQj
+A 00011eef T$ A;
+A 00012440 L$$WQ
+A 0001379c D$xRhp
+A 00013a0d _^][d
+A 00013a44 L$LPQj
+A 00013c86 D,N<0s
+A 00013d45 P0_^][
+A 00014067 L$<QR
+A 00014139 D$lPQ
+A 00014146 T$XRP
+A 000141ab L$$j QR
+A 000141f2 L$$j QR
+A 00014209 L$lQR
+A 0001421f D$|0u
+A 00014317 t-VhD
+A 000143b0 D$DPQRh
+A 000144b6 D$8QRPh
+A 000144ed WPSQR
+A 0001459f D$8QRPh
+A 000145e9 D$8QVRPhL
+A 00014699 D$DPQRh
+A 000146ee D$DPQRh
+A 000147a8 D$8PSQh
+A 0001488e D$4PSQhl
+A 00014935 D$4PSQh8
+A 0001497a D$ _^]%
+A 000149db tYVhD
+A 00014a7c \$,t.VhD
+A 00014b31 t-VhD
+A 00014b81 t-VhD
+A 00014dbf L$<QR
+A 00014e63 D$XPQ
+A 00014e70 T$lRP
+A 00014e7e L$lQR
+A 00014ed2 L$$j QR
+A 00014f13 L$$j QR
+A 00014f3b D$`0u
+A 00014f80 T$XRP
+A 00014f95 SQj h
+A 0001546d PQRSW
+A 00015744 L$hSUV
+A 0001586c |$(~ 
+A 00015b4c D$7j0
+A 00015b52 D$<j@Pj
+A 00015df8 t;<*u	
+A 00016035 _^][d
+A 00016255 T$pPQRWV
+A 00016275 D$<PQR
+A 00016467 SUVW3
+A 0001656a T$(A;
+A 00016758 D$$G;
+A 00016cb5 D$[!j
+A 00016cbe D$2UPj
+A 00016f73 D$,UPj
+A 0001707a L$8h,
+A 000170ff D$0QSP
+A 000171e0 _^][d
+A 00017475 4Ul=G
+A 000176cd gfff+
+A 000177e5 D$,_^]
+A 00017f5f D$<B;
+A 00017f93 .=X\X
+A 00018240 @8Y	t
+A 000187f4 &&&&&
+A 00018808 &&			
+A 00018849 &&&  
+A 00018878 &&&&&
+A 00018d05 t;<*u	
+A 00018f42 _^][d
+A 00019246 L$(htVG
+A 000192c7 L$(htVG
+A 0001932c ^8UQSP
+A 00019349 T$,Qh,VG
+A 00019485 _^][d
+A 00019719 ODQPS
+A 00019841 QRPSU
+A 00019cf3 _^][Y
+A 0001a0e4 _^][Y
+A 0001a105 QSUVW
+A 0001a215 _^][d
+A 0001a42e |$$hP
+A 0001a8a9 A<NMH
+A 0001a8c0 _[^]Y
+A 0001aa00 ~4_^[
+A 0001abf1 L$4QR
+A 0001ac55 D$DPQ
+A 0001aed2 L$T_^][d
+A 0001afb8 L$$^d
+A 0001afeb l$HVW
+A 0001b069 T$0RP
+A 0001b07f L$$PQ
+A 0001b0ac #D$(j
+A 0001b0cd D$$SP
+A 0001b26e L$@_^]d
+A 0001b2a8 SUVWj
+A 0001b2c5 L$DQj
+A 0001b311 L$4SIQ
+A 0001b379 l$4KS
+A 0001b3ae L$D_^]
+A 0001b459 t$,SUW
+A 0001b48e D$<PQ
+A 0001b4b7 D$<PQ
+A 0001bc77 l$ tvj
+A 0001bd50 _^][d
+A 0001be98 SUVW3
+A 0001c16c _^][Y
+A 0001c2db l$TVW3
+A 0001c37f N@9i<}
+A 0001c40c L$LRSf
+A 0001c4d0 L$L_^
+A 0001c637 F@A;H<|
+A 0001c7ca F@9x<
+A 0001c87b F@A;H<
+A 0001cae3 Nh_^][
+A 0001cd0a t&_^]
+A 0001d0f2 l$(VW
+A 0001d150 L$8RPSUQ
+A 0001d276 D$0PQ
+A 0001d284 9t$8|
+A 0001d43c D$(PQ
+A 0001d4e5 D$<PQ
+A 0001dc4a _^][d
+A 0001de3c @ SShK
+A 0001de64 t.\hd
+A 0001df34 E RShC
+A 0001df48 y`WShM
+A 0001dfab L$ QR
+A 0001e10f Q PShC
+A 0001e1dc Q PShC
+A 0001e1f1 D$ PQ
+A 0001e22a Ph<XG
+A 0001e373 |1_\t
+A 0001e4f3 T$ hdXG
+A 0001e683 T$(j.R
+A 0001ef67 |1_\t
+A 0001efb8 F`PhLXG
+A 0001efce RPhDXG
+A 0001f0f7 |1_\t
+A 0001f154 F`PhLXG
+A 0001f33a ^`SPhH
+A 0001f35e |1\hd
+A 0001f4b6 l$ j.
+A 0001f501 v6SV;
+A 0001f537 ^[_]Y
+A 0001ff23 D$8W3
+A 000200f4 tV_^]
+A 0002081d R0_^]
+A 00020bcc Qh8dG
+A 00021089 }	_^[
+A 0002185c u%_^]
+A 0002194a L$$WQ
+A 000219b7 PWSUV
+A 00021a04 D$pSUVW
+A 00021d0a f;L$$
+A 00022165 PSWQVj
+A 000221f1 Ph|hG
+A 0002229c VWRPQ
+A 00022308 Rh@hG
+A 0002240b Rh@hG
+A 000224e9 _^][d
+A 000225d9 gfff3
+A 0002272f T$8Ej'R
+A 0002288d gfffj
+A 00022e59 D$(f;
+A 000230ba u%_^]
+A 000231a4 D$ QP
+A 00023200 QWSUV
+A 00023900 SVWPj
+A 00023981 Ph|hG
+A 00023a24 VWQRP
+A 00023a90 Qh@hG
+A 00023b96 Qh@hG
+A 00023c72 _^][d
+A 00023d1b l$(}x
+A 00023dc4 t$4];
+A 00023f39 L$ SUR
+A 00023f48 T$LhTiG
+A 000248aa u%_^]
+A 000249d4 D$ QP
+A 00024a30 QWSUV
+A 00024a74 D$DSUVW
+A 00024d03 T$X^]
+A 000250d3 Ph|hG
+A 0002516e VWPQR
+A 000251da Ph@hG
+A 000252dd Ph@hG
+A 000253b9 _^][d
+A 0002570b gfffR
+A 00025740 gfffR
+A 00025772 gfffR
+A 000257a4 gfffR
+A 000257d9 gfffR
+A 00025b67 Af9t$ f
+A 00025bb7 L$ F;
+A 00025e9d _^][d
+A 0002611a u%_^]
+A 00026204 D$ QP
+A 00026260 QWSUV
+A 000262fa D$(<|t
+A 0002630e |$)Kt
+A 000265cf L$$PRF
+A 00026a16 Rh|hG
+A 00026ab6 VWRPQ
+A 00026b22 Rh@hG
+A 00026c25 Rh@hG
+A 00026d0f _^][d
+A 00026dcd 9;|$l}
+A 00026ed0 D<$GWj
+A 00026edf D<$GWj
+A 00026eee D<$GWh
+A 00026f00 D<$GWh
+A 00026f12 D<$GWh
+A 00026f24 T$$j8R
+A 0002720e D$pPG
+A 000272bd D$pPG
+A 000276aa u%_^]
+A 00027904 D$ QP
+A 00027960 QWSUV
+A 00027c31 D$(j0P
+A 00027d5c PSWUV
+A 00027efe f9T$ }
+A 00028166 PVQWj
+A 000281e5 Ph|hG
+A 00028296 T$8QR
+A 000282fa Ph@hG
+A 000283fd Ph@hG
+A 00028458 T$8WR
+A 00028483 D$ Vh
+A 000284e6 _^][d
+A 000285a4 T$XSUV
+A 000285ab t$`W3
+A 000285c4 D$l90}
+A 000285e1 D$pA3
+A 00028614 T$d92
+A 00028692 T$(SR
+A 000287cd \$d~o
+A 00028803 f9L$T
+A 0002880f L$Tf;
+A 00028820 f9T$`}
+A 00029060 T$Df@B
+A 000296e0 D$\G;
+A 00029773 u)Ujk
+A 00029a84 L$@QP
+A 00029b49 gffft,
+A 0002a048 D$$j"j(
+A 0002a080 D$<RP
+A 0002a0c9 T$@QR
+A 0002a418 L$xu	
+A 0002a437 _^][d
+A 0002a59a u%_^]
+A 0002a684 D$ QP
+A 0002a6e0 QWSUV
+A 0002a72a SUVWj
+A 0002a8c4 QRWUS
+A 0002aa3b PWQVj
+A 0002aaba Ph|hG
+A 0002ab66 L$,PQ
+A 0002abcf Rh@hG
+A 0002acd2 Rh@hG
+A 0002ad2c L$,VQ
+A 0002adba _^][d
+A 0002add4 L$HSUV
+A 0002ae0f D$dE3
+A 0002b01a L$tj.Q
+A 0002b031 D$xRh
+A 0002b541 L$0u	
+A 0002b560 _^][d
+A 0002b894 D$ QP
+A 0002b8f0 QWSUV
+A 0002baa0 R8+D$
+A 0002bacb UWh<nG
+A 0002bad8 L$(SQ
+A 0002bb2c SSh4nG
+A 0002bb48 D$pRP
+A 0002bbaf SSh,nG
+A 0002bbcb D$pRP
+A 0002bc33 SSh$nG
+A 0002bc4f L$pPQ
+A 0002bd91 tsJtW
+A 0002be54 \$,CG
+A 0002bee1 _^][d
+A 0002c12e Ph|hG
+A 0002c1cd VWPQR
+A 0002c239 Ph@hG
+A 0002c34a Ph@hG
+A 0002c42d _^][d
+A 0002c4e5 }	_^]
+A 0002c64f f9D$(~
+A 0002c65f f9D$0~
+A 0002c66f f9D$,}
+A 0002c67f f9D$4}
+A 0002c687 D$491
+A 0002c8ef PVh4nG
+A 0002c90d PWh,nG
+A 0002c935 QUh$nG
+A 0002ca5d gfffj
+A 0002d173 _^][d
+A 0002d27c u%_^]
+A 0002d36a L$$WQ
+A 0002d3d7 PWSUV
+A 0002d424 T$<SU
+A 0002d47b |$X2t
+A 0002d4ef D$(j P
+A 0002d8f2 9D$0}
+A 0002d907 D$$9D$,}
+A 0002dbb4 Ph|hG
+A 0002dc7d VWQRP
+A 0002dd25 Qh@hG
+A 0002e01f Ph@hG
+A 0002e20b _^][d
+A 0002e2a0 }	_^]
+A 0002e44a T$(RQP
+A 0002e64d |$T2t
+A 0002e7ac u%_^]
+A 0002e89a L$$WQ
+A 0002e907 PWSUV
+A 0002ea18 D$@j@P
+A 0002ebbe QPh8{G
+A 0002ed9a _^][d
+A 0002ee1d L$ Ph
+A 0002ef27 9D$0}
+A 0002ef3c D$$9D$,}
+A 0002f1ea Ph|hG
+A 0002f2b2 PVWQRS
+A 0002f2dd T$ RQP
+A 0002f304 T$ RQP
+A 0002f385 Ph@hG
+A 0002f67f Rh@hG
+A 0002f868 _^][d
+A 0002f98c u	_^]3
+A 0002fb3a T$(RQP
+A 0002fbbd |$T2t
+A 00030047 \$ UVW
+A 0003006b L$0Ph
+A 000300d8 D$$h@hG
+A 00030123 D$$UWRSP
+A 0003019c L$(USPQ
+A 00030349 ;t$ }
+A 00030350 t$ ;t$
+A 000304a5 D$$IPQ
+A 000304ac D$PRP
+A 0003057f u	_^]
+A 0003059a u	_^]
+A 000305b5 u	_^]
+A 000305d0 u	_^]
+A 000305eb u	_^]
+A 00030731 L$$9)
+A 00030b3a L$(Ph
+A 00030bb6 D$ h@hG
+A 00030c10 L$$RSPQ
+A 00030e3d L$$9)
+A 00031000 L$0ht^X
+A 00031041 L$@Rht^X
+A 000310cf T$,RWSQP
+A 00031257 T$,~9
+A 000315b3 L$LRQ
+A 00031658 D$HQRP
+A 0003171d L$DQSUR
+A 000317a3 l$LPUSQ
+A 000317c3 MRUSP
+A 000317e6 L$DQSUR
+A 00031846 KRSUP
+A 0003188a MPUSQ
+A 00031955 KRSUP
+A 00031a2a L$LPQ
+A 00031b0a T$DRQ
+A 00031ce8 L$LRQ
+A 00031d8d D$HQRP
+A 00031eb8 KRSUP
+A 00031f02 KPSUQ
+A 00031f25 T$DRSUP
+A 00031f85 KPSUQ
+A 00031fa9 T$DRUSP
+A 00031fc9 MQUSR
+A 000320a4 KPSUQ
+A 000320d6 T$0~9
+A 00032235 T$DRS
+A 00032257 D$LRP
+A 0003225d D$PPQ
+A 00032367 L$DQS
+A 0003242d L$HRPQ
+A 000324d2 T$HQP
+A 00032597 L$DQSUR
+A 000325d9 D$DPSUQ
+A 0003261d l$HPSUQ
+A 0003263d RMSUP
+A 0003268b QMSUR
+A 000326b7 UBSRP
+A 000326c5 UISQR
+A 000326fb UBSRP
+A 00032709 UISQR
+A 0003276a D$DPSUQ
+A 000327d4 RMSUP
+A 00032992 T$HQP
+A 00032aa0 L$DQS
+A 00032b66 L$HRPQ
+A 00032c0b T$HQP
+A 00032d36 RMSUP
+A 00032d80 PMSUQ
+A 00032da3 T$DRSUP
+A 00032e03 PMSUQ
+A 00032e43 QMSUR
+A 00032ea4 D$DPSUQ
+A 00032f1e PMSUQ
+A 00032f78 \$ f;
+A 00033195 MPQVW
+A 0003331c L$`PQ
+A 000333ea T$<QR
+A 0003346e Qht^X
+A 000334b1 Pht^X
+A 00033516 D$LQP
+A 00033544 l$09l$d
+A 00033863 D$dPh
+A 000338c8 T$ @B
+A 000338eb L$P_^][d
+A 000347e5 QSUVW
+A 00034968 _^][d
+A 00034a2a _][^Y
+A 00035457 L$ UWV
+A 000354ff T$Du!
+A 000355f4 L$,RWPQ
+A 00035626 T$(PQR
+A 00035695 D$$QWRP
+A 000356e4 D$<WQ
+A 000356ea L$@RPQ
+A 00035720 D$ QRP
+A 00035778 T$8PQR
+A 000357ef F PQW
+A 000358e6 \$`t7
+A 000359e3 D$TWP
+A 00035a6c L$XRPQ
+A 00035b3c L$<RPQU
+A 00035c04 L$\QR
+A 00035c5b D$8RPQ
+A 00035caa D$TRQ
+A 00035cb0 L$XPQ
+A 00035d48 D$0RP
+A 00035df4 L$PQRP
+A 00035ede T$dPWVQR
+A 000363f5 QSUVW
+A 000364c4 _^][d
+A 0003672a tN9T$
+A 0003687c T$d~h
+A 00036917 S0FA;
+A 00036f62 W,RVf
+A 000371e5 QSUVW
+A 0003732a _^][d
+A 0003734f F0PWS
+A 0003735a N8QWS
+A 0003741e N8QWSRP
+A 00037433 N@QWSRP
+A 00037448 NHQWSRP
+A 00037475 PWSQR
+A 000374b0 RWSPQ
+A 000374fa N0QWS
+A 00037521 NHQWS
+A 000377b1 NHRUPQ
+A 000377f0 NHRUPQ
+A 000379db N0RPQ
+A 00037a69 NHRUPQ
+A 00037b76 L$(UR
+A 00037b85 N8RPQ
+A 00037c17 VHPUQ
+A 00037d0f T$8x`
+A 00037f13 t@;|$
+A 0003801f ~D;\$Pt>;\$\~
+A 00038048 D$4+D$
+A 00038070 D$<+D$
+A 000380f8 D$<t;
+A 00038276 n USRQ
+A 00038843 IhxdG
+A 0003889d gfffj
+A 00038adf L$4PQU
+A 00038b58 D$4RPU
+A 00038ba4 T$4QRU
+A 00038e45 D$4RPU
+A 00038f8c D$4RPU
+A 00038fc9 T$4QRU
+A 0003909f D$4RPU
+A 0003936b D$hA;
+A 00039477 D$4RPU
+A 00039486 L$xQU
+A 000394a5 D$hA;
+A 000394ce D$XRP
+A 000395af L$4PQU
+A 000395dd _^][d
+A 00039757  SUVW3
+A 0003977b t$8t	
+A 00039d64 L$(RPQ
+A 00039e67 L$0_^][d
+A 0003a3c1 _^][d
+A 0003a790 9L$du,
+A 0003ac1c D$|@;
+A 0003ac23 D$|u$
+A 0003ac4c 9L$dtF
+A 0003b27a \$LUV
+A 0003b2ee T$(RP
+A 0003b304 L$<PQ
+A 0003b31d T$(PR
+A 0003b35e U#D$Hj
+A 0003b3dc T$<PR
+A 0003b55e L$H_^]d
+A 0003b598 SUVWj
+A 0003b5b5 L$DQj
+A 0003b601 L$4SIQ
+A 0003b669 l$4KS
+A 0003b69e L$D_^]
+A 0003b749 t$,SUW
+A 0003b77e D$<PQ
+A 0003b7a7 D$<PQ
+A 0003bafe E8^]3
+A 0003bf2f D$LRP
+A 0003bfd9 _^][d
+A 0003c0d9 D$ SV
+A 0003c59e L$ _^][d
+A 0003caac _^][d
+A 0003cd1e W}	_^]3
+A 0003cf5d \$,VC
+A 0003d089 N PSh
+A 0003d1ac D$,_^][d
+A 0003d5b5 _^][Y
+A 0003d5e7 _^][Y
+A 0003d723 _^][Y
+A 0003d91c _^][Y
+A 0003d94a _^][Y
+A 0003d981 Fp_^]3
+A 0003d99f ^h_^]3
+A 0003d9cc _^][Y
+A 0003dab9 FhPhH
+A 0003e040 t6SUVW
+A 0003e769 D$,VP
+A 0003e7e9 D$,VP
+A 0003ee6c u	_^]3
+A 0003ee7d u	_^]3
+A 0003eec0 u	_^]3
+A 0003f32d ^ _^]
+A 0003f701 L$ @;
+A 0003fad1 1_A^]
+A 0003fda8 _^][d
+A 000400e1 _^][d
+A 00040345 QSUVW
+A 000404ff F@PUW
+A 0004050a NHQUW
+A 0004055c FlG;<
+A 000405ce NHQWSRP
+A 000405e3 NPQWSRP
+A 000405f8 NXQWSRP
+A 0004063e FlG;<
+A 0004067a N@QUW
+A 000406a1 NXQUW
+A 000406d9 NlG;<
+A 000406f1 Q@SVW
+A 00040761 QDSVW
+A 00040890 Ad9Aht
+A 00040898 Ah9Alt
+A 000408a0 Al9Apt
+A 00040995 _^][Y
+A 0004189d @_^][
+A 00041e30 NdRPQ
+A 00041ee9 VdPQR
+A 00041f0b PWVhT
+A 00042110 QSUVW
+A 00042204 _^][Y
+A 000422c0 _^][Y
+A 000423c0 QSUVW
+A 00042446 u UWhD
+A 00042460 _^][Y
+A 000424c3 _^][Y
+A 00042921 _^][d
+A 00042a1a \$XUV
+A 00042bbc _^][d
+A 00042d58 N,wq3
+A 00042eb9 D$0RP
+A 0004304d L$P_^][d
+A 00043358 _^][d
+A 000435a3 F(_t.
+A 00043da3 LL$@;
+A 00043dd2 f9T$jt
+A 000446b0 L$ @#
+A 000446f1 f9FB~
+A 0004480d D$ G#
+A 00044915 D$(_^][
+A 00044a00 QSUVW
+A 00044a92 f;UB~'
+A 00044aaa f;EP}$f
+A 00044ad4 _^][Y
+A 00044afa f;Fjr
+A 00044e35 f	Vhf=
+A 00044eaf ~h_^[
+A 00044f40 f9FN~+
+A 00044fa6 NtWPQU
+A 00044ffc NtPQj
+A 0004505a VtQRj
+A 000453f9 ,of;,Wv
+A 00045447 q_^][
+A 000454be \F"Ju
+A 00045594 DF _^
+A 000457b3 F$0xD
+A 00045b7b G$0xD
+A 00045d30 tJ9H tE9H$t@
+A 00046266 ~hwTI
+A 0004642b \$ 8\:
+A 0004673e ~Tt[;VtsV
+A 00046757 wD9~|t
+A 00046aa5 \$<UV
+A 00046b91 D$DRP
+A 00046ba4 D$HVQ
+A 00046baa L$TRPQ
+A 00046ce4 T$ u,
+A 00046ff4 T$@s;
+A 000470f3 L$4RQ
+A 00047149 L$,VR
+A 0004714f T$(PQR
+A 000472b8 D$PPV
+A 00047365 D$PPVS
+A 000474aa D$PPV
+A 00047555 T$$VR
+A 00047560 D$0VP
+A 00047608 S0PVS
+A 00047bda D$ PV
+A 00047c9e |$ WSRV
+A 00047cf4 E@UAPQV
+A 00047f6a D$ PV
+A 00048084 D$$SUV
+A 00048222 D$0tb
+A 00048401 ]_^[Y
+A 0004852e tG;|$
+A 00048610 _^][Y
+A 00048bba 9t$Lu
+A 00048bd1 :_^]3
+A 00048bf5 98u	A
+A 00048d70 L$4A;
+A 00048f3a \$(N#
+A 000491ba L$$Qh(
+A 00049367 WVQR3
+A 00049712 T$0RWV
+A 0004978b AH;N(
+A 000497e9 T$0RWV
+A 000498ed T$0RWV
+A 0004996e L$0QWV
+A 0004998b T$0RWV
+A 00049af8 M8SVQ
+A 00049b77 M8SVQ
+A 00049bd4 L$(SUV
+A 00049e7a N0_^][
+A 00049ec0 N0_^][
+A 00049f08 N0_^][
+A 0004a65f QQSVW
+A 0004a88e >"u:F
+A 0004a8d9 XPVSS
+A 0004d848 OAHNFKCDIGBML@EJ
+A 0004d878 /!(.&+#$)'"-, %*
+A 0004d8b8 ?18>6;34972=<05:
+A 0004d8d8 oahnfkcdigbml`ej
+A 0004d8f8 _QX^V[STYWR]\PUZ
+A 0004d929 qx~v{stywr}|puz
+A 0004d978 gmnc`fijabhekldo7=>3069:1285;<4?
+A 0004d9a8 W]^SPVYZQRXU[\T_
+A 0004d9e8 w}~spvyzqrxu{|t
+A 0004da08 GMNC@FIJABHEKLDO'-.# &)*!"(%+,$/
+A 0004da38 ,!*/)"&( -#$.'%+
+A 0004da58 LAJOIBFH@MCDNGEK
+A 0004da7c yrvxp}st~wu{
+A 0004daa8 lajoibfh`mcdngek
+A 0004dac8 \QZ_YRVXP]ST^WU[<1:?92680=34>75;
+A 0004db38 MBHDFOKAJICNE@LG
+A 0004db58 -"($&/+!*)#.% ,'
+A 0004dbb8 =2846?;1:93>50<7
+A 0004dbe8 }rxtv
+A 0004dbee {qzys~up|w]RXTV_[QZYS^UP\W
+A 0004dc18 mbhdfokajicne`lg
+A 0004dc6f lCu7&
+A 0004de25 MCi).
+A 0004fd57 @ffffff
+A 00052ea4 MFC42.DLL
+A 00052eb8 sprintf
+A 00052ec2 realloc
+A 00052ecc calloc
+A 00052ed6 __CxxFrameHandler
+A 00052efa fclose
+A 00052f04 fscanf
+A 00052f0e fread
+A 00052f16 fopen
+A 00052f1e _mkdir
+A 00052f28 getenv
+A 00052f32 strtok
+A 00052f3c strncpy
+A 00052f46 strncat
+A 00052f50 strrchr
+A 00052f5a remove
+A 00052f64 _strnicmp
+A 00052f70 malloc
+A 00052f7a _close
+A 00052f84 _write
+A 00052f8e fwrite
+A 00052f98 fprintf
+A 00052fa2 _open
+A 00052fba fflush
+A 00052fc4 printf
+A 00052fce _ftol
+A 00052fd6 _findnext
+A 00052fe2 _findfirst
+A 00052ff0 _getcwd
+A 00052ffa _mbscmp
+A 00053004 _getdcwd
+A 00053010 _access
+A 0005301a _strupr
+A 00053024 strncmp
+A 0005302e isalpha
+A 00053038 _purecall
+A 00053044 vsprintf
+A 00053050 _errno
+A 0005305a localtime
+A 00053066 strchr
+A 00053070 _get_osfhandle
+A 00053082 _filelength
+A 00053090 rename
+A 0005309a strcspn
+A 000530a2 MSVCRT.dll
+A 000530b0 _except_handler3
+A 000530c4 ?terminate@@YAXXZ
+A 000530d8 __dllonexit
+A 000530e6 _onexit
+A 000530f0 _exit
+A 000530f8 _XcptFilter
+A 0005310e _acmdln
+A 00053118 __getmainargs
+A 00053128 _initterm
+A 00053134 __setusermatherr
+A 00053148 _adjust_fdiv
+A 00053158 __p__commode
+A 00053168 __p__fmode
+A 00053176 __set_app_type
+A 00053188 ??1type_info@@UAE@XZ
+A 000531a0 _controlfp
+A 000531ae CreateFileA
+A 000531bc GetTempPathA
+A 000531cc ReadFile
+A 000531d8 WriteFile
+A 000531e4 SetCommTimeouts
+A 000531f6 GetCommTimeouts
+A 00053208 SetCommState
+A 00053218 CloseHandle
+A 00053226 GetCommState
+A 00053236 SetupComm
+A 00053242 LocalFree
+A 0005324e FormatMessageA
+A 00053260 GetLastError
+A 00053270 GetCommProperties
+A 00053284 InitializeCriticalSection
+A 000532a0 DeleteCriticalSection
+A 000532b8 EnterCriticalSection
+A 000532d0 LeaveCriticalSection
+A 000532e8 GetLogicalDrives
+A 000532fc GetSystemDirectoryA
+A 00053312 Sleep
+A 0005331a SetFileTime
+A 00053328 DosDateTimeToFileTime
+A 00053340 GetTimeZoneInformation
+A 0005335a GetFileAttributesA
+A 00053370 SetFileAttributesA
+A 00053386 GetModuleHandleA
+A 0005339a GetStartupInfoA
+A 000533aa KERNEL32.dll
+A 000533ba MessageBoxA
+A 000533c8 RedrawWindow
+A 000533d8 EnableWindow
+A 000533e8 LoadIconA
+A 000533f4 SendMessageA
+A 00053404 SetTimer
+A 00053410 DrawIcon
+A 0005341c GetClientRect
+A 0005342c GetSystemMetrics
+A 00053440 IsIconic
+A 0005344c SetWindowLongA
+A 0005345e EndDialog
+A 0005346a GetParent
+A 00053476 GetWindowRect
+A 00053486 GetActiveWindow
+A 00053498 GetCursorPos
+A 000534a8 KillTimer
+A 000534b4 SetForegroundWindow
+A 000534ca BringWindowToTop
+A 000534de InvalidateRect
+A 000534f0 EnumWindows
+A 000534fe GetClassNameA
+A 0005350e LoadCursorA
+A 0005351c RegisterWindowMessageA
+A 00053536 GetSysColor
+A 00053544 ReleaseDC
+A 00053550 GetDC
+A 00053558 InflateRect
+A 00053566 CopyRect
+A 00053572 FrameRect
+A 0005357e GetWindowLongA
+A 00053590 GetDlgItem
+A 0005359e SetDlgItemTextA
+A 000535b0 SetRect
+A 000535ba LoadBitmapA
+A 000535c8 DispatchMessageA
+A 000535dc TranslateMessage
+A 000535f0 PeekMessageA
+A 000535fe USER32.dll
+A 0005360c CreateCompatibleDC
+A 00053622 CreateCompatibleBitmap
+A 0005363c BitBlt
+A 00053646 RealizePalette
+A 00053658 CreatePalette
+A 00053668 GetDeviceCaps
+A 00053678 SetPixel
+A 00053684 Polyline
+A 00053690 CreatePen
+A 0005369c GetNearestPaletteIndex
+A 000536b6 StretchBlt
+A 000536c2 GDI32.dll
+A 000536ce _stricmp
+A 000536da _chdir
+A 000536e4 _strlwr
+A 000536ee _unlink
+A 000536f8 _read
+A 00053700 _lseek
+A 0005370a _stat
+A 00053712 _setmbcp
+A 00054050 832 DATA EXP D V1.0 R1.1
+A 000546c4 `"j"j"
+A 00054bb1 qAB !B"
+A 00055033 !@0 0 0!@
+A 0005504f !@0 0 0!@
+A 00055af6 !!H0@
+A 00056378 NH""NH
+A 0005638e 4D""4D
+A 00056c1d >CCEEIQQaa>
+A 00056c77 ~@@@\b
+A 00056c8a "A@\bAAA"
+A 00056cc0 "AAA#
+A 00056d3d  `     
+A 00056f6a `x8;a
+A 000587f2 %(H!T%(H9W9(H!
+A 0005a084 241 Read NG by Takayuki.Kawasatof0
+A 0005bcbc )"R!C
+A 0005d049 aB)"R"C
+A 0005dba9 .****.
+A 0005dbb9 .".((.
+A 0005dbc1 ."."".
+A 0005dbc9 **."""
+A 0005dbd1 .(."".
+A 0005dbd9 .(.**.
+A 0005dbe1 ."""""
+A 0005dbe9 .*.**.
+A 0005dbf1 .*."".
+A 0005dd41 rBrRRr
+A 0005dd8a ****.
+A 0005dd9a ".((.
+A 0005dda2 "."".
+A 0005ddaa *."""
+A 0005ddb2 (."".
+A 0005ddba (.**.
+A 0005ddc2 """""
+A 0005ddd2 *."".
+A 0005dde1 rRrRRr
+A 0005ded8 Total card space exceeded.
+A 0005def4 Error
+A 0005df2c temp%d.%s
+A 0005df38 No more room for designs.
+A 0005df54 Reading design %d of %d.
+A 0005df70 temp%d.exp
+A 0005df7c Reading number of designs available.
+A 0005dfa8 NO DONGLE
+A 0005dfb8 Copyright by Great Notions.
+A 0005dfd4 Design %d
+A 0005dff4 CBlackBoxDlg
+A 0005e2f8 ERROR: Encrytper got an error... %x
+A 0005e330 %sMBERRLOG.TXT
+A 0005e340 c:\temp\
+A 0005e34c c:\temp
+A 0005e380 *.zip
+A 0005e388 Zip Archives (*.zip)
+A 0005e3a0 *.xxx
+A 0005e3a8 Singer (*.xxx)
+A 0005e3b8 *.csd
+A 0005e3c0 Poem/Singer EU (*.csd)
+A 0005e3d8 *.jef
+A 0005e3e0 Janome (*.jef)
+A 0005e3f0 *.sew
+A 0005e3f8 Janome/Elna (*.sew)
+A 0005e40c *.hus
+A 0005e414 Viking (*.hus)
+A 0005e424 *.pcm
+A 0005e42c Pfaff Macintosh(*.pcm)
+A 0005e444 *.pcs
+A 0005e44c Pfaff (*.pcs)
+A 0005e45c *.pes;*.pec
+A 0005e468 Baby Lock/Bernina/Brother (*.pes;*.pec)
+A 0005e490 *.dst
+A 0005e498 Tajima (*.dst)
+A 0005e4a8 *.exp
+A 0005e4b0 DOS Expanded (*.exp)
+A 0005e4c8 *.gnc
+A 0005e4d0 GN Scaleable (*.gnc,)
+A 0005e4e8 *.gnc;*.exp;*.dst;*.hus;*.pec;*.pes;*.pcs;*.pcm;*.sew;*.jef;*.csd;*.xxx;*.zip
+A 0005e538 All Embroidery Formats
+A 0005e550 Could not write to the card.
+A 0005e570 Memory card is now ready for use.
+A 0005e594 Success!
+A 0005e5a0 Writing block %d.
+A 0005e5b4 Could not initialize the card.  Please try again, if problem persists please follow the steps in the Troubleshooting section of the manual.
+A 0005e640 Erasing Card...  Please wait.
+A 0005e660 Design number %d exceeds maximum dimensions (%dmm x %dmm), this design will be skipped.
+A 0005e6b8 Error writing file, not enough free memory.
+A 0005e6e4 Too many designs (because of design splits) for card.
+A 0005e71c temp%d.pes
+A 0005e728 temp%d.sew
+A 0005e734 temp%d.hus
+A 0005e740 Change system options.
+A 0005e758 Delete selected design from card position.
+A 0005e784 Write design(s) to Janome, New Home, Elna, Kenmore memory card.
+A 0005e7c4 Write design(s) to Bernina Artista memory card.
+A 0005e7f4 Write design(s) to Pfaff memory card.
+A 0005e81c Write design(s) to Singer XL100/XL1000 memory card.
+A 0005e850 Write design(s) to Viking/Husqvarna memory card.
+A 0005e884 Write design(s) to Bernina Deco, Babylock, or Brother memory card.
+A 0005e8c8 Load design from Janome, New Home, Elna, Kenmore memory card into next open position.
+A 0005e920 Load design from Bernina Artista or Pfaff memory card into next open position.
+A 0005e970 Load design from Singer XL100/XL1000 memory card into next open position.
+A 0005e9bc Load design from Bernina Deco, Babylock, Brother or Viking/Husqvarna memory card into next open position.
+A 0005ea28 Read design from disk into next open position.
+A 0005ea58 Please unplug and replug in the converter box to effect these changes.
+A 0005eaa0 C:\temp\temp.hus
+A 0005eab4 %s\temp%2.2x%2.2x.tmp
+A 0005eacc Color Editor must be started to use this option.
+A 0005eb08 c:\temp\temp.hus
+A 0005eb20 %c%c%c
+A 0005eb2c %stemp%d.rgb
+A 0005eb3c %stemp%d.exp
+A 0005eb4c CBBoxDoc
+A 0005ee58 c:\temp\serial.log
+A 0005ee6c BrotherLG
+A 0005ee78 FileOpen
+A 0005ee84 ComSpeed
+A 0005ee90 ComPort
+A 0005ee98 SingerCard
+A 0005eea4 Options
+A 0005eeac JanomeCard
+A 0005eeb8 GNBeginFileTransfer
+A 0005eecc GNGetApplicationType
+A 0005eee4 Threshold
+A 0005eef4 JunkStitch
+A 0005ef00 SmartStitch
+A 0005ef0c GreatNotions
+A 0005ef24 E@@E@@E@@E@@E@@E@@E@@E@@E@@E@@E@@E@@E@@E@@H@@
+A 0005ef65 A@@e@
+A 0005ef80 A@ m@
+A 0005ef92 A@`r@
+A 0005efb8 ccccccc
+A 0005efc1 cccccc
+A 0005efe8 ccccc
+A 0005eff1 cccccc
+A 0005f035 cccccccccc
+A 0005f045 cccccccccc
+A 0005f0ac @ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+A 00060435 r8DtT
+A 00060cf9 "EB \
+A 0006193b rx\$x
+A 0006194d r8A$8
+A 00064eb6  "XQD
+A 00066beb r8DtT
+A 0006bee3 ww?~?
+A 0006c02d tC7vg{g{6nk{G{4n[|Wc5
+A 0006c043 C}7{3
+A 0006c049 [{7{3
+A 0006cd08 %s%c%s%c%c%c%s%c%s%c%c
+A 0006cd20 Brother Project
+A 0006cd30 Version 1.0.1
+A 0006cd40 1997/9/23 Build
+A 0006cd50 brother_sewing
+A 0006cd60 %-129s
+A 0006cd68 Copyright 2000 by Great Notions.  All rights reserved
+A 0006cda8 %12s%c
+A 0006cdb0 #PEC0001LA:%29s
+A 0006cdc0 temp%d.pec
+A 0006cdcc Reading color codes, if available.
+A 0006cdf4 ERROR: Design %s->yMax
+A 0006ce0c ERROR: Design %s->xMax
+A 0006ce24 ERROR: Design %s->yMin
+A 0006ce3c ERROR: Design %s->xMin
+A 0006ce54 Memory allocation failure
+A 0006ce70 Incorrect compression level
+A 0006ce90 Internal 2 error
+A 0006cea4 Internal 1 error
+A 0006ceb8 CMainFrame
+A 0006cec4 'tLVUTRTWtRVtDVTTGOvs
+A 0006cf34 JRr@rLR@5uL
+A 0006cf50 rG"\J
+A 0006cf9c rC%Dd
+A 0006cfc5 %U3rG)HJ
+A 0006cfd6 )PrD)Hd
+A 0006cffe Q rB]
+A 0006d030 EDU@utu@E
+A 0006d03c GsU@9
+A 0006d0a4 Nf%RDUUZDfUVDUS
+A 0006d0cf DD!)(D-
+A 0006d0f4 N&$3DUVBDVU[DUuJt%U3N9J@D%j
+A 0006d118 t!J@N2
+A 0006d12f 6N9'|D%(
+A 0006d248 bRFJUUEJe%FJU'EJR%fnrN
+A 0006d2d2 r[UWp
+A 0006d33d .***.
+A 0006d347 .".(..".".**."".(."..(.*.."""".*.*..*.""
+A 0006d438                     
+A 0006d490  "F.~.
+A 0006d4b0  "F.~.
+A 0006d4d0  "F.~.
+A 0006d4f0 4&F.~.
+A 0006d510  "F.~.
+A 0006d530 4&F.~.
+A 0006d550 D"F.~.
+A 0006d570 l"F.~.
+A 0006d591 "F.~.
+A 0006d9eb @ 8p@
+A 0006da83 |"@"@"x"@"@
+A 0006dabb @"D B&@"D B&@<D B%@"D B$
+A 0006dad4 "D B$
+A 0006dc11 <BBBBBBBB<
+A 0006dc44 $$DD~
+A 0006dc4d ~@@@|B
+A 0006dc59 <B@@|BBBB<
+A 0006dc71 <BBB<BBBB<
+A 0006dc7d <BBB>
+A 0006de3c JR&JR
+A 0006df4f "">"""
+A 0006dfaf *T*T*T*T*T*U
+A 0006e08c L2"8^z"H
+A 0006e095 Fb2D/
+A 0006e2b0 R" |!
+A 0006e2b8 2" D!
+A 0006e2c0 2""D!
+A 0006e2d1 <D"D"(<("
+A 0006e89a  T T 
+A 0006e8a0  T T T 
+A 0006e8b4  T T T T T T T 
+A 0006e8cd (d"V(h#V(
+A 0006e8d7 $V(6$p
+A 0006e94e !gx)p
+A 0006e9df $2V&6&
+A 0006e9f4 	:62:
+A 0006eabd (0! 6a1
+A 0006eb1b (0!:-
+A 0006ebb0 -V(i%V(+%V(
+A 0006ebc0 "Vo6M
+A 0006ebc6 F(h$(
+A 0006eca4 &6o6?
+A 0006ee00 V777(:/
+A 0006ee52 (0!:-
+A 0006ee9f 222223333344444555556666677777
+A 0006eed7 0 6:'
+A 0006ef04 (#$V:6Mp
+A 0006ef21 (	(V"
+A 0006ef33 (#$V:-
+A 0006efe4 ,gd+a`
+A 0006f205 #(-27<AFKPUZ_dinsx}
+A 0006f331 !&+05:?DINSX]bglqv{
+A 0006f35e "'Vg3*]
+A 0006f377 G]D( 
+A 0006f37d G]D( 
+A 0006f383 G]D( 
+A 0006f3b1 :d<:e
+A 0006f3bc JANOME CARD EXP 
+A 0006f3d0 Error: No room for design number %d.
+A 0006f3f8 Error: too many colors, aborting!
+A 0006f45c Dsgn: %d
+A 0006f468 Design create by the Converter Box.
+A 0006f48c ConverterBox Card
+A 0006f4a0 Copyright (c) 2000 Great Notions, All Rights Resv
+A 0006f4d4 Reading design %d.
+A 0006ffcc Cannot access converter box. Please unplug and replug in the power to the box.  If problem persists please follow the steps in the Troubleshooting section of the manual.
+A 00070078 Cannot modify com port, to access converter box.
+A 000700ac Cannot read com port, to access converter box.
+A 000700dc Cannot setup com port, to access converter box.
+A 0007010c Cannot open com port, to access converter box. %s
+A 00070140 Cannot open com port, to access converter box. COM port all ready in use by another application.
+A 000701a4 Cannot open com port, to access converter box. No such COM port available.
+A 00070220 OpenConnection: port %d, speed %d
+A 00070248 CloseConnection:
+A 0007025c The convertor box has tried to re-syncronize 5 times in a row.  Please lower your baud rate to keep this from happening.
+A 000702d8 ReadCard: socket %d, address %x, size %x, ack error
+A 00070310 ReadCard: socket %d, address %x, size %x, checksum error
+A 0007034c ReadCard: socket %d, address %x, left %x, got %x
+A 00070380 ReadCard: socket %d, address %x, size 3, got %x
+A 000703b4 ReadCard: socket %d, address %x, size 5, got %x
+A 000703e8 Error reading card, invalid size.
+A 0007040c ReadCard: socket %d, address %x, size %x
+A 00070438 WriteCard: socket %d, address %x, size 3, got %x
+A 0007046c WriteCard: socket %d, address %x, size 5, got %x
+A 000704a0 Error writing card, invalid size.
+A 000704c4 WriteCard: socket %d, address %x, size %x
+A 000704f0 DetectCard: socket %d  CDs %2.2x  ChipId %2.2x/%2.2x (ACK %d)
+A 00070530 EraseCard: socket %d
+A 00070548 SetSpcStyle:
+A 00070558 SetRegStyle:
+A 00070568 ResetConnection: Init returned %x
+A 0007058c CP: PL %d, PV %d, SM %d TxQ %d, TxCQ %d, RxQ %d, RxCQ %d
+A 000705c8 ResetConnection:
+A 00073710 'tLVUTRTWtRVtDVTTGOvs
+A 00073780 JRr@rLR@5uL
+A 0007379c rG"\J
+A 000737e8 rC%Dd
+A 00073811 %U3rG)HJ
+A 00073822 )PrD)Hd
+A 0007384a Q rB]
+A 0007387c EDU@utu@E
+A 00073888 GsU@9
+A 000738f0 Nf%RDUUZDfUVDUS
+A 0007391b DD!)(D-
+A 00073940 N&$3DUVBDVU[DUuJt%U3N9J@D%j
+A 00073964 t!J@N2
+A 0007397b 6N9'|D%(
+A 00073a94 bRFJUUEJe%FJU'EJR%fnrN
+A 00073b1e r[UWp
+A 00073b89 .***.
+A 00073b93 .".(..".".**."".(."..(.*.."""".*.*..*.""
+A 00073c4c Only the first six designs will be saved (counting splits)
+A 00073c88 Design size exceeds maximum dimensions (130mm x 240mm), design will be skipped.
+A 00073cd8 Warning!
+A 00073d04               
+A 00073d14 %2.2d
+A 00073d86 ddddddd
+A 00073da8 dddddddddddd
+A 00073dbc ddddddd
+A 00073dde dddddddddddd
+A 00073df2 ddddddd
+A 00073e14 dddddddddddd
+A 00073e28 ddddddd
+A 00073e50 dddddd
+A 00073e5e ddddddd
+A 00073e86 dddddd
+A 00073e94 ddddddd
+A 00073ebc dddddd
+A 00073eca ddddddd
+A 00073f00 ddddddd
+A 00073f36 ddddddd
+A 00074464 'tLVUTRTWtRVtDVTTGOvs
+A 000744d4 JRr@rLR@5uL
+A 000744f0 rG"\J
+A 0007453c rC%Dd
+A 00074565 %U3rG)HJ
+A 00074576 )PrD)Hd
+A 0007459e Q rB]
+A 000745d0 EDU@utu@E
+A 000745dc GsU@9
+A 00074644 Nf%RDUUZDfUVDUS
+A 0007466f DD!)(D-
+A 00074694 N&$3DUVBDVU[DUuJt%U3N9J@D%j
+A 000746b8 t!J@N2
+A 000746cf 6N9'|D%(
+A 000747e8 bRFJUUEJe%FJU'EJR%fnrN
+A 00074872 r[UWp
+A 000748dd .***.
+A 000748e7 .".(..".".**."".(."..(.*.."""".*.*..*.""
+A 000749a0 Design size exceeds maximum dimensions (112mm x 80mm), design will be skipped.
+A 000749f0 CExpObject
+A 000755f4 Cannot save design %s. Unknown or unsupport file type.
+A 0007562c Cannot read design %s. File appears to have incomplete or invalid data.
+A 00075674 Cannot read design %s. Cannot allocate enough memory to read the file.
+A 000756bc Cannot read design %s. Invalid file data or file not found.
+A 000756fc CEmbButton
+A 000757b4 MbP?CCndObject
+A 000757c4 Cannot allocate enough memory to process file.
+A 000757f4 ERROR: Could not reallocate types!
+A 00075818 ERROR: Could not reallocate cords!
+A 0007583c [-%c-]
+A 0007584c %s\%s
+A 00075864 Select by icons, %d thru %d of %d
+A 00075890 *.pes
+A 00075898 *.pec
+A 000758a0 CMyFile
+A 00075910 CGnFilter
+A 00075f90 23456789ABCDEFGHJKLMNPQRSTUVWXYZ
+A 000760f5 Qkkbal
+A 00076351 wn>Jj
+A 000763b3 -c:\temp\error.log
+A 000763c8 \OEMSP.EXE
+A 000763d4 OEMSP.EXE
+A 000763e0 %s\SEdll.dll
+A 000763f0 %sSEdll.dll
+A 000763fc Error reading from file.
+A 00076420 .PAVCFileException@@
+A 00076438 Error(%d) writing to file.
+A 00076454 %s: %s
+A 0007645c CEmbObject
+A 00076810 Unknown error writing design %s. Deleting file.
+A 00076840 Cannot open design %s. Please check it for errors.
+A 00076874 Warning
+A 0007687c Design %s will be split into multiple files.
+A 000768ac _a.xxx
+A 000768b4 Cannot save %s. Design does not have any stitch data.
+A 000768ec _a.sew
+A 000768f4 Cannot save design %s. It does not fit within the embroidery field. Please resize the design.
+A 00076954 %4.4d%2.2d%2.2d%2.2d%2.2d%2.2d
+A 00076c68 Cnrzvlao|)]b`nab Afj:5Zc|7:*%$*3
+A 00076c94 oEG_@T\WUYS:2oSTP\JV//b,"e%(808"+%:o'8>?t73w.0=4.2+,
+A 00076d68 _a.Csd
+A 00076d90 #PES0040
+A 00076d9c #PES0030
+A 00076da8 #PES0020
+A 00076db4 #PES0001
+A 00076dc0 _a.pes
+A 00076dc8 LA:%-16s
+A 00076dd4 CSewSeg
+A 00076ddc CEmbOne
+A 00076dfc #PEC0001LA:
+A 00076e08 _a.pec
+A 00076e10 #PEC0001LA:%-16s
+A 00076e24 YCORDS
+A 00076e2c XCORDS
+A 00076e34 CODES
+A 00076e3c SOURCE
+A 00076e44 _a.hus
+A 00076e4c YDESTIN
+A 00076e54 XDESTIN
+A 00076e5c CDESTIN
+A 00076e84 _a.pcm
+A 000774b4 Canary Yellow
+A 000774c4 Honey Dew
+A 000774d0 Old Gold
+A 000774dc Yellow Ocher
+A 000774ec Mustard
+A 000774f4 Medow
+A 000774fc Olive Drab
+A 00077510 Floral Pink
+A 0007751c Crimson
+A 00077524 Green Dust
+A 00077530 Solar Blue
+A 0007753c Blue Ink
+A 00077548 Violet Blue
+A 00077554 Dark Sepia
+A 00077560 Sepia
+A 00077568 Sinna
+A 00077570 Cocoa Brown
+A 0007757c Salmon
+A 00077584 Toast
+A 0007758c Hazel
+A 00077594 Ivory White
+A 000775a0 Peacock Green
+A 000775b0 Aquamariune
+A 000775bc Opal Green
+A 000775c8 Cardinal Red
+A 000775d8 Burgundy
+A 000775e4 Orchid Pink
+A 000775f0 Sun Flower
+A 000775fc Blond
+A 00077604 Burnt Orange
+A 00077614 Coral
+A 0007761c Slate Blue
+A 00077628 Bright Blue
+A 00077634 Powder Blue
+A 00077640 Beige Gray
+A 0007764c Ocean Blue
+A 00077658 Bright Green
+A 00077668 Bamboo
+A 00077670 Meadow Green
+A 00077680 Peony Purple
+A 00077690 Umber
+A 00077698 Cinnamon
+A 000776a4 Navy Blue
+A 000776b0 Baby Blue
+A 000776bc Pale Aqua
+A 000776c8 Silver Grey
+A 000776d4 Yellow Green
+A 000776e4 Pale Sky
+A 000776f0 Wine Red
+A 000776fc Peach
+A 00077704 Pale Pink
+A 00077710 Pale Yellow
+A 0007771c Pale Violet
+A 00077734 Lt Gray
+A 0007773c Medium Gray
+A 00077748 Dark Magenta
+A 00077760 Dark Cyan
+A 0007776c Not Defined
+A 00077778 Applique
+A 00077784 Applique Position
+A 00077798 Applique Material
+A 000777ac Fresh Green
+A 000777b8 Lemon Yellow
+A 000777c8 Electric Blue
+A 000777d8 Harvest Gold
+A 000777e8 Flesh Pink
+A 000777f4 Moss Green
+A 00077800 Emerald Green
+A 00077810 Tangerine
+A 0007781c Dark Fuschia
+A 0007782c Olive Green
+A 00077838 Amber Red
+A 00077844 Carmine
+A 0007784c Beige
+A 00077854 Wistaria Violet
+A 00077864 Lavender
+A 00077870 Deep Green
+A 0007787c Linen
+A 00077884 Dark Olive
+A 00077890 Warm Grey
+A 0007789c Peacock Blue
+A 000778ac Leaf Green
+A 000778b8 Clay Brown
+A 000778c4 Khaki
+A 000778cc Cream Yellow
+A 000778dc Pumpkin
+A 000778e4 Sky Blue
+A 000778f0 Seacrest
+A 000778fc Violet
+A 00077904 Vermilion
+A 00077910 Salmon Pink
+A 0007791c Deep Rose
+A 00077928 Royal Purple
+A 00077938 Ultra Marine
+A 00077948 Pewter
+A 00077950 Cream Brown
+A 0007795c Russet Brown
+A 0007796c Silver
+A 00077974 Brass
+A 0007797c Lime Green
+A 00077988 Deep Gold
+A 00077994 Mint Green
+A 000779a0 Lilac
+A 000779a8 Light Lilac
+A 000779b4 Magenta
+A 000779bc Reddish Brown
+A 000779cc Cornflower Blue
+A 000779dc Teal Green
+A 000779e8 Prussian Blue
+A 000779f8 Unknown
+A 00077a00 Light Brown
+A 00077a0c Dark Brown
+A 00077a18 Light Pink
+A 00077a24 Dark Pink
+A 00077a30 Light Orange
+A 00077a40 Dark Orange
+A 00077a4c Light Grey
+A 00077a58 Dark Grey
+A 00077a64 Light Yellow
+A 00077a74 Dark Yellow
+A 00077a80 Light Purple
+A 00077a90 Dark Purple
+A 00077a9c Light Red
+A 00077aa8 Dark Red
+A 00077ab4 Dark Green
+A 00077ac0 Dark Blue
+A 00077acc White
+A 00077ad4 Brown
+A 00077ae4 Orange
+A 00077aec Light Green
+A 00077af8 Light Blue
+A 00077b0c Yellow
+A 00077b14 Purple
+A 00077b20 Green
+A 00077b30 Black
+A 00077b38 Found Color: %d %s
+A 00077b4c _a.pcs
+A 00078734 LA: %-15s
+A 0007873e ST:%7ld
+A 00078746 CO:%3d
+A 0007874d +X:%5d
+A 00078754 -X:%5d
+A 0007875b +Y:%5d
+A 00078762 -Y:%5d
+A 0007876c AX:+    0
+A 00078776 AY:+    0
+A 00078780 MX:+    0
+A 0007878a MY:+    0
+A 00078794 PD:******
+A 00078a94 CGRunStitchParms
+A 00078aa8 CGSatinStitchParms
+A 00078abc CGFillStitchParms
+A 00078ad0 CSpecialStitch
+A 00078ae0 CSatinStitch
+A 00078af0 ERROR: Impossible degree combination.
+A 00078b18 CRunStitch
+A 00078e18 CFillStitch
+A 00078e24 CColorChange
+A 00078e34 %s is not a vaild GN Scaleable file.
+A 00078e5c CBmButton
+A 00078e68 Can't locate end of central directory in ZIP file %s
+A 00078ea0 Failure creating ALEntry object when reading directory in ZIP file %s
+A 00078ee8 Failure creating storage object in ZIP file %s
+A 00078f18 Bad record in central directory of ZIP file %s
+A 00078f4c Copyright (c) 1994-1996 Greenleaf Software, Inc.
+A 00078f7d All Rights Reserved.
+A 00078f94 Allocation of buffer failed in ALStorage constructor
+A 00078fcc Allocation of buffer failed in Open()
+A 00078ff4 Error allocating buffer space in call to ReadString() for object %s
+A 00079038 Error reading string lengthin ReadString() for object %s
+A 00079074 Attempt to extract an object without decryption engine
+A 000790ac Attempt to decompress without a decompressor
+A 000790dc CRC32 was supposed to be %08lx, was %08lx
+A 00079108 Allocation failure when attempting to allocate a buffer of %ld bytes for ALMemory %s
+A 00079160 Attempt to allocate a buffer of %ld bytes for ALMemory %s
+A 0007919c Attempt to write past the end of a user owned buffer for ALMemory %s
+A 000791e4 Allocation failure when attempting to initialize a buffer of %ld bytes for ALMemory %s in _Create()
+A 00079248 Allocation failure when attempting to create a buffer of %ld bytes for ALMemory %s in _Create()
+A 000792a8 Attempt to open ALMemory %s with no buffer allocated
+A 000792e0 Unable to allocate memory for error detail message
+A 00079314 No errors
+A 00079320 Xor Encryption
+A 00079330 <none>
+A 00079350 Greenleaf
+A 0007935c CEmbData
+A 00079368 CComplexFillStitch
+A 0007937c %s: %s
+A 00079384 Failed to allocate memory when adding comment to storage object %s
+A 00079509 Qkkbal
+A 00079765 wn>Jj
+A 000797c7 -Attempt to read past end of the buffer in ALMemoryBase %s
+A 0007980c AL.TMP
+A 00079814 Read failure on %s.  errno = %d
+A 00079834 Seek failure on %s.  errno = %d
+A 00079854 Write failure on %s.  result = %d, errno = %d
+A 00079884 Couldn't get time, date, and size information for %s.  errno = %d.
+A 000798c8 File open failure.  Open of %s returned errno = %d
+A 000798fc ~al~%03d.tmp
+A 0007990c Temporary file creation failure.  Open of %s returned errno = %d
+A 00079950 Temporary file creation failure.  Tried 1000 times to open %s (or a name something like that).
+A 000799b0 File creation failure.  Open of %s returned errno = %d
+A 000799e8 Error renaming %s to %s.  errno = %d
+A 00079a10 Error deleting %s before renaming %s.  errno = %d
+A 00079a44 Error attempting to rename %s to %s.  Can't rename to the same name!
+A 00079a8c Error deleting file %s, errno = %d 
+A 00079ab4 Binary copy
+A 00079ac0 Inflate
+A 00079acc Stored
+A 00079ad4 Deflate Fast
+A 00079ae4 Deflate Normal
+A 00079af4 Deflate Maximum
+A 00079b04 Error creating deflate engine. ZLIB returned %d
+A 00079b38 Memory allocation failure in expansion startup
+A 00079b68 Incorrect compression level parameter passed to compressor.  Compression level = %d
+A 00079bbc Internal 2 error in Greenleaf Decompression routine
+A 00079bf0 Internal 1 error in Greenleaf Decompression routine
+A 00079c24 Memory allocation failure in compression startup
+A 00079c58 incorrect data check
+A 00079c70 incorrect header check
+A 00079c88 invalid reserved bit
+A 00079ca0 invalid window size
+A 00079cb4 unknown compression method
+A 00079cd0  deflate Copyright 1995 Jean-loup Gailly 
+A 00079d9c invalid bit length repeat
+A 00079db8 too many length or distance symbols
+A 00079ddc invalid stored block lengths
+A 00079dfc invalid block type
+A 00079e34 buffer error
+A 00079e44 insufficient memory
+A 00079e58 data error
+A 00079e64 stream error
+A 00079e74 file error
+A 00079e80 stream end
+A 0007a218 incomplete dynamic bit lengths tree
+A 0007a23c oversubscribed dynamic bit lengths tree
+A 0007a264 incomplete literal/length tree
+A 0007a284 oversubscribed literal/length tree
+A 0007a2a8 invalid distance code
+A 0007a2c0 invalid literal/length code
+A 0007a328 .?AVtype_info@@
+A 0007e2a2 tGtHw
+A 0007fbd0 First Available
+A 0007fc36 1 - 9600
+A 0007fc47 2 - 14400
+A 0007fc59 3 - 28800
+A 0007fc6b 4 - 38400
+A 0007fc7d 5 - 57600
+A 0007fc8f 6 - 115200
+A 000800c8 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+A 000801cc 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+A 000802d0 11111:<B1111111111111111129<81111111111111111118;?111111111111111111=4<1111111111111111117:<C111111111111111111C;9111111111111111111B?<11111111111111111134<71111111111111111119<91111111111111111118;:111111111111111111=4<31111111111111111179;=1111111111111111
+A 000803d4 1111C
+A 000803da 63111111111CEB11113<
+A 000803f0 8111111111B69111114
+A 00080405 :1111111117??11111C
+A 0008041a <1111111112:631111=6
+A 00080430 =1111111118E811112;
+A 00080445 C111111111=<4111119
+A 0008045a ?1111111112:<21111B/
+A 0008046f E71111111119EB11113;
+A 00080485 8111111111B<9111124
+A 0008049a :1111111117;?21111Cv
+A 000804af ;21111111119<31111=<vW=1111111118RB1111
+A 000804d8 1117<
+A 000804de 911118?8118/
+A 000804eb C11114
+A 000804f3 ?11113?C11BE
+A 00080500 <11118
+A 00080508 E71117:4712?
+A 00080515 E21117E
+A 0008051e 811118?311:
+A 0008052b 91111?
+A 00080533 411118?911=E
+A 00080540 :11119
+A 00080548 <21117491136
+A 00080556 1111B/
+A 0008055d /B1112:?311:
+A 0008056b 31112<
+A 00080573 C1111B?B119
+A 00080580 :1111:
+A 00080588 ?2111=?:1136
+A 00080595 ?11118
+A 0008059d 631111::217;
+A 000805ab 31113W
+A 000805b2 v81111C?B11CvvB1111?vv:1111A?8118Wv81111
+A 000805dc 1113/
+A 000805e2 71118/
+A 000805ef C1111E
+A 000805f7 :1117;
+A 00080604 411114
+A 0008060c 411124
+A 00080619 E11118
+A 00080622 31118/
+A 0008062f B1113E
+A 00080637 =111=E
+A 00080644 91111;
+A 0008064c ?1111?
+A 00080659 ;11119
+A 00080661 ;1111:
+A 0008066f 7111B
+A 00080677 B111BE
+A 00080684 C1117<
+A 0008068c 811176
+A 00080699 411114
+A 000806a1 ;1111:
+A 000806ae <71118
+A 000806b6 <2111C
+A 000806be ;1CWvv=1117vvvC1113<v673<vv91111
+A 000806e0 11114:1113<
+A 000806f2 ;1111C
+A 000806fb ;212<
+A 00080707 /=111BE
+A 0008071d C1112;
+A 00080732 ?1111:
+A 0008073b 4112;
+A 00080747 671118
+A 00080750 <312?
+A 0008075c /811136
+A 00080772 :1111?
+A 0008077b :11B/
+A 00080787 ;71119
+A 00080790 ;2124
+A 0008079c E=1113
+A 000807a5 E=11:
+A 000807b1 vC1117;
+A 000807bb C11=W
+A 000807c3 7?vv41111:vvv4213<vWC1:vv<31111
+A 000807e4 1117?4882<
+A 000807f6 B1118E
+A 0008080b 9111BE
+A 00080820 ;21124
+A 00080835 E3111:
+A 0008084b 8111=6
+A 00080860 411136
+A 00080875 <71119
+A 0008088a /B111C
+A 000808a0 91113<
+A 000808b5 ?1117;
+A 000808c6 ?2?vW31118Wvvvv914vv?11:vv811111
+A 000808f9 ?1119E
+A 0008090e E311=E
+A 00080924 811=4
+A 00080939 :111:
+A 0008094e <21186
+A 00080963 /=113<
+A 00080979 C1134
+A 0008098e ?111C
+A 000809a3 E7118<
+A 000809b9 8117;
+A 000809ca B14v:1129Wvvvvv<8vvv481:v;111111
+A 00080acd ;18vv43B?vvvvvvv43vvvWB7;v:111111
+A 00080af0 1113E
+A 00080bd1 W4WvvvvvvvvvvvvvB3vvvv?;v42111111
+A 00080bf4 1111?6CB;
+A 00080cd4 vvvvvvvvvvvvvvvvv;<vvvvvv<71111111
+A 00080cf8 1113<B112?
+A 00080dd8 vvvvvvvvvvvvvvvvvvvvvvvvvP71128?81
+A 00080dfc 111;411113
+A 00080edb vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00080f00 119;711114
+A 00080fde vvvvvvvvvvvvvvvvvvvvvvvvv
+A 00081004 119211119
+A 000810df v:Wvvvvvvvvvvvvvvvvvvv:?vvvWW
+A 000810ff PB77111
+A 00081108 11111112<
+A 000811e2 vC2Wvvvvvvvvvvvvvvvvvv41:vvv
+A 00081202 R=111111
+A 0008120c 1111111C
+A 00081233 G####$
+A 000812e6 <19vvvvvvvvvvvvvvvvvvW7CWvvW
+A 00081306 :1111111
+A 00081310 111114?
+A 000813ea W;vvvvvvvvvvvvvvvvvvvv4vvvW
+A 0008140a B1111111
+A 00081414 1111=/
+A 000814ee vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 0008150d i71111111
+A 00081518 11118
+A 000815e1 vvvvvvvvvvvvvvvvvvvvvvvvvWW
+A 00081611 911111111
+A 0008161c 111124E91114
+A 000816e4 vvvvvvvvvvvvvvvvvvvvvvvvvv
+A 00081714 ?211111111
+A 00081720 11111111124
+A 000817e7 vvvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00081818 B111BA1111
+A 00081824 11111=?B34
+A 0008184c l__bF
+A 000818eb vvvvvvvvvvvvvvvvvvvvvvvvv
+A 00081921 :1111
+A 00081928 1111=6
+A 000819ee vvvvvvvvvvvvvvvvvvvvvvvvvv
+A 00081a25 C1111
+A 00081a2c 1112;
+A 00081a56 _boc 
+A 00081af1 vvvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00081b29 B1111
+A 00081b5a _bboF
+A 00081bf5 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00081c2d 91111
+A 00081c34 1112;;71<
+A 00081c5e _bo^b!
+A 00081cf8 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00081d38 1111:9=:
+A 00081d62 _bo^F
+A 00081dfb vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00081e35 iB111
+A 00081e66 _boo$
+A 00081efe vvvvvvvvvvvvvvvvvvvvvvvvvv
+A 00081f39 81111
+A 00081f6a _boc 
+A 00082001 vvvvvvvvvvvvvvvvvvvvvvvvvv
+A 0008203c B11111
+A 00082105 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 0008213e iB111111
+A 00082148 1112;
+A 00082208 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082242 B1111111
+A 0008224c 1111?477C
+A 00082270 k^c_j
+A 0008230b vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082345 Q11111B31
+A 00082350 1119<71118
+A 00082374 c^c_j
+A 0008240e vvvvvvvvvvvvvvvvvvvvvvvvvv
+A 00082449 PCA3BJ
+A 00082454 11=E81111B
+A 00082477 k]^c_j
+A 00082512 vvvvvvvvvvvvvvvvvvvvvvvvv
+A 00082558 11?8111136
+A 0008257b _]^c_j
+A 00082615 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082654 J99211
+A 0008265c 1111111B6
+A 0008267f ]]^c_j
+A 00082718 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082757 C111111
+A 00082760 111111BE
+A 00082782 iV]^c_j_G
+A 0008281b vvvvvvvvvvvvvvvvvvvvvvvvvWW
+A 0008285a J2111111
+A 00082864 11111=E
+A 00082884 5W^V]^c_jh.
+A 00082890 #L_b!
+A 0008291f vvvvvvvvvvvvvvvvvvvvvvvvv
+A 0008295e 81111111
+A 00082968 111126
+A 00082986 . kkUV]^c_jj ,Shgb$
+A 00082a22 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082a62 =1111111
+A 00082a6c 11118
+A 00082a8d _UV]^c_h5.
+A 00082a98 _ogg,
+A 00082b25 vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082b65 J11111111
+A 00082b70 1111=E
+A 00082b77 6B11C
+A 00082b91 VVV]^c_iS
+A 00082b9b _oogg,,
+A 00082c28 vvvvvvvvvvvvvvvvvvvvvvvvvv
+A 00082c68 i711111111
+A 00082c74 11111=9311BE
+A 00082c95 TVV]^c_
+A 00082c9e _boogg,5
+A 00082d2c vvvvvvvvvvvvvvvvvvvvvvvvv
+A 00082d6c B111721111
+A 00082d78 111111B11=6
+A 00082d98 ]TVV]^c
+A 00082da0 k__booggj
+A 00082e2f vvvvvvvvvvvvvvvvvvvvvvvvvW
+A 00082e70 311BaC1111
+A 00082e7c 11111:
+A 00082e9c UUVV]^c_j
+A 00082ea6 _boogt_Wozz
+A 00082f79 91111
+A 00082f80 11119
+A 00082f9f c\UVV]^c_j
+A 00082faa _boogt
+A 00082fbc !S.UI
+A 0008307d B1111
+A 00083084 11176
+A 000830a3 U\UVV]^c_j
+A 000830ae _bo^gthjrrz
+A 00083181 81111
+A 00083188 1113E
+A 000831a6 kf\UVV]^c_j
+A 000831b2 _bo^gt
+A 000831c6 _TUVF &
+A 00083285 qB111
+A 0008328c 1111:C1=E
+A 000832aa Vf\UVV]^c_j
+A 000832b6 _bo^ggtmrrz
+A 000832cb TUV]c#
+A 00083390 1113;;46
+A 000833aa ) lk\\\UVV]^c_j
+A 000833ba bbo^ggtmrrz
+A 000833ce VTUV]^
+A 0008348d J2111
+A 000834b1 c[\\UVV]^c_j
+A 000834be ibo^ggtmrrz
+A 000834d0 LW]TUV]c_L
+A 00083507 **E**
+A 0008351b /**E*/***
+A 00083553 GLvLG
+A 00083559 v*GSvG5GL
+A 00083563 lGGGG
+A 00083590 J21111
+A 000835b5 T[\TUVV]^c_
+A 000835c1 llbo^ggtmrrz
+A 000835d4 LlUTUV]c_F
+A 00083649 vvvvv
+A 00083655 vvvvvvvvvvvvvW
+A 00083693 J111111
+A 0008369c 11176
+A 000836b8 j[[\TUVV]^c_k
+A 000836c7 bo^ggtmrrz
+A 000836d7 #lR\TUV]c
+A 0008374c vvvvvvvvvvvvvvvvvvvvvvvvv
+A 00083796 J2111111
+A 000837a0 1111?;=B;
+A 000837bc ]Z[\TUVV]ccjG
+A 000837ca ibo^ggtmrrz
+A 000837dd i\TUV]c
+A 000837eb /5$#$5
+A 0008384f vvvvvvvvvvvvvvvvvvvvvvvvv
+A 00083899 a21111111
+A 000838a4 111=6=112:
+A 000838c0 [[[\TUVV]c
+A 000838ce ibo^ggtmrrz
+A 000838e1 _fTUV]cj,
+A 00083921 /EEEE/
+A 00083965 vvvvvv
+A 0008399d p=117CQB1
+A 000839a8 113<91111=
+A 000839c3 _Z[[\TUVV]c)
+A 000839d2 ibo^ggtmrrzr#
+A 000839e5 _fTUV]cj$
+A 00083a69 Svvvv
+A 00083aa1 qqJ:aqa31
+A 00083aac 11:;211114
+A 00083ac5 5WTZ[[\TUVV^F
+A 00083ad6 hbo^ggtmrrzU
+A 00083ae9 V\TUV]cj$
+A 00083af6 # .ItI 
+A 00083b6d SvvvW
+A 00083ba4 qqqqqqJ=11
+A 00083bb0 118211124
+A 00083bca jZZ[[\TUVVc 
+A 00083bda _bo^ggtmrrrD
+A 00083bed V\TUV]ci#
+A 00083bfb FWgzzm#
+A 00083ca7 qqqqJ772111
+A 00083cb4 11111124
+A 00083cce ]ZZ[[\TUVc!
+A 00083cdf bo^ggtmrrt 
+A 00083cef Ll\\TUV]cj 
+A 00083daa qqqqJ2111111
+A 00083db8 1111114
+A 00083dce ) Ll[ZZ[[\TUV$
+A 00083de1 R_bo^ggtmrzu
+A 00083df4 W\\TUV]c_ &
+A 00083e01  Lltmrz
+A 00083ead qqqqqC1111111
+A 00083ebc 111114
+A 00083ed6 dZZ[[\T],
+A 00083ee5 lbbo^ggtmrt#
+A 00083ef8 j[\TUV]c_F#
+A 00083f07 ommrz
+A 00083fb0 qqqqqqB1111111
+A 00083fc0 11118
+A 00083fd9 lTZZ[[fU.
+A 00083fea bbo^ggtmrV
+A 00083ffc j[\TUV]c_jhF.
+A 0008400a httmrz
+A 0008406f vvvvvvvvvvvvvvvS
+A 000840b5 qqqqJ21111111
+A 000840c4 1111B
+A 000840de l]Z[[\F
+A 000840ed kbbo^ggtmmD
+A 000840fa  E/#.
+A 00084100 c[\TUV]c_j_b_hggtmrz
+A 00084171 Svvvvvvvvvvvvvvvv
+A 000841b7 qqqqqqB11111111
+A 000841c8 11111C;B111;
+A 000841e3 W][[u 
+A 000841f1 ibbo^ggtmg!
+A 00084204 V[\TUV]c_j_bogggmmrz
+A 0008421e !),##
+A 00084226 ##,)*/
+A 0008426f vvvvvvvvvvvvvvvvvvvvvvvvv
+A 000842bb qqqqqC111111111
+A 000842cc 1111111112:
+A 000842f5 kbbo^ggtmu
+A 00084308 V[\TUV]c_j_bogggmmrz
+A 00084372 vvvvvvvvvvvvvvvvvvvvvvvvv
+A 000843bd qqC9qqq7117J81111
+A 000843d0 111119;98;
+A 000843f9 ibbo^ggtg$
+A 00084408 * Ll[[\TUV]c_j_bogggmmr
+A 0008442a #####
+A 00084476 vvvvvvvvvvvvvvvvvvvvvvvv
+A 000844c0 qqC1Cqq
+A 000844cd O1111
+A 000844d4 1111C
+A 000844fe bbo^ggt]
+A 00084510 \[\TUVc
+A 0008451a _bogggmrz|#
+A 00084529 !.F_cbbo^gVUD!
+A 00084579 vvvvvvvvvvvvvvvvvvvvvvvvv
+A 000845c3 qqq9J~
+A 000845d1 B1111
+A 000845d8 1112;
+A 000845fd G#lWjbbo^ggt.
+A 00084614 Z[\TUV_
+A 0008461d i_bogggmrm$
+A 0008462b !)kij_booggtmmrrUD!
+A 0008467c vvvvvvvvvvvvvvvvvvvvvvvv
+A 000846c6 qqqqqqqq
+A 000846d5 B1111
+A 000846f8 5,,)E
+A 00084706 bbo^gto!
+A 00084717 jZ[\TUVc5
+A 00084722 _bogggmmI
+A 00084734 _bboggtmmrz
+A 00084780 vvvvvvvvvvvvvvvvvvvvvvv
+A 000847c9 qqqqqqq
+A 000847d8 ~J3111
+A 000847e0 1111?422<
+A 00084808 l__bo^gg.
+A 0008481b ]Z[\TU].F
+A 00084825 i_bogggmc
+A 00084831 5l^^b
+A 00084838 _bboggtmmrz
+A 0008484b ,/G)5/
+A 00084883 vvvvvvvvvvvvvvvvvvvvvvv
+A 000848cc qqqqqqq
+A 000848e4 1112?:B4
+A 0008490c W__bo^go$
+A 0008491f ]Z[\TU]G
+A 0008492a _boggt] 
+A 00084933 !LkV]^b
+A 0008493c _bboggtmmrz
+A 00084986 vvvvvvvvvvvvvvvvvvvvvvv
+A 000849cf qqqqqq
+A 000849e1 J2111
+A 00084a10 W__bo^g^
+A 00084a23 UZ[\TU^
+A 00084a2b l_j_bogg^$
+A 00084a37 5lVV]^b
+A 00084a40 _bboggtmmrz
+A 00084a89 vvvvvvvvvvvvvvvvvvvvvvv
+A 00084ac6 iicFFF
+A 00084ad3 qqqqq
+A 00084ae4 J71111
+A 00084b15 ibbo^g.
+A 00084b27 [[[\TU
+A 00084b2e W__j_booo.
+A 00084b3c ]UV]^b
+A 00084b44 _phkkh_gmrz
+A 00084b8d vvvvvvvvvvvvvvvvvvvvvv
+A 00084bbb lkkkjF]]uYYYX
+A 00084bd6 qqqqq
+A 00084be7 J211111
+A 00084bf0 111=E
+A 00084c1a iboob!
+A 00084c2a l[[[\TUi_c_j_boo.
+A 00084c3f cTVV]^b
+A 00084c47 iGF,,.5L
+A 00084c5c LSo|V#
+A 00084c90 vvvvvvvvvvvvvvvvvvvvvvW
+A 00084cd9 qqqqqq
+A 00084cea J2111111
+A 00084cf4 1111?E9:6
+A 00084d2e jZ[[\TVi]c_j_boc 
+A 00084d40 !SlUUVV]^cj.
+A 00084d61 kgtrrUD!
+A 00084d93 vvvvvvvvvvvvvvvvvvvvvvWSLllG
+A 00084ded }71111111
+A 00084df8 1117<8113;
+A 00084e32 iZ[[\TV]]c_j_b
+A 00084e46 ]TUVV]^_,&
+A 00084e63 5W_gtmz
+A 00084e96 vvvvvvvvvvv
+A 00084ef1 J1111=OB1
+A 00084efc 111;?1111=
+A 00084f36 ]Z[[\TUV]c_j_
+A 00084f49 i\TUVV]b)
+A 00084f68 Rbgtmz
+A 00085000 11C;31111:
+A 00085036 E!5W]Z[[\UUV]c_j
+A 0008504d ^fTUVV]_ 
+A 0008505a #$..Lkmrz
+A 0008506c iogtmz
+A 0008507c EGFF),FF5
+A 000850e0 XXXXXXYY
+A 00085104 11971111C
+A 0008513e \Z[[\UUV]c_jG
+A 00085151 \\TUVVc,
+A 00085160 ^ggtmrz
+A 00085171 ogtmz
+A 0008517b !E/G$!
+A 000851d3 XXXXXXYYYYY
+A 000851ff oBAA111
+A 00085208 1111111:
+A 0008523e *!lW[Z[[\UUV]c_k!
+A 00085254 j[\TUVVc 
+A 00085263 iggtmmrz
+A 00085273 lbogtmz
+A 000852c2 XXXXXXXXXXYYYYYY
+A 000852e7 YYYYYYX
+A 00085302 aA111111
+A 0008530c 111111:
+A 00085345 k[Z[[\UU]^cj#
+A 00085358 V[\TUVV.
+A 00085367 _ggtmmrz
+A 00085377 ibogtmz
+A 00085387  !,,F5]]I,# 
+A 000853ba XXXXXYYYYYY
+A 000853da YXXXXXXXXXXX
+A 00085406 N1111111
+A 00085410 11111:
+A 00085449 idZ[[\UU]^b.
+A 0008545c \f\TUV],
+A 0008546b oggtmmrz
+A 0008547b jbogtmzt#
+A 00085489 #)GijpboggtmmrI!
+A 000854ac XXXXXXY
+A 000854c9 YYYYYYYYYYXXXXXX
+A 0008550a B1111111
+A 00085514 1111=E
+A 0008554d kZZ[[\UU]^5
+A 0008555f k[f\TUVc#
+A 0008556e k^ggtmmrz
+A 00085580 bogtmzU
+A 0008558b #Licc
+A 00085592 _boggtmrz
+A 000855bc YYYYYYXXXXXX
+A 0008560d o71111111
+A 00085618 11118
+A 00085652 kV[[\UUVc 
+A 00085663 jZf\TUV^$
+A 00085675 bgtrrz
+A 00085682 jjbogtmm$
+A 0008568d  Fk^]^cj
+A 00085696 _boggtmrz
+A 000856af YYYYYYXXXXXX
+A 000856f7 ]ccc_pppp
+A 00085711 H11111111
+A 0008571c 11112?
+A 00085723 :211:
+A 00085758 k]\TU^#
+A 00085768 Zf\TUVV,
+A 00085774  $.5L
+A 0008577b liomzV
+A 00085785 k_jbogtr^ 
+A 00085790 !LkUV]^cj
+A 0008579a _boggtmrz
+A 000857ab XXXXXXX
+A 000857ee uccccjjjh
+A 000857f9 qqqqqq
+A 00085814 g111111111
+A 00085820 1111112111:
+A 0008585a  .LWlc],
+A 0008586b j[f\TUVVF
+A 0008587d !$)5LG#!
+A 00085889 __jbogtmI
+A 00085893 !LiUUV]^cj
+A 0008589e _b^ggtmrz
+A 000858cf >>>>>
+A 000858fc qqqqqq
+A 00085918 7111BA1111
+A 00085924 1111134=7:
+A 0008593e /****
+A 00085960  .L.#
+A 00085970 \f\TUVV^,
+A 0008598d ^_jbogto!
+A 00085997 Gl\TUV]^_
+A 000859a1 iilllkbtrz
+A 000859dd 5Ljjk
+A 000859ff qqqqqq
+A 00085a21 N1111
+A 00085a28 11113<
+A 00085a5b XXXXXYYX 
+A 00085a74 V[\TUVV]_,
+A 00085a90 _^_jbogt]()
+A 00085a9c VfTUV]^_j.###.L
+A 00085ac0  $,  
+A 00085b03 qqqqqq
+A 00085b25 H1111
+A 00085b2c 1111?
+A 00085b41 EE//////
+A 00085b4e M\EEE
+A 00085b70 YYYYX
+A 00085b78 j[\TUVV^^
+A 00085b8a !,FUc 
+A 00085b94 ]^_jbogg$$
+A 00085ba0 [\TUV]^j#
+A 00085bc2  G_V]c
+A 00085bc9 F5,,!!
+A 00085c06 qqqqqq
+A 00085c29 =1111
+A 00085c46 **********
+A 00085c52 dM]*********XYYYYXXXXXXXXXXX
+A 00085c7d V\TUVV^c_ij.#!!#F
+A 00085c97 jV^_jbogc GWU[\TUV]_#
+A 00085cc8 cV]^c
+A 00085ccf pabb]]I,#! 
+A 00085d09 qqqqq
+A 00085d2d N2111
+A 00085d34 1112;<31<
+A 00085d49 *********
+A 00085d5b EEEEEEE
+A 00085d81 kUTUVV^c_j
+A 00085d8e _bggtmr
+A 00085da0 _og,#
+A 00085da7 Z[\TUV^.
+A 00085dc7 vL GlVV]^c
+A 00085dd3 _booggtsrmr\D
+A 00085deb lk55555k
+A 00085e0c qqqqq
+A 00085e38 1111:C79
+A 00085e4e EEEEEEEEEv
+A 00085e86 kVUVV^c_j
+A 00085e90 _bo^ggtmrV
+A 00085ea4 bob#)
+A 00085eaa UZ[\TUVF
+A 00085ecf jUV]^c
+A 00085ed7 _booggtmrz
+A 00085eec lG,#!
+A 00085ef6 !#,5i
+A 00085f0f qqqqq
+A 00085f35 }=111
+A 00085f3c 1118/
+A 00085f51 //////////
+A 00085f5f ZMdl///////
+A 00085f8c ^VV^c_j
+A 00085f94 _bo^ggtmt,
+A 00085fa8 bo5 L
+A 00085fae \Z[\TU],
+A 00085fd3 ]UV]^c
+A 00085fdb __b^ggtmrz
+A 00086004 F,$$$$$$,FFc
+A 00086012 qqqqqpbp
+A 00086039 B1111
+A 00086091 l_]^_j
+A 00086098 _bo^ggtmg 
+A 000860b1 kZZ[\TU]!
+A 000860d1 vvL GlUUV]^c
+A 000860f7 #$))..D# 
+A 00086114 D_qqq_I# #DDDDDDDDI^
+A 0008613a }}B11111
+A 00086167 yZMdi
+A 00086197 li_j__bo^gggg,
+A 000861a9 jfUVc
+A 000861b5 _ZZ[\TU] 
+A 000861ca L$  $G
+A 000861d3 vvvv,!S_TUV]^c
+A 000861f8 !,c_i
+A 000861fe boggggU#
+A 00086219 Dqh]!
+A 0008623d }}B111111
+A 00086248 1112;
+A 0008629f liiij_^. 
+A 000862ad U\UVc
+A 000862ba ZZ[\TUF
+A 000862cd 5GSKKv
+A 000862d7 vvvK!,
+A 000862de VTUV]^c
+A 000862fa #Fc]^bj_bo^gtmrrI!
+A 00086310 )F.FFF.#$$ 
+A 00086342 B1111111
+A 0008634c 1112;912CE
+A 00086370 fZMMo*G
+A 00086382 MoEEEE
+A 000863a0 !,.)L5..#
+A 000863b0 k[\UVc
+A 000863be ZZ[\TUF
+A 000863da vvvvG
+A 000863e0 Gl\TUV]^c
+A 000863fd .jVU]^bj_bo^gtmrz
+A 00086416 VUV]^b
+A 00086425 ,5\UVVVUUUUU.
+A 00086442 }}}O11112B71
+A 00086450 111C;71118
+A 00086466 ////E***
+A 00086475 [ZMZ5Gjty
+A 000864b4 ][\U]c
+A 000864c1 _ZZ[\TU^!
+A 000864cc #5L5.#
+A 000864dd vvvvv,!
+A 000864e5 _fUUV]^c
+A 00086500 .j\UU]^bj_bo^gtmrz
+A 0008651b UV]^c_jj#
+A 00086527 !5itmrz
+A 00086546 }}}}NA7Bs
+A 00086554 118/B11118
+A 00086578 yfZMMr
+A 000865a6 /G,# 
+A 000865b6 Llf[\U]c
+A 000865c5 kZZ[\TU]F 
+A 000865d7 !!$#&
+A 000865e1 vvvvS!,
+A 000865e9 V\UUV]^c
+A 000865f2 G$!!#Lbmmrz
+A 00086603 .l\\UU]^bj_bo^gtmrz
+A 0008661d GW]V]^c_j
+A 0008662d ttmrzz
+A 00086648 }}}}}}
+A 00086658 114C1111=6
+A 00086689 yZMZk
+A 000866ad /*5)))))5*E$$
+A 000866bb k\[\UVc
+A 000866ca \Z[\TUV^F 
+A 000866d9 #)jgg#&
+A 000866e4 vvvvvG
+A 000866eb Gk\\UUV]^c
+A 000866f7 ___botmmrz
+A 00086708 ][\UU]^b
+A 00086713 _^gtmrz
+A 00086723 kV]^c_j
+A 0008672b h$)logttmrzz
+A 0008674b }}}}}
+A 00086754 NNH211
+A 0008675c 1121111=6
+A 0008678b y[[MMb
+A 000867c1 l_]]ci)
+A 000867ce _Z[\TUV]^j.##.cbgmrV
+A 000867e7 vvvvvv.!
+A 000867f0 c[\UUV]^c
+A 000867fb _bo^ggmmrz
+A 0008680a GjZ[\UU]^_kS
+A 00086819 _tmrz
+A 00086828 ^V^c_j
+A 0008682f _li^ggttmrzrV#
+A 0008684e }}}}}
+A 00086857 B111111
+A 00086860 111111=6
+A 0008687b ibgTZ
+A 0008688e zf[ZM^
+A 000868d2 RU[\TUV]^cjihbgggtt,
+A 000868e8  SvvvvvvK!)
+A 000868f4 U[\UUV]^c
+A 000868ff _bo^ggmmrz
+A 0008690f VZ[TUUV^c!  )
+A 0008692c i]^c_j
+A 00086933 _booggttmrtI 
+A 00086951 }}}}}
+A 0008695a N1111111
+A 00086964 11111=6
+A 0008697b gt[ZddMMZZ
+A 00086990 yzf[ZMUv
+A 000869d7 l\fTUV]^_j_bb^ggt] 
+A 000869ec ,vvvvvvvG Ll[[\UUV]^_liibo^ggmmr
+A 00086a13 Z[[\UUV_,
+A 00086a31 _^c_j
+A 00086a37 _bboggttt]#
+A 00086a53 }}}}}}
+A 00086a5e B1111111
+A 00086a68 111136
+A 00086a77 vipmTZZMMMZZZZZZ[[f
+A 00086a93 zre[ZM[W
+A 00086ad5 #E/$ L
+A 00086adc kV\UV]^_j
+A 00086ae6 bb^ggmF
+A 00086af0 Gvvvvvvv,#
+A 00086afb ^Z[\UUV]^jS
+A 00086b09 _^ggmro5
+A 00086b14  l_Z[[\UVVF
+A 00086b3b _bboggto. 
+A 00086b56 }}}}}
+A 00086b61 |A1111111
+A 00086b6c 11118
+A 00086b80 dZZZ[[ffeeeezrr
+A 00086b94 wymre[ZMZl
+A 00086be2 _VV]^_j
+A 00086bea bb^gg
+A 00086bf3 #vvvvvvvS .
+A 00086bff \[[\UUV]^)
+A 00086c0d R^ggmmzV
+A 00086c1a _Z[[\UV].
+A 00086c28 Lltmrz
+A 00086c3f _bbogg]#&
+A 00086c59 }}}}}
+A 00086c65 H11111111
+A 00086c70 1111=<
+A 00086c77 ;B11:
+A 00086c8e zrrrmtz
+A 00086c98 ztre[ZMZb
+A 00086cd7 /EG)GK
+A 00086ce8 i_c_j_bb^ogF
+A 00086cf7 Fvvvvvvv5
+A 00086d01 LiZ[[\UUV]_#
+A 00086d11 R^ggmmr
+A 00086d1e _Z[[\UV].
+A 00086d2d btmrz
+A 00086d3c !Skc_j
+A 00086d43 _bbooF 
+A 00086d5b }}}}}}}
+A 00086d68 O711111111
+A 00086d74 111117C21136
+A 00086dfa  SvvvvvvW$#
+A 00086e06 ]Z[[\UUV]c
+A 00086e16 ^ggmmrr,
+A 00086e22 _Z[[\UV]c 
+A 00086e2f Gkgtmrz
+A 00086e3f #Gj^c_j
+A 00086e47 _bbogF 
+A 00086e5e }}}}}}
+A 00086e6c B111771111
+A 00086e78 111117=71B6
+A 00086e98 wwwwd
+A 00086ef1  !!!!! 
+A 00086efe .vvvvvvvS )
+A 00086f0a fZ[[\UUV]5!#!Gio^ggmmr
+A 00086f26 _Z[[\UV]^F$#Figgtmrz
+A 00086f42 .k^]^c_j
+A 00086f4b _bboggV
+A 00086f61 }}}}}}
+A 00086f70 711B{N1111
+A 00086f7c 11113;
+A 00087001 $Kvvvvvvv5
+A 0008700c LjZZ[[\UUV]^_i_
+A 0008701c bo^ggmmrt 
+A 0008702a l[[[\UV]c_ij_o^gtmrz
+A 00087044 #GjVV]^c_j
+A 0008704f _bbogggF
+A 00087064 }}}}}}
+A 00087072 |{H1B{{H1111
+A 00087080 1111:
+A 000870f7 K5.# 
+A 00087100  ##.5
+A 00087106 vvvvvvvv$#
+A 00087111 ]dZ[[\TUV]^c
+A 0008711f _bo^ggmmrI
+A 0008712f ^Z[\UV]cbj_bo^gtmrz
+A 00087147 ,L]UVV]^c_j
+A 00087153 _bboggttI
+A 00087167 }}}}}
+A 00087175 |{{|N{{{=1111
+A 00087184 1113E
+A 000871fe vKSSSSSvvvvvvvvvvvvW#.
+A 00087215 j_VUUTUUV]^c
+A 00087223 _bo^ggmtu
+A 00087234 T[\UV]c_j_bo^gtmrr] 
+A 0008724c \\UVV]^c_S
+A 00087257 _bboggttt,
+A 0008726a }}}}}
+A 00087278 {{{{OH{{{H1111
+A 00087288 11176EC1<
+A 000872a7 dMZer
+A 00087309 vvvvvvvvvvvvW#!)5Ll
+A 0008731f kij___j
+A 00087327 _bo^ggg.
+A 00087338 iU\UV]c_j_bo^gtmmu 
+A 0008734c ,LV[\TUVV]^_$,
+A 0008735b lbboggttrg#
+A 0008736d }}}}}
+A 0008737a |{{{{s7B{{{
+A 0008738c 1111:C1=E
+A 000873ab MZ[ez
+A 000873b4 MZZZ[y
+A 0008740c vvvvvvvvvvvvvvF
+A 00087420 ##.FGS
+A 0008742c ipik5!
+A 00087436 !ji! G
+A 0008743e ]UV]c_j_bo^gtg,
+A 0008744e  5j[[[\TUVV]5!
+A 00087460 jooggtmmrg#
+A 00087470 }}}}}
+A 0008747d |{{{{sA7s{{{
+A 00087490 111=664E
+A 000874af MZ[zy
+A 000874b8 dMMMZZy
+A 0008750f vvvvvvvvvvvvvvvv) 
+A 0008752a !#$))))).!
+A 00087548 j_bbbjF 
+A 00087551 $LVdZZ[\\UU].
+A 00087562 !LWijp
+A 00087569 jj_5#!
+A 00087571 #}}}}}
+A 00087580 {{{{{{HAO{{{
+A 0008758d H1111
+A 000875bc ydMMMMZZ
+A 00087612 vvvvvvvvvvvvvvvvvvG5.,#! 
+A 00087654  SSjjjijccc.#
+A 00087667 !.$###
+A 00087675 D}}}}}
+A 00087682 |{{{{{{{Os{{
+A 00087690 B11111
+A 000876c1 kgZMMMMM
+A 00087715 vvvvvvvvvvvvvvvvvvv
+A 0008772d lL5),$! 
+A 0008774c !#...,#
+A 00087759 !#####!
+A 00087778 !g}}}
+A 00087785 |{{{{{{{{{{{
+A 00087793 H111111
+A 0008779c 1117<
+A 000877c7 viUZMM
+A 00087819 vvvvvvvvvvvvvvvv
+A 00087838 lG5,,,,,Fj
+A 00087876 !!!DDU}}}}
+A 00087887 ||{{{{{{{{{{{
+A 00087896 H1111111
+A 000878a0 1111??3=:
+A 0008791d vvvvvvvvvvvvvvvv
+A 00087952 jF,#       !D]bD############V
+A 00087974 ]]ggVg}}}}
+A 0008798b {{{{{{{{{{{{
+A 00087999 O11111A21
+A 000879a4 1118631119
+A 00087a0c zfZtv
+A 00087a21 vvvvvvvvvvvvvvvW
+A 00087a59 hcccccccpqqqqppppppp
+A 00087a8e {{{{{{{{{{{
+A 00087a9d s=117NsB1
+A 00087aa8 117E91111=
+A 00087b25 EvvvvvvvvvvvvvW
+A 00087b63 qqqqqq
+A 00087b84 }}}}}
+A 00087b91 {{{{{{{{{{{
+A 00087bac 11?911117<
+A 00087c2a vvvvvvvvvvvvW
+A 00087c66 qqqqqq
+A 00087c86 }}}}}Ug
+A 00087c92 Ut{{{{{{{{{{{
+A 00087ca8 ONN711
+A 00087cb0 11=11113;
+A 00087d2e vvvvvvvvvvvvW
+A 00087d69 qqqqq
+A 00087d8a }}}}g!I
+A 00087d92 DDVt!D{{{{{{{{{
+A 00087dab H711111
+A 00087db4 1111113<
+A 00087e0f joteZdMMMMZ
+A 00087e32 vvvvvvvvvvvW
+A 00087e6b qqqqqq
+A 00087e8c }}}}}
+A 00087e96 D#!D!D{{{{{{{{
+A 00087eae O2111111
+A 00087eb8 111113<
+A 00087f13 ddMddZZZ[[ffy
+A 00087f8f }}}}}
+A 00087f95 |U DgD
+A 00087f9f D{{{{{{{
+A 00087fb2 H1111111
+A 00087fbc 11111;
+A 0008801f yyyzr
+A 00088072 qqqqqq
+A 00088099 V!!!DD#
+A 000880a1 t!I{{{{{{
+A 000880b6 =1111111
+A 000880c0 11118
+A 00088175 qqqqq
+A 00088194 }}}}}
+A 000881a8 {{{{{
+A 000881b9 N11111111
+A 000881c4 1111B/
+A 000881cb EC11C
+A 00088277 qqqqqq
+A 00088297 }}}}}
+A 000882a4 {{{{{{{{{{{
+A 000882bc s711111111
+A 000882c8 1111184B113<
+A 0008837b qqqqq
+A 0008839a }}}}}
+A 000883a6 ||{{{{{{{{{{
+A 000883c0 H111111111
+A 000883cc 1111117113<
+A 0008847d qqqqqq
+A 0008849d }}}}}
+A 000884a9 |{{{{{{{{{{{
+A 000884c4 7117NH1111
+A 000884d0 11111CE:C<
+A 0008857f qqqqqq
+A 000885a0 }}}}}
+A 000885ac |{{{{{{{{{{
+A 000885cd H1111
+A 000885d4 1111C
+A 00088637 vfZey
+A 0008863f dMZZ[
+A 00088683 qqqqqq
+A 000886af |{{{{{{{{{{
+A 000886d1 =1111
+A 000886d8 1117<
+A 00088744 g[MMZy
+A 00088785 qqqqqq
+A 000887b2 {{{{{{{{{{
+A 000887d5 =1111
+A 000887dc 1113/
+A 0008884a pTZMd
+A 00088888 qqqqq
+A 000888a8 }}}}}
+A 000888b4 |{{{{{{{{{{
+A 000888d9 sA111
+A 000888e0 11114:136
+A 0008894c vvvWko[
+A 0008898c qqqqq
+A 000889ab }}}}}
+A 000889b7 |{{{{{{{{{{
+A 000889e4 1117??C;
+A 00088a4f vvvvvvv
+A 00088aad }}}}}}
+A 00088aba {{{{{{{{{{{
+A 00088ae1 O7111
+A 00088b52 vvvvvvvv
+A 00088bb1 }}}}}
+A 00088bbd |{{{{{{{{{{
+A 00088be4 N71111
+A 00088c55 vvvvvvvvv
+A 00088c61 vvvvvW
+A 00088c94 qqqqq
+A 00088cb3 }}}}}
+A 00088cc0 {{{{{{{{{{
+A 00088ce7 O711111
+A 00088cf0 1113E
+A 00088d57 vvvvvvvvvvE
+A 00088d63 vvvvvv
+A 00088d7f qoeZMZy
+A 00088d97 qqqqq
+A 00088db6 }}}}}
+A 00088dc3 {{{{{{{{{{
+A 00088dea O7111111
+A 00088df4 1111?<8C<
+A 00088e5b vvvvvvvvvvvvvvvvvW
+A 00088e9a qqqqq
+A 00088eb9 }}}}}
+A 00088ec5 |{{{{{{{{{{
+A 00088eed s71111111
+A 00088ef8 1113<B113?
+A 00088f5f vvvvvvvvvvvvvvvvW
+A 00088fbc }}}}}
+A 00088fc8 |{{{{{{{{{{
+A 00088ff1 r7111BNA1
+A 00088ffc 112;:1111=
+A 00089049 						
+A 00089064 vvvvvvvvvvvvvv
+A 000890a0 qqqqq
+A 000890be }}}}}}
+A 000890cb {{{{{{{{{{
+A 00089100 11:<31111:
+A 00089169 vvvvvvvvvvv
+A 000891a3 qqqqq
+A 000891c1 }}}}}
+A 000891ce |{{{{{{{{{
+A 00089204 11C311119
+A 0008926e vvvvvvvv
+A 000892a6 qqqqq
+A 000892d1 {{{{{{{{{{
+A 000892ff OAA7111
+A 00089308 11111119
+A 00089373 vvvvvv
+A 000893c7 }}}}}
+A 000893d4 {{{{{{{{{
+A 00089402 O7111111
+A 0008940c 1111119
+A 000894ab qqqqq
+A 000894ca }}}}}
+A 000894d6 |{{{{{{{{{
+A 00089506 H1111111
+A 00089510 111119
+A 00089571 vvvvv
+A 000895d9 {{{{{{{{{{
+A 0008960a A1111111
+A 00089614 1111B
+A 00089673 vvvvvvv
+A 000896b1 qqqqq
+A 000896d0 }}}}}
+A 000896dc |{{{{{{{{{
+A 0008970d O21111111
+A 00089718 11118
+A 00089776 vvvvvvvv
+A 000897d2 }}}}}}
+A 000897df {{{{{{{{{{
+A 00089811 B11111111
+A 0008981c 11112:6C211?
+A 00089878 vvvvvvvvvv
+A 000898e1 |{{{{{{{{{
+A 00089914 N111111111
+A 00089920 1111117111C
+A 0008997c vvvvvvvvv
+A 000899e4 |{{{{{{{{{{
+A 00089a18 A111H=1111
+A 00089a24 11111848=4
+A 00089a7f vvvvvvv
+A 00089abd qqqqq
+A 00089adb }}}}}
+A 00089ae7 |{{{{{{{{{
+A 00089b21 N1111
+A 00089b28 11118/
+A 00089b82 vvvvvv
+A 00089bde }}}}}
+A 00089bea |{{{{{{{{
+A 00089c25 B1111
+A 00089c2c 1112?
+A 00089c85 Evvvv
+A 00089cec |{{{{{{{{{
+A 00089d29 =1111
+A 00089d89 vvvvv
+A 00089de3 }}}}}
+A 00089df0 {{{{{{{{{
+A 00089e2d N7111
+A 00089e34 1112??32<
+A 00089e8d vvvvvvvv
+A 00089ef2 |{{{{{{{{{
+A 00089f38 1111:979
+A 00089f91 vvvvvvvvvvvvv
+A 00089fcc qqqqq
+A 00089ff5 |{{{{{{{{{
+A 0008a035 r7111
+A 0008a095 vvvvvvvvvvvv
+A 0008a0fc \{{{{{
+A 0008a138 O71111
+A 0008a199 vvvvvvvvvvvW
+A 0008a23b O711111
+A 0008a29d vvvvvvvvvvW
+A 0008a33e r7111111
+A 0008a348 1111?/4?/
+A 0008a39a vvvvvvvvvvvvvvvvW
+A 0008a441 s71111111
+A 0008a44c 1112;C11B6
+A 0008a49c vvvvvvvvvvvvvvvvvW
+A 0008a545 O11117HA1
+A 0008a550 1114;2111B
+A 0008a59f vvvvvvvvvvvvvvvvv
+A 0008a5dd qqqqq
+A 0008a5fa }}}}}
+A 0008a606 |{{{{{{{{{
+A 0008a64a NB=Hs
+A 0008a654 1186=1111C
+A 0008a6a2 vvvvvvvvvvvvvvvv
+A 0008a758 114=11118
+A 0008a7a6 vvvvvvvvvvvvvvvv
+A 0008a853 sH==111
+A 0008a85c 1111111CE
+A 0008a8a8 vvvvvvvvvvvvvvvvv
+A 0008a957 =111111
+A 0008a960 111111C
+A 0008a9ab vvvvvvvvvvvvvvvvW
+A 0008a9e8 qqqqqc
+A 0008aa5a N1111111
+A 0008aa64 11111C
+A 0008aaaf vvvvvvvvvvvvvvvW
+A 0008ab5e =1111111
+A 0008ab68 111136
+A 0008abb1 vvvvvvvvvvvvvvvvv
+A 0008ac38 YXutuVuU
+A 0008ac61 sA1111111
+A 0008ac6c 11118
+A 0008acb4 vvvvvvvvvvvvvvvvv
+A 0008ad65 H11111111
+A 0008ad70 11113;
+A 0008ad77 ?7119
+A 0008adb7 vvvvvvvvvvvvvvvv
+A 0008ae68 O111111111
+A 0008ae74 111117B211C/
+A 0008aeba vvvvvvvvvvvvvvvvW
+A 0008aef6 qqqqq
+A 0008af6c A111A71111
+A 0008af78 111112972C
+A 0008afbd vvvvvvvvvvvvvvvv
+A 0008aff9 qqqqq
+A 0008b075 H1111
+A 0008b07c 11117;
+A 0008b0c0 vvvvvvvvvvvvvvvvW
+A 0008b179 H1111
+A 0008b180 11114
+A 0008b1c3 vvvvvvvvvvvvvvvv
+A 0008b1ff qqqqq
+A 0008b245 tgggggggggggggggggg55]tttttttttttttttu
+A 0008b27d =1111
+A 0008b284 1113/
+A 0008b2c5 vvvvvvvvvvvvvvvvv
+A 0008b302 qqqqq
+A 0008b381 H1111
+A 0008b388 1117<6=1<
+A 0008b3c8 vvvvvvvvvvvvvvvvv
+A 0008b421 }}}}}
+A 0008b42d |{{{{{{{{{
+A 0008b48c 1111:818/
+A 0008b4cc vvvvvvvvvvvvvvvW
+A 0008b524 }}}}}
+A 0008b530 |{{{{{{{{{
+A 0008b590 111BE/<
+A 0008b5ce vvvvvvvvvvvvvvvvW
+A 0008b60a qqqqq
+A 0008b627 }}}}}
+A 0008b633 {{{{{{{{{{
+A 0008b68d H1111
+A 0008b6d2 vvvvvvvvvvvvvvv
+A 0008b70d q~8qq
+A 0008b729 }}}}}
+A 0008b736 {{{NN{{{{
+A 0008b78e NHH11111
+A 0008b7d3 6vvvvvvvvvvvvvvvvW
+A 0008b810 qq~Qq
+A 0008b838 |{{{{s{{{{
+A 0008b892 sH111111
+A 0008b89c 1112;
+A 0008b8d7 vvvvvvvvvvvvvvvv
+A 0008b93b |{{{{{{{{{
+A 0008b996 H1111111
+A 0008b9a0 1111?412:/
+A 0008b9da vvvvvvvvvvvvvvvv
+A 0008ba3e {{{{{{{{{{
+A 0008ba99 O11111A21
+A 0008baa4 1118<3111C
+A 0008badd vvvvv?8;vvvvvvvvW
+A 0008bb19 qqqqq
+A 0008bb40 |{{{{{{{{{{
+A 0008bb9d sH21AAH=1
+A 0008bba8 11BE81111B
+A 0008bbe0 vvvvv821:vvvvvvv
+A 0008bc0f Q317h
+A 0008bc1c q~qqq
+A 0008bc38 }}H21H
+A 0008bc44 {{{{{{{{{
+A 0008bc64 rA12O
+A 0008bca3 sNA1121
+A 0008bcac 114:11111B39
+A 0008bcbd ;2114
+A 0008bcc6 6<E64B=E
+A 0008bcd2 v8118
+A 0008bcdb 6;6W?82;vvvvvC117WvvvW;;RPC29
+A 0008bcfd ?212J
+A 0008bd06 PQkP9AB
+A 0008bd12 Q711C
+A 0008bd1b QaQQ:B7a
+A 0008bd27 p811=a
+A 0008bd30 ogg}OB1O
+A 0008bd3a }}}H112O
+A 0008bd49 OH7B{{{
+A 0008bd52 O711H
+A 0008bd5b OOsrHAAs
+A 0008bd67 s711=
+A 0008bd70 sOrsN=2N
+A 0008bd7d H117s
+A 0008bd85 sOOsNB2H
+A 0008bd92 N111N
+A 0008bd9b OOsOH7A
+A 0008bda7 sA11111
+A 0008bdb0 113111111119
+A 0008bdc0 EB118
+A 0008bdc9 ?71=311=/
+A 0008bdd6 9113<
+A 0008bdde ;313=112;vvvv?7114vvvW812=1119
+A 0008be00 k311C
+A 0008be09 C21=7118
+A 0008be16 811Aq
+A 0008be1e J7173117a
+A 0008be2b 9112J
+A 0008be33 oA12A111O
+A 0008be3d }}}O711H
+A 0008be48 |H11A111B{{
+A 0008be56 A11=s
+A 0008be5e H11A711A
+A 0008be6b H112s
+A 0008be73 OA127111N
+A 0008be80 N111N
+A 0008be88 sA12A111H
+A 0008be95 O711B
+A 0008be9e H11A211A
+A 0008beab =111111
+A 0008beb4 111111111136
+A 0008bec4 :111?
+A 0008becc ?2111113<
+A 0008bed9 ;2118
+A 0008bee1 ;7111111CvvvvW=11=Wvvv81111118R
+A 0008bf04 C111J
+A 0008bf0c C1111117Q
+A 0008bf19 J1119
+A 0008bf21 a7111112J
+A 0008bf2e a211A
+A 0008bf36 gA111111B}}}}}B112|
+A 0008bf4c H111111=
+A 0008bf59 H111H
+A 0008bf61 H1111111N
+A 0008bf6e O111B
+A 0008bf76 O7111111H
+A 0008bf83 sA111
+A 0008bf8b sA111111As
+A 0008bf99 H111O
+A 0008bfa1 H111111As
+A 0008bfae N1111111
+A 0008bfb8 11111111186
+A 0008bfc6 E:1111;
+A 0008bfcf ?2111113<
+A 0008bfdb v43111C
+A 0008bfe4 ;71111179vvvv;B111BvvW81111118
+A 0008c006 iC1112?
+A 0008c00f C111111=Q
+A 0008c01c :1111:
+A 0008c024 J7111117J
+A 0008c030 pJ=111=
+A 0008c039 g7111112H}}}}gB1117
+A 0008c04e |H111111=
+A 0008c05b sH1111N
+A 0008c064 H1111117N
+A 0008c071 N7111H
+A 0008c079 rA111112H
+A 0008c086 NA1117
+A 0008c08e sA111111=s
+A 0008c09b sB1111s
+A 0008c0a4 H111111As
+A 0008c0b0 sH71111111
+A 0008c0bc 11111128?
+A 0008c0c9 4=11111C/471111=:6
+A 0008c0de ;B11111=<;711113C;vvv<C211117?;C1111184
+A 0008c109 97111119RC11111B:
+A 0008c11e J=11111BqJ71111ACo
+A 0008c133 oB111117go711117HO
+A 0008c146 }}|H711111NsH11111=N
+A 0008c15e N711111BsH11111AHs
+A 0008c173 OA11111AsNA11117HO
+A 0008c188 sB111111NsA11112=N
+A 0008c19d sH711111HsH11111AHs
+A 0008c1b3 NA111111111
+A 0008c1c0 111111?
+A 0008c1c9 ?=9821111111311111:/
+A 0008c1e1 :71111111771111=6vvvv;31111111271111=?
+A 0008c20b P8111111113111119
+A 0008c221 C21111111711111Ca
+A 0008c236 9711111117711117g
+A 0008c249 }}gA11111111711117N{{
+A 0008c260 sB11111111711111H
+A 0008c276 H21111111711111Bs
+A 0008c28b NA11111112711112N
+A 0008c2a0 sA11111111711111N
+A 0008c2b6 H11111111111
+A 0008c2c4 111119?CB11111111111111111B;9CCCB111111111111117?9CCC8111111111111111::CCCC2111111111111118JC8CCA111111111111113JC8HHB111111111111111NNHHHB111111111111111HNHBHB711111111111111ANHBHHA111111111111111NHBHH=111111111111111HNBBHH111111111111111BNHBHH7111111111111
+A 0008c3c8 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+A 0008c4cc 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+A 000c2c38 Default
+A 000c2c48 Babylock/Bernina/Brother
+A 000c2c69 Husqavarna/Viking
+A 000c2c83 Elna/Janome/New Home
+A 000c2ca0 Pfaff
+A 000c2cb0 Melco Dos Expanded
+A 000c2ccb Tajima
+A 000c2cda Babylock/Bernina/Brother
+A 000c2cfb Pfaff - Windows
+A 000c2d13 Pfaff Macintosh
+A 000c2d2b Viking/Husqavarna
+A 000c2d45 Elna/Janome/New Home
+A 000c2d62 Poem/Singer EU
+A 000c2d79 Singer PSW/XXX
+A 000c2d98 Melco Dos Expanded
+A 000c2db3 Tajima
+U 0001ac36 Djjh
+U 0003b90b jjjj
+U 000706b5 PRTQSU
+U 000706cf ¨´ÀÌØääääääääääää
+U 00075f2a "#')-02NJKLM
+U 00075f4a  !$%&(*+,./13456789:;<=>?@ABCDEFGHI
+U 0007e56e &File
+U 0007e57e &Open
+U 0007e58e E&xit
+U 0007e59c &Edit
+U 0007e5aa Delete
+U 0007e5bc Design &1
+U 0007e5d4 Design &2
+U 0007e5ec Design &3
+U 0007e604 Design &4
+U 0007e61c Design &5
+U 0007e634 Design &6
+U 0007e64a Transfer
+U 0007e660 Design &1
+U 0007e678 Design &2
+U 0007e690 Design &3
+U 0007e6a8 Design &4
+U 0007e6c0 Design &5
+U 0007e6d8 Design &6
+U 0007e6ee &Load
+U 0007e6fe &Baby Lock/Bernina Deco/Brother/Viking
+U 0007e750 Bernina &Artista/Pfaff
+U 0007e782 &Janome/Elna/Kenmore
+U 0007e7b0 Singer XL100
+U 0007e7cc &Write
+U 0007e7de &Baby Lock/Bernina Deco/Brother
+U 0007e822 Bernina &Artista
+U 0007e848 Pfaff
+U 0007e858 &Janome/Elna/Kenmore
+U 0007e886 Singer XL100
+U 0007e8a4 &Viking Rose/#1+
+U 0007e8ca &Options...
+U 0007e8e4 &Help
+U 0007e8f4 About...
+U 0007e922 MS Sans Serif
+U 0007e956 E&xit
+U 0007e9dc LOAA
+U 0007ea22 &Read
+U 0007ea46 &Delete
+U 0007ea6e Load Card
+U 0007eaf6 J/E/K
+U 0007eb0c ÙM6*
+U 0007eb1a Write Card
+U 0007ebd6 J/E/K
+U 0007ec32 &Options
+U 0007ec66 Card's Directory
+U 0007ec8e MS Sans Serif
+U 0007ed5c MLAA
+U 0007edac &Load
+U 0007edd8 &Next Page
+U 0007ee0c &Prev Page
+U 0007ee3e Options
+U 0007ee50 MS Sans Serif
+U 0007eea2 Cancel
+U 0007eeca Machine Preferences
+U 0007ef0a Elna CE-20/8006, Janome 9000/5000, Kenmore 19000
+U 0007ef86 Elna 9006, Janome 8000
+U 0007efce Singer XL1000
+U 0007f002 Singer XL100
+U 0007f036 Baby Lock ESE/ESE2, Brother 8200/8500/6500
+U 0007f0c2 Port:
+U 0007f0e6 Speed:
+U 0007f12a Communication Settings:
+U 0007f172 File Open Preference:
+U 0007f1b6 Standard Windows
+U 0007f1f2 Browse By Icon
+U 0007f22e Status
+U 0007f23e MS Sans Serif
+U 0007f28e Warning...
+U 0007f2a6 MS Sans Serif
+U 0007f31a You are about to overwrite the current card.
+U 0007f38e Are you sure you want to do this?
+U 0007f3ee Read Design...
+U 0007f40e MS Sans Serif
+U 0007f47e Browse
+U 0007f4a6 Cancel
+U 0007f4ce Enter the index number of the design you wish to read:
+U 0007f556 About
+U 0007f564 MS Sans Serif
+U 0007f5d2 Magic Box         Version 3.2.1
+U 0007f62a Copyright © 1992-2000  OESD && Others
+U 0007f68e Any user of the Magic Box should adhere to applicable license agreements of all third parties. 
+U 0007f766 This product is not intended to be used to violate the copyrights,  trademarks or other rights of any third parties.
+U 0007f85e VS_VERSION_INFO
+U 0007f8ba StringFileInfo
+U 0007f8de 040904b0
+U 0007f8f6 Comments
+U 0007f90e CompanyName
+U 0007f92e FileDescription
+U 0007f950 Converter Box MFC Application
+U 0007f992 FileVersion
+U 0007f9ac 3, 2, 1, 0
+U 0007f9ca InternalName
+U 0007f9e4 Converter Box
+U 0007fa06 LegalCopyright
+U 0007fa24 Copyright © 1999
+U 0007fa4e LegalTrademarks
+U 0007fa76 OriginalFilename
+U 0007fa98 BLACKBOX.EXE
+U 0007faba PrivateBuild
+U 0007fada ProductName
+U 0007faf4 Converter BoxApplication
+U 0007fb2e ProductVersion
+U 0007fb4c 3, 2, 1, 0
+U 0007fb6a SpecialBuild
+U 0007fb8a VarFileInfo
+U 0007fbaa Translation
+U 00091df4 ÌÌ<<
+U 000a7c1c ÈÈ77
+U 000b7504 sÈ 7
+U 000bf37e Zip Directory
+U 000bf39c MS Sans Serif
+U 000bf3ee Cancel
+U 000bf436 Select Color
+U 000bf452 MS Sans Serif
+U 000bf4a6 Cancel
+U 000bf4ea Palette Type:
+U 000bfc56 New Color:
+U 000bfc86 Change To:
+U 000bfe96 Select by icons
+U 000bfeb8 MS Sans Serif
+U 000bff0a Cancel
+U 000bff94 DO9L
+U 000bffcc ¾O9L
+U 000bffe8 ûO9L
+U 000c020a Sort By:
+U 000c0236 &Name
+U 000c025a &Extension
+U 000c027c Â1n¶
+U 000c02a6 Directory
+U 000c03dc GV33
+U 000c0414 ÁV33
+U 000c0430 þV33
+U 000c0468 G¡33
+U 000c04a0 Á¡33
+U 000c04bc þ¡33
+U 000c04e6 Advanced Density Settings
+U 000c051c MS Sans Serif
+U 000c056e Cancel
+U 000c0596 Processing Options:
+U 000c05d6 Column Stitch Density:
+U 000c061e Fill Stitch Density:
+U 000c0662 Fill Stitch Length:
+U 000c06a2 Run Stitch Length:
+U 000c06e2 Maximum Stitch Length:
+U 000c0846 Rotate Design
+U 000c0864 MS Sans Serif
+U 000c08b6 Cancel
+U 000c08fa Degrees:
+U 000c0926 Choose Hoop Size
+U 000c094a MS Sans Serif
+U 000c09b6 100x100
+U 000c09de 100x100
+U 000c0a06 130x180
+U 000c0a2e 180x130
+U 000c0a56 160x260
+U 000c0a7e 260x160
+U 000c0aa6 122x88
+U 000c0ace 80x70
+U 000c0af2 50x50
+U 000c0b16 110x110
+U 000c0b3e 140x200
+U 000c0b66 115x120
+U 000c0b8e 80x80
+U 000c0bb2 88x88
+U 000c0bd6 130x240
+U 000c0bfe 114x114
+U 000c0c26 55x55
+U 000c0c6a Cancel
+U 000c0cae Singer:
+U 000c0cf2 Pfaff:
+U 000c0d1a Babylock/Brother:
+U 000c0d56 Elna/Kenmore Janome/New Home:
+U 000c0daa Bernina Deco/Viking:
+U 000c0dee Singer EU/Poem Husygram:
+U 000c0e3a Custom:
+U 000c0e66 Choose Hoop Size
+U 000c0e8a MS Sans Serif
+U 000c0ede Cancel
+U 000c0f06 Round Hoops
+U 000c0f36 Rectangular Hoops
+U 000c0f72 70mm
+U 000c0f96 90mm
+U 000c0fba 120mm
+U 000c0fde 150mm
+U 000c1002 180mm
+U 000c1026 210mm
+U 000c104a 70x130mm
+U 000c1076 200x115mm
+U 000c10a2 240x240mm
+U 000c10ce 240x300mm
+U 000c10fa 300x300mm
+U 000c1126 450x230mm
+U 000c1152 450x320mm
+U 000c117e 450x395mm
+U 000c11aa 475x310mm
+U 000c11d6 475x410mm
+U 000c1202 475x450mm
+U 000c122e Custom
+U 000c12ae Density Settings
+U 000c12d2 MS Sans Serif
+U 000c1326 Cancel
+U 000c134e Thread Weights
+U 000c1386 60 wt
+U 000c13aa 50 wt
+U 000c13ce 40 wt
+U 000c13f2 30 wt
+U 000c1416 Yarn
+U 000c1456 Adjust stitch density by:
+U 000c14be Advanced
+U 000c14ee System Preferences
+U 000c1516 MS Sans Serif
+U 000c156a Cancel
+U 000c1592 For Viking/Husqvarna
+U 000c15d6 Split at 12 Color Changes
+U 000c163e Default "Save As" format:
+U 000c168a For Pfaff PCS
+U 000c16be 100% Pfaff PCS Compatible
+U 000c170a For Janome/New Home/Elna
+U 000c1756 Scan-n-Sew PC v1.x
+U 000c1796 Split at 16 Colors
+U 000c17d6 System Options
+U 000c180e Maximize Design on Opening
+U 000c185e Do not Automatically Merge Designs back together.
+U 000c18da Enable SmartStitch
+U 000c191a Cleanup "Junk" Stitches
+U 000c1962 Threshold:
+U 000c19ae Do not use Size Express for Scaling "Expanded" designs
+U 000c1a36 DreamVision/Customizer 2000 
+U 000c1a8e System Preferences
+U 000c1ab6 MS Sans Serif
+U 000c1b0a Cancel
+U 000c1b4e Default "Save As" format:
+U 000c1b9a System Options
+U 000c1bd2 Maximize Design on Opening
+U 000c1c22 Do not Automatically Merge Designs back together.
+U 000c1c9e Enable SmartStitch
+U 000c1cde Cleanup "Junk" Stitches
+U 000c1d26 Threshold:
+U 000c1d72 Do not use Size Express for Scaling "Expanded" designs
+U 000c1e02 MS Sans Serif
+U 000c1e36 Browse
+U 000c1e5e Welcome!
+U 000c1e72 MS Sans Serif
+U 000c204a Register Now
+U 000c207e Register Later
+U 000c20b6 Print Registration
+U 000c2116 You must complete this form in order to complete the installation process.
+U 000c21c6 Program name line
+U 000c221e *First
+U 000c222c Name:
+U 000c2272 *Last
+U 000c227e Name:
+U 000c22a2 Registration Information:
+U 000c22ee Company Name:
+U 000c2322 *Address:
+U 000c234e *City:
+U 000c2376 *ST/Province:
+U 000c23aa *Zip/Postal:
+U 000c23de *Country:
+U 000c240a *Phone Number:
+U 000c2442 Email Address:
+U 000c247a (ie. account@provider.com)
+U 000c24ca *Serial Number:
+U 000c2502 Activation Code:
+U 000c255a Reg. Number:
+U 000c258e Fax:
+U 000c25b2 Please enter your registration information for the following software:
+U 000c265a You must enter data into every field marked with an astrisk (*) to enable buttons
+U 000c2716 Warning...
+U 000c272e MS Sans Serif
+U 000c2782 You have
+U 000c27ca days left to register.
+U 000c2812 You may register:
+U 000c2836           While connected to the Internet
+U 000c288a           By Telephone 800-553-1691
+U 000c28d2           By Fax 214-352-7249
+U 000c290e           By web http://www.greatnotions.com/TechnicalSupport.asp
+U 000c29aa ????? will work for 10 days without registering.  After that time has expired, ??????? will no longer function.
+U 000c2aa6 Great Notions License Agreement
+U 000c2ae8 MS Sans Serif
+U 000c2b1a I ACCEPT THE AGREEMENT
+U 000c2b62 I decline
+U 000c2baa You must scroll to bottom of agreement to activate ACCEPT button
+U 000c2dc0 bConverter Box
+U 000c2dde Converter Box
+U 000c2dfa Converter Box Document
+U 000c2e2c Converter Box.Document
+U 000c2e5a Converter Box Document
+U 000c2eaa Converter Box
+U 000c2ec6 Ready
+U 000c2ef2 ,Open a disk/diskette embroidery design file.
+U 000c2f74 Delete design number one.
+U 000c2fa8 Delete design number two.
+U 000c2fdc Delete design number three.
+U 000c3014 Delete design number four.
+U 000c304a Delete design number five.
+U 000c3080 Delete design number six.
+U 000c30b4 Transfer design number one.
+U 000c30ec Transfer design number two.
+U 000c3124 Transfer design number three.
+U 000c3160 Transfer design number four.
+U 000c319a Transfer design number five.
+U 000c31da Transfer design number six.5Displays program information, version and copyrights.
+U 000c327e Change Options.+Load Baby Lock/Bernina Deco/Brother/Viking.
+U 000c32f6 Load Bernina Artista/Pfaff.
+U 000c3330 Load Singer XL100.%Write Baby Lock/Bernina Deco/Brother.
+U 000c33a2 Write Viking Rose/#1+
+U 000c33ce Write Singer XL100.
+U 000c33f8 Write Bernina Artista
+U 000c3424 Write Pfaff.
+U 000c343e Write Janome/Elna/Kenmore.
+U 000c3474 Load Janome/Elna/Kenmore.
+U 000c34c2 Black
+U 000c34ce Black
+U 000c34da Blue
+U 000c34e4 Blue
+U 000c34ee Green
+U 000c34fa Green
+U 000c351a Purple
+U 000c3528 Purple
+U 000c3536 Yellow
+U 000c3544 Yellow
+U 000c3552 Grey
+U 000c355c Grey
+U 000c3566 Light Blue
+U 000c357c Light Blue
+U 000c3592 Light Green
+U 000c35aa Light Green
+U 000c35c2 Orange
+U 000c35d0 Orange
+U 000c35de Pink
+U 000c35e8 Pink
+U 000c35f2 Brown
+U 000c35fe Brown
+U 000c360a White
+U 000c3616 White
+U 000c3622 Dark Blue
+U 000c3636 Dark Blue
+U 000c364a Dark Green
+U 000c3660 Dark Green
+U 000c3676 Dark Red
+U 000c3688 Dark Red
+U 000c369a Light Red
+U 000c36ae Light Red
+U 000c36c2 Dark Purple
+U 000c36da Dark Purple
+U 000c36f2 Light Purple
+U 000c370c Light Purple
+U 000c3726 Dark Yellow
+U 000c373e Dark Yellow
+U 000c375a Light Yellow
+U 000c3774 Light Yellow
+U 000c378e Dark Grey
+U 000c37a2 Dark Grey
+U 000c37b6 Light Grey
+U 000c37cc Light Grey
+U 000c37e2 Dark Orange
+U 000c37fa Dark Orange
+U 000c3812 Light Orange
+U 000c382c Light Orange
+U 000c3846 Dark Pink
+U 000c385a Dark Pink
+U 000c386e Light Pink
+U 000c3884 Light Pink
+U 000c389a Dark Brown
+U 000c38b0 Dark Brown
+U 000c38c6 Light Brown
+U 000c38de Light Brown
+U 000c38f6 Unknown
+U 000c3906 Unknown
+U 000c3916 Prussian Blue
+U 000c3932 Prussian Blue
+U 000c394e Blue
+U 000c3958 Blue
+U 000c3962 Teal Green
+U 000c3978 Teal Green
+U 000c398e Cornflower Blue
+U 000c39ae Cornflower Blue
+U 000c39de Reddish Brown
+U 000c39fa Reddish Brown
+U 000c3a1a Magenta
+U 000c3a2a Magenta
+U 000c3a3a Light Lilac
+U 000c3a52 Light Lilac
+U 000c3a6a Lilac
+U 000c3a76 Lilac
+U 000c3a82 Mint Green
+U 000c3a98 Mint Green
+U 000c3aae Deep Gold
+U 000c3ac2 Deep Gold
+U 000c3ad6 Orange
+U 000c3ae4 Orange
+U 000c3af2 Yellow
+U 000c3b00 Yellow
+U 000c3b0e Lime Green
+U 000c3b24 Lime Green
+U 000c3b3a Brass
+U 000c3b46 Brass
+U 000c3b52 Silver
+U 000c3b60 Silver
+U 000c3b6e Russet Brown
+U 000c3b88 Russet Brown
+U 000c3ba2 Cream Brown
+U 000c3bba Cream Brown
+U 000c3bd2 Pewter
+U 000c3be0 Pewter
+U 000c3bee Black
+U 000c3bfa Black
+U 000c3c06 Ultra Marine
+U 000c3c20 Ultra Marine
+U 000c3c3a Royal Purple
+U 000c3c54 Royal Purple
+U 000c3c72 Dark Grey
+U 000c3c86 Dark Grey
+U 000c3c9a Dark Brown
+U 000c3cb0 Dark Brown
+U 000c3cc6 Deep Rose
+U 000c3cda Deep Rose
+U 000c3cee Light Brown
+U 000c3d06 Light Brown
+U 000c3d1e Salmon Pink
+U 000c3d36 Salmon Pink
+U 000c3d4e Vermilion
+U 000c3d62 Vermilion
+U 000c3d76 White
+U 000c3d82 White
+U 000c3d8e Violet
+U 000c3d9c Violet
+U 000c3daa Seacrest
+U 000c3dbc Seacrest
+U 000c3dce Sky Blue
+U 000c3de0 Sky Blue
+U 000c3df2 Pumpkin
+U 000c3e02 Pumpkin
+U 000c3e12 Cream Yellow
+U 000c3e2c Cream Yellow
+U 000c3e46 Khaki
+U 000c3e52 Khaki
+U 000c3e5e Clay Brown
+U 000c3e74 Clay Brown
+U 000c3e8a Leaf Green
+U 000c3ea0 Leaf Green
+U 000c3eb6 Peacock Blue
+U 000c3ed0 Peacock Blue
+U 000c3eea Grey
+U 000c3ef4 Grey
+U 000c3efe Warm Grey
+U 000c3f12 Warm Grey
+U 000c3f26 Dark Olive
+U 000c3f3c Dark Olive
+U 000c3f52 Linen
+U 000c3f5e Linen
+U 000c3f6a Pink
+U 000c3f74 Pink
+U 000c3f7e Deep Green
+U 000c3f94 Deep Green
+U 000c3faa Lavender
+U 000c3fbc Lavender
+U 000c3fce Wistaria Violet
+U 000c3fee Wistaria Violet
+U 000c400e Beige
+U 000c401a Beige
+U 000c4026 Carmine
+U 000c4036 Carmine
+U 000c4046 Amber Red
+U 000c405a Amber Red
+U 000c406e Olive Green
+U 000c4086 Olive Green
+U 000c409e Dark Fuschia
+U 000c40b8 Dark Fuschia
+U 000c40d2 Tangerine
+U 000c40e6 Tangerine
+U 000c40fa Light Blue
+U 000c4110 Light Blue
+U 000c4126 Emerald Green
+U 000c4142 Emerald Green
+U 000c4162 Purple
+U 000c4170 Purple
+U 000c417e Moss Green
+U 000c4194 Moss Green
+U 000c41aa Flesh Pink
+U 000c41c0 Flesh Pink
+U 000c41d6 Harvest Gold
+U 000c41f0 Harvest Gold
+U 000c420a Electric Blue
+U 000c4226 Electric Blue
+U 000c4242 Lemon Yellow
+U 000c425c Lemon Yellow
+U 000c4276 Fresh Green
+U 000c428e Fresh Green#Applique Material
+U 000c42ca Applique Material#Applique Position
+U 000c4312 Applique Position
+U 000c4336 Applique
+U 000c4348 Applique
+U 000c435a Not Defined
+U 000c4372 Not Defined
+U 000c438a Black
+U 000c4396 Black
+U 000c43a2 Dark Blue
+U 000c43b6 Dark Blue
+U 000c43ca Blue
+U 000c43d4 Blue
+U 000c43de Dark Cyan
+U 000c43f2 Dark Cyan
+U 000c4406 Cyan
+U 000c4410 Cyan
+U 000c441a Dark Magenta
+U 000c4434 Dark Magenta
+U 000c444e Magenta
+U 000c445e Magenta
+U 000c446e Dark Red
+U 000c4480 Dark Red
+U 000c44a2 Dark Green
+U 000c44b8 Dark Green
+U 000c44ce Green
+U 000c44da Green
+U 000c44e6 Dark Yellow
+U 000c44fe Dark Yellow
+U 000c4516 Yellow
+U 000c4524 Yellow
+U 000c4532 Medium Gray
+U 000c454a Medium Gray
+U 000c4562 Lt Gray
+U 000c4572 Lt Gray
+U 000c4582 White
+U 000c458e White
+U 000c459a Black
+U 000c45a6 Black
+U 000c45b2 White
+U 000c45be White
+U 000c45ca Yellow
+U 000c45d8 Yellow
+U 000c45e6 Orange
+U 000c45f4 Orange
+U 000c4602 Olive Green
+U 000c461a Olive Green
+U 000c4632 Green
+U 000c463e Green
+U 000c465a Purple
+U 000c4668 Purple
+U 000c4676 Pink
+U 000c4680 Pink
+U 000c469a Brown
+U 000c46a6 Brown
+U 000c46b2 Blue
+U 000c46bc Blue
+U 000c46c6 Gold
+U 000c46d0 Gold
+U 000c46da Dark Brown
+U 000c46f0 Dark Brown
+U 000c4706 Pale Violet
+U 000c471e Pale Violet
+U 000c4736 Pale Yellow
+U 000c474e Pale Yellow
+U 000c4766 Pale Pink
+U 000c477a Pale Pink
+U 000c478e Peach
+U 000c479a Peach
+U 000c47a6 Beige
+U 000c47b2 Beige
+U 000c47be Wine Red
+U 000c47d0 Wine Red
+U 000c47e2 Pale Sky
+U 000c47f4 Pale Sky
+U 000c480a Yellow Green
+U 000c4824 Yellow Green
+U 000c483e Silver Grey
+U 000c4856 Silver Grey
+U 000c486e Grey
+U 000c4878 Grey
+U 000c4882 Pale Aqua
+U 000c4896 Pale Aqua
+U 000c48aa Baby Blue
+U 000c48be Baby Blue
+U 000c48d2 Navy Blue
+U 000c48e6 Navy Blue
+U 000c48fa Cinnamon
+U 000c490c Cinnamon
+U 000c491e Umber
+U 000c492a Umber
+U 000c4936 Peony Purple
+U 000c4950 Peony Purple
+U 000c496a Royal Purple
+U 000c4984 Royal Purple
+U 000c499e Meadow Green
+U 000c49b8 Meadow Green
+U 000c49d2 Emerald Green
+U 000c49ee Emerald Green
+U 000c4a0a Dark Grey
+U 000c4a1e Dark Grey
+U 000c4a32 Bamboo
+U 000c4a40 Bamboo
+U 000c4a4e Vermilion
+U 000c4a62 Vermilion
+U 000c4a76 Bright Green
+U 000c4a90 Bright Green
+U 000c4aaa Ocean Blue
+U 000c4ac0 Ocean Blue
+U 000c4ad6 Beige Gray
+U 000c4aec Beige Gray
+U 000c4b02 Powder Blue
+U 000c4b1a Powder Blue
+U 000c4b32 Bright Blue
+U 000c4b4a Bright Blue
+U 000c4b62 Slate Blue
+U 000c4b78 Slate Blue
+U 000c4b8e Salmon Pink
+U 000c4ba6 Salmon Pink
+U 000c4bbe Coral
+U 000c4bca Coral
+U 000c4bd6 Burnt Orange
+U 000c4bf0 Burnt Orange
+U 000c4c0a Blond
+U 000c4c16 Blond
+U 000c4c22 Sun Flower
+U 000c4c38 Sun Flower
+U 000c4c4e Orchid Pink
+U 000c4c66 Orchid Pink
+U 000c4c7e Burgundy
+U 000c4c90 Burgundy
+U 000c4ca2 Cardinal Red
+U 000c4cbc Cardinal Red
+U 000c4cd6 Opal Green
+U 000c4cec Opal Green
+U 000c4d02 Moss Green
+U 000c4d18 Moss Green
+U 000c4d2e Dark Green
+U 000c4d44 Dark Green
+U 000c4d5a Aquamariune
+U 000c4d72 Aquamariune
+U 000c4d8a Peacock Green
+U 000c4da6 Peacock Green
+U 000c4dc2 Ivory White
+U 000c4dda Ivory White
+U 000c4df2 Hazel
+U 000c4dfe Hazel
+U 000c4e0a Toast
+U 000c4e16 Toast
+U 000c4e22 Salmon
+U 000c4e30 Salmon
+U 000c4e3e Cocoa Brown
+U 000c4e56 Cocoa Brown
+U 000c4e6e Sinna
+U 000c4e7a Sinna
+U 000c4e86 Sepia
+U 000c4e92 Sepia
+U 000c4e9e Dark Sepia
+U 000c4eb4 Dark Sepia
+U 000c4eca Violet Blue
+U 000c4ee2 Violet Blue
+U 000c4efa Blue Ink
+U 000c4f0c Blue Ink
+U 000c4f1e Solar Blue
+U 000c4f34 Sola Blue
+U 000c4f48 Green Dust
+U 000c4f5e Green Dust
+U 000c4f74 Crimson
+U 000c4f84 Crimson
+U 000c4f94 Floral Pink
+U 000c4fac Floral Pink
+U 000c4fca Wine
+U 000c4fd4 Wine
+U 000c4fde Olive Drab
+U 000c4ff4 Olive Drab
+U 000c500a Medow
+U 000c5016 Medow
+U 000c5022 Mustard
+U 000c5032 Mustard
+U 000c5042 Yellow Ocher
+U 000c505c Yellow Ocher
+U 000c5076 Old Gold
+U 000c5088 Old Gold
+U 000c509a Honey Dew
+U 000c50ae Honey Dew
+U 000c50c2 Tangerine
+U 000c50d6 Tangerine
+U 000c50ea Canary Yellow
+U 000c5106 Canary Yellow

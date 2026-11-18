@@ -1,0 +1,113 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000081 Nb#P/
+A 000000a7 pRichP/
+A 000001c0 .text
+A 000001e7 `.rdata
+A 0000020f @.data
+A 00000238 .rsrc
+A 0000073f L$h^d
+A 000007cf VUh0@@
+A 00000b32 L$LQR
+A 00000be2 tDhD@@
+A 00000c5a D$4RP
+A 00000ce4 T$4QPR
+A 00000d10 T$(QPR
+A 00000ee8 T$XRW
+A 00000f97 (SUVW3
+A 00000fa3 D$$(4@
+A 00000fbf |$@PQ
+A 00000fc7 d$(hp@@
+A 00000fe2 L$$QQ
+A 00000fea d$(hh@@
+A 00001000 d$(hp@@
+A 00001020 T$$RQ
+A 00001028 d$(h`@@
+A 0000103e d$(hp@@
+A 0000106a @ WWh
+A 00001081 L$$QQ
+A 00001089 d$(hT@@
+A 000010a4 T$$RQ
+A 000010ac d$(hP@@
+A 000010c2 d$(hT@@
+A 00001176 }xhL@@
+A 0000118c L$ PQ
+A 00001227 D$$(4@
+A 0000123f T$,RP
+A 00001257 L$8_^]d
+A 00002724 MFC42.DLL
+A 00002730 __CxxFrameHandler
+A 00002744 _getcwd
+A 0000274e _mbscmp
+A 00002758 __dllonexit
+A 00002766 _onexit
+A 0000276e MSVCRT.dll
+A 0000277c _exit
+A 00002784 _XcptFilter
+A 0000279a _acmdln
+A 000027a4 __getmainargs
+A 000027b4 _initterm
+A 000027c0 __setusermatherr
+A 000027d4 _adjust_fdiv
+A 000027e4 __p__commode
+A 000027f4 __p__fmode
+A 00002802 __set_app_type
+A 00002814 _except_handler3
+A 00002828 _controlfp
+A 00002836 FindClose
+A 00002842 FindFirstFileA
+A 00002854 FindNextFileA
+A 00002864 DeleteFileA
+A 00002872 GetModuleHandleA
+A 00002886 GetStartupInfoA
+A 00002896 KERNEL32.dll
+A 000028a6 LoadIconA
+A 000028b2 SendMessageA
+A 000028c2 DrawIcon
+A 000028ce GetClientRect
+A 000028de GetSystemMetrics
+A 000028f2 IsIconic
+A 000028fe EnableWindow
+A 0000290c USER32.dll
+A 0000291a _setmbcp
+A 00002a20 Directory 
+A 00002a30  not found!
+A 00002a3c File 
+A 00002a54 ..\backup
+A 00002a60 *.emr
+A 00002a68 *.ema
+A 00002a70 ..\recover
+A 00002e1f fffffffh
+A 00002e2f fffffffh
+A 00002f10 fffffh
+A 00003100 wwwwwwwwwvffffwwww```gwwww```gwwww```gwwww```gwwww```gwwww```gwwww```gwwwwfffgwwwwwwwgwwwwwpwfwwwww
+A 00003165 vgwwwwpwwfwwwwpwwvwp
+U 000031fe Purge Recover and Backup Directories
+U 0000324a MS Sans Serif
+U 0000329e Cancel
+U 000032c6 Click on OK to purge the Recover directory. 
+U 0000333a Delete Backup files
+U 0000336e VS_VERSION_INFO
+U 000033ca StringFileInfo
+U 000033ee 040904B0
+U 00003406 CompanyName
+U 00003426 FileDescription
+U 00003448 PURREC MFC Application
+U 0000347e FileVersion
+U 00003498 1, 0, 0, 1
+U 000034b6 InternalName
+U 000034d0 PURREC
+U 000034e6 LegalCopyright
+U 00003504 Copyright © 1996
+U 0000352e LegalTrademarks
+U 00003556 OriginalFilename
+U 00003578 PURREC.EXE
+U 00003596 ProductName
+U 000035b0 PURREC Application
+U 000035de ProductVersion
+U 000035fc 1, 0, 0, 1
+U 0000361a VarFileInfo
+U 0000363a Translation
+U 00003672 SCRL
+U 00003684 REC&Purged Recovery and Backup Directories
+U 000036da Purged Recovery Directory
+U 0000370e Files successfully deleted.7Some Recover or Backup files were unable to be deleted.

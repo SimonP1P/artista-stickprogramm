@@ -1,0 +1,260 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .rsrc
+A 00000257 @.reloc
+A 0000046a D$ RPh
+A 0000055a D$ RPh
+A 0000094a D$ RPh
+A 00000e84 T$$WR
+A 00001375 D$,Pj
+A 000013b5 T$ jZR
+A 00001624 L$(]d
+A 00001753 SUVWj$
+A 00001770 L$$VQ
+A 000017a5 T$$VR
+A 00001e66 D$8RP
+A 00001e75 T$0QPR
+A 00001e8d T$8QPR
+A 00001ea5 T$,QPR
+A 00003110 u"WVS
+A 00004340 WCACF.WcacfCtrl.1
+A 00004418 ffffff9@
+A 00004718 WCACF.WcacfPropPage.1
+A 000054dc MFC42.DLL
+A 000054e8 __CxxFrameHandler
+A 000054fc wcsncpy
+A 00005506 wcslen
+A 00005510 _ftol
+A 00005518 _CxxThrowException
+A 0000552e _EH_prolog
+A 0000553a MSVCRT.dll
+A 00005548 __dllonexit
+A 00005556 _onexit
+A 00005560 ??1type_info@@UAE@XZ
+A 00005580 _initterm
+A 0000558c malloc
+A 00005596 _adjust_fdiv
+A 000055a6 SetFileAttributesA
+A 000055bc DeleteFileA
+A 000055ca GetTempPathA
+A 000055da GetFileAttributesA
+A 000055f0 CreateDirectoryA
+A 00005604 GetSystemDirectoryA
+A 0000561a GetWindowsDirectoryA
+A 00005632 LocalFree
+A 0000563e LocalAlloc
+A 0000564a KERNEL32.dll
+A 0000565a EnableWindow
+A 0000566a LoadBitmapA
+A 00005676 USER32.dll
+A 00005684 GetDeviceCaps
+A 00005694 GetObjectA
+A 000056a2 BitBlt
+A 000056ac CreateCompatibleDC
+A 000056c0 GDI32.dll
+A 000056ca ADVAPI32.dll
+A 000056da CoCreateInstance
+A 000056ec ole32.dll
+A 000056f6 OLEAUT32.dll
+A 00005706 ??_Dofstream@@QAEXXZ
+A 0000571e ??1ios@@UAE@XZ
+A 00005730 ??1ofstream@@UAE@XZ
+A 00005746 ?write@ostream@@QAEAAV1@PBDH@Z
+A 00005768 ?setmode@filebuf@@QAEHH@Z
+A 00005784 ?binary@filebuf@@2HB
+A 0000579c ??0ofstream@@QAE@PBDHH@Z
+A 000057b8 ?openprot@filebuf@@2HB
+A 000057d0 MSVCIRT.dll
+A 00005830 WCACF.OCX
+A 0000583a DllCanUnloadNow
+A 0000584a DllGetClassObject
+A 0000585c DllRegisterServer
+A 0000586e DllUnregisterServer
+A 00005aa8 CComDlg
+A 00005b44 CMapiMsg
+A 00005b6c CMapiSes
+A 00005c70 SignOff
+A 00005c78 SignOn
+A 00005c80 IsValidSesion
+A 00005c94 GetSpecialFolder
+A 00005ca8 SetCcAddress
+A 00005cbc SetToAddress
+A 00005ccc InsertAttachment
+A 00005ce0 CreateFolder
+A 00005cf0 FileExists
+A 00005d00 FolderExists
+A 00005d14 SaveAsTempFile
+A 00005d2c SaveAs
+A 00005d3c Compose
+A 00005d44 MsgNoteText
+A 00005d50 MsgSubject
+A 00005d5c CWcacfCtrl
+A 00005d68 Error during creating MAPI!
+A 00005d90 .PAVCException@@
+A 00005da4 Html Files (*.htm)|*.htm|All Files (*.*)|*.*||
+A 00005ddc CWcacfPropPage
+A 00005df8 .?AVCNoTrackObject@@
+A 00005e18 .?AVAFX_MODULE_STATE@@
+A 00005e38 .?AV_AFX_DLL_MODULE_STATE@@
+A 00005e68 .?AVtype_info@@
+A 000065e0 fffffffffff
+A 0000664d fffffffffff(
+A 000066d0 vffffffffffffff`vffffffffffffff`vffffffffffffff`vffffn
+A 0000670d ff`vffffnffffffnff`vffffnffffffnff`vfff
+A 0000673c nff`vfff
+A 00006745 ffffff
+A 0000674c nff`vfff
+A 00006755 ffffff
+A 0000675c nff`vfn
+A 0000676c nff`vfnffffffnf
+A 0000677c nff`vfnffffffnf
+A 0000678c nff`vfnffffffnf
+A 0000679c nff`vfnfk
+A 000067a6 fffnf
+A 000067ac nff`vfnfk
+A 000067b6 fffnf
+A 000067bc nff`vfnfk
+A 000067c6 fffnf
+A 000067cc nff`vfnfk
+A 000067d6 fffnf
+A 000067dc nff`vfnfk
+A 000067ec nff`vfnfk
+A 000067fc nff`vfnfk
+A 00006806 fffnf
+A 0000680c nff`vfnfk
+A 00006816 fffnf
+A 0000681c nff`vfnfk
+A 0000682d ff`vfnfk
+A 0000683c fff`vfnffffffnf
+A 0000684c fff`vfnffffffn
+A 0000685c fff`vfnffffffnfffff`vfnffffffnfffff`vfn
+A 0000688a fffff`vffffffffffffff`vffffffffffffff`wwwwwwwwwwwwwwwp@
+A 00006d76 stdole2.tlbWWW
+A 00006f8e %/WCACFLib
+A 00006fa4 _DWcacfW
+A 00006fb7 =MsgSubjectWW
+A 00006fce ,UMsgNoteTextW
+A 00006fe8 ComposeW
+A 0000700a f;SaveAsWW
+A 00007020 strDefaultFolder
+A 0000703c strDefaultFileNameWW
+A 0000705c strDataBufWW
+A 00007074 bufSizeW
+A 00007088 SaveAsTempFileWW
+A 000070a4 FolderExists
+A 000070bc strFolderWWW
+A 000070d4 FileExistsWW
+A 000070eb estrFileNameW
+A 00007104 CreateFolder
+A 0000711c strFolferWWW
+A 00007132 [nInsertAttachment
+A 00007150 strAttachmentFileNameWWW
+A 00007174 SetToAddress
+A 0000718c strToDisplayName
+A 000071a6 SpstrToAddress
+A 000071be d,SetCcAddress
+A 000071d8 strCcDisplayName
+A 000071f4 strCcAddress
+A 0000720a Q\GetSpecialFolder
+A 00007228 whichWWW
+A 0000723b .IsValidSesionWWW
+A 00007257 gSignOnWW
+A 0000726b fSignOffWd
+A 00007280 _DWcacfEventsWWW
+A 0000729c WcacfWWW	
+A 000072a6 Wcacf.hlpW
+A 000072b2 Wcacf ActiveX Control moduleWW$
+A 000072d2 Dispatch interface for Wcacf ControlWW!
+A 000072fa Event interface for Wcacf ControlW
+A 0000731e Wcacf ControlW8
+A 00007809 0:0p0
+A 00007815 0*1`1q1
+A 00007825 2&2F2f2
+A 0000782f 263V3v3
+A 00007859 6#7[7
+A 00007867 7 8&80888A8~8
+A 00007885 8S9|9
+A 0000788d :#:o:
+A 000078a9 <1<7<;<@<F<J<Q<\<b<h<n<t<z<
+A 000078d5 =1=B=P=U=f=n=w=
+A 000078f1 =S>Z>g>
+A 00007901 ?$?0?b?~?
+A 00007927 1)1j1
+A 0000792d 1J2Q2\3b3
+A 00007963 :::O:a:;;Q;W;t;
+A 00007983 ?N?j?
+A 00007994 #0?0V0
+A 000079b3 2!222@2E2V2^2g2p2
+A 000079c5 2"3(3.343:3@3F3L3R3X3^3d3j3p3v3|3
+A 00007a1b 4$4*40464<4B4H4N4T4Z4`4f4l4r4x4~4
+A 00007a6f 5 5&5,52585>5D5J5P5V5\5b5h5n5t5z5
+A 00007ac5 6"6(6.646:6@6F6L6R6X6^6d6j6p6v6|6
+A 00007b1b 7$7*70767<7B7H7N7T7Z7`7f7l7r7x7~7
+A 00007b6f 8 8&8,82888>8D8J8P8V8\8b8h8n8t8z8
+A 00007bb1 9+959A9
+A 00007bbf 9E:~:
+A 00007bcb :$;2;@;M;R;
+A 00007beb < <*<3<F<P<e<s<|<
+A 00007bff <%=B=H=N=T=Z=`=f=l=r=x=~=
+A 00007c2b =@>F>[>{>
+A 00007c3b ?9?[?y?
+A 00007c4d 0)0I0q0
+A 00007c59 0g1t1
+A 00007c65 1	2+2=2Z2m2
+A 00007c91 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 00007d03 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00007d75 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 00007dd1 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8
+A 00007e19 9 9$909@9D9P9`9p9
+A 00007e47 : :0:8:@:P:X:`:p:x:
+A 00007e6d ;(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00007ee7 = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 00007f67 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00007fcb >@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 00008043 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00008093 1 1$1(1<1L1P1X1p1
+A 000080b7 2(2D2L2X2t2
+A 000080d1 3 3<3D3L3T3\3h3
+A 000080f5 4$40484L4\4x4
+A 00008119 5,545<5D5L5T5\5d5l5t5|5
+A 00008145 6(6D6P6l6x6
+A 0000815f 7 7<7
+A 0000817d 404`4
+U 000015a7  Ìjj
+U 00004388 hasgdhjkldslfyuewrurewtaskjfdgfd
+U 000043d0 mnmhgfksjsdkfksdjkfdsaskrerrwryn
+U 00005b78 Control safely scriptable!
+U 00005bb0 Control safely initializable from persistent data!
+U 00005c28 mgkgtgnnmnmninigthkgogggvmkhinjggnvm
+U 0000620a TYPELIB
+U 00006226 VS_VERSION_INFO
+U 00006282 StringFileInfo
+U 000062a6 040904B0
+U 000062be CompanyName
+U 000062d8 Wilcom Pty. Ltd.
+U 00006302 FileDescription
+U 00006324 Wcacf ActiveX Control Module
+U 00006366 FileVersion
+U 00006380 1, 0, 0, 1
+U 0000639e InternalName
+U 000063b8 WCACF
+U 000063ca LegalCopyright
+U 000063e8 Copyright (C) 1900
+U 00006416 LegalTrademarks
+U 0000643e OriginalFilename
+U 00006460 WCACF.OCX
+U 0000647a ProductName
+U 00006494 Wcacf ActiveX Control Module
+U 000064d6 ProductVersion
+U 000064f4 1, 0, 0, 1
+U 00006512 OLESelfRegister
+U 0000653a VarFileInfo
+U 0000655a Translation
+U 000068da MS Sans Serif
+U 0000690e TODO: Place controls to manipulate properties of Wcacf Control on this dialog.
+U 0000762c Wcacf Control
+U 00007648 Wcacf Property Page
+U 0000769a General
+U 000076b8 2Failure to initialize or create the MSMAPI object.

@@ -1,0 +1,1605 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000000a8 Richh
+A 000001b0 .text
+A 000001d7 `.rdata
+A 000001ff @.data
+A 00000228 .rsrc
+A 0000024f @.reloc
+A 00000486 \$ t@h
+A 000005e6 \$ t=h
+A 00000b49 D$@@C
+A 00000f0e D$@@C
+A 0000121b D$@@C
+A 00001526 D$@@C
+A 0000183b D$@@C
+A 00001b4b D$@@C
+A 00001e5b D$@@C
+A 0000216b D$@@C
+A 0000240f _^][Y
+A 00002e8d L$ RPW
+A 00002f05 D$(F;
+A 00002faa D$HRP
+A 00002ffe L$8_^d
+A 00003036 D$ UP
+A 00003046 _^][Y
+A 0000309a _^][Y
+A 000030a4 _^][Y
+A 000030d8 QQSVW3
+A 0000388e D$ h\Q
+A 000039d9 D$4Vj
+A 00003cc9 D$8SU
+A 00003cd0 VW;E$r
+A 00003d34 T$\QR
+A 00003d4b D$HPQ
+A 00003d51 T$XVR
+A 00003dea L$Hu(
+A 00003e3b L$8_^]d
+A 00004332 ;\$$u
+A 00004547 ,SUVW3
+A 000045ec L$8@;
+A 00004603 D$(0D
+A 00004b91 L$ _^]d
+A 00004ddb \$,t:
+A 00004df4 t$4t!
+A 00004e1b L$$_^d
+A 00004f6a \$,VW
+A 00005026 |$,t:
+A 0000503f t$4t!
+A 00005066 L$$_^d
+A 00005088 tKJt+JuI
+A 00005102 NpPQWU
+A 00005126 N\PQWU
+A 00005c2b T$$QR
+A 00005d1b T$$QR
+A 00005e0b T$$QR
+A 00005efb T$$QR
+A 00005fe2 T$(QR
+A 00006024 L$(PQ
+A 0000603d L$P_^
+A 0000611e T$(QR
+A 00006160 L$(PQ
+A 00006179 L$P_^
+A 00006241 T$$QR
+A 00006322 T$(QR
+A 00006343 L$P_^
+A 0000640f L$,RPQ
+A 0000641f T$(PR
+A 00006459 D$lSV
+A 000064e8 D$PQP
+A 00006533 L$h_^d
+A 0000664b l$0VW
+A 0000673b t$$tG
+A 00006996 \$Dt8WU
+A 000069ee L$<^d
+A 00006ff3 ]_^[Y
+A 000073b5 QSUVW
+A 0000783d D$$F;
+A 00007913 ]^_[Y
+A 0000799f ^_][Y
+A 000079f3 FXPWW
+A 00007bf0 _^][Y
+A 00007dcf _^][Y
+A 00007e78 QQSVW
+A 000083d7 PSUVW
+A 00008539 L$`_^]d
+A 00008b1e L$0UQ
+A 00008b60 L$<_^]d
+A 00009b7d L$(PQ
+A 0000a63c G	Qj(V
+A 0000a646 D$$j(VRP
+A 0000a7db L$0PQ
+A 0000a80b L$0PQ
+A 0000a83b L$0PQ
+A 0000a877 <SUVW
+A 0000a897 |$Tt$
+A 0000a958 t$du>
+A 0000a9df l$Tt:
+A 0000a9f8 \$dt!
+A 0000ab3f L$4PQR
+A 0000b1db l$0V3
+A 0000b204 t$,9s
+A 0000b28b l$0V3
+A 0000b2cf t$;\$
+A 0000b3ab l$8VW3
+A 0000b473 D$LhpS
+A 0000b48a L$@QU
+A 0000b4de L$(_^]d
+A 0000b5e2 L$$QS
+A 0000b61f T$$RS
+A 0000b7af IQhHT
+A 0000b7ff L$PPh<T
+A 0000b824 T$PQR
+A 0000b85c D$PQh0T
+A 0000b8ce L$Th,T
+A 0000b8ef T$PQR
+A 0000b9b9 l$,@;
+A 0000bacc 9\$<t
+A 0000be33 D$,RS
+A 0000be85 T$(WR
+A 0000bedb D$,Rj
+A 0000bf28 T$(UR
+A 0000cc2d L$ ^d
+A 0000cf80 D$$]^_[
+A 0000d0ea \$PUVW
+A 0000d212 L$H_^]d
+A 0000d24c t$0W3
+A 0000d356 G0_^]d
+A 0000de4f |$DVPW
+A 0000de92 L$0_d
+A 0000e587 8SVWh
+A 0000e63d T$ PR
+A 0000e7f7 L$D_^d
+A 0000ed78 QQSVW
+A 0000f0b8 QQSVW
+A 0000f891 L$hPQ
+A 0000f94b D$pRP
+A 0000fa5a D$8h$U
+A 0000fa70 T$8Qj
+A 0000fb09 D$HSV3
+A 0000fbb7 L$$RVWP
+A 0000fc55 L$D_^d
+A 0000fcf9 D$@VWj
+A 0000fd71 QVWPR
+A 0000fdff L$8_d
+A 00010358 QQSVW
+A 00010641 L$<WQ
+A 00010763 \$HPS
+A 0001077e L$0_^3
+A 00010b58 QQSVW3
+A 000117a8 QQSVW
+A 00011bdb L$D[^_
+A 000124db tSVW3
+A 00012e4f WPQRV
+A 0001371d L$ RPQ
+A 00013789 L$ RPQ
+A 0001382a D$|WP
+A 000138e0 T$@QR
+A 00013963 D$ WP
+A 00013969 L$$WQ
+A 000139d7 D$ WP
+A 00013a35 L$$WP
+A 00013ac9 D$0Wj*PW
+A 00013f60 D$0RS
+A 00013fd1 T$$VPj
+A 00014150 L$0RP
+A 00014156 T$(QR
+A 00014277 T$$VPj
+A 0001439e L$ Ph8U
+A 000144ae L$,VW
+A 000144c4 D$<P3
+A 000144e8 T$<WR
+A 00014647 D$`RP
+A 000146b1 D$LUP
+A 00014844 \$(t<
+A 000148b7 L$ _^
+A 00014f50 T$|SR
+A 00014f56 L$$PQ
+A 000151f5 L$,^d
+A 00015bbc D$(xC
+A 00015cfa D$d(G
+A 00015d06 T$XQR
+A 00015d4b ;D$ps
+A 00015d97 ;D$ps
+A 00015e1e D$ PQ
+A 00015e6e D$TF;
+A 00015ed6 ;D$ps
+A 00015ff3 D$HF;
+A 00016057 L$tRV
+A 00016096 ;D$ps
+A 00016197 D$TF;
+A 00016349 L$(S3
+A 00016366 |$4VU
+A 00016534 D$$RP
+A 00016e2f T$ ;Z
+A 00016e97 _^][Y
+A 000173ba v]WVU
+A 00017482 M	QhPU
+A 000176e1 L$ _^]d
+A 00017715 QSUVW
+A 000177e6 tRWVU
+A 000178d6 D$,RPU
+A 00017b7e L$ _^]d
+A 00017e1b D$0F;
+A 00017e8a L$`_^]d
+A 00017fb6 D$,PQ
+A 00017fe2 L$ Rj
+A 00018013 D$(xC
+A 000180c7 <SUVW
+A 00018286 L$L_^]d
+A 0001834e L$0Pj
+A 0001837f D$8xC
+A 00018857 LSUVW3
+A 000188dc tv9L$ sp
+A 000189d1 D$ttP
+A 000192a7 gfffj
+A 0001981c ;|$(u
+A 00019966 D$$SP
+A 0001997b t$LPV
+A 00019a59 L$pRj P
+A 00019ad6 D$,xC
+A 00019bec L$xjPP
+A 00019cbb T$,QR
+A 00019eef L$$Pj
+A 00019f26 D$,xC
+A 00019f60 D$4_^]d
+A 00019f99 D$0SUV3
+A 0001a067 L$0_^]d
+A 0001a729 D$4Vj
+A 0001a90e L$<_d
+A 0001ab0b (SUVW3
+A 0001ab47 D$HWP
+A 0001ab7f T$\QR
+A 0001accf L$8_^]d
+A 0001b217 8_^][Y
+A 0001b226 _^][Y
+A 0001b233 8_^][Y
+A 0001b333 \$$t!
+A 0001b3ed |$$t0
+A 0001b6e7 0SUV3
+A 0001b818 L$@_^]d
+A 0001c264 D$$E;
+A 0001c6ca vTWVU
+A 0001ca41 L$ _^]d
+A 0001ca75 QSUVW
+A 0001cbe0 T$(QRU
+A 0001cc59 o\9^`tIj
+A 0001cc93 D$ 	P
+A 0001cca7 o`9^dtKj 
+A 0001cd27 dSUV3
+A 0001cd9c L$T@3
+A 0001ce1b D$<VP
+A 0001ce5f D$$RP
+A 0001d13e L$(PQ
+A 0001d144 T$XhdU
+A 0001d28b oX_^][
+A 0001d51d Gd_^]d
+A 0001d547 tSUVW
+A 0001d6a6 D$@WP
+A 0001d6be T$@QR
+A 0001d7c4 D$<F;
+A 0001d877 (SUVW3
+A 0001da8a L$,QR
+A 0001dab6 L$ Pj
+A 0001dae7 D$(xC
+A 0001db97 <SUVW
+A 0001dd57 L$L_^]d
+A 0001de22 L$$Pj
+A 0001de53 D$,xC
+A 0001e24b L$(PWQ
+A 0001e433 D$xtP
+A 0001e8c3 SUVW2
+A 0001ea27 ;\$$u
+A 0001eee5 QSUVW
+A 0001f3c6 D$$SP
+A 0001f3db t$LPV
+A 0001f4b9 L$pRj P
+A 0001f537 D$(xC
+A 0001f712 T$@QR
+A 0001f80f T$,j<
+A 0001f92e L$ Pj
+A 0001f965 D$(xC
+A 0001f9c8 D$(xC
+A 0001fa03 D$0_^]d
+A 0001fa39 D$0SV
+A 0001fb39 D$4SVj
+A 0001fc5a D$<QR
+A 0001fc64 L$@PQR
+A 0001fc8b L$$^d
+A 0001fcff L$<RP
+A 0001fd05 T$@QR
+A 0001fd2b L$$^d
+A 0001fe5e L$<_d
+A 00020029     SUV
+A 00020126 \$`t:
+A 0002017b L$X_^]d
+A 00020194     SU
+A 0002021a l$DVW
+A 0002035a L$<_^d
+A 00020465 L$@_^]d
+A 000204b8 SUVW3
+A 00020634     SUV
+A 0002084f L$(S3
+A 000208f0 \$$t:
+A 00020909 t$4t!
+A 00020cb9 D$4SU
+A 00020cc0 VW;E$r
+A 00020e47 L$4_^]d
+A 00021256 l$0VW
+A 000212a1 L$,|>
+A 000215a8 L$<Ph
+A 000215d2 L$ QR
+A 00021b1a L$ RP
+A 00021baf T$ PQ
+A 00021d1b L$@_^d
+A 0002211c RSSSP
+A 00022499 D$dSUVW3
+A 0002253e D$tWP
+A 00022bc6 D$$SP
+A 00022bdb t$LPV
+A 0002309c D$ QR
+A 000230b8 L$LPQh$W
+A 00023127 D$DxC
+A 00023275 T$(PQR
+A 00023372 L$|_^]d
+A 00023409 D$4UV3
+A 000234f6 L$0_^
+A 00023603 R|hDW
+A 000239cc P|hTW
+A 00023a97 P|hTW
+A 00023d1e T$$VR
+A 000244b3 L$(^d
+A 000244e9 D$DSUV
+A 00024547 \$H~,
+A 000246af L$<^]d
+A 00025285 D$ RP
+A 00025a49 D$DSV3
+A 0002640b D$,dD
+A 00026443 T$ t	
+A 000264be |$<@C;
+A 000264ec D$,0D
+A 000265db l$ VW
+A 00026670 ;|$(u
+A 0002667b L$,_^
+A 000267ff |$DSV
+A 00026880 t$,@B;
+A 00026a13 ;_(}13
+A 00026a1a ;w,}$
+A 00026cc5 l$$VW3
+A 000271c9 D$0SUV3
+A 00027297 L$0_^]d
+A 00027369 D$4Vj
+A 00027529 D$0SVW
+A 00027689 D$4SVj
+A 00027efc P|hTW
+A 00027fb7 P|hTW
+A 00028d69 D$0SV3
+A 00028e2e D$<VP
+A 00028fe1 t$$9w
+A 000290e9 _^][Y
+A 00029595 t$$tA
+A 00029859 D$8V3
+A 0002988e L$<QV
+A 00029d59 D$4SVj
+A 0002acf7 L$RSf
+A 0002b15c 9qLujh
+A 0002b202 L$p^d
+A 0002b23a l$dVW
+A 0002b589 D$TSU
+A 0002b590 VW;E$r
+A 0002b798 L$T_^]d
+A 0002bca1 t$;t$
+A 0002cb9b t$8WV
+A 0002cc9b L$,_^
+A 0002d694 D$,VP
+A 0002d9d9 T$hWR
+A 0002db57 T$hWR
+A 0002dbd3 T$pWR
+A 0002dd37 L$X_^]d
+A 0002df72 L$,_^
+A 0002e10c T$ QRP
+A 0002e18d D$ RP
+A 0002e1fd L$PPQ
+A 0002e320 L$@_d
+A 0002e4e9 D$@SVW
+A 0002e5da L$XPQ
+A 0002e8ca L$8PQ
+A 0002ea57 D$lUP
+A 0002ed87 ,SUVW
+A 0002efd9 D$ SUV
+A 0002f231 D$0tF
+A 0002f272 ;|$0u
+A 0002f3e1 D$0tF
+A 0002f422 ;|$0u
+A 0002f694 T$ QR
+A 0002fa9f l$H~h
+A 0002fb65 l$0Vj
+A 0002fbe9 l$PG;
+A 0002fc5f L$@_^]d
+A 0002fe29 L$T_^d
+A 0002ff07 HSUVW
+A 0002ffd0 D$@RP
+A 00030055 L$hC;Y
+A 000300cb L$X_^]d
+A 00030115 l$D9k
+A 0003022f D$,RP
+A 00030247 L$0SU
+A 0003024d T$,QR
+A 0003025e L$0PQ
+A 0003074b L$,Rjp
+A 0003077f D$4xC
+A 000307f2 L$8Ph
+A 00030826 D$@xC
+A 000309cf _^][Y
+A 00030a32 D$$RP
+A 00030c08 SUVW3
+A 00030d2b L$$WQ
+A 00030d45 D$$RP
+A 00030f57  SUV3
+A 000310e7 L$$Ph
+A 0003111b D$,xC
+A 000313ae ;\$$u
+A 0003160f VUUUf
+A 000317bc D$<SP
+A 00031c55 QSUVW
+A 00031db6 L$ _^d
+A 00031eaf L$ _^d
+A 000320ea \$,UVW
+A 00032366 D$$SP
+A 0003237b t$LPV
+A 00032459 L$8Rj P
+A 000324d6 D$(xC
+A 00032619 D$@jPR
+A 00032759 L$4PQ
+A 00032784 L$ Ph|Z
+A 000329b9 D$(xC
+A 00032a29 D$0S3
+A 00032b12 L$@RQP
+A 00032b45 L$$^d
+A 00032d4e D$<VP
+A 00033199 D$8SU
+A 000331a0 VW;E$r
+A 00033361 L$8_^]d
+A 00033506 L$p^d
+A 00033717 D$(SP
+A 000338a9 D$,UP
+A 00033e6c L$d_^d
+A 00033ffa D$ 0D
+A 0003402a L$8RP
+A 00034b31 D$,tV
+A 00034cb4 D$ |C
+A 00034d0b D$(xC
+A 00034d63 L$,_^]d
+A 00034d9e L$TUV3
+A 00034f5a L$P_^]d
+A 000353c5 QSUV3
+A 000357a2 D$<SP
+A 000359dd L$4PQ
+A 00035ceb L$4PQ
+A 00035e99 D$8RP
+A 00035eaf L$4j 
+A 00035ebd T$8QR
+A 00035ecb L$4j 
+A 00035ed9 L$8PQ
+A 00035ee7 L$4j 
+A 00035ef5 D$8RP
+A 00035f03 L$4j 
+A 00035f11 T$8QR
+A 00035f1f L$4j 
+A 00035f2d L$8PQ
+A 00035f3b L$4j 
+A 00035f49 D$8RP
+A 00035f57 L$4j 
+A 00035f73 L$4j 
+A 00035f81 L$8PQ
+A 000361a9 D$8SUVW3
+A 000362b1 L$8_^]d
+A 000364bb SVWhP
+A 000367e3 T$<PQR
+A 00036bab l$<VW
+A 00036cca L$4_^]d
+A 00037277 L$XQR
+A 00037582 D$@RP
+A 00037666 L$0_d
+A 00037ab6 L$$_^]d
+A 00037b54 t09/s,
+A 00037c5a T$HPQ
+A 00037d1c L$4_3
+A 00037f62 @_^][
+A 00038630 _^][Y
+A 00038f6a tTHt1Hu`
+A 00039f9a \$8U3
+A 0003a079 L$,]d
+A 0003a0c5 tHWh`
+A 0003a197  SUVW
+A 0003a22f D$ SP
+A 0003a25d L$0_^]d
+A 0003a33d L$(_3
+A 0003a463 tHWh`
+A 0003a920 u"WVS
+A 0004f78a ??0OSFile@@QAE@ABVString@@KKKK_N@Z
+A 0004f7b0 ??1OSFile@@UAE@XZ
+A 0004f7c4 ?isnt@WinVersionInfo@@0_NA
+A 0004f7e2 ?GetFileNameFromFileType@@YA?AVString@@ABV1@I@Z
+A 0004f814 ?GetFileTypeFromFilename@@YAIABVString@@@Z
+A 0004f842 ??1FileParse@@QAE@XZ
+A 0004f85a ?Extension@FileParse@@QBE?AVString@@XZ
+A 0004f884 ??0FileParse@@QAE@ABVString@@_N@Z
+A 0004f8a8 ??1WildCard@@QAE@XZ
+A 0004f8be ??0WildCard@@QAE@ABVString@@K@Z
+A 0004f8e0 ?FileName@FileParse@@QBE?AVString@@XZ
+A 0004f908 ?Complete@FileParse@@QBE?AVString@@VDiskUnit@@PBV2@11@Z
+A 0004f942 ?emptyString@FileParse@@0VString@@A
+A 0004f968 ??1DirectoryFilter@@QAE@XZ
+A 0004f986 ??4DirectoryFilter@@QAEAAV0@ABV0@@Z
+A 0004f9ac ??0DirectoryFilter@@QAE@ABVString@@ABVDirEntryList@@@Z
+A 0004f9e6 ??0xDiskException@@QAE@W4ExceptionType@xOSException@@@Z
+A 0004fa20 ??0WTime@@QAE@XZ
+A 0004fa34 ??0WDate@@QAE@XZ
+A 0004fa48 ?GetFreeDiskSpace@DOSDiskTools@@SA?AT_ULARGE_INTEGER@@ABVString@@@Z
+A 0004fa8e ?UNCName@DiskUnit@@QBE?AVString@@XZ
+A 0004fab4 ??EWildCard@@QAEAAV0@XZ
+A 0004face ??0DirEntry@@QAE@ABV0@@Z
+A 0004faea ?GetEntry@WildCard@@QBE?AVDirEntry@@XZ
+A 0004fb14 ?CopyFileA@DOSDiskTools@@SAXABVString@@0@Z
+A 0004fb42 ?DeleteFileA@DOSDiskTools@@SA_NABVString@@_N@Z
+A 0004fb74 ?RenameFile@DOSDiskTools@@SA_NABVString@@0@Z
+A 0004fba4 ?IsFATFileSystem@DOSDiskTools@@SA_NABVString@@@Z
+A 0004fbd8 ?IsWriteable@DOSDiskTools@@SA_NABVString@@@Z
+A 0004fc08 ?Complete@FileParse@@QBE?AVString@@PBV2@000@Z
+A 0004fc38 ?Device@FileParse@@QBE?AVString@@XZ
+A 0004fc5e ??1FileSystemInfo@@QAE@XZ
+A 0004fc7a ?ValidateFilename@FileSystemInfo@@QBE_NABVString@@@Z
+A 0004fcb2 ?GetFileSystemInfo@SysInfo@@SA?AVFileSystemInfo@@VString@@@Z
+A 0004fcf2 ?Name@FileParse@@QBE?AVString@@XZ
+A 0004fd16 ?IsEmptyUNCFileName@FileParse@@ABE_NABVString@@@Z
+A 0004fd4a ?FormatDialog@DOSDiskTools@@SA_NIPAUHWND__@@VUNCVolume@@@Z
+A 0004fd88 ??0UNCVolume@@QAE@ABVString@@@Z
+A 0004fdaa ?ReadFloppySectors@@YAXABVDiskUnit@@HHHHPAEHH@Z
+A 0004fddc ?GetDiskGeometry@DOSDiskTools@@SA?AU_DISK_GEOMETRY@@ABVUNCVolume@@@Z
+A 0004fe24 ?WriteFloppySectors@@YAXABVDiskUnit@@HHHHPBEHH@Z
+A 0004fe58 ?GenerateByteBufferWindowList@ByteBufferWindowFactory@@SA_NVPSharedByteBuffer@@HAAVByteBufferWindowList@@H@Z
+A 0004fec8 ??0UNCVolume@@QAE@ABV0@@Z
+A 0004fee4 ?IsRoot@FileParse@@QBE_NXZ
+A 0004ff02 ?CheckFileExistence@DOSDiskTools@@SA_NABVString@@@Z
+A 0004ff38 ?GetPathNameFromFileType@@YA?AVString@@ABV1@I@Z
+A 0004ff6a ??6@YAAAVDebugLogger@@AAV0@ABVByteBuffer@@@Z
+A 0004ff9a ??6@YAAAVDebugLogger@@AAV0@ABVCString@@@Z
+A 0004ffc6 ??6@YAAAVDebugLogger@@AAV0@PBD@Z
+A 0004ffea ?GetShortFileName@DOSDiskTools@@SA?AVString@@ABV2@@Z
+A 00050022 ?GetTempFileNameWithExtension@DOSDiskTools@@SA?AVString@@PBDABV2@@Z
+A 00050068 ??1OutFileStream@@UAE@XZ
+A 00050084 ??0OutFileStream@@QAE@ABVString@@H@Z
+A 000500ac ?FileExists@DOSDiskTools@@SA_NABVString@@@Z
+A 000500da ??1InFileStream@@UAE@XZ
+A 000500f4 ??0InFileStream@@QAE@ABVString@@H@Z
+A 0005011a ??1StreamException@@UAE@XZ
+A 00050138 ?CreateDiskUnitFromNumber@DiskUnit@@SA?AV1@H@Z
+A 0005016a ?ILLEGAL_TIME@WTime@@2V1@A
+A 00050188 ?ILLEGAL_DATE@WDate@@2V1@A
+A 000501a6 ?PathAndDevice@FileParse@@QBE?AVString@@XZ
+A 000501d4 ?FileSize@DOSDiskTools@@SAXABVString@@AAUFileSizeType@@@Z
+A 00050210 ??0DiskUnit@@QAE@ABVString@@@Z
+A 00050232 ?VolumeSpecifier@FileParse@@QBE?AVString@@XZ
+A 00050262 ?Path@FileParse@@QBE?AVString@@XZ
+A 00050286 ?IsFloppyDisk@@YA_NABVDiskUnit@@@Z
+A 000502ac ?TestDiskExistence@@YA_NABVDiskUnit@@@Z
+A 000502d6 ??0DiskUnit@@QAE@D@Z
+A 000502ee ?ConvertFromDirEntryList@@YAXAAVDirEntryDataList@@ABVDirEntryList@@@Z
+A 00050336 ?DiskDirList@DOSDiskTools@@SAXABVString@@KPAVDirEntryList@@P6AXAAVDirEntry@@@Z@Z
+A 0005038a ?GetAsDirEntry@@YAXVDirEntryDataItem@@AAVDirEntry@@@Z
+A 000503c2 ??4FileParse@@QAEAAV0@ABV0@@Z
+A 000503e2 ??0FileParse@@QAE@XZ
+A 000503fa ?ConvertToDirEntryList@@YAXABVDirEntryDataList@@AAVDirEntryList@@@Z
+A 00050440 ?AppendPath@FileParse@@QBE?AVString@@ABV2@@Z
+A 00050470 ?GetTempPathA@DOSDiskTools@@SA?AVString@@XZ
+A 0005049e ??0DirectoryFilter@@QAE@ABV0@@Z
+A 000504c0 ?SetVolumeLabelA@DOSDiskTools@@SAXABVString@@0@Z
+A 000504f4 ?GetVolumeLabel@DOSDiskTools@@SAXABVString@@AAV2@@Z
+A 0005052a ?SetupForNext@DirectoryFilter@@AAEXXZ
+A 00050552 ?CreateESProcess@@YAXABVString@@PAU_PROCESS_INFORMATION@@PAU_STARTUPINFOA@@K_NPAX@Z
+A 000505a8 ?TranslateDiskBIOSError@@YA?AW4ExceptionType@xOSException@@G@Z
+A 000505ea ?osName@WinVersionInfo@@0W4OsName@1@A
+A 00050612 ?CompleteExtension@FileParse@@QBE?AVString@@ABV2@@Z
+A 00050648 ?ResetFloppyController@@YAXABVDiskUnit@@H@Z
+A 00050676 ?CreateDirectoryA@DOSDiskTools@@SA_NABVString@@@Z
+A 000506aa ?CompleteFile@FileParse@@QBE?AVString@@ABV2@@Z
+A 000506da Wessys.dll
+A 000506e8 ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 00050712 resource.dll
+A 00050720 MFC42.DLL
+A 0005072c __CxxFrameHandler
+A 00050740 _CxxThrowException
+A 00050756 sscanf
+A 00050760 _purecall
+A 0005076c sprintf
+A 00050776 memmove
+A 00050780 strncpy
+A 0005078a qsort
+A 00050792 toupper
+A 000507a4 strchr
+A 000507ae isalnum
+A 000507b8 isdigit
+A 000507c2 isalpha
+A 000507cc isupper
+A 000507d6 _ftol
+A 000507de _stricmp
+A 000507ea memchr
+A 000507f4 _CIpow
+A 00050806 _mbsnbcpy
+A 00050812 islower
+A 0005081c isspace
+A 00050826 vsprintf
+A 00050830 MSVCRT.dll
+A 0005083e __dllonexit
+A 0005084c _onexit
+A 00050856 ??1type_info@@UAE@XZ
+A 0005086e _except_handler3
+A 00050882 ?terminate@@YAXXZ
+A 0005089e _initterm
+A 000508aa malloc
+A 000508b4 _adjust_fdiv
+A 000508c4 Sleep
+A 000508cc GetLastError
+A 000508dc DeviceIoControl
+A 000508ee OutputDebugStringA
+A 00050904 SetLastError
+A 00050914 CloseHandle
+A 00050922 GetExitCodeProcess
+A 00050938 WaitForSingleObject
+A 0005094e QueryPerformanceFrequency
+A 0005096a QueryPerformanceCounter
+A 00050984 WideCharToMultiByte
+A 0005099a MultiByteToWideChar
+A 000509ae KERNEL32.dll
+A 000509bc USER32.dll
+A 000509ca ?doallocate@streambuf@@MAEHXZ
+A 000509ea ?pbackfail@streambuf@@UAEHH@Z
+A 00050a0a ?xsgetn@streambuf@@UAEHPADH@Z
+A 00050a2a ?xsputn@streambuf@@UAEHPBDH@Z
+A 00050a4a ?setbuf@streambuf@@UAEPAV1@PADH@Z
+A 00050a6e ?sync@streambuf@@UAEHXZ
+A 00050a88 ??1streambuf@@UAE@XZ
+A 00050aa0 ??0streambuf@@IAE@XZ
+A 00050ab8 ??1ios@@UAE@XZ
+A 00050aca ?seekpos@streambuf@@UAEJJH@Z
+A 00050aea ?seekoff@streambuf@@UAEJJW4seek_dir@ios@@H@Z
+A 00050b1a ??_Distream@@QAEXXZ
+A 00050b30 _mtunlock
+A 00050b3c _mtlock
+A 00050b46 ??0istream@@IAE@XZ
+A 00050b5c ??0ios@@IAE@XZ
+A 00050b6e ??1istream@@UAE@XZ
+A 00050b84 ??_Dostream@@QAEXXZ
+A 00050b9a ??0ostream@@IAE@XZ
+A 00050bb0 ??1ostream@@UAE@XZ
+A 00050bc6 ??_Difstream@@QAEXXZ
+A 00050bde ??1ifstream@@UAE@XZ
+A 00050bf4 ?close@ifstream@@QAEXXZ
+A 00050c0e ?lock@ios@@QAAXXZ
+A 00050c22 ?unlock@ios@@QAAXXZ
+A 00050c38 ?get@istream@@IAEAAV1@PADHH@Z
+A 00050c58 ?open@ifstream@@QAEXPBDHH@Z
+A 00050c76 ?openprot@filebuf@@2HB
+A 00050c90 ??0ifstream@@QAE@XZ
+A 00050ca6 ?read@istream@@QAEAAV1@PADH@Z
+A 00050cc6 ??_Dofstream@@QAEXXZ
+A 00050cde ??1ofstream@@UAE@XZ
+A 00050cf4 ?write@ostream@@QAEAAV1@PBDH@Z
+A 00050d16 ??0ofstream@@QAE@PBDHH@Z
+A 00050d32 ??0ifstream@@QAE@PBDHH@Z
+A 00050d4e ?close@ofstream@@QAEXXZ
+A 00050d68 ?endl@@YAAAVostream@@AAV1@@Z
+A 00050d88 ?seekg@istream@@QAEAAV1@JW4seek_dir@ios@@@Z
+A 00050db6 ?seekp@ostream@@QAEAAV1@JW4seek_dir@ios@@@Z
+A 00050de4 ?ignore@istream@@QAEAAV1@HH@Z
+A 00050e04 ?put@ostream@@QAEAAV1@E@Z
+A 00050e20 ??6ostream@@QAEAAV0@PBD@Z
+A 00050e3a MSVCIRT.dll
+A 00050e48 _itoa
+A 00050e50 _strcmpi
+A 000513a6 ediskdll.dll
+A 000513b3 ??0BlockAccessServer@@QAE@ABV0@@Z
+A 000513d5 ??0BlockAccessServer@@QAE@PBVMediaLayout@@PAVSectorAccessServer@@@Z
+A 00051419 ??0EmbroideryDiskAutoDetect@@QAE@XZ
+A 0005143d ??0EmbroideryDiskController@@QAE@ABVString@@_NPAVProgressMonitor@@@Z
+A 00051482 ??0S32DirInfoFile@@QAE@ABVString@@H@Z
+A 000514a8 ??0Sector@@QAE@ABVLogicalSectorLocation@@ABVByteBufferWindow@@@Z
+A 000514e9 ??0Sector@@QAE@XZ
+A 000514fb ??0SectorAccessServer@@QAE@ABV?$ShrPtr@VDiskServer@@@@@Z
+A 00051534 ??0SectorId@@QAE@HHHW4SectorSizeCode@@@Z
+A 0005155d ??0SectorId@@QAE@XZ
+A 00051571 ??0ZTCDesignListFile@@QAE@ABVString@@@Z
+A 00051599 ??0ZTCDesignListRecord@@QAE@XZ
+A 000515b8 ??1BlockAccessServer@@QAE@XZ
+A 000515d5 ??1EmbroideryDiskAutoDetect@@QAE@XZ
+A 000515f9 ??1EmbroideryDiskController@@QAE@XZ
+A 0005161d ??1FreeDirectoryIterator@@UAE@XZ
+A 0005163e ??1MediaLayoutServer@@QAE@XZ
+A 0005165b ??1S32DirInfoFile@@QAE@XZ
+A 00051675 ??1SectorAccessServer@@QAE@XZ
+A 00051693 ??1ZTCDesignListFile@@QAE@XZ
+A 000516b0 ??4BlockAccessServer@@QAEAAV0@ABV0@@Z
+A 000516d6 ??4EmbroideryDiskWizard@@QAEAAV0@ABV0@@Z
+A 000516ff ??4SectorId@@QAEAAV0@ABV0@@Z
+A 0005171c ?Add@S32DirInfoFile@@QAEPAUSFMCDirectoryRecord@@ABUSFMCFileHeader@@ABVString@@@Z
+A 0005176d ?AddRecord@ZTCDesignListFile@@QAEXABVZTCDesignListRecord@@@Z
+A 000517aa ?AllocateAndMapBlocks@BlockAccessServer@@QAEXABVBlockLocation@@HAAVBlockList@@@Z
+A 000517fb ?AllocateAndMapBlocks@BlockAccessServer@@QAEXABVBlockLocationList@@AAVBlockList@@@Z
+A 0005184f ?AllocateSectors@SectorAccessServer@@QAEXABVSectorLocationList@@@Z
+A 00051892 ?BuildBerninaConditionFileName@@YAXABVString@@AAV1@@Z
+A 000518c8 ?BuildFileName@EmbroideryDiskController@@QBE_NABVEDiskInterfaceData@@AAVString@@1@Z
+A 0005191c ?BuildFileNameWithAlphanumericExtension@@YAXABVString@@HIAAV1@@Z
+A 0005195d ?BuildSelectedFiles@EmbroideryDiskController@@QBE_NABVEDiskInterfaceData@@AAVDirEntryList@@@Z
+A 000519bb ?BuildTajimaConditionFileName@@YAXABVString@@AAV1@@Z
+A 000519f0 ?BuildToyotaHeaderFileName@@YAXABVString@@AAV1@@Z
+A 00051a22 ?CommitBlocks@BlockAccessServer@@QAEXABVBlockLocation@@HPAVNewEDiskReporter@@@Z
+A 00051a72 ?CommitBlocks@BlockAccessServer@@QAEXABVBlockLocationList@@PAVNewEDiskReporter@@@Z
+A 00051ac5 ?CommitSectors@SectorAccessServer@@QAEXABVSectorLocationList@@PAVNewEDiskReporter@@@Z
+A 00051b1b ?CopyFilesFromEmbroideryDisk@@YA_NABVDiskUnit@@ABVDirEntryList@@ABVString@@AAVStringList@@KAA_NPAVProgressMonitor@@@Z
+A 00051b91 ?Create@FreeDirectoryIterator@@SAPAV1@ABUFindFreeFlags@@ABVUNCVolume@@JJPBD@Z
+A 00051bdf ?CreateMediaLayoutServer@MediaLayoutFactory@@SAPAVMediaLayoutServer@@ABVDiskUnit@@W4MediaLayoutFamilyType@@W4KnownMediaLayoutType@@@Z
+A 00051c65 ?Delete@S32DirInfoFile@@QAEHABVS32FileName@@@Z
+A 00051c94 ?DumpBlock@@YAXABVBlock@@PAVDebugLogger@@@Z
+A 00051cc0 ?DumpBlockList@@YAXABVBlockList@@PAVDebugLogger@@@Z
+A 00051cf4 ?DumpBlockList@@YAXABVBlockLocationList@@PAVDebugLogger@@@Z
+A 00051d30 ?DumpBlockRegion@@YAXABVBlockRegion@@PAVDebugLogger@@@Z
+A 00051d68 ?DumpLists@@YAXABVBlockLocationList@@AAVSectorLocationList@@PAVDebugLogger@@@Z
+A 00051db7 ?DumpSector@@YAXABVSector@@PAVDebugLogger@@@Z
+A 00051de5 ?DumpSectorList@@YAXABVSectorList@@PAVDebugLogger@@@Z
+A 00051e1b ?DumpSectorList@@YAXABVSectorLocationList@@PAVDebugLogger@@@Z
+A 00051e59 ?DumpTrackSegments@@YAXABVTrackSegmentList@@PAVDebugLogger@@@Z
+A 00051e98 ?Find@S32DirInfoFile@@QAEPAUSFMCDirectoryRecord@@ABVS32FileName@@@Z
+A 00051edc ?FindDisk@EmbroideryDiskWizard@@CAPBVNewNonDOSEmbroideryDisk@@J@Z
+A 00051f1e ?GetAllKnownDisks@EmbroideryDiskWizard@@SA?AV?$UniqueList@V?$SimpleIxList@J@@@@XZ
+A 00051f70 ?GetAsFileNumber@EmbroideryDisk@@UBEHABVDirEntry@@@Z
+A 00051fa5 ?GetCylinder@SectorId@@QBEEXZ
+A 00051fc3 ?GetDiskType@EmbroideryDiskAutoDetect@@QBEJABVDiskUnit@@J@Z
+A 00051fff ?GetESFileType@@YAID@Z
+A 00052016 ?GetESMachineTypeId@@YAID@Z
+A 00052032 ?GetFreeSlot@S32DirInfoFile@@QAEPAUSFMCDirectoryRecord@@XZ
+A 0005206d ?GetHappyTapeCode@@YAPAUEsToHappyTapeCode@@I@Z
+A 0005209c ?GetHead@SectorId@@QBEEXZ
+A 000520b6 ?GetKnownDisks@EmbroideryDiskWizard@@SA?AV?$UniqueList@V?$SimpleIxList@J@@@@ABV?$SimpleIxList@W4KnownMediaLayoutType@@@@@Z
+A 00052131 ?GetMappedBlocks@BlockAccessServer@@QBEXABVBlockLocation@@HAAVBlockList@@@Z
+A 0005217d ?GetMappedBlocks@BlockAccessServer@@QBEXABVBlockLocationList@@AAVBlockList@@@Z
+A 000521cc ?GetMappedSectors@SectorAccessServer@@QBEXABVSectorLocationList@@AAVSectorList@@@Z
+A 0005221f ?GetNameFromNumber@EmbroideryDisk@@UBE?AVString@@H@Z
+A 00052254 ?GetNextFreeEntry@FreeDirectoryIterator@@UAEKAAUEDDirEntry@@PBD@Z
+A 00052296 ?GetNumberFromFileName@EmbroideryDisk@@UBEHABVString@@@Z
+A 000522cf ?GetOriginatingDevice@ZTCFileUtilities@@YA?AVString@@XZ
+A 00052307 ?GetRecordNumber@SectorId@@QBEEXZ
+A 00052329 ?GetS32DirInfoFileName@S32DirInfoFile@@SAABVString@@XZ
+A 00052360 ?GetSectorCode@SectorId@@QBE?AW4SectorSizeCode@@XZ
+A 00052393 ?GetSectorSize@SectorId@@QBEHXZ
+A 000523b3 ?GetSectorSizeCode@Sector@@QBE?AW4SectorSizeCode@@XZ
+A 000523e8 ?IsDiskTypeSupported@EmbroideryDiskWizard@@SA_NJ@Z
+A 0005241b ?IsExists@EmbroideryDisk@@UAE_NXZ
+A 0005243d ?IsWriteable@BlockAccessServer@@QBE_NXZ
+A 00052465 ?IsWriteable@SectorAccessServer@@QBE_NXZ
+A 0005248e ?MakeInfoRecordFromFile@S32DirInfoFile@@QAEXABVString@@AAUSFMCDirectoryRecord@@@Z
+A 000524e0 ?More@FreeDirectoryIterator@@QBE_NXZ
+A 00052505 ?NewDisk@EmbroideryDisk@@SAPAV1@VDiskUnit@@J_N@Z
+A 00052536 ?NewDisk@EmbroideryDiskWizard@@SAPAVNewNonDOSEmbroideryDisk@@ABVDiskUnit@@J@Z
+A 00052584 ?PerformOperation@EmbroideryDiskController@@QAE_NAAVEDiskInterfaceData@@@Z
+A 000525cf ?Read@ZTCFileUtilities@@YAXAAVistream@@AAF@Z
+A 000525fc ?Read@ZTCFileUtilities@@YAXAAVistream@@AAJ@Z
+A 00052629 ?Read@ZTCFileUtilities@@YAXAAVistream@@AAVString@@H@Z
+A 0005265f ?ReadDesignList@ZTCDesignListFile@@QAEXXZ
+A 00052689 ?ReadSectors@SectorAccessServer@@QAEXAAVSectorList@@@Z
+A 000526c0 ?RefreshBlocks@BlockAccessServer@@QAEXABVBlockLocation@@HPAVNewEDiskReporter@@@Z
+A 00052711 ?RefreshBlocks@BlockAccessServer@@QAEXABVBlockLocationList@@PAVNewEDiskReporter@@@Z
+A 00052765 ?RefreshSectors@SectorAccessServer@@QAEXABVSectorLocationList@@PAVNewEDiskReporter@@@Z
+A 000527bc ?Register@EmbroideryDiskWizard@@CAXPBVNewNonDOSEmbroideryDisk@@@Z
+A 000527fe ?Reset@FreeDirectoryIterator@@QAEXXZ
+A 00052823 ?SetDesignData@ZTCDesignListRecord@@QAEXPAVDICallBackObj@@@Z
+A 00052860 ?SwapBytes@ZTCFileUtilities@@YAFF@Z
+A 00052884 ?SwapBytes@ZTCFileUtilities@@YAJJ@Z
+A 000528a8 ?TestDiskExistence@BlockAccessServer@@QBE_NXZ
+A 000528d6 ?TestDiskExistence@SectorAccessServer@@QBE_NXZ
+A 00052905 ?UseNewDisks@EmbroideryDiskWizard@@SA_NXZ
+A 0005292f ?Write@ZTCFileUtilities@@YAXAAVostream@@ABVString@@H@Z
+A 00052966 ?Write@ZTCFileUtilities@@YAXAAVostream@@F@Z
+A 00052992 ?Write@ZTCFileUtilities@@YAXAAVostream@@J@Z
+A 000529be ?WriteDesignList@ZTCDesignListFile@@QBEXXZ
+A 000529e9 ?WriteFile@S32DirInfoFile@@QAEHXZ
+A 00052a0b ?WriteFileToEmbroideryDisk@@YA_NABVString@@00KIPAVProgressMonitor@@@Z
+A 00052a51 ?WriteSectors@SectorAccessServer@@QAEXABVSectorList@@@Z
+A 00052a89 ?infoDirectoryName@S32DirInfoFile@@0VString@@A
+A 00052ab8 ?knownDisks@EmbroideryDiskWizard@@0V?$SimpleIxList@PBVNewNonDOSEmbroideryDisk@@@@A
+A 00052b0b ?useNewDiskTypes@EmbroideryDiskWizard@@0_NA
+A 00052b37 AutodetectDisk
+A 00052b46 CheckExistence
+A 00052b55 CloseEDiskHandle
+A 00052b66 CopyFileFromEDisk
+A 00052b78 CopyFileToEDisk
+A 00052b88 CopySectorsFromEDisk
+A 00052b9d CopySectorsToEDisk
+A 00052bb0 DeleteEmbroideryFile
+A 00052bc5 DoesDiskSupportDirectories
+A 00052be0 DoesDiskSupportPaste
+A 00052bf5 FindFirstEmbroideryFile
+A 00052c0d FindNextEmbroideryFile
+A 00052c24 FormatEmbroideryDisk
+A 00052c39 FormatTrackEmbroideryDisk
+A 00052c53 GetDiskGeometry
+A 00052c63 GetFileExtensionFromType
+A 00052c7c GetFileTypeFromName
+A 00052c90 IsWriteable
+A 00052c9c OpenEDiskHandle
+A 00052cac ValidateFilename
+A 00052cbd ValidateMedia
+A 00052ccb ZapTajimaDisk
+A 00052eb0 \\.\SYDEXFDD.VXD
+A 00052ec4 \\.\A:
+A 00052ed8 .?AVWException@@
+A 00052ef8 .?AVSimpleException@@
+A 00052f18 .?AVxOSException@@
+A 00052f38 .?AVxDiskException@@
+A 000530cc 12345678
+A 000530d8 ZSK-DISK  
+A 000530e4 UNKNOWN
+A 000530ec Disk error
+A 00053100 .?AVxOSFile@@
+A 00053118 .?AVxBadVolInfo@@
+A 0005312c Sector Location : cyl=%d, head=%d id=%d
+A 00053158 Block Location : %d
+A 00053170 	Sector Location : cyl=%d, head=%d id=%d
+A 0005319c ************************************
+A 000531c4 BlockId = %d
+A 000531d4 Block region (%d, %d)
+A 000531f8 Track Segment Sectors : %d (c=%d, h=%d) id list:
+A 00053230 %2.2x 
+A 0005323c %4.4x : 
+A 00053248 Loc  : 00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f 0123456789abcdef
+A 00053294 -----+-----------------------------------------------------------------
+A 000532f8 .?AVStreamException@@
+A 00053324 %c%02d
+A 00053330 DIR.TXT
+A 00053348 %2.2d
+A 00053354 B_FLOPPY.EXE
+A 0005336c %d "%[^"]" %s %ld %ld
+A 00053384 ELCODE
+A 0005338c BARUDAN
+A 000533ac write
+A 000533d0 FILE    
+A 000533dc F_FLOPPY.EXE
+A 000533f0 %d %s %s %ld %ld
+A 00053404 A%2.2d
+A 0005341c         
+A 00053428 HAPPY
+A 0005343d HAPPY$  
+A 00053455 BRD$    
+A 0005346d ZSK$    
+A 00053485 ZSK$    
+A 0005349d ZSK$    
+A 000534b5 $       
+A 000534c8 ABCDEFGHIJKLMNOPQRSTUVWXYZ $01234546789
+A 000534f0 M1_FLOPY.EXE
+A 00053508 [%c%c%c%c] %ld,%ld,%ld,%ld
+A 00053524 %6s %c %c%c%c%c %ld %ld
+A 00053558 format
+A 00053560  -C%d,%d
+A 00053570 diskbios.exe
+A 0005358c -C%d,%d
+A 00053594  -Z%s
+A 000535a0 -C%d,%d,%d,%d
+A 000535bc -ISWR
+A 000535c8 -RDSEC
+A 000535d0 %8.8d
+A 000535d8 *.DAT
+A 000535e0 NEWFILE.DIR
+A 000535f3 IBM  3.3
+A 00053761 IBMBIO  COMIBMDOS  COM
+A 0005377d Non-System disk or disk error$
+A 0005379d Replace and strike any key when ready
+A 000537c7 Disk boot failure$Copr. COMPAQ 1983-87
+A 000537f0 TAJIMA
+A 000537f8 2) Disk exception : %d
+A 00053810 G%3.3d
+A 00053820 TOYOTA
+A 00053868 Z_FLOPPY.EXE
+A 00053884 %d,%8ld,%d
+A 000538ac %8.8ld
+A 000538b4 CODE  
+A 000538c4 %02d.%02d.%04d
+A 000538dc > MAX.
+A 000538e4 PICTO
+A 000538ec *.Z??
+A 00053908 .?AVtype_info@@
+A 00053e09 0B0S0
+A 00053e29 3C4[4
+A 00053e33 415A5S5k5r5
+A 00053e59 9"9a9q9
+A 00053e73 <*<2<q<
+A 00053e8d ?%?:?B?
+A 00053eb3 252J2R2
+A 00053ecd 4#5E5Z5b5
+A 00053ee9 738U8j8r8
+A 00053f05 :C;e;z;
+A 00053f2d 1 1)131@1N1X1r1|1
+A 00053f4f 2*252G2R2\2v2
+A 00053f6d 3 323<3F3`3j3
+A 00053f85 4'4K4o4
+A 00053f97 5D6f6
+A 00053fa7 7'7B7[7s7
+A 00053fb7 8>8S8p8
+A 00053fc5 949i9
+A 00053ff5 0)0f0}0
+A 00054003 1D1i1
+A 0005400d 1+2D2b2
+A 0005401b 3'3A3|3
+A 0005403f 6&6E6O6z6
+A 00054053 9!9?9y9
+A 0005405d :4:S:
+A 00054063 ;4;c;
+A 00054093 2c3S4
+A 000540af =C>\>
+A 000540cb 132#3#4
+A 00054111 =#>->
+A 00054139 334f4
+A 00054141 5d5t5
+A 0005415b 818J8Y8$9=9
+A 00054179 <d=h=l=p=t=x=
+A 000541b5 ? ?$?Y?
+A 000541c9 000I0
+A 000541e5 ;W;j;%<
+A 000541ed =&=C=
+A 0005420d 4<4A4G4P4V4_4e4k4
+A 00054229 6S6&8
+A 00054235 :):T:
+A 0005423f ;D;n;
+A 00054257 <H=k=
+A 00054263 >H>r>
+A 0005426f ?+?C?M?j?
+A 00054289 0W0~0
+A 00054297 031o1
+A 000542a1 192b2
+A 000542af 2&3O3c3y3
+A 000542bd 424i4y4
+A 000542d1 5/5>5^5
+A 000542e1 656d6
+A 000542eb 637\7t7
+A 000542f7 7 8.8H8
+A 00054301 9&:`:n:
+A 00054313 <1=;=
+A 0005431f >`>z>
+A 0005432d ?Q?X?q?
+A 0005434b 0P2k2
+A 00054355 2C3c4
+A 0005435b 6!848F8
+A 00054369 9!919I9d9
+A 00054373 93:j:
+A 00054385 =I=_=
+A 00054391 =3>y>
+A 000543a9 0%0,0w0
+A 000543b3 141I1
+A 000543c5 22292I2P2
+A 000543d1 2f3v3
+A 000543e1 4@4a4h4
+A 000543eb 4#5v5
+A 000543f9 9?9R9
+A 00054407 :::\:
+A 00054413 :/;I;
+A 00054421 <D=M=e=
+A 0005442f >)>s>
+A 0005443b ?"?(?7?W?
+A 00054461 111B1Q1X1q1z1
+A 00054477 232}2
+A 0005448f 5'5H5
+A 00054499 6(7I7j7
+A 000544a3 7c8x8
+A 000544ad 9h9z9
+A 000544bb <3>t>
+A 000544e5 2.3[3
+A 000544eb 444~4
+A 000544ff 5'646v6
+A 0005450b 767L7
+A 00054515 7"8[8
+A 0005451d 829C9v9
+A 0005452b :/:F:W:|:
+A 00054539 ;1;V;
+A 00054579 0+0)1P1s1
+A 00054589 2#2[2m2
+A 00054597 3?3N3k3
+A 000545a3 4B4`4
+A 000545ad 595S5k5
+A 000545bf 7H7N7a7}7
+A 000545cd 8:8I8
+A 000545d7 8,9@9f9
+A 000545e3 :":3:V:
+A 000545f3 ;#;_;z;
+A 0005460b =K=b=s=
+A 0005463b 1>1s1{1K2n2
+A 00054649 333O3v3
+A 00054653 304p4
+A 0005465f 4,5V5m5
+A 00054685 7P8y8
+A 00054693 999O9e9
+A 000546af =/?F?
+A 000546e9 627F7
+A 000546ff < <7<@<v<
+A 00054711 =2=F=N=
+A 00054719 =#>D>]?
+A 0005472d 3	4u4h5l5p5t5x5|5
+A 00054755 6>6Q6y6
+A 0005476d 969d9
+A 00054779 9!:D:]:s:
+A 00054787 ;E;x;
+A 00054795 =4=z=
+A 000547a1 >F>v>]?
+A 000547bf 0"161
+A 000547d3 363f3
+A 000547dd 3$4?4f4
+A 000547ef 5'6g6
+A 000547f7 6G7i7|7
+A 00054809 :?;l;
+A 00054819 <(<c<
+A 00054841 061a1
+A 00054847 1\2t3
+A 00054863 606S6m6
+A 0005486d 7=7[7u7
+A 00054879 888x8
+A 0005488b :9:S:
+A 000548bd >V>r>
+A 000548f1 6-7o7
+A 000548f7 8@8S8
+A 000548ff 8):Q:
+A 00054909 :%;i;
+A 0005491b =&=i=
+A 00054925 =1>@>I>S>`>n>x>
+A 00054947 ?7?J?U?g?r?|?
+A 0005496f 0.0@0R0\0f0
+A 00054987 0#1G1k1
+A 000549b3 596b6
+A 000549bb 6C7r7
+A 000549f9 >L>l>
+A 00054a19 0a1s1
+A 00054a35 8d9~9
+A 00054a4b =-=C=]=
+A 00054a57 ?8?b?y?
+A 00054a7d 2,3C3L3f3
+A 00054a91 7#898
+A 00054a97 8	9y9
+A 00054aa1 ;1;l;
+A 00054aa7 ;C<b<a=s=
+A 00054ac1 0-2%3c3V4b4
+A 00054ad7 525D5v5
+A 00054ae5 6L6R6b6
+A 00054af5 7=7C7
+A 00054b03 8X8h8
+A 00054b1d ; ;);J;T;
+A 00054b33 <<<`<
+A 00054b3d <6=?=
+A 00054b47 >*>v>
+A 00054b59 ?'?=?X?n?
+A 00054b71 0&0G0^0}0
+A 00054b7f 0*1R1h1p1
+A 00054b9f 363M3f3p3w3
+A 00054bbd 7V7l7
+A 00054bd3 9!9<9D9S9
+A 00054be9 ;2=;=
+A 00054c03 0!171
+A 00054c0d 2(3g3m3
+A 00054c4d ;S<C=
+A 00054c67 1\1|1
+A 00054c6d 1*2m2A3Q3a3s3
+A 00054c7b 3	4C4d4c6
+A 00054c89 7%8I8
+A 00054c93 ;L<f<
+A 00054ccb 8-8s9
+A 00054cd5 :6:M:V:
+A 00054cdd ;@;Z;r;
+A 00054d1b 3>5T5
+A 00054d21 5c6G7q7
+A 00054d31 :c;3<
+A 00054d3f ?2?C?g?
+A 00054d58 *0S0}0
+A 00054d65 011:1g1
+A 00054d77 232X2j2
+A 00054d83 3=3D3
+A 00054d95 5E5_5h5
+A 00054da5 5#6I6`6
+A 00054daf 6#7G7^7u7
+A 00054dc1 8-848
+A 00054dcb 8C9v9
+A 00054dd5 <	>->m>v>
+A 00054de3 ?U?s?
+A 00054e01 1N1s1
+A 00054e07 23334
+A 00054e19 9$9M9V9{9
+A 00054e29 :/:q:
+A 00054e39 :C;x;
+A 00054e43 ?7???
+A 00054e6d 3E4q4}4
+A 00054e85 666{6
+A 00054e97 758[8
+A 00054ea9 :C:Z:
+A 00054eb1 : ;H;r;
+A 00054ebf <3<u<
+A 00054ec9 =-=D=q=
+A 00054f0b 1!1M1q1
+A 00054f19 292j2
+A 00054f25 3 3k3
+A 00054f33 434U4
+A 00054f43 5"666`6
+A 00054f4f 7C7g7
+A 00054f5d 7*8V8
+A 00054f6b 8.969H9j9
+A 00054f75 9":E:`:
+A 00054f87 ;.;7;X;{;
+A 00054f97 ;0<7<N<W<y<
+A 00054fa7 <!=*=I=X=
+A 00054fc5 0,0D0X0l0
+A 00054fd5 1$1F1o1t1
+A 00054fe5 2$222H2a2{2
+A 00054ff5 3&3O3T3{3
+A 00055005 4.4<4I4d4r4
+A 00055015 5,5F5e5y5
+A 00055021 5<6V6
+A 00055031 7b7|7
+A 0005504b 9M9m9
+A 00055053 9::R:e:
+A 0005505f :1;F;t;
+A 00055073 =@=i=
+A 0005507d >@>y>
+A 00055085 >.?5?
+A 000550a7 5$535M5i5
+A 000550b5 5+6S6
+A 000550bd 6-7S7
+A 000550c5 :):U:
+A 000550cd :#;q<
+A 000550db <%=Q=]=
+A 000550f9 0#1D1p1
+A 0005510f 3l4O5q5
+A 00055119 636]6t6
+A 0005512b 727N7
+A 00055139 8#8)8}8
+A 00055145 8C9I9]9c9i9
+A 0005516b <-=a=
+A 00055175 =1>k>r>
+A 000551a1 5k7q7
+A 000551ad 9):/:C:R:u:~:
+A 000551bf :o;u;
+A 000551e9 >/>=>l>
+A 000551f3 >*?S?v?
+A 0005520d 0A0Q0a0
+A 0005521d 1:1Q1
+A 00055225 1.2=2s2
+A 00055235 2	303f3
+A 00055241 4:4Q4p4
+A 0005525b 5-555G5q5
+A 0005526b 6&6-6
+A 0005528b 8-8<8F8
+A 000552a3 :8:v:
+A 000552ad :_;v;
+A 000552b9 ;%<6<m<
+A 000552c7 =8=L=T=
+A 000552db >/>4>[>
+A 000552eb >H?i?v?
+A 00055301 0)070J0c0
+A 00055313 121O1h1
+A 00055323 222O2h2
+A 00055339 3$4W4f4v4
+A 0005534b 5S5{5
+A 00055357 5(6B6O6\6m6|6
+A 00055369 6!7M7
+A 00055379 7.8b8
+A 00055389 9=9S9{9
+A 00055399 :I:f:}:
+A 000553a9 ;C;r;
+A 000553af ;c=F>x>~>
+A 000553bf ?N?i?q?
+A 000553d5 0N0i0
+A 000553dd 1!111C1Y1q1
+A 000553f3 2)2@2I2X2c2
+A 00055413 3#333
+A 0005541f 4C4k4p4
+A 0005542d 5B5q5
+A 00055435 5>6j6
+A 00055443 8.8P8z8
+A 0005544d 8C9g9~9
+A 0005545d :#:=:q:
+A 0005546d ;/;v;
+A 00055473 <&<Z<
+A 0005547d <3=X={=
+A 00055491 >;?g?
+A 000554c1 3=3^3{3
+A 000554cf 4I4Y4x4
+A 000554dd 4A5F5L5a5r5
+A 000554f1 5&6s6
+A 000554fb 7!7A7k7
+A 0005550d 7	878=8R8j8t8
+A 00055529 <'<1<b<
+A 00055535 =!=4=b=
+A 00055549 =#>A>k>
+A 00055559 ?B?f?
+A 00055568 	0S0y1
+A 00055573 2(2M2d2
+A 00055585 5E5t5
+A 00055599 ;);r;
+A 000555b3 <(<:<J<W<a<x<
+A 000555d3 = =-=7=N=W=i={=
+A 000555f3 >->N>o>
+A 00055603 ?5?d?n?{?
+A 00055659 8!9:9H9`9
+A 00055667 :M:k:
+A 0005566f ;!;8;
+A 0005567b ;O<{<
+A 00055689 =<>Y>w>
+A 0005569b ?-?<?H?c?
+A 000556b5 0)0^0
+A 000556d1 3!3+3{3
+A 000556d9 3	495
+A 00055709 9a9f9l9
+A 00055723 :B:Y:
+A 00055731 ;8;m;
+A 00055739 ;5<T<g<r<
+A 00055749 =5>_>
+A 0005576b 1/1A1
+A 00055777 272d2
+A 00055783 3G3c3|3
+A 0005578d 3	4`4
+A 000557af 6B7|7
+A 000557b9 7t8s9
+A 000557bf ;N<C=
+A 000557db 3A3O3U3
+A 00055809 353b3y3
+A 00055813 3	4 4)4
+A 00055821 :C;s<
+A 00055847 131[1b1
+A 0005585d 6R6\6c6
+A 0005586b 6>7s7
+A 00055881 < <8<
+A 00055887 <+=D=a={=
+A 00055893 =F>b>
+A 000558a3 ?2?D?v?
+A 000558b9 0L0R0b0
+A 000558c9 181M1}1
+A 000558d7 232F2c2
+A 000558e3 2f3u3
+A 000558f7 5<5t5
+A 00055905 686K6b6i6
+A 00055915 6@7f7
+A 00055923 8$818N8\8r8
+A 00055935 939i9
+A 00055945 :3:c:
+A 0005594f :/;i;
+A 0005595d =$>->S>j>
+A 00055969 >3?M?
+A 0005598d 234T5C6
+A 0005599d 8H8t8
+A 000559b3 >)>3?
+A 000559c5 2G3S4
+A 000559ed :):A:s;
+A 000559fb <!<3<K<c<s=
+A 00055a15 ?>?U?^?
+A 00055a2d 0311363<3Q3a3s3
+A 00055a45 4"4C4Y5~5
+A 00055a65 8.8X8
+A 00055a71 979A9c9
+A 00055a79 :>:D:V:v:L<a<k<
+A 00055aad 0)0E0a0}0
+A 00055ac7 3!3Y3
+A 00055ad5 4'4S4a4o4
+A 00055ae1 51666<6Q6a6s6
+A 00055af3 6I7Z7
+A 00055b01 7:8\8a8
+A 00055b2f =3=I=c=k=q=w=
+A 00055b47 ==>g>
+A 00055b53 ?!?7?i?
+A 00055b68 "0v0}0
+A 00055b85 4&4^4n4
+A 00055b9d 778U8k8
+A 00055bc9 >$>:>}>
+A 00055bd3 >=?]?
+A 00055bed 0"1-1&2w2
+A 00055bfb 4!434
+A 00055c15 :<:A:0;4;8;<;@;D;H;L;
+A 00055c4d 7!7&73787=7Q7a7s7]8l8s8
+A 00055c9b 1"101=1B1r1
+A 00055cb3 263;3
+A 00055cc3 4!4&4+404:4C4V4`4u4
+A 00055cdd 455R5X5^5d5j5r5x5~5
+A 00055cff 6,6L6l6
+A 00055d0d 777L7
+A 00055d19 7*8L8w8
+A 00055d27 9,9j9
+A 00055d33 :,:W:l:
+A 00055d41 ;J;l;
+A 00055d51 <9<Y<y<
+A 00055d5f =%=2=^=c=
+A 00055d73 >)>L>m>
+A 00055d81 >)?I?y?
+A 00055d9f 0(1I1
+A 00055da9 1	292Y2y2
+A 00055db7 393Y3y3
+A 00055dc5 4$4D4d4
+A 00055dd3 4	5)5U5j5
+A 00055de1 5	6)6L6
+A 00055deb 7)7I7i7
+A 00055e01 8	9)9I9x9
+A 00055e0f 91:a:
+A 00055e1f ;);M;q;
+A 00055e2b <9<d<
+A 00055e39 <	=d=y=
+A 00055e49 >A>i>
+A 00055e64 	0)0I0a0
+A 00055e73 1>1U1m1
+A 00055e83 2)2I2i2
+A 00055e95 3!393e3r3
+A 00055ea5 3%4b4
+A 00055eaf 4"5F5P5`5x5}5
+A 00055ed7 6'7K7e7z7
+A 00055ee7 828y8
+A 00055ef5 9=9J9i9
+A 00055eff :G:i:
+A 00055f11 ;1<s<
+A 00055f17 <	=9=Q=
+A 00055f33 >B?Q?
+A 00055f4b 0?0|0
+A 00055f5d 192Y2
+A 00055f6b 3<3p3
+A 00055f81 595Y5y5
+A 00055f95 657T7
+A 00055fad 9	:):I:i:
+A 00055fbd :!;Q;i;
+A 00055fc9 ;d<u<
+A 00055fd9 =)=V=i=
+A 00055feb >:>Y>
+A 00055ff7 >	?\?
+A 00056010 70D0Y0
+A 0005601b 0	1S1
+A 00056027 102Y2
+A 0005602f 2 3L3
+A 00056043 5	6X6
+A 00056051 7	8)8I8i8
+A 0005605f 8	9)9I9
+A 00056079 ;";9;Y;
+A 00056085 <-<:<]<r<
+A 00056091 <8=Y=|=
+A 000560a1 >,>m>
+A 000560ad >	?A?a?
+A 000560d7 191]1
+A 000560e1 2T2e2r2
+A 000560ef 3A3Y3
+A 000560fd 4(4p4
+A 00056105 4	5I5a5|5
+A 00056115 6!6D6\6
+A 00056123 6!7A7s7
+A 00056133 8%8*8A8Q8a8q8
+A 00056145 8	9)9y9
+A 00056153 :%:*:I:e:r:
+A 00056175 ;!<9<
+A 00056183 =!=A=a=y=
+A 00056195 >*>`>y>
+A 000561bc  0R0i0
+A 000561cd 0!1<1h1
+A 000561d7 232N2
+A 000561e3 3%3:3U3Z3u3
+A 000561f9 4)4L4u4
+A 00056209 4 5L5e5r5
+A 00056217 5&6+6a6
+A 00056227 7<7e7~7
+A 0005623b 898y8
+A 00056247 919h9
+A 00056259 ;);a;
+A 00056275 >\>y>
+A 0005627d >	?4?W?
+A 00056291 0)0I0l0
+A 0005629d 0.1I1
+A 000562b7 323M3Z3
+A 000562c7 4"494g4|4
+A 000562d9 5(6I6
+A 000562ef 819X9e9
+A 000562fb :f:u:
+A 00056317 =9=i=
+A 00056323 >A>Y>
+A 0005632d ?P?i?
+A 00056344 00I0i0
+A 00056361 3=3r3
+A 0005636d 4)4Z4
+A 00056387 3 3$3(3,3034383<3@3D3H3P3T3X3\3`3d3h3l3p3t3x3|3
+A 00056403 4 4$4(4,40484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0005646f 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 000564df 6 6064686@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00056555 7 7$7(7,70787<7@7D7H7L7P7T7X7\7`7d7h7p7t7x7|7
+A 000565cb 8 8$8(8,8084888<8@8D8H8L8P8T8X8`8d8h8l8p8t8x8|8
+A 0005663d 9 9$9(9,9094989<9@9D9H9L9P9X9\9`9d9h9l9p9t9x9|9
+A 000566b1 : :$:(:,:0:4:8:<:@:D:H:X:`:p:t:x:|:
+A 00056723 ; ;$;(;,;0;4;8;@;D;H;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0005679b < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00056815 = =$=(=,=0=4=8=<=@=D=H=L=P=X=\=`=d=h=l=p=t=x=|=
+A 0005688b > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00056909 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0005697b 0 0$0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 000569ed 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00056a3f 2(2<2L2P2`2|2
+A 00056a5f 343@3\3h3
+A 00056a7b 4 4<4D4P4l4x4
+A 00056a9b 5,585T5\5d5l5x5
+A 00056abb 6$6,686T6`6|6
+A 00056adb 7 7<7D7P7l7x7
+A 00056afb 8,888T8\8d8l8x8
+A 00056b1b 9$9,989T9`9|9
+A 00056b35 9 :4:<:P:\:p:|:
+A 00056b5b ;(;4;<;L;X;t;
+A 00056b77 < <<<H<d<l<t<|<
+A 00056b95 =,=4=@=\=d=l=x=
+A 00056bb9 > ><>D>P>l>x>
+A 00056bdb ?4?<?D?L?T?\?h?
+A 00056c07 0(0D0L0T0`0|0
+A 00056c2f 1$141@1\1h1
+A 00056c57 2,242<2L2X2t2|2
+A 00056c7f 3$3,343<3H3d3l3t3
+A 00056ca3 4 4<4D4L4T4\4h4
+A 00056cc1 5$5,585T5\5h5
+A 00056ce3 6(6D6L6X6t6|6
+A 00056d03 747@7\7h7
+A 00056d23 8$8,848D8L8T8\8
+A 00056d43 949@9\9d9l9t9|9
+A 00056d67 :$:0:L:X:t:|:
+A 00056d85 ; ;4;<;D;T;p;
+A 00056dad <$<0<L<T<\<l<x<
+A 00056dcf =4=P=\=d=p=
+A 00056df3 > >,>4>D>P>l>x>
+A 00056e19 ?$?0?L?T?`?|?
+A 00056e4b 0 0,040D0P0l0x0
+A 00056e71 1,1@1T1`1h1|1
+A 00056e95 2$2,282T2\2h2
+A 00056ebf 3(343<3L3X3t3
+A 00056ee3 4$40484h4|4
+A 00056f01 5 5<5H5d5l5x5
+A 00056f1f 6$606L6T6\6h6
+A 00056f49 7$7,747X7l7x7
+A 00056f6b 8$808L8X8`8
+A 00056f91 9$909L9T9`9|9
+A 00056fb7 :(:4:8:D:L:X:t:|:
+A 00056fd7 ;$;,;8;@;T;x;
+A 00056ff9 < <<<X<d<l<|<
+A 00057019 =$=0=8=h=t=|=
+A 0005703b > >P>d>p>x>
+A 00057055 ?$?,?8?@?p?|?
+A 00057087 0(040<0L0X0t0
+A 000570b1 1$1,1<1H1d1l1t1|1
+A 000570e3 2$2@2L2T2d2p2x2
+A 00057101 2 343@3H3x3
+A 0005711f 4$4H4\4h4p4
+A 0005713f 5$5,545H5\5h5p5
+A 00057165 6$606L6T6\6d6l6t6|6
+A 00057193 7$7,747<7H7d7p7
+A 000571bb 8,888T8`8|8
+A 000571d7 9 9<9X9l9x9
+A 000571f5 :,:4:<:D:L:T:\:d:l:t:|:
+A 0005721f ;(;0;D;T;\;d;l;|;
+A 00057245 <$<,<4<<<D<L<T<`<|<
+A 00057269 =$=,=4=H=T=\=l=x=
+A 00057291 >,>8>@>\>d>l>t>|>
+A 000572c3 ?$?4?@?H?l?t?|?
+A 000572ef 0$040@0H0x0
+A 00057311 1$10181\1d1l1
+A 00057331 2,242D2L2T2h2t2|2
+A 00057359 3(303L3T3p3
+A 0005737d 4$404L4T4`4|4
+A 0005739f 5@5T5`5|5
+A 000573cf 6$6,646<6D6L6T6\6d6l6t6|6
+A 0005740d 747<7D7L7T7\7d7l7t7
+A 00057437 8 8,848D8P8l8x8
+A 00057463 9$9,949@9\9h9
+A 00057485 :$:0:L:T:\:d:l:t:|:
+A 000574ad ;$;,;4;@;\;h;
+A 000574c9 <$<,<8<T<\<d<p<
+A 000574f1 =(=D=L=T=`=|=
+A 00057519 >(>D>L>X>t>|>
+A 00057539 ?$?,?4?<?D?P?l?t?|?
+A 0005756f 0$0,040<0D0L0T0`0|0
+A 000575a1 141<1D1P1l1x1
+A 000575bd 242@2\2d2p2
+A 000575df 343<3D3L3T3\3d3p3
+A 0005760f 4$4,484T4`4h4|4
+A 00057637 5$5,545<5D5L5T5\5d5l5t5|5
+A 0005765f 6 6<6D6L6T6`6|6
+A 00057683 7(7D7L7X7t7
+A 000576a1 8,848<8D8L8T8\8h8
+A 000576c9 9,949<9D9L9T9`9|9
+A 000576f5 :0:D:T:d:p:
+A 00057719 ;$;,;4;<;D;p;
+A 00057739 <,<8<T<\<h<
+A 00057759 =$=,=4=<=D=L=T=\=d=l=x=
+A 0005778d >$>0>L>T>\>d>l>t>|>
+A 000577c1 ?$?0?L?T?\?d?l?t?
+A 000577f3 0$0,040<0D0L0X0t0|0
+A 0005781d 1,141<1D1L1X1t1|1
+A 0005784d 2 2<2D2L2T2\2d2l2t2
+A 00057877 3(3D3P3l3x3
+A 00057893 4$4,4@4\4h4
+A 000578b3 5$5,545<5D5L5T5`5|5
+A 000578e9 6,646@6\6h6
+A 00057909 7(7D7L7T7\7d7l7x7
+A 00057933 848<8D8L8T8`8|8
+A 0005795b 9(9D9P9l9x9
+A 00057979 :,:4:@:\:h:
+A 00057997 ;,;8;T;`;h;
+A 000579b1 <,<4<<<D<P<X<t<|<
+A 000579d5 =$=,=4=<=D=L=T=\=d=l=t=|=
+A 00057a07 >$>,>4><>D>P>X>l>t>
+A 00057a2b ?,?P?\?d?t?
+A 00057a5b 0$0,040<0D0L0T0\0l0t0
+A 00057a89 1,141@1H1\1d1l1t1|1
+A 00057ab5 2$2,242<2D2h2|2
+A 00057adb 3,3P3d3p3x3
+A 00057afb 4$4,444<4D4L4T4\4d4l4t4|4
+A 00057b29 5$5,545<5H5d5p5
+A 00057b4b 6,686T6`6|6
+A 00057b65 6 747@7\7d7p7
+A 00057b85 888L8X8t8
+A 00057b9f 9 9<9D9p9
+A 00057bbf :0:D:T:d:p:
+A 00057be3 ;,;8;@;\;x;
+A 00057bfb < <(<h<|<
+A 00057c13 =$=4=@=H=
+A 00057c2b = >4>D>L>T>d>p>x>
+A 00057c49 ?$?,?4?<?D?L?T?`?|?
+A 00057c73 040<0D0L0T0\0d0p0x0
+A 00057c99 1(101D1T1t1
+A 00057cb3 2,2<2L2X2`2|2
+A 00057ccd 3,343@3\3h3
+A 00057ceb 4 4(4D4T4\4d4l4t4
+A 00057d15 5,585@5T5\5
+A 00057d3b 6@6T6`6h6|6
+A 00057d5b 707<7D7T7`7h7|7
+A 00057d83 8$8,848<8D8L8p8
+A 00057da7 9@9T9`9h9|9
+A 00057dc3 :,:8:@:T:d:
+A 00057de7 ;$;,;<;H;d;l;x;
+A 00057e09 <,<8<@<T<\<l<
+A 00057e27 =$=,=4=<=D=L=T=\=h=
+A 00057e4d > ><>D>L>X>t>
+A 00057e6b ?$?,?4?<?D?L?X?`?|?
+A 00057e9f 0$0,040<0D0L0T0\0l0t0|0
+A 00057ecb 1$1,141<1D1L1T1\1d1l1t1|1
+A 00057ef7 2 2<2H2d2l2t2
+A 00057f21 3(3D3P3l3x3
+A 00057f41 4(4D4P4l4t4
+A 00057f63 5(5D5L5T5\5d5l5t5|5
+A 00057f8f 6(6D6L6T6\6x6
+A 00057fad 7(7D7L7T7\7d7l7t7|7
+A 00057fdb 8$8@8T8`8|8
+A 00057ffb 9$90989T9\9d9
+A 0005801d :,:4:<:H:d:l:t:|:
+A 0005804f ;$;,;4;@;\;d;l;t;|;
+A 00058077 <$<,<8<T<\<d<l<x<
+A 0005809f =(=D=L=X=t=|=
+A 000580c7 >(>D>L>T>\>d>l>
+A 000580f1 ?4?<?D?L?T?\?d?p?
+A 00058121 0 0<0D0P0l0t0|0
+A 00058143 1 1<1D1P1l1t1|1
+A 0005816d 2$202L2X2t2
+A 0005818d 3 3<3H3d3l3t3|3
+A 000581b7 4(4D4L4T4\4d4l4t4|4
+A 000581e3 5 5(5<5D5L5T5\5d5l5t5
+A 0005820b 6(6D6P6l6x6
+A 00058227 7$7,787T7`7|7
+A 00058253 848@8\8d8l8t8|8
+A 0005827b 9$9,949<9D9P9l9x9
+A 000582a9 :$:,:4:@:\:d:l:t:|:
+A 000582dd ;(;D;L;T;\;d;p;
+A 00058309 < <<<D<L<T<\<h<
+A 00058331 = =<=D=L=T=\=d=l=t=|=
+A 00058361 >(>D>L>T>\>d>l>t>|>
+A 0005838f ?$?,?8?T?\?d?l?t?|?
+A 000583cb 0$000L0T0\0d0p0
+A 000583ef 1,141<1X1l1x1
+A 00058411 2$2,242<2D2L2T2p2
+A 00058437 3(3D3L3T3\3d3l3t3|3
+A 0005845d 4 4<4H4d4p4
+A 0005847b 5(5D5P5l5t5|5
+A 00058497 6(6D6P6l6t6|6
+A 000584bf 7$7,747<7D7L7T7`7|7
+A 000584eb 848<8H8d8l8t8
+A 0005850d 9 9<9D9P9l9x9
+A 0005853d 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00058581 101h1x1
+A 00058591 68:H:P:`:
+U 00038aa2 jjjj
+U 000512e0  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+U 00053a66 VS_VERSION_INFO
+U 00053ac2 StringFileInfo
+U 00053ae6 040904B0
+U 00053afe CompanyName
+U 00053b1e FileDescription
+U 00053b40 ediskdll DLL
+U 00053b62 FileVersion
+U 00053b7c 1, 0, 0, 1
+U 00053b9a InternalName
+U 00053bb4 ediskdll
+U 00053bce LegalCopyright
+U 00053bec Copyright (C) 1999
+U 00053c1a LegalTrademarks
+U 00053c42 OriginalFilename
+U 00053c64 ediskdll.DLL
+U 00053c86 ProductName
+U 00053ca0 ediskdll Dynamic Link Library
+U 00053ce2 ProductVersion
+U 00053d00 1, 0, 0, 1
+U 00053d1e VarFileInfo
+U 00053d3e Translation

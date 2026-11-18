@@ -1,0 +1,205 @@
+##### <PRESET_EASYSTITCH>Other Objects
+  [0x3f54 f=8192 list] (2)
+    [0x3f55 f=8192 list] (7)
+      [0x3f57 f=8192 double] = 32400.0
+      [0x3f58 f=8192 double] = 900.0
+      [0x3f59 f=8192 long] = 1
+      [0x3f5a f=8192 double] = 36.0
+      [0x3f5b f=8192 long] = 0
+      [0x3f60 f=8192 long] = 0
+      [0x3f61 f=8192 long] = 0
+    [0x3f56 f=8192 list] (15)
+      [0x3f75 f=8192 list] (2)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 54.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 360.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_2>'
+      [0x3f76 f=8192 list] (3)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 1440.0
+          [0x3fa2 f=8192 str] = '<PRESET_SATIN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 2160.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 500000.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_2>'
+      [0x3f62 f=8192 long] = 1
+      [0x3f63 f=8192 double] = 180.0
+      [0x3f64 f=8192 long] = 1
+      [0x3f65 f=8192 long] = 1
+      [0x3f66 f=8192 double] = 32400.0
+      [0x3f67 f=8192 double] = 0.0
+      [0x3f68 f=8192 long] = 0
+      [0x3f69 f=8192 double] = 27000.0
+      [0x3f6a f=8192 long] = 0
+      [0x3f6b f=8192 double] = 0.0
+      [0x3f99 f=8192 double] = 540.0
+      [0x3f9a f=8192 double] = 180.0
+      [0x3f9b f=8192 double] = 2160.0
+##### <PRESET_EASYSTITCH>Wide Objects
+  [0x3f54 f=8192 list] (2)
+    [0x3f55 f=8192 list] (7)
+      [0x3f57 f=8192 double] = 32400.0
+      [0x3f58 f=8192 double] = 900.0
+      [0x3f59 f=8192 long] = 1
+      [0x3f5a f=8192 double] = 36.0
+      [0x3f5b f=8192 long] = 0
+      [0x3f60 f=8192 long] = 0
+      [0x3f61 f=8192 long] = 0
+    [0x3f56 f=8192 list] (15)
+      [0x3f75 f=8192 list] (2)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 54.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 360.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_2>'
+      [0x3f76 f=8192 list] (3)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 1440.0
+          [0x3fa2 f=8192 str] = '<PRESET_SATIN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 2160.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 500000.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_2>'
+      [0x3f62 f=8192 long] = 1
+      [0x3f63 f=8192 double] = 180.0
+      [0x3f64 f=8192 long] = 1
+      [0x3f65 f=8192 long] = 1
+      [0x3f66 f=8192 double] = 32400.0
+      [0x3f67 f=8192 double] = 0.0
+      [0x3f68 f=8192 long] = 0
+      [0x3f69 f=8192 double] = 27000.0
+      [0x3f6a f=8192 long] = 0
+      [0x3f6b f=8192 double] = 0.0
+      [0x3f99 f=8192 double] = 540.0
+      [0x3f9a f=8192 double] = 180.0
+      [0x3f9b f=8192 double] = 2160.0
+##### <PRESET_EASYSTITCH>Narrow Objects
+  [0x3f54 f=8192 list] (2)
+    [0x3f55 f=8192 list] (7)
+      [0x3f57 f=8192 double] = 32400.0
+      [0x3f58 f=8192 double] = 900.0
+      [0x3f59 f=8192 long] = 1
+      [0x3f5a f=8192 double] = 36.0
+      [0x3f5b f=8192 long] = 0
+      [0x3f60 f=8192 long] = 0
+      [0x3f61 f=8192 long] = 0
+    [0x3f56 f=8192 list] (15)
+      [0x3f75 f=8192 list] (2)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 54.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 360.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_2>'
+      [0x3f76 f=8192 list] (3)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 1440.0
+          [0x3fa2 f=8192 str] = '<PRESET_SATIN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 2160.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 500000.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_2>'
+      [0x3f62 f=8192 long] = 1
+      [0x3f63 f=8192 double] = 180.0
+      [0x3f64 f=8192 long] = 1
+      [0x3f65 f=8192 long] = 1
+      [0x3f66 f=8192 double] = 32400.0
+      [0x3f67 f=8192 double] = 0.0
+      [0x3f68 f=8192 long] = 0
+      [0x3f69 f=8192 double] = 27000.0
+      [0x3f6a f=8192 long] = 0
+      [0x3f6b f=8192 double] = 0.0
+      [0x3f99 f=8192 double] = 540.0
+      [0x3f9a f=8192 double] = 180.0
+      [0x3f9b f=8192 double] = 2160.0
+##### <PRESET_EASYSTITCH>Thin Lines
+  [0x3f54 f=8192 list] (2)
+    [0x3f55 f=8192 list] (7)
+      [0x3f57 f=8192 double] = 32400.0
+      [0x3f58 f=8192 double] = 900.0
+      [0x3f59 f=8192 long] = 1
+      [0x3f5a f=8192 double] = 36.0
+      [0x3f5b f=8192 long] = 0
+      [0x3f60 f=8192 long] = 0
+      [0x3f61 f=8192 long] = 0
+    [0x3f56 f=8192 list] (15)
+      [0x3f75 f=8192 list] (2)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 54.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 360.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_2>'
+      [0x3f76 f=8192 list] (3)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 1440.0
+          [0x3fa2 f=8192 str] = '<PRESET_SATIN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 2160.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 500000.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_2>'
+      [0x3f62 f=8192 long] = 1
+      [0x3f63 f=8192 double] = 180.0
+      [0x3f64 f=8192 long] = 1
+      [0x3f65 f=8192 long] = 1
+      [0x3f66 f=8192 double] = 32400.0
+      [0x3f67 f=8192 double] = 0.0
+      [0x3f68 f=8192 long] = 0
+      [0x3f69 f=8192 double] = 27000.0
+      [0x3f6a f=8192 long] = 0
+      [0x3f6b f=8192 double] = 0.0
+      [0x3f99 f=8192 double] = 540.0
+      [0x3f9a f=8192 double] = 180.0
+      [0x3f9b f=8192 double] = 2160.0
+##### <PRESET_EASYSTITCH>Thick Lines
+  [0x3f54 f=8192 list] (2)
+    [0x3f55 f=8192 list] (7)
+      [0x3f57 f=8192 double] = 32400.0
+      [0x3f58 f=8192 double] = 900.0
+      [0x3f59 f=8192 long] = 1
+      [0x3f5a f=8192 double] = 36.0
+      [0x3f5b f=8192 long] = 0
+      [0x3f60 f=8192 long] = 0
+      [0x3f61 f=8192 long] = 0
+    [0x3f56 f=8192 list] (15)
+      [0x3f75 f=8192 list] (2)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 54.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 360.0
+          [0x3fa2 f=8192 str] = '<PRESET_RUN_2>'
+      [0x3f76 f=8192 list] (3)
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 1440.0
+          [0x3fa2 f=8192 str] = '<PRESET_SATIN_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 2160.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_1>'
+        [0x0000 f=8192 list] (2)
+          [0x3f77 f=8192 double] = 500000.0
+          [0x3fa2 f=8192 str] = '<PRESET_TATAMI_2>'
+      [0x3f62 f=8192 long] = 1
+      [0x3f63 f=8192 double] = 180.0
+      [0x3f64 f=8192 long] = 1
+      [0x3f65 f=8192 long] = 1
+      [0x3f66 f=8192 double] = 32400.0
+      [0x3f67 f=8192 double] = 0.0
+      [0x3f68 f=8192 long] = 0
+      [0x3f69 f=8192 double] = 27000.0
+      [0x3f6a f=8192 long] = 0
+      [0x3f6b f=8192 double] = 0.0
+      [0x3f99 f=8192 double] = 540.0
+      [0x3f9a f=8192 double] = 180.0
+      [0x3f9b f=8192 double] = 2160.0

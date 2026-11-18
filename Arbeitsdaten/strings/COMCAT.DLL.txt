@@ -1,0 +1,158 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.data
+A 000001c8 .rsrc
+A 000001ef @.reloc
+A 00000240 ole32.dll
+A 0000024a KERNEL32.dll
+A 00000257 USER32.dll
+A 00000262 ADVAPI32.dll
+A 0000117b wComponent Categories
+A 000011f8 ThreadingModel
+A 00001210 comcat.DLL
+A 0000121c InprocServer32
+A 0000122c Component Categories Manager
+A 0000124c CLSID\{0002E005-0000-0000-C000-000000000046}
+A 00001280 CLSID\{0002E005-0000-0000-C000-000000000046}\InprocServer32
+A 000012bc OldKey
+A 000013e8 %s\%S
+A 000013f0 %S\%S\%S
+A 000013fc Required Categories
+A 00001414 Implemented Categories
+A 0000142c CLSID
+A 00001881 SVWhdU
+A 00001ca1 |cuPh
+A 00002735 W9=hU
+A 000027dd wt9j(
+A 00002818 dWWWWj
+A 00002841 WCWSPj
+A 00002ad7 PPPRh
+A 00002b61 SSSRh
+A 00002bc9 SSSRh
+A 00002d9b tBSGS
+A 00002f7c WWWWj
+A 00002fba WWVSj
+A 00003728 WWWWj
+A 00003766 WWSVj
+A 000037fa VVQVVVVVV
+A 0000383d VVQPV
+A 000038b7 QSSSP
+A 000038fc QSSSR
+A 00003923 SSSQRV
+A 0000399f QVVVR
+A 000039d7 QVVVR
+A 000039fb QQQRSQ
+A 00003d22 CoTaskMemFree
+A 00003d32 CLSIDFromString
+A 00003d44 CoTaskMemAlloc
+A 00003d56 StringFromGUID2
+A 00003d68 StringFromCLSID
+A 00003d78 ole32.dll
+A 00003d84 InterlockedIncrement
+A 00003d9c InterlockedDecrement
+A 00003db4 MultiByteToWideChar
+A 00003dca WideCharToMultiByte
+A 00003de0 lstrlenA
+A 00003dec GetModuleFileNameA
+A 00003e02 GetModuleHandleA
+A 00003e16 IsBadWritePtr
+A 00003e26 lstrlenW
+A 00003e32 IsBadReadPtr
+A 00003e42 GetUserDefaultLCID
+A 00003e58 GlobalAlloc
+A 00003e66 GlobalFree
+A 00003e72 KERNEL32.dll
+A 00003e82 wsprintfA
+A 00003e8c USER32.dll
+A 00003e9a RegCloseKey
+A 00003ea8 RegOpenKeyA
+A 00003eb6 RegEnumKeyA
+A 00003ec4 RegOpenKeyW
+A 00003ed2 RegSetValueExA
+A 00003ee4 RegCreateKeyExA
+A 00003ef6 RegDeleteKeyA
+A 00003f06 RegSetValueExW
+A 00003f18 RegCreateKeyExW
+A 00003f2a RegOpenKeyExA
+A 00003f3a RegQueryValueExA
+A 00003f4e RegEnumValueA
+A 00003f5e RegQueryInfoKeyA
+A 00003f70 ADVAPI32.dll
+A 00003fd0 COMCAT.dll
+A 00003fdb DllCanUnloadNow
+A 00003feb DllGetClassObject
+A 00003ffd DllRegisterServer
+A 0000400f DllUnregisterServer
+A 00005208 `1d1h1l1p1t1x1
+A 0000523b 1(3,30383<3@3D3H3L3P3T3X3`3d3h3l3p3t3x3|3
+A 00005299 5'535:5
+A 000052a7 6\6e6
+A 000052bb 8-898c8i8w8
+A 000052cd 9:9E9_9
+A 000052e1 ;:;M;d;p;
+A 000052fd <4=`=
+A 00005305 >F>N>a>
+A 00005311 ?(?;?N?o?
+A 00005324 #0+030@0Y0e0
+A 00005341 1!1,141
+A 00005357 22282J2Y2_2l2u2
+A 00005379 3!313:3P3W3r3{3
+A 00005397 4!4'4-434
+A 000053a9 5#5=5P5~5
+A 000053bb 6*6:6E6R6
+A 000053cf 7)787W7p7
+A 000053e3 8$8M8V8k8
+A 000053f5 9N9Y9y9
+A 0000540b :?:X:v:
+A 00005417 ;);A;l;y;
+A 0000542d <E<^<|<
+A 00005439 =%=@=]=l=
+A 0000544b >1>[>s>
+A 00005457 ?)?@?K?Z?
+A 0000547b 0'0H0}0
+A 0000548d 202G2
+A 00005497 313H3q3
+A 000054a5 3%4@4j4
+A 000054b3 4I5_5u5
+A 000054c5 6-6K6
+A 000054d3 757P7Y7s7
+A 000054e7 8G8^8
+A 000054f9 9.9K9
+A 0000550f : :/:N:b:k:w:
+A 00005528 p5t5x5|5
+A 0000560c dll\comcat.dbg
+U 000011ec CLSID
+U 000012c4 Required Categories
+U 000012ec Implemented Categories
+U 0000131c CLSID
+U 00004214 Embeddable Objects
+U 00004328 Controls
+U 0000443c Automation Objects
+U 00004550 Document Objects
+U 00004664 _Printable Objects
+U 0000479c Insertable
+U 000048b0 Control
+U 000049c4 Programmable
+U 00004ad8 DocObject
+U 00004bec Printable
+U 00004e66 VS_VERSION_INFO
+U 00004ec2 StringFileInfo
+U 00004ee6 040904B0
+U 00004efe CompanyName
+U 00004f18 Microsoft Corporation
+U 00004f4a FileDescription
+U 00004f6c Microsoft Component Category Manager Library
+U 00004fce FileVersion
+U 00004fe8 4.71
+U 00004ffa InternalName
+U 00005014 comcat.dll
+U 00005032 LegalCopyright
+U 00005050 Copyright (C) Microsoft Corp. 1981-1996
+U 000050a6 OriginalFilename
+U 000050c8 comcat.dll
+U 000050e6 ProductName
+U 00005100 Microsoft(R) Windows NT(R) Operating System
+U 0000515e ProductVersion
+U 0000517c 4.71
+U 0000518e VarFileInfo
+U 000051ae Translation

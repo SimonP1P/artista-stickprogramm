@@ -1,0 +1,288 @@
+1000,Madeira 40,Black,A,0,0,0
+1001,Madeira 40,Chrome,A,230,230,230
+1002,Madeira 40,Steel Gray,A,220,220,220
+1003,Madeira 40,Silver Gray ,A,215,215,215
+1010,Madeira 40,Apollo Gray,A,230,225,225
+1011,Madeira 40,Constellation Gray,A,190,205,205
+1012,Madeira 40,Windsor Silver,A,195,195,195
+1013,Madeira 40,Peach Mist,A,246,213,204
+1014,Madeira 40,Tender Pink,A,255,230,240
+1015,Madeira 40,Misty Heather,A,240,220,215
+1016,Madeira 40,Coral Tangerine,A,230,175,140
+1017,Madeira 40,Pink Bisque,A,242,188,177
+1018,Madeira 40,Beige,A,222,202,182
+1019,Madeira 40,Amber Beige,A,220,182,145
+1020,Madeira 40,Pink Toast,A,226,153,107
+1021,Madeira 40,Rust,A,230,129,66
+1022,Madeira 40,Pale Sand,A,244,231,184
+1023,Madeira 40,Daffodil,A,237,220,120
+1024,Madeira 40,Ginger,A,235,197,109
+1025,Madeira 40,Sandy Bronze,A,215,164,97
+1026,Madeira 40,Topaz,A,255,228,142
+1027,Madeira 40,Blue Gray,A,180,190,215
+1028,Madeira 40,Rural Blue,A,124,153,193
+1029,Madeira 40,Sharon Blue,A,140,158,231
+1030,Madeira 40,Oriental Sapphire,A,229,229,255
+1031,Madeira 40,Pale Mauve,A,228,204,228
+1032,Madeira 40,Mauve Iris,A,155,122,191
+1033,Madeira 40,Purple Rasp,A,105,0,130
+1034,Madeira 40,Midnight Rose,A,164,66,128
+1035,Madeira 40,Port Wine,A,130,50,90
+1036,Madeira 40,Dogwood,A,95,40,0
+1037,Madeira 40,Cabaret Red,A,206,0,64
+1038,Madeira 40,Dark Terra Cotta,A,158,66,51
+1039,Madeira 40,Plum Red,A,180,60,50
+1040,Madeira 40,Pewter Gray,A,180,175,170
+1041,Madeira 40,Dark Blue Gray,A,70,85,120
+1042,Madeira 40,Artic Midnight,A,51,0,131
+1043,Madeira 40,Twilight Blue,A,0,0,75
+1044,Madeira 40,Deep Water,A,80,75,80
+1045,Madeira 40,Pale Mint,A,148,186,169
+1046,Madeira 40,Old Moss,A,115,170,140
+1047,Madeira 40,Mint,A,180,213,180
+1048,Madeira 40,Pastoral Green,A,175,208,137
+1049,Madeira 40,Sage,A,126,173,100
+1050,Madeira 40,Olive Green,A,104,124,60
+1051,Madeira 40,Emerald,A,20,90,50
+1052,Madeira 40,Verdant Teal ,A,0,77,75
+1053,Madeira 40,Pale Orange Peach,A,250,191,158
+1054,Madeira 40,Burgandy Fawn,A,197,146,138
+1055,Madeira 40,Golden Morn,A,215,195,150
+1056,Madeira 40,Tarnish,A,170,140,90
+1057,Madeira 40,Rattan,A,150,113,82
+1058,Madeira 40,Coffee Bean,A,100,56,60
+1059,Madeira 40,Twilight Brown,A,80,51,0
+1060,Madeira 40,Saturn Gray,A,210,210,210
+1061,Madeira 40,Pale Canary ,A,244,239,180
+1062,Madeira 40,Cinder Gray,A,150,150,150
+1063,Madeira 40,Stormy Gray,A,130,130,130
+1064,Madeira 40,Pale Honey,A,233,217,137
+1065,Madeira 40,Copper Mustard,A,206,157,104
+1066,Madeira 40,Wheat,A,230,206,157
+1067,Madeira 40,Golden Wheat,A,246,237,175
+1068,Madeira 40,Honey Mustard,A,235,202,87
+1069,Madeira 40,Yellow Copper,A,240,204,51
+1070,Madeira 40,Ginger,A,208,189,115
+1071,Madeira 40,White,A,255,255,255
+1073,Madeira 40,Pebblestone,A,220,240,220
+1074,Madeira 40,Lois Cerulean,A,200,204,230
+1075,Madeira 40,Sun Blue,A,184,195,224
+1076,Madeira 40,Azure Navy,A,102,66,191
+1078,Madeira 40,Carrot,A,255,153,51
+1079,Madeira 40,Green Bay,A,0,110,50
+1080,Madeira 40,Red Mauve,A,185,122,165
+1081,Madeira 40,Antique Rouge,A,190,40,60
+1082,Madeira 40,Tan Bisque,A,195,185,175
+1083,Madeira 40,Yellow Marigold,A,250,226,122
+1084,Madeira 40,Dark Taupe,A,204,184,162
+1085,Madeira 40,Taupish Gray,A,190,180,170
+1086,Madeira 40,Overcast Gray,A,215,215,215
+1087,Madeira 40,Pepper Gray,A,190,185,185
+1088,Madeira 40,Misty Green,A,129,202,195
+1089,Madeira 40,Mint Julep,A,177,213,204
+1090,Madeira 40,Dark Mint,A,0,80,75
+1091,Madeira 40,Mallard Blue,A,0,97,126
+1092,Madeira 40,Verdant China,A,204,226,215
+1093,Madeira 40,Green Pearl,A,151,210,206
+1094,Madeira 40,Torquoise ,A,90,177,197
+1095,Madeira 40,Torquoise Mist,A,89,173,206
+1096,Madeira 40,Dolphin Blue,A,0,120,180
+1097,Madeira 40,Mint  ,A,185,220,190
+1099,Madeira 40,Verdant Mist,A,188,213,190
+1100,Madeira 40,Pastel Green,A,193,219,189
+1101,Madeira 40,Petal Green,A,111,158,78
+1103,Madeira 40,Dark Olive Green,A,0,73,51
+1104,Madeira 40,Pale Spruce,A,205,235,150
+1105,Madeira 40,Olive Maize,A,211,208,155
+1106,Madeira 40,Green Palmetto ,A,122,140,51
+1107,Madeira 40,Dark Tangerine,A,235,130,80
+1108,Madeira 40,Pink Salmon,A,228,153,180
+1109,Madeira 40,Middle Lilac,A,206,98,151
+1110,Madeira 40,Waratah Red,A,195,47,98
+1111,Madeira 40,Purple Whisp,A,208,200,208
+1112,Madeira 40,Regal Purple,A,150,95,160
+1113,Madeira 40,Pale Brown,A,226,190,160
+1114,Madeira 40,Pink Flesh,A,250,215,210
+1115,Madeira 40,Bisque Flesh,A,224,191,168
+1116,Madeira 40,Rose Hue,A,226,189,213
+1117,Madeira 40,Hot Pink,A,255,115,162
+1118,Madeira 40,Pale Soot,A,180,180,170
+1119,Madeira 40,Cranberry,A,165,35,70
+1120,Madeira 40,Heather Fog,A,222,208,222
+1121,Madeira 40,Purple Mist,A,222,182,202
+1122,Madeira 40,Deep Purple,A,105,42,130
+1123,Madeira 40,Maize,A,255,255,220
+1124,Madeira 40,Topaz,A,235,204,133
+1125,Madeira 40,Mariner's Gold,A,239,200,109
+1126,Madeira 40,Gray Tan,A,177,157,115
+1127,Madeira 40,Tan  ,A,206,175,146
+1128,Madeira 40,Taupe,A,205,184,160
+1129,Madeira 40,Smoky Black,A,0,46,60
+1130,Madeira 40,Midnight Mahogany,A,60,29,0
+1131,Madeira 40,Black,A,0,0,0
+1132,Madeira 40,Albino Cerulean,A,213,229,255
+1133,Madeira 40,Ashen Blue,A,128,151,220
+1134,Madeira 40,Salem Blue,A,0,53,155
+1135,Madeira 40,Canary,A,255,240,90
+1136,Madeira 40,Oyster Brown,A,173,160,135
+1137,Madeira 40,Copper,A,225,164,93
+1138,Madeira 40,Gray Taupe,A,217,200,160
+1140,Madeira 40,Holly,A,135,155,75
+1141,Madeira 40,Creamy Grape,A,193,144,130
+1142,Madeira 40,Fawn,A,202,191,180
+1143,Madeira 40,Azure,A,175,165,255
+1144,Madeira 40,Pewter Tan,A,145,135,115
+1145,Madeira 40,Espresso,A,90,60,50
+1146,Madeira 40,Slight Orange Rouge,A,217,56,77
+1147,Madeira 40,Wine,A,186,0,67
+1148,Madeira 40,Desert Bloom,A,230,175,185
+1149,Madeira 40,Seashell,A,206,197,180
+1150,Madeira 40,Pale Oak,A,193,211,148
+1152,Madeira 40,Cream Tangerine,A,255,173,135
+1153,Madeira 40,Blue Chrome,A,200,210,215
+1154,Madeira 40,Bitteroot,A,210,104,120
+1155,Madeira 40,Yellow Copper,A,217,173,204
+1156,Madeira 40,Olive Sage,A,122,122,51
+1157,Madeira 40,Dark Palmetto,A,110,120,80
+1158,Madeira 40,Mushroom Brown,A,137,91,75
+1159,Madeira 40,Orange Hazel,A,222,195,128
+1160,Madeira 40,Imperial Teal,A,42,95,135
+1161,Madeira 40,Deep Forest,A,45,55,30
+1162,Madeira 40,Windsor ,A,0,51,82
+1166,Madeira 40,Cerulean,A,51,0,122
+1167,Madeira 40,Epaulet Blue,A,0,0,120
+1168,Madeira 40,Kilkenny Green,A,157,200,105
+1169,Madeira 40,Khaki Olive,A,130,160,86
+1170,Madeira 40,Holly,A,97,135,80
+1171,Madeira 40,Golden Shimmer,A,230,189,117
+1172,Madeira 40,Mustard,A,233,188,109
+1173,Madeira 40,Copper  ,A,210,128,64
+1174,Madeira 40,Coffee Brown,A,110,60,40
+1175,Madeira 40,Foreshore Blue,A,124,146,189
+1176,Madeira 40,Blue Teal,A,86,129,166
+1177,Madeira 40,Sapphire,A,86,106,200
+1178,Madeira 40,Orange Hazel,A,210,140,51
+1179,Madeira 40,Burnt Orange,A,222,218,84
+1180,Madeira 40,Dusty Lemon,A,233,197,131
+1181,Madeira 40,Redwood,A,170,80,97
+1182,Madeira 40,Scarlet Passion,A,160,45,30
+1183,Madeira 40,Dark Fuschia,A,186,0,124
+1184,Madeira 40,Berry Red,A,200,60,90
+1185,Madeira 40,Field Green,A,0,86,84
+1186,Madeira 40,Scarlet,A,200,0,50
+1187,Madeira 40,Wildfire,A,184,42,84
+1188,Madeira 40,Plum Wine,A,153,0,180
+1190,Madeira 40,Khaki Green,A,155,153,102
+1191,Madeira 40,Autumn Green,A,168,150,102
+1192,Madeira 40,Bullion,A,193,169,120
+1221,Madeira 40,Cranberry,A,180,53,42
+1223,Madeira 40,Bright Canary,A,255,236,110
+1224,Madeira 40,Orange Beige,A,233,209,160
+1225,Madeira 40,Ancient Gold,A,209,169,95
+1226,Madeira 40,Almond,A,219,160,106
+1227,Madeira 40,Sea Green,A,113,149,148
+1232,Madeira 40,Misty Lilac,A,200,170,215
+1233,Madeira 40,Purple Twilight,A,80,50,80
+1234,Madeira 40,Cherry Red,A,224,35,78
+1235,Madeira 40,Lilac Twist,A,195,130,195
+1236,Madeira 40,Twilight Maroon,A,62,20,62
+1238,Madeira 40,Scarlet Brown,A,118,60,36
+1239,Madeira 40,Charcoal,A,75,70,75
+1240,Madeira 40,Sulfur Soot,A,120,110,85
+1241,Madeira 40,Dark Chrome,A,90,80,50
+1242,Madeira 40,Reveille Blue,A,0,0,110
+1243,Madeira 40,Light Navy,A,0,0,102
+1244,Madeira 40,Midnight Navy,A,0,0,51
+1245,Madeira 40,Ming Green,A,115,166,120
+1246,Madeira 40,Paddock,A,0,140,120
+1247,Madeira 40,Newport Green,A,40,160,120
+1248,Madeira 40,Erin Green,A,160,195,93
+1249,Madeira 40,Kilkenny Green,A,56,144,56
+1250,Madeira 40,Lily Green,A,0,80,0
+1251,Madeira 40,Green Grass,A,0,140,80
+1252,Madeira 40,Dark Olive Green,A,45,80,95
+1253,Madeira 40,Light Bronze,A,199,140,77
+1254,Madeira 40,Bamboo,A,237,182,128
+1259,Madeira 40,Golden Tan,A,133,111,97
+1260,Madeira 40,Pale Topaz,A,220,202,158
+1270,Madeira 40,Vanillla Gold,A,242,213,138
+1278,Madeira 40,Orange,A,255,142,51
+1279,Madeira 40,Green Forest,A,0,109,100
+1280,Madeira 40,Amazon Canopy,A,0,93,80
+1281,Madeira 40,Ruby Shadow,A,175,40,70
+1289,Madeira 40,Teal Mint,A,106,166,160
+1290,Madeira 40,Midnight Green,A,0,50,0
+1291,Madeira 40,Garden Green,A,0,70,75
+1292,Madeira 40,Pale Moss,A,191,222,184
+1293,Madeira 40,Evergreen,A,0,85,80
+1294,Madeira 40,Blue Jay,A,0,113,175
+1295,Madeira 40,Mystic Torquoise,A,0,140,170
+1296,Madeira 40,Dark Blue  ,A,0,60,100
+1297,Madeira 40,Ozone,A,0,100,160
+1298,Madeira 40,Blue Spruce,A,0,105,100
+1299,Madeira 40,Pale Wintergreen,A,115,168,146
+1301,Madeira 40,Blarney,A,38,142,67
+1302,Madeira 40,Green Oak,A,137,180,137
+1303,Madeira 40,Midnight Express,A,50,50,50
+1304,Madeira 40,Evergreen,A,0,85,70
+1305,Madeira 40,Brown Taupe,A,208,200,170
+1306,Madeira 40,Winter Green,A,115,150,115
+1307,Madeira 40,Red Rust,A,230,82,62
+1309,Madeira 40,Middle Berry,A,200,115,140
+1310,Madeira 40,Mulberry,A,160,0,100
+1311,Madeira 40,Berry Dusk,A,160,130,170
+1312,Madeira 40,Dark Indigo Ribbon,A,50,30,100
+1313,Madeira 40,Purple Evening,A,80,50,90
+1315,Madeira 40,Dusty Flamingo,A,230,190,170
+1317,Madeira 40,Mountain Heather,A,235,195,185
+1318,Madeira 40,Ink ,A,80,60,80
+1319,Madeira 40,Purple,A,153,0,153
+1320,Madeira 40,Intense Purple,A,95,45,95
+1321,Madeira 40,Lavender Plum,A,215,182,200
+1322,Madeira 40,Purple Majesty,A,110,75,135
+1329,Madeira 40,Mourning Brown,A,131,115,87
+1330,Madeira 40,Purple Mist,A,140,110,160
+1334,Madeira 40,Medium Purple,A,90,42,120
+1335,Madeira 40,Bluish Purple,A,155,125,210
+1336,Madeira 40,Earthen Tan,A,151,122,97
+1338,Madeira 40,Brown Topaz,A,186,175,115
+1340,Madeira 40,Cypress,A,175,190,95
+1341,Madeira 40,Burgandy Cream,A,190,135,140
+1343,Madeira 40,Purple Ink,A,110,80,120
+1344,Madeira 40,Rattan,A,155,145,115
+1350,Madeira 40,Desert Grass,A,195,190,95
+1354,Madeira 40,Stormy Pink,A,204,117,155
+1357,Madeira 40,Military Fatigue,A,40,60,40
+1358,Madeira 40,Brown Rattan,A,138,90,70
+1359,Madeira 40,Orange Topaz,A,239,202,128
+1360,Madeira 40,Dark Teal,A,110,130,150
+1362,Madeira 40,Purple Chrome,A,118,80,118
+1363,Madeira 40,Misty Blue,A,130,165,175
+1364,Madeira 40,Blue Teal,A,62,62,107
+1365,Madeira 40,Mariner Blue,A,50,70,120
+1366,Madeira 40,Intense Purple,A,115,80,150
+1369,Madeira 40,Village Square,A,0,91,51
+1370,Madeira 40,Verdant Evening,A,20,50,20
+1371,Madeira 40,Military Green,A,0,50,50
+1374,Madeira 40,Burgandy,A,140,51,75
+1375,Madeira 40,Azure Gray,A,120,153,202
+1376,Madeira 40,Twilight   ,A,0,0,90
+1378,Madeira 40,Coldstream Scarlet,A,200,0,50
+1380,Madeira 40,Jungle,A,50,144,115
+1381,Madeira 40,Berry Red,A,170,50,60
+1382,Madeira 40,Grape,A,117,47,78
+1383,Madeira 40,Ruby,A,160,47,98
+1384,Madeira 40,Purple Cherry,A,150,45,80
+1385,Madeira 40,Plum Wine,A,125,50,95
+1386,Madeira 40,Smoky Grape,A,95,40,70
+1387,Madeira 40,Mauve,A,171,118,213
+1388,Madeira 40,Royal Purple,A,102,0,102
+1389,Madeira 40,Dark Maroon,A,102,25,75
+1390,Madeira 40,County Green,A,0,60,60
+1391,Madeira 40,Dark Pine,A,0,70,70
+1392,Madeira 40,Winter Ocean,A,118,138,118
+1393,Madeira 40,Olive Hedge,A,80,80,30
+1394,Madeira 40,Dark Green,A,65,95,30
+1395,Madeira 40,Underground Olive,A,80,100,80
+1396,Madeira 40,Ivy,A,87,122,98
+1397,Madeira 40,Twilight Green,A,0,40,40

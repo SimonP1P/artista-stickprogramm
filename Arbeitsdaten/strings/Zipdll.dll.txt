@@ -1,0 +1,751 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.rdata
+A 000001c7 @.data
+A 000001f0 .idata
+A 00000218 .rsrc
+A 0000023f @.reloc
+A 00000bdc D$(+l$
+A 00000f22 tW9L$
+A 00001762 AF9A6t	P
+A 0000179b 9A:t	P
+A 000017f8 PQh@S
+A 00001b39 jQPh$Z
+A 00001f77 |$(Pj
+A 0000204f D$(9D$0
+A 000024fc C6VVP
+A 00002549 095,i
+A 00002562 C6PhlV
+A 000026ea D$0;D$
+A 0000292b t0hdU
+A 00002a7b G6PVj
+A 00002a91 G6PVj
+A 00002b3c G>9G:t	P
+A 00002e45 D$(RPWV
+A 00002f16 unh`S
+A 00002f43 Pt8hHS
+A 000030ee tsh,\
+A 000031f7 t&h0>
+A 00003330 D$8SV
+A 000033cd L$LPQ
+A 000033f2 D$Ldi
+A 00003aaf t%=PK
+A 00003b54 @Ph4`
+A 0000409b 9C u*
+A 000048af NFWSj
+A 00004cc2 NFWSj
+A 00004d23 t$ WUVjP
+A 00004e55 D$$VSj
+A 0000527b FFFFFF
+A 000054a7 SVWU~
+A 00005877 SVWUt0
+A 00005a93 H<QRhXf
+A 00005f10 ItxjQ
+A 00006729 L$4VWU
+A 00006730 l$DPUQ
+A 0000684f u)9\$
+A 00006922 t#hH2
+A 00006973 L$@PQ
+A 000069ae D$"f9
+A 000069bc D$$f9
+A 000069f5 t&9\$
+A 00006c57 SVWU3
+A 00006c5e |$8PW
+A 00006c88 D$<WP
+A 00006cfa u1h$h
+A 00006f30 SVWUh
+A 0000723d PWVhhk
+A 0000726b VUSh$k
+A 00007441 \$<U3
+A 00007469 L$4,/Q
+A 00007482 D$ PQ
+A 000074dc C>9C:t	P
+A 0000765d T$ QRj
+A 0000766f K6j@h
+A 00007870 t5WUj
+A 000078c5 CFPhLl
+A 00007915 C6Ph(l
+A 000079b0 ;D$ t&
+A 000079be +D$ PVh
+A 00007a60 C:9C>t	P
+A 00007bd7 SVWUu/
+A 00008d88 SVWUPh
+A 00008e2a tEj/V
+A 00008e86 tB9D$
+A 000091c7 </t4<:t0
+A 00009512 ,SVWU
+A 0000989f {J9-ti
+A 00009966 t%WVh
+A 00009bdc L$4PQ
+A 00009d7a T$0RP
+A 0000a537 D$(]_^[
+A 0000a54f t$$]_^[
+A 0000a567 t$$]_^[
+A 0000a57b t$$]_^[
+A 0000a8a3 t$$]_^[
+A 0000a8e5 D$(]_^[
+A 0000a8f9 t$$]_^[
+A 0000a911 t$$]_^[
+A 0000a925 t$$]_^[
+A 0000b133 SVWU3
+A 0000b24c Pj@QR
+A 0000b4af L$@RP
+A 0000b873 t"UWV
+A 0000b8b1 u"UWV
+A 0000c048 D$(]_^[
+A 0000c3ec \$$SRQP
+A 0000c408 l$$URQP
+A 0000c4af L$XRP
+A 0000c4f5 |$X-u
+A 0000c5ab D$4+D$8+
+A 0000c5cc T$ PQRj 
+A 0000c617 T$ PQRj0
+A 0000c6aa T$ PQRj 
+A 0000c8e2 DSVWUh
+A 0000cf55 																								
+A 0000cf6e 													
+A 0000cf7e 													
+A 0000cf8d 										
+A 0000cf98 					
+A 0000d1be \$hWU
+A 0000d212 L$ UP
+A 0000d6df |$ {u
+A 0000d72a D$(8D$
+A 0000d749 :D$Dw*
+A 0000d772 P8D$Ds
+A 0000d7b3 |$ {u
+A 0000d809 P2D$8
+A 0000d913 +u Nu
+A 0000d95d |$ xt
+A 0000d9b0 |$ xuY
+A 0000da3d |$ ou"
+A 0000dab8 D$4PR
+A 0000dabe D$@PQ
+A 0000db5a |$ xtM
+A 0000db61 |$ ptF
+A 0000db91 |$ ou
+A 0000dc42 |$ Fu
+A 0000dd5c D$H]_^[
+A 0000dd6b D$H]_^[
+A 0000e310 .;\$(u
+A 0000e406 SVWU3
+A 0000e5eb D$ ]+
+A 0000e60a SVWUuL
+A 0000e6c1 PQj	W
+A 0000e6e9 L$ VPQj
+A 0000e6fd L$$QP
+A 0000e703 D$ VP
+A 0000e7fa uGjtj
+A 0000e916 t$0WU
+A 0000eb96 SVWU3
+A 0000ebd4 f9l$V
+A 0000ed50 ;:uNCS
+A 0000ed7e ;:u CS
+A 0000f7a8 T$ ]_^[
+A 0000f7c3 SVWUj
+A 0000faea SVWUu@
+A 0000fbae USVWj
+A 0000ffe5 L$ Qh 
+A 0001021b QVj	R
+A 0001036a SVWUu&j
+A 0001039f \$<US
+A 000103ef |$DVW
+A 00010413 L$8WUSPQ
+A 00010440 9D$Lu	
+A 00010495 L$LPQ
+A 00010562 USj	P
+A 000105a9 T$LPQUSj
+A 000105c5 VWj	P
+A 000105ef L$LSPVWj
+A 00010618 L$DPQ
+A 00010c73 tWhp~
+A 0001117a D$(PV
+A 00011247 L$<PQ
+A 0001125f L$ PQ
+A 00011299 D$"P3
+A 000112cd L$4PQ
+A 000112e5 L$ PQ
+A 00011318 D$"P3
+A 00011351 L$,PQ
+A 00011369 L$ PQ
+A 0001139c D$"P3
+A 000113c5 D$(VP
+A 00011775 L$$PQ
+A 00011789 T$@PQj
+A 0001196e  f9\$
+A 00011b07 SVWUu
+A 00011fd6 PPPPPPPP
+A 00012159 WUuOj
+A 0001220f 9t$,u	
+A 0001222a WPj	Q
+A 00012265 L$0SWPj
+A 000122b8 PUSQR
+A 00012303 VUSPQ
+A 0001234d PWVh 
+A 00012741 Qkkbal
+A 0001299d wn>Jj
+A 00012a29  (8PX
+A 00012a31 700WP
+A 00012a41 ``````
+A 00012a49 ppxxxx
+A 00012a68 SunMonTueWedThuFriSat
+A 00012a80 JanFebMarAprMayJunJulAugSepOctNovDec
+A 00012af6 Zipdll.dll
+A 00012b01 DllEntryPoint
+A 00012b0f GetZipDllVersion
+A 00012b20 ZipDllExec
+A 00012de4 -l used on binary file
+A 00012e14 %s   code=%d
+A 00012e24 Unknown error occured
+A 00012e3c password canceled
+A 00012e50 password failed
+A 00012e60 zip file structure error
+A 00012e7c Bad zip options specified
+A 00012e98 Missing or empty zip file
+A 00012eb4 Error creating file
+A 00012ec8 Error writing to a file
+A 00012ee0 Error reading a file
+A 00012ef8 Aborted by User
+A 00012f08 Out of memory
+A 00012f18 Unexpected end of file
+A 00012f30 File not found
+A 00012f40 %s: %s
+A 00012f48 new zip file left as: 
+A 00012f60 replacing old zip file with new zip file
+A 00012f8c writing end of central directory
+A 00012fb0 Total Bytes=%lu, compr bytes=%lu -> %d%% savings
+A 00012fe4 zip file empty
+A 00012ff4 writing central directory
+A 00013010   adding: %s
+A 00013020 found list has at least one entry - b
+A 00013048 found list empty - b
+A 00013060 zipping up NEW entries, if any
+A 00013080 deleting: %s
+A 00013090 about to make final progress call for a file
+A 000130c0 was copying %s
+A 000130d0 will just copy entry over: 
+A 000130ec file and directory with the same name: 
+A 00013114 could not open for reading: 
+A 00013134 updating: %s
+A 00013144 going through old zip file
+A 00013168 in dllzip - ready to fopen for FOPR_EX
+A 00013194 in dllzip - ready to fopen in mode FOPM - point B
+A 000131c8 opening zip file and creating temporary zip file
+A 00013200 fexpel being called
+A 00013214 found list has at least one entry - a
+A 0001323c found list empty - a
+A 00013254 checking new entries
+A 0001326c %s %s
+A 00013274 missing or early
+A 00013288 up to date
+A 00013294 checking marked entries
+A 000132ac  not found or empty
+A 000132c0 can't use -y with -k, -y ignored
+A 000132e4 zcount=%d (no. of files in ZIP already)
+A 0001330c action=DELETE
+A 0001331c action=FRESHEN
+A 0001332c action=UPDATE
+A 0001333c action=ADD
+A 00013348 k was 3
+A 00013350 File Not Found: %s
+A 00013364 k was 3 or 4, looking for arg fnames
+A 0001338c %2d%2d%2d
+A 00013398 k was 2
+A 000133a0 k was 1
+A 000133a8 err returned from "readzipfile"
+A 000133c8 ready to read zip file
+A 000133e0 k was 0, need zipfname
+A 000133f8 reached "no dash was found"; checking for zip name or fname
+A 00013434 this can't happen
+A 00013448 Not found: 
+A 00013454 no such option: %02X hex
+A 00013470 X switch found
+A 00013480 $ switch found
+A 00013490 v switch found
+A 000134a0 u switch found
+A 000134b0 t switch found
+A 000134c0 S switch found
+A 000134d0 r switch found
+A 000134e0 q switch found
+A 000134f0 p switch found
+A 00013500 o switch found
+A 00013510 ! switch found
+A 00013520 m switch found
+A 00013530 l switch found
+A 00013540 k switch found
+A 00013550 J switch found
+A 00013560 j switch found
+A 00013570 g switch found
+A 00013580 f switch found
+A 00013590 passwords match: %s
+A 000135a4 no passwords entered: only CR
+A 000135c4 passwords do not match
+A 000135dc 2nd copy of password entered
+A 000135fc Verify password:
+A 00013610 password entered
+A 00013624 Enter password: 
+A 00013638 prompting user for a password
+A 00013658 a password was supplied to ZIPDLL
+A 0001367c ZIPDLL was not passed a password
+A 000136a0 e switch found
+A 000136b0 D switch found
+A 000136c0 d switch found
+A 000136d0 b switch found
+A 000136e0 A switch found
+A 000136f0 setting compression level to %d
+A 00013710 breaking from outer loop
+A 0001372c processing arguments
+A 00013748 .gif:.png:.Z:.zip:.zoo:.arc:.lzh:.arj:.taz:.tgz:.lha
+A 00013784 deleting files that were added to zip file
+A 000137b0 zip file has only directories, can't make it as old as latest entry
+A 000137f4 zip file is empty, can't make it as old as latest entry
+A 0001382c changing time of zip file to time of latest file in it
+A 0001386c garbage at end of zip file ignored
+A 00013890  has a preamble of %lu bytes
+A 000138b0 central directory start is incorrect
+A 000138d8 central directory size is incorrect (made by stzip?)
+A 00013910 count in end of central directory incorrect
+A 0001393c multiple disk information ignored
+A 00013960 remember to use binary mode when you transferred it?)
+A 00013998 missing end signature--probably not a zip file (did you
+A 000139d0 unknown internal attributes = 0x%04x: 
+A 000139f8 starts on disk %u: 
+A 00013a0c unknown compression method %u: 
+A 00013a2c needs unzip %d.%d on system type %d: 
+A 00013a54 made by version %d.%d on system type %d: 
+A 00013a80 names in local and central differ for 
+A 00013aa8 local offset in central header incorrect for 
+A 00013ad8  offset %d--local = %02x, central = %02x
+A 00013b04 local and central headers differ for 
+A 00013b2c extraneous central header signature
+A 00013b50 zip warning: %s %s truncated.
+A 00013b70 would be
+A 00013b7c has been
+A 00013b88  compressed size %ld, actual size %ld for %s
+A 00013bb8 extended local header not found for 
+A 00013be0 bad extended local header for 
+A 00013c00 zip: reading %s
+A 00013c14 zero-length name for entry #
+A 00013c38 zip is now OPEN in zipfile.c
+A 00013c58 ready to OPEN: %s for read in zipfile.c
+A 00013c80 trashing directory %s (if empty)
+A 00013ca8 no dirnames will be kept
+A 00013cc4 error deleting
+A 00013cd4 deleting file %s
+A 00013ce8 :"<>|	
+A 00013cf0 zip diagnostic: GetVolumeInformation failed
+A 00013d20 zip diagnostic: GetFileAttributes failed
+A 00013d52 Copyright (C) 1990-1998 Mark Adler, Richard B. Wales, Jean-loup Gailly
+A 00013d9a Onno van der Linden, Kai Uwe Rommel, Mike White, and Eric W. Engler
+A 00013de1 Modified Win32 ZIP DLL by Eric W. Engler
+A 00013e0b Send bug reports to englere@swcp.com
+A 00013e33 Permission is granted to any individual or institution to use, copy, or
+A 00013e7c redistribute this DLL so long as it is not sold for profit. If this DLL
+A 00013ec5 is modified in any way, credit must be given to the original authors
+A 00013f0b identified above in the copyright statement, and the new version must be
+A 00013f55 given a unique name and your own e-mail address for bug reports.
+A 00013f99 Large portions of this DLL are based on code from the Info-Zip project.
+A 00013fe2 Consult their home page for free source code of their official releases:
+A 0001402c http://www.cdrom.com/pub/infozip/
+A 00014051 LIKE ANYTHING ELSE THAT'S FREE, THIS DLL AND ANY ASSOCIATED FILES AND
+A 00014098 UTILITIES ARE PROVIDED AS-IS AND COME WITH NO WARRANTY OF ANY KIND, EITHER
+A 000140e4 EXPRESSED OR IMPLIED. IN NO EVENT WILL THE COPYRIGHT HOLDERS BE LIABLE FOR
+A 00014130 ANY DAMAGES RESULTING FROM THE USE OF THIS SOFTWARE.
+A 0001416c Files acted on = %d
+A 00014180 *** BACK FROM CALL TO ZIPMAIN ***
+A 000141a4 *** READY TO CALL ZIPMAIN IN DLLZIP.C ***
+A 000141d0 Arg: %d for zipmain:  %s 
+A 000141ec DLL received password: %s
+A 00014258 in %s; at fLevel, which is: %d
+A 000142a0 zipdll.dll
+A 000142ac Warning: ZIPDLL.DLL version may be incorrect
+A 000142dc struct size mismatch
+A 000142f4 no zip filename received
+A 00014310 trace is on in ZIPDLL.DLL
+A 0001432c Msg From ZIP DLL
+A 00014340 Msg From ZIP DLL: 
+A 00014354 Trace Msg: 
+A 00014368  second full name: 
+A 0001437c   first full name: 
+A 00014390 name in zip file repeated: 
+A 000143ac including %s
+A 000143bc excluding %s
+A 000143cc in replace - bad open for FOPW
+A 000143ec in replace - fopen for FOPW
+A 00014408  replace: can't open %s
+A 00014424 in replace - bad open for FOPR
+A 00014444 in replace - fopen for FOPR
+A 00014460 temp filename: %s
+A 00014474 ziXXXXXX
+A 00014480  fcopy: write error
+A 00014498 .gif:.png:.Z:.TAZ:.TGZ:.lha:.zip:.zoo:.arc:.lzh:.arj
+A 0001457c File not found or no read permission
+A 000145a4 Invalid command arguments
+A 000145c0 Could not create output file
+A 000145e0 Output file write failure
+A 000145fc Nothing to do!
+A 0001460c Input file read failure
+A 00014624 Temporary file failure
+A 0001463c Interrupted
+A 00014648 Zip file invalid or could not spawn unzip
+A 00014674 Invalid comment format
+A 0001468c Entry too big to split
+A 000146a4 Internal logic error
+A 000146bc Zip file structure invalid
+A 000146d8 Unexpected end of zip file
+A 000146f4 in shmatch of util.c, pat=%s, str=%s, return=%d
+A 00014724 in dosmatch of util.c, shmatch 2 pattern=%s, string=%s result=%d
+A 00014768 in dosmatch of util.c, shmatch 1 pattern=%s, string=%s result=%d
+A 000147b0 in dosmatch of util.c, dos pattern=%s, string=%s
+A 000147e4 %s  in=%lu,  out=%lu,  %d%%
+A 00014800 stored
+A 00014808 deflated
+A 00014814  s=%ld, actual=%ld 
+A 00014828  file size changed while zipping 
+A 0001484c could not read input file: 
+A 00014868 No characters entered.
+A 00014880 Too many characters.
+A 00014898 Error
+A 000148a0 WM_COMMAND in dialog
+A 000148b8 init dialog
+A 000148c4 password=%s Len=%d
+A 000148d8 DialogBox failed
+A 000148ec Procedure Failure
+A 00014900 trying to bring up the dialog
+A 00014920 in getp() of passmsg.c
+A 0001499c can't open dir
+A 000149c0 path had illegal chars
+A 000149d8 in wild of win32zip.c, recurse=%d
+A 000149fc Opendir win32zip.c, path passed in =%s
+A 00014a24 name not matched: 
+A 00014a38 returning %d from procname after 2nd newname call
+A 00014a6c returning %d from procname after newname call
+A 00014a9c spot 1: put wildcard matching here. n=%s
+A 00014ac8 spot 1: add file to found list
+A 00014ae8 %scluding %s
+A 00014b00 ex2in returning: %s
+A 00014b14 replacing short name: %s with long name: %s
+A 00014b40 in2ex returning: %s
+A 00015178 IsTNT
+A 00015180 kernel32.dll
+A 00015264 (null)
+A 000155f0 runtime error 
+A 00015604 TLOSS error
+A 00015614 SING error
+A 00015624 DOMAIN error
+A 00015634 R6027
+A 0001563b - not enough space for lowio initialization
+A 0001566c R6026
+A 00015673 - not enough space for stdio initialization
+A 000156a4 R6025
+A 000156ab - pure virtual function call
+A 000156cc R6024
+A 000156d3 - not enough space for _onexit/atexit table
+A 00015704 R6019
+A 0001570b - unable to open console device
+A 00015730 R6018
+A 00015737 - unexpected heap error
+A 00015754 R6017
+A 0001575b - unexpected multithread lock error
+A 00015784 R6016
+A 0001578b - not enough space for thread data
+A 000157b2 abnormal program termination
+A 000157d4 R6009
+A 000157db - not enough space for environment
+A 00015800 R6008
+A 00015807 - not enough space for arguments
+A 0001582c R6002
+A 00015833 - floating point not loaded
+A 000158e4 Microsoft Visual C++ Runtime Library
+A 00015910 Runtime Error!
+A 00015920 Program: 
+A 00015930 <program name unknown>
+A 00015968 Assertion failed: %s, file %s, line %d
+A 00015a5c GetLastActivePopup
+A 00015a70 GetActiveWindow
+A 00015a80 MessageBoxA
+A 00015a8c user32.dll
+A 00015ece GetVolumeInformationA
+A 00015ee6 GetFileAttributesA
+A 00015efc CloseHandle
+A 00015f0a FileTimeToLocalFileTime
+A 00015f24 CreateFileA
+A 00015f32 FindClose
+A 00015f3e FindFirstFileA
+A 00015f50 GlobalFree
+A 00015f5e GlobalUnlock
+A 00015f6e GlobalLock
+A 00015f7c GlobalAlloc
+A 00015f8a GetFileSize
+A 00015f98 GetModuleHandleA
+A 00015fac FindNextFileA
+A 00015fba KERNEL32.dll
+A 00015fca wvsprintfA
+A 00015fd8 MessageBoxA
+A 00015fe6 EndDialog
+A 00015ff2 SendDlgItemMessageA
+A 00016008 SendMessageA
+A 00016018 DialogBoxParamA
+A 00016028 USER32.dll
+A 00016036 HeapFree
+A 00016042 HeapAlloc
+A 0001604e GetLocalTime
+A 0001605e GetLastError
+A 0001606e MoveFileA
+A 0001607a GetFileType
+A 00016088 GetCommandLineA
+A 0001609a GetProcAddress
+A 000160ac GetVersion
+A 000160ba InitializeCriticalSection
+A 000160d6 DeleteCriticalSection
+A 000160ee EnterCriticalSection
+A 00016106 LeaveCriticalSection
+A 0001611e ExitProcess
+A 0001612c HeapCreate
+A 0001613a HeapDestroy
+A 00016148 SetHandleCount
+A 0001615a GetStdHandle
+A 0001616a GetStartupInfoA
+A 0001617c SetFilePointer
+A 0001618e WideCharToMultiByte
+A 000161a4 ReadFile
+A 000161b0 WriteFile
+A 000161bc GetStringTypeA
+A 000161ce GetStringTypeW
+A 000161e0 MultiByteToWideChar
+A 000161f6 GetCurrentThreadId
+A 0001620c TlsSetValue
+A 0001621a TlsAlloc
+A 00016226 TlsFree
+A 00016230 SetLastError
+A 00016240 TlsGetValue
+A 0001624e GetTimeZoneInformation
+A 00016268 FlushFileBuffers
+A 0001627c SetStdHandle
+A 0001628c SetEndOfFile
+A 0001629c GetModuleFileNameA
+A 000162b2 GetCPInfo
+A 000162be GetACP
+A 000162c8 GetOEMCP
+A 000162d4 FreeEnvironmentStringsA
+A 000162ee GetEnvironmentStrings
+A 00016306 FreeEnvironmentStringsW
+A 00016320 GetEnvironmentStringsW
+A 0001633a CompareStringA
+A 0001634c CompareStringW
+A 0001635e SetEnvironmentVariableA
+A 00016378 LoadLibraryA
+A 00016388 HeapReAlloc
+A 00016396 FileTimeToSystemTime
+A 000163ae GetDriveTypeA
+A 000163be DeleteFileA
+A 000163cc SetFileTime
+A 000163da LocalFileTimeToFileTime
+A 000163f4 SystemTimeToFileTime
+A 0001640c RemoveDirectoryA
+A 00016420 GetFullPathNameA
+A 00016434 GetCurrentDirectoryA
+A 0001644c LCMapStringA
+A 0001645c LCMapStringW
+A 00016c0d 0"0(080E0X0
+A 00016c25 1G1U1d1i1p1
+A 00016c49 2%22292F2U2[2a2g2m2s2y2~2
+A 00016c6b 3+383K3Q3k3
+A 00016c81 4(4-4:4S4Z4i4n4{4
+A 00016ca5 5#5,535A5H5X5_5p5v5
+A 00016cd5 6!606?6K6V6\6c6
+A 00016cfd 7A7a7h7r7
+A 00016d0d 8#8>8G8e8l8
+A 00016d29 9&9:9
+A 00016d37 9g:q:
+A 00016d3f :6;A;R;[;
+A 00016d53 ;X<e<q<w<}<
+A 00016d81 ='=-=5=>=c=i=}=
+A 00016d99 ='>R>\>
+A 00016dab ?&?-?=?D?T?_?m?y?
+A 00016ddf 060;0@0E0i0n0s0x0
+A 00016e0b 12171F1M1R1`1e1s1x1
+A 00016e35 2"2(2;2A2J2]2c2w2
+A 00016e7d 3"3:3H3]3s3
+A 00016e99 4)4/454;4A4G4M4S4X4]4c4i4o4t4z4
+A 00016edf 5 535
+A 00016eff 6(636D6O6`6k6|6
+A 00016f21 7(757=7`7f7k7
+A 00016f3b 8"8/8A8S8a8n8|8
+A 00016f5f 909?9D9K9V9d9r9
+A 00016f7f 9$:6:N:S:o:|:
+A 00016fa5 <,<f<k<,=F=W=q=
+A 00016fd5 ?`?h?w?
+A 00016ffd 0!070M0j0y0
+A 00017017 141L1U1\1f1
+A 00017039 272D2M2Z2g2t2
+A 00017055 3 3P3
+A 0001706b 4$41464D4a4g4o4u4|4
+A 0001708f 5&5.535A5^5l5
+A 000170b3 6%626n6
+A 000170c7 6j7p7}7
+A 000170db 8 8@8N8^8
+A 000170ed 9#9f9p9}9
+A 0001710b :!:2:8:>:
+A 0001711d ;&;,;=;G;T;c;
+A 00017159 < <$<(<
+A 0001718b =E=R=W=e=m=y=
+A 000171af >&?+?6?=?E?K?P?]?k?w?
+A 000171df 1&1:1[2~2
+A 000171fd 7+7P7W7\7i7n7
+A 0001720f 8U8^8d8k8r8w8}8
+A 00017233 =B=G=X=
+A 00017249 > >;>@>Q>
+A 00017264 $0)0H0O0T0
+A 0001727f 1:1D1L1i1o1w1
+A 000172a3 23282O2W2h2
+A 000172bd ;D;^;
+A 000172f1 0W0a0f0
+A 000172fd 2R2g2
+A 00017317 3#323<3F3t3|3r4
+A 00017333 5%5.575N5w5
+A 00017347 6#6*61696>6Q6X6_6f6m6t6
+A 0001736b 777<7h7m7
+A 0001737f 8,818]8b8
+A 00017395 90959a9f9
+A 000173a7 :@:E:q:v:
+A 000173bb ;Y;g;m;r;
+A 000173c5 ;g<m<z<
+A 000173e3 = =$=(=<=O=b=z=
+A 00017409 >U>m>t>y>
+A 00017425 ?"?,?6???E?M?W?c?
+A 00017455 0S1\1q1
+A 00017493 5%5*5=5I5S5_5
+A 000174c5 9.9;9X9
+A 000174e5 ;Q<V<c<
+A 000174ef <D=I=V=
+A 000174f9 >+>A>F>S>o>t>
+A 00017507 >D?J?d?x?
+A 00017525 1O1m1
+A 0001752b 1#2F2U2
+A 00017535 2	3-333A3Q3`3
+A 00017563 5&525@5
+A 0001756f 5T6y6
+A 00017595 8&8v8
+A 000175a3 909F9b9n9x9
+A 000175bf :!:0:<:A:F:M:V:_:n:s:y:
+A 000175eb ;';2;8;G;T;Z;d;n;s;x;
+A 0001761d <"<(<2<6<<<_<p<}<
+A 0001764f =`=g=m=t=
+A 00017673 >!>)>/>4>=>D>J>O>X>d>l>r>z>
+A 000176a9 ?2?9?D?I?T?]?f?q?
+A 000176d1 0!0=0|0
+A 000176f3 1 1&1,141C1V1^1g1y1
+A 0001771d 2!2.2
+A 0001772b 3!3)3M3R3c3k3q3w3
+A 00017751 4&4.484D4m4
+A 00017779 5"5*575I5V5\5g5m5
+A 000177a5 6&6,626:6F6L6]6c6m6z6
+A 000177d9 7"7(757:7B7H7c7i7x7~7
+A 00017803 8 8&8,8=8U8`8v8|8
+A 00017835 9$9*90969M9Z9_9g9m9
+A 00017869 <8<L<j<
+A 00017890 .0Y0j0r0
+A 000178a9 1$282
+A 000178bb 203<3L3
+A 000178d1 4"5I5R5k5p5
+A 000178e1 656:6G6
+A 000178ed 6=7Z7l7
+A 000178f7 7<9C9
+A 0001790b :,:4:J:`:
+A 0001791b ; ;&=0=I=
+A 0001793d 9<:_;l;
+A 00017949 <P=l=
+A 0001796f 0I1x2|2
+A 00017989 3(373@3E3K3U3n3s3~3
+A 000179a3 3#424P4Z4
+A 000179b3 5"5)51595A5U5^5
+A 000179cd 6 6:6A6X6_6f6
+A 000179e5 6"787P7
+A 00017a01 9F:X:t:
+A 00017a51 3P3T3X3\3`3d3h3l3p3t3x3|3
+A 00017a77 595M5
+A 00017a89 686a6o6
+A 00017a99 767;7T7g7
+A 00017aaf 8!8,818>8C8
+A 00017adb ;,;0;4;8;<;@;D;H;L;P;
+A 00017afb <$<5<;<H<N<
+A 00017b09 <F=X=
+A 00017b31 1&1<1
+A 00017b3d 2,4O4
+A 00017b47 6'6i7
+A 00017b7d :B:]:
+A 00017b85 ;E;Q;B<^<
+A 00017bb5 2;2C2^2c2v2
+A 00017bc9 383=3^3e3x3
+A 00017be5 4*4F4R4g4n4
+A 00017c01 6R7e7s7
+A 00017c13 8&8/8V8a8
+A 00017c23 9:9i9
+A 00017c33 9X:d:
+A 00017c3b :4;>;
+A 00017c47 <M<v<~<
+A 00017c53 =2=A=P=
+A 00017c61 =6>O>
+A 00017c83 0 1K1T1Y1_1j1
+A 00017c93 1+2o2T3u3
+A 00017c9d 3"464D4R4
+A 00017cb3 5/5<5A5O5X5~5
+A 00017ccd 6$6/686R6Y6x6|6
+A 00017cf5 7:7@7
+A 00017d05 7<8a8
+A 00017d19 9+949Z9g9
+A 00017d27 :5:j:
+A 00017d35 :&;B;
+A 00017d4d >">,>9>c>m>
+A 00017d5b >e?s?z?
+A 00017d7b 0+0G0
+A 00017d95 2'393O3[3m3
+A 00017db7 596l6p6t6x6|6
+A 00017dc9 7J7`7
+A 00017dcf 7G8N8T8_8e8m8v8~8
+A 00017deb 8a9f9
+A 00017df7 9f<x<
+A 00017e07 =N>f>
+A 00017e0f >X?p?
+A 00017e23 0*0:0P0`0
+A 00017e39 454t4
+A 00017e4d 5"5*5=5F5N5
+A 00017e69 8-8=8
+A 00017e89 <R=a=j=
+A 00017e9f >1>p>
+A 00017ea9 ?(?I?
+A 00017ecb 0p1t1x1
+A 00017f09 9\9l98=X?`?
+A 00017f29 5l6p6P7T7\<d<l<t<|<
+A 00017f53 <H=L=P=T=X=\=
+U 00014dea          (((((                  H
+U 00015254 (null)
+U 000166a6 VS_VERSION_INFO
+U 00016702 StringFileInfo
+U 00016726 040904b0
+U 0001673e Comments
+U 00016750 Freeware ZIP DLL
+U 0001677a CompanyName
+U 0001679e FileDescription
+U 000167c0 Win32 DLL, ZIP
+U 000167e6 FileVersion
+U 00016800 1, 4, 0, 0
+U 0001681e InternalName
+U 0001683e LegalCopyright
+U 0001685c Copyright © 1998, Eric W. Engler
+U 000168a6 LegalTrademarks
+U 000168c8 Uses code from InfoZip's UNZIP
+U 0001690e OriginalFilename
+U 00016930 zipdll.dll
+U 0001694e PrivateBuild
+U 0001696e ProductName
+U 00016988 Delphi Zip
+U 000169a6 ProductVersion
+U 000169c4 1, 4, 0, 0
+U 000169e2 VarFileInfo
+U 00016a02 Translation
+U 00016a36 Password
+U 00016a4a MS Sans Serif
+U 00016aba Cancel
+U 00016ae2 Enter Password:

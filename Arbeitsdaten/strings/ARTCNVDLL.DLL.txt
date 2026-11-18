@@ -1,0 +1,4195 @@
+A 00000050 This program must be run under Win32
+A 000002f8 .text
+A 0000031f `.data
+A 00000370 .idata
+A 00000397 @.edata
+A 000003bf @.rsrc
+A 000003e7 @.reloc
+A 00000602 fb:C++HOOK
+A 00000edc Exception &
+A 00000ef4 CErrLogCriticalException &
+A 00000f40 System::AnsiString
+A 00000f70 THandleStream *[2]
+A 00000f90 CExp *
+A 00001bd0 TMemoryStream *[2]
+A 00001f4c Sysutils::Exception
+A 00002428 TMemoryStream *
+A 000024dc TCustomMemoryStream *
+A 00002500 TStream *
+A 0000253c Classes::TStream
+A 00002598 Classes::TCustomMemoryStream
+A 00002600 Classes::TMemoryStream
+A 000026c8 System::TObject
+A 0000273c THandleStream *
+A 0000275c CErrLogCriticalException
+A 00002784 Exception *
+A 000027c0 Classes::THandleStream
+A 000029d0 CErrLog
+A 00002a1c std::list<System::AnsiString,std::allocator<System::AnsiString> >
+A 00002c9a t",|t
+A 00002e04 TStream *[2]
+A 000034b8 _^[YY]
+A 000034df jAh(|F
+A 00003506 jAh6|F
+A 0000352d jAhC|F
+A 00003557 jAhO|F
+A 00003581 jAh^|F
+A 000035ae jAhk|F
+A 000035d5 jAhy|F
+A 00003695 j3jfh
+A 0000376b jfjAh
+A 0000378b jfjfjfjAh#}F
+A 000037bb jAh0}F
+A 000037de j~j~jAh>}F
+A 0000382d jlhxrF
+A 00003b28 CColour *
+A 00003bc2 Ck_^[]
+A 000043d5 Nk_^[Y]
+A 000044c4 CRgb *
+A 000044d8 CColour ( *)[]
+A 00004828 std::vector<System::AnsiString,std::allocator<System::AnsiString> >
+A 00004e4d Y_^[]
+A 00004ee0 CColour[20]
+A 00004f1c CColour
+A 00004f40 CColour[]
+A 00005114 DualCypher *
+A 0000544d _^[Y]
+A 00005874 DualCypher
+A 000058cc EncryptionKey
+A 000059e0 CErrLog *
+A 00005a3d Qh,e@
+A 00005a9c Qh,e@
+A 00005b5c std::bad_alloc
+A 00005e34 AnsiString *
+A 00005ead RhL1@
+A 00005f38 std::bad_alloc *
+A 00005f7c std::exception
+A 000064f0 TFileStream *[2]
+A 00006cae uVh\/
+A 00006e6c CStitch ( *)[]
+A 000073d2 _^[YY]
+A 00007467 _^[Y]
+A 00007e44 std::list<CStitch,std::allocator<CStitch> >
+A 00007eac CStitch
+A 00007f11 Qh,e@
+A 00007f70 Qh,e@
+A 00008120 CStitch *
+A 000082d8 CStitch[]
+A 000082f0 TFileStream *
+A 0000838c Classes::TFileStream
+A 000084db _^[YY]
+A 000093b4 TCompress *[2]
+A 00009634 char * &
+A 0000968c char *
+A 000096a0 TCompress *
+A 000096dc Compress::TCompress
+A 00009758 Classes::TComponent
+A 000097bc Classes::TPersistent
+A 0000d414 CPmu *
+A 0000dec5 [SjZj`
+A 0000e00a [SjZj`
+A 0000e125 8SjZj`
+A 0000e189 SjZj`
+A 0000e2dc CExp_Child
+A 0000e98c False
+A 0000ecd7 _^[Y]
+A 0000efc2 TDuplicates
+A 0000efda 	dupIgnore	dupAccept
+A 0000efef dupError
+A 0000effe TPersistent
+A 0000f014 Classes
+A 0000f026 TCollectionItem
+A 0000f040 Classes
+A 0000f052 TStringItem
+A 0000f076 TStringItemList
+A 0000f09a TBasicActionLink0
+A 0000f0b5 Classes
+A 0000f0c6 TBasicAction
+A 0000f0dd Classes
+A 0000f0ee TIdentMapEntry
+A 0000f112 TBitSet
+A 0000f16d EStreamError
+A 0000f1c9 EFCreateError
+A 0000f225 EFOpenError|
+A 0000f27d EFilerError
+A 0000f2d5 EReadError
+A 0000f32d EWriteError
+A 0000f385 EClassNotFound
+A 0000f3e1 EResNotFound
+A 0000f43d EListError
+A 0000f495 EStringListError
+A 0000f4f5 EComponentErrorP
+A 0000f561 TList
+A 0000f5b5 TThreadList
+A 0000f627 TPersistent
+A 0000f6ab TCollectionItem
+A 0000f6c2 IStringsAdapterh
+A 0000f6e7 Classes
+A 0000f7bf TStrings
+A 0000f7ce TStrings<
+A 0000f7e1 Classes
+A 0000f8bd TStringList
+A 0000f8ce TStringList8
+A 0000f8e4 Classes
+A 0000f94d TStream
+A 0000f9b1 THandleStream
+A 0000fa1d TFileStreamt
+A 0000fa85 TCustomMemoryStream
+A 0000faf9 TMemoryStream
+A 0000fb65 TResourceStreamx
+A 0000fb7a TComponentName
+A 0000fc73 TComponent
+A 0000fc86 TComponent
+A 0000fc9b Classes
+A 0000fd51 TBasicActionLink
+A 0000fe01 TBasicAction
+A 0000fea2 Uh%	A
+A 0000ff2f _^[YY]
+A 0001018e _^[YY]
+A 000106da TBitEnum
+A 00010a34 %s[%d]
+A 00010c18 _^[Y]
+A 00010d8e W8CNu
+A 00010efc Strings
+A 0001104b _^[Y]
+A 00011328 S$_^[Y]
+A 0001142d ^[YY]
+A 000114dc _^[YY]
+A 0001162d Uhm A
+A 000117de Uh>"A
+A 000118f7 $Z_^[
+A 00011a24 Rp_^[
+A 00011c30 Rp_^[
+A 00011c87 Rp_^[
+A 00011cc4 Rp_^[
+A 00011ef9 UhO)A
+A 000122e5 Uh;-A
+A 000123ac _^[Y]
+A 0001246b TPropFixup
+A 000125c8 _^[YY]
+A 000125d8 Owner
+A 0001260a Uh{0A
+A 00012682 _^[YY]
+A 0001270a _^[Y]
+A 0001281f Uh 3A
+A 00012965 C0_^[
+A 00012aa9 Uh45A
+A 00012c4d Uhz6A
+A 00012cd8 UhF7A
+A 00012eab Uhu9A
+A 00013013 UhG:A
+A 00013304 False
+A 00013551 Uhf@A
+A 00013726 _^[YY]
+A 00013775 QQQQQQS3
+A 0001377e Uh[CA
+A 00013c23 Uh}FA
+A 00013cb3 _^[YY]
+A 00013f10 Uh]JA
+A 000140c4 UhHKA
+A 0001455c f#F f
+A 00014667 YZ]_^[
+A 00014693 ShDNA
+A 000146b0 Sh0NA
+A 000146b6 ShPNA
+A 000146d3 _^[Y]
+A 000147d7 S _^[
+A 000147fc SVWUQ
+A 00014843 Z]_^[
+A 000148d1 YZ_^[
+A 00014928 SVWUQ
+A 00014971 Z]_^[
+A 00014c37 ;C0t:
+A 00014c74 R0_^[]
+A 00014cf4 Uh5WA
+A 00014f01 Uh!YA
+A 00014f39 UhYYA
+A 00015201 Uh!\A
+A 0001523a TSysCharSetn
+A 00015252 TSearchRecX
+A 00015272 TFloatFormat
+A 0001528b 	ffGeneral
+A 00015296 ffExponent
+A 000152a1 ffFixed
+A 000152a9 ffNumber
+A 000152b2 ffCurrency
+A 000152c2 TMbcsByteType
+A 000152dd mbSingleByte
+A 000152ea mbLeadByte
+A 000152f5 mbTrailByte
+A 00015305 	Exception
+A 0001531a SysUtils
+A 00015329 	TNameType
+A 00015341 ntContainsUnit
+A 00015350 ntRequiresPackage
+A 00015380 INFNANU
+A 000155c1 QS<$t
+A 000155f2 $*@@@*$@@@$ *@@* $@@($*)@-$*@@$-*@@$*-@@(*$)@-*$@@*-$@@*$-@@-* $@-$ *@* $-@$ *-@$ -*@*- $@($ *)(* $)U
+A 00015728 <'t$<"t 
+A 00015778 <#t&<0t%<.t,<,t3<'t5<"t1<Et:<et6<;tF
+A 00015846 <#t'<0t#<.t
+A 0001585e <Et$<et <;tS
+A 00015c31 	TFileName
+A 00015c9a 	Exception
+A 00015cf1 EHeapException
+A 00015d4d EOutOfMemory
+A 00015da9 EInOutError
+A 00015e00 	EExternal
+A 00015e59 EExternalException
+A 00015eb8 	EIntError
+A 00015f11 EDivByZero
+A 00015f69 ERangeError
+A 00015fc1 EIntOverflow
+A 0001601d EMathError
+A 00016075 EInvalidOp
+A 000160cd EZeroDivide$kA
+A 00016124 	EOverflow
+A 0001617d EUnderflow
+A 000161d5 EInvalidPointer0lA
+A 00016231 EInvalidCast
+A 0001628d EConvertError
+A 000162e9 EAccessViolation
+A 00016349 EPrivilege
+A 000163a1 EStackOverflow
+A 000163fc 	EControlC
+A 00016455 EVariantError
+A 000164b1 EAssertionFailed
+A 00016511 EAbstractError
+A 0001656d EIntfCastError
+A 000165c9 EWin32Error pA
+A 00016621 ESafecallException
+A 00016646 TActiveThreadArray
+A 000166c2 $TMultiReadExclusiveWriteSynchronizer
+A 000166f8 Uh:qA
+A 00016741 _^[Y]
+A 000169de $Z_^[
+A 00016a0a $Z_^[
+A 00016d17 UhwwA
+A 00016d7e _^[YY]
+A 000176a7 _^[Y]
+A 000176b5 QQQQQQSVW3
+A 0001793d QQQQSVW
+A 00017d67 D$HPj
+A 00017e30 _^[Y]
+A 00017efe _^[YY]
+A 00017f19 	TErrorRec
+A 00017f9a TExceptRec
+A 0001811c t<HtH
+A 00018448 C++ Exception
+A 00018ab8 m/d/yy
+A 00018ac8 mmmm d, yyyy
+A 00018b10  AMPM
+A 00018b20 AMPM 
+A 00018b3c :mm:ss
+A 00018c44 kernel32.dll
+A 00018c54 GetDiskFreeSpaceExA
+A 00018d3a N(;F,t
+A 0001923e Extended
+A 0001924e Cardinal
+A 00019266 Single
+A 00019276 Openstring
+A 0001928a String
+A 00019296 HRESULT
+A 000192ae TInterfacedObject0
+A 000192ca System
+A 000192d9 	TDateTime
+A 000192ea TBoundArray
+A 0001938d Ht Ht.
+A 00019c90 -InfW
+A 00019d46 |HtE=
+A 00019f59 BkU'9
+A 0001a05e USVW3
+A 0001a151 USVW3
+A 0001a2a6 Boolean
+A 0001a2bb False
+A 0001a2e2 Integer
+A 0001a341 TObjectL
+A 0001a34e TObject@
+A 0001a360 System
+A 0001a36e IUnknown
+A 0001a38c System
+A 0001a431 TInterfacedObject
+A 0001a508 SVWUQ
+A 0001a573 Z]_^[
+A 0001a604 YZ]_^[
+A 0001a729 w;;t$
+A 0001a834 SVWUQ
+A 0001a8ab Z]_^[
+A 0001a93b YZ]_^[
+A 0001ab04 "h@2H
+A 0001aee1 YZ]_^[
+A 0001b346 _^[YY]
+A 0001b4ec _^[Y]
+A 0001b6bc YZ]_^[
+A 0001b77f _^[Y]
+A 0001b988 ,$YXZ
+A 0001bbd0 SOFTWARE\Borland\Delphi\RTL
+A 0001bbec FPUMaskValue
+A 0001bdeb _^[YY]
+A 0001bfd1 PPRTj
+A 0001c137 YZXto
+A 0001c2c2 YZXtl1
+A 0001c374 ZTUWVSPRTj
+A 0001c667 Portions Copyright (c) 1983,99 Borland
+A 0001c898 t-Rf;
+A 0001c89e t f;J
+A 0001cbc2 t1SVW
+A 0001d315 UWVSj
+A 0001d390 r*PRf
+A 0001d93e ^[YY]
+A 0001df2c kernel32.dll
+A 0001df3c GetLongPathNameA
+A 0001e10c Software\Borland\Locales
+A 0001e128 Software\Borland\Delphi\Locales
+A 0001e22f _^[YY]
+A 0001f2b6 ^[YY]
+A 0001f2ea Y_^[]
+A 00020500 CSew *
+A 00021de0 CXxx *
+A 00021eed _^[YY]
+A 0002283e _^[YY]
+A 00023918 EncryptionKey *
+A 00023a3b _^[YY]
+A 00023e5d Qh,e@
+A 00026dc8 C_Tmp_to_Tmp *
+A 00026de4 C_Exp_to_Exp *
+A 00026e00 C_Pes_to_Pes *
+A 00026e1c C_Pec_to_Pec *
+A 00026e38 C_Pcs_to_Pcs *
+A 00026e54 C_Sew_to_Sew *
+A 00026e70 C_Csd_to_Csd *
+A 00026e8c C_Hus_to_Hus *
+A 00026ea8 C_Xxx_to_Xxx *
+A 00026ec4 C_Pmu_to_Pmu *
+A 00026ee0 C_Bro_to_Bro *
+A 00026efc C_Shv_to_Shv *
+A 00026f18 C_Pum_to_Pum *
+A 00026f34 C_Arx_to_Arx *
+A 00026f50 C_Emx_to_Emx *
+A 00026f6c C_Tmp_to_Exp *
+A 00026f88 C_Tmp_to_Pes *
+A 00026fa4 C_Tmp_to_Pec *
+A 00026fc0 C_Tmp_to_Pcs *
+A 00026fdc C_Tmp_to_Sew *
+A 00026ff8 C_Tmp_to_Csd *
+A 00027014 C_Tmp_to_Hus *
+A 00027030 C_Tmp_to_Xxx *
+A 0002704c C_Tmp_to_Pmu *
+A 00027068 C_Tmp_to_Bro *
+A 00027084 C_Tmp_to_Shv *
+A 000270a0 C_Tmp_to_Pum *
+A 000270bc C_Tmp_to_Arx *
+A 000270d8 C_Tmp_to_Emx *
+A 000270f4 C_Exp_to_Tmp *
+A 00027110 C_Pes_to_Tmp *
+A 0002712c C_Pec_to_Tmp *
+A 00027148 C_Pcs_to_Tmp *
+A 00027164 C_Sew_to_Tmp *
+A 00027180 C_Csd_to_Tmp *
+A 0002719c C_Hus_to_Tmp *
+A 000271b8 C_Xxx_to_Tmp *
+A 000271d4 C_Pmu_to_Tmp *
+A 000271f0 C_Bro_to_Tmp *
+A 0002720c C_Shv_to_Tmp *
+A 00027228 C_Pum_to_Tmp *
+A 00027244 C_Arx_to_Tmp *
+A 00027260 C_Emx_to_Tmp *
+A 000273a2 RjdQh
+A 0002740b PjdRh8
+A 00027485 QjdPha
+A 000274cd PjdRhq
+A 00027515 RjdQh
+A 0002755b QjdPh
+A 000275be QjdPh
+A 00027613 PjdRh
+A 000276b8 C_Emx_to_Tmp
+A 00027710 C_Arx_to_Tmp
+A 00027768 C_Pum_to_Tmp
+A 000277c0 C_Shv_to_Tmp
+A 00027818 C_Bro_to_Tmp
+A 00027870 C_Pmu_to_Tmp
+A 000278c8 C_Xxx_to_Tmp
+A 00027920 C_Hus_to_Tmp
+A 00027978 C_Csd_to_Tmp
+A 000279d0 C_Sew_to_Tmp
+A 00027a28 C_Pcs_to_Tmp
+A 00027a80 C_Pec_to_Tmp
+A 00027ad8 C_Pes_to_Tmp
+A 00027b30 C_Exp_to_Tmp
+A 00027b88 C_Tmp_to_Emx
+A 00027be0 C_Tmp_to_Arx
+A 00027c38 C_Tmp_to_Pum
+A 00027c90 C_Tmp_to_Shv
+A 00027ce8 C_Tmp_to_Bro
+A 00027d40 C_Tmp_to_Pmu
+A 00027d98 C_Tmp_to_Xxx
+A 00027df0 C_Tmp_to_Hus
+A 00027e48 C_Tmp_to_Csd
+A 00027ea0 C_Tmp_to_Sew
+A 00027ef8 C_Tmp_to_Pcs
+A 00027f50 C_Tmp_to_Pec
+A 00027fa8 C_Tmp_to_Pes
+A 00028000 C_Tmp_to_Exp
+A 00028058 C_Emx_to_Emx
+A 000280b0 C_Arx_to_Arx
+A 00028108 C_Pum_to_Pum
+A 00028160 C_Shv_to_Shv
+A 000281b8 C_Bro_to_Bro
+A 00028210 C_Pmu_to_Pmu
+A 00028268 C_Xxx_to_Xxx
+A 000282c0 C_Hus_to_Hus
+A 00028318 C_Csd_to_Csd
+A 00028370 C_Sew_to_Sew
+A 000283c8 C_Pcs_to_Pcs
+A 00028420 C_Pec_to_Pec
+A 00028478 C_Pes_to_Pes
+A 000284d0 C_Exp_to_Exp
+A 00028528 C_Tmp_to_Tmp
+A 0002c0cb _^[YY]
+A 0002c17c ^[YY]
+A 0002d19a CPj j
+A 0002d1c6 KTQWV
+A 0002d1e4 Y_^[]
+A 0002d7b8 ALStatus
+A 0002d830 ALOpenInputFile *
+A 0002d8d8 ALOpenOutputFile *
+A 0002d978 ALOpenFiles *
+A 0002da1c ALOpenFiles
+A 0002da74 ALOpenOutputFile
+A 0002dac4 ALOpenInputFile
+A 0002de84 RCompress *
+A 0002e1c9 ABf)E
+A 0002e401 JBf;M
+A 0002e956 PBf;U
+A 0002e982 APf;E
+A 0002e9ee f;Qjr 
+A 0002ee43 f	Bhf
+A 0002f6cf P[YY]
+A 0002f8e8 RCompress
+A 0002fb64 RExpand *
+A 0002feb9 J0f#M
+A 0002ff42 A0f#E
+A 000300de f#H0u
+A 00030266 J0f#M
+A 00030828 RExpand
+A 00030854 ALStorage *[2]
+A 00030870 ALStorage *
+A 000308ac ALName
+A 000308f8 ALStorage
+A 00030968 ALTimeDate
+A 000309b0 ALFileAttributes
+A 00030a00 ALStorage::_ALTag_ALStorageTag
+A 00030a5c ALName::_ALTag_ALNameTag
+A 00030ad4 ALCompressor *[2]
+A 00030af8 ALDecompressor *[2]
+A 00030b18 ALDecompressor *
+A 00030b38 ALCompressor *
+A 00030b78 ALCompressor
+A 00030bd8 ALDecompressor
+A 00030c38 ALEngine
+A 00030c90 ALDecompressor::_ALTag_ALDecompressorTag
+A 00030cf8 ALCompressor::_ALTag_ALCompressorTag
+A 00030d9c ALEngine::_ALTag_ALEngineTag
+A 00031264 ALCopyCompressor *
+A 0003163c ALCopyCompressor
+A 000316a0 ALCopyCompressor::_ALTag_ALCopyCompressorTag
+A 00031760 ALCopyDecompressor *
+A 00031b4c ALCopyDecompressor
+A 00031bb0 ALCopyDecompressor::_ALTag_ALCopyDecompressorTag
+A 00031c40 ALMemory
+A 00031c9c ALFile
+A 00031cf4 ALFile::_ALTag_ALFileTag
+A 00031d4c ALMemoryBase
+A 00031dac ALMemory::_ALTag_ALMemoryTag
+A 00031e28 ALMemoryBase::_ALTag_ALMemoryBaseTag
+A 00031ee2 t+hM5G
+A 000320ad t(h+=G
+A 0003211d t(hV>G
+A 0003218d t(hk?G
+A 00032274 ALEngine *
+A 00032400 ALFileAttributes *
+A 000324a4 ALFile *
+A 00032864 rHh'CG
+A 000328b5 qHhZCG
+A 00032b63 pHhLDG
+A 00032fc1 rLh,IG
+A 0003301f pHh^IG
+A 0003346c ALGlCompressor
+A 000334cc ALPkCompressor
+A 0003352c ALGlDecompressor
+A 00033590 ALPkDecompressor
+A 000335f4 ALPkDecompressor::_ALTag_ALDecompressorTag
+A 0003365c ALGlDecompressor::_ALTag_ALGlDecompressorTag
+A 000336c8 ALPkCompressor::_ALTag_ALPkCompressorTag
+A 00033730 ALGlCompressor::_ALTag_ALGlCompressorTag
+A 00033864 ALGlCompressor *
+A 0003407c ALGlDecompressor *
+A 0003471c ALMemory *
+A 00034adf qhh9WG
+A 00034c40 ALMemoryBase *
+A 00034d0e ;Qh~"
+A 00034d17 pHh-YG
+A 00034f22 ;Qh~!
+A 00034f2b pHhw[G
+A 00034fae ;Ah~%
+A 000351a8 ALWinMemory *
+A 000353f3 YPhW]G
+A 00035539 ;Bh}M
+A 00035672 YPhZ^G
+A 00035740 ALWinMemory
+A 0003579c ALWinMemory::_ALTag_ALWinMemoryTag
+A 000357f8 ALName *
+A 00035bef r_t@I
+A 00035ca4 ALPkCompressor *
+A 00035f46 ;Q0t+
+A 00035ff1 ;B0t+
+A 00036117 mtOJtFJt=
+A 00036254 ALPkDecompressor *
+A 000364b7 ;Q0t=
+A 000365e7 mtLJtCJt:
+A 000366ec ALStatus *
+A 00036a7a t(hCgG
+A 00036be6 t+h%iG
+A 00036cfa t+hpjG
+A 00036eed t(h!lG
+A 000370ae t+hanG
+A 000372e3 @TYY]
+A 000374e8 ALTimeDate *
+A 0003875d ;Hhv	
+A 00039072 ;Btsn
+A 0003996f ;Q(u:
+A 0003997d ;Q$t,
+A 00039a07 ;Q(u:
+A 00039a15 ;Q$t,
+A 0003a449 ;B0tP
+A 0003ad12 ;B(u:
+A 0003ad20 ;H$t,
+A 0003adaa ;P(u:
+A 0003adb8 ;H$t,
+A 0003ae5d ;B(u	
+A 0003ae99 ;Q(u:
+A 0003aea7 ;Q$t,
+A 0003af31 ;Q(u:
+A 0003af3f ;Q$t,
+A 0003b039 ;H0tP
+A 0003b386 +J$;M
+A 0003f9c8 Wh,e@
+A 0003fa48 Qh,e@
+A 000402f4 std::bad_cast
+A 00040314 std::bad_typeid
+A 00040354 _RWSTDMutex
+A 00040b6c std::locale
+A 00040b90 __rwstd::locale_vector<__rwstd::facet_imp *> *
+A 00040c7c std::string ( *)[]
+A 00040e08 YHu*S
+A 00040f34 std::logic_error
+A 00041020 std::basic_string<char,std::char_traits<char>,std::allocator<char> >
+A 000411d4 std::string *
+A 00041748 std::out_of_range
+A 00041844 std::length_error
+A 00041937 Qh,e@
+A 00041aa4 __rwstd::__string_ref<char,std::char_traits<char>,std::allocator<char> > *
+A 00041bdc std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
+A 00042010 std::wstring *
+A 0004211c std::filebuf *
+A 00042138 std::mbstate_t *
+A 00042234 std::streambuf *
+A 000424c4 Y;CDt0
+A 00042500 Y;CDtg
+A 00042670 std::ios *
+A 000427a0 _RWSTDGuard
+A 000427c4 std::istream *
+A 000427e0 std::ostream *
+A 000429b5 Ph85D
+A 00042a64 Ph85D
+A 00042b13 Ph85D
+A 00042b68 std::ios_base::failure
+A 00042ef8 _RWSTDGuard *
+A 00043042 Y^[Y]
+A 00043260 std::ostream::sentry *
+A 0004351f _^[Y]
+A 000435bc std::codecvt<char,char,std::mbstate_t> *
+A 00043691 Y;CDu
+A 000437b1 SPRPS
+A 00043a4f SPRPS
+A 00043c60 std::locale *
+A 00043cf1 Y;CDu
+A 00044212 Y;CDu
+A 00044473 S`RQPV
+A 0004478d Y[YY]
+A 00044acc _^[YY]
+A 00044b29 _^[YY]
+A 00044bd0 std::basic_ostream<char,std::char_traits<char> >::sentry
+A 00045063 _^[YY]
+A 000451e1 Y;CDu
+A 0004584b Y;CDu
+A 00045aac __rwstd::use_Clib_locale
+A 00045b64 std::ctype<char> *
+A 00045bdc std::ctype_byname<char> *
+A 00045c88 std::locale::facet *
+A 00045d5c std::logic_error *
+A 00045dac std::out_of_range *
+A 00045dcc std::length_error *
+A 00045e04 _RWSTDMutex *
+A 00045eec __rwstd::facet_imp *
+A 00045f14 __rwstd::ref_counted *[2]
+A 00045f3c std::exception *
+A 00045f5c __rwstd::ref_counted *
+A 00045fa4 __rwstd::ref_counted
+A 00046000 __rwstd::facet_imp
+A 0004605c std::locale::facet
+A 000460b8 std::ctype_byname<char>
+A 00046118 std::ctype<char>
+A 0004618c std::basic_ostream<char,std::char_traits<char> >
+A 00046208 std::basic_ios<char,std::char_traits<char> >
+A 00046280 std::codecvt<char,char,std::mbstate_t>
+A 000462fc std::basic_istream<char,std::char_traits<char> >
+A 00046378 std::basic_streambuf<char,std::char_traits<char> >
+A 000463e8 std::mbstate_t
+A 00046430 std::basic_filebuf<char,std::char_traits<char> >
+A 0004649c __rwstd::__string_ref<char,std::char_traits<char>,std::allocator<char> >
+A 0004650c std::string[]
+A 0004654c __rwstd::locale_vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >
+A 000465e8 __rwstd::locale_vector<__rwstd::facet_imp *>
+A 000466ac std::ctype_base
+A 000466dc __rwstd::__string_ref_rep<std::allocator<char> >
+A 00046728 std::codecvt_base
+A 0004676c std::ios_base
+A 000467a8 __rwstd::ctype_helper<char>
+A 00046904 std::ios_base::failure *
+A 00046ae8 std::ios_base::Init *
+A 00046c1c std::ios_base *
+A 00046de0 std::ios_base::Init
+A 00047368 CG;^Hv
+A 0004739b CG;^Pv
+A 00047d48 __rwstd::locale_imp *
+A 00048046 t&VWC3
+A 000480dc __rwstd::use_Clib_locale *
+A 00048424 std::runtime_error
+A 000489e0 0;s0r
+A 00048a72 1;s0r
+A 00048e98 __rwstd::locale_imp
+A 00048f71 JHQj 
+A 000493dc std::runtime_error *
+A 000496b6 t?BCIu
+A 00049859 _^[Y]
+A 00049a4f **BCCxh1
+A 00049a5f SWVUP
+A 00049bd0 _^[YY]
+A 00049f2d _^[Y]
+A 0004a151 _^[Y]
+A 0004a35d Y_^[]
+A 0004a410 std::type_info
+A 0004a45c type_info_hash
+A 0004a78a _^[YY]
+A 0004ac74 _^[YY]
+A 0004b553 A<ru	3
+A 0004b59e 9+u <tt
+A 0004b833 _^[Y]
+A 0004ba65 _^[YY]
+A 0004bfee _^[Y]
+A 0004cf75 @u^j.W
+A 0004d3b8 %u8F3
+A 0004de93 Nt/NtB
+A 0004df04 Nt/Nt?
+A 0004e374 @(_^[]
+A 0004e52d _^j.V
+A 0004e593 _^j.V
+A 0004e5f9 _^j.V
+A 0004e65c _^j.V
+A 0004e86c B$_^[
+A 0004e9fc u/j_V
+A 0004ea0b u j.V
+A 0004ebb3 S$uEj4
+A 0004f31b B$_^[
+A 0004f6e1 K(QjPW
+A 0004f6f2 C,PjQW
+A 0004f86c C,Pj*W
+A 0004f87d S0Rj+W
+A 0004f88e K4Qj,W
+A 0004f89f C8Pj-W
+A 0004f8b0 S<Rj.W
+A 0004f8c1 K@Qj/W
+A 0004f8d2 CDPj0W
+A 0004f8e3 SHRj1W
+A 0004f8f4 KLQj2W
+A 0004f905 CPPj3W
+A 0004f916 STRj4W
+A 0004f927 KXQj5W
+A 0004f938 C\Pj6W
+A 0004f949 S`Rj7W
+A 0004f95a KdQj8W
+A 0004f96b ChPj9W
+A 0004f97c SlRj:W
+A 0004f98d KpQj;W
+A 0004f99e CtPj<W
+A 0004f9af SxRj=W
+A 0004f9c0 K|Qj>W
+A 0004fb4d S Rj#W
+A 0004fb60 K"Qj$W
+A 0004fb73 C$Pj%W
+A 0004fb86 S&Rj&W
+A 0004fb99 K(Qj'W
+A 0004fcbb H_^[]
+A 00050142 H_^[Y]
+A 000502c0 e@FBC;u
+A 00050377 USVW3
+A 00050438 USVW3
+A 00050fe6 iXD5NZ
+A 00051b65 ^[YY]
+A 00052059 ^[YY]
+A 00052afb _^[Y]
+A 00052c16 _^[Y]
+A 00052c6f Rh<6E
+A 00053011 D<"u%
+A 00053322 9\u.f
+A 000533bc SVWUQ
+A 00053500 Z]_^[
+A 00053b43 _^[YY]
+A 000542ea _^[Y]
+A 0005443b t1WCSV
+A 0005447c _^[Y]
+A 00054860 tAJtR
+A 00054e41 _^[Y]
+A 000553ad QUVWRSPT
+A 000553ed VWRSP
+A 0005546d 0_^[Y]
+A 00056823 _^[YY]
+A 00057804 EExternal *
+A 0005781c EMathError *
+A 00057838 EIntError *
+A 00057850 EStackOverflow *
+A 00057870 EControlC *
+A 00057888 EPrivilege *
+A 000578a4 EAccessViolation *
+A 000578c4 EUnderflow *
+A 000578e0 EOverflow *
+A 000578f8 EZeroDivide *
+A 00057914 EInvalidOp *
+A 00057930 EIntOverflow *
+A 0005794c ERangeError *
+A 00057968 EDivByZero *
+A 00057988 Exception *[2]
+A 000579a4 EStackOverflow &
+A 000579c4 EControlC &
+A 000579dc EPrivilege &
+A 000579f8 EAccessViolation &
+A 00057a18 EUnderflow &
+A 00057a34 EOverflow &
+A 00057a4c EZeroDivide &
+A 00057a68 EInvalidOp &
+A 00057a84 EIntOverflow &
+A 00057aa0 ERangeError &
+A 00057abc EDivByZero &
+A 00057afc Sysutils::EDivByZero
+A 00057b5c Sysutils::ERangeError
+A 00057bbc Sysutils::EIntOverflow
+A 00057c1c Sysutils::EInvalidOp
+A 00057c7c Sysutils::EZeroDivide
+A 00057cdc Sysutils::EOverflow
+A 00057d38 Sysutils::EUnderflow
+A 00057d98 Sysutils::EAccessViolation
+A 00057dfc Sysutils::EPrivilege
+A 00057e5c Sysutils::EControlC
+A 00057eb8 Sysutils::EStackOverflow
+A 00057f1c Sysutils::EIntError
+A 00057f78 Sysutils::EMathError
+A 00057fd8 Sysutils::EExternal
+A 00058691 Y^[Y]
+A 00058c4e TCProcessMode
+A 00058c69 cmCompress
+A 00058c74 cmExpand
+A 00058c7d cmDelete
+A 00058cd5 ELZHBadDecodeTable
+A 00058cee ELZHBadDecodeTable
+A 00058d0b Compress
+A 00058d65 EUnableToCompress
+A 00058d7e EUnableToCompressd
+A 00058d9a Compress
+A 00058df1 EInsufficientDiskSpace
+A 00058e0e EInsufficientDiskSpace
+A 00058e2f Compress
+A 00058e89 EUnrecognizedCompressionMethod
+A 00058eae EUnrecognizedCompressionMethod
+A 00058ed7 Compress
+A 00058f31 EInvalidHeaderArchiveType
+A 00058f52 EInvalidHeaderArchiveType0
+A 00058f76 Compress
+A 00058fcd EInvalidHeader
+A 00058fe2 EInvalidHeader
+A 00058ffb Compress
+A 00059055 EBadChecksum
+A 0005906a EBadChecksumT
+A 00059081 Compress
+A 000590d9 EInvalidKey
+A 000590ea EInvalidKey
+A 00059100 Compress
+A 00059112 TCompressArchiveType
+A 00059134 caSingle
+A 0005913d caMultiH
+A 0005914a TCompressionMethod
+A 0005916a coNone
+A 00059171 coRLE
+A 00059177 coLZH
+A 0005917d coCustom
+A 00059186 coLZH5
+A 000591d9 TCompressedFileInfo
+A 000591f2 TCompressedFileInfo
+A 00059210 Compress
+A 00059222 TFilenameCheckEvent
+A 00059239 filepath
+A 00059242 String
+A 0005924f TCProcessMode`
+A 00059262 TCompressEvent
+A 00059279 TStream
+A 00059282 source
+A 00059289 TStream
+A 00059292 CompressID
+A 0005929d String
+A 000592a5 Outputsize
+A 000592b0 Integer
+A 000592b9 checksum
+A 000592c2 Integer
+A 000592d2 TExpandEvent
+A 000592e7 TStream
+A 000592f0 source
+A 000592f7 TStream
+A 00059300 Sourcesize
+A 0005930b Integer
+A 00059314 Destsize
+A 0005931d Integer
+A 00059326 CompressID
+A 00059331 String
+A 00059339 checksum
+A 00059342 Integer
+A 00059352 TRecognizeEvent
+A 00059365 CompressID
+A 00059370 String
+A 00059378 recognized
+A 00059383 Boolean
+A 00059392 TShowProgressEvent
+A 000593a8 PercentageDone
+A 000593b7 Integer
+A 0005940d TCompThreadSafety
+A 00059426 TCompThreadSafety
+A 00059442 Compress
+A 000594e2 	TCompress
+A 000594f1 	TCompress
+A 00059506 Compress
+A 0005952b RegName
+A 0005954c 	RegNumber\
+A 00059571 OnCompress
+A 00059596 OnExpand
+A 000595b9 OnCheckFileL
+A 000595df OnRecognize
+A 00059605 OnShowProgress
+A 0005962e TargetPath
+A 00059653 MakeDirectories
+A 0005967d ExceptionOnFileError
+A 000596ca CheckSpaceBeforeExpand
+A 00059794 TCompress Evaluation Version
+A 000597b4 Registration: $US59 ($NZ119)
+A 000597d1 Mastercard/Visa accepted
+A 000597ea Fax: +64-3-384-5138
+A 000597fe Further info: admin@spis.co.nz
+A 0005981d or Registration Form in COMPRESS.HLP
+A 00059aa2 u#;l$
+A 00059ae5 QQQQQQQQSV
+A 00059f69 _^[YY]
+A 0005a02d R@_^[
+A 0005a168 Could not load 
+A 0005a188 TCOMPRESS
+A 0005a29c Could not load resource: 
+A 0005a44b _^[YY]
+A 0005a50f _^[YY]
+A 0005a5a9 _^[YY]
+A 0005a960 Unrecognized compression method: "
+A 0005a98c " in header
+A 0005aae4 _^[YY]
+A 0005aaf8 File locked -- valid key required
+A 0005ab24 Bad checksum during expansion -- data may be invalid
+A 0005acd4 Expand can't handle caMulti archive type in compressed header
+A 0005ad63 _^[Y]
+A 0005b2e3 QDKGu
+A 0005b524 Disk protected or full during compression
+A 0005b558 Disk full or write error during compression
+A 0005bbdc Disk protected or full during compression
+A 0005c09e _^[YY]
+A 0005c0c0 Can't recognize compressed file header
+A 0005c0f0 Archive type must be caMulti
+A 0005c470 Not enough disk space to expand 
+A 0005c5e4 Could not compress data, will store instead
+A 0005c6e7 !:^(u
+A 0005c788 SVWU3
+A 0005c956 Kf;L$
+A 0005cd7c Xhf;4{u	
+A 0005cd9d YZ]_^[
+A 0005ce15 <_^[]
+A 0005d021 Shf;4Ju
+A 0005d05c SVWUQf
+A 0005d0d2 Z]_^[
+A 0005d0d8 SVWQf
+A 0005dddc Bad decode table in archive!
+A 0005dff7 _^[Y]
+A 0005e656 _^[Y]
+A 0005e705 A_^[Y]
+A 0005ea37 QSVWf
+A 0005eaca _^[Y]
+A 0005eca4 SVWUQ
+A 0005eebb Z]_^[
+A 0005f124 _^[Y]
+A 0005f510 PYZ]_^[
+A 0005f518 SVWUQ
+A 0005f63f  }+f;
+A 0005f759 Z]_^[
+A 0005fd09 @D_^[
+A 0005fd38 Compress
+A 000603f4 Borland C++ - Copyright 1999 Inprise Corporation
+A 00060480 Nonshared DATA segment required
+A 000604a0 Cannot run multiple instances of a DLL under WIN32s
+A 0006051c Given input format is not supported.
+A 00060546 Stream operation failed.
+A 00060563 Given output format is not supported.
+A 00060589 Stream operation failed.
+A 000605a7 Given input format is not supported.
+A 000605d1 Stream operations failed.
+A 000605ef Given output format is not supported.
+A 00060615 This will be caught...
+A 0006062c This will be caught...
+A 00060643 Stream operation failed.
+A 00060660 Given input format is not supported.
+A 000611cc CONVERT
+A 000611d4 This module cannot be run separately
+A 000611fa This module cannot be run separately
+A 00061220 Not enough arguments
+A 00061240 Cannot open BRO file.
+A 00061257 Invalid data in BRO header.
+A 000612d4 Not Defined
+A 000612f4 Prussian Blue
+A 00061334 Teal Green
+A 00061354 Corn Flower Blue
+A 00061394 Reddish Brown
+A 000613b4 Magenta
+A 000613d4 Light Lilac
+A 000613f4 Lilac
+A 00061414 Mint Green
+A 00061434 Deep Gold
+A 00061454 Orange
+A 00061474 Yellow
+A 00061494 Lime Green
+A 000614b4 Brass
+A 000614d4 Silver
+A 000614f4 Russet Brown
+A 00061514 Cream Brown
+A 00061534 Pewter
+A 00061554 Black
+A 00061574 Ultramarine
+A 00061594 Royal Purple
+A 000615b4 Dark Gray
+A 000615d4 Dark Brown
+A 000615f4 Deep Rose
+A 00061614 Light Brown
+A 00061634 Salmon Pink
+A 00061654 Vermilion
+A 00061674 White
+A 00061694 Violet
+A 000616b4 Seacrest
+A 000616d4 Sky Blue
+A 000616f4 Pumpkin
+A 00061714 Cream Yellow
+A 00061734 Khaki
+A 00061754 Clay Brown
+A 00061774 Leaf Green
+A 00061794 Peacock Blue
+A 000617d4 Warm Gray
+A 000617f4 Dark Olive
+A 00061814 Linen
+A 00061854 Deep Green
+A 00061874 Lavender
+A 00061894 Wisteria Violet
+A 000618b4 Beige
+A 000618d4 Carmine
+A 000618f4 Amber Red
+A 00061914 Olive Green
+A 00061934 Dark Fuchsia
+A 00061954 Tangerine
+A 00061974 Light Blue
+A 00061994 Emerald Green
+A 000619b4 Purple
+A 000619d4 Moss Green
+A 000619f4 Flesh Pink
+A 00061a14 Harvest Gold
+A 00061a34 Electric Blue
+A 00061a54 Lemon Yellow
+A 00061a74 Fresh Green
+A 00061a94 Applique Material
+A 00061ab4 Applique Position
+A 00061ad4 Applique
+A 00061af4 Black
+A 00061b14 Dark Blue
+A 00061b54 Dark Cyan
+A 00061b94 Dark Purple
+A 00061bb4 Magenta
+A 00061bd4 Dark Red
+A 00061c14 Dark Green
+A 00061c34 Green
+A 00061c54 Dark Yellow
+A 00061c74 Yellow
+A 00061c94 Dark Gray
+A 00061cd4 White
+A 00061cf4 Any Color
+A 00061d14 Black
+A 00061d34 White
+A 00061d54 Yellow
+A 00061d74 Orange
+A 00061d94 Olive Green
+A 00061db4 Green
+A 00061df4 Purple
+A 00061e54 Brown
+A 00061eb4 Dark Brown
+A 00061ed4 Pale Violet
+A 00061ef4 Pale Yellow
+A 00061f14 Pale Pink
+A 00061f34 Peach
+A 00061f54 Beige
+A 00061f74 Wine Red
+A 00061f94 Pale Sky
+A 00061fb4 Yellow Green
+A 00061fd4 Silver Gray
+A 00062014 Pale Aqua
+A 00062034 Baby Blue
+A 00062054 Powder Blue
+A 00062074 Bright Blue
+A 00062094 Slate Blue
+A 000620b4 Navy Blue
+A 000620d4 Salmon Pink
+A 000620f4 Coral
+A 00062114 Burnt Orange
+A 00062134 Cinnamon
+A 00062154 Umber
+A 00062174 Blond
+A 00062194 Sunflower
+A 000621b4 Orchid Pink
+A 000621d4 Peony Purple
+A 000621f4 Burgundy
+A 00062214 Royal Purple
+A 00062234 Cardinal Red
+A 00062254 Opal Green
+A 00062274 Moss Green
+A 00062294 Meadow Green
+A 000622b4 Dark Green
+A 000622d4 Aquamarine
+A 000622f4 Emerald Green
+A 00062314 Peacock Green
+A 00062334 Dark Gray
+A 00062354 Ivory White
+A 00062374 Hazel
+A 00062394 Toast
+A 000623b4 Salmon
+A 000623d4 Cocoa Brown
+A 000623f4 Sienna
+A 00062414 Sepia
+A 00062434 Dark Sepia
+A 00062454 Violet Blue
+A 00062474 Blue Ink
+A 00062494 Sola Blue
+A 000624b4 Green Dust
+A 000624d4 Crimson
+A 000624f4 Floral Pink
+A 00062534 Olive Drab
+A 00062554 Meadow
+A 00062574 Mustard
+A 00062594 Yellow Ocher
+A 000625b4 Old Gold
+A 000625d4 Honey Dew
+A 000625f4 Tangerine
+A 00062614 Canary Yellow
+A 00062634 Vermiliom
+A 00062654 Bright Green
+A 00062674 Ocean Blue
+A 00062694 Beige Gray
+A 000626b4 Bamboo
+A 000626d4 Black
+A 00062714 Green
+A 00062754 Purple
+A 00062774 Yellow
+A 000627b4 Light Blue
+A 000627d4 Light Green
+A 000627f4 Orange
+A 00062834 Brown
+A 00062854 White
+A 00062874 Dark Blue
+A 00062894 Dark Green
+A 000628b4 Dark Red
+A 000628d4 Light Red
+A 000628f4 Dark Purple
+A 00062914 Light Purple
+A 00062934 Dark Yellow
+A 00062954 Light Yellow
+A 00062974 Dark Grey
+A 00062994 Light Grey
+A 000629b4 Dark Orange
+A 000629d4 Light Orange
+A 000629f4 Dark Pink
+A 00062a14 Light Pink
+A 00062a34 Dark Brown
+A 00062a54 Light Brown
+A 00062a74 Black
+A 00062a94 90% Black
+A 00062ab4 80% Black
+A 00062ad4 70% Black
+A 00062af4 60% Black
+A 00062b14 50% Black
+A 00062b34 40% Black
+A 00062b54 30% Black
+A 00062b74 20% Black
+A 00062b94 10% Black
+A 00062bb4 White
+A 00062c14 Green
+A 00062c34 Yellow
+A 00062c74 Magenta
+A 00062c94 Purple
+A 00062cb4 Orange
+A 00062cf4 Dark Brown
+A 00062d14 Powder Blue
+A 00062d34 Pastel Blue
+A 00062d54 Baby Blue
+A 00062d74 Electric Blue
+A 00062d94 Twilight Blue
+A 00062db4 Navy Blue
+A 00062dd4 Deep Navy Blue
+A 00062df4 Desert Blue
+A 00062e14 Sky Blue
+A 00062e34 Ice Blue
+A 00062e54 Light BlueGreen
+A 00062e74 Ocean Green
+A 00062e94 Moss Green
+A 00062eb4 Dark Green
+A 00062ed4 Forest Green
+A 00062ef4 Grass Green
+A 00062f14 Kentucky Green
+A 00062f34 Light Green
+A 00062f54 Spring Green
+A 00062f74 Turquoise
+A 00062f94 Sea Green
+A 00062fb4 Faded Green
+A 00062fd4 Ghost Green
+A 00062ff4 Mint Green
+A 00063014 Army Green
+A 00063034 Avocado Green
+A 00063054 Martian Green
+A 00063074 Dull Green
+A 00063094 Chartreuse
+A 000630b4 Moon Green
+A 000630d4 Murky Green
+A 000630f4 Olive Drab
+A 00063114 Khaki
+A 00063134 Olive
+A 00063154 Banana Yellow
+A 00063174 Light Yellow
+A 00063194 Chalk
+A 000631b4 Pale Yellow
+A 000631d4 Brown
+A 000631f4 Red Brown
+A 00063234 Automn Orange
+A 00063254 Light Orange
+A 00063274 Peach
+A 00063294 Deep Yellow
+A 000632d4 Walnut
+A 000632f4 Ruby Red
+A 00063314 Brick Red
+A 00063334 Tropical Pink
+A 00063354 Soft Pink
+A 00063374 Faded Pink
+A 00063394 Crimson
+A 000633b4 Regal Red
+A 000633d4 Deep Rose
+A 000633f4 Neon Red
+A 00063414 Deep Pink
+A 00063434 Hot Pink
+A 00063454 Dusty Rose
+A 00063494 Deep Violet
+A 000634b4 Light Violet
+A 000634d4 Violet
+A 000634f4 Dusty Plum
+A 00063514 Pale Purple
+A 00063534 Majestic Purple
+A 00063554 Neon Purple
+A 00063574 Light Purple
+A 00063594 Twilight Violet
+A 000635b4 Easter Purple
+A 000635d4 Deep Purple
+A 000635f4 Grape
+A 00063614 Blue Violet
+A 00063634 Blue Purple
+A 00063654 Deep River
+A 00063674 Deep Azure
+A 00063694 Storm Blue
+A 000636b4 Deep Blue
+A 000636d4 Dark Green
+A 000636f4 Green
+A 00063714 Dark Blue
+A 00063774 Magenta
+A 000637b4 Light Pink
+A 000637f4 Yellow
+A 00063814 White
+A 00063854 Dark Gray
+A 00063874 Black
+A 00063894 Brown
+A 000658d4 Black
+A 000658f4 90% Black
+A 00065914 80% Black
+A 00065934 70% Black
+A 00065954 60% Black
+A 00065974 50% Black
+A 00065994 40% Black
+A 000659b4 30% Black
+A 000659d4 20% Black
+A 000659f4 10% Black
+A 00065a14 White
+A 00065a74 Green
+A 00065a94 Yellow
+A 00065ad4 Magenta
+A 00065af4 Purple
+A 00065b14 Orange
+A 00065b54 Dark Brown
+A 00065b74 Powder Blue
+A 00065b94 Pastel Blue
+A 00065bb4 Baby Blue
+A 00065bd4 Electric Blue
+A 00065bf4 Twilight Blue
+A 00065c14 Navy Blue
+A 00065c34 Deep Navy Blue
+A 00065c54 Desert Blue
+A 00065c74 Sky Blue
+A 00065c94 Ice Blue
+A 00065cb4 Light BlueGreen
+A 00065cd4 Black
+A 00065d14 Green
+A 00065d54 Purple
+A 00065d74 Yellow
+A 00065db4 Light Blue
+A 00065dd4 Light Green
+A 00065df4 Orange
+A 00065e34 Brown
+A 00065e54 White
+A 00065e74 Black
+A 00065e94 Black
+A 00065eb4 Black
+A 00065ed4 Black
+A 00065ef4 Black
+A 00065f14 Black
+A 00065f34 Light Red
+A 00065f54 Light Purple
+A 00065f74 Light Yellow
+A 00065f94 Light Grey
+A 00065fb4 Black
+A 00065fd4 Black
+A 00065ff4 Light Orange
+A 00066014 Light Pink
+A 00066034 Light Brown
+A 00066054 Black
+A 00066074 Black
+A 00066094 Black
+A 000660b4 Black
+A 000660d4 Black
+A 000660f4 Dark Blue
+A 00066114 Dark Green
+A 00066134 Dark Red
+A 00066154 Dark Purple
+A 00066174 Dark Yellow
+A 00066194 Dark Grey
+A 000661b4 Black
+A 000661d4 Black
+A 000661f4 Dark Orange
+A 00066214 Dark Pink
+A 00066234 Dark Brown
+A 00066e08 %03i,%s,%s,%c,%u,%u,%u
+A 00066e20 Default
+A 00066e28 Green
+A 00066e2e Default
+A 00066e3b Default
+A 00066e47 Default
+A 00066e4f Yellow
+A 00066e56 Default
+A 00066e63 Default
+A 00066e6b Cream
+A 00066e71 Default
+A 00066e79 Dark Green
+A 00066e84 Default
+A 00066e8c Dark Blue
+A 00066e96 Default
+A 00066e9e Dark Red
+A 00066ea7 Default
+A 00066eaf Orange
+A 00066eb6 Default
+A 00066ebe Purple
+A 00066ec5 Default
+A 00066ecd Brown
+A 00066ed3 Default
+A 00066edb White
+A 00066ee1 Default
+A 00066ee9 Black
+A 00066eef Default
+A 00066efc Default
+A 00066f09 Default
+A 00066f11 Turquoise
+A 00066f1b Default
+A 00066f28 Default
+A 00066f30 Khaki
+A 00066f36 Default
+A 00066f3e Powder Blue
+A 00066f51 Cannot open RGB file
+A 00066f66 %c%c%c,
+A 00066f71 Unexpected end of RGB file (in brand)
+A 00066f97 Field in RGB file too long (in brand)
+A 00066fc0 Unexpected end of RGB file (in name)
+A 00066fe5 Field in RGB file too long (in name)
+A 0006700e Unexpected end of RGB file (in density)
+A 00067036 %i,%i,%i
+A 00067040 Unexpected end of RGB file (in rgb section)
+A 0006706e Cannot create RGB file.
+A 00067087 %03i,%s,%s,%c,%u,%u,%u
+A 000670a2 * %s  RGB(%i %i %i)
+A 000670b6 RGB(%i %i %i)
+A 000670c4 Allocation failed, out of memory.
+A 000672fc Cannot allocate Cypher object, out of memory
+A 00067329 Cannot open CSD file.
+A 00067340 Bad CSD file length
+A 00067354 Corrupted CSD file
+A 00067367 Corrupted CSD file or unknown version number
+A 00067394 Corrupted CSD file
+A 000673a7 Unable to allocate array, not enough memory
+A 000673d3 Cannot allocate cypher object, out of memory
+A 00067400 Unexpected number of entries in csd file
+A 00067429 Unable to allocate array, not enough memory
+A 0006750c standard.log
+A 0006751f Error: 
+A 00067527 Warning: 
+A 000676ea Corrupted EXP data
+A 000676fd Corrupted EXP data
+A 00067710 Data to write contains invalid EXP commands
+A 0006773c Allocation failed, out of memory
+A 0006775d File too large to split up properly
+A 00067781 Cannot create output file
+A 0006779b Cannot write stitch data to output file
+A 000677c3 %s file broken up from %s-a.%s to %s-%c.%s
+A 0006805a TEstStr
+A 00068062 FIRSTBLOCKIN
+A 0006806f FIRSTBLOCKOUT
+A 0006807d FIRSTBLOCKIN
+A 0006808a FIRSTBLOCKOUT
+A 00068098 Insufficient Memory Error
+A 000680b2 Cannot open HUS file.
+A 000680c9 Insufficient Memory Error
+A 000680e3 Error reading HUS stitch data block 1 from file
+A 00068113 Error reading HUS stitch data block 2 from file
+A 00068143 Error reading HUS stitch data block 3 from file
+A 00068173 Insufficient Memory Error
+A 0006818d Error compressing stitch data
+A 000681ab Error compressing stitch data
+A 000681c9 Error compressing stitch data
+A 000681e7 Error writing to HUS file
+A 00068321 Scott Ellis
+A 0006832d Cannot open EMX file.
+A 00068344 EMX@#$7
+A 00068355 This file could not be opened.|Unknown Version
+A 00068384 Cannot write EMX format
+A 000685da z?Cannot open PCS file.
+A 000685f3 %d%d%d
+A 000685fa Error reading text PCS x,y values
+A 0006861c Invalid PCS ID Character
+A 00068635 Bad PCS file length
+A 00068649 Invalid PCS file
+A 000686e0 #PEC0001
+A 000686fb Cannot open PEC file.
+A 00068717 Invalid PEC file.
+A 0006872a No stitch data to output!
+A 00068745 LA:%-16s
+A 000687b4 #PES0001
+A 000687cc CEmbOne
+A 00068815 CSewSeg
+A 00068822 CSewSegCSewFigSegCannot open PES file.
+A 0006884f Invalid PES file.
+A 00068862 PEC subset of file was unable to be read properly, will use PES data
+A 000688a7 Corrupted PES file
+A 000688ba No stitch data to output!
+A 0006b43d Thread Trimming
+A 0006b44e Sequin Drop
+A 0006b45b Borer IN
+A 0006b467 Cannot open PMU file.
+A 0006b47e Unhandled extended function stitch.
+A 0006b630 Colour Change
+A 0006b63e Needle
+A 0006b645 Thread Trimming
+A 0006b656 Upper Thread Trimming (ASSUMED)
+A 0006b677 Sequin Drop
+A 0006b684 Borer IN
+A 0006b68e Chenille Start
+A 0006b69e Chenille End
+A 0006b6ac Frame OUT
+A 0006b6b7 Sequin Start
+A 0006b6c5 Sequin End
+A 0006b6d1 Low Speed
+A 0006b6dc High Speed
+A 0006b6e8 Border Depth
+A 0006b6f5 Depth
+A 0006b6fb Oper.list comment (ASSUMED)
+A 0006b71a Cannot open PUM file.
+A 0006b9f4                                                                 
+A 0006ba64 Runtime error     at 00000000
+A 0006ba84 Error
+A 0006ba8c 0123456789ABCDEF
+A 0006baf3 FCorrupted SEW data
+A 0006bb07 Cannot open SEW file.
+A 0006bb1e Bad SEW file length
+A 0006bc1c Cannot open SHV file.
+A 0006bc33 Too many stitches in SHV file.
+A 0006bc52 Unknown stitch type in SHV file.
+A 0006bc73 This is an SHV format embroidery file: please view the thumbnail image for more detail
+A 0006be51 Cannot open XXX file.
+A 0006be68 Cannot find the end of stitch marker in the XXX stitch data
+A 0006beae Unhandled extended function stitch.
+A 0006bed2 Unhandled stitch type.
+A 0006c5eb HOMECNV.INI
+A 0006c5f7  Settings
+A 0006c601 Stitch Threshold
+A 0006c612 NoNumber
+A 0006c61b NoNumber
+A 0006c627 Colour Threshold
+A 0006c638 NoNumber
+A 0006c641 NoNumber
+A 0006c64d SplitOnColourChange
+A 0006c668 MapToRGB
+A 0006c678 ReturnToOriginOnSplits
+A 0006c696 StartOffset
+A 0006c6a6 %d,%d
+A 0006c6ac DontImmediatelyRepeatColours
+A 0006c6d0 RestrictSEWColours
+A 0006df7b lCu7&
+A 0006e131 MCi).
+A 0006e180 Cannot initialise key space
+A 0006e19c Cannot initialise cipher space
+A 0006e1bb Illegal file size.
+A 0006e1ce Decrypter got an error.
+A 0006e1e6 Cannot initialise key space
+A 0006e202 Cannot initialise cipher space
+A 0006e221 ERROR: Encrytper got an error...
+A 0006e3ca Incorrect compression level parameter passed to compressor.  Compression level = %d
+A 0006e41e Memory allocation failure in compression startup
+A 0006e44f muWriteIndex == 0
+A 0006e461 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006e498 ReadChar(): Attempt to read while in write mode
+A 0006e4c8 mpcBuffer != 0
+A 0006e4d7 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006e50e ReadChar(): Attempt to read from closed file
+A 0006e53b muWriteIndex == 0
+A 0006e54d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006e584 ReadChar(): Attempt to read while in write mode
+A 0006e5b4 mpcBuffer != 0
+A 0006e5c3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006e5fa ReadChar(): Attempt to read from closed file
+A 0006e67a Incorrect compression level parameter passed to compressor.  Compression level = %d
+A 0006e6ce Memory allocation failure in expansion startup
+A 0006e6fd Internal 1 error in Greenleaf Decompression routine
+A 0006e731 Internal 2 error in Greenleaf Decompression routine
+A 0006e7ba IsBadWritePtr()
+A 0006e7ca D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006e805 %s: Bad pointer to object of class %s
+A 0006e82b deleteALCompressor()
+A 0006e840 ALCompressor
+A 0006e84d this_object->GoodTag()
+A 0006e864 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006e89f %s: %s is not an object of class %s
+A 0006e8c3 deleteALCompressor()
+A 0006e8d8 this_object
+A 0006e8e4 ALCompressor
+A 0006e8f1 IsBadWritePtr()
+A 0006e901 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006e93c %s: Bad pointer to object of class %s
+A 0006e962 ALCompress
+A 0006e96d ALCompressor
+A 0006e97a this_object->GoodTag()
+A 0006e991 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006e9cc %s: %s is not an object of class %s
+A 0006e9f0 ALCompress
+A 0006e9fb this_object
+A 0006ea07 ALCompressor
+A 0006ea14 IsBadWritePtr()
+A 0006ea24 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006ea5f %s: Bad pointer to object of class %s
+A 0006ea85 ALCompress
+A 0006ea90 ALStorage
+A 0006ea9a input->GoodTag()
+A 0006eaab D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006eae6 %s: %s is not an object of class %s
+A 0006eb0a ALCompress
+A 0006eb15 input
+A 0006eb1b ALStorage
+A 0006eb25 IsBadWritePtr()
+A 0006eb35 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006eb70 %s: Bad pointer to object of class %s
+A 0006eb96 ALCompress
+A 0006eba1 ALStorage
+A 0006ebab output->GoodTag()
+A 0006ebbd D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Compress.cpp
+A 0006ebf8 %s: %s is not an object of class %s
+A 0006ec1c ALCompress
+A 0006ec27 output
+A 0006ec2e ALStorage
+A 0006ece6 Binary copy
+A 0006ecf2 GoodTag()
+A 0006ecfc D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Copyc.cpp
+A 0006ed34 ~ALCopyCompressor: Attempt to delete invalid object
+A 0006ed68 muWriteIndex == 0
+A 0006ed7a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006edb1 ReadChar(): Attempt to read while in write mode
+A 0006ede1 mpcBuffer != 0
+A 0006edf0 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006ee27 ReadChar(): Attempt to read from closed file
+A 0006ee54 mpcBuffer != 0
+A 0006ee63 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006ee9a WriteChar(): Attempt to write to closed file
+A 0006efb6 Binary copy
+A 0006efc2 GoodTag()
+A 0006efcc D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Copyd.cpp
+A 0006f004 ~ALCopyDecompressor: Attempt to delete invalid object
+A 0006f03a muWriteIndex == 0
+A 0006f04c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006f083 ReadChar(): Attempt to read while in write mode
+A 0006f0b3 mpcBuffer != 0
+A 0006f0c2 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006f0f9 ReadChar(): Attempt to read from closed file
+A 0006f126 mpcBuffer != 0
+A 0006f135 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0006f16c WriteChar(): Attempt to write to closed file
+A 0006f28a IsBadWritePtr()
+A 0006f29a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f2d5 %s: Bad pointer to object of class %s
+A 0006f2fb ALStorageSetMonitor
+A 0006f30f ALStorage
+A 0006f319 this_object->GoodTag()
+A 0006f330 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f36b %s: %s is not an object of class %s
+A 0006f38f ALStorageSetMonitor
+A 0006f3a3 this_object
+A 0006f3af ALStorage
+A 0006f3b9 IsBadWritePtr()
+A 0006f3c9 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f404 %s: Bad pointer to object of class %s
+A 0006f42a ALStorageSetMonitor
+A 0006f43e ALMonitor
+A 0006f448 monitor->GoodTag()
+A 0006f45b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f496 %s: %s is not an object of class %s
+A 0006f4ba ALStorageSetMonitor
+A 0006f4ce monitor
+A 0006f4d6 ALMonitor
+A 0006f4e0 IsBadWritePtr()
+A 0006f4f0 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f52b %s: Bad pointer to object of class %s
+A 0006f551 ALStorageDelete
+A 0006f561 ALStorage
+A 0006f56b this_object->GoodTag()
+A 0006f582 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f5bd %s: %s is not an object of class %s
+A 0006f5e1 ALStorageDelete
+A 0006f5f1 this_object
+A 0006f5fd ALStorage
+A 0006f607 IsBadWritePtr()
+A 0006f617 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f652 %s: Bad pointer to object of class %s
+A 0006f678 ALStorageSetName
+A 0006f689 ALStorage
+A 0006f693 this_object->GoodTag()
+A 0006f6aa D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f6e5 %s: %s is not an object of class %s
+A 0006f709 ALStorageSetName
+A 0006f71a this_object
+A 0006f726 ALStorage
+A 0006f730 IsBadWritePtr()
+A 0006f740 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f77b %s: Bad pointer to object of class %s
+A 0006f7a1 ALStorageWildCardMatch
+A 0006f7b8 ALStorage
+A 0006f7c2 this_object->GoodTag()
+A 0006f7d9 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f814 %s: %s is not an object of class %s
+A 0006f838 ALStorageWildCardMatch
+A 0006f84f this_object
+A 0006f85b ALStorage
+A 0006f865 IsBadWritePtr()
+A 0006f875 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f8b0 %s: Bad pointer to object of class %s
+A 0006f8d6 ALStorageChangeExtension
+A 0006f8ef ALStorage
+A 0006f8f9 this_object->GoodTag()
+A 0006f910 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f94b %s: %s is not an object of class %s
+A 0006f96f ALStorageChangeExtension
+A 0006f988 this_object
+A 0006f994 ALStorage
+A 0006f99e IsBadWritePtr()
+A 0006f9ae D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006f9e9 %s: Bad pointer to object of class %s
+A 0006fa0f ALStorageChangeTrailingChar
+A 0006fa2b ALStorage
+A 0006fa35 this_object->GoodTag()
+A 0006fa4c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fa87 %s: %s is not an object of class %s
+A 0006faab ALStorageChangeTrailingChar
+A 0006fac7 this_object
+A 0006fad3 ALStorage
+A 0006fadd IsBadWritePtr()
+A 0006faed D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fb28 %s: Bad pointer to object of class %s
+A 0006fb4e ALStorageGetName
+A 0006fb5f ALStorage
+A 0006fb69 this_object->GoodTag()
+A 0006fb80 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fbbb %s: %s is not an object of class %s
+A 0006fbdf ALStorageGetName
+A 0006fbf0 this_object
+A 0006fbfc ALStorage
+A 0006fc06 IsBadWritePtr()
+A 0006fc16 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fc51 %s: Bad pointer to object of class %s
+A 0006fc77 ALStorageGetOldName
+A 0006fc8b ALStorage
+A 0006fc95 this_object->GoodTag()
+A 0006fcac D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fce7 %s: %s is not an object of class %s
+A 0006fd0b ALStorageGetOldName
+A 0006fd1f this_object
+A 0006fd2b ALStorage
+A 0006fd35 IsBadWritePtr()
+A 0006fd45 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fd80 %s: Bad pointer to object of class %s
+A 0006fda6 ALStorageGetStatusCode
+A 0006fdbd ALStorage
+A 0006fdc7 this_object->GoodTag()
+A 0006fdde D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006fe19 %s: %s is not an object of class %s
+A 0006fe3d ALStorageGetStatusCode
+A 0006fe54 this_object
+A 0006fe60 ALStorage
+A 0006fe6a IsBadWritePtr()
+A 0006fe7a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006feb5 %s: Bad pointer to object of class %s
+A 0006fedb ALStorageSetError
+A 0006feed ALStorage
+A 0006fef7 this_object->GoodTag()
+A 0006ff0e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006ff49 %s: %s is not an object of class %s
+A 0006ff6d ALStorageSetError
+A 0006ff7f this_object
+A 0006ff8b ALStorage
+A 0006ff95 IsBadWritePtr()
+A 0006ffa5 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0006ffe0 %s: Bad pointer to object of class %s
+A 00070006 ALStorageGetStatusString
+A 0007001f ALStorage
+A 00070029 this_object->GoodTag()
+A 00070040 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007007b %s: %s is not an object of class %s
+A 0007009f ALStorageGetStatusString
+A 000700b8 this_object
+A 000700c4 ALStorage
+A 000700cf IsBadWritePtr()
+A 000700df D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007011a %s: Bad pointer to object of class %s
+A 00070140 ALStorageGetStatusDetail
+A 00070159 ALStorage
+A 00070163 this_object->GoodTag()
+A 0007017a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000701b5 %s: %s is not an object of class %s
+A 000701d9 ALStorageGetStatusDetail
+A 000701f2 this_object
+A 000701fe ALStorage
+A 00070209 IsBadWritePtr()
+A 00070219 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070254 %s: Bad pointer to object of class %s
+A 0007027a ALStorageGetUnixTime
+A 0007028f ALStorage
+A 00070299 this_object->GoodTag()
+A 000702b0 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000702eb %s: %s is not an object of class %s
+A 0007030f ALStorageGetUnixTime
+A 00070324 this_object
+A 00070330 ALStorage
+A 0007033a IsBadWritePtr()
+A 0007034a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070385 %s: Bad pointer to object of class %s
+A 000703ab ALStorageToJulian
+A 000703bd ALStorage
+A 000703c7 this_object->GoodTag()
+A 000703de D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070419 %s: %s is not an object of class %s
+A 0007043d ALStorageToJulian
+A 0007044f this_object
+A 0007045b ALStorage
+A 00070465 IsBadWritePtr()
+A 00070475 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000704b0 %s: Bad pointer to object of class %s
+A 000704d6 ALStorageFromJulian
+A 000704ea ALStorage
+A 000704f4 this_object->GoodTag()
+A 0007050b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070546 %s: %s is not an object of class %s
+A 0007056a ALStorageFromJulian
+A 0007057e this_object
+A 0007058a ALStorage
+A 00070594 IsBadWritePtr()
+A 000705a4 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000705df %s: Bad pointer to object of class %s
+A 00070605 ALStorageSetTimeDateFromStruc
+A 00070623 ALStorage
+A 0007062d this_object->GoodTag()
+A 00070644 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007067f %s: %s is not an object of class %s
+A 000706a3 ALStorageSetTimeDateFromStruc
+A 000706c1 this_object
+A 000706cd ALStorage
+A 000706d7 time_struct != 0
+A 000706e8 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070723 Null tm struct passed to ALStorageSetTimeDateFromStruc
+A 0007075a IsBadWritePtr()
+A 0007076a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000707a5 %s: Bad pointer to object of class %s
+A 000707cb ALStorageGetStrucFromTimeDate
+A 000707e9 ALStorage
+A 000707f3 this_object->GoodTag()
+A 0007080a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070845 %s: %s is not an object of class %s
+A 00070869 ALStorageGetStrucFromTimeDate
+A 00070887 this_object
+A 00070893 ALStorage
+A 0007089d time_struct != 0
+A 000708ae D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000708e9 Null tm struct passed to ALStorageGetStrucFromTimeDate
+A 00070920 IsBadWritePtr()
+A 00070930 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007096b %s: Bad pointer to object of class %s
+A 00070991 ALStorageGetTime
+A 000709a2 ALStorage
+A 000709ac this_object->GoodTag()
+A 000709c3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000709fe %s: %s is not an object of class %s
+A 00070a22 ALStorageGetTime
+A 00070a33 this_object
+A 00070a3f ALStorage
+A 00070a49 hour != 0
+A 00070a53 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070a8e Null hour ptr passed to ALStorageGetTime
+A 00070ab7 minute != 0
+A 00070ac3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070afe Null minute ptr passed to ALStorageGetTime
+A 00070b29 second != 0
+A 00070b35 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070b70 Null second ptr passed to ALStorageGetTime
+A 00070b9b IsBadWritePtr()
+A 00070bab D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070be6 %s: Bad pointer to object of class %s
+A 00070c0c ALStorageSetTime
+A 00070c1d ALStorage
+A 00070c27 this_object->GoodTag()
+A 00070c3e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070c79 %s: %s is not an object of class %s
+A 00070c9d ALStorageSetTime
+A 00070cae this_object
+A 00070cba ALStorage
+A 00070cc4 (hour >= 0 && hour <= 23)
+A 00070cde D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070d19 Bad hour value passed to ALStorageSetTime
+A 00070d43 (minute >= 0 && minute <= 59)
+A 00070d61 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070d9c Bad minute value passed to ALStorageSetTime
+A 00070dc8 (second >= 0 && second <= 59)
+A 00070de6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070e21 Bad second value passed to ALStorageSetTime
+A 00070e4d IsBadWritePtr()
+A 00070e5d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070e98 %s: Bad pointer to object of class %s
+A 00070ebe ALStorageGetDate
+A 00070ecf ALStorage
+A 00070ed9 this_object->GoodTag()
+A 00070ef0 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070f2b %s: %s is not an object of class %s
+A 00070f4f ALStorageGetDate
+A 00070f60 this_object
+A 00070f6c ALStorage
+A 00070f76 month != 0
+A 00070f81 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00070fbc Null month ptr passed to ALStorageGetDate
+A 00070fe6 date != 0
+A 00070ff0 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007102b Null date ptr passed to ALStorageGetDate
+A 00071054 year != 0
+A 0007105e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071099 Null year ptr passed to ALStorageGetDate
+A 000710c2 IsBadWritePtr()
+A 000710d2 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007110d %s: Bad pointer to object of class %s
+A 00071133 ALStorageSetDate
+A 00071144 ALStorage
+A 0007114e this_object->GoodTag()
+A 00071165 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000711a0 %s: %s is not an object of class %s
+A 000711c4 ALStorageSetDate
+A 000711d5 this_object
+A 000711e1 ALStorage
+A 000711eb (month >= 1 && month <= 12)
+A 00071207 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071242 Bad month value passed to ALStorageSetDate
+A 0007126d (date >= 1 && date <= 31)
+A 00071287 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000712c2 Bad date value passed to ALStorageSetDate
+A 000712ec IsBadWritePtr()
+A 000712fc D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071337 %s: Bad pointer to object of class %s
+A 0007135d ALStorageSetTimeDateFromUnix
+A 0007137a ALStorage
+A 00071384 this_object->GoodTag()
+A 0007139b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000713d6 %s: %s is not an object of class %s
+A 000713fa ALStorageSetTimeDateFromUnix
+A 00071417 this_object
+A 00071423 ALStorage
+A 0007142d IsBadWritePtr()
+A 0007143d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071478 %s: Bad pointer to object of class %s
+A 0007149e ALStorageFlushBuffer
+A 000714b3 ALStorage
+A 000714bd this_object->GoodTag()
+A 000714d4 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007150f %s: %s is not an object of class %s
+A 00071533 ALStorageFlushBuffer
+A 00071548 this_object
+A 00071554 ALStorage
+A 0007155e IsBadWritePtr()
+A 0007156e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000715a9 %s: Bad pointer to object of class %s
+A 000715cf ALStorageLoadBuffer
+A 000715e3 ALStorage
+A 000715ed this_object->GoodTag()
+A 00071604 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007163f %s: %s is not an object of class %s
+A 00071663 ALStorageLoadBuffer
+A 00071677 this_object
+A 00071683 ALStorage
+A 0007168d IsBadWritePtr()
+A 0007169d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000716d8 %s: Bad pointer to object of class %s
+A 000716fe ALStorageRename
+A 0007170e ALStorage
+A 00071718 this_object->GoodTag()
+A 0007172f D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007176a %s: %s is not an object of class %s
+A 0007178e ALStorageRename
+A 0007179e this_object
+A 000717aa ALStorage
+A 000717b4 new_name != 0
+A 000717c2 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000717fd NULL new_name in ALStorageRename
+A 0007181e IsBadWritePtr()
+A 0007182e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071869 %s: Bad pointer to object of class %s
+A 0007188f ALStorageRenameToBackup
+A 000718a7 ALStorage
+A 000718b1 this_object->GoodTag()
+A 000718c8 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071903 %s: %s is not an object of class %s
+A 00071927 ALStorageRenameToBackup
+A 0007193f this_object
+A 0007194b ALStorage
+A 00071955 IsBadWritePtr()
+A 00071965 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000719a0 %s: Bad pointer to object of class %s
+A 000719c6 ALStorageSeek
+A 000719d4 ALStorage
+A 000719de this_object->GoodTag()
+A 000719f5 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071a30 %s: %s is not an object of class %s
+A 00071a54 ALStorageSeek
+A 00071a62 this_object
+A 00071a6e ALStorage
+A 00071a78 IsBadWritePtr()
+A 00071a88 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071ac3 %s: Bad pointer to object of class %s
+A 00071ae9 ALStorageUnRename
+A 00071afb ALStorage
+A 00071b05 this_object->GoodTag()
+A 00071b1c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071b57 %s: %s is not an object of class %s
+A 00071b7b ALStorageUnRename
+A 00071b8d this_object
+A 00071b99 ALStorage
+A 00071ba3 IsBadWritePtr()
+A 00071bb3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071bee %s: Bad pointer to object of class %s
+A 00071c14 ALStorageGetType
+A 00071c25 ALStorage
+A 00071c2f this_object->GoodTag()
+A 00071c46 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071c81 %s: %s is not an object of class %s
+A 00071ca5 ALStorageGetType
+A 00071cb6 this_object
+A 00071cc2 ALStorage
+A 00071ccc IsBadWritePtr()
+A 00071cdc D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071d17 %s: Bad pointer to object of class %s
+A 00071d3d ALStorageGetDosTime
+A 00071d51 ALStorage
+A 00071d5b this_object->GoodTag()
+A 00071d72 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071dad %s: %s is not an object of class %s
+A 00071dd1 ALStorageGetDosTime
+A 00071de5 this_object
+A 00071df1 ALStorage
+A 00071dfb IsBadWritePtr()
+A 00071e0b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071e46 %s: Bad pointer to object of class %s
+A 00071e6c ALStorageGetDosDate
+A 00071e80 ALStorage
+A 00071e8a this_object->GoodTag()
+A 00071ea1 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071edc %s: %s is not an object of class %s
+A 00071f00 ALStorageGetDosDate
+A 00071f14 this_object
+A 00071f20 ALStorage
+A 00071f2a IsBadWritePtr()
+A 00071f3a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00071f75 %s: Bad pointer to object of class %s
+A 00071f9b ALStorageValidTimeDate
+A 00071fb2 ALStorage
+A 00071fbc this_object->GoodTag()
+A 00071fd3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007200e %s: %s is not an object of class %s
+A 00072032 ALStorageValidTimeDate
+A 00072049 this_object
+A 00072055 ALStorage
+A 0007205f IsBadWritePtr()
+A 0007206f D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000720aa %s: Bad pointer to object of class %s
+A 000720d0 ALStorageReadOnly
+A 000720e2 ALStorage
+A 000720ec this_object->GoodTag()
+A 00072103 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007213e %s: %s is not an object of class %s
+A 00072162 ALStorageReadOnly
+A 00072174 this_object
+A 00072180 ALStorage
+A 0007218a IsBadWritePtr()
+A 0007219a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000721d5 %s: Bad pointer to object of class %s
+A 000721fb ALStorageSystem
+A 0007220b ALStorage
+A 00072215 this_object->GoodTag()
+A 0007222c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072267 %s: %s is not an object of class %s
+A 0007228b ALStorageSystem
+A 0007229b this_object
+A 000722a7 ALStorage
+A 000722b1 IsBadWritePtr()
+A 000722c1 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000722fc %s: Bad pointer to object of class %s
+A 00072322 ALStorageHidden
+A 00072332 ALStorage
+A 0007233c this_object->GoodTag()
+A 00072353 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007238e %s: %s is not an object of class %s
+A 000723b2 ALStorageHidden
+A 000723c2 this_object
+A 000723ce ALStorage
+A 000723d8 IsBadWritePtr()
+A 000723e8 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072423 %s: Bad pointer to object of class %s
+A 00072449 ALStorageArchive
+A 0007245a ALStorage
+A 00072464 this_object->GoodTag()
+A 0007247b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000724b6 %s: %s is not an object of class %s
+A 000724da ALStorageArchive
+A 000724eb this_object
+A 000724f7 ALStorage
+A 00072501 IsBadWritePtr()
+A 00072511 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007254c %s: Bad pointer to object of class %s
+A 00072572 ALStorageDirectory
+A 00072585 ALStorage
+A 0007258f this_object->GoodTag()
+A 000725a6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000725e1 %s: %s is not an object of class %s
+A 00072605 ALStorageDirectory
+A 00072618 this_object
+A 00072624 ALStorage
+A 0007262e IsBadWritePtr()
+A 0007263e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072679 %s: Bad pointer to object of class %s
+A 0007269f ALStorageGetSize
+A 000726b0 ALStorage
+A 000726ba this_object->GoodTag()
+A 000726d1 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007270c %s: %s is not an object of class %s
+A 00072730 ALStorageGetSize
+A 00072741 this_object
+A 0007274d ALStorage
+A 00072757 IsBadWritePtr()
+A 00072767 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000727a2 %s: Bad pointer to object of class %s
+A 000727c8 ALStorageIsOpen
+A 000727d8 ALStorage
+A 000727e2 this_object->GoodTag()
+A 000727f9 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072834 %s: %s is not an object of class %s
+A 00072858 ALStorageIsOpen
+A 00072868 this_object
+A 00072874 ALStorage
+A 0007287e IsBadWritePtr()
+A 0007288e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000728c9 %s: Bad pointer to object of class %s
+A 000728ef ALStorageClearError
+A 00072903 ALStorage
+A 0007290d this_object->GoodTag()
+A 00072924 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 0007295f %s: %s is not an object of class %s
+A 00072983 ALStorageClearError
+A 00072997 this_object
+A 000729a3 ALStorage
+A 000729ad IsBadWritePtr()
+A 000729bd D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 000729f8 %s: Bad pointer to object of class %s
+A 00072a1e ALStorageReadChar
+A 00072a30 ALStorage
+A 00072a3a this_object->GoodTag()
+A 00072a51 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072a8c %s: %s is not an object of class %s
+A 00072ab0 ALStorageReadChar
+A 00072ac2 this_object
+A 00072ace ALStorage
+A 00072ad8 muWriteIndex == 0
+A 00072aea D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00072b21 ReadChar(): Attempt to read while in write mode
+A 00072b51 mpcBuffer != 0
+A 00072b60 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00072b97 ReadChar(): Attempt to read from closed file
+A 00072bc4 IsBadWritePtr()
+A 00072bd4 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072c0f %s: Bad pointer to object of class %s
+A 00072c35 ALStorageWriteChar
+A 00072c48 ALStorage
+A 00072c52 this_object->GoodTag()
+A 00072c69 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Cxl_stor.cpp
+A 00072ca4 %s: %s is not an object of class %s
+A 00072cc8 ALStorageWriteChar
+A 00072cdb this_object
+A 00072ce7 ALStorage
+A 00072cf1 mpcBuffer != 0
+A 00072d00 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00072d37 WriteChar(): Attempt to write to closed file
+A 00072d6e IsBadWritePtr()
+A 00072d7e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 00072db9 %s: Bad pointer to object of class %s
+A 00072ddf deleteALDecompressor()
+A 00072df6 ALDecompressor
+A 00072e05 this_object->GoodTag()
+A 00072e1c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 00072e57 %s: %s is not an object of class %s
+A 00072e7b deleteALDecompressor()
+A 00072e92 this_object
+A 00072e9e ALDecompressor
+A 00072ead IsBadWritePtr()
+A 00072ebd D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 00072ef8 %s: Bad pointer to object of class %s
+A 00072f1e ALDecompress
+A 00072f2b ALDecompressor
+A 00072f3a this_object->GoodTag()
+A 00072f51 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 00072f8c %s: %s is not an object of class %s
+A 00072fb0 ALDecompress
+A 00072fbd this_object
+A 00072fc9 ALDecompressor
+A 00072fd8 IsBadWritePtr()
+A 00072fe8 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 00073023 %s: Bad pointer to object of class %s
+A 00073049 ALDecompress
+A 00073056 ALStorage
+A 00073060 input->GoodTag()
+A 00073071 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 000730ac %s: %s is not an object of class %s
+A 000730d0 ALDecompress
+A 000730dd input
+A 000730e3 ALStorage
+A 000730ed IsBadWritePtr()
+A 000730fd D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 00073138 %s: Bad pointer to object of class %s
+A 0007315e ALDecompress
+A 0007316b ALStorage
+A 00073175 output->GoodTag()
+A 00073187 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Decomprs.cpp
+A 000731c2 %s: %s is not an object of class %s
+A 000731e6 ALDecompress
+A 000731f3 output
+A 000731fa ALStorage
+A 000732b2 temp == 0
+A 000732bc D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Engn.cpp
+A 000732f3 ReadEngineData: engine data not 0 length
+A 0007331c GoodTag()
+A 00073326 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Engn.cpp
+A 0007335d ~ALEngine: attempt to delete invalid object
+A 00073427 GoodTag()
+A 00073431 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 0007346c ~ALFile: attempting to delete invalid object
+A 00073499 Seek failure on %s.  errno = %d
+A 000734b9 Read failure on %s.  errno = %d
+A 000734d9 Write failure on %s.  result = %d, errno = %d
+A 00073507 Seek failure on %s.  errno = %d
+A 00073527 File open failure.  Open of %s returned errno = %d
+A 0007355a Couldn't get time, date, and size information for %s.  errno = %d.
+A 0007359d ~al~%03d.tmp
+A 000735aa Temporary file creation failure.  Open of %s returned errno = %d
+A 000735ec Temporary file creation failure.  Tried 1000 times to open %s (or a name something like that).
+A 0007364c File creation failure.  Open of %s returned errno = %d
+A 00073683 miHandle == -1
+A 00073692 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 000736cd Rename: attempting to rename open file
+A 000736f4 mName.GetName() != 0
+A 00073709 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073744 Rename: attempting to rename file with null name
+A 00073775 strlen(mName) > 0
+A 00073787 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 000737c2 Rename: attempting to rename file with 0 length name
+A 000737f7 Error attempting to rename %s to %s.  Can't rename to the same name!
+A 0007383c Error deleting %s before renaming %s.  errno = %d
+A 0007386e Error renaming %s to %s.  errno = %d
+A 00073893 miHandle == -1
+A 000738a2 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 000738dd UnRename: attempting to rename open file
+A 00073906 mName.GetName() != 0
+A 0007391b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073956 UnRename: attempting to rename file with null name
+A 00073989 mName.GetOldName() != 0
+A 000739a1 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 000739dc UnRename: attempting to rename file with null old name
+A 00073a13 strlen(mName) > 0
+A 00073a25 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073a60 UnRename: attempting to rename file with 0 length name
+A 00073a97 strlen(mName.GetOldName()) > 0
+A 00073ab6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073af1 UnRename: attempting to rename file with 0 length old name
+A 00073b2c Error deleting %s before renaming %s.  errno = %d
+A 00073b5e Error renaming %s to %s.  errno = %d
+A 00073b83 miHandle == -1
+A 00073b92 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073bcd Delete: attempting to delete open file
+A 00073bf4 mName.GetName() != 0
+A 00073c09 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073c44 Delete: attempting to delete file with null name
+A 00073c75 strlen(mName) > 0
+A 00073c87 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Filestor.cpp
+A 00073cc2 Delete: attempting to delete file with 0 length name
+A 00073cf7 Error deleting file %s, errno = %d 
+A 00073e82 IsBadWritePtr()
+A 00073e92 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Fulltool.cpp
+A 00073ecd %s: Bad pointer to object of class %s
+A 00073ef3 newALListFullTools
+A 00073f06 ALMonitor
+A 00073f10 monitor->GoodTag()
+A 00073f23 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Fulltool.cpp
+A 00073f5e %s: %s is not an object of class %s
+A 00073f82 newALListFullTools
+A 00073f95 monitor
+A 00073f9d ALMonitor
+A 00073fb2 Greenleaf
+A 00073fbc GoodTag()
+A 00073fc6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Glengnc.cpp
+A 00074000 ~ALGlCompressor: attempt to delete invalid object
+A 00074032 muWriteIndex == 0
+A 00074044 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0007407b ReadChar(): Attempt to read while in write mode
+A 000740ab mpcBuffer != 0
+A 000740ba D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 000740f1 ReadChar(): Attempt to read from closed file
+A 0007411e mpcBuffer != 0
+A 0007412d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00074164 WriteChar(): Attempt to write to closed file
+A 00074191 temp == 2
+A 0007419b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Glengnc.cpp
+A 000741d5 ReadEngineData: engine data size is not 2, it should be
+A 00074366 Greenleaf
+A 00074370 GoodTag()
+A 0007437a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Glengnd.cpp
+A 000743b4 ~ALGlDecompressor: attempt to delete invalid object
+A 000743e8 muWriteIndex == 0
+A 000743fa D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00074431 ReadChar(): Attempt to read while in write mode
+A 00074461 mpcBuffer != 0
+A 00074470 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 000744a7 ReadChar(): Attempt to read from closed file
+A 000744d4 mpcBuffer != 0
+A 000744e3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0007451a WriteChar(): Attempt to write to closed file
+A 00074547 temp == 2
+A 00074551 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Glengnd.cpp
+A 0007458b ReadEngineData: engine data size is not 2, it should be
+A 0007471d GoodTag()
+A 00074727 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstd.cpp
+A 00074760 ~ALMemory: attempting to delete invalid object
+A 0007478f GoodTag()
+A 00074799 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstd.cpp
+A 000747d2 ~ALMemory: attempting to delete invalid object
+A 00074801 Attempt to write past the end of a user owned buffer for ALMemory %s
+A 00074846 Attempt to allocate a buffer of %ld bytes for ALMemory %s
+A 00074880 Allocation failure when attempting to allocate a buffer of %ld bytes for ALMemory %s
+A 000748d5 Allocation failure when attempting to initialize a buffer of %ld bytes for ALMemory %s in _Create()
+A 00074939 Allocation failure when attempting to create a buffer of %ld bytes for ALMemory %s in _Create()
+A 00074999 Attempt to open ALMemory %s with no buffer allocated
+A 00074ab5 GoodTag()
+A 00074abf D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstore.cpp
+A 00074afa ~ALMemoryBase: attempting to delete invalid object
+A 00074b2d Attempt to read past end of the buffer in ALMemoryBase %s
+A 00074b67 mName.GetName() != 0
+A 00074b7c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstore.cpp
+A 00074bb7 UnRename: trying to rename with a null name
+A 00074be3 mName.GetOldName() != 0
+A 00074bfb D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstore.cpp
+A 00074c36 UnRename: trying to rename with a null old name
+A 00074c66 strlen(mName) > 0
+A 00074c78 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstore.cpp
+A 00074cb3 UnRename: trying to rename with a zero length name
+A 00074ce6 strlen(mName.GetOldName()) > 0
+A 00074d05 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memstore.cpp
+A 00074d40 UnRename: trying to rename with a zero length old name
+A 00074d77 Attempt to read past end of the buffer in ALMemoryBase %s
+A 00074db1 AL.TMP
+A 00074e6d GoodTag()
+A 00074e77 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memwin.cpp
+A 00074eb0 ~ALWinMemory: attempting to delete invalid object
+A 00074ee2 GoodTag()
+A 00074eec D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Memwin.cpp
+A 00074f25 ~ALWinMemory: attempting to delete invalid object
+A 00074f57 Attempt to write past the end of a user owned buffer for ALWinMemory %s
+A 00074f9f Allocation failure when attempting to allocate a buffer of %ld bytes for ALMemoryBase %s
+A 00074ff8 Allocation failure when attempting to create a buffer of %ld bytes for ALWinMemory %s in Create()
+A 0007505a Attempt to open ALWinMemory %s with no buffer allocated
+A 000751cf GoodTag()
+A 000751d9 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Objname.cpp
+A 00075213 ~ALName: attempt to delete invalid object
+A 0007523d GoodTag()
+A 00075247 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Objname.cpp
+A 00075281 ~ALName: attempt to delete invalid object
+A 000752ab new_extension != 0
+A 000752be D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Objname.cpp
+A 000752f8 ChangeExtension: new extension is null
+A 0007531f mszName
+A 00075327 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Objname.cpp
+A 00075361 ChangeExtension: current name is null
+A 00075387 mszName != 0
+A 00075394 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Objname.cpp
+A 000753ce ChangeTrailingChar: current name is null
+A 0007545b Deflate Maximum
+A 0007546b Deflate Normal
+A 0007547a Deflate Fast
+A 00075487 Stored
+A 00075492 GoodTag()
+A 0007549c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Pkengnc.cpp
+A 000754d6 ~ALPkCompressor: Attempt to delete invalid object
+A 00075508 1.0.4
+A 0007550e Error creating deflate engine. ZLIB returned %d
+A 00075656 Inflate
+A 0007565e GoodTag()
+A 00075668 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Pkengnd.cpp
+A 000756a2 ~ALPkDecompressor: Attempt to delete invalid object
+A 000756d6 1.0.4
+A 0007581a Allocation of buffer failed in ALStorage constructor
+A 0007584f GoodTag()
+A 00075859 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075893 ~ALStorage: attempting to delete invalid object
+A 000758c3 IsBadWritePtr()
+A 000758d3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 0007590d %s: Bad pointer to object of class %s
+A 00075933 deleteALStorage
+A 00075943 ALStorage
+A 0007594d this_object->GoodTag()
+A 00075964 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 0007599e %s: %s is not an object of class %s
+A 000759c2 deleteALStorage
+A 000759d2 this_object
+A 000759de ALStorage
+A 000759e8 Allocation of buffer failed in Open()
+A 00075a0e IsBadWritePtr()
+A 00075a1e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075a58 %s: Bad pointer to object of class %s
+A 00075a7e ALStorageOpen
+A 00075a8c ALStorage
+A 00075a96 this_object->GoodTag()
+A 00075aad D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075ae7 %s: %s is not an object of class %s
+A 00075b0b ALStorageOpen
+A 00075b19 this_object
+A 00075b25 ALStorage
+A 00075b2f Allocation of buffer failed in Open()
+A 00075b55 IsBadWritePtr()
+A 00075b65 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075b9f %s: Bad pointer to object of class %s
+A 00075bc5 ALStorageCreate
+A 00075bd5 ALStorage
+A 00075bdf this_object->GoodTag()
+A 00075bf6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075c30 %s: %s is not an object of class %s
+A 00075c54 ALStorageCreate
+A 00075c64 this_object
+A 00075c70 ALStorage
+A 00075c7a IsBadWritePtr()
+A 00075c8a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075cc4 %s: Bad pointer to object of class %s
+A 00075cea ALStorageClose
+A 00075cf9 ALStorage
+A 00075d03 this_object->GoodTag()
+A 00075d1a D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075d54 %s: %s is not an object of class %s
+A 00075d78 ALStorageClose
+A 00075d87 this_object
+A 00075d93 ALStorage
+A 00075d9d IsBadWritePtr()
+A 00075dad D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075de7 %s: Bad pointer to object of class %s
+A 00075e0d ALStorageReadBuffer
+A 00075e21 ALStorage
+A 00075e2b this_object->GoodTag()
+A 00075e42 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075e7c %s: %s is not an object of class %s
+A 00075ea0 ALStorageReadBuffer
+A 00075eb4 this_object
+A 00075ec0 ALStorage
+A 00075eca buffer != 0
+A 00075ed6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075f10 Passed a null buffer to ALStorageReadBuffer
+A 00075f3c IsBadWritePtr()
+A 00075f4c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00075f86 %s: Bad pointer to object of class %s
+A 00075fac ALStorageWriteBuffer
+A 00075fc1 ALStorage
+A 00075fcb this_object->GoodTag()
+A 00075fe2 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 0007601c %s: %s is not an object of class %s
+A 00076040 ALStorageWriteBuffer
+A 00076055 this_object
+A 00076061 ALStorage
+A 0007606b buffer != 0
+A 00076077 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 000760b1 Passed a null buffer to ALStorageWriteBuffer
+A 000760de IsBadWritePtr()
+A 000760ee D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00076128 %s: Bad pointer to object of class %s
+A 0007614e ALStorageWriteString
+A 00076163 ALStorage
+A 0007616d this_object->GoodTag()
+A 00076184 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 000761be %s: %s is not an object of class %s
+A 000761e2 ALStorageWriteString
+A 000761f7 this_object
+A 00076203 ALStorage
+A 0007620d string != 0
+A 00076219 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00076253 Passing null string in ALStorageWriteString()
+A 00076281 Error reading string lengthin ReadString() for object %s
+A 000762ba Error allocating buffer space in call to ReadString() for object %s
+A 000762fe IsBadWritePtr()
+A 0007630e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00076348 %s: Bad pointer to object of class %s
+A 0007636e ALStorageTell
+A 0007637c ALStorage
+A 00076386 this_object->GoodTag()
+A 0007639d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 000763d7 %s: %s is not an object of class %s
+A 000763fb ALStorageTell
+A 00076409 this_object
+A 00076415 ALStorage
+A 0007641f temp == 0
+A 00076429 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storage.cpp
+A 00076463 ReadStorageObjectData: stored data is not null
+A 00076492 Copyright (c) 1994-1997 Greenleaf Software, Inc.
+A 000764c3 All Rights Reserved.
+A 000765be muWriteIndex == 0
+A 000765d0 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076607 ReadChar(): Attempt to read while in write mode
+A 00076637 mpcBuffer != 0
+A 00076646 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 0007667d ReadChar(): Attempt to read from closed file
+A 000766aa muWriteIndex == 0
+A 000766bc D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 000766f3 ReadChar(): Attempt to read while in write mode
+A 00076723 mpcBuffer != 0
+A 00076732 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076769 ReadChar(): Attempt to read from closed file
+A 00076796 IsBadWritePtr()
+A 000767a6 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglr.cpp
+A 000767e0 %s: Bad pointer to object of class %s
+A 00076806 ALStorageReadGlShort
+A 0007681b ALStorage
+A 00076825 this_object->GoodTag()
+A 0007683c D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglr.cpp
+A 00076876 %s: %s is not an object of class %s
+A 0007689a ALStorageReadGlShort
+A 000768af this_object
+A 000768bb ALStorage
+A 000768c5 short_data != 0
+A 000768d5 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglr.cpp
+A 0007690f Null pointer passed to function
+A 0007692f muWriteIndex == 0
+A 00076941 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076978 ReadChar(): Attempt to read while in write mode
+A 000769a8 mpcBuffer != 0
+A 000769b7 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 000769ee ReadChar(): Attempt to read from closed file
+A 00076a1b muWriteIndex == 0
+A 00076a2d D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076a64 ReadChar(): Attempt to read while in write mode
+A 00076a94 mpcBuffer != 0
+A 00076aa3 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076ada ReadChar(): Attempt to read from closed file
+A 00076b07 muWriteIndex == 0
+A 00076b19 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076b50 ReadChar(): Attempt to read while in write mode
+A 00076b80 mpcBuffer != 0
+A 00076b8f D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076bc6 ReadChar(): Attempt to read from closed file
+A 00076bf3 muWriteIndex == 0
+A 00076c05 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076c3c ReadChar(): Attempt to read while in write mode
+A 00076c6c mpcBuffer != 0
+A 00076c7b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076cb2 ReadChar(): Attempt to read from closed file
+A 00076cdf IsBadWritePtr()
+A 00076cef D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglr.cpp
+A 00076d29 %s: Bad pointer to object of class %s
+A 00076d4f ALStorageReadGlLong
+A 00076d63 ALStorage
+A 00076d6d this_object->GoodTag()
+A 00076d84 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglr.cpp
+A 00076dbe %s: %s is not an object of class %s
+A 00076de2 ALStorageReadGlLong
+A 00076df6 this_object
+A 00076e02 ALStorage
+A 00076e0c long_data != 0
+A 00076e1b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglr.cpp
+A 00076e55 Null pointer passed to function
+A 00076e82 mpcBuffer != 0
+A 00076e91 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076ec8 WriteChar(): Attempt to write to closed file
+A 00076ef5 mpcBuffer != 0
+A 00076f04 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00076f3b WriteChar(): Attempt to write to closed file
+A 00076f68 IsBadWritePtr()
+A 00076f78 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglw.cpp
+A 00076fb2 %s: Bad pointer to object of class %s
+A 00076fd8 ALStorageWriteGlShort
+A 00076fee ALStorage
+A 00076ff8 this_object->GoodTag()
+A 0007700f D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglw.cpp
+A 00077049 %s: %s is not an object of class %s
+A 0007706d ALStorageWriteGlShort
+A 00077083 this_object
+A 0007708f ALStorage
+A 00077099 mpcBuffer != 0
+A 000770a8 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 000770df WriteChar(): Attempt to write to closed file
+A 0007710c mpcBuffer != 0
+A 0007711b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00077152 WriteChar(): Attempt to write to closed file
+A 0007717f mpcBuffer != 0
+A 0007718e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 000771c5 WriteChar(): Attempt to write to closed file
+A 000771f2 mpcBuffer != 0
+A 00077201 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\stor.inl
+A 00077238 WriteChar(): Attempt to write to closed file
+A 00077265 IsBadWritePtr()
+A 00077275 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglw.cpp
+A 000772af %s: Bad pointer to object of class %s
+A 000772d5 ALStorageWriteGlLong
+A 000772ea ALStorage
+A 000772f4 this_object->GoodTag()
+A 0007730b D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storglw.cpp
+A 00077345 %s: %s is not an object of class %s
+A 00077369 ALStorageWriteGlLong
+A 0007737e this_object
+A 0007738a ALStorage
+A 000774d5 Qkkbal
+A 00077731 wn>Jj
+A 0007779e IsBadWritePtr()
+A 000777ae D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storproc.cpp
+A 000777e9 %s: Bad pointer to object of class %s
+A 0007780f ALStorageGetCrc32
+A 00077821 ALStorage
+A 0007782b this_object->GoodTag()
+A 00077842 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storproc.cpp
+A 0007787d %s: %s is not an object of class %s
+A 000778a1 ALStorageGetCrc32
+A 000778b3 this_object
+A 000778bf ALStorage
+A 000778c9 IsBadWritePtr()
+A 000778d9 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storproc.cpp
+A 00077914 %s: Bad pointer to object of class %s
+A 0007793a ALStorageInitCrc32
+A 0007794d ALStorage
+A 00077957 this_object->GoodTag()
+A 0007796e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Storproc.cpp
+A 000779a9 %s: %s is not an object of class %s
+A 000779cd ALStorageInitCrc32
+A 000779e0 this_object
+A 000779ec ALStorage
+A 00077a02 tblock != 0
+A 00077a0e D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Timedate.cpp
+A 00077a49 SetTimeDate: passing illegal null parameter
+A 00077a75 tblock != 0
+A 00077a81 D:\ES_Y2002_integration\mfcwesp\HomeConv\ALib\Timedate.cpp
+A 00077abc GetTimeDate: passing illegal null parameter
+A 00077b16 Assertion error, ArchiveLib is aborting the application.
+A 00077b4f Condition = %s
+A 00077b5e File = %s, line = %d
+A 00077ba0 need dictionary
+A 00077bb0 stream end
+A 00077bbc file error
+A 00077bc7 stream error
+A 00077bd4 data error
+A 00077bdf insufficient memory
+A 00077bf3 buffer error
+A 00077c00 incompatible version
+A 00077c16 1.0.4
+A 00077c1c  deflate 1.0.4 Copyright 1995-1996 Jean-loup Gailly 
+A 00077ccc 1.0.4
+A 00077d20 invalid block type
+A 00077d33 invalid stored block lengths
+A 00077d50 too many length or distance symbols
+A 00077d74 invalid bit length repeat
+A 00077d90 invalid literal/length code
+A 00077dac invalid distance code
+A 00077dc4 invalid distance code
+A 00077dda invalid literal/length code
+A 00077df8 1.0.4
+A 00077dfe unknown compression method
+A 00077e19 invalid window size
+A 00077e2d incorrect header check
+A 00077e44 need dictionary
+A 00077e54 incorrect data check
+A 00077e6c  inflate 1.0.4 Copyright 1995-1996 Mark Adler 
+A 00078088 oversubscribed dynamic bit lengths tree
+A 000780b0 incomplete dynamic bit lengths tree
+A 000780d4 oversubscribed literal/length tree
+A 000780f7 incomplete literal/length tree
+A 00078116 oversubscribed literal/length tree
+A 00078139 incomplete literal/length tree
+A 00078329 Scott Ellis
+A 00078335 Cannot open ARX file.
+A 0007834c ARX007
+A 0007835d This file could not be opened.|Unknown Version
+A 0007838c Cannot write ARX format
+A 000785b0 Illegal mode in _vector_delete_
+A 00078604 Illegal mode in _vector_new_
+A 00078621 Illegal dtorMode in _vector_new_
+A 00078644 borlndmm
+A 0007864d hrdir_b.c: LoadLibrary != mmdll borlndmm failed
+A 0007867d borlndmm
+A 00078686 @Borlndmm@SysGetMem$qqri
+A 0007869f @Borlndmm@SysFreeMem$qqrpv
+A 000786ba @Borlndmm@SysReallocMem$qqrpvi
+A 000786d9 borlndmm
+A 000786e2 @Borlndmm@HeapAddRef$qqrv
+A 000786fc @Borlndmm@HeapRelease$qqrv
+A 00078717 hrdir_b.c: GetMem or FreeMem or ReallocMem from borlndmm failed
+A 00078757 hrdir_b.c: FATAL!!! memory has been allocated prior to heap redirector hook!
+A 000787fc xXcDrT
+A 00078803 xXcDrT
+A 0007880a xXcDrT
+A 00078811 xXcDrT
+A 0007882a basic_string::operator= (const charT*)
+A 00078851 basic_string(const charT*,const Allocator&)
+A 0007887d basic_string::replace(size_t,size_t,char*,size_t,size_t,size_t)
+A 000788bd basic_string::replace(size_t,size_t,char*,size_t,size_t,size_t)
+A 00078902 basic_string::operator= (const charT*)
+A 00078929 basic_string::replace(size_t,size_t,char*,size_t,size_t,size_t)
+A 00078969 basic_string::replace(size_t,size_t,char*,size_t,size_t,size_t)
+A 000789a9 basic_string( const charT*,size_type,const Allocator&)
+A 000789e0 basic_string( const charT*,size_type,const Allocator&)
+A 00078a17 basic_string( const basic_string&,size_type,size_type)
+A 00078a4e basic_string( const basic_string&,size_type,size_type)
+A 00078a85 basic_string(const charT*,const Allocator&)
+A 00078ab1 basic_string( const charT*,size_type,const Allocator&)
+A 00078ae8 basic_string( const charT*,size_type,const Allocator&)
+A 00078b2a basic_string::compare(size_t,size_t,const const charT*,size_t) const
+A 00078b6f basic_string::compare(size_t,size_t,const basic_string&) const
+A 00078bae basic_string::compare(size_t,size_t,const basic_string&,size_t,size_t) const
+A 00078bfb basic_string::compare(size_t,size_t,const basic_string&) const
+A 00078c3a basic_string::compare(size_t,size_t,const const charT*,size_t) const
+A 00078c7f basic_string::compare(size_t,size_t,const basic_string&,size_t,size_t) const
+A 00078ccc basic_string::erase(size_t,size_t)
+A 00078cef basic_string::erase(size_t,size_t)
+A 00078d18 basic_string::append(const basic_string&)
+A 00078d42 basic_string::append(basic_string&,size_type,size_type)
+A 00078d7a basic_string::append(const basic_string&,size_type,size_type)
+A 00078db8 basic_string::assign(basic_string&,size_type,size_type)
+A 00078df0 basic_string::insert(size_t,const basic_string&)
+A 00078e21 basic_string::insert(size_t,const basic_string&)
+A 00078e52 basic_string::insert(size_t,const basic_string&,size_t,size_t)
+A 00078e91 basic_string::insert(size_t,const basic_string&,size_t,size_t)
+A 00078ed0 basic_string:::replace(size_t,size_t,size_t,char)
+A 00078f02 basic_string::replace(size_t,size_t,size_t,char)
+A 00078f33 basic_string::substr(size_t,size_t) const
+A 00078f5d basic_string::__initn(size_t,char)
+A 00078f80 basic_string::append(const basic_string&)
+A 00078faa basic_string::append(basic_string&,size_type,size_type)
+A 00078fe2 basic_string::append(const basic_string&,size_type,size_type)
+A 00079020 basic_string::assign(basic_string&,size_type,size_type)
+A 00079058 basic_string::insert(size_t,const basic_string&)
+A 00079089 basic_string::insert(size_t,const basic_string&)
+A 000790ba basic_string::insert(size_t,const basic_string&,size_t,size_t)
+A 000790f9 basic_string::insert(size_t,const basic_string&,size_t,size_t)
+A 00079138 basic_string:::replace(size_t,size_t,size_t,char)
+A 0007916a basic_string::replace(size_t,size_t,size_t,char)
+A 0007919b basic_string::substr(size_t,size_t) const
+A 000791c5 basic_string::__initn(size_t,char)
+A 000791e8 basic_string::reserve(size_t)
+A 00079206 basic_string( const charT*,size_type,const Allocator&)
+A 0007923d basic_string::reserve(size_t)
+A 0007925b basic_string( const charT*,size_type,const Allocator&)
+A 00079292 basic_string::copy(char*,size_t,size_t)
+A 000792ba basic_string::find(char*,size_t,size_t) const
+A 000792e8 basic_string::find_first_not_of(char*,size_t,size_t) const
+A 00079323 basic_string::find_first_of(char*,size_t,size_t) const
+A 0007935a basic_string::find_last_not_of(char*,size_t,size_t) const
+A 00079394 basic_string::find_last_of(char*,size_t,size_t) const
+A 000793ca basic_string::rfind(char*,size_t,size_t) const
+A 000793f9 basic_string::copy(char*,size_t,size_t)
+A 00079421 basic_string::find(char*,size_t,size_t) const
+A 0007944f basic_string::find_first_not_of(char*,size_t,size_t) const
+A 0007948a basic_string::find_first_of(char*,size_t,size_t) const
+A 000794c1 basic_string::find_last_not_of(char*,size_t,size_t) const
+A 000794fb basic_string::find_last_of(char*,size_t,size_t) const
+A 00079531 basic_string::rfind(char*,size_t,size_t) const
+A 00079560 YyjSMIHmBbAapdZUWw
+A 0007957b basic_string::find(const char*,size_t) const
+A 000795a8 YyjSMIHmBbAapdZUWw
+A 000795c3 basic_string::replace(iterator,iterator,InputIterato,InputIterato)
+A 00079606 basic_string::replace(iterator,iterator,InputIterator,InputIterator)
+A 0007964b basic_string::__replace_aux(iterator,iterator,InputIterator,InputIterator)
+A 00079696 basic_string::__replace_aux(iterator,iterator,InputIterator,InputIterator)
+A 000796e1 basic_string::replace(iterator,iterator,InputIterato,InputIterato)
+A 00079724 basic_string::replace(iterator,iterator,InputIterator,InputIterator)
+A 00079769 basic_string::__replace_aux(iterator,iterator,InputIterator,InputIterator)
+A 000797b4 basic_string::__replace_aux(iterator,iterator,InputIterator,InputIterator)
+A 0007a8cc iostream object has failbit set
+A 0007a8ec iostream object has badbit set
+A 0007a90b iostream object has eofbit set
+A 0007b07a POSIX
+A 0007b18c LC_COLLATE
+A 0007b19c LC_CTYPE
+A 0007b1ac LC_MONETARY
+A 0007b1bc LC_NUMERIC
+A 0007b1cc LC_TIME
+A 0007b1dc LC_MESSAGES
+A 0007b1ec LC_ALL
+A 0007b2b4 Facet not present in locale
+A 0007b2d0 locale::__initid() called twice
+A 0007b2f0 Tried to construct a locale from a NULL pointer.
+A 0007b321 System does not recognize this locale name.
+A 0007b34d Error constructing locale name.
+A 0007b36d Code conversion failed.
+A 0007b38b POSIX
+A 0007b9ec no named exception thrown
+A 0007ba06 bad exception thrown
+A 0007ba1b bad alloc exception thrown
+A 0007ba36 Error
+A 0007ba3c rwstderr
+A 0007bb30 invalid string size parameter in function: %s 
+A 0007bb5f  size: %d is greater than maximum size: %d
+A 0007bb8a position beyond end of string in function: %s 
+A 0007bbb9  index: %d is greater than max_index: %d
+A 0007bbe2 resulting length is invalid  in function: %s 
+A 0007bc10  index: %d is greater than max_index: %d
+A 0007bc39 string index out of range in function: %s 
+A 0007bc64  position: %d is greater than length: %d
+A 0007bc8d unexpected NULL pointer in function: %s
+A 0007bcc4 <notype>
+A 0007bccd id->tpName
+A 0007bcd8 xxtype.cpp
+A 0007bce7 xxtype.cpp
+A 0007bcf6 xxtype.cpp
+A 0007bd01 tp1->tpName
+A 0007bd0d xxtype.cpp
+A 0007bd18 tp2->tpName
+A 0007bd24 xxtype.cpp
+A 0007bd2f IS_STRUC(base->tpMask)
+A 0007bd46 xxtype.cpp
+A 0007bd51 IS_STRUC(derv->tpMask)
+A 0007bd68 xxtype.cpp
+A 0007bd73 derv->tpClass.tpcFlags & CF_HAS_BASES
+A 0007bd99 xxtype.cpp
+A 0007bda4 ((unsigned __far *)vtablePtr)[-1] == 0
+A 0007bdcb xxtype.cpp
+A 0007bdd6 <notype>
+A 0007bddf topTypPtr != 0 && IS_STRUC(topTypPtr->tpMask)
+A 0007be0d xxtype.cpp
+A 0007be18 tgtTypPtr != 0 && IS_STRUC(tgtTypPtr->tpMask)
+A 0007be46 xxtype.cpp
+A 0007be51 srcTypPtr == 0 || IS_STRUC(srcTypPtr->tpMask)
+A 0007be7f xxtype.cpp
+A 0007be8a __isSameTypeID(srcTypPtr, tgtTypPtr) == 0
+A 0007beb4 xxtype.cpp
+A 0007bebf tgtTypPtr != 0 && __isSameTypeID(topTypPtr, tgtTypPtr) == 0
+A 0007befb xxtype.cpp
+A 0007bf06 srcTypPtr
+A 0007bf10 xxtype.cpp
+A 0007bf1b ((unsigned __far *)vtablePtr)[-1] == 0
+A 0007bf42 xxtype.cpp
+A 0007bf52 xxtype.cpp
+A 0007bf5d Can't adjust class address (no base class entry found)
+A 0007bf94 !"Can't adjust class address (no base class entry found)"
+A 0007bfce xxtype.cpp
+A 0007c0d8 ___CPPdebugHook
+A 0007c120 Stack Overflow!
+A 0007c6c4 allocating handle lock table
+A 0007c6e1 creating handle lock
+A 0007c6f6 hlocks
+A 0007c6fd handles.c
+A 0007c707 creating global handle lock
+A 0007c738 ),(((((),(((
+A 0007c924 Error 0
+A 0007c92c Invalid function number
+A 0007c944 No such file or directory
+A 0007c95e Path not found
+A 0007c96d Too many open files
+A 0007c981 Permission denied
+A 0007c993 Bad file number
+A 0007c9a3 Memory arena trashed
+A 0007c9b8 Not enough memory
+A 0007c9ca Invalid memory block address
+A 0007c9e7 Invalid environment
+A 0007c9fb Invalid format
+A 0007ca0a Invalid access code
+A 0007ca1e Invalid data
+A 0007ca2b Bad address
+A 0007ca37 No such device
+A 0007ca46 Attempted to remove current directory
+A 0007ca6c Not same device
+A 0007ca7c No more files
+A 0007ca8a Invalid argument
+A 0007ca9b Arg list too big
+A 0007caac Exec format error
+A 0007cabe Cross-device link
+A 0007cad0 Too many open files
+A 0007cae4 No child processes
+A 0007caf7 Inappropriate I/O control operation
+A 0007cb1b Executable file in use
+A 0007cb32 File too large
+A 0007cb41 No space left on device
+A 0007cb59 Illegal seek
+A 0007cb66 Read-only file system
+A 0007cb7c Too many links
+A 0007cb8b Broken pipe
+A 0007cb97 Math argument
+A 0007cba5 Result too large
+A 0007cbb6 File already exists
+A 0007cbca Possible deadlock
+A 0007cbdc Operation not permitted
+A 0007cbf4 No such process
+A 0007cc04 Interrupted function call
+A 0007cc1e Input/output error
+A 0007cc31 No such device or address
+A 0007cc4b Resource temporarily unavailable
+A 0007cc6c Block device required
+A 0007cc82 Resource busy
+A 0007cc90 Not a directory
+A 0007cca0 Is a directory
+A 0007ccb0 Directory not empty
+A 0007ccc4 Unknown error
+A 0007cd78 creating global stream lock
+A 0007cd94 allocating stream lock table
+A 0007cdb1 creating stream lock
+A 0007cdc6 strm_locks
+A 0007cdd1 streams.c
+A 0007cddc (null)
+A 0007d104  !"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+A 0007d204  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~
+A 0007d330 LC_MONETARY
+A 0007d33c LC_NUMERIC
+A 0007d347 LC_TIME
+A 0007d34f LC_COLLATE
+A 0007d35a LC_CTYPE
+A 0007d363 en_US
+A 0007d36d en_GB
+A 0007d377 fr_FR
+A 0007d381 de_DE
+A 0007d38d LC_MONETARY
+A 0007d399 LC_TIME
+A 0007d3a1 LC_NUMERIC
+A 0007d3ac LC_COLLATE
+A 0007d3b7 LC_CTYPE
+A 0007d3c0 LC_CTYPE
+A 0007d3c9 LC_TIME
+A 0007d3d1 LC_NUMERIC
+A 0007d3dc LC_MONETARY
+A 0007d3e8 LC_COLLATE
+A 0007d555 %H:%M:%S
+A 0007d55e %m/%d/%y
+A 0007d567 %A, %B %d, %Y
+A 0007d57b Monday
+A 0007d582 Tuesday
+A 0007d58a Wednesday
+A 0007d594 Thursday
+A 0007d59d Friday
+A 0007d5a4 Saturday
+A 0007d5ad Sunday
+A 0007d5d0 January
+A 0007d5d8 February
+A 0007d5e1 March
+A 0007d5e7 April
+A 0007d5fb August
+A 0007d602 September
+A 0007d60c October
+A 0007d614 November
+A 0007d61d December
+A 0007d6c4 %s: %s error
+A 0007d7a4 printf : floating point formats not linked
+A 0007d7cf scanf : floating point formats not linked
+A 0007d80c printf : floating point formats not linked
+A 0007d837 scanf : floating point formats not linked
+A 0007d938 DOMAIN
+A 0007d944 OVERFLOW
+A 0007d94d UNDERFLOW
+A 0007d957 TLOSS
+A 0007d95d PLOSS
+A 0007da20 Error: system code page access failure; MBCS table not initialized
+A 0007da64 Assertion failed: 
+A 0007da77 , file 
+A 0007da7f , line 
+A 0007da88 %02d/%02d/%04d %02d:%02d:%02d.%03d 
+A 0007dabc Pure virtual function called
+A 0007dadc Abnormal program termination
+A 0007db14 No space for copy of command line
+A 0007db38 No space for copy of command line
+A 0007db68 GetEnvironmentStrings failed
+A 0007db85 Could not allocate memory for environment block
+A 0007dbb5 creating environment lock
+A 0007dc38 creating atexit lock
+A 0007dd55 An exception (%08X) occurred during DllEntryPoint or DllMain in module:
+A 0007dda0 creating thread data lock
+A 0007ddbc Semaphore error 
+A 0007decc Sunday
+A 0007ded3 Monday
+A 0007deda Tuesday
+A 0007dee2 Wednesday
+A 0007deec Thursday
+A 0007def5 Friday
+A 0007defc Saturday
+A 0007df35 January
+A 0007df3d February
+A 0007df46 March
+A 0007df4c April
+A 0007df60 August
+A 0007df67 September
+A 0007df71 October
+A 0007df79 November
+A 0007df82 December
+A 0007ea28 ___CPPdebugHook
+A 0007ea38 EDivByZero
+A 0007ea43 ERangeError
+A 0007ea4f EIntOverflow
+A 0007ea5c EInvalidOp
+A 0007ea67 EZeroDivide
+A 0007ea73 EOverflow
+A 0007ea7d EUnderflow
+A 0007ea88 EAccessViolation
+A 0007ea99 EPrivilege
+A 0007eaa4 EControlC
+A 0007eaae EStackOverflow
+A 0007eabd Bad exception number
+A 0007ead2 !"Bad exception number"
+A 0007eaea xx.cpp
+A 0007eaf1 mask & TM_IS_REF
+A 0007eb02 xx.cpp
+A 0007eb09 srcmask & TM_IS_REF
+A 0007eb1d xx.cpp
+A 0007eb24 (ctorMask & 0x0100) != 0 || (ctorMask & 0x0020) == 0
+A 0007eb59 xx.cpp
+A 0007eb60 (ctorMask & 0x0080) == 0
+A 0007eb79 xx.cpp
+A 0007eb80 what?
+A 0007eb86 !"what?"
+A 0007eb8f xx.cpp
+A 0007eb96 what?
+A 0007eb9c !"what?"
+A 0007eba5 xx.cpp
+A 0007ebac (dtorMask & 0x0080) == 0
+A 0007ebc5 xx.cpp
+A 0007ebcc what?
+A 0007ebd2 !"what?"
+A 0007ebdb xx.cpp
+A 0007ebe2 (mfnMask & 0x0080) == 0
+A 0007ebfa xx.cpp
+A 0007ec01 what?
+A 0007ec07 !"what?"
+A 0007ec10 xx.cpp
+A 0007ec17 typeID || (reThrow && (flags & XDF_ISDELPHIEXCEPTION))
+A 0007ec4e xx.cpp
+A 0007ec55 cctrAddr
+A 0007ec5e xx.cpp
+A 0007ec65 xdp->xdArgBuff
+A 0007ec74 xx.cpp
+A 0007ec7b dtorAddr
+A 0007ec84 xx.cpp
+A 0007ec8b argType
+A 0007ec93 xx.cpp
+A 0007ec9a __CPPexceptionList
+A 0007ecad xx.cpp
+A 0007ecb7 xx.cpp
+A 0007ecbe xdrPtr->xdERRaddr == xl
+A 0007ecd6 xx.cpp
+A 0007ecdd !tpid || tpid->tpMask & (TM_IS_PTR | TM_IS_REF)
+A 0007ed0d xx.cpp
+A 0007ed14 dscPtr->xdERRaddr == errPtr
+A 0007ed30 xx.cpp
+A 0007ed37 dscPtr->xdHtabAdr == hdtPtr
+A 0007ed53 xx.cpp
+A 0007ed5a dscPtr->xdArgCopy == 0
+A 0007ed71 xx.cpp
+A 0007ed78 (dscPtr->xdMask & TM_IS_PTR) == 0
+A 0007ed9a xx.cpp
+A 0007eda1 mask & TM_IS_PTR
+A 0007edb2 xx.cpp
+A 0007edb9 dscPtr->xdMask & TM_IS_PTR
+A 0007edd4 xx.cpp
+A 0007eddb dscPtr->xdTypeID == dscPtr->xdBase
+A 0007edfe xx.cpp
+A 0007ee05 hdtPtr->HDcctrAddr
+A 0007ee18 xx.cpp
+A 0007ee1f dscPtr->xdSize == size
+A 0007ee36 xx.cpp
+A 0007ee3d xdrPtr && xdrPtr == *xdrLPP
+A 0007ee59 xx.cpp
+A 0007ee60 bogus context in Local_unwind()
+A 0007ee80 !"bogus context in Local_unwind()"
+A 0007eea3 xx.cpp
+A 0007eeaa const 
+A 0007eeb1 volatile 
+A 0007eebb bogus context in _ExceptionHandler()
+A 0007eee0 !"bogus context in _ExceptionHandler()"
+A 0007ef08 xx.cpp
+A 0007ef0f varType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007ef37 xx.cpp
+A 0007ef3e varType->tpClass.tpcDtorAddr
+A 0007ef5b xx.cpp
+A 0007ef62 (errPtr->ERRcInitDtc >= varType->tpClass.tpcDtorCount) || flags
+A 0007efa2 xx.cpp
+A 0007efa9 varType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007efd1 xx.cpp
+A 0007efdb xx.cpp
+A 0007efe2 bl->blOffs == 0
+A 0007eff2 xx.cpp
+A 0007eff9 dtorCnt < varCount
+A 0007f00c xx.cpp
+A 0007f013 IS_STRUC(blType->tpMask)
+A 0007f02c xx.cpp
+A 0007f033 IS_STRUC(blType->tpMask)
+A 0007f04c xx.cpp
+A 0007f053 memType
+A 0007f05b xx.cpp
+A 0007f062 memType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007f08a xx.cpp
+A 0007f091 varType->tpMask & TM_IS_ARRAY
+A 0007f0af xx.cpp
+A 0007f0b6 varType->tpArr.tpaElemType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007f0f1 xx.cpp
+A 0007f0f8 vdtCount
+A 0007f101 xx.cpp
+A 0007f108 etdCount <= elemCount || elemCount == 0
+A 0007f130 xx.cpp
+A 0007f137 dtrCount <= vdtCount
+A 0007f14c xx.cpp
+A 0007f153 IS_CLASS(varType->tpMask)
+A 0007f16d xx.cpp
+A 0007f174 ((unsigned __far *)vftAddr)[-1] == 0
+A 0007f199 xx.cpp
+A 0007f1a0 dttPtr->dttFlags & (DTCVF_PTRVAL|DTCVF_RETVAL)
+A 0007f1cf xx.cpp
+A 0007f1d6 dttPtr->dttType->tpMask & TM_IS_PTR
+A 0007f1fa xx.cpp
+A 0007f201 dttPtr->dttType->tpPtr.tppBaseType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007f244 xx.cpp
+A 0007f24b IS_CLASS(dttPtr->dttType->tpMask) && (dttPtr->dttType->tpClass.tpcFlags & CF_HAS_DTOR)
+A 0007f2a2 xx.cpp
+A 0007f2a9 dtvtPtr->dttType->tpMask & TM_IS_ARRAY
+A 0007f2d0 xx.cpp
+A 0007f2d7 varType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007f2ff xx.cpp
+A 0007f306 elemType->tpClass.tpcFlags & CF_HAS_DTOR
+A 0007f32f xx.cpp
+A 0007f336 varType->tpMask & TM_IS_ARRAY
+A 0007f354 xx.cpp
+A 0007f35b varType->tpMask & TM_IS_PTR
+A 0007f377 xx.cpp
+A 0007f381 xx.cpp
+A 0007f388 **BCCxh1
+A 0007f65c false
+A 0007f721  0@PX`hpx
+A 0007f7d8 								
+A 0007f830   !!""##$$%%&&''(())**++,,--..//0123456789:;<=>?
+A 0007fe2c SYSTEM.o:
+A 00080320 ADVAPI32.DLL
+A 0008032d KERNEL32.DLL
+A 0008033a GDI32.DLL
+A 00080344 USER32.DLL
+A 0008034f OLEAUT32.DLL
+A 0008035e RegCloseKey
+A 0008036c RegOpenKeyExA
+A 0008037c RegQueryValueExA
+A 00080390 CloseHandle
+A 0008039e CompareStringA
+A 000803b0 CreateDirectoryA
+A 000803c4 CreateEventA
+A 000803d4 CreateFileA
+A 000803e2 CreateFileW
+A 000803f0 DeleteCriticalSection
+A 00080408 DeleteFileA
+A 00080416 DosDateTimeToFileTime
+A 0008042e EnterCriticalSection
+A 00080446 EnumCalendarInfoA
+A 0008045a ExitProcess
+A 00080468 FileTimeToDosDateTime
+A 00080480 FileTimeToLocalFileTime
+A 0008049a FileTimeToSystemTime
+A 000804b2 FindClose
+A 000804be FindFirstFileA
+A 000804d0 FindNextFileA
+A 000804e0 FindResourceA
+A 000804f0 FormatMessageA
+A 00080502 FreeEnvironmentStringsA
+A 0008051c FreeLibrary
+A 0008052a FreeResource
+A 0008053a GetACP
+A 00080544 GetCPInfo
+A 00080550 GetCommandLineA
+A 00080562 GetCurrentDirectoryA
+A 0008057a GetCurrentThreadId
+A 00080590 GetDiskFreeSpaceA
+A 000805a4 GetDriveTypeA
+A 000805b4 GetEnvironmentStrings
+A 000805cc GetFileAttributesA
+A 000805e2 GetFileAttributesW
+A 000805f8 GetFileSize
+A 00080606 GetFileTime
+A 00080614 GetFileType
+A 00080622 GetFullPathNameA
+A 00080636 GetLastError
+A 00080646 GetLocalTime
+A 00080656 GetLocaleInfoA
+A 00080668 GetModuleFileNameA
+A 0008067e GetModuleHandleA
+A 00080692 GetOEMCP
+A 0008069e GetPrivateProfileStringA
+A 000806ba GetProcAddress
+A 000806cc GetProcessHeap
+A 000806de GetStartupInfoA
+A 000806f0 GetStdHandle
+A 00080700 GetStringTypeA
+A 00080712 GetStringTypeW
+A 00080724 GetSystemDefaultLangID
+A 0008073e GetThreadLocale
+A 00080750 GetTickCount
+A 00080760 GetTimeZoneInformation
+A 0008077a GetUserDefaultLCID
+A 00080790 GetVersion
+A 0008079e GetVersionExA
+A 000807ae GlobalAlloc
+A 000807bc GlobalFree
+A 000807ca GlobalHandle
+A 000807da GlobalLock
+A 000807e8 GlobalReAlloc
+A 000807f8 GlobalUnlock
+A 00080808 HeapAlloc
+A 00080814 HeapFree
+A 00080820 InitializeCriticalSection
+A 0008083c InterlockedDecrement
+A 00080854 InterlockedExchange
+A 0008086a InterlockedIncrement
+A 00080882 IsBadWritePtr
+A 00080892 IsValidLocale
+A 000808a2 LCMapStringA
+A 000808b2 LeaveCriticalSection
+A 000808ca LoadLibraryA
+A 000808da LoadLibraryExA
+A 000808ec LoadResource
+A 000808fc LocalAlloc
+A 0008090a LocalFileTimeToFileTime
+A 00080924 LocalFree
+A 00080930 LockResource
+A 00080940 MapViewOfFile
+A 00080950 MoveFileA
+A 0008095c MultiByteToWideChar
+A 00080972 RaiseException
+A 00080984 ReadFile
+A 00080990 RtlUnwind
+A 0008099c SetConsoleCtrlHandler
+A 000809b4 SetEndOfFile
+A 000809c4 SetFileAttributesA
+A 000809da SetFilePointer
+A 000809ec SetFileTime
+A 000809fa SetHandleCount
+A 00080a0c SetLastError
+A 00080a1c SetThreadLocale
+A 00080a2e SizeofResource
+A 00080a40 Sleep
+A 00080a48 TlsAlloc
+A 00080a54 TlsFree
+A 00080a5e TlsGetValue
+A 00080a6c TlsSetValue
+A 00080a7a UnhandledExceptionFilter
+A 00080a96 UnmapViewOfFile
+A 00080aa8 VirtualAlloc
+A 00080ab8 VirtualFree
+A 00080ac6 VirtualQuery
+A 00080ad6 WaitForSingleObject
+A 00080aec WideCharToMultiByte
+A 00080b02 WriteFile
+A 00080b0e lstrcpyA
+A 00080b1a lstrcpynA
+A 00080b26 lstrlenA
+A 00080b32 CreateCompatibleDC
+A 00080b48 CreateDIBSection
+A 00080b5c CreatePen
+A 00080b68 CreateSolidBrush
+A 00080b7c DeleteDC
+A 00080b88 DeleteObject
+A 00080b98 LineTo
+A 00080ba2 MoveToEx
+A 00080bae SelectObject
+A 00080bbe CharLowerBuffA
+A 00080bd0 CharNextA
+A 00080bdc CharUpperBuffA
+A 00080bee DestroyWindow
+A 00080bfe DispatchMessageA
+A 00080c12 EnumThreadWindows
+A 00080c26 FillRect
+A 00080c32 GetKeyboardType
+A 00080c44 GetSystemMetrics
+A 00080c58 LoadStringA
+A 00080c66 MessageBoxA
+A 00080c74 PeekMessageA
+A 00080c84 TranslateMessage
+A 00080c98 wsprintfA
+A 00080ca4 SysAllocStringLen
+A 00080cb8 SysFreeString
+A 00080cc8 SysReAllocStringLen
+A 00080cde SysStringLen
+A 00080cee VariantChangeTypeEx
+A 00080d04 VariantClear
+A 00080d14 VariantCopyInd
+A 000813e6 artcnvdl.dll
+A 000813f3 @$xp$18Compress@TCompress
+A 0008140d @$xp$20Compress@EInvalidKey
+A 00081429 @$xp$21Compress@EBadChecksum
+A 00081446 @$xp$21Compress@TExpandEvent
+A 00081463 @$xp$22Compress@TCProcessMode
+A 00081481 @$xp$23Compress@EInvalidHeader
+A 000814a0 @$xp$23Compress@TCompressEvent
+A 000814bf @$xp$24Compress@TCompressHeader
+A 000814df @$xp$24Compress@TRecognizeEvent
+A 000814ff @$xp$26Compress@EUnableToCompress
+A 00081521 @$xp$26Compress@TCompThreadSafety
+A 00081543 @$xp$27Compress@ELZHBadDecodeTable
+A 00081566 @$xp$27Compress@TCompressionMethod
+A 00081589 @$xp$27Compress@TShowProgressEvent
+A 000815ac @$xp$28Compress@TCompressedFileInfo
+A 000815d0 @$xp$28Compress@TFilenameCheckEvent
+A 000815f4 @$xp$29Compress@TCompressArchiveType
+A 00081619 @$xp$30Compress@TCompressedFileHeader
+A 0008163f @$xp$31Compress@EInsufficientDiskSpace
+A 00081666 @$xp$34Compress@EInvalidHeaderArchiveType
+A 00081690 @$xp$39Compress@EUnrecognizedCompressionMethod
+A 000816bf @@Carx@Finalize
+A 000816cf @@Carx@Initialize
+A 000816e1 @@Cemx@Finalize
+A 000816f1 @@Cemx@Initialize
+A 00081703 @@Cpes@Finalize
+A 00081713 @@Cpes@Initialize
+A 00081725 @@Csew@Finalize
+A 00081735 @@Csew@Initialize
+A 00081747 @Compress@EBadChecksum@
+A 0008175f @Compress@EInsufficientDiskSpace@
+A 00081781 @Compress@EInvalidHeader@
+A 0008179b @Compress@EInvalidHeaderArchiveType@
+A 000817c0 @Compress@EInvalidKey@
+A 000817d7 @Compress@ELZHBadDecodeTable@
+A 000817f5 @Compress@EUnableToCompress@
+A 00081812 @Compress@EUnrecognizedCompressionMethod@
+A 0008183c @Compress@Finalization$qqrv
+A 00081858 @Compress@Register$qqrv
+A 00081870 @Compress@TCompThreadSafety@
+A 0008188d @Compress@TCompThreadSafety@CompressLZH$qqrv
+A 000818ba @Compress@TCompThreadSafety@CompressLZH5$qqrv
+A 000818e8 @Compress@TCompThreadSafety@CompressRLE$qqrv
+A 00081915 @Compress@TCompThreadSafety@CopyWithCRC$qqrv
+A 00081942 @Compress@TCompThreadSafety@DecodeChar$qqrv
+A 0008196e @Compress@TCompThreadSafety@DecodeChar5$qqrv
+A 0008199b @Compress@TCompThreadSafety@DecodePosition$qqrv
+A 000819cb @Compress@TCompThreadSafety@DecodePosition5$qqrv
+A 000819fc @Compress@TCompThreadSafety@DeleteNode$qqrs
+A 00081a28 @Compress@TCompThreadSafety@EncodeChar$qqrus
+A 00081a55 @Compress@TCompThreadSafety@EncodeEnd$qqrv
+A 00081a80 @Compress@TCompThreadSafety@EncodePosition$qqrus
+A 00081ab1 @Compress@TCompThreadSafety@Encrypt$qqrc
+A 00081ada @Compress@TCompThreadSafety@EndHuff$qqrv
+A 00081b03 @Compress@TCompThreadSafety@EndHuff5$qqrv
+A 00081b2d @Compress@TCompThreadSafety@ExpandLZH$qqri
+A 00081b58 @Compress@TCompThreadSafety@ExpandLZH5$qqri
+A 00081b84 @Compress@TCompThreadSafety@ExpandRLE$qqrv
+A 00081baf @Compress@TCompThreadSafety@GetBit$qqrv
+A 00081bd7 @Compress@TCompThreadSafety@GetByte$qqrv
+A 00081c00 @Compress@TCompThreadSafety@GetChar$qqrv
+A 00081c29 @Compress@TCompThreadSafety@GetNBits$qqrus
+A 00081c54 @Compress@TCompThreadSafety@InitTree$qqrv
+A 00081c7e @Compress@TCompThreadSafety@InsertNode$qqrs
+A 00081caa @Compress@TCompThreadSafety@OutputCodes$qqrusus
+A 00081cda @Compress@TCompThreadSafety@PutChar$qqrc
+A 00081d03 @Compress@TCompThreadSafety@Putcode$qqrsus
+A 00081d2e @Compress@TCompThreadSafety@StartHuff$qqrv
+A 00081d59 @Compress@TCompThreadSafety@StartHuff5$qqro
+A 00081d85 @Compress@TCompThreadSafety@buildtable$qqrspxcxispusxi
+A 00081dbc @Compress@TCompThreadSafety@buildtree$qqrspusxipcxit2xi
+A 00081df4 @Compress@TCompThreadSafety@child$qqrsc
+A 00081e1c @Compress@TCompThreadSafety@count_t_freq$qqrv
+A 00081e4a @Compress@TCompThreadSafety@delete_node$qqrv
+A 00081e77 @Compress@TCompThreadSafety@emit$qqric
+A 00081e9e @Compress@TCompThreadSafety@encode_char$qqrs
+A 00081ecb @Compress@TCompThreadSafety@encode_position$qqrus
+A 00081efd @Compress@TCompThreadSafety@fillbuf$qqrc
+A 00081f26 @Compress@TCompThreadSafety@get_next_match$qqrv
+A 00081f56 @Compress@TCompThreadSafety@getbits$qqrc
+A 00081f7f @Compress@TCompThreadSafety@initSlide$qqrv
+A 00081faa @Compress@TCompThreadSafety@insert_node$qqrv
+A 00081fd7 @Compress@TCompThreadSafety@link$qqrsss
+A 00081fff @Compress@TCompThreadSafety@linknode$qqrsss
+A 0008202b @Compress@TCompThreadSafety@makechild$qqrscs
+A 00082058 @Compress@TCompThreadSafety@putbits$qqrcus
+A 00082083 @Compress@TCompThreadSafety@putcode5$qqrcus
+A 000820af @Compress@TCompThreadSafety@read_charLen$qqrv
+A 000820dd @Compress@TCompThreadSafety@read_position_len$qqrsss
+A 00082112 @Compress@TCompThreadSafety@reconst$qqrv
+A 0008213b @Compress@TCompThreadSafety@send_block$qqrv
+A 00082167 @Compress@TCompThreadSafety@split$qqrs
+A 0008218e @Compress@TCompThreadSafety@update$qqrus
+A 000821b7 @Compress@TCompThreadSafety@write_charLen$qqrv
+A 000821e6 @Compress@TCompThreadSafety@write_position_len$qqrsss
+A 0008221c @Compress@TCompress@
+A 00082231 @Compress@TCompress@$bctr$qqrp18Classes@TComponent
+A 00082264 @Compress@TCompress@$bdtr$qqrv
+A 00082283 @Compress@TCompress@AppendFilesExcept$qqrx17System@AnsiStringt1p19Classes@TStringList
+A 000822d9 @Compress@TCompress@CheckDiskSpace$qqr17System@AnsiString
+A 00082313 @Compress@TCompress@CheckHeader$qqrp15Classes@TStreamr24Compress@TCompressHeaderr17System@AnsiString
+A 00082378 @Compress@TCompress@Compress$qqrp15Classes@TStreamt127Compress@TCompressionMethod
+A 000823ca @Compress@TCompress@CompressFile$qqrx17System@AnsiStringr17System@AnsiString27Compress@TCompressionMethod
+A 00082434 @Compress@TCompress@CompressFiles$qqrx17System@AnsiStringp19Classes@TStringList27Compress@TCompressionMethod
+A 000824a1 @Compress@TCompress@CompressFilesToStream$qqrp15Classes@TStreamrp19Classes@TStringList27Compress@TCompressionMethod
+A 00082515 @Compress@TCompress@CompressStreamToArchive$qqr17System@AnsiStringp15Classes@TStreamt127Compress@TCompressionMethod
+A 00082589 @Compress@TCompress@CompressStreamToArchiveStream$qqrp15Classes@TStreamt1x17System@AnsiStringrx30Compress@TCompressedFileHeaderr17System@AnsiString27Compress@TCompressionMethod
+A 0008263a @Compress@TCompress@CompressString$qqrx17System@AnsiString27Compress@TCompressionMethod
+A 00082692 @Compress@TCompress@DeleteFiles$qqrx17System@AnsiStringp19Classes@TStringList
+A 000826e0 @Compress@TCompress@DiskFree$qqruc
+A 00082703 @Compress@TCompress@DoCompress$qqrp15Classes@TStreamt127Compress@TCompressionMethodr17System@AnsiStringri
+A 0008276d @Compress@TCompress@DoExpand$qqrp15Classes@TStreamt1iii27Compress@TCompressionMethodx17System@AnsiStringi
+A 000827d7 @Compress@TCompress@Expand$qqrp15Classes@TStreamt1
+A 0008280a @Compress@TCompress@ExpandFile$qqrr17System@AnsiStringx17System@AnsiString
+A 00082855 @Compress@TCompress@ExpandFiles$qqrx17System@AnsiStringp19Classes@TStringList
+A 000828a3 @Compress@TCompress@ExpandFilesFromStream$qqrp15Classes@TStreamp19Classes@TStringList
+A 000828f9 @Compress@TCompress@ExpandStreamFromArchive$qqr17System@AnsiStringp15Classes@TStreamt1
+A 00082950 @Compress@TCompress@ExpandString$qqrx17System@AnsiString
+A 00082989 @Compress@TCompress@FreeFileList$qqrp19Classes@TStringList
+A 000829c4 @Compress@TCompress@GetAllFilesInDir$qqrp19Classes@TStringList17System@AnsiStringt2o
+A 00082a19 @Compress@TCompress@GetCompressedPercentage$qqrv
+A 00082a4a @Compress@TCompress@GetFileHeader$qqrp15Classes@TStreamr30Compress@TCompressedFileHeaderr17System@AnsiString
+A 00082ab7 @Compress@TCompress@GetMatchingFiles$qqrp19Classes@TStringListx17System@AnsiString
+A 00082b0a @Compress@TCompress@LoadCompressedResource$qqr17System@AnsiStringt1
+A 00082b4e @Compress@TCompress@LoadExpandedResource$qqr17System@AnsiStringt1
+A 00082b90 @Compress@TCompress@ProcessStreams$qqrp15Classes@TStreamt1ii27Compress@TCompressionMethodri22Compress@TCProcessModeo
+A 00082c05 @Compress@TCompress@ProcessString$qqrx17System@AnsiString27Compress@TCompressionMethod22Compress@TCProcessMode
+A 00082c74 @Compress@TCompress@PutFileHeader$qqrp15Classes@TStreamr30Compress@TCompressedFileHeaderx17System@AnsiString
+A 00082ce1 @Compress@TCompress@Recognize$qqrx17System@AnsiString
+A 00082d17 @Compress@TCompress@ScanCompressedFile$qqrx17System@AnsiStringrp19Classes@TStringList
+A 00082d6d @Compress@TCompress@ScanCompressedStream$qqrp15Classes@TStreamrp19Classes@TStringList
+A 00082dc3 @Compress@TCompress@SetHeader$qqrr24Compress@TCompressHeader17System@AnsiString29Compress@TCompressArchiveTypei
+A 00082e33 @Compress@TCompress@SetTargetPath$qqrx17System@AnsiString
+A 00082e6d @Compress@TCompressedFileInfo@
+A 00082e8c @Compress@initialization$qqrv
+A 00082eaa NR_artcnv_GeneratePreview
+A 00082ec4 NR_artcnv_GetEXPNaughtyMode
+A 00082ee0 NR_artcnv_ProduceBitmap
+A 00082ef8 NR_artcnv_RetrieveErrorMessage
+A 00082f17 NR_artcnv_SetCSDType
+A 00082f2c NR_artcnv_SetEXPNaughtyMode
+A 00082f48 NR_artcnv_SetEncryption
+A 00082f60 NR_artcnv_TranslateFromEXP
+A 00082f7b NR_artcnv_TranslateFromMappedEXP
+A 00082f9c NR_artcnv_TranslateToEXP
+A 00082fb5 NR_artcnv_TranslateToMappedEXP
+A 00082fd4 ___CPPdebugHook
+A 00083326 t{{{{
+A 00083346 t{{{{p
+A 00083366 tt{tHp
+A 00083376 GGGHD
+A 00083386 ttwHHx
+A 00083396 GGGDH
+A 000833a6 ttwHD
+A 000833b6 GGGHH
+A 000833c6 ttwDHD
+A 000833d6 GGGHDDx
+A 000833e6 ttwHHD
+A 000833f6 GGGDHDx
+A 00083406 ttwHDD
+A 00083416 GGGHHDx
+A 00083426 ttwDHD
+A 00083436 GGGDDDx
+A 00083446 ttttDD
+A 00083456 GGGGtDtp
+A 00083466 ttttwDG
+A 00083476 GGGGp
+A 00083486 ttttp
+A 00083496 GGGGp
+A 000834a6 ttttp
+A 000834b6 GGGGp
+A 000834c6 ttttp
+A 000834d6 GGGGp
+A 000834e6 ttttp
+A 000834f6 GGwwp
+A 00084600 {<:y&q?	
+A 00084a25 6z618
+A 00084a37 889h9
+A 00084a5b =]>c>
+A 00084a67 > ?H?
+A 00084a79 0$0+010:0G0S0g0m0
+A 00084a9d 1%1B1z1
+A 00084ab7 2+2J2_2h2m2r2
+A 00084ae7 3*373D3J3
+A 00084b01 3-1@1s1=2
+A 00084b23 6!7x7=7
+A 00084b41 8D9`9t9
+A 00084b4f :*:>:
+A 00084b69 =$>X>
+A 00084b73 >4?P?
+A 00084b8b 1$181
+A 00084b9d 2?3s3O3
+A 00084bc5 ?0?5?<?Z?_?f?
+A 00084bf5 6J7\7f7
+A 00084c09 = =6=f=
+A 00084c17 =*>1>
+A 00084c31 0&0+020P0U0\0z0
+A 00084c57 1!1(1F1K1R1p1u1|1
+A 00084c7b 202Q2
+A 00084c91 4%4E4X4k4
+A 00084cb4 41F1 2
+A 00084cc1 4#434G5R5
+A 00084cd3 757:7
+A 00084cf3 ;7;Q;
+A 00084cf9 ;<;V;
+A 00084d11 1<1A1
+A 00084d2f 4|4,4
+A 00084d3d 4T5l5
+A 00084d51 708T8
+A 00084d59 849t9
+A 00084d67 :?;T;
+A 00084d89 0>0p0C1
+A 00084db1 728h8
+A 00084e13 =(>^>
+A 00084e7d >!>6>
+A 00084e98 00d0i0
+A 00084ea9 1P1l1
+A 00084ebd 3K4k4
+A 00084ec9 3F4f4
+A 00084ed1 6'6K6\6j6
+A 00084ee1 8(8V8o8
+A 00084eed :T:k;
+A 00084f03 <X=f=q=
+A 00084f0f >5?C?N?
+A 00084f29 001>1I1[2
+A 00084f3f 5K7F7Y7e7n7
+A 00084f4f :#:4:B:0>
+A 00084f81 8o:j:
+A 00084fb8 {2!3*3
+A 00084fd7 777'8B8k8
+A 00084fe3 829]9{9
+A 0008501f ?$?,?0?4?8?<?@?D?H?L?P?T?X?\?h?
+A 00085075 = =$=(=8=X=`=d=h=l=p=t=x=|=
+A 000850af > >$>(>,>0>4>8>H>h>p>t>x>|>
+A 000850e7 >L:p:
+A 000850f7 ; ;@;H;L;P;T;X;\;`;d;h;|;
+A 00085137 < <0<P<X<\<`<d<h<l<p<t<x<
+A 00085167 <_3S3l3~3
+A 00085175 7/777e7i7m7q7u7
+A 000851ab 9$9,949<9D9L9T9\9d9l9t9|9
+A 000851cb 9	:5:
+A 000851e3 9 :9:
+A 00085205 :`:z:
+A 00085215 :5;u;&;z;
+A 0008523c f6j6n6
+A 00085259 7 7$7(7,7074787<7@7D7H7L7t7d7
+A 000852b1 7I8X8.8o8
+A 000852cf 5(5054585<5@5D5H5L5P5T5X5\5`5t5
+A 00085323 666:6>6B6F6J6N6R6V6Z6^6b6
+A 0008533d 3 3$3(3,3034383<3@3D3H3T3t3|3
+A 0008538f 4(4H4P4T4X4\4`4d4h4l4p4t4x4|4
+A 000853e1 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00085449 0"0D040P0T0\0`0d0h0l0p0t0x0|0
+A 00085487 1 1$1(1,1014181<1@1D1L1T1X1\1`1d1h1l1p1t1x1
+A 000854b7 1H1P1
+A 000854d7 1D1s1
+A 000854dd 1!2u2
+A 000854eb 4	5r5V5
+A 000854f7 666=687N7
+A 00085507 7$8{8
+A 00085519 :7:p:
+A 0008552f <@=R=o=
+A 0008553d >M>g>
+A 00085545 >-?K?
+A 00085559 0/0`0
+A 00085583 5I6a6
+A 0008558b 7Z8a8
+A 0008559b :N:U:
+A 000855b7 >$>,>0>4>8><>@>D>H>L>Z>b>.?v?
+A 000855e0 ,?:?S?
+A 000855e9 0l0q0
+A 000855f9 1)151
+A 00085607 2!2=2
+A 00085613 3"4u4
+A 00085619 4'5p5
+A 00085625 7$7z7/8s8
+A 0008563f ;T<[<m<q<u<y<}<
+A 00085657 <'>}>
+A 00085670 C9G9K9O9S9W9[9_9c9g9k9o9s9w9{9
+A 00085691 9P:t:
+A 0008569d ;"=*=7=R=k>X?c?o0
+A 00085723 93979;9?9
+A 0008574d <.<F<d<
+A 0008575d >a?o?
+A 00085767 ?4<L<l<
+A 00085775 =$=<=
+A 0008577d >'>+>/>3>7>
+A 000857a9 :$:,:4:<:D:L:T:\:d:l:t:|:
+A 000857e9 ;$;,;4;<;D;L;T;\;d;l;t;|;
+A 0008582b 6+7=7r7
+A 00085833 7g7|7
+A 00085849 7 8,8N8=8_8p8
+A 00085859 868G8X8i8z8
+A 00085871 9.9G9;9T9f9l9t9|9
+A 00085894 4>8><>@>D>H>L>P>d>
+A 000858cf ? ?@?H?L?P?T?X?\?`?d?h?|?
+A 00085907 < <$<(<,<@<`<h<l<p<t<x<|<
+A 0008593f =$=(=,=0=4=8=<=@=D=T=t=|=
+A 0008597f >(>0>
+A 0008598b :(:H:P:T:X:\:`:d:h:l:p:
+A 000859cb ; ;0;P;X;\;`;d;h;l;p;t;x;
+A 00085a09 8,84888<8@8D8H8L8P8T8l8
+A 00085a4b 9<9D9H9L9P9T9X9\9`9d9t9
+A 00085a85 2 3e5
+A 00085a93 5,6<6H6\6d6h6l6p6t6x6|6
+A 00085ac7 7 7(7,7074787<7@7D7H7\7|7
+A 00085b1b 0@0d0p0
+A 00085b3b 0-1&3r3}3
+A 00085b45 7&7j7
+A 00085b65 <"<&<*<.<2<6<:<><
+A 00085bd7 ?5?>?J?O?X?d?i?r?{?
+A 00085c03 0;1@1Z1
+A 00085c13 172V2
+A 00085c2b 4L3l3,4E4R4k4z4
+A 00085c45 6J6[6
+A 00085c4f 7'7D7M7
+A 00085c5f 9+9M9[9z9b9
+A 00085c75 91:\:k:
+A 00085c95 ;(;=;
+A 00085ca5 ;2;G;Q;[;e;o;y;
+A 00085cd3 ?8<H<`<p<
+A 00085d01 9 9,9
+A 00085d0f 9(94989D9P9\9h9t9
+A 00085d2b 9@9L9X9d9p9|9
+A 00085d53 :(:4:@:L:
+A 00085d69 :$:0:<:H:T:X:d:`:l:
+A 00085d85 8 8(80888@8H8P8
+A 00085db1 8$8,848<8D8L8T8X8`8h8p8x8
+A 00085dcd 8\8d8l8t8|8
+A 00085dfd 060`0z0
+A 00085e0d 2H2l2
+A 00085e1d 363S3u3>4[4x4
+A 00085e2b 1-2Q2
+A 00085e35 2?3a3
+A 00085e45 4&464S4
+A 00085e5f 676)6/6<6
+A 00085e84 $>(>,>k>
+A 00085e99 0$0{1>2
+A 00085ea1 2d3/4
+A 00085eb3 0&2-2J2
+A 00085ebd 5Z6b6i6
+A 00085ec9 6`7x7
+A 00085ee3 = =$=(=,=0=4=8=<=H=U=h=
+A 00085f1d >2?=?F?L?\?e?
+A 00085f3b ?S9Y9r9{9
+A 00085f51 90:8:
+A 00085f5d :R;X;h;q;
+A 00085f73 <:<d<~<
+A 00085f8f =*=2=
+A 00085f97 >\=b=t=
+A 00085fab >2>:>@>F>x>
+A 00085fc1 1W1j1
+A 00085fc7 1$2e2
+A 00085fe1 5#5-575M5S5a5t5~5
+A 0008600d 6&606:6D6P6[6r6z6
+A 0008602d 7^7t7
+A 00086045 =0>[>p>
+A 00086053 >$?/?A?G?M?f?
+A 00086067 ?y?~?
+A 00086085 1c1k1
+A 00086099 2(212:2A2N2[2G2T2a2
+A 000860b5 3Q5g5
+A 000860d3 :F:n:
+A 000860df : ;U;};
+A 000860e7 ;a<p<
+A 0008610b =V>G>o>
+A 0008611c a?h?o?w?
+A 00086141 0K0i0
+A 00086159 4 4(4/4G4K4O4S4W4[4_4c4r7
+A 0008617f :k;u;
+A 0008618d ;:<A<S<q<z<
+A 000861b7 ???M?T?[?
+A 000861d7 171p2u2
+A 00086203 2+3o3
+A 0008620b 4A4V4k4
+A 00086213 4 5!828
+A 00086221 > >.>
+A 0008622d >0?@?_?
+A 0008624f 0}374
+A 00086259 5(5^5i5
+A 000862c1 6[7}7
+A 000862ed <"<&<*<.<2<6<:<><B<F<J<N<R<p<t<
+A 0008631f 7H:X:w:
+A 00086345 3/3V4
+A 0008634b 5`5u6
+A 00086353 7=8L8V8_8
+A 00086375 =M> ?
+A 000863a5 4k5/6
+A 000863b1 9P;N<:=&>
+A 000863bf :<<*<(=s071
+A 000863d1 ?R3B4 6
+A 000863df 0l102
+A 000863fb :|;z<f=R>>?O0
+A 0008647f >l?R1v2
+A 0008648b 6p7\8
+A 00086495 <p=\>
+A 000864b3 <$<@<\<z<
+A 000864bd <,=A=F=Q=:=
+A 000864df >&>Y>
+A 000864f1 ?%?0?`?k?
+A 00086505 0d0>1P1
+A 00086513 3`4r4L5^586J6
+A 00086521 0|1!2
+A 00086531 1G334
+A 0008653b 6$767
+A 00086547 848P8l8
+A 00086559 909L9h9
+A 0008656b :,:H:d:
+A 0008657d ;(;D;`;
+A 0008658d ;X;p;
+A 00086597 < <`<x<
+A 000865a3 =(=h=
+A 000865af >0>p>
+A 000865b9 > ?8?
+A 000865c1 0#0.0
+A 000865cb 1 1`1x1
+A 000865d7 2(2h2
+A 000865e3 303p3
+A 000865ed 3 484x4
+A 000865f9 4(5@5
+A 00086605 506H6
+A 00086611 687P7
+A 0008661d 8@8X8
+A 00086629 9H9`9
+A 00086635 :P:h:
+A 0008664b 485H5
+A 00086653 586H6
+A 00086689 =/>{>
+A 000866a5 0'1s1
+A 000866c7 5#6o6
+A 00086713 ='=3=>=J=
+A 0008672b >$>g>
+A 00086735 >0?m?~?
+A 00086749 7+858V8`8
+A 00086759 9"9C9M9v9
+A 00086769 :0:::c:
+A 00086779 ;';K1u1
+A 00086797 4J5e5
+A 0008679f 5O6r6
+A 000867a7 6W7z7C8l809Y9
+A 000867bd ;T<x<|=
+A 000867d3 1(191V1e1
+A 000867e7 2&292L2_2r2
+A 00086809 4/4c4~4
+A 00086817 5A5\5
+A 00086827 6=6F6`6i6
+A 0008683b 7E7N7h7q7
+A 00086851 0!0,0#1(1
+A 00086865 1,2{2
+A 0008686b 2#3t3
+A 00086873 40484l4
+A 0008687d 4:588
+A 0008688f = =}>
+A 000868ad 3\3-5`5w5
+A 000868c0 9;Q;V;[;`;j;o;
+A 000868e7 <1<`<
+A 000868fd =8>B>G>
+A 0008690d 0 282L2l2
+A 00086921 3$3,3`3
+A 00086933 545p5
+A 00086941 506L6T6
+A 0008694f 9I9w9
+A 00086961 :2:7:<:A:K:P:
+A 00086983 : ;%;*;4;
+A 00086994 A:K:P:
+A 000869af : ;%;*;4;9;Q;V;[;`;j;o;
+A 000869f5 =7>f>
+A 00086a0c 40P0d0
+A 00086a17 1-1\1
+A 00086a2d 3B3L3Q3
+A 00086a3b 4D5`5t5
+A 00086a43 586L6`6
+A 00086a51 6D7\7p7
+A 00086a73 9I9w9
+A 00086a85 :2:7:<:
+A 00086aa1 >!>d>|>
+A 00086aaf >$?@?T?
+A 00086acd 4X4q4f5
+A 00086adb 7)73787]7g7l7
+A 00086aff 9D9N9S9p9z9
+A 00086b0d 9":f:p:u:
+A 00086b29 <F=b=
+A 00086b37 =!=0=K=g=
+A 00086b5f 3!3z3
+A 00086b67 7 7i7s7x7
+A 00086b75 7_9i9n9
+A 00086b7f :#:=:x:
+A 00086b8b ;&;0;5;
+A 00086b9f <O=Y=^=
+A 00086bbb 1/1T1b1l1q1
+A 00086bd5 495k5
+A 00086bdd 6<6W6x6
+A 00086bed 858?8D8Z8d8i8
+A 00086c35 081L1`1
+A 00086c43 2#3M3W3\3
+A 00086c59 4 4%4
+A 00086c5f 515K5
+A 00086c6b 6$6@6]6x6
+A 00086c7f 6V7/8u8
+A 00086c8d <P<o<
+A 00086ca8 +909:9?9R9\9a9
+A 00086cd1 :t;~;
+A 00086ce3 <J<T<Y<
+A 00086cf5 =o=y=~=M>
+A 00086d07 0O2c2F3w3
+A 00086d17 3_4}4
+A 00086d7d 9	9!9&9
+A 00086d91 1I353N3Z3
+A 00086d9b 3N4i446-;L;|<
+A 00086dab 4I9Y9
+A 00086dc5 0(0B0\0
+A 00086ded 9#:m1s2
+A 00086e1f 2O4)5
+A 00086e2b <b=4>
+A 00086e31 >U>s?
+A 00086e65 1)3h3
+A 00086e7d ?%?*?X?z?
+A 00086ea9 0&141>1I1\3
+A 00086eb7 3J4]5
+A 00086ecb 3'4:4
+A 00086ed9 545N5
+A 00086eed ;->N>
+A 00086f51 >)>!>5>D><>P>_>W>k>z>r>
+A 00086f8b ?(?7?/?C?R?J?^?m?e?y?
+A 00086fb1 8W9n9{9
+A 00086fd1 9	9=9F9O9
+A 00086fe9 :#:2:A:Q:e:
+A 0008701f ;=<O<s<
+A 00087051 2o3X3a3
+A 00087063 3(4J4]474
+A 00087081 5b7f7j7n7r7v7z7L6
+A 0008709b 9!9(9
+A 000870a3 878K8X8e8
+A 000870c7 0*0"060E0=0Q0_0
+A 000870ff 5x6>7\7i7u7{7
+A 00087111 8,9H9\9w9
+A 00087135 =S>a=`>7>m>
+A 0008714b 1@1\1{1
+A 00087159 1<2X2w2
+A 00087167 393_3
+A 00087175 5S5t5
+A 00087181 7'8[8
+A 0008719b ;4;S;g;
+A 000871a7 ;	<0<
+A 000871c5 0A0l0
+A 000871fb 5+6L6
+A 00087207 6$7/7o7
+A 00087213 8X8c8
+A 0008721d :H;^;$<0<D<\<
+A 00087245 5#6\6
+A 00087289 5+6U6
+A 00087291 6'7;7X7w7
+A 000872ab 989X9
+A 000872b7 :T:p:
+A 000872c1 ;,;8;D;
+A 000872cd <8<x<
+A 000872d7 <4=p=
+A 000872df =(>d>
+A 00087305 ;G<O<
+A 00087313 ?+0d1
+A 00087327 2*262y2
+A 0008732f 3'3O3u3}3
+A 00087339 4"4(4D4?4R4f4l4X4{4
+A 00087353 5*5K5b5
+A 0008735f 696\6
+A 0008736b 8,8?8P8W8h8o8
+A 00087389 9.9A9T9g9
+A 000873a5 =];W=
+A 000873b1 >8>L>_>p>
+A 000873bb >/?O?00;0
+A 00087403 5C5e5
+A 0008740f 5+6C6o6
+A 00087421 6D7g7
+A 00087427 7[8c8
+A 0008742d 8g9z9
+A 00087435 :=;B;k;~;
+A 00087457 1g2N1
+A 00087487 9;:w:K:V:
+A 0008749b ;,;g;
+A 000874a5 ;C<d<
+A 000874af <#=I=Q=
+A 000874c0 ??M?_?e?n?r?
+A 000874eb 5W6\6}6
+A 00087507 8@9Q9V9
+A 00087521 <><C<
+A 0008753b >T>l>
+A 00087553 >1?7?
+A 0008756b 0C1L1
+A 00087575 1"121
+A 00087599 3M3[3
+A 000875d1 >'?=?
+A 00087605 =!=%=)=-=1=5=9===A=E=I=M=Q=U=
+A 00087633 0E1?3
+A 0008763d 5V5[5{5
+A 00087645 6m4}4
+A 00087657 525I5h5
+A 0008765f 6!7%7
+A 0008766d 5<6W6
+A 00087691 6$6G6d6
+A 0008769f 8#828
+A 000876c9 ><>M0
+A 000876e7 8!8q8
+A 000876ff :~;d<D:U;e;
+A 00087717 <,<A<r<?:
+A 00087723 ;2<N<S<
+A 0008772d =H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 0008776b 8"8;8O8n8
+A 0008777d 9$9:9M9w9
+A 0008778b 9><U<
+A 0008779d ="=:=D=o=
+A 000877a7 =P>j>
+A 000877b3 ?$?v?
+A 000877eb =?0S0
+A 000877f1 0@2W2y2
+A 000877fd 3"3U3c3
+A 0008780b 6-73;`;
+A 00087874 30e0o0z0
+A 00087889 1!161K1 0B0a1&2J2P2V2\2a2m2y2
+A 000878c1 8.;5;n;u;B=L=F=P=:>A>c>j>
+A 000878f1 4!4+4:4C4M4
+A 00087907 4@5n5x5r5|5
+A 00087919 9 9/989B9
+A 0008792d 94:b:l:f:p:
+A 0008794f =->#?
+A 00087957 ?(?i=y=
+A 00087969 >A>d>
+A 0008798b 0I1^1i1~1
+A 00087997 1.1O1o1
+A 000879a5 1D2|2
+A 000879b9 5&535?5Q5
+A 000879cf 6:7b7p7y7
+A 000879e1 7"8+8?868O8U8
+A 00087a10 T9[9a9
+A 00087a25 <`<l<
+A 00087a2b ='>6>Y?
+A 00087a35 >_?d?o?t?
+A 00087a43 ?+?A?
+A 00087a59 1 1=1
+A 00087a73 4)4>4
+A 00087a81 5k4q4
+A 00087a8f 5&5/5
+A 00087a99 5g5q5
+A 00087aa9 7E8j7w7
+A 00087ab5 8%8-838J8[8
+A 00087ac5 9-999E9
+A 00087adb 819?9D9
+A 00087ae5 95:C:H:k:p:
+A 00087af5 :D;I;
+A 00087aff = >%>
+A 00087b15 0-070*2o3
+A 00087b21 3#4_4
+A 00087b31 5 3$3(3,3034383<3@3D3H3L3P3m6><
+A 00087b5b <&=h=G?u?
+A 00087b79 4;5w5
+A 00087b8d 7f8k8
+A 00087ba5 ?w?|?
+A 00087bcd ;.030J0O0
+A 00087bd9 182=2W2\2t2y2"3'3T3Y3q3v3
+A 00087bf5 3=4B4
+A 00087c01 5+696>6
+A 00087c0f <R<`<e<
+A 00087c25 =K>P>t>
+A 00087c37 0:0?0!1&1A1F1h1m1
+A 00087c4f 1D2I2
+A 00087c5f 3:3?3~3
+A 00087c6b 3S4X4
+A 00087c73 4$5)5
+A 00087c79 7[5`5
+A 00087c91 818H8_8v8
+A 00087ccb ?&?1?W?
+A 00087ce1 242L2l2
+A 00087cf3 3,3H3d3
+A 00087d05 404H4d4
+A 00087d15 5T5t5
+A 00087d1f 646t6
+A 00087d29 607P7
+A 00087d35 8T8p8
+A 00087d3f 909p9
+A 00087d71 >V?{?
+A 00087d8d ;/;D;e;
+A 00087dcf > >7>;>\>L>X>l>t>x>|>
+A 00087dff ><8\8d8h8l8p8t8x8|8
+A 00087e29 9 9$9(9,9L9k9o9
+A 00087e55 :(:0:4:8:<:@:D:H:L:P:d:v:z:
+A 00087e7f :)0E0
+A 00087e95 5%535_5
+A 00087ea7 5H6d6
+A 00087ec9 787@7D7H7L7P7T7X7\7`7x7
+A 00087efb 8$8(8
+A 00087f19 080b0
+A 00087f1f 0y1~181@1
+A 00087f33 3'4P4
+A 00087f3d 5v7G6
+A 00087f4d 7l8:6
+A 00087f7f <K<h<
+A 00087f8f >7>y>
+A 00087f9d >F>[>
+A 00087fbb 1+1l1
+A 00087fcd 393X4
+A 00087fdb 4\4g4
+A 00087fe7 5/6y5
+A 00087ffd 849Z9
+A 00088015 ;$<`<
+A 00088059 4s4'4
+A 0008805f 4c5s5
+A 00088065 374w4
+A 0008806d 4g5l5
+A 00088075 5G656W6
+A 0008807f 6?7Q7p7
+A 0008808d 829o9%:A:
+A 0008809f :L;W<
+A 000880a7 <B=:;\;
+A 000880af ;"<H<
+A 000880cf 0.1W1o;z;
+A 00088100 X:^:d:j:p:v:|:
+A 00088155 9$9*90969<9B9H9N9T9Z9`9f9l9r9x9~9
+A 000881a9 : :&:,:2:8:>:D:J:R:
+A 000881c5 7"7W7^7i7K7{7
+A 000881ff 8"8(8.848:8@8F8L8R8X8^8d8j8p8v8|8
+A 00088259 ?0?4?T?X?x?|?
+A 00088287 ;4;L;d;p;t;
+A 000882a5 <$<4<D<T<d<
+A 000882c5 =,=D=\=h=l=
+A 000882e7 >t><>H>T>P6h6
+A 00088307 7(787H7X7h7x7
+A 00088327 808H8`8x8|8
+A 00088345 989H9L9h9l9
+A 00088367 :,:<:L:\:
+A 00088393 1(2,20242@2T2X2\2`2d2h2l2
+A 000883c7 5(545@5P5\5h5x5
+A 000883eb 6 6,6
+A 000883f9 0 0&0,02080>0D0J0P0V0\0b0h0n0t0z0
+A 0008844f 1"1(1.141:1@1F1L1R1X1^1d1j1p1v1|1
+A 00088497 ?x0|0
+A 000884a7 ;$;0;<;H;T;`;l;x;
+A 000884c7 ;P0T0X0\0`0d0h0l0p0t0
+A 000884e3 ; ;,;8;D;P;\;h;t;
+A 0008850f ?<?T?X?
+A 0008852f <4<L<P<`<p<|<
+A 0008854d =0=H=`=x=
+A 00088565 >(>8>4><>@>D>H>P7`7p7
+A 0008858f 8,888D8T8d8p8
+A 000885b3 949L9d9p9t9
+A 000885cd :(:,:H:L:h:l:
+A 000885e9 ; ;8;P;T;d;
+A 000885f5 0 0,080D0\0d0
+A 0008860d 0`2x2
+A 0008861d 343T3l3
+A 00088633 4 4,4D4`4|4
+A 00088651 6,6P6`6
+A 0008866d 7$747@7
+A 00088681 000@0`0d0l0x0
+A 000886af 2 2<2L2X2d2|2
+A 000886cd 3,383T3l3
+A 000886dd 3d4|4
+A 000886e9 4X5|5
+A 00088704 T8X8\8<9T9p9
+A 0008872b ; ;<;H;d;|;
+A 00088737 <(<,<L<
+A 00088743 =8=P=`=p=
+A 0008875d >0><>@>P>L>T>X>\>`>|?
+A 0008877d 5D6h6l6p6t6x6|6
+A 000887cf 7@7H7P7X7`7h7p7x7
+A 000887fb 7d1h1p1t1|1
+A 00088815 3 3$3430383<3@3D3H3X3T3\3`3d3h3
+A 00088869 4 4(4,4<5T5p5
+A 00088884 <>H>`>l>
+A 0008889d ? ?,?D?P?h?t?
+A 000888bf 888H8h8
+A 000888cf 9(9H9h9
+A 000888df :(:H:h:
+A 000888ef ;(;H;h;
+A 000888ff <(<H<h<x<
+A 00088919 =(=@=L=d=p=
+A 0008893b 7(7H7h7
+A 0008894b 8(8x8
+A 00088959 989X9x9
+A 00088969 :8:X:(6X8x:
+A 0008897d ;8;X;x;
+A 0008898d <8<X<
+A 0008899f 686X6x6
+A 000889af 787X7x7
+A 000889bd 0(080H0X0x0
+A 000889d9 10181H1X1x1
+A 000889f7 2$2L2<2\2
+A 00088a17 5(585H5X5x5
+A 00088a2d 5H6h6
+A 00088a69 ;,;(;0;4;8;<;@;L;P;T;X;\;`;d;p;t;x;|;
+A 00088a9f ;l9x9|9
+A 00088ae5 : :0:,:4:8:<:@:D:P:T:X:\:`:d:h:t:x:|:
+A 00088b1f :$8(88848<8@8D8H8L8X8\8`8d8h8l8p8
+A 00088b81 9 9$9094989<9@9D9H9X9T9\9`9d9h9
+A 00088bb9 7 7$7(7,787<7@7D7H7L7P7\7`7d7h7l7p7t7
+A 00088c55 6 6$6(6,606<6@6D6H6L6P6T6`6d6h6l6p6t6x6
+A 00088c9f 6L4P4T4X4\4h4l4p4t4x4|4
+A 00088cf1 5 5$5(5,50545@5D5H5L5P5T5X5d5h5l5p5t5x5|5
+A 00088d23 0(0@0L0d0p0
+A 00088d3f 1$1<1H1`1l1
+A 00088d5b 2 282D2\2h2
+A 00088d79 343@3X3d3|3
+A 00088d95 4(44484D4H4
+A 00088dbd 181<1\1`1
+A 00088dcb 1(4H4L4l4h5
+A 00088ddb 58:X:\:|:
+A 00088dfd =,=L=X=\=
+A 00088e29 0 0,000\0`0l0p0t0x0|0
+A 00088e49 0$0(0H0X0
+A 00088e73 2 ;@;D;d;t;
+A 00088eab <$<0<<<H<
+A 00088eb9 < <,<8<D<P<h<
+A 00088ee7 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<
+A 00088f15 ?0?@?l?p?|?
+A 00088f45 00040`0d0
+A 00088f61 181<1H1L1P1T1X1
+A 00088f79 484H4X4h4x4
+A 00088fa3 8$8P8T8`8d8h8l8p8t8x8|8
+A 00088fcf 2 2@2@3`3d3
+A 00088fe9 4(4,484<4@4D4H4
+A 00088ffd 5 505@5`5l5p5
+A 00089031 3,3<3h3l3x3|3
+A 00089063 9x9|9
+A 00089077 9\:h:t:
+A 000890ab 2$2@2L2h2
+A 000890c7 3P3X3(3L3p3
+A 000890f5 ;<;X;h;
+A 0008910f <0<4<T<X<x<|<
+A 0008912b =$=4=T=l=t=
+A 00089143 >$>D>P>T>t>
+A 0008915b ?8?<?D?P?`?|?
+A 00089173 ?T6t6
+A 0008918b 7(747@7\7P7|7l7
+A 000891a9 8,888d8
+A 000891b5 9$9<9\9`9p9
+A 000891cf :4:L:P:p:t:
+A 000891eb ;,;8;L;x;
+A 0008920b ?0?<?@?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 00089237 607P7l7
+A 0008924b 8$8<8L8X8h8x8
+A 00089267 9(949@9L9X9d9p9$909<9H9T9`9l9x9
+A 00089295 > >@>D>P>T>X>\>`>d>h>l>p>t>
+A 000892b3 ><5@5D5P5T5X5\5`5d5h5l5p5t5
+A 000892f9 6 6,6064686<6@6D6H6L6P6T6X6\6`6l6p6t6x6|6
+A 00089337 000H0`0d0t0
+A 0008935f 20242T2l2
+A 00089377 34383X3\3|3
+A 00089391 4 4@4D4T4t4
+A 000893ad 5 5,505
+A 000893bc L6l6\6|6
+A 000893cd 707<7@7D7P7T7d7
+A 000893ed 7P8p8t8
+A 00089403 9 9$9(9,9
+A 00089427 000@0,0l0
+A 0008943b 2$242D2d2
+A 00089453 3T3X3x3
+A 00089467 3 484L4<4\4
+A 00089481 5$505<5l5
+A 000894a9 4\6`6d6h6l6p6t6x6|6
+A 0008950b 7X>\>`>d>h>l>p>t>x>|>
+A 00089528 L<P<T<X<\<`<d<h<l<
+A 00089543 ?(>8>H>X>h>x>
+A 00089563 ?$?0?<?H?T?`?
+A 00089578 \4`4d4h4l4p4t4x4|4
+A 000895a3 7 7$7(7,70747
+A 000895b5 9\9`9
+A 000895e1 < <$<(<,<0<4<8<<<@<D<H<
+A 000895ff 2 2$2(2,2024282<2@2H2L2P2T2X2\2`2t2x2|2
+A 0008966b 3 3$3,3034383
+A 00089685 1l1x1
+A 00089691 1<2H2T2
+A 000896a1 3$3t3
+A 000896af 3D4P4\4
+A 000896bd 5 5,5|5
+A 000896cd 5,6P6t6
+A 000896db 7(7L7p7
+A 000896ed 0$0\0|0
+A 000896f7 0,1L1
+A 0008970b 243T3
+A 00089715 4$4l4
+A 0008971f 4<5\5
+A 0008972d 006<1T6
+A 0008974d 4P7|4t7
+A 00089761 8H0T0
+A 00089799 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 00089801 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00089865 2 2$2D2H2h2l2|2
+A 00089887 3,383<3h3H3X3t3
+A 000898a7 444@4L4X4l4|4
+U 00005e9c jjjjjjj
+U 0000989b jjjj
+U 0001c815 jjjj
+U 0001d247 jjjj
+U 0001eb1c jjjjj
+U 0001eb41 jjjjj
+U 0001eb66 jjjjj
+U 000208ab jjjjjj
+U 00048a0c jjjjjjj
+U 0004a201 jjjjjjjh
+U 0005b247 jjjjj
+U 0006b27a °°ÀÀßßÿÿ
+U 0006b2ae o p°
+U 0006b2f2 P P°_À`Ïoßoàpï
+U 00078d10 ),,,
+U 0007cde4 (null)
+U 0007ce56          (((((                  H
+U 0007d3f1 E_.=
+U 0007d992 N-INF
+U 0007d99e +INF
+U 0007d9a8 -NAN
+U 0007d9b2 +NAN
+U 000812c0 2%#,
+U 000812d8 '.)*&
+U 00081318 nxoyegihW^rpz\klXmab
+U 00081342 Yf]qs{
+U 0008136a ~}wv_
+U 0008137e 134JSTB>LMON6KR@DE?QUP7;8VF9<=
+U 000813bc 5GCIHA:(
+U 0008329a DVCLAL
+U 000832a8 MAINICON(
+U 000835ba Sunday
+U 000835c8 Monday
+U 000835d6 Tuesday
+U 000835e6 Wednesday
+U 000835fa Thursday
+U 0008360c Friday
+U 0008361a Saturday
+U 0008364e January
+U 0008365e February
+U 00083670 March
+U 0008367c April
+U 00083690 June
+U 0008369a July
+U 000836a4 August
+U 000836b2 September
+U 000836c6 October
+U 000836d6 November
+U 000836e8 December
+U 0008373a Abstract Error?Access violation at address %p in module '%s'. %s of address %p
+U 000837d8 Win32 Error.  Code: %d.
+U 0008380e A Win32 API function failed
+U 000838c6 Application Error1Format '%s' invalid or incompatible with argument
+U 0008394e No argument for format '%s'
+U 00083986 Invalid variant type conversion
+U 000839c6 Invalid variant operation"Variant method calls not supported
+U 00083a40 Read
+U 00083a4a Write
+U 00083a56 Error creating variant array
+U 00083a90 Variant is not an array!Variant array index out of bounds
+U 00083b04 External exception %x
+U 00083b30 Assertion failed
+U 00083b52 Interface not supported
+U 00083b82 Exception in safecall method
+U 00083bbc %s (%s, line %d)
+U 00083bfe Disk full
+U 00083c12 Invalid numeric input
+U 00083c3e Division by zero
+U 00083c60 Range check error
+U 00083c84 Integer overflow Invalid floating point operation
+U 00083ce8 Floating point division by zero
+U 00083d28 Floating point overflow
+U 00083d58 Floating point underflow
+U 00083d8a Invalid pointer operation
+U 00083dbe Invalid class typecast0Access violation at address %p. %s of address %p
+U 00083e4e Stack overflow
+U 00083e6c Control-C hit
+U 00083e88 Privileged instruction%Exception %s in module %s at %p.
+U 00083ef8 %s%s
+U 00083f22 Invalid property value
+U 00083f50 Invalid property path
+U 00083f7c Property does not exist
+U 00083fac Property is read-only
+U 00083fd8 Error reading %s%s%s: %s
+U 0008400a Invalid component registration
+U 00084048 Invalid property value%List does not allow duplicates ($0%x)!'%s' is not a valid integer value
+U 00084106 Out of memory
+U 00084122 I/O error %d
+U 0008413c File not found
+U 0008415a Invalid filename
+U 0008417c Too many open files
+U 000841a4 File access denied
+U 000841ca Read beyond end of file
+U 0008421a Cannot assign a %s to a %s
+U 00084250 Cannot create file %s
+U 0008427c Cannot open file %s
+U 000842a4 Stream read error
+U 000842c8 Stream write error+Out of memory while expanding memory stream*Can't write to a read-only resource stream
+U 0008439c Class %s not found
+U 000843c2 Resource %s not found
+U 000843ee List index out of bounds (%d) List capacity out of bounds (%d)
+U 0008446c List count out of bounds (%d)+Operation not allowed on sorted string list%String list does not allow duplicates#A component named %s already exists$''%s'' is not a valid component name
+U 00084626 VS_VERSION_INFO
+U 00084682 StringFileInfo
+U 000846a6 0C0904E4
+U 000846be CompanyName
+U 000846e2 FileDescription
+U 00084704 Artcnvdl
+U 0008471e FileVersion
+U 00084738 3.0.13.0
+U 00084752 InternalName
+U 00084776 LegalCopyright
+U 00084794 See the About Box
+U 000847be LegalTrademarks
+U 000847ea OriginalFilename
+U 00084816 ProductName
+U 0008483a ProductVersion
+U 00084858 1.0.0.0
+U 0008486e Comments
+U 0008488a VarFileInfo
+U 000848aa Translation

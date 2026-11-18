@@ -1,0 +1,809 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001b8 .text
+A 000001df `.rdata
+A 00000207 @.data
+A 00000230 .reloc
+A 000009f5 QSUVWj
+A 0000338d \$(hb
+A 00004497 L$L_^]d
+A 00004709 D$,Sj
+A 00005268 D$L P
+A 00005512 L$D_^d
+A 00005699 D$LVW
+A 000056f1 L$T@j
+A 0000576f l$pVWj
+A 00005968 L$h_^]d
+A 00005cf3 L$(^2
+A 00005db9 L$,_^]
+A 00005dd1 A$UVW
+A 00005ed7 \SUVW3
+A 00005ee0 WWWhQJ
+A 00005f65 L$TRj
+A 00006033 L$l_^]d
+A 000060f1 8\$Hu
+A 0000616d L$8_^]d
+A 000061ab l$4VW
+A 00006248 L$,_^]d
+A 000062d5 L$ ^d
+A 00006309 D$,V%
+A 00006347 L$ ^d
+A 00006379 D$,V%
+A 000063b7 L$ ^d
+A 000063e9 D$,V%
+A 00006427 L$ ^d
+A 00006459 D$,V%
+A 00006497 L$ ^d
+A 000064c9 D$,V%
+A 00006507 L$ ^d
+A 00006539 D$,V%
+A 00006577 L$ ^d
+A 000065a9 D$,V%
+A 000065e7 L$ ^d
+A 00006619 D$,V%
+A 00006657 L$ ^d
+A 00006689 D$,V%
+A 000066c7 L$ ^d
+A 00006702 L$4PQh
+A 0000673b L$ ^d
+A 000067be L$ ^d
+A 00006845 L$ ^d
+A 0000695a L$D_d
+A 00006a49 D$@SU3
+A 00006a7d |$Pt/
+A 00006b3b L$<_^]d
+A 00006bfd q$USj
+A 00006d82 L$\^d
+A 00006e35 L$ ^d
+A 00006ec5 L$ ^d
+A 0000738e _^][Y
+A 0000739b _^][Y
+A 000074bf _^][Y
+A 00007596 F jgP
+A 00007762 T$$WSUP
+A 0000776a D$0QRP
+A 0000c200 L$ ^d
+A 0000c324 D$0ht
+A 0000c7f0 []^_Y
+A 0000d071 L$l_^]d
+A 0000d57b D$ RP
+A 0000d80d \$,te
+A 0000ddbc L$HQS
+A 0000de61 ]^_[Y
+A 0000de74 D$,SUV
+A 0000df18 T$<PR
+A 0000e283 D$`Pj
+A 0000e308 T$0PR
+A 0000e38c D$PWRP
+A 0000e3ac L$@PQ
+A 0000e3f2 T$@VR
+A 0000e45e L$0PQ
+A 0000e4b8 L$x]_^
+A 0000e818 QQSVW
+A 0000ebc1 L$<PQR
+A 0000ec6e L$(QR
+A 0000ec7d D$0PQ
+A 0000ecae 9D$(u
+A 0000eda3 t&jGj
+A 0000ee89 \$ UVW
+A 0000ee90 |$(Pj
+A 0000ef83 L$XPQ
+A 0000efe7 L$$UW
+A 0000f09f L$<_^]d
+A 0000f0c4 D$0SU
+A 0000f0ca l$0VW
+A 0000f0d0 |$HPj
+A 0000f0fb L$@PQ
+A 0000f112 D$ PW
+A 0000f150 |$4RU
+A 0000f15b L$,PQh
+A 0000f1e8 L$0PQW
+A 0000f1fa D$,RSPW
+A 0000f20d T$0QR
+A 0000f2f7 LSUVW
+A 0000f334 |$dv.W
+A 0000f36c l$lSU
+A 0000f3a7 D$ PWh
+A 0000f3ee D$lRP
+A 0000f468 L$\_^]d
+A 000102b0 ]^_[Y
+A 00017732 L$ ^d
+A 00017769 D$,SVW
+A 000177ec L$(_^
+A 00017d75 QSUVW
+A 00018025 QSUVW
+A 00018397 L$$PQ
+A 00018511 L$ _d
+A 000185be \$|UVWSP
+A 00018742 L$$SQ
+A 000189b6 SSPh9J
+A 00018ac3 T$ PR
+A 00018b1d L$`_d
+A 00018d1d D$Xhh
+A 00018dc9 L$H_^]2
+A 00018f04 D$ RP
+A 00019011 L$ PQ
+A 000191f9 D$8WP
+A 000195ab t$TW3
+A 000195fc \$PRW
+A 00019659 D$ VP
+A 00019731 L$H_^
+A 00019978 t4Hueh
+A 00019b9a D$(PQ
+A 00019cfb _^][Y
+A 0001b0b9 D$0SVW
+A 0001b19a L$(_^d
+A 0001b2ea j	h@b
+A 0001b4e2 j	h@b
+A 0001b6c2 j	h@b
+A 0001b8ce j	h@b
+A 0001bb84 SSPh8J
+A 0001bf2e L$d_^d
+A 0001c4b9 D$,SVW
+A 0001c53b L$(_^
+A 0001c569 D$,VW
+A 0001c5f5 L$$_^2
+A 0001c6cb L$(^2
+A 0001c7b6 L$(]2
+A 0001c836  SUVW
+A 0001c97b L$<QR
+A 0001c9c2 L$t_^]d
+A 0001c9f7 8SUVj
+A 0001ca96 L$D^]d
+A 0001ccb2 L$t^d
+A 0001cd26 L$ ^d
+A 0001cd62 L$4PQ
+A 0001cd92 L$ ^d
+A 0001cf5c T$(SR
+A 0001cf7f L$@^d
+A 0001d3ac L$(_^d
+A 0001d514 L$(_^d
+A 0001d64a _^][Y
+A 0001d692 _^][Y
+A 0001d6b2 _^][Y
+A 0001d6c6 _^][Y
+A 0001d72f _^][Y
+A 0001d748 _^][Y
+A 0001d796 _^][Y
+A 0001d890 QRh=J
+A 0001d8fa L$4_d
+A 0001d997 L$$^d
+A 0001d9c9 D$,V%
+A 0001da07 L$ ^d
+A 0001da72 L$ ^d
+A 0001dae2 L$ ^d
+A 0001db63 L$$_d
+A 0001dc16 [_^]Y
+A 0001df20 L$`_d
+A 0001e403 9\$@u
+A 0001e787 T$,SR
+A 0001eb07 TSUVW
+A 0001eb60 L$tWWh
+A 0001eb88 L$tWWh
+A 0001ebdb l$tWWh
+A 0001ec31 L$d_^]d
+A 0001f354 L$$_^d
+A 0001f38a \$LUVW
+A 0001f517 D$\RPV
+A 0001f57b L$@_^]d
+A 0001f61c D$$WP
+A 0001f6af L$8_^]d
+A 0001f9e5 L$,_^]d
+A 0001fc37 t$ vH
+A 0001fca8 T$DSU
+A 0001fcb1 L$TWPQR
+A 000204b9 P Qh5
+A 00020558 D$,RP
+A 000205bc L$|_^d
+A 000206e4 T$(PQVj
+A 00020a62 D$$QRP
+A 00021140 Ox(VS
+A 00021ce0 _^][Y
+A 000221fa tTHt1Hu`
+A 00022680 QSUVW
+A 000226eb _^][Y
+A 000226f5 _^][Y
+A 00023c1f l$,VW
+A 000245e0 u"WVS
+A 0002c5e4 SH33W32.dll
+A 0002c5f2 ??0Palette@@QAE@XZ
+A 0002c608 ?CheckDllVersion@@YA_NPBDHH@Z
+A 0002c628 ?GetAsDataItem@RegistryKey@@QBE_NAAVDataItem@@@Z
+A 0002c65c ??4RegistryKey@@QAEAAV0@ABV0@@Z
+A 0002c67e ??YRegistryKey@@QAEAAV0@ABVString@@@Z
+A 0002c6a6 ??0RegistryKey@@QAE@ABV0@@Z
+A 0002c6c4 ??1FileParse@@QAE@XZ
+A 0002c6dc ?Complete@FileParse@@QBE?AVString@@PBV2@000@Z
+A 0002c70c ?Name@FileParse@@QBE?AVString@@XZ
+A 0002c730 ?Extension@FileParse@@QBE?AVString@@XZ
+A 0002c75a ??0FileParse@@QAE@ABVString@@_N@Z
+A 0002c77e ?GetBinPathA@@YAPBDXZ
+A 0002c796 ??0RegistryKey@@QAE@ABV0@ABVString@@@Z
+A 0002c7c0 ?GetKeyData@@YA_NABVRegistryKey@@ABVString@@AAK@Z
+A 0002c7f4 ?GetKeyData@@YA_NABVRegistryKey@@ABVString@@AAVDataItem@@@Z
+A 0002c832 ?StoreKeyData@@YA_NABVRegistryKey@@ABVString@@K_N@Z
+A 0002c868 ?StoreKeyData@@YA_NABVRegistryKey@@ABVString@@ABVDataItem@@_N@Z
+A 0002c8aa ??0RegistryKey@@QAE@ABVDataItem@@@Z
+A 0002c8d0 ??0CriticalSectionObject@@QAE@XZ
+A 0002c8f4 ??1CriticalSectionObject@@QAE@XZ
+A 0002c918 ?Leave@CriticalSectionObject@@QAEXXZ
+A 0002c940 ?Enter@CriticalSectionObject@@QAEXXZ
+A 0002c966 Wessys.dll
+A 0002c974 ?GetAsDataItem@UserFileVersion@@QBEXAAVDataItem@@@Z
+A 0002c9aa ??0ProductVersionString@@QAE@ABVProductVersion@@@Z
+A 0002c9e0 ??4ProductVersion@@QAEAAV0@ABV0@@Z
+A 0002ca06 ??0ProductVersion@@QAE@ABV0@@Z
+A 0002ca28 ??0UserFileVersion@@QAE@ABVVersionNumber@@H@Z
+A 0002ca58 ??0VersionNumber@@QAE@HHDD@Z
+A 0002ca78 ?appVersion@@3PAVProductVersion@@A
+A 0002ca9e ??0ProductVersion@@QAE@ABVDataItem@@@Z
+A 0002cac8 ??0ProductVersion@@QAE@XZ
+A 0002cae2 versndll.dll
+A 0002caf2 ??0GraphicSpace@@QAE@XZ
+A 0002cb0a geometry.dll
+A 0002cb1a ?DataItemToText@GeneralUIControl@@MBE_NABVDataItem@@AAVString@@@Z
+A 0002cb5e ?ControlID@SelfControl@@MBEIXZ
+A 0002cb80 ?CreateControlStateData@SelfControl@@MAEXAAVDataItem@@@Z
+A 0002cbbc ?IsValid@SelfControl@@UBE_NXZ
+A 0002cbdc ?Enable@SelfControl@@UAEX_N@Z
+A 0002cbfc ?IsEnabled@SelfControl@@UBE_NXZ
+A 0002cc1e ?MoveWindow@SelfControl@@UAEXABVIntegerRect@@@Z
+A 0002cc50 ?Update@DesignGradeIconControl@@UAE_NABVDataItem@@@Z
+A 0002cc88 ?Base@GeneralUIControl@@UBEPAXG@Z
+A 0002ccac ?RunTimeID@GeneralUIControl@@UBEGXZ
+A 0002ccd2 ?DoPaint@DesignGradeIconControl@@MAEXAAVCPaintDC@@@Z
+A 0002cd0a ?GetMessageMap@GeneralStaticControl@@MBEPBUAFX_MSGMAP@@XZ
+A 0002cd46 ??0DesignGradeIconControl@@QAE@XZ
+A 0002cd6a ??1DesignGradeIconControl@@UAE@XZ
+A 0002cd8e ?GetMessageMap@GeneralComboBox@@MBEPBUAFX_MSGMAP@@XZ
+A 0002cdc6 ?ControlID@GeneralComboBox@@UBEIXZ
+A 0002cdec ?IsValid@GeneralComboBox@@UBE_NXZ
+A 0002ce10 ?Enable@GeneralComboBox@@UAEX_N@Z
+A 0002ce34 ?IsEnabled@GeneralComboBox@@UBE_NXZ
+A 0002ce5a ?MoveWindow@GeneralComboBox@@UAEXABVIntegerRect@@@Z
+A 0002ce90 ?Base@GeneralComboBox@@UBEPAXG@Z
+A 0002ceb4 ?RunTimeID@GeneralComboBox@@UBEGXZ
+A 0002ceda ?CompareItem@ColourCombo@@UAEHPAUtagCOMPAREITEMSTRUCT@@@Z
+A 0002cf16 ?MeasureItem@ColourCombo@@UAEXPAUtagMEASUREITEMSTRUCT@@@Z
+A 0002cf52 ?DrawItem@ColourCombo@@UAEXPAUtagDRAWITEMSTRUCT@@@Z
+A 0002cf88 ??1GeneralComboBox@@UAE@XZ
+A 0002cfa6 ??0GeneralComboBox@@QAE@I@Z
+A 0002cfc4 ??0GeneralUIControl@@QAE@I@Z
+A 0002cfe4 ?ControlID@GeneralEditBox@@UBEIXZ
+A 0002d008 ?CreateControlStateData@FloatEditBox@@UAEXAAVDataItem@@@Z
+A 0002d044 ?IsValid@GeneralEditBox@@UBE_NXZ
+A 0002d068 ?Enable@GeneralEditBox@@UAEX_N@Z
+A 0002d08c ?IsEnabled@GeneralEditBox@@UBE_NXZ
+A 0002d0b2 ?MoveWindow@GeneralEditBox@@UAEXABVIntegerRect@@@Z
+A 0002d0e8 ?Update@FloatEditBox@@UAE_NABVDataItem@@@Z
+A 0002d116 ?SetRange@FloatEditBox@@UAEXNN@Z
+A 0002d13a ?SetDecimals@FloatSpinBox@@UAEXG@Z
+A 0002d160 ?ConvertToLong@FloatEditBox@@UBE_NXZ
+A 0002d188 ?SetValue@FloatEditBox@@UAEXN@Z
+A 0002d1aa ?GetValue@FloatEditBox@@UBENXZ
+A 0002d1cc ?PreTranslateMessage@FloatEditBox@@MAEHPAUtagMSG@@@Z
+A 0002d204 ?GetMessageMap@FloatSpinBox@@MBEPBUAFX_MSGMAP@@XZ
+A 0002d238 ??1FloatSpinBox@@UAE@XZ
+A 0002d252 ?SetMaxLineLength@FloatEditBox@@QAEXG@Z
+A 0002d27c ??0FloatSpinBox@@QAE@_NI@Z
+A 0002d29a ??1FloatEditBox@@UAE@XZ
+A 0002d2b4 ??_7GeneralUIControl@@6B@
+A 0002d2d0 ??_7GeneralEditBox@@6BGeneralUIControl@@@
+A 0002d2fc ??_7GeneralEditBox@@6BCEdit@@@
+A 0002d31e ?CreateControlStateData@GeneralUIControl@@MAEXAAVDataItem@@@Z
+A 0002d35e ?Create@FloatSpinBox@@QAEHKABVCRect@@0PAVCWnd@@II@Z
+A 0002d394 ?messageMap@PaletteCombo@@1UAFX_MSGMAP@@B
+A 0002d3c0 ?SetData@PaletteCombo@@QAE_NABVDataItem@@@Z
+A 0002d3ee ??1GeneralUIControl@@UAE@XZ
+A 0002d40a controls.dll
+A 0002d41a ?SelectByData@@YAHAAVCComboBox@@J@Z
+A 0002d43e Dialog.dll
+A 0002d44c ?GetResourceString@@YA_NIAAVString@@_N@Z
+A 0002d478 ?GetClassResString@@YA_NIAAVString@@@Z
+A 0002d4a2 ?GetDescriptorResString@@YA_NIAAVString@@@Z
+A 0002d4ce resource.dll
+A 0002d4dc MFC42.DLL
+A 0002d4e8 __CxxFrameHandler
+A 0002d4fc _purecall
+A 0002d508 _CxxThrowException
+A 0002d51e _mbscmp
+A 0002d528 _ftol
+A 0002d530 ?_query_new_handler@@YAP6AHI@ZXZ
+A 0002d554 ?_query_new_mode@@YAHXZ
+A 0002d56e _mbsnbcpy
+A 0002d57a vsprintf
+A 0002d586 memmove
+A 0002d590 sscanf
+A 0002d59a __dllonexit
+A 0002d5a8 _onexit
+A 0002d5b0 MSVCRT.dll
+A 0002d5be ??1type_info@@UAE@XZ
+A 0002d5d6 _except_handler3
+A 0002d5ea ?terminate@@YAXXZ
+A 0002d5fe _initterm
+A 0002d60a _adjust_fdiv
+A 0002d61a FindResourceA
+A 0002d62a GetLastError
+A 0002d63a LoadLibraryExA
+A 0002d64c WaitForSingleObject
+A 0002d662 Sleep
+A 0002d66a LockResource
+A 0002d67a LoadResource
+A 0002d68a lstrlenA
+A 0002d694 KERNEL32.dll
+A 0002d6a4 EnableWindow
+A 0002d6b4 PostMessageA
+A 0002d6c4 IsWindowVisible
+A 0002d6d6 GetSysColor
+A 0002d6e4 SendMessageA
+A 0002d6f4 GetParent
+A 0002d700 SetTimer
+A 0002d70c KillTimer
+A 0002d718 SetCapture
+A 0002d726 UpdateWindow
+A 0002d736 GetCapture
+A 0002d744 ReleaseCapture
+A 0002d756 ScreenToClient
+A 0002d768 SystemParametersInfoA
+A 0002d780 CheckMenuItem
+A 0002d790 EnableMenuItem
+A 0002d7a2 GetMenuItemCount
+A 0002d7b6 GetMenuItemID
+A 0002d7c6 GetMenuState
+A 0002d7d6 GetMenuStringA
+A 0002d7e8 GetSubMenu
+A 0002d7f6 CreateMenu
+A 0002d804 CreatePopupMenu
+A 0002d816 LoadMenuA
+A 0002d822 DeleteMenu
+A 0002d830 AppendMenuA
+A 0002d83e InsertMenuA
+A 0002d84c ModifyMenuA
+A 0002d85a GetMenuItemInfoA
+A 0002d86e GetMenu
+A 0002d878 PtInRect
+A 0002d884 GetWindowRect
+A 0002d894 OffsetRect
+A 0002d8a2 InvalidateRect
+A 0002d8b4 InflateRect
+A 0002d8c2 ReleaseDC
+A 0002d8ce FillRect
+A 0002d8da GetDC
+A 0002d8e2 GetClientRect
+A 0002d8f0 USER32.dll
+A 0002d8fe BitBlt
+A 0002d908 CreateCompatibleBitmap
+A 0002d922 CreateCompatibleDC
+A 0002d938 GetObjectA
+A 0002d946 GetStockObject
+A 0002d958 Rectangle
+A 0002d964 GetTextExtentPointA
+A 0002d97a CreateSolidBrush
+A 0002d98c GDI32.dll
+A 0002d996 MSVCIRT.dll
+A 0002d9a4 ??0RegistryKey@@QAE@PAUHKEY__@@ABVString@@@Z
+A 0002daee product.dll
+A 0002dafa ??0MDIFrameInterface@@QAE@PAVCFrameWnd@@PAV?$DeepIxList@VPSharedWMenu@@@@@Z
+A 0002db46 ??1DesignerProductLayout@@UAE@XZ
+A 0002db67 ??1MDIFrameInterface@@QAE@XZ
+A 0002db84 ?CreateAttachedMenu@MDIFrameInterface@@SAPAVWMenu@@PAVCMenu@@I@Z
+A 0002dbc5 ?GetCommandStatusList@ProductConfigurationManager@@KAPBVCommandStatusList@@XZ
+A 0002dc13 ?GetCommandSwapList@ProductConfigurationManager@@KAPBVCommandSwapList@@XZ
+A 0002dc5d ?GetMenuByDescriptor@ProductLayout@@UBEPAVWMenu@@I@Z
+A 0002dc92 ?GetResource@@YAPAXPBDI@Z
+A 0002dcac ?GetVisibleControlBars@ProductLayout@@QBEXAAVWControlBarPList@@@Z
+A 0002dcee ?HasControlBar@ProductLayout@@QBE_NI@Z
+A 0002dd15 ?IsControlBarFloating@ProductLayout@@QBE_NI@Z
+A 0002dd43 ?IsControlBarVisible@ProductLayout@@QBE_NI@Z
+A 0002dd70 ?LoadState@MDIFrameInterface@@QAE_NXZ
+A 0002dd96 ?MapDescriptorToCommand@ProductConfigurationManager@@SA_NIAAI@Z
+A 0002ddd6 ?NewDesignerLayout@@YAPAVDesignerProductLayout@@ABVProductNumber@@@Z
+A 0002de1b ?PerformCommand@ProductConfigurationManager@@SA_NHABVDataItem@@AAV2@@Z
+A 0002de62 ?QueryInfo@ProductConfigurationManager@@SA_NAAVDataItem@@@Z
+A 0002de9e ?SaveState@MDIFrameInterface@@QAE_NXZ
+A 0002dec4 ?SetControlBarVisible@ProductLayout@@QAE_NI_N@Z
+A 0002def4 ?ShowControlBars@ProductLayout@@QAEX_N@Z
+A 0002df1d ?ShowControlBars@ProductLayout@@QAEX_NABVWControlBarPList@@@Z
+A 0002df5b ?UpdateControl@ProductLayout@@QAEXIABVDataItem@@@Z
+A 0002df8e ?ValidateAndFixMenus@ProductLayout@@QAEXAAVMDIFrameInterface@@@Z
+A 0002ed10 .?AVCMemoryException@@
+A 0002ed30 .PAVCMemoryException@@
+A 0002ed48 Stitches: %u
+A 0002ed58 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+A 0002ed74 Feature %d missing from product
+A 0002ed94 FrameWorkToolBar
+A 0002edb0 .?AVCGdiObject@@
+A 0002edd0 .?AVCBitmap@@
+A 0002ede8 .?AVCObject@@
+A 0002ee00 .?AVCCmdTarget@@
+A 0002ee20 .?AVCWnd@@
+A 0002ee38 .?AVCControlBar@@
+A 0002ee58 .?AVCToolBar@@
+A 0002ee70 .?AVFrameWorkToolBar@@
+A 0002ee90 .?AVWControlBarTag@@
+A 0002eeb0 .?AVWControlBar@@
+A 0002eed0 .?AVWToolBar@@
+A 0002eee0 comctl32.dll
+A 0002eef8 .?AVCCmdUI@@
+A 0002ef10 .?AVESCmdUI@@
+A 0002ef24 Could not load the correct OEM resource DLL : %d
+A 0002ef58 ptype%d
+A 0002ef60 \MODEL
+A 0002ef68 Options
+A 0002ef70 Next ProductNum
+A 0002ef80 PRODUCT_RESOURCE
+A 0002ef94 \DESIGNER
+A 0003357c Bernina
+A 00033584 BERNINA artista
+A 00033594 BERES.DLL
+A 000335a0 DESBAR-DEFAULT
+A 000335b0 TOOLBAR_%s_%d_%d
+A 000335c8 StatusBar
+A 000335e0 .?AVESStatusCmdUI@@
+A 000335f4 GeneralTextControl
+A 000336b8 %d,%d
+A 000336c0 \SOFTWARE
+A 000336d8 .?AVtype_info@@
+A 00033809 0!010T0q0
+A 0003381d 1$1A1Q1a1
+A 00033833 2!2D2
+A 00033843 2"3,3R3\3
+A 00033859 4p5v5}5
+A 00033873 8,82898
+A 00033881 :C:f:}:
+A 00033891 ;&;A;Q;c;
+A 000338a3 ;Y<}<
+A 000338b7 >2>R>\>
+A 000338cd ?B?L?r?
+A 000338e1 0b0v1
+A 000338f9 364L4
+A 00033901 4,5B5
+A 00033909 5)6?6
+A 00033911 6+7A7
+A 00033919 7+8A8
+A 00033921 8*9@9
+A 00033939 ;.<D<
+A 0003394f =g>l>
+A 00033971 232v2
+A 00033981 3I4`4f4z4
+A 00033991 525C5r5
+A 0003399f 6"636
+A 000339af 6C7i7o7
+A 000339bd 8,898Q8[8t8
+A 000339d1 9$9V9v9
+A 000339d9 9#:<:I:a:k:
+A 000339f5 =">,>R>\>
+A 00033a0b ?#?R?
+A 00033a25 0H0T0u0
+A 00033a35 1b1l1
+A 00033a45 222<2b2l2
+A 00033a5b 3,3R6\6
+A 00033a6d 6"7,7R7\7
+A 00033a8d :R;\;
+A 00033a9d ;"<,<R<\<
+A 00033abf >)?2?
+A 00033ad7 121<1b1l1
+A 00033aeb 1"2,2Q2a2q2
+A 00033b05 4"4,4R4\4
+A 00033b1d 5B5\5
+A 00033b29 6B6b6
+A 00033b3d 7B7L7r7|7
+A 00033b47 798J8
+A 00033b79 4	4|5
+A 00033b9d 6i7Y8
+A 00033bc9 2S3{3
+A 00033bd3 43638
+A 00033be1 ;!;n;x;
+A 00033bf1 <2<C<
+A 00033bff >+>O>g>
+A 00033c1c 80T0w0
+A 00033c2f 1&2,2
+A 00033c43 424C4
+A 00033c49 5H5W5
+A 00033c59 4#6f6t6
+A 00033c69 929<9b9l9
+A 00033c7d 9":,:
+A 00033c8d :";,;R;\;
+A 00033ca3 <"<(<a<f<l<y<
+A 00033ccc 20<0b0
+A 00033cdf 121<1b1l1
+A 00033cfd 4!414L4
+A 00033d0b 5Q5a5q5
+A 00033d1b 516A6Q6l6
+A 00033d29 8,8a8q8
+A 00033d35 9!919L9
+A 00033d47 9+:6:<:r:w:~:
+A 00033d57 :C;H;
+A 00033d87 0.0S0}0
+A 00033d99 1F2f2
+A 00033db1 4=5X5
+A 00033dbb 6H6f6
+A 00033dc5 6,7C7
+A 00033e03 ="=.=8=A=O=`=j=y=
+A 00033e23 =	>8>i>
+A 00033e41 161s1
+A 00033e65 6f8u8
+A 00033e6f 9V:a:q:
+A 00033e7b <!=i=X>
+A 00033e95 121R1r1|1
+A 00033ea9 222<2b2l2
+A 00033ecd 4!515A5_5
+A 00033ee5 6A8Q8a8|8!919A9\9
+A 00033efd 9Q;a;q;
+A 00033f05 ;1<A<Q<o<
+A 00033f1d ?A?Q?a?
+A 00033f30 !010A0\0
+A 00033f47 3Q3a3q3
+A 00033f55 4,4a5q5
+A 00033f77 91:A:Q:l:
+A 00033f83 ;!;<;
+A 00033f99 >!>1>O>
+A 00033fa3 ?!???
+A 00033fc5 3!3<3
+A 00033fcb 4!414L4
+A 00033fd9 5Q6a6q6
+A 00033fed 8!8<8
+A 00033ff3 9!919L9
+A 00033ffd :!:<:
+A 00034019 <A=Q=a=|=
+A 00034023 >!>1>L>
+A 00034044 Q0a0q0
+A 0003405b 1a2q2
+A 00034067 3!3<3
+A 00034077 5!5<5
+A 00034083 5A6Q6a6|6
+A 0003408d 7!717L7
+A 0003409b 7Q9a9q9
+A 000340b3 :1;A;Q;l;
+A 000340bf <!<<<
+A 000340cb <A=Q=a=|=
+A 000340d5 >!>1>L>
+A 000340f4 !010A0\0
+A 00034103 0a1q1
+A 0003410f 2!2<2
+A 00034125 4!414L4
+A 00034133 4Q5a5q5
+A 0003413b 5!616A6\6
+A 00034153 8A8Q8a8|819A9Q9o9!:1:A:\:
+A 0003417d <!<1<L<
+A 0003418b <!=1=A=\=
+A 000341a3 >A?Q?a?
+A 000341bb 2a3q3
+A 000341c3 314A4Q4o4A5Q5a5
+A 000341d3 5Q6a6q6
+A 000341f9 9,9a9q9
+A 00034215 ;!;1;L;
+A 0003422b <!=1=A=\=
+A 00034235 >!>1>L>
+A 0003425b 2Q3a3q3
+A 00034267 4!4<4
+A 0003427d 6!616L6
+A 0003429b 819A9Q9l9
+A 000342c3 =1>A>Q>l>
+A 000342e5 0!010L0
+A 000342fb 1!212A2\2
+A 0003430f 4!4?4
+A 0003431f 6!6?617A7Q7o7
+A 00034333 8"9,9R9r9
+A 00034347 9":,:R:\:
+A 0003435b ;2;<;b;l;
+A 0003436f ;"<,<Q<a<q<
+A 0003437b <!=1=A=\=
+A 00034385 >!>1>L>
+A 00034393 >Q?a?q?
+A 000343a4 "0,0R0r0
+A 000343b7 0"1,1R1\1
+A 000343cb 2Y3"4,4R4r4
+A 000343e1 4"5,5R5\5
+A 000343f3 6*6I6g6
+A 00034409 828<8b8l8
+A 0003441d 8!919B9P9U9c9
+A 0003442d :!:3:j:
+A 00034435 <H=y=
+A 0003443f >N>c>
+A 0003444b ?1?@?S?
+A 00034477 212F2V2
+A 00034483 2!3:3U3
+A 00034497 537O7r7
+A 000344b1 8!9S9
+A 000344c3 :.;K;
+A 000344d1 ;0<><K<Y<
+A 000344e5 <_=\>
+A 0003450d 2Z3z3
+A 00034519 4)434<4Z4
+A 00034527 5i5~5
+A 0003455d 1	2@2J2w2}2
+A 0003456f 3%4/4?4R4Z4y4
+A 00034585 4D5Z5
+A 00034599 6B6b6
+A 000345ad 7B7L7r7|7
+A 000345bd 8*8/858:8
+A 000345dd ;!;<;W;r;
+A 000345f1 <(<Q<
+A 00034609 >,>8>F>R>^>l>
+A 00034633 0"0.0:0F0R0^0l0x0
+A 00034651 0S1j1
+A 00034665 2&222>2L2X2f2r2~2
+A 0003467d 233J3h3
+A 00034693 4"4.4<4H4V4b4n4|4
+A 000346ad 4b5l5
+A 000346bd 626<6b6l6
+A 000346d3 798	9Y9
+A 000346db 9<:c:p:C;
+A 000346ef <V>u>
+A 0003470b 0 0$0(0
+A 00034727 99=?=[=d=j=p=v=
+A 00034751 >(>8>>>K>T>`>m>v>
+A 0003477d ?$?0?=?F?R?`?r?
+A 000347a3 0$040>0G0R0`0p0v0
+A 000347c9 1(2/234I4Z4t4
+A 000347e1 73839
+A 000347f1 <2<<<b<l<
+A 00034805 <"=,=F=y=[>
+A 00034829 6*7>7G7P7[7
+A 00034839 7Y8i8
+A 00034841 829<9b9
+A 00034855 :2:<:b:l:
+A 00034869 <4<o<
+A 00034871 <C=_=
+A 00034885 ?&?6?>?y?
+A 0003489d 011B1G1a1
+A 000348d9 4 434n4~4
+A 000348f1 666S6o6
+A 00034901 6O72819
+A 00034909 9(:r:|:
+A 0003491b ;B;L;r;|;
+A 0003492f <!<?<
+A 0003493b <Q=a=q=
+A 00034965 0M0]0
+A 0003498f 5)5/5N5b5s5
+A 000349a5 727<7b7l7
+A 000349b9 7"8,8Q8a8q8
+A 000349c5 8a;q;
+A 000349e7 1.272@2K2U2e2l2q2
+A 00034a0b 3)3Q3m3z3
+A 00034a2b 515a5
+A 00034a49 8'9);
+A 00034a71 >3?8?
+A 00034a83 1X1\1`1d1h1l1p1R5r5
+A 00034a9f 626R6r6
+A 00034aaf 727R7b8h8n8t8z8
+A 00034af3 9"9(9.949:9@9b9l9v9
+A 00034b17 :":,:6:@:b:l:v:
+A 00034b37 ;";,;6;@;b;l;v;
+A 00034b57 <'<0<6<?<b<l<v<
+A 00034b77 <)=.=4=9=Y=^=d=i=
+A 00034b9f >G>P>U>[>
+A 00034bbf ?9?>?D?I?i?n?t?y?
+A 00034bed 0 0B0L0V0`0
+A 00034c0d 1 1B1L1V1`1
+A 00034c2d 2 2B2L2V2`2
+A 00034c4d 3 3B3L3V3`3
+A 00034c6d 4 4B4L4V4`4
+A 00034c8d 5 5B5L5V5`5
+A 00034ca3 506;6B6O6Y6a6j6
+A 00034cbf 858r8
+A 00034ccd 9L9y9
+A 00034cf9 :$:*:0:6:<:B:H:N:T:Z:`:f:l:r:x:~:
+A 00034d4d ; ;&;,;2;8;>;D;J;P;V;\;b;h;n;t;z;
+A 00034da3 <"<(<.<4<:<@<F<L<R<X<^<d<j<p<v<|<
+A 00034df9 =$=*=0=6=<=B=H=N=T=Z=`=f=l=r=x=~=
+A 00034e47 > >->2>b>
+A 00034e59 >f?k?
+A 00034e85 1 151C1L1s1
+A 00034e99 2$2*20262i2
+A 00034eab 3)3O3T3e3}3
+A 00034ec9 6,7L7q7
+A 00034edf 9!:9:a:
+A 00034eed :	;);I;i;
+A 00034efd ;	<)<I<i<
+A 00034f0b <	=)=
+A 00034f13 =	>,>I>l>
+A 00034f23 >,?T?l?
+A 00034f3d 0I0i0
+A 00034f4b 1)1I1i1
+A 00034f59 1	242\2
+A 00034f69 3O3u3~3
+A 00034f75 4A4a4
+A 00034f87 5	6)6d6
+A 00034f97 797Y7y7
+A 00034fa3 7)8Q8
+A 00034fad 8	9)9Y9
+A 00034fbb 9!:9:Y:
+A 00034fcb ;9;Y;y;
+A 00034fd9 <)<I<i<
+A 00034fe9 =D=d=
+A 00034ff3 =	>)>I>
+A 0003503b 60646L6d6
+A 00035075 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 000350f1 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00035171 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 000351ef : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 0003526d ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 000352cd < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 0003534d = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 000353cb > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00035449 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 000354d1 0 0$0(0,0004080<0@0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 0003554f 1 1$1(1,1014181<1@1D1H1P1T1X1\1`1d1h1l1p1t1x1|1
+A 000355a1 182<2@2
+A 000355b9 2 3$3(30343p3t3x3|3
+A 000355f3 4$4<4T4l4
+A 0003560b 545L5
+A 0003563f 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 000356bf 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 0003573d 8 8$8(8
+A 0003575f 9 9(9,90989<9@9H9L9P9X9\9`9h9l9p9x9|9
+A 000357cb : :$:(:,:0:4:8:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 0003581f ; ;$;(;,;0;4;8;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0003589d < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 000358fb = =(=,=0=8=<=@=H=L=P=X=\=`=h=l=p=x=|=
+A 0003595b > >(>,>0>8><>@>H>L>P>X>\>`>h>l>p>x>|>
+A 000359bb ? ?(?,?0?8?<?@?H?L?P?X?\?`?h?l?p?x?|?
+A 00035a23 0 0(0,00080<0@0H0L0P0X0\0`0h0l0p0x0|0
+A 00035a83 1 1(1,10181<1@1H1L1P1X1\1`1h1l1p1x1|1
+A 00035ae3 2 2(2,20282<2@2H2L2P2X2\2`2h2l2p2x2|2
+A 00035b43 3 3(3,30383<3@3H3L3P3X3\3`3h3l3p3x3|3
+A 00035ba3 4 4(4,40484<4@4H4L4P4X4\4`4h4l4p4x4|4
+A 00035c03 5 5(5,50585<5@5H5L5P5X5\5`5h5l5p5
+A 00035c39 6 6(6,606
+A 00035c51 7 7$7(7,7074787x7|7
+A 00035ca7 8P8T8X8\8`8d8h8l8p8
+A 00035cd3 9 9$9(9,90989H9P9T9l9
+A 00035cff : :(:8:@:D:\:x:|:
+A 00035d43 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00035dc3 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<
+A 00035e3f = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=
+A 00035ea9 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00035f0b ? ?$?
+A 00035f2d 0$04080L0P0X0p0
+A 00035f49 1014181<1@1D1H1L1P1d1t1x1
+A 00035f79 2,20242L2\2`2h2
+A 00035fa1 3 383L3\3`3p3
+A 00035fcd 4$404L4T4`4|4
+A 00035fed 5 5<5D5L5T5\5d5l5t5|5
+A 00036029 6$6,646P6\6d6l6t6
+A 0003604d 7,747<7D7P7l7t7|7
+A 00036073 8$8,848@8\8d8l8x8
+A 00036095 9$909L9X9t9
+A 000360bd :$:,:4:<:D:L:T:\:d:l:t:|:
+A 000360fd ;$;,;8;T;\;h;
+A 0003611f <$<,<8<T<\<d<p<
+A 0003613d =,=8=T=`=|=
+A 00036157 >(>D>P>l>x>
+A 00036171 ? ?<?D?L?T?\?d?p?
+A 0003619f 0$0,040@0\0h0
+A 000361bb 1$101L1X1t1
+A 000361db 2 2<2H2d2p2
+A 000361f9 3$3,383T3`3|3
+A 00036215 4,484T4`4|4
+A 0003622f 5(5D5P5l5x5
+A 0003624b 6$6,686T6`6|6
+A 0003626d 7$7,787T7\7d7l7t7|7
+A 0003629b 8$8,888T8\8d8l8x8
+A 000362c3 9(9D9L9T9\9d9l9x9
+A 000362ef :4:@:H:d:l:
+A 00036313 ;,;8;T;\;d;l;x;
+A 00036333 <$<0<L<X<t<
+A 0003634f =,=8=T=`=|=
+A 00036373 >,>4>D>L>\>d>l>
+A 00036393 ?4?@?\?d?l?t?
+A 000363bd 0 0<0H0d0l0x0
+A 000363dd 1,181T1`1|1
+A 000363f7 2(2D2P2l2t2|2
+A 00036417 3(3D3P3l3x3
+A 00036433 4$404L4T4`4|4
+A 00036453 545<5D5L5X5t5|5
+A 00036475 6 6<6D6L6X6t6
+A 00036499 7(7D7L7X7t7
+A 000364b5 8(8D8L8X8t8|8
+A 000364e9 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00036569 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 000365e9 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 00036669 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 000366e9 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 00036769 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 000367e9 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00036869 7 7$7(7,7074787
+A 00036885 >0>P>h>
+A 000368a1 5(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+U 0001a69e jjjj

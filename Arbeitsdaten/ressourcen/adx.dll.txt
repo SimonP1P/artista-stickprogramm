@@ -1,0 +1,232 @@
+--- RES type=None name=1013 len=12288
+--- RES type=None name=1014 len=11776
+--- RES type=None name=1015 len=11776
+--- RES type=None name=1016 len=11264
+--- RES type=None name=1018 len=11776
+--- RES type=None name=1019 len=11264
+--- MENU 1022 (78 bytes)
+   Load | 者Rename | 耄Delete | 耆Properties
+--- MENU 1023 (80 bytes)
+   Write | 耊Rename | 耉Delete | 耆Properties
+--- DLG 1000
+DIALOG "Read from Embroidery System and Design Manager" 456x319
+   [SysListView32 id=1004] "List1" @49,64 229x100
+   [SysTabControl32 id=1003] "Tab1" @47,49 233x117
+   [BUTTON id=1002] "CDRom" @227,23 37x20
+   [BUTTON id=1001] "PcCard" @145,23 37x20
+   [BUTTON id=1000] "Intern" @61,23 37x20
+   [BUTTON id=1007] "Create" @293,85 15x13
+   [BUTTON id=1006] "Up" @293,65 15x13
+   [BUTTON id=1009] "Browse" @293,246 15x13
+   [BUTTON id=1008] "Create" @293,225 15x13
+   [BUTTON id=1017] "Up" @293,204 15x13
+   [BUTTON id=1058] "Read" @330,240 77x40
+   [BUTTON id=1057] "Write" @330,75 77x40
+   [STATIC id=1056] "#1029" @336,22 105x23
+   [BUTTON id=1020] "Properties" @426,201 15x13
+   [BUTTON id=1018] "Delete" @426,182 15x13
+   [BUTTON id=1019] "Rename" @426,164 15x13
+   [BUTTON id=1073] "Edit" @426,146 15x13
+   [BUTTON id=2] "StopSmall" @428,295 15x13
+   [BUTTON id=1036] "Others" @422,234 26x9
+   [BUTTON id=1012] "StitchOut" @354,303 26x9
+   [BUTTON id=1029] "Setup" @325,303 26x9
+   [BUTTON id=1013] "Designs on Storage Device" @7,7 313x166
+   [msctls_progress32 id=1005] "Progress1" @16,26 22x140
+   [STATIC id=4294967295] "Usage" @16,15 22x8
+   [STATIC id=1010] "" @343,146 75x70
+   [STATIC id=1014] "n.a." @335,221 104x8
+   [BUTTON id=1011] "Selected Design" @328,128 119x105
+   [SysListView32 id=1015] "List1" @14,207 265x97
+   [SysTabControl32 id=1016] "Tab1" @12,192 270x114
+   [BUTTON id=1032] "Design(s) on Desktop" @7,180 313x132
+   [BUTTON id=4294967295] "Embroidery System" @329,7 119x57
+   [STATIC id=1053] "Ready for Data Xchange" @336,49 105x8
+   [BUTTON id=1] "Ok" @408,298 14x14
+   [BUTTON id=1077] "Help" @425,275 15x13
+--- DLG 1001
+DIALOG "Write to Embroidery System" 446x319
+   [SysListView32 id=1004] "List1" @45,64 204x100
+   [SysTabControl32 id=1003] "Tab1" @43,49 209x117
+   [BUTTON id=1007] "Create" @262,87 15x13
+   [BUTTON id=1006] "Up" @262,63 15x13
+   [BUTTON id=1002] "CDRom" @204,23 37x20
+   [BUTTON id=1001] "PcCard" @135,23 37x20
+   [BUTTON id=1000] "Intern" @61,23 37x20
+   [BUTTON id=1009] "Browse" @293,246 15x13
+   [BUTTON id=1008] "Create" @293,225 15x13
+   [BUTTON id=1017] "Up" @293,204 15x13
+   [BUTTON id=2] "StopSmall" @420,158 15x13
+   [BUTTON id=1020] "Properties" @417,93 15x13
+   [BUTTON id=1012] "StitchOut" @295,133 25x24
+   [BUTTON id=1068] "Copy" @295,87 25x24
+   [STATIC id=1056] "#1029" @319,21 105x23
+   [BUTTON id=1029] "Setup" @325,303 26x9
+   [BUTTON id=1058] "Read" @329,279 15x13
+   [BUTTON id=1018] "Delete" @352,283 15x13
+   [BUTTON id=1019] "Rename" @352,246 15x13
+   [BUTTON id=1057] "Write" @375,257 15x13
+   [BUTTON id=1036] "Others" @412,276 26x9
+   [BUTTON id=1013] "Designs on Storage Device" @6,7 281x166
+   [BUTTON id=1011] "Selected Design" @329,68 109x105
+   [msctls_progress32 id=1005] "Progress1" @16,26 22x140
+   [STATIC id=4294967295] "Usage" @16,15 22x8
+   [STATIC id=1010] "" @337,86 75x70
+   [STATIC id=1014] "n.a." @337,161 75x8
+   [BUTTON id=4294967295] "Embroidery System" @305,7 133x57
+   [STATIC id=1053] "Ready for Data Xchange" @319,49 105x8
+   [BUTTON id=1073] "Edit" @353,206 15x13
+   [SysListView32 id=1015] "List1" @14,207 265x97
+   [SysTabControl32 id=1016] "Tab1" @12,192 270x114
+   [BUTTON id=1032] "Design(s) on Desktop" @7,180 313x132
+   [BUTTON id=1077] "Help" @417,140 15x13
+--- DLG 1010
+DIALOG "Process in progress, please wait ....." 249x71
+   [SysAnimate32 id=1017] "Animate1" @7,7 235x25
+   [msctls_progress32 id=1015] "Progress1" @7,50 235x14
+   [STATIC id=1018] "0%" @7,39 235x8
+--- DLG 1020
+DIALOG "Options" 296x130
+   [BUTTON id=1] "OK" @239,109 50x14
+   [BUTTON id=2] "Cancel" @7,109 50x14
+   [BUTTON id=65535] "Target Pathes" @7,3 282x74
+   [STATIC id=65535] "Internal:" @14,16 52x8
+   [STATIC id=65535] "Blank Card:" @14,30 52x8
+   [STATIC id=65535] "Aux:" @14,44 52x8
+   [STATIC id=65535] "Stitchout:" @14,58 52x8
+   [STATIC id=1019] "Static" @66,16 198x8
+   [STATIC id=1020] "Static" @66,30 198x8
+   [STATIC id=1021] "Static" @66,44 198x8
+   [STATIC id=1022] "Static" @66,58 198x8
+   [BUTTON id=1023] "SCP" @264,13 19x14
+   [BUTTON id=1024] "SCP" @264,27 19x14
+   [BUTTON id=1002] "SCP" @264,41 19x14
+   [BUTTON id=1012] "SCP" @264,55 19x14
+   [BUTTON id=1027] "Set Default" @121,109 50x14
+   [BUTTON id=65535] "Silent" @7,80 129x21
+   [BUTTON id=1028] "Disable Error Messages from ADX" @14,88 122x10
+   [BUTTON id=65535] "Current Path" @142,80 147x21
+   [STATIC id=1030] "Static" @145,89 136x8
+--- DLG 1023
+DIALOG "Device Selection" 141x141
+   [BUTTON id=1] "OK" @84,120 50x14
+   [BUTTON id=2] "Cancel" @7,120 50x14
+   [BUTTON id=1038] "artista 200" @17,19 83x10
+   [BUTTON id=1039] "artista 165 to 185 or R/W box" @17,31 109x10
+   [BUTTON id=65535] "Select Embroidery System" @7,7 127x38
+   [BUTTON id=1044] "COM Port" @7,48 53x66
+   [BUTTON id=1040] "COM1" @17,59 36x10
+   [BUTTON id=1041] "COM2" @17,72 36x10
+   [BUTTON id=1042] "COM3" @17,85 36x10
+   [BUTTON id=1043] "COM4" @17,98 36x10
+   [BUTTON id=65535] "Next Start" @67,48 67x66
+   [BUTTON id=1045] "Apply these settings (and suppress this dialog)." @72,57 62x54
+--- DLG 1074
+DIALOG "Design Information" 132x134
+   [BUTTON id=2] "StopSmall" @58,119 16x14
+   [BUTTON id=1065] "Title" @7,7 118x111
+   [STATIC id=65535] "Width:" @16,20 42x8
+   [STATIC id=65535] "Height:" @16,32 42x8
+   [STATIC id=65535] "No. Stitches:" @16,44 42x8
+   [STATIC id=65535] "No. of Colors:" @16,56 58x8
+   [STATIC id=1066] "Static" @70,20 46x8
+   [STATIC id=1070] "Static" @70,32 46x8
+   [STATIC id=1068] "Static" @70,44 46x8
+   [STATIC id=1067] "Static" @70,56 46x8
+   [STATIC id=65535] "Size:" @16,68 42x8
+   [STATIC id=1069] "Static" @70,68 46x8
+   [STATIC id=65535] "ReadOnly:" @16,80 42x8
+   [STATIC id=1071] "Static" @70,80 46x8
+   [STATIC id=65535] "License:" @16,92 42x8
+   [STATIC id=1072] "Static" @70,92 46x8
+   [STATIC id=65535] "Alphabet:" @16,104 42x8
+   [STATIC id=1073] "Static" @70,104 46x8
+--- DLG 1075
+DIALOG "Design Information" 187x79
+   [STATIC id=1073] "Static" @147,64 8x8
+   [STATIC id=1072] "Static" @117,64 8x8
+   [BUTTON id=2] "StopSmall" @87,64 16x14
+   [BUTTON id=1065] "Title" @7,7 173x55
+   [STATIC id=65535] "Width:" @7,64 8x8
+   [STATIC id=65535] "Height:" @34,64 8x8
+   [STATIC id=65535] "No. of Designs" @18,21 55x8
+   [STATIC id=65535] "No. of Folders:" @18,33 55x8
+   [STATIC id=1066] "Static" @18,64 8x8
+   [STATIC id=1070] "Static" @51,64 8x8
+   [STATIC id=1068] "Static" @89,21 81x8
+   [STATIC id=1067] "Static" @89,33 81x8
+   [STATIC id=65535] "Overall Size:" @18,45 55x8
+   [STATIC id=1069] "Static" @89,45 81x8
+   [STATIC id=1071] "Static" @170,64 10x8
+STR 2: Exit ADX
+STR 1000: Show designs saved on embroidery computer.
+STR 1001: Show designs saved on the PC card.
+STR 1002: Show designs saved on the CD ROM.
+STR 1006: One folder upwards.
+STR 1007: Create a new folder.
+STR 1008: Create a new folder.
+STR 1009: Select any folder (having designs) on PC or on network.
+STR 1012: Stitch out selected design.
+STR 1017: One folder upwards.
+STR 1018: Delete the selected design.
+STR 1019: Rename the selected design.
+STR 1020: Show design properties of the selected design.
+STR 1056: Click to connect other artista embroidery systems.
+STR 1057: Download the selected design to the embroidery system.
+STR 1058: Read the selected designs to the desktop PC.
+STR 1068: Download the selected design to the embroidery system.
+STR 1073: Edit the selected design.
+STR 1077: Open ADX manual.
+STR 40000: Failed to establish a connection to the embroidery system.\nPlease switch off and on the embroidery computer. If the problem persists please reboot your PC.
+STR 40001: Failed to create the design node %s.
+STR 40002: Failed to rename the design node %s.
+STR 40003: Failed to remove the folder %s.\nPlease note, that a folder must be empty to be removed.
+STR 40004: Failed to remove the design %s.
+STR 40005: Failed to load XML string.
+STR 40006: \nThe connection to artista 200 via ActiveSync was forcibly closed by the remote host.\nRemedy: switch off artista and on again.
+STR 40007: Error %s = %d
+STR 40008: Unspecified error = %d
+STR 40009: Failed to locate the input desings:\n\n"%s"\n"%s"
+STR 40010: Failed to send a command to the embroidery system. Verify state of the ActiveSync connection.
+STR 40011: Failed to enable CD ROM drive for ADX access.
+STR 40012: Failed to establish the ADX server on artista.
+STR 41001: The access to the internal design memory failed.
+STR 41002: Insert the Personal Design Card into the card slot.
+STR 41003: Insert an encrypted design CD into the CD ROM drive.
+STR 41004: The access to the designs on PC failed. Verify the SourcePathDesigns in the registery.
+STR 41005: Failed to send the stitch out command. Verify the state of the embroidery system.
+STR 41006: Designs in EXP format are limited to single operation only.
+STR 42000: Please select a design before pressing the edit button.
+STR 42001: This feature not yet supported.
+STR 42003: Please select a design or a folder before pressing the rename button.
+STR 42004: Embroidery system or sewing machine is running and not ready for data exchange.
+STR 42005:  (design info n.a.)
+STR 42006: loading ....
+STR 42007: The registery key "%s" in "%s" is set to "%s". \nVerify that your ART and EXP designs are saved there.
+STR 42008: Design successfully downloaded to the embroidery system.
+STR 42009: Embroidery design successfully sent to the embroidery system for stitchout.
+STR 42010: The number of designs on this storage device is limited to %d.
+STR 43000: Should the selection \n%s \n\nbe loaded to the current folder?
+STR 43001: Should the following selection be loaded to the current folder?\n%s
+STR 43003: The design %s already exists. Should it be overwritten?
+STR 43004: Should the selection \n%s \n\nbe deleted? \nPlease note that UNDO is not possible.
+STR 43005: Should the following selection be deleted?\n%s\n\nPlease note that UNDO is not possible.
+STR 43006: Should the selection \n%s \n\nbe downloaded to the embroidery system?
+STR 43007: Should the following selection be downloaded to the embroidery system?\n%s
+STR 43008: To connect another embroidery system ADX must be restarted.\n\nPress OK to select another artista or the R/W box and exit ADX for a restart.
+STR 50000: \IPSM\ANS\Data\Embroidery\
+STR 50001: Motifs\
+STR 50002: Alphabets\
+STR 50003: \EMBFiles\
+STR 50004: \Storage Card\
+STR 50005: \USBCdrom\
+STR 51000: multiple selection
+STR 51001: multiple designs (%dkb)
+STR 51002: Running, no Xchange!
+STR 51003: Ready for data Xchange
+STR 57344: ADX
+STR 57350: Reading file(s) from device -> please wait ......
+STR 57351: Writing file(s) to device -> please wait ......
+STR 57352: Deleting file(s) on device -> please wait ......
+--- RES type=9 name=1105 len=24
+--- RES type=241 name=1024 len=30

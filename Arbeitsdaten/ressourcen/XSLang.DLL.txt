@@ -1,0 +1,276 @@
+STR 65280: December
+STR 65281: Sun
+STR 65282: Mon
+STR 65283: Tue
+STR 65284: Wed
+STR 65285: Thu
+STR 65286: Fri
+STR 65287: Sat
+STR 65288: Sunday
+STR 65289: Monday
+STR 65290: Tuesday
+STR 65291: Wednesday
+STR 65292: Thursday
+STR 65293: Friday
+STR 65294: Saturday
+STR 65296: Aug
+STR 65297: Sep
+STR 65298: Oct
+STR 65299: Nov
+STR 65300: Dec
+STR 65301: January
+STR 65302: February
+STR 65303: March
+STR 65304: April
+STR 65305: May
+STR 65306: June
+STR 65307: July
+STR 65308: August
+STR 65309: September
+STR 65310: October
+STR 65311: November
+STR 65312: External exception %x
+STR 65313: Assertion failed
+STR 65314: Interface not supported
+STR 65315: Exception in safecall method
+STR 65316: %s (%s, line %d)
+STR 65317: Abstract Error
+STR 65318: Access violation at address %p in module '%s'. %s of address %p
+STR 65319: Win32 Error.  Code: %d.\n%s
+STR 65320: A Win32 API function failed
+STR 65321: Jan
+STR 65322: Feb
+STR 65323: Mar
+STR 65324: Apr
+STR 65325: May
+STR 65326: Jun
+STR 65327: Jul
+STR 65328: Control-C hit
+STR 65329: Privileged instruction
+STR 65330: Operation aborted
+STR 65331: Exception %s in module %s at %p.\n%s%s
+STR 65332: Application Error
+STR 65333: Format '%s' invalid or incompatible with argument
+STR 65334: No argument for format '%s'
+STR 65335: Invalid variant type conversion
+STR 65336: Invalid variant operation
+STR 65337: Variant method calls not supported
+STR 65338: Read
+STR 65339: Write
+STR 65340: Format string too long
+STR 65341: Error creating variant array
+STR 65342: Variant is not an array
+STR 65343: Variant array index out of bounds
+STR 65344: Too many open files
+STR 65345: File access denied
+STR 65346: Read beyond end of file
+STR 65347: Disk full
+STR 65348: Invalid numeric input
+STR 65349: Division by zero
+STR 65350: Range check error
+STR 65351: Integer overflow
+STR 65352: Invalid floating point operation
+STR 65353: Floating point division by zero
+STR 65354: Floating point overflow
+STR 65355: Floating point underflow
+STR 65356: Invalid pointer operation
+STR 65357: Invalid class typecast
+STR 65358: Access violation at address %p. %s of address %p
+STR 65359: Stack overflow
+STR 65360: Unable to insert an item
+STR 65361: Invalid owner
+STR 65362: %s is already associated with %s
+STR 65363: %d is an invalid PageIndex value.  PageIndex must be between 0 and %d
+STR 65364: This control requires version 4.70 or greater of COMCTL32.DLL
+STR 65365: '%s' is not a valid integer value
+STR 65366: '%s' is not a valid floating point value
+STR 65367: '%s' is not a valid date
+STR 65368: '%s' is not a valid time
+STR 65369: '%s' is not a valid date and time
+STR 65370: Invalid argument to time encode
+STR 65371: Invalid argument to date encode
+STR 65372: Out of memory
+STR 65373: I/O error %d
+STR 65374: File not found
+STR 65375: Invalid filename
+STR 65376: Picture:
+STR 65377:  (%dx%d)
+STR 65378: Preview
+STR 65379: Docked control must have a name
+STR 65380: Error removing control from dock tree
+STR 65381:  - Dock zone not found
+STR 65382:  - Dock zone has no control
+STR 65383: List does not allow duplicates ($0%x)
+STR 65384: Failed to clear tab control
+STR 65385: Failed to delete tab at index %d
+STR 65386: Failed to retrieve tab at index %d
+STR 65387: Failed to get object at index %d
+STR 65388: Failed to set tab "%s" at index %d
+STR 65389: Failed to set object at index %d
+STR 65390: MultiLine must be True when TabPosition is tpLeft or tpRight
+STR 65391: Invalid index
+STR 65392: Ctrl+
+STR 65393: Alt+
+STR 65394: (Unknown)
+STR 65395: (None)
+STR 65396: Value must be between %d and %d
+STR 65397: Cannot create a default method name for an unnamed component
+STR 65398: All
+STR 65399: Unable to insert a line
+STR 65400: Invalid clipboard format
+STR 65401: Clipboard does not support Icons
+STR 65402: Cannot open clipboard
+STR 65403: Text exceeds memo capacity
+STR 65404: There is no default printer currently selected
+STR 65405: Unable to write to %s
+STR 65406: Bits index out of range
+STR 65407: Menu '%s' is already being used by another form
+STR 65408: BkSp
+STR 65409: Tab
+STR 65410: Esc
+STR 65411: Enter
+STR 65412: Space
+STR 65413: PgUp
+STR 65414: PgDn
+STR 65415: End
+STR 65416: Home
+STR 65417: Left
+STR 65418: Up
+STR 65419: Right
+STR 65420: Down
+STR 65421: Ins
+STR 65422: Del
+STR 65423: Shift+
+STR 65424: Maximum outline depth exceeded
+STR 65425: Warning
+STR 65426: Error
+STR 65427: Information
+STR 65428: Confirm
+STR 65429: &Yes
+STR 65430: &No
+STR 65431: OK
+STR 65432: Cancel
+STR 65433: &Help
+STR 65434: &Abort
+STR 65435: &Retry
+STR 65436: &Ignore
+STR 65437: &All
+STR 65438: N&o to All
+STR 65439: Yes to &All
+STR 65440: Bitmaps
+STR 65441: Grid too large for operation
+STR 65442: Too many rows or columns deleted
+STR 65443: Grid index out of range
+STR 65444: Fixed column count must be less than column count
+STR 65445: Fixed row count must be less than row count
+STR 65446: Invalid property value
+STR 65447: Outline index not found
+STR 65448: Parent must be expanded
+STR 65449: Invalid value for current item
+STR 65450: Invalid input value
+STR 65451: Invalid input value.  Use escape key to abandon changes
+STR 65452: Invalid outline index
+STR 65453: Invalid selection
+STR 65454: File load error
+STR 65455: Line too long
+STR 65456: Cancel
+STR 65457: &Yes
+STR 65458: &No
+STR 65459: &Help
+STR 65460: &Close
+STR 65461: &Ignore
+STR 65462: &Retry
+STR 65463: Abort
+STR 65464: &All
+STR 65465: Cannot drag a form
+STR 65466: FB
+STR 65467: FG
+STR 65468: BG
+STR 65469: Metafiles
+STR 65470: Enhanced Metafiles
+STR 65471: Icons
+STR 65472: Cannot make a visible window modal
+STR 65473: Scrollbar property out of range
+STR 65474: %s property out of range
+STR 65475: Menu index out of range
+STR 65476: Menu inserted twice
+STR 65477: Sub-menu is not in menu
+STR 65478: Not enough timers available
+STR 65479: Printer is not currently printing
+STR 65480: Printing in progress
+STR 65481: Printer selected is not valid
+STR 65482: %s on %s
+STR 65483: GroupIndex cannot be less than a previous menu item's GroupIndex
+STR 65484: Cannot create form. No MDI forms are currently active
+STR 65485: Invalid component registration
+STR 65486: A control cannot have itself as its parent
+STR 65487: OK
+STR 65488: Unknown picture file extension (.%s)
+STR 65489: Unsupported clipboard format
+STR 65490: Out of system resources
+STR 65491: Canvas does not allow drawing
+STR 65492: Invalid image size
+STR 65493: Invalid ImageList
+STR 65494: Unable to Replace Image
+STR 65495: Invalid ImageList Index
+STR 65496: Failed to read ImageList data from stream
+STR 65497: Failed to write ImageList data to stream
+STR 65498: Error creating window device context
+STR 65499: Error creating window class
+STR 65500: Cannot focus a disabled or invisible window
+STR 65501: Control '%s' has no parent window
+STR 65502: Cannot hide an MDI Child Form
+STR 65503: Cannot change Visible in OnShow or OnHide
+STR 65504: Tab style incompatible with current tab position
+STR 65505: A component named %s already exists
+STR 65506: ''%s'' is not a valid component name
+STR 65507: A class named %s already exists
+STR 65508: Invalid property value
+STR 65509: Invalid property path
+STR 65510: Property does not exist
+STR 65511: Property is read-only
+STR 65512: Error reading %s%s%s: %s
+STR 65513: Ancestor for '%s' not found
+STR 65514: Bitmap image is not valid
+STR 65515: Icon image is not valid
+STR 65516: Metafile is not valid
+STR 65517: Invalid pixel format
+STR 65518: Scan line index out of range
+STR 65519: Cannot change the size of an icon
+STR 65520: Cannot assign a %s to a %s
+STR 65521: Cannot create file %s
+STR 65522: Cannot open file %s
+STR 65523: Stream read error
+STR 65524: Stream write error
+STR 65525: Out of memory while expanding memory stream
+STR 65526: Can't write to a read-only resource stream
+STR 65527: Class %s not found
+STR 65528: Invalid stream format
+STR 65529: Resource %s not found
+STR 65530: List index out of bounds (%d)
+STR 65531: List capacity out of bounds (%d)
+STR 65532: List count out of bounds (%d)
+STR 65533: Operation not allowed on sorted string list
+STR 65534: String list does not allow duplicates
+STR 65535: Tab position incompatible with current tab style
+--- RES type=10 name=DVCLAL len=16
+--- RES type=10 name=TAUTOSTITCHIMAGEFORM len=32317
+--- RES type=10 name=TBITMAPPROPERTIESFORM len=5118
+--- RES type=10 name=TCOLORDLG len=712
+--- RES type=10 name=TDESIGNFORM len=5927
+--- RES type=10 name=TDESIGNINFORMATION len=2508
+--- RES type=10 name=TDESIGNPROPERTIESFORM len=3158
+--- RES type=10 name=TESMAINFORM len=619083
+--- RES type=10 name=TFABRICSETTINGSFORM len=1830
+--- RES type=10 name=TFILLSTYLEFORM len=1377
+--- RES type=10 name=TMAINFORM len=337546
+--- RES type=10 name=TOPTIONSFORM len=6001
+--- RES type=10 name=TRES len=4123
+--- RES type=10 name=TSCANNINGFORM len=1296
+--- RES type=10 name=TSCREENCALIBRATIONFORM len=2364
+--- RES type=10 name=TSELECTSTITCHDLG len=672
+--- RES type=10 name=TTHREADCOLORSFORM len=6470
+--- RES type=10 name=TTHREADEDITFORM len=1280
+--- RES type=10 name=TVIEWBYCOLORFORM len=1846
+--- RES type=10 name=TWORKINGFORM len=1454
+--- RES type=10 name=TZOOMRATIOFORM len=845

@@ -1,0 +1,80 @@
+﻿LESETEST VERSION 2 - BERNINA artista 185 - Anleitung (Windows)
+=====================================================================
+
+WAS IST NEU?
+------------
+Der erste Test am 18.11.2026 hat gezeigt:
+ - Die Maschine haengt an COM3 und versteht das Protokoll. Das Lesen klappt fehlerfrei.
+ - Zuerst meldet sich aber die NAEHMASCHINE (Kennung "NMMV04.04", Sprache German).
+ - Das STICKMODUL (Kennung "SRMV") muss erst durchgeschaltet werden.
+
+Version 2 macht genau das, so wie die Original-Bernina-Software:
+   1. Verbinden (T r M E) und die Naehmaschine auslesen      -> STUFE 1
+   2. Geschwindigkeit auf 57600 umstellen (J 0 5 ... E B)
+   3. zum Stickmodul durchschalten (Y Q, Antwort O)
+   4. Stickmodul auslesen: Kennung, Speicherverwaltung,
+      Anzahl gespeicherter Designs                          -> STUFE 2
+
+Es wird weiterhin NICHTS in den Speicher geschrieben, geloescht oder formatiert.
+Nur das Umschalten der Geschwindigkeit und das Durchschalten zum Stickmodul
+sind neu. Das macht die Original-Software bei jeder Verbindung genauso.
+
+
+WAS DU BRAUCHST
+---------------
+ - denselben Windows-PC und dasselbe Kabel wie beim ersten Test (COM3)
+ - die artista 185 MIT ANGESTECKTEM STICKMODUL (wichtig fuer Stufe 2!)
+ - jemanden vor Ort, der die Maschine ein- und am Ende aus- und wieder einschaltet
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. Die ZIP-Datei entpacken (nicht aus der ZIP heraus starten).
+ 2. SELBSTTEST.bat doppelklicken (ohne Maschine).
+    Am Ende muss "STUFE 1 OK" und "STUFE 2 OK" mit dem Hinweis "SIMULATION" stehen.
+    Fragt Windows nach: "Weitere Informationen" -> "Trotzdem ausfuehren".
+ 3. Vor Ort:
+      - Stickmodul an die Maschine stecken
+      - Kabel wie beim ersten Mal verbinden
+      - Maschine einschalten und warten, bis der Startbildschirm fertig ist
+      - den Stickmodus waehlen, aber NICHT sticken
+ 4. START.bat doppelklicken. Es benutzt COM3, wie beim ersten Test.
+    (Falls die Maschine diesmal an einem anderen Port haengt: START_ALLE_PORTS.bat)
+ 5. Warten bis "FERTIG" erscheint (ca. 10-20 Sekunden).
+ 6. Die Maschine AUS- und wieder EINSCHALTEN.
+    (Sie bleibt sonst auf 57600 und im PC-Modus. Das Programm beendet den Modus
+    absichtlich nicht selbst, weil das ein Schreibbefehl waere.)
+ 7. Die beiden neuen Dateien schicken:  Ergebnis_....txt  und  Mitschnitt_....log
+
+
+WAS DIE MELDUNGEN BEDEUTEN
+--------------------------
+ VERBUNDEN (Transfermodus aktiv ...)        Verbindung steht
+ >>> STUFE 1 OK: Naehmaschine antwortet      wie beim ersten Test
+ vereinbare 57600 Baud ...                   Geschwindigkeitswechsel laeuft
+ schalte zum Stickmodul durch (Y Q) ...      Umschalten zum Stickmodul
+ >>> STUFE 2 OK: Stickmodul antwortet        ZIEL ERREICHT, Analyse bestaetigt
+ >>> Verwaltungsblock plausibel              auch die Speicheradressen stimmen
+ >>> Anzahl gespeicherter Designs ...        bitte mit der Anzeige an der Maschine vergleichen
+ >>> STUFE 2 NICHT erreicht                  trotzdem beide Dateien schicken!
+
+
+FEHLERSUCHE
+-----------
+ "Stickmodul hat nicht mit O geantwortet"
+     -> Ist das Stickmodul richtig angesteckt? Maschine aus/ein, nochmal START.bat
+ "Port laesst sich nicht oeffnen"
+     -> ein anderes Programm nutzt COM3 (z.B. ein noch offenes Fenster vom letzten Test) -> schliessen
+ Keine Antwort mehr auf COM3
+     -> Maschine aus/ein (sie steht evtl. noch auf 57600 vom letzten Versuch), dann nochmal
+ Gar nichts klappt
+     -> START_ALLE_PORTS.bat, oder START.bat -DtrRts
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:  T r M E  (PC-Modus),  R + Adresse  (Lesen),
+                       J 0 5 / E B  (Geschwindigkeit),  Y Q  (Stickmodul durchschalten),
+                       bei Bedarf R F ?  (Synchronisieren).
+ Kein Schreib-, Loesch- oder Formatierbefehl ist im Programm enthalten.
+ Schlimmstenfalls bleibt die Maschine im PC-Modus haengen -> aus- und einschalten.

@@ -1,0 +1,3079 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000208 .text
+A 0000022f `.rdata
+A 00000257 @.data
+A 00000280 .rsrc
+A 000002a7 @.reloc
+A 0000168d @_^][
+A 00001cd2  SUVW
+A 00001e1a D$ |s
+A 00001e81 L$ If
+A 00001f26 L$$@#
+A 00001f67 f9GB~
+A 00002030 L$$@#
+A 00002108 D$$F#
+A 00002185 D$,_^][
+A 00002270 QSUVW
+A 00002302 f;UB~'
+A 0000231a f;EP}$f
+A 00002344 _^][Y
+A 0000236a f;Fjr
+A 00002695 f	Vhf=
+A 0000270f ~h_^[
+A 000027e8 L$(_^]f
+A 0000280e FtSRPW
+A 00002850 VtSPf
+A 000028a7 NTQPf
+A 00002c45 ,of;,Wv
+A 00002c8f q_^][
+A 00002d0e \F"Ju
+A 00002de4 DF _^
+A 00002f93 F(_t.
+A 0000348c Ff;t$
+A 000037a3 LL$@;
+A 000037d2 f9T$jt
+A 00003cbf ?h3333WV
+A 00004210 N PSh
+A 0000430f _^][d
+A 00004a3a \$LUV
+A 00004aae T$(RP
+A 00004ac4 L$<PQ
+A 00004add T$(PR
+A 00004b1e U#D$Hj
+A 00004b9c T$<PR
+A 00004d1e L$H_^]d
+A 00004d58 SUVWj
+A 00004d75 L$DQj
+A 00004dc1 L$4SIQ
+A 00004e29 l$4KS
+A 00004e5e L$D_^]
+A 00004f09 t$,SUW
+A 00004f3e D$<PQ
+A 00004f67 D$<PQ
+A 00005367 ^QWSh
+A 000053b5 L$ PUQ
+A 000055e5 ~fUV3
+A 00005644 ^]_@[Y
+A 0000568b ;D$,t4
+A 000056a7 ;D$,u
+A 000058e9 L$(QR
+A 0000596c D$`@t$
+A 00005a08 l$pQP
+A 00005a95 D$\_^
+A 000064bd gfffj
+A 000066ff L$,PQU
+A 00006778 D$,RPU
+A 000067c4 T$,QRU
+A 00006a65 D$,RPU
+A 00006bac D$,RPU
+A 00006be9 T$,QRU
+A 00006cbf D$,RPU
+A 00006f8b D$LA;
+A 00007097 D$,RPU
+A 000070a6 L$dQU
+A 000070c5 D$LA;
+A 000070ee D$<RP
+A 000071cf L$,PQU
+A 000071fd _^][d
+A 00007377  SUVW3
+A 0000739b t$8t	
+A 00007984 L$(RPQ
+A 00007a87 L$0_^][d
+A 00007db4 T$ QRP
+A 00007ef5 L$ PQ
+A 00007f16 D$ RP
+A 00007fc3 _^][d
+A 00008320 D$PRPQ
+A 00008390 9\$lu,
+A 000086cc \$DWS
+A 0000878b L$@PQ
+A 000088c4 D$Du$
+A 000088ed 9L$ltJ
+A 00008d88 <@t#<`u
+A 00008e35 QSUVW
+A 00008fdf F(PUW
+A 00008fea N0QUW
+A 0000903c FTG;<
+A 000090b6 N0QWSRP
+A 000090cb N8QWSRP
+A 000090e0 N@QWSRP
+A 00009126 FTG;<
+A 0000915a N(QUW
+A 00009181 N@QUW
+A 000091b9 NTG;<
+A 000093a0 AL9APt
+A 000093a8 AP9ATt
+A 000093b0 AT9AXt
+A 000094c5 _^][Y
+A 00009c95 QSUVW
+A 00009dd4 _^][d
+A 00009e0a N$QWS
+A 00009ed6 N$QWSRP
+A 00009eeb N,QWSRP
+A 00009f00 N4QWSRP
+A 00009f2d PWSQR
+A 00009f68 RWSPQ
+A 00009fd1 N4QWS
+A 0000a1c4 N4SRPQ
+A 0000a202 V4SPQ
+A 0000a496 T$0PQ
+A 0000a4b5 V4SPQ
+A 0000a4e9 D$xQ+
+A 0000a51d D$(RP
+A 0000a60f N$RPQ
+A 0000a6a3 T$0PQ
+A 0000a6c2 V4SPQ
+A 0000a6f6 D$pQ+
+A 0000a72a D$(RP
+A 0000a87b T$H~j
+A 0000a9c7 I9\$p
+A 0000aa26 t@;\$X~
+A 0000aa80 D$x;D$D
+A 0000ab4f ~N;D$LtH;D$d~
+A 0000abaa D$p+D$X
+A 0000ae0a \$PSR
+A 0000bdb1 ]_^[d
+A 0000bef8 SUVW3
+A 0000c34b l$@VW3
+A 0000c3ec F@9h<}
+A 0000c473 T$8PSf
+A 0000c534 L$8_^
+A 0000c966 Mh^][
+A 0000d295 L$8WUR
+A 0000d2a1 L$$PSRV
+A 0000d2cb D$TWU
+A 0000d2d6 L$ URSPV
+A 0000d312 \$X+\$,
+A 0000d3a2 D$TVQ
+A 0000d3a8 L$PPQ
+A 0000d3da |$`SWUP
+A 0000d3e7 L$,RP
+A 0000d508 L$HRPSUQ
+A 0000d64e D$@PQ
+A 0000d65c 9t$H|
+A 0000d69e l$HVW
+A 0000d6ba l$$u(j
+A 0000d7c8 L$HSQW
+A 0000d7da D$LSRP
+A 0000d8b7 D$0PQ
+A 0000d970 D$LPQ
+A 0000d9a9 D$HSPW
+A 0000d9bc T$PQR
+A 0000da25 \$$UVW
+A 0000dff5 QSUVW
+A 0000e0c2 _^][d
+A 0000e2e9 t`9D$D
+A 0000e3d1 L$D;H
+A 0000e41a L$0PQ
+A 0000e466 L$@PQ
+A 0000e4fa T$TRPQ
+A 0000e555 D$DF@
+A 0000e62c \$pPQ
+A 0000e651 D$PRP
+A 0000e65f T$XQR
+A 0000e687 L$`PQ
+A 0000e695 D$hRP
+A 0000e89f D$ RP
+A 0000e8bd D$pQR
+A 0000e8dc L$TQPW
+A 0000f0b5 QSUVW
+A 0000f232 _^][d
+A 0000f2f8 _][^Y
+A 0000f917 L$(PQ
+A 0000f925 D$8RP
+A 0000f944 T$@QR
+A 0000f952 L$PPQ
+A 0000fbc9 D$(ffff
+A 0000fbd1 D$,ff
+A 0000fc3a D$()\
+A 0000fc5d \$(PQ
+A 0000fccb \$ PQ
+A 0000fcde D$HRP
+A 0000fd74 \$ RP
+A 0000fd87 L$HWQ
+A 0000fdde M8RPQ
+A 0000ff85 T$@PQR
+A 0000ffb9 D$8QRP
+A 00010020 T$8PQR
+A 0001007e L$PRPQ
+A 0001008b 9|$Dt>
+A 000100ae D$0QRP
+A 0001010c T$HPQR
+A 00010158 D$P~$
+A 000101b0 T$\PQR
+A 000102d7 \$xtU
+A 00010336 T$pQR
+A 0001035e D$|PQ
+A 000103e6 D$xRP
+A 00010451 D$ WP
+A 000104dd L$hRPQ
+A 000105af L$@RPQU
+A 000106ac D$\QPR
+A 00010704 D$<RPQ
+A 00010753 D$XRQ
+A 00010759 L$\PQ
+A 00010821 L$4RQ
+A 000108b7 L$TQRP
+A 000108ce T$PQR
+A 00010901 L$\RP
+A 000109b5 T$hPWVQR
+A 00010eab l$,VW
+A 000110d2 L$$_^]d
+A 00011108 SUVWj
+A 00011125 L$HQj
+A 00011171 L$<SQ
+A 0001120d L$H_^]
+A 000112a9 t$,SUW
+A 000112de D$<PQ
+A 00011307 D$<PQ
+A 00011cb5 _^][d
+A 00011f1e _^][d
+A 0001208a u%_^]
+A 00012174 D$ QP
+A 000121d0 QWSUV
+A 0001226a D$$<|t
+A 0001227e |$%Kt
+A 00012534 D$,PF
+A 0001256e D$.PF
+A 000129c6 VWRPQ
+A 00012c1f _^][d
+A 00012cdd 9;|$l}
+A 00012de0 D<$GWj
+A 00012def D<$GWj
+A 00012dfe D<$GWh
+A 00012e10 D<$GWh
+A 00012e22 D<$GWh
+A 00012e34 T$$j8R
+A 0001311e D$pPG
+A 000131cd D$pPG
+A 0001386d L$0Bf
+A 00013da0 tJ9H tE9H$t@
+A 000142b6 ~hwTI
+A 0001447b \$ 8\:
+A 0001478e ~Tt[;VtsV
+A 000147a7 wD9~|t
+A 00014b6b F`Ph7	
+A 00014c60 t(h7	
+A 00015007 \$ UVW
+A 0001502b L$0PhT
+A 000150e3 D$$UWRSP
+A 0001515c L$(USPQ
+A 00015309 ;t$ }
+A 00015310 t$ ;t$
+A 00015465 D$$IPQ
+A 0001546c D$PRP
+A 0001553f u	_^]
+A 0001555a u	_^]
+A 00015575 u	_^]
+A 00015590 u	_^]
+A 000155ab u	_^]
+A 000156f1 L$$9)
+A 0001584c u	_^]3
+A 0001585d u	_^]3
+A 000158a0 u	_^]3
+A 00015d99 ^ _^]
+A 00015fbc L$$PQ
+A 000160f9 }	_^[
+A 00016706 \$0QR
+A 00016977 @SUVW
+A 000169c9 L$8P+
+A 00016a0e L$@QR
+A 00016a4f L$@PQ
+A 00016b10 L$ jdQ
+A 00016b2d T$$SR
+A 00016b74 T$$SR
+A 00016ba0 L$P_^][d
+A 00016c01 L$4QR
+A 00016c65 D$DPQ
+A 00016ee2 L$T_^][d
+A 00016f17 @SUVW
+A 00016f69 L$8P+
+A 00016fae L$@QR
+A 00016ff3 L$@PQ
+A 000170b0 L$ jdQ
+A 000170d1 T$$PR
+A 0001711c T$$PR
+A 00017148 L$P_^][d
+A 00017228 L$$^d
+A 0001725b l$HVW
+A 000172d9 T$0RP
+A 000172ef L$$PQ
+A 0001731c #D$(j
+A 0001733d D$$SP
+A 000174de L$@_^]d
+A 00017518 SUVWj
+A 00017535 L$DQj
+A 00017581 L$4SIQ
+A 000175e9 l$4KS
+A 0001761e L$D_^]
+A 000176c9 t$,SUW
+A 000176fe D$<PQ
+A 00017727 D$<PQ
+A 00017d4a L$(PhT
+A 00017e20 L$$RSPQ
+A 00018049 L$(9)
+A 00018117 DSUVW
+A 000181e1 T$@RP
+A 0001830b D$PQP
+A 00018339 l$49l$h
+A 00018646 D$hPh
+A 000186ab T$ @B
+A 000186ce L$T_^][d
+A 00018a19 L$(h@
+A 00018a9a L$(h@
+A 00018aff n8SQUP
+A 00018b1c T$,Qh
+A 00018c4a _^][d
+A 00018eac ODQPS
+A 00018fd9 QRPSU
+A 00019411 _^][Y
+A 000197ca _^][Y
+A 000197f5 QSUVW
+A 00019905 _^][d
+A 00019af3 L$,W;
+A 00019b00 |$0hP
+A 00019ceb L$ _^
+A 00019dee _^][Y
+A 00019ede L$(PQ
+A 00019eec D$(RP
+A 00019fc3 F<KMH
+A 0001a370 NdRPQ
+A 0001a429 VdPQR
+A 0001a650 QSUVW
+A 0001a744 _^][Y
+A 0001a800 _^][Y
+A 0001a930 QSUVW
+A 0001a9b6 u UWh
+A 0001a9d0 _^][Y
+A 0001aa33 _^][Y
+A 0001ab28 TPWhD
+A 0001b30e _^][d
+A 0001b6a2 _^][d
+A 0001bdfd R0_^]
+A 0001c615 T$(h`
+A 0001c638 D$0h`
+A 0001c65b L$$h`
+A 0001c67b T$ h$
+A 0001c69b D$8h$
+A 0001c7eb L$H~Z
+A 0001c8fe T$@SR
+A 0001cb86 _^][d
+A 0001ce62 OdSQh/	
+A 0001d1f4 D$ QP
+A 0001d250 QWSUV
+A 0001d2b2 SUVWj
+A 0001d404 R8+D$
+A 0001d42f L$hSUWh
+A 0001d4b2 D$lRP
+A 0001d536 D$lRP
+A 0001d5bc L$lPQ
+A 0001d693 L$(@;
+A 0001d6e0 thItT
+A 0001d819 _^][d
+A 0001db0d VWPQR
+A 0001dd6d _^][d
+A 0001de25 }	_^]
+A 0001df8b f9T$$~
+A 0001df9b f9D$(~
+A 0001dfa3 D$(f9T$ }
+A 0001dfae T$ f9D$,}
+A 0001dfb9 D$,91
+A 0001e38f gfffj
+A 0001eaa5 _^][d
+A 0001ef66 _^][d
+A 0001f563 |1_\t
+A 0001f873 T$(j.R
+A 0001fa86 D$,WP
+A 0001fa9f L$LWQ
+A 0001fb81 L$LWQ
+A 000200c7 |1_\t
+A 00020257 |1_\t
+A 0002049a ^`SPhH
+A 00020606 l$ j.
+A 00020651 v6SV;
+A 00020687 ^[_]Y
+A 000207c5 \$<UV
+A 000208b1 D$@RP
+A 000208c4 D$DVQ
+A 000208ca L$PRPQ
+A 00020a04 T$<u,
+A 00020d17 T$<s;
+A 00020e28 L$0RQ
+A 00020e7e L$(VR
+A 00020e84 T$$PQR
+A 00020fe3 D$PPVS
+A 000211d5 D$PPVS
+A 0002128a T$ VR
+A 00021295 D$,VP
+A 000212be L$(VS
+A 000214e9 WVRQ3
+A 000215ad L$(A;
+A 00021696 L$(A;
+A 00021728 L$(A;
+A 000217f5 L$(A;
+A 000218aa T$,RWV
+A 00021910 N(B@M;
+A 00021968 T$,RWV
+A 00021b0e V0PWV
+A 00021c38 L$(SU
+A 0002244a 9t$Lu
+A 00022461 :_^]3
+A 00022485 98u	A
+A 00022600 L$4A;
+A 000227ca \$(N#
+A 000228a8 VPUh0
+A 0002290c VRUh$
+A 00022a4a L$$Qh8
+A 00022b78 M8SVQ
+A 00022bf7 M8SVQ
+A 00022ff9 D$ SUV
+A 0002318f _^][d
+A 000233ac _^][Y
+A 000233da _^][Y
+A 00023411 Fp_^]3
+A 0002342f ^h_^]3
+A 0002345c _^][Y
+A 00023549 FhPh@
+A 00023b6c _^][Y
+A 00023bdd _^][Y
+A 00023bf7 _^][Y
+A 000246a3 D$4W3
+A 00024842 tV_^]
+A 0002491a \$0UV
+A 000249cd |$0t	U
+A 00024a03 _^][d
+A 00024e75 _^][Y
+A 00024ea7 _^][Y
+A 00024fe3 _^][Y
+A 0002517c u%_^]
+A 0002526a L$$WQ
+A 000252d7 PWSUV
+A 00025377 |$t2t
+A 000253eb T$$j@R
+A 0002576a 9D$4}
+A 0002577f D$(9D$0}
+A 000260a5 _^][d
+A 000262da T$(RQP
+A 0002635d |$T2t
+A 000265ec u%_^]
+A 000266da L$$WQ
+A 00026747 PWSUV
+A 000267eb |$P2t
+A 0002685f D$,j P
+A 00026c32 9D$0}
+A 00026c47 D$$9D$,}
+A 00026fbd VWQRP
+A 0002754b _^][d
+A 000275e0 }	_^]
+A 0002778a T$(RQP
+A 0002798d |$T2t
+A 00027aea u%_^]
+A 00027bd4 D$ QP
+A 00027c30 QWSUV
+A 00027e0a QRUPW
+A 00027f7b PWQVj
+A 000280a6 L$,PQ
+A 0002826c L$,VQ
+A 000282fa _^][d
+A 00028314 L$HSUV
+A 0002834f D$dE3
+A 00028555 L$tj.Q
+A 0002856c D$xRhp
+A 00028a7c L$0u	
+A 00028a9b _^][d
+A 00028f82 L$ @;
+A 00029351 1_A^]
+A 000294ea u%_^]
+A 00029734 D$ QP
+A 00029790 QWSUV
+A 000297da SUVWj
+A 00029a89 PQURV
+A 00029acb SUVW3
+A 00029d87 PWQVj
+A 00029eb2 L$4PQ
+A 0002a078 L$4VQ
+A 0002a106 _^][d
+A 0002a124 T$XSUV
+A 0002a12b t$`W3
+A 0002a144 D$l90}
+A 0002a161 D$pA3
+A 0002a194 T$d92
+A 0002a212 T$(SR
+A 0002a383 f9|$\}
+A 0002a38b |$\f;
+A 0002a395 f9T$T}
+A 0002a97a D$DfGAf
+A 0002af56 D$DG;
+A 0002b699 D$dRP
+A 0002b916 L$pu	
+A 0002b935 _^][d
+A 0002bb2e E8^]3
+A 0002bf5f D$LRP
+A 0002c009 _^][d
+A 0002c109 D$ SV
+A 0002c5b6 L$ _^][d
+A 0002cc24 d$,WSUP
+A 0002cdb4 d$,WSUP
+A 0002d0d8 N,wq3
+A 0002d2c9 D$0RP
+A 0002d45d L$P_^][d
+A 0002d6ba \$XUV
+A 0002d85c _^][d
+A 0002d9eb SUVWj
+A 0002db7f _^][d
+A 0002dbe4 d$,WSUP
+A 0002debf N`QhA	
+A 0002e273 t*hD	
+A 0002e2f5 SWhA	
+A 0002e63a u%_^]
+A 0002e724 D$ QP
+A 0002e780 QWSUV
+A 0002e7c4 D$DSUVW
+A 0002ea46 T$X^]
+A 0002ee6a VWPQR
+A 0002f0bc _^][d
+A 0002f40b gfffR
+A 0002f440 gfffR
+A 0002f472 gfffR
+A 0002f4a4 gfffR
+A 0002f4d9 gfffR
+A 0002f564 u<h X
+A 0002f5b5 t<h X
+A 0002f867 Af9t$ f
+A 0002f8b7 L$ F;
+A 0002fb9d _^][d
+A 0003012c _^][d
+A 000303d3 _^][Y
+A 000304cc _^][Y
+A 0003056e CT^][
+A 000307e7 _^][d
+A 00030abb FT_^[
+A 000318e9 D$,VP
+A 00031969 D$,VP
+A 000319e9 D$,VP
+A 00031a69 D$,VP
+A 00031ae9 D$,VP
+A 00031b69 D$,VP
+A 00031be9 D$,VP
+A 00031c69 D$,VP
+A 00031ce9 D$,VP
+A 00031d69 D$,VP
+A 00031de9 D$,VP
+A 00031e69 D$,VP
+A 00031ee9 D$,VP
+A 00031f69 D$,VP
+A 00031fe9 D$,VP
+A 00032069 D$,VP
+A 0003256a D$ PV
+A 0003262e |$ WSRV
+A 00032684 E@UAPQV
+A 000328fa D$ PV
+A 00032a14 D$$SUV
+A 00032ba5 D$4tb
+A 00032d81 ]_^[Y
+A 00032eae tG;|$
+A 00032f90 _^][Y
+A 00033494 NHShH.
+A 000335a4 NHShH.
+A 00033e26 _^][d
+A 00033f3c u%_^]
+A 0003402a L$$WQ
+A 00034097 PWSUV
+A 000340e4 D$pSUVW
+A 000343ba @f9T$ 
+A 000343fc D$1HtJ
+A 00034763 PWQVj
+A 0003488b VWQRP
+A 00034adf _^][d
+A 00034b1f D$(9(}
+A 00034b3c D$,G3
+A 00034b70 T$$9*
+A 00034bd5 gfff3
+A 00034d1f T$8Ej'R
+A 00034e7a gfffj
+A 00035268 j-h$-
+A 00035449 D$(f;
+A 000358e9 N hH	
+A 0003607d QQSVW
+A 000362ee t	WVS
+A 0003631b u7WPS
+A 0003632c u&WVS
+A 00039d8f ?ffffff
+A 0003ebac MFC42.DLL
+A 0003ebb8 __CxxFrameHandler
+A 0003ebcc _purecall
+A 0003ebd8 strncpy
+A 0003ebe2 malloc
+A 0003ebec realloc
+A 0003ec1a _ftol
+A 0003ec22 atan2
+A 0003ec32 calloc
+A 0003ec3c sprintf
+A 0003ec46 strtok
+A 0003ec50 strrchr
+A 0003ec5a fclose
+A 0003ec64 fprintf
+A 0003ec6e fopen
+A 0003ec76 _errno
+A 0003ec80 localtime
+A 0003ec8c strchr
+A 0003ec96 _get_osfhandle
+A 0003eca8 _filelength
+A 0003ecb6 rename
+A 0003ecc0 strcspn
+A 0003ecca _access
+A 0003ece4 _strupr
+A 0003ecf6 _findnext
+A 0003ed02 _findfirst
+A 0003ed10 _getcwd
+A 0003ed1a _mbscmp
+A 0003ed24 _getdcwd
+A 0003ed30 strncat
+A 0003ed3a toupper
+A 0003ed44 tolower
+A 0003ed4e strncmp
+A 0003ed58 isalpha
+A 0003ed62 vsprintf
+A 0003ed6e gmtime
+A 0003ed76 MSVCRT.dll
+A 0003ed84 _except_handler3
+A 0003ed98 ?terminate@@YAXXZ
+A 0003edac __dllonexit
+A 0003edba _onexit
+A 0003edc4 ??1type_info@@UAE@XZ
+A 0003eddc _initterm
+A 0003ede8 _adjust_fdiv
+A 0003edf8 FatalAppExitA
+A 0003ee08 GetFileAttributesA
+A 0003ee1e SetFileAttributesA
+A 0003ee34 Sleep
+A 0003ee3c SetFileTime
+A 0003ee4a DosDateTimeToFileTime
+A 0003ee62 GetTimeZoneInformation
+A 0003ee7c GetSystemDirectoryA
+A 0003ee92 GetTempPathA
+A 0003eea2 InitializeCriticalSection
+A 0003eebe DeleteCriticalSection
+A 0003eed6 EnterCriticalSection
+A 0003eeee LeaveCriticalSection
+A 0003ef06 GetLogicalDrives
+A 0003ef1a GlobalFree
+A 0003ef28 GlobalUnlock
+A 0003ef38 GlobalLock
+A 0003ef46 GlobalReAlloc
+A 0003ef56 GlobalAlloc
+A 0003ef64 FindClose
+A 0003ef70 FindNextFileA
+A 0003ef80 FindFirstFileA
+A 0003ef90 KERNEL32.dll
+A 0003efa0 MessageBoxA
+A 0003efae wsprintfA
+A 0003efba wvsprintfA
+A 0003efc8 EnableWindow
+A 0003efd8 LoadBitmapA
+A 0003efe6 SendMessageA
+A 0003eff6 InflateRect
+A 0003f004 CopyRect
+A 0003f010 GetSysColor
+A 0003f01e GetClientRect
+A 0003f02e FrameRect
+A 0003f03a SetRectEmpty
+A 0003f04a PtInRect
+A 0003f056 InvalidateRect
+A 0003f068 FillRect
+A 0003f074 SetWindowLongA
+A 0003f086 GetWindowLongA
+A 0003f098 GetDlgItem
+A 0003f0a6 SetTimer
+A 0003f0b2 GetWindowRect
+A 0003f0c2 GetCursorPos
+A 0003f0d2 KillTimer
+A 0003f0de SetRect
+A 0003f0e8 IsRectEmpty
+A 0003f0f6 IntersectRect
+A 0003f106 ReleaseDC
+A 0003f112 GetDC
+A 0003f11a SetDlgItemTextA
+A 0003f12c DispatchMessageA
+A 0003f140 TranslateMessage
+A 0003f154 PeekMessageA
+A 0003f162 USER32.dll
+A 0003f170 BitBlt
+A 0003f17a StretchBlt
+A 0003f188 CreateCompatibleDC
+A 0003f19e RealizePalette
+A 0003f1b0 CreateCompatibleBitmap
+A 0003f1ca Polyline
+A 0003f1d6 CreatePen
+A 0003f1e2 GetNearestPaletteIndex
+A 0003f1fc GetDeviceCaps
+A 0003f20c CreatePalette
+A 0003f21a GDI32.dll
+A 0003f226 _stricmp
+A 0003f232 _unlink
+A 0003f23c _strlwr
+A 0003f246 _read
+A 0003f24e _lseek
+A 0003f258 _write
+A 0003f262 _stat
+A 0003f26a _open
+A 0003f272 _close
+A 0003f27c _mkdir
+A 0003f286 _chdir
+A 00041fae gnfilter.dll
+A 00041fbb ??0ALArchive@@QAE@PAVALStorage@@F@Z
+A 00041fdf ??0ALCompressor@@QAE@W4ALCompressionType@@PBD@Z
+A 0004200f ??0ALCopyCompressor@@QAE@XZ
+A 0004202b ??0ALCopyDecompressor@@QAE@XZ
+A 00042049 ??0ALDecompressor@@QAE@W4ALCompressionType@@PBD@Z
+A 0004207b ??0ALEngine@@QAE@W4ALCompressionType@@PBD@Z
+A 000420a7 ??0ALEntry@@QAE@AAVALEntryList@@PAVALStorage@@PAVALCompressor@@PAVALDecompressor@@PAVALCrypto@@@Z
+A 00042109 ??0ALEntryList@@QAE@AAV0@@Z
+A 00042125 ??0ALEntryList@@QAE@PAVALMonitor@@VALToolKit@@@Z
+A 00042156 ??0ALFile@@QAE@PBDHW4ALCase@@@Z
+A 00042176 ??0ALFileAttributes@@QAE@XZ
+A 00042192 ??0ALGlCompressor@@QAE@FF@Z
+A 000421ae ??0ALGlDecompressor@@QAE@F@Z
+A 000421cb ??0ALMemory@@QAE@PBDPADIW4ALCase@@@Z
+A 000421f0 ??0ALMemoryBase@@QAE@PBDW4ALCase@@@Z
+A 00042215 ??0ALMonitor@@QAE@W4ALMonitorType@@@Z
+A 0004223b ??0ALName@@QAE@ABV0@@Z
+A 00042252 ??0ALName@@QAE@PBDW4ALCase@@@Z
+A 00042271 ??0ALOpenFiles@@QAE@AAVALStorage@@0@Z
+A 00042297 ??0ALOpenInputFile@@QAE@AAVALStorage@@@Z
+A 000422c0 ??0ALOpenOutputFile@@QAE@AAVALStorage@@@Z
+A 000422ea ??0ALPkArchive@@QAE@AAVALStorage@@@Z
+A 0004230f ??0ALPkArchive@@QAE@PBD@Z
+A 00042329 ??0ALPkCompressor@@QAE@HHH@Z
+A 00042346 ??0ALPkDecompressor@@QAE@XZ
+A 00042362 ??0ALStatus@@QAE@XZ
+A 00042376 ??0ALStorage@@IAE@PBDIW4ALStorageType@@W4ALCase@@@Z
+A 000423aa ??0ALTimeDate@@QAE@XZ
+A 000423c0 ??0ALToolKit@@QAE@ABV0@@Z
+A 000423da ??0ALToolKit@@QAE@ABVALCompressor@@@Z
+A 00042400 ??0ALToolKit@@QAE@ABVALCrypto@@@Z
+A 00042422 ??0ALToolKit@@QAE@ABVALDecompressor@@@Z
+A 0004244a ??0ALToolKit@@QAE@ABVALStorage@@@Z
+A 0004246d ??0ALToolKit@@QAE@XZ
+A 00042482 ??0ALWildCardExpander@@QAE@PBD0HW4ALCase@@@Z
+A 000424af ??0ALWildCardExpander@@QAE@PBDHW4ALCase@@@Z
+A 000424db ??0ALWinMemory@@QAE@PBDPADKW4ALCase@@@Z
+A 00042503 ??0CAdvanced@@QAE@PAVCWnd@@@Z
+A 00042521 ??0CBmButton@@QAE@XZ
+A 00042536 ??0CClrBtn@@QAE@XZ
+A 00042549 ??0CClrToolBar@@QAE@XZ
+A 00042560 ??0CCnd@@QAE@XZ
+A 00042570 ??0CCndObject@@QAE@XZ
+A 00042586 ??0CColorButton@@QAE@XZ
+A 0004259e ??0CColorChange@@QAE@FH@Z
+A 000425b8 ??0CColorDlg@@QAE@PAVCWnd@@@Z
+A 000425d6 ??0CComplexFillStitch@@QAE@XZ
+A 000425f4 ??0CCsd@@QAE@XZ
+A 00042604 ??0CDensityParams@@QAE@PAVCWnd@@@Z
+A 00042627 ??0CDst@@QAE@XZ
+A 00042637 ??0CEmbButton@@QAE@XZ
+A 0004264d ??0CEmbData@@QAE@XZ
+A 00042661 ??0CEmbIcon@@QAE@XZ
+A 00042675 ??0CEmbObject@@QAE@XZ
+A 0004268b ??0CExp@@QAE@XZ
+A 0004269b ??0CExpObject@@QAE@XZ
+A 000426b1 ??0CFillStitch@@QAE@XZ
+A 000426c8 ??0CFilter@@QAE@XZ
+A 000426db ??0CGFillStitchParms@@QAE@XZ
+A 000426f8 ??0CGRunStitchParms@@QAE@XZ
+A 00042714 ??0CGSatinStitchParms@@QAE@XZ
+A 00042732 ??0CGnFilter@@QAE@XZ
+A 00042747 ??0CHoopSize@@QAE@PAVCWnd@@@Z
+A 00042765 ??0CHus@@QAE@XZ
+A 00042775 ??0CIconView@@QAE@PAVCWnd@@@Z
+A 00042793 ??0CMyFile@@QAE@HPBD0K0PAVCWnd@@@Z
+A 000427b6 ??0CPcs@@QAE@XZ
+A 000427c6 ??0CPcsMac@@QAE@XZ
+A 000427d9 ??0CPec@@QAE@XZ
+A 000427e9 ??0CPes@@QAE@XZ
+A 000427f9 ??0CPreferences@@QAE@PAVCWnd@@@Z
+A 0004281a ??0CRotate@@QAE@PAVCWnd@@@Z
+A 00042836 ??0CRunStitch@@QAE@XZ
+A 0004284c ??0CSatinStitch@@QAE@XZ
+A 00042864 ??0CSew@@QAE@XZ
+A 00042874 ??0CSpecialStitch@@QAE@W4SpecStTypes@@H@Z
+A 0004289e ??0CXxx@@QAE@XZ
+A 000428ae ??0CZip@@QAE@PAVCWnd@@@Z
+A 000428c7 ??1ALArchive@@UAE@XZ
+A 000428dc ??1ALCompressor@@UAE@XZ
+A 000428f4 ??1ALCopyCompressor@@UAE@XZ
+A 00042910 ??1ALCopyDecompressor@@UAE@XZ
+A 0004292e ??1ALDecompressor@@UAE@XZ
+A 00042948 ??1ALEngine@@UAE@XZ
+A 0004295c ??1ALEntry@@QAE@XZ
+A 0004296f ??1ALEntryList@@QAE@XZ
+A 00042986 ??1ALFile@@UAE@XZ
+A 00042998 ??1ALFileAttributes@@QAE@XZ
+A 000429b4 ??1ALGlCompressor@@UAE@XZ
+A 000429ce ??1ALGlDecompressor@@UAE@XZ
+A 000429ea ??1ALMemory@@UAE@XZ
+A 000429fe ??1ALMemoryBase@@UAE@XZ
+A 00042a16 ??1ALMonitor@@UAE@XZ
+A 00042a2b ??1ALName@@QAE@XZ
+A 00042a3d ??1ALOpenFiles@@QAE@XZ
+A 00042a54 ??1ALOpenInputFile@@QAE@XZ
+A 00042a6f ??1ALOpenOutputFile@@QAE@XZ
+A 00042a8b ??1ALPkArchive@@UAE@XZ
+A 00042aa2 ??1ALPkCompressor@@UAE@XZ
+A 00042abc ??1ALPkDecompressor@@UAE@XZ
+A 00042ad8 ??1ALStatus@@QAE@XZ
+A 00042aec ??1ALStorage@@UAE@XZ
+A 00042b01 ??1ALTimeDate@@QAE@XZ
+A 00042b17 ??1ALToolKit@@QAE@XZ
+A 00042b2c ??1ALWildCardExpander@@QAE@XZ
+A 00042b4a ??1ALWinMemory@@UAE@XZ
+A 00042b61 ??1CAdvanced@@UAE@XZ
+A 00042b76 ??1CBmButton@@UAE@XZ
+A 00042b8b ??1CClrBtn@@UAE@XZ
+A 00042b9e ??1CClrToolBar@@UAE@XZ
+A 00042bb5 ??1CCnd@@QAE@XZ
+A 00042bc5 ??1CCndObject@@UAE@XZ
+A 00042bdb ??1CColorButton@@UAE@XZ
+A 00042bf3 ??1CColorChange@@UAE@XZ
+A 00042c0b ??1CColorDlg@@UAE@XZ
+A 00042c20 ??1CComplexFillStitch@@UAE@XZ
+A 00042c3e ??1CCsd@@QAE@XZ
+A 00042c4e ??1CDensityParams@@UAE@XZ
+A 00042c68 ??1CDst@@QAE@XZ
+A 00042c78 ??1CEmbButton@@UAE@XZ
+A 00042c8e ??1CEmbData@@UAE@XZ
+A 00042ca2 ??1CEmbIcon@@QAE@XZ
+A 00042cb6 ??1CEmbObject@@UAE@XZ
+A 00042ccc ??1CExp@@QAE@XZ
+A 00042cdc ??1CExpObject@@UAE@XZ
+A 00042cf2 ??1CFillStitch@@UAE@XZ
+A 00042d09 ??1CFilter@@QAE@XZ
+A 00042d1c ??1CGFillStitchParms@@UAE@XZ
+A 00042d39 ??1CGRunStitchParms@@UAE@XZ
+A 00042d55 ??1CGSatinStitchParms@@UAE@XZ
+A 00042d73 ??1CGnFilter@@UAE@XZ
+A 00042d88 ??1CHoopSize@@UAE@XZ
+A 00042d9d ??1CHus@@QAE@XZ
+A 00042dad ??1CIconView@@UAE@XZ
+A 00042dc2 ??1CMyFile@@UAE@XZ
+A 00042dd5 ??1CPcs@@QAE@XZ
+A 00042de5 ??1CPcsMac@@QAE@XZ
+A 00042df8 ??1CPec@@QAE@XZ
+A 00042e08 ??1CPes@@QAE@XZ
+A 00042e18 ??1CPreferences@@UAE@XZ
+A 00042e30 ??1CRotate@@UAE@XZ
+A 00042e43 ??1CRunStitch@@UAE@XZ
+A 00042e59 ??1CSatinStitch@@UAE@XZ
+A 00042e71 ??1CSew@@QAE@XZ
+A 00042e81 ??1CSpecialStitch@@UAE@XZ
+A 00042e9b ??1CXxx@@QAE@XZ
+A 00042eab ??1CZip@@UAE@XZ
+A 00042ebb ??2ALArchive@@SAPAXI@Z
+A 00042ed2 ??2ALCompressor@@SAPAXI@Z
+A 00042eec ??2ALCopyCompressor@@SAPAXI@Z
+A 00042f0a ??2ALCopyDecompressor@@SAPAXI@Z
+A 00042f2a ??2ALDecompressor@@SAPAXI@Z
+A 00042f46 ??2ALEngine@@SAPAXI@Z
+A 00042f5c ??2ALEntry@@SAPAXI@Z
+A 00042f71 ??2ALEntryList@@SAPAXI@Z
+A 00042f8a ??2ALFile@@SAPAXI@Z
+A 00042f9e ??2ALFileAttributes@@SAPAXI@Z
+A 00042fbc ??2ALGlCompressor@@SAPAXI@Z
+A 00042fd8 ??2ALGlDecompressor@@SAPAXI@Z
+A 00042ff6 ??2ALMemory@@SAPAXI@Z
+A 0004300c ??2ALMemoryBase@@SAPAXI@Z
+A 00043026 ??2ALMonitor@@SAPAXI@Z
+A 0004303d ??2ALName@@SAPAXI@Z
+A 00043051 ??2ALOpenFiles@@SAPAXI@Z
+A 0004306a ??2ALOpenInputFile@@SAPAXI@Z
+A 00043087 ??2ALOpenOutputFile@@SAPAXI@Z
+A 000430a5 ??2ALPkArchive@@SAPAXI@Z
+A 000430be ??2ALPkCompressor@@SAPAXI@Z
+A 000430da ??2ALPkDecompressor@@SAPAXI@Z
+A 000430f8 ??2ALStatus@@SAPAXI@Z
+A 0004310e ??2ALStorage@@KAPAXI@Z
+A 00043125 ??2ALTimeDate@@SAPAXI@Z
+A 0004313d ??2ALToolKit@@SAPAXI@Z
+A 00043154 ??2ALWildCardExpander@@SAPAXI@Z
+A 00043174 ??2ALWinMemory@@SAPAXI@Z
+A 0004318d ??4ALFileAttributes@@QAEAAV0@ABV0@@Z
+A 000431b2 ??4ALName@@QAEAAV0@ABV0@@Z
+A 000431cd ??4ALName@@QAEAAV0@PBD@Z
+A 000431e6 ??4ALStatus@@QAEAAV0@AAV0@@Z
+A 00043203 ??4ALTimeDate@@QAEAAV0@ABV0@@Z
+A 00043222 ??4ALToolKit@@QAEAAV0@ABV0@@Z
+A 00043240 ??4ALWildCardOsData@@QAEAAV0@ABV0@@Z
+A 00043265 ??4CEmbIcon@@QAEAAV0@ABV0@@Z
+A 00043282 ??4_ALTag_ALArchiveTag@ALArchive@@QAEAAV01@ABV01@@Z
+A 000432b6 ??4_ALTag_ALCompressedObjectTag@ALCompressedObject@@QAEAAV01@ABV01@@Z
+A 000432fc ??4_ALTag_ALCompressorTag@ALCompressor@@QAEAAV01@ABV01@@Z
+A 00043336 ??4_ALTag_ALCopyCompressorTag@ALCopyCompressor@@QAEAAV01@ABV01@@Z
+A 00043378 ??4_ALTag_ALCopyDecompressorTag@ALCopyDecompressor@@QAEAAV01@ABV01@@Z
+A 000433be ??4_ALTag_ALCryptoTag@ALCrypto@@QAEAAV01@ABV01@@Z
+A 000433f0 ??4_ALTag_ALDecompressorTag@ALDecompressor@@QAEAAV01@ABV01@@Z
+A 0004342e ??4_ALTag_ALDecompressorTag@ALPkDecompressor@@QAEAAV01@ABV01@@Z
+A 0004346e ??4_ALTag_ALEngineTag@ALEngine@@QAEAAV01@ABV01@@Z
+A 000434a0 ??4_ALTag_ALEntryListTag@ALEntryList@@QAEAAV01@ABV01@@Z
+A 000434d8 ??4_ALTag_ALEntryTag@ALEntry@@QAEAAV01@ABV01@@Z
+A 00043508 ??4_ALTag_ALFileTag@ALFile@@QAEAAV01@ABV01@@Z
+A 00043536 ??4_ALTag_ALGlCompressorTag@ALGlCompressor@@QAEAAV01@ABV01@@Z
+A 00043574 ??4_ALTag_ALGlDecompressorTag@ALGlDecompressor@@QAEAAV01@ABV01@@Z
+A 000435b6 ??4_ALTag_ALMemoryBaseTag@ALMemoryBase@@QAEAAV01@ABV01@@Z
+A 000435f0 ??4_ALTag_ALMemoryTag@ALMemory@@QAEAAV01@ABV01@@Z
+A 00043622 ??4_ALTag_ALMonitorTag@ALMonitor@@QAEAAV01@ABV01@@Z
+A 00043656 ??4_ALTag_ALNameTag@ALName@@QAEAAV01@ABV01@@Z
+A 00043684 ??4_ALTag_ALPkArchiveTag@ALPkArchive@@QAEAAV01@ABV01@@Z
+A 000436bc ??4_ALTag_ALPkCompressorTag@ALPkCompressor@@QAEAAV01@ABV01@@Z
+A 000436fa ??4_ALTag_ALStorageTag@ALStorage@@QAEAAV01@ABV01@@Z
+A 0004372e ??4_ALTag_ALToolKitTag@ALToolKit@@QAEAAV01@ABV01@@Z
+A 00043762 ??4_ALTag_ALWildCardExpanderTag@ALWildCardExpander@@QAEAAV01@ABV01@@Z
+A 000437a8 ??4_ALTag_ALWinMemoryTag@ALWinMemory@@QAEAAV01@ABV01@@Z
+A 000437e0 ??4__unnamed@ALPkArchive@@QAEAAU01@ABU01@@Z
+A 0004380c ??BALName@@QBEQADXZ
+A 00043820 ??BALStatus@@QAEHXZ
+A 00043834 ??H@YA?AVALToolKit@@ABVALCompressor@@0@Z
+A 0004385d ??H@YA?AVALToolKit@@ABVALCompressor@@ABVALCrypto@@@Z
+A 00043892 ??H@YA?AVALToolKit@@ABVALCompressor@@ABVALDecompressor@@@Z
+A 000438cd ??H@YA?AVALToolKit@@ABVALCompressor@@ABVALStorage@@@Z
+A 00043903 ??H@YA?AVALToolKit@@ABVALCrypto@@0@Z
+A 00043928 ??H@YA?AVALToolKit@@ABVALCrypto@@ABVALCompressor@@@Z
+A 0004395d ??H@YA?AVALToolKit@@ABVALCrypto@@ABVALDecompressor@@@Z
+A 00043994 ??H@YA?AVALToolKit@@ABVALCrypto@@ABVALStorage@@@Z
+A 000439c6 ??H@YA?AVALToolKit@@ABVALDecompressor@@0@Z
+A 000439f1 ??H@YA?AVALToolKit@@ABVALDecompressor@@ABVALCompressor@@@Z
+A 00043a2c ??H@YA?AVALToolKit@@ABVALDecompressor@@ABVALCrypto@@@Z
+A 00043a63 ??H@YA?AVALToolKit@@ABVALDecompressor@@ABVALStorage@@@Z
+A 00043a9b ??H@YA?AVALToolKit@@ABVALStorage@@0@Z
+A 00043ac1 ??H@YA?AVALToolKit@@ABVALStorage@@ABVALCompressor@@@Z
+A 00043af7 ??H@YA?AVALToolKit@@ABVALStorage@@ABVALCrypto@@@Z
+A 00043b29 ??H@YA?AVALToolKit@@ABVALStorage@@ABVALDecompressor@@@Z
+A 00043b61 ??HALName@@QAE?AV0@PBD@Z
+A 00043b7a ??HALToolKit@@QAEAAV0@ABVALCompressor@@@Z
+A 00043ba4 ??HALToolKit@@QAEAAV0@ABVALCrypto@@@Z
+A 00043bca ??HALToolKit@@QAEAAV0@ABVALDecompressor@@@Z
+A 00043bf6 ??HALToolKit@@QAEAAV0@ABVALStorage@@@Z
+A 00043c1d ??_7ALArchive@@6B@
+A 00043c30 ??_7ALCompressor@@6B@
+A 00043c46 ??_7ALCopyCompressor@@6B@
+A 00043c60 ??_7ALCopyDecompressor@@6B@
+A 00043c7c ??_7ALDecompressor@@6B@
+A 00043c94 ??_7ALEngine@@6B@
+A 00043ca6 ??_7ALFile@@6B@
+A 00043cb6 ??_7ALGlCompressor@@6B@
+A 00043cce ??_7ALGlDecompressor@@6B@
+A 00043ce8 ??_7ALMemory@@6B@
+A 00043cfa ??_7ALMemoryBase@@6B@
+A 00043d10 ??_7ALMonitor@@6B@
+A 00043d23 ??_7ALPkArchive@@6B@
+A 00043d38 ??_7ALPkCompressor@@6B@
+A 00043d50 ??_7ALPkDecompressor@@6B@
+A 00043d6a ??_7ALStorage@@6B@
+A 00043d7d ??_7ALWinMemory@@6B@
+A 00043d92 ??_7CAdvanced@@6B@
+A 00043da5 ??_7CBmButton@@6B@
+A 00043db8 ??_7CClrBtn@@6B@
+A 00043dc9 ??_7CClrToolBar@@6B@
+A 00043dde ??_7CCnd@@6B@
+A 00043dec ??_7CCndObject@@6B@
+A 00043e00 ??_7CColorButton@@6B@
+A 00043e16 ??_7CColorChange@@6B@
+A 00043e2c ??_7CColorDlg@@6B@
+A 00043e3f ??_7CComplexFillStitch@@6B@
+A 00043e5b ??_7CCsd@@6B@
+A 00043e69 ??_7CDensityParams@@6B@
+A 00043e81 ??_7CDst@@6B@
+A 00043e8f ??_7CEmbButton@@6B@
+A 00043ea3 ??_7CEmbData@@6B@
+A 00043eb5 ??_7CEmbObject@@6B@
+A 00043ec9 ??_7CExp@@6B@
+A 00043ed7 ??_7CExpObject@@6B@
+A 00043eeb ??_7CFillStitch@@6B@
+A 00043f00 ??_7CFilter@@6B@
+A 00043f11 ??_7CGFillStitchParms@@6B@
+A 00043f2c ??_7CGRunStitchParms@@6B@
+A 00043f46 ??_7CGSatinStitchParms@@6B@
+A 00043f62 ??_7CGnFilter@@6B@
+A 00043f75 ??_7CHoopSize@@6B@
+A 00043f88 ??_7CHus@@6B@
+A 00043f96 ??_7CIconView@@6B@
+A 00043fa9 ??_7CMyFile@@6B@
+A 00043fba ??_7CPcs@@6B@
+A 00043fc8 ??_7CPcsMac@@6B@
+A 00043fd9 ??_7CPec@@6B@
+A 00043fe7 ??_7CPes@@6B@
+A 00043ff5 ??_7CPreferences@@6B@
+A 0004400b ??_7CRotate@@6B@
+A 0004401c ??_7CRunStitch@@6B@
+A 00044030 ??_7CSatinStitch@@6B@
+A 00044046 ??_7CSew@@6B@
+A 00044054 ??_7CSpecialStitch@@6B@
+A 0004406c ??_7CXxx@@6B@
+A 0004407a ??_7CZip@@6B@
+A 00044088 ??_C@_00A@?$AA@
+A 00044098 ??_FALEntryList@@QAEXXZ
+A 000440b0 ??_FALFile@@QAEXXZ
+A 000440c3 ??_FALGlCompressor@@QAEXXZ
+A 000440de ??_FALGlDecompressor@@QAEXXZ
+A 000440fb ??_FALMemory@@QAEXXZ
+A 00044110 ??_FALMemoryBase@@QAEXXZ
+A 00044129 ??_FALName@@QAEXXZ
+A 0004413c ??_FALPkCompressor@@QAEXXZ
+A 00044157 ??_FALWinMemory@@QAEXXZ
+A 0004416f ??_FCAdvanced@@QAEXXZ
+A 00044185 ??_FCColorChange@@QAEXXZ
+A 0004419e ??_FCColorDlg@@QAEXXZ
+A 000441b4 ??_FCDensityParams@@QAEXXZ
+A 000441cf ??_FCHoopSize@@QAEXXZ
+A 000441e5 ??_FCIconView@@QAEXXZ
+A 000441fb ??_FCPreferences@@QAEXXZ
+A 00044214 ??_FCRotate@@QAEXXZ
+A 00044228 ??_FCSpecialStitch@@QAEXXZ
+A 00044243 ??_FCZip@@QAEXXZ
+A 00044254 ?AddBoundryPoint@CComplexFillStitch@@QAEXHHHH@Z
+A 00044284 ?AddFilledLine@CCndObject@@QAEXHHUtagPOINT@@0H00@Z
+A 000442b7 ?AddLineSegment@CSatinStitch@@QAEHPAVCCndObject@@HHHNNNUtagPOINT@@1AAU3@2@Z
+A 00044303 ?AddMod23Pt@CFillStitch@@QAEXHH@Z
+A 00044325 ?AddMod23Pt@CFillStitch@@QAEXUtagPOINT@@@Z
+A 00044350 ?AddMod41Pt@CFillStitch@@QAEXHH@Z
+A 00044372 ?AddMod41Pt@CFillStitch@@QAEXUtagPOINT@@@Z
+A 0004439d ?AddSatinLine@CCndObject@@QAEXUtagPOINT@@0H@Z
+A 000443cb ?AddSatinReturn@CCndObject@@QAEXUtagPOINT@@H@Z
+A 000443fa ?AddStitch@CDst@@AAEHHHHH@Z
+A 00044416 ?AddStitch@CExp@@AAEHHHHH@Z
+A 00044432 ?AddStitch@CPcs@@AAEHJJH@Z
+A 0004444d ?AddStitch@CPcsMac@@AAEHJJH@Z
+A 0004446b ?AddStitch@CSew@@AAEHHH@Z
+A 00044485 ?AddStitch@CXxx@@AAEHHH@Z
+A 0004449f ?AddStitches@CCndObject@@QAEXHHW4SpecStTypes@@@Z
+A 000444d0 ?Archive@ALFileAttributes@@QAEHXZ
+A 000444f2 ?ArchiveOperation@ALMonitor@@MAEXW4ALArchiveOperation@@PAVALArchive@@PAVALEntry@@@Z
+A 00044546 ?BuildTables@CCsd@@AAEXXZ
+A 00044560 ?BuildTree@CIconView@@IAEXXZ
+A 0004457d ?CalcDynamicLayout@CClrToolBar@@UAE?AVCSize@@HK@Z
+A 000445af ?CalcFixedLayout@CClrToolBar@@UAE?AVCSize@@HH@Z
+A 000445df ?CalcLayout@CClrToolBar@@IAE?AVCSize@@KH@Z
+A 0004460a ?CalcSize@CClrToolBar@@IAE?AVCSize@@XZ
+A 00044631 ?CalculateCompressedJobSize@ALArchive@@IAEJAAVALEntryList@@@Z
+A 0004466f ?CalculateJobSize@ALArchive@@IAEJAAVALEntryList@@@Z
+A 000446a3 ?ChangeExtension@ALName@@QAEAAV1@PBD@Z
+A 000446ca ?ChangeExtension@CMyFile@@QAEHHPAD@Z
+A 000446ef ?ChangeTrailingChar@ALName@@QAEAAV1@D@Z
+A 00044717 ?CleanupJunkStitches@CCndObject@@UAEXXZ
+A 0004473f ?CleanupJunkStitches@CEmbObject@@UAEXXZ
+A 00044767 ?CleanupJunkStitches@CExpObject@@UAEXXZ
+A 0004478f ?ClearEmbPattern@CEmbButton@@QAEXXZ
+A 000447b3 ?ClearEncrypted@ALEntry@@QAEXXZ
+A 000447d3 ?ClearError@ALArchive@@QAEXXZ
+A 000447f1 ?ClearError@ALCompressedObject@@QAEXXZ
+A 00044818 ?ClearError@ALCrypto@@QAEXXZ
+A 00044835 ?ClearError@ALEngine@@QAEXXZ
+A 00044852 ?ClearError@ALEntryList@@QAEXXZ
+A 00044872 ?ClearError@ALStorage@@QAEXXZ
+A 00044890 ?ClearMark@ALEntry@@QAEXXZ
+A 000448ab ?ClearMarks@ALEntryList@@QAEHPBD@Z
+A 000448ce ?Clone@ALCopyCompressor@@UBEPAVALCompressor@@H@Z
+A 000448ff ?Clone@ALCopyDecompressor@@UBEPAVALDecompressor@@H@Z
+A 00044934 ?Clone@ALFile@@UBEPAVALStorage@@PBDH@Z
+A 0004495b ?Clone@ALGlCompressor@@UBEPAVALCompressor@@H@Z
+A 0004498a ?Clone@ALGlDecompressor@@UBEPAVALDecompressor@@H@Z
+A 000449bd ?Clone@ALMemory@@UBEPAVALStorage@@PBDH@Z
+A 000449e6 ?Clone@ALPkCompressor@@UBEPAVALCompressor@@H@Z
+A 00044a15 ?Clone@ALPkDecompressor@@UBEPAVALDecompressor@@H@Z
+A 00044a48 ?Clone@ALWinMemory@@UBEPAVALStorage@@PBDH@Z
+A 00044a74 ?Close@ALFile@@UAEHXZ
+A 00044a8a ?Close@ALMemory@@UAEHXZ
+A 00044aa2 ?Close@ALMemoryBase@@UAEHXZ
+A 00044abe ?Close@ALStorage@@UAEHXZ
+A 00044ad7 ?Close@ALWinMemory@@UAEHXZ
+A 00044af2 ?CloseHandle@CFilter@@QAEXXZ
+A 00044b0f ?ColorMerge@CCndObject@@UAEXPAVCEmbObject@@@Z
+A 00044b3d ?ColorMerge@CEmbObject@@UAEXPAV1@@Z
+A 00044b61 ?ColorMerge@CExpObject@@UAEXPAVCEmbObject@@@Z
+A 00044b8f ?ColorSplit@CCndObject@@UAEPAVCEmbObject@@H@Z
+A 00044bbd ?ColorSplit@CEmbObject@@UAEPAV1@H@Z
+A 00044be1 ?ColorSplit@CExpObject@@UAEPAVCEmbObject@@H@Z
+A 00044c0f ?Compare@ALStorage@@QAEHAAV1@@Z
+A 00044c2f ?Compress@ALCopyCompressor@@UAEHAAVALStorage@@0@Z
+A 00044c61 ?Compress@ALGlCompressor@@UAEHAAVALStorage@@0@Z
+A 00044c91 ?Compress@ALPkCompressor@@UAEHAAVALStorage@@0@Z
+A 00044cc1 ?CompressionLevel@ALGlCompressor@@QAEFXZ
+A 00044cea ?CompressionLevel@ALGlDecompressor@@QAEFXZ
+A 00044d15 ?ConstructOsData@ALWildCardExpander@@IAEXXZ
+A 00044d41 ?Copy@CCndObject@@UAEPAVCEmbObject@@XZ
+A 00044d68 ?Copy@CColorChange@@UAEPAVCEmbData@@XZ
+A 00044d8f ?Copy@CComplexFillStitch@@UAEPAVCEmbData@@XZ
+A 00044dbc ?Copy@CEmbData@@UAEPAV1@XZ
+A 00044dd7 ?Copy@CEmbObject@@UAEPAV1@XZ
+A 00044df4 ?Copy@CExpObject@@UAEPAVCEmbObject@@XZ
+A 00044e1b ?Copy@CFillStitch@@UAEPAVCEmbData@@XZ
+A 00044e41 ?Copy@CGFillStitchParms@@UAEPAVCEmbData@@XZ
+A 00044e6d ?Copy@CGRunStitchParms@@UAEPAVCEmbData@@XZ
+A 00044e98 ?Copy@CGSatinStitchParms@@UAEPAVCEmbData@@XZ
+A 00044ec5 ?Copy@CRunStitch@@UAEPAVCEmbData@@XZ
+A 00044eea ?Copy@CSatinStitch@@UAEPAVCEmbData@@XZ
+A 00044f11 ?Copy@CSpecialStitch@@UAEPAVCEmbData@@XZ
+A 00044f3a ?CopyColor@CCndObject@@UAEPAVCEmbObject@@H@Z
+A 00044f67 ?CopyColor@CEmbObject@@UAEPAV1@H@Z
+A 00044f8a ?CopyColor@CExpObject@@UAEPAVCEmbObject@@H@Z
+A 00044fb7 ?Create@ALFile@@UAEHJ@Z
+A 00044fcf ?Create@ALMemory@@UAEHJ@Z
+A 00044fe9 ?Create@ALMemoryBase@@UAEHJ@Z
+A 00045007 ?Create@ALStorage@@UAEHJ@Z
+A 00045022 ?Create@ALWinMemory@@UAEHJ@Z
+A 0004503f ?Create@CClrToolBar@@QAEHPAVCWnd@@KI@Z
+A 00045066 ?Create@CEmbIcon@@QAEHHH@Z
+A 00045081 ?Create@CEmbIcon@@QAEHVCSize@@@Z
+A 000450a2 ?CreateCompressor@ALToolKit@@QAEPAVALCompressor@@H@Z
+A 000450d7 ?CreateCryptoEngine@ALToolKit@@QAEPAVALCrypto@@H@Z
+A 0004510a ?CreateDecompressor@ALToolKit@@QAEPAVALDecompressor@@H@Z
+A 00045143 ?CreateObject@CBmButton@@SGPAVCObject@@XZ
+A 0004516d ?CreateObject@CColorButton@@SGPAVCObject@@XZ
+A 0004519a ?CreateObject@CEmbButton@@SGPAVCObject@@XZ
+A 000451c5 ?CreateStorageObject@ALToolKit@@QAEPAVALStorage@@PBDH@Z
+A 000451fd ?DecodeByte@CCsd@@AAEEEKH@Z
+A 00045219 ?Decompress@ALCopyDecompressor@@UAEHAAVALStorage@@0J@Z
+A 00045250 ?Decompress@ALGlDecompressor@@UAEHAAVALStorage@@0J@Z
+A 00045285 ?Decompress@ALPkDecompressor@@UAEHAAVALStorage@@0J@Z
+A 000452ba ?Delete@ALFile@@UAEHXZ
+A 000452d1 ?Delete@ALMemory@@UAEHXZ
+A 000452ea ?Delete@ALWinMemory@@UAEHXZ
+A 00045306 ?DeleteUnmarked@ALEntryList@@QAEHXZ
+A 0004532a ?DestroyOsData@ALWildCardExpander@@IAEXXZ
+A 00045354 ?Directory@ALFileAttributes@@QAEHXZ
+A 00045378 ?DoDataExchange@CAdvanced@@MAEXPAVCDataExchange@@@Z
+A 000453ac ?DoDataExchange@CColorDlg@@MAEXPAVCDataExchange@@@Z
+A 000453e0 ?DoDataExchange@CDensityParams@@MAEXPAVCDataExchange@@@Z
+A 00045419 ?DoDataExchange@CHoopSize@@MAEXPAVCDataExchange@@@Z
+A 0004544d ?DoDataExchange@CIconView@@MAEXPAVCDataExchange@@@Z
+A 00045481 ?DoDataExchange@CPreferences@@MAEXPAVCDataExchange@@@Z
+A 000454b8 ?DoDataExchange@CRotate@@MAEXPAVCDataExchange@@@Z
+A 000454ea ?DoDataExchange@CZip@@MAEXPAVCDataExchange@@@Z
+A 00045519 ?Draw3DButtonFrame@CBmButton@@IAEXPAVCDC@@VCRect@@H@Z
+A 0004554f ?Draw3DButtonFrame@CColorButton@@IAEXPAVCDC@@VCRect@@H@Z
+A 00045588 ?Draw3DButtonFrame@CEmbButton@@IAEXPAVCDC@@VCRect@@H@Z
+A 000455bf ?Draw3DFrame@CBmButton@@IAEXPAVCDC@@VCRect@@KK@Z
+A 000455f0 ?Draw3DFrame@CColorButton@@IAEXPAVCDC@@VCRect@@KK@Z
+A 00045624 ?Draw3DFrame@CEmbButton@@IAEXPAVCDC@@VCRect@@KK@Z
+A 00045656 ?Draw@CCndObject@@UAEXPAVCDC@@H@Z
+A 00045678 ?Draw@CEmbObject@@UAEXPAVCDC@@H@Z
+A 0004569a ?Draw@CExpObject@@UAEXPAVCDC@@H@Z
+A 000456bc ?DrawItem@CBmButton@@MAEXPAUtagDRAWITEMSTRUCT@@@Z
+A 000456ee ?DrawItem@CClrBtn@@UAEXPAUtagDRAWITEMSTRUCT@@@Z
+A 0004571e ?DrawItem@CColorButton@@MAEXPAUtagDRAWITEMSTRUCT@@@Z
+A 00045753 ?DrawItem@CEmbButton@@MAEXPAUtagDRAWITEMSTRUCT@@@Z
+A 00045786 ?Duplicate@ALEntry@@QAEHAAVALEntryList@@@Z
+A 000457b1 ?EncodeByte@CCsd@@AAEEEK@Z
+A 000457cc ?EndDecrypt@ALCrypto@@UAEHAAVALStorage@@0@Z
+A 000457f8 ?EndEncrypt@ALCrypto@@UAEHAAVALStorage@@0@Z
+A 00045824 ?ExportFile@CCnd@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 0004585f ?ExportFile@CCsd@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 0004589a ?ExportFile@CDst@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 000458d5 ?ExportFile@CExp@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045910 ?ExportFile@CFilter@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 0004594e ?ExportFile@CHus@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045989 ?ExportFile@CPcs@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 000459c4 ?ExportFile@CPcsMac@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045a02 ?ExportFile@CPec@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045a3d ?ExportFile@CPes@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045a78 ?ExportFile@CSew@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045ab3 ?ExportFile@CXxx@@UAEHQBDHPAUCOLORCHG@@JPAUtagPOINT@@PAE@Z
+A 00045aee ?Extract@ALArchive@@QAEHAAVALEntryList@@@Z
+A 00045b19 ?FillListBox@ALEntryList@@QAEHPAUHWND__@@H@Z
+A 00045b46 ?FindBoundry@CCsd@@AAEJJHPAUCOLORCHG@@J@Z
+A 00045b70 ?FindBoundry@CHus@@AAEJJHPAUCOLORCHG@@J@Z
+A 00045b9a ?FindBoundry@CPcs@@AAEJHPAUCOLORCHG@@JJ@Z
+A 00045bc4 ?FindBoundry@CPcsMac@@AAEJHPAUCOLORCHG@@JJ@Z
+A 00045bf1 ?FindBoundry@CPec@@AAEJJHPAUCOLORCHG@@JPAUtagPOINT@@@Z
+A 00045c28 ?FindBoundry@CPes@@AAEJJHPAUCOLORCHG@@JPAUtagPOINT@@@Z
+A 00045c5f ?FindBoundry@CSew@@AAEJJHPAUCOLORCHG@@J@Z
+A 00045c89 ?FindBoundry@CXxx@@AAEJJHPAUCOLORCHG@@JPAUtagPOINT@@@Z
+A 00045cc0 ?FixupAngle@CSatinStitch@@QAEHUtagPOINT@@000AAN11@Z
+A 00045cf4 ?FlushBuffer@ALFile@@UAEHXZ
+A 00045d10 ?FlushBuffer@ALMemoryBase@@UAEHXZ
+A 00045d32 ?FromJulian@ALTimeDate@@QAEXJ@Z
+A 00045d52 ?FullTools@@YA?AVALToolKit@@XZ
+A 00045d71 ?FullyRegistered@CGnFilter@@QAEHPAVCWinApp@@@Z
+A 00045da0 ?GetCenter@CCndObject@@QAEHUtagPOINT@@00AAU2@@Z
+A 00045dd0 ?GetColorData@CCndObject@@UAEPAUCOLORCHG@@XZ
+A 00045dfd ?GetColorData@CEmbObject@@UAEPAUCOLORCHG@@XZ
+A 00045e2a ?GetColorData@CExpObject@@UAEPAUCOLORCHG@@XZ
+A 00045e57 ?GetComment@ALArchive@@QAEPBDXZ
+A 00045e77 ?GetComment@ALEntry@@QAEPBDXZ
+A 00045e95 ?GetCompressedObjectPosition@ALEntry@@QBEJXZ
+A 00045ec2 ?GetCompressedSize@ALEntry@@QBEJXZ
+A 00045ee5 ?GetCrc32@ALEntry@@QBEJXZ
+A 00045eff ?GetCrc32@ALStorage@@QAEJXZ
+A 00045f1b ?GetDosDate@ALTimeDate@@QAEGXZ
+A 00045f3a ?GetDosTime@ALTimeDate@@QAEGXZ
+A 00045f59 ?GetEmbSource@CEmbObject@@QAE?AW4EmbSource@@PBD@Z
+A 00045f8b ?GetEncrypted@ALEntry@@QAEHXZ
+A 00045fa9 ?GetFaceColor@CColorButton@@QAEKXZ
+A 00045fcc ?GetFirstEntry@ALEntryList@@QAEPAVALEntry@@XZ
+A 00045ffa ?GetIconLine@CEmbIcon@@QAEPAEH@Z
+A 0004601b ?GetInterceptPoint@CCndObject@@QAEHUtagPOINT@@000AAU2@@Z
+A 00046054 ?GetLength@CSatinStitch@@QAENUtagPOINT@@0AAU2@@Z
+A 00046085 ?GetMark@ALEntry@@QAEHXZ
+A 0004609e ?GetMaxNoStitches@CCnd@@UAEJQBD@Z
+A 000460c0 ?GetMaxNoStitches@CCsd@@UAEJQBD@Z
+A 000460e2 ?GetMaxNoStitches@CDst@@UAEJQBD@Z
+A 00046104 ?GetMaxNoStitches@CExp@@UAEJQBD@Z
+A 00046126 ?GetMaxNoStitches@CFilter@@UAEJQBD@Z
+A 0004614b ?GetMaxNoStitches@CHus@@UAEJQBD@Z
+A 0004616d ?GetMaxNoStitches@CPcs@@UAEJQBD@Z
+A 0004618f ?GetMaxNoStitches@CPcsMac@@UAEJQBD@Z
+A 000461b4 ?GetMaxNoStitches@CPec@@UAEJQBD@Z
+A 000461d6 ?GetMaxNoStitches@CPes@@UAEJQBD@Z
+A 000461f8 ?GetMaxNoStitches@CSew@@UAEJQBD@Z
+A 0004621a ?GetMaxNoStitches@CXxx@@UAEJQBD@Z
+A 0004623c ?GetMessageMap@CAdvanced@@MBEPBUAFX_MSGMAP@@XZ
+A 0004626b ?GetMessageMap@CBmButton@@MBEPBUAFX_MSGMAP@@XZ
+A 0004629a ?GetMessageMap@CClrToolBar@@MBEPBUAFX_MSGMAP@@XZ
+A 000462cb ?GetMessageMap@CColorButton@@MBEPBUAFX_MSGMAP@@XZ
+A 000462fd ?GetMessageMap@CColorDlg@@MBEPBUAFX_MSGMAP@@XZ
+A 0004632c ?GetMessageMap@CDensityParams@@MBEPBUAFX_MSGMAP@@XZ
+A 00046360 ?GetMessageMap@CEmbButton@@MBEPBUAFX_MSGMAP@@XZ
+A 00046390 ?GetMessageMap@CHoopSize@@MBEPBUAFX_MSGMAP@@XZ
+A 000463bf ?GetMessageMap@CIconView@@MBEPBUAFX_MSGMAP@@XZ
+A 000463ee ?GetMessageMap@CMyFile@@MBEPBUAFX_MSGMAP@@XZ
+A 0004641b ?GetMessageMap@CPreferences@@MBEPBUAFX_MSGMAP@@XZ
+A 0004644d ?GetMessageMap@CRotate@@MBEPBUAFX_MSGMAP@@XZ
+A 0004647a ?GetMessageMap@CZip@@MBEPBUAFX_MSGMAP@@XZ
+A 000464a4 ?GetName@ALName@@QBEPBDXZ
+A 000464be ?GetNextEntry@ALEntry@@QAEPAV1@XZ
+A 000464e0 ?GetNextFile@ALWildCardExpander@@QAEPADXZ
+A 0004650a ?GetNextMark1@CCnd@@QAEHAAUtagPOINT@@@Z
+A 00046532 ?GetNextWildName@ALWildCardExpander@@IAEHXZ
+A 0004655e ?GetNoColors@CCndObject@@UAEHXZ
+A 0004657e ?GetNoColors@CEmbObject@@UAEHXZ
+A 0004659e ?GetNoColors@CExpObject@@UAEHXZ
+A 000465be ?GetNoStitches@CCndObject@@UAEJXZ
+A 000465e0 ?GetNoStitches@CCsd@@AAEJQBD@Z
+A 000465ff ?GetNoStitches@CEmbObject@@UAEJXZ
+A 00046621 ?GetNoStitches@CExpObject@@UAEJXZ
+A 00046643 ?GetNoStitches@CHus@@AAEJQBD@Z
+A 00046662 ?GetNoStitches@CPcs@@AAEJQBD@Z
+A 00046681 ?GetNoStitches@CPcsMac@@AAEJQBD@Z
+A 000466a3 ?GetNoStitches@CPec@@AAEJQBD@Z
+A 000466c2 ?GetNoStitches@CPes@@AAEJQBD@Z
+A 000466e1 ?GetNoStitches@CSew@@AAEJQBD@Z
+A 00046700 ?GetNoStitches@CXxx@@AAEJQBD@Z
+A 0004671f ?GetOldName@ALName@@QBEPBDXZ
+A 0004673c ?GetPointOnCurve@CCndObject@@QAEXPAUtagPOINT@@NAAU2@@Z
+A 00046773 ?GetRegValues@CGnFilter@@QAEXPAVCWinApp@@@Z
+A 0004679f ?GetRuntimeClass@CBmButton@@UBEPAUCRuntimeClass@@XZ
+A 000467d3 ?GetRuntimeClass@CClrToolBar@@UBEPAUCRuntimeClass@@XZ
+A 00046809 ?GetRuntimeClass@CCndObject@@UBEPAUCRuntimeClass@@XZ
+A 0004683e ?GetRuntimeClass@CColorButton@@UBEPAUCRuntimeClass@@XZ
+A 00046875 ?GetRuntimeClass@CColorChange@@UBEPAUCRuntimeClass@@XZ
+A 000468ac ?GetRuntimeClass@CComplexFillStitch@@UBEPAUCRuntimeClass@@XZ
+A 000468e9 ?GetRuntimeClass@CEmbButton@@UBEPAUCRuntimeClass@@XZ
+A 0004691e ?GetRuntimeClass@CEmbData@@UBEPAUCRuntimeClass@@XZ
+A 00046951 ?GetRuntimeClass@CEmbObject@@UBEPAUCRuntimeClass@@XZ
+A 00046986 ?GetRuntimeClass@CExpObject@@UBEPAUCRuntimeClass@@XZ
+A 000469bb ?GetRuntimeClass@CFillStitch@@UBEPAUCRuntimeClass@@XZ
+A 000469f1 ?GetRuntimeClass@CGFillStitchParms@@UBEPAUCRuntimeClass@@XZ
+A 00046a2d ?GetRuntimeClass@CGRunStitchParms@@UBEPAUCRuntimeClass@@XZ
+A 00046a68 ?GetRuntimeClass@CGSatinStitchParms@@UBEPAUCRuntimeClass@@XZ
+A 00046aa5 ?GetRuntimeClass@CGnFilter@@UBEPAUCRuntimeClass@@XZ
+A 00046ad9 ?GetRuntimeClass@CMyFile@@UBEPAUCRuntimeClass@@XZ
+A 00046b0b ?GetRuntimeClass@CRunStitch@@UBEPAUCRuntimeClass@@XZ
+A 00046b40 ?GetRuntimeClass@CSatinStitch@@UBEPAUCRuntimeClass@@XZ
+A 00046b77 ?GetRuntimeClass@CSpecialStitch@@UBEPAUCRuntimeClass@@XZ
+A 00046bb0 ?GetSafeName@ALName@@QBEPBDXZ
+A 00046bce ?GetSafeOldName@ALName@@QBEPBDXZ
+A 00046bef ?GetSetup@@YAPAVCGnFilter@@XZ
+A 00046c0d ?GetSize@ALStorage@@QBEJXZ
+A 00046c28 ?GetSize@CEmbIcon@@QAE?AVCSize@@XZ
+A 00046c4b ?GetSlidingDensity@CCndObject@@QAEHHHH@Z
+A 00046c74 ?GetStatusCode@ALStatus@@QAEHXZ
+A 00046c94 ?GetStatusDetail@ALStatus@@QBEPBDXZ
+A 00046cb8 ?GetStatusString@ALStatus@@QAEPBDXZ
+A 00046cdc ?GetStitchData@CCndObject@@UAEPAUtagPOINT@@XZ
+A 00046d0a ?GetStitchData@CEmbObject@@UAEPAUtagPOINT@@XZ
+A 00046d38 ?GetStitchData@CExpObject@@UAEPAUtagPOINT@@XZ
+A 00046d66 ?GetStitchType@CCndObject@@UAEPAEXZ
+A 00046d8a ?GetStitchType@CEmbObject@@UAEPAEXZ
+A 00046dae ?GetStitchType@CExpObject@@UAEPAEXZ
+A 00046dd2 ?GetStorageObject@ALArchive@@QAEPAVALStorage@@XZ
+A 00046e03 ?GetTimeDate@ALTimeDate@@QAEXPAUtm@@@Z
+A 00046e2a ?GetUnixTime@ALTimeDate@@QAEJXZ
+A 00046e4a ?GetVersion@ALArchive@@QAEFXZ
+A 00046e68 ?GoodTag@ALArchive@@QAEHXZ
+A 00046e83 ?GoodTag@ALCompressedObject@@QAEHXZ
+A 00046ea7 ?GoodTag@ALCompressor@@QAEHXZ
+A 00046ec5 ?GoodTag@ALCopyCompressor@@QAEHXZ
+A 00046ee7 ?GoodTag@ALCopyDecompressor@@QAEHXZ
+A 00046f0b ?GoodTag@ALCrypto@@QAEHXZ
+A 00046f25 ?GoodTag@ALDecompressor@@QAEHXZ
+A 00046f45 ?GoodTag@ALEngine@@QAEHXZ
+A 00046f5f ?GoodTag@ALEntry@@QAEHXZ
+A 00046f78 ?GoodTag@ALEntryList@@QAEHXZ
+A 00046f95 ?GoodTag@ALFile@@QAEHXZ
+A 00046fad ?GoodTag@ALGlCompressor@@QAEHXZ
+A 00046fcd ?GoodTag@ALGlDecompressor@@QAEHXZ
+A 00046fef ?GoodTag@ALMemory@@QAEHXZ
+A 00047009 ?GoodTag@ALMemoryBase@@QAEHXZ
+A 00047027 ?GoodTag@ALMonitor@@QAEHXZ
+A 00047042 ?GoodTag@ALName@@QAEHXZ
+A 0004705a ?GoodTag@ALPkArchive@@QAEHXZ
+A 00047077 ?GoodTag@ALPkCompressor@@QAEHXZ
+A 00047097 ?GoodTag@ALPkDecompressor@@QAEHXZ
+A 000470b9 ?GoodTag@ALStorage@@QAEHXZ
+A 000470d4 ?GoodTag@ALToolKit@@QAEHXZ
+A 000470ef ?GoodTag@ALWildCardExpander@@QAEHXZ
+A 00047113 ?GoodTag@ALWinMemory@@QAEHXZ
+A 00047130 ?GroupExecute@ALFileAttributes@@QAEHXZ
+A 00047157 ?GroupRead@ALFileAttributes@@QAEHXZ
+A 0004717b ?GroupWrite@ALFileAttributes@@QAEHXZ
+A 000471a0 ?GrowUserBuffer@ALMemory@@MAEHJ@Z
+A 000471c2 ?GrowUserBuffer@ALWinMemory@@MAEHJ@Z
+A 000471e7 ?HandleError@CEmbObject@@QAEXPBD0@Z
+A 0004720b ?HandleError@CFilter@@QAEXPBD0@Z
+A 0004722c ?Hidden@ALFileAttributes@@QAEHXZ
+A 0004724d ?ImportFile@CCnd@@QAEHQBDPAVCCndObject@@@Z
+A 00047278 ?ImportFile@CCnd@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 000472b7 ?ImportFile@CCsd@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 000472f6 ?ImportFile@CDst@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 00047335 ?ImportFile@CExp@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 00047374 ?ImportFile@CFilter@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 000473b6 ?ImportFile@CHus@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 000473f5 ?ImportFile@CPcs@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 00047434 ?ImportFile@CPcsMac@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 00047476 ?ImportFile@CPec@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 000474b5 ?ImportFile@CPes@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 000474f4 ?ImportFile@CSew@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 00047533 ?ImportFile@CXxx@@UAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@PAE@Z
+A 00047572 ?InitCrc32@ALStorage@@QAEXK@Z
+A 00047590 ?InsertBefore@ALEntry@@IAEXAAV1@@Z
+A 000475b3 ?Intersects@CEmbObject@@QAEHABVCRect@@@Z
+A 000475dc ?IsDelimiter@ALWildCardExpander@@IAEHD@Z
+A 00047605 ?IsOpen@ALStorage@@QAEHXZ
+A 0004761f ?LineTo@CEmbIcon@@QAEHHH@Z
+A 0004763a ?LineTo@CEmbIcon@@QAEHUtagPOINT@@@Z
+A 0004765e ?LoadBitmapA@CBmButton@@QAEHH@Z
+A 0004767e ?LoadBuffer@ALFile@@UAEHJ@Z
+A 0004769a ?LoadBuffer@ALMemoryBase@@UAEHJ@Z
+A 000476bc ?LoadCFillStitch@CCnd@@AAEHPAVCCndObject@@@Z
+A 000476e9 ?LoadEmbPattern@CEmbButton@@QAEHPADPAVCMemFile@@@Z
+A 0004771c ?LoadEmbPattern@CEmbButton@@QAEHPAVCEmbObject@@@Z
+A 0004774e ?LoadFillStitch@CCnd@@AAEHPAVCCndObject@@@Z
+A 0004777a ?LoadSatinStitch@CCnd@@AAEHPAVCCndObject@@AAF@Z
+A 000477aa ?LocateEcd@ALPkArchive@@IAEHXZ
+A 000477c9 ?MakeDirectory@ALFile@@MAEHXZ
+A 000477e7 ?MakeEntriesFromListBox@ALEntryList@@QAEHPAUHWND__@@H@Z
+A 0004781f ?MakeTempName@ALFile@@MAEXH@Z
+A 0004783d ?MapClrIndexes@CFilter@@QAEXHH@Z
+A 0004785e ?MatchOpenExtensions@@YAHPBD@Z
+A 0004787d ?MatchSaveExtensions@@YAHPBD@Z
+A 0004789c ?MirrorH@CCndObject@@UAEXH@Z
+A 000478b9 ?MirrorH@CCndObject@@UAEXXZ
+A 000478d5 ?MirrorH@CComplexFillStitch@@UAEXH@Z
+A 000478fa ?MirrorH@CEmbData@@UAEXH@Z
+A 00047915 ?MirrorH@CEmbObject@@UAEXH@Z
+A 00047932 ?MirrorH@CEmbObject@@UAEXXZ
+A 0004794e ?MirrorH@CExpObject@@UAEXH@Z
+A 0004796b ?MirrorH@CExpObject@@UAEXXZ
+A 00047987 ?MirrorH@CFillStitch@@UAEXH@Z
+A 000479a5 ?MirrorH@CRunStitch@@UAEXH@Z
+A 000479c2 ?MirrorH@CSatinStitch@@UAEXH@Z
+A 000479e1 ?MirrorV@CCndObject@@UAEXH@Z
+A 000479fe ?MirrorV@CCndObject@@UAEXXZ
+A 00047a1a ?MirrorV@CComplexFillStitch@@UAEXH@Z
+A 00047a3f ?MirrorV@CEmbData@@UAEXH@Z
+A 00047a5a ?MirrorV@CEmbObject@@UAEXH@Z
+A 00047a77 ?MirrorV@CEmbObject@@UAEXXZ
+A 00047a93 ?MirrorV@CExpObject@@UAEXH@Z
+A 00047ab0 ?MirrorV@CExpObject@@UAEXXZ
+A 00047acc ?MirrorV@CFillStitch@@UAEXH@Z
+A 00047aea ?MirrorV@CRunStitch@@UAEXH@Z
+A 00047b07 ?MirrorV@CSatinStitch@@UAEXH@Z
+A 00047b26 ?MovePoint@CEmbData@@QAEXUtagPOINT@@AAU2@@Z
+A 00047b52 ?MovePoint@CEmbObject@@QAEXUtagPOINT@@AAU2@@Z
+A 00047b80 ?MoveTo@CCndObject@@UAEXUtagPOINT@@@Z
+A 00047ba6 ?MoveTo@CComplexFillStitch@@UAEXUtagPOINT@@@Z
+A 00047bd4 ?MoveTo@CEmbData@@UAEXUtagPOINT@@@Z
+A 00047bf8 ?MoveTo@CEmbIcon@@QAEHHH@Z
+A 00047c13 ?MoveTo@CEmbIcon@@QAEHUtagPOINT@@@Z
+A 00047c37 ?MoveTo@CEmbObject@@UAEXUtagPOINT@@@Z
+A 00047c5d ?MoveTo@CExpObject@@UAEXUtagPOINT@@@Z
+A 00047c83 ?MoveTo@CFillStitch@@UAEXUtagPOINT@@@Z
+A 00047caa ?MoveTo@CRunStitch@@UAEXUtagPOINT@@@Z
+A 00047cd0 ?MoveTo@CSatinStitch@@UAEXUtagPOINT@@@Z
+A 00047cf8 ?OnAdvanced@CDensityParams@@IAEXXZ
+A 00047d1b ?OnBarStyleChange@CClrToolBar@@UAEXKK@Z
+A 00047d43 ?OnButton@CColorDlg@@IAEXXZ
+A 00047d5f ?OnButton@CIconView@@IAEXXZ
+A 00047d7b ?OnClose@CColorDlg@@IAEXXZ
+A 00047d96 ?OnCloseupPaletteType@CColorDlg@@IAEXXZ
+A 00047dbe ?OnCustom@CHoopSize@@IAEXXZ
+A 00047dda ?OnDblclkZipdirectory@CZip@@IAEXXZ
+A 00047dfd ?OnDoubleClicked@CIconView@@IAEXXZ
+A 00047e20 ?OnDoubleclickedButton@CColorDlg@@IAEXXZ
+A 00047e49 ?OnEraseBkgnd@CClrToolBar@@IAEHPAVCDC@@@Z
+A 00047e73 ?OnFirstPage@CIconView@@IAEXXZ
+A 00047e92 ?OnInitDialog@CColorDlg@@MAEHXZ
+A 00047eb2 ?OnInitDialog@CDensityParams@@MAEHXZ
+A 00047ed7 ?OnInitDialog@CHoopSize@@MAEHXZ
+A 00047ef7 ?OnInitDialog@CIconView@@MAEHXZ
+A 00047f17 ?OnInitDialog@CPreferences@@MAEHXZ
+A 00047f3a ?OnInitDialog@CZip@@MAEHXZ
+A 00047f55 ?OnJunkStitch@CPreferences@@IAEXXZ
+A 00047f78 ?OnLastPage@CIconView@@IAEXXZ
+A 00047f96 ?OnNcCalcSize@CClrToolBar@@IAEXHPAUtagNCCALCSIZE_PARAMS@@@Z
+A 00047fd2 ?OnNcCreate@CClrToolBar@@IAEHPAUtagCREATESTRUCTA@@@Z
+A 00048007 ?OnNcHitTest@CClrToolBar@@IAEIVCPoint@@@Z
+A 00048031 ?OnNcPaint@CClrToolBar@@IAEXXZ
+A 00048050 ?OnNextItem@CIconView@@IAEXXZ
+A 0004806e ?OnNextPage@CIconView@@IAEXXZ
+A 0004808c ?OnNotify@CMyFile@@UAEHIJPAJ@Z
+A 000480ab ?OnOK@CPreferences@@MAEXXZ
+A 000480c6 ?OnOK@CZip@@MAEXXZ
+A 000480d9 ?OnOther@CHoopSize@@IAEXXZ
+A 000480f4 ?OnPaint@CClrToolBar@@IAEXXZ
+A 00048111 ?OnPrevItem@CIconView@@IAEXXZ
+A 0004812f ?OnPrevPage@CIconView@@IAEXXZ
+A 0004814d ?OnSelchangeDirectoryList@CIconView@@IAEXXZ
+A 00048179 ?OnShowWindow@CDensityParams@@IAEXHI@Z
+A 000481a0 ?OnShowWindow@CRotate@@IAEXHI@Z
+A 000481c0 ?OnSortByExt@CIconView@@IAEXXZ
+A 000481df ?OnSortByName@CIconView@@IAEXXZ
+A 000481ff ?OnSysColorChange@CClrToolBar@@IAEXXZ
+A 00048225 ?OnTimer@CColorDlg@@IAEXI@Z
+A 00048241 ?OnToolHitTest@CClrToolBar@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z
+A 0004827e ?OnToolHitTest@CColorButton@@MBEHVCPoint@@PAUtagTOOLINFOA@@@Z
+A 000482bc ?OnUpdateCmdUI@CClrToolBar@@UAEXPAVCFrameWnd@@H@Z
+A 000482ee ?OnWindowPosChanging@CClrToolBar@@IAEXPAUtagWINDOWPOS@@@Z
+A 00048328 ?Open@ALFile@@UAEHXZ
+A 0004833d ?Open@ALMemory@@UAEHXZ
+A 00048354 ?Open@ALMemoryBase@@UAEHXZ
+A 0004836f ?Open@ALStorage@@UAEHXZ
+A 00048387 ?Open@ALWinMemory@@UAEHXZ
+A 000483a1 ?OpenFile@CFilter@@QAEHPBDH@Z
+A 000483bf ?OtherExecute@ALFileAttributes@@QAEHXZ
+A 000483e6 ?OtherRead@ALFileAttributes@@QAEHXZ
+A 0004840a ?OtherWrite@ALFileAttributes@@QAEHXZ
+A 0004842f ?PEEncodeValue@@YAHPAEFFH@Z
+A 0004844b ?PEReadStitches@@YAHPAVCFilter@@PAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 0004848e ?PackedAttributes@ALFileAttributes@@QAEGXZ
+A 000484b9 ?PkCompressFileTools@@YA?AVALToolKit@@HHH@Z
+A 000484e5 ?PkCompressTools@@YA?AVALToolKit@@HHH@Z
+A 0004850d ?PkDecompressFileTools@@YA?AVALToolKit@@XZ
+A 00048538 ?PkDecompressTools@@YA?AVALToolKit@@XZ
+A 0004855f ?PkTools@@YA?AVALToolKit@@HHH@Z
+A 0004857f ?PointSqrt@CEmbData@@QAENUtagPOINT@@@Z
+A 000485a6 ?PointSqrt@CEmbObject@@QAENUtagPOINT@@@Z
+A 000485cf ?PostCompress@ALArchive@@MAEXAAVALEntry@@@Z
+A 000485fb ?PostCompress@ALPkArchive@@MAEXAAVALEntry@@@Z
+A 00048629 ?PostCopyInput@ALArchive@@MAEXAAVALEntry@@@Z
+A 00048656 ?PostCreate@ALArchive@@MAEXXZ
+A 00048674 ?PostDecompress@ALArchive@@MAEXAAVALEntry@@@Z
+A 000486a2 ?PostWriteDir@ALArchive@@MAEXXZ
+A 000486c2 ?PostWriteDir@ALPkArchive@@MAEXXZ
+A 000486e4 ?PreCompress@ALArchive@@MAEXAAVALEntry@@@Z
+A 0004870f ?PreCompress@ALPkArchive@@MAEXAAVALEntry@@@Z
+A 0004873c ?PreCopyInput@ALArchive@@MAEXAAVALEntry@@@Z
+A 00048768 ?PreCopyInput@ALPkArchive@@MAEXAAVALEntry@@@Z
+A 00048796 ?PreCreate@ALArchive@@MAEXXZ
+A 000487b3 ?PreDecompress@ALArchive@@MAEXAAVALEntry@@@Z
+A 000487e0 ?PreDecompress@ALPkArchive@@MAEXAAVALEntry@@@Z
+A 0004880f ?PreWriteDir@ALArchive@@MAEXXZ
+A 0004882e ?PreWriteDir@ALPkArchive@@MAEXXZ
+A 0004884f ?Process@ALStorage@@IAEXIH@Z
+A 0004886c ?Progress@ALMonitor@@MAEXJAAVALStorage@@@Z
+A 00048897 ?QSort@CIconView@@IAEXPAUivItem@@I@Z
+A 000488bc ?Read@CFilter@@QAEHPAXH@Z
+A 000488d6 ?ReadArchiveData@ALArchive@@MAEHXZ
+A 000488f9 ?ReadArchiveData@ALPkArchive@@MAEHXZ
+A 0004891e ?ReadAttributesFromFileSys@ALFile@@IAEHXZ
+A 00048948 ?ReadBuffer@ALStorage@@QAEIPAEI@Z
+A 0004896a ?ReadChar@ALStorage@@QAEHXZ
+A 00048986 ?ReadCopyright@ALStorage@@SAPADXZ
+A 000489a8 ?ReadDirectory@ALPkArchive@@UAEHAAVALEntryList@@@Z
+A 000489db ?ReadDirectory@CIconView@@IAEXXZ
+A 000489fc ?ReadEcd@ALPkArchive@@IAEHXZ
+A 00048a19 ?ReadEngineData@ALEngine@@UAEHPAVALStorage@@@Z
+A 00048a48 ?ReadEngineData@ALGlCompressor@@MAEHPAVALStorage@@@Z
+A 00048a7d ?ReadEngineData@ALGlDecompressor@@MAEHPAVALStorage@@@Z
+A 00048ab4 ?ReadFile@CCsd@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048aee ?ReadFile@CHus@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048b28 ?ReadFile@CPcs@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048b62 ?ReadFile@CPcsMac@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048b9f ?ReadFile@CPec@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048bd9 ?ReadFile@CPes@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048c13 ?ReadFile@CSew@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048c4d ?ReadFile@CXxx@@AAEHQBDPAHPAUCOLORCHG@@PAJPAUtagPOINT@@@Z
+A 00048c87 ?ReadGlLong@ALStorage@@QAEHAAJ@Z
+A 00048ca8 ?ReadGlShort@ALStorage@@QAEHAAF@Z
+A 00048cca ?ReadNoEMsg@CFilter@@QAEHPAXH@Z
+A 00048cea ?ReadObject@CCndObject@@UAEHQBDHPAVCMemFile@@@Z
+A 00048d1a ?ReadObject@CEmbObject@@UAEHQBDHPAVCMemFile@@@Z
+A 00048d4a ?ReadObject@CExpObject@@UAEHQBDHPAVCMemFile@@@Z
+A 00048d7a ?ReadOnly@ALFileAttributes@@QAEHXZ
+A 00048d9d ?ReadPkLong@ALStorage@@QAEHAAJ@Z
+A 00048dbe ?ReadPkShort@ALStorage@@QAEHAAF@Z
+A 00048de0 ?ReadStorageObjectData@ALStorage@@MAEHPAV1@@Z
+A 00048e0e ?ReadString@ALStorage@@QAEHAAVALName@@F@Z
+A 00048e38 ?ReadZipDirectory@CIconView@@IAEXXZ
+A 00048e5c ?Rename@ALFile@@UAEHPBDH@Z
+A 00048e77 ?Rename@ALMemoryBase@@UAEHPBDH@Z
+A 00048e98 ?RenameToBackup@ALFile@@UAEHH@Z
+A 00048eb8 ?RenameToBackup@ALMemoryBase@@UAEHH@Z
+A 00048ede ?RendorArcSatinStitches@CSatinStitch@@UAEHPAVCCndObject@@HH@Z
+A 00048f1c ?RendorEmbPattern@CEmbButton@@QAEHPAVCEmbObject@@VCRect@@@Z
+A 00048f58 ?RendorSatinStitches@CSatinStitch@@UAEHPAVCCndObject@@HH@Z
+A 00048f93 ?RendorStitches@CCndObject@@QAEXH@Z
+A 00048fb7 ?RendorStitches@CColorChange@@UAEHPAVCCndObject@@@Z
+A 00048feb ?RendorStitches@CComplexFillStitch@@UAEHPAVCCndObject@@@Z
+A 00049025 ?RendorStitches@CEmbData@@UAEHPAVCCndObject@@@Z
+A 00049055 ?RendorStitches@CFillStitch@@UAEHPAVCCndObject@@@Z
+A 00049088 ?RendorStitches@CRunStitch@@UAEHPAVCCndObject@@@Z
+A 000490ba ?RendorStitches@CSatinStitch@@UAEHPAVCCndObject@@@Z
+A 000490ee ?RendorStitches@CSpecialStitch@@UAEHPAVCCndObject@@@Z
+A 00049124 ?RotateBy@CCndObject@@UAEXUtagPOINT@@F@Z
+A 0004914d ?RotateBy@CComplexFillStitch@@UAEXUtagPOINT@@F@Z
+A 0004917e ?RotateBy@CEmbData@@UAEXUtagPOINT@@F@Z
+A 000491a5 ?RotateBy@CEmbObject@@UAEXUtagPOINT@@F@Z
+A 000491ce ?RotateBy@CExpObject@@UAEXUtagPOINT@@F@Z
+A 000491f7 ?RotateBy@CFillStitch@@UAEXUtagPOINT@@F@Z
+A 00049221 ?RotateBy@CRunStitch@@UAEXUtagPOINT@@F@Z
+A 0004924a ?RotateBy@CSatinStitch@@UAEXUtagPOINT@@F@Z
+A 00049275 ?RotatePoint@CEmbData@@QAEXUtagPOINT@@NAAU2@@Z
+A 000492a4 ?RotatePoint@CEmbObject@@QAEXUtagPOINT@@NAAU2@@Z
+A 000492d5 ?SaveData@CCsd@@AAEHHPAUCOLORCHG@@PAUtagPOINT@@JJ@Z
+A 00049309 ?SaveData@CDst@@AAEHPAUCOLORCHG@@PAUtagPOINT@@JPAE@Z
+A 0004933e ?SaveData@CExp@@AAEHPAUCOLORCHG@@PAUtagPOINT@@JPAE@Z
+A 00049373 ?SaveData@CHus@@AAEHHPAUCOLORCHG@@PAUtagPOINT@@JJ@Z
+A 000493a7 ?SaveData@CPcs@@AAEHHPAUCOLORCHG@@PAUtagPOINT@@JJHHH@Z
+A 000493de ?SaveData@CPcsMac@@AAEHHPAUCOLORCHG@@PAUtagPOINT@@JJHHH@Z
+A 00049418 ?SaveData@CPec@@AAEHPADHPAUCOLORCHG@@PAUtagPOINT@@JJ@Z
+A 0004944f ?SaveData@CPes@@AAEHPADHPAUCOLORCHG@@PAUtagPOINT@@JJ@Z
+A 00049486 ?SaveData@CSew@@AAEHHPAUCOLORCHG@@PAUtagPOINT@@JJ@Z
+A 000494ba ?SaveData@CXxx@@AAEHHPAUCOLORCHG@@PAUtagPOINT@@JJH@Z
+A 000494ef ?SaveIcon@CSew@@AAEXPAVCEmbIcon@@@Z
+A 00049513 ?ScaleBy@CCndObject@@UAEXUtagSIZE@@@Z
+A 00049539 ?ScaleBy@CComplexFillStitch@@UAEXUtagSIZE@@@Z
+A 00049567 ?ScaleBy@CEmbData@@UAEXUtagSIZE@@@Z
+A 0004958b ?ScaleBy@CEmbObject@@UAEXUtagSIZE@@@Z
+A 000495b1 ?ScaleBy@CExpObject@@UAEXUtagSIZE@@@Z
+A 000495d7 ?ScaleBy@CFillStitch@@UAEXUtagSIZE@@@Z
+A 000495fe ?ScaleBy@CRunStitch@@UAEXUtagSIZE@@@Z
+A 00049624 ?ScaleBy@CSatinStitch@@UAEXUtagSIZE@@@Z
+A 0004964c ?ScalePoint@CEmbData@@QAEXUtagSIZE@@AAU2@@Z
+A 00049678 ?ScalePoint@CEmbData@@QAEXUtagSIZE@@AAUtagPOINT@@@Z
+A 000496ac ?ScalePoint@CEmbObject@@QAEXUtagSIZE@@AAU2@@Z
+A 000496da ?ScalePoint@CEmbObject@@QAEXUtagSIZE@@AAUtagPOINT@@@Z
+A 00049710 ?ScanStatus@ALArchive@@IAEXAAVALEntryList@@@Z
+A 0004973e ?Seek@ALFile@@UAEHJ@Z
+A 00049754 ?Seek@ALMemoryBase@@UAEHJ@Z
+A 00049770 ?Serialize@CCndObject@@UAEXAAVCArchive@@@Z
+A 0004979b ?Serialize@CColorChange@@UAEXAAVCArchive@@@Z
+A 000497c8 ?Serialize@CComplexFillStitch@@UAEXAAVCArchive@@@Z
+A 000497fb ?Serialize@CEmbData@@UAEXAAVCArchive@@@Z
+A 00049824 ?Serialize@CEmbObject@@UAEXAAVCArchive@@@Z
+A 0004984f ?Serialize@CExpObject@@UAEXAAVCArchive@@@Z
+A 0004987a ?Serialize@CFillStitch@@UAEXAAVCArchive@@@Z
+A 000498a6 ?Serialize@CGFillStitchParms@@UAEXAAVCArchive@@@Z
+A 000498d8 ?Serialize@CGRunStitchParms@@UAEXAAVCArchive@@@Z
+A 00049909 ?Serialize@CGSatinStitchParms@@UAEXAAVCArchive@@@Z
+A 0004993c ?Serialize@CRunStitch@@UAEXAAVCArchive@@@Z
+A 00049967 ?Serialize@CSatinStitch@@UAEXAAVCArchive@@@Z
+A 00049994 ?Serialize@CSpecialStitch@@UAEXAAVCArchive@@@Z
+A 000499c3 ?SetButtons@CClrToolBar@@QAEHPBIHHPAVCDocument@@P6AX1HH@Z@Z
+A 000499ff ?SetComment@ALEntry@@QAEHPBD@Z
+A 00049a1e ?SetEncrypted@ALEntry@@QAEXXZ
+A 00049a3c ?SetError@ALStatus@@QAAHHPBDZZ
+A 00049a5b ?SetFaceColor@CColorButton@@QAEXK@Z
+A 00049a7f ?SetFilePointer@CFilter@@QAEKJK@Z
+A 00049aa1 ?SetFromPackedAttributes@ALFileAttributes@@QAEXF@Z
+A 00049ad4 ?SetMark@ALEntry@@QAEXXZ
+A 00049aed ?SetMarkState@ALEntry@@QAEXF@Z
+A 00049b0c ?SetMarkState@ALEntryList@@IAEHPBDF@Z
+A 00049b32 ?SetMarks@ALEntryList@@QAEHPBD@Z
+A 00049b53 ?SetMarksFromListBox@ALEntryList@@QAEHPAUHWND__@@H@Z
+A 00049b88 ?SetPalette@CColorDlg@@QAEXXZ
+A 00049ba6 ?SetScale@CEmbIcon@@QAEHHH@Z
+A 00049bc3 ?SetScale@CEmbIcon@@QAEHVCSize@@@Z
+A 00049be6 ?SetState@CColorButton@@QAEXH@Z
+A 00049c06 ?SetTimeDate@ALTimeDate@@QAEXJ@Z
+A 00049c27 ?SetTimeDate@ALTimeDate@@QAEXPAUtm@@@Z
+A 00049c4e ?Setup@CGnFilter@@QAEXXZ
+A 00049c67 ?ShortSort@CIconView@@IAEXPAUivItem@@0@Z
+A 00049c90 ?SizeToolBar@CClrToolBar@@IAEXH@Z
+A 00049cb2 ?SortByExt@CIconView@@IAEHPBUivItem@@0@Z
+A 00049cdb ?SortByName@CIconView@@IAEHPBUivItem@@0@Z
+A 00049d05 ?Sorting@CIconView@@IAEHPBUivItem@@0@Z
+A 00049d2c ?StartDecrypt@ALCrypto@@UAEHAAVALStorage@@0@Z
+A 00049d5a ?StartEncrypt@ALCrypto@@UAEHAAVALStorage@@0@Z
+A 00049d88 ?Strcpy@ALName@@IAEXPBD@Z
+A 00049da2 ?StripFileName@ALName@@QAEAAV1@XZ
+A 00049dc4 ?StripPath@ALName@@QAEAAV1@XZ
+A 00049de2 ?Swap@CIconView@@IAEXPAUivItem@@0@Z
+A 00049e06 ?System@ALFileAttributes@@QAEHXZ
+A 00049e27 ?Tell@ALStorage@@QAEJXZ
+A 00049e3f ?ToJulian@ALTimeDate@@QAEJXZ
+A 00049e5c ?TranslateAngle@CCnd@@AAEXAAH@Z
+A 00049e7c ?TranslateCords@CCnd@@AAEXEAAH0@Z
+A 00049e9e ?TranslateNumber@CCnd@@AAEXAAH@Z
+A 00049ebf ?UnRename@ALFile@@UAEHH@Z
+A 00049ed9 ?UnRename@ALMemoryBase@@UAEHH@Z
+A 00049ef9 ?UnixBitsPresent@ALFileAttributes@@QAEHXZ
+A 00049f23 ?UnmarkDuplicates@ALEntryList@@QAEXAAV1@PBD@Z
+A 00049f51 ?UpdateIcons@CIconView@@IAEXXZ
+A 00049f70 ?UserExecute@ALFileAttributes@@QAEHXZ
+A 00049f96 ?UserRead@ALFileAttributes@@QAEHXZ
+A 00049fb9 ?UserWrite@ALFileAttributes@@QAEHXZ
+A 00049fdd ?Valid@ALTimeDate@@QAEHXZ
+A 00049ff7 ?ValidPoint@CCndObject@@QAEHUtagPOINT@@000HH@Z
+A 0004a026 ?ValidateNDebugHomesew@@YAHXZ
+A 0004a044 ?WildCardMatch@ALName@@QAEHPBD@Z
+A 0004a065 ?WrapToolBar@CClrToolBar@@IAEHH@Z
+A 0004a087 ?Write@CFilter@@QAEHPAXH@Z
+A 0004a0a2 ?WriteArchiveData@ALArchive@@MAEHXZ
+A 0004a0c6 ?WriteArchiveData@ALPkArchive@@MAEHXZ
+A 0004a0ec ?WriteAttributesToFileSys@ALFile@@IAEXXZ
+A 0004a115 ?WriteBuffer@ALStorage@@QAEIPBEI@Z
+A 0004a138 ?WriteChar@ALStorage@@QAEHH@Z
+A 0004a156 ?WriteDirEntry@ALPkArchive@@MAEXAAVALEntry@@@Z
+A 0004a185 ?WriteEngineData@ALEngine@@UAEHPAVALStorage@@@Z
+A 0004a1b5 ?WriteEngineData@ALGlCompressor@@MAEHPAVALStorage@@@Z
+A 0004a1eb ?WriteEngineData@ALGlDecompressor@@MAEHPAVALStorage@@@Z
+A 0004a223 ?WriteGlLong@ALStorage@@QAEHJ@Z
+A 0004a243 ?WriteGlShort@ALStorage@@QAEHF@Z
+A 0004a264 ?WriteHeader@CDst@@AAEHHJPAUtagPOINT@@QBDPAE@Z
+A 0004a293 ?WriteHeader@CPcs@@AAEHJ@Z
+A 0004a2ae ?WriteHeader@CPcsMac@@AAEHJ@Z
+A 0004a2cc ?WriteObject@CCndObject@@UAEHQBDPAVCMemFile@@@Z
+A 0004a2fc ?WriteObject@CEmbObject@@UAEHQBDPAVCMemFile@@@Z
+A 0004a32c ?WriteObject@CExpObject@@UAEHQBDPAVCMemFile@@@Z
+A 0004a35c ?WritePkLong@ALStorage@@QAEHJ@Z
+A 0004a37c ?WritePkShort@ALStorage@@QAEHF@Z
+A 0004a39d ?WriteStorageObjectData@ALStorage@@MAEHPAV1@@Z
+A 0004a3cc ?WriteString@ALStorage@@QAEHPBD@Z
+A 0004a3ee ?WriteTrailer@CDst@@AAEHXZ
+A 0004a409 ?WriteTrailer@CPcs@@AAEHXZ
+A 0004a424 ?WriteTrailer@CPcsMac@@AAEHXZ
+A 0004a442 ?WriteValues@CPcs@@AAEHJJE@Z
+A 0004a45f ?WriteValues@CPcsMac@@AAEHJJE@Z
+A 0004a47f ?YieldTime@ALStorage@@UAEXXZ
+A 0004a49c ?_ALAssertFailure@@YAXPBD0H0ZZ
+A 0004a4bb ?_FlushBuffer@ALMemory@@MAEXJ@Z
+A 0004a4db ?_FlushBuffer@ALWinMemory@@MAEXJ@Z
+A 0004a4fe ?_GetBaseClass@CBmButton@@KGPAUCRuntimeClass@@XZ
+A 0004a52f ?_GetBaseClass@CClrToolBar@@KGPAUCRuntimeClass@@XZ
+A 0004a562 ?_GetBaseClass@CCndObject@@KGPAUCRuntimeClass@@XZ
+A 0004a594 ?_GetBaseClass@CColorButton@@KGPAUCRuntimeClass@@XZ
+A 0004a5c8 ?_GetBaseClass@CColorChange@@KGPAUCRuntimeClass@@XZ
+A 0004a5fc ?_GetBaseClass@CComplexFillStitch@@KGPAUCRuntimeClass@@XZ
+A 0004a636 ?_GetBaseClass@CEmbButton@@KGPAUCRuntimeClass@@XZ
+A 0004a668 ?_GetBaseClass@CEmbData@@KGPAUCRuntimeClass@@XZ
+A 0004a698 ?_GetBaseClass@CEmbObject@@KGPAUCRuntimeClass@@XZ
+A 0004a6ca ?_GetBaseClass@CExpObject@@KGPAUCRuntimeClass@@XZ
+A 0004a6fc ?_GetBaseClass@CFillStitch@@KGPAUCRuntimeClass@@XZ
+A 0004a72f ?_GetBaseClass@CGFillStitchParms@@KGPAUCRuntimeClass@@XZ
+A 0004a768 ?_GetBaseClass@CGRunStitchParms@@KGPAUCRuntimeClass@@XZ
+A 0004a7a0 ?_GetBaseClass@CGSatinStitchParms@@KGPAUCRuntimeClass@@XZ
+A 0004a7da ?_GetBaseClass@CGnFilter@@KGPAUCRuntimeClass@@XZ
+A 0004a80b ?_GetBaseClass@CMyFile@@KGPAUCRuntimeClass@@XZ
+A 0004a83a ?_GetBaseClass@CRunStitch@@KGPAUCRuntimeClass@@XZ
+A 0004a86c ?_GetBaseClass@CSatinStitch@@KGPAUCRuntimeClass@@XZ
+A 0004a8a0 ?_GetBaseClass@CSpecialStitch@@KGPAUCRuntimeClass@@XZ
+A 0004a8d6 ?_GetBaseMessageMap@CAdvanced@@KGPBUAFX_MSGMAP@@XZ
+A 0004a909 ?_GetBaseMessageMap@CBmButton@@KGPBUAFX_MSGMAP@@XZ
+A 0004a93c ?_GetBaseMessageMap@CClrToolBar@@KGPBUAFX_MSGMAP@@XZ
+A 0004a971 ?_GetBaseMessageMap@CColorButton@@KGPBUAFX_MSGMAP@@XZ
+A 0004a9a7 ?_GetBaseMessageMap@CColorDlg@@KGPBUAFX_MSGMAP@@XZ
+A 0004a9da ?_GetBaseMessageMap@CDensityParams@@KGPBUAFX_MSGMAP@@XZ
+A 0004aa12 ?_GetBaseMessageMap@CEmbButton@@KGPBUAFX_MSGMAP@@XZ
+A 0004aa46 ?_GetBaseMessageMap@CHoopSize@@KGPBUAFX_MSGMAP@@XZ
+A 0004aa79 ?_GetBaseMessageMap@CIconView@@KGPBUAFX_MSGMAP@@XZ
+A 0004aaac ?_GetBaseMessageMap@CMyFile@@KGPBUAFX_MSGMAP@@XZ
+A 0004aadd ?_GetBaseMessageMap@CPreferences@@KGPBUAFX_MSGMAP@@XZ
+A 0004ab13 ?_GetBaseMessageMap@CRotate@@KGPBUAFX_MSGMAP@@XZ
+A 0004ab44 ?_GetBaseMessageMap@CZip@@KGPBUAFX_MSGMAP@@XZ
+A 0004ab72 ?_LoadBuffer@ALMemory@@MAEXJ@Z
+A 0004ab91 ?_LoadBuffer@ALWinMemory@@MAEXJ@Z
+A 0004abb3 ?_messageEntries@CAdvanced@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004abe7 ?_messageEntries@CBmButton@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ac1b ?_messageEntries@CClrToolBar@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ac51 ?_messageEntries@CColorButton@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ac88 ?_messageEntries@CColorDlg@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004acbc ?_messageEntries@CDensityParams@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004acf5 ?_messageEntries@CEmbButton@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ad2a ?_messageEntries@CHoopSize@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ad5e ?_messageEntries@CIconView@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ad92 ?_messageEntries@CMyFile@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004adc4 ?_messageEntries@CPreferences@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004adfb ?_messageEntries@CRotate@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ae2d ?_messageEntries@CZip@@0QBUAFX_MSGMAP_ENTRY@@B
+A 0004ae5c ?classCBmButton@CBmButton@@2UCRuntimeClass@@B
+A 0004ae8a ?classCClrToolBar@CClrToolBar@@2UCRuntimeClass@@B
+A 0004aebc ?classCCndObject@CCndObject@@2UCRuntimeClass@@B
+A 0004aeec ?classCColorButton@CColorButton@@2UCRuntimeClass@@B
+A 0004af20 ?classCColorChange@CColorChange@@2UCRuntimeClass@@B
+A 0004af54 ?classCComplexFillStitch@CComplexFillStitch@@2UCRuntimeClass@@B
+A 0004af94 ?classCEmbButton@CEmbButton@@2UCRuntimeClass@@B
+A 0004afc4 ?classCEmbData@CEmbData@@2UCRuntimeClass@@B
+A 0004aff0 ?classCEmbObject@CEmbObject@@2UCRuntimeClass@@B
+A 0004b020 ?classCExpObject@CExpObject@@2UCRuntimeClass@@B
+A 0004b050 ?classCFillStitch@CFillStitch@@2UCRuntimeClass@@B
+A 0004b082 ?classCGFillStitchParms@CGFillStitchParms@@2UCRuntimeClass@@B
+A 0004b0c0 ?classCGRunStitchParms@CGRunStitchParms@@2UCRuntimeClass@@B
+A 0004b0fc ?classCGSatinStitchParms@CGSatinStitchParms@@2UCRuntimeClass@@B
+A 0004b13c ?classCGnFilter@CGnFilter@@2UCRuntimeClass@@B
+A 0004b16a ?classCMyFile@CMyFile@@2UCRuntimeClass@@B
+A 0004b194 ?classCRunStitch@CRunStitch@@2UCRuntimeClass@@B
+A 0004b1c4 ?classCSatinStitch@CSatinStitch@@2UCRuntimeClass@@B
+A 0004b1f8 ?classCSpecialStitch@CSpecialStitch@@2UCRuntimeClass@@B
+A 0004b230 ?iLastColorButtonClicked@@3HA
+A 0004b24e ?idClicked@CColorButton@@2IA
+A 0004b26b ?idClicked@CEmbButton@@2IA
+A 0004b286 ?is_pattern@@YAHPBD@Z
+A 0004b29c ?is_valid_pattern@@YAHPBDPAH@Z
+A 0004b2bb ?match@@YAHPAD0@Z
+A 0004b2cd ?matche@@YAHPBDPAD@Z
+A 0004b2e2 ?messageMap@CAdvanced@@1UAFX_MSGMAP@@B
+A 0004b309 ?messageMap@CBmButton@@1UAFX_MSGMAP@@B
+A 0004b330 ?messageMap@CClrToolBar@@1UAFX_MSGMAP@@B
+A 0004b359 ?messageMap@CColorButton@@1UAFX_MSGMAP@@B
+A 0004b383 ?messageMap@CColorDlg@@1UAFX_MSGMAP@@B
+A 0004b3aa ?messageMap@CDensityParams@@1UAFX_MSGMAP@@B
+A 0004b3d6 ?messageMap@CEmbButton@@1UAFX_MSGMAP@@B
+A 0004b3fe ?messageMap@CHoopSize@@1UAFX_MSGMAP@@B
+A 0004b425 ?messageMap@CIconView@@1UAFX_MSGMAP@@B
+A 0004b44c ?messageMap@CMyFile@@1UAFX_MSGMAP@@B
+A 0004b471 ?messageMap@CPreferences@@1UAFX_MSGMAP@@B
+A 0004b49b ?messageMap@CRotate@@1UAFX_MSGMAP@@B
+A 0004b4c0 ?messageMap@CZip@@1UAFX_MSGMAP@@B
+A 0004b4e2 ?myEntries@@3PAUtagPALETTEENTRY@@A
+A 0004b505 ALArchiveExtract
+A 0004b516 ALCompress
+A 0004b521 ALDecompress
+A 0004b52e ALEntryClearEncrypted
+A 0004b544 ALEntryClearMark
+A 0004b555 ALEntryDuplicate
+A 0004b566 ALEntryGetComment
+A 0004b578 ALEntryGetCompressedPosition
+A 0004b595 ALEntryGetCompressedSize
+A 0004b5ae ALEntryGetCompressor
+A 0004b5c3 ALEntryGetCrc32
+A 0004b5d3 ALEntryGetCryptoEngine
+A 0004b5ea ALEntryGetDecompressor
+A 0004b601 ALEntryGetEncrypted
+A 0004b615 ALEntryGetMark
+A 0004b624 ALEntryGetNextEntry
+A 0004b638 ALEntryGetStorage
+A 0004b64a ALEntryListDeleteUnmarked
+A 0004b664 ALEntryListFillListBox
+A 0004b67b ALEntryListGetFirstEntry
+A 0004b694 ALEntryListMakeEntriesFromListBox
+A 0004b6b6 ALEntryListSetMarksFromListBox
+A 0004b6d5 ALEntryListUnmarkDuplicates
+A 0004b6f1 ALEntrySetComment
+A 0004b703 ALEntrySetCompressor
+A 0004b718 ALEntrySetCryptoEngine
+A 0004b72f ALEntrySetDecompressor
+A 0004b746 ALEntrySetEncrypted
+A 0004b75a ALEntrySetMark
+A 0004b769 ALEntrySetMarkState
+A 0004b77d ALEntrySetStorage
+A 0004b78f ALReadCopyright
+A 0004b79f ALStorageArchive
+A 0004b7b0 ALStorageChangeExtension
+A 0004b7c9 ALStorageChangeTrailingChar
+A 0004b7e5 ALStorageClearError
+A 0004b7f9 ALStorageClose
+A 0004b808 ALStorageCompare
+A 0004b819 ALStorageCreate
+A 0004b829 ALStorageDelete
+A 0004b839 ALStorageDirectory
+A 0004b84c ALStorageFlushBuffer
+A 0004b861 ALStorageFromJulian
+A 0004b875 ALStorageGetCrc32
+A 0004b887 ALStorageGetDate
+A 0004b898 ALStorageGetDosDate
+A 0004b8ac ALStorageGetDosTime
+A 0004b8c0 ALStorageGetName
+A 0004b8d1 ALStorageGetOldName
+A 0004b8e5 ALStorageGetSize
+A 0004b8f6 ALStorageGetStatusCode
+A 0004b90d ALStorageGetStatusDetail
+A 0004b926 ALStorageGetStatusString
+A 0004b93f ALStorageGetStrucFromTimeDate
+A 0004b95d ALStorageGetTime
+A 0004b96e ALStorageGetType
+A 0004b97f ALStorageGetUnixTime
+A 0004b994 ALStorageHidden
+A 0004b9a4 ALStorageInitCrc32
+A 0004b9b7 ALStorageIsOpen
+A 0004b9c7 ALStorageLoadBuffer
+A 0004b9db ALStorageOpen
+A 0004b9e9 ALStoragePackedAttributes
+A 0004ba03 ALStorageReadBuffer
+A 0004ba17 ALStorageReadChar
+A 0004ba29 ALStorageReadGlLong
+A 0004ba3d ALStorageReadGlShort
+A 0004ba52 ALStorageReadOnly
+A 0004ba64 ALStorageReadPkLong
+A 0004ba78 ALStorageReadPkShort
+A 0004ba8d ALStorageRename
+A 0004ba9d ALStorageRenameToBackup
+A 0004bab5 ALStorageSeek
+A 0004bac3 ALStorageSetDate
+A 0004bad4 ALStorageSetError
+A 0004bae6 ALStorageSetFromPackedAtts
+A 0004bb01 ALStorageSetMonitor
+A 0004bb15 ALStorageSetName
+A 0004bb26 ALStorageSetTime
+A 0004bb37 ALStorageSetTimeDateFromStruc
+A 0004bb55 ALStorageSetTimeDateFromUnix
+A 0004bb72 ALStorageSystem
+A 0004bb82 ALStorageTell
+A 0004bb90 ALStorageToJulian
+A 0004bba2 ALStorageUnRename
+A 0004bbb4 ALStorageValidTimeDate
+A 0004bbcb ALStorageWildCardMatch
+A 0004bbe2 ALStorageWriteBuffer
+A 0004bbf7 ALStorageWriteChar
+A 0004bc0a ALStorageWriteGlLong
+A 0004bc1f ALStorageWriteGlShort
+A 0004bc35 ALStorageWritePkLong
+A 0004bc4a ALStorageWritePkShort
+A 0004bc60 ALStorageWriteString
+A 0004bc75 ALTranslateError
+A 0004bc86 ALWinMemoryGetBuffer
+A 0004bc9b ALWinMemoryGetHandle
+A 0004bcb0 deleteALArchive
+A 0004bcc0 deleteALCompressor
+A 0004bcd3 deleteALDecompressor
+A 0004bce8 deleteALEntry
+A 0004bcf6 deleteALEntryList
+A 0004bd08 deleteALExpander
+A 0004bd19 deleteALMonitor
+A 0004bd29 deleteALStorage
+A 0004bd39 deleteALToolKit
+A 0004bd49 newALCopyCompressor
+A 0004bd5d newALCopyDecompressor
+A 0004bd73 newALEntry
+A 0004bd7e newALEntryList
+A 0004bd8d newALExpander
+A 0004bd9b newALExpanderWithDelimiters
+A 0004bdb7 newALFile
+A 0004bdc1 newALGlCompressor
+A 0004bdd3 newALGlDecompressor
+A 0004bde7 newALListFullTools
+A 0004bdfa newALListPkCompressFileTools
+A 0004be17 newALListPkCompressTools
+A 0004be30 newALListPkDecompressFileTools
+A 0004be4f newALListPkDecompressTools
+A 0004be6a newALListPkTools
+A 0004be7b newALMemory
+A 0004be87 newALPkArchive
+A 0004be96 newALPkArchiveFromStorage
+A 0004beb0 newALPkCompressor
+A 0004bec2 newALPkDecompressor
+A 0004bed6 newALWinMemory
+A 0004c040 Application terminated
+A 0004c058                       ArchiveLib assertion error                      
+A 0004c0a0 Assertion error, ArchiveLib is aborting the application.
+A 0004c0d9 Condition = %s
+A 0004c0e8 File = %s, line = %d
+A 0004c100 Memory allocation failure in compression startup
+A 0004c134 Incorrect compression level parameter passed to compressor.  Compression level = %d
+A 0004c188 Memory allocation failure in expansion startup
+A 0004c1b8 Internal 2 error in Greenleaf Decompression routine
+A 0004c1ec Internal 1 error in Greenleaf Decompression routine
+A 0004c220 %s: %s
+A 0004c228 Attempt to extract an object without decryption engine
+A 0004c260 Attempt to decompress without a decompressor
+A 0004c290 CRC32 was supposed to be %08lx, was %08lx
+A 0004c2bc CBmButton
+A 0004c2c8 CClrToolBar
+A 0004cc68 Canary Yellow
+A 0004cc78 Honey Dew
+A 0004cc84 Old Gold
+A 0004cc90 Yellow Ocher
+A 0004cca0 Mustard
+A 0004cca8 Medow
+A 0004ccb0 Olive Drab
+A 0004ccc4 Floral Pink
+A 0004ccd0 Crimson
+A 0004ccd8 Green Dust
+A 0004cce4 Sola Blue
+A 0004ccf0 Blue Ink
+A 0004ccfc Violet Blue
+A 0004cd08 Dark Sepia
+A 0004cd14 Sepia
+A 0004cd1c Sinna
+A 0004cd24 Cocoa Brown
+A 0004cd30 Salmon
+A 0004cd38 Toast
+A 0004cd40 Hazel
+A 0004cd48 Ivory White
+A 0004cd54 Peacock Green
+A 0004cd64 Aquamariune
+A 0004cd70 Opal Green
+A 0004cd7c Cardinal Red
+A 0004cd8c Burgundy
+A 0004cd98 Orchid Pink
+A 0004cda4 Sun Flower
+A 0004cdb0 Blond
+A 0004cdb8 Burnt Orange
+A 0004cdc8 Coral
+A 0004cdd0 Slate Blue
+A 0004cddc Bright Blue
+A 0004cde8 Powder Blue
+A 0004cdf4 Beige Gray
+A 0004ce00 Ocean Blue
+A 0004ce0c Bright Green
+A 0004ce1c Bamboo
+A 0004ce24 Meadow Green
+A 0004ce34 Peony Purple
+A 0004ce44 Umber
+A 0004ce4c Cinnamon
+A 0004ce58 Navy Blue
+A 0004ce64 Baby Blue
+A 0004ce70 Pale Aqua
+A 0004ce7c Silver Grey
+A 0004ce88 Yellow Green
+A 0004ce98 Pale Sky
+A 0004cea4 Wine Red
+A 0004ceb0 Peach
+A 0004ceb8 Pale Pink
+A 0004cec4 Pale Yellow
+A 0004ced0 Pale Violet
+A 0004cee8 Lt Gray
+A 0004cef0 Medium Gray
+A 0004cefc Dark Magenta
+A 0004cf14 Dark Cyan
+A 0004cf20 Not Defined
+A 0004cf2c Applique
+A 0004cf38 Applique Position
+A 0004cf4c Applique Material
+A 0004cf60 Fresh Green
+A 0004cf6c Lemon Yellow
+A 0004cf7c Electric Blue
+A 0004cf8c Harvest Gold
+A 0004cf9c Flesh Pink
+A 0004cfa8 Moss Green
+A 0004cfb4 Emerald Green
+A 0004cfc4 Tangerine
+A 0004cfd0 Dark Fuschia
+A 0004cfe0 Olive Green
+A 0004cfec Amber Red
+A 0004cff8 Carmine
+A 0004d000 Beige
+A 0004d008 Wistaria Violet
+A 0004d018 Lavender
+A 0004d024 Deep Green
+A 0004d030 Linen
+A 0004d038 Dark Olive
+A 0004d044 Warm Grey
+A 0004d050 Peacock Blue
+A 0004d060 Leaf Green
+A 0004d06c Clay Brown
+A 0004d078 Khaki
+A 0004d080 Cream Yellow
+A 0004d090 Pumpkin
+A 0004d098 Sky Blue
+A 0004d0a4 Seacrest
+A 0004d0b0 Violet
+A 0004d0b8 Vermilion
+A 0004d0c4 Salmon Pink
+A 0004d0d0 Deep Rose
+A 0004d0dc Royal Purple
+A 0004d0ec Ultra Marine
+A 0004d0fc Pewter
+A 0004d104 Cream Brown
+A 0004d110 Russet Brown
+A 0004d120 Silver
+A 0004d128 Brass
+A 0004d130 Lime Green
+A 0004d13c Deep Gold
+A 0004d148 Mint Green
+A 0004d154 Lilac
+A 0004d15c Light Lilac
+A 0004d168 Magenta
+A 0004d170 Reddish Brown
+A 0004d180 Cornflower Blue
+A 0004d190 Teal Green
+A 0004d19c Prussian Blue
+A 0004d1ac Unknown
+A 0004d1b4 Light Brown
+A 0004d1c0 Dark Brown
+A 0004d1cc Light Pink
+A 0004d1d8 Dark Pink
+A 0004d1e4 Light Orange
+A 0004d1f4 Dark Orange
+A 0004d200 Light Grey
+A 0004d20c Dark Grey
+A 0004d218 Light Yellow
+A 0004d228 Dark Yellow
+A 0004d234 Light Purple
+A 0004d244 Dark Purple
+A 0004d250 Light Red
+A 0004d25c Dark Red
+A 0004d268 Dark Green
+A 0004d274 Dark Blue
+A 0004d280 White
+A 0004d288 Brown
+A 0004d298 Orange
+A 0004d2a0 Light Green
+A 0004d2ac Light Blue
+A 0004d2c0 Yellow
+A 0004d2c8 Purple
+A 0004d2d4 Green
+A 0004d2e4 Black
+A 0004d2ec ToolbarWindow32
+A 0004d2fc %s is not a vaild GN Scaleable file.
+A 0004d324 Error reading from file.
+A 0004d340 Error
+A 0004d358 CComplexFillStitch
+A 0004d36c CColorChange
+A 0004d37c CEmbData
+A 0004d388 CFillStitch
+A 0004d394 CGRunStitchParms
+A 0004d3a8 CGSatinStitchParms
+A 0004d3bc CGFillStitchParms
+A 0004d47c MbP?CCndObject
+A 0004d48c Cannot allocate enough memory to process file.
+A 0004d4bc CRunStitch
+A 0004d7bc CSatinStitch
+A 0004d7cc ERROR: Impossible degree combination.
+A 0004d7f4 CSpecialStitch
+A 0004d808 CColorButton
+A 0004e1a8 Binary copy
+A 0004e4a8 Cnrzvlao|)]b`nab Afj:5Zc|7:*%$*3
+A 0004e4d4 oEG_@T\WUYS:2oSTP\JV//b,"e%(808"+%:o'8>?t73w.0=4.2+,
+A 0004e5a8 Unknown error writing design %s. Deleting file.
+A 0004e5d8 Cannot open design %s. Please check it for errors.
+A 0004e60c Warning
+A 0004e614 Design %s will be split into multiple files.
+A 0004e644 _a.Csd
+A 0004e654 Cannot save %s. Design does not have any stitch data.
+A 0004e690  deflate Copyright 1995 Jean-loup Gailly 
+A 0004f2ec LA: %-15s
+A 0004f2f6 ST:%7ld
+A 0004f2fe CO:%3d
+A 0004f305 +X:%5d
+A 0004f30c -X:%5d
+A 0004f313 +Y:%5d
+A 0004f31a -Y:%5d
+A 0004f324 AX:+    0
+A 0004f32e AY:+    0
+A 0004f338 MX:+    0
+A 0004f342 MY:+    0
+A 0004f34c PD:******
+A 0004f35c CEmbObject
+A 0004f3d4 %s: %s
+A 0004f3e0 CEmbButton
+A 0004f3ec Failed to allocate memory when adding comment to storage object %s
+A 0004f724 CExpObject
+A 000503c0 Cannot save design %s. Unknown or unsupport file type.
+A 000503f8 Cannot read design %s. File appears to have incomplete or invalid data.
+A 00050440 Cannot read design %s. Cannot allocate enough memory to read the file.
+A 00050488 Cannot read design %s. Invalid file data or file not found.
+A 000504c4 Read failure on %s.  errno = %d
+A 000504e4 Seek failure on %s.  errno = %d
+A 00050504 Write failure on %s.  result = %d, errno = %d
+A 00050534 Couldn't get time, date, and size information for %s.  errno = %d.
+A 00050578 File open failure.  Open of %s returned errno = %d
+A 000505ac ~al~%03d.tmp
+A 000505bc Temporary file creation failure.  Open of %s returned errno = %d
+A 00050600 Temporary file creation failure.  Tried 1000 times to open %s (or a name something like that).
+A 00050660 File creation failure.  Open of %s returned errno = %d
+A 000506a0 Error renaming %s to %s.  errno = %d
+A 000506c8 Error deleting %s before renaming %s.  errno = %d
+A 000506fc Error attempting to rename %s to %s.  Can't rename to the same name!
+A 00050744 Error deleting file %s, errno = %d 
+A 0005076c Greenleaf
+A 00050778 CGnFilter
+A 00050d60 23456789ABCDEFGHJKLMNPQRSTUVWXYZ
+A 00050ec5 Qkkbal
+A 00051121 wn>Jj
+A 00051183 -c:\temp\error.log
+A 00051198 \OEMSP.EXE
+A 000511a4 OEMSP.EXE
+A 000511b0 %s\GNCONV.EXE
+A 000511c0 %sGNCONV.EXE
+A 000511d8 .PAVCFileException@@
+A 000511f0 Error(%d) writing to file.
+A 0005120c NoSizeExpress
+A 0005121c SewColors
+A 00051228 PfaffCompatible
+A 00051238 VikingSplit
+A 00051244 PfaffSplit
+A 00051250 Threshold
+A 00051260 JunkStitch
+A 0005126c SmartStitch
+A 00051278 StitchPoints
+A 00051288 MaximizeChild
+A 00051298 Options
+A 000512a0 SaveFormat
+A 000512ac %4.4d-%8.8d-
+A 000512c4 Product Codes4
+A 000512d4 Product Codes3
+A 000512e4 Product Codes2
+A 000512f4 Product Information
+A 00051308 Product Codes1
+A 00051318 Activation
+A 00051324 Size Express
+A 00051334 Serialno
+A 00051340 SERegisno
+A 00051354 LastName
+A 00051360 User Information
+A 00051374 FirstName
+A 00051384 General Information
+A 00051398 CustomY
+A 000513a0 CustomX
+A 000513a8 HoopSize
+A 000513b4 YCORDS
+A 000513bc XCORDS
+A 000513c4 CODES
+A 000513cc SOURCE
+A 000513d4 _a.hus
+A 000513dc YDESTIN
+A 000513e4 XDESTIN
+A 000513ec CDESTIN
+A 000513f4 [-%c-]
+A 00051404 %s\%s
+A 0005141c Select by icons, %d thru %d of %d
+A 00051494 invalid bit length repeat
+A 000514b0 too many length or distance symbols
+A 000514d4 invalid stored block lengths
+A 000514f4 invalid block type
+A 00051508 invalid distance code
+A 00051520 invalid literal/length code
+A 0005153c incorrect data check
+A 00051554 incorrect header check
+A 0005156c invalid reserved bit
+A 00051584 invalid window size
+A 00051598 unknown compression method
+A 000517a0 incomplete dynamic bit lengths tree
+A 000517c4 oversubscribed dynamic bit lengths tree
+A 000517ec incomplete literal/length tree
+A 0005180c oversubscribed literal/length tree
+A 00051874 <none>
+A 0005187c Logic error in SetMarksFromListBox().Mismatch in select count from list box.
+A 000518cc Memory allocation failure in SetMarksFromListBox()
+A 00051900 Allocation failure when attempting to allocate a buffer of %ld bytes for ALMemory %s
+A 00051958 Attempt to allocate a buffer of %ld bytes for ALMemory %s
+A 00051994 Attempt to write past the end of a user owned buffer for ALMemory %s
+A 000519dc Allocation failure when attempting to initialize a buffer of %ld bytes for ALMemory %s in _Create()
+A 00051a40 Allocation failure when attempting to create a buffer of %ld bytes for ALMemory %s in _Create()
+A 00051aa0 Attempt to open ALMemory %s with no buffer allocated
+A 00051ad8 Attempt to read past end of the buffer in ALMemoryBase %s
+A 00051b14 AL.TMP
+A 00051b1c Allocation failure when attempting to allocate a buffer of %ld bytes for ALMemoryBase %s
+A 00051b78 Attempt to write past the end of a user owned buffer for ALWinMemory %s
+A 00051bc0 Allocation failure when attempting to create a buffer of %ld bytes for ALWinMemory %s in Create()
+A 00051c24 Attempt to open ALWinMemory %s with no buffer allocated
+A 00051c5c CMyFile
+A 00051cb4 _a.pcs
+A 00051cbc Cannot save design %s. It does not fit within the embroidery field. Please resize the design.
+A 00051d3c _a.pcm
+A 00051d5c #PEC0001LA:
+A 00051d68 _a.pec
+A 00051d70 #PEC0001LA:%-16s
+A 00051db4 #PES0030
+A 00051dc0 #PES0020
+A 00051dcc #PES0001
+A 00051dd8 _a.pes
+A 00051de0 LA:%-16s
+A 00051dec CSewSeg
+A 00051df4 CEmbOne
+A 00051dfc Can't locate end of central directory in ZIP file %s
+A 00051e34 Failure creating ALEntry object when reading directory in ZIP file %s
+A 00051e7c Failure creating storage object in ZIP file %s
+A 00051eac Bad record in central directory of ZIP file %s
+A 00051ee0 Stored
+A 00051ee8 Deflate Fast
+A 00051ef8 Deflate Normal
+A 00051f08 Deflate Maximum
+A 00051f18 Error creating deflate engine. ZLIB returned %d
+A 00051f4c Inflate
+A 00051ff0 _a.sew
+A 00051ff8 Success
+A 00052000 Unknown error
+A 00052010 End of file
+A 0005201c Missing Crypto engine
+A 00052034 Invalid key
+A 00052040 Duplicate entry
+A 00052050 Error getting selections from list box
+A 00052078 Could not create backup
+A 00052090 Logic error
+A 0005209c Invalid archive
+A 000520ac Unknown type of storage object
+A 000520cc Unknown compression type
+A 000520e8 Comparison error
+A 000520fc CRC Error
+A 00052108 Missing length parameter
+A 00052124 Mismatch in compression type
+A 00052144 Server not present
+A 00052158 User abort
+A 00052164 Internal error
+A 00052174 Illegal parameter
+A 00052188 File deletion error
+A 0005219c Write error
+A 000521a8 Read error
+A 000521b4 Seek error
+A 000521c0 Can't open file
+A 000521d0 Error renaming file
+A 000521e4 Memory allocation failure
+A 00052200 Can't create storage object
+A 0005221c Can't create compression engine
+A 0005223c Can't allocate buffer
+A 00052254 dummy
+A 0005225c Unable to allocate memory for error detail message
+A 00052290 No errors
+A 000522a0 Copyright (c) 1994-1996 Greenleaf Software, Inc.
+A 000522d1 All Rights Reserved.
+A 000522e8 Allocation of buffer failed in ALStorage constructor
+A 00052320 Allocation of buffer failed in Open()
+A 00052348 Error allocating buffer space in call to ReadString() for object %s
+A 0005238c Error reading string lengthin ReadString() for object %s
+A 000523c8 Objects %s and %s differed at position %ld
+A 000523f4 Comparison failed.  Objects %s and %s are two different sizes.
+A 00052575 Qkkbal
+A 000527d1 wn>Jj
+A 00052d54 _a.xxx
+A 00052d5c *.xxx
+A 00052d64 *.csd
+A 00052d6c *.sew
+A 00052d74 *.pcm
+A 00052d7c *.pes
+A 00052d84 *.pec
+A 00052d8c *.hus
+A 00052d94 *.dst
+A 00052d9c *.exp
+A 00052da4 *.gnc
+A 00052dd0 buffer error
+A 00052de0 insufficient memory
+A 00052df4 data error
+A 00052e00 stream error
+A 00052e10 file error
+A 00052e1c stream end
+A 00052e38 .?AVtype_info@@
+A 00056ef0 Default
+A 00056f00 Babylock/Bernina/Brother
+A 00056f21 Husqavarna/Viking
+A 00056f3b Elna/Janome/New Home
+A 00056f58 Pfaff
+A 00056f68 Melco Dos Expanded
+A 00056f83 Tajima
+A 00056f92 Babylock/Bernina/Brother
+A 00056fb3 Pfaff - Windows
+A 00056fcb Pfaff Macintosh
+A 00056fe3 Viking/Husqavarna
+A 00056ffd Elna/Janome/New Home
+A 0005701a Poem/Singer EU
+A 00057031 Singer PSW/XXX
+A 00057050 Melco Dos Expanded
+A 0005706b Tajima
+A 00059008 #0:4c4j4{4
+A 00059041 ;1;G;M;
+A 00059051 =C=_=v=
+A 00059087 5c6H7n7
+A 00059091 818E8s8
+A 00059099 8!919A9Q9r9
+A 000590a9 :#:P:e:
+A 000590c7 >8?P?z?
+A 000590dc 30O0f0
+A 000590e9 1.1s1
+A 000590f3 2#2C2H2
+A 00059109 7I87:
+A 0005910f ;Q<a<
+A 00059117 =N>u>
+A 00059121 ?2?8?S?
+A 00059145 2X2\2`2d2h2l2p2t2x2
+A 00059161 4C4e4
+A 00059181 0&1c3
+A 000591b0 d0h0l0p0t0x0|0
+A 000591c3 0B2I2
+A 000591cd 6+6F6X6r6
+A 00059205 3O4^4
+A 0005921d <@=~=
+A 00059231 5!7&=,=:=K=Y=j=
+A 00059263 1#3#4c5
+A 0005926d 5%6z6
+A 00059279 697N7S7[7
+A 000592b5 0X0\0`0d0h0l0p0t0
+A 000592dd :d:r:
+A 000592ff 0`5m5v5
+A 00059333 :?;b;
+A 0005934c 00F1Q1
+A 00059361 8*8;8j8P9
+A 00059383 0,373
+A 0005939b :):M:`:d:h:l:
+A 000593a9 ;,;V;
+A 000593c5 696~7j9
+A 000593e5 = =$=(=E=c=
+A 00059401 ?!?b?
+A 0005941f 032K2
+A 00059429 393o3
+A 00059431 3)4C4
+A 00059447 6+666^6c6r6|6
+A 00059473 898H8^8i8
+A 00059485 :F:e:
+A 00059497 <B=Q=u=
+A 000594dd 8(9E9t9
+A 000594e5 :4:N:
+A 000594f3 ;7;T;
+A 000594ff ;0=F=`=
+A 00059521 :&;E;
+A 0005952b ;`=6>
+A 0005954f ;$<(<,<0<4<8<A<x<
+A 00059575 000L0
+A 00059583 1+181t1
+A 0005959b 4+4W4y4
+A 000595ab 4'6.6
+A 000595e1 1"1*1r1
+A 000595f1 2"3j3
+A 00059613 6=6B6G6M6]6 717?7P7
+A 00059629 8%8S8
+A 00059641 9!:J:
+A 00059649 ;?;P;
+A 00059655 ;-<D<x<
+A 0005965d <M>\>
+A 00059667 >	?)?<?v?
+A 00059687 001i1
+A 00059693 2C2p2
+A 0005969d 213c3r3
+A 000596b5 5S6k6
+A 000596bd 7:7Y7
+A 000596d1 :<:8;?;h<l<p<t<
+A 000596e1 =8=O=k=
+A 000596ed =8>K>g>t>
+A 00059701 131J2T2_2e2z2
+A 00059719 3V3[3q3
+A 0005972b 566K6R6}6
+A 00059737 7/7F7a7s7
+A 0005974d :9:t:
+A 00059757 :!;=;
+A 0005975f <)<\<`<d<h<l<p<t<x<|<
+A 00059783 ?L?P?T?X?\?`?d?h?l?p?t?x?
+A 000597bd ;;=O=}>
+A 000597c5 ? ?.???M?g?
+A 000597eb 273H3Q3w3
+A 000597f7 304E4O4
+A 00059803 4(5<5g5p5
+A 00059813 5 6'6
+A 0005981d 6%727N7}7
+A 0005982f 7/8R8
+A 0005984d :g:z:
+A 00059859 ; ;,;Y;/<8<Z<h<
+A 0005986b =!=G=a=q=
+A 00059881 >!>1>Q>a>q>
+A 0005989b ?#?:?C?Y?^?c?h?m?r?
+A 000598b8 "0?0e0
+A 000598c5 4&4U4
+A 000598e3 949;9B9N9x9
+A 000598f5 :!:1:O:p:|:
+A 0005990d ?$?E?J?R?~?
+A 0005993f 2%2=2I2N2U2f2m2
+A 00059957 3 3%3,3=3D3p3}3
+A 0005997b 43484L4Q4
+A 0005999b 5$5)5=5B5
+A 000599b5 636<6Q6V6_6v6
+A 000599d7 6-7I7e7
+A 000599e3 7p8v8
+A 00059a05 : :6:A:b:o:
+A 00059a15 ;#<a<y<
+A 00059a29 <%=s=
+A 00059a5d 9!:p:
+A 00059a65 :a;{;
+A 00059a7d =.=;=
+A 00059a90 $2B2j2
+A 00059a9d ;/;4;c;m;
+A 00059ab5 <#=D=P=
+A 00059abf >">6>W>k>
+A 00059ad3 ?(?/?;?
+A 00059ae5 1+1O1
+A 00059aef 1/2f2
+A 00059b0f 464$5w5
+A 00059b1d 6.7=7Q7\7b7
+A 00059b2b 8Q8{8
+A 00059b4d 11181
+A 00059be7 1I1k1
+A 00059bef 1	3L3P3T3X3\3`3d3h3l3
+A 00059c13 969Q9
+A 00059c33 :*:>:C:O:T:Y:^:g:u:
+A 00059c71 0"0D1
+A 00059c8b 4.5M5u5
+A 00059c9b 7:7+879
+A 00059cbb ;V<f<w<
+A 00059cc7 <D=y=
+A 00059ccd =%>r>A?Q?
+A 00059d0b 2"272G2V2l2w2
+A 00059d25 3*3:3B3R3
+A 00059d45 4	5N5^5n5~5
+A 00059d5f 7 7+767A7L7b7j7r7
+A 00059d8b ;C<W<
+A 00059da3 ?t?{?
+A 00059dbb 5H6b6}6
+A 00059dcd 9.:M:y:
+A 00059ddb <3<M<\<
+A 00059deb =+=G=T=
+A 00059df9 =	>#>?>L>
+A 00059e09 ?+?J?W?
+A 00059e20 -0G0d0s0
+A 00059e33 ;.;I;
+A 00059e61 1;1U1o1~1
+A 00059e71 132M2i2v2
+A 00059e81 2G3a3
+A 00059e8f 3Z4t4
+A 00059eab <3>h>
+A 00059ecb 1+1i1
+A 00059ee7 4P5q5x5
+A 00059ef1 8"9)9s9
+A 00059eff :/;6;
+A 00059f17 8*8?8Y8
+A 00059f31 >'>S>
+A 00059f39 ?7?u?
+A 00059f4d 0 0=0
+A 00059f6c +0_0f0
+A 00059f7b 6.6"787
+A 00059f85 7%8;8L9P9T9|9
+A 00059f9f ;7=J?
+A 00059fc5 :S<u<
+A 00059fcd >'>c?
+A 00059fe7 1'1=1W1h1l1p1t1
+A 00059ff7 1B2S2
+A 0005a003 4`5d5h5l5p5t5
+A 0005a01f 8<9@9D9H9L9P9
+A 0005a041 =!=&=B=G=c=h=
+A 0005a077 0 030G0L0i0
+A 0005a099 1#1(1C1
+A 0005a0b5 2n3s3|3
+A 0005a0c5 344e4
+A 0005a0d9 9t:x:|:
+A 0005a0e9 ;k;|;
+A 0005a101 <'<6<L<f<
+A 0005a11b >0?J?d?s?
+A 0005a134 D0^0}0
+A 0005a13d 1%2*2H2M2
+A 0005a14d 2>5g5
+A 0005a195 >!>'>->3>9>C>I>P>T>X>\>`>d>h>l>p>t>x>|>
+A 0005a24b 2,2b2p2z2
+A 0005a25f 3:3o3~3
+A 0005a27b 5T6Y6v<
+A 0005a297 011X1g1
+A 0005a2a5 1#4>4S4j4~4
+A 0005a2b3 435N5c5z5
+A 0005a2bf 5s6X8
+A 0005a2d1 9E:}:
+A 0005a2e1 <8><>@>D>H>\>
+A 0005a2fb 2:3c5
+A 0005a315 9Q9k9
+A 0005a339 1	2*2k2
+A 0005a357 8!818A8Q8a8q8
+A 0005a36f 9f:|;
+A 0005a39f < <&<,<2<8<><D<J<P<V<\<b<h<n<t<z<
+A 0005a3f5 ="=(=.=4=:=@=F=L=R=X=^=d=j=p=v=|=
+A 0005a44b >$>*>0>6><>B>H>N>T>Z>`>f>l>r>x>~>
+A 0005a49f ? ?&?,?2?8?>?D?J?P?V?\?b?h?n?t?z?
+A 0005a50b 1 2(2.292F2N2\2a2f2k2v2
+A 0005a52f 2D3`3f3l3r3x3
+A 0005a545 4,4Q4i4
+A 0005a553 5B5g5
+A 0005a561 6;6Y6y6
+A 0005a579 9;9[9
+A 0005a593 ;4;K;k;
+A 0005a5a1 ;+<b<y<
+A 0005a5ad <3=T=t=
+A 0005a5bb >)>]>y>
+A 0005a5c9 ?I?q?
+A 0005a5e1 1)1L1
+A 0005a5f1 2)2I2
+A 0005a5fb 323x3
+A 0005a601 3.4I4
+A 0005a60f 6<6\6
+A 0005a619 7#8<8
+A 0005a623 8	9)9L9
+A 0005a635 :	;7;
+A 0005a649 <-=Q=
+A 0005a655 >@>p>
+A 0005a65f ?0?`?
+A 0005a67b 081'2s2
+A 0005a69b 5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5d5h5l5p5t5x5|5
+A 0005a71b 6 6$6(6,6064686<6@6D6H6L6P6X6d6h6p6t6
+A 0005a787 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7x7
+A 0005a7bf 8,8D8`8d8h8l8p8t8x8|8
+A 0005a823 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 0005a89f :@:P:`:d:h:l:p:t:x:|:
+A 0005a8f3 ;(;8;P;T;X;\;`;d;h;l;p;t;x;|;
+A 0005a947 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<h<p<t<x<|<
+A 0005a9a7 =0=4=8=<=@=D=H=L=P=T=X=\=`=p=
+A 0005a9f7 > >$>(>4>8>@>D>`>d>h>l>p>t>x>|>
+A 0005aa65 ? ?(?,?D?\?t?
+A 0005aa87 040L0d0|0
+A 0005aa9b 1$1<1T1l1
+A 0005aab1 2,2D2\2t2
+A 0005aac7 343L3d3|3
+A 0005aadb 4$4<4T4l4
+A 0005aaf1 5,5D5\5t5
+A 0005ab07 646L6d6|6
+A 0005ab1b 7$7<7T7l7
+A 0005ab31 8,8D8\8t8
+A 0005ab47 949L9d9|9
+A 0005ab5b :$:<:T:l:
+A 0005ab71 ;,;D;\;t;
+A 0005ab87 <4<L<d<|<
+A 0005ab9b =$=<=T=l=
+A 0005abb1 >,>D>\>t>
+A 0005ac01 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0005ac8b 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 0005ace9 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 0005ad69 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0005add5 3 3$3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0005ae49 4 4$4(4,404@4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0005aebd 5 50585<5@5D5H5L5P5T5X5\5`5d5h5x5|5
+A 0005aeeb 6$6<6T6l6
+A 0005af01 7,7D7\7t7
+A 0005af17 848P8T8X8\8`8d8h8l8p8t8x8|8
+A 0005af81 9 9$9(9,90989<9T9l9
+A 0005afa1 :,:D:\:t:
+A 0005afb7 ;4;L;d;|;
+A 0005afcb <$<<<T<l<
+A 0005b015 = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 0005b095 > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>
+A 0005b0ff ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0005b187 0 0$0(0,0004080<0@0D0\0x0|0
+A 0005b1f1 1 1$1(1,1014181<1@1D1H1L1P1T1l1
+A 0005b25b 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 0005b2c3 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 0005b327 4,4<4@4P4l4x4
+A 0005b343 545@5\5d5p5
+A 0005b35f 646<6D6L6X6t6|6
+A 0005b381 747@7\7h7
+A 0005b39f 8$808L8X8t8|8
+A 0005b3c1 9$9,949<9D9L9T9\9d9l9t9|9
+A 0005b3f9 : :<:H:d:p:
+A 0005b415 ;4;@;\;h;
+A 0005b433 <$<,<4<<<D<P<l<x<
+A 0005b455 =(=D=P=l=x=
+A 0005b46f > ><>D>L>T>\>h>
+A 0005b491 ?4?@?\?d?l?t?|?
+A 0005b4bd 0$0,080T0`0|0
+A 0005b4dd 141@1\1h1
+A 0005b4fb 2$2,242@2\2d2p2
+A 0005b529 3$303L3T3\3d3l3t3|3
+A 0005b54f 4 4<4H4d4p4
+A 0005b56d 5(5D5P5X5
+A 0005b589 6$6,646<6D6P6l6x6
+A 0005b5b1 7$707L7T7\7d7l7t7
+A 0005b5df 8$8,888T8\8d8l8t8|8
+A 0005b613 9$9,949<9D9L9X9t9
+A 0005b635 :$:,:4:<:D:L:T:\:d:l:t:|:
+A 0005b66b ;,;4;<;D;L;T;`;|;
+A 0005b691 <$<,<4<@<\<h<
+A 0005b6b3 =$=,=4=<=D=P=l=t=|=
+A 0005b6dd >,>4>@>\>h>
+A 0005b701 ? ?<?D?P?l?t?|?
+A 0005b735 0$000L0T0\0d0p0
+A 0005b757 1$101L1T1`1|1
+A 0005b777 2 2<2D2P2l2t2
+A 0005b797 3,343@3\3d3p3
+A 0005b7bd 4$404L4T4\4d4l4x4
+A 0005b7ef 5 5<5D5L5T5\5d5p5
+A 0005b813 6$6,646<6
+A 0005b831 0 0$0(0
+A 0005b863 6 6$6(6,6064686<6@6D6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 0005b8e3 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+A 0005b963 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 0005b9f1 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 0005ba7b 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 0005bafb 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+U 0000454b jjjj
+U 0000462f jjjj
+U 00005d1b jjjjj
+U 000416f0  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+U 000417f0  ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+U 0005035a "#')-02NJKLM
+U 0005037a  !$%&(*+,./13456789:;<=>?@ABCDEFGHI
+U 00051f8a "#')-02NJKLM
+U 00051faa  !$%&(*+,./13456789:;<=>?@ABCDEFGHI
+U 0005462e Zip Directory
+U 0005464c MS Sans Serif
+U 0005469e Cancel
+U 000546e6 Select Color
+U 00054702 MS Sans Serif
+U 00054756 Cancel
+U 0005479a Palette Type:
+U 00054f06 New Color:
+U 00054f36 Change To:
+U 00055146 Select by icons
+U 00055168 MS Sans Serif
+U 000551ba Cancel
+U 00055244 DO9L
+U 0005527c ¾O9L
+U 00055298 ûO9L
+U 000554ba Sort By:
+U 000554e6 &Name
+U 0005550a &Extension
+U 0005552c Â1n¶
+U 00055556 Directory
+U 0005568c GV33
+U 000556c4 ÁV33
+U 000556e0 þV33
+U 00055718 G¡33
+U 00055750 Á¡33
+U 0005576c þ¡33
+U 00055796 Advanced Density Settings
+U 000557cc MS Sans Serif
+U 0005581e Cancel
+U 00055846 Processing Options:
+U 00055886 Column Stitch Density:
+U 000558ce Fill Stitch Density:
+U 00055912 Fill Stitch Length:
+U 00055952 Run Stitch Length:
+U 00055992 Maximum Stitch Length:
+U 00055af6 Rotate Design
+U 00055b14 MS Sans Serif
+U 00055b66 Cancel
+U 00055baa Degrees:
+U 00055bd6 Choose Hoop Size
+U 00055bfa MS Sans Serif
+U 00055c4e Cancel
+U 00055c76 Singer:
+U 00055cba Babylock/Brother - Small
+U 00055d06 Pfaff - Small
+U 00055d3a Babylock, Bernina, Brother, Viking
+U 00055d9a Pfaff - Large
+U 00055dce Babylock ESE - Large, Brother 8200 - Large
+U 00055e3e Elna/Janome/New Home
+U 00055e82 Poem/Singer EU
+U 00055eba Large
+U 00055ede Medium
+U 00055f06 Small
+U 00055f2a Custom
+U 00055f8e Choose Hoop Size
+U 00055fb2 MS Sans Serif
+U 00056006 Cancel
+U 0005602e Round Hoops
+U 0005605e Rectangular Hoops
+U 0005609a 70mm
+U 000560be 90mm
+U 000560e2 120mm
+U 00056106 150mm
+U 0005612a 180mm
+U 0005614e 210mm
+U 00056172 70x130mm
+U 0005619e 200x115mm
+U 000561ca 240x240mm
+U 000561f6 240x300mm
+U 00056222 300x300mm
+U 0005624e 450x230mm
+U 0005627a 450x320mm
+U 000562a6 450x395mm
+U 000562d2 475x310mm
+U 000562fe 475x410mm
+U 0005632a 475x450mm
+U 00056356 Custom
+U 000563d6 Density Settings
+U 000563fa MS Sans Serif
+U 0005644e Cancel
+U 00056476 Thread Weights
+U 000564ae 60 wt
+U 000564d2 50 wt
+U 000564f6 40 wt
+U 0005651a 30 wt
+U 0005653e Yarn
+U 0005657e Adjust stitch density by:
+U 000565e6 Advanced
+U 00056616 System Preferences
+U 0005663e MS Sans Serif
+U 00056692 Cancel
+U 000566ba For Viking/Husqvarna
+U 000566fe Split at 12 Color Changes
+U 00056766 Default "Save As" format:
+U 000567b2 For Pfaff PCS
+U 000567e6 100% Pfaff PCS Compatible
+U 00056832 For Janome/New Home/Elna
+U 0005687e Scan-n-Sew PC v1.x
+U 000568be Split at 16 Colors
+U 000568fe System Options
+U 00056936 Maximize Design on Opening
+U 00056986 Do not Automatically Merge Designs back together.
+U 00056a02 Enable SmartStitch
+U 00056a42 Cleanup "Junk" Stitches
+U 00056a8a Threshold:
+U 00056ad6 Do not use Size Express for Scaling "Expanded" designs
+U 00056b5e DreamVision/Customizer 2000 
+U 00056bb6 System Preferences
+U 00056bde MS Sans Serif
+U 00056c32 Cancel
+U 00056c76 Default "Save As" format:
+U 00056cc2 System Options
+U 00056cfa Maximize Design on Opening
+U 00056d4a Do not Automatically Merge Designs back together.
+U 00056dc6 Enable SmartStitch
+U 00056e06 Cleanup "Junk" Stitches
+U 00056e4e Threshold:
+U 00056ea2 MS Sans Serif
+U 00056ed6 Browse
+U 00057092 Black
+U 0005709e Black
+U 000570aa Blue
+U 000570b4 Blue
+U 000570be Green
+U 000570ca Green
+U 000570ea Purple
+U 000570f8 Purple
+U 00057106 Yellow
+U 00057114 Yellow
+U 00057122 Grey
+U 0005712c Grey
+U 00057136 Light Blue
+U 0005714c Light Blue
+U 00057162 Light Green
+U 0005717a Light Green
+U 00057192 Orange
+U 000571a0 Orange
+U 000571ae Pink
+U 000571b8 Pink
+U 000571c2 Brown
+U 000571ce Brown
+U 000571da White
+U 000571e6 White
+U 000571f2 Dark Blue
+U 00057206 Dark Blue
+U 0005721a Dark Green
+U 00057230 Dark Green
+U 00057246 Dark Red
+U 00057258 Dark Red
+U 0005726a Light Red
+U 0005727e Light Red
+U 00057292 Dark Purple
+U 000572aa Dark Purple
+U 000572c2 Light Purple
+U 000572dc Light Purple
+U 000572f6 Dark Yellow
+U 0005730e Dark Yellow
+U 0005732a Light Yellow
+U 00057344 Light Yellow
+U 0005735e Dark Grey
+U 00057372 Dark Grey
+U 00057386 Light Grey
+U 0005739c Light Grey
+U 000573b2 Dark Orange
+U 000573ca Dark Orange
+U 000573e2 Light Orange
+U 000573fc Light Orange
+U 00057416 Dark Pink
+U 0005742a Dark Pink
+U 0005743e Light Pink
+U 00057454 Light Pink
+U 0005746a Dark Brown
+U 00057480 Dark Brown
+U 00057496 Light Brown
+U 000574ae Light Brown
+U 000574c6 Unknown
+U 000574d6 Unknown
+U 000574e6 Prussian Blue
+U 00057502 Prussian Blue
+U 0005751e Blue
+U 00057528 Blue
+U 00057532 Teal Green
+U 00057548 Teal Green
+U 0005755e Cornflower Blue
+U 0005757e Cornflower Blue
+U 000575ae Reddish Brown
+U 000575ca Reddish Brown
+U 000575ea Magenta
+U 000575fa Magenta
+U 0005760a Light Lilac
+U 00057622 Light Lilac
+U 0005763a Lilac
+U 00057646 Lilac
+U 00057652 Mint Green
+U 00057668 Mint Green
+U 0005767e Deep Gold
+U 00057692 Deep Gold
+U 000576a6 Orange
+U 000576b4 Orange
+U 000576c2 Yellow
+U 000576d0 Yellow
+U 000576de Lime Green
+U 000576f4 Lime Green
+U 0005770a Brass
+U 00057716 Brass
+U 00057722 Silver
+U 00057730 Silver
+U 0005773e Russet Brown
+U 00057758 Russet Brown
+U 00057772 Cream Brown
+U 0005778a Cream Brown
+U 000577a2 Pewter
+U 000577b0 Pewter
+U 000577be Black
+U 000577ca Black
+U 000577d6 Ultra Marine
+U 000577f0 Ultra Marine
+U 0005780a Royal Purple
+U 00057824 Royal Purple
+U 00057842 Dark Grey
+U 00057856 Dark Grey
+U 0005786a Dark Brown
+U 00057880 Dark Brown
+U 00057896 Deep Rose
+U 000578aa Deep Rose
+U 000578be Light Brown
+U 000578d6 Light Brown
+U 000578ee Salmon Pink
+U 00057906 Salmon Pink
+U 0005791e Vermilion
+U 00057932 Vermilion
+U 00057946 White
+U 00057952 White
+U 0005795e Violet
+U 0005796c Violet
+U 0005797a Seacrest
+U 0005798c Seacrest
+U 0005799e Sky Blue
+U 000579b0 Sky Blue
+U 000579c2 Pumpkin
+U 000579d2 Pumpkin
+U 000579e2 Cream Yellow
+U 000579fc Cream Yellow
+U 00057a16 Khaki
+U 00057a22 Khaki
+U 00057a2e Clay Brown
+U 00057a44 Clay Brown
+U 00057a5a Leaf Green
+U 00057a70 Leaf Green
+U 00057a86 Peacock Blue
+U 00057aa0 Peacock Blue
+U 00057aba Grey
+U 00057ac4 Grey
+U 00057ace Warm Grey
+U 00057ae2 Warm Grey
+U 00057af6 Dark Olive
+U 00057b0c Dark Olive
+U 00057b22 Linen
+U 00057b2e Linen
+U 00057b3a Pink
+U 00057b44 Pink
+U 00057b4e Deep Green
+U 00057b64 Deep Green
+U 00057b7a Lavender
+U 00057b8c Lavender
+U 00057b9e Wistaria Violet
+U 00057bbe Wistaria Violet
+U 00057bde Beige
+U 00057bea Beige
+U 00057bf6 Carmine
+U 00057c06 Carmine
+U 00057c16 Amber Red
+U 00057c2a Amber Red
+U 00057c3e Olive Green
+U 00057c56 Olive Green
+U 00057c6e Dark Fuschia
+U 00057c88 Dark Fuschia
+U 00057ca2 Tangerine
+U 00057cb6 Tangerine
+U 00057cca Light Blue
+U 00057ce0 Light Blue
+U 00057cf6 Emerald Green
+U 00057d12 Emerald Green
+U 00057d32 Purple
+U 00057d40 Purple
+U 00057d4e Moss Green
+U 00057d64 Moss Green
+U 00057d7a Flesh Pink
+U 00057d90 Flesh Pink
+U 00057da6 Harvest Gold
+U 00057dc0 Harvest Gold
+U 00057dda Electric Blue
+U 00057df6 Electric Blue
+U 00057e12 Lemon Yellow
+U 00057e2c Lemon Yellow
+U 00057e46 Fresh Green
+U 00057e5e Fresh Green#Applique Material
+U 00057e9a Applique Material#Applique Position
+U 00057ee2 Applique Position
+U 00057f06 Applique
+U 00057f18 Applique
+U 00057f2a Not Defined
+U 00057f42 Not Defined
+U 00057f5a Black
+U 00057f66 Black
+U 00057f72 Dark Blue
+U 00057f86 Dark Blue
+U 00057f9a Blue
+U 00057fa4 Blue
+U 00057fae Dark Cyan
+U 00057fc2 Dark Cyan
+U 00057fd6 Cyan
+U 00057fe0 Cyan
+U 00057fea Dark Magenta
+U 00058004 Dark Magenta
+U 0005801e Magenta
+U 0005802e Magenta
+U 0005803e Dark Red
+U 00058050 Dark Red
+U 00058072 Dark Green
+U 00058088 Dark Green
+U 0005809e Green
+U 000580aa Green
+U 000580b6 Dark Yellow
+U 000580ce Dark Yellow
+U 000580e6 Yellow
+U 000580f4 Yellow
+U 00058102 Medium Gray
+U 0005811a Medium Gray
+U 00058132 Lt Gray
+U 00058142 Lt Gray
+U 00058152 White
+U 0005815e White
+U 0005816a Black
+U 00058176 Black
+U 00058182 White
+U 0005818e White
+U 0005819a Yellow
+U 000581a8 Yellow
+U 000581b6 Orange
+U 000581c4 Orange
+U 000581d2 Olive Green
+U 000581ea Olive Green
+U 00058202 Green
+U 0005820e Green
+U 0005822a Purple
+U 00058238 Purple
+U 00058246 Pink
+U 00058250 Pink
+U 0005826a Brown
+U 00058276 Brown
+U 00058282 Blue
+U 0005828c Blue
+U 00058296 Gold
+U 000582a0 Gold
+U 000582aa Dark Brown
+U 000582c0 Dark Brown
+U 000582d6 Pale Violet
+U 000582ee Pale Violet
+U 00058306 Pale Yellow
+U 0005831e Pale Yellow
+U 00058336 Pale Pink
+U 0005834a Pale Pink
+U 0005835e Peach
+U 0005836a Peach
+U 00058376 Beige
+U 00058382 Beige
+U 0005838e Wine Red
+U 000583a0 Wine Red
+U 000583b2 Pale Sky
+U 000583c4 Pale Sky
+U 000583da Yellow Green
+U 000583f4 Yellow Green
+U 0005840e Silver Grey
+U 00058426 Silver Grey
+U 0005843e Grey
+U 00058448 Grey
+U 00058452 Pale Aqua
+U 00058466 Pale Aqua
+U 0005847a Baby Blue
+U 0005848e Baby Blue
+U 000584a2 Navy Blue
+U 000584b6 Navy Blue
+U 000584ca Cinnamon
+U 000584dc Cinnamon
+U 000584ee Umber
+U 000584fa Umber
+U 00058506 Peony Purple
+U 00058520 Peony Purple
+U 0005853a Royal Purple
+U 00058554 Royal Purple
+U 0005856e Meadow Green
+U 00058588 Meadow Green
+U 000585a2 Emerald Green
+U 000585be Emerald Green
+U 000585da Dark Grey
+U 000585ee Dark Grey
+U 00058602 Bamboo
+U 00058610 Bamboo
+U 0005861e Vermilion
+U 00058632 Vermilion
+U 00058646 Bright Green
+U 00058660 Bright Green
+U 0005867a Ocean Blue
+U 00058690 Ocean Blue
+U 000586a6 Beige Gray
+U 000586bc Beige Gray
+U 000586d2 Powder Blue
+U 000586ea Powder Blue
+U 00058702 Bright Blue
+U 0005871a Bright Blue
+U 00058732 Slate Blue
+U 00058748 Slate Blue
+U 0005875e Salmon Pink
+U 00058776 Salmon Pink
+U 0005878e Coral
+U 0005879a Coral
+U 000587a6 Burnt Orange
+U 000587c0 Burnt Orange
+U 000587da Blond
+U 000587e6 Blond
+U 000587f2 Sun Flower
+U 00058808 Sun Flower
+U 0005881e Orchid Pink
+U 00058836 Orchid Pink
+U 0005884e Burgundy
+U 00058860 Burgundy
+U 00058872 Cardinal Red
+U 0005888c Cardinal Red
+U 000588a6 Opal Green
+U 000588bc Opal Green
+U 000588d2 Moss Green
+U 000588e8 Moss Green
+U 000588fe Dark Green
+U 00058914 Dark Green
+U 0005892a Aquamariune
+U 00058942 Aquamariune
+U 0005895a Peacock Green
+U 00058976 Peacock Green
+U 00058992 Ivory White
+U 000589aa Ivory White
+U 000589c2 Hazel
+U 000589ce Hazel
+U 000589da Toast
+U 000589e6 Toast
+U 000589f2 Salmon
+U 00058a00 Salmon
+U 00058a0e Cocoa Brown
+U 00058a26 Cocoa Brown
+U 00058a3e Sinna
+U 00058a4a Sinna
+U 00058a56 Sepia
+U 00058a62 Sepia
+U 00058a6e Dark Sepia
+U 00058a84 Dark Sepia
+U 00058a9a Violet Blue
+U 00058ab2 Violet Blue
+U 00058aca Blue Ink
+U 00058adc Blue Ink
+U 00058aee Sola Blue
+U 00058b02 Sola Blue
+U 00058b16 Green Dust
+U 00058b2c Green Dust
+U 00058b42 Crimson
+U 00058b52 Crimson
+U 00058b62 Floral Pink
+U 00058b7a Floral Pink
+U 00058b92 Wine
+U 00058b9c Wine
+U 00058ba6 Olive Drab
+U 00058bbc Olive Drab
+U 00058bd2 Medow
+U 00058bde Medow
+U 00058bea Mustard
+U 00058bfa Mustard
+U 00058c0a Yellow Ocher
+U 00058c24 Yellow Ocher
+U 00058c3e Old Gold
+U 00058c50 Old Gold
+U 00058c62 Honey Dew
+U 00058c76 Honey Dew
+U 00058c8a Tangerine
+U 00058c9e Tangerine
+U 00058cb2 Canary Yellow
+U 00058cce Canary Yellow

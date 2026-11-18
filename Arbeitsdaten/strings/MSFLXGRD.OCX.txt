@@ -1,0 +1,1626 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000178 .text
+A 0000019f `.data
+A 000001c8 .rsrc
+A 000001f0 .reloc
+A 00000a37 t)WVS
+A 00000e24 <8^0VBDataObjectFiles
+A 00000e3c VBDataObject
+A 00000e4c MSFlexGrid Style Property Page
+A 00000e6c MSFlexGrid General Property Page
+A 00000e90 MSFlexGridWndClass
+A 00000ea4 MSHFlx98.chm
+A 00000eb4 Microsoft FlexGrid Control, version 6.0
+A 00000edc MSFlexGrid
+A 00000fe9 H;=xG
+A 000012d1 WSUVj
+A 0000137d HSUVWh
+A 0000146e  _^][
+A 000014bf v,SPV
+A 000014e7 _^][Y
+A 00001570 SUVWP
+A 000015a9 0B= J
+A 00001804 U@RPS
+A 00001832 VWUQj
+A 00001848 T$$RP
+A 0000184e D$ WP
+A 00001866 _^][Y
+A 00001959 VBWRU
+A 00001988 WSVQj
+A 000019e5 VPWSUQ
+A 00001a13 D$8QVRh 
+A 00001cbe D$ _^]
+A 00001d2d _^][Y
+A 00002c8b Pp_^[]
+A 00002eb6 uI_^]3
+A 00002fb6 _^][Y
+A 000032ae  XWWWPQ
+A 00003b72 Pj	hA
+A 00003ea6 SVWjd
+A 00003f1b YY_^3
+A 00004b68  f9x>
+A 00004b7b VtRh@
+A 00004e3b  f9XH
+A 00005f17 u0_^[
+A 00006044 E SVW
+A 00006865 H;=xG
+A 00006b3e F8WWP
+A 00007bc7 FLink
+A 00007bd0 Rich Text Format
+A 0000837a j'PPPPP
+A 00008775 FtH9E
+A 0000882a FpH9E
+A 00008dd0 ;t!Ht
+A 000096e6 PVj V
+A 0000a381 ~ At/
+A 0000a4eb 9^p~&WU3
+A 0000a508 G;~t|
+A 0000a50e C;^p|
+A 0000ae80 hhctrl.ocx
+A 0000ae90 CLSID\{ADB880A6-D8FF-11CF-9377-00AA003B7A11}\InprocServer32
+A 0000b133 Ht`HtRHtDHt
+A 0000b8b6 toJtfJJtRJ
+A 0000c2cd <9~!<+t
+A 0000d054 GPSSSSS
+A 0000d4a1 VtRh@
+A 0000d709 QRRRP
+A 0000e56e _^][Y
+A 0000e587 _^][Y
+A 0000e665 _^][Y
+A 0000e7dc QVWRP
+A 0000e819 D$(PWSUQ
+A 0000e893 L$ RQP
+A 0000e89b _^][Y
+A 0000e8bb _^][Y
+A 0000eb9a MSFlxGrd.Ocx
+A 0000eba7 DLLGetDocumentation
+A 0000ebbb DllCanUnloadNow
+A 0000ebcb DllGetClassObject
+A 0000ebdd DllRegisterServer
+A 0000ebef DllUnregisterServer
+A 0000ef48 MSFlexGridLib
+A 0000ef60 sDecimal
+A 0000f0e8 CtlFrameWork_ReflectWindow
+A 0000f148 runtime error 
+A 0000f15c TLOSS error
+A 0000f16c SING error
+A 0000f17c DOMAIN error
+A 0000f18c R6028
+A 0000f193 - unable to initialize heap
+A 0000f1b4 R6027
+A 0000f1bb - not enough space for lowio initialization
+A 0000f1ec R6026
+A 0000f1f3 - not enough space for stdio initialization
+A 0000f224 R6025
+A 0000f22b - pure virtual function call
+A 0000f24c R6024
+A 0000f253 - not enough space for _onexit/atexit table
+A 0000f284 R6019
+A 0000f28b - unable to open console device
+A 0000f2b0 R6018
+A 0000f2b7 - unexpected heap error
+A 0000f2d4 R6017
+A 0000f2db - unexpected multithread lock error
+A 0000f304 R6016
+A 0000f30b - not enough space for thread data
+A 0000f332 abnormal program termination
+A 0000f354 R6009
+A 0000f35b - not enough space for environment
+A 0000f380 R6008
+A 0000f387 - not enough space for arguments
+A 0000f3ac R6002
+A 0000f3b3 - floating point not loaded
+A 0000f3d4 Microsoft Visual C++ Runtime Library
+A 0000f400 Runtime Error!
+A 0000f410 Program: 
+A 0000f420 <program name unknown>
+A 0000f43c GetLastActivePopup
+A 0000f450 GetActiveWindow
+A 0000f460 MessageBoxA
+A 0000f46c user32.dll
+A 0000f677  SHELL32.DLL
+A 0000f688 DragFinish
+A 0000f698 DragQueryFileA
+A 0000f6a8 ExtractIconA
+A 0000f71d =sRSj
+A 0000f72d =sRWj
+A 0000f979 X_^][
+A 00010371 X_^[]
+A 00011384 QQSVW
+A 000116b8 tXHt3Hu&9M
+A 00011d8d Sj2jd
+A 00011e8d t5Ht,Hu
+A 0001200e HtnHt+H
+A 000131e2 V;Hx|);Hp}$
+A 00013258 V;H||);Ht}$
+A 0001333a V|-;Hp}(j
+A 000133b3 V|-;Ht}(j
+A 00013579 V|j;Bp}e
+A 00013587 |];Jt}X;Bp
+A 000138e2 |L;Fp}G
+A 000138f1 |9;Nt}4
+A 00013a6d |K;Fp}F
+A 00013a7c |8;Nt}3
+A 00013a9c @	<dt
+A 00013bee |F;Fp}A
+A 00013bfd |3;Nt}.
+A 00013e8c VW|If
+A 00013f29 |u;Fp}p
+A 00013f38 |_;Nt}Z
+A 000140bf G;~x|
+A 000140e1 C;^p|
+A 00014102 G;~||
+A 00014124 C;^t|
+A 00014276 Wt(Hu
+A 00014351 | ;At}
+A 000143b8 }R;~t|
+A 0001441a |#;Ht}
+A 000144e3 |#;Hp}
+A 000145ab |";Ap}
+A 000145e8 S|3;Ap}.
+A 00014637 |";At}
+A 00014674 S|3;Ht}.
+A 0001484a ;Fx}Fj
+A 000150a4 |#;Hp}
+A 000150e2 |#;Ht}
+A 00015124 |+;Hp}&
+A 0001516e |+;Ht}&
+A 000151b4 |0;At}+
+A 000151ff V|D;Ht}?f
+A 00015a9d <9~(<+t$<-t <.t
+A 00016638 W [_^
+A 000166aa t$ j<Y3
+A 00016931 -t/v	
+A 0001695d X_^[]
+A 00016a09 t HHuEj
+A 00016ae5 }8_^][Y
+A 00016db6 PT_^3
+A 00016fe9 CT;{Pu
+A 00016ffc 9Ktu>
+A 00017008 te9Kht0
+A 0001707c sPQQQP
+A 000174dd SVHWt
+A 0001756e QH9u$
+A 00017744  f9H<
+A 000180f1  Vh(P
+A 00018158  Vh0P
+A 00018249  VhPP
+A 00018301  VhdP
+A 000184dc  WVhp
+A 000185aa 9]8t6
+A 000185b6 PSVSh
+A 000185ec PSVSh
+A 00018646 PSVSh
+A 00018711 PSVSh
+A 00018820 9]$t	
+A 00018b2e j [9]
+A 00018fcb Yt_VS
+A 0001954a WPQRj
+A 00019b29 G;~,r
+A 00019d97 DPQSQ
+A 00019e04  VVVVVVh
+A 0001a954  SUVW3
+A 0001ab10  _^][
+A 0001ab31  95(I
+A 0001ac4f WuBhl
+A 0001ac77  tShP
+A 0001acfd tNKt#
+A 0001b1a2 t*;L$
+A 0001c34e }6_^[
+A 0001c4c0 HtHHt#HHu
+A 0001c5c4 HtEHH
+A 0001c94b <SVW3
+A 0001ce80 QQSVW
+A 0001d1b6 >f;|$
+A 0001d93e  SRQt
+A 0001dc76 QQSVW3
+A 0001e81d Yt%hI
+A 0001e90a j0h,U
+A 0001e9c4 ubWVj
+A 0001ea76  t=9]
+A 0001ec90 QSUV3
+A 0001ed13 t(9\$
+A 0001ed4d _^][Y
+A 0001f43a t!QRP
+A 0001f6c2 u	C@@f
+A 0001f88c KERNEL32.dll
+A 0001f89a USER32.dll
+A 0001f8a6 ole32.dll
+A 0001f8b0 ADVAPI32.dll
+A 0001f8be OLEAUT32.dll
+A 0001f8cc GDI32.dll
+A 0001fd0a IsDBCSLeadByte
+A 0001fd1c HeapFree
+A 0001fd28 WideCharToMultiByte
+A 0001fd3e lstrlenW
+A 0001fd4a HeapAlloc
+A 0001fd56 lstrcpyA
+A 0001fd62 lstrlenA
+A 0001fd6e lstrcatA
+A 0001fd7a GetProcessHeap
+A 0001fd8c LeaveCriticalSection
+A 0001fda4 EnterCriticalSection
+A 0001fdbc lstrcpyW
+A 0001fdc8 lstrcmpA
+A 0001fdd4 MulDiv
+A 0001fdde InterlockedExchange
+A 0001fdf4 InterlockedIncrement
+A 0001fe0c lstrcpynA
+A 0001fe18 lstrcmpiA
+A 0001fe24 InitializeCriticalSection
+A 0001fe40 DeleteCriticalSection
+A 0001fe58 FreeLibrary
+A 0001fe66 GetProfileStringA
+A 0001fe7a MultiByteToWideChar
+A 0001fe90 InterlockedDecrement
+A 0001fea8 GetModuleFileNameA
+A 0001febe HeapReAlloc
+A 0001fecc GetWindowsDirectoryA
+A 0001fee4 LoadLibraryA
+A 0001fef4 GetLocaleInfoA
+A 0001ff06 GetProcAddress
+A 0001ff18 GetLastError
+A 0001ff28 LockResource
+A 0001ff38 LoadResource
+A 0001ff48 FindResourceA
+A 0001ff58 DisableThreadLibraryCalls
+A 0001ff74 GetVersion
+A 0001ff82 GetFileAttributesA
+A 0001ff98 GetCommandLineA
+A 0001ffaa ExitProcess
+A 0001ffb8 TerminateProcess
+A 0001ffcc GetCurrentProcess
+A 0001ffe0 SetHandleCount
+A 0001fff2 GetStdHandle
+A 00020002 GetFileType
+A 00020010 GetStartupInfoA
+A 00020022 HeapDestroy
+A 00020030 HeapCreate
+A 0002003e VirtualFree
+A 0002004c GetCPInfo
+A 00020058 GetACP
+A 00020062 GetOEMCP
+A 0002006e FreeEnvironmentStringsA
+A 00020088 FreeEnvironmentStringsW
+A 000200a2 GetEnvironmentStrings
+A 000200ba GetEnvironmentStringsW
+A 000200d4 WriteFile
+A 000200e0 VirtualAlloc
+A 000200f0 LCMapStringA
+A 00020100 LCMapStringW
+A 00020110 GetStringTypeA
+A 00020122 GetStringTypeW
+A 00020134 GlobalFree
+A 00020142 GlobalAlloc
+A 00020150 GlobalUnlock
+A 00020160 GlobalLock
+A 0002016e GlobalSize
+A 0002017c GetVersionExA
+A 0002018c SetScrollPos
+A 0002019c GetClientRect
+A 000201ac SetScrollRange
+A 000201be OffsetRect
+A 000201cc ScrollWindow
+A 000201dc GetScrollRange
+A 000201ee IsWindow
+A 000201fa UpdateWindow
+A 0002020a SetRect
+A 00020214 GetKeyState
+A 00020222 CharNextA
+A 0002022e ReleaseDC
+A 0002023a GetDC
+A 00020242 RegisterClassA
+A 00020254 LoadCursorA
+A 00020262 InflateRect
+A 00020270 FrameRect
+A 0002027c DrawEdge
+A 00020288 PostMessageA
+A 00020298 PtInRect
+A 000202a4 ScreenToClient
+A 000202b6 GetCursorPos
+A 000202c6 EnableWindow
+A 000202d6 DefWindowProcA
+A 000202e8 SetCursor
+A 000202f4 SetCapture
+A 00020302 SetTimer
+A 0002030e DrawFocusRect
+A 0002031e KillTimer
+A 0002032a ReleaseCapture
+A 0002033c SetWindowPos
+A 0002034c SetWindowLongA
+A 0002035e GetWindowLongA
+A 00020370 FillRect
+A 0002037c GetSystemMetrics
+A 00020390 GetSysColor
+A 0002039e GetFocus
+A 000203aa DrawTextExA
+A 000203b8 DrawTextA
+A 000203c4 SetFocus
+A 000203d0 IsDlgButtonChecked
+A 000203e6 GetDlgItemInt
+A 000203f6 SendMessageA
+A 00020406 GetDlgItem
+A 00020414 CheckDlgButton
+A 00020426 SetDlgItemInt
+A 00020436 GetDlgItemTextA
+A 00020448 SetDlgItemTextA
+A 0002045a MoveWindow
+A 00020468 GetWindowRect
+A 00020478 EndDialog
+A 00020484 DialogBoxParamA
+A 00020496 GetActiveWindow
+A 000204a8 InvalidateRect
+A 000204ba SendDlgItemMessageA
+A 000204d0 LoadStringA
+A 000204de MessageBoxA
+A 000204ec MessageBeep
+A 000204fa wsprintfA
+A 00020506 DestroyWindow
+A 00020516 CreateWindowExA
+A 00020528 IsWindowVisible
+A 0002053a SetParent
+A 00020546 EndPaint
+A 00020552 BeginPaint
+A 00020560 GetWindow
+A 0002056c ClientToScreen
+A 0002057e GetParent
+A 0002058a EqualRect
+A 00020596 IntersectRect
+A 000205a6 SetWindowRgn
+A 000205b6 ShowWindow
+A 000205c4 WinHelpA
+A 000205d0 IsDialogMessageA
+A 000205e4 GetNextDlgTabItem
+A 000205f8 IsWindowEnabled
+A 0002060a IsChild
+A 00020614 CreateDialogIndirectParamA
+A 00020632 UnregisterClassA
+A 00020646 RegisterClipboardFormatA
+A 00020662 SetCursorPos
+A 00020672 MapWindowPoints
+A 00020684 GetClipboardFormatNameA
+A 0002069e PeekMessageW
+A 000206ae PostMessageW
+A 000206be PeekMessageA
+A 000206ce RegisterWindowMessageA
+A 000206e8 CoTaskMemAlloc
+A 000206fa CoTaskMemRealloc
+A 0002070e CoTaskMemFree
+A 0002071e OleSaveToStream
+A 00020730 OleLoadFromStream
+A 00020744 CreateOleAdviseHolder
+A 0002075c CoCreateInstance
+A 00020770 RevokeDragDrop
+A 00020782 RegisterDragDrop
+A 00020796 DoDragDrop
+A 000207a4 ReleaseStgMedium
+A 000207b8 RegDeleteValueA
+A 000207ca RegCloseKey
+A 000207d8 RegSetValueExA
+A 000207ea RegCreateKeyExA
+A 000207fc RegOpenKeyExA
+A 0002080c RegDeleteKeyA
+A 0002081c RegEnumKeyExA
+A 0002082c RegQueryValueExA
+A 00020840 RegOpenKeyA
+A 0002084e RegQueryValueA
+A 00020860 CreatePen
+A 0002086c DeleteObject
+A 0002087c CreateSolidBrush
+A 00020890 SelectObject
+A 000208a0 GetObjectA
+A 000208ae DeleteDC
+A 000208ba StretchBlt
+A 000208c8 GetStockObject
+A 000208da CreateCompatibleBitmap
+A 000208f4 CreateCompatibleDC
+A 0002090a GetTextMetricsA
+A 0002091c RestoreDC
+A 00020928 ExcludeClipRect
+A 0002093a SaveDC
+A 00020944 LineTo
+A 0002094e MoveToEx
+A 0002095a SetTextColor
+A 0002096a SetBkMode
+A 00020976 GetCurrentPositionEx
+A 0002098e SetViewportExtEx
+A 000209a2 SetWindowExtEx
+A 000209b4 DPtoLP
+A 000209be SetMapMode
+A 000209cc GetTextColor
+A 000209dc CreateBitmap
+A 000209ec EnumFontFamiliesExA
+A 00020a02 GetDeviceCaps
+A 00020a12 GetTextExtentPoint32A
+A 00020a2a CreateFontIndirectA
+A 00020a40 CreateRectRgnIndirect
+A 00020a58 GetViewportExtEx
+A 00020a6c GetWindowExtEx
+A 00020a7e LPtoDP
+A 00020a88 SetViewportOrgEx
+A 00020a9c SetWindowOrgEx
+A 00020aae CreateDCA
+A 00020aba CopyMetaFileA
+A 00020aca CopyEnhMetaFileA
+A 00020ade GetPaletteEntries
+A 00020af2 GetDIBits
+A 00020afe RealizePalette
+A 00020b10 SelectPalette
+A 00020b20 CreateDIBitmap
+A 00020b32 GetBitmapBits
+A 00020b42 CreatePalette
+A 00020b52 GetNearestColor
+A 00023988 Licenses
+A 00023a5c %s%s.DLL
+A 00023a68 %s%s.DLL
+A 00023a74 %u\%s.dll
+A 00023b88 DISPLAY
+A 00023b90 {%08lX-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+A 00023bc4 CLSID\%s
+A 00023bd0 %s Object
+A 00023bdc InprocServer32
+A 00023bec Apartment
+A 00023bf8 ThreadingModel
+A 00023c08 ThreadingModel
+A 00023c1c %s Object
+A 00023c28 CLSID
+A 00023c30 CurVer
+A 00023c38 %s.%s.%ld
+A 00023c44 %s Object
+A 00023c50 CLSID
+A 00023c58 CLSID\%s
+A 00023c64 VersionIndependentProgID
+A 00023c80 %s.%s
+A 00023c88 ProgID
+A 00023c90 %s.%s.%ld
+A 00023c9c TypeLib
+A 00023ca4 Version
+A 00023cac %ld.%ld
+A 00023cb4 CLSID\%s
+A 00023cc0 Control
+A 00023cc8 MiscStatus
+A 00023ce4 ToolboxBitmap32
+A 00023cf4 CLSID
+A 00023cfc \InprocServer32
+A 00023d0c %s.%s.%ld
+A 00023d18 %s.%s
+A 00023d20 %s.%s\CurVer
+A 00023d30 %s.%s.%ld
+A 00023d3c %s.%s.%ld
+A 00023d48 %s.%s.%ld
+A 00023d54 %s.%s
+A 00023d5c \HELP
+A 00023d64 CLSID\%s
+A 00023d70 Implemented Categories
+A 00023d88 %s\InprocServer
+A 00023d9c VERSION.DLL
+A 00023da8 GetFileVersionInfoSizeA
+A 00023dc0 VERSION.DLL
+A 00023dcc GetFileVersionInfoA
+A 00023de0 VERSION.DLL
+A 00023dec VerQueryValueA
+A 00023e0c >LangRef
+A 00023e18 CtlFrameWork_Parking
+A 00023e30 CtlFrameWork_Parking
+A 00023e48 CtlFrameWork_Parking
+A 00023e90 %ld - %s
+A 00023e9c WM_DBCS_TRAILBYTE
+A 00025469 wwwwwwwwwwwwww
+A 00025479 wwwwwwwwwwwwww
+A 0002548c wwwwwwwwwww
+A 0002549d wwwwwwwwww
+A 000255f9 wwwwwwwwwwwwww
+A 00025609 wwwwwwwwwwwwww
+A 00025619 wwwwwwwwwwwwww
+A 00025629 wwwwwwwwwwwwww
+A 00025747 wwwwwp{p
+A 000257b3 wwwwwwwwwMSFT
+A 00026660 <8^0(
+A 000267e6 stdole2.tlbWWW
+A 000269ff 6MSFlexGridLibWWW
+A 00026a1c IVBDataObjectWWWd
+A 00026a38 DataObjectWW
+A 00026a50 IVBDataObjectFilesWW,
+A 00026a70 DataObjectFilesW
+A 00026a89 8$xOLEDragConstants
+A 00026aa8 OLEDropConstantsX
+A 00026ac3 EDragOverConstantsWWW
+A 00026ae4 ClipBoardConstantsWW 
+A 00026b04 OLEDropEffectConstantsWW
+A 00026b28 IRowCursorWW
+A 00026b40 ErrorConstantsWWL
+A 00026b5c AppearanceSettingsWW
+A 00026b79 8	)BorderStyleSettingsW
+A 00026b9c FocusRectSettingsWWWx
+A 00026bbb XHighLightSettingsWWW
+A 00026bdc ScrollBarsSettingsWW@
+A 00026bfc TextStyleSettingsWWW
+A 00026c1c FillStyleSettingsWWW
+A 00026c39 8kJGridLineSettingsl
+A 00026c58 SelectionModeSettingsWWW
+A 00026c7b IMergeCellsSettingsWW4
+A 00026c9c PictureTypeSettingsW
+A 00026cb9 8#HAllowUserResizeSettingsW
+A 00026ce0 MousePointerSettings`	
+A 00026d00 SortSettings
+A 00026d17 %AlignmentSettingsWWW(
+A 00026d37 PIMSFlexGridW
+A 00026d4f lDMSFlexGridEventsWWW
+A 00026d70 MSFlexGridWW
+A 00026d88 ClearWWW
+A 00026d9c GetDataW
+A 00026db0 sFormatW
+A 00026dc4 pvDataWW
+A 00026dd8 GetFormatWWW
+A 00026dee x}pbFormatSupportedWWW
+A 00026e0f rSetDataW
+A 00026e23 hvValueWW
+A 00026e36 5tvFormatW
+A 00026e4a wXFilesWWW
+A 00026e60 pFilesWW
+A 00026e73 zItem
+A 00026e84 lIndexWW
+A 00026e98 bstrItem
+A 00026eaa 0vCountWWW
+A 00026ec0 plCountW
+A 00026ed3 rAddW
+A 00026ee4 bstrFilename
+A 00026efc vIndexWW
+A 00026f10 RemoveWW
+A 00026f22 xA_NewEnum
+A 00026f38 ppUnkWWW
+A 00026f4b @flexOLEDragManualWWW
+A 00026f6c flexOLEDragAutomatic
+A 00026f8c flexOLEDropNoneW
+A 00026fa7 oflexOLEDropManualWWWX
+A 00026fc7 "flexEnterWWWX
+A 00026fe0 flexLeaveWWWX
+A 00026ff8 flexOver
+A 0002700c flexCFTextWW
+A 00027021 0IrflexCFBitmap
+A 00027039 0E`flexCFMetafileWW
+A 00027057 |flexCFDIBWWW
+A 00027070 flexCFPaletteWWW
+A 00027089 0vWflexCFEMetafileW
+A 000270a8 flexCFFilesW
+A 000270c0 flexCFRTFWWW 
+A 000270d8 flexOLEDropEffectNoneWWW 
+A 000270fb @flexOLEDropEffectCopyWWW 
+A 00027120 flexOLEDropEffectMoveWWW 
+A 00027144 flexOLEDropEffectScrollW
+A 00027168 flexerrIllegaFunctionCallWWW
+A 0002718f {flexerrObjIllegalUse
+A 000271b0 flexerrClipInvalidFormat
+A 000271d3 tflexerrDataObjectLockedW
+A 000271f8 flexerrExpectedAnArgumentWWW
+A 0002721f kflexerrRecursiveOLEDragW
+A 00027241 0a{flexerrUserFormatNotBinArray
+A 00027269 0{oflexerrDataNotSetForFormatWW
+A 00027291 0y~flexerrUnknownErrorW
+A 000272b3 aflexerrSubscript
+A 000272d0 flexerrBadValueW
+A 000272ec flexerrGetNotSupportedWW
+A 0002730f )flexerrSetNotPermittedWW
+A 00027333 yflexerrOutOfMemoryWW
+A 00027354 flexerrVB30000WW
+A 00027370 flexerrVB30001WW
+A 0002738c flexerrVB30002WW
+A 000273a8 flexerrVB30004WW
+A 000273c4 flexerrVB30005WW
+A 000273e0 flexerrVB30006WW
+A 000273fc flexerrVB30008WW
+A 00027418 flexerrVB30009WW
+A 00027434 flexerrVB30010WW
+A 00027450 flexerrVB30011WW
+A 0002746c flexerrVB30013WW
+A 00027488 flexerrVB30014WW
+A 000274a4 flexerrVB30015WW
+A 000274c0 flexerrVB30016WW
+A 000274dc flexerrVB30017WWL
+A 000274f8 flexFlatL
+A 0002750c flex3DWW
+A 00027520 flexBorderNoneWW
+A 0002753c flexBorderSingle
+A 00027558 flexFocusNoneWWW
+A 00027573 rflexFocusLightWW
+A 00027590 flexFocusHeavyWWx
+A 000275ac flexHighlightNeverWWx
+A 000275cc flexHighlightAlwaysWx
+A 000275eb .flexHighlightWithFocusWW
+A 00027610 flexScrollBarNoneWWW
+A 00027630 flexScrollBarHorizontalW
+A 00027654 flexScrollBarVerticalWWW
+A 00027678 flexScrollBarBothWWW@
+A 00027698 flexTextFlat@
+A 000276b0 flexTextRaisedWW@
+A 000276cb RflexTextInsetWWW@
+A 000276e7 NflexTextRaisedLightW@
+A 00027708 flexTextInsetLightWW
+A 00027727 -flexFillSingleWW
+A 00027743 MflexFillRepeatWW
+A 00027760 flexGridNone
+A 00027777 RflexGridFlat
+A 00027790 flexGridInsetWWW
+A 000277ac flexGridRaisedWWl
+A 000277c8 flexSelectionFreeWWWl
+A 000277e8 flexSelectionByRowWWl
+A 00027808 flexSelectionByColumnWWW
+A 0002782b <flexMergeNeverWW
+A 00027847 :flexMergeFreeWWW
+A 00027861 0{qflexMergeRestrictRowsWWW
+A 00027885 0R7flexMergeRestrictColumns
+A 000278ac flexMergeRestrictAll4
+A 000278cb 6flexPictureColor4
+A 000278e8 flexPictureMonochromeWWW
+A 0002790c flexResizeNoneWW
+A 00027928 flexResizeColumnsWWW
+A 00027947 /flexResizeRowsWW
+A 00027964 flexResizeBothWW
+A 00027980 flexDefaultW
+A 00027998 flexArrowWWW
+A 000279b0 flexCrossWWW
+A 000279c8 flexIBeamWWW
+A 000279e0 flexIcon
+A 000279f4 flexSize
+A 00027a05 0{3flexSizeNESW
+A 00027a20 flexSizeNSWW
+A 00027a38 flexSizeNWSE
+A 00027a50 flexSizeEWWW
+A 00027a68 flexUpArrowW
+A 00027a80 flexHourglassWWW
+A 00027a9c flexNoDropWW
+A 00027ab4 flexArrowHourGlassWW
+A 00027ad3 OflexArrowQuestionWWW
+A 00027af4 flexSizeAllW
+A 00027b0b (flexCustomWW`	
+A 00027b24 flexSortNone`	
+A 00027b3c flexSortGenericAscending`	
+A 00027b5f RflexSortGenericDescendingWWW`	
+A 00027b88 flexSortNumericAscending`	
+A 00027bac flexSortNumericDescendingWWW`	
+A 00027bd4 flexSortStringNoCaseAscendingWWW`	
+A 00027c00 flexSortStringNoCaseDescendingWW`	
+A 00027c2c flexSortStringAscendingW`	
+A 00027c50 flexSortStringDescending
+A 00027c74 flexAlignLeftTop
+A 00027c8d 02eflexAlignLeftCenterW
+A 00027cb0 flexAlignLeftBottomW
+A 00027cd0 flexAlignCenterTopWW
+A 00027cef 6flexAlignCenterCenterWWW
+A 00027d13 vflexAlignCenterBottomWWW
+A 00027d38 flexAlignRightTopWWW
+A 00027d58 flexAlignRightCenter
+A 00027d77 SflexAlignRightBottom
+A 00027d97 aflexAlignGeneral(
+A 00027db3 URows(
+A 00027dc4 Cols(
+A 00027dd4 FixedRowsWWW(
+A 00027dec FixedColsWWW(
+A 00027e04 VersionW(
+A 00027e18 FormatString(
+A 00027e30 TopRowWW(
+A 00027e43 &LeftColW(
+A 00027e58 RowW(
+A 00027e68 ColW(
+A 00027e77 jRowSelWW(
+A 00027e8b ]ColSelWW(
+A 00027ea0 Text(
+A 00027eb0 BackColorWWW(
+A 00027ec8 ForeColorWWW(
+A 00027ee0 BackColorFixedWW(
+A 00027efc ForeColorFixedWW(
+A 00027f18 BackColorSel(
+A 00027f2e FtForeColorSel(
+A 00027f47 (BackColorBkg(
+A 00027f60 WordWrap(
+A 00027f74 Font(
+A 00027f83 pFontWidthWWW(
+A 00027f9c CellFontName(
+A 00027fb4 CellFontSize(
+A 00027fcc CellFontBold(
+A 00027fe3 GCellFontItalicWW(
+A 00028000 CellFontUnderlineWWW(
+A 0002801e >cCellFontStrikeThroughWWW(
+A 00028042 geCellFontWidthWWW(
+A 0002805f (TextStyleWWW(
+A 00028077 *TextStyleFixedWW(
+A 00028093 2ScrollTrackW(
+A 000280ac FocusRectWWW(
+A 000280c4 HighLightWWW(
+A 000280dc RedrawWW(
+A 000280f0 ScrollBarsWW(
+A 00028107 VMouseRow(
+A 0002811c MouseCol(
+A 0002812f HCellLeft(
+A 00028144 CellTopW(
+A 00028158 CellWidthWWW(
+A 00028170 CellHeightWW(
+A 00028187 -RowHeightMin(
+A 0002819f iFillStyleWWW(
+A 000281b7 +GridLinesWWW(
+A 000281d0 GridLinesFixedWW(
+A 000281ec GridColorWWW(
+A 00028203 eGridColorFixedWW(
+A 00028220 CellBackColorWWW(
+A 0002823c CellForeColorWWW(
+A 00028257 MCellAlignmentWWW(
+A 00028274 CellTextStyleWWW(
+A 00028290 CellPictureAlignment(
+A 000282b0 Clip(
+A 000282c0 Sort(
+A 000282cf dSelectionModeWWW(
+A 000282ec MergeCellsWW(
+A 00028304 AllowBigSelectionWWW(
+A 00028324 AllowUserResizingWWW(
+A 00028344 BorderStyleW(
+A 0002835c hWnd(
+A 0002836c EnabledW(
+A 0002837e "*AppearanceWW(
+A 00028398 MousePointer(
+A 000283af aMouseIconWWW(
+A 000283c6 ?sPictureTypeW(
+A 000283df *PictureW(
+A 000283f4 CellPictureW(
+A 0002840c AboutBox(
+A 0002841e ]ITextArrayWWW
+A 00028438 indexWWW(
+A 0002844c ColAlignment(
+A 00028464 ColWidth(
+A 00028478 RowHeightWWW(
+A 00028490 MergeRow(
+A 000284a2 U}MergeCol(
+A 000284b7 3RowPositionW(
+A 000284d0 ColPositionW(
+A 000284e7 1RowDataW(
+A 000284fc ColDataW(
+A 00028510 TextMatrixWW(
+A 00028527  AddItemW(
+A 0002853b ZRemoveItemWW(
+A 00028554 RefreshW(
+A 00028568 DataSourceWW(
+A 00028580 RowIsVisible(
+A 00028598 ColIsVisible(
+A 000285ae G\RowPosWW(
+A 000285c2 2OColPosWW(
+A 000285d8 GridLineWidthWWW(
+A 000285f4 FixedAlignmentWW(
+A 00028610 FontName(
+A 00028624 FontSize(
+A 00028638 FontBold(
+A 0002864c FontItalicWW(
+A 00028664 FontStrikethruWW(
+A 00028680 FontUnderlineWWW(
+A 0002869c RightToLeftW(
+A 000286b4 OLEDropModeW
+A 000286cc psOLEDropModeWWW(
+A 000286e8 OLEDragW
+A 000286fc ClickWWW
+A 0002870e .aKeyDownW
+A 00028724 KeyCodeW
+A 00028738 ShiftWWW
+A 0002874c DblClick
+A 00028760 KeyPress
+A 00028773 #KeyAscii
+A 00028787 MKeyUpWWW
+A 0002879c MouseDownWWW
+A 000287b4 ButtonWW
+A 000287e8 MouseMoveWWW
+A 00028800 MouseUpW
+A 00028814 SelChangeWWW
+A 0002882c RowColChange
+A 00028844 EnterCellWWW
+A 0002885a j`LeaveCellWWW
+A 00028874 ScrollWW
+A 00028888 CompareW
+A 0002889b URow1
+A 000288ab URow2
+A 000288cc OLEStartDrag
+A 000288e3 ;Data
+A 000288f4 AllowedEffectsWW
+A 0002890f SOLEGiveFeedbackW
+A 0002892b |EffectWW
+A 00028940 DefaultCursorsWW
+A 0002895a /JOLESetDataWW
+A 00028974 DataFormatWW
+A 0002898a 0fOLECompleteDragW
+A 000289a7 VOLEDragOverW
+A 000289c0 StateWWW
+A 000289d4 OLEDragDropW$
+A 000289e2 Microsoft FlexGrid Control 6.0 (SP3)WW
+A 00028a0a MSFlxGrd.OCXWW
+A 00028a1a MSHFlx98.chmWWX
+A 00028a2a Constants for the OLEDragMode property (but not the DragMode or OLEDropMode properties).WWX
+A 00028a86 Constants for the OLEDropMode property (but not the DragMode or OLEDragMode properties).WWC
+A 00028ae2 State transition constants for the DragOver and OLEDragOver events.WWW
+A 00028b2a Clipboard format constants.WWW3
+A 00028b4a Drop effect constants for OLE drag and drop events.WWW
+A 00028b82 Error constantsWWW
+A 00028b96 Appearance ConstantsWW
+A 00028bae BorderStyle ConstantsW
+A 00028bc6 FocusRect ConstantsWWW
+A 00028bde Highlight ConstantsWWW
+A 00028bf6 ScrollBars ConstantsWW
+A 00028c0e TextStyle ConstantsWWW
+A 00028c26 FillStyle ConstantsWWW
+A 00028c3e GridLines ConstantsWWW
+A 00028c56 SelectionMode ConstantsWWW
+A 00028c72 MergeCells ConstantsWW
+A 00028c8a PictureType ConstantsW
+A 00028ca2 AllowUserResizing ConstantsWWW
+A 00028cc2 MousePointer Constants
+A 00028cda Sort Constants
+A 00028cea Alignment ConstantsWWW1
+A 00028d02 Dispatch interface for Microsoft FlexGrid ControlW.
+A 00028d36 Event interface for Microsoft FlexGrid Control3
+A 00028d66 Clears all data and formats in a DataObject object.WWW>
+A 00028d9e Retrieves data of a specified format from a DataObject object.Q
+A 00028dde Determines if a specified clipboard format is supported by the DataObject object.WE
+A 00028e32 Adds a supported format and possibly its data to a DataObject object.W7
+A 00028e7a A collection of filenames used by the vbCFFiles format.WWWn
+A 00028eb6 Returns a specific filename by index from the Files collection of a DataObject object (vbCFFiles format only).g
+A 00028f26 Returns the number of filenames in the Files collection of a DataObject object (vbCFFiles format only).WWWW
+A 00028f92 Adds a filename to the Files collection of a DataObject object (vbCFFiles format only).WWWc
+A 00028fee Clears all filenames stored in the Files collection of a DataObject object (vbCFFiles format only).WWW\
+A 00029056 Removes a filename from the Files collection of a DataObject object (vbCFFiles format only).WWB
+A 000290b6 OLE drag/drop will be initialized only under programmatic control.j
+A 000290fa OLE drag/drop will be initialized when the user drags 'out' of the control, or under programmatic control.$
+A 00029166 Accepts no OLE drag/drop operations.WW9
+A 0002918e Accepts an OLE drag/drop under programmatic control only.W#
+A 000291ca Source control dragged into target.WWW%
+A 000291f2 Source control dragged out of target.W>
+A 0002921a Source control dragged from one position in target to another.
+A 0002925a Text (.TXT file).W
+A 0002926e Bitmap (.BMP file).WWW
+A 00029286 Metafile (.WMF file).W
+A 0002929e Device-independent bitmap.
+A 000292ba Color palette.
+A 000292ca Enhanced metafile (.EMF file).*
+A 000292ea Filename list (Microsoft Windows Explorer)
+A 00029316 Rich Text Format (.RTF file).W<
+A 00029336 No OLE drag/drop operation has taken place/would take place.WW@
+A 00029376 A mask to indicate that a copy has taken place/would take place.WW?
+A 000293ba A mask to indicate that a move has take place/would take place.WWWI
+A 000293fe A mask to indicate that the drop target window has scrolled/would scroll.W
+A 0002944a Invalid procedure call
+A 00029462 Invalid object use-
+A 00029476 Specified format doesn't match format of dataWX
+A 000294a6 DataObject formats list may not be cleared or expanded outside of the OLEStartDrag eventWW
+A 00029502 Expected at least one argument1
+A 00029522 Illegal recursive invocation of OLE drag and dropW
+A 00029556 Non-intrinsic OLE drag and drop formats used with SetData require Byte array data.  GetData may return more bytes than were given to SetData.WN
+A 000295e6 Requested data was not supplied to the DataObject during the OLESetData event.0
+A 00029636 An error has occurred while doing this operationWW
+A 0002966a Subscript out of range
+A 00029682 Invalid property value
+A 0002969a Property not available
+A 000296b2 Set not permittedW
+A 000296c6 Out of memoryW%
+A 000296d6 Cannot do a RemoveItem on a fixed rowW!
+A 000296fe Cannot use AddItem on a fixed rowW
+A 00029722 Grid does not contain that row#
+A 00029742 Invalid Column number for alignmentWWW
+A 0002976a Invalid Alignment valueWWW&
+A 00029786 Unable to Allocate Memory For FlexGrid
+A 000297ae Not a valid Picture typeWW
+A 000297ca Invalid Row ValueW
+A 000297de Invalid Column ValueWW%
+A 000297f6 Unable to register the memory managerW
+A 0002981e Invalid Row Height ValueWW
+A 0002983a Invalid Column Width Value!
+A 00029856 Can not remove last non-fixed rowW3
+A 0002987a FixedRows must be at least one less than Rows valueWWW3
+A 000298b2 FixedCols must be at least one less than Cols valueWWW
+A 000298ea FlatWW
+A 000298f2 3DWWWW
+A 000298fa NoneWW
+A 00029902 Single
+A 0002990a LightW
+A 00029912 HeavyW
+A 0002991a NeverW
+A 00029922 Always
+A 0002992a With Focus
+A 00029936 Horizontal
+A 00029942 VerticalWW
+A 0002994e BothWW
+A 00029956 Raised
+A 0002995e InsetW
+A 00029966 Raised LightWW
+A 00029976 Inset LightWWW
+A 00029986 Repeat
+A 0002998e FreeWW
+A 00029996 By Row	
+A 0002999e By ColumnW
+A 000299aa Restrict RowsW
+A 000299ba Restrict ColumnsWW
+A 000299ce Restrict AllWW
+A 000299de Display Compatible
+A 000299f2 Monochrome BitmapW
+A 00029a06 ColumnsWWW
+A 00029a12 RowsWW
+A 00029a1a DefaultWWW
+A 00029a26 ArrowW
+A 00029a2e CrossW
+A 00029a36 I-Beam
+A 00029a3e IconWW
+A 00029a46 SizeWW
+A 00029a4e Size NE SW
+A 00029a5a Size NSWWW
+A 00029a66 Size NW SE
+A 00029a72 Size EWWWW
+A 00029a7e Up ArrowWW	
+A 00029a8a HourglassW
+A 00029a96 No DropWWW
+A 00029aa2 ArrowHourGlass
+A 00029ab2 ArrowQuestionW
+A 00029ac2 SizeAllWWW
+A 00029ace Custom
+A 00029ad6 No SortWWW
+A 00029ae2 Generic ascending sort
+A 00029afa Generic descending sortWWW
+A 00029b16 Numeric ascending sort
+A 00029b2e Numeric descending sortWWW'
+A 00029b4a String ascending sort, case-insensitiveWWW(
+A 00029b76 String descending sort, case-insensitiveWW%
+A 00029ba2 String ascending sort, case-sensitiveW&
+A 00029bca String descending sort, case-sensitive$
+A 00029bf2 Align to left top corner of the cellWW 
+A 00029c1a Align to left center of the cellWW'
+A 00029c3e Align to left bottom corner of the cellWWW
+A 00029c6a Align to center top of the cellWWW
+A 00029c8e Align to center of the cellWWW"
+A 00029cae Align to center bottom of the cell%
+A 00029cd2 Align to right top corner of the cellW!
+A 00029cfa Align to right center of the cellW(
+A 00029d1e Align to right bottom corner of the cellWW3
+A 00029d4a Align strings to left, numbers to right of the cellWWW=
+A 00029d82 Determines the total number of columns or rows in a FlexGrid.WW
+A 00029dc2 Returns/sets the total number of fixed (non-scrollable) columns or rows for a FlexGrid.WWWG
+A 00029e1e Returns the version of the FlexGrid control currently loaded in memory.WWW
+A 00029e6a Allows you to set up a FlexGrid's column widths, alignments, and fixed row and column text at design time. See the help file for details.WW
+A 00029ef6 Returns/sets the uppermost row displayed in the FlexGrid. Not available at design time.WWWs
+A 00029f52 Returns/sets the leftmost visible column (other than a fixed column) in the FlexGrid. Not available at design time.WWWI
+A 00029fca Returns/sets the active cell in a FlexGrid. Not available at design time.Wc
+A 0002a016 Determines the starting or ending row or column for a range of cells. Not available at design time.WWW;
+A 0002a07e Returns/sets the text contents of a cell or range of cells.WWWF
+A 0002a0be Returns/sets the background color of various elements of the FlexGrid.D
+A 0002a106 Determines the color used to draw text on each part of the FlexGrid.WWB
+A 0002a14e Returns/sets whether text within a cell should be allowed to wrap.?
+A 0002a192 Returns/sets the default font or the font for individual cells.WWWP
+A 0002a1d6 Returns or sets the width, in points, of the font to be used for text displayed.WWI
+A 0002a22a Returns/sets the font to be used for individual cells or ranges of cells.W?
+A 0002a276 Returns or sets the size, in points, for the current cell text.WWW9
+A 0002a2ba Returns or sets the bold style for the current cell text.W;
+A 0002a2f6 Returns or sets the italic style for the current cell text.WWW>
+A 0002a336 Returns or sets the underline style for the current cell text.B
+A 0002a376 Returns or sets the strikethrough style for the current cell text.9
+A 0002a3ba Returns or sets the font width for the current cell text.W,
+A 0002a3f6 Returns/sets 3D effects for displaying text.WWs
+A 0002a426 Returns/sets whether FlexGrid should scroll its contents while the user moves the scroll box along the scroll bars.WWW^
+A 0002a49e Determines whether the FlexGrid control should draw a focus rectangle around the current cell.7
+A 0002a4fe Returns/sets whether selected cells appear highlighted.WWW6
+A 0002a53a Enables or disables redrawing of the FlexGrid control.G
+A 0002a572 Returns/sets whether a FlexGrid has horizontal or vertical scroll bars.WWWX
+A 0002a5be Returns/sets over which row (column) the mouse pointer is. Not available at design time.WW7
+A 0002a61a Returns the left position of the current cell, in twipsWWW>
+A 0002a656 Returns or sets the top position of the current cell, in twips/
+A 0002a696 Returns the width of the current cell, in twipsWWW1
+A 0002a6ca Returns the height of the current cell, in Twips.WC
+A 0002a6fe Returns/sets a minimum row height for the entire control, in Twips.WWW
+A 0002a746 Determines whether setting the Text property or one of the Cell formatting properties of a FlexGrid applies the change to all selected cells.WB
+A 0002a7d6 Returns/sets the type of lines that should be drawn between cells.E
+A 0002a81a Returns/sets the color used to draw the lines between FlexGrid cells.WY
+A 0002a862 Returns/sets the background and foreground colors of individual cells or ranges of cells.Wf
+A 0002a8be Returns/sets the alignment of data in a cell or range of selected cells. Not available at design time.F
+A 0002a926 Returns/sets 3D effects for text on a specific cell or range of cells.j
+A 0002a96e Returns/sets the alignment of pictures in a cell or range of selected cells. Not available at design time.e
+A 0002a9da Returns/sets the contents of the cells in a FlexGrid's selected region. Not available at design time.W
+A 0002aa42 Action-type property that sorts selected rows according to selected criteria. Not available at design-time, write-only at run time.WWWp
+A 0002aaca Returns/sets whether a FlexGrid should allow regular cell selection, selection by rows, or selection by columns.WWw
+A 0002ab3e Returns/sets whether cells with the same contents should be grouped in a single cell spanning multiple rows or columns.WWWm
+A 0002abba Returns/sets whether clicking on a column or row header should cause the entire column or row to be selected.WZ
+A 0002ac2a Returns/sets whether the user should be allowed to resize rows and columns with the mouse.,
+A 0002ac86 Returns/sets the border style for an object.WW&
+A 0002acb6 Returns a handle to a form or control.d
+A 0002acde Returns/sets a value that determines whether a form or control can respond to user-generated events.WWB
+A 0002ad46 Returns/sets whether a control should be painted with 3-D effects.M
+A 0002ad8a Returns/sets the type of mouse pointer displayed when over part of an object.W!
+A 0002adda Returns/sets a custom mouse icon.WR
+A 0002adfe Returns/sets the type of picture that should be generated by the Picture property.
+A 0002ae52 Returns a picture of the FlexGrid control, suitable for printing, saving to disk, copying to the clipboard, or assigning to a different control.WWQ
+A 0002aee6 Returns/sets an image to be displayed in the current cell or in a range of cells.W=
+A 0002af3a Displays an About box with version and copyright information.WG
+A 0002af7a Returns/sets the text contents of an arbitrary cell (single subscript).WWW
+A 0002afc6 Returns/sets the alignment of data in a column. Not available at design time (except indirectly through the FormatString property).WWWT
+A 0002b04e Determines the width of the specified column in Twips. Not available at design time.WWT
+A 0002b0a6 Returns/sets the height of the specified row in Twips. Not available at design time.WW
+A 0002b0fe Returns/sets which rows (columns) should have their contents merged when the MergeCells property is set to a value other than 0 - Never.WWx
+A 0002b18a Returns the distance in Twips between the upper-left corner of the control and the upper-left corner of a specified row.WW{
+A 0002b206 Returns the distance in Twips between the upper-left corner of the control and the upper-left corner of a specified column.WWW
+A 0002b286 Array of long integer values with one item for each row (RowData) and for each column (ColData) of the FlexGrid. Not available at design time.I
+A 0002b316 Returns/sets the text contents of an arbitrary cell (row/col subscripts).W1
+A 0002b362 Adds a new row to a FlexGrid control at run time.W1
+A 0002b396 Removes a row from a FlexGrid control at run timeW[
+A 0002b3ca Clears the contents of the FlexGrid. This includes all text, pictures, and cell formatting.WWW/
+A 0002b42a Forces a complete repaint of a form or control.WWW-
+A 0002b45e Returns/sets the data source for the control.W-
+A 0002b48e Returns True if the specified row is visible.W0
+A 0002b4be Returns True if the specified column is visible.WWB
+A 0002b4f2 Returns/sets the width in Pixels of the gridlines for the control.B
+A 0002b536 Returns/sets the alignment of data in the fixed cells of a column.Z
+A 0002b57a Determines text display direction and control visual appearance on a bidirectional system.@
+A 0002b5d6 Returns/Sets whether this control can act as an OLE drop target.WWC
+A 0002b61a Starts an OLE drag/drop event with the given control as the source.WWWK
+A 0002b662 Fired when the user presses and releases the mouse button over the control.WWW!
+A 0002b6b2 Fired when the user pushes a key.W=
+A 0002b6d6 Fired when the user double-clicks the mouse over the control.W"
+A 0002b716 Fired when the user presses a key.#
+A 0002b73a Fired when the user releases a key.WWW<
+A 0002b762 Fired when the user presses a mouse button over the control.WW5
+A 0002b7a2 Fired when the user moves the mouse over the control.W=
+A 0002b7da Fired when the user releases a mouse button over the control.W/
+A 0002b81a Fired when the selected range of cells changes.WWW$
+A 0002b84e Fired when the current cell changes.WW&
+A 0002b876 Fired before the cursor enters a cell.%
+A 0002b89e Fired after the cursor leaves a cell.W3
+A 0002b8c6 Fired when the TopRow or LeftCol properties change.WWW.
+A 0002b8fe Fired during custom sorts to compare two rows.
+A 0002b92e OLEStartDrag event
+A 0002b942 OLEGiveFeedback eventW
+A 0002b95a OLESetData eventWW
+A 0002b96e OLECompleteDrag eventW
+A 0002b986 OLEDragOver eventW
+A 0002b99a OLEDragDrop eventW
+A 00038423 5E5K5`5o5x5
+A 0003845b 7%707n7v7
+A 00038479 9"9(9.9B9H9P9Z9a9z9
+A 0003849d :%:/:7:D:I:V:[:u:
+A 000384bb ;#;A;R;X;
+A 000384c9 ;8<@<L<f<
+A 000384d9 <J=k=u=
+A 000384eb >?>d>k>z>
+A 00038511 0	0"0>0H0N0a0
+A 00038529 1/171D1L1U1b1
+A 00038543 2;2U2
+A 000385a5 9I9P9V9`9f9
+A 000385b9 9P:Y:m:
+A 000385c9 ;*<h<
+A 000385e5 =$=4=;=B=I=P=W=^=e=l=s=}=
+A 00038605 =h>o>v>}>
+A 00038637 ? ?'?.?
+A 00038651 080=0M0S0
+A 0003866d 2J3^3
+A 0003867d 4.4>4
+A 000386a1 818I8Z8b8t8
+A 000386cf =g>}>
+A 000386f5 2,262<2X2^2w2
+A 00038707 3C3f3
+A 00038711 3;4E4u4
+A 0003872d 6"7H7
+A 00038737 8C9X9j9q9w9
+A 0003875c )1/1<1X1^1}1
+A 00038775 3K4f4
+A 00038783 5'8.888I8
+A 00038799 93999
+A 000387b3 ;4;P;#<
+A 000387d9 021?1i1\3p3
+A 000387ed 5-6?6}6
+A 000387fb :A;K;
+A 00038829 0#0*01080?0F0M0T0[0b0i0p0z0
+A 0003885b 1L2T2h2
+A 000388bf 6 6$6(6064686<6@6H6L6P6T6X6\6`6d6h6l6p6t6x6|6
+A 00038937 7 7$7(7,7074787<7@7D7H7L7P7X7\7`7d7h7l7p7t7x7|7
+A 000389b3 8 8$8(8,8084888<8@8D8H8L8P8T8X8\8`8d8h8l8p8t8x8|8
+A 00038a33 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 00038ab3 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 00038b2f ; ;$;(;,;0;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00038bab < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 00038c2b = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 00038cab > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 00038d23 ? ?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 00038da7 0 0$0(0,00080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00038e21 1 1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 00038e9d 2 2$2(2,2024282<2@2D2H2L2P2T2X2`2d2h2l2p2t2x2
+A 00038f15 3 3$3(3,30383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 00038f8d 4 4$4(4,4044484<4@4D4H4L4P4X4\4`4d4h4p4t4x4
+A 00038fcf 4X5\5`5d5h5l5p5t5?7
+A 00038fe9 8&8-848B8K8e8k8q8v8
+A 0003900b 9*9J9i9p9
+A 0003901b :9:C:S:[:a:}:
+A 00039037 ;5;<;[;q;
+A 00039045 ;N<[<(=\=
+A 00039073 5	6*6C6W6
+A 00039087 9D: ;
+A 00039093 ;!<`<
+A 00039099 <T?[?f?
+A 000390af 0#13292
+A 000390b7 2K3Q3]3
+A 000390e0 80#121R1p1y1
+A 000390ed 2@3L3x3
+A 000390fd 5"5=5r5
+A 00039133 7175797=7A7E7I7M7Q7U7Y7]7a7e7i7m7q7u7
+A 0003916d 8&9L9
+A 0003917f >%>R>u>
+A 0003918d ? ?Q?~?
+A 000391b7 2/3K3
+A 000391cd :!;*;R;
+A 000391d9 ;!<+<
+A 000391ed 0-1\1e1
+A 000391f9 1Q5o5{5
+A 0003921b 787H7u7
+A 0003922b 888L8y8
+A 0003923b 909@9|9
+A 00039243 9/:@:c:|:
+A 0003924d :J;T;^;
+A 00039263 =2=8=L=z=
+A 00039283 >8?r?
+A 0003929b 0/0E0
+A 000392af 2(2S2Y2
+A 000392c3 363<3b3h3
+A 000392cf 4k4q4
+A 000392e3 676V6b6m6
+A 00039301 7#7l7u7
+A 0003931f 849=9X9c9
+A 00039331 :#:I:v:8;A;X;a;w;};
+A 00039351 <(<.<3<9<B<K<P<e<o<y<
+A 00039373 ="=a=
+A 0003937f >/>3>>>B>N>T>]>u>{>
+A 0003939d ?,?J?z?
+A 000393b5 1#2b2
+A 000393cb 4r4x4
+A 000393d1 4(8,8084888<8@8D8H8L8P8T8X8\8`8h8l8p8t8x8|8
+A 00039443 : :(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:
+A 00039495 :x>|>
+A 000394e7 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?p?t?x?|?
+A 00039569 0 0$0(0,0004080<0@0D0H0L0P0X0\0`0d0h0l0p0t0n3
+A 000395b3 5$6e6
+A 000395d1 8 8$8(8,8084888R8
+A 000395e5 9y9c:
+A 000395f5 <k=q>
+A 0003961d 6$6G6
+A 00039648 /13171;1?1C1G1K1a1
+A 00039661 2-3x3
+A 0003968d 7@7[7
+A 0003969b :5:P:{:
+A 000396a9 ;u;~;
+A 000396c1 ;T<g<
+A 000396d9 =$=)=/=A=G=
+A 000396e9 >/>c>j>
+A 000396ff ?(?.?4?
+A 00039739 3G4_4
+A 0003974d 5>6D6T6
+A 00039785 ;&;N;b;k;
+A 000397ac 1080T0h0
+A 000397cb 7+818v8|8=;F;U;b;};
+A 000397e9 <)<A<
+A 000397fd =,=>=
+A 00039817 22383
+A 0003981d 395S5^5
+A 0003982f 6)6M6S6
+A 00039861 2Q2X2
+A 00039877 56;=;C;R;a;g;o;v;|;
+A 0003989f <I<x<
+A 000398a9 ="=<=E=m=~=
+A 000398c9 >	>}>
+A 000398df ?O?h?
+A 000398f4 i0n0x0
+A 0003990b 1X1^1d1i1w1
+A 00039933 2#262=2J2Q2v2|2
+A 00039947 2U3x3
+A 0003994d 404P4{4
+A 00039965 7Z8`8v8
+A 00039981 <%<6<=<N<T<^<s<;=
+A 000399b3 0!0*0A1t1
+A 000399c1 2+2c2
+A 000399c7 3Q3W3l3
+A 000399d3 3"4(4?4_4|4
+A 00039a01 666?6N6W6
+A 00039a15 717:7[7a7
+A 00039a1f 7L8V8
+A 00039a31 9B9H9c9i9
+A 00039a47 92:A:L:o:
+A 00039a5f :A;U;[;d;
+A 00039a77 <F<L<U<
+A 00039a8f =&=-=\=p=v=
+A 00039aa7 =(><>B>K>]>k>
+A 00039ac3 ?t?{?
+A 00039ae3 0K0Q0Z0s0z0
+A 00039b01 1%1=1c1k1q1~1
+A 00039b17 1*282
+A 00039b27 3*3{3
+A 00039b35 4.4F4O4y4
+A 00039b47 5D5K5}5
+A 00039b57 6,6<6a6
+A 00039b67 717B7
+A 00039b75 8 898M8a8j8s8
+A 00039b95 :6:<:L:S:Y:a:j:p:w:~:
+A 00039bcb ;!;';/;8;>;E;L;S;Z;g;};
+A 00039be5 < <B<H<e<u<
+A 00039bf3 < =9=d=y=
+A 00039c03 >)>M>
+A 00039c1f 0!0(0B0p0
+A 00039c35 131E1k1~1
+A 00039c59 2G3V3b3
+A 00039c6b 3,4N4_4r4}4
+A 00039c89 565<5V5k5t5y5
+A 00039c97 5?6K6S6\6c6j6{6
+A 00039cb3 70777G7S7`7h7t7
+A 00039cdb 8%8*8h8
+A 00039cf3 9%979=9`9n99:
+A 00039d05 ;,;e;t;y;
+A 00039d17 ;Z<|<
+A 00039d25 =-=A={=
+A 00039d39 >*><>j>p>
+A 00039d55 ?.?D?S?f?v?
+A 00039d73 0'0,0B0I0O0\0b0m0s0
+A 00039d95 121D1J1S1_1f1s1z1
+A 00039db1 1(272W2
+A 00039dd7 3+3Q3d3m3x3
+A 00039de9 4 4a4o4
+A 00039df9 5.545?5E5^5e5m5}5
+A 00039e0f 5-6E6S6Y6e6j6t6{6
+A 00039e2f 8'838?8
+A 00039e3d 9*9I9
+A 00039e6f 0"1,1;1D1
+A 00039e8b 727=7K7R7c7i7s7
+A 00039e9d 7I8o8
+A 00039eab 9g9u9
+A 00039eb7 9 :&:-:4:::R:l:t:
+A 00039ecb ;4;p;
+A 00039edd <5=E=t=
+A 00039eef =/>H>t><?
+A 00039f05 090K0
+A 00039f11 2'2;2X2{2
+A 00039f25 3-383\3
+A 00039f39 4(4?4
+A 00039f45 5!5L5V5c5
+A 00039f69 7/757S7m7s7
+A 00039f83 8G8M8\8
+A 00039f93 :,:O:h:
+A 00039fa7 <<<B<
+A 00039fd1 >">c>~>
+A 00039fe9 0!0s0
+A 00039ff9 2_2e2;3
+A 0003a009 6"7W7v7
+A 0003a021 8!8*8L8U8b8o8
+A 0003a03f :):d:
+A 0003a04d ;t;$<V<n<y<
+A 0003a061 <3=F=z=
+A 0003a06f >'>H>^>t>
+A 0003a07d >e?s?
+A 0003a08f 2!222
+A 0003a09f 3&3-3?3Y3|3
+A 0003a0c3 4"424?4E4S4b4s4
+A 0003a0d7 5&5M5k5q5
+A 0003a0eb 5@6f6o6x6
+A 0003a107 7#7*797G7|7
+A 0003a11d 8 8'8B8n8v8~8
+A 0003a131 8'9-9
+A 0003a151 ;4;n;
+A 0003a165 <%<+<
+A 0003a18b >)>`>
+A 0003a195 ?X?v?
+A 0003a1ac (0,00040
+A 0003a1df 8 8$808@8L8h8p8
+A 0003a1fd 8(98>
+A 0003a218 (3,3034383<3D3T3\3d3l3t3|3
+A 0003a40c ocx\msflxgrd.dbg
+A 0003a551 Y0W03
+A 0003a5e5 Internet1
+A 0003a5f8 VeriSign, Inc.1301
+A 0003a610 *VeriSign Commercial Software Publishers CA0
+A 0003a63f 960409000000Z
+A 0003a64e 040107235959Z0a1
+A 0003a668 Internet1
+A 0003a67b VeriSign, Inc.1301
+A 0003a693 *VeriSign Commercial Software Publishers CA0
+A 0003a7ee qd1<<0
+A 0003a82e VeriSign Trust Network1
+A 0003a84f VeriSign, Inc.1,0*
+A 0003a867 #VeriSign Time Stamping Service Root1402
+A 0003a895 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 0003a8c5 970512070000Z
+A 0003a8d4 991231070000Z0
+A 0003a8ef VeriSign Trust Network1
+A 0003a910 VeriSign, Inc.1,0*
+A 0003a928 #VeriSign Time Stamping Service Root1402
+A 0003a956 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 0003a9a3 h|,-.
+A 0003aaf3 VeriSign Trust Network1
+A 0003ab14 VeriSign, Inc.1,0*
+A 0003ab2c #VeriSign Time Stamping Service Root1402
+A 0003ab5a +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.0
+A 0003ab8a 970512070000Z
+A 0003ab99 991231070000Z0
+A 0003abb4 VeriSign Time Stamping Service1
+A 0003abdd VeriSign Trust Network1402
+A 0003abfd +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.1
+A 0003ac34 VeriSign, Inc.1
+A 0003ac4d Internet0
+A 0003acea GBh[-}
+A 0003ad11 {p+b#
+A 0003ad58 &;-%2
+A 0003ad81 UApF-,~0
+A 0003adc3 Internet1
+A 0003add6 VeriSign, Inc.1301
+A 0003adee *VeriSign Commercial Software Publishers CA0
+A 0003ae1d 990319000000Z
+A 0003ae2c 000416235959Z0
+A 0003ae48 Internet1
+A 0003ae5b VeriSign, Inc.1301
+A 0003ae73 *VeriSign Commercial Software Publishers CA1F0D
+A 0003aea8 =www.verisign.com/repository/RPA Incorp. by Ref.,LIAB.LTD(c)981>0<
+A 0003aef0 5Digital ID Class 3 - Microsoft Software Validation v21
+A 0003af3e Washington1
+A 0003af53 Redmond1
+A 0003af65 Microsoft Corporation1
+A 0003af85 Microsoft Corporation0
+A 0003b024 g?lM"r
+A 0003b089 Internet1
+A 0003b09c VeriSign, Inc.1301
+A 0003b0b4 *VeriSign Commercial Software Publishers CA
+A 0003b141 'https://www.verisign.com/repository/CPS
+A 0003b171 This certificate incorporates by reference, and its use is strictly
+A 0003b1b5 subject to, the VeriSign Certification Practice Statement (CPS)
+A 0003b1f5 version 1.0, available in the VeriSign repository at:
+A 0003b22b https://www.verisign.com; by E-mail at CPS-requests@verisign.com; or
+A 0003b270 by mail at VeriSign, Inc., 2593 Coast Ave., Mountain View, CA 94043
+A 0003b2b4 USA Copyright (c)1996 VeriSign, Inc.  All Rights Reserved. CERTAIN
+A 0003b2f7 WARRANTIES DISCLAIMED AND LIABILITY LIMITED.
+A 0003b325 WARNING: THE USE OF THIS CERTIFICATE IS STRICTLY SUBJECT TO THE
+A 0003b365 VERISIGN CERTIFICATION PRACTICE STATEMENT.  THE ISSUING AUTHORITY
+A 0003b3a7 DISCLAIMS CERTAIN IMPLIED AND EXPRESS WARRANTIES, INCLUDING WARRANTIES
+A 0003b3ee OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, AND WILL NOT
+A 0003b433 BE LIABLE FOR CONSEQUENTIAL, PUNITIVE, AND CERTAIN OTHER DAMAGES. SEE
+A 0003b479 THE CPS FOR DETAILS.
+A 0003b48f Contents of the VeriSign registered nonverifiedSubjectAttributes
+A 0003b4d0 extension value shall not be considered as accurate information
+A 0003b510 validated by the IA.
+A 0003b528 4https://www.verisign.com/repository/verisignlogo.gif06
+A 0003b565 /0-0+
+A 0003b56f %http://status.verisign.com/class1.crl0
+A 0003b5e7 mra4f
+A 0003b64b 0u0a1
+A 0003b65a Internet1
+A 0003b66d VeriSign, Inc.1301
+A 0003b685 *VeriSign Commercial Software Publishers CA
+A 0003b77c "http://msdn.microsoft.com/vstudio/0
+A 0003b860 VeriSign Trust Network1
+A 0003b881 VeriSign, Inc.1,0*
+A 0003b899 #VeriSign Time Stamping Service Root1402
+A 0003b8c7 +NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.
+A 0003b945 990507192452Z0
+U 00006b80 72E67120-5959-11cf-91F6-C2863C385E30
+U 0000ae30 _Version
+U 0000eef8 MS Sans Serif
+U 0000efd0 Contents
+U 00023a04 _ExtentX
+U 00023a18 _ExtentY
+U 00023a40 OLEDropMode
+U 00023b48 _ExtentX
+U 00023b5c _ExtentY
+U 00023b70 OLEDropMode
+U 00023e5e \OLEDragMode
+U 00023e78 OLEDragMode
+U 00024aca TYPELIB
+U 00024af2 P&roperties
+U 00024b0a FlxGd
+U 00024b28 General+General properties for the FlexGrid control
+U 00024b90 Style)Style properties for the FlexGrid control
+U 00024bf0 0An error has occurred while doing this operation
+U 00024c54 Property not available
+U 00024c82 Set not permitted
+U 00024ca6 Out of memory
+U 00024cc2 Subscript out of range
+U 00024cf0 Invalid property value
+U 00024d40 G0 - Never;1 - Free;2 - Restrict Rows;3 - Restrict Cols;4 - Restrict All
+U 00024dd2 0 - Color;1 - MonochromeÜ0 - Default;1 - Arrow;2 - Cross;3 - I-Beam;4 - Icon;5 - Size;6 - Size NE SW;7 - Size NS;8 - Size NW SE;9 - Size EW;10 - Up Arrow;11 - Hourglass;12 - No Drop;13 - ArrowHourGlass;14 - ArrowQuestion;15 - SizeAll;99 - Custom%Cannot do a RemoveItem on a fixed row!Cannot use AddItem on a fixed row
+U 0002504e Grid does not contain that row#Invalid Column number for alignment
+U 000250d4 Invalid Alignment value&Unable to Allocate Memory For FlexGrid
+U 00025152 Not a valid Picture type
+U 00025184 Invalid Row Value
+U 000251a8 Invalid Column Value
+U 000251d4 Invalid Row Height Value
+U 00025206 Invalid Column Width Value!Can not remove last non-fixed row
+U 00025280 3FixedRows must be at least one less than Rows value3FixedCols must be at least one less than Cols value,Cannot set format without fixed rows/columns
+U 000311a2 About MSFlexGrid
+U 000311c6 MS Sans Serif
+U 00031216 VideoSoft
+U 0003122a 5900 Hollis Street, Suite T
+U 00031262 Emeryville, California 94608
+U 0003129c Voice: (510)  595-2400
+U 000312ca Fax:    (510)  595-2424
+U 000312fa www.videosoft.com
+U 00031356 Microsoft FlexGrid Control - Version 6.0 (SP3)
+U 000313b4 Copyright © 1996-1997 Microsoft Corporation
+U 0003140c Portions of this product were developed by Videosoft
+U 00031492 MS Sans Serif
+U 000314c6 &Rows
+U 00031506 &Cols
+U 00031546 Fixed Ro&ws
+U 00031592 Fixed Co&ls
+U 000315de Allow&BigSelection
+U 0003161e &ScrollBars
+U 00031640 4;:AÐ
+U 0003166a &HighLight
+U 0003168c 4K:AÕ
+U 000316b6 F&ocusRect
+U 000316d8 4[:AÙ
+U 00031702 Mouse&Pointer
+U 00031728 »+:Aà
+U 00031752 &FillStyle
+U 00031774 »;:AÑ
+U 0003179e Selection&Mode
+U 000317c8 »K:A×
+U 000317f2 Allow&UserResizing
+U 00031824 »[:AÓ
+U 00031852 MS Sans Serif
+U 00031886 Grid&Lines
+U 000318d2 Text&Style
+U 0003191e &MergeCells
+U 00031940 ?):AØ
+U 0003196a Row&HeightMin
+U 000319ba &Format
+U 000319fe GridLinesFi&xed
+U 00031a52 TextStyleF&ixed
+U 00031aa6 &PictureType
+U 00031acc ·):AÚ
+U 00031af6 Word&Wrap
+U 00031b12 VS_VERSION_INFO
+U 00031b6e StringFileInfo
+U 00031b92 040904E4
+U 00031baa CompanyName
+U 00031bc4 Microsoft Corporation
+U 00031bf6 FileDescription
+U 00031c18 MSFlexGrid
+U 00031c36 FileVersion
+U 00031c50 6.00.8418
+U 00031c6a InternalName
+U 00031c84 FlexGrid.Ocx
+U 00031ca6 LegalCopyright
+U 00031cc4 Copyright © 1987-1998 Microsoft Corp.
+U 00031d16 LegalTrademarks
+U 00031d38 Microsoft® is a registered trademark of Microsoft Corporation.  Windows(tm) is a trademark of Microsoft Corporation.
+U 00031e2a ProductName
+U 00031e44 Microsoft FlexGrid Control
+U 00031e82 ProductVersion
+U 00031ea0 6.00.8418
+U 00031eba Comments
+U 00031ecc February 22, 1999
+U 00031ef6 OLESelfRegister
+U 00031f1e VarFileInfo
+U 00031f3e Translation
+U 00031f5c .Event interface for Microsoft FlexGrid Control$Microsoft FlexGrid Control 6.0 (SP3)
+U 0003203e FlexGrid Property Page
+U 0003208a 1Dispatch interface for Microsoft FlexGrid Control
+U 000320f2 Alignment Constants
+U 00032138 &String descending sort, case-sensitive$Align to left top corner of the cell Align to left center of the cell'Align to left bottom corner of the cell
+U 00032264 Align to center top of the cell
+U 000322a4 Align to center of the cell"Align to center bottom of the cell%Align to right top corner of the cell!Align to right center of the cell(Align to right bottom corner of the cell3Align strings to left, numbers to right of the cell
+U 0003246c OLEStartDrag event
+U 00032492 OLEGiveFeedback event
+U 000324be OLESetData event
+U 000324e0 OLECompleteDrag event
+U 0003250c OLEDragOver event
+U 00032534 Error constants
+U 00032554 Appearance Constants
+U 0003257e BorderStyle Constants
+U 000325aa FocusRect Constants
+U 000325d2 Highlight Constants
+U 000325fa ScrollBars Constants
+U 00032624 TextStyle Constants
+U 0003264c FillStyle Constants
+U 00032674 GridLines Constants
+U 0003269c SelectionMode Constants
+U 000326cc MergeCells Constants
+U 000326f6 PictureType Constants
+U 00032722 AllowUserResizing Constants
+U 0003275a MousePointer Constants
+U 00032788 Sort Constants
+U 000327a6 Flat
+U 000327b6 None
+U 000327c0 Single
+U 000327ce None
+U 000327d8 Light
+U 000327e4 Heavy
+U 000327f0 Never
+U 000327fc Always
+U 0003280a With Focus
+U 00032820 None
+U 0003282a Horizontal
+U 00032840 Vertical
+U 00032852 Both
+U 0003285c Flat
+U 00032866 Raised
+U 00032880 Invalid procedure call
+U 000328b0 Out of memory
+U 000328f0 Invalid object use
+U 0003293a -Specified format doesn't match format of data
+U 0003299c XDataObject formats list may not be cleared or expanded outside of the OLEStartDrag event
+U 00032a50 Expected at least one argument1Illegal recursive invocation of OLE drag and drop
+U 00032af2 Non-intrinsic OLE drag and drop formats used with SetData require Byte array data.  GetData may return more bytes than were given to SetData.NRequested data was not supplied to the DataObject during the OLESetData event.
+U 00032cda Invalid property value
+U 00032d08 Subscript out of range
+U 00032d40 Set not permitted
+U 00032d70 Property not available
+U 00032db8 0An error has occurred while doing this operation
+U 00032e28 %Cannot do a RemoveItem on a fixed row!Cannot use AddItem on a fixed row
+U 00032eba Grid does not contain that row
+U 00032ef8 #Invalid Column number for alignment
+U 00032f42 Invalid Alignment value&Unable to Allocate Memory For FlexGrid
+U 00032fc2 Not a valid Picture type
+U 00032ff4 Invalid Row Value
+U 00033018 Invalid Column Value%Unable to register the memory manager
+U 00033090 Invalid Row Height Value
+U 000330c2 Invalid Column Width Value!Can not remove last non-fixed row
+U 0003313c 3FixedRows must be at least one less than Rows value3FixedCols must be at least one less than Cols value
+U 0003322a Inset
+U 00033236 Raised Light
+U 00033250 Inset Light
+U 00033268 Single
+U 00033276 Repeat
+U 00033284 None
+U 0003328e Flat
+U 00033298 Inset
+U 000332a4 Raised
+U 000332b2 Free
+U 000332bc By Row
+U 000332ca By Column
+U 000332de Never
+U 000332ea Free
+U 000332f4 Restrict Rows
+U 00033310 Restrict Columns
+U 00033332 Restrict All
+U 0003334c Display Compatible
+U 00033372 Monochrome Bitmap
+U 00033396 None
+U 000333a0 Columns
+U 000333b0 Rows
+U 000333ba Both
+U 000333c4 Default
+U 000333d4 Arrow
+U 000333e0 Cross
+U 000333ec I-Beam
+U 000333fa Icon
+U 00033404 Size
+U 0003340e Size NE SW
+U 00033424 Size NS
+U 00033434 Size NW SE
+U 0003344a Size EW
+U 0003345a Up Arrow
+U 0003346c Hourglass
+U 00033480 No Drop
+U 00033490 ArrowHourGlass
+U 000334ae ArrowQuestion
+U 000334ca SizeAll
+U 000334da Custom
+U 000334e8 No Sort
+U 000334f8 Generic ascending sort
+U 00033526 Generic descending sort
+U 00033556 Numeric ascending sort
+U 00033584 Numeric descending sort'String ascending sort, case-insensitive(String descending sort, case-insensitive%String ascending sort, case-sensitive
+U 000336b0 ?Returns/sets the default font or the font for individual cells.,Returns/sets the border style for an object.&Returns a handle to a form or control.dReturns/sets a value that determines whether a form or control can respond to user-generated events.MReturns/sets the type of mouse pointer displayed when over part of an object.!Returns/sets a custom mouse icon.BReturns/sets whether a control should be painted with 3-D effects.=Displays an About box with version and copyright information./Forces a complete repaint of a form or control.KFired when the user presses and releases the mouse button over the control.!Fired when the user pushes a key.=Fired when the user double-clicks the mouse over the control."Fired when the user presses a key.#Fired when the user releases a key.<Fired when the user presses a mouse button over the control.5Fired when the user moves the mouse over the control.=Fired when the user releases a mouse button over the control.-Returns/sets the data source for the control.-Returns True if the specified row is visible.0Returns True if the specified column is visible.xReturns the distance in Twips between the upper-left corner of the control and the upper-left corner of a specified row.{Returns the distance in Twips between the upper-left corner of the control and the upper-left corner of a specified column.BReturns/sets the width in Pixels of the gridlines for the control.BReturns/sets the alignment of data in the fixed cells of a column.1Adds a new row to a FlexGrid control at run time.mReturns/sets whether clicking on a column or row header should cause the entire column or row to be selected.ZReturns/sets whether the user should be allowed to resize rows and columns with the mouse.FReturns/sets the background color of various elements of the FlexGrid.fReturns/sets the alignment of data in a cell or range of selected cells. Not available at design time.YReturns/sets the background and foreground colors of individual cells or ranges of cells.IReturns/sets the font to be used for individual cells or ranges of cells.YReturns/sets the background and foreground colors of individual cells or ranges of cells.1Returns the height of the current cell, in Twips.QReturns/sets an image to be displayed in the current cell or in a range of cells.jReturns/sets the alignment of pictures in a cell or range of selected cells. Not available at design time.FReturns/sets 3D effects for text on a specific cell or range of cells.
+U 000349f8 [Clears the contents of the FlexGrid. This includes all text, pictures, and cell formatting.eReturns/sets the contents of the cells in a FlexGrid's selected region. Not available at design time.IReturns/sets the active cell in a FlexGrid. Not available at design time.
+U 00034c12 Returns/sets the alignment of data in a column. Not available at design time (except indirectly through the FormatString property).
+U 00034d1a Array of long integer values with one item for each row (RowData) and for each column (ColData) of the FlexGrid. Not available at design time.JAllows you to move rows and columns to specific positions on the FlexGrid.=Determines the total number of columns or rows in a FlexGrid.cDetermines the starting or ending row or column for a range of cells. Not available at design time.TDetermines the width of the specified column in Twips. Not available at design time..Fired during custom sorts to compare two rows.&Fired before the cursor enters a cell.
+U 00035168 Determines whether setting the Text property or one of the Cell formatting properties of a FlexGrid applies the change to all selected cells.WReturns/sets the total number of fixed (non-scrollable) columns or rows for a FlexGrid.^Determines whether the FlexGrid control should draw a focus rectangle around the current cell.MDetermines the width of the font to be used for text displayed in a FlexGrid.DDetermines the color used to draw text on each part of the FlexGrid.
+U 00035518 Allows you to set up a FlexGrid's column widths, alignments, and fixed row and column text at design time. See the help file for details.EReturns/sets the color used to draw the lines between FlexGrid cells.BReturns/sets the type of lines that should be drawn between cells.7Returns/sets whether selected cells appear highlighted.%Fired after the cursor leaves a cell.sReturns/sets the leftmost visible column (other than a fixed column) in the FlexGrid. Not available at design time.wReturns/sets whether cells with the same contents should be grouped in a single cell spanning multiple rows or columns.
+U 000359d2 Returns/sets which rows (columns) should have their contents merged when the MergeCells property is set to a value other than 0 - Never.XReturns/sets over which row (column) the mouse pointer is. Not available at design time.6Enables or disables redrawing of the FlexGrid control.
+U 00035c04 Returns a picture of the FlexGrid control, suitable for printing, saving to disk, copying to the clipboard, or assigning to a different control.RReturns/sets the type of picture that should be generated by the Picture property.1Removes a row from a FlexGrid control at run time$Fired when the current cell changes.TReturns/sets the height of the specified row in Twips. Not available at design time.CReturns/sets a minimum row height for the entire control, in Twips.3Fired when the TopRow or LeftCol properties change./Fired when the selected range of cells changes.pReturns/sets whether a FlexGrid should allow regular cell selection, selection by rows, or selection by columns.GReturns/sets whether a FlexGrid has horizontal or vertical scroll bars.sReturns/sets whether FlexGrid should scroll its contents while the user moves the scroll box along the scroll bars.
+U 000362ce Action-type property that sorts selected rows according to selected criteria. Not available at design-time, write-only at run time.;Returns/sets the text contents of a cell or range of cells.GReturns/sets the text contents of an arbitrary cell (single subscript).IReturns/sets the text contents of an arbitrary cell (row/col subscripts).,Returns/sets 3D effects for displaying text.WReturns/sets the uppermost row displayed in the FlexGrid. Not available at design time.GReturns the version of the FlexGrid control currently loaded in memory.BReturns/sets whether text within a cell should be allowed to wrap.ZDetermines text display direction and control visual appearance on a bidirectional system.
+U 00036868 XConstants for the OLEDragMode property (but not the DragMode or OLEDropMode properties).BOLE drag/drop will be initialized only under programmatic control.jOLE drag/drop will be initialized when the user drags 'out' of the control, or under programmatic control.XConstants for the OLEDropMode property (but not the DragMode or OLEDragMode properties).$Accepts no OLE drag/drop operations.9Accepts an OLE drag/drop under programmatic control only.6Accepts an OLE drag/drop without programmatic control.CState transition constants for the DragOver and OLEDragOver events.#Source control dragged into target.%Source control dragged out of target.>Source control dragged from one position in target to another.
+U 00036df0 Clipboard format constants.
+U 00036e28 Text (.TXT file).
+U 00036e4c Bitmap (.BMP file).
+U 00036e74 Metafile (.WMF file).
+U 00036ea0 Device-independent bitmap.
+U 00036ed6 Color palette.
+U 00036ef4 Enhanced metafile (.EMF file).*Filename list (Microsoft Windows Explorer)
+U 00036f88 Rich Text Format (.RTF file).
+U 00036fc4 3Drop effect constants for OLE drag and drop events.<No OLE drag/drop operation has taken place/would take place.@A mask to indicate that a copy has taken place/would take place.?A mask to indicate that a move has take place/would take place.IA mask to indicate that the drop target window has scrolled/would scroll.CStarts an OLE drag/drop event with the given control as the source.
+U 000372c6 Returns/Sets whether this control can act as an OLE drag/drop source, and whether this process is started automatically or under programmatic control.@Returns/Sets whether this control can act as an OLE drop target.3Clears all data and formats in a DataObject object.>Retrieves data of a specified format from a DataObject object.QDetermines if a specified clipboard format is supported by the DataObject object.EAdds a supported format and possibly its data to a DataObject object.7A collection of filenames used by the vbCFFiles format.nReturns a specific filename by index from the Files collection of a DataObject object (vbCFFiles format only).gReturns the number of filenames in the Files collection of a DataObject object (vbCFFiles format only).WAdds a filename to the Files collection of a DataObject object (vbCFFiles format only).cClears all filenames stored in the Files collection of a DataObject object (vbCFFiles format only).\Removes a filename from the Files collection of a DataObject object (vbCFFiles format only).
+U 00037afa OLEDragDrop event9Returns or sets the bold style for the current cell text.;Returns or sets the italic style for the current cell text.>Returns or sets the underline style for the current cell text.BReturns or sets the strikethrough style for the current cell text.9Returns or sets the font width for the current cell text.?Returns or sets the size, in points, for the current cell text.PReturns or sets the width, in points, of the font to be used for text displayed.7Returns the left position of the current cell, in twips>Returns or sets the top position of the current cell, in twips/Returns the width of the current cell, in twips
+U 00038010 -0 - None;1 - Horizontal;2 - Vertical;3 - Both
+U 0003806e 0 - Single;1 - Repeat&0 - None;1 - Columns;2 - Rows;3 - Both!0 - Free;1 - By Row;2 - By Column#0 - Never;1 - Always;2 - With Focus
+U 00038174 0 - None;1 - Light;2 - Heavy&0 - None;1 - Flat;2 - Inset;3 - Raised>0 - Flat;1 - Raised;2 - Inset;3 - Raised Light;4 - Inset Light
+U 0003a56e <<<Obsolete>>
+U 0003b742 6Microsoft Flex Grid Contro

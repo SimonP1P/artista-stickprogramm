@@ -1,0 +1,105 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001d8 .orpc
+A 000001ff `.text
+A 00000227 `.rdata
+A 0000024f @.data
+A 00000278 .rsrc
+A 0000029f @.reloc
+A 0000316f SVWUj
+A 000031d8 t.;t$$t(
+A 0000325c VC20XC00U
+A 00004231 \/ZK~
+A 00004288 ISetupObjectClass
+A 0000429c ISetupServiceProvider
+A 000044a6 DisableThreadLibraryCalls
+A 000044c0 KERNEL32.dll
+A 000044d0 NdrOleFree
+A 000044de NdrOleAllocate
+A 000044f0 CStdStubBuffer_DebugServerRelease
+A 00004514 CStdStubBuffer_DebugServerQueryInterface
+A 00004540 CStdStubBuffer_CountRefs
+A 0000455c CStdStubBuffer_IsIIDSupported
+A 0000457c CStdStubBuffer_Invoke
+A 00004594 CStdStubBuffer_Disconnect
+A 000045b0 CStdStubBuffer_Connect
+A 000045ca CStdStubBuffer_AddRef
+A 000045e2 CStdStubBuffer_QueryInterface
+A 00004602 IUnknown_Release_Proxy
+A 0000461c IUnknown_AddRef_Proxy
+A 00004634 IUnknown_QueryInterface_Proxy
+A 00004654 NdrProxyErrorHandler
+A 0000466c NdrClearOutParameters
+A 00004684 NdrProxyFreeBuffer
+A 0000469a NdrPointerUnmarshall
+A 000046b2 NdrConvert
+A 000046c0 NdrProxySendReceive
+A 000046d6 NdrSimpleStructMarshall
+A 000046f0 NdrProxyGetBuffer
+A 00004704 NdrSimpleStructBufferSize
+A 00004720 RpcRaiseException
+A 00004734 NdrProxyInitialize
+A 0000474a NdrPointerFree
+A 0000475c NdrPointerMarshall
+A 00004772 NdrStubGetBuffer
+A 00004786 NdrPointerBufferSize
+A 0000479e NdrSimpleStructUnmarshall
+A 000047ba NdrStubInitialize
+A 000047ce NdrInterfacePointerMarshall
+A 000047ec NdrInterfacePointerBufferSize
+A 0000480c NdrInterfacePointerFree
+A 00004826 NdrInterfacePointerUnmarshall
+A 00004846 NdrDllGetClassObject
+A 0000485e NdrDllCanUnloadNow
+A 00004874 NdrCStdStubBuffer_Release
+A 00004890 NdrDllRegisterProxy
+A 000048a6 NdrDllUnregisterProxy
+A 000048bc RPCRT4.dll
+A 000048ca RtlUnwind
+A 00004930 objectps.dll
+A 0000493d DllCanUnloadNow
+A 0000494d DllGetClassObject
+A 0000495f DllRegisterServer
+A 00004971 DllUnregisterServer
+A 0000700b 0@0X0j0|0
+A 00007029 1(1/1@1
+A 0000703b 2+2<2c2p2v2
+A 0000704d 3#343E3
+A 00007061 4/4A4W4e4j4x4}4
+A 00007083 5R5x5
+A 00007093 5 6-636D6L6b6s6
+A 000070a3 6$757F7K7q7
+A 000070b7 7"8L8v8{8
+A 000070db :-:2:@:N:S:a:h:z:
+A 000070f9 ;F;S;`;
+A 0000710d <#<+<A<U<
+A 0000711f =Q=e=l=
+A 00007133 >7>L>Y>
+A 00007145 ?6?C?
+A 00007167 0'000A0G0U0}0
+A 00007197 1$1*10161<1B1H1N1T1Z1`1f1x1
+A 000071b3 1"2<2E2>3
+A 000071f7 1 1$1(1,101<1@1D1H1L1P1T1X1\1`1d1l1p1
+A 0000721d 1P2T2`2d2h2p2
+A 00007241 3$3(343@3L3P3\3h3t3x3
+U 00006066 VS_VERSION_INFO
+U 000060c2 StringFileInfo
+U 000060e6 040904b0
+U 000060fe CompanyName
+U 00006118 InstallShield Software Corporation
+U 00006166 FileDescription
+U 00006188 InstallShield (R) ObjectPS DLL
+U 000061ce InternalName
+U 000061e8 Object
+U 000061fe OriginalFilename
+U 00006220 objectps.dll
+U 00006242 FileVersion
+U 0000625c 6, 31, 100, 1190
+U 00006286 LegalCopyright
+U 000062a4 Copyright (C) 1990-2001 InstallShield Software Corporation
+U 00006322 ProductName
+U 0000633c InstallShield (R)
+U 00006366 ProductVersion
+U 00006384 6, 31
+U 00006396 OLESelfRegister
+U 000063be VarFileInfo
+U 000063de Translation

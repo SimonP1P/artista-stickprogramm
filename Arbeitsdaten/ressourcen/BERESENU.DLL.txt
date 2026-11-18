@@ -1,0 +1,1231 @@
+--- RES type=None name=257 len=4
+--- MENU 4 (468 bytes)
+   &Edit | &Undo	Ctrl+Z | Cu&t	Ctrl+X | &Copy	Ctrl+C | &Paste	Ctrl+V | Paste &Link | 穄Insert &New Object... | Lin&ks... | <<OLE VERBS GO HERE>> | &View | &Toolbar | Command | 耢Block Digitizing | &Help | 脵&Help Topics... | About...
+--- MENU 5 (3410 bytes)
+   &File | 脨&New	Ctrl+N | 脦&Open...	Ctrl+O | 艦Portfolio... | 苃Cross Stitch | 肁Insert Design... | &Save And Return	Ctrl+S | 脥Save &As... | 胱Design Properties... | 脬&Print...	Ctrl+P | 脯Print Pre&view | 膰Card/Machine &Read... | 膯Card/Machine &Write... | 苗Write to Magic Box... | 苘Read from Magic Box... | Recent File... | &Edit | &Undo	Ctrl+Z | 耇&Redo	Ctrl+Y | Cu&t	Ctrl+X | &Copy	Ctrl+C | &Paste	Ctrl+V | 肀Duplicate	Ctrl+D | 耊Delete	Del | 耈&Select All	Ctrl+A | 耉&Deselect All	X | 聧Stitch Edit	E | 膧Lettering...	A | Elastic Lettering | 胖None | 胘Straight | 胗Curved | 苌Touch Up Picture | 茿Enhance Image | Crop Image | 茝Rectangular | 茞Oval | 茟Heart | 茠Star 4 point | 茡Star 5 point | 茢Star 6 point | 茣Star 8 point | 茤Star 10 point | 茥Star 12 point | 荃Curve | &View | 膬By Color... | 羫Needle Points	. | 羒Picture	D | 耷Show 1:1	1 | 耶Show All	0 | 耸Zoom &Out 2X	Shift+Z | 耵Zoom Box	B | 聵Redraw	R | 臤Slow Redraw	Shift+R | 綠Hoop... | 聣&Grid... | 聲Measure	M | &Arrange | 荑Start and End... | 腣Se&quence As Selected | 膩Sequence to Start | 膪Sequence to End | 膫Sequence By Color... | 良Color Film... | 膋Mirror Horizontal | 膌Mirror Vertical | 耋Group	Ctrl+G | 而Ungroup	Ctrl+U | 膳Remove Overlay Stitching | 膴Include Overlay Stitching | 荐Lettering Remove Overlay | 芗Add Holes | 荍Add Buttonhole | 荎Merge Buttonhole | &Settings | 芼Thread Colors... | 艘Fabric Settings... | 臟Fabric Display... | 膭Object Properties... | 胭Options... | 股Security... | 肿Display Setup... | 胒Scanner Setup... | 茯Create Pattern | &Window | &Cascade | Tile &Horizontally | Tile &Vertically | &Help | 脵&Help Topics... | 脴Online Manual | About... | 芵Show Design &Warning | 芶Bernina International Home Page | 苒Bernina of America Home Page | 苪Embroidery Online | 苫Access Code Order Form
+--- MENU 6 (546 bytes)
+   &File | 脨&New	Ctrl+N | 脦&Open...	Ctrl+O | &Close | 脧&Save	Ctrl+S | 脥Save &As... | 脬&Print...	Ctrl+P | 脯Print Pre&view | 脭P&rint Setup... | Recent File... | 脰E&xit | &Window | &New Window | &Cascade | Tile &Horizontally | Tile &Vertically | &Arrange Icons | S&plit
+--- MENU 128 (346 bytes)
+   &File | 脨&New	Ctrl+N | 脦&Open...	Ctrl+O | 荒Quilter	Ctrl+Q | 膰Card/Machine &Read... | 脭P&rint Setup... | Recent File... | 脰E&xit | &Help | 脵&Help Topics... | About...
+--- MENU 129 (3456 bytes)
+   &File | 脨&New	Ctrl+N | 脦&Open...	Ctrl+O | &Close | 艦Portfolio... | 苃Cross Stitch | 荒Quilter	Ctrl+Q | 肁Insert Design... | 脧&Save	Ctrl+S | 脥Save &As... | 胱Design Properties... | 脬&Print...	Ctrl+P | 脯Print Pre&view | 膰Card/Machine &Read... | 膯Card/Machine &Write... | 苗Write to Magic Box... | 苘Read from Magic Box... | Recent File... | 脰E&xit | &Edit | &Undo	Ctrl+Z | 耇&Redo	Ctrl+Y | Cu&t	Ctrl+X | &Copy	Ctrl+C | &Paste	Ctrl+V | 肀Duplicate	Ctrl+D | 耊Delete	Del | 耈&Select All	Ctrl+A | 耉&Deselect All	X | 聧Stitch Edit	E | 膧Lettering...	A | Elastic Lettering | 胖None | 胘Straight | 胗Curved | 苌Touch Up Picture | 茿Enhance Image | Crop Image | 茝Rectangular | 茞Oval | 茟Heart | 茠Star 4 point | 茡Star 5 point | 茢Star 6 point | 茣Star 8 point | 茤Star 10 point | 茥Star 12 point | 荃Curve | &View | 膬By Color... | 羫Needle Points	. | 羒Picture	D | 耷Show 1:1	1 | 耶Show All	0 | 耸Zoom &Out 2X	Shift+Z | 耵Zoom Box	B | 聵Redraw	R | 臤Slow Redraw	Shift+R | 綠Hoop... | 聣&Grid... | 聲Measure	M | &Arrange | 荑Start and End... | 腣Se&quence As Selected | 膩Sequence to Start | 膪Sequence to End | 膫Sequence By Color... | 良Color Film... | 膋Mirror Horizontal | 膌Mirror Vertical | 耋Group	Ctrl+G | 而Ungroup	Ctrl+U | 膳Remove Overlay Stitching | 膴Include Overlay Stitching | 荐Lettering Remove Overlay | 芗Add Holes | 荍Add Buttonhole | 荎Merge Buttonhole | &Settings | 芼Thread Colors... | 艘Fabric Settings... | 臟Fabric Display... | 膭Object Properties... | 胭Options... | 股Security... | 肿Display Setup... | 胒Scanner Setup... | 茯Create Pattern | &Window | &Cascade | Tile &Horizontally | Tile &Vertically | &Help | 脵&Help Topics... | 脴Online Manual | About... | 芵Show Design &Warning | 芶Bernina International Home Page | 苒Bernina of America Home Page | 苪Embroidery Online | 苫Access Code Order Form
+--- MENU 700 (216 bytes)
+   臺Properties... | 耋Group | 而Ungroup | 艰Auto Sequence | 胧Lock | 臱Unlock | 至Show | 臲Hide | 艌Resequence by Number...
+--- MENU 831 (222 bytes)
+   耋Group	Ctrl+G | 而Ungroup	Ctrl+U | Cu&t	Ctrl+X | &Copy	Ctrl+C | &Paste	Ctrl+V | 肀Duplicate	Ctrl+D | 耊Delete	Del
+--- DLG 1189
+DIALOG "Fill Stitch" 320x200
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1668] "Satin Spacing" @5,29 162x56
+   [BUTTON id=1662] " Automatic" @18,46 95x10
+   [BUTTON id=1663] " Manual" @18,62 45x10
+   [EDIT id=1079] "" @83,62 50x12
+   [msctls_updown32 id=1403] "Generic1" @123,62 10x12
+   [STATIC id=900] "mm" @137,64 12x10
+   [BUTTON id=65535] "Satin Type" @5,95 162x56
+   [BUTTON id=1853] "Satin" @18,112 100x10
+   [BUTTON id=1854] "Satin Special" @18,129 89x10
+   [BUTTON id=1089] "Effects..." @217,6 50x14
+--- DLG 1190
+DIALOG "Fill Stitch" 320x200
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1652] "Stitch Values" @5,27 194x55
+   [STATIC id=1153] "Stitch Spacing:" @20,44 80x12
+   [EDIT id=1079] "" @116,42 50x12
+   [msctls_updown32 id=1403] "Generic1" @155,42 10x12
+   [STATIC id=900] "mm" @171,44 12x10
+   [STATIC id=1184] "Stitch Length:" @20,64 80x12
+   [EDIT id=1185] "" @116,62 50x12
+   [msctls_updown32 id=1186] "Generic1" @155,62 10x12
+   [STATIC id=901] "mm" @171,64 12x10
+   [BUTTON id=1183] "Step pattern" @5,87 194x75
+   [BUTTON id=1659] " 1" @20,102 25x10
+   [BUTTON id=1670] " 2" @56,102 25x10
+   [BUTTON id=1671] " 3" @92,102 25x10
+   [BUTTON id=1672] " 4" @128,102 25x10
+   [BUTTON id=1673] " 5" @164,102 25x10
+   [BUTTON id=1674] " 6" @20,116 25x10
+   [BUTTON id=1675] " 7" @56,116 25x10
+   [BUTTON id=1676] " 8" @92,116 25x10
+   [BUTTON id=1677] " 9" @128,116 25x10
+   [BUTTON id=1678] " 10" @164,116 25x10
+   [BUTTON id=1680] " 11" @20,130 25x10
+   [BUTTON id=1681] " 12" @56,130 25x10
+   [BUTTON id=1682] " 13" @92,130 25x10
+   [BUTTON id=1683] " 14" @128,130 25x10
+   [BUTTON id=1684] " 15" @164,130 25x10
+   [BUTTON id=1685] " 16" @20,144 25x10
+   [BUTTON id=1686] " 17" @56,144 25x10
+   [BUTTON id=1687] " 18" @92,144 25x10
+   [BUTTON id=1688] " 19" @128,144 25x10
+   [BUTTON id=1690] " 20" @164,144 25x10
+   [BUTTON id=1089] "Effects..." @217,6 50x14
+   [STATIC id=1703] "" @207,32 97x89
+--- DLG 1191
+DIALOG "Run Stitch" 320x200
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1668] "Satin Spacing" @6,29 162x56
+   [BUTTON id=1662] " Automatic" @16,46 95x10
+   [BUTTON id=1663] " Manual" @16,64 95x10
+   [BUTTON id=1653] "Satin Values" @6,97 162x56
+   [STATIC id=1153] "Stitch Spacing:" @16,115 63x12
+   [EDIT id=1079] "" @88,113 50x12
+   [msctls_updown32 id=1403] "Generic1" @127,113 11x12
+   [STATIC id=900] "mm" @142,113 12x10
+   [STATIC id=1392] "Satin width:" @16,132 63x12
+   [EDIT id=1393] "" @88,131 50x12
+   [msctls_updown32 id=1394] "Generic1" @127,131 11x12
+   [STATIC id=901] "<MM_INCHES>" @142,131 12x10
+   [BUTTON id=65535] "Satin Type" @185,29 129x56
+   [BUTTON id=1853] "Satin " @198,46 100x10
+   [BUTTON id=1854] "Satin Special" @198,64 100x10
+   [BUTTON id=65535] "Offset" @185,97 129x56
+   [BUTTON id=1871] "Center" @198,115 87x10
+   [BUTTON id=1074] "Offset" @198,132 88x10
+   [BUTTON id=1089] "Effects..." @217,6 50x14
+--- DLG 1192
+DIALOG "Outline Stitch" 320x200
+   [COMBO id=1595] "" @75,8 94x110
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [STATIC id=1331] "Single Length:" @11,44 80x12
+   [EDIT id=1332] "" @96,44 50x12
+   [msctls_updown32 id=1032] "Generic1" @136,44 10x12
+   [STATIC id=900] "mm" @151,44 12x10
+   [BUTTON id=1652] "Stitch Values" @5,27 165x38
+--- DLG 1196
+DIALOG "Outline Stitch" 320x200
+   [COMBO id=1595] "" @75,8 94x110
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [STATIC id=1350] "Triple Length:" @11,41 80x17
+   [EDIT id=1332] "" @99,41 50x12
+   [msctls_updown32 id=1032] "Generic1" @139,41 10x12
+   [STATIC id=900] "mm" @153,43 12x10
+   [BUTTON id=1652] "Stitch Values" @5,27 165x37
+--- DLG 1197
+DIALOG "Outline Stitch" 320x200
+   [COMBO id=1595] "" @75,8 94x110
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [BUTTON id=1669] "" @8,27 205x92
+   [STATIC id=1891] "Pattern Set:" @17,42 63x12
+   [BUTTON id=65535] "" @81,35 59x18
+   [STATIC id=1892] "" @91,43 47x9
+   [STATIC id=65535] "Outline Pattern:" @17,57 56x16
+   [BUTTON id=65535] "" @81,50 59x18
+   [STATIC id=1894] "" @91,55 47x9
+   [BUTTON id=1370] "Select" @157,40 50x14
+   [EDIT id=1043] "" @82,76 50x12
+   [msctls_updown32 id=1301] "Generic2" @122,76 11x12
+   [EDIT id=1028] "" @82,102 50x12
+   [msctls_updown32 id=1367] "Generic1" @122,102 11x12
+   [STATIC id=1278] "Spacing:" @18,104 51x12
+   [STATIC id=900] "mm" @138,104 12x10
+   [STATIC id=1300] "Size:" @18,78 51x12
+   [STATIC id=902] "<MM_INCHES>" @138,78 12x10
+--- DLG 1198
+DIALOG "Others" 228x217
+   [BUTTON id=1198] "Underlay" @12,10 61x10
+   [COMBO id=1063] "" @87,11 76x84
+   [STATIC id=1831] "Stitch Length:" @28,35 73x13
+   [EDIT id=1832] "" @107,34 54x12
+   [msctls_updown32 id=1833] "Generic1" @147,33 11x12
+   [STATIC id=904] "mm" @168,36 12x10
+   [STATIC id=1202] "Margin:" @28,52 73x13
+   [COMBO id=2017] "" @107,52 54x61
+   [BUTTON id=1059] "Column Width:" @12,71 80x17
+   [COMBO id=1608] "" @107,74 54x61
+   [STATIC id=1014] "mm" @168,77 12x10
+   [BUTTON id=1058] "Pull Compensation:" @12,93 80x17
+   [COMBO id=1607] "" @107,96 54x61
+   [STATIC id=900] "mm" @168,96 12x10
+   [BUTTON id=1051] "Auto Jump" @12,118 145x10
+   [STATIC id=1388] "Maximum Stitch:" @32,139 71x12
+   [EDIT id=1001] "" @107,139 54x12
+   [msctls_updown32 id=1093] "Generic1" @147,137 11x12
+   [STATIC id=902] "mm" @168,140 12x10
+   [STATIC id=1389] "Jump Length:" @32,157 70x12
+   [EDIT id=1002] "" @107,157 54x12
+   [msctls_updown32 id=1094] "Generic1" @147,157 11x12
+   [STATIC id=901] "mm" @168,159 12x10
+   [BUTTON id=1049] "Travel On Edges" @12,176 80x12
+   [BUTTON id=2018] "Wave Effect" @12,193 80x12
+--- DLG 1199
+DIALOG "General" 259x167
+   [BUTTON id=1047] "Auto Save" @10,10 184x61
+   [BUTTON id=1051] "Save Design " @19,28 75x10
+   [EDIT id=1100] "" @89,48 50x12
+   [msctls_updown32 id=1050] "Generic1" @110,48 10x12
+   [STATIC id=1044] "minutes" @149,48 32x10
+   [BUTTON id=65535] "Show Digitizing Position" @10,77 150x52
+   [BUTTON id=1091] " Relative" @20,91 50x10
+   [BUTTON id=1092] " Absolute" @20,111 50x10
+   [STATIC id=65535] "Auto Save Period:" @19,48 65x10
+   [BUTTON id=2028] "Show Measure Tooltip" @20,141 87x10
+--- DLG 1207
+DIALOG "Print Options" 216x102
+   [BUTTON id=1709] "Embroidery" @11,12 84x10
+   [BUTTON id=1707] "Artistic View" @18,28 80x10
+   [BUTTON id=1708] "Hoop" @18,44 80x10
+   [BUTTON id=1239] "Picture" @18,60 80x10
+   [BUTTON id=1710] "Applique pattern" @11,79 78x13
+   [BUTTON id=1193] "Actual Size" @122,17 80x10
+   [BUTTON id=1194] "Fit To Page" @122,33 80x10
+   [BUTTON id=1] "OK" @138,65 50x14
+   [BUTTON id=2] "Cancel" @138,81 50x14
+   [BUTTON id=65535] "Print" @4,2 103x93
+   [BUTTON id=65535] "Size" @113,2 98x50
+--- DLG 1289
+DIALOG "Fill Stitch" 320x200
+   [STATIC id=1154] "Stitch Type:" @6,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [STATIC id=1023] "Pattern:" @20,24 35x12
+   [COMBO id=1034] "" @75,25 94x111
+   [STATIC id=1025] "Stitch Spacing:" @6,48 59x18
+   [EDIT id=1079] "" @81,49 40x12
+   [msctls_updown32 id=1403] "Generic1" @110,49 11x12
+   [STATIC id=906] "mm" @137,52 12x10
+   [STATIC id=1135] "Rotate clockwise by:" @6,72 68x10
+   [EDIT id=1133] "" @81,72 40x12
+   [msctls_updown32 id=1134] "Generic1" @110,72 10x12
+   [STATIC id=920] "Degrees" @137,75 31x10
+   [STATIC id=1703] "" @177,27 134x78
+   [BUTTON id=1089] "Effects..." @217,6 50x14
+--- DLG 1290
+DIALOG "Outline Stitch" 320x200
+   [COMBO id=1595] "" @75,8 94x110
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [STATIC id=1153] "Stitch Spacing:" @20,40 80x12
+   [EDIT id=1079] "" @108,40 50x12
+   [msctls_updown32 id=1403] "Generic1" @148,40 10x12
+   [STATIC id=900] "mm" @165,42 12x10
+   [BUTTON id=1652] "Stitch Values" @14,29 187x51
+   [STATIC id=1392] "Blanket Width:" @20,61 54x12
+   [EDIT id=1393] "" @108,60 50x12
+   [msctls_updown32 id=1394] "Generic1" @150,60 11x12
+   [STATIC id=901] "<MM_INCHES>" @165,62 12x10
+   [BUTTON id=1089] "Effects..." @231,8 50x14
+   [BUTTON id=65535] "Offset" @14,97 187x57
+   [BUTTON id=1873] "       Center" @26,113 87x10
+   [BUTTON id=1874] "       Offset" @26,129 88x10
+--- DLG 1291
+DIALOG "Grid" 258x177
+   [BUTTON id=1023] "Show Grid" @15,17 81x12
+   [BUTTON id=1025] "Set Reference Point" @15,33 126x12
+   [BUTTON id=1032] "Grid Spacing" @15,49 172x51
+   [STATIC id=1040] "Horizontal:" @23,65 54x12
+   [COMBO id=1029] "" @95,66 61x84
+   [STATIC id=1031] "<MM_INCHES>" @162,68 18x10
+   [STATIC id=1041] "Vertical:" @23,83 54x12
+   [COMBO id=1027] "" @95,83 61x74
+   [STATIC id=1042] "<MM_INCHES>" @162,85 18x10
+   [BUTTON id=1033] "Grid" @5,4 250x170
+   [BUTTON id=1030] "Snap to Grid" @15,107 63x12
+--- DLG 1295
+DIALOG "Bernina Pattern Selection" 350x233
+   [BUTTON id=2] "Cancel" @289,208 50x14
+   [BUTTON id=1322] "" @230,8 20x20
+   [BUTTON id=1323] "" @250,8 20x20
+   [BUTTON id=1324] "" @270,8 20x20
+   [BUTTON id=1307] "" @10,34 319x166
+   [SCROLL id=1306] "" @329,34 10x166
+--- DLG 1306
+DIALOG "Create Pattern" 165x74
+   [STATIC id=1888] "Pattern Set:" @10,11 69x12
+   [COMBO id=1889] "" @9,23 74x61
+   [STATIC id=65535] "Enter new Pattern Name:" @10,43 82x12
+   [EDIT id=1027] "" @10,56 74x12
+   [BUTTON id=1890] "New Set" @106,49 50x14
+   [BUTTON id=1] "OK" @106,6 50x14
+   [BUTTON id=2] "Cancel" @106,24 50x14
+--- DLG 1369
+DIALOG "Textured Edge" 257x201
+   [BUTTON id=1061] "Textured" @10,10 121x10
+   [BUTTON id=1967] "Left" @20,30 24x24
+   [BUTTON id=1966] "Both" @62,30 24x24
+   [BUTTON id=1968] "Right" @104,30 24x24
+   [STATIC id=1703] "" @150,30 96x78
+   [STATIC id=1340] "Texture:" @10,66 40x12
+   [msctls_trackbar32 id=1953] "Slider1" @55,65 85x17
+   [STATIC id=1343] "Span:" @10,95 42x12
+   [msctls_trackbar32 id=1969] "Slider1" @55,95 85x17
+--- DLG 1370
+DIALOG "Auto Appliqué" 267x156
+   [STATIC id=65535] "Cover Stitch:" @10,17 50x8
+   [COMBO id=1595] "" @60,15 58x110
+   [STATIC id=1817] "Spacing:" @125,35 35x8
+   [EDIT id=1079] "" @165,35 38x12
+   [msctls_updown32 id=1403] "Spin1" @195,35 11x12
+   [STATIC id=65535] "Width:" @125,17 35x8
+   [STATIC id=65535] "<MM_INCHES>" @205,35 22x10
+   [BUTTON id=1970] "Tackdown:" @20,35 52x10
+   [EDIT id=1801] "" @165,15 38x12
+   [msctls_updown32 id=1778] "Spin1" @195,15 11x12
+   [STATIC id=65535] "<MM_INCHES>" @205,15 22x10
+--- DLG 1372
+DIALOG "Select Character" 350x277
+   [STATIC id=65535] "Alphabet Set:" @11,12 77x8
+   [COMBO id=1318] "" @107,8 100x97
+   [BUTTON id=1322] "" @230,8 20x20
+   [BUTTON id=1323] "" @250,8 20x20
+   [BUTTON id=1324] "" @270,8 20x20
+   [BUTTON id=1307] "" @10,34 319x166
+   [SCROLL id=1306] "" @330,34 10x166
+   [STATIC id=65535] "Selection :" @10,212 36x8
+   [BUTTON id=1329] "Border Width" @171,211 73x35
+   [EDIT id=1326] "" @178,228 40x12
+   [msctls_updown32 id=1327] "Generic1" @218,228 10x12
+   [STATIC id=1328] "<MM_INCHES>" @225,230 12x7
+   [BUTTON id=1] "OK" @10,256 50x14
+   [BUTTON id=2] "Cancel" @90,256 50x14
+   [BUTTON id=1275] "Delete" @170,256 50x14
+   [BUTTON id=1378] "Copy" @231,255 50x14
+   [BUTTON id=1379] "Paste" @291,255 50x14
+   [STATIC id=1319] "" @10,228 142x12
+--- DLG 1375
+DIALOG "Artwork Preparation" 209x229
+   [EDIT id=1169] "" @80,204 24x13
+   [BUTTON id=1] "OK" @145,189 46x14
+   [BUTTON id=2] "Cancel" @145,206 46x14
+   [STATIC id=65535] "Available:" @22,193 49x10
+   [STATIC id=1170] "nnn" @80,192 24x10
+   [STATIC id=1171] "" @9,7 191x171
+   [STATIC id=65535] "Reduce to:" @22,206 49x10
+   [BUTTON id=65535] "Colors" @10,180 110x44
+--- DLG 1376
+DIALOG "Outlined Artwork Preparation" 226x241
+   [STATIC id=65535] "#110" @13,201 11x11
+   [msctls_trackbar32 id=1172] "Slider2" @24,197 110x18
+   [STATIC id=65535] "#109" @135,202 20x20
+   [STATIC id=1171] "" @8,7 211x166
+   [BUTTON id=65535] "Outline Appearance" @8,177 140x56
+   [BUTTON id=1188] "Show Color Areas" @40,216 76x12
+   [BUTTON id=1] "OK" @163,202 46x14
+   [BUTTON id=2] "Cancel" @163,219 46x14
+   [STATIC id=65535] "0" @28,187 8x9
+   [STATIC id=65535] "50" @75,187 10x9
+   [STATIC id=65535] "100" @120,187 14x9
+   [STATIC id=65535] "Available Colors:" @157,182 62x8
+   [STATIC id=1170] "nnn" @190,191 13x8
+--- DLG 1377
+DIALOG "AutoDigitizer" 181x195
+   [BUTTON id=1159] "Image Properties" @5,6 127x56
+   [STATIC id=1162] "Width:" @14,19 33x8
+   [EDIT id=1152] "" @68,17 26x12
+   [STATIC id=65535] "<MM_INCHES>" @101,19 28x10
+   [STATIC id=1163] "Height:" @14,33 33x8
+   [EDIT id=1153] "" @68,31 26x12
+   [STATIC id=65535] "<MM_INCHES>" @101,33 28x10
+   [STATIC id=1164] "Image colors:" @14,47 53x13
+   [EDIT id=1165] "" @68,45 26x12
+   [BUTTON id=1166] "Stitching" @5,64 127x106
+   [BUTTON id=1154] "Omitted Colors >>" @17,151 104x12
+   [STATIC id=1167] "Fills:" @17,76 35x12
+   [STATIC id=1168] "Details:" @17,114 35x12
+   [BUTTON id=1] "OK" @17,176 50x14
+   [BUTTON id=2] "Cancel" @71,176 50x14
+   [STATIC id=1158] "" @143,13 27x174
+   [STATIC id=1157] "" @139,10 35x180
+   [COMBO id=1155] "" @17,89 105x51
+   [COMBO id=1156] "" @17,129 105x48
+--- DLG 1390
+DIALOG "Object List" 261x59
+   [SCROLL id=1119] "" @1,36 245x9
+   [STATIC id=1118] "" @8,7 244x19
+   [STATIC id=1122] "" @7,50 57x10
+   [STATIC id=1123] "" @79,50 59x10
+   [STATIC id=1124] "" @154,50 59x10
+--- DLG 1391
+DIALOG "Color Film" 261x40
+   [SCROLL id=1119] "" @1,36 245x9
+   [STATIC id=1118] "" @8,7 244x19
+--- DLG 1404
+DIALOG "Gradient Fill" 257x202
+   [BUTTON id=1219] "Gradient Fill" @10,10 95x12
+   [BUTTON id=1227] "Profile" @9,34 132x46
+   [BUTTON id=1228] "Linear" @19,49 24x24
+   [BUTTON id=1232] "Dec-Linear" @48,49 24x24
+   [BUTTON id=1229] "Convex" @77,49 24x24
+   [BUTTON id=1233] "Concave" @106,49 24x24
+   [BUTTON id=1226] "Values" @9,87 236x54
+   [STATIC id=1220] "Maximum Spacing:" @15,110 62x12
+   [EDIT id=1222] "" @172,109 50x12
+   [msctls_updown32 id=1221] "Generic1" @205,109 10x12
+   [STATIC id=900] "mm" @226,111 12x10
+   [msctls_trackbar32 id=1985] "Slider1" @78,106 88x20
+   [STATIC id=1987] "0.1" @83,94 20x8
+   [STATIC id=1990] "10.0" @148,96 25x8
+--- DLG 1410
+DIALOG "" 316x175
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1000] "Use PhotoStar for BlackLayer" @52,60 171x10
+--- DLG 1411
+DIALOG "" 316x175
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1668] "Stitching" @5,27 162x56
+   [STATIC id=1001] "Stitch Spacing" @11,44 65x8
+   [EDIT id=1079] "" @83,43 50x12
+   [msctls_updown32 id=1403] "Generic1" @123,43 10x12
+   [STATIC id=900] "mm" @137,45 12x10
+   [STATIC id=65535] "Skew Angle:" @11,64 47x10
+   [EDIT id=1080] "" @84,62 50x12
+   [msctls_updown32 id=1404] "Generic1" @127,61 10x12
+   [STATIC id=901] "°" @143,61 12x10
+   [BUTTON id=1089] "Effects..." @225,8 50x14
+--- DLG 1412
+DIALOG "" 324x184
+   [BUTTON id=1713] "Background" @29,105 137x54
+   [BUTTON id=1714] "Light" @39,120 59x12
+   [BUTTON id=1715] "Dark" @39,138 60x12
+   [BUTTON id=1716] "" @180,14 113x83
+   [STATIC id=1717] "Fill angle:" @194,56 30x17
+   [EDIT id=1718] "" @234,55 33x12
+   [msctls_updown32 id=1719] "Generic1" @266,55 12x12
+   [STATIC id=920] "°" @279,56 9x10
+   [BUTTON id=65535] "Resolution" @30,14 137x83
+   [BUTTON id=1885] "Coarse" @40,32 54x10
+   [BUTTON id=1886] "Medium" @40,56 53x10
+   [BUTTON id=1887] "Fine" @40,80 55x10
+--- DLG 1414
+DIALOG "Border" 316x175
+   [BUTTON id=1998] "Border" @11,11 58x10
+   [STATIC id=1720] "Color:" @105,11 25x17
+   [COMBO id=2000] "" @135,11 37x57
+   [STATIC id=1154] "Stitch Type:" @11,34 60x12
+   [COMBO id=1595] "" @81,33 94x110
+   [BUTTON id=1668] "Satin Spacing" @11,52 162x56
+   [BUTTON id=1662] " Automatic" @24,69 95x10
+   [BUTTON id=1663] " Manual" @24,85 45x10
+   [BUTTON id=1653] "Satin Values" @11,111 162x57
+   [STATIC id=1153] "Stitch Spacing:" @17,129 63x12
+   [STATIC id=1392] "Satin width:" @17,146 63x12
+   [EDIT id=1079] "" @89,127 50x12
+   [msctls_updown32 id=1403] "Generic1" @128,127 11x12
+   [STATIC id=900] "mm" @143,127 12x10
+   [EDIT id=1393] "" @89,145 50x12
+   [msctls_updown32 id=1394] "Generic1" @128,145 11x12
+   [STATIC id=901] "<MM_INCHES>" @143,145 12x10
+   [BUTTON id=65535] "Satin Type" @187,52 108x56
+   [BUTTON id=1853] "Satin " @200,69 100x10
+   [BUTTON id=1854] "Satin Special" @200,86 89x10
+   [BUTTON id=65535] "Offset" @189,111 108x57
+   [BUTTON id=1871] "Center" @200,127 87x10
+   [BUTTON id=1074] "Offset" @200,143 88x10
+   [BUTTON id=1089] "Effects..." @214,33 50x14
+--- DLG 1416
+DIALOG "Border" 316x175
+   [BUTTON id=1998] "Border" @11,11 58x10
+   [STATIC id=1720] "Color:" @101,11 25x17
+   [COMBO id=2000] "" @131,11 37x57
+   [STATIC id=1154] "Stitch Type:" @11,34 60x12
+   [COMBO id=1595] "" @77,33 94x110
+   [BUTTON id=1652] "Stitch Values" @11,53 165x38
+   [STATIC id=1331] "Single Length:" @13,70 80x12
+   [EDIT id=1332] "" @103,68 50x12
+   [msctls_updown32 id=1032] "Generic1" @140,70 10x12
+   [STATIC id=900] "mm" @157,70 12x10
+--- DLG 1417
+DIALOG "Border" 320x200
+   [BUTTON id=1998] "Border" @11,11 58x10
+   [STATIC id=1720] "Color:" @103,11 25x17
+   [COMBO id=2000] "" @133,11 37x57
+   [STATIC id=1154] "Stitch Type:" @11,34 60x12
+   [COMBO id=1595] "" @79,33 94x110
+   [BUTTON id=1652] "Stitch Values" @11,54 187x51
+   [STATIC id=1153] "Stitch Spacing:" @17,65 80x12
+   [EDIT id=1079] "" @105,65 50x12
+   [msctls_updown32 id=1403] "Generic1" @145,65 10x12
+   [STATIC id=900] "mm" @162,67 12x10
+   [STATIC id=1392] "Blanket Width:" @17,86 54x12
+   [EDIT id=1393] "" @105,85 50x12
+   [msctls_updown32 id=1394] "Generic1" @147,85 11x12
+   [STATIC id=901] "<MM_INCHES>" @162,87 12x10
+   [BUTTON id=1089] "Effects..." @231,8 50x14
+   [BUTTON id=65535] "Offset" @11,114 187x57
+   [BUTTON id=1873] "       Center" @23,130 87x10
+   [BUTTON id=1874] "       Offset" @23,146 88x10
+--- DLG 1418
+DIALOG "Border" 316x176
+   [BUTTON id=1998] "Border" @11,11 58x10
+   [STATIC id=1720] "Color:" @101,11 25x17
+   [COMBO id=2000] "" @131,11 37x57
+   [STATIC id=1154] "Stitch Type:" @11,33 60x12
+   [COMBO id=1595] "" @77,33 94x110
+   [BUTTON id=1652] "Stitch Values" @11,53 165x38
+   [STATIC id=1350] "Triple Length:" @17,68 80x17
+   [EDIT id=1332] "" @104,68 50x12
+   [msctls_updown32 id=1032] "Generic1" @145,68 10x12
+   [STATIC id=900] "mm" @159,70 12x10
+--- DLG 1419
+DIALOG "Border" 320x200
+   [BUTTON id=1669] "Pattern" @13,56 205x92
+   [STATIC id=1891] "Font Name:" @22,69 63x12
+   [BUTTON id=65535] "" @86,64 59x18
+   [STATIC id=1892] "" @96,72 47x9
+   [STATIC id=65535] "Outline Pattern:" @22,84 56x16
+   [BUTTON id=65535] "" @86,79 59x18
+   [STATIC id=1894] "" @96,84 47x9
+   [BUTTON id=1370] "Select" @162,69 50x14
+   [EDIT id=1043] "" @87,105 50x12
+   [msctls_updown32 id=1301] "Generic2" @127,105 11x12
+   [EDIT id=1028] "" @87,131 50x12
+   [msctls_updown32 id=1367] "Generic1" @127,131 11x12
+   [STATIC id=1278] "Spacing:" @23,133 51x12
+   [STATIC id=900] "mm" @143,133 12x10
+   [STATIC id=1300] "Size:" @23,105 51x12
+   [STATIC id=902] "<MM_INCHES>" @143,107 12x10
+   [STATIC id=1154] "Stitch Type:" @13,34 60x12
+   [COMBO id=1595] "" @80,33 94x110
+   [BUTTON id=1998] "Border" @14,11 58x10
+   [STATIC id=1720] "Color:" @104,11 25x17
+   [COMBO id=2000] "" @134,11 37x57
+--- DLG 1440
+DIALOG "Enhance Image" 336x287
+   [BUTTON id=1] "OK" @222,266 50x14
+   [BUTTON id=2] "Cancel" @279,266 50x14
+   [BUTTON id=2029] "Set default values" @7,266 66x14
+   [STATIC id=65535] "Original Image" @34,7 110x13
+   [STATIC id=65535] "New Image" @186,7 115x13
+   [STATIC id=2030] "" @34,20 114x100
+   [STATIC id=2031] "" @186,20 115x100
+   [BUTTON id=65535] "Brightness" @7,136 158x33
+   [BUTTON id=65535] "Contrast" @7,179 158x30
+   [BUTTON id=65535] "Gamma Correction" @7,222 158x31
+   [BUTTON id=65535] "Color Balance" @171,136 158x117
+   [msctls_trackbar32 id=2032] "Slider1" @17,145 119x22
+   [EDIT id=2033] "" @140,150 19x14
+   [msctls_trackbar32 id=2034] "Slider2" @17,186 119x20
+   [EDIT id=2035] "" @140,190 19x14
+   [msctls_trackbar32 id=2036] "Slider3" @17,229 119x21
+   [EDIT id=2037] "" @140,234 19x14
+   [msctls_trackbar32 id=2038] "Slider4" @182,155 119x21
+   [msctls_trackbar32 id=2039] "Slider5" @182,190 119x19
+   [msctls_trackbar32 id=2040] "Slider6" @182,225 119x20
+   [STATIC id=65535] "Red" @186,148 115x8
+   [EDIT id=2041] "" @303,160 20x14
+   [STATIC id=65535] "Green" @186,183 115x8
+   [EDIT id=2042] "" @303,195 21x14
+   [STATIC id=65535] "Blue" @186,218 115x8
+   [EDIT id=2043] "" @303,229 21x14
+--- DLG 1441
+DIALOG "Craft Fill Stitch" 320x200
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1669] "" @6,27 162x93
+   [STATIC id=1893] "Pattern:" @12,69 39x8
+   [BUTTON id=4294967295] "" @51,60 68x20
+   [STATIC id=1894] "" @56,68 58x8
+   [BUTTON id=1646] "Select..." @127,66 34x14
+   [BUTTON id=1042] "Layout" @217,129 50x14
+   [STATIC id=1703] "" @177,31 134x89
+   [BUTTON id=1089] "Effects..." @217,6 50x14
+--- DLG 1442
+DIALOG "Outline Stitch" 320x200
+   [COMBO id=1595] "" @75,8 94x110
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [BUTTON id=1669] "" @8,27 205x91
+   [STATIC id=65535] "Pattern:" @18,43 56x12
+   [BUTTON id=65535] "" @82,36 50x18
+   [STATIC id=1894] "" @85,42 44x9
+   [BUTTON id=1370] "Select" @157,40 50x14
+   [EDIT id=1043] "" @82,67 50x12
+   [msctls_updown32 id=1301] "Generic2" @122,68 11x12
+   [EDIT id=1028] "" @82,92 50x12
+   [msctls_updown32 id=1367] "Generic1" @122,94 11x12
+   [STATIC id=1278] "Spacing:" @18,93 51x12
+   [STATIC id=900] "mm" @138,94 12x10
+   [STATIC id=1300] "Size:" @18,68 51x12
+   [STATIC id=902] "<MM_INCHES>" @138,69 12x10
+--- DLG 1443
+DIALOG "Fill Stitch" 320x200
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1407] "" @6,26 163x99
+   [STATIC id=1891] "Pattern Set:" @10,58 40x8
+   [BUTTON id=4294967295] "" @54,50 57x20
+   [STATIC id=1892] "" @58,58 49x8
+   [STATIC id=1893] "Fill Pattern :" @10,83 38x8
+   [BUTTON id=4294967295] "" @54,74 57x20
+   [STATIC id=1894] "" @58,82 49x8
+   [BUTTON id=1646] "Select..." @116,55 44x14
+   [BUTTON id=1042] "Layout" @217,133 50x14
+   [STATIC id=1703] "" @177,30 134x95
+   [BUTTON id=1089] "Effects..." @217,6 50x14
+--- DLG 1444
+DIALOG "Select Pattern" 350x277
+   [STATIC id=65535] "Patterns" @11,12 77x8
+   [COMBO id=1318] "" @107,8 100x97
+   [BUTTON id=1322] "" @230,8 20x20
+   [BUTTON id=1323] "" @250,8 20x20
+   [BUTTON id=1324] "" @270,8 20x20
+   [BUTTON id=1307] "" @10,34 319x166
+   [SCROLL id=1306] "" @330,34 10x166
+   [STATIC id=65535] "Selection :" @10,212 36x8
+   [STATIC id=1319] "" @10,228 142x12
+   [BUTTON id=1329] "Border Width" @171,211 73x35
+   [EDIT id=1326] "" @178,228 40x12
+   [msctls_updown32 id=1327] "Generic1" @218,228 10x12
+   [STATIC id=1328] "<MM_INCHES>" @225,230 12x8
+   [BUTTON id=1] "OK" @10,256 50x14
+   [BUTTON id=2] "Cancel" @90,256 50x14
+   [BUTTON id=1275] "Delete" @170,256 50x14
+   [BUTTON id=1378] "Copy" @231,255 50x14
+   [BUTTON id=1379] "Paste" @291,255 50x14
+--- DLG 1448
+DIALOG "Backstitch" 316x175
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1252] "Backstitch" @10,26 227x143
+   [STATIC id=1253] "Stitch Length:" @23,43 65x11
+   [EDIT id=1185] "" @101,42 50x12
+   [msctls_updown32 id=1186] "Generic1" @144,43 11x12
+   [STATIC id=900] "mm" @160,44 12x10
+   [STATIC id=1254] "Stitch Thickness:" @23,72 65x11
+   [COMBO id=1251] "" @101,71 50x45
+   [STATIC id=924] "mm" @160,73 12x10
+   [STATIC id=1000] "Overlap:" @23,101 65x11
+   [COMBO id=1257] "" @101,100 50x45
+   [STATIC id=1014] "%" @160,102 12x10
+   [STATIC id=1256] "Strokes:" @23,130 55x12
+   [BUTTON id=1246] "3" @101,130 26x10
+   [BUTTON id=1255] "5" @132,130 30x10
+--- DLG 1449
+DIALOG "StemStitch" 316x175
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1251] "Stemstitch" @10,26 227x143
+   [STATIC id=1247] "Line Thickness:" @23,43 65x11
+   [COMBO id=1248] "" @101,41 50x45
+   [STATIC id=902] "mm" @159,44 12x10
+   [STATIC id=1153] "Spacing:" @23,64 63x12
+   [EDIT id=1079] "" @101,62 50x12
+   [msctls_updown32 id=1403] "Generic1" @134,65 11x12
+   [STATIC id=900] "mm" @159,62 12x10
+   [STATIC id=1244] "Angle:" @23,84 63x12
+   [EDIT id=1001] "" @101,83 50x12
+   [msctls_updown32 id=1002] "Generic1" @134,83 11x12
+   [STATIC id=1526] "Type:" @23,109 32x15
+   [BUTTON id=1245] "Single" @70,102 53x10
+   [BUTTON id=1246] "Triple" @70,118 45x10
+   [STATIC id=1250] "Stitch Thickness:" @38,136 55x11
+   [COMBO id=1254] "" @104,134 50x44
+   [STATIC id=923] "mm" @159,137 12x10
+   [STATIC id=901] "°" @159,84 12x10
+--- DLG 1450
+DIALOG "Stipple" 252x136
+   [BUTTON id=65535] "Stipple" @30,20 191x78
+   [STATIC id=65535] "Stitch Length:" @38,42 67x14
+   [EDIT id=1258] "" @124,42 55x14
+   [msctls_updown32 id=1259] "Spin1" @170,42 10x14
+   [STATIC id=1127] "mm" @190,46 12x8
+   [STATIC id=65535] "Loop Spacing:" @38,68 67x14
+   [EDIT id=1260] "" @124,66 55x14
+   [msctls_updown32 id=1261] "Spin1" @171,65 10x14
+   [STATIC id=1128] "mm" @190,68 12x8
+   [BUTTON id=1] "OK" @61,115 50x14
+   [BUTTON id=2] "Cancel" @139,115 50x14
+--- DLG 1454
+DIALOG "Buttonhole" 291x221
+   [BUTTON id=65535] "Buttonhole Type" @7,5 276x130
+   [STATIC id=65535] "#458" @10,16 19x36
+   [BUTTON id=2084] "Standard" @31,25 43x13
+   [STATIC id=65535] "#459" @103,16 19x36
+   [BUTTON id=2085] "Standard Narrow" @123,25 66x13
+   [STATIC id=65535] "#460" @198,16 19x36
+   [BUTTON id=2086] "Round" @217,25 43x13
+   [STATIC id=65535] "#461" @10,56 19x36
+   [BUTTON id=2087] "Stretch" @31,65 40x13
+   [STATIC id=65535] "#462" @103,56 19x36
+   [BUTTON id=2088] "Heirloom" @123,65 43x13
+   [STATIC id=65535] "#463" @198,56 19x36
+   [BUTTON id=2089] "Round End" @217,65 54x13
+   [STATIC id=65535] "#464" @11,95 19x36
+   [BUTTON id=2090] "Keyhole Square" @31,104 65x13
+   [STATIC id=65535] "#465" @103,95 20x36
+   [BUTTON id=2091] "Keyhole Round" @123,104 62x13
+   [STATIC id=65535] "#466" @198,94 19x36
+   [BUTTON id=2092] "Keyhole Point" @217,104 60x13
+   [BUTTON id=65535] "Buttonhole Values" @7,143 276x69
+   [STATIC id=65535] "Slit Length" @12,160 37x8
+   [EDIT id=2076] "" @53,159 40x12
+   [msctls_updown32 id=2077] "Generic1" @82,159 11x12
+   [STATIC id=900] "mm" @95,160 11x10
+   [STATIC id=2093] "Bead Stitch Spacing" @128,160 66x8
+   [EDIT id=2078] "" @199,159 40x12
+   [msctls_updown32 id=2079] "Generic1" @228,159 8x12
+   [STATIC id=901] "mm" @241,160 11x10
+   [STATIC id=65535] "Angle" @12,190 37x8
+   [EDIT id=2080] "" @53,189 40x12
+   [msctls_updown32 id=2081] "Generic1" @82,189 11x12
+   [STATIC id=65535] "°" @95,190 11x10
+   [BUTTON id=2082] "Vertical" @124,190 38x10
+   [BUTTON id=2083] "Horizontal" @167,190 46x10
+--- DLG 1455
+DIALOG "Appliqué" 320x200
+   [BUTTON id=4294967295] "Tackdown" @7,7 150x115
+   [BUTTON id=1233] "Use Tackdown" @19,30 62x10
+   [STATIC id=1009] "Width:" @16,60 45x8
+   [EDIT id=1230] "" @72,58 38x12
+   [msctls_updown32 id=1234] "Spin1" @102,58 8x12
+   [STATIC id=902] "<MM_INCHES>" @112,60 22x10
+   [STATIC id=1010] "Spacing:" @16,86 45x8
+   [EDIT id=1231] "" @72,85 38x12
+   [msctls_updown32 id=1235] "Spin1" @102,85 8x12
+   [STATIC id=1129] "<MM_INCHES>" @112,87 22x10
+   [BUTTON id=4294967295] "Cover Stitch" @163,7 150x115
+   [STATIC id=4294967295] "Type:" @172,31 45x8
+   [COMBO id=1229] "" @227,30 63x110
+   [STATIC id=1007] "Width:" @172,60 45x8
+   [EDIT id=1222] "" @227,58 38x12
+   [msctls_updown32 id=1223] "Spin1" @257,58 8x12
+   [STATIC id=901] "<MM_INCHES>" @267,60 22x10
+   [STATIC id=1008] "Spacing:" @172,86 45x8
+   [EDIT id=1220] "" @227,85 38x12
+   [msctls_updown32 id=1221] "Spin1" @257,85 8x12
+   [STATIC id=1128] "<MM_INCHES>" @267,87 22x10
+   [BUTTON id=4294967295] "Style" @7,128 150x59
+   [BUTTON id=1225] "Trim in Place" @19,147 61x11
+   [BUTTON id=1226] "Pre-Cut" @19,163 61x11
+   [BUTTON id=4294967295] "Offset" @163,128 150x59
+   [msctls_trackbar32 id=1236] "Slider1" @176,144 114x11
+   [STATIC id=4294967295] "Inside" @174,166 35x9
+   [STATIC id=4294967295] "Outside" @254,166 41x9
+   [STATIC id=1237] "Ticks" @182,154 102x8
+--- DLG 1456
+DIALOG "Start and End" 163x202
+   [BUTTON id=1] "OK" @28,181 50x14
+   [BUTTON id=2] "Cancel" @91,181 50x14
+   [BUTTON id=65535] "Start Point" @7,7 149x78
+   [BUTTON id=65535] "End Point" @7,97 149x75
+   [BUTTON id=2063] "First Stitch" @16,20 49x10
+   [BUTTON id=2064] "Auto Start at:" @16,38 57x10
+   [BUTTON id=2065] "Digitize Start Point" @16,67 73x10
+   [COMBO id=2068] "" @82,35 68x39
+   [BUTTON id=2066] "Maintain Automatically" @30,51 86x10
+   [BUTTON id=2067] "Last Stitch" @16,111 49x10
+   [BUTTON id=2069] "Auto End at:" @16,128 55x10
+   [BUTTON id=2070] "Digitize End Point" @16,158 71x10
+   [COMBO id=2072] "" @82,126 68x45
+   [BUTTON id=2071] "Maintain Automatically" @30,143 86x10
+--- DLG 1458
+DIALOG "" 316x175
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+--- DLG 1460
+DIALOG "Slow Redraw" 141x53
+   [BUTTON id=1665] "" @31,37 28x12
+   [BUTTON id=1667] "" @82,37 28x12
+   [STATIC id=1663] " Speed:              (s/s)" @36,2 69x11
+   [BUTTON id=4294967295] "" @2,1 137x33
+   [msctls_trackbar32 id=1669] "Slider1" @5,12 130x18
+--- DLG 1461
+DIALOG "" 324x184
+   [BUTTON id=1994] "Character" @9,14 87x49
+   [BUTTON id=1992] "Color" @17,29 59x10
+   [BUTTON id=1993] "Monochrome" @17,47 59x10
+   [BUTTON id=1713] "Background" @107,16 106x48
+   [BUTTON id=1714] "Light" @115,27 59x12
+   [BUTTON id=1715] "Dark" @115,45 60x12
+   [BUTTON id=1716] "" @222,16 93x48
+   [STATIC id=1717] "Fill angle:" @225,30 30x17
+   [EDIT id=1718] "" @262,29 33x12
+   [msctls_updown32 id=1719] "Generic1" @293,29 12x12
+   [STATIC id=920] "°" @305,30 9x10
+   [BUTTON id=4294967295] "Resolution" @171,73 137x94
+   [BUTTON id=1885] "Coarse" @181,91 54x10
+   [BUTTON id=1886] "Medium" @181,115 53x10
+   [BUTTON id=1887] "Fine" @181,139 55x10
+   [BUTTON id=1996] "Layer Order" @10,73 148x94
+   [BUTTON id=2010] "" @15,93 16x13
+   [BUTTON id=2011] "Button1" @15,109 16x13
+   [BUTTON id=2012] "Button1" @15,125 16x13
+   [LISTBOX id=1995] "" @35,92 26x61
+   [BUTTON id=2013] "Button1" @65,109 16x13
+   [BUTTON id=2014] "Button1" @65,125 16x13
+   [BUTTON id=2015] "Button1" @65,141 16x13
+   [BUTTON id=1299] "Reset" @94,115 50x14
+--- DLG 1462
+DIALOG "" 316x175
+   [STATIC id=1154] "Stitch Type:" @8,9 60x12
+   [COMBO id=1595] "" @75,8 94x110
+   [BUTTON id=1668] "Stitching" @5,27 162x56
+   [STATIC id=1001] "Stitch Spacing" @11,44 65x8
+   [EDIT id=1079] "" @83,43 50x12
+   [msctls_updown32 id=1403] "Generic1" @123,43 10x12
+   [STATIC id=900] "mm" @137,45 12x10
+   [STATIC id=65535] "Skew Angle:" @11,64 47x10
+   [EDIT id=1080] "" @84,62 50x12
+   [msctls_updown32 id=1404] "Generic1" @127,61 10x12
+   [STATIC id=901] "°" @143,61 12x10
+   [BUTTON id=65535] "Color Layers" @5,93 162x64
+   [BUTTON id=1006] "" @68,107 24x17
+   [BUTTON id=1002] "Parallel" @13,110 46x10
+   [BUTTON id=1003] "Angled" @13,127 43x10
+   [BUTTON id=1007] "" @68,125 24x17
+   [BUTTON id=1089] "Effects..." @225,8 50x14
+STR 129: \nDesign\nDesign\nArtista Design Files (*.art)\n.ART\nBE.Document\nArtista Design File
+STR 131: \nDesign\nDesign\nDesign Templates (*.amt)\n.AMT\nBE.Document\nArtista template file
+STR 142: Show or hide the Input toolbar\nToggle Input Toolbar
+STR 144: Show or hide the Travel toolbar\nToggle Travel Toolbar
+STR 153:  Switch to 
+STR 1301: Enter point %d on the run stitch curve
+STR 1304: Enter the stitch end point
+STR 1413: Pattern 
+STR 1415: Make Pattern
+STR 1549: All Files (*.*)
+STR 2207: Total Thread: 
+STR 2212: Zoom: 
+STR 2234: Satin
+STR 2235: Step
+STR 2236: Zigzag
+STR 2237: Blanket
+STR 2238: Fancy
+STR 2239: Contour
+STR 2243: Single
+STR 2244: Triple
+STR 2245: Pattern
+STR 2257: Island Coil
+STR 2258: Coil
+STR 2375: Thread Chart Directory Not Found: 
+STR 2377: Incorrect Thread Data, line %d. Line ignored
+STR 2378: Are you sure you want to clear all the thread information?
+STR 2379: Clear All Threads
+STR 2592: Unsewn
+STR 2599: Edge Walk
+STR 2603: Step
+STR 2627: SINGLE
+STR 2628: TRIPLE
+STR 2632: STEP
+STR 2633: PATTERN
+STR 2634: STEP
+STR 2640: Edit Thread
+STR 2704: Arial
+STR 2722: Perpendicular Fill
+STR 2723: COIL
+STR 2724: ISLAND COIL
+STR 2726: PERPENDICULAR FILL
+STR 2743: Z %.1f
+STR 2746: Select Character
+STR 2747: Select Pattern
+STR 2832: Outline:
+STR 2833: Fill:
+STR 2861: Click on area of image
+STR 2862: Press Enter to Stitch Area
+STR 2881: Max Stitch: 
+STR 2882: Min Stitch: 
+STR 2884: Removed %ld stitch(es)
+STR 2913: Center of Design
+STR 2943: Load Picture
+STR 2956: Flexi Split
+STR 3001: Col %d
+STR 3005: X=%6.1f Y=%6.1f L=%6.1f A=%4.0f
+STR 3006: X=%6.1f Y=%6.1f L=%6.1f A=%4.0f
+STR 3007: generating stitches...
+STR 3012: Invalid Thread Chart Name.\nMake sure it contains none of this characters: '\:/?*|<>
+STR 3013: Chart name already exists.\nReplace Thread Chart ?
+STR 3014: Could not rename chart.\nMake sure the file is not read-only.
+STR 3015: Thread Chart name already exists.\nPlease enter another name.
+STR 3016: Do you wish to delete thread chart?
+STR 3017: Delete Thread Chart
+STR 3018: Edit Thread
+STR 3019: Add Thread
+STR 3020: Do you wish to remove selected threads?
+STR 3021: Remove Threads
+STR 3091: S
+STR 3092: E
+STR 3093: %d/%d
+STR 3094: W%6.1f H%6.1f
+STR 3102: PhotoSnap
+STR 3104: W%5.2f H%5.2f
+STR 3444: Fill Stitch
+STR 3445: Outline Stitch
+STR 3446: Modify Thread Chart
+STR 3447: Thread
+STR 3448: Threads
+STR 3449: Thread Chart
+STR 3450: Threads in Design:
+STR 3451: Thread Chart:
+STR 3452: Thread Colors
+STR 3453: Needle Points
+STR 3454: Stitches
+STR 3455: Cumulative Stitch Count
+STR 3456: Run Small Stitch Filter on Output
+STR 3457: Center at Current Stitch
+STR 3458: Start at Current Stitch
+STR 3459: Stitch Type:
+STR 3460: Stitch Values
+STR 3461: Stitch Spacing:
+STR 3462: Small Stitches
+STR 3463: All stitches smaller than the minimum stitch will be removed from the design
+STR 3464: Minimum Stitch:
+STR 3466: Stitch Length:
+STR 3505: Load Picture
+STR 3506: S: %ld
+STR 3507: C: %ld
+STR 3508: H: %.1f
+STR 3509: W: %.1f
+STR 3510: V: %s
+STR 3512: All Picture Files
+STR 3515: St.
+STR 3520: Thread Chart: 
+STR 3526: BERNINA artista
+STR 3569: New Thread Chart
+STR 3584: Fancy fills
+STR 3585: Patterns
+STR 3606: Failed to launch the Portfolio
+STR 3612: Singer (*.XXX)
+STR 3697: Processing Image...
+STR 3749: http://www.bernina.com
+STR 3750: http://www.bernina.com/products/software/artista/register.html
+STR 3751: http://www.bernina.com/products/software/artista/support.html
+STR 3752: http://www.berninausa.com
+STR 3753: http://www.berninausa.com/products/software/artista/register.html
+STR 3754: http://www.berninausa.com/products/software/artista/support.html
+STR 3755: Stitch and Color Bar
+STR 3756: Arrange Toolbar
+STR 3757: View Mode Toolbar
+STR 3758: General Toolbar
+STR 3759: Picture Toolbar
+STR 3760: Design Toolbar
+STR 3767: http://www.embroideryonline.com
+STR 4016: Easy Stitch Image
+STR 4017: Convert TrueType Font
+STR 4021: Alphabet Set: 
+STR 4022: Creating Objects...
+STR 4042: portfolio.exe
+STR 4045: Auto
+STR 4046: Step
+STR 4047: Satin
+STR 4048: Satin
+STR 4049: Double Run
+STR 4050: Satin Lines
+STR 4051: Omitted Colors >>
+STR 4052: Omitted Colors <<
+STR 4071: Blot.exe
+STR 4074: 3D Warp
+STR 4079: Pattern Set: 
+STR 4080: New Pattern Set
+STR 4081: New Pattern Set Name:
+STR 4206: %6.1f\n%6.0f%c
+STR 4207: %6.0f%c
+STR 4231: Craft Stitch Toolbar
+STR 4242: Buttonhole
+STR 4243: Click to place buttonhole
+STR 4244: Return to Start
+STR 4245: Enter Start Point
+STR 4246: Enter End Point
+STR 4247: © Copyright 1997-2003 Wilcom Pty Ltd, Sydney Australia. All rights reserved. Stitch Processor portion of this product is protected by Patents. USA Patent No. 4,821,662, Japanese Patent No. 2029 491, European Patent No. EP 0221 163.\nAll rights reserved.\nWarning: This computer program is protected by copyright and international treaties. Unauthorized reproduction or distribution, dismantling or reverse engineering of this program, or any part of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law.
+STR 4250: ART Grade:
+STR 4251: A
+STR 4252: B
+STR 4253: C
+STR 4254: D
+STR 4255: ?
+STR 4256: ART: %s
+STR 4257: Pure ART Outlines
+STR 4258: Converted Outlines
+STR 4259: Estimated Outlines
+STR 4260: No Outlines
+STR 4261: Unknown Outlines
+STR 4262: Pure ART Stitches
+STR 4263: Converted Stitches
+STR 4264: Processed Stitches
+STR 4265: Calculated Stitches
+STR 4266: Unknown Stitches
+STR 4276: Multi Hooping Toolbar
+STR 4277: One or more files exists!\nDo you want to continue?
+STR 4278: Overwrite file
+STR 4279: One or more objects in this design will not be stitched.\nIs this OK ?
+STR 4280: Objects Not Covered
+STR 4281: Split File
+STR 4282: Unknown hoop
+STR 4283: Selected hoop is not supported by software
+STR 4284: Choosing a new hoop will delete all your Split Hoops.\nDo you want to continue?
+STR 4285: Changing Physical Hoop
+STR 4286: Failure to save single split design
+STR 4287: Save File Error
+STR 31301:        
+STR 31302:                                  
+STR 31303:        
+STR 31304:      
+STR 31305:           
+STR 31306:                                                         
+STR 31315:                                                                                                            
+STR 31316: Fill Type\nFill Type
+STR 31317: Outline Type\nOutline Type
+STR 31318: Color\nColor
+STR 32649: Inserts a complex fill object\nComplex Fill / Values
+STR 32651: Trapunto Effectc\nTrapunto / Values
+STR 32653: Moves the stitch cursor one object forward\nTravel by Object 
+STR 32654: Moves the stitch cursor one object backward\nTravel by Object
+STR 32658: Shows Picture\nShow Picture
+STR 32660: Triple manual\nTriple Manual
+STR 32661: Starts lettering\nLettering / Values
+STR 32662: Selects Straight Stitch as the current stitch Type\nStraight / Values
+STR 32663: Selects coil as the current stitch type\nCoil / Values
+STR 32664: Compound Chenille\n Compound Chenille / Values
+STR 32665: Switches to chain mode\nChain
+STR 32666: Switches to moss mode\nMoss
+STR 32668: Generate Stitches\nGenerate Stitches
+STR 32669: Needles in\out\nNeedles In
+STR 32670: Borers in\out\nBorers In
+STR 32671: Trueview\nTrueView(TM)
+STR 32673: Switches accordion spacing on and off\nAccordion Spacing / Values
+STR 32674: Selects Program Split as the current stitch Type\nProgram Split / Values
+STR 32675: Selects Motif Run as the current stitch Type\nMotif Run / Values
+STR 32677: Selects Motif Fill as the current stitch Type\nMotif Fill / Values
+STR 32678: Selects Contour Stitch as the current stitch Type\nContour / Values
+STR 32680: Show Stitches\nShow Stitches
+STR 32681: Show Outlines\nShow Outlines
+STR 32682: Show Stitch Lines\nShow Stitch Lines
+STR 32683: Show Needle Points\nShow Needle Points
+STR 32684: Show Connectors\nShow Connectors
+STR 32685: Show Functions\nShow Functions
+STR 32686: Calls Values Dialog\nValues Dialog
+STR 32690: Draws line\nLine
+STR 32692: Draws Rounded Rectangle\nRounded Rectangle
+STR 32694: Draws Star\nStar
+STR 32696: Draws Shield\nShield
+STR 32698: Draws Crest\nCrest
+STR 32699: Shortening Effect\nShortening / Values
+STR 32700: Pull Compensation Effect\nPull Compensation / Values
+STR 32701: Textured Edge Effect\nTextured Edge
+STR 32702: Inserts a triple run object\nTriple Run / Values
+STR 32705: Cancel the current process\nCancel
+STR 32707: Keeps Last stitch\nKeep Last Stitch / Omit Last Stitch
+STR 32708: Doesn't keep Last stitch\nOmit Last stitch
+STR 32730: Switch to the next Toolbar\nNext Toolbar
+STR 32732: Switch to the Traverse Toolbar\nTraverse Toolbar
+STR 32734: Switch to the Input Toolbar\nInput Toolbar
+STR 32736: Switch to the Drawing Toolbar\nDrawing Toolbar
+STR 32738: Backtracks stitches\nDouble Run
+STR 32739: Repeats Stitches\nRepeat\n
+STR 32740: Inserts tie-off\nTie Off
+STR 32741: Inserts tie-in\nTie In
+STR 32742: Inserts empty\nEmpty Stitch/Empty Jump
+STR 32743: Inserts trin\nTrim
+STR 32769: Moves the stitch cursor forward to the next color change\nTravel by Color
+STR 32770: Moves the stitch cursor backward to the next color change\nTravel by Color
+STR 32771: Moves the stitch cursor forward to the next function\nTravel by Function
+STR 32772: Moves the stitch cursor backward to the next function\nTravel by Function
+STR 32775: Redo the last undone action\nRedo
+STR 32776: Selects all objects\nSelect All
+STR 32777: Deselects all objects\nDeselect All
+STR 32778: Deletes the selected objects or stitches\nDelete Selects
+STR 32779: Group the selected objects\nGroup
+STR 32780: Ungroup the selected group object\nUngroup
+STR 32800: Use to select objects - drag to create a rectangle enclosing the objects\nSelect Object
+STR 32802: Inserts a Block object\nBlock Digitizing
+STR 32804: Inserts a run object\nRun / Values
+STR 32812: Loads Picture\nLoad Picture
+STR 32813: Shows design statistics
+STR 32814: Generates stitches for the selected objects
+STR 32815: Unstitches the selected objects
+STR 32816: Sets the stitching order of the selected objects
+STR 32821: Zoom Box\nZoom Box
+STR 32822: Shows all of design\nShow All
+STR 32823: Sets scale to match screen\nShow 1:1
+STR 32824: Zooms out 2x\nZoom out 2x
+STR 32825: Sets options for displaying a design
+STR 32831: Moves the stitch cursor forward one stitch\nTravel 1 Stitch
+STR 32832: Moves the stitch cursor backward one stitch\nTravel 1 Stitch
+STR 32833: Moves the stitch cursor forward ten stitches\nTravel 10 Stitches
+STR 32834: Moves the stitch cursor backward ten stitches\nTravel 10 Stitches
+STR 32835: Moves the stitch cursor forward 100 stitches\nTravel 100 Stitches
+STR 32836: Moves the stitch cursor backward 100 stitches\nTravel 100 Stitches
+STR 32837: Moves the stitch cursor to the start of design\nStart / End Design
+STR 32838: Moves the stitch cursor to the end of design\nStart / End Design
+STR 32839: Moves the stitch cursor forward one segment\nTravel by Segment
+STR 32840: Moves the stitch cursor backward one segment\nTravel by Segment
+STR 32842: Reshapes an image's cropping outline\nReshape Cropping Outline
+STR 32843: Inserts a complex fill object\nComplex Fill / Values
+STR 32844: Complex Fill Generate\nComplex Fill Generate
+STR 32845: Adds a function at the stitch cursor
+STR 32846: Selects Satin as the current stitch type\nSatin / Values
+STR 32847: Selects Zigzag as the current stitch type\nZigzag / Values
+STR 32849: Selects Step as the current stitch type\nStep / Values
+STR 32859: Selects EStitch as the current stitch Type\nEStitch / Values
+STR 32862: Auto Jump Effect\nAuto Jump / Values
+STR 32863: Auto Underlay\nAuto Underlay
+STR 32865: Inserts a Manual object\nManual
+STR 32869: Next Color\nNext Color / Select Color
+STR 32870: Inserts an Input C object\nInput C / Values
+STR 32871: Edits stitch\nStitch Edit
+STR 32877: Inserts an Input B object\nInput B
+STR 32880: Show Grid\nShow Grid\nGrid Setup Dialog
+STR 32888: Fractional Spacing Effect\nFractional Spacing / Values
+STR 32895: User Defined Split Effect\nUser Defined Split / Values
+STR 32903: Open from embroidery disk
+STR 32904: Open an embroidery disk as...
+STR 32905: Save to an embroidery disk
+STR 32923: Send to Machine\nSend to Machine
+STR 32931: Inserts a motif run object\nMotif Run / Values
+STR 32936: Format Embroidery Disk
+STR 32977: Scans Picture\nScan Picture
+STR 32980: Create a new document\nNew
+STR 32987: Selects island coil as the current stitch type\nIsland Coil / Values
+STR 32988: Selects lattice stitch as the current stitch type\nPerpendicular Fill/ Values
+STR 32994: Use Motif\nUse Motif
+STR 33003: Save Picture\nSave Picture
+STR 33004: Dims Picture\nDim Picture
+STR 33011: Lettering Auto Underlay\nLettering Auto Underlay / Values
+STR 33022: 3D Effect\n3D Warp / Values
+STR 33061: Save the active document with a new name\nSave As
+STR 33062: Open an existing document\nOpen
+STR 33063: Save the active document\nSave
+STR 33064: Create a new document\nNew
+STR 33068: Print the active document\nPrint
+STR 33069: Change the printer and printing options\nPrint Setup
+STR 33070: Save a copy of the active document with a new name\nSave Copy
+STR 33071: Display full pages\nPrint Preview
+STR 33072: Quit the application; prompts to save documents\nExit
+STR 33140: Chenille Shortcut Angle and Small Stitches Filter
+STR 33147: Show Pointer Toolbar\nShow Pointer Toolbar
+STR 33148: Show Input Toolbar\nShow Input Toolbar
+STR 33149: Show Travel Toolbar\nShow Travel Toolbar
+STR 33150: Show Drawing Toolbar\nShow Drawing Toolbar
+STR 33157: Needle height\nNeedle Height
+STR 33161: Toggles hoop On/Off\nShow Hoop
+STR 33163: Mirrors horizontally\nMirror Horizontal
+STR 33164: Mirrors vertically\nMirror Vertical
+STR 33167: Card\nCard
+STR 33168: Converts image to object\nMagic Wand
+STR 33169: Outline\nOutline
+STR 33170: Fill\nFill
+STR 33171: Picture View\nPicture View
+STR 33172: Design View\nDesign View
+STR 33173: Artistic View\nArtistic View
+STR 33180: Draws Open Curve Input\nOpen Curve
+STR 33181: Closed Curve Input\nClosed Curve
+STR 33182: Circleval Input\nCircle / Oval
+STR 33183: Rectangle Input\nRectangle
+STR 33187: Color Reduction\nColor Reduction
+STR 33188: Filter\nFilter
+STR 33190: Toggles Sequence ToolBar\nToggles Sequence Toolbar.
+STR 33192: Sends the active design through electronic email
+STR 33197: Object Properties\nObject Properties
+STR 33198: Stitch Angles\nStitch Angles/Values
+STR 33199: Sends the design to embroidery machine\nWrite to Machine
+STR 33209: Polygon Select\nPolygon Select
+STR 33219: Enable\Disable Overview Window\nOverview Window
+STR 33220: Flexi Split\nFlexi Split / Values
+STR 33233: Align Left\nAlign Left (Vertical)
+STR 33234: Align Right\nAlign Right (Vertical)
+STR 33235: Align Top\nAlign Top (Horizontal)
+STR 33236: Align Bottom\nAlign Bottom (Horizontal)
+STR 33237: Align Vertical Center\nAlign Centers (Vertical)
+STR 33238: Align Horizontal Center\nAlign Centers (Horizontal)
+STR 33239: Align Centers\nAlign Centers
+STR 33270: Print the active document\nPrint
+STR 33326: Auto Appliqué\nAuto Appliqué
+STR 33358: Scale Down / Up by 20%\nScale by 20% Down / Up
+STR 33361: Rotate CCW / CW by 45 Degrees\nRotate 45 deg CCW / CW
+STR 33373: PhotoSnap\nPhotoSnap
+STR 33391: Color Film\nColor Film
+STR 33431: Add holes\nAdd Holes
+STR 33475: Cross Stitch\nCross Stitch
+STR 33484: Touch Up Picture\nTouch Up Picture
+STR 33486: AutoDigitizer\nAutoDigitizer
+STR 33495: Write to Magic Box\nWrite to Magic Box
+STR 33496: Read from Magic Box\nRead from Magic Box
+STR 33510: Artwork Preparation\nArtwork Preparation
+STR 33511: Outlined Artwork Preparation\nOutlined Artwork Preparation
+STR 33545: Color Blending\nColor Blending
+STR 33554: Mirror-Merge Horizontal\nMirror-Merge Horizontal
+STR 33555: Mirror-Merge Vertical\nMirror-Merge Vertical
+STR 33556: Mirror-Merge Horizontal && Vertical\nMirror-Merge Horizontal && Vertical
+STR 33557: Wreath\nWreath
+STR 33558: Wreath Points\nWreath Points
+STR 33559: Kaleidoscope\nKaleidoscope
+STR 33560: Wreath Points\nWreath Points
+STR 33561: Wreath Points\nWreath Points
+STR 33564: PhotoSnap\nPhotoSnap
+STR 33589: Quilting Stitch\nQuilting Stitch
+STR 33590: Stemstitch\nStemstitch
+STR 33591: Backstitch\nBackstitch
+STR 33592: Stipple\nStipple
+STR 33593: Blackwork Run\nBlackwork Run
+STR 33595: Reshapes an object\nReshape Object
+STR 33599: Enhance Image\nEnhance Image
+STR 33606: Backstitch\nBackstitch
+STR 33611: Stemstitch\nStemstitch
+STR 33615: Partial Appliqué\nPartial Appliqué
+STR 33616: Lettering Remove Overlay\nLettering Remove Overlay
+STR 33618: Quilter\nQuilter
+STR 33621: Multi Hooping View\nMulti Hooping View
+STR 33622: Select Hoop Position\nSelect Hoop Position
+STR 33623: Add Hoop Position\nAdd Hoop Position
+STR 33624: Add Hoop Position Right\nAdd Hoop Position Right
+STR 33625: Add Hoop Position Up\nAdd Hoop Position Up
+STR 33626: Delete Hoop Position\nDelete Hoop Position
+STR 33627: Rotate 45 deg CCW\nRotate 45 deg CCW
+STR 33628: Rotate 45 deg CW\nRotate 45 deg CW
+STR 33629: Split Files\nSplit Files
+STR 33630: Show Split Hoops\nShow Split Hoops
+STR 57344: BERNINA artista
+STR 57345: For Help, press F1
+STR 57346: Select an object on which to get Help
+STR 57602: Close the active document\nClose
+STR 57605: Change the printing options\nPage Setup
+STR 57610: Update the container to show any changes\nUpdate
+STR 57616: Open this document
+STR 57617: Open this document
+STR 57618: Open this document
+STR 57619: Open this document
+STR 57632: Erase the selection\nErase
+STR 57633: Erase everything\nErase All
+STR 57634: Copy the selection and put it on the Clipboard\nCopy
+STR 57635: Cut the selection and put it on the Clipboard\nCut
+STR 57636: Find the specified text\nFind
+STR 57637: Insert Clipboard contents\nPaste
+STR 57638: Insert Clipboard contents and a link to its source\nPaste Link
+STR 57639: Insert Clipboard contents with options\nPaste Special
+STR 57640: Repeat the last action\nRepeat
+STR 57641: Replace specific text with different text\nReplace
+STR 57642: Select the entire document\nSelect All
+STR 57643: Undo the last action\nUndo
+STR 57644: Redo the previously undone action\nRedo
+STR 57648: Open another window for the active document\nNew Window
+STR 57649: Arrange icons at the bottom of the window\nArrange Icons
+STR 57650: Arrange windows so they overlap\nCascade Windows
+STR 57651: Arrange windows as non-overlapping tiles\nTile Windows
+STR 57652: Arrange windows as non-overlapping tiles\nTile Windows
+STR 57653: Split the active window into panes\nSplit
+STR 57664: Display program information, version number and copyright\nAbout
+STR 57666: List Help topics\nHelp Index
+STR 57668: Display instructions about how to use help\nHelp
+STR 57669: Display help for clicked on buttons, menus and windows\nHelp
+STR 57670: Display help for current task or command\nHelp
+STR 57856: Insert new embedded object\nNew Object
+STR 57857: Edit linked objects\nEdit Links
+STR 57858: Convert object to different type\nConvert Object
+STR 57872: Activate embedded or linked object
+STR 57873: Activate embedded or linked object
+STR 57874: Activate embedded or linked object
+STR 57875: Activate embedded or linked object
+STR 59136: EXT
+STR 59137: CAP
+STR 59138: NUM
+STR 59139: SCRL
+STR 59140: OVR
+STR 59141: REC
+STR 59392: Show or hide the toolbar\nToggle Toolbar
+STR 59393: Show or hide the status bar\nToggle StatusBar
+STR 61184: Change the window size
+STR 61185: Change the window position
+STR 61186: Reduce the window to an icon
+STR 61187: Enlarge the window to full size
+STR 61188: Switch to the next document window
+STR 61189: Switch to the previous document window
+STR 61190: Close the active window and prompts to save the documents
+STR 61202: Restore the window to normal size
+STR 61203: Activate Task List
+STR 61215: Activate this window
+STR 61445: Close print preview mode\nCancel Preview
+--- RES type=9 name=4 len=88
+--- RES type=9 name=5 len=152
+--- RES type=9 name=6 len=80
+--- RES type=9 name=128 len=584

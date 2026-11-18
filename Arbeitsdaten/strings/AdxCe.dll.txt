@@ -1,0 +1,132 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000000c0 Rich'
+A 000001d8 .text
+A 000001ff `.rdata
+A 00000227 @.data
+A 00000250 .pdata
+A 00000277 @.edata
+A 0000029f @.rsrc
+A 000002c7 @.reloc
+A 000031ee ?classCException@CException@@2UCRuntimeClass@@B
+A 0000321e mfcce300.dll
+A 0000322c COREDLL.dll
+A 0000323a shutdown
+A 00003246 listen
+A 0000324e WINSOCK.dll
+A 0000523c ADXCE.dll
+A 00005246 A200Command
+A 00005252 CeGetDiskFreeSpaceEx
+A 00005a23 6H7L7
+A 00005a35 ;(>,>
+A 00005a51 3T4X4
+A 00005a5f 6x7|7x8
+A 00005a7f 9 9,989D9P9\9h9
+A 00005a99 :(:4:@:L:X:d:p:
+A 00005aaf ;$;0;<;
+A 00005ac1 >D>P>
+A 00005af1 1 1,181D1P1\1h1t1
+A 00005b1d 2(242@2L2X2d2p2|2
+A 00005b47 3$303<3H3T3`3l3x3
+A 00005b71 4 4,484D4P4\4h4t4
+A 00005b9d 5(545@5L5X5d5p5|5
+A 00005bd7 7$8(8,8
+A 00005c07 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 00005c85 1 1$1(1014181<1@1D1H1P1T1X1\1`1d1l1p1t1x1|1
+A 00005ce7 0 0(00080@0H0P0X0`0h0p0x0
+A 00005d27 1 1(10181@1H1P1X1`1h1p1x1
+U 00003624 CeInvoke: A200Command no pIRAPIStream
+U 00003674 CeInvoke: WriteToStream error= %x
+U 000036bc CeInvoke: SendMsg error=%s
+U 000036f4 127.0.0.1
+U 00003708 CeInvoke: ReadFromStream error= %x
+U 00003750 CeInvoke: ReadFromStream exception= %x
+U 000037a0 CeInvoke: SendMsg exception= %x
+U 000037e4 CeInvoke: WriteToStream exception= %x
+U 00003834 CeInvoke: MFC exception
+U 00003868 CeInvoke: MFC exception text= %s
+U 000038ac unknown exception description
+U 000038e8 Socket could not be created
+U 00003920 Connect to Host:%s Port:%d failed
+U 00003964 Wrong Message Version
+U 00003990 Wrong Magic Number
+U 000039b8 Could not stream all data
+U 000039ec Could not stream header
+U 00003a1c Could not read data from stream. Too less data!
+U 00003a7c Could not read header from stream. Too less data!
+U 00003ae0 Failed to init with AfxSocketInit
+U 00003b24 UTSMessenger: Failed to create listener socket
+U 00003b84 UTSMessenger: Failed to listen on listener socket
+U 00003be8 Warning: unable to create UTSMessenger window
+U 00003c44 CUTSMessenger Event Handler
+U 00003c7c Messenger Exception: %s. %s
+U 00003cb4 WINSOCK.DLL version out of range.
+U 00003cf8 A successful AfxSocketInit must occur before using this API.
+U 00003d74 Graceful shutdown in progress.
+U 00003db4 Host not found.
+U 00003dd4 Local server did not receive a response from an authoritative server.
+U 00003e60 Database files (e.g. BSD-compatible HOSTS, SERVICES or PROTOCOLS files) could not be found, or a DNS request was returned by the server with a severe error.
+U 00003f9c The requested name is valid and was found in the database, but it does not have the correct associated data being resolved for.
+U 0000409c no description available for LastError: %d
+U 000040f4 Network subsystem is unavailable.
+U 00004138 A socket operation was attempted to an unreachable host.
+U 000041ac Attempt to connect timed out without establishing a connection.
+U 0000422c The socket is already connected.
+U 00004270 The attempt to connect was rejected.
+U 000042bc No buffer space is available. The socket cannot be created.
+U 00004334 Cannot send after socket shutdown.
+U 0000437c Too many processes using sockets.
+U 000043c0 Socket is not connected.
+U 000043f4 Network dropped connection on reset. The connection has been broken due to 'keep-alive' activity detecting a failure while the operation was in progress.
+U 00004528 Host is down.
+U 00004544 Connection reset by peer.
+U 00004578 An established connection was aborted by the software in your host machine, possibly due to a data transmission timeout or protocol error.
+U 00004690 The network cannot be reached from this host at this time.
+U 00004708 A destination address is required.
+U 00004750 The specified address is not available from the local machine.
+U 000047d0 The specified address is already in use.
+U 00004824 The socket is marked as nonblocking and no connections are present to be accepted.
+U 000048cc The referenced socket is not a type that supports connection-oriented service.
+U 0000496c The descriptor is not a socket.
+U 000049ac The socket is not already bound to an address (Or host is unreachable).
+U 00004a3c The lpSockAddrLen argument is too small (less than the size of a SOCKADDR structure).
+U 00004ae8 The specified socket type is not supported in this address family.
+U 00004b70 The specified port is the wrong type for this socket.
+U 00004bdc The specified port is not supported.
+U 00004c28 Too many open sockets. No more file descriptors are available.
+U 00004ca8 A blocking Windows Sockets operation is in progress.
+U 00004d14 The specified address family is not supported.
+U 00004d74 The Windows Sockets implementation detected that the network subsystem failed.
+U 00004e14 Protocol family not supported.
+U 00004e54 Bad protocol option.
+U 00004e80 Message too long. A message sent on a datagram socket was larger than the internal message buffer or some other network limit.
+U 00004f80 Operation already in progress.
+U 00004fc0 Permission denied.
+U 00005466 VS_VERSION_INFO
+U 000054c2 StringFileInfo
+U 000054e6 000004b0
+U 000054fe Comments
+U 00005510 Author: Dietrich Meier, MD Informatik GmbH, CH, Dietikon
+U 0000558a CompanyName
+U 000055a4 Fritz Gegauf AG
+U 000055ca FileDescription
+U 000055ec AdxCe for WinCE (StrongArm)
+U 0000562a FileVersion
+U 00005644 0, 0, 8, 0
+U 00005662 InternalName
+U 0000567c AdxCe
+U 0000568e LegalCopyright
+U 000056ac Copyright © 2002
+U 000056d6 LegalTrademarks
+U 000056f8 BERNINA artista
+U 0000571e OriginalFilename
+U 00005740 AdxCe.dll
+U 0000575a PrivateBuild
+U 00005774 BU Version
+U 00005792 ProductName
+U 000057ac AdxCe
+U 000057be ProductVersion
+U 000057dc 0, 1, 0, 0
+U 000057fa SpecialBuild
+U 00005814 BU Version
+U 00005832 VarFileInfo
+U 00005852 Translation

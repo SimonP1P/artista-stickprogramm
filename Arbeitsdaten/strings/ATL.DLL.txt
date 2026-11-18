@@ -1,0 +1,671 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 000001e0 .text
+A 00000207 `.rdata
+A 0000022f @.data
+A 00000258 .rsrc
+A 0000027f @.reloc
+A 00001233 u4SVV
+A 000016e9 t%8^lt 9^x
+A 00001705 G;~tv
+A 000017af a93tX
+A 0000193d tC9\$
+A 00001beb |LVhP
+A 00001d55 >__^[
+A 00001e80 ^BVhl
+A 00001edd F@_^[
+A 00001fb5 ^BVhx
+A 00002012 F@_^[
+A 0000203b AABBf
+A 000020bd QSVWj
+A 00002120 QSVWj
+A 000021bb G@j&P
+A 000021d3 FFQQj P
+A 00002367 8{uMh
+A 00002a76 >_QVP
+A 00002afa SVHWt+-
+A 00002b9e VAAQP
+A 00002e3e G;~tv
+A 000032d2 90u29p
+A 00003a39 @uz9~TtF
+A 00003c1e 9~`uM
+A 00003d03 F`WQQ
+A 00003efe >_j7SSSSS
+A 000040ba 9X0u,
+A 00004133 >_f=M
+A 00004680 9F(tx
+A 00004c74 RQQWRRRj
+A 00004e81 F|PPW
+A 0000544c >__^[
+A 0000563c >_VhWV>_h
+A 00005771 QL_[3
+A 00005ca8 VPVVh
+A 00005ec5 VPVVh
+A 00006008 SVWtv
+A 000068d1 {uN9]
+A 00006f0c PSVSSSW
+A 00007222 >_PVV
+A 0000733e 	t.HH
+A 00007519 PPPPPPPQPPP
+A 0000755b VPVVVVVV
+A 00007577 u6VVV
+A 000075d3 ?=u/W
+A 0000787f >_PQW
+A 00007905 x>_lx>_
+A 00007c18 {>_D{>_
+A 0000821e >_QRh
+A 00008230 >_QRhH
+A 00008242 >_QRhD
+A 00008254 >_QRh@
+A 00008266 >_QRh<
+A 00008278 >_QRh8
+A 0000828a >_QRh4
+A 0000829c >_QRh0
+A 000082ae >_QRh,
+A 000082c0 >_QRh(
+A 000082d2 >_QRh$
+A 000082e4 >_QRh 
+A 000082f6 >_QRh
+A 00008308 >_QRh
+A 0000831a >_QRh
+A 0000832c >_QRh
+A 0000833e >_QRh
+A 00008350 >_QRh
+A 00008362 >_QRh
+A 00008374 >_QRh
+A 00008386 >_QRh
+A 00008398 >_QRhx
+A 000083aa >_QRht
+A 000083bc >_QRhp
+A 000083ce >_QRhl
+A 000083e0 >_QRhh
+A 000083f2 >_QRhd
+A 00008404 >_QRh`
+A 00008416 >_QRh\
+A 00008428 >_QRhX
+A 0000843a >_QRhT
+A 0000844c >_QRhP
+A 0000845e >_QRhL
+A 00008470 >_QRh
+A 00008482 >_QRh
+A 00008494 >_QRh
+A 000084a6 >_QRh
+A 000084b8 >_QRh
+A 000084ca >_QRh
+A 000084dc >_QRh
+A 000084ee >_QRh
+A 00008500 >_QRh
+A 00008512 >_QRh
+A 00008524 >_QRh
+A 00008536 >_QRh
+A 00008548 >_QRh
+A 0000855a >_QRh
+A 0000856c >_QRh
+A 0000857e >_QRh
+A 00008590 >_QRh
+A 000085a2 >_QRh
+A 000085b4 >_QRh
+A 000085c6 >_QRh
+A 000085d8 >_QRh
+A 000085f8 >_QRh
+A 00008618 >_QRh
+A 0000862a >_QRh
+A 0000863c >_QRh
+A 0000864e >_QRh(
+A 00008660 >_QRh 
+A 00008672 >_QRh$
+A 00008684 >_QRh0
+A 00008696 >_QRh,
+A 000086a8 >_QRh
+A 000086c8 >_QRh
+A 000086da >_QRh
+A 000086ec >_QRh
+A 000086fe >_QRh
+A 00008710 >_QRh
+A 00008722 >_QRh
+A 00008734 >_QRh
+A 00008746 >_QRh
+A 00008758 >_QRh
+A 0000876a >_QRh
+A 0000877c >_QRh
+A 0000878e >_QRh
+A 000087a0 >_QRh
+A 000087b2 >_QRh
+A 000087c4 >_QRh
+A 000087d6 >_QRh
+A 000087e8 >_QRh
+A 000087fa >_QRh
+A 0000880c >_QRh
+A 0000881e >_QRhp
+A 0000883e >_QRh
+A 00008850 >_QRh
+A 00008862 >_QRh
+A 00008874 >_QRhh
+A 00008886 >_QRht
+A 00008898 >_QRhx
+A 000088aa >_QRh|
+A 000088bc >_QRh
+A 000088ce >_QRhl
+A 000088e0 >_QRh
+A 000088f2 >_QRh
+A 00008904 >_QRh
+A 00008916 >_QRh
+A 00008928 >_QRhT
+A 00008948 >_QRhX
+A 0000895a >_QRh8
+A 0000896c >_QRhP
+A 0000897e >_QRh<
+A 00008990 >_QRhL
+A 000089a2 >_QRhH
+A 000089b4 >_QRh\
+A 000089c6 >_QRh`
+A 000089d8 >_QRh@
+A 000089ea >_QRhD
+A 00008a26 uRFGHt
+A 0000a151 3>_V3>_
+A 0000a259 4>_}4>_
+A 0000a269 f>_[f>_
+A 0000a2a8 :c>_Dc>_Nc>_
+A 0000a2b9 T>_|W>_oX>_wG>_
+A 0000a2d1 H>_/H>_LH>_^H>_{H>_
+A 0000a2f5 I>_9I>_PJ>_{J>_
+A 0000a321 K>_2K>_PK>_iK>_
+A 0000a335 c>_&c>_0c>_dC>_
+A 0000a34d D>_1D>_GD>_fD>_
+A 0000a365 D>_<E>_
+A 0000a371 F>_ZF>_
+A 0000a3a5 b>_TT>_
+A 0000a3d1 O>_]P>_
+A 0000a3fd L>_hb>_rb>_|b>_
+A 0000a439 L>_,N>_
+A 0000a461 O>_#O>_=O>_WO>_
+A 0000a471 \>_\O>_Jb>_Tb>_^b>_
+A 0000a48d L>_EL>_
+A 0000a4a5 Y>_m=>_
+A 0000a4ad =>_^B>_	C>_8C>_NC>_=6>_
+A 0000a4c5 T>_/6>_
+A 0000a515 v>__Y>_
+A 0000a51d Y>_0Y>_
+A 0000a529 `>_xY>_
+A 0000a559 \>_a\>_
+A 0000a589 O>_\\>_
+A 0000a5d1 _>_}^>_
+A 0000a5e9 ^>_\\>_
+A 0000a76f n%D,3
+A 0000a7f1 @Qm6t
+A 0000a8df QUSER32.dll
+A 0000a8f0 OLEPRO32.DLL
+A 0000a900 ADVAPI32.dll
+A 0000a910 ole32.dll
+A 0000a920 OLEAUT32.dll
+A 0000a930 GDI32.dll
+A 0000abea DispatchMessageW
+A 0000abfe TranslateMessage
+A 0000ac12 MsgWaitForMultipleObjects
+A 0000ac2e PeekMessageW
+A 0000ac3e LoadStringW
+A 0000ac4c CharNextW
+A 0000ac58 RegisterClassExA
+A 0000ac6c wsprintfA
+A 0000ac78 LoadCursorA
+A 0000ac86 GetClassInfoExA
+A 0000ac98 RegisterClassExW
+A 0000acac wsprintfW
+A 0000acb8 LoadCursorW
+A 0000acc6 GetClassInfoExW
+A 0000acd8 ReleaseDC
+A 0000ace4 GetDC
+A 0000acec DialogBoxIndirectParamW
+A 0000ad06 DialogBoxIndirectParamA
+A 0000ad20 CreateDialogIndirectParamW
+A 0000ad3e CreateDialogIndirectParamA
+A 0000ad5c RegisterWindowMessageW
+A 0000ad76 DefWindowProcW
+A 0000ad88 GetWindow
+A 0000ad94 SetWindowLongW
+A 0000ada6 SetWindowTextW
+A 0000adb8 GetWindowTextW
+A 0000adca GetWindowTextLengthW
+A 0000ade2 GetWindowLongW
+A 0000adf4 SendMessageW
+A 0000ae04 UnregisterClassW
+A 0000ae18 MessageBoxA
+A 0000ae26 GetSysColor
+A 0000ae34 SetFocus
+A 0000ae40 IsChild
+A 0000ae4a GetFocus
+A 0000ae56 CallWindowProcW
+A 0000ae68 EndPaint
+A 0000ae74 FillRect
+A 0000ae80 GetClientRect
+A 0000ae90 BeginPaint
+A 0000ae9e SetWindowPos
+A 0000aeae IsWindow
+A 0000aeba RedrawWindow
+A 0000aeca GetDesktopWindow
+A 0000aede GetParent
+A 0000aeea CreateAcceleratorTableW
+A 0000af04 ReleaseCapture
+A 0000af16 SetCapture
+A 0000af24 InvalidateRect
+A 0000af36 InvalidateRgn
+A 0000af46 DestroyWindow
+A 0000af56 GetDlgItem
+A 0000af64 GetClassNameW
+A 0000af74 CreateWindowExW
+A 0000af86 RegDeleteKeyW
+A 0000af96 RegCreateKeyExW
+A 0000afa8 RegDeleteValueW
+A 0000afba RegCloseKey
+A 0000afc8 RegOpenKeyExW
+A 0000afd8 RegEnumKeyExW
+A 0000afe8 RegSetValueExW
+A 0000affa RegQueryInfoKeyW
+A 0000b00e RegEnumValueW
+A 0000b01e CoReleaseMarshalData
+A 0000b036 CoMarshalInterface
+A 0000b04c CreateStreamOnHGlobal
+A 0000b064 CoUnmarshalInterface
+A 0000b07c CoTaskMemFree
+A 0000b08c ProgIDFromCLSID
+A 0000b09e CoRevokeClassObject
+A 0000b0b4 CoCreateInstance
+A 0000b0c8 CoRegisterClassObject
+A 0000b0e0 OleInitialize
+A 0000b0f0 OleUninitialize
+A 0000b102 CLSIDFromProgID
+A 0000b114 CLSIDFromString
+A 0000b126 StringFromCLSID
+A 0000b138 CoTaskMemAlloc
+A 0000b14a OleLockRunning
+A 0000b15c CoTaskMemRealloc
+A 0000b170 OleLoadFromStream
+A 0000b184 WriteClassStm
+A 0000b194 OleSaveToStream
+A 0000b1a6 GetDeviceCaps
+A 0000b1b6 CreateDCW
+A 0000b1c2 DeleteDC
+A 0000b1ce BitBlt
+A 0000b1d8 SelectObject
+A 0000b1e8 CreateCompatibleDC
+A 0000b1fe CreateCompatibleBitmap
+A 0000b218 DeleteObject
+A 0000b228 CreateSolidBrush
+A 0000b23c GetObjectW
+A 0000b24a GetStockObject
+A 0000b532 WaitForSingleObject
+A 0000b548 lstrcpyW
+A 0000b554 GetACP
+A 0000b55e InitializeCriticalSection
+A 0000b57a LeaveCriticalSection
+A 0000b592 EnterCriticalSection
+A 0000b5aa HeapDestroy
+A 0000b5b8 DeleteCriticalSection
+A 0000b5d0 lstrlenW
+A 0000b5dc GetShortPathNameW
+A 0000b5f0 GetModuleFileNameW
+A 0000b606 lstrcatW
+A 0000b612 FreeLibrary
+A 0000b620 GetProcAddress
+A 0000b632 LoadLibraryW
+A 0000b642 GetCurrentThreadId
+A 0000b658 WideCharToMultiByte
+A 0000b66e FreeResource
+A 0000b67e GlobalFree
+A 0000b68c GlobalHandle
+A 0000b69c LockResource
+A 0000b6ac LoadResource
+A 0000b6bc FindResourceW
+A 0000b6cc GlobalAlloc
+A 0000b6da FindResourceA
+A 0000b6ea GlobalUnlock
+A 0000b6fa GlobalLock
+A 0000b708 DisableThreadLibraryCalls
+A 0000b724 GetVersionExA
+A 0000b734 HeapAlloc
+A 0000b740 GetSystemInfo
+A 0000b750 HeapCreate
+A 0000b75e InterlockedDecrement
+A 0000b776 InterlockedIncrement
+A 0000b78e lstrcmpW
+A 0000b79a FlushInstructionCache
+A 0000b7b2 GetCurrentProcess
+A 0000b7c6 MultiByteToWideChar
+A 0000b7dc lstrlenA
+A 0000b7e8 SizeofResource
+A 0000b7fa GetLastError
+A 0000b80a LoadLibraryExW
+A 0000b81c CloseHandle
+A 0000b82a ReadFile
+A 0000b836 GetFileSize
+A 0000b844 CreateFileW
+A 0000b852 lstrcmpiW
+A 0000b85e lstrcpynW
+A 0000b86a DebugBreak
+A 0000b878 HeapReAlloc
+A 0000b886 HeapFree
+A 0000b890 KERNEL32.dll
+A 0000b8a0 LocalAlloc
+A 0000b8ae InterlockedExchange
+A 0000b8c4 RaiseException
+A 0000b8d6 LoadLibraryA
+A 0000bb38 ATL.DLL
+A 0000bb40 AtlAdvise
+A 0000bb4a AtlAxAttachControl
+A 0000bb5d AtlAxCreateControl
+A 0000bb70 AtlAxCreateControlEx
+A 0000bb85 AtlAxCreateDialogA
+A 0000bb98 AtlAxCreateDialogW
+A 0000bbab AtlAxDialogBoxA
+A 0000bbbb AtlAxDialogBoxW
+A 0000bbcb AtlAxGetControl
+A 0000bbdb AtlAxGetHost
+A 0000bbe8 AtlAxWinInit
+A 0000bbf5 AtlComPtrAssign
+A 0000bc05 AtlComQIPtrAssign
+A 0000bc17 AtlCreateTargetDC
+A 0000bc29 AtlDevModeW2A
+A 0000bc37 AtlFreeMarshalStream
+A 0000bc4c AtlGetObjectSourceInterface
+A 0000bc68 AtlGetVersion
+A 0000bc76 AtlHiMetricToPixel
+A 0000bc89 AtlIPersistPropertyBag_Load
+A 0000bca5 AtlIPersistPropertyBag_Save
+A 0000bcc1 AtlIPersistStreamInit_Load
+A 0000bcdc AtlIPersistStreamInit_Save
+A 0000bcf7 AtlInternalQueryInterface
+A 0000bd11 AtlMarshalPtrInProc
+A 0000bd25 AtlModuleAddCreateWndData
+A 0000bd3f AtlModuleAddTermFunc
+A 0000bd54 AtlModuleExtractCreateWndData
+A 0000bd72 AtlModuleGetClassObject
+A 0000bd8a AtlModuleInit
+A 0000bd98 AtlModuleLoadTypeLib
+A 0000bdad AtlModuleRegisterClassObjects
+A 0000bdcb AtlModuleRegisterServer
+A 0000bde3 AtlModuleRegisterTypeLib
+A 0000bdfc AtlModuleRegisterWndClassInfoA
+A 0000be1b AtlModuleRegisterWndClassInfoW
+A 0000be3a AtlModuleRevokeClassObjects
+A 0000be56 AtlModuleTerm
+A 0000be64 AtlModuleUnRegisterTypeLib
+A 0000be7f AtlModuleUnregisterServer
+A 0000be99 AtlModuleUnregisterServerEx
+A 0000beb5 AtlModuleUpdateRegistryFromResourceD
+A 0000beda AtlPixelToHiMetric
+A 0000beed AtlRegisterClassCategoriesHelper
+A 0000bf0e AtlSetErrorInfo
+A 0000bf1e AtlUnadvise
+A 0000bf2a AtlUnmarshalPtr
+A 0000bf3a AtlWaitWithMessageLoop
+A 0000bf51 DllCanUnloadNow
+A 0000bf61 DllGetClassObject
+A 0000bf73 DllRegisterServer
+A 0000bf85 DllUnregisterServer
+A 0000c006 >_L/>_50>_
+A 0000c13c UnRegisterTypeLib
+A 0000c16c ATL:%8.8X
+A 0000c1f0 Can not run Unicode version of ATL.DLL on Windows 95.
+A 0000c226 Please install the correct version.
+A 0000c281 @Qm6t
+A 0000d522 StdOle2.tlbWWW
+A 0000d73c ATLLibWW
+A 0000d750 IDocHostUIHandlerDispatchWWW
+A 0000d778 ShowContextMenuW
+A 0000d7c3 hpcmdtReservedWWW
+A 0000d7df ^pdispReservedWWW
+A 0000d7fc dwRetVal
+A 0000d810 GetHostInfoW
+A 0000d827 \pdwFlags
+A 0000d83a R%pdwDoubleClickWW
+A 0000d857 .ShowUIWW
+A 0000d86c pActiveObjectWWW
+A 0000d888 pCommandTargetWW
+A 0000d8a4 pFrameWW
+A 0000d8c8 HideUIWW
+A 0000d8db  UpdateUI
+A 0000d8f0 EnableModelessWW
+A 0000d90c fEnableW
+A 0000d920 OnDocWindowActivateW
+A 0000d93f afActivateWWW
+A 0000d956 ]&OnFrameWindowActivateWWW
+A 0000d97c ResizeBorder
+A 0000d993 {left
+A 0000d9b4 rightWWW
+A 0000d9c6 H{bottomWW
+A 0000d9da [tpUIWindowWWW
+A 0000d9f3 ofFrameWindow
+A 0000da0c TranslateAccelerator
+A 0000da3c nMessage
+A 0000da50 wParamWW
+A 0000da63 7lParamWW
+A 0000da77 RbstrGuidCmdGroup
+A 0000da94 nCmdIDWW
+A 0000daa7 uGetOptionKeyPath
+A 0000dac2 dzpbstrKey
+A 0000dad7 \dwWW
+A 0000dae6 :[GetDropTargetWWW
+A 0000db03 opDropTargetW
+A 0000db1b uppDropTarget
+A 0000db32 +jGetExternalW
+A 0000db4b UppDispatchWW
+A 0000db63 5TranslateUrl
+A 0000db7c dwTranslateW
+A 0000db94 bstrURLInWWW
+A 0000dbab +pbstrURLOutW
+A 0000dbc4 FilterDataObject
+A 0000dbef ]ppDORetWd
+A 0000dc04 IAxWinAmbientDispatchWWWd
+A 0000dc28 AllowWindowlessActivationWWW
+A 0000dc50 pbCanWindowlessActivateWd
+A 0000dc74 BackColorWWW
+A 0000dc8c pclrBackgroundWWd
+A 0000dca8 ForeColorWWW
+A 0000dcc0 pclrForegroundWWd
+A 0000dcdc LocaleID
+A 0000dcef wplcidLocaleIDWWWd
+A 0000dd0b jUserMode
+A 0000dd20 pbUserModeWWd
+A 0000dd38 DisplayAsDefault
+A 0000dd53 3pbDisplayAsDefaultWWd
+A 0000dd84 pFontWWWd
+A 0000dd98 MessageReflectWW
+A 0000ddb4 pbMsgReflectd
+A 0000ddcc ShowGrabHandlesW
+A 0000dde8 pbShowGrabHandlesWWWd
+A 0000de08 ShowHatching
+A 0000de1e Z~pbShowHatchingWWd
+A 0000de3c DocHostFlags
+A 0000de54 pdwDocHostFlagsWd
+A 0000de70 DocHostDoubleClickFlagsW
+A 0000de93 ypdwDocHostDoubleClickFlagsWWd
+A 0000debc AllowContextMenu
+A 0000ded8 pbAllowContextMenuWWd
+A 0000def8 AllowShowUIW
+A 0000df0f xpbAllowShowUIWWWd
+A 0000df2b <OptionKeyPathWWW
+A 0000df48 pbstrOptionKeyPathWW
+A 0000df5e ATL 2.0 Type LibraryWW#
+A 0000df76 IDocHostUIHandlerDispatch InterfaceWWW
+A 0000df9e IAxWinAmbientDispatch InterfaceWWW'
+A 0000dfc2 Enable or disable windowless activationWWW 
+A 0000dfee Is windowless activation enabledWW
+A 0000e012 Set the background colorWW
+A 0000e02e Get the background colorWW 
+A 0000e04a Set the ambient foreground colorWW 
+A 0000e06e Get the ambient foreground colorWW
+A 0000e092 Set the ambient locale
+A 0000e0aa Get the ambient locale
+A 0000e0c2 Set the ambient user modeW
+A 0000e0de Get the ambient user modeW(
+A 0000e0fa Enable or disable the control as defaultWW
+A 0000e126 Is the control the default
+A 0000e142 Set the ambient fontWW
+A 0000e15a Get the ambient fontWW$
+A 0000e172 Enable or disable message reflectionWW
+A 0000e19a Is message reflection enabledW
+A 0000e1ba Show or hide grab handlesW
+A 0000e1d6 Are grab handles enabledWW
+A 0000e1f2 Set the DOCHOSTUIFLAG flagsWWW
+A 0000e212 Get the DOCHOSTUIFLAG flagsWWW
+A 0000e232 Set the DOCHOSTUIDBLCLK flagsW
+A 0000e252 Get the DOCHOSTUIDBLCLK flagsW
+A 0000e272 Enable or disable context menusWWW
+A 0000e296 Are context menus enabledW
+A 0000e2b2 Enable or disable UIWW
+A 0000e2ca Is UI enabledW
+A 0000e2da Set the option key pathWWW
+A 0000e2f6 Get the option key pathWWW
+A 0000edd1 	ATL.Registrar = s 'Registrar Class'
+A 0000edfb 		CLSID = s '{44EC053A-400F-11D0-9DCD-00A0C90391D3}'
+A 0000ee35 	NoRemove CLSID
+A 0000ee4a 		ForceRemove {44EC053A-400F-11D0-9DCD-00A0C90391D3} = s 'Registrar Class'
+A 0000ee9b 			ProgID = s 'ATL.Registrar'
+A 0000eeba 			InprocServer32 = s '%MODULE%'
+A 0000eee2 				val ThreadingModel = s 'Both'
+A 00010009 0/0}1
+A 00010015 2)2I2S2]2
+A 0001002f 434F4
+A 00010041 6O7g7
+A 0001004b 7L8l8
+A 0001005b :*:W:
+A 00010067 ;4;:;l;
+A 0001007b <(<K<
+A 00010087 <2=C=S=m=z=
+A 00010099 >+>k>
+A 000100a5 >	? ?I?`?
+A 000100cf 0(1.1H1
+A 000100d9 1@2h2n2
+A 000100eb 3l3y3
+A 000100f1 3\4b4l4 6-6v6
+A 00010109 7 7>7Z7`7
+A 0001011d 8!8'8x8
+A 00010139 9>:F:L:Q:X:]:j:o:t:
+A 00010159 ;";/;9;W;\;c;
+A 00010173 <(<2<}<
+A 00010183 =1=6=>=G=L=T=b=o=z=
+A 000101a3 =&>4>Y>n>
+A 000101b1 >n?u?{?
+A 000101c5 0$0,0p0v0|0
+A 000101db 3)3:3d3j3|3
+A 000101f1 3$4*404u4
+A 00010207 5/595@5G5N5U5\5c5j5q5x5
+A 00010221 5K9t9
+A 00010233 ;,<C<O<]<d<
+A 0001024d </=@=I=V={=
+A 0001025d =B>T>
+A 0001027f 0(111
+A 0001028d 2 2;2~2
+A 00010299 4	5/5
+A 000102af 7W9]9v9
+A 000102c3 :%:|;
+A 000102d5 <?=b=
+A 000102df =?>X>q>
+A 000102ed ?4?N?s?
+A 0001032b 5h5s5
+A 00010333 546:6@6E627Z7
+A 00010359 9)9<9h9
+A 00010365 :?:E:K:
+A 00010373 ;";^;
+A 00010389 <@<E<u<
+A 0001039b =1=8=I=O=z=
+A 000103ad =)>O>U>\>b>
+A 000103c3 ?+?a?s?z?
+A 000103dc >1C1#2)2/2
+A 000103ed 4'4>4[4u4
+A 000103f9 5<5S5b5
+A 00010409 646K6`6
+A 00010419 7P7p7~7
+A 00010427 8+8B8E9W9c9q9
+A 0001044d ;!<K<`<q<
+A 0001045d <I=[=d=q=
+A 0001048f 1E1[1j1
+A 000104a7 2X3x3
+A 000104ad 454Y4a4g4m4r4w4|4
+A 000104cd 4,5k5
+A 000104d7 6(6.666<6B6X6
+A 000104f5 8a8h8t8}8
+A 00010517 :9;@;U;m;t;{;
+A 00010535 <#<O<
+A 00010555 2#2.252@2G2R2Y2d2k2v2}2
+A 0001058f 3*313<3C3N3U3`3g3r3y3
+A 000105c7 4&4-484?4J4Q4\4c4n4u4
+A 000105ff 5"5)545;5F5M5X5_5j5q5|5
+A 00010637 6(6/6:6A6L6S6^6e6p6w6
+A 0001066d 7 7'72797D7K7V7]7h7o7z7
+A 000106a7 8#8-8<8C8N8U8`8g8r8y8
+A 000106df 9&9-979F9M9X9_9j9q9|9
+A 00010711 ;0;7;?;D;H;L;u;
+A 00010733 ;"<(<,<0<4<
+A 0001074f =M=T=X=\=`=d=h=l=p=
+A 0001076f ? ?,?4?_?q?
+A 00010791 0A0N0
+A 000107ad 0P1T1X1\1`1d1h1l1p1t1x1|1
+A 000107e1 2$2@2X2\2`2d2h2l2p2t2x2|2
+A 0001083d 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 000108bd 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 0001093d 5 5$5(5,50585P5T5X5\5`5d5h5l5p5t5x5|5
+A 0001098f 6 6(60686@6H6P6X6`6h6p6x6
+A 000109c7 6@9D9H9L9P9`9d9h9l9p9
+A 00010a05 : :$:(:,:0:4:8:<:D:H:L:P:T:X:\:`:d:h:l:
+A 00010a5f ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;h;l;p;t;x;|;
+A 00010ad3 0 0$0(0@0D0l0p0`3d3
+A 00010af1 6 6$6(6,60686<6@6D6H6L6P6T6X6\6`6h6l6p6t6x6|6
+A 00010b69 7 7$7(7,7074787<7@7D7H7L7P7T7X7\7`7d7h7l7p7t7x7|7
+U 0000bad2 (&'%$#"./)
+U 0000baf6 3412
+U 0000c074 TYPELIB
+U 0000c084 CLSID
+U 0000c090 Delete
+U 0000c0a0 NoRemove
+U 0000c0b4 ForceRemove
+U 0000c0f0 Unknown Error
+U 0000c10c REGISTRY
+U 0000c120 Module
+U 0000c130 .tlb
+U 0000c150 oleaut32.dll
+U 0000c178 ATL:%8.8X
+U 0000c18c DISPLAY
+U 0000c19c AtlAxWin
+U 0000c1b0 WM_ATLGETCONTROL
+U 0000c1d4 WM_ATLGETHOST
+U 0000c350 AXWIN
+U 0000c390 #32770
+U 0000c3a0 AXWIN Frame Window
+U 0000c448 AXWIN UI Window
+U 0000c4c4 HKEY_CURRENT_CONFIG
+U 0000c4ec HKEY_DYN_DATA
+U 0000c508 HKEY_PERFORMANCE_DATA
+U 0000c534 HKEY_USERS
+U 0000c54c HKEY_LOCAL_MACHINE
+U 0000c574 HKEY_CURRENT_USER
+U 0000c598 HKEY_CLASSES_ROOT
+U 0000c5bc HKCC
+U 0000c5c8 HKDD
+U 0000c5d4 HKPD
+U 0000c5e8 HKLM
+U 0000c5f4 HKCU
+U 0000c600 HKCR
+U 0000d162 TYPELIB
+U 0000d172 REGISTRY
+U 0000ef1e VS_VERSION_INFO
+U 0000ef7a StringFileInfo
+U 0000ef9e 040904b0
+U 0000efb6 CompanyName
+U 0000efd0 Microsoft Corporation
+U 0000f002 FileDescription
+U 0000f024 ATL Module for Windows NT (Unicode)
+U 0000f072 FileVersion
+U 0000f08c 3.00.8168
+U 0000f0a6 InternalName
+U 0000f0ce LegalCopyright
+U 0000f0ec Copyright © Microsoft Corp. 1996-1998
+U 0000f13e OriginalFilename
+U 0000f160 ATL.DLL
+U 0000f176 ProductName
+U 0000f190 Microsoft (R) Visual C++
+U 0000f1ca ProductVersion
+U 0000f1e8 6.00.8168
+U 0000f202 OLESelfRegister
+U 0000f22a VarFileInfo
+U 0000f24a Translation
+U 0000f26c Registrar 1.0 Object

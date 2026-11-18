@@ -1,0 +1,904 @@
+[0x0000 f=0 list] (2)
+  [0x3eb3 f=0 str] = '1 Knit Light Weight'
+  [0x3e81 f=0 list] (14)
+    [0x2734 f=0 list] (7)
+      [0x2803 f=0 list] (1)
+        [0x2710 f=0 list] (1)
+          [0x272a f=0 list] (21)
+            [0x2711 f=8192 ulong] = 2286
+            [0x2712 f=8192 ulong] = 1260
+            [0x2758 f=8192 long] = 1
+            [0x272b f=8192 long] = 0
+            [0x272c f=8192 long] = 1
+            [0x272d f=8192 long] = 1
+            [0x272e f=8192 ulong] = 1080
+            [0x2754 f=8192 ulong] = 540
+            [0x2755 f=8192 ulong] = 540
+            [0x272f f=8192 long] = 2
+            [0x275d f=8192 long] = 2
+            [0x2730 f=8192 ulong] = 180
+            [0x2731 f=8192 ulong] = 180
+            [0x2732 f=8192 long] = 0
+            [0x2733 f=8192 long] = 1
+            [0x2750 f=8192 long] = 1
+            [0x2751 f=8192 long] = 0
+            [0x2752 f=8192 long] = 0
+            [0x2753 f=8192 long] = 0
+            [0x2805 f=8192 long] = 0
+            [0x276c f=0 long] = 0
+      [0x2804 f=0 list] (1)
+        [0x2710 f=0 list] (1)
+          [0x272a f=0 list] (21)
+            [0x2711 f=8192 ulong] = 324
+            [0x2712 f=8192 ulong] = 1260
+            [0x2758 f=8192 long] = 0
+            [0x272b f=8192 long] = 1
+            [0x272c f=8192 long] = 0
+            [0x272d f=8192 long] = 0
+            [0x272e f=8192 ulong] = 360
+            [0x2754 f=8192 ulong] = 360
+            [0x2755 f=8192 ulong] = 360
+            [0x272f f=8192 long] = 2
+            [0x275d f=8192 long] = 2
+            [0x2730 f=8192 ulong] = 180
+            [0x2731 f=8192 ulong] = 180
+            [0x2732 f=8192 long] = 0
+            [0x2733 f=8192 long] = 0
+            [0x2750 f=8192 long] = 0
+            [0x2751 f=8192 long] = 0
+            [0x2752 f=8192 long] = 0
+            [0x2753 f=8192 long] = 0
+            [0x2805 f=8192 long] = 0
+            [0x276c f=0 long] = 0
+      [0x27a7 f=8192 list] (5)
+        [0x2746 f=8192 list] (5)
+          [0x2710 f=8192 list] (1)
+            [0x271c f=8192 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x271d f=8192 ulong] = 396
+              [0x271e f=8192 long] = 1
+              [0x275e f=8192 long] = 1
+              [0x2767 f=8192 ulong] = 131
+              [0x2768 f=8192 ulong] = 11
+          [0x2743 f=8192 ulong] = 36
+          [0x2759 f=8192 double] = 1.5707963267948966
+          [0x2769 f=8192 ulong] = 36
+          [0x276a f=8192 ulong] = 36
+        [0x2744 f=8193 list] (6)
+          [0x2710 f=8192 list] (1)
+            [0x2724 f=8192 list] (5)
+              [0x2711 f=8192 ulong] = 900
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x2725 f=8192 ulong] = 540
+              [0x2726 f=8192 ulong] = 540
+          [0x2710 f=8192 list] (1)
+            [0x271c f=8192 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x271d f=8192 ulong] = 540
+              [0x271e f=8192 long] = 1
+              [0x275e f=8192 long] = 1
+              [0x2767 f=8192 ulong] = 72
+              [0x2768 f=8192 ulong] = 16
+          [0x2743 f=8192 ulong] = 36
+          [0x2759 f=8192 double] = 5.791625454567478e-306
+          [0x2769 f=8192 ulong] = 36
+          [0x276a f=8192 ulong] = 36
+        [0x2745 f=8192 list] (6)
+          [0x2710 f=8192 list] (1)
+            [0x2724 f=8192 list] (5)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x2725 f=8192 ulong] = 540
+              [0x2726 f=8192 ulong] = 540
+          [0x2710 f=8192 list] (1)
+            [0x271c f=8192 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x271d f=8192 ulong] = 540
+              [0x271e f=8192 long] = 1
+              [0x275e f=8192 long] = 1
+              [0x2767 f=8192 ulong] = 179
+              [0x2768 f=8192 ulong] = 16
+          [0x2743 f=8192 ulong] = 36
+          [0x2759 f=8192 double] = 1.5707963267948966
+          [0x2769 f=8192 ulong] = 36
+          [0x276a f=8192 ulong] = 36
+        [0x2747 f=8192 list] (5)
+          [0x2710 f=8192 list] (1)
+            [0x271c f=8192 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x271d f=8192 ulong] = 396
+              [0x271e f=8192 long] = 1
+              [0x275e f=8192 long] = 1
+              [0x2767 f=8192 ulong] = 72
+              [0x2768 f=8192 ulong] = 13
+          [0x2743 f=8192 ulong] = 36
+          [0x2759 f=8192 double] = 1.5707963267948966
+          [0x2769 f=8192 ulong] = 36
+          [0x276a f=8192 ulong] = 36
+        [0x275a f=8192 list] (6)
+          [0x2710 f=8192 list] (1)
+            [0x2714 f=8192 list] (11)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x2716 f=8192 ulong] = 540
+              [0x2717 f=8192 ulong] = 720
+              [0x2718 f=8192 ulong] = 72
+              [0x2719 f=8192 double] = 0.25
+              [0x271a f=8192 double] = 0.25
+              [0x271b f=8192 double] = 0.0
+              [0x27ae f=8192 long] = 2
+              [0x27ba f=8192 list] (2)
+                [0x27bc f=8192 0] = None
+                [0x27be f=8192 double] = 0.0
+          [0x2710 f=8192 list] (1)
+            [0x271c f=8192 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 2286
+              [0x2758 f=8192 long] = 0
+              [0x271d f=8192 ulong] = 450
+              [0x271e f=8192 long] = 1
+              [0x275e f=8192 long] = 1
+              [0x2767 f=8192 ulong] = 72
+              [0x2768 f=8192 ulong] = 13
+          [0x2743 f=8192 ulong] = 36
+          [0x2759 f=8192 double] = 1.5707963267948966
+          [0x2769 f=8192 ulong] = 36
+          [0x276a f=8192 ulong] = 36
+      [0x27a6 f=0 list] (11)
+        [0x2748 f=1 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2721 f=0 list] (6)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x2723 f=0 ulong] = 77
+              [0x2722 f=8192 ulong] = 1800
+              [0x275e f=8192 long] = 1
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2714 f=0 list] (11)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x2716 f=0 ulong] = 81
+              [0x2717 f=8192 ulong] = 720
+              [0x2718 f=8192 ulong] = 72
+              [0x2719 f=8192 double] = 0.25
+              [0x271a f=8192 double] = 0.75
+              [0x271b f=8192 double] = 0.0
+              [0x27ae f=8192 long] = 2
+              [0x27ba f=8192 list] (2)
+                [0x27bc f=0 0] = None
+                [0x27be f=8192 double] = 0.0
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2724 f=0 list] (5)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x2725 f=8192 ulong] = 180
+              [0x2726 f=8192 ulong] = 540
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2727 f=0 list] (6)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x2728 f=8192 ulong] = 900
+              [0x2729 f=8192 ulong] = 540
+              [0x27c5 f=8192 long] = 1
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x277e f=0 list] (12)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x277f f=8192 ulong] = 72
+              [0x2780 f=8192 ulong] = 360
+              [0x2781 f=8192 ulong] = 648
+              [0x2782 f=8192 double] = 36.0
+              [0x2783 f=8192 long] = 1
+              [0x2784 f=8192 long] = 1
+              [0x2785 f=8192 long] = 0
+              [0x2786 f=8192 double] = 0.5
+              [0x2787 f=8192 double] = 0.25
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x27ad f=0 list] (1)
+          [0x2748 f=1 list] (2)
+            [0x2710 f=0 list] (1)
+              [0x278c f=0 list] (10)
+                [0x2711 f=8192 ulong] = 2286
+                [0x2712 f=8192 ulong] = 1260
+                [0x2758 f=8192 long] = 1
+                [0x278d f=8192 ulong] = 72
+                [0x278f f=8192 ulong] = 72
+                [0x27ac f=8192 long] = 0
+                [0x3ab3 f=8192 list] (9)
+                  [0x3ab2 f=8192 list] (2)
+                    [0x3aab f=8192 list] (6)
+                      [0x3aad f=8192 double] = 0.0
+                      [0x3aac f=8192 double] = 1800.0
+                      [0x3aaf f=8192 double] = 1.5707963267948966
+                      [0x3aae f=8192 double] = 900.0
+                      [0x3ab0 f=8192 double] = 0.0
+                      [0x3ab1 f=8192 double] = 0.0
+                    [0x3ac3 f=8192 list] (1)
+                      [0x3abc f=8192 list] (1)
+                        [0x3abd f=8192 list] (3)
+                          [0x3abf f=8192 ulong] = 0
+                          [0x0000 f=8192 list] (1)
+                            [0x3abe f=8192 list] (6)
+                              [0x0000 f=8192 double] = 1.0
+                              [0x0000 f=8192 double] = 0.0
+                              [0x0000 f=8192 double] = 0.0
+                              [0x0000 f=8192 double] = 1.0
+                              [0x0000 f=8192 double] = 0.0
+                              [0x0000 f=8192 double] = 0.0
+                          [0x3ac0 f=8192 ulong] = 0
+                  [0x27bf f=8192 str] = '06 Brik'
+                  [0x27c1 f=8192 ulong] = 1800
+                  [0x27c2 f=8192 ulong] = 900
+                  [0x3ab6 f=8192 ulong] = 1800
+                  [0x3ab7 f=8192 ulong] = 0
+                  [0x3abb f=8192 ulong] = 0
+                  [0x3aba f=8192 ulong] = 900
+                  [0x3aa1 f=8192 list] (5)
+                    [0x3aa4 f=8192 long] = 8
+                    [0x3aa0 f=8192 str] = '06 Brik'
+                    [0x3aab f=8192 list] (1)
+                      [0x3a9f f=8192 list] (2)
+                        [0x3a9d f=8192 long] = 1
+                        [0x0000 f=8192 list] (1)
+                          [0x3a9e f=8192 list] (3)
+                            [0x3aa2 f=8192 long] = 5
+                            [0x0000 f=8192 list] (15)
+                              [0x3a99 f=8192 ulong] = 4294966610
+                              [0x3a9a f=8192 ulong] = 4294961909
+                              [0x3a98 f=8192 long] = 1
+                              [0x3a99 f=8192 ulong] = 4294964810
+                              [0x3a9a f=8192 ulong] = 4294961909
+                              [0x3a98 f=8192 long] = 1
+                              [0x3a99 f=8192 ulong] = 4294964810
+                              [0x3a9a f=8192 ulong] = 4294961009
+                              [0x3a98 f=8192 long] = 1
+                              [0x3a99 f=8192 ulong] = 4294966610
+                              [0x3a9a f=8192 ulong] = 4294961009
+                              [0x3a98 f=8192 long] = 1
+                              [0x3a99 f=8192 ulong] = 4294966610
+                              [0x3a9a f=8192 ulong] = 4294961909
+                              [0x3a98 f=8192 long] = 1
+                            [0x0000 f=8192 long] = 1
+                    [0x3aa5 f=8192 ulong] = 1800
+                    [0x3aa6 f=8192 ulong] = 900
+                [0x279e f=8192 ulong] = 720
+                [0x279f f=8192 double] = 0.25
+                [0x281d f=8192 double] = 0.0
+            [0x2710 f=0 list] (1)
+              [0x271c f=0 list] (8)
+                [0x2711 f=0 ulong] = 2286
+                [0x2712 f=0 ulong] = 2286
+                [0x2758 f=0 long] = 0
+                [0x271d f=0 ulong] = 324
+                [0x271e f=0 long] = 1
+                [0x275e f=0 long] = 1
+                [0x2767 f=0 ulong] = 72
+                [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x279a f=0 list] (11)
+              [0x27c6 f=8192 ulong] = 360
+              [0x27c7 f=8192 double] = 1.0
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x27c8 f=8192 double] = 0.8
+              [0x27c9 f=8192 ulong] = 720
+              [0x27ce f=8192 long] = 0
+              [0x27cb f=8192 ulong] = 720
+              [0x27cc f=8192 ulong] = 360
+              [0x27cd f=8192 long] = 1
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2799 f=0 list] (8)
+              [0x27c6 f=8192 ulong] = 360
+              [0x27c7 f=8192 double] = 1.0
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x27c8 f=8192 double] = 0.8
+              [0x27c9 f=8192 ulong] = 540
+              [0x27ce f=8192 long] = 0
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x27ee f=0 list] (6)
+              [0x0000 f=0 list] (1)
+                [0x3ab4 f=0 list] (8)
+                  [0x3ab8 f=0 double] = 720.0
+                  [0x3ab9 f=0 double] = 0.0
+                  [0x3abb f=0 double] = 0.0
+                  [0x3aba f=0 double] = 720.0
+                  [0x3ab5 f=0 long] = 0
+                  [0x3ab2 f=0 list] (2)
+                    [0x3aab f=0 list] (6)
+                      [0x3aad f=0 double] = 0.0
+                      [0x3aac f=0 double] = 720.0
+                      [0x3aaf f=0 double] = 1.5707963267948966
+                      [0x3aae f=0 double] = 720.0
+                      [0x3ab0 f=0 double] = 0.0
+                      [0x3ab1 f=0 double] = 0.0
+                    [0x3ac3 f=0 list] (1)
+                      [0x3abc f=0 list] (1)
+                        [0x3abd f=0 list] (3)
+                          [0x3abf f=0 ulong] = 0
+                          [0x0000 f=0 list] (1)
+                            [0x3abe f=0 list] (6)
+                              [0x0000 f=0 double] = 0.997229916897507
+                              [0x0000 f=0 double] = 0.0
+                              [0x0000 f=0 double] = 0.0
+                              [0x0000 f=0 double] = 0.997229916897507
+                              [0x0000 f=0 double] = 0.0
+                              [0x0000 f=0 double] = 0.0
+                          [0x3ac0 f=0 ulong] = 0
+                  [0x27ef f=0 list] (1)
+                    [0x2801 f=0 list] (2)
+                      [0x27b0 f=0 wstr] = 'MOTIFS'
+                      [0x27b1 f=0 wstr] = 'Mtf01'
+                  [0x3ac2 f=0 list] (1)
+                    [0x3ac1 f=0 list] (1)
+                      [0x2800 f=0 list] (2)
+                        [0x27b6 f=0 ulong] = 720
+                        [0x27b9 f=0 ulong] = 720
+              [0x2711 f=0 ulong] = 2286
+              [0x0000 f=0 ulong] = 72
+              [0x2712 f=0 ulong] = 1260
+              [0x2758 f=0 long] = 1
+              [0x27f3 f=0 long] = 1
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x279b f=0 list] (6)
+              [0x27c6 f=8192 ulong] = 360
+              [0x27c7 f=8192 double] = 1.0
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x27a0 f=8192 ulong] = 288
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x279c f=0 list] (8)
+              [0x27c6 f=8192 ulong] = 360
+              [0x27c7 f=8192 double] = 1.0
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x27e1 f=8192 double] = 0.7853981633974483
+              [0x27e2 f=8192 double] = 1.5707963267948966
+              [0x27a1 f=8192 ulong] = 288
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+      [0x27a8 f=8192 list] (3)
+        [0x2748 f=1 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x271d f=8192 ulong] = 450
+              [0x271e f=8192 long] = 0
+              [0x275e f=8192 long] = 1
+              [0x2767 f=8192 ulong] = 149
+              [0x2768 f=8192 ulong] = 13
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (1)
+          [0x2710 f=0 list] (1)
+            [0x271f f=0 list] (8)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x271d f=8192 ulong] = 450
+              [0x271e f=8192 long] = 0
+              [0x275e f=8192 long] = 3
+              [0x2767 f=8192 ulong] = 149
+              [0x2768 f=8192 ulong] = 13
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2798 f=0 list] (10)
+              [0x0000 f=8192 list] (1)
+                [0x27b2 f=8192 list] (5)
+                  [0x27b0 f=8192 wstr] = 'MOTIFS'
+                  [0x27b1 f=8192 wstr] = '70084s'
+                  [0x27b6 f=8192 ulong] = 990
+                  [0x27b9 f=8192 ulong] = 1638
+                  [0x27df f=8192 ulong] = 1525
+              [0x0000 f=8192 list] (1)
+                [0x3abe f=8192 list] (6)
+                  [0x0000 f=8192 double] = 1.0
+                  [0x0000 f=8192 double] = 0.0
+                  [0x0000 f=8192 double] = 0.0
+                  [0x0000 f=8192 double] = 1.0
+                  [0x0000 f=8192 double] = 0.0
+                  [0x0000 f=8192 double] = 0.0
+              [0x271d f=8192 ulong] = 1525
+              [0x271e f=8192 long] = 0
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+              [0x27b3 f=8192 long] = 1
+              [0x27b4 f=8192 long] = 1
+              [0x279d f=8192 long] = 0
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 324
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+      [0x27a9 f=8192 list] (2)
+        [0x2748 f=1 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x2713 f=0 list] (3)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 540
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 16
+        [0x2748 f=0 list] (2)
+          [0x2710 f=0 list] (1)
+            [0x274f f=0 list] (3)
+              [0x2711 f=8192 ulong] = 2286
+              [0x2712 f=8192 ulong] = 1260
+              [0x2758 f=8192 long] = 1
+          [0x2710 f=0 list] (1)
+            [0x271c f=0 list] (8)
+              [0x2711 f=0 ulong] = 2286
+              [0x2712 f=0 ulong] = 2286
+              [0x2758 f=0 long] = 0
+              [0x271d f=0 ulong] = 450
+              [0x271e f=0 long] = 1
+              [0x275e f=0 long] = 1
+              [0x2767 f=0 ulong] = 72
+              [0x2768 f=0 ulong] = 13
+      [0x27ab f=0 list] (17)
+        [0x2735 f=1 list] (2)
+          [0x2776 f=8192 list] (29)
+            [0x2737 f=0 double] = 1.8
+            [0x2737 f=0 double] = 90.0
+            [0x2737 f=0 double] = 180.0
+            [0x2737 f=0 double] = 270.0
+            [0x2737 f=0 double] = 360.0
+            [0x2737 f=0 double] = 540.0
+            [0x2737 f=0 double] = 720.0
+            [0x2737 f=0 double] = 900.0
+            [0x2737 f=0 double] = 1080.0
+            [0x2737 f=0 double] = 1260.0
+            [0x2737 f=0 double] = 1440.0
+            [0x2738 f=0 double] = 97.2
+            [0x2738 f=0 double] = 91.8
+            [0x2738 f=0 double] = 88.2
+            [0x2738 f=0 double] = 84.6
+            [0x2738 f=0 double] = 82.8
+            [0x2738 f=0 double] = 75.6
+            [0x2738 f=0 double] = 72.0
+            [0x2738 f=0 double] = 66.6
+            [0x2738 f=0 double] = 64.8
+            [0x2738 f=0 double] = 61.2
+            [0x2738 f=0 double] = 61.2
+            [0x2739 f=0 double] = 3.6
+            [0x2739 f=0 double] = 3.6
+            [0x2739 f=0 double] = 3.6
+            [0x2739 f=0 double] = 3.6
+            [0x2739 f=0 double] = 0.0
+            [0x2739 f=0 double] = 0.0
+            [0x2739 f=0 double] = 0.0
+          [0x2736 f=0 double] = 1.08
+        [0x273a f=8192 list] (4)
+          [0x2819 f=8192 double] = 0.5
+          [0x281a f=8192 long] = 1
+          [0x281b f=8192 long] = 5
+          [0x281c f=8192 list] (15)
+            [0x0000 f=8192 double] = 0.800000011920929
+            [0x0000 f=8192 double] = 0.8500000238418579
+            [0x0000 f=8192 double] = 0.7200000286102295
+            [0x0000 f=8192 double] = 0.699999988079071
+            [0x0000 f=8192 double] = 0.8999999761581421
+            [0x0000 f=8192 double] = 0.699999988079071
+            [0x0000 f=8192 double] = 0.699999988079071
+            [0x0000 f=8192 double] = 0.8999999761581421
+            [0x0000 f=8192 double] = 0.800000011920929
+            [0x0000 f=8192 double] = 0.699999988079071
+            [0x0000 f=8192 double] = 0.699999988079071
+            [0x0000 f=8192 double] = 0.8700000047683716
+            [0x0000 f=8192 double] = 0.6499999761581421
+            [0x0000 f=8192 double] = 0.8299999833106995
+            [0x0000 f=8192 double] = 0.699999988079071
+        [0x273b f=0 list] (1)
+          [0x273d f=0 double] = 36.0
+        [0x273e f=8193 list] (1)
+          [0x273f f=8192 double] = 0.33000001311302185
+        [0x2740 f=8193 long] = 0
+        [0x2777 f=8192 list] (2)
+          [0x2778 f=8192 ulong] = 1260
+          [0x2779 f=8192 ulong] = 72
+        [0x277a f=8192 list] (3)
+          [0x277d f=8192 double] = 540.0
+          [0x277c f=8192 double] = 2.0000000298023224
+          [0x277b f=8192 long] = 2
+        [0x2788 f=8192 list] (3)
+          [0x2789 f=8192 ulong] = 72
+          [0x278a f=8192 ulong] = 360
+          [0x278b f=8192 long] = 2
+        [0x2790 f=8192 list] (3)
+          [0x3aa1 f=8192 list] (5)
+            [0x3aa4 f=8192 long] = 1
+            [0x3aa0 f=8192 str] = ''
+            [0x3aab f=8192 list] (1)
+              [0x3a9f f=8192 list] (2)
+                [0x3a9d f=8192 long] = 0
+                [0x0000 f=8192 0] = None
+            [0x3aa5 f=8192 ulong] = 0
+            [0x3aa6 f=8192 ulong] = 0
+          [0x27af f=8192 ulong] = 36
+          [0x281f f=0 long] = 0
+        [0x27c0 f=8192 long] = 0
+        [0x27cf f=8192 list] (7)
+          [0x27d7 f=8192 ulong] = 360
+          [0x27d8 f=8192 ulong] = 396
+          [0x27d9 f=8192 long] = 1
+          [0x27da f=8192 long] = 1
+          [0x27db f=8192 long] = 0
+          [0x27d6 f=8192 list] (3)
+            [0x27d5 f=8192 list] (3)
+              [0x27d4 f=8192 list] (4)
+                [0x27d0 f=8192 ulong] = 0
+                [0x27d1 f=8192 long] = 2
+                [0x27d2 f=8192 long] = 0
+                [0x27d3 f=8192 long] = -1
+              [0x27d4 f=8192 list] (4)
+                [0x27d0 f=8192 ulong] = 270
+                [0x27d1 f=8192 long] = 1
+                [0x27d2 f=8192 long] = 0
+                [0x27d3 f=8192 long] = -1
+              [0x27d4 f=8192 list] (4)
+                [0x27d0 f=8192 ulong] = 540
+                [0x27d1 f=8192 long] = 1
+                [0x27d2 f=8192 long] = 0
+                [0x27d3 f=8192 long] = -1
+            [0x27d4 f=8192 list] (4)
+              [0x27d0 f=8192 ulong] = 450
+              [0x27d1 f=8192 long] = 1
+              [0x27d2 f=8192 long] = 0
+              [0x27d3 f=8192 long] = -1
+            [0x27d5 f=8192 list] (3)
+              [0x27d4 f=8192 list] (4)
+                [0x27d0 f=8192 ulong] = 0
+                [0x27d1 f=8192 long] = 0
+                [0x27d2 f=8192 long] = 0
+                [0x27d3 f=8192 long] = -1
+              [0x27d4 f=8192 list] (4)
+                [0x27d0 f=8192 ulong] = 0
+                [0x27d1 f=8192 long] = 0
+                [0x27d2 f=8192 long] = 0
+                [0x27d3 f=8192 long] = -1
+              [0x27d4 f=8192 list] (4)
+                [0x27d0 f=8192 ulong] = 0
+                [0x27d1 f=8192 long] = 0
+                [0x27d2 f=8192 long] = 0
+                [0x27d3 f=8192 long] = -1
+          [0x2802 f=8192 long] = 1
+        [0x281e f=8192 list] (9)
+          [0x27d9 f=8192 long] = 1
+          [0x2802 f=8192 long] = 1
+          [0x27f5 f=8192 ulong] = 900
+          [0x27f6 f=8192 long] = 1
+          [0x27f7 f=8192 long] = 0
+          [0x27f8 f=8192 ulong] = 450
+          [0x27f9 f=8192 long] = 0
+          [0x27fa f=8192 ulong] = 450
+          [0x271c f=8192 list] (8)
+            [0x2711 f=8192 ulong] = 2286
+            [0x2712 f=8192 ulong] = 1260
+            [0x2758 f=8192 long] = 0
+            [0x271d f=8192 ulong] = 450
+            [0x271e f=8192 long] = 0
+            [0x275e f=8192 long] = 1
+            [0x2767 f=8192 ulong] = 149
+            [0x2768 f=8192 ulong] = 13
+        [0x27de f=8192 list] (2)
+          [0x27dc f=8192 long] = 0
+          [0x27dd f=8192 list] (1)
+            [0x0000 f=8192 0] = None
+        [0x280a f=8192 list] (4)
+          [0x3ab3 f=8192 list] (9)
+            [0x3ab2 f=8192 list] (2)
+              [0x3aab f=8192 list] (6)
+                [0x3aad f=8192 double] = 0.0
+                [0x3aac f=8192 double] = 1440.0
+                [0x3aaf f=8192 double] = 1.5707963267948966
+                [0x3aae f=8192 double] = 720.0
+                [0x3ab0 f=8192 double] = 0.0
+                [0x3ab1 f=8192 double] = 0.0
+              [0x3ac3 f=8192 list] (1)
+                [0x3abc f=8192 list] (1)
+                  [0x3abd f=8192 list] (3)
+                    [0x3abf f=8192 ulong] = 0
+                    [0x0000 f=8192 list] (1)
+                      [0x3abe f=8192 list] (6)
+                        [0x0000 f=8192 double] = 1.0
+                        [0x0000 f=8192 double] = 0.0
+                        [0x0000 f=8192 double] = 0.0
+                        [0x0000 f=8192 double] = 1.0004025720106915
+                        [0x0000 f=8192 double] = 0.0
+                        [0x0000 f=8192 double] = 0.0
+                    [0x3ac0 f=8192 ulong] = 0
+            [0x27bf f=8192 str] = '10 Shel'
+            [0x27c1 f=8192 ulong] = 1440
+            [0x27c2 f=8192 ulong] = 720
+            [0x3ab6 f=8192 ulong] = 1440
+            [0x3ab7 f=8192 ulong] = 0
+            [0x3abb f=8192 ulong] = 0
+            [0x3aba f=8192 ulong] = 720
+            [0x3aa1 f=8192 list] (5)
+              [0x3aa4 f=8192 long] = 8
+              [0x3aa0 f=8192 str] = '10 Shel'
+              [0x3aab f=8192 list] (1)
+                [0x3a9f f=8192 list] (2)
+                  [0x3a9d f=8192 long] = 1
+                  [0x0000 f=8192 list] (1)
+                    [0x3a9e f=8192 list] (3)
+                      [0x3aa2 f=8192 long] = 3
+                      [0x0000 f=8192 list] (9)
+                        [0x3a99 f=8192 ulong] = 4294965681
+                        [0x3a9a f=8192 ulong] = 4294953265
+                        [0x3a98 f=8192 long] = 1
+                        [0x3a99 f=8192 ulong] = 4294966402
+                        [0x3a9a f=8192 ulong] = 4294953985
+                        [0x3a98 f=8192 long] = 0
+                        [0x3a99 f=8192 ulong] = 4294967121
+                        [0x3a9a f=8192 ulong] = 4294953266
+                        [0x3a98 f=8192 long] = 1
+                      [0x0000 f=8192 long] = 0
+              [0x3aa5 f=8192 ulong] = 1440
+              [0x3aa6 f=8192 ulong] = 720
+          [0x280b f=8192 long] = 0
+          [0x280c f=8192 long] = 1
+          [0x280d f=8192 ulong] = 0
+        [0x275f f=8192 list] (7)
+          [0x2760 f=8192 long] = 1
+          [0x2761 f=8192 double] = 1.3089969389957472
+          [0x2762 f=8192 ulong] = 90
+          [0x2763 f=8192 long] = 0
+          [0x2764 f=8192 double] = 0.7853981633974483
+          [0x2765 f=8192 ulong] = 1
+          [0x2711 f=8192 ulong] = 1440
+        [0x2814 f=8192 list] (3)
+          [0x0000 f=8192 0] = None
+          [0x0000 f=8192 0] = None
+          [0x2817 f=8192 long] = 1
+        [0x2818 f=8192 list] (2)
+          [0x0000 f=8192 0] = None
+          [0x2817 f=8192 long] = 1
+    [0x3e82 f=8192 list] (32)
+      [0x3e83 f=8192 long] = 0
+      [0x3e8d f=8192 double] = 0.0
+      [0x3e84 f=8192 double] = 0.1
+      [0x3e85 f=8192 double] = 0.25
+      [0x3e86 f=8192 long] = 2
+      [0x3e95 f=8192 wstr] = ''
+      [0x3e96 f=8192 long] = 1
+      [0x3e99 f=8192 long] = 0
+      [0x3e9a f=8192 long] = 0
+      [0x3e9b f=8192 long] = 0
+      [0x3e9c f=8192 long] = 0
+      [0x3f02 f=8192 long] = 0
+      [0x3f04 f=8192 long] = 0
+      [0x3f05 f=8192 list] = None
+      [0x3f09 f=8192 long] = 0
+      [0x3f0a f=8192 long] = 0
+      [0x3f0b f=8192 long] = 0
+      [0x3f0c f=8192 long] = 0
+      [0x3f18 f=8192 long] = 0
+      [0x3f2d f=8192 double] = 0.6
+      [0x3e87 f=8192 list] (17)
+        [0x3e94 f=8192 wstr] = 'Rounded Block'
+        [0x3e94 f=8192 wstr] = 'Blackboard'
+        [0x3e94 f=8192 wstr] = 'Border'
+        [0x3e94 f=8192 wstr] = 'Childs Play'
+        [0x3e94 f=8192 wstr] = 'Craft'
+        [0x3e94 f=8192 wstr] = 'Drifter'
+        [0x3e94 f=8192 wstr] = 'Island'
+        [0x3e94 f=8192 wstr] = 'Lisa'
+        [0x3e94 f=8192 wstr] = 'Medley'
+        [0x3e94 f=8193 wstr] = 'Prestige'
+        [0x3e94 f=8192 wstr] = 'Anniversary'
+        [0x3e94 f=8192 wstr] = 'Swiss Block'
+        [0x3e94 f=8192 wstr] = 'Tiffany'
+        [0x3e94 f=8192 wstr] = 'Victoria'
+        [0x3e94 f=8192 wstr] = 'Zurich'
+        [0x3e94 f=8192 wstr] = 'GREEK'
+        [0x3e94 f=8192 wstr] = 'OLD-ENGLISH'
+      [0x3e88 f=8192 double] = 1800.0
+      [0x3e89 f=8192 double] = 1.0
+      [0x3e8a f=8192 double] = 0.0
+      [0x3f03 f=8192 double] = 1.5707963267948966
+      [0x3e8b f=8192 double] = 9000.0
+      [0x3e8c f=8192 double] = 9000.0
+      [0x3e8f f=8192 double] = 0.0
+      [0x3e91 f=8192 double] = 0.0
+      [0x3e90 f=8192 double] = 18000.0
+      [0x3e92 f=8192 long] = 5
+      [0x3e93 f=8192 double] = 0.0
+    [0x3eda f=8192 list] (4)
+      [0x3edb f=8192 double] = 360.0
+      [0x3edd f=8192 double] = 0.5
+      [0x3ee3 f=8192 long] = 0
+      [0x3ef8 f=8192 double] = 0.0
+    [0x3edf f=8192 list] (2)
+      [0x3ee0 f=8192 double] = 0.7853981633974483
+      [0x3ee1 f=8192 ulong] = 2
+    [0x3ee2 f=8192 long] = 0
+    [0x3ee4 f=8192 list] (4)
+      [0x3ee5 f=8192 ulong] = 360
+      [0x3ee6 f=8192 ulong] = 0
+      [0x3ee8 f=8192 long] = 1
+      [0x3eed f=8192 double] = 1.2217304763960306
+    [0x3f16 f=8192 list] (1)
+      [0x3f17 f=8192 long] = 2
+    [0x3f19 f=8192 list] (19)
+      [0x3f1a f=8192 ulong] = 270
+      [0x3f1b f=8192 ulong] = 0
+      [0x3f1c f=8192 long] = 2
+      [0x3f1d f=8192 ulong] = 720
+      [0x3f1e f=8192 double] = 0.0
+      [0x3f1f f=8192 long] = 2
+      [0x3f20 f=8192 long] = 10020
+      [0x3f21 f=8192 ulong] = 900
+      [0x3f22 f=8192 long] = 2
+      [0x3f23 f=8192 ulong] = 900
+      [0x3f24 f=8192 long] = 1
+      [0x3f25 f=8192 ulong] = 270
+      [0x3f2c f=8192 ulong] = 0
+      [0x3f26 f=8192 long] = 0
+      [0x3f27 f=8192 ulong] = 900
+      [0x3f28 f=8192 double] = 0.0
+      [0x3f29 f=8192 long] = 1
+      [0x3f2a f=8192 ulong] = 0
+      [0x3f2b f=8192 ulong] = 2160
+    [0x3eee f=0 list] (1)
+      [0x3eef f=0 long] = 10150
+    [0x3eee f=0 list] (1)
+      [0x3eef f=0 long] = 10150
+    [0x3eee f=0 list] (1)
+      [0x3eef f=0 long] = 10150
+    [0x3eee f=0 list] (1)
+      [0x3eef f=0 long] = 10150
+    [0x3eee f=0 list] (1)
+      [0x3eef f=0 long] = 10150
+    [0x3eee f=0 list] (1)
+      [0x3eef f=0 long] = 10150

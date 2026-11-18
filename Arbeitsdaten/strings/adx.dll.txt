@@ -1,0 +1,2408 @@
+A 0000004d !This program cannot be run in DOS mode.
+A 00000107 /Rich
+A 00000210 .text
+A 00000237 `.rdata
+A 0000025f @.data
+A 00000288 .rsrc
+A 000002af @.reloc
+A 000015af _^][d
+A 00002093 L$$RQ
+A 000020b9 L$$PQ
+A 00002176 L$$RQ
+A 000021a0 T$@VR
+A 00002216 D$(SP
+A 0000223b D$HRP
+A 0000238e L$$RQ
+A 00002ebd L$(VW
+A 0000310f D$LRP
+A 00003148 T$8QR
+A 000034b6 QRPSW
+A 000036ee D$LPW
+A 00003781 D$PPh
+A 000037b4 f9D$Lt	
+A 000038c0 QSUVW
+A 000038d8 _^][Y
+A 000039cb _^][Y
+A 000039db _^][Y
+A 000039f3 _^][Y
+A 00003bfb D$(Rh
+A 00003c50 _][^d
+A 00003f35 ~,t*Ht
+A 000040ae L$$_^[f
+A 000040f8 SUVW3
+A 00004164 T$8GWR
+A 000041d5 _^][d
+A 00004219 \$$u0
+A 00004345 _^][d
+A 00004389 \$$u0
+A 000044b4 _^][d
+A 00004745 T$$h 
+A 000047a6 T$4PR
+A 000047c3 j2jd#
+A 000047ed L$$SQ
+A 00004f7f L$@SQ
+A 00004fd7 D$ SP
+A 0000503e L$@SQ
+A 000050de D$$P*
+A 0000512e L$$RS
+A 0000515a L$(PQ
+A 00005231 L$0UQ
+A 00005289 D$$P*
+A 000052d3 D$$(*
+A 000057c8 D$<VP
+A 00005878 D$<VP
+A 00005b34 RD9\$@
+A 00005bc6 ptsh`
+A 0000617c L$x_^d
+A 000069fa D$hSP
+A 00006c8f L$,QP
+A 00006ead _^][d
+A 0000701e _^][d
+A 0000731f _^][d
+A 00007799 QHRPW
+A 00007dd7 D$$PQ
+A 00007e4b L$ j/W
+A 00007ffd L$@t-
+A 000080aa \$lUV
+A 000080c1 L$|PQS
+A 0000821e D$<WP
+A 000083d0 L$h_^]d
+A 00008455 L$ WQ
+A 00008517 DSUVW
+A 00008557 L$ UQ
+A 000085c5 T$hSR
+A 000085fa L$0PQ
+A 00008697 8\$lt
+A 000086eb 8\$lt
+A 0000873a 8\$lt
+A 00008787 8\$lt;9_(t	
+A 00008801 8\$lt
+A 00008833 L$T_^][d
+A 00008fdc D$(VP
+A 0000929e L$0PQ
+A 000092bd T$ PR
+A 0000930b _^[]d
+A 000095da 9}\uC
+A 00009643 d$XhP
+A 000097e3 L$D_^]d
+A 00009c0c L$HPQ
+A 00009c50 T$tQR
+A 00009d07 _^][d
+A 00009e20 L$8_^d
+A 0000a139 T$ WR
+A 0000a4fe L$$_^]d
+A 0000a61c T$(SV
+A 0000a770 VNWVQj
+A 0000a7d6 PWVSj
+A 0000a81a WOVWPj
+A 0000a894 T$(Rh
+A 0000a8f8 L$<QP
+A 0000a91a T$,RP
+A 0000a92d \$0GSWP
+A 0000a9df WRhp(
+A 0000aa25 D$8PQ
+A 0000ab09 D$DPQ
+A 0000aca3 T$0Rh
+A 0000ad38 L$$QP
+A 0000af8d T$pQR
+A 0000aff6 T$pQR
+A 0000b027 L$X_^d
+A 0000b22b T$<Qf
+A 0000b525 L$4^d
+A 0000b576 \$ PS
+A 0000b5ba t0GSWP
+A 0000b9d6 L$(VW
+A 0000bace T$TPQRQ
+A 0000bc99 _^][d
+A 0000c761 ^,_^]
+A 0000c9c3 D$8RPQ
+A 0000caea BMt4j
+A 0000cd9c :(t@j
+A 0000cde6 A u f
+A 0000ceac ~4_^[
+A 0000d152 D$$WP
+A 0000d1ec _^][d
+A 0000d33e L$@^d
+A 0000d3e7 L$D_^d
+A 0000dd09 L$hSQ
+A 0000e18a L$LPQ
+A 0000e19e L$LPQ
+A 0000e3e8 ;D$(u
+A 0000e43e D$,uJ
+A 0000e5cc D$ (*
+A 0000e625 D$H(*
+A 0000e647 _^][d
+A 0000e7b9 L$HU2
+A 0000e843 D$X;x
+A 0000e901 L$8]d
+A 0000eb08 L$,_^2
+A 0000edf4 _^][d
+A 0000f2b5 L$@_^d
+A 0000f580 L$ SQ
+A 0000f73d L$0QU
+A 0000f9b7 L$<_^]d
+A 0000fa9d L$8^d
+A 0000fcb5 L$l_^
+A 0000fce5 \$4UVW
+A 00010557 T$8PR
+A 0001068c T$4PR
+A 00010907 \SUV3
+A 00010a62 D$|RhB
+A 00010aad L$l_^
+A 00010cb4 T$\PR
+A 00010cf5 T$TVR
+A 00010d02 T$TVR
+A 00010e3d _^][d
+A 0001118d D$,VP3
+A 0001154b L$8PQ
+A 000115cc T$DPR
+A 000117b1 D$tH+
+A 000117d2 RHQPj
+A 0001183d D$tH+
+A 0001185e QHRPj
+A 00011f78 |$ BM
+A 00011f84 T$0j(R
+A 00011fd0 D$XVP
+A 00012043 L$0WQ
+A 000120a0 _^][d
+A 0001220b T$ Qj
+A 0001226c D$*~F
+A 000122f4 _^][d
+A 0001285c QWUSR
+A 0001287d D$$h4
+A 000128f8 L$PQR
+A 00012a5e T$pRP
+A 00012aca T$(+T$ 
+A 00012ade D$(PQ
+A 00012b8c L$LRhB
+A 00012d65 QSUVW
+A 00012e0a <\t4</t0
+A 000133b9 D$(SU
+A 000133c1 L$$VWPQ
+A 000135dd 9|$,u
+A 000135fc 9|$,u
+A 00013849 F`Ph.
+A 00013858 NdQh+
+A 00013867 VhRh,
+A 00013876 FlPh*
+A 00013885 NpQh-
+A 00013894 VtRh1
+A 000138a3 FxPh0
+A 00013967 D$ SUV
+A 00013971 L$,PQ
+A 00013e1d _^][d
+A 00014035 E Shr
+A 0001411f L$$Qh
+A 00014139 T$DVRh
+A 00014333 L$P_^
+A 00014461 \$4}S
+A 000144ee L$,_^[d
+A 00015031 D$x@;
+A 0001505f L$h_^]d
+A 00015135 @ RVh
+A 000158fc D$(PS
+A 00015975 QSUVW
+A 00015d2d T$,RP
+A 00015d7d D$4RP
+A 00015d83 T$HQR
+A 00015ea1 Pjdjdj
+A 00015eb9 D$ SP
+A 000161a0 |$ Pj
+A 00016715 QSUVW
+A 00016895 QSUVW
+A 00016c55 QSUVW
+A 00016df5 QSUVW
+A 00016f07 (SUVW
+A 00016f43 D$PRP
+A 00016fc4 9t$,sD
+A 00016fd8 D$XRh
+A 0001708e _^][d
+A 000170b9 D$(UV
+A 00017180 T$0QR
+A 00017229 [_^]d
+A 00017346 ][_^d
+A 00017464 T$PQRh3
+A 000176e5 T$hQRh2
+A 00017aee PL8\$
+A 00017b1c 8\$,t
+A 00017e48 L$XPQj
+A 00017eae D$XRPj
+A 00018127 _^][d
+A 00018474 L$$Ph
+A 00018955 T$(UR
+A 00018978 D$ RP
+A 0001897e T$4QR
+A 00018a4b Pjdjdj
+A 00018b0d L$|_^][d
+A 00018cca L$4^[d
+A 00018e3e L$8_^d
+A 00018f73 T$0QRh2
+A 00019a0c L$(PQ
+A 0001a0b9 FL8^i
+A 0001a0da L$,PQ
+A 0001a0ff L$,PQ
+A 0001a10b 9^dtx
+A 0001a235 T$(WR
+A 0001a269 L$|QR
+A 0001a3bb SUVW3
+A 0001a472 L$pPV
+A 0001a49b L$HPQ
+A 0001a66d T$`PQR
+A 0001a6db L$|h 
+A 0001a6e5 T$dQR
+A 0001a728 L$XSQ
+A 0001a75b D$dRP
+A 0001a80c D$<<*
+A 0001a86e _^][d
+A 0001a9ab SUVW3
+A 0001aa62 L$pPV
+A 0001aa8b L$HPQ
+A 0001abe0 L$$Pj
+A 0001abec T$XPR
+A 0001ac5d D$PPQ
+A 0001acca L$|h 
+A 0001acd4 T$dQR
+A 0001adf7 D$<<*
+A 0001ae59 _^][d
+A 0001b14a T$ RP
+A 0001b3bd D$,C;
+A 0001b3c9 T$,;T$
+A 0001b3e0 ;|$(~
+A 0001b426 u2+D$,
+A 0001b4e1 D$,C;
+A 0001b4ed T$,;T$
+A 0001b504 ;|$(~
+A 0001b55b T$,;T$
+A 0001b99b G QRP
+A 0001b9ad _^][d
+A 0001bbe4 L0Lj@Q
+A 0001c6c9 d$ h|
+A 0001c6e3 L$ SPQ
+A 0001c793 d$ hL
+A 0001c7ad L$4SPQ
+A 0001cd54 D$ h4
+A 0001da44 t	WVS
+A 0001da71 u7WPS
+A 0001da82 u&WVS
+A 00022ab4 AdxCe.dll
+A 00022ac0 \Windows\AdxCe.dll
+A 00028ece TransparentMode
+A 00028ee0 IsInTransparentMode
+A 00028ef6 GetBaudRate
+A 00028f04 ReadComBytes
+A 00028f14 _StartExclusiveAccess
+A 00028f2c _SetSettings
+A 00028f3c _GetSettings
+A 00028f4c _StopExclusiveAccess
+A 00028f64 A1xxWriteDesign
+A 00028f76 A1xxReadDesign
+A 00028f88 A1xxGetDesignInformation
+A 00028fa4 CardType
+A 00028fb0 A1xxLoadDesignInformation
+A 00028fcc A1xxDelete
+A 00028fda A1xxRename
+A 00028fe8 A1xxGetEXPIcon
+A 00028ff8 BEAGLink.dll
+A 00029006 MFC42.DLL
+A 00029012 __CxxFrameHandler
+A 00029026 _mbsicmp
+A 00029032 _mbscmp
+A 0002903c _CxxThrowException
+A 0002905a isdigit
+A 00029064 _ftol
+A 0002906c _purecall
+A 00029080 wcslen
+A 0002908a wcscmp
+A 00029094 strncmp
+A 0002909e _splitpath
+A 000290ac system
+A 000290be srand
+A 000290c6 strncpy
+A 000290d8 _snprintf
+A 000290e2 MSVCRT.dll
+A 000290f0 __dllonexit
+A 000290fe _onexit
+A 00029108 ??1type_info@@UAE@XZ
+A 00029120 _initterm
+A 0002912c malloc
+A 00029136 _adjust_fdiv
+A 00029146 GetTempPathA
+A 00029156 GetFileAttributesA
+A 0002916c DeleteFileA
+A 0002917a GetModuleFileNameA
+A 00029190 GetModuleHandleA
+A 000291a4 FreeLibrary
+A 000291b2 WaitForSingleObject
+A 000291c8 GetProcAddress
+A 000291da LoadLibraryA
+A 000291ea GetLastError
+A 000291fa CloseHandle
+A 00029208 ReadFile
+A 00029214 CreateFileA
+A 00029222 FindClose
+A 0002922e FindFirstFileA
+A 00029240 WriteFile
+A 0002924c GetTickCount
+A 0002925c LocalFree
+A 00029268 LocalAlloc
+A 00029276 MultiByteToWideChar
+A 0002928c WideCharToMultiByte
+A 000292a2 GlobalUnlock
+A 000292b2 GlobalLock
+A 000292c0 SetLastError
+A 000292d0 Sleep
+A 000292d8 MapViewOfFile
+A 000292e8 CreateFileMappingA
+A 000292fe GlobalFree
+A 0002930c UnmapViewOfFile
+A 0002931e CreateDirectoryA
+A 00029332 RemoveDirectoryA
+A 00029346 CopyFileA
+A 00029352 MoveFileA
+A 0002935e SetCurrentDirectoryA
+A 00029376 lstrcpynA
+A 00029382 CreateProcessA
+A 00029394 GetStartupInfoA
+A 000293a6 GetVersionExA
+A 000293b4 KERNEL32.dll
+A 000293c4 ReleaseDC
+A 000293d0 LoadBitmapA
+A 000293de GetWindowRect
+A 000293ee EnableWindow
+A 000293fe SendMessageA
+A 0002940e GetDC
+A 00029416 MessageBeep
+A 00029424 CallWindowProcA
+A 00029436 PostMessageA
+A 00029446 GetWindow
+A 00029452 SetWindowLongA
+A 00029464 GetWindowLongA
+A 00029476 GetParent
+A 00029482 InvalidateRect
+A 00029494 SetWindowPos
+A 000294a4 GetDlgCtrlID
+A 000294b4 LoadIconA
+A 000294c0 GetSystemMetrics
+A 000294d4 EnableMenuItem
+A 000294e6 GetSubMenu
+A 000294f4 LoadMenuA
+A 00029500 TranslateAcceleratorA
+A 00029518 LoadAcceleratorsA
+A 0002952c GetSysColor
+A 0002953a FillRect
+A 00029546 GetClientRect
+A 00029556 SetRect
+A 00029560 TabbedTextOutA
+A 00029572 DrawTextA
+A 0002957e GrayStringA
+A 0002958a USER32.dll
+A 00029598 StretchBlt
+A 000295a6 CreateCompatibleDC
+A 000295bc RealizePalette
+A 000295ce SelectPalette
+A 000295de StretchDIBits
+A 000295ee CreateDIBSection
+A 00029602 CreatePalette
+A 00029612 DeleteObject
+A 00029622 BitBlt
+A 0002962c GetDeviceCaps
+A 0002963c GdiFlush
+A 00029648 SelectObject
+A 00029658 GetDIBColorTable
+A 0002966c CreateFontA
+A 0002967a CreateSolidBrush
+A 0002968e CreatePen
+A 0002969a CreateCompatibleBitmap
+A 000296b4 PtVisible
+A 000296c0 RectVisible
+A 000296ce TextOutA
+A 000296da ExtTextOutA
+A 000296e8 Escape
+A 000296f0 GDI32.dll
+A 000296fc RegCloseKey
+A 0002970a RegQueryValueExA
+A 0002971e RegOpenKeyExA
+A 0002972c ADVAPI32.dll
+A 0002973c ImageList_ReplaceIcon
+A 00029752 COMCTL32.dll
+A 00029762 CoInitialize
+A 00029772 CoUninitialize
+A 00029784 CoCreateInstance
+A 00029798 GetHGlobalFromStream
+A 000297b0 CreateStreamOnHGlobal
+A 000297c6 ole32.dll
+A 000297d0 OLEAUT32.dll
+A 000297e0 DrawDibClose
+A 000297ee MSVFW32.dll
+A 000297fa WSOCK32.dll
+A 000298d8 adx.dll
+A 000298e0 AdxAnsStop
+A 000298eb AdxAvailableFlash
+A 000298fd AdxAvailableRam
+A 0002990d AdxCopyFrom
+A 00029919 AdxCopyTo
+A 00029923 AdxCreateDirectory
+A 00029936 AdxDelete
+A 00029940 AdxExists
+A 0002994a AdxGetLastError
+A 0002995a AdxGetVersion
+A 00029968 AdxLoad
+A 00029970 AdxRegisteryGetEntry
+A 00029985 AdxRegisteryWriteEntry
+A 0002999c AdxRemoteExec
+A 000299aa AdxSave
+A 000299b2 AdxTest
+A 0002a080 c:\My Designs\
+A 0002a090 \Temp\
+A 0002a098 Preferences
+A 0002a0ac TargetDevice
+A 0002a0bc Silent
+A 0002a0c4 SourcePathDesigns
+A 0002a0d8 TempPathDesign
+A 0002a0e8 MotifPath
+A 0002a0f4 AlphabetPath
+A 0002a104 ActiveTargetPath
+A 0002a118 TargetPathAux
+A 0002a128 TargetPathStitchout
+A 0002a13c TargetPathATA
+A 0002a14c TargetPathBlank
+A 0002a15c TargetPathInternal
+A 0002a170 Settings
+A 0002a17c Software\Bernina\Adx\Settings
+A 0002a19c \USBCdromEncrypted\
+A 0002a1b0 BERNINA
+A 0002a1b8 Alphabets\
+A 0002a1c4 Motifs\
+A 0002a1cc \EMBFiles\
+A 0002a1d8 \IPSM\ANS\Data\Embroidery\
+A 0002a1f5 (Details: Command on ANS side not supported).
+A 0002a224 \PC Card\
+A 0002a230 \Embroidery Module\
+A 0002a244 V %d.%02d
+A 0002a250 adxErrConnectionWSAEDISCON
+A 0002a26c adxErrConnectionWSAECONNRESET
+A 0002a28c adxErrRegisteryManagementFailed
+A 0002a2ac adxErrVersionMismatch
+A 0002a2c4 adxErrDownloadOfAdxServerFailed
+A 0002a2e4 adxErrDeviceNotReady
+A 0002a2fc adxErrRemoveNodeFailed
+A 0002a314 adxErrMoveFileFailed
+A 0002a32c adxErrCreateDirectoryFailed
+A 0002a348 adxErrCeGetSpecialFolderPathFailed
+A 0002a36c adxErrCeGetTempPathFailed
+A 0002a388 adxErrCeGetSystemPowerStatusExFailed
+A 0002a3b0 adxErrCeGetVersionExFailed
+A 0002a3cc adxErrCeGetStoreInformationFailed
+A 0002a3f0 adxErrCeRapiInvokeFailed
+A 0002a40c adxErrGetARTIconFailed
+A 0002a424 adxErrBrowseOfTheDeviceFailed
+A 0002a444 adxErrConnectionToDeviceFailed
+A 0002a464 adxErrAccessToTrgtFileDenied
+A 0002a484 adxErrAccessToSrcFileDenied
+A 0002a4a0 adxErrTrgtNotAFile
+A 0002a4b4 adxErrSrcNotAFile
+A 0002a4c8 adxErrSrcFileNotFound
+A 0002a510 Artista %d
+A 0002a51c Device recognition failed.
+A 0002a537 Please switch off and on device and repeat procedure.
+A 0002a580 .?AW4TAdxError@@
+A 0002a594 %s.exp
+A 0002a59c M%d.exp
+A 0002a5a4 StitchOut failed %s
+A 0002a5bc %s (%d)
+A 0002a620 \IPSM\
+A 0002a628 \test\
+A 0002a630 \IPSM\ANS\Data\Embroidery\Motifs\Daffodils.ART
+A 0002a660 \EmbFiles\10.exp
+A 0002a674 \IPSM\ANS\Data\Embroidery\Motifs\
+A 0002a698 \temp\
+A 0002a6a8 Failed to load rapi.dll
+A 0002a6c0 CeRegSetValueEx
+A 0002a6d0 CeRegQueryValueEx
+A 0002a6e4 CeRegCloseKey
+A 0002a6f4 CeRegCreateKeyEx
+A 0002a708 CeRegOpenKeyEx
+A 0002a718 CeDeleteFile
+A 0002a728 CeMoveFile
+A 0002a734 CeCreateProcess
+A 0002a744 CeRemoveDirectory
+A 0002a758 CeCreateDirectory
+A 0002a76c CeGetLastError
+A 0002a77c CeFindAllFiles
+A 0002a78c CeCloseHandle
+A 0002a79c CeWriteFile
+A 0002a7a8 CeReadFile
+A 0002a7b4 CeCreateFile
+A 0002a7c4 CeGetFileAttributes
+A 0002a7d8 CeRapiInvoke
+A 0002a7e8 CeRapiFreeBuffer
+A 0002a7fc CeRapiGetError
+A 0002a80c CeRapiUninit
+A 0002a81c CeRapiInitEx
+A 0002a82c rapi.dll
+A 0002a844 StitchFile
+A 0002a854 GetARTFileInformation
+A 0002a86c \temp\icon.bmp
+A 0002a87c GetARTFileThumbNail
+A 0002a890 UpdateFileSystem
+A 0002a8a4 Running
+A 0002a8ac QueryMachineState
+A 0002a8c0 HKEY_CLASSES_ROOT
+A 0002a8d4 HKEY_LOCAL_MACHINE
+A 0002a8e8 HKEY_CURRENT_USER
+A 0002a8fc AnsStop
+A 0002a904 error
+A 0002a90c disable
+A 0002a914 enable
+A 0002a91c UsbHostEnable
+A 0002a934 GetDiskFreeSpace
+A 0002a948 QueryCommands
+A 0002a958 debug.xml
+A 0002a964 faild to load XML string (please see debug.xml).
+A 0002ab1c _GetARTFileInformation@8
+A 0002ab38 _GetARTIcon@8
+A 0002ab48 aeslink.dll
+A 0002ab54 </xml>
+A 0002ab5c subject
+A 0002ab64 alphabet
+A 0002ab70 <%s value="%s"/>
+A 0002ab84 title
+A 0002ab8c no_colours
+A 0002ab98 <%s value="%d"/>
+A 0002abac no_stitches
+A 0002abb8 width
+A 0002abc0 <%s value="%f"/>
+A 0002abd4 height
+A 0002abdc <xml>
+A 0002ac10 Invalid Bitmap (CDib)
+A 0002ac28 Empty Bitmap (CDib)
+A 0002ac48 .PAVCException@@
+A 0002ac5c Failed to attach design. (CDib)
+A 0002ac7c Failed to AttachMemory (CDib)
+A 0002acb8 .PAVCObject@@
+A 0002acc8 Read error (CDib)
+A 0002acdc Write error (CDib)
+A 0002ad00 folder%d
+A 0002ad0c folder
+A 0002b128 Dirs |.*||
+A 0002b140 Show &Files also
+A 0002b15c &Selected:
+A 0002b168 &Type here:
+A 0002b174 MS Sans Serif
+A 0002b184 *.esb
+A 0002b18c *.exp
+A 0002b194 *.art
+A 0002b1a8 %d blocks
+A 0002b1b4 %d block
+A 0002b1c0 %d kB
+A 0002b1cc %6.2f mm
+A 0002b1e0 CDROMD
+A 0002b1e8 PCCARDD
+A 0002b1f0 INTERND
+A 0002b1fc  (ADX 
+A 0002b20c %d.%dMB
+A 0002b214 Select Directory
+A 0002b228 This feature is not supported yet.
+A 0002b24c  (folder)
+A 0002b25c start 
+A 0002b268 AcroExch.Document\shell\open\command
+A 0002b290 ADX.pdf
+A 0002b298 %.0f%%
+A 0002b2b4         
+A 0002b2c0 Viewer: NbOfColors out of scope
+A 0002b2e0 Alphabet
+A 0002b2ec Wrong Message Version
+A 0002b304 Wrong Magic Number
+A 0002b318 Could not stream all data
+A 0002b334 Could not stream header
+A 0002b34c Could not read data from stream. Too less data!
+A 0002b37c Could not read header from stream. Too less data!
+A 0002b3b0 Messenger Exception: %s. %s
+A 0002b3cc Local server did not receive a response from an authoritative server.
+A 0002b414 Database files (e.g. BSD-compatible HOSTS, SERVICES or PROTOCOLS files) could not be found, or a DNS request was returned by the server with a severe error.
+A 0002b4b4 The requested name is valid and was found in the database, but it does not have the correct associated data being resolved for.
+A 0002b534 no description available for LastError: %d
+A 0002b560 Host not found.
+A 0002b570 WINSOCK.DLL version out of range.
+A 0002b594 A successful AfxSocketInit must occur before using this API.
+A 0002b5d4 Graceful shutdown in progress.
+A 0002b5f4 Network subsystem is unavailable.
+A 0002b618 A socket operation was attempted to an unreachable host.
+A 0002b654 Attempt to connect timed out without establishing a connection.
+A 0002b694 The socket is already connected.
+A 0002b6b8 The attempt to connect was rejected.
+A 0002b6e0 No buffer space is available. The socket cannot be created.
+A 0002b71c Cannot send after socket shutdown.
+A 0002b740 Too many processes using sockets.
+A 0002b764 Socket is not connected.
+A 0002b780 Network dropped connection on reset. The connection has been broken due to 'keep-alive' activity detecting a failure while the operation was in progress.
+A 0002b81c Host is down.
+A 0002b82c Connection reset by peer.
+A 0002b848 An established connection was aborted by the software in your host machine, possibly due to a data transmission timeout or protocol error.
+A 0002b8d4 The network cannot be reached from this host at this time.
+A 0002b910 A destination address is required.
+A 0002b934 The specified address is not available from the local machine.
+A 0002b974 The specified address is already in use.
+A 0002b9a0 The socket is marked as nonblocking and no connections are present to be accepted.
+A 0002b9f4 The referenced socket is not a type that supports connection-oriented service.
+A 0002ba44 The descriptor is not a socket.
+A 0002ba64 The socket is not already bound to an address (Or host is unreachable).
+A 0002baac The lpSockAddrLen argument is too small (less than the size of a SOCKADDR structure).
+A 0002bb04 The specified socket type is not supported in this address family.
+A 0002bb48 The specified port is the wrong type for this socket.
+A 0002bb80 The specified port is not supported.
+A 0002bba8 Too many open sockets. No more file descriptors are available.
+A 0002bbe8 A blocking Windows Sockets operation is in progress.
+A 0002bc20 The specified address family is not supported.
+A 0002bc50 The Windows Sockets implementation detected that the network subsystem failed.
+A 0002bca0 Protocol family not supported.
+A 0002bcc0 Bad protocol option.
+A 0002bcd8 Message too long. A message sent on a datagram socket was larger than the internal message buffer or some other network limit.
+A 0002bd58 Operation already in progress.
+A 0002bd78 Permission denied.
+A 0002bd98 .PAVCUTSMessengerException@@
+A 0002bdc8 .?AVCNoTrackObject@@
+A 0002bde8 .?AVAFX_MODULE_STATE@@
+A 0002be08 .?AV_AFX_DLL_MODULE_STATE@@
+A 0002be38 .?AVtype_info@@
+A 0002be50 .?AV_com_error@@
+A 0002ecc0 ^	)^	)N
+A 0002ecd8 ^	)^	)K
+A 0002ed1c (^	)W
+A 0002ed9d "^	)\
+A 0002edcb ^	)^	)^	)^	)^	)^	)^	)^	)^	)^	)X
+A 0002ef07 '^	)g
+A 0002f0f8 .k <\
+A 0002f15e 8q)Dl"<i
+A 0002f1bd k}^	)i
+A 0002f751 3p(Ch
+A 0002f81a 3^	)e
+A 0002f82f 4p'Bh
+A 0002f877 8]	)`
+A 00030049 7y6N}<Tg
+A 00030270 /^	)e
+A 000302b1 CY]	)j
+A 0003043a /]	)P
+A 000304f4 9^	)m#=`
+A 00030524 ,m#=]
+A 000306dd };S]	)f
+A 00030855 (^	)Y
+A 000308a5 bux5NT
+A 00030cc2 Qez8P}<Tz8P
+A 00030d2a r+F}<T}<Ts,F
+A 00033d07 Bhtaaaqqq
+A 00033e3f ;k{Ycfmmm
+A 00033f7a Qdjgggwww
+A 000340b2 Ifpdddqqq
+A 000341ea Bht[ehnnn
+A 00034322 ;k{Rfljjj|||
+A 0003445d Jgpqqq
+A 0003a181 wwwwwwwwwx
+A 0003a18d wwwwwwwwwx
+A 0003a199 wwwwwwwwwx
+A 0003a1b1 p{{{{{{pwx
+A 0003a1e5 {{{pwx
+A 0003a1fd {{{pwx
+A 0003a211 p{{{{{{pwx
+A 0003a22e wwwwx
+A 0003a239 wwwwwx
+A 0003a241 wwwwwwwwwx
+A 0003a24d wwwwwwwwwx
+A 0003a259 wwwwwwwwwx
+A 0003a2e5 wwwwwwwwww
+A 0003a2f1 wwwwwwwwww
+A 0003a2fd wwwwwwwwww
+A 0003a323 {{{{{{
+A 0003a33b {p{{{{
+A 0003a36b {p{{{{
+A 0003a392 wwwww
+A 0003a39e wwwww
+A 0003a3a5 wwwwwwwwww
+A 0003a3b1 wwwwwwwwww
+A 0003a3bd wwwwwwwwww
+A 0003a461 wwwwwwwwwx
+A 0003a46d wwwwwwwwwx
+A 0003a493 xxxxxx
+A 0003a50e wwwwx
+A 0003a519 wwwwwx
+A 0003a521 wwwwwwwwwx
+A 0003a52d wwwwwwwwwx
+A 0003a539 wwwwwwwwwx
+A 0003bbfb i[mv\h^=IR1?=
+A 0003d720 ~|_@'
+A 0003dc5f tS	wV
+A 0003fe59 wwwwwwwwwx
+A 0003fe65 wwwwwwwwwx
+A 0003fe71 wwwwwwwwwx
+A 0003fe8b 33330wwx
+A 0003fea4 33330wx
+A 0003fef5 wwwwwwwp
+A 0003ff01 wwwww
+A 0003ff0d wwwwwp
+A 0003ff19 wwwwwwwwwx
+A 0003ff25 wwwwwwwwwx
+A 0003ff31 wwwwwwwwwx
+A 0003ff3d wwwwwwwwwx
+A 0003ffcd wwwwwwwwww
+A 0003ffd9 wwwwwwwwww
+A 0003ffe5 wwwwwwwwww
+A 00040047 wwwxw
+A 000400a5 wwwwwwwwww
+A 000400b1 wwwwwwwwww
+A 00040159 wwwwwwwwwx
+A 00040165 wwwwwwwwwx
+A 00040171 wwwwwwwwwx
+A 000401d1 pwwww
+A 00040231 wwwwwwwwwx
+A 0004023d wwwwwwwwwx
+A 000402d9 wwwwwwwwwx
+A 000402e5 wwwwwwwwwx
+A 00040399 wwwwww
+A 000403a5 wwwwwxwwwx
+A 000403b1 wwwwwwwwwx
+A 000403bd wwwwwwwwwx
+A 0004044d wwwwwwwwww
+A 00040459 wwwwwwwwww
+A 00040465 wwwwwwwwww
+A 00040471 wwwwwwww
+A 00040481 wwwwww
+A 000404c5 wwwwq
+A 0004050d wwwwwwwwww
+A 00040519 wwwwwwwwww
+A 00040525 wwwwwwwwww
+A 00040531 wwwwwwwwww
+A 000405d9 wwwwwwwwwx
+A 000405e5 wwwwwwwwwx
+A 000405f1 wwwwwwwwwx
+A 000405fd wwwwwwwq
+A 0004060d wwwwwx
+A 00040699 wwwwwwwwwx
+A 000406a5 wwwwwwwwwx
+A 000406b1 wwwwwwwwwx
+A 000406bd wwwwwwwwwx
+A 00040759 wwwwwwwwwx
+A 00040765 wwwwwwwwwx
+A 00040771 wwwwwwww
+A 00040781 wwwxwx
+A 00040819 wwwwwwwwwx
+A 00040825 wwwwwwwwwx
+A 00040831 wwwwwwwwwx
+A 0004083d wwwwwwwwwx
+A 000408cd wwwwwwwwww
+A 000408d9 wwwwwwwwww
+A 000408ea 37www
+A 00040986 w37ww
+A 00040992 wwwww
+A 0004099e wwwww
+A 000409a5 wwwwwwwwww
+A 000409b1 wwwwwwwwww
+A 00040a59 wwwwwwwwwx
+A 00040a65 wwwwwwwwwx
+A 00040a75 33wwwx
+A 00040b11 ws3wwx
+A 00040b1d wwwwwx
+A 00040b2a wwwwx
+A 00040b31 wwwwwwwwwx
+A 00040b3d wwwwwwwwwx
+A 00040bcd wwwwwwwwww
+A 00040bd9 wwwwwwwwww
+A 00040be5 wwwwwwwwww
+A 00040c60 pppwpDw
+A 00040c75 wwwppwwwDw
+A 00040c86 wwpDw
+A 00040c8d wwwwp
+A 00040c99 wwwwwwwwww
+A 00040ca5 wwwwwwwwww
+A 00040cb1 wwwwwwwwww
+A 00040d59 wwwwwwwwwx
+A 00040d65 wwwwwwwwwx
+A 00040d71 wwwwwwwwwx
+A 00040df8 ppwwtGx
+A 00040e06 wwtGx
+A 00040e0d wwwpwww
+A 00040e25 wwwwwwwwwx
+A 00040e31 wwwwwwwwwx
+A 00040e3d wwwwwwwwwx
+A 00042a61 r\ykNHcD<R1$V4(oSO
+A 00042e45 a>.7	
+A 00042e78 Z8	pU
+A 000430fa Q*	N'	0
+A 00048442 r\ykNHcD<R1$V4(oSO
+A 00048826 a>.7	
+A 00048859 Z8	pU
+A 00048adb Q*	N'	0
+A 0004d4ba i[mv\h^=IR1?=
+A 0004efdf ~|_@'
+A 0004f51e tS	wV
+A 000523bb ``g[[
+A 000532aa ``g[[
+A 00053721 wwwwwwwwwx
+A 0005372d wwwwwwwwwx
+A 00053739 wwwwwwwwwx
+A 00053745 wwwwwwwwwx
+A 00053755 wwwwwx
+A 00053761 wwwwwx
+A 000537b1 wwwwx
+A 000537bd wwwwx
+A 000537c9 wwwww
+A 000537d5 wwwww
+A 000537e1 wwwwwwwwwx
+A 000537ed wwwwwwwwwx
+A 000537f9 wwwwwwwwwx
+A 00053805 wwwwwwwwwx
+A 000538a1 wwwwwwwwwx
+A 000538ad wwwwwwwwwx
+A 000538b9 wwwwwwwwwx
+A 000538c5 wwwwwwwwwx
+A 000538d1 wwwwwwwwwx
+A 000538e1 wwwwwx
+A 000538e9 wwwwwwwwwx
+A 000538fa wwwwx
+A 00053931 wwwwp
+A 0005393d wwwwp
+A 00053949 wwwww
+A 00053955 wwwww
+A 00053961 wwwwwwwwwx
+A 0005396d wwwwwwwwwx
+A 00053979 wwwwwwwwwx
+A 00053985 wwwwwwwwwx
+A 00053a15 wwwwwwwwww
+A 00053a21 wwwwwwwwww
+A 00053a2d wwwwwwwwww
+A 00053a39 wwwwwwwwww
+A 00053a45 wwwwwwwwww
+A 00053a51 wwppwwwwww
+A 00053a5d wwwwwwwwww
+A 00053a69 wwppp
+A 00053a75 wwwwp
+A 00053a81 wwppp
+A 00053a8d wwwwp
+A 00053a99 wwwwp
+A 00053aa5 wwwww
+A 00053ab1 wwwww
+A 00053abd wwwwwp
+A 00053ac9 wwwwwp
+A 00053ad5 wwwwwwwwww
+A 00053ae1 wwwwwwwwww
+A 00053aed wwwwwwwwww
+A 00053af9 wwwwwwwwww
+A 0005abca uJpS?\9
+A 0005bcb9 uJpS?\9
+A 0005cd21 BhoW`c
+A 0005ce09 Gbh q
+A 0005d0be Jt}FekM
+A 0005d305 BX]Fw
+A 0005d4d5 4kB5C,//&mij
+A 0005d5d6 F1"#"
+A 0005d631 EagFy
+A 0005d740 )1+[ke
+A 0005de10 BhoW`c
+A 0005def8 Gbh q
+A 0005e1ad Jt}FekM
+A 0005e3f4 BX]Fw
+A 0005e5c4 4kB5C,//&mij
+A 0005e6c5 F1"#"
+A 0005e720 EagFy
+A 0005e82f )1+[ke
+A 00061ced zqwrjrmb^YKuod
+A 000621d3 kdVd\M
+A 00062241 sk\leUtnbupg
+A 000622b2 phXxqda]S
+A 00062322 yh`Rok_
+A 00062338 I?+:1
+A 0006233e <2 rl]
+A 00062391 rj]sm_faV
+A 000623ac UOCa[O}wk
+A 00062402 d\Mplaxtk
+A 00062470 ~wkjdW\WL
+A 000624e1 OG7kfZ
+A 00062b31 wwwwwwwwwx
+A 00062b3d wwwwwwwwwx
+A 00062b66 wxwwx
+A 00062b93 wwwwww
+A 00062ba9 wwwwwwx
+A 00062bd1 xwwxwx
+A 00062bf1 wwwwwwwwwx
+A 00062c02 wwwwx
+A 00062c09 wwwwwwwwwx
+A 00062c15 wwwwwwwwwx
+A 000642bb {s5. D>5
+A 00064413 93&PJ@WTLPLE]YQ
+A 00064569 xsj93'WSKWSKVRK52)qmh
+A 000646c2 92&PJBWSLWTLIF=C?:
+A 00064818 xtj93'WSKWSKSPI2,&
+A 00064971 81%PKCWSLWSL?=6YVO
+A 00064992 |wnYSHJD7@8+7/
+A 000649a1 IC6snd
+A 00064ac7 {wo82&XSKXSLOLE41)
+A 00064aee ZUKE>3KD9LF:LF;LE9HB5<6('
+A 00064c20 ;4)NJBXTLVRK63*wtn
+A 00064c4d @:2C<4@;3:6.73)3/$4/$50$%
+A 00064d78 }4."WSJWTLIF=B>9
+A 00064da6 lhayun
+A 00064dc4 c]V@<1
+A 00064ecf @:0LH>XTLSQJ0,%
+A 0006502b VRJWSLC>7SPJ
+A 0006517e QJ@HD9YUMOMF20(
+A 000652da VRJVSK74,roi
+A 00065433 ?:2JH?>:4
+A 00068fea kX\?hN
+A 00069699 wwwwwwwwwx
+A 000696a5 wwwwwwwwwx
+A 000696b1 wwwwwwwwwx
+A 000696bd wwwwwwwwwx
+A 000696c9 wwwwwwwwwx
+A 000696d5 wwwwwwwwwx
+A 000696e1 wwwwwwwwwx
+A 000696ed wwwwwwwwwx
+A 000696f9 wwwwwwwwwx
+A 00069705 wwwwwwwwwx
+A 00069711 wwwwwwwwwx
+A 0006971d wwwwwwwwwx
+A 00069729 wwwwwwwwwx
+A 00069735 wwwwwwwwwx
+A 00069741 wwwwwwwwwx
+A 0006974d wwwwwwwwwx
+A 00069759 wwwwwwwwwx
+A 00069765 wwwwwwwwwx
+A 00069771 wwwwwwwwwx
+A 0006977d wwwwwwwwwx
+A 0006ae4d }soi_YRGPK=xsj
+A 0006c3e7 ~ZRBldW
+A 0006c53e _VFoh[vpdtocSM>
+A 0006c697 XO>vpbvodvqe`[Q
+A 0006c7ed ibSkdVvqdvqfpk`c^T
+A 0006c946 VM<uobvpduqe_[Q
+A 0006ca9c zsgf^Pwqevqeoj`gaW
+A 0006cac3 H?.I@0PG7
+A 0006cbf5 XO>sm`vpdtpe^YO
+A 0006cc1c ;3#LE5IB2D;,4,
+A 0006cd4d {_XJvpdvqfmh^je\
+A 0006cd78 @;.mg]
+A 0006cea4 _WHoh\vqesod]XN
+A 0006cffd ZRCvpdvqfjeZtof
+A 0006d153 ibTleXwqfrmd]XN
+A 0006d2ac VO?uncvqed`V
+A 0006d408 mg[pkaa\R
+A 0006f095 wwwwwwwwww
+A 0006f0a1 wwwwwwwwww
+A 0006f0ad wwwwwwwwww
+A 0006f0d4 33330ww
+A 0006f0ed 33330w
+A 0006f131 wwwwwwww
+A 0006f13d wwwwwpwppw
+A 0006f149 wwwwww
+A 0006f155 wwwwwwwwww
+A 0006f161 wwwwwwwwww
+A 0006f16d wwwwwwwwww
+A 0006f179 wwwwwwwwww
+A 00072771 wwwwwwwwwx
+A 0007277d wwwwwwwwwx
+A 00072810 xxwwx
+A 0007283d wwwwwwwwwx
+A 00072849 wwwwwwwwwx
+A 00072855 wwwwwwwwwx
+A 000728d8 wwpww~
+A 00077480 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000774b4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000774e8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007751c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077550 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077584 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000775b8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000775ec wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077620 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077654 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077688 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000776bc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000776f0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077724 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077758 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007778c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000777c0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000777f4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077828 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007785c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077890 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000778c4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000778f8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007792c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077960 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077994 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000779c8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000779fc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077a30 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077a64 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077a98 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077acc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077b00 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077b34 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077b68 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077b9c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077bd0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077c04 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00077c38 wwwwwwwwwwwwwwwwp
+A 00077c54 wwwwwwwwwwwwwwwwwwwwww
+A 00077c6c wwwwwwwwwwwwwwwwxwwwwwwwwwwpwwwwwwwwwwwwwwwwwwwwww
+A 00077ca0 wwwwwwwwwwwwwwwwx
+A 00077cbd wwwwwwwwwwwwwwwwwwwww
+A 00077cd4 wwwwwwwwwwwwwwwwx
+A 00077cef ppwwwwwwwwwwwwwwwwwwwww
+A 00077d08 wwwwwwwwwwwwwwwwx
+A 00077d26 wwwwwwwwwwwwwwwwwwww
+A 00077d3c wwwwwwwwwwwwwwwwx
+A 00077d57 pppwwwwwwwwwwwwwwwwwwww
+A 00077d70 wwwwwwwwwwwwwwwwx
+A 00077d8b pppwwwwwwwwwwwwwwwwwwww
+A 00077da4 wwwwwwwwwwwwwwwwx
+A 00077dbf pppwwwwwwwwwwwwwwwwwwww
+A 00077dd8 wwwwwwwwwwwwwwwwx
+A 00077df3 pppwwwwwwwwwwwwwwwwwwww
+A 00077e0c wwwwwwwwwwwwwwwwx
+A 00077e27 pppwwwwwwwwwwwwwwwwwwww
+A 00077e40 wwwwwwwwwwwwwwwwx
+A 00077e5b pppwwwwwwwwwwwwwwwwwwww
+A 00077e74 wwwwwwwwwwwwwwwwx
+A 00077e8f pppwwwwwwwwwwwwwwwwwwww
+A 00077ea8 wwwwwwwwwwwwwwwwx
+A 00077ec3 pppwwwwwwwwwwwwwwwwwwww
+A 00077edc wwwwwwwwwwwwwwwwx
+A 00077ef7 pppwwwwwwwwwwwwwwwwwwww
+A 00077f10 wwwwwwwwwwwwwwwwx
+A 00077f2b pppwwwwwwwwwwwwwwwwwwww
+A 00077f44 wwwwwwwwwwwwwwwwx
+A 00077f5f pppwwwwwwwwwwwwwwwwwwww
+A 00077f78 wwwwwwwwwwwwwwwwx
+A 00077f93 pppwwwwwwwwwwwwwwwwwwww
+A 00077fac wwwwwwwwwwwwwwwwx
+A 00077fc7 pppwwwwwwwwwwwwwwwwwwww
+A 00077fe0 wwwwwwwwwwwwwwwwx
+A 00077ffb pppwwwwwwwwwwwwwwwwwwww
+A 00078014 wwwwwwwwwwwwwwwwx
+A 0007802f pppwwwwwwwwwwwwwwwwwwww
+A 00078048 wwwwwwwwwwwwwwwwx
+A 00078063 pppwwwwwwwwwwwwwwwwwwww
+A 0007807c wwwwwwwwwwwwwwwwx
+A 00078098 ppwwwwwwwwwwwwwwwwwwww
+A 000780b0 wwwwwwwwwwwwwwwwx
+A 000780cc ppwwwwwwwwwwwwwwwwwwww
+A 000780e4 wwwwwwwwwwwwwwwwx
+A 00078101 pwwwwwwwwwwwwwwwwwwww
+A 00078118 wwwwwwwwwwwwwwwwx
+A 00078135 pwwwwwwwwwwwwwwwwwwww
+A 0007814c wwwwwwwwwwwwwwwwx
+A 0007816a wwwwwwwwwwwwwwwwwwww
+A 00078180 wwwwwwwwwwwwwwwwx
+A 0007819e wwwwwwwwwwwwwwwwwwww
+A 000781b4 wwwwwwwwwwwwwwwwx
+A 000781d1 wwwwwwwwwwwwwwwwwwwww
+A 000781e8 wwwwwwwwwwwwwwwwwx
+A 00078205 wwwwwwwwwwwwwwwwwwwww
+A 0007821c wwwwwwwwwwwwwwwwwx
+A 00078238 wwwwwwwwwwwwwwwwwwwwww
+A 00078250 wwwwwwwwwwwwwwwwwwx
+A 0007826c wwwwwwwwwwwwwwwwwwwwww
+A 00078284 wwwwwwwwwwwwwwwwwwx
+A 0007829f wwwwwwwwwwwwwwwwwwwwwww
+A 000782b8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000782ec wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078320 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078354 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078388 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000783bc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000783f0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078424 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078458 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007848c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000784c0 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000784f4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDDwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007855c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078590 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000785c4 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000785f8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007862c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078660 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078694 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000786c8 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000786fc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007872f 1wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078764 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078798 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 000787cc wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078800 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 00078834 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww$
+A 00078868 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007889c wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+A 0007feb8 wwwfwwf
+A 000809c8 ^	)^	)P
+A 000809e0 ^	)^	)L
+A 00080a24 %^	)Z
+A 00080aa5  ^	)^	)O
+A 00080b11 2^	)V
+A 00080cc9 6^	)\
+A 00080f86 ^	)^	)L
+A 00081453 0^	)V
+A 00081531 /^	)X
+A 00081537 "x5Mg
+A 00081b13 9m$>_
+A 00081d2c Mc^	)j
+A 00081d6b `sq*Eh
+A 00081eeb ,^	)d
+A 00081f78 +^	)c
+A 00081fc9 ,^	)e
+A 000829ca i{y6N}<T|;Ry8P
+A 00082a32 o&@}<T}<Tv2K
+A 00087551 8]	)f
+A 00087736 5^	)]
+A 000886f2 Od{:R
+A 00088791 8o&@q)Dh
+A 000887a7 t/I{9Qk
+A 000887bb 9{9Qt/H
+A 00088810 r*Ew3Kg
+A 00088821 7r,Fy7Om$>
+A 00088bd3 1^	)Z
+A 00088c3e Sgl#=^	)j
+A 00088cb1 y6Ot/H
+A 00088d8f s,Gu0I
+A 0008940a ^q}=T
+A 00089410 BX~>U
+A 00089479 BXx4M
+A 0008eaa3 uusuusuusuus
+A 0008eab8 uusuusuusuus
+A 0008eaf5 uusuus
+A 0008eb0a uusuus
+A 0008eb41 uusuus
+A 0008eb56 uusuus
+A 0008eb87 uusuusuusuusuusuusuusuusuusuusuus
+A 0008ebd9 uusuusuus
+A 0008ebeb uusuusuus
+A 0008ec25 uusuusuusuusuus
+A 0008ec37 uusuusuus
+A 0008ec6e uusuusuus
+A 0008ec80 uusuusuus
+A 0008ecb1 uusuus
+A 0008ecbd uusuus
+A 0008eccc uusuus
+A 0008ecfd uusuus
+A 0008ed09 uusuus
+A 0008ed18 uusuus
+A 0008ed95 uusuus
+A 0008ede1 uusuus
+A 0008ee30 uusuus
+A 0008ee73 uusuus
+A 0008ee7f uusuus
+A 0008eebf uusuus
+A 0008eecb uusuus
+A 0008ef0e uusuusuusuus
+A 0008f2b4 * www
+A 0008f2f6 """"""*
+A 0008f8aa ww"""*
+A 000900a0 D>6>>>
+A 000900b1 5 ,3IGGIBB9@(+
+A 000900cd  82=BB@3+#6.
+A 000900e0 ;,IVVVNNGGB=
+A 000900fc ,IVNNNIB7'%(
+A 0009010f A7VVVVVVNNG=
+A 0009012f VVNN2=C #%!
+A 00090146 VVNG+GJCC1
+A 00090165 CC8+%
+A 0009017b RA888,3%
+A 00090192 N+G88#%%
+A 000901ab H'8##
+A 0009026d 			1'
+A 0009027d !ioql^%
+A 000902ad %tqqqquf%
+A 000902c5 nif^%
+A 000902dc 3!qrsuuut|wg
+A 00090319 ZZZMMM
+A 00090326 ~irrrsl[
+A 00090358 tuuuuuvb
+A 000904eb SCC`dy
+A 0009051d VJO`88`
+A 00090551 3?@`1
+A 00090582 3333994
+A 00090625 188`h
+A 00090654 NG@A;888#`dy
+A 00090683 22222GR?=7'
+A 000906b8 22222B<<4%
+A 000906ed 22222
+A 00090e52 5118  
+A 00090e63 6188 666
+A 00090e70 1@NNIB@342 .
+A 00090e81 ;@NGG@'2+
+A 00090e8f ;VVVVNG2'1
+A 00090ea4 VG3J8,%
+A 00090eb4 VN7IC8'%
+A 00090ed4 VB(388'%
+A 00090f01 ;%%44%
+A 00090f62 buuuuuva
+A 00090f94 ~iuslb
+A 00091063 G@A7h
+A 000910f4 3A',`dy_ 
+A 00091113 222224(%
+A 000916a9 TV@'5T
+A 000916b1 B=' T
+A 00091730 1AAyT
+A 00091ca1 G//gEE
+A 00091cba ^^cBB>**
+A 00091cf5 9&&7$$_??J225##*
+A 00091d28 1!!xQQ
+A 00091d53 ||nJJ
+A 00091d9a rQQ3""
+A 00091de9 zzS88
+A 00092112 ;t;rrrnnn
+A 000921a8 /^.nee
+A 0009223b A=4qQQ
+A 000922cc t	L55
+A 000923ce \\wAAG$$
+A 00092460 ZB-\;7J&&
+A 0009253c SSQ((
+A 00092a4f xrE))
+A 00092adf ssF**
+A 0009362b 4##]CC
+A 0009363e ee_BB(
+A 0009366e kkZBB
+A 000936a7 qq>**
+A 00093865 ;t;wuur[[
+A 000938e7 kkP;;
+A 00093944 ``D!!
+A 00093977 f`a66
+A 000939a4 \\H!!
+A 00093a0a UUC""
+A 00093a51 #f	nQ
+A 00094650 """"""(
+A 0009465b """"""""""
+A 0009466c """"""""(
+A 0009467d """"""(
+A 0009468e """""
+A 0009469e """"!
+A 0009480d """""!
+A 0009481d """"""!
+A 0009482c """"""""
+A 0009483b """"""""""!
+A 0009484a """"""
+A 00094ade """"!
+A 00094fc3 mPpppPmm}
+A 00094ff0 pggggppppppppP}
+A 0009501e ggggggggggggggppppm
+A 0009504c AAgAAAAAAAAAAAAggggppp}
+A 0009507b AAAAAccccccccccAAAAgggppm
+A 000950a9 |AAAcccffffffffffccccAAgggpp}
+A 000950d8 ccccccffffMMMMMMMfffffccAAgggg}
+A 00095107 ccccfffMMMMMMMaaMMMMMMfffccAgggg}
+A 00095137 ccffMMMMaaaaaaaaaaaaMMMMfffcAAggp
+A 00095166 ffffMMa
+A 0009516f aFFFFFFFFFFaaaa
+A 00095181 ffccAggP
+A 00095195 fffMMaa
+A 000951a0 FFFFFFFFFFFFF
+A 000951b2 MfccAAA}
+A 000951c5 MMMaaF
+A 000951d1 EEEEEEEEEEF
+A 000951e3 MffcAAg
+A 000951f4 MMaaFF
+A 00095202 EEEEEEEEE
+A 00095214 MffcAAm
+A 00095224 aaaFF
+A 00095233 ZEEEEEE
+A 00095244 aMMfcAA
+A 00095253 aaFFFEE
+A 00095264 ZZZZZ
+A 00095273 wFaMffcc}
+A 00095283 aFFEEZZZ
+A 000952a2 zEFaaMfccg
+A 000952b2 FFFEEZZWWW
+A 000952d1 zEEEFFaMfcc
+A 000952e2 FFEEZZWWWWW
+A 00095301 ZZZEEFaMMff}
+A 00095312 EEzZZWW77777
+A 00095330 ZZZZZEEFaMffP
+A 00095342 zzZWW77777777
+A 0009535f WWWWWZZEEFaMfg
+A 00095375 W77yyyUU777
+A 0009538d vWWWWWWWZZEFaMMc
+A 000953a4 vrryyyUUU7777
+A 000953bc r77WWW7WWWZZEFaMf
+A 000953d2 vvrryyxxxUUUUUU
+A 000953ec 7777W7777WWZEFaMM
+A 00095402 vvryxxxxxxUUUU
+A 0009541d 777777777WWZEFaM
+A 0009543a ux-UU
+A 0009544e 777UUyyr7WZEwaf
+A 0009547f 7UUUyyyrvZzww|
+A 000954b0 UUxxxyrrv
+A 000954e1 xxxxxyrv
+A 00095534 xCCC-
+A 00095563 xCCCCCC
+A 00095592 uCCCCCCCC
+A 000955c2 TTTCCCCCTT
+A 000955f3 tTTTTTTTt
+A 00095e24 RQPPQRa
+A 00095e41 PBACDDEEEDDQh
+A 00095e5f O]@CCCCBBCDEFDCPh
+A 00095e7e <>AA??>===>@@BDFDDa
+A 00095e9d Y>?><;989889:;>@BDFAR
+A 00095ebc X]=;<:744444568:?@@CF@`
+A 00095edb W[;89
+A 00095ee2 72JIIJJ348
+A 00095eee @@BD@h
+A 00095f03 3000M013
+A 00095f0f >=A@E
+A 00095f24 1....1
+A 00095f30 ;<@\`
+A 00095f50 47[]^
+A 00095f59 t{N.)/
+A 00095f6f J13Z\Zh
+A 00095f79 {~dcHG+
+A 00095f8e .+/I48YQ
+A 00095f99 ~}lrpU"*
+A 00095fad ,()LeIYY_
+A 00095fbb qxwvG!)
+A 00095fcc )''VbLMWgY
+A 00095fde |T#!(
+A 00095feb (%&&qqbdNf~
+A 0009600b &$%Uooqkezs
+A 000966b5 oE)+,
+A 000966c3 ['$$#%&(4
+A 00096730 jJLAc
+A 0009673a s0CF^
+A 00096761 U]etiXQSY`VNU
+A 00096777 }yndUU
+A 00096795 UUUUU
+A 00097d35 ddo@@
+A 00098dec ``g[[
+A 00099e86 gT[`im
+A 00099eb4 UILTT[`m
+A 00099ee2 bDB7ILTT[^
+A 00099f11 G<<>B7ILTT^
+A 00099f40 =89<<>B7ILTZ
+A 00099f6f @9889<<>B7ILO
+A 00099f9e Q><9889<<>B7IO
+A 00099fcd oB>><9889<<>B7KSS_____
+A 00099ffd MCB>><9889<<>B7ILTT[`i
+A 0009a02c dL7CB>><9889<<>B7ILTT[`
+A 0009a05c TLL7CB>><9889<<>B7ILTTw
+A 0009a08b s[TLL7CB>><9889<.!
+A 0009a0bb e`[TLL7CB>><984
+A 0009a0eb cc`[TLL7CB>><6
+A 0009a10c p>8888Y
+A 0009a11b icc`[TLL7CB>7
+A 0009a12c *<<>)
+A 0009a13a [8888888?
+A 0009a14a znicc`[TLL7CB'
+A 0009a15a #8Alxx
+A 0009a167 p>888888888:
+A 0009a17a wpnicc`[TLL7T
+A 0009a196 C888888888888
+A 0009a1aa }wpnicc`[TLL}
+A 0009a1c6 i888888888888x
+A 0009a1da }}wpnicc`[TL
+A 0009a1f7 888888888888x
+A 0009a20a B55>>>>><<<<
+A 0009a227 >>5BCC7IILLT
+A 0009a23a 888888888888}
+A 0009a257 7ILTT[`iinpw
+A 0009a26a 888888888888c
+A 0009a286 nB7ILTT[`iinp
+A 0009a29a :88888888888C
+A 0009a2b6 7>B7ILTT[`iin
+A 0009a2ca ?888888888I}
+A 0009a2e5 -<<>B7ILTT[`it
+A 0009a2fa N8888889c
+A 0009a30c  7CB(
+A 0009a315 99<<>B7ILTT[`|
+A 0009a32a ~8888T}
+A 0009a344 6889<<>B7ILTT[
+A 0009a372 $5<9889<<>B7ILT\
+A 0009a3a0 &2B>><9889<<>B7ILg
+A 0009a3cb c`[TLL7CB>><9889<<>B7I
+A 0009a3fa }cc`[TLL7CB>><9889<<>BX
+A 0009a42a nicc`[TLL7CB>><9889<<D
+A 0009a45a pnicc`[TLL7CB>><9889<l
+A 0009a489 }wpnicc`[TLL7CB>><988R
+A 0009a4b9 }}wpnicc`[TLL7CB>><9G
+A 0009a4ea }}wpnicc`[TLL7CB>>J
+A 0009a51b }}wpnicc`[TLL7CBV
+A 0009a54c }}wpnicc`[TLLPv
+A 0009a57d }}wpnicc`[Wj
+A 0009a5ae }}wpnicfu
+A 0009aca7 hKNR[b
+A 0009acc6 G>BENR]
+A 0009ace5 @:<>BENW
+A 0009ad04 L=;;<>BEO
+A 0009ad23 gD?=;;<>DFQUZcl
+A 0009ad43 SHD?=;;<>DENV[}
+A 0009ad62 pRNHD?=;;<>*$&1
+A 0009ad82 e[RNHD?=;,
+A 0009ada2 ja[RNHD?.
+A 0009adb7 R:::A
+A 0009adc2 tj_[RNH9
+A 0009add3 'n?::::::
+A 0009ade2 vtj_[RN0
+A 0009adf3 '::::::::|
+A 0009ae02 yvtj_[R-
+A 0009ae14 ::::::::x
+A 0009ae21 A:::::::2
+A 0009ae34 BEHNR[_d
+A 0009ae41 A:::::::0
+A 0009ae53 (DENV[dnu
+A 0009ae61 P::::::?0
+A 0009ae73 5?DENV[dn
+A 0009ae81 k::::R
+A 0009ae93 7<?DENV[o
+A 0009aeb2 3;;<?DENVw
+A 0009aed0 %B?=;;=?DEN
+A 0009aeec t_[RNEB?=;;=?D\
+A 0009af0c td_[RNEB?<;;=C
+A 0009af2c vtd_[RNEB?<;;s
+A 0009af4b ~yvtd_[RNEB?<i
+A 0009af6c }yvnd_[RNEBr
+A 0009af8d }yvnd_[RX
+A 0009afae }yvndf{
+A 0009b4a8 zzzzzlltvtmmzzzzzzzzpTKHS_xwmzzzzzzI538?ELdnyqzzzzC"'.38?NbcgymzzQ+!
+A 0009b4ed '.38Ybbcnwzh</)!
+A 0009b501 bbbbVxkh;4/)
+A 0009b516 DrP>;47
+A 0009b526 :u9&$#2
+A 0009b532 1%(*=r@
+A 0009b542 ..38Qk\
+A 0009b553 '.3]kzZbbbb
+A 0009b564 '6ozzicbb`>;4/)!"MzzzzjcbUB>;4/+CzzzzzzieRJB>;<Xzzzzzzzzzf^[Wazzzzzz
+A 0009bc2c 222cZZZ
+A 0009bce8 555\bbb
+A 0009bda4 111Cccc
+A 0009be60 ,,,%]]]
+A 0009bfdc QQQefff
+A 0009c2d4 [[[Zfff
+A 0009c510 XXX8fff
+A 0009c5d0 ```wfff
+A 0009cbd0 dddbfff
+A 0009cc90 fff0fff
+A 0009ced4 fffPfff
+A 0009d058 fff`fff
+A 0009d1dc fff@fff
+A 0009d738 fff@fff
+A 0009d800 fff`fff
+A 0009d8c8 fff@eee
+A 0009d994 fff0dddbccc
+A 0009d9b8 ___gYYY7
+A 0009dc99 $$$+++
+A 0009dcf0 ***IIIfffyvvsmm
+A 0009dd4d VVVpmm
+A 0009dda7 BBBbbb
+A 0009de04 CCCpll
+A 0009de61 JJJpmm
+A 0009debe FFFccc
+A 0009df7b ZZZyuu
+A 0009e038 PPPfff
+A 0009e17f XXXOOOdddppp
+A 0009e1ad yy"""
+A 0009e29f WWW   777fff
+A 0009e2cc pnn###
+A 0009e398 fffpll
+A 0009e449 pnn'''
+A 0009e45b eeeyyy
+A 0009e4bb ffffff
+A 0009e506 pmm,,,
+A 0009e51e fffppp
+A 0009e581 fffppp
+A 0009e5e4 fffppp
+A 0009e620 ccc888
+A 0009e647 fffppp
+A 0009e67b {{^^^###
+A 0009e6aa ffffffyyy
+A 0009e6d7 fffXXX
+A 0009e70d ffffffeeepoo
+A 0009e72f ~~ddd^^^GGG
+A 0009e776 fffdddddddddccccccccc___]]]GGG
+A 0009e8e8 )))Opii
+A 0009e99f L\\\j
+A 0009eb1f LfffP
+A 0009ebe8 fff sss
+A 0009ec30 fffPsss
+A 000a02b2 wwwwp
+A 000a02c9 wwwwwwp
+A 000a03d5 wwwwx
+A 000a03f2 wwwwp
+A 000a0402 wwwwp
+A 000a0418 wwwwx
+A 000a0424 wwwwww
+A 000a0434 wwwwwp
+A 000a0468 wwwwww
+A 000a0477 wwwwwww
+A 000a0485 wwwwww
+A 000a04c8 wwwww
+A 000a1392 wwwwp
+A 000a13a9 wwwwwwp
+A 000a14b5 wwwwx
+A 000a14d2 wwwwp
+A 000a14e2 wwwwp
+A 000a14f8 wwwwx
+A 000a1504 wwwwww
+A 000a1514 wwwwwp
+A 000a1548 wwwwww
+A 000a1557 wwwwwww
+A 000a1565 wwwwww
+A 000a15a8 wwwww
+A 000a17c8 wwwwwwwwwwwww
+A 000a17d6 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwp
+A 000a17fa wwwwwwwwwww
+A 000a1810 wwwwwwwwwwwwwww
+A 000a182a wwwwwwwww
+A 000a1840 wwwwwwwwww
+A 000a184b wwwww
+A 000a185b wwwwwwww
+A 000a1870 wppwwwwwwq
+A 000a188b wwwwwwww
+A 000a18a0 wwwwwwwwwq
+A 000a18bc wwwwwww
+A 000a18d5 wwwww
+A 000a18e6 wwwwp
+A 000a18ec wwwwwww
+A 000a1905 wwwwwq
+A 000a1916 wwwww
+A 000a191d wpwww
+A 000a1936 wwwww
+A 000a1946 wwwwwp
+A 000a1959 wwwxw
+A 000a1966 wwwwwq
+A 000a1976 wtwwww
+A 000a19a7 Dwwwwp
+A 000a19bf wwwww
+A 000a19d2 pppwpDwwwwp30w
+A 000a1a05 wwDwwww
+A 000a1a20 wwwwp
+A 000a1a30 wwppwwwDwww
+A 000a1a50 wwwwp
+A 000a1a64 wwpDwwwp
+A 000a1a73 wwwww
+A 000a1a80 wwwwwwwwwwwwwwwwwwwp
+A 000a1a97 Dwwwwwwwwww
+A 000a1aa3 wwwww
+A 000a1ab0 wwwwwwwwwwwwwwwwwwwwwwww(
+A 000a1b52 3333333333330
+A 000a1c51 333333333337
+A 000a1c62 xwwHt
+A 000a2330 X10*JJJ
+A 000a2360 X1Y1110*)JJ
+A 000a2393 YYYY2110**JJJ
+A 000a23c3 YYYYYYYY21110*JJJ
+A 000a23f3 YYYYYYYYYYYYS1110*JJJ
+A 000a2423 YYYYYYYYYYYYYYYYY2110*)JJJ
+A 000a2453 YYYYYYYYYYYYYYYYYYYYY2110**JJ
+A 000a2483 ^^^^^^^^^^^^^^^^^^^^^^^^YY11*
+A 000a24b4 ^^^^^^^^^^^^^^^^^^^^^^^^^^S0J
+A 000a2782 Y1111Y
+A 000a27b5 ^YY1111R
+A 000a287f ^YY11111RY
+A 000a28b6 ^YY1111RR
+A 000a2912 X1111YY
+A 000a2949 XR111R
+A 000a2996 XR1111
+A 000a4d28 RIFFN.
+A 000a4d30 AVI LIST
+A 000a4d3c hdrlavih8
+A 000a4d88 strlstrh8
+A 000a4d94 vidsmrle
+A 000a4dcc strf(
+A 000a5204 PC-_06~3.AVI Video #1
+A 000a5d24 movi00db<
+A 000a677a 00dcv
+A 000a6af0 00dc|
+A 000a6cc8 00dbv
+A 000a7962 00dc|
+A 000a7d30 AVI LIST
+A 000a7d3c hdrlavih8
+A 000a7d88 strlstrh8
+A 000a7d94 vidsmrle
+A 000a7dcc strf(
+A 000a8204 STM-_0~1.AVI Video #1
+A 000a8d1c LIST$
+A 000a8d24 movi00db
+A 000a9720 00dcv
+A 000a9c64 00db(
+A 000aa8ba 00dc|
+A 000aab30 AVI LIST
+A 000aab3c hdrlavih8
+A 000aab88 strlstrh8
+A 000aab94 vidsmrle
+A 000aabcc strf(
+A 000ab004 PC-_06~1.AVI Video #1
+A 000abb1c LIST~
+A 000abb24 movi00dbx
+A 000ac4a0 00dcp
+A 000ac7fa 00dc|
+A 000ad09e 00dc,
+A 000ad51a 00dcv
+A 000ad928 RIFF0+
+A 000ad930 AVI LIST
+A 000ad93c hdrlavih8
+A 000ad988 strlstrh8
+A 000ad994 vidsmrle
+A 000ad9cc strf(
+A 000ade04 NM-_06~1.AVI Video #1
+A 000ae924 movi00db
+A 000af22c 00dcv
+A 000af770 00dbL
+A 000afdc4 00dc$
+A 000b024a 00dc|
+A 000b0528 RIFFR,
+A 000b0530 AVI LIST
+A 000b053c hdrlavih8
+A 000b0588 strlstrh8
+A 000b0594 vidsmrle
+A 000b05cc strf(
+A 000b0a04 PC-_06~2.AVI Video #1
+A 000b1524 movi00dbD
+A 000b16e4 +++,,12zV+1
+A 000b1752 +UU+,2
+A 000b17c1 zyzzz+++
+A 000b17ed zUyUzz
+A 000b181c OUOy12]O+
+A 000b1856 22V22z1
+A 000b1889 +88821\2+82+
+A 000b18ba +112888+
+A 000b1e66 00dcv
+A 000b21cc 00dc|
+A 000b256c ,12zV
+A 000b2740 1\2+82+
+A 000b2a34 00dc\
+A 000b3328 RIFFf+
+A 000b3330 AVI LIST
+A 000b333c hdrlavih8
+A 000b3388 strlstrh8
+A 000b3394 vidsmrle
+A 000b33cc strf(
+A 000b3804 SKG-_0~1.AVI Video #1
+A 000b4324 movi00db
+A 000b44ae +++,,12zV+1
+A 000b450c +UU+,2
+A 000b4579 zyzzz+++
+A 000b459f zUyUzz
+A 000b45c8 OUOy12]O+
+A 000b45f0 22V22z1
+A 000b4621 +88821\2+82+
+A 000b4650 +112888+
+A 000b4c0e 00dcv
+A 000b52e4 ,12zV
+A 000b5440 1\2+82+
+A 000b577c 00dcr
+A 000b58f6 00dc,
+A 000b5d1e idx1p
+A 000b8017 2#2:2J2P2Z2
+A 000b8031 3%3+353t3z3
+A 000b8049 4V4\4f4
+A 000b805b 4?5E5O5
+A 000b8069 5#6N6Y6j6~6
+A 000b808d 707;7T7^7
+A 000b80a5 8 848?8V8o8u8
+A 000b80c1 8,969J9P9
+A 000b80d5 :8:B:o:y:
+A 000b80e9 ;!;+;b;s;
+A 000b80f7 =\=`=d=h=l=p=
+A 000b8119 ?%?8?<?@?D?S?
+A 000b8137 0 0$090`0
+A 000b8147 1(191A1G1
+A 000b8151 2z2?3
+A 000b8157 4G4M4c4|4
+A 000b8165 575B5_5|5
+A 000b817b 6.6K6V6s6
+A 000b8191 7p7t7x7|7
+A 000b81c1 758:8M8`8s8
+A 000b81d1 8X9d9
+A 000b81e1 :":C:
+A 000b81f1 <1<<<h<
+A 000b81fb =T=z=
+A 000b8215 3$3Y3n3
+A 000b8231 6,7Y7
+A 000b8237 798\9c9
+A 000b8245 :$;Y;
+A 000b824f <W=|>
+A 000b8275 2c3[4
+A 000b827d 5C5b5w5
+A 000b8293 6)6j6
+A 000b82a3 828L8
+A 000b82ad 9/9F9
+A 000b82bf : :[:
+A 000b82d3 ?:?X?
+A 000b82fd 4W4%7`7
+A 000b830d 909u9
+A 000b8321 ;X;v;
+A 000b832b ;G<r<
+A 000b8341 >%?E?
+A 000b836d 4C4W4
+A 000b838b 6[6l6t6
+A 000b83af 7%7*747=7B7L7V7[7e7o7t7~7
+A 000b83ed 8 8*84898C8M8R8\8e8j8t8~8
+A 000b8427 9)9W9
+A 000b8433 92:g:Y;u;
+A 000b8457 >@>R>y>
+A 000b8481 0r1y1
+A 000b8487 2]2z2
+A 000b84a3 3P4\4
+A 000b84a9 4%6,6
+A 000b84af 7&7;7M7
+A 000b84d5 ;i<r<
+A 000b84db <E=]=f=
+A 000b84eb >D?^?
+A 000b8505 101h1
+A 000b8529 879C9
+A 000b8531 :_:k:
+A 000b853b :&;@;
+A 000b8545 ;C<p<
+A 000b8551 <C=J=f=s=
+A 000b855b =K>P>V>
+A 000b8575 070O0X0
+A 000b8589 2$363Y3
+A 000b8595 3)4r4
+A 000b85a7 5G6a6
+A 000b85b1 6-747	8T8n8
+A 000b85cf :2:C:_:
+A 000b85d7 :3;O;
+A 000b85dd ;i=i>
+A 000b85e5 ?;?s?
+A 000b85fb 0!1+1
+A 000b8615 4d5U6
+A 000b8627 7/7=7{7
+A 000b8637 7%8+898
+A 000b8643 9S:z:
+A 000b864d :9;c;
+A 000b8655 ;,<=<Z<
+A 000b8671 >&?2?
+A 000b8685 0^0j0}0
+A 000b8697 1I3g3m3
+A 000b86ab 4Y5}5
+A 000b86b1 556L6[6j6v6
+A 000b86cb 8\9c9
+A 000b86dd <(<A<N<
+A 000b86f5 =.=8=J=V=_=
+A 000b870d >!>D>I>n>s>
+A 000b8727 ?<?a?u?
+A 000b873d 0;0G0k0
+A 000b875b 112T2
+A 000b8761 283<3@3D3H3L3Y3p3
+A 000b8775 3#4\4y435
+A 000b8787 5C6_6v6
+A 000b8793 7$767v7)8;8f8
+A 000b87a3 9U9\9
+A 000b87ab 9V:v:
+A 000b87b9 ;m<w<
+A 000b87c1 =H=L=P=T=X=
+A 000b87cf =K>U>p>
+A 000b87e7 132O2a2
+A 000b8809 6N7X7
+A 000b880f 7#:l:
+A 000b8835 5(6\6`6d6h6l6p6t6
+A 000b8847 627Z7
+A 000b884f 819y9F:K:(;/;5;#<
+A 000b8867 >@?b?
+A 000b887d 0$1C1J2
+A 000b8885 203s3
+A 000b888b 3#4?4
+A 000b8893 5#6R6o6
+A 000b88a7 8*99:
+A 000b88bd =;>J>0?H?
+A 000b88d7 1#1E1
+A 000b8903 :	;	<
+A 000b8909 <B=c=!?1?A?R?X?
+A 000b8929 0s1m2
+A 000b8931 383}3
+A 000b8939 3&4k4
+A 000b8957 94:8:<:@:D:H:
+A 000b896d ;);O;U;_;{;
+A 000b8987 <1<><
+A 000b899b >1>=>u>
+A 000b89c1 213N3
+A 000b89cd 4!414C4}4
+A 000b89dd 5%575F5
+A 000b89e9 6E6]6
+A 000b89f3 677m7
+A 000b89ff 8*8A8X8c8
+A 000b8a1f :":3:O:e:
+A 000b8a29 :1;[;
+A 000b8a47 >>>E>T>
+A 000b8a55 ?6?E?z?
+A 000b8a71 071\1
+A 000b8a79 1)2D2{2
+A 000b8aa9 6,696A6W6m6
+A 000b8abb 707>7Q7_7r7
+A 000b8ae1 ;=;Y;
+A 000b8aef <==W=q=
+A 000b8af7 =Q>c>
+A 000b8b1b 2L3P3T3X3\3`3
+A 000b8b37 5#6:6
+A 000b8b3f 6#7:7
+A 000b8b47 7#8:8
+A 000b8b5d ;Y<v<B=s=
+A 000b8b83 3"333
+A 000b8b97 8c9U:x:c;3<4=
+A 000b8ba7 >/>Z>
+A 000b8bc1 0+151i1
+A 000b8bd3 3)3W3y3
+A 000b8bdb 3!4Y4
+A 000b8bf9 9):k:
+A 000b8bff ;i;C<
+A 000b8c23 091f1{1
+A 000b8c2f 2s3d6k6
+A 000b8c3d <3<a<o<
+A 000b8c49 =k=v=
+A 000b8c51 ='>;>]>
+A 000b8c7f 1s2S4
+A 000b8c8b 5M5`5n5
+A 000b8cb3 :F;s;
+A 000b8cdb 3b3/4S5
+A 000b8cf7 ;H;O;
+A 000b8d0d ?#???
+A 000b8d20 20A0Q0c0
+A 000b8d29 0-181
+A 000b8d39 2p2|2
+A 000b8d47 2>3e3
+A 000b8d55 4B4L6u6
+A 000b8d5d 6/797b7s7
+A 000b8d6f 8/9C9
+A 000b8d7f ;9<d<
+A 000b8d85 <L=]=
+A 000b8d95 ?/?F?w?
+A 000b8db1 1U1z1
+A 000b8dcd 5H6O6k6#7?7
+A 000b8dd9 7%8c8
+A 000b8de1 8(959[9F:x::;
+A 000b8def <b<g<
+A 000b8dfd =#>?>
+A 000b8e27 596J6c6
+A 000b8e39 9):s:
+A 000b8e67 <&<0<:<D<N<X<b<
+A 000b8e91 ='=.=5=<=X=h=o=v=
+A 000b8ecf >H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 000b8ef3 ?)?r?
+A 000b8f37 0$0*00060<0B0H0N0T0Z0`0f0l0r0x0~0
+A 000b8f8b 1 1&1,12181>1D1J1P1V1\1b1h1n1t1z1
+A 000b8fe1 2"2(2.242:2@2F2L2R2X2^2d2j2p2v2|2
+A 000b9037 3$3*30363<3B3H3N3T3Z3`3f3l3r3x3~3
+A 000b908b 4 4&4,42484>4D4J4P4V4\4b4h4n4t4z4
+A 000b90e1 5"5(5.545:5@5F5L5R5X5^5d5j5p5v5|5
+A 000b9137 6$6*60666<6B6H6N6T6Z6`6f6l6r6x6~6
+A 000b9173 7!7-7f7
+A 000b917f 8O8a8
+A 000b9193 9\9b9h9v9~9
+A 000b91b9 :,:>:
+A 000b91f1 <Y=y=
+A 000b91f9 =!>9>p>
+A 000b9203 ?@?i?
+A 000b9219 0C1i1
+A 000b9225 2(3I3i3H6z6
+A 000b9235 7<7d7
+A 000b9241 8)8b8
+A 000b924b 9	:):Q:q:
+A 000b9257 :!;i;
+A 000b9263 <!<i<
+A 000b926d <	=,=L=|=
+A 000b927d >9>\>y>
+A 000b928b >)?I?
+A 000b929c 	030T0t0
+A 000b92ab 0	1!111U1a1{1
+A 000b92c9 4)5Q5
+A 000b92d3 6a6|6
+A 000b92df 7T7i7
+A 000b92ef 819Y9
+A 000b92fb :1:I:i:
+A 000b9303 :C;a;
+A 000b9317 <]=y=
+A 000b9339 2	3)3I3i3
+A 000b934b 494Y4y4
+A 000b9363 696a6
+A 000b9371 617Q7i7
+A 000b9387 <)<a<y<
+A 000b939f ?G?a?y?
+A 000b93bb 191Y1
+A 000b93c7 222T2l2
+A 000b93db 494Y4y4
+A 000b942f 8 8$8(8,8084888<8@8D8H8L8P8T8X8
+A 000b947f 949P9T9X9\9`9d9h9l9p9t9x9|9
+A 000b94e9 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:
+A 000b9531 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;h;l;x;|;
+A 000b959d < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 000b961d = =$=(=,=0=4=8=<=@=D=H=L=P=T=X=\=`=d=h=l=p=t=x=|=
+A 000b969d > >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+A 000b9707 ? ?$?(?,?0?4?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+A 000b978f 0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0|0
+A 000b980f 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 000b988f 2 2$2(2,2024282<2@2D2H2L2P2X2\2
+A 000b98fd 3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 000b997b 4 4$4<4T4l4
+A 000b9993 5,5D5\5t5
+A 000b99a9 646L6d6|6
+A 000b99bd 7$7<7T7l7
+A 000b99d3 8,8D8\8t8
+A 000b9a05 9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+A 000b9a85 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+A 000b9b05 ; ;$;(;,;0;4;8;<;@;D;H;L;P;T;X;\;`;d;|;
+A 000b9b47 < <$<(<,<0<4<8<<<@<D<H<L<P<T<X<\<`<d<h<l<p<t<x<|<
+A 000b9ba9 =4=L=d=|=
+A 000b9bbd >$><>T>l>
+A 000b9bd3 ?,?D?\?t?
+A 000b9bf3 040L0d0|0
+A 000b9c2b 1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+A 000b9c8b 2 2$2(2,2024282<2@2D2H2L2P2T2X2\2`2d2h2l2p2t2x2|2
+A 000b9cef 3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+A 000b9d67 4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4|4
+A 000b9dc7 5054585L5\5`5h5
+A 000b9deb 6$6,646<6D6L6T6\6h6
+A 000b9e19 7$7,747<7D7L7X7t7|7
+A 000b9e3f 8 8<8D8L8T8\8d8l8t8
+A 000b9e67 9 9<9H9d9l9t9|9
+A 000b9e91 :$:,:4:<:D:L:T:\:|:
+A 000b9ebd ;$;0;L;T;\;d;l;t;|;
+A 000b9ee5 <$<,<4<<<D<P<l<t<|<
+A 000b9f13 =$=,=4=<=D=L=T=`=|=
+A 000b9f41 >$>,>4><>D>L>T>\>d>l>t>|>
+A 000b9f81 ?$?,?4?<?D?L?T?\?d?l?t?|?
+A 000b9fb9 0$000L0T0\0d0l0t0|0
+A 000b9fdf 141<1D1L1T1\1d1l1x1
+A 000ba003 2$2,282@2T2\2d2t2|2
+A 000ba03b 3$3,343<3D3L3T3\3d3l3
+A 000ba067 4,484T4`4|4
+A 000ba08b 545@5\5d5l5t5|5
+A 000ba0b9 606<6D6P6l6t6
+A 000ba0d9 7,747@7\7d7l7t7|7
+A 000ba0ff 8$8,888T8\8d8p8
+A 000ba11f 9 9<9H9d9p9
+A 000ba13d :$:0:L:T:`:|:
+A 000ba15b ;,;8;T;\;d;l;t;|;
+A 000ba181 <(<D<L<X<t<|<
+A 000ba19d =(=D=P=X=
+A 000ba1b9 ><>\>`>d>t>
+A 000ba1d5 > ?,?4?@?\?h?
+A 000ba203 0,080T0\0d0l0t0|0
+A 000ba235 1$1,141<1D1L1T1`1|1
+A 000ba26f 2$2,242<2D2P2l2x2
+A 000ba291 3$3,343<3H3d3l3t3|3
+A 000ba2bf 4(4D4P4l4t4
+A 000ba2db 5$5,545<5D5P5l5x5
+A 000ba301 646<6D6L6T6\6h6
+A 000ba32f 747<7D7L7X7t7|7
+A 000ba357 848@8\8h8
+A 000ba371 9(9<9H9d9l9t9|9
+A 000ba3a1 :$:0:L:T:\:h:
+A 000ba3c3 ;(;D;P;l;x;
+A 000ba3e5 <$<,<4<<<D<L<T<\<d<p<
+A 000ba409 =,=8=T=`=|=
+A 000ba42f >$>,>4><>D>L>T>\>d>l>t>|>
+A 000ba469 ?$?,?4?<?D?L?T?\?d?l?t?|?
+A 000ba4b3 0$0,040<0D0L0T0\0d0l0t0|0
+A 000ba4e9 1,181T1`1|1
+A 000ba503 2(2D2L2X2t2
+A 000ba51f 3$303L3T3`3|3
+A 000ba541 4$404L4T4\4d4l4t4|4
+A 000ba569 5$505L5X5t5|5
+A 000ba585 6$6,686T6`6|6
+A 000ba5a7 7$7,747<7D7L7T7\7d7l7t7|7
+A 000ba5e3 8,848@8\8d8l8t8|8
+A 000ba60d 9 9<9D9L9T9`9|9
+A 000ba63d :$:,:4:<:D:L:T:\:d:l:t:|:
+A 000ba671 ;$;,;8;T;`;|;
+A 000ba69f <$<,<4<<<H<d<p<
+A 000ba6c9 =,=4=<=D=L=T=\=h=
+A 000ba6ef >$>,>8>T>\>h>
+A 000ba711 ?$?,?4?@?\?d?l?t?|?
+A 000ba747 0$0,040<0H0d0p0
+A 000ba769 1$1,181T1\1h1
+A 000ba789 2 2,242@2\2h2
+A 000ba7b1 3$3,343@3H3\3d3l3|3
+A 000ba7db 4,484T4`4|4
+A 000ba7f5 5(5D5L5l5p5t5x5
+A 000ba815 6(646<6D6
+A 000ba831 0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0x0x5
+A 000ba86b = =$=
+A 000ba883 >0>H>
+U 0000928a jjjjj
+U 000093c0 jjjjjjjj
+U 00017eb3 jjjjjj
+U 00022a64 AdxCe
+U 00022a70 A200Command
+U 00022a88 CeGetDiskFreeSpaceEx
+U 0002a5c2 )version_string
+U 0002a5e8 adx_exp_name
+U 0002a604 adx_art_name
+U 0002a9a0 value
+U 0002a9ac adx_error
+U 0002a9c0 number_of_designs
+U 0002a9e4 thread_list
+U 0002a9fc design_item
+U 0002aa14 design_list
+U 0002aa2c thrd_description
+U 0002aa50 thrd_brand
+U 0002aa68 thrd_code
+U 0002aa7c thrd_density
+U 0002aa9c thrd_color
+U 0002aab4 thread
+U 0002aac4 no_colours
+U 0002aadc no_stitches
+U 0002aaf4 height
+U 0002ab04 width
+U 0002ab10 title
+U 0002adde ,,,V,
+U 0002adea ,À,ÿ,
+U 0002ae6e V,VVV
+U 0002ae7a VÀVÿV
+U 0002af8e À,ÀVÀ
+U 0002af9a ÀÀÀÿÀ
+U 0002b01a ÿ,ÿVÿ
+U 0002b026 ÿÀÿÿÿ
+U 0002deea WRITEU
+U 0002def8 BROWSEU
+U 0002df08 CREATED
+U 0002df18 CREATEU
+U 0002df28 CREATEX
+U 0002df38 DELETED
+U 0002df48 DELETEU
+U 0002df58 DELETEX
+U 0002df68 EDITD
+U 0002df74 EDITU
+U 0002df80 PROPERTIESD
+U 0002df98 PROPERTIESU
+U 0002dfb0 READD
+U 0002dfbc READU
+U 0002dfc8 WRITED
+U 0002dfd6 STOPU
+U 0002dfe2 STOPD
+U 0002dfee RENAMEX
+U 0002dffe RENAMEU
+U 0002e00e RENAMED
+U 0002e01e CDROMD
+U 0002e02c PCCARDD
+U 0002e03c INTERNU
+U 0002e04c INTERND
+U 0002e05c PCCARDU
+U 0002e06c COPYU
+U 0002e078 COPYD
+U 0002e084 STITCHOUTU
+U 0002e09a STITCHOUTD
+U 0002e0b0 CDROMU
+U 0002e0be CDROMX
+U 0002e0cc COPYX
+U 0002e0d8 EDITX
+U 0002e0e4 READX
+U 0002e0f0 STITCHOUTX
+U 0002e106 BROWSEX
+U 0002e116 WRITEX
+U 0002e124 BROWSED
+U 0002e134 PCCARDX
+U 0002e144 INTERNX
+U 0002e154 STOPSMALLU
+U 0002e16a STOPSMALLD
+U 0002e180 PROPERTIESX
+U 0002e198 HELPD
+U 0002e1a4 HELPF
+U 0002e1b0 HELPU
+U 0002e1bc HELPX
+U 000a1ecc 333f3
+U 000a1ed8 3Ì3ÿ
+U 000a1f58 f3fff
+U 000a1f64 fÌfÿ
+U 000a1fd2 ÌÌÿÿÌ
+U 000a2062 3ÌfÌ
+U 000a20e6 ÿÌ3ÿfÿ
+U 000a2c86 VS_VERSION_INFO
+U 000a2ce2 StringFileInfo
+U 000a2d06 040904b0
+U 000a2d1e Comments
+U 000a2d30 Author: Dietrich Meier, MD Informatik GmbH, CH, Dietikon
+U 000a2daa CompanyName
+U 000a2dc4 Fritz Gegauf AG
+U 000a2dea FileDescription
+U 000a2e0c adx DLL
+U 000a2e22 FileVersion
+U 000a2e3c 0, 0, 8, 6
+U 000a2e5a InternalName
+U 000a2e82 LegalCopyright
+U 000a2ea0 Copyright (C) 2002
+U 000a2ece LegalTrademarks
+U 000a2ef0 BERNINA artista
+U 000a2f16 OriginalFilename
+U 000a2f38 adx.DLL
+U 000a2f4e PrivateBuild
+U 000a2f68 n.a.
+U 000a2f7a ProductName
+U 000a2f94 adx Dynamic Link Library
+U 000a2fce ProductVersion
+U 000a2fec 0, 1, 0, 0
+U 000a300a SpecialBuild
+U 000a3024 n.a.
+U 000a3036 VarFileInfo
+U 000a3056 Translation
+U 000a3096 Read from Embroidery System and Design Manager
+U 000a30fa MS Sans Serif
+U 000a3124 1@åd
+U 000a3130 SysListView32
+U 000a314c List1
+U 000a3168 /1éu
+U 000a3174 SysTabControl32
+U 000a3194 Tab1
+U 000a31bc CDRom
+U 000a31e8 PcCard
+U 000a3214 Intern
+U 000a3240 Create
+U 000a3290 Browse
+U 000a32bc Create
+U 000a330c Read
+U 000a3334 Write
+U 000a3384 Properties
+U 000a33b8 Delete
+U 000a33e4 Rename
+U 000a3410 Edit
+U 000a3438 StopSmall
+U 000a346c Others
+U 000a3498 StitchOut
+U 000a34cc Setup
+U 000a34f8 Designs on Storage Device
+U 000a3548 msctls_progress32
+U 000a356c Progress1
+U 000a35a0 Usage
+U 000a35ec n.a.
+U 000a3614 Selected Design
+U 000a3650 SysListView32
+U 000a366c List1
+U 000a3694 SysTabControl32
+U 000a36b4 Tab1
+U 000a36dc Design(s) on Desktop
+U 000a3724 Embroidery System
+U 000a3768 Ready for Data Xchange
+U 000a37d8 Help
+U 000a3806 Process in progress, please wait .....
+U 000a385a MS Sans Serif
+U 000a3890 SysAnimate32
+U 000a38aa Animate1
+U 000a38d8 msctls_progress32
+U 000a38fc Progress1
+U 000a394e Options
+U 000a3960 MS Sans Serif
+U 000a39b2 Cancel
+U 000a39da Target Pathes
+U 000a3a0e Internal:
+U 000a3a3a Blank Card:
+U 000a3a6a Aux:
+U 000a3a8e Stitchout:
+U 000a3abe Static
+U 000a3ae6 Static
+U 000a3b0e Static
+U 000a3b36 Static
+U 000a3bde Set Default
+U 000a3c0e Silent
+U 000a3c36 Disable Error Messages from ADX
+U 000a3c8e Current Path
+U 000a3cc2 Static
+U 000a3cee Device Selection
+U 000a3d12 MS Sans Serif
+U 000a3d66 Cancel
+U 000a3d8e artista 200
+U 000a3dbe artista 165 to 185 or R/W box
+U 000a3e12 Select Embroidery System
+U 000a3e5e COM Port
+U 000a3e8a COM1
+U 000a3eae COM2
+U 000a3ed2 COM3
+U 000a3ef6 COM4
+U 000a3f0c C0CB
+U 000a3f1a Next Start
+U 000a3f3c H9>6
+U 000a3f4a Apply these settings (and suppress this dialog).
+U 000a3fce Write to Embroidery System
+U 000a400a MS Sans Serif
+U 000a4034 -@Ìd
+U 000a4040 SysListView32
+U 000a405c List1
+U 000a4078 +1Ñu
+U 000a4084 SysTabControl32
+U 000a40a4 Tab1
+U 000a40cc Create
+U 000a411c CDRom
+U 000a4148 PcCard
+U 000a4174 Intern
+U 000a41a0 Browse
+U 000a41cc Create
+U 000a421c StopSmall
+U 000a4250 Properties
+U 000a4284 StitchOut
+U 000a42b8 Copy
+U 000a4304 Setup
+U 000a4330 Read
+U 000a4358 Delete
+U 000a4384 Rename
+U 000a43b0 Write
+U 000a43dc Others
+U 000a4408 Designs on Storage Device
+U 000a445c Selected Design
+U 000a4498 msctls_progress32
+U 000a44bc Progress1
+U 000a44f0 Usage
+U 000a453c n.a.
+U 000a4564 Embroidery System
+U 000a45a8 Ready for Data Xchange
+U 000a45f4 Edit
+U 000a4618 SysListView32
+U 000a4634 List1
+U 000a465c SysTabControl32
+U 000a467c Tab1
+U 000a46a4 Design(s) on Desktop
+U 000a46ec Help
+U 000a470e Design Information
+U 000a4736 MS Sans Serif
+U 000a476a StopSmall
+U 000a4796 Title
+U 000a47ba Width:
+U 000a47e2 Height:
+U 000a480a No. Stitches:
+U 000a483e No. of Colors:
+U 000a4876 Static
+U 000a489e Static
+U 000a48c6 Static
+U 000a48ee Static
+U 000a4916 Size:
+U 000a493a Static
+U 000a4962 ReadOnly:
+U 000a498e Static
+U 000a49b6 License:
+U 000a49e2 Static
+U 000a4a0a Alphabet:
+U 000a4a36 Static
+U 000a4a5e Design Information
+U 000a4a86 MS Sans Serif
+U 000a4aba Static
+U 000a4ae2 Static
+U 000a4b0a StopSmall
+U 000a4b36 Title
+U 000a4b5a Width:
+U 000a4b82 Height:
+U 000a4baa No. of Designs
+U 000a4be2 No. of Folders:
+U 000a4c1a Static
+U 000a4c42 Static
+U 000a4c6a Static
+U 000a4c92 Static
+U 000a4cba Overall Size:
+U 000a4cee Static
+U 000a4d16 Static
+U 000a4e72 ÿÿÿÌÿ
+U 000a4e7e ÿfÿ3ÿ
+U 000a4f02 ÌÿÌÌÌ
+U 000a4f0e ÌfÌ3Ì
+U 000a5022 fÿfÌf
+U 000a502e fff3f
+U 000a50b2 3ÿ3Ì3
+U 000a50be 3f333
+U 000a7c22 fÿfÌf
+U 000a7c2e fff3f
+U 000a7cb2 3ÿ3Ì3
+U 000a7cbe 3f333
+U 000a7e72 ÿÿÿÌÿ
+U 000a7e7e ÿfÿ3ÿ
+U 000a7f02 ÌÿÌÌÌ
+U 000a7f0e ÌfÌ3Ì
+U 000a8022 fÿfÌf
+U 000a802e fff3f
+U 000a80b2 3ÿ3Ì3
+U 000a80be 3f333
+U 000aac72 ÿÿÿÌÿ
+U 000aac7e ÿfÿ3ÿ
+U 000aad02 ÌÿÌÌÌ
+U 000aad0e ÌfÌ3Ì
+U 000aae22 fÿfÌf
+U 000aae2e fff3f
+U 000aaeb2 3ÿ3Ì3
+U 000aaebe 3f333
+U 000ad822 fÿfÌf
+U 000ad82e fff3f
+U 000ad8b2 3ÿ3Ì3
+U 000ad8be 3f333
+U 000ada72 ÿÿÿÌÿ
+U 000ada7e ÿfÿ3ÿ
+U 000adb02 ÌÿÌÌÌ
+U 000adb0e ÌfÌ3Ì
+U 000adc22 fÿfÌf
+U 000adc2e fff3f
+U 000adcb2 3ÿ3Ì3
+U 000adcbe 3f333
+U 000b04b2 3ÿ3Ì3
+U 000b04be 3f333
+U 000b0672 ÿÿÿÌÿ
+U 000b067e ÿfÿ3ÿ
+U 000b0702 ÌÿÌÌÌ
+U 000b070e ÌfÌ3Ì
+U 000b0822 fÿfÌf
+U 000b082e fff3f
+U 000b08b2 3ÿ3Ì3
+U 000b08be 3f333
+U 000b3222 fÿfÌf
+U 000b322e fff3f
+U 000b32b2 3ÿ3Ì3
+U 000b32be 3f333
+U 000b3472 ÿÿÿÌÿ
+U 000b347e ÿfÿ3ÿ
+U 000b3502 ÌÿÌÌÌ
+U 000b350e ÌfÌ3Ì
+U 000b3622 fÿfÌf
+U 000b362e fff3f
+U 000b36b2 3ÿ3Ì3
+U 000b36be 3f333
+U 000b5eb2 3ÿ3Ì3
+U 000b5ebe 3f333
+U 000b5f2e Load
+U 000b5f3c Rename
+U 000b5f4e Delete
+U 000b5f60 Properties
+U 000b5f7e Write
+U 000b5f8e Rename
+U 000b5fa0 Delete
+U 000b5fb2 Properties
+U 000b60fa 1Reading file(s) from device -> please wait ....../Writing file(s) to device -> please wait ......0Deleting file(s) on device -> please wait ......
+U 000b6232 Failed to establish a connection to the embroidery system.
+U 000b62a8 Please switch off and on the embroidery computer. If the problem persists please reboot your PC.$Failed to create the design node %s.$Failed to rename the design node %s.WFailed to remove the folder %s.
+U 000b643e Please note, that a folder must be empty to be removed.
+U 000b64ae Failed to remove the design %s.
+U 000b64ee Failed to load XML string.~
+U 000b6526 The connection to artista 200 via ActiveSync was forcibly closed by the remote host.
+U 000b65d0 Remedy: switch off artista and on again.
+U 000b6622 Error %s = %d
+U 000b663e Unspecified error = %d.Failed to locate the input desings:
+U 000b66b6 "%s"
+U 000b66c0 "%s"]Failed to send a command to the embroidery system. Verify state of the ActiveSync connection.-Failed to enable CD ROM drive for ADX access..Failed to establish the ADX server on artista.
+U 000b685a 0The access to the internal design memory failed.3Insert the Personal Design Card into the card slot.4Insert an encrypted design CD into the CD ROM drive.VThe access to the designs on PC failed. Verify the SourcePathDesigns in the registery.QFailed to send the stitch out command. Verify the state of the embroidery system.;Designs in EXP format are limited to single operation only.
+U 000b6b60 7Please select a design before pressing the edit button.
+U 000b6bd2 This feature not yet supported.
+U 000b6c12 EPlease select a design or a folder before pressing the rename button.OEmbroidery system or sewing machine is running and not ready for data exchange.
+U 000b6d40  (design info n.a.)
+U 000b6d68 loading ....eThe registery key "%s" in "%s" is set to "%s". 
+U 000b6de2 Verify that your ART and EXP designs are saved there.8Design successfully downloaded to the embroidery system.KEmbroidery design successfully sent to the embroidery system for stitchout.>The number of designs on this storage device is limited to %d.
+U 000b6ff0 ;Should the selection 
+U 000b7028 be loaded to the current folder?BShould the following selection be loaded to the current folder?
+U 000b70f0 7The design %s already exists. Should it be overwritten?NShould the selection 
+U 000b7198 be deleted? 
+U 000b71b2 Please note that UNDO is not possible.UShould the following selection be deleted?
+U 000b725e Please note that UNDO is not possible.BShould the selection 
+U 000b72e2 be downloaded to the embroidery system?IShould the following selection be downloaded to the embroidery system?
+U 000b73ca \IPSM\ANS\Data\Embroidery\
+U 000b7400 Motifs\
+U 000b7410 Alphabets\
+U 000b7426 \EMBFiles\
+U 000b743c \Storage Card\
+U 000b745a \USBCdrom\
+U 000b7498 *Show designs saved on embroidery computer."Show designs saved on the PC card.!Show designs saved on the CD ROM.
+U 000b7580 One folder upwards.
+U 000b75a8 Create a new folder.
+U 000b75d2 Create a new folder.7Select any folder (having designs) on PC or on network.
+U 000b7670 Stitch out selected design.
+U 000b76b0 One folder upwards.
+U 000b76d8 Delete the selected design.
+U 000b7710 Rename the selected design..Show design properties of the selected design.
+U 000b77b0 2Click to connect other artista embroidery systems.6Download the selected design to the embroidery system.,Read the selected designs to the desktop PC.
+U 000b78f0 6Download the selected design to the embroidery system.
+U 000b796e Exit ADX
+U 000b799c Edit the selected design.
+U 000b79d6 Open ADX manual.
+U 000b7a22 multiple selection
+U 000b7a48 multiple designs (%dkb)
+U 000b7a78 Running, no Xchange!
+U 000b7aa2 Ready for data Xchange
+U 000b7ada To connect another embroidery system ADX must be restarted.
+U 000b7b54 Press OK to select another artista or the R/W box and exit ADX for a restart.
