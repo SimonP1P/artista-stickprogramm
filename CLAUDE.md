@@ -55,6 +55,12 @@
 
 ## 4. Regeln für die Arbeit in diesem Projekt
 1. **Niemals Schreib-, Lösch-, Formatier- oder Befehlsfeld-Zugriffe (0xFFFED0, AUSWAHL) an die Maschine senden, ohne dass der Nutzer ausdrücklich zugestimmt hat.** v1/v2 sind reine Lesetests. v3 sendet mit Zustimmung des Nutzers (18.11.2026) nur die Listen-Befehle 0x50/0xA0, 0x30, 0x20, 0x60, 0xC0, 0x100 und schreibt nur ins Auswahlfeld. v3.1/v3.2 schreiben zusätzlich 0x01 nach 0xFFFEE0 (Transfer anfordern, wie Original) – vom Nutzer durch Ausführen + J/N-Abfrage freizugeben. Befehle 0x200/0x800/0x80/0x08 und Datenbereich-Schreiben sind weiterhin tabu ohne neue Zustimmung. Nach jedem Test: Maschine aus/ein (bleibt sonst im PC-Modus auf 57600).
+1a. **Freigabe für selbstständige Gerätetests (Nutzer-Zustimmung 18.11.2026):** Eine Claude-Code-Sitzung auf dem Windows-PC an der Maschine darf **ohne Einzelrückfrage** senden:
+   - alles Lesende (`R`, `N`, Firmware-/Verwaltungs-/INFO-Bereiche), Verbindungsaufbau (`T r M E`, `R F ?`, `Y Q`), Baudwechsel (`J` + Code, `E B`);
+   - Transfer anfordern: `0x01` → 0xFFFEE0;
+   - Befehlsfeld 0xFFFED0 **nur** 0x50, 0xA0, 0x30, 0x20, 0x60, 0xC0, 0x100; Schreiben **nur** in AUSWAHL +0 / +5.
+   **Weiterhin nur nach ausdrücklicher Rückfrage beim Nutzer:** 0x200 (Speichern), 0x800 (Löschen), 0x80 (Formatieren), 0x08 (Sticken), 0x10, 0x40, 0x400, jedes Schreiben in DATEN/ICON/INFO/Farbtabelle oder andere Adressen, `C`, `P S`, `X` (Reset), `L`/`H`/`G` (Firmware/BIOS), Binärprotokoll `w`/`a`/`d`/`p`.
+   Physisches (Nadel hoch, Stickmodus, Aus/Ein, Display ansehen) kann nur die Person vor Ort – dann gezielt darum bitten. Jeden Test mit Mitschnitt nach `Arbeitsdaten/geraetetests/` legen, Befund in `Analyse_Teil2/07_befund_am_geraet.md`, danach committen + pushen.
 2. Original-CD-Dateien in diesem Ordner (Setup/, ADX/, HASP/, IE6/, Acrobat/, instoem/ …) **nicht verändern**.
 3. Neue Erkenntnisse in die passende Datei aus Abschnitt 2 eintragen (mit Fundstelle + Sicherheit) und hier die Tabelle ergänzen; Rohdaten nach `Arbeitsdaten/`.
 4. Werkzeuge: maßgeblich ist `Arbeitsdaten/werkzeuge/`. Kopien in `Analyse/code/` und `Analyse_Teil2/code/` sind für die Lesbarkeit der Berichte da und müssen identisch bleiben.
@@ -65,6 +71,8 @@
 - **GitHub (privat):** https://github.com/SimonP1P/artista-stickprogramm – Branch `main`. Ersetzt das alte Repo `Stickprojekt` (Nutzer will neu anfangen, 18.11.2026).
 - **Alles** wird versioniert, auch die Original-CD (Wunsch des Nutzers); `Setup/English/setup.z` (142 MB) über **Git LFS**.
 - Nach jedem abgeschlossenen Arbeitsschritt committen und pushen (Wunsch des Nutzers). Commit-Nachrichten auf Deutsch.
+
+- **Windows-PC an der Maschine:** Repo dort klonen mit `$env:GIT_LFS_SKIP_SMUDGE=1; git clone https://github.com/SimonP1P/artista-stickprogramm` (ohne 142-MB-setup.z), dann `claude` im Repo starten. Testprogramme direkt mit `powershell -ExecutionPolicy Bypass -File …ps1 -Port COM3 -OhneNachfrage` aufrufen (die J/N-Abfrage ist durch Regel 1a abgedeckt). Vor Start nach PowerShell 5.1 prüfen; Pfade mit Leerzeichen quoten.
 
 ## 5. Reproduzieren / Umgebung
 ```sh
