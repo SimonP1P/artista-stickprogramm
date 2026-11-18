@@ -61,6 +61,11 @@
 5. **Speicherplatz auf dem Mac ist fast voll** (~1,8 GB frei): große Zwischenstände nur im Scratchpad, nicht im Projekt.
 6. Testprogramme für Windows: PowerShell 5.1-kompatibel, `.ps1` als UTF-8 **mit BOM** und CRLF; vorher mit Simulation (`-Simulation`) testen.
 
+## 4a. Versionierung
+- **GitHub (privat):** https://github.com/SimonP1P/artista-stickprogramm – Branch `main`. Ersetzt das alte Repo `Stickprojekt` (Nutzer will neu anfangen, 18.11.2026).
+- **Alles** wird versioniert, auch die Original-CD (Wunsch des Nutzers); `Setup/English/setup.z` (142 MB) über **Git LFS**.
+- Nach jedem abgeschlossenen Arbeitsschritt committen und pushen (Wunsch des Nutzers). Commit-Nachrichten auf Deutsch.
+
 ## 5. Reproduzieren / Umgebung
 ```sh
 python3 -m venv venv && venv/bin/pip install -r Arbeitsdaten/werkzeuge/requirements.txt   # pefile capstone olefile
