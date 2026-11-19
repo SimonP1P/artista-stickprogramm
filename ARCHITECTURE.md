@@ -75,6 +75,7 @@ Der Rechenkern wird in Rust **neu geschrieben, nicht Zeile für Zeile übersetzt
 | Rechner | Stand 19.11.2026 | Folgerung |
 |---|---|---|
 | Windows-PC (an der Maschine) | C: 15,5 GB frei, **F: 113 GB frei** (NTFS, „Flugsimulator“) | Rust, Node und alle Build-Ausgaben auf **F:**: `RUSTUP_HOME=F:\Entwicklung\rustup`, `CARGO_HOME=F:\Entwicklung\cargo`, `CARGO_TARGET_DIR=F:\Entwicklung\target`, npm-Cache `F:\Entwicklung\npm-cache`. MSVC Build Tools / Windows SDK (für Tauri unter Windows nötig) legen Teile zwingend auf C: ab – dafür reicht der Platz. WebView2 ist vorhanden |
+| Windows-PC – **eingerichtet 19.11.2026** | Rust 1.100.0 (rustup, Profil minimal + clippy/rustfmt), Node 26.13.1 LTS (ZIP), npm-Cache – alles unter **F:\Entwicklung** (`rustup`, `cargo`, `node`, `target`, `npm-cache`, `downloads`). Prüfsummen von rustup-init und Node geprüft. Benutzer-Variablen: `RUSTUP_HOME`, `CARGO_HOME`, `CARGO_TARGET_DIR=F:\Entwicklung\target`; PATH ergänzt um `F:\Entwicklung\cargo\bin`, `F:\Entwicklung\node` und `C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64` (dort liegt `rc.exe`, das Tauri sonst nicht findet). **Keine** neue Installation mit Adminrechten: vorhandene **VS Build Tools 2019** (MSVC 14.29) + Windows SDK 10.0.19041 genügen. Erster Build `app/` (Debug): 90 s, Programm startet |
 | Mac | ~1,8 GB frei | Rust-Builds dort erst nach Aufräumen oder mit externer Platte. Alternative: Mac-Programm über **GitHub Actions** (macOS-Runner, `tauri-action`) bauen lassen |
 
 ## 6. Offene Punkte / Risiken
