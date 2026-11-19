@@ -1,0 +1,9 @@
+# Puffer DATEN für die artista 185 (stick puffer), Quelle testquadrat.json
+laenge=868
+laenge_stiche=236
+laenge_anhang=456
+farben=1
+info_farben_minus_1=00
+info_flags=84
+info_name=5465737471756164726174000000000000000000000000000000000000000000
+name=Testquadrat
