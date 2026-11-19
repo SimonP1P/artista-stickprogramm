@@ -52,6 +52,7 @@
 | **Laufwege in Flächen** (Original verbindet Teilbereiche mit Laufstichen statt Sprüngen) | `Analyse_Teil3/08_laufwege_flaechen.md` |
 | **Objekte der ART-Musterdesigns** (Datensatzrahmen, 131 Klassen mit Namen/Kennung, Formen als Bézier-Knoten, Satin/Lauf/Tatami/Unterlagen-Parameter) | `Analyse_Teil3/03_art_objekte.md`; Werkzeuge `art_objekte.py`, `art_design.py` |
 | **Echte Stiche des Originals** aus den 287 ART-Musterdesigns (Datenblock-Kopf, Stichkodierung, Segmente, y doppelt, gemessenes Vernähen) | `Analyse_Teil3/02_art_stichdaten.md`; Werkzeuge `Arbeitsdaten/werkzeuge/art_lesen.py`, `art_stiche.py` |
+| **Original-Alphabete (ESB)**: 53 Alphabete lesbar (Grundlinie, Umrisse, Winkellinien der Satinsäulen, Stichart); Referenzhöhe vermutlich 50 mm; Zeichensätze Nr. 1–7 der Maschine = Drifter, Lisa, Blackboard, Swiss Block, Zurich, Alice, Bamboo bei 50 % | `Analyse_Teil3/09_esb_alphabete.md`; Werkzeug `Arbeitsdaten/werkzeuge/esb_lesen.py`, Bild `Arbeitsdaten/alphabete/` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |

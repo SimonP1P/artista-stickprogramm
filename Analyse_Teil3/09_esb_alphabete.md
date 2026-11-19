@@ -1,0 +1,61 @@
+# 09 – Die Original-Alphabete (ESB) (19.11.2026)
+
+**Ergebnis:** Alle **53 Alphabete** in `Main/PROGRAM/wletter/` lassen sich vollständig lesen: je Zeichen Grundlinie,
+Umrisse (Bézier-Knoten), Winkellinien der Satinsäulen, Stichart mit Parametern, Verbinder. Werkzeug:
+`Arbeitsdaten/werkzeuge/esb_lesen.py` (`--png` zeichnet alle Zeichen mit Umriss, Winkellinien und Grundlinie).
+Zum Vergleich gibt es die **echten Stiche des Originals** für 7 Alphabete: die Zeichensätze Nr. 1–7 aus dem
+Maschinenspeicher (`Arbeitsdaten/maschinendesigns/`, Analyse_Teil2/07 Test v3.6).
+
+## 1. Datei — Sicherheit: hoch (IMPORT.DLL, Klasse `AlphabetFile`)
+OLE-Datei mit den Streams
+- `\x06HEADER` (unverschlüsselt, Leser 0x100040f0 / `AlphabetFile::GetHeader` 0x10003cf0):
+  u32 **0x0d0a1aed**, u32 Länge (0xb7), Byte Version (1, ≤ 4), Byte Unterversion (3), [u32 bei Unterversion ≥ 2],
+  **Name** UTF-16 (0xa2 Byte), **float** (0,0), **float Buchstabenabstand** (Drifter/Alice 0,10, Zurich 0,08), 11 Byte
+  (0), [Version ≥ 4: 32 Byte], u16 (0x5002, Bedeutung offen), [Version ≥ 4: u32 + 8 Byte].
+- `AUX_INFO` (5 Byte `01 00 00 00 00`).
+- **ein Stream je Zeichen**, Name = Zeichencode hex (`0041` = A, `00E9` = é), Substitution Format-ID 0xD2 + zlib
+  (`art_decrypt.try_all`, Analyse/code/05). Kein Leerzeichen-Stream.
+
+## 2. Zeichen-Stream — Sicherheit: hoch (IMPORT.DLL 0x100c6230)
+- 0x24 Byte Kopf: u32 0x0d0a1a0d, u32 0xeaae8356, u32 0x24, u32 6 (≤ 0x3793578), u32 0x11, u32 0x24, u32 Länge,
+  u32 0, u32 **Prüfsumme = Summe der ersten 8**.
+- Danach Datensätze im Rahmen der ART-Objekte ([03](03_art_objekte.md) §2), gelesen mit 0x100d9a60/0x100d9b90:
+  - **0x2e Buchstabenkopf** (0x1000b330): 4 vorzeichenbehaftete gepackte Wörter = **Grundlinie x1, y1, x2, y2**
+    (1/180 mm, Koordinaten des Digitalisier-Blatts; Vorschub = x2 − x1).
+  - **0x3a** Zeichen (u32 Anzahl + UTF-16).
+  - die Objekte: meist **0x08 EmbroideryBoundGroup** (Buchstabe) mit **0x06 EmbroideryPatch** (Satinsäulen); daneben
+    0x05 EmbroideryCurve (Linien), 0x0c InputCCurve (Säule mit zwei Kanten, Applikations-Alphabete), 0x0b ManualObject.
+- **0x06 EmbroideryPatch** (Serialisierer 0x10018970): u16 n, dann n × (gepackt **a**, float **x**, gepackt **c**,
+  float **y**) = **Winkellinien**: von Segment a beim Anteil x zu Segment c beim Anteil y des Umrisses; danach der
+  Umriss (0x01 GeoCurve, geschlossen). Beispiel „A“ (Drifter), Umriss mit 14 Knoten: (0, 0,0 → 12, 1,0) … (5 → 7, 1,0),
+  (6, 0,0 → 7, 0,0), d. h. Knoten 0↔13, 1↔12 … 6↔7: die Säule läuft auf der einen Seite über die Knoten 0…6, auf der
+  anderen rückwärts über 13…7.
+- Stichart wie bei ART-Objekten über den Baum 0x2741 → Verbinder 0x272a (0x14: 1080, 540, 1080, 540, 180, …) und
+  Füllung 0x2748 → **Satin 0x2721** (0x16 Auto-Split 1800, 0x15 Abstand **72 = 0,40 mm**) + **Laufweg 0x271c**
+  (0x18 Länge 540 = 3 mm). Die zweite Säule verweist auf dieselben Datensätze (Verweis 2/3).
+
+## 3. Inhalt der 53 Alphabete — Sicherheit: hoch (Zählung mit `esb_lesen.py`)
+- 9 bis 162 Zeichen je Alphabet (Drifter 141: Satzzeichen, Ziffern, A–Z, a–z, Umlaute/Akzente, Æ, Ø, ß …).
+- Fast überall **Satinsäulen (EmbroideryPatch) + Laufweg**; Unterlagen nur in einzelnen Alphabeten (Mittellauf:
+  Blackboard, Swiss Block, Varsity Block, Tabloid; Zickzack: Castle, Greek Ionic, Hebrew 2, Jikharev, Secret Garden;
+  Rand: Island, Tabloid); Tatami nur in Anniversary (5 Objekte); Laufstich-Alphabete: Creative Cross, Quilting Text
+  (ManualObject/Lauf); Säulen mit zwei Kanten (InputCCurve): Easy Appliqué, Varsity Applique, Tabloid, ButtonHoles.
+- **Großbuchstaben ≈ 50 mm hoch digitalisiert** (H: 47–56 mm, Zurich 61,5 mm).
+
+## 4. Maßstab und Abstand — Sicherheit: mittel-hoch (Messung), Code offen
+- Die 7 Zeichensätze im Maschinenspeicher sind **genau** diese Alphabete im **Maßstab 0,500** (Höhen 25,0/50,0,
+  25,3/50,8, 26,1/52,1 …; mittlere Abweichung der Maße A–J 0,07–0,33 mm): Nr. 1 Drifter, 2 Lisa, 3 Blackboard,
+  4 Swiss Block, 5 Zurich, 6 Alice, 7 Bamboo. Der Maßstab ist auch bei Zurich (H 61,5 mm) 0,500 → die
+  **Referenzhöhe ist für alle Alphabete gleich**, vermutlich **50 mm = 9000 Einheiten** („Buchstabenhöhe 25 mm“ ⇒ 0,5).
+  Im Code noch nicht gefunden (Kandidaten: Nutzer von `AlphabetFile::GetHeader`, `TrueTypeFont::GetRefHeight`).
+- **Buchstabenabstand** „automatically as a percentage of letter height“ (Handbuch PDF-S. 168) = float 2 im Kopf
+  (Drifter 10 %). In den Zeichensatz-Designs der Maschine stehen die Buchstaben ohne Zwischenraum (B beginnt bei
+  x = 19,1 mm, wo A endet) – dort also Abstand 0 bzw. nur der Vorschub.
+- Buchstabenhöhe im Original 1–200 mm (Handbuch S. 165), Breite in % der Höhe (100 % = Original).
+
+## 5. Offen
+1. Referenzhöhe und Buchstabenabstand im Code bestätigen (Lettering-Modul: wer liest `AlphabetHeader` +0x10).
+2. Wortabstand (kein Leerzeichen-Stream) und Zeilenabstand.
+3. Automatische Unterlage für Schrift (`let_underlay`, Tag 0x197f ff.) – Vergleich mit Blackboard/Swiss Block (Unterlage
+   im Alphabet) und Drifter/Lisa/Zurich/Alice/Bamboo (ohne) im Maschinenspeicher.
+4. Stichbildung der Satinsäule mit Winkellinien (MOD1.DLL) gegen die echten Stiche messen.
