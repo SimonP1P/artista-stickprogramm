@@ -219,7 +219,8 @@ impl Container {
 /// - 0x114: Farbanzahl (Karten-Designs, Zeichensätze 4/6/7) bzw. Farbanzahl − 1 („Collection 7“, Drifter) – mittel
 /// - 0x116 … 0x126: **Funktionsfelder** → Flags der Designliste ([`Kopf::flags`]) – hoch (38 von 38)
 /// - 0x128/0x12A: 100/100 oder 0/0 (vermutlich Maßstab in %) – niedrig
-/// - 0x12C/0x12E: **Breite/Höhe** in 0,1 mm (Karten-Designs: genau die Ausdehnung der Stiche) bzw. 2000/1550 – mittel
+/// - 0x12C/0x12E: **Breite/Höhe** in 0,1 mm (Karten-Designs: genau die Ausdehnung der Stiche) bzw. 2000/1550 =
+///   großer Rahmen 155 × 200 mm („Collection 7“; Stickmodul-Anleitung) – mittel
 /// - 0x130: u16 ≈ 0,40 × Stichzahl (vermutlich Stickzeit in s); beim Schreiben Tabelle A Eintrag 0 – niedrig
 /// - 0x132: u16 (Bytes 01 00 / 01 1f / 01 e0) – offen
 #[derive(Debug, Clone, PartialEq, Eq)]

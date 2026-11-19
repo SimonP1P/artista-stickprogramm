@@ -28,6 +28,18 @@ SCHRITT FUER SCHRITT
  nach START_STICKEN zeigt es das Design und der Rahmen faehrt (Geraetetest 19.11.2026). Kein Aus/Ein noetig.
 
 
+STEHT DIE NADEL NICHT IN DER RAHMENMITTE? (Geraetetest 19.11.2026)
+---------------------------------------------------------------
+ Die Maschine erkennt den Rahmen selbst (Codierung am Rahmen), muss ihn nach einem Rahmenwechsel aber
+ neu ablesen (Stickmodul-Anleitung artista 165/170/180):
+  1. Nadel mit dem Handrad ganz nach oben, Naehfuss hoch
+  2. Display: "layout 1" -> "check"   (Rahmen faehrt nach hinten und liest die Groesse; Haende weg)
+  3. "Mustermitte anzeigen" -> Nadel steht ueber der Mitte des Designs
+  4. "ok", Naehfuss senken, Start-Taste
+ Steht sie dann immer noch falsch: setup -> Service -> Rahmenjustierung (mit grossem/mittlerem Rahmen
+ und Schablone, siehe Anleitung).
+
+
 WAS DIE PERSON AN DER MASCHINE TUN MUSS (nur fuer START_STICKEN)
 ----------------------------------------------------------------
  - Stickrahmen mit Stoff und Vlies einsetzen (kleiner Rahmen reicht), Faden einfaedeln, Nadel oben.

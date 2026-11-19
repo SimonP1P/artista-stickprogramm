@@ -211,7 +211,7 @@ Test `rundweg_maschinendesigns`; Werkzeug `Arbeitsdaten/werkzeuge/maschinen_desi
 | **Rundweg byte-gleich** | Alle 51 Puffer: Kopf + Stiche + Anhang neu zusammengesetzt = gelesene Bytes; alle 38 gültigen Anhänge entschleiert → neu verschleiert = dieselben Bytes. Der Puffer für das Senden lässt sich also exakt bauen | hoch |
 | **Flags der Designliste aus dem Kopf** | Formel aus BEAGLink 0x100032b0 Schritt 10 (Bit 0x01 = Feld 0x11A/0x11C, 0x02 = 0x116, 0x04 = 0x118, 0x08 = 0x11E, 0x10 = 0x120, 0x20 = 0x124, 0x80 = 0x126) ergibt bei **38 von 38** Designs die Flags der Liste (0x84, 0x8C, 0xA4, 0xAC) | hoch |
 | Designs ohne Anhang | Nr. 2, 3, 5, 42–51 haben keinen Kopf und keine Farbtabelle; Flags 0x86 (Nr. 42–51) bzw. 0x8C. Die Maschine führt also Designs, die nur aus Stichdaten bestehen | hoch |
-| Kopf-Chunk 0x0A: zwei Varianten | **„Karte“** (Nr. 8, 34, 39–41 „Outdoorsman card“, ähnlich Zeichensätze 4/6/7): 0x114 = Farbanzahl, 0x128/0x12A = 0, **0x12C/0x12E = Breite/Höhe in 0,1 mm** (genau die Ausdehnung der Stiche), 0x130 ≈ 0,40 × Stichzahl. **„Collection 7“** (Nr. 9–33, 35–38, auch Drifter Nr. 1): Name mit Leerzeichen aufgefüllt, 0x94 = „Collection 7“, 0x10C = 8 Byte Kennung, 0x114 = Farbanzahl − 1, 0x128/0x12A = 100/100, 0x12C/0x12E = 2000/1550 fest. Welche Variante die V4-Software selbst schreibt, ist **offen** (Erzeuger des Containers noch nicht gefunden) | mittel |
+| Kopf-Chunk 0x0A: zwei Varianten | **„Karte“** (Nr. 8, 34, 39–41 „Outdoorsman card“, ähnlich Zeichensätze 4/6/7): 0x114 = Farbanzahl, 0x128/0x12A = 0, **0x12C/0x12E = Breite/Höhe in 0,1 mm** (genau die Ausdehnung der Stiche), 0x130 ≈ 0,40 × Stichzahl. **„Collection 7“** (Nr. 9–33, 35–38, auch Drifter Nr. 1): Name mit Leerzeichen aufgefüllt, 0x94 = „Collection 7“, 0x10C = 8 Byte Kennung, 0x114 = Farbanzahl − 1, 0x128/0x12A = 100/100, 0x12C/0x12E = 2000/1550 fest. Welche Variante die V4-Software selbst schreibt, ist **offen** (Erzeuger des Containers noch nicht gefunden). Nachtrag 19.11.: 2000/1550 = großer Rahmen 155 × 200 mm (Stickmodul-Anleitung) | mittel |
 | Feld 0x130 | u16 ≈ 0,40 × Stichzahl (Nr. 8: 10 550 bei 26 314 Stichen, Nr. 4: 22 616 bei 56 386) – vermutlich Stickzeit in Sekunden; laut Code Eintrag 0 der Tabelle A beim Schreiben (gelesen: alle 0) | niedrig |
 | Eintrag der Farbtabelle (0x86 Byte) | R, G, B, 0, **u16 LE Garnnummer**, Marke (64 Byte, „Isacord 40“), Farbname (64 Byte, „white“, „silver grey“, „deep red“) | hoch (Aufbau) |
 | Ursprung der Stichdaten | Nr. 8–51: Mitte der Ausdehnung = (0, 0) (± 0,6 mm); Zeichensätze Nr. 1–7 beginnen links bei x = 0. Designs **mit** Anhang enden mit Sprüngen zurück nach (0, 0), Designs ohne Anhang nicht | hoch |
@@ -244,5 +244,23 @@ Drei Läufe mit `Testprogramm_artista185_Windows_v4`, Puffer `Nr47_puffer.bin` (
 screen goes blank while the download takes place“ – solange bleibt das Display schwarz). Das fehlte in allen
 Testprogrammen bis v4.0 – deshalb musste die Maschine nach jedem Test aus- und eingeschaltet werden. v4 (ab 19.11.2026,
 21:53) macht es wie das Original, auch nach dem Trockenlauf. `P S` (256-Byte-Seiten) ist noch nicht am Gerät gelaufen (Nr. 47 ist kleiner als eine Seite
-nach der ersten Grenze). Offen: ob das Design sauber gestickt wird (Start an der Maschine), eigenes
-Design (Testquadrat), Speichern.
+nach der ersten Grenze). Fortsetzung siehe unten (Testquadrat).
+
+### Test v4.0 – eigenes Design gestickt (19.11.2026, 22:25 und 22:36)
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| Testquadrat senden (`Testquadrat_puffer.bin`, 868 Byte, mit Kopf + Farbtabelle, aus `stick puffer testquadrat.json`) | 13,2 s, **2 Seiten mit `P S`** + 12 × `W`, keine Wiederholung – `P S` am Gerät bestätigt; zurückgelesen alle 868 Byte gleich; INFO-Felder gleich; 0x08 → 0x0002; 0x100 + `T r M E` | hoch |
+| Display | **Quadrat 20 × 20 mm mit Satinbalken**, Farbe 1/1, „no color“ (Farbtabelle wird von v4 noch nicht an Zeiger 0x24048 geschrieben – Schritt 12 des Originals fehlt) | hoch |
+| Lage im Rahmen | Nadel stand am Rand des kleinen Rahmens (Rahmen war gewechselt worden). Lösung laut Stickmodul-Anleitung: Nadel und Nähfuss hoch, **Layout 1 → «check»** (Rahmen fährt nach hinten und liest die **Rahmencodierung**), **«Mustermitte anzeigen»**, «ok» – danach mittig | hoch |
+| **Sticken** | Nutzer: „hat komplett geklappt“ – **erstes Design aus dem eigenen Rechenkern auf der artista 185 gestickt** | hoch |
+
+**Folgerungen:**
+- Die Maschine erkennt den Rahmen selbst (Codierung); nach einem Rahmenwechsel «check» im Layout 1. Die Lage des
+  Designs bestimmt die Maschine (Designmitte = Rahmenmitte); die Stichdaten tragen keine Rahmenangabe.
+- Stickmodul-Anleitung (artista 165/170/180, V3.0): großer Rahmen **155 × 200 mm** → Kopf-Felder 0x12C/0x12E = 2000/1550
+  bei den „Collection 7“-Designs sind die **Rahmengröße** (0,1 mm), bei den Karten-Designs die Designgröße.
+- Anleitung: „Muster, die direkt aus dem artista-Programm auf die Maschine geladen werden, können in der Grösse nicht
+  verändert werden.“
+- Offen: Farbtabelle (Schritt 12, Zeiger 0x24048) und Icon (Schritt 8) wie das Original schreiben; dauerhaft speichern
+  (0x10 → schreiben → 0x200).
+
