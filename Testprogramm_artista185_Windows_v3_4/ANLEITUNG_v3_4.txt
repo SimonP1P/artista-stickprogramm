@@ -1,0 +1,35 @@
+VERSION 3.4 - EIN DESIGN AUS DER MASCHINE LESEN - BERNINA artista 185 - Anleitung (Windows)
+=========================================================================================
+
+WAS IST NEU IN 3.4?
+-------------------
+Test 3.3 (19.11.2026) hat die Designliste aus dem Maschinenspeicher gelesen (51 Designs).
+Version 3.4 liest zusaetzlich EIN Design so, wie die Original-Software beim Menuepunkt
+"File > Card/Machine Read" (Handbuch PDF-Seite 266): Design auswaehlen, mit Befehl 0x400
+in den Uebertragungspuffer laden, dann den Puffer lesen.
+
+Befehl 0x400 wird NUR gesendet mit  START_DESIGN_LESEN.bat  (Schalter -MitLadebefehl).
+START.bat liest wie 3.3 nur die Liste.
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. SELBSTTEST.bat doppelklicken (ohne Maschine). Am Ende muss stehen:
+    "DESIGN GELESEN: 496 Byte" und "PC-Modus verlassen (Befehl 0x100 angenommen)".
+ 2. Maschine an, Stickmodul angesteckt, Kabel verbunden, Startbildschirm abwarten.
+ 3. START_DESIGN_LESEN.bat doppelklicken (liest Design Nr 1).
+    Anderes Design:  START_DESIGN_LESEN.bat -Nummer 5
+ 4. Warten bis "FERTIG" erscheint.
+ 5. Dateien schicken: Design_NrXX_....bin, Icon_NrXX_....bin, Ergebnis_....txt, Mitschnitt_....log
+ 6. Wenn moeglich: Was zeigt das Display der Maschine waehrend und nach dem Lesen?
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:
+   T r M E, R+Adresse, R F ?, J 0 5 / E B, Y Q        (Verbindung, Lesen)
+   W FFFED0 + Befehl 00A0/0030/0060/00C0/0020/0100 + ? (wie 3.3)
+   W FFFED0 + Befehl 0400 + ?                           (NUR mit -MitLadebefehl: Design in den Puffer laden)
+   W <Auswahl+0> Nummer,  W <Auswahl+5> Bank            (wie Original)
+ Kein Befehl zum Speichern (0x200), Loeschen (0x800), Formatieren (0x80),
+ Sticken (0x08) oder Daten-Schreiben ist im Programm enthalten.

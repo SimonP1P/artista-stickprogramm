@@ -114,3 +114,23 @@ Selbstständig von Claude Code auf dem Windows-PC ausgeführt (Regel 1a; Selbstt
   57600, dann TrME) gelingt. Ob das Display nach 0x100 wieder den normalen Bildschirm zeigt, konnte niemand ansehen – bei
   der nächsten Gelegenheit vor Ort prüfen.
 - Testprogramm: 0x100 künftig mit Status 0x0000 als „angenommen“ werten.
+
+### Nächster Schritt: ein Design lesen – Ablauf des Originals (hoch, Code) und Testprogramm v3.4
+`_RetrieveDesign` (Export, 0x10009b30 → 0x10009880) öffnet den Auswahldialog „Card/Machine Read“ (Handbuch PDF-S. 266);
+gelesen wird in **0x10004310** (Design-Index in esi):
+1. 0x10004d10(0, Index): Ziel (0x10004de0), AUSWAHL +0 = Index+1, +5 = Index/27 (0x10004c90 → 0x10004ce0),
+   Bankbefehl 0x30/0x60/0xC0 (1000/4000), dann **0x20** (1000/2000), INFO+0 = Anzahl lesen.
+2. 0x10004080: Statusbyte (Zeiger @0x24004, +7) lesen. Index < Anzahl prüfen.
+3. 0x10004c90(Index): AUSWAHL +0/+5 erneut.
+4. **Befehl 0x400** (Zeiten 3000/4000, ohne Fehlerauswertung des Ziels) – lädt das gewählte Design in den
+   Übertragungspuffer **DATEN**.
+5. Lesen: Kopf **6·N+8 Byte** ab DATEN (N = Verwaltungsblock +0, bei der 185: 28 → 176 Byte), 6 Byte ab ICON
+   (Bildgröße = Byte 2 × Byte 3 + 10), Länge 1 = u32 BE bei Kopf+6N, Länge 2 = u32 BE bei Kopf+6N+4; Prüfung
+   Länge 1 > 2 und Länge 1 + Länge 2 + Bild + 0x142 < Größe Datenbereich (sonst Fehler 19); dann **Länge 1 + Länge 2
+   Byte ab DATEN + Kopf**.
+6. Danach Entschleierung/Prüfung im PC (0x1000a640, 0x10001400, vgl. [05](05_designcontainer_verschleierung.md)).
+
+**0x400 ist nach Regel 1a nicht freigegeben.** `Testprogramm_artista185_Windows_v3_4/` (Simulation ok, Mitschnitt der
+Simulation: nur `W FFFED0` mit 00A1/0031/0061/0021/0401/0101 und `W 0201EA`/`W 0201EF`) sendet 0x400 nur mit dem
+Schalter `-MitLadebefehl` (`START_DESIGN_LESEN.bat`) – erst nach Freigabe durch den Nutzer.
+

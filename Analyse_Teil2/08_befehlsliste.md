@@ -33,7 +33,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | 0x100 | PC-Modus verlassen | ✅ angenommen: Befehlsfeld danach **0x0000** (kein Fertig-Bit 0x02). Die Maschine bleibt auf 57600 Baud; ein neuer Durchlauf **ohne Aus/Ein** synchronisiert bei 57600 und funktioniert (v3.3, zweimal) | 🟡 |
 | 0x40 | Löschen vorbereiten | ⬜ | 🟡 |
 | 0x10 | Schreiben vorbereiten | ⬜ | 🟡 |
-| 0x400 | gespeichertes Design in den Stickbereich laden | ⬜ | 🟡 |
+| 0x400 | gespeichertes Design in den Übertragungspuffer DATEN laden – das Original nutzt es beim **Lesen** eines Designs („Card/Machine Read“, 0x10004310) und vor dem Sticken | ⬜ (v3.4 vorbereitet, Schalter `-MitLadebefehl`) | 🟡 |
 | 0x08 | **Sticken starten** (Design ans Stickmodul übergeben) | ⬜ | 🟡 (Maschine bewegt sich!) |
 | 0x200 | **Design dauerhaft speichern** | ⬜ | 🔴 |
 | 0x800 | **Design löschen** | ⬜ | 🔴 |
