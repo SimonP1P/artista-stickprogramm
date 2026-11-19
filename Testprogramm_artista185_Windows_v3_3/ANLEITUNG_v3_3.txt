@@ -1,0 +1,59 @@
+﻿VERSION 3.3 - DESIGNLISTE AUSLESEN - BERNINA artista 185 - Anleitung (Windows)
+==============================================================================
+
+WAS IST NEU IN 3.3?
+-------------------
+Test 3.2 (19.11.2026) ist am Wechsel auf 115200 Baud gescheitert. Die
+Nachpruefung im Code der Original-Software hat gezeigt: Bei der artista 185
+wechselt das Original NIE auf 115200 und fordert keinen "Transfer" an
+(0xFFFEE0). Das gilt nur fuer Geraete, die sich direkt als Stickmodul melden.
+Version 3.3 laesst beides weg und verbindet wie Version 3 (57600 Baud, Y Q).
+
+Ausserdem sind die beiden Speicherziele vermutlich vertauscht:
+  0xA0 = vermutlich MASCHINENSPEICHER   (bisher als Karte gefuehrt)
+  0x50 = vermutlich KARTE im Stickmodul (bisher als Maschinenspeicher)
+Version 3.3 fragt deshalb BEIDE Ziele nacheinander ab (erst 0xA0, dann 0x50).
+Steckt keine Karte im Stickmodul, ist bei 0x50 die Meldung
+"keine Speicherkarte im Stickmodul" ERWARTET und bestaetigt die Vermutung.
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. ZIP entpacken (nicht aus der ZIP heraus starten).
+ 2. SELBSTTEST.bat doppelklicken (ohne Maschine).
+    Am Ende muss stehen: "DESIGNLISTE GELESEN (Ziel 0xA0)" mit 30 Designs
+    "SIM DESIGN 01..30" und bei Ziel 0x50 "keine Speicherkarte im Stickmodul".
+ 3. Vor Ort: Maschine AUS und wieder EIN (wichtig, falls vorher ein Test lief),
+    Stickmodul angesteckt, Kabel verbunden, Startbildschirm abwarten.
+ 4. START.bat doppelklicken. Bei "Fortfahren? (J/N)" J und Enter.
+ 5. Warten bis "FERTIG" erscheint.
+ 6. Maschine AUS- und wieder EINSCHALTEN.
+ 7. Die neuen Dateien schicken:  Ergebnis_....txt  und  Mitschnitt_....log
+ 8. Wenn moeglich aufschreiben: Wie viele eigene Designs zeigt die Maschine
+    selbst an? Steckt eine Karte im Stickmodul?
+
+ Nur ein Ziel:  START.bat -Ziel A0   bzw.   START.bat -Ziel 50
+
+
+WAS DIE MELDUNGEN BEDEUTEN
+--------------------------
+ STUFE 1 OK / STUFE 2 OK               Verbindung + Stickmodul wie in Version 2
+ Ziel 0xA0 (vermutlich Maschinenspeicher)
+                                       jetzt beginnen die Listenbefehle
+ Befehl 0x.. : Status 0x0002           Befehl ausgefuehrt, ok
+ Status 0x1005 (keine Speicherkarte)   Ziel meint die Karte, es steckt keine
+ >>> Anzahl Designs (...): X           so viele Designs meldet die Maschine
+ Nr 1  Anzeige '1'  Name roh '...'     ein Design
+ >>> DESIGNLISTE GELESEN (Ziel 0x..)   Ziel erreicht
+ PC-Modus verlassen (Befehl 0x100)     Verbindung beendet
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:
+   T r M E, R+Adresse, R F ?, J 0 5 / E B, Y Q   (Verbindung, Lesen)
+   W FFFED0 + Befehl 00A0/0050/0030/0020/0060/00C0/0100 + ?   (wie Original)
+   W <Auswahl+0> 01,  W <Auswahl+5> Banknummer                 (wie Original)
+ NICHT mehr: W FFFEE0 (Transfer anfordern), J 0 2 (115200 Baud).
+ Kein Befehl zum Speichern (0x200), Loeschen (0x800), Formatieren (0x80),
+ Sticken (0x08) oder Daten-Schreiben ist im Programm enthalten.
