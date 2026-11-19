@@ -9,7 +9,7 @@ Verfahren:
    e.versatz × Stichlänge (Tatami-Muster). Am Rand: Abschnittsende, Rasterpunkte näher als e.min_rand
    am Ende entfallen. Zugausgleich verlängert jede Reihe an beiden Enden.
 5. Bereiche in der Reihenfolge des geringsten Weges; zwischen Bereichen entsteht ein Sprung
-   (Laufwege durch die Fläche: Phase 3).
+   (Laufwege durch die Fläche: Phase 4, im Rust-Kern).
 """
 
 from __future__ import annotations

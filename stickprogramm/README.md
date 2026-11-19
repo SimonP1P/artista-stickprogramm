@@ -1,4 +1,7 @@
-# Stickprogramm (Phase 1: Stichberechnung)
+# Stickprogramm – Python-Prototyp (Phase 1)
+
+> **Prototyp und Referenz.** Das eigentliche Programm entsteht mit Tauri + Svelte + Rust (`../ARCHITECTURE.md`).
+> Dieser Prototyp liefert die Werte mit Quellen und die Prüffälle für den Rust-Kern.
 
 Eigene Digitalisier-Software für die **BERNINA artista 185**, nach dem Vorbild BERNINA artista V4 (Wilcom).
 Phase 1 berechnet aus Formen die Stiche und schreibt **EXP** (Maschinenformat) und eine **SVG-Vorschau**.
@@ -64,7 +67,7 @@ Lauf 2,5 mm (min. 0,8, Sehnenabstand 0,09) · Zugausgleich 0,20 · Unterlagen Ed
 Doppel-Zickzack 7,0 (Stoffe 3,0), Tatami-Unterlage 3,0/4,0 mm 90° versetzt, Randlauf 2,5, Unterlagenrand 0,20 ·
 Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Verbindern > 3,0 mm. EXP nach `Analyse/code/07_exp_format.md`.
 
-## Eigene Festlegungen (nicht aus dem Original – in Phase 3 an Probestickereien prüfen)
+## Eigene Festlegungen (nicht aus dem Original – in Phase 4 an Probestickereien prüfen)
 | Punkt | Festlegung |
 |---|---|
 | Satin-Unterlage „auto“ | Breite < 1,5 mm keine · < 3 mm Mittellauf · < 6 mm Edge Walk · ab 6 mm Edge Walk + Zickzack |
@@ -77,6 +80,6 @@ Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Ver
 | Vernähen | 0,8 mm vor und zurück am Anfang/Ende, bei Farbwechsel und Verbindern > 3,0 mm |
 | Start | Rahmenmitte; erster Weg wird per Sprung angefahren. Fadenschnitt gibt es nicht (Bernina-Format: `trims_for_jump = 0`) |
 
-## Noch nicht enthalten (Phase 3/4)
+## Noch nicht enthalten (kommt im Rust-Kern, Phase 3–5)
 Fancy-/Musterfüllungen, Applikation, Schrift, Satin-Auto-Split, Laufwege statt Sprünge in Flächen, Start-/Endpunkte wählbar,
-Garnfarbkarten, Oberfläche. Übertragung an die Maschine: Phase 2.
+Garnfarbkarten, Oberfläche. Übertragung an die Maschine: Phase 2 und 5.

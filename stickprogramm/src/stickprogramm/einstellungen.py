@@ -4,7 +4,7 @@ Quellen (Sicherheit in Klammern):
 - Analyse/ANALYSE.md §5 und Analyse/code/10_algorithmen_schmale_bahnen.md: entschlüsselte NORMAL.AMT,
   Stil „0 Software Defaults“, DEFAULTS.DFL, Handbuch.
 - Werte, die nicht aus dem Original stammen, sind als „eigene Festlegung“ markiert und werden in
-  Phase 3 an Probestickereien kalibriert.
+  Phase 4 an Probestickereien kalibriert.
 """
 
 from __future__ import annotations

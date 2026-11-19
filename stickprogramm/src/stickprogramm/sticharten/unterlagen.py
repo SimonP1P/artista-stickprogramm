@@ -18,7 +18,7 @@ SATIN_UNTERLAGEN = ("keine", "mittellauf", "edge_walk", "zickzack", "doppelzickz
 
 
 def auto_satin_unterlage(mittlere_breite: float) -> list[str]:
-    """Unterlage nach Säulenbreite (eigene Festlegung, in Phase 3 an Probestickereien prüfen)."""
+    """Unterlage nach Säulenbreite (eigene Festlegung, in Phase 4 an Probestickereien prüfen)."""
     if mittlere_breite < 1.5:
         return []
     if mittlere_breite < 3.0:
