@@ -40,6 +40,7 @@
 | Testprogramme für Windows | `Testprogramm_artista185_Windows/` (v1 Lesetest), `Testprogramm_artista185_Windows_v2/` (v2 + Stickmodul), `Testprogramm_artista185_Windows_v3/` (v3 Designliste – am Gerät gescheitert, Transfer fehlte), `Testprogramm_artista185_Windows_v3_1/` (v3.1 – Transfer nicht bestätigt), `Testprogramm_artista185_Windows_v3_2/` (v3.2: 115200 Baud vor Transfer – am Gerät gescheitert, Ansatz laut Code falsch für die 185), `Testprogramm_artista185_Windows_v3_3/` (**v3.3, aktuell**: ohne 0xFFFEE0/115200, Ziele 0xA0 + 0x50 nacheinander; Test ausstehend, Maschine vorher aus/ein), ZIPs daneben; Quellen in `Arbeitsdaten/testprogramm_quellen/` |
 | Verifikationsprotokoll | `VERIFIKATION.md` |
 | Übersicht Rohdaten | `Arbeitsdaten/README.md` |
+| **Eigenes Stickprogramm** (Stichberechnung, EXP, Vorschau; Bedienung, Aufbau, eigene Festlegungen) | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |
 
 **Quellen-Hierarchie bei Widersprüchen:** (1) Gerätetest > (2) Maschinencode/entschlüsselte Daten > (3) Handbuch > (4) Ableitung/Vermutung. Die Berichte nennen zu jeder Aussage Fundstelle und Sicherheit (hoch/mittel/niedrig). Diese Kennzeichnung beibehalten.
 
@@ -85,6 +86,7 @@ cc -O2 -I Arbeitsdaten/werkzeuge -o twofish Arbeitsdaten/werkzeuge/twofish_cfb1.
 venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink.dll full > beaglink.asm
 ```
 - Weitere Aufrufe: `Analyse/code/11_werkzeuge.md`. Wichtig: das Skript heißt `rdis.py`, nicht `dis.py` (kollidiert mit Python-Modul).
+- **Windows-PC:** Python nur über `py` (3.14); Umgebung `py -m venv venv`, Programm `venv\Scripts\python -m pip install -e stickprogramm[test]`, Tests `venv\Scripts\python -m pytest stickprogramm`. SVG-Vorschau lässt sich mit Edge headless als PNG ansehen (`msedge --headless=new --screenshot=… file:///….svg`).
 - Vorhandene Mac-Werkzeuge: `unshield`, `pdftotext`, `deark`, `cc`. **Nicht** installiert: Wine, PowerShell (bei Bedarf portable PowerShell 7.4.6 osx-arm64 ins Scratchpad laden).
 - **Bekannter Schaden:** Die CD-Kopie hat 14 defekte 64-KB-Blöcke in `setup.z` → ARTISTA.HLP, qrg_enu.pdf, Quilter.hlp, portfolio.exe, vcl60.bpl unbrauchbar (Details `Analyse/code/01_setup_entpacken.md`).
 
@@ -92,7 +94,7 @@ venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink
 | Phase | Inhalt | Stand |
 |---|---|---|
 | 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll, Lesetest am Gerät | ✅ erledigt, verifiziert (`VERIFIKATION.md`) |
-| 1 Stickdatei erzeugen | Grundlegende Stichberechnung (Lauf, Satin mit Auto-Spacing, Tatami, Unterlage, Zugausgleich) → EXP + Vorschau | ⬜ offen |
+| 1 Stickdatei erzeugen | Grundlegende Stichberechnung (Lauf, Satin mit Auto-Spacing, Tatami, Unterlage, Zugausgleich) → EXP + Vorschau | ✅ Grundstufe 19.11.2026: Python-Paket `stickprogramm/` (Lauf, Dreifach, Satin, Tatami mit Löchern, 5 Unterlagen, 8 Stoffe, Rahmen, Vernähen, Auto Jump, EXP lesen/schreiben, SVG), 47 Tests; noch nicht an der Maschine gestickt |
 | 2 Übertragung | Weg zur artista 185 festlegen (Kabel/Karte); Schreiben erst nach Zustimmung, zuerst „sticken ohne speichern“; dafür hilfreich: ein echtes Design aus der Maschine lesen (v3 am Gerät: `W`-Schreiben + Befehl 0x50 ok, Listenbefehle abgelehnt, weil Transfer-Anforderung 0xFFFEE0 fehlte → v3.1: 0x01 in 0xFFFEE0 angenommen, Bit 0x02 kam nicht → v3.2 (115200) am 19.11.2026 gescheitert: laut Code nutzt das Original bei der 185 weder 115200 noch 0xFFFEE0; v3-Fehler 0x1005 = vermutlich Ziel 0x50 = Karte → v3.3 gebaut (Ziele 0xA0 + 0x50, ohne 0xFFFEE0), Test nach Aus/Ein ausstehend, Details `Analyse_Teil2/07_befund_am_geraet.md`) | 🟡 Ablauf bekannt, nicht getestet |
 | 3 Alle Sticharten & Funktionen | vollständiger Umfang wie das Vorbild (Lauf, Dreifach, Satin, Tatami/Step, Fancy/Muster, Applikation, Schrift, Unterlagen, Stoffe), Probestickereien zur Kalibrierung – auch feine Arbeiten | ⬜ |
 | 4 Komfort | Oberfläche (Windows + Mac), Rahmenauswahl, Schriften | ⬜ |
