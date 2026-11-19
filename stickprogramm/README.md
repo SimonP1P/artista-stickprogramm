@@ -67,7 +67,7 @@ Lauf 2,5 mm (min. 0,8, Sehnenabstand 0,09) · Zugausgleich 0,20 · Unterlagen Ed
 Doppel-Zickzack 7,0 (Stoffe 3,0), Tatami-Unterlage 3,0/4,0 mm 90° versetzt, Randlauf 2,5, Unterlagenrand 0,20 ·
 Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Verbindern > 3,0 mm. EXP nach `Analyse/code/07_exp_format.md`.
 
-## Eigene Festlegungen (nicht aus dem Original – in Phase 4 an Probestickereien prüfen)
+## Eigene Festlegungen (Notlösungen – werden durch das analysierte Original-Verhalten ersetzt, `../ARCHITECTURE.md` §1a)
 | Punkt | Festlegung |
 |---|---|
 | Satin-Unterlage „auto“ | Breite < 1,5 mm keine · < 3 mm Mittellauf · < 6 mm Edge Walk · ab 6 mm Edge Walk + Zickzack |

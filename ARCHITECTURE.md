@@ -10,6 +10,17 @@ Stand: 19.11.2026 (vom Nutzer festgelegt). Roadmap: `CLAUDE.md` §6.
 | Plattform | **Windows und Mac**, offline |
 | Nutzung | **nur für den Nutzer selbst** (19.11.2026) – GPL-Bausteine (Potrace, Ink/Stitch-Schriften) sind damit erlaubt; die Programme werden nicht weitergegeben |
 
+## 1a. Grundsatz: das Vorbild ist maßgeblich (Nutzer, 19.11.2026)
+- **Stichberechnung, Werte und Abläufe kommen aus dem analysierten Original** (BERNINA artista V4 / Wilcom):
+  Vorlagen und Stile aus NORMAL.AMT, DEFAULTS.DFL, Handbuch, Maschinencode. Keine freien Ersatz-Algorithmen,
+  nur weil sie verfügbar sind.
+- **Fehlt in der Analyse etwas, wird zuerst das Original weiter untersucht** (Vorlagen, Disassembly, Handbuch,
+  Vergleichsstickerei), bevor etwas selbst festgelegt wird. Eigene Festlegungen sind Notlösungen, werden als solche
+  markiert (wie in `stickprogramm/README.md`) und später durch das Original-Verhalten ersetzt.
+- **Freie Bibliotheken nur für neutrale Technik:** Programmhülle, Oberfläche, reine Geometrie (Versatz, Schnittmengen),
+  Schriftdateien lesen, Bild → Umriss, serieller Port. Sie entscheiden **nicht**, wie gestickt wird.
+- **Ink/Stitch** dient höchstens als Vergleich der Ergebnisse, nicht als Quelle für Algorithmen oder Werte.
+
 ## 2. Bausteine
 | Bereich | Wahl | Warum / Hinweis |
 |---|---|---|
@@ -19,11 +30,11 @@ Stand: 19.11.2026 (vom Nutzer festgelegt). Roadmap: `CLAUDE.md` §6.
 | Geometrie | Rust: `geo`, `i_overlay` bzw. Clipper2 | Versatz (Unterlagenrand, Zugausgleich), Knockout, Überlappung, Mittellinien – ersetzt die einfachen Eigenbau-Hilfen des Python-Prototyps |
 | Vektorisierung | **Potrace** (1–2 Farben, Text; GPL, privat erlaubt) + **VTracer** (mehrfarbig, MIT, in Rust) | Bild → Umrisse |
 | Schrift-Umrisse | Rust-Font-Bibliothek (z. B. `ttf-parser`) | Computer-Schriften in Umrisse wandeln |
-| Stickschriften | **Ink/Stitch-Schriftbibliothek** (von Hand digitalisiert) | beste Qualität; Lizenz je Schrift in der Schriftdatei vermerken (privat unkritisch). Später prüfen: Original-Alphabete der CD (`Analyse/daten/alphabets.md`) – Format noch nicht analysiert |
+| Stickschriften | **zuerst die Original-Alphabete der CD** (`Analyse/daten/alphabets.md`, Format noch zu analysieren); Ink/Stitch-Schriften nur, wenn ein Alphabet dort fehlt | Grundsatz 1a; Schrift-Regeln (Faktor 0,9, kein Auto Jump, Mindesthöhen) aus der Analyse |
 | Dateiformate | eigener **EXP-Writer** in der Bernina-Variante (ohne Trim-Codes, `Analyse/code/07_exp_format.md`); **pyembroidery** (MIT) als Vergleich | EXP ist für die 185 nur **Zwischenformat**: auf die Maschine kommt der Designcontainer mit „BE“-Verschleierung (`Analyse_Teil2/05_designcontainer_verschleierung.md`). DST u. a. sind **kein** Ziel |
 | Maschinen-Anbindung | serieller Port aus Rust (z. B. Crate `serialport`) | Protokoll nach `Analyse_Teil2/01–08`. **Stand:** Verbinden, Stickmodul, Lesen am Gerät bestätigt; Designliste lesen und Design schreiben **noch nicht** (Phase 2) |
-| Qualitäts-Referenz | **Ink/Stitch** (freie Profi-Software, GPL-3) | Vergleichsmaßstab, Ideen für Parameter aus deren Doku |
-| Werte-Referenz | Analyse der Original-Software + **Python-Prototyp** `stickprogramm/` | Standardwerte mit Quellen (`stickprogramm/src/stickprogramm/einstellungen.py`), 47 Prüffälle |
+| **Maßstab für Stiche** | **Analyse der Original-Software** (`Analyse/`, `Analyse_Teil2/`) | Grundsatz 1a; Werte mit Quellen bereits in `stickprogramm/src/stickprogramm/einstellungen.py`, 47 Prüffälle im Python-Prototyp |
+| Vergleich | Ink/Stitch (GPL-3) | nur Ergebnisse nebeneinanderlegen, keine Quelle |
 
 ## 3. Aufbau (geplant)
 ```
@@ -54,7 +65,10 @@ Der Rechenkern wird in Rust **neu geschrieben, nicht Zeile für Zeile übersetzt
 (Versatz, Wege innerhalb von Flächen statt Sprüngen). Übernommen werden:
 - alle Standardwerte und Stofftabellen mit Quellen (`einstellungen.py`),
 - die Prüffälle (47 Tests) als Rust-Tests,
-- die Liste der eigenen Festlegungen (`stickprogramm/README.md`), die in Probestickereien geprüft werden,
+- die Liste der eigenen Festlegungen (`stickprogramm/README.md`) – **nicht** als Dauerlösung, sondern als Arbeitsliste:
+  jede wird durch das Original-Verhalten ersetzt (Grundsatz 1a). Ansatzpunkte in der Analyse: Unterlagenwahl und
+  -werte je Stil (AMT `0x27a7`), Vernähen/Tie-in/Tie-off (Stil-Tags im AMT), Tatami-Reihenversatz (zwei Werte
+  `0x2719`), Satin-Auto-Split (`0x2722`), Korrekturwert `0x2739`, Verbinder (`0x272a`), Zickzack-Unterlage (`0x2744/45`),
 - der Python-Prototyp selbst als Vergleich (gleiches JSON rein → Ergebnisse vergleichen).
 
 ## 5. Entwicklungsumgebung
