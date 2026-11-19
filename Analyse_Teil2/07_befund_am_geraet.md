@@ -156,3 +156,26 @@ Von Claude Code auf dem Windows-PC ausgeführt. **0x400 vom Nutzer einmalig frei
   simuliertem Echo-Verlust ok (Daten byte-genau). `N` ist am Gerät noch **nicht** getestet (Lauf 3 kam wegen leerem Puffer
   nicht bis zum Datenlesen).
 - Nächster Schritt: v3.5 mit `-MitLadebefehl` (0x400 **neu freigeben lassen**) – Design Nr. 1 in einem Durchgang lesen.
+
+## Test v3.5 – Design Nr. 1 vollständig gelesen (19.11.2026, 13:55, `Arbeitsdaten/geraetetests/*_135532_v3_5*`)
+0x400 vom Nutzer **für Lesetests generell freigegeben** (Regel 1a). Maschine frisch eingeschaltet (Verbindung bei 19200).
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| Ziel 0xA0 → Auswahl 1/0 → 0x30 → 0x20 → Auswahl → **0x400** | alle Status 0x0002; Kopf wie in Lauf 1: Tabellen 0, Länge 1 = 103 432, Länge 2 = 19 752 | hoch |
+| Lesen mit **`N`** (256 Byte binär) | **funktioniert an der 185**: 123 184 Byte in 75 s (**1 642 Byte/s**, 6,5 × schneller als `R`), **0 Wiederholungen**; Icon 568 Byte | hoch |
+| Prüfung | Endkennung **`80 81`** genau an Byte 103 430–103 431 der Stichdaten; Kopf + Länge 1 + Länge 2 = Dateigröße | hoch |
+| 0x100 | Status 0x0000 wie bisher | hoch |
+
+**Auswertung** (`Arbeitsdaten/werkzeuge/maschinen_design.py`, Ergebnis `Arbeitsdaten/maschinendesigns/`):
+- **Stichdaten = EXP-Kodierung** (dx, dy in 0,1 mm, `80 04` Sprung, `80 01 00 00` Farbwechsel, Ende `80 81`): 51 113 Stiche,
+  157 Sprünge, **144 Farbwechsel → 145 Farben = Wert der Farbspalte der Designliste** (INFO+N+1 = Farbanzahl − 1, bestätigt).
+  Beginn mit Vernähstichen `08 00 08 00 F8 00 F8 00`. Die Vorschau zeigt saubere Satin-Buchstaben A, B, C … (hoch).
+- Design Nr. 1 „Drifterv45Rev7“ ist ein **ganzer Stick-Zeichensatz** („Drifter“): jeder Buchstabe ein Farbblock, alle in einer
+  Reihe (2 164 mm × 40 mm). Die Designs 2–7 (144–149 Farben) sind vermutlich weitere Zeichensätze (mittel).
+- **Anhang = BE-Container, Entschleierung aus 05 am echten Gerät bestätigt:** Kopf u16 0, u32 Länge 19 752 (= Länge 2),
+  nach `be_scramble.transform(…, encrypt=False)` zwei Chunks: **0x0A Kopf (0x134 Byte, Name „Drifterv45Rev7“ ab +0x14)** und
+  **0x14 Farbtabelle (6 + 145 × 0x86 Byte, alle Einträge 0** – keine Garninformation gespeichert). Kein Chunk 0x28/0x32.
+- Icon: Kopf `01 00 09 3E FF 00 00 00 00 00`, dann 9 × 62 Byte 1-Bit-Bitmap (72 × 62 Pixel, Bit gesetzt = schwarz); zeigt die
+  ersten Buchstaben.
+- Damit ist **Phase 2 „ein echtes Design auslesen“ erreicht.** Nächste Schritte: Designs 2–51 lesen (Sammlung echter
+  Maschinendaten, Vergleich mit eigenem EXP), dann der Weg zurück (Schreiben 0x10/0x200 oder Sticken 0x08 – nur nach Zustimmung).

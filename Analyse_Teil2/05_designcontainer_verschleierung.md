@@ -2,7 +2,7 @@
 
 **Code:** [`code/be_scramble.py`](code/be_scramble.py) (Python-Nachbau mit Selbsttest)
 **Quelle:** BEAGLink.dll 0x1000a370 (Startzustand), 0x1000a4c0 (Byte-Kodierung), 0x1000a640 (ganzer Container), 0x10007590/0x10007600 (Chunk-Suche)
-**Sicherheit:** hoch für den Algorithmus (Befehl für Befehl übersetzt, Hin- und Rückweg identisch). **Nicht** an einer echten Datei geprüft: Auf der CD liegt kein Beispiel-Container.
+**Sicherheit:** hoch für den Algorithmus (Befehl für Befehl übersetzt, Hin- und Rückweg identisch). **Am echten Gerät bestätigt (19.11.2026):** Der aus der artista 185 gelesene Anhang von Design Nr. 1 (19 752 Byte) ergibt entschleiert die Chunks 0x0A (Name „Drifterv45Rev7“) und 0x14 (145 Farben) – siehe [07](07_befund_am_geraet.md), `Arbeitsdaten/maschinendesigns/`.
 
 ## Containeraufbau
 Diesen Datensatz übergibt die Stick-Software an BEAGLink (und BEAGLink baut ihn beim Lesen wieder auf):

@@ -1,0 +1,114 @@
+﻿artista Design lesen VERSION 3.5 – 19.11.2026 13:55:32
+Mitschnitt: C:\Users\Simon\Desktop\AI Projekte\artista-stickprogramm\Testprogramm_artista185_Windows_v3_5\Mitschnitt_20261119_135532.log
+
+=== Port COM3 ===
+  Versuch 1 : Transfermodus (T r M E) …
+  keine passende Antwort – synchronisiere (R / F / ?) …
+  … wechsle auf 57600 Baud
+  synchron bei 57600 Baud
+  Versuch 2 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 57600 Baud)
+  0x200100: 4E 4D 4D 56 30 34 2E 30 34 00 47 65 72 6D 61 6E 20 20 20 20 20 20 00 46 72 69 74 7A 20 47 65 67 61 75 66 20 41 47 20 20 20 20 20 20 20 20 00 4D 61 79 20 30 31 20 20 00 FF FF FF FF FF FF FF FF
+            'NMMV04.04.German      .Fritz Gegauf AG        .May 01  .........'
+  >>> STUFE 1 OK: Nähmaschine antwortet, Firmware '04.04', Sprache 'German'
+  Umschalten zum Stickmodul, Versuch 1 …
+  vereinbare 57600 Baud (J 0 5 … B O S … E B) …
+  schalte zum Stickmodul durch (Y Q) …
+  0x200100: 53 52 4D 56 30 34 2E 30 34 00 46 72 69 74 7A 20 47 65 67 61 75 66 20 41 47 0D 00 4A 61 6E 75 20 30 34 20 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+            'SRMV04.04.Fritz Gegauf AG..Janu 04 .............................'
+  >>> STUFE 2 OK: Stickmodul antwortet – Kennung SRMV, Version-Code 0x404
+  0xFFFD24: 1C 3C 00 01 B3 42 00 02 40 80 00 02 01 EA 00 02 44 80 00 02 8E 9A 00 01 FD 7A 00 02 38 12 01 00
+     N (Byte 0)             = 0x1C (28)
+     Byte 1                 = 0x3C (60)
+     Groesse Datenbereich   = 0x1B342 (111426)
+     INFO                   = 0x24080 (147584)
+     AUSWAHL                = 0x201EA (131562)
+     ICON                   = 0x24480 (148608)
+     DATEN                  = 0x28E9A (167578)
+     Ende Karte             = 0x1FD7A (130426)
+     Ende Speicher          = 0x23812 (145426)
+  >>> Verwaltungsblock plausibel (N ≤ 28, Byte1 ≤ 60, Größe ≤ 150000)
+  Zeiger @0x24004: 0xFFFED4
+  Zeiger @0x24040: 0x206AE
+  Zeiger @0x24044: 0x20772
+  Zeiger @0x24048: 0x2083A
+  Status @Zeiger(0x24004): 00 40 00 00 00 86 00 00   Byte+5=0x86 Byte+7=0x00
+
+  Ziel 0xA0 (vermutlich Maschinenspeicher)
+  Befehl 0xA0 (Ziel): Status 0x0002
+  Befehl 0x30 (Bank 0): Status 0x0002
+  Befehl 0x20 (Liste laden): Status 0x0002
+  >>> Anzahl Designs (Ziel 0xA0 (vermutlich Maschinenspeicher)): 51
+  Bank 0 (Statusbyte 0x63: Namen werden von der Original-Software durch Nummern ersetzt)
+   Nr   1  Anzeige '1'  Name roh 'Drifterv45Rev7'  Flags 0xAC  Farben? 145
+   Nr   2  Anzeige '2'  Name roh '2'  Flags 0x8C  Farben? 144
+   Nr   3  Anzeige '3'  Name roh '3'  Flags 0x8C  Farben? 148
+   Nr   4  Anzeige '4'  Name roh '4'  Flags 0x8C  Farben? 149
+   Nr   5  Anzeige '5'  Name roh '5'  Flags 0x8C  Farben? 146
+   Nr   6  Anzeige '6'  Name roh '6'  Flags 0x8C  Farben? 147
+   Nr   7  Anzeige '7'  Name roh '7'  Flags 0x8C  Farben? 147
+   Nr   8  Anzeige '8'  Name roh 'Outdoorsman - 805023'  Flags 0x84  Farben? 1
+   Nr   9  Anzeige '9'  Name roh '1'  Flags 0xA4  Farben? 1
+   Nr  10  Anzeige '10'  Name roh '2'  Flags 0xA4  Farben? 1
+   Nr  11  Anzeige '11'  Name roh '3'  Flags 0xA4  Farben? 1
+   Nr  12  Anzeige '12'  Name roh '4'  Flags 0xA4  Farben? 1
+   Nr  13  Anzeige '13'  Name roh '5'  Flags 0xA4  Farben? 1
+   Nr  14  Anzeige '14'  Name roh '6'  Flags 0xA4  Farben? 1
+   Nr  15  Anzeige '15'  Name roh '7'  Flags 0xA4  Farben? 1
+   Nr  16  Anzeige '16'  Name roh '8'  Flags 0xA4  Farben? 1
+   Nr  17  Anzeige '17'  Name roh '9'  Flags 0xA4  Farben? 1
+   Nr  18  Anzeige '18'  Name roh '10'  Flags 0xA4  Farben? 1
+   Nr  19  Anzeige '19'  Name roh '11'  Flags 0xA4  Farben? 1
+   Nr  20  Anzeige '20'  Name roh '12'  Flags 0xA4  Farben? 1
+   Nr  21  Anzeige '21'  Name roh '13'  Flags 0xA4  Farben? 1
+   Nr  22  Anzeige '22'  Name roh '14'  Flags 0xA4  Farben? 1
+   Nr  23  Anzeige '23'  Name roh '15'  Flags 0xA4  Farben? 1
+   Nr  24  Anzeige '24'  Name roh '16'  Flags 0xA4  Farben? 1
+   Nr  25  Anzeige '25'  Name roh '17'  Flags 0xA4  Farben? 1
+   Nr  26  Anzeige '26'  Name roh '18'  Flags 0xA4  Farben? 1
+   Nr  27  Anzeige '27'  Name roh '19'  Flags 0xA4  Farben? 1
+  Bank 1 (Statusbyte 0x63: Namen werden von der Original-Software durch Nummern ersetzt)
+   Nr  28  Anzeige '28'  Name roh '20'  Flags 0xA4  Farben? 145
+   Nr  29  Anzeige '29'  Name roh '21'  Flags 0xA4  Farben? 144
+   Nr  30  Anzeige '30'  Name roh '22'  Flags 0xA4  Farben? 148
+   Nr  31  Anzeige '31'  Name roh '23'  Flags 0xA4  Farben? 149
+   Nr  32  Anzeige '32'  Name roh '25'  Flags 0xA4  Farben? 146
+   Nr  33  Anzeige '33'  Name roh '26'  Flags 0xA4  Farben? 147
+   Nr  34  Anzeige '34'  Name roh 'Outdoorsman - 805023'  Flags 0x84  Farben? 147
+   Nr  35  Anzeige '35'  Name roh '27'  Flags 0xA4  Farben? 1
+   Nr  36  Anzeige '36'  Name roh '28'  Flags 0xA4  Farben? 1
+   Nr  37  Anzeige '37'  Name roh '29'  Flags 0xA4  Farben? 1
+   Nr  38  Anzeige '38'  Name roh '30'  Flags 0xA4  Farben? 1
+   Nr  39  Anzeige '39'  Name roh 'Outdoorsman - 805024'  Flags 0x84  Farben? 1
+   Nr  40  Anzeige '40'  Name roh 'Outdoorsman - 805022'  Flags 0x84  Farben? 1
+   Nr  41  Anzeige '41'  Name roh 'Outdoorsman - 805145'  Flags 0x84  Farben? 1
+   Nr  42  Anzeige '42'  Name roh '7'  Flags 0x86  Farben? 1
+   Nr  43  Anzeige '43'  Name roh '8'  Flags 0x86  Farben? 1
+   Nr  44  Anzeige '44'  Name roh '9'  Flags 0x86  Farben? 1
+   Nr  45  Anzeige '45'  Name roh '10'  Flags 0x86  Farben? 1
+   Nr  46  Anzeige '46'  Name roh '11'  Flags 0x86  Farben? 1
+   Nr  47  Anzeige '47'  Name roh '12'  Flags 0x86  Farben? 1
+   Nr  48  Anzeige '48'  Name roh '13'  Flags 0x86  Farben? 1
+   Nr  49  Anzeige '49'  Name roh '14'  Flags 0x86  Farben? 1
+   Nr  50  Anzeige '50'  Name roh '15'  Flags 0x86  Farben? 1
+   Nr  51  Anzeige '51'  Name roh '16'  Flags 0x86  Farben? 1
+  >>> DESIGNLISTE GELESEN (Ziel 0xA0)
+
+  Design Nr 1 lesen (Index 0, Bank 0)
+  Befehl 0xA0 (Ziel Maschinenspeicher): Status 0x0002
+  Befehl 0x30 (Bank 0): Status 0x0002
+  Befehl 0x20 (Liste laden): Status 0x0002
+  Name in der Liste: 'Drifterv45Rev7'
+  Befehl 0x400 (Design in den Übertragungspuffer laden): Status 0x0002
+  Kopf (176 Byte): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 94 08 00 00 4D 28
+  Länge Stichdaten (Kopf+6N) = 103432, Zusatz (Kopf+6N+4) = 19752, Icon 9 x 62 -> 568 Byte
+  Designdaten: 123184 Byte in 75,0 s (1.642 Byte/s), Wiederholungen 0
+  Icon: 568 Byte in 0,6 s (964 Byte/s), Wiederholungen 0
+  >>> DESIGN GELESEN: 123360 Byte -> C:\Users\Simon\Desktop\AI Projekte\artista-stickprogramm\Testprogramm_artista185_Windows_v3_5\Design_Nr01_20261119_135532.bin
+  Ende der Stichdaten (Byte 103430–103431): 80 81 = Endkennung 80 81 (passt)
+  Icon: 568 Byte -> C:\Users\Simon\Desktop\AI Projekte\artista-stickprogramm\Testprogramm_artista185_Windows_v3_5\Icon_Nr01_20261119_135532.bin
+  Daten, erste 64 Byte: 1A 04 08 00 08 00 F8 00 F8 00 10 00 F8 15 FA 15 FE 15 01 16 03 16 04 15 07 15 09 14 0B 12 0E 11 10 0F 10 05 12 F4 0D EF 0B EF 07 ED 05 ED 03 EC 02 EC 00 EC 00 EC FE EC FB EC FB ED 06 14 04 15
+
+  PC-Modus verlassen (Befehl 0x100 angenommen)
+
+FERTIG. Bitte die Maschine jetzt AUS- und wieder EINSCHALTEN.
