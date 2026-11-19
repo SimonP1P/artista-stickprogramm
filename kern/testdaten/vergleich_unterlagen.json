@@ -1,0 +1,27 @@
+{
+  "name": "vergleich_unterlagen",
+  "rahmen": "artista 255 x 145 Oval",
+  "stoff": "Woven Heavy Weight",
+  "einstellungen": {"lauf": {"variabel": true}, "tatami": {"versatz": 0.75}, "verbinder": {"vernaeh_stiche": 4}},
+  "objekte": [
+    {"art": "satin", "farbe": "#aa0000", "unterlage": "zickzack",
+     "seite_a": [[-50, 80], [-20, 85], [10, 80]], "seite_b": [[-50, 72], [-20, 75], [10, 72]]},
+    {"art": "satin", "farbe": "#aa0000", "unterlage": ["doppelzickzack"],
+     "seite_a": [[-50, 60], [10, 60]], "seite_b": [[-50, 52], [-30, 50], [-10, 51], [10, 52]]},
+    {"art": "satinlinie", "farbe": "#00aa00", "unterlage": "edge_walk+zickzack", "breite": 7,
+     "punkte": {"bezier": [[-50, 30], [-20, 50], [20, 10], [50, 30]]}},
+    {"art": "satinlinie", "farbe": "#00aa00", "unterlage": "mittellauf", "breite": 2.5,
+     "punkte": {"bogen": {"mitte": [0, 0], "radius": 25, "von": 10, "bis": 170}}},
+    {"art": "satin", "farbe": "#0000aa", "unterlage": "keine",
+     "seite_a": [[-30, -20], [-10, -20]], "seite_b": [[-30, -40], [-10, -40]]},
+    {"art": "tatami", "farbe": "#555555", "winkel": 0, "unterlage": false,
+     "umriss": [[10, -40], [50, -40], [50, -10], [40, -10], [40, -30], [20, -30], [20, -10], [10, -10]]},
+    {"art": "tatami", "farbe": "#555555", "winkel": 30,
+     "umriss": {"rechteck": {"mitte": [0, -70], "breite": 60, "hoehe": 25}},
+     "loecher": [{"kreis": {"mitte": [-10, -70], "radius": 5, "start": 45}}]},
+    {"art": "lauf", "farbe": "#000000", "laenge": 1.8,
+     "punkte": {"verbinden": [{"bogen": {"mitte": [0, -100], "radius": 15, "von": 180, "bis": 360}}, [[15, -100], [15, -110], [-15, -110]]]}},
+    {"art": "dreifach", "farbe": "#000000", "geschlossen": true,
+     "punkte": {"kreis": {"mitte": [-45, -100], "radius": 6}}}
+  ]
+}

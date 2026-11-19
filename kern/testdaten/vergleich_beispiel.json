@@ -1,0 +1,152 @@
+{
+  "name": "vergleich_beispiel",
+  "rahmen": "artista 130 x 100",
+  "stoff": "0 Software Defaults",
+  "objekte": [
+    {
+      "art": "tatami",
+      "name": "Ring",
+      "farbe": "#2e86c1",
+      "winkel": 45,
+      "umriss": {
+        "kreis": {
+          "mitte": [
+            0,
+            22
+          ],
+          "radius": 18
+        }
+      },
+      "loecher": [
+        {
+          "kreis": {
+            "mitte": [
+              0,
+              22
+            ],
+            "radius": 8
+          }
+        }
+      ]
+    },
+    {
+      "art": "satinlinie",
+      "name": "Bogen",
+      "farbe": "#c0392b",
+      "breite": 3.5,
+      "punkte": {
+        "bogen": {
+          "mitte": [
+            0,
+            22
+          ],
+          "radius": 22,
+          "von": 200,
+          "bis": 340
+        }
+      }
+    },
+    {
+      "art": "satin",
+      "name": "Keil",
+      "farbe": "#c0392b",
+      "seite_a": [
+        [
+          -35,
+          -10
+        ],
+        [
+          -10,
+          -6
+        ],
+        [
+          15,
+          -10
+        ]
+      ],
+      "seite_b": [
+        [
+          -35,
+          -12
+        ],
+        [
+          -10,
+          -14
+        ],
+        [
+          15,
+          -12
+        ]
+      ]
+    },
+    {
+      "art": "satinlinie",
+      "name": "Schmale Bahn",
+      "farbe": "#27ae60",
+      "breite": 1.0,
+      "punkte": {
+        "bezier": [
+          [
+            -35,
+            -22
+          ],
+          [
+            -15,
+            -32
+          ],
+          [
+            5,
+            -12
+          ],
+          [
+            25,
+            -22
+          ]
+        ]
+      }
+    },
+    {
+      "art": "lauf",
+      "name": "Kontur",
+      "farbe": "#1b2631",
+      "punkte": {
+        "rechteck": {
+          "mitte": [
+            0,
+            -18
+          ],
+          "breite": 80,
+          "hoehe": 20
+        }
+      },
+      "geschlossen": true
+    },
+    {
+      "art": "dreifach",
+      "name": "Dreifach",
+      "farbe": "#1b2631",
+      "punkte": [
+        [
+          -40,
+          -40
+        ],
+        [
+          -20,
+          -36
+        ],
+        [
+          0,
+          -40
+        ],
+        [
+          20,
+          -36
+        ],
+        [
+          40,
+          -40
+        ]
+      ]
+    }
+  ]
+}

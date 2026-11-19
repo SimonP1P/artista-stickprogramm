@@ -1,0 +1,300 @@
+//! Tatami-/Step-Füllung einer Fläche (Umriss mit optionalen Löchern).
+//!
+//! 1. Fläche so drehen, dass die Stichreihen waagerecht liegen (Stichwinkel).
+//! 2. Reihen im Abstand `abstand` mit allen Kanten schneiden -> Abschnitte je Reihe (Gerade-Ungerade-Regel).
+//! 3. Abschnitte zu zusammenhängenden, einfachen Bereichen verbinden (je Reihe genau ein Abschnitt).
+//! 4. Einstiche je Reihe auf einem festen Raster der Stichlänge; das Raster verschiebt sich je Reihe um
+//!    `versatz` × Stichlänge. Rasterpunkte näher als `min_rand` am Abschnittsende entfallen. Zugausgleich
+//!    verlängert jede Reihe an beiden Enden.
+//! 5. Bereiche in der Reihenfolge des geringsten Weges; dazwischen Sprünge (Laufwege durch die Fläche: Phase 4).
+
+use crate::einstellungen::TatamiEinstellung;
+use crate::geometrie::{Linie, Punkt, abstand, drehen, gegen_uhrzeiger, geschlossen_ohne_endpunkt, p};
+use std::collections::HashMap;
+
+#[derive(Default)]
+struct Bereich {
+    reihen: Vec<(i64, f64, f64)>, // (Reihennummer, x0, x1)
+}
+
+fn schnitte(ringe: &[Linie], y: f64) -> Vec<f64> {
+    let mut xs = Vec::new();
+    for ring in ringe {
+        let n = ring.len();
+        for i in 0..n {
+            let (a, b) = (ring[i], ring[(i + 1) % n]);
+            if (a.y > y) != (b.y > y) {
+                xs.push(a.x + (y - a.y) * (b.x - a.x) / (b.y - a.y));
+            }
+        }
+    }
+    xs.sort_by(|a, b| a.partial_cmp(b).unwrap());
+    xs
+}
+
+/// Bereiche bilden; Reihenfolge wie im Prototyp: geschlossene Bereiche in Abschlussreihenfolge, dann offene.
+fn bereiche(reihen: &[(i64, Vec<(f64, f64)>)]) -> Vec<Bereich> {
+    let mut alle: Vec<Bereich> = Vec::new();
+    let mut fertig: Vec<usize> = Vec::new();
+    let mut offen: Vec<usize> = Vec::new();
+    for (k, abschnitte) in reihen {
+        let ueberlapp: Vec<Vec<usize>> = abschnitte
+            .iter()
+            .map(|&(x0, x1)| {
+                offen
+                    .iter()
+                    .copied()
+                    .filter(|&b| {
+                        let &(kb, bx0, bx1) = alle[b].reihen.last().unwrap();
+                        kb == k - 1 && bx0 < x1 && x0 < bx1
+                    })
+                    .collect()
+            })
+            .collect();
+        let mut zaehler: HashMap<usize, usize> = HashMap::new();
+        for liste in &ueberlapp {
+            for &b in liste {
+                *zaehler.entry(b).or_insert(0) += 1;
+            }
+        }
+        let mut neu_offen = Vec::new();
+        for (&(x0, x1), liste) in abschnitte.iter().zip(&ueberlapp) {
+            let b = if liste.len() == 1 && zaehler[&liste[0]] == 1 {
+                liste[0]
+            } else {
+                alle.push(Bereich::default());
+                alle.len() - 1
+            };
+            alle[b].reihen.push((*k, x0, x1));
+            neu_offen.push(b);
+        }
+        for &b in &offen {
+            if !neu_offen.contains(&b) {
+                fertig.push(b);
+            }
+        }
+        offen = neu_offen;
+    }
+    let reihenfolge: Vec<usize> = fertig.into_iter().chain(offen).collect();
+    let mut nach_index: Vec<Option<Bereich>> = alle.into_iter().map(Some).collect();
+    reihenfolge.into_iter().map(|i| nach_index[i].take().unwrap()).collect()
+}
+
+fn reihe(k: i64, x0: f64, x1: f64, y: f64, e: &TatamiEinstellung, vorwaerts: bool) -> Linie {
+    let l = e.laenge;
+    let phase = ((k as f64 * e.versatz) % 1.0) * l;
+    let mut m = ((x0 + e.min_rand - phase) / l).ceil() as i64;
+    let mut xs = vec![x0];
+    loop {
+        let x = phase + m as f64 * l;
+        if x > x1 - e.min_rand {
+            break;
+        }
+        xs.push(x);
+        m += 1;
+    }
+    xs.push(x1);
+    if !vorwaerts {
+        xs.reverse();
+    }
+    xs.into_iter().map(|x| p(x, y)).collect()
+}
+
+fn bereich_sticken(b: &Bereich, y0: f64, e: &TatamiEinstellung, von_oben: bool, links_start: bool) -> Linie {
+    let reihen: Vec<_> = if von_oben {
+        b.reihen.iter().rev().copied().collect()
+    } else {
+        b.reihen.clone()
+    };
+    let mut out: Linie = Vec::new();
+    let mut vorwaerts = links_start;
+    for (k, x0, x1) in reihen {
+        let y = y0 + k as f64 * e.abstand;
+        let pts = reihe(k, x0, x1, y, e, vorwaerts);
+        if let Some(&a) = out.last() {
+            // Übergang zur nächsten Reihe: ggf. in Stiche ≤ Stichlänge teilen
+            let z = pts[0];
+            let n = (abstand(a, z) / e.laenge - 1e-9).ceil() as i64;
+            for j in 1..n {
+                out.push(p(
+                    a.x + (z.x - a.x) * j as f64 / n as f64,
+                    a.y + (z.y - a.y) * j as f64 / n as f64,
+                ));
+            }
+        }
+        out.extend(pts);
+        vorwaerts = !vorwaerts;
+    }
+    out
+}
+
+/// Füllstiche als Liste von Wegen (je zusammenhängender Bereich ein Weg, in Stickreihenfolge).
+pub fn tatami(
+    umriss: &[Punkt],
+    loecher: &[Linie],
+    e: &TatamiEinstellung,
+    winkel: Option<f64>,
+    start: Option<Punkt>,
+) -> Vec<Linie> {
+    let w = winkel.unwrap_or(e.winkel);
+    let null = p(0.0, 0.0);
+    let mut ringe = vec![gegen_uhrzeiger(umriss)];
+    ringe.extend(loecher.iter().map(|l| geschlossen_ohne_endpunkt(l)));
+    let gedreht: Vec<Linie> = ringe
+        .iter()
+        .map(|r| r.iter().map(|&q| drehen(q, -w, null)).collect())
+        .collect();
+    if gedreht[0].len() < 3 {
+        return Vec::new();
+    }
+    let y_min = gedreht[0].iter().map(|q| q.y).fold(f64::INFINITY, f64::min);
+    let y_max = gedreht[0].iter().map(|q| q.y).fold(f64::NEG_INFINITY, f64::max);
+    let y0 = y_min + e.abstand / 2.0;
+    let mut reihen = Vec::new();
+    let mut k: i64 = 0;
+    while y0 + k as f64 * e.abstand < y_max {
+        let y = y0 + k as f64 * e.abstand;
+        let xs = schnitte(&gedreht, y);
+        let mut abschnitte = Vec::new();
+        let mut i = 0;
+        while i + 1 < xs.len() {
+            let (x0, x1) = (xs[i] - e.zugausgleich, xs[i + 1] + e.zugausgleich);
+            if x1 - x0 >= 0.3 {
+                abschnitte.push((x0, x1));
+            }
+            i += 2;
+        }
+        if !abschnitte.is_empty() {
+            reihen.push((k, abschnitte));
+        }
+        k += 1;
+    }
+    let mut offen = bereiche(&reihen);
+
+    let mut pos = start.map(|s| drehen(s, -w, null));
+    let mut wege = Vec::new();
+    while !offen.is_empty() {
+        let mut best: Option<(f64, usize, bool, bool)> = None;
+        for (bi, b) in offen.iter().enumerate() {
+            for von_oben in [false, true] {
+                let &(kz, x0, x1) = if von_oben {
+                    b.reihen.last().unwrap()
+                } else {
+                    &b.reihen[0]
+                };
+                let y = y0 + kz as f64 * e.abstand;
+                for links in [true, false] {
+                    let q = if links { p(x0, y) } else { p(x1, y) };
+                    let d = pos.map_or(0.0, |s| abstand(s, q));
+                    if best.is_none_or(|bst| d < bst.0) {
+                        best = Some((d, bi, von_oben, links));
+                    }
+                }
+            }
+        }
+        let (_, bi, von_oben, links) = best.unwrap();
+        let b = offen.remove(bi);
+        let weg = bereich_sticken(&b, y0, e, von_oben, links);
+        pos = weg.last().copied();
+        wege.push(weg.into_iter().map(|q| drehen(q, w, null)).collect());
+    }
+    wege
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::geometrie::{abstand_punkt_strecke, im_polygon, kreis, rand_abstand, rechteck};
+
+    fn stiche(wege: &[Linie]) -> Vec<(Punkt, Punkt)> {
+        wege.iter().flat_map(|w| w.windows(2).map(|s| (s[0], s[1]))).collect()
+    }
+
+    #[test]
+    fn rechteck_reihen_und_grenzen() {
+        let e = TatamiEinstellung {
+            winkel: 0.0,
+            ..Default::default()
+        };
+        let wege = tatami(&rechteck(p(0.0, 0.0), 20.0, 10.0), &[], &e, None, None);
+        assert_eq!(wege.len(), 1);
+        let mut ys: Vec<i64> = wege[0].iter().map(|q| (q.y * 1e6).round() as i64).collect();
+        ys.sort();
+        ys.dedup();
+        assert_eq!(ys.len(), 25);
+        for q in &wege[0] {
+            assert!(q.x.abs() <= 10.2 + 1e-9 && q.y.abs() <= 5.0);
+        }
+        for (a, b) in stiche(&wege) {
+            assert!(abstand(a, b) <= e.laenge + e.min_rand + 1e-9);
+        }
+    }
+
+    #[test]
+    fn loch_bleibt_frei_und_flaeche_bedeckt() {
+        let e = TatamiEinstellung::default();
+        let aussen = kreis(p(0.0, 0.0), 15.0, 0.02, 0.0);
+        let loch = kreis(p(0.0, 0.0), 6.0, 0.02, 0.0);
+        let wege = tatami(&aussen, &[loch], &e, None, None);
+        let st = stiche(&wege);
+        for &(a, b) in &st {
+            for t in [0.0, 0.5, 1.0] {
+                let q = p(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
+                let r = q.x.hypot(q.y);
+                assert!(r >= 6.0 - e.zugausgleich - 0.05 && r <= 15.0 + e.zugausgleich + 0.05);
+            }
+        }
+        // Abdeckung: Punkte im Ring liegen nah an einem Stich (feste Pseudozufallsfolge)
+        let mut z: u64 = 12345;
+        for _ in 0..200 {
+            z = z.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            let r = 7.0 + 7.0 * ((z >> 11) as f64 / (1u64 << 53) as f64);
+            z = z.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            let w = std::f64::consts::TAU * ((z >> 11) as f64 / (1u64 << 53) as f64);
+            let q = p(r * w.cos(), r * w.sin());
+            let d = st
+                .iter()
+                .map(|&(a, b)| abstand_punkt_strecke(q, a, b))
+                .fold(f64::INFINITY, f64::min);
+            assert!(d <= e.abstand);
+        }
+    }
+
+    #[test]
+    fn winkel() {
+        let e = TatamiEinstellung {
+            winkel: 30.0,
+            ..Default::default()
+        };
+        let wege = tatami(&rechteck(p(0.0, 0.0), 30.0, 30.0), &[], &e, None, None);
+        for (a, b) in stiche(&wege).into_iter().filter(|(a, b)| abstand(*a, *b) > 2.0) {
+            let w = (b.y - a.y).atan2(b.x - a.x).to_degrees().rem_euclid(180.0);
+            assert!((w - 30.0).abs() < 0.01);
+        }
+    }
+
+    #[test]
+    fn u_form_mehrere_bereiche() {
+        let u = vec![
+            p(-10.0, -10.0),
+            p(10.0, -10.0),
+            p(10.0, 10.0),
+            p(5.0, 10.0),
+            p(5.0, -5.0),
+            p(-5.0, -5.0),
+            p(-5.0, 10.0),
+            p(-10.0, 10.0),
+        ];
+        let e = TatamiEinstellung {
+            winkel: 0.0,
+            ..Default::default()
+        };
+        let wege = tatami(&u, &[], &e, None, None);
+        assert!(wege.len() >= 2);
+        let ringe = vec![u.clone()];
+        for (a, b) in stiche(&wege) {
+            let m = p((a.x + b.x) / 2.0, (a.y + b.y) / 2.0);
+            assert!(im_polygon(m, &ringe) || rand_abstand(m, &ringe) <= 0.25);
+        }
+    }
+}

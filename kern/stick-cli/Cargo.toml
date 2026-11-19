@@ -1,0 +1,16 @@
+[package]
+name = "stick-cli"
+description = "Kommandozeile zum Rechenkern (Design-JSON -> EXP + SVG)"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "stick"
+path = "src/main.rs"
+
+[dependencies]
+stick-kern.workspace = true
+stick-formate.workspace = true
+serde_json.workspace = true

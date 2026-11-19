@@ -42,8 +42,8 @@ app/                      Tauri-Programm
   src/                    Svelte-Oberfläche (Rahmen, Design, Vorschau, Senden)
   src-tauri/              Rust: Fenster, Befehle an den Kern
 kern/                     Rust-Workspace
-  stick-kern/             Geometrie, Sticharten, Unterlagen, Nachbearbeitung, Einstellungen, Stoffe, Rahmen
-  stick-formate/          EXP lesen/schreiben, artista-Designcontainer, später ART lesen
+  stick-kern/             Geometrie, Sticharten, Unterlagen, Nachbearbeitung, Einstellungen, Stoffe, Rahmen   ✅ 19.11.2026
+  stick-formate/          EXP lesen/schreiben, artista-Designcontainer, später ART lesen   ✅ EXP + SVG
   stick-maschine/         serielles Protokoll artista 185 (mit Simulation wie die Testprogramme)
   stick-vektor/           Bild → Umrisse (Potrace, VTracer)
   stick-schrift/          Schriften → Umrisse, Stickschriften

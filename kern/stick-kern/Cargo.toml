@@ -1,0 +1,11 @@
+[package]
+name = "stick-kern"
+description = "Rechenkern: Geometrie, Sticharten, Unterlagen, Nachbearbeitung – nach dem Vorbild BERNINA artista V4"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true

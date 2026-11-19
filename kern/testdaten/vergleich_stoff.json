@@ -1,0 +1,13 @@
+{
+  "name": "vergleich_stoff",
+  "rahmen": "artista 130 x 100 Rotated",
+  "stoff": "Terry Heavy Weight",
+  "einstellungen": {"satin": {"auto_spacing": false, "zugausgleich": 0.35}, "unterlage": {"rand": 0.4}},
+  "objekte": [
+    {"art": "tatami", "farbe": "#884400", "winkel": 135,
+     "umriss": {"kreis": {"mitte": [-30, 0], "radius": 20}}},
+    {"art": "satinlinie", "farbe": "#004488", "breite": 4,
+     "punkte": [[0, -30], [20, 0], [40, -30], [60, 0]]},
+    {"art": "lauf", "farbe": "#000000", "punkte": [[-60, 40], [60, 40]]}
+  ]
+}
