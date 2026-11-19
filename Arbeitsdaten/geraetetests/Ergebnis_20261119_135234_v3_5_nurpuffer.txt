@@ -1,0 +1,40 @@
+﻿artista Design lesen VERSION 3.5 – 19.11.2026 13:52:34
+Mitschnitt: C:\Users\Simon\Desktop\AI Projekte\artista-stickprogramm\Testprogramm_artista185_Windows_v3_5\Mitschnitt_20261119_135234.log
+
+=== Port COM3 ===
+  Versuch 1 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 19200 Baud)
+  0x200100: 4E 4D 4D 56 30 34 2E 30 34 00 47 65 72 6D 61 6E 20 20 20 20 20 20 00 46 72 69 74 7A 20 47 65 67 61 75 66 20 41 47 20 20 20 20 20 20 20 20 00 4D 61 79 20 30 31 20 20 00 FF FF FF FF FF FF FF FF
+            'NMMV04.04.German      .Fritz Gegauf AG        .May 01  .........'
+  >>> STUFE 1 OK: Nähmaschine antwortet, Firmware '04.04', Sprache 'German'
+  Umschalten zum Stickmodul, Versuch 1 …
+  vereinbare 57600 Baud (J 0 5 … B O S … E B) …
+  schalte zum Stickmodul durch (Y Q) …
+  0x200100: 53 52 4D 56 30 34 2E 30 34 00 46 72 69 74 7A 20 47 65 67 61 75 66 20 41 47 0D 00 4A 61 6E 75 20 30 34 20 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+            'SRMV04.04.Fritz Gegauf AG..Janu 04 .............................'
+  >>> STUFE 2 OK: Stickmodul antwortet – Kennung SRMV, Version-Code 0x404
+  0xFFFD24: 1C 3C 00 01 B3 42 00 02 40 80 00 02 01 EA 00 02 44 80 00 02 8E 9A 00 01 FD 7A 00 02 38 12 01 00
+     N (Byte 0)             = 0x1C (28)
+     Byte 1                 = 0x3C (60)
+     Groesse Datenbereich   = 0x1B342 (111426)
+     INFO                   = 0x24080 (147584)
+     AUSWAHL                = 0x201EA (131562)
+     ICON                   = 0x24480 (148608)
+     DATEN                  = 0x28E9A (167578)
+     Ende Karte             = 0x1FD7A (130426)
+     Ende Speicher          = 0x23812 (145426)
+  >>> Verwaltungsblock plausibel (N ≤ 28, Byte1 ≤ 60, Größe ≤ 150000)
+  Zeiger @0x24004: 0xFFFED4
+  Zeiger @0x24040: 0x206AE
+  Zeiger @0x24044: 0x20772
+  Zeiger @0x24048: 0x2083A
+  Status @Zeiger(0x24004): 00 00 00 00 00 86 00 00   Byte+5=0x86 Byte+7=0x00
+
+  NUR PUFFER LESEN: keine Steuerbefehle, kein Schreiben
+  Kopf (176 Byte): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  Länge Stichdaten (Kopf+6N) = 0, Zusatz (Kopf+6N+4) = 0, Icon 9 x 62 -> 568 Byte
+  Zusatz-Länge vorgegeben: 19752 statt 0 (Schalter -Zusatz)
+  Längen nicht plausibel (Grenze 145426; Original: Fehler 19) – nicht gelesen
+  >>> Puffer nicht gelesen
+
+FERTIG (ohne Befehle).

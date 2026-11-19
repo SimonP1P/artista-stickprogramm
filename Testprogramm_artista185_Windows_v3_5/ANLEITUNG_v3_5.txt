@@ -1,0 +1,42 @@
+VERSION 3.5 - EIN DESIGN AUS DER MASCHINE LESEN - BERNINA artista 185 - Anleitung (Windows)
+=========================================================================================
+
+WAS IST NEU IN 3.5?
+-------------------
+Test 3.4 (19.11.2026): Befehl 0x400 hat Design Nr 1 in den Uebertragungspuffer geladen
+(103432 Byte Stiche + 19752 Byte Anhang). Das Lesen scheiterte aber: erst an einer zu
+kleinen Laengengrenze im Testprogramm, dann an einem fehlenden Echo nach 52 KB. Nach dem
+Aus/Ein der Maschine war der Puffer leer.
+
+Version 3.5 liest wie die Original-Software in Bloecken zu 256 Byte (Befehl 'N', etwa
+8-mal schneller als 'R'), wiederholt einen fehlgeschlagenen Block bis zu 5-mal und
+schreibt alles Gelesene sofort in Teil_Design_....bin.
+
+Befehl 0x400 wird NUR gesendet mit  START_DESIGN_LESEN.bat  (Schalter -MitLadebefehl).
+START.bat liest wie 3.3 nur die Liste.
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. SELBSTTEST.bat doppelklicken (ohne Maschine). Am Ende muss stehen:
+    "DESIGN GELESEN: 3376 Byte", "Wiederholungen 1" und
+    "PC-Modus verlassen (Befehl 0x100 angenommen)".
+ 2. Maschine an, Stickmodul angesteckt, Kabel verbunden, Startbildschirm abwarten.
+ 3. START_DESIGN_LESEN.bat doppelklicken (liest Design Nr 1).
+    Anderes Design:  START_DESIGN_LESEN.bat -Nummer 5
+    Nur 'R' wie 3.4:  START_DESIGN_LESEN.bat -NurR
+ 4. Warten bis "FERTIG" erscheint (ca. 2 Minuten, mit -NurR ca. 8 Minuten).
+ 5. Dateien schicken: Design_NrXX_....bin, Icon_NrXX_....bin, Ergebnis_....txt, Mitschnitt_....log
+    (bei Abbruch auch Teil_Design_....bin)
+ 6. Wenn moeglich: Was zeigt das Display der Maschine waehrend und nach dem Lesen?
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:
+   T r M E, R+Adresse, N+Adresse, R F ?, J 0 5 / E B, Y Q   (Verbindung, Lesen)
+   W FFFED0 + Befehl 00A0/0030/0060/00C0/0020/0100 + ?      (wie 3.3)
+   W FFFED0 + Befehl 0400 + ?                                (NUR mit -MitLadebefehl: Design in den Puffer laden)
+   W <Auswahl+0> Nummer,  W <Auswahl+5> Bank                 (wie Original)
+ Kein Befehl zum Speichern (0x200), Loeschen (0x800), Formatieren (0x80),
+ Sticken (0x08) oder Daten-Schreiben ist im Programm enthalten.

@@ -134,3 +134,25 @@ gelesen wird in **0x10004310** (Design-Index in esi):
 Simulation: nur `W FFFED0` mit 00A1/0031/0061/0021/0401/0101 und `W 0201EA`/`W 0201EF`) sendet 0x400 nur mit dem
 Schalter `-MitLadebefehl` (`START_DESIGN_LESEN.bat`) – erst nach Freigabe durch den Nutzer.
 
+
+## Test v3.4 / v3.5 – ein Design lesen (19.11.2026, 13:32–13:52, Dateien `Arbeitsdaten/geraetetests/*_v3_4*`, `*_v3_5*`)
+Von Claude Code auf dem Windows-PC ausgeführt. **0x400 vom Nutzer einmalig freigegeben** („nur dieses eine Mal“, für Design Nr. 1).
+| Lauf | Ablauf | Ergebnis | Sicherheit |
+|---|---|---|---|
+| 1 (13:32, v3.4 `-MitLadebefehl`) | Verbindung bei 57600 (Maschine noch im PC-Modus vom v3.3-Test), Liste 51 Designs, dann Ziel 0xA0 → AUSWAHL 1/0 → 0x30 → 0x20 → AUSWAHL erneut → **0x400** | alle Befehle Status **0x0002**, auch **0x400** (Antwort nach ~2,5 s). Kopf ab DATEN (176 Byte): Tabellen A–C alle **0**, Länge 1 = **103 432**, Länge 2 = **19 752**, Icon 9 Byte × 62 Zeilen (72 × 62 Pixel) → 568 Byte. Danach 0x100 → 0x0000 | hoch |
+| | Längenprüfung | 103 432 + 19 752 + 568 + 0x142 = 124 074 ≥ 111 426 („Größe Datenbereich“) → v3.4 hat abgebrochen. **Fehler im Testprogramm, nicht in der Maschine:** Das Original (0x100044ad–0x100044e3) nimmt beim Maschinenspeicher das Maximum aus +0x02 und **+0x1A (145 426)** als Grenze | hoch (Code) |
+| 2 (13:33, v3.4 `-NurPuffer`, nur Lesen) | neu verbunden ohne Aus/Ein, nur Puffer gelesen | Kopf: Länge 1 weiter **103 432**, Länge 2 jetzt **0** (der Anhang-Eintrag wurde nach 0x100/Neuverbindung gelöscht). Lesen mit `R` (32 Byte, ~250 Byte/s wegen 16 ms Echo-Laufzeit je Zeichen über den FTDI-Adapter) brach nach **52 224 Byte** ab: kein Echo auf eine Adressziffer (1 s). Ohne Wiederholung und ohne Zwischenspeicher → Daten verloren | hoch |
+| 3 (13:52, v3.5 `-NurPuffer`) | **PC war zwischendurch aus, Maschine wurde aus/ein geschaltet** (Verbindung wieder bei 19200) | Kopf und beide Längen **0** – der Übertragungspuffer DATEN überlebt das Ausschalten nicht. Statusbyte @0xFFFED4+1: 0x40 nach 0x400, 0x00 nach Neustart | hoch |
+
+**Folgerungen:**
+- **0x400 funktioniert an der artista 185** und lädt das gewählte Design in DATEN (Status 0x0002). Lesen muss **in derselben
+  Sitzung direkt nach 0x400** geschehen – nach Aus/Ein ist der Puffer leer, nach 0x100 fehlt schon die Länge 2.
+- Design Nr. 1 („Drifterv45Rev7“): 103 432 Byte Stichdaten (inkl. Endkennung, nach 03 = Stichlänge + 2), 19 752 Byte Anhang
+  (verschleierter Container, vgl. 05), Icon 72 × 62.
+- **Testprogramm v3.5** (`Testprogramm_artista185_Windows_v3_5/`): liest große Bereiche wie das Original (ReadComBytes
+  0x10002040): erstes Stück mit `R`, dann **`N`-Blöcke zu 256 Byte binär** (0x10002880: `N` + 3 Adressbytes mit Echo,
+  256 Byte je ≤ 3 s, dann `O`), Rest mit `R`; bei Fehler Neusynchronisation `R F ?` (gleiche Baudrate) und bis zu 5
+  Wiederholungen wie das Original (0x100022a0); alles Gelesene geht sofort in `Teil_Design_*.bin`. Selbsttest mit
+  simuliertem Echo-Verlust ok (Daten byte-genau). `N` ist am Gerät noch **nicht** getestet (Lauf 3 kam wegen leerem Puffer
+  nicht bis zum Datenlesen).
+- Nächster Schritt: v3.5 mit `-MitLadebefehl` (0x400 **neu freigeben lassen**) – Design Nr. 1 in einem Durchgang lesen.

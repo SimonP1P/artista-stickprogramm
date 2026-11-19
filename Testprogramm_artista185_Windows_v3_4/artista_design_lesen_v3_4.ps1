@@ -11,6 +11,10 @@
   - Ergebnis: Design_NrXX_<Zeit>.bin (Kopf + Daten wie im Puffer der Maschine) und Icon_NrXX_<Zeit>.bin.
   - Beim Massenlesen wird nicht jedes Byte protokolliert (Mitschnitt bleibt klein).
   - Befehl 0x100 mit Status 0x0000 gilt als angenommen (Gerätetest 3.3).
+  - Grenze der Längenprüfung wie im Original (0x100044bc): Maximum aus "Größe Datenbereich" (+0x02) und
+    "Kapazität Maschinenspeicher" (+0x1A). (Erster Gerätetest 3.4 scheiterte an der zu kleinen Grenze.)
+  - -NurPuffer: KEIN Steuerbefehl und KEIN Schreiben – liest nur Kopf, Icon und Daten aus dem Übertragungspuffer,
+    in den ein vorheriges 0x400 das Design geladen hat.
   Es wird NICHTS gespeichert, gelöscht oder formatiert; kein Sticken (0x08).
 
   --- Version 3.3 ---
@@ -82,6 +86,7 @@ param(
     [switch]$OhneNachfrage,        # Sicherheitsabfrage vor den Steuerbefehlen überspringen
     [int]$Nummer = 1,              # welches Design gelesen wird (1 = erstes in der Liste; 0 = keins)
     [switch]$MitLadebefehl,        # erst damit wird Befehl 0x400 gesendet und das Design gelesen
+    [switch]$NurPuffer,            # nur lesen: Übertragungspuffer DATEN/ICON (nach einem früheren 0x400), keine Befehle
     [int]$SimDesigns = 30,         # nur für den Selbsttest: Anzahl simulierter Designs
     [switch]$SimMitKarte           # nur für den Selbsttest: Karte im Stickmodul steckt (sonst 0x50 -> Status 0x1005)
 )
@@ -255,7 +260,7 @@ function Rx([int]$timeoutMs) {
         if ($Simulation) { if ($script:simQ.Count -gt 0) { $b = $script:simQ.Dequeue(); if (-not $script:stumm) { Write-Log ('MASCH -> PC  ' + (Show-Byte $b)) }; return [int]$b } }
         elseif ($script:sp.BytesToRead -gt 0) { $b = $script:sp.ReadByte(); if (-not $script:stumm) { Write-Log ('MASCH -> PC  ' + (Show-Byte $b)) }; return [int]$b }
         if ($sw.ElapsedMilliseconds -ge $timeoutMs) { return -1 }
-        Start-Sleep -Milliseconds 1
+        if ($sw.ElapsedMilliseconds -lt 40) { [Threading.Thread]::SpinWait(500) } else { Start-Sleep -Milliseconds 1 }
     }
 }
 # Eingang leeren. Wie im Original (0x100027d0): kommt dabei ein druckbares Zeichen, ist der Puffer "nicht leer" (Fehler 14)
@@ -477,8 +482,7 @@ function Read-Gross([int]$addr, [int]$len, [string]$was) {
 }
 # Ein Design lesen wie das Original (BEAGLink.dll 0x10004310 mit 0x10004d10 und 0x10004c90)
 function Read-Design([int]$N, $f, [int]$nummer) {
-    $INFO = [int]$f['INFO']; $AUSWAHL = [int]$f['AUSWAHL']; $ICON = [int]$f['ICON']; $DATEN = [int]$f['DATEN']
-    $grenze = [int64]$f['Groesse Datenbereich']
+    $INFO = [int]$f['INFO']; $AUSWAHL = [int]$f['AUSWAHL']
     $idx = $nummer - 1; $bank = [int][Math]::Floor($idx / 27)
     $bankCmd = 0x30; if ($idx -ge 27) { $bankCmd = 0x60 }; if ($idx -ge 54) { $bankCmd = 0xC0 }
     Say ("  Design Nr {0} lesen (Index {1}, Bank {2})" -f $nummer, $idx, $bank) 'Cyan'
@@ -503,6 +507,13 @@ function Read-Design([int]$N, $f, [int]$nummer) {
     $r = Invoke-Mailbox 0x400 3000 4000 0
     Say ("  Befehl 0x400 (Design in den Übertragungspuffer laden): Status 0x{0:X4}{1}" -f $r.st, (Status-Text $r.st))
     if (-not $r.ok) { Say '  0x400 nicht bestätigt – nichts gelesen' 'Yellow'; return $false }
+    return (Read-Puffer $N $f $nummer)
+}
+# Übertragungspuffer lesen (Original 0x10004404–0x10004585) – nur 'R', kein Schreiben
+function Read-Puffer([int]$N, $f, [int]$nummer) {
+    $ICON = [int]$f['ICON']; $DATEN = [int]$f['DATEN']
+    # Grenze wie Original 0x100044ad–0x100044e3: Größe Datenbereich, bei Maschinenspeicher das Maximum mit +0x1A
+    $grenze = [Math]::Max([int64]$f['Groesse Datenbereich'], [int64]$f['Ende Speicher'])
     $kopfLen = 6 * $N + 8
     $kopf = Read-Mem $DATEN $kopfLen
     $ic = Read-Mem $ICON 6
@@ -511,7 +522,7 @@ function Read-Design([int]$N, $f, [int]$nummer) {
     $len1 = [int64](U32BE $kopf (6 * $N)); $len2 = [int64](U32BE $kopf (6 * $N + 4))
     Say ("  Kopf ({0} Byte): {1}" -f $kopfLen, (Hex $kopf))
     Say ("  Länge Stichdaten (Kopf+6N) = {0}, Zusatz (Kopf+6N+4) = {1}, Icon {2} x {3} -> {4} Byte" -f $len1, $len2, $ic[2], $ic[3], $iconLen)
-    if ($len1 -le 2 -or ($len1 + $len2 + $iconLen + 0x142) -ge $grenze) { Say '  Längen nicht plausibel (Original: Fehler 19) – nicht gelesen' 'Yellow'; return $false }
+    if ($len1 -le 2 -or ($len1 + $len2 + $iconLen + 0x142) -ge $grenze) { Say ("  Längen nicht plausibel (Grenze {0}; Original: Fehler 19) – nicht gelesen" -f $grenze) 'Yellow'; return $false }
     $daten = Read-Gross ($DATEN + $kopfLen) ([int]($len1 + $len2)) 'Designdaten'
     if ($null -eq $daten) { Say '  Designdaten lesen fehlgeschlagen' 'Red'; return $false }
     $icon = Read-Gross $ICON $iconLen 'Icon'
@@ -609,6 +620,15 @@ function Test-Port([string]$name) {
 
     # 4) Designliste (Steuerbefehle!)
     if (-not $plaus) { Say '  Verwaltungsblock nicht plausibel – keine Steuerbefehle.' 'Yellow'; Close-Port; return $true }
+    if ($NurPuffer) {
+        Say ''
+        Say '  NUR PUFFER LESEN: keine Steuerbefehle, kein Schreiben' 'Cyan'
+        $ok = Read-Puffer ([int]$N) $f $Nummer
+        if (-not $ok) { Say '  >>> Puffer nicht gelesen' 'Yellow' }
+        Close-Port
+        Say ''; Say 'FERTIG (ohne Befehle).' 'Cyan'
+        return $true
+    }
     if (-not $Simulation -and -not $OhneNachfrage) {
         Write-Host ''
         Write-Host 'Jetzt würden Steuerbefehle gesendet (wie "Card/Machine Read" der Original-Software):' -ForegroundColor Yellow
@@ -647,7 +667,7 @@ function Test-Port([string]$name) {
 
 Say ("artista Design lesen VERSION 3.4 – {0}" -f (Get-Date)) 'Cyan'
 Say ("Mitschnitt: {0}" -f $logFile)
-if ($Simulation) { Say '*** SIMULATION – keine echte Maschine, nur Selbsttest des Programms ***' 'Magenta'; Sim-Init; $ports = @('SIM') }
+if ($Simulation) { Say '*** SIMULATION – keine echte Maschine, nur Selbsttest des Programms ***' 'Magenta'; Sim-Init; if ($NurPuffer) { Sim-Design }; $ports = @('SIM') }
 elseif ($Port -ne '') { $ports = @($Port) }
 else {
     $ports = [System.IO.Ports.SerialPort]::GetPortNames() | Sort-Object -Unique
