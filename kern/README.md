@@ -6,8 +6,8 @@ Stichberechnung für die BERNINA artista 185 nach dem Vorbild BERNINA artista V4
 | Crate | Inhalt |
 |---|---|
 | `stick-kern` | Geometrie, Einstellungen (Werte mit Quellen, 8 Stoffe), Sticharten (Lauf, Dreifach, Satin, Tatami), Unterlagen, Nachbearbeitung (Vernähen, Mindeststich 0,3 mm, Auto Jump), Rahmen, Design-Modell mit JSON-Eingabe, **Schrift** (`schrift.rs`: Satinsäulen mit Winkellinien, Textsatz) |
-| `stick-formate` | EXP schreiben/lesen (Bernina-Variante), SVG-Vorschau, **Original-Alphabete (ESB) lesen** (`esb.rs`) |
-| `stick-cli` | Kommandozeile `stick` |
+| `stick-formate` | EXP schreiben/lesen (Bernina-Variante), SVG-Vorschau, **Original-Alphabete (ESB) lesen** (`esb.rs`), **Puffer DATEN und BE-Container der artista 185** (`artista.rs`: lesen/schreiben, Verschleierung, Kopf, Farbtabelle, INFO-Felder; Rundweg mit allen 51 Maschinendesigns byte-gleich) |
+| `stick-cli` | Kommandozeile `stick` (`erzeugen`, `anzeigen`, `alphabete`, `rahmen`, `stoffe`, **`puffer`**: Design-JSON/EXP/gelesenes Design → `*_puffer.bin` für DATEN + `*_puffer.txt` mit INFO-Feldern) |
 
 Später: `stick-maschine` (serielles Protokoll), `stick-vektor`. Schrift steckt in `stick-kern::schrift` + `stick-formate::esb`
 (`Analyse_Teil3/09`); Text im Design: `{"art": "text", "text": "Anna", "alphabet": "Drifter", "hoehe": 20}`,

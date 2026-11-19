@@ -7,7 +7,9 @@ Aufbau des Puffers DATEN (Analyse_Teil2/03, Lesen 0x10004310; am Gerät bestäti
   Offset 6N     u32 BE      Länge 1 = Stichdaten inkl. Endkennung 80 81
   Offset 6N+4   u32 BE      Länge 2 = Anhang (BE-Container, verschleiert, Analyse_Teil2/05)
   Offset 6N+8   Stichdaten (EXP-Kodierung), dann Anhang
-Icon (Puffer ICON): Länge = Byte2 × Byte3 + 10 (Byte 2 = Bytes je Zeile, Byte 3 = Höhe), Bitmap ab Byte 10.
+Icon (Puffer ICON): Kopf 0xAE Byte (Byte 2 = Bytes je Zeile, Byte 3 = Höhe, Byte 4 = 0xFF), Bitmap ab Byte 0xAE,
+  Zeilen von oben (BEAGLink 0x100032b0 Schritt 8; am Gerät bestätigt 19.11.2026 – Teddy Nr. 13). Das Testprogramm
+  v3.6 hat nur Byte2 × Byte3 + 10 Byte gelesen, also 43 von 62 Zeilen.
 
 Aufruf:  python maschinen_design.py Design_Nr01_....bin [Icon_Nr01_....bin] [--n 28] [--aus ORDNER] [--svg]
          python maschinen_design.py --sammlung ORDNER [--liste Ergebnis_….txt]
@@ -216,11 +218,23 @@ def auswerten(design: Path, icon, aus: Path, N: int = 28, ausfuehrlich: bool = T
                     p(f'      Farbtabelle: {n} Einträge à 0x86 (Stiche: {r["farbwechsel"] + 1} Farben), davon {len(belegt)} belegt')
     if icon is not None and Path(icon).exists():
         ic = Path(icon).read_bytes()
-        bpz, h = ic[2], ic[3]
+        bpz, h, zeilen = icon_png(ic, aus / 'icon.png')
         r['icon'] = (bpz * 8, h)
-        p(f'Icon: {len(ic)} Byte, Kopf {ic[:10].hex(" ")}, {bpz} Byte je Zeile × {h} Zeilen = {bpz * 8} × {h} Pixel')
-        png_schreiben(aus / 'icon.png', bpz * 8, h, ic[10:], bpz)
+        p(f'Icon: {len(ic)} Byte, Kopf {ic[:6].hex(" ")}, {bpz} Byte je Zeile × {h} Zeilen = {bpz * 8} × {h} Pixel'
+          + ('' if zeilen == h else f' – nur {zeilen} Zeilen gelesen'))
     return r
+
+
+ICON_KOPF = 0xAE
+
+
+def icon_png(ic: bytes, pfad: Path):
+    """Icon-Puffer (Kopf 0xAE Byte + Bitmap) als PNG; liefert (Bytes je Zeile, Höhe, gelesene Zeilen)."""
+    bpz, h = ic[2], ic[3]
+    zeilen = min(h, max(0, len(ic) - ICON_KOPF) // max(1, bpz))
+    if zeilen:
+        png_schreiben(pfad, bpz * 8, zeilen, ic[ICON_KOPF:], bpz)
+    return bpz, h, zeilen
 
 
 ZIFFERN = {'0': '111101101101111', '1': '010110010010111', '2': '111001111100111', '3': '111001111001111',

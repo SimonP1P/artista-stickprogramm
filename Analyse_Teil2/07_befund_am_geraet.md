@@ -190,7 +190,7 @@ Puffer lesen), danach Nr. 5 einzeln. Ergebnis: `Arbeitsdaten/maschinendesigns/` 
 | **Nr. 8 = Nr. 34** | Stichdaten byte-gleich („Outdoorsman - 805023“ zweimal gespeichert) | hoch |
 | **Länge 2 wird bei 0x400 nicht zurückgesetzt** | Hat ein Design keinen Anhang, bleibt im Kopf (DATEN+6N+4) die Anhanglänge des **vorher** geladenen Designs stehen. Nr. 5 zeigte im Durchgang 20 288 (= Nr. 4) → Längenprüfung 153 514 ≥ 145 426 → nicht gelesen (wäre im Original Fehler 19). Einzeln nach neuer Verbindung: Länge 2 = 0, Nr. 5 lesbar (132 336 Byte). Ebenso Nr. 42–51: 1126 (= Nr. 41), Containerkopf dort Unsinn. Ein neuer Verbindungsaufbau setzt Länge 2 auf 0 (vgl. Test v3.4 Lauf 2) | hoch |
 | Anhang echt? | Prüfung: u32 LE bei Anhang+2 = Länge 2. **Echt bei Nr. 1, 4, 6–41**; **kein Anhang** bei Nr. 2, 3, 5 und 42–51 (Flags 0x86 in der Liste – alle Designs ohne Anhang dort; Nr. 2/3/5 haben Flags 0x8C wie 4/6/7) | hoch |
-| Farbtabelle (Chunk 0x14) | Chunk = 6 Byte Chunkkopf + **n × 0x86, n = Farbanzahl** (= Farbwechsel + 1) bei allen 39 echten Anhängen; alle Einträge 0 (keine Garnangaben gespeichert) | hoch |
+| Farbtabelle (Chunk 0x14) | Chunk = 6 Byte Chunkkopf + **n × 0x86, n = Farbanzahl** (= Farbwechsel + 1) bei allen 38 echten Anhängen (Nr. 1, 4, 6–41); Nr. 1–7 alle Einträge 0, Nr. 8–41 belegt (Farbe, Nummer, „Isacord 40“, Name – siehe unten) | hoch |
 | Name im Anhang | Chunk 0x0A enthält denselben Namen wie die Liste („Drifterv45Rev7“, „Outdoorsman - 805023“ oder Nummern „1“ … „30“) | hoch |
 | Spalte „Farben?“ der Liste (INFO+N+1) | stimmt nur für Nr. 1–7 (145/144/148/149/146/147/147 = Farben der Stichdaten); Nr. 8–27 zeigen 1 (echte Farben 3–17), Bank 1 zeigt die Werte von Bank 0 → Bedeutung bzw. Leseadresse dieser Spalte offen | mittel |
 
@@ -202,3 +202,24 @@ Puffer lesen), danach Nr. 5 einzeln. Ergebnis: `Arbeitsdaten/maschinendesigns/` 
   nur nach Prüfung des Containers übernehmen.
 - Die 51 Designs sind eine Sammlung echter Maschinendaten (EXP-Kodierung) zum Vergleich mit der eigenen Stichberechnung
   (Satin, Tatami, Lauf, Schrift).
+
+## Auswertung: Puffer nachgebaut, Senden vorbereitet (19.11.2026, ohne Gerät)
+Die 51 gelesenen Puffer wurden im Rust-Kern zerlegt und neu zusammengesetzt (`kern/stick-formate/src/artista.rs`,
+Test `rundweg_maschinendesigns`; Werkzeug `Arbeitsdaten/werkzeuge/maschinen_design.py`).
+| Befund | Einzelheiten | Sicherheit |
+|---|---|---|
+| **Rundweg byte-gleich** | Alle 51 Puffer: Kopf + Stiche + Anhang neu zusammengesetzt = gelesene Bytes; alle 38 gültigen Anhänge entschleiert → neu verschleiert = dieselben Bytes. Der Puffer für das Senden lässt sich also exakt bauen | hoch |
+| **Flags der Designliste aus dem Kopf** | Formel aus BEAGLink 0x100032b0 Schritt 10 (Bit 0x01 = Feld 0x11A/0x11C, 0x02 = 0x116, 0x04 = 0x118, 0x08 = 0x11E, 0x10 = 0x120, 0x20 = 0x124, 0x80 = 0x126) ergibt bei **38 von 38** Designs die Flags der Liste (0x84, 0x8C, 0xA4, 0xAC) | hoch |
+| Designs ohne Anhang | Nr. 2, 3, 5, 42–51 haben keinen Kopf und keine Farbtabelle; Flags 0x86 (Nr. 42–51) bzw. 0x8C. Die Maschine führt also Designs, die nur aus Stichdaten bestehen | hoch |
+| Kopf-Chunk 0x0A: zwei Varianten | **„Karte“** (Nr. 8, 34, 39–41 „Outdoorsman card“, ähnlich Zeichensätze 4/6/7): 0x114 = Farbanzahl, 0x128/0x12A = 0, **0x12C/0x12E = Breite/Höhe in 0,1 mm** (genau die Ausdehnung der Stiche), 0x130 ≈ 0,40 × Stichzahl. **„Collection 7“** (Nr. 9–33, 35–38, auch Drifter Nr. 1): Name mit Leerzeichen aufgefüllt, 0x94 = „Collection 7“, 0x10C = 8 Byte Kennung, 0x114 = Farbanzahl − 1, 0x128/0x12A = 100/100, 0x12C/0x12E = 2000/1550 fest. Welche Variante die V4-Software selbst schreibt, ist **offen** (Erzeuger des Containers noch nicht gefunden) | mittel |
+| Feld 0x130 | u16 ≈ 0,40 × Stichzahl (Nr. 8: 10 550 bei 26 314 Stichen, Nr. 4: 22 616 bei 56 386) – vermutlich Stickzeit in Sekunden; laut Code Eintrag 0 der Tabelle A beim Schreiben (gelesen: alle 0) | niedrig |
+| Eintrag der Farbtabelle (0x86 Byte) | R, G, B, 0, **u16 LE Garnnummer**, Marke (64 Byte, „Isacord 40“), Farbname (64 Byte, „white“, „silver grey“, „deep red“) | hoch (Aufbau) |
+| Ursprung der Stichdaten | Nr. 8–51: Mitte der Ausdehnung = (0, 0) (± 0,6 mm); Zeichensätze Nr. 1–7 beginnen links bei x = 0. Designs **mit** Anhang enden mit Sprüngen zurück nach (0, 0), Designs ohne Anhang nicht | hoch |
+| Steuercodes | nur `80 01 00 00` (Farbwechsel, immer ohne Bewegung), `80 02`/`80 04` (Sprung, Karten-Designs 0x02, sonst 0x04), `80 81` (Ende); **kein** `80 82` | hoch |
+| **Icon** | Puffer ICON = **Kopf 0xAE Byte** (Byte 0 gelesen 01, geschrieben 00; Byte 2 = 9 Byte je Zeile, Byte 3 = 62 Zeilen, Byte 4 = 0xFF) + Bitmap 72 × 62, Zeilen von oben, Bit gesetzt = schwarz (BEAGLink 0x100032b0 Schritt 8; Bild des Teddys Nr. 13 passt). Die Testprogramme v3.5/v3.6 haben nach der alten Beschreibung nur Byte 2 × Byte 3 + 10 = 568 Byte gelesen → **nur 43 von 62 Zeilen**; künftig 0xAE + 558 Byte lesen | hoch |
+| Schreiben großer Blöcke | `WriteComBytes` (0x100029d0): bis zur nächsten 256-Byte-Grenze `W` mit ≤ 32 Byte, dann **`P S` + Adressbits 23–8 → `O` `E` → 256 Byte binär → `O`** (0x10002ce0), bei Fehler Wiederholung; Ausnahme Flash-Bereiche 0x280000–0x3FFFFF und 0xC00000–0xDFFFFF. `P S` ist Schreiben → nur nach Zustimmung (Regel 1a) | hoch (Code) |
+
+**Für Samstag (21.11.2026, nur nach Zustimmung):** CLI `stick puffer EINGABE` baut den Inhalt für DATEN und die
+INFO-Felder (`*_puffer.bin`, `*_puffer.txt`). Erster Kandidat ist **Nr. 47** (328 Byte, 11,9 × 17 mm, ein Sprung,
+ohne Anhang) – Bytes, die die Maschine selbst geliefert hat. Danach ein eigenes kleines Design mit Kopf nach dem
+Muster „Karte“ (`Kopf::neu`, eigene Festlegung).

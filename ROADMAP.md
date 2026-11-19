@@ -24,7 +24,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
    EXP-Kodierung mit `80 81`, BE-Container mit Name und Farbtabelle, Icon). Daraus folgt: **Der Container für das
    Senden kann vor Samstag ohne Maschine gebaut und geprüft werden** – Prüfung: die 51 gelesenen Designs aus ihren
    Teilen neu zusammensetzen, Ergebnis muss **byte-gleich** sein. Das senkt das Risiko am Samstag stark.
-   → neuer Schritt 2b (vorher in Phase 5).
+   → neuer Schritt 2b (vorher in Phase 5). **Erledigt am 19.11.2026:** Rundweg byte-gleich für alle 51 Designs.
 2. **Senden in Stufen:** zuerst ein Design, das die Maschine selbst geliefert hat (bekannt gute Bytes), nur in den
    Transferpuffer und „sticken ohne speichern“ (0x08); erst danach ein eigenes Design; Speichern (0x10/0x200) zuletzt.
 3. **Die 51 Maschinendesigns sind Vergleichsmaterial:** 7 Zeichensätze (Drifter, Lisa, Blackboard, Swiss Block,
@@ -41,9 +41,9 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | Schritt | Inhalt | Stand |
 |---|---|---|
 | 2a Lesen | Verbindung, Stickmodul, Designliste (v3.3), ein Design (v3.5), alle 51 Designs (v3.6), Container entschleiert | ✅ 19.11.2026 (`Analyse_Teil2/07`, `Arbeitsdaten/maschinendesigns/`) |
-| 2b Senden vorbereiten (ohne Maschine) | Puffer + BE-Container + Icon + INFO-Felder **schreiben** im Rust-Kern (`stick-formate`), Rundweg-Prüfung mit allen 51 gelesenen Designs (byte-gleich), eigenes Design (EXP aus dem Kern) → Puffer; Testprogramm v4 (PowerShell) mit `-Simulation`, Mitschnitt, J/N-Abfrage vor jedem Schreibbefehl | ⬜ vor Sa 21.11. |
-| 2c Senden am Gerät | Stufe 1: gelesenes Maschinendesign zurück in den Puffer DATEN + 0x08 (sticken ohne speichern) · Stufe 2: eigenes kleines Design (Quadrat/Schrift) + 0x08 · Stufe 3: speichern (0x10 → schreiben → 0x200). **Jede Stufe nur nach ausdrücklicher Zustimmung** (Regel 1a), Person vor Ort an der Maschine | 📅 Sa 21.11.2026 |
-| 2d offen | Display nach 0x100 ansehen; Bedeutung der Spalte „Farben?“ der Liste (INFO+N+1) | ⬜ |
+| 2b Senden vorbereiten (ohne Maschine) | ✅ Puffer + BE-Container + Kopf + Farbtabelle + INFO-Felder im Rust-Kern (`stick-formate/src/artista.rs`), **Rundweg mit allen 51 Designs byte-gleich**, Flags-Formel 38/38 bestätigt, CLI `stick puffer` (JSON/EXP/gelesenes Design → Puffer) · ⬜ Icon aus den Stichen erzeugen · ⬜ Testprogramm v4 (PowerShell): `W` bis zur 256-Byte-Grenze, dann `P S`-Seiten, INFO-Felder, Befehl 0x08; `-Simulation`, Mitschnitt, J/N-Abfrage vor jedem Schreibbefehl | 🟡 vor Sa 21.11. |
+| 2c Senden am Gerät | Stufe 1: gelesenes Maschinendesign (Kandidat **Nr. 47**, 328 Byte) zurück in den Puffer DATEN + 0x08 (sticken ohne speichern) · Stufe 2: eigenes kleines Design (Quadrat/Schrift) + 0x08 · Stufe 3: speichern (0x10 → schreiben → 0x200). **Jede Stufe nur nach ausdrücklicher Zustimmung** (Regel 1a), Person vor Ort an der Maschine | 📅 Sa 21.11.2026 |
+| 2d offen | Display nach 0x100 ansehen; Bedeutung der Spalte „Farben?“ der Liste (INFO+N+1); welche Kopf-Variante die V4-Software schreibt; Icons vollständig lesen (0xAE + 558 Byte); bleibt die Lage im Rahmen erhalten, wenn der Ursprung nicht in der Designmitte liegt? | ⬜ |
 
 ## Phase 4 – Sticharten und Regeln nach dem Original
 Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.

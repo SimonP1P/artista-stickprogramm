@@ -83,6 +83,8 @@ Speicherziel wählen (0x50/0xA0), Bank wählen (0x30/0x60/0xC0), Kommando 0x20 �
 Auswahl schreiben (AUSWAHL), Kommando 0x400
 ► ReadComBytes(DATEN, 6N+8 + …)      Tabellen + Längen + Stichdaten
 ► ReadComBytes(ICON, 6)               Kopf → Icongröße = ((Breite+7)/8)·Höhe + 10
+                                      (am Gerät: Kopf ist 0xAE Byte, Bitmap ab 0xAE – mit dieser Länge fehlen
+                                       19 von 62 Zeilen; siehe 07, Auswertung 19.11.2026)
 ► ReadComBytes(INFO …)                Farbanzahl, Flags, Name
 FW ≥ 3.09: Zeiger 0x24048 → Farbtabelle lesen und prüfen (Kopf: Byte 0 = 0, u32 = 1, u32 = 8 …)
 Anhang mit BE-Verschleierung ENTschlüsseln (0x1000a640, Modus 0)

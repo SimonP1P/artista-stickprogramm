@@ -1,6 +1,6 @@
 # 05 – Der Designcontainer („BE“-Format) und seine Verschleierung
 
-**Code:** [`code/be_scramble.py`](code/be_scramble.py) (Python-Nachbau mit Selbsttest)
+**Code:** [`code/be_scramble.py`](code/be_scramble.py) (Python-Nachbau mit Selbsttest); Rust: `kern/stick-formate/src/artista.rs` (Container, Puffer DATEN, Kopf, Farbtabelle – Rundweg mit allen 51 Maschinendesigns byte-gleich)
 **Quelle:** BEAGLink.dll 0x1000a370 (Startzustand), 0x1000a4c0 (Byte-Kodierung), 0x1000a640 (ganzer Container), 0x10007590/0x10007600 (Chunk-Suche)
 **Sicherheit:** hoch für den Algorithmus (Befehl für Befehl übersetzt, Hin- und Rückweg identisch). **Am echten Gerät bestätigt (19.11.2026):** Der aus der artista 185 gelesene Anhang von Design Nr. 1 (19 752 Byte) ergibt entschleiert die Chunks 0x0A (Name „Drifterv45Rev7“) und 0x14 (145 Farben) – siehe [07](07_befund_am_geraet.md), `Arbeitsdaten/maschinendesigns/`.
 
@@ -15,8 +15,8 @@ Byte 8..L-1 VERSCHLEIERT: Folge von Chunks
 ```
 | Chunk-ID | Inhalt | Länge |
 |---|---|---|
-| 0x0A | Kopf (Name ab +0x14, Funktionsfelder +0x116…+0x126, Wert +0x130) | 0x134 |
-| 0x14 | Farbtabelle: 6 Byte Kopf + n × 0x86 Byte (Farbe, Nummer, Marke, Name) | 6 + n·0x86 |
+| 0x0A | Kopf (Name ab +0x14, Sammlung +0x94, Farbanzahl +0x114, Funktionsfelder +0x116…+0x126, Breite/Höhe +0x12C/+0x12E, Wert +0x130) – Felder siehe [07](07_befund_am_geraet.md), Auswertung 19.11.2026 | 0x134 |
+| 0x14 | Farbtabelle: 6 Byte Kopf + n × 0x86 Byte (R, G, B, 0, u16 Garnnummer, Marke 64 Byte, Name 64 Byte) | 6 + n·0x86 |
 | 0x1E | Stichdaten (EXP-artig, Ende `80 81`) | variabel |
 | 0x28 | Zusatzdaten | variabel |
 | 0x32 | Icon: u8 Breite, u8 Höhe, 1-Bit-Bitmap | 10 + Bitmap |
