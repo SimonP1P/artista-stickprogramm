@@ -1,9 +1,10 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
   import { open, save } from "@tauri-apps/plugin-dialog";
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import Vorschau from "$lib/Vorschau.svelte";
-  import type { Ergebnis, RahmenInfo } from "$lib/typen";
+  import { empfohleneHoehe } from "$lib/alphabet_hoehen";
+  import type { AlphabetInfo, Ergebnis, RahmenInfo } from "$lib/typen";
 
   let rahmenListe = $state<RahmenInfo[]>([]);
   let stoffe = $state<string[]>([]);
@@ -36,6 +37,86 @@
       return;
     }
     jsonText = JSON.stringify({ ...design, [feld]: wert }, null, 2);
+  }
+
+  // ---- Schrift mit den Original-Alphabeten (kern/stick-kern/src/schrift.rs)
+  let alphabete = $state<AlphabetInfo[]>([]);
+  let textWahl = $state(-1); // Index des bearbeiteten Text-Objekts, -1 = neuer Text
+  let tText = $state("Anna");
+  let tAlphabet = $state("Drifter");
+  let tHoehe = $state(20);
+  let tBreite = $state(100);
+  let tFarbe = $state("#1f3a93");
+  let textObjekte = $derived(
+    ((design?.objekte ?? []) as any[]).map((o, i) => ({ o, i })).filter((x) => x.o?.art === "text"),
+  );
+  let empfohlen = $derived(empfohleneHoehe(tAlphabet));
+
+  function textObjekt(alt?: any) {
+    return {
+      ...(alt ?? {}),
+      art: "text",
+      text: tText,
+      alphabet: tAlphabet,
+      hoehe: Number(tHoehe) || 20,
+      breite: Number(tBreite) || 100,
+      farbe: tFarbe,
+      position: alt?.position ?? [0, 0],
+    };
+  }
+
+  function objekteSetzen(objekte: any[]) {
+    jsonText = JSON.stringify({ ...design, objekte }, null, 2);
+  }
+
+  function textEinfuegen() {
+    if (!design) {
+      fehler = "Das Design-JSON ist ungültig – erst korrigieren.";
+      return;
+    }
+    const objekte = [...(design.objekte ?? [])];
+    objekte.push(textObjekt());
+    objekteSetzen(objekte);
+    textWahl = objekte.length - 1;
+    meldung = `Text „${tText}“ eingefügt.`;
+  }
+
+  function textWaehlen(i: number) {
+    textWahl = i;
+    const o = i >= 0 ? design?.objekte?.[i] : null;
+    if (o) {
+      tText = o.text ?? "";
+      tAlphabet = o.alphabet ?? tAlphabet;
+      tHoehe = o.hoehe ?? 20;
+      tBreite = o.breite ?? 100;
+      tFarbe = o.farbe ?? "#000000";
+    }
+  }
+
+  function textEntfernen() {
+    if (textWahl < 0 || !design) return;
+    objekteSetzen((design.objekte ?? []).filter((_: any, i: number) => i !== textWahl));
+    textWahl = -1;
+  }
+
+  // Bearbeiteter Text folgt den Eingaben sofort (Vorschau beim Tippen)
+  $effect(() => {
+    void [tText, tAlphabet, tHoehe, tBreite, tFarbe];
+    untrack(() => {
+      if (textWahl < 0 || !design) return;
+      const objekte = [...(design.objekte ?? [])];
+      if (objekte[textWahl]?.art !== "text") return;
+      objekte[textWahl] = textObjekt(objekte[textWahl]);
+      const neu = JSON.stringify({ ...design, objekte }, null, 2);
+      if (neu !== jsonText) jsonText = neu;
+    });
+  });
+
+  function neu() {
+    jsonText = JSON.stringify({ name: "Neues Design", rahmen: rahmenWahl, stoff: stoffWahl, objekte: [] }, null, 2);
+    dateiPfad = null;
+    textWahl = -1;
+    meldung = "Neues, leeres Design – zum Beispiel einen Text einfügen.";
   }
 
   // Neu berechnen, sobald sich das Design ändert (kurz verzögert beim Tippen)
@@ -71,6 +152,7 @@
   async function beispiel() {
     jsonText = await invoke<string>("beispiel_design");
     dateiPfad = null;
+    textWahl = -1;
     meldung = "Beispieldesign geladen.";
     vorschau?.einpassen();
   }
@@ -81,6 +163,7 @@
     try {
       jsonText = await invoke<string>("datei_lesen", { pfad });
       dateiPfad = pfad;
+      textWahl = -1;
       meldung = `Geöffnet: ${pfad}`;
       vorschau?.einpassen();
     } catch (e) {
@@ -117,6 +200,8 @@
   onMount(async () => {
     rahmenListe = await invoke<RahmenInfo[]>("rahmen_liste");
     stoffe = await invoke<string[]>("stoffe_liste");
+    alphabete = await invoke<AlphabetInfo[]>("alphabete_liste");
+    if (alphabete.length && !alphabete.some((a) => a.name === tAlphabet)) tAlphabet = alphabete[0].name;
     await beispiel();
   });
 
@@ -131,6 +216,7 @@
       <span>BERNINA artista 185</span>
     </div>
     <div class="knoepfe">
+      <button onclick={neu}>Neu</button>
       <button onclick={beispiel}>Beispiel</button>
       <button onclick={oeffnen}>Öffnen…</button>
       <button onclick={designSpeichern}>Design speichern…</button>
@@ -159,8 +245,42 @@
       </select>
       <p class="klein">Stichabstände und Zugausgleich wie im Original (Fabric Settings).</p>
     </section>
-    <section class="editor">
+    <section class="schrift">
       <h2><span class="nr">3</span> Design anpassen</h2>
+      <h3>Schrift</h3>
+      <select value={textWahl} onchange={(e) => textWaehlen(Number(e.currentTarget.value))}>
+        <option value={-1}>Neuer Text …</option>
+        {#each textObjekte as t (t.i)}
+          <option value={t.i}>„{t.o.text}“ – {t.o.alphabet}, {t.o.hoehe ?? 20} mm</option>
+        {/each}
+      </select>
+      <input class="textfeld" type="text" bind:value={tText} placeholder="Text eingeben" />
+      <select bind:value={tAlphabet}>
+        {#each alphabete as a (a.datei)}
+          <option value={a.name}>{a.name}</option>
+        {/each}
+      </select>
+      <div class="zeile">
+        <label>Höhe <input type="number" min="1" max="200" step="1" bind:value={tHoehe} /> mm</label>
+        <label>Breite <input type="number" min="30" max="300" step="5" bind:value={tBreite} /> %</label>
+        <input type="color" bind:value={tFarbe} title="Garnfarbe (Vorschau)" />
+      </div>
+      {#if empfohlen}
+        <p class="klein" class:warnung-klein={tHoehe < empfohlen[0] || tHoehe > empfohlen[1]}>
+          Empfohlen für {tAlphabet}: {empfohlen[0]}–{empfohlen[1]} mm (Handbuch, Alphabet Samples)
+        </p>
+      {/if}
+      <div class="zeile">
+        {#if textWahl < 0}
+          <button onclick={textEinfuegen} disabled={!tText.trim()}>Text einfügen</button>
+        {:else}
+          <button onclick={textEinfuegen} disabled={!tText.trim()}>Als neuen Text einfügen</button>
+          <button onclick={textEntfernen}>Entfernen</button>
+        {/if}
+      </div>
+    </section>
+    <section class="editor">
+      <h3>Alle Objekte (JSON)</h3>
       <textarea bind:value={jsonText} spellcheck="false" autocomplete="off"></textarea>
       <p class="klein">Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Format: <code>stickprogramm/README.md</code></p>
     </section>
@@ -195,6 +315,9 @@
             <li><span class="feld" style:background={f}></span>{i + 1}. {f}</li>
           {/each}
         </ol>
+        {#if ergebnis.fehlende_zeichen}
+          <p class="warnung">Nicht im Alphabet: „{ergebnis.fehlende_zeichen}“</p>
+        {/if}
         {#if ergebnis.ausserhalb > 0}
           <p class="warnung">{ergebnis.ausserhalb} Einstiche liegen außerhalb des Stickfelds!</p>
         {:else}
@@ -296,6 +419,41 @@
     display: flex;
     flex-direction: column;
     min-height: 200px;
+  }
+  .schrift {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .schrift h3 {
+    margin: 2px 0 0;
+  }
+  .textfeld {
+    font: inherit;
+    font-size: 15px;
+    padding: 5px 6px;
+    border: 1px solid #c9d0d6;
+    border-radius: 4px;
+  }
+  .zeile {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .zeile input[type="number"] {
+    width: 56px;
+    font: inherit;
+    padding: 2px 4px;
+  }
+  .zeile input[type="color"] {
+    width: 34px;
+    height: 26px;
+    padding: 0;
+    border: 1px solid #c9d0d6;
+  }
+  .warnung-klein {
+    color: #b71c1c;
   }
   h2 {
     font-size: 13px;

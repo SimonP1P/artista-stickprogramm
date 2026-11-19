@@ -1,6 +1,6 @@
 # Artista Stickprogramm – Programm (Tauri 2 + Svelte + Rust)
 
-Stand 19.11.2026: erste Oberfläche mit Rust-Kern (`../kern/`): **1 Rahmen** und **2 Stoff** wählen, **3 Design anpassen** (JSON-Editor, Neuberechnung beim Tippen), Stichvorschau (Zoom, Verschieben, Sprünge/Einstiche), Statistik, Farben, Prüfung „passt in den Rahmen“, Design öffnen/speichern, **EXP speichern**. **4 Senden** folgt mit Phase 5. Aufbau und Plan: `../ARCHITECTURE.md`.
+Stand 19.11.2026: erste Oberfläche mit Rust-Kern (`../kern/`): **1 Rahmen** und **2 Stoff** wählen, **3 Design anpassen** (**Schrift** mit den 50 Original-Alphabeten: Text, Alphabet, Höhe, Breite, Farbe – Vorschau beim Tippen; dazu JSON-Editor, Neuberechnung beim Tippen), Stichvorschau (Zoom, Verschieben, Sprünge/Einstiche), Statistik, Farben, Prüfung „passt in den Rahmen“, Design öffnen/speichern, **EXP speichern**. **4 Senden** folgt mit Phase 5. Aufbau und Plan: `../ARCHITECTURE.md`.
 
 ## Starten (Windows-PC)
 Voraussetzungen siehe `../ARCHITECTURE.md` §5 (Rust und Node auf F:\Entwicklung, VS Build Tools 2019, Windows SDK im PATH).
@@ -17,4 +17,6 @@ Hinweis: Nach dem Einrichten der Umgebungsvariablen ein neues Terminal öffnen, 
 |---|---|
 | `src/` | Oberfläche (SvelteKit, TypeScript): `routes/+page.svelte` (Hauptfenster), `lib/Vorschau.svelte` (Stichvorschau), `lib/typen.ts` |
 | `src-tauri/` | Rust-Teil des Programms (Fenster, Befehle an den Rechenkern): `src/lib.rs` – rahmen_liste, stoffe_liste, beispiel_design, design_berechnen, datei_lesen, text_speichern, exp_speichern |
+| `src-tauri/alphabete/` | die 50 Original-Alphabete (ESB) der CD, als Ressource mitgeliefert (`HERKUNFT.md`) |
+| `src/lib/alphabet_hoehen.ts` | empfohlene Buchstabenhöhen je Alphabet (Handbuch) |
 | `src-tauri/tauri.conf.json` | Programmname, Fenster, Kennung `de.artista.stickprogramm` |

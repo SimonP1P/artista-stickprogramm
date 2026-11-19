@@ -2,10 +2,67 @@
 
 use serde::Serialize;
 use serde_json::Value;
+use std::collections::HashMap;
+use std::path::PathBuf;
+use std::sync::Mutex;
+use stick_formate::esb;
 use stick_formate::exp::exp_bytes;
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::rahmen::{Rahmen, alle_rahmen};
+use stick_kern::schrift::Alphabet;
 use stick_kern::{Art, Design, Stich};
+use tauri::{Manager, State};
+
+/// Original-Alphabete (ESB): Ordner und bereits geladene Alphabete (Laden dauert, Neuberechnung beim Tippen nicht).
+struct Alphabete {
+    ordner: PathBuf,
+    geladen: Mutex<HashMap<String, Alphabet>>,
+}
+
+impl Alphabete {
+    /// Ordner: Umgebungsvariable STICK_ALPHABETE, sonst Ressource „alphabete“ des Programms, sonst Quellordner.
+    fn finden(ressourcen: Option<PathBuf>) -> PathBuf {
+        if let Ok(p) = std::env::var("STICK_ALPHABETE") {
+            return p.into();
+        }
+        if let Some(r) = ressourcen.map(|r| r.join("alphabete"))
+            && r.is_dir()
+        {
+            return r;
+        }
+        PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/alphabete"))
+    }
+
+    /// Die Alphabete, die das Design braucht, einsetzen (aus dem Zwischenspeicher oder von der Platte).
+    fn einsetzen(&self, design: &mut Design) -> Result<(), String> {
+        let namen = design.alphabet_namen();
+        if namen.is_empty() {
+            return Ok(());
+        }
+        let mut geladen = self.geladen.lock().map_err(|e| e.to_string())?;
+        let fehlend: Vec<&String> = namen.iter().filter(|n| !geladen.contains_key(*n)).collect();
+        if !fehlend.is_empty() {
+            let mut d = Design {
+                alphabete: Default::default(),
+                ..design.clone()
+            };
+            esb::design_alphabete_laden(&mut d, &self.ordner)?;
+            geladen.extend(d.alphabete);
+        }
+        for n in namen {
+            if let Some(a) = geladen.get(&n) {
+                design.alphabete.insert(n, a.clone());
+            }
+        }
+        Ok(())
+    }
+}
+
+#[derive(Serialize)]
+struct AlphabetInfo {
+    name: String,
+    datei: String,
+}
 
 /// Beispieldesign mit allen Sticharten der ersten Ausbaustufe.
 const BEISPIEL: &str = include_str!("../../../stickprogramm/beispiele/beispiel.json");
@@ -51,10 +108,16 @@ struct Ergebnis {
     farben: Vec<String>,
     statistik: Statistik,
     ausserhalb: usize,
+    /// Zeichen eines Texts, die das Alphabet nicht hat
+    fehlende_zeichen: String,
 }
 
 /// Design aus JSON; Rahmen und Stoff aus der Oberfläche haben Vorrang vor den Angaben im JSON.
-fn design_laden(json: &str, rahmen: Option<String>, stoff: Option<String>) -> Result<Design, String> {
+fn design_laden(
+    json: &str,
+    rahmen: Option<String>,
+    stoff: Option<String>,
+) -> Result<Design, String> {
     let mut v: Value = serde_json::from_str(json).map_err(|e| format!("JSON ungültig: {e}"))?;
     let Some(obj) = v.as_object_mut() else {
         return Err("Das Design muss ein JSON-Objekt sein".into());
@@ -84,8 +147,36 @@ fn beispiel_design() -> String {
 }
 
 #[tauri::command]
-async fn design_berechnen(json: String, rahmen: Option<String>, stoff: Option<String>) -> Result<Ergebnis, String> {
-    let design = design_laden(&json, rahmen, stoff)?;
+fn alphabete_liste(alphabete: State<'_, Alphabete>) -> Vec<AlphabetInfo> {
+    esb::verzeichnis(&alphabete.ordner)
+        .into_iter()
+        .filter(|(n, _)| n != "ButtonHoles")
+        .map(|(name, p)| AlphabetInfo {
+            name,
+            datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
+        })
+        .collect()
+}
+
+#[tauri::command]
+async fn design_berechnen(
+    json: String,
+    rahmen: Option<String>,
+    stoff: Option<String>,
+    alphabete: State<'_, Alphabete>,
+) -> Result<Ergebnis, String> {
+    berechnen_mit(&json, rahmen, stoff, &alphabete)
+}
+
+fn berechnen_mit(
+    json: &str,
+    rahmen: Option<String>,
+    stoff: Option<String>,
+    alphabete: &Alphabete,
+) -> Result<Ergebnis, String> {
+    let mut design = design_laden(json, rahmen, stoff)?;
+    alphabete.einsetzen(&mut design)?;
+    let (_, fehlend) = design.objekte_aufgeloest()?;
     let folge = design.berechnen()?;
     let (x0, y0, x1, y1) = folge.begrenzung().unwrap_or((0.0, 0.0, 0.0, 0.0));
     let laengen = folge.stichlaengen();
@@ -95,7 +186,11 @@ async fn design_berechnen(json: String, rahmen: Option<String>, stoff: Option<St
         farbwechsel: folge.anzahl(Art::Farbwechsel),
         breite: x1 - x0,
         hoehe: y1 - y0,
-        min_stich: if laengen.is_empty() { 0.0 } else { laengen.iter().copied().fold(f64::INFINITY, f64::min) },
+        min_stich: if laengen.is_empty() {
+            0.0
+        } else {
+            laengen.iter().copied().fold(f64::INFINITY, f64::min)
+        },
         max_stich: laengen.iter().copied().fold(0.0, f64::max),
     };
     Ok(Ergebnis {
@@ -103,6 +198,7 @@ async fn design_berechnen(json: String, rahmen: Option<String>, stoff: Option<St
         rahmen: RahmenInfo::from(&design.rahmen),
         stoff: design.einstellungen.stoff.clone(),
         ausserhalb: design.ausserhalb(&folge).len(),
+        fehlende_zeichen: fehlend.into_iter().collect(),
         statistik,
         farben: folge.farben,
         stiche: folge.stiche,
@@ -120,8 +216,15 @@ async fn text_speichern(pfad: String, text: String) -> Result<(), String> {
 }
 
 #[tauri::command]
-async fn exp_speichern(json: String, rahmen: Option<String>, stoff: Option<String>, pfad: String) -> Result<usize, String> {
-    let design = design_laden(&json, rahmen, stoff)?;
+async fn exp_speichern(
+    json: String,
+    rahmen: Option<String>,
+    stoff: Option<String>,
+    pfad: String,
+    alphabete: State<'_, Alphabete>,
+) -> Result<usize, String> {
+    let mut design = design_laden(&json, rahmen, stoff)?;
+    alphabete.einsetzen(&mut design)?;
     let daten = exp_bytes(&design.berechnen()?);
     std::fs::write(&pfad, &daten).map_err(|e| format!("{pfad}: {e}"))?;
     Ok(daten.len())
@@ -132,9 +235,18 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
+        .setup(|app| {
+            let ordner = Alphabete::finden(app.path().resource_dir().ok());
+            app.manage(Alphabete {
+                ordner,
+                geladen: Mutex::new(HashMap::new()),
+            });
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![
             rahmen_liste,
             stoffe_liste,
+            alphabete_liste,
             beispiel_design,
             design_berechnen,
             datei_lesen,
@@ -151,15 +263,38 @@ mod tests {
 
     #[test]
     fn beispiel_rechnet_und_passt_in_den_rahmen() {
-        let e = tauri::async_runtime::block_on(design_berechnen(BEISPIEL.into(), None, None)).unwrap();
+        let a = Alphabete {
+            ordner: Alphabete::finden(None),
+            geladen: Mutex::new(HashMap::new()),
+        };
+        let e = berechnen_mit(BEISPIEL, None, None, &a).unwrap();
         assert!(e.statistik.stiche > 1000);
         assert_eq!(e.ausserhalb, 0);
         assert_eq!(e.farben.len(), e.statistik.farbwechsel + 1);
     }
 
     #[test]
+    fn text_mit_alphabet() {
+        let a = Alphabete {
+            ordner: Alphabete::finden(None),
+            geladen: Mutex::new(HashMap::new()),
+        };
+        let json = r#"{"objekte":[{"art":"text","text":"Anna","alphabet":"Drifter","hoehe":20}]}"#;
+        let mut d = design_laden(json, None, None).unwrap();
+        a.einsetzen(&mut d).unwrap();
+        let f = d.berechnen().unwrap();
+        assert!(f.anzahl(Art::Stich) > 500);
+        assert_eq!(a.geladen.lock().unwrap().len(), 1);
+    }
+
+    #[test]
     fn oberflaeche_ueberschreibt_rahmen_und_stoff() {
-        let d = design_laden(BEISPIEL, Some("artista 40 x 60".into()), Some("Knit Light Weight".into())).unwrap();
+        let d = design_laden(
+            BEISPIEL,
+            Some("artista 40 x 60".into()),
+            Some("Knit Light Weight".into()),
+        )
+        .unwrap();
         assert_eq!(d.rahmen.name, "artista 40 x 60");
         assert_eq!(d.einstellungen.stoff, "Knit Light Weight");
         assert!(design_laden("[1, 2]", None, None).is_err());

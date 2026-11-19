@@ -34,4 +34,11 @@ export interface Ergebnis {
   farben: string[];
   statistik: Statistik;
   ausserhalb: number;
+  /** Zeichen eines Texts, die das Alphabet nicht hat */
+  fehlende_zeichen: string;
+}
+
+export interface AlphabetInfo {
+  name: string;
+  datei: string;
 }

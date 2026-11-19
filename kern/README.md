@@ -5,11 +5,13 @@ Stichberechnung für die BERNINA artista 185 nach dem Vorbild BERNINA artista V4
 ## Crates
 | Crate | Inhalt |
 |---|---|
-| `stick-kern` | Geometrie, Einstellungen (Werte mit Quellen, 8 Stoffe), Sticharten (Lauf, Dreifach, Satin, Tatami), Unterlagen, Nachbearbeitung (Vernähen, Mindeststich 0,3 mm, Auto Jump), Rahmen, Design-Modell mit JSON-Eingabe |
-| `stick-formate` | EXP schreiben/lesen (Bernina-Variante), SVG-Vorschau |
+| `stick-kern` | Geometrie, Einstellungen (Werte mit Quellen, 8 Stoffe), Sticharten (Lauf, Dreifach, Satin, Tatami), Unterlagen, Nachbearbeitung (Vernähen, Mindeststich 0,3 mm, Auto Jump), Rahmen, Design-Modell mit JSON-Eingabe, **Schrift** (`schrift.rs`: Satinsäulen mit Winkellinien, Textsatz) |
+| `stick-formate` | EXP schreiben/lesen (Bernina-Variante), SVG-Vorschau, **Original-Alphabete (ESB) lesen** (`esb.rs`) |
 | `stick-cli` | Kommandozeile `stick` |
 
-Später: `stick-maschine` (serielles Protokoll), `stick-vektor`, `stick-schrift`.
+Später: `stick-maschine` (serielles Protokoll), `stick-vektor`. Schrift steckt in `stick-kern::schrift` + `stick-formate::esb`
+(`Analyse_Teil3/09`); Text im Design: `{"art": "text", "text": "Anna", "alphabet": "Drifter", "hoehe": 20}`,
+Alphabet-Ordner für die CLI: `--alphabete ORDNER` oder `STICK_ALPHABETE` (`stick alphabete` listet sie).
 
 ## Stand (19.11.2026)
 **Getreue Übertragung des Python-Prototyps** `../stickprogramm/`. Prüfung: Für die drei Designs in `testdaten/vergleich_*.json`

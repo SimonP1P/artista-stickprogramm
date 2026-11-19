@@ -1,6 +1,6 @@
 # 09 – Die Original-Alphabete (ESB) (19.11.2026)
 
-**Ergebnis:** Alle **53 Alphabete** in `Main/PROGRAM/wletter/` lassen sich vollständig lesen: je Zeichen Grundlinie,
+**Ergebnis:** Alle **51 Dateien** in `Main/PROGRAM/wletter/` (**50 Alphabete** + ButtonHoles) lassen sich vollständig lesen: je Zeichen Grundlinie,
 Umrisse (Bézier-Knoten), Winkellinien der Satinsäulen, Stichart mit Parametern, Verbinder. Werkzeug:
 `Arbeitsdaten/werkzeuge/esb_lesen.py` (`--png` zeichnet alle Zeichen mit Umriss, Winkellinien und Grundlinie).
 Zum Vergleich gibt es die **echten Stiche des Originals** für 7 Alphabete: die Zeichensätze Nr. 1–7 aus dem
@@ -34,7 +34,7 @@ OLE-Datei mit den Streams
   Füllung 0x2748 → **Satin 0x2721** (0x16 Auto-Split 1800, 0x15 Abstand **72 = 0,40 mm**) + **Laufweg 0x271c**
   (0x18 Länge 540 = 3 mm). Die zweite Säule verweist auf dieselben Datensätze (Verweis 2/3).
 
-## 3. Inhalt der 53 Alphabete — Sicherheit: hoch (Zählung mit `esb_lesen.py`)
+## 3. Inhalt der 50 Alphabete — Sicherheit: hoch (Zählung mit `esb_lesen.py`)
 - 9 bis 162 Zeichen je Alphabet (Drifter 141: Satzzeichen, Ziffern, A–Z, a–z, Umlaute/Akzente, Æ, Ø, ß …).
 - Fast überall **Satinsäulen (EmbroideryPatch) + Laufweg**; Unterlagen nur in einzelnen Alphabeten (Mittellauf:
   Blackboard, Swiss Block, Varsity Block, Tabloid; Zickzack: Castle, Greek Ionic, Hebrew 2, Jikharev, Secret Garden;
@@ -53,7 +53,23 @@ OLE-Datei mit den Streams
   x = 19,1 mm, wo A endet) – dort also Abstand 0 bzw. nur der Vorschub.
 - Buchstabenhöhe im Original 1–200 mm (Handbuch S. 165), Breite in % der Höhe (100 % = Original).
 
-## 5. Offen
+## 5. Umsetzung im Programm (19.11.2026)
+- `kern/stick-formate/src/esb.rs` liest die Alphabete (Test mit DRIFTER.ESB von der CD: 141 Zeichen, „A“ = 2 Säulen mit
+  14/22 Knoten, 7 Winkellinien, Satin 0,40 mm); `kern/stick-kern/src/schrift.rs` setzt Texte: Maßstab Höhe/50 mm,
+  Vorschub x2 − x1, Buchstabenabstand = Anteil aus dem Kopf × Höhe, Leerzeichen 0,3 × Höhe (**eigene Festlegung**),
+  Satinsäule → Seiten A/B über die Winkellinien (Abtastung 1 Punkt/mm: eigene Festlegung), fester Abstand aus 0x15.
+- Design-JSON: `{"art": "text", "text": …, "alphabet": "Drifter", "hoehe": 20, "breite": 100, "abstand": …,
+  "position": [x, y], "ausrichtung": "mitte"}`. Programm: Bereich „Schrift“ (Text, Alphabet, Höhe, Breite, Farbe),
+  Alphabete als Ressource `app/src-tauri/alphabete/`.
+- **Erster Vergleich** „A“ Drifter 25 mm mit dem Original aus der Maschine (Zeichensatz Nr. 1): 373 statt 397 Stiche,
+  gleiche Stichrichtungen und Reihenfolge der Säulen (Querbalken zuerst). Es fehlen noch: (a) **Mittellauf als Unterlage**
+  unter beiden Säulen (im Alphabet nicht enthalten → automatische Schrift-Unterlage des Originals, `let_underlay`),
+  (b) **Kurzstiche** an der Innenkurve (Einstiche innen abwechselnd kürzer; Kandidaten: Datensätze 0x21–0x26 der
+  Satin-Stichart, z. B. 0x24 = 30,0), (c) Laufweg innerhalb des Buchstabens statt Sprung, Vernähen 2 × 1,0 mm.
+- `Main/PROGRAM/userletw/` (14 ESB) enthält **keine Alphabete**, sondern Motiv-Sammlungen (Children, Corners, Heirloom,
+  Quilting …) für Motivfüllung/-linie – Streams nicht nach Zeichencodes benannt; später für „Fancy/Muster“ analysieren.
+
+## 6. Offen
 1. Referenzhöhe und Buchstabenabstand im Code bestätigen (Lettering-Modul: wer liest `AlphabetHeader` +0x10).
 2. Wortabstand (kein Leerzeichen-Stream) und Zeilenabstand.
 3. Automatische Unterlage für Schrift (`let_underlay`, Tag 0x197f ff.) – Vergleich mit Blackboard/Swiss Block (Unterlage
