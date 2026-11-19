@@ -179,3 +179,26 @@ Von Claude Code auf dem Windows-PC ausgeführt. **0x400 vom Nutzer einmalig frei
   ersten Buchstaben.
 - Damit ist **Phase 2 „ein echtes Design auslesen“ erreicht.** Nächste Schritte: Designs 2–51 lesen (Sammlung echter
   Maschinendaten, Vergleich mit eigenem EXP), dann der Weg zurück (Schreiben 0x10/0x200 oder Sticken 0x08 – nur nach Zustimmung).
+
+## Test v3.6 – alle 51 Designs gelesen (19.11.2026, 14:32–14:58, `Arbeitsdaten/geraetetests/*_v3_6*`)
+Ein Durchgang für Nr. 2–51 (eine Verbindung, je Design Ziel 0xA0 → Auswahl → Bank 0x30/0x60 → 0x20 → Auswahl → 0x400 →
+Puffer lesen), danach Nr. 5 einzeln. Ergebnis: `Arbeitsdaten/maschinendesigns/` (`UEBERSICHT.md`, `kontaktbogen.png`).
+| Befund | Einzelheiten | Sicherheit |
+|---|---|---|
+| **Alle 51 Designs gelesen** | 49 von 50 im Durchgang in 24 min, **0 Wiederholungen**; jedes Mal Status 0x0002; Endkennung `80 81` bei allen | hoch |
+| Inhalt | Nr. 1–7: **7 Stick-Zeichensätze** (je 144–149 Zeichen als Farbblöcke, 2,2–3 m breit, 40–49 mm hoch); Nr. 8–41: Motive (Ente, Holzpferd, Lok, Teddy, „Sunflower“, Oldtimer, Hirsch, Fisch …, bis 128 × 178 mm); Nr. 42–51: kleinere Designs (Trolle, Uhr, Monogramm „M“, Kreis/Rechteck-Formen) | hoch |
+| **Nr. 8 = Nr. 34** | Stichdaten byte-gleich („Outdoorsman - 805023“ zweimal gespeichert) | hoch |
+| **Länge 2 wird bei 0x400 nicht zurückgesetzt** | Hat ein Design keinen Anhang, bleibt im Kopf (DATEN+6N+4) die Anhanglänge des **vorher** geladenen Designs stehen. Nr. 5 zeigte im Durchgang 20 288 (= Nr. 4) → Längenprüfung 153 514 ≥ 145 426 → nicht gelesen (wäre im Original Fehler 19). Einzeln nach neuer Verbindung: Länge 2 = 0, Nr. 5 lesbar (132 336 Byte). Ebenso Nr. 42–51: 1126 (= Nr. 41), Containerkopf dort Unsinn. Ein neuer Verbindungsaufbau setzt Länge 2 auf 0 (vgl. Test v3.4 Lauf 2) | hoch |
+| Anhang echt? | Prüfung: u32 LE bei Anhang+2 = Länge 2. **Echt bei Nr. 1, 4, 6–41**; **kein Anhang** bei Nr. 2, 3, 5 und 42–51 (Flags 0x86 in der Liste – alle Designs ohne Anhang dort; Nr. 2/3/5 haben Flags 0x8C wie 4/6/7) | hoch |
+| Farbtabelle (Chunk 0x14) | Chunk = 6 Byte Chunkkopf + **n × 0x86, n = Farbanzahl** (= Farbwechsel + 1) bei allen 39 echten Anhängen; alle Einträge 0 (keine Garnangaben gespeichert) | hoch |
+| Name im Anhang | Chunk 0x0A enthält denselben Namen wie die Liste („Drifterv45Rev7“, „Outdoorsman - 805023“ oder Nummern „1“ … „30“) | hoch |
+| Spalte „Farben?“ der Liste (INFO+N+1) | stimmt nur für Nr. 1–7 (145/144/148/149/146/147/147 = Farben der Stichdaten); Nr. 8–27 zeigen 1 (echte Farben 3–17), Bank 1 zeigt die Werte von Bank 0 → Bedeutung bzw. Leseadresse dieser Spalte offen | mittel |
+
+**Folgerungen:**
+- Beim Lesen mehrerer Designs in einer Verbindung den Anhang immer prüfen (Containerlänge) – v3.6 tut das jetzt
+  („Anhang UNGÜLTIG … Rest des vorher geladenen Designs“), das Werkzeug ebenso. Alternativ je Design neu verbinden (wie das
+  Original: ein Design je „Card/Machine Read“).
+- Für das eigene Programm (Phase 5): Beim Senden immer einen vollständigen Kopf mit beiden Längen schreiben; beim Lesen Länge 2
+  nur nach Prüfung des Containers übernehmen.
+- Die 51 Designs sind eine Sammlung echter Maschinendaten (EXP-Kodierung) zum Vergleich mit der eigenen Stichberechnung
+  (Satin, Tatami, Lauf, Schrift).

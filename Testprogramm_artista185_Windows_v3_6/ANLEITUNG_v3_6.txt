@@ -1,0 +1,36 @@
+VERSION 3.6 - DESIGNS AUS DER MASCHINE LESEN - BERNINA artista 185 - Anleitung (Windows)
+=====================================================================================
+
+WAS IST NEU IN 3.6?
+-------------------
+Test 3.5 (19.11.2026): Design Nr 1 wurde vollstaendig gelesen (123 KB in 75 s, Befehl 'N').
+Version 3.6 liest MEHRERE Designs in einem Durchgang (Schalter -Nummern), jedes wie die
+Original-Software: Ziel, Auswahl, Bank, 0x20, Auswahl, 0x400, Puffer lesen.
+Jedes Design wird sofort gespeichert; am Ende steht eine Uebersicht.
+
+Befehl 0x400 wird NUR gesendet mit  START_DESIGN_LESEN.bat  (ein Design) oder
+START_ALLE_LESEN.bat  (alle Designs). START.bat liest wie 3.3 nur die Liste.
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. SELBSTTEST.bat doppelklicken (ohne Maschine). Am Ende muss stehen:
+    "UEBERSICHT: 4 von 4 Designs gelesen" und "PC-Modus verlassen (Befehl 0x100 angenommen)".
+ 2. Maschine an, Stickmodul angesteckt, Kabel verbunden, Startbildschirm abwarten.
+ 3. START_ALLE_LESEN.bat doppelklicken (alle Designs, bei 51 Designs ca. 30-60 Minuten)
+    Nur bestimmte:   START_ALLE_LESEN.bat -Nummern 2-10
+    Ein Design:      START_DESIGN_LESEN.bat -Nummer 5
+ 4. Warten bis "FERTIG" erscheint.
+ 5. Dateien schicken: Design_NrXX_....bin, Icon_NrXX_....bin, Ergebnis_....txt, Mitschnitt_....log
+ 6. Auswerten: py Arbeitsdaten\werkzeuge\maschinen_design.py --sammlung <Ordner mit den .bin>
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:
+   T r M E, R+Adresse, N+Adresse, R F ?, J 0 5 / E B, Y Q   (Verbindung, Lesen)
+   W FFFED0 + Befehl 00A0/0030/0060/00C0/0020/0100 + ?      (wie 3.3)
+   W FFFED0 + Befehl 0400 + ?                                (NUR mit -MitLadebefehl: Design in den Puffer laden)
+   W <Auswahl+0> Nummer,  W <Auswahl+5> Bank                 (wie Original)
+ Kein Befehl zum Speichern (0x200), Loeschen (0x800), Formatieren (0x80),
+ Sticken (0x08) oder Daten-Schreiben ist im Programm enthalten.
