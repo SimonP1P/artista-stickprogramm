@@ -14,6 +14,7 @@
 ## 2. Wo steht was – zuerst hier nachsehen
 | Thema | Datei (maßgeblich) |
 |---|---|
+| **Roadmap** (Phasen, Stand, nächste Schritte) | `ROADMAP.md` |
 | **Gesamtbericht** (8 Ausgangsfragen, Antworten, Sicherheitsstufen) | `Analyse/ANALYSE.md` |
 | Maschinen & Übertragungswege (165–185 seriell, 200 USB/ActiveSync) | `Analyse/ANALYSE.md` §1, `Analyse/code/03_artista200_adx.md` |
 | **Standardwerte** (Satin, Tatami, Lauf, Unterlage, Zugausgleich, min/max Stich) | `Analyse/ANALYSE.md` §5, `Analyse/code/10_algorithmen_schmale_bahnen.md` |
@@ -109,11 +110,15 @@ venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink
 - **Bekannter Schaden:** Die CD-Kopie hat 14 defekte 64-KB-Blöcke in `setup.z` → ARTISTA.HLP, qrg_enu.pdf, Quilter.hlp, portfolio.exe, vcl60.bpl unbrauchbar (Details `Analyse/code/01_setup_entpacken.md`).
 
 ## 6. Stand und Roadmap
-| Phase | Inhalt | Stand |
+**Maßgeblich ist `ROADMAP.md`** (Phasen, erledigte und offene Schritte, neue Erkenntnisse). Nach jedem abgeschlossenen
+Schritt dort nachtragen und diese Kurzfassung angleichen. Dem Nutzer zu Beginn einer Arbeitssitzung kurz sagen, wo wir
+in der Roadmap stehen.
+
+| Phase | Inhalt | Stand 19.11.2026 |
 |---|---|---|
-| 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll, Lesetest am Gerät | ✅ erledigt, verifiziert (`VERIFIKATION.md`) |
-| 1 Prototyp Stichberechnung | Lauf, Satin mit Auto-Spacing, Tatami, Unterlage, Zugausgleich → EXP + Vorschau, in **Python** | ✅ 19.11.2026: `stickprogramm/` (Lauf, Dreifach, Satin, Tatami mit Löchern, 5 Unterlagen, 8 Stoffe, Rahmen, Vernähen, Auto Jump, EXP lesen/schreiben, SVG), 47 Tests. Bleibt als **Referenz und Prüforakel** für den Rust-Kern (`ARCHITECTURE.md` §4); nicht an der Maschine gestickt |
-| 2 Übertragung | Weg zur artista 185: Designliste lesen → ein echtes Design auslesen → Designcontainer verstehen → zuerst „sticken ohne speichern“; Schreiben nur nach Zustimmung. Verlauf: v3 Listenbefehle mit 0x1005 abgelehnt → v3.1/v3.2 (0xFFFEE0, 115200) laut Code der falsche Weg für die 185 → **v3.3 am Gerät erfolgreich (19.11.2026):** Ziel 0xA0 = Maschinenspeicher, **Designliste mit 51 Designs gelesen**; 0x50 = Karte (keine gesteckt); zweiter Durchlauf **ohne** Aus/Ein klappt. **v3.5/v3.6: alle 51 Designs der Maschine vollständig gelesen und entschlüsselt (19.11.2026)**, `Arbeitsdaten/maschinendesigns/`. Offen: Display nach 0x100 ansehen; **Senden (Schreiben/Sticken) – geplant für Sa 21.11.2026, nur nach Zustimmung**. Details `Analyse_Teil2/07_befund_am_geraet.md` | 🟡 Liste lesen ✅, Design lesen ✅, senden offen |
-| 3 Grundgerüst neue Architektur | Entwicklungsumgebung auf F: (Rust, Node, MSVC Build Tools); Tauri 2 + Svelte + Rust-Workspace (`ARCHITECTURE.md` §3); Rechenkern in Rust **neu** (Lauf, Dreifach, Satin, Tatami, Unterlagen, Nachbearbeitung, EXP) mit den Prüffällen des Prototyps und Vergleich gegen Python; erste Oberfläche: Rahmen wählen, Design (JSON) laden, Vorschau, EXP speichern | 🟡 begonnen 19.11.2026: Umgebung auf F: eingerichtet, Tauri-Gerüst `app/` baut und startet; **Rust-Kern `kern/` fertig übertragen** (Lauf, Dreifach, Satin, Tatami, Unterlagen, Nachbearbeitung, Rahmen, JSON, EXP, SVG, CLI `stick`) – EXP byte-gleich mit Python für 3 Vergleichsdesigns, 26 Tests, clippy sauber; **erste Oberfläche fertig**: Rahmen/Stoff wählen, Design-JSON anpassen, Stichvorschau, Statistik, EXP speichern (`app/README.md`) |
-| 4 Alle Sticharten & Funktionen | voller Umfang wie das Vorbild: Wege durch Flächen statt Sprünge, Start-/Endpunkte, Fancy/Muster, Applikation, Schrift (zuerst Original-Alphabete der CD, dazu TTF), Vektorisierung (Potrace/VTracer), Knockout/Überlappung, Satin-Auto-Split; **eigene Festlegungen durch Original-Verhalten ersetzen** (weitere Analyse der Vorlagen/des Codes), Probestickereien – auch feine Arbeiten | 🟡 begonnen 19.11.2026: Objektteil der ART-Muster entschlüsselt und mit den echten Stichen verglichen (`Analyse_Teil3/03`–`08`); im Kern ersetzt: Satin-Abstand (gleiche Seite, außen im Bogen), Tatami-Abstand (Hinreihen), Auto Underlay, Edge Walk/Mittellauf, Lauf-Ecken, **Laufwege in Flächen statt Sprüngen** (Referenz-Stufen 3–9); **Schrift mit den 50 Original-Alphabeten** (ESB entschlüsselt, Text im Programm; Stil „Schrift“ wie im Original: Auto Spacing × 0,9, **Kurzstiche** nach MOD1, Auto-Unterlage Zickzack, Buchstabe als Gruppe mit **Laufweg statt Sprung**); Regelübersicht `Analyse_Teil3/10` |
-| 5 Maschine im Programm & Komfort | serieller Port aus Rust (`stick-maschine`), Ablauf „Rahmen → anpassen → senden“, Designcontainer schreiben, Garnfarbkarten, Bedienkomfort; Mac-Programm (Mac oder GitHub Actions) | ⬜ |
+| 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll | ✅ (`VERIFIKATION.md`) |
+| 1 Prototyp | Stichberechnung in Python, Referenz für den Rust-Kern | ✅ (`stickprogramm/`) |
+| 2 Übertragung | Lesen: Designliste + alle 51 Designs ✅ · Senden vorbereiten (Container schreiben, Rundweg-Prüfung, Testprogramm v4) ⬜ · **Senden am Gerät 📅 Sa 21.11.2026**, nur nach Zustimmung | 🟡 |
+| 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
+| 4 Sticharten nach dem Original | Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift mit Original-Alphabeten, Kurzstiche ✅; offen: Schrift-Reihenfolge, Tatami-Kurzstiche, Auto-Split, Fancy, Applikation, TTF, Vektorisierung, Knockout | 🟡 (`ROADMAP.md`, `Analyse_Teil3/10`) |
+| 5 Maschine im Programm | `stick-maschine`, „Senden“ in der Oberfläche, Bedienkomfort, Mac-Programm | ⬜ |

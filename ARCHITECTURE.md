@@ -1,6 +1,6 @@
 # Architektur – Stickprogramm für die BERNINA artista 185
 
-Stand: 19.11.2026 (vom Nutzer festgelegt). Roadmap: `CLAUDE.md` §6.
+Stand: 19.11.2026 (vom Nutzer festgelegt). Roadmap: `ROADMAP.md`.
 
 ## 1. Rahmenbedingungen
 | Punkt | Festlegung |
@@ -32,7 +32,7 @@ Stand: 19.11.2026 (vom Nutzer festgelegt). Roadmap: `CLAUDE.md` §6.
 | Schrift-Umrisse | Rust-Font-Bibliothek (z. B. `ttf-parser`) | Computer-Schriften in Umrisse wandeln |
 | Stickschriften | **zuerst die Original-Alphabete der CD** (`Analyse/daten/alphabets.md`, Format noch zu analysieren); Ink/Stitch-Schriften nur, wenn ein Alphabet dort fehlt | Grundsatz 1a; Schrift-Regeln (Faktor 0,9, kein Auto Jump, Mindesthöhen) aus der Analyse |
 | Dateiformate | eigener **EXP-Writer** in der Bernina-Variante (ohne Trim-Codes, `Analyse/code/07_exp_format.md`); **pyembroidery** (MIT) als Vergleich | EXP ist für die 185 nur **Zwischenformat**: auf die Maschine kommt der Designcontainer mit „BE“-Verschleierung (`Analyse_Teil2/05_designcontainer_verschleierung.md`). DST u. a. sind **kein** Ziel |
-| Maschinen-Anbindung | serieller Port aus Rust (z. B. Crate `serialport`) | Protokoll nach `Analyse_Teil2/01–08`. **Stand:** Verbinden, Stickmodul, Lesen am Gerät bestätigt; Designliste lesen und Design schreiben **noch nicht** (Phase 2) |
+| Maschinen-Anbindung | serieller Port aus Rust (z. B. Crate `serialport`) | Protokoll nach `Analyse_Teil2/01–08`. **Stand:** Verbinden, Stickmodul, Designliste und alle 51 Designs lesen am Gerät bestätigt (Testprogramme v3.3–v3.6); Design senden **noch nicht** (Phase 2, `ROADMAP.md`) |
 | **Maßstab für Stiche** | **Analyse der Original-Software** (`Analyse/`, `Analyse_Teil2/`) | Grundsatz 1a; Werte mit Quellen bereits in `stickprogramm/src/stickprogramm/einstellungen.py`, 47 Prüffälle im Python-Prototyp |
 | Vergleich | Ink/Stitch (GPL-3) | nur Ergebnisse nebeneinanderlegen, keine Quelle |
 
@@ -43,7 +43,7 @@ app/                      Tauri-Programm
   src-tauri/              Rust: Fenster, Befehle an den Kern
 kern/                     Rust-Workspace
   stick-kern/             Geometrie, Sticharten, Unterlagen, Nachbearbeitung, Einstellungen, Stoffe, Rahmen   ✅ 19.11.2026
-  stick-formate/          EXP lesen/schreiben, artista-Designcontainer, später ART lesen   ✅ EXP + SVG
+  stick-formate/          EXP lesen/schreiben, artista-Designcontainer, später ART lesen   ✅ EXP + SVG + ESB
   stick-maschine/         serielles Protokoll artista 185 (mit Simulation wie die Testprogramme)
   stick-vektor/           Bild → Umrisse (Potrace, VTracer)
   stick-schrift/          Schriften → Umrisse, Stickschriften
@@ -79,8 +79,9 @@ Der Rechenkern wird in Rust **neu geschrieben, nicht Zeile für Zeile übersetzt
 | Mac | ~1,8 GB frei | Rust-Builds dort erst nach Aufräumen oder mit externer Platte. Alternative: Mac-Programm über **GitHub Actions** (macOS-Runner, `tauri-action`) bauen lassen |
 
 ## 6. Offene Punkte / Risiken
-1. **Übertragung zur 185** (Phase 2) ist das größte Risiko und unabhängig von der Architektur: Designliste lesen (v3.3),
-   dann ein echtes Design auslesen, Designcontainer verstehen, zuerst „sticken ohne speichern“.
+1. **Übertragung zur 185** (Phase 2): Lesen ist erledigt (Liste, alle 51 Designs, Container verstanden). Offen ist das
+   Senden – Container vorher ohne Maschine byte-gleich nachbauen, dann am Gerät zuerst „sticken ohne speichern“
+   (`ROADMAP.md` Phase 2).
 2. **Neustart der Maschine:** bisher nach jedem Test aus/ein. Laut Code beendet das Original mit Befehl 0x100 den PC-Modus.
    **v3.3 (19.11.2026):** 0x100 wird angenommen (Status 0x0000), die Maschine bleibt auf 57600, ein zweiter Durchlauf
    ohne Aus/Ein klappt (Synchronisation bei 57600). Offen: Display danach normal? Ziel: im fertigen Programm kein Neustart nötig.
