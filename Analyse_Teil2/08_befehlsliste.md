@@ -11,7 +11,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 |---|---|---|---|---|---|---|
 | `R` `F` `?` (ohne Echo-Prüfung) | – | `R`, `F`, `?` | Synchronisieren | ⬜ (nie nötig) | 🟢 | 0x10001d00 |
 | `T` `r` `M` `E` | – | Echo | PC-Modus („Transfermodus“) betreten | ✅ | 🟢 | 0x10005e30 |
-| `J` | 1 Byte Code: 0x11 = 19200, 0x05 = 57600, 0x02 = 115200 | nach Umschalten `B` `O` `S`, PC sendet `E` `B` | Baudrate wechseln | ✅ (57600) | 🟢 | 0x100057b0 |
+| `J` | 1 Byte Code: 0x11 = 19200, 0x05 = 57600, 0x02 = 115200 | nach Umschalten `B` `O` `S`, PC sendet `E` `B` | Baudrate wechseln. **`J 0 2` nach `Y Q` (an das Stickmodul) bringt die Verbindung durcheinander** (v3.2: kein `B O S`, nur unlesbare Bündel → Aus/Ein nötig). Das Original nutzt 115200 bei der 185 nie (siehe 07) | ✅ (57600) ❌ (115200 nach `Y Q`) | 🟢 | 0x100057b0 |
 | `Y` `Q` | – | `O` | Verbindung zum **Stickmodul** durchschalten | ✅ | 🟢 | 0x10005e30 |
 | `R` | 3 Adressbytes | 32 Byte (64 Hexziffern), dann `O` | 32 Byte lesen | ✅ | 🟢 | 0x1000250a |
 | `E` | 2 Adressbytes | 32 Byte, `O` | 32 Byte lesen (nur bei 4800 Baud, Adresse < 0x1000) | ⬜ | 🟢 | 0x1000250a |
@@ -26,9 +26,9 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 ## B. Befehlsfeld 0xFFFED0 (über `W FFFED0 hh ll ?`, Wort = Befehl | 1, danach Status lesen)
 | Befehl | Bedeutung | Status | Risiko |
 |---|---|---|---|
-| 0x50 | Speicherziel **Maschinenspeicher** wählen (FW ≥ 2.10) | ✅ Status 0x0002 | 🟡 |
-| 0xA0 | Speicherziel **Karte im Stickmodul** wählen | 🟦 (Option `-Karte`) | 🟡 |
-| 0x30 / 0x60 / 0xC0 | Bank wählen: Designs 0–26 / 27–53 / ab 54 | 🟦 (0x30 ohne Transfer-Anforderung → 0x1005) | 🟡 |
+| 0x50 | Speicherziel wählen (FW ≥ 2.10). **Vermutlich Karte im Stickmodul** (Fehlerauswertung 0x10002fcf: Bit 0x10 → „No memory card in the embroidery modul“; mittel, siehe 07) – bisher als Maschinenspeicher geführt | ✅ Status 0x0002 (Original wertet Status hier nicht aus) | 🟡 |
+| 0xA0 | Speicherziel wählen. **Vermutlich Maschinenspeicher** (mittel, siehe 07) – bisher als Karte geführt | 🟦 (Option `-Karte`; nächster Test v3.3) | 🟡 |
+| 0x30 / 0x60 / 0xC0 | Bank wählen: Designs 0–26 / 27–53 / ab 54 | 🟦 (v3: 0x30 → 0x1005; Ursache vermutlich falsches Ziel 0x50 = Karte, keine Karte gesteckt) | 🟡 |
 | 0x20 | Designliste bzw. gewähltes Design in den Übertragungsbereich laden | 🟦 | 🟡 |
 | 0x100 | PC-Modus verlassen | 🟦 | 🟡 |
 | 0x40 | Löschen vorbereiten | ⬜ | 🟡 |
@@ -43,7 +43,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | Ziel | Inhalt | Status | Risiko |
 |---|---|---|---|
 | AUSWAHL +0 / +5 | Designnummer + 1 / Bank | ✅ (Schreiben am Gerät bestätigt) | 🟡 |
-| 0xFFFEE0 | Übertragungsbyte: **0x01 = Transfer anfordern**, Maschine setzt Bit 0x02 = bereit; Pflicht vor allen Befehlen außer 0x50 (Gerätetest v3: sonst 0x1005). Test v3.1 bei 57600 Baud: 0x01 gespeichert, Bit 0x02 kam nicht → v3.2 mit 115200 wie Original | 🟦 (v3.2) | 🟡 |
+| 0xFFFEE0 | Übertragungsbyte: **0x01 = Transfer anfordern**, Maschine setzt Bit 0x02 = bereit; nur für Geräte, die **direkt** mit SRMV antworten (Flag 0x10072024 = 1). **Bei der artista 185 (NMMV → `Y Q`) schreibt das Original 0xFFFEE0 nie** (hoch, Code 0x10005980/0x10005de0, siehe 07). v3.1: 0x01 gespeichert, Bit 0x02 kam nie – passt dazu | ✅ geschrieben (v3.1), für die 185 **nicht nötig** | 🟡 |
 | DATEN | Design-Datenblock (Stiche usw.) | ⬜ | 🔴 (nur zusammen mit 0x10/0x200 dauerhaft) |
 | ICON | Vorschaubild | ⬜ | 🔴 |
 | INFO + N+1 / 2N+1 / 3N+1 | Farbanzahl, Flags, Name | ⬜ | 🔴 |

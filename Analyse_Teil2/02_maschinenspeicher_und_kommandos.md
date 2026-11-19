@@ -65,7 +65,7 @@ Daraus berechnet die Software Offsets im PC-Puffer (0x10072048 …): `0`, `2N`, 
 | **0x20** | Design aus Speicher in Transferpuffer laden (nach Auswahl) | 0x10004d74, 0x10002ec8 | 1000 / 2000 |
 | **0x30 / 0x60 / 0xC0** | **Bank wählen**: Designs 0–26 / 27–53 / ab 54 | 0x10004d10, 0x100064c0 | 1000 / 4000 |
 | **0x40** | Löschen vorbereiten | Löschen 0x10006dd0 | 1000 / 1000 |
-| **0x50 / 0xA0** | Speicherziel: **0x50 = Maschinenspeicher, 0xA0 = Karte** (ab FW 2.10) | 0x10004de0 | 1000 / 4000 |
+| **0x50 / 0xA0** | Speicherziel: **0x50 = Maschinenspeicher, 0xA0 = Karte** (ab FW 2.10) *– Zuordnung vermutlich vertauscht, siehe [07](07_befund_am_geraet.md)* | 0x10004de0 | 1000 / 4000 |
 | **0x80** | **Karte formatieren** | `_FormatCard`, `_WriteAllDesigns` | 5000 / 2000 |
 | **0x100** | Transfermodus verlassen | 0x10005e30, 0x10006070 | 2000 / 2000 |
 | **0x200** | **Design dauerhaft speichern** (aus Transferpuffer) | Ende von 0x100032b0 | 7000 / 4000 |

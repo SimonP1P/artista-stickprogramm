@@ -92,7 +92,7 @@ Anhang mit BE-Verschleierung ENTschlüsseln (0x1000a640, Modus 0)
 ## Designliste lesen („Card/Machine Read“) – 0x100064c0 + 0x10004d10
 ```
 Vorher:        TransparentMode(1): 0x01 → 0xFFFEE0, warten bis 0xFFFEE0 Bit 0x02 (≤ 5 s)   [am Gerät nötig, v3]
-Ziel wählen:   Befehl 0x50 (Maschinenspeicher) bzw. 0xA0 (Karte, Flag 1)          [FW ≥ 2.10]
+Ziel wählen:   Befehl 0x50 (Maschinenspeicher) bzw. 0xA0 (Karte, Flag 1)          [FW ≥ 2.10]   (Zuordnung vermutlich vertauscht, siehe 07)
 ► WriteComBytes(AUSWAHL+0, [1]) ; WriteComBytes(AUSWAHL+5, [0])     (Index 0 → Bank 0)
 ►  Befehl 0x30 (Bank 0, Flag 1)
 ►  Befehl 0x20 (Liste laden, Flag = Ziel 0/1)

@@ -85,7 +85,7 @@ Erfolg → Transfermodus aktiv (0x10068e88 = 1)
 | Firmware | Auswirkung im Code |
 |---|---|
 | < 2.10 (`0x210`) | nur ein Speicherziel (Maschinenspeicher) |
-| ≥ 2.10 | zwei Ziele: Kommando **0x50** = Maschinenspeicher, **0xA0** = Karte im Modul; Modus 1 von `A1xxWriteDesign` erlaubt |
+| ≥ 2.10 | zwei Ziele: Kommando **0x50** = Maschinenspeicher, **0xA0** = Karte im Modul *(Zuordnung vermutlich vertauscht – siehe [07](07_befund_am_geraet.md), Code-Nachprüfung 19.11.2026)*; Modus 1 von `A1xxWriteDesign` erlaubt |
 | ≥ 3.09 (`0x309`) | zusätzliche Blöcke (Zeiger 0x24044, 0x24048), **Garnfarbtabelle mit Marke und Name** wird mit übertragen |
 
 ## Ablaufbild

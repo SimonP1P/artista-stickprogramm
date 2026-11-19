@@ -66,4 +66,30 @@ Um die Designliste (Anzahl und Namen) zu lesen, muss man wie die Original-Softwa
 | Befehle | keine gesendet; 0x100 nicht nötig (Bit 0x02 fehlt) | hoch |
 
 **Unterschiede zum Original (Code 0x10005de9):** (1) Das Original wechselt unmittelbar vor `TransparentMode(1)` auf **115200 Baud** (`ChangeBaudrate(0x1C200)`), v3.1 blieb auf 57600. (2) Handbuch S. 262 (PDF 264/265): „Make sure the needle arm is up while downloading“, „The machine touch screen goes blank while the download takes place“ – die Maschine prüft vermutlich ihren Zustand (Nadel oben, kein Menü), bevor sie Bit 0x02 setzt (Vermutung, niedrig). **v3.2** wechselt auf 115200, wartet 30 s und bittet um Beobachtung des Displays.
+→ **Überholt durch die Code-Nachprüfung vom 19.11.2026 (siehe unten):** Der 115200-/0xFFFEE0-Weg gilt für die artista 185 gar nicht.
+
+## Test v3.2 – 115200 Baud (19.11.2026, 00:56, ohne Person vor Ort, Mitschnitt `daten/Mitschnitt_artista185_v3_2_20261119.log`)
+Selbstständig von Claude Code auf dem Windows-PC ausgeführt (Regel 1a). Niemand vor Ort: Nadelstellung und Display unbekannt.
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| Ausgangszustand | Maschine stand noch im PC-Modus auf **57600** (nach v3.1 nicht aus/ein geschaltet) – Synchronisierung bei 57600 gelang, danach normal weiter | hoch |
+| NMMV04.04 → `J 0 5`/`Y Q` → SRMV04.04, Verwaltungsblock | wie v2/v3, identisch | hoch |
+| Status @0xFFFED4 | `00 40 00 00 00 86 00 00` (Byte +1 = 0x40 seit v3, Maschine nicht neu gestartet) | hoch |
+| `J 0 2` (115200) nach `Y Q`, also an das **Stickmodul** | `J`, `0`, `2` als Echo bestätigt | hoch |
+| danach bei 115200 | **kein `B O S`**, stattdessen etwa alle 430 ms ein Bündel unlesbarer Bytes (`06 0C 06 0C 7E F0 E0 …`) → Abbruch Fehler 17 | hoch |
+| Passives Mithören 4800 … 460800 Baud (PC sendet nichts) | bei **keiner** Rate lesbar; Simulation der Fehlabtastung passt zu keiner Senderate, auch nicht zu „BOS“ (`Arbeitsdaten/geraetetests/Mithoeren_20261119_nach_v3_2.txt`) | hoch (Beobachtung), Ursache offen |
+| Geschrieben | **nichts** – kein `W`, kein Befehlsfeld, kein 0xFFFEE0 (Mitschnitt: 0 × `W`) | hoch |
+
+**Zustand danach:** Die Verbindung hängt; die Maschine muss **aus- und wieder eingeschaltet** werden. Weiteres Senden wurde bewusst unterlassen, weil Zeichen bei falscher Rate beim Modul als zufällige Befehle ankommen könnten.
+
+### Code-Nachprüfung: 115200 und 0xFFFEE0 gelten nicht für die artista 185 (hoch, Code)
+`MaschineEinlesen` 0x10005980: Beim ersten Kontakt `TransferModus(0,0)` (TrME ohne Baudwechsel), dann Flag **0x10072024 = 1** und 32 Byte ab 0x200100 lesen. Steht dort **nicht** „SRMV“ (artista 185: „NMMV“), setzt das Original **0x10072024 = 0** (0x10005a51) und betritt den Modus neu mit `TransferModus(1,1)` = TrME → `ChangeBaudrate(57600)` → `Y Q` → `O` (0x10005e30).
+Bei jedem späteren `TransparentMode(1)` (0x10005de0) gilt: Flag 0x10072024 = 0 → **0x10005e10 → wieder TrME/57600/`Y Q`**. Nur bei Flag = 1 (Gerät antwortet **direkt** mit SRMV) folgt `ChangeBaudrate(115200)` + 0x01 → 0xFFFEE0 + Warten auf Bit 0x02 (0x10005de9 → 0x10006070).
+→ **Für die artista 185 schreibt das Original 0xFFFEE0 nie und wechselt nie auf 115200.** v3.1/v3.2 beruhten auf einer falschen Annahme. Das erklärt auch, warum Bit 0x02 in v3.1 nie kam.
+
+### Code-Nachprüfung: Ziel 0x50 ist vermutlich die **Karte**, nicht der Maschinenspeicher (mittel)
+- Listenfunktion 0x100064e0 → 0x10004d10(…, Index 0): Ziel (0x10004de0: **0x50 wenn Flag 0x100670c8 = 0, sonst 0xA0**, Fehlerauswertung aus), AUSWAHL+0 = Index+1, AUSWAHL+5 = Index/27, Bank **0x30** (Index < 27; 0x60 für 27–53, 0xC0 ab 54; Fehlerauswertung aus), dann **0x20** mit Fehlerauswertung. Das ist genau die Folge aus v3 – die Reihenfolge war richtig.
+- Befehlsfeld 0x10002f00, Fehlerauswertung (0x10002fcf): Statusbit **0x10 (High-Byte)** → bei Flag 0x100670c8 = 0 (Ziel **0x50**) **Fehler 22 „No memory card in the embroidery modul“**, bei Flag = 1 (0xA0) Fehler 3.
+- v3 bekam auf 0x20 genau Status 0x1005 → das Original hätte hier „No memory card in the embroidery modul“ gemeldet. Das passt nur, wenn **0x50 = Karte im Stickmodul** ist (und keine Karte steckt) – umgekehrt zur bisherigen Annahme in 01/02/03/08. Welche Optionsschaltfläche Flag 0x100670c8 = 1 setzt (0x1000df0f, 0x1000ec6c, BM_GETCHECK), ist noch nicht über die Dialog-Ressource geprüft.
+- **Nächster Gerätetest (v3.3, Vorschlag):** nach Aus/Ein: Verbindung wie v3 (57600, `Y Q`), **ohne** 0xFFFEE0 und ohne 115200, Ziel **0xA0**, AUSWAHL +0 = 1 / +5 = 0, 0x30, 0x20. Alle Schritte sind durch Regel 1a abgedeckt.
 
