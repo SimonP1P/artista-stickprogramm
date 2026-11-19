@@ -47,8 +47,7 @@ Referenz-Stufe 4).
 - **Edge Walk** in drei Stücken: Anlauf (2), einmal um den Rand herum (44), Übergang zum Satinanfang (2).
 - Dann **Satin** mit 156 Einstichen.
 
-Hier sind beide Unterlagen aktiv. Woran das Original ein- und ausgeschaltete Unterlagen unterscheidet, ist noch offen
-(§4).
+Hier sind beide Unterlagen aktiv. Woran das Original ein- und ausgeschaltete Unterlagen unterscheidet: [05](05_effekte_und_unterlagen.md).
 
 ## 3. Satinabstand — Sicherheit: hoch (Handbuch + Messung)
 **Handbuch** (PDF-S. 68, „Adjusting Satin outline stitch spacing“): „Stitch spacing is the distance in millimeters
@@ -76,16 +75,32 @@ between two needle penetrations **on the same side** of a column.“
 2. Der gemessene Abstand ist **über alle Breiten gleich**, von 0,5 bis 6 mm. In den Musterdesigns wirkt also **kein
    Auto Spacing**, obwohl das Byte nach dem Auto-Split in Klasse 0x16 (Objekt +0x94) überall 1 ist.
    - Dieses Byte ist demnach nicht der Auto-Spacing-Schalter.
-   - Die Auto-Spacing-Tabelle (`Analyse/code/10` §A) bleibt richtig. Ob das Original sie standardmäßig anwendet, ist
-     offen (§4).
-3. In Bögen liegt der Median 2–4 % unter dem Sollwert. Das passt zu „Abstand auf der Außenseite“ oder zu „Mittel
-   beider Seiten“; ausgewertet ist das noch nicht.
+   - Die Auto-Spacing-Tabelle (`Analyse/code/10` §A) bleibt richtig. Wann das Original sie anwendet: [05](05_effekte_und_unterlagen.md).
+3. Der Median auf der Mitte liegt 2–4 % unter dem Sollwert, weil das Original den Abstand auf der Außenseite einhält
+   (§4).
 
-## 4. Offen
+## 4. Satin in Bögen: Abstand auf der Außenseite — Sicherheit: hoch
+Gleiche Auswertung, nur Objekte mit festem Abstand (ohne Auto-Spacing-Effekt, [05](05_effekte_und_unterlagen.md)) und
+Stiche ab 1 mm Breite. Je Stichpaar werden die Wege zwischen Einstichen derselben Seite verglichen, außen und innen,
+dazu der Weg auf der Mitte. Eingeteilt nach Krümmung, gemessen als Verhältnis außen/innen.
+Rohergebnis: `Arbeitsdaten/messungen/satin_boegen_musterdesigns.txt`.
+
+| Krümmung (außen/innen) | Stichpaare | **außen** / Abstand | Mitte / Abstand | innen / Abstand |
+|---|---|---|---|---|
+| gerade (< 1,1) | 38 013 | **1,000** | 0,987 | 0,974 |
+| leicht (1,1–1,5) | 28 736 | **1,034** | 0,945 | 0,861 |
+| stark (1,5–3) | 8 877 | **1,077** | 0,829 | 0,603 |
+| sehr stark (> 3) | 1 531 | **1,029** | 0,641 | 0,259 |
+
+**Folgerung:** Das Original hält den Abstand auf der **längeren Seite** ein, innen wird es dichter. Der Kern nimmt seit
+Referenz-Stufe 6 den Fortschritt auf der längeren Seite (`satin.rs`); vorher war es das Mittel beider Seiten, eine
+eigene Festlegung.
+
+## 5. Offen
 1. ~~**Auto Spacing**~~ – geklärt in [05](05_effekte_und_unterlagen.md): Effekt 0x21 am Satin. (Frage war: Welcher Wert schaltet es ein? Ist es in „Software Defaults“ ein? Suchen: Lesefunktion von Klasse
    0x16/0x15 gegen die Stil-Kennungen 0x2734/0x27ab.
 2. ~~**Unterlagen ein/aus**~~ – geklärt in [05](05_effekte_und_unterlagen.md) (im Objekt stehen nur aktive; Voreinstellung über Stil-Flags). In Flower stehen Edge Walk und Mittellauf in jedem Objekt und werden beide gestickt. Wie ist
    „ausgeschaltet“ gespeichert? Stile: Flag-Bit 0x0001 ([01](01_stile_und_verbinder.md) §5).
-3. **Satin in Bögen:** Auf welcher Linie wird der Abstand gemessen (Außenseite, Mitte)? Bögen gezielt auswerten.
+3. ~~**Satin in Bögen**~~ – geklärt, §4: auf der Außenseite.
 4. **Tatami** (Klasse 0x1b): Reihenabstand, Versatz 0x2719/0x271a/0x271b und Laufwege in der Fläche nach demselben
    Verfahren messen.

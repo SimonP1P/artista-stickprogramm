@@ -54,9 +54,10 @@ pub fn mittellinie(a: &[Punkt], b: &[Punkt]) -> Linie {
 ///
 /// Abstand aus Auto Spacing (Breite an der Stelle) bzw. fest. Wie im Original ist der Abstand der Weg zwischen
 /// zwei Einstichen **auf derselben Seite** (Handbuch PDF-S. 68; an 184 000 Satinstichen der Musterdesigns gemessen,
-/// `Analyse_Teil3/04_messungen_satin.md`), jeder Einstich rückt also um den halben Abstand vor. Fortschritt gemessen
-/// als Mittel der Wege auf beiden Seiten (eigene Festlegung, mittel). Zugausgleich verlängert jeden Stich an beiden
-/// Enden.
+/// `Analyse_Teil3/04_messungen_satin.md`), jeder Einstich rückt also um den halben Abstand vor. Gemessen wird der
+/// Fortschritt auf der **längeren Seite** (Außenseite im Bogen): dort entspricht der Weg in den Musterdesigns dem
+/// Abstand in allen Krümmungen (Median 1,00–1,08), auf der Mitte nur 0,64–0,99 (`Analyse_Teil3/04` §4).
+/// Zugausgleich verlängert jeden Stich an beiden Enden.
 pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, String> {
     let (a, b) = paare_bilden(seite_a, seite_b)?;
     let zg = e.zugausgleich;
@@ -72,7 +73,7 @@ pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Resu
     let mut seite = false; // nächster Einstich auf B
     let mut gelaufen = 0.0; // Weg seit dem letzten Einstich (über Segmentgrenzen hinweg)
     for i in 0..a.len() - 1 {
-        let seg = (abstand(a[i], a[i + 1]) + abstand(b[i], b[i + 1])) / 2.0;
+        let seg = abstand(a[i], a[i + 1]).max(abstand(b[i], b[i + 1]));
         if seg < 1e-9 {
             continue;
         }
@@ -163,6 +164,33 @@ mod tests {
             let r = q.x.hypot(q.y);
             assert!((20.0 - 1.7 - 0.03..=20.0 + 1.7 + 0.03).contains(&r)); // Bogen als Sehnenzug
         }
+    }
+
+    #[test]
+    fn abstand_auf_der_aussenseite() {
+        // Bogen Radius 10 mm, Säule 4 mm breit: außen r = 12, innen r = 8
+        let mitte = bogen(p(0.0, 0.0), 10.0, 0.0, 90.0, 0.01);
+        let (a, b) = seiten_aus_mittellinie(&mitte, 4.0);
+        let e = SatinEinstellung {
+            auto_spacing: false,
+            abstand_fest: 0.40,
+            zugausgleich: 0.0,
+            ..Default::default()
+        };
+        let pts = satin(&a, &b, &e).unwrap();
+        // mittlerer Weg zwischen Einstichen derselben Seite (Seite 0 = A innen, Seite 1 = B außen)
+        let seite = |s: usize| {
+            let w: Vec<f64> = pts[s..pts.len() - 1]
+                .iter()
+                .step_by(2)
+                .zip(pts[s + 2..pts.len() - 1].iter().step_by(2))
+                .map(|(q, r)| abstand(*q, *r))
+                .collect();
+            w.iter().sum::<f64>() / w.len() as f64
+        };
+        let (innen, aussen) = (seite(0), seite(1));
+        assert!((aussen - 0.40).abs() < 0.01, "Abstand außen {aussen}");
+        assert!((innen - 0.40 * 8.0 / 12.0).abs() < 0.01, "Abstand innen {innen}");
     }
 
     #[test]
