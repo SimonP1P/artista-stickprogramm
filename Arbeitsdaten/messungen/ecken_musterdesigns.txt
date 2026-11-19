@@ -1,0 +1,8 @@
+Ecke  Knick   0– 30°:  32679 von  32819 Knoten mit Einstich (100 %)
+Ecke  Knick  30– 60°:  10230 von  10310 Knoten mit Einstich (99 %)
+Ecke  Knick  60– 90°:   6557 von   6588 Knoten mit Einstich (100 %)
+Ecke  Knick  90–120°:   5183 von   5232 Knoten mit Einstich (99 %)
+Ecke  Knick 120–150°:   4440 von   4476 Knoten mit Einstich (99 %)
+Ecke  Knick 150–180°:   7152 von   7186 Knoten mit Einstich (100 %)
+Ecke  Knick 180–210°:    776 von    798 Knoten mit Einstich (97 %)
+Kurve Knick   0– 30°:    561 von   9236 Knoten mit Einstich (6 %)

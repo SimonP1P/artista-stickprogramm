@@ -59,7 +59,8 @@ pub struct LaufEinstellung {
     pub variabel: bool,
     /// Chord Gap bei variabler Länge (Lauf in Flächen, hoch)
     pub sehnenabstand: f64,
-    /// ab diesem Knick wird an der Ecke eingestochen (eigene Festlegung)
+    /// ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).
+    /// Formen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).
     pub ecke_grad: f64,
 }
 
@@ -160,7 +161,7 @@ pub struct UnterlageEinstellung {
     pub edge_walk_laenge: f64,
     /// AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)
     pub mittellauf_laenge: f64,
-    /// AMT 0x2744/0x2724/0x2725 (mittel); hier gedeutet als Weg entlang der Säule je Zick+Zack (niedrig)
+    /// AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2)
     pub zickzack_laenge: f64,
     /// AMT 0x2745/0x2724/0x2725 (mittel)
     pub doppelzickzack_laenge: f64,

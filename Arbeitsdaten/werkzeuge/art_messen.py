@@ -11,6 +11,7 @@ Aufruf:
   python art_messen.py boegen --alle [TWOFISH_EXE]            Satin in Bögen: Abstand außen / Mitte / innen
   python art_messen.py effekte --alle [TWOFISH_EXE]           Satin mit Auto-Spacing-Effekt 0x21: Tabelle × Faktor?
   python art_messen.py tatami --alle [TWOFISH_EXE]            Tatami: Reihenabstand und Versatz der Einstiche
+  python art_messen.py ecken --alle [TWOFISH_EXE]             Laufstich: Einstich an Eck- und Kurvenknoten?
 """
 import collections
 import glob
@@ -291,6 +292,30 @@ def tatami_messen(pfade, twofish):
             print(f"Versatz {key}, {art} ({g}): " + ", ".join(f"{v:.2f}: {100 * n / g:.0f} %" for v, n in c.most_common(4)))
 
 
+def ecken_messen(pfade, twofish):
+    """Laufstich-Kurven: Einstich an den Knoten der Form? Getrennt nach Knotenart (Ecke/Kurve) und Knickwinkel (07)."""
+    stat = collections.defaultdict(lambda: [0, 0])
+    for _, o, refs, f, _ in zugeordnet(pfade, twofish):
+        if o["klasse"] != "EmbroideryCurve" or [e[1] for e in refs] != [0x18]:
+            continue
+        r = objekt_auswerten(o)
+        if len(r["formen"]) != 1:
+            continue
+        P, kn = f[0]["punkte"], r["formen"][0]["knoten"]
+        for i in range(1, len(kn) - 1):
+            q = (kn[i]["punkt"][0] / 180, kn[i]["punkt"][1] / 180)
+            ein, aus = kn[i]["ein"] or kn[i - 1]["punkt"], kn[i]["aus"] or kn[i + 1]["punkt"]
+            v1 = (kn[i]["punkt"][0] - ein[0], kn[i]["punkt"][1] - ein[1])
+            v2 = (aus[0] - kn[i]["punkt"][0], aus[1] - kn[i]["punkt"][1])
+            if math.hypot(*v1) < 1e-6 or math.hypot(*v2) < 1e-6:
+                continue
+            w = abs(math.degrees(math.atan2(v1[0] * v2[1] - v1[1] * v2[0], v1[0] * v2[0] + v1[1] * v2[1])))
+            treffer = min(math.dist(q, s) for s in P) < 0.05
+            stat[("Ecke" if kn[i]["art"] else "Kurve", int(w // 30) * 30)][0 if treffer else 1] += 1
+    for (art, b), (j, n) in sorted(stat.items()):
+        print(f"{art:5} Knick {b:3}–{b + 30:3}°: {j:6} von {j + n:6} Knoten mit Einstich ({100 * j / (j + n):.0f} %)")
+
+
 if __name__ == "__main__":
     modus, ziel = sys.argv[1], sys.argv[2]
     tw = sys.argv[3] if len(sys.argv) > 3 else "twofish_cfb1"
@@ -305,6 +330,8 @@ if __name__ == "__main__":
         effekte_messen(pfade, tw)
     elif modus == "tatami":
         tatami_messen(pfade, tw)
+    elif modus == "ecken":
+        ecken_messen(pfade, tw)
     else:
         d, h, pts, segs, objs = laden(ziel, tw)
         fo = funktionen_je_objekt(segs, pts)

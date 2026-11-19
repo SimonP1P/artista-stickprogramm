@@ -4,10 +4,10 @@
 //! Ursprung = Rahmenmitte, +y nach oben. Statt Punktlisten gehen Formen (kreis, rechteck, bogen, bezier, verbinden).
 
 use crate::einstellungen::{Einstellungen, fuer_stoff};
-use crate::geometrie::{Linie, Punkt, abstand, bezier, bogen, kreis, ohne_doppelte, p, rechteck};
+use crate::geometrie::{Linie, Punkt, abstand, bezier, bogen, kreis, p, rechteck};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
-use crate::sticharten::lauf::{dreifach, laufstich};
+use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
 use crate::sticharten::satin::{paare_bilden, satin, seiten_aus_mittellinie};
 use crate::sticharten::tatami::tatami;
 use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, satin_unterlage};
@@ -69,6 +69,37 @@ impl PunktAngabe {
                     out.extend_from_slice(&pts[start..]);
                 }
                 out
+            }
+        }
+    }
+
+    /// Punkte samt Markierung „Eckpunkt“ (wie beim Digitalisieren im Original: Eckpunkt oder Kurvenpunkt).
+    /// Punktlisten und Rechteckecken sind Eckpunkte; Kreis, Bogen und Bézier liefern Kurvenpunkte, nur ihre Enden
+    /// sind Ecken. Beim Verbinden zählt die Nahtstelle als Ecke (eigene Festlegung).
+    pub fn punkte_mit_ecken(&self) -> (Linie, Vec<bool>) {
+        match self {
+            PunktAngabe::Liste(_) | PunktAngabe::Form(Form::Rechteck { .. }) => {
+                let pts = self.punkte();
+                let n = pts.len();
+                (pts, vec![true; n])
+            }
+            PunktAngabe::Form(Form::Verbinden(teile)) => {
+                let (mut out, mut ecken): (Linie, Vec<bool>) = (Vec::new(), Vec::new());
+                for t in teile {
+                    let (pts, e) = t.punkte_mit_ecken();
+                    let start = usize::from(matches!((out.last(), pts.first()), (Some(l), Some(f)) if l == f));
+                    if let (1, Some(letzte)) = (start, ecken.last_mut()) {
+                        *letzte = true;
+                    }
+                    out.extend_from_slice(&pts[start..]);
+                    ecken.extend_from_slice(&e[start..]);
+                }
+                (out, ecken)
+            }
+            _ => {
+                let pts = self.punkte();
+                let n = pts.len();
+                (pts, (0..n).map(|i| i == 0 || i + 1 == n).collect())
             }
         }
     }
@@ -198,6 +229,8 @@ pub enum ObjektArt {
     /// Laufstich oder Dreifachstich entlang einer Linie
     Lauf {
         punkte: Linie,
+        /// je Punkt: Eckpunkt (Einstich wie im Original) oder Kurvenpunkt
+        ecken: Vec<bool>,
         laenge: Option<f64>,
         dreifach: bool,
         geschlossen: bool,
@@ -257,15 +290,20 @@ impl Objekt {
         match &self.art {
             ObjektArt::Lauf {
                 punkte,
+                ecken,
                 laenge,
                 dreifach: drei,
                 geschlossen,
             } => {
-                let mut pts = ohne_doppelte(punkte);
+                let (mut pts, mut ecken) = (punkte.clone(), ecken.clone());
+                if ecken.len() != pts.len() {
+                    ecken = vec![true; pts.len()];
+                }
                 if *geschlossen && !pts.is_empty() && abstand(pts[0], *pts.last().unwrap()) > 1e-9 {
                     pts.push(pts[0]);
+                    ecken.push(true);
                 }
-                let lauf = laufstich(&pts, &e.lauf, *laenge);
+                let lauf = laufstich_mit_ecken(&pts, Some(&ecken), &e.lauf, *laenge);
                 Ok(vec![if *drei { dreifach(&lauf) } else { lauf }])
             }
             ObjektArt::Satin {
@@ -396,11 +434,13 @@ impl Design {
 }
 
 fn lauf_objekt(l: LaufJson, art_dreifach: bool) -> Objekt {
+    let (punkte, ecken) = l.punkte.punkte_mit_ecken();
     Objekt {
         farbe: l.farbe,
         name: l.name,
         art: ObjektArt::Lauf {
-            punkte: l.punkte.punkte(),
+            punkte,
+            ecken,
             laenge: l.laenge,
             dreifach: l.dreifach.unwrap_or(art_dreifach),
             geschlossen: l.geschlossen,
