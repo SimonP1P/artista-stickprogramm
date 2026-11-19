@@ -81,6 +81,7 @@ Der Rechenkern wird in Rust **neu geschrieben, nicht Zeile für Zeile übersetzt
 ## 6. Offene Punkte / Risiken
 1. **Übertragung zur 185** (Phase 2) ist das größte Risiko und unabhängig von der Architektur: Designliste lesen (v3.3),
    dann ein echtes Design auslesen, Designcontainer verstehen, zuerst „sticken ohne speichern“.
-2. **Neustart der Maschine:** bisher nach jedem Test aus/ein. Laut Code beendet das Original mit Befehl 0x100 den PC-Modus;
-   mit v3.3 prüfen, ob ein zweiter Durchlauf ohne Aus/Ein klappt. Ziel: im fertigen Programm kein Neustart nötig.
+2. **Neustart der Maschine:** bisher nach jedem Test aus/ein. Laut Code beendet das Original mit Befehl 0x100 den PC-Modus.
+   **v3.3 (19.11.2026):** 0x100 wird angenommen (Status 0x0000), die Maschine bleibt auf 57600, ein zweiter Durchlauf
+   ohne Aus/Ein klappt (Synchronisation bei 57600). Offen: Display danach normal? Ziel: im fertigen Programm kein Neustart nötig.
 3. Unsignierte Mac-Programme: beim ersten Start „Rechtsklick → Öffnen“ (privat ausreichend).

@@ -26,11 +26,11 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 ## B. Befehlsfeld 0xFFFED0 (über `W FFFED0 hh ll ?`, Wort = Befehl | 1, danach Status lesen)
 | Befehl | Bedeutung | Status | Risiko |
 |---|---|---|---|
-| 0x50 | Speicherziel wählen (FW ≥ 2.10). **Vermutlich Karte im Stickmodul** (Fehlerauswertung 0x10002fcf: Bit 0x10 → „No memory card in the embroidery modul“; mittel, siehe 07) – bisher als Maschinenspeicher geführt | ✅ Status 0x0002 (Original wertet Status hier nicht aus) | 🟡 |
-| 0xA0 | Speicherziel wählen. **Vermutlich Maschinenspeicher** (mittel, siehe 07) – bisher als Karte geführt | 🟦 (Option `-Karte`; nächster Test v3.3) | 🟡 |
-| 0x30 / 0x60 / 0xC0 | Bank wählen: Designs 0–26 / 27–53 / ab 54 | 🟦 (v3: 0x30 → 0x1005; Ursache vermutlich falsches Ziel 0x50 = Karte, keine Karte gesteckt) | 🟡 |
-| 0x20 | Designliste bzw. gewähltes Design in den Übertragungsbereich laden | 🟦 | 🟡 |
-| 0x100 | PC-Modus verlassen | 🟦 | 🟡 |
+| 0x50 | Speicherziel **Karte im Stickmodul** (am Gerät bestätigt 19.11.2026, v3.3: ohne Karte folgt auf 0x30/0x20 Status 0x1005 „keine Speicherkarte“; Code 0x10002fcf) | ✅ Status 0x0002 | 🟡 |
+| 0xA0 | Speicherziel **Maschinenspeicher** (am Gerät bestätigt 19.11.2026, v3.3: Liste mit 51 Designs gelesen) | ✅ Status 0x0002 | 🟡 |
+| 0x30 / 0x60 / 0xC0 | Bank wählen: Designs 0–26 / 27–53 / ab 54 | ✅ 0x30, 0x60 mit Ziel 0xA0 (v3.3); 0xC0 ungetestet (nur 51 Designs) | 🟡 |
+| 0x20 | Designliste bzw. gewähltes Design in den Übertragungsbereich laden | ✅ Liste (v3.3, Status 0x0002) | 🟡 |
+| 0x100 | PC-Modus verlassen | ✅ angenommen: Befehlsfeld danach **0x0000** (kein Fertig-Bit 0x02). Die Maschine bleibt auf 57600 Baud; ein neuer Durchlauf **ohne Aus/Ein** synchronisiert bei 57600 und funktioniert (v3.3, zweimal) | 🟡 |
 | 0x40 | Löschen vorbereiten | ⬜ | 🟡 |
 | 0x10 | Schreiben vorbereiten | ⬜ | 🟡 |
 | 0x400 | gespeichertes Design in den Stickbereich laden | ⬜ | 🟡 |

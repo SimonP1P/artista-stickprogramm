@@ -93,3 +93,24 @@ Bei jedem späteren `TransparentMode(1)` (0x10005de0) gilt: Flag 0x10072024 = 0 
 - v3 bekam auf 0x20 genau Status 0x1005 → das Original hätte hier „No memory card in the embroidery modul“ gemeldet. Das passt nur, wenn **0x50 = Karte im Stickmodul** ist (und keine Karte steckt) – umgekehrt zur bisherigen Annahme in 01/02/03/08. Welche Optionsschaltfläche Flag 0x100670c8 = 1 setzt (0x1000df0f, 0x1000ec6c, BM_GETCHECK), ist noch nicht über die Dialog-Ressource geprüft.
 - **Nächster Gerätetest: v3.3** (`Testprogramm_artista185_Windows_v3_3/`, gebaut 19.11.2026, Simulation ok): nach Aus/Ein Verbindung wie v3 (57600, `Y Q`), **ohne** 0xFFFEE0 und ohne 115200; Ziel **0xA0**, dann **0x50**, je AUSWAHL +0 = 1 / +5 = 0, 0x30, 0x20; am Ende 0x100. Erwartung bei richtiger Vermutung: 0xA0 liefert die Liste, 0x50 ohne Karte Status 0x1005. Alle Schritte durch Regel 1a abgedeckt (Mitschnitt der Simulation: nur `W FFFED0` mit 00A1/0051/0031/0021/0061/0101 und `W 0201EA`/`W 0201EF`).
 
+## Test v3.3 – Designliste aus dem Maschinenspeicher (19.11.2026, 13:20, Mitschnitt `daten/Mitschnitt_artista185_v3_3_20261119.log`)
+Selbstständig von Claude Code auf dem Windows-PC ausgeführt (Regel 1a; Selbsttest vorher ok). Maschine vorher aus/ein
+(Verbindung bei 19200 Baud). Dateien: `Arbeitsdaten/geraetetests/*_v3_3*`.
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| Verbindung TrME (19200) → NMMV04.04 → `J 0 5`/`Y Q` → SRMV04.04, Verwaltungsblock | wie v2/v3, identisch; **ohne** 0xFFFEE0 und 115200 | hoch |
+| Ziel **0xA0**, AUSWAHL +0 = 1 / +5 = 0, Bank 0x30, Laden 0x20 | jeweils Status **0x0002** | hoch |
+| Anzahl Designs | **51** – Bank 0: Nr. 1–27, Bank 1 (Befehl 0x60): Nr. 28–51 → 27 Designs je Bank wie im Code (Index/27) | hoch |
+| Namen | z. B. „Drifterv45Rev7“, „Outdoorsman - 805023“, sonst Nummern „1“ … „30“; Statusbyte 0x63 (die Original-Software ersetzt Namen dann durch Nummern) | hoch |
+| Flags je Design | 0xAC, 0x8C, 0x84, 0xA4, 0x86 (Bedeutung offen) | – |
+| Ziel **0x50** | Status 0x0002; danach 0x30 und 0x20 → **0x1005** „keine Speicherkarte im Stickmodul“ (keine Karte gesteckt) | hoch |
+| Befehl **0x100** (PC-Modus verlassen) | Befehlsfeld danach **0x0000** – angenommen, aber ohne Fertig-Bit 0x02 (das Testprogramm meldet deshalb „nicht bestätigt“) | hoch |
+| **Zweiter Durchlauf ohne Aus/Ein** (13:21, nur Ziel 0xA0) | TrME bei 19200 ohne Antwort → Synchronisation bei **57600** → alles wie im ersten Lauf, wieder 51 Designs; 0x100 wieder 0x0000 | hoch |
+
+**Folgerungen:**
+- **0xA0 = Maschinenspeicher, 0x50 = Karte im Stickmodul** – die Vermutung aus der Code-Nachprüfung ist am Gerät bestätigt
+  (Sicherheit jetzt hoch). Die Designliste lässt sich lesen; der Weg für Phase 2 ist offen.
+- **Kein Neustart nötig:** Nach 0x100 bleibt die Maschine auf 57600 Baud, ein neuer Verbindungsaufbau (Synchronisation bei
+  57600, dann TrME) gelingt. Ob das Display nach 0x100 wieder den normalen Bildschirm zeigt, konnte niemand ansehen – bei
+  der nächsten Gelegenheit vor Ort prüfen.
+- Testprogramm: 0x100 künftig mit Status 0x0000 als „angenommen“ werten.

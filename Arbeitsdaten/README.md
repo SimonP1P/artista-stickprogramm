@@ -12,7 +12,7 @@ Hier liegt alles, was während der Analyse (17.–18.11.2026) zunächst nur im t
 | `texte/` | Handbuch man_enu.pdf als Text (Layout, Rohtext, je Seite markiert), Quilter-Handbuch, ADX-Handbuch | `pdftotext` |
 | `disassembly/` | komplette Disassembly BEAGLink.dll und DIALOG.DLL, Schreibfunktion einzeln | `rdis.py DATEI full` |
 | `messungen/` | Messergebnisse an den ART-Musterdesigns (`werkzeuge/art_messen.py`), z. B. Satinabstand gespeichert ↔ gemessen | `Analyse_Teil3/04` |
-| `geraetetests/` | Ergebnis- und Mitschnittdateien der echten Tests an der artista 185 (201028 = v1, 205736 = v2, 215616 = v3, 233547 = v3.1; **205632, 215532, 233539 = nur Simulation/Selbsttest auf dem Heim-PC**) | – |
+| `geraetetests/` | Ergebnis- und Mitschnittdateien der echten Tests an der artista 185 (201028 = v1, 205736 = v2, 215616 = v3, 233547 = v3.1, 005650 = v3.2, **132029 = v3.3** (Designliste gelesen), 132122 = v3.3 zweiter Lauf ohne Aus/Ein, 132011 = v3.3 Simulation; **205632, 215532, 233539 = nur Simulation/Selbsttest auf dem Heim-PC**) | – |
 | `testprogramm_quellen/` | Quelltext der Testprogramme v1/v2/v3/v3.1/v3.2 (LF, ohne BOM; die ausgelieferten `.ps1` sind CRLF + UTF-8-BOM) | – |
 
 **Nicht gesichert (bewusst):** Die vollständig entpackte Software aus `Setup/English/setup.z` (193 MB, 651 Dateien), weil der Mac fast voll ist. Sie ist **byte-identisch reproduzierbar** (verifiziert, siehe `../VERIFIKATION.md`):
