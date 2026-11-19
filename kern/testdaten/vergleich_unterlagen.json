@@ -16,7 +16,7 @@
      "seite_a": [[-30, -20], [-10, -20]], "seite_b": [[-30, -40], [-10, -40]]},
     {"art": "tatami", "farbe": "#555555", "winkel": 0, "unterlage": false,
      "umriss": [[10, -40], [50, -40], [50, -10], [40, -10], [40, -30], [20, -30], [20, -10], [10, -10]]},
-    {"art": "tatami", "farbe": "#555555", "winkel": 30,
+    {"art": "tatami", "farbe": "#555555", "winkel": 30, "unterlage": true,
      "umriss": {"rechteck": {"mitte": [0, -70], "breite": 60, "hoehe": 25}},
      "loecher": [{"kreis": {"mitte": [-10, -70], "radius": 5, "start": 45}}]},
     {"art": "lauf", "farbe": "#000000", "laenge": 1.8,

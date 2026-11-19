@@ -28,6 +28,7 @@ Eine Tabelle in jedem Stil (`0x2734/0x27ab/0x2735/0x2776`) ordnet der **Säulenb
 3. Der Abstand wird mit dem **Stoff-/Stilfaktor** (`0x2736`) multipliziert. Faktor > 1 = lockerer, < 1 = dichter (vgl. Dialog „Adjust Settings To … %“, Handbuch S. 202).
 4. **Je schmaler die Säule, desto größer der Abstand** (0,51 mm bei 0,5 mm Breite statt 0,40 mm bei 4 mm). Das deckt sich mit dem Handbuch: „Where a column is very narrow, stitches need to be less dense because too many needle penetrations can damage the fabric“ (S. 68/72).
 5. Der feste Satin-Abstand bei ausgeschaltetem Auto Spacing ist 0,40 mm (`0x2723`), also genau der Tabellenwert bei 4 mm.
+6. **Nachtrag 19.11.2026** ([`Analyse_Teil3/04`](../../Analyse_Teil3/04_messungen_satin.md), [`05`](../../Analyse_Teil3/05_effekte_und_unterlagen.md)): Abstand = Weg zwischen zwei Einstichen **auf derselben Seite**. Auto Spacing ist ein Effekt am Satin (Design-Klasse 0x21 mit dieser Tabelle, Faktor 0x22); an ist es in Software Defaults, den Stoffen und bei Schrift. An den Musterdesigns gemessen: Abstand = Tabelle(Breite) × Faktor (Median 0,99), linear interpoliert – Sicherheit jetzt **hoch**.
 
 **Faktoren je Stil (`0x2736`):**
 | Stil | Faktor | Wirkung bei 1 mm breiter Säule (0,49 mm × Faktor) |

@@ -87,9 +87,6 @@ fn schwarz() -> String {
 fn auto() -> UnterlageJson {
     UnterlageJson::Text("auto".into())
 }
-fn wahr() -> bool {
-    true
-}
 
 #[derive(Debug, Deserialize)]
 struct LaufJson {
@@ -138,8 +135,8 @@ struct TatamiJson {
     #[serde(default)]
     loecher: Vec<PunktAngabe>,
     winkel: Option<f64>,
-    #[serde(default = "wahr")]
-    unterlage: bool,
+    /// ohne Angabe: Auto Underlay des Stils (`auto_an`)
+    unterlage: Option<bool>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -179,7 +176,7 @@ struct DesignJson {
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Unterlage {
-    /// nach Säulenbreite (eigene Festlegung)
+    /// wie „Auto Underlay“ des Originals: aus oder die im Stil vorgewählte Art (`UnterlageEinstellung::auto_an`)
     Auto,
     /// Liste aus mittellauf, edge_walk, zickzack, doppelzickzack (leer = keine)
     Arten(Vec<String>),
@@ -222,7 +219,9 @@ pub enum ObjektArt {
         umriss: Linie,
         loecher: Vec<Linie>,
         winkel: Option<f64>,
-        unterlage: bool,
+        /// None = Auto Underlay des Stils; mit Unterlage: Tatami-Unterlage „Step“ (Art für Flächen: eigene
+        /// Festlegung, die vorgewählte Art des Stils ist Zickzack)
+        unterlage: Option<bool>,
     },
 }
 
@@ -236,10 +235,7 @@ pub struct Objekt {
 fn satin_wege(a: &[Punkt], b: &[Punkt], unterlage: &Unterlage, e: &Einstellungen) -> Result<Vec<Linie>, String> {
     let (a, b) = paare_bilden(a, b)?;
     let arten = match unterlage {
-        Unterlage::Auto => {
-            let breiten: Vec<f64> = a.iter().zip(&b).map(|(&q, &r)| abstand(q, r)).collect();
-            auto_satin_unterlage(breiten.iter().sum::<f64>() / breiten.len() as f64)
-        }
+        Unterlage::Auto => auto_satin_unterlage(&e.unterlage),
         Unterlage::Arten(l) => l.clone(),
     };
     let unter = if arten.is_empty() {
@@ -294,7 +290,7 @@ impl Objekt {
                 let w = winkel.unwrap_or(e.tatami.winkel);
                 let mut wege = Vec::new();
                 let mut start = start;
-                if *unterlage {
+                if unterlage.unwrap_or(e.unterlage.auto_an) {
                     wege.extend(flaechen_unterlage(umriss, loecher, w, &e.unterlage, start));
                     start = wege.last().and_then(|l: &Linie| l.last().copied());
                 }

@@ -70,7 +70,7 @@ Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Ver
 ## Eigene Festlegungen (Notlösungen – werden durch das analysierte Original-Verhalten ersetzt, `../ARCHITECTURE.md` §1a)
 | Punkt | Festlegung |
 |---|---|
-| Satin-Unterlage „auto“ | Breite < 1,5 mm keine · < 3 mm Mittellauf · < 6 mm Edge Walk · ab 6 mm Edge Walk + Zickzack |
+| Satin-Unterlage „auto“ | Breite < 1,5 mm keine · < 3 mm Mittellauf · < 6 mm Edge Walk · ab 6 mm Edge Walk + Zickzack – **im Rust-Kern ersetzt**: Auto Underlay wie im Original (Software Defaults/Stoffe aus, sonst Zickzack, `Analyse_Teil3/05`) |
 | Reihenfolge Unterlage | jede Satin-Unterlage endet am Säulenanfang, danach Deckstich in einem Zug |
 | Zickzack-Länge | als Weg entlang der Säule je Zick + Zack gedeutet (Einstich alle Länge/2) |
 | Satin-Fortschritt | Abstand gemessen als Mittel der Wege auf beiden Seiten |

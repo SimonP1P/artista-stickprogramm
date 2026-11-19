@@ -162,6 +162,16 @@ pub struct UnterlageEinstellung {
     pub tatami_randlauf: f64,
     /// Winkel 90° zur Deckstichrichtung (AMT 0x2759)
     pub tatami_winkel_versatz: f64,
+    /// **Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile
+    /// tragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);
+    /// MOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch
+    /// (Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.
+    #[serde(default)]
+    pub auto_an: bool,
+    /// Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und
+    /// EasyStitch-Stile).
+    #[serde(default = "zickzack")]
+    pub auto_art: Vec<String>,
     /// Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und
     /// Sehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):
     pub edge_walk_lauf: LaufGrenzen,
@@ -169,6 +179,10 @@ pub struct UnterlageEinstellung {
     pub zickzack_lauf: LaufGrenzen,
     pub doppelzickzack_lauf: LaufGrenzen,
     pub tatami_randlauf_lauf: LaufGrenzen,
+}
+
+fn zickzack() -> Vec<String> {
+    vec!["zickzack".into()]
 }
 
 /// Mindeststich und Sehnenabstand eines variablen Laufs.
@@ -198,6 +212,8 @@ impl Default for UnterlageEinstellung {
             tatami_laenge: 4.0,
             tatami_randlauf: 2.5,
             tatami_winkel_versatz: 90.0,
+            auto_an: false,
+            auto_art: zickzack(),
             edge_walk_lauf: LaufGrenzen {
                 min_laenge: w(72.0),
                 sehnenabstand: w(13.0),

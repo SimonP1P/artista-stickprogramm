@@ -11,18 +11,9 @@ use crate::geometrie::{Linie, Punkt, abstand, richtung, versatz_ring, verschiebe
 
 pub const SATIN_UNTERLAGEN: [&str; 5] = ["keine", "mittellauf", "edge_walk", "zickzack", "doppelzickzack"];
 
-/// Unterlage nach Säulenbreite (eigene Festlegung, durch Original-Verhalten zu ersetzen: AMT 0x27a7).
-pub fn auto_satin_unterlage(mittlere_breite: f64) -> Vec<String> {
-    let arten: &[&str] = if mittlere_breite < 1.5 {
-        &[]
-    } else if mittlere_breite < 3.0 {
-        &["mittellauf"]
-    } else if mittlere_breite < 6.0 {
-        &["edge_walk"]
-    } else {
-        &["edge_walk", "zickzack"]
-    };
-    arten.iter().map(|s| s.to_string()).collect()
+/// Unterlage „auto“ wie das Werkzeug „Auto Underlay“ des Originals: aus, oder die im Stil vorgewählte Art.
+pub fn auto_satin_unterlage(e: &UnterlageEinstellung) -> Vec<String> {
+    if e.auto_an { e.auto_art.clone() } else { Vec::new() }
 }
 
 /// Seiten um `rand` nach innen rücken; zu schmale Stellen fallen auf die Mitte zusammen.
@@ -242,10 +233,11 @@ mod tests {
 
     #[test]
     fn auto_unterlage() {
-        assert!(auto_satin_unterlage(1.0).is_empty());
-        assert_eq!(auto_satin_unterlage(2.0), ["mittellauf"]);
-        assert_eq!(auto_satin_unterlage(4.0), ["edge_walk"]);
-        assert_eq!(auto_satin_unterlage(7.0), ["edge_walk", "zickzack"]);
+        // Software Defaults: Auto Underlay aus; eingeschaltet die vorgewählte Art Zickzack
+        let mut e = UnterlageEinstellung::default();
+        assert!(auto_satin_unterlage(&e).is_empty());
+        e.auto_an = true;
+        assert_eq!(auto_satin_unterlage(&e), ["zickzack"]);
         assert!(
             satin_unterlage(
                 &[p(0.0, 1.0), p(5.0, 1.0)],

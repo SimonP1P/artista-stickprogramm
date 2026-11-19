@@ -82,9 +82,9 @@ between two needle penetrations **on the same side** of a column.“
    beider Seiten“; ausgewertet ist das noch nicht.
 
 ## 4. Offen
-1. **Auto Spacing:** Welcher Wert schaltet es ein? Ist es in „Software Defaults“ ein? Suchen: Lesefunktion von Klasse
+1. ~~**Auto Spacing**~~ – geklärt in [05](05_effekte_und_unterlagen.md): Effekt 0x21 am Satin. (Frage war: Welcher Wert schaltet es ein? Ist es in „Software Defaults“ ein? Suchen: Lesefunktion von Klasse
    0x16/0x15 gegen die Stil-Kennungen 0x2734/0x27ab.
-2. **Unterlagen ein/aus:** In Flower stehen Edge Walk und Mittellauf in jedem Objekt und werden beide gestickt. Wie ist
+2. ~~**Unterlagen ein/aus**~~ – geklärt in [05](05_effekte_und_unterlagen.md) (im Objekt stehen nur aktive; Voreinstellung über Stil-Flags). In Flower stehen Edge Walk und Mittellauf in jedem Objekt und werden beide gestickt. Wie ist
    „ausgeschaltet“ gespeichert? Stile: Flag-Bit 0x0001 ([01](01_stile_und_verbinder.md) §5).
 3. **Satin in Bögen:** Auf welcher Linie wird der Abstand gemessen (Außenseite, Mitte)? Bögen gezielt auswerten.
 4. **Tatami** (Klasse 0x1b): Reihenabstand, Versatz 0x2719/0x271a/0x271b und Laufwege in der Fläche nach demselben

@@ -71,6 +71,7 @@ zweiten Eintrag 0x271c: **1,8 mm, variabel, Mindeststich 0,40 mm, Sehnenabstand 
 Fläche (bisher Sprünge im Prototyp; umzusetzen in Phase 4).
 
 ## 5. Auswahl der Unterlage — Sicherheit: mittel (Deutung), offen (Regel)
+*Geklärt 19.11.2026 in [05](05_effekte_und_unterlagen.md):* Bit 0x0001 = vorgewählte Art, Bit 0x2000 = aus; Auto-Unterlage in Software Defaults/Stoffen aus, bei Schrift an, Art jeweils Zickzack.
 In jeder Liste eines Stils trägt **genau ein Eintrag das Flag-Bit 0x0001**: Unterlagen 0x27a7 → **Zickzack** (alle
 Stoff-, Standard-, Schrift- und EasyStitch-Stile) bzw. **Tatami-Unterlage** (alle Motiv-Stile); Füllarten 0x27a6 → Satin;
 Konturen 0x27a8 → Lauf. Das spricht für „ausgewählter Eintrag“ statt „ausgeschaltet“ (so bisher in
