@@ -3,10 +3,11 @@
 //! Eingabe im selben JSON-Format wie der Python-Prototyp (`stickprogramm/README.md`): Koordinaten in mm,
 //! Ursprung = Rahmenmitte, +y nach oben. Statt Punktlisten gehen Formen (kreis, rechteck, bogen, bezier, verbinden).
 
-use crate::einstellungen::{Einstellungen, fuer_stoff};
+use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
 use crate::geometrie::{Linie, Punkt, abstand, bezier, bogen, kreis, p, rechteck};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
+use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
 use crate::sticharten::satin::{paare_bilden, satin, seiten_aus_mittellinie};
 use crate::sticharten::tatami::tatami;
@@ -14,6 +15,7 @@ use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, sa
 use crate::stiche::StichFolge;
 use serde::Deserialize;
 use serde_json::Value;
+use std::collections::BTreeMap;
 
 // ---------------------------------------------------------------- JSON-Eingabe
 
@@ -142,6 +144,43 @@ struct SatinJson {
     seite_b: PunktAngabe,
     #[serde(default = "auto")]
     unterlage: UnterlageJson,
+    /// fester Satinabstand in mm statt Auto Spacing (wie im Alphabet: 0x15)
+    abstand: Option<f64>,
+}
+
+fn hundert() -> f64 {
+    100.0
+}
+fn mitte() -> String {
+    "mitte".into()
+}
+fn text_hoehe() -> f64 {
+    20.0
+}
+
+/// Text mit einem Original-Alphabet (`schrift.rs`). Die Alphabete lädt der Aufrufer (`Design::alphabete`).
+#[derive(Debug, Deserialize)]
+struct TextJson {
+    #[serde(default = "schwarz")]
+    farbe: String,
+    #[serde(default)]
+    name: String,
+    text: String,
+    alphabet: String,
+    /// Buchstabenhöhe in mm (Original 1–200 mm) – Vorgabe 20 mm ist eine eigene Festlegung
+    #[serde(default = "text_hoehe")]
+    hoehe: f64,
+    /// Breite in % der Höhe
+    #[serde(default = "hundert")]
+    breite: f64,
+    /// Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)
+    abstand: Option<f64>,
+    /// Bezugspunkt auf der Grundlinie
+    #[serde(default)]
+    position: Option<Punkt>,
+    /// links | mitte | rechts
+    #[serde(default = "mitte")]
+    ausrichtung: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -178,6 +217,7 @@ enum ObjektJson {
     Satin(SatinJson),
     Satinlinie(SatinLinieJson),
     Tatami(TatamiJson),
+    Text(TextJson),
 }
 
 fn design_name() -> String {
@@ -240,6 +280,8 @@ pub enum ObjektArt {
         seite_a: Linie,
         seite_b: Linie,
         unterlage: Unterlage,
+        /// fester Abstand in mm (None = Einstellung des Stoffs/Stils, Auto Spacing)
+        abstand: Option<f64>,
     },
     /// Satinbahn konstanter Breite entlang einer Mittellinie
     SatinLinie {
@@ -256,6 +298,8 @@ pub enum ObjektArt {
         /// Festlegung, die vorgewählte Art des Stils ist Zickzack)
         unterlage: Option<bool>,
     },
+    /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
+    Text { alphabet: String, vorgabe: TextVorgabe },
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -265,8 +309,22 @@ pub struct Objekt {
     pub art: ObjektArt,
 }
 
-fn satin_wege(a: &[Punkt], b: &[Punkt], unterlage: &Unterlage, e: &Einstellungen) -> Result<Vec<Linie>, String> {
+fn satin_wege(
+    a: &[Punkt],
+    b: &[Punkt],
+    unterlage: &Unterlage,
+    abstand: Option<f64>,
+    e: &Einstellungen,
+) -> Result<Vec<Linie>, String> {
     let (a, b) = paare_bilden(a, b)?;
+    let satin_e = match abstand {
+        Some(x) => SatinEinstellung {
+            auto_spacing: false,
+            abstand_fest: x,
+            ..e.satin.clone()
+        },
+        None => e.satin.clone(),
+    };
     let arten = match unterlage {
         Unterlage::Auto => auto_satin_unterlage(&e.unterlage),
         Unterlage::Arten(l) => l.clone(),
@@ -276,7 +334,7 @@ fn satin_wege(a: &[Punkt], b: &[Punkt], unterlage: &Unterlage, e: &Einstellungen
     } else {
         satin_unterlage(&a, &b, &arten, &e.unterlage)?
     };
-    let deck = satin(&a, &b, &e.satin)?;
+    let deck = satin(&a, &b, &satin_e)?;
     if unter.is_empty() {
         Ok(vec![deck])
     } else {
@@ -310,15 +368,17 @@ impl Objekt {
                 seite_a,
                 seite_b,
                 unterlage,
-            } => satin_wege(seite_a, seite_b, unterlage, e),
+                abstand,
+            } => satin_wege(seite_a, seite_b, unterlage, *abstand, e),
             ObjektArt::SatinLinie {
                 punkte,
                 breite,
                 unterlage,
             } => {
                 let (a, b) = seiten_aus_mittellinie(punkte, *breite);
-                satin_wege(&a, &b, unterlage, e)
+                satin_wege(&a, &b, unterlage, None, e)
             }
+            ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
             ObjektArt::Tatami {
                 umriss,
                 loecher,
@@ -345,6 +405,8 @@ pub struct Design {
     pub rahmen: Rahmen,
     pub einstellungen: Einstellungen,
     pub objekte: Vec<Objekt>,
+    /// geladene Alphabete (Name wie im Alphabet-Kopf, z. B. „Drifter“); füllt der Aufrufer, siehe `alphabet_namen`
+    pub alphabete: BTreeMap<String, Alphabet>,
 }
 
 impl Design {
@@ -372,7 +434,28 @@ impl Design {
                         seite_a: s.seite_a.punkte(),
                         seite_b: s.seite_b.punkte(),
                         unterlage: s.unterlage.into(),
+                        abstand: s.abstand,
                     },
+                },
+                ObjektJson::Text(t) => Objekt {
+                    name: if t.name.is_empty() { t.text.clone() } else { t.name },
+                    art: ObjektArt::Text {
+                        alphabet: t.alphabet,
+                        vorgabe: TextVorgabe {
+                            text: t.text,
+                            hoehe: t.hoehe,
+                            breite_prozent: t.breite,
+                            abstand: t.abstand,
+                            position: t.position.unwrap_or(p(0.0, 0.0)),
+                            ausrichtung: match t.ausrichtung.as_str() {
+                                "links" => 0.0,
+                                "rechts" => 1.0,
+                                _ => 0.5,
+                            },
+                            farbe: t.farbe.clone(),
+                        },
+                    },
+                    farbe: t.farbe,
                 },
                 ObjektJson::Satinlinie(s) => Objekt {
                     farbe: s.farbe,
@@ -400,14 +483,54 @@ impl Design {
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
             objekte,
+            alphabete: BTreeMap::new(),
         })
+    }
+
+    /// Namen der Alphabete, die die Texte des Designs brauchen.
+    pub fn alphabet_namen(&self) -> Vec<String> {
+        let mut n: Vec<String> = self
+            .objekte
+            .iter()
+            .filter_map(|o| match &o.art {
+                ObjektArt::Text { alphabet, .. } => Some(alphabet.clone()),
+                _ => None,
+            })
+            .collect();
+        n.sort();
+        n.dedup();
+        n
+    }
+
+    /// Objekte mit aufgelösten Texten (Buchstaben als Satin-/Lauf-Objekte). Fehlende Zeichen werden übersprungen
+    /// und im zweiten Wert gemeldet.
+    pub fn objekte_aufgeloest(&self) -> Result<(Vec<Objekt>, Vec<char>), String> {
+        let mut out = Vec::new();
+        let mut fehlend = Vec::new();
+        for o in &self.objekte {
+            match &o.art {
+                ObjektArt::Text { alphabet, vorgabe } => {
+                    let a = self
+                        .alphabete
+                        .get(alphabet)
+                        .or_else(|| self.alphabete.values().find(|a| a.name.eq_ignore_ascii_case(alphabet)))
+                        .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
+                    let (obj, f) = text_objekte(a, vorgabe);
+                    out.extend(obj);
+                    fehlend.extend(f);
+                }
+                _ => out.push(o.clone()),
+            }
+        }
+        Ok((out, fehlend))
     }
 
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).
     pub fn berechnen(&self) -> Result<StichFolge, String> {
         let mut teile: Vec<(String, Vec<Linie>)> = Vec::new();
         let mut pos = p(0.0, 0.0);
-        for obj in &self.objekte {
+        let (objekte, _) = self.objekte_aufgeloest()?;
+        for obj in &objekte {
             let wege: Vec<Linie> = obj
                 .wege(&self.einstellungen, Some(pos))?
                 .into_iter()

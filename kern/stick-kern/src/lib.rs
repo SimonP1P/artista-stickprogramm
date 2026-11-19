@@ -9,6 +9,7 @@ pub mod einstellungen;
 pub mod geometrie;
 pub mod nachbearbeitung;
 pub mod rahmen;
+pub mod schrift;
 pub mod sticharten;
 pub mod stiche;
 

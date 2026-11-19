@@ -1,11 +1,13 @@
 //! Kommandozeile zum Rechenkern:
 //!
-//!   stick erzeugen DESIGN.json [-o ORDNER]                 Stiche berechnen -> .exp + .svg
+//!   stick erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER]  Stiche berechnen -> .exp + .svg
+//!   stick alphabete [ORDNER]                               Original-Alphabete (ESB) auflisten
 //!   stick anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] EXP als SVG darstellen
 //!   stick rahmen | stoffe                                  Rahmen bzw. Stoffe auflisten
 
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
+use stick_formate::esb;
 use stick_formate::exp::{exp_bytes, exp_lesen};
 use stick_formate::svg::{SvgOptionen, svg_text};
 use stick_kern::einstellungen::STOFFE;
@@ -45,9 +47,25 @@ fn option(args: &[String], name: &str) -> Option<String> {
         .and_then(|i| args.get(i + 1).cloned())
 }
 
-fn erzeugen(design_pfad: &Path, ordner: &Path) -> Result<bool, String> {
+/// Ordner der Alphabete: Schalter --alphabete, sonst Umgebungsvariable STICK_ALPHABETE, sonst „alphabete“.
+fn alphabet_ordner(args: &[String]) -> PathBuf {
+    option(args, "--alphabete")
+        .or_else(|| std::env::var("STICK_ALPHABETE").ok())
+        .unwrap_or_else(|| "alphabete".into())
+        .into()
+}
+
+fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool, String> {
     let text = std::fs::read_to_string(design_pfad).map_err(|e| format!("{}: {e}", design_pfad.display()))?;
-    let design = Design::aus_json(&text)?;
+    let mut design = Design::aus_json(&text)?;
+    esb::design_alphabete_laden(&mut design, alphabete)?;
+    let (_, fehlend) = design.objekte_aufgeloest()?;
+    if !fehlend.is_empty() {
+        println!(
+            "  Hinweis: Zeichen ohne Entsprechung im Alphabet: {}",
+            fehlend.iter().collect::<String>()
+        );
+    }
     let folge = design.berechnen()?;
     std::fs::create_dir_all(ordner).map_err(|e| e.to_string())?;
     let basis = ordner.join(design.name.replace(' ', "_"));
@@ -74,12 +92,34 @@ fn erzeugen(design_pfad: &Path, ordner: &Path) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | rahmen | stoffe";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
             let ordner = option(args, "-o").unwrap_or_else(|| ".".into());
-            erzeugen(Path::new(design), Path::new(&ordner))
+            erzeugen(Path::new(design), Path::new(&ordner), &alphabet_ordner(args))
+        }
+        Some("alphabete") => {
+            let ordner = args
+                .get(1)
+                .filter(|a| !a.starts_with('-'))
+                .map(PathBuf::from)
+                .unwrap_or_else(|| alphabet_ordner(args));
+            let liste = esb::verzeichnis(&ordner);
+            if liste.is_empty() {
+                return Err(format!("keine ESB-Dateien in {}", ordner.display()));
+            }
+            for (name, pfad) in liste {
+                let a = esb::laden(&pfad)?;
+                println!(
+                    "  {:<24} {:3} Zeichen  Abstand {:4.0} %  {}",
+                    name,
+                    a.zeichen.len(),
+                    a.abstand_anteil * 100.0,
+                    pfad.file_name().unwrap_or_default().to_string_lossy()
+                );
+            }
+            Ok(true)
         }
         Some("anzeigen") => {
             let exp = PathBuf::from(args.get(1).ok_or(hilfe)?);

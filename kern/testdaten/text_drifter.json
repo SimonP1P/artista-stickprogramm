@@ -1,0 +1,7 @@
+{
+  "name": "Text Drifter",
+  "rahmen": "artista 130 x 100",
+  "objekte": [
+    {"art": "text", "text": "ABC Anna", "alphabet": "Drifter", "hoehe": 25, "position": [0, -10], "farbe": "#1f3a93"}
+  ]
+}

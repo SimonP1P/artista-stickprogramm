@@ -1,6 +1,6 @@
 [package]
 name = "stick-formate"
-description = "Dateiformate: EXP (Bernina-Variante) lesen/schreiben, SVG-Vorschau"
+description = "Dateiformate: EXP (Bernina-Variante) lesen/schreiben, SVG-Vorschau, Original-Alphabete (ESB)"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -8,3 +8,5 @@ publish.workspace = true
 
 [dependencies]
 stick-kern.workspace = true
+cfb = "0.10"
+flate2 = "1"
