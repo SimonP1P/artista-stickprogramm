@@ -6,7 +6,7 @@
 use super::lauf::laufstich;
 use super::satin::{mittellinie, paare_bilden};
 use super::tatami::tatami;
-use crate::einstellungen::{LaufEinstellung, TatamiEinstellung, UnterlageEinstellung};
+use crate::einstellungen::{LaufEinstellung, LaufGrenzen, TatamiEinstellung, UnterlageEinstellung};
 use crate::geometrie::{Linie, Punkt, abstand, richtung, versatz_ring, verschieben, zwischen};
 
 pub const SATIN_UNTERLAGEN: [&str; 5] = ["keine", "mittellauf", "edge_walk", "zickzack", "doppelzickzack"];
@@ -41,13 +41,16 @@ fn eingerueckt(a: &[Punkt], b: &[Punkt], rand: f64) -> (Linie, Linie) {
     (ai, bi)
 }
 
-fn lauf(linie: &[Punkt], laenge: f64) -> Linie {
+/// Lauf einer Unterlage: im Original „variabel“ (0x271e = 1) mit Mindeststich und Sehnenabstand je Art.
+fn lauf(linie: &[Punkt], laenge: f64, g: LaufGrenzen) -> Linie {
     laufstich(
         linie,
         &LaufEinstellung {
             laenge,
+            min_laenge: g.min_laenge,
+            variabel: true,
+            sehnenabstand: g.sehnenabstand,
             ecke_grad: 30.0,
-            ..Default::default()
         },
         None,
     )
@@ -110,13 +113,13 @@ pub fn satin_unterlage(
         match art.as_str() {
             "keine" => {}
             "mittellauf" => {
-                let hin = lauf(&mitte, e.mittellauf_laenge);
+                let hin = lauf(&mitte, e.mittellauf_laenge, e.mittellauf_lauf);
                 anhaengen(&mut out, hin.clone());
                 anhaengen(&mut out, umgekehrt(&hin));
             }
             "edge_walk" => {
-                anhaengen(&mut out, lauf(&ai, e.edge_walk_laenge));
-                anhaengen(&mut out, lauf(&umgekehrt(&bi), e.edge_walk_laenge));
+                anhaengen(&mut out, lauf(&ai, e.edge_walk_laenge, e.edge_walk_lauf));
+                anhaengen(&mut out, lauf(&umgekehrt(&bi), e.edge_walk_laenge, e.edge_walk_lauf));
                 anhaengen(&mut out, vec![ai[0]]);
             }
             "zickzack" | "doppelzickzack" => {
@@ -128,7 +131,7 @@ pub fn satin_unterlage(
                 anhaengen(&mut out, zickzack(&ai, &bi, laenge, 0.0));
                 if art == "zickzack" {
                     // „+ Lauf 3,0 mm“ zurück zum Anfang
-                    anhaengen(&mut out, lauf(&umgekehrt(&mitte), e.rueck_lauf_laenge));
+                    anhaengen(&mut out, lauf(&umgekehrt(&mitte), e.rueck_lauf_laenge, e.zickzack_lauf));
                 } else {
                     anhaengen(&mut out, zickzack(&umgekehrt(&bi), &umgekehrt(&ai), laenge, 0.5));
                 }
@@ -165,7 +168,7 @@ pub fn flaechen_unterlage(
         }
         ring = rand_umriss[i..].iter().chain(&rand_umriss[..=i]).copied().collect();
     }
-    let mut wege = vec![lauf(&ring, e.tatami_randlauf)];
+    let mut wege = vec![lauf(&ring, e.tatami_randlauf, e.tatami_randlauf_lauf)];
     let te = TatamiEinstellung {
         abstand: e.tatami_abstand,
         laenge: e.tatami_laenge,

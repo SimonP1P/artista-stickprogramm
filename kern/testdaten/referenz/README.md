@@ -1,0 +1,12 @@
+# Referenz-EXP für den Rust-Kern
+
+Der Test `stick-formate/tests/vergleich_referenz.rs` prüft, dass der Kern für `../vergleich_*.json` byte-genau diese
+Dateien erzeugt. Jede **bewusste** Änderung der Stichberechnung ersetzt die Referenzen und wird hier eingetragen, damit
+jede Abweichung vom Python-Prototyp nachvollziehbar bleibt.
+
+| Datum | Stand | Änderung gegenüber dem vorigen Stand |
+|---|---|---|
+| 19.11.2026 | Python-Prototyp `stickprogramm/` | Ausgangspunkt: Rust-Kern erzeugt byte-genau dieselben Dateien wie Python (Commit 50be48d) |
+| 19.11.2026 | Original-Verhalten Stufe 1 (`Analyse_Teil3/01_stile_und_verbinder.md`) | Vernähen nach Dialog „Connectors“: 2 Stiche à **1,0 mm** statt 0,8 mm; **letztes Objekt nicht vernäht** (`Always Tie Off Last Object` = 0); Unterlagen-Läufe **variabel** mit Mindeststich/Sehnenabstand je Art aus dem Stil. Geprüft mit einem Stichvergleich (difflib): nur Vernähpunkte, Designende und ein Edge-Walk-Stich am geknickten Satinkeil geändert |
+
+Neu erzeugen: `F:\Entwicklung\target\release\stick.exe erzeugen ..\vergleich_X.json -o .` (danach die SVG löschen).

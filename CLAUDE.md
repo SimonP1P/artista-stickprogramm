@@ -43,6 +43,7 @@
 | Verifikationsprotokoll | `VERIFIKATION.md` |
 | Übersicht Rohdaten | `Arbeitsdaten/README.md` |
 | **Architektur** (Bausteine, geplanter Aufbau, Datenfluss, Entwicklungsumgebung, Risiken) | `ARCHITECTURE.md` |
+| **Original-Verhalten für die eigene Software** (Stile, Verbinder/Vernähen, Unterlagen-Läufe, Dreifach, Musterdesigns mit echten Stichen) | `Analyse_Teil3/01_stile_und_verbinder.md`; ART lesen: `Arbeitsdaten/werkzeuge/art_lesen.py` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |
@@ -93,6 +94,7 @@ venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink
 - Weitere Aufrufe: `Analyse/code/11_werkzeuge.md`. Wichtig: das Skript heißt `rdis.py`, nicht `dis.py` (kollidiert mit Python-Modul).
 - **Windows-PC:** Python nur über `py` (3.14); Umgebung `py -m venv venv`, Programm `venv\Scripts\python -m pip install -e stickprogramm[test]`, Tests `venv\Scripts\python -m pytest stickprogramm`. SVG-Vorschau lässt sich mit Edge headless als PNG ansehen (`msedge --headless=new --screenshot=… file:///….svg`).
 - **Windows-PC, Rust/Tauri (eingerichtet 19.11.2026):** Rust + Node unter `F:\Entwicklung`, Build-Ausgaben `F:\Entwicklung\target`; Programm bauen mit `cd app; npm run tauri build -- --debug --no-bundle` (Details `ARCHITECTURE.md` §5, `app/README.md`). In Claude-Code-Shells ggf. PATH/Variablen für den Prozess setzen: `$env:Path = "F:\Entwicklung\cargo\bin;F:\Entwicklung\node;C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64;$env:Path"; $env:RUSTUP_HOME='F:\Entwicklung\rustup'; $env:CARGO_HOME='F:\Entwicklung\cargo'; $env:CARGO_TARGET_DIR='F:\Entwicklung\target'`.
+- **Original-Software auf dem Windows-PC entpackt:** `F:\Entwicklung\artista_ziel` (651 Dateien, 7 bekannte defekte), Werkzeuge `F:\Entwicklung\werkzeuge\blast.exe` (mit `Arbeitsdaten/werkzeuge/binaer_windows.h` gebaut, sonst „blast err 2“) und `twofish.exe`; `setup.z` per `git lfs pull --include Setup/English/setup.z`. Musterdesigns: `F:\Entwicklung\artista_ziel\Main\Samples` (287 ART).
 - Vorhandene Mac-Werkzeuge: `unshield`, `pdftotext`, `deark`, `cc`. **Nicht** installiert: Wine, PowerShell (bei Bedarf portable PowerShell 7.4.6 osx-arm64 ins Scratchpad laden).
 - **Bekannter Schaden:** Die CD-Kopie hat 14 defekte 64-KB-Blöcke in `setup.z` → ARTISTA.HLP, qrg_enu.pdf, Quilter.hlp, portfolio.exe, vcl60.bpl unbrauchbar (Details `Analyse/code/01_setup_entpacken.md`).
 

@@ -77,7 +77,7 @@ Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Ver
 | Tatami-Versatz | Raster je Reihe um 0,25 × Stichlänge verschoben; zwischen Teilbereichen ein **Sprung** (Laufwege durch die Fläche fehlen noch) |
 | Tatami-Winkel | 45°, wenn nicht angegeben |
 | Ecken beim Lauf | Einstich an Knicken ≥ 30° |
-| Vernähen | 0,8 mm vor und zurück am Anfang/Ende, bei Farbwechsel und Verbindern > 3,0 mm |
+| Vernähen | 0,8 mm vor und zurück am Anfang/Ende, bei Farbwechsel und Verbindern > 3,0 mm – **im Rust-Kern ersetzt** durch das Original (1,0 mm, letztes Objekt ohne Vernähen, `Analyse_Teil3/01`) |
 | Start | Rahmenmitte; erster Weg wird per Sprung angefahren. Fadenschnitt gibt es nicht (Bernina-Format: `trims_for_jump = 0`) |
 
 ## Noch nicht enthalten (kommt im Rust-Kern, Phase 3–5)

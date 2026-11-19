@@ -149,18 +149,38 @@ pub struct UnterlageEinstellung {
     pub edge_walk_laenge: f64,
     /// AMT 0x2747 (mittel)
     pub mittellauf_laenge: f64,
-    /// AMT 0x2744 (mittel); hier gedeutet als Weg entlang der Säule je Zick+Zack (niedrig)
+    /// AMT 0x2744/0x2724/0x2725 (mittel); hier gedeutet als Weg entlang der Säule je Zick+Zack (niedrig)
     pub zickzack_laenge: f64,
-    /// AMT 0x2745 (mittel)
+    /// AMT 0x2745/0x2724/0x2725 (mittel)
     pub doppelzickzack_laenge: f64,
-    /// „+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (mittel)
+    /// „+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel)
     pub rueck_lauf_laenge: f64,
     /// Tatami-Unterlage AMT 0x275a (mittel)
     pub tatami_abstand: f64,
     pub tatami_laenge: f64,
     pub tatami_randlauf: f64,
-    /// Winkel 90° zur Deckstichrichtung (AMT 0x27a7)
+    /// Winkel 90° zur Deckstichrichtung (AMT 0x2759)
     pub tatami_winkel_versatz: f64,
+    /// Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und
+    /// Sehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):
+    pub edge_walk_lauf: LaufGrenzen,
+    pub mittellauf_lauf: LaufGrenzen,
+    pub zickzack_lauf: LaufGrenzen,
+    pub doppelzickzack_lauf: LaufGrenzen,
+    pub tatami_randlauf_lauf: LaufGrenzen,
+}
+
+/// Mindeststich und Sehnenabstand eines variablen Laufs.
+#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct LaufGrenzen {
+    pub min_laenge: f64,
+    pub sehnenabstand: f64,
+}
+
+/// Wilcom-Einheiten (1 mm = 180) in mm.
+const fn w(einheiten: f64) -> f64 {
+    einheiten / 180.0
 }
 
 impl Default for UnterlageEinstellung {
@@ -177,27 +197,77 @@ impl Default for UnterlageEinstellung {
             tatami_laenge: 4.0,
             tatami_randlauf: 2.5,
             tatami_winkel_versatz: 90.0,
+            edge_walk_lauf: LaufGrenzen {
+                min_laenge: w(131.0),
+                sehnenabstand: w(11.0),
+            },
+            mittellauf_lauf: LaufGrenzen {
+                min_laenge: w(72.0),
+                sehnenabstand: w(13.0),
+            },
+            zickzack_lauf: LaufGrenzen {
+                min_laenge: w(72.0),
+                sehnenabstand: w(36.0),
+            },
+            doppelzickzack_lauf: LaufGrenzen {
+                min_laenge: w(179.0),
+                sehnenabstand: w(16.0),
+            },
+            tatami_randlauf_lauf: LaufGrenzen {
+                min_laenge: w(72.0),
+                sehnenabstand: w(13.0),
+            },
         }
     }
 }
 
+/// Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.
+/// Zuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct VerbinderEinstellung {
-    /// Vernähen, wenn Verbinder > 3,0 mm (AMT 0x272a, hoch)
-    pub vernaehen_ab: f64,
-    /// eigene Festlegung (≥ 0,3 mm Mindeststich)
+    /// Tie In: „Always Tie In“ (0x2753 = 0)
+    pub anfang_immer: bool,
+    /// Tie In If: „After Trim / Color Change“ (0x2750 = 1)
+    pub anfang_nach_trim_farbwechsel: bool,
+    /// Tie In If: „Previous Connector Longer Than“ (0x272d = 1) …
+    pub anfang_bei_langem_verbinder: bool,
+    /// … Länge (0x2755 = 3,0 mm)
+    pub anfang_verbinder_ab: f64,
+    /// Tie Off: „Always Tie Off“ (0x2752 = 0)
+    pub ende_immer: bool,
+    /// Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)
+    pub ende_vor_trim_farbwechsel: bool,
+    /// Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …
+    pub ende_bei_langem_verbinder: bool,
+    /// … Länge (0x2754 = 3,0 mm)
+    pub ende_verbinder_ab: f64,
+    /// „Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht
+    pub letztes_objekt_vernaehen: bool,
+    /// Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).
+    /// Die artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.
+    pub trim_ab: f64,
+    /// Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel)
     pub vernaeh_stichlaenge: f64,
-    /// eigene Festlegung
+    /// Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)
     pub vernaeh_stiche: usize,
 }
 
 impl Default for VerbinderEinstellung {
     fn default() -> Self {
         VerbinderEinstellung {
-            vernaehen_ab: 3.0,
-            vernaeh_stichlaenge: 0.8,
-            vernaeh_stiche: 3,
+            anfang_immer: false,
+            anfang_nach_trim_farbwechsel: true,
+            anfang_bei_langem_verbinder: true,
+            anfang_verbinder_ab: 3.0,
+            ende_immer: false,
+            ende_vor_trim_farbwechsel: true,
+            ende_bei_langem_verbinder: true,
+            ende_verbinder_ab: 3.0,
+            letztes_objekt_vernaehen: false,
+            trim_ab: 3.0,
+            vernaeh_stichlaenge: 1.0,
+            vernaeh_stiche: 2,
         }
     }
 }
@@ -290,6 +360,7 @@ pub fn fuer_stoff(name: &str) -> Result<Einstellungen, String> {
     e.satin.zugausgleich = s.zugausgleich;
     e.tatami.abstand = s.tatami_abstand;
     e.tatami.zugausgleich = s.zugausgleich;
+    e.verbinder.trim_ab = s.verbinder_trim;
     if name != "0 Software Defaults" {
         // Bei allen 8 Stoffen gleich, anders als in den Defaults (Analyse/code/10 §E, hoch)
         e.unterlage.zickzack_laenge = 3.0;

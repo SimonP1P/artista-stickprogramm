@@ -5,7 +5,9 @@ use crate::einstellungen::VerbinderEinstellung;
 use crate::geometrie::{Linie, Punkt, abstand, kumuliert, p, punkt_bei};
 use crate::stiche::{Art, Stich, StichFolge};
 
-/// Anfangs-Vernähstiche: ein kurzes Stück entlang des Weges vor und zurück (eigene Festlegung).
+/// Anfangs-Vernähstiche: `vernaeh_stiche` kurze Stiche der Länge `vernaeh_stichlaenge` entlang des Weges vor und
+/// zurück, so dass der Weg danach wieder am Anfang weitergeht. Werte aus AMT 0x2730/0x272f (1,0 mm, 2 Stiche;
+/// mittel). Die genaue Stichfolge des Originals (Methode Tatami/Satin im Dialog) ist noch nicht bestimmt.
 pub fn vernaehen_anfang(weg: &[Punkt], e: &VerbinderEinstellung) -> Linie {
     if weg.len() < 2 || e.vernaeh_stiche == 0 {
         return weg.to_vec();
@@ -16,14 +18,10 @@ pub fn vernaehen_anfang(weg: &[Punkt], e: &VerbinderEinstellung) -> Linie {
         return weg.to_vec();
     }
     let q = punkt_bei(weg, l, &kum);
-    let mut extra: Vec<Punkt> = (0..e.vernaeh_stiche - 1)
-        .map(|i| if i % 2 == 0 { q } else { weg[0] })
-        .collect();
-    if extra.last() == Some(&q) {
-        extra.push(weg[0]);
-    }
     let mut out = vec![weg[0]];
-    out.extend(extra);
+    for _ in 0..e.vernaeh_stiche.div_ceil(2) {
+        out.extend([q, weg[0]]);
+    }
     out.extend_from_slice(&weg[1..]);
     out
 }
@@ -37,8 +35,10 @@ pub fn vernaehen_ende(weg: &[Punkt], e: &VerbinderEinstellung) -> Linie {
 
 /// Wege (je Objekt: Farbe + Wege) zu einer Stichfolge verbinden.
 ///
-/// Zwischen zwei Wegen: Sprung. Vernäht wird am Anfang und Ende, bei Farbwechsel und wenn der Sprung
-/// länger als `vernaehen_ab` ist (AMT 0x272a: 3,0 mm).
+/// Zwischen zwei Wegen: Sprung. Vernähen nach dem Dialog „Connectors“ des Originals (`VerbinderEinstellung`):
+/// Anfang, wenn nach Trim/Farbwechsel oder der vorige Verbinder > 3,0 mm; Ende, wenn vor Trim/Farbwechsel oder
+/// der nächste Verbinder > 3,0 mm; letztes Objekt nur bei „Always Tie Off Last Object“ (aus).
+/// Annahme (mittel): Der Designanfang zählt wie „nach Trim“.
 pub fn wege_verbinden(teile: &[(String, Vec<Linie>)], e: &VerbinderEinstellung, start: Punkt) -> StichFolge {
     let alle: Vec<(&str, &Linie)> = teile
         .iter()
@@ -53,10 +53,19 @@ pub fn wege_verbinden(teile: &[(String, Vec<Linie>)], e: &VerbinderEinstellung, 
     for (i, &(farbe, weg)) in alle.iter().enumerate() {
         let vorher = if i > 0 { Some(alle[i - 1]) } else { None };
         let nachher = alle.get(i + 1).copied();
-        let anfang_vernaehen =
-            vorher.is_none_or(|(vf, vw)| vf != farbe || abstand(*vw.last().unwrap(), weg[0]) > e.vernaehen_ab);
-        let ende_vernaehen =
-            nachher.is_none_or(|(nf, nw)| nf != farbe || abstand(*weg.last().unwrap(), nw[0]) > e.vernaehen_ab);
+        let verbinder_davor = vorher.map(|(_, vw)| abstand(*vw.last().unwrap(), weg[0]));
+        let verbinder_danach = nachher.map(|(_, nw)| abstand(*weg.last().unwrap(), nw[0]));
+        let farbwechsel_davor = vorher.is_some_and(|(vf, _)| vf != farbe);
+        let farbwechsel_danach = nachher.is_some_and(|(nf, _)| nf != farbe);
+        let trim_davor = verbinder_davor.is_none_or(|d| d > e.trim_ab);
+        let trim_danach = verbinder_danach.is_some_and(|d| d > e.trim_ab);
+        let anfang_vernaehen = e.anfang_immer
+            || (e.anfang_nach_trim_farbwechsel && (trim_davor || farbwechsel_davor))
+            || (e.anfang_bei_langem_verbinder && verbinder_davor.is_some_and(|d| d > e.anfang_verbinder_ab));
+        let ende_vernaehen = e.ende_immer
+            || (e.ende_vor_trim_farbwechsel && (trim_danach || farbwechsel_danach))
+            || (e.ende_bei_langem_verbinder && verbinder_danach.is_some_and(|d| d > e.ende_verbinder_ab))
+            || (nachher.is_none() && e.letztes_objekt_vernaehen);
         let mut w = weg.clone();
         if anfang_vernaehen {
             w = vernaehen_anfang(&w, e);
@@ -200,8 +209,33 @@ mod tests {
         assert_eq!(f.anzahl(Art::Farbwechsel), 1);
         assert_eq!(f.farben, ["#000", "#f00"]);
         let pts: Vec<Punkt> = f.stiche.iter().filter(|s| s.art == Art::Stich).map(|s| s.p()).collect();
-        assert_eq!(&pts[..3], &[p(0.0, 0.0), p(0.8, 0.0), p(0.0, 0.0)]);
+        // Designanfang zählt wie „nach Trim“: 2 Vernähstiche à 1,0 mm (AMT 0x272f/0x2730)
+        assert_eq!(&pts[..3], &[p(0.0, 0.0), p(1.0, 0.0), p(0.0, 0.0)]);
         let i5 = pts.iter().position(|&q| q == p(5.0, 0.0)).unwrap();
         assert_eq!(pts[i5 + 1], p(6.0, 0.0)); // Verbinder 1 mm: kein Vernähen
+        // vor dem Farbwechsel vernäht: …, 10, 9, 10
+        let i10 = pts.iter().position(|&q| q == p(10.0, 0.0)).unwrap();
+        assert_eq!(&pts[i10..i10 + 3], &[p(10.0, 0.0), p(9.0, 0.0), p(10.0, 0.0)]);
+        // letztes Objekt: „Always Tie Off Last Object“ = aus -> endet ohne Vernähen
+        assert_eq!(&pts[pts.len() - 2..], &[p(10.0, 5.0), p(20.0, 5.0)]);
+    }
+
+    #[test]
+    fn letztes_objekt_nur_mit_option_vernaehen() {
+        let teile = vec![("#000".to_string(), vec![vec![p(0.0, 0.0), p(10.0, 0.0)]])];
+        let mut e = VerbinderEinstellung::default();
+        let ohne: Vec<Punkt> = wege_verbinden(&teile, &e, p(0.0, 0.0))
+            .stiche
+            .iter()
+            .map(|s| s.p())
+            .collect();
+        assert_eq!(ohne, [p(0.0, 0.0), p(1.0, 0.0), p(0.0, 0.0), p(10.0, 0.0)]);
+        e.letztes_objekt_vernaehen = true;
+        let mit: Vec<Punkt> = wege_verbinden(&teile, &e, p(0.0, 0.0))
+            .stiche
+            .iter()
+            .map(|s| s.p())
+            .collect();
+        assert_eq!(&mit[mit.len() - 3..], &[p(10.0, 0.0), p(9.0, 0.0), p(10.0, 0.0)]);
     }
 }

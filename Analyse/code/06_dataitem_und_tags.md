@@ -19,7 +19,7 @@ u16 id_low | u16 id_high | u16 flags | u16 typ | u32 anzahl | Nutzdaten
 | 6 | `anzahl` Kindknoten | Liste |
 | 7 | 1 Byte | bool/byte |
 
-Ist `anzahl` gleich 0, folgen keine Nutzdaten. **flags**: 0x2000 = Wert gesetzt/gültig, 0x8000 = „Standardauswahl“ in Auswahllisten, 0x0001 = deaktiviert (z. B. 0x2001 bei ausgeschalteter Unterlage).
+Ist `anzahl` gleich 0, folgen keine Nutzdaten. **flags**: 0x2000 = Wert gesetzt/gültig, 0x8000 = „Standardauswahl“ in Auswahllisten, 0x0001 = bisher als „deaktiviert“ gedeutet (z. B. 0x2001 bei der Zickzack-Unterlage). **Korrektur 19.11.2026 (mittel):** In jeder Liste eines Stils trägt genau ein Eintrag Bit 0x0001 (Unterlage Zickzack bzw. Tatami, Füllart Satin, Kontur Lauf) – wahrscheinlicher „ausgewählter Eintrag“, siehe [`../../Analyse_Teil3/01_stile_und_verbinder.md`](../../Analyse_Teil3/01_stile_und_verbinder.md) §5.
 
 ## Die Einheit: 1 mm = 180 Einheiten
 Belege: 12,7 mm = 2286 (Maximalstich, passt zu DFL und Handbuch), Zugausgleich 0,2 mm = 36 (Handbuch S. 201), 7 mm Sprung = 1260 (Handbuch S. 204). Alle Längenwerte sind Vielfache von 9 (= 0,05 mm). Winkel stehen im Bogenmaß als double (1,5708 = 90°). Flächen stehen in Einheiten² (32 400 = 1 mm²).
@@ -68,7 +68,9 @@ Für die Stich-Eigenschaften gibt es **keine** Namenstabelle. Ich habe sie auf d
 | **0x272a** | | **Verbinder (Connectors)** | U | hoch |
 | 0x272e | 0x272a | „Trim If Next Connector Longer Than“ | U | hoch |
 | 0x2754 / 0x2755 | 0x272a | „Next / Previous Connector Longer Than“ (Vernähen) | U | hoch |
-| 0x272c / 0x272d | 0x272a | „Tie Off If“ / „Tie In If“ (Vernähen ein) | U | hoch |
+| 0x272c / 0x272d | 0x272a | Kontrollkästchen „Next / Previous Connector Longer Than“ (Bindung im Code nachgeprüft, [Teil3/01](../../Analyse_Teil3/01_stile_und_verbinder.md)) | Code | hoch |
+| 0x2750 / 0x2733 / 0x276c | 0x272a | „After Trim / Color Change“ (Tie In), „Before Trim / Color Change“ (Tie Off), „Always Tie Off Last Object“ | Code | hoch |
+| 0x2753 / 0x2752 / 0x2751 / 0x272b | 0x272a | Always Tie In / Always Tie Off / Always Trim / Trim If … | Code | hoch |
 | 0x276c | 0x272a | „Always Tie Off Last Object“ | U | hoch |
 | 0x2743 | Unterlage | **Zugausgleich** (0,2 mm) | H S.201 | hoch |
 | 0x2759 | Unterlage | Winkel der Unterlage (90°) | S | mittel |
