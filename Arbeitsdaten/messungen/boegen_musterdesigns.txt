@@ -1,0 +1,12 @@
+1 gerade      Mitte  gemessen/Abstand: n= 38013  Median 0.987  Quartile 0.967–1.008
+1 gerade      außen  gemessen/Abstand: n= 38013  Median 1.000  Quartile 0.987–1.027
+1 gerade      innen  gemessen/Abstand: n= 38013  Median 0.974  Quartile 0.947–1.000
+2 leicht      Mitte  gemessen/Abstand: n= 28736  Median 0.945  Quartile 0.903–0.989
+2 leicht      außen  gemessen/Abstand: n= 28736  Median 1.034  Quartile 0.991–1.094
+2 leicht      innen  gemessen/Abstand: n= 28736  Median 0.861  Quartile 0.801–0.914
+3 stark       Mitte  gemessen/Abstand: n=  8877  Median 0.829  Quartile 0.764–0.903
+3 stark       außen  gemessen/Abstand: n=  8877  Median 1.077  Quartile 0.990–1.156
+3 stark       innen  gemessen/Abstand: n=  8877  Median 0.603  Quartile 0.520–0.675
+4 sehr stark  Mitte  gemessen/Abstand: n=  1531  Median 0.641  Quartile 0.577–0.704
+4 sehr stark  außen  gemessen/Abstand: n=  1531  Median 1.029  Quartile 0.973–1.137
+4 sehr stark  innen  gemessen/Abstand: n=  1531  Median 0.259  Quartile 0.181–0.312

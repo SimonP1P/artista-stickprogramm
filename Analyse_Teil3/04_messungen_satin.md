@@ -83,7 +83,7 @@ between two needle penetrations **on the same side** of a column.“
 Gleiche Auswertung, nur Objekte mit festem Abstand (ohne Auto-Spacing-Effekt, [05](05_effekte_und_unterlagen.md)) und
 Stiche ab 1 mm Breite. Je Stichpaar werden die Wege zwischen Einstichen derselben Seite verglichen, außen und innen,
 dazu der Weg auf der Mitte. Eingeteilt nach Krümmung, gemessen als Verhältnis außen/innen.
-Rohergebnis: `Arbeitsdaten/messungen/satin_boegen_musterdesigns.txt`.
+Rohergebnis: `Arbeitsdaten/messungen/boegen_musterdesigns.txt` (`art_messen.py boegen --alle`).
 
 | Krümmung (außen/innen) | Stichpaare | **außen** / Abstand | Mitte / Abstand | innen / Abstand |
 |---|---|---|---|---|
@@ -102,5 +102,4 @@ eigene Festlegung.
 2. ~~**Unterlagen ein/aus**~~ – geklärt in [05](05_effekte_und_unterlagen.md) (im Objekt stehen nur aktive; Voreinstellung über Stil-Flags). In Flower stehen Edge Walk und Mittellauf in jedem Objekt und werden beide gestickt. Wie ist
    „ausgeschaltet“ gespeichert? Stile: Flag-Bit 0x0001 ([01](01_stile_und_verbinder.md) §5).
 3. ~~**Satin in Bögen**~~ – geklärt, §4: auf der Außenseite.
-4. **Tatami** (Klasse 0x1b): Reihenabstand, Versatz 0x2719/0x271a/0x271b und Laufwege in der Fläche nach demselben
-   Verfahren messen.
+4. ~~**Tatami**~~ – Reihenabstand und Versatz gemessen in [06](06_messungen_tatami.md).

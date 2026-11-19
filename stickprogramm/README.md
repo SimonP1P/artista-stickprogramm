@@ -75,7 +75,8 @@ Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Ver
 | Zickzack-Länge | als Weg entlang der Säule je Zick + Zack gedeutet (Einstich alle Länge/2) |
 | Satin-Fortschritt | Abstand gemessen als Mittel der Wege auf beiden Seiten – **im Rust-Kern ersetzt**: auf der längeren Seite wie im Original (`Analyse_Teil3/04` §4) |
 | Satin-Abstand | als Weg zwischen **aufeinanderfolgenden** Einstichen gedeutet – **falsch**: im Original ist es der Weg zwischen zwei Einstichen **auf derselben Seite** (Handbuch, Messung `Analyse_Teil3/04`); **im Rust-Kern ersetzt**, Satin dort doppelt so dicht |
-| Tatami-Versatz | Raster je Reihe um 0,25 × Stichlänge verschoben; zwischen Teilbereichen ein **Sprung** (Laufwege durch die Fläche fehlen noch) |
+| Tatami-Abstand | als Abstand **benachbarter** Reihen gedeutet – **falsch**: im Original zwischen zwei Hinreihen; **im Rust-Kern ersetzt** (`Analyse_Teil3/06`) |
+| Tatami-Versatz | Raster je Reihe um 0,25 × Stichlänge verschoben (im Original so gemessen, `Analyse_Teil3/06`); zwischen Teilbereichen ein **Sprung** (Laufwege durch die Fläche fehlen noch) |
 | Tatami-Winkel | 45°, wenn nicht angegeben |
 | Ecken beim Lauf | Einstich an Knicken ≥ 30° |
 | Vernähen | 0,8 mm vor und zurück am Anfang/Ende, bei Farbwechsel und Verbindern > 3,0 mm – **im Rust-Kern ersetzt** durch das Original (1,0 mm, letztes Objekt ohne Vernähen, `Analyse_Teil3/01`) |

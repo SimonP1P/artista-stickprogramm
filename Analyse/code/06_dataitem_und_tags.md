@@ -57,10 +57,10 @@ Für die Stich-Eigenschaften gibt es **keine** Namenstabelle. Ich habe sie auf d
 | 0x2722 | 0x2721 | 10 mm, vermutlich Auto-Split-Länge (Satin wird ab 10 mm geteilt) | S | niedrig-mittel |
 | 0x275e | diverse | Auto Spacing ein (1) | S | niedrig |
 | **0x2714** | | **Step-/Tatami-Füllung** | S | hoch |
-| 0x2716 | 0x2714 | **Reihenabstand (Spacing)** | ändert sich je Stoff; Unterlage 3,0 mm | hoch |
+| 0x2716 | 0x2714 | **Reihenabstand (Spacing)** = Weg zwischen zwei **Hinreihen**, Nachbarreihen beim halben Wert (H S.74 + Messung, `Analyse_Teil3/06`) | ändert sich je Stoff; Unterlage 3,0 mm | hoch |
 | 0x2717 | 0x2714 | **Stichlänge** (4,0 mm) | H S.74–75 | hoch |
 | 0x2718 | 0x2714 | Mindeststichlänge am Rand (0,4 mm) | S | mittel |
-| 0x2719/0x271a | 0x2714 | Versatz-Anteile der Reihen (0,25 / 0,25 bzw. 0,75) | S | mittel |
+| 0x2719/0x271a | 0x2714 | Versatz-Anteile der Reihen (0,25 / 0,25 bzw. 0,75): Raster je Reihe um 0,25 Stichlänge verschoben (gemessen, `Analyse_Teil3/06`) | S + Messung | hoch |
 | 0x27ae | 0x2714 | Step-Muster-Nr. (2) | S | mittel |
 | **0x2724** | | **Zickzack** (Füllung und Unterlage) | S | mittel |
 | 0x2725 / 0x2726 | 0x2724 | Abstand/Länge (2,0–7,0 mm) / Breite bzw. Rand (3,0 mm) | S | niedrig-mittel |

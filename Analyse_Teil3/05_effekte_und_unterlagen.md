@@ -26,7 +26,7 @@ spätere Objekte verweisen darauf). Beispiel: der eingebettete Stil jedes Muster
 | 0x26 | leer | offen |
 | 0x6a | short, short, double 1,309 (75°), long 90, double 0,785 (45°), long 1, long 1440 (8 mm) | offen (Ecken/Teilung?) |
 
-**Messung** (`art_messen.py`, Auswertung wie [04](04_messungen_satin.md) §3, je Stich Verhältnis gemessen/erwartet):
+**Messung** (`art_messen.py effekte --alle`, Rohergebnis `Arbeitsdaten/messungen/effekte_musterdesigns.txt`, Auswertung wie [04](04_messungen_satin.md) §3, je Stich Verhältnis gemessen/erwartet):
 | Satinobjekte | Stiche | Verhältnis zu Tabelle(Breite) × Faktor | Verhältnis zum festen Abstand |
 |---|---|---|---|
 | **mit** 0x21 | 20 012 | **0,99** (Quartile 0,88–1,05) | 0,08 (fester Wert steht auf 5,0 mm = ungenutzt) |

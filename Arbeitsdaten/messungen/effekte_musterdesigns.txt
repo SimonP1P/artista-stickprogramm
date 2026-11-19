@@ -1,0 +1,2 @@
+mit 0x21: gemessen/(Tabelle × Faktor): n= 20012  Median 0.987  Quartile 0.877–1.047
+ohne 0x21: gemessen/fester Abstand: n=166826  Median 0.969  Quartile 0.919–1.000

@@ -1,0 +1,6 @@
+Reihenabstand Nachbarreihe / eingestellter Abstand: n= 10256  Median 0.490  Quartile 0.472–0.556
+Reihenabstand übernächste Reihe / eingestellter Abstand: n= 10256  Median 0.980  Quartile 0.956–1.050
+Versatz (0.0, 0.0), Nachbarreihe (8469): 0.25: 15 %, 0.40: 6 %, 0.26: 6 %, 0.24: 6 %
+Versatz (0.0, 0.0), übernächste (8469): 0.50: 12 %, 0.19: 5 %, 0.02: 5 %, 0.29: 5 %
+Versatz (0.25, 0.25), Nachbarreihe (1229): 0.25: 25 %, 0.26: 16 %, 0.24: 14 %, 0.27: 10 %
+Versatz (0.25, 0.25), übernächste (1229): 0.50: 25 %, 0.49: 24 %, 0.48: 17 %, 0.47: 9 %

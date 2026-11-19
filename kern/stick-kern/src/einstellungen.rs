@@ -111,18 +111,28 @@ impl SatinEinstellung {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct TatamiEinstellung {
-    /// Reihenabstand AMT 0x2716 (hoch)
+    /// Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward
+    /// rows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,
+    /// `Analyse_Teil3/06_messungen_tatami.md`)
     pub abstand: f64,
     /// Stichlänge AMT 0x2717 (hoch)
     pub laenge: f64,
     /// Mindeststich am Rand AMT 0x2718 (hoch)
     pub min_rand: f64,
-    /// Reihenversatz AMT 0x2719 (Wert hoch; Wirkung als Anteil der Stichlänge je Reihe: mittel)
+    /// Reihenversatz AMT 0x2719/0x271a (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen
+    /// bei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)
     pub versatz: f64,
     /// Stichwinkel (eigene Festlegung)
     pub winkel: f64,
     /// wie Satin (Handbuch S. 199)
     pub zugausgleich: f64,
+}
+
+impl TatamiEinstellung {
+    /// Abstand benachbarter Reihen (Hin- und Rückreihe): halber Abstand der Hinreihen.
+    pub fn reihenabstand(&self) -> f64 {
+        self.abstand / 2.0
+    }
 }
 
 impl Default for TatamiEinstellung {

@@ -1,7 +1,8 @@
 //! Tatami-/Step-Füllung einer Fläche (Umriss mit optionalen Löchern).
 //!
 //! 1. Fläche so drehen, dass die Stichreihen waagerecht liegen (Stichwinkel).
-//! 2. Reihen im Abstand `abstand` mit allen Kanten schneiden -> Abschnitte je Reihe (Gerade-Ungerade-Regel).
+//! 2. Reihen im Abstand `reihenabstand()` (halber Abstand der Hinreihen, wie im Original) mit allen Kanten
+//!    schneiden -> Abschnitte je Reihe (Gerade-Ungerade-Regel).
 //! 3. Abschnitte zu zusammenhängenden, einfachen Bereichen verbinden (je Reihe genau ein Abschnitt).
 //! 4. Einstiche je Reihe auf einem festen Raster der Stichlänge; das Raster verschiebt sich je Reihe um
 //!    `versatz` × Stichlänge. Rasterpunkte näher als `min_rand` am Abschnittsende entfallen. Zugausgleich
@@ -109,7 +110,7 @@ fn bereich_sticken(b: &Bereich, y0: f64, e: &TatamiEinstellung, von_oben: bool, 
     let mut out: Linie = Vec::new();
     let mut vorwaerts = links_start;
     for (k, x0, x1) in reihen {
-        let y = y0 + k as f64 * e.abstand;
+        let y = y0 + k as f64 * e.reihenabstand();
         let pts = reihe(k, x0, x1, y, e, vorwaerts);
         if let Some(&a) = out.last() {
             // Übergang zur nächsten Reihe: ggf. in Stiche ≤ Stichlänge teilen
@@ -149,11 +150,12 @@ pub fn tatami(
     }
     let y_min = gedreht[0].iter().map(|q| q.y).fold(f64::INFINITY, f64::min);
     let y_max = gedreht[0].iter().map(|q| q.y).fold(f64::NEG_INFINITY, f64::max);
-    let y0 = y_min + e.abstand / 2.0;
+    let ra = e.reihenabstand();
+    let y0 = y_min + ra / 2.0;
     let mut reihen = Vec::new();
     let mut k: i64 = 0;
-    while y0 + k as f64 * e.abstand < y_max {
-        let y = y0 + k as f64 * e.abstand;
+    while y0 + k as f64 * ra < y_max {
+        let y = y0 + k as f64 * ra;
         let xs = schnitte(&gedreht, y);
         let mut abschnitte = Vec::new();
         let mut i = 0;
@@ -182,7 +184,7 @@ pub fn tatami(
                 } else {
                     &b.reihen[0]
                 };
-                let y = y0 + kz as f64 * e.abstand;
+                let y = y0 + kz as f64 * ra;
                 for links in [true, false] {
                     let q = if links { p(x0, y) } else { p(x1, y) };
                     let d = pos.map_or(0.0, |s| abstand(s, q));
@@ -221,7 +223,7 @@ mod tests {
         let mut ys: Vec<i64> = wege[0].iter().map(|q| (q.y * 1e6).round() as i64).collect();
         ys.sort();
         ys.dedup();
-        assert_eq!(ys.len(), 25);
+        assert_eq!(ys.len(), 50); // 10 mm hoch, Nachbarreihen 0,20 mm (Abstand 0,40 mm zwischen Hinreihen)
         for q in &wege[0] {
             assert!(q.x.abs() <= 10.2 + 1e-9 && q.y.abs() <= 5.0);
         }
@@ -258,6 +260,21 @@ mod tests {
                 .fold(f64::INFINITY, f64::min);
             assert!(d <= e.abstand);
         }
+    }
+
+    #[test]
+    fn reihen_beim_halben_abstand() {
+        // Abstand 0,40 mm zwischen zwei Hinreihen: Nachbarreihen 0,20 mm auseinander
+        let e = TatamiEinstellung {
+            winkel: 0.0,
+            zugausgleich: 0.0,
+            ..Default::default()
+        };
+        let wege = tatami(&rechteck(p(0.0, 0.0), 20.0, 10.0), &[], &e, None, None);
+        let mut ys: Vec<f64> = wege.iter().flatten().map(|q| (q.y * 1000.0).round() / 1000.0).collect();
+        ys.sort_by(|a, b| a.partial_cmp(b).unwrap());
+        ys.dedup();
+        assert!(ys.windows(2).all(|w| (w[1] - w[0] - 0.20).abs() < 1e-6));
     }
 
     #[test]
