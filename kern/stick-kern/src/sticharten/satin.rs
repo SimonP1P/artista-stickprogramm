@@ -52,8 +52,11 @@ pub fn mittellinie(a: &[Punkt], b: &[Punkt]) -> Linie {
 
 /// Einstichpunkte der Satinsäule, abwechselnd auf Seite A und B, beginnend bei A[0].
 ///
-/// Abstand je Stich aus Auto Spacing (Breite an der Stelle) bzw. fest; Fortschritt gemessen als Mittel der
-/// Wege auf beiden Seiten (eigene Festlegung, mittel). Zugausgleich verlängert jeden Stich an beiden Enden.
+/// Abstand aus Auto Spacing (Breite an der Stelle) bzw. fest. Wie im Original ist der Abstand der Weg zwischen
+/// zwei Einstichen **auf derselben Seite** (Handbuch PDF-S. 68; an 184 000 Satinstichen der Musterdesigns gemessen,
+/// `Analyse_Teil3/04_messungen_satin.md`), jeder Einstich rückt also um den halben Abstand vor. Fortschritt gemessen
+/// als Mittel der Wege auf beiden Seiten (eigene Festlegung, mittel). Zugausgleich verlängert jeden Stich an beiden
+/// Enden.
 pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, String> {
     let (a, b) = paare_bilden(seite_a, seite_b)?;
     let zg = e.zugausgleich;
@@ -76,7 +79,7 @@ pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Resu
         let mut t = 0.0;
         loop {
             let (pa, pb) = (zwischen(a[i], a[i + 1], t), zwischen(b[i], b[i + 1], t));
-            let noetig = (e.abstand(abstand(pa, pb)) - gelaufen).max(0.0);
+            let noetig = (e.abstand(abstand(pa, pb)) / 2.0 - gelaufen).max(0.0);
             let frei = (1.0 - t) * seg;
             if noetig > frei + 1e-9 {
                 gelaufen += frei;
@@ -122,8 +125,9 @@ mod tests {
             let soll = if i % 2 == 0 { 2.2 } else { -2.2 };
             assert!((q.y - soll).abs() < 1e-9);
         }
-        assert!(dx(&pts).iter().all(|d| (d - 0.40).abs() < 1e-9));
-        assert!((pts.len() as f64 - (20.0 / 0.40 + 2.0)).abs() <= 1.0);
+        // 0,40 mm zwischen zwei Einstichen derselben Seite, also 0,20 mm Vorschub je Einstich
+        assert!(dx(&pts).iter().all(|d| (d - 0.20).abs() < 1e-9));
+        assert!((pts.len() as f64 - (20.0 / 0.20 + 2.0)).abs() <= 1.0);
         assert!((pts.last().unwrap().x - 20.0).abs() < 1e-9);
     }
 
@@ -131,7 +135,7 @@ mod tests {
     fn schmale_bahn_lockerer() {
         let (a, b) = gerade(0.5);
         let pts = satin(&a, &b, &SatinEinstellung::default()).unwrap();
-        assert!(dx(&pts).iter().all(|d| (d - 0.51).abs() < 1e-9));
+        assert!(dx(&pts).iter().all(|d| (d - 0.51 / 2.0).abs() < 1e-9));
     }
 
     #[test]
@@ -142,12 +146,12 @@ mod tests {
             abstand_fest: 0.40,
             ..Default::default()
         };
-        assert!(dx(&satin(&a, &b, &e).unwrap()).iter().all(|d| (d - 0.40).abs() < 1e-9));
+        assert!(dx(&satin(&a, &b, &e).unwrap()).iter().all(|d| (d - 0.20).abs() < 1e-9));
         let e2 = fuer_stoff("Knit Medium Weight").unwrap().satin;
         assert!(
             dx(&satin(&a, &b, &e2).unwrap())
                 .iter()
-                .all(|d| (d - 0.46 * 1.10).abs() < 1e-9)
+                .all(|d| (d - 0.46 * 1.10 / 2.0).abs() < 1e-9)
         );
     }
 

@@ -74,6 +74,7 @@ Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump 7,0 mm · Vernähen bei Ver
 | Reihenfolge Unterlage | jede Satin-Unterlage endet am Säulenanfang, danach Deckstich in einem Zug |
 | Zickzack-Länge | als Weg entlang der Säule je Zick + Zack gedeutet (Einstich alle Länge/2) |
 | Satin-Fortschritt | Abstand gemessen als Mittel der Wege auf beiden Seiten |
+| Satin-Abstand | als Weg zwischen **aufeinanderfolgenden** Einstichen gedeutet – **falsch**: im Original ist es der Weg zwischen zwei Einstichen **auf derselben Seite** (Handbuch, Messung `Analyse_Teil3/04`); **im Rust-Kern ersetzt**, Satin dort doppelt so dicht |
 | Tatami-Versatz | Raster je Reihe um 0,25 × Stichlänge verschoben; zwischen Teilbereichen ein **Sprung** (Laufwege durch die Fläche fehlen noch) |
 | Tatami-Winkel | 45°, wenn nicht angegeben |
 | Ecken beim Lauf | Einstich an Knicken ≥ 30° |

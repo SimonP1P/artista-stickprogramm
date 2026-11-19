@@ -89,12 +89,12 @@ Weitere Schwellen in derselben Tabelle: Mindestfläche 1 mm² (`0x3f57` = 32 400
 **Unterlagen (`0x27a7`, alle Stile gleich, Zugausgleich jeweils 0,20 mm):**
 | Unterlage | Werte |
 |---|---|
-| Edge Walk (`0x2746`) | Laufstich **2,2 mm** (variabel, min. 0,73 mm) |
+| Mittellauf / Center Run (`0x2746`) | Laufstich **2,2 mm** (variabel, min. 0,73 mm) |
 | Zickzack (`0x2744`) | Zickzack 5,0 / 3,0 mm (max. Stich 5,0 mm) + Lauf 3,0 mm |
 | Doppel-Zickzack (`0x2745`) | Zickzack 7,0 / 3,0 mm + Lauf 3,0 mm |
-| Mittellauf (`0x2747`) | Laufstich 2,2 mm |
+| Edge Walk (`0x2747`) | Laufstich 2,2 mm (variabel, min. 0,40 mm) |
 | Tatami-Unterlage (`0x275a`) | Abstand **3,0 mm**, Länge 4,0 mm + Randlauf 2,5 mm |
-Die Zuordnung der Kennungen zu den Namen „Edge Walk / Zickzack / Doppel-Zickzack“ ist aus dem Handbuch (S. 198–199, Beispiellängen 1,5–3,5 / 2,5–5 / 3,5–7 mm) geschlossen. **Sicherheit: mittel.**
+Die Zuordnung der Kennungen zu den Namen ist **seit 19.11.2026 belegt** (Sicherheit hoch): DIALOG.DLL 0x100190f5–0x10019147 bindet 0x2744 → Text 2600 „Zigzag“, 0x2745 → 2601 „Double Zigzag“, **0x2747 → 2599 „Edge Walk“** (BERESENU.DLL), 0x275a → 2603 „Step“; 0x2746 = 2598 „Center Run“. In den Musterdesigns liegen die Läufe unter 0x2746 zu 82 % auf der Säulenmitte, unter 0x2747 zu 85 % am Rand (`Analyse_Teil3/04_messungen_satin.md`). **Korrektur:** bis dahin waren Edge Walk und Mittellauf vertauscht.
 
 ## E) Stoffe (Settings → Fabric Settings) — vollständige Liste und Änderungen
 Die 8 Stoffe sind vollständige Stile. Gegenüber den anderen Stoffen ändern sich **nur** diese Werte ([`fabrics_diff.txt`](../daten/entschluesselt/fabrics_diff.txt)):

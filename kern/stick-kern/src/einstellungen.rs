@@ -145,9 +145,10 @@ pub struct UnterlageEinstellung {
     pub rand: f64,
     /// AMT 0x2743 (hoch)
     pub zugausgleich: f64,
-    /// AMT 0x2746 (mittel: Zuordnung des Namens)
+    /// AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,
+    /// Läufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)
     pub edge_walk_laenge: f64,
-    /// AMT 0x2747 (mittel)
+    /// AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)
     pub mittellauf_laenge: f64,
     /// AMT 0x2744/0x2724/0x2725 (mittel); hier gedeutet als Weg entlang der Säule je Zick+Zack (niedrig)
     pub zickzack_laenge: f64,
@@ -198,12 +199,12 @@ impl Default for UnterlageEinstellung {
             tatami_randlauf: 2.5,
             tatami_winkel_versatz: 90.0,
             edge_walk_lauf: LaufGrenzen {
-                min_laenge: w(131.0),
-                sehnenabstand: w(11.0),
-            },
-            mittellauf_lauf: LaufGrenzen {
                 min_laenge: w(72.0),
                 sehnenabstand: w(13.0),
+            },
+            mittellauf_lauf: LaufGrenzen {
+                min_laenge: w(131.0),
+                sehnenabstand: w(11.0),
             },
             zickzack_lauf: LaufGrenzen {
                 min_laenge: w(72.0),

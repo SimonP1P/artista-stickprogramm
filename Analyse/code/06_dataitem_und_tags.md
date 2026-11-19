@@ -75,7 +75,7 @@ Für die Stich-Eigenschaften gibt es **keine** Namenstabelle. Ich habe sie auf d
 | 0x2743 | Unterlage | **Zugausgleich** (0,2 mm) | H S.201 | hoch |
 | 0x2759 | Unterlage | Winkel der Unterlage (90°) | S | mittel |
 | 0x2769 / 0x276a | Unterlage | Unterlagen-Ränder (0,2 mm) | H S.199 | mittel |
-| 0x2746 / 0x2744 / 0x2745 / 0x2747 / 0x275a | 0x27a7 | Unterlagearten: Edge Walk (2,2 mm), Zickzack, Doppel-Zickzack, Mittellauf, Tatami-Unterlage | H S.198 + S | mittel |
+| 0x2746 / 0x2744 / 0x2745 / 0x2747 / 0x275a | 0x27a7 | Unterlagearten: **Center Run/Mittellauf** (2,2 mm), Zickzack, Doppel-Zickzack, **Edge Walk**, Tatami-Unterlage („Step“) – korrigiert 19.11.2026 (Dialogcode + BERESENU-Texte + Stichgeometrie, `Analyse_Teil3/04`) | S + Code + Messung | hoch |
 | 0x2735 / 0x2776 | 0x27ab | **Auto-Spacing-Tabelle Satin** (Breite → Abstand), siehe [10](10_algorithmen_schmale_bahnen.md) | S | hoch |
 | 0x2736 | 0x2735 | **Abstandsfaktor** (je Stoff 0,95–1,13) | S | hoch |
 | 0x273d | 0x27ab/0x273b | Zugausgleich je Stoff (0,20/0,25 mm) | S | mittel |

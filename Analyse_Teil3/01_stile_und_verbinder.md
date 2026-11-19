@@ -47,14 +47,15 @@ Der Designanfang wird wie „nach Trim“ behandelt (Annahme, mittel: es gibt ke
 aber „Always Tie Off Last Object“).
 
 ## 2. Läufe der Unterlagen — Sicherheit: hoch (Werte), hoch (Bedeutung „variabel“ über Dialog 1819)
+*Korrektur 19.11.2026:* 0x2746 ist der **Mittellauf (Center Run)**, 0x2747 der **Edge Walk** – bisher vertauscht; Belege in [04](04_messungen_satin.md) §2.
 Alle Unterlagen-Läufe haben „Variable Run Length“ = 1 (0x271e) mit eigenem Mindeststich (0x2767) und Sehnenabstand (0x2768):
 
 | Unterlage | Lauf | Mindeststich | Sehnenabstand |
 |---|---|---|---|
-| Edge Walk (0x2746) | 2,2 mm | 0,728 mm (131) | 0,061 mm (11) |
+| Mittellauf / Center Run (0x2746) | 2,2 mm | 0,728 mm (131) | 0,061 mm (11) |
 | Zickzack (0x2744), Rücklauf | 3,0 mm | 0,40 mm (72) | 0,20 mm (36) |
 | Doppel-Zickzack (0x2745), Lauf | 3,0 mm | 0,994 mm (179) | 0,089 mm (16) |
-| Mittellauf (0x2747) | 2,2 mm | 0,40 mm (72) | 0,072 mm (13) |
+| Edge Walk (0x2747) | 2,2 mm | 0,40 mm (72) | 0,072 mm (13) |
 | Tatami-Unterlage (0x275a), Randlauf | 2,5 mm | 0,40 mm (72) | 0,072 mm (13) |
 
 Zum Vergleich der **Kontur-Lauf** (0x27a8 → 0x271c): 2,5 mm, **feste Länge** (0x271e = 0), Mindeststich 0,80 mm (144).

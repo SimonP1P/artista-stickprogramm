@@ -29,7 +29,7 @@ Namen aus den Konstruktoraufrufen der Fabriken, Stil-Kennung aus `mov word [obj+
 | 0x07 | ComplexFillGroup | 0x18 / 0x19 | **Lauf 0x271c / Dreifach 0x271f** |
 | 0x0b | ManualObject | 0x1a | 0x2727 |
 | 0x0c | InputCCurve (Satinsäule-Eingabe) | 0x1b | **Tatami 0x2714** |
-| 0x2f / 0x7a / 0x7b | LetterObj / MotifText / LetterText | 0x1d / 0x1e / 0x1f / 0x20 / 0x65 | Unterlagen 0x2744 / 0x2745 / **0x2746 Edge Walk** / **0x2747 Mittellauf** / 0x275a Tatami |
+| 0x2f / 0x7a / 0x7b | LetterObj / MotifText / LetterText | 0x1d / 0x1e / 0x1f / 0x20 / 0x65 | Unterlagen 0x2744 Zickzack / 0x2745 Doppel-Zickzack / **0x2746 Mittellauf** / **0x2747 Edge Walk** ([04](04_messungen_satin.md) §2) / 0x275a Step |
 | 0x36 / 0x37 / 0x38 | Ellipse / Ring / Stern | 0x33 | 0x277e |
 | 0x3d / 0x91 | MotifFill | 0x0d | Kennung (short) |
 | 0x49 / 0x95 | EmbroideryGroup / ButtonHole | 0x0e | Listenknoten: Anzahl (Byte) + Basis 0x0d |
@@ -51,7 +51,8 @@ Lesefunktionen, Länge an den Daten geprüft):
 - **Verbinder** 0x14: 5 long, 5 ushort → 0x13 → 0x12 → 0x0d 0x272a (Feldzuordnung offen).
 
 Die Listenknoten 0x0e/0x0f bilden **denselben Baum wie die Stile in NORMAL.AMT** nach: je Objekt 0x2741 → Verbinder
-0x272a, Unterlagen 0x2746/0x2747, Füllung 0x2748 (Stichart + Laufweg 0x271c).
+0x272a, Unterlagen 0x2746/0x2747, Füllung 0x2748 (Stichart + Laufweg 0x271c). Hinter dem Baum folgt die **Liste der
+Stichfunktionen** (Verweise auf Lauf/Satin/… in Stickreihenfolge) – sie entspricht den Stichblöcken ([04](04_messungen_satin.md) §1).
 
 ## 5. Formen — Sicherheit: hoch (IMPORT.DLL `SerializeKnots` 0x1000fc20)
 GeoCurve 0x01: gepackt (Bit 0 = geschlossen), gepackt Anzahl, je Knoten Kennbyte (Bit 0 Anfasser ein, Bit 1 Anfasser
@@ -59,8 +60,14 @@ aus, Bit 2 Knotenart) und vorzeichenbehaftete gepackte Wörter (WESSYS `ReadWord
 gelesenen Punkt. Einheit 1/180 mm, **y einfach** (nicht verdoppelt wie im Stichteil). Prüfung HT116: Kurvenenden =
 Ankerpunkte der Stiche. Ein EmbroideryPatch (Satinsäule) hat zwei Kurven = die zwei Seiten.
 
-## 6. Offen
-1. Welche der im Objekt aufgeführten Unterlagen **aktiv** ist (beide Edge Walk und Mittellauf stehen in jedem
-   Flower-Objekt) – Schalterbits suchen.
-2. Zuordnung Objekt ↔ Stichbereich (Reihenfolge der Objekte = Stickreihenfolge? Segmentattribute).
-3. Bedeutung der offenen Felder (0x12 drittes long, 0x10, 0x14).
+## 6. Grenzen des Rahmens — Sicherheit: hoch
+Der Rahmen ist überall gleich (Datensatzkopf IMPORT.DLL 0x100d9bf0: Länge in +4, a/b in +8/+9, Ende nach +0x38), aber
+manche Lesefunktionen lesen **nach** einem Unterdatensatz roh weiter (z. B. Bitmap 0x5d der Auto-Digitalisierung:
+Dateiname 0x3a, dann Bilddaten). Klassen über 0x9d (z. B. 0x2a2 im Stilteil) haben keine Lesefunktion und werden vom
+Original über die Länge übersprungen (0x100d9d80). `art_design.py` bricht deshalb bei unbekannten Klassen/zu großen
+Längen ab und nimmt die Objektzahl aus 0x0a. Hinter der Objektliste (Garnbibliothek, Dateinamen) laufen fast alle Dateien
+aus dem Rahmen – für die Objekte ohne Bedeutung.
+
+## 7. Offen
+1. Welche der im Objekt aufgeführten Unterlagen **aktiv** ist – Schalter suchen ([04](04_messungen_satin.md) §4).
+2. Bedeutung der offenen Felder (0x12 drittes long, 0x10, 0x14, Byte in 0x16 – **nicht** Auto Spacing, [04](04_messungen_satin.md) §3).

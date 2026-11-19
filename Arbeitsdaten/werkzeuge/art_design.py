@@ -71,23 +71,31 @@ def objekte(d, h):
     """Objektabschnitt flach lesen und in Objekte gruppieren."""
     start, ende = h[14], h[14] + h[15]
     i = start
-    geteilt = []          # Datensätze mit Bit a in Lesereihenfolge (Ziel von Verweisen)
-    folge = []            # (offset, klasse, verweis, nutzdaten)
+    geteilt = []          # Positionen (in folge) der Datensätze mit Bit a, in Lesereihenfolge (Ziel von Verweisen)
+    folge = []            # (offset, klasse, verweis, nutzdaten | Basiskette des Verweisziels)
     while i < ende:
         k, verw, l, a, b, j = datensatz(d, i)
+        if (k > 0x9d and k != 0x2a2) or (k and not verw and l > ende - j):
+            break                                     # Klasse mit eigenem Rohdatenteil: Rahmen verlassen
         if k == 0:
             folge.append((i, 0, False, b""))
             i = j
             continue
         if verw:
-            ziel = geteilt[l - 1] if 0 < l <= len(geteilt) else None
+            ziel = None
+            if 0 < l <= len(geteilt):              # Ziel samt Basisklassen bis zur Kennung 0x0d
+                n = geteilt[l - 1]
+                ziel = [folge[n]]
+                while folge[n][1] not in (0, 0x0d) and n + 1 < len(folge):
+                    n += 1
+                    ziel.append(folge[n])
             folge.append((i, k, True, ziel))
             i = j
             continue
         roh = d[j:j + l]
         eintrag = (i, k, False, roh)
         if a:
-            geteilt.append(eintrag)
+            geteilt.append(len(folge))
         folge.append(eintrag)
         i = j + l
     # Objektliste beginnt mit Klasse 0x0a (Anzahl)
@@ -95,10 +103,11 @@ def objekte(d, h):
         pos = next(n for n, e in enumerate(folge) if e[1] == 0x0a and not e[2])
     except StopIteration:
         return [], folge
+    anzahl = struct.unpack_from("<I", folge[pos][3])[0] if len(folge[pos][3]) >= 4 else 0
     objs, aktuell = [], None
     for e in folge[pos + 1:]:
         off, k, verw, inhalt = e
-        if k in (0x85, 0x41, 0x43, 0x3a) and not verw:
+        if k in (0x85, 0x41, 0x43, 0x3a) and not verw and len(objs) >= anzahl:
             break                                     # Ende der Objektliste (Garnbibliothek usw.)
         if k in OBJEKT_KLASSEN and not verw:
             aktuell = {"offset": off, "klasse": KLASSEN.get(k, hex(k)), "datensaetze": []}
@@ -111,14 +120,23 @@ def objekte(d, h):
 def objekt_auswerten(o):
     """Stichart, Parameter, Unterlage, Formen eines Objekts zusammenfassen."""
     res = {"klasse": o["klasse"], "offset": o["offset"], "formen": [], "params": []}
-    for off, k, verw, inhalt in o["datensaetze"]:
-        if verw:
-            if inhalt is None:
-                continue
-            off, k, _, inhalt = inhalt
+    eintraege = []
+
+    def aufloesen(liste, tiefe=0):
+        for e in liste:
+            if e[2]:
+                if tiefe < 8:
+                    aufloesen(e[3] or [], tiefe + 1)
+            else:
+                eintraege.append(e)
+    aufloesen(o["datensaetze"])
+    for off, k, verw, inhalt in eintraege:
         if k == 0x01:
-            f, i = packed(inhalt, 0)
-            kn, _ = knoten_lesen(inhalt, i)
+            try:
+                f, i = packed(inhalt, 0)
+                kn, _ = knoten_lesen(inhalt, i)
+            except IndexError:                        # leere Form (Länge 0)
+                continue
             res["formen"].append({"geschlossen": bool(f & 1), "knoten": kn})
         elif k in PARAM_TAG or k in (0x10, 0x12, 0x15, 0x0d, 0x0e):
             res["params"].append((k, PARAM_TAG.get(k), felder(k, inhalt)))
