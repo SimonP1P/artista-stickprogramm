@@ -8,7 +8,8 @@ Kodierung je Punkt: 1 Byte, unteres Halbbyte = x-Code, oberes = y-Code; ist Bit 
 gepacktes Byte (7 Bit je Byte, Bit 7 = Fortsetzung), dessen Wert << 4 dazukommt.
   Code < 8:   ZigZag-Delta der Schrittweite: d = c>>1 (bei c&1: ~d); Schritt = alter Schritt + d.
   Code >= 8:  Bit 3 entfernen -> c'; Betragsänderung m = c'>>2 (bei c'&2: ~m); Betrag += m; c'&1 kehrt das Vorzeichen um.
-Ergebnis: absolute Punkte (x, y) in Wilcom-Einheiten (vermutlich 1 mm = 180 bzw. Designeinheit, siehe Analyse_Teil3/02).
+Ergebnis: absolute Punkte (x, y): x in 1/180 mm, y DOPPELT (1/360 mm) – das Original halbiert y beim Lesen
+(MOD1.DLL 0x101ca796 `sar ecx, 1`), Belege in Analyse_Teil3/02. Für mm: `punkte_mm()`.
 
 Aufruf:  python art_stiche.py DESIGN.ART [TWOFISH_EXE]   -> Kopf, Anzahl, Begrenzung, erste Punkte
 """
@@ -83,6 +84,73 @@ def stiche_dekodieren(d, start, anzahl):
             cy |= v << 4
         punkte.append((ax.anwenden(cx), ay.anwenden(cy)))
     return punkte, i
+
+
+def punkte_mm(punkte):
+    """Stichpunkte in mm (x / 180, y / 360)."""
+    return [(x / 180, y / 360) for x, y in punkte]
+
+
+def packed_wort(d, i):
+    """WESSYS ReadWordPacked: u16; bei Bit 15 folgen Bytes mit je 7 Bit (Bit 7 = Fortsetzung)."""
+    v = d[i] | (d[i + 1] << 8)
+    i += 2
+    if v & 0x8000:
+        shift = 15
+        while True:
+            b = d[i]
+            i += 1
+            v = (v ^ (1 << shift)) | (b << shift)
+            shift += 7
+            if not b & 0x80:
+                break
+    return v, i
+
+
+def zigzag(v):
+    return ~(v >> 1) if v & 1 else v >> 1
+
+
+def segmente_dekodieren(d, start, anzahl, version):
+    """Abschnitt 2 (Stichreihenfolge, IMPORT.DLL 0x10036640): Liste von Segmenten.
+
+    Je Segment: gepackt (Bit 0 = Art, Rest = Stichanzahl), 4 ZigZag-Wörter (Begrenzung, je Achse als Differenz),
+    gepacktes Feld (+0x3c, 16 Bit), Anzahl k und k Attribute (3 Byte, ab Version 6 ein Byte, ab Version 0x14
+    8 Byte Schlüssel eines Objekts).
+    """
+    segs = []
+    i = start
+    ax = ay = 0
+    for _ in range(anzahl):
+        u, i = packed(d, i)
+        seg = {"art": u & 1, "stiche": u >> 1}
+        bb = []
+        for achse in range(4):
+            w, i = packed_wort(d, i)
+            if achse in (0, 2):
+                ax += zigzag(w)
+                bb.append(ax)
+            else:
+                ay += zigzag(w)
+                bb.append(ay)
+        seg["bbox"] = (bb[0], bb[1], bb[2], bb[3])
+        f, i = packed(d, i)
+        seg["feld3c"] = f & 0xFFFF
+        k, i = packed(d, i)
+        attr = []
+        for _ in range(k):
+            a = {"b0": d[i], "b1": d[i + 1], "b2": struct.unpack_from("<b", d, i + 2)[0]}
+            i += 3
+            if version >= 6:
+                a["b3"] = d[i]
+                i += 1
+            if version >= 0x14:
+                a["schluessel"] = struct.unpack_from("<II", d, i)
+                i += 8
+            attr.append(a)
+        seg["attribute"] = attr
+        segs.append(seg)
+    return segs, i
 
 
 def kopf(d):

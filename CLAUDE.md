@@ -43,7 +43,8 @@
 | Verifikationsprotokoll | `VERIFIKATION.md` |
 | Übersicht Rohdaten | `Arbeitsdaten/README.md` |
 | **Architektur** (Bausteine, geplanter Aufbau, Datenfluss, Entwicklungsumgebung, Risiken) | `ARCHITECTURE.md` |
-| **Original-Verhalten für die eigene Software** (Stile, Verbinder/Vernähen, Unterlagen-Läufe, Dreifach, Musterdesigns mit echten Stichen) | `Analyse_Teil3/01_stile_und_verbinder.md`; ART lesen: `Arbeitsdaten/werkzeuge/art_lesen.py` |
+| **Original-Verhalten für die eigene Software** (Stile, Verbinder/Vernähen, Unterlagen-Läufe, Dreifach) | `Analyse_Teil3/01_stile_und_verbinder.md` |
+| **Echte Stiche des Originals** aus den 287 ART-Musterdesigns (Datenblock-Kopf, Stichkodierung, Segmente, y doppelt, gemessenes Vernähen) | `Analyse_Teil3/02_art_stichdaten.md`; Werkzeuge `Arbeitsdaten/werkzeuge/art_lesen.py`, `art_stiche.py` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |

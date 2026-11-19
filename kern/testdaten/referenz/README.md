@@ -9,4 +9,6 @@ jede Abweichung vom Python-Prototyp nachvollziehbar bleibt.
 | 19.11.2026 | Python-Prototyp `stickprogramm/` | Ausgangspunkt: Rust-Kern erzeugt byte-genau dieselben Dateien wie Python (Commit 50be48d) |
 | 19.11.2026 | Original-Verhalten Stufe 1 (`Analyse_Teil3/01_stile_und_verbinder.md`) | Vernähen nach Dialog „Connectors“: 2 Stiche à **1,0 mm** statt 0,8 mm; **letztes Objekt nicht vernäht** (`Always Tie Off Last Object` = 0); Unterlagen-Läufe **variabel** mit Mindeststich/Sehnenabstand je Art aus dem Stil. Geprüft mit einem Stichvergleich (difflib): nur Vernähpunkte, Designende und ein Edge-Walk-Stich am geknickten Satinkeil geändert |
 
+| 19.11.2026 | Original-Verhalten Stufe 2 (`Analyse_Teil3/02_art_stichdaten.md`) | Vernähen wie in den ART-Musterdesigns gemessen: **2 Schritte vor, 2 zurück** entlang des ersten/letzten Stichs, Schrittlänge min(1,0 mm, Stich/2). Stichvergleich: nur zusätzliche Vernähpunkte |
+
 Neu erzeugen: `F:\Entwicklung\target\release\stick.exe erzeugen ..\vergleich_X.json -o .` (danach die SVG löschen).

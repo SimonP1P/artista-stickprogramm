@@ -2,26 +2,28 @@
 
 use crate::einheiten::{AUTO_JUMP_TEILLAENGE_MM, MAX_STICH_MM, MIN_STICH_MM};
 use crate::einstellungen::VerbinderEinstellung;
-use crate::geometrie::{Linie, Punkt, abstand, kumuliert, p, punkt_bei};
+use crate::geometrie::{Linie, Punkt, abstand, p, richtung, verschieben};
 use crate::stiche::{Art, Stich, StichFolge};
 
-/// Anfangs-Vernähstiche: `vernaeh_stiche` kurze Stiche der Länge `vernaeh_stichlaenge` entlang des Weges vor und
-/// zurück, so dass der Weg danach wieder am Anfang weitergeht. Werte aus AMT 0x2730/0x272f (1,0 mm, 2 Stiche;
-/// mittel). Die genaue Stichfolge des Originals (Methode Tatami/Satin im Dialog) ist noch nicht bestimmt.
+/// Anfangs-Vernähstiche wie im Original (gemessen an den ART-Musterdesigns, `Analyse_Teil3/02`, hoch):
+/// vom Anfang S entlang des **ersten Stichs** `n` Schritte vor und `n` zurück, Schrittlänge
+/// t = min(`vernaeh_stichlaenge`, erster Stich / n); danach geht der Weg normal weiter.
+/// Beispiel n = 2: S, S+t, S+2t, S+t, S, … (AMT 0x272f = 2, 0x2730 = 1,0 mm; MOD1 TieParameters).
+/// Noch nicht nachgebaut: Sonderfälle des Originals bei sehr kurzem erstem Stich (Rückgriff über mehrere
+/// Stiche mit 30°-Knickgrenze, MOD1 TieOffGenerator::GetStitchPoints 0x101ca750).
 pub fn vernaehen_anfang(weg: &[Punkt], e: &VerbinderEinstellung) -> Linie {
     if weg.len() < 2 || e.vernaeh_stiche == 0 {
         return weg.to_vec();
     }
-    let kum = kumuliert(weg);
-    let l = e.vernaeh_stichlaenge.min(*kum.last().unwrap());
-    if l < MIN_STICH_MM {
+    let n = e.vernaeh_stiche;
+    let t = e.vernaeh_stichlaenge.min(abstand(weg[0], weg[1]) / n as f64);
+    if t < MIN_STICH_MM {
         return weg.to_vec();
     }
-    let q = punkt_bei(weg, l, &kum);
+    let u = richtung(weg[0], weg[1]);
     let mut out = vec![weg[0]];
-    for _ in 0..e.vernaeh_stiche.div_ceil(2) {
-        out.extend([q, weg[0]]);
-    }
+    out.extend((1..=n).map(|k| verschieben(weg[0], u, t * k as f64)));
+    out.extend((0..n).rev().map(|k| verschieben(weg[0], u, t * k as f64)));
     out.extend_from_slice(&weg[1..]);
     out
 }
@@ -209,13 +211,26 @@ mod tests {
         assert_eq!(f.anzahl(Art::Farbwechsel), 1);
         assert_eq!(f.farben, ["#000", "#f00"]);
         let pts: Vec<Punkt> = f.stiche.iter().filter(|s| s.art == Art::Stich).map(|s| s.p()).collect();
-        // Designanfang zählt wie „nach Trim“: 2 Vernähstiche à 1,0 mm (AMT 0x272f/0x2730)
-        assert_eq!(&pts[..3], &[p(0.0, 0.0), p(1.0, 0.0), p(0.0, 0.0)]);
+        // Designanfang zählt wie „nach Trim“: 2 vor, 2 zurück à 1,0 mm entlang des ersten Stichs (wie im Original)
+        assert_eq!(
+            &pts[..6],
+            &[
+                p(0.0, 0.0),
+                p(1.0, 0.0),
+                p(2.0, 0.0),
+                p(1.0, 0.0),
+                p(0.0, 0.0),
+                p(5.0, 0.0)
+            ]
+        );
         let i5 = pts.iter().position(|&q| q == p(5.0, 0.0)).unwrap();
         assert_eq!(pts[i5 + 1], p(6.0, 0.0)); // Verbinder 1 mm: kein Vernähen
-        // vor dem Farbwechsel vernäht: …, 10, 9, 10
+        // vor dem Farbwechsel vernäht: …, 10, 9, 8, 9, 10
         let i10 = pts.iter().position(|&q| q == p(10.0, 0.0)).unwrap();
-        assert_eq!(&pts[i10..i10 + 3], &[p(10.0, 0.0), p(9.0, 0.0), p(10.0, 0.0)]);
+        assert_eq!(
+            &pts[i10..i10 + 5],
+            &[p(10.0, 0.0), p(9.0, 0.0), p(8.0, 0.0), p(9.0, 0.0), p(10.0, 0.0)]
+        );
         // letztes Objekt: „Always Tie Off Last Object“ = aus -> endet ohne Vernähen
         assert_eq!(&pts[pts.len() - 2..], &[p(10.0, 5.0), p(20.0, 5.0)]);
     }
@@ -229,13 +244,35 @@ mod tests {
             .iter()
             .map(|s| s.p())
             .collect();
-        assert_eq!(ohne, [p(0.0, 0.0), p(1.0, 0.0), p(0.0, 0.0), p(10.0, 0.0)]);
+        assert_eq!(
+            ohne,
+            [
+                p(0.0, 0.0),
+                p(1.0, 0.0),
+                p(2.0, 0.0),
+                p(1.0, 0.0),
+                p(0.0, 0.0),
+                p(10.0, 0.0)
+            ]
+        );
         e.letztes_objekt_vernaehen = true;
         let mit: Vec<Punkt> = wege_verbinden(&teile, &e, p(0.0, 0.0))
             .stiche
             .iter()
             .map(|s| s.p())
             .collect();
-        assert_eq!(&mit[mit.len() - 3..], &[p(10.0, 0.0), p(9.0, 0.0), p(10.0, 0.0)]);
+        assert_eq!(
+            &mit[mit.len() - 5..],
+            &[p(10.0, 0.0), p(9.0, 0.0), p(8.0, 0.0), p(9.0, 0.0), p(10.0, 0.0)]
+        );
+    }
+
+    #[test]
+    fn kurzer_erster_stich_halbe_laenge() {
+        // erster Stich 1,8 mm -> Vernähschritte 0,9 mm (gemessen: HT106 usw.)
+        let e = VerbinderEinstellung::default();
+        let v = vernaehen_anfang(&[p(0.0, 0.0), p(1.8, 0.0), p(4.0, 0.0)], &e);
+        let xs: Vec<f64> = v.iter().map(|q| (q.x * 1000.0).round() / 1000.0).collect();
+        assert_eq!(xs, [0.0, 0.9, 1.8, 0.9, 0.0, 1.8, 4.0]);
     }
 }

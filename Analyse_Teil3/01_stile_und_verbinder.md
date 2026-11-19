@@ -36,8 +36,8 @@ Die Bindung Tag ↔ Bedienelement steht im Dialogcode **DIALOG.DLL 0x10035e89–
 | 0x2751 | Always Trim | 0 |
 | 0x272b | Trim If Next Connector Longer Than | 1 (Software Defaults, Schrift) bzw. 0 (8 Stoffe) |
 | 0x272e | … Länge | 3,0 mm (Software Defaults) bzw. 6,0 mm (Stoffe) |
-| 0x2730 / 0x2731 | 1,0 mm – **vermutlich Länge der Tie-In-/Tie-Off-Stiche** („Values…“, Dialog nicht in DIALOG.DLL) | mittel |
-| 0x272f / 0x275d | 2 – **vermutlich Anzahl bzw. Art der Vernähstiche** | mittel |
+| 0x2730 / 0x2731 | 1,0 mm = **größte Schrittlänge der Tie-In-/Tie-Off-Stiche** (gemessen, [02](02_art_stichdaten.md) §4) | hoch |
+| 0x272f / 0x275d | 2 = **Anzahl der Vernäh-Schritte je Richtung** (gemessen, [02](02_art_stichdaten.md) §4) | hoch |
 | 0x2732 | unbekannt (Software Defaults 0, Schrift 1) | – |
 
 **Folgerungen:** Vernäht wird am Objektanfang nach Trim/Farbwechsel oder wenn der vorige Verbinder > 3 mm ist, am
