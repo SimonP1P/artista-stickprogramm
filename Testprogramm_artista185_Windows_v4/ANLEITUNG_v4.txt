@@ -24,6 +24,8 @@ SCHRITT FUER SCHRITT
  5. START_STICKEN.bat                  Stufe 1b: dasselbe + Befehl 0x08 - NUR mit Person an der Maschine
  6. START_STICKEN.bat Testquadrat_puffer.bin    Stufe 2: eigenes Design
  Jeder Schreibschritt fragt vorher J/N. Danach Mitschnitt_v4_*.log und Ergebnis_v4_*.txt schicken.
+ Am Ende sendet das Programm 0x100 und T r M E wie das Original: danach ist das Display wieder an,
+ nach START_STICKEN zeigt es das Design und der Rahmen faehrt (Geraetetest 19.11.2026). Kein Aus/Ein noetig.
 
 
 WAS DIE PERSON AN DER MASCHINE TUN MUSS (nur fuer START_STICKEN)

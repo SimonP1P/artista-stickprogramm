@@ -234,7 +234,15 @@ Drei Läufe mit `Testprogramm_artista185_Windows_v4`, Puffer `Nr47_puffer.bin` (
 | 21:43:01 Schreiben | **328 Byte in DATEN geschrieben** (11 × `W`, je ≤ 32 Byte, 11,9 s ≈ 28 Byte/s), **zurückgelesen: alle 328 Byte gleich**; INFO+(N+1) = 0x00, INFO+(2N+1) = 0x86, INFO+(3N+1) = Name (leer) geschrieben und gleich zurückgelesen; 0x100 → 0x0000 | hoch |
 | 21:43:27 Schreiben + **0x08** | wie oben, dann **Befehl 0x08 → Status 0x0002 nach 0,35 s** (angenommen), danach 0x100 → 0x0000 | hoch |
 
+| danach | Person vor Ort: **Display schwarz, Rahmen nicht gefahren** | hoch |
+| 21:50:54 `T r M E` (57600) | nachgeholt, was das Original nach 0x100 sendet (BEAGLink 0x10005e30 mit Parameter 0: Befehl 0x100, dann `T r M E` mit Echo); alle 4 Echos kamen. Person vor Ort: **Display zeigt Rechteck und Kreis (= Nr. 47), der Rahmen ist gefahren** | hoch |
+
+**Ergebnis: Das erste Design wurde vom PC an die artista 185 gesendet und in den Stickmodus übernommen.**
+
 **Folgerungen:** Schreiben mit `W` in den Puffer DATEN und in die INFO-Felder funktioniert, die Maschine nimmt Befehl 0x08
-(„sticken ohne speichern“) an. `P S` (256-Byte-Seiten) ist noch nicht am Gerät gelaufen (Nr. 47 ist kleiner als eine Seite
-nach der ersten Grenze). Offen: was das Display nach 0x08 zeigt, ob das Design gestickt wird, ob 0x100 direkt nach 0x08
-(wie im Original) den Stickmodus stört.
+(„sticken ohne speichern“) an. **PC-Modus verlassen = Befehl 0x100 und danach `T r M E`** (Handbuch: „The machine touch
+screen goes blank while the download takes place“ – solange bleibt das Display schwarz). Das fehlte in allen
+Testprogrammen bis v4.0 – deshalb musste die Maschine nach jedem Test aus- und eingeschaltet werden. v4 (ab 19.11.2026,
+21:53) macht es wie das Original, auch nach dem Trockenlauf. `P S` (256-Byte-Seiten) ist noch nicht am Gerät gelaufen (Nr. 47 ist kleiner als eine Seite
+nach der ersten Grenze). Offen: ob das Design sauber gestickt wird (Start an der Maschine), eigenes
+Design (Testquadrat), Speichern.

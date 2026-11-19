@@ -10,7 +10,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | Befehl | Daten danach | Antwort der Maschine | Bedeutung | Status | Risiko | Code |
 |---|---|---|---|---|---|---|
 | `R` `F` `?` (ohne Echo-Prüfung) | – | `R`, `F`, `?` | Synchronisieren | ⬜ (nie nötig) | 🟢 | 0x10001d00 |
-| `T` `r` `M` `E` | – | Echo | PC-Modus („Transfermodus“) betreten | ✅ | 🟢 | 0x10005e30 |
+| `T` `r` `M` `E` | – | Echo | PC-Modus („Transfermodus“) betreten; **nach Befehl 0x100 erneut gesendet = PC-Modus verlassen, Display wieder an** (Original 0x10005e30 mit Parameter 0; am Gerät 19.11.2026) | ✅ | 🟢 | 0x10005e30 |
 | `J` | 1 Byte Code: 0x11 = 19200, 0x05 = 57600, 0x02 = 115200 | nach Umschalten `B` `O` `S`, PC sendet `E` `B` | Baudrate wechseln. **`J 0 2` nach `Y Q` (an das Stickmodul) bringt die Verbindung durcheinander** (v3.2: kein `B O S`, nur unlesbare Bündel → Aus/Ein nötig). Das Original nutzt 115200 bei der 185 nie (siehe 07) | ✅ (57600) ❌ (115200 nach `Y Q`) | 🟢 | 0x100057b0 |
 | `Y` `Q` | – | `O` | Verbindung zum **Stickmodul** durchschalten | ✅ | 🟢 | 0x10005e30 |
 | `R` | 3 Adressbytes | 32 Byte (64 Hexziffern), dann `O` | 32 Byte lesen | ✅ | 🟢 | 0x1000250a |
@@ -34,7 +34,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | 0x40 | Löschen vorbereiten | ⬜ | 🟡 |
 | 0x10 | Schreiben vorbereiten | ⬜ | 🟡 |
 | 0x400 | gespeichertes Design in den Übertragungspuffer DATEN laden – das Original nutzt es beim **Lesen** eines Designs („Card/Machine Read“, 0x10004310) und vor dem Sticken | ✅ Status 0x0002 (v3.4/v3.5, 19.11.2026; Design Nr. 1 vollständig gelesen; Puffer nach Aus/Ein leer). Für Lesetests freigegeben (Regel 1a) | 🟡 |
-| 0x08 | **Sticken starten** (Design ans Stickmodul übergeben) | ✅ angenommen (Status 0x0002, v4 19.11.2026) | 🟡 (Maschine bewegt sich!) |
+| 0x08 | **Sticken starten** (Design ans Stickmodul übergeben) | ✅ v4 19.11.2026: Status 0x0002; nach 0x100 + `T r M E` zeigt das Display das Design, Rahmen fährt | 🟡 (Maschine bewegt sich!) |
 | 0x200 | **Design dauerhaft speichern** | ⬜ | 🔴 |
 | 0x800 | **Design löschen** | ⬜ | 🔴 |
 | 0x80 | **Karte formatieren** | ⬜ | 🔴 |

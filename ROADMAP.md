@@ -12,12 +12,12 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 |---|---|---|
 | 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll | ✅ |
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
-| 2 Übertragung | **Lesen ✅** (Liste + alle 51 Designs) · **Senden vorbereiten 🟡** · **Senden am Gerät 📅 Sa 21.11.2026** | 🟡 |
+| 2 Übertragung | **Lesen ✅** (Liste + alle 51 Designs) · **Senden vorbereiten ✅** · **Senden am Gerät ✅ (19.11.: Design erscheint, Rahmen fährt)** · eigenes Design, Speichern offen | 🟡 |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, **Schrift** ✅ · Rest offen | 🟡 8 Punkte erledigt, 10 offen |
 | 5 Maschine im Programm | serieller Port aus Rust, „Senden“ in der Oberfläche, Mac-Programm | ⬜ |
 
-**Wir sind in Phase 4 (Sticharten nach dem Original) und bereiten parallel das Senden (Phase 2) für Samstag vor.**
+**Wir sind in Phase 4 (Sticharten nach dem Original); Phase 2 ist bis auf eigenes Design und Speichern erledigt – das erste Design ist am 19.11.2026 vom PC an die Maschine gegangen.**
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
 1. **Das Lesen ist fertig und hat das Format des Maschinenpuffers vollständig gezeigt** (Kopf 6N+8, Stichdaten in
@@ -42,7 +42,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 |---|---|---|
 | 2a Lesen | Verbindung, Stickmodul, Designliste (v3.3), ein Design (v3.5), alle 51 Designs (v3.6), Container entschleiert | ✅ 19.11.2026 (`Analyse_Teil2/07`, `Arbeitsdaten/maschinendesigns/`) |
 | 2b Senden vorbereiten (ohne Maschine) | ✅ Puffer + BE-Container + Kopf + Farbtabelle + INFO-Felder im Rust-Kern (`stick-formate/src/artista.rs`), **Rundweg mit allen 51 Designs byte-gleich**, Flags-Formel 38/38 bestätigt, CLI `stick puffer` (JSON/EXP/gelesenes Design → Puffer) · ⬜ Icon aus den Stichen erzeugen · ✅ Testprogramm v4 (`Testprogramm_artista185_Windows_v4/`): `W` bis zur 256-Byte-Grenze, dann `P S`-Seiten, Zurücklesen + Vergleich, INFO-Felder, Befehl 0x08; Trockenlauf ohne `-Schreiben`, J/N vor jedem Schreibschritt; Selbsttest (Simulation, auch mit Störung) ok; mitgeliefert Nr47_puffer.bin und Testquadrat_puffer.bin | ✅ (am Gerät offen) |
-| 2c Senden am Gerät | ✅ **19.11.2026: Nr. 47 in DATEN geschrieben, zurückgelesen gleich, Befehl 0x08 angenommen (Status 0x0002)** – Display/Sticken noch zu bestätigen · Stufe 1: gelesenes Maschinendesign (Kandidat **Nr. 47**, 328 Byte) zurück in den Puffer DATEN + 0x08 (sticken ohne speichern) · Stufe 2: eigenes kleines Design (Quadrat/Schrift) + 0x08 · Stufe 3: speichern (0x10 → schreiben → 0x200). **Jede Stufe nur nach ausdrücklicher Zustimmung** (Regel 1a), Person vor Ort an der Maschine | 📅 Sa 21.11.2026 |
+| 2c Senden am Gerät | ✅ **19.11.2026: Nr. 47 vom PC gesendet – Display zeigt das Design, Rahmen fährt** (Abschluss 0x100 + `T r M E` wie das Original) · offen: tatsächlich sticken, eigenes Design, Speichern · Stufe 1: gelesenes Maschinendesign (Kandidat **Nr. 47**, 328 Byte) zurück in den Puffer DATEN + 0x08 (sticken ohne speichern) · Stufe 2: eigenes kleines Design (Quadrat/Schrift) + 0x08 · Stufe 3: speichern (0x10 → schreiben → 0x200). **Jede Stufe nur nach ausdrücklicher Zustimmung** (Regel 1a), Person vor Ort an der Maschine | 📅 Sa 21.11.2026 |
 | 2d offen | Display nach 0x100 ansehen; Bedeutung der Spalte „Farben?“ der Liste (INFO+N+1); welche Kopf-Variante die V4-Software schreibt; Icons vollständig lesen (0xAE + 558 Byte); bleibt die Lage im Rahmen erhalten, wenn der Ursprung nicht in der Designmitte liegt? | ⬜ |
 
 ## Phase 4 – Sticharten und Regeln nach dem Original

@@ -105,6 +105,8 @@ je Bank b = 0, 1, 2 …  (27 Designs pro Bank):
    ► ReadComBytes(INFO + 2N+1, 27)        → Flags je Design
    ► ReadComBytes(INFO + 3N+1, k·32)      → Namen (32 Byte, Byte 31 = 0)
 Ende: Byte 0xFFFEE0 lesen; Bit 0x02 gesetzt → Befehl 0x100 (PC-Modus verlassen)
+      artista 185 (TransparentMode(0) → 0x10005e30(0,1)): Befehl 0x100, danach 'T' 'r' 'M' 'E' mit Echo – erst dann
+      ist das Display wieder an (am Gerät bestätigt 19.11.2026, siehe 07 Test v4.0)
 ```
 Umgesetzt im Testprogramm v3 (`Testprogramm_artista185_Windows_v3/`). An der artista 185 war das Statusbyte 0x00, die Original-Software würde dort also Nummern statt Namen zeigen.
 

@@ -16,7 +16,8 @@
     4. DATEN zurücklesen ('R'/'N' wie Version 3.6) und Byte für Byte vergleichen
     5. INFO-Felder: INFO+(N+1) = Farbanzahl−1, INFO+(2N+1) = Flags, INFO+(3N+1) = Name (32 Byte)   (Schalter -OhneInfo: nicht)
     6. nur mit -Sticken: Befehl 0x08 an 0xFFFED0 (Maschine übernimmt das Design zum Sticken)
-    7. PC-Modus verlassen: Befehl 0x100
+    7. PC-Modus verlassen: Befehl 0x100, danach T r M E (wie das Original; erst dann ist das Display wieder an
+       und nach 0x08 erscheint das Design – Gerätetest 19.11.2026)
   Ohne -Schreiben ist es ein TROCKENLAUF: nur verbinden, lesen, prüfen und anzeigen, was geschrieben würde.
 
   Der Puffer kommt aus dem Rechenkern:   stick puffer DESIGN.json | DATEI.exp | Design_NrXX_*.bin  -o NAME_puffer.bin
@@ -500,7 +501,11 @@ function Read-Gross([int]$addr, [int]$len, [string]$was, [string]$teil = '') {
 function Exit-Transfer {
     $r = Invoke-Mailbox 0x100 2000 2000 1
     Write-Log ("Befehl 0x100 Status 0x{0:X4}" -f $r.st)
-    if ($r.ok -or $r.st -eq 0) { return 'Befehl' }        # Gerätetest 3.3: die 185 antwortet mit 0x0000
+    # wie das Original (0x10005e30, Parameter 0): danach 'T' 'r' 'M' 'E' mit Echo – erst damit verlässt die artista 185
+    # den PC-Modus (Gerätetest v4, 19.11.2026: Display wieder an, gesendetes Design erscheint, Rahmen fährt)
+    $t = Enter-Transfer
+    Write-Log ("Abschluss T r M E: {0}" -f $(if ($t) { 'bestätigt' } else { 'NICHT bestätigt' }))
+    if (($r.ok -or $r.st -eq 0) -and $t) { return 'Befehl' }        # Gerätetest 3.3: die 185 antwortet auf 0x100 mit 0x0000
     return 'Fehler'
 }
 function Parse-Version([string]$txt) {
@@ -632,9 +637,9 @@ function Send-Design([int]$N, $f, $pd) {
         Say ("    INFO+(3N+1) 0x{0:X6}: Name = '{1}'" -f ($INFO + 3 * $N + 1), (Ascii $nameB).TrimEnd('.'))
     } else { Say '    INFO-Felder: werden nicht geschrieben' }
     if ($Sticken) { Say '    danach Befehl 0x08 an 0xFFFED0 (sticken ohne speichern)' } else { Say '    kein Befehl 0x08 (ohne -Sticken)' }
-    Say '    zum Schluss Befehl 0x100 (PC-Modus verlassen)'
+    Say '    zum Schluss Befehl 0x100 und T r M E (PC-Modus verlassen)'
     if (-not $Schreiben) {
-        Say ''; Say '  TROCKENLAUF: nichts geschrieben, kein Befehl gesendet (Schalter -Schreiben fehlt).' 'Cyan'
+        Say ''; Say '  TROCKENLAUF: nichts geschrieben (Schalter -Schreiben fehlt); nur 0x100 + T r M E zum Verlassen.' 'Cyan'
         return $true
     }
     if (-not (Ask-JN ("JETZT WIRD IN DIE MASCHINE GESCHRIEBEN: Puffer DATEN ({0} Byte){1}. Gespeicherte Designs werden nicht verändert." -f $b.Length, $(if ($mitInfo) { ' und INFO-Felder' } else { '' })))) {
@@ -725,15 +730,13 @@ function Test-Port([string]$name, $pd) {
     $ok = $false
     try { $ok = Send-Design ([int]$N) $f $pd } catch { Say ("  Ausnahme: {0}" -f $_.Exception.Message) 'Red'; $ok = $false }
     Say ''
-    if ($Schreiben) {
-        switch (Exit-Transfer) {
-            'Befehl' { Say '  PC-Modus verlassen (Befehl 0x100 angenommen)' }
-            default  { Say '  PC-Modus nicht bestätigt verlassen' 'Yellow' }
-        }
+    # PC-Modus immer verlassen wie das Original (auch nach dem Trockenlauf): 0x100, dann T r M E
+    switch (Exit-Transfer) {
+        'Befehl' { Say '  PC-Modus verlassen (Befehl 0x100 + T r M E wie das Original) – Display sollte wieder an sein' 'Green' }
+        default  { Say '  PC-Modus nicht bestätigt verlassen – Display ansehen, ggf. Maschine aus/ein' 'Yellow' }
     }
     Close-Port
     if ($ok) { Say ''; Say 'FERTIG.' 'Cyan' } else { Say ''; Say 'FERTIG MIT FEHLER – Mitschnitt und Ergebnis bitte schicken.' 'Yellow' }
-    if (-not $Sticken) { Say 'Bitte die Maschine danach AUS- und wieder EINSCHALTEN.' 'Cyan' }
     return $true
 }
 
