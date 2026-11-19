@@ -223,3 +223,18 @@ Test `rundweg_maschinendesigns`; Werkzeug `Arbeitsdaten/werkzeuge/maschinen_desi
 INFO-Felder (`*_puffer.bin`, `*_puffer.txt`). Erster Kandidat ist **Nr. 47** (328 Byte, 11,9 × 17 mm, ein Sprung,
 ohne Anhang) – Bytes, die die Maschine selbst geliefert hat. Danach ein eigenes kleines Design mit Kopf nach dem
 Muster „Karte“ (`Kopf::neu`, eigene Festlegung).
+
+## Test v4.0 – erstes Senden: Design Nr. 47 in den Puffer, Befehl 0x08 (19.11.2026, 21:42–21:43, `Arbeitsdaten/geraetetests/*_v4_*`)
+Freigabe des Nutzers für Schreiben (DATEN + INFO) und Befehl 0x08 am 19.11.2026 (Person an der Maschine).
+Drei Läufe mit `Testprogramm_artista185_Windows_v4`, Puffer `Nr47_puffer.bin` (= Design Nr. 47 aus dem Maschinenspeicher,
+328 Byte, ohne Anhang):
+| Lauf | Ergebnis | Sicherheit |
+|---|---|---|
+| 21:42:48 Trockenlauf | Verbindung, Stickmodul, Verwaltungsblock wie bisher; nichts geschrieben | hoch |
+| 21:43:01 Schreiben | **328 Byte in DATEN geschrieben** (11 × `W`, je ≤ 32 Byte, 11,9 s ≈ 28 Byte/s), **zurückgelesen: alle 328 Byte gleich**; INFO+(N+1) = 0x00, INFO+(2N+1) = 0x86, INFO+(3N+1) = Name (leer) geschrieben und gleich zurückgelesen; 0x100 → 0x0000 | hoch |
+| 21:43:27 Schreiben + **0x08** | wie oben, dann **Befehl 0x08 → Status 0x0002 nach 0,35 s** (angenommen), danach 0x100 → 0x0000 | hoch |
+
+**Folgerungen:** Schreiben mit `W` in den Puffer DATEN und in die INFO-Felder funktioniert, die Maschine nimmt Befehl 0x08
+(„sticken ohne speichern“) an. `P S` (256-Byte-Seiten) ist noch nicht am Gerät gelaufen (Nr. 47 ist kleiner als eine Seite
+nach der ersten Grenze). Offen: was das Display nach 0x08 zeigt, ob das Design gestickt wird, ob 0x100 direkt nach 0x08
+(wie im Original) den Stickmodus stört.

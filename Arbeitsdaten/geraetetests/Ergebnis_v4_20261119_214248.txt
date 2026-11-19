@@ -1,0 +1,39 @@
+﻿artista Design senden VERSION 4.0 – 19.11.2026 21:42:48
+Mitschnitt: C:\Users\Simon\Desktop\AI Projekte\artista-stickprogramm\Testprogramm_artista185_Windows_v4\Mitschnitt_v4_20261119_214248.log
+Modus: TROCKENLAUF (nichts schreiben)
+
+=== Port COM3 ===
+  Versuch 1 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 19200 Baud)
+  >>> STUFE 1 OK: Nähmaschine antwortet, Firmware '04.04'
+  Umschalten zum Stickmodul, Versuch 1 …
+  vereinbare 57600 Baud (J 0 5 … B O S … E B) …
+  schalte zum Stickmodul durch (Y Q) …
+  >>> STUFE 2 OK: Stickmodul antwortet ('SRMV04.04.Fritz ')
+  0xFFFD24: 1C 3C 00 01 B3 42 00 02 40 80 00 02 01 EA 00 02 44 80 00 02 8E 9A 00 01 FD 7A 00 02 38 12 01 00
+     N (Byte 0)             = 0x1C (28)
+     Byte 1                 = 0x3C (60)
+     Groesse Datenbereich   = 0x1B342 (111426)
+     INFO                   = 0x24080 (147584)
+     AUSWAHL                = 0x201EA (131562)
+     ICON                   = 0x24480 (148608)
+     DATEN                  = 0x28E9A (167578)
+     Ende Karte             = 0x1FD7A (130426)
+     Ende Speicher          = 0x23812 (145426)
+  >>> Verwaltungsblock plausibel
+
+  Puffer-Datei: Nr47_puffer.bin (328 Byte)
+  Stichdaten 152 Byte (Ende 80 81), Anhang 0 Byte (kein Anhang), Grenze 145426 Byte – passt
+  Geplante Schreibzugriffe:
+    DATEN 0x028E9A: 328 Byte (Kopf 176 + Stiche 152 + Anhang 0)
+    INFO+(N+1)  0x02409D: Farbanzahl−1 = 0x00
+    INFO+(2N+1) 0x0240B9: Flags = 0x86
+    INFO+(3N+1) 0x0240D5: Name = ''
+    kein Befehl 0x08 (ohne -Sticken)
+    zum Schluss Befehl 0x100 (PC-Modus verlassen)
+
+  TROCKENLAUF: nichts geschrieben, kein Befehl gesendet (Schalter -Schreiben fehlt).
+
+
+FERTIG.
+Bitte die Maschine danach AUS- und wieder EINSCHALTEN.

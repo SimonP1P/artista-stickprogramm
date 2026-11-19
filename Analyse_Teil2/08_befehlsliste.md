@@ -16,7 +16,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | `R` | 3 Adressbytes | 32 Byte (64 Hexziffern), dann `O` | 32 Byte lesen | ✅ | 🟢 | 0x1000250a |
 | `E` | 2 Adressbytes | 32 Byte, `O` | 32 Byte lesen (nur bei 4800 Baud, Adresse < 0x1000) | ⬜ | 🟢 | 0x1000250a |
 | `N` | 3 Adressbytes | 256 Byte **binär**, dann `O` | Block lesen (256 Byte); das Original liest damit alle Bereiche ≥ 256 Byte (erstes Stück mit `R`), Antwort je Byte ≤ 3 s | ✅ (v3.5, 19.11.2026: 123 KB in 75 s, 0 Wiederholungen) | 🟢 | 0x10002880 |
-| `W` | 3 Adressbytes + n Datenbytes + `?` | Echo jedes Zeichens, `?` nach Abschluss | **Speicher schreiben** (≤ 32 Byte) – Risiko hängt von der Adresse ab, siehe B/D | ✅ (Befehls-/Auswahlfeld, v3) | 🟡/🔴 | 0x10002b20 |
+| `W` | 3 Adressbytes + n Datenbytes + `?` | Echo jedes Zeichens, `?` nach Abschluss | **Speicher schreiben** (≤ 32 Byte) – Risiko hängt von der Adresse ab, siehe B/D | ✅ (Befehls-/Auswahlfeld v3; **DATEN + INFO v4, 19.11.2026**) | 🟡/🔴 | 0x10002b20 |
 | `C` | 2 Adressbytes + 1 Datenbyte | `O` | 1 Byte schreiben (4800 Baud) | ⬜ | 🔴 | 0x10002b93 |
 | `P` `S` | 2 Adressbytes (Bits 23–8) | `O` `E`, dann PC sendet 256 Byte **binär**, Antwort `O` | 256-Byte-Seite schreiben | ⬜ | 🔴 | 0x10002ce0 |
 | `X` | – | `B` `O` `S`, PC sendet `E` `B`, Maschine meldet sich neu (`N`/`M`) | **Software-Reset** der Maschine | ⬜ | ⛔ | `SoftwareReset` 0x10005385 |
@@ -34,7 +34,7 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | 0x40 | Löschen vorbereiten | ⬜ | 🟡 |
 | 0x10 | Schreiben vorbereiten | ⬜ | 🟡 |
 | 0x400 | gespeichertes Design in den Übertragungspuffer DATEN laden – das Original nutzt es beim **Lesen** eines Designs („Card/Machine Read“, 0x10004310) und vor dem Sticken | ✅ Status 0x0002 (v3.4/v3.5, 19.11.2026; Design Nr. 1 vollständig gelesen; Puffer nach Aus/Ein leer). Für Lesetests freigegeben (Regel 1a) | 🟡 |
-| 0x08 | **Sticken starten** (Design ans Stickmodul übergeben) | ⬜ | 🟡 (Maschine bewegt sich!) |
+| 0x08 | **Sticken starten** (Design ans Stickmodul übergeben) | ✅ angenommen (Status 0x0002, v4 19.11.2026) | 🟡 (Maschine bewegt sich!) |
 | 0x200 | **Design dauerhaft speichern** | ⬜ | 🔴 |
 | 0x800 | **Design löschen** | ⬜ | 🔴 |
 | 0x80 | **Karte formatieren** | ⬜ | 🔴 |
