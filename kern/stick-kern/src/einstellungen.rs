@@ -127,6 +127,25 @@ pub struct TatamiEinstellung {
     pub winkel: f64,
     /// wie Satin (Handbuch S. 199)
     pub zugausgleich: f64,
+    /// Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich
+    /// 0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer
+    /// mit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere
+    /// (`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).
+    #[serde(default = "laufweg_laenge")]
+    pub laufweg_laenge: f64,
+    #[serde(default = "laufweg_grenzen")]
+    pub laufweg: LaufGrenzen,
+}
+
+fn laufweg_laenge() -> f64 {
+    1.8
+}
+
+fn laufweg_grenzen() -> LaufGrenzen {
+    LaufGrenzen {
+        min_laenge: w(72.0),
+        sehnenabstand: w(16.0),
+    }
 }
 
 impl TatamiEinstellung {
@@ -145,6 +164,8 @@ impl Default for TatamiEinstellung {
             versatz: 0.25,
             winkel: 45.0,
             zugausgleich: 0.20,
+            laufweg_laenge: laufweg_laenge(),
+            laufweg: laufweg_grenzen(),
         }
     }
 }

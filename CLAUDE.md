@@ -48,6 +48,7 @@
 | **Effekte und Auto-Unterlage** (Auto Spacing = Effekt 0x21 am Satin, Stil-Flags 0x2000 = aus / 0x0001 = vorgewählt, Unterlage in Software Defaults aus, Zickzack vorgewählt) | `Analyse_Teil3/05_effekte_und_unterlagen.md` |
 | **Tatami (Step) gemessen**: Abstand = zwischen zwei Hinreihen (Nachbarreihen halber Abstand), Versatz 0,25 je Reihe | `Analyse_Teil3/06_messungen_tatami.md` |
 | **Laufstich an Eckpunkten, Zickzack-Unterlage, Reihenfolge Unterlage** (gemessen) | `Analyse_Teil3/07_lauf_ecken.md` |
+| **Laufwege in Flächen** (Original verbindet Teilbereiche mit Laufstichen statt Sprüngen) | `Analyse_Teil3/08_laufwege_flaechen.md` |
 | **Objekte der ART-Musterdesigns** (Datensatzrahmen, 131 Klassen mit Namen/Kennung, Formen als Bézier-Knoten, Satin/Lauf/Tatami/Unterlagen-Parameter) | `Analyse_Teil3/03_art_objekte.md`; Werkzeuge `art_objekte.py`, `art_design.py` |
 | **Echte Stiche des Originals** aus den 287 ART-Musterdesigns (Datenblock-Kopf, Stichkodierung, Segmente, y doppelt, gemessenes Vernähen) | `Analyse_Teil3/02_art_stichdaten.md`; Werkzeuge `Arbeitsdaten/werkzeuge/art_lesen.py`, `art_stiche.py` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |

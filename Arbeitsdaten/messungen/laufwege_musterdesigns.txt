@@ -1,0 +1,3 @@
+Tatami-Blöcke: 2231, davon mit Stich > 1,3 × Stichlänge: 191
+Laufwege (>= 3 Stiche quer zur Reihe): {'am Rand (< 0,6 mm)': 356, 'innen (>= 0,6 mm)': 286}
+Stichlänge in Laufwegen (mm): n=  7308  Median 1.399  Quartile 0.762–1.503

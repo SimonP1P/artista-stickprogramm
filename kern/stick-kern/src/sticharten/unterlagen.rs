@@ -167,6 +167,7 @@ pub fn flaechen_unterlage(
         versatz: 0.0,
         winkel: deck_winkel + e.tatami_winkel_versatz,
         zugausgleich: e.zugausgleich,
+        ..Default::default()
     };
     let start_fuellung = wege[0].last().copied();
     wege.extend(tatami(&rand_umriss, &rand_loecher, &te, None, start_fuellung));

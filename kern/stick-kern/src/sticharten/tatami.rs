@@ -7,11 +7,96 @@
 //! 4. Einstiche je Reihe auf einem festen Raster der Stichlänge; das Raster verschiebt sich je Reihe um
 //!    `versatz` × Stichlänge. Rasterpunkte näher als `min_rand` am Abschnittsende entfallen. Zugausgleich
 //!    verlängert jede Reihe an beiden Enden.
-//! 5. Bereiche in der Reihenfolge des geringsten Weges; dazwischen Sprünge (Laufwege durch die Fläche: Phase 4).
+//! 5. Bereiche in der Reihenfolge des geringsten Weges; dazwischen ein Laufweg am Rand wie im Original
+//!    (`Analyse_Teil3/08_laufwege_flaechen.md`), nur wenn kein gemeinsamer Rand erreichbar ist ein Sprung.
 
-use crate::einstellungen::TatamiEinstellung;
-use crate::geometrie::{Linie, Punkt, abstand, drehen, gegen_uhrzeiger, geschlossen_ohne_endpunkt, p};
+use super::lauf::laufstich;
+use crate::einstellungen::{LaufEinstellung, TatamiEinstellung};
+use crate::geometrie::{Linie, Punkt, abstand, drehen, gegen_uhrzeiger, geschlossen_ohne_endpunkt, p, zwischen};
 use std::collections::HashMap;
+
+/// Lotfußpunkt von `q` auf einem geschlossenen Ring: (Abstand, Bogenlänge ab Ringanfang).
+fn auf_ring(q: Punkt, ring: &[Punkt]) -> (f64, f64) {
+    let (mut best, mut s_best, mut s) = (f64::INFINITY, 0.0, 0.0);
+    for i in 0..ring.len() {
+        let (a, b) = (ring[i], ring[(i + 1) % ring.len()]);
+        let l = abstand(a, b);
+        let t = if l < 1e-12 {
+            0.0
+        } else {
+            (((q.x - a.x) * (b.x - a.x) + (q.y - a.y) * (b.y - a.y)) / (l * l)).clamp(0.0, 1.0)
+        };
+        let d = abstand(q, zwischen(a, b, t));
+        if d < best {
+            (best, s_best) = (d, s + t * l);
+        }
+        s += l;
+    }
+    (best, s_best)
+}
+
+/// Punkte des Rings von Bogenlänge `s0` bis `s1` in Laufrichtung des Rings (über den Anfang hinweg).
+fn ring_stueck(ring: &[Punkt], s0: f64, s1: f64) -> Linie {
+    let n = ring.len();
+    let umfang: f64 = (0..n).map(|i| abstand(ring[i], ring[(i + 1) % n])).sum();
+    let ziel = if s1 >= s0 { s1 - s0 } else { s1 + umfang - s0 };
+    let (mut out, mut s, mut gelaufen) = (Vec::new(), 0.0, 0.0);
+    // Ring zweimal durchlaufen, damit der Übergang über den Anfang abgedeckt ist
+    for k in 0..2 * n {
+        let (a, b) = (ring[k % n], ring[(k + 1) % n]);
+        let l = abstand(a, b);
+        let (von, bis) = (s, s + l);
+        if bis >= s0 && l > 1e-12 {
+            if out.is_empty() {
+                out.push(zwischen(a, b, ((s0 - von) / l).clamp(0.0, 1.0)));
+            }
+            let rest = ziel - gelaufen;
+            let ab = (s0.max(von)) - von;
+            if l - ab >= rest {
+                out.push(zwischen(a, b, (ab + rest) / l));
+                return out;
+            }
+            gelaufen += l - ab;
+            out.push(b);
+        }
+        s = bis;
+    }
+    out
+}
+
+/// Laufweg vom Ende eines Teilbereichs zum Anfang des nächsten am gemeinsamen Rand entlang (kürzere Richtung).
+/// `None`, wenn beide Punkte nicht nah an demselben Rand liegen (dann bleibt es beim Sprung).
+fn laufweg(von: Punkt, nach: Punkt, ringe: &[Linie], e: &TatamiEinstellung) -> Option<Linie> {
+    let toleranz = 1.0_f64.max(3.0 * e.zugausgleich);
+    let mut best: Option<(f64, Linie)> = None;
+    for ring in ringe {
+        let ((d0, s0), (d1, s1)) = (auf_ring(von, ring), auf_ring(nach, ring));
+        if d0 > toleranz || d1 > toleranz {
+            continue;
+        }
+        let vor = ring_stueck(ring, s0, s1);
+        let mut zurueck = ring_stueck(ring, s1, s0);
+        zurueck.reverse();
+        for teil in [vor, zurueck] {
+            let mut weg = vec![von];
+            weg.extend(teil);
+            weg.push(nach);
+            let l: f64 = weg.windows(2).map(|w| abstand(w[0], w[1])).sum();
+            if best.as_ref().is_none_or(|(bl, _)| l < *bl) {
+                best = Some((l, weg));
+            }
+        }
+    }
+    let (_, weg) = best?;
+    let lauf = LaufEinstellung {
+        laenge: e.laufweg_laenge,
+        min_laenge: e.laufweg.min_laenge,
+        variabel: true,
+        sehnenabstand: e.laufweg.sehnenabstand,
+        ecke_grad: 30.0,
+    };
+    Some(laufstich(&weg, &lauf, None))
+}
 
 #[derive(Default)]
 struct Bereich {
@@ -197,10 +282,26 @@ pub fn tatami(
         let (_, bi, von_oben, links) = best.unwrap();
         let b = offen.remove(bi);
         let weg = bereich_sticken(&b, y0, e, von_oben, links);
+        // Teilbereiche mit einem Laufweg am Rand verbinden statt mit einem Sprung (wie im Original)
+        let verbunden = match (wege.last_mut(), pos, weg.first()) {
+            (Some(letzter), Some(von), Some(&nach)) => match laufweg(von, nach, &gedreht, e) {
+                Some(lauf) => {
+                    let letzter: &mut Linie = letzter;
+                    letzter.extend(lauf[1..].iter().chain(&weg[1..]));
+                    true
+                }
+                None => false,
+            },
+            _ => false,
+        };
         pos = weg.last().copied();
-        wege.push(weg.into_iter().map(|q| drehen(q, w, null)).collect());
+        if !verbunden {
+            wege.push(weg);
+        }
     }
-    wege
+    wege.into_iter()
+        .map(|weg| weg.into_iter().map(|q| drehen(q, w, null)).collect())
+        .collect()
 }
 
 #[cfg(test)]
@@ -307,7 +408,13 @@ mod tests {
             ..Default::default()
         };
         let wege = tatami(&u, &[], &e, None, None);
-        assert!(wege.len() >= 2);
+        // mehrere Teilbereiche, aber wie im Original mit Laufwegen am Rand verbunden: ein Weg, kein Sprung
+        assert_eq!(wege.len(), 1);
+        assert!(
+            stiche(&wege)
+                .iter()
+                .all(|&(a, b)| abstand(a, b) <= e.laenge + e.min_rand + 1e-9)
+        );
         let ringe = vec![u.clone()];
         for (a, b) in stiche(&wege) {
             let m = p((a.x + b.x) / 2.0, (a.y + b.y) / 2.0);

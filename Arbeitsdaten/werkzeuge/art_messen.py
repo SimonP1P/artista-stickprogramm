@@ -12,6 +12,7 @@ Aufruf:
   python art_messen.py effekte --alle [TWOFISH_EXE]           Satin mit Auto-Spacing-Effekt 0x21: Tabelle × Faktor?
   python art_messen.py tatami --alle [TWOFISH_EXE]            Tatami: Reihenabstand und Versatz der Einstiche
   python art_messen.py ecken --alle [TWOFISH_EXE]             Laufstich: Einstich an Eck- und Kurvenknoten?
+  python art_messen.py laufwege --alle [TWOFISH_EXE]          Tatami: Sprünge und Laufwege zwischen Teilbereichen
 """
 import collections
 import glob
@@ -316,6 +317,72 @@ def ecken_messen(pfade, twofish):
         print(f"{art:5} Knick {b:3}–{b + 30:3}°: {j:6} von {j + n:6} Knoten mit Einstich ({100 * j / (j + n):.0f} %)")
 
 
+def _umriss(form, n=12):
+    """Bézier-Knoten einer Form als Punktliste in mm."""
+    kn = form["knoten"]
+    seq = kn + ([kn[0]] if form["geschlossen"] else [])
+    pts = []
+    for a, b in zip(seq, seq[1:]):
+        p0, p3 = (a["punkt"][0] / 180, a["punkt"][1] / 180), (b["punkt"][0] / 180, b["punkt"][1] / 180)
+        p1 = (a["aus"][0] / 180, a["aus"][1] / 180) if a["aus"] else p0
+        p2 = (b["ein"][0] / 180, b["ein"][1] / 180) if b["ein"] else p3
+        for i in range(n + 1):
+            t = i / n
+            k = ((1 - t) ** 3, 3 * (1 - t) ** 2 * t, 3 * (1 - t) * t * t, t ** 3)
+            pts.append((sum(c * q[0] for c, q in zip(k, (p0, p1, p2, p3))), sum(c * q[1] for c, q in zip(k, (p0, p1, p2, p3)))))
+    return pts
+
+
+def laufwege_messen(pfade, twofish):
+    """Tatami: lange Stiche (Sprünge) und Laufwege zwischen Teilbereichen – am Rand oder im Inneren? (08)"""
+    def d_seg(q, a, b):
+        vx, vy = b[0] - a[0], b[1] - a[1]
+        l2 = vx * vx + vy * vy
+        t = 0 if l2 == 0 else max(0, min(1, ((q[0] - a[0]) * vx + (q[1] - a[1]) * vy) / l2))
+        return math.dist(q, (a[0] + t * vx, a[1] + t * vy))
+    stat, laengen, bloecke, mit_sprung = collections.Counter(), [], 0, 0
+    for _, o, refs, f, _ in zugeordnet(pfade, twofish):
+        if [e[1] for e in refs].count(0x1b) != 1:
+            continue
+        r = objekt_auswerten(o)
+        segs = [(a, b) for fm in r["formen"] if len(fm["knoten"]) >= 2 for ring in [_umriss(fm)] for a, b in zip(ring, ring[1:])]
+        for e, blk in zip(refs, f):
+            if e[1] != 0x1b:
+                continue
+            t = next((felder(0x1b, x[3]) for x in kette(e) if x[1] == 0x1b), None)
+            L, P = t["laenge"] / 180, blk["punkte"]
+            bloecke += 1
+            mit_sprung += any(math.dist(a, b) > 1.3 * L for a, b in zip(P, P[1:]))
+            if not segs:
+                continue
+            cx = cy = 0.0
+            for a, b in zip(P, P[1:]):
+                if abs(math.dist(a, b) - L) < 0.02:
+                    w = math.atan2(b[1] - a[1], b[0] - a[0])
+                    cx, cy = cx + math.cos(2 * w), cy + math.sin(2 * w)
+            if cx == 0 and cy == 0:
+                continue
+            ux, uy = math.cos(math.atan2(cy, cx) / 2), math.sin(math.atan2(cy, cx) / 2)
+            lauf = []
+
+            def abschluss():
+                if len(lauf) >= 4:
+                    ds = sorted(min(d_seg(q, a, b) for a, b in segs) for q in lauf[1:-1])
+                    stat["am Rand (< 0,6 mm)" if ds[len(ds) // 2] < 0.6 else "innen (>= 0,6 mm)"] += 1
+                    laengen.extend(math.dist(a, b) for a, b in zip(lauf, lauf[1:]))
+            for a, b in zip(P, P[1:]):
+                d = math.dist(a, b)
+                if d > 0 and abs(((b[0] - a[0]) * ux + (b[1] - a[1]) * uy) / d) < 0.95 and 0.4 <= d <= 2.2:
+                    lauf.extend([a, b] if not lauf else [b])
+                else:
+                    abschluss()
+                    lauf = []
+            abschluss()
+    print(f"Tatami-Blöcke: {bloecke}, davon mit Stich > 1,3 × Stichlänge: {mit_sprung}")
+    print("Laufwege (>= 3 Stiche quer zur Reihe):", dict(stat))
+    _zeile("Stichlänge in Laufwegen (mm)", laengen)
+
+
 if __name__ == "__main__":
     modus, ziel = sys.argv[1], sys.argv[2]
     tw = sys.argv[3] if len(sys.argv) > 3 else "twofish_cfb1"
@@ -332,6 +399,8 @@ if __name__ == "__main__":
         tatami_messen(pfade, tw)
     elif modus == "ecken":
         ecken_messen(pfade, tw)
+    elif modus == "laufwege":
+        laufwege_messen(pfade, tw)
     else:
         d, h, pts, segs, objs = laden(ziel, tw)
         fo = funktionen_je_objekt(segs, pts)

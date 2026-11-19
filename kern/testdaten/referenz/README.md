@@ -15,5 +15,6 @@ jede Abweichung vom Python-Prototyp nachvollziehbar bleibt.
 | 19.11.2026 | Original-Verhalten Stufe 6 (`Analyse_Teil3/04_messungen_satin.md` §4) | Satin-Fortschritt auf der **längeren Seite** (Außenseite im Bogen) statt Mittel beider Seiten – in Bögen innen dichter, außen genau der Abstand |
 | 19.11.2026 | Original-Verhalten Stufe 7 (`Analyse_Teil3/06_messungen_tatami.md`) | **Tatami-Abstand = Weg zwischen zwei Hinreihen** (Handbuch PDF-S. 74, gemessen 0,49 × / 0,98 ×): Nachbarreihen beim halben Abstand – Tatami und Tatami-Unterlage doppelt so dicht wie bisher; Versatz 0,25 je Reihe bestätigt (unverändert) |
 | 19.11.2026 | Original-Verhalten Stufe 8 (`Analyse_Teil3/07_lauf_ecken.md`) | Laufstich sticht an **jedem Eckpunkt** ein (Punktlisten, Rechteckecken, Enden von Kreis/Bogen/Bézier), an Kurvenpunkten nicht – statt „ab 30° Knick“. Geändert nur Lauf/Dreifach am Ende von `vergleich_beispiel` und der Dreifach-Kreis in `vergleich_unterlagen` |
+| 19.11.2026 | Original-Verhalten Stufe 9 (`Analyse_Teil3/08_laufwege_flaechen.md`) | Teilbereiche einer Tatami-Fläche (und der Step-Unterlage) mit **Laufweg am Rand** verbunden (1,8 mm, variabel) statt Sprung; Sprünge 23 → 22 bzw. 255 → 245 |
 
 Neu erzeugen: `F:\Entwicklung\target\release\stick.exe erzeugen ..\vergleich_X.json -o .` (danach die SVG löschen).
