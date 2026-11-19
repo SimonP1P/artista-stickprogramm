@@ -20,6 +20,19 @@ Test `stick-formate/tests/vergleich_referenz.rs`). Dazu 23 Einzeltests (aus den 
 (1,0 mm, letztes Objekt ohne Vernähen), variable Unterlagen-Läufe mit Grenzen aus dem Stil. Seitdem sind die Vergleichsdateien
 Regressionsreferenzen (`testdaten/referenz/`, Änderungsliste dort in der README).
 
+**Original-Verhalten Stufen 2–9** (gemessen an den echten Stichen der 285 ART-Musterdesigns, `../Analyse_Teil3/02`–`08`):
+- **Vernähen:** 2 Schritte vor und zurück.
+- **Satin:**
+  - Abstand gilt zwischen Einstichen derselben Seite.
+  - Er wird auf der längeren Seite gemessen, im Bogen also außen.
+- **Unterlagen:**
+  - Edge Walk = 0x2747, Mittellauf = 0x2746.
+  - Auto Underlay wie im Stil: in Software Defaults aus; eingeschaltet Zickzack.
+- **Tatami:**
+  - Abstand gilt zwischen Hinreihen, Versatz 0,25 je Reihe.
+  - Teilbereiche werden mit einem Laufweg am Rand verbunden statt mit einem Sprung.
+- **Laufstich:** Einstich an jedem Eckpunkt der Form.
+
 ## Bauen und testen (Windows-PC)
 Umgebung siehe `../ARCHITECTURE.md` §5 (Build-Ausgaben in `F:\Entwicklung\target`).
 ```powershell
