@@ -5,7 +5,7 @@
 //! in `stick-formate::esb`; hier stehen das Modell, die Umwandlung der Säulen in die zwei Seiten des Rechenkerns und
 //! der Satz eines Texts (Höhe, Breite, Buchstabenabstand, Position).
 
-use crate::design::{Objekt, ObjektArt, Unterlage};
+use crate::design::{Objekt, ObjektArt, SatinOptionen, Unterlage};
 use crate::geometrie::{Linie, Punkt, p};
 use std::collections::BTreeMap;
 
@@ -18,6 +18,13 @@ pub const REFERENZ_HOEHE_MM: f64 = 50.0;
 /// Breite des Leerzeichens in Teilen der Buchstabenhöhe – **eigene Festlegung** (die Alphabete haben kein
 /// Leerzeichen; Wert des Originals noch offen, `Analyse_Teil3/09` §5).
 pub const LEERZEICHEN_ANTEIL: f64 = 0.3;
+/// Stil „Schrift“ (NORMAL.AMT, `Analyse_Teil3/05`, `Analyse/code/10`): Auto Spacing an mit Faktor 0,9 (0x2736;
+/// in den Schrift-Musterdesigns 0,9 bzw. 0,87), Kurzstiche an (0x273a), Auto-Unterlage an mit vorgewählter Art
+/// Zickzack (0x27a7) – Handbuch PDF-S. 186/379: Schrift hat Auto-Unterlage, bei kleiner Schrift abschalten.
+pub const SCHRIFT_FAKTOR: f64 = 0.9;
+pub const SCHRIFT_UNTERLAGE: &str = "zickzack";
+/// Laufweg im Buchstaben, wenn das Alphabet keinen nennt (Drifter: Lauf 0x271c 540 = 3,0 mm)
+pub const SCHRIFT_LAUFWEG: f64 = 3.0;
 
 /// Bézier-Knoten in Alphabet-Einheiten (1/180 mm), Anfasser optional.
 #[derive(Clone, Debug, PartialEq)]
@@ -45,9 +52,11 @@ pub struct Winkellinie {
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Stichart {
-    /// Satin mit festem Abstand in mm (0x15 im Alphabet, z. B. 72 = 0,40 mm)
+    /// Satin: fester Abstand in mm (0x15, z. B. 72 = 0,40 mm); hängt der Effekt Auto Spacing (0x21) am Objekt, gilt
+    /// stattdessen die Tabelle × Faktor (`Analyse_Teil3/05` §1: vorhanden = aktiv)
     Satin {
         abstand: Option<f64>,
+        auto_spacing: bool,
     },
     Tatami,
     /// Laufstich mit Stichlänge in mm
@@ -66,6 +75,8 @@ pub struct ZeichenObjekt {
     pub stichart: Stichart,
     /// Unterlagen des Objekts im Alphabet: mittellauf, edge_walk, zickzack, doppelzickzack
     pub unterlagen: Vec<String>,
+    /// Stichlänge des Laufwegs (Lauf 0x271c in der Füllung), mm
+    pub laufweg: Option<f64>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -249,11 +260,26 @@ pub struct TextVorgabe {
     pub position: Punkt,
     /// 0 = Text beginnt bei `position`, 0,5 = mittig, 1 = endet dort (wie Ausrichtung links/Mitte/rechts)
     pub ausrichtung: f64,
+    /// Unterlage: None = wie Stil „Schrift“ (Zickzack, bzw. die Unterlage des Alphabets), Some(leer) = keine
+    pub unterlage: Option<Vec<String>>,
     pub farbe: String,
 }
 
-fn unterlage_aus(o: &ZeichenObjekt) -> Unterlage {
-    Unterlage::Arten(o.unterlagen.clone())
+/// Unterlage einer Säule: Vorgabe des Texts; sonst die Unterlage aus dem Alphabet; sonst die des Stils „Schrift“.
+fn unterlage_fuer(o: &ZeichenObjekt, v: &TextVorgabe) -> Unterlage {
+    match &v.unterlage {
+        Some(l) => Unterlage::Arten(l.clone()),
+        None if !o.unterlagen.is_empty() => Unterlage::Arten(o.unterlagen.clone()),
+        None => Unterlage::Arten(vec![SCHRIFT_UNTERLAGE.into()]),
+    }
+}
+
+fn satin_optionen(abstand: Option<f64>, auto_spacing: bool) -> SatinOptionen {
+    SatinOptionen {
+        abstand: if auto_spacing { None } else { abstand },
+        faktor: Some(SCHRIFT_FAKTOR),
+        kurzstiche: Some(true),
+    }
 }
 
 /// Text in Stickobjekte des Rechenkerns umsetzen. Liefert die Objekte und die Zeichen ohne Entsprechung im Alphabet.
@@ -291,28 +317,40 @@ pub fn text_objekte(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<char
         let [gx, gy, gx2, _] = z.grundlinie;
         let abb = |q: (f64, f64)| p(x + (q.0 - gx) * sx, v.position.y + (q.1 - gy) * s);
         let abb_linie = |l: &[(f64, f64)]| -> Linie { l.iter().map(|&q| abb(q)).collect() };
+        let mut teile: Vec<Objekt> = Vec::new();
+        let mut umrisse: Vec<Linie> = Vec::new();
+        let mut laufweg = SCHRIFT_LAUFWEG;
         for o in &z.objekte {
+            if let Some(l) = o.laufweg {
+                laufweg = l;
+            }
             let art = match (&o.stichart, o.klasse) {
-                (Stichart::Satin { abstand }, 0x06) => {
+                (Stichart::Satin { abstand, auto_spacing }, 0x06) => {
                     let Some(u) = o.umrisse.first() else { continue };
                     let Some((a, b)) = saeule_seiten(u, &o.winkel) else {
                         continue;
                     };
+                    umrisse.push(abb_linie(&umriss_punkte(u)));
                     ObjektArt::Satin {
                         seite_a: abb_linie(&a),
                         seite_b: abb_linie(&b),
-                        unterlage: unterlage_aus(o),
-                        abstand: *abstand,
+                        unterlage: unterlage_fuer(o, v),
+                        optionen: satin_optionen(*abstand, *auto_spacing),
                     }
                 }
-                (Stichart::Satin { abstand }, 0x0c) if o.umrisse.len() >= 2 => ObjektArt::Satin {
-                    seite_a: abb_linie(&umriss_punkte(&o.umrisse[0])),
-                    seite_b: abb_linie(&umriss_punkte(&o.umrisse[1])),
-                    unterlage: unterlage_aus(o),
-                    abstand: *abstand,
-                },
+                (Stichart::Satin { abstand, auto_spacing }, 0x0c) if o.umrisse.len() >= 2 => {
+                    let (a, b) = (umriss_punkte(&o.umrisse[0]), umriss_punkte(&o.umrisse[1]));
+                    umrisse.push(abb_linie(&a.iter().chain(b.iter().rev()).copied().collect::<Vec<_>>()));
+                    ObjektArt::Satin {
+                        seite_a: abb_linie(&a),
+                        seite_b: abb_linie(&b),
+                        unterlage: unterlage_fuer(o, v),
+                        optionen: satin_optionen(*abstand, *auto_spacing),
+                    }
+                }
                 (Stichart::Tatami, _) => {
                     let Some(u) = o.umrisse.first() else { continue };
+                    umrisse.push(abb_linie(&umriss_punkte(u)));
                     ObjektArt::Tatami {
                         umriss: abb_linie(&umriss_punkte(u)),
                         loecher: o.umrisse[1..].iter().map(|l| abb_linie(&umriss_punkte(l))).collect(),
@@ -322,6 +360,7 @@ pub fn text_objekte(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<char
                 }
                 (Stichart::Lauf { laenge }, _) => {
                     let Some(u) = o.umrisse.first() else { continue };
+                    umrisse.push(Vec::new());
                     let pts = abb_linie(&umriss_punkte(u));
                     let n = pts.len();
                     ObjektArt::Lauf {
@@ -334,10 +373,21 @@ pub fn text_objekte(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<char
                 }
                 _ => continue,
             };
-            objekte.push(Objekt {
+            teile.push(Objekt {
                 farbe: v.farbe.clone(),
                 name: format!("{} {}", alpha.name, ch),
                 art,
+            });
+        }
+        if !teile.is_empty() {
+            objekte.push(Objekt {
+                farbe: v.farbe.clone(),
+                name: format!("{} {}", alpha.name, ch),
+                art: ObjektArt::Gruppe {
+                    teile,
+                    umrisse,
+                    laufweg,
+                },
             });
         }
         x += (gx2 - gx) * sx + abstand * v.breite_prozent / 100.0;
@@ -409,8 +459,12 @@ mod tests {
                 klasse: 0x06,
                 umrisse: vec![u],
                 winkel: w,
-                stichart: Stichart::Satin { abstand: Some(0.4) },
+                stichart: Stichart::Satin {
+                    abstand: Some(0.4),
+                    auto_spacing: true,
+                },
                 unterlagen: vec![],
+                laufweg: None,
             }],
         };
         let alpha = Alphabet {
@@ -426,14 +480,24 @@ mod tests {
             position: p(-10.0, 0.0),
             ausrichtung: 0.0,
             farbe: "#000000".into(),
+            unterlage: None,
         };
         let (obj, fehlend) = text_objekte(&alpha, &v);
         assert_eq!(fehlend, vec!['?']);
         assert_eq!(obj.len(), 2);
+        // Stil Schrift: Auto Spacing × 0,9, Kurzstiche, Zickzack-Unterlage
+        let (_, u, o) = saeule_aus(&obj[0]);
+        assert_eq!(u, Unterlage::Arten(vec!["zickzack".into()]));
+        assert_eq!(
+            o,
+            SatinOptionen {
+                abstand: None,
+                faktor: Some(0.9),
+                kurzstiche: Some(true)
+            }
+        );
         // Maßstab 25/50 = 0,5: Säule 5 mm lang; zweites I beginnt bei −10 + 5 + 2,5 (10 % von 25 mm)
-        let ObjektArt::Satin { seite_a, .. } = &obj[1].art else {
-            panic!()
-        };
+        let (seite_a, _, _) = saeule_aus(&obj[1]);
         assert!((seite_a[0].x - (-2.5)).abs() < 1e-9, "{}", seite_a[0].x);
         assert!((seite_a.last().unwrap().x - 2.5).abs() < 1e-6);
         // mittig: Breite 5 + 2,5 + 5 = 12,5 → Beginn bei −6,25
@@ -446,9 +510,24 @@ mod tests {
                 ..v
             },
         );
-        let ObjektArt::Satin { seite_a, .. } = &obj[0].art else {
-            panic!()
-        };
+        let (seite_a, _, _) = saeule_aus(&obj[0]);
         assert!((seite_a[0].x + 6.25).abs() < 1e-9, "{}", seite_a[0].x);
+    }
+
+    /// erste Säule eines Buchstabens (Gruppe)
+    fn saeule_aus(o: &Objekt) -> (Linie, Unterlage, SatinOptionen) {
+        let ObjektArt::Gruppe { teile, .. } = &o.art else {
+            panic!("Buchstabe = Gruppe")
+        };
+        let ObjektArt::Satin {
+            seite_a,
+            unterlage,
+            optionen,
+            ..
+        } = &teile[0].art
+        else {
+            panic!("Säule")
+        };
+        (seite_a.clone(), unterlage.clone(), optionen.clone())
     }
 }

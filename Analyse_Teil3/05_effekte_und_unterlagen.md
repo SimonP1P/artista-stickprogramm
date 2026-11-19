@@ -102,6 +102,7 @@ Designs (EasyStitch) haben bei Tatami meist Step, bei Satin teils Zickzack, teil
 
 ## 5. Offen
 1. Bedeutung von 0x24, 0x26, 0x6a und der 7 float hinter der Tabelle in 0x21.
-2. Algorithmus der kurzen Stiche (Schrift): Werte bekannt (0x273a), Anwendung im Kern fehlt.
+2. ~~Algorithmus der kurzen Stiche~~ → gefunden (MOD1 0x10186ed0) und umgesetzt, siehe [10](10_regeln_original.md) §2;
+   der Effekt hängt auch an Bild-Objekten (Satin und Tatami), voreingestellt ist er nur bei Schrift.
 3. Unterlagenart für Flächen, wenn Auto Underlay an ist (`IsUnderlayTypeApplicable`, MOD1 0x100938a0).
 4. Bit 0x0002 (nur Motiv-Stile).

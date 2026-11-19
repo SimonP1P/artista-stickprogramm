@@ -1,0 +1,89 @@
+Bild/AutoStartEndObject/?                  Objekte 119, U-Mittellauf 20, U-Step 8, U-EdgeWalk 4, U-Zickzack 1
+Bild/AutoStartEndObject/Lauf               Objekte 134, 0x26 114, U-Mittellauf 20, U-EdgeWalk 3
+Bild/AutoStartEndObject/Tatami             Objekte 8, U-Step 8, 0x26 1, U-EdgeWalk 1
+Bild/AutoStartEndObject/Zickzack           Objekte 1, 0x26 1, U-Zickzack 1
+Bild/ComplexFillGroup/?                    Objekte 16, U-Step 1
+Bild/ComplexFillGroup/Lauf                 Objekte 1133, U-Step 1000, 0x26 610, 0x24 596, AutoSpacing 511, KS 0.5/1 350, KS 0.0/1 232, U-EdgeWalk 169, KS 0.2/1 48, U-Zickzack 17, U-Mittellauf 5, KS 0.0/0 2
+Bild/ComplexFillGroup/Motiv                Objekte 44, AutoSpacing 3, 0x26 3, KS 0.5/1 3, U-EdgeWalk 2
+Bild/ComplexFillGroup/Satin                Objekte 242, 0x26 242, 0x24 233, AutoSpacing 224, KS 0.5/1 147, U-Step 33, U-Zickzack 15, U-Mittellauf 2, KS 0.0/1 1
+Bild/ComplexFillGroup/Tatami               Objekte 1683, 0x26 1215, 0x24 931, AutoSpacing 753, U-Step 744, KS 0.5/1 453, KS 0.0/0 224, KS 0.0/1 222, U-EdgeWalk 56, KS 0.2/1 22, U-Mittellauf 8, U-Zickzack 8, U-DoppelZZ 4
+Bild/ComplexFillGroup/Zickzack             Objekte 32, U-Zickzack 31, 0x26 28, 0x24 27, KS 0.5/1 6, AutoSpacing 5, KS 0.0/1 1, KS 0.2/1 1, U-DoppelZZ 1
+Bild/EmbroideryBoundGroup/?                Objekte 8
+Bild/EmbroideryBoundGroup/Tatami           Objekte 1
+Bild/EmbroideryCurve/?                     Objekte 110, U-Zickzack 12, AutoSpacing 1
+Bild/EmbroideryCurve/Dreifach              Objekte 1785, U-Step 416, U-Mittellauf 164, U-EdgeWalk 58, U-Zickzack 46, 0x26 31, U-DoppelZZ 2, AutoSpacing 1, 0x24 1, KS 0.5/1 1
+Bild/EmbroideryCurve/Lauf                  Objekte 14204, U-Step 2876, U-Mittellauf 1708, U-EdgeWalk 651, 0x26 217, U-Zickzack 186, AutoSpacing 35, 0x24 5, KS 0.5/1 4, U-DoppelZZ 3, KS 0.0/1 1
+Bild/EmbroideryCurve/Motiv                 Objekte 33, AutoSpacing 27, 0x26 27
+Bild/EmbroideryCurve/Satin                 Objekte 21, 0x24 9, 0x26 8, AutoSpacing 7, KS 0.5/1 5, KS 0.0/1 3, U-EdgeWalk 3, U-Step 1, U-Mittellauf 1
+Bild/EmbroideryCurve/Tatami                Objekte 41, U-Step 39, 0x26 13, U-EdgeWalk 3, AutoSpacing 2, 0x24 2, KS 0.5/1 2
+Bild/EmbroideryCurve/Zickzack              Objekte 15, U-Zickzack 15, 0x26 6, U-EdgeWalk 5, U-DoppelZZ 2, 0x24 1
+Bild/EmbroideryEllipse/Satin               Objekte 6, AutoSpacing 4, 0x26 4, U-Zickzack 4
+Bild/EmbroideryEllipse/Tatami              Objekte 18, 0x24 18, 0x26 18, KS 0.5/1 15, U-Zickzack 14, AutoSpacing 3, U-Mittellauf 3, U-Step 1
+Bild/EmbroideryEllipse/Zickzack            Objekte 1, 0x24 1, 0x26 1, KS 0.5/1 1, U-Zickzack 1, U-DoppelZZ 1
+Bild/EmbroideryGroup/?                     Objekte 122, U-Step 11
+Bild/EmbroideryGroup/Motiv                 Objekte 1
+Bild/EmbroideryGroup/Satin                 Objekte 5, AutoSpacing 5, 0x26 5, KS 0.5/1 5
+Bild/EmbroideryGroup/Tatami                Objekte 21, AutoSpacing 20, 0x26 20, KS 0.5/1 20, 0x24 1, U-Step 1
+Bild/EmbroideryPatch/?                     Objekte 151, U-EdgeWalk 98, U-Mittellauf 21, U-Zickzack 2, AutoSpacing 1
+Bild/EmbroideryPatch/Lauf                  Objekte 1739, U-Mittellauf 1312, U-EdgeWalk 433, U-Step 106, 0x26 105, U-Zickzack 64, AutoSpacing 60, 0x24 44, KS 0.5/1 33, KS 0.0/1 23, KS 0.2/1 17
+Bild/EmbroideryPatch/Satin                 Objekte 4751, 0x26 3691, KS 0.5/1 1936, 0x24 1689, KS 0.0/0 1337, U-Mittellauf 676, KS 0.2/1 416, AutoSpacing 329, KS 0.0/1 139, U-Zickzack 99, U-EdgeWalk 13, U-Step 12, KS 0.4/1 1
+Bild/EmbroideryPatch/Tatami                Objekte 2507, 0x26 836, KS 0.5/1 770, 0x24 90, AutoSpacing 64, U-Step 54, KS 0.0/0 35, U-Mittellauf 13, KS 0.0/1 12, U-EdgeWalk 8, KS 0.2/1 7
+Bild/EmbroideryPatch/Zickzack              Objekte 31, U-Zickzack 31, 0x26 28, AutoSpacing 23, 0x24 9, KS 0.5/1 3, U-DoppelZZ 1, KS 0.0/1 1, U-EdgeWalk 1
+Bild/EmbroideryRing/Satin                  Objekte 2, 0x24 1, 0x26 1
+Bild/EmbroideryRing/Tatami                 Objekte 1
+Bild/EmbroideryStar/?                      Objekte 1, AutoSpacing 1
+Bild/InputCCurve/?                         Objekte 149, U-Zickzack 1, AutoSpacing 1, 0x24 1, 0x26 1, KS 0.5/1 1
+Bild/InputCCurve/Lauf                      Objekte 1, AutoSpacing 1, U-EdgeWalk 1, U-Zickzack 1, U-DoppelZZ 1, U-Mittellauf 1
+Bild/ManualObject/?                        Objekte 87, U-Mittellauf 8, U-Step 8, 0x26 5, U-Zickzack 1
+Bild/ManualObject/Lauf                     Objekte 152, 0x26 144, U-Mittellauf 4
+Bild/ManualObject/Satin                    Objekte 1, AutoSpacing 1, U-EdgeWalk 1, U-Zickzack 1, U-DoppelZZ 1, U-Mittellauf 1
+Bild/ManualObject/Tatami                   Objekte 10, U-Step 10, 0x26 3
+Bild/ManualObject/Zickzack                 Objekte 1, U-Zickzack 1
+Schrift/EmbroideryBoundGroup/?             Objekte 106, U-Zickzack 101
+Schrift/EmbroideryBoundGroup/Zickzack      Objekte 13, AutoSpacing 13, 0x26 13, KS 0.5/1 13, U-Zickzack 13, 0x24 12
+Schrift/EmbroideryCurve/?                  Objekte 1
+Schrift/EmbroideryCurve/Lauf               Objekte 1, AutoSpacing 1, 0x24 1, 0x26 1, KS 0.5/1 1, U-Mittellauf 1
+Schrift/EmbroideryPatch/?                  Objekte 104, U-Mittellauf 74, U-Zickzack 2
+Schrift/EmbroideryPatch/Lauf               Objekte 91, AutoSpacing 91, 0x24 91, 0x26 91, KS 0.5/1 91, U-Mittellauf 91
+Schrift/EmbroideryPatch/Satin              Objekte 28, AutoSpacing 25, 0x26 25, KS 0.5/1 25, 0x24 23
+Schrift/EmbroideryPatch/Zickzack           Objekte 1, AutoSpacing 1, 0x26 1, KS 0.5/1 1, U-Zickzack 1
+Schrift/InputCCurve/?                      Objekte 1
+Schrift/LetterObj/?                        Objekte 215
+Schrift/LetterObj/Satin                    Objekte 1, AutoSpacing 1, 0x24 1, 0x26 1, KS 0.5/1 1, U-Mittellauf 1
+Schrift/LetterText/?                       Objekte 2
+Schrift/LetterText/Lauf                    Objekte 2, U-Zickzack 2
+Schrift/LetterText/Satin                   Objekte 2, AutoSpacing 2, 0x26 2, KS 0.5/1 2
+Schrift/LetterText/Zickzack                Objekte 50, AutoSpacing 50, 0x26 50, KS 0.5/1 50, U-Zickzack 50, 0x24 48
+Schrift/MotifText/?                        Objekte 17
+0x23-Daten: [('0000003f01050000000f000000cdcc4c3f9a99593fec5138', 4510), ('0000000000000000000f000000cdcc4c3f9a99593fec5138', 1820), ('0000000001050000000f000000cdcc4c3f9a99593fec5138', 748), ('cdcc4c3e01050000000f000000cdcc4c3f9a99593fec5138', 523), ('6e01e4', 2)]
+0x24-Daten: [('0000803f01', 2944), ('0000f04100', 2556), ('0000104200', 1694), ('0000d84200', 254), ('0000b44200', 129)]
+0x22-Faktor: [(('Bild', 1.0), 2188), (('Bild', 0.9), 865), (('Schrift', 0.87), 91), (('Bild', 1.1), 68), (('Schrift', 0.9), 66), (('Schrift', 1.0), 37), (('Bild', 1.2), 6)]
+Beispiele Kurzstiche Bild/ManualObject/Satin ['Butterfly1.ART']
+Beispiele Kurzstiche Bild/ComplexFillGroup/Tatami ['Butterfly2.ART', 'Butterfly2.ART', 'Butterfly2.ART']
+Beispiele Kurzstiche Bild/ComplexFillGroup/Lauf ['Butterfly2.ART', 'Butterfly2.ART', 'Butterfly2.ART']
+Beispiele Kurzstiche Bild/EmbroideryPatch/Satin ['Butterfly2.ART', 'Duck2.ART', 'Duck2.ART']
+Beispiele Kurzstiche Bild/EmbroideryCurve/Satin ['Butterfly2.ART', 'Shape-Fan round.ART', 'Shape-Fan straight.ART']
+Beispiele Kurzstiche Bild/ComplexFillGroup/Satin ['Butterfly2.ART', 'Butterfly2.ART', 'Butterfly2.ART']
+Beispiele Kurzstiche Bild/InputCCurve/? ['Duck1.ART']
+Beispiele Kurzstiche Bild/EmbroideryStar/? ['Duck1.ART']
+Beispiele Kurzstiche Bild/EmbroideryPatch/? ['Duck1.ART']
+Beispiele Kurzstiche Bild/ComplexFillGroup/Zickzack ['Duck1.ART', 'Duck2.ART', 'Rose.ART']
+Beispiele Kurzstiche Schrift/LetterObj/Satin ['Duck1.ART']
+Beispiele Kurzstiche Bild/EmbroideryCurve/Dreifach ['Duck1.ART']
+Beispiele Kurzstiche Bild/EmbroideryGroup/Tatami ['House2.ART', 'Sampler-Blackwork Borders 01.ART', 'Sampler-Blackwork Borders 02.ART']
+Beispiele Kurzstiche Schrift/LetterText/Zickzack ['Buttonholes.ART', 'Sampler - Pattern Outlines - Children 1.ART', 'Sampler - Pattern Outlines - Corners 1.ART']
+Beispiele Kurzstiche Schrift/EmbroideryPatch/Lauf ['Sampler - Pattern Outlines - Children 1.ART', 'Sampler - Pattern Outlines - Children 1.ART', 'Sampler - Pattern Outlines - Children 1.ART']
+Beispiele Kurzstiche Schrift/EmbroideryBoundGroup/Zickzack ['Sampler - Pattern Outlines - Home Dec 1.ART', 'Sampler - Pattern Outlines - Home Dec 2.ART', 'Sampler - Pattern Outlines - Home Dec 3.ART']
+Beispiele Kurzstiche Schrift/EmbroideryPatch/Satin ['Sampler Alphabets 2.ART', 'Sampler Alphabets 2.ART', 'Sampler Alphabets 3.ART']
+Beispiele Kurzstiche Schrift/EmbroideryCurve/Lauf ['Sampler Alphabets 7.ART']
+Beispiele Kurzstiche Bild/EmbroideryCurve/Lauf ['Sampler-Blackwork Borders 07.ART', '38 MB car.ART', 'USA - Border.ART']
+Beispiele Kurzstiche Bild/EmbroideryGroup/Satin ['Sampler-NP004a Pattern Outlines 01.ART', 'Sampler-NP004a Pattern Outlines 02.ART', 'Sampler-NP004a Pattern Outlines 03.ART']
+Beispiele Kurzstiche Schrift/LetterText/Satin ['V4 Alpha 01.ART', 'V4 Alpha 02.ART']
+Beispiele Kurzstiche Schrift/EmbroideryPatch/Zickzack ['V4 Alpha 02.ART']
+Beispiele Kurzstiche Bild/EmbroideryPatch/Zickzack ['Rose.ART', 'Berries-Basket.ART', 'Berries-Basket.ART']
+Beispiele Kurzstiche Bild/EmbroideryCurve/Tatami ['Rose.ART', 'Rose.ART']
+Beispiele Kurzstiche Bild/EmbroideryPatch/Tatami ['Rose.ART', 'Rose.ART', 'Rose.ART']
+Beispiele Kurzstiche Bild/EmbroideryPatch/Lauf ['Border Crest.ART', 'Border Crest.ART', 'Border Crest.ART']
+Beispiele Kurzstiche Bild/EmbroideryEllipse/Tatami ['Heart Border.ART', 'Heart Border.ART', 'Heart Border.ART']
+Beispiele Kurzstiche Bild/ComplexFillGroup/Motiv ['Little Girls Face Enlarged Medium.ART', 'Little Girls Face Fine PhotoSnap.ART', 'Little Girls Face with Name.ART']
+Beispiele Kurzstiche Bild/EmbroideryEllipse/Zickzack ['Seal.ART']

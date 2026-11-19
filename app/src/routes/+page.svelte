@@ -47,6 +47,7 @@
   let tHoehe = $state(20);
   let tBreite = $state(100);
   let tFarbe = $state("#1f3a93");
+  let tUnterlage = $state("auto"); // auto = wie Stil „Schrift“ (Zickzack)
   let textObjekte = $derived(
     ((design?.objekte ?? []) as any[]).map((o, i) => ({ o, i })).filter((x) => x.o?.art === "text"),
   );
@@ -61,6 +62,7 @@
       hoehe: Number(tHoehe) || 20,
       breite: Number(tBreite) || 100,
       farbe: tFarbe,
+      unterlage: tUnterlage,
       position: alt?.position ?? [0, 0],
     };
   }
@@ -90,6 +92,7 @@
       tHoehe = o.hoehe ?? 20;
       tBreite = o.breite ?? 100;
       tFarbe = o.farbe ?? "#000000";
+      tUnterlage = o.unterlage ?? "auto";
     }
   }
 
@@ -101,7 +104,7 @@
 
   // Bearbeiteter Text folgt den Eingaben sofort (Vorschau beim Tippen)
   $effect(() => {
-    void [tText, tAlphabet, tHoehe, tBreite, tFarbe];
+    void [tText, tAlphabet, tHoehe, tBreite, tFarbe, tUnterlage];
     untrack(() => {
       if (textWahl < 0 || !design) return;
       const objekte = [...(design.objekte ?? [])];
@@ -265,6 +268,16 @@
         <label>Breite <input type="number" min="30" max="300" step="5" bind:value={tBreite} /> %</label>
         <input type="color" bind:value={tFarbe} title="Garnfarbe (Vorschau)" />
       </div>
+      <label class="zeile"
+        >Unterlage
+        <select bind:value={tUnterlage} class="schmal">
+          <option value="auto">Auto (Zickzack, wie Original)</option>
+          <option value="mittellauf">Mittellauf</option>
+          <option value="edge_walk">Edge Walk</option>
+          <option value="zickzack">Zickzack</option>
+          <option value="keine">keine (kleine Schrift)</option>
+        </select>
+      </label>
       {#if empfohlen}
         <p class="klein" class:warnung-klein={tHoehe < empfohlen[0] || tHoehe > empfohlen[1]}>
           Empfohlen für {tAlphabet}: {empfohlen[0]}–{empfohlen[1]} mm (Handbuch, Alphabet Samples)
@@ -451,6 +464,10 @@
     height: 26px;
     padding: 0;
     border: 1px solid #c9d0d6;
+  }
+  select.schmal {
+    width: auto;
+    flex: 1;
   }
   .warnung-klein {
     color: #b71c1c;

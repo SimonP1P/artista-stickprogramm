@@ -35,6 +35,14 @@ Regressionsreferenzen (`testdaten/referenz/`, Änderungsliste dort in der README
   - Teilbereiche werden mit einem Laufweg am Rand verbunden statt mit einem Sprung.
 - **Laufstich:** Einstich an jedem Eckpunkt der Form.
 
+**Schrift und Kurzstiche (19.11.2026, `../Analyse_Teil3/09`, `10`):**
+- `schrift.rs`: Original-Alphabete (ESB, gelesen in `stick-formate/src/esb.rs`), Text im Design; Stil „Schrift“:
+  Auto Spacing × 0,9, Kurzstiche an, Auto-Unterlage Zickzack.
+- **Kurzstiche** (`sticharten/satin.rs::kurzstiche`, MOD1 `ShortStitchesEffect`): Schwelle 0,5 × Abstand, Gruppen
+  bis 5 Stiche, Dreieckstabelle der Faktoren, Zufall ±0,04. Standard aus; je Satin `"kurzstiche": true`.
+- **Gruppe** (`design.rs::gruppe_wege`): Teile eines Buchstabens mit Laufweg statt Sprung, wenn verdeckt; Reihenfolge
+  mit den wenigsten Sprüngen.
+
 ## Bauen und testen (Windows-PC)
 Umgebung siehe `../ARCHITECTURE.md` §5 (Build-Ausgaben in `F:\Entwicklung\target`).
 ```powershell

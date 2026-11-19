@@ -4,12 +4,12 @@
 //! Ursprung = Rahmenmitte, +y nach oben. Statt Punktlisten gehen Formen (kreis, rechteck, bogen, bezier, verbinden).
 
 use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
-use crate::geometrie::{Linie, Punkt, abstand, bezier, bogen, kreis, p, rechteck};
+use crate::geometrie::{Linie, Punkt, abstand, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
-use crate::sticharten::satin::{paare_bilden, satin, seiten_aus_mittellinie};
+use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mittellinie};
 use crate::sticharten::tatami::tatami;
 use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, satin_unterlage};
 use crate::stiche::StichFolge;
@@ -146,6 +146,10 @@ struct SatinJson {
     unterlage: UnterlageJson,
     /// fester Satinabstand in mm statt Auto Spacing (wie im Alphabet: 0x15)
     abstand: Option<f64>,
+    /// Auto-Spacing-Faktor des Objekts (Stil: 0x2736; Schrift 0,9)
+    faktor: Option<f64>,
+    /// Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)
+    kurzstiche: Option<bool>,
 }
 
 fn hundert() -> f64 {
@@ -181,6 +185,9 @@ struct TextJson {
     /// links | mitte | rechts
     #[serde(default = "mitte")]
     ausrichtung: String,
+    /// Unterlage: auto (wie Stil Schrift: Zickzack) | keine | mittellauf | edge_walk | zickzack | doppelzickzack
+    #[serde(default = "auto")]
+    unterlage: UnterlageJson,
 }
 
 #[derive(Debug, Deserialize)]
@@ -280,8 +287,7 @@ pub enum ObjektArt {
         seite_a: Linie,
         seite_b: Linie,
         unterlage: Unterlage,
-        /// fester Abstand in mm (None = Einstellung des Stoffs/Stils, Auto Spacing)
-        abstand: Option<f64>,
+        optionen: SatinOptionen,
     },
     /// Satinbahn konstanter Breite entlang einer Mittellinie
     SatinLinie {
@@ -300,6 +306,26 @@ pub enum ObjektArt {
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
+    /// Zusammengehörige Teile (ein Buchstabe): Reihenfolge nach Nähe, verbunden mit Laufweg statt Sprung, wenn der
+    /// Weg unter noch zu stickenden Teilen liegt (`Analyse_Teil3/10` §4)
+    Gruppe {
+        teile: Vec<Objekt>,
+        /// Umrisse der Teile (gleiche Reihenfolge) – dort darf der Laufweg liegen
+        umrisse: Vec<Linie>,
+        /// Stichlänge des Laufwegs in mm (Alphabet: Lauf 0x271c in der Füllung, 3,0 mm)
+        laufweg: f64,
+    },
+}
+
+/// Einstellungen einer Satinsäule, die vom Stil abweichen (wie die Effekte am Objekt im Original).
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct SatinOptionen {
+    /// fester Abstand in mm (None = Einstellung des Stoffs/Stils, Auto Spacing)
+    pub abstand: Option<f64>,
+    /// Auto-Spacing-Faktor (None = Stil)
+    pub faktor: Option<f64>,
+    /// Kurzstiche (None = Stil)
+    pub kurzstiche: Option<bool>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -313,18 +339,21 @@ fn satin_wege(
     a: &[Punkt],
     b: &[Punkt],
     unterlage: &Unterlage,
-    abstand: Option<f64>,
+    o: &SatinOptionen,
     e: &Einstellungen,
 ) -> Result<Vec<Linie>, String> {
     let (a, b) = paare_bilden(a, b)?;
-    let satin_e = match abstand {
-        Some(x) => SatinEinstellung {
-            auto_spacing: false,
-            abstand_fest: x,
-            ..e.satin.clone()
-        },
-        None => e.satin.clone(),
-    };
+    let mut satin_e: SatinEinstellung = e.satin.clone();
+    if let Some(x) = o.abstand {
+        satin_e.auto_spacing = false;
+        satin_e.abstand_fest = x;
+    }
+    if let Some(f) = o.faktor {
+        satin_e.faktor = f;
+    }
+    if let Some(k) = o.kurzstiche {
+        satin_e.kurzstiche.an = k;
+    }
     let arten = match unterlage {
         Unterlage::Auto => auto_satin_unterlage(&e.unterlage),
         Unterlage::Arten(l) => l.clone(),
@@ -341,6 +370,174 @@ fn satin_wege(
         // in einem Zug: Unterlage endet am Säulenanfang
         Ok(vec![unter.into_iter().chain(deck).collect()])
     }
+}
+
+/// Teile einer Gruppe (Buchstabe) sticken. Zwischen zwei Teilen ein **Laufweg** (Stichlänge `laufweg`), wenn er
+/// verdeckt ist, d. h. unter Teilen liegt, die danach noch gestickt werden – sonst ein Sprung:
+/// 1. gerade zum Anfang des nächsten Teils, oder
+/// 2. auf kurzem Weg zur Mittellinie des nächsten Teils und auf ihr zurück zu seinem Anfang (liegt unter ihm).
+///
+/// Die Reihenfolge der Teile wird so gewählt, dass möglichst wenige Sprünge nötig sind, dann möglichst kurze Wege
+/// (bis 7 Teile alle Reihenfolgen, sonst „nächster Anfang“).
+/// Grundlage: Maschinen-Zeichensatz Drifter „A“ – erst der Querbalken, dann Laufweg im linken Bein (etwa auf seiner
+/// Mitte) unter dem späteren Bogen (`Analyse_Teil3/10` §4). Wegführung und Bewertung sind **eigene Festlegungen**; das
+/// Original stickt außerdem zuerst alle Unterlagen eines Buchstabens (offen).
+fn gruppe_wege(
+    teile: &[Objekt],
+    umrisse: &[Linie],
+    laufweg: f64,
+    e: &Einstellungen,
+    start: Option<Punkt>,
+) -> Result<Vec<Linie>, String> {
+    // je Teil: Wege, Umriss, Mittellinie (bei Satin)
+    let mut stuecke: Vec<(Vec<Linie>, Option<&Linie>, Option<Linie>)> = Vec::new();
+    for (i, t) in teile.iter().enumerate() {
+        let w: Vec<Linie> = t.wege(e, None)?.into_iter().filter(|w| !w.is_empty()).collect();
+        if w.is_empty() {
+            continue;
+        }
+        let mitte = match &t.art {
+            ObjektArt::Satin { seite_a, seite_b, .. } => {
+                paare_bilden(seite_a, seite_b).ok().map(|(a, b)| mittellinie(&a, &b))
+            }
+            _ => None,
+        };
+        stuecke.push((w, umrisse.get(i).filter(|u| u.len() >= 3), mitte));
+    }
+    let n = stuecke.len().min(63);
+    if n == 0 {
+        return Ok(Vec::new());
+    }
+    let anf: Vec<Punkt> = stuecke.iter().map(|(w, _, _)| w[0][0]).collect();
+    let end: Vec<Punkt> = stuecke
+        .iter()
+        .map(|(w, _, _)| *w.last().and_then(|l| l.last()).unwrap())
+        .collect();
+    let bedeckt = |q: Punkt| -> u64 {
+        stuecke[..n]
+            .iter()
+            .enumerate()
+            .filter(|(_, (_, u, _))| u.is_some_and(|r| im_polygon(q, std::slice::from_ref(r))))
+            .fold(0u64, |m, (k, _)| m | (1 << k))
+    };
+    // Prüfpunkte alle 0,5 mm auf einer Strecke; die Enden (je 0,6 mm) nicht, weil der Zugausgleich Anfang und Ende
+    // der Säulen über den Umriss schiebt
+    let masken = |a: Punkt, b: Punkt| -> Vec<u64> {
+        let d = abstand(a, b);
+        let pruef = ((d / 0.5).ceil() as usize).max(1);
+        (1..pruef)
+            .map(|k| k as f64 / pruef as f64)
+            .filter(|t| t * d >= 0.6 && (1.0 - t) * d >= 0.6)
+            .map(|t| bedeckt(zwischen(a, b, t)))
+            .collect()
+    };
+    // je Verbindung i → j: gerade (Masken, Länge) und über die Mittellinie von j (Masken des Zugangs, Weg)
+    struct Verbindung {
+        gerade: Vec<u64>,
+        gerade_laenge: f64,
+        ueber_mitte: Option<(Vec<u64>, Linie)>,
+    }
+    let mut verb: Vec<Vec<Option<Verbindung>>> = (0..n).map(|_| (0..n).map(|_| None).collect()).collect();
+    for i in 0..n {
+        for j in (0..n).filter(|&j| j != i) {
+            let ueber_mitte = stuecke[j].2.as_ref().filter(|m| m.len() >= 2).map(|m| {
+                let k = (0..m.len())
+                    .min_by(|&x, &y| abstand(end[i], m[x]).total_cmp(&abstand(end[i], m[y])))
+                    .unwrap();
+                let mut weg: Linie = vec![end[i]];
+                weg.extend(m[..=k].iter().rev().copied());
+                weg.push(anf[j]);
+                (masken(end[i], m[k]), weg)
+            });
+            verb[i][j] = Some(Verbindung {
+                gerade: masken(end[i], anf[j]),
+                gerade_laenge: abstand(end[i], anf[j]),
+                ueber_mitte,
+            });
+        }
+    }
+    let weglaenge = |w: &Linie| w.windows(2).map(|s| abstand(s[0], s[1])).sum::<f64>();
+    // Laufweg i → j, wenn verdeckt (`rest` = noch ausstehende Teile einschließlich j): Punkte von end[i] bis anf[j]
+    let laufweg_fuer = |i: usize, j: usize, rest: u64| -> Option<Linie> {
+        let v = verb[i][j].as_ref()?;
+        if v.gerade.iter().all(|&m| m & rest != 0) {
+            return Some(vec![end[i], anf[j]]);
+        }
+        let (zugang, weg) = v.ueber_mitte.as_ref()?;
+        zugang.iter().all(|&m| m & rest != 0).then(|| weg.clone())
+    };
+    let alle: u64 = (1u64 << n) - 1;
+    let anfahrt = |j: usize| start.map_or(0.0, |s| abstand(s, anf[j]));
+
+    // beste Reihenfolge: (Sprünge, Weglänge) möglichst klein
+    let mut reihenfolge: Vec<usize> = Vec::new();
+    if n <= 7 {
+        let mut beste: (usize, f64) = (usize::MAX, f64::INFINITY);
+        let mut stapel: Vec<(Vec<usize>, u64, usize, f64)> =
+            (0..n).map(|j| (vec![j], alle & !(1 << j), 0, anfahrt(j))).collect();
+        while let Some((weg, rest, sprunge, laenge)) = stapel.pop() {
+            if sprunge > beste.0 || (sprunge == beste.0 && laenge >= beste.1) {
+                continue;
+            }
+            if rest == 0 {
+                beste = (sprunge, laenge);
+                reihenfolge = weg;
+                continue;
+            }
+            let i = *weg.last().unwrap();
+            for j in (0..n).filter(|&j| rest & (1 << j) != 0) {
+                let (s, l) = match laufweg_fuer(i, j, rest) {
+                    Some(w) => (sprunge, laenge + weglaenge(&w)),
+                    None => (
+                        sprunge + 1,
+                        laenge + verb[i][j].as_ref().map_or(0.0, |v| v.gerade_laenge),
+                    ),
+                };
+                let mut w = weg.clone();
+                w.push(j);
+                stapel.push((w, rest & !(1 << j), s, l));
+            }
+        }
+    } else {
+        let mut rest = alle;
+        let mut pos = start.unwrap_or(anf[0]);
+        while rest != 0 {
+            let j = (0..n)
+                .filter(|&j| rest & (1 << j) != 0)
+                .min_by(|&x, &y| abstand(pos, anf[x]).total_cmp(&abstand(pos, anf[y])))
+                .unwrap();
+            reihenfolge.push(j);
+            rest &= !(1 << j);
+            pos = end[j];
+        }
+    }
+
+    let mut out: Vec<Linie> = Vec::new();
+    let mut rest = alle;
+    let mut vorher: Option<usize> = None;
+    for &j in &reihenfolge {
+        let mut wege = stuecke[j].0.clone();
+        if let Some(i) = vorher
+            && let Some(weg) = laufweg_fuer(i, j, rest)
+            && let Some(letzter) = out.last_mut()
+        {
+            // Laufstiche höchstens `laufweg` lang entlang des Wegs, Eckpunkte des Wegs als Einstiche
+            for s in weg.windows(2) {
+                let schritte = ((abstand(s[0], s[1]) / laufweg.max(0.5)).ceil() as usize).max(1);
+                letzter.extend((1..=schritte).map(|k| zwischen(s[0], s[1], k as f64 / schritte as f64)));
+            }
+            letzter.pop(); // anf[j] kommt mit dem Teil selbst
+            letzter.extend(wege.remove(0));
+        }
+        out.extend(wege);
+        rest &= !(1 << j);
+        vorher = Some(j);
+    }
+    // weitere Teile über 63 (kommt bei Buchstaben nicht vor): ohne Laufweg anhängen
+    for (w, _, _) in stuecke.iter().skip(n) {
+        out.extend(w.iter().cloned());
+    }
+    Ok(out)
 }
 
 impl Objekt {
@@ -368,16 +565,21 @@ impl Objekt {
                 seite_a,
                 seite_b,
                 unterlage,
-                abstand,
-            } => satin_wege(seite_a, seite_b, unterlage, *abstand, e),
+                optionen,
+            } => satin_wege(seite_a, seite_b, unterlage, optionen, e),
             ObjektArt::SatinLinie {
                 punkte,
                 breite,
                 unterlage,
             } => {
                 let (a, b) = seiten_aus_mittellinie(punkte, *breite);
-                satin_wege(&a, &b, unterlage, None, e)
+                satin_wege(&a, &b, unterlage, &SatinOptionen::default(), e)
             }
+            ObjektArt::Gruppe {
+                teile,
+                umrisse,
+                laufweg,
+            } => gruppe_wege(teile, umrisse, *laufweg, e, start),
             ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
             ObjektArt::Tatami {
                 umriss,
@@ -434,7 +636,11 @@ impl Design {
                         seite_a: s.seite_a.punkte(),
                         seite_b: s.seite_b.punkte(),
                         unterlage: s.unterlage.into(),
-                        abstand: s.abstand,
+                        optionen: SatinOptionen {
+                            abstand: s.abstand,
+                            faktor: s.faktor,
+                            kurzstiche: s.kurzstiche,
+                        },
                     },
                 },
                 ObjektJson::Text(t) => Objekt {
@@ -453,6 +659,10 @@ impl Design {
                                 _ => 0.5,
                             },
                             farbe: t.farbe.clone(),
+                            unterlage: match Unterlage::from(t.unterlage) {
+                                Unterlage::Auto => None,
+                                Unterlage::Arten(l) => Some(l),
+                            },
                         },
                     },
                     farbe: t.farbe,
@@ -568,5 +778,49 @@ fn lauf_objekt(l: LaufJson, art_dreifach: bool) -> Objekt {
             dreifach: l.dreifach.unwrap_or(art_dreifach),
             geschlossen: l.geschlossen,
         },
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::einstellungen::fuer_stoff;
+
+    fn saeule(x0: f64, x1: f64, y0: f64, y1: f64, waagrecht: bool) -> (Objekt, Linie) {
+        // Seiten A/B und Umriss eines Rechtecks; waagrecht: von x0 nach x1, sonst von y0 nach y1
+        let (a, b) = if waagrecht {
+            (vec![p(x0, y1), p(x1, y1)], vec![p(x0, y0), p(x1, y0)])
+        } else {
+            (vec![p(x0, y0), p(x0, y1)], vec![p(x1, y0), p(x1, y1)])
+        };
+        let umriss = vec![
+            p(x0.min(x1), y0),
+            p(x0.max(x1), y0),
+            p(x0.max(x1), y1),
+            p(x0.min(x1), y1),
+        ];
+        let o = Objekt {
+            farbe: "#000000".into(),
+            name: String::new(),
+            art: ObjektArt::Satin {
+                seite_a: a,
+                seite_b: b,
+                unterlage: Unterlage::Arten(vec![]),
+                optionen: SatinOptionen::default(),
+            },
+        };
+        (o, umriss)
+    }
+
+    /// wie Drifter „A“: Querbalken zuerst (endet über dem linken Bein), dann Laufweg im Bein unter der Säule
+    #[test]
+    fn gruppe_laufweg_statt_sprung() {
+        let (bein, u_bein) = saeule(4.0, 0.0, 0.0, 10.0, false);
+        let (balken, u_balken) = saeule(10.0, 1.0, 4.0, 6.0, true);
+        let e = fuer_stoff("0 Software Defaults").unwrap();
+        // Reihenfolge in der Eingabe: Bein zuerst – die Gruppe stickt trotzdem den Balken zuerst
+        let wege = gruppe_wege(&[bein, balken], &[u_bein, u_balken], 3.0, &e, Some(p(0.0, 0.0))).unwrap();
+        assert_eq!(wege.len(), 1, "ein Zug ohne Sprung");
+        assert!(wege[0][0].x > 9.0, "beginnt am Balken");
     }
 }

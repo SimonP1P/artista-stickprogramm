@@ -6,7 +6,8 @@
 
 use crate::einstellungen::SatinEinstellung;
 use crate::geometrie::{
-    Linie, Punkt, abstand, kumuliert, ohne_doppelte, punkt_bei, richtung, versatz_linie, verschieben, zwischen,
+    Linie, Punkt, abstand, abstand_punkt_strecke, kumuliert, ohne_doppelte, punkt_bei, richtung, versatz_linie,
+    verschieben, zwischen,
 };
 
 /// Wie Pythons `round(t, 9)` für die Zuordnung der Punkte.
@@ -93,6 +94,8 @@ pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Resu
             seite = !seite;
         }
     }
+    // Kurzstiche nur an den regelmäßigen Einstichen, vor dem Abschluss an der Endkante
+    kurzstiche(&mut out, e);
     // Ende sauber abschließen: letzter Stich auf die Endkante
     let ende = einstich(*a.last().unwrap(), *b.last().unwrap(), seite);
     if abstand(*out.last().unwrap(), ende) > 1e-6 {
@@ -101,10 +104,71 @@ pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Resu
     Ok(out)
 }
 
+/// Zufallszahlen für die Kurzstiche. Das Original nimmt geometry.dll `ACMRandomNumber` mit festem Startwert 0x66ec8f
+/// (MOD1 0x10186ef0) – das Verfahren selbst ist **Annahme**: Park–Miller „minimal standard“ (Communications of the
+/// ACM 1988, der Name legt es nahe; geometry.dll noch nicht gelesen).
+struct AcmZufall(u64);
+
+impl AcmZufall {
+    fn naechste(&mut self) -> f64 {
+        self.0 = self.0 * 16807 % 2_147_483_647;
+        self.0 as f64 / 2_147_483_647.0
+    }
+}
+
+/// Kurzstiche an Innenkurven wie MOD1 `ShortStitchesEffect` (0x10186ed0 mit 0x10186ad0 und 0x10186a60):
+/// Die Einstiche liegen paarweise vor (A, B, A, B …). Für jede Seite nacheinander: Kommen zwei Nachbarstiche auf
+/// dieser Seite näher als `schwelle` × Abstand zusammen (kleinster Abstand Einstich ↔ Nachbarstich, 0x10186db0), wird
+/// eine Gruppe aus bis zu `max_gruppe` Stichen gebildet, und jeder Stich der Gruppe wird auf Faktor × Länge gekürzt
+/// (Einstich rückt zur Gegenseite; Faktor aus der Dreieckstabelle, mit Zufall ±0,04).
+/// Sicherheit: Ablauf, Schwelle, Tabelle und Zufallswerte hoch (Code); die Gruppenbildung ist **vereinfacht**
+/// (Original 0x10186ad0 mit Toleranzen 0,9/1,1/1,33): Gruppe = folgende Stiche, die näher als 0,9 × Abstand am
+/// ersten Stich der Gruppe liegen.
+pub fn kurzstiche(pts: &mut [Punkt], e: &SatinEinstellung) {
+    let k = &e.kurzstiche;
+    let n_paare = pts.len() / 2;
+    if !k.an || k.schwelle <= 0.0 || n_paare < 3 {
+        return;
+    }
+    let mut zufall = AcmZufall(0x66ec8f);
+    for s in 0..2 {
+        let o = 1 - s;
+        let p = |pts: &[Punkt], i: usize, seite: usize| pts[2 * i + seite];
+        let dicht = |pts: &[Punkt], i: usize, j: usize| -> f64 {
+            abstand_punkt_strecke(p(pts, j, s), p(pts, i, s), p(pts, i, o)).min(abstand_punkt_strecke(
+                p(pts, i, s),
+                p(pts, j, s),
+                p(pts, j, o),
+            ))
+        };
+        let mut i = 1;
+        while i < n_paare {
+            let sp = e.abstand(abstand(p(pts, i, s), p(pts, i, o)));
+            if dicht(pts, i - 1, i) >= k.schwelle * sp {
+                i += 1;
+                continue;
+            }
+            let mut n = 1;
+            while n < k.max_gruppe && i + n < n_paare && dicht(pts, i, i + n) < 0.9 * sp {
+                n += 1;
+            }
+            for j in 0..n {
+                let mut f = k.faktor(n, j);
+                if k.zufall {
+                    f += [-0.04, 0.0, 0.04][((zufall.naechste() * 3.0) as usize).min(2)];
+                }
+                let (ps, po) = (p(pts, i + j, s), p(pts, i + j, o));
+                pts[2 * (i + j) + s] = Punkt::new(po.x + f * (ps.x - po.x), po.y + f * (ps.y - po.y));
+            }
+            i += n;
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::einstellungen::fuer_stoff;
+    use crate::einstellungen::{KurzstichEinstellung, fuer_stoff};
     use crate::geometrie::{bogen, p};
 
     fn gerade(breite: f64) -> (Linie, Linie) {
@@ -154,6 +218,38 @@ mod tests {
                 .iter()
                 .all(|d| (d - 0.46 * 1.10 / 2.0).abs() < 1e-9)
         );
+    }
+
+    #[test]
+    fn kurzstiche_nur_an_der_innenkurve() {
+        // enger Bogen: Mittellinie r = 3 mm, Säule 4 mm breit → innen r = 1, außen r = 5
+        let mitte = bogen(p(0.0, 0.0), 3.0, 0.0, 180.0, 0.01);
+        let (a, b) = seiten_aus_mittellinie(&mitte, 4.0);
+        let mut e = SatinEinstellung {
+            auto_spacing: false,
+            abstand_fest: 0.40,
+            zugausgleich: 0.0,
+            ..Default::default()
+        };
+        let ohne = satin(&a, &b, &e).unwrap();
+        e.kurzstiche.an = true;
+        let mit = satin(&a, &b, &e).unwrap();
+        assert_eq!(ohne.len(), mit.len());
+        let geaendert: Vec<usize> = (0..ohne.len()).filter(|&i| abstand(ohne[i], mit[i]) > 1e-9).collect();
+        assert!(geaendert.len() > 5, "{}", geaendert.len());
+        for &i in &geaendert {
+            let (r0, r1) = (ohne[i].x.hypot(ohne[i].y), mit[i].x.hypot(mit[i].y));
+            assert!(r0 < 3.0 && r1 > r0, "nur innen, und nach außen gerückt: {r0} → {r1}");
+            // Faktor 0,61 … 0,94 der Stichlänge (Tabelle ± 0,04): innen r 1 → höchstens 5 − 0,61 × 4
+            assert!(r1 <= 5.0 - 0.6 * 4.0 + 1e-6);
+        }
+        // gerade Säule: nichts zu kürzen
+        let (ga, gb) = gerade(3.0);
+        let aus = SatinEinstellung {
+            kurzstiche: KurzstichEinstellung::default(),
+            ..e.clone()
+        };
+        assert_eq!(satin(&ga, &gb, &e).unwrap(), satin(&ga, &gb, &aus).unwrap());
     }
 
     #[test]

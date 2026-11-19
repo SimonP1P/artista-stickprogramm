@@ -259,7 +259,8 @@ const OBJEKT_KLASSEN: [u32; 19] = [
 ];
 
 /// Gefundene Sticharten eines Objekts: Satin (mit Abstand), Tatami, Lauf (mit Länge)
-type ArtFunde = (Option<Option<f64>>, bool, Option<Option<f64>>);
+/// Satin (Abstand), Tatami, Lauf (Länge), Auto Spacing (Effekt 0x21 vorhanden)
+type ArtFunde = (Option<Option<f64>>, bool, Option<Option<f64>>, bool);
 
 /// Einen entschlüsselten Zeichen-Stream lesen (IMPORT.DLL 0x100c6230).
 pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
@@ -314,8 +315,9 @@ pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
                 },
                 stichart: Stichart::Unbekannt,
                 unterlagen: vec![],
+                laufweg: None,
             });
-            arten.push((None, false, None));
+            arten.push((None, false, None, false));
             continue;
         }
         let (Some(o), Some(art)) = (objekte.last_mut(), arten.last_mut()) else {
@@ -349,6 +351,8 @@ pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
                     }
                 }
                 0x1b => art.1 = true,
+                // AutoSpacingEffect am Objekt: vorhanden = aktiv (Analyse_Teil3/05 §1)
+                0x21 => art.3 = true,
                 0x18 | 0x19 => {
                     if art.2.is_none() {
                         art.2 = Some(u32_bei(&sb.daten, 0).map(|v| v as f64 / EINHEIT));
@@ -372,11 +376,18 @@ pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
     }
     for (o, art) in objekte.iter_mut().zip(&arten) {
         o.stichart = match art {
-            (Some(abstand), _, _) => Stichart::Satin { abstand: *abstand },
-            (None, true, _) => Stichart::Tatami,
-            (None, false, Some(laenge)) => Stichart::Lauf { laenge: *laenge },
+            (Some(abstand), _, _, auto) => Stichart::Satin {
+                abstand: *abstand,
+                auto_spacing: *auto,
+            },
+            (None, true, _, _) => Stichart::Tatami,
+            (None, false, Some(laenge), _) => Stichart::Lauf { laenge: *laenge },
             _ => Stichart::Unbekannt,
         };
+        // Satin/Tatami: der Lauf 0x271c in der Füllung ist der Laufweg
+        if !matches!(o.stichart, Stichart::Lauf { .. }) {
+            o.laufweg = art.2.flatten();
+        }
     }
     // Gruppen (0x08) und Objekte ohne Form tragen keine Stiche
     objekte.retain(|o| !o.umrisse.is_empty());
@@ -541,9 +552,14 @@ mod tests {
         assert_eq!(z.objekte.len(), 2);
         assert_eq!(z.objekte[0].umrisse[0].knoten.len(), 14);
         assert_eq!(z.objekte[0].winkel.len(), 7);
-        assert_eq!(z.objekte[0].stichart, Stichart::Satin { abstand: Some(0.4) });
+        let satin = Stichart::Satin {
+            abstand: Some(0.4),
+            auto_spacing: true,
+        };
+        assert_eq!(z.objekte[0].stichart, satin);
+        assert_eq!(z.objekte[0].laufweg, Some(3.0));
         assert_eq!(z.objekte[1].umrisse[0].knoten.len(), 22);
-        assert_eq!(z.objekte[1].stichart, Stichart::Satin { abstand: Some(0.4) });
+        assert_eq!(z.objekte[1].stichart, satin);
         // alle Zeichen haben mindestens eine Säule mit Stichart
         for z in a.zeichen.values() {
             assert!(

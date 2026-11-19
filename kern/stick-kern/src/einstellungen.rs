@@ -86,6 +86,9 @@ pub struct SatinEinstellung {
     pub faktor: f64,
     /// Handbuch S. 199 „automatically set at 0.2 mm“ (hoch)
     pub zugausgleich: f64,
+    /// Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2)
+    #[serde(default)]
+    pub kurzstiche: KurzstichEinstellung,
 }
 
 impl Default for SatinEinstellung {
@@ -95,7 +98,48 @@ impl Default for SatinEinstellung {
             abstand_fest: 0.40,
             faktor: 1.0,
             zugausgleich: 0.20,
+            kurzstiche: KurzstichEinstellung::default(),
         }
+    }
+}
+
+/// Kurzstiche (MOD1 `ShortStitchesEffect`, Werte aus dem Stil 0x273a; `Analyse_Teil3/10_regeln_original.md` §2).
+/// Im Stil „Software Defaults“ und bei den Stoffen **aus** (Flag 0x2001), im Stil „Schrift“ **an** (Analyse_Teil3/05).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct KurzstichEinstellung {
+    pub an: bool,
+    /// 0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand
+    /// zusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)
+    pub schwelle: f64,
+    /// 0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660)
+    pub zufall: bool,
+    /// 0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0)
+    pub max_gruppe: usize,
+    /// 0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5)
+    pub faktoren: Vec<f64>,
+}
+
+impl Default for KurzstichEinstellung {
+    fn default() -> Self {
+        KurzstichEinstellung {
+            an: false,
+            schwelle: 0.5,
+            zufall: true,
+            max_gruppe: 5,
+            faktoren: vec![
+                0.80, 0.85, 0.72, 0.70, 0.90, 0.70, 0.70, 0.90, 0.80, 0.70, 0.70, 0.87, 0.65, 0.83, 0.70,
+            ],
+        }
+    }
+}
+
+impl KurzstichEinstellung {
+    /// Faktor für Stich `k` einer Gruppe aus `n` Stichen (MOD1 0x10186a60: Index (n−2)(n−1)/2 + (n−1) + k = n(n−1)/2 + k).
+    pub fn faktor(&self, n: usize, k: usize) -> f64 {
+        let n = n.clamp(1, self.max_gruppe.max(1));
+        let i = (n - 1) * n / 2 + k.min(n - 1);
+        self.faktoren.get(i).copied().unwrap_or(1.0)
     }
 }
 

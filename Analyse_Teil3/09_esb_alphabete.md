@@ -61,6 +61,11 @@ OLE-Datei mit den Streams
 - Design-JSON: `{"art": "text", "text": …, "alphabet": "Drifter", "hoehe": 20, "breite": 100, "abstand": …,
   "position": [x, y], "ausrichtung": "mitte"}`. Programm: Bereich „Schrift“ (Text, Alphabet, Höhe, Breite, Farbe),
   Alphabete als Ressource `app/src-tauri/alphabete/`.
+- **Stufe 2 (19.11.2026, [10](10_regeln_original.md)):** Stil „Schrift“ wie im Original – Auto Spacing (Effekt 0x21 am
+  Zeichen) × 0,9, Kurzstiche an, Auto-Unterlage Zickzack (Unterlage aus dem Alphabet hat Vorrang, Text-Option
+  `unterlage`), Buchstabe als Gruppe mit Laufweg (3,0 mm aus 0x271c) statt Sprung. „A“ jetzt wie das Original ohne
+  Sprung. Die Zeichensätze der Maschine weichen vom Stil ab (fester Abstand 0,40 mm, kein Zugausgleich, Mittellauf
+  bzw. Zickzack je Alphabet – von Bernina so erstellt).
 - **Erster Vergleich** „A“ Drifter 25 mm mit dem Original aus der Maschine (Zeichensatz Nr. 1): 373 statt 397 Stiche,
   gleiche Stichrichtungen und Reihenfolge der Säulen (Querbalken zuerst). Es fehlen noch: (a) **Mittellauf als Unterlage**
   unter beiden Säulen (im Alphabet nicht enthalten → automatische Schrift-Unterlage des Originals, `let_underlay`),
