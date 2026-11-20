@@ -372,4 +372,63 @@ mod tests {
         let by = pts.iter().map(|q| q.y).fold(f64::MIN, f64::max) - pts.iter().map(|q| q.y).fold(f64::MAX, f64::min);
         assert!((bx - 40.0).abs() < 0.05 && (by - 20.0).abs() < 0.05, "{bx} × {by}");
     }
+
+    /// Kreis-Grundlinie: Buchstabe in der Textmitte sitzt oben auf dem Kreis, rechts davon im Uhrzeiger weiter
+    #[test]
+    fn kreis_grundlinie() {
+        use crate::schrift::{Grundlinie, TextVorgabe};
+        let buchstabe = |x: f64| Objekt {
+            farbe: "#000000".into(),
+            name: "B".into(),
+            art: ObjektArt::Tatami {
+                umriss: vec![p(x - 1.0, 0.0), p(x + 1.0, 0.0), p(x + 1.0, 5.0), p(x - 1.0, 5.0)],
+                loecher: vec![],
+                winkel: None,
+                unterlage: None,
+                aussparen: Default::default(),
+            },
+        };
+        let zeile = TextVorgabe {
+            text: "xx".into(),
+            hoehe: 5.0,
+            breite_prozent: 100.0,
+            abstand: None,
+            position: p(0.0, 0.0),
+            ausrichtung: 0.5,
+            unterlage: None,
+            farbe: "#000000".into(),
+            wortabstand: None,
+            zeilenabstand: None,
+            grundlinie: None,
+        };
+        let g = Grundlinie {
+            art: "kreis".into(),
+            radius: 20.0,
+            winkel: None,
+            lage: None,
+        };
+        let o = g.anwenden(
+            vec![buchstabe(0.0), buchstabe(20.0 * std::f64::consts::FRAC_PI_2)],
+            &zeile,
+            p(0.0, 0.0),
+            45.0,
+        );
+        let mut a = Vec::new();
+        formpunkte(&o[0].art, &mut a);
+        // erster Buchstabe oben: Fuß auf y = 20, Kopf bei y = 25
+        assert!(a.iter().all(|q| q.y > 19.9 && q.y < 25.1), "{a:?}");
+        let mut b = Vec::new();
+        formpunkte(&o[1].art, &mut b);
+        // Viertelkreis weiter (Bogenlänge 20·π/2): rechts auf dem Kreis, nach außen gedreht
+        assert!(b.iter().all(|q| q.x > 19.9 && q.x < 25.1 && q.y.abs() < 1.1), "{b:?}");
+        let unten = Grundlinie {
+            lage: Some("unten".into()),
+            ..g
+        };
+        let o = unten.anwenden(vec![buchstabe(0.0)], &zeile, p(0.0, 0.0), 45.0);
+        let mut c = Vec::new();
+        formpunkte(&o[0].art, &mut c);
+        // unten: Fuß auf y = −20, Kopf zur Mitte hin (y bis −15), aufrecht lesbar
+        assert!(c.iter().all(|q| q.y > -20.1 && q.y < -14.9), "{c:?}");
+    }
 }

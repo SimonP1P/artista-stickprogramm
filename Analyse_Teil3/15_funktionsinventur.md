@@ -56,9 +56,9 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Computer-Schriften (TTF/OTF) | ✅ | Stichart eigene Festlegung |
 | Unterlagen zuerst je Säulengruppe | ✅ | Bericht 11 |
 | Säulenreihenfolge/Start/Ende wie Original | 🟡 | Analyse läuft (Bericht 11 §4) |
-| Mehrere Zeilen, Zeilenabstand, Leerzeichenbreite | ⬜ | |
+| Mehrere Zeilen, Zeilenabstand, Leerzeichenbreite | ✅ | Vorlage 0x3e82 (20.11.) |
 | Kursiv, Fett | ⬜ | |
-| Grundlinien: waagrecht, senkrecht, **Kreis/Bogen**, mehrere, eigene Kurve | ⬜ | Kap. 19 |
+| Grundlinien: waagrecht, senkrecht, **Kreis/Bogen**, mehrere, eigene Kurve | 🟡 | Kreis oben/unten ✅ (20.11.); senkrecht, Ellipse, eigene Kurve ⬜ |
 | Abstand/Position/Form einzelner Buchstaben, Farbe je Buchstabe | ⬜ | Kap. 19 |
 | Stichart je Schrift (Satin/Step/Fancy), Stichwinkel je Buchstabe | ⬜ | Kap. 20 |
 | Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | ⬜ | Kap. 20, Stil |

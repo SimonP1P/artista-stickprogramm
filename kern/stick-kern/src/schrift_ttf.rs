@@ -229,6 +229,7 @@ mod tests {
             farbe: "#000000".into(),
             wortabstand: None,
             zeilenabstand: None,
+            grundlinie: None,
         }
     }
 

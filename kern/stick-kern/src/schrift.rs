@@ -274,6 +274,95 @@ pub struct TextVorgabe {
     pub wortabstand: Option<f64>,
     /// Zeilenabstand (Lücke) in Teilen der Höhe (None = Vorlage 0,6)
     pub zeilenabstand: Option<f64>,
+    /// Grundlinie: None = gerade; Kreis (Lettering-Dialog „Baseline“, Handbuch Kap. 19)
+    pub grundlinie: Option<Grundlinie>,
+}
+
+/// Kreis-Grundlinie (Handbuch Kap. 19 „create circle baselines“; Dialog Baseline: Radius X/Y, Justif. Angle,
+/// Position Above/Through/Below). Der Text wird zuerst gerade gesetzt, dann jeder Buchstabe starr auf den Kreis gelegt
+/// (Bogenlänge = Abstand auf der geraden Grundlinie). `position` des Texts ist dann die **Kreismitte**.
+#[derive(Clone, Debug, PartialEq, serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Grundlinie {
+    /// „kreis“
+    pub art: String,
+    /// Radius in mm (Vorlage 0x3e8b/0x3e8c = 9000 → 50 mm, Zuordnung mittel)
+    #[serde(default = "kreis_radius")]
+    pub radius: f64,
+    /// Lage der Textmitte auf dem Kreis in Grad (Justif. Angle; Standard 90 = oben, bei „unten“ 270)
+    pub winkel: Option<f64>,
+    /// „oben“ (Above: Buchstaben außen, im Uhrzeiger lesbar) oder „unten“ (Below: innen, gegen den Uhrzeiger)
+    pub lage: Option<String>,
+}
+
+fn kreis_radius() -> f64 {
+    50.0
+}
+
+impl Grundlinie {
+    pub fn pruefen(&self) -> Result<(), String> {
+        if self.art != "kreis" {
+            return Err(format!("Grundlinie „{}“ unbekannt (kreis)", self.art));
+        }
+        if self.radius <= 0.0 {
+            return Err("Radius der Grundlinie muss größer als 0 sein".into());
+        }
+        match self.lage.as_deref() {
+            None | Some("oben") | Some("unten") => Ok(()),
+            Some(x) => Err(format!("Lage „{x}“ unbekannt (oben, unten)")),
+        }
+    }
+
+    /// Buchstaben einer gerade gesetzten Zeile auf den Kreis legen. `zeile` = Vorgabe der Zeile (Grundlinie y,
+    /// Ankerpunkt x), `mitte` = Kreismitte (Position des Texts). Folgezeilen liegen innen (oben) bzw. außen (unten).
+    pub fn anwenden(
+        &self,
+        objekte: Vec<Objekt>,
+        zeile: &TextVorgabe,
+        mitte: Punkt,
+        winkel_standard: f64,
+    ) -> Vec<Objekt> {
+        use crate::transformation::{Matrix, abbilden, formpunkte};
+        let unten = self.lage.as_deref() == Some("unten");
+        let versatz = zeile.position.y - mitte.y; // 0 für die erste Zeile, negativ für Folgezeilen
+        let r = if unten {
+            self.radius - versatz
+        } else {
+            self.radius + versatz
+        }
+        .max(1.0);
+        let w0 = self.winkel.unwrap_or(if unten { 270.0 } else { 90.0 }).to_radians();
+        objekte
+            .into_iter()
+            .map(|o| {
+                let mut pts = Vec::new();
+                formpunkte(&o.art, &mut pts);
+                if pts.is_empty() {
+                    return o;
+                }
+                let x0 = pts.iter().map(|q| q.x).fold(f64::MAX, f64::min);
+                let x1 = pts.iter().map(|q| q.x).fold(f64::MIN, f64::max);
+                let xc = (x0 + x1) / 2.0;
+                let s = xc - zeile.position.x;
+                let (theta, drehung) = if unten {
+                    (w0 + s / r, w0 + s / r + std::f64::consts::FRAC_PI_2)
+                } else {
+                    (w0 - s / r, w0 - s / r - std::f64::consts::FRAC_PI_2)
+                };
+                let ziel = p(mitte.x + r * theta.cos(), mitte.y + r * theta.sin());
+                let (sn, cs) = drehung.sin_cos();
+                let m = Matrix {
+                    a: cs,
+                    b: -sn,
+                    c: sn,
+                    d: cs,
+                    e: ziel.x - (cs * xc - sn * zeile.position.y),
+                    f: ziel.y - (sn * xc + cs * zeile.position.y),
+                };
+                abbilden(&o, &m, winkel_standard)
+            })
+            .collect()
+    }
 }
 
 impl TextVorgabe {
@@ -516,6 +605,7 @@ mod tests {
             unterlage: None,
             wortabstand: None,
             zeilenabstand: None,
+            grundlinie: None,
         };
         let (obj, fehlend) = text_objekte(&alpha, &v);
         assert_eq!(fehlend, vec!['?']);
@@ -580,6 +670,7 @@ mod tests {
             farbe: "#000000".into(),
             wortabstand: None,
             zeilenabstand: None,
+            grundlinie: None,
         };
         let z = v.zeilen();
         assert_eq!(

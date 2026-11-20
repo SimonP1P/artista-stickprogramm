@@ -211,6 +211,8 @@ struct TextJson {
     wortabstand: Option<f64>,
     /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt ein Zeilenumbruch im Text
     zeilenabstand: Option<f64>,
+    /// Kreis-Grundlinie (`position` = Kreismitte)
+    grundlinie: Option<crate::schrift::Grundlinie>,
     /// Bezugspunkt auf der Grundlinie
     #[serde(default)]
     position: Option<Punkt>,
@@ -244,6 +246,8 @@ struct TtfJson {
     wortabstand: Option<f64>,
     /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\n` im Text
     zeilenabstand: Option<f64>,
+    /// Kreis-Grundlinie (`position` = Kreismitte)
+    grundlinie: Option<crate::schrift::Grundlinie>,
     #[serde(default)]
     position: Option<Punkt>,
     #[serde(default = "mitte")]
@@ -1036,7 +1040,7 @@ impl Design {
                 }
             }
         }
-        let objekte = d
+        let objekte: Vec<Objekt> = d
             .objekte
             .into_iter()
             .map(|o| match o {
@@ -1074,6 +1078,7 @@ impl Design {
                             farbe: t.farbe.clone(),
                             wortabstand: t.wortabstand.map(|w| w / 100.0),
                             zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
+                            grundlinie: t.grundlinie,
                             unterlage: match Unterlage::from(t.unterlage) {
                                 Unterlage::Auto => None,
                                 Unterlage::Arten(l) => Some(l),
@@ -1135,6 +1140,7 @@ impl Design {
                             farbe: t.farbe.clone(),
                             wortabstand: t.wortabstand.map(|w| w / 100.0),
                             zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
+                            grundlinie: t.grundlinie,
                             unterlage: None,
                         },
                         stichart: match t.stichart.as_str() {
@@ -1190,6 +1196,13 @@ impl Design {
                 },
             })
             .collect();
+        for o in &objekte {
+            if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art
+                && let Some(g) = &vorgabe.grundlinie
+            {
+                g.pruefen()?;
+            }
+        }
         let transform_lesen = |t: &Value, wo: &str| -> Result<Transformation, String> {
             let t: Transformation =
                 serde_json::from_value(t.clone()).map_err(|e| format!("{wo}: transform ungültig: {e}"))?;
@@ -1268,6 +1281,10 @@ impl Design {
                         .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
                     for z in vorgabe.zeilen() {
                         let (obj, f) = text_objekte(a, &z);
+                        let obj = match &vorgabe.grundlinie {
+                            Some(g) => g.anwenden(obj, &z, vorgabe.position, self.einstellungen.tatami.winkel),
+                            None => obj,
+                        };
                         out.extend(obj);
                         fehlend.extend(f);
                     }
@@ -1289,6 +1306,10 @@ impl Design {
                         .ok_or_else(|| format!("Schrift „{schrift}“ nicht geladen"))?;
                     for z in vorgabe.zeilen() {
                         let (obj, f) = ttf_text_objekte(s, &z, stichart);
+                        let obj = match &vorgabe.grundlinie {
+                            Some(g) => g.anwenden(obj, &z, vorgabe.position, self.einstellungen.tatami.winkel),
+                            None => obj,
+                        };
                         out.extend(obj);
                         fehlend.extend(f);
                     }
