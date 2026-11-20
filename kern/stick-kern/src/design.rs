@@ -4,6 +4,7 @@
 //! Ursprung = Rahmenmitte, +y nach oben. Statt Punktlisten gehen Formen (kreis, rechteck, bogen, bezier, verbinden).
 
 use crate::applikation::{ApplikationVorgabe, applikation_objekte};
+use crate::aussparen::{Aussparen, Teil, bedeckt, flaeche_minus};
 use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
 use crate::geometrie::{
     Linie, Punkt, abstand, abstand_punkt_strecke, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen,
@@ -244,6 +245,10 @@ struct MusterJson {
     #[serde(default = "hundert")]
     groesse: f64,
     unterlage: Option<bool>,
+    #[serde(default)]
+    aussparen: Vec<String>,
+    #[serde(default)]
+    ueberlappung: f64,
 }
 
 /// Applikation (`applikation.rs`): Platzierung, Heften, Abdecken mit Stopps.
@@ -293,6 +298,12 @@ struct TatamiJson {
     winkel: Option<f64>,
     /// ohne Angabe: Auto Underlay des Stils (`auto_an`)
     unterlage: Option<bool>,
+    /// Namen der Objekte, deren Fläche ausgespart wird (Knockout)
+    #[serde(default)]
+    aussparen: Vec<String>,
+    /// Überlappung der Aussparung in mm (Standard 0 = exakt wie das Original)
+    #[serde(default)]
+    ueberlappung: f64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -388,6 +399,8 @@ pub enum ObjektArt {
         /// None = Auto Underlay des Stils; mit Unterlage: Tatami-Unterlage „Step“ (Art für Flächen: eigene
         /// Festlegung, die vorgewählte Art des Stils ist Zickzack)
         unterlage: Option<bool>,
+        /// Flächen anderer Objekte aussparen (Knockout, `aussparen.rs`); wird vor dem Berechnen aufgelöst
+        aussparen: Aussparen,
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
@@ -399,6 +412,7 @@ pub enum ObjektArt {
         winkel: Option<f64>,
         groesse: f64,
         unterlage: Option<bool>,
+        aussparen: Aussparen,
     },
     /// Applikation (Platzierung, Heften, Abdecken mit Stopps); wird vor dem Berechnen aufgelöst
     Applikation(ApplikationVorgabe),
@@ -828,6 +842,7 @@ impl Objekt {
                 loecher,
                 winkel,
                 unterlage,
+                ..
             } => {
                 let w = winkel.unwrap_or(e.tatami.winkel);
                 let mut wege = Vec::new();
@@ -846,6 +861,7 @@ impl Objekt {
                 winkel,
                 groesse,
                 unterlage,
+                ..
             } => {
                 let m = crate::muster::finden(muster).ok_or_else(|| format!("Füllmuster „{muster}“ gibt es nicht"))?;
                 let w = winkel.or(m.winkel).unwrap_or(e.tatami.winkel);
@@ -945,6 +961,10 @@ impl Design {
                         winkel: m.winkel,
                         groesse: m.groesse,
                         unterlage: m.unterlage,
+                        aussparen: Aussparen {
+                            namen: m.aussparen,
+                            ueberlappung: m.ueberlappung,
+                        },
                     },
                 },
                 ObjektJson::Applikation(a) => {
@@ -1016,6 +1036,10 @@ impl Design {
                         loecher: t.loecher.iter().map(|l| l.punkte()).collect(),
                         winkel: t.winkel,
                         unterlage: t.unterlage,
+                        aussparen: Aussparen {
+                            namen: t.aussparen,
+                            ueberlappung: t.ueberlappung,
+                        },
                     },
                 },
             })
@@ -1062,7 +1086,9 @@ impl Design {
     pub fn objekte_aufgeloest(&self) -> Result<(Vec<Objekt>, Vec<char>), String> {
         let mut out = Vec::new();
         let mut fehlend = Vec::new();
-        for o in &self.objekte {
+        // je aufgelöstem Objekt: Nummer des Objekts im Design (für das Aussparen nach Namen)
+        let mut herkunft: Vec<usize> = Vec::new();
+        for (nr, o) in self.objekte.iter().enumerate() {
             match &o.art {
                 ObjektArt::Text { alphabet, vorgabe } => {
                     let a = self
@@ -1095,8 +1121,77 @@ impl Design {
                 }
                 _ => out.push(o.clone()),
             }
+            herkunft.resize(out.len(), nr);
         }
-        Ok((out, fehlend))
+        Ok((self.aussparen_aufloesen(out, &herkunft)?, fehlend))
+    }
+
+    /// Aussparungen (Knockout) auflösen: Füllflächen mit `aussparen` verlieren die Flächen der genannten Objekte;
+    /// zerfällt eine Fläche dabei, folgen die Teile als eigene Objekte gleicher Farbe (größter zuerst).
+    fn aussparen_aufloesen(&self, objekte: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
+        let mut neu: Vec<Option<Vec<Teil>>> = Vec::with_capacity(objekte.len());
+        for (i, o) in objekte.iter().enumerate() {
+            let (umriss, loecher, a) = match &o.art {
+                ObjektArt::Tatami {
+                    umriss,
+                    loecher,
+                    aussparen,
+                    ..
+                }
+                | ObjektArt::Musterfuellung {
+                    umriss,
+                    loecher,
+                    aussparen,
+                    ..
+                } if !aussparen.namen.is_empty() => (umriss, loecher, aussparen),
+                _ => {
+                    neu.push(None);
+                    continue;
+                }
+            };
+            let mut schneider = Vec::new();
+            for name in &a.namen {
+                let quellen: Vec<usize> = (0..self.objekte.len())
+                    .filter(|&k| self.objekte[k].name == *name)
+                    .collect();
+                if quellen.is_empty() {
+                    return Err(format!("Objekt „{name}“ zum Aussparen gibt es nicht"));
+                }
+                for (j, x) in objekte.iter().enumerate() {
+                    if j != i && quellen.contains(&herkunft[j]) {
+                        schneider.extend(bedeckt(&x.art, a.ueberlappung));
+                    }
+                }
+            }
+            neu.push(Some(flaeche_minus(umriss, loecher, &schneider)));
+        }
+        let mut out = Vec::with_capacity(objekte.len());
+        for (o, n) in objekte.into_iter().zip(neu) {
+            let Some(teile) = n else {
+                out.push(o);
+                continue;
+            };
+            for (u, l) in teile {
+                let mut t = o.clone();
+                if let ObjektArt::Tatami {
+                    umriss,
+                    loecher,
+                    aussparen,
+                    ..
+                }
+                | ObjektArt::Musterfuellung {
+                    umriss,
+                    loecher,
+                    aussparen,
+                    ..
+                } = &mut t.art
+                {
+                    (*umriss, *loecher, *aussparen) = (u, l, Aussparen::default());
+                }
+                out.push(t);
+            }
+        }
+        Ok(out)
     }
 
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).

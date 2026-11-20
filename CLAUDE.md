@@ -58,6 +58,7 @@
 | **Computer-Schriften (TTF/OTF)** im Kern (Stichart Tatami/Umriss = eigene Festlegung) | `kern/stick-kern/src/schrift_ttf.rs`, `kern/stick-formate/src/ttf.rs`; CLI `stick schriften` |
 | **Applikation im Original** (Lagen, Stopps über `Applique.tch`, Werte aus „Easy Appliqué“) | `Analyse_Teil3/12_applikation.md`; Kern `stick-kern/src/applikation.rs` |
 | **Füllmuster (Program Split)**: Bibliotheksformat, 242 Muster, Füllregel gemessen | `Analyse_Teil3/13_fuellmuster.md`; Werkzeug `Arbeitsdaten/werkzeuge/muster_lesen.py`; Kern `stick-kern/src/muster.rs` |
+| **Aussparen (Knockout)** im Original: Funktionen, Messung (exakte Löcher, Hand-Löcher −0,15 mm) | `Analyse_Teil3/14_aussparen.md`; Werkzeug `Arbeitsdaten/werkzeuge/art_aussparen.py`; Kern `stick-kern/src/aussparen.rs` |
 | **Bild → Umrisse** (Vektorisierung, eigene Festlegung) | `kern/stick-vektor/`; CLI `stick bild` |
 | **Regeln des Originals – Übersicht** (Kurzstiche, Unterlage, Laufwege, Satin, Tatami, Verbinder; je Regel Geltung Schrift/Bild/Fläche, Beleg, Sicherheit, Stand im Kern) | `Analyse_Teil3/10_regeln_original.md` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |

@@ -4,6 +4,7 @@
 //! Erste Fassung = getreue Übertragung des Python-Prototyps `stickprogramm/` (Prüfung: gleiche EXP-Bytes).
 
 pub mod applikation;
+pub mod aussparen;
 pub mod design;
 pub mod einheiten;
 pub mod einstellungen;

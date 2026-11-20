@@ -1,0 +1,13 @@
+Counter({'loecher': 360, 'objekte_mit_mehreren_ringen': 253, 'loch_passt_zu_objekt': 99})
+genau ('Butterfly2.ART', 75, 1, 'ComplexFillGroup', 0, 'ComplexFillGroup', False, 0.009, 0.014, 0.0)
+genau ('Butterfly2.ART', 75, 5, 'ComplexFillGroup', 11, 'ComplexFillGroup', False, 0.004, 0.004, -0.0)
+genau ('Butterfly2.ART', 75, 6, 'ComplexFillGroup', 20, 'ComplexFillGroup', False, 0.013, 0.012, 0.0)
+genau ('Duck2.ART', 1, 1, 'ComplexFillGroup', 31, 'EmbroideryPatch', True, 0.011, 0.014, 0.01)
+genau ('Birdhouse - Center.ART', 138, 1, 'ComplexFillGroup', 190, 'EmbroideryCurve', True, 0.046, 0.056, -0.02)
+genau ('Birdhouse - Center.ART', 138, 4, 'ComplexFillGroup', 191, 'EmbroideryCurve', True, 0.042, 0.067, -0.03)
+genau ('Teddy Balloon.ART', 73, 1, 'ComplexFillGroup', 14, 'ComplexFillGroup', False, 0.044, 0.063, -0.0)
+Loch mit Vorzeichen (negativ = Loch kleiner als Objekt = Überlappung), n 92
+  Quantile 10/25/50/75/90 %: [-0.39, -0.31, -0.15, -0.01, 0.09]
+  Anteil Überlappung: 0.7608695652173914
+mittlerer Abstand Loch→Objekt: Median 0.203 Anteil < 0,05 mm 0.0707070707070707
+Schneidendes Objekt liegt danach (oben): 29 von 99

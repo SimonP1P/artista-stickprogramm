@@ -39,6 +39,7 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `satinlinie` | `punkte`, `breite`, `unterlage` | Satinbahn konstanter Breite um eine Mittellinie |
 | `tatami` | `umriss`, `loecher`, `winkel` (45°), `unterlage` (true) | Füllung mit Tatami-Unterlage |
 | `text` (nur Rust-Kern) | `text`, `alphabet`, `hoehe`, `breite` (%), `abstand`, `position`, `ausrichtung`, `unterlage` | Original-Alphabet (ESB) |
+| `tatami`/`muster`: Aussparen (nur Rust-Kern) | `aussparen` (Liste von Objektnamen), `ueberlappung` (mm, Standard 0) | Knockout wie „Remove Overlay Stitching“ |
 | `muster` (nur Rust-Kern) | `umriss`, `loecher`, `muster` (Name/Nummer, `stick muster`), `winkel`, `groesse` (%), `unterlage` | Füllmuster (Program Split) |
 | `applikation` (nur Rust-Kern) | `umriss`, `loecher`, `farbe` (Abdeckung), `breite` (2,5), `abstand`, `heft_breite` (3,0), `heft_abstand` (2,0), `platz_laenge` (2,0) | Platzierung → Stopp → Heften → Stopp → Satin-Abdeckung |
 | `ttf` (nur Rust-Kern) | `text`, `schrift` (Name oder Pfad), `hoehe` (Großbuchstaben), `breite`, `abstand`, `position`, `ausrichtung`, `stichart` (`tatami`/`lauf`/`dreifach`), `winkel`, `unterlage`, `laenge` | Computer-Schrift (TrueType/OpenType) |

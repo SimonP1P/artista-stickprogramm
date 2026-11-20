@@ -356,6 +356,7 @@ pub fn text_objekte(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<char
                         loecher: o.umrisse[1..].iter().map(|l| abb_linie(&umriss_punkte(l))).collect(),
                         winkel: None,
                         unterlage: Some(!o.unterlagen.is_empty()),
+                        aussparen: Default::default(),
                     }
                 }
                 (Stichart::Lauf { laenge }, _) => {

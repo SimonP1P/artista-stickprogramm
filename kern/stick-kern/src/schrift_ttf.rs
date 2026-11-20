@@ -137,6 +137,7 @@ pub fn ttf_text_objekte(schrift: &TtfSchrift, v: &TextVorgabe, art: &TtfStichart
                             loecher,
                             winkel: *winkel,
                             unterlage: *unterlage,
+                            aussparen: Default::default(),
                         },
                     });
                 }
