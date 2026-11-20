@@ -89,6 +89,15 @@ pub struct SatinEinstellung {
     /// Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2)
     #[serde(default)]
     pub kurzstiche: KurzstichEinstellung,
+    /// Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei
+    /// Einstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,
+    /// `Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)
+    #[serde(default = "zickzack_abstand")]
+    pub zickzack_abstand: f64,
+}
+
+fn zickzack_abstand() -> f64 {
+    2.0
 }
 
 impl Default for SatinEinstellung {
@@ -99,6 +108,7 @@ impl Default for SatinEinstellung {
             faktor: 1.0,
             zugausgleich: 0.20,
             kurzstiche: KurzstichEinstellung::default(),
+            zickzack_abstand: zickzack_abstand(),
         }
     }
 }
@@ -515,6 +525,11 @@ pub fn fuer_stoff(name: &str) -> Result<Einstellungen, String> {
         // Bei allen 8 Stoffen gleich, anders als in den Defaults (Analyse/code/10 §E, hoch)
         e.unterlage.zickzack_laenge = 3.0;
         e.unterlage.doppelzickzack_laenge = 3.0;
+        // Deck-Step der Stoffe: Versatz 0x2719/0x271a = 0,25 / 0,75 (Stil-Liste 0x27a6, alle 8 Stoffe; Software
+        // Defaults 0,25 / 0,25) – Reihen abwechselnd +¼ und −¼ (`Analyse_Teil3/06` §5)
+        e.tatami.versatz2 = Some(0.75);
+        // Zickzack-Deckstich 0x2725 = 1,0 mm (Defaults 2,0 mm)
+        e.satin.zickzack_abstand = 1.0;
     }
     Ok(e)
 }

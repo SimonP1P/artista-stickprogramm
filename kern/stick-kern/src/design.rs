@@ -180,6 +180,8 @@ struct SatinJson {
     faktor: Option<f64>,
     /// Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)
     kurzstiche: Option<bool>,
+    /// satin (Standard) | zickzack
+    stichart: Option<String>,
 }
 
 fn hundert() -> f64 {
@@ -451,6 +453,8 @@ struct SatinLinieJson {
     unterlage: UnterlageJson,
     /// mitte (Center, Standard) | seite (Offset: Linie = Kante, Säule links davon)
     versatz: Option<String>,
+    /// satin (Standard) | zickzack
+    stichart: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -675,6 +679,8 @@ pub enum ObjektArt {
         unterlage: Unterlage,
         /// „Center“ (Standard) oder „Offset“ (Linie = Kante, Säule links davon)
         mittig: bool,
+        /// Abweichungen vom Stil (z. B. Zickzack)
+        optionen: SatinOptionen,
     },
     /// Tatami-Füllung einer Fläche mit optionalen Löchern
     Tatami {
@@ -735,6 +741,8 @@ pub struct SatinOptionen {
     pub kurzstiche: Option<bool>,
     /// Step statt Satin in der Säule (Schrift mit Stichart Step, `sticharten::satin::step_reihen`)
     pub step: bool,
+    /// Zickzack statt Satin (Stichart „Zigzag“ 0x2724): fester Abstand `zickzack_abstand`, ohne Kurzstiche
+    pub zickzack: bool,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -807,6 +815,11 @@ fn satin_getrennt(
     } else {
         satin_unterlage(&a, &b, &arten, &e.unterlage)?
     };
+    if o.zickzack {
+        satin_e.auto_spacing = false;
+        satin_e.abstand_fest = e.satin.zickzack_abstand;
+        satin_e.kurzstiche.an = false;
+    }
     let deck = if o.step {
         // Step-Reihen: Abstand, Zugausgleich der Füllung, ohne Kurzstiche
         let mut se = satin_e.clone();
@@ -1198,9 +1211,10 @@ impl Objekt {
                 breite,
                 unterlage,
                 mittig,
+                optionen,
             } => {
                 let (a, b) = satinlinie_seiten(punkte, *breite, *mittig);
-                satin_wege(&a, &b, unterlage, &SatinOptionen::default(), e)
+                satin_wege(&a, &b, unterlage, optionen, e)
             }
             ObjektArt::Gruppe {
                 teile,
@@ -1391,6 +1405,14 @@ impl Design {
             {
                 return Err(format!("Versatz „{x}“ unbekannt (mitte, seite)"));
             }
+            let stichart = match o {
+                ObjektJson::Satin(s) => s.stichart.as_deref(),
+                ObjektJson::Satinlinie(s) => s.stichart.as_deref(),
+                _ => None,
+            };
+            if let Some(x) = stichart.filter(|x| !matches!(*x, "satin" | "zickzack")) {
+                return Err(format!("Stichart „{x}“ unbekannt (satin, zickzack)"));
+            }
             if let ObjektJson::Applikation(a) = o {
                 if let Some(x) = a.abdeckung.as_deref().filter(|x| !matches!(*x, "satin" | "blanket")) {
                     return Err(format!("Abdeckung „{x}“ unbekannt (satin, blanket)"));
@@ -1424,6 +1446,7 @@ impl Design {
                             faktor: s.faktor,
                             kurzstiche: s.kurzstiche,
                             step: false,
+                            zickzack: s.stichart.as_deref() == Some("zickzack"),
                         },
                     },
                 },
@@ -1548,6 +1571,10 @@ impl Design {
                         breite: s.breite.unwrap_or(2.0),
                         unterlage: s.unterlage.into(),
                         mittig: s.versatz.as_deref() != Some("seite"),
+                        optionen: SatinOptionen {
+                            zickzack: s.stichart.as_deref() == Some("zickzack"),
+                            ..Default::default()
+                        },
                     },
                 },
                 ObjektJson::Tatami(t) if !t.winkellinien.is_empty() => Objekt {
@@ -2278,6 +2305,31 @@ mod tests {
             )
             .is_err()
         );
+    }
+
+    /// Zickzack-Deckstich: offener Abstand (Software Defaults 2,0 mm, Stoffe 1,0 mm) – weniger Stiche als Satin
+    #[test]
+    fn zickzack_deckstich() {
+        let zaehle = |stoff: &str, art: &str| {
+            Design::aus_json(&format!(
+                r#"{{"stoff": "{stoff}", "objekte": [{{"art": "satinlinie", "punkte": [[-20, 0], [20, 0]], "breite": 3,
+                    "unterlage": "keine", "stichart": "{art}"}}]}}"#
+            ))
+            .unwrap()
+            .berechnen()
+            .unwrap()
+            .anzahl(crate::stiche::Art::Stich)
+        };
+        let (satin, zz, zz_stoff) = (
+            zaehle("0 Software Defaults", "satin"),
+            zaehle("0 Software Defaults", "zickzack"),
+            zaehle("Woven Medium Weight", "zickzack"),
+        );
+        // 40 mm: Zickzack 2,0 mm → ~40 Einstiche, Stoff 1,0 mm → ~80, Satin deutlich mehr
+        assert!((35..60).contains(&zz), "{zz}");
+        assert!((70..110).contains(&zz_stoff), "{zz_stoff}");
+        assert!(satin > 2 * zz_stoff, "{satin}");
+        assert!(Design::aus_json(r#"{"objekte": [{"art": "satin", "seite_a": [[0, 0], [0, 4]], "seite_b": [[2, 0], [2, 4]], "stichart": "x"}]}"#).is_err());
     }
 
     /// Monogramm → Text mit Diamond2/Diamond3 (Zeichenbelegung aus den Alphabeten)

@@ -141,6 +141,7 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                     faktor: None,
                     kurzstiche: Some(false),
                     step: false,
+                    zickzack: false,
                 },
             },
         });
@@ -170,6 +171,7 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                     faktor: None,
                     kurzstiche: None,
                     step: false,
+                    zickzack: false,
                 },
             }
         };

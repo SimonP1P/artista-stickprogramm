@@ -112,7 +112,7 @@ Die 8 Stoffe sind vollständige Stile. Gegenüber den anderen Stoffen ändern si
 | 8 Woven Heavy Weight | 0,38 mm | 0,38 mm | 1,13 | 0,25 mm | 6,0 mm |
 | *(0 Software Defaults)* | 0,40 mm | 0,40 mm | 1,00 | 0,17 mm | 3,0 mm |
 
-Bei **allen** 8 Stoffen gilt außerdem (gleich für alle, aber anders als in den Software Defaults): Zickzack- und Doppel-Zickzack-Unterlage 3,0/3,0 mm statt 5,0 bzw. 7,0 mm, Tatami-Reihenversatz 0,25/0,75 statt 0,25/0,25, Verbinder-Trim ab 6,0 mm statt 3,0 mm. Die Schaltfläche „Adjust Settings To X %“ skaliert die Abstände zusätzlich (Handbuch S. 202). Mit „Apply to Lettering Objects“ gilt das auch für Schrift.
+Bei **allen** 8 Stoffen gilt außerdem (gleich für alle, aber anders als in den Software Defaults): Zickzack- und Doppel-Zickzack-Unterlage 3,0/3,0 mm statt 5,0 bzw. 7,0 mm, Tatami-Reihenversatz 0,25/0,75 statt 0,25/0,25 (Reihen abwechselnd +¼/−¼; im Kern seit 20.11.2026, `Analyse_Teil3/06` §5), Zickzack-Deckstich (Stichart „Zigzag“ 0x2724) Abstand 0x2725 = 1,0 mm statt 2,0 mm (0x2726 = 3,0 mm, Bedeutung offen), Verbinder-Trim ab 6,0 mm statt 3,0 mm. Die Schaltfläche „Adjust Settings To X %“ skaliert die Abstände zusätzlich (Handbuch S. 202). Mit „Apply to Lettering Objects“ gilt das auch für Schrift.
 
 ## F) Was das für kleine, filigrane Stickerei bedeutet
 1. **Satin-Mindestbreite:** Die Software kennt keine harte Untergrenze für Satin. EasyStitch macht Objekte **unter 2 mm Breite nicht zu Satin**, sondern zu Linien (≤ 0,3 mm einfacher Lauf, ≤ 2 mm kräftige Linie). Die Auto-Spacing-Tabelle beginnt bei 0,5 mm Breite. **Praktische Untergrenze für Satin laut Software-Logik: etwa 0,5 mm, bei automatischer Umwandlung 2 mm.**

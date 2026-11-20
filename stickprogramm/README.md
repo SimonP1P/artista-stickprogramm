@@ -35,8 +35,8 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 |---|---|---|
 | `lauf` | `punkte`, `laenge` (2,5), `geschlossen` | Laufstich |
 | `dreifach` | wie `lauf` | Dreifachstich (vor–zurück–vor) |
-| `satin` | `seite_a`, `seite_b`, `unterlage` | Satinsäule; Punkt *i* von A gehört zu Punkt *i* von B |
-| `satinlinie` | `punkte`, `breite`, `unterlage`, `versatz` (nur Rust-Kern: `mitte` Standard / `seite` = Linie ist die Kante, Säule links davon) | Satinbahn konstanter Breite um eine Mittellinie |
+| `satin` | `seite_a`, `seite_b`, `unterlage`; nur Rust-Kern: `stichart` (`satin` Standard / `zickzack`) | Satinsäule; Punkt *i* von A gehört zu Punkt *i* von B; Zickzack = offener Deckstich, Abstand 2,0 mm (Stoffe 1,0 mm) |
+| `satinlinie` | `punkte`, `breite`, `unterlage`, `versatz` (nur Rust-Kern: `mitte` Standard / `seite` = Linie ist die Kante, Säule links davon), `stichart` (nur Rust-Kern: `satin` / `zickzack`) | Satinbahn konstanter Breite um eine Mittellinie |
 | `tatami` | `umriss`, `loecher`, `winkel` (45°), `unterlage` (true); nur Rust-Kern: `winkellinien` ([[[x1, y1], [x2, y2]], …] quer über die Fläche, ohne Löcher) | Füllung mit Tatami-Unterlage; mit Winkellinien Wendefüllung (Stiche folgen den Linien) |
 | `text` (nur Rust-Kern) | `text`, `alphabet`, `hoehe`, `breite` (%), `abstand`, `position`, `ausrichtung`, `unterlage` | Original-Alphabet (ESB) |
 | `tatami`/`muster`: Aussparen (nur Rust-Kern) | `aussparen` (Liste von Objektnamen), `ueberlappung` (mm, Standard 0) | Knockout wie „Remove Overlay Stitching“ |

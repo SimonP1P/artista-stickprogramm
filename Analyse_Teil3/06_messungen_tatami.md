@@ -78,6 +78,7 @@ die Wirkung von **0x271b**: die Einstiche einer Reihe liegen nicht mehr auf dem 
 0,6 … 1,4 × Länge; 0,3: 0,77 … 1,23) – als Zufallsversatz ± 0x271b/2 × Länge nachgebaut (Verteilung eigene
 Festlegung).
 
+**Stoffe:** Der Deck-Step der 8 Stoffe hat 0,25 / 0,75 (Stil-Liste 0x27a6; Software Defaults 0,25 / 0,25) – seit 20.11.2026 im Kern (Referenz `vergleich_stoff` ersetzt, Stufe 10).
 **Kern:** `TatamiEinstellung` mit `versatz2` (0x271a) und `zufall` (0x271b), `phase(k)`, `STEP_MUSTER`; JSON
 `"step_muster": 1 … 20` je Objekt (auch für Step in Schrift). Test `step_muster_versatz`.
 

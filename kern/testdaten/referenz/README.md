@@ -19,3 +19,4 @@ jede Abweichung vom Python-Prototyp nachvollziehbar bleibt.
 | 20.11.2026 | Designende wie „Start und Ende“ (Handbuch PDF-S. 205, Auto End: Mitte; Designs der Maschine: 34 von 51 enden auf 0,0) | nach dem letzten Stich **Sprung zurück zum Ursprung** (Rahmenmitte); `"ende": "letzter_stich"` schaltet es ab. Byte-Vergleich: alles bis zum bisherigen Ende gleich, angehängt nur die Sprünge (16/20/32 Byte) |
 
 Neu erzeugen: `F:\Entwicklung\target\release\stick.exe erzeugen ..\vergleich_X.json -o .` (danach die SVG löschen).
+| 20.11.2026 | Original-Verhalten Stufe 10 (`Analyse_Teil3/06` §5, Stil-Liste 0x27a6) | **Deck-Step der 8 Stoffe mit Versatz 0,25 / 0,75** (Reihen abwechselnd +¼/−¼; Software Defaults 0,25 / 0,25). Nur `vergleich_stoff` (Terry Heavy Weight): Farbblock 1 (Tatami) 1903 → 1894 Einstiche, Satinlinie und Lauf byte-gleich |

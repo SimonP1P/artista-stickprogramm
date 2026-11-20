@@ -1104,6 +1104,7 @@ fn satin_optionen(abstand: Option<f64>, auto_spacing: bool) -> SatinOptionen {
         faktor: Some(SCHRIFT_FAKTOR),
         kurzstiche: Some(true),
         step: false,
+        zickzack: false,
     }
 }
 
@@ -1339,7 +1340,8 @@ mod tests {
                 abstand: None,
                 faktor: Some(0.9),
                 kurzstiche: Some(true),
-                step: false
+                step: false,
+                zickzack: false
             }
         );
         // Maßstab 25/50 = 0,5: Säule 5 mm lang; zweites I beginnt bei −10 + 5 + 2,5 (10 % von 25 mm)
