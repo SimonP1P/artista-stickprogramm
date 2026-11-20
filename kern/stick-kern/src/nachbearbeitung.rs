@@ -42,9 +42,26 @@ pub fn vernaehen_ende(weg: &[Punkt], e: &VerbinderEinstellung) -> Linie {
 /// der nächste Verbinder > 3,0 mm; letztes Objekt nur bei „Always Tie Off Last Object“ (aus).
 /// Annahme (mittel): Der Designanfang zählt wie „nach Trim“.
 pub fn wege_verbinden(teile: &[(String, Vec<Linie>)], e: &VerbinderEinstellung, start: Punkt) -> StichFolge {
+    wege_verbinden_mit(teile, e, start, &[])
+}
+
+/// Wie `wege_verbinden`; `auto_jump[k]` = eigene Auto-Jump-Werte des Teils k (Höchststich, Sprunglänge in mm):
+/// längere Stiche des Teils werden schon hier in Sprünge geteilt (Effects-Dialog „Auto Jump“ je Objekt, Handbuch
+/// Kap. 22). Ohne Angabe gilt die Standardregel in `bernina_regeln` (12,7 / 7,0 mm).
+pub fn wege_verbinden_mit(
+    teile: &[(String, Vec<Linie>)],
+    e: &VerbinderEinstellung,
+    start: Punkt,
+    auto_jump: &[Option<(f64, f64)>],
+) -> StichFolge {
     let alle: Vec<(&str, &Linie)> = teile
         .iter()
         .flat_map(|(f, wege)| wege.iter().filter(|w| !w.is_empty()).map(move |w| (f.as_str(), w)))
+        .collect();
+    let teil_nr: Vec<usize> = teile
+        .iter()
+        .enumerate()
+        .flat_map(|(k, (_, wege))| wege.iter().filter(|w| !w.is_empty()).map(move |_| k))
         .collect();
     let mut folge = StichFolge::default();
     if alle.is_empty() {
@@ -81,8 +98,21 @@ pub fn wege_verbinden(teile: &[(String, Vec<Linie>)], e: &VerbinderEinstellung, 
         if abstand(pos, w[0]) > 1e-9 {
             folge.sprung(w[0]);
         }
+        let aj = auto_jump.get(teil_nr[i]).copied().flatten();
+        let mut letzter: Option<Punkt> = None;
         for &q in &w {
+            if let (Some((max, teil)), Some(a)) = (aj, letzter) {
+                let d = abstand(a, q);
+                if d > max + 1e-9 {
+                    let n = (d / teil - 1e-9).ceil() as i64;
+                    for j in 1..n {
+                        let t = j as f64 / n as f64;
+                        folge.sprung(p(a.x + (q.x - a.x) * t, a.y + (q.y - a.y) * t));
+                    }
+                }
+            }
             folge.stich(q);
+            letzter = Some(q);
         }
         pos = *w.last().unwrap();
     }

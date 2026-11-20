@@ -93,7 +93,7 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
 - Vernähen (Tie In/Off) nach Dialog „Connectors“: Tie In nach Trim/Farbwechsel oder wenn der vorige Verbinder > 3,0 mm;
   Tie Off vor Trim/Farbwechsel oder wenn der nächste > 3,0 mm; letztes Objekt immer; 2 Schritte vor und zurück (01, 02). ✅
 - Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump: längere Stiche in Sprünge zu 7,0 mm (DEFAULTS.DFL, AMT). ✅
-- ⬜ Auto Jump ist bei Schrift laut Stil **aus** (ANALYSE.md §5) – im Kern noch nicht je Objekt.
+- ✅ Auto Jump ist bei Schrift laut Stil **aus** (ANALYSE.md §5) – im Kern je Objekt seit 20.11.2026 (`auto_jump`, Standard je Objektart; aus = lange Stiche in gleich lange echte Stiche geteilt, eigene Festlegung der Teilung).
 - Trim ab 3,0 mm (Stoffe 6,0 mm); die artista 185 schneidet nicht selbst, jeder Sprung bleibt als Faden (08).
 - **Designende** („Start und Ende“, Handbuch PDF-S. 205): Auto End – Mitte; Designs der Maschine enden zu 34/51 auf
   0,0 (Zeichensätze auf der Grundlinie). ✅ Kern: Sprung zurück zum Ursprung, abschaltbar (`"ende": "letzter_stich"`).

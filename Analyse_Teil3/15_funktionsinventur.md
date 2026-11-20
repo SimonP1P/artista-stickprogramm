@@ -43,7 +43,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Zugausgleich (auto, Werte) | ✅ | |
 | Kurzstiche (Satin) | ✅ · ⬜ Tatami | |
 | Auto Jump, Mindeststich, Vernähen | ✅ | |
-| „Säule mit mehr Loft“ (erhöhter Satin, Kap. 22) | ⬜ | |
+| „Säule mit mehr Loft“ (erhöhter Satin, Kap. 22) | ✅ | laut Handbuch Auto Jump mit kleinem Höchststich (z. B. 6 mm) + Unterlage: `"auto_jump": {"max": 6}` |
 | Textured Edge (ausgefranster Rand) | ⬜ | Kap. 23/24 |
 | Wave Effect (Füllung entlang einer Kurve) | ⬜ | Kap. 24/26 |
 | Gradient Fill, Open Fill | ⬜ | Kap. 24 |
@@ -61,7 +61,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Grundlinien: waagrecht, senkrecht, **Kreis/Bogen**, mehrere, eigene Kurve | ✅ | 20.11.: alle Arten des Dialogs „Layout“ (Kreis CW/CCW, Oval, Tilt, Arc Angle, Above/Through/Below, gerade mit Winkel/Länge, senkrecht, Any Shape, Multiple), Ausrichtung Full |
 | Abstand/Position/Form einzelner Buchstaben, Farbe je Buchstabe | 🟡 | 20.11.: Farbe (`^`, je Buchstabe), verschieben/drehen/skalieren ✅; Umriss umformen ⬜ |
 | Stichart je Schrift (Satin/Step/Fancy), Stichwinkel je Buchstabe | 🟡 | 20.11.: `stichart` satin/step/muster ✅ (alle 56 Schriftobjekte mit Stichen in den Musterdesigns sind Satin – Step/Fancy nicht messbar, Verteilung eigene Festlegung); Stichwinkel je Buchstabe ⬜ |
-| Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | 🟡 | Unterlage aus: `"unterlage": []` (Handbuch: Anwender schaltet ab); Auto Jump ⬜ (nur bei Satinstichen > 12,7 mm wirksam) |
+| Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | 🟡 | Unterlage aus: `"unterlage": []` (Handbuch: Anwender schaltet ab); Auto Jump ✅ 20.11. je Objekt (`auto_jump`, Schrift aus, eigene Werte) |
 | Elastic Lettering (Verzerren: Bogen, Welle …) | ✅ | 20.11.: `elastisch` gerade (Straight) / gebogen (Curved); Kantenform linear/Parabel eigene Festlegung |
 | Monogramme | ✅ | 20.11.: `monogramm` → Diamond2/Diamond3 (Belegung `Analyse_Teil3/09` §7) |
 | Symbole/Zeichentabelle | 🟡 | Zeichen der Alphabete; Auswahl 🖥 |

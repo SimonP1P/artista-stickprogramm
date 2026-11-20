@@ -9,7 +9,7 @@ use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
 use crate::geometrie::{
     Linie, Punkt, abstand, abstand_punkt_strecke, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen,
 };
-use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
+use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_mit};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{
     Alphabet, Buchstabe, SchriftStichart, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen,
@@ -1221,6 +1221,49 @@ pub struct Design {
     /// Sticken mit umgekehrter Stichfolge noch einmal gestickt, gleiche Farbe, ohne Verbindungsstiche. JSON
     /// `"doppellauf": true` am Objekt.
     pub doppellauf: std::collections::BTreeSet<usize>,
+    /// Auto Jump je Objekt (Nummer in `objekte`), JSON `"auto_jump"`; ohne Angabe: Standard des Stils
+    pub auto_jump: BTreeMap<usize, AutoJump>,
+}
+
+/// Auto Jump eines Objekts (Effects-Dialog, Handbuch Kap. 22 „Preserving long stitches with Auto Jump“): lange Stiche
+/// werden zu Sprüngen (kein Einstich in der Mitte), sonst in kürzere Stiche geteilt. Standard an mit 12,7 / 7,0 mm
+/// (AMT 0x2711/0x2712/0x2758), im Stil Schrift **aus** (`Analyse/code/10` Tabelle Stile). Kleiner Höchststich (z. B.
+/// 6 mm) ergibt nach Handbuch eine Säule „with more loft“.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct AutoJump {
+    pub an: bool,
+    /// Höchststich in mm (darüber Sprünge bzw. Teilung)
+    pub max: f64,
+    /// Länge der Sprünge in mm
+    pub sprung: f64,
+}
+
+impl Default for AutoJump {
+    fn default() -> Self {
+        AutoJump {
+            an: true,
+            max: crate::einheiten::MAX_STICH_MM,
+            sprung: crate::einheiten::AUTO_JUMP_TEILLAENGE_MM,
+        }
+    }
+}
+
+/// Auto Jump aus: Stiche über dem Höchststich der Maschine in gleich lange echte Stiche teilen (Handbuch: „it is
+/// broken into smaller stitches“; gleich lange Stücke: eigene Festlegung).
+fn lange_stiche_einstechen(w: &mut Linie, max: f64) {
+    let mut out = Vec::with_capacity(w.len());
+    for (i, &q) in w.iter().enumerate() {
+        if i > 0 {
+            let a = w[i - 1];
+            let d = abstand(a, q);
+            if d > max + 1e-9 {
+                let n = (d / max - 1e-9).ceil() as usize;
+                out.extend((1..n).map(|j| zwischen(a, q, j as f64 / n as f64)));
+            }
+        }
+        out.push(q);
+    }
+    *w = out;
 }
 
 impl Design {
@@ -1556,11 +1599,47 @@ impl Design {
                     .collect()
             })
             .unwrap_or_default();
+        let mut auto_jump = BTreeMap::new();
+        if let Some(l) = v.get("objekte").and_then(Value::as_array) {
+            for (i, o) in l.iter().enumerate() {
+                let wo = format!("Objekt {}", i + 1);
+                let aj = match o.get("auto_jump") {
+                    None => continue,
+                    Some(Value::Bool(an)) => AutoJump {
+                        an: *an,
+                        ..AutoJump::default()
+                    },
+                    Some(w) => {
+                        #[derive(Deserialize)]
+                        #[serde(deny_unknown_fields)]
+                        struct AutoJumpJson {
+                            max: Option<f64>,
+                            sprung: Option<f64>,
+                        }
+                        let j: AutoJumpJson = serde_json::from_value(w.clone())
+                            .map_err(|e| format!("{wo}: auto_jump: true, false oder {{\"max\", \"sprung\"}}: {e}"))?;
+                        let s = AutoJump::default();
+                        AutoJump {
+                            an: true,
+                            max: j.max.unwrap_or(s.max),
+                            sprung: j.sprung.unwrap_or(s.sprung),
+                        }
+                    }
+                };
+                if !(crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM).contains(&aj.max)
+                    || !(crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM).contains(&aj.sprung)
+                {
+                    return Err(format!("{wo}: auto_jump: max und sprung zwischen 0,3 und 12,7 mm"));
+                }
+                auto_jump.insert(i, aj);
+            }
+        }
         Ok(Design {
             transformationen,
             transformation,
             buchstaben,
             doppellauf,
+            auto_jump,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
@@ -1763,7 +1842,8 @@ impl Design {
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).
     pub fn berechnen(&self) -> Result<StichFolge, String> {
         let (objekte, _, herkunft) = self.aufgeloest_mit_herkunft()?;
-        let teile_ab = |start: Punkt| -> Result<Vec<(String, Vec<Linie>)>, String> {
+        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>)>;
+        let teile_ab = |start: Punkt| -> Result<Teile, String> {
             let mut teile = Vec::new();
             let mut pos = start;
             for (obj, h) in objekte.iter().zip(&herkunft) {
@@ -1775,9 +1855,24 @@ impl Design {
                 if self.doppellauf.contains(h) {
                     doppellauf(&mut wege);
                 }
+                // Auto Jump: Angabe am Objekt, sonst Stil (Schrift aus, alles andere an mit Standardwerten)
+                let aj = self.auto_jump.get(h).copied().unwrap_or(AutoJump {
+                    an: !matches!(
+                        self.objekte.get(*h).map(|o| &o.art),
+                        Some(ObjektArt::Text { .. } | ObjektArt::TtfText { .. })
+                    ),
+                    ..AutoJump::default()
+                });
+                let eigen = if aj.an {
+                    (aj != AutoJump::default()).then_some((aj.max, aj.sprung))
+                } else {
+                    wege.iter_mut()
+                        .for_each(|w| lange_stiche_einstechen(w, crate::einheiten::MAX_STICH_MM));
+                    None
+                };
                 if let Some(letzter) = wege.last().and_then(|w| w.last()) {
                     pos = *letzter;
-                    teile.push((obj.farbe.clone(), wege));
+                    teile.push((obj.farbe.clone(), wege, eigen));
                 }
             }
             Ok(teile)
@@ -1785,7 +1880,7 @@ impl Design {
         let null = p(0.0, 0.0);
         let mut teile = teile_ab(null)?;
         // Mitte bzw. Unterkante des Designs aus den Stichen (umschließendes Rechteck)
-        let punkte = || teile.iter().flat_map(|(_, w)| w.iter().flatten());
+        let punkte = || teile.iter().flat_map(|(_, w, _)| w.iter().flatten());
         let (x0, x1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
         let (y0, y1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
         let (mitte, unten) = if x0 <= x1 {
@@ -1795,7 +1890,7 @@ impl Design {
         };
         let erster = teile
             .first()
-            .and_then(|(_, w)| w.first())
+            .and_then(|(_, w, _)| w.first())
             .and_then(|l| l.first())
             .copied();
         let start = match self.start {
@@ -1807,7 +1902,8 @@ impl Design {
         if start != null {
             teile = teile_ab(start)?;
         }
-        let folge = wege_verbinden(&teile, &self.einstellungen.verbinder, start);
+        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a)| ((f, w), a)).unzip();
+        let folge = wege_verbinden_mit(&teile, &self.einstellungen.verbinder, start, &auto_jump);
         let mut folge = bernina_regeln(&folge);
         let ende = match self.ende {
             Bezugspunkt::Rahmenmitte => Some(null),
@@ -1998,6 +2094,37 @@ mod tests {
         assert!(ys.iter().any(|&y| y > 1.9));
         assert!(
             Design::aus_json(r#"{"objekte": [{"art": "satinlinie", "punkte": [[0, 0], [1, 0]], "versatz": "x"}]}"#)
+                .is_err()
+        );
+    }
+
+    /// Auto Jump je Objekt: an (Sprünge), aus (echte Stiche ≤ 12,7 mm), eigene Werte (Sprünge ab 6 mm)
+    #[test]
+    fn auto_jump_je_objekt() {
+        let zaehle = |aj: &str| {
+            let d = Design::aus_json(&format!(
+                r#"{{"objekte": [{{"art": "satin", "seite_a": [[0, 0], [0, 4]], "seite_b": [[20, 0], [20, 4]],
+                    "unterlage": "keine", "abstand": 0.5 {aj}}}]}}"#
+            ))
+            .unwrap();
+            let st = d.berechnen().unwrap();
+            let lang = st.stichlaengen().iter().filter(|&&l| l > 12.7 + 1e-6).count();
+            (
+                st.anzahl(crate::stiche::Art::Sprung),
+                lang,
+                st.stichlaengen().into_iter().fold(0.0, f64::max),
+            )
+        };
+        // Säule 4 mm lang, Stiche 20 mm quer
+        let (sp_an, lang_an, _) = zaehle("");
+        let (sp_aus, lang_aus, max_aus) = zaehle(r#", "auto_jump": false"#);
+        let (sp_6, _, max_6) = zaehle(r#", "auto_jump": {"max": 6, "sprung": 3}"#);
+        assert_eq!((lang_an, lang_aus), (0, 0));
+        assert!(sp_an > sp_aus, "an {sp_an}, aus {sp_aus}");
+        assert!(max_aus <= 12.7 + 1e-6 && max_aus > 7.0, "{max_aus}");
+        assert!(sp_6 > sp_an && max_6 <= 3.0 + 1e-6, "{sp_6} {max_6}");
+        assert!(
+            Design::aus_json(r#"{"objekte": [{"art": "lauf", "punkte": [[0, 0], [1, 0]], "auto_jump": {"max": 20}}]}"#)
                 .is_err()
         );
     }

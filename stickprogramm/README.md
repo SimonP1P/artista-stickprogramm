@@ -48,7 +48,7 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `monogramm` (nur Rust-Kern) | `initialen` (2 oder 3 Buchstaben A–Z), `rahmen` (`raute`/`zier`/`keine`), `rahmen_farbe`, `hoehe` (18), dazu alle Felder von `text` | Monogramm mit Diamond2/Diamond3 wie im Original (Handbuch Kap. 21, Belegung `Analyse_Teil3/09` §7) |
 | `ttf` (nur Rust-Kern) | `text`, `schrift` (Name oder Pfad), `hoehe` (Großbuchstaben), `breite`, `abstand`, `position`, `ausrichtung`, `stichart` (`tatami`/`lauf`/`dreifach`), `winkel`, `unterlage`, `laenge` | Computer-Schrift (TrueType/OpenType) |
 
-Alle Objekte haben `farbe` (`#rrggbb`) und `name`; im Rust-Kern außerdem `"doppellauf": true` (Double Run: gleiche Stiche rückwärts noch einmal, Handbuch Kap. 23). Statt einer Punktliste geht eine Form:
+Alle Objekte haben `farbe` (`#rrggbb`) und `name`; im Rust-Kern außerdem `"doppellauf": true` (Double Run: gleiche Stiche rückwärts noch einmal, Handbuch Kap. 23) und `"auto_jump"`: `true`/`false` oder `{"max": 6, "sprung": 3}` (Effects-Dialog; Standard an mit 12,7/7,0 mm, bei Schrift aus; aus = lange Stiche in echte Stiche ≤ 12,7 mm geteilt; kleines `max` = Säule mit mehr Loft). Statt einer Punktliste geht eine Form:
 `{"kreis": {"mitte", "radius"}}`, `{"rechteck": {"mitte", "breite", "hoehe"}}`, `{"bogen": {"mitte", "radius", "von", "bis"}}`,
 `{"bezier": [p0, p1, p2, p3]}`, `{"verbinden": [Form, …]}`.
 Satin-Unterlage: `"auto"`, `"keine"` oder Kombination aus `mittellauf`, `edge_walk`, `zickzack`, `doppelzickzack` (z. B. `"edge_walk+zickzack"`).
