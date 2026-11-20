@@ -102,7 +102,10 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    `CalcStartEnd…`) und Reihenfolge der Objekte
 6. 🟡 ✅ 20.11.2026 **Applikation** im Kern (`Analyse_Teil3/12`): Platzierung → Stopp → Heften → Stopp → Abdecken,
    Stopps als „Garne“ der Karte `Applique.tch` (Anweisung im Display); Werte aus „Easy Appliqué“ bzw. Handbuch ·
-   ⬜ Schnittlinie, Blanket, Teil-Applikation · ⬜ Fancy-/Musterfüllungen
+   ⬜ Schnittlinie, Blanket, Teil-Applikation · ⬜ Fancy-/Musterfüllungen – **nächster Schritt**: Musterdefinitionen
+   stehen in der Vorlage `Analyse/daten/entschluesselt/NORMAL.AMT.DesignDocument.bin` (Namen „001 Diamond“, „002 Emerald“
+   … als ASCII, rund 120 Muster; Split Patterns, MOD1 `SplitPattern`/`ProgramSplitFill`), gestickt in den Samplern
+   „Sampler Fancy fills 001–150.ART“ – Format entschlüsseln, dann im Kern nachbauen
 7. ✅ 20.11.2026 Computer-Schriften (TrueType/OpenType, auch .ttc) im Kern: alle installierten Schriften (Windows/Mac),
    Höhe = Großbuchstaben, je Buchstabe **Tatami-Fläche** mit Löchern (eigene Festlegung – Stichart des Originals für
    TrueType nicht belegt) oder Lauf-/Dreifach-Umriss; JSON `"art": "ttf"`, CLI `stick schriften`. Satin entlang der
