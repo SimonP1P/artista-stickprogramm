@@ -28,6 +28,13 @@ eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Ic
    Weiter: Design mit der Maus anpassen, Garn je Farbe wählen, Mac-Programm,
 3. Phase 4 weiter: ✅ Schrift „Unterlagen zuerst“ (20.11.); weiter Auto Jump bei Schrift, Kurzstiche bei Tatami, Auto-Split …
 
+## Merkliste für den Nutzer (Stand 20.11.2026)
+| # | Aufgabe | Wann | Stand |
+|---|---|---|---|
+| M1 | **Parameterkatalog melden:** Sobald alle Funktionen entwickelt sind, dem Nutzer sagen, **welche Parameter man verändern kann und könnte** – was einstellbar sein **kann** und was einstellbar sein **sollte**, getrennt nach **einfachem Modus** und **Expertenmodus** der App. Als eine Liste für Designer und Backend: maschinenlesbar aus dem Kern (z. B. `kern/parameter.json`) plus lesbare Fassung (`PARAMETER.md`); je Parameter Name, Gruppe (Stoff, Satin, Tatami, Füllmuster, Unterlage, Zugausgleich, Kurzstiche, Laufwege, Verbinder/Vernähen, Schrift, Applikation, Bild → Umrisse, Maschine …), gilt für (Design/Objektart), Einheit, Standard, Bereich, Quelle (Original-Fundstelle oder eigene Festlegung), Modus (einfach/experte/intern), Wirkung. Der Nutzer liefert dazu noch seine Parameterwünsche. | wenn Phase 4 fertig | ⬜ |
+| M2 | **Bild → Umrisse maßstabsfrei machen:** Umrisse ohne feste Breite liefern; Stichart (EasyStitch nach Breite in mm), Wegfall kleiner Details und Abstände erst beim Berechnen nach der endgültigen Größe entscheiden (heute legt `stick bild --breite` die Größe vorab fest) | mit dem Ausbau von Punkt 8 | ⬜ |
+| M3 | Neue UI-Mockups ansehen und unter `UI_Mockups/` archivieren (v1/v2 liegen dort, Hinweise in `UI_Mockups/README.md`); App erst ändern, wenn die Oberfläche feststeht | laufend | 🟡 |
+
 ## Vor Ort – wartet auf eine Person an der Maschine (Stand 20.11.2026)
 Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rahmen/Stoff, Start-Taste, Aus/Ein).
 Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Testprogramm_artista185_Windows_v4_1/`.

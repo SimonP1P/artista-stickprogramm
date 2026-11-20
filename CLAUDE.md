@@ -64,6 +64,8 @@
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
 | **Maschine aus Rust** (`stick-maschine`: Protokoll der Testprogramme, Simulation, CLI `stick maschine …`, App Schritt 4) | `kern/stick-maschine/`, `kern/README.md`, `app/README.md`; Befund `Analyse_Teil2/07` (Rust am Gerät, 20.11.2026) |
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
+| **UI-Mockups** (Claude Design, archiviert; Hinweise aus der Analyse für die Gestaltung) | `UI_Mockups/` (`README.md`, Stände je Ordner) |
+| **Merkliste für den Nutzer** (u. a. M1: Parameterkatalog einfach/experte melden, wenn alle Funktionen fertig) | `ROADMAP.md` „Merkliste für den Nutzer“ |
 | **Anforderungen an die neue Oberfläche** (UX/UI wird komplett neu gestaltet – Mockup von Claude Design; bis dahin **an der App nichts ändern**, nur Kern/Befehle) | `app/ANFORDERUNGEN.md` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |
 
