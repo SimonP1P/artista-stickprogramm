@@ -93,7 +93,8 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    Original („Closest Join“) – braucht Text/Alphabet der LetterText-Objekte
 2. ⬜ Schrift: Auto Jump aus, Breite des Leerzeichens, Zeilenabstand (aus dem Code)
 3. ⬜ Kurzstiche bei Tatami-Flächen; Gruppenbildung (MOD1 0x10186ad0) genau übertragen
-4. ⬜ Unterlagenart für Flächengruppen (`IsUnderlayTypeApplicable`); Satin-Auto-Split ab 10 mm
+4. ✅ 20.11.2026 Unterlagenart für Flächen: Step wie die Mehrheit im Original (Messung); Satin-Auto-Split: im Original
+   nicht wirksam (531 Querstiche 9–16 mm ungeteilt) – nichts nachzubauen (`Analyse_Teil3/10` §3/§5)
 5. ⬜ Start-/Endpunkte und Reihenfolge der Objekte im ganzen Design
 6. ⬜ Fancy-/Musterfüllungen, Applikation
 7. ⬜ Computer-Schriften (TTF) als Umrisse

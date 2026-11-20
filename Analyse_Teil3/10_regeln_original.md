@@ -52,8 +52,9 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
   **Zickzack**. Handbuch PDF-S. 186/379: Schrift hat Auto-Unterlage, bei kleiner Schrift abschalten (z. B. Anniversary).
   ✅ (Schrift: neu)
 - **Art je Objekt** (MOD1 `IsUnderlayTypeApplicable` → 0x101ffb10): Satinsäulen, Schrift, Ellipse/Ring/Stern: jede Art;
-  **Flächengruppen (ComplexFill 7): nur Step, Zickzack, Edge Walk – sonst Zickzack**; Linien (0x05): keine. ⬜ (Kern:
-  Flächen nehmen Step, eigene Festlegung)
+  **Flächengruppen (ComplexFill 7): nur Step, Zickzack, Edge Walk – sonst Zickzack**; Linien (0x05): keine. ✅ Kern:
+  Flächen nehmen Step – gemessen die häufigste Unterlage der Tatami-Flächen im Original (ComplexFillGroup/Tatami: Step
+  744, Edge Walk 56, Mittellauf 8, Zickzack 8; `messungen/effekte_je_objektart.txt`)
 - Die Art hängt **nicht** von der Säulenbreite ab: Zeichensätze der Maschine (von Bernina erstellt) haben Mittellauf
   (Drifter 4,1 mm, Lisa 2,0 mm, Blackboard, Swiss Block, Zurich) oder Zickzack (Alice 2,3 mm, Bamboo 4,3 mm) – Wahl je
   Alphabet beim Erstellen, keine Regel in Code oder Dateien.
@@ -78,7 +79,7 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
 | Auto Spacing: Tabelle (0,5 mm → 0,51 … 8 mm → 0,34) × Faktor, wenn Effekt 0x21 am Objekt; sonst fester Abstand | Code + 20 012 Stiche (05) | ✅ |
 | Faktor: Stoffe 0,95–1,13; **Schrift 0,9** (Musterdesigns 0,9/0,87) | Stile, 05 | ✅ (Schrift neu) |
 | Zugausgleich 0,2 mm (Stoffe 0,2–0,25; Handbuch Schrift 0,2–0,3) | Handbuch S. 199/201 | ✅ |
-| Auto-Split ab 10 mm (0x2722 = 1800) | Stil, Objekte | ⬜ |
+| Auto-Split ab 10 mm (0x2722 = 1800) – **im Original nicht wirksam**: 531 Satin-Querstiche 9–16 mm in 104 Säulen der Musterdesigns ungeteilt; mehrteilige gerade Züge sind gleich geteilte Laufwege (1/k) (`art_split.py`, `messungen/satin_split_musterdesigns.txt`, 20.11.2026) | Stil, Objekte, Messung | ✅ nichts nachzubauen |
 | Kurzstiche | §2 | ✅ (Satin) |
 
 ## 6. Tatami, Lauf, Dreifach — Sicherheit: hoch
@@ -106,5 +107,5 @@ nimmt Auto Spacing × 0,9 und Zickzack. ✅ / offen: Unterlagen-zuerst-Reihenfol
 1. Buchstaben: ✅ erst alle Unterlagen (rückwärts), dann Säulen (Bericht 11); ⬜ Säulenreihenfolge und Start/Ende wie das
    Original („closest join“) – braucht Text/Alphabet der LetterText-Objekte.
 2. Kurzstiche bei Tatami/Füllflächen messen und umsetzen; Gruppenbildung 0x10186ad0 genau übertragen.
-3. Unterlagenart für Flächengruppen nach `IsUnderlayTypeApplicable`; Auto-Split für breite Satinsäulen.
+3. ✅ Unterlagenart für Flächen: Step (Messung); ✅ Auto-Split: im Original nicht wirksam (Messung, 20.11.2026).
 4. Auto Jump je Stil (Schrift aus); Leerzeichen und Zeilenabstand der Schrift aus dem Code.
