@@ -125,3 +125,9 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Portfolio (Dateiverwaltung, Kataloge) | 🖥 | Projekte in der Oberfläche |
 | Quilter | ➖ | eigenes Programm, Hilfe auf der CD defekt; erst bei Bedarf |
 | Ansicht, Zoom, Raster, Messen, Auswahl, Rückgängig, Stichvorschau | 🖥 | Oberfläche |
+
+## K. Erweiterungen über das Original hinaus (Wünsche des Nutzers)
+| Funktion | Stand | Bemerkung |
+|---|---|---|
+| SVG-Import (Inkscape → Stickdesign) | ⬜ | ROADMAP 4b.17; Stichart nach Breite wie EasyStitch des Originals |
+| Parameterkatalog einfach/experte/automatisch | ✅ | `PARAMETER.md` (20.11.2026) |

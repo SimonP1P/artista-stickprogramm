@@ -82,6 +82,8 @@ Vorhandene Befehle (`app/src-tauri/src/lib.rs`): `rahmen_liste`, `stoffe_liste`,
 `gelesen_exp_speichern`.
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
+**SVG-Import** (vorgezogen): Design aus Inkscape laden – Flächen, Konturen, Farben und Reihenfolge werden
+übernommen, Stichart je Form automatisch nach Breite und in der App änderbar ·
  Reihenfolge nach Farbe/automatisch mit
 Überdeckungsprüfung · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·

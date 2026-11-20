@@ -27,7 +27,8 @@ den Musterdesigns (Säulenreihenfolge der Schrift, Step-Muster, Wendefüllung), 
 
 **Nächster Schritt – Nutzer entscheidet:** **4b.5 Reihenfolge** (nach Farbe, nach vorne/hinten, automatisch mit
 Überdeckungsprüfung; Ein-/Ausstich je Objekt) **oder 4b.16 Werte je Objekt** (Tatami-Abstand, Stichlänge,
-Zugausgleich … am einzelnen Objekt wie im Original). Danach Phase 4b in Tabellen-Reihenfolge (unten).
+Zugausgleich … am einzelnen Objekt wie im Original). Danach **4b.17 SVG-Import** (vorgezogen), dann Phase 4b in
+Tabellen-Reihenfolge (unten).
 
 **Arbeitsweise (vom Nutzer festgelegt):**
 - Werte und Abläufe aus dem Original: Stile `Analyse/daten/entschluesselt/styles.txt`, Code (DIALOG.DLL, MOD1 –
@@ -159,7 +160,7 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 
 ## Phase 4b – Restliste aus der Bestandsaufnahme (20.11.2026, `Analyse_Teil3/15_funktionsinventur.md`)
 Alle Funktionen des Originals (37 Handbuchkapitel, Werkzeuge, Sticharten) gegen den Kern abgeglichen. Reihenfolge =
-Arbeitsreihenfolge (erst, was jede Oberfläche braucht, dann Schrift, dann weitere Sticharten und Effekte). Werte und
+Arbeitsreihenfolge (erst, was jede Oberfläche braucht, dann Schrift, dann weitere Sticharten und Effekte). Die Tabelle steht in Arbeitsreihenfolge (4b.16/4b.17 nachträglich vorgezogen). Werte und
 Abläufe jeweils aus dem Original (Vorlage, Stile, Code, Messung), sonst als eigene Festlegung markiert.
 Parameterkatalog (Merkliste M1) seit 20.11. angelegt (`PARAMETER.md`) und mit jeder Funktion ergänzt; wenn alles erledigt ist,
 dem Nutzer zur Abstimmung vorlegen.
@@ -171,6 +172,8 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.3 | **Linien** | Satin-Kontur mit Versatz, Double Run (Verstärken) | ✅ 20.11. `satinlinie` `"versatz": "seite"` (Seite links wie Blanket, eigene Festlegung), `"doppellauf": true` an jedem Objekt (Stiche rückwärts, gleiche Farbe, ohne Verbinder – Handbuch Kap. 23) |
 | 4b.4 | **Flächen** | Step-Muster (Nr. 1 …), mehrere Stichwinkel (Turning Fill), Zickzack-Füllung, Tatami-Kurzstiche | ✅ 20.11. Step-Muster 1–20 (Tabelle DIALOG.DLL, Reihen abwechselnd Versatz 1/2, gemessen) · ✅ mehrere Stichwinkel (`winkellinien`, Step längs der Linien wie im Original gemessen; ohne Löcher) · ✅ Zickzack-Deckstich (`stichart: zickzack`, 0x2724/0x2725) · ✅ Korrektur: Deck-Step der Stoffe Versatz 0,25/0,75 (Referenz `vergleich_stoff` ersetzt) · ✅ Kurzstiche in Step-Flächen mit Winkellinien und Step-Schrift (Effekt im allgemeinen Füllgenerator; 770 solcher Flächen der Musterdesigns mit Kurzstichen) |
 | 4b.5 | **Reihenfolge** | nach Farbe, an Anfang/Ende, automatisch – mit Prüfung, ob sich Objekte überdecken (Kap. 14); Ein-/Ausstich je Objekt setzbar | ⬜ |
+| 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ⬜ |
+| 4b.17 | **SVG-Import** (Erweiterung, Wunsch Nutzer 20.11.: in Inkscape zeichnen → laden → sticken) | SVG lesen (freie Bibliothek `usvg`: Gruppen, Verschiebungen, Stile, Formen → Pfade); gefüllte Pfade → Flächen mit Löchern (Füllregel), Konturen → Lauf/Dreifach/Satinlinie nach Strichbreite; Stichart nach Breite wie EasyStitch des Originals (Linie ≤ 0,3 mm Lauf, ≤ 2 mm kräftige Linie; Fläche ≤ 8 mm Satin, ≤ 12 mm Tatami 1, darüber Tatami 2); Zeichenreihenfolge = Stickreihenfolge, Überdeckungen aussparen, Farben → Garnkarte, Maßstab in mm (viewBox/width). Hinweise: Text in Pfade umwandeln, Verläufe/Transparenz → Hauptfarbe; schmale Flächen als Satin brauchen eine berechnete Stichrichtung (mit 4b.11). CLI `stick svg`, später Befehl für die App | ⬜ |
 | 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ⬜ |
 | 4b.7 | **Motive** | Pattern Run (Motivlinie), Pattern Fill (Motivfüllung), eigene Muster/Sets (Kap. 25) | ⬜ |
 | 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | 🟡 Loft ✅ (= Auto Jump mit kleinem Höchststich, Handbuch) · Rest ⬜ |
@@ -181,7 +184,6 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ⬜ |
 | 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ⬜ |
 | 4b.15 | **Kreuzstich** | eigenes Modul (Kap. 34–37) | ⬜ |
-| 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ⬜ |
 Nicht nötig: Designkarte/Magic Box, Scanner, Quilter (eigenes Programm), nur in Strings vorhandene Sticharten (Coil,
 Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau, Druck, Portfolio) → neue Oberfläche.
 
