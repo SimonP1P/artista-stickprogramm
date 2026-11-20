@@ -1,6 +1,6 @@
 [package]
 name = "stick-cli"
-description = "Kommandozeile zum Rechenkern (Design-JSON -> EXP + SVG)"
+description = "Kommandozeile zum Rechenkern (Design-JSON -> EXP + SVG, Puffer, Maschine)"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -13,4 +13,10 @@ path = "src/main.rs"
 [dependencies]
 stick-kern.workspace = true
 stick-formate.workspace = true
+stick-maschine = { workspace = true, default-features = false }
 serde_json.workspace = true
+
+[features]
+default = ["port"]
+# echter serieller Port (sonst nur --simulation)
+port = ["stick-maschine/port"]

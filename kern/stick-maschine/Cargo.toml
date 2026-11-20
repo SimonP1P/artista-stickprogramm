@@ -1,0 +1,16 @@
+[package]
+name = "stick-maschine"
+description = "Serielles Protokoll der BERNINA artista 185 mit Stickmodul (wie die Testprogramme v3.6/v4.1), mit Simulation"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[features]
+default = ["port"]
+# echter serieller Port (Crate serialport); ohne dieses Merkmal nur die Simulation
+port = ["dep:serialport"]
+
+[dependencies]
+stick-formate.workspace = true
+serialport = { version = "4.10", default-features = false, optional = true }

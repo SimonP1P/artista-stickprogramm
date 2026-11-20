@@ -712,6 +712,116 @@ pub fn farben_in_stichen(d: &[u8]) -> usize {
 }
 
 // ---------------------------------------------------------------------------------------------------------------
+// Sendedaten: alles, was das Original für ein Design an die Maschine schickt
+// ---------------------------------------------------------------------------------------------------------------
+
+/// Container (Kopf + Farbtabelle) für ein eigenes Design; Kopf nach dem Muster der Karten-Designs
+/// ([`Kopf::neu`], eigene Festlegung), Farben nur als RGB (ohne Garnangabe).
+pub fn container_fuer(name: &str, folge: &StichFolge) -> Container {
+    let (breite, hoehe) = folge
+        .begrenzung()
+        .map_or((0.0, 0.0), |(x0, y0, x1, y1)| (x1 - x0, y1 - y0));
+    let farben = folge.anzahl(Art::Farbwechsel) + 1;
+    let zehntel = |v: f64| (v * 10.0).round().clamp(0.0, u16::MAX as f64) as u16;
+    let kopf = Kopf::neu(
+        name,
+        farben as u16,
+        zehntel(breite),
+        zehntel(hoehe),
+        folge.anzahl(Art::Stich),
+    );
+    let tabelle: Vec<u8> = (0..farben)
+        .flat_map(|i| Farbe::aus_hex(folge.farben.get(i).map_or("#000000", String::as_str)).bytes())
+        .collect();
+    Container {
+        kennung: 0,
+        wort: 0,
+        chunks: vec![
+            Chunk {
+                id: CHUNK_KOPF,
+                daten: kopf.chunk_daten(),
+            },
+            Chunk {
+                id: CHUNK_FARBEN,
+                daten: tabelle,
+            },
+        ],
+    }
+}
+
+/// Alles, was die Original-Software für ein Design an die artista 185 schickt (BEAGLink 0x100032b0 bei Firmware
+/// ≥ 3.09): Puffer DATEN (Schritt 7; Anhang nur mit dem Kopf), ICON (Schritt 8), INFO-Felder (Schritte 9–11) und
+/// Garnfarbtabelle (Schritt 12). Genutzt von `stick puffer` (Dateien für das Testprogramm v4.1) und `stick-maschine`.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Sendedaten {
+    pub puffer: Puffer,
+    pub icon: Icon,
+    /// Garnfarben aus Chunk 0x14; leer = keine Garnfarbtabelle (wie das Original ohne Chunk 0x14)
+    pub farben: Vec<Farbe>,
+    pub info: InfoFelder,
+    /// Name aus dem Kopf-Chunk (leer ohne Anhang)
+    pub name: String,
+}
+
+impl Sendedaten {
+    /// `farben_im_anhang = true`: Farbtabelle zusätzlich im Anhang lassen (Variante des Gerätetests v4.0, 19.11.2026).
+    fn bauen(exp: &[u8], container: Option<Container>, folge: &StichFolge, farben_im_anhang: bool) -> Sendedaten {
+        let mut puffer = Puffer::neu(exp, None);
+        if let Some(c) = &container {
+            puffer.anhang = if farben_im_anhang {
+                c.verschleiert()
+            } else {
+                c.anhang_wie_original().verschleiert()
+            };
+        }
+        let info = puffer.info_felder(farben_in_stichen(&puffer.stiche));
+        Sendedaten {
+            icon: Icon::aus_stichen(folge),
+            farben: container.as_ref().map(Container::farben).unwrap_or_default(),
+            name: container
+                .as_ref()
+                .and_then(Container::kopf)
+                .map(|k| k.name())
+                .unwrap_or_default(),
+            puffer,
+            info,
+        }
+    }
+
+    /// Eigenes Design aus berechneten Stichen.
+    pub fn eigenes_design(name: &str, folge: &StichFolge, farben_im_anhang: bool) -> Sendedaten {
+        let exp = crate::exp::exp_bytes(folge);
+        Sendedaten::bauen(&exp, Some(container_fuer(name, folge)), folge, farben_im_anhang)
+    }
+
+    /// Design aus einer EXP-Datei (die Bytes werden unverändert gesendet).
+    pub fn aus_exp(name: &str, exp: &[u8], farben_im_anhang: bool) -> Sendedaten {
+        let folge = crate::exp::exp_lesen(exp);
+        Sendedaten::bauen(exp, Some(container_fuer(name, &folge)), &folge, farben_im_anhang)
+    }
+
+    /// Aus der Maschine gelesenes Design (Puffer DATEN, N = 28). Ein ungültiger Anhang (Rest des vorher geladenen
+    /// Designs) fällt weg.
+    pub fn aus_gelesenem(roh: &[u8], farben_im_anhang: bool) -> Result<Sendedaten, String> {
+        let p = Puffer::lesen(roh, N_185)?;
+        let c = p.container().transpose()?;
+        let folge = crate::exp::exp_lesen(&p.stiche);
+        Ok(Sendedaten::bauen(&p.stiche, c, &folge, farben_im_anhang))
+    }
+
+    /// Ohne Anhang senden (INFO-Felder dann wie die Designs ohne Anhang: Flags 0x86, Name leer).
+    pub fn ohne_anhang(&mut self) {
+        self.puffer.anhang.clear();
+        self.info = self.puffer.info_felder(farben_in_stichen(&self.puffer.stiche));
+    }
+
+    /// Garnfarbtabelle für T + Vorspann; `None`, wenn das Design keine Farben mitbringt.
+    pub fn farbtabelle(&self) -> Option<Vec<u8>> {
+        (!self.farben.is_empty()).then(|| farbtabelle_maschine(&self.farben))
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------
 // Icon (Puffer ICON, Schritt 8)
 // ---------------------------------------------------------------------------------------------------------------
 

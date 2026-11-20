@@ -299,3 +299,15 @@ gespeicherten Designs; das Original liest sie dort (0x10004850). Offen: Schreibe
 ohne Sticken wurde in dieser Sitzung nicht ausgeführt – Freigabe fehlte in der Sitzung), Display ansehen (Person vor
 Ort).
 
+## Rust `stick-maschine` am Gerät – nur lesend (20.11.2026, 01:50–01:51, `Arbeitsdaten/geraetetests/Mitschnitt_stick_*`)
+Das Protokoll der Testprogramme ist nach Rust übertragen (`kern/stick-maschine`, CLI `stick maschine …`).
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| `stick maschine pruefen` | verbunden (Synchronisation bei 57600, `Y Q`), Verwaltungsblock, Zusatzblock und Garnfarbtabelle (Nr. 21, 3 Farben) gelesen, 0x100 + `T r M E` bestätigt – **3,8 s** | hoch |
+| `stick maschine liste` | 51 Designs, Namen und Flags wie mit v3.6 – 13,4 s | hoch |
+| `stick maschine lesen 47` | 0x400, Puffer DATEN 328 Byte; **Icon erstmals vollständig gelesen (732 Byte = 0xAE + 9 × 62)**, Anfang byte-gleich mit dem Teil-Icon vom 19.11. – 9,6 s | hoch |
+| Garnfarbtabelle nach 0x400 von Nr. 47 (Design ohne Anhang/Farben) | die Maschine legt eine **Standardfarbe** an: RGB 00 00 FF, Garn-Nr. 2, Marke „Default“, Name „Blue“ | hoch |
+| Länge 2 bei Nr. 47 | diesmal **0** (nach Nr. 21 mit Anhang 724); am 19.11. stand dort der Rest des vorher gelesenen Designs – wann die Maschine Länge 2 zurücksetzt, ist offen | mittel |
+| Tabelle B[0]/C[0] | auch bei Nr. 47 jetzt 0x00C8 (wie Nr. 21) | hoch |
+
+

@@ -8,13 +8,15 @@
 //!                                                          Daten für die artista 185 bauen: Puffer DATEN,
 //!                                                          Garnfarbtabelle und Icon (wie das Original)
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
+//!   stick maschine ports|pruefen|liste|lesen NR|senden EINGABE [--port COM3 | --simulation] …
+//!                                                          artista 185 ansprechen (Protokoll der Testprogramme;
+//!                                                          senden schreibt nur mit --schreiben, nach Rückfrage)
+
+mod maschine;
 
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
-use stick_formate::artista::{
-    CHUNK_FARBEN, CHUNK_KOPF, Chunk, Container, Farbe, Icon, Kopf, N_185, Puffer, farben_in_stichen,
-    farbtabelle_maschine,
-};
+use stick_formate::artista::{N_185, Sendedaten, farben_in_stichen};
 use stick_formate::esb;
 use stick_formate::exp::{exp_bytes, exp_lesen};
 use stick_formate::svg::{SvgOptionen, svg_text};
@@ -99,41 +101,42 @@ fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool,
     Ok(aussen.is_empty())
 }
 
-/// Container (Kopf + Farbtabelle) für ein eigenes Design; Kopf nach dem Muster der Karten-Designs
-/// (`Kopf::neu`, eigene Festlegung).
-fn container_fuer(name: &str, folge: &StichFolge) -> Container {
-    let (breite, hoehe) = folge
-        .begrenzung()
-        .map_or((0.0, 0.0), |(x0, y0, x1, y1)| (x1 - x0, y1 - y0));
-    let farben = folge.anzahl(Art::Farbwechsel) + 1;
-    let zehntel = |v: f64| (v * 10.0).round().clamp(0.0, u16::MAX as f64) as u16;
-    let kopf = Kopf::neu(
-        name,
-        farben as u16,
-        zehntel(breite),
-        zehntel(hoehe),
-        folge.anzahl(Art::Stich),
-    );
-    let tabelle: Vec<u8> = (0..farben)
-        .flat_map(|i| Farbe::aus_hex(folge.farben.get(i).map_or("#000000", String::as_str)).bytes())
-        .collect();
-    Container {
-        kennung: 0,
-        wort: 0,
-        chunks: vec![
-            Chunk {
-                id: CHUNK_KOPF,
-                daten: kopf.chunk_daten(),
-            },
-            Chunk {
-                id: CHUNK_FARBEN,
-                daten: tabelle,
-            },
-        ],
+/// Sendedaten aus einer Eingabedatei: Design-JSON (berechnen), .exp oder aus der Maschine gelesenes Design (.bin).
+fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, String> {
+    let farben_im_anhang = args.iter().any(|a| a == "--farben-im-anhang");
+    let stamm = eingabe.file_stem().unwrap_or_default().to_string_lossy().to_string();
+    let endung = eingabe.extension().unwrap_or_default().to_string_lossy().to_lowercase();
+    let name = option(args, "--name");
+    let lesen = || std::fs::read(eingabe).map_err(|e| format!("{}: {e}", eingabe.display()));
+    let mut s = match endung.as_str() {
+        "bin" => Sendedaten::aus_gelesenem(&lesen()?, farben_im_anhang)?,
+        "exp" => {
+            let d = lesen()?;
+            println!("{}", statistik(&exp_lesen(&d)));
+            Sendedaten::aus_exp(&name.unwrap_or(stamm), &d, farben_im_anhang)
+        }
+        "json" => {
+            let text = std::fs::read_to_string(eingabe).map_err(|e| format!("{}: {e}", eingabe.display()))?;
+            let mut design = Design::aus_json(&text)?;
+            esb::design_alphabete_laden(&mut design, &alphabet_ordner(args))?;
+            let f = design.berechnen()?;
+            println!("{}", statistik(&f));
+            Sendedaten::eigenes_design(&name.unwrap_or_else(|| design.name.clone()), &f, farben_im_anhang)
+        }
+        _ => {
+            return Err(format!(
+                "unbekannte Eingabe {} (erwartet .json, .exp oder .bin)",
+                eingabe.display()
+            ));
+        }
+    };
+    if args.iter().any(|a| a == "--ohne-anhang") {
+        s.ohne_anhang();
     }
+    Ok(s)
 }
 
-/// Daten für die artista 185 bauen wie BEAGLink 0x100032b0 bei Firmware ≥ 3.09:
+/// Daten für die artista 185 bauen wie BEAGLink 0x100032b0 bei Firmware ≥ 3.09 ([`Sendedaten`]):
 /// - NAME_puffer.bin: Bytes für den Puffer DATEN; der Anhang enthält nur den Kopf-Chunk (Farben und Icon gehen
 ///   getrennt; mit `--farben-im-anhang` wie im Gerätetest v4 vom 19.11.2026 mit Farbtabelle im Anhang),
 /// - NAME_farben.bin: Garnfarbtabelle für T + Vorspann (Schritt 12; nur wenn das Design Farben hat),
@@ -144,118 +147,58 @@ fn container_fuer(name: &str, folge: &StichFolge) -> Container {
 /// wird entfernt, ein gültiger wie oben ohne Farbtabelle neu verschleiert.
 fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
     let eingabe = PathBuf::from(args.get(1).ok_or(hilfe)?);
-    let ohne_anhang = args.iter().any(|a| a == "--ohne-anhang");
     let farben_im_anhang = args.iter().any(|a| a == "--farben-im-anhang");
-    let anhang_aus = |c: &Container| -> Vec<u8> {
-        if farben_im_anhang {
-            c.verschleiert()
-        } else {
-            c.anhang_wie_original().verschleiert()
-        }
-    };
+    let s = sendedaten_laden(&eingabe, args)?;
     let stamm = eingabe.file_stem().unwrap_or_default().to_string_lossy().to_string();
-    let endung = eingabe.extension().unwrap_or_default().to_string_lossy().to_lowercase();
-    let mut name = option(args, "--name").unwrap_or_else(|| stamm.clone());
-    let (mut puffer, container, folge) = match endung.as_str() {
-        "bin" => {
-            let roh = std::fs::read(&eingabe).map_err(|e| format!("{}: {e}", eingabe.display()))?;
-            let mut p = Puffer::lesen(&roh, N_185)?;
-            let c = p.container().transpose()?;
-            match &c {
-                Some(c) => p.anhang = anhang_aus(c),
-                None => p.anhang.clear(),
-            }
-            let f = exp_lesen(&p.stiche);
-            (p, c, f)
-        }
-        "exp" | "json" => {
-            let (exp, folge) = if endung == "exp" {
-                let d = std::fs::read(&eingabe).map_err(|e| format!("{}: {e}", eingabe.display()))?;
-                let f = exp_lesen(&d);
-                (d, f)
-            } else {
-                let text = std::fs::read_to_string(&eingabe).map_err(|e| format!("{}: {e}", eingabe.display()))?;
-                let mut design = Design::aus_json(&text)?;
-                esb::design_alphabete_laden(&mut design, &alphabet_ordner(args))?;
-                if option(args, "--name").is_none() {
-                    name = design.name.clone();
-                }
-                let f = design.berechnen()?;
-                (exp_bytes(&f), f)
-            };
-            println!("{}", statistik(&folge));
-            let c = container_fuer(&name, &folge);
-            let mut p = Puffer::neu(&exp, None);
-            p.anhang = anhang_aus(&c);
-            (p, Some(c), folge)
-        }
-        _ => {
-            return Err(format!(
-                "unbekannte Eingabe {} (erwartet .json, .exp oder .bin)",
-                eingabe.display()
-            ));
-        }
-    };
-    if ohne_anhang {
-        puffer.anhang.clear();
-    }
     let ziel = option(args, "-o")
         .map(PathBuf::from)
         .unwrap_or_else(|| eingabe.with_file_name(format!("{stamm}_puffer.bin")));
-    let bytes = puffer.bytes();
+    let bytes = s.puffer.bytes();
     std::fs::write(&ziel, &bytes).map_err(|e| format!("{}: {e}", ziel.display()))?;
     let basis = ziel.file_stem().unwrap_or_default().to_string_lossy().to_string();
     let basis = basis.strip_suffix("_puffer").unwrap_or(&basis).to_string();
-    // Garnfarbtabelle (Schritt 12) aus Chunk 0x14 – ohne Farben schreibt das Original keine Tabelle
-    let garn = container.as_ref().map(Container::farben).unwrap_or_default();
+    // Garnfarbtabelle (Schritt 12) – ohne Farben schreibt das Original keine Tabelle
     let ziel_farben = ziel.with_file_name(format!("{basis}_farben.bin"));
-    let tabelle = farbtabelle_maschine(&garn);
-    if garn.is_empty() {
-        let _ = std::fs::remove_file(&ziel_farben);
-    } else {
-        std::fs::write(&ziel_farben, &tabelle).map_err(|e| format!("{}: {e}", ziel_farben.display()))?;
+    let tabelle = s.farbtabelle();
+    match &tabelle {
+        Some(t) => std::fs::write(&ziel_farben, t).map_err(|e| format!("{}: {e}", ziel_farben.display()))?,
+        None => {
+            let _ = std::fs::remove_file(&ziel_farben);
+        }
     }
     // Icon (Schritt 8), aus den Stichen gezeichnet
-    let icon = Icon::aus_stichen(&folge).bytes();
+    let icon = s.icon.bytes();
     let ziel_icon = ziel.with_file_name(format!("{basis}_icon.bin"));
     std::fs::write(&ziel_icon, &icon).map_err(|e| format!("{}: {e}", ziel_icon.display()))?;
     let dateiname = |p: &Path| p.file_name().unwrap_or_default().to_string_lossy().to_string();
-    let farben = farben_in_stichen(&puffer.stiche);
-    let info = puffer.info_felder(farben);
     let hex = |b: &[u8]| b.iter().map(|x| format!("{x:02X}")).collect::<String>();
-    let kopf_name = puffer
-        .container()
-        .and_then(|c| c.ok())
-        .and_then(|c| c.kopf())
-        .map(|k| k.name())
-        .unwrap_or_default();
     let zeilen = [
         format!(
             "# Puffer DATEN für die artista 185 (stick puffer), Quelle {}",
             eingabe.display()
         ),
         format!("laenge={}", bytes.len()),
-        format!("laenge_stiche={}", puffer.stiche.len()),
-        format!("laenge_anhang={}", puffer.anhang.len()),
-        format!("farben={farben}"),
-        format!("info_farben_minus_1={:02X}", info.farben_minus_1),
-        format!("info_flags={:02X}", info.flags),
-        format!("info_name={}", hex(&info.name)),
-        format!("name={kopf_name}"),
+        format!("laenge_stiche={}", s.puffer.stiche.len()),
+        format!("laenge_anhang={}", s.puffer.anhang.len()),
+        format!("farben={}", farben_in_stichen(&s.puffer.stiche)),
+        format!("info_farben_minus_1={:02X}", s.info.farben_minus_1),
+        format!("info_flags={:02X}", s.info.flags),
+        format!("info_name={}", hex(&s.info.name)),
+        format!("name={}", s.name),
         format!(
             "farben_im_anhang={}",
-            u8::from(farben_im_anhang && !puffer.anhang.is_empty())
+            u8::from(farben_im_anhang && !s.puffer.anhang.is_empty())
         ),
         format!(
             "datei_farbtabelle={}",
-            if garn.is_empty() {
-                String::new()
-            } else {
+            if tabelle.is_some() {
                 dateiname(&ziel_farben)
+            } else {
+                String::new()
             }
         ),
-        format!("farbtabelle_farben={}", garn.len()),
-        format!("farbtabelle_laenge={}", if garn.is_empty() { 0 } else { tabelle.len() }),
+        format!("farbtabelle_farben={}", s.farben.len()),
+        format!("farbtabelle_laenge={}", tabelle.as_ref().map_or(0, Vec::len)),
         format!("datei_icon={}", dateiname(&ziel_icon)),
         format!("icon_laenge={}", icon.len()),
     ];
@@ -267,37 +210,36 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
         ziel.display(),
         bytes.len(),
         6 * N_185 + 8,
-        puffer.stiche.len(),
-        puffer.anhang.len()
+        s.puffer.stiche.len(),
+        s.puffer.anhang.len()
     );
     println!(
         "  INFO-Felder:  Farben−1 {:02X}, Flags {:02X}, Name '{}'  → {}",
-        info.farben_minus_1,
-        info.flags,
-        kopf_name,
+        s.info.farben_minus_1,
+        s.info.flags,
+        s.name,
         ziel_txt.display()
     );
-    if garn.is_empty() {
-        println!("  Farbtabelle:  keine (Design ohne Farbangaben)");
-    } else {
-        println!(
+    match &tabelle {
+        None => println!("  Farbtabelle:  keine (Design ohne Farbangaben)"),
+        Some(t) => println!(
             "  Farbtabelle:  {} ({} Farben, {} Byte){}",
             ziel_farben.display(),
-            garn.len(),
-            tabelle.len(),
+            s.farben.len(),
+            t.len(),
             if farben_im_anhang {
                 " – Farben zusätzlich im Anhang"
             } else {
                 ""
             }
-        );
+        ),
     }
     println!("  Icon:         {} ({} Byte, 72 × 62)", ziel_icon.display(), icon.len());
     Ok(true)
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang]";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -344,6 +286,7 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
             Ok(true)
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
+        Some("maschine") => maschine::ausfuehren(args),
         Some("rahmen") => {
             for r in alle_rahmen() {
                 println!("  {:<36} {:6.1} × {:6.1} mm  {}", r.name, r.breite, r.hoehe, r.hinweis);
