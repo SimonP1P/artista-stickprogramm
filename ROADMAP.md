@@ -109,7 +109,10 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    Höhe = Großbuchstaben, je Buchstabe **Tatami-Fläche** mit Löchern (eigene Festlegung – Stichart des Originals für
    TrueType nicht belegt) oder Lauf-/Dreifach-Umriss; JSON `"art": "ttf"`, CLI `stick schriften`. Satin entlang der
    Striche später (braucht Säulenzerlegung, zusammen mit Punkt 8). Im Programm: kommt mit der neuen Oberfläche
-8. ⬜ Bild → Umrisse (Vektorisierung: Potrace/VTracer)
+8. 🟡 Bild → Umrisse – ✅ 20.11.2026 erste Stufe `stick-vektor` / CLI `stick bild`: Farben reduzieren (k-Means),
+   Hintergrund weg, Flächen mit Löchern verfolgen (`imageproc`, Suzuki–Abe), vereinfachen, als Tatami-Flächen nach
+   Farbe geordnet (alles **eigene Festlegung**, Auto Digitizer des Originals nicht analysiert); an „Apples-pocket.bmp“
+   der CD erprobt · ⬜ dünne Linien als Lauf/Satin (EasyStitch-Schwellen), schmale Flächen als Satin, Strichbilder
 9. ⬜ Knockout/Überlappung
 10. 🟡 Probestickereien an der Maschine: erste am 19.11.2026 (Testquadrat, Bettlaken ohne Vlies – Geometrie ok); nächste
     mit festem Stoff, Vlies, Stickgarn: Prüfmuster Satin in mehreren Breiten, Tatami, Kreis, Schrift; auch feine Arbeiten

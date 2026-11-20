@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["stick-kern", "stick-formate", "stick-maschine", "stick-cli"]
+members = ["stick-kern", "stick-formate", "stick-maschine", "stick-vektor", "stick-cli"]
 
 [workspace.package]
 version = "0.1.0"
@@ -14,3 +14,4 @@ serde_json = "1"
 stick-kern = { path = "stick-kern" }
 stick-formate = { path = "stick-formate" }
 stick-maschine = { path = "stick-maschine" }
+stick-vektor = { path = "stick-vektor" }

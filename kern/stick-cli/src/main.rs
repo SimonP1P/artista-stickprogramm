@@ -8,6 +8,7 @@
 //!                                                          Daten für die artista 185 bauen: Puffer DATEN,
 //!                                                          Garnfarbtabelle und Icon (wie das Original)
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
+//!   stick bild BILD [--breite MM] [--farben N] [-o D.json]  Bild → Umrisse (Tatami-Flächen als Design-JSON)
 //!   stick muster                                           Füllmuster der Vorlage auflisten
 //!   stick schriften [--schriften ORDNER]                  Computer-Schriften (TrueType/OpenType) auflisten
 //!   stick garnkarten [--garnkarten ORDNER]                 Garnkarten (.tch) auflisten
@@ -294,7 +295,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | bild BILD [--breite MM] [--farben N] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -342,6 +343,49 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
+        Some("bild") => {
+            let pfad = PathBuf::from(args.get(1).ok_or(
+                "stick bild BILD [--breite MM] [--farben N] [--rahmen NAME] [--mit-hintergrund] [-o DESIGN.json]",
+            )?);
+            let st = stick_vektor::BildOptionen::default();
+            let zahl = |n: &str, v: f64| {
+                option(args, n)
+                    .and_then(|x| x.replace(',', ".").parse().ok())
+                    .unwrap_or(v)
+            };
+            let o = stick_vektor::BildOptionen {
+                breite_mm: zahl("--breite", st.breite_mm),
+                farben: zahl("--farben", st.farben as f64) as usize,
+                min_flaeche: zahl("--min-flaeche", st.min_flaeche),
+                glaettung: zahl("--glaettung", st.glaettung),
+                ohne_hintergrund: !args.iter().any(|a| a == "--mit-hintergrund"),
+            };
+            let bild = stick_vektor::bild_laden(&pfad)?;
+            let f = stick_vektor::ordnen(stick_vektor::vektorisieren(&bild, &o));
+            let stamm = pfad.file_stem().unwrap_or_default().to_string_lossy().to_string();
+            let rahmen = option(args, "--rahmen").unwrap_or_else(|| "artista 130 x 100".into());
+            let json = stick_vektor::design_json(&f, &stamm, &rahmen);
+            let ziel = option(args, "-o")
+                .map(PathBuf::from)
+                .unwrap_or_else(|| pfad.with_extension("json"));
+            std::fs::write(&ziel, serde_json::to_string_pretty(&json).map_err(|e| e.to_string())?)
+                .map_err(|e| format!("{}: {e}", ziel.display()))?;
+            let mut farben: Vec<[u8; 3]> = f.iter().map(|x| x.farbe).collect();
+            farben.dedup();
+            println!(
+                "  {} Flächen in {} Farben, Bild {} × {} Punkte → {:.0} mm breit",
+                f.len(),
+                farben.len(),
+                bild.width(),
+                bild.height(),
+                o.breite_mm
+            );
+            println!(
+                "  Design: {} (Tatami-Flächen, mit „stick erzeugen“ berechnen)",
+                ziel.display()
+            );
+            Ok(true)
+        }
         Some("muster") => {
             for m in stick_kern::muster::alle() {
                 println!(

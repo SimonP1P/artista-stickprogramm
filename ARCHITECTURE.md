@@ -45,7 +45,7 @@ kern/                     Rust-Workspace
   stick-kern/             Geometrie, Sticharten, Unterlagen, Nachbearbeitung, Einstellungen, Stoffe, Rahmen   ✅ 19.11.2026
   stick-formate/          EXP lesen/schreiben, artista-Designcontainer, später ART lesen   ✅ EXP + SVG + ESB
   stick-maschine/         serielles Protokoll artista 185 (mit Simulation wie die Testprogramme)
-  stick-vektor/           Bild → Umrisse (Potrace, VTracer)
+  stick-vektor/           Bild → Umrisse (Farbreduktion, Konturverfolgung mit imageproc; erste Stufe 20.11.2026)
   stick-schrift/          Schriften → Umrisse, Stickschriften
 stickprogramm/            Python-Prototyp (Phase 1) – Referenz und Prüforakel
 ```
