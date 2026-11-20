@@ -1,0 +1,58 @@
+﻿artista Design senden VERSION 4.1 (mit Icon und Garnfarbtabelle) – 20.11.2026 01:39:49
+Mitschnitt: C:\Users\Simon\Desktop\AI Projekte\artista-stickprogramm\Testprogramm_artista185_Windows_v4_1\Mitschnitt_v4_1_20261120_013949.log
+Modus: TROCKENLAUF (nichts schreiben)
+
+=== Port COM3 ===
+  Versuch 1 : Transfermodus (T r M E) …
+  keine passende Antwort – synchronisiere (R / F / ?) …
+  … wechsle auf 57600 Baud
+  synchron bei 57600 Baud
+  Versuch 2 : Transfermodus (T r M E) …
+  VERBUNDEN (Transfermodus aktiv, 57600 Baud)
+  >>> STUFE 1 OK: Nähmaschine antwortet, Firmware '04.04'
+  Umschalten zum Stickmodul, Versuch 1 …
+  vereinbare 57600 Baud (J 0 5 … B O S … E B) …
+  schalte zum Stickmodul durch (Y Q) …
+  >>> STUFE 2 OK: Stickmodul antwortet ('SRMV04.04.Fritz ')
+  0xFFFD24: 1C 3C 00 01 B3 42 00 02 40 80 00 02 01 EA 00 02 44 80 00 02 8E 9A 00 01 FD 7A 00 02 38 12 01 00
+     N (Byte 0)             = 0x1C (28)
+     Byte 1                 = 0x3C (60)
+     Groesse Datenbereich   = 0x1B342 (111426)
+     INFO                   = 0x24080 (147584)
+     AUSWAHL                = 0x201EA (131562)
+     ICON                   = 0x24480 (148608)
+     DATEN                  = 0x28E9A (167578)
+     Ende Karte             = 0x1FD7A (130426)
+     Ende Speicher          = 0x23812 (145426)
+  >>> Verwaltungsblock plausibel
+
+  Puffer-Datei: Nr21_puffer.bin (9122 Byte)
+  Stichdaten 8630 Byte (Ende 80 81), Anhang 316 Byte (Container gültig), Grenze 145426 Byte – passt
+  Garnfarbtabelle aus der Datei: 3 Farben, 105 Byte
+      1: RGB F08C4B  Garn-Nr. 1311  Marke „Isacord 40“  Name „rich brown“
+      2: RGB F0CC33  Garn-Nr. 821   Marke „Isacord 40“  Name „brass“
+      3: RGB FFFFF0  Garn-Nr. 670   Marke „Isacord 40“  Name „light beige“
+  Garnfarbbereich der Maschine lesen (Zeiger 0x24044 / 0x24048) …
+     Zusatzblock 0x020772: 00 01 B3 42 00 01 FD 7A 00 02 38 12 3C 00 00 00 17 70
+     höchste Farbanzahl 60, Größe 6000 Byte, Bereich T 0x02083A, Tabelle bei T + 66 = 0x02087C
+     jetzt in der Maschine: gültige Tabelle mit 3 Farben (105 Byte)
+        1: RGB F08C4B  Garn-Nr. 1311  Marke „Isacord 40“  Name „rich brown“
+        2: RGB F0CC33  Garn-Nr. 821   Marke „Isacord 40“  Name „brass“
+        3: RGB FFFFF0  Garn-Nr. 670   Marke „Isacord 40“  Name „light beige“
+     >>> Tabelle in der Maschine ist BYTE-GLEICH mit der Datei
+  Geplante Schreibzugriffe:
+    DATEN 0x028E9A: 9122 Byte (Kopf 176 + Stiche 8630 + Anhang 316)
+    ICON  0x024480: 732 Byte (Kopf 0xAE + Bitmap 72 × 62)
+    INFO+(N+1)  0x02409D: Farbanzahl−1 = 0x02
+    INFO+(2N+1) 0x0240B9: Flags = 0xA4
+    INFO+(3N+1) 0x0240D5: Name = '13'
+    Farbtabelle 0x02087C (T + 66): 105 Byte, 3 Farben
+    danach 00 00 00 an T 0x02083A (Freigabe der Tabelle wie das Original)
+    kein Befehl 0x08 (ohne -Sticken)
+    zum Schluss Befehl 0x100 und T r M E (PC-Modus verlassen)
+
+  TROCKENLAUF: nichts geschrieben (Schalter -Schreiben fehlt); nur 0x100 + T r M E zum Verlassen.
+
+  PC-Modus verlassen (Befehl 0x100 + T r M E wie das Original) – Display sollte wieder an sein
+
+FERTIG.

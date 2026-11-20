@@ -665,6 +665,9 @@ function Read-FarbBereich {
     if ($null -eq $daten) { $r.text = 'Tabelle nicht lesbar'; return $r }
     $r.gueltig = $true; $r.text = ('gültige Tabelle mit {0} Farben ({1} Byte)' -f $anz, ($len + 8))
     $r.zeilen = Decode-FarbSaetze $daten 8 ([int]$anz)
+    $tab = New-Object byte[] (8 + $daten.Length); [Array]::Copy($kopf, $vor, $tab, 0, 8); [Array]::Copy($daten, 0, $tab, 8, $daten.Length)
+    $r.tabelle = $tab
+    Write-Log ("Tabelle bei T + {0}: {1}" -f $vor, (Hex $tab))
     return $r
 }
 
@@ -708,6 +711,10 @@ function Send-Design([int]$N, $f, $pd) {
         Say ("     höchste Farbanzahl {0}, Größe {1} Byte, Bereich T 0x{2:X6}, Tabelle bei T + {3} = 0x{4:X6}" -f $fb.max, $fb.groesse, $fb.T, $fb.vorspann, ($fb.T + $fb.vorspann))
         Say ("     jetzt in der Maschine: {0}" -f $fb.text)
         foreach ($z in $fb.zeilen) { Say ("       {0}" -f $z) }
+        if ($fb.gueltig -and $null -ne $pd.farben) {
+            if ((Hex $fb.tabelle) -eq (Hex $pd.farben)) { Say '     >>> Tabelle in der Maschine ist BYTE-GLEICH mit der Datei' 'Green' }
+            else { Say '     Tabelle in der Maschine weicht von der Datei ab (anderes Design geladen?) – siehe Mitschnitt' 'Yellow' }
+        }
         if ($mitFarben) {
             # Prüfung wie das Original (0x10003abb, 0x10003c8c–0x10003cc2) – sonst schreibt es keine Tabelle
             $grund = ''

@@ -21,12 +21,23 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 (ohne Maschine) wurde geklärt, warum das Display „no color“ zeigte: Ab Firmware 3.09 schickt das Original die Farben als
 eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Icon sind jetzt im Rust-Kern und im
 **Testprogramm v4.1** wie das Original umgesetzt (Simulation ok). Weiter geht es mit
-1. **Gerätetest v4.1** (nur mit Zustimmung, neue Schreibwege ICON + Farbtabelle): Trockenlauf liest die Grenzen der
-   Tabelle, dann Nr. 21 (3 echte Isacord-Farben) und Testquadrat – Display zeigt Farben? Danach Speichern (0x10/0x200),
+1. **Gerätetest v4.1:** ✅ Lesen (20.11.: M = 60, G = 6000; Tabelle der Maschine für Nr. 21 byte-gleich mit unserer) ·
+   ⬜ Schreiben von ICON + Tabelle und Display ansehen → Liste „Vor Ort“ unten. Danach Speichern (0x10/0x200),
 2. Phase 5 vorziehen: **„Senden“ direkt aus dem Programm** (Rust `stick-maschine` nach Testprogramm v4.1) – damit ist der
    Ablauf „Rahmen → anpassen → senden“ zum ersten Mal vollständig; dazu Garnangaben (Marke, Nummer, Name) aus den
    Garnfarbkarten, damit eigene Designs echte Garnfarben mitschicken,
 3. Phase 4 weiter: Schrift-Reihenfolge, Kurzstiche bei Tatami, Auto-Split …
+
+## Vor Ort – wartet auf eine Person an der Maschine (Stand 20.11.2026)
+Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rahmen/Stoff, Start-Taste, Aus/Ein).
+Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Testprogramm_artista185_Windows_v4_1/`.
+| # | Aufgabe | Braucht vor Ort | Stand |
+|---|---|---|---|
+| V1 | **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) | niemanden (kein 0x08) – aber Freigabe: der Nutzer startet es selbst oder gibt Claude Code die Berechtigung (am 20.11. von der Rechteprüfung abgelehnt) | ⬜ |
+| V2 | **Display prüfen:** `START_STICKEN.bat Nr21_puffer.bin` – zeigt das Display Garnfarben (Isacord 40 rich brown / brass / light beige) statt „no color“? Foto | Person: Display ansehen, Nadel oben, Hände weg | ⬜ |
+| V3 | Testquadrat mit Icon + Farbtabelle sticken (`START_STICKEN.bat`) – Farbe und Icon am Display? | Person: Rahmen, Stoff + **Vlies**, Stickgarn, Start-Taste | ⬜ |
+| V4 | Prüfmuster (Satin mehrere Breiten, Tatami, Kreis, Schrift) auf festem Stoff mit Vlies sticken und fotografieren | Person, Material | ⬜ (Prüfmuster wird vorbereitet) |
+| V5 | Dauerhaft speichern (0x10 → schreiben → 0x200), danach in der Designliste und am Display prüfen | Person: Display, ggf. löschen am Gerät | ⬜ (eigene Zustimmung nötig) |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
 1. **Das Lesen ist fertig und hat das Format des Maschinenpuffers vollständig gezeigt** (Kopf 6N+8, Stichdaten in

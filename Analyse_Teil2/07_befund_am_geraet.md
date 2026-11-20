@@ -286,3 +286,16 @@ Testprogramm **v4.1** (`Testprogramm_artista185_Windows_v4_1/`; Selbsttest in de
 zu prüfen (nur mit Zustimmung): Trockenlauf liest M, G und die vorhandene Tabelle; dann Testquadrat bzw. Nr. 21 (3 echte
 Isacord-Farben) mit Icon und Tabelle – zeigt das Display Farben statt „no color“?
 
+## Test v4.1 – Garnfarbtabelle gelesen, nur lesend (20.11.2026, 01:38–01:40, niemand an der Maschine, `Arbeitsdaten/geraetetests/*20261120*`)
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| v4.1 Trockenlauf (Nr. 21) | Zusatzblock 0x20772 = `00 01 B3 42 00 01 FD 7A 00 02 38 12 3C 00 00 00 17 70` → **höchste Farbanzahl M = 60** (= Byte 1 des Verwaltungsblocks, 0x3C), **Größe G = 6000** (0x1770); die ersten 12 Byte wiederholen Größe Datenbereich, Ende Karte, Ende Speicher. Bereich T = 0x2083A, Vorspann 66 → Tabelle bei 0x2087C. Vorher **keine Tabelle** (Kennung 0/0) | hoch |
+| v3.6: Nr. 21 mit 0x400 laden und lesen | Status 0x0002, 9530 Byte, gleich wie am 19.11. bis auf **Tabelle B[0] = C[0] = 0x00C8** (200; am 19.11. 0) – vermutlich vom Sticken am 19.11. gesetzt, Bedeutung offen | hoch (Befund), niedrig (Deutung) |
+| v4.1 Trockenlauf danach | **Die Maschine hat beim Laden (0x400) selbst eine Garnfarbtabelle angelegt**: T[0..5] = `00 00 00 00 17 70`, bei T + 66 `00 00 00 01 00 00 00 08 00 00 00 61 00 00 00 03` + 3 Datensätze (Isacord 40 „rich brown“ 1311, „brass“ 821, „light beige“ 670) – **byte-gleich mit `Nr21_farben.bin` aus `stick puffer`** | hoch |
+
+**Folgerungen:** Das Format der Garnfarbtabelle (Schritt 12) ist an der echten Maschine bestätigt – auch Vorspann
+M + 6, Datensatzlänge mit den 2 Längenbytes und die Texte ohne Auffüllung. Die Maschine füllt T beim Laden eines
+gespeicherten Designs; das Original liest sie dort (0x10004850). Offen: Schreiben von ICON + Tabelle (der Schreibtest
+ohne Sticken wurde in dieser Sitzung nicht ausgeführt – Freigabe fehlte in der Sitzung), Display ansehen (Person vor
+Ort).
+

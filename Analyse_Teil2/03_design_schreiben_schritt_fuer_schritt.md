@@ -73,7 +73,8 @@ Im Binärprotokoll (R/W-Box) sind höchstens **15 Designs** erlaubt (sonst Fehle
    ► WriteComBytes(T + K, Tabelle, Länge)   danach   WriteComBytes(T, 00 00 00, 3)
       (Lesen: gültig nur, wenn T[0] = 0, bei T+K u32 1 und u32 8, Länge < G, Anzahl < 0xFF)
    Ohne Chunk 0x14 schreibt das Original keine Tabelle. Rust: stick-formate::artista::farbtabelle_maschine,
-   Testprogramm v4.1 (Werte M und G der artista 185 noch nicht gelesen).
+   Testprogramm v4.1. **artista 185 (am Gerät gelesen 20.11.2026): M = 60, G = 6000, T = 0x2083A**; nach 0x400 legt
+   die Maschine die Tabelle selbst an – für Nr. 21 byte-gleich mit unserer (07, Test v4.1).
 13 [nur wenn speichern] Kommando 0x200 an 0xFFFED0 (dauerhaft speichern), Timeout 7 s + 4 s
    Status: Bit 0x80 → „Card is full“, Bit 0x04 → Fehler
 14 PC-Liste aufräumen, TransparentMode(0), Exklusivzugriff freigeben
