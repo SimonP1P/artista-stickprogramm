@@ -1452,7 +1452,8 @@ impl Design {
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).
     pub fn berechnen(&self) -> Result<StichFolge, String> {
         let (objekte, _, herkunft) = self.aufgeloest_mit_herkunft()?;
-        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>)>;
+        // je Teil: Farbe, Wege, eigene Auto-Jump-Werte, Nummer des Objekts im Design
+        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>, usize)>;
         let teile_ab = |start: Punkt| -> Result<Teile, String> {
             let mut teile = Vec::new();
             let mut pos = start;
@@ -1515,7 +1516,7 @@ impl Design {
                 };
                 if let Some(letzter) = wege.last().and_then(|w| w.last()) {
                     pos = *letzter;
-                    teile.push((obj.farbe.clone(), wege, eigen));
+                    teile.push((obj.farbe.clone(), wege, eigen, *h));
                 }
             }
             Ok(teile)
@@ -1523,7 +1524,7 @@ impl Design {
         let null = p(0.0, 0.0);
         let mut teile = teile_ab(null)?;
         // Mitte bzw. Unterkante des Designs aus den Stichen (umschließendes Rechteck)
-        let punkte = || teile.iter().flat_map(|(_, w, _)| w.iter().flatten());
+        let punkte = || teile.iter().flat_map(|(_, w, _, _)| w.iter().flatten());
         let (x0, x1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
         let (y0, y1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
         let (mitte, unten) = if x0 <= x1 {
@@ -1533,7 +1534,7 @@ impl Design {
         };
         let erster = teile
             .first()
-            .and_then(|(_, w, _)| w.first())
+            .and_then(|(_, w, _, _)| w.first())
             .and_then(|l| l.first())
             .copied();
         let start = match self.start {
@@ -1545,9 +1546,14 @@ impl Design {
         if start != null {
             teile = teile_ab(start)?;
         }
-        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a)| ((f, w), a)).unzip();
+        let herkunft: Vec<usize> = teile.iter().map(|t| t.3).collect();
+        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _)| ((f, w), a)).unzip();
         let folge = wege_verbinden_mit(&teile, &self.einstellungen.verbinder, start, &auto_jump);
         let mut folge = bernina_regeln(&folge);
+        // Teil → Objekt im Design
+        for o in &mut folge.objekt {
+            *o = herkunft[*o];
+        }
         let ende = match self.ende {
             Bezugspunkt::Rahmenmitte => Some(null),
             Bezugspunkt::Designmitte => Some(mitte),
@@ -1560,8 +1566,43 @@ impl Design {
             && abstand(letzter.p(), z) > 1e-9
         {
             folge.sprung(z);
+            if let Some(&o) = folge.objekt.last() {
+                folge.objekt.push(o);
+            }
         }
+        debug_assert!(folge.objekt.len() == folge.stiche.len());
         Ok(folge)
+    }
+
+    /// **Formen je Objekt** für die Oberfläche (Zeichnen, Auswahl, Griffe): aufgelöste Umrisse, Löcher, Linien und
+    /// Satinseiten nach Text-Satz, Transformation und Aussparen – gruppiert nach der Nummer des Objekts im Design.
+    /// Ein Objekt ohne Form (z. B. Text ohne bekannte Zeichen) fehlt in der Liste nicht, es hat nur keine Linien.
+    pub fn formen(&self) -> Result<Vec<ObjektForm>, String> {
+        let (objekte, _, herkunft) = self.aufgeloest_mit_herkunft()?;
+        let mut out: Vec<ObjektForm> = self
+            .objekte
+            .iter()
+            .enumerate()
+            .map(|(i, o)| ObjektForm {
+                objekt: i,
+                farbe: o.farbe.clone(),
+                name: o.name.clone(),
+                linien: Vec::new(),
+                begrenzung: None,
+                einstich: self.einstich.get(&i).copied(),
+                ausstich: self.ausstich.get(&i).copied(),
+            })
+            .collect();
+        for (o, &h) in objekte.iter().zip(&herkunft) {
+            if let Some(f) = out.get_mut(h) {
+                form_linien(&o.art, &mut f.linien);
+            }
+        }
+        for f in &mut out {
+            f.begrenzung = crate::geometrie::begrenzung(f.linien.iter().flat_map(|l| l.punkte.iter().copied()))
+                .map(|(x0, y0, x1, y1)| [x0, y0, x1, y1]);
+        }
+        Ok(out)
     }
 
     /// Einstiche außerhalb des Stickfelds.
@@ -1572,6 +1613,104 @@ impl Design {
             .map(|s| s.p())
             .filter(|&q| !self.rahmen.enthaelt(q))
             .collect()
+    }
+}
+
+auswahl! {
+    /// Bedeutung einer Linie in der Formansicht
+    pub enum FormArt {
+        /// Außenkante einer Fläche
+        Umriss = "umriss",
+        /// Loch in einer Fläche
+        Loch = "loch",
+        /// gezeichnete Linie (Lauf, Dreifach, Blanket, Satinlinie)
+        Linie = "linie",
+        /// Seite A einer Satinsäule
+        SeiteA = "seite_a",
+        /// Seite B einer Satinsäule
+        SeiteB = "seite_b",
+        /// Stichwinkel-Linie
+        Winkellinie = "winkellinie",
+    }
+}
+
+/// Eine Linie der Formansicht.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, schemars::JsonSchema)]
+pub struct FormLinie {
+    pub art: FormArt,
+    /// Punkte [x, y] in mm
+    pub punkte: Vec<Punkt>,
+    /// letzter Punkt mit dem ersten verbunden
+    pub geschlossen: bool,
+}
+
+/// Formen eines Objekts des Designs (`Design::formen`).
+#[derive(Clone, Debug, PartialEq, serde::Serialize, schemars::JsonSchema)]
+pub struct ObjektForm {
+    /// Nummer des Objekts in `objekte` (0 = erstes)
+    pub objekt: usize,
+    pub farbe: String,
+    pub name: String,
+    pub linien: Vec<FormLinie>,
+    /// umschließendes Rechteck [x0, y0, x1, y1] in mm (None = keine Form)
+    pub begrenzung: Option<[f64; 4]>,
+    /// Einstich [x, y], wenn gesetzt
+    pub einstich: Option<Punkt>,
+    /// Ausstich [x, y], wenn gesetzt
+    pub ausstich: Option<Punkt>,
+}
+
+fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
+    let mut linie = |art: FormArt, punkte: &[Punkt], geschlossen: bool| {
+        if !punkte.is_empty() {
+            out.push(FormLinie {
+                art,
+                punkte: punkte.to_vec(),
+                geschlossen,
+            });
+        }
+    };
+    match art {
+        ObjektArt::Lauf {
+            punkte, geschlossen, ..
+        }
+        | ObjektArt::Blanket {
+            punkte, geschlossen, ..
+        } => linie(FormArt::Linie, punkte, *geschlossen),
+        ObjektArt::SatinLinie { punkte, .. } => linie(FormArt::Linie, punkte, false),
+        ObjektArt::Satin { seite_a, seite_b, .. } => {
+            linie(FormArt::SeiteA, seite_a, false);
+            linie(FormArt::SeiteB, seite_b, false);
+        }
+        ObjektArt::Tatami { umriss, loecher, .. }
+        | ObjektArt::Musterfuellung { umriss, loecher, .. }
+        | ObjektArt::SatinFlaeche { umriss, loecher, .. } => {
+            linie(FormArt::Umriss, umriss, true);
+            for l in loecher {
+                linie(FormArt::Loch, l, true);
+            }
+        }
+        ObjektArt::Wendefuellung {
+            umriss, winkellinien, ..
+        } => {
+            linie(FormArt::Umriss, umriss, true);
+            for w in winkellinien {
+                linie(FormArt::Winkellinie, w, false);
+            }
+        }
+        ObjektArt::Applikation(v) => {
+            linie(FormArt::Umriss, &v.umriss, true);
+            for l in &v.loecher {
+                linie(FormArt::Loch, l, true);
+            }
+        }
+        ObjektArt::Gruppe { teile, .. } => {
+            for t in teile {
+                form_linien(&t.art, out);
+            }
+        }
+        // werden vor dem Zeichnen aufgelöst
+        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } => {}
     }
 }
 
@@ -2178,5 +2317,41 @@ mod tests {
         let l = Design::aus_json(&json.replace(r#""ende": "designmitte""#, r#""ende": "letzter_stich""#)).unwrap();
         assert_eq!(l.berechnen().unwrap().stiche.last().unwrap().art, crate::Art::Stich);
         assert!(Design::aus_json(&json.replace("designmitte\", \"ende", "irgendwo\", \"ende")).is_err());
+    }
+
+    /// Objektnummer je Stich und Formen je Objekt (Schnittstelle für die Oberfläche, ROADMAP 4b.0)
+    #[test]
+    fn objektnummer_und_formen() {
+        let d = Design::aus_json(
+            r##"{"objekte": [
+                {"art": "lauf", "punkte": [[-20, 0], [-10, 0]]},
+                {"art": "tatami", "umriss": {"rechteck": {"mitte": [10, 0], "breite": 10, "hoehe": 8}},
+                 "loecher": [{"kreis": {"mitte": [10, 0], "radius": 2}}], "farbe": "#ff0000"},
+                {"art": "satin", "seite_a": [[0, 20], [10, 20]], "seite_b": [[0, 22], [10, 22]], "einstich": [10, 21]}
+            ]}"##,
+        )
+        .unwrap();
+        let f = d.berechnen().unwrap();
+        assert_eq!(f.objekt.len(), f.stiche.len());
+        assert!(f.objekt.windows(2).all(|w| w[0] <= w[1]), "Objekte in Stickfolge");
+        for nr in 0..3 {
+            assert!(f.objekt.contains(&nr), "Objekt {nr} hat Stiche");
+        }
+        // Stiche des Lauf-Objekts liegen auf seiner Linie
+        for (s, &o) in f.stiche.iter().zip(&f.objekt) {
+            if o == 0 && s.art == crate::Art::Stich {
+                assert!(s.y.abs() < 1e-6 && s.x <= -9.9, "{s:?}");
+            }
+        }
+        let formen = d.formen().unwrap();
+        assert_eq!(formen.len(), 3);
+        assert_eq!(
+            formen[1].linien.iter().map(|l| l.art).collect::<Vec<_>>(),
+            [FormArt::Umriss, FormArt::Loch]
+        );
+        assert_eq!(formen[2].linien[0].art, FormArt::SeiteA);
+        assert_eq!(formen[2].einstich, Some(p(10.0, 21.0)));
+        let b = formen[1].begrenzung.unwrap();
+        assert!((b[0] - 5.0).abs() < 1e-9 && (b[3] - 4.0).abs() < 1e-9, "{b:?}");
     }
 }

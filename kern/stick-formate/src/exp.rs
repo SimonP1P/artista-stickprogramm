@@ -79,8 +79,8 @@ fn s8(v: u8) -> i64 {
 /// EXP lesen wie der BERNINA-Leser (BEAGLink.dll ab 0x10007c05).
 pub fn exp_lesen(daten: &[u8]) -> StichFolge {
     let mut folge = StichFolge {
-        stiche: Vec::new(),
         farben: vec![LESE_FARBEN[0].into()],
+        ..Default::default()
     };
     let (mut x, mut y) = (0i64, 0i64);
     let mut i = 0;

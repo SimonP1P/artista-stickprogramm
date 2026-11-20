@@ -32,6 +32,10 @@ impl Stich {
 pub struct StichFolge {
     pub stiche: Vec<Stich>,
     pub farben: Vec<String>,
+    /// je Stich die Nummer des Objekts im Design (0 = erstes in `objekte`), aus dem er stammt – für Auswahl und
+    /// Hervorheben in der Oberfläche; leer, wenn unbekannt (z. B. aus einer EXP-Datei gelesen)
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub objekt: Vec<usize>,
 }
 
 impl StichFolge {

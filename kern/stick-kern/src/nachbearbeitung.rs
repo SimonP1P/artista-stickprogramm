@@ -115,6 +115,8 @@ pub fn wege_verbinden_mit(
             letzter = Some(q);
         }
         pos = *w.last().unwrap();
+        // Herkunft: Nummer des Teils (der Aufrufer ordnet sie dem Objekt zu)
+        folge.objekt.resize(folge.stiche.len(), teil_nr[i]);
     }
     folge
 }
@@ -122,14 +124,16 @@ pub fn wege_verbinden_mit(
 /// Stiche < 0,3 mm entfernen (DEFAULTS.DFL). Der letzte Stich vor Sprung/Farbwechsel bleibt.
 pub fn kurze_stiche_entfernen(folge: &StichFolge, min_mm: f64) -> StichFolge {
     let mut neu = StichFolge {
-        stiche: Vec::new(),
         farben: folge.farben.clone(),
+        ..Default::default()
     };
     let st = &folge.stiche;
+    let herkunft = |i: usize| folge.objekt.get(i).copied();
     let mut letzter: Option<Punkt> = None;
     for (i, s) in st.iter().enumerate() {
         if s.art != Art::Stich {
             neu.stiche.push(*s);
+            neu.objekt.extend(herkunft(i));
             letzter = None; // erster Einstich nach Sprung/Farbwechsel bleibt immer
             continue;
         }
@@ -144,6 +148,9 @@ pub fn kurze_stiche_entfernen(folge: &StichFolge, min_mm: f64) -> StichFolge {
             let n = neu.stiche.len();
             if n >= 2 && neu.stiche[n - 1].art == Art::Stich && neu.stiche[n - 2].art == Art::Stich {
                 neu.stiche[n - 1] = *s;
+                if let (Some(h), Some(z)) = (herkunft(i), neu.objekt.last_mut()) {
+                    *z = h;
+                }
                 letzter = Some(s.p());
                 continue;
             }
@@ -152,6 +159,7 @@ pub fn kurze_stiche_entfernen(folge: &StichFolge, min_mm: f64) -> StichFolge {
             }
         }
         neu.stiche.push(*s);
+        neu.objekt.extend(herkunft(i));
         letzter = Some(s.p());
     }
     neu
@@ -160,11 +168,12 @@ pub fn kurze_stiche_entfernen(folge: &StichFolge, min_mm: f64) -> StichFolge {
 /// Auto Jump: Stiche > 12,7 mm in Sprünge zu ≤ 7,0 mm zerlegen, Einstich nur am Ende.
 pub fn lange_stiche_teilen(folge: &StichFolge, max_mm: f64, teil_mm: f64) -> StichFolge {
     let mut neu = StichFolge {
-        stiche: Vec::new(),
         farben: folge.farben.clone(),
+        ..Default::default()
     };
     let mut pos: Option<Punkt> = None;
-    for s in &folge.stiche {
+    for (i, s) in folge.stiche.iter().enumerate() {
+        let herkunft = folge.objekt.get(i).copied();
         if s.art == Art::Stich
             && let Some(a) = pos
         {
@@ -179,10 +188,12 @@ pub fn lange_stiche_teilen(folge: &StichFolge, max_mm: f64, teil_mm: f64) -> Sti
                         y: q.y,
                         art: Art::Sprung,
                     });
+                    neu.objekt.extend(herkunft);
                 }
             }
         }
         neu.stiche.push(*s);
+        neu.objekt.extend(herkunft);
         pos = Some(s.p());
     }
     neu
