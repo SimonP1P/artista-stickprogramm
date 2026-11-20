@@ -68,8 +68,10 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
     };
     match art {
         ObjektArt::Satin { seite_a, seite_b, .. } => saeule(seite_a, seite_b, u),
-        ObjektArt::SatinLinie { punkte, breite, .. } => {
-            let (a, b) = seiten_aus_mittellinie(punkte, *breite);
+        ObjektArt::SatinLinie {
+            punkte, breite, mittig, ..
+        } => {
+            let (a, b) = crate::sticharten::satin::satinlinie_seiten(punkte, *breite, *mittig);
             saeule(&a, &b, u)
         }
         ObjektArt::Tatami { umriss, loecher, .. } | ObjektArt::Musterfuellung { umriss, loecher, .. } => {

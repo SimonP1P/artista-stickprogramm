@@ -17,7 +17,7 @@ use crate::schrift::{
 use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte_idx};
 use crate::sticharten::blanket::blanket;
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
-use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mittellinie};
+use crate::sticharten::satin::{mittellinie, paare_bilden, satin, satinlinie_seiten};
 use crate::sticharten::tatami::{tatami, tatami_mit_teilung};
 use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, satin_unterlage};
 use crate::stiche::StichFolge;
@@ -446,6 +446,8 @@ struct SatinLinieJson {
     breite: Option<f64>,
     #[serde(default = "auto")]
     unterlage: UnterlageJson,
+    /// mitte (Center, Standard) | seite (Offset: Linie = Kante, Säule links davon)
+    versatz: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -665,6 +667,8 @@ pub enum ObjektArt {
         punkte: Linie,
         breite: f64,
         unterlage: Unterlage,
+        /// „Center“ (Standard) oder „Offset“ (Linie = Kante, Säule links davon)
+        mittig: bool,
     },
     /// Tatami-Füllung einer Fläche mit optionalen Löchern
     Tatami {
@@ -741,6 +745,23 @@ fn satin_wege(
     } else {
         // in einem Zug: Unterlage endet am Säulenanfang
         Ok(vec![unter.into_iter().chain(deck).collect()])
+    }
+}
+
+/// Aufgelöste Objekte, fehlende Zeichen, Herkunft (Nummer des Objekts im Design) je Objekt
+type Aufgeloest = (Vec<Objekt>, Vec<char>, Vec<usize>);
+
+/// Double Run: dieselben Stiche rückwärts anhängen (beginnen, wo das Objekt endet – kein Verbindungsstich).
+fn doppellauf(wege: &mut Vec<Linie>) {
+    let rueck: Vec<Linie> = wege.iter().rev().map(|w| w.iter().rev().copied().collect()).collect();
+    for (i, r) in rueck.into_iter().enumerate() {
+        if i == 0
+            && let Some(letzte) = wege.last_mut()
+        {
+            letzte.extend(r.into_iter().skip(1));
+        } else {
+            wege.push(r);
+        }
     }
 }
 
@@ -1112,8 +1133,9 @@ impl Objekt {
                 punkte,
                 breite,
                 unterlage,
+                mittig,
             } => {
-                let (a, b) = seiten_aus_mittellinie(punkte, *breite);
+                let (a, b) = satinlinie_seiten(punkte, *breite, *mittig);
                 satin_wege(&a, &b, unterlage, &SatinOptionen::default(), e)
             }
             ObjektArt::Gruppe {
@@ -1195,6 +1217,10 @@ pub struct Design {
     pub transformation: Transformation,
     /// Farben für `^` und einzelne Buchstaben je Text (Nummer in `objekte`), JSON `"farben"`/`"buchstaben"`
     pub buchstaben: BTreeMap<usize, TextZusatz>,
+    /// Double Run (Handbuch Kap. 23 „Reinforcing outlines“): diese Objekte (Nummer in `objekte`) werden nach dem
+    /// Sticken mit umgekehrter Stichfolge noch einmal gestickt, gleiche Farbe, ohne Verbindungsstiche. JSON
+    /// `"doppellauf": true` am Objekt.
+    pub doppellauf: std::collections::BTreeSet<usize>,
 }
 
 impl Design {
@@ -1222,6 +1248,11 @@ impl Design {
                      kreis mit bogen)"
                         .into(),
                 );
+            }
+            if let ObjektJson::Satinlinie(s) = o
+                && let Some(x) = s.versatz.as_deref().filter(|x| !matches!(*x, "mitte" | "seite"))
+            {
+                return Err(format!("Versatz „{x}“ unbekannt (mitte, seite)"));
             }
             if let ObjektJson::Applikation(a) = o {
                 if let Some(x) = a.abdeckung.as_deref().filter(|x| !matches!(*x, "satin" | "blanket")) {
@@ -1379,6 +1410,7 @@ impl Design {
                         punkte: s.punkte.punkte(),
                         breite: s.breite.unwrap_or(2.0),
                         unterlage: s.unterlage.into(),
+                        mittig: s.versatz.as_deref() != Some("seite"),
                     },
                 },
                 ObjektJson::Tatami(t) => Objekt {
@@ -1513,10 +1545,22 @@ impl Design {
                 );
             }
         }
+        let doppellauf = v
+            .get("objekte")
+            .and_then(Value::as_array)
+            .map(|l| {
+                l.iter()
+                    .enumerate()
+                    .filter(|(_, o)| o.get("doppellauf").and_then(Value::as_bool) == Some(true))
+                    .map(|(i, _)| i)
+                    .collect()
+            })
+            .unwrap_or_default();
         Ok(Design {
             transformationen,
             transformation,
             buchstaben,
+            doppellauf,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
@@ -1557,6 +1601,12 @@ impl Design {
     /// Objekte mit aufgelösten Texten (Buchstaben als Satin-/Lauf-Objekte). Fehlende Zeichen werden übersprungen
     /// und im zweiten Wert gemeldet.
     pub fn objekte_aufgeloest(&self) -> Result<(Vec<Objekt>, Vec<char>), String> {
+        let (o, f, _) = self.aufgeloest_mit_herkunft()?;
+        Ok((o, f))
+    }
+
+    /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
+    fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
         let mut out = Vec::new();
         let mut fehlend = Vec::new();
         // je aufgelöstem Objekt: Nummer des Objekts im Design (für das Aussparen nach Namen)
@@ -1613,7 +1663,8 @@ impl Design {
             herkunft.resize(out.len(), nr);
         }
         let out = self.transformieren(out, &herkunft)?;
-        Ok((self.aussparen_aufloesen(out, &herkunft)?, fehlend))
+        let (out, herkunft) = self.aussparen_aufloesen(out, &herkunft)?;
+        Ok((out, fehlend, herkunft))
     }
 
     /// Transformationen anwenden: erst je Objekt (um die Mitte seiner aufgelösten Teile), dann das ganze Design.
@@ -1636,7 +1687,11 @@ impl Design {
 
     /// Aussparungen (Knockout) auflösen: Füllflächen mit `aussparen` verlieren die Flächen der genannten Objekte;
     /// zerfällt eine Fläche dabei, folgen die Teile als eigene Objekte gleicher Farbe (größter zuerst).
-    fn aussparen_aufloesen(&self, objekte: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
+    fn aussparen_aufloesen(
+        &self,
+        objekte: Vec<Objekt>,
+        herkunft: &[usize],
+    ) -> Result<(Vec<Objekt>, Vec<usize>), String> {
         let mut neu: Vec<Option<Vec<Teil>>> = Vec::with_capacity(objekte.len());
         for (i, o) in objekte.iter().enumerate() {
             let (umriss, loecher, a) = match &o.art {
@@ -1674,9 +1729,11 @@ impl Design {
             neu.push(Some(flaeche_minus(umriss, loecher, &schneider)));
         }
         let mut out = Vec::with_capacity(objekte.len());
-        for (o, n) in objekte.into_iter().zip(neu) {
+        let mut her = Vec::with_capacity(objekte.len());
+        for ((o, n), &h) in objekte.into_iter().zip(neu).zip(herkunft) {
             let Some(teile) = n else {
                 out.push(o);
+                her.push(h);
                 continue;
             };
             for (u, l) in teile {
@@ -1697,23 +1754,27 @@ impl Design {
                     (*umriss, *loecher, *aussparen) = (u, l, Aussparen::default());
                 }
                 out.push(t);
+                her.push(h);
             }
         }
-        Ok(out)
+        Ok((out, her))
     }
 
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).
     pub fn berechnen(&self) -> Result<StichFolge, String> {
-        let (objekte, _) = self.objekte_aufgeloest()?;
+        let (objekte, _, herkunft) = self.aufgeloest_mit_herkunft()?;
         let teile_ab = |start: Punkt| -> Result<Vec<(String, Vec<Linie>)>, String> {
             let mut teile = Vec::new();
             let mut pos = start;
-            for obj in &objekte {
-                let wege: Vec<Linie> = obj
+            for (obj, h) in objekte.iter().zip(&herkunft) {
+                let mut wege: Vec<Linie> = obj
                     .wege(&self.einstellungen, Some(pos))?
                     .into_iter()
                     .filter(|w| !w.is_empty())
                     .collect();
+                if self.doppellauf.contains(h) {
+                    doppellauf(&mut wege);
+                }
                 if let Some(letzter) = wege.last().and_then(|w| w.last()) {
                     pos = *letzter;
                     teile.push((obj.farbe.clone(), wege));
@@ -1907,6 +1968,37 @@ mod tests {
         assert!(
             stelle(&wege, d_erst[1]) < stelle(&wege, u_zweit[0]),
             "getrennte Teile nacheinander"
+        );
+    }
+
+    /// Double Run: Lauf wird rückwärts wiederholt und endet am Anfang; Satinlinie mit Versatz liegt links der Linie
+    #[test]
+    fn doppellauf_und_satin_versatz() {
+        let d = Design::aus_json(
+            r##"{"objekte": [{"art": "lauf", "punkte": [[0, 0], [10, 0]], "laenge": 2.5, "doppellauf": true}]}"##,
+        )
+        .unwrap();
+        let st = d.berechnen().unwrap();
+        let xs: Vec<f64> = st.stiche.iter().map(|s| s.p().x).collect();
+        // hin 0 … 10, zurück … 0 (danach Sprung zum Ende in der Rahmenmitte = 0)
+        assert!(xs.iter().any(|&x| (x - 10.0).abs() < 1e-6), "{xs:?}");
+        let n10 = xs.iter().position(|&x| (x - 10.0).abs() < 1e-6).unwrap();
+        let hin = xs[..n10].iter().filter(|&&x| x > 0.1 && x < 9.9).count();
+        let zurueck = xs[n10 + 1..].iter().filter(|&&x| x > 0.1 && x < 9.9).count();
+        assert!(hin >= 3 && zurueck >= 3, "{xs:?}");
+        assert!(xs.last().unwrap().abs() < 0.5, "{xs:?}");
+        let d = Design::aus_json(
+            r##"{"objekte": [{"art": "satinlinie", "punkte": [[0, 0], [20, 0]], "breite": 2, "versatz": "seite",
+                "unterlage": "keine"}]}"##,
+        )
+        .unwrap();
+        let ys: Vec<f64> = d.berechnen().unwrap().stiche.iter().map(|s| s.p().y).collect();
+        // Säule zwischen y = 0 und 2 (links der Laufrichtung nach +x), Zugausgleich ragt etwas darüber hinaus
+        assert!(ys.iter().all(|&y| y > -0.5 && y < 2.5), "{ys:?}");
+        assert!(ys.iter().any(|&y| y > 1.9));
+        assert!(
+            Design::aus_json(r#"{"objekte": [{"art": "satinlinie", "punkte": [[0, 0], [1, 0]], "versatz": "x"}]}"#)
+                .is_err()
         );
     }
 

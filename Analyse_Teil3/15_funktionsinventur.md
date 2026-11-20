@@ -15,9 +15,9 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 |---|---|---|
 | Single (Lauf), Triple (Dreifach) | ✅ | `lauf`, `dreifach` |
 | Satin outline (Satinlinie), Abstand, Auto Spacing | ✅ | `satinlinie` |
-| Satin outline **Versatz** (Center/Offset) | ⬜ | Dialog „Outline Stitch“ Center/Offset |
+| Satin outline **Versatz** (Center/Offset) | ✅ | 20.11. `versatz` mitte/seite (Seite links: eigene Festlegung) |
 | Blanket, Abstand, Breite, Versatz | ✅ | `blanket` (Form eigene Festlegung) |
-| Double Run (Verstärken, rückwärts doppelt) | ⬜ | Kap. 22 |
+| Double Run (Verstärken, rückwärts doppelt) | ✅ | 20.11. `doppellauf` an jedem Objekt (Kap. 23) |
 | Pattern Run (Motivlinie), Muster/Skalierung/Abstand, eigene Muster | ⬜ | Kap. 25, „Motif Run“ |
 | Blackwork Run / Blackwork Border | ⬜ | Kap. 26 |
 | Backstitch, Stemstitch (Rück-, Stielstich) | ⬜ | Kap. 26, Klassen 0x97/0x96 |

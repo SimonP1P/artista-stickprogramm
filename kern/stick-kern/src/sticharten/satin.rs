@@ -81,6 +81,18 @@ pub fn seiten_aus_mittellinie(mitte: &[Punkt], breite: f64) -> (Linie, Linie) {
     )
 }
 
+/// Seiten einer Satinlinie (Satin-Kontur, Dialog „Outline Stitch“ Center/Offset; Handbuch Kap. 8 „Adjusting Satin
+/// outline stitch offsets“: „By default, stitches are positioned around the center of a digitized line. You can,
+/// however, offset them to one side“). Offset: die Linie ist eine Kante, die Säule liegt **links** der Laufrichtung –
+/// gleiche Seite wie beim Blanket (eigene Festlegung, Bild im Handbuch nicht lesbar).
+pub fn satinlinie_seiten(punkte: &[Punkt], breite: f64, mittig: bool) -> (Linie, Linie) {
+    if mittig {
+        return seiten_aus_mittellinie(punkte, breite);
+    }
+    let m = versatz_linie(&ohne_doppelte(punkte), breite / 2.0, 4.0);
+    seiten_aus_mittellinie(&m, breite)
+}
+
 pub fn mittellinie(a: &[Punkt], b: &[Punkt]) -> Linie {
     a.iter().zip(b).map(|(&q, &r)| zwischen(q, r, 0.5)).collect()
 }

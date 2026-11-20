@@ -217,11 +217,20 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             punkte,
             breite,
             unterlage,
-        } => ObjektArt::SatinLinie {
-            punkte: m.linie(punkte),
-            breite: breite * flaeche,
-            unterlage: unterlage.clone(),
-        },
+            mittig,
+        } => {
+            // gespiegelt: Laufrichtung umkehren, damit eine versetzte Säule auf derselben Seite der Linie bleibt
+            let mut q = m.linie(punkte);
+            if gespiegelt && !*mittig {
+                q.reverse();
+            }
+            ObjektArt::SatinLinie {
+                punkte: q,
+                breite: breite * flaeche,
+                unterlage: unterlage.clone(),
+                mittig: *mittig,
+            }
+        }
         ObjektArt::Blanket {
             punkte,
             geschlossen,
@@ -384,10 +393,12 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             punkte,
             breite,
             unterlage,
+            mittig,
         } => ObjektArt::SatinLinie {
             punkte: lin(punkte, false),
             breite: *breite,
             unterlage: unterlage.clone(),
+            mittig: *mittig,
         },
         ObjektArt::Blanket {
             punkte,
