@@ -21,6 +21,9 @@ Mitgeliefert (alle mit "stick puffer" aus dem Rechenkern gebaut):
                   Isacord 40 "rich brown" 1311, "brass" 821, "light beige" 670  -> zeigt, ob das Display die
                   Farben anzeigt
   Nr47_*          Design Nr 47 (ohne Farbangaben -> keine Garnfarbtabelle, wie das Original)
+  Pruefmuster_*   Pruefmuster: Satin 1/2/3/4/6 mm, Satinkeil 2-8 mm, Tatami 30 x 30, Laufkreis, Dreifach, Schrift
+                  "Abc" (Swiss Block 12 mm); Stoff "Woven Medium Weight"; 82 x 110 mm, mittlerer Rahmen 130 x 100;
+                  4 Farben (Stopps) - zum Vergleich mit dem Original auf festem Stoff mit Vlies und Stickgarn
   je Design:  NAME_puffer.bin (DATEN), NAME_farben.bin (Garnfarbtabelle), NAME_icon.bin (ICON),
               NAME_puffer.txt (Laengen, INFO-Felder, Dateinamen)
 Schalter:  -OhneIcon  -OhneFarben  -OhneInfo   (den jeweiligen Teil nicht schreiben)
@@ -36,6 +39,7 @@ SCHRITT FUER SCHRITT
  4. START_SCHREIBEN.bat               Testquadrat mit Icon und Farbtabelle schreiben (kein Sticken)
  5. START_STICKEN.bat Nr21_puffer.bin  Nr 21 mit echten Garnfarben - Display ansehen: Farben/Namen?
  6. START_STICKEN.bat                 Testquadrat sticken - NUR mit Person an der Maschine
+ 7. START_STICKEN.bat Pruefmuster_puffer.bin   Pruefmuster (fester Stoff, Abreissvlies, Stickgarn 40) - Foto schicken
  Jeder Schreibschritt fragt vorher J/N. Danach Mitschnitt_v4_1_*.log und Ergebnis_v4_1_*.txt schicken.
  Am Ende sendet das Programm 0x100 und T r M E wie das Original (Display wieder an).
 

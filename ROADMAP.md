@@ -36,7 +36,7 @@ Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Te
 | V1 | **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) – oder im Programm Schritt 4 „Senden …“ → „Jetzt schreiben“ (ohne Häkchen „sticken“) | niemanden (kein 0x08) – aber Freigabe: der Nutzer startet es selbst oder gibt Claude Code die Berechtigung (am 20.11. von der Rechteprüfung abgelehnt) | ⬜ |
 | V2 | **Display prüfen:** `START_STICKEN.bat Nr21_puffer.bin` – zeigt das Display Garnfarben (Isacord 40 rich brown / brass / light beige) statt „no color“? Foto | Person: Display ansehen, Nadel oben, Hände weg | ⬜ |
 | V3 | Testquadrat mit Icon + Farbtabelle sticken (`START_STICKEN.bat`) – Farbe und Icon am Display? | Person: Rahmen, Stoff + **Vlies**, Stickgarn, Start-Taste | ⬜ |
-| V4 | Prüfmuster (Satin mehrere Breiten, Tatami, Kreis, Schrift) auf festem Stoff mit Vlies sticken und fotografieren | Person, Material | ⬜ (Prüfmuster wird vorbereitet) |
+| V4 | **Prüfmuster** (`stickprogramm/beispiele/pruefmuster.json`: Satin 1/2/3/4/6 mm, Satinkeil, Tatami, Lauf, Dreifach, Schrift „Abc“ Swiss Block; Woven Medium Weight; 82 × 110 mm) auf festem Stoff mit Vlies und Stickgarn sticken, fotografieren – aus dem Programm oder `START_STICKEN.bat Pruefmuster_puffer.bin` | Person, Material | ⬜ (vorbereitet 20.11.) |
 | V5 | Dauerhaft speichern (0x10 → schreiben → 0x200), danach in der Designliste und am Display prüfen | Person: Display, ggf. löschen am Gerät | ⬜ (eigene Zustimmung nötig) |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)

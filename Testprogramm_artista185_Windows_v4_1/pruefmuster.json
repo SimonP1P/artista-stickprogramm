@@ -1,0 +1,51 @@
+{
+  "name": "Pruefmuster",
+  "rahmen": "artista 130 x 100",
+  "stoff": "Woven Medium Weight",
+  "objekte": [
+    {
+      "art": "text",
+      "name": "Schrift",
+      "text": "Abc",
+      "alphabet": "Swiss Block",
+      "hoehe": 12,
+      "breite": 100,
+      "farbe": "#27ae60",
+      "unterlage": "auto",
+      "position": [0, 46]
+    },
+    {"art": "satinlinie", "name": "Satin 1 mm", "farbe": "#1f3a93", "breite": 1, "unterlage": "auto", "punkte": [[-42, 30], [-8, 30]]},
+    {"art": "satinlinie", "name": "Satin 2 mm", "farbe": "#1f3a93", "breite": 2, "unterlage": "auto", "punkte": [[-42, 24], [-8, 24]]},
+    {"art": "satinlinie", "name": "Satin 3 mm", "farbe": "#1f3a93", "breite": 3, "unterlage": "auto", "punkte": [[-42, 17], [-8, 17]]},
+    {"art": "satinlinie", "name": "Satin 4 mm", "farbe": "#1f3a93", "breite": 4, "unterlage": "auto", "punkte": [[-42, 9], [-8, 9]]},
+    {"art": "satinlinie", "name": "Satin 6 mm", "farbe": "#1f3a93", "breite": 6, "unterlage": "auto", "punkte": [[-42, 0], [-8, 0]]},
+    {
+      "art": "satin",
+      "name": "Satinkeil 2-8 mm",
+      "farbe": "#1f3a93",
+      "unterlage": "auto",
+      "seite_a": [[-42, -11], [-25, -10], [-8, -8]],
+      "seite_b": [[-42, -13], [-25, -14], [-8, -16]]
+    },
+    {
+      "art": "tatami",
+      "name": "Tatami 30 x 30",
+      "farbe": "#c0392b",
+      "winkel": 45,
+      "umriss": {"rechteck": {"mitte": [25, 15], "breite": 30, "hoehe": 30}}
+    },
+    {
+      "art": "lauf",
+      "name": "Kreis Lauf",
+      "farbe": "#1b2631",
+      "geschlossen": true,
+      "punkte": {"kreis": {"mitte": [-25, -38], "radius": 14}}
+    },
+    {
+      "art": "dreifach",
+      "name": "Dreifach",
+      "farbe": "#1b2631",
+      "punkte": [[8, -30], [18, -46], [28, -30], [38, -46]]
+    }
+  ]
+}
