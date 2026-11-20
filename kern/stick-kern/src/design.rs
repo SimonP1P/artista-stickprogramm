@@ -315,6 +315,49 @@ impl GrundlinieJson {
     }
 }
 
+/// Elastic Lettering im JSON: `{"art": "gerade", "oben": [links, rechts], "unten": [links, rechts]}` oder
+/// `{"art": "gebogen", "oben": mitte | [links, mitte, rechts], "unten": …}` (mm, + nach oben).
+fn huelle_lesen(h: &Value) -> Result<crate::schrift::Huelle, String> {
+    #[derive(Deserialize)]
+    #[serde(deny_unknown_fields)]
+    struct HuelleJson {
+        art: String,
+        #[serde(default)]
+        oben: Value,
+        #[serde(default)]
+        unten: Value,
+    }
+    let j: HuelleJson = serde_json::from_value(h.clone()).map_err(|e| e.to_string())?;
+    let gebogen = match j.art.as_str() {
+        "gerade" => false,
+        "gebogen" => true,
+        x => return Err(format!("Art „{x}“ unbekannt (gerade, gebogen)")),
+    };
+    let griffe = |w: &Value| -> Result<[f64; 3], String> {
+        let l: Vec<f64> = match w {
+            Value::Null => Vec::new(),
+            Value::Number(n) => vec![n.as_f64().unwrap_or(0.0)],
+            _ => serde_json::from_value(w.clone()).map_err(|e| e.to_string())?,
+        };
+        match (gebogen, l.as_slice()) {
+            (_, []) => Ok([0.0; 3]),
+            (false, [a, b]) => Ok([*a, (a + b) / 2.0, *b]),
+            (true, [m]) => Ok([0.0, *m, 0.0]),
+            (true, [a, m, b]) => Ok([*a, *m, *b]),
+            _ => Err(if gebogen {
+                "gebogen: oben/unten = Mitte oder [links, Mitte, rechts]".into()
+            } else {
+                "gerade: oben/unten = [links, rechts]".into()
+            }),
+        }
+    };
+    Ok(crate::schrift::Huelle {
+        gebogen,
+        oben: griffe(&j.oben)?,
+        unten: griffe(&j.unten)?,
+    })
+}
+
 /// Einzelner Buchstabe eines Texts (`"buchstaben"`).
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -1454,13 +1497,18 @@ impl Design {
                 }
                 _ => None,
             };
-            if !farben.is_empty() || !einzeln.is_empty() || stichart.is_some() {
+            let huelle = match roh.and_then(|r| r.get("elastisch")) {
+                Some(h) => Some(huelle_lesen(h).map_err(|e| format!("{wo}: elastisch: {e}"))?),
+                None => None,
+            };
+            if !farben.is_empty() || !einzeln.is_empty() || stichart.is_some() || huelle.is_some() {
                 buchstaben.insert(
                     i,
                     TextZusatz {
                         farben,
                         einzeln,
                         stichart,
+                        huelle,
                     },
                 );
             }

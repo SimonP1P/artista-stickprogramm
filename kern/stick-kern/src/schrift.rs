@@ -665,6 +665,59 @@ pub struct TextZusatz {
     pub einzeln: Vec<Buchstabe>,
     /// Stichart der Schrift (None = wie die Buchstaben des Alphabets, meist Satin)
     pub stichart: Option<SchriftStichart>,
+    /// Elastic Lettering (None = ohne)
+    pub huelle: Option<Huelle>,
+}
+
+/// Teilstücke für die Verformung durch die Hülle in mm – **eigene Festlegung**
+const HUELLE_SEGMENT: f64 = 1.0;
+
+/// Elastic Lettering (Handbuch Kap. 21 „Creating special effects with Elastic Lettering“, PDF-S. 189–190): eine Hülle
+/// um den ganzen Text, deren Ober- und Unterkante an Griffen nach oben oder unten gezogen wird – **gerade** (Straight:
+/// Griffe an den Ecken, „slant or pennant lettering“) oder **gebogen** (Curved: dazu ein Griff in der Mitte, „bulges
+/// and arches“). Wirkt mit jeder Grundlinie. Jeder Punkt behält x und seinen Anteil zwischen Unter- und Oberkante.
+/// Kantenform linear bzw. Parabel durch die drei Griffe: **eigene Festlegung** (Original nicht gemessen).
+#[derive(Clone, Debug, PartialEq)]
+pub struct Huelle {
+    pub gebogen: bool,
+    /// Verschiebung der Oberkante in mm (+ nach oben) links, Mitte, rechts
+    pub oben: [f64; 3],
+    /// Verschiebung der Unterkante links, Mitte, rechts
+    pub unten: [f64; 3],
+}
+
+impl Huelle {
+    fn kante(&self, w: &[f64; 3], u: f64) -> f64 {
+        if self.gebogen {
+            w[0] * 2.0 * (u - 0.5) * (u - 1.0) - w[1] * 4.0 * u * (u - 1.0) + w[2] * 2.0 * u * (u - 0.5)
+        } else {
+            w[0] + (w[2] - w[0]) * u
+        }
+    }
+
+    /// Alle Objekte des Texts in der Hülle verformen (Bezug: umschließendes Rechteck des ganzen Texts).
+    pub fn anwenden(&self, objekte: Vec<Objekt>) -> Vec<Objekt> {
+        let mut pts = Vec::new();
+        objekte
+            .iter()
+            .for_each(|o| crate::transformation::formpunkte(&o.art, &mut pts));
+        let (x0, x1, y0, y1) = pts.iter().fold((f64::MAX, f64::MIN, f64::MAX, f64::MIN), |r, q| {
+            (r.0.min(q.x), r.1.max(q.x), r.2.min(q.y), r.3.max(q.y))
+        });
+        if pts.is_empty() || x1 - x0 < 1e-9 || y1 - y0 < 1e-9 {
+            return objekte;
+        }
+        let f = |q: Punkt| {
+            let u = (q.x - x0) / (x1 - x0);
+            let v = (q.y - y0) / (y1 - y0);
+            let (ob, un) = (self.kante(&self.oben, u), self.kante(&self.unten, u));
+            p(q.x, q.y + un + v * (ob - un))
+        };
+        objekte
+            .iter()
+            .map(|o| crate::transformation::verformen(o, &f, HUELLE_SEGMENT))
+            .collect()
+    }
 }
 
 /// Stichart einer Schrift (Handbuch Kap. 20 „Applying different stitch types to lettering objects“: Standard Satin,
@@ -897,6 +950,9 @@ pub fn text_setzen(
             }
             out.push(o);
         }
+    }
+    if let Some(h) = zusatz.and_then(|z| z.huelle.as_ref()) {
+        out = h.anwenden(out);
     }
     (out, fehlend)
 }
@@ -1405,6 +1461,7 @@ mod tests {
         let zs = TextZusatz {
             farben: vec!["#ff0000".into()],
             stichart: None,
+            huelle: None,
             einzeln: vec![Buchstabe {
                 nr: 3,
                 farbe: Some("#0000ff".into()),
@@ -1576,5 +1633,42 @@ mod tests {
         assert_eq!(*winkel, Some(30.0));
         let f = crate::geometrie::flaeche_vorzeichen(umriss).abs();
         assert!((f - 28.0).abs() < 1e-6, "{f}");
+    }
+
+    /// Elastic Lettering: gerade (Wimpel) und gebogen (Bogen) – Kanten folgen den Griffen
+    #[test]
+    fn elastische_huelle() {
+        let (o, _) = text_setzen(&satz_vorgabe("ABCDE", None), 1.0, None, 45.0, kaesten);
+        // Text 0 … 29 mm breit, 0 … 5 mm hoch; Wimpel: rechts Oberkante 2 mm herunter, Unterkante 2 mm hinauf
+        let h = Huelle {
+            gebogen: false,
+            oben: [0.0, -1.0, -2.0],
+            unten: [0.0, 1.0, 2.0],
+        };
+        let r = h.anwenden(o.clone());
+        assert!(gleich(huelle(&r[0]), [0.0, 0.0, 5.0, 5.0], 0.4), "{:?}", huelle(&r[0]));
+        // letzter Buchstabe (x 24 … 29): Oberkante bei 29 auf 3, Unterkante auf 2
+        assert!(
+            gleich(huelle(&r[4]), [24.0, 1.65, 29.0, 3.35], 0.01),
+            "{:?}",
+            huelle(&r[4])
+        );
+        // gebogen: Mitte der Oberkante 4 mm hoch, Unterkante bleibt – mittlerer Buchstabe wird höher
+        let b = Huelle {
+            gebogen: true,
+            oben: [0.0, 4.0, 0.0],
+            unten: [0.0; 3],
+        };
+        let r = b.anwenden(o);
+        let m = huelle(&r[2]);
+        assert!(m[1].abs() < 1e-9 && m[3] > 8.9 && m[3] <= 9.0 + 1e-9, "{m:?}");
+        // Kanten sind geteilt und gebogen: das Rechteck hat jetzt mehr als 4 Punkte
+        let ObjektArt::Gruppe { teile, .. } = &r[2].art else {
+            panic!()
+        };
+        let ObjektArt::Tatami { umriss, .. } = &teile[0].art else {
+            panic!()
+        };
+        assert!(umriss.len() > 4);
     }
 }

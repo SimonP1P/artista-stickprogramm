@@ -62,7 +62,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Abstand/Position/Form einzelner Buchstaben, Farbe je Buchstabe | 🟡 | 20.11.: Farbe (`^`, je Buchstabe), verschieben/drehen/skalieren ✅; Umriss umformen ⬜ |
 | Stichart je Schrift (Satin/Step/Fancy), Stichwinkel je Buchstabe | 🟡 | 20.11.: `stichart` satin/step/muster ✅ (alle 56 Schriftobjekte mit Stichen in den Musterdesigns sind Satin – Step/Fancy nicht messbar, Verteilung eigene Festlegung); Stichwinkel je Buchstabe ⬜ |
 | Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | 🟡 | Unterlage aus: `"unterlage": []` (Handbuch: Anwender schaltet ab); Auto Jump ⬜ (nur bei Satinstichen > 12,7 mm wirksam) |
-| Elastic Lettering (Verzerren: Bogen, Welle …) | ⬜ | Kap. 21 |
+| Elastic Lettering (Verzerren: Bogen, Welle …) | ✅ | 20.11.: `elastisch` gerade (Straight) / gebogen (Curved); Kantenform linear/Parabel eigene Festlegung |
 | Monogramme | ✅ | 20.11.: `monogramm` → Diamond2/Diamond3 (Belegung `Analyse_Teil3/09` §7) |
 | Symbole/Zeichentabelle | 🟡 | Zeichen der Alphabete; Auswahl 🖥 |
 | Schrift spart aus (Lettering Remove Overlay) | ✅ | `aussparen` |

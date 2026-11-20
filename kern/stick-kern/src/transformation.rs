@@ -295,6 +295,161 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
     }
 }
 
+/// Linie in Stücke ≤ `seg` teilen; zweiter Wert: welche Punkte die ursprünglichen sind.
+fn teilen(l: &[Punkt], seg: f64, ring: bool) -> (Linie, Vec<bool>) {
+    let (mut out, mut alt) = (Vec::new(), Vec::new());
+    let n = l.len();
+    for i in 0..n {
+        out.push(l[i]);
+        alt.push(true);
+        let j = if i + 1 < n {
+            i + 1
+        } else if ring && n > 2 {
+            0
+        } else {
+            break;
+        };
+        let k = (crate::geometrie::abstand(l[i], l[j]) / seg).ceil() as usize;
+        for t in 1..k {
+            out.push(crate::geometrie::zwischen(l[i], l[j], t as f64 / k as f64));
+            alt.push(false);
+        }
+    }
+    (out, alt)
+}
+
+/// Seiten einer Satinsäule mit gleich vielen Punkten paarweise teilen (Punkt i von A gehört zu Punkt i von B).
+fn paare_teilen(a: &[Punkt], b: &[Punkt], seg: f64) -> (Linie, Linie) {
+    let (mut x, mut y) = (Vec::new(), Vec::new());
+    for i in 0..a.len() {
+        x.push(a[i]);
+        y.push(b[i]);
+        if i + 1 == a.len() {
+            break;
+        }
+        let d = crate::geometrie::abstand(a[i], a[i + 1]).max(crate::geometrie::abstand(b[i], b[i + 1]));
+        let k = (d / seg).ceil() as usize;
+        for t in 1..k {
+            let s = t as f64 / k as f64;
+            x.push(crate::geometrie::zwischen(a[i], a[i + 1], s));
+            y.push(crate::geometrie::zwischen(b[i], b[i + 1], s));
+        }
+    }
+    (x, y)
+}
+
+/// Objekt mit einer beliebigen Punktabbildung verformen (Elastic Lettering). Linien werden vorher in Stücke ≤ `seg` mm
+/// geteilt, damit auch gerade Kanten der Verformung folgen; Stichwinkel und Breiten bleiben, die Stiche werden neu
+/// berechnet.
+pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
+    let lin = |l: &[Punkt], ring: bool| -> Linie { teilen(l, seg, ring).0.into_iter().map(f).collect() };
+    let art = match &o.art {
+        ObjektArt::Lauf {
+            punkte,
+            ecken,
+            laenge,
+            dreifach,
+            geschlossen,
+        } => {
+            let (q, alt) = teilen(punkte, seg, *geschlossen);
+            let mut e = ecken.iter();
+            ObjektArt::Lauf {
+                punkte: q.into_iter().map(f).collect(),
+                ecken: alt.iter().map(|&a| a && *e.next().unwrap_or(&false)).collect(),
+                laenge: *laenge,
+                dreifach: *dreifach,
+                geschlossen: *geschlossen,
+            }
+        }
+        ObjektArt::Satin {
+            seite_a,
+            seite_b,
+            unterlage,
+            optionen,
+        } => {
+            let (a, b) = if seite_a.len() == seite_b.len() {
+                let (a, b) = paare_teilen(seite_a, seite_b, seg);
+                (a.into_iter().map(f).collect(), b.into_iter().map(f).collect())
+            } else {
+                (lin(seite_a, false), lin(seite_b, false))
+            };
+            ObjektArt::Satin {
+                seite_a: a,
+                seite_b: b,
+                unterlage: unterlage.clone(),
+                optionen: optionen.clone(),
+            }
+        }
+        ObjektArt::SatinLinie {
+            punkte,
+            breite,
+            unterlage,
+        } => ObjektArt::SatinLinie {
+            punkte: lin(punkte, false),
+            breite: *breite,
+            unterlage: unterlage.clone(),
+        },
+        ObjektArt::Blanket {
+            punkte,
+            geschlossen,
+            abstand,
+            breite,
+            mittig,
+        } => ObjektArt::Blanket {
+            punkte: lin(punkte, *geschlossen),
+            geschlossen: *geschlossen,
+            abstand: *abstand,
+            breite: *breite,
+            mittig: *mittig,
+        },
+        ObjektArt::Tatami {
+            umriss,
+            loecher,
+            winkel,
+            unterlage,
+            aussparen,
+        } => ObjektArt::Tatami {
+            umriss: lin(umriss, true),
+            loecher: loecher.iter().map(|l| lin(l, true)).collect(),
+            winkel: *winkel,
+            unterlage: *unterlage,
+            aussparen: aussparen.clone(),
+        },
+        ObjektArt::Musterfuellung {
+            umriss,
+            loecher,
+            muster,
+            winkel,
+            groesse,
+            unterlage,
+            aussparen,
+        } => ObjektArt::Musterfuellung {
+            umriss: lin(umriss, true),
+            loecher: loecher.iter().map(|l| lin(l, true)).collect(),
+            muster: muster.clone(),
+            winkel: *winkel,
+            groesse: *groesse,
+            unterlage: *unterlage,
+            aussparen: aussparen.clone(),
+        },
+        ObjektArt::Gruppe {
+            teile,
+            umrisse,
+            laufweg,
+        } => ObjektArt::Gruppe {
+            teile: teile.iter().map(|t| verformen(t, f, seg)).collect(),
+            umrisse: umrisse.iter().map(|l| lin(l, true)).collect(),
+            laufweg: *laufweg,
+        },
+        andere => andere.clone(),
+    };
+    Objekt {
+        farbe: o.farbe.clone(),
+        name: o.name.clone(),
+        art,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
