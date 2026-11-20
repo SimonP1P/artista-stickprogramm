@@ -94,3 +94,24 @@ export interface Fortschritt {
   erledigt: number;
   gesamt: number;
 }
+
+export interface ListenZeile {
+  nr: number;
+  name: string;
+  flags: number;
+}
+
+export interface ListenInfo {
+  sitzung: Sitzung;
+  designs: ListenZeile[];
+}
+
+/** aus der Maschine gelesenes Design (nur ansehen) */
+export interface GelesenInfo {
+  sitzung: Sitzung;
+  nr: number;
+  ergebnis: Ergebnis;
+  /** Garnfarben, die die Maschine nach dem Laden meldet */
+  garne: GarnInfo[];
+  bytes: number;
+}

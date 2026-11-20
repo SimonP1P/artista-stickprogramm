@@ -9,6 +9,8 @@
     AlphabetInfo,
     Ergebnis,
     Fortschritt,
+    GelesenInfo,
+    ListenInfo,
     MaschinenInfo,
     PlanInfo,
     RahmenInfo,
@@ -148,6 +150,7 @@
       const e = await invoke<Ergebnis>("design_berechnen", { json: text });
       if (nr === laufNr) {
         ergebnis = e;
+        ansicht = null; // eigenes Design geändert: wieder dessen Vorschau
         fehler = "";
       }
     } catch (e) {
@@ -276,9 +279,61 @@
     }
   }
 
+  // Designs aus der Maschine ansehen (nur lesen: Liste, Befehl 0x400)
+  let maschinenListe = $state<ListenInfo | null>(null);
+  let ansicht = $state<GelesenInfo | null>(null); // gelesenes Design in der Vorschau statt des eigenen
+
+  async function listeLesen() {
+    maschineArbeitet = "Lese die Designliste der Maschine …";
+    fehler = "";
+    try {
+      maschinenListe = await invoke<ListenInfo>("maschine_liste", { port, simulation });
+    } catch (e) {
+      fehler = String(e);
+    } finally {
+      maschineArbeitet = "";
+    }
+  }
+
+  async function designLesen(nr: number) {
+    maschinenListe = null;
+    maschineArbeitet = `Lese Design Nr. ${nr} aus der Maschine …`;
+    fortschritt = null;
+    fehler = "";
+    try {
+      const g = await invoke<GelesenInfo>("maschine_lesen", { port, simulation, nr });
+      ansicht = g;
+      ergebnis = g.ergebnis;
+      meldung = `Design Nr. ${nr} gelesen (${g.bytes} Byte) – nur zum Ansehen; „Zurück“ zeigt wieder das eigene Design.`;
+      vorschau?.einpassen();
+    } catch (e) {
+      fehler = String(e);
+    } finally {
+      maschineArbeitet = "";
+      fortschritt = null;
+    }
+  }
+
+  function ansichtSchliessen() {
+    ansicht = null;
+    berechnen(jsonText);
+  }
+
+  async function gelesenSpeichern() {
+    if (!ansicht) return;
+    const pfad = await save({ defaultPath: `Maschine_Nr${String(ansicht.nr).padStart(2, "0")}.exp`, filters: [{ name: "Stickdatei (EXP)", extensions: ["exp"] }] });
+    if (!pfad) return;
+    try {
+      const bytes = await invoke<number>("gelesen_exp_speichern", { pfad });
+      meldung = `EXP gespeichert: ${pfad} (${bytes} Byte)`;
+    } catch (e) {
+      fehler = String(e);
+    }
+  }
+
   onMount(() => {
     let weg: (() => void) | undefined;
-    listen<Fortschritt>("senden_fortschritt", (e) => (fortschritt = e.payload)).then((f) => (weg = f));
+    listen<Fortschritt>("maschine_fortschritt", (e) => (fortschritt = e.payload)).then((f) => (weg = f));
     return () => weg?.();
   });
 
@@ -399,6 +454,16 @@
       <span class="hinweis">Mausrad: Zoom · Ziehen: verschieben · Doppelklick: einpassen</span>
     </div>
     {#if rechnet}<div class="rechnet">rechnet …</div>{/if}
+    {#if ansicht}
+      <div class="ansicht">
+        <span>Ansicht: {ansicht.ergebnis.name} – nur ansehen</span>
+        {#each ansicht.garne as g, i (i)}
+          <span class="garn-klein" title="{g.marke} {g.nummer}"><span class="feld" style:background={g.rgb}></span>{g.name || g.marke}</span>
+        {/each}
+        <button onclick={gelesenSpeichern}>Als EXP speichern …</button>
+        <button onclick={ansichtSchliessen}>Zurück zum eigenen Design</button>
+      </div>
+    {/if}
   </main>
 
   <aside class="rechts">
@@ -442,7 +507,10 @@
           <option value={SIM}>{SIM} (ohne Maschine)</option>
         </select>
       </label>
-      <button onclick={maschinePruefen} disabled={!!maschineArbeitet}>Maschine prüfen</button>
+      <div class="zeile">
+        <button onclick={maschinePruefen} disabled={!!maschineArbeitet}>Maschine prüfen</button>
+        <button onclick={listeLesen} disabled={!!maschineArbeitet}>Designs der Maschine …</button>
+      </div>
       {#if maschinenInfo}
         <div class="kasten">
           <div>Nähmaschine {maschinenInfo.sitzung.naehmaschine} · Stickmodul {maschinenInfo.sitzung.stickmodul}</div>
@@ -458,9 +526,12 @@
         ><input type="checkbox" bind:checked={sticken} disabled={!!maschineArbeitet} /> danach sticken (Rahmen fährt –
         nur mit Person an der Maschine)</label
       >
-      <button class="haupt" onclick={sendenPlanen} disabled={!!maschineArbeitet || !ergebnis || !!fehler || ergebnis.ausserhalb > 0}
-        >Senden …</button
+      <button
+        class="haupt"
+        onclick={sendenPlanen}
+        disabled={!!maschineArbeitet || !!ansicht || !ergebnis || !!fehler || ergebnis.ausserhalb > 0}>Senden …</button
       >
+      {#if ansicht}<p class="klein">Gesendet wird das eigene Design – erst „Zurück“ über der Vorschau.</p>{/if}
       {#if maschineArbeitet}
         <p class="klein">{maschineArbeitet}</p>
         {#if fortschritt}
@@ -480,6 +551,30 @@
       <p class="klein">Es wird nichts dauerhaft in der Maschine gespeichert; vor dem Schreiben kommt eine Rückfrage.</p>
     </section>
   </aside>
+
+  {#if maschinenListe}
+    <div class="schleier">
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="liste-titel">
+        <h2 id="liste-titel">Designs der Maschine ({maschinenListe.designs.length})</h2>
+        <p class="klein">
+          Anschluss {maschinenListe.sitzung.port} · Lesen dauert je nach Größe einige Sekunden bis etwa eine Minute (≈ 1,5 KB/s).
+        </p>
+        <div class="liste">
+          {#each maschinenListe.designs as d (d.nr)}
+            <button class="listen-zeile" onclick={() => designLesen(d.nr)}>
+              <span class="nr-spalte">{d.nr}</span><span>{d.name || "–"}</span><span class="klein">Flags 0x{d.flags
+                  .toString(16)
+                  .toUpperCase()
+                  .padStart(2, "0")}</span>
+            </button>
+          {/each}
+        </div>
+        <div class="dialog-knoepfe">
+          <button onclick={() => (maschinenListe = null)}>Schließen</button>
+        </div>
+      </div>
+    </div>
+  {/if}
 
   {#if plan}
     <div class="schleier">
@@ -850,6 +945,47 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+  }
+  .ansicht {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    background: #fff6e5;
+    border: 1px solid #e0a040;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .garn-klein {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+  }
+  .liste {
+    max-height: 55vh;
+    overflow: auto;
+    border: 1px solid #dde1e5;
+    border-radius: 5px;
+  }
+  .listen-zeile {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-bottom: 1px solid #eef0f2;
+    border-radius: 0;
+  }
+  .nr-spalte {
+    color: #5d6b78;
+    text-align: right;
   }
   .dialog-knoepfe {
     display: flex;

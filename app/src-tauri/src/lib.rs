@@ -5,15 +5,17 @@ use serde_json::Value;
 use std::collections::HashMap;
 use std::path::PathBuf;
 use std::sync::Mutex;
-use stick_formate::artista::{Farbe, Sendedaten};
+use stick_formate::artista::{Farbe, N_185, Puffer, Sendedaten};
 use stick_formate::esb;
-use stick_formate::exp::exp_bytes;
+use stick_formate::exp::{exp_bytes, exp_lesen};
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::rahmen::{Rahmen, alle_rahmen};
 use stick_kern::schrift::Alphabet;
-use stick_kern::{Art, Design, Stich};
+use stick_kern::{Art, Design, Stich, StichFolge};
 use stick_maschine::maschine::FarbBereich;
-use stick_maschine::{Leitung, Maschine, SendeOptionen, SimOptionen, Simulation, zeitstempel};
+use stick_maschine::{
+    Leitung, Maschine, SendeOptionen, SimOptionen, Simulation, Speicher, zeitstempel,
+};
 use tauri::{AppHandle, Emitter, Manager, State};
 
 /// Original-Alphabete (ESB): Ordner und bereits geladene Alphabete (Laden dauert, Neuberechnung beim Tippen nicht).
@@ -171,19 +173,10 @@ async fn design_berechnen(
     berechnen_mit(&json, rahmen, stoff, &alphabete)
 }
 
-fn berechnen_mit(
-    json: &str,
-    rahmen: Option<String>,
-    stoff: Option<String>,
-    alphabete: &Alphabete,
-) -> Result<Ergebnis, String> {
-    let mut design = design_laden(json, rahmen, stoff)?;
-    alphabete.einsetzen(&mut design)?;
-    let (_, fehlend) = design.objekte_aufgeloest()?;
-    let folge = design.berechnen()?;
+fn statistik_von(folge: &StichFolge) -> Statistik {
     let (x0, y0, x1, y1) = folge.begrenzung().unwrap_or((0.0, 0.0, 0.0, 0.0));
     let laengen = folge.stichlaengen();
-    let statistik = Statistik {
+    Statistik {
         stiche: folge.anzahl(Art::Stich),
         spruenge: folge.anzahl(Art::Sprung),
         farbwechsel: folge.anzahl(Art::Farbwechsel),
@@ -195,7 +188,20 @@ fn berechnen_mit(
             laengen.iter().copied().fold(f64::INFINITY, f64::min)
         },
         max_stich: laengen.iter().copied().fold(0.0, f64::max),
-    };
+    }
+}
+
+fn berechnen_mit(
+    json: &str,
+    rahmen: Option<String>,
+    stoff: Option<String>,
+    alphabete: &Alphabete,
+) -> Result<Ergebnis, String> {
+    let mut design = design_laden(json, rahmen, stoff)?;
+    alphabete.einsetzen(&mut design)?;
+    let (_, fehlend) = design.objekte_aufgeloest()?;
+    let folge = design.berechnen()?;
+    let statistik = statistik_von(&folge);
     Ok(Ergebnis {
         name: design.name.clone(),
         rahmen: RahmenInfo::from(&design.rahmen),
@@ -336,6 +342,21 @@ struct Fortschritt {
     gesamt: usize,
 }
 
+/// Fortschritt großer Lese-/Schreibvorgänge als Ereignis `maschine_fortschritt` an die Oberfläche.
+fn melder(app: &AppHandle) -> impl FnMut(&str, usize, usize) + use<> {
+    let app = app.clone();
+    move |was: &str, erledigt: usize, gesamt: usize| {
+        let _ = app.emit(
+            "maschine_fortschritt",
+            Fortschritt {
+                was: was.into(),
+                erledigt,
+                gesamt,
+            },
+        );
+    }
+}
+
 fn leitung_oeffnen(port: &str, simulation: bool) -> Result<Box<dyn Leitung>, String> {
     if simulation {
         // wie nach einer früheren Sitzung: Maschine steht auf 57600 (Synchronisation wird mitgeprüft)
@@ -473,7 +494,7 @@ async fn maschine_planen(
 }
 
 /// **Schreibt in die Maschine** (DATEN, ICON, INFO, Garnfarbtabelle; mit `sticken` Befehl 0x08). Die Oberfläche ruft
-/// das nur nach der ausdrücklichen Bestätigung des Plans auf. Fortschritt als Ereignis `senden_fortschritt`.
+/// das nur nach der ausdrücklichen Bestätigung des Plans auf. Fortschritt als Ereignis `maschine_fortschritt`.
 #[tauri::command]
 async fn maschine_senden(
     app: AppHandle,
@@ -485,17 +506,7 @@ async fn maschine_senden(
 ) -> Result<SendeInfo, String> {
     let s = sendedaten(&json, &alphabete)?;
     im_hintergrund(move || {
-        let melder = app.clone();
-        let mut fortschritt = move |was: &str, erledigt: usize, gesamt: usize| {
-            let _ = melder.emit(
-                "senden_fortschritt",
-                Fortschritt {
-                    was: was.into(),
-                    erledigt,
-                    gesamt,
-                },
-            );
-        };
+        let mut fortschritt = melder(&app);
         let (b, sitzung) = mit_maschine(&app, &port, simulation, "senden", |m| {
             m.senden(&s, &wahl.into(), &mut fortschritt)
         })?;
@@ -506,6 +517,143 @@ async fn maschine_senden(
         })
     })
     .await
+}
+
+#[derive(Serialize)]
+struct ListenZeile {
+    nr: usize,
+    name: String,
+    flags: u8,
+}
+
+#[derive(Serialize)]
+struct ListenInfo {
+    sitzung: Sitzung,
+    designs: Vec<ListenZeile>,
+}
+
+/// Aus der Maschine gelesenes Design zum Ansehen.
+#[derive(Serialize)]
+struct GelesenInfo {
+    sitzung: Sitzung,
+    nr: usize,
+    ergebnis: Ergebnis,
+    /// Garnfarben, die die Maschine nach dem Laden in die Garnfarbtabelle legt
+    garne: Vec<GarnInfo>,
+    bytes: usize,
+}
+
+/// Zuletzt gelesenes Maschinendesign (Stichdaten als EXP) – für „Als EXP speichern“.
+struct Gelesen(Mutex<Option<(String, Vec<u8>)>>);
+
+/// Kleinster Rahmen, in den alle Einstiche passen (sonst der größte).
+fn passender_rahmen(folge: &StichFolge) -> Rahmen {
+    let mut alle = alle_rahmen();
+    alle.sort_by(|a, b| (a.breite * a.hoehe).total_cmp(&(b.breite * b.hoehe)));
+    alle.iter()
+        .find(|r| folge.stiche.iter().all(|s| r.enthaelt(s.p())))
+        .or(alle.last())
+        .cloned()
+        .unwrap_or_else(|| alle_rahmen().remove(0))
+}
+
+/// Designliste aus dem Maschinenspeicher (nur lesen; Befehle 0xA0/0x30/0x20/0x60, Auswahl).
+#[tauri::command]
+async fn maschine_liste(
+    app: AppHandle,
+    port: String,
+    simulation: bool,
+) -> Result<ListenInfo, String> {
+    im_hintergrund(move || {
+        let (l, sitzung) = mit_maschine(&app, &port, simulation, "liste", |m| {
+            m.designliste(Speicher::Maschine)
+        })?;
+        Ok(ListenInfo {
+            sitzung,
+            designs: l
+                .into_iter()
+                .map(|e| ListenZeile {
+                    nr: e.nr,
+                    name: e.name,
+                    flags: e.flags,
+                })
+                .collect(),
+        })
+    })
+    .await
+}
+
+/// Ein Design aus dem Maschinenspeicher lesen (Befehl 0x400, nur lesen) und zum Ansehen aufbereiten.
+#[tauri::command]
+async fn maschine_lesen(
+    app: AppHandle,
+    port: String,
+    simulation: bool,
+    nr: usize,
+    gelesen: State<'_, Gelesen>,
+) -> Result<GelesenInfo, String> {
+    let app2 = app.clone();
+    let (d, fb, sitzung) = im_hintergrund(move || {
+        let mut fortschritt = melder(&app2);
+        let ((d, fb), sitzung) = mit_maschine(&app2, &port, simulation, "lesen", |m| {
+            let d = m.design_lesen(nr, &mut fortschritt)?;
+            let fb = m.farbbereich_lesen()?;
+            Ok((d, fb))
+        })?;
+        Ok((d, fb, sitzung))
+    })
+    .await?;
+    let p = Puffer::lesen(&d.puffer, N_185)?;
+    let mut folge = exp_lesen(&p.stiche);
+    let name = p
+        .container()
+        .and_then(Result::ok)
+        .and_then(|c| c.kopf())
+        .map(|k| k.name())
+        .filter(|n| !n.is_empty())
+        .unwrap_or_else(|| d.name.clone());
+    let garne: Vec<GarnInfo> = fb.farben.iter().map(GarnInfo::from).collect();
+    for (i, g) in garne.iter().enumerate() {
+        if let Some(f) = folge.farben.get_mut(i) {
+            *f = g.rgb.clone();
+        }
+    }
+    let rahmen = passender_rahmen(&folge);
+    let ausserhalb = folge
+        .stiche
+        .iter()
+        .filter(|s| !rahmen.enthaelt(s.p()))
+        .count();
+    let titel = format!("Nr. {nr} „{name}“ (aus der Maschine)");
+    *gelesen.0.lock().map_err(|e| e.to_string())? =
+        Some((format!("Maschine_Nr{nr:02}"), p.stiche.clone()));
+    Ok(GelesenInfo {
+        sitzung,
+        nr,
+        bytes: d.puffer.len(),
+        garne,
+        ergebnis: Ergebnis {
+            name: titel,
+            rahmen: RahmenInfo::from(&rahmen),
+            stoff: "–".into(),
+            statistik: statistik_von(&folge),
+            ausserhalb,
+            fehlende_zeichen: String::new(),
+            farben: std::mem::take(&mut folge.farben),
+            stiche: folge.stiche,
+        },
+    })
+}
+
+/// Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern (unverändert, mit Endkennung 80 81).
+#[tauri::command]
+async fn gelesen_exp_speichern(pfad: String, gelesen: State<'_, Gelesen>) -> Result<usize, String> {
+    let g = gelesen.0.lock().map_err(|e| e.to_string())?;
+    let (_, exp) = g
+        .as_ref()
+        .ok_or("Es wurde noch kein Design aus der Maschine gelesen")?;
+    std::fs::write(&pfad, exp).map_err(|e| format!("{pfad}: {e}"))?;
+    Ok(exp.len())
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -519,6 +667,7 @@ pub fn run() {
                 ordner,
                 geladen: Mutex::new(HashMap::new()),
             });
+            app.manage(Gelesen(Mutex::new(None)));
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
@@ -533,7 +682,10 @@ pub fn run() {
             maschine_ports,
             maschine_pruefen,
             maschine_planen,
-            maschine_senden
+            maschine_senden,
+            maschine_liste,
+            maschine_lesen,
+            gelesen_exp_speichern
         ])
         .run(tauri::generate_context!())
         .expect("Fehler beim Start des Programms");

@@ -122,4 +122,4 @@ in der Roadmap stehen.
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
 | 4 Sticharten nach dem Original | Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift mit Original-Alphabeten, Kurzstiche ✅; offen: Schrift-Reihenfolge, Tatami-Kurzstiche, Auto-Split, Fancy, Applikation, TTF, Vektorisierung, Knockout | 🟡 (`ROADMAP.md`, `Analyse_Teil3/10`) |
-| 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen, Garnfarbkarten, Mac-Programm | 🟡 |
+| 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten, Mac-Programm | 🟡 |

@@ -15,7 +15,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, **Schrift** ✅ · Rest offen | 🟡 8 Punkte erledigt, 10 offen |
-| 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen, Garnfarbkarten, Mac-Programm | 🟡 |
+| 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten, Mac-Programm | 🟡 |
 
 **Stand 20.11.2026:** Am 19.11. wurde das erste Design aus dem eigenen Rechenkern auf der artista 185 gestickt. Am 20.11.
 (ohne Maschine) wurde geklärt, warum das Display „no color“ zeigte: Ab Firmware 3.09 schickt das Original die Farben als
@@ -108,7 +108,8 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 - ✅ 20.11.2026 Oberfläche Schritt 4 „An die Maschine“: Anschluss/Simulation, Maschine prüfen, Senden mit Plan-Dialog
   und Bestätigung, Sticken nur mit Häkchen „Person an der Maschine“; am Gerät geprüft und geplant (lesend) · ⬜ Schreiben
   aus dem Programm am Gerät (Liste „Vor Ort“ V1)
-- ⬜ Designs aus der Maschine öffnen (Liste anzeigen, lesen, Vorschau)
+- ✅ 20.11.2026 Designs aus der Maschine öffnen: Liste, lesen (0x400), Vorschau mit den Garnfarben der Maschine, als EXP
+  speichern – am Gerät erprobt (Nr. 21 mit Isacord rich brown/brass/light beige)
 - ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus), Garnfarbkarten (Marke, Nummer und
   Name je Farbe → Garnfarbtabelle an die Maschine)
 - ⬜ Mac-Programm (GitHub Actions, macOS-Runner)
