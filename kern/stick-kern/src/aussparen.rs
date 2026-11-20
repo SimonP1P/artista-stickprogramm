@@ -185,6 +185,35 @@ pub fn vereinigen(konturen: &[Kontur]) -> Vec<Teil> {
     teile_aus(konturen.to_vec().overlay(&leer, OverlayRule::Union, FillRule::NonZero))
 }
 
+/// Flächen aus Ringen mit Füllregel wie in SVG (`gerade_ungerade` = „evenodd“, sonst „nonzero“; die Richtung der Ringe
+/// bleibt, wie sie ist): Teile (Umriss, Löcher), größter zuerst.
+pub fn flaechen_aus_ringen(ringe: &[Linie], gerade_ungerade: bool) -> Vec<Teil> {
+    let subj: Vec<Kontur> = ringe
+        .iter()
+        .map(|r| geschlossen_ohne_endpunkt(r))
+        .filter(|r| r.len() >= 3)
+        .map(|r| r.iter().map(|a| [a.x, a.y]).collect())
+        .collect();
+    if subj.is_empty() {
+        return Vec::new();
+    }
+    let regel = if gerade_ungerade {
+        FillRule::EvenOdd
+    } else {
+        FillRule::NonZero
+    };
+    let leer: Vec<Kontur> = Vec::new();
+    teile_aus(subj.overlay(&leer, OverlayRule::Subject, regel))
+}
+
+/// Teile als Konturen (außen gegen den Uhrzeiger, Löcher im Uhrzeiger), z. B. zum Ausschneiden.
+pub fn teile_konturen(teile: &[Teil]) -> Vec<Kontur> {
+    teile
+        .iter()
+        .flat_map(|(u, l)| std::iter::once(kontur(u, true)).chain(l.iter().map(|x| kontur(x, false))))
+        .collect()
+}
+
 /// Ergebnis einer Überlagerung als Teile (Umriss, Löcher), kleine Reste entfallen, größter zuerst.
 fn teile_aus(ergebnis: Vec<Vec<Kontur>>) -> Vec<Teil> {
     let linie = |k: &Kontur| -> Linie { k.iter().map(|q| p(q[0], q[1])).collect() };

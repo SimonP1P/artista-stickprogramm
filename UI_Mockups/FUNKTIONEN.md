@@ -3,7 +3,7 @@
 **Für wen:** Designer (Claude Design) und Frontend-Entwickler. **Was:** jede Funktion, die der Rechenkern kann – was
 der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Feldliste (aus dem Code erzeugt, immer
 aktuell): **`SCHNITTSTELLE.md`**, maschinenlesbar `kern/schnittstelle/`. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
-`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 21.11.2026** (4b.16 Werte je Objekt; 4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
+`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 21.11.2026** (4b.17 SVG einlesen; 4b.16 Werte je Objekt; 4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
 
 **Modus:** **E** = im einfachen Modus sichtbar, **X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur
 das Ergebnis). **Alle einzelnen Werte** (Stichabstand, Zugausgleich, Unterlagen, Vernähen …) mit Standard, Bereich,
@@ -36,6 +36,7 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 | Garnkarte | Auswahl (Default), Farben werden dem nächsten Garn zugeordnet | `garnkarte` | E |
 | Ganzes Design skalieren, drehen, spiegeln, schräg, verschieben | Prozent / Grad / Richtung / mm | `transform` oben | E |
 | Start und Ende | Rahmenmitte, Designmitte, unten Mitte, erster/letzter Stich | `start`, `ende` | X |
+| **SVG einlesen** (z. B. aus Inkscape) | Datei wählen; Breite in mm (Standard: Größe aus der SVG), Rahmen; „Überdeckung aussparen“ (an: was in der SVG oben liegt, spart darunterliegende Flächen aus), „kürzeste Verbindung“ (an). Ergebnis: neues Design, Stichart je Form nach Breite wie EasyStitch des Originals (Linie bis 2 mm Laufstich, Fläche bis 8 mm Satinfläche, darüber Tatami), danach jedes Objekt normal änderbar. Hinweise anzeigen (Text nicht umgewandelt, Verläufe, zu groß für den Rahmen) | Befehl `svg_lesen` → Design | E (Optionen X) |
 | Kürzeste Verbindung (Closest Join) | an/aus (aus = wie gezeichnet): jedes Objekt beginnt nahe dem vorigen Ende, Linien werden dafür umgedreht, geschlossene Formen gedreht – weniger Sprünge | `kuerzeste_verbindung` | X |
 | Einzelwerte überschreiben (ganzes Design) | z. B. Satin-Zugausgleich; Werte im Parameterkatalog | `einstellungen` | X |
 
@@ -104,6 +105,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `ueberdeckungen` | Anzeige, welche Objekte sich überdecken (z. B. in der Objektliste) |
 | `saeulen_vorschau` | Vorschau der automatischen Satin-Stichrichtung einer Fläche (optional) |
 | `bild_umwandeln` | Bild → Umrisse (Auto-Digitalisieren): neues Design aus einem Bild |
+| `svg_lesen` | SVG-Datei (Inkscape) → neues Design; Zählung je Stichart und Hinweise für die Anzeige |
 | `datei_lesen`, `text_speichern` | Design öffnen/speichern |
 | Maschine: `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` | noch als eigene Befehle in der App (`app/src-tauri/src/lib.rs`), kommen später in `stick-api` |
 
@@ -111,8 +113,7 @@ Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DA
 `SCHNITTSTELLE.md`).
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
-**SVG-Import** (vorgezogen): Design aus Inkscape laden – Flächen, Konturen, Farben und Reihenfolge werden
-übernommen, Stichart je Form automatisch nach Breite (schmale Flächen als `satinflaeche`) und in der App änderbar · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
+Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·
 Magic Wand, PhotoSnap · Ausrichten, Gruppieren, Kranz, Kaleidoskop · eigene Rahmen, fremde Stickdateien ·
 Vorlagen/Stile speichern · Kreuzstich.

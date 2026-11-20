@@ -22,7 +22,10 @@
 //! Schwerpunkt), ein inneres = Ende (Spitze), zwei = Säulenstück; Stichlinien = innere Kanten, ausgewählt nach
 //! Douglas-Peucker auf der Mittellinie (Toleranz = Anteil der Breite, an den 54 Säulen eingestellt).
 
-use crate::geometrie::{Linie, Punkt, abstand, flaeche_vorzeichen, geschlossen_ohne_endpunkt, kumuliert, p};
+use crate::geometrie::{
+    Linie, Punkt, abstand, abstand_punkt_strecke, flaeche_vorzeichen, geschlossen_ohne_endpunkt, im_polygon, kumuliert,
+    p,
+};
 use spade::{ConstrainedDelaunayTriangulation, Point2, Triangulation};
 use std::collections::HashMap;
 
@@ -909,9 +912,61 @@ pub fn groesste_breite(umriss: &[Punkt], loecher: &[Linie]) -> Result<f64, Strin
     Ok(breiten(&n).into_iter().filter(|w| *w < f64::MAX).fold(0.0, f64::max))
 }
 
+/// **Dicke** einer Fläche (mm): Durchmesser des größten Kreises, der hineinpasst – bei einer Säule ihre Breite, bei
+/// einem Kreis sein Durchmesser, bei einem Ring die Breite des Rings. Für die Wahl der Stichart nach Breite wie
+/// EasyStitch (`Analyse/code/10` §C); `groesste_breite` misst die örtliche Breite der Säulenstücke und unterschätzt
+/// runde Flächen (eigene Festlegung: Maß = größter Innenkreis; wie EasyStitch die Breite misst, ist nicht analysiert).
+/// Verfahren: Mittelpunkte der Umkreise der Delaunay-Dreiecke liegen auf der Mittelachse; je Mittelpunkt im Inneren
+/// der Abstand zum nächsten Rand.
+pub fn dicke(umriss: &[Punkt], loecher: &[Linie]) -> Result<f64, String> {
+    let ringe = ringe_vorbereiten(umriss, loecher);
+    if ringe.is_empty() {
+        return Ok(0.0);
+    }
+    let abgetastet: Vec<Linie> = ringe.iter().map(|r| abtasten(r, &|_| 0.5)).collect();
+    let n = triangulieren(&abgetastet)?;
+    let randabstand = |q: Punkt| -> f64 {
+        ringe
+            .iter()
+            .flat_map(|r| (0..r.len()).map(move |i| (r[i], r[(i + 1) % r.len()])))
+            .map(|(a, b)| abstand_punkt_strecke(q, a, b))
+            .fold(f64::MAX, f64::min)
+    };
+    let mut groesste: f64 = 0.0;
+    for d in &n.drei {
+        let (a, b, c) = (n.pkt[d[0]], n.pkt[d[1]], n.pkt[d[2]]);
+        let teiler = 2.0 * (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y));
+        let schwerpunkt = p((a.x + b.x + c.x) / 3.0, (a.y + b.y + c.y) / 3.0);
+        let mut kandidaten = vec![schwerpunkt];
+        if teiler.abs() > 1e-12 {
+            let (a2, b2, c2) = (a.x * a.x + a.y * a.y, b.x * b.x + b.y * b.y, c.x * c.x + c.y * c.y);
+            kandidaten.push(p(
+                (a2 * (b.y - c.y) + b2 * (c.y - a.y) + c2 * (a.y - b.y)) / teiler,
+                (a2 * (c.x - b.x) + b2 * (a.x - c.x) + c2 * (b.x - a.x)) / teiler,
+            ));
+        }
+        for q in kandidaten {
+            if im_polygon(q, &ringe) {
+                groesste = groesste.max(randabstand(q));
+            }
+        }
+    }
+    Ok(2.0 * groesste)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn dicke_von_saeule_kreis_ring() {
+        let r = rechteck(0.0, 0.0, 30.0, 3.0);
+        assert!((dicke(&r, &[]).unwrap() - 3.0).abs() < 0.05);
+        let kreis = crate::geometrie::kreis(p(0.0, 0.0), 7.0, 0.02, 0.0);
+        assert!((dicke(&kreis, &[]).unwrap() - 14.0).abs() < 0.1);
+        let innen = crate::geometrie::kreis(p(0.0, 0.0), 4.0, 0.02, 0.0);
+        assert!((dicke(&crate::geometrie::kreis(p(0.0, 0.0), 10.0, 0.02, 0.0), &[innen]).unwrap() - 6.0).abs() < 0.1);
+    }
 
     fn rechteck(x0: f64, y0: f64, x1: f64, y1: f64) -> Linie {
         vec![p(x0, y0), p(x1, y0), p(x1, y1), p(x0, y1)]

@@ -1,6 +1,6 @@
 [package]
 name = "stick-vektor"
-description = "Bild → Umrisse: Farben reduzieren, Flächen verfolgen, als Stickobjekte (Roadmap Phase 4 Punkt 8)"
+description = "Bild → Umrisse und SVG → Design (Stichart nach Breite wie EasyStitch)"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -11,3 +11,5 @@ stick-kern.workspace = true
 serde_json.workspace = true
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "bmp", "gif"] }
 imageproc = { version = "0.27", default-features = false }
+# SVG lesen (Gruppen, Transformationen, Stile, Formen → Pfade); ohne Text/Schriften
+usvg = { version = "0.50", default-features = false }

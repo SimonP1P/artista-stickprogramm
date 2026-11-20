@@ -232,6 +232,8 @@ befehle! {
     saeulen_vorschau: befehle::SaeulenEingabe => Vec<befehle::SaeuleInfo>,
     /// Bild in Stickflächen umwandeln (neues Design)
     bild_umwandeln: befehle::BildEingabe => befehle::BildErgebnis,
+    /// SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design
+    svg_lesen: befehle::SvgEingabe => befehle::SvgErgebnis,
     /// Textdatei lesen
     datei_lesen: befehle::Pfad => String,
     /// Textdatei schreiben

@@ -3810,6 +3810,89 @@
       ],
       "type": "object"
     },
+    "SvgEingabe": {
+      "additionalProperties": false,
+      "description": "SVG-Datei einlesen (in Inkscape zeichnen → laden → sticken).",
+      "properties": {
+        "aussparen": {
+          "default": true,
+          "description": "Füllflächen sparen aus, was später gezeichnet ist (wie die SVG aussieht)",
+          "type": "boolean"
+        },
+        "breite": {
+          "default": null,
+          "description": "Breite des Ergebnisses in mm (ohne Angabe: Größe aus der SVG, 1 px = 25,4/96 mm)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "kuerzeste_verbindung": {
+          "default": true,
+          "description": "Closest Join wie der Auto Digitizer",
+          "type": "boolean"
+        },
+        "pfad": {
+          "description": "SVG-Datei (Text in Inkscape vorher in Pfade umwandeln)",
+          "type": "string"
+        },
+        "rahmen": {
+          "default": null,
+          "description": "Rahmen des neuen Designs",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "pfad"
+      ],
+      "type": "object"
+    },
+    "SvgErgebnis": {
+      "description": "Ergebnis des SVG-Imports.",
+      "properties": {
+        "breite": {
+          "description": "Größe der Zeichnung in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "neues Design"
+        },
+        "hinweise": {
+          "description": "Hinweise (Text, Bilder, Verläufe, zu breite Linien, größer als der Rahmen …)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "hoehe": {
+          "format": "double",
+          "type": "number"
+        },
+        "klassen": {
+          "additionalProperties": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "description": "Zahl der Objekte je Stichart (Namen wie die EasyStitch-Stile des Originals)",
+          "type": "object"
+        }
+      },
+      "required": [
+        "design",
+        "breite",
+        "hoehe",
+        "klassen",
+        "hinweise"
+      ],
+      "type": "object"
+    },
     "TatamiJson": {
       "description": "Tatami-Fläche (Step) mit Löchern; mit `winkellinien` Fläche mit mehreren Stichwinkeln (Turning).",
       "properties": {
@@ -4792,6 +4875,15 @@
       "beschreibung": "Stoffe (8 + Software Defaults) mit den wichtigsten Werten",
       "eingabe": {
         "$ref": "#/$defs/Leer"
+      }
+    },
+    "svg_lesen": {
+      "ausgabe": {
+        "$ref": "#/$defs/SvgErgebnis"
+      },
+      "beschreibung": "SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design",
+      "eingabe": {
+        "$ref": "#/$defs/SvgEingabe"
       }
     },
     "text_speichern": {

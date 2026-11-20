@@ -13,6 +13,9 @@
 //!    Tatami – schmale Flächen als Satin folgen später), sortiert nach Farbe (größte Gesamtfläche zuerst), innerhalb
 //!    einer Farbe nach kürzestem Weg.
 
+pub mod easystitch;
+pub mod svg;
+
 use image::{Rgba, RgbaImage};
 use imageproc::contours::{BorderType, find_contours};
 use serde_json::{Value, json};

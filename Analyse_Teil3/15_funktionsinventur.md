@@ -132,5 +132,5 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 ## K. Erweiterungen über das Original hinaus (Wünsche des Nutzers)
 | Funktion | Stand | Bemerkung |
 |---|---|---|
-| SVG-Import (Inkscape → Stickdesign) | 🟡 | ROADMAP 4b.17; Baustein „Satin-Stichrichtung automatisch“ ✅ 20.11. (Bericht 17); SVG lesen ⬜; Stichart nach Breite wie EasyStitch des Originals |
+| SVG-Import (Inkscape → Stickdesign) | ✅ | 21.11. ROADMAP 4b.17 (Bericht 18): `stick svg`, Befehl `svg_lesen`; Stichart nach Breite wie EasyStitch des Originals (Stile und Werte aus NORMAL.AMT), schmale Flächen als `satinflaeche` (Bericht 17) |
 | Parameterkatalog einfach/experte/automatisch | ✅ | `PARAMETER.md` (20.11.2026) |

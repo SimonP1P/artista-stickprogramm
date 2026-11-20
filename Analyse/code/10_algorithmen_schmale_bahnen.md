@@ -53,7 +53,7 @@ Eine zweite Werteliste in der Tabelle (`0x2739`, Defaults: +0,01/+0,03/−0,03/�
 | Satin ab **10 mm** Länge wird geteilt (Auto-Split) | 10,0 mm (`0x2722`) | Struktur | niedrig-mittel |
 | Kürzester erlaubter Stich im Bernina-Format | **0,3 mm** | DEFAULTS.DFL | hoch |
 | Zugausgleich Unterlagen | **0,20 mm** | `0x2743`, Handbuch | hoch |
-| Zugausgleich (Gruppe `0x273b/0x273d`) | Defaults 0,17 · Knit/Woven Light 0,20 · übrige Stoffe 0,25 · Schrift 0,20 · EasyStitch-Flächen **0,40 mm** | Struktur; passt zum Handbuch-Hinweis „Use 0.4 when using automatic digitizing“ | mittel |
+| Zugausgleich (Gruppe `0x273b/0x273d`) | Defaults 0,17 · Knit/Woven Light 0,20 · übrige Stoffe 0,25 · Schrift 0,20 · EasyStitch-Flächen **0,40 mm** | Struktur; passt zum Handbuch-Hinweis „Use 0.4 when using automatic digitizing“; EasyStitch-Werte am 21.11.2026 in den Stilen geprüft (§C) | mittel (EasyStitch hoch) |
 | Unterlagenrand | 0,20 mm (`0x2769/0x276a`) | Handbuch S. 199–200 | mittel |
 
 ## C) EasyStitch: Stichart nach Objektbreite wählen (Automatisches Digitalisieren)
@@ -68,6 +68,20 @@ Jeder EasyStitch-Stil enthält dieselbe Klassifikationstabelle (`0x3f54`):
 | Fläche | darüber (500 000) | `<PRESET_TATAMI_2>` |
 
 Weitere Schwellen in derselben Tabelle: Mindestfläche 1 mm² (`0x3f57` = 32 400), 5 mm (`0x3f58`), 0,2 mm (`0x3f5a`), 1 mm (`0x3f63`), 3 mm / 1 mm / 12 mm (`0x3f99/9a/9b`), Fläche 0,83 mm² (`0x3f69` = 27 000). Deren genaue Rolle (Glättung, Mindestgröße, Kurvenabweichung) ist **nicht bestimmt**.
+
+**Vorlagen ↔ Stile (21.11.2026):** Die fünf Vorlagen gehören zu den fünf Stilen `<PRESET_EASYSTITCH>…` der Vorlage.
+Welche Stichart ein Stil vorwählt, steht in den Flags der Gruppen (`styles.txt`: vorgewählt 0x0001, Gruppe aus 0x2000):
+
+| Stil | Gruppe Füllung 0x27a6 | Gruppe Kontur 0x27a8 | abweichende Werte (sonst wie Software Defaults) | Vorlage (Zuordnung mittel) |
+|---|---|---|---|---|
+| Thin Lines | aus | **Laufstich** | Lauf 0x271d = **2,0 mm** (Defaults 2,5) | `<PRESET_RUN_1>` |
+| Thick Lines | aus | **Laufstich** | wie Thin Lines (Unterschied nicht gefunden) | `<PRESET_RUN_2>` |
+| Narrow Objects | **Satin** | aus | Zugausgleich 0x273d = 72 → **0,40 mm** | `<PRESET_SATIN_1>` |
+| Wide Objects | **Tatami** | aus | Tatami-Abstand 0x2716 = **0,45 mm**, Zugausgleich 0,40 mm | `<PRESET_TATAMI_1>` |
+| Other Objects | **Tatami** | aus | wie Wide Objects | `<PRESET_TATAMI_2>` |
+
+Der Zugausgleich 0,40 mm der Flächen ist damit **bestätigt (hoch)**; Thin/Thick Lines haben 30 → 0,17 mm wie die
+Software Defaults. Umgesetzt im SVG-Import (`kern/stick-vektor/src/easystitch.rs`, `Analyse_Teil3/18`).
 
 **Daraus folgt (Sicherheit hoch):** Die Software macht Flächen bis **8 mm** Breite zu Satin. Unter 0,3 mm entsteht eine einfache Linie, bis 2 mm Breite eine kräftige Linie statt Satin.
 

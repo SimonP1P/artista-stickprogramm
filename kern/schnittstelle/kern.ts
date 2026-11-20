@@ -1277,6 +1277,39 @@ export type StoffInfo = {
   zugausgleich: number;
 };
 
+/** SVG-Datei einlesen (in Inkscape zeichnen → laden → sticken). */
+export type SvgEingabe = {
+  /**
+   * Füllflächen sparen aus, was später gezeichnet ist (wie die SVG aussieht)
+   * @default true
+   */
+  aussparen?: boolean;
+  /** Breite des Ergebnisses in mm (ohne Angabe: Größe aus der SVG, 1 px = 25,4/96 mm) */
+  breite?: number | null;
+  /**
+   * Closest Join wie der Auto Digitizer
+   * @default true
+   */
+  kuerzeste_verbindung?: boolean;
+  /** SVG-Datei (Text in Inkscape vorher in Pfade umwandeln) */
+  pfad: string;
+  /** Rahmen des neuen Designs */
+  rahmen?: string | null;
+};
+
+/** Ergebnis des SVG-Imports. */
+export type SvgErgebnis = {
+  /** Größe der Zeichnung in mm */
+  breite: number;
+  /** neues Design */
+  design: DesignWert;
+  /** Hinweise (Text, Bilder, Verläufe, zu breite Linien, größer als der Rahmen …) */
+  hinweise: string[];
+  hoehe: number;
+  /** Zahl der Objekte je Stichart (Namen wie die EasyStitch-Stile des Originals) */
+  klassen: Record<string, number>;
+};
+
 /** Tatami-Fläche (Step) mit Löchern; mit `winkellinien` Fläche mit mehreren Stichwinkeln (Turning). */
 export type TatamiJson = {
   /**
@@ -1589,6 +1622,8 @@ export interface Befehle {
   schriften_liste: { eingabe: Leer; ausgabe: SchriftInfo[] };
   /** Stoffe (8 + Software Defaults) mit den wichtigsten Werten */
   stoffe_liste: { eingabe: Leer; ausgabe: StoffInfo[] };
+  /** SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design */
+  svg_lesen: { eingabe: SvgEingabe; ausgabe: SvgErgebnis };
   /** Textdatei schreiben */
   text_speichern: { eingabe: TextDatei; ausgabe: null };
   /** Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken */
@@ -1615,6 +1650,7 @@ export const BEFEHLE = [
   "saeulen_vorschau",
   "schriften_liste",
   "stoffe_liste",
+  "svg_lesen",
   "text_speichern",
   "ueberdeckungen",
 ] as const;

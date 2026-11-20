@@ -394,6 +394,35 @@ for k, name, w, einh, std, modus in [
     P(f'bild.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle='stick-vektor (eigene Festlegung)',
       modus=modus)
 
+# ---------------------------------------------------------------- SVG einlesen (ROADMAP 4b.17, Analyse_Teil3/18)
+G = 'SVG einlesen'
+for k, name, w, einh, std, modus, quelle in [
+    ('breite', 'Breite', 'Breite des Ergebnisses (ohne Angabe: Größe aus der SVG, 1 px = 25,4/96 mm)', 'mm', None,
+     'einfach', 'SVG-Norm (CSS 96 px je Zoll)'),
+    ('aussparen', 'Überdeckung aussparen', 'Füllflächen sparen aus, was in der SVG später (darüber) gezeichnet ist',
+     'an/aus', True, 'experte', 'eigene Festlegung (Bedeutung der SVG), exakt wie „Remove Overlay Stitching“'),
+    ('kuerzeste_verbindung', 'Kürzeste Verbindung', 'Closest Join wie der Auto Digitizer', 'an/aus', True, 'experte',
+     'Handbuch PDF-S. 207 (Auto Digitizer: closest join)'),
+]:
+    P(f'svg.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle=quelle, modus=modus)
+Q = 'EasyStitch-Tabelle 0x3f54 in NORMAL.AMT (Analyse/code/10 §C)'
+for k, name, w, einh, std, quelle in [
+    ('linie_duenn', 'Dünne Linie bis', 'Laufstich (Thin Lines)', 'mm', 0.3, Q + ', 0x3f77 = 54 (hoch)'),
+    ('linie_kraeftig', 'Kräftige Linie bis', 'Laufstich (Thick Lines)', 'mm', 2.0, Q + ', 360 (hoch)'),
+    ('satin_bis', 'Satin bis', 'Satinfläche bzw. Satinlinie (Narrow Objects)', 'mm', 8.0, Q + ', 1440 (hoch)'),
+    ('tatami1_bis', 'Tatami 1 bis', 'Tatami (Wide Objects), darüber Tatami (Other Objects)', 'mm', 12.0,
+     Q + ', 2160 (hoch)'),
+    ('min_flaeche', 'Kleinste Fläche', 'kleinere Flächen entfallen', 'mm²', 1.0,
+     Q + ', 0x3f57 = 32 400 (Rolle nicht bestimmt – Annahme)'),
+    ('lauf_laenge', 'Laufstich der Linien', 'Stichlänge (Thin/Thick Lines)', 'mm', 2.0,
+     'Stile <PRESET_EASYSTITCH>Thin/Thick Lines 0x271d (hoch)'),
+    ('tatami_abstand', 'Tatami-Abstand', 'Wide/Other Objects', 'mm', 0.45,
+     'Stile <PRESET_EASYSTITCH>Wide/Other Objects 0x2716 (hoch)'),
+    ('zugausgleich', 'Zugausgleich der Flächen', 'Narrow/Wide/Other Objects', 'mm', 0.40,
+     'Stile <PRESET_EASYSTITCH>Narrow/Wide/Other 0x273d = 72 (hoch); Handbuch „Use 0.4 when using automatic digitizing“'),
+]:
+    P(f'easystitch.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle=quelle, modus='automatisch')
+
 # ROADMAP 4b.16 Werte je Objekt: jeder Stil-Wert (`einstellungen.…`) lässt sich auch am Objekt überschreiben
 # (`"einstellungen"` am Objekt, gleicher Pfad) – im Original trägt jedes Objekt eine eigene Kopie des Stil-Baums
 # (Analyse_Teil3/03 §4, hoch). Felder direkt am Objekt (z. B. `abstand`) bleiben als Kurzform in `json_objekt`.

@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **145 Parameter**: 32 einfach, 75 experte, 38 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **156 Parameter**: 33 einfach, 77 experte, 46 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -230,6 +230,22 @@ Stand 21.11.2026 · **145 Parameter**: 32 einfach, 75 experte, 38 automatisch. E
 | **Kleinste Fläche** | kleinere Flächen entfallen |  |  | 4 mm² |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
 | **Glättung** | Toleranz der Vereinfachung |  |  | 0,2 mm |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
 | **Hintergrund weglassen** | häufigste Randfarbe entfällt |  |  | an |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
+
+## SVG einlesen
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Breite** | Breite des Ergebnisses (ohne Angabe: Größe aus der SVG, 1 px = 25,4/96 mm) |  |  | – |  |  | werkzeug | einfach | SVG-Norm (CSS 96 px je Zoll) |
+| **Überdeckung aussparen** | Füllflächen sparen aus, was in der SVG später (darüber) gezeichnet ist |  |  | an |  |  | werkzeug | experte | eigene Festlegung (Bedeutung der SVG), exakt wie „Remove Overlay Stitching“ |
+| **Kürzeste Verbindung** | Closest Join wie der Auto Digitizer |  |  | an |  |  | werkzeug | experte | Handbuch PDF-S. 207 (Auto Digitizer: closest join) |
+| **Dünne Linie bis** | Laufstich (Thin Lines) |  |  | 0,3 mm |  |  | werkzeug | automatisch | EasyStitch-Tabelle 0x3f54 in NORMAL.AMT (Analyse/code/10 §C), 0x3f77 = 54 (hoch) |
+| **Kräftige Linie bis** | Laufstich (Thick Lines) |  |  | 2 mm |  |  | werkzeug | automatisch | EasyStitch-Tabelle 0x3f54 in NORMAL.AMT (Analyse/code/10 §C), 360 (hoch) |
+| **Satin bis** | Satinfläche bzw. Satinlinie (Narrow Objects) |  |  | 8 mm |  |  | werkzeug | automatisch | EasyStitch-Tabelle 0x3f54 in NORMAL.AMT (Analyse/code/10 §C), 1440 (hoch) |
+| **Tatami 1 bis** | Tatami (Wide Objects), darüber Tatami (Other Objects) |  |  | 12 mm |  |  | werkzeug | automatisch | EasyStitch-Tabelle 0x3f54 in NORMAL.AMT (Analyse/code/10 §C), 2160 (hoch) |
+| **Kleinste Fläche** | kleinere Flächen entfallen |  |  | 1 mm² |  |  | werkzeug | automatisch | EasyStitch-Tabelle 0x3f54 in NORMAL.AMT (Analyse/code/10 §C), 0x3f57 = 32 400 (Rolle nicht bestimmt – Annahme) |
+| **Laufstich der Linien** | Stichlänge (Thin/Thick Lines) |  |  | 2 mm |  |  | werkzeug | automatisch | Stile <PRESET_EASYSTITCH>Thin/Thick Lines 0x271d (hoch) |
+| **Tatami-Abstand** | Wide/Other Objects |  |  | 0,45 mm |  |  | werkzeug | automatisch | Stile <PRESET_EASYSTITCH>Wide/Other Objects 0x2716 (hoch) |
+| **Zugausgleich der Flächen** | Narrow/Wide/Other Objects |  |  | 0,4 mm |  |  | werkzeug | automatisch | Stile <PRESET_EASYSTITCH>Narrow/Wide/Other 0x273d = 72 (hoch); Handbuch „Use 0.4 when using automatic digitizing“ |
 
 ## Werte je Stoff
 

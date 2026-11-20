@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100mm"
+   height="90mm"
+   viewBox="0 0 100 90"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview1" pagecolor="#ffffff" inkscape:document-units="mm" />
+  <defs id="defs1" />
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="layer1">
+    <!-- Stiel: Kontur 1,5 mm (kräftige Linie) -->
+    <path id="stiel" style="fill:none;stroke:#2e7d32;stroke-width:1.5;stroke-linecap:round"
+       d="m 50,48 c -2,12 3,22 0,36" />
+    <!-- Blätter: schmale Flächen (Satin) -->
+    <path id="blatt_links" style="fill:#43a047;stroke:none"
+       d="m 49,68 c -6,-8 -16,-8 -22,-4 c 7,5 15,6 22,4 z" />
+    <path id="blatt_rechts" style="fill:#43a047;stroke:none" transform="matrix(-1,0,0,1,100,-6)"
+       d="m 49,68 c -6,-8 -16,-8 -22,-4 c 7,5 15,6 22,4 z" />
+    <!-- Blüte: fünf Blütenblätter (Flächen), Mitte darüber -->
+    <g id="bluete" transform="translate(50,30)">
+      <ellipse id="blatt1" cx="0" cy="-13" rx="7" ry="11" style="fill:#e91e63" />
+      <ellipse id="blatt2" cx="0" cy="-13" rx="7" ry="11" style="fill:#ec407a" transform="rotate(72)" />
+      <ellipse id="blatt3" cx="0" cy="-13" rx="7" ry="11" style="fill:#e91e63" transform="rotate(144)" />
+      <ellipse id="blatt4" cx="0" cy="-13" rx="7" ry="11" style="fill:#ec407a" transform="rotate(216)" />
+      <ellipse id="blatt5" cx="0" cy="-13" rx="7" ry="11" style="fill:#e91e63" transform="rotate(288)" />
+      <circle id="mitte" cx="0" cy="0" r="7" style="fill:#fdd835;stroke:#f57f17;stroke-width:0.3" />
+    </g>
+    <!-- Rahmen: dünne Linie und ein Ring mit Loch (evenodd) -->
+    <rect id="rand" x="5" y="3" width="90" height="84" rx="6" style="fill:none;stroke:#5d4037;stroke-width:0.25" />
+    <path id="ring" style="fill:#5d4037;fill-rule:evenodd"
+       d="M 12,78 a 5,5 0 1 0 10,0 a 5,5 0 1 0 -10,0 z M 15,78 a 2,2 0 1 0 4,0 a 2,2 0 1 0 -4,0 z" />
+  </g>
+</svg>

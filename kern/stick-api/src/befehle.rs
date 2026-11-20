@@ -577,6 +577,63 @@ pub fn bild_umwandeln(_: &Kontext, e: BildEingabe) -> Result<BildErgebnis, Fehle
     })
 }
 
+fn ja() -> bool {
+    true
+}
+
+/// SVG-Datei einlesen (in Inkscape zeichnen → laden → sticken).
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct SvgEingabe {
+    /// SVG-Datei (Text in Inkscape vorher in Pfade umwandeln)
+    pub pfad: String,
+    /// Breite des Ergebnisses in mm (ohne Angabe: Größe aus der SVG, 1 px = 25,4/96 mm)
+    #[serde(default)]
+    pub breite: Option<f64>,
+    /// Rahmen des neuen Designs
+    #[serde(default)]
+    pub rahmen: Option<String>,
+    /// Füllflächen sparen aus, was später gezeichnet ist (wie die SVG aussieht)
+    #[serde(default = "ja")]
+    pub aussparen: bool,
+    /// Closest Join wie der Auto Digitizer
+    #[serde(default = "ja")]
+    pub kuerzeste_verbindung: bool,
+}
+
+/// Ergebnis des SVG-Imports.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct SvgErgebnis {
+    /// neues Design
+    pub design: DesignWert,
+    /// Größe der Zeichnung in mm
+    pub breite: f64,
+    pub hoehe: f64,
+    /// Zahl der Objekte je Stichart (Namen wie die EasyStitch-Stile des Originals)
+    pub klassen: std::collections::BTreeMap<String, usize>,
+    /// Hinweise (Text, Bilder, Verläufe, zu breite Linien, größer als der Rahmen …)
+    pub hinweise: Vec<String>,
+}
+
+/// SVG → Design: Flächen und Konturen, Stichart nach Breite wie EasyStitch, Zeichenreihenfolge, Überdeckung.
+pub fn svg_lesen(_: &Kontext, e: SvgEingabe) -> Result<SvgErgebnis, Fehler> {
+    let st = stick_vektor::svg::SvgOptionen::default();
+    let o = stick_vektor::svg::SvgOptionen {
+        breite_mm: e.breite,
+        aussparen: e.aussparen,
+        kuerzeste_verbindung: e.kuerzeste_verbindung,
+        rahmen: e.rahmen.unwrap_or(st.rahmen),
+    };
+    let r = stick_vektor::svg::svg_datei(std::path::Path::new(&e.pfad), &o)?;
+    Ok(SvgErgebnis {
+        design: DesignWert(r.design),
+        breite: r.breite_mm,
+        hoehe: r.hoehe_mm,
+        klassen: r.klassen,
+        hinweise: r.hinweise,
+    })
+}
+
 // ---------------------------------------------------------------- Dateien
 
 #[derive(Debug, Deserialize, JsonSchema)]

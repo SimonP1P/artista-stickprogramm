@@ -587,7 +587,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | svg DATEI.svg [--breite MM] [--rahmen NAME] [--ohne-aussparen] [-o DESIGN.json] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -638,6 +638,41 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         Some("saeulen") => saeulen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
         Some("api") => api(args),
+        Some("svg") => {
+            let pfad = PathBuf::from(args.get(1).ok_or(
+                "stick svg DATEI.svg [--breite MM] [--rahmen NAME] [--ohne-aussparen] [--ohne-closest-join] [-o DESIGN.json]",
+            )?);
+            let st = stick_vektor::svg::SvgOptionen::default();
+            let o = stick_vektor::svg::SvgOptionen {
+                breite_mm: option(args, "--breite").and_then(|x| x.replace(',', ".").parse().ok()),
+                aussparen: !args.iter().any(|a| a == "--ohne-aussparen"),
+                kuerzeste_verbindung: !args.iter().any(|a| a == "--ohne-closest-join"),
+                rahmen: option(args, "--rahmen").unwrap_or(st.rahmen),
+            };
+            let e = stick_vektor::svg::svg_datei(&pfad, &o)?;
+            let ziel = option(args, "-o")
+                .map(PathBuf::from)
+                .unwrap_or_else(|| pfad.with_extension("json"));
+            std::fs::write(
+                &ziel,
+                serde_json::to_string_pretty(&e.design).map_err(|x| x.to_string())?,
+            )
+            .map_err(|x| format!("{}: {x}", ziel.display()))?;
+            println!(
+                "  Zeichnung {:.1} × {:.1} mm, {} Objekte",
+                e.breite_mm,
+                e.hoehe_mm,
+                e.design["objekte"].as_array().map_or(0, Vec::len)
+            );
+            for (k, n) in &e.klassen {
+                println!("    {k:<22} {n}");
+            }
+            for h in &e.hinweise {
+                println!("  Hinweis: {h}");
+            }
+            println!("  Design: {} (mit „stick erzeugen“ berechnen)", ziel.display());
+            Ok(true)
+        }
         Some("bild") => {
             let pfad = PathBuf::from(args.get(1).ok_or(
                 "stick bild BILD [--breite MM] [--farben N] [--rahmen NAME] [--mit-hintergrund] [-o DESIGN.json]",
