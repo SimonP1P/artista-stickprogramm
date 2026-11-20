@@ -26,8 +26,8 @@ def P(id_, gruppe, name, wirkung, *, ebene='design', gilt=(), d=None, o=None, ei
 
 STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Knit Heavy Weight', 'Terry Medium Weight',
           'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
-ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'tatami', 'muster', 'blanket', 'applikation', 'text', 'ttf',
-        'monogramm']
+ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'satinflaeche', 'tatami', 'muster', 'blanket', 'applikation', 'text',
+        'ttf', 'monogramm']
 V = 'Vorschlag (eigene Festlegung)'
 
 # ---------------------------------------------------------------- Design
@@ -340,10 +340,11 @@ P('schrift.farben', G, 'Farbwechsel im Text', '^ im Text wechselt zur nächsten 
   o='farben', einheit='Farbliste', std=[], quelle='Handbuch S. 158', modus='einfach')
 P('schrift.buchstaben', G, 'Einzelne Buchstaben', 'Farbe, verschieben, drehen, skalieren, Winkellinien je Buchstabe',
   ebene='objekt', gilt=T, o='buchstaben', einheit='Liste', std=[], quelle='Handbuch Kap. 19/20')
-P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step oder Füllmuster', ebene='objekt',
+P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step oder Füllmuster; Computer-Schrift: Tatami, '
+  'Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung)', ebene='objekt',
   gilt=['text', 'ttf'], o='stichart', einheit='Auswahl', std='satin', werte=['satin', 'step', 'muster', 'tatami', 'lauf',
                                                                              'dreifach'],
-  quelle='Handbuch Kap. 20; Verteilung ' + V)
+  quelle='Handbuch Kap. 20; Verteilung ' + V + '; ttf satin: EZSTITCH Turning (Analyse_Teil3/17)')
 P('schrift.elastisch', G, 'Verzerren (Elastic)', 'gerade (Wimpel) oder gebogen (Bogen), Griffe oben/unten',
   ebene='objekt', gilt=T, o='elastisch', einheit='Griffe mm', std=None, quelle='Handbuch Kap. 21; Kantenform ' + V,
   modus='einfach')
@@ -360,6 +361,26 @@ P('schrift.unterlage', G, 'Schrift: Unterlage', 'Zickzack, wenn das Alphabet kei
   einheit='Auswahl', std='zickzack', quelle='Stil „Schrift“', modus='automatisch')
 P('schrift.laufweg', G, 'Schrift: Laufweg', 'Stichlänge der Wege im Buchstaben', ebene='design', einheit='mm', std=3.0,
   quelle='Lauf 0x271c im Alphabet', modus='automatisch')
+
+# ---------------------------------------------------------------- Satin automatisch (ROADMAP 4b.17, Analyse_Teil3/17)
+G = 'Satinfläche (Stichrichtung automatisch)'
+Q = 'Analyse_Teil3/17_auto_satin.md'
+P('satinflaeche.knickwinkel', G, 'Säulen am Knick teilen', 'Innenwinkel, unter dem eine Säule am Knick geteilt wird '
+  '(0 = nie)', ebene='objekt', gilt=['satinflaeche'], o='knickwinkel', einheit='°', std=0.0, bereich=[0, 179],
+  quelle='Auto Digitizer teilt nicht (gemessen, ' + Q + '); TrueType-Umwandlung 87° (Break Angle, MOD1 0x101f5bc0)')
+for k, name, w, einh, std, quelle in [
+    ('abtast_grob', 'Randabstand höchstens', 'Randpunkte für die Zerlegung höchstens so weit auseinander', 'mm', 1.0,
+     'EZSTITCH ShapeSample „low precision“ 180 (AutoFont-Generate)'),
+    ('abtast_fein', 'Randabstand mindestens', 'feiner wird nicht abgetastet', 'mm', 0.05,
+     'EZSTITCH ShapeSample „high precision“ 9'),
+    ('abtast_anteil', 'Randabstand je Breite', 'Randpunkte im Abstand Anteil × örtliche Breite', 'Faktor', 0.1,
+     'EZSTITCH ShapeSample „proportional precision“ 0,1'),
+    ('eckwinkel', 'Eckerkennung', 'Randecken spitzer als das bekommen eine Stichlinie; Eck-Zweige werden abgeschnitten',
+     '°', 120.0, 'Corner Detection Angle (TurningConversionValues, MOD1 0x101f5bc0)'),
+    ('linien_toleranz', 'Dichte der Stichlinien', 'Abweichung der Mittellinie (× Breite), ab der eine neue Stichlinie '
+     'kommt', 'Faktor', 0.3, 'eigene Festlegung, an 54 Säulen des Auto Digitizers eingestellt (' + Q + ')'),
+]:
+    P(f'satinflaeche.{k}', G, name, w, ebene='design', einheit=einh, std=std, quelle=quelle, modus='automatisch')
 
 # ---------------------------------------------------------------- Bild → Umrisse
 G = 'Bild → Umrisse'

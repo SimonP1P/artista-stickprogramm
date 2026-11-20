@@ -15,6 +15,7 @@ pub mod nachbearbeitung;
 pub mod parameter;
 pub mod rahmen;
 pub mod reihenfolge;
+pub mod saeulen;
 pub mod schrift;
 pub mod schrift_ttf;
 pub mod sticharten;

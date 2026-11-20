@@ -43,6 +43,9 @@ pub enum TtfStichart {
     },
     /// nur die Umrisse
     Lauf { laenge: Option<f64>, dreifach: bool },
+    /// Satinsäulen mit automatischer Stichrichtung wie die TrueType-Umwandlung des Originals (Turning, Break Angle
+    /// 87°, `saeulen.rs`); Unterlage: None = Auto Underlay, Some(false) = keine
+    Satin { unterlage: Option<bool> },
 }
 
 /// Ringe nach Verschachtelung ordnen (gerade Tiefe = Umriss, ungerade = Loch): (Umriss, Löcher). Unabhängig von der
@@ -157,6 +160,41 @@ pub fn ttf_text_objekte_idx(
                             aussparen: Default::default(),
                         },
                     });
+                }
+            }
+            TtfStichart::Satin { unterlage } => {
+                let werte = crate::saeulen::SaeulenWerte {
+                    knickwinkel: crate::saeulen::KNICKWINKEL_TURNING,
+                    ..Default::default()
+                };
+                for (umriss, loecher) in ringe_ordnen(&ringe) {
+                    let Ok(s) = crate::saeulen::zerlegen(&umriss, &loecher, &werte) else {
+                        continue;
+                    };
+                    for x in s {
+                        umrisse.push(x.umriss);
+                        teile.push(Objekt {
+                            farbe: v.farbe.clone(),
+                            name: name.clone(),
+                            art: ObjektArt::Satin {
+                                seite_a: x.seite_a,
+                                seite_b: x.seite_b,
+                                unterlage: if *unterlage == Some(false) {
+                                    crate::design::Unterlage::Arten(Vec::new())
+                                } else {
+                                    crate::design::Unterlage::Auto
+                                },
+                                // Schrift: Auto Spacing × 0,9 und Kurzstiche wie die Alphabete (`schrift.rs`)
+                                optionen: crate::design::SatinOptionen {
+                                    abstand: None,
+                                    faktor: Some(crate::schrift::SCHRIFT_FAKTOR),
+                                    kurzstiche: Some(true),
+                                    step: false,
+                                    zickzack: false,
+                                },
+                            },
+                        });
+                    }
                 }
             }
             TtfStichart::Lauf { laenge, dreifach } => {
@@ -283,6 +321,44 @@ mod tests {
         };
         let xmin = umriss.iter().map(|q| q.x).fold(f64::MAX, f64::min);
         assert!((xmin - 16.0).abs() < 1e-9);
+    }
+
+    /// Stichart Satin (TrueType-Umwandlung): „I“ = eine Säule quer zum Balken, „O“ = Ring als Säule(n)
+    #[test]
+    fn satin_wie_turning() {
+        let (o, _) = ttf_text_objekte(&schrift(), &vorgabe("IO"), &TtfStichart::Satin { unterlage: None });
+        assert_eq!(o.len(), 2);
+        let ObjektArt::Gruppe { teile, .. } = &o[0].art else {
+            panic!()
+        };
+        assert_eq!(teile.len(), 1);
+        let ObjektArt::Satin {
+            seite_a,
+            seite_b,
+            optionen,
+            ..
+        } = &teile[0].art
+        else {
+            panic!()
+        };
+        assert_eq!(optionen.faktor, Some(crate::schrift::SCHRIFT_FAKTOR));
+        // Balken 3 × 14 mm: in der Mitte waagrechte Paare
+        let mitte: Vec<_> = seite_a
+            .iter()
+            .zip(seite_b)
+            .filter(|(a, _)| (a.y - 7.0).abs() < 3.0)
+            .collect();
+        assert!(!mitte.is_empty());
+        assert!(
+            mitte
+                .iter()
+                .all(|(a, b)| (a.y - b.y).abs() < 0.3 && (a.x - b.x).abs() > 2.9),
+            "{mitte:?}"
+        );
+        let ObjektArt::Gruppe { teile, .. } = &o[1].art else {
+            panic!()
+        };
+        assert!(!teile.is_empty() && teile.iter().all(|t| matches!(t.art, ObjektArt::Satin { .. })));
     }
 
     #[test]

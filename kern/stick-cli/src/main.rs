@@ -10,6 +10,9 @@
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
 //!   stick bild BILD [--breite MM] [--farben N] [-o D.json]  Bild → Umrisse (Tatami-Flächen als Design-JSON)
 //!   stick muster                                           Füllmuster der Vorlage auflisten
+//!   stick saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] Flächen in Satinsäulen zerlegen (Stichrichtung
+//!                                                          automatisch, `stick_kern::saeulen`); Eingabe
+//!                                                          {"formen": [{"umriss": [[x, y], …], "loecher": […]}]}
 //!   stick reihenfolge DESIGN.json [BEFEHL] [-o NEU.json]   Objekte auflisten, Überdeckungen prüfen, umordnen:
 //!                                                          --nach-farbe [FARBEN] [--ueberdeckung] [--auswahl NR,…],
 //!                                                          --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,…
@@ -141,6 +144,106 @@ fn nummern(t: &str) -> Result<Vec<usize>, String> {
             _ => Err(format!("Objektnummer „{x}“ ungültig (ab 1)")),
         })
         .collect()
+}
+
+/// `stick saeulen`: Flächen in Satinsäulen zerlegen (`stick_kern::saeulen`), Ergebnis als JSON und auf Wunsch als SVG.
+fn saeulen(args: &[String], hilfe: &str) -> Result<bool, String> {
+    use serde_json::{Value, json};
+    use stick_kern::geometrie::{Linie, p};
+    let pfad = PathBuf::from(args.get(1).filter(|a| !a.starts_with('-')).ok_or(hilfe)?);
+    let text = std::fs::read_to_string(&pfad).map_err(|e| format!("{}: {e}", pfad.display()))?;
+    let v: Value = serde_json::from_str(&text).map_err(|e| format!("JSON ungültig: {e}"))?;
+    let linie = |x: &Value| -> Linie {
+        x.as_array()
+            .map(|l| {
+                l.iter()
+                    .filter_map(|q| Some(p(q.get(0)?.as_f64()?, q.get(1)?.as_f64()?)))
+                    .collect()
+            })
+            .unwrap_or_default()
+    };
+    let mut werte = stick_kern::saeulen::SaeulenWerte::default();
+    if let Some(t) = option(args, "--toleranz").and_then(|x| x.replace(',', ".").parse().ok()) {
+        werte.linien_toleranz = t;
+    }
+    if let Some(t) = option(args, "--knick").and_then(|x| x.replace(',', ".").parse().ok()) {
+        werte.knickwinkel = t;
+    }
+    let pt = |q: &stick_kern::geometrie::Punkt| json!([q.x, q.y]);
+    let mut aus = Vec::new();
+    let mut svg = String::new();
+    let (mut x0, mut y0, mut x1, mut y1) = (f64::MAX, f64::MAX, f64::MIN, f64::MIN);
+    let formen = v
+        .get("formen")
+        .and_then(Value::as_array)
+        .ok_or("Eingabe ohne „formen“")?;
+    let mut anzahl = 0;
+    for f in formen {
+        let umriss = linie(&f["umriss"]);
+        let loecher: Vec<Linie> = f
+            .get("loecher")
+            .and_then(Value::as_array)
+            .map(|l| l.iter().map(linie).collect())
+            .unwrap_or_default();
+        let s = stick_kern::saeulen::zerlegen(&umriss, &loecher, &werte)?;
+        anzahl += s.len();
+        for r in std::iter::once(&umriss).chain(&loecher) {
+            for q in r {
+                (x0, y0, x1, y1) = (x0.min(q.x), y0.min(q.y), x1.max(q.x), y1.max(q.y));
+            }
+            svg.push_str(&format!(
+                "<polygon points=\"{}\" fill=\"#eef\" stroke=\"#448\" stroke-width=\"0.05\"/>",
+                r.iter()
+                    .map(|q| format!("{:.3},{:.3}", q.x, -q.y))
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            ));
+        }
+        for x in &s {
+            for (a, b) in x.seite_a.iter().zip(&x.seite_b) {
+                svg.push_str(&format!(
+                    "<line x1=\"{:.3}\" y1=\"{:.3}\" x2=\"{:.3}\" y2=\"{:.3}\" stroke=\"#999\" stroke-width=\"0.03\"/>",
+                    a.x, -a.y, b.x, -b.y
+                ));
+            }
+            for [a, b] in &x.linien {
+                svg.push_str(&format!(
+                    "<line x1=\"{:.3}\" y1=\"{:.3}\" x2=\"{:.3}\" y2=\"{:.3}\" stroke=\"#c00\" stroke-width=\"0.06\"/>",
+                    a.x, -a.y, b.x, -b.y
+                ));
+            }
+        }
+        aus.push(json!({"saeulen": s.iter().map(|x| json!({
+            "seite_a": x.seite_a.iter().map(pt).collect::<Vec<_>>(),
+            "seite_b": x.seite_b.iter().map(pt).collect::<Vec<_>>(),
+            "linien": x.linien.iter().map(|[a, b]| json!([pt(a), pt(b)])).collect::<Vec<_>>(),
+        })).collect::<Vec<_>>()}));
+    }
+    let ziel = option(args, "-o")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| pfad.with_extension("saeulen.json"));
+    std::fs::write(
+        &ziel,
+        serde_json::to_string(&json!({"formen": aus})).map_err(|e| e.to_string())?,
+    )
+    .map_err(|e| format!("{}: {e}", ziel.display()))?;
+    println!("  {} Formen → {} Säulen: {}", formen.len(), anzahl, ziel.display());
+    if let Some(z) = option(args, "--svg") {
+        let (w, h) = (x1 - x0 + 4.0, y1 - y0 + 4.0);
+        let doc = format!(
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"{} {} {w} {h}\" width=\"{:.0}\" height=\"{:.0}\">\
+             <rect x=\"{}\" y=\"{}\" width=\"{w}\" height=\"{h}\" fill=\"white\"/>{svg}</svg>",
+            x0 - 2.0,
+            -y1 - 2.0,
+            (w * 12.0).min(4000.0),
+            (h * 12.0).min(4000.0),
+            x0 - 2.0,
+            -y1 - 2.0
+        );
+        std::fs::write(&z, doc).map_err(|e| format!("{z}: {e}"))?;
+        println!("  Vorschau: {z}");
+    }
+    Ok(true)
 }
 
 /// `stick reihenfolge`: Objekte mit Farbe auflisten, Überdeckungen und Farbwechsel zeigen, auf Wunsch umordnen
@@ -420,7 +523,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -468,6 +571,7 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
         Some("reihenfolge") => reihenfolge(args, hilfe),
+        Some("saeulen") => saeulen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
         Some("bild") => {
             let pfad = PathBuf::from(args.get(1).ok_or(

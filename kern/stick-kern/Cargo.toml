@@ -10,3 +10,4 @@ publish.workspace = true
 i_overlay = "9.2"
 serde.workspace = true
 serde_json.workspace = true
+spade = "2.15"

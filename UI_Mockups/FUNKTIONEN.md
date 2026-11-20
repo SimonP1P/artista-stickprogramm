@@ -39,6 +39,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Satinlinie (Kontur) | Linie, Breite (2 mm), Lage mittig / zur Seite, Satin oder Zickzack | `satinlinie` (+ `stichart`) | E (Lage X) |
 | Fläche Tatami (Step) | Umriss, Löcher, Stichwinkel (45°), Unterlage (an); Step-Muster 1–20 (Struktur der Fläche, Vorschau-Kacheln sinnvoll) | `tatami`, `step_muster` | E (Winkel E, Muster E) |
 | Fläche mit mehreren Stichwinkeln | Winkellinien quer über die Fläche ziehen (Werkzeug „Stichwinkel“), Stiche drehen mit; ohne Löcher; Kurzstiche an Innenkurven | `tatami` + `winkellinien`, `kurzstiche` | X |
+| Satinfläche (Satin mit automatischer Stichrichtung) | Umriss, Löcher – das Programm zerlegt die Fläche in Satinsäulen (an Abzweigungen geteilt, Stiche quer zum Strich, Enden spitz/flach wie die Form); Unterlage (auto), Satin/Zickzack; Teilen am Knick (aus, bei Schrift 87°) | `satinflaeche` | E (Knick X) |
 | Füllmuster (Fancy) | Umriss, Muster (242, Liste `kern/stick-kern/daten/fuellmuster.json`), Winkel, Größe (100 %) | `muster` | E |
 | Blanket (Langette) | Linie, Abstand (2 mm), Breite (3 mm), mittig/seitlich | `blanket` | E (Werte X) |
 | Applikation | Umriss; Abdeckung Satin/Blanket; vorgeschnitten / im Rahmen zuschneiden; Breiten (2,5/3,0 mm) | `applikation` | E (Werte X) |
@@ -47,7 +48,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
 |---|---|---|---|
 | Original-Alphabet | 50 Alphabete (`Analyse/daten/alphabets.md`, Bilder `Arbeitsdaten/alphabete/`) | `text` + `alphabet` | E |
-| Computer-Schrift (TTF/OTF) | Schriftname; Stichart Tatami/Lauf/Dreifach/Muster | `ttf` + `schrift` | E (Stichart X) |
+| Computer-Schrift (TTF/OTF) | Schriftname; Stichart Tatami/Lauf/Dreifach/Muster/**Satin** (Säulen wie die TrueType-Umwandlung des Originals) | `ttf` + `schrift` | E (Stichart X) |
 | Höhe, Breite, Buchstabenabstand | Höhe (10 mm), Breite (100 %), Abstand (aus dem Alphabet) | `hoehe`, `breite`, `abstand` | E (Abstand X) |
 | Ausrichtung | links, mitte, rechts, Blocksatz (nur mit fester Grundlinienlänge) | `ausrichtung` | E |
 | Mehrere Zeilen | Zeilenumbruch; Zeilenabstand (60 %), Wortabstand (25 %) | `text` mit `\n`, `zeilenabstand`, `wortabstand` | E (Abstände X) |
@@ -79,6 +80,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Liste der Füllmuster | CLI `stick muster`, Datei `kern/stick-kern/daten/fuellmuster.json` | Befehl „Musterliste“ (Name, Nummer, Vorschau) |
 | Computer-Schriften (TTF) laden | CLI `stick schriften`; die App lädt TTF noch nicht | Befehl „Schriftenliste“ + Laden der Schrift beim Berechnen |
 | Bild → Umrisse (Auto-Digitalisieren) | CLI `stick bild` (Farben, Breite, Glättung) | Befehl „Bild umwandeln“ → Objekte ins Design |
+| Fläche → Satinsäulen ansehen | CLI `stick saeulen FORMEN.json --svg` (Zerlegung mit Stichlinien) | Befehl „Säulen-Vorschau“ (optional; `satinflaeche` wird beim Berechnen ohnehin zerlegt) |
 | Reihenfolge ändern, Überdeckungen prüfen | CLI `stick reihenfolge` (Liste, Überdeckungen, `--nach-farbe`, `--an-anfang`, `--ans-ende`, `--wie-ausgewaehlt`, `--vor`/`--nach`, `--ueberdeckung`) | Befehl „Reihenfolge“ (Befehl + Auswahl → neues JSON, Farbwechsel vorher/nachher, Warnungen) und „Überdeckungen“ (Paare für die Anzeige) |
 | An die Maschine senden / aus der Maschine lesen | Befehle `maschine_*` (vorhanden) | – |
 
@@ -89,7 +91,7 @@ Vorhandene Befehle (`app/src-tauri/src/lib.rs`): `rahmen_liste`, `stoffe_liste`,
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
 **SVG-Import** (vorgezogen): Design aus Inkscape laden – Flächen, Konturen, Farben und Reihenfolge werden
-übernommen, Stichart je Form automatisch nach Breite und in der App änderbar · **Werte je Objekt** (Stichabstand,
+übernommen, Stichart je Form automatisch nach Breite (schmale Flächen als `satinflaeche`) und in der App änderbar · **Werte je Objekt** (Stichabstand,
 Länge, Zugausgleich … am einzelnen Objekt, Expertenmodus) · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·
 Magic Wand, PhotoSnap · Ausrichten, Gruppieren, Kranz, Kaleidoskop · eigene Rahmen, fremde Stickdateien ·

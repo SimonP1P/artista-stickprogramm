@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 20.11.2026 · **145 Parameter**: 32 einfach, 75 experte, 38 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -20,11 +20,11 @@ Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. E
 
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
-| **Größe** | skaliert um die Mitte (eine Zahl oder [x, y]) | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.skalieren` · Objekt: `transform.skalieren` | 100 % | 10 … 500 |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert; Bereich Vorschlag (eigene Festlegung) |
-| **Drehen** | dreht um die Mitte, gegen den Uhrzeiger | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.drehen` · Objekt: `transform.drehen` | 0 ° | -360 … 360 |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert |
-| **Spiegeln** | spiegelt um die Mitte | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.spiegeln` · Objekt: `transform.spiegeln` | – | links_rechts, oben_unten, beide |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert |
-| **Schrägstellen** | verschiebt x mit der Höhe (Skew) | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.schraeg` · Objekt: `transform.schraeg` | 0 ° | -60 … 60 |  | beide | experte | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert; Bereich Vorschlag (eigene Festlegung) |
-| **Verschieben** | Lage im Rahmen | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.verschieben` · Objekt: `transform.verschieben` | [0; 0] mm [x, y] |  |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert |
+| **Größe** | skaliert um die Mitte (eine Zahl oder [x, y]) | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.skalieren` · Objekt: `transform.skalieren` | 100 % | 10 … 500 |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert; Bereich Vorschlag (eigene Festlegung) |
+| **Drehen** | dreht um die Mitte, gegen den Uhrzeiger | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.drehen` · Objekt: `transform.drehen` | 0 ° | -360 … 360 |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert |
+| **Spiegeln** | spiegelt um die Mitte | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.spiegeln` · Objekt: `transform.spiegeln` | – | links_rechts, oben_unten, beide |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert |
+| **Schrägstellen** | verschiebt x mit der Höhe (Skew) | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.schraeg` · Objekt: `transform.schraeg` | 0 ° | -60 … 60 |  | beide | experte | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert; Bereich Vorschlag (eigene Festlegung) |
+| **Verschieben** | Lage im Rahmen | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | `transform.verschieben` · Objekt: `transform.verschieben` | [0; 0] mm [x, y] |  |  | beide | einfach | Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert |
 
 ## Satin
 
@@ -130,9 +130,9 @@ Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. E
 
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
-| **Auto Jump** | lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus) | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `auto_jump` | an |  |  | objekt | experte | Effects-Dialog; AMT 0x2758 (hoch) |
-| **Auto Jump: Höchststich** | darüber Sprünge; klein (z. B. 6 mm) = Satin mit mehr Loft | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `auto_jump.max` | 12,7 mm | 0,3 … 12,7 |  | objekt | experte | AMT 0x2711 (hoch) |
-| **Auto Jump: Sprunglänge** | Länge der Teilsprünge | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `auto_jump.sprung` | 7 mm | 0,3 … 12,7 |  | objekt | experte | AMT 0x2712 (hoch) |
+| **Auto Jump** | lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus) | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `auto_jump` | an |  |  | objekt | experte | Effects-Dialog; AMT 0x2758 (hoch) |
+| **Auto Jump: Höchststich** | darüber Sprünge; klein (z. B. 6 mm) = Satin mit mehr Loft | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `auto_jump.max` | 12,7 mm | 0,3 … 12,7 |  | objekt | experte | AMT 0x2711 (hoch) |
+| **Auto Jump: Sprunglänge** | Länge der Teilsprünge | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `auto_jump.sprung` | 7 mm | 0,3 … 12,7 |  | objekt | experte | AMT 0x2712 (hoch) |
 | **Kürzester Stich** | kürzere Stiche werden entfernt |  |  | 0,3 mm |  |  | design | automatisch | DEFAULTS.DFL (hoch) |
 | **Längster Stich** | Maschinengrenze artista 185 |  |  | 12,7 mm |  |  | design | automatisch | DEFAULTS.DFL (hoch) |
 
@@ -140,7 +140,7 @@ Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. E
 
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
-| **Verstärken (Double Run)** | gleiche Stiche rückwärts noch einmal | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `doppellauf` | aus |  |  | objekt | experte | Handbuch Kap. 23 |
+| **Verstärken (Double Run)** | gleiche Stiche rückwärts noch einmal | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `doppellauf` | aus |  |  | objekt | experte | Handbuch Kap. 23 |
 | **Aussparen (Knockout)** | Fläche spart die genannten Objekte aus | tatami, muster | Objekt: `aussparen` | [] Objektnamen |  |  | objekt | einfach | Remove Overlay (Analyse_Teil3/14) |
 | **Überlappung beim Aussparen** | Loch bleibt um so viel kleiner | tatami, muster | Objekt: `ueberlappung` | 0 mm | 0 … 3 |  | objekt | experte | Analyse_Teil3/14 |
 
@@ -149,8 +149,8 @@ Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. E
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
 | **Kürzeste Verbindung (Closest Join)** | jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (Linien umgedreht, geschlossene Formen gedreht; Schrift ausgenommen) |  | `kuerzeste_verbindung` | aus |  |  | design | experte | MOD1 ResequenceByClosestJoin 0x1006d0c0, GEOMETRY FindExitEntry (hoch); im Original Option von Resequence und Auto Digitizer, sonst „wie digitalisiert“ (Messung Analyse_Teil3/16_reihenfolge.md) |
-| **Einstich (entry point)** | Objekt beginnt hier bzw. am nächsten Punkt der Form | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `einstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (entry point, Reshape); Umsetzung je Objektart eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
-| **Ausstich (exit point)** | Objekt endet hier bzw. so nah wie die Form erlaubt | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `ausstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
+| **Einstich (entry point)** | Objekt beginnt hier bzw. am nächsten Punkt der Form | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `einstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (entry point, Reshape); Umsetzung je Objektart eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
+| **Ausstich (exit point)** | Objekt endet hier bzw. so nah wie die Form erlaubt | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `ausstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
 | **Farbreihenfolge beim Sortieren** | gewünschte Folge der Farben (Move Up/Down), übrige Farben in der Reihenfolge ihres ersten Auftretens |  |  | [] Farbliste |  |  | werkzeug | experte | Dialog „Sequence By Color“ (Handbuch Kap. 14); Befehl reihenfolge --nach-farbe |
 | **Überdeckung beachten** | beim Sortieren nach Farbe behalten Objekte, die sich überdecken, ihre Reihenfolge |  |  | aus |  |  | werkzeug | einfach | eigene Erweiterung (das Original prüft nicht, Analyse_Teil3/16_reihenfolge.md) |
 | **Überdeckung ab** | kleinere gemeinsame Flächen zählen nicht |  |  | 0,5 mm² |  |  | werkzeug | automatisch | eigene Festlegung |
@@ -201,7 +201,7 @@ Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. E
 | **Eigene Kurve** |  | text, ttf, monogramm | Objekt: `grundlinie.punkte` | – |  |  | objekt | experte | Dialog „Layout“ (DLG 1039) |
 | **Farbwechsel im Text** | ^ im Text wechselt zur nächsten Farbe der Liste | text, ttf, monogramm | Objekt: `farben` | [] Farbliste |  |  | objekt | einfach | Handbuch S. 158 |
 | **Einzelne Buchstaben** | Farbe, verschieben, drehen, skalieren, Winkellinien je Buchstabe | text, ttf, monogramm | Objekt: `buchstaben` | [] Liste |  |  | objekt | experte | Handbuch Kap. 19/20 |
-| **Stichart der Schrift** | Satin (Alphabet), Step oder Füllmuster | text, ttf | Objekt: `stichart` | satin | satin, step, muster, tatami, lauf, dreifach |  | objekt | experte | Handbuch Kap. 20; Verteilung Vorschlag (eigene Festlegung) |
+| **Stichart der Schrift** | Satin (Alphabet), Step oder Füllmuster; Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung) | text, ttf | Objekt: `stichart` | satin | satin, step, muster, tatami, lauf, dreifach |  | objekt | experte | Handbuch Kap. 20; Verteilung Vorschlag (eigene Festlegung); ttf satin: EZSTITCH Turning (Analyse_Teil3/17) |
 | **Verzerren (Elastic)** | gerade (Wimpel) oder gebogen (Bogen), Griffe oben/unten | text, ttf, monogramm | Objekt: `elastisch` | – |  |  | objekt | einfach | Handbuch Kap. 21; Kantenform Vorschlag (eigene Festlegung) |
 | **Initialen** | 2 oder 3 Buchstaben | monogramm | Objekt: `initialen` | – |  |  | objekt | einfach | Diamond2/Diamond3 (Analyse_Teil3/09 §7) |
 | **Monogramm-Rahmen** | Raute, Zier oder keiner | monogramm | Objekt: `rahmen` | keine | raute, zier, keine |  | objekt | einfach | Analyse_Teil3/09 §7 |
@@ -209,6 +209,17 @@ Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. E
 | **Schrift: Auto-Spacing-Faktor** | Schrift 10 % dichter |  |  | 0,9 Faktor |  |  | design | automatisch | Stil „Schrift“ (Analyse/code/10) |
 | **Schrift: Unterlage** | Zickzack, wenn das Alphabet keine eigene hat |  |  | zickzack |  |  | design | automatisch | Stil „Schrift“ |
 | **Schrift: Laufweg** | Stichlänge der Wege im Buchstaben |  |  | 3 mm |  |  | design | automatisch | Lauf 0x271c im Alphabet |
+
+## Satinfläche (Stichrichtung automatisch)
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Säulen am Knick teilen** | Innenwinkel, unter dem eine Säule am Knick geteilt wird (0 = nie) | satinflaeche | Objekt: `knickwinkel` | 0 ° | 0 … 179 |  | objekt | experte | Auto Digitizer teilt nicht (gemessen, Analyse_Teil3/17_auto_satin.md); TrueType-Umwandlung 87° (Break Angle, MOD1 0x101f5bc0) |
+| **Randabstand höchstens** | Randpunkte für die Zerlegung höchstens so weit auseinander |  |  | 1 mm |  |  | design | automatisch | EZSTITCH ShapeSample „low precision“ 180 (AutoFont-Generate) |
+| **Randabstand mindestens** | feiner wird nicht abgetastet |  |  | 0,05 mm |  |  | design | automatisch | EZSTITCH ShapeSample „high precision“ 9 |
+| **Randabstand je Breite** | Randpunkte im Abstand Anteil × örtliche Breite |  |  | 0,1 Faktor |  |  | design | automatisch | EZSTITCH ShapeSample „proportional precision“ 0,1 |
+| **Eckerkennung** | Randecken spitzer als das bekommen eine Stichlinie; Eck-Zweige werden abgeschnitten |  |  | 120 ° |  |  | design | automatisch | Corner Detection Angle (TurningConversionValues, MOD1 0x101f5bc0) |
+| **Dichte der Stichlinien** | Abweichung der Mittellinie (× Breite), ab der eine neue Stichlinie kommt |  |  | 0,3 Faktor |  |  | design | automatisch | eigene Festlegung, an 54 Säulen des Auto Digitizers eingestellt (Analyse_Teil3/17_auto_satin.md) |
 
 ## Bild → Umrisse
 

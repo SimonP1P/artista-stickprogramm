@@ -161,6 +161,10 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
         }
         ObjektArt::Gruppe { teile, .. } => teile.iter().for_each(|t| formpunkte(&t.art, out)),
         ObjektArt::Wendefuellung { umriss, .. } => out.extend(umriss),
+        ObjektArt::SatinFlaeche { umriss, loecher, .. } => {
+            out.extend(umriss);
+            out.extend(loecher.iter().flatten());
+        }
         ObjektArt::Applikation(v) => {
             out.extend(&v.umriss);
             out.extend(v.loecher.iter().flatten());
@@ -289,6 +293,19 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
                 aussparen: aussparen.clone(),
             }
         }
+        ObjektArt::SatinFlaeche {
+            umriss,
+            loecher,
+            unterlage,
+            optionen,
+            knickwinkel,
+        } => ObjektArt::SatinFlaeche {
+            umriss: m.linie(umriss),
+            loecher: loecher.iter().map(|l| m.linie(l)).collect(),
+            unterlage: unterlage.clone(),
+            optionen: optionen.clone(),
+            knickwinkel: *knickwinkel,
+        },
         ObjektArt::Wendefuellung {
             umriss,
             winkellinien,
@@ -458,6 +475,19 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             groesse: *groesse,
             unterlage: *unterlage,
             aussparen: aussparen.clone(),
+        },
+        ObjektArt::SatinFlaeche {
+            umriss,
+            loecher,
+            unterlage,
+            optionen,
+            knickwinkel,
+        } => ObjektArt::SatinFlaeche {
+            umriss: lin(umriss, true),
+            loecher: loecher.iter().map(|l| lin(l, true)).collect(),
+            unterlage: unterlage.clone(),
+            optionen: optionen.clone(),
+            knickwinkel: *knickwinkel,
         },
         ObjektArt::Wendefuellung {
             umriss,

@@ -262,7 +262,7 @@ struct TtfJson {
     position: Option<Punkt>,
     #[serde(default = "mitte")]
     ausrichtung: String,
-    /// tatami (Standard) | lauf | dreifach
+    /// tatami (Standard) | lauf | dreifach | satin (Säulen wie die TrueType-Umwandlung des Originals)
     #[serde(default = "tatami_art")]
     stichart: String,
     winkel: Option<f64>,
@@ -482,6 +482,27 @@ struct TatamiJson {
     kurzstiche: Option<bool>,
 }
 
+/// Fläche als Satinsäulen mit automatischer Stichrichtung (`saeulen.rs`, ROADMAP 4b.17).
+#[derive(Debug, Deserialize)]
+struct SatinFlaecheJson {
+    #[serde(default = "schwarz")]
+    farbe: String,
+    #[serde(default)]
+    name: String,
+    umriss: PunktAngabe,
+    #[serde(default)]
+    loecher: Vec<PunktAngabe>,
+    #[serde(default = "auto")]
+    unterlage: UnterlageJson,
+    abstand: Option<f64>,
+    faktor: Option<f64>,
+    kurzstiche: Option<bool>,
+    /// satin (Standard) | zickzack
+    stichart: Option<String>,
+    /// Säulen an Knicken teilen (Innenwinkel in Grad, 0 = nie wie der Auto Digitizer; 87 = TrueType-Umwandlung)
+    knickwinkel: Option<f64>,
+}
+
 #[derive(Debug, Deserialize)]
 #[serde(tag = "art", rename_all = "lowercase")]
 enum ObjektJson {
@@ -491,6 +512,7 @@ enum ObjektJson {
     Satinlinie(SatinLinieJson),
     Blanket(BlanketJson),
     Tatami(TatamiJson),
+    Satinflaeche(SatinFlaecheJson),
     Text(TextJson),
     Ttf(TtfJson),
     Applikation(ApplikationJson),
@@ -725,6 +747,16 @@ pub enum ObjektArt {
         schrift: String,
         vorgabe: TextVorgabe,
         stichart: TtfStichart,
+    },
+    /// Fläche als Satinsäulen mit automatischer Stichrichtung (`saeulen.rs`); wird vor dem Berechnen in eine Gruppe
+    /// von Säulen aufgelöst
+    SatinFlaeche {
+        umriss: Linie,
+        loecher: Vec<Linie>,
+        unterlage: Unterlage,
+        optionen: SatinOptionen,
+        /// Innenwinkel, unter dem Säulen am Knick geteilt werden (0 = nie)
+        knickwinkel: f64,
     },
     /// Zusammengehörige Teile (ein Buchstabe): Reihenfolge nach Nähe, verbunden mit Laufweg statt Sprung, wenn der
     /// Weg unter noch zu stickenden Teilen liegt (`Analyse_Teil3/10` §4)
@@ -1237,6 +1269,7 @@ impl Objekt {
             ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
             ObjektArt::TtfText { schrift, .. } => Err(format!("Text mit Schrift „{schrift}“ wurde nicht aufgelöst")),
             ObjektArt::Applikation(_) => Err("Applikation wurde nicht aufgelöst".into()),
+            ObjektArt::SatinFlaeche { .. } => Err("Satinfläche wurde nicht aufgelöst".into()),
             ObjektArt::Tatami {
                 umriss,
                 loecher,
@@ -1423,8 +1456,14 @@ impl Design {
             let stichart = match o {
                 ObjektJson::Satin(s) => s.stichart.as_deref(),
                 ObjektJson::Satinlinie(s) => s.stichart.as_deref(),
+                ObjektJson::Satinflaeche(s) => s.stichart.as_deref(),
                 _ => None,
             };
+            if let ObjektJson::Satinflaeche(s) = o
+                && s.knickwinkel.is_some_and(|k| !(0.0..180.0).contains(&k))
+            {
+                return Err("Satinfläche: knickwinkel zwischen 0 und 180 Grad".into());
+            }
             if let Some(x) = stichart.filter(|x| !matches!(*x, "satin" | "zickzack")) {
                 return Err(format!("Stichart „{x}“ unbekannt (satin, zickzack)"));
             }
@@ -1559,6 +1598,7 @@ impl Design {
                                 laenge: t.laenge,
                                 dreifach: true,
                             },
+                            "satin" => TtfStichart::Satin { unterlage: t.unterlage },
                             _ => TtfStichart::Tatami {
                                 winkel: t.winkel,
                                 unterlage: t.unterlage,
@@ -1600,6 +1640,23 @@ impl Design {
                         winkellinien: t.winkellinien,
                         unterlage: t.unterlage,
                         kurzstiche: t.kurzstiche,
+                    },
+                },
+                ObjektJson::Satinflaeche(s) => Objekt {
+                    farbe: s.farbe,
+                    name: s.name,
+                    art: ObjektArt::SatinFlaeche {
+                        umriss: s.umriss.punkte(),
+                        loecher: s.loecher.iter().map(|l| l.punkte()).collect(),
+                        unterlage: s.unterlage.into(),
+                        optionen: SatinOptionen {
+                            abstand: s.abstand,
+                            faktor: s.faktor,
+                            kurzstiche: s.kurzstiche,
+                            step: false,
+                            zickzack: s.stichart.as_deref() == Some("zickzack"),
+                        },
+                        knickwinkel: s.knickwinkel.unwrap_or(0.0),
                     },
                 },
                 ObjektJson::Tatami(t) => Objekt {
@@ -1893,6 +1950,43 @@ impl Design {
                         v,
                         if o.name.is_empty() { "Applikation" } else { &o.name },
                     ));
+                }
+                ObjektArt::SatinFlaeche {
+                    umriss,
+                    loecher,
+                    unterlage,
+                    optionen,
+                    knickwinkel,
+                } => {
+                    let werte = crate::saeulen::SaeulenWerte {
+                        knickwinkel: *knickwinkel,
+                        ..Default::default()
+                    };
+                    let s = crate::saeulen::zerlegen(umriss, loecher, &werte)
+                        .map_err(|e| format!("Objekt {}: Satinfläche: {e}", nr + 1))?;
+                    let teile: Vec<Objekt> = s
+                        .iter()
+                        .map(|x| Objekt {
+                            farbe: o.farbe.clone(),
+                            name: o.name.clone(),
+                            art: ObjektArt::Satin {
+                                seite_a: x.seite_a.clone(),
+                                seite_b: x.seite_b.clone(),
+                                unterlage: unterlage.clone(),
+                                optionen: optionen.clone(),
+                            },
+                        })
+                        .collect();
+                    // wie ein Buchstabe: Säulen nach Nähe, verbunden mit Laufweg (Lauf 0x271c der Füllung)
+                    out.push(Objekt {
+                        farbe: o.farbe.clone(),
+                        name: o.name.clone(),
+                        art: ObjektArt::Gruppe {
+                            teile,
+                            umrisse: s.into_iter().map(|x| x.umriss).collect(),
+                            laufweg: self.einstellungen.tatami.laufweg_laenge,
+                        },
+                    });
                 }
                 ObjektArt::TtfText {
                     schrift,
@@ -2436,6 +2530,53 @@ mod tests {
         };
         assert_eq!((alphabet.as_str(), vorgabe.text.as_str()), ("Diamond2", "Ab["));
         assert!(Design::aus_json(r#"{"objekte": [{"art": "monogramm", "initialen": "ÄB"}]}"#).is_err());
+    }
+
+    /// Satinfläche: ein „T“ aus zwei Balken wird zu drei Satinsäulen (Sternschnitt an der Abzweigung) mit Stichen quer
+    /// zu jedem Balken; alle Einstiche in der Fläche (bis Zugausgleich)
+    #[test]
+    fn satinflaeche_t_form() {
+        let json = r##"{"objekte": [{"art": "satinflaeche", "farbe": "#204080", "umriss":
+            [[-15, 10], [15, 10], [15, 13], [1.5, 13], [1.5, 13.0001], [-1.5, 13.0001], [-1.5, 13], [-15, 13]]}]}"##;
+        // (Balken oben 30 × 3); dazu ein senkrechter Balken nach unten als zweites Objekt wäre keine Abzweigung –
+        // deshalb die T-Form als ein Umriss:
+        let json = json.replace(
+            "[[-15, 10], [15, 10], [15, 13], [1.5, 13], [1.5, 13.0001], [-1.5, 13.0001], [-1.5, 13], [-15, 13]]",
+            "[[-15, 10], [-1.5, 10], [-1.5, -15], [1.5, -15], [1.5, 10], [15, 10], [15, 13], [-15, 13]]",
+        );
+        let d = Design::aus_json(&json).unwrap();
+        let (o, _) = d.objekte_aufgeloest().unwrap();
+        let ObjektArt::Gruppe { teile, .. } = &o[0].art else {
+            panic!("Gruppe erwartet")
+        };
+        assert_eq!(teile.len(), 3, "drei Säulen");
+        let f = d.berechnen().unwrap();
+        let st: Vec<Punkt> = f
+            .stiche
+            .iter()
+            .filter(|s| s.art == crate::Art::Stich)
+            .map(|s| s.p())
+            .collect();
+        assert!(st.len() > 200);
+        let innen = |q: &Punkt| {
+            (q.y >= 10.0 - 0.6 && q.y <= 13.0 + 0.6 && q.x.abs() <= 15.6) || (q.x.abs() <= 1.5 + 0.6 && q.y >= -15.6)
+        };
+        assert!(st.iter().all(innen), "{:?}", st.iter().find(|q| !innen(q)));
+        // im senkrechten Balken laufen die Stiche waagrecht, im waagrechten senkrecht
+        let mut senkrecht = 0;
+        let mut waagrecht = 0;
+        for w in st.windows(2) {
+            let (a, b) = (w[0], w[1]);
+            let (dx, dy) = ((b.x - a.x).abs(), (b.y - a.y).abs());
+            if a.y < 5.0 && b.y < 5.0 && abstand(a, b) > 2.5 {
+                waagrecht += usize::from(dx > 3.0 * dy);
+            }
+            if a.x.abs() > 5.0 && b.x.abs() > 5.0 && abstand(a, b) > 2.5 {
+                senkrecht += usize::from(dy > 3.0 * dx);
+            }
+        }
+        assert!(waagrecht > 20 && senkrecht > 40, "{waagrecht} {senkrecht}");
+        assert!(Design::aus_json(&json.replace(r#""farbe""#, r#""knickwinkel": 200, "farbe""#)).is_err());
     }
 
     /// Sprungweg gesamt (mm) und Stichpunkte einer Folge

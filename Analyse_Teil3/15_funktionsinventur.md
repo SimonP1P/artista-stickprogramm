@@ -53,7 +53,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Funktion | Stand | Bemerkung |
 |---|---|---|
 | Original-Alphabete (ESB), Höhe, Breite, Abstand, Ausrichtung | ✅ | 50 Alphabete |
-| Computer-Schriften (TTF/OTF) | ✅ | Stichart eigene Festlegung |
+| Computer-Schriften (TTF/OTF) | ✅ | Stichart Tatami/Lauf eigene Festlegung; **Satin wie die TrueType-Umwandlung** ✅ 20.11. (Bericht 17) |
 | Unterlagen zuerst je Säulengruppe | ✅ | Bericht 11 |
 | Säulenreihenfolge/Start/Ende wie Original | 🟡 | 20.11. gemessen (Bericht 11 §5): Reihenfolge + Richtung im Kern ✅, Teilen der Säulen in Stücke ⬜ |
 | Mehrere Zeilen, Zeilenabstand, Leerzeichenbreite | ✅ | Vorlage 0x3e82 (20.11.) |
@@ -95,7 +95,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Funktion | Stand | Bemerkung |
 |---|---|---|
 | Bild laden, zuschneiden, Farben reduzieren | 🟡 | `stick-vektor` |
-| Auto Digitizer (Bild → Objekte mit Stichart) | 🟡 | Flächen ✅, Linien/Satin ⬜, maßstabsfrei ⬜ (M2) |
+| Auto Digitizer (Bild → Objekte mit Stichart) | 🟡 | Flächen ✅, Satin-Zerlegung schmaler Flächen ✅ 20.11. (`satinflaeche`, Bericht 17 – in `stick bild` noch nicht genutzt), Linien ⬜, maßstabsfrei ⬜ (M2) |
 | Magic Wand (Fläche/Kontur per Klick) | ⬜ | Kap. 13 |
 | PhotoSnap (Foto → Stiche) | ⬜ | Kap. 13 |
 | Scanner | ➖ | heute Bilddatei |
@@ -131,5 +131,5 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 ## K. Erweiterungen über das Original hinaus (Wünsche des Nutzers)
 | Funktion | Stand | Bemerkung |
 |---|---|---|
-| SVG-Import (Inkscape → Stickdesign) | ⬜ | ROADMAP 4b.17; Stichart nach Breite wie EasyStitch des Originals |
+| SVG-Import (Inkscape → Stickdesign) | 🟡 | ROADMAP 4b.17; Baustein „Satin-Stichrichtung automatisch“ ✅ 20.11. (Bericht 17); SVG lesen ⬜; Stichart nach Breite wie EasyStitch des Originals |
 | Parameterkatalog einfach/experte/automatisch | ✅ | `PARAMETER.md` (20.11.2026) |
