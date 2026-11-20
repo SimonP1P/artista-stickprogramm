@@ -14,19 +14,45 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
-| 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket ✅ · Restliste **Phase 4b** aus der Bestandsaufnahme (`Analyse_Teil3/15`) | 🟡 |
+| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: 4b.1–4b.4 ✅, 4b.8/4b.11 begonnen, 4b.5–4b.16 offen · Parameterkatalog `PARAMETER.md` angelegt | 🟡 |
 | 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
 
-**Stand 20.11.2026:** Am 19.11. wurde das erste Design aus dem eigenen Rechenkern auf der artista 185 gestickt. Am 20.11.
-(ohne Maschine) wurde geklärt, warum das Display „no color“ zeigte: Ab Firmware 3.09 schickt das Original die Farben als
-eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Icon sind jetzt im Rust-Kern und im
-**Testprogramm v4.1** wie das Original umgesetzt (Simulation ok). Weiter geht es mit
-1. **Gerätetest v4.1:** ✅ Lesen (20.11.: M = 60, G = 6000; Tabelle der Maschine für Nr. 21 byte-gleich mit unserer) ·
-   ✅ Schreiben von ICON + Tabelle (20.11., v4.1 und Rust) · ⬜ Display ansehen → Liste „Vor Ort“ unten. Danach Speichern (0x10/0x200),
-2. Phase 5: ✅ **„Senden“ direkt aus dem Programm** (20.11.: `stick-maschine`, Oberfläche Schritt 4; am Gerät lesend
-   erprobt, Schreiben aus dem Programm → „Vor Ort“ V1); ✅ Garnfarbkarten; ✅ Designs aus der Maschine öffnen.
-   Weiter: Design mit der Maus anpassen, Garn je Farbe wählen, Mac-Programm,
-3. Phase 4 weiter: ✅ Schrift „Unterlagen zuerst“ (20.11.); weiter Auto Jump bei Schrift, Kurzstiche bei Tatami, Auto-Split …
+## Übergabe für die nächste Sitzung (Stand 20.11.2026, abends)
+**Hier weitermachen.** Alles ist committet und gepusht (`main`).
+
+**Zuletzt erledigt (20.11.):** Phase 4b.1–4b.4 (Transformationen, Schrift vollständig, Linien, Flächen), Messungen an
+den Musterdesigns (Säulenreihenfolge der Schrift, Step-Muster, Wendefüllung), Korrektur Step-Versatz der Stoffe
+(0,25/0,75), **Parameterkatalog** (`PARAMETER.md`, 132 Parameter, Modus einfach/experte/automatisch),
+**Funktionsübersicht für Designer/Frontend** (`UI_Mockups/FUNKTIONEN.md`).
+
+**Nächster Schritt – Nutzer entscheidet:** **4b.5 Reihenfolge** (nach Farbe, nach vorne/hinten, automatisch mit
+Überdeckungsprüfung; Ein-/Ausstich je Objekt) **oder 4b.16 Werte je Objekt** (Tatami-Abstand, Stichlänge,
+Zugausgleich … am einzelnen Objekt wie im Original). Danach Phase 4b in Tabellen-Reihenfolge (unten).
+
+**Arbeitsweise (vom Nutzer festgelegt):**
+- Werte und Abläufe aus dem Original: Stile `Analyse/daten/entschluesselt/styles.txt`, Code (DIALOG.DLL, MOD1 –
+  `Arbeitsdaten/werkzeuge/rdis.py`, capstone/pefile im `venv`), Handbuch `Arbeitsdaten/texte/man_raw_pg.txt`,
+  **Messung an den 287 Musterdesigns** (`F:/Entwicklung/artista_ziel/Main/Samples`, Werkzeuge `Arbeitsdaten/werkzeuge/art_*.py`,
+  Python mit `venv/Scripts/python.exe`). Eigene Festlegungen nur als markierte Notlösung.
+- **App (`app/`) und `app/ANFORDERUNGEN.md` nicht ändern** – neue Funktionen nur im Kern/CLI; die Oberfläche gestaltet
+  der Nutzer mit Claude Design neu.
+- Nach jedem Schritt: `cargo test --workspace`, `cargo clippy --workspace --all-targets -- -D warnings` (Umgebung
+  CLAUDE.md §5), App mit `cargo check` in `app/src-tauri`; Doku pflegen:
+  1. `stickprogramm/README.md` „Design beschreiben (JSON)“ (neue Felder),
+  2. `UI_Mockups/FUNKTIONEN.md` (Funktion, Einstellung, Standard, JSON, Modus),
+  3. **Parameterkatalog:** neue Werte in `Arbeitsdaten/werkzeuge/parameter_katalog.py` eintragen →
+     `py Arbeitsdaten/werkzeuge/parameter_katalog.py` → `stick parameter --markdown > PARAMETER.md`
+     (Tests `stick_kern::parameter` schlagen fehl, wenn ein Design-Wert fehlt oder ein Standard nicht stimmt),
+  4. `Analyse_Teil3/15_funktionsinventur.md`, diese Roadmap (Phase-4b-Tabelle), Fundstellen in `Analyse_Teil3/…`,
+  5. ändert sich die Stichberechnung der Referenz-Designs: `kern/testdaten/referenz/` ersetzen und im dortigen
+     `README.md` als neue Stufe eintragen.
+- Commit + Push nach jedem Schritt, Nachricht auf Deutsch (Trailer: Co-Authored-By / Claude-Session).
+- Dem Nutzer zu Beginn jeder Runde sagen, wo wir in der Roadmap stehen.
+- Praxis: Patches als Python-Datei schreiben (Heredocs mit Backslashes brechen unter Windows); Bildprobe einer
+  Stickdatei mit `stick erzeugen … --alphabete F:/Entwicklung/artista_ziel/Main/PROGRAM/wletter` und Edge headless.
+
+**Maschine:** Senden/Sticken funktioniert (19.11.). Offene Gerätetests stehen in „Vor Ort“ (Person an der Maschine nötig);
+Schreib-/Löschbefehle nur nach ausdrücklicher Zustimmung (CLAUDE.md §4 Regel 1/1a).
 
 ## Merkliste für den Nutzer (Stand 20.11.2026)
 | # | Aufgabe | Wann | Stand |

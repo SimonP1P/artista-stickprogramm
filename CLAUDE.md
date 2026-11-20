@@ -48,7 +48,7 @@
 | **Original-Verhalten für die eigene Software** (Stile, Verbinder/Vernähen, Unterlagen-Läufe, Dreifach) | `Analyse_Teil3/01_stile_und_verbinder.md` |
 | **Messungen an den Original-Stichen**: Objekt ↔ Stiche, **Satinabstand = gleiche Seite**, **0x2746 = Mittellauf / 0x2747 = Edge Walk** (korrigiert) | `Analyse_Teil3/04_messungen_satin.md`; Werkzeug `art_messen.py`, Rohdaten `Arbeitsdaten/messungen/` |
 | **Effekte und Auto-Unterlage** (Auto Spacing = Effekt 0x21 am Satin, Stil-Flags 0x2000 = aus / 0x0001 = vorgewählt, Unterlage in Software Defaults aus, Zickzack vorgewählt) | `Analyse_Teil3/05_effekte_und_unterlagen.md` |
-| **Tatami (Step) gemessen**: Abstand = zwischen zwei Hinreihen (Nachbarreihen halber Abstand), Versatz 0,25 je Reihe; **Step-Muster 1–20** (Tabelle DIALOG.DLL, Reihen abwechselnd Versatz 0x2719/0x271a) | `Analyse_Teil3/06_messungen_tatami.md`; Werkzeug `art_stepmuster.py` |
+| **Tatami (Step) gemessen**: Abstand = zwischen zwei Hinreihen (Nachbarreihen halber Abstand), Versatz 0,25 je Reihe; **Step-Muster 1–20** (Tabelle DIALOG.DLL, Reihen abwechselnd Versatz 0x2719/0x271a) | `Analyse_Teil3/06_messungen_tatami.md`; Werkzeuge `art_stepmuster.py`, `art_wendung.py` (mehrere Stichwinkel) |
 | **Laufstich an Eckpunkten, Zickzack-Unterlage, Reihenfolge Unterlage** (gemessen) | `Analyse_Teil3/07_lauf_ecken.md` |
 | **Laufwege in Flächen** (Original verbindet Teilbereiche mit Laufstichen statt Sprüngen) | `Analyse_Teil3/08_laufwege_flaechen.md` |
 | **Objekte der ART-Musterdesigns** (Datensatzrahmen, 131 Klassen mit Namen/Kennung, Formen als Bézier-Knoten, Satin/Lauf/Tatami/Unterlagen-Parameter) | `Analyse_Teil3/03_art_objekte.md`; Werkzeuge `art_objekte.py`, `art_design.py` |
@@ -123,7 +123,7 @@ venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink
 - **Bekannter Schaden:** Die CD-Kopie hat 14 defekte 64-KB-Blöcke in `setup.z` → ARTISTA.HLP, qrg_enu.pdf, Quilter.hlp, portfolio.exe, vcl60.bpl unbrauchbar (Details `Analyse/code/01_setup_entpacken.md`).
 
 ## 6. Stand und Roadmap
-**Maßgeblich ist `ROADMAP.md`** (Phasen, erledigte und offene Schritte, neue Erkenntnisse). Nach jedem abgeschlossenen
+**Neue Sitzung: zuerst `ROADMAP.md` „Übergabe für die nächste Sitzung“ lesen.** **Maßgeblich ist `ROADMAP.md`** (Phasen, erledigte und offene Schritte, neue Erkenntnisse). Nach jedem abgeschlossenen
 Schritt dort nachtragen und diese Kurzfassung angleichen. Dem Nutzer zu Beginn einer Arbeitssitzung kurz sagen, wo wir
 in der Roadmap stehen.
 
