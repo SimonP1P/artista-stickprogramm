@@ -81,6 +81,33 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
             ..
         } if punkte.len() >= 3 => flaeche(punkte, &[]),
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| bedeckt(&t.art, u)).collect(),
+        ObjektArt::Blanket {
+            punkte,
+            geschlossen,
+            breite,
+            mittig,
+            ..
+        } => {
+            // Säule zwischen Rücken und Spitzen (Zähne nach links der Laufrichtung)
+            let a: Linie = if *geschlossen {
+                let mut r = geschlossen_ohne_endpunkt(punkte);
+                r.push(r[0]);
+                r
+            } else {
+                punkte.clone()
+            };
+            if *mittig {
+                let (l, r) = seiten_aus_mittellinie(&a, *breite);
+                return saeule(&l, &r, u);
+            }
+            // „Offset“: Säule zwischen der Linie und ihrer linken Seite im Abstand der Breite
+            let (l, r) = seiten_aus_mittellinie(&a, 2.0 * *breite);
+            let links = a.len() >= 2 && {
+                let (d, q) = (p(a[1].x - a[0].x, a[1].y - a[0].y), p(l[0].x - a[0].x, l[0].y - a[0].y));
+                d.x * q.y - d.y * q.x > 0.0
+            };
+            saeule(&a, if links { &l } else { &r }, u)
+        }
         _ => Vec::new(),
     }
 }

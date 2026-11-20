@@ -102,7 +102,9 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    `CalcStartEnd…`) und Reihenfolge der Objekte
 6. 🟡 ✅ 20.11.2026 **Applikation** im Kern (`Analyse_Teil3/12`): Platzierung → Stopp → Heften → Stopp → Abdecken,
    Stopps als „Garne“ der Karte `Applique.tch` (Anweisung im Display); Werte aus „Easy Appliqué“ bzw. Handbuch ·
-   ⬜ Schnittlinie, Blanket, Teil-Applikation · ✅ 20.11.2026 **Füllmuster (Program Split / Fancy Fill)**: 242 Muster aus der Vorlage
+   ✅ 20.11.2026 Schnittlinie („Trim in Place“) und **Blanket**-Abdeckung (ohne Heftstich), Blanket auch als Kontur-
+   Stichart 0x2727 (`"art": "blanket"`) · ⬜ Teil-Applikation, Versatz innen/außen, `AutoAppliqueValues` ·
+   ✅ 20.11.2026 **Füllmuster (Program Split / Fancy Fill)**: 242 Muster aus der Vorlage
    entschlüsselt (`Analyse_Teil3/13`), Füllung wie im Sampler gemessen (Reihen 0,20 mm, Einstiche auf den Musterlinien),
    `"art": "muster"`, CLI `stick muster` · ⬜ Motivfüllung/Motivlinien
 7. ✅ 20.11.2026 Computer-Schriften (TrueType/OpenType, auch .ttc) im Kern: alle installierten Schriften (Windows/Mac),

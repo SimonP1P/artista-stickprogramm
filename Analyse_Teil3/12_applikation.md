@@ -33,6 +33,24 @@ alle Heftstiche (Zickzack 3,0 mm / 2,0 mm, „Place Applique & Tack“) → alle
 dem Umriss – Handbuch-Beispiel, eigene Festlegung – in der gewählten Farbe). Beim Senden bekommen die Lagen die Garne
 der Karte `Applique.tch` (genaue Farbgleichheit), die Abdeckung das nächste Garn der gewählten Karte.
 
-## 5. Offen
-Schnittlinie („Trim in Place“), Blanket-Abdeckung, Versatz innen/außen, Teil-Applikation, Reihenfolge mehrerer
-Applikationen (Original: `AppliqueOverlapProcessor`), Vorgabewerte aus `AutoAppliqueValues`.
+## 5. Schnittlinie und Blanket (20.11.2026)
+- **Trim in Place** (Handbuch S. 246/248, hoch): Schnittlinie nach der Platzierungslinie; „Place the fabric patch after
+  the placement line has been stitched, then trim after the cutting line has been stitched“. **Pre-cut**: keine
+  Schnittlinie. Im Kern `"stil": "zuschneiden"`: Platzierung („Applique Guide“) → Schnittlinie Lauf 2,0 mm („Place
+  Applique & Tack“) → Heften („Trim Applique & Cover“) → Abdecken (Stichlänge der Schnittlinie und Zuordnung der
+  Stopps: **eigene Festlegung**). Standard bleibt Pre-cut (Vorgabe des Originals noch nicht gelesen).
+- **Blanket-Abdeckung** (Handbuch S. 247, hoch): „Tacking is not used with blanket cover stitch“ – ohne Heftstich;
+  Zähne nach innen (Schieberegler, Blanket immer innen). Im Kern `"abdeckung": "blanket"`.
+
+## 6. Blanket als Stichart — Sicherheit: mittel
+Kontur-Stichart **0x2727** (DIALOG.DLL 0x1000ecca: Liste der Kontur-Sticharten {0x2721 Satin, 0x2727}; Dialog
+„Outline Stitch“ mit „Stitch Spacing“ und „Blanket Width“, Center/Offset). Vorlage NORMAL.AMT, Füllung 0x2748#4:
+**0x2728 = 360 (2,0 mm)**, **0x2729 = 540 (3,0 mm)**, 0x27c5 = 1 (offen). Zuordnung Abstand/Breite nach dem gleich
+gebauten Zickzack 0x2724 (0x2725 Abstand 2,0 / 0x2726 Breite 3,0; im Alphabet „Easy Appliqué“ Breite 540, Abstand
+360). Form nach Handbuch S. 70–71 („Kamm“): je Zahn Rücken → Spitze → Rücken, dann um den Abstand weiter (**eigene
+Festlegung**; kein Musterdesign enthält Blanket – die 0x1a-Datensätze in Butterfly1 gehören zu eingebetteten Stilen).
+Kern: `sticharten/blanket.rs`, Objekt `"art": "blanket"` (punkte, geschlossen, abstand, breite, versatz mitte/seite).
+
+## 7. Offen
+Versatz innen/außen (Schieberegler), Teil-Applikation, Reihenfolge mehrerer Applikationen (Original:
+`AppliqueOverlapProcessor`), Vorgabewerte aus `AutoAppliqueValues`, Blanket-Ecken und Feld 0x27c5.

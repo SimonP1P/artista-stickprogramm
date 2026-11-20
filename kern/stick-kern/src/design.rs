@@ -13,6 +13,7 @@ use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
 use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte};
+use crate::sticharten::blanket::blanket;
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
 use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mittellinie};
 use crate::sticharten::tatami::{tatami, tatami_mit_teilung};
@@ -268,10 +269,32 @@ struct ApplikationJson {
     heft_breite: Option<f64>,
     heft_abstand: Option<f64>,
     platz_laenge: Option<f64>,
+    /// „satin“ (Standard) oder „blanket“ (ohne Heftstich, Handbuch S. 247)
+    abdeckung: Option<String>,
+    /// „vorgeschnitten“ (Pre-cut, Standard) oder „zuschneiden“ (Trim in Place, mit Schnittlinie)
+    stil: Option<String>,
 }
 
 fn tatami_art() -> String {
     "tatami".into()
+}
+
+/// Blanket entlang einer Linie (`sticharten/blanket.rs`).
+#[derive(Debug, Deserialize)]
+struct BlanketJson {
+    #[serde(default = "schwarz")]
+    farbe: String,
+    #[serde(default)]
+    name: String,
+    punkte: PunktAngabe,
+    #[serde(default)]
+    geschlossen: bool,
+    /// Abstand der Zähne in mm (Vorlage 2,0)
+    abstand: Option<f64>,
+    /// Breite in mm (Vorlage 3,0)
+    breite: Option<f64>,
+    /// „mitte“ (Center, Standard) oder „seite“ (Offset)
+    versatz: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -313,6 +336,7 @@ enum ObjektJson {
     Dreifach(LaufJson),
     Satin(SatinJson),
     Satinlinie(SatinLinieJson),
+    Blanket(BlanketJson),
     Tatami(TatamiJson),
     Text(TextJson),
     Ttf(TtfJson),
@@ -384,6 +408,15 @@ pub enum ObjektArt {
         seite_b: Linie,
         unterlage: Unterlage,
         optionen: SatinOptionen,
+    },
+    /// Blanket (Langettenstich, 0x2727) entlang einer Linie
+    Blanket {
+        punkte: Linie,
+        geschlossen: bool,
+        abstand: f64,
+        breite: f64,
+        /// „Center“ (Standard) oder „Offset“ (Rücken auf der Linie, Zähne nach links)
+        mittig: bool,
     },
     /// Satinbahn konstanter Breite entlang einer Mittellinie
     SatinLinie {
@@ -834,6 +867,13 @@ impl Objekt {
                 umrisse,
                 laufweg,
             } => gruppe_wege(teile, umrisse, *laufweg, e, start),
+            ObjektArt::Blanket {
+                punkte,
+                geschlossen,
+                abstand,
+                breite,
+                mittig,
+            } => Ok(vec![blanket(punkte, *geschlossen, *abstand, *breite, *mittig)]),
             ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
             ObjektArt::TtfText { schrift, .. } => Err(format!("Text mit Schrift „{schrift}“ wurde nicht aufgelöst")),
             ObjektArt::Applikation(_) => Err("Applikation wurde nicht aufgelöst".into()),
@@ -906,6 +946,22 @@ impl Design {
         let mut e = fuer_stoff(&d.stoff)?;
         if let Some(werte) = &d.einstellungen {
             e = e.ueberschreiben(werte)?;
+        }
+        for o in &d.objekte {
+            if let ObjektJson::Applikation(a) = o {
+                if let Some(x) = a.abdeckung.as_deref().filter(|x| !matches!(*x, "satin" | "blanket")) {
+                    return Err(format!("Abdeckung „{x}“ unbekannt (satin, blanket)"));
+                }
+                if let Some(x) = a
+                    .stil
+                    .as_deref()
+                    .filter(|x| !matches!(*x, "vorgeschnitten" | "zuschneiden"))
+                {
+                    return Err(format!(
+                        "Applikationsstil „{x}“ unbekannt (vorgeschnitten, zuschneiden)"
+                    ));
+                }
+            }
         }
         let objekte = d
             .objekte
@@ -980,6 +1036,8 @@ impl Design {
                             heft_breite: a.heft_breite.unwrap_or(st.heft_breite),
                             heft_abstand: a.heft_abstand.unwrap_or(st.heft_abstand),
                             platz_laenge: a.platz_laenge.unwrap_or(st.platz_laenge),
+                            blanket: a.abdeckung.as_deref() == Some("blanket"),
+                            zuschneiden: a.stil.as_deref() == Some("zuschneiden"),
                         }),
                         farbe: a.farbe,
                     }
@@ -1018,6 +1076,17 @@ impl Design {
                         },
                     },
                     farbe: t.farbe,
+                },
+                ObjektJson::Blanket(b) => Objekt {
+                    farbe: b.farbe,
+                    name: b.name,
+                    art: ObjektArt::Blanket {
+                        punkte: b.punkte.punkte(),
+                        geschlossen: b.geschlossen,
+                        abstand: b.abstand.unwrap_or(crate::sticharten::blanket::ABSTAND),
+                        breite: b.breite.unwrap_or(crate::sticharten::blanket::BREITE),
+                        mittig: b.versatz.as_deref() != Some("seite"),
+                    },
                 },
                 ObjektJson::Satinlinie(s) => Objekt {
                     farbe: s.farbe,

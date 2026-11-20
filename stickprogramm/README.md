@@ -41,7 +41,8 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `text` (nur Rust-Kern) | `text`, `alphabet`, `hoehe`, `breite` (%), `abstand`, `position`, `ausrichtung`, `unterlage` | Original-Alphabet (ESB) |
 | `tatami`/`muster`: Aussparen (nur Rust-Kern) | `aussparen` (Liste von Objektnamen), `ueberlappung` (mm, Standard 0) | Knockout wie „Remove Overlay Stitching“ |
 | `muster` (nur Rust-Kern) | `umriss`, `loecher`, `muster` (Name/Nummer, `stick muster`), `winkel`, `groesse` (%), `unterlage` | Füllmuster (Program Split) |
-| `applikation` (nur Rust-Kern) | `umriss`, `loecher`, `farbe` (Abdeckung), `breite` (2,5), `abstand`, `heft_breite` (3,0), `heft_abstand` (2,0), `platz_laenge` (2,0) | Platzierung → Stopp → Heften → Stopp → Satin-Abdeckung |
+| `applikation` (nur Rust-Kern) | `umriss`, `loecher`, `farbe` (Abdeckung), `breite` (2,5), `abstand`, `heft_breite` (3,0), `heft_abstand` (2,0), `platz_laenge` (2,0), `abdeckung` (`satin`/`blanket`), `stil` (`vorgeschnitten`/`zuschneiden`) | Platzierung → (Schnittlinie) → Stopp → Heften → Stopp → Satin- oder Blanket-Abdeckung |
+| `blanket` (nur Rust-Kern) | `punkte`, `geschlossen`, `abstand` (2,0), `breite` (3,0), `versatz` (`mitte`/`seite`) | Blanket (Langettenstich, Stil 0x2727) |
 | `ttf` (nur Rust-Kern) | `text`, `schrift` (Name oder Pfad), `hoehe` (Großbuchstaben), `breite`, `abstand`, `position`, `ausrichtung`, `stichart` (`tatami`/`lauf`/`dreifach`), `winkel`, `unterlage`, `laenge` | Computer-Schrift (TrueType/OpenType) |
 
 Alle Objekte haben `farbe` (`#rrggbb`) und `name`. Statt einer Punktliste geht eine Form:
