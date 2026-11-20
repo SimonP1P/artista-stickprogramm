@@ -1,6 +1,6 @@
 # Roadmap – Stickprogramm für die BERNINA artista 185
 
-**Stand: 19.11.2026.** Diese Datei ist die maßgebliche Roadmap. `CLAUDE.md` §6 fasst sie in einer Tabelle zusammen,
+**Stand: 20.11.2026.** Diese Datei ist die maßgebliche Roadmap. `CLAUDE.md` §6 fasst sie in einer Tabelle zusammen,
 `ARCHITECTURE.md` beschreibt den technischen Aufbau. Nach jedem abgeschlossenen Schritt hier den Stand nachtragen
 (✅ erledigt · 🟡 begonnen/teilweise · ⬜ offen · 📅 geplant mit Datum).
 
@@ -12,16 +12,20 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 |---|---|---|
 | 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll | ✅ |
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
-| 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · offen: Farben/Icon wie das Original, dauerhaft speichern | 🟡 fast fertig |
+| 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, **Schrift** ✅ · Rest offen | 🟡 8 Punkte erledigt, 10 offen |
 | 5 Maschine im Programm | serieller Port aus Rust, „Senden“ in der Oberfläche, Mac-Programm | ⬜ |
 
-**Stand 19.11.2026, abends: Das erste Design aus dem eigenen Rechenkern ist auf der artista 185 gestickt.** Phase 2 ist
-bis auf Farben/Icon und dauerhaftes Speichern fertig; weiter geht es mit
-1. Phase 2 abschließen: Farbtabelle (Schritt 12) und Icon wie das Original, dann Speichern (0x10/0x200) – nur mit Zustimmung,
-2. Phase 5 vorziehen: **„Senden“ direkt aus dem Programm** (Rust `stick-maschine` nach Testprogramm v4) – damit ist der
-   Ablauf „Rahmen → anpassen → senden“ zum ersten Mal vollständig,
+**Stand 20.11.2026:** Am 19.11. wurde das erste Design aus dem eigenen Rechenkern auf der artista 185 gestickt. Am 20.11.
+(ohne Maschine) wurde geklärt, warum das Display „no color“ zeigte: Ab Firmware 3.09 schickt das Original die Farben als
+eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Icon sind jetzt im Rust-Kern und im
+**Testprogramm v4.1** wie das Original umgesetzt (Simulation ok). Weiter geht es mit
+1. **Gerätetest v4.1** (nur mit Zustimmung, neue Schreibwege ICON + Farbtabelle): Trockenlauf liest die Grenzen der
+   Tabelle, dann Nr. 21 (3 echte Isacord-Farben) und Testquadrat – Display zeigt Farben? Danach Speichern (0x10/0x200),
+2. Phase 5 vorziehen: **„Senden“ direkt aus dem Programm** (Rust `stick-maschine` nach Testprogramm v4.1) – damit ist der
+   Ablauf „Rahmen → anpassen → senden“ zum ersten Mal vollständig; dazu Garnangaben (Marke, Nummer, Name) aus den
+   Garnfarbkarten, damit eigene Designs echte Garnfarben mitschicken,
 3. Phase 4 weiter: Schrift-Reihenfolge, Kurzstiche bei Tatami, Auto-Split …
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
@@ -41,14 +45,22 @@ bis auf Farben/Icon und dauerhaftes Speichern fertig; weiter geht es mit
 5. **Die Maschinen-Zeichensätze wurden von Bernina anders eingestellt als der V4-Stil „Schrift“** (fester Abstand
    0,40 mm, kein Zugausgleich, Unterlage je Alphabet). Der Kern folgt dem V4-Stil; ein Schalter „wie Maschinen-Zeichensatz“
    wäre möglich (Entscheidung des Nutzers, offen).
+6. **Farben gehen ab Firmware 3.09 nicht im Anhang, sondern als Garnfarbtabelle** an Zeiger 0x24048 (20.11.2026, Code
+   0x10003a5d ff.). Der Anhang enthält nur den Kopf. Das erklärt „no color“ beim ersten Test und ergänzt Phase 2 um
+   Schritt 2c-2 (Gerätetest v4.1). **Erledigt im Kern und Testprogramm v4.1**, am Gerät offen.
+7. **Die Icons der Maschine sind die Stichlinien**, in 72 × 62 eingepasst (96,9 % der Punkte von 43 Motiven getroffen).
+   Damit kann jedes eigene Design ein passendes Icon mitschicken; wie V4 selbst das Icon zeichnet, bleibt offen.
+8. **Probestickerei 19.11.2026** auf Spannbettlaken ohne Vlies: Geometrie stimmt, Satin ohne Vlies/Unterlage
+   zusammengezogen – für Qualitätsvergleiche mit dem Original braucht es festen Stoff, Vlies und Stickgarn (Phase 4,
+   Punkt 10).
 
 ## Phase 2 – Übertragung zur artista 185
 | Schritt | Inhalt | Stand |
 |---|---|---|
 | 2a Lesen | Verbindung, Stickmodul, Designliste (v3.3), ein Design (v3.5), alle 51 Designs (v3.6), Container entschleiert | ✅ 19.11.2026 (`Analyse_Teil2/07`, `Arbeitsdaten/maschinendesigns/`) |
-| 2b Senden vorbereiten (ohne Maschine) | ✅ Puffer + BE-Container + Kopf + Farbtabelle + INFO-Felder im Rust-Kern (`stick-formate/src/artista.rs`), **Rundweg mit allen 51 Designs byte-gleich**, Flags-Formel 38/38 bestätigt, CLI `stick puffer` (JSON/EXP/gelesenes Design → Puffer) · ⬜ Icon aus den Stichen erzeugen · ✅ Testprogramm v4 (`Testprogramm_artista185_Windows_v4/`): `W` bis zur 256-Byte-Grenze, dann `P S`-Seiten, Zurücklesen + Vergleich, INFO-Felder, Befehl 0x08; Trockenlauf ohne `-Schreiben`, J/N vor jedem Schreibschritt; Selbsttest (Simulation, auch mit Störung) ok; mitgeliefert Nr47_puffer.bin und Testquadrat_puffer.bin | ✅ (am Gerät offen) |
-| 2c Senden am Gerät | ✅ **19.11.2026: Nr. 47 vom PC gesendet** (Abschluss 0x100 + `T r M E`) · ✅ **eigenes Testquadrat aus dem Rechenkern gesendet und gestickt** (`P S` am Gerät ok; nach Rahmenwechsel Layout 1 «check») · offen: Farbtabelle (Schritt 12) + Icon wie das Original, dauerhaft speichern (0x10/0x200) · Stufe 1: gelesenes Maschinendesign (Kandidat **Nr. 47**, 328 Byte) zurück in den Puffer DATEN + 0x08 (sticken ohne speichern) · Stufe 2: eigenes kleines Design (Quadrat/Schrift) + 0x08 · Stufe 3: speichern (0x10 → schreiben → 0x200). **Jede Stufe nur nach ausdrücklicher Zustimmung** (Regel 1a), Person vor Ort an der Maschine | 📅 Sa 21.11.2026 |
-| 2d offen | Display nach 0x100 ansehen; Bedeutung der Spalte „Farben?“ der Liste (INFO+N+1); welche Kopf-Variante die V4-Software schreibt; Icons vollständig lesen (0xAE + 558 Byte); bleibt die Lage im Rahmen erhalten, wenn der Ursprung nicht in der Designmitte liegt? | ⬜ |
+| 2b Senden vorbereiten (ohne Maschine) | ✅ Puffer + BE-Container + Kopf + Farbtabelle + INFO-Felder im Rust-Kern (`stick-formate/src/artista.rs`), **Rundweg mit allen 51 Designs byte-gleich**, Flags-Formel 38/38 bestätigt, CLI `stick puffer` (JSON/EXP/gelesenes Design → Puffer) · ✅ 20.11.: **Garnfarbtabelle** (Schritt 12) und **Icon** (Schritt 8, aus den Stichen, Regel aus 43 Maschinen-Icons) wie das Original, Anhang nur Kopf; `stick puffer` schreibt `_farben.bin`/`_icon.bin`; **Testprogramm v4.1** (Selbsttest ok) · ✅ Testprogramm v4 (`Testprogramm_artista185_Windows_v4/`): `W` bis zur 256-Byte-Grenze, dann `P S`-Seiten, Zurücklesen + Vergleich, INFO-Felder, Befehl 0x08; Trockenlauf ohne `-Schreiben`, J/N vor jedem Schreibschritt; Selbsttest (Simulation, auch mit Störung) ok; mitgeliefert Nr47_puffer.bin und Testquadrat_puffer.bin | ✅ (am Gerät offen) |
+| 2c Senden am Gerät | ✅ **19.11.2026: Nr. 47 vom PC gesendet** (Abschluss 0x100 + `T r M E`) · ✅ **eigenes Testquadrat aus dem Rechenkern gesendet und gestickt** (`P S` am Gerät ok; nach Rahmenwechsel Layout 1 «check») · offen: Farbtabelle (Schritt 12) + Icon wie das Original, dauerhaft speichern (0x10/0x200) · Stufe 1: gelesenes Maschinendesign (Kandidat **Nr. 47**, 328 Byte) zurück in den Puffer DATEN + 0x08 (sticken ohne speichern) · Stufe 2: eigenes kleines Design (Quadrat/Schrift) + 0x08 · Stufe 2b: **v4.1 mit Icon + Garnfarbtabelle** (Trockenlauf liest Grenzen und vorhandene Tabelle; dann Nr. 21 mit 3 Isacord-Farben, Testquadrat) ⬜ · Stufe 3: speichern (0x10 → schreiben → 0x200). **Jede Stufe nur nach ausdrücklicher Zustimmung** (Regel 1a), Person vor Ort an der Maschine | ✅ Stufe 1–2 (19.11.) · ⬜ 2b, 3 |
+| 2d offen | ✅ Display nach 0x100 (+ `T r M E`) wieder an; ✅ Inhalt des Anhangs beim Senden (nur Kopf, 20.11.); Bedeutung der Spalte „Farben?“ der Liste (INFO+N+1); welche Kopf-Felder die V4-Software setzt; Icons vollständig lesen (0xAE + 558 Byte); bleibt die Lage im Rahmen erhalten, wenn der Ursprung nicht in der Designmitte liegt? | ⬜ |
 
 ## Phase 4 – Sticharten und Regeln nach dem Original
 Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
@@ -75,13 +87,15 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 7. ⬜ Computer-Schriften (TTF) als Umrisse
 8. ⬜ Bild → Umrisse (Vektorisierung: Potrace/VTracer)
 9. ⬜ Knockout/Überlappung
-10. ⬜ Probestickereien an der Maschine (braucht Phase 2c), auch feine Arbeiten
+10. 🟡 Probestickereien an der Maschine: erste am 19.11.2026 (Testquadrat, Bettlaken ohne Vlies – Geometrie ok); nächste
+    mit festem Stoff, Vlies, Stickgarn: Prüfmuster Satin in mehreren Breiten, Tatami, Kreis, Schrift; auch feine Arbeiten
 
 ## Phase 5 – Maschine im Programm und Komfort
 - ⬜ `stick-maschine` (Rust): Protokoll der Testprogramme v3.6/v4 mit Simulation – verbinden, Liste lesen, Design
   lesen, senden
 - ⬜ Oberfläche Schritt 4 „Senden“ (mit Rückfrage vor jedem Schreiben), Designs aus der Maschine öffnen
-- ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus), Garnfarbkarten
+- ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus), Garnfarbkarten (Marke, Nummer und
+  Name je Farbe → Garnfarbtabelle an die Maschine)
 - ⬜ Mac-Programm (GitHub Actions, macOS-Runner)
 
 ## Erledigte Phasen (Kurzbeleg)

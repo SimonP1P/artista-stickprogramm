@@ -6,8 +6,8 @@ Stichberechnung für die BERNINA artista 185 nach dem Vorbild BERNINA artista V4
 | Crate | Inhalt |
 |---|---|
 | `stick-kern` | Geometrie, Einstellungen (Werte mit Quellen, 8 Stoffe), Sticharten (Lauf, Dreifach, Satin, Tatami), Unterlagen, Nachbearbeitung (Vernähen, Mindeststich 0,3 mm, Auto Jump), Rahmen, Design-Modell mit JSON-Eingabe, **Schrift** (`schrift.rs`: Satinsäulen mit Winkellinien, Textsatz) |
-| `stick-formate` | EXP schreiben/lesen (Bernina-Variante), SVG-Vorschau, **Original-Alphabete (ESB) lesen** (`esb.rs`), **Puffer DATEN und BE-Container der artista 185** (`artista.rs`: lesen/schreiben, Verschleierung, Kopf, Farbtabelle, INFO-Felder; Rundweg mit allen 51 Maschinendesigns byte-gleich) |
-| `stick-cli` | Kommandozeile `stick` (`erzeugen`, `anzeigen`, `alphabete`, `rahmen`, `stoffe`, **`puffer`**: Design-JSON/EXP/gelesenes Design → `*_puffer.bin` für DATEN + `*_puffer.txt` mit INFO-Feldern) |
+| `stick-formate` | EXP schreiben/lesen (Bernina-Variante), SVG-Vorschau, **Original-Alphabete (ESB) lesen** (`esb.rs`), **Puffer DATEN und BE-Container der artista 185** (`artista.rs`: lesen/schreiben, Verschleierung, Kopf, Farbtabelle, INFO-Felder; Rundweg mit allen 51 Maschinendesigns byte-gleich; **Garnfarbtabelle für Zeiger 0x24048** und **Icon 72 × 62** wie das Original, Anhang ohne Farben; Icon-Regel an 43 Maschinen-Icons geprüft) |
+| `stick-cli` | Kommandozeile `stick` (`erzeugen`, `anzeigen`, `alphabete`, `rahmen`, `stoffe`, **`puffer`**: Design-JSON/EXP/gelesenes Design → `*_puffer.bin` für DATEN, `*_farben.bin` (Garnfarbtabelle), `*_icon.bin` (ICON) + `*_puffer.txt` mit INFO-Feldern und Dateinamen; `--farben-im-anhang` = Variante des Gerätetests v4.0) |
 
 Später: `stick-maschine` (serielles Protokoll), `stick-vektor`. Schrift steckt in `stick-kern::schrift` + `stick-formate::esb`
 (`Analyse_Teil3/09`); Text im Design: `{"art": "text", "text": "Anna", "alphabet": "Drifter", "hoehe": 20}`,

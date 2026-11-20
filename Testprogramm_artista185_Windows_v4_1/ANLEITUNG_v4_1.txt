@@ -1,0 +1,73 @@
+VERSION 4.1 - EIN DESIGN AN DIE BERNINA artista 185 SENDEN, MIT ICON UND GARNFARBTABELLE - Anleitung (Windows)
+=====================================================================================================
+
+WAS IST NEU GEGENUEBER VERSION 4.0?
+-----------------------------------
+Version 4.0 hat am 19.11.2026 funktioniert (Testquadrat gesendet und gestickt), das Display zeigte aber
+"no color". Grund (aus dem Maschinencode der Original-Software, BEAGLink 0x100032b0): Ab Firmware 3.09
+schickt das Original die Garnfarben NICHT im Anhang des Designs, sondern als eigene GARNFARBTABELLE an eine
+andere Stelle im Speicher (Zeiger 0x24048), und dazu ein ICON (72 x 62 Punkte) an den Puffer ICON.
+Version 4.1 macht beides wie das Original:
+  - liest zuerst (auch im Trockenlauf) den Zusatzblock (Zeiger 0x24044: hoechste Farbanzahl, Groesse) und
+    zeigt an, welche Garnfarbtabelle gerade in der Maschine steht,
+  - schreibt DATEN, dann ICON, dann INFO-Felder, dann die Garnfarbtabelle (an T + Vorspann) und zum Schluss
+    00 00 00 an den Anfang von T (Freigabe, wie das Original); alles wird zurueckgelesen und verglichen,
+  - schreibt die Tabelle nur, wenn sie die Pruefung des Originals besteht (sonst Hinweis, kein Abbruch).
+Es wird weiterhin NICHTS dauerhaft gespeichert, geloescht oder formatiert.
+
+Mitgeliefert (alle mit "stick puffer" aus dem Rechenkern gebaut):
+  Testquadrat_*   eigenes Design (Quadrat 20 mm + Satinbalken), 1 Farbe ohne Garnangabe (nur RGB)
+  Nr21_*          Design Nr 21 aus dem Maschinenspeicher (98 x 31 mm, 4210 Stiche) mit 3 echten Garnfarben:
+                  Isacord 40 "rich brown" 1311, "brass" 821, "light beige" 670  -> zeigt, ob das Display die
+                  Farben anzeigt
+  Nr47_*          Design Nr 47 (ohne Farbangaben -> keine Garnfarbtabelle, wie das Original)
+  je Design:  NAME_puffer.bin (DATEN), NAME_farben.bin (Garnfarbtabelle), NAME_icon.bin (ICON),
+              NAME_puffer.txt (Laengen, INFO-Felder, Dateinamen)
+Schalter:  -OhneIcon  -OhneFarben  -OhneInfo   (den jeweiligen Teil nicht schreiben)
+
+
+SCHRITT FUER SCHRITT
+--------------------
+ 1. SELBSTTEST.bat (ohne Maschine). Jeder Lauf endet mit "FERTIG.", die Schreib-Laeufe mit
+    "SELBSTTEST: ICON 0 Byte verschieden; Farbtabelle 0 Byte verschieden; Anfang von T 00 00 00"
+    (Lauf 4 absichtlich ohne Farbtabelle: "Farbtabelle wird NICHT geschrieben ... erlaubt 2").
+ 2. Maschine an, Stickmodul angesteckt, Kabel verbunden, Startbildschirm abwarten, Nadel OBEN.
+ 3. START_TROCKENLAUF.bat             nur lesen: zeigt Zusatzblock und die Garnfarbtabelle der Maschine
+ 4. START_SCHREIBEN.bat               Testquadrat mit Icon und Farbtabelle schreiben (kein Sticken)
+ 5. START_STICKEN.bat Nr21_puffer.bin  Nr 21 mit echten Garnfarben - Display ansehen: Farben/Namen?
+ 6. START_STICKEN.bat                 Testquadrat sticken - NUR mit Person an der Maschine
+ Jeder Schreibschritt fragt vorher J/N. Danach Mitschnitt_v4_1_*.log und Ergebnis_v4_1_*.txt schicken.
+ Am Ende sendet das Programm 0x100 und T r M E wie das Original (Display wieder an).
+
+
+STEHT DIE NADEL NICHT IN DER RAHMENMITTE? (Geraetetest 19.11.2026)
+---------------------------------------------------------------
+  1. Nadel mit dem Handrad ganz nach oben, Naehfuss hoch
+  2. Display: "layout 1" -> "check"   (Rahmen faehrt nach hinten und liest die Groesse; Haende weg)
+  3. "Mustermitte anzeigen" -> Nadel steht ueber der Mitte des Designs
+  4. "ok", Naehfuss senken, Start-Taste
+
+
+WAS DIE PERSON AN DER MASCHINE TUN MUSS (nur fuer START_STICKEN)
+----------------------------------------------------------------
+ - Stickrahmen mit Stoff und Vlies einsetzen, Stickgarn oben, Stick-Unterfaden unten, Nadel oben.
+ - Haende weg vom Nadel- und Rahmenbereich, sobald der Befehl gesendet wird (der Rahmen kann fahren).
+ - Display ansehen und fotografieren: steht dort jetzt eine Farbe/Garnnummer statt "no color"?
+ - Das Sticken selbst erst mit der Start-Taste der Maschine beginnen; jederzeit mit Start/Stopp anhalten.
+ - Haengt die Maschine: ausschalten, 10 s warten, einschalten.
+
+
+SICHERHEIT
+----------
+ Gesendet werden nur:
+   T r M E, R/N + Adresse, R F ?, J 0 5 / E B, Y Q                     (Verbindung, Lesen wie 3.6)
+   W <DATEN...> + Daten + ?   und   P S + Adresse, 256 Byte            (NUR mit -Schreiben: Puffer DATEN)
+   W/P S <ICON...> (732 Byte)                                           (NUR mit -Schreiben, NEU)
+   W <INFO+N+1>, W <INFO+2N+1>, W <INFO+3N+1>                          (NUR mit -Schreiben: Farben, Flags, Name)
+   W <T+Vorspann...> Garnfarbtabelle,  W <T> 00 00 00                   (NUR mit -Schreiben, NEU)
+   W FFFED0 + Befehl 0008 + ?                                           (NUR mit -Sticken)
+   W FFFED0 + Befehl 0100 + ?                                           (PC-Modus verlassen)
+ Kein Speichern (0x10/0x200), Loeschen (0x800), Formatieren (0x80), kein Firmware-Zugriff.
+ Flash-Bereiche (0x280000-0x3FFFFF, 0xC00000-0xDFFFFF) werden nie beschrieben.
+ Die Schreibwege ICON und Garnfarbtabelle sind NEU und am Geraet noch nicht erprobt -> nur nach
+ ausdruecklicher Freigabe (CLAUDE.md Regel 1a). Ohne sie: Schalter -OhneIcon -OhneFarben (= Version 4.0).

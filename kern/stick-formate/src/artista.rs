@@ -17,6 +17,8 @@
 //! Achtung beim Lesen: Die Maschine setzt Länge 2 bei Befehl 0x400 nicht zurück – ein Anhang gilt nur, wenn die
 //! Containerlänge (u32 LE bei +2) gleich Länge 2 ist ([`Puffer::anhang_gueltig`]).
 
+use stick_kern::{Art, StichFolge};
+
 /// Anzahl der Tabelleneinträge N bei der artista 185 (Verwaltungsblock 0xFFFD24, Byte 0; am Gerät gelesen).
 pub const N_185: usize = 28;
 /// Endkennung der Stichdaten.
@@ -201,8 +203,31 @@ impl Container {
     /// Farbtabelle (Chunk 0x14): n × 0x86 Byte.
     pub fn farben(&self) -> Vec<Farbe> {
         self.chunk(CHUNK_FARBEN)
-            .map(|d| d.as_chunks::<FARB_EINTRAG>().0.iter().map(|e| Farbe::lesen(e)).collect())
+            .map(|d| {
+                d.as_chunks::<FARB_EINTRAG>()
+                    .0
+                    .iter()
+                    .map(|e| Farbe::lesen(e))
+                    .collect()
+            })
             .unwrap_or_default()
+    }
+
+    /// Container für den Anhang so, wie das Original ihn bei Firmware ≥ 3.09 (artista 185: 4.04) in den Puffer DATEN
+    /// legt (BEAGLink 0x100035b6–0x1000374d): **ohne** Stichdaten (0x1E), Zusatzdaten (0x28), Icon (0x32) und
+    /// Farbtabelle (0x14). Die Farben gehen getrennt an die Garnfarbtabelle ([`farbtabelle_maschine`], Schritt 12),
+    /// das Icon an den Puffer ICON ([`Icon::bytes`], Schritt 8). Sicherheit: hoch (Code).
+    pub fn anhang_wie_original(&self) -> Container {
+        Container {
+            kennung: self.kennung,
+            wort: self.wort,
+            chunks: self
+                .chunks
+                .iter()
+                .filter(|c| ![CHUNK_FARBEN, CHUNK_STICHE, CHUNK_ZUSATZ, CHUNK_ICON].contains(&c.id))
+                .cloned()
+                .collect(),
+        }
     }
 }
 
@@ -389,6 +414,171 @@ impl Farbe {
 }
 
 // ---------------------------------------------------------------------------------------------------------------
+// Garnfarbtabelle der Maschine (Schritt 12, Firmware ≥ 3.09)
+// ---------------------------------------------------------------------------------------------------------------
+
+/// Zeiger (u32 BE) auf den 18-Byte-Zusatzblock (Verbindungsaufbau BEAGLink 0x10005cfe; artista 185: 0x20772).
+pub const ZEIGER_ZUSATZBLOCK: u32 = 0x24044;
+/// Zeiger (u32 BE) auf den Bereich T der Garnfarbtabelle (BEAGLink 0x10003a74; artista 185: 0x2083A).
+pub const ZEIGER_FARBTABELLE: u32 = 0x24048;
+/// Länge des Zusatzblocks.
+pub const ZUSATZBLOCK_LAENGE: usize = 0x12;
+/// Nach der Tabelle schreibt das Original diese 3 Byte an den Anfang von T (0x10003d03–0x10003d2a); beim Lesen muss
+/// Byte 0 von T gleich 0 sein (0x100048d6).
+pub const FARBTABELLE_FREIGABE: [u8; 3] = [0, 0, 0];
+
+/// Grenzen der Garnfarbtabelle aus dem Zusatzblock (BEAGLink 0x10003a99 ff. beim Schreiben, 0x10004886 ff. beim
+/// Lesen). Die Werte der artista 185 sind noch nicht gelesen (Zeiger 0x24044 → 0x20772 bekannt).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct FarbGrenzen {
+    /// Byte +0x0C: höchste Farbanzahl
+    pub max_farben: u8,
+    /// u16 BE +0x10: Größe des Bereichs T (Vorspann + Tabelle müssen kleiner sein; nur gültig, wenn < 0xFD00)
+    pub groesse: u16,
+}
+
+impl FarbGrenzen {
+    pub fn aus_zusatzblock(z: &[u8]) -> Result<FarbGrenzen, String> {
+        if z.len() < ZUSATZBLOCK_LAENGE {
+            return Err(format!("Zusatzblock hat {} statt {ZUSATZBLOCK_LAENGE} Byte", z.len()));
+        }
+        Ok(FarbGrenzen {
+            max_farben: z[0x0C],
+            groesse: u16::from_be_bytes([z[0x10], z[0x11]]),
+        })
+    }
+
+    /// Vorspann in T vor der Tabelle: höchste Farbanzahl + 6 Byte. Die Tabelle steht bei T + Vorspann.
+    pub fn vorspann(&self) -> usize {
+        self.max_farben as usize + 6
+    }
+
+    /// Prüfung wie das Original vor dem Schreiben (0x10003abb, 0x10003c8c–0x10003cc2); sonst schreibt es keine
+    /// Tabelle (ohne Fehlermeldung).
+    pub fn pruefen(&self, farben: usize, tabelle: &[u8]) -> Result<(), String> {
+        if self.groesse >= 0xFD00 {
+            return Err(format!("Bereich ungültig (Größe 0x{:04X} ≥ 0xFD00)", self.groesse));
+        }
+        if farben > self.max_farben as usize {
+            return Err(format!("{farben} Farben, die Maschine erlaubt {}", self.max_farben));
+        }
+        if self.vorspann() + tabelle.len() >= self.groesse as usize {
+            return Err(format!(
+                "Tabelle zu groß: Vorspann {} + {} Byte ≥ {}",
+                self.vorspann(),
+                tabelle.len(),
+                self.groesse
+            ));
+        }
+        Ok(())
+    }
+}
+
+/// Text eines 64-Byte-Feldes so, wie das Original ihn in die Tabelle übernimmt (0x10003b4b–0x10003b7b): Leerzeichen
+/// am Ende (Stellen 0x3E … 1) abschneiden, dann bis zur ersten 0.
+fn text_fuer_tabelle(feld: &[u8]) -> Vec<u8> {
+    let mut f = [0u8; 0x41];
+    f[..feld.len().min(0x40)].copy_from_slice(&feld[..feld.len().min(0x40)]);
+    let mut i = 0x3E;
+    while i > 0 {
+        if f[i] != b' ' {
+            f[i + 1] = 0;
+            break;
+        }
+        i -= 1;
+    }
+    let ende = f.iter().position(|&b| b == 0).unwrap_or(0x40);
+    f[..ende].to_vec()
+}
+
+/// Garnfarbtabelle, wie BEAGLink 0x100032b0 (Schritt 12, 0x10003a5d–0x10003d2f) sie an **T + Vorspann** schreibt.
+/// Sicherheit: hoch (Maschinencode Byte für Byte; Lesen 0x10004850 prüft dieselben Felder), am Gerät noch nicht
+/// geschrieben.
+/// ```text
+/// 0   00 00 00 01            u32 BE 1
+/// 4   00 00 00 08            u32 BE 8
+/// 8   u32 BE                 Länge ab Byte 8 (Gesamtlänge − 8)
+/// 12  00 00 + u16 BE         Anzahl Farben (das Lesen nimmt u32 BE)
+/// 16  je Farbe: u16 BE Datensatzlänge (mit diesen 2 Byte) | u16 BE Nummer ab 1 | R G B | u16 BE Garnnummer |
+///     Marke, 0 | Farbname, 0
+/// ```
+pub fn farbtabelle_maschine(farben: &[Farbe]) -> Vec<u8> {
+    let mut v = vec![0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0];
+    for (i, f) in farben.iter().enumerate() {
+        let e = f.bytes();
+        let mut d = Vec::new();
+        d.extend(((i + 1) as u16).to_be_bytes());
+        d.extend(&e[..3]);
+        d.extend(f.nummer.to_be_bytes());
+        d.extend(text_fuer_tabelle(&e[6..0x46]));
+        d.push(0);
+        d.extend(text_fuer_tabelle(&e[0x46..0x86]));
+        d.push(0);
+        v.extend(((d.len() + 2) as u16).to_be_bytes());
+        v.extend(d);
+    }
+    let rest = (v.len() - 8) as u32;
+    v[8..12].copy_from_slice(&rest.to_be_bytes());
+    v[14..16].copy_from_slice(&(farben.len() as u16).to_be_bytes());
+    v
+}
+
+/// Garnfarbtabelle aus dem gelesenen Bereich ab T lesen und prüfen wie BEAGLink 0x10004850–0x10004a97. `bereich`
+/// muss mindestens Vorspann + 16 Byte lang sein; Datensätze werden gelesen, soweit vorhanden.
+pub fn farbtabelle_lesen(bereich: &[u8], g: FarbGrenzen) -> Result<Vec<Farbe>, String> {
+    let k = g.vorspann();
+    if bereich.len() < k + 16 {
+        return Err(format!("Bereich zu kurz ({} Byte, nötig {})", bereich.len(), k + 16));
+    }
+    let u32_be = |o: usize| u32::from_be_bytes([bereich[o], bereich[o + 1], bereich[o + 2], bereich[o + 3]]);
+    if bereich[0] != 0 {
+        return Err(format!("Byte 0 von T ist 0x{:02X} (keine gültige Tabelle)", bereich[0]));
+    }
+    if u32_be(k) != 1 || u32_be(k + 4) != 8 {
+        return Err(format!(
+            "Kennung {} / {} statt 1 / 8 (keine Tabelle)",
+            u32_be(k),
+            u32_be(k + 4)
+        ));
+    }
+    let laenge = u32_be(k + 8) as usize;
+    let anzahl = u32_be(k + 12) as usize;
+    if laenge >= g.groesse as usize || g.groesse >= 0xFD00 || anzahl >= 0xFF || anzahl * 0x86 >= 0xFF00 {
+        return Err(format!("Länge {laenge} / Anzahl {anzahl} außerhalb der Grenzen"));
+    }
+    let ende = (k + 8 + laenge).min(bereich.len());
+    let mut farben = Vec::new();
+    let mut o = k + 16;
+    while farben.len() < anzahl && o + 9 <= ende {
+        let dl = u16::from_be_bytes([bereich[o], bereich[o + 1]]) as usize;
+        if dl < 11 || o + dl > ende {
+            break;
+        }
+        let d = &bereich[o..o + dl];
+        let text = |von: usize| -> (String, usize) {
+            let n = d[von..].iter().position(|&b| b == 0).unwrap_or(d.len() - von);
+            (d[von..von + n].iter().map(|&b| b as char).collect(), von + n + 1)
+        };
+        let (marke, p) = text(9);
+        let (name, p) = text(p.min(dl));
+        if p != dl {
+            return Err(format!(
+                "Datensatz {}: Länge {dl} passt nicht zu den Texten",
+                farben.len() + 1
+            ));
+        }
+        farben.push(Farbe {
+            rgb: [d[4], d[5], d[6]],
+            nummer: u16::from_be_bytes([d[7], d[8]]),
+            marke,
+            name,
+        });
+        o += dl;
+    }
+    Ok(farben)
+}
+
+// ---------------------------------------------------------------------------------------------------------------
 // Puffer DATEN
 // ---------------------------------------------------------------------------------------------------------------
 
@@ -521,6 +711,151 @@ pub fn farben_in_stichen(d: &[u8]) -> usize {
     n
 }
 
+// ---------------------------------------------------------------------------------------------------------------
+// Icon (Puffer ICON, Schritt 8)
+// ---------------------------------------------------------------------------------------------------------------
+
+/// Länge des Icon-Kopfs im Puffer ICON (BEAGLink 0x1000382c: Bitmap ab 0xAE; am Gerät gelesen).
+pub const ICON_KOPF: usize = 0xAE;
+/// Größe der Icons der artista 185: alle 51 gelesenen Icons haben 9 Byte je Zeile und 62 Zeilen (`Analyse_Teil2/07`).
+pub const ICON_BREITE: usize = 72;
+pub const ICON_HOEHE: usize = 62;
+
+/// Icon: 1 Bit je Punkt, Zeilen von oben nach unten, höchstes Bit links, **Bit gesetzt = Stich (schwarz)** – so wie
+/// im Puffer ICON der Maschine.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Icon {
+    pub bytes_je_zeile: usize,
+    pub hoehe: usize,
+    pub bits: Vec<u8>,
+}
+
+impl Icon {
+    pub fn leer(breite: usize, hoehe: usize) -> Icon {
+        let bytes_je_zeile = breite.div_ceil(8);
+        Icon {
+            bytes_je_zeile,
+            hoehe,
+            bits: vec![0; bytes_je_zeile * hoehe],
+        }
+    }
+
+    pub fn punkt(&self, x: usize, y: usize) -> bool {
+        x < self.bytes_je_zeile * 8
+            && y < self.hoehe
+            && self.bits[y * self.bytes_je_zeile + x / 8] & (0x80 >> (x % 8)) != 0
+    }
+
+    pub fn setze(&mut self, x: usize, y: usize) {
+        if x < self.bytes_je_zeile * 8 && y < self.hoehe {
+            self.bits[y * self.bytes_je_zeile + x / 8] |= 0x80 >> (x % 8);
+        }
+    }
+
+    /// Bytes für den Puffer ICON wie BEAGLink Schritt 8 (0x1000382c–0x100038b8): Kopf 0xAE Byte mit [2] = Bytes je
+    /// Zeile, [3] = Höhe, [4] = 0xFF, sonst 0; dahinter die Bitmap.
+    pub fn bytes(&self) -> Vec<u8> {
+        let mut v = vec![0u8; ICON_KOPF];
+        v[2] = self.bytes_je_zeile as u8;
+        v[3] = self.hoehe as u8;
+        v[4] = 0xFF;
+        v.extend(&self.bits);
+        v
+    }
+
+    /// Aus dem gelesenen Puffer ICON (fehlende Zeilen bleiben leer).
+    pub fn lesen(b: &[u8]) -> Result<Icon, String> {
+        if b.len() < ICON_KOPF {
+            return Err(format!("Icon zu kurz ({} Byte, Kopf {ICON_KOPF})", b.len()));
+        }
+        let mut ic = Icon {
+            bytes_je_zeile: b[2] as usize,
+            hoehe: b[3] as usize,
+            bits: vec![0; b[2] as usize * b[3] as usize],
+        };
+        let n = ic.bits.len().min(b.len() - ICON_KOPF);
+        ic.bits[..n].copy_from_slice(&b[ICON_KOPF..ICON_KOPF + n]);
+        Ok(ic)
+    }
+
+    /// Aus Chunk 0x32 des Containers wie das Original (0x100037bc ff. und 0x10003e20): Daten[0] = Breite, [2] = Höhe,
+    /// ab [4] die Bitmap mit der **untersten Zeile zuerst** und **invertiert** (Bit gesetzt = weiß).
+    pub fn aus_chunk(d: &[u8]) -> Result<Icon, String> {
+        if d.len() < 4 {
+            return Err("Icon-Chunk zu kurz".into());
+        }
+        let (breite, hoehe) = (d[0] as usize, d[2] as usize);
+        let bpz = breite.div_ceil(8);
+        if d.len() - 4 != bpz * hoehe {
+            return Err(format!("Icon-Chunk: {} Byte Bitmap statt {}", d.len() - 4, bpz * hoehe));
+        }
+        let mut ic = Icon::leer(breite, hoehe);
+        for (z, zeile) in d[4..].chunks(bpz).enumerate() {
+            let ziel = (hoehe - 1 - z) * bpz;
+            for (i, &b) in zeile.iter().enumerate() {
+                ic.bits[ziel + i] = !b;
+            }
+        }
+        Ok(ic)
+    }
+
+    /// Chunk 0x32 (Umkehrung von [`Icon::aus_chunk`]).
+    pub fn chunk_daten(&self) -> Vec<u8> {
+        let mut v = vec![(self.bytes_je_zeile * 8) as u8, 0, self.hoehe as u8, 0];
+        for zeile in self.bits.chunks(self.bytes_je_zeile).rev() {
+            v.extend(zeile.iter().map(|b| !b));
+        }
+        v
+    }
+
+    /// Icon 72 × 62 aus den Stichen zeichnen: jede Stichlinie (nicht Sprünge), auf den Bereich x 2…70, y 2…60
+    /// eingepasst (Seitenverhältnis bleibt, mittig). **Regel aus den Icons der Maschine abgeleitet** (43 Motive
+    /// Nr. 8–51 ohne 41: 96,9 % der Icon-Punkte getroffen, jedes Motiv ≥ 80 %; Test `icons_der_maschine`) – wie die
+    /// Original-Software das Icon (Chunk 0x32) zeichnet, ist noch nicht analysiert. Sicherheit: mittel.
+    pub fn aus_stichen(folge: &StichFolge) -> Icon {
+        let mut ic = Icon::leer(ICON_BREITE, ICON_HOEHE);
+        let mut linien = Vec::new();
+        for (a, b) in folge.stiche.iter().zip(folge.stiche.iter().skip(1)) {
+            if b.art == Art::Stich {
+                linien.push(((a.x, a.y), (b.x, b.y)));
+            }
+        }
+        if linien.is_empty() {
+            return ic;
+        }
+        let pkt = linien.iter().flat_map(|&(a, b)| [a, b]);
+        let (mut x0, mut x1, mut y0, mut y1) = (f64::MAX, f64::MIN, f64::MAX, f64::MIN);
+        for (x, y) in pkt {
+            (x0, x1, y0, y1) = (x0.min(x), x1.max(x), y0.min(y), y1.max(y));
+        }
+        let (l, r, o, u) = (2.0, 70.0, 2.0, 60.0);
+        let (w, h) = ((x1 - x0).max(0.1), (y1 - y0).max(0.1));
+        let s = ((r - l) / w).min((u - o) / h);
+        let ox = l + ((r - l) - w * s) / 2.0;
+        let oy = o + ((u - o) - h * s) / 2.0;
+        // in doppelter Auflösung zeichnen, je 2 × 2 Feinpunkte ein Icon-Punkt (passt besser zu den treppigen
+        // Schräglinien der Maschinen-Icons als eine einfache Linie: 96,9 % statt 96,4 % getroffen, kein Motiv < 80 %)
+        let bild = |(x, y): (f64, f64)| -> (i64, i64) {
+            (
+                ((ox + (x - x0) * s) * 2.0).round_ties_even() as i64,
+                ((oy + (y1 - y) * s) * 2.0).round_ties_even() as i64,
+            )
+        };
+        for (a, b) in linien {
+            let ((xa, ya), (xb, yb)) = (bild(a), bild(b));
+            let n = (xb - xa).abs().max((yb - ya).abs()).max(1);
+            for k in 0..=n {
+                let x = ((xa as f64 + (xb - xa) as f64 * k as f64 / n as f64) / 2.0).floor();
+                let y = ((ya as f64 + (yb - ya) as f64 * k as f64 / n as f64) / 2.0).floor();
+                if x >= 0.0 && y >= 0.0 {
+                    ic.setze(x as usize, y as usize);
+                }
+            }
+        }
+        ic
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -585,6 +920,139 @@ mod tests {
         assert_eq!(info.farben_minus_1, 1);
         assert_eq!(info.flags, 0x84);
         assert_eq!(&info.name[..7], b"Test 1\0");
+    }
+
+    #[test]
+    fn farbtabelle_wie_original() {
+        let farben = vec![
+            Farbe {
+                rgb: [255, 255, 250],
+                nummer: 10,
+                marke: "Isacord 40".into(),
+                name: "white".into(),
+            },
+            Farbe {
+                rgb: [0xc0, 0x39, 0x2b],
+                nummer: 0x1234,
+                // mit 0 aufgefüllt: das Original schneidet die Leerzeichen dann NICHT ab (nur bei Auffüllung mit
+                // Leerzeichen bis Stelle 0x3E, 0x10003b4b)
+                marke: "Madeira   ".into(),
+                name: String::new(),
+            },
+        ];
+        let t = farbtabelle_maschine(&farben);
+        let mut erwartet = vec![0, 0, 0, 1, 0, 0, 0, 8];
+        erwartet.extend((16u32 + 26 + 21 - 8).to_be_bytes());
+        erwartet.extend([0, 0, 0, 2]);
+        erwartet.extend([0, 26, 0, 1, 0xff, 0xff, 0xfa, 0, 10]);
+        erwartet.extend(b"Isacord 40\0white\0");
+        erwartet.extend([0, 21, 0, 2, 0xc0, 0x39, 0x2b, 0x12, 0x34]);
+        erwartet.extend(b"Madeira   \0\0");
+        assert_eq!(t, erwartet);
+        // Feld mit Leerzeichen aufgefüllt (wie Wilcom-Texte fester Länge): wird abgeschnitten
+        let mut feld = [b' '; 64];
+        feld[..4].copy_from_slice(b"Sulk");
+        assert_eq!(text_fuer_tabelle(&feld), b"Sulk");
+
+        // Bereich T wie in der Maschine: Vorspann (Byte 0 = 0), dann die Tabelle
+        let g = FarbGrenzen::aus_zusatzblock(&[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0x10, 0x00]).unwrap();
+        assert_eq!((g.max_farben, g.groesse, g.vorspann()), (50, 0x1000, 56));
+        g.pruefen(farben.len(), &t).unwrap();
+        let mut bereich = vec![0u8; g.vorspann()];
+        bereich.extend(&t);
+        let gelesen = farbtabelle_lesen(&bereich, g).unwrap();
+        assert_eq!(gelesen[0], farben[0]);
+        assert_eq!(gelesen[1].marke, "Madeira   ");
+        assert_eq!(gelesen[1].nummer, 0x1234);
+        bereich[0] = 1;
+        assert!(farbtabelle_lesen(&bereich, g).is_err());
+        assert!(g.pruefen(51, &t).is_err());
+        assert!(
+            FarbGrenzen {
+                max_farben: 50,
+                groesse: 80
+            }
+            .pruefen(2, &t)
+            .is_err()
+        );
+    }
+
+    #[test]
+    fn icon_chunk_und_puffer() {
+        let mut ic = Icon::leer(ICON_BREITE, ICON_HOEHE);
+        ic.setze(0, 0);
+        ic.setze(71, 61);
+        ic.setze(10, 3);
+        let b = ic.bytes();
+        assert_eq!(b.len(), ICON_KOPF + 9 * 62);
+        assert_eq!(&b[..6], &[0, 0, 9, 62, 0xff, 0]);
+        assert_eq!(Icon::lesen(&b).unwrap(), ic);
+        let d = ic.chunk_daten();
+        assert_eq!(&d[..4], &[72, 0, 62, 0]);
+        assert_eq!(d[4 + 61 * 9], 0x7f); // oberste Zeile steht im Chunk zuletzt, invertiert
+        assert_eq!(Icon::aus_chunk(&d).unwrap(), ic);
+        assert!(ic.punkt(10, 3) && !ic.punkt(11, 3));
+    }
+
+    #[test]
+    fn anhang_ohne_farben() {
+        let c = Container {
+            kennung: 0,
+            wort: 0,
+            chunks: [CHUNK_KOPF, CHUNK_FARBEN, CHUNK_ICON, CHUNK_ZUSATZ]
+                .iter()
+                .map(|&id| Chunk { id, daten: vec![1, 2] })
+                .collect(),
+        };
+        let a = c.anhang_wie_original();
+        assert_eq!(a.chunks.len(), 1);
+        assert_eq!(a.chunks[0].id, CHUNK_KOPF);
+    }
+
+    /// Icons aus dem Maschinenspeicher (je 43 von 62 Zeilen gelesen) mit [`Icon::aus_stichen`] vergleichen. Die
+    /// Zeichensätze Nr. 1–7 (Icon = Schriftprobe) und Nr. 41 (Rahmen-Vorlage) zeigen nicht ihre Stiche.
+    #[test]
+    fn icons_der_maschine() {
+        let ordner = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../Arbeitsdaten/maschinendesigns");
+        let Ok(eintraege) = std::fs::read_dir(&ordner) else {
+            eprintln!("übersprungen: {} fehlt", ordner.display());
+            return;
+        };
+        let (mut treffer, mut punkte, mut zuviel, mut designs) = (0usize, 0usize, 0usize, 0);
+        for e in eintraege.flatten() {
+            let name = e.file_name().to_string_lossy().to_string();
+            let Some(nr) = name.strip_prefix("Icon_Nr").and_then(|r| r[..2].parse::<u32>().ok()) else {
+                continue;
+            };
+            if nr < 8 || nr == 41 {
+                continue;
+            }
+            let Ok(exp) = std::fs::read(ordner.join(format!("Nr{nr:02}/stiche.exp"))) else {
+                continue;
+            };
+            let roh = std::fs::read(e.path()).unwrap();
+            let zeilen = (roh.len() - ICON_KOPF) / 9;
+            let echt = Icon::lesen(&roh).unwrap();
+            let neu = Icon::aus_stichen(&crate::exp::exp_lesen(&exp));
+            let (mut t, mut p, mut z) = (0, 0, 0);
+            for y in 0..zeilen.min(ICON_HOEHE) {
+                for x in 0..ICON_BREITE {
+                    let (a, b) = (echt.punkt(x, y), neu.punkt(x, y));
+                    p += a as usize;
+                    t += (a && b) as usize;
+                    z += (b && !a) as usize;
+                }
+            }
+            assert!(t * 10 >= p * 8, "Nr {nr}: nur {t} von {p} Icon-Punkten getroffen");
+            (treffer, punkte, zuviel, designs) = (treffer + t, punkte + p, zuviel + z, designs + 1);
+        }
+        if designs == 0 {
+            eprintln!("übersprungen: keine Icons in {}", ordner.display());
+            return;
+        }
+        eprintln!("{designs} Icons: {treffer} von {punkte} Punkten getroffen, {zuviel} zusätzlich");
+        assert!(designs >= 40);
+        assert!(treffer * 1000 >= punkte * 965, "nur {treffer} von {punkte} getroffen");
     }
 
     /// Flags je Designnummer aus `Arbeitsdaten/maschinendesigns/UEBERSICHT.md` (Spalte „Flags“ der Designliste).

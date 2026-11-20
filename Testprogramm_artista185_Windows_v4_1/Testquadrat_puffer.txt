@@ -1,0 +1,15 @@
+# Puffer DATEN für die artista 185 (stick puffer), Quelle ..\Testprogramm_artista185_Windows_v4_1\testquadrat.json
+laenge=728
+laenge_stiche=236
+laenge_anhang=316
+farben=1
+info_farben_minus_1=00
+info_flags=84
+info_name=5465737471756164726174000000000000000000000000000000000000000000
+name=Testquadrat
+farben_im_anhang=0
+datei_farbtabelle=Testquadrat_farben.bin
+farbtabelle_farben=1
+farbtabelle_laenge=27
+datei_icon=Testquadrat_icon.bin
+icon_laenge=732

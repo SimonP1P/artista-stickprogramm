@@ -1,0 +1,15 @@
+# Puffer DATEN für die artista 185 (stick puffer), Quelle ..\Arbeitsdaten\maschinendesigns\Design_Nr21_20261119_143203.bin
+laenge=9122
+laenge_stiche=8630
+laenge_anhang=316
+farben=3
+info_farben_minus_1=02
+info_flags=A4
+info_name=3133000000000000000000000000000000000000000000000000000000000000
+name=13
+farben_im_anhang=0
+datei_farbtabelle=Nr21_farben.bin
+farbtabelle_farben=3
+farbtabelle_laenge=105
+datei_icon=Nr21_icon.bin
+icon_laenge=732

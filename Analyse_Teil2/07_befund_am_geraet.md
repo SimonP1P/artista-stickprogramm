@@ -263,4 +263,26 @@ nach der ersten Grenze). Fortsetzung siehe unten (Testquadrat).
   verändert werden.“
 - Offen: Farbtabelle (Schritt 12, Zeiger 0x24048) und Icon (Schritt 8) wie das Original schreiben; dauerhaft speichern
   (0x10 → schreiben → 0x200).
+- **Stickbild (Foto des Nutzers, 19.11.2026):** Spannbettlaken (Jersey), kein Vlies, Nähgarn statt Stickgarn. Quadrat
+  geschlossen, mittig, Ecken sauber, Vernähen sichtbar → Geometrie und Reihenfolge aus dem Rechenkern stimmen (hoch).
+  Satinbalken (3 mm) zu einer welligen Linie zusammengezogen, Stoff in der Mitte aufgewölbt, Unterfaden oben sichtbar →
+  Material (dehnbarer Stoff ohne Vlies, Nähgarn/Fadenspannung); dazu Stoff „Software Defaults“ = keine Unterlage und
+  0,20 mm Zugausgleich (wie das Original). Nr. 47 am Rahmenrand verzogen (vor «check» gestickt). Verbindungsfäden
+  schneidet die artista 185 nicht selbst ab. Nächste Probe: fester Baumwollstoff, Abreißvlies, Stickgarn 40 + Stick-
+  Unterfaden, Stoff „Woven Medium Weight“.
+
+## Auswertung: Farbtabelle und Icon wie das Original (20.11.2026, ohne Gerät)
+| Befund | Quelle | Sicherheit |
+|---|---|---|
+| **Warum „no color“:** ab Firmware 3.09 schickt das Original die Farben **nicht** im Anhang, sondern als Garnfarbtabelle an Zeiger 0x24048 (T + Vorspann, danach `00 00 00` an T). Der Anhang enthält nur den Kopf-Chunk. v4.0 hatte die Farben nur im Anhang. | BEAGLink 0x100035b6–0x1000374d, 0x10003a5d–0x10003d2f; Format in [03](03_design_schreiben_schritt_fuer_schritt.md) Schritt 12 | hoch (Code), am Gerät ⬜ |
+| Zusatzblock (Zeiger 0x24044 → 0x20772): +0x0C höchste Farbanzahl M, +0x10 Größe G des Bereichs T (0x2083A); Werte der 185 noch nicht gelesen | 0x10005cfe, 0x10003a99, 0x10004886 | hoch (Bedeutung), Werte ⬜ |
+| Die gelesenen Maschinendesigns enthalten 0x14 im Anhang – die Maschine setzt die Farben beim Laden (0x400) selbst ein | 38 Anhänge (Test v3.6) | mittel |
+| **Icon-Regel:** die Icons der Maschine sind die Stichlinien (ohne Sprünge), eingepasst in x 2…70, y 2…60 von 72 × 62, mittig, in doppelter Auflösung gezeichnet → 96,9 % der Icon-Punkte von 43 Motiven getroffen (jedes ≥ 80 %). Zeichensätze Nr. 1–7 zeigen eine Schriftprobe, Nr. 41 eine Rahmenvorlage | Vergleich mit den gelesenen Icons (43 von 62 Zeilen), Test `icons_der_maschine` | mittel (abgeleitet; wie V4 Chunk 0x32 zeichnet, ist nicht analysiert) |
+| Chunk 0x32 → Puffer ICON: Zeilenfolge umdrehen, Bits invertieren | 0x10003e20 | hoch |
+
+Umgesetzt: `stick-formate::artista` (`farbtabelle_maschine`, `farbtabelle_lesen`, `FarbGrenzen`, `Icon`,
+`Container::anhang_wie_original`), `stick puffer` schreibt zusätzlich `NAME_farben.bin` und `NAME_icon.bin`,
+Testprogramm **v4.1** (`Testprogramm_artista185_Windows_v4_1/`; Selbsttest in der Simulation ok, 5 Läufe). Am Gerät
+zu prüfen (nur mit Zustimmung): Trockenlauf liest M, G und die vorhandene Tabelle; dann Testquadrat bzw. Nr. 21 (3 echte
+Isacord-Farben) mit Icon und Tabelle – zeigt das Display Farben statt „no color“?
 

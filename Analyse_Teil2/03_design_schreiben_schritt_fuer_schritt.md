@@ -38,10 +38,16 @@ Im Binärprotokoll (R/W-Box) sind höchstens **15 Designs** erlaubt (sonst Fehle
       danach          Anhang: 8 Byte Containerkopf (u32 bei +2 = Anhanglänge),
                       dann die übrigen Chunks; der Anhang wird mit der BE-Verschleierung
                       VERSCHLÜSSELT (0x1000a640, Modus 1)
+                      „übrige Chunks“ = ohne 0x1E (Stiche), 0x28, 0x32 (Icon) und – ab Firmware 3.09 –
+                      ohne 0x14 (Farben gehen über Schritt 12). Bei der artista 185 enthält der Anhang
+                      also nur den Kopf-Chunk 0x0A (0x100035b6–0x1000374d, hoch, 20.11.2026)
 7  ► WriteComBytes(DATEN, Puffer, 6N+8 + Stichlänge + 2 + Anhanglänge)
 8  wenn Icon vorhanden:
       Kopf 0xAE Byte: [0]=0 [1]=0 [2]=Bytes je Zeile ((Breite+7)/8) [3]=Höhe [4]=0xFF [5]=0, Rest 0
       dahinter Bitmap (Bytes je Zeile × Höhe)
+      Chunk 0x32: Daten[0] = Breite, [2] = Höhe, ab [4] Bitmap mit der UNTERSTEN Zeile zuerst und INVERTIERT;
+      0x10003e20 dreht die Zeilenfolge um und kehrt die Bits um → im Puffer ICON Zeilen von oben, Bit = Stich
+      (hoch, Code 20.11.2026). artista 185: 72 × 62 (9 Byte je Zeile) → 0xAE + 558 = 732 Byte
    ► WriteComBytes(ICON, Kopf+Bitmap, 0xAE + Bitmapgröße)
 9  ► WriteComBytes(INFO + (N+1),   [Farbanzahl − 1],   1 Byte)
 10 Funktions-Flags aus dem Kopf bilden (je ein Bit, wenn das Kopffeld ≠ 0):
@@ -50,13 +56,24 @@ Im Binärprotokoll (R/W-Box) sind höchstens **15 Designs** erlaubt (sonst Fehle
    ► WriteComBytes(INFO + (2N+1), Flags, 1 Byte)
 11 Name: 32 Byte aus dem Kopf ab Offset 0x14 (inkl. Chunkkopf), abschließende Leerzeichen → 0
    ► WriteComBytes(INFO + (3N+1), Name, 32 Byte)
-12 nur Firmware ≥ 3.09 – Garnfarbtabelle (Feldnamen vermutet, Sicherheit mittel):
-      Zeiger T bei 0x24048 lesen
-      je Farbe (0x86-Byte-Eintrag aus Chunk 0x14) einen Datensatz bilden:
-         u16 BE Datensatzlänge | Index | Farbbytes R,G,B | u16 BE Nummer |
-         Marke (bis 62 Zeichen, 0-terminiert) | Farbname (bis 62 Zeichen, 0-terminiert)
-      Tabellenkopf: Anzahl, Länge; Obergrenze = u16 bei Zusatzblock 0x24044 +0x10
-   ► WriteComBytes(Tabellenziel, Datensätze)  danach  WriteComBytes(T, 00 00 00, 3)
+12 nur Firmware ≥ 3.09 (artista 185: 4.04) – Garnfarbtabelle (0x10003a5d–0x10003d2f; Sicherheit hoch, Byte für
+   Byte nachgelesen 20.11.2026, Lesen 0x10004850 prüft dieselben Felder):
+      Zeiger T bei 0x24048 lesen (artista 185: 0x2083A)
+      Zusatzblock Z (beim Verbinden von Zeiger 0x24044 gelesen, 18 Byte; artista 185: 0x20772):
+         Z+0x0C u8  = höchste Farbanzahl M        Vorspann K = M + 6
+         Z+0x10 u16 BE = Größe G des Bereichs T  (nur gültig, wenn G < 0xFD00)
+      Tabelle im PC bauen:
+         0  00 00 00 01 | 4  00 00 00 08 | 8  u32 BE Länge ab Byte 8 | 12  00 00 + u16 BE Anzahl
+         16 je Farbe (0x86-Byte-Eintrag aus Chunk 0x14):
+            u16 BE Datensatzlänge (mit diesen 2 Byte) | u16 BE Nummer ab 1 | R G B | u16 BE Garnnummer |
+            Marke, 0 | Farbname, 0
+            (Marke/Name: Leerzeichen am Ende werden nur abgeschnitten, wenn das 64-Byte-Feld bis Stelle 0x3E mit
+             Leerzeichen gefüllt ist; sonst bis zur ersten 0)
+      Prüfung, sonst KEINE Tabelle (ohne Meldung): Chunk-Länge = 6 + n·0x86, Anzahl ≤ M, K + Länge < G
+   ► WriteComBytes(T + K, Tabelle, Länge)   danach   WriteComBytes(T, 00 00 00, 3)
+      (Lesen: gültig nur, wenn T[0] = 0, bei T+K u32 1 und u32 8, Länge < G, Anzahl < 0xFF)
+   Ohne Chunk 0x14 schreibt das Original keine Tabelle. Rust: stick-formate::artista::farbtabelle_maschine,
+   Testprogramm v4.1 (Werte M und G der artista 185 noch nicht gelesen).
 13 [nur wenn speichern] Kommando 0x200 an 0xFFFED0 (dauerhaft speichern), Timeout 7 s + 4 s
    Status: Bit 0x80 → „Card is full“, Bit 0x04 → Fehler
 14 PC-Liste aufräumen, TransparentMode(0), Exklusivzugriff freigeben

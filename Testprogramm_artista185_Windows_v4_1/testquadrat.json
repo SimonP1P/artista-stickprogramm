@@ -1,0 +1,21 @@
+{
+  "name": "Testquadrat",
+  "rahmen": "artista 130 x 100",
+  "stoff": "0 Software Defaults",
+  "objekte": [
+    {
+      "art": "lauf",
+      "name": "Quadrat",
+      "farbe": "#c0392b",
+      "punkte": { "rechteck": { "mitte": [0, 0], "breite": 20, "hoehe": 20 } },
+      "geschlossen": true
+    },
+    {
+      "art": "satinlinie",
+      "name": "Balken",
+      "farbe": "#c0392b",
+      "breite": 3,
+      "punkte": [[-7, 0], [7, 0]]
+    }
+  ]
+}

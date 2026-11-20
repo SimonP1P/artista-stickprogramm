@@ -19,7 +19,12 @@ Byte 8..L-1 VERSCHLEIERT: Folge von Chunks
 | 0x14 | Farbtabelle: 6 Byte Kopf + n × 0x86 Byte (R, G, B, 0, u16 Garnnummer, Marke 64 Byte, Name 64 Byte) | 6 + n·0x86 |
 | 0x1E | Stichdaten (EXP-artig, Ende `80 81`) | variabel |
 | 0x28 | Zusatzdaten | variabel |
-| 0x32 | Icon: u8 Breite, u8 Höhe, 1-Bit-Bitmap | 10 + Bitmap |
+| 0x32 | Icon: Daten[0] Breite, [2] Höhe, ab [4] 1-Bit-Bitmap (unterste Zeile zuerst, invertiert – [03](03_design_schreiben_schritt_fuer_schritt.md) Schritt 8) | 10 + Bitmap |
+
+**Was davon in den Puffer DATEN geht (hoch, Code 0x100035b6–0x1000374d, 20.11.2026):** nur der Kopf-Chunk 0x0A (und
+unbekannte weitere) – 0x1E steht als Stichdaten davor, 0x32 geht an ICON, 0x28 gar nicht, 0x14 ab Firmware 3.09 als
+Garnfarbtabelle über Zeiger 0x24048. Die aus der Maschine **gelesenen** Anhänge enthalten dagegen 0x0A und 0x14 – die
+Maschine setzt die Farben beim Laden (0x400) wieder ein. Rust: `Container::anhang_wie_original`.
 Beim Lesen setzt BEAGLink als Platzhalternamen `"Temp"` ein.
 
 ## Verschleierung

@@ -4,14 +4,16 @@
 //!   stick alphabete [ORDNER]                               Original-Alphabete (ESB) auflisten
 //!   stick anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] EXP als SVG darstellen
 //!   stick rahmen | stoffe                                  Rahmen bzw. Stoffe auflisten
-//!   stick puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang]
-//!                                                          Inhalt für den Puffer DATEN der artista 185 bauen
+//!   stick puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang]
+//!                                                          Daten für die artista 185 bauen: Puffer DATEN,
+//!                                                          Garnfarbtabelle und Icon (wie das Original)
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
 
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 use stick_formate::artista::{
-    CHUNK_FARBEN, CHUNK_KOPF, Chunk, Container, Farbe, Kopf, N_185, Puffer, farben_in_stichen,
+    CHUNK_FARBEN, CHUNK_KOPF, Chunk, Container, Farbe, Icon, Kopf, N_185, Puffer, farben_in_stichen,
+    farbtabelle_maschine,
 };
 use stick_formate::esb;
 use stick_formate::exp::{exp_bytes, exp_lesen};
@@ -131,23 +133,40 @@ fn container_fuer(name: &str, folge: &StichFolge) -> Container {
     }
 }
 
-/// Puffer DATEN für die artista 185 bauen: PUFFER.bin (Bytes für DATEN) und PUFFER.txt (Längen und INFO-Felder für
-/// das Testprogramm). Aus der Maschine gelesene Designs (Design_NrXX_*.bin) werden unverändert übernommen, nur ein
-/// ungültiger Anhang (Rest des vorher geladenen Designs) wird entfernt.
+/// Daten für die artista 185 bauen wie BEAGLink 0x100032b0 bei Firmware ≥ 3.09:
+/// - NAME_puffer.bin: Bytes für den Puffer DATEN; der Anhang enthält nur den Kopf-Chunk (Farben und Icon gehen
+///   getrennt; mit `--farben-im-anhang` wie im Gerätetest v4 vom 19.11.2026 mit Farbtabelle im Anhang),
+/// - NAME_farben.bin: Garnfarbtabelle für T + Vorspann (Schritt 12; nur wenn das Design Farben hat),
+/// - NAME_icon.bin: Puffer ICON (Schritt 8; Icon aus den Stichen gezeichnet),
+/// - NAME_puffer.txt: Längen, INFO-Felder und Dateinamen für das Testprogramm.
+///
+/// Aus der Maschine gelesene Designs (Design_NrXX_*.bin): ein ungültiger Anhang (Rest des vorher geladenen Designs)
+/// wird entfernt, ein gültiger wie oben ohne Farbtabelle neu verschleiert.
 fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
     let eingabe = PathBuf::from(args.get(1).ok_or(hilfe)?);
     let ohne_anhang = args.iter().any(|a| a == "--ohne-anhang");
+    let farben_im_anhang = args.iter().any(|a| a == "--farben-im-anhang");
+    let anhang_aus = |c: &Container| -> Vec<u8> {
+        if farben_im_anhang {
+            c.verschleiert()
+        } else {
+            c.anhang_wie_original().verschleiert()
+        }
+    };
     let stamm = eingabe.file_stem().unwrap_or_default().to_string_lossy().to_string();
     let endung = eingabe.extension().unwrap_or_default().to_string_lossy().to_lowercase();
     let mut name = option(args, "--name").unwrap_or_else(|| stamm.clone());
-    let mut puffer = match endung.as_str() {
+    let (mut puffer, container, folge) = match endung.as_str() {
         "bin" => {
             let roh = std::fs::read(&eingabe).map_err(|e| format!("{}: {e}", eingabe.display()))?;
             let mut p = Puffer::lesen(&roh, N_185)?;
-            if !p.anhang_gueltig() {
-                p.anhang.clear();
+            let c = p.container().transpose()?;
+            match &c {
+                Some(c) => p.anhang = anhang_aus(c),
+                None => p.anhang.clear(),
             }
-            p
+            let f = exp_lesen(&p.stiche);
+            (p, c, f)
         }
         "exp" | "json" => {
             let (exp, folge) = if endung == "exp" {
@@ -166,7 +185,9 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
             };
             println!("{}", statistik(&folge));
             let c = container_fuer(&name, &folge);
-            Puffer::neu(&exp, (!ohne_anhang).then_some(&c))
+            let mut p = Puffer::neu(&exp, None);
+            p.anhang = anhang_aus(&c);
+            (p, Some(c), folge)
         }
         _ => {
             return Err(format!(
@@ -183,6 +204,22 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
         .unwrap_or_else(|| eingabe.with_file_name(format!("{stamm}_puffer.bin")));
     let bytes = puffer.bytes();
     std::fs::write(&ziel, &bytes).map_err(|e| format!("{}: {e}", ziel.display()))?;
+    let basis = ziel.file_stem().unwrap_or_default().to_string_lossy().to_string();
+    let basis = basis.strip_suffix("_puffer").unwrap_or(&basis).to_string();
+    // Garnfarbtabelle (Schritt 12) aus Chunk 0x14 – ohne Farben schreibt das Original keine Tabelle
+    let garn = container.as_ref().map(Container::farben).unwrap_or_default();
+    let ziel_farben = ziel.with_file_name(format!("{basis}_farben.bin"));
+    let tabelle = farbtabelle_maschine(&garn);
+    if garn.is_empty() {
+        let _ = std::fs::remove_file(&ziel_farben);
+    } else {
+        std::fs::write(&ziel_farben, &tabelle).map_err(|e| format!("{}: {e}", ziel_farben.display()))?;
+    }
+    // Icon (Schritt 8), aus den Stichen gezeichnet
+    let icon = Icon::aus_stichen(&folge).bytes();
+    let ziel_icon = ziel.with_file_name(format!("{basis}_icon.bin"));
+    std::fs::write(&ziel_icon, &icon).map_err(|e| format!("{}: {e}", ziel_icon.display()))?;
+    let dateiname = |p: &Path| p.file_name().unwrap_or_default().to_string_lossy().to_string();
     let farben = farben_in_stichen(&puffer.stiche);
     let info = puffer.info_felder(farben);
     let hex = |b: &[u8]| b.iter().map(|x| format!("{x:02X}")).collect::<String>();
@@ -205,6 +242,22 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
         format!("info_flags={:02X}", info.flags),
         format!("info_name={}", hex(&info.name)),
         format!("name={kopf_name}"),
+        format!(
+            "farben_im_anhang={}",
+            u8::from(farben_im_anhang && !puffer.anhang.is_empty())
+        ),
+        format!(
+            "datei_farbtabelle={}",
+            if garn.is_empty() {
+                String::new()
+            } else {
+                dateiname(&ziel_farben)
+            }
+        ),
+        format!("farbtabelle_farben={}", garn.len()),
+        format!("farbtabelle_laenge={}", if garn.is_empty() { 0 } else { tabelle.len() }),
+        format!("datei_icon={}", dateiname(&ziel_icon)),
+        format!("icon_laenge={}", icon.len()),
     ];
     let txt = zeilen.join("\r\n") + "\r\n";
     let ziel_txt = ziel.with_extension("txt");
@@ -224,11 +277,27 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
         kopf_name,
         ziel_txt.display()
     );
+    if garn.is_empty() {
+        println!("  Farbtabelle:  keine (Design ohne Farbangaben)");
+    } else {
+        println!(
+            "  Farbtabelle:  {} ({} Farben, {} Byte){}",
+            ziel_farben.display(),
+            garn.len(),
+            tabelle.len(),
+            if farben_im_anhang {
+                " – Farben zusätzlich im Anhang"
+            } else {
+                ""
+            }
+        );
+    }
+    println!("  Icon:         {} ({} Byte, 72 × 62)", ziel_icon.display(), icon.len());
     Ok(true)
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang]";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang]";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;

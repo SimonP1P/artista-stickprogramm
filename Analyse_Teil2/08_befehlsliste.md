@@ -45,9 +45,9 @@ Alle Zeichen, Adressen und Daten (2 Hexziffern je Byte) werden **mit Echo** gese
 | AUSWAHL +0 / +5 | Designnummer + 1 / Bank | ✅ (Schreiben am Gerät bestätigt) | 🟡 |
 | 0xFFFEE0 | Übertragungsbyte: **0x01 = Transfer anfordern**, Maschine setzt Bit 0x02 = bereit; nur für Geräte, die **direkt** mit SRMV antworten (Flag 0x10072024 = 1). **Bei der artista 185 (NMMV → `Y Q`) schreibt das Original 0xFFFEE0 nie** (hoch, Code 0x10005980/0x10005de0, siehe 07). v3.1: 0x01 gespeichert, Bit 0x02 kam nie – passt dazu | ✅ geschrieben (v3.1), für die 185 **nicht nötig** | 🟡 |
 | DATEN | Design-Datenblock (Stiche usw.) | ⬜ | 🔴 (nur zusammen mit 0x10/0x200 dauerhaft) |
-| ICON | Vorschaubild | ⬜ | 🔴 |
+| ICON | Vorschaubild: Kopf 0xAE + Bitmap 72 × 62 = 732 Byte (Schritt 8) | 🟡 vorbereitet in v4.1 (Simulation ok), am Gerät ⬜ | 🔴 |
 | INFO + N+1 / 2N+1 / 3N+1 | Farbanzahl, Flags, Name | ⬜ | 🔴 |
-| Zeiger 0x24048 | Garnfarbtabelle | ⬜ | 🔴 |
+| Zeiger 0x24048 | Garnfarbtabelle: an T + Vorspann (höchste Farbanzahl aus Zusatzblock 0x24044 + 6), danach `00 00 00` an T (Schritt 12, [03](03_design_schreiben_schritt_fuer_schritt.md)) | 🟡 vorbereitet in v4.1 (Simulation ok), am Gerät ⬜; Zusatzblock/T lesen ist durch Regel 1a gedeckt | 🔴 |
 
 ## D. Binärprotokoll (Card Reader/Writer-Box, neuere Firmware) – Rahmen `02 … 03 Prüfsumme`, Antwort `06`
 | Befehl | Bedeutung | Status | Risiko |
