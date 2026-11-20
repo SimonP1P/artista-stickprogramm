@@ -66,6 +66,7 @@
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
 | **Bestandsaufnahme Funktionen** (Original gegen Kern, Grundlage Phase 4b und Parameterkatalog) | `Analyse_Teil3/15_funktionsinventur.md`, `ROADMAP.md` Phase 4b |
 | **UI-Mockups** (Claude Design, archiviert; Hinweise aus der Analyse für die Gestaltung) | `UI_Mockups/` (`README.md`, Stände je Ordner) |
+| **Funktionsübersicht für Designer und Frontend** (jede Funktion, Einstellungen, Standard, JSON-Feld, einfach/experte, fehlende App-Befehle; bei jeder neuen Funktion pflegen) | `UI_Mockups/FUNKTIONEN.md` |
 | **Merkliste für den Nutzer** (u. a. M1: Parameterkatalog einfach/experte melden, wenn alle Funktionen fertig) | `ROADMAP.md` „Merkliste für den Nutzer“ |
 | **Anforderungen an die neue Oberfläche** (UX/UI wird komplett neu gestaltet – Mockup von Claude Design; bis dahin **an der App nichts ändern**, nur Kern/Befehle) | `app/ANFORDERUNGEN.md` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |
