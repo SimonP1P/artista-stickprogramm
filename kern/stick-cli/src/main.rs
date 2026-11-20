@@ -8,6 +8,7 @@
 //!                                                          Daten für die artista 185 bauen: Puffer DATEN,
 //!                                                          Garnfarbtabelle und Icon (wie das Original)
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
+//!   stick garnkarten [--garnkarten ORDNER]                 Garnkarten (.tch) auflisten
 //!   stick maschine ports|pruefen|liste|lesen NR|senden EINGABE [--port COM3 | --simulation] …
 //!                                                          artista 185 ansprechen (Protokoll der Testprogramme;
 //!                                                          senden schreibt nur mit --schreiben, nach Rückfrage)
@@ -19,6 +20,7 @@ use std::process::ExitCode;
 use stick_formate::artista::{N_185, Sendedaten, farben_in_stichen};
 use stick_formate::esb;
 use stick_formate::exp::{exp_bytes, exp_lesen};
+use stick_formate::garnkarte;
 use stick_formate::svg::{SvgOptionen, svg_text};
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::rahmen::{alle_rahmen, rahmen};
@@ -65,6 +67,19 @@ fn alphabet_ordner(args: &[String]) -> PathBuf {
         .into()
 }
 
+/// Ordner der Garnkarten: Schalter --garnkarten, sonst STICK_GARNKARTEN, sonst „garnkarten“, sonst die Karten der CD
+/// im Projekt (`Analyse/daten/garnkarten`).
+fn garnkarten_ordner(args: &[String]) -> PathBuf {
+    if let Some(o) = option(args, "--garnkarten").or_else(|| std::env::var("STICK_GARNKARTEN").ok()) {
+        return o.into();
+    }
+    let hier = PathBuf::from("garnkarten");
+    if hier.is_dir() {
+        return hier;
+    }
+    PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../../Analyse/daten/garnkarten"))
+}
+
 fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool, String> {
     let text = std::fs::read_to_string(design_pfad).map_err(|e| format!("{}: {e}", design_pfad.display()))?;
     let mut design = Design::aus_json(&text)?;
@@ -107,6 +122,7 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
     let stamm = eingabe.file_stem().unwrap_or_default().to_string_lossy().to_string();
     let endung = eingabe.extension().unwrap_or_default().to_string_lossy().to_lowercase();
     let name = option(args, "--name");
+    let mut karte = option(args, "--garnkarte");
     let lesen = || std::fs::read(eingabe).map_err(|e| format!("{}: {e}", eingabe.display()));
     let mut s = match endung.as_str() {
         "bin" => Sendedaten::aus_gelesenem(&lesen()?, farben_im_anhang)?,
@@ -117,6 +133,11 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
         }
         "json" => {
             let text = std::fs::read_to_string(eingabe).map_err(|e| format!("{}: {e}", eingabe.display()))?;
+            if karte.is_none() {
+                karte = serde_json::from_str::<serde_json::Value>(&text)
+                    .ok()
+                    .and_then(|v| v.get("garnkarte")?.as_str().map(String::from));
+            }
             let mut design = Design::aus_json(&text)?;
             esb::design_alphabete_laden(&mut design, &alphabet_ordner(args))?;
             let f = design.berechnen()?;
@@ -132,6 +153,23 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
     };
     if args.iter().any(|a| a == "--ohne-anhang") {
         s.ohne_anhang();
+    }
+    // Garnangaben: Farben ohne Marke dem nächsten Garn der Karte zuordnen (Standard „Default“, wie die Maschine)
+    let karte = karte.unwrap_or_else(|| "Default".into());
+    if karte != "keine" && s.farben.iter().any(|f| f.marke.is_empty()) {
+        let k = garnkarte::laden(&garnkarten_ordner(args), &karte)?;
+        for (i, f) in s.garne_zuordnen(&k).iter().enumerate() {
+            println!(
+                "  Garn {}: {} {} {} (RGB {:02X}{:02X}{:02X})",
+                i + 1,
+                f.marke,
+                f.nummer,
+                f.name,
+                f.rgb[0],
+                f.rgb[1],
+                f.rgb[2]
+            );
+        }
     }
     Ok(s)
 }
@@ -239,7 +277,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -287,6 +325,18 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
+        Some("garnkarten") => {
+            let ordner = garnkarten_ordner(args);
+            let liste = garnkarte::verzeichnis(&ordner);
+            if liste.is_empty() {
+                return Err(format!("keine Garnkarten in {}", ordner.display()));
+            }
+            for (name, pfad) in liste {
+                let k = garnkarte::Garnkarte::lesen(&pfad)?;
+                println!("  {:<38} {:4} Garne  Marke {}", name, k.garne.len(), k.marke());
+            }
+            Ok(true)
+        }
         Some("rahmen") => {
             for r in alle_rahmen() {
                 println!("  {:<36} {:6.1} × {:6.1} mm  {}", r.name, r.breite, r.hoehe, r.hinweis);

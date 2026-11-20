@@ -21,7 +21,7 @@
 | **Algorithmen schmale Bahnen** (Auto-Spacing-Tabelle, EasyStitch-Schwellen) | `Analyse/code/10_algorithmen_schmale_bahnen.md` |
 | **Stoffe** (8 Stück, was sich ändert) | `Analyse/code/10_algorithmen_schmale_bahnen.md` §E, Rohdaten `Analyse/daten/entschluesselt/fabrics_diff.txt` |
 | Rahmen (Maße, Formen) | `Analyse/daten/hoops_table.md`, Format `Analyse/code/08_rahmen_dsc.md` |
-| Garnfarbkarten | `Analyse/daten/garnkarten/` (+ `UEBERSICHT.md`), Format `Analyse/code/09_garnkarten_tch.md` |
+| Garnfarbkarten | `Analyse/daten/garnkarten/` (+ `UEBERSICHT.md`), Format `Analyse/code/09_garnkarten_tch.md`; im Kern `stick-formate::garnkarte` (Zuordnung CIEDE2000, eigene Festlegung); die Maschine nutzt `Default.tch` als Standard (Gerät 20.11.2026) |
 | Alphabete, empfohlene Min-/Max-Höhen | `Analyse/daten/alphabets.md` |
 | **EXP-Format** | `Analyse/code/07_exp_format.md` |
 | **ART/AMT/ESB entschlüsseln** (Format-Keys, Twofish) | `Analyse/code/05_art_amt_verschluesselung.md` |
@@ -122,4 +122,4 @@ in der Roadmap stehen.
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
 | 4 Sticharten nach dem Original | Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift mit Original-Alphabeten, Kurzstiche ✅; offen: Schrift-Reihenfolge, Tatami-Kurzstiche, Auto-Split, Fancy, Applikation, TTF, Vektorisierung, Knockout | 🟡 (`ROADMAP.md`, `Analyse_Teil3/10`) |
-| 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten, Mac-Programm | 🟡 |
+| 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |

@@ -36,6 +36,8 @@ export interface Ergebnis {
   ausserhalb: number;
   /** Zeichen eines Texts, die das Alphabet nicht hat */
   fehlende_zeichen: string;
+  /** Garn je Farbe aus der Garnkarte des Designs (leer ohne Karte) */
+  garne: GarnInfo[];
 }
 
 export interface AlphabetInfo {

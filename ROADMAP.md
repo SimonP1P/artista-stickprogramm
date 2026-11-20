@@ -15,7 +15,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, **Schrift** ✅ · Rest offen | 🟡 8 Punkte erledigt, 10 offen |
-| 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten, Mac-Programm | 🟡 |
+| 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
 
 **Stand 20.11.2026:** Am 19.11. wurde das erste Design aus dem eigenen Rechenkern auf der artista 185 gestickt. Am 20.11.
 (ohne Maschine) wurde geklärt, warum das Display „no color“ zeigte: Ab Firmware 3.09 schickt das Original die Farben als
@@ -24,8 +24,8 @@ eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Ic
 1. **Gerätetest v4.1:** ✅ Lesen (20.11.: M = 60, G = 6000; Tabelle der Maschine für Nr. 21 byte-gleich mit unserer) ·
    ⬜ Schreiben von ICON + Tabelle und Display ansehen → Liste „Vor Ort“ unten. Danach Speichern (0x10/0x200),
 2. Phase 5: ✅ **„Senden“ direkt aus dem Programm** (20.11.: `stick-maschine`, Oberfläche Schritt 4; am Gerät lesend
-   erprobt, Schreiben aus dem Programm → „Vor Ort“ V1). Weiter: Garnangaben (Marke, Nummer, Name) aus den
-   Garnfarbkarten, damit eigene Designs echte Garnfarben mitschicken; Designs aus der Maschine öffnen,
+   erprobt, Schreiben aus dem Programm → „Vor Ort“ V1); ✅ Garnfarbkarten; ✅ Designs aus der Maschine öffnen.
+   Weiter: Design mit der Maus anpassen, Garn je Farbe wählen, Mac-Programm,
 3. Phase 4 weiter: Schrift-Reihenfolge, Kurzstiche bei Tatami, Auto-Split …
 
 ## Vor Ort – wartet auf eine Person an der Maschine (Stand 20.11.2026)
@@ -110,8 +110,9 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
   aus dem Programm am Gerät (Liste „Vor Ort“ V1)
 - ✅ 20.11.2026 Designs aus der Maschine öffnen: Liste, lesen (0x400), Vorschau mit den Garnfarben der Maschine, als EXP
   speichern – am Gerät erprobt (Nr. 21 mit Isacord rich brown/brass/light beige)
-- ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus), Garnfarbkarten (Marke, Nummer und
-  Name je Farbe → Garnfarbtabelle an die Maschine)
+- ✅ 20.11.2026 Garnfarbkarten: 32 Karten der CD, Auswahl im Programm, jede Farbe → nächstes Garn (CIEDE2000, eigene
+  Festlegung) → Marke/Nummer/Name in der Garnfarbtabelle; Standard `Default.tch` wie die Maschine („Default Blue“)
+- ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus); Garn je Farbe von Hand wählen
 - ⬜ Mac-Programm (GitHub Actions, macOS-Runner)
 
 ## Erledigte Phasen (Kurzbeleg)

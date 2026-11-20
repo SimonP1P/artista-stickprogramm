@@ -8,6 +8,7 @@ use std::sync::Mutex;
 use stick_formate::artista::{Farbe, N_185, Puffer, Sendedaten};
 use stick_formate::esb;
 use stick_formate::exp::{exp_bytes, exp_lesen};
+use stick_formate::garnkarte::{self, Garnkarte};
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::rahmen::{Rahmen, alle_rahmen};
 use stick_kern::schrift::Alphabet;
@@ -63,6 +64,37 @@ impl Alphabete {
     }
 }
 
+/// Garnkarten (`.tch`) der CD: Ordner wie bei den Alphabeten.
+struct Garnkarten {
+    ordner: PathBuf,
+}
+
+impl Garnkarten {
+    fn finden(ressourcen: Option<PathBuf>) -> PathBuf {
+        if let Ok(p) = std::env::var("STICK_GARNKARTEN") {
+            return p.into();
+        }
+        if let Some(r) = ressourcen.map(|r| r.join("garnkarten"))
+            && r.is_dir()
+        {
+            return r;
+        }
+        PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/garnkarten"))
+    }
+
+    /// Karte, die das Design-JSON nennt (Feld `garnkarte`, Standard „Default“ wie die Maschine; „keine“ = ohne).
+    fn fuer_design(&self, json: &str) -> Result<Option<Garnkarte>, String> {
+        let name = serde_json::from_str::<Value>(json)
+            .ok()
+            .and_then(|v| v.get("garnkarte")?.as_str().map(String::from))
+            .unwrap_or_else(|| "Default".into());
+        if name == "keine" {
+            return Ok(None);
+        }
+        garnkarte::laden(&self.ordner, &name).map(Some)
+    }
+}
+
 #[derive(Serialize)]
 struct AlphabetInfo {
     name: String,
@@ -115,6 +147,8 @@ struct Ergebnis {
     ausserhalb: usize,
     /// Zeichen eines Texts, die das Alphabet nicht hat
     fehlende_zeichen: String,
+    /// Garn je Farbe (aus der Garnkarte des Designs; leer ohne Karte)
+    garne: Vec<GarnInfo>,
 }
 
 /// Design aus JSON; Rahmen und Stoff aus der Oberfläche haben Vorrang vor den Angaben im JSON.
@@ -169,8 +203,25 @@ async fn design_berechnen(
     rahmen: Option<String>,
     stoff: Option<String>,
     alphabete: State<'_, Alphabete>,
+    garnkarten: State<'_, Garnkarten>,
 ) -> Result<Ergebnis, String> {
-    berechnen_mit(&json, rahmen, stoff, &alphabete)
+    let mut e = berechnen_mit(&json, rahmen, stoff, &alphabete)?;
+    if let Some(k) = garnkarten.fuer_design(&json)? {
+        e.garne = e
+            .farben
+            .iter()
+            .map(|hex| GarnInfo::from(&k.naechstes(Farbe::aus_hex(hex).rgb).farbe()))
+            .collect();
+    }
+    Ok(e)
+}
+
+#[tauri::command]
+fn garnkarten_liste(garnkarten: State<'_, Garnkarten>) -> Vec<String> {
+    garnkarte::verzeichnis(&garnkarten.ordner)
+        .into_iter()
+        .map(|(n, _)| n)
+        .collect()
 }
 
 fn statistik_von(folge: &StichFolge) -> Statistik {
@@ -208,6 +259,7 @@ fn berechnen_mit(
         stoff: design.einstellungen.stoff.clone(),
         ausserhalb: design.ausserhalb(&folge).len(),
         fehlende_zeichen: fehlend.into_iter().collect(),
+        garne: Vec::new(),
         statistik,
         farben: folge.farben,
         stiche: folge.stiche,
@@ -243,7 +295,7 @@ async fn exp_speichern(
 // Schritt 4: an die Maschine (kern/stick-maschine, Protokoll der Testprogramme v3.6/v4.1)
 // ---------------------------------------------------------------------------------------------------------------
 
-#[derive(Serialize)]
+#[derive(Serialize, Clone)]
 struct GarnInfo {
     rgb: String,
     nummer: u16,
@@ -422,8 +474,12 @@ fn mit_maschine<T>(
     ))
 }
 
-/// Was das Original für dieses Design senden würde (Puffer, Icon, Garnfarben, INFO-Felder).
-fn sendedaten(json: &str, alphabete: &Alphabete) -> Result<Sendedaten, String> {
+/// Was das Original für dieses Design senden würde (Puffer, Icon, Garnfarben aus der Garnkarte, INFO-Felder).
+fn sendedaten(
+    json: &str,
+    alphabete: &Alphabete,
+    garnkarten: &Garnkarten,
+) -> Result<Sendedaten, String> {
     let mut design = design_laden(json, None, None)?;
     alphabete.einsetzen(&mut design)?;
     let folge = design.berechnen()?;
@@ -433,7 +489,11 @@ fn sendedaten(json: &str, alphabete: &Alphabete) -> Result<Sendedaten, String> {
             "{aussen} Einstiche liegen außerhalb des Stickfelds – erst anpassen"
         ));
     }
-    Ok(Sendedaten::eigenes_design(&design.name, &folge, false))
+    let mut s = Sendedaten::eigenes_design(&design.name, &folge, false);
+    if let Some(k) = garnkarten.fuer_design(json)? {
+        s.garne_zuordnen(&k);
+    }
+    Ok(s)
 }
 
 async fn im_hintergrund<T: Send + 'static>(
@@ -477,8 +537,9 @@ async fn maschine_planen(
     simulation: bool,
     wahl: SendeWahl,
     alphabete: State<'_, Alphabete>,
+    garnkarten: State<'_, Garnkarten>,
 ) -> Result<PlanInfo, String> {
-    let s = sendedaten(&json, &alphabete)?;
+    let s = sendedaten(&json, &alphabete, &garnkarten)?;
     im_hintergrund(move || {
         let (plan, sitzung) = mit_maschine(&app, &port, simulation, "planen", |m| {
             m.planen(&s, &wahl.into())
@@ -503,8 +564,9 @@ async fn maschine_senden(
     simulation: bool,
     wahl: SendeWahl,
     alphabete: State<'_, Alphabete>,
+    garnkarten: State<'_, Garnkarten>,
 ) -> Result<SendeInfo, String> {
-    let s = sendedaten(&json, &alphabete)?;
+    let s = sendedaten(&json, &alphabete, &garnkarten)?;
     im_hintergrund(move || {
         let mut fortschritt = melder(&app);
         let (b, sitzung) = mit_maschine(&app, &port, simulation, "senden", |m| {
@@ -631,7 +693,7 @@ async fn maschine_lesen(
         sitzung,
         nr,
         bytes: d.puffer.len(),
-        garne,
+        garne: garne.clone(),
         ergebnis: Ergebnis {
             name: titel,
             rahmen: RahmenInfo::from(&rahmen),
@@ -639,6 +701,7 @@ async fn maschine_lesen(
             statistik: statistik_von(&folge),
             ausserhalb,
             fehlende_zeichen: String::new(),
+            garne,
             farben: std::mem::take(&mut folge.farben),
             stiche: folge.stiche,
         },
@@ -668,6 +731,9 @@ pub fn run() {
                 geladen: Mutex::new(HashMap::new()),
             });
             app.manage(Gelesen(Mutex::new(None)));
+            app.manage(Garnkarten {
+                ordner: Garnkarten::finden(app.path().resource_dir().ok()),
+            });
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
@@ -679,6 +745,7 @@ pub fn run() {
             datei_lesen,
             text_speichern,
             exp_speichern,
+            garnkarten_liste,
             maschine_ports,
             maschine_pruefen,
             maschine_planen,
@@ -727,14 +794,34 @@ mod tests {
             ordner: Alphabete::finden(None),
             geladen: Mutex::new(HashMap::new()),
         };
-        let s = sendedaten(BEISPIEL, &a).unwrap();
+        let g = Garnkarten {
+            ordner: Garnkarten::finden(None),
+        };
+        let s = sendedaten(BEISPIEL, &a, &g).unwrap();
         assert!(s.puffer.endkennung());
         assert_eq!(s.farben.len(), s.info.farben_minus_1 as usize + 1);
+        // ohne Angabe: Garne aus Default.tch (wie die Maschine)
+        assert!(
+            s.farben.iter().all(|f| f.marke == "Default"),
+            "{:?}",
+            s.farben
+        );
+        let isacord = BEISPIEL.replacen('{', r#"{"garnkarte": "Isacord 40 wt-numerical","#, 1);
+        let s = sendedaten(&isacord, &a, &g).unwrap();
+        assert!(s.farben.iter().all(|f| f.marke == "Isacord 40"));
+        let ohne = BEISPIEL.replacen('{', r#"{"garnkarte": "keine","#, 1);
+        assert!(
+            sendedaten(&ohne, &a, &g)
+                .unwrap()
+                .farben
+                .iter()
+                .all(|f| f.marke.is_empty())
+        );
         assert_eq!(s.icon.bytes().len(), 732);
         // Design außerhalb des Stickfelds wird nicht gesendet
         let gross =
             r#"{"rahmen":"artista 40 x 60","objekte":[{"art":"lauf","punkte":[[-50,0],[50,0]]}]}"#;
-        assert!(sendedaten(gross, &a).unwrap_err().contains("außerhalb"));
+        assert!(sendedaten(gross, &a, &g).unwrap_err().contains("außerhalb"));
     }
 
     #[test]

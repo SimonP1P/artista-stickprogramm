@@ -1,0 +1,266 @@
+1001,Sulky,bright white,A,250,250,255
+1002,Sulky,soft white,A,250,250,255
+1005,Sulky,black,A,0,0,0
+1011,Sulky,steel gray,A,220,220,224
+1015,Sulky,med. Peach,A,255,180,160
+1016,Sulky,pastel coral,A,240,153,130
+1017,Sulky,pastel peach,A,230,204,190
+1019,Sulky,peach,A,240,153,130
+1020,Sulky,dk. peach,A,240,153,130
+1021,Sulky,maple,A,255,102,0
+1022,Sulky,cream,A,245,255,204
+1023,Sulky,yellow,A,245,255,120
+1024,Sulky,goldenrod,A,255,204,0
+1025,Sulky,mine gold,A,240,204,51
+1028,Sulky,baby blue,A,210,220,255
+1029,Sulky,med. blue,A,210,220,255
+1030,Sulky,periwinkle,A,210,220,255
+1031,Sulky,med. orchid,A,255,204,255
+1032,Sulky,med. purple,A,120,51,153
+1033,Sulky,dk. orchid,A,220,153,204
+1034,Sulky,burgundy,A,204,51,51
+1035,Sulky,dk. burgundy,A,153,51,75
+1037,Sulky,red,A,255,51,0
+1039,Sulky,true red,A,255,0,75
+1040,Sulky,med.dk. khaki,A,75,75,75
+1041,Sulky,med. dk. gray,A,153,153,154
+1042,Sulky,bright navy blue,A,0,40,120
+1043,Sulky,dk. navy,A,0,0,102
+1044,Sulky,midnight blue,A,0,0,51
+1045,Sulky,lt. teal,A,220,255,204
+1046,Sulky,teal,A,0,215,245
+1047,Sulky,mint green,A,153,255,220
+1049,Sulky,grass green,A,140,230,104
+1051,Sulky,Christmas green,A,51,204,70
+1054,Sulky,med. dk. ecru,A,204,153,102
+1055,Sulky,tawny tan,A,255,240,90
+1056,Sulky,med. tawny tan,A,204,153,51
+1057,Sulky,dk. tawny tan,A,153,102,51
+1058,Sulky,tawny brown,A,153,102,51
+1059,Sulky,dk. tawny brown,A,102,51,0
+1061,Sulky,pale yellow ,A,245,255,204
+1063,Sulky,pale yellow green,A,230,255,204
+1064,Sulky,pale peach,A,255,204,220
+1065,Sulky,orange yellow,A,255,153,51
+1066,Sulky,primrose,A,255,245,153
+1067,Sulky,lemon yellow,A,245,255,140
+1068,Sulky,pink tint,A,255,204,220
+1070,Sulky,gold,A,255,240,90
+1071,Sulky,off white,A,255,255,235
+1074,Sulky,pale powder blue,A,240,250,255
+1076,Sulky,royal blue,A,165,165,255
+1077,Sulky,jade tint,A,220,255,230
+1078,Sulky,tangerine,A,255,102,0
+1079,Sulky,emerald green,A,51,120,102
+1080,Sulky,orchid,A,220,153,204
+1081,Sulky,brick,A,204,72,51
+1082,Sulky,ecru,A,255,245,153
+1083,Sulky,spark gold,A,255,204,0
+1085,Sulky,silver,A,204,210,204
+1086,Sulky,pale seafoam,A,255,255,245
+1090,Sulky,deep peacock,A,0,204,230
+1094,Sulky,med. turquoise,A,0,204,230
+1095,Sulky,turquoise,A,0,255,255
+1096,Sulky,dk. turquoise,A,51,102,153
+1100,Sulky,lt. grass green,A,153,255,220
+1101,Sulky,true green,A,51,204,153
+1103,Sulky,dk. khaki,A,0,73,51
+1104,Sulky,pastel yellow green,A,204,255,204
+1108,Sulky,lt. mauve,A,255,185,190
+1109,Sulky,hot pink,A,255,130,204
+1111,Sulky,pastel orchid,A,255,204,204
+1113,Sulky,pastel mauve,A,255,230,230
+1115,Sulky,lt. pink,A,255,204,204
+1117,Sulky,mauve,A,255,190,190
+1119,Sulky,dk. mauve,A,204,150,140
+1120,Sulky,pale pink,A,255,230,230
+1121,Sulky,pink,A,255,204,204
+1122,Sulky,purple,A,120,51,153
+1124,Sulky,sun yellow,A,245,255,120
+1126,Sulky,tan ,A,204,153,51
+1127,Sulky,med. ecru,A,255,245,153
+1128,Sulky,dk. ecru,A,230,204,190
+1129,Sulky,brown,A,102,51,0
+1130,Sulky,dk. brown,A,102,51,0
+1131,Sulky,cloister brown,A,102,51,0
+1134,Sulky,peacock blue,A,210,220,255
+1135,Sulky,pastel yellow,A,225,225,51
+1137,Sulky,yellow/orange,A,255,204,0
+1143,Sulky,true blue,A,170,200,255
+1145,Sulky,powder blue,A,210,220,255
+1147,Sulky,Christmas red,A,255,51,0
+1148,Sulky,lt. coral,A,255,190,190
+1149,Sulky,deep ecru,A,220,200,160
+1151,Sulky,powder blue tint,A,220,220,224
+1154,Sulky,coral    ,A,255,154,154
+1156,Sulky,lt. army green,A,130,191,53
+1158,Sulky,dk. maple,A,204,153,51
+1159,Sulky,temple gold,A,240,204,51
+1162,Sulky,deep teal,A,61,89,120
+1165,Sulky,lt.sky blue,A,204,210,204
+1166,Sulky,med. steel gray,A,75,75,75
+1167,Sulky,maize yellow,A,225,225,51
+1168,Sulky,true orange,A,255,102,0
+1169,Sulky,bayberry red,A,153,51,75
+1170,Sulky,lt. brown,A,125,80,41
+1171,Sulky,weathered blue,A,61,89,120
+1172,Sulky,med. weathered blue,A,165,165,255
+1173,Sulky,med. army green,A,130,191,53
+1174,Sulky,dk. pine green,A,0,102,0
+1175,Sulky,dk. avocado,A,153,153,51
+1176,Sulky,med. dk. Avocado,A,153,153,51
+1177,Sulky,avocado,A,140,230,104
+1179,Sulky,dk. taupe,A,153,121,102
+1180,Sulky,med. taupe,A,51,191,204
+1181,Sulky,rust,A,255,51,0
+1182,Sulky,blue black,A,0,0,102
+1183,Sulky,black cherry,A,102,51,0
+1184,Sulky,orange red,A,255,102,0
+1185,Sulky,golden yellow,A,255,240,90
+1186,Sulky,sable brown,A,102,51,0
+1187,Sulky,mimosa yellow,A,245,255,120
+1188,Sulky,red geranium,A,255,0,102
+1189,Sulky,dk. chestnut,A,102,25,75
+1190,Sulky,med. burgundy,A,204,72,51
+1191,Sulky,dk. rose,A,230,51,125
+1192,Sulky,fuchsia,A,204,0,180
+1193,Sulky,lavender,A,224,204,255
+1194,Sulky,lt. purple,A,120,51,153
+1195,Sulky,dk. purple,A,102,2,153
+1196,Sulky,blue,A,210,220,255
+1197,Sulky,med. navy,A,102,2,153
+1198,Sulky,dusty navy,A,170,200,255
+1199,Sulky,admiral navy blue,A,102,2,153
+1200,Sulky,med. dk. navy,A,0,40,120
+1201,Sulky,med. powder blue,A,90,140,255
+1202,Sulky,deep turquoise,A,61,89,120
+1203,Sulky,lt. weathered blue,A,204,204,204
+1204,Sulky,pastel jade,A,220,255,204
+1205,Sulky,med. Jade,A,230,255,255
+1206,Sulky,dk. jade,A,51,102,153
+1207,Sulky,seafoam green,A,204,255,204
+1208,Sulky,mallard green,A,51,120,102
+1209,Sulky,lt. avocado,A,204,255,204
+1210,Sulky,dk. army green,A,153,153,51
+1211,Sulky,lt. khaki,A,153,153,51
+1212,Sulky,khaki,A,153,153,51
+1213,Sulky,taupe,A,255,190,190
+1214,Sulky,med. chestnut,A,125,80,41
+1215,Sulky,blackberry,A,125,80,41
+1216,Sulky,med. maple,A,204,150,140
+1217,Sulky,chestnut,A,153,102,51
+1218,Sulky,silver gray,A,204,204,204
+1219,Sulky,gray,A,153,153,165
+1220,Sulky,charcoal gray,A,75,75,75
+1222,Sulky,lt. baby blue,A,210,220,255
+1223,Sulky,baby blue tint,A,240,250,255
+1224,Sulky,bright pink,A,255,130,204
+1225,Sulky,pastel pink,A,255,204,204
+1226,Sulky,dk. periwinkle,A,153,104,220
+1227,Sulky,gold green,A,204,204,51
+1228,Sulky,drab green,A,51,191,204
+1229,Sulky,lt. putty,A,245,240,230
+1230,Sulky,dk. teal,A,51,120,102
+1231,Sulky,med. rose,A,230,51,125
+1232,Sulky,classic green,A,0,153,130
+1233,Sulky,ocean teal,A,61,89,120
+1234,Sulky,almost black,A,0,0,0
+1235,Sulky,deep purple,A,120,51,153
+1236,Sulky,lt. silver,A,220,220,224
+1237,Sulky,deep mauve,A,204,72,51
+1238,Sulky,orange sunrise,A,255,153,51
+1239,Sulky,apricot,A,255,180,51
+1246,Sulky,orange flame,A,255,102,0
+1247,Sulky,mahogany,A,102,51,0
+1248,Sulky,med. pastel blue,A,240,250,255
+1249,Sulky,cornflower blue,A,210,220,255
+1250,Sulky,duck wing blue,A,51,102,153
+1251,Sulky,bright turquoise,A,51,102,153
+1252,Sulky,bright peacock,A,0,204,230
+1253,Sulky,dk. sapphire,A,60,130,255
+1254,Sulky,dusty lavender,A,240,180,235
+1256,Sulky,sweet pink,A,255,130,204
+1257,Sulky,deep coral,A,255,0,102
+1258,Sulky,coral reef,A,255,240,90
+1259,Sulky,salmon peach,A,240,153,130
+1503,Sulky,green peacock,A,51,204,70
+1508,Sulky,putty,A,220,255,230
+1510,Sulky,lime green,A,153,204,102
+1511,Sulky,deep rose,A,230,51,125
+1513,Sulky,wild peacock,A,51,120,102
+1517,Sulky,coachman green,A,51,120,102
+1533,Sulky,lt. rose,A,215,0,120
+1534,Sulky,sapphire,A,60,130,255
+1535,Sulky,team blue,A,165,165,255
+1536,Sulky,midnight teal,A,0,73,51
+2100,Sulky,vari-pastel pinks,A,255,230,230
+2101,Sulky,vari-pinks,A,255,154,154
+2102,Sulky,vari-roses,A,255,0,102
+2103,Sulky,vari-oranges,A,255,153,51
+2104,Sulky,vari-pastel blues,A,210,220,255
+2105,Sulky,vari-teal blues,A,0,204,230
+2106,Sulky,vari-blues,A,60,130,255
+2107,Sulky,vari-navy blues,A,102,2,153
+2108,Sulky,vari-silver grays,A,220,220,224
+2109,Sulky,vari-gray blacks,A,75,75,75
+2110,Sulky,vari-true greens,A,153,255,220
+2111,Sulky,vari-grass greens,A,204,255,204
+2112,Sulky,vari-mint greens,A,153,255,220
+2113,Sulky,vari-bright greens,A,153,255,220
+2114,Sulky,vari-avocado greens,A,204,255,204
+2115,Sulky,vari-pine greens,A,140,230,104
+2116,Sulky,vari-taupes,A,255,245,153
+2117,Sulky,vari-yellows,A,255,204,0
+2118,Sulky,vari-med. browns,A,204,153,51
+2119,Sulky,vari-lt. browns,A,204,153,51
+2120,Sulky,vari-dk. brown/golds,A,153,102,51
+2121,Sulky,vari-orchids,A,220,153,204
+2122,Sulky,vari-baby pinks,A,255,204,204
+2123,Sulky,vari-reds,A,255,0,102
+2201,Sulky,vari-blue/pink/mint,A,240,250,255
+2202,Sulky,vari-mint greens/pinks,A,153,255,220
+2203,Sulky,vari-baby pink/mint/blue,A,210,220,255
+2240,Sulky,vari-green/coral,A,140,230,104
+2241,Sulky,vari-peach/blue/rust/green,A,255,0,102
+2242,Sulky,vari-red/gold/blue,A,255,153,51
+2243,Sulky,vari-green/purple/gold,A,220,153,204
+2244,Sulky,vari-coral/brown/teal,A,153,102,51
+2245,Sulky,vari-gold/black/red,A,0,0,102
+2246,Sulky,vari-blue/green/tan,A,210,220,255
+2247,Sulky,vari-blue/lavender/red/yellow/green,A,255,204,0
+7001,Sulky,metallic silver,A,250,250,255
+7003,Sulky,metallic lt. gold,A,245,255,204
+7004,Sulky,metallic dark gold,A,245,255,120
+7005,Sulky,metallic brass,A,245,255,120
+7007,Sulky,metallic gold ,A,255,240,90
+7009,Sulky,metallic pewter,A,153,153,165
+7010,Sulky,metallic dk. copper,A,255,51,0
+7011,Sulky,metallic lt. copper,A,204,72,51
+7012,Sulky,metallic lavender,A,255,204,255
+7013,Sulky,metallic rose,A,0,153,130
+7014,Sulky,metallic Christmas red ,A,204,72,51
+7015,Sulky,metallic jade green,A,51,120,102
+7016,Sulky,metallic blue,A,165,165,255
+7018,Sulky,metallic Christmas green,A,51,204,153
+7020,Sulky,metallic gold/turquoise/pink,A,255,204,0
+7021,Sulky,metallic rainbow prism white,A,250,250,255
+7022,Sulky,metallic jade/purple,A,51,102,153
+7023,Sulky,metallic black/silver,A,153,153,154
+7024,Sulky,metallic lt. blue/gold/lavender,A,153,153,51
+7025,Sulky,metallic silver/icey blue,A,220,255,204
+7026,Sulky,metallic silver/baby blue/pink,A,153,153,165
+7027,Sulky,metallic cran/gold/pine green,A,240,204,51
+7028,Sulky,metallic silver/lt. copper/electric blue,A,153,153,163
+7029,Sulky,metallic silver/rose/jade,A,153,153,163
+7040,Sulky,metallic rainbow prism pink,A,250,250,255
+7041,Sulky,metallic rainbow prism lt. blue,A,230,255,204
+7042,Sulky,metallic rainbow prism peach,A,255,240,90
+7043,Sulky,metallic rainbow prism purple,A,224,204,255
+7044,Sulky,metallic rainbow prism blue,A,210,220,255
+7050,Sulky,metallic purple,A,120,51,153
+7051,Sulky,metallic black ,A,0,0,102
+7052,Sulky,metallic peacock blue,A,60,130,255
+7053,Sulky,metallic mint,A,220,255,204
+7054,Sulky,metallic red,A,255,245,153
+7055,Sulky,metallic cranberry,A,230,51,125
+7056,Sulky,metallic pine green,A,140,230,104

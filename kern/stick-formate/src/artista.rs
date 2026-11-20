@@ -815,6 +815,16 @@ impl Sendedaten {
         self.info = self.puffer.info_felder(farben_in_stichen(&self.puffer.stiche));
     }
 
+    /// Farben ohne Garnangabe (eigene Designs: nur RGB) dem nächsten Garn der Karte zuordnen; Farben mit Marke
+    /// (aus der Maschine gelesen) bleiben. Liefert die Zuordnung je Farbe. Die Original-Software kennt nur Farben aus
+    /// Garnkarten (Standard `Default.tch`); die Zuordnung nach dem kleinsten RGB-Abstand ist eine **eigene Festlegung**.
+    pub fn garne_zuordnen(&mut self, karte: &crate::garnkarte::Garnkarte) -> Vec<Farbe> {
+        for f in self.farben.iter_mut().filter(|f| f.marke.is_empty()) {
+            *f = karte.naechstes(f.rgb).farbe();
+        }
+        self.farben.clone()
+    }
+
     /// Garnfarbtabelle für T + Vorspann; `None`, wenn das Design keine Farben mitbringt.
     pub fn farbtabelle(&self) -> Option<Vec<u8>> {
         (!self.farben.is_empty()).then(|| farbtabelle_maschine(&self.farben))

@@ -16,14 +16,14 @@ Version 4.1 macht beides wie das Original:
 Es wird weiterhin NICHTS dauerhaft gespeichert, geloescht oder formatiert.
 
 Mitgeliefert (alle mit "stick puffer" aus dem Rechenkern gebaut):
-  Testquadrat_*   eigenes Design (Quadrat 20 mm + Satinbalken), 1 Farbe ohne Garnangabe (nur RGB)
+  Testquadrat_*   eigenes Design (Quadrat 20 mm + Satinbalken), 1 Farbe, Garn aus der Default-Karte: Default 9 Dark Red
   Nr21_*          Design Nr 21 aus dem Maschinenspeicher (98 x 31 mm, 4210 Stiche) mit 3 echten Garnfarben:
                   Isacord 40 "rich brown" 1311, "brass" 821, "light beige" 670  -> zeigt, ob das Display die
                   Farben anzeigt
   Nr47_*          Design Nr 47 (ohne Farbangaben -> keine Garnfarbtabelle, wie das Original)
   Pruefmuster_*   Pruefmuster: Satin 1/2/3/4/6 mm, Satinkeil 2-8 mm, Tatami 30 x 30, Laufkreis, Dreifach, Schrift
                   "Abc" (Swiss Block 12 mm); Stoff "Woven Medium Weight"; 82 x 110 mm, mittlerer Rahmen 130 x 100;
-                  4 Farben (Stopps) - zum Vergleich mit dem Original auf festem Stoff mit Vlies und Stickgarn
+                  4 Farben (Default: Dark Green, Dark Blue, Dark Red, Black) - zum Vergleich mit dem Original auf festem Stoff mit Vlies und Stickgarn
   je Design:  NAME_puffer.bin (DATEN), NAME_farben.bin (Garnfarbtabelle), NAME_icon.bin (ICON),
               NAME_puffer.txt (Laengen, INFO-Felder, Dateinamen)
 Schalter:  -OhneIcon  -OhneFarben  -OhneInfo   (den jeweiligen Teil nicht schreiben)

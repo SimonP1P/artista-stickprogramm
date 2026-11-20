@@ -1,0 +1,315 @@
+0010,Isacord 40,white,A,255,255,255
+0015,Isacord 41,white,A,255,255,255
+0017,Isacord 42,fashion - white ,A,255,255,255
+0020,Isacord 43,black,A,0,0,0
+0101,Isacord 44,off white,A,255,251,210
+0108,Isacord 45,dark grey,A,109,117,123
+0111,Isacord 46,dark grey,A,81,91,97
+0112,Isacord 47,medium grey,A,93,93,93
+0124,Isacord 48,light grey brown,A,198,198,198
+0131,Isacord 49,dark grey,A,161,169,180
+0132,Isacord 50,Dark Gray,A,25,32,36
+0142,Isacord 51,silver grey,A,158,165,170
+0145,Isacord 52,fashion - palest blue,A,207,209,213
+0150,Isacord 53,light grey ,A,198,198,180
+0151,Isacord 54,fashion - light grey ,A,213,196,179
+0152,Isacord 55,dark grey,A,124,130,131
+0180,Isacord 56,fashion - blush pink,A,254,245,240
+0182,Isacord 57,fashion - pale lavender  ,A,233,215,217
+0184,Isacord 58,fashion - light grey ,A,232,222,215
+0221,Isacord 59,gold,A,224,218,95
+0232,Isacord 60,light khaki green,A,191,186,40
+0250,Isacord 61,pale yellow,A,253,235,174
+0270,Isacord 62,yellow beige,A,254,252,180
+0310,Isacord 63,lemon yellow,A,255,255,102
+0311,Isacord 64,orange yellow,A,255,230,0
+0345,Isacord 65,brownish green,A,165,153,51
+0352,Isacord 66,light khaki green,A,230,240,130
+0442,Isacord 67,khaki green,A,204,204,51
+0453,Isacord 68,light khaki green,A,204,204,150
+0463,Isacord 69,fashion - olive grey,A,107,126,111
+0465,Isacord 70,brownish green,A,115,115,51
+0501,Isacord 71,yellow - neon,A,251,235,14
+0506,Isacord 72,gold,A,255,240,102
+0520,Isacord 73,yellow gold,A,255,255,153
+0532,Isacord 74,creamy beige,A,240,220,170
+0542,Isacord 75,bronze,A,204,185,0
+0546,Isacord 76,khaki green,A,204,180,65
+0552,Isacord 77,khaki green,A,204,180,135
+0600,Isacord 78,yellow,A,255,255,0
+0605,Isacord 79,fashion - yellow  ,A,255,209,62
+0608,Isacord 80,Yellow,A,254,216,0
+0630,Isacord 81,gold,A,255,250,153
+0640,Isacord 82,pale gold,A,255,240,204
+0651,Isacord 83,fashion - gold ,A,247,209,164
+0660,Isacord 84,cream,A,255,250,204
+0670,Isacord 85,light beige,A,255,255,159
+0672,Isacord 86,pale grey gold,A,225,204,180
+0700,Isacord 87,fashion - orange yellow,A,251,192,93
+0702,Isacord 88,mid gold,A,255,230,75
+0704,Isacord 89,darker gold,A,245,240,102
+0706,Isacord 90,light orange - neon,A,255,216,66
+0713,Isacord 91,gold,A,255,240,130
+0722,Isacord 92,burnished brown,A,153,130,110
+0747,Isacord 93,brownish green,A,140,120,50
+0761,Isacord 94,light grey brown,A,245,235,204
+0776,Isacord 95,burnished brown,A,135,120,102
+0800,Isacord 96,orange gold,A,230,115,0
+0811,Isacord 97,copper,A,255,204,0
+0821,Isacord 98,brass,A,240,204,51
+0822,Isacord 99,khaki green,A,230,204,110
+0824,Isacord 100,fashion - gold ,A,223,158,0
+0832,Isacord 101,pale brown,A,204,170,120
+0842,Isacord 102,pale brown,A,240,190,130
+0851,Isacord 103,gold,A,240,204,145
+0853,Isacord 104,brown,A,170,140,102
+0861,Isacord 105,Ecru,A,193,176,142
+0862,Isacord 106,Dark Tan,A,139,122,103
+0870,Isacord 107,beige,A,251,224,164
+0873,Isacord 108,medium grey brown,A,195,185,160
+0874,Isacord 109,pale brown,A,190,160,145
+0904,Isacord 110,fashion - light orange,A,247,175,89
+0922,Isacord 111,fashion - light brown,A,199,127,43
+0931,Isacord 112,fashion - dark gold,A,187,112,0
+0932,Isacord 113,rust brown,A,185,153,51
+0933,Isacord 114,brown,A,153,102,51
+0934,Isacord 115,pale brown,A,204,180,153
+0940,Isacord 116,dark gold,A,204,153,51
+0941,Isacord 117,brown,A,180,130,70
+0945,Isacord 118,brown,A,140,110,70
+0970,Isacord 119,beige,A,255,255,230
+1055,Isacord 120,brown,A,153,102,51
+1060,Isacord 121,flesh,A,255,230,185
+1061,Isacord 122,medium grey brown,A,200,175,140
+1102,Isacord 123,orange,A,255,170,51
+1106,Isacord 124,orange - neon,A,240,155,56
+1114,Isacord 125,brown orange,A,240,150,70
+1115,Isacord 126,fashion - rust brown,A,155,79,0
+1120,Isacord 127,medium orange - neon,A,248,189,0
+1123,Isacord 128,fashion - pale brown  ,A,183,146,103
+1134,Isacord 129,fashion - brown  ,A,150,86,15
+1140,Isacord 130,creamy beige,A,225,220,175
+1141,Isacord 131,fashion - brownish cream,A,253,206,174
+1154,Isacord 132,Medium Brown,A,84,52,22
+1172,Isacord 133,pale grey gold,A,240,225,204
+1220,Isacord 134,tangerine,A,255,190,102
+1300,Isacord 135,orange,A,255,153,51
+1301,Isacord 136,Dark Peach,A,212,69,14
+1304,Isacord 137,orange,A,255,125,0
+1305,Isacord 138,orange,A,255,140,0
+1306,Isacord 139,tangerine - neon,A,208,46,21
+1311,Isacord 140,rich brown,A,240,140,75
+1312,Isacord 141,fashion - rich brown ,A,187,82,45
+1332,Isacord 142,fashion - brown orange ,A,208,126,92
+1334,Isacord 143,red brown,A,204,102,51
+1335,Isacord 144,fashion - red brown ,A,175,46,14
+1342,Isacord 145,mid brown,A,190,125,65
+1346,Isacord 146,darker brown,A,135,90,45
+1351,Isacord 147,darker peach,A,255,195,153
+1352,Isacord 148,orange peach,A,255,180,130
+1355,Isacord 149,dark brown,A,153,102,51
+1362,Isacord 150,sand,A,255,215,165
+1366,Isacord 151,dark brown,A,110,51,0
+1375,Isacord 152,fashion - very dark grey ,A,69,66,55
+1430,Isacord 153,peach,A,255,165,125
+1501,Isacord 154,watermelon - neon,A,210,48,33
+1514,Isacord 155,fashion - rich brown ,A,156,48,18
+1521,Isacord 156,fashion - blush  ,A,228,111,99
+1532,Isacord 157,pink peach,A,255,185,170
+1551,Isacord 158,peach,A,255,204,180
+1565,Isacord 159,fashion - dark burnished brown ,A,125,101,92
+1600,Isacord 160,blush,A,235,140,115
+1701,Isacord 161,reddish orange,A,255,102,51
+1703,Isacord 162,red,A,255,0,0
+1704,Isacord 163,Watermellon,A,163,0,40
+1725,Isacord 164,deep blush,A,220,102,51
+1755,Isacord 165,brownish pink,A,240,220,220
+1760,Isacord 166,brownish cream,A,245,204,175
+1761,Isacord 167,brownish pink,A,255,220,210
+1800,Isacord 168,deep red,A,240,0,0
+1805,Isacord 169,fashion - deep blush ,A,202,70,85
+1840,Isacord 170,peach pink,A,255,175,175
+1860,Isacord 171,mid pink,A,255,245,240
+1874,Isacord 172,fashion - burnished brown ,A,95,91,80
+1876,Isacord 173,brownish green,A,125,90,50
+1900,Isacord 174,pink red,A,240,0,102
+1902,Isacord 175,dark red,A,204,0,0
+1903,Isacord 176,fashion - dark red  ,A,171,0,56
+1904,Isacord 177,fashion - rich red  ,A,150,0,50
+1906,Isacord 178,red pink,A,204,51,102
+1911,Isacord 179,rich red,A,170,0,51
+1912,Isacord 180,plum,A,175,0,75
+1913,Isacord 181,red brown,A,204,51,0
+1921,Isacord 182,dark pink,A,163,48,80
+1940,Isacord 183,pink - neon,A,235,140,161
+1950,Isacord 184,rose - neon,A,192,69,112
+1972,Isacord 185,fashion - dark grey,A,143,143,143
+2011,Isacord 186,fashion - deep blush  ,A,149,51,63
+2022,Isacord 187,fashion - deep blush ,A,150,68,71
+2051,Isacord 188,mauve pink,A,220,180,180
+2101,Isacord 189,fashion - dark red  ,A,138,0,53
+2113,Isacord 190,fashion - rich red  ,A,103,0,50
+2115,Isacord 191,Dark Maroon,A,36,22,25
+2123,Isacord 192,dark plum,A,135,0,51
+2152,Isacord 193,plum pink,A,255,153,170
+2153,Isacord 194,mauve,A,220,153,160
+2155,Isacord 195,Bisque,A,255,230,230
+2160,Isacord 196,pink,A,250,220,220
+2166,Isacord 197,pale pink,A,250,240,240
+2170,Isacord 198,beige pink,A,255,223,191
+2171,Isacord 199,pale pink,A,238,201,203
+2220,Isacord 200,dark pink,A,255,160,204
+2222,Isacord 201,plum,A,153,75,102
+2224,Isacord 202,fashion - rose  ,A,127,58,59
+2241,Isacord 203,plum pink,A,204,140,150
+2250,Isacord 204,mauve pink,A,255,204,215
+2300,Isacord 205,deep pink,A,255,51,153
+2320,Isacord 206,deep pink,A,220,102,130
+2333,Isacord 207,dark plum,A,153,51,102
+2336,Isacord 208,fashion - dark plum ,A,47,22,27
+2363,Isacord 209,pale pink,A,255,235,235
+2500,Isacord 210,plum,A,185,80,130
+2504,Isacord 211,fashion - medium purple ,A,157,68,117
+2506,Isacord 212,deep plum,A,175,60,120
+2520,Isacord 213,pink,A,255,81,168
+2521,Isacord 214,deep pink,A,226,60,115
+2550,Isacord 215,darker pink,A,255,170,220
+2560,Isacord 216,pink ,A,255,185,204
+2576,Isacord 217,fashion - dark grey ,A,70,70,70
+2600,Isacord 218,mid purple,A,204,102,153
+2640,Isacord 219,pinkish lilac,A,255,170,245
+2650,Isacord 220,lavender,A,255,204,230
+2655,Isacord 221,pale lavender,A,235,204,215
+2674,Isacord 222,dark grey,A,140,140,150
+2711,Isacord 223,dark purple,A,153,0,125
+2715,Isacord 224,deep purple ,A,153,0,153
+2720,Isacord 225,Light Purple,A,81,0,63
+2764,Isacord 226,fashion - darker lilac ,A,190,141,158
+2810,Isacord 227,purple,A,204,102,204
+2830,Isacord 228,purple,A,204,140,204
+2900,Isacord 229,fashion - jacaranda ,A,54,12,92
+2905,Isacord 230,fashion - jacaranda ,A,88,62,129
+2910,Isacord 231,fashion - purple ,A,119,87,147
+2920,Isacord 232,fashion - purple  ,A,130,107,161
+3040,Isacord 233,lilac ,A,235,204,245
+3045,Isacord 234,darker lilac,A,230,190,220
+3062,Isacord 235,fashion - dark grey,A,107,107,107
+3102,Isacord 236,ultra marine,A,75,0,153
+3110,Isacord 237,ultra marine,A,120,51,153
+3114,Isacord 238,fashion - ultra marine,A,19,7,59
+3210,Isacord 239,jacaranda,A,153,102,204
+3211,Isacord 240,ultra marine,A,153,102,204
+3241,Isacord 241,light violet,A,210,170,210
+3251,Isacord 242,fashion - light lilac,A,139,128,157
+3323,Isacord 243,aubergine,A,80,0,120
+3331,Isacord 244,light blue,A,175,170,255
+3333,Isacord 245,fashion - ultra marine,A,0,57,107
+3335,Isacord 246,Blue,A,46,75,155
+3344,Isacord 247,DARK BLUE,A,0,40,59
+3353,Isacord 248,bright navy,A,0,0,125
+3355,Isacord 249,navy,A,0,0,102
+3444,Isacord 250,steel blue,A,80,90,102
+3522,Isacord 251,fashion - marine blue,A,0,64,130
+3536,Isacord 252,purple,A,102,0,102
+3541,Isacord 253,jacaranda,A,153,0,204
+3543,Isacord 254,marine blue,A,51,0,204
+3544,Isacord 255,fashion - marine blue ,A,0,57,116
+3554,Isacord 256,fashion - navy  ,A,0,0,0
+3600,Isacord 257,marine blue,A,102,102,204
+3611,Isacord 258,marine blue,A,125,102,225
+3612,Isacord 259,fashion - marine blue ,A,43,78,147
+3622,Isacord 260,fashion - marine blue ,A,0,71,128
+3640,Isacord 261,fashion - medium blue ,A,142,175,215
+3641,Isacord 262,wedgewood blue,A,170,180,215
+3650,Isacord 263,silver blue,A,197,216,235
+3652,Isacord 264,Light Blue,A,125,160,202
+3732,Isacord 265,fashion - dark teal blue ,A,0,74,115
+3743,Isacord 266,steel blue,A,80,102,125
+3750,Isacord 267,fashion - sky blue  ,A,179,206,225
+3761,Isacord 268,sky blue,A,168,226,255
+3770,Isacord 269,fashion - silver grey,A,204,207,206
+3810,Isacord 270,medium blue,A,120,153,190
+3815,Isacord 271,Medium Blue,A,0,109,173
+3820,Isacord 272,medium blue,A,105,163,220
+3840,Isacord 273,pastel blue,A,185,238,255
+3842,Isacord 274,steel blue,A,120,130,140
+3900,Isacord 275,fashion - teal blue ,A,0,114,172
+3901,Isacord 276,teal blue,A,51,153,204
+3902,Isacord 277,fashion - medium teal blue ,A,0,100,153
+3910,Isacord 278,pale blue,A,153,204,240
+3951,Isacord 279,pale blue,A,180,200,225
+3953,Isacord 280,medium blue,A,125,125,140
+3962,Isacord 281,pale blue,A,204,225,245
+3971,Isacord 282,silver grey,A,204,204,204
+4010,Isacord 283,medium teal blue,A,0,190,204
+4032,Isacord 284,medium teal blue,A,102,153,175
+4033,Isacord 285,steel blue,A,102,110,115
+4071,Isacord 286,palest blue,A,194,194,224
+4073,Isacord 287,Medium Gray,A,200,221,235
+4101,Isacord 288,medium teal blue,A,0,165,180
+4103,Isacord 289,fashion - turquoise ,A,0,133,184
+4111,Isacord 290,medium turquoise,A,0,235,255
+4113,Isacord 291,medium teal blue,A,120,190,204
+4116,Isacord 292,Dark Teal,A,0,65,86
+4133,Isacord 293,dark teal blue,A,51,102,115
+4174,Isacord 294,vdark grey,A,85,85,85
+4220,Isacord 295,turquoise,A,0,204,204
+4230,Isacord 296,light turquoise,A,175,255,255
+4240,Isacord 297,very pale blue,A,204,255,255
+4250,Isacord 298,very pale blue,A,220,255,250
+4410,Isacord 299,fashion - medium aqua ,A,0,108,130
+4421,Isacord 300,sea green,A,51,180,190
+4423,Isacord 301,fashion - aqua ,A,0,108,130
+4425,Isacord 302,fashion - dark aqua  ,A,0,105,125
+4430,Isacord 303,turquoise,A,153,240,220
+4442,Isacord 304,dark sea green,A,51,102,110
+4452,Isacord 305,fashion - sea green ,A,0,114,138
+4515,Isacord 306,dark sea green,A,51,102,102
+4531,Isacord 307,dark aqua,A,51,153,153
+4610,Isacord 308,slate green,A,51,204,180
+4620,Isacord 309,light teal green,A,51,204,180
+4625,Isacord 310,fashion - teal  ,A,42,118,126
+4643,Isacord 311,sea green,A,75,120,125
+4644,Isacord 312,grey blue,A,102,130,115
+5005,Isacord 313,fashion - teal ,A,16,83,92
+5010,Isacord 314,fashion - blue green ,A,0,146,162
+5050,Isacord 315,pale turquoise,A,220,255,230
+5100,Isacord 316,emerald green,A,0,165,120
+5101,Isacord 317,blue green,A,51,175,153
+5115,Isacord 318,light teal green,A,51,204,165
+5210,Isacord 319,light teal green,A,51,204,153
+5220,Isacord 320,light teal green,A,160,204,180
+5230,Isacord 321,light teal green,A,153,240,204
+5233,Isacord 322,fashion - dark leaf green ,A,52,118,103
+5324,Isacord 323,fashion - medium forest green  ,A,23,98,50
+5326,Isacord 324,dark leaf green,A,0,115,80
+5335,Isacord 325,fashion - dark leaf green ,A,0,42,52
+5374,Isacord 326,dark leaf green,A,0,60,20
+5411,Isacord 327,fashion - green  ,A,0,113,86
+5415,Isacord 328,fashion - green  ,A,0,89,68
+5422,Isacord 329,teal green,A,60,175,120
+5500,Isacord 330,green - neon,A,106,179,125
+5510,Isacord 331,fashion - med leaf green  ,A,72,154,94
+5513,Isacord 332,fashion - medium olive green  ,A,38,164,48
+5515,Isacord 333,fashion - green  ,A,0,113,86
+5531,Isacord 334,light leaf green,A,153,204,102
+5552,Isacord 335,fashion - pale turquoise  ,A,148,169,157
+5555,Isacord 336,fashion - dark leaf green ,A,31,54,40
+5610,Isacord 337,light leaf green,A,180,240,130
+5613,Isacord 338,fashion - medium leaf green ,A,78,167,103
+5633,Isacord 339,medium leaf green,A,102,153,51
+5643,Isacord 340,fashion - olive green ,A,55,108,49
+5650,Isacord 341,pale green,A,225,255,204
+5664,Isacord 342,fashion - teal green ,A,24,81,70
+5822,Isacord 343,light khaki green,A,175,204,130
+5833,Isacord 344,medium olive green,A,153,190,51
+5866,Isacord 345,dark olive green,A,90,60,0
+5912,Isacord 346,fashion - light leaf green  ,A,148,193,75
+5933,Isacord 347,medium leaf green,A,140,160,90
+5934,Isacord 348,medium leaf green,A,153,153,51
+5940,Isacord 349,yellow green - neon,A,201,215,61
+5944,Isacord 350,dark leaf green,A,80,110,51
+6010,Isacord 351,fashion - bright lime yellow,A,239,230,0
+6051,Isacord 352,pale green,A,225,255,153
+6133,Isacord 353,khaki green,A,153,153,45
+6156,Isacord 354,dark olive green,A,115,102,40

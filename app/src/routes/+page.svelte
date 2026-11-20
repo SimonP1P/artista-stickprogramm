@@ -40,9 +40,11 @@
   });
   let rahmenWahl = $derived<string>(design?.rahmen ?? "artista 130 x 100");
   let stoffWahl = $derived<string>(design?.stoff ?? "0 Software Defaults");
+  let garnkarteWahl = $derived<string>(design?.garnkarte ?? "Default");
+  let garnkarten = $state<string[]>([]);
   let rahmenInfo = $derived(rahmenListe.find((r) => r.name === rahmenWahl));
 
-  function feldSetzen(feld: "rahmen" | "stoff", wert: string) {
+  function feldSetzen(feld: "rahmen" | "stoff" | "garnkarte", wert: string) {
     if (!design) {
       fehler = "Das Design-JSON ist ungültig – erst korrigieren.";
       return;
@@ -350,6 +352,7 @@
     rahmenListe = await invoke<RahmenInfo[]>("rahmen_liste");
     stoffe = await invoke<string[]>("stoffe_liste");
     alphabete = await invoke<AlphabetInfo[]>("alphabete_liste");
+    garnkarten = await invoke<string[]>("garnkarten_liste");
     if (alphabete.length && !alphabete.some((a) => a.name === tAlphabet)) tAlphabet = alphabete[0].name;
     await beispiel();
   });
@@ -393,6 +396,14 @@
         {/each}
       </select>
       <p class="klein">Stichabstände und Zugausgleich wie im Original (Fabric Settings).</p>
+      <h3>Garnkarte</h3>
+      <select value={garnkarteWahl} onchange={(e) => feldSetzen("garnkarte", e.currentTarget.value)}>
+        {#each garnkarten as g (g)}
+          <option value={g}>{g}</option>
+        {/each}
+        <option value="keine">keine (nur Bildschirmfarben)</option>
+      </select>
+      <p class="klein">Jede Farbe bekommt das nächste Garn der Karte (Marke, Nummer, Name) – so steht es an der Maschine.</p>
     </section>
     <section class="schrift">
       <h2><span class="nr">3</span> Design anpassen</h2>
@@ -481,7 +492,13 @@
         <h3>Farben</h3>
         <ol class="farben">
           {#each ergebnis.farben as f, i (i)}
-            <li><span class="feld" style:background={f}></span>{i + 1}. {f}</li>
+            {@const g = ergebnis.garne?.[i]}
+            <li>
+              <span class="feld" style:background={f}></span>{i + 1}.
+              {#if g}<span class="feld" style:background={g.rgb} title="Garnfarbe"></span><span class="garnname"
+                  >{g.marke} {g.nummer} {g.name}</span
+                >{:else}{f}{/if}
+            </li>
           {/each}
         </ol>
         {#if ergebnis.fehlende_zeichen}
@@ -844,7 +861,14 @@
     font-family: Consolas, monospace;
     font-size: 12px;
   }
+  .garnname {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .feld {
+    flex: none;
     width: 16px;
     height: 16px;
     border-radius: 3px;

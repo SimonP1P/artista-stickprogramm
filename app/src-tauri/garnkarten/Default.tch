@@ -1,0 +1,20 @@
+1,Default,Green,A,0,255,0
+2,Default,Blue,A,0,0,255
+3,Default,Red,A,255,0,0
+4,Default,Yellow,A,255,255,0
+5,Default,Cyan,A,0,255,255
+6,Default,Sand,A,255,204,126
+7,Default,Dark Green,A,0,153,0
+8,Default,Dark Blue,A,0,0,153
+9,Default,Dark Red,A,153,0,0
+10,Default,Orange,A,255,153,51
+11,Default,Purple,A,153,0,204
+12,Default,Brown,A,153,102,51
+13,Default,Cream,A, 255,255,235
+14,Default,White,A,255,255,255
+15,Default,Black,A,0,0,0
+16,Default,Pink,A,255,126,204
+17,Default,Turquoise,A,102,255,204
+18,Default,Grey,A,102,102,102
+19,Default,Khaki,A,153,153,102
+20,Default,Powder Blue,A,126,126,255

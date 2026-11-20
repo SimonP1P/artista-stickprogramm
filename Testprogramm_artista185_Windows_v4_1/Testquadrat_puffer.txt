@@ -10,6 +10,6 @@ name=Testquadrat
 farben_im_anhang=0
 datei_farbtabelle=Testquadrat_farben.bin
 farbtabelle_farben=1
-farbtabelle_laenge=27
+farbtabelle_laenge=42
 datei_icon=Testquadrat_icon.bin
 icon_laenge=732

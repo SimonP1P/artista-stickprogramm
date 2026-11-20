@@ -10,6 +10,6 @@ name=Pruefmuster
 farben_im_anhang=0
 datei_farbtabelle=Pruefmuster_farben.bin
 farbtabelle_farben=4
-farbtabelle_laenge=60
+farbtabelle_laenge=120
 datei_icon=Pruefmuster_icon.bin
 icon_laenge=732

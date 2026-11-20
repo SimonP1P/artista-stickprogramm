@@ -30,7 +30,8 @@
     "targets": "all",
     "resources": {
       "alphabete/*.ESB": "alphabete/",
-      "alphabete/*.esb": "alphabete/"
+      "alphabete/*.esb": "alphabete/",
+      "garnkarten/*.tch": "garnkarten/"
     },
     "icon": [
       "icons/32x32.png",
