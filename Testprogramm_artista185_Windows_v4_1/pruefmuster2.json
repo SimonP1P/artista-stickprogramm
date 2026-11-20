@@ -1,0 +1,18 @@
+{
+  "name": "Pruefmuster2",
+  "rahmen": "artista 130 x 100",
+  "stoff": "Woven Medium Weight",
+  "objekte": [
+    {"art": "muster", "name": "Füllmuster Raute", "farbe": "#2e86c1", "muster": "001 Diamond (90)",
+     "umriss": {"rechteck": {"mitte": [-22, 25], "breite": 34, "hoehe": 26}}},
+    {"art": "muster", "name": "Füllmuster Herz", "farbe": "#c0392b", "muster": "027 Heart2 (90)",
+     "umriss": {"rechteck": {"mitte": [22, 25], "breite": 34, "hoehe": 26}}},
+    {"art": "tatami", "name": "Grund", "farbe": "#1e8449", "winkel": 45, "aussparen": ["Schrift"],
+     "umriss": {"kreis": {"mitte": [-22, -18], "radius": 17}}},
+    {"art": "text", "name": "Schrift", "farbe": "#f4d03f", "text": "Ab", "alphabet": "Swiss Block", "hoehe": 14,
+     "position": [-22, -25]},
+    {"art": "applikation", "name": "Applikation", "farbe": "#8e44ad", "abdeckung": "blanket", "stil": "zuschneiden",
+     "umriss": {"rechteck": {"mitte": [22, -18], "breite": 30, "hoehe": 26}}},
+    {"art": "blanket", "name": "Blanket Linie", "farbe": "#000000", "punkte": [[-38, 45], [38, 45]]}
+  ]
+}

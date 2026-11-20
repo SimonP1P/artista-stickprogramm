@@ -38,6 +38,7 @@ Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Te
 | V3 | Testquadrat mit Icon + Farbtabelle sticken (`START_STICKEN.bat`) – Farbe und Icon am Display? | Person: Rahmen, Stoff + **Vlies**, Stickgarn, Start-Taste | ⬜ |
 | V4 | **Prüfmuster** (`stickprogramm/beispiele/pruefmuster.json`: Satin 1/2/3/4/6 mm, Satinkeil, Tatami, Lauf, Dreifach, Schrift „Abc“ Swiss Block; Woven Medium Weight; 82 × 110 mm) auf festem Stoff mit Vlies und Stickgarn sticken, fotografieren – aus dem Programm oder `START_STICKEN.bat Pruefmuster_puffer.bin` | Person, Material | ⬜ (vorbereitet 20.11.) |
 | V5 | Dauerhaft speichern (0x10 → schreiben → 0x200), danach in der Designliste und am Display prüfen | Person: Display, ggf. löschen am Gerät | ⬜ (eigene Zustimmung nötig) |
+| V6 | **Prüfmuster 2 – neue Sticharten** (`stickprogramm/beispiele/pruefmuster2.json`: Füllmuster Raute + Herz, Tatami-Kreis mit ausgesparter Schrift „Ab“, Applikation „Trim in Place“ mit Blanket, Blanket-Linie; 78 × 82 mm, 8 Farben) sticken und fotografieren: `START_STICKEN.bat Pruefmuster2_puffer.bin` – bei der Applikation nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie zuschneiden | Person, Material (Stoff + Vlies + Applikationsstoff) | ⬜ (vorbereitet 20.11.) |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
 1. **Das Lesen ist fertig und hat das Format des Maschinenpuffers vollständig gezeigt** (Kopf 6N+8, Stichdaten in
