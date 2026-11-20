@@ -100,7 +100,9 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 5. 🟡 ✅ 20.11.2026 Designende wie „Start und Ende“ (Auto End: Mitte – Sprung zurück zur Rahmenmitte; Designs der
    Maschine: 34 von 51 enden auf 0,0) · ⬜ Start-/Endpunkte je Objekt („Closest Join“, MOD1 `AutoStartEndObject`,
    `CalcStartEnd…`) und Reihenfolge der Objekte
-6. ⬜ Fancy-/Musterfüllungen, Applikation
+6. 🟡 ✅ 20.11.2026 **Applikation** im Kern (`Analyse_Teil3/12`): Platzierung → Stopp → Heften → Stopp → Abdecken,
+   Stopps als „Garne“ der Karte `Applique.tch` (Anweisung im Display); Werte aus „Easy Appliqué“ bzw. Handbuch ·
+   ⬜ Schnittlinie, Blanket, Teil-Applikation · ⬜ Fancy-/Musterfüllungen
 7. ✅ 20.11.2026 Computer-Schriften (TrueType/OpenType, auch .ttc) im Kern: alle installierten Schriften (Windows/Mac),
    Höhe = Großbuchstaben, je Buchstabe **Tatami-Fläche** mit Löchern (eigene Festlegung – Stichart des Originals für
    TrueType nicht belegt) oder Lauf-/Dreifach-Umriss; JSON `"art": "ttf"`, CLI `stick schriften`. Satin entlang der

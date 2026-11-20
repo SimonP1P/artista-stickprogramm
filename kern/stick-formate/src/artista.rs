@@ -825,6 +825,16 @@ impl Sendedaten {
         self.farben.clone()
     }
 
+    /// Farben ohne Garnangabe, die **genau** einer Farbe der Karte entsprechen, dieses Garn geben (z. B. die
+    /// Applikations-„Garne“ der Karte `Applique.tch`: „Place Applique & Tack“ erscheint dann beim Stopp im Display).
+    pub fn garne_exakt_zuordnen(&mut self, karte: &crate::garnkarte::Garnkarte) {
+        for f in self.farben.iter_mut().filter(|f| f.marke.is_empty()) {
+            if let Some(g) = karte.garne.iter().find(|g| g.rgb == f.rgb) {
+                *f = g.farbe();
+            }
+        }
+    }
+
     /// Garnfarbtabelle für T + Vorspann; `None`, wenn das Design keine Farben mitbringt.
     pub fn farbtabelle(&self) -> Option<Vec<u8>> {
         (!self.farben.is_empty()).then(|| farbtabelle_maschine(&self.farben))

@@ -1,0 +1,197 @@
+//! Applikation (Stoffteil aufnähen) – Roadmap Phase 4 Punkt 6, wie „Auto Appliqué“ im Original (Handbuch PDF-S.
+//! 245–248): **Platzierungslinie → Stopp (Stoff auflegen) → Heftstich → Stopp (zuschneiden) → Abdeckstich**. Die
+//! Maschine hält zwischen den Lagen an.
+//!
+//! Werte (`Analyse_Teil3/12_applikation.md`):
+//! - Lagen und Stopps: Handbuch; die Stopps sind die drei „Garne“ der Original-Garnkarte `Applique.tch`
+//!   („Applique Guide“, „Place Applique & Tack“, „Trim Applique & Cover“) – so zeigt die Maschine beim Anhalten an,
+//!   was zu tun ist. Hoch.
+//! - Platzierungslinie Lauf 2,0 mm, Heftstich Zickzack 3,0 mm breit mit 2,0 mm Abstand: Original-Alphabet
+//!   „Easy Appliqué“ (Stile 0x271c 360, 0x2724 540, Abstand 360). Mittel (Werte eines Alphabets, nicht der
+//!   Auto-Appliqué-Vorgabe, die noch nicht gefunden ist).
+//! - Abdeckstich Satin **2,5 mm** breit, mittig auf dem Umriss: Handbuch-Beispiel (S. 247: „Satin Width 2.5 mm“);
+//!   **eigene Festlegung** bis die Vorgabe des Originals (`AutoAppliqueValues`, MOD1) gefunden ist.
+//! - „Pre-cut“ (ohne Schnittlinie) wie hier; „Trim in Place“ mit Schnittlinie fehlt noch.
+
+use crate::design::{Objekt, ObjektArt, SatinOptionen, Unterlage};
+use crate::geometrie::{Linie, geschlossen_ohne_endpunkt, knick_grad, versatz_ring};
+
+/// „Garne“ der Original-Garnkarte `Applique.tch` (Bildschirmfarben der Karte).
+pub const FARBE_FUEHRUNG: &str = "#ff3cac";
+pub const FARBE_HEFTEN: &str = "#1a8c67";
+pub const FARBE_ABDECKEN: &str = "#5500aa";
+
+/// Vorgaben einer Applikation (mm).
+#[derive(Clone, Debug, PartialEq)]
+pub struct ApplikationVorgabe {
+    /// Umriss des Stoffteils (geschlossen)
+    pub umriss: Linie,
+    /// Löcher (z. B. das Innere eines „O“)
+    pub loecher: Vec<Linie>,
+    /// Garnfarbe des Abdeckstichs
+    pub farbe: String,
+    /// Breite des Abdeck-Satins
+    pub breite: f64,
+    /// fester Satinabstand des Abdeckstichs (None = Stoff/Auto Spacing)
+    pub abstand: Option<f64>,
+    /// Breite und Abstand des Zickzack-Heftstichs
+    pub heft_breite: f64,
+    pub heft_abstand: f64,
+    /// Stichlänge der Platzierungslinie
+    pub platz_laenge: f64,
+}
+
+impl Default for ApplikationVorgabe {
+    fn default() -> Self {
+        ApplikationVorgabe {
+            umriss: Vec::new(),
+            loecher: Vec::new(),
+            farbe: "#000000".into(),
+            breite: 2.5,
+            abstand: None,
+            heft_breite: 3.0,
+            heft_abstand: 2.0,
+            platz_laenge: 2.0,
+        }
+    }
+}
+
+/// Säule der Breite `breite` mittig auf einem geschlossenen Ring: (Seite innen, Seite außen), geschlossen,
+/// Punkt für Punkt zugeordnet.
+fn ring_saeule(ring: &[crate::geometrie::Punkt], breite: f64) -> (Linie, Linie) {
+    let schliessen = |mut l: Linie| {
+        if let Some(&q) = l.first() {
+            l.push(q);
+        }
+        l
+    };
+    (
+        schliessen(versatz_ring(ring, breite / 2.0, 4.0)),
+        schliessen(versatz_ring(ring, -breite / 2.0, 4.0)),
+    )
+}
+
+/// Applikation in drei Lagen auflösen: alle Platzierungslinien, alle Heftstiche, alle Abdeckstiche (je Lage erst der
+/// Umriss, dann die Löcher). Jede Lage hat ihre eigene Farbe → Stopp an der Maschine.
+pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
+    let ringe: Vec<Linie> = std::iter::once(&v.umriss)
+        .chain(&v.loecher)
+        .map(|r| geschlossen_ohne_endpunkt(r))
+        .filter(|r| r.len() >= 3)
+        .collect();
+    // Abdeckfarbe gleich der Heftfarbe → kein Stopp zum Zuschneiden; dann die Abdeck-„Farbe“ der Karte
+    let abdeck = if v.farbe.eq_ignore_ascii_case(FARBE_HEFTEN) {
+        FARBE_ABDECKEN.to_string()
+    } else {
+        v.farbe.clone()
+    };
+    let mut out = Vec::new();
+    for r in &ringe {
+        let n = r.len();
+        let mut punkte = r.clone();
+        punkte.push(r[0]);
+        let mut ecken: Vec<bool> = (0..n)
+            .map(|i| knick_grad(r[(i + n - 1) % n], r[i], r[(i + 1) % n]) > 30.0)
+            .collect();
+        ecken.push(ecken[0]);
+        out.push(Objekt {
+            farbe: FARBE_FUEHRUNG.into(),
+            name: format!("{name}: Platzierung"),
+            art: ObjektArt::Lauf {
+                punkte,
+                ecken,
+                laenge: Some(v.platz_laenge),
+                dreifach: false,
+                geschlossen: true,
+            },
+        });
+    }
+    for r in &ringe {
+        let (a, b) = ring_saeule(r, v.heft_breite);
+        out.push(Objekt {
+            farbe: FARBE_HEFTEN.into(),
+            name: format!("{name}: Heften"),
+            art: ObjektArt::Satin {
+                seite_a: a,
+                seite_b: b,
+                unterlage: Unterlage::Arten(Vec::new()),
+                optionen: SatinOptionen {
+                    abstand: Some(v.heft_abstand),
+                    faktor: None,
+                    kurzstiche: Some(false),
+                },
+            },
+        });
+    }
+    for r in &ringe {
+        let (a, b) = ring_saeule(r, v.breite);
+        out.push(Objekt {
+            farbe: abdeck.clone(),
+            name: format!("{name}: Abdecken"),
+            art: ObjektArt::Satin {
+                seite_a: a,
+                seite_b: b,
+                unterlage: Unterlage::Arten(Vec::new()),
+                optionen: SatinOptionen {
+                    abstand: v.abstand,
+                    faktor: None,
+                    kurzstiche: None,
+                },
+            },
+        });
+    }
+    out
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::Design;
+    use crate::geometrie::{abstand, kreis, p};
+
+    #[test]
+    fn drei_lagen_mit_stopps() {
+        let v = ApplikationVorgabe {
+            umriss: kreis(p(0.0, 0.0), 20.0, 0.05, 0.0),
+            loecher: vec![kreis(p(0.0, 0.0), 6.0, 0.05, 0.0)],
+            farbe: "#c0392b".into(),
+            ..Default::default()
+        };
+        let o = applikation_objekte(&v, "Test");
+        assert_eq!(o.len(), 6);
+        let farben: Vec<&str> = o.iter().map(|x| x.farbe.as_str()).collect();
+        assert_eq!(
+            farben,
+            [
+                FARBE_FUEHRUNG,
+                FARBE_FUEHRUNG,
+                FARBE_HEFTEN,
+                FARBE_HEFTEN,
+                "#c0392b",
+                "#c0392b"
+            ]
+        );
+        // Abdeck-Säule: 2,5 mm breit, mittig auf dem Kreis
+        let ObjektArt::Satin { seite_a, seite_b, .. } = &o[4].art else {
+            panic!()
+        };
+        let w = abstand(seite_a[0], seite_b[0]);
+        let r = abstand(p(0.0, 0.0), crate::geometrie::zwischen(seite_a[0], seite_b[0], 0.5));
+        assert!(
+            (w - 2.5).abs() < 0.01 && (r - 20.0).abs() < 0.05,
+            "Breite {w}, Radius {r}"
+        );
+    }
+
+    #[test]
+    fn im_design_drei_farbbloecke() {
+        let json = r##"{"rahmen": "artista 130 x 100", "objekte": [
+            {"art": "applikation", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 40, "hoehe": 30}}, "farbe": "#2e86c1"}
+        ]}"##;
+        let d = Design::aus_json(json).unwrap();
+        let f = d.berechnen().unwrap();
+        assert_eq!(f.farben, vec![FARBE_FUEHRUNG, FARBE_HEFTEN, "#2e86c1"]);
+        assert_eq!(f.anzahl(crate::Art::Farbwechsel), 2);
+        assert!(d.ausserhalb(&f).is_empty());
+    }
+}

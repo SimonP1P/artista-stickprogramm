@@ -3,6 +3,7 @@
 //! Eingabe im selben JSON-Format wie der Python-Prototyp (`stickprogramm/README.md`): Koordinaten in mm,
 //! Ursprung = Rahmenmitte, +y nach oben. Statt Punktlisten gehen Formen (kreis, rechteck, bogen, bezier, verbinden).
 
+use crate::applikation::{ApplikationVorgabe, applikation_objekte};
 use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
 use crate::geometrie::{
     Linie, Punkt, abstand, abstand_punkt_strecke, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen,
@@ -225,6 +226,25 @@ struct TtfJson {
     laenge: Option<f64>,
 }
 
+/// Applikation (`applikation.rs`): Platzierung, Heften, Abdecken mit Stopps.
+#[derive(Debug, Deserialize)]
+struct ApplikationJson {
+    #[serde(default = "schwarz")]
+    farbe: String,
+    #[serde(default)]
+    name: String,
+    umriss: PunktAngabe,
+    #[serde(default)]
+    loecher: Vec<PunktAngabe>,
+    /// Breite des Abdeck-Satins in mm (Standard 2,5)
+    breite: Option<f64>,
+    /// fester Satinabstand des Abdeckstichs
+    abstand: Option<f64>,
+    heft_breite: Option<f64>,
+    heft_abstand: Option<f64>,
+    platz_laenge: Option<f64>,
+}
+
 fn tatami_art() -> String {
     "tatami".into()
 }
@@ -265,6 +285,7 @@ enum ObjektJson {
     Tatami(TatamiJson),
     Text(TextJson),
     Ttf(TtfJson),
+    Applikation(ApplikationJson),
 }
 
 fn design_name() -> String {
@@ -349,6 +370,8 @@ pub enum ObjektArt {
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
+    /// Applikation (Platzierung, Heften, Abdecken mit Stopps); wird vor dem Berechnen aufgelöst
+    Applikation(ApplikationVorgabe),
     /// Text mit einer Computer-Schrift (TrueType/OpenType); wird vor dem Berechnen aufgelöst
     TtfText {
         schrift: String,
@@ -769,6 +792,7 @@ impl Objekt {
             } => gruppe_wege(teile, umrisse, *laufweg, e, start),
             ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
             ObjektArt::TtfText { schrift, .. } => Err(format!("Text mit Schrift „{schrift}“ wurde nicht aufgelöst")),
+            ObjektArt::Applikation(_) => Err("Applikation wurde nicht aufgelöst".into()),
             ObjektArt::Tatami {
                 umriss,
                 loecher,
@@ -861,6 +885,23 @@ impl Design {
                     },
                     farbe: t.farbe,
                 },
+                ObjektJson::Applikation(a) => {
+                    let st = ApplikationVorgabe::default();
+                    Objekt {
+                        name: a.name.clone(),
+                        art: ObjektArt::Applikation(ApplikationVorgabe {
+                            umriss: a.umriss.punkte(),
+                            loecher: a.loecher.iter().map(PunktAngabe::punkte).collect(),
+                            farbe: a.farbe.clone(),
+                            breite: a.breite.unwrap_or(st.breite),
+                            abstand: a.abstand,
+                            heft_breite: a.heft_breite.unwrap_or(st.heft_breite),
+                            heft_abstand: a.heft_abstand.unwrap_or(st.heft_abstand),
+                            platz_laenge: a.platz_laenge.unwrap_or(st.platz_laenge),
+                        }),
+                        farbe: a.farbe,
+                    }
+                }
                 ObjektJson::Ttf(t) => Objekt {
                     name: if t.name.is_empty() { t.text.clone() } else { t.name },
                     art: ObjektArt::TtfText {
@@ -970,6 +1011,12 @@ impl Design {
                     let (obj, f) = text_objekte(a, vorgabe);
                     out.extend(obj);
                     fehlend.extend(f);
+                }
+                ObjektArt::Applikation(v) => {
+                    out.extend(applikation_objekte(
+                        v,
+                        if o.name.is_empty() { "Applikation" } else { &o.name },
+                    ));
                 }
                 ObjektArt::TtfText {
                     schrift,

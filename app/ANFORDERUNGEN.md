@@ -60,8 +60,10 @@ Garnfarben, die die Maschine liefert → als EXP sichern. Die Ansicht ist nur zu
 ### F. Geplante Funktionen (Roadmap Phase 4, in dieser Reihenfolge) – P
 1. **Computer-Schriften (TrueType/OpenType)** wie Alphabete benutzen (Schrift auswählen, Text, Höhe; Stichart
    Satin/Tatami je nach Strichbreite).
-2. **Applikation** (Stoffteil aufnähen): Platzierungslinie → Stopp (Stoff auflegen) → Heftstich → Stopp
-   (Zuschneiden) → Abdeckstich (Satin). Braucht im Ablauf **Anleitungsschritte an den Farbstopps**.
+2. **Applikation** (Stoffteil aufnähen) – **im Kern fertig (20.11.2026)**: Platzierungslinie → Stopp (Stoff
+   auflegen) → Heftstich → Stopp (Zuschneiden) → Abdeckstich (Satin). Eingaben: Umriss (Form/Pfad), Löcher, Abdeckfarbe,
+   Abdeckbreite (2,5 mm), Heftstich-Breite/-Abstand, Stichlänge der Platzierung. Braucht im Ablauf **Anleitungsschritte an
+   den Farbstopps** (die Maschine zeigt „Applique Guide“, „Place Applique & Tack“ an).
 3. **Muster-/Motivfüllungen** (Fancy Fill, Motivlinien): Muster auswählen, Größe, Abstand.
 4. **Bild → Umrisse**: Bild laden (PNG/JPG/BMP), Farben reduzieren, automatisch in Objekte umwandeln, nachbearbeiten.
 5. **Aussparung (Knockout)**: Überlappungen nicht doppelt sticken.

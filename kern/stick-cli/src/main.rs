@@ -167,6 +167,11 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
     }
     // Garnangaben: Farben ohne Marke dem nächsten Garn der Karte zuordnen (Standard „Default“, wie die Maschine)
     let karte = karte.unwrap_or_else(|| "Default".into());
+    if karte != "keine"
+        && let Ok(a) = garnkarte::laden(&garnkarten_ordner(args), "Applique")
+    {
+        s.garne_exakt_zuordnen(&a); // Applikations-Lagen: Anweisung im Display
+    }
     if karte != "keine" && s.farben.iter().any(|f| f.marke.is_empty()) {
         let k = garnkarte::laden(&garnkarten_ordner(args), &karte)?;
         for (i, f) in s.garne_zuordnen(&k).iter().enumerate() {

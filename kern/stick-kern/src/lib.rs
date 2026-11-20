@@ -3,6 +3,7 @@
 //! Grundsatz (`ARCHITECTURE.md` §1a): Werte und Abläufe kommen aus der Analyse der Original-Software.
 //! Erste Fassung = getreue Übertragung des Python-Prototyps `stickprogramm/` (Prüfung: gleiche EXP-Bytes).
 
+pub mod applikation;
 pub mod design;
 pub mod einheiten;
 pub mod einstellungen;
