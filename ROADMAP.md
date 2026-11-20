@@ -14,7 +14,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
-| 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, **Schrift** ✅ · Rest offen | 🟡 8 Punkte erledigt, 10 offen |
+| 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket ✅ · Restliste **Phase 4b** aus der Bestandsaufnahme (`Analyse_Teil3/15`) | 🟡 |
 | 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
 
 **Stand 20.11.2026:** Am 19.11. wurde das erste Design aus dem eigenen Rechenkern auf der artista 185 gestickt. Am 20.11.
@@ -130,6 +130,32 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    (`Analyse_Teil3/14`, `stick-kern::aussparen`)
 10. 🟡 Probestickereien an der Maschine: erste am 19.11.2026 (Testquadrat, Bettlaken ohne Vlies – Geometrie ok); nächste
     mit festem Stoff, Vlies, Stickgarn: Prüfmuster Satin in mehreren Breiten, Tatami, Kreis, Schrift; auch feine Arbeiten
+
+## Phase 4b – Restliste aus der Bestandsaufnahme (20.11.2026, `Analyse_Teil3/15_funktionsinventur.md`)
+Alle Funktionen des Originals (37 Handbuchkapitel, Werkzeuge, Sticharten) gegen den Kern abgeglichen. Reihenfolge =
+Arbeitsreihenfolge (erst, was jede Oberfläche braucht, dann Schrift, dann weitere Sticharten und Effekte). Werte und
+Abläufe jeweils aus dem Original (Vorlage, Stile, Code, Messung), sonst als eigene Festlegung markiert.
+Wenn alles erledigt ist: Parameterkatalog (Merkliste M1).
+
+| # | Block | Inhalt | Stand |
+|---|---|---|---|
+| 4b.1 | **Transformationen** | Skalieren, Drehen, Spiegeln, Schrägstellen je Objekt und für das ganze Design – Stiche immer neu berechnen (Kap. 15); Oval als Form | ⬜ |
+| 4b.2 | **Schrift vollständig** | Säulenreihenfolge (🟡), mehrere Zeilen, Zeilenabstand, Leerzeichen, Auto Jump aus, Unterlage bei kleiner Schrift; Kursiv/Fett; Grundlinien Kreis/Bogen/senkrecht/eigene; Buchstaben einzeln (Abstand, Lage, Farbe, Winkel); Stichart je Schrift (Satin/Step/Fancy); Monogramme; Elastic Lettering (Kap. 18–21) | 🟡 |
+| 4b.3 | **Linien** | Satin-Kontur mit Versatz, Double Run (Verstärken) | ⬜ |
+| 4b.4 | **Flächen** | Step-Muster (Nr. 1 …), mehrere Stichwinkel (Turning Fill), Zickzack-Füllung, Tatami-Kurzstiche | ⬜ |
+| 4b.5 | **Reihenfolge** | nach Farbe, an Anfang/Ende, automatisch – mit Prüfung, ob sich Objekte überdecken (Kap. 14); Ein-/Ausstich je Objekt setzbar | ⬜ |
+| 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ⬜ |
+| 4b.7 | **Motive** | Pattern Run (Motivlinie), Pattern Fill (Motivfüllung), eigene Muster/Sets (Kap. 25) | ⬜ |
+| 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | ⬜ |
+| 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ⬜ |
+| 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ⬜ |
+| 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 |
+| 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ⬜ |
+| 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ⬜ |
+| 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ⬜ |
+| 4b.15 | **Kreuzstich** | eigenes Modul (Kap. 34–37) | ⬜ |
+Nicht nötig: Designkarte/Magic Box, Scanner, Quilter (eigenes Programm), nur in Strings vorhandene Sticharten (Coil,
+Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau, Druck, Portfolio) → neue Oberfläche.
 
 ## Phase 5 – Maschine im Programm und Komfort
 **20.11.2026:** Die Oberfläche wird komplett neu gestaltet (Mockup von Claude Design, Zugriff auf das Repository);
