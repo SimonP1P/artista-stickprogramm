@@ -13,6 +13,7 @@
 use super::lauf::laufstich;
 use crate::einstellungen::{LaufEinstellung, TatamiEinstellung};
 use crate::geometrie::{Linie, Punkt, abstand, drehen, gegen_uhrzeiger, geschlossen_ohne_endpunkt, p, zwischen};
+use crate::muster::Teilung;
 use std::collections::HashMap;
 
 /// Lotfußpunkt von `q` auf einem geschlossenen Ring: (Abstand, Bogenlänge ab Ringanfang).
@@ -166,7 +167,26 @@ fn bereiche(reihen: &[(i64, Vec<(f64, f64)>)]) -> Vec<Bereich> {
     reihenfolge.into_iter().map(|i| nach_index[i].take().unwrap()).collect()
 }
 
-fn reihe(k: i64, x0: f64, x1: f64, y: f64, e: &TatamiEinstellung, vorwaerts: bool) -> Linie {
+fn reihe(k: i64, x0: f64, x1: f64, y: f64, e: &TatamiEinstellung, vorwaerts: bool, teilung: Option<&Teilung>) -> Linie {
+    if let Some(t) = teilung {
+        // Musterfüllung: Einstiche auf den Musterlinien (Mindestabstand wie am Rand), lange Lücken gleichmäßig teilen
+        let mut xs = vec![x0];
+        for x in t.schnitte(y, x0, x1) {
+            if x - xs.last().unwrap() >= e.min_rand && x1 - x >= e.min_rand {
+                xs.push(x);
+            }
+        }
+        xs.push(x1);
+        let mut geteilt = vec![xs[0]];
+        for w in xs.windows(2) {
+            let n = ((w[1] - w[0]) / t.max_stich - 1e-9).ceil().max(1.0) as usize;
+            geteilt.extend((1..=n).map(|j| w[0] + (w[1] - w[0]) * j as f64 / n as f64));
+        }
+        if !vorwaerts {
+            geteilt.reverse();
+        }
+        return geteilt.into_iter().map(|x| p(x, y)).collect();
+    }
     let l = e.laenge;
     let phase = ((k as f64 * e.versatz) % 1.0) * l;
     let mut m = ((x0 + e.min_rand - phase) / l).ceil() as i64;
@@ -186,7 +206,14 @@ fn reihe(k: i64, x0: f64, x1: f64, y: f64, e: &TatamiEinstellung, vorwaerts: boo
     xs.into_iter().map(|x| p(x, y)).collect()
 }
 
-fn bereich_sticken(b: &Bereich, y0: f64, e: &TatamiEinstellung, von_oben: bool, links_start: bool) -> Linie {
+fn bereich_sticken(
+    b: &Bereich,
+    y0: f64,
+    e: &TatamiEinstellung,
+    von_oben: bool,
+    links_start: bool,
+    teilung: Option<&Teilung>,
+) -> Linie {
     let reihen: Vec<_> = if von_oben {
         b.reihen.iter().rev().copied().collect()
     } else {
@@ -196,7 +223,7 @@ fn bereich_sticken(b: &Bereich, y0: f64, e: &TatamiEinstellung, von_oben: bool, 
     let mut vorwaerts = links_start;
     for (k, x0, x1) in reihen {
         let y = y0 + k as f64 * e.reihenabstand();
-        let pts = reihe(k, x0, x1, y, e, vorwaerts);
+        let pts = reihe(k, x0, x1, y, e, vorwaerts, teilung);
         if let Some(&a) = out.last() {
             // Übergang zur nächsten Reihe: ggf. in Stiche ≤ Stichlänge teilen
             let z = pts[0];
@@ -222,7 +249,20 @@ pub fn tatami(
     winkel: Option<f64>,
     start: Option<Punkt>,
 ) -> Vec<Linie> {
+    tatami_mit_teilung(umriss, loecher, e, winkel, start, None)
+}
+
+/// Wie [`tatami`], mit Musterteilung der Reihen (Füllmuster, `crate::muster`).
+pub fn tatami_mit_teilung(
+    umriss: &[Punkt],
+    loecher: &[Linie],
+    e: &TatamiEinstellung,
+    winkel: Option<f64>,
+    start: Option<Punkt>,
+    teilung: Option<&Teilung>,
+) -> Vec<Linie> {
     let w = winkel.unwrap_or(e.winkel);
+    let teilung = teilung.map(|t| t.gedreht(-w));
     let null = p(0.0, 0.0);
     let mut ringe = vec![gegen_uhrzeiger(umriss)];
     ringe.extend(loecher.iter().map(|l| geschlossen_ohne_endpunkt(l)));
@@ -281,7 +321,7 @@ pub fn tatami(
         }
         let (_, bi, von_oben, links) = best.unwrap();
         let b = offen.remove(bi);
-        let weg = bereich_sticken(&b, y0, e, von_oben, links);
+        let weg = bereich_sticken(&b, y0, e, von_oben, links, teilung.as_ref());
         // Teilbereiche mit einem Laufweg am Rand verbinden statt mit einem Sprung (wie im Original)
         let verbunden = match (wege.last_mut(), pos, weg.first()) {
             (Some(letzter), Some(von), Some(&nach)) => match laufweg(von, nach, &gedreht, e) {

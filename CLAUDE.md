@@ -57,6 +57,7 @@
 | **Schrift: Reihenfolge Unterlagen/Säulen im Original** (je Säulengruppe erst alle Unterlagen rückwärts, dann Säulen; gemessen) | `Analyse_Teil3/11_schrift_reihenfolge.md`; Werkzeug `Arbeitsdaten/werkzeuge/art_schrift.py` |
 | **Computer-Schriften (TTF/OTF)** im Kern (Stichart Tatami/Umriss = eigene Festlegung) | `kern/stick-kern/src/schrift_ttf.rs`, `kern/stick-formate/src/ttf.rs`; CLI `stick schriften` |
 | **Applikation im Original** (Lagen, Stopps über `Applique.tch`, Werte aus „Easy Appliqué“) | `Analyse_Teil3/12_applikation.md`; Kern `stick-kern/src/applikation.rs` |
+| **Füllmuster (Program Split)**: Bibliotheksformat, 242 Muster, Füllregel gemessen | `Analyse_Teil3/13_fuellmuster.md`; Werkzeug `Arbeitsdaten/werkzeuge/muster_lesen.py`; Kern `stick-kern/src/muster.rs` |
 | **Regeln des Originals – Übersicht** (Kurzstiche, Unterlage, Laufwege, Satin, Tatami, Verbinder; je Regel Geltung Schrift/Bild/Fläche, Beleg, Sicherheit, Stand im Kern) | `Analyse_Teil3/10_regeln_original.md` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
 | **Maschine aus Rust** (`stick-maschine`: Protokoll der Testprogramme, Simulation, CLI `stick maschine …`, App Schritt 4) | `kern/stick-maschine/`, `kern/README.md`, `app/README.md`; Befund `Analyse_Teil2/07` (Rust am Gerät, 20.11.2026) |

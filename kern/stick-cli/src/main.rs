@@ -8,6 +8,7 @@
 //!                                                          Daten für die artista 185 bauen: Puffer DATEN,
 //!                                                          Garnfarbtabelle und Icon (wie das Original)
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
+//!   stick muster                                           Füllmuster der Vorlage auflisten
 //!   stick schriften [--schriften ORDNER]                  Computer-Schriften (TrueType/OpenType) auflisten
 //!   stick garnkarten [--garnkarten ORDNER]                 Garnkarten (.tch) auflisten
 //!   stick maschine ports|pruefen|liste|lesen NR|senden EINGABE [--port COM3 | --simulation] …
@@ -293,7 +294,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -341,6 +342,21 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
+        Some("muster") => {
+            for m in stick_kern::muster::alle() {
+                println!(
+                    "  {:<28} Winkel {:>4}  Kachel A ({:.1}, {:.1}) B ({:.1}, {:.1}) mm",
+                    m.name,
+                    m.winkel.map_or("–".into(), |w| format!("{w}°")),
+                    m.a[0],
+                    m.a[1],
+                    m.b[0],
+                    m.b[1]
+                );
+            }
+            println!("  {} Füllmuster", stick_kern::muster::alle().len());
+            Ok(true)
+        }
         Some("schriften") => {
             let liste = ttf::verzeichnis(&match schrift_ordner(args) {
                 o if o.is_empty() => ttf::system_ordner(),

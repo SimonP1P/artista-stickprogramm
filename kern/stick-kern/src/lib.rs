@@ -8,6 +8,7 @@ pub mod design;
 pub mod einheiten;
 pub mod einstellungen;
 pub mod geometrie;
+pub mod muster;
 pub mod nachbearbeitung;
 pub mod rahmen;
 pub mod schrift;

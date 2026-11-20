@@ -14,7 +14,7 @@ use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
 use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte};
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
 use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mittellinie};
-use crate::sticharten::tatami::tatami;
+use crate::sticharten::tatami::{tatami, tatami_mit_teilung};
 use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, satin_unterlage};
 use crate::stiche::StichFolge;
 use serde::Deserialize;
@@ -226,6 +226,26 @@ struct TtfJson {
     laenge: Option<f64>,
 }
 
+/// Füllmuster (`muster.rs`): Tatami-Reihen mit Einstichen auf den Musterlinien.
+#[derive(Debug, Deserialize)]
+struct MusterJson {
+    #[serde(default = "schwarz")]
+    farbe: String,
+    #[serde(default)]
+    name: String,
+    umriss: PunktAngabe,
+    #[serde(default)]
+    loecher: Vec<PunktAngabe>,
+    /// Name des Musters („001 Diamond (90)“) oder seine Nummer („001“)
+    muster: String,
+    /// Stichwinkel (ohne Angabe: Winkel aus dem Musternamen, sonst der Füllung)
+    winkel: Option<f64>,
+    /// Größe des Musters in % (Standard 100)
+    #[serde(default = "hundert")]
+    groesse: f64,
+    unterlage: Option<bool>,
+}
+
 /// Applikation (`applikation.rs`): Platzierung, Heften, Abdecken mit Stopps.
 #[derive(Debug, Deserialize)]
 struct ApplikationJson {
@@ -286,6 +306,7 @@ enum ObjektJson {
     Text(TextJson),
     Ttf(TtfJson),
     Applikation(ApplikationJson),
+    Muster(MusterJson),
 }
 
 fn design_name() -> String {
@@ -370,6 +391,15 @@ pub enum ObjektArt {
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
+    /// Fläche mit Füllmuster (Program Split): Tatami-Reihen, Einstiche auf den gekachelten Musterlinien
+    Musterfuellung {
+        umriss: Linie,
+        loecher: Vec<Linie>,
+        muster: String,
+        winkel: Option<f64>,
+        groesse: f64,
+        unterlage: Option<bool>,
+    },
     /// Applikation (Platzierung, Heften, Abdecken mit Stopps); wird vor dem Berechnen aufgelöst
     Applikation(ApplikationVorgabe),
     /// Text mit einer Computer-Schrift (TrueType/OpenType); wird vor dem Berechnen aufgelöst
@@ -809,6 +839,26 @@ impl Objekt {
                 wege.extend(tatami(umriss, loecher, &e.tatami, Some(w), start));
                 Ok(wege)
             }
+            ObjektArt::Musterfuellung {
+                umriss,
+                loecher,
+                muster,
+                winkel,
+                groesse,
+                unterlage,
+            } => {
+                let m = crate::muster::finden(muster).ok_or_else(|| format!("Füllmuster „{muster}“ gibt es nicht"))?;
+                let w = winkel.or(m.winkel).unwrap_or(e.tatami.winkel);
+                let mut wege = Vec::new();
+                let mut start = start;
+                if unterlage.unwrap_or(e.unterlage.auto_an) {
+                    wege.extend(flaechen_unterlage(umriss, loecher, w, &e.unterlage, start));
+                    start = wege.last().and_then(|l: &Linie| l.last().copied());
+                }
+                let t = m.teilung(*groesse);
+                wege.extend(tatami_mit_teilung(umriss, loecher, &e.tatami, Some(w), start, Some(&t)));
+                Ok(wege)
+            }
         }
     }
 }
@@ -884,6 +934,18 @@ impl Design {
                         },
                     },
                     farbe: t.farbe,
+                },
+                ObjektJson::Muster(m) => Objekt {
+                    farbe: m.farbe,
+                    name: m.name,
+                    art: ObjektArt::Musterfuellung {
+                        umriss: m.umriss.punkte(),
+                        loecher: m.loecher.iter().map(|l| l.punkte()).collect(),
+                        muster: m.muster,
+                        winkel: m.winkel,
+                        groesse: m.groesse,
+                        unterlage: m.unterlage,
+                    },
                 },
                 ObjektJson::Applikation(a) => {
                     let st = ApplikationVorgabe::default();
