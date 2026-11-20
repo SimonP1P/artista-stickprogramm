@@ -6,9 +6,7 @@
 use crate::applikation::{ApplikationVorgabe, applikation_objekte};
 use crate::aussparen::{Aussparen, Teil, bedeckt, flaeche_minus};
 use crate::einstellungen::{Einstellungen, SatinEinstellung, TatamiEinstellung, fuer_stoff};
-use crate::geometrie::{
-    Linie, Punkt, abstand, abstand_punkt_strecke, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen,
-};
+use crate::geometrie::{Linie, Punkt, abstand, abstand_punkt_strecke, im_polygon, p, zwischen};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_mit};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{
@@ -26,320 +24,40 @@ use serde::Deserialize;
 use serde_json::Value;
 use std::collections::BTreeMap;
 
-// ---------------------------------------------------------------- JSON-Eingabe
+// ---------------------------------------------------------------- JSON-Eingabe (Format: `format.rs`)
 
-#[derive(Debug, Deserialize)]
-#[serde(untagged)]
-pub enum PunktAngabe {
-    Liste(Vec<Punkt>),
-    Form(Form),
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "lowercase")]
-pub enum Form {
-    Kreis {
-        mitte: Punkt,
-        radius: f64,
-        #[serde(default)]
-        start: f64,
-    },
-    Rechteck {
-        mitte: Punkt,
-        breite: f64,
-        hoehe: f64,
-    },
-    /// Ellipse („Circle/Oval“ des Originals) mit Breite und Höhe in mm
-    Oval {
-        mitte: Punkt,
-        breite: f64,
-        hoehe: f64,
-        #[serde(default)]
-        start: f64,
-    },
-    Bogen {
-        mitte: Punkt,
-        radius: f64,
-        von: f64,
-        bis: f64,
-    },
-    Bezier([Punkt; 4]),
-    Verbinden(Vec<PunktAngabe>),
-}
-
-impl PunktAngabe {
-    pub fn punkte(&self) -> Linie {
-        match self {
-            PunktAngabe::Liste(l) => l.clone(),
-            PunktAngabe::Form(Form::Kreis { mitte, radius, start }) => kreis(*mitte, *radius, 0.02, *start),
-            PunktAngabe::Form(Form::Rechteck { mitte, breite, hoehe }) => rechteck(*mitte, *breite, *hoehe),
-            PunktAngabe::Form(Form::Oval {
-                mitte,
-                breite,
-                hoehe,
-                start,
-            }) => {
-                // Kreis mit dem größeren Halbmesser, in der anderen Richtung gestaucht (Sehnenfehler bleibt ≤ 0,02 mm)
-                let r = breite.max(*hoehe) / 2.0;
-                kreis(p(0.0, 0.0), r, 0.02, *start)
-                    .into_iter()
-                    .map(|q| p(mitte.x + q.x * breite / 2.0 / r, mitte.y + q.y * hoehe / 2.0 / r))
-                    .collect()
-            }
-            PunktAngabe::Form(Form::Bogen {
-                mitte,
-                radius,
-                von,
-                bis,
-            }) => bogen(*mitte, *radius, *von, *bis, 0.02),
-            PunktAngabe::Form(Form::Bezier(q)) => bezier(q[0], q[1], q[2], q[3], 32),
-            PunktAngabe::Form(Form::Verbinden(teile)) => {
-                let mut out: Linie = Vec::new();
-                for t in teile {
-                    let pts = t.punkte();
-                    let start = usize::from(matches!((out.last(), pts.first()), (Some(l), Some(f)) if l == f));
-                    out.extend_from_slice(&pts[start..]);
-                }
-                out
-            }
-        }
-    }
-
-    /// Punkte samt Markierung „Eckpunkt“ (wie beim Digitalisieren im Original: Eckpunkt oder Kurvenpunkt).
-    /// Punktlisten und Rechteckecken sind Eckpunkte; Kreis, Bogen und Bézier liefern Kurvenpunkte, nur ihre Enden
-    /// sind Ecken. Beim Verbinden zählt die Nahtstelle als Ecke (eigene Festlegung).
-    pub fn punkte_mit_ecken(&self) -> (Linie, Vec<bool>) {
-        match self {
-            PunktAngabe::Liste(_) | PunktAngabe::Form(Form::Rechteck { .. }) => {
-                let pts = self.punkte();
-                let n = pts.len();
-                (pts, vec![true; n])
-            }
-            PunktAngabe::Form(Form::Verbinden(teile)) => {
-                let (mut out, mut ecken): (Linie, Vec<bool>) = (Vec::new(), Vec::new());
-                for t in teile {
-                    let (pts, e) = t.punkte_mit_ecken();
-                    let start = usize::from(matches!((out.last(), pts.first()), (Some(l), Some(f)) if l == f));
-                    if let (1, Some(letzte)) = (start, ecken.last_mut()) {
-                        *letzte = true;
-                    }
-                    out.extend_from_slice(&pts[start..]);
-                    ecken.extend_from_slice(&e[start..]);
-                }
-                (out, ecken)
-            }
-            _ => {
-                let pts = self.punkte();
-                let n = pts.len();
-                (pts, (0..n).map(|i| i == 0 || i + 1 == n).collect())
-            }
-        }
-    }
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(untagged)]
-enum UnterlageJson {
-    Text(String),
-    Liste(Vec<String>),
-}
-
-fn schwarz() -> String {
-    "#000000".into()
-}
-fn auto() -> UnterlageJson {
-    UnterlageJson::Text("auto".into())
-}
-
-#[derive(Debug, Deserialize)]
-struct LaufJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    punkte: PunktAngabe,
-    laenge: Option<f64>,
-    dreifach: Option<bool>,
-    #[serde(default)]
-    geschlossen: bool,
-}
-
-#[derive(Debug, Deserialize)]
-struct SatinJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    seite_a: PunktAngabe,
-    seite_b: PunktAngabe,
-    #[serde(default = "auto")]
-    unterlage: UnterlageJson,
-    /// fester Satinabstand in mm statt Auto Spacing (wie im Alphabet: 0x15)
-    abstand: Option<f64>,
-    /// Auto-Spacing-Faktor des Objekts (Stil: 0x2736; Schrift 0,9)
-    faktor: Option<f64>,
-    /// Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)
-    kurzstiche: Option<bool>,
-    /// satin (Standard) | zickzack
-    stichart: Option<String>,
-}
-
-fn hundert() -> f64 {
-    100.0
-}
-fn mitte() -> String {
-    "mitte".into()
-}
-fn text_hoehe() -> f64 {
-    crate::schrift::STANDARD_HOEHE_MM
-}
-
-/// Text mit einem Original-Alphabet (`schrift.rs`). Die Alphabete lädt der Aufrufer (`Design::alphabete`).
-#[derive(Debug, Deserialize)]
-struct TextJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    text: String,
-    alphabet: String,
-    /// Buchstabenhöhe in mm (Original 1–200 mm) – Vorgabe 20 mm ist eine eigene Festlegung
-    #[serde(default = "text_hoehe")]
-    hoehe: f64,
-    /// Breite in % der Höhe
-    #[serde(default = "hundert")]
-    breite: f64,
-    /// Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)
-    abstand: Option<f64>,
-    /// Wortabstand in % der Höhe (Vorlage 25)
-    wortabstand: Option<f64>,
-    /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt ein Zeilenumbruch im Text
-    zeilenabstand: Option<f64>,
-    /// Grundlinie (kreis, gerade, senkrecht, kurve, mehrfach; beim Kreis ist `position` die Kreismitte)
-    grundlinie: Option<GrundlinieJson>,
-    /// Kursiv in Grad (−45 … 45)
-    #[serde(default)]
-    kursiv: f64,
-    /// Bezugspunkt auf der Grundlinie
-    #[serde(default)]
-    position: Option<Punkt>,
-    /// links | mitte | rechts
-    #[serde(default = "mitte")]
-    ausrichtung: String,
-    /// Unterlage: auto (wie Stil Schrift: Zickzack) | keine | mittellauf | edge_walk | zickzack | doppelzickzack
-    #[serde(default = "auto")]
-    unterlage: UnterlageJson,
-}
-
-/// Text mit einer Computer-Schrift (TrueType/OpenType, `schrift_ttf.rs`). Die Schriften lädt der Aufrufer
-/// (`Design::ttf_schriften`, `stick-formate::ttf`).
-#[derive(Debug, Deserialize)]
-struct TtfJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    text: String,
-    /// Name der Schrift („Arial“, „Arial Bold“) oder Pfad einer .ttf/.otf-Datei
-    schrift: String,
-    /// Höhe der Großbuchstaben in mm
-    #[serde(default = "text_hoehe")]
-    hoehe: f64,
-    #[serde(default = "hundert")]
-    breite: f64,
-    /// zusätzlicher Buchstabenabstand in mm (ohne Angabe 0)
-    abstand: Option<f64>,
-    /// Wortabstand in % der Höhe (Vorlage 25)
-    wortabstand: Option<f64>,
-    /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\n` im Text
-    zeilenabstand: Option<f64>,
-    /// Grundlinie (kreis, gerade, senkrecht, kurve, mehrfach; beim Kreis ist `position` die Kreismitte)
-    grundlinie: Option<GrundlinieJson>,
-    /// Kursiv in Grad (−45 … 45)
-    #[serde(default)]
-    kursiv: f64,
-    #[serde(default)]
-    position: Option<Punkt>,
-    #[serde(default = "mitte")]
-    ausrichtung: String,
-    /// tatami (Standard) | lauf | dreifach | satin (Säulen wie die TrueType-Umwandlung des Originals)
-    #[serde(default = "tatami_art")]
-    stichart: String,
-    winkel: Option<f64>,
-    /// Tatami-Unterlage (ohne Angabe: Auto Underlay des Stils)
-    unterlage: Option<bool>,
-    /// Stichlänge bei Lauf/Dreifach
-    laenge: Option<f64>,
-}
-
-/// Grundlinie eines Texts (`schrift::Grundlinie`; Dialog „Layout“ des Originals).
-#[derive(Debug, Deserialize)]
-#[serde(deny_unknown_fields)]
-struct GrundlinieJson {
-    /// kreis | gerade | senkrecht | kurve | mehrfach
-    art: String,
-    /// Radius X in mm (Vorlage 50)
-    radius: Option<f64>,
-    /// Radius Y in mm (Oval)
-    radius_y: Option<f64>,
-    /// Kreis: Justif. Angle (Grad); gerade: Line Angle
-    winkel: Option<f64>,
-    /// Tilt des Ovals in Grad
-    #[serde(default)]
-    neigung: f64,
-    /// Arc Angle in Grad (nur ein Bogen)
-    bogen: Option<f64>,
-    /// Length der geraden Grundlinie in mm
-    laenge: Option<f64>,
-    /// oben (Circle CW) | unten (Circle CCW)
-    lage: Option<String>,
-    /// ueber | durch | unter (Position Above/Through/Below)
-    stand: Option<String>,
-    /// Punkte oder Form der eigenen Kurve
-    punkte: Option<PunktAngabe>,
-}
+use crate::format::{
+    Ausrichtung, DesignJson, Ende, Griffe, GrundlinieJson, HuelleArt, HuelleJson, LaufJson, MonogrammJson,
+    MonogrammRahmen, ObjektJson, SatinStichart, SchriftOptionen, Start, TextJson, UnterlageJson, Versatz,
+};
+pub use crate::format::{Form, MONOGRAMM_HOEHE_MM, PunktAngabe};
 
 impl GrundlinieJson {
     fn grundlinie(self, blocksatz: bool) -> crate::schrift::Grundlinie {
         crate::schrift::Grundlinie {
-            art: self.art,
+            art: self.art.text().into(),
             radius: self.radius.unwrap_or(crate::schrift::KREIS_RADIUS_MM),
             radius_y: self.radius_y,
             winkel: self.winkel,
             neigung: self.neigung,
             bogen: self.bogen,
             laenge: self.laenge,
-            lage: self.lage,
-            stand: self.stand,
+            lage: self.lage.map(|x| x.text().into()),
+            stand: self.stand.map(|x| x.text().into()),
             punkte: self.punkte.map(|q| q.punkte()).unwrap_or_default(),
             blocksatz,
         }
     }
 }
 
-/// Elastic Lettering im JSON: `{"art": "gerade", "oben": [links, rechts], "unten": [links, rechts]}` oder
-/// `{"art": "gebogen", "oben": mitte | [links, mitte, rechts], "unten": …}` (mm, + nach oben).
-fn huelle_lesen(h: &Value) -> Result<crate::schrift::Huelle, String> {
-    #[derive(Deserialize)]
-    #[serde(deny_unknown_fields)]
-    struct HuelleJson {
-        art: String,
-        #[serde(default)]
-        oben: Value,
-        #[serde(default)]
-        unten: Value,
-    }
-    let j: HuelleJson = serde_json::from_value(h.clone()).map_err(|e| e.to_string())?;
-    let gebogen = match j.art.as_str() {
-        "gerade" => false,
-        "gebogen" => true,
-        x => return Err(format!("Art „{x}“ unbekannt (gerade, gebogen)")),
-    };
-    let griffe = |w: &Value| -> Result<[f64; 3], String> {
+/// Elastic Lettering: Griffe der Kanten (`format::HuelleJson`).
+fn huelle_lesen(h: &HuelleJson) -> Result<crate::schrift::Huelle, String> {
+    let gebogen = h.art == HuelleArt::Gebogen;
+    let griffe = |w: &Option<Griffe>| -> Result<[f64; 3], String> {
         let l: Vec<f64> = match w {
-            Value::Null => Vec::new(),
-            Value::Number(n) => vec![n.as_f64().unwrap_or(0.0)],
-            _ => serde_json::from_value(w.clone()).map_err(|e| e.to_string())?,
+            None => Vec::new(),
+            Some(Griffe::Mitte(n)) => vec![*n],
+            Some(Griffe::Liste(l)) => l.clone(),
         };
         match (gebogen, l.as_slice()) {
             (_, []) => Ok([0.0; 3]),
@@ -355,267 +73,171 @@ fn huelle_lesen(h: &Value) -> Result<crate::schrift::Huelle, String> {
     };
     Ok(crate::schrift::Huelle {
         gebogen,
-        oben: griffe(&j.oben)?,
-        unten: griffe(&j.unten)?,
+        oben: griffe(&h.oben)?,
+        unten: griffe(&h.unten)?,
     })
 }
-
-/// Einzelner Buchstabe eines Texts (`"buchstaben"`).
-#[derive(Debug, Deserialize)]
-#[serde(deny_unknown_fields)]
-struct BuchstabeJson {
-    nr: usize,
-    farbe: Option<String>,
-    transform: Option<Value>,
-    /// neue Stichwinkel: Strecken [[x1, y1], [x2, y2]] quer über die Säulen
-    #[serde(default)]
-    winkellinien: Vec<[Punkt; 2]>,
-}
-
-/// Füllmuster (`muster.rs`): Tatami-Reihen mit Einstichen auf den Musterlinien.
-#[derive(Debug, Deserialize)]
-struct MusterJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    umriss: PunktAngabe,
-    #[serde(default)]
-    loecher: Vec<PunktAngabe>,
-    /// Name des Musters („001 Diamond (90)“) oder seine Nummer („001“)
-    muster: String,
-    /// Stichwinkel (ohne Angabe: Winkel aus dem Musternamen, sonst der Füllung)
-    winkel: Option<f64>,
-    /// Größe des Musters in % (Standard 100)
-    #[serde(default = "hundert")]
-    groesse: f64,
-    unterlage: Option<bool>,
-    #[serde(default)]
-    aussparen: Vec<String>,
-    #[serde(default)]
-    ueberlappung: f64,
-}
-
-/// Applikation (`applikation.rs`): Platzierung, Heften, Abdecken mit Stopps.
-#[derive(Debug, Deserialize)]
-struct ApplikationJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    umriss: PunktAngabe,
-    #[serde(default)]
-    loecher: Vec<PunktAngabe>,
-    /// Breite des Abdeck-Satins in mm (Standard 2,5)
-    breite: Option<f64>,
-    /// fester Satinabstand des Abdeckstichs
-    abstand: Option<f64>,
-    heft_breite: Option<f64>,
-    heft_abstand: Option<f64>,
-    platz_laenge: Option<f64>,
-    /// „satin“ (Standard) oder „blanket“ (ohne Heftstich, Handbuch S. 247)
-    abdeckung: Option<String>,
-    /// „vorgeschnitten“ (Pre-cut, Standard) oder „zuschneiden“ (Trim in Place, mit Schnittlinie)
-    stil: Option<String>,
-}
-
-fn tatami_art() -> String {
-    "tatami".into()
-}
-
-/// Blanket entlang einer Linie (`sticharten/blanket.rs`).
-#[derive(Debug, Deserialize)]
-struct BlanketJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    punkte: PunktAngabe,
-    #[serde(default)]
-    geschlossen: bool,
-    /// Abstand der Zähne in mm (Vorlage 2,0)
-    abstand: Option<f64>,
-    /// Breite in mm (Vorlage 3,0)
-    breite: Option<f64>,
-    /// „mitte“ (Center, Standard) oder „seite“ (Offset)
-    versatz: Option<String>,
-}
-
-#[derive(Debug, Deserialize)]
-struct SatinLinieJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    punkte: PunktAngabe,
-    breite: Option<f64>,
-    #[serde(default = "auto")]
-    unterlage: UnterlageJson,
-    /// mitte (Center, Standard) | seite (Offset: Linie = Kante, Säule links davon)
-    versatz: Option<String>,
-    /// satin (Standard) | zickzack
-    stichart: Option<String>,
-}
-
-#[derive(Debug, Deserialize)]
-struct TatamiJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    umriss: PunktAngabe,
-    #[serde(default)]
-    loecher: Vec<PunktAngabe>,
-    winkel: Option<f64>,
-    /// ohne Angabe: Auto Underlay des Stils (`auto_an`)
-    unterlage: Option<bool>,
-    /// Namen der Objekte, deren Fläche ausgespart wird (Knockout)
-    #[serde(default)]
-    aussparen: Vec<String>,
-    /// Überlappung der Aussparung in mm (Standard 0 = exakt wie das Original)
-    #[serde(default)]
-    ueberlappung: f64,
-    /// mehrere Stichwinkel: Strecken [[x1, y1], [x2, y2]], die den Umriss je zweimal schneiden (Turning)
-    #[serde(default)]
-    winkellinien: Vec<[Punkt; 2]>,
-    /// Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)
-    kurzstiche: Option<bool>,
-}
-
-/// Fläche als Satinsäulen mit automatischer Stichrichtung (`saeulen.rs`, ROADMAP 4b.17).
-#[derive(Debug, Deserialize)]
-struct SatinFlaecheJson {
-    #[serde(default = "schwarz")]
-    farbe: String,
-    #[serde(default)]
-    name: String,
-    umriss: PunktAngabe,
-    #[serde(default)]
-    loecher: Vec<PunktAngabe>,
-    #[serde(default = "auto")]
-    unterlage: UnterlageJson,
-    abstand: Option<f64>,
-    faktor: Option<f64>,
-    kurzstiche: Option<bool>,
-    /// satin (Standard) | zickzack
-    stichart: Option<String>,
-    /// Säulen an Knicken teilen (Innenwinkel in Grad, 0 = nie wie der Auto Digitizer; 87 = TrueType-Umwandlung)
-    knickwinkel: Option<f64>,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(tag = "art", rename_all = "lowercase")]
-enum ObjektJson {
-    Lauf(LaufJson),
-    Dreifach(LaufJson),
-    Satin(SatinJson),
-    Satinlinie(SatinLinieJson),
-    Blanket(BlanketJson),
-    Tatami(TatamiJson),
-    Satinflaeche(SatinFlaecheJson),
-    Text(TextJson),
-    Ttf(TtfJson),
-    Applikation(ApplikationJson),
-    Muster(MusterJson),
-}
-
-/// Standardhöhe eines Monogramms: kleinste empfohlene Höhe der Alphabete Diamond2/Diamond3 (18 mm,
-/// `Analyse/daten/alphabets.md`) – die Lettering-Vorlage (10 mm) liegt darunter.
-pub const MONOGRAMM_HOEHE_MM: f64 = 18.0;
 
 /// Monogramm (Handbuch Kap. 21 „Creating monograms“): Initialen mit den Monogramm-Alphabeten **Diamond2** (2 Buchstaben)
 /// bzw. **Diamond3** (3). Belegung der Zeichen aus den Alphabeten gelesen (`Analyse_Teil3/09` §7): `A`–`Z` = linker
 /// Buchstabe, `a`–`z` = rechter, `!` … `:` = mittlerer (nur Diamond3, 18 statt 16 mm hoch), `]` = Raute als Rahmen,
 /// `[` = Zierwinkel – beide reichen von ihrem Platz nach links und liegen mittig um die Buchstaben, wenn sie direkt
-/// nach ihnen kommen. Das Objekt wird hier in ein `text`-Objekt umgeschrieben (alle Schriftoptionen gelten).
-fn monogramme_aufloesen(v: &Value) -> Result<Value, String> {
-    let mut v = v.clone();
-    let Some(liste) = v.get_mut("objekte").and_then(Value::as_array_mut) else {
-        return Ok(v);
-    };
-    for (i, o) in liste.iter_mut().enumerate() {
-        if o.get("art").and_then(Value::as_str) != Some("monogramm") {
-            continue;
-        }
-        let wo = format!("Objekt {}", i + 1);
-        let Some(m) = o.as_object_mut() else {
-            continue;
-        };
-        let ini: Vec<char> = m
-            .remove("initialen")
-            .and_then(|x| x.as_str().map(str::to_uppercase))
-            .ok_or_else(|| format!("{wo}: monogramm braucht „initialen“ (2 oder 3 Buchstaben)"))?
-            .chars()
-            .collect();
-        if !(2..=3).contains(&ini.len()) || !ini.iter().all(char::is_ascii_uppercase) {
-            return Err(format!("{wo}: initialen: 2 oder 3 Buchstaben A–Z (Diamond2/Diamond3)"));
-        }
-        let mut text = String::new();
-        text.push(ini[0]);
-        if ini.len() == 3 {
-            text.push((b'!' + (ini[1] as u8 - b'A')) as char);
-        }
-        text.push(ini[ini.len() - 1].to_ascii_lowercase());
-        let rahmen = match m.remove("rahmen").as_ref().and_then(Value::as_str) {
-            None | Some("keine") => None,
-            Some("raute") => Some(']'),
-            Some("zier") => Some('['),
-            Some(x) => return Err(format!("{wo}: Rahmen „{x}“ unbekannt (raute, zier, keine)")),
-        };
-        if let Some(f) = m.remove("rahmen_farbe") {
-            if rahmen.is_none() {
-                return Err(format!("{wo}: rahmen_farbe ohne rahmen"));
-            }
-            text.push('^');
-            let farben = m.entry("farben").or_insert_with(|| Value::Array(Vec::new()));
-            farben
-                .as_array_mut()
-                .ok_or_else(|| format!("{wo}: farben muss eine Liste sein"))?
-                .push(f);
-        }
-        if let Some(z) = rahmen {
-            text.push(z);
-        }
-        let alphabet = if ini.len() == 3 { "Diamond3" } else { "Diamond2" };
-        m.insert("art".into(), Value::from("text"));
-        m.insert("text".into(), Value::from(text));
-        m.insert("alphabet".into(), Value::from(alphabet));
-        m.entry("hoehe").or_insert_with(|| Value::from(MONOGRAMM_HOEHE_MM));
+/// nach ihnen kommen. Das Objekt wird hier in ein Text-Objekt umgeschrieben (alle Schriftoptionen gelten).
+fn monogramm_als_text(m: MonogrammJson) -> Result<TextJson, String> {
+    let ini: Vec<char> = m.initialen.to_uppercase().chars().collect();
+    if !(2..=3).contains(&ini.len()) || !ini.iter().all(char::is_ascii_uppercase) {
+        return Err("initialen: 2 oder 3 Buchstaben A–Z (Diamond2/Diamond3)".into());
     }
-    Ok(v)
+    let mut text = String::new();
+    text.push(ini[0]);
+    if ini.len() == 3 {
+        text.push((b'!' + (ini[1] as u8 - b'A')) as char);
+    }
+    text.push(ini[ini.len() - 1].to_ascii_lowercase());
+    let rahmen = match m.rahmen {
+        None | Some(MonogrammRahmen::Keine) => None,
+        Some(MonogrammRahmen::Raute) => Some(']'),
+        Some(MonogrammRahmen::Zier) => Some('['),
+    };
+    let mut schrift = m.schrift;
+    if let Some(f) = m.rahmen_farbe {
+        if rahmen.is_none() {
+            return Err("rahmen_farbe ohne rahmen".into());
+        }
+        text.push('^');
+        schrift.farben.push(f);
+    }
+    if let Some(z) = rahmen {
+        text.push(z);
+    }
+    let alphabet = if ini.len() == 3 { "Diamond3" } else { "Diamond2" };
+    Ok(TextJson {
+        text,
+        alphabet: alphabet.into(),
+        hoehe: m.hoehe,
+        unterlage: m.unterlage,
+        stichart: m.stichart,
+        winkel: m.winkel,
+        schrift,
+        g: m.g,
+    })
 }
 
-fn design_name() -> String {
-    "Design".into()
-}
-fn standard_rahmen() -> String {
-    "artista 130 x 100".into()
-}
-fn standard_stoff() -> String {
-    "0 Software Defaults".into()
+fn ausrichtung_anteil(a: Ausrichtung) -> f64 {
+    match a {
+        Ausrichtung::Links | Ausrichtung::Block => 0.0,
+        Ausrichtung::Rechts => 1.0,
+        Ausrichtung::Mitte => 0.5,
+    }
 }
 
-#[derive(Debug, Deserialize)]
-struct DesignJson {
-    #[serde(default = "design_name")]
-    name: String,
-    #[serde(default = "standard_rahmen")]
-    rahmen: String,
-    #[serde(default = "standard_stoff")]
-    stoff: String,
-    einstellungen: Option<Value>,
-    #[serde(default)]
-    objekte: Vec<ObjektJson>,
-    /// Designende: „mitte“/„rahmenmitte“ (Standard, Sprung zurück zum Ursprung), „letzter_stich“, „designmitte“,
-    /// „unten_mitte“ oder „start“ (zurück zum Start) – Dialog „Start and End“ des Originals
-    #[serde(default)]
-    ende: Option<String>,
-    /// Designstart: „rahmenmitte“ (Standard), „designmitte“, „unten_mitte“ oder „erster_stich“
-    #[serde(default)]
-    start: Option<String>,
-    /// Closest Join: jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (`ein_ausstich`)
-    #[serde(default)]
-    kuerzeste_verbindung: bool,
+/// Satz eines Texts aus den gemeinsamen Schriftoptionen.
+fn text_vorgabe(
+    text: String,
+    hoehe: f64,
+    farbe: &str,
+    s: &SchriftOptionen,
+    unterlage: Option<Vec<String>>,
+) -> TextVorgabe {
+    TextVorgabe {
+        text,
+        hoehe,
+        breite_prozent: s.breite,
+        abstand: s.abstand,
+        position: s.position.unwrap_or(p(0.0, 0.0)),
+        ausrichtung: ausrichtung_anteil(s.ausrichtung),
+        farbe: farbe.to_string(),
+        wortabstand: s.wortabstand.map(|w| w / 100.0),
+        zeilenabstand: s.zeilenabstand.map(|z| z / 100.0),
+        grundlinie: s
+            .grundlinie
+            .clone()
+            .map(|g| g.grundlinie(s.ausrichtung == Ausrichtung::Block)),
+        kursiv: s.kursiv,
+        unterlage,
+    }
+}
+
+/// Transformation prüfen (Matrix muss sich bilden lassen, z. B. Skalierung ≠ 0).
+fn transform_pruefen(t: &Transformation, wo: &str) -> Result<(), String> {
+    t.matrix(p(0.0, 0.0)).map(|_| ()).map_err(|e| format!("{wo}: {e}"))
+}
+
+/// Farben für `^`, einzelne Buchstaben, Stichart und Verzerrung eines Texts.
+fn schrift_zusatz(
+    wo: &str,
+    text: &str,
+    s: &SchriftOptionen,
+    stichart: Option<SchriftStichart>,
+) -> Result<Option<TextZusatz>, String> {
+    let wechsel = text.matches('^').count();
+    if wechsel > s.farben.len() {
+        return Err(format!(
+            "{wo}: {wechsel} Farbwechsel (^) im Text, aber {} Farben in „farben“",
+            s.farben.len()
+        ));
+    }
+    let n = buchstaben_zahl(text);
+    let mut einzeln = Vec::new();
+    for b in &s.buchstaben {
+        if b.nr == 0 || b.nr > n {
+            return Err(format!("{wo}: Buchstabe {} gibt es nicht (1 … {n})", b.nr));
+        }
+        let transform = b.transform.clone().unwrap_or_default();
+        transform_pruefen(&transform, &format!("{wo}, Buchstabe {}", b.nr))?;
+        einzeln.push(Buchstabe {
+            nr: b.nr,
+            farbe: b.farbe.clone(),
+            transform,
+            winkellinien: b.winkellinien.clone(),
+        });
+    }
+    let huelle = match &s.elastisch {
+        Some(h) => Some(huelle_lesen(h).map_err(|e| format!("{wo}: elastisch: {e}"))?),
+        None => None,
+    };
+    if s.farben.is_empty() && einzeln.is_empty() && stichart.is_none() && huelle.is_none() {
+        return Ok(None);
+    }
+    Ok(Some(TextZusatz {
+        farben: s.farben.clone(),
+        einzeln,
+        stichart,
+        huelle,
+    }))
+}
+
+/// Stichart „muster“ einer Schrift: Muster muss angegeben und bekannt sein.
+fn schrift_muster(wo: &str, s: &SchriftOptionen, winkel: Option<f64>) -> Result<SchriftStichart, String> {
+    let m = s
+        .muster
+        .as_deref()
+        .ok_or_else(|| format!("{wo}: Stichart muster braucht „muster“ (Name oder Nummer, stick muster)"))?;
+    if crate::muster::finden(m).is_none() {
+        return Err(format!("{wo}: Füllmuster „{m}“ unbekannt (stick muster)"));
+    }
+    Ok(SchriftStichart::Muster {
+        muster: m.to_string(),
+        winkel,
+        groesse: s.groesse.unwrap_or(100.0),
+    })
+}
+
+/// Fehler beim Lesen eines Designs: wenn möglich mit Nummer des Objekts, Meldung auf Deutsch.
+fn design_fehler(v: &Value, e: serde_json::Error) -> String {
+    if let Some(liste) = v.get("objekte").and_then(Value::as_array) {
+        for (i, o) in liste.iter().enumerate() {
+            if let Err(f) = ObjektJson::deserialize(o) {
+                let art = o.get("art").and_then(Value::as_str).unwrap_or("?");
+                return format!(
+                    "Objekt {} ({art}): {}",
+                    i + 1,
+                    crate::format::fehler_deutsch(&f.to_string())
+                );
+            }
+        }
+    }
+    format!("Design ungültig: {}", crate::format::fehler_deutsch(&e.to_string()))
 }
 
 /// Start- bzw. Endpunkt des Designs (Dialog „Start and End“, Menü Arrange; Handbuch PDF-S. 204–205). Das Original
@@ -637,17 +259,26 @@ pub enum Bezugspunkt {
     Start,
 }
 
-impl Bezugspunkt {
-    fn aus_text(t: Option<&str>, ende: bool) -> Result<Bezugspunkt, String> {
-        Ok(match t {
-            None | Some("rahmenmitte") | Some("mitte") => Bezugspunkt::Rahmenmitte,
-            Some("designmitte") => Bezugspunkt::Designmitte,
-            Some("unten_mitte") => Bezugspunkt::UntenMitte,
-            Some("letzter_stich") if ende => Bezugspunkt::Stich,
-            Some("erster_stich") if !ende => Bezugspunkt::Stich,
-            Some("start") if ende => Bezugspunkt::Start,
-            Some(x) => return Err(format!("{} „{x}“ unbekannt", if ende { "Ende" } else { "Start" })),
-        })
+impl From<Start> for Bezugspunkt {
+    fn from(s: Start) -> Self {
+        match s {
+            Start::Rahmenmitte => Bezugspunkt::Rahmenmitte,
+            Start::Designmitte => Bezugspunkt::Designmitte,
+            Start::UntenMitte => Bezugspunkt::UntenMitte,
+            Start::ErsterStich => Bezugspunkt::Stich,
+        }
+    }
+}
+
+impl From<Ende> for Bezugspunkt {
+    fn from(e: Ende) -> Self {
+        match e {
+            Ende::Rahmenmitte => Bezugspunkt::Rahmenmitte,
+            Ende::Designmitte => Bezugspunkt::Designmitte,
+            Ende::UntenMitte => Bezugspunkt::UntenMitte,
+            Ende::LetzterStich => Bezugspunkt::Stich,
+            Ende::Start => Bezugspunkt::Start,
+        }
     }
 }
 
@@ -1341,6 +972,8 @@ impl Objekt {
 pub struct Design {
     pub name: String,
     pub rahmen: Rahmen,
+    /// Garnkarte (JSON `"garnkarte"`, Standard „Default“ wie die Maschine; „keine“ = ohne) – ordnet der Aufrufer zu
+    pub garnkarte: String,
     pub einstellungen: Einstellungen,
     pub objekte: Vec<Objekt>,
     /// geladene Alphabete (Name wie im Alphabet-Kopf, z. B. „Drifter“); füllt der Aufrufer, siehe `alphabet_namen`
@@ -1422,450 +1055,153 @@ impl Design {
         Design::aus_value(&v)
     }
 
+    /// Design aus JSON (Format `format.rs`; Schema `format::schema()`).
     pub fn aus_value(v: &Value) -> Result<Design, String> {
-        let v = &monogramme_aufloesen(v)?;
-        let d: DesignJson = serde_json::from_value(v.clone()).map_err(|e| format!("Design ungültig: {e}"))?;
+        let v = &crate::format::migrieren(v)?;
+        let d: DesignJson = serde_json::from_value(v.clone()).map_err(|e| design_fehler(v, e))?;
         let mut e = fuer_stoff(&d.stoff)?;
         if let Some(werte) = &d.einstellungen {
             e = e.ueberschreiben(werte)?;
         }
-        for o in &d.objekte {
+        // Monogramme werden zu Text (Diamond2/Diamond3)
+        let roh: Vec<ObjektJson> = d
+            .objekte
+            .into_iter()
+            .enumerate()
+            .map(|(i, o)| match o {
+                ObjektJson::Monogramm(m) => monogramm_als_text(m)
+                    .map(ObjektJson::Text)
+                    .map_err(|e| format!("Objekt {}: {e}", i + 1)),
+                x => Ok(x),
+            })
+            .collect::<Result<_, _>>()?;
+
+        // Prüfungen, die das Format allein nicht ausdrückt
+        for (i, o) in roh.iter().enumerate() {
+            let wo = format!("Objekt {}", i + 1);
             let block = match o {
-                ObjektJson::Text(t) => t.ausrichtung == "block" && t.grundlinie.is_none(),
-                ObjektJson::Ttf(t) => t.ausrichtung == "block" && t.grundlinie.is_none(),
+                ObjektJson::Text(t) => t.schrift.ausrichtung == Ausrichtung::Block && t.schrift.grundlinie.is_none(),
+                ObjektJson::Ttf(t) => {
+                    t.schrift_optionen.ausrichtung == Ausrichtung::Block && t.schrift_optionen.grundlinie.is_none()
+                }
                 _ => false,
             };
             if block {
-                return Err(
-                    "Ausrichtung „block“ braucht eine Grundlinie mit fester Länge (kurve, gerade mit laenge, \
+                return Err(format!(
+                    "{wo}: Ausrichtung „block“ braucht eine Grundlinie mit fester Länge (kurve, gerade mit laenge, \
                      kreis mit bogen)"
-                        .into(),
-                );
+                ));
             }
             if let ObjektJson::Tatami(t) = o
                 && !t.winkellinien.is_empty()
                 && (!t.loecher.is_empty() || !t.aussparen.is_empty())
             {
-                return Err("Fläche mit Winkellinien: ohne Löcher und Aussparen (noch nicht möglich)".into());
+                return Err(format!(
+                    "{wo}: Fläche mit Winkellinien: ohne Löcher und Aussparen (noch nicht möglich)"
+                ));
             }
-            if let ObjektJson::Satinlinie(s) = o
-                && let Some(x) = s.versatz.as_deref().filter(|x| !matches!(*x, "mitte" | "seite"))
-            {
-                return Err(format!("Versatz „{x}“ unbekannt (mitte, seite)"));
-            }
-            let stichart = match o {
-                ObjektJson::Satin(s) => s.stichart.as_deref(),
-                ObjektJson::Satinlinie(s) => s.stichart.as_deref(),
-                ObjektJson::Satinflaeche(s) => s.stichart.as_deref(),
-                _ => None,
-            };
             if let ObjektJson::Satinflaeche(s) = o
                 && s.knickwinkel.is_some_and(|k| !(0.0..180.0).contains(&k))
             {
-                return Err("Satinfläche: knickwinkel zwischen 0 und 180 Grad".into());
-            }
-            if let Some(x) = stichart.filter(|x| !matches!(*x, "satin" | "zickzack")) {
-                return Err(format!("Stichart „{x}“ unbekannt (satin, zickzack)"));
-            }
-            if let ObjektJson::Applikation(a) = o {
-                if let Some(x) = a.abdeckung.as_deref().filter(|x| !matches!(*x, "satin" | "blanket")) {
-                    return Err(format!("Abdeckung „{x}“ unbekannt (satin, blanket)"));
-                }
-                if let Some(x) = a
-                    .stil
-                    .as_deref()
-                    .filter(|x| !matches!(*x, "vorgeschnitten" | "zuschneiden"))
-                {
-                    return Err(format!(
-                        "Applikationsstil „{x}“ unbekannt (vorgeschnitten, zuschneiden)"
-                    ));
-                }
+                return Err(format!("{wo}: Satinfläche: knickwinkel zwischen 0 und 180 Grad"));
             }
         }
-        let objekte: Vec<Objekt> = d
-            .objekte
-            .into_iter()
-            .map(|o| match o {
-                ObjektJson::Lauf(l) => lauf_objekt(l, false),
-                ObjektJson::Dreifach(l) => lauf_objekt(l, true),
-                ObjektJson::Satin(s) => Objekt {
-                    farbe: s.farbe,
-                    name: s.name,
-                    art: ObjektArt::Satin {
-                        seite_a: s.seite_a.punkte(),
-                        seite_b: s.seite_b.punkte(),
-                        unterlage: s.unterlage.into(),
-                        optionen: SatinOptionen {
-                            abstand: s.abstand,
-                            faktor: s.faktor,
-                            kurzstiche: s.kurzstiche,
-                            step: false,
-                            zickzack: s.stichart.as_deref() == Some("zickzack"),
-                        },
-                    },
-                },
-                ObjektJson::Text(t) => Objekt {
-                    name: if t.name.is_empty() { t.text.clone() } else { t.name },
-                    art: ObjektArt::Text {
-                        alphabet: t.alphabet,
-                        vorgabe: TextVorgabe {
-                            text: t.text,
-                            hoehe: t.hoehe,
-                            breite_prozent: t.breite,
-                            abstand: t.abstand,
-                            position: t.position.unwrap_or(p(0.0, 0.0)),
-                            ausrichtung: match t.ausrichtung.as_str() {
-                                "links" | "block" => 0.0,
-                                "rechts" => 1.0,
-                                _ => 0.5,
-                            },
-                            farbe: t.farbe.clone(),
-                            wortabstand: t.wortabstand.map(|w| w / 100.0),
-                            zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
-                            grundlinie: t.grundlinie.map(|g| g.grundlinie(t.ausrichtung == "block")),
-                            kursiv: t.kursiv,
-                            unterlage: match Unterlage::from(t.unterlage) {
-                                Unterlage::Auto => None,
-                                Unterlage::Arten(l) => Some(l),
-                            },
-                        },
-                    },
-                    farbe: t.farbe,
-                },
-                ObjektJson::Muster(m) => Objekt {
-                    farbe: m.farbe,
-                    name: m.name,
-                    art: ObjektArt::Musterfuellung {
-                        umriss: m.umriss.punkte(),
-                        loecher: m.loecher.iter().map(|l| l.punkte()).collect(),
-                        muster: m.muster,
-                        winkel: m.winkel,
-                        groesse: m.groesse,
-                        unterlage: m.unterlage,
-                        aussparen: Aussparen {
-                            namen: m.aussparen,
-                            ueberlappung: m.ueberlappung,
-                        },
-                    },
-                },
-                ObjektJson::Applikation(a) => {
-                    let st = ApplikationVorgabe::default();
-                    Objekt {
-                        name: a.name.clone(),
-                        art: ObjektArt::Applikation(ApplikationVorgabe {
-                            umriss: a.umriss.punkte(),
-                            loecher: a.loecher.iter().map(PunktAngabe::punkte).collect(),
-                            farbe: a.farbe.clone(),
-                            breite: a.breite.unwrap_or(st.breite),
-                            abstand: a.abstand,
-                            heft_breite: a.heft_breite.unwrap_or(st.heft_breite),
-                            heft_abstand: a.heft_abstand.unwrap_or(st.heft_abstand),
-                            platz_laenge: a.platz_laenge.unwrap_or(st.platz_laenge),
-                            blanket: a.abdeckung.as_deref() == Some("blanket"),
-                            zuschneiden: a.stil.as_deref() == Some("zuschneiden"),
-                        }),
-                        farbe: a.farbe,
-                    }
-                }
-                ObjektJson::Ttf(t) => Objekt {
-                    name: if t.name.is_empty() { t.text.clone() } else { t.name },
-                    art: ObjektArt::TtfText {
-                        schrift: t.schrift,
-                        vorgabe: TextVorgabe {
-                            text: t.text,
-                            hoehe: t.hoehe,
-                            breite_prozent: t.breite,
-                            abstand: t.abstand,
-                            position: t.position.unwrap_or(p(0.0, 0.0)),
-                            ausrichtung: match t.ausrichtung.as_str() {
-                                "links" | "block" => 0.0,
-                                "rechts" => 1.0,
-                                _ => 0.5,
-                            },
-                            farbe: t.farbe.clone(),
-                            wortabstand: t.wortabstand.map(|w| w / 100.0),
-                            zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
-                            grundlinie: t.grundlinie.map(|g| g.grundlinie(t.ausrichtung == "block")),
-                            kursiv: t.kursiv,
-                            unterlage: None,
-                        },
-                        stichart: match t.stichart.as_str() {
-                            "lauf" => TtfStichart::Lauf {
-                                laenge: t.laenge,
-                                dreifach: false,
-                            },
-                            "dreifach" => TtfStichart::Lauf {
-                                laenge: t.laenge,
-                                dreifach: true,
-                            },
-                            "satin" => TtfStichart::Satin { unterlage: t.unterlage },
-                            _ => TtfStichart::Tatami {
-                                winkel: t.winkel,
-                                unterlage: t.unterlage,
-                            },
-                        },
-                    },
-                    farbe: t.farbe,
-                },
-                ObjektJson::Blanket(b) => Objekt {
-                    farbe: b.farbe,
-                    name: b.name,
-                    art: ObjektArt::Blanket {
-                        punkte: b.punkte.punkte(),
-                        geschlossen: b.geschlossen,
-                        abstand: b.abstand.unwrap_or(crate::sticharten::blanket::ABSTAND),
-                        breite: b.breite.unwrap_or(crate::sticharten::blanket::BREITE),
-                        mittig: b.versatz.as_deref() != Some("seite"),
-                    },
-                },
-                ObjektJson::Satinlinie(s) => Objekt {
-                    farbe: s.farbe,
-                    name: s.name,
-                    art: ObjektArt::SatinLinie {
-                        punkte: s.punkte.punkte(),
-                        breite: s.breite.unwrap_or(2.0),
-                        unterlage: s.unterlage.into(),
-                        mittig: s.versatz.as_deref() != Some("seite"),
-                        optionen: SatinOptionen {
-                            zickzack: s.stichart.as_deref() == Some("zickzack"),
-                            ..Default::default()
-                        },
-                    },
-                },
-                ObjektJson::Tatami(t) if !t.winkellinien.is_empty() => Objekt {
-                    farbe: t.farbe,
-                    name: t.name,
-                    art: ObjektArt::Wendefuellung {
-                        umriss: t.umriss.punkte(),
-                        winkellinien: t.winkellinien,
-                        unterlage: t.unterlage,
-                        kurzstiche: t.kurzstiche,
-                    },
-                },
-                ObjektJson::Satinflaeche(s) => Objekt {
-                    farbe: s.farbe,
-                    name: s.name,
-                    art: ObjektArt::SatinFlaeche {
-                        umriss: s.umriss.punkte(),
-                        loecher: s.loecher.iter().map(|l| l.punkte()).collect(),
-                        unterlage: s.unterlage.into(),
-                        optionen: SatinOptionen {
-                            abstand: s.abstand,
-                            faktor: s.faktor,
-                            kurzstiche: s.kurzstiche,
-                            step: false,
-                            zickzack: s.stichart.as_deref() == Some("zickzack"),
-                        },
-                        knickwinkel: s.knickwinkel.unwrap_or(0.0),
-                    },
-                },
-                ObjektJson::Tatami(t) => Objekt {
-                    farbe: t.farbe,
-                    name: t.name,
-                    art: ObjektArt::Tatami {
-                        umriss: t.umriss.punkte(),
-                        loecher: t.loecher.iter().map(|l| l.punkte()).collect(),
-                        winkel: t.winkel,
-                        unterlage: t.unterlage,
-                        aussparen: Aussparen {
-                            namen: t.aussparen,
-                            ueberlappung: t.ueberlappung,
-                        },
-                    },
-                },
-            })
-            .collect();
-        for o in &objekte {
-            if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art
-                && let Some(g) = &vorgabe.grundlinie
-            {
-                g.pruefen(&vorgabe.text)?;
-            }
-            if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art
-                && vorgabe.kursiv.abs() > 45.0
-            {
-                return Err(format!("Kursiv {}° – höchstens 45° (Handbuch)", vorgabe.kursiv));
-            }
-        }
-        let transform_lesen = |t: &Value, wo: &str| -> Result<Transformation, String> {
-            let t: Transformation =
-                serde_json::from_value(t.clone()).map_err(|e| format!("{wo}: transform ungültig: {e}"))?;
-            t.matrix(p(0.0, 0.0)).map_err(|e| format!("{wo}: {e}"))?;
-            Ok(t)
-        };
+
+        // Felder, die jedes Objekt haben kann (Abschnitt „Bearbeiten“)
         let mut transformationen = BTreeMap::new();
-        if let Some(liste) = v.get("objekte").and_then(Value::as_array) {
-            for (i, o) in liste.iter().enumerate() {
-                if let Some(t) = o.get("transform") {
-                    let t = transform_lesen(t, &format!("Objekt {}", i + 1))?;
-                    if !t.ist_leer() {
-                        transformationen.insert(i, t);
-                    }
-                }
-            }
-        }
-        let transformation = match v.get("transform") {
-            Some(t) => transform_lesen(t, "Design")?,
-            None => Transformation::default(),
-        };
-        // Farben für `^` und einzelne Buchstaben je Text
-        let mut buchstaben = BTreeMap::new();
-        let liste = v.get("objekte").and_then(Value::as_array);
-        for (i, o) in objekte.iter().enumerate() {
-            let (ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. }) = &o.art else {
-                continue;
-            };
-            let roh = liste.and_then(|l| l.get(i));
-            let wo = format!("Objekt {}", i + 1);
-            let farben: Vec<String> = match roh.and_then(|r| r.get("farben")) {
-                Some(f) => serde_json::from_value(f.clone()).map_err(|e| format!("{wo}: farben ungültig: {e}"))?,
-                None => Vec::new(),
-            };
-            let wechsel = vorgabe.text.matches('^').count();
-            if wechsel > farben.len() {
-                return Err(format!(
-                    "{wo}: {wechsel} Farbwechsel (^) im Text, aber {} Farben in „farben“",
-                    farben.len()
-                ));
-            }
-            let n = buchstaben_zahl(&vorgabe.text);
-            let mut einzeln = Vec::new();
-            if let Some(e) = roh.and_then(|r| r.get("buchstaben")) {
-                let l: Vec<BuchstabeJson> =
-                    serde_json::from_value(e.clone()).map_err(|e| format!("{wo}: buchstaben ungültig: {e}"))?;
-                for b in l {
-                    if b.nr == 0 || b.nr > n {
-                        return Err(format!("{wo}: Buchstabe {} gibt es nicht (1 … {n})", b.nr));
-                    }
-                    let transform = match &b.transform {
-                        Some(t) => transform_lesen(t, &format!("{wo}, Buchstabe {}", b.nr))?,
-                        None => Transformation::default(),
-                    };
-                    einzeln.push(Buchstabe {
-                        nr: b.nr,
-                        farbe: b.farbe,
-                        transform,
-                        winkellinien: b.winkellinien,
-                    });
-                }
-            }
-            // Stichart der Schrift (Handbuch Kap. 20): Alphabete satin | step | muster, Computer-Schriften auch muster
-            let ist_text = matches!(o.art, ObjektArt::Text { .. });
-            let zahl = |k: &str| roh.and_then(|r| r.get(k)).and_then(Value::as_f64);
-            let stichart = match roh.and_then(|r| r.get("stichart")).and_then(Value::as_str) {
-                Some("step") if ist_text => Some(SchriftStichart::Step),
-                Some("muster") => {
-                    let m = roh
-                        .and_then(|r| r.get("muster"))
-                        .and_then(Value::as_str)
-                        .ok_or_else(|| {
-                            format!("{wo}: Stichart muster braucht „muster“ (Name oder Nummer, stick muster)")
-                        })?;
-                    if crate::muster::finden(m).is_none() {
-                        return Err(format!("{wo}: Füllmuster „{m}“ unbekannt (stick muster)"));
-                    }
-                    Some(SchriftStichart::Muster {
-                        muster: m.to_string(),
-                        winkel: zahl("winkel"),
-                        groesse: zahl("groesse").unwrap_or(100.0),
-                    })
-                }
-                None | Some("satin") if ist_text => None,
-                Some(x) if ist_text => {
-                    return Err(format!("{wo}: Stichart „{x}“ unbekannt (satin, step, muster)"));
-                }
-                _ => None,
-            };
-            let huelle = match roh.and_then(|r| r.get("elastisch")) {
-                Some(h) => Some(huelle_lesen(h).map_err(|e| format!("{wo}: elastisch: {e}"))?),
-                None => None,
-            };
-            if !farben.is_empty() || !einzeln.is_empty() || stichart.is_some() || huelle.is_some() {
-                buchstaben.insert(
-                    i,
-                    TextZusatz {
-                        farben,
-                        einzeln,
-                        stichart,
-                        huelle,
-                    },
-                );
-            }
-        }
-        let doppellauf = v
-            .get("objekte")
-            .and_then(Value::as_array)
-            .map(|l| {
-                l.iter()
-                    .enumerate()
-                    .filter(|(_, o)| o.get("doppellauf").and_then(Value::as_bool) == Some(true))
-                    .map(|(i, _)| i)
-                    .collect()
-            })
-            .unwrap_or_default();
+        let mut doppellauf = std::collections::BTreeSet::new();
         let mut auto_jump = BTreeMap::new();
-        if let Some(l) = v.get("objekte").and_then(Value::as_array) {
-            for (i, o) in l.iter().enumerate() {
-                let wo = format!("Objekt {}", i + 1);
-                let aj = match o.get("auto_jump") {
-                    None => continue,
-                    Some(Value::Bool(an)) => AutoJump {
-                        an: *an,
-                        ..AutoJump::default()
+        let mut step_muster = BTreeMap::new();
+        let mut einstich = BTreeMap::new();
+        let mut ausstich = BTreeMap::new();
+        for (i, o) in roh.iter().enumerate() {
+            let wo = format!("Objekt {}", i + 1);
+            let g = o.gemeinsam();
+            if let Some(t) = &g.transform {
+                transform_pruefen(t, &format!("{wo}: transform"))?;
+                if !t.ist_leer() {
+                    transformationen.insert(i, t.clone());
+                }
+            }
+            if g.doppellauf {
+                doppellauf.insert(i);
+            }
+            if let Some(aj) = g.auto_jump {
+                let s = AutoJump::default();
+                let aj = match aj {
+                    crate::format::AutoJumpJson::An(an) => AutoJump { an, ..s },
+                    crate::format::AutoJumpJson::Werte(w) => AutoJump {
+                        an: true,
+                        max: w.max.unwrap_or(s.max),
+                        sprung: w.sprung.unwrap_or(s.sprung),
                     },
-                    Some(w) => {
-                        #[derive(Deserialize)]
-                        #[serde(deny_unknown_fields)]
-                        struct AutoJumpJson {
-                            max: Option<f64>,
-                            sprung: Option<f64>,
-                        }
-                        let j: AutoJumpJson = serde_json::from_value(w.clone())
-                            .map_err(|e| format!("{wo}: auto_jump: true, false oder {{\"max\", \"sprung\"}}: {e}"))?;
-                        let s = AutoJump::default();
-                        AutoJump {
-                            an: true,
-                            max: j.max.unwrap_or(s.max),
-                            sprung: j.sprung.unwrap_or(s.sprung),
-                        }
-                    }
                 };
-                if !(crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM).contains(&aj.max)
-                    || !(crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM).contains(&aj.sprung)
-                {
+                let bereich = crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM;
+                if !bereich.contains(&aj.max) || !bereich.contains(&aj.sprung) {
                     return Err(format!("{wo}: auto_jump: max und sprung zwischen 0,3 und 12,7 mm"));
                 }
                 auto_jump.insert(i, aj);
             }
+            if let Some(nr) = g.step_muster {
+                TatamiEinstellung::default()
+                    .step_muster(nr)
+                    .map_err(|e| format!("{wo}: {e}"))?;
+                step_muster.insert(i, nr);
+            }
+            if let Some(q) = g.einstich {
+                einstich.insert(i, q);
+            }
+            if let Some(q) = g.ausstich {
+                ausstich.insert(i, q);
+            }
         }
-        let mut step_muster = BTreeMap::new();
-        if let Some(l) = v.get("objekte").and_then(Value::as_array) {
-            for (i, o) in l.iter().enumerate() {
-                if let Some(w) = o.get("step_muster") {
-                    let nr = w.as_u64().unwrap_or(0) as usize;
-                    TatamiEinstellung::default()
-                        .step_muster(nr)
-                        .map_err(|e| format!("Objekt {}: {e}", i + 1))?;
-                    step_muster.insert(i, nr);
+
+        // Farben für `^`, einzelne Buchstaben, Stichart und Verzerrung je Text
+        let mut buchstaben = BTreeMap::new();
+        for (i, o) in roh.iter().enumerate() {
+            let wo = format!("Objekt {}", i + 1);
+            let zusatz = match o {
+                ObjektJson::Text(t) => {
+                    let stichart = match t.stichart {
+                        None | Some(crate::format::SchriftStichart::Satin) => None,
+                        Some(crate::format::SchriftStichart::Step) => Some(SchriftStichart::Step),
+                        Some(crate::format::SchriftStichart::Muster) => {
+                            Some(schrift_muster(&wo, &t.schrift, t.winkel)?)
+                        }
+                    };
+                    schrift_zusatz(&wo, &t.text, &t.schrift, stichart)?
+                }
+                ObjektJson::Ttf(t) => {
+                    let stichart = match t.stichart {
+                        crate::format::TtfStichart::Muster => Some(schrift_muster(&wo, &t.schrift_optionen, t.winkel)?),
+                        _ => None,
+                    };
+                    schrift_zusatz(&wo, &t.text, &t.schrift_optionen, stichart)?
+                }
+                _ => None,
+            };
+            if let Some(z) = zusatz {
+                buchstaben.insert(i, z);
+            }
+        }
+
+        let objekte: Vec<Objekt> = roh.into_iter().map(objekt_aus_json).collect();
+        for (i, o) in objekte.iter().enumerate() {
+            if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art {
+                if let Some(g) = &vorgabe.grundlinie {
+                    g.pruefen(&vorgabe.text).map_err(|e| format!("Objekt {}: {e}", i + 1))?;
+                }
+                if vorgabe.kursiv.abs() > 45.0 {
+                    return Err(format!(
+                        "Objekt {}: Kursiv {}° – höchstens 45° (Handbuch)",
+                        i + 1,
+                        vorgabe.kursiv
+                    ));
                 }
             }
         }
-        let mut einstich = BTreeMap::new();
-        let mut ausstich = BTreeMap::new();
-        if let Some(l) = v.get("objekte").and_then(Value::as_array) {
-            for (i, o) in l.iter().enumerate() {
-                for (feld, ziel) in [("einstich", &mut einstich), ("ausstich", &mut ausstich)] {
-                    if let Some(w) = o.get(feld) {
-                        let q = w
-                            .as_array()
-                            .filter(|a| a.len() == 2)
-                            .and_then(|a| Some(p(a[0].as_f64()?, a[1].as_f64()?)))
-                            .ok_or_else(|| format!("Objekt {}: {feld}: Punkt [x, y] in mm", i + 1))?;
-                        ziel.insert(i, q);
-                    }
-                }
-            }
-        }
+        let transformation = d.transform.unwrap_or_default();
+        transform_pruefen(&transformation, "Design: transform")?;
         Ok(Design {
             transformationen,
             transformation,
@@ -1878,11 +1214,12 @@ impl Design {
             kuerzeste_verbindung: d.kuerzeste_verbindung,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
+            garnkarte: d.garnkarte,
             einstellungen: e,
             objekte,
             alphabete: BTreeMap::new(),
-            start: Bezugspunkt::aus_text(d.start.as_deref(), false)?,
-            ende: Bezugspunkt::aus_text(d.ende.as_deref(), true)?,
+            start: d.start.map(Bezugspunkt::from).unwrap_or_default(),
+            ende: d.ende.map(Bezugspunkt::from).unwrap_or_default(),
             ttf_schriften: BTreeMap::new(),
         })
     }
@@ -2241,14 +1578,183 @@ impl Design {
 fn lauf_objekt(l: LaufJson, art_dreifach: bool) -> Objekt {
     let (punkte, ecken) = l.punkte.punkte_mit_ecken();
     Objekt {
-        farbe: l.farbe,
-        name: l.name,
+        farbe: l.g.farbe,
+        name: l.g.name,
         art: ObjektArt::Lauf {
             punkte,
             ecken,
             laenge: l.laenge,
             dreifach: l.dreifach.unwrap_or(art_dreifach),
             geschlossen: l.geschlossen,
+        },
+    }
+}
+
+fn satin_optionen(
+    abstand: Option<f64>,
+    faktor: Option<f64>,
+    kurzstiche: Option<bool>,
+    stichart: Option<SatinStichart>,
+) -> SatinOptionen {
+    SatinOptionen {
+        abstand,
+        faktor,
+        kurzstiche,
+        step: false,
+        zickzack: stichart == Some(SatinStichart::Zickzack),
+    }
+}
+
+/// Objekt des Formats → Objekt des Rechenkerns (Monogramme sind schon Text).
+fn objekt_aus_json(o: ObjektJson) -> Objekt {
+    match o {
+        ObjektJson::Lauf(l) => lauf_objekt(l, false),
+        ObjektJson::Dreifach(l) => lauf_objekt(l, true),
+        ObjektJson::Satin(s) => Objekt {
+            farbe: s.g.farbe,
+            name: s.g.name,
+            art: ObjektArt::Satin {
+                seite_a: s.seite_a.punkte(),
+                seite_b: s.seite_b.punkte(),
+                unterlage: s.unterlage.into(),
+                optionen: satin_optionen(s.abstand, s.faktor, s.kurzstiche, s.stichart),
+            },
+        },
+        ObjektJson::Text(t) => {
+            let unterlage = match Unterlage::from(t.unterlage) {
+                Unterlage::Auto => None,
+                Unterlage::Arten(l) => Some(l),
+            };
+            let name = if t.g.name.is_empty() { t.text.clone() } else { t.g.name };
+            Objekt {
+                art: ObjektArt::Text {
+                    alphabet: t.alphabet,
+                    vorgabe: text_vorgabe(t.text, t.hoehe, &t.g.farbe, &t.schrift, unterlage),
+                },
+                name,
+                farbe: t.g.farbe,
+            }
+        }
+        ObjektJson::Ttf(t) => {
+            let name = if t.g.name.is_empty() { t.text.clone() } else { t.g.name };
+            let stichart = match t.stichart {
+                crate::format::TtfStichart::Lauf => TtfStichart::Lauf {
+                    laenge: t.laenge,
+                    dreifach: false,
+                },
+                crate::format::TtfStichart::Dreifach => TtfStichart::Lauf {
+                    laenge: t.laenge,
+                    dreifach: true,
+                },
+                crate::format::TtfStichart::Satin => TtfStichart::Satin { unterlage: t.unterlage },
+                crate::format::TtfStichart::Tatami | crate::format::TtfStichart::Muster => TtfStichart::Tatami {
+                    winkel: t.winkel,
+                    unterlage: t.unterlage,
+                },
+            };
+            Objekt {
+                art: ObjektArt::TtfText {
+                    schrift: t.schrift,
+                    vorgabe: text_vorgabe(t.text, t.hoehe, &t.g.farbe, &t.schrift_optionen, None),
+                    stichart,
+                },
+                name,
+                farbe: t.g.farbe,
+            }
+        }
+        // wird vorher in Text umgeschrieben (`monogramm_als_text`)
+        ObjektJson::Monogramm(_) => unreachable!("Monogramm wird vor dem Umwandeln zu Text"),
+        ObjektJson::Muster(m) => Objekt {
+            farbe: m.g.farbe,
+            name: m.g.name,
+            art: ObjektArt::Musterfuellung {
+                umriss: m.umriss.punkte(),
+                loecher: m.loecher.iter().map(|l| l.punkte()).collect(),
+                muster: m.muster,
+                winkel: m.winkel,
+                groesse: m.groesse,
+                unterlage: m.unterlage,
+                aussparen: Aussparen {
+                    namen: m.aussparen,
+                    ueberlappung: m.ueberlappung,
+                },
+            },
+        },
+        ObjektJson::Applikation(a) => {
+            let st = ApplikationVorgabe::default();
+            Objekt {
+                name: a.g.name.clone(),
+                art: ObjektArt::Applikation(ApplikationVorgabe {
+                    umriss: a.umriss.punkte(),
+                    loecher: a.loecher.iter().map(PunktAngabe::punkte).collect(),
+                    farbe: a.g.farbe.clone(),
+                    breite: a.breite.unwrap_or(st.breite),
+                    abstand: a.abstand,
+                    heft_breite: a.heft_breite.unwrap_or(st.heft_breite),
+                    heft_abstand: a.heft_abstand.unwrap_or(st.heft_abstand),
+                    platz_laenge: a.platz_laenge.unwrap_or(st.platz_laenge),
+                    blanket: a.abdeckung == Some(crate::format::Abdeckung::Blanket),
+                    zuschneiden: a.stil == Some(crate::format::ApplikationStil::Zuschneiden),
+                }),
+                farbe: a.g.farbe,
+            }
+        }
+        ObjektJson::Blanket(b) => Objekt {
+            farbe: b.g.farbe,
+            name: b.g.name,
+            art: ObjektArt::Blanket {
+                punkte: b.punkte.punkte(),
+                geschlossen: b.geschlossen,
+                abstand: b.abstand.unwrap_or(crate::sticharten::blanket::ABSTAND),
+                breite: b.breite.unwrap_or(crate::sticharten::blanket::BREITE),
+                mittig: b.versatz != Some(Versatz::Seite),
+            },
+        },
+        ObjektJson::Satinlinie(s) => Objekt {
+            farbe: s.g.farbe,
+            name: s.g.name,
+            art: ObjektArt::SatinLinie {
+                punkte: s.punkte.punkte(),
+                breite: s.breite.unwrap_or(2.0),
+                unterlage: s.unterlage.into(),
+                mittig: s.versatz != Some(Versatz::Seite),
+                optionen: satin_optionen(None, None, None, s.stichart),
+            },
+        },
+        ObjektJson::Tatami(t) if !t.winkellinien.is_empty() => Objekt {
+            farbe: t.g.farbe,
+            name: t.g.name,
+            art: ObjektArt::Wendefuellung {
+                umriss: t.umriss.punkte(),
+                winkellinien: t.winkellinien,
+                unterlage: t.unterlage,
+                kurzstiche: t.kurzstiche,
+            },
+        },
+        ObjektJson::Satinflaeche(s) => Objekt {
+            farbe: s.g.farbe,
+            name: s.g.name,
+            art: ObjektArt::SatinFlaeche {
+                umriss: s.umriss.punkte(),
+                loecher: s.loecher.iter().map(|l| l.punkte()).collect(),
+                unterlage: s.unterlage.into(),
+                optionen: satin_optionen(s.abstand, s.faktor, s.kurzstiche, s.stichart),
+                knickwinkel: s.knickwinkel.unwrap_or(0.0),
+            },
+        },
+        ObjektJson::Tatami(t) => Objekt {
+            farbe: t.g.farbe,
+            name: t.g.name,
+            art: ObjektArt::Tatami {
+                umriss: t.umriss.punkte(),
+                loecher: t.loecher.iter().map(|l| l.punkte()).collect(),
+                winkel: t.winkel,
+                unterlage: t.unterlage,
+                aussparen: Aussparen {
+                    namen: t.aussparen,
+                    ueberlappung: t.ueberlappung,
+                },
+            },
         },
     }
 }

@@ -19,6 +19,22 @@ impl Punkt {
     }
 }
 
+/// Im Design-JSON ist ein Punkt `[x, y]` in mm.
+impl schemars::JsonSchema for Punkt {
+    fn schema_name() -> std::borrow::Cow<'static, str> {
+        "Punkt".into()
+    }
+    fn json_schema(_: &mut schemars::SchemaGenerator) -> schemars::Schema {
+        schemars::json_schema!({
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "[x, y] in mm, Ursprung Rahmenmitte, +y nach oben"
+        })
+    }
+}
+
 impl From<[f64; 2]> for Punkt {
     fn from(a: [f64; 2]) -> Self {
         Punkt::new(a[0], a[1])

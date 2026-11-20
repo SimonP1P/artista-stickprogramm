@@ -11,8 +11,20 @@ use crate::design::{Objekt, ObjektArt};
 use crate::geometrie::{Linie, Punkt, p};
 use serde::Deserialize;
 
+auswahl! {
+    /// Spiegeln (Mirror)
+    pub enum Spiegeln {
+        /// waagrecht spiegeln (Mirror Horizontal)
+        LinksRechts = "links_rechts",
+        /// senkrecht spiegeln (Mirror Vertical)
+        ObenUnten = "oben_unten",
+        /// beides
+        Beide = "beide",
+    }
+}
+
 /// Transformation in der JSON-Form (`"transform"` am Objekt oder am Design).
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Transformation {
     /// Skalierung in %: eine Zahl (beide Richtungen) oder [x, y]
@@ -21,9 +33,8 @@ pub struct Transformation {
     /// Drehung in Grad gegen den Uhrzeiger
     #[serde(default)]
     pub drehen: f64,
-    /// „links_rechts“ (Mirror Horizontal), „oben_unten“ (Mirror Vertical) oder „beide“
     #[serde(default)]
-    pub spiegeln: Option<String>,
+    pub spiegeln: Option<Spiegeln>,
     /// Schrägstellen in Grad (x verschiebt sich mit y, wie Skew im Original)
     #[serde(default)]
     pub schraeg: f64,
@@ -32,7 +43,8 @@ pub struct Transformation {
     pub verschieben: Option<Punkt>,
 }
 
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+/// Skalierung in %: eine Zahl (beide Richtungen) oder [x, y]
+#[derive(Clone, Debug, Deserialize, PartialEq, schemars::JsonSchema)]
 #[serde(untagged)]
 pub enum Skalierung {
     Gleich(f64),
@@ -110,12 +122,11 @@ impl Transformation {
         if sx <= 0.0 || sy <= 0.0 {
             return Err("Skalierung muss größer als 0 % sein".into());
         }
-        let (mx, my) = match self.spiegeln.as_deref() {
+        let (mx, my) = match self.spiegeln {
             None => (1.0, 1.0),
-            Some("links_rechts") => (-1.0, 1.0),
-            Some("oben_unten") => (1.0, -1.0),
-            Some("beide") => (-1.0, -1.0),
-            Some(x) => return Err(format!("Spiegeln „{x}“ unbekannt (links_rechts, oben_unten, beide)")),
+            Some(Spiegeln::LinksRechts) => (-1.0, 1.0),
+            Some(Spiegeln::ObenUnten) => (1.0, -1.0),
+            Some(Spiegeln::Beide) => (-1.0, -1.0),
         };
         let k = self.schraeg.to_radians().tan();
         let (s, c) = self.drehen.to_radians().sin_cos();
@@ -535,20 +546,13 @@ mod tests {
         assert!((m.winkel(0.0) - 90.0).abs() < 1e-9);
         let s = Transformation {
             skalieren: Some(Skalierung::Getrennt([200.0, 50.0])),
-            spiegeln: Some("links_rechts".into()),
+            spiegeln: Some(Spiegeln::LinksRechts),
             ..Default::default()
         };
         let m = s.matrix(p(0.0, 0.0)).unwrap();
         assert_eq!(m.punkt(p(1.0, 2.0)), p(-2.0, 1.0));
         assert!(m.det() < 0.0);
-        assert!(
-            Transformation {
-                spiegeln: Some("quer".into()),
-                ..Default::default()
-            }
-            .matrix(p(0.0, 0.0))
-            .is_err()
-        );
+        assert!(serde_json::from_str::<Transformation>(r#"{"spiegeln": "quer"}"#).is_err());
     }
 
     /// Objekt drehen und skalieren, Design als Ganzes verkleinern – Stiche werden neu berechnet

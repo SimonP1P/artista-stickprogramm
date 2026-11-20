@@ -48,7 +48,7 @@ pub fn auto_spacing(breite_mm: f64, faktor: f64) -> f64 {
     abstand * faktor
 }
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct LaufEinstellung {
     /// Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch)
@@ -76,7 +76,7 @@ impl Default for LaufEinstellung {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct SatinEinstellung {
     pub auto_spacing: bool,
@@ -115,7 +115,7 @@ impl Default for SatinEinstellung {
 
 /// Kurzstiche (MOD1 `ShortStitchesEffect`, Werte aus dem Stil 0x273a; `Analyse_Teil3/10_regeln_original.md` §2).
 /// Im Stil „Software Defaults“ und bei den Stoffen **aus** (Flag 0x2001), im Stil „Schrift“ **an** (Analyse_Teil3/05).
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct KurzstichEinstellung {
     pub an: bool,
@@ -163,7 +163,7 @@ impl SatinEinstellung {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct TatamiEinstellung {
     /// Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward
@@ -281,7 +281,7 @@ impl Default for TatamiEinstellung {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct UnterlageEinstellung {
     /// Unterlagenrand AMT 0x2769/0x276a (mittel)
@@ -329,7 +329,7 @@ fn zickzack() -> Vec<String> {
 }
 
 /// Mindeststich und Sehnenabstand eines variablen Laufs.
-#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct LaufGrenzen {
     pub min_laenge: f64,
@@ -383,7 +383,7 @@ impl Default for UnterlageEinstellung {
 
 /// Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.
 /// Zuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct VerbinderEinstellung {
     /// Tie In: „Always Tie In“ (0x2753 = 0)
@@ -432,7 +432,7 @@ impl Default for VerbinderEinstellung {
     }
 }
 
-#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Einstellungen {
     pub lauf: LaufEinstellung,

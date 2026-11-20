@@ -3,12 +3,29 @@
 //! Grundsatz (`ARCHITECTURE.md` §1a): Werte und Abläufe kommen aus der Analyse der Original-Software.
 //! Erste Fassung = getreue Übertragung des Python-Prototyps `stickprogramm/` (Prüfung: gleiche EXP-Bytes).
 
+/// Auswahlfeld des Design-Formats (`format.rs`): Aufzählung mit festen Textwerten – im Schema als Werteliste, in der
+/// Oberfläche als Auswahlliste. `text()` liefert den Wert wie im JSON.
+macro_rules! auswahl {
+    ($(#[$m:meta])* $v:vis enum $name:ident { $($(#[$vm:meta])* $var:ident = $txt:literal),+ $(,)? }) => {
+        $(#[$m])*
+        #[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Deserialize, serde::Serialize, schemars::JsonSchema)]
+        $v enum $name { $($(#[$vm])* #[serde(rename = $txt)] $var),+ }
+        impl $name {
+            /// Wert wie im JSON
+            pub fn text(self) -> &'static str {
+                match self { $($name::$var => $txt),+ }
+            }
+        }
+    };
+}
+
 pub mod applikation;
 pub mod aussparen;
 pub mod design;
 pub mod ein_ausstich;
 pub mod einheiten;
 pub mod einstellungen;
+pub mod format;
 pub mod geometrie;
 pub mod muster;
 pub mod nachbearbeitung;
