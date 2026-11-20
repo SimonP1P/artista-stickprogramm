@@ -365,6 +365,9 @@ struct BuchstabeJson {
     nr: usize,
     farbe: Option<String>,
     transform: Option<Value>,
+    /// neue Stichwinkel: Strecken [[x1, y1], [x2, y2]] quer über die Säulen
+    #[serde(default)]
+    winkellinien: Vec<[Punkt; 2]>,
 }
 
 /// Füllmuster (`muster.rs`): Tatami-Reihen mit Einstichen auf den Musterlinien.
@@ -1542,6 +1545,7 @@ impl Design {
                         nr: b.nr,
                         farbe: b.farbe,
                         transform,
+                        winkellinien: b.winkellinien,
                     });
                 }
             }

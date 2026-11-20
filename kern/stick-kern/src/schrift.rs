@@ -827,6 +827,94 @@ pub struct Buchstabe {
     pub farbe: Option<String>,
     /// um die Mitte des Buchstabens, nach dem Legen auf die Grundlinie
     pub transform: crate::transformation::Transformation,
+    /// neue Winkellinien (Strecken in mm, Lage wie der fertig gesetzte Text vor `transform` des Objekts)
+    pub winkellinien: Vec<[Punkt; 2]>,
+}
+
+/// Schnitt der Strecke `l` mit der Linie `zug`: Bogenlänge auf `zug` beim ersten Schnittpunkt.
+fn schnitt_bogen(zug: &[Punkt], l: &[Punkt; 2]) -> Option<f64> {
+    let mut s0 = 0.0;
+    for w in zug.windows(2) {
+        let (a, b, c, d) = (w[0], w[1], l[0], l[1]);
+        let r = (b.x - a.x, b.y - a.y);
+        let q = (d.x - c.x, d.y - c.y);
+        let nenner = r.0 * q.1 - r.1 * q.0;
+        let len = r.0.hypot(r.1);
+        if nenner.abs() > 1e-12 {
+            let t = ((c.x - a.x) * q.1 - (c.y - a.y) * q.0) / nenner;
+            let u = ((c.x - a.x) * r.1 - (c.y - a.y) * r.0) / nenner;
+            if (0.0..=1.0).contains(&t) && (0.0..=1.0).contains(&u) {
+                return Some(s0 + t * len);
+            }
+        }
+        s0 += len;
+    }
+    None
+}
+
+/// Satinsäule mit neuen Winkellinien: Anfang und Ende bleiben, dazwischen bestimmen nur die Linien, die beide Seiten
+/// schneiden, die Stichrichtung; zwischen zwei Linien werden beide Seiten nach relativer Bogenlänge zugeordnet (wie
+/// `saeule_seiten`, 1 Punkt je mm). None, wenn keine Linie beide Seiten trifft oder sich Linien kreuzen.
+fn saeule_mit_linien(a: &Linie, b: &Linie, linien: &[[Punkt; 2]]) -> Option<(Linie, Linie)> {
+    use crate::geometrie::{kumuliert, punkt_bei};
+    if a.len() < 2 || b.len() < 2 {
+        return None;
+    }
+    let (ka, kb) = (kumuliert(a), kumuliert(b));
+    let (la, lb) = (ka[ka.len() - 1], kb[kb.len() - 1]);
+    let mut fest: Vec<(f64, f64)> = linien
+        .iter()
+        .filter_map(|l| Some((schnitt_bogen(a, l)?, schnitt_bogen(b, l)?)))
+        .collect();
+    if fest.is_empty() {
+        return None;
+    }
+    fest.push((0.0, 0.0));
+    fest.push((la, lb));
+    fest.sort_by(|x, y| x.0.total_cmp(&y.0));
+    // „Make sure that the stitch angles do not intersect each other“ (Handbuch)
+    if fest.windows(2).any(|w| w[1].1 < w[0].1) {
+        return None;
+    }
+    let (mut sa, mut sb) = (Vec::new(), Vec::new());
+    for (k, w) in fest.windows(2).enumerate() {
+        let teile = ((w[1].0 - w[0].0).max(w[1].1 - w[0].1).ceil() as usize).max(1);
+        let letzte = k == fest.len() - 2;
+        for i in 0..(teile + usize::from(letzte)) {
+            let t = i as f64 / teile as f64;
+            sa.push(punkt_bei(a, w[0].0 + t * (w[1].0 - w[0].0), &ka));
+            sb.push(punkt_bei(b, w[0].1 + t * (w[1].1 - w[0].1), &kb));
+        }
+    }
+    Some((sa, sb))
+}
+
+/// Stichwinkel eines Buchstabens neu setzen (Handbuch Kap. 20 „Adjusting stitch angles of individual letters“:
+/// „Digitize stitch angles so that they intersect two sides of the object … Stitches are regenerated with the new
+/// angles“). Satinsäulen: `saeule_mit_linien` – die inneren Winkellinien des Alphabets entfallen, Anfang und Ende
+/// bleiben (Zuordnung eigene Festlegung). Füllungen (Step/Muster) nehmen die Richtung der ersten Linie, die ihren
+/// Umriss schneidet.
+fn winkel_setzen(o: &mut Objekt, linien: &[[Punkt; 2]]) {
+    let ObjektArt::Gruppe { teile, .. } = &mut o.art else {
+        return;
+    };
+    for t in teile {
+        match &mut t.art {
+            ObjektArt::Satin { seite_a, seite_b, .. } => {
+                if let Some((a, b)) = saeule_mit_linien(seite_a, seite_b, linien) {
+                    (*seite_a, *seite_b) = (a, b);
+                }
+            }
+            ObjektArt::Tatami { umriss, winkel, .. } | ObjektArt::Musterfuellung { umriss, winkel, .. } => {
+                let mut ring = umriss.clone();
+                ring.push(umriss[0]);
+                if let Some(l) = linien.iter().find(|l| schnitt_bogen(&ring, l).is_some()) {
+                    *winkel = Some((l[1].y - l[0].y).atan2(l[1].x - l[0].x).to_degrees());
+                }
+            }
+            _ => {}
+        }
+    }
 }
 
 /// Anzahl der Buchstaben eines Texts (ohne Leerraum und `^`).
@@ -946,6 +1034,9 @@ pub fn text_setzen(
                 }
                 if let Some(st) = &zs.stichart {
                     o = stichart_anwenden(o, st);
+                }
+                for b in zs.einzeln.iter().filter(|b| b.nr == n && !b.winkellinien.is_empty()) {
+                    winkel_setzen(&mut o, &b.winkellinien);
                 }
             }
             out.push(o);
@@ -1469,6 +1560,7 @@ mod tests {
                     verschieben: Some(p(0.0, 2.0)),
                     ..Default::default()
                 },
+                winkellinien: vec![],
             }],
         };
         let (o, _) = text_setzen(&satz_vorgabe("A^B C", None), 1.0, Some(&zs), 45.0, kaesten);
@@ -1670,5 +1762,35 @@ mod tests {
             panic!()
         };
         assert!(umriss.len() > 4);
+    }
+
+    /// Stichwinkel je Buchstabe: eine schräge Winkellinie in einer senkrechten Säule wird zum Stichpaar
+    #[test]
+    fn winkellinien_je_buchstabe() {
+        let a = vec![p(0.0, 0.0), p(0.0, 10.0)];
+        let b = vec![p(2.0, 0.0), p(2.0, 10.0)];
+        let (na, nb) = saeule_mit_linien(&a, &b, &[[p(-1.0, 3.0), p(3.0, 7.0)]]).unwrap();
+        assert_eq!(na.len(), nb.len());
+        assert!(
+            na.iter()
+                .zip(&nb)
+                .any(|(x, y)| (x.y - 4.0).abs() < 1e-9 && (y.y - 6.0).abs() < 1e-9),
+            "{na:?} {nb:?}"
+        );
+        // Anfang und Ende bleiben
+        assert_eq!((na[0], nb[0]), (a[0], b[0]));
+        assert_eq!((*na.last().unwrap(), *nb.last().unwrap()), (a[1], b[1]));
+        // Linie trifft nur eine Seite: keine Änderung
+        assert!(saeule_mit_linien(&a, &b, &[[p(-1.0, 3.0), p(1.0, 3.0)]]).is_none());
+        // Füllung: Winkel der Linie
+        let (mut o, _) = text_setzen(&satz_vorgabe("A", None), 1.0, None, 45.0, kaesten);
+        winkel_setzen(&mut o[0], &[[p(-1.0, -1.0), p(6.0, 6.0)]]);
+        let ObjektArt::Gruppe { teile, .. } = &o[0].art else {
+            panic!()
+        };
+        let ObjektArt::Tatami { winkel, .. } = &teile[0].art else {
+            panic!()
+        };
+        assert!((winkel.unwrap() - 45.0).abs() < 1e-9);
     }
 }
