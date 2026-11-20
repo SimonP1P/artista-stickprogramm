@@ -83,6 +83,7 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
             ..
         } if punkte.len() >= 3 => flaeche(punkte, &[]),
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| bedeckt(&t.art, u)).collect(),
+        ObjektArt::Wendefuellung { umriss, .. } => flaeche(umriss, &[]),
         ObjektArt::Blanket {
             punkte,
             geschlossen,

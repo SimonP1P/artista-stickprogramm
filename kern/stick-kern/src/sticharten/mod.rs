@@ -5,3 +5,4 @@ pub mod lauf;
 pub mod satin;
 pub mod tatami;
 pub mod unterlagen;
+pub mod wendung;

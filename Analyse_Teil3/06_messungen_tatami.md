@@ -81,7 +81,17 @@ Festlegung).
 **Kern:** `TatamiEinstellung` mit `versatz2` (0x271a) und `zufall` (0x271b), `phase(k)`, `STEP_MUSTER`; JSON
 `"step_muster": 1 … 20` je Objekt (auch für Step in Schrift). Test `step_muster_versatz`.
 
-## 6. Offen
+## 6. Mehrere Stichwinkel (Turning) — Sicherheit: hoch (Messung)
+Handbuch Kap. 16 „Setting multiple stitch angles“: Winkellinien, die zwei Seiten des Objekts schneiden, „to create a
+turning fill effect“. Im Original ist das ein **EmbroideryPatch mit Winkellinien** (0x06) – in den Musterdesigns
+2401 Objekte mit Step-Füllung (0x1b). Messung `Arbeitsdaten/werkzeuge/art_wendung.py` an 415 davon: Richtung jedes
+Step-Stichs voller Länge gegen die nächste Winkellinie – **83 % innerhalb 10°, 93 % innerhalb 20°**. Die Step-Stiche
+laufen also längs der Winkellinien (wie Satin, in Step-Stiche geteilt), nicht quer.
+**Kern:** `sticharten::wendung::wende_seiten` (Seiten A/B aus Umriss und Linien wie bei den Alphabet-Säulen; Kappen vor
+der ersten/nach der letzten Linie laufen in eine Spitze aus – eigene Festlegung) + `satin::step_reihen`; JSON
+`tatami` mit `"winkellinien"` (ohne Löcher). Test `wendefuellung_im_design`, `rechteck_mit_winkellinien`.
+
+## 7. Offen
 1. Das Raster der älteren Muster mit Versatz (0, 0) (= Step-Muster 18).
 2. Laufwege innerhalb der Fläche statt Sprüngen (Stil-Eintrag 0x271c unter jeder Füllart: 1,8 mm, variabel,
    [01](01_stile_und_verbinder.md) §4) – an den Tatami-Stichblöcken der Muster messbar (Stiche zwischen Teilbereichen).

@@ -160,6 +160,7 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
             out.extend(loecher.iter().flatten());
         }
         ObjektArt::Gruppe { teile, .. } => teile.iter().for_each(|t| formpunkte(&t.art, out)),
+        ObjektArt::Wendefuellung { umriss, .. } => out.extend(umriss),
         ObjektArt::Applikation(v) => {
             out.extend(&v.umriss);
             out.extend(v.loecher.iter().flatten());
@@ -286,6 +287,15 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
                 aussparen: aussparen.clone(),
             }
         }
+        ObjektArt::Wendefuellung {
+            umriss,
+            winkellinien,
+            unterlage,
+        } => ObjektArt::Wendefuellung {
+            umriss: m.linie(umriss),
+            winkellinien: winkellinien.iter().map(|l| [m.punkt(l[0]), m.punkt(l[1])]).collect(),
+            unterlage: *unterlage,
+        },
         ObjektArt::Gruppe {
             teile,
             umrisse,
@@ -442,6 +452,15 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             groesse: *groesse,
             unterlage: *unterlage,
             aussparen: aussparen.clone(),
+        },
+        ObjektArt::Wendefuellung {
+            umriss,
+            winkellinien,
+            unterlage,
+        } => ObjektArt::Wendefuellung {
+            umriss: lin(umriss, true),
+            winkellinien: winkellinien.iter().map(|l| [f(l[0]), f(l[1])]).collect(),
+            unterlage: *unterlage,
         },
         ObjektArt::Gruppe {
             teile,

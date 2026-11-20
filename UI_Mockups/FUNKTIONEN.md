@@ -35,6 +35,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Satinsäule | zwei Seiten; Unterlage (auto), fester Abstand statt Auto Spacing, Kurzstiche | `satin` | E (Rest X) |
 | Satinlinie (Kontur) | Linie, Breite (2 mm), Lage mittig / zur Seite | `satinlinie` | E (Lage X) |
 | Fläche Tatami (Step) | Umriss, Löcher, Stichwinkel (45°), Unterlage (an); Step-Muster 1–20 (Struktur der Fläche, Vorschau-Kacheln sinnvoll) | `tatami`, `step_muster` | E (Winkel E, Muster E) |
+| Fläche mit mehreren Stichwinkeln | Winkellinien quer über die Fläche ziehen (Werkzeug „Stichwinkel“), Stiche drehen mit; ohne Löcher | `tatami` + `winkellinien` | X |
 | Füllmuster (Fancy) | Umriss, Muster (242, Liste `kern/stick-kern/daten/fuellmuster.json`), Winkel, Größe (100 %) | `muster` | E |
 | Blanket (Langette) | Linie, Abstand (2 mm), Breite (3 mm), mittig/seitlich | `blanket` | E (Werte X) |
 | Applikation | Umriss; Abdeckung Satin/Blanket; vorgeschnitten / im Rahmen zuschneiden; Breiten (2,5/3,0 mm) | `applikation` | E (Werte X) |
@@ -79,7 +80,7 @@ Vorhandene Befehle (`app/src-tauri/src/lib.rs`): `rahmen_liste`, `stoffe_liste`,
 `gelesen_exp_speichern`.
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
-Flächen mit mehreren Stichwinkeln, Step-Muster, Zickzack-Füllung · Reihenfolge nach Farbe/automatisch mit
+Zickzack-Füllung, Kurzstiche in Flächen · Reihenfolge nach Farbe/automatisch mit
 Überdeckungsprüfung · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·
 Magic Wand, PhotoSnap · Ausrichten, Gruppieren, Kranz, Kaleidoskop · eigene Rahmen, fremde Stickdateien ·

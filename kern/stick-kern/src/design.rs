@@ -471,6 +471,9 @@ struct TatamiJson {
     /// Überlappung der Aussparung in mm (Standard 0 = exakt wie das Original)
     #[serde(default)]
     ueberlappung: f64,
+    /// mehrere Stichwinkel: Strecken [[x1, y1], [x2, y2]], die den Umriss je zweimal schneiden (Turning)
+    #[serde(default)]
+    winkellinien: Vec<[Punkt; 2]>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -686,6 +689,12 @@ pub enum ObjektArt {
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
+    /// Fläche mit mehreren Stichwinkeln (Turning, `sticharten::wendung`): Step-Stiche längs der Winkellinien
+    Wendefuellung {
+        umriss: Linie,
+        winkellinien: Vec<[Punkt; 2]>,
+        unterlage: Option<bool>,
+    },
     /// Fläche mit Füllmuster (Program Split): Tatami-Reihen, Einstiche auf den gekachelten Musterlinien
     Musterfuellung {
         umriss: Linie,
@@ -1225,6 +1234,28 @@ impl Objekt {
                 wege.extend(tatami(umriss, loecher, &e.tatami, Some(w), start));
                 Ok(wege)
             }
+            ObjektArt::Wendefuellung {
+                umriss,
+                winkellinien,
+                unterlage,
+            } => {
+                let (a, b) = crate::sticharten::wendung::wende_seiten(umriss, winkellinien)?;
+                let l = &winkellinien[0];
+                let w = (l[1].y - l[0].y).atan2(l[1].x - l[0].x).to_degrees();
+                let mut wege = Vec::new();
+                if unterlage.unwrap_or(e.unterlage.auto_an) {
+                    // Unterlage wie bei Tatami, Deckrichtung = erste Winkellinie (eigene Festlegung)
+                    wege.extend(flaechen_unterlage(umriss, &[], w, &e.unterlage, start));
+                }
+                // Step-Reihen längs der Winkellinien: Abstand, Zugausgleich, Länge, Versatz der Step-Einstellung
+                let mut se = e.satin.clone();
+                se.auto_spacing = false;
+                se.abstand_fest = e.tatami.abstand;
+                se.zugausgleich = e.tatami.zugausgleich;
+                se.kurzstiche.an = false;
+                wege.push(crate::sticharten::satin::step_reihen(&satin(&a, &b, &se)?, &e.tatami));
+                Ok(wege)
+            }
             ObjektArt::Musterfuellung {
                 umriss,
                 loecher,
@@ -1348,6 +1379,12 @@ impl Design {
                      kreis mit bogen)"
                         .into(),
                 );
+            }
+            if let ObjektJson::Tatami(t) = o
+                && !t.winkellinien.is_empty()
+                && (!t.loecher.is_empty() || !t.aussparen.is_empty())
+            {
+                return Err("Fläche mit Winkellinien: ohne Löcher und Aussparen (noch nicht möglich)".into());
             }
             if let ObjektJson::Satinlinie(s) = o
                 && let Some(x) = s.versatz.as_deref().filter(|x| !matches!(*x, "mitte" | "seite"))
@@ -1511,6 +1548,15 @@ impl Design {
                         breite: s.breite.unwrap_or(2.0),
                         unterlage: s.unterlage.into(),
                         mittig: s.versatz.as_deref() != Some("seite"),
+                    },
+                },
+                ObjektJson::Tatami(t) if !t.winkellinien.is_empty() => Objekt {
+                    farbe: t.farbe,
+                    name: t.name,
+                    art: ObjektArt::Wendefuellung {
+                        umriss: t.umriss.punkte(),
+                        winkellinien: t.winkellinien,
+                        unterlage: t.unterlage,
                     },
                 },
                 ObjektJson::Tatami(t) => Objekt {
@@ -2203,6 +2249,34 @@ mod tests {
         assert!(
             Design::aus_json(r#"{"objekte": [{"art": "lauf", "punkte": [[0, 0], [1, 0]], "auto_jump": {"max": 20}}]}"#)
                 .is_err()
+        );
+    }
+
+    /// Fläche mit Winkellinien: Stiche folgen den Linien (längs, wie Satin), Länge ≤ Step-Länge + Rand
+    #[test]
+    fn wendefuellung_im_design() {
+        let d = Design::aus_json(
+            r#"{"objekte": [{"art": "tatami", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 30, "hoehe": 10}},
+                "unterlage": false, "winkellinien": [[[-10, -6], [-10, 6]], [[10, -6], [0, 6]]]}]}"#,
+        )
+        .unwrap();
+        assert!(matches!(d.objekte[0].art, ObjektArt::Wendefuellung { .. }));
+        let st = d.berechnen().unwrap();
+        assert!(st.stiche.len() > 300);
+        assert!(st.stichlaengen().iter().all(|&l| l <= 4.0 + 0.4 + 1e-6));
+        // bei x ≈ −10 senkrecht (wie die erste Linie)
+        let pts: Vec<Punkt> = st.stiche.iter().map(|s| s.p()).collect();
+        let senkrecht = pts
+            .windows(2)
+            .filter(|w| (w[0].x + 10.0).abs() < 0.5 && (w[1].x + 10.0).abs() < 0.5 && abstand(w[0], w[1]) > 2.0)
+            .count();
+        assert!(senkrecht > 3, "{senkrecht}");
+        assert!(
+            Design::aus_json(
+                r#"{"objekte": [{"art": "tatami", "umriss": [[0, 0], [10, 0], [10, 10], [0, 10]],
+                "loecher": [[[4, 4], [6, 4], [6, 6]]], "winkellinien": [[[5, -1], [5, 11]]]}]}"#
+            )
+            .is_err()
         );
     }
 
