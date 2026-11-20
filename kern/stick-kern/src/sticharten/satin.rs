@@ -19,22 +19,11 @@ use crate::geometrie::{
 /// gemessen: **eigene Festlegung** (keine Schrift mit Step in den Musterdesigns, `Analyse_Teil3/15`).
 pub fn step_reihen(reihen: &[Punkt], e: &TatamiEinstellung) -> Linie {
     let mut out: Linie = reihen.iter().take(1).copied().collect();
-    let l = e.laenge;
     for (k, w) in reihen.windows(2).enumerate() {
         // gerade Reihen von A nach B, ungerade von B nach A; das Raster zählt immer von A aus
         let (a, b) = if k % 2 == 0 { (w[0], w[1]) } else { (w[1], w[0]) };
         let d = abstand(a, b);
-        let phase = ((k as f64 * e.versatz) % 1.0) * l;
-        let mut xs = Vec::new();
-        let mut m = ((e.min_rand - phase) / l).ceil() as i64;
-        loop {
-            let x = phase + m as f64 * l;
-            if x > d - e.min_rand {
-                break;
-            }
-            xs.push(x);
-            m += 1;
-        }
+        let mut xs = super::tatami::raster(k as i64, 0.0, d, e);
         if k % 2 == 1 {
             xs.reverse();
         }

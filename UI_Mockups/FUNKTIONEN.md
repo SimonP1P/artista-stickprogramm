@@ -34,7 +34,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Dreifachstich | wie Lauf | `dreifach` | E |
 | Satinsäule | zwei Seiten; Unterlage (auto), fester Abstand statt Auto Spacing, Kurzstiche | `satin` | E (Rest X) |
 | Satinlinie (Kontur) | Linie, Breite (2 mm), Lage mittig / zur Seite | `satinlinie` | E (Lage X) |
-| Fläche Tatami (Step) | Umriss, Löcher, Stichwinkel (45°), Unterlage (an) | `tatami` | E (Winkel E) |
+| Fläche Tatami (Step) | Umriss, Löcher, Stichwinkel (45°), Unterlage (an); Step-Muster 1–20 (Struktur der Fläche, Vorschau-Kacheln sinnvoll) | `tatami`, `step_muster` | E (Winkel E, Muster E) |
 | Füllmuster (Fancy) | Umriss, Muster (242, Liste `kern/stick-kern/daten/fuellmuster.json`), Winkel, Größe (100 %) | `muster` | E |
 | Blanket (Langette) | Linie, Abstand (2 mm), Breite (3 mm), mittig/seitlich | `blanket` | E (Werte X) |
 | Applikation | Umriss; Abdeckung Satin/Blanket; vorgeschnitten / im Rahmen zuschneiden; Breiten (2,5/3,0 mm) | `applikation` | E (Werte X) |

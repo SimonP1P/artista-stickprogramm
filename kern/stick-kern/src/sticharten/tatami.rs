@@ -187,10 +187,22 @@ fn reihe(k: i64, x0: f64, x1: f64, y: f64, e: &TatamiEinstellung, vorwaerts: boo
         }
         return geteilt.into_iter().map(|x| p(x, y)).collect();
     }
-    let l = e.laenge;
-    let phase = ((k as f64 * e.versatz) % 1.0) * l;
-    let mut m = ((x0 + e.min_rand - phase) / l).ceil() as i64;
     let mut xs = vec![x0];
+    xs.extend(raster(k, x0, x1, e));
+    xs.push(x1);
+    if !vorwaerts {
+        xs.reverse();
+    }
+    xs.into_iter().map(|x| p(x, y)).collect()
+}
+
+/// Innere Einstiche einer Reihe von `x0` bis `x1` (ohne die Enden): Raster der Stichlänge, je Reihe um
+/// `TatamiEinstellung::phase` verschoben, mit Zufallsversatz (0x271b); mindestens `min_rand` von den Enden.
+pub fn raster(k: i64, x0: f64, x1: f64, e: &TatamiEinstellung) -> Vec<f64> {
+    let l = e.laenge;
+    let phase = e.phase(k) * l;
+    let mut m = ((x0 + e.min_rand - phase) / l).ceil() as i64;
+    let mut xs = Vec::new();
     loop {
         let x = phase + m as f64 * l;
         if x > x1 - e.min_rand {
@@ -199,11 +211,18 @@ fn reihe(k: i64, x0: f64, x1: f64, y: f64, e: &TatamiEinstellung, vorwaerts: boo
         xs.push(x);
         m += 1;
     }
-    xs.push(x1);
-    if !vorwaerts {
-        xs.reverse();
+    if e.zufall > 0.0 {
+        // Park–Miller wie die Kurzstiche (geometry.dll ACMRandomNumber), Startwert je Reihe: eigene Festlegung
+        let mut z: u64 = (0x66ec8f + k.unsigned_abs() * 7919) % 2_147_483_647;
+        z = z.max(1);
+        for x in xs.iter_mut() {
+            z = z * 16807 % 2_147_483_647;
+            *x += (z as f64 / 2_147_483_647.0 - 0.5) * e.zufall * l;
+        }
+        xs.retain(|&x| x >= x0 + e.min_rand && x <= x1 - e.min_rand);
+        xs.sort_by(f64::total_cmp);
     }
-    xs.into_iter().map(|x| p(x, y)).collect()
+    xs
 }
 
 fn bereich_sticken(
@@ -460,5 +479,30 @@ mod tests {
             let m = p((a.x + b.x) / 2.0, (a.y + b.y) / 2.0);
             assert!(im_polygon(m, &ringe) || rand_abstand(m, &ringe) <= 0.25);
         }
+    }
+
+    /// Step-Muster: Reihen abwechselnd um Versatz 1 und 2 verschoben (Muster 9: 0,3 / 0,6); Muster 1 wie bisher
+    #[test]
+    fn step_muster_versatz() {
+        let mut e = TatamiEinstellung::default();
+        let alt: Vec<f64> = (-3..6).map(|k| e.phase(k)).collect();
+        e.step_muster(1).unwrap();
+        assert_eq!(alt, (-3..6).map(|k| e.phase(k)).collect::<Vec<_>>());
+        e.step_muster(9).unwrap();
+        let ph: Vec<f64> = (0..5).map(|k| e.phase(k)).collect();
+        let soll = [0.0, 0.3, 0.9, 0.2, 0.8];
+        assert!(
+            ph.iter()
+                .zip(soll)
+                .all(|(a, b)| ((a - b).rem_euclid(1.0)).min((b - a).rem_euclid(1.0)) < 1e-9),
+            "{ph:?}"
+        );
+        assert!(e.step_muster(21).is_err() && e.step_muster(0).is_err());
+        // Zufallsversatz: Raster bleibt innerhalb der Reihe und geordnet, Stiche streuen
+        e.zufall = 0.5;
+        let xs = raster(3, 0.0, 40.0, &e);
+        assert!(xs.windows(2).all(|w| w[1] > w[0]) && xs.iter().all(|x| (0.4..=39.6).contains(x)));
+        let st: Vec<f64> = xs.windows(2).map(|w| w[1] - w[0]).collect();
+        assert!(st.iter().any(|&d| (d - 4.0).abs() > 0.3), "{st:?}");
     }
 }

@@ -54,8 +54,34 @@ wirkt, ist offen.
   - `reihen_beim_halben_abstand`: Rechteck, Nachbarreihen 0,20 mm.
   - `rechteck_reihen_und_grenzen`: 10 mm Höhe ergibt 50 statt 25 Reihen.
 
-## 5. Offen
-1. Bedeutung von 0x271b (0 / 0,1 / 0,75) und das Raster der älteren Muster mit Versatz (0, 0).
+## 5. Step-Muster 1–20 (20.11.2026) — Sicherheit: hoch
+**Dialog** „Fill Stitch“ (BERESENU DLG 1190): Gruppe „Step pattern“ mit Knöpfen 1–20. **Code** DIALOG.DLL
+0x1006f0f0 ff.: liest 0x2719, 0x271a, 0x271b des Objekts und sucht sie in drei Tabellen zu je 25 doubles (0x1017fdb0,
+0x1017fe78, 0x1017ff40); bei Treffer wird die Musternummer markiert, sonst gilt das Muster als eigenes. Die
+Stichlänge gehört **nicht** zum Muster.
+
+| Nr. | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0x2719 | 0,25 | 0,33 | 0,5 | 0,1 | 0,2 | 0,1 | 0 | 0 | 0,3 | 0,2 | 0,5 | 0,5 | 0,9 | 0,6 | 0,9 | 1,0 | 0,15 | 0 | 0,5 | 0,3 |
+| 0x271a | 0,25 | 0,33 | 0,5 | 0,1 | 0,4 | 0,4 | 0,25 | 0,5 | 0,6 | 0,6 | 0,25 | 0,15 | 0,15 | 0,6 | 0,9 | 0,25 | 0,15 | 0 | 0 | 0,3 |
+
+0x271b ist in allen Voreinstellungen 0. (Die Tabellen haben 25 Einträge; 21–25: 0,6/0,3 · 0,6/0,5 · 0,7/0 · 1,0/0,2 ·
+0/0, im artista-Dialog nicht wählbar.)
+
+**Messung** an „Sampler Step stitch pattern 1-10/11-20“ (`Arbeitsdaten/werkzeuge/art_stepmuster.py`; Reihen nach Lage
+sortiert, Phase der Einstiche je Reihe): Das Raster verschiebt sich **abwechselnd um 0x2719 und 0x271a** – z. B.
+Muster 6 (0,1/0,4): Schritte 0,1, 0,4, 0,1, 0,4 …; Muster 9 (0,3/0,6): 0,3, 0,6 …; bei gleichen Werten wie bisher
+gleichmäßig. Die Muster 1–10 der Designs stimmen genau mit der Tabelle (Flächen in Schlangenlinie: Fläche 4 trägt
+Muster 6, Fläche 6 Muster 4 – an der Beschriftung erkannt). Die Flächen in „11-20“ tragen **andere** Werte als die
+Tabelle (Stichlänge 3,5/4,5 mm, 0x271b = 0,3 … 0,5) – Designs eines anderen Stands oder eigene Werte. Dort zeigt sich
+die Wirkung von **0x271b**: die Einstiche einer Reihe liegen nicht mehr auf dem Raster, die Stiche streuen (0x271b = 0,5:
+0,6 … 1,4 × Länge; 0,3: 0,77 … 1,23) – als Zufallsversatz ± 0x271b/2 × Länge nachgebaut (Verteilung eigene
+Festlegung).
+
+**Kern:** `TatamiEinstellung` mit `versatz2` (0x271a) und `zufall` (0x271b), `phase(k)`, `STEP_MUSTER`; JSON
+`"step_muster": 1 … 20` je Objekt (auch für Step in Schrift). Test `step_muster_versatz`.
+
+## 6. Offen
+1. Das Raster der älteren Muster mit Versatz (0, 0) (= Step-Muster 18).
 2. Laufwege innerhalb der Fläche statt Sprüngen (Stil-Eintrag 0x271c unter jeder Füllart: 1,8 mm, variabel,
    [01](01_stile_und_verbinder.md) §4) – an den Tatami-Stichblöcken der Muster messbar (Stiche zwischen Teilbereichen).
-3. Startpunkt/Endpunkt und Reihenfolge der Teilbereiche.

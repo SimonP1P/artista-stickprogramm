@@ -164,9 +164,18 @@ pub struct TatamiEinstellung {
     pub laenge: f64,
     /// Mindeststich am Rand AMT 0x2718 (hoch)
     pub min_rand: f64,
-    /// Reihenversatz AMT 0x2719/0x271a (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen
+    /// Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen
     /// bei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)
     pub versatz: f64,
+    /// Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`
+    /// (gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.
+    #[serde(default)]
+    pub versatz2: Option<f64>,
+    /// Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns
+    /// „Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20
+    /// Step-Muster des Dialogs haben 0.
+    #[serde(default)]
+    pub zufall: f64,
     /// Stichwinkel (eigene Festlegung)
     pub winkel: f64,
     /// wie Satin (Handbuch S. 199)
@@ -192,7 +201,53 @@ fn laufweg_grenzen() -> LaufGrenzen {
     }
 }
 
+/// Step-Muster 1–20 des Dialogs „Fill Stitch“ (BERESENU DLG 1190, Knöpfe „1“ … „20“): Versatz 0x2719 / 0x271a.
+/// Quelle: Tabellen in DIALOG.DLL (0x1017fdb0, 0x1017fe78; dritte Tabelle 0x1017ff40 = 0x271b, überall 0), Code
+/// 0x1006f15b sucht die Werte des Objekts darin und markiert die Musternummer (hoch). Die Stichlänge gehört nicht zum
+/// Muster (eigenes Feld). Muster 1–10 an den Musterdesigns bestätigt (`Analyse_Teil3/06` §5).
+pub const STEP_MUSTER: [(f64, f64); 20] = [
+    (0.25, 0.25),
+    (0.33, 0.33),
+    (0.5, 0.5),
+    (0.1, 0.1),
+    (0.2, 0.4),
+    (0.1, 0.4),
+    (0.0, 0.25),
+    (0.0, 0.5),
+    (0.3, 0.6),
+    (0.2, 0.6),
+    (0.5, 0.25),
+    (0.5, 0.15),
+    (0.9, 0.15),
+    (0.6, 0.6),
+    (0.9, 0.9),
+    (1.0, 0.25),
+    (0.15, 0.15),
+    (0.0, 0.0),
+    (0.5, 0.0),
+    (0.3, 0.3),
+];
+
 impl TatamiEinstellung {
+    /// Step-Muster 1–20 setzen (Versatz; Zufall 0).
+    pub fn step_muster(&mut self, nr: usize) -> Result<(), String> {
+        let (v1, v2) = *STEP_MUSTER
+            .get(nr.wrapping_sub(1))
+            .ok_or_else(|| format!("Step-Muster {nr} gibt es nicht (1 … 20)"))?;
+        self.versatz = v1;
+        self.versatz2 = (v2 != v1).then_some(v2);
+        self.zufall = 0.0;
+        Ok(())
+    }
+
+    /// Lage des Einstichrasters der Reihe `k` in Teilen der Stichlänge: abwechselnd um `versatz` und `versatz2`.
+    pub fn phase(&self, k: i64) -> f64 {
+        match self.versatz2 {
+            None => (k as f64 * self.versatz) % 1.0,
+            Some(v2) => ((k + 1).div_euclid(2) as f64 * self.versatz + k.div_euclid(2) as f64 * v2) % 1.0,
+        }
+    }
+
     /// Abstand benachbarter Reihen (Hin- und Rückreihe): halber Abstand der Hinreihen.
     pub fn reihenabstand(&self) -> f64 {
         self.abstand / 2.0
@@ -206,6 +261,8 @@ impl Default for TatamiEinstellung {
             laenge: 4.0,
             min_rand: 0.40,
             versatz: 0.25,
+            versatz2: None,
+            zufall: 0.0,
             winkel: 45.0,
             zugausgleich: 0.20,
             laufweg_laenge: laufweg_laenge(),

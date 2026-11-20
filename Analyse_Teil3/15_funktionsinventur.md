@@ -28,7 +28,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 |---|---|---|
 | Satin-Füllung, Säule variabler Breite, Auto Spacing | ✅ | `satin` |
 | Step (Tatami), Länge, Abstand, Versatz | ✅ | `tatami` |
-| **Step-Muster** (Nr. 1 Standard, weitere Vorgaben) | ⬜ | Kap. 8 „Selecting Step patterns“ |
+| **Step-Muster** (Nr. 1 Standard, weitere Vorgaben) | ✅ | 20.11. `step_muster` 1–20 aus DIALOG.DLL (Bericht 06 §5) |
 | Mehrere Stichwinkel (Turning/Complex Fill) | ⬜ | Kap. 16 „set multiple stitch angles“ |
 | Zickzack-Füllung („Zigzag“, Stil 0x2724) | ⬜ | Stichartliste STR 2236 |
 | Fancy Fill (Program Split), Abstand, Winkel | ✅ | `muster`, 242 Muster |

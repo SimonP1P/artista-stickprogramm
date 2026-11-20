@@ -5,7 +5,7 @@
 
 use crate::applikation::{ApplikationVorgabe, applikation_objekte};
 use crate::aussparen::{Aussparen, Teil, bedeckt, flaeche_minus};
-use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
+use crate::einstellungen::{Einstellungen, SatinEinstellung, TatamiEinstellung, fuer_stoff};
 use crate::geometrie::{
     Linie, Punkt, abstand, abstand_punkt_strecke, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen,
 };
@@ -1278,6 +1278,8 @@ pub struct Design {
     pub doppellauf: std::collections::BTreeSet<usize>,
     /// Auto Jump je Objekt (Nummer in `objekte`), JSON `"auto_jump"`; ohne Angabe: Standard des Stils
     pub auto_jump: BTreeMap<usize, AutoJump>,
+    /// Step-Muster 1–20 je Objekt (Nummer in `objekte`), JSON `"step_muster"` – für Tatami-Flächen und Step in Schrift
+    pub step_muster: BTreeMap<usize, usize>,
 }
 
 /// Auto Jump eines Objekts (Effects-Dialog, Handbuch Kap. 22 „Preserving long stitches with Auto Jump“): lange Stiche
@@ -1690,12 +1692,25 @@ impl Design {
                 auto_jump.insert(i, aj);
             }
         }
+        let mut step_muster = BTreeMap::new();
+        if let Some(l) = v.get("objekte").and_then(Value::as_array) {
+            for (i, o) in l.iter().enumerate() {
+                if let Some(w) = o.get("step_muster") {
+                    let nr = w.as_u64().unwrap_or(0) as usize;
+                    TatamiEinstellung::default()
+                        .step_muster(nr)
+                        .map_err(|e| format!("Objekt {}: {e}", i + 1))?;
+                    step_muster.insert(i, nr);
+                }
+            }
+        }
         Ok(Design {
             transformationen,
             transformation,
             buchstaben,
             doppellauf,
             auto_jump,
+            step_muster,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
@@ -1903,11 +1918,17 @@ impl Design {
             let mut teile = Vec::new();
             let mut pos = start;
             for (obj, h) in objekte.iter().zip(&herkunft) {
-                let mut wege: Vec<Linie> = obj
-                    .wege(&self.einstellungen, Some(pos))?
-                    .into_iter()
-                    .filter(|w| !w.is_empty())
-                    .collect();
+                let eigene;
+                let e = match self.step_muster.get(h) {
+                    Some(&nr) => {
+                        let mut x = self.einstellungen.clone();
+                        x.tatami.step_muster(nr)?;
+                        eigene = x;
+                        &eigene
+                    }
+                    None => &self.einstellungen,
+                };
+                let mut wege: Vec<Linie> = obj.wege(e, Some(pos))?.into_iter().filter(|w| !w.is_empty()).collect();
                 if self.doppellauf.contains(h) {
                     doppellauf(&mut wege);
                 }
