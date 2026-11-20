@@ -3,7 +3,7 @@
 **Für wen:** Designer (Claude Design) und Frontend-Entwickler. **Was:** jede Funktion, die der Rechenkern kann – was
 der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Feldliste:
 `stickprogramm/README.md` „Design beschreiben (JSON)“. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
-`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 20.11.2026** – wird bei jeder neuen Funktion ergänzt.
+`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 20.11.2026** (Reihenfolge 4b.5 ergänzt) – wird bei jeder neuen Funktion ergänzt.
 
 **Modus:** **E** = im einfachen Modus sichtbar, **X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur
 das Ergebnis). **Alle einzelnen Werte** (Stichabstand, Zugausgleich, Unterlagen, Vernähen …) mit Standard, Bereich,
@@ -24,10 +24,12 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 | Garnkarte | Auswahl (Default), Farben werden dem nächsten Garn zugeordnet | `garnkarte` | E |
 | Ganzes Design skalieren, drehen, spiegeln, schräg, verschieben | Prozent / Grad / Richtung / mm | `transform` oben | E |
 | Start und Ende | Rahmenmitte, Designmitte, unten Mitte, erster/letzter Stich | `start`, `ende` | X |
+| Kürzeste Verbindung (Closest Join) | an/aus (aus = wie gezeichnet): jedes Objekt beginnt nahe dem vorigen Ende, Linien werden dafür umgedreht, geschlossene Formen gedreht – weniger Sprünge | `kuerzeste_verbindung` | X |
 | Einzelwerte überschreiben | z. B. Satin-Zugausgleich | `einstellungen` | X |
 
 ## 3. Objekte (Sticharten)
-Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbinden`. Alle Objekte: `farbe`, `name`.
+Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbinden`. Alle Objekte: `farbe`, `name`,
+`einstich`/`ausstich` (Abschnitt 5).
 
 | Objektart | Anwender stellt ein (Standard) | JSON `art` | Modus |
 |---|---|---|---|
@@ -65,7 +67,10 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Aussparen (Knockout) | Füllfläche spart darüberliegende Objekte aus, Überlappung (0 mm) | `aussparen`, `ueberlappung` | E (Überlappung X) |
 | Verstärken (Double Run) | an/aus – gleiche Stiche rückwärts noch einmal | `doppellauf` | X |
 | Auto Jump | an/aus, Höchststich (12,7 mm), Sprunglänge (7 mm); kleiner Höchststich = „Satin mit mehr Loft“ | `auto_jump` | X |
-| Reihenfolge der Objekte | Reihenfolge im JSON = Stickreihenfolge | Reihenfolge `objekte` | E |
+| Reihenfolge der Objekte | Reihenfolge im JSON = Stickreihenfolge; Liste wie die „Color Film“ des Originals (Nr, Farbe, Art, Name), Ziehen zum Umordnen | Reihenfolge `objekte` | E |
+| Umordnen (Menü „Anordnen“) | **nach Farbe** (Farbfolge mit Hoch/Runter wählbar, weniger Farbwechsel), **an den Anfang / ans Ende**, **wie ausgewählt** (Objekte in Klickfolge), **vor/nach Objekt Nr.** – auf die Auswahl oder alles; Ergebnis = neues JSON | Kern `stick_kern::reihenfolge::ausfuehren` | E |
+| Überdeckung beachten | Häkchen beim Sortieren nach Farbe (aus wie im Original): Objekte, die sich überdecken, behalten ihre Lage; **Warnung**, wenn ein Umordnen ein Objekt unter eine Fläche schiebt, über der es lag (z. B. Kontur unter die Füllung) | – (Werkzeug) | E |
+| Einstich / Ausstich | zwei Griffe am Objekt („entry/exit point“): Objekt beginnt bzw. endet dort (Linien drehen sich um, geschlossene Formen beginnen am nächsten Punkt, Flächen beginnen am Einstich) | `einstich`, `ausstich` ([x, y] mm) | X |
 
 ## 6. Weitere Werkzeuge (noch ohne Befehl in der App)
 | Funktion | Heute | Für die neue Oberfläche nötig |
@@ -74,6 +79,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Liste der Füllmuster | CLI `stick muster`, Datei `kern/stick-kern/daten/fuellmuster.json` | Befehl „Musterliste“ (Name, Nummer, Vorschau) |
 | Computer-Schriften (TTF) laden | CLI `stick schriften`; die App lädt TTF noch nicht | Befehl „Schriftenliste“ + Laden der Schrift beim Berechnen |
 | Bild → Umrisse (Auto-Digitalisieren) | CLI `stick bild` (Farben, Breite, Glättung) | Befehl „Bild umwandeln“ → Objekte ins Design |
+| Reihenfolge ändern, Überdeckungen prüfen | CLI `stick reihenfolge` (Liste, Überdeckungen, `--nach-farbe`, `--an-anfang`, `--ans-ende`, `--wie-ausgewaehlt`, `--vor`/`--nach`, `--ueberdeckung`) | Befehl „Reihenfolge“ (Befehl + Auswahl → neues JSON, Farbwechsel vorher/nachher, Warnungen) und „Überdeckungen“ (Paare für die Anzeige) |
 | An die Maschine senden / aus der Maschine lesen | Befehle `maschine_*` (vorhanden) | – |
 
 Vorhandene Befehle (`app/src-tauri/src/lib.rs`): `rahmen_liste`, `stoffe_liste`, `alphabete_liste`,
@@ -83,9 +89,8 @@ Vorhandene Befehle (`app/src-tauri/src/lib.rs`): `rahmen_liste`, `stoffe_liste`,
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
 **SVG-Import** (vorgezogen): Design aus Inkscape laden – Flächen, Konturen, Farben und Reihenfolge werden
-übernommen, Stichart je Form automatisch nach Breite und in der App änderbar ·
- Reihenfolge nach Farbe/automatisch mit
-Überdeckungsprüfung · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
+übernommen, Stichart je Form automatisch nach Breite und in der App änderbar · **Werte je Objekt** (Stichabstand,
+Länge, Zugausgleich … am einzelnen Objekt, Expertenmodus) · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·
 Magic Wand, PhotoSnap · Ausrichten, Gruppieren, Kranz, Kaleidoskop · eigene Rahmen, fremde Stickdateien ·
 Vorlagen/Stile speichern · Kreuzstich.

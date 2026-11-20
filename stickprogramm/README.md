@@ -48,11 +48,17 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `monogramm` (nur Rust-Kern) | `initialen` (2 oder 3 Buchstaben A–Z), `rahmen` (`raute`/`zier`/`keine`), `rahmen_farbe`, `hoehe` (18), dazu alle Felder von `text` | Monogramm mit Diamond2/Diamond3 wie im Original (Handbuch Kap. 21, Belegung `Analyse_Teil3/09` §7) |
 | `ttf` (nur Rust-Kern) | `text`, `schrift` (Name oder Pfad), `hoehe` (Großbuchstaben), `breite`, `abstand`, `position`, `ausrichtung`, `stichart` (`tatami`/`lauf`/`dreifach`), `winkel`, `unterlage`, `laenge` | Computer-Schrift (TrueType/OpenType) |
 
-Alle Objekte haben `farbe` (`#rrggbb`) und `name`; im Rust-Kern außerdem `"step_muster": 1 … 20` (Tatami-Flächen und Step in Schrift: Versatz der Reihen wie Dialog „Fill Stitch“, Tabelle `Analyse_Teil3/06` §5), `"doppellauf": true` (Double Run: gleiche Stiche rückwärts noch einmal, Handbuch Kap. 23) und `"auto_jump"`: `true`/`false` oder `{"max": 6, "sprung": 3}` (Effects-Dialog; Standard an mit 12,7/7,0 mm, bei Schrift aus; aus = lange Stiche in echte Stiche ≤ 12,7 mm geteilt; kleines `max` = Säule mit mehr Loft). Statt einer Punktliste geht eine Form:
+Alle Objekte haben `farbe` (`#rrggbb`) und `name`; im Rust-Kern außerdem `"step_muster": 1 … 20` (Tatami-Flächen und Step in Schrift: Versatz der Reihen wie Dialog „Fill Stitch“, Tabelle `Analyse_Teil3/06` §5), `"doppellauf": true` (Double Run: gleiche Stiche rückwärts noch einmal, Handbuch Kap. 23), `"einstich": [x, y]` /
+`"ausstich": [x, y]` (Ein-/Ausstich wie die „entry/exit point“-Griffe: offene Linien und Säulen drehen sich um,
+geschlossene Formen beginnen und enden am nächsten Punkt, Flächen beginnen am Einstich bzw. gegenüber dem Ausstich;
+`Analyse_Teil3/16`) und `"auto_jump"`: `true`/`false` oder `{"max": 6, "sprung": 3}` (Effects-Dialog; Standard an mit 12,7/7,0 mm, bei Schrift aus; aus = lange Stiche in echte Stiche ≤ 12,7 mm geteilt; kleines `max` = Säule mit mehr Loft). Statt einer Punktliste geht eine Form:
 `{"kreis": {"mitte", "radius"}}`, `{"rechteck": {"mitte", "breite", "hoehe"}}`, `{"bogen": {"mitte", "radius", "von", "bis"}}`,
 `{"bezier": [p0, p1, p2, p3]}`, `{"verbinden": [Form, …]}`.
 Satin-Unterlage: `"auto"`, `"keine"` oder Kombination aus `mittellauf`, `edge_walk`, `zickzack`, `doppelzickzack` (z. B. `"edge_walk+zickzack"`).
-Oben im Design: `rahmen` (Name aus `stickprogramm rahmen`), `stoff` (einer der 8 Stoffe), `garnkarte` (nur Rust-Kern/Programm: Name einer `.tch`-Karte, Standard `Default`, `keine` = ohne), `start`/`ende` (nur Rust-Kern, Dialog „Start and End“: `rahmenmitte` Standard, `designmitte` wie Auto Start/End des Originals, `unten_mitte`, `erster_stich`/`letzter_stich`, Ende auch `start`; `mitte` = `rahmenmitte`), `einstellungen` (einzelne Werte überschreiben, z. B. `{"satin": {"zugausgleich": 0.3}}`).
+Oben im Design: `rahmen` (Name aus `stickprogramm rahmen`), `stoff` (einer der 8 Stoffe), `garnkarte` (nur Rust-Kern/Programm: Name einer `.tch`-Karte, Standard `Default`, `keine` = ohne), `kuerzeste_verbindung` (nur Rust-Kern, Standard `false` = wie gezeichnet; `true` = Closest Join: jedes Objekt ohne
+eigenen Einstich beginnt am Punkt nächst dem vorigen Ende, außer Schrift), `start`/`ende` (nur Rust-Kern, Dialog „Start and End“: `rahmenmitte` Standard, `designmitte` wie Auto Start/End des Originals, `unten_mitte`, `erster_stich`/`letzter_stich`, Ende auch `start`; `mitte` = `rahmenmitte`), `einstellungen` (einzelne Werte überschreiben, z. B. `{"satin": {"zugausgleich": 0.3}}`).
+Die Reihenfolge in `objekte` ist die Stickreihenfolge; umordnen (nach Farbe, an Anfang/Ende, wie ausgewählt, vor/nach
+Nr., mit Prüfung auf Überdeckungen) mit `stick reihenfolge DESIGN.json …` (Rust-CLI, `Analyse_Teil3/16`).
 
 ## Aufbau (`src/stickprogramm/`)
 | Datei | Inhalt |

@@ -247,6 +247,31 @@ P('objekt.aussparen', G, 'Aussparen (Knockout)', 'Fläche spart die genannten Ob
 P('objekt.ueberlappung', G, 'Überlappung beim Aussparen', 'Loch bleibt um so viel kleiner', ebene='objekt',
   gilt=['tatami', 'muster'], o='ueberlappung', einheit='mm', std=0.0, bereich=[0, 3], quelle='Analyse_Teil3/14')
 
+# ---------------------------------------------------------------- Reihenfolge, Ein-/Ausstich (ROADMAP 4b.5)
+G = 'Reihenfolge'
+Q = 'Analyse_Teil3/16_reihenfolge.md'
+P('design.kuerzeste_verbindung', G, 'Kürzeste Verbindung (Closest Join)',
+  'jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (Linien umgedreht, geschlossene Formen '
+  'gedreht; Schrift ausgenommen)', d='kuerzeste_verbindung', einheit='an/aus', std=False,
+  quelle='MOD1 ResequenceByClosestJoin 0x1006d0c0, GEOMETRY FindExitEntry (hoch); im Original Option von Resequence '
+  'und Auto Digitizer, sonst „wie digitalisiert“ (Messung ' + Q + ')')
+P('objekt.einstich', G, 'Einstich (entry point)', 'Objekt beginnt hier bzw. am nächsten Punkt der Form', ebene='objekt',
+  gilt=ALLE, o='einstich', einheit='mm [x, y]', std=None,
+  quelle='Handbuch Kap. 7/14 (entry point, Reshape); Umsetzung je Objektart eigene Festlegung (' + Q + ')')
+P('objekt.ausstich', G, 'Ausstich (exit point)', 'Objekt endet hier bzw. so nah wie die Form erlaubt', ebene='objekt',
+  gilt=ALLE, o='ausstich', einheit='mm [x, y]', std=None,
+  quelle='Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (' + Q + ')')
+P('reihenfolge.farben', G, 'Farbreihenfolge beim Sortieren', 'gewünschte Folge der Farben (Move Up/Down), übrige '
+  'Farben in der Reihenfolge ihres ersten Auftretens', ebene='werkzeug', einheit='Farbliste', std=[],
+  quelle='Dialog „Sequence By Color“ (Handbuch Kap. 14); Befehl reihenfolge --nach-farbe')
+P('reihenfolge.ueberdeckung', G, 'Überdeckung beachten', 'beim Sortieren nach Farbe behalten Objekte, die sich '
+  'überdecken, ihre Reihenfolge', ebene='werkzeug', einheit='an/aus', std=False,
+  quelle='eigene Erweiterung (das Original prüft nicht, ' + Q + ')', modus='einfach')
+P('reihenfolge.min_ueberdeckung', G, 'Überdeckung ab', 'kleinere gemeinsame Flächen zählen nicht', ebene='werkzeug',
+  einheit='mm²', std=0.5, quelle='eigene Festlegung', modus='automatisch')
+P('reihenfolge.linie_breite', G, 'Breite einer Linie bei der Prüfung', 'Laufstich zählt als Band dieser Breite',
+  ebene='werkzeug', einheit='mm', std=0.5, quelle='eigene Festlegung', modus='automatisch')
+
 # ---------------------------------------------------------------- Blanket, Applikation
 G = 'Blanket'
 P('objekt.blanket.abstand', G, 'Zahnabstand', '', ebene='objekt', gilt=['blanket'], o='abstand', einheit='mm', std=2.0,

@@ -58,6 +58,7 @@
 | **Computer-Schriften (TTF/OTF)** im Kern (Stichart Tatami/Umriss = eigene Festlegung) | `kern/stick-kern/src/schrift_ttf.rs`, `kern/stick-formate/src/ttf.rs`; CLI `stick schriften` |
 | **Applikation im Original** (Lagen, Stopps über `Applique.tch`, Werte aus „Easy Appliqué“, Schnittlinie, Blanket 0x2727) | `Analyse_Teil3/12_applikation.md`; Kern `stick-kern/src/applikation.rs` |
 | **Füllmuster (Program Split)**: Bibliotheksformat, 242 Muster, Füllregel gemessen | `Analyse_Teil3/13_fuellmuster.md`; Werkzeug `Arbeitsdaten/werkzeuge/muster_lesen.py`; Kern `stick-kern/src/muster.rs` |
+| **Reihenfolge und Ein-/Ausstich** (Sequence As Selected/to Start/to End/By Color, Resequence by Number; MOD1 Resequence + Closest Join = FindExitEntry; gemessen: Original stickt wie digitalisiert; Überdeckungsprüfung = eigene Erweiterung) | `Analyse_Teil3/16_reihenfolge.md`; Werkzeug `Arbeitsdaten/werkzeuge/art_reihenfolge.py`; Kern `stick-kern/src/reihenfolge.rs`, `ein_ausstich.rs`; CLI `stick reihenfolge` |
 | **Aussparen (Knockout)** im Original: Funktionen, Messung (exakte Löcher, Hand-Löcher −0,15 mm) | `Analyse_Teil3/14_aussparen.md`; Werkzeug `Arbeitsdaten/werkzeuge/art_aussparen.py`; Kern `stick-kern/src/aussparen.rs` |
 | **Bild → Umrisse** (Vektorisierung, eigene Festlegung) | `kern/stick-vektor/`; CLI `stick bild` |
 | **Regeln des Originals – Übersicht** (Kurzstiche, Unterlage, Laufwege, Satin, Tatami, Verbinder; je Regel Geltung Schrift/Bild/Fläche, Beleg, Sicherheit, Stand im Kern) | `Analyse_Teil3/10_regeln_original.md` |
@@ -133,5 +134,5 @@ in der Roadmap stehen.
 | 1 Prototyp | Stichberechnung in Python, Referenz für den Rust-Kern | ✅ (`stickprogramm/`) |
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
-| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen ✅; Parameterkatalog angelegt; offen 4b.5–4b.16 | 🟡 (`ROADMAP.md` Phase 4b) |
+| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen, 4b.5 Reihenfolge ✅; Parameterkatalog angelegt; nächster Block 4b.17 SVG-Import (zuerst „Satin-Stichrichtung automatisch“), dann 4b.16, 4b.6 … | 🟡 (`ROADMAP.md` Phase 4b) |
 | 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |

@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 20.11.2026 · **132 Parameter**: 31 einfach, 70 experte, 31 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 20.11.2026 · **139 Parameter**: 32 einfach, 74 experte, 33 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -143,6 +143,18 @@ Stand 20.11.2026 · **132 Parameter**: 31 einfach, 70 experte, 31 automatisch. E
 | **Verstärken (Double Run)** | gleiche Stiche rückwärts noch einmal | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `doppellauf` | aus |  |  | objekt | experte | Handbuch Kap. 23 |
 | **Aussparen (Knockout)** | Fläche spart die genannten Objekte aus | tatami, muster | Objekt: `aussparen` | [] Objektnamen |  |  | objekt | einfach | Remove Overlay (Analyse_Teil3/14) |
 | **Überlappung beim Aussparen** | Loch bleibt um so viel kleiner | tatami, muster | Objekt: `ueberlappung` | 0 mm | 0 … 3 |  | objekt | experte | Analyse_Teil3/14 |
+
+## Reihenfolge
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Kürzeste Verbindung (Closest Join)** | jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (Linien umgedreht, geschlossene Formen gedreht; Schrift ausgenommen) |  | `kuerzeste_verbindung` | aus |  |  | design | experte | MOD1 ResequenceByClosestJoin 0x1006d0c0, GEOMETRY FindExitEntry (hoch); im Original Option von Resequence und Auto Digitizer, sonst „wie digitalisiert“ (Messung Analyse_Teil3/16_reihenfolge.md) |
+| **Einstich (entry point)** | Objekt beginnt hier bzw. am nächsten Punkt der Form | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `einstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (entry point, Reshape); Umsetzung je Objektart eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
+| **Ausstich (exit point)** | Objekt endet hier bzw. so nah wie die Form erlaubt | lauf, dreifach, satin, satinlinie, tatami, muster, blanket, applikation, text, ttf, monogramm | Objekt: `ausstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
+| **Farbreihenfolge beim Sortieren** | gewünschte Folge der Farben (Move Up/Down), übrige Farben in der Reihenfolge ihres ersten Auftretens |  |  | [] Farbliste |  |  | werkzeug | experte | Dialog „Sequence By Color“ (Handbuch Kap. 14); Befehl reihenfolge --nach-farbe |
+| **Überdeckung beachten** | beim Sortieren nach Farbe behalten Objekte, die sich überdecken, ihre Reihenfolge |  |  | aus |  |  | werkzeug | einfach | eigene Erweiterung (das Original prüft nicht, Analyse_Teil3/16_reihenfolge.md) |
+| **Überdeckung ab** | kleinere gemeinsame Flächen zählen nicht |  |  | 0,5 mm² |  |  | werkzeug | automatisch | eigene Festlegung |
+| **Breite einer Linie bei der Prüfung** | Laufstich zählt als Band dieser Breite |  |  | 0,5 mm |  |  | werkzeug | automatisch | eigene Festlegung |
 
 ## Blanket
 

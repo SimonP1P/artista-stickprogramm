@@ -10,6 +10,10 @@
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
 //!   stick bild BILD [--breite MM] [--farben N] [-o D.json]  Bild → Umrisse (Tatami-Flächen als Design-JSON)
 //!   stick muster                                           Füllmuster der Vorlage auflisten
+//!   stick reihenfolge DESIGN.json [BEFEHL] [-o NEU.json]   Objekte auflisten, Überdeckungen prüfen, umordnen:
+//!                                                          --nach-farbe [FARBEN] [--ueberdeckung] [--auswahl NR,…],
+//!                                                          --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,…
+//!                                                          | --vor NR --auswahl NR,… | --nach NR --auswahl NR,…
 //!   stick schriften [--schriften ORDNER]                  Computer-Schriften (TrueType/OpenType) auflisten
 //!   stick garnkarten [--garnkarten ORDNER]                 Garnkarten (.tch) auflisten
 //!   stick maschine ports|pruefen|liste|lesen NR|senden EINGABE [--port COM3 | --simulation] …
@@ -126,6 +130,127 @@ fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool,
         println!("  WARNUNG: {} Einstiche liegen außerhalb des Stickfelds!", aussen.len());
     }
     Ok(aussen.is_empty())
+}
+
+/// Nummern „3,1,7“ (ab 1 wie die Color Film) → Stellen ab 0.
+fn nummern(t: &str) -> Result<Vec<usize>, String> {
+    t.split(',')
+        .filter(|x| !x.trim().is_empty())
+        .map(|x| match x.trim().parse::<usize>() {
+            Ok(n) if n >= 1 => Ok(n - 1),
+            _ => Err(format!("Objektnummer „{x}“ ungültig (ab 1)")),
+        })
+        .collect()
+}
+
+/// `stick reihenfolge`: Objekte mit Farbe auflisten, Überdeckungen und Farbwechsel zeigen, auf Wunsch umordnen
+/// (Handbuch Kap. 14, `stick_kern::reihenfolge`).
+fn reihenfolge(args: &[String], hilfe: &str) -> Result<bool, String> {
+    use stick_kern::reihenfolge::{Befehl, ausfuehren, farbwechsel, objekt_farben, ueberdeckungen};
+    let pfad = PathBuf::from(args.get(1).filter(|a| !a.starts_with('-')).ok_or(hilfe)?);
+    let text = std::fs::read_to_string(&pfad).map_err(|e| format!("{}: {e}", pfad.display()))?;
+    let v: serde_json::Value = serde_json::from_str(&text).map_err(|e| format!("JSON ungültig: {e}"))?;
+    // berechenbares Design für die Prüfung auf Überdeckungen (Texte brauchen die Alphabete)
+    let design = (|| -> Result<Design, String> {
+        let mut d = Design::aus_value(&v)?;
+        esb::design_alphabete_laden(&mut d, &alphabet_ordner(args))?;
+        ttf::design_schriften_laden(&mut d, &schrift_ordner(args))?;
+        Ok(d)
+    })();
+    let schalter = |n: &str| args.iter().any(|a| a == n);
+    let liste = |n: &str| option(args, n).map(|t| nummern(&t)).transpose();
+    let auswahl = liste("--auswahl")?.unwrap_or_default();
+    let befehl = if schalter("--nach-farbe") {
+        let farben = option(args, "--nach-farbe")
+            .filter(|x| !x.starts_with("--"))
+            .map(|x| {
+                x.split(',')
+                    .map(|f| f.trim().to_string())
+                    .filter(|f| !f.is_empty())
+                    .collect()
+            })
+            .unwrap_or_default();
+        Some(Befehl::NachFarbe {
+            auswahl,
+            farben,
+            ueberdeckung: schalter("--ueberdeckung"),
+        })
+    } else if let Some(a) = liste("--wie-ausgewaehlt")? {
+        Some(Befehl::WieAusgewaehlt(a))
+    } else if let Some(a) = liste("--an-anfang")? {
+        Some(Befehl::AnAnfang(a))
+    } else if let Some(a) = liste("--ans-ende")? {
+        Some(Befehl::AnsEnde(a))
+    } else if let Some(z) = liste("--vor")?.or(liste("--nach")?) {
+        let [ziel] = z[..] else {
+            return Err("--vor/--nach: genau eine Objektnummer".into());
+        };
+        Some(Befehl::NachNummer {
+            auswahl,
+            ziel,
+            vor: schalter("--vor"),
+        })
+    } else {
+        None
+    };
+    let farben = objekt_farben(&v);
+    let objekte = v
+        .get("objekte")
+        .and_then(serde_json::Value::as_array)
+        .cloned()
+        .unwrap_or_default();
+    let beschreibung = |i: usize| {
+        let o = &objekte[i];
+        let name = o.get("name").and_then(serde_json::Value::as_str).unwrap_or("");
+        let art = o.get("art").and_then(serde_json::Value::as_str).unwrap_or("?");
+        format!("{:>3}  {:<8} {:<11} {}", i + 1, farben[i], art, name)
+    };
+    let paare = match &design {
+        Ok(d) => Some(ueberdeckungen(d)?),
+        Err(e) => {
+            println!("  Hinweis: Überdeckungen nicht geprüft ({e})");
+            None
+        }
+    };
+    let Some(befehl) = befehl else {
+        println!("Objekte in Stickreihenfolge (Nr, Farbe, Art, Name):");
+        for i in 0..objekte.len() {
+            println!("  {}", beschreibung(i));
+        }
+        let alle: Vec<usize> = (0..objekte.len()).collect();
+        println!("  Farbwechsel: {}", farbwechsel(&farben, &alle));
+        if let Some(p) = &paare {
+            println!("  Überdeckungen (früher → später gestickt): {}", p.len());
+            for (a, b) in p {
+                println!("    {} → {}", a + 1, b + 1);
+            }
+        }
+        return Ok(true);
+    };
+    let e = ausfuehren(&v, design.as_ref().ok(), &befehl)?;
+    println!("Neue Reihenfolge (bisherige Nummern):");
+    for &i in &e.reihenfolge {
+        println!("  {}", beschreibung(i));
+    }
+    println!("  Farbwechsel: {} → {}", e.farbwechsel_vorher, e.farbwechsel_nachher);
+    for (oben, unten) in &e.vertauscht {
+        println!(
+            "  WARNUNG: Objekt {} lag über Objekt {} und liegt jetzt darunter (Flächen überdecken sich)",
+            oben + 1,
+            unten + 1
+        );
+    }
+    let ziel = option(args, "-o").map(PathBuf::from).unwrap_or_else(|| {
+        let stamm = pfad.file_stem().unwrap_or_default().to_string_lossy().to_string();
+        pfad.with_file_name(format!("{stamm}_reihenfolge.json"))
+    });
+    std::fs::write(
+        &ziel,
+        serde_json::to_string_pretty(&e.design).map_err(|x| x.to_string())?,
+    )
+    .map_err(|x| format!("{}: {x}", ziel.display()))?;
+    println!("  Design: {}", ziel.display());
+    Ok(e.vertauscht.is_empty())
 }
 
 /// Sendedaten aus einer Eingabedatei: Design-JSON (berechnen), .exp oder aus der Maschine gelesenes Design (.bin).
@@ -295,7 +420,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -342,6 +467,7 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
             Ok(true)
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
+        Some("reihenfolge") => reihenfolge(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
         Some("bild") => {
             let pfad = PathBuf::from(args.get(1).ok_or(

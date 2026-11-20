@@ -107,7 +107,11 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
   `designmitte`, `unten_mitte`, `erster_stich`/`letzter_stich`, Ende auch `start`. Standard bleibt die Rahmenmitte, bis
   am Gerät geprüft ist, wie die artista 185 ein Design platziert, dessen Start nicht in der Rahmenmitte liegt (Vor Ort V7).
   Ein Start/Ende **je Objekt** („closest join“) gibt es im Handbuch nur beim Auto Digitizer; Ein-/Ausstich je Objekt
-  setzt sonst der Anwender (Reshape) – im Kern wählt jedes Objekt den nächsten Einstieg zum vorigen Ende.
+  setzt sonst der Anwender (Reshape). **Bericht 16 (20.11.2026):** Closest Join = MOD1 ResequenceByClosestJoin →
+  GEOMETRY FindExitEntry (exakt nächste Umrisspunkte, hoch); ohne Eingriff stickt das Original wie digitalisiert
+  (Linien 75 % vom ersten Knoten, geschlossene 88 % ab dem ersten Knoten, Flächen 69 %); Verbindungen zwischen
+  getrennten Objekten der Musterdesigns liegen zu 96 % auf dem kürzesten Weg. ✅ Kern: `einstich`/`ausstich` je
+  Objekt, `kuerzeste_verbindung` (Standard aus); Flächen beginnen wie bisher am Punkt nächst dem vorigen Ende.
 
 ## 8. Schrift — Sicherheit: siehe Bericht 09
 Original-Alphabete (ESB), Referenzhöhe 50 mm (mittel-hoch), Buchstabenabstand = Anteil × Höhe aus dem Alphabet-Kopf,

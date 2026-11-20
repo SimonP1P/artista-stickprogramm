@@ -591,6 +591,9 @@ struct DesignJson {
     /// Designstart: „rahmenmitte“ (Standard), „designmitte“, „unten_mitte“ oder „erster_stich“
     #[serde(default)]
     start: Option<String>,
+    /// Closest Join: jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (`ein_ausstich`)
+    #[serde(default)]
+    kuerzeste_verbindung: bool,
 }
 
 /// Start- bzw. Endpunkt des Designs (Dialog „Start and End“, Menü Arrange; Handbuch PDF-S. 204–205). Das Original
@@ -773,7 +776,7 @@ fn satin_wege(
 }
 
 /// Aufgelöste Objekte, fehlende Zeichen, Herkunft (Nummer des Objekts im Design) je Objekt
-type Aufgeloest = (Vec<Objekt>, Vec<char>, Vec<usize>);
+pub(crate) type Aufgeloest = (Vec<Objekt>, Vec<char>, Vec<usize>);
 
 /// Double Run: dieselben Stiche rückwärts anhängen (beginnen, wo das Objekt endet – kein Verbindungsstich).
 fn doppellauf(wege: &mut Vec<Linie>) {
@@ -1331,6 +1334,12 @@ pub struct Design {
     pub auto_jump: BTreeMap<usize, AutoJump>,
     /// Step-Muster 1–20 je Objekt (Nummer in `objekte`), JSON `"step_muster"` – für Tatami-Flächen und Step in Schrift
     pub step_muster: BTreeMap<usize, usize>,
+    /// Einstich je Objekt (Nummer in `objekte`), JSON `"einstich": [x, y]` – „entry point“ (`ein_ausstich`)
+    pub einstich: BTreeMap<usize, Punkt>,
+    /// Ausstich je Objekt, JSON `"ausstich": [x, y]` – „exit point“
+    pub ausstich: BTreeMap<usize, Punkt>,
+    /// Closest Join für alle Objekte ohne eigenen Einstich (außer Schrift), JSON `"kuerzeste_verbindung": true`
+    pub kuerzeste_verbindung: bool,
 }
 
 /// Auto Jump eines Objekts (Effects-Dialog, Handbuch Kap. 22 „Preserving long stitches with Auto Jump“): lange Stiche
@@ -1784,6 +1793,22 @@ impl Design {
                 }
             }
         }
+        let mut einstich = BTreeMap::new();
+        let mut ausstich = BTreeMap::new();
+        if let Some(l) = v.get("objekte").and_then(Value::as_array) {
+            for (i, o) in l.iter().enumerate() {
+                for (feld, ziel) in [("einstich", &mut einstich), ("ausstich", &mut ausstich)] {
+                    if let Some(w) = o.get(feld) {
+                        let q = w
+                            .as_array()
+                            .filter(|a| a.len() == 2)
+                            .and_then(|a| Some(p(a[0].as_f64()?, a[1].as_f64()?)))
+                            .ok_or_else(|| format!("Objekt {}: {feld}: Punkt [x, y] in mm", i + 1))?;
+                        ziel.insert(i, q);
+                    }
+                }
+            }
+        }
         Ok(Design {
             transformationen,
             transformation,
@@ -1791,6 +1816,9 @@ impl Design {
             doppellauf,
             auto_jump,
             step_muster,
+            einstich,
+            ausstich,
+            kuerzeste_verbindung: d.kuerzeste_verbindung,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
@@ -1836,7 +1864,7 @@ impl Design {
     }
 
     /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
-    fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
+    pub(crate) fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
         let mut out = Vec::new();
         let mut fehlend = Vec::new();
         // je aufgelöstem Objekt: Nummer des Objekts im Design (für das Aussparen nach Namen)
@@ -1997,7 +2025,30 @@ impl Design {
         let teile_ab = |start: Punkt| -> Result<Teile, String> {
             let mut teile = Vec::new();
             let mut pos = start;
-            for (obj, h) in objekte.iter().zip(&herkunft) {
+            for (k, (obj, h)) in objekte.iter().zip(&herkunft).enumerate() {
+                // Ein-/Ausstich (`ein_ausstich`): Einstich gilt für das erste, Ausstich für das letzte aufgelöste
+                // Teil eines Objekts; Closest Join setzt den Einstich aller übrigen auf das vorige Ende (nicht bei
+                // Schrift – dort gilt die Reihenfolge der Buchstaben und Säulen, Bericht 11)
+                let erster = k == 0 || herkunft[k - 1] != *h;
+                let letzter = k + 1 == herkunft.len() || herkunft[k + 1] != *h;
+                let schrift = matches!(
+                    self.objekte.get(*h).map(|o| &o.art),
+                    Some(ObjektArt::Text { .. } | ObjektArt::TtfText { .. })
+                );
+                let ein = if erster { self.einstich.get(h).copied() } else { None }
+                    .or_else(|| (self.kuerzeste_verbindung && !schrift).then_some(pos));
+                let aus = if letzter { self.ausstich.get(h).copied() } else { None };
+                let ausgerichtet;
+                let obj = if ein.is_some() || aus.is_some() {
+                    ausgerichtet = Objekt {
+                        art: crate::ein_ausstich::ausrichten(&obj.art, ein, aus),
+                        ..obj.clone()
+                    };
+                    &ausgerichtet
+                } else {
+                    obj
+                };
+                let beginn = crate::ein_ausstich::start_hinweis(&obj.art, ein, aus).unwrap_or(pos);
                 let eigene;
                 let e = match self.step_muster.get(h) {
                     Some(&nr) => {
@@ -2008,7 +2059,11 @@ impl Design {
                     }
                     None => &self.einstellungen,
                 };
-                let mut wege: Vec<Linie> = obj.wege(e, Some(pos))?.into_iter().filter(|w| !w.is_empty()).collect();
+                let mut wege: Vec<Linie> = obj
+                    .wege(e, Some(beginn))?
+                    .into_iter()
+                    .filter(|w| !w.is_empty())
+                    .collect();
                 if self.doppellauf.contains(h) {
                     doppellauf(&mut wege);
                 }
@@ -2381,6 +2436,70 @@ mod tests {
         };
         assert_eq!((alphabet.as_str(), vorgabe.text.as_str()), ("Diamond2", "Ab["));
         assert!(Design::aus_json(r#"{"objekte": [{"art": "monogramm", "initialen": "ÄB"}]}"#).is_err());
+    }
+
+    /// Sprungweg gesamt (mm) und Stichpunkte einer Folge
+    fn spruenge_und_stiche(d: &Design) -> (f64, Vec<Punkt>) {
+        let f = d.berechnen().unwrap();
+        let mut weg = 0.0;
+        for w in f.stiche.windows(2) {
+            if w[1].art == crate::Art::Sprung {
+                weg += abstand(w[0].p(), w[1].p());
+            }
+        }
+        let st = f
+            .stiche
+            .iter()
+            .filter(|s| s.art == crate::Art::Stich)
+            .map(|s| s.p())
+            .collect();
+        (weg, st)
+    }
+
+    /// Ein-/Ausstich je Objekt und Closest Join (ROADMAP 4b.5, `ein_ausstich`)
+    #[test]
+    fn ein_ausstich_und_kuerzeste_verbindung() {
+        let json = r##"{"ende": "letzter_stich", "objekte": [
+            {"art": "lauf", "punkte": [[0, 0], [20, 0]]},
+            {"art": "lauf", "punkte": [[50, 0], [25, 0]]},
+            {"art": "lauf", "geschlossen": true, "punkte": [[30, 10], [40, 10], [40, 20], [30, 20]]}
+        ]}"##;
+        let (weg, st) = spruenge_und_stiche(&Design::aus_json(json).unwrap());
+        // wie gezeichnet: 0 → 20, Sprung nach 50, zurück bis 25, Sprung zur Ecke (30, 10)
+        assert!(st.iter().any(|q| abstand(*q, p(50.0, 0.0)) < 0.01));
+        let (weg_k, st_k) = spruenge_und_stiche(
+            &Design::aus_json(&json.replace(r#""objekte""#, r#""kuerzeste_verbindung": true, "objekte""#)).unwrap(),
+        );
+        assert!(
+            weg_k < weg - 20.0,
+            "Closest Join spart den Weg nach 50 und zurück: {weg} → {weg_k}"
+        );
+        // zweite Linie jetzt von 25 nach 50, das Quadrat beginnt an seiner nächsten Stelle zu (50, 0): Ecke (40, 10)
+        let i25 = st_k.iter().position(|q| abstand(*q, p(25.0, 0.0)) < 0.01).unwrap();
+        let i50 = st_k.iter().position(|q| abstand(*q, p(50.0, 0.0)) < 0.01).unwrap();
+        assert!(i25 < i50);
+        let quadrat = *st_k[i50..].iter().find(|q| q.y > 5.0).unwrap();
+        assert!(abstand(quadrat, p(40.0, 10.0)) < 3.0, "{quadrat:?}");
+        // eigener Einstich am Quadrat (rechte Kante oben) und Ausstich der ersten Linie am Anfang
+        let eigen = json
+            .replace(
+                r#""geschlossen": true,"#,
+                r#""geschlossen": true, "einstich": [41, 18],"#,
+            )
+            .replace(r#"[[0, 0], [20, 0]]}"#, r#"[[0, 0], [20, 0]], "ausstich": [-1, 0]}"#);
+        let (_, st_e) = spruenge_und_stiche(&Design::aus_json(&eigen).unwrap());
+        assert!(
+            abstand(st_e[0], p(20.0, 0.0)) < 0.01,
+            "erste Linie rückwärts: {:?}",
+            st_e[0]
+        );
+        assert!(
+            abstand(*st_e.last().unwrap(), p(40.0, 18.0)) < 0.01,
+            "Quadrat endet am Einstich"
+        );
+        assert!(
+            Design::aus_json(&json.replace(r#""punkte": [[0, 0]"#, r#""einstich": 5, "punkte": [[0, 0]"#)).is_err()
+        );
     }
 
     /// „Start and End“: Auto Start/End in der Designmitte wie die Musterdesigns mit AutoStartEndObject

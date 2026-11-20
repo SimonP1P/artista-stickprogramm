@@ -115,6 +115,50 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
     }
 }
 
+/// Breite, mit der eine Laufstich-Linie bei der Prüfung auf Überdeckung zählt (mm). **Eigene Festlegung** (etwa die
+/// Breite eines Fadens 40er Garn mit Einstich), das Original prüft Überdeckungen nicht (`reihenfolge`).
+pub const LINIE_BREITE: f64 = 0.5;
+
+/// Fläche, die ein Objekt im Stickbild belegt – wie `bedeckt(…, 0)`, Laufstich-Linien (offen und geschlossen) aber als
+/// Band der Breite `LINIE_BREITE` (eine geschlossene Linie belegt nur ihren Rand, nicht das Innere).
+pub fn belegt(art: &ObjektArt) -> Vec<Kontur> {
+    match art {
+        ObjektArt::Lauf {
+            punkte, geschlossen, ..
+        } if punkte.len() >= 2 => {
+            let mut l = punkte.clone();
+            if *geschlossen && l.len() >= 3 {
+                l.push(l[0]);
+            }
+            let (a, b) = seiten_aus_mittellinie(&l, LINIE_BREITE);
+            saeule(&a, &b, 0.0)
+        }
+        ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| belegt(&t.art)).collect(),
+        _ => bedeckt(art, 0.0),
+    }
+}
+
+/// Größe der gemeinsamen Fläche zweier Konturlisten (mm², Nicht-Null-Regel).
+pub fn schnittflaeche(a: &[Kontur], b: &[Kontur]) -> f64 {
+    if a.is_empty() || b.is_empty() {
+        return 0.0;
+    }
+    let r = a
+        .to_vec()
+        .overlay(&b.to_vec(), OverlayRule::Intersect, FillRule::NonZero);
+    let linie = |k: &Kontur| -> Linie { k.iter().map(|q| p(q[0], q[1])).collect() };
+    r.iter()
+        .filter(|form| !form.is_empty())
+        .map(|form| {
+            flaeche_vorzeichen(&linie(&form[0])).abs()
+                - form[1..]
+                    .iter()
+                    .map(|k| flaeche_vorzeichen(&linie(k)).abs())
+                    .sum::<f64>()
+        })
+        .sum()
+}
+
 /// Fläche (Umriss mit Löchern) minus die Schneideflächen: Teile als (Umriss, Löcher), größter zuerst.
 pub fn flaeche_minus(umriss: &[Punkt], loecher: &[Linie], schneider: &[Kontur]) -> Vec<Teil> {
     let mut subj: Vec<Kontur> = vec![kontur(umriss, true)];

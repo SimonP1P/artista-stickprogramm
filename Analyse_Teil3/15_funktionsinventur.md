@@ -75,8 +75,10 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | **Skalieren, Drehen, Spiegeln, Schrägstellen** je Objekt und Design (Stiche neu) | ✅ | `"transform"` (20.11.) |
 | Ausrichten, Gruppieren | ⬜ | Kap. 15 |
 | Mirror-Merge, Wreath (Kranz), Kaleidoscope | ⬜ | Kap. 15 |
-| Stichwinkel ändern, Ein-/Ausstich je Objekt setzen | 🟡 | Winkel ✅, Ein-/Ausstich ⬜ |
-| Reihenfolge: nach Farbe, an Anfang/Ende, automatisch | ⬜ | Kap. 14 (mit Überdeckungsprüfung) |
+| Stichwinkel ändern, Ein-/Ausstich je Objekt setzen | ✅ | Winkel ✅; Ein-/Ausstich ✅ 20.11. (`einstich`/`ausstich`, Closest Join `kuerzeste_verbindung`; Umsetzung je Objektart eigene Festlegung, Bericht 16) |
+| Reihenfolge: wie ausgewählt, an Anfang/Ende, nach Farbe, nach Nummer | ✅ | 20.11. `stick_kern::reihenfolge`, CLI `stick reihenfolge` (Kap. 14; Resequence MOD1 0x1006db20, Bericht 16) |
+| Prüfung auf Überdeckungen beim Umordnen | ✅ | 20.11. **eigene Erweiterung** (Original prüft nicht): Warnung + Sortieren nach Farbe mit `--ueberdeckung` |
+| Automatic sequencing (Blackwork Run: überlappende Linien zu einem Objekt) | ⬜ | Kap. 14 „Automatic sequencing“ = Craft Stitch Blackwork Run → ROADMAP 4b.9 |
 | Stiche einzeln einfügen/verschieben/löschen | ⬜ 🖥 | Kap. 17 |
 | Start und Ende des Designs | ✅ | `start`/`ende` |
 | Knopflöcher (einfügen, Typ, Länge, Dichte, verbinden) | ⬜ | Kap. 23, Klasse 0x95 |
