@@ -22,7 +22,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 
 **Zuletzt erledigt (20.11.):** Phase 4b.1–4b.4 (Transformationen, Schrift vollständig, Linien, Flächen), Messungen an
 den Musterdesigns (Säulenreihenfolge der Schrift, Step-Muster, Wendefüllung), Korrektur Step-Versatz der Stoffe
-(0,25/0,75), **Parameterkatalog** (`PARAMETER.md`, 139 Parameter, Modus einfach/experte/automatisch),
+(0,25/0,75), **Parameterkatalog** (`PARAMETER.md`, 145 Parameter, Modus einfach/experte/automatisch),
 **Funktionsübersicht für Designer/Frontend** (`UI_Mockups/FUNKTIONEN.md`), **4b.5 Reihenfolge** (Umordnen wie Menü
 Arrange, Überdeckungsprüfung als eigene Erweiterung, Ein-/Ausstich je Objekt, Closest Join; Bericht
 `Analyse_Teil3/16`, CLI `stick reihenfolge`), **4b.17 Baustein „Satin-Stichrichtung automatisch“** (`stick_kern::saeulen`,
@@ -35,6 +35,16 @@ Linie, Fläche ≤ 8 mm `satinflaeche`, ≤ 12 mm Tatami 1, darüber Tatami 2); 
 `kuerzeste_verbindung` wie der Auto Digitizer („closest join“), Überdeckungen mit `reihenfolge::ueberdeckungen`,
 Farben → Garnkarte; CLI `stick svg`. Danach die übrigen Blöcke in Tabellen-Reihenfolge: **4b.16 Werte je Objekt**,
 4b.6, 4b.7 …
+
+**Hinweise aus der letzten Sitzung (20.11.):**
+- **Freigabe des Nutzers:** Programmcode des Originals darf bei Bedarf entschlüsselt werden (ARTISTA.EXE ist mit
+  HASP verschlüsselt, Entropie 8,0 – die Menübefehle wie „Sequence By Color“ stehen nur dort). Bisher war es nicht
+  nötig: EZSTITCH.DLL, MOD1.DLL, GEOMETRY.DLL, IMPORT.DLL sind lesbar.
+- Offen aus 4b.5 (Bericht 16 §5): Platzierung von „Sequence By Color“ bei Teilauswahl, Ausstich in Flächen wie das
+  Original, Bedeutung „Auto Sequence“.
+- Offen aus 4b.17-Baustein (Bericht 17 §6): Einzelregeln `SignificantTriangles`/Schnittstufen, Überlappung an
+  Abzweigungen („Create Overlaps“, „T“-Abzweigungen 0,3 mm). Prüfdaten: `art_autosatin.py export/vergleich`
+  (54 Säulen aus `Samples/AutoDigitizing`, Vergleich mit `stick saeulen`).
 
 **Arbeitsweise (vom Nutzer festgelegt):**
 - Werte und Abläufe aus dem Original: Stile `Analyse/daten/entschluesselt/styles.txt`, Code (DIALOG.DLL, MOD1 –
