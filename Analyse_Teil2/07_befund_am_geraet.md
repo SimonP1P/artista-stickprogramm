@@ -310,4 +310,14 @@ Das Protokoll der Testprogramme ist nach Rust übertragen (`kern/stick-maschine`
 | Länge 2 bei Nr. 47 | diesmal **0** (nach Nr. 21 mit Anhang 724); am 19.11. stand dort der Rest des vorher gelesenen Designs – wann die Maschine Länge 2 zurücksetzt, ist offen | mittel |
 | Tabelle B[0]/C[0] | auch bei Nr. 47 jetzt 0x00C8 (wie Nr. 21) | hoch |
 
+## Schreibtest V1 – ICON und Garnfarbtabelle schreiben, ohne Sticken (20.11.2026, 02:41 und 01:42 UTC, Freigabe des Nutzers)
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| Testprogramm v4.1, Testquadrat | DATEN 728 Byte (2 Seiten `P S`), **ICON 732 Byte (2 Seiten `P S` + 7 × `W`)**, INFO-Felder, **Garnfarbtabelle 42 Byte an T + 66, dann `00 00 00` an T** – alles zurückgelesen und gleich; danach meldet die Maschine eine gültige Tabelle „Default 9 Dark Red“ | hoch |
+| Rust `stick maschine senden` (Weg der App), Prüfmuster | DATEN 6788 Byte, ICON, INFO, Garnfarbtabelle mit 4 Farben (Default Dark Green/Dark Blue/Dark Red/Black, 120 Byte) – zurückgelesen gleich, Tabelle gültig; 36,5 s mit Verbinden | hoch |
+| Display / Sticken | nicht geprüft (niemand an der Maschine) → Liste „Vor Ort“ V2/V3 | – |
+
+**Folgerung:** Alle Schreibwege des Originals für „Embroider“ (Schritte 7–12) funktionieren an der artista 185 – aus dem
+Testprogramm und aus dem Rust-Kern der App. Offen ist nur, was das Display mit Icon und Garnfarben zeigt.
+
 

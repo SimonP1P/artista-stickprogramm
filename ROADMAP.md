@@ -22,7 +22,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Icon sind jetzt im Rust-Kern und im
 **Testprogramm v4.1** wie das Original umgesetzt (Simulation ok). Weiter geht es mit
 1. **Gerätetest v4.1:** ✅ Lesen (20.11.: M = 60, G = 6000; Tabelle der Maschine für Nr. 21 byte-gleich mit unserer) ·
-   ⬜ Schreiben von ICON + Tabelle und Display ansehen → Liste „Vor Ort“ unten. Danach Speichern (0x10/0x200),
+   ✅ Schreiben von ICON + Tabelle (20.11., v4.1 und Rust) · ⬜ Display ansehen → Liste „Vor Ort“ unten. Danach Speichern (0x10/0x200),
 2. Phase 5: ✅ **„Senden“ direkt aus dem Programm** (20.11.: `stick-maschine`, Oberfläche Schritt 4; am Gerät lesend
    erprobt, Schreiben aus dem Programm → „Vor Ort“ V1); ✅ Garnfarbkarten; ✅ Designs aus der Maschine öffnen.
    Weiter: Design mit der Maus anpassen, Garn je Farbe wählen, Mac-Programm,
@@ -33,7 +33,7 @@ Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rah
 Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Testprogramm_artista185_Windows_v4_1/`.
 | # | Aufgabe | Braucht vor Ort | Stand |
 |---|---|---|---|
-| V1 | **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) – oder im Programm Schritt 4 „Senden …“ → „Jetzt schreiben“ (ohne Häkchen „sticken“) | niemanden (kein 0x08) – aber Freigabe: der Nutzer startet es selbst oder gibt Claude Code die Berechtigung (am 20.11. von der Rechteprüfung abgelehnt) | ⬜ |
+| V1 | ✅ **20.11.2026 erledigt** (v4.1 Testquadrat und Rust/App-Weg Prüfmuster: alles zurückgelesen gleich, Tabelle gültig) – **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) – oder im Programm Schritt 4 „Senden …“ → „Jetzt schreiben“ (ohne Häkchen „sticken“) | niemanden (kein 0x08) – aber Freigabe des Nutzers 20.11. | ✅ |
 | V2 | **Display prüfen:** `START_STICKEN.bat Nr21_puffer.bin` – zeigt das Display Garnfarben (Isacord 40 rich brown / brass / light beige) statt „no color“? Foto | Person: Display ansehen, Nadel oben, Hände weg | ⬜ |
 | V3 | Testquadrat mit Icon + Farbtabelle sticken (`START_STICKEN.bat`) – Farbe und Icon am Display? | Person: Rahmen, Stoff + **Vlies**, Stickgarn, Start-Taste | ⬜ |
 | V4 | **Prüfmuster** (`stickprogramm/beispiele/pruefmuster.json`: Satin 1/2/3/4/6 mm, Satinkeil, Tatami, Lauf, Dreifach, Schrift „Abc“ Swiss Block; Woven Medium Weight; 82 × 110 mm) auf festem Stoff mit Vlies und Stickgarn sticken, fotografieren – aus dem Programm oder `START_STICKEN.bat Pruefmuster_puffer.bin` | Person, Material | ⬜ (vorbereitet 20.11.) |
