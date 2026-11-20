@@ -87,6 +87,16 @@ pub fn ringe_ordnen(ringe: &[Linie]) -> Vec<(Linie, Vec<Linie>)> {
 /// Text in Stickobjekte umsetzen (je Buchstabe eine Gruppe). Liefert die Objekte und die fehlenden Zeichen.
 /// Höhe = Höhe der Großbuchstaben; Abstand (mm) kommt zum Vorschub der Schrift dazu (ohne Angabe 0).
 pub fn ttf_text_objekte(schrift: &TtfSchrift, v: &TextVorgabe, art: &TtfStichart) -> (Vec<Objekt>, Vec<char>) {
+    let (o, _, f) = ttf_text_objekte_idx(schrift, v, art);
+    (o, f)
+}
+
+/// Wie `ttf_text_objekte`, dazu je Objekt der Zeichenindex im Text; `^` = Farbwechsel ohne Platz.
+pub fn ttf_text_objekte_idx(
+    schrift: &TtfSchrift,
+    v: &TextVorgabe,
+    art: &TtfStichart,
+) -> (Vec<Objekt>, Vec<usize>, Vec<char>) {
     let bezug = if schrift.versal_hoehe > 0.0 {
         schrift.versal_hoehe
     } else {
@@ -99,15 +109,22 @@ pub fn ttf_text_objekte(schrift: &TtfSchrift, v: &TextVorgabe, art: &TtfStichart
         if ch == ' ' {
             return Some(schrift.leerzeichen * sx + abstand);
         }
+        if ch == '^' {
+            return None;
+        }
         schrift.zeichen.get(&ch).map(|z| z.vorschub * sx + abstand)
     };
     let breite: f64 = v.text.chars().filter_map(vorschub).sum::<f64>() - if v.text.is_empty() { 0.0 } else { abstand };
     let mut x = v.position.x - v.ausrichtung * breite.max(0.0);
     let mut objekte = Vec::new();
+    let mut idx = Vec::new();
     let mut fehlend = Vec::new();
-    for ch in v.text.chars() {
+    for (k, ch) in v.text.chars().enumerate() {
         if ch == ' ' {
             x += schrift.leerzeichen * sx + abstand;
+            continue;
+        }
+        if ch == '^' {
             continue;
         }
         let Some(z) = schrift.zeichen.get(&ch) else {
@@ -174,10 +191,11 @@ pub fn ttf_text_objekte(schrift: &TtfSchrift, v: &TextVorgabe, art: &TtfStichart
                     laufweg: crate::schrift::SCHRIFT_LAUFWEG,
                 },
             });
+            idx.push(k);
         }
         x += z.vorschub * sx + abstand;
     }
-    (objekte, fehlend)
+    (objekte, idx, fehlend)
 }
 
 #[cfg(test)]

@@ -84,6 +84,7 @@ OLE-Datei mit den Streams
    Arc Angle, Above/Through/Below) und die Datensätze 0x7c der 820 Schriftobjekte in den Musterdesigns (Aufbau: 3 Byte,
    double Buchstabenabstand 0,1/0,2, double Wortabstand 0,25/0,5, u32, double Höhe, double Breite 1,0, double 0,
    double π/2, …, double Zeilenabstand 0,6/0,5). Sicherheit mittel (Feldnamen erschlossen, nicht aus dem Code).
+   Umgesetzt (20.11.2026, `stick-kern::schrift::Grundlinie`): alle Grundlinien des Dialogs „Layout“ (DLG 1039) – Kreis CW/CCW mit Radius X/Y, Tilt, Arc Angle und Position Above/Through/Below (Standard laut Handbuch S. 174: über der CW-, **unter** der CCW-Grundlinie), gerade (Line Angle, Length), senkrecht, Any Shape, Multiple; Justification Left/Center/Right/Full; `^` = Farbwechsel (Handbuch S. 158). 0x3f03 = π/2 passt zu Justif. Angle 90°.
 3. Automatische Unterlage für Schrift (`let_underlay`, Tag 0x197f ff.) – Vergleich mit Blackboard/Swiss Block (Unterlage
    im Alphabet) und Drifter/Lisa/Zurich/Alice/Bamboo (ohne) im Maschinenspeicher.
 4. Stichbildung der Satinsäule mit Winkellinien (MOD1.DLL) gegen die echten Stiche messen.

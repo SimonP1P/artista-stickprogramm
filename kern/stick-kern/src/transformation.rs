@@ -403,10 +403,8 @@ mod tests {
             kursiv: 0.0,
         };
         let g = Grundlinie {
-            art: "kreis".into(),
             radius: 20.0,
-            winkel: None,
-            lage: None,
+            ..Default::default()
         };
         let o = g.anwenden(
             vec![buchstabe(0.0), buchstabe(20.0 * std::f64::consts::FRAC_PI_2)],
@@ -429,7 +427,7 @@ mod tests {
         let o = unten.anwenden(vec![buchstabe(0.0)], &zeile, p(0.0, 0.0), 45.0);
         let mut c = Vec::new();
         formpunkte(&o[0].art, &mut c);
-        // unten: Fuß auf y = −20, Kopf zur Mitte hin (y bis −15), aufrecht lesbar
-        assert!(c.iter().all(|q| q.y > -20.1 && q.y < -14.9), "{c:?}");
+        // unten (Circle CCW, Standard „Below“): Kopf auf y = −20, Fuß außen bei −25, aufrecht lesbar
+        assert!(c.iter().all(|q| q.y > -25.1 && q.y < -19.9), "{c:?}");
     }
 }

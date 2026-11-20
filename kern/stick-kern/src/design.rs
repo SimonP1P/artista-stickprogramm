@@ -11,8 +11,8 @@ use crate::geometrie::{
 };
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
-use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
-use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte};
+use crate::schrift::{Alphabet, Buchstabe, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen};
+use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte_idx};
 use crate::sticharten::blanket::blanket;
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
 use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mittellinie};
@@ -211,8 +211,8 @@ struct TextJson {
     wortabstand: Option<f64>,
     /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt ein Zeilenumbruch im Text
     zeilenabstand: Option<f64>,
-    /// Kreis-Grundlinie (`position` = Kreismitte)
-    grundlinie: Option<crate::schrift::Grundlinie>,
+    /// Grundlinie (kreis, gerade, senkrecht, kurve, mehrfach; beim Kreis ist `position` die Kreismitte)
+    grundlinie: Option<GrundlinieJson>,
     /// Kursiv in Grad (−45 … 45)
     #[serde(default)]
     kursiv: f64,
@@ -249,8 +249,8 @@ struct TtfJson {
     wortabstand: Option<f64>,
     /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\n` im Text
     zeilenabstand: Option<f64>,
-    /// Kreis-Grundlinie (`position` = Kreismitte)
-    grundlinie: Option<crate::schrift::Grundlinie>,
+    /// Grundlinie (kreis, gerade, senkrecht, kurve, mehrfach; beim Kreis ist `position` die Kreismitte)
+    grundlinie: Option<GrundlinieJson>,
     /// Kursiv in Grad (−45 … 45)
     #[serde(default)]
     kursiv: f64,
@@ -266,6 +266,60 @@ struct TtfJson {
     unterlage: Option<bool>,
     /// Stichlänge bei Lauf/Dreifach
     laenge: Option<f64>,
+}
+
+/// Grundlinie eines Texts (`schrift::Grundlinie`; Dialog „Layout“ des Originals).
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GrundlinieJson {
+    /// kreis | gerade | senkrecht | kurve | mehrfach
+    art: String,
+    /// Radius X in mm (Vorlage 50)
+    radius: Option<f64>,
+    /// Radius Y in mm (Oval)
+    radius_y: Option<f64>,
+    /// Kreis: Justif. Angle (Grad); gerade: Line Angle
+    winkel: Option<f64>,
+    /// Tilt des Ovals in Grad
+    #[serde(default)]
+    neigung: f64,
+    /// Arc Angle in Grad (nur ein Bogen)
+    bogen: Option<f64>,
+    /// Length der geraden Grundlinie in mm
+    laenge: Option<f64>,
+    /// oben (Circle CW) | unten (Circle CCW)
+    lage: Option<String>,
+    /// ueber | durch | unter (Position Above/Through/Below)
+    stand: Option<String>,
+    /// Punkte oder Form der eigenen Kurve
+    punkte: Option<PunktAngabe>,
+}
+
+impl GrundlinieJson {
+    fn grundlinie(self, blocksatz: bool) -> crate::schrift::Grundlinie {
+        crate::schrift::Grundlinie {
+            art: self.art,
+            radius: self.radius.unwrap_or(crate::schrift::KREIS_RADIUS_MM),
+            radius_y: self.radius_y,
+            winkel: self.winkel,
+            neigung: self.neigung,
+            bogen: self.bogen,
+            laenge: self.laenge,
+            lage: self.lage,
+            stand: self.stand,
+            punkte: self.punkte.map(|q| q.punkte()).unwrap_or_default(),
+            blocksatz,
+        }
+    }
+}
+
+/// Einzelner Buchstabe eines Texts (`"buchstaben"`).
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct BuchstabeJson {
+    nr: usize,
+    farbe: Option<String>,
+    transform: Option<Value>,
 }
 
 /// Füllmuster (`muster.rs`): Tatami-Reihen mit Einstichen auf den Musterlinien.
@@ -1016,6 +1070,8 @@ pub struct Design {
     pub transformationen: BTreeMap<usize, Transformation>,
     /// Transformation des ganzen Designs (um seine Mitte), JSON `"transform"` oben im Design
     pub transformation: Transformation,
+    /// Farben für `^` und einzelne Buchstaben je Text (Nummer in `objekte`), JSON `"farben"`/`"buchstaben"`
+    pub buchstaben: BTreeMap<usize, TextZusatz>,
 }
 
 impl Design {
@@ -1031,6 +1087,18 @@ impl Design {
             e = e.ueberschreiben(werte)?;
         }
         for o in &d.objekte {
+            let block = match o {
+                ObjektJson::Text(t) => t.ausrichtung == "block" && t.grundlinie.is_none(),
+                ObjektJson::Ttf(t) => t.ausrichtung == "block" && t.grundlinie.is_none(),
+                _ => false,
+            };
+            if block {
+                return Err(
+                    "Ausrichtung „block“ braucht eine Grundlinie mit fester Länge (kurve, gerade mit laenge, \
+                     kreis mit bogen)"
+                        .into(),
+                );
+            }
             if let ObjektJson::Applikation(a) = o {
                 if let Some(x) = a.abdeckung.as_deref().filter(|x| !matches!(*x, "satin" | "blanket")) {
                     return Err(format!("Abdeckung „{x}“ unbekannt (satin, blanket)"));
@@ -1077,14 +1145,14 @@ impl Design {
                             abstand: t.abstand,
                             position: t.position.unwrap_or(p(0.0, 0.0)),
                             ausrichtung: match t.ausrichtung.as_str() {
-                                "links" => 0.0,
+                                "links" | "block" => 0.0,
                                 "rechts" => 1.0,
                                 _ => 0.5,
                             },
                             farbe: t.farbe.clone(),
                             wortabstand: t.wortabstand.map(|w| w / 100.0),
                             zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
-                            grundlinie: t.grundlinie,
+                            grundlinie: t.grundlinie.map(|g| g.grundlinie(t.ausrichtung == "block")),
                             kursiv: t.kursiv,
                             unterlage: match Unterlage::from(t.unterlage) {
                                 Unterlage::Auto => None,
@@ -1140,14 +1208,14 @@ impl Design {
                             abstand: t.abstand,
                             position: t.position.unwrap_or(p(0.0, 0.0)),
                             ausrichtung: match t.ausrichtung.as_str() {
-                                "links" => 0.0,
+                                "links" | "block" => 0.0,
                                 "rechts" => 1.0,
                                 _ => 0.5,
                             },
                             farbe: t.farbe.clone(),
                             wortabstand: t.wortabstand.map(|w| w / 100.0),
                             zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
-                            grundlinie: t.grundlinie,
+                            grundlinie: t.grundlinie.map(|g| g.grundlinie(t.ausrichtung == "block")),
                             kursiv: t.kursiv,
                             unterlage: None,
                         },
@@ -1208,7 +1276,7 @@ impl Design {
             if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art
                 && let Some(g) = &vorgabe.grundlinie
             {
-                g.pruefen()?;
+                g.pruefen(&vorgabe.text)?;
             }
             if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art
                 && vorgabe.kursiv.abs() > 45.0
@@ -1237,9 +1305,54 @@ impl Design {
             Some(t) => transform_lesen(t, "Design")?,
             None => Transformation::default(),
         };
+        // Farben für `^` und einzelne Buchstaben je Text
+        let mut buchstaben = BTreeMap::new();
+        let liste = v.get("objekte").and_then(Value::as_array);
+        for (i, o) in objekte.iter().enumerate() {
+            let (ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. }) = &o.art else {
+                continue;
+            };
+            let roh = liste.and_then(|l| l.get(i));
+            let wo = format!("Objekt {}", i + 1);
+            let farben: Vec<String> = match roh.and_then(|r| r.get("farben")) {
+                Some(f) => serde_json::from_value(f.clone()).map_err(|e| format!("{wo}: farben ungültig: {e}"))?,
+                None => Vec::new(),
+            };
+            let wechsel = vorgabe.text.matches('^').count();
+            if wechsel > farben.len() {
+                return Err(format!(
+                    "{wo}: {wechsel} Farbwechsel (^) im Text, aber {} Farben in „farben“",
+                    farben.len()
+                ));
+            }
+            let n = buchstaben_zahl(&vorgabe.text);
+            let mut einzeln = Vec::new();
+            if let Some(e) = roh.and_then(|r| r.get("buchstaben")) {
+                let l: Vec<BuchstabeJson> =
+                    serde_json::from_value(e.clone()).map_err(|e| format!("{wo}: buchstaben ungültig: {e}"))?;
+                for b in l {
+                    if b.nr == 0 || b.nr > n {
+                        return Err(format!("{wo}: Buchstabe {} gibt es nicht (1 … {n})", b.nr));
+                    }
+                    let transform = match &b.transform {
+                        Some(t) => transform_lesen(t, &format!("{wo}, Buchstabe {}", b.nr))?,
+                        None => Transformation::default(),
+                    };
+                    einzeln.push(Buchstabe {
+                        nr: b.nr,
+                        farbe: b.farbe,
+                        transform,
+                    });
+                }
+            }
+            if !farben.is_empty() || !einzeln.is_empty() {
+                buchstaben.insert(i, TextZusatz { farben, einzeln });
+            }
+        }
         Ok(Design {
             transformationen,
             transformation,
+            buchstaben,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
@@ -1292,16 +1405,16 @@ impl Design {
                         .get(alphabet)
                         .or_else(|| self.alphabete.values().find(|a| a.name.eq_ignore_ascii_case(alphabet)))
                         .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
-                    for z in vorgabe.zeilen() {
-                        let (obj, f) = text_objekte(a, &z);
-                        let obj = z.neigen(obj, self.einstellungen.tatami.winkel);
-                        let obj = match &vorgabe.grundlinie {
-                            Some(g) => g.anwenden(obj, &z, vorgabe.position, self.einstellungen.tatami.winkel),
-                            None => obj,
-                        };
-                        out.extend(obj);
-                        fehlend.extend(f);
-                    }
+                    let abstand = vorgabe.abstand.unwrap_or(a.abstand_anteil * vorgabe.hoehe);
+                    let (obj, f) = text_setzen(
+                        vorgabe,
+                        abstand,
+                        self.buchstaben.get(&nr),
+                        self.einstellungen.tatami.winkel,
+                        |z| text_objekte_idx(a, z),
+                    );
+                    out.extend(obj);
+                    fehlend.extend(f);
                 }
                 ObjektArt::Applikation(v) => {
                     out.extend(applikation_objekte(
@@ -1318,16 +1431,18 @@ impl Design {
                         .ttf_schriften
                         .get(schrift)
                         .ok_or_else(|| format!("Schrift „{schrift}“ nicht geladen"))?;
-                    for z in vorgabe.zeilen() {
-                        let (obj, f) = ttf_text_objekte(s, &z, stichart);
-                        let obj = z.neigen(obj, self.einstellungen.tatami.winkel);
-                        let obj = match &vorgabe.grundlinie {
-                            Some(g) => g.anwenden(obj, &z, vorgabe.position, self.einstellungen.tatami.winkel),
-                            None => obj,
-                        };
-                        out.extend(obj);
-                        fehlend.extend(f);
-                    }
+                    let abstand = vorgabe
+                        .abstand
+                        .unwrap_or(crate::schrift::BUCHSTABENABSTAND_ANTEIL * vorgabe.hoehe);
+                    let (obj, f) = text_setzen(
+                        vorgabe,
+                        abstand,
+                        self.buchstaben.get(&nr),
+                        self.einstellungen.tatami.winkel,
+                        |z| ttf_text_objekte_idx(s, z, stichart),
+                    );
+                    out.extend(obj);
+                    fehlend.extend(f);
                 }
                 _ => out.push(o.clone()),
             }
