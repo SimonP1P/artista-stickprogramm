@@ -25,7 +25,7 @@ pub struct Aussparen {
     pub ueberlappung: f64,
 }
 
-type Kontur = Vec<[f64; 2]>;
+pub type Kontur = Vec<[f64; 2]>;
 
 /// Teil einer Fläche: Umriss und Löcher
 pub type Teil = (Linie, Vec<Linie>);
@@ -120,7 +120,25 @@ pub fn flaeche_minus(umriss: &[Punkt], loecher: &[Linie], schneider: &[Kontur]) 
         return vec![(umriss.to_vec(), loecher.to_vec())];
     }
     let clip: Vec<Kontur> = schneider.to_vec();
-    let ergebnis = subj.overlay(&clip, OverlayRule::Difference, FillRule::NonZero);
+    teile_aus(subj.overlay(&clip, OverlayRule::Difference, FillRule::NonZero))
+}
+
+/// Geschlossener Umriss als Kontur (gegen den Uhrzeiger), z. B. für `vereinigen`.
+pub fn ring_kontur(r: &[Punkt]) -> Kontur {
+    kontur(r, true)
+}
+
+/// Vereinigung von Flächen (Konturen wie aus `bedeckt`/`ring_kontur`, Nicht-Null-Regel): Teile, größter zuerst.
+pub fn vereinigen(konturen: &[Kontur]) -> Vec<Teil> {
+    if konturen.is_empty() {
+        return Vec::new();
+    }
+    let leer: Vec<Kontur> = Vec::new();
+    teile_aus(konturen.to_vec().overlay(&leer, OverlayRule::Union, FillRule::NonZero))
+}
+
+/// Ergebnis einer Überlagerung als Teile (Umriss, Löcher), kleine Reste entfallen, größter zuerst.
+fn teile_aus(ergebnis: Vec<Vec<Kontur>>) -> Vec<Teil> {
     let linie = |k: &Kontur| -> Linie { k.iter().map(|q| p(q[0], q[1])).collect() };
     let mut teile: Vec<Teil> = ergebnis
         .iter()

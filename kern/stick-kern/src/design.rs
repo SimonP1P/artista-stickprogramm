@@ -11,7 +11,9 @@ use crate::geometrie::{
 };
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
-use crate::schrift::{Alphabet, Buchstabe, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen};
+use crate::schrift::{
+    Alphabet, Buchstabe, SchriftStichart, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen,
+};
 use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte_idx};
 use crate::sticharten::blanket::blanket;
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
@@ -606,6 +608,8 @@ pub struct SatinOptionen {
     pub faktor: Option<f64>,
     /// Kurzstiche (None = Stil)
     pub kurzstiche: Option<bool>,
+    /// Step statt Satin in der Säule (Schrift mit Stichart Step, `sticharten::satin::step_reihen`)
+    pub step: bool,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -661,7 +665,17 @@ fn satin_getrennt(
     } else {
         satin_unterlage(&a, &b, &arten, &e.unterlage)?
     };
-    let deck = satin(&a, &b, &satin_e)?;
+    let deck = if o.step {
+        // Step-Reihen: Abstand, Zugausgleich der Füllung, ohne Kurzstiche
+        let mut se = satin_e.clone();
+        se.auto_spacing = false;
+        se.abstand_fest = e.tatami.abstand;
+        se.zugausgleich = e.tatami.zugausgleich;
+        se.kurzstiche.an = false;
+        crate::sticharten::satin::step_reihen(&satin(&a, &b, &se)?, &e.tatami)
+    } else {
+        satin(&a, &b, &satin_e)?
+    };
     Ok((unter, deck))
 }
 
@@ -1131,6 +1145,7 @@ impl Design {
                             abstand: s.abstand,
                             faktor: s.faktor,
                             kurzstiche: s.kurzstiche,
+                            step: false,
                         },
                     },
                 },
@@ -1345,8 +1360,42 @@ impl Design {
                     });
                 }
             }
-            if !farben.is_empty() || !einzeln.is_empty() {
-                buchstaben.insert(i, TextZusatz { farben, einzeln });
+            // Stichart der Schrift (Handbuch Kap. 20): Alphabete satin | step | muster, Computer-Schriften auch muster
+            let ist_text = matches!(o.art, ObjektArt::Text { .. });
+            let zahl = |k: &str| roh.and_then(|r| r.get(k)).and_then(Value::as_f64);
+            let stichart = match roh.and_then(|r| r.get("stichart")).and_then(Value::as_str) {
+                Some("step") if ist_text => Some(SchriftStichart::Step),
+                Some("muster") => {
+                    let m = roh
+                        .and_then(|r| r.get("muster"))
+                        .and_then(Value::as_str)
+                        .ok_or_else(|| {
+                            format!("{wo}: Stichart muster braucht „muster“ (Name oder Nummer, stick muster)")
+                        })?;
+                    if crate::muster::finden(m).is_none() {
+                        return Err(format!("{wo}: Füllmuster „{m}“ unbekannt (stick muster)"));
+                    }
+                    Some(SchriftStichart::Muster {
+                        muster: m.to_string(),
+                        winkel: zahl("winkel"),
+                        groesse: zahl("groesse").unwrap_or(100.0),
+                    })
+                }
+                None | Some("satin") if ist_text => None,
+                Some(x) if ist_text => {
+                    return Err(format!("{wo}: Stichart „{x}“ unbekannt (satin, step, muster)"));
+                }
+                _ => None,
+            };
+            if !farben.is_empty() || !einzeln.is_empty() || stichart.is_some() {
+                buchstaben.insert(
+                    i,
+                    TextZusatz {
+                        farben,
+                        einzeln,
+                        stichart,
+                    },
+                );
             }
         }
         Ok(Design {

@@ -140,6 +140,7 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                     abstand: Some(v.heft_abstand),
                     faktor: None,
                     kurzstiche: Some(false),
+                    step: false,
                 },
             },
         });
@@ -168,6 +169,7 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                     abstand: v.abstand,
                     faktor: None,
                     kurzstiche: None,
+                    step: false,
                 },
             }
         };

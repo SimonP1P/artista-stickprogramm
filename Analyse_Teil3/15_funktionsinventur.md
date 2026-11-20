@@ -60,7 +60,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Kursiv, Fett | ✅ | Kursiv ±45° (20.11.); Fett = Zugausgleich 0,4–0,6 mm laut Handbuch |
 | Grundlinien: waagrecht, senkrecht, **Kreis/Bogen**, mehrere, eigene Kurve | ✅ | 20.11.: alle Arten des Dialogs „Layout“ (Kreis CW/CCW, Oval, Tilt, Arc Angle, Above/Through/Below, gerade mit Winkel/Länge, senkrecht, Any Shape, Multiple), Ausrichtung Full |
 | Abstand/Position/Form einzelner Buchstaben, Farbe je Buchstabe | 🟡 | 20.11.: Farbe (`^`, je Buchstabe), verschieben/drehen/skalieren ✅; Umriss umformen ⬜ |
-| Stichart je Schrift (Satin/Step/Fancy), Stichwinkel je Buchstabe | ⬜ | Kap. 20 |
+| Stichart je Schrift (Satin/Step/Fancy), Stichwinkel je Buchstabe | 🟡 | 20.11.: `stichart` satin/step/muster ✅ (alle 56 Schriftobjekte mit Stichen in den Musterdesigns sind Satin – Step/Fancy nicht messbar, Verteilung eigene Festlegung); Stichwinkel je Buchstabe ⬜ |
 | Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | 🟡 | Unterlage aus: `"unterlage": []` (Handbuch: Anwender schaltet ab); Auto Jump ⬜ (nur bei Satinstichen > 12,7 mm wirksam) |
 | Elastic Lettering (Verzerren: Bogen, Welle …) | ⬜ | Kap. 21 |
 | Monogramme | ⬜ | Kap. 21 |

@@ -663,6 +663,107 @@ pub struct TextZusatz {
     /// Farben nach dem 1., 2. … `^` im Text (davor gilt `farbe` des Texts) – im Original „the next color in the palette“
     pub farben: Vec<String>,
     pub einzeln: Vec<Buchstabe>,
+    /// Stichart der Schrift (None = wie die Buchstaben des Alphabets, meist Satin)
+    pub stichart: Option<SchriftStichart>,
+}
+
+/// Stichart einer Schrift (Handbuch Kap. 20 „Applying different stitch types to lettering objects“: Standard Satin,
+/// auch Step oder Fancy).
+#[derive(Clone, Debug, PartialEq)]
+pub enum SchriftStichart {
+    /// Step: die Satinsäulen werden mit Step-Reihen gefüllt, die den Stichwinkeln folgen (`step_reihen`)
+    Step,
+    /// Fancy: Füllmuster (`muster.rs`) über die ganze Fläche jedes Buchstabens; `winkel` = Drehung des Musters
+    /// („Adjust the angle of the stitches by entering a rotation angle“). Fläche = Vereinigung der Säulen –
+    /// **eigene Festlegung** (nicht gemessen).
+    Muster {
+        muster: String,
+        winkel: Option<f64>,
+        groesse: f64,
+    },
+}
+
+/// Stichart auf einen Buchstaben (Gruppe) anwenden.
+fn stichart_anwenden(o: Objekt, st: &SchriftStichart) -> Objekt {
+    let Objekt { farbe, name, art } = o;
+    let ObjektArt::Gruppe {
+        teile,
+        umrisse,
+        laufweg,
+    } = art
+    else {
+        return Objekt { farbe, name, art };
+    };
+    let (teile, umrisse) = match st {
+        SchriftStichart::Step => (
+            teile
+                .into_iter()
+                .map(|mut t| {
+                    if let ObjektArt::Satin { optionen, .. } = &mut t.art {
+                        optionen.step = true;
+                    }
+                    t
+                })
+                .collect(),
+            umrisse,
+        ),
+        SchriftStichart::Muster {
+            muster,
+            winkel,
+            groesse,
+        } => {
+            let mut flaechen = Vec::new();
+            let (mut neu, mut neu_umrisse) = (Vec::new(), Vec::new());
+            for (i, t) in teile.into_iter().enumerate() {
+                match &t.art {
+                    ObjektArt::Satin { .. } => {
+                        if let Some(u) = umrisse.get(i).filter(|u| u.len() >= 3) {
+                            flaechen.push(crate::aussparen::ring_kontur(u));
+                        } else {
+                            flaechen.extend(crate::aussparen::bedeckt(&t.art, 0.0));
+                        }
+                    }
+                    ObjektArt::Tatami { .. } | ObjektArt::Musterfuellung { .. } => {
+                        flaechen.extend(crate::aussparen::bedeckt(&t.art, 0.0));
+                    }
+                    _ => {
+                        neu_umrisse.push(umrisse.get(i).cloned().unwrap_or_default());
+                        neu.push(t);
+                    }
+                }
+            }
+            let mut teile: Vec<Objekt> = Vec::new();
+            let mut ringe: Vec<Linie> = Vec::new();
+            for (umriss, loecher) in crate::aussparen::vereinigen(&flaechen) {
+                ringe.push(umriss.clone());
+                teile.push(Objekt {
+                    farbe: farbe.clone(),
+                    name: name.clone(),
+                    art: ObjektArt::Musterfuellung {
+                        umriss,
+                        loecher,
+                        muster: muster.clone(),
+                        winkel: *winkel,
+                        groesse: *groesse,
+                        unterlage: None,
+                        aussparen: Default::default(),
+                    },
+                });
+            }
+            teile.extend(neu);
+            ringe.extend(neu_umrisse);
+            (teile, ringe)
+        }
+    };
+    Objekt {
+        farbe,
+        name,
+        art: ObjektArt::Gruppe {
+            teile,
+            umrisse,
+            laufweg,
+        },
+    }
 }
 
 /// Ein einzelner Buchstabe (Reshape Object: verschieben/umformen; „Recoloring letters“).
@@ -790,6 +891,9 @@ pub fn text_setzen(
                         o = crate::transformation::abbilden(&o, &m, winkel_standard);
                     }
                 }
+                if let Some(st) = &zs.stichart {
+                    o = stichart_anwenden(o, st);
+                }
             }
             out.push(o);
         }
@@ -852,6 +956,7 @@ fn satin_optionen(abstand: Option<f64>, auto_spacing: bool) -> SatinOptionen {
         abstand: if auto_spacing { None } else { abstand },
         faktor: Some(SCHRIFT_FAKTOR),
         kurzstiche: Some(true),
+        step: false,
     }
 }
 
@@ -1086,7 +1191,8 @@ mod tests {
             SatinOptionen {
                 abstand: None,
                 faktor: Some(0.9),
-                kurzstiche: Some(true)
+                kurzstiche: Some(true),
+                step: false
             }
         );
         // Maßstab 25/50 = 0,5: Säule 5 mm lang; zweites I beginnt bei −10 + 5 + 2,5 (10 % von 25 mm)
@@ -1298,6 +1404,7 @@ mod tests {
     fn farbwechsel_und_einzelne_buchstaben() {
         let zs = TextZusatz {
             farben: vec!["#ff0000".into()],
+            stichart: None,
             einzeln: vec![Buchstabe {
                 nr: 3,
                 farbe: Some("#0000ff".into()),
@@ -1416,5 +1523,58 @@ mod tests {
             huelle(&o[2])
         );
         assert!(g.pruefen("a\nb\nc\nd").is_err());
+    }
+
+    /// Stichart der Schrift: Step setzt die Säulen auf Step; Muster vereinigt die Säulen zu einer Musterfüllung
+    #[test]
+    fn stichart_der_schrift() {
+        let saeule = |a: Linie, b: Linie| Objekt {
+            farbe: "#000000".into(),
+            name: "T".into(),
+            art: ObjektArt::Satin {
+                seite_a: a,
+                seite_b: b,
+                unterlage: Unterlage::Arten(vec![]),
+                optionen: satin_optionen(None, true),
+            },
+        };
+        let rechteck = |x0: f64, y0: f64, x1: f64, y1: f64| vec![p(x0, y0), p(x1, y0), p(x1, y1), p(x0, y1)];
+        // „T“: Stamm 2 × 10 mm, Balken 6 × 2 mm oben, überlappen sich 2 × 2 mm
+        let t = Objekt {
+            farbe: "#000000".into(),
+            name: "T".into(),
+            art: ObjektArt::Gruppe {
+                teile: vec![
+                    saeule(vec![p(0.0, 0.0), p(0.0, 10.0)], vec![p(2.0, 0.0), p(2.0, 10.0)]),
+                    saeule(vec![p(-2.0, 8.0), p(4.0, 8.0)], vec![p(-2.0, 10.0), p(4.0, 10.0)]),
+                ],
+                umrisse: vec![rechteck(0.0, 0.0, 2.0, 10.0), rechteck(-2.0, 8.0, 4.0, 10.0)],
+                laufweg: 3.0,
+            },
+        };
+        let ObjektArt::Gruppe { teile, .. } = stichart_anwenden(t.clone(), &SchriftStichart::Step).art else {
+            panic!()
+        };
+        assert!(
+            teile
+                .iter()
+                .all(|t| matches!(&t.art, ObjektArt::Satin { optionen, .. } if optionen.step))
+        );
+        let m = SchriftStichart::Muster {
+            muster: "001 Diamond (90)".into(),
+            winkel: Some(30.0),
+            groesse: 100.0,
+        };
+        let ObjektArt::Gruppe { teile, umrisse, .. } = stichart_anwenden(t, &m).art else {
+            panic!()
+        };
+        assert_eq!(teile.len(), 1);
+        assert_eq!(umrisse.len(), 1);
+        let ObjektArt::Musterfuellung { umriss, winkel, .. } = &teile[0].art else {
+            panic!()
+        };
+        assert_eq!(*winkel, Some(30.0));
+        let f = crate::geometrie::flaeche_vorzeichen(umriss).abs();
+        assert!((f - 28.0).abs() < 1e-6, "{f}");
     }
 }

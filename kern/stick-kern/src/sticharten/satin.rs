@@ -4,11 +4,45 @@
 //! Punkt i von B (Stichrichtungs-Linie). Haben A und B verschieden viele Punkte, werden sie über die
 //! relative Bogenlänge einander zugeordnet.
 
-use crate::einstellungen::SatinEinstellung;
+use crate::einstellungen::{SatinEinstellung, TatamiEinstellung};
 use crate::geometrie::{
     Linie, Punkt, abstand, abstand_punkt_strecke, kumuliert, ohne_doppelte, punkt_bei, richtung, versatz_linie,
     verschieben, zwischen,
 };
+
+/// Step (Tatami) in einer Säule – Schrift mit Stichart Step (Handbuch Kap. 20 „Adjusting Step stitch settings for
+/// lettering objects“: Abstand, Länge, Step-Muster). `reihen` = Einstiche einer Satinsäule (abwechselnd Seite A, B),
+/// berechnet mit dem Step-Abstand (AMT 0x2716, Weg zwischen zwei Hinreihen – jede Reihe rückt um den halben Abstand
+/// vor wie beim Satin); jede Reihe wird in Stiche der Step-Länge (0x2717) geteilt, das Raster je Reihe um den
+/// Reihenversatz (0x2719) verschoben, Mindeststich am Rand 0x2718 – wie `tatami`. Die Reihen folgen damit den
+/// Stichwinkeln der Buchstaben (Handbuch: „Stitches are regenerated with the new angles“). Raster von Seite A aus
+/// gemessen: **eigene Festlegung** (keine Schrift mit Step in den Musterdesigns, `Analyse_Teil3/15`).
+pub fn step_reihen(reihen: &[Punkt], e: &TatamiEinstellung) -> Linie {
+    let mut out: Linie = reihen.iter().take(1).copied().collect();
+    let l = e.laenge;
+    for (k, w) in reihen.windows(2).enumerate() {
+        // gerade Reihen von A nach B, ungerade von B nach A; das Raster zählt immer von A aus
+        let (a, b) = if k % 2 == 0 { (w[0], w[1]) } else { (w[1], w[0]) };
+        let d = abstand(a, b);
+        let phase = ((k as f64 * e.versatz) % 1.0) * l;
+        let mut xs = Vec::new();
+        let mut m = ((e.min_rand - phase) / l).ceil() as i64;
+        loop {
+            let x = phase + m as f64 * l;
+            if x > d - e.min_rand {
+                break;
+            }
+            xs.push(x);
+            m += 1;
+        }
+        if k % 2 == 1 {
+            xs.reverse();
+        }
+        out.extend(xs.into_iter().map(|x| zwischen(a, b, x / d)));
+        out.push(w[1]);
+    }
+    out
+}
 
 /// Wie Pythons `round(t, 9)` für die Zuordnung der Punkte.
 fn runden9(t: f64) -> f64 {
@@ -296,5 +330,21 @@ mod tests {
         let (pa, pb) = paare_bilden(&a, &b).unwrap();
         assert_eq!((pa.len(), pb.len()), (3, 3));
         assert!((pb[1].x - 5.0).abs() < 1e-9 && (pb[1].y + 1.0).abs() < 1e-9);
+    }
+
+    /// Step in der Säule: Reihen in Stiche ≤ Step-Länge (am Rand + Mindeststich) geteilt, Raster je Reihe um ¼ Länge versetzt (von A gemessen)
+    #[test]
+    fn step_in_der_saeule() {
+        let e = crate::einstellungen::TatamiEinstellung::default();
+        let reihen: Linie = (0..6)
+            .map(|i| p(if i % 2 == 0 { 0.0 } else { 10.0 }, i as f64 * 0.2))
+            .collect();
+        let st = step_reihen(&reihen, &e);
+        for w in st.windows(2) {
+            assert!(abstand(w[0], w[1]) <= e.laenge + e.min_rand);
+        }
+        let xs: Vec<f64> = st.iter().take(11).map(|q| q.x).collect();
+        let soll = [0.0, 4.0, 8.0, 10.0, 9.0, 5.0, 1.0, 0.0, 2.0, 6.0, 10.0];
+        assert!(xs.iter().zip(soll).all(|(a, b)| (a - b).abs() < 0.01), "{xs:?}");
     }
 }
