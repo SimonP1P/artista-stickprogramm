@@ -230,6 +230,7 @@ mod tests {
             wortabstand: None,
             zeilenabstand: None,
             grundlinie: None,
+            kursiv: 0.0,
         }
     }
 

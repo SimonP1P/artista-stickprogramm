@@ -276,6 +276,8 @@ pub struct TextVorgabe {
     pub zeilenabstand: Option<f64>,
     /// Grundlinie: None = gerade; Kreis (Lettering-Dialog „Baseline“, Handbuch Kap. 19)
     pub grundlinie: Option<Grundlinie>,
+    /// Kursiv: Neigung in Grad, −45 … 45, positiv nach rechts (Handbuch Kap. 18 „Italic“, Vorlage 0x3e8a = 0)
+    pub kursiv: f64,
 }
 
 /// Kreis-Grundlinie (Handbuch Kap. 19 „create circle baselines“; Dialog Baseline: Radius X/Y, Justif. Angle,
@@ -378,6 +380,26 @@ impl TextVorgabe {
                 position: p(self.position.x, self.position.y - i as f64 * schritt),
                 ..self.clone()
             })
+            .collect()
+    }
+
+    /// Kursiv: Buchstaben der (gerade gesetzten) Zeile um ihre Grundlinie neigen.
+    pub fn neigen(&self, objekte: Vec<Objekt>, winkel_standard: f64) -> Vec<Objekt> {
+        if self.kursiv == 0.0 {
+            return objekte;
+        }
+        let k = self.kursiv.to_radians().tan();
+        let m = crate::transformation::Matrix {
+            a: 1.0,
+            b: k,
+            c: 0.0,
+            d: 1.0,
+            e: -k * self.position.y,
+            f: 0.0,
+        };
+        objekte
+            .iter()
+            .map(|o| crate::transformation::abbilden(o, &m, winkel_standard))
             .collect()
     }
 
@@ -606,6 +628,7 @@ mod tests {
             wortabstand: None,
             zeilenabstand: None,
             grundlinie: None,
+            kursiv: 0.0,
         };
         let (obj, fehlend) = text_objekte(&alpha, &v);
         assert_eq!(fehlend, vec!['?']);
@@ -671,6 +694,7 @@ mod tests {
             wortabstand: None,
             zeilenabstand: None,
             grundlinie: None,
+            kursiv: 0.0,
         };
         let z = v.zeilen();
         assert_eq!(
@@ -687,5 +711,43 @@ mod tests {
         };
         assert_eq!(eng.zeilen()[1].position, p(5.0, 10.0));
         assert!((eng.wort() - 5.0).abs() < 1e-9);
+    }
+
+    /// Kursiv 45°: ein Punkt 5 mm über der Grundlinie wandert 5 mm nach rechts, die Grundlinie bleibt
+    #[test]
+    fn kursiv_um_die_grundlinie() {
+        let o = Objekt {
+            farbe: "#000000".into(),
+            name: "I".into(),
+            art: ObjektArt::Lauf {
+                punkte: vec![p(0.0, 2.0), p(0.0, 7.0)],
+                ecken: vec![true, true],
+                laenge: None,
+                dreifach: false,
+                geschlossen: false,
+            },
+        };
+        let v = TextVorgabe {
+            text: "I".into(),
+            hoehe: 5.0,
+            breite_prozent: 100.0,
+            abstand: None,
+            position: p(0.0, 2.0),
+            ausrichtung: 0.0,
+            unterlage: None,
+            farbe: "#000000".into(),
+            wortabstand: None,
+            zeilenabstand: None,
+            grundlinie: None,
+            kursiv: 45.0,
+        };
+        let r = v.neigen(vec![o], 45.0);
+        let ObjektArt::Lauf { punkte, .. } = &r[0].art else {
+            panic!()
+        };
+        assert!(
+            punkte[0].x.abs() < 1e-9 && (punkte[1].x - 5.0).abs() < 1e-9,
+            "{punkte:?}"
+        );
     }
 }

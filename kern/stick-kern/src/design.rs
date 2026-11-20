@@ -213,6 +213,9 @@ struct TextJson {
     zeilenabstand: Option<f64>,
     /// Kreis-Grundlinie (`position` = Kreismitte)
     grundlinie: Option<crate::schrift::Grundlinie>,
+    /// Kursiv in Grad (−45 … 45)
+    #[serde(default)]
+    kursiv: f64,
     /// Bezugspunkt auf der Grundlinie
     #[serde(default)]
     position: Option<Punkt>,
@@ -248,6 +251,9 @@ struct TtfJson {
     zeilenabstand: Option<f64>,
     /// Kreis-Grundlinie (`position` = Kreismitte)
     grundlinie: Option<crate::schrift::Grundlinie>,
+    /// Kursiv in Grad (−45 … 45)
+    #[serde(default)]
+    kursiv: f64,
     #[serde(default)]
     position: Option<Punkt>,
     #[serde(default = "mitte")]
@@ -1079,6 +1085,7 @@ impl Design {
                             wortabstand: t.wortabstand.map(|w| w / 100.0),
                             zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
                             grundlinie: t.grundlinie,
+                            kursiv: t.kursiv,
                             unterlage: match Unterlage::from(t.unterlage) {
                                 Unterlage::Auto => None,
                                 Unterlage::Arten(l) => Some(l),
@@ -1141,6 +1148,7 @@ impl Design {
                             wortabstand: t.wortabstand.map(|w| w / 100.0),
                             zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
                             grundlinie: t.grundlinie,
+                            kursiv: t.kursiv,
                             unterlage: None,
                         },
                         stichart: match t.stichart.as_str() {
@@ -1201,6 +1209,11 @@ impl Design {
                 && let Some(g) = &vorgabe.grundlinie
             {
                 g.pruefen()?;
+            }
+            if let ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. } = &o.art
+                && vorgabe.kursiv.abs() > 45.0
+            {
+                return Err(format!("Kursiv {}° – höchstens 45° (Handbuch)", vorgabe.kursiv));
             }
         }
         let transform_lesen = |t: &Value, wo: &str| -> Result<Transformation, String> {
@@ -1281,6 +1294,7 @@ impl Design {
                         .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
                     for z in vorgabe.zeilen() {
                         let (obj, f) = text_objekte(a, &z);
+                        let obj = z.neigen(obj, self.einstellungen.tatami.winkel);
                         let obj = match &vorgabe.grundlinie {
                             Some(g) => g.anwenden(obj, &z, vorgabe.position, self.einstellungen.tatami.winkel),
                             None => obj,
@@ -1306,6 +1320,7 @@ impl Design {
                         .ok_or_else(|| format!("Schrift „{schrift}“ nicht geladen"))?;
                     for z in vorgabe.zeilen() {
                         let (obj, f) = ttf_text_objekte(s, &z, stichart);
+                        let obj = z.neigen(obj, self.einstellungen.tatami.winkel);
                         let obj = match &vorgabe.grundlinie {
                             Some(g) => g.anwenden(obj, &z, vorgabe.position, self.einstellungen.tatami.winkel),
                             None => obj,

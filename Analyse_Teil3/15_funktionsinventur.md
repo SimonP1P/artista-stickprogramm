@@ -57,11 +57,11 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Unterlagen zuerst je Säulengruppe | ✅ | Bericht 11 |
 | Säulenreihenfolge/Start/Ende wie Original | 🟡 | Analyse läuft (Bericht 11 §4) |
 | Mehrere Zeilen, Zeilenabstand, Leerzeichenbreite | ✅ | Vorlage 0x3e82 (20.11.) |
-| Kursiv, Fett | ⬜ | |
+| Kursiv, Fett | ✅ | Kursiv ±45° (20.11.); Fett = Zugausgleich 0,4–0,6 mm laut Handbuch |
 | Grundlinien: waagrecht, senkrecht, **Kreis/Bogen**, mehrere, eigene Kurve | 🟡 | Kreis oben/unten ✅ (20.11.); senkrecht, Ellipse, eigene Kurve ⬜ |
 | Abstand/Position/Form einzelner Buchstaben, Farbe je Buchstabe | ⬜ | Kap. 19 |
 | Stichart je Schrift (Satin/Step/Fancy), Stichwinkel je Buchstabe | ⬜ | Kap. 20 |
-| Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | ⬜ | Kap. 20, Stil |
+| Auto Jump bei Schrift aus, Unterlage bei kleiner Schrift aus | 🟡 | Unterlage aus: `"unterlage": []` (Handbuch: Anwender schaltet ab); Auto Jump ⬜ (nur bei Satinstichen > 12,7 mm wirksam) |
 | Elastic Lettering (Verzerren: Bogen, Welle …) | ⬜ | Kap. 21 |
 | Monogramme | ⬜ | Kap. 21 |
 | Symbole/Zeichentabelle | 🟡 | Zeichen der Alphabete; Auswahl 🖥 |

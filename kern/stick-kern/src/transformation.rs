@@ -400,6 +400,7 @@ mod tests {
             wortabstand: None,
             zeilenabstand: None,
             grundlinie: None,
+            kursiv: 0.0,
         };
         let g = Grundlinie {
             art: "kreis".into(),
