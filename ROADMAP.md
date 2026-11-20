@@ -26,7 +26,7 @@ eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Ic
 2. Phase 5: ✅ **„Senden“ direkt aus dem Programm** (20.11.: `stick-maschine`, Oberfläche Schritt 4; am Gerät lesend
    erprobt, Schreiben aus dem Programm → „Vor Ort“ V1); ✅ Garnfarbkarten; ✅ Designs aus der Maschine öffnen.
    Weiter: Design mit der Maus anpassen, Garn je Farbe wählen, Mac-Programm,
-3. Phase 4 weiter: Schrift-Reihenfolge, Kurzstiche bei Tatami, Auto-Split …
+3. Phase 4 weiter: ✅ Schrift „Unterlagen zuerst“ (20.11.); weiter Auto Jump bei Schrift, Kurzstiche bei Tatami, Auto-Split …
 
 ## Vor Ort – wartet auf eine Person an der Maschine (Stand 20.11.2026)
 Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rahmen/Stoff, Start-Taste, Aus/Ein).
@@ -88,8 +88,9 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 - ✅ Kurzstiche bei Satin (MOD1 `ShortStitchesEffect`)
 
 **Offen, in dieser Reihenfolge:**
-1. ⬜ Schrift: erst alle Unterlagen eines Buchstabens, dann die Säulen; Reihenfolge, Start und Ende der Säulen wie
-   das Original („Closest Join“ / „As Digitized“)
+1. 🟡 Schrift: ✅ 20.11.2026 erst alle Unterlagen einer Säulengruppe (rückwärts), dann die Säulen – gemessen an den
+   Schrift-Musterdesigns (`Analyse_Teil3/11`), im Kern umgesetzt · ⬜ Reihenfolge, Start und Ende der Säulen wie das
+   Original („Closest Join“) – braucht Text/Alphabet der LetterText-Objekte
 2. ⬜ Schrift: Auto Jump aus, Breite des Leerzeichens, Zeilenabstand (aus dem Code)
 3. ⬜ Kurzstiche bei Tatami-Flächen; Gruppenbildung (MOD1 0x10186ad0) genau übertragen
 4. ⬜ Unterlagenart für Flächengruppen (`IsUnderlayTypeApplicable`); Satin-Auto-Split ab 10 mm

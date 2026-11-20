@@ -4,7 +4,9 @@
 //! Ursprung = Rahmenmitte, +y nach oben. Statt Punktlisten gehen Formen (kreis, rechteck, bogen, bezier, verbinden).
 
 use crate::einstellungen::{Einstellungen, SatinEinstellung, fuer_stoff};
-use crate::geometrie::{Linie, Punkt, abstand, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen};
+use crate::geometrie::{
+    Linie, Punkt, abstand, abstand_punkt_strecke, bezier, bogen, im_polygon, kreis, p, rechteck, zwischen,
+};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
@@ -342,6 +344,24 @@ fn satin_wege(
     o: &SatinOptionen,
     e: &Einstellungen,
 ) -> Result<Vec<Linie>, String> {
+    let (unter, deck) = satin_getrennt(a, b, unterlage, o, e)?;
+    if unter.is_empty() {
+        Ok(vec![deck])
+    } else {
+        // in einem Zug: Unterlage endet am Säulenanfang
+        Ok(vec![unter.into_iter().chain(deck).collect()])
+    }
+}
+
+/// Satinsäule als (Unterlage, Decklage); die Unterlage endet am Säulenanfang (`Analyse_Teil3/07` §3), leer ohne
+/// Unterlage.
+fn satin_getrennt(
+    a: &[Punkt],
+    b: &[Punkt],
+    unterlage: &Unterlage,
+    o: &SatinOptionen,
+    e: &Einstellungen,
+) -> Result<(Linie, Linie), String> {
     let (a, b) = paare_bilden(a, b)?;
     let mut satin_e: SatinEinstellung = e.satin.clone();
     if let Some(x) = o.abstand {
@@ -364,12 +384,30 @@ fn satin_wege(
         satin_unterlage(&a, &b, &arten, &e.unterlage)?
     };
     let deck = satin(&a, &b, &satin_e)?;
-    if unter.is_empty() {
-        Ok(vec![deck])
-    } else {
-        // in einem Zug: Unterlage endet am Säulenanfang
-        Ok(vec![unter.into_iter().chain(deck).collect()])
-    }
+    Ok((unter, deck))
+}
+
+/// Schneiden sich die Strecken a1–a2 und b1–b2?
+fn strecken_schneiden(a1: Punkt, a2: Punkt, b1: Punkt, b2: Punkt) -> bool {
+    let kreuz = |o: Punkt, a: Punkt, b: Punkt| (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+    let (d1, d2) = (kreuz(b1, b2, a1), kreuz(b1, b2, a2));
+    let (d3, d4) = (kreuz(a1, a2, b1), kreuz(a1, a2, b2));
+    d1 * d2 < 0.0 && d3 * d4 < 0.0
+}
+
+/// Berühren sich zwei Umrisse (überlappen, kreuzen sich oder liegen näher als 0,15 mm)?
+fn umrisse_beruehren(a: &Linie, b: &Linie) -> bool {
+    let ring = |l: &Linie| -> Vec<(Punkt, Punkt)> { (0..l.len()).map(|i| (l[i], l[(i + 1) % l.len()])).collect() };
+    let (ka, kb) = (ring(a), ring(b));
+    a.iter().any(|&q| im_polygon(q, std::slice::from_ref(b)))
+        || b.iter().any(|&q| im_polygon(q, std::slice::from_ref(a)))
+        || ka
+            .iter()
+            .any(|&(a1, a2)| kb.iter().any(|&(b1, b2)| strecken_schneiden(a1, a2, b1, b2)))
+        || a.iter()
+            .any(|&q| kb.iter().any(|&(b1, b2)| abstand_punkt_strecke(q, b1, b2) < 0.15))
+        || b.iter()
+            .any(|&q| ka.iter().any(|&(a1, a2)| abstand_punkt_strecke(q, a1, a2) < 0.15))
 }
 
 /// Teile einer Gruppe (Buchstabe) sticken. Zwischen zwei Teilen ein **Laufweg** (Stichlänge `laufweg`), wenn er
@@ -380,8 +418,12 @@ fn satin_wege(
 /// Die Reihenfolge der Teile wird so gewählt, dass möglichst wenige Sprünge nötig sind, dann möglichst kurze Wege
 /// (bis 7 Teile alle Reihenfolgen, sonst „nächster Anfang“).
 /// Grundlage: Maschinen-Zeichensatz Drifter „A“ – erst der Querbalken, dann Laufweg im linken Bein (etwa auf seiner
-/// Mitte) unter dem späteren Bogen (`Analyse_Teil3/10` §4). Wegführung und Bewertung sind **eigene Festlegungen**; das
-/// Original stickt außerdem zuerst alle Unterlagen eines Buchstabens (offen).
+/// Mitte) unter dem späteren Bogen (`Analyse_Teil3/10` §4). Wegführung und Bewertung sind **eigene Festlegungen**.
+///
+/// **Unterlagen zuerst** (gemessen an den Schrift-Musterdesigns des Originals, `Analyse_Teil3/11`): Teile, deren
+/// Umrisse sich berühren, bilden eine Gruppe; je Gruppe stickt das Original **erst alle Unterlagen, in umgekehrter
+/// Reihenfolge der Säulen**, dann die Säulen in ihrer Reihenfolge (1 Unterlage: 85 von 85 Gruppen vor den Säulen;
+/// mehrere: 43 von 62 genau so, der Rest Messgrenzen). Getrennte Teile (Punkt des „i“) kommen nacheinander.
 fn gruppe_wege(
     teile: &[Objekt],
     umrisse: &[Linie],
@@ -389,13 +431,27 @@ fn gruppe_wege(
     e: &Einstellungen,
     start: Option<Punkt>,
 ) -> Result<Vec<Linie>, String> {
-    // je Teil: Wege, Umriss, Mittellinie (bei Satin)
+    // je Teil: Decklage (Wege), Umriss, Mittellinie (bei Satin); die Unterlage einer Satinsäule getrennt
     let mut stuecke: Vec<(Vec<Linie>, Option<&Linie>, Option<Linie>)> = Vec::new();
+    let mut unterlagen: Vec<Linie> = Vec::new();
     for (i, t) in teile.iter().enumerate() {
-        let w: Vec<Linie> = t.wege(e, None)?.into_iter().filter(|w| !w.is_empty()).collect();
+        let (unter, w) = match &t.art {
+            ObjektArt::Satin {
+                seite_a,
+                seite_b,
+                unterlage,
+                optionen,
+            } => {
+                let (u, d) = satin_getrennt(seite_a, seite_b, unterlage, optionen, e)?;
+                (u, vec![d])
+            }
+            _ => (Vec::new(), t.wege(e, None)?),
+        };
+        let w: Vec<Linie> = w.into_iter().filter(|w| !w.is_empty()).collect();
         if w.is_empty() {
             continue;
         }
+        unterlagen.push(unter);
         let mitte = match &t.art {
             ObjektArt::Satin { seite_a, seite_b, .. } => {
                 paare_bilden(seite_a, seite_b).ok().map(|(a, b)| mittellinie(&a, &b))
@@ -512,29 +568,113 @@ fn gruppe_wege(
         }
     }
 
-    let mut out: Vec<Linie> = Vec::new();
-    let mut rest = alle;
-    let mut vorher: Option<usize> = None;
-    for &j in &reihenfolge {
-        let mut wege = stuecke[j].0.clone();
-        if let Some(i) = vorher
-            && let Some(weg) = laufweg_fuer(i, j, rest)
-            && let Some(letzter) = out.last_mut()
-        {
-            // Laufstiche höchstens `laufweg` lang entlang des Wegs, Eckpunkte des Wegs als Einstiche
-            for s in weg.windows(2) {
-                let schritte = ((abstand(s[0], s[1]) / laufweg.max(0.5)).ceil() as usize).max(1);
-                letzter.extend((1..=schritte).map(|k| zwischen(s[0], s[1], k as f64 / schritte as f64)));
-            }
-            letzter.pop(); // anf[j] kommt mit dem Teil selbst
-            letzter.extend(wege.remove(0));
+    // berührende Teile bilden Gruppen (Union-Find); Gruppen in der Reihenfolge ihres ersten Teils
+    let mut eltern: Vec<usize> = (0..n).collect();
+    fn wurzel(e: &mut [usize], mut k: usize) -> usize {
+        while e[k] != k {
+            e[k] = e[e[k]];
+            k = e[k];
         }
-        out.extend(wege);
-        rest &= !(1 << j);
-        vorher = Some(j);
+        k
+    }
+    for i in 0..n {
+        for j in i + 1..n {
+            if let (Some(a), Some(b)) = (stuecke[i].1, stuecke[j].1)
+                && umrisse_beruehren(a, b)
+            {
+                let (wi, wj) = (wurzel(&mut eltern, i), wurzel(&mut eltern, j));
+                eltern[wj] = wi;
+            }
+        }
+    }
+    let mut gruppen: Vec<Vec<usize>> = Vec::new();
+    let mut gruppe_von: Vec<Option<usize>> = vec![None; n];
+    for &j in &reihenfolge {
+        let w = wurzel(&mut eltern, j);
+        let g = match gruppe_von[w] {
+            Some(g) => g,
+            None => {
+                gruppen.push(Vec::new());
+                gruppe_von[w] = Some(gruppen.len() - 1);
+                gruppen.len() - 1
+            }
+        };
+        gruppen[g].push(j);
+    }
+
+    // Laufweg von `von` nach `nach` (Ziel ist Teil `ziel`), wenn verdeckt von noch ausstehenden Teilen `rest`:
+    // gerade, oder über die Mittellinie des Ziels
+    let laufweg_zu = |von: Punkt, nach: Punkt, ziel: usize, rest: u64| -> Option<Linie> {
+        if masken(von, nach).iter().all(|&m| m & rest != 0) {
+            return Some(vec![von, nach]);
+        }
+        let m = stuecke[ziel].2.as_ref().filter(|m| m.len() >= 2)?;
+        let naechster = |q: Punkt| {
+            (0..m.len())
+                .min_by(|&x, &y| abstand(q, m[x]).total_cmp(&abstand(q, m[y])))
+                .unwrap()
+        };
+        let (k, t) = (naechster(von), naechster(nach));
+        if !masken(von, m[k]).iter().all(|&mk| mk & rest != 0) {
+            return None;
+        }
+        let mut weg: Linie = vec![von];
+        if k <= t {
+            weg.extend(m[k..=t].iter().copied());
+        } else {
+            weg.extend(m[t..=k].iter().rev().copied());
+        }
+        weg.push(nach);
+        Some(weg)
+    };
+    // Stück anhängen: mit Laufweg an den letzten Zug, sonst als neuer Zug (Sprung)
+    let mut out: Vec<Linie> = Vec::new();
+    let anhaengen = |out: &mut Vec<Linie>, stueck: Linie, ziel: usize, rest: u64| {
+        let Some(letzter) = out.last_mut() else {
+            out.push(stueck);
+            return;
+        };
+        let von = *letzter.last().unwrap();
+        if abstand(von, stueck[0]) < 1e-6 {
+            letzter.extend(stueck.into_iter().skip(1));
+            return;
+        }
+        match laufweg_zu(von, stueck[0], ziel, rest) {
+            Some(weg) => {
+                // Laufstiche höchstens `laufweg` lang entlang des Wegs, Eckpunkte des Wegs als Einstiche
+                for s in weg.windows(2) {
+                    let schritte = ((abstand(s[0], s[1]) / laufweg.max(0.5)).ceil() as usize).max(1);
+                    letzter.extend((1..=schritte).map(|k| zwischen(s[0], s[1], k as f64 / schritte as f64)));
+                }
+                letzter.pop(); // der Anfang des Stücks kommt mit dem Stück selbst
+                letzter.extend(stueck);
+            }
+            None => out.push(stueck),
+        }
+    };
+    let mut rest = alle;
+    for g in &gruppen {
+        // erst alle Unterlagen der Gruppe, rückwärts – die letzte endet am Anfang der ersten Säule
+        for &j in g.iter().rev() {
+            if !unterlagen[j].is_empty() {
+                anhaengen(&mut out, unterlagen[j].clone(), j, rest);
+            }
+        }
+        // dann die Decklagen in ihrer Reihenfolge
+        for &j in g {
+            let mut wege = stuecke[j].0.clone().into_iter();
+            if let Some(erster) = wege.next() {
+                anhaengen(&mut out, erster, j, rest);
+            }
+            out.extend(wege);
+            rest &= !(1 << j);
+        }
     }
     // weitere Teile über 63 (kommt bei Buchstaben nicht vor): ohne Laufweg anhängen
-    for (w, _, _) in stuecke.iter().skip(n) {
+    for (k, (w, _, _)) in stuecke.iter().enumerate().skip(n) {
+        if !unterlagen[k].is_empty() {
+            out.push(unterlagen[k].clone());
+        }
         out.extend(w.iter().cloned());
     }
     Ok(out)
@@ -822,5 +962,82 @@ mod tests {
         let wege = gruppe_wege(&[bein, balken], &[u_bein, u_balken], 3.0, &e, Some(p(0.0, 0.0))).unwrap();
         assert_eq!(wege.len(), 1, "ein Zug ohne Sprung");
         assert!(wege[0][0].x > 9.0, "beginnt am Balken");
+    }
+
+    fn mit_unterlage(mut o: Objekt) -> Objekt {
+        if let ObjektArt::Satin { unterlage, .. } = &mut o.art {
+            *unterlage = Unterlage::Arten(vec!["zickzack".into()]);
+        }
+        o
+    }
+
+    fn stelle(wege: &[Linie], q: Punkt) -> usize {
+        let alle: Vec<Punkt> = wege.iter().flatten().copied().collect();
+        alle.iter()
+            .position(|&x| abstand(x, q) < 1e-9)
+            .unwrap_or_else(|| panic!("Punkt {q:?} nicht in den Wegen"))
+    }
+
+    /// wie das Original (Schrift-Musterdesigns, `Analyse_Teil3/11`): berührende Säulen – erst alle Unterlagen
+    /// rückwärts, dann die Säulen; getrennte Teile nacheinander
+    #[test]
+    fn gruppe_unterlagen_zuerst() {
+        let e = fuer_stoff("0 Software Defaults").unwrap();
+        let (bein, u_bein) = saeule(4.0, 0.0, 0.0, 10.0, false);
+        let (balken, u_balken) = saeule(10.0, 1.0, 4.0, 6.0, true);
+        let (bein, balken) = (mit_unterlage(bein), mit_unterlage(balken));
+        let teile = [bein.clone(), balken.clone()];
+        let wege = gruppe_wege(&teile, &[u_bein.clone(), u_balken.clone()], 3.0, &e, Some(p(0.0, 0.0))).unwrap();
+        let getrennt = |o: &Objekt| match &o.art {
+            ObjektArt::Satin {
+                seite_a,
+                seite_b,
+                unterlage,
+                optionen,
+            } => satin_getrennt(seite_a, seite_b, unterlage, optionen, &e).unwrap(),
+            _ => unreachable!(),
+        };
+        let (u1, d1) = getrennt(&balken); // Balken zuerst (wie ohne Unterlage)
+        let (u2, d2) = getrennt(&bein);
+        assert!(!u1.is_empty() && !u2.is_empty());
+        let (iu2, iu1, id1, id2) = (
+            stelle(&wege, u2[0]),
+            stelle(&wege, u1[0]),
+            stelle(&wege, d1[0]),
+            stelle(&wege, d2[1]),
+        );
+        assert!(
+            iu2 < iu1 && iu1 < id1 && id1 < id2,
+            "Folge U2 {iu2}, U1 {iu1}, S1 {id1}, S2 {id2}"
+        );
+        assert_eq!(wege.len(), 1, "Laufwege unter den Säulen, kein Sprung");
+
+        // getrennte Teile (Punkt und Stamm des „i“): je Teil Unterlage, dann Säule
+        let (stamm, u_stamm) = saeule(0.0, 1.0, 0.0, 6.0, false);
+        let (punkt, u_punkt) = saeule(0.0, 1.0, 8.0, 9.5, false);
+        let (stamm, punkt) = (mit_unterlage(stamm), mit_unterlage(punkt));
+        let wege = gruppe_wege(
+            &[stamm.clone(), punkt.clone()],
+            &[u_stamm, u_punkt],
+            3.0,
+            &e,
+            Some(p(0.5, 0.0)),
+        )
+        .unwrap();
+        let (us, ds) = getrennt(&stamm);
+        let (up, dp) = getrennt(&punkt);
+        let (a, b) = (
+            stelle(&wege, us[0]).min(stelle(&wege, up[0])),
+            stelle(&wege, ds[1]).min(stelle(&wege, dp[1])),
+        );
+        assert!(a < b);
+        // die erste Säule folgt direkt auf ihre eigene Unterlage, nicht auf die des anderen Teils
+        let erst_stamm = stelle(&wege, us[0]) < stelle(&wege, up[0]);
+        let (u_erst, d_erst, u_zweit) = if erst_stamm { (&us, &ds, &up) } else { (&up, &dp, &us) };
+        assert!(stelle(&wege, u_erst[0]) < stelle(&wege, d_erst[1]));
+        assert!(
+            stelle(&wege, d_erst[1]) < stelle(&wege, u_zweit[0]),
+            "getrennte Teile nacheinander"
+        );
     }
 }

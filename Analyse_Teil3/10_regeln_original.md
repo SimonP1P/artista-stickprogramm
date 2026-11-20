@@ -66,8 +66,10 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
   Laufweg-Länge im Alphabet: Lauf 0x271c in der Füllung (540 = 3,0 mm). **Kern:** ✅ Buchstabe = Gruppe; Reihenfolge
   mit den wenigsten Sprüngen (bis 7 Teile alle Reihenfolgen), Laufweg gerade oder über die Mittellinie der nächsten
   Säule, nur wenn verdeckt (eigene Festlegung der Wegführung). Ergebnis „A“: wie das Original ohne Sprung.
-- ⬜ Das Original stickt bei Buchstaben **zuerst alle Unterlagen**, dann die Säulen, und ordnet die Säulen anders als im
-  Alphabet (H: linkes Bein, Querbalken, rechtes Bein; im Alphabet Querbalken zuerst).
+- ✅ Das Original stickt je **Gruppe sich berührender Säulen zuerst alle Unterlagen, in umgekehrter Reihenfolge der
+  Säulen**, dann die Säulen (Schrift-Musterdesigns: 1 Unterlage 85/85, mehrere 43/62, Rest Messgrenzen – Bericht 11).
+  **Kern:** ✅ `gruppe_wege`. ⬜ Säulenreihenfolge selbst wie das Original (H: linkes Bein, Querbalken, rechtes Bein;
+  im Alphabet Querbalken zuerst) – Kern wählt die Folge mit den wenigsten Sprüngen.
 
 ## 5. Satin — Sicherheit: hoch
 | Regel | Beleg | Kern |
@@ -101,7 +103,8 @@ Auto-Spacing-Tabelle 1,06), ohne Zugausgleich und mit eigener Unterlagenwahl ges
 nimmt Auto Spacing × 0,9 und Zickzack. ✅ / offen: Unterlagen-zuerst-Reihenfolge, Leerzeichen, Auto Jump aus.
 
 ## 9. Offene Regeln (Reihenfolge der Bearbeitung)
-1. Buchstaben: erst alle Unterlagen, dann Säulen; Säulenreihenfolge und Start/Ende wie das Original („closest join“).
+1. Buchstaben: ✅ erst alle Unterlagen (rückwärts), dann Säulen (Bericht 11); ⬜ Säulenreihenfolge und Start/Ende wie das
+   Original („closest join“) – braucht Text/Alphabet der LetterText-Objekte.
 2. Kurzstiche bei Tatami/Füllflächen messen und umsetzen; Gruppenbildung 0x10186ad0 genau übertragen.
 3. Unterlagenart für Flächengruppen nach `IsUnderlayTypeApplicable`; Auto-Split für breite Satinsäulen.
 4. Auto Jump je Stil (Schrift aus); Leerzeichen und Zeilenabstand der Schrift aus dem Code.
