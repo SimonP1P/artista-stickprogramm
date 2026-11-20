@@ -135,7 +135,8 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 Alle Funktionen des Originals (37 Handbuchkapitel, Werkzeuge, Sticharten) gegen den Kern abgeglichen. Reihenfolge =
 Arbeitsreihenfolge (erst, was jede Oberfläche braucht, dann Schrift, dann weitere Sticharten und Effekte). Werte und
 Abläufe jeweils aus dem Original (Vorlage, Stile, Code, Messung), sonst als eigene Festlegung markiert.
-Wenn alles erledigt ist: Parameterkatalog (Merkliste M1).
+Parameterkatalog (Merkliste M1) seit 20.11. angelegt (`PARAMETER.md`) und mit jeder Funktion ergänzt; wenn alles erledigt ist,
+dem Nutzer zur Abstimmung vorlegen.
 
 | # | Block | Inhalt | Stand |
 |---|---|---|---|
@@ -146,7 +147,7 @@ Wenn alles erledigt ist: Parameterkatalog (Merkliste M1).
 | 4b.5 | **Reihenfolge** | nach Farbe, an Anfang/Ende, automatisch – mit Prüfung, ob sich Objekte überdecken (Kap. 14); Ein-/Ausstich je Objekt setzbar | ⬜ |
 | 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ⬜ |
 | 4b.7 | **Motive** | Pattern Run (Motivlinie), Pattern Fill (Motivfüllung), eigene Muster/Sets (Kap. 25) | ⬜ |
-| 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | ⬜ |
+| 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | 🟡 Loft ✅ (= Auto Jump mit kleinem Höchststich, Handbuch) · Rest ⬜ |
 | 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ⬜ |
 | 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ⬜ |
 | 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 |
@@ -154,6 +155,7 @@ Wenn alles erledigt ist: Parameterkatalog (Merkliste M1).
 | 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ⬜ |
 | 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ⬜ |
 | 4b.15 | **Kreuzstich** | eigenes Modul (Kap. 34–37) | ⬜ |
+| 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ⬜ |
 Nicht nötig: Designkarte/Magic Box, Scanner, Quilter (eigenes Programm), nur in Strings vorhandene Sticharten (Coil,
 Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau, Druck, Portfolio) → neue Oberfläche.
 

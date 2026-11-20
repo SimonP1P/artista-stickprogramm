@@ -133,5 +133,5 @@ in der Roadmap stehen.
 | 1 Prototyp | Stichberechnung in Python, Referenz für den Rust-Kern | ✅ (`stickprogramm/`) |
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
-| 4 Sticharten nach dem Original | Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift mit Original-Alphabeten, Kurzstiche ✅; offen: Schrift-Reihenfolge, Tatami-Kurzstiche, Auto-Split, Fancy, Applikation, TTF, Vektorisierung, Knockout | 🟡 (`ROADMAP.md`, `Analyse_Teil3/10`) |
+| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen ✅; Parameterkatalog angelegt; offen 4b.5–4b.16 | 🟡 (`ROADMAP.md` Phase 4b) |
 | 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
