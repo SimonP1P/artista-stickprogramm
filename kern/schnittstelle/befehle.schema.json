@@ -1,0 +1,4697 @@
+{
+  "$defs": {
+    "Abdeckung": {
+      "description": "Abdeckstich der Applikation",
+      "oneOf": [
+        {
+          "const": "satin",
+          "description": "Satin mit Heftstich (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "blanket",
+          "description": "Blanket (Langette) ohne Heftstich",
+          "type": "string"
+        }
+      ]
+    },
+    "AlphabetInfo": {
+      "description": "Original-Alphabet (ESB-Datei).",
+      "properties": {
+        "datei": {
+          "type": "string"
+        },
+        "name": {
+          "description": "Name wie im Design-Feld `alphabet`",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "datei"
+      ],
+      "type": "object"
+    },
+    "ApplikationJson": {
+      "description": "Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`).",
+      "properties": {
+        "abdeckung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Abdeckung"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "abstand": {
+          "description": "fester Satinabstand des Abdeckstichs in mm",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "description": "Breite des Abdeck-Satins in mm (Standard 2,5)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "heft_abstand": {
+          "description": "Abstand des Heftstichs in mm",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "heft_breite": {
+          "description": "Breite des Heftstichs in mm",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "platz_laenge": {
+          "description": "Stichlänge der Platzierungslinie in mm",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stil": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ApplikationStil"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umriss": {
+          "$ref": "#/$defs/PunktAngabe"
+        }
+      },
+      "required": [
+        "umriss"
+      ],
+      "type": "object"
+    },
+    "ApplikationStil": {
+      "description": "Arbeitsweise der Applikation",
+      "oneOf": [
+        {
+          "const": "vorgeschnitten",
+          "description": "Stoff vorgeschnitten („Pre-cut“, Standard)",
+          "type": "string"
+        },
+        {
+          "const": "zuschneiden",
+          "description": "im Rahmen zuschneiden („Trim in Place“, mit Schnittlinie)",
+          "type": "string"
+        }
+      ]
+    },
+    "Art": {
+      "oneOf": [
+        {
+          "const": "stich",
+          "description": "Nadel sticht an (x, y) ein",
+          "type": "string"
+        },
+        {
+          "const": "sprung",
+          "description": "Rahmen fährt nach (x, y), ohne einzustechen",
+          "type": "string"
+        },
+        {
+          "const": "farbwechsel",
+          "description": "Maschine hält an, nächste Farbe; (x, y) = aktuelle Position",
+          "type": "string"
+        }
+      ]
+    },
+    "Ausrichtung": {
+      "description": "Ausrichtung eines Texts",
+      "oneOf": [
+        {
+          "enum": [
+            "links",
+            "rechts"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "mitte",
+          "description": "Standard",
+          "type": "string"
+        },
+        {
+          "const": "block",
+          "description": "Blocksatz („Full“): nur mit Grundlinie fester Länge (kurve, gerade mit laenge, kreis mit bogen)",
+          "type": "string"
+        }
+      ]
+    },
+    "AutoJumpJson": {
+      "anyOf": [
+        {
+          "description": "an (Standardwerte 12,7 / 7,0 mm) oder aus (lange Stiche werden geteilt)",
+          "type": "boolean"
+        },
+        {
+          "$ref": "#/$defs/AutoJumpWerte",
+          "description": "an mit eigenen Werten (kleiner Höchststich = Satin „mit mehr Loft“)"
+        }
+      ],
+      "description": "Auto Jump eines Objekts: `true`/`false` oder Werte in mm."
+    },
+    "AutoJumpWerte": {
+      "additionalProperties": false,
+      "properties": {
+        "max": {
+          "description": "Höchststich in mm, 0,3 … 12,7 (Standard 12,7); länger = Sprung",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sprung": {
+          "description": "Länge der Sprünge in mm, 0,3 … 12,7 (Standard 7,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "BildEingabe": {
+      "additionalProperties": false,
+      "description": "Bild in Stickflächen umwandeln (eigene Festlegung, Auto Digitizer des Originals nicht nachgebaut).",
+      "properties": {
+        "breite": {
+          "default": null,
+          "description": "Breite des Ergebnisses in mm (Standard 80)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "farben": {
+          "default": null,
+          "description": "Zahl der Farben (Standard 6)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "glaettung": {
+          "default": null,
+          "description": "Glättung in mm (Standard 0,2)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "min_flaeche": {
+          "default": null,
+          "description": "kleinste Fläche in mm² (Standard 4)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mit_hintergrund": {
+          "default": false,
+          "description": "Hintergrund mitsticken",
+          "type": "boolean"
+        },
+        "pfad": {
+          "description": "Bilddatei (PNG, JPG, BMP …)",
+          "type": "string"
+        },
+        "rahmen": {
+          "default": null,
+          "description": "Rahmen des neuen Designs",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "pfad"
+      ],
+      "type": "object"
+    },
+    "BildErgebnis": {
+      "description": "Ergebnis der Bildumwandlung.",
+      "properties": {
+        "breite_px": {
+          "description": "Bildgröße in Punkten",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "neues Design (Tatami-Flächen nach Farben)"
+        },
+        "farben": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "flaechen": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hoehe_px": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "design",
+        "flaechen",
+        "farben",
+        "breite_px",
+        "hoehe_px"
+      ],
+      "type": "object"
+    },
+    "BlanketJson": {
+      "description": "Blanket (Langettenstich, 0x2727) entlang einer Linie.",
+      "properties": {
+        "abstand": {
+          "description": "Abstand der Zähne in mm (Vorlage 2,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "description": "Breite in mm (Vorlage 3,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "geschlossen": {
+          "default": false,
+          "type": "boolean"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "punkte": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "versatz": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Versatz"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "punkte"
+      ],
+      "type": "object"
+    },
+    "BuchstabeJson": {
+      "additionalProperties": false,
+      "description": "Einzelner Buchstabe eines Texts (`\"buchstaben\"`).",
+      "properties": {
+        "farbe": {
+          "description": "eigene Farbe",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nr": {
+          "description": "Nummer des Buchstabens (1 = erster, ohne Leerzeichen und Zeilenumbrüche)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "verschieben, drehen, skalieren … um die Mitte des Buchstabens"
+        },
+        "winkellinien": {
+          "default": [],
+          "description": "neue Stichwinkel: Strecken [[x1, y1], [x2, y2]] quer über die Säulen",
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Punkt"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "nr"
+      ],
+      "type": "object"
+    },
+    "DesignEingabe": {
+      "additionalProperties": false,
+      "description": "Ein Design und optional Rahmen/Stoff aus der Oberfläche (haben Vorrang vor den Angaben im Design).",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "rahmen": {
+          "default": null,
+          "description": "Rahmen (Befehl `rahmen_liste`) statt `design.rahmen`",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stoff": {
+          "default": null,
+          "description": "Stoff (Befehl `stoffe_liste`) statt `design.stoff`",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "design"
+      ],
+      "type": "object"
+    },
+    "DesignJson": {
+      "description": "**Ein Design**: Rahmen, Stoff, Garnkarte, Objekte. Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben.",
+      "properties": {
+        "einstellungen": {
+          "additionalProperties": false,
+          "default": null,
+          "description": "Einzelwerte des Stoffs/Stils überschreiben, z. B. {\"satin\": {\"zugausgleich\": 0.3}} (Parameterkatalog)",
+          "properties": {
+            "lauf": {
+              "additionalProperties": false,
+              "properties": {
+                "ecke_grad": {
+                  "default": 30.0,
+                  "description": "ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).\nFormen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).",
+                  "format": "double",
+                  "type": "number"
+                },
+                "laenge": {
+                  "default": 2.5,
+                  "description": "Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "min_laenge": {
+                  "default": 0.8,
+                  "description": "min. 0,8 mm (AMT 0x27a8, hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.09,
+                  "description": "Chord Gap bei variabler Länge (Lauf in Flächen, hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "variabel": {
+                  "default": false,
+                  "description": "„feste Länge“ ist Standard (hoch)",
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            },
+            "satin": {
+              "additionalProperties": false,
+              "properties": {
+                "abstand_fest": {
+                  "default": 0.4,
+                  "description": "AMT 0x2723 (hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "auto_spacing": {
+                  "default": true,
+                  "type": "boolean"
+                },
+                "faktor": {
+                  "default": 1.0,
+                  "description": "Stoff-/Stilfaktor AMT 0x2736 (hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "kurzstiche": {
+                  "additionalProperties": false,
+                  "default": {
+                    "an": false,
+                    "faktoren": [
+                      0.8,
+                      0.85,
+                      0.72,
+                      0.7,
+                      0.9,
+                      0.7,
+                      0.7,
+                      0.9,
+                      0.8,
+                      0.7,
+                      0.7,
+                      0.87,
+                      0.65,
+                      0.83,
+                      0.7
+                    ],
+                    "max_gruppe": 5,
+                    "schwelle": 0.5,
+                    "zufall": true
+                  },
+                  "description": "Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2)",
+                  "properties": {
+                    "an": {
+                      "default": false,
+                      "type": "boolean"
+                    },
+                    "faktoren": {
+                      "default": [
+                        0.8,
+                        0.85,
+                        0.72,
+                        0.7,
+                        0.9,
+                        0.7,
+                        0.7,
+                        0.9,
+                        0.8,
+                        0.7,
+                        0.7,
+                        0.87,
+                        0.65,
+                        0.83,
+                        0.7
+                      ],
+                      "description": "0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5)",
+                      "items": {
+                        "format": "double",
+                        "type": "number"
+                      },
+                      "type": "array"
+                    },
+                    "max_gruppe": {
+                      "default": 5,
+                      "description": "0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0)",
+                      "format": "uint",
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "schwelle": {
+                      "default": 0.5,
+                      "description": "0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand\nzusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)",
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "zufall": {
+                      "default": true,
+                      "description": "0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660)",
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                },
+                "zickzack_abstand": {
+                  "default": 2.0,
+                  "description": "Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei\nEinstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,\n`Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "zugausgleich": {
+                  "default": 0.2,
+                  "description": "Handbuch S. 199 „automatically set at 0.2 mm“ (hoch)",
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "stoff": {
+              "default": "0 Software Defaults",
+              "type": "string"
+            },
+            "tatami": {
+              "additionalProperties": false,
+              "properties": {
+                "abstand": {
+                  "default": 0.4,
+                  "description": "Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward\nrows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,\n`Analyse_Teil3/06_messungen_tatami.md`)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "laenge": {
+                  "default": 4.0,
+                  "description": "Stichlänge AMT 0x2717 (hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "laufweg": {
+                  "additionalProperties": false,
+                  "default": {
+                    "min_laenge": 0.4,
+                    "sehnenabstand": 0.08888888888888889
+                  },
+                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+                  "properties": {
+                    "min_laenge": {
+                      "default": 0.4,
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "sehnenabstand": {
+                      "default": 0.08888888888888889,
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "laufweg_laenge": {
+                  "default": 1.8,
+                  "description": "Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich\n0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer\nmit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere\n(`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).",
+                  "format": "double",
+                  "type": "number"
+                },
+                "min_rand": {
+                  "default": 0.4,
+                  "description": "Mindeststich am Rand AMT 0x2718 (hoch)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "versatz": {
+                  "default": 0.25,
+                  "description": "Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen\nbei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "versatz2": {
+                  "default": null,
+                  "description": "Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`\n(gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.",
+                  "format": "double",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "winkel": {
+                  "default": 45.0,
+                  "description": "Stichwinkel (eigene Festlegung)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "zufall": {
+                  "default": 0.0,
+                  "description": "Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns\n„Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20\nStep-Muster des Dialogs haben 0.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "zugausgleich": {
+                  "default": 0.2,
+                  "description": "wie Satin (Handbuch S. 199)",
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "unterlage": {
+              "additionalProperties": false,
+              "properties": {
+                "auto_an": {
+                  "default": false,
+                  "description": "**Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile\ntragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);\nMOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch\n(Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.",
+                  "type": "boolean"
+                },
+                "auto_art": {
+                  "default": [
+                    "zickzack"
+                  ],
+                  "description": "Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und\nEasyStitch-Stile).",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "doppelzickzack_laenge": {
+                  "default": 7.0,
+                  "description": "AMT 0x2745/0x2724/0x2725 (mittel)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "doppelzickzack_lauf": {
+                  "additionalProperties": false,
+                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+                  "properties": {
+                    "min_laenge": {
+                      "default": 0.9944444444444445,
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "sehnenabstand": {
+                      "default": 0.08888888888888889,
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "edge_walk_laenge": {
+                  "default": 2.2,
+                  "description": "AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,\nLäufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "edge_walk_lauf": {
+                  "additionalProperties": false,
+                  "description": "Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und\nSehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):",
+                  "properties": {
+                    "min_laenge": {
+                      "default": 0.4,
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "sehnenabstand": {
+                      "default": 0.07222222222222222,
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "mittellauf_laenge": {
+                  "default": 2.2,
+                  "description": "AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "mittellauf_lauf": {
+                  "additionalProperties": false,
+                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+                  "properties": {
+                    "min_laenge": {
+                      "default": 0.7277777777777777,
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "sehnenabstand": {
+                      "default": 0.06111111111111111,
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "rand": {
+                  "default": 0.2,
+                  "description": "Unterlagenrand AMT 0x2769/0x276a (mittel)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "rueck_lauf_laenge": {
+                  "default": 3.0,
+                  "description": "„+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "tatami_abstand": {
+                  "default": 3.0,
+                  "description": "Tatami-Unterlage AMT 0x275a (mittel)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "tatami_laenge": {
+                  "default": 4.0,
+                  "format": "double",
+                  "type": "number"
+                },
+                "tatami_randlauf": {
+                  "default": 2.5,
+                  "format": "double",
+                  "type": "number"
+                },
+                "tatami_randlauf_lauf": {
+                  "additionalProperties": false,
+                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+                  "properties": {
+                    "min_laenge": {
+                      "default": 0.4,
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "sehnenabstand": {
+                      "default": 0.07222222222222222,
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "tatami_winkel_versatz": {
+                  "default": 90.0,
+                  "description": "Winkel 90° zur Deckstichrichtung (AMT 0x2759)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "zickzack_laenge": {
+                  "default": 5.0,
+                  "description": "AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "zickzack_lauf": {
+                  "additionalProperties": false,
+                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+                  "properties": {
+                    "min_laenge": {
+                      "default": 0.4,
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "sehnenabstand": {
+                      "default": 0.2,
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                },
+                "zugausgleich": {
+                  "default": 0.2,
+                  "description": "AMT 0x2743 (hoch)",
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "verbinder": {
+              "additionalProperties": false,
+              "description": "Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.\nZuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.",
+              "properties": {
+                "anfang_bei_langem_verbinder": {
+                  "default": true,
+                  "description": "Tie In If: „Previous Connector Longer Than“ (0x272d = 1) …",
+                  "type": "boolean"
+                },
+                "anfang_immer": {
+                  "default": false,
+                  "description": "Tie In: „Always Tie In“ (0x2753 = 0)",
+                  "type": "boolean"
+                },
+                "anfang_nach_trim_farbwechsel": {
+                  "default": true,
+                  "description": "Tie In If: „After Trim / Color Change“ (0x2750 = 1)",
+                  "type": "boolean"
+                },
+                "anfang_verbinder_ab": {
+                  "default": 3.0,
+                  "description": "… Länge (0x2755 = 3,0 mm)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "ende_bei_langem_verbinder": {
+                  "default": true,
+                  "description": "Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …",
+                  "type": "boolean"
+                },
+                "ende_immer": {
+                  "default": false,
+                  "description": "Tie Off: „Always Tie Off“ (0x2752 = 0)",
+                  "type": "boolean"
+                },
+                "ende_verbinder_ab": {
+                  "default": 3.0,
+                  "description": "… Länge (0x2754 = 3,0 mm)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "ende_vor_trim_farbwechsel": {
+                  "default": true,
+                  "description": "Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)",
+                  "type": "boolean"
+                },
+                "letztes_objekt_vernaehen": {
+                  "default": false,
+                  "description": "„Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht",
+                  "type": "boolean"
+                },
+                "trim_ab": {
+                  "default": 3.0,
+                  "description": "Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).\nDie artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "vernaeh_stiche": {
+                  "default": 2,
+                  "description": "Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)",
+                  "format": "uint",
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "vernaeh_stichlaenge": {
+                  "default": 1.0,
+                  "description": "Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel)",
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "ende": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ende"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Endpunkt (Standard: Sprung zurück zur Rahmenmitte)"
+        },
+        "garnkarte": {
+          "default": "Default",
+          "description": "Garnkarte (Befehl `garnkarten_liste`): jede Farbe → nächstes Garn; „keine“ = ohne (Standard „Default“ wie die\nMaschine)",
+          "type": "string"
+        },
+        "kuerzeste_verbindung": {
+          "default": false,
+          "description": "Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift)",
+          "type": "boolean"
+        },
+        "name": {
+          "default": "Design",
+          "description": "Name des Designs (erscheint in der Designliste der Maschine)",
+          "type": "string"
+        },
+        "objekte": {
+          "description": "Stickobjekte in Stickreihenfolge",
+          "items": {
+            "$ref": "#/$defs/ObjektJson"
+          },
+          "type": "array"
+        },
+        "rahmen": {
+          "default": "artista 130 x 100",
+          "description": "Stickrahmen (Befehl `rahmen_liste`)",
+          "enum": [
+            "artista 255 x 145 Oval",
+            "artista 255 x 145 Oval Rotated",
+            "artista 200 x 155",
+            "artista 200 x 155 Rotated",
+            "artista 130 x 100",
+            "artista 130 x 100 Rotated",
+            "artista 50 x 72 Free Arm",
+            "artista 50 x 72 Free Arm Rotated",
+            "artista 50 x 72 Normal",
+            "artista 50 x 72 Normal Rotated",
+            "artista 40 x 60",
+            "artista 40 x 60 Rotated",
+            "artista 400 x 150 MEGA",
+            "artista 400 x 150 MEGA Rotated"
+          ],
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Start"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Startpunkt (Standard: Rahmenmitte)"
+        },
+        "stoff": {
+          "default": "0 Software Defaults",
+          "description": "Stoff: ändert Dichte, Unterlage, Zugausgleich (8 Stoffe + Software Defaults)",
+          "enum": [
+            "0 Software Defaults",
+            "Knit Light Weight",
+            "Knit Medium Weight",
+            "Knit Heavy Weight",
+            "Terry Medium Weight",
+            "Terry Heavy Weight",
+            "Woven Light Weight",
+            "Woven Medium Weight",
+            "Woven Heavy Weight"
+          ],
+          "type": "string"
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Transformation des ganzen Designs (um seine Mitte)"
+        },
+        "version": {
+          "default": null,
+          "description": "Fassung des Formats (ohne Angabe: aktuelle Fassung)",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "title": "Design",
+      "type": "object"
+    },
+    "DesignWert": {
+      "$ref": "#/$defs/DesignJson",
+      "description": "Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text)."
+    },
+    "Ende": {
+      "description": "Endpunkt des Designs (Dialog „Start and End“)",
+      "oneOf": [
+        {
+          "const": "rahmenmitte",
+          "description": "Sprung zurück zur Rahmenmitte (Standard; 34 von 51 Maschinendesigns enden auf 0,0)",
+          "type": "string"
+        },
+        {
+          "const": "designmitte",
+          "description": "Mitte des Designs",
+          "type": "string"
+        },
+        {
+          "const": "unten_mitte",
+          "description": "Mitte der Unterkante",
+          "type": "string"
+        },
+        {
+          "const": "letzter_stich",
+          "description": "letzter Stich (kein Sprung)",
+          "type": "string"
+        },
+        {
+          "const": "start",
+          "description": "zurück zum Startpunkt",
+          "type": "string"
+        }
+      ]
+    },
+    "Ergebnis": {
+      "description": "Berechnetes Design: Stiche, Farben, Garne, Kennzahlen, Prüfungen.",
+      "properties": {
+        "ausserhalb": {
+          "description": "Zahl der Einstiche außerhalb des Stickfelds (muss 0 sein zum Senden)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "farben": {
+          "description": "Farbe je Farbblock „#rrggbb“ (Block i beginnt nach dem i-ten Farbwechsel)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "fehlende_zeichen": {
+          "description": "Zeichen eines Texts, die das Alphabet nicht hat",
+          "type": "string"
+        },
+        "garne": {
+          "description": "Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“)",
+          "items": {
+            "$ref": "#/$defs/GarnInfo"
+          },
+          "type": "array"
+        },
+        "hinweise": {
+          "description": "Hinweise (z. B. Felder, die der Kern nicht liest)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "objekt": {
+          "description": "je Stich die Nummer des Objekts (ab 0) – zum Auswählen und Hervorheben",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "rahmen": {
+          "$ref": "#/$defs/RahmenInfo"
+        },
+        "statistik": {
+          "$ref": "#/$defs/Statistik"
+        },
+        "stiche": {
+          "description": "alle Stiche in Stickfolge",
+          "items": {
+            "$ref": "#/$defs/Stich"
+          },
+          "type": "array"
+        },
+        "stoff": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "rahmen",
+        "stoff",
+        "stiche",
+        "objekt",
+        "farben",
+        "garne",
+        "statistik",
+        "ausserhalb",
+        "fehlende_zeichen",
+        "hinweise"
+      ],
+      "type": "object"
+    },
+    "ExpEingabe": {
+      "additionalProperties": false,
+      "description": "Design und Zieldatei.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "pfad": {
+          "description": "Zieldatei (.exp)",
+          "type": "string"
+        },
+        "rahmen": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stoff": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "design",
+        "pfad"
+      ],
+      "type": "object"
+    },
+    "Fehler": {
+      "description": "Fehler eines Befehls: Meldung (deutsch) und, wenn er zu einem Objekt gehört, dessen Nummer (ab 0) – damit die\nOberfläche das Objekt markieren kann.",
+      "properties": {
+        "meldung": {
+          "type": "string"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts in `objekte` (ab 0), wenn bekannt",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "meldung"
+      ],
+      "type": "object"
+    },
+    "Form": {
+      "description": "Form statt Punktliste, z. B. `{\"kreis\": {\"mitte\": [0, 0], \"radius\": 10}}`.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Kreis",
+          "properties": {
+            "kreis": {
+              "properties": {
+                "mitte": {
+                  "$ref": "#/$defs/Punkt",
+                  "description": "Mittelpunkt [x, y] in mm"
+                },
+                "radius": {
+                  "description": "Radius in mm",
+                  "format": "double",
+                  "type": "number"
+                },
+                "start": {
+                  "default": 0.0,
+                  "description": "Startwinkel in Grad",
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "mitte",
+                "radius"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "kreis"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Rechteck (Eckpunkte)",
+          "properties": {
+            "rechteck": {
+              "properties": {
+                "breite": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "hoehe": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "mitte": {
+                  "$ref": "#/$defs/Punkt"
+                }
+              },
+              "required": [
+                "mitte",
+                "breite",
+                "hoehe"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "rechteck"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Ellipse („Circle/Oval“ des Originals) mit Breite und Höhe in mm",
+          "properties": {
+            "oval": {
+              "properties": {
+                "breite": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "hoehe": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "mitte": {
+                  "$ref": "#/$defs/Punkt"
+                },
+                "start": {
+                  "default": 0.0,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "mitte",
+                "breite",
+                "hoehe"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "oval"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Kreisbogen von … bis (Grad)",
+          "properties": {
+            "bogen": {
+              "properties": {
+                "bis": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "mitte": {
+                  "$ref": "#/$defs/Punkt"
+                },
+                "radius": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "von": {
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "mitte",
+                "radius",
+                "von",
+                "bis"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "bogen"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "kubische Bézierkurve: Start, Kontrollpunkt 1, Kontrollpunkt 2, Ende",
+          "properties": {
+            "bezier": {
+              "items": {
+                "$ref": "#/$defs/Punkt"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            }
+          },
+          "required": [
+            "bezier"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "mehrere Stücke hintereinander (Punktlisten oder Formen)",
+          "properties": {
+            "verbinden": {
+              "items": {
+                "$ref": "#/$defs/PunktAngabe"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "verbinden"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "FormArt": {
+      "description": "Bedeutung einer Linie in der Formansicht",
+      "oneOf": [
+        {
+          "const": "umriss",
+          "description": "Außenkante einer Fläche",
+          "type": "string"
+        },
+        {
+          "const": "loch",
+          "description": "Loch in einer Fläche",
+          "type": "string"
+        },
+        {
+          "const": "linie",
+          "description": "gezeichnete Linie (Lauf, Dreifach, Blanket, Satinlinie)",
+          "type": "string"
+        },
+        {
+          "const": "seite_a",
+          "description": "Seite A einer Satinsäule",
+          "type": "string"
+        },
+        {
+          "const": "seite_b",
+          "description": "Seite B einer Satinsäule",
+          "type": "string"
+        },
+        {
+          "const": "winkellinie",
+          "description": "Stichwinkel-Linie",
+          "type": "string"
+        }
+      ]
+    },
+    "FormLinie": {
+      "description": "Eine Linie der Formansicht.",
+      "properties": {
+        "art": {
+          "$ref": "#/$defs/FormArt"
+        },
+        "geschlossen": {
+          "description": "letzter Punkt mit dem ersten verbunden",
+          "type": "boolean"
+        },
+        "punkte": {
+          "description": "Punkte [x, y] in mm",
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "art",
+        "punkte",
+        "geschlossen"
+      ],
+      "type": "object"
+    },
+    "GarnInfo": {
+      "description": "Garn einer Garnkarte.",
+      "properties": {
+        "marke": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nummer": {
+          "description": "Herstellernummer (führende Nullen bleiben)",
+          "type": "string"
+        },
+        "rgb": {
+          "description": "Farbe „#rrggbb“",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rgb",
+        "nummer",
+        "marke",
+        "name"
+      ],
+      "type": "object"
+    },
+    "GarnkartenName": {
+      "additionalProperties": false,
+      "description": "Name einer Garnkarte.",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "Griffe": {
+      "anyOf": [
+        {
+          "format": "double",
+          "type": "number"
+        },
+        {
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": "array"
+        }
+      ],
+      "description": "Griffe einer Kante beim Verzerren: eine Zahl (Mitte) oder Liste [links, rechts] bzw. [links, Mitte, rechts] in mm."
+    },
+    "GrundlinieArt": {
+      "description": "Art der Grundlinie (Dialog „Layout“)",
+      "oneOf": [
+        {
+          "const": "kreis",
+          "description": "Kreis CW/CCW, auch Oval (radius_y) und Bogen (bogen)",
+          "type": "string"
+        },
+        {
+          "const": "gerade",
+          "description": "gerade mit Winkel und optional fester Länge",
+          "type": "string"
+        },
+        {
+          "const": "senkrecht",
+          "description": "senkrecht",
+          "type": "string"
+        },
+        {
+          "const": "kurve",
+          "description": "eigene Kurve (Feld `punkte`)",
+          "type": "string"
+        },
+        {
+          "const": "mehrfach",
+          "description": "mehrfach: oben – Mitte – unten (höchstens drei Zeilen)",
+          "type": "string"
+        }
+      ]
+    },
+    "GrundlinieJson": {
+      "additionalProperties": false,
+      "description": "Grundlinie eines Texts (`schrift::Grundlinie`; Dialog „Layout“ des Originals). Beim Kreis ist `position` des Texts\ndie Kreismitte.",
+      "properties": {
+        "art": {
+          "$ref": "#/$defs/GrundlinieArt"
+        },
+        "bogen": {
+          "description": "Arc Angle in Grad (nur ein Bogen; Text wird eingepasst)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "laenge": {
+          "description": "Length der geraden Grundlinie in mm (Text wird eingepasst)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GrundlinieLage"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "oben (Circle CW) | unten (Circle CCW)"
+        },
+        "neigung": {
+          "default": 0.0,
+          "description": "Tilt des Ovals in Grad",
+          "format": "double",
+          "type": "number"
+        },
+        "punkte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PunktAngabe"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Punkte oder Form der eigenen Kurve (art = kurve)"
+        },
+        "radius": {
+          "description": "Radius X in mm (Vorlage 50)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "radius_y": {
+          "description": "Radius Y in mm (Oval)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "stand": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GrundlinieStand"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "ueber | durch | unter (Standard: über der CW-, unter der CCW-Grundlinie)"
+        },
+        "winkel": {
+          "description": "Kreis: Justif. Angle (Grad); gerade: Line Angle",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "art"
+      ],
+      "type": "object"
+    },
+    "GrundlinieLage": {
+      "description": "Lage auf der Kreis-Grundlinie",
+      "oneOf": [
+        {
+          "const": "oben",
+          "description": "oben, im Uhrzeiger (Circle CW)",
+          "type": "string"
+        },
+        {
+          "const": "unten",
+          "description": "unten, gegen den Uhrzeiger (Circle CCW)",
+          "type": "string"
+        }
+      ]
+    },
+    "GrundlinieStand": {
+      "description": "Stand der Buchstaben zur Grundlinie (Position Above/Through/Below)",
+      "enum": [
+        "ueber",
+        "durch",
+        "unter"
+      ],
+      "type": "string"
+    },
+    "HuelleArt": {
+      "description": "Form der Verzerrung (Elastic Lettering)",
+      "oneOf": [
+        {
+          "const": "gerade",
+          "description": "gerade Kanten (Wimpel, schräg): oben/unten = [links, rechts]",
+          "type": "string"
+        },
+        {
+          "const": "gebogen",
+          "description": "gebogene Kanten (Bogen, Bauch): oben/unten = Mitte oder [links, Mitte, rechts]",
+          "type": "string"
+        }
+      ]
+    },
+    "HuelleJson": {
+      "additionalProperties": false,
+      "description": "Elastic Lettering: `{\"art\": \"gerade\", \"oben\": [links, rechts], \"unten\": [links, rechts]}` oder\n`{\"art\": \"gebogen\", \"oben\": mitte | [links, mitte, rechts], \"unten\": …}` (mm, + nach oben).",
+      "properties": {
+        "art": {
+          "$ref": "#/$defs/HuelleArt"
+        },
+        "oben": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Griffe"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Verschiebung der oberen Kante in mm"
+        },
+        "unten": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Griffe"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Verschiebung der unteren Kante in mm"
+        }
+      },
+      "required": [
+        "art"
+      ],
+      "type": "object"
+    },
+    "LaufJson": {
+      "description": "Laufstich bzw. Dreifachstich entlang einer Linie.",
+      "properties": {
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "dreifach": {
+          "description": "Dreifachstich (bei art „dreifach“ immer)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "geschlossen": {
+          "default": false,
+          "description": "Linie schließen (zurück zum ersten Punkt)",
+          "type": "boolean"
+        },
+        "laenge": {
+          "description": "Stichlänge in mm (ohne Angabe: Stil, 2,5 mm)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "punkte": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        }
+      },
+      "required": [
+        "punkte"
+      ],
+      "type": "object"
+    },
+    "Leer": {
+      "additionalProperties": false,
+      "description": "Keine Eingabe.",
+      "type": "object"
+    },
+    "MonogrammJson": {
+      "description": "Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im\nKern zu einem Text – alle Schrift-Einstellungen gelten.",
+      "properties": {
+        "abstand": {
+          "description": "Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausrichtung": {
+          "$ref": "#/$defs/Ausrichtung",
+          "default": "mitte"
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "default": 100.0,
+          "description": "Breite in % der Höhe",
+          "format": "double",
+          "type": "number"
+        },
+        "buchstaben": {
+          "description": "einzelne Buchstaben: Farbe, Transformation, Stichwinkel",
+          "items": {
+            "$ref": "#/$defs/BuchstabeJson"
+          },
+          "type": "array"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "elastisch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HuelleJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Verzerren (Elastic Lettering)"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "farben": {
+          "default": [],
+          "description": "Farben für die Farbwechsel `^` im Text, in Reihenfolge",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "groesse": {
+          "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grundlinie": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GrundlinieJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Grundlinie (ohne Angabe: gerade waagrecht)"
+        },
+        "hoehe": {
+          "default": 18.0,
+          "description": "Höhe in mm (18 = kleinste empfohlene Höhe von Diamond2/3)",
+          "format": "double",
+          "type": "number"
+        },
+        "initialen": {
+          "description": "2 oder 3 Buchstaben A–Z",
+          "type": "string"
+        },
+        "kursiv": {
+          "default": 0.0,
+          "description": "Kursiv in Grad (−45 … 45)",
+          "format": "double",
+          "type": "number"
+        },
+        "muster": {
+          "description": "Füllmuster bei Stichart „muster“: Name („001 Diamond (90)“) oder Nummer („001“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Bezugspunkt auf der Grundlinie [x, y] in mm (Kreis: Kreismitte)"
+        },
+        "rahmen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MonogrammRahmen"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "rahmen_farbe": {
+          "description": "Farbe des Rahmens (nur mit Rahmen)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stichart": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SchriftStichart"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "unterlage": {
+          "$ref": "#/$defs/UnterlageJson"
+        },
+        "winkel": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "wortabstand": {
+          "description": "Wortabstand in % der Höhe (Vorlage 25)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "zeilenabstand": {
+          "description": "Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\\n` im Text",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "initialen"
+      ],
+      "type": "object"
+    },
+    "MonogrammRahmen": {
+      "description": "Rahmen um ein Monogramm",
+      "oneOf": [
+        {
+          "const": "raute",
+          "description": "Raute",
+          "type": "string"
+        },
+        {
+          "const": "zier",
+          "description": "Zierwinkel",
+          "type": "string"
+        },
+        {
+          "const": "keine",
+          "description": "kein Rahmen (Standard)",
+          "type": "string"
+        }
+      ]
+    },
+    "MusterInfo": {
+      "description": "Füllmuster mit den Linien einer Kachel (für Vorschau-Kacheln).",
+      "properties": {
+        "a": {
+          "description": "Gittervektor A in mm (das Muster wiederholt sich um i·A + j·B)",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "b": {
+          "description": "Gittervektor B in mm",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "name": {
+          "description": "Name wie im Design-Feld `muster` („001 Diamond (90)“)",
+          "type": "string"
+        },
+        "nummer": {
+          "description": "Nummer („001“) – auch als `muster` erlaubt",
+          "type": "string"
+        },
+        "winkel": {
+          "description": "Stichwinkel aus dem Namen in Grad",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "zuege": {
+          "description": "Linienzüge einer Kachel in mm",
+          "items": {
+            "items": {
+              "items": {
+                "format": "double",
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "nummer",
+        "a",
+        "b",
+        "zuege"
+      ],
+      "type": "object"
+    },
+    "MusterJson": {
+      "description": "Fläche mit Füllmuster (Program Split / Fancy Fill; 242 Muster, Befehl `fuellmuster_liste`).",
+      "properties": {
+        "aussparen": {
+          "default": [],
+          "description": "Namen der Objekte, deren Fläche ausgespart wird (Knockout)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "groesse": {
+          "default": 100.0,
+          "description": "Größe des Musters in %",
+          "format": "double",
+          "type": "number"
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "muster": {
+          "description": "Name des Musters („001 Diamond (90)“) oder seine Nummer („001“)",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "ueberlappung": {
+          "default": 0.0,
+          "description": "Überlappung der Aussparung in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "umriss": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "unterlage": {
+          "description": "Unterlage an/aus (ohne Angabe: Stil)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "winkel": {
+          "description": "Stichwinkel (ohne Angabe: Winkel aus dem Musternamen, sonst der Füllung)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "umriss",
+        "muster"
+      ],
+      "type": "object"
+    },
+    "ObjektForm": {
+      "description": "Formen eines Objekts des Designs (`Design::formen`).",
+      "properties": {
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Ausstich [x, y], wenn gesetzt"
+        },
+        "begrenzung": {
+          "description": "umschließendes Rechteck [x0, y0, x1, y1] in mm (None = keine Form)",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Einstich [x, y], wenn gesetzt"
+        },
+        "farbe": {
+          "type": "string"
+        },
+        "linien": {
+          "items": {
+            "$ref": "#/$defs/FormLinie"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts in `objekte` (0 = erstes)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "objekt",
+        "farbe",
+        "name",
+        "linien"
+      ],
+      "type": "object"
+    },
+    "ObjektJson": {
+      "description": "Ein Stickobjekt. `art` wählt die Objektart; Reihenfolge in `objekte` = Stickreihenfolge.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/LaufJson",
+          "description": "Laufstich",
+          "properties": {
+            "art": {
+              "const": "lauf",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/LaufJson",
+          "description": "Dreifachstich",
+          "properties": {
+            "art": {
+              "const": "dreifach",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/SatinJson",
+          "description": "Satinsäule",
+          "properties": {
+            "art": {
+              "const": "satin",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/SatinLinieJson",
+          "description": "Satinlinie (Kontur)",
+          "properties": {
+            "art": {
+              "const": "satinlinie",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/BlanketJson",
+          "description": "Blanket (Langette)",
+          "properties": {
+            "art": {
+              "const": "blanket",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/TatamiJson",
+          "description": "Fläche Tatami (Step)",
+          "properties": {
+            "art": {
+              "const": "tatami",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/SatinFlaecheJson",
+          "description": "Satinfläche mit automatischer Stichrichtung",
+          "properties": {
+            "art": {
+              "const": "satinflaeche",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/TextJson",
+          "description": "Text mit Original-Alphabet",
+          "properties": {
+            "art": {
+              "const": "text",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/TtfJson",
+          "description": "Text mit Computer-Schrift",
+          "properties": {
+            "art": {
+              "const": "ttf",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/MonogrammJson",
+          "description": "Monogramm",
+          "properties": {
+            "art": {
+              "const": "monogramm",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/ApplikationJson",
+          "description": "Applikation",
+          "properties": {
+            "art": {
+              "const": "applikation",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/MusterJson",
+          "description": "Fläche mit Füllmuster",
+          "properties": {
+            "art": {
+              "const": "muster",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Parameter": {
+      "additionalProperties": false,
+      "description": "Ein einstellbarer Wert des Parameterkatalogs (`PARAMETER.md`).",
+      "properties": {
+        "bereich": {
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "ebene": {
+          "description": "design | objekt | beide | werkzeug",
+          "type": "string"
+        },
+        "einheit": {
+          "type": "string"
+        },
+        "gilt_fuer": {
+          "description": "Objektarten (`art` im Design-JSON), für die der Parameter gilt",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gruppe": {
+          "type": "string"
+        },
+        "id": {
+          "description": "eindeutiger Schlüssel, z. B. „satin.abstand_fest“",
+          "type": "string"
+        },
+        "json_design": {
+          "description": "Pfad im Design-JSON (z. B. „einstellungen.satin.abstand_fest“, „transform.drehen“, „stoff“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "json_objekt": {
+          "description": "Feld am Objekt (z. B. „abstand“, „auto_jump.max“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modus": {
+          "description": "einfach | experte | automatisch",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "quelle": {
+          "description": "Fundstelle im Original oder „eigene Festlegung“",
+          "type": "string"
+        },
+        "standard": {
+          "description": "Standard in „0 Software Defaults“ (null = ohne Angabe / vom Stil)"
+        },
+        "stoff": {
+          "description": "ändert sich mit dem Stoff (Werte je Stoff: `wert(&fuer_stoff(name)?, pfad)`)",
+          "type": "boolean"
+        },
+        "werte": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "wirkung": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "gruppe",
+        "name",
+        "wirkung",
+        "ebene",
+        "gilt_fuer",
+        "einheit",
+        "standard",
+        "werte",
+        "stoff",
+        "quelle",
+        "modus"
+      ],
+      "type": "object"
+    },
+    "Pfad": {
+      "additionalProperties": false,
+      "properties": {
+        "pfad": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pfad"
+      ],
+      "type": "object"
+    },
+    "Pruefung": {
+      "description": "Ergebnis der Prüfung eines Designs (ohne Stiche zu berechnen).",
+      "properties": {
+        "fehler": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Fehler"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Fehler, der das Berechnen verhindert (None = in Ordnung)"
+        },
+        "hinweise": {
+          "description": "Hinweise, z. B. Felder, die der Kern nicht liest (Tippfehler?)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "hinweise"
+      ],
+      "type": "object"
+    },
+    "Punkt": {
+      "description": "[x, y] in mm, Ursprung Rahmenmitte, +y nach oben",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "PunktAngabe": {
+      "anyOf": [
+        {
+          "description": "Punktliste [[x, y], …] in mm (Eckpunkte)",
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/Form",
+          "description": "Form (Kreis, Rechteck, Oval, Bogen, Bézier, Verbinden)"
+        }
+      ],
+      "description": "Punkte einer Linie oder Fläche: Punktliste `[[x, y], …]` in mm oder eine Form."
+    },
+    "RahmenInfo": {
+      "description": "Stickrahmen: Stickfeld und Umriss.",
+      "properties": {
+        "breite": {
+          "description": "Stickfeld x in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "form": {
+          "description": "Umriss des Stickfelds [[x, y], …] in mm",
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        },
+        "hinweis": {
+          "type": "string"
+        },
+        "hoehe": {
+          "description": "Stickfeld y in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "breite",
+        "hoehe",
+        "form",
+        "hinweis"
+      ],
+      "type": "object"
+    },
+    "ReihenfolgeBefehl": {
+      "description": "Umordnen wie Menü „Arrange“ des Originals (Objektnummern ab 0).",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "„Sequence As Selected“: Auswahl in Klickfolge an die Stelle des ersten ausgewählten Objekts",
+          "properties": {
+            "art": {
+              "const": "wie_ausgewaehlt",
+              "type": "string"
+            },
+            "auswahl": {
+              "items": {
+                "format": "uint",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "art",
+            "auswahl"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "„Sequence to Start“",
+          "properties": {
+            "art": {
+              "const": "an_anfang",
+              "type": "string"
+            },
+            "auswahl": {
+              "items": {
+                "format": "uint",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "art",
+            "auswahl"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "„Sequence to End“",
+          "properties": {
+            "art": {
+              "const": "ans_ende",
+              "type": "string"
+            },
+            "auswahl": {
+              "items": {
+                "format": "uint",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "art",
+            "auswahl"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "„Resequence by Number“: Auswahl vor das Objekt `ziel`",
+          "properties": {
+            "art": {
+              "const": "vor",
+              "type": "string"
+            },
+            "auswahl": {
+              "items": {
+                "format": "uint",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "ziel": {
+              "format": "uint",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "art",
+            "auswahl",
+            "ziel"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "„Resequence by Number“: Auswahl nach das Objekt `ziel`",
+          "properties": {
+            "art": {
+              "const": "nach",
+              "type": "string"
+            },
+            "auswahl": {
+              "items": {
+                "format": "uint",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "ziel": {
+              "format": "uint",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "art",
+            "auswahl",
+            "ziel"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "„Sequence By Color“: Auswahl (leer = alle) nach Farben; `farben` = gewünschte Farbfolge; `ueberdeckung` (eigene\nErweiterung): Objekte, die sich überdecken, behalten ihre Reihenfolge",
+          "properties": {
+            "art": {
+              "const": "nach_farbe",
+              "type": "string"
+            },
+            "auswahl": {
+              "default": [],
+              "items": {
+                "format": "uint",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "farben": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "ueberdeckung": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReihenfolgeEingabe": {
+      "additionalProperties": false,
+      "properties": {
+        "befehl": {
+          "$ref": "#/$defs/ReihenfolgeBefehl"
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        }
+      },
+      "required": [
+        "design",
+        "befehl"
+      ],
+      "type": "object"
+    },
+    "ReihenfolgeErgebnis": {
+      "description": "Ergebnis des Umordnens.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "Design mit neuer Reihenfolge der `objekte`"
+        },
+        "farbwechsel_nachher": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "farbwechsel_vorher": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reihenfolge": {
+          "description": "an Stelle i steht das bisherige Objekt `reihenfolge[i]`",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "vertauscht": {
+          "description": "Warnungen: [oben, unten] (bisherige Nummern) – `oben` lag über `unten` und liegt jetzt darunter",
+          "items": {
+            "items": {
+              "format": "uint",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "design",
+        "reihenfolge",
+        "farbwechsel_vorher",
+        "farbwechsel_nachher",
+        "vertauscht"
+      ],
+      "type": "object"
+    },
+    "SaeuleInfo": {
+      "description": "Eine Satinsäule der Zerlegung.",
+      "properties": {
+        "linien": {
+          "description": "Stichlinien (Richtung der Stiche)",
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Punkt"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "seite_a": {
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        },
+        "seite_b": {
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        },
+        "umriss": {
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "seite_a",
+        "seite_b",
+        "linien",
+        "umriss"
+      ],
+      "type": "object"
+    },
+    "SaeulenEingabe": {
+      "additionalProperties": false,
+      "description": "Fläche, die in Satinsäulen zerlegt werden soll.",
+      "properties": {
+        "knickwinkel": {
+          "default": null,
+          "description": "Säulen an Knicken teilen (Innenwinkel in Grad, 0 = nie)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "loecher": {
+          "default": [],
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Punkt"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "umriss": {
+          "description": "Umriss [[x, y], …] in mm",
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "umriss"
+      ],
+      "type": "object"
+    },
+    "SatinFlaecheJson": {
+      "description": "Fläche als Satinsäulen mit automatischer Stichrichtung (`saeulen.rs`, ROADMAP 4b.17).",
+      "properties": {
+        "abstand": {
+          "description": "fester Satinabstand in mm statt Auto Spacing",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "faktor": {
+          "description": "Auto-Spacing-Faktor",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "knickwinkel": {
+          "description": "Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "kurzstiche": {
+          "description": "Kurzstiche an Innenkurven",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stichart": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SatinStichart"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umriss": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "unterlage": {
+          "$ref": "#/$defs/UnterlageJson"
+        }
+      },
+      "required": [
+        "umriss"
+      ],
+      "type": "object"
+    },
+    "SatinJson": {
+      "description": "Satinsäule zwischen zwei Seiten (Punkt i von A gehört zu Punkt i von B).",
+      "properties": {
+        "abstand": {
+          "description": "fester Satinabstand in mm statt Auto Spacing (wie im Alphabet: 0x15)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "faktor": {
+          "description": "Auto-Spacing-Faktor des Objekts (Stil: 0x2736; Schrift 0,9)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "kurzstiche": {
+          "description": "Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "seite_a": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "seite_b": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stichart": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SatinStichart"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "unterlage": {
+          "$ref": "#/$defs/UnterlageJson"
+        }
+      },
+      "required": [
+        "seite_a",
+        "seite_b"
+      ],
+      "type": "object"
+    },
+    "SatinLinieJson": {
+      "description": "Satinbahn konstanter Breite entlang einer Linie.",
+      "properties": {
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "description": "Breite in mm (Standard 2)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "punkte": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stichart": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SatinStichart"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "unterlage": {
+          "$ref": "#/$defs/UnterlageJson"
+        },
+        "versatz": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Versatz"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "punkte"
+      ],
+      "type": "object"
+    },
+    "SatinStichart": {
+      "description": "Stichart einer Satinsäule, Satinlinie oder Satinfläche",
+      "oneOf": [
+        {
+          "const": "satin",
+          "description": "Satin (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "zickzack",
+          "description": "Zickzack (offen, fester Abstand; Stichart „Zigzag“ 0x2724)",
+          "type": "string"
+        }
+      ]
+    },
+    "SchriftInfo": {
+      "description": "Computer-Schrift (TrueType/OpenType).",
+      "properties": {
+        "familie": {
+          "type": "string"
+        },
+        "name": {
+          "description": "Name wie im Design-Feld `schrift` („Arial Bold“)",
+          "type": "string"
+        },
+        "pfad": {
+          "type": "string"
+        },
+        "stil": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "familie",
+        "stil",
+        "pfad"
+      ],
+      "type": "object"
+    },
+    "SchriftStichart": {
+      "description": "Stichart einer Schrift mit Original-Alphabet",
+      "oneOf": [
+        {
+          "const": "satin",
+          "description": "Satin (Standard, wie das Alphabet)",
+          "type": "string"
+        },
+        {
+          "const": "step",
+          "description": "Step: Reihen folgen den Stichwinkeln der Säulen",
+          "type": "string"
+        },
+        {
+          "const": "muster",
+          "description": "Füllmuster über die Buchstabenfläche (Feld `muster`)",
+          "type": "string"
+        }
+      ]
+    },
+    "Skalierung": {
+      "anyOf": [
+        {
+          "format": "double",
+          "type": "number"
+        },
+        {
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        }
+      ],
+      "description": "Skalierung in %: eine Zahl (beide Richtungen) oder [x, y]"
+    },
+    "Spiegeln": {
+      "description": "Spiegeln (Mirror)",
+      "oneOf": [
+        {
+          "const": "links_rechts",
+          "description": "waagrecht spiegeln (Mirror Horizontal)",
+          "type": "string"
+        },
+        {
+          "const": "oben_unten",
+          "description": "senkrecht spiegeln (Mirror Vertical)",
+          "type": "string"
+        },
+        {
+          "const": "beide",
+          "description": "beides",
+          "type": "string"
+        }
+      ]
+    },
+    "Start": {
+      "description": "Startpunkt des Designs (Dialog „Start and End“)",
+      "oneOf": [
+        {
+          "const": "rahmenmitte",
+          "description": "Rahmenmitte = Ursprung (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "designmitte",
+          "description": "Mitte des Designs (umschließendes Rechteck) – wie „Auto Start“ des Originals",
+          "type": "string"
+        },
+        {
+          "const": "unten_mitte",
+          "description": "Mitte der Unterkante",
+          "type": "string"
+        },
+        {
+          "const": "erster_stich",
+          "description": "erster Stich (kein Verbinder)",
+          "type": "string"
+        }
+      ]
+    },
+    "Statistik": {
+      "description": "Kennzahlen der Stichfolge.",
+      "properties": {
+        "breite": {
+          "description": "Breite der Stiche in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "farbwechsel": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hoehe": {
+          "description": "Höhe der Stiche in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "max_stich": {
+          "description": "längster Stich in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "min_stich": {
+          "description": "kürzester Stich in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "spruenge": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stiche": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stiche",
+        "spruenge",
+        "farbwechsel",
+        "breite",
+        "hoehe",
+        "min_stich",
+        "max_stich"
+      ],
+      "type": "object"
+    },
+    "Stich": {
+      "description": "Ein Stich: Position in mm (Ursprung Rahmenmitte, +y oben) und Art.",
+      "properties": {
+        "art": {
+          "$ref": "#/$defs/Art"
+        },
+        "x": {
+          "format": "double",
+          "type": "number"
+        },
+        "y": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "art"
+      ],
+      "type": "object"
+    },
+    "StoffInfo": {
+      "description": "Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog).",
+      "properties": {
+        "auto_spacing_faktor": {
+          "description": "Auto-Spacing-Faktor",
+          "format": "double",
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "satin_abstand_fest": {
+          "description": "fester Satinabstand in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "tatami_abstand": {
+          "description": "Tatami-Abstand in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "zugausgleich": {
+          "description": "Zugausgleich in mm",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "satin_abstand_fest",
+        "tatami_abstand",
+        "auto_spacing_faktor",
+        "zugausgleich"
+      ],
+      "type": "object"
+    },
+    "TatamiJson": {
+      "description": "Tatami-Fläche (Step) mit Löchern; mit `winkellinien` Fläche mit mehreren Stichwinkeln (Turning).",
+      "properties": {
+        "aussparen": {
+          "default": [],
+          "description": "Namen der Objekte, deren Fläche ausgespart wird (Knockout)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "kurzstiche": {
+          "description": "Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "ueberlappung": {
+          "default": 0.0,
+          "description": "Überlappung der Aussparung in mm (Standard 0 = exakt wie das Original)",
+          "format": "double",
+          "type": "number"
+        },
+        "umriss": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "unterlage": {
+          "description": "Unterlage an/aus (ohne Angabe: Auto Underlay des Stils)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "winkel": {
+          "description": "Stichwinkel in Grad (ohne Angabe: Stil, 45°)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "winkellinien": {
+          "default": [],
+          "description": "mehrere Stichwinkel: Strecken [[x1, y1], [x2, y2]], die den Umriss je zweimal schneiden (ohne Löcher)",
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Punkt"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "umriss"
+      ],
+      "type": "object"
+    },
+    "TextDatei": {
+      "additionalProperties": false,
+      "properties": {
+        "pfad": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pfad",
+        "text"
+      ],
+      "type": "object"
+    },
+    "TextJson": {
+      "description": "Text mit einem Original-Alphabet (50 Alphabete, Befehl `alphabete_liste`).",
+      "properties": {
+        "abstand": {
+          "description": "Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "alphabet": {
+          "description": "Name des Alphabets („Drifter“)",
+          "type": "string"
+        },
+        "ausrichtung": {
+          "$ref": "#/$defs/Ausrichtung",
+          "default": "mitte"
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "default": 100.0,
+          "description": "Breite in % der Höhe",
+          "format": "double",
+          "type": "number"
+        },
+        "buchstaben": {
+          "description": "einzelne Buchstaben: Farbe, Transformation, Stichwinkel",
+          "items": {
+            "$ref": "#/$defs/BuchstabeJson"
+          },
+          "type": "array"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "elastisch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HuelleJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Verzerren (Elastic Lettering)"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "farben": {
+          "default": [],
+          "description": "Farben für die Farbwechsel `^` im Text, in Reihenfolge",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "groesse": {
+          "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grundlinie": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GrundlinieJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Grundlinie (ohne Angabe: gerade waagrecht)"
+        },
+        "hoehe": {
+          "default": 10.0,
+          "description": "Buchstabenhöhe in mm (Original 1–200 mm; Vorlage 10)",
+          "format": "double",
+          "type": "number"
+        },
+        "kursiv": {
+          "default": 0.0,
+          "description": "Kursiv in Grad (−45 … 45)",
+          "format": "double",
+          "type": "number"
+        },
+        "muster": {
+          "description": "Füllmuster bei Stichart „muster“: Name („001 Diamond (90)“) oder Nummer („001“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Bezugspunkt auf der Grundlinie [x, y] in mm (Kreis: Kreismitte)"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stichart": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SchriftStichart"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text": {
+          "description": "Text; `\\n` = neue Zeile, `^` = Farbwechsel (Farben in `farben`)",
+          "type": "string"
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "unterlage": {
+          "$ref": "#/$defs/UnterlageJson",
+          "description": "Unterlage (auto = wie Stil Schrift: Zickzack)"
+        },
+        "winkel": {
+          "description": "Stichwinkel der Musterfüllung (Stichart „muster“)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "wortabstand": {
+          "description": "Wortabstand in % der Höhe (Vorlage 25)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "zeilenabstand": {
+          "description": "Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\\n` im Text",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "text",
+        "alphabet"
+      ],
+      "type": "object"
+    },
+    "Transformation": {
+      "additionalProperties": false,
+      "description": "Transformation in der JSON-Form (`\"transform\"` am Objekt oder am Design).",
+      "properties": {
+        "drehen": {
+          "default": 0.0,
+          "description": "Drehung in Grad gegen den Uhrzeiger",
+          "format": "double",
+          "type": "number"
+        },
+        "schraeg": {
+          "default": 0.0,
+          "description": "Schrägstellen in Grad (x verschiebt sich mit y, wie Skew im Original)",
+          "format": "double",
+          "type": "number"
+        },
+        "skalieren": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Skalierung"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalierung in %: eine Zahl (beide Richtungen) oder [x, y]"
+        },
+        "spiegeln": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Spiegeln"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "verschieben": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Verschieben in mm"
+        }
+      },
+      "type": "object"
+    },
+    "TtfJson": {
+      "description": "Text mit einer Computer-Schrift (TrueType/OpenType, Befehl `schriften_liste`).",
+      "properties": {
+        "abstand": {
+          "description": "Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausrichtung": {
+          "$ref": "#/$defs/Ausrichtung",
+          "default": "mitte"
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "default": 100.0,
+          "description": "Breite in % der Höhe",
+          "format": "double",
+          "type": "number"
+        },
+        "buchstaben": {
+          "description": "einzelne Buchstaben: Farbe, Transformation, Stichwinkel",
+          "items": {
+            "$ref": "#/$defs/BuchstabeJson"
+          },
+          "type": "array"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "elastisch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HuelleJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Verzerren (Elastic Lettering)"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "farben": {
+          "default": [],
+          "description": "Farben für die Farbwechsel `^` im Text, in Reihenfolge",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "groesse": {
+          "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grundlinie": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GrundlinieJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Grundlinie (ohne Angabe: gerade waagrecht)"
+        },
+        "hoehe": {
+          "default": 10.0,
+          "description": "Höhe der Großbuchstaben in mm",
+          "format": "double",
+          "type": "number"
+        },
+        "kursiv": {
+          "default": 0.0,
+          "description": "Kursiv in Grad (−45 … 45)",
+          "format": "double",
+          "type": "number"
+        },
+        "laenge": {
+          "description": "Stichlänge bei Lauf/Dreifach in mm",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "muster": {
+          "description": "Füllmuster bei Stichart „muster“: Name („001 Diamond (90)“) oder Nummer („001“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Bezugspunkt auf der Grundlinie [x, y] in mm (Kreis: Kreismitte)"
+        },
+        "schrift": {
+          "description": "Name der Schrift („Arial“, „Arial Bold“) oder Pfad einer .ttf/.otf-Datei",
+          "type": "string"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stichart": {
+          "$ref": "#/$defs/TtfStichart",
+          "default": "tatami"
+        },
+        "text": {
+          "description": "Text; `\\n` = neue Zeile, `^` = Farbwechsel",
+          "type": "string"
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "unterlage": {
+          "description": "Unterlage an/aus (Tatami, Satin; ohne Angabe: Stil)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "winkel": {
+          "description": "Stichwinkel (Tatami, Muster)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "wortabstand": {
+          "description": "Wortabstand in % der Höhe (Vorlage 25)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "zeilenabstand": {
+          "description": "Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\\n` im Text",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "text",
+        "schrift"
+      ],
+      "type": "object"
+    },
+    "TtfStichart": {
+      "description": "Stichart einer Computer-Schrift",
+      "oneOf": [
+        {
+          "const": "tatami",
+          "description": "Tatami-Fläche mit Löchern (Standard, eigene Festlegung)",
+          "type": "string"
+        },
+        {
+          "const": "lauf",
+          "description": "Umriss als Laufstich",
+          "type": "string"
+        },
+        {
+          "const": "dreifach",
+          "description": "Umriss als Dreifachstich",
+          "type": "string"
+        },
+        {
+          "const": "satin",
+          "description": "Satinsäulen wie die TrueType-Umwandlung des Originals",
+          "type": "string"
+        },
+        {
+          "const": "muster",
+          "description": "Füllmuster (Feld `muster`)",
+          "type": "string"
+        }
+      ]
+    },
+    "UnterlageArt": {
+      "description": "Art einer Unterlage (in Stickfolge)",
+      "oneOf": [
+        {
+          "const": "mittellauf",
+          "description": "Mittellauf (0x2746)",
+          "type": "string"
+        },
+        {
+          "const": "edge_walk",
+          "description": "Edge Walk entlang der Kanten (0x2747)",
+          "type": "string"
+        },
+        {
+          "const": "zickzack",
+          "description": "Zickzack",
+          "type": "string"
+        },
+        {
+          "const": "doppelzickzack",
+          "description": "doppelter Zickzack",
+          "type": "string"
+        }
+      ]
+    },
+    "UnterlageJson": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UnterlageWahl",
+          "description": "\"auto\" oder \"keine\""
+        },
+        {
+          "description": "Arten in Stickfolge, z. B. [\"edge_walk\", \"zickzack\"]",
+          "items": {
+            "$ref": "#/$defs/UnterlageArt"
+          },
+          "type": "array"
+        }
+      ],
+      "description": "Unterlage: `\"auto\"` (Standard, wie „Auto Underlay“ des Stils), `\"keine\"` oder eine Liste der Arten in Stickfolge.\nAlte Schreibweise: Arten mit „+“ verbunden (`\"edge_walk+zickzack\"`)."
+    },
+    "UnterlageWahl": {
+      "description": "Unterlage automatisch oder keine",
+      "oneOf": [
+        {
+          "const": "auto",
+          "description": "wie „Auto Underlay“ des Stils (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "keine",
+          "description": "keine Unterlage (z. B. kleine Schrift)",
+          "type": "string"
+        }
+      ]
+    },
+    "Versatz": {
+      "description": "Lage einer Linie zur gezeichneten Linie",
+      "oneOf": [
+        {
+          "const": "mitte",
+          "description": "mittig auf der Linie („Center“, Standard)",
+          "type": "string"
+        },
+        {
+          "const": "seite",
+          "description": "zur Seite: Linie = Kante, Stiche links davon („Offset“)",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "$id": "https://artista-stickprogramm/befehle.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "befehle": {
+    "alphabete_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/AlphabetInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Original-Alphabete (50)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "beispiel_design": {
+      "ausgabe": {
+        "$ref": "#/$defs/DesignWert"
+      },
+      "beschreibung": "Beispieldesign mit allen Sticharten der ersten Ausbaustufe",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "bild_umwandeln": {
+      "ausgabe": {
+        "$ref": "#/$defs/BildErgebnis"
+      },
+      "beschreibung": "Bild in Stickflächen umwandeln (neues Design)",
+      "eingabe": {
+        "$ref": "#/$defs/BildEingabe"
+      }
+    },
+    "datei_lesen": {
+      "ausgabe": {
+        "type": "string"
+      },
+      "beschreibung": "Textdatei lesen",
+      "eingabe": {
+        "$ref": "#/$defs/Pfad"
+      }
+    },
+    "design_berechnen": {
+      "ausgabe": {
+        "$ref": "#/$defs/Ergebnis"
+      },
+      "beschreibung": "Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet)",
+      "eingabe": {
+        "$ref": "#/$defs/DesignEingabe"
+      }
+    },
+    "design_formen": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/ObjektForm"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus",
+      "eingabe": {
+        "$ref": "#/$defs/DesignEingabe"
+      }
+    },
+    "design_pruefen": {
+      "ausgabe": {
+        "$ref": "#/$defs/Pruefung"
+      },
+      "beschreibung": "Design prüfen, ohne Stiche zu berechnen: Fehler (mit Objektnummer) und Hinweise",
+      "eingabe": {
+        "$ref": "#/$defs/DesignEingabe"
+      }
+    },
+    "design_schema": {
+      "ausgabe": true,
+      "beschreibung": "JSON-Schema des Design-Formats (Felder, Standardwerte, Auswahlwerte, Beschreibungen)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "exp_speichern": {
+      "ausgabe": {
+        "format": "uint",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "beschreibung": "Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes)",
+      "eingabe": {
+        "$ref": "#/$defs/ExpEingabe"
+      }
+    },
+    "fuellmuster_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/MusterInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Füllmuster (242) mit Linien einer Kachel für die Vorschau",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "garnkarte_garne": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/GarnInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Garne einer Garnkarte (für die Auswahl von Hand)",
+      "eingabe": {
+        "$ref": "#/$defs/GarnkartenName"
+      }
+    },
+    "garnkarten_liste": {
+      "ausgabe": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Namen der Garnkarten (32 der CD)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "parameter_katalog": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/Parameter"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "rahmen_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/RahmenInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Stickrahmen der artista 185 mit Stickfeld und Umriss",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "reihenfolge_aendern": {
+      "ausgabe": {
+        "$ref": "#/$defs/ReihenfolgeErgebnis"
+      },
+      "beschreibung": "Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe",
+      "eingabe": {
+        "$ref": "#/$defs/ReihenfolgeEingabe"
+      }
+    },
+    "saeulen_vorschau": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/SaeuleInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung)",
+      "eingabe": {
+        "$ref": "#/$defs/SaeulenEingabe"
+      }
+    },
+    "schriften_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/SchriftInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "installierte Computer-Schriften (TrueType/OpenType)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "stoffe_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/StoffInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Stoffe (8 + Software Defaults) mit den wichtigsten Werten",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "text_speichern": {
+      "ausgabe": {
+        "type": "null"
+      },
+      "beschreibung": "Textdatei schreiben",
+      "eingabe": {
+        "$ref": "#/$defs/TextDatei"
+      }
+    },
+    "ueberdeckungen": {
+      "ausgabe": {
+        "items": {
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken",
+      "eingabe": {
+        "$ref": "#/$defs/DesignEingabe"
+      }
+    }
+  },
+  "description": "ERZEUGT aus dem Rust-Kern (stick-kern/src/format.rs, stick-api) – nicht von Hand ändern; neu erzeugen: stick api exportieren",
+  "x-version": 1
+}

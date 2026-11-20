@@ -30,6 +30,9 @@ Befehle:
 Tests: `venv\Scripts\python -m pytest stickprogramm` (Windows) bzw. `venv/bin/python -m pytest stickprogramm`.
 
 ## Design beschreiben (JSON)
+> **Maßgeblich und vollständig** (aus dem Rust-Kern erzeugt): [`SCHNITTSTELLE.md`](../SCHNITTSTELLE.md), Schema
+> `kern/schnittstelle/design.schema.json`, Quelle `kern/stick-kern/src/format.rs`. Diese Tabelle erläutert die Felder.
+
 Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [`beispiele/beispiel.json`](beispiele/beispiel.json).
 | Objekt (`art`) | Felder | Bedeutung |
 |---|---|---|

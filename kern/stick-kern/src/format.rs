@@ -875,6 +875,7 @@ pub struct DesignJson {
     /// Fassung des Formats (ohne Angabe: aktuelle Fassung)
     #[serde(default)]
     pub version: Option<u32>,
+    /// Name des Designs (erscheint in der Designliste der Maschine)
     #[serde(default = "design_name")]
     pub name: String,
     /// Stickrahmen (Befehl `rahmen_liste`)
@@ -896,8 +897,10 @@ pub struct DesignJson {
     /// Stickobjekte in Stickreihenfolge
     #[serde(default)]
     pub objekte: Vec<ObjektJson>,
+    /// Startpunkt (Standard: Rahmenmitte)
     #[serde(default)]
     pub start: Option<Start>,
+    /// Endpunkt (Standard: Sprung zurück zur Rahmenmitte)
     #[serde(default)]
     pub ende: Option<Ende>,
     /// Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift)

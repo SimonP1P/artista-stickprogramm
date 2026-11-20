@@ -1,9 +1,9 @@
 # Funktionsübersicht für Gestaltung und Oberfläche
 
 **Für wen:** Designer (Claude Design) und Frontend-Entwickler. **Was:** jede Funktion, die der Rechenkern kann – was
-der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Feldliste:
-`stickprogramm/README.md` „Design beschreiben (JSON)“. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
-`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 20.11.2026** (Reihenfolge 4b.5 ergänzt) – wird bei jeder neuen Funktion ergänzt.
+der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Feldliste (aus dem Code erzeugt, immer
+aktuell): **`SCHNITTSTELLE.md`**, maschinenlesbar `kern/schnittstelle/`. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
+`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 20.11.2026** (4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
 
 **Modus:** **E** = im einfachen Modus sichtbar, **X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur
 das Ergebnis). **Alle einzelnen Werte** (Stichabstand, Zugausgleich, Unterlagen, Vernähen …) mit Standard, Bereich,
@@ -11,10 +11,22 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 
 ## 1. Wie Oberfläche und Kern zusammenarbeiten
 - Die Oberfläche hält **ein Design als JSON** (Formen in mm, Ursprung Rahmenmitte, +y oben) und schickt es bei jeder
-  Änderung an den Befehl `design_berechnen` (`app/src-tauri/src/lib.rs`). Zurück kommen alle Stiche, Farben, Garne,
-  Statistik (Stiche, Sprünge, Größe), fehlende Zeichen und die Zahl der Einstiche außerhalb des Rahmens.
+  Änderung an den Befehl `design_berechnen`. Zurück kommen alle Stiche, **je Stich die Objektnummer** (Auswahl und
+  Hervorheben), Farben, Garne, Statistik (Stiche, Sprünge, Größe), fehlende Zeichen, die Zahl der Einstiche außerhalb
+  des Rahmens und Hinweise (z. B. Felder, die der Kern nicht liest).
+- Zum Bearbeiten mit der Maus liefert `design_formen` je Objekt die fertigen Umrisse, Löcher, Linien, Satinseiten,
+  Winkellinien, das umschließende Rechteck und Ein-/Ausstich – die Oberfläche rechnet keine Geometrie selbst.
 - **Stiche werden immer neu berechnet** (nie skaliert): Größe, Drehung, Stoff usw. ändern das JSON, nicht die Stiche.
-- Jede neue Kern-Funktion ist damit sofort nutzbar, sobald die Oberfläche das Feld ins JSON schreibt.
+- **Alle Befehle laufen über einen Tauri-Befehl `kern`** (`kern/stick-api`): `kern("design_berechnen", {design})`
+  aus `kern/schnittstelle/kern.ts`. Neue Kern-Befehle brauchen keine Änderung an der App.
+- **Feld- und Befehlsliste werden aus dem Code erzeugt** (nicht von Hand): `SCHNITTSTELLE.md` (lesbar),
+  `kern/schnittstelle/design.schema.json` (Design-Format mit Standardwerten, Auswahlwerten, Beschreibungen),
+  `befehle.schema.json`, `kern.ts` (TypeScript-Typen). Auswahllisten (Stoffe, Rahmen, Stichart …) kommen aus dem
+  Schema bzw. den Listen-Befehlen. Diese Datei hier sagt, **was** eine Funktion für den Anwender ist und in welchem
+  **Modus** sie erscheint.
+- Fehler kommen als `{meldung, objekt}` – `objekt` (ab 0) zeigt, welches Objekt die Oberfläche markieren soll.
+- Objektnummern in Befehlen und Ergebnissen sind **ab 0** (Stelle in `objekte`); in der Objektliste für den Anwender ab 1.
+- Jede neue Kern-Funktion ist sofort nutzbar, sobald die Oberfläche das Feld ins JSON schreibt.
 
 ## 2. Rahmen, Stoff, Garn, Design als Ganzes
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
@@ -73,21 +85,29 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Überdeckung beachten | Häkchen beim Sortieren nach Farbe (aus wie im Original): Objekte, die sich überdecken, behalten ihre Lage; **Warnung**, wenn ein Umordnen ein Objekt unter eine Fläche schiebt, über der es lag (z. B. Kontur unter die Füllung) | – (Werkzeug) | E |
 | Einstich / Ausstich | zwei Griffe am Objekt („entry/exit point“): Objekt beginnt bzw. endet dort (Linien drehen sich um, geschlossene Formen beginnen am nächsten Punkt, Flächen beginnen am Einstich) | `einstich`, `ausstich` ([x, y] mm) | X |
 
-## 6. Weitere Werkzeuge (noch ohne Befehl in der App)
-| Funktion | Heute | Für die neue Oberfläche nötig |
-|---|---|---|
-| Parameterkatalog (für Expertenmodus und Formulare) | `kern/stick-kern/daten/parameter.json`, CLI `stick parameter`, lesbar `PARAMETER.md` | Befehl „Parameterkatalog“ (Liste aus `stick_kern::parameter::katalog()`) |
-| Liste der Füllmuster | CLI `stick muster`, Datei `kern/stick-kern/daten/fuellmuster.json` | Befehl „Musterliste“ (Name, Nummer, Vorschau) |
-| Computer-Schriften (TTF) laden | CLI `stick schriften`; die App lädt TTF noch nicht | Befehl „Schriftenliste“ + Laden der Schrift beim Berechnen |
-| Bild → Umrisse (Auto-Digitalisieren) | CLI `stick bild` (Farben, Breite, Glättung) | Befehl „Bild umwandeln“ → Objekte ins Design |
-| Fläche → Satinsäulen ansehen | CLI `stick saeulen FORMEN.json --svg` (Zerlegung mit Stichlinien) | Befehl „Säulen-Vorschau“ (optional; `satinflaeche` wird beim Berechnen ohnehin zerlegt) |
-| Reihenfolge ändern, Überdeckungen prüfen | CLI `stick reihenfolge` (Liste, Überdeckungen, `--nach-farbe`, `--an-anfang`, `--ans-ende`, `--wie-ausgewaehlt`, `--vor`/`--nach`, `--ueberdeckung`) | Befehl „Reihenfolge“ (Befehl + Auswahl → neues JSON, Farbwechsel vorher/nachher, Warnungen) und „Überdeckungen“ (Paare für die Anzeige) |
-| An die Maschine senden / aus der Maschine lesen | Befehle `maschine_*` (vorhanden) | – |
+## 6. Befehle (`kern/stick-api`, Ein-/Ausgabe in `SCHNITTSTELLE.md` §5)
+| Befehl | Wofür in der Oberfläche |
+|---|---|
+| `rahmen_liste`, `stoffe_liste`, `alphabete_liste`, `garnkarten_liste` | Auswahllisten Schritt 1 (Rahmen, Stoff) und Schrift/Garn |
+| `garnkarte_garne` | Garn je Farbe von Hand wählen (alle Garne einer Karte mit Farbe, Nummer, Name) |
+| `fuellmuster_liste` | Auswahl der 242 Füllmuster mit Vorschau-Kacheln (Linien einer Kachel + Gitter A/B) |
+| `schriften_liste` | Auswahl der Computer-Schriften (installierte TrueType/OpenType) |
+| `parameter_katalog` | Formulare für Einstellungen und Expertenmodus (Standard, Bereich, Einheit, Modus) |
+| `beispiel_design` | Beispiel zum Ausprobieren |
+| `design_schema` | Design-Format zur Laufzeit (dasselbe wie `design.schema.json`) |
+| `design_pruefen` | schnelle Prüfung beim Tippen (Fehler mit Objektnummer, Hinweise), ohne Stiche |
+| `design_berechnen` | Stichvorschau, Kennzahlen, Garne – bei jeder Änderung |
+| `design_formen` | Formansicht und Griffe zum Bearbeiten mit der Maus |
+| `exp_speichern` | Datei → Stickdatei speichern |
+| `reihenfolge_aendern` | Menü „Anordnen“: nach Farbe, an Anfang/Ende, wie ausgewählt, vor/nach Nummer – mit Warnungen bei Überdeckung |
+| `ueberdeckungen` | Anzeige, welche Objekte sich überdecken (z. B. in der Objektliste) |
+| `saeulen_vorschau` | Vorschau der automatischen Satin-Stichrichtung einer Fläche (optional) |
+| `bild_umwandeln` | Bild → Umrisse (Auto-Digitalisieren): neues Design aus einem Bild |
+| `datei_lesen`, `text_speichern` | Design öffnen/speichern |
+| Maschine: `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` | noch als eigene Befehle in der App (`app/src-tauri/src/lib.rs`), kommen später in `stick-api` |
 
-Vorhandene Befehle (`app/src-tauri/src/lib.rs`): `rahmen_liste`, `stoffe_liste`, `alphabete_liste`,
-`garnkarten_liste`, `beispiel_design`, `design_berechnen`, `datei_lesen`, `text_speichern`, `exp_speichern`,
-`maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_liste`, `maschine_lesen`,
-`gelesen_exp_speichern`.
+Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DATEI.json` (Eingabe wie in
+`SCHNITTSTELLE.md`).
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
 **SVG-Import** (vorgezogen): Design aus Inkscape laden – Flächen, Konturen, Farben und Reihenfolge werden

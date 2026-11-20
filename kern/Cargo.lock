@@ -815,10 +815,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "stick-api"
+version = "0.1.0"
+dependencies = [
+ "schemars",
+ "serde",
+ "serde_json",
+ "stick-formate",
+ "stick-kern",
+ "stick-vektor",
+]
+
+[[package]]
 name = "stick-cli"
 version = "0.1.0"
 dependencies = [
  "serde_json",
+ "stick-api",
  "stick-formate",
  "stick-kern",
  "stick-maschine",

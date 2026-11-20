@@ -3,7 +3,7 @@
 use crate::geometrie::{Punkt, abstand, begrenzung, p};
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum Art {
     /// Nadel sticht an (x, y) ein
@@ -14,7 +14,8 @@ pub enum Art {
     Farbwechsel,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+/// Ein Stich: Position in mm (Ursprung Rahmenmitte, +y oben) und Art.
+#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize, schemars::JsonSchema)]
 pub struct Stich {
     pub x: f64,
     pub y: f64,

@@ -69,6 +69,7 @@
 | **Bestandsaufnahme Funktionen** (Original gegen Kern, Grundlage Phase 4b und Parameterkatalog) | `Analyse_Teil3/15_funktionsinventur.md`, `ROADMAP.md` Phase 4b |
 | **UI-Mockups** (Claude Design, archiviert; Hinweise aus der Analyse für die Gestaltung) | `UI_Mockups/` (`README.md`, Stände je Ordner) |
 | **Parameterkatalog** (jeder einstellbare Wert: Standard, Bereich, Quelle, Werte je Stoff, Modus einfach/experte/automatisch; Tests halten ihn aktuell; bei neuen Werten `Arbeitsdaten/werkzeuge/parameter_katalog.py` ergänzen, dann `stick parameter --markdown > PARAMETER.md`) | `PARAMETER.md`, `kern/stick-kern/daten/parameter.json`, `kern/stick-kern/src/parameter.rs` |
+| **Schnittstelle Kern ↔ Oberfläche** (ROADMAP 4b.0): Design-Format = `kern/stick-kern/src/format.rs` (einzige Quelle, Doc-Kommentare = Beschreibung), Befehle = `kern/stick-api` (ein Tauri-Befehl `kern`, Verteiler `ausfuehren`); **erzeugt** (nicht von Hand ändern): `SCHNITTSTELLE.md` (lesbare Feld- und Befehlsliste), `kern/schnittstelle/` (`design.schema.json`, `befehle.schema.json`, `kern.ts`); Objektnummer je Stich, Formen je Objekt (`Design::formen`); CLI `stick api` | `SCHNITTSTELLE.md`, `kern/stick-api/src/lib.rs` |
 | **Funktionsübersicht für Designer und Frontend** (jede Funktion, Einstellungen, Standard, JSON-Feld, einfach/experte, fehlende App-Befehle; bei jeder neuen Funktion pflegen) | `UI_Mockups/FUNKTIONEN.md` |
 | **Merkliste für den Nutzer** (u. a. M1: Parameterkatalog einfach/experte melden, wenn alle Funktionen fertig) | `ROADMAP.md` „Merkliste für den Nutzer“ |
 | **Anforderungen an die neue Oberfläche** (UX/UI wird komplett neu gestaltet – Mockup von Claude Design; bis dahin **an der App nichts ändern**, nur Kern/Befehle) | `app/ANFORDERUNGEN.md` |
@@ -99,6 +100,20 @@
 4. Werkzeuge: maßgeblich ist `Arbeitsdaten/werkzeuge/`. Kopien in `Analyse/code/` und `Analyse_Teil2/code/` sind für die Lesbarkeit der Berichte da und müssen identisch bleiben.
 5. **Speicherplatz auf dem Mac ist fast voll** (~1,8 GB frei): große Zwischenstände nur im Scratchpad, nicht im Projekt. **Windows-PC:** C: ~15 GB frei, **F: ~113 GB frei** → Rust, Node und alle Build-Ausgaben auf F:\Entwicklung (`ARCHITECTURE.md` §5).
 6. Testprogramme für Windows: PowerShell 5.1-kompatibel, `.ps1` als UTF-8 **mit BOM** und CRLF; vorher mit Simulation (`-Simulation`) testen.
+7. **Schnittstelle zur Oberfläche synchron halten** (Nutzer 20.11.2026, ROADMAP 4b.0) – bei **jeder** Änderung an
+   Kern-Funktionen, Design-Feldern oder Befehlen:
+   - neues/geändertes Design-Feld **nur** in `kern/stick-kern/src/format.rs` (mit deutschem Doc-Kommentar = Beschreibung
+     für Designer/Frontend, Standard über `#[serde(default = …)]`, Auswahlwerte als `auswahl!`-Aufzählung), Umsetzung in
+     `design.rs`; ändert sich die **Bedeutung** eines vorhandenen Felds: `format::VERSION` erhöhen und `migrieren` ergänzen;
+   - neuer Befehl für die Oberfläche **nur** in `kern/stick-api` (Funktion in `befehle.rs`, Eintrag in `befehle!` in
+     `lib.rs`) – nicht als eigener Tauri-Befehl in der App;
+   - danach **`stick api exportieren`** (bzw. `cargo run -p stick-cli -- api exportieren`) und die erzeugten Dateien
+     (`SCHNITTSTELLE.md`, `kern/schnittstelle/*`) mitcommitten;
+   - **von Hand pflegen** (nicht automatisch): `UI_Mockups/FUNKTIONEN.md` (was der Anwender einstellt, Standard,
+     JSON-Feld, Modus einfach/experte), Parameterkatalog (`parameter_katalog.py` → `PARAMETER.md`), ROADMAP;
+   - Wächter-Tests in `stick-api` schlagen fehl, wenn die erzeugten Dateien veraltet sind, wenn `FUNKTIONEN.md` eine
+     Objektart oder einen Befehl nicht nennt oder der Parameterkatalog ein Feld nennt, das es im Format nicht gibt –
+     nicht abschalten, sondern die Doku nachziehen.
 
 ## 4a. Versionierung
 - **GitHub (privat):** https://github.com/SimonP1P/artista-stickprogramm – Branch `main`. Ersetzt das alte Repo `Stickprojekt` (Nutzer will neu anfangen, 18.11.2026).
@@ -135,5 +150,5 @@ in der Roadmap stehen.
 | 1 Prototyp | Stichberechnung in Python, Referenz für den Rust-Kern | ✅ (`stickprogramm/`) |
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
-| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen, 4b.5 Reihenfolge ✅, 4b.17 Baustein „Satin automatisch“ ✅; Parameterkatalog angelegt; nächster Schritt SVG lesen (4b.17), dann 4b.16, 4b.6 … | 🟡 (`ROADMAP.md` Phase 4b) |
+| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): **4b.0 Schnittstelle für die Oberfläche ✅** (Schema, `stick-api`, erzeugte `SCHNITTSTELLE.md`/`kern.ts`), 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen, 4b.5 Reihenfolge ✅, 4b.17 Baustein „Satin automatisch“ ✅; Parameterkatalog angelegt; nächster Schritt 4b.16 Werte je Objekt, dann SVG lesen (4b.17), 4b.6 … | 🟡 (`ROADMAP.md` Phase 4b) |
 | 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |

@@ -356,6 +356,70 @@ fn reihenfolge(args: &[String], hilfe: &str) -> Result<bool, String> {
     Ok(e.vertauscht.is_empty())
 }
 
+/// `stick api`: Befehle der Oberfläche ohne Oberfläche ausprobieren (`stick-api`), Schnittstelle neu erzeugen.
+fn api(args: &[String]) -> Result<bool, String> {
+    let mut k = stick_api::Kontext::finden(None);
+    if let Some(o) = option(args, "--alphabete") {
+        k.alphabete = o.into();
+    }
+    if let Some(o) = option(args, "--garnkarten") {
+        k.garnkarten = o.into();
+    }
+    k.schriften = schrift_ordner(args);
+    match args.get(1).map(String::as_str) {
+        None | Some("liste") => {
+            for b in stick_api::alle() {
+                println!("  {:<22} {}", b.name, b.beschreibung.trim());
+            }
+            println!("  Aufruf: stick api NAME [JSON | DATEI.json | -]   ·   stick api exportieren");
+            Ok(true)
+        }
+        Some("exportieren") => {
+            let wurzel = args
+                .get(2)
+                .filter(|a| !a.starts_with('-'))
+                .map(PathBuf::from)
+                .unwrap_or_else(stick_api::erzeugen::repo_wurzel);
+            let geaendert = stick_api::erzeugen::schreiben(&wurzel)?;
+            if geaendert.is_empty() {
+                println!("  Schnittstelle ist aktuell");
+            }
+            for p in geaendert {
+                println!("  neu erzeugt: {p}");
+            }
+            Ok(true)
+        }
+        Some(name) => {
+            let daten: serde_json::Value = match args.get(2).filter(|a| !a.starts_with("--")).map(String::as_str) {
+                None => serde_json::Value::Null,
+                Some("-") => {
+                    let mut t = String::new();
+                    std::io::Read::read_to_string(&mut std::io::stdin(), &mut t).map_err(|e| e.to_string())?;
+                    serde_json::from_str(&t).map_err(|e| format!("JSON ungültig: {e}"))?
+                }
+                Some(t) if t.trim_start().starts_with(['{', '[']) => {
+                    serde_json::from_str(t).map_err(|e| format!("JSON ungültig: {e}"))?
+                }
+                Some(pfad) => {
+                    let t = std::fs::read_to_string(pfad).map_err(|e| format!("{pfad}: {e}"))?;
+                    serde_json::from_str(&t).map_err(|e| format!("{pfad}: JSON ungültig: {e}"))?
+                }
+            };
+            match stick_api::ausfuehren(&k, name, daten) {
+                Ok(v) => {
+                    let text = serde_json::to_string_pretty(&v).map_err(|e| e.to_string())?;
+                    match option(args, "-o") {
+                        Some(z) => std::fs::write(&z, text).map_err(|e| format!("{z}: {e}"))?,
+                        None => println!("{text}"),
+                    }
+                    Ok(true)
+                }
+                Err(f) => Err(serde_json::to_string(&f).unwrap_or(f.meldung)),
+            }
+        }
+    }
+}
+
 /// Sendedaten aus einer Eingabedatei: Design-JSON (berechnen), .exp oder aus der Maschine gelesenes Design (.bin).
 fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, String> {
     let farben_im_anhang = args.iter().any(|a| a == "--farben-im-anhang");
@@ -523,7 +587,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -573,6 +637,7 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         Some("reihenfolge") => reihenfolge(args, hilfe),
         Some("saeulen") => saeulen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
+        Some("api") => api(args),
         Some("bild") => {
             let pfad = PathBuf::from(args.get(1).ok_or(
                 "stick bild BILD [--breite MM] [--farben N] [--rahmen NAME] [--mit-hintergrund] [-o DESIGN.json]",

@@ -1,0 +1,251 @@
+//! **Befehlsschicht für die Oberfläche** (ROADMAP 4b.0): alle Befehle an einer Stelle, ein Verteiler
+//! `ausfuehren(kontext, befehl, daten)`. Die App bindet nur **einen** Tauri-Befehl ein, der hierher weiterreicht –
+//! neue Kern-Befehle brauchen dann keine Änderung an der App:
+//!
+//! ```ignore
+//! #[tauri::command]
+//! async fn kern(befehl: String, daten: serde_json::Value, k: tauri::State<'_, std::sync::Arc<stick_api::Kontext>>)
+//!     -> Result<serde_json::Value, stick_api::Fehler> {
+//!     let k = k.inner().clone();
+//!     tauri::async_runtime::spawn_blocking(move || stick_api::ausfuehren(&k, &befehl, daten)).await
+//!         .map_err(|e| stick_api::Fehler::from(e.to_string()))?
+//! }
+//! ```
+//!
+//! Aus denselben Typen entstehen `kern/schnittstelle/` (JSON-Schemas, `kern.ts`) und `SCHNITTSTELLE.md`
+//! (`stick api exportieren`). Die Tests schlagen fehl, wenn diese Dateien veraltet sind.
+//!
+//! Die Befehle für die Maschine (`maschine_*`: Port, Fortschritt als Ereignis) liegen noch in der App
+//! (`app/src-tauri/src/lib.rs`) und kommen hierher, wenn die neue Oberfläche sie braucht.
+
+pub mod befehle;
+pub mod erzeugen;
+
+use schemars::{JsonSchema, Schema, SchemaGenerator};
+use serde::Serialize;
+use serde_json::Value;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
+use std::sync::Mutex;
+use stick_kern::Design;
+use stick_kern::schrift::Alphabet;
+
+/// Fehler eines Befehls: Meldung (deutsch) und, wenn er zu einem Objekt gehört, dessen Nummer (ab 0) – damit die
+/// Oberfläche das Objekt markieren kann.
+#[derive(Clone, Debug, PartialEq, Serialize, JsonSchema)]
+pub struct Fehler {
+    pub meldung: String,
+    /// Nummer des Objekts in `objekte` (ab 0), wenn bekannt
+    pub objekt: Option<usize>,
+}
+
+impl From<String> for Fehler {
+    /// Objektnummer aus „Objekt N …“ der Kern-Meldungen (N ab 1).
+    fn from(meldung: String) -> Self {
+        let objekt = meldung.match_indices("Objekt ").find_map(|(i, t)| {
+            let rest = &meldung[i + t.len()..];
+            let ziffern: String = rest.chars().take_while(char::is_ascii_digit).collect();
+            ziffern.parse::<usize>().ok().filter(|&n| n >= 1).map(|n| n - 1)
+        });
+        Fehler { meldung, objekt }
+    }
+}
+
+impl From<&str> for Fehler {
+    fn from(m: &str) -> Self {
+        Fehler::from(m.to_string())
+    }
+}
+
+impl std::fmt::Display for Fehler {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(&self.meldung)
+    }
+}
+
+/// Ordner der Daten (Alphabete, Garnkarten, Schriften) und Zwischenspeicher – einmal je Programm anlegen.
+pub struct Kontext {
+    /// Original-Alphabete (ESB)
+    pub alphabete: PathBuf,
+    /// Garnkarten (.tch)
+    pub garnkarten: PathBuf,
+    /// Ordner der Computer-Schriften (leer = Schriften des Systems)
+    pub schriften: Vec<PathBuf>,
+    geladen: Mutex<HashMap<String, Alphabet>>,
+}
+
+impl Kontext {
+    pub fn neu(alphabete: PathBuf, garnkarten: PathBuf) -> Kontext {
+        Kontext {
+            alphabete,
+            garnkarten,
+            schriften: Vec::new(),
+            geladen: Mutex::new(HashMap::new()),
+        }
+    }
+
+    /// Ordner wie die App: Umgebungsvariablen `STICK_ALPHABETE`/`STICK_GARNKARTEN`, sonst `ressourcen/alphabete`
+    /// bzw. `ressourcen/garnkarten` (gebautes Programm), sonst die Ordner der App im Quellbaum.
+    pub fn finden(ressourcen: Option<&Path>) -> Kontext {
+        let ordner = |var: &str, name: &str| -> PathBuf {
+            if let Ok(p) = std::env::var(var) {
+                return p.into();
+            }
+            if let Some(r) = ressourcen.map(|r| r.join(name))
+                && r.is_dir()
+            {
+                return r;
+            }
+            Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("../../app/src-tauri")
+                .join(name)
+        };
+        Kontext::neu(
+            ordner("STICK_ALPHABETE", "alphabete"),
+            ordner("STICK_GARNKARTEN", "garnkarten"),
+        )
+    }
+
+    /// Design aus der Eingabe: Rahmen/Stoff der Oberfläche einsetzen, Alphabete (zwischengespeichert) und
+    /// Computer-Schriften laden.
+    pub fn design(&self, e: &befehle::DesignEingabe) -> Result<Design, Fehler> {
+        let mut v = e.design.0.clone();
+        let o = v.as_object_mut().ok_or("Das Design muss ein JSON-Objekt sein")?;
+        if let Some(r) = &e.rahmen {
+            o.insert("rahmen".into(), r.clone().into());
+        }
+        if let Some(s) = &e.stoff {
+            o.insert("stoff".into(), s.clone().into());
+        }
+        let mut design = Design::aus_value(&v)?;
+        self.alphabete_einsetzen(&mut design)?;
+        stick_formate::ttf::design_schriften_laden(&mut design, &self.schriften)?;
+        Ok(design)
+    }
+
+    fn alphabete_einsetzen(&self, design: &mut Design) -> Result<(), Fehler> {
+        let namen = design.alphabet_namen();
+        if namen.is_empty() {
+            return Ok(());
+        }
+        let mut geladen = self.geladen.lock().map_err(|e| Fehler::from(e.to_string()))?;
+        if namen.iter().any(|n| !geladen.contains_key(n)) {
+            let mut d = Design {
+                alphabete: Default::default(),
+                ..design.clone()
+            };
+            stick_formate::esb::design_alphabete_laden(&mut d, &self.alphabete)?;
+            geladen.extend(d.alphabete);
+        }
+        for n in namen {
+            if let Some(a) = geladen.get(&n) {
+                design.alphabete.insert(n, a.clone());
+            }
+        }
+        Ok(())
+    }
+}
+
+/// Ein Befehl der Oberfläche: Name, Beschreibung, Schema von Ein- und Ausgabe, Ausführung.
+pub struct Befehl {
+    pub name: &'static str,
+    /// Beschreibung (Doc-Kommentar der Liste in `befehle!`)
+    pub beschreibung: &'static str,
+    pub eingabe: fn(&mut SchemaGenerator) -> Schema,
+    pub ausgabe: fn(&mut SchemaGenerator) -> Schema,
+    lauf: fn(&Kontext, Value) -> Result<Value, Fehler>,
+}
+
+fn eingabe_lesen<T: serde::de::DeserializeOwned>(v: Value) -> Result<T, Fehler> {
+    let v = if v.is_null() {
+        Value::Object(Default::default())
+    } else {
+        v
+    };
+    serde_json::from_value(v.clone()).map_err(|e| {
+        // Fehler im Design: mit Objektnummer wie beim Lesen im Kern
+        if let Some(d) = v.get("design")
+            && let Err(m) = Design::aus_value(d)
+        {
+            return Fehler::from(m);
+        }
+        Fehler::from(format!(
+            "Eingabe ungültig: {}",
+            stick_kern::format::fehler_deutsch(&e.to_string())
+        ))
+    })
+}
+
+macro_rules! befehle {
+    ($( $(#[doc = $doc:literal])+ $name:ident : $ein:ty => $aus:ty ),+ $(,)?) => {
+        /// Alle Befehle in der Reihenfolge der Schnittstellen-Doku.
+        pub fn alle() -> Vec<Befehl> {
+            vec![$(Befehl {
+                name: stringify!($name),
+                beschreibung: concat!($($doc),+),
+                eingabe: |g| g.subschema_for::<$ein>(),
+                ausgabe: |g| g.subschema_for::<$aus>(),
+                lauf: |k, v| {
+                    let e: $ein = eingabe_lesen(v)?;
+                    let a: $aus = befehle::$name(k, e)?;
+                    serde_json::to_value(a).map_err(|x| Fehler::from(x.to_string()))
+                },
+            }),+]
+        }
+    };
+}
+
+befehle! {
+    /// Stickrahmen der artista 185 mit Stickfeld und Umriss
+    rahmen_liste: befehle::Leer => Vec<befehle::RahmenInfo>,
+    /// Stoffe (8 + Software Defaults) mit den wichtigsten Werten
+    stoffe_liste: befehle::Leer => Vec<befehle::StoffInfo>,
+    /// Original-Alphabete (50)
+    alphabete_liste: befehle::Leer => Vec<befehle::AlphabetInfo>,
+    /// Namen der Garnkarten (32 der CD)
+    garnkarten_liste: befehle::Leer => Vec<String>,
+    /// Garne einer Garnkarte (für die Auswahl von Hand)
+    garnkarte_garne: befehle::GarnkartenName => Vec<befehle::GarnInfo>,
+    /// Füllmuster (242) mit Linien einer Kachel für die Vorschau
+    fuellmuster_liste: befehle::Leer => Vec<befehle::MusterInfo>,
+    /// installierte Computer-Schriften (TrueType/OpenType)
+    schriften_liste: befehle::Leer => Vec<befehle::SchriftInfo>,
+    /// Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch
+    parameter_katalog: befehle::Leer => Vec<stick_kern::parameter::Parameter>,
+    /// Beispieldesign mit allen Sticharten der ersten Ausbaustufe
+    beispiel_design: befehle::Leer => befehle::DesignWert,
+    /// JSON-Schema des Design-Formats (Felder, Standardwerte, Auswahlwerte, Beschreibungen)
+    design_schema: befehle::Leer => Value,
+    /// Design prüfen, ohne Stiche zu berechnen: Fehler (mit Objektnummer) und Hinweise
+    design_pruefen: befehle::DesignEingabe => befehle::Pruefung,
+    /// Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet)
+    design_berechnen: befehle::DesignEingabe => befehle::Ergebnis,
+    /// Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus
+    design_formen: befehle::DesignEingabe => Vec<stick_kern::design::ObjektForm>,
+    /// Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes)
+    exp_speichern: befehle::ExpEingabe => usize,
+    /// Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe
+    reihenfolge_aendern: befehle::ReihenfolgeEingabe => befehle::ReihenfolgeErgebnis,
+    /// Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken
+    ueberdeckungen: befehle::DesignEingabe => Vec<[usize; 2]>,
+    /// Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung)
+    saeulen_vorschau: befehle::SaeulenEingabe => Vec<befehle::SaeuleInfo>,
+    /// Bild in Stickflächen umwandeln (neues Design)
+    bild_umwandeln: befehle::BildEingabe => befehle::BildErgebnis,
+    /// Textdatei lesen
+    datei_lesen: befehle::Pfad => String,
+    /// Textdatei schreiben
+    text_speichern: befehle::TextDatei => (),
+}
+
+/// Befehl ausführen: Eingabe und Ausgabe als JSON (Typen: `kern/schnittstelle/befehle.schema.json`).
+pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehler> {
+    let b = alle()
+        .into_iter()
+        .find(|b| b.name == befehl)
+        .ok_or_else(|| Fehler::from(format!("Befehl „{befehl}“ unbekannt")))?;
+    (b.lauf)(k, daten)
+}
+
+#[cfg(test)]
+mod tests;

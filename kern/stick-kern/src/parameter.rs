@@ -10,7 +10,8 @@ use crate::einstellungen::{Einstellungen, STOFFE, fuer_stoff};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+/// Ein einstellbarer Wert des Parameterkatalogs (`PARAMETER.md`).
+#[derive(Clone, Debug, Deserialize, Serialize, schemars::JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Parameter {
     /// eindeutiger Schlüssel, z. B. „satin.abstand_fest“
