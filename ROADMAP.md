@@ -108,6 +108,8 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
     mit festem Stoff, Vlies, Stickgarn: Prüfmuster Satin in mehreren Breiten, Tatami, Kreis, Schrift; auch feine Arbeiten
 
 ## Phase 5 – Maschine im Programm und Komfort
+**20.11.2026:** Die Oberfläche wird komplett neu gestaltet (Mockup von Claude Design, Zugriff auf das Repository);
+Anforderungen in `app/ANFORDERUNGEN.md`. Bis zum neuen Design keine Änderungen an der App, neue Funktionen nur im Kern.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –
   verbinden, Liste lesen, Design lesen, Garnfarbbereich, planen, senden; CLI `stick maschine …`; **am Gerät lesend
   erprobt** (prüfen 3,8 s, Liste, Nr. 47 mit vollständigem Icon)

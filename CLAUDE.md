@@ -59,6 +59,7 @@
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
 | **Maschine aus Rust** (`stick-maschine`: Protokoll der Testprogramme, Simulation, CLI `stick maschine …`, App Schritt 4) | `kern/stick-maschine/`, `kern/README.md`, `app/README.md`; Befund `Analyse_Teil2/07` (Rust am Gerät, 20.11.2026) |
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
+| **Anforderungen an die neue Oberfläche** (UX/UI wird komplett neu gestaltet – Mockup von Claude Design; bis dahin **an der App nichts ändern**, nur Kern/Befehle) | `app/ANFORDERUNGEN.md` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |
 
 **Quellen-Hierarchie bei Widersprüchen:** (1) Gerätetest > (2) Maschinencode/entschlüsselte Daten > (3) Handbuch > (4) Ableitung/Vermutung. Die Berichte nennen zu jeder Aussage Fundstelle und Sicherheit (hoch/mittel/niedrig). Diese Kennzeichnung beibehalten.
