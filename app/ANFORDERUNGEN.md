@@ -125,7 +125,10 @@ Raster/Fangen; Maße numerisch eingeben.
   Original; „keine“ für kleine Schrift).
 - Mehrere Textobjekte je Design; **Zeichen, die das Alphabet nicht hat**, werden gemeldet.
 - **S:** Alphabet-Vorschau (Musterzeile je Alphabet) in der Auswahl; mehrzeiliger Text; Text auf Bogen (P).
-- **P:** Computer-Schriften (TTF/OTF) in derselben Auswahl, klar getrennt von den Original-Alphabeten.
+- **P → im Kern fertig (20.11.2026):** Computer-Schriften (TTF/OTF, alle installierten Schriften) in derselben
+  Auswahl, klar getrennt von den Original-Alphabeten. Eingaben: Schrift, Text, Höhe (Großbuchstaben), Breite %,
+  Abstand, Position, Ausrichtung, **Stichart** (Fläche/Tatami mit Winkel, Umriss Lauf, Umriss Dreifach). Das Programm
+  braucht dafür noch einen Befehl „Schriften auflisten“ und das Laden in `design_berechnen` (Kern: `stick_formate::ttf`).
 
 ### 3.6 Vorschau – M
 - Stiche in Garnfarben, Rahmen/Stickfeld, Ursprung.

@@ -10,6 +10,7 @@ pub mod geometrie;
 pub mod nachbearbeitung;
 pub mod rahmen;
 pub mod schrift;
+pub mod schrift_ttf;
 pub mod sticharten;
 pub mod stiche;
 

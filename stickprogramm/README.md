@@ -38,6 +38,8 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `satin` | `seite_a`, `seite_b`, `unterlage` | Satinsäule; Punkt *i* von A gehört zu Punkt *i* von B |
 | `satinlinie` | `punkte`, `breite`, `unterlage` | Satinbahn konstanter Breite um eine Mittellinie |
 | `tatami` | `umriss`, `loecher`, `winkel` (45°), `unterlage` (true) | Füllung mit Tatami-Unterlage |
+| `text` (nur Rust-Kern) | `text`, `alphabet`, `hoehe`, `breite` (%), `abstand`, `position`, `ausrichtung`, `unterlage` | Original-Alphabet (ESB) |
+| `ttf` (nur Rust-Kern) | `text`, `schrift` (Name oder Pfad), `hoehe` (Großbuchstaben), `breite`, `abstand`, `position`, `ausrichtung`, `stichart` (`tatami`/`lauf`/`dreifach`), `winkel`, `unterlage`, `laenge` | Computer-Schrift (TrueType/OpenType) |
 
 Alle Objekte haben `farbe` (`#rrggbb`) und `name`. Statt einer Punktliste geht eine Form:
 `{"kreis": {"mitte", "radius"}}`, `{"rechteck": {"mitte", "breite", "hoehe"}}`, `{"bogen": {"mitte", "radius", "von", "bis"}}`,

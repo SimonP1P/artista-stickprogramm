@@ -101,7 +101,10 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    Maschine: 34 von 51 enden auf 0,0) · ⬜ Start-/Endpunkte je Objekt („Closest Join“, MOD1 `AutoStartEndObject`,
    `CalcStartEnd…`) und Reihenfolge der Objekte
 6. ⬜ Fancy-/Musterfüllungen, Applikation
-7. ⬜ Computer-Schriften (TTF) als Umrisse
+7. ✅ 20.11.2026 Computer-Schriften (TrueType/OpenType, auch .ttc) im Kern: alle installierten Schriften (Windows/Mac),
+   Höhe = Großbuchstaben, je Buchstabe **Tatami-Fläche** mit Löchern (eigene Festlegung – Stichart des Originals für
+   TrueType nicht belegt) oder Lauf-/Dreifach-Umriss; JSON `"art": "ttf"`, CLI `stick schriften`. Satin entlang der
+   Striche später (braucht Säulenzerlegung, zusammen mit Punkt 8). Im Programm: kommt mit der neuen Oberfläche
 8. ⬜ Bild → Umrisse (Vektorisierung: Potrace/VTracer)
 9. ⬜ Knockout/Überlappung
 10. 🟡 Probestickereien an der Maschine: erste am 19.11.2026 (Testquadrat, Bettlaken ohne Vlies – Geometrie ok); nächste

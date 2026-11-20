@@ -10,6 +10,7 @@ use crate::geometrie::{
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{Alphabet, TextVorgabe, text_objekte};
+use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte};
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
 use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mittellinie};
 use crate::sticharten::tatami::tatami;
@@ -192,6 +193,42 @@ struct TextJson {
     unterlage: UnterlageJson,
 }
 
+/// Text mit einer Computer-Schrift (TrueType/OpenType, `schrift_ttf.rs`). Die Schriften lädt der Aufrufer
+/// (`Design::ttf_schriften`, `stick-formate::ttf`).
+#[derive(Debug, Deserialize)]
+struct TtfJson {
+    #[serde(default = "schwarz")]
+    farbe: String,
+    #[serde(default)]
+    name: String,
+    text: String,
+    /// Name der Schrift („Arial“, „Arial Bold“) oder Pfad einer .ttf/.otf-Datei
+    schrift: String,
+    /// Höhe der Großbuchstaben in mm
+    #[serde(default = "text_hoehe")]
+    hoehe: f64,
+    #[serde(default = "hundert")]
+    breite: f64,
+    /// zusätzlicher Buchstabenabstand in mm (ohne Angabe 0)
+    abstand: Option<f64>,
+    #[serde(default)]
+    position: Option<Punkt>,
+    #[serde(default = "mitte")]
+    ausrichtung: String,
+    /// tatami (Standard) | lauf | dreifach
+    #[serde(default = "tatami_art")]
+    stichart: String,
+    winkel: Option<f64>,
+    /// Tatami-Unterlage (ohne Angabe: Auto Underlay des Stils)
+    unterlage: Option<bool>,
+    /// Stichlänge bei Lauf/Dreifach
+    laenge: Option<f64>,
+}
+
+fn tatami_art() -> String {
+    "tatami".into()
+}
+
 #[derive(Debug, Deserialize)]
 struct SatinLinieJson {
     #[serde(default = "schwarz")]
@@ -227,6 +264,7 @@ enum ObjektJson {
     Satinlinie(SatinLinieJson),
     Tatami(TatamiJson),
     Text(TextJson),
+    Ttf(TtfJson),
 }
 
 fn design_name() -> String {
@@ -311,6 +349,12 @@ pub enum ObjektArt {
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
+    /// Text mit einer Computer-Schrift (TrueType/OpenType); wird vor dem Berechnen aufgelöst
+    TtfText {
+        schrift: String,
+        vorgabe: TextVorgabe,
+        stichart: TtfStichart,
+    },
     /// Zusammengehörige Teile (ein Buchstabe): Reihenfolge nach Nähe, verbunden mit Laufweg statt Sprung, wenn der
     /// Weg unter noch zu stickenden Teilen liegt (`Analyse_Teil3/10` §4)
     Gruppe {
@@ -724,6 +768,7 @@ impl Objekt {
                 laufweg,
             } => gruppe_wege(teile, umrisse, *laufweg, e, start),
             ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
+            ObjektArt::TtfText { schrift, .. } => Err(format!("Text mit Schrift „{schrift}“ wurde nicht aufgelöst")),
             ObjektArt::Tatami {
                 umriss,
                 loecher,
@@ -756,6 +801,8 @@ pub struct Design {
     /// Sprung zurück zum Ursprung (Rahmenmitte). Belegt an den Designs der Maschine: 34 von 51 enden genau auf 0,0
     /// (die Zeichensätze, deren Ursprung am Zeilenanfang liegt, auf der Grundlinie). Standard an.
     pub ende_zur_mitte: bool,
+    /// geladene Computer-Schriften (Name wie im Design); füllt der Aufrufer, siehe `ttf_bedarf`
+    pub ttf_schriften: BTreeMap<String, TtfSchrift>,
 }
 
 impl Design {
@@ -814,6 +861,41 @@ impl Design {
                     },
                     farbe: t.farbe,
                 },
+                ObjektJson::Ttf(t) => Objekt {
+                    name: if t.name.is_empty() { t.text.clone() } else { t.name },
+                    art: ObjektArt::TtfText {
+                        schrift: t.schrift,
+                        vorgabe: TextVorgabe {
+                            text: t.text,
+                            hoehe: t.hoehe,
+                            breite_prozent: t.breite,
+                            abstand: t.abstand,
+                            position: t.position.unwrap_or(p(0.0, 0.0)),
+                            ausrichtung: match t.ausrichtung.as_str() {
+                                "links" => 0.0,
+                                "rechts" => 1.0,
+                                _ => 0.5,
+                            },
+                            farbe: t.farbe.clone(),
+                            unterlage: None,
+                        },
+                        stichart: match t.stichart.as_str() {
+                            "lauf" => TtfStichart::Lauf {
+                                laenge: t.laenge,
+                                dreifach: false,
+                            },
+                            "dreifach" => TtfStichart::Lauf {
+                                laenge: t.laenge,
+                                dreifach: true,
+                            },
+                            _ => TtfStichart::Tatami {
+                                winkel: t.winkel,
+                                unterlage: t.unterlage,
+                            },
+                        },
+                    },
+                    farbe: t.farbe,
+                },
                 ObjektJson::Satinlinie(s) => Objekt {
                     farbe: s.farbe,
                     name: s.name,
@@ -842,6 +924,7 @@ impl Design {
             objekte,
             alphabete: BTreeMap::new(),
             ende_zur_mitte: d.ende.as_deref() != Some("letzter_stich"),
+            ttf_schriften: BTreeMap::new(),
         })
     }
 
@@ -860,6 +943,17 @@ impl Design {
         n
     }
 
+    /// Computer-Schriften, die das Design braucht: Name → benutzte Zeichen (zum Laden durch den Aufrufer).
+    pub fn ttf_bedarf(&self) -> BTreeMap<String, std::collections::BTreeSet<char>> {
+        let mut m: BTreeMap<String, std::collections::BTreeSet<char>> = BTreeMap::new();
+        for o in &self.objekte {
+            if let ObjektArt::TtfText { schrift, vorgabe, .. } = &o.art {
+                m.entry(schrift.clone()).or_default().extend(vorgabe.text.chars());
+            }
+        }
+        m
+    }
+
     /// Objekte mit aufgelösten Texten (Buchstaben als Satin-/Lauf-Objekte). Fehlende Zeichen werden übersprungen
     /// und im zweiten Wert gemeldet.
     pub fn objekte_aufgeloest(&self) -> Result<(Vec<Objekt>, Vec<char>), String> {
@@ -874,6 +968,19 @@ impl Design {
                         .or_else(|| self.alphabete.values().find(|a| a.name.eq_ignore_ascii_case(alphabet)))
                         .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
                     let (obj, f) = text_objekte(a, vorgabe);
+                    out.extend(obj);
+                    fehlend.extend(f);
+                }
+                ObjektArt::TtfText {
+                    schrift,
+                    vorgabe,
+                    stichart,
+                } => {
+                    let s = self
+                        .ttf_schriften
+                        .get(schrift)
+                        .ok_or_else(|| format!("Schrift „{schrift}“ nicht geladen"))?;
+                    let (obj, f) = ttf_text_objekte(s, vorgabe, stichart);
                     out.extend(obj);
                     fehlend.extend(f);
                 }

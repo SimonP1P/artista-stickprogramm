@@ -8,6 +8,7 @@
 //!                                                          Daten für die artista 185 bauen: Puffer DATEN,
 //!                                                          Garnfarbtabelle und Icon (wie das Original)
 //!                                                          (EINGABE: Design-JSON, .exp oder Design_NrXX_*.bin)
+//!   stick schriften [--schriften ORDNER]                  Computer-Schriften (TrueType/OpenType) auflisten
 //!   stick garnkarten [--garnkarten ORDNER]                 Garnkarten (.tch) auflisten
 //!   stick maschine ports|pruefen|liste|lesen NR|senden EINGABE [--port COM3 | --simulation] …
 //!                                                          artista 185 ansprechen (Protokoll der Testprogramme;
@@ -22,6 +23,7 @@ use stick_formate::esb;
 use stick_formate::exp::{exp_bytes, exp_lesen};
 use stick_formate::garnkarte;
 use stick_formate::svg::{SvgOptionen, svg_text};
+use stick_formate::ttf;
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::rahmen::{alle_rahmen, rahmen};
 use stick_kern::{Art, Design, StichFolge};
@@ -80,10 +82,18 @@ fn garnkarten_ordner(args: &[String]) -> PathBuf {
     PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../../Analyse/daten/garnkarten"))
 }
 
+/// Ordner der Computer-Schriften: Schalter --schriften, sonst die Schriftordner des Systems.
+fn schrift_ordner(args: &[String]) -> Vec<PathBuf> {
+    option(args, "--schriften")
+        .map(|o| vec![PathBuf::from(o)])
+        .unwrap_or_default()
+}
+
 fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool, String> {
     let text = std::fs::read_to_string(design_pfad).map_err(|e| format!("{}: {e}", design_pfad.display()))?;
     let mut design = Design::aus_json(&text)?;
     esb::design_alphabete_laden(&mut design, alphabete)?;
+    ttf::design_schriften_laden(&mut design, &[])?;
     let (_, fehlend) = design.objekte_aufgeloest()?;
     if !fehlend.is_empty() {
         println!(
@@ -140,6 +150,7 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
             }
             let mut design = Design::aus_json(&text)?;
             esb::design_alphabete_laden(&mut design, &alphabet_ordner(args))?;
+            ttf::design_schriften_laden(&mut design, &schrift_ordner(args))?;
             let f = design.berechnen()?;
             println!("{}", statistik(&f));
             Sendedaten::eigenes_design(&name.unwrap_or_else(|| design.name.clone()), &f, farben_im_anhang)
@@ -277,7 +288,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -325,6 +336,17 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         }
         Some("puffer") => puffer_erzeugen(args, hilfe),
         Some("maschine") => maschine::ausfuehren(args),
+        Some("schriften") => {
+            let liste = ttf::verzeichnis(&match schrift_ordner(args) {
+                o if o.is_empty() => ttf::system_ordner(),
+                o => o,
+            });
+            for e in &liste {
+                println!("  {:<44} {}", e.name, e.pfad.display());
+            }
+            println!("  {} Schriften", liste.len());
+            Ok(true)
+        }
         Some("garnkarten") => {
             let ordner = garnkarten_ordner(args);
             let liste = garnkarte::verzeichnis(&ordner);
