@@ -15,7 +15,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Original-Regeln nachbauen: Satin, Tatami, Lauf, Unterlagen, Laufwege, **Schrift** ✅ · Rest offen | 🟡 8 Punkte erledigt, 10 offen |
-| 5 Maschine im Programm | serieller Port aus Rust, „Senden“ in der Oberfläche, Mac-Programm | ⬜ |
+| 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen, Garnfarbkarten, Mac-Programm | 🟡 |
 
 **Stand 20.11.2026:** Am 19.11. wurde das erste Design aus dem eigenen Rechenkern auf der artista 185 gestickt. Am 20.11.
 (ohne Maschine) wurde geklärt, warum das Display „no color“ zeigte: Ab Firmware 3.09 schickt das Original die Farben als
@@ -23,9 +23,9 @@ eigene **Garnfarbtabelle** (Zeiger 0x24048), nicht im Anhang. Farbtabelle und Ic
 **Testprogramm v4.1** wie das Original umgesetzt (Simulation ok). Weiter geht es mit
 1. **Gerätetest v4.1:** ✅ Lesen (20.11.: M = 60, G = 6000; Tabelle der Maschine für Nr. 21 byte-gleich mit unserer) ·
    ⬜ Schreiben von ICON + Tabelle und Display ansehen → Liste „Vor Ort“ unten. Danach Speichern (0x10/0x200),
-2. Phase 5 vorziehen: **„Senden“ direkt aus dem Programm** (Rust `stick-maschine` nach Testprogramm v4.1) – damit ist der
-   Ablauf „Rahmen → anpassen → senden“ zum ersten Mal vollständig; dazu Garnangaben (Marke, Nummer, Name) aus den
-   Garnfarbkarten, damit eigene Designs echte Garnfarben mitschicken,
+2. Phase 5: ✅ **„Senden“ direkt aus dem Programm** (20.11.: `stick-maschine`, Oberfläche Schritt 4; am Gerät lesend
+   erprobt, Schreiben aus dem Programm → „Vor Ort“ V1). Weiter: Garnangaben (Marke, Nummer, Name) aus den
+   Garnfarbkarten, damit eigene Designs echte Garnfarben mitschicken; Designs aus der Maschine öffnen,
 3. Phase 4 weiter: Schrift-Reihenfolge, Kurzstiche bei Tatami, Auto-Split …
 
 ## Vor Ort – wartet auf eine Person an der Maschine (Stand 20.11.2026)
@@ -33,7 +33,7 @@ Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rah
 Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Testprogramm_artista185_Windows_v4_1/`.
 | # | Aufgabe | Braucht vor Ort | Stand |
 |---|---|---|---|
-| V1 | **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) | niemanden (kein 0x08) – aber Freigabe: der Nutzer startet es selbst oder gibt Claude Code die Berechtigung (am 20.11. von der Rechteprüfung abgelehnt) | ⬜ |
+| V1 | **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) – oder im Programm Schritt 4 „Senden …“ → „Jetzt schreiben“ (ohne Häkchen „sticken“) | niemanden (kein 0x08) – aber Freigabe: der Nutzer startet es selbst oder gibt Claude Code die Berechtigung (am 20.11. von der Rechteprüfung abgelehnt) | ⬜ |
 | V2 | **Display prüfen:** `START_STICKEN.bat Nr21_puffer.bin` – zeigt das Display Garnfarben (Isacord 40 rich brown / brass / light beige) statt „no color“? Foto | Person: Display ansehen, Nadel oben, Hände weg | ⬜ |
 | V3 | Testquadrat mit Icon + Farbtabelle sticken (`START_STICKEN.bat`) – Farbe und Icon am Display? | Person: Rahmen, Stoff + **Vlies**, Stickgarn, Start-Taste | ⬜ |
 | V4 | Prüfmuster (Satin mehrere Breiten, Tatami, Kreis, Schrift) auf festem Stoff mit Vlies sticken und fotografieren | Person, Material | ⬜ (Prüfmuster wird vorbereitet) |
@@ -102,9 +102,13 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
     mit festem Stoff, Vlies, Stickgarn: Prüfmuster Satin in mehreren Breiten, Tatami, Kreis, Schrift; auch feine Arbeiten
 
 ## Phase 5 – Maschine im Programm und Komfort
-- ⬜ `stick-maschine` (Rust): Protokoll der Testprogramme v3.6/v4 mit Simulation – verbinden, Liste lesen, Design
-  lesen, senden
-- ⬜ Oberfläche Schritt 4 „Senden“ (mit Rückfrage vor jedem Schreiben), Designs aus der Maschine öffnen
+- ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –
+  verbinden, Liste lesen, Design lesen, Garnfarbbereich, planen, senden; CLI `stick maschine …`; **am Gerät lesend
+  erprobt** (prüfen 3,8 s, Liste, Nr. 47 mit vollständigem Icon)
+- ✅ 20.11.2026 Oberfläche Schritt 4 „An die Maschine“: Anschluss/Simulation, Maschine prüfen, Senden mit Plan-Dialog
+  und Bestätigung, Sticken nur mit Häkchen „Person an der Maschine“; am Gerät geprüft und geplant (lesend) · ⬜ Schreiben
+  aus dem Programm am Gerät (Liste „Vor Ort“ V1)
+- ⬜ Designs aus der Maschine öffnen (Liste anzeigen, lesen, Vorschau)
 - ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus), Garnfarbkarten (Marke, Nummer und
   Name je Farbe → Garnfarbtabelle an die Maschine)
 - ⬜ Mac-Programm (GitHub Actions, macOS-Runner)

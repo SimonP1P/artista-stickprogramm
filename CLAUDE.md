@@ -56,6 +56,7 @@
 | **Original-Alphabete (ESB)**: 50 Alphabete lesbar (Grundlinie, Umrisse, Winkellinien der Satinsäulen, Stichart); Referenzhöhe vermutlich 50 mm; Zeichensätze Nr. 1–7 der Maschine = Drifter, Lisa, Blackboard, Swiss Block, Zurich, Alice, Bamboo bei 50 %; **im Programm: Text mit Original-Alphabet** (`stick-formate::esb`, `stick-kern::schrift`) | `Analyse_Teil3/09_esb_alphabete.md`; Werkzeuge `Arbeitsdaten/werkzeuge/esb_lesen.py`, `esb_satin.py`, Bild `Arbeitsdaten/alphabete/` |
 | **Regeln des Originals – Übersicht** (Kurzstiche, Unterlage, Laufwege, Satin, Tatami, Verbinder; je Regel Geltung Schrift/Bild/Fläche, Beleg, Sicherheit, Stand im Kern) | `Analyse_Teil3/10_regeln_original.md` |
 | **Rechenkern Rust** (stick-kern, stick-formate, stick-cli; Vergleich mit Python byte-genau) | `kern/README.md`, Code `kern/`, Vergleichsdesigns `kern/testdaten/` |
+| **Maschine aus Rust** (`stick-maschine`: Protokoll der Testprogramme, Simulation, CLI `stick maschine …`, App Schritt 4) | `kern/stick-maschine/`, `kern/README.md`, `app/README.md`; Befund `Analyse_Teil2/07` (Rust am Gerät, 20.11.2026) |
 | **Programm (Tauri + Svelte)** | `app/README.md`, Code `app/` |
 | **Python-Prototyp Phase 1** (Stichberechnung, EXP, Vorschau; Werte mit Quellen, eigene Festlegungen) – Referenz für den Rust-Kern | `stickprogramm/README.md`, Code `stickprogramm/src/stickprogramm/`, Tests `stickprogramm/tests/` |
 
@@ -121,4 +122,4 @@ in der Roadmap stehen.
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
 | 4 Sticharten nach dem Original | Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift mit Original-Alphabeten, Kurzstiche ✅; offen: Schrift-Reihenfolge, Tatami-Kurzstiche, Auto-Split, Fancy, Applikation, TTF, Vektorisierung, Knockout | 🟡 (`ROADMAP.md`, `Analyse_Teil3/10`) |
-| 5 Maschine im Programm | `stick-maschine`, „Senden“ in der Oberfläche, Bedienkomfort, Mac-Programm | ⬜ |
+| 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen, Garnfarbkarten, Mac-Programm | 🟡 |

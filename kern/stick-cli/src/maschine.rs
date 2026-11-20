@@ -5,35 +5,12 @@
 use crate::{option, sendedaten_laden};
 use std::io::Write;
 use std::path::{Path, PathBuf};
-use std::time::{SystemTime, UNIX_EPOCH};
 use stick_maschine::maschine::{Abbruch, FarbBereich};
-use stick_maschine::{Leitung, Maschine, SendeOptionen, SimOptionen, Simulation, Speicher};
+use stick_maschine::{Leitung, Maschine, SendeOptionen, SimOptionen, Simulation, Speicher, zeitstempel};
 
 pub const HILFE: &str = "maschine ports | maschine pruefen | maschine liste [--karte] | maschine lesen NR [-o ORDNER] | \
 maschine senden EINGABE [--schreiben [--sticken]] [--ohne-icon] [--ohne-farben] [--ohne-info] [--ohne-nachfrage]   \
 (jeweils --port COM3 oder --simulation [--sim-baud 57600]; Mitschnitt nach --log ORDNER)";
-
-/// Zeitstempel JJJJMMTT_HHMMSS (UTC).
-fn zeitstempel() -> String {
-    let s = SystemTime::now().duration_since(UNIX_EPOCH).map_or(0, |d| d.as_secs()) as i64;
-    let (tage, rest) = (s.div_euclid(86400), s.rem_euclid(86400));
-    // Kalender aus Tagen seit 1970 (Howard Hinnant, civil_from_days)
-    let z = tage + 719_468;
-    let era = z.div_euclid(146_097);
-    let doe = z - era * 146_097;
-    let yoe = (doe - doe / 1460 + doe / 36524 - doe / 146_096) / 365;
-    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
-    let mp = (5 * doy + 2) / 153;
-    let d = doy - (153 * mp + 2) / 5 + 1;
-    let m = if mp < 10 { mp + 3 } else { mp - 9 };
-    let y = yoe + era * 400 + i64::from(m <= 2);
-    format!(
-        "{y:04}{m:02}{d:02}_{:02}{:02}{:02}",
-        rest / 3600,
-        rest / 60 % 60,
-        rest % 60
-    )
-}
 
 fn leitung(args: &[String]) -> Result<(Box<dyn Leitung>, String), String> {
     if args.iter().any(|a| a == "--simulation") {

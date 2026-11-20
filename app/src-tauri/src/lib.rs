@@ -1,17 +1,20 @@
 //! Programm „Artista Stickprogramm“: Befehle der Oberfläche an den Rechenkern (`kern/`).
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 use std::path::PathBuf;
 use std::sync::Mutex;
+use stick_formate::artista::{Farbe, Sendedaten};
 use stick_formate::esb;
 use stick_formate::exp::exp_bytes;
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::rahmen::{Rahmen, alle_rahmen};
 use stick_kern::schrift::Alphabet;
 use stick_kern::{Art, Design, Stich};
-use tauri::{Manager, State};
+use stick_maschine::maschine::FarbBereich;
+use stick_maschine::{Leitung, Maschine, SendeOptionen, SimOptionen, Simulation, zeitstempel};
+use tauri::{AppHandle, Emitter, Manager, State};
 
 /// Original-Alphabete (ESB): Ordner und bereits geladene Alphabete (Laden dauert, Neuberechnung beim Tippen nicht).
 struct Alphabete {
@@ -230,6 +233,281 @@ async fn exp_speichern(
     Ok(daten.len())
 }
 
+// ---------------------------------------------------------------------------------------------------------------
+// Schritt 4: an die Maschine (kern/stick-maschine, Protokoll der Testprogramme v3.6/v4.1)
+// ---------------------------------------------------------------------------------------------------------------
+
+#[derive(Serialize)]
+struct GarnInfo {
+    rgb: String,
+    nummer: u16,
+    marke: String,
+    name: String,
+}
+
+impl From<&Farbe> for GarnInfo {
+    fn from(f: &Farbe) -> Self {
+        GarnInfo {
+            rgb: format!("#{:02x}{:02x}{:02x}", f.rgb[0], f.rgb[1], f.rgb[2]),
+            nummer: f.nummer,
+            marke: f.marke.clone(),
+            name: f.name.clone(),
+        }
+    }
+}
+
+/// Garnfarbbereich der Maschine (Schritt 12 des Originals).
+#[derive(Serialize)]
+struct FarbInfo {
+    max_farben: u8,
+    groesse: u16,
+    text: String,
+    farben: Vec<GarnInfo>,
+}
+
+impl From<&FarbBereich> for FarbInfo {
+    fn from(f: &FarbBereich) -> Self {
+        FarbInfo {
+            max_farben: f.grenzen.max_farben,
+            groesse: f.grenzen.groesse,
+            text: f.text.clone(),
+            farben: f.farben.iter().map(GarnInfo::from).collect(),
+        }
+    }
+}
+
+/// Angaben zu einer Sitzung mit der Maschine.
+#[derive(Serialize)]
+struct Sitzung {
+    port: String,
+    naehmaschine: String,
+    stickmodul: String,
+    baud: u32,
+    /// PC-Modus mit 0x100 + T r M E verlassen
+    verlassen: bool,
+    mitschnitt: String,
+}
+
+#[derive(Serialize)]
+struct MaschinenInfo {
+    sitzung: Sitzung,
+    farbbereich: FarbInfo,
+}
+
+#[derive(Serialize)]
+struct PlanInfo {
+    sitzung: Sitzung,
+    schritte: Vec<String>,
+    hinweise: Vec<String>,
+    farbbereich: Option<FarbInfo>,
+}
+
+#[derive(Serialize)]
+struct SendeInfo {
+    sitzung: Sitzung,
+    schritte: Vec<String>,
+    /// Befehl 0x08 bestätigt (None = nicht gestickt)
+    gestickt: Option<bool>,
+}
+
+/// Was beim Senden geschrieben wird (die INFO-Felder immer, wie das Original).
+#[derive(Deserialize, Clone, Copy)]
+struct SendeWahl {
+    icon: bool,
+    farben: bool,
+    sticken: bool,
+}
+
+impl From<SendeWahl> for SendeOptionen {
+    fn from(w: SendeWahl) -> Self {
+        SendeOptionen {
+            icon: w.icon,
+            info: true,
+            farben: w.farben,
+            sticken: w.sticken,
+        }
+    }
+}
+
+#[derive(Serialize, Clone)]
+struct Fortschritt {
+    was: String,
+    erledigt: usize,
+    gesamt: usize,
+}
+
+fn leitung_oeffnen(port: &str, simulation: bool) -> Result<Box<dyn Leitung>, String> {
+    if simulation {
+        // wie nach einer früheren Sitzung: Maschine steht auf 57600 (Synchronisation wird mitgeprüft)
+        return Ok(Box::new(Simulation::neu(SimOptionen {
+            baud: 57600,
+            ..Default::default()
+        })));
+    }
+    Ok(Box::new(stick_maschine::port::SeriellerPort::oeffnen(
+        port, 19200, false,
+    )?))
+}
+
+fn mitschnitt_speichern(app: &AppHandle, art: &str, zeilen: &[String]) -> String {
+    let ordner = app
+        .path()
+        .app_log_dir()
+        .unwrap_or_else(|_| std::env::temp_dir());
+    let _ = std::fs::create_dir_all(&ordner);
+    let pfad = ordner.join(format!("Mitschnitt_{art}_{}.log", zeitstempel()));
+    match std::fs::write(&pfad, zeilen.join("\r\n") + "\r\n") {
+        Ok(()) => pfad.display().to_string(),
+        Err(e) => format!("nicht gespeichert: {e}"),
+    }
+}
+
+/// Verbinden, `arbeit` ausführen und den PC-Modus **immer** verlassen (0x100 + T r M E); Mitschnitt speichern.
+fn mit_maschine<T>(
+    app: &AppHandle,
+    port: &str,
+    simulation: bool,
+    art: &str,
+    arbeit: impl FnOnce(&mut Maschine<Box<dyn Leitung>>) -> Result<T, String>,
+) -> Result<(T, Sitzung), String> {
+    let anzeige = if simulation { "Simulation" } else { port };
+    let l = leitung_oeffnen(port, simulation)?;
+    let mut m = match Maschine::verbinden(l, 19200) {
+        Ok(m) => m,
+        Err(a) => {
+            let pfad = mitschnitt_speichern(app, art, &a.protokoll);
+            return Err(format!("{} (Mitschnitt: {pfad})", a.fehler));
+        }
+    };
+    let r = arbeit(&mut m);
+    let (naehmaschine, stickmodul, baud) = (
+        m.firmware_naehmaschine.clone(),
+        m.firmware_stickmodul.clone(),
+        m.v.baud,
+    );
+    let (verlassen, v) = m.verlassen();
+    let mitschnitt = mitschnitt_speichern(app, art, &v.protokoll);
+    let t = r.map_err(|e| format!("{e} (Mitschnitt: {mitschnitt})"))?;
+    Ok((
+        t,
+        Sitzung {
+            port: anzeige.into(),
+            naehmaschine,
+            stickmodul,
+            baud,
+            verlassen,
+            mitschnitt,
+        },
+    ))
+}
+
+/// Was das Original für dieses Design senden würde (Puffer, Icon, Garnfarben, INFO-Felder).
+fn sendedaten(json: &str, alphabete: &Alphabete) -> Result<Sendedaten, String> {
+    let mut design = design_laden(json, None, None)?;
+    alphabete.einsetzen(&mut design)?;
+    let folge = design.berechnen()?;
+    let aussen = design.ausserhalb(&folge).len();
+    if aussen > 0 {
+        return Err(format!(
+            "{aussen} Einstiche liegen außerhalb des Stickfelds – erst anpassen"
+        ));
+    }
+    Ok(Sendedaten::eigenes_design(&design.name, &folge, false))
+}
+
+async fn im_hintergrund<T: Send + 'static>(
+    f: impl FnOnce() -> Result<T, String> + Send + 'static,
+) -> Result<T, String> {
+    tauri::async_runtime::spawn_blocking(f)
+        .await
+        .map_err(|e| format!("Hintergrundarbeit abgebrochen: {e}"))?
+}
+
+#[tauri::command]
+fn maschine_ports() -> Vec<String> {
+    stick_maschine::port::SeriellerPort::namen()
+}
+
+/// Nur lesen: verbinden, Garnfarbbereich lesen, PC-Modus verlassen.
+#[tauri::command]
+async fn maschine_pruefen(
+    app: AppHandle,
+    port: String,
+    simulation: bool,
+) -> Result<MaschinenInfo, String> {
+    im_hintergrund(move || {
+        let (fb, sitzung) = mit_maschine(&app, &port, simulation, "pruefen", |m| {
+            m.farbbereich_lesen()
+        })?;
+        Ok(MaschinenInfo {
+            sitzung,
+            farbbereich: FarbInfo::from(&fb),
+        })
+    })
+    .await
+}
+
+/// Nur lesen: Senden planen (Prüfungen wie das Original, Garnfarbbereich) – zum Bestätigen in der Oberfläche.
+#[tauri::command]
+async fn maschine_planen(
+    app: AppHandle,
+    json: String,
+    port: String,
+    simulation: bool,
+    wahl: SendeWahl,
+    alphabete: State<'_, Alphabete>,
+) -> Result<PlanInfo, String> {
+    let s = sendedaten(&json, &alphabete)?;
+    im_hintergrund(move || {
+        let (plan, sitzung) = mit_maschine(&app, &port, simulation, "planen", |m| {
+            m.planen(&s, &wahl.into())
+        })?;
+        Ok(PlanInfo {
+            sitzung,
+            schritte: plan.schritte,
+            hinweise: plan.hinweise,
+            farbbereich: plan.farbbereich.as_ref().map(FarbInfo::from),
+        })
+    })
+    .await
+}
+
+/// **Schreibt in die Maschine** (DATEN, ICON, INFO, Garnfarbtabelle; mit `sticken` Befehl 0x08). Die Oberfläche ruft
+/// das nur nach der ausdrücklichen Bestätigung des Plans auf. Fortschritt als Ereignis `senden_fortschritt`.
+#[tauri::command]
+async fn maschine_senden(
+    app: AppHandle,
+    json: String,
+    port: String,
+    simulation: bool,
+    wahl: SendeWahl,
+    alphabete: State<'_, Alphabete>,
+) -> Result<SendeInfo, String> {
+    let s = sendedaten(&json, &alphabete)?;
+    im_hintergrund(move || {
+        let melder = app.clone();
+        let mut fortschritt = move |was: &str, erledigt: usize, gesamt: usize| {
+            let _ = melder.emit(
+                "senden_fortschritt",
+                Fortschritt {
+                    was: was.into(),
+                    erledigt,
+                    gesamt,
+                },
+            );
+        };
+        let (b, sitzung) = mit_maschine(&app, &port, simulation, "senden", |m| {
+            m.senden(&s, &wahl.into(), &mut fortschritt)
+        })?;
+        Ok(SendeInfo {
+            sitzung,
+            schritte: b.schritte,
+            gestickt: b.sticken.map(|r| r.ok),
+        })
+    })
+    .await
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -251,7 +529,11 @@ pub fn run() {
             design_berechnen,
             datei_lesen,
             text_speichern,
-            exp_speichern
+            exp_speichern,
+            maschine_ports,
+            maschine_pruefen,
+            maschine_planen,
+            maschine_senden
         ])
         .run(tauri::generate_context!())
         .expect("Fehler beim Start des Programms");
@@ -285,6 +567,22 @@ mod tests {
         let f = d.berechnen().unwrap();
         assert!(f.anzahl(Art::Stich) > 500);
         assert_eq!(a.geladen.lock().unwrap().len(), 1);
+    }
+
+    #[test]
+    fn sendedaten_aus_dem_beispiel() {
+        let a = Alphabete {
+            ordner: Alphabete::finden(None),
+            geladen: Mutex::new(HashMap::new()),
+        };
+        let s = sendedaten(BEISPIEL, &a).unwrap();
+        assert!(s.puffer.endkennung());
+        assert_eq!(s.farben.len(), s.info.farben_minus_1 as usize + 1);
+        assert_eq!(s.icon.bytes().len(), 732);
+        // Design außerhalb des Stickfelds wird nicht gesendet
+        let gross =
+            r#"{"rahmen":"artista 40 x 60","objekte":[{"art":"lauf","punkte":[[-50,0],[50,0]]}]}"#;
+        assert!(sendedaten(gross, &a).unwrap_err().contains("außerhalb"));
     }
 
     #[test]

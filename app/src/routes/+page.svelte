@@ -1,10 +1,19 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
+  import { listen } from "@tauri-apps/api/event";
   import { open, save } from "@tauri-apps/plugin-dialog";
   import { onMount, untrack } from "svelte";
   import Vorschau from "$lib/Vorschau.svelte";
   import { empfohleneHoehe } from "$lib/alphabet_hoehen";
-  import type { AlphabetInfo, Ergebnis, RahmenInfo } from "$lib/typen";
+  import type {
+    AlphabetInfo,
+    Ergebnis,
+    Fortschritt,
+    MaschinenInfo,
+    PlanInfo,
+    RahmenInfo,
+    SendeInfo,
+  } from "$lib/typen";
 
   let rahmenListe = $state<RahmenInfo[]>([]);
   let stoffe = $state<string[]>([]);
@@ -200,6 +209,88 @@
     }
   }
 
+  // ---- Schritt 4: an die Maschine (kern/stick-maschine, Protokoll der Testprogramme v3.6/v4.1)
+  const SIM = "Simulation";
+  let ports = $state<string[]>([]);
+  let port = $state(SIM);
+  let simulation = $derived(port === SIM);
+  let mitIcon = $state(true);
+  let mitFarben = $state(true);
+  let sticken = $state(false);
+  let maschinenInfo = $state<MaschinenInfo | null>(null);
+  let plan = $state<PlanInfo | null>(null);
+  let personDa = $state(false);
+  let sendeErgebnis = $state<SendeInfo | null>(null);
+  let maschineArbeitet = $state(""); // leer = frei, sonst was gerade läuft
+  let fortschritt = $state<Fortschritt | null>(null);
+
+  const wahl = () => ({ icon: mitIcon, farben: mitFarben, sticken });
+
+  async function maschinePruefen() {
+    maschineArbeitet = "Verbinde und lese …";
+    maschinenInfo = null;
+    fehler = "";
+    try {
+      maschinenInfo = await invoke<MaschinenInfo>("maschine_pruefen", { port, simulation });
+      meldung = `Maschine geprüft (${maschinenInfo.sitzung.port}) – nur gelesen, nichts geschrieben.`;
+    } catch (e) {
+      fehler = String(e);
+    } finally {
+      maschineArbeitet = "";
+    }
+  }
+
+  // Senden in zwei Schritten: erst planen (nur lesen), dann nach Bestätigung im Dialog schreiben
+  async function sendenPlanen() {
+    maschineArbeitet = "Prüfe Design und Maschine (nur lesen) …";
+    plan = null;
+    personDa = false;
+    sendeErgebnis = null;
+    fehler = "";
+    try {
+      plan = await invoke<PlanInfo>("maschine_planen", { json: jsonText, port, simulation, wahl: wahl() });
+    } catch (e) {
+      fehler = String(e);
+    } finally {
+      maschineArbeitet = "";
+    }
+  }
+
+  async function sendenBestaetigt() {
+    if (!plan || (sticken && !personDa)) return;
+    plan = null;
+    maschineArbeitet = "Sende …";
+    fortschritt = null;
+    fehler = "";
+    try {
+      sendeErgebnis = await invoke<SendeInfo>("maschine_senden", { json: jsonText, port, simulation, wahl: wahl() });
+      meldung =
+        sendeErgebnis.gestickt === true
+          ? "Gesendet – die Maschine hat das Design übernommen. Zum Sticken die Start-Taste an der Maschine drücken."
+          : "Gesendet, zurückgelesen und geprüft.";
+    } catch (e) {
+      fehler = String(e);
+    } finally {
+      maschineArbeitet = "";
+      fortschritt = null;
+    }
+  }
+
+  onMount(() => {
+    let weg: (() => void) | undefined;
+    listen<Fortschritt>("senden_fortschritt", (e) => (fortschritt = e.payload)).then((f) => (weg = f));
+    return () => weg?.();
+  });
+
+  onMount(async () => {
+    try {
+      ports = await invoke<string[]>("maschine_ports");
+    } catch {
+      ports = [];
+    }
+    port = ports.includes("COM3") ? "COM3" : (ports[0] ?? SIM);
+  });
+
   onMount(async () => {
     rahmenListe = await invoke<RahmenInfo[]>("rahmen_liste");
     stoffe = await invoke<string[]>("stoffe_liste");
@@ -340,12 +431,100 @@
         <p class="klein">Noch kein Design berechnet.</p>
       {/if}
     </section>
-    <section>
+    <section class="maschine">
       <h2><span class="nr">4</span> An die Maschine</h2>
-      <button disabled>Senden</button>
-      <p class="klein">Kommt mit Phase 5 – die Übertragung zur artista 185 wird gerade erforscht.</p>
+      <label class="zeile"
+        >Anschluss
+        <select bind:value={port} class="schmal" disabled={!!maschineArbeitet}>
+          {#each ports as p (p)}
+            <option value={p}>{p}</option>
+          {/each}
+          <option value={SIM}>{SIM} (ohne Maschine)</option>
+        </select>
+      </label>
+      <button onclick={maschinePruefen} disabled={!!maschineArbeitet}>Maschine prüfen</button>
+      {#if maschinenInfo}
+        <div class="kasten">
+          <div>Nähmaschine {maschinenInfo.sitzung.naehmaschine} · Stickmodul {maschinenInfo.sitzung.stickmodul}</div>
+          <div class="klein">Garnfarben: {maschinenInfo.farbbereich.text}</div>
+          {#each maschinenInfo.farbbereich.farben as g, i (i)}
+            <div class="garn"><span class="feld" style:background={g.rgb}></span>{g.marke} {g.nummer} {g.name}</div>
+          {/each}
+        </div>
+      {/if}
+      <label><input type="checkbox" bind:checked={mitIcon} disabled={!!maschineArbeitet} /> Icon mitsenden</label>
+      <label><input type="checkbox" bind:checked={mitFarben} disabled={!!maschineArbeitet} /> Garnfarben mitsenden</label>
+      <label class="stickwahl"
+        ><input type="checkbox" bind:checked={sticken} disabled={!!maschineArbeitet} /> danach sticken (Rahmen fährt –
+        nur mit Person an der Maschine)</label
+      >
+      <button class="haupt" onclick={sendenPlanen} disabled={!!maschineArbeitet || !ergebnis || !!fehler || ergebnis.ausserhalb > 0}
+        >Senden …</button
+      >
+      {#if maschineArbeitet}
+        <p class="klein">{maschineArbeitet}</p>
+        {#if fortschritt}
+          <progress max={fortschritt.gesamt} value={fortschritt.erledigt}></progress>
+          <p class="klein">{fortschritt.was}: {fortschritt.erledigt} von {fortschritt.gesamt} Byte</p>
+        {/if}
+      {/if}
+      {#if sendeErgebnis}
+        <ul class="schritte">
+          {#each sendeErgebnis.schritte as s, i (i)}
+            <li>{s}</li>
+          {/each}
+          <li>PC-Modus verlassen: {sendeErgebnis.sitzung.verlassen ? "bestätigt" : "NICHT bestätigt – Maschine aus/ein"}</li>
+        </ul>
+        <p class="klein" title={sendeErgebnis.sitzung.mitschnitt}>Mitschnitt gespeichert</p>
+      {/if}
+      <p class="klein">Es wird nichts dauerhaft in der Maschine gespeichert; vor dem Schreiben kommt eine Rückfrage.</p>
     </section>
   </aside>
+
+  {#if plan}
+    <div class="schleier">
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-titel">
+        <h2 id="dialog-titel">An die Maschine senden?</h2>
+        <p>
+          Anschluss <strong>{plan.sitzung.port}</strong> · Nähmaschine {plan.sitzung.naehmaschine} · Stickmodul
+          {plan.sitzung.stickmodul}
+        </p>
+        <h3>Das wird geschrieben</h3>
+        <ul>
+          {#each plan.schritte as s, i (i)}
+            <li>{s}</li>
+          {/each}
+        </ul>
+        {#if plan.hinweise.length}
+          <h3>Hinweise</h3>
+          <ul class="hinweise">
+            {#each plan.hinweise as h, i (i)}
+              <li>{h}</li>
+            {/each}
+          </ul>
+        {/if}
+        {#if plan.farbbereich}
+          <p class="klein">Garnfarben in der Maschine jetzt: {plan.farbbereich.text}</p>
+        {/if}
+        {#if !simulation && (mitIcon || mitFarben)}
+          <p class="klein">Icon und Garnfarbtabelle sind an der echten Maschine noch nicht geschrieben worden (Gerätetest offen).</p>
+        {/if}
+        {#if sticken}
+          <div class="achtung">
+            <strong>Danach Befehl 0x08 – sticken ohne speichern: der Rahmen kann sofort fahren.</strong>
+            <label
+              ><input type="checkbox" bind:checked={personDa} /> Es ist jemand an der Maschine: Rahmen eingesetzt, Nadel oben,
+              Hände weg vom Nadelbereich.</label
+            >
+          </div>
+        {/if}
+        <div class="dialog-knoepfe">
+          <button onclick={() => (plan = null)}>Abbrechen</button>
+          <button class="haupt" onclick={sendenBestaetigt} disabled={sticken && !personDa}>Jetzt schreiben</button>
+        </div>
+      </div>
+    </div>
+  {/if}
 
   <footer>
     {#if fehler}<span class="fehler">{fehler}</span>{:else}<span>{meldung}</span>{/if}
@@ -596,5 +775,86 @@
   }
   .fehler {
     color: #b71c1c;
+  }
+  .maschine {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .maschine label {
+    font-size: 13px;
+  }
+  .stickwahl {
+    color: #8a4b00;
+  }
+  .kasten {
+    background: #f4f6f8;
+    border: 1px solid #dde1e5;
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .garn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  progress {
+    width: 100%;
+  }
+  .schritte {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12px;
+  }
+  .schleier {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 28, 36, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .dialog {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px 20px 16px;
+    width: min(620px, 92vw);
+    max-height: 86vh;
+    overflow: auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  .dialog h2 {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 17px;
+    color: #1d2329;
+    margin-top: 4px;
+  }
+  .dialog ul {
+    margin: 4px 0;
+    padding-left: 20px;
+    font-size: 13px;
+  }
+  .hinweise {
+    color: #5d6b78;
+  }
+  .achtung {
+    margin: 10px 0;
+    padding: 8px 10px;
+    border: 1px solid #e0a040;
+    background: #fff6e5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .dialog-knoepfe {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
   }
 </style>
