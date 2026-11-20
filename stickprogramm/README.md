@@ -45,6 +45,7 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `muster` (nur Rust-Kern) | `umriss`, `loecher`, `muster` (Name/Nummer, `stick muster`), `winkel`, `groesse` (%), `unterlage` | Füllmuster (Program Split) |
 | `applikation` (nur Rust-Kern) | `umriss`, `loecher`, `farbe` (Abdeckung), `breite` (2,5), `abstand`, `heft_breite` (3,0), `heft_abstand` (2,0), `platz_laenge` (2,0), `abdeckung` (`satin`/`blanket`), `stil` (`vorgeschnitten`/`zuschneiden`) | Platzierung → (Schnittlinie) → Stopp → Heften → Stopp → Satin- oder Blanket-Abdeckung |
 | `blanket` (nur Rust-Kern) | `punkte`, `geschlossen`, `abstand` (2,0), `breite` (3,0), `versatz` (`mitte`/`seite`) | Blanket (Langettenstich, Stil 0x2727) |
+| `monogramm` (nur Rust-Kern) | `initialen` (2 oder 3 Buchstaben A–Z), `rahmen` (`raute`/`zier`/`keine`), `rahmen_farbe`, `hoehe` (18), dazu alle Felder von `text` | Monogramm mit Diamond2/Diamond3 wie im Original (Handbuch Kap. 21, Belegung `Analyse_Teil3/09` §7) |
 | `ttf` (nur Rust-Kern) | `text`, `schrift` (Name oder Pfad), `hoehe` (Großbuchstaben), `breite`, `abstand`, `position`, `ausrichtung`, `stichart` (`tatami`/`lauf`/`dreifach`), `winkel`, `unterlage`, `laenge` | Computer-Schrift (TrueType/OpenType) |
 
 Alle Objekte haben `farbe` (`#rrggbb`) und `name`. Statt einer Punktliste geht eine Form:

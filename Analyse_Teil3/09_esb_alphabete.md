@@ -88,3 +88,21 @@ OLE-Datei mit den Streams
 3. Automatische Unterlage für Schrift (`let_underlay`, Tag 0x197f ff.) – Vergleich mit Blackboard/Swiss Block (Unterlage
    im Alphabet) und Drifter/Lisa/Zurich/Alice/Bamboo (ohne) im Maschinenspeicher.
 4. Stichbildung der Satinsäule mit Winkellinien (MOD1.DLL) gegen die echten Stiche messen.
+
+## 7. Monogramm-Alphabete Diamond2/Diamond3 — Sicherheit: hoch (Glyphen gelesen, 20.11.2026)
+Handbuch Kap. 21 „Creating monograms“ (PDF-S. 191): „Diamond2 for 2-letter monograms and Diamond3 for 3-letter
+monograms … Diamond3 has 3 sets of each letter, one for the left side, one for the middle and one for the right side“;
+Auswahl über „Select Character“, Rahmen („Select a border“) als weiteres Zeichen. Belegung aus den Glyphen
+(`esb_lesen.py --json`, Lage zur Grundlinie, Höhe bei 18 mm Schrifthöhe):
+
+| Zeichen | Diamond2 (54 Zeichen) | Diamond3 (80 Zeichen) |
+|---|---|---|
+| `A`–`Z` | linker Buchstabe (16 mm) | linker Buchstabe (16 mm) |
+| `a`–`z` | rechter Buchstabe | rechter Buchstabe |
+| `!` … `:` (0x21–0x3A) | – | **mittlerer** Buchstabe A–Z (18 mm, breiter 6,4 mm) |
+| `]` | Raute als Rahmen, reicht 18 mm nach links | Raute, 24 mm nach links, −5 … 23 mm hoch |
+| `[` | Zierwinkel „< >“, reicht 15 mm nach links | Zierwinkel, 21 mm nach links |
+
+Rahmen und Zier liegen mittig um die Buchstaben, wenn sie direkt nach ihnen kommen (Vorschub zählt wie ein Buchstabe).
+Umgesetzt als Objekt `monogramm` (`design.rs::monogramme_aufloesen` → `text`), Standardhöhe 18 mm (empfohlene
+Mindesthöhe, `Analyse/daten/alphabets.md`).

@@ -440,6 +440,72 @@ enum ObjektJson {
     Muster(MusterJson),
 }
 
+/// Standardhöhe eines Monogramms: kleinste empfohlene Höhe der Alphabete Diamond2/Diamond3 (18 mm,
+/// `Analyse/daten/alphabets.md`) – die Lettering-Vorlage (10 mm) liegt darunter.
+pub const MONOGRAMM_HOEHE_MM: f64 = 18.0;
+
+/// Monogramm (Handbuch Kap. 21 „Creating monograms“): Initialen mit den Monogramm-Alphabeten **Diamond2** (2 Buchstaben)
+/// bzw. **Diamond3** (3). Belegung der Zeichen aus den Alphabeten gelesen (`Analyse_Teil3/09` §7): `A`–`Z` = linker
+/// Buchstabe, `a`–`z` = rechter, `!` … `:` = mittlerer (nur Diamond3, 18 statt 16 mm hoch), `]` = Raute als Rahmen,
+/// `[` = Zierwinkel – beide reichen von ihrem Platz nach links und liegen mittig um die Buchstaben, wenn sie direkt
+/// nach ihnen kommen. Das Objekt wird hier in ein `text`-Objekt umgeschrieben (alle Schriftoptionen gelten).
+fn monogramme_aufloesen(v: &Value) -> Result<Value, String> {
+    let mut v = v.clone();
+    let Some(liste) = v.get_mut("objekte").and_then(Value::as_array_mut) else {
+        return Ok(v);
+    };
+    for (i, o) in liste.iter_mut().enumerate() {
+        if o.get("art").and_then(Value::as_str) != Some("monogramm") {
+            continue;
+        }
+        let wo = format!("Objekt {}", i + 1);
+        let Some(m) = o.as_object_mut() else {
+            continue;
+        };
+        let ini: Vec<char> = m
+            .remove("initialen")
+            .and_then(|x| x.as_str().map(str::to_uppercase))
+            .ok_or_else(|| format!("{wo}: monogramm braucht „initialen“ (2 oder 3 Buchstaben)"))?
+            .chars()
+            .collect();
+        if !(2..=3).contains(&ini.len()) || !ini.iter().all(char::is_ascii_uppercase) {
+            return Err(format!("{wo}: initialen: 2 oder 3 Buchstaben A–Z (Diamond2/Diamond3)"));
+        }
+        let mut text = String::new();
+        text.push(ini[0]);
+        if ini.len() == 3 {
+            text.push((b'!' + (ini[1] as u8 - b'A')) as char);
+        }
+        text.push(ini[ini.len() - 1].to_ascii_lowercase());
+        let rahmen = match m.remove("rahmen").as_ref().and_then(Value::as_str) {
+            None | Some("keine") => None,
+            Some("raute") => Some(']'),
+            Some("zier") => Some('['),
+            Some(x) => return Err(format!("{wo}: Rahmen „{x}“ unbekannt (raute, zier, keine)")),
+        };
+        if let Some(f) = m.remove("rahmen_farbe") {
+            if rahmen.is_none() {
+                return Err(format!("{wo}: rahmen_farbe ohne rahmen"));
+            }
+            text.push('^');
+            let farben = m.entry("farben").or_insert_with(|| Value::Array(Vec::new()));
+            farben
+                .as_array_mut()
+                .ok_or_else(|| format!("{wo}: farben muss eine Liste sein"))?
+                .push(f);
+        }
+        if let Some(z) = rahmen {
+            text.push(z);
+        }
+        let alphabet = if ini.len() == 3 { "Diamond3" } else { "Diamond2" };
+        m.insert("art".into(), Value::from("text"));
+        m.insert("text".into(), Value::from(text));
+        m.insert("alphabet".into(), Value::from(alphabet));
+        m.entry("hoehe").or_insert_with(|| Value::from(MONOGRAMM_HOEHE_MM));
+    }
+    Ok(v)
+}
+
 fn design_name() -> String {
     "Design".into()
 }
@@ -1095,6 +1161,7 @@ impl Design {
     }
 
     pub fn aus_value(v: &Value) -> Result<Design, String> {
+        let v = &monogramme_aufloesen(v)?;
         let d: DesignJson = serde_json::from_value(v.clone()).map_err(|e| format!("Design ungültig: {e}"))?;
         let mut e = fuer_stoff(&d.stoff)?;
         if let Some(werte) = &d.einstellungen {
@@ -1793,6 +1860,28 @@ mod tests {
             stelle(&wege, d_erst[1]) < stelle(&wege, u_zweit[0]),
             "getrennte Teile nacheinander"
         );
+    }
+
+    /// Monogramm → Text mit Diamond2/Diamond3 (Zeichenbelegung aus den Alphabeten)
+    #[test]
+    fn monogramm_als_text() {
+        let d = Design::aus_json(
+            r##"{"objekte": [{"art": "monogramm", "initialen": "shp", "rahmen": "raute", "rahmen_farbe": "#aa0000",
+                "farbe": "#000000"}, {"art": "monogramm", "initialen": "AB", "rahmen": "zier"}]}"##,
+        )
+        .unwrap();
+        let ObjektArt::Text { alphabet, vorgabe } = &d.objekte[0].art else {
+            panic!()
+        };
+        // S links, H in der Mitte ('!' + 7 = '('), p rechts, Farbwechsel, Raute
+        assert_eq!((alphabet.as_str(), vorgabe.text.as_str()), ("Diamond3", "S(p^]"));
+        assert_eq!(vorgabe.hoehe, MONOGRAMM_HOEHE_MM);
+        assert_eq!(d.buchstaben[&0].farben, vec!["#aa0000".to_string()]);
+        let ObjektArt::Text { alphabet, vorgabe } = &d.objekte[1].art else {
+            panic!()
+        };
+        assert_eq!((alphabet.as_str(), vorgabe.text.as_str()), ("Diamond2", "Ab["));
+        assert!(Design::aus_json(r#"{"objekte": [{"art": "monogramm", "initialen": "ÄB"}]}"#).is_err());
     }
 
     /// „Start and End“: Auto Start/End in der Designmitte wie die Musterdesigns mit AutoStartEndObject
