@@ -49,4 +49,9 @@ Teilen liegen (sonst Sprung). Test `gruppe_unterlagen_zuerst`. Text „ABC Anna�
 - **Reihenfolge, Start und Ende der Säulen** wie das Original („Closest Join“): Der Kern wählt die Folge mit den
   wenigsten Sprüngen (eigene Festlegung). Zum Messen müsste man Text und Alphabet der LetterText-Objekte kennen; sie
   stehen nicht als lesbarer Text im Datenblock (Feldaufbau der Klasse 0x7b noch nicht entschlüsselt).
+  **Zwischenstand 20.11.2026:** Auf das LetterText-Objekt (0x7b) folgen 0x7c (Textwerte: doubles, z. B. 0,2 / 0,5 /
+  Winkel π/2), 0x81, **0x3a = Alphabetname in UTF-16** („Swiss Block“, „Quilting Text“), 0x7f und **je Buchstabe ein
+  Datensatz 0x80** (39 Byte, bei gleichen Werten byte-gleich – das Zeichen steht also nicht darin). Der Text selbst steht
+  nirgends als ASCII/UTF-16 im Datenblock; nächster Schritt: Zeichencode im Buchstabenobjekt LetterObj (0x2f) bzw. im
+  folgenden 0x03-Datensatz suchen oder die Säulen der Buchstaben mit den Glyphen des Alphabets (ESB) abgleichen.
 - Wegführung der Laufwege zwischen den Unterlagen (Original: kurze Läufe 1,8 mm, teils über die Säule zurück).
