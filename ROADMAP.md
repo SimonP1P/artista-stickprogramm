@@ -45,6 +45,7 @@ Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Te
 | V3 | Testquadrat mit Icon + Farbtabelle sticken (`START_STICKEN.bat`) – Farbe und Icon am Display? | Person: Rahmen, Stoff + **Vlies**, Stickgarn, Start-Taste | ⬜ |
 | V4 | **Prüfmuster** (`stickprogramm/beispiele/pruefmuster.json`: Satin 1/2/3/4/6 mm, Satinkeil, Tatami, Lauf, Dreifach, Schrift „Abc“ Swiss Block; Woven Medium Weight; 82 × 110 mm) auf festem Stoff mit Vlies und Stickgarn sticken, fotografieren – aus dem Programm oder `START_STICKEN.bat Pruefmuster_puffer.bin` | Person, Material | ⬜ (vorbereitet 20.11.) |
 | V5 | Dauerhaft speichern (0x10 → schreiben → 0x200), danach in der Designliste und am Display prüfen | Person: Display, ggf. löschen am Gerät | ⬜ (eigene Zustimmung nötig) |
+| V7 | **Platzierung prüfen:** ein Design außerhalb der Rahmenmitte mit `"start": "designmitte"` senden – landet es an der gezeichneten Stelle oder zentriert? Entscheidet den Standard für `start`/`ende` | Person: Display/Rahmen ansehen | ⬜ |
 | V6 | **Prüfmuster 2 – neue Sticharten** (`stickprogramm/beispiele/pruefmuster2.json`: Füllmuster Raute + Herz, Tatami-Kreis mit ausgesparter Schrift „Ab“, Applikation „Trim in Place“ mit Blanket, Blanket-Linie; 78 × 82 mm, 8 Farben) sticken und fotografieren: `START_STICKEN.bat Pruefmuster2_puffer.bin` – bei der Applikation nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie zuschneiden | Person, Material (Stoff + Vlies + Applikationsstoff) | ⬜ (vorbereitet 20.11.) |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
@@ -106,8 +107,9 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 4. ✅ 20.11.2026 Unterlagenart für Flächen: Step wie die Mehrheit im Original (Messung); Satin-Auto-Split: im Original
    nicht wirksam (531 Querstiche 9–16 mm ungeteilt) – nichts nachzubauen (`Analyse_Teil3/10` §3/§5)
 5. 🟡 ✅ 20.11.2026 Designende wie „Start und Ende“ (Auto End: Mitte – Sprung zurück zur Rahmenmitte; Designs der
-   Maschine: 34 von 51 enden auf 0,0) · ⬜ Start-/Endpunkte je Objekt („Closest Join“, MOD1 `AutoStartEndObject`,
-   `CalcStartEnd…`) und Reihenfolge der Objekte
+   Maschine: 34 von 51 enden auf 0,0) · ✅ 20.11.2026 Start/Ende des Designs wie „Start and End“ (Musterdesigns: Auto Start/End = Designmitte; `"start"`/`"ende"`,
+   `Analyse_Teil3/10` §7) · Ein-/Ausstich **je Objekt** setzt im Original der Anwender (Reshape; „closest join“ nur beim Auto Digitizer),
+   der Kern nimmt den nächsten Einstieg zum vorigen Ende (eigene Festlegung) · ⬜ Reihenfolge der Objekte
 6. 🟡 ✅ 20.11.2026 **Applikation** im Kern (`Analyse_Teil3/12`): Platzierung → Stopp → Heften → Stopp → Abdecken,
    Stopps als „Garne“ der Karte `Applique.tch` (Anweisung im Display); Werte aus „Easy Appliqué“ bzw. Handbuch ·
    ✅ 20.11.2026 Schnittlinie („Trim in Place“) und **Blanket**-Abdeckung (ohne Heftstich), Blanket auch als Kontur-

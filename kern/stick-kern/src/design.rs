@@ -365,9 +365,46 @@ struct DesignJson {
     einstellungen: Option<Value>,
     #[serde(default)]
     objekte: Vec<ObjektJson>,
-    /// Designende: „mitte“ (Standard, Sprung zurück zum Ursprung) oder „letzter_stich“
+    /// Designende: „mitte“/„rahmenmitte“ (Standard, Sprung zurück zum Ursprung), „letzter_stich“, „designmitte“,
+    /// „unten_mitte“ oder „start“ (zurück zum Start) – Dialog „Start and End“ des Originals
     #[serde(default)]
     ende: Option<String>,
+    /// Designstart: „rahmenmitte“ (Standard), „designmitte“, „unten_mitte“ oder „erster_stich“
+    #[serde(default)]
+    start: Option<String>,
+}
+
+/// Start- bzw. Endpunkt des Designs (Dialog „Start and End“, Menü Arrange; Handbuch PDF-S. 204–205). Das Original
+/// setzt bei „Auto Start/End“ die **Mitte des Designs** (umschließendes Rechteck): 142 von 143 Musterdesigns mit
+/// AutoStartEndObject (Klasse 0x71) beginnen und enden dort (`Analyse_Teil3/10` §6). Standard hier bleibt die
+/// Rahmenmitte (Ursprung), bis am Gerät geprüft ist, wie die artista 185 ein Design mit anderem Start platziert.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub enum Bezugspunkt {
+    /// Ursprung = Rahmenmitte
+    #[default]
+    Rahmenmitte,
+    /// Mitte des umschließenden Rechtecks der Stiche („Auto Start/End at: center of design“)
+    Designmitte,
+    /// Mitte der Unterkante („bottom middle“)
+    UntenMitte,
+    /// kein Verbinder: erster bzw. letzter Stich („First Stitch“/„Last Stitch“)
+    Stich,
+    /// nur Ende: zurück zum Startpunkt („return to start“)
+    Start,
+}
+
+impl Bezugspunkt {
+    fn aus_text(t: Option<&str>, ende: bool) -> Result<Bezugspunkt, String> {
+        Ok(match t {
+            None | Some("rahmenmitte") | Some("mitte") => Bezugspunkt::Rahmenmitte,
+            Some("designmitte") => Bezugspunkt::Designmitte,
+            Some("unten_mitte") => Bezugspunkt::UntenMitte,
+            Some("letzter_stich") if ende => Bezugspunkt::Stich,
+            Some("erster_stich") if !ende => Bezugspunkt::Stich,
+            Some("start") if ende => Bezugspunkt::Start,
+            Some(x) => return Err(format!("{} „{x}“ unbekannt", if ende { "Ende" } else { "Start" })),
+        })
+    }
 }
 
 // ---------------------------------------------------------------- Modell
@@ -930,7 +967,9 @@ pub struct Design {
     /// Designende wie „Start und Ende“ im Original (Handbuch PDF-S. 205: Auto End – Mitte): nach dem letzten Stich ein
     /// Sprung zurück zum Ursprung (Rahmenmitte). Belegt an den Designs der Maschine: 34 von 51 enden genau auf 0,0
     /// (die Zeichensätze, deren Ursprung am Zeilenanfang liegt, auf der Grundlinie). Standard an.
-    pub ende_zur_mitte: bool,
+    /// Start- und Endpunkt des Designs (Dialog „Start and End“)
+    pub start: Bezugspunkt,
+    pub ende: Bezugspunkt,
     /// geladene Computer-Schriften (Name wie im Design); füllt der Aufrufer, siehe `ttf_bedarf`
     pub ttf_schriften: BTreeMap<String, TtfSchrift>,
 }
@@ -1119,7 +1158,8 @@ impl Design {
             einstellungen: e,
             objekte,
             alphabete: BTreeMap::new(),
-            ende_zur_mitte: d.ende.as_deref() != Some("letzter_stich"),
+            start: Bezugspunkt::aus_text(d.start.as_deref(), false)?,
+            ende: Bezugspunkt::aus_text(d.ende.as_deref(), true)?,
             ttf_schriften: BTreeMap::new(),
         })
     }
@@ -1265,27 +1305,62 @@ impl Design {
 
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).
     pub fn berechnen(&self) -> Result<StichFolge, String> {
-        let mut teile: Vec<(String, Vec<Linie>)> = Vec::new();
-        let mut pos = p(0.0, 0.0);
         let (objekte, _) = self.objekte_aufgeloest()?;
-        for obj in &objekte {
-            let wege: Vec<Linie> = obj
-                .wege(&self.einstellungen, Some(pos))?
-                .into_iter()
-                .filter(|w| !w.is_empty())
-                .collect();
-            if let Some(letzter) = wege.last().and_then(|w| w.last()) {
-                pos = *letzter;
-                teile.push((obj.farbe.clone(), wege));
+        let teile_ab = |start: Punkt| -> Result<Vec<(String, Vec<Linie>)>, String> {
+            let mut teile = Vec::new();
+            let mut pos = start;
+            for obj in &objekte {
+                let wege: Vec<Linie> = obj
+                    .wege(&self.einstellungen, Some(pos))?
+                    .into_iter()
+                    .filter(|w| !w.is_empty())
+                    .collect();
+                if let Some(letzter) = wege.last().and_then(|w| w.last()) {
+                    pos = *letzter;
+                    teile.push((obj.farbe.clone(), wege));
+                }
             }
+            Ok(teile)
+        };
+        let null = p(0.0, 0.0);
+        let mut teile = teile_ab(null)?;
+        // Mitte bzw. Unterkante des Designs aus den Stichen (umschließendes Rechteck)
+        let punkte = || teile.iter().flat_map(|(_, w)| w.iter().flatten());
+        let (x0, x1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
+        let (y0, y1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
+        let (mitte, unten) = if x0 <= x1 {
+            (p((x0 + x1) / 2.0, (y0 + y1) / 2.0), p((x0 + x1) / 2.0, y0))
+        } else {
+            (null, null)
+        };
+        let erster = teile
+            .first()
+            .and_then(|(_, w)| w.first())
+            .and_then(|l| l.first())
+            .copied();
+        let start = match self.start {
+            Bezugspunkt::Designmitte => mitte,
+            Bezugspunkt::UntenMitte => unten,
+            Bezugspunkt::Stich => erster.unwrap_or(null),
+            Bezugspunkt::Rahmenmitte | Bezugspunkt::Start => null,
+        };
+        if start != null {
+            teile = teile_ab(start)?;
         }
-        let folge = wege_verbinden(&teile, &self.einstellungen.verbinder, p(0.0, 0.0));
+        let folge = wege_verbinden(&teile, &self.einstellungen.verbinder, start);
         let mut folge = bernina_regeln(&folge);
-        if self.ende_zur_mitte
+        let ende = match self.ende {
+            Bezugspunkt::Rahmenmitte => Some(null),
+            Bezugspunkt::Designmitte => Some(mitte),
+            Bezugspunkt::UntenMitte => Some(unten),
+            Bezugspunkt::Start => Some(start),
+            Bezugspunkt::Stich => None,
+        };
+        if let Some(z) = ende
             && let Some(letzter) = folge.stiche.last()
-            && abstand(letzter.p(), p(0.0, 0.0)) > 1e-9
+            && abstand(letzter.p(), z) > 1e-9
         {
-            folge.sprung(p(0.0, 0.0));
+            folge.sprung(z);
         }
         Ok(folge)
     }
@@ -1434,5 +1509,36 @@ mod tests {
             stelle(&wege, d_erst[1]) < stelle(&wege, u_zweit[0]),
             "getrennte Teile nacheinander"
         );
+    }
+
+    /// „Start and End“: Auto Start/End in der Designmitte wie die Musterdesigns mit AutoStartEndObject
+    #[test]
+    fn start_und_ende_designmitte() {
+        let json = r##"{"rahmen": "artista 130 x 100", "start": "designmitte", "ende": "designmitte", "objekte": [
+            {"art": "tatami", "umriss": {"rechteck": {"mitte": [20, 10], "breite": 10, "hoehe": 6}}}
+        ]}"##;
+        let d = Design::aus_json(json).unwrap();
+        let f = d.berechnen().unwrap();
+        let st: Vec<Punkt> = f
+            .stiche
+            .iter()
+            .filter(|s| s.art == crate::Art::Stich)
+            .map(|s| s.p())
+            .collect();
+        let (x0, x1) = st
+            .iter()
+            .fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
+        let (y0, y1) = st
+            .iter()
+            .fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
+        let ende = f.stiche.last().unwrap().p();
+        assert!(
+            abstand(ende, p((x0 + x1) / 2.0, (y0 + y1) / 2.0)) < 0.3,
+            "Ende {ende:?}"
+        );
+        // letzter Stich: kein Sprung am Ende
+        let l = Design::aus_json(&json.replace(r#""ende": "designmitte""#, r#""ende": "letzter_stich""#)).unwrap();
+        assert_eq!(l.berechnen().unwrap().stiche.last().unwrap().art, crate::Art::Stich);
+        assert!(Design::aus_json(&json.replace("designmitte\", \"ende", "irgendwo\", \"ende")).is_err());
     }
 }

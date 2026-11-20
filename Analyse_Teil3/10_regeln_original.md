@@ -97,6 +97,16 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
 - Trim ab 3,0 mm (Stoffe 6,0 mm); die artista 185 schneidet nicht selbst, jeder Sprung bleibt als Faden (08).
 - **Designende** („Start und Ende“, Handbuch PDF-S. 205): Auto End – Mitte; Designs der Maschine enden zu 34/51 auf
   0,0 (Zeichensätze auf der Grundlinie). ✅ Kern: Sprung zurück zum Ursprung, abschaltbar (`"ende": "letzter_stich"`).
+- **Start und Ende des Designs** (Dialog „Start and End“, Menü Arrange; BERESENU DLG „Start and End“: First Stitch /
+  Auto Start at / Digitize; Last Stitch / Auto End at / Digitize; Auswahl Mitte, unten Mitte, zurück zum Start).
+  Gemessen an den 287 Musterdesigns (20.11.2026, Skript wie `art_aussparen.py`, Klasse 0x71 = AutoStartEndObject,
+  Inhalt in allen 143 Designs gleich `93 4e 00`): **mit 0x71 beginnen und enden 142/143 Designs in der Mitte des
+  umschließenden Rechtecks** (90 davon liegen im Ursprung); ohne 0x71 liegen Start/Ende bei 120/144 woanders (erster/
+  letzter Stich). Sicherheit hoch (Messung). ✅ Kern: `"start"`/`"ende"` = `rahmenmitte` (Standard, wie bisher),
+  `designmitte`, `unten_mitte`, `erster_stich`/`letzter_stich`, Ende auch `start`. Standard bleibt die Rahmenmitte, bis
+  am Gerät geprüft ist, wie die artista 185 ein Design platziert, dessen Start nicht in der Rahmenmitte liegt (Vor Ort V7).
+  Ein Start/Ende **je Objekt** („closest join“) gibt es im Handbuch nur beim Auto Digitizer; Ein-/Ausstich je Objekt
+  setzt sonst der Anwender (Reshape) – im Kern wählt jedes Objekt den nächsten Einstieg zum vorigen Ende.
 
 ## 8. Schrift — Sicherheit: siehe Bericht 09
 Original-Alphabete (ESB), Referenzhöhe 50 mm (mittel-hoch), Buchstabenabstand = Anteil × Höhe aus dem Alphabet-Kopf,
