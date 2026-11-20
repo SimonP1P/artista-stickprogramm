@@ -41,7 +41,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 |---|---|---|
 | Unterlagen (Mittellauf, Edge Walk, Zickzack, Doppel-Zickzack, Step), Ränder | ✅ | Auto Underlay wie Stil |
 | Zugausgleich (auto, Werte) | ✅ | |
-| Kurzstiche (Satin) | ✅ · ⬜ Tatami | |
+| Kurzstiche (Satin) | ✅ | Satin; seit 20.11. auch Step-Flächen mit Winkellinien und Step-Schrift (gerade Tatami-Reihen haben keine Innenkurven) |
 | Auto Jump, Mindeststich, Vernähen | ✅ | |
 | „Säule mit mehr Loft“ (erhöhter Satin, Kap. 22) | ✅ | laut Handbuch Auto Jump mit kleinem Höchststich (z. B. 6 mm) + Unterlage: `"auto_jump": {"max": 6}` |
 | Textured Edge (ausgefranster Rand) | ⬜ | Kap. 23/24 |

@@ -119,6 +119,6 @@ nimmt Auto Spacing × 0,9 und Zickzack. ✅ / offen: Unterlagen-zuerst-Reihenfol
 ## 9. Offene Regeln (Reihenfolge der Bearbeitung)
 1. Buchstaben: ✅ erst alle Unterlagen (rückwärts), dann Säulen (Bericht 11); ⬜ Säulenreihenfolge und Start/Ende wie das
    Original („closest join“) – braucht Text/Alphabet der LetterText-Objekte.
-2. Kurzstiche bei Tatami/Füllflächen messen und umsetzen; Gruppenbildung 0x10186ad0 genau übertragen.
+2. ✅ (20.11.) Kurzstiche in Step-Flächen mit Winkellinien und Step-Schrift umgesetzt (gerade Tatami-Reihen: keine Innenkurven); offen: an den 770 Step-Flächen der Musterdesigns nachmessen, Gruppenbildung 0x10186ad0 genau übertragen.
 3. ✅ Unterlagenart für Flächen: Step (Messung); ✅ Auto-Split: im Original nicht wirksam (Messung, 20.11.2026).
 4. Auto Jump je Stil (Schrift aus); Leerzeichen und Zeilenabstand der Schrift aus dem Code.

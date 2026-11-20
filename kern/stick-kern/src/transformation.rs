@@ -293,10 +293,12 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             umriss,
             winkellinien,
             unterlage,
+            kurzstiche,
         } => ObjektArt::Wendefuellung {
             umriss: m.linie(umriss),
             winkellinien: winkellinien.iter().map(|l| [m.punkt(l[0]), m.punkt(l[1])]).collect(),
             unterlage: *unterlage,
+            kurzstiche: *kurzstiche,
         },
         ObjektArt::Gruppe {
             teile,
@@ -461,10 +463,12 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             umriss,
             winkellinien,
             unterlage,
+            kurzstiche,
         } => ObjektArt::Wendefuellung {
             umriss: lin(umriss, true),
             winkellinien: winkellinien.iter().map(|l| [f(l[0]), f(l[1])]).collect(),
             unterlage: *unterlage,
+            kurzstiche: *kurzstiche,
         },
         ObjektArt::Gruppe {
             teile,

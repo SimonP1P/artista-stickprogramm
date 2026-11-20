@@ -478,6 +478,8 @@ struct TatamiJson {
     /// mehrere Stichwinkel: Strecken [[x1, y1], [x2, y2]], die den Umriss je zweimal schneiden (Turning)
     #[serde(default)]
     winkellinien: Vec<[Punkt; 2]>,
+    /// Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)
+    kurzstiche: Option<bool>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -700,6 +702,8 @@ pub enum ObjektArt {
         umriss: Linie,
         winkellinien: Vec<[Punkt; 2]>,
         unterlage: Option<bool>,
+        /// Kurzstiche an Innenkurven (None = Stil); 770 solcher Step-Flächen in den Musterdesigns mit Kurzstichen
+        kurzstiche: Option<bool>,
     },
     /// Fläche mit Füllmuster (Program Split): Tatami-Reihen, Einstiche auf den gekachelten Musterlinien
     Musterfuellung {
@@ -821,12 +825,11 @@ fn satin_getrennt(
         satin_e.kurzstiche.an = false;
     }
     let deck = if o.step {
-        // Step-Reihen: Abstand, Zugausgleich der Füllung, ohne Kurzstiche
+        // Step-Reihen: Abstand und Zugausgleich der Füllung; Kurzstiche wie am Objekt (Schrift: an)
         let mut se = satin_e.clone();
         se.auto_spacing = false;
         se.abstand_fest = e.tatami.abstand;
         se.zugausgleich = e.tatami.zugausgleich;
-        se.kurzstiche.an = false;
         crate::sticharten::satin::step_reihen(&satin(&a, &b, &se)?, &e.tatami)
     } else {
         satin(&a, &b, &satin_e)?
@@ -1252,6 +1255,7 @@ impl Objekt {
                 umriss,
                 winkellinien,
                 unterlage,
+                kurzstiche,
             } => {
                 let (a, b) = crate::sticharten::wendung::wende_seiten(umriss, winkellinien)?;
                 let l = &winkellinien[0];
@@ -1266,7 +1270,9 @@ impl Objekt {
                 se.auto_spacing = false;
                 se.abstand_fest = e.tatami.abstand;
                 se.zugausgleich = e.tatami.zugausgleich;
-                se.kurzstiche.an = false;
+                // Kurzstiche wie bei Satin auf die Reihen, danach Teilung in Step-Stiche (Effekt im allgemeinen
+                // Füllgenerator, `Analyse_Teil3/10` §1–2)
+                se.kurzstiche.an = kurzstiche.unwrap_or(e.satin.kurzstiche.an);
                 wege.push(crate::sticharten::satin::step_reihen(&satin(&a, &b, &se)?, &e.tatami));
                 Ok(wege)
             }
@@ -1584,6 +1590,7 @@ impl Design {
                         umriss: t.umriss.punkte(),
                         winkellinien: t.winkellinien,
                         unterlage: t.unterlage,
+                        kurzstiche: t.kurzstiche,
                     },
                 },
                 ObjektJson::Tatami(t) => Objekt {
@@ -2305,6 +2312,28 @@ mod tests {
             )
             .is_err()
         );
+    }
+
+    /// Kurzstiche in der Wendefüllung: im engen Bogen werden innere Einstiche zurückgenommen (weniger Einstiche nah
+    /// am Innenrand)
+    #[test]
+    fn wendefuellung_kurzstiche() {
+        let bogen = |kurz: bool| {
+            Design::aus_json(&format!(
+                r#"{{"objekte": [{{"art": "tatami", "unterlage": false, "kurzstiche": {kurz},
+                "umriss": [[3, 0], [12, 0], [8.49, 8.49], [0, 12], [0, 3], [2.12, 2.12]],
+                "winkellinien": [[[2, 0.3], [13, 0.3]], [[1.5, 1.6], [9, 9.1]], [[0.3, 2], [0.3, 13]]]}}]}}"#
+            ))
+            .unwrap()
+            .berechnen()
+            .unwrap()
+            .stiche
+            .iter()
+            .filter(|s| s.art == crate::stiche::Art::Stich && s.x.hypot(s.y) < 3.4)
+            .count()
+        };
+        let (ohne, mit) = (bogen(false), bogen(true));
+        assert!(mit < ohne, "ohne {ohne}, mit {mit}");
     }
 
     /// Zickzack-Deckstich: offener Abstand (Software Defaults 2,0 mm, Stoffe 1,0 mm) – weniger Stiche als Satin
