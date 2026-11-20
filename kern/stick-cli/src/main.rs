@@ -295,7 +295,7 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | bild BILD [--breite MM] [--farben N] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
@@ -384,6 +384,37 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
                 "  Design: {} (Tatami-Flächen, mit „stick erzeugen“ berechnen)",
                 ziel.display()
             );
+            Ok(true)
+        }
+        Some("parameter") => {
+            let modus = option(args, "--modus");
+            if args.iter().any(|a| a == "--markdown") {
+                print!("{}", stick_kern::parameter::markdown(modus.as_deref()));
+                return Ok(true);
+            }
+            let k: Vec<_> = stick_kern::parameter::katalog()
+                .into_iter()
+                .filter(|p| modus.as_deref().is_none_or(|m| p.modus == m))
+                .collect();
+            for p in &k {
+                let wo = [
+                    p.json_design.clone(),
+                    p.json_objekt.as_ref().map(|f| format!("Objekt: {f}")),
+                ]
+                .into_iter()
+                .flatten()
+                .collect::<Vec<_>>()
+                .join(" / ");
+                println!(
+                    "  [{:<11}] {:<24} {:<36} = {} {}  ({wo})",
+                    p.modus,
+                    p.gruppe,
+                    p.name,
+                    stick_kern::parameter::text(&p.standard),
+                    p.einheit
+                );
+            }
+            println!("  {} Parameter (Stand {})", k.len(), stick_kern::parameter::stand());
             Ok(true)
         }
         Some("muster") => {

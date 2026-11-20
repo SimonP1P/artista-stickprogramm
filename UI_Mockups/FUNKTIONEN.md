@@ -5,8 +5,9 @@ der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Fel
 `stickprogramm/README.md` „Design beschreiben (JSON)“. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
 `Analyse_Teil3/15_funktionsinventur.md`. **Stand: 20.11.2026** – wird bei jeder neuen Funktion ergänzt.
 
-**Modus** (Vorschlag, endgültig mit dem Parameterkatalog, ROADMAP M1): **E** = im einfachen Modus sichtbar,
-**X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur das Ergebnis).
+**Modus:** **E** = im einfachen Modus sichtbar, **X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur
+das Ergebnis). **Alle einzelnen Werte** (Stichabstand, Zugausgleich, Unterlagen, Vernähen …) mit Standard, Bereich,
+Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar `kern/stick-kern/daten/parameter.json`).
 
 ## 1. Wie Oberfläche und Kern zusammenarbeiten
 - Die Oberfläche hält **ein Design als JSON** (Formen in mm, Ursprung Rahmenmitte, +y oben) und schickt es bei jeder
@@ -69,6 +70,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 ## 6. Weitere Werkzeuge (noch ohne Befehl in der App)
 | Funktion | Heute | Für die neue Oberfläche nötig |
 |---|---|---|
+| Parameterkatalog (für Expertenmodus und Formulare) | `kern/stick-kern/daten/parameter.json`, CLI `stick parameter`, lesbar `PARAMETER.md` | Befehl „Parameterkatalog“ (Liste aus `stick_kern::parameter::katalog()`) |
 | Liste der Füllmuster | CLI `stick muster`, Datei `kern/stick-kern/daten/fuellmuster.json` | Befehl „Musterliste“ (Name, Nummer, Vorschau) |
 | Computer-Schriften (TTF) laden | CLI `stick schriften`; die App lädt TTF noch nicht | Befehl „Schriftenliste“ + Laden der Schrift beim Berechnen |
 | Bild → Umrisse (Auto-Digitalisieren) | CLI `stick bild` (Farben, Breite, Glättung) | Befehl „Bild umwandeln“ → Objekte ins Design |

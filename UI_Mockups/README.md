@@ -12,15 +12,17 @@ sind **nicht** die App (`app/` bleibt unverändert, bis die neue Oberfläche fes
 ## Unterlagen für Designer und Frontend-Entwickler (werden bei jeder neuen Funktion aktualisiert)
 1. **`UI_Mockups/FUNKTIONEN.md`** – jede Funktion des Kerns: was der Anwender einstellt, Standardwert, JSON-Feld,
    Vorschlag einfach/experte; fehlende App-Befehle; was noch kommt.
-2. `UI_Mockups/README.md` (diese Datei) – Hinweise aus der Analyse zu Stoffen, Sticharten, Reihenfolge, Rahmen,
+2. **`PARAMETER.md`** – Parameterkatalog: jeder einstellbare Wert (132) mit Standard, Bereich, Quelle, Werten je Stoff
+   und Modus **einfach / experte / automatisch**; maschinenlesbar `kern/stick-kern/daten/parameter.json`.
+3. `UI_Mockups/README.md` (diese Datei) – Hinweise aus der Analyse zu Stoffen, Sticharten, Reihenfolge, Rahmen,
    Expertenmodus.
-3. `Analyse_Teil3/15_funktionsinventur.md` – alle Funktionen des Originals und was der Kern schon kann.
-4. `ROADMAP.md`, Abschnitt Phase 4b – was noch kommt.
-5. `stickprogramm/README.md`, Abschnitt „Design beschreiben (JSON)“ – alle Objekte und Felder im Detail.
-6. Auswahllisten: `Analyse/daten/hoops_table.md` (Rahmen), `Analyse/daten/alphabets.md` + `Arbeitsdaten/alphabete/`
+4. `Analyse_Teil3/15_funktionsinventur.md` – alle Funktionen des Originals und was der Kern schon kann.
+5. `ROADMAP.md`, Abschnitt Phase 4b – was noch kommt.
+6. `stickprogramm/README.md`, Abschnitt „Design beschreiben (JSON)“ – alle Objekte und Felder im Detail.
+7. Auswahllisten: `Analyse/daten/hoops_table.md` (Rahmen), `Analyse/daten/alphabets.md` + `Arbeitsdaten/alphabete/`
    (Schriften), `Analyse/daten/garnkarten/UEBERSICHT.md` (Garnkarten), `kern/stick-kern/daten/fuellmuster.json`
    (242 Füllmuster).
-7. Frontend: `app/src-tauri/src/lib.rs` – die Befehle zwischen Oberfläche und Kern.
+8. Frontend: `app/src-tauri/src/lib.rs` – die Befehle zwischen Oberfläche und Kern.
 
 ## Hinweise aus der Analyse für die nächsten Stände (Claude Code, 20.11.2026)
 Fakten aus dem Original und dem Rechenkern, die die Gestaltung betreffen (Quellen in Klammern):

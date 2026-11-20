@@ -1,0 +1,355 @@
+"""Parameterkatalog (ROADMAP M1) erzeugen: kern/stick-kern/daten/parameter.json.
+
+Eine Zeile je Parameter. Der Rust-Test `stick_kern::parameter` prüft, dass jeder Wert unter `einstellungen` hier steht,
+der Standard mit dem Code übereinstimmt und „stoffabhängig“ stimmt. Lesbare Fassung: `stick parameter --markdown`
+(→ PARAMETER.md). Modus: einfach = im einfachen Modus sichtbar, experte = nur im Expertenmodus, automatisch = wird
+nicht angezeigt (fester oder abgeleiteter Wert, dokumentiert).
+
+Aufruf:  python parameter_katalog.py
+"""
+import json
+import os
+
+ZIEL = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'kern', 'stick-kern', 'daten', 'parameter.json')
+K = []
+
+
+def P(id_, gruppe, name, wirkung, *, ebene='design', gilt=(), d=None, o=None, einheit='', std=None, bereich=None,
+      werte=(), stoff=False, quelle='', modus='experte'):
+    assert modus in ('einfach', 'experte', 'automatisch'), id_
+    assert ebene in ('design', 'objekt', 'beide', 'werkzeug'), id_
+    e = {'id': id_, 'gruppe': gruppe, 'name': name, 'wirkung': wirkung, 'ebene': ebene, 'gilt_fuer': list(gilt),
+         'json_design': d, 'json_objekt': o, 'einheit': einheit, 'standard': std, 'bereich': bereich,
+         'werte': list(werte), 'stoff': stoff, 'quelle': quelle, 'modus': modus}
+    K.append(e)
+
+
+STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Knit Heavy Weight', 'Terry Medium Weight',
+          'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
+ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'tatami', 'muster', 'blanket', 'applikation', 'text', 'ttf',
+        'monogramm']
+V = 'Vorschlag (eigene Festlegung)'
+
+# ---------------------------------------------------------------- Design
+G = 'Design'
+P('design.rahmen', G, 'Rahmen', 'Stickrahmen; legt das Stickfeld fest', d='rahmen', einheit='Auswahl',
+  std='artista 130 x 100', quelle='Rahmenliste der Software (Analyse/daten/hoops_table.md); Befehl rahmen_liste',
+  modus='einfach')
+P('design.stoff', G, 'Stoff', 'ändert Satin-/Step-Abstand, Zugausgleich, Unterlagen, Step-Versatz, Trim', d='stoff',
+  einheit='Auswahl', std='0 Software Defaults', werte=STOFFE, quelle='Stile in NORMAL.AMT (Analyse/code/10 §E)',
+  modus='einfach')
+P('design.garnkarte', G, 'Garnkarte', 'Farben werden dem nächsten Garn der Karte zugeordnet', d='garnkarte',
+  einheit='Auswahl', std='Default', quelle='Garnkarten .tch; die Maschine nutzt Default.tch; Befehl garnkarten_liste',
+  modus='einfach')
+P('design.start', G, 'Startpunkt', 'wo der erste Stich beginnt', d='start', einheit='Auswahl', std='rahmenmitte',
+  werte=['rahmenmitte', 'designmitte', 'unten_mitte', 'erster_stich'],
+  quelle='Dialog „Start and End“ (Handbuch PDF-S. 205); Standard bis Gerätetest V7 eigene Festlegung')
+P('design.ende', G, 'Endpunkt', 'wohin der Rahmen nach dem letzten Stich fährt', d='ende', einheit='Auswahl',
+  std='rahmenmitte', werte=['rahmenmitte', 'designmitte', 'unten_mitte', 'start', 'letzter_stich'],
+  quelle='Dialog „Start and End“; 34 von 51 Maschinendesigns enden auf 0,0')
+
+# ---------------------------------------------------------------- Größe und Lage
+G = 'Größe und Lage'
+Q = 'Handbuch Kap. 15; Stiche werden neu berechnet, nie skaliert'
+P('transform.skalieren', G, 'Größe', 'skaliert um die Mitte (eine Zahl oder [x, y])', ebene='beide', gilt=ALLE,
+  d='transform.skalieren', o='transform.skalieren', einheit='%', std=100, bereich=[10, 500], quelle=Q + '; Bereich ' + V,
+  modus='einfach')
+P('transform.drehen', G, 'Drehen', 'dreht um die Mitte, gegen den Uhrzeiger', ebene='beide', gilt=ALLE,
+  d='transform.drehen', o='transform.drehen', einheit='°', std=0, bereich=[-360, 360], quelle=Q, modus='einfach')
+P('transform.spiegeln', G, 'Spiegeln', 'spiegelt um die Mitte', ebene='beide', gilt=ALLE, d='transform.spiegeln',
+  o='transform.spiegeln', einheit='Auswahl', std=None, werte=['links_rechts', 'oben_unten', 'beide'], quelle=Q,
+  modus='einfach')
+P('transform.schraeg', G, 'Schrägstellen', 'verschiebt x mit der Höhe (Skew)', ebene='beide', gilt=ALLE,
+  d='transform.schraeg', o='transform.schraeg', einheit='°', std=0, bereich=[-60, 60], quelle=Q + '; Bereich ' + V)
+P('transform.verschieben', G, 'Verschieben', 'Lage im Rahmen', ebene='beide', gilt=ALLE, d='transform.verschieben',
+  o='transform.verschieben', einheit='mm [x, y]', std=[0, 0], quelle=Q, modus='einfach')
+
+# ---------------------------------------------------------------- Satin
+G = 'Satin'
+P('satin.auto_spacing', G, 'Auto Spacing', 'Stichabstand automatisch nach der Säulenbreite (schmal = lockerer)',
+  d='einstellungen.satin.auto_spacing', einheit='an/aus', std=True,
+  quelle='Effekt Auto Spacing 0x21, Tabelle nach Breite (Analyse/code/10, hoch); am Objekt aus, wenn „abstand“ gesetzt')
+P('satin.abstand_fest', G, 'Stichabstand (fest)', 'Weg zwischen zwei Einstichen derselben Seite, wenn Auto Spacing aus',
+  ebene='beide', gilt=['satin'], d='einstellungen.satin.abstand_fest', o='abstand', einheit='mm', std=0.40,
+  bereich=[0.2, 2.0], stoff=True, quelle='AMT 0x2723 (hoch); Bereich ' + V)
+P('satin.faktor', G, 'Auto-Spacing-Faktor', 'Faktor auf die Tabelle (Stoff, Schrift 0,9)', ebene='beide', gilt=['satin'],
+  d='einstellungen.satin.faktor', o='faktor', einheit='Faktor', std=1.0, bereich=[0.5, 2.0], stoff=True,
+  quelle='AMT 0x2736 (hoch)')
+P('satin.zugausgleich', G, 'Zugausgleich', 'verlängert jeden Stich an beiden Enden („Fett“ = mehr Zugausgleich)',
+  d='einstellungen.satin.zugausgleich', einheit='mm', std=0.20, bereich=[0.0, 1.0], stoff=True,
+  quelle='Handbuch S. 199 (hoch); Stile 0x273d')
+P('satin.zickzack_abstand', G, 'Zickzack-Abstand', 'Abstand des Zickzack-Deckstichs (Stichart zickzack)',
+  d='einstellungen.satin.zickzack_abstand', einheit='mm', std=2.0, bereich=[0.5, 6.0], stoff=True,
+  quelle='Stichart Zigzag 0x2724/0x2725 (Stil-Liste 0x27a6, hoch)')
+P('satin.kurzstiche.an', G, 'Kurzstiche', 'kürzt Stiche an Innenkurven, damit es dort nicht zu dicht wird',
+  ebene='beide', gilt=['satin', 'tatami (mit Winkellinien)'], d='einstellungen.satin.kurzstiche.an', o='kurzstiche',
+  einheit='an/aus', std=False, quelle='Effekt 0x273a (MOD1 ShortStitchesEffect); Stil aus, Schrift an')
+P('satin.kurzstiche.schwelle', G, 'Kurzstiche: Schwelle', 'ab welcher Dichte gekürzt wird (× Abstand)',
+  d='einstellungen.satin.kurzstiche.schwelle', einheit='Faktor', std=0.5, quelle='0x2819 (hoch)', modus='automatisch')
+P('satin.kurzstiche.zufall', G, 'Kurzstiche: Zufall', 'Kürzung zufällig ±0,04 verändert',
+  d='einstellungen.satin.kurzstiche.zufall', einheit='an/aus', std=True, quelle='0x281a (hoch)', modus='automatisch')
+P('satin.kurzstiche.max_gruppe', G, 'Kurzstiche: Gruppe', 'höchstens so viele Stiche je Gruppe',
+  d='einstellungen.satin.kurzstiche.max_gruppe', einheit='Anzahl', std=5, quelle='0x281b (hoch)', modus='automatisch')
+P('satin.kurzstiche.faktoren', G, 'Kurzstiche: Faktoren', 'Kürzungsfaktoren als Dreieckstabelle',
+  d='einstellungen.satin.kurzstiche.faktoren', einheit='Liste',
+  std=[0.80, 0.85, 0.72, 0.70, 0.90, 0.70, 0.70, 0.90, 0.80, 0.70, 0.70, 0.87, 0.65, 0.83, 0.70], quelle='0x281c (hoch)',
+  modus='automatisch')
+P('objekt.stichart_satin', G, 'Stichart Säule/Linie', 'Satin (dicht) oder Zickzack (offen)', ebene='objekt',
+  gilt=['satin', 'satinlinie'], o='stichart', einheit='Auswahl', std='satin', werte=['satin', 'zickzack'],
+  quelle='Stichartliste STR 2234/2236')
+P('objekt.satinlinie.breite', G, 'Breite der Satinlinie', 'Breite der Bahn um die Linie', ebene='objekt',
+  gilt=['satinlinie'], o='breite', einheit='mm', std=2.0, bereich=[0.5, 12.0], quelle='Standard ' + V, modus='einfach')
+P('objekt.satinlinie.versatz', G, 'Lage der Satinlinie', 'mittig um die Linie oder zur Seite (Linie = Kante)',
+  ebene='objekt', gilt=['satinlinie'], o='versatz', einheit='Auswahl', std='mitte', werte=['mitte', 'seite'],
+  quelle='Dialog „Outline Stitch“ Center/Offset; Seite links ' + V)
+
+# ---------------------------------------------------------------- Tatami / Step
+G = 'Tatami (Step)'
+P('tatami.abstand', G, 'Stichabstand', 'Weg zwischen zwei Hinreihen (Nachbarreihen halber Abstand)',
+  d='einstellungen.tatami.abstand', einheit='mm', std=0.40, bereich=[0.2, 2.0], stoff=True,
+  quelle='AMT 0x2716 (hoch; Handbuch PDF-S. 74)')
+P('tatami.laenge', G, 'Stichlänge', 'Länge der Step-Stiche', d='einstellungen.tatami.laenge', einheit='mm', std=4.0,
+  bereich=[1.0, 12.7], quelle='AMT 0x2717 (hoch)')
+P('tatami.min_rand', G, 'Mindeststich am Rand', 'Einstiche näher am Rand entfallen', d='einstellungen.tatami.min_rand',
+  einheit='mm', std=0.40, bereich=[0.1, 2.0], quelle='AMT 0x2718 (hoch)')
+P('tatami.versatz', G, 'Reihenversatz 1', 'Verschiebung des Rasters (über Step-Muster gewählt)',
+  d='einstellungen.tatami.versatz', einheit='× Stichlänge', std=0.25, quelle='AMT 0x2719 (hoch)', modus='automatisch')
+P('tatami.versatz2', G, 'Reihenversatz 2', 'zweiter Versatz, abwechselnd mit dem ersten (null = wie Versatz 1)',
+  d='einstellungen.tatami.versatz2', einheit='× Stichlänge', std=None, stoff=True,
+  quelle='AMT 0x271a (hoch); Stoffe 0,75', modus='automatisch')
+P('tatami.zufall', G, 'Zufallsversatz', 'streut die Einstiche einer Reihe', d='einstellungen.tatami.zufall',
+  einheit='× Stichlänge', std=0.0, quelle='AMT 0x271b; Verteilung ' + V, modus='automatisch')
+P('tatami.winkel', G, 'Stichwinkel', 'Richtung der Stichreihen', ebene='beide', gilt=['tatami', 'muster', 'ttf'],
+  d='einstellungen.tatami.winkel', o='winkel', einheit='°', std=45.0, bereich=[0, 180],
+  quelle='Handbuch Kap. 16 (Stitch Angle); Standard 45° ' + V, modus='einfach')
+P('tatami.zugausgleich', G, 'Zugausgleich', 'verlängert die Reihen an beiden Enden', d='einstellungen.tatami.zugausgleich',
+  einheit='mm', std=0.20, bereich=[0.0, 1.0], stoff=True, quelle='Handbuch S. 199 (hoch)')
+P('tatami.laufweg_laenge', G, 'Laufweg in der Fläche', 'Stichlänge der Wege zwischen Teilbereichen',
+  d='einstellungen.tatami.laufweg_laenge', einheit='mm', std=1.8, quelle='Lauf 0x271c (hoch)', modus='automatisch')
+P('tatami.laufweg.min_laenge', G, 'Laufweg: Mindeststich', 'variabler Lauf: kleinster Stich',
+  d='einstellungen.tatami.laufweg.min_laenge', einheit='mm', std=0.4, quelle='0x2767 (hoch)', modus='automatisch')
+P('tatami.laufweg.sehnenabstand', G, 'Laufweg: Sehnenabstand', 'variabler Lauf: Abweichung von der Kurve',
+  d='einstellungen.tatami.laufweg.sehnenabstand', einheit='mm', std=16 / 180, quelle='0x2768 (hoch)',
+  modus='automatisch')
+P('objekt.step_muster', G, 'Step-Muster', 'Struktur der Fläche (1 = gleichmäßig)', ebene='objekt',
+  gilt=['tatami', 'text (Step)'], o='step_muster', einheit='Nummer', std=1, bereich=[1, 20],
+  quelle='Dialog „Fill Stitch“, Tabelle DIALOG.DLL (hoch)', modus='einfach')
+P('objekt.winkellinien', G, 'Mehrere Stichwinkel', 'Winkellinien quer über die Fläche, die Stiche drehen mit',
+  ebene='objekt', gilt=['tatami'], o='winkellinien', einheit='Linien', std=[],
+  quelle='Handbuch Kap. 16; gemessen (Analyse_Teil3/06 §6)')
+P('objekt.unterlage_flaeche', G, 'Unterlage der Fläche', 'Step-Unterlage an/aus (ohne Angabe: Stil)', ebene='objekt',
+  gilt=['tatami', 'muster'], o='unterlage', einheit='an/aus', std=None, quelle='Auto Underlay des Stils')
+
+# ---------------------------------------------------------------- Füllmuster
+G = 'Füllmuster'
+P('objekt.muster', G, 'Füllmuster', 'eines der 242 Muster (Program Split)', ebene='objekt', gilt=['muster', 'text'],
+  o='muster', einheit='Auswahl', std=None, quelle='Bibliothek in NORMAL.AMT (Analyse_Teil3/13); Liste fuellmuster.json',
+  modus='einfach')
+P('objekt.muster.groesse', G, 'Mustergröße', 'skaliert die Musterkachel', ebene='objekt', gilt=['muster', 'text'],
+  o='groesse', einheit='%', std=100, bereich=[25, 400], quelle='Analyse_Teil3/13; Bereich ' + V)
+
+# ---------------------------------------------------------------- Lauf
+G = 'Lauf'
+P('lauf.laenge', G, 'Stichlänge', 'Länge der Laufstiche', ebene='beide', gilt=['lauf', 'dreifach', 'ttf'],
+  d='einstellungen.lauf.laenge', o='laenge', einheit='mm', std=2.5, bereich=[0.5, 12.7], quelle='AMT 0x27a8 (hoch)')
+P('lauf.min_laenge', G, 'Mindeststich', 'kleinster Stich (variable Länge)', d='einstellungen.lauf.min_laenge',
+  einheit='mm', std=0.8, quelle='AMT 0x27a8 (hoch)', modus='automatisch')
+P('lauf.variabel', G, 'Variable Stichlänge', 'in Kurven kürzere Stiche', d='einstellungen.lauf.variabel',
+  einheit='an/aus', std=False, quelle='Run-Dialog: feste Länge Standard (hoch)')
+P('lauf.sehnenabstand', G, 'Sehnenabstand', 'erlaubte Abweichung von der Kurve (variable Länge)',
+  d='einstellungen.lauf.sehnenabstand', einheit='mm', std=0.09, quelle='Chord Gap (hoch)', modus='automatisch')
+P('lauf.ecke_grad', G, 'Eckwinkel', 'ab diesem Knick Einstich an der Ecke (nur berechnete Linien)',
+  d='einstellungen.lauf.ecke_grad', einheit='°', std=30.0, quelle=V, modus='automatisch')
+
+# ---------------------------------------------------------------- Unterlage
+G = 'Unterlage'
+P('unterlage.auto_an', G, 'Unterlage automatisch', 'Auto Underlay an/aus (Schrift: an)', d='einstellungen.unterlage.auto_an',
+  einheit='an/aus', std=False, quelle='Stil-Flags 0x2000 (Analyse_Teil3/05, mittel-hoch)', modus='einfach')
+P('unterlage.auto_art', G, 'Art der Auto-Unterlage', 'vorgewählte Unterlage', d='einstellungen.unterlage.auto_art',
+  einheit='Auswahl', std=['zickzack'], werte=['mittellauf', 'edge_walk', 'zickzack', 'doppelzickzack'],
+  quelle='Stil-Bit 0x0001 = Zickzack')
+P('objekt.unterlage_saeule', G, 'Unterlage der Säule/Schrift', 'auto, keine oder Arten (z. B. edge_walk+zickzack)',
+  ebene='objekt', gilt=['satin', 'satinlinie', 'text'], o='unterlage', einheit='Auswahl', std='auto',
+  werte=['auto', 'keine', 'mittellauf', 'edge_walk', 'zickzack', 'doppelzickzack'], quelle='Handbuch Kap. 22')
+P('unterlage.rand', G, 'Abstand zum Rand', 'Unterlage bleibt so weit innen', d='einstellungen.unterlage.rand',
+  einheit='mm', std=0.20, bereich=[0.0, 2.0], quelle='AMT 0x2769/0x276a (mittel)')
+P('unterlage.zugausgleich', G, 'Zugausgleich der Unterlage', '', d='einstellungen.unterlage.zugausgleich', einheit='mm',
+  std=0.20, quelle='AMT 0x2743 (hoch)')
+P('unterlage.edge_walk_laenge', G, 'Edge Walk: Stichlänge', 'Lauf am Rand der Säule',
+  d='einstellungen.unterlage.edge_walk_laenge', einheit='mm', std=2.2, quelle='AMT 0x2747 (hoch)')
+P('unterlage.mittellauf_laenge', G, 'Mittellauf: Stichlänge', 'Lauf auf der Säulenmitte',
+  d='einstellungen.unterlage.mittellauf_laenge', einheit='mm', std=2.2, quelle='AMT 0x2746 (hoch)')
+P('unterlage.zickzack_laenge', G, 'Zickzack-Unterlage: Abstand', 'Weg zwischen Einstichen derselben Seite',
+  d='einstellungen.unterlage.zickzack_laenge', einheit='mm', std=5.0, stoff=True, quelle='AMT 0x2744/0x2725 (mittel)')
+P('unterlage.doppelzickzack_laenge', G, 'Doppel-Zickzack: Abstand', '',
+  d='einstellungen.unterlage.doppelzickzack_laenge', einheit='mm', std=7.0, stoff=True, quelle='AMT 0x2745/0x2725 (mittel)')
+P('unterlage.rueck_lauf_laenge', G, 'Zickzack: Rücklauf', 'Lauf zurück zur Säulenmitte',
+  d='einstellungen.unterlage.rueck_lauf_laenge', einheit='mm', std=3.0, quelle='AMT 0x2744/0x271d (mittel)',
+  modus='automatisch')
+P('unterlage.tatami_abstand', G, 'Step-Unterlage: Abstand', '', d='einstellungen.unterlage.tatami_abstand', einheit='mm',
+  std=3.0, quelle='AMT 0x275a (mittel)')
+P('unterlage.tatami_laenge', G, 'Step-Unterlage: Stichlänge', '', d='einstellungen.unterlage.tatami_laenge',
+  einheit='mm', std=4.0, quelle='AMT 0x275a (mittel)')
+P('unterlage.tatami_randlauf', G, 'Step-Unterlage: Randlauf', 'Stichlänge des Laufs um die Fläche',
+  d='einstellungen.unterlage.tatami_randlauf', einheit='mm', std=2.5, quelle='AMT 0x275a (mittel)', modus='automatisch')
+P('unterlage.tatami_winkel_versatz', G, 'Step-Unterlage: Winkel', 'gegen die Deckrichtung gedreht',
+  d='einstellungen.unterlage.tatami_winkel_versatz', einheit='°', std=90.0, quelle='AMT 0x2759', modus='automatisch')
+for art, (mn, sa) in {'edge_walk_lauf': (72, 13), 'mittellauf_lauf': (131, 11), 'zickzack_lauf': (72, 36),
+                      'doppelzickzack_lauf': (179, 16), 'tatami_randlauf_lauf': (72, 13)}.items():
+    P(f'unterlage.{art}.min_laenge', G, f'{art}: Mindeststich', 'variabler Lauf der Unterlage',
+      d=f'einstellungen.unterlage.{art}.min_laenge', einheit='mm', std=mn / 180, quelle='0x2767 (hoch)',
+      modus='automatisch')
+    P(f'unterlage.{art}.sehnenabstand', G, f'{art}: Sehnenabstand', 'variabler Lauf der Unterlage',
+      d=f'einstellungen.unterlage.{art}.sehnenabstand', einheit='mm', std=sa / 180, quelle='0x2768 (hoch)',
+      modus='automatisch')
+
+# ---------------------------------------------------------------- Verbinder
+G = 'Verbinder und Vernähen'
+Q = 'Dialog „Connectors“, Stil 0x272a (DIALOG.DLL, hoch)'
+for k, name, w, std, einh, tag in [
+    ('anfang_immer', 'Immer vernähen (Anfang)', 'Tie In immer', False, 'an/aus', '0x2753'),
+    ('anfang_nach_trim_farbwechsel', 'Vernähen nach Trim/Farbwechsel', 'Tie In If After Trim', True, 'an/aus', '0x2750'),
+    ('anfang_bei_langem_verbinder', 'Vernähen nach langem Verbinder', 'Tie In If Previous Connector Longer', True, 'an/aus',
+     '0x272d'),
+    ('anfang_verbinder_ab', '… Verbinder länger als', '', 3.0, 'mm', '0x2755'),
+    ('ende_immer', 'Immer vernähen (Ende)', 'Tie Off immer', False, 'an/aus', '0x2752'),
+    ('ende_vor_trim_farbwechsel', 'Vernähen vor Trim/Farbwechsel', 'Tie Off If Before Trim', True, 'an/aus', '0x2733'),
+    ('ende_bei_langem_verbinder', 'Vernähen vor langem Verbinder', 'Tie Off If Next Connector Longer', True, 'an/aus',
+     '0x272c'),
+    ('ende_verbinder_ab', '… Verbinder länger als', '', 3.0, 'mm', '0x2754'),
+    ('letztes_objekt_vernaehen', 'Letztes Objekt vernähen', 'Always Tie Off Last Object', False, 'an/aus', '0x276c'),
+    ('trim_ab', 'Trim ab', 'ab dieser Verbinderlänge gilt ein Sprung als Trim (die 185 schneidet nicht)', 3.0, 'mm',
+     '0x272e'),
+    ('vernaeh_stichlaenge', 'Länge der Vernähstiche', '', 1.0, 'mm', '0x2730/0x2731'),
+    ('vernaeh_stiche', 'Zahl der Vernähstiche', '', 2, 'Anzahl', '0x272f/0x275d'),
+]:
+    P(f'verbinder.{k}', G, name, w, d=f'einstellungen.verbinder.{k}', einheit=einh, std=std, stoff=(k == 'trim_ab'),
+      quelle=f'{Q}; {tag}')
+
+# ---------------------------------------------------------------- Auto Jump, Maschine, Bearbeiten
+G = 'Auto Jump und Maschine'
+P('objekt.auto_jump', G, 'Auto Jump', 'lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus)',
+  ebene='objekt', gilt=ALLE, o='auto_jump', einheit='an/aus', std=True, quelle='Effects-Dialog; AMT 0x2758 (hoch)')
+P('objekt.auto_jump.max', G, 'Auto Jump: Höchststich', 'darüber Sprünge; klein (z. B. 6 mm) = Satin mit mehr Loft',
+  ebene='objekt', gilt=ALLE, o='auto_jump.max', einheit='mm', std=12.7, bereich=[0.3, 12.7], quelle='AMT 0x2711 (hoch)')
+P('objekt.auto_jump.sprung', G, 'Auto Jump: Sprunglänge', 'Länge der Teilsprünge', ebene='objekt', gilt=ALLE,
+  o='auto_jump.sprung', einheit='mm', std=7.0, bereich=[0.3, 12.7], quelle='AMT 0x2712 (hoch)')
+P('maschine.min_stich', G, 'Kürzester Stich', 'kürzere Stiche werden entfernt', ebene='design', einheit='mm', std=0.3,
+  quelle='DEFAULTS.DFL (hoch)', modus='automatisch')
+P('maschine.max_stich', G, 'Längster Stich', 'Maschinengrenze artista 185', ebene='design', einheit='mm', std=12.7,
+  quelle='DEFAULTS.DFL (hoch)', modus='automatisch')
+G = 'Bearbeiten'
+P('objekt.doppellauf', G, 'Verstärken (Double Run)', 'gleiche Stiche rückwärts noch einmal', ebene='objekt', gilt=ALLE,
+  o='doppellauf', einheit='an/aus', std=False, quelle='Handbuch Kap. 23')
+P('objekt.aussparen', G, 'Aussparen (Knockout)', 'Fläche spart die genannten Objekte aus', ebene='objekt',
+  gilt=['tatami', 'muster'], o='aussparen', einheit='Objektnamen', std=[], quelle='Remove Overlay (Analyse_Teil3/14)',
+  modus='einfach')
+P('objekt.ueberlappung', G, 'Überlappung beim Aussparen', 'Loch bleibt um so viel kleiner', ebene='objekt',
+  gilt=['tatami', 'muster'], o='ueberlappung', einheit='mm', std=0.0, bereich=[0, 3], quelle='Analyse_Teil3/14')
+
+# ---------------------------------------------------------------- Blanket, Applikation
+G = 'Blanket'
+P('objekt.blanket.abstand', G, 'Zahnabstand', '', ebene='objekt', gilt=['blanket'], o='abstand', einheit='mm', std=2.0,
+  bereich=[0.5, 10], quelle='Stil 0x2727/0x2728')
+P('objekt.blanket.breite', G, 'Zahnbreite', '', ebene='objekt', gilt=['blanket'], o='breite', einheit='mm', std=3.0,
+  bereich=[0.5, 12], quelle='Stil 0x2729', modus='einfach')
+P('objekt.blanket.versatz', G, 'Lage', 'mittig oder zur Seite', ebene='objekt', gilt=['blanket'], o='versatz',
+  einheit='Auswahl', std='mitte', werte=['mitte', 'seite'], quelle='Dialog Center/Offset')
+G = 'Applikation'
+Q = 'Easy Appliqué (Analyse_Teil3/12)'
+P('objekt.appl.abdeckung', G, 'Abdeckung', 'Satin oder Blanket', ebene='objekt', gilt=['applikation'], o='abdeckung',
+  einheit='Auswahl', std='satin', werte=['satin', 'blanket'], quelle=Q, modus='einfach')
+P('objekt.appl.stil', G, 'Stoff zuschneiden', 'vorgeschnitten oder im Rahmen zuschneiden (mit Schnittlinie)',
+  ebene='objekt', gilt=['applikation'], o='stil', einheit='Auswahl', std='vorgeschnitten',
+  werte=['vorgeschnitten', 'zuschneiden'], quelle=Q, modus='einfach')
+P('objekt.appl.breite', G, 'Breite der Abdeckung', '', ebene='objekt', gilt=['applikation'], o='breite', einheit='mm',
+  std=2.5, bereich=[1, 8], quelle=Q)
+P('objekt.appl.abstand', G, 'Abstand der Abdeckung', 'fester Satinabstand (ohne Angabe: Stil)', ebene='objekt',
+  gilt=['applikation'], o='abstand', einheit='mm', std=None, quelle=Q)
+P('objekt.appl.heft_breite', G, 'Heftstich: Breite', '', ebene='objekt', gilt=['applikation'], o='heft_breite',
+  einheit='mm', std=3.0, quelle=Q)
+P('objekt.appl.heft_abstand', G, 'Heftstich: Abstand', '', ebene='objekt', gilt=['applikation'], o='heft_abstand',
+  einheit='mm', std=2.0, quelle=Q)
+P('objekt.appl.platz_laenge', G, 'Platzierungslinie: Stichlänge', '', ebene='objekt', gilt=['applikation'],
+  o='platz_laenge', einheit='mm', std=2.0, quelle=Q)
+
+# ---------------------------------------------------------------- Schrift
+G = 'Schrift'
+T = ['text', 'ttf', 'monogramm']
+P('schrift.alphabet', G, 'Alphabet', 'eines der 50 Original-Alphabete', ebene='objekt', gilt=['text'], o='alphabet',
+  einheit='Auswahl', std=None, quelle='ESB-Alphabete (Analyse/daten/alphabets.md); Befehl alphabete_liste',
+  modus='einfach')
+P('schrift.ttf', G, 'Computer-Schrift', 'TrueType/OpenType-Schrift', ebene='objekt', gilt=['ttf'], o='schrift',
+  einheit='Auswahl', std=None, quelle='Handbuch Kap. 21; Stichart ' + V, modus='einfach')
+P('schrift.hoehe', G, 'Höhe', 'Buchstabenhöhe', ebene='objekt', gilt=T, o='hoehe', einheit='mm', std=10.0,
+  bereich=[1, 200], quelle='Handbuch S. 165; Vorlage 0x3e88 (Monogramm 18 mm)', modus='einfach')
+P('schrift.breite', G, 'Breite', 'Breite in % der Höhe', ebene='objekt', gilt=T, o='breite', einheit='%', std=100,
+  bereich=[10, 400], quelle='Vorlage 0x3e89; Bereich ' + V)
+P('schrift.abstand', G, 'Buchstabenabstand', 'ohne Angabe: Wert des Alphabets', ebene='objekt', gilt=T, o='abstand',
+  einheit='mm', std=None, quelle='Alphabet-Kopf (Analyse_Teil3/09)')
+P('schrift.wortabstand', G, 'Wortabstand', 'Breite des Leerzeichens', ebene='objekt', gilt=T, o='wortabstand',
+  einheit='% der Höhe', std=25, bereich=[0, 200], quelle='Vorlage 0x3e85')
+P('schrift.zeilenabstand', G, 'Zeilenabstand', 'Lücke zwischen den Zeilen', ebene='objekt', gilt=T, o='zeilenabstand',
+  einheit='% der Höhe', std=60, bereich=[0, 300], quelle='Vorlage 0x3f2d')
+P('schrift.ausrichtung', G, 'Ausrichtung', 'links, mitte, rechts, Blocksatz (nur mit fester Grundlinienlänge)',
+  ebene='objekt', gilt=T, o='ausrichtung', einheit='Auswahl', std='mitte', werte=['links', 'mitte', 'rechts', 'block'],
+  quelle='Lettering-Dialog Justification', modus='einfach')
+P('schrift.kursiv', G, 'Kursiv', 'Neigung der Buchstaben', ebene='objekt', gilt=T, o='kursiv', einheit='°', std=0,
+  bereich=[-45, 45], quelle='Lettering-Dialog Italic; Vorlage 0x3e8a', modus='einfach')
+P('schrift.grundlinie.art', G, 'Grundlinie', 'gerade, Kreis/Oval/Bogen, senkrecht, eigene Kurve, Wappen (mehrfach)',
+  ebene='objekt', gilt=T, o='grundlinie.art', einheit='Auswahl', std=None,
+  werte=['kreis', 'gerade', 'senkrecht', 'kurve', 'mehrfach'], quelle='Dialog „Layout“ (DLG 1039)', modus='einfach')
+P('schrift.grundlinie.radius', G, 'Radius', 'Kreisradius (Oval: Radius X)', ebene='objekt', gilt=T,
+  o='grundlinie.radius', einheit='mm', std=50.0, bereich=[5, 200], quelle='Vorlage 0x3e8b (mittel)', modus='einfach')
+P('schrift.grundlinie.lage', G, 'Oben/unten am Kreis', 'oben im Uhrzeiger, unten gegen den Uhrzeiger', ebene='objekt',
+  gilt=T, o='grundlinie.lage', einheit='Auswahl', std='oben', werte=['oben', 'unten'], quelle='Circle CW/CCW',
+  modus='einfach')
+for k, name, einh, std in [('radius_y', 'Radius Y (Oval)', 'mm', None), ('winkel', 'Lage auf dem Kreis / Linienwinkel', '°', None),
+                           ('neigung', 'Neigung des Ovals', '°', 0), ('bogen', 'Bogenwinkel', '°', None),
+                           ('laenge', 'Länge (gerade)', 'mm', None),
+                           ('stand', 'Text über/auf/unter der Linie', 'Auswahl', None),
+                           ('punkte', 'Eigene Kurve', 'Punkte/Form', None)]:
+    P(f'schrift.grundlinie.{k}', G, name, '', ebene='objekt', gilt=T, o=f'grundlinie.{k}', einheit=einh, std=std,
+      werte=(['ueber', 'durch', 'unter'] if k == 'stand' else []), quelle='Dialog „Layout“ (DLG 1039)')
+P('schrift.farben', G, 'Farbwechsel im Text', '^ im Text wechselt zur nächsten Farbe der Liste', ebene='objekt', gilt=T,
+  o='farben', einheit='Farbliste', std=[], quelle='Handbuch S. 158', modus='einfach')
+P('schrift.buchstaben', G, 'Einzelne Buchstaben', 'Farbe, verschieben, drehen, skalieren, Winkellinien je Buchstabe',
+  ebene='objekt', gilt=T, o='buchstaben', einheit='Liste', std=[], quelle='Handbuch Kap. 19/20')
+P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step oder Füllmuster', ebene='objekt',
+  gilt=['text', 'ttf'], o='stichart', einheit='Auswahl', std='satin', werte=['satin', 'step', 'muster', 'tatami', 'lauf',
+                                                                             'dreifach'],
+  quelle='Handbuch Kap. 20; Verteilung ' + V)
+P('schrift.elastisch', G, 'Verzerren (Elastic)', 'gerade (Wimpel) oder gebogen (Bogen), Griffe oben/unten',
+  ebene='objekt', gilt=T, o='elastisch', einheit='Griffe mm', std=None, quelle='Handbuch Kap. 21; Kantenform ' + V,
+  modus='einfach')
+P('schrift.monogramm.initialen', G, 'Initialen', '2 oder 3 Buchstaben', ebene='objekt', gilt=['monogramm'],
+  o='initialen', einheit='Text', std=None, quelle='Diamond2/Diamond3 (Analyse_Teil3/09 §7)', modus='einfach')
+P('schrift.monogramm.rahmen', G, 'Monogramm-Rahmen', 'Raute, Zier oder keiner', ebene='objekt', gilt=['monogramm'],
+  o='rahmen', einheit='Auswahl', std='keine', werte=['raute', 'zier', 'keine'], quelle='Analyse_Teil3/09 §7',
+  modus='einfach')
+P('schrift.monogramm.rahmen_farbe', G, 'Rahmenfarbe', '', ebene='objekt', gilt=['monogramm'], o='rahmen_farbe',
+  einheit='Farbe', std=None, quelle='Farbwechsel ^', modus='einfach')
+P('schrift.faktor', G, 'Schrift: Auto-Spacing-Faktor', 'Schrift 10 % dichter', ebene='design', einheit='Faktor', std=0.9,
+  quelle='Stil „Schrift“ (Analyse/code/10)', modus='automatisch')
+P('schrift.unterlage', G, 'Schrift: Unterlage', 'Zickzack, wenn das Alphabet keine eigene hat', ebene='design',
+  einheit='Auswahl', std='zickzack', quelle='Stil „Schrift“', modus='automatisch')
+P('schrift.laufweg', G, 'Schrift: Laufweg', 'Stichlänge der Wege im Buchstaben', ebene='design', einheit='mm', std=3.0,
+  quelle='Lauf 0x271c im Alphabet', modus='automatisch')
+
+# ---------------------------------------------------------------- Bild → Umrisse
+G = 'Bild → Umrisse'
+for k, name, w, einh, std, modus in [
+    ('breite_mm', 'Breite', 'Breite des Ergebnisses (Höhe folgt)', 'mm', 80.0, 'einfach'),
+    ('farben', 'Farben', 'Zahl der Farben nach der Reduktion', 'Anzahl', 6, 'einfach'),
+    ('min_flaeche', 'Kleinste Fläche', 'kleinere Flächen entfallen', 'mm²', 4.0, 'experte'),
+    ('glaettung', 'Glättung', 'Toleranz der Vereinfachung', 'mm', 0.2, 'experte'),
+    ('ohne_hintergrund', 'Hintergrund weglassen', 'häufigste Randfarbe entfällt', 'an/aus', True, 'experte'),
+]:
+    P(f'bild.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle='stick-vektor (eigene Festlegung)',
+      modus=modus)
+
+ids = [e['id'] for e in K]
+assert len(ids) == len(set(ids)), 'doppelte IDs'
+with open(ZIEL, 'w', encoding='utf-8') as f:
+    json.dump({'stand': '20.11.2026', 'parameter': K}, f, ensure_ascii=False, indent=1)
+print(len(K), 'Parameter ->', os.path.normpath(ZIEL))

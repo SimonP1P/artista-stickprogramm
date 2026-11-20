@@ -11,6 +11,7 @@ pub mod einstellungen;
 pub mod geometrie;
 pub mod muster;
 pub mod nachbearbeitung;
+pub mod parameter;
 pub mod rahmen;
 pub mod schrift;
 pub mod schrift_ttf;
