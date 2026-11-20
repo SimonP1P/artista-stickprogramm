@@ -1,0 +1,734 @@
+   938  Buchstaben mit >= 2 Säulen
+   680  Einstieg am ferneren Ende
+  1381  Einstieg am näheren Ende
+    11  Reihenfolge anders, alle vorwärts
+   774  Reihenfolge anders, teils rückwärts
+   150  Reihenfolge wie Objektfolge, alle vorwärts
+     3  Reihenfolge wie Objektfolge, teils rückwärts
+    50  Satinfunktion ohne Säule
+  4558  Satinfunktion zugeordnet
+  1832  Säule beginnt Anfang
+   636  Säule beginnt Ende
+   454  Säule beginnt innen
+  1577  Säule in 1 Stück(en)
+  1066  Säule in 2 Stück(en)
+   268  Säule in 3 Stück(en)
+    11  Säule in 4 Stück(en)
+  1709  Säulen rückwärts
+  2849  Säulen vorwärts
+     0  ohne Datei: Sampler - Pattern Outlines - Children 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Children 1.ART #32
+     0  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #1
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #119
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #142
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #27
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #50
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #72
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 1.ART #95
+     0  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #1
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #116
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #140
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #27
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #49
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #71
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 2.ART #93
+     0  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #1
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #100
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #123
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #146
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #27
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #51
+     1  ohne Datei: Sampler - Pattern Outlines - Corners 3.ART #76
+     0  ohne Datei: Sampler - Pattern Outlines - Cross 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Cross 1.ART #19
+     0  ohne Datei: Sampler - Pattern Outlines - Cross 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Cross 2.ART #19
+     0  ohne Datei: Sampler - Pattern Outlines - Embellishment 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Embellishment 1.ART #53
+     0  ohne Datei: Sampler - Pattern Outlines - Embellishment 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Embellishment 2.ART #53
+     0  ohne Datei: Sampler - Pattern Outlines - Heirloom 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Heirloom 1.ART #33
+     0  ohne Datei: Sampler - Pattern Outlines - Heirloom 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Heirloom 2.ART #33
+     0  ohne Datei: Sampler - Pattern Outlines - Home Dec 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Home Dec 1.ART #32
+     0  ohne Datei: Sampler - Pattern Outlines - Home Dec 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Home Dec 2.ART #32
+     0  ohne Datei: Sampler - Pattern Outlines - Home Dec 3.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Home Dec 3.ART #32
+     0  ohne Datei: Sampler - Pattern Outlines - Misc.1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Misc.1.ART #22
+     0  ohne Datei: Sampler - Pattern Outlines - Misc.2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Misc.2.ART #22
+     0  ohne Datei: Sampler - Pattern Outlines - Nature 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Nature 1.ART #28
+     0  ohne Datei: Sampler - Pattern Outlines - Nature 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Nature 2.ART #28
+     0  ohne Datei: Sampler - Pattern Outlines - Quilting 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Quilting 1.ART #35
+     0  ohne Datei: Sampler - Pattern Outlines - Quilting 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Quilting 2.ART #35
+     0  ohne Datei: Sampler - Pattern Outlines - Quilting 3.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Quilting 3.ART #35
+     0  ohne Datei: Sampler - Pattern Outlines - Satin-Quilt 1.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Satin-Quilt 1.ART #46
+     0  ohne Datei: Sampler - Pattern Outlines - Satin-Quilt 2.ART #1
+     0  ohne Datei: Sampler - Pattern Outlines - Satin-Quilt 2.ART #46
+     0  ohne Datei: Sampler Alphabet Diamond 1 & 2.ART #0
+     0  ohne Datei: Sampler Alphabet Diamond 1 & 2.ART #19
+     0  ohne Datei: Sampler Alphabets 1.ART #0
+     0  ohne Datei: Sampler Alphabets 1.ART #189
+     0  ohne Datei: Sampler Alphabets 1.ART #234
+     0  ohne Datei: Sampler Alphabets 1.ART #257
+     0  ohne Datei: Sampler Alphabets 1.ART #47
+     0  ohne Datei: Sampler Alphabets 2.ART #0
+     0  ohne Datei: Sampler Alphabets 2.ART #128
+     0  ohne Datei: Sampler Alphabets 2.ART #160
+     0  ohne Datei: Sampler Alphabets 2.ART #196
+     1  ohne Datei: Sampler Alphabets 2.ART #215
+     1  ohne Datei: Sampler Alphabets 2.ART #34
+     0  ohne Datei: Sampler Alphabets 2.ART #87
+     0  ohne Datei: Sampler Alphabets 3.ART #0
+     0  ohne Datei: Sampler Alphabets 3.ART #122
+     0  ohne Datei: Sampler Alphabets 3.ART #168
+     0  ohne Datei: Sampler Alphabets 3.ART #229
+     0  ohne Datei: Sampler Alphabets 3.ART #27
+     0  ohne Datei: Sampler Alphabets 3.ART #91
+     0  ohne Datei: Sampler Alphabets 4.ART #0
+     0  ohne Datei: Sampler Alphabets 4.ART #103
+     0  ohne Datei: Sampler Alphabets 4.ART #137
+     1  ohne Datei: Sampler Alphabets 4.ART #69
+     0  ohne Datei: Sampler Alphabets 5.ART #0
+     0  ohne Datei: Sampler Alphabets 5.ART #118
+     0  ohne Datei: Sampler Alphabets 5.ART #149
+     0  ohne Datei: Sampler Alphabets 5.ART #19
+     0  ohne Datei: Sampler Alphabets 5.ART #47
+     0  ohne Datei: Sampler Alphabets 5.ART #90
+     0  ohne Datei: Sampler Alphabets 6.ART #0
+     0  ohne Datei: Sampler Alphabets 6.ART #130
+     0  ohne Datei: Sampler Alphabets 6.ART #173
+     0  ohne Datei: Sampler Alphabets 6.ART #48
+     0  ohne Datei: Sampler Alphabets 6.ART #94
+     0  ohne Datei: Sampler Alphabets 7.ART #1
+     0  ohne Datei: Sampler Alphabets 7.ART #53
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #106
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #117
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #12
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #129
+     1  ohne Datei: Sampler Fancy fills - 001-012.ART #142
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #25
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #36
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #48
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #61
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #73
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #84
+     0  ohne Datei: Sampler Fancy fills - 001-012.ART #95
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #101
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #112
+     1  ohne Datei: Sampler Fancy fills - 013-024.ART #12
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #124
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #135
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #147
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #26
+     1  ohne Datei: Sampler Fancy fills - 013-024.ART #40
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #53
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #65
+     0  ohne Datei: Sampler Fancy fills - 013-024.ART #77
+     1  ohne Datei: Sampler Fancy fills - 013-024.ART #89
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #106
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #119
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #12
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #133
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #146
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #25
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #36
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #47
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #58
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #69
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #81
+     0  ohne Datei: Sampler Fancy fills - 025-036.ART #94
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #103
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #118
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #12
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #132
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #145
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #158
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #25
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #37
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #49
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #62
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #76
+     0  ohne Datei: Sampler Fancy fills - 037-048.ART #89
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #104
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #119
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #12
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #132
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #148
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #163
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #176
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #29
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #42
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #56
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #71
+     0  ohne Datei: Sampler Fancy fills - 049-060.ART #85
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #104
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #117
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #12
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #128
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #142
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #157
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #24
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #37
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #49
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #66
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #79
+     0  ohne Datei: Sampler Fancy fills - 061-072.ART #90
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #110
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #12
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #124
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #137
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #151
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #166
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #180
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #27
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #47
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #63
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #77
+     0  ohne Datei: Sampler Fancy fills - 073-084.ART #94
+     0  ohne Datei: Sampler Fancy fills - 085-090.ART #21
+     0  ohne Datei: Sampler Fancy fills - 085-090.ART #34
+     0  ohne Datei: Sampler Fancy fills - 085-090.ART #50
+     0  ohne Datei: Sampler Fancy fills - 085-090.ART #6
+     0  ohne Datei: Sampler Fancy fills - 085-090.ART #65
+     0  ohne Datei: Sampler Fancy fills - 085-090.ART #78
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #106
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #117
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #12
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #129
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #142
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #25
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #36
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #48
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #61
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #73
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #84
+     0  ohne Datei: Sampler Fancy fills - 091-102.ART #95
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #100
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #113
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #12
+     1  ohne Datei: Sampler Fancy fills - 103-114.ART #127
+     1  ohne Datei: Sampler Fancy fills - 103-114.ART #140
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #154
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #25
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #39
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #52
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #64
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #76
+     0  ohne Datei: Sampler Fancy fills - 103-114.ART #88
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #103
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #115
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #12
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #128
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #142
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #155
+     0  ohne Datei: Sampler Fancy fills - 115-126.ART #26
+     0  ohne Datei: Sampler Fancy fills - 115-126.ART #39
+     0  ohne Datei: Sampler Fancy fills - 115-126.ART #52
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #65
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #78
+     1  ohne Datei: Sampler Fancy fills - 115-126.ART #90
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #105
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #119
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #12
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #132
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #145
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #158
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #24
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #36
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #49
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #63
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #77
+     1  ohne Datei: Sampler Fancy fills - 127-139.ART #90
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #100
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #11
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #114
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #128
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #142
+     1  ohne Datei: Sampler Fancy fills - 140-150.ART #156
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #25
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #40
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #54
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #69
+     0  ohne Datei: Sampler Fancy fills - 140-150.ART #85
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #10
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #16
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #22
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #28
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #36
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #42
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #47
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #53
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #59
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #64
+     0  ohne Datei: Sampler Step stitch pattern - 1-10.ART #73
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #10
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #100
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #109
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #20
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #30
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #40
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #52
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #62
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #71
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #81
+     0  ohne Datei: Sampler Step stitch pattern - 11-20.ART #91
+     0  ohne Datei: Sampler Stitch Angles.ART #10
+     1  ohne Datei: Sampler Stitch Angles.ART #111
+     0  ohne Datei: Sampler Stitch Angles.ART #15
+     0  ohne Datei: Sampler Stitch Angles.ART #23
+     0  ohne Datei: Sampler Stitch Angles.ART #32
+     0  ohne Datei: Sampler Stitch Angles.ART #43
+     0  ohne Datei: Sampler Stitch Angles.ART #51
+     0  ohne Datei: Sampler Stitch Angles.ART #59
+     0  ohne Datei: Sampler Stitch Angles.ART #73
+     0  ohne Datei: Sampler Stitch Angles.ART #86
+     0  ohne Datei: Sampler Stitch Angles.ART #98
+     0  ohne Säule: Alice
+     0  ohne Säule: Anniversary
+     0  ohne Säule: Bamboo
+     0  ohne Säule: Blackboard
+     0  ohne Säule: Childs Play
+     0  ohne Säule: Christopher
+     0  ohne Säule: Craft
+     0  ohne Säule: Cursive
+     0  ohne Säule: Diamond2
+     0  ohne Säule: Diamond3
+     0  ohne Säule: Drifter
+     0  ohne Säule: Fortress
+     0  ohne Säule: Greek Ionic
+     0  ohne Säule: Guinevere
+     0  ohne Säule: Hebrew David
+     1  ohne Säule: Hiragana
+     0  ohne Säule: Island
+     0  ohne Säule: Jikharev
+     0  ohne Säule: Katakana
+     0  ohne Säule: King Charles
+     0  ohne Säule: Lisa
+     1  ohne Säule: London
+     0  ohne Säule: Medley
+     0  ohne Säule: Neon -CAPS
+     0  ohne Säule: Nightowl
+     0  ohne Säule: Olde English
+     0  ohne Säule: Prestige
+     0  ohne Säule: Rounded Block
+     0  ohne Säule: Russian Textbook
+     0  ohne Säule: Scanner
+    47  ohne Säule: Swiss Block
+     0  ohne Säule: Tabloid
+     0  ohne Säule: Technical Block
+     1  ohne Säule: Tiffany
+     0  ohne Säule: Varsity Block-CAPS
+     0  ohne Säule: Victoria
+     0  ohne Säule: Zurich
+
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.99, 0.89))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'h': 2 Säulen, gestickt [(1, 'r', (1.0, 0.57)), (0, 'r', (1.0, 0.94)), (1, 'v', (0.0, 0.56)), (0, 'r', (0.91, 0.02)), (0, 'v', (0.0, 0.01))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'i': 2 Säulen, gestickt [(1, 'r', (0.98, 0.1)), (0, 'r', (1.0, 0.04)), (0, 'v', (0.0, 0.02))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'l': 1 Säulen, gestickt [(0, 'r', (1.0, 0.03)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'd': 2 Säulen, gestickt [(0, 'v', (0.02, 0.91)), (1, 'r', (1.0, 0.03)), (1, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.85)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.22)), (0, 'r', (0.91, 0.01))]
+Sampler - Pattern Outlines - Children 1.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.61)), (1, 'r', (1.0, 0.6))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.16)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '2': 1 Säulen, gestickt [(0, 'v', (0.01, 0.99))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Children 1.ART #32 Swiss Block '901': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.99, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.88, 0.87))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.22)), (0, 'r', (0.91, 0.05)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'r', (1.0, 0.01)), (0, 'v', (0.0, 0.0))]
+Sampler - Pattern Outlines - Corners 1.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 0.53)), (1, 'r', (1.0, 0.51))]
+Sampler - Pattern Outlines - Corners 1.ART #27 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block '2': 1 Säulen, gestickt [(0, 'r', (1.0, 0.71)), (0, 'v', (0.01, 0.72))]
+Sampler - Pattern Outlines - Corners 1.ART #50 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.38)), (1, 'r', (0.98, 0.35))]
+Sampler - Pattern Outlines - Corners 1.ART #72 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block '4': 3 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (2, 'r', (1.0, 0.52)), (1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.55))]
+Sampler - Pattern Outlines - Corners 1.ART #95 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.46)), (1, 'r', (1.0, 0.45))]
+Sampler - Pattern Outlines - Corners 1.ART #119 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.36)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.36))]
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 1.ART #142 Swiss Block 'Cnr001': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.99, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.88, 0.87))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.22)), (0, 'r', (0.91, 0.05)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'r', (1.0, 0.01)), (0, 'v', (0.0, 0.0))]
+Sampler - Pattern Outlines - Corners 2.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Corners 2.ART #27 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block '8': 1 Säulen, gestickt [(0, 'v', (0.4, 0.67)), (0, 'v', (0.01, 0.52)), (0, 'v', (0.52, 0.67))]
+Sampler - Pattern Outlines - Corners 2.ART #49 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Corners 2.ART #71 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #93 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0))]
+Sampler - Pattern Outlines - Corners 2.ART #116 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block '2': 1 Säulen, gestickt [(0, 'v', (0.01, 0.99))]
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 2.ART #140 Swiss Block 'Cnr007': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.99, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.88, 0.87))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.22)), (0, 'r', (0.91, 0.05)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'r', (1.0, 0.01)), (0, 'v', (0.0, 0.0))]
+Sampler - Pattern Outlines - Corners 3.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.9))]
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.56)), (1, 'r', (0.98, 0.52))]
+Sampler - Pattern Outlines - Corners 3.ART #27 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.04))]
+Sampler - Pattern Outlines - Corners 3.ART #51 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.63)), (1, 'r', (1.0, 0.62))]
+Sampler - Pattern Outlines - Corners 3.ART #76 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.36)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.36))]
+Sampler - Pattern Outlines - Corners 3.ART #100 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Corners 3.ART #123 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.98, 0.89))]
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.95)), (1, 'r', (1.0, 0.23)), (0, 'r', (0.92, 0.03))]
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.94)), (1, 'r', (0.99, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block '8': 1 Säulen, gestickt [(0, 'v', (0.4, 0.67)), (0, 'v', (0.5, 0.52)), (0, 'v', (0.52, 0.67))]
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Corners 3.ART #146 Swiss Block 'Cnr013': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #1 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.9)), (0, 'r', (0.99, 0.89))]
+Sampler - Pattern Outlines - Cross 1.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.85)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Cross 1.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.88, 0.87))]
+Sampler - Pattern Outlines - Cross 1.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'v', (0.0, 0.33)), (0, 'r', (1.0, 0.31))]
+Sampler - Pattern Outlines - Cross 1.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'v', (0.0, 0.32)), (0, 'r', (1.0, 0.3))]
+Sampler - Pattern Outlines - Cross 1.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '2': 1 Säulen, gestickt [(0, 'v', (0.01, 0.99))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.61)), (1, 'r', (1.0, 0.6))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.9))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.48)), (1, 'r', (0.98, 0.45))]
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 1.ART #19 Swiss Block '301': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #1 Swiss Block 'C': 1 Säulen, gestickt [(0, 'v', (0.0, 0.91)), (0, 'r', (0.99, 0.9))]
+Sampler - Pattern Outlines - Cross 2.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.86)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Cross 2.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.87, 0.87))]
+Sampler - Pattern Outlines - Cross 2.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'v', (0.0, 0.33)), (0, 'r', (1.0, 0.31))]
+Sampler - Pattern Outlines - Cross 2.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'v', (0.0, 0.32)), (0, 'r', (1.0, 0.3))]
+Sampler - Pattern Outlines - Cross 2.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '2': 1 Säulen, gestickt [(0, 'v', (0.01, 0.99))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 0.86)), (2, 'r', (1.0, 0.8)), (2, 'v', (0.0, 0.8)), (0, 'r', (1.0, 0.15)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.94)), (1, 'v', (0.04, 0.61)), (1, 'r', (1.0, 0.6))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.67)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '8': 1 Säulen, gestickt [(0, 'v', (0.4, 0.66)), (0, 'v', (0.5, 0.53)), (0, 'v', (0.53, 0.66))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.81, 0.84))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.79)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.78))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.13)), (0, 'v', (0.02, 0.68)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.19)), (0, 'r', (0.94, 0.65))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '0': 1 Säulen, gestickt [(0, 'v', (0.87, 0.88))]
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Cross 2.ART #19 Swiss Block 'b301': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'E': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'm': 3 Säulen, gestickt [(2, 'v', (0.0, 0.22)), (1, 'r', (0.99, 0.95)), (2, 'r', (1.0, 0.25)), (1, 'r', (0.93, 0.48)), (1, 'r', (0.46, 0.38)), (1, 'v', (0.0, 0.47)), (0, 'r', (0.96, 0.0))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.24)), (0, 'v', (0.02, 0.66)), (0, 'r', (1.0, 0.92)), (1, 'r', (1.0, 0.16)), (0, 'r', (0.92, 0.65))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'l': 1 Säulen, gestickt [(0, 'r', (1.0, 0.03)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'l': 1 Säulen, gestickt [(0, 'r', (1.0, 0.03)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'i': 2 Säulen, gestickt [(1, 'r', (0.98, 0.1)), (0, 'r', (1.0, 0.04)), (0, 'v', (0.0, 0.02))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'v', (0.0, 0.33)), (0, 'r', (1.0, 0.31))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'h': 2 Säulen, gestickt [(1, 'r', (1.0, 0.57)), (0, 'r', (1.0, 0.94)), (1, 'v', (0.0, 0.56)), (0, 'r', (0.91, 0.02)), (0, 'v', (0.0, 0.01))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'm': 3 Säulen, gestickt [(2, 'v', (0.0, 0.22)), (1, 'r', (0.99, 0.95)), (2, 'r', (1.0, 0.25)), (1, 'r', (0.93, 0.48)), (1, 'r', (0.46, 0.38)), (1, 'v', (0.0, 0.47)), (0, 'r', (0.96, 0.0))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.22)), (0, 'r', (0.91, 0.05)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block 't': 3 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'r', (1.0, 0.08)), (1, 'v', (0.0, 0.37)), (2, 'v', (0.0, 0.97)), (2, 'v', (0.98, 0.98))]
+Sampler - Pattern Outlines - Embellishment 1.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.61)), (1, 'r', (1.0, 0.6))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '8': 1 Säulen, gestickt [(0, 'v', (0.4, 0.66)), (0, 'v', (0.5, 0.52)), (0, 'v', (0.52, 0.66))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '2': 1 Säulen, gestickt [(0, 'v', (0.01, 0.99))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.16)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '8': 1 Säulen, gestickt [(0, 'v', (0.4, 0.65)), (0, 'v', (0.5, 0.52)), (0, 'v', (0.52, 0.65))]
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 1.ART #53 Swiss Block '601': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'E': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'm': 3 Säulen, gestickt [(2, 'v', (0.0, 0.22)), (1, 'r', (0.99, 0.95)), (2, 'r', (1.0, 0.25)), (1, 'r', (0.93, 0.48)), (1, 'r', (0.46, 0.38)), (1, 'v', (0.0, 0.47)), (0, 'r', (0.96, 0.0))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'b': 2 Säulen, gestickt [(1, 'v', (0.0, 0.24)), (0, 'v', (0.02, 0.66)), (0, 'r', (1.0, 0.92)), (1, 'r', (1.0, 0.16)), (0, 'r', (0.92, 0.65))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'l': 1 Säulen, gestickt [(0, 'r', (1.0, 0.03)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'l': 1 Säulen, gestickt [(0, 'r', (1.0, 0.03)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'i': 2 Säulen, gestickt [(1, 'r', (0.98, 0.1)), (0, 'r', (1.0, 0.04)), (0, 'v', (0.0, 0.02))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 's': 1 Säulen, gestickt [(0, 'v', (0.0, 0.33)), (0, 'r', (1.0, 0.31))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'h': 2 Säulen, gestickt [(1, 'r', (1.0, 0.57)), (0, 'r', (1.0, 0.94)), (1, 'v', (0.0, 0.56)), (0, 'r', (0.91, 0.02)), (0, 'v', (0.0, 0.01))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'm': 3 Säulen, gestickt [(2, 'v', (0.0, 0.22)), (1, 'r', (0.99, 0.95)), (2, 'r', (1.0, 0.25)), (1, 'r', (0.93, 0.48)), (1, 'r', (0.46, 0.38)), (1, 'v', (0.0, 0.47)), (0, 'r', (0.96, 0.0))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 'n': 2 Säulen, gestickt [(1, 'v', (0.0, 0.2)), (0, 'r', (1.0, 0.93)), (1, 'r', (1.0, 0.22)), (0, 'r', (0.91, 0.05)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block 't': 3 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'r', (1.0, 0.08)), (1, 'v', (0.0, 0.37)), (2, 'v', (0.0, 0.97)), (2, 'v', (0.98, 0.98))]
+Sampler - Pattern Outlines - Embellishment 2.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '2': 1 Säulen, gestickt [(0, 'v', (0.01, 0.99))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.16)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.16)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.16)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '4': 3 Säulen, gestickt [(1, 'v', (0.0, 1.0)), (2, 'v', (0.08, 0.92)), (2, 'r', (1.0, 0.92)), (0, 'r', (1.0, 0.16)), (0, 'v', (0.0, 0.08))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '8': 1 Säulen, gestickt [(0, 'v', (0.4, 0.66)), (0, 'v', (0.5, 0.52)), (0, 'v', (0.52, 0.66))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.61)), (1, 'r', (1.0, 0.6))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '3': 2 Säulen, gestickt [(0, 'v', (0.02, 1.0)), (1, 'v', (0.0, 0.52)), (1, 'r', (0.98, 0.5))]
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Embellishment 2.ART #53 Swiss Block '637': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'H': 3 Säulen, gestickt [(0, 'v', (0.0, 0.65)), (0, 'r', (1.0, 0.47)), (1, 'v', (0.0, 1.0)), (2, 'v', (0.0, 0.97)), (2, 'r', (1.0, 0.97))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'e': 1 Säulen, gestickt [(0, 'v', (0.03, 0.03)), (0, 'v', (0.03, 0.97)), (0, 'r', (0.98, 0.96))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'i': 2 Säulen, gestickt [(1, 'r', (0.98, 0.1)), (0, 'r', (1.0, 0.04)), (0, 'v', (0.0, 0.02))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'r': 2 Säulen, gestickt [(0, 'v', (0.02, 0.85)), (1, 'v', (0.0, 0.96)), (1, 'r', (0.99, 0.96))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'l': 1 Säulen, gestickt [(0, 'r', (1.0, 0.03)), (0, 'v', (0.0, 0.03))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.88, 0.87))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'o': 1 Säulen, gestickt [(0, 'r', (0.88, 0.87))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block 'm': 3 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.0, 0.99)), (2, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #1 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '5': 2 Säulen, gestickt [(0, 'v', (0.0, 0.95)), (1, 'v', (0.04, 0.61)), (1, 'r', (1.0, 0.6))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '6': 1 Säulen, gestickt [(0, 'r', (0.99, 0.35)), (0, 'v', (0.01, 0.66)), (0, 'v', (0.01, 0.35))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '9': 1 Säulen, gestickt [(0, 'r', (0.99, 0.78)), (0, 'v', (0.0, 0.0)), (0, 'v', (0.0, 0.77))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '0': 1 Säulen, gestickt [(0, 'r', (0.85, 0.84))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '': 0 Säulen, gestickt []
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '7': 1 Säulen, gestickt [(0, 'v', (0.0, 1.0))]
+Sampler - Pattern Outlines - Heirloom 1.ART #33 Swiss Block '1': 2 Säulen, gestickt [(0, 'v', (0.0, 1.0)), (1, 'v', (0.01, 1.0)), (1, 'r', (1.0, 0.94))]

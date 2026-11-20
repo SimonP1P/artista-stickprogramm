@@ -69,8 +69,9 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
   Säule, nur wenn verdeckt (eigene Festlegung der Wegführung). Ergebnis „A“: wie das Original ohne Sprung.
 - ✅ Das Original stickt je **Gruppe sich berührender Säulen zuerst alle Unterlagen, in umgekehrter Reihenfolge der
   Säulen**, dann die Säulen (Schrift-Musterdesigns: 1 Unterlage 85/85, mehrere 43/62, Rest Messgrenzen – Bericht 11).
-  **Kern:** ✅ `gruppe_wege`. ⬜ Säulenreihenfolge selbst wie das Original (H: linkes Bein, Querbalken, rechtes Bein;
-  im Alphabet Querbalken zuerst) – Kern wählt die Folge mit den wenigsten Sprüngen.
+  **Kern:** ✅ `gruppe_wege`. 🟡 Säulenreihenfolge: Das Original wählt Reihenfolge **und Richtung** selbst (38 % der
+  Satin-Stücke rückwärts, nur 150/938 Buchstaben wie im Alphabet) und teilt 47 % der Säulen in Stücke (Bericht 11 §5).
+  Kern: Reihenfolge + Richtung mit wenigsten Sprüngen/kürzesten Wegen ✅ (20.11.); Teilen der Säulen ⬜.
 
 ## 5. Satin — Sicherheit: hoch
 | Regel | Beleg | Kern |

@@ -45,13 +45,44 @@ je Gruppe erst die Unterlagen rückwärts, dann die Decklagen; dazwischen Laufwe
 Teilen liegen (sonst Sprung). Test `gruppe_unterlagen_zuerst`. Text „ABC Anna“ (Drifter): Sprünge unverändert 9,
 242 Stiche mehr (Laufwege zwischen Unterlagen und Säulen, wie im Original).
 
-## 4. Offen
-- **Reihenfolge, Start und Ende der Säulen** wie das Original („Closest Join“): Der Kern wählt die Folge mit den
-  wenigsten Sprüngen (eigene Festlegung). Zum Messen müsste man Text und Alphabet der LetterText-Objekte kennen; sie
-  stehen nicht als lesbarer Text im Datenblock (Feldaufbau der Klasse 0x7b noch nicht entschlüsselt).
-  **Zwischenstand 20.11.2026:** Auf das LetterText-Objekt (0x7b) folgen 0x7c (Textwerte: doubles, z. B. 0,2 / 0,5 /
-  Winkel π/2), 0x81, **0x3a = Alphabetname in UTF-16** („Swiss Block“, „Quilting Text“), 0x7f und **je Buchstabe ein
-  Datensatz 0x80** (39 Byte, bei gleichen Werten byte-gleich – das Zeichen steht also nicht darin). Der Text selbst steht
-  nirgends als ASCII/UTF-16 im Datenblock; nächster Schritt: Zeichencode im Buchstabenobjekt LetterObj (0x2f) bzw. im
-  folgenden 0x03-Datensatz suchen oder die Säulen der Buchstaben mit den Glyphen des Alphabets (ESB) abgleichen.
+## 4. Text und Buchstaben im Design — Sicherheit: hoch (20.11.2026)
+Der Text steht nicht im LetterText-Objekt selbst, sondern in den folgenden Objekten: **je Buchstabe ein LetterObj**
+(Klasse 0x2f) mit **0x3a = Zeichen (UTF-16, Länge 1)**, **0x2e = Grundlinie** (gepackte Wörter wie im Alphabet) und
+0x2f (Lage/Maßstab, doubles), danach die **Säulen des Buchstabens als eigene Objekte** (EmbroideryBoundGroup,
+EmbroideryPatch mit Umriss 0x01 und **Winkellinien 0x06** im selben Format wie im ESB, Einheit 1/180 mm in x und y) –
+also Kopien der Glyphen des Alphabets. Die Stiche hängen am LetterText (Satin 0x16, Zickzack 0x17, Lauf 0x18).
+Die 0x80-Datensätze sind **nicht** je Buchstabe („Children“: 5 Datensätze, 8 Buchstaben).
+Hinweis Werkzeug: `art_design.objekte` bricht am Zeichen-Datensatz 0x3a eines LetterObj ab (Ende-Erkennung der
+Objektliste) – `art_saeulenfolge.py` liest ohne diesen Abbruch.
+
+## 5. Reihenfolge, Richtung und Stücke der Säulen — Sicherheit: hoch (Messung), Verfahren des Originals offen
+Werkzeug `Arbeitsdaten/werkzeuge/art_saeulenfolge.py`, Ergebnis `Arbeitsdaten/messungen/saeulenfolge_musterdesigns.txt`:
+jedes gestickte Satin-Stück (0x16) des LetterText wird der Säule zugeordnet, in deren Umriss seine Einstiche liegen;
+Lage entlang der Säule über die Mitten der Winkellinien (0 = erste, 1 = letzte Winkellinie).
+
+| Messgröße (alle Musterdesigns) | Wert |
+|---|---|
+| Satin-Stücke zugeordnet / ohne Säule | **4558** / 50 |
+| Stücke vorwärts / rückwärts (gegen die Winkellinien-Folge) | **2849 / 1709** (62 % / 38 %) |
+| Buchstaben mit ≥ 2 Säulen: Reihenfolge und Richtung wie im Alphabet („As Digitized“) | **150 von 938** |
+| … andere Reihenfolge und/oder teils rückwärts | 774 + 11 + 3 |
+| Säule in 1 / 2 / 3 / 4 Stücken | 1577 / 1066 / 268 / 11 |
+| erste Stich einer Säule am Anfang / Ende / mitten in der Säule | 1832 / 636 / 454 |
+| Einstieg am näheren / ferneren Ende (zum vorigen Satin-Stück, Unterschied > 1 mm) | 1381 / 680 |
+
+**Ergebnis:** Das Original stickt Schrift **nicht** in der Reihenfolge des Alphabets, sondern wählt Reihenfolge und
+Richtung der Säulen selbst (Dialog „Sequence“: Join „As Digitized“ / „Closest Join“ / „Bottom Join“, STR 2141–2143;
+Voreinstellung damit offensichtlich nicht „As Digitized“) und **teilt Säulen in Stücke** – bei 47 % der Säulen, meist
+dort, wo eine andere Säule ansetzt (Beispiel „h“ in Swiss Block: Bogen vom Ende bis zur Mitte, Stammkopf, Rest des
+Bogens, Stamm rückwärts). Das ist ein Verzweigen wie bei „Branching“; die Regel dafür ist aus den Stichen allein nicht
+eindeutig (Einstieg nur zu 67 % am näheren Ende, wobei die Unterlagen und Laufwege dazwischen nicht berücksichtigt sind).
+
+**Kern (20.11.2026):** `gruppe_wege` darf Satinsäulen jetzt **auch rückwärts** sticken und wählt Reihenfolge und
+Richtung gemeinsam (erst wenigste Sprünge, dann kürzeste Laufwege; bis 7 Teile vollständig, sonst nächster Anfang) –
+Nachbau von „Closest Join“ **ohne** das Teilen von Säulen. Bewertung = eigene Festlegung. Testtext (Swiss Block,
+Drifter, Zurich, Alice): 88 statt 98 Sprünge, 13 635 statt 13 752 Stiche.
+
+## 6. Offen
+- **Säulen in Stücken (Verzweigen)** wie das Original: Code des Lettering-Sequencing (MOD1/„Closest Join“) lesen oder
+  aus den Stücken der Musterdesigns die Teilungsregel ableiten (Teilungspunkte gegen die Ansatzstellen anderer Säulen).
 - Wegführung der Laufwege zwischen den Unterlagen (Original: kurze Läufe 1,8 mm, teils über die Säule zurück).

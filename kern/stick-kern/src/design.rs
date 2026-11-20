@@ -856,50 +856,82 @@ fn gruppe_wege(
     e: &Einstellungen,
     start: Option<Punkt>,
 ) -> Result<Vec<Linie>, String> {
-    // je Teil: Decklage (Wege), Umriss, Mittellinie (bei Satin); die Unterlage einer Satinsäule getrennt
-    let mut stuecke: Vec<(Vec<Linie>, Option<&Linie>, Option<Linie>)> = Vec::new();
-    let mut unterlagen: Vec<Linie> = Vec::new();
+    // je Teil die möglichen Richtungen: wie im Alphabet und – bei Satinsäulen – rückwärts. Das Original stickt Säulen
+    // in beiden Richtungen und wählt Reihenfolge und Richtung selbst („Closest Join“; gemessen an 4558 Satinstücken
+    // der Schrift-Musterdesigns: 62 % vorwärts, 38 % rückwärts, nur 150 von 938 Buchstaben mit ≥ 2 Säulen in
+    // Alphabet-Reihenfolge, `Analyse_Teil3/11` §5). Je Richtung: Unterlage, Decklage (Wege), Mittellinie.
+    struct Richtung {
+        unter: Linie,
+        wege: Vec<Linie>,
+        mitte: Option<Linie>,
+    }
+    let mut stuecke: Vec<(Vec<Richtung>, Option<&Linie>)> = Vec::new();
     for (i, t) in teile.iter().enumerate() {
-        let (unter, w) = match &t.art {
+        let mut richt = Vec::new();
+        match &t.art {
             ObjektArt::Satin {
                 seite_a,
                 seite_b,
                 unterlage,
                 optionen,
             } => {
-                let (u, d) = satin_getrennt(seite_a, seite_b, unterlage, optionen, e)?;
-                (u, vec![d])
+                for rueck in [false, true] {
+                    let (a, b): (Linie, Linie) = if rueck {
+                        (
+                            seite_a.iter().rev().copied().collect(),
+                            seite_b.iter().rev().copied().collect(),
+                        )
+                    } else {
+                        (seite_a.clone(), seite_b.clone())
+                    };
+                    let (unter, d) = satin_getrennt(&a, &b, unterlage, optionen, e)?;
+                    if d.is_empty() {
+                        continue;
+                    }
+                    let mitte = paare_bilden(&a, &b).ok().map(|(x, y)| mittellinie(&x, &y));
+                    richt.push(Richtung {
+                        unter,
+                        wege: vec![d],
+                        mitte,
+                    });
+                }
             }
-            _ => (Vec::new(), t.wege(e, None)?),
-        };
-        let w: Vec<Linie> = w.into_iter().filter(|w| !w.is_empty()).collect();
-        if w.is_empty() {
-            continue;
+            _ => {
+                let w: Vec<Linie> = t.wege(e, None)?.into_iter().filter(|w| !w.is_empty()).collect();
+                if !w.is_empty() {
+                    richt.push(Richtung {
+                        unter: Vec::new(),
+                        wege: w,
+                        mitte: None,
+                    });
+                }
+            }
         }
-        unterlagen.push(unter);
-        let mitte = match &t.art {
-            ObjektArt::Satin { seite_a, seite_b, .. } => {
-                paare_bilden(seite_a, seite_b).ok().map(|(a, b)| mittellinie(&a, &b))
-            }
-            _ => None,
-        };
-        stuecke.push((w, umrisse.get(i).filter(|u| u.len() >= 3), mitte));
+        if !richt.is_empty() {
+            stuecke.push((richt, umrisse.get(i).filter(|u| u.len() >= 3)));
+        }
     }
     let n = stuecke.len().min(63);
     if n == 0 {
         return Ok(Vec::new());
     }
-    let anf: Vec<Punkt> = stuecke.iter().map(|(w, _, _)| w[0][0]).collect();
-    let end: Vec<Punkt> = stuecke
-        .iter()
-        .map(|(w, _, _)| *w.last().and_then(|l| l.last()).unwrap())
+    // Knoten = (Teil, Richtung)
+    let knoten: Vec<(usize, usize)> = (0..n)
+        .flat_map(|j| (0..stuecke[j].0.len()).map(move |d| (j, d)))
+        .collect();
+    let r = |v: usize| &stuecke[knoten[v].0].0[knoten[v].1];
+    let teil = |v: usize| knoten[v].0;
+    let m = knoten.len();
+    let anf: Vec<Punkt> = (0..m).map(|v| r(v).wege[0][0]).collect();
+    let end: Vec<Punkt> = (0..m)
+        .map(|v| *r(v).wege.last().and_then(|l| l.last()).unwrap())
         .collect();
     let bedeckt = |q: Punkt| -> u64 {
         stuecke[..n]
             .iter()
             .enumerate()
-            .filter(|(_, (_, u, _))| u.is_some_and(|r| im_polygon(q, std::slice::from_ref(r))))
-            .fold(0u64, |m, (k, _)| m | (1 << k))
+            .filter(|(_, (_, u))| u.is_some_and(|r| im_polygon(q, std::slice::from_ref(r))))
+            .fold(0u64, |mk, (k, _)| mk | (1 << k))
     };
     // Prüfpunkte alle 0,5 mm auf einer Strecke; die Enden (je 0,6 mm) nicht, weil der Zugausgleich Anfang und Ende
     // der Säulen über den Umriss schiebt
@@ -912,51 +944,74 @@ fn gruppe_wege(
             .map(|t| bedeckt(zwischen(a, b, t)))
             .collect()
     };
-    // je Verbindung i → j: gerade (Masken, Länge) und über die Mittellinie von j (Masken des Zugangs, Weg)
+    // je Verbindung v → w: gerade (Masken, Länge) und über die Mittellinie von w (Masken des Zugangs, Weg)
     struct Verbindung {
         gerade: Vec<u64>,
         gerade_laenge: f64,
         ueber_mitte: Option<(Vec<u64>, Linie)>,
     }
-    let mut verb: Vec<Vec<Option<Verbindung>>> = (0..n).map(|_| (0..n).map(|_| None).collect()).collect();
-    for i in 0..n {
-        for j in (0..n).filter(|&j| j != i) {
-            let ueber_mitte = stuecke[j].2.as_ref().filter(|m| m.len() >= 2).map(|m| {
-                let k = (0..m.len())
-                    .min_by(|&x, &y| abstand(end[i], m[x]).total_cmp(&abstand(end[i], m[y])))
+    let mut verb: Vec<Vec<Option<Verbindung>>> = (0..m).map(|_| (0..m).map(|_| None).collect()).collect();
+    for v in 0..m {
+        for w in (0..m).filter(|&w| teil(w) != teil(v)) {
+            let ueber_mitte = r(w).mitte.as_ref().filter(|mt| mt.len() >= 2).map(|mt| {
+                let k = (0..mt.len())
+                    .min_by(|&x, &y| abstand(end[v], mt[x]).total_cmp(&abstand(end[v], mt[y])))
                     .unwrap();
-                let mut weg: Linie = vec![end[i]];
-                weg.extend(m[..=k].iter().rev().copied());
-                weg.push(anf[j]);
-                (masken(end[i], m[k]), weg)
+                let mut weg: Linie = vec![end[v]];
+                weg.extend(mt[..=k].iter().rev().copied());
+                weg.push(anf[w]);
+                (masken(end[v], mt[k]), weg)
             });
-            verb[i][j] = Some(Verbindung {
-                gerade: masken(end[i], anf[j]),
-                gerade_laenge: abstand(end[i], anf[j]),
+            verb[v][w] = Some(Verbindung {
+                gerade: masken(end[v], anf[w]),
+                gerade_laenge: abstand(end[v], anf[w]),
                 ueber_mitte,
             });
         }
     }
     let weglaenge = |w: &Linie| w.windows(2).map(|s| abstand(s[0], s[1])).sum::<f64>();
-    // Laufweg i → j, wenn verdeckt (`rest` = noch ausstehende Teile einschließlich j): Punkte von end[i] bis anf[j]
-    let laufweg_fuer = |i: usize, j: usize, rest: u64| -> Option<Linie> {
-        let v = verb[i][j].as_ref()?;
-        if v.gerade.iter().all(|&m| m & rest != 0) {
-            return Some(vec![end[i], anf[j]]);
+    // Laufweg v → w, wenn verdeckt (`rest` = noch ausstehende Teile einschließlich w): Punkte von end[v] bis anf[w]
+    let laufweg_fuer = |v: usize, w: usize, rest: u64| -> Option<Linie> {
+        let vb = verb[v][w].as_ref()?;
+        if vb.gerade.iter().all(|&mk| mk & rest != 0) {
+            return Some(vec![end[v], anf[w]]);
         }
-        let (zugang, weg) = v.ueber_mitte.as_ref()?;
-        zugang.iter().all(|&m| m & rest != 0).then(|| weg.clone())
+        let (zugang, weg) = vb.ueber_mitte.as_ref()?;
+        zugang.iter().all(|&mk| mk & rest != 0).then(|| weg.clone())
     };
     let alle: u64 = (1u64 << n) - 1;
-    let anfahrt = |j: usize| start.map_or(0.0, |s| abstand(s, anf[j]));
+    let anfahrt = |w: usize| start.map_or(0.0, |s| abstand(s, anf[w]));
+    // nächster Knoten (Rückfall bei vielen Teilen)
+    let gierig = || -> Vec<usize> {
+        let mut folge = Vec::new();
+        let mut rest = alle;
+        let mut pos = start.unwrap_or(anf[0]);
+        while rest != 0 {
+            let w = (0..m)
+                .filter(|&w| rest & (1 << teil(w)) != 0)
+                .min_by(|&x, &y| abstand(pos, anf[x]).total_cmp(&abstand(pos, anf[y])))
+                .unwrap();
+            folge.push(w);
+            rest &= !(1 << teil(w));
+            pos = end[w];
+        }
+        folge
+    };
 
-    // beste Reihenfolge: (Sprünge, Weglänge) möglichst klein
+    // beste Reihenfolge und Richtung: (Sprünge, Weglänge) möglichst klein – eigene Festlegung der Bewertung
     let mut reihenfolge: Vec<usize> = Vec::new();
     if n <= 7 {
         let mut beste: (usize, f64) = (usize::MAX, f64::INFINITY);
-        let mut stapel: Vec<(Vec<usize>, u64, usize, f64)> =
-            (0..n).map(|j| (vec![j], alle & !(1 << j), 0, anfahrt(j))).collect();
+        let mut stapel: Vec<(Vec<usize>, u64, usize, f64)> = (0..m)
+            .map(|w| (vec![w], alle & !(1 << teil(w)), 0, anfahrt(w)))
+            .collect();
+        stapel.sort_by(|x, y| y.3.total_cmp(&x.3));
+        let mut schritte = 0usize;
         while let Some((weg, rest, sprunge, laenge)) = stapel.pop() {
+            schritte += 1;
+            if schritte > 200_000 {
+                break;
+            }
             if sprunge > beste.0 || (sprunge == beste.0 && laenge >= beste.1) {
                 continue;
             }
@@ -965,32 +1020,29 @@ fn gruppe_wege(
                 reihenfolge = weg;
                 continue;
             }
-            let i = *weg.last().unwrap();
-            for j in (0..n).filter(|&j| rest & (1 << j) != 0) {
-                let (s, l) = match laufweg_fuer(i, j, rest) {
-                    Some(w) => (sprunge, laenge + weglaenge(&w)),
-                    None => (
-                        sprunge + 1,
-                        laenge + verb[i][j].as_ref().map_or(0.0, |v| v.gerade_laenge),
-                    ),
-                };
-                let mut w = weg.clone();
-                w.push(j);
-                stapel.push((w, rest & !(1 << j), s, l));
-            }
+            let v = *weg.last().unwrap();
+            let mut neu: Vec<(Vec<usize>, u64, usize, f64)> = (0..m)
+                .filter(|&w| rest & (1 << teil(w)) != 0)
+                .map(|w| {
+                    let (s, l) = match laufweg_fuer(v, w, rest) {
+                        Some(lw) => (sprunge, laenge + weglaenge(&lw)),
+                        None => (
+                            sprunge + 1,
+                            laenge + verb[v][w].as_ref().map_or(0.0, |vb| vb.gerade_laenge),
+                        ),
+                    };
+                    let mut wg = weg.clone();
+                    wg.push(w);
+                    (wg, rest & !(1 << teil(w)), s, l)
+                })
+                .collect();
+            // die günstigsten zuletzt auf den Stapel, damit sie zuerst geprüft werden
+            neu.sort_by(|x, y| (y.2, y.3).partial_cmp(&(x.2, x.3)).unwrap_or(std::cmp::Ordering::Equal));
+            stapel.extend(neu);
         }
-    } else {
-        let mut rest = alle;
-        let mut pos = start.unwrap_or(anf[0]);
-        while rest != 0 {
-            let j = (0..n)
-                .filter(|&j| rest & (1 << j) != 0)
-                .min_by(|&x, &y| abstand(pos, anf[x]).total_cmp(&abstand(pos, anf[y])))
-                .unwrap();
-            reihenfolge.push(j);
-            rest &= !(1 << j);
-            pos = end[j];
-        }
+    }
+    if reihenfolge.len() != n {
+        reihenfolge = gierig();
     }
 
     // berührende Teile bilden Gruppen (Union-Find); Gruppen in der Reihenfolge ihres ersten Teils
@@ -1014,8 +1066,8 @@ fn gruppe_wege(
     }
     let mut gruppen: Vec<Vec<usize>> = Vec::new();
     let mut gruppe_von: Vec<Option<usize>> = vec![None; n];
-    for &j in &reihenfolge {
-        let w = wurzel(&mut eltern, j);
+    for &v in &reihenfolge {
+        let w = wurzel(&mut eltern, teil(v));
         let g = match gruppe_von[w] {
             Some(g) => g,
             None => {
@@ -1024,30 +1076,30 @@ fn gruppe_wege(
                 gruppen.len() - 1
             }
         };
-        gruppen[g].push(j);
+        gruppen[g].push(v);
     }
 
-    // Laufweg von `von` nach `nach` (Ziel ist Teil `ziel`), wenn verdeckt von noch ausstehenden Teilen `rest`:
+    // Laufweg von `von` nach `nach` (Ziel ist Knoten `ziel`), wenn verdeckt von noch ausstehenden Teilen `rest`:
     // gerade, oder über die Mittellinie des Ziels
     let laufweg_zu = |von: Punkt, nach: Punkt, ziel: usize, rest: u64| -> Option<Linie> {
-        if masken(von, nach).iter().all(|&m| m & rest != 0) {
+        if masken(von, nach).iter().all(|&mk| mk & rest != 0) {
             return Some(vec![von, nach]);
         }
-        let m = stuecke[ziel].2.as_ref().filter(|m| m.len() >= 2)?;
+        let mt = r(ziel).mitte.as_ref().filter(|mt| mt.len() >= 2)?;
         let naechster = |q: Punkt| {
-            (0..m.len())
-                .min_by(|&x, &y| abstand(q, m[x]).total_cmp(&abstand(q, m[y])))
+            (0..mt.len())
+                .min_by(|&x, &y| abstand(q, mt[x]).total_cmp(&abstand(q, mt[y])))
                 .unwrap()
         };
         let (k, t) = (naechster(von), naechster(nach));
-        if !masken(von, m[k]).iter().all(|&mk| mk & rest != 0) {
+        if !masken(von, mt[k]).iter().all(|&mk| mk & rest != 0) {
             return None;
         }
         let mut weg: Linie = vec![von];
         if k <= t {
-            weg.extend(m[k..=t].iter().copied());
+            weg.extend(mt[k..=t].iter().copied());
         } else {
-            weg.extend(m[t..=k].iter().rev().copied());
+            weg.extend(mt[t..=k].iter().rev().copied());
         }
         weg.push(nach);
         Some(weg)
@@ -1080,27 +1132,27 @@ fn gruppe_wege(
     let mut rest = alle;
     for g in &gruppen {
         // erst alle Unterlagen der Gruppe, rückwärts – die letzte endet am Anfang der ersten Säule
-        for &j in g.iter().rev() {
-            if !unterlagen[j].is_empty() {
-                anhaengen(&mut out, unterlagen[j].clone(), j, rest);
+        for &v in g.iter().rev() {
+            if !r(v).unter.is_empty() {
+                anhaengen(&mut out, r(v).unter.clone(), v, rest);
             }
         }
         // dann die Decklagen in ihrer Reihenfolge
-        for &j in g {
-            let mut wege = stuecke[j].0.clone().into_iter();
+        for &v in g {
+            let mut wege = r(v).wege.clone().into_iter();
             if let Some(erster) = wege.next() {
-                anhaengen(&mut out, erster, j, rest);
+                anhaengen(&mut out, erster, v, rest);
             }
             out.extend(wege);
-            rest &= !(1 << j);
+            rest &= !(1 << teil(v));
         }
     }
     // weitere Teile über 63 (kommt bei Buchstaben nicht vor): ohne Laufweg anhängen
-    for (k, (w, _, _)) in stuecke.iter().enumerate().skip(n) {
-        if !unterlagen[k].is_empty() {
-            out.push(unterlagen[k].clone());
+    for (richt, _) in stuecke.iter().skip(n) {
+        if !richt[0].unter.is_empty() {
+            out.push(richt[0].unter.clone());
         }
-        out.extend(w.iter().cloned());
+        out.extend(richt[0].wege.iter().cloned());
     }
     Ok(out)
 }

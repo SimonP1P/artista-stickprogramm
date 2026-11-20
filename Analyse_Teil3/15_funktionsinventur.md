@@ -55,7 +55,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Original-Alphabete (ESB), Höhe, Breite, Abstand, Ausrichtung | ✅ | 50 Alphabete |
 | Computer-Schriften (TTF/OTF) | ✅ | Stichart eigene Festlegung |
 | Unterlagen zuerst je Säulengruppe | ✅ | Bericht 11 |
-| Säulenreihenfolge/Start/Ende wie Original | 🟡 | Analyse läuft (Bericht 11 §4) |
+| Säulenreihenfolge/Start/Ende wie Original | 🟡 | 20.11. gemessen (Bericht 11 §5): Reihenfolge + Richtung im Kern ✅, Teilen der Säulen in Stücke ⬜ |
 | Mehrere Zeilen, Zeilenabstand, Leerzeichenbreite | ✅ | Vorlage 0x3e82 (20.11.) |
 | Kursiv, Fett | ✅ | Kursiv ±45° (20.11.); Fett = Zugausgleich 0,4–0,6 mm laut Handbuch |
 | Grundlinien: waagrecht, senkrecht, **Kreis/Bogen**, mehrere, eigene Kurve | ✅ | 20.11.: alle Arten des Dialogs „Layout“ (Kreis CW/CCW, Oval, Tilt, Arc Angle, Above/Through/Below, gerade mit Winkel/Länge, senkrecht, Any Shape, Multiple), Ausrichtung Full |
