@@ -227,6 +227,8 @@ mod tests {
             ausrichtung: 0.0,
             unterlage: None,
             farbe: "#000000".into(),
+            wortabstand: None,
+            zeilenabstand: None,
         }
     }
 

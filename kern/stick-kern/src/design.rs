@@ -187,7 +187,7 @@ fn mitte() -> String {
     "mitte".into()
 }
 fn text_hoehe() -> f64 {
-    20.0
+    crate::schrift::STANDARD_HOEHE_MM
 }
 
 /// Text mit einem Original-Alphabet (`schrift.rs`). Die Alphabete lädt der Aufrufer (`Design::alphabete`).
@@ -207,6 +207,10 @@ struct TextJson {
     breite: f64,
     /// Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)
     abstand: Option<f64>,
+    /// Wortabstand in % der Höhe (Vorlage 25)
+    wortabstand: Option<f64>,
+    /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt ein Zeilenumbruch im Text
+    zeilenabstand: Option<f64>,
     /// Bezugspunkt auf der Grundlinie
     #[serde(default)]
     position: Option<Punkt>,
@@ -236,6 +240,10 @@ struct TtfJson {
     breite: f64,
     /// zusätzlicher Buchstabenabstand in mm (ohne Angabe 0)
     abstand: Option<f64>,
+    /// Wortabstand in % der Höhe (Vorlage 25)
+    wortabstand: Option<f64>,
+    /// Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\n` im Text
+    zeilenabstand: Option<f64>,
     #[serde(default)]
     position: Option<Punkt>,
     #[serde(default = "mitte")]
@@ -1064,6 +1072,8 @@ impl Design {
                                 _ => 0.5,
                             },
                             farbe: t.farbe.clone(),
+                            wortabstand: t.wortabstand.map(|w| w / 100.0),
+                            zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
                             unterlage: match Unterlage::from(t.unterlage) {
                                 Unterlage::Auto => None,
                                 Unterlage::Arten(l) => Some(l),
@@ -1123,6 +1133,8 @@ impl Design {
                                 _ => 0.5,
                             },
                             farbe: t.farbe.clone(),
+                            wortabstand: t.wortabstand.map(|w| w / 100.0),
+                            zeilenabstand: t.zeilenabstand.map(|z| z / 100.0),
                             unterlage: None,
                         },
                         stichart: match t.stichart.as_str() {
@@ -1254,9 +1266,11 @@ impl Design {
                         .get(alphabet)
                         .or_else(|| self.alphabete.values().find(|a| a.name.eq_ignore_ascii_case(alphabet)))
                         .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
-                    let (obj, f) = text_objekte(a, vorgabe);
-                    out.extend(obj);
-                    fehlend.extend(f);
+                    for z in vorgabe.zeilen() {
+                        let (obj, f) = text_objekte(a, &z);
+                        out.extend(obj);
+                        fehlend.extend(f);
+                    }
                 }
                 ObjektArt::Applikation(v) => {
                     out.extend(applikation_objekte(
@@ -1273,9 +1287,11 @@ impl Design {
                         .ttf_schriften
                         .get(schrift)
                         .ok_or_else(|| format!("Schrift „{schrift}“ nicht geladen"))?;
-                    let (obj, f) = ttf_text_objekte(s, vorgabe, stichart);
-                    out.extend(obj);
-                    fehlend.extend(f);
+                    for z in vorgabe.zeilen() {
+                        let (obj, f) = ttf_text_objekte(s, &z, stichart);
+                        out.extend(obj);
+                        fehlend.extend(f);
+                    }
                 }
                 _ => out.push(o.clone()),
             }

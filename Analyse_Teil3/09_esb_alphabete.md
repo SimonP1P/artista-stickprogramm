@@ -76,7 +76,14 @@ OLE-Datei mit den Streams
 
 ## 6. Offen
 1. Referenzhöhe und Buchstabenabstand im Code bestätigen (Lettering-Modul: wer liest `AlphabetHeader` +0x10).
-2. Wortabstand (kein Leerzeichen-Stream) und Zeilenabstand.
+2. ✅ 20.11.2026 Wortabstand und Zeilenabstand: **Vorlage NORMAL.AMT, Schriftvorgaben 0x3e82**: 0x3e84 = 0,1
+   (Buchstabenabstand), **0x3e85 = 0,25 (Wortabstand)**, **0x3f2d = 0,6 (Zeilenabstand)**, je Anteil der Höhe; 0x3e88 =
+   1800 (Höhe 10 mm), 0x3e89 = 1,0 (Breite), 0x3e8a = 0 (Kursiv), 0x3f03 = π/2, 0x3e86 = 2, Grundlinie 0x3e8b/0x3e8c =
+   9000 (Radius X/Y 50 mm?), 0x3e90 = 18000 (Länge 100 mm?), 0x3e92 = 5 (Art?). Zuordnung über den Lettering-Dialog
+   (RESENU: „Letter/Word/Line Spacing … % of Height“, Grundlinie: Length, Line Angle, Radius X/Y, Justif. Angle, Tilt,
+   Arc Angle, Above/Through/Below) und die Datensätze 0x7c der 820 Schriftobjekte in den Musterdesigns (Aufbau: 3 Byte,
+   double Buchstabenabstand 0,1/0,2, double Wortabstand 0,25/0,5, u32, double Höhe, double Breite 1,0, double 0,
+   double π/2, …, double Zeilenabstand 0,6/0,5). Sicherheit mittel (Feldnamen erschlossen, nicht aus dem Code).
 3. Automatische Unterlage für Schrift (`let_underlay`, Tag 0x197f ff.) – Vergleich mit Blackboard/Swiss Block (Unterlage
    im Alphabet) und Drifter/Lisa/Zurich/Alice/Bamboo (ohne) im Maschinenspeicher.
 4. Stichbildung der Satinsäule mit Winkellinien (MOD1.DLL) gegen die echten Stiche messen.

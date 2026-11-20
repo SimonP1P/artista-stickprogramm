@@ -15,9 +15,16 @@ pub const EINHEIT: f64 = 180.0;
 /// 61,5 mm hohem „H“) → für alle Alphabete gleiche Referenz, Großbuchstaben ≈ 50 mm (`Analyse_Teil3/09` §4,
 /// mittel-hoch; im Code noch nicht bestätigt).
 pub const REFERENZ_HOEHE_MM: f64 = 50.0;
-/// Breite des Leerzeichens in Teilen der Buchstabenhöhe – **eigene Festlegung** (die Alphabete haben kein
-/// Leerzeichen; Wert des Originals noch offen, `Analyse_Teil3/09` §5).
-pub const LEERZEICHEN_ANTEIL: f64 = 0.3;
+/// Wortabstand (Leerzeichen) in Teilen der Buchstabenhöhe: Vorlage NORMAL.AMT, Schriftvorgaben 0x3e82 →
+/// **0x3e85 = 0,25**; Lettering-Dialog „Word Spacing … % of Height“ (RESENU DLG Lettering); gleiches Feld in jedem
+/// Schriftobjekt der Musterdesigns (Datensatz 0x7c, 0,25 oder 0,5). Mittel (Zuordnung über Reihenfolge im Dialog).
+pub const WORTABSTAND_ANTEIL: f64 = 0.25;
+/// Zeilenabstand (Lücke zwischen zwei Zeilen) in Teilen der Höhe: Vorlage **0x3f2d = 0,6**, Dialog „Line Spacing … %
+/// of Height“; in den Musterdesigns 0,6 oder 0,5 am Ende des Datensatzes 0x7c. Mittel (ob Lücke oder Abstand der
+/// Grundlinien: als Lücke gedeutet, weil 60 % als Grundlinienabstand Zeilen überlappen ließe).
+pub const ZEILENABSTAND_ANTEIL: f64 = 0.6;
+/// Standardhöhe einer neuen Schrift: Vorlage **0x3e88 = 1800 → 10 mm**.
+pub const STANDARD_HOEHE_MM: f64 = 10.0;
 /// Stil „Schrift“ (NORMAL.AMT, `Analyse_Teil3/05`, `Analyse/code/10`): Auto Spacing an mit Faktor 0,9 (0x2736;
 /// in den Schrift-Musterdesigns 0,9 bzw. 0,87), Kurzstiche an (0x273a), Auto-Unterlage an mit vorgewählter Art
 /// Zickzack (0x27a7) – Handbuch PDF-S. 186/379: Schrift hat Auto-Unterlage, bei kleiner Schrift abschalten.
@@ -263,6 +270,31 @@ pub struct TextVorgabe {
     /// Unterlage: None = wie Stil „Schrift“ (Zickzack, bzw. die Unterlage des Alphabets), Some(leer) = keine
     pub unterlage: Option<Vec<String>>,
     pub farbe: String,
+    /// Wortabstand in Teilen der Höhe (None = Vorlage 0,25)
+    pub wortabstand: Option<f64>,
+    /// Zeilenabstand (Lücke) in Teilen der Höhe (None = Vorlage 0,6)
+    pub zeilenabstand: Option<f64>,
+}
+
+impl TextVorgabe {
+    /// Text in Zeilen (Zeilenumbruch `\n`): jede Zeile eine eigene Vorgabe, Grundlinie je Zeile um
+    /// Höhe × (1 + Zeilenabstand) nach unten; Ausrichtung gilt je Zeile.
+    pub fn zeilen(&self) -> Vec<TextVorgabe> {
+        let schritt = self.hoehe * (1.0 + self.zeilenabstand.unwrap_or(ZEILENABSTAND_ANTEIL));
+        self.text
+            .split('\n')
+            .enumerate()
+            .map(|(i, t)| TextVorgabe {
+                text: t.trim_end_matches('\r').to_string(),
+                position: p(self.position.x, self.position.y - i as f64 * schritt),
+                ..self.clone()
+            })
+            .collect()
+    }
+
+    fn wort(&self) -> f64 {
+        self.wortabstand.unwrap_or(WORTABSTAND_ANTEIL) * self.hoehe * self.breite_prozent / 100.0
+    }
 }
 
 /// Unterlage einer Säule: Vorgabe des Texts; sonst die Unterlage aus dem Alphabet; sonst die des Stils „Schrift“.
@@ -289,7 +321,7 @@ pub fn text_objekte(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<char
     let abstand = v.abstand.unwrap_or(alpha.abstand_anteil * v.hoehe);
     let vorschub = |ch: char| -> Option<f64> {
         if ch == ' ' {
-            return Some(LEERZEICHEN_ANTEIL * v.hoehe * v.breite_prozent / 100.0);
+            return Some(v.wort());
         }
         alpha
             .zeichen
@@ -307,7 +339,7 @@ pub fn text_objekte(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<char
     let mut fehlend = Vec::new();
     for ch in v.text.chars() {
         if ch == ' ' {
-            x += LEERZEICHEN_ANTEIL * v.hoehe * v.breite_prozent / 100.0;
+            x += v.wort();
             continue;
         }
         let Some(z) = alpha.zeichen.get(&ch) else {
@@ -482,6 +514,8 @@ mod tests {
             ausrichtung: 0.0,
             farbe: "#000000".into(),
             unterlage: None,
+            wortabstand: None,
+            zeilenabstand: None,
         };
         let (obj, fehlend) = text_objekte(&alpha, &v);
         assert_eq!(fehlend, vec!['?']);
@@ -530,5 +564,37 @@ mod tests {
             panic!("Säule")
         };
         (seite_a.clone(), unterlage.clone(), optionen.clone())
+    }
+
+    /// Zeilen: Grundlinie je Zeile um Höhe × (1 + 0,6) tiefer (Vorlage 0x3f2d), Wortabstand 0,25 × Höhe (0x3e85)
+    #[test]
+    fn zeilen_und_wortabstand() {
+        let v = TextVorgabe {
+            text: "Hallo\r\nWelt\nzwei".into(),
+            hoehe: 10.0,
+            breite_prozent: 100.0,
+            abstand: None,
+            position: p(5.0, 20.0),
+            ausrichtung: 0.5,
+            unterlage: None,
+            farbe: "#000000".into(),
+            wortabstand: None,
+            zeilenabstand: None,
+        };
+        let z = v.zeilen();
+        assert_eq!(
+            z.iter().map(|x| x.text.as_str()).collect::<Vec<_>>(),
+            ["Hallo", "Welt", "zwei"]
+        );
+        assert_eq!(z[1].position, p(5.0, 4.0));
+        assert!((z[2].position.y - (20.0 - 32.0)).abs() < 1e-9);
+        assert!((v.wort() - 2.5).abs() < 1e-9);
+        let eng = TextVorgabe {
+            zeilenabstand: Some(0.0),
+            wortabstand: Some(0.5),
+            ..v
+        };
+        assert_eq!(eng.zeilen()[1].position, p(5.0, 10.0));
+        assert!((eng.wort() - 5.0).abs() < 1e-9);
     }
 }
