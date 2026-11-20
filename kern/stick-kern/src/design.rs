@@ -250,6 +250,9 @@ struct DesignJson {
     einstellungen: Option<Value>,
     #[serde(default)]
     objekte: Vec<ObjektJson>,
+    /// Designende: „mitte“ (Standard, Sprung zurück zum Ursprung) oder „letzter_stich“
+    #[serde(default)]
+    ende: Option<String>,
 }
 
 // ---------------------------------------------------------------- Modell
@@ -749,6 +752,10 @@ pub struct Design {
     pub objekte: Vec<Objekt>,
     /// geladene Alphabete (Name wie im Alphabet-Kopf, z. B. „Drifter“); füllt der Aufrufer, siehe `alphabet_namen`
     pub alphabete: BTreeMap<String, Alphabet>,
+    /// Designende wie „Start und Ende“ im Original (Handbuch PDF-S. 205: Auto End – Mitte): nach dem letzten Stich ein
+    /// Sprung zurück zum Ursprung (Rahmenmitte). Belegt an den Designs der Maschine: 34 von 51 enden genau auf 0,0
+    /// (die Zeichensätze, deren Ursprung am Zeilenanfang liegt, auf der Grundlinie). Standard an.
+    pub ende_zur_mitte: bool,
 }
 
 impl Design {
@@ -834,6 +841,7 @@ impl Design {
             einstellungen: e,
             objekte,
             alphabete: BTreeMap::new(),
+            ende_zur_mitte: d.ende.as_deref() != Some("letzter_stich"),
         })
     }
 
@@ -892,7 +900,14 @@ impl Design {
             }
         }
         let folge = wege_verbinden(&teile, &self.einstellungen.verbinder, p(0.0, 0.0));
-        Ok(bernina_regeln(&folge))
+        let mut folge = bernina_regeln(&folge);
+        if self.ende_zur_mitte
+            && let Some(letzter) = folge.stiche.last()
+            && abstand(letzter.p(), p(0.0, 0.0)) > 1e-9
+        {
+            folge.sprung(p(0.0, 0.0));
+        }
+        Ok(folge)
     }
 
     /// Einstiche außerhalb des Stickfelds.

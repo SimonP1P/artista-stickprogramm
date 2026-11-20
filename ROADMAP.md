@@ -92,10 +92,14 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    Schrift-Musterdesigns (`Analyse_Teil3/11`), im Kern umgesetzt · ⬜ Reihenfolge, Start und Ende der Säulen wie das
    Original („Closest Join“) – braucht Text/Alphabet der LetterText-Objekte
 2. ⬜ Schrift: Auto Jump aus, Breite des Leerzeichens, Zeilenabstand (aus dem Code)
-3. ⬜ Kurzstiche bei Tatami-Flächen; Gruppenbildung (MOD1 0x10186ad0) genau übertragen
+3. ⬜ Kurzstiche bei Tatami-Flächen (niedrige Priorität: Reihenenden an der Kante liegen mindestens einen
+   Reihenabstand auseinander, die Schwelle 0,5 × Abstand greift dort kaum – begründet, nicht gemessen); Gruppenbildung
+   der Satin-Kurzstiche (MOD1 0x10186ad0) genau übertragen
 4. ✅ 20.11.2026 Unterlagenart für Flächen: Step wie die Mehrheit im Original (Messung); Satin-Auto-Split: im Original
    nicht wirksam (531 Querstiche 9–16 mm ungeteilt) – nichts nachzubauen (`Analyse_Teil3/10` §3/§5)
-5. ⬜ Start-/Endpunkte und Reihenfolge der Objekte im ganzen Design
+5. 🟡 ✅ 20.11.2026 Designende wie „Start und Ende“ (Auto End: Mitte – Sprung zurück zur Rahmenmitte; Designs der
+   Maschine: 34 von 51 enden auf 0,0) · ⬜ Start-/Endpunkte je Objekt („Closest Join“, MOD1 `AutoStartEndObject`,
+   `CalcStartEnd…`) und Reihenfolge der Objekte
 6. ⬜ Fancy-/Musterfüllungen, Applikation
 7. ⬜ Computer-Schriften (TTF) als Umrisse
 8. ⬜ Bild → Umrisse (Vektorisierung: Potrace/VTracer)

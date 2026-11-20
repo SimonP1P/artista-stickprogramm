@@ -1,6 +1,6 @@
-# Puffer DATEN für die artista 185 (stick puffer), Quelle ..\Testprogramm_artista185_Windows_v4_1\pruefmuster.json
-laenge=6788
-laenge_stiche=6296
+# Puffer DATEN für die artista 185 (stick puffer), Quelle ../Testprogramm_artista185_Windows_v4_1/pruefmuster.json
+laenge=6868
+laenge_stiche=6376
 laenge_anhang=316
 farben=4
 info_farben_minus_1=03

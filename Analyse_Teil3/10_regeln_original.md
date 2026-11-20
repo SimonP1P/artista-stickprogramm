@@ -95,6 +95,8 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
 - Mindeststich 0,3 mm, Höchststich 12,7 mm, Auto Jump: längere Stiche in Sprünge zu 7,0 mm (DEFAULTS.DFL, AMT). ✅
 - ⬜ Auto Jump ist bei Schrift laut Stil **aus** (ANALYSE.md §5) – im Kern noch nicht je Objekt.
 - Trim ab 3,0 mm (Stoffe 6,0 mm); die artista 185 schneidet nicht selbst, jeder Sprung bleibt als Faden (08).
+- **Designende** („Start und Ende“, Handbuch PDF-S. 205): Auto End – Mitte; Designs der Maschine enden zu 34/51 auf
+  0,0 (Zeichensätze auf der Grundlinie). ✅ Kern: Sprung zurück zum Ursprung, abschaltbar (`"ende": "letzter_stich"`).
 
 ## 8. Schrift — Sicherheit: siehe Bericht 09
 Original-Alphabete (ESB), Referenzhöhe 50 mm (mittel-hoch), Buchstabenabstand = Anteil × Höhe aus dem Alphabet-Kopf,

@@ -43,7 +43,7 @@ Alle Objekte haben `farbe` (`#rrggbb`) und `name`. Statt einer Punktliste geht e
 `{"kreis": {"mitte", "radius"}}`, `{"rechteck": {"mitte", "breite", "hoehe"}}`, `{"bogen": {"mitte", "radius", "von", "bis"}}`,
 `{"bezier": [p0, p1, p2, p3]}`, `{"verbinden": [Form, …]}`.
 Satin-Unterlage: `"auto"`, `"keine"` oder Kombination aus `mittellauf`, `edge_walk`, `zickzack`, `doppelzickzack` (z. B. `"edge_walk+zickzack"`).
-Oben im Design: `rahmen` (Name aus `stickprogramm rahmen`), `stoff` (einer der 8 Stoffe), `garnkarte` (nur Rust-Kern/Programm: Name einer `.tch`-Karte, Standard `Default`, `keine` = ohne), `einstellungen` (einzelne Werte überschreiben, z. B. `{"satin": {"zugausgleich": 0.3}}`).
+Oben im Design: `rahmen` (Name aus `stickprogramm rahmen`), `stoff` (einer der 8 Stoffe), `garnkarte` (nur Rust-Kern/Programm: Name einer `.tch`-Karte, Standard `Default`, `keine` = ohne), `ende` (nur Rust-Kern: `mitte` = Sprung zurück zur Rahmenmitte, Standard; `letzter_stich`), `einstellungen` (einzelne Werte überschreiben, z. B. `{"satin": {"zugausgleich": 0.3}}`).
 
 ## Aufbau (`src/stickprogramm/`)
 | Datei | Inhalt |
