@@ -144,11 +144,11 @@ venv/bin/python Arbeitsdaten/werkzeuge/rdis.py ZIEL_ADX/App_Executables/BEAGLink
 Schritt dort nachtragen und diese Kurzfassung angleichen. Dem Nutzer zu Beginn einer Arbeitssitzung kurz sagen, wo wir
 in der Roadmap stehen.
 
-| Phase | Inhalt | Stand 20.11.2026 |
+| Phase | Inhalt | Stand 21.11.2026 |
 |---|---|---|
 | 0 Grundlagen | Software-Analyse, Formate, Werte, Protokoll | ✅ (`VERIFIKATION.md`) |
 | 1 Prototyp | Stichberechnung in Python, Referenz für den Rust-Kern | ✅ (`stickprogramm/`) |
 | 2 Übertragung | Lesen ✅ · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** (Testprogramm v4) · Farbtabelle/Icon wie das Original vorbereitet (v4.1, Gerätetest offen) · offen: dauerhaft speichern (nur nach Zustimmung) | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri 2 + Svelte + Rust-Kern, erste Oberfläche (Rahmen, Stoff, Design, Schrift, Vorschau, EXP) | ✅ (`kern/README.md`, `app/README.md`) |
-| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): **4b.0 Schnittstelle für die Oberfläche ✅** (Schema, `stick-api`, erzeugte `SCHNITTSTELLE.md`/`kern.ts`), 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen, 4b.5 Reihenfolge ✅, 4b.17 Baustein „Satin automatisch“ ✅; Parameterkatalog angelegt; nächster Schritt 4b.16 Werte je Objekt, dann SVG lesen (4b.17), 4b.6 … | 🟡 (`ROADMAP.md` Phase 4b) |
+| 4 Sticharten nach dem Original | Grundstock ✅; **Phase 4b** (Restliste aus der Bestandsaufnahme): **4b.0 Schnittstelle für die Oberfläche ✅** (Schema, `stick-api`, erzeugte `SCHNITTSTELLE.md`/`kern.ts`), 4b.1 Transformationen, 4b.2 Schrift, 4b.3 Linien, 4b.4 Flächen, 4b.5 Reihenfolge ✅, 4b.17 Baustein „Satin automatisch“ ✅; Parameterkatalog angelegt; 4b.16 Werte je Objekt ✅; nächster Schritt SVG lesen (4b.17), dann 4b.6 … | 🟡 (`ROADMAP.md` Phase 4b) |
 | 5 Maschine im Programm | `stick-maschine` ✅ (am Gerät lesend erprobt), „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |

@@ -7,7 +7,7 @@ use crate::applikation::{ApplikationVorgabe, applikation_objekte};
 use crate::aussparen::{Aussparen, Teil, bedeckt, flaeche_minus};
 use crate::einstellungen::{Einstellungen, SatinEinstellung, TatamiEinstellung, fuer_stoff};
 use crate::geometrie::{Linie, Punkt, abstand, abstand_punkt_strecke, im_polygon, p, zwischen};
-use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_mit};
+use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_je_teil};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{
     Alphabet, Buchstabe, SchriftStichart, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen,
@@ -1006,6 +1006,10 @@ pub struct Design {
     pub ausstich: BTreeMap<usize, Punkt>,
     /// Closest Join für alle Objekte ohne eigenen Einstich (außer Schrift), JSON `"kuerzeste_verbindung": true`
     pub kuerzeste_verbindung: bool,
+    /// Werte je Objekt (Nummer in `objekte`), JSON `"einstellungen"` am Objekt: vollständige Einstellungen
+    /// (Stoff → Design → Objekt). Wie im Original: jedes Objekt einer ART-Datei trägt eine eigene Kopie des Stil-Baums
+    /// (Lauf, Satin, Tatami, Unterlagen, Verbinder; `Analyse_Teil3/03` §4, hoch)
+    pub objekt_einstellungen: BTreeMap<usize, Einstellungen>,
 }
 
 /// Auto Jump eines Objekts (Effects-Dialog, Handbuch Kap. 22 „Preserving long stitches with Auto Jump“): lange Stiche
@@ -1061,7 +1065,7 @@ impl Design {
         let d: DesignJson = serde_json::from_value(v.clone()).map_err(|e| design_fehler(v, e))?;
         let mut e = fuer_stoff(&d.stoff)?;
         if let Some(werte) = &d.einstellungen {
-            e = e.ueberschreiben(werte)?;
+            e = e.ueberschreiben(&werte.0)?;
         }
         // Monogramme werden zu Text (Diamond2/Diamond3)
         let roh: Vec<ObjektJson> = d
@@ -1114,6 +1118,7 @@ impl Design {
         let mut step_muster = BTreeMap::new();
         let mut einstich = BTreeMap::new();
         let mut ausstich = BTreeMap::new();
+        let mut objekt_einstellungen = BTreeMap::new();
         for (i, o) in roh.iter().enumerate() {
             let wo = format!("Objekt {}", i + 1);
             let g = o.gemeinsam();
@@ -1153,6 +1158,15 @@ impl Design {
             }
             if let Some(q) = g.ausstich {
                 ausstich.insert(i, q);
+            }
+            if let Some(w) = &g.einstellungen {
+                if w.0.get("stoff").is_some() {
+                    return Err(format!("{wo}: einstellungen: „stoff“ gilt nur für das ganze Design"));
+                }
+                let eigene = e
+                    .ueberschreiben(&w.0)
+                    .map_err(|x| format!("{wo}: einstellungen: {x}"))?;
+                objekt_einstellungen.insert(i, eigene);
             }
         }
 
@@ -1212,6 +1226,7 @@ impl Design {
             einstich,
             ausstich,
             kuerzeste_verbindung: d.kuerzeste_verbindung,
+            objekt_einstellungen,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             garnkarte: d.garnkarte,
@@ -1222,6 +1237,11 @@ impl Design {
             ende: d.ende.map(Bezugspunkt::from).unwrap_or_default(),
             ttf_schriften: BTreeMap::new(),
         })
+    }
+
+    /// Einstellungen eines Objekts (Nummer in `objekte`): eigene Werte je Objekt, sonst die des Designs.
+    pub fn einstellungen_fuer(&self, nr: usize) -> &Einstellungen {
+        self.objekt_einstellungen.get(&nr).unwrap_or(&self.einstellungen)
     }
 
     /// Namen der Alphabete, die die Texte des Designs brauchen.
@@ -1276,7 +1296,7 @@ impl Design {
                         vorgabe,
                         abstand,
                         self.buchstaben.get(&nr),
-                        self.einstellungen.tatami.winkel,
+                        self.einstellungen_fuer(nr).tatami.winkel,
                         |z| text_objekte_idx(a, z),
                     );
                     out.extend(obj);
@@ -1321,7 +1341,7 @@ impl Design {
                         art: ObjektArt::Gruppe {
                             teile,
                             umrisse: s.into_iter().map(|x| x.umriss).collect(),
-                            laufweg: self.einstellungen.tatami.laufweg_laenge,
+                            laufweg: self.einstellungen_fuer(nr).tatami.laufweg_laenge,
                         },
                     });
                 }
@@ -1341,7 +1361,7 @@ impl Design {
                         vorgabe,
                         abstand,
                         self.buchstaben.get(&nr),
-                        self.einstellungen.tatami.winkel,
+                        self.einstellungen_fuer(nr).tatami.winkel,
                         |z| ttf_text_objekte_idx(s, z, stichart),
                     );
                     out.extend(obj);
@@ -1482,14 +1502,16 @@ impl Design {
                 };
                 let beginn = crate::ein_ausstich::start_hinweis(&obj.art, ein, aus).unwrap_or(pos);
                 let eigene;
+                // Werte je Objekt (Stoff → Design → Objekt), dazu das Step-Muster des Objekts
+                let basis = self.einstellungen_fuer(*h);
                 let e = match self.step_muster.get(h) {
                     Some(&nr) => {
-                        let mut x = self.einstellungen.clone();
+                        let mut x = basis.clone();
                         x.tatami.step_muster(nr)?;
                         eigene = x;
                         &eigene
                     }
-                    None => &self.einstellungen,
+                    None => basis,
                 };
                 let mut wege: Vec<Linie> = obj
                     .wege(e, Some(beginn))?
@@ -1548,7 +1570,12 @@ impl Design {
         }
         let herkunft: Vec<usize> = teile.iter().map(|t| t.3).collect();
         let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _)| ((f, w), a)).unzip();
-        let folge = wege_verbinden_mit(&teile, &self.einstellungen.verbinder, start, &auto_jump);
+        // Verbinder je Teil: eigene Werte des Objekts (im Original trägt jedes Objekt seinen Verbinder 0x272a)
+        let verbinder: Vec<Option<&crate::einstellungen::VerbinderEinstellung>> = herkunft
+            .iter()
+            .map(|h| self.objekt_einstellungen.get(h).map(|e| &e.verbinder))
+            .collect();
+        let folge = wege_verbinden_je_teil(&teile, &self.einstellungen.verbinder, start, &auto_jump, &verbinder);
         let mut folge = bernina_regeln(&folge);
         // Teil → Objekt im Design
         for o in &mut folge.objekt {
@@ -2353,5 +2380,78 @@ mod tests {
         assert_eq!(formen[2].einstich, Some(p(10.0, 21.0)));
         let b = formen[1].begrenzung.unwrap();
         assert!((b[0] - 5.0).abs() < 1e-9 && (b[3] - 4.0).abs() < 1e-9, "{b:?}");
+    }
+
+    /// Werte je Objekt (ROADMAP 4b.16): Stil-Werte am einzelnen Objekt überschreiben – nur dieses Objekt ändert sich
+    #[test]
+    fn werte_je_objekt() {
+        let flaeche = |extra: &str| {
+            format!(
+                r##"{{"art": "tatami", "umriss": {{"rechteck": {{"mitte": [0, 0], "breite": 20, "hoehe": 20}}}},
+                    "unterlage": false{extra}}}"##
+            )
+        };
+        let zwei = |a: &str, b: &str| {
+            Design::aus_json(&format!(
+                r##"{{"objekte": [{}, {}]}}"##,
+                flaeche(a),
+                flaeche(&format!(r#", "transform": {{"verschieben": [30, 0]}}{b}"#))
+            ))
+            .unwrap()
+        };
+        let stiche_je_objekt = |d: &Design| {
+            let f = d.berechnen().unwrap();
+            let mut n = [0usize; 2];
+            for (s, &o) in f.stiche.iter().zip(&f.objekt) {
+                if s.art == crate::Art::Stich {
+                    n[o] += 1;
+                }
+            }
+            n
+        };
+        let gleich = stiche_je_objekt(&zwei("", ""));
+        let d = zwei("", r#", "einstellungen": {"tatami": {"abstand": 0.8}}"#);
+        assert!((d.einstellungen_fuer(1).tatami.abstand - 0.8).abs() < 1e-12);
+        assert!((d.einstellungen_fuer(0).tatami.abstand - d.einstellungen.tatami.abstand).abs() < 1e-12);
+        let locker = stiche_je_objekt(&d);
+        assert_eq!(locker[0], gleich[0], "erstes Objekt unverändert");
+        assert!(
+            (locker[1] as f64) < gleich[1] as f64 * 0.7,
+            "doppelter Abstand → deutlich weniger Stiche: {locker:?} gegen {gleich:?}"
+        );
+
+        // Reihenfolge Stoff → Design → Objekt: Design-Wert gilt, wo das Objekt nichts sagt
+        let d = Design::aus_json(&format!(
+            r##"{{"stoff": "Woven Heavy Weight", "einstellungen": {{"tatami": {{"laenge": 3.0}}}},
+                "objekte": [{}]}}"##,
+            flaeche(r#", "einstellungen": {"tatami": {"abstand": 0.6}}"#)
+        ))
+        .unwrap();
+        let e = d.einstellungen_fuer(0);
+        assert!((e.tatami.abstand - 0.6).abs() < 1e-12 && (e.tatami.laenge - 3.0).abs() < 1e-12);
+        assert_eq!(e.stoff, "Woven Heavy Weight");
+
+        // Verbinder je Objekt: ohne Vernähen am Anfang hat das zweite Objekt weniger Stiche
+        let ohne = r#", "einstellungen": {"verbinder": {"anfang_immer": false, "anfang_nach_trim_farbwechsel": false,
+            "anfang_bei_langem_verbinder": false}}"#;
+        let n = stiche_je_objekt(&zwei("", ohne));
+        assert!(n[1] < gleich[1], "{n:?} gegen {gleich:?}");
+
+        // Fehler mit Objektnummer; Stoff nur am Design
+        let e = Design::aus_json(&format!(
+            r#"{{"objekte": [{}]}}"#,
+            flaeche(r#", "einstellungen": {"tatami": {"abstnd": 1}}"#)
+        ))
+        .unwrap_err();
+        assert!(
+            e.starts_with("Objekt 1: einstellungen:") && e.contains("tatami.abstnd"),
+            "{e}"
+        );
+        let e = Design::aus_json(&format!(
+            r#"{{"objekte": [{}]}}"#,
+            flaeche(r#", "einstellungen": {"stoff": "x"}"#)
+        ))
+        .unwrap_err();
+        assert!(e.contains("stoff"), "{e}");
     }
 }

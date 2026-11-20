@@ -10,7 +10,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 
 | Feld | Typ | Pflicht | Standard | Beschreibung |
 |---|---|---|---|---|
-| `einstellungen` | Objekt |  | – | Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog) |
+| `einstellungen` | EinstellungenJson |  | – | Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog) |
 | `ende` | Ende |  | – | Endpunkt (Standard: Sprung zurück zur Rahmenmitte) |
 | `garnkarte` | string |  | `"Default"` | Garnkarte (Befehl `garnkarten_liste`): jede Farbe → nächstes Garn; „keine“ = ohne (Standard „Default“ wie die Maschine) |
 | `kuerzeste_verbindung` | boolean |  | `false` | Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift) |
@@ -31,6 +31,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `ausstich` | Punkt |  | – | Ausstich („exit point“) [x, y] in mm: das Objekt endet dort |
 | `auto_jump` | AutoJumpJson |  | – | Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) |
 | `doppellauf` | boolean |  | `false` | Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder |
+| `einstellungen` | EinstellungenJson |  | – | **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}. Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`) |
 | `einstich` | Punkt |  | – | Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort |
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet) |
 | `name` | string |  | `""` | Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text |
@@ -358,6 +359,19 @@ Einzelner Buchstabe eines Texts (`"buchstaben"`).
 | `nr` | number | ja | – | Nummer des Buchstabens (1 = erster, ohne Leerzeichen und Zeilenumbrüche) |
 | `transform` | Transformation |  | – | verschieben, drehen, skalieren … um die Mitte des Buchstabens |
 | `winkellinien` | Punkt[][] |  | `[]` | neue Stichwinkel: Strecken [[x1, y1], [x2, y2]] quer über die Säulen |
+
+### EinstellungenJson
+
+Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `lauf` | Objekt |  | – |  |
+| `satin` | Objekt |  | – |  |
+| `stoff` | string |  | `"0 Software Defaults"` |  |
+| `tatami` | Objekt |  | – |  |
+| `unterlage` | Objekt |  | – |  |
+| `verbinder` | Objekt |  | – | Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich. Zuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01. |
 
 ### GrundlinieJson
 

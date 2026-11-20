@@ -54,6 +54,18 @@ pub fn wege_verbinden_mit(
     start: Punkt,
     auto_jump: &[Option<(f64, f64)>],
 ) -> StichFolge {
+    wege_verbinden_je_teil(teile, e, start, auto_jump, &[])
+}
+
+/// Wie `wege_verbinden_mit`; `eigene[k]` = Verbinder-Werte des Teils k (Werte je Objekt, ROADMAP 4b.16) – sie gelten
+/// für das Vernähen am Anfang und Ende dieses Teils. Ohne Angabe gilt `standard` (Design).
+pub fn wege_verbinden_je_teil(
+    teile: &[(String, Vec<Linie>)],
+    standard: &VerbinderEinstellung,
+    start: Punkt,
+    auto_jump: &[Option<(f64, f64)>],
+    eigene: &[Option<&VerbinderEinstellung>],
+) -> StichFolge {
     let alle: Vec<(&str, &Linie)> = teile
         .iter()
         .flat_map(|(f, wege)| wege.iter().filter(|w| !w.is_empty()).map(move |w| (f.as_str(), w)))
@@ -70,6 +82,7 @@ pub fn wege_verbinden_mit(
     folge.farben.push(alle[0].0.to_string());
     let mut pos = start;
     for (i, &(farbe, weg)) in alle.iter().enumerate() {
+        let e = eigene.get(teil_nr[i]).copied().flatten().unwrap_or(standard);
         let vorher = if i > 0 { Some(alle[i - 1]) } else { None };
         let nachher = alle.get(i + 1).copied();
         let verbinder_davor = vorher.map(|(_, vw)| abstand(*vw.last().unwrap(), weg[0]));

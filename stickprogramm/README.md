@@ -60,7 +60,7 @@ geschlossene Formen beginnen und enden am nächsten Punkt, Flächen beginnen am 
 `{"bezier": [p0, p1, p2, p3]}`, `{"verbinden": [Form, …]}`.
 Satin-Unterlage: `"auto"`, `"keine"` oder Kombination aus `mittellauf`, `edge_walk`, `zickzack`, `doppelzickzack` (z. B. `"edge_walk+zickzack"`).
 Oben im Design: `rahmen` (Name aus `stickprogramm rahmen`), `stoff` (einer der 8 Stoffe), `garnkarte` (nur Rust-Kern/Programm: Name einer `.tch`-Karte, Standard `Default`, `keine` = ohne), `kuerzeste_verbindung` (nur Rust-Kern, Standard `false` = wie gezeichnet; `true` = Closest Join: jedes Objekt ohne
-eigenen Einstich beginnt am Punkt nächst dem vorigen Ende, außer Schrift), `start`/`ende` (nur Rust-Kern, Dialog „Start and End“: `rahmenmitte` Standard, `designmitte` wie Auto Start/End des Originals, `unten_mitte`, `erster_stich`/`letzter_stich`, Ende auch `start`; `mitte` = `rahmenmitte`), `einstellungen` (einzelne Werte überschreiben, z. B. `{"satin": {"zugausgleich": 0.3}}`).
+eigenen Einstich beginnt am Punkt nächst dem vorigen Ende, außer Schrift), `start`/`ende` (nur Rust-Kern, Dialog „Start and End“: `rahmenmitte` Standard, `designmitte` wie Auto Start/End des Originals, `unten_mitte`, `erster_stich`/`letzter_stich`, Ende auch `start`; `mitte` = `rahmenmitte`), `einstellungen` (einzelne Werte überschreiben, z. B. `{"satin": {"zugausgleich": 0.3}}`). Nur Rust-Kern: `einstellungen` auch **an jedem Objekt** (Werte je Objekt, gleicher Aufbau ohne `stoff`; Stoff → Design → Objekt → Felder direkt am Objekt).
 Die Reihenfolge in `objekte` ist die Stickreihenfolge; umordnen (nach Farbe, an Anfang/Ende, wie ausgewählt, vor/nach
 Nr., mit Prüfung auf Überdeckungen) mit `stick reihenfolge DESIGN.json …` (Rust-CLI, `Analyse_Teil3/16`).
 

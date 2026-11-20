@@ -1,6 +1,6 @@
 # Roadmap – Stickprogramm für die BERNINA artista 185
 
-**Stand: 20.11.2026.** Diese Datei ist die maßgebliche Roadmap. `CLAUDE.md` §6 fasst sie in einer Tabelle zusammen,
+**Stand: 21.11.2026.** Diese Datei ist die maßgebliche Roadmap. `CLAUDE.md` §6 fasst sie in einer Tabelle zusammen,
 `ARCHITECTURE.md` beschreibt den technischen Aufbau. Nach jedem abgeschlossenen Schritt hier den Stand nachtragen
 (✅ erledigt · 🟡 begonnen/teilweise · ⬜ offen · 📅 geplant mit Datum).
 
@@ -14,10 +14,10 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
-| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), 4b.1–4b.5 ✅, 4b.17 Baustein Satin automatisch ✅ (SVG lesen offen), 4b.8/4b.11 begonnen, 4b.6–4b.16 offen · Parameterkatalog `PARAMETER.md` (145 Parameter) | 🟡 |
+| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.5 ✅, 4b.17 Baustein Satin automatisch ✅ (SVG lesen offen), 4b.8/4b.11 begonnen, 4b.6–4b.16 offen · Parameterkatalog `PARAMETER.md` (145 Parameter) | 🟡 |
 | 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
 
-## Übergabe für die nächste Sitzung (Stand 20.11.2026, abends)
+## Übergabe für die nächste Sitzung (Stand 21.11.2026)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
 
 **Zuletzt erledigt (20.11.):** Phase 4b.1–4b.4 (Transformationen, Schrift vollständig, Linien, Flächen), Messungen an
@@ -33,10 +33,10 @@ JSON `satinflaeche`, TrueType in Satin, CLI `stick saeulen`; Bericht `Analyse_Te
 Pflege nach **CLAUDE.md §4 Regel 7** (Wächter-Tests erzwingen sie). Der Designentwurf des Nutzers (Claude Design) ist
 teils veraltet – mit `SCHNITTSTELLE.md` + `UI_Mockups/FUNKTIONEN.md` abgleichen.
 
-**Nächster Schritt:** **4b.16 Werte je Objekt** (prägt das Eigenschaften-Fenster: Stil-Werte am Objekt überschreiben,
-im Format als Feld am Objekt, Katalog-Ebene „beide“), danach:
+**Erledigt 21.11.: 4b.16 Werte je Objekt** – `"einstellungen"` an jedem Objekt (wie die Objekteigenschaften des
+Originals, auch Verbinder je Objekt); Katalog-Ebene „beide“ für alle Stil-Werte.
 
-**Danach (Nutzer, 20.11.):** **4b.17 SVG-Import fertigstellen**: SVG lesen (`usvg`: Gruppen, Transformationen,
+**Nächster Schritt (Nutzer, 20.11.):** **4b.17 SVG-Import fertigstellen**: SVG lesen (`usvg`: Gruppen, Transformationen,
 Stile, Formen → Pfade, Maßstab in mm), gefüllte Pfade → Flächen mit Löchern, Konturen → Lauf/Dreifach/Satinlinie nach
 Strichbreite; Stichart nach Breite wie EasyStitch (`saeulen::groesste_breite`: Linie ≤ 0,3 mm Lauf, ≤ 2 mm kräftige
 Linie, Fläche ≤ 8 mm `satinflaeche`, ≤ 12 mm Tatami 1, darüber Tatami 2); Zeichenreihenfolge = Stickreihenfolge,
@@ -199,7 +199,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.3 | **Linien** | Satin-Kontur mit Versatz, Double Run (Verstärken) | ✅ 20.11. `satinlinie` `"versatz": "seite"` (Seite links wie Blanket, eigene Festlegung), `"doppellauf": true` an jedem Objekt (Stiche rückwärts, gleiche Farbe, ohne Verbinder – Handbuch Kap. 23) |
 | 4b.4 | **Flächen** | Step-Muster (Nr. 1 …), mehrere Stichwinkel (Turning Fill), Zickzack-Füllung, Tatami-Kurzstiche | ✅ 20.11. Step-Muster 1–20 (Tabelle DIALOG.DLL, Reihen abwechselnd Versatz 1/2, gemessen) · ✅ mehrere Stichwinkel (`winkellinien`, Step längs der Linien wie im Original gemessen; ohne Löcher) · ✅ Zickzack-Deckstich (`stichart: zickzack`, 0x2724/0x2725) · ✅ Korrektur: Deck-Step der Stoffe Versatz 0,25/0,75 (Referenz `vergleich_stoff` ersetzt) · ✅ Kurzstiche in Step-Flächen mit Winkellinien und Step-Schrift (Effekt im allgemeinen Füllgenerator; 770 solcher Flächen der Musterdesigns mit Kurzstichen) |
 | 4b.5 | **Reihenfolge** | nach Farbe, an Anfang/Ende, automatisch – mit Prüfung, ob sich Objekte überdecken (Kap. 14); Ein-/Ausstich je Objekt setzbar | ✅ 20.11. `stick_kern::reihenfolge` + CLI `stick reihenfolge`: wie ausgewählt (MOD1 Resequence: Block an die Stelle des ersten ausgewählten Objekts), an Anfang/Ende, nach Nummer, nach Farbe (Farbfolge wählbar); **Überdeckungsprüfung = eigene Erweiterung** (Original prüft nicht): Warnung, wenn ein Objekt unter eine Fläche gerät, und Sortieren nach Farbe, das Überdeckungen beachtet (`--ueberdeckung`) · ✅ Ein-/Ausstich je Objekt (`einstich`/`ausstich`) und Closest Join (`kuerzeste_verbindung`, MOD1/GEOMETRY FindExitEntry) · gemessen: Original stickt ohne Eingriff wie digitalisiert (Bericht 16) · „automatisch“ im Handbuch Kap. 14 = Blackwork Run → 4b.9 |
-| 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ⬜ |
+| 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ✅ 21.11.: `"einstellungen"` an jedem Objekt, Aufbau wie am Design ohne `stoff` (Stoff → Design → Objekt → Felder direkt am Objekt); gilt für Lauf, Satin, Tatami, Unterlagen **und Verbinder** (Vernähen je Objekt, `wege_verbinden_je_teil`); Beleg: jedes ART-Objekt trägt eine eigene Kopie des Stil-Baums (`Analyse_Teil3/03` §4, hoch); `Design::einstellungen_fuer(nr)`; Katalog: 66 Parameter Ebene „beide“ mit `json_objekt` = `einstellungen.…`; Schema-Typ `EinstellungenJson` |
 | 4b.17 | **SVG-Import** (Erweiterung, Wunsch Nutzer 20.11.: in Inkscape zeichnen → laden → sticken) | SVG lesen (freie Bibliothek `usvg`: Gruppen, Verschiebungen, Stile, Formen → Pfade); gefüllte Pfade → Flächen mit Löchern (Füllregel), Konturen → Lauf/Dreifach/Satinlinie nach Strichbreite; Stichart nach Breite wie EasyStitch des Originals (Linie ≤ 0,3 mm Lauf, ≤ 2 mm kräftige Linie; Fläche ≤ 8 mm Satin, ≤ 12 mm Tatami 1, darüber Tatami 2); Zeichenreihenfolge = Stickreihenfolge, Überdeckungen aussparen, Farben → Garnkarte, Maßstab in mm (viewBox/width). Hinweise: Text in Pfade umwandeln, Verläufe/Transparenz → Hauptfarbe; schmale Flächen als Satin brauchen eine berechnete Stichrichtung (s. u.). CLI `stick svg`, später Befehl für die App. **Baustein „Satin-Stichrichtung automatisch“ (gehört dazu, zuerst bauen):** für eine beliebige schmale Form Mittellinie und Winkellinien selbst bestimmen (bei den Alphabeten liefert das Original sie mit), daraus Seiten A/B wie bei den Säulen; Verzweigungen (z. B. „Y“-Form) in mehrere Säulen teilen. Vorbild im Original: Auto Digitizer / EasyStitch „Satin“ für Flächen ≤ 8 mm – Verfahren dort nachsehen (Code, Musterdesigns aus „AutoDigitizing“). Wird auch für 4b.11 (Bild → Umrisse mit Satin) gebraucht | 🟡 Baustein ✅ 20.11.: `stick_kern::saeulen` nach EZSTITCH (Abtastung 1 mm/0,1 × Breite/0,05 mm, Triangulation, Sternschnitt an Abzweigungen, Stichlinien nach Krümmung), EmbroideryPatch-Stichlinien entschlüsselt, an 54 Säulen des Auto Digitizers geprüft (54/54 eine Säule, Richtung Median 4,4°), JSON `satinflaeche`, TrueType `"stichart": "satin"` (Break Angle 87°), CLI `stick saeulen` (Bericht 17) · SVG lesen ⬜ |
 | 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ⬜ |
 | 4b.7 | **Motive** | Pattern Run (Motivlinie), Pattern Fill (Motivfüllung), eigene Muster/Sets (Kap. 25) | ⬜ |

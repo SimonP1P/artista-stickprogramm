@@ -29,6 +29,12 @@ export type ApplikationJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /**
@@ -121,6 +127,12 @@ export type BlanketJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /**
@@ -170,323 +182,7 @@ export type DesignEingabe = {
 /** **Ein Design**: Rahmen, Stoff, Garnkarte, Objekte. Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. */
 export type DesignJson = {
   /** Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog) */
-  einstellungen?: {
-    lauf?: {
-      /**
-       * ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).
-       * Formen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).
-       * @default 30.0
-       */
-      ecke_grad?: number;
-      /**
-       * Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch)
-       * @default 2.5
-       */
-      laenge?: number;
-      /**
-       * min. 0,8 mm (AMT 0x27a8, hoch)
-       * @default 0.8
-       */
-      min_laenge?: number;
-      /**
-       * Chord Gap bei variabler Länge (Lauf in Flächen, hoch)
-       * @default 0.09
-       */
-      sehnenabstand?: number;
-      /**
-       * „feste Länge“ ist Standard (hoch)
-       * @default false
-       */
-      variabel?: boolean;
-    };
-    satin?: {
-      /**
-       * AMT 0x2723 (hoch)
-       * @default 0.4
-       */
-      abstand_fest?: number;
-      /** @default true */
-      auto_spacing?: boolean;
-      /**
-       * Stoff-/Stilfaktor AMT 0x2736 (hoch)
-       * @default 1.0
-       */
-      faktor?: number;
-      /** Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2) */
-      kurzstiche?: {
-        /** @default false */
-        an?: boolean;
-        /**
-         * 0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5)
-         * @default [0.8,0.85,0.72,0.7,0.9,0.7,0.7,0.9,0.8,0.7,0.7,0.87,0.65,0.83,0.7]
-         */
-        faktoren?: number[];
-        /**
-         * 0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0)
-         * @default 5
-         */
-        max_gruppe?: number;
-        /**
-         * 0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand
-         * zusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)
-         * @default 0.5
-         */
-        schwelle?: number;
-        /**
-         * 0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660)
-         * @default true
-         */
-        zufall?: boolean;
-      };
-      /**
-       * Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei
-       * Einstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,
-       * `Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)
-       * @default 2.0
-       */
-      zickzack_abstand?: number;
-      /**
-       * Handbuch S. 199 „automatically set at 0.2 mm“ (hoch)
-       * @default 0.2
-       */
-      zugausgleich?: number;
-    };
-    /** @default "0 Software Defaults" */
-    stoff?: string;
-    tatami?: {
-      /**
-       * Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward
-       * rows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,
-       * `Analyse_Teil3/06_messungen_tatami.md`)
-       * @default 0.4
-       */
-      abstand?: number;
-      /**
-       * Stichlänge AMT 0x2717 (hoch)
-       * @default 4.0
-       */
-      laenge?: number;
-      /** Mindeststich und Sehnenabstand eines variablen Laufs. */
-      laufweg?: {
-        /** @default 0.4 */
-        min_laenge?: number;
-        /** @default 0.08888888888888889 */
-        sehnenabstand?: number;
-      };
-      /**
-       * Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich
-       * 0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer
-       * mit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere
-       * (`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).
-       * @default 1.8
-       */
-      laufweg_laenge?: number;
-      /**
-       * Mindeststich am Rand AMT 0x2718 (hoch)
-       * @default 0.4
-       */
-      min_rand?: number;
-      /**
-       * Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen
-       * bei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)
-       * @default 0.25
-       */
-      versatz?: number;
-      /**
-       * Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`
-       * (gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.
-       */
-      versatz2?: number | null;
-      /**
-       * Stichwinkel (eigene Festlegung)
-       * @default 45.0
-       */
-      winkel?: number;
-      /**
-       * Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns
-       * „Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20
-       * Step-Muster des Dialogs haben 0.
-       * @default 0.0
-       */
-      zufall?: number;
-      /**
-       * wie Satin (Handbuch S. 199)
-       * @default 0.2
-       */
-      zugausgleich?: number;
-    };
-    unterlage?: {
-      /**
-       * **Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile
-       * tragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);
-       * MOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch
-       * (Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.
-       * @default false
-       */
-      auto_an?: boolean;
-      /**
-       * Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und
-       * EasyStitch-Stile).
-       * @default ["zickzack"]
-       */
-      auto_art?: string[];
-      /**
-       * AMT 0x2745/0x2724/0x2725 (mittel)
-       * @default 7.0
-       */
-      doppelzickzack_laenge?: number;
-      /** Mindeststich und Sehnenabstand eines variablen Laufs. */
-      doppelzickzack_lauf?: {
-        /** @default 0.9944444444444445 */
-        min_laenge?: number;
-        /** @default 0.08888888888888889 */
-        sehnenabstand?: number;
-      };
-      /**
-       * AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,
-       * Läufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)
-       * @default 2.2
-       */
-      edge_walk_laenge?: number;
-      /**
-       * Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und
-       * Sehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):
-       */
-      edge_walk_lauf?: {
-        /** @default 0.4 */
-        min_laenge?: number;
-        /** @default 0.07222222222222222 */
-        sehnenabstand?: number;
-      };
-      /**
-       * AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)
-       * @default 2.2
-       */
-      mittellauf_laenge?: number;
-      /** Mindeststich und Sehnenabstand eines variablen Laufs. */
-      mittellauf_lauf?: {
-        /** @default 0.7277777777777777 */
-        min_laenge?: number;
-        /** @default 0.06111111111111111 */
-        sehnenabstand?: number;
-      };
-      /**
-       * Unterlagenrand AMT 0x2769/0x276a (mittel)
-       * @default 0.2
-       */
-      rand?: number;
-      /**
-       * „+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel)
-       * @default 3.0
-       */
-      rueck_lauf_laenge?: number;
-      /**
-       * Tatami-Unterlage AMT 0x275a (mittel)
-       * @default 3.0
-       */
-      tatami_abstand?: number;
-      /** @default 4.0 */
-      tatami_laenge?: number;
-      /** @default 2.5 */
-      tatami_randlauf?: number;
-      /** Mindeststich und Sehnenabstand eines variablen Laufs. */
-      tatami_randlauf_lauf?: {
-        /** @default 0.4 */
-        min_laenge?: number;
-        /** @default 0.07222222222222222 */
-        sehnenabstand?: number;
-      };
-      /**
-       * Winkel 90° zur Deckstichrichtung (AMT 0x2759)
-       * @default 90.0
-       */
-      tatami_winkel_versatz?: number;
-      /**
-       * AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2)
-       * @default 5.0
-       */
-      zickzack_laenge?: number;
-      /** Mindeststich und Sehnenabstand eines variablen Laufs. */
-      zickzack_lauf?: {
-        /** @default 0.4 */
-        min_laenge?: number;
-        /** @default 0.2 */
-        sehnenabstand?: number;
-      };
-      /**
-       * AMT 0x2743 (hoch)
-       * @default 0.2
-       */
-      zugausgleich?: number;
-    };
-    /**
-     * Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.
-     * Zuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.
-     */
-    verbinder?: {
-      /**
-       * Tie In If: „Previous Connector Longer Than“ (0x272d = 1) …
-       * @default true
-       */
-      anfang_bei_langem_verbinder?: boolean;
-      /**
-       * Tie In: „Always Tie In“ (0x2753 = 0)
-       * @default false
-       */
-      anfang_immer?: boolean;
-      /**
-       * Tie In If: „After Trim / Color Change“ (0x2750 = 1)
-       * @default true
-       */
-      anfang_nach_trim_farbwechsel?: boolean;
-      /**
-       * … Länge (0x2755 = 3,0 mm)
-       * @default 3.0
-       */
-      anfang_verbinder_ab?: number;
-      /**
-       * Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …
-       * @default true
-       */
-      ende_bei_langem_verbinder?: boolean;
-      /**
-       * Tie Off: „Always Tie Off“ (0x2752 = 0)
-       * @default false
-       */
-      ende_immer?: boolean;
-      /**
-       * … Länge (0x2754 = 3,0 mm)
-       * @default 3.0
-       */
-      ende_verbinder_ab?: number;
-      /**
-       * Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)
-       * @default true
-       */
-      ende_vor_trim_farbwechsel?: boolean;
-      /**
-       * „Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht
-       * @default false
-       */
-      letztes_objekt_vernaehen?: boolean;
-      /**
-       * Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).
-       * Die artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.
-       * @default 3.0
-       */
-      trim_ab?: number;
-      /**
-       * Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)
-       * @default 2
-       */
-      vernaeh_stiche?: number;
-      /**
-       * Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel)
-       * @default 1.0
-       */
-      vernaeh_stichlaenge?: number;
-    };
-  } | null;
+  einstellungen?: (EinstellungenJson | null);
   /** Endpunkt (Standard: Sprung zurück zur Rahmenmitte) */
   ende?: (Ende | null);
   /**
@@ -527,6 +223,325 @@ export type DesignJson = {
 
 /** Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text). */
 export type DesignWert = DesignJson;
+
+/** Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design */
+export type EinstellungenJson = {
+  lauf?: {
+    /**
+     * ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).
+     * Formen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).
+     * @default 30.0
+     */
+    ecke_grad?: number;
+    /**
+     * Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch)
+     * @default 2.5
+     */
+    laenge?: number;
+    /**
+     * min. 0,8 mm (AMT 0x27a8, hoch)
+     * @default 0.8
+     */
+    min_laenge?: number;
+    /**
+     * Chord Gap bei variabler Länge (Lauf in Flächen, hoch)
+     * @default 0.09
+     */
+    sehnenabstand?: number;
+    /**
+     * „feste Länge“ ist Standard (hoch)
+     * @default false
+     */
+    variabel?: boolean;
+  };
+  satin?: {
+    /**
+     * AMT 0x2723 (hoch)
+     * @default 0.4
+     */
+    abstand_fest?: number;
+    /** @default true */
+    auto_spacing?: boolean;
+    /**
+     * Stoff-/Stilfaktor AMT 0x2736 (hoch)
+     * @default 1.0
+     */
+    faktor?: number;
+    /** Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2) */
+    kurzstiche?: {
+      /** @default false */
+      an?: boolean;
+      /**
+       * 0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5)
+       * @default [0.8,0.85,0.72,0.7,0.9,0.7,0.7,0.9,0.8,0.7,0.7,0.87,0.65,0.83,0.7]
+       */
+      faktoren?: number[];
+      /**
+       * 0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0)
+       * @default 5
+       */
+      max_gruppe?: number;
+      /**
+       * 0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand
+       * zusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)
+       * @default 0.5
+       */
+      schwelle?: number;
+      /**
+       * 0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660)
+       * @default true
+       */
+      zufall?: boolean;
+    };
+    /**
+     * Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei
+     * Einstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,
+     * `Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)
+     * @default 2.0
+     */
+    zickzack_abstand?: number;
+    /**
+     * Handbuch S. 199 „automatically set at 0.2 mm“ (hoch)
+     * @default 0.2
+     */
+    zugausgleich?: number;
+  };
+  /** @default "0 Software Defaults" */
+  stoff?: string;
+  tatami?: {
+    /**
+     * Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward
+     * rows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,
+     * `Analyse_Teil3/06_messungen_tatami.md`)
+     * @default 0.4
+     */
+    abstand?: number;
+    /**
+     * Stichlänge AMT 0x2717 (hoch)
+     * @default 4.0
+     */
+    laenge?: number;
+    /** Mindeststich und Sehnenabstand eines variablen Laufs. */
+    laufweg?: {
+      /** @default 0.4 */
+      min_laenge?: number;
+      /** @default 0.08888888888888889 */
+      sehnenabstand?: number;
+    };
+    /**
+     * Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich
+     * 0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer
+     * mit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere
+     * (`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).
+     * @default 1.8
+     */
+    laufweg_laenge?: number;
+    /**
+     * Mindeststich am Rand AMT 0x2718 (hoch)
+     * @default 0.4
+     */
+    min_rand?: number;
+    /**
+     * Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen
+     * bei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)
+     * @default 0.25
+     */
+    versatz?: number;
+    /**
+     * Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`
+     * (gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.
+     */
+    versatz2?: number | null;
+    /**
+     * Stichwinkel (eigene Festlegung)
+     * @default 45.0
+     */
+    winkel?: number;
+    /**
+     * Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns
+     * „Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20
+     * Step-Muster des Dialogs haben 0.
+     * @default 0.0
+     */
+    zufall?: number;
+    /**
+     * wie Satin (Handbuch S. 199)
+     * @default 0.2
+     */
+    zugausgleich?: number;
+  };
+  unterlage?: {
+    /**
+     * **Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile
+     * tragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);
+     * MOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch
+     * (Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.
+     * @default false
+     */
+    auto_an?: boolean;
+    /**
+     * Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und
+     * EasyStitch-Stile).
+     * @default ["zickzack"]
+     */
+    auto_art?: string[];
+    /**
+     * AMT 0x2745/0x2724/0x2725 (mittel)
+     * @default 7.0
+     */
+    doppelzickzack_laenge?: number;
+    /** Mindeststich und Sehnenabstand eines variablen Laufs. */
+    doppelzickzack_lauf?: {
+      /** @default 0.9944444444444445 */
+      min_laenge?: number;
+      /** @default 0.08888888888888889 */
+      sehnenabstand?: number;
+    };
+    /**
+     * AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,
+     * Läufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)
+     * @default 2.2
+     */
+    edge_walk_laenge?: number;
+    /**
+     * Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und
+     * Sehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):
+     */
+    edge_walk_lauf?: {
+      /** @default 0.4 */
+      min_laenge?: number;
+      /** @default 0.07222222222222222 */
+      sehnenabstand?: number;
+    };
+    /**
+     * AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)
+     * @default 2.2
+     */
+    mittellauf_laenge?: number;
+    /** Mindeststich und Sehnenabstand eines variablen Laufs. */
+    mittellauf_lauf?: {
+      /** @default 0.7277777777777777 */
+      min_laenge?: number;
+      /** @default 0.06111111111111111 */
+      sehnenabstand?: number;
+    };
+    /**
+     * Unterlagenrand AMT 0x2769/0x276a (mittel)
+     * @default 0.2
+     */
+    rand?: number;
+    /**
+     * „+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel)
+     * @default 3.0
+     */
+    rueck_lauf_laenge?: number;
+    /**
+     * Tatami-Unterlage AMT 0x275a (mittel)
+     * @default 3.0
+     */
+    tatami_abstand?: number;
+    /** @default 4.0 */
+    tatami_laenge?: number;
+    /** @default 2.5 */
+    tatami_randlauf?: number;
+    /** Mindeststich und Sehnenabstand eines variablen Laufs. */
+    tatami_randlauf_lauf?: {
+      /** @default 0.4 */
+      min_laenge?: number;
+      /** @default 0.07222222222222222 */
+      sehnenabstand?: number;
+    };
+    /**
+     * Winkel 90° zur Deckstichrichtung (AMT 0x2759)
+     * @default 90.0
+     */
+    tatami_winkel_versatz?: number;
+    /**
+     * AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2)
+     * @default 5.0
+     */
+    zickzack_laenge?: number;
+    /** Mindeststich und Sehnenabstand eines variablen Laufs. */
+    zickzack_lauf?: {
+      /** @default 0.4 */
+      min_laenge?: number;
+      /** @default 0.2 */
+      sehnenabstand?: number;
+    };
+    /**
+     * AMT 0x2743 (hoch)
+     * @default 0.2
+     */
+    zugausgleich?: number;
+  };
+  /**
+   * Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.
+   * Zuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.
+   */
+  verbinder?: {
+    /**
+     * Tie In If: „Previous Connector Longer Than“ (0x272d = 1) …
+     * @default true
+     */
+    anfang_bei_langem_verbinder?: boolean;
+    /**
+     * Tie In: „Always Tie In“ (0x2753 = 0)
+     * @default false
+     */
+    anfang_immer?: boolean;
+    /**
+     * Tie In If: „After Trim / Color Change“ (0x2750 = 1)
+     * @default true
+     */
+    anfang_nach_trim_farbwechsel?: boolean;
+    /**
+     * … Länge (0x2755 = 3,0 mm)
+     * @default 3.0
+     */
+    anfang_verbinder_ab?: number;
+    /**
+     * Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …
+     * @default true
+     */
+    ende_bei_langem_verbinder?: boolean;
+    /**
+     * Tie Off: „Always Tie Off“ (0x2752 = 0)
+     * @default false
+     */
+    ende_immer?: boolean;
+    /**
+     * … Länge (0x2754 = 3,0 mm)
+     * @default 3.0
+     */
+    ende_verbinder_ab?: number;
+    /**
+     * Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)
+     * @default true
+     */
+    ende_vor_trim_farbwechsel?: boolean;
+    /**
+     * „Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht
+     * @default false
+     */
+    letztes_objekt_vernaehen?: boolean;
+    /**
+     * Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).
+     * Die artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.
+     * @default 3.0
+     */
+    trim_ab?: number;
+    /**
+     * Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)
+     * @default 2
+     */
+    vernaeh_stiche?: number;
+    /**
+     * Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel)
+     * @default 1.0
+     */
+    vernaeh_stichlaenge?: number;
+  };
+} | null;
 
 /** Endpunkt des Designs (Dialog „Start and End“) */
 export type Ende = ("rahmenmitte" | "designmitte" | "unten_mitte" | "letzter_stich" | "start");
@@ -708,6 +723,12 @@ export type LaufJson = {
   doppellauf?: boolean;
   /** Dreifachstich (bei art „dreifach“ immer) */
   dreifach?: boolean | null;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /**
@@ -762,6 +783,12 @@ export type MonogrammJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /** Verzerren (Elastic Lettering) */
@@ -852,6 +879,12 @@ export type MusterJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /**
@@ -1065,6 +1098,12 @@ export type SatinFlaecheJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /** Auto-Spacing-Faktor */
@@ -1106,6 +1145,12 @@ export type SatinJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /** Auto-Spacing-Faktor des Objekts (Stil: 0x2736; Schrift 0,9) */
@@ -1145,6 +1190,12 @@ export type SatinLinieJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /**
@@ -1242,6 +1293,12 @@ export type TatamiJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /**
@@ -1307,6 +1364,12 @@ export type TextJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /** Verzerren (Elastic Lettering) */
@@ -1402,6 +1465,12 @@ export type TtfJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
   /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
   einstich?: (Punkt | null);
   /** Verzerren (Elastic Lettering) */

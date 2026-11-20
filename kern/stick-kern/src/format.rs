@@ -491,6 +491,11 @@ pub struct Gemeinsam {
     /// Ausstich („exit point“) [x, y] in mm: das Objekt endet dort
     #[serde(default)]
     pub ausstich: Option<Punkt>,
+    /// **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+    /// `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+    /// Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+    #[serde(default)]
+    pub einstellungen: Option<EinstellungenJson>,
 }
 
 /// Grundlinie eines Texts (`schrift::Grundlinie`; Dialog „Layout“ des Originals). Beim Kreis ist `position` des Texts
@@ -892,8 +897,7 @@ pub struct DesignJson {
     pub garnkarte: String,
     /// Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog)
     #[serde(default)]
-    #[schemars(schema_with = "einstellungen_schema")]
-    pub einstellungen: Option<Value>,
+    pub einstellungen: Option<EinstellungenJson>,
     /// Stickobjekte in Stickreihenfolge
     #[serde(default)]
     pub objekte: Vec<ObjektJson>,
@@ -919,6 +923,21 @@ fn rahmen_schema(_: &mut SchemaGenerator) -> Schema {
 fn stoff_schema(_: &mut SchemaGenerator) -> Schema {
     let namen: Vec<&str> = crate::einstellungen::STOFFE.iter().map(|s| s.name).collect();
     json_schema!({ "type": "string", "enum": namen, "default": standard_stoff() })
+}
+
+/// Einzelwerte des Stils überschreiben – am Design und je Objekt (dort ohne `stoff`). Aufbau wie
+/// `einstellungen::Einstellungen`, jedes Feld darf fehlen; geprüft wird beim Lesen (`Einstellungen::ueberschreiben`).
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(transparent)]
+pub struct EinstellungenJson(pub Value);
+
+impl JsonSchema for EinstellungenJson {
+    fn schema_name() -> std::borrow::Cow<'static, str> {
+        "EinstellungenJson".into()
+    }
+    fn json_schema(g: &mut SchemaGenerator) -> Schema {
+        einstellungen_schema(g)
+    }
 }
 
 /// Schema der Einstellungen zum Überschreiben: wie `Einstellungen`, aber jedes Feld darf fehlen; Standardwerte =
@@ -954,7 +973,9 @@ fn einstellungen_schema(_: &mut SchemaGenerator) -> Schema {
     if let Some(o) = v.as_object_mut() {
         o.insert(
             "description".into(),
-            "Einzelwerte überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen".into(),
+            "Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur \
+             am Design"
+                .into(),
         );
         o.insert("type".into(), Value::from(vec!["object", "null"]));
     }

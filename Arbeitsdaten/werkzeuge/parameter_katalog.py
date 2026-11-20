@@ -394,8 +394,21 @@ for k, name, w, einh, std, modus in [
     P(f'bild.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle='stick-vektor (eigene Festlegung)',
       modus=modus)
 
+# ROADMAP 4b.16 Werte je Objekt: jeder Stil-Wert (`einstellungen.…`) lässt sich auch am Objekt überschreiben
+# (`"einstellungen"` am Objekt, gleicher Pfad) – im Original trägt jedes Objekt eine eigene Kopie des Stil-Baums
+# (Analyse_Teil3/03 §4, hoch). Felder direkt am Objekt (z. B. `abstand`) bleiben als Kurzform in `json_objekt`.
+for e in K:
+    d = e['json_design'] or ''
+    if d.startswith('einstellungen.') and not d.startswith('einstellungen.stoff'):
+        if e['ebene'] == 'design':
+            e['ebene'] = 'beide'
+        if e['json_objekt'] is None:
+            e['json_objekt'] = d
+        if not e['gilt_fuer']:
+            e['gilt_fuer'] = list(ALLE)
+
 ids = [e['id'] for e in K]
 assert len(ids) == len(set(ids)), 'doppelte IDs'
 with open(ZIEL, 'w', encoding='utf-8') as f:
-    json.dump({'stand': '20.11.2026', 'parameter': K}, f, ensure_ascii=False, indent=1)
+    json.dump({'stand': '21.11.2026', 'parameter': K}, f, ensure_ascii=False, indent=1)
 print(len(K), 'Parameter ->', os.path.normpath(ZIEL))

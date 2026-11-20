@@ -18,6 +18,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Satin outline **Versatz** (Center/Offset) | ✅ | 20.11. `versatz` mitte/seite (Seite links: eigene Festlegung) |
 | Blanket, Abstand, Breite, Versatz | ✅ | `blanket` (Form eigene Festlegung) |
 | Double Run (Verstärken, rückwärts doppelt) | ✅ | 20.11. `doppellauf` an jedem Objekt (Kap. 23) |
+| Objekteigenschaften: Stil-Werte je Objekt (Abstand, Länge, Zugausgleich, Unterlage, Verbinder …) | ✅ | 21.11. `einstellungen` am Objekt (ROADMAP 4b.16); Beleg: jedes ART-Objekt trägt eine eigene Kopie des Stil-Baums (`Analyse_Teil3/03` §4, hoch) |
 | Pattern Run (Motivlinie), Muster/Skalierung/Abstand, eigene Muster | ⬜ | Kap. 25, „Motif Run“ |
 | Blackwork Run / Blackwork Border | ⬜ | Kap. 26 |
 | Backstitch, Stemstitch (Rück-, Stielstich) | ⬜ | Kap. 26, Klassen 0x97/0x96 |

@@ -3,7 +3,7 @@
 **Für wen:** Designer (Claude Design) und Frontend-Entwickler. **Was:** jede Funktion, die der Rechenkern kann – was
 der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Feldliste (aus dem Code erzeugt, immer
 aktuell): **`SCHNITTSTELLE.md`**, maschinenlesbar `kern/schnittstelle/`. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
-`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 20.11.2026** (4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
+`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 21.11.2026** (4b.16 Werte je Objekt; 4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
 
 **Modus:** **E** = im einfachen Modus sichtbar, **X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur
 das Ergebnis). **Alle einzelnen Werte** (Stichabstand, Zugausgleich, Unterlagen, Vernähen …) mit Standard, Bereich,
@@ -37,7 +37,7 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 | Ganzes Design skalieren, drehen, spiegeln, schräg, verschieben | Prozent / Grad / Richtung / mm | `transform` oben | E |
 | Start und Ende | Rahmenmitte, Designmitte, unten Mitte, erster/letzter Stich | `start`, `ende` | X |
 | Kürzeste Verbindung (Closest Join) | an/aus (aus = wie gezeichnet): jedes Objekt beginnt nahe dem vorigen Ende, Linien werden dafür umgedreht, geschlossene Formen gedreht – weniger Sprünge | `kuerzeste_verbindung` | X |
-| Einzelwerte überschreiben | z. B. Satin-Zugausgleich | `einstellungen` | X |
+| Einzelwerte überschreiben (ganzes Design) | z. B. Satin-Zugausgleich; Werte im Parameterkatalog | `einstellungen` | X |
 
 ## 3. Objekte (Sticharten)
 Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbinden`. Alle Objekte: `farbe`, `name`,
@@ -78,6 +78,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 |---|---|---|---|
 | Skalieren, drehen, spiegeln, schräg, verschieben | Prozent / Grad / Richtung / mm | `transform` | E |
 | Aussparen (Knockout) | Füllfläche spart darüberliegende Objekte aus, Überlappung (0 mm) | `aussparen`, `ueberlappung` | E (Überlappung X) |
+| **Werte je Objekt** (Objekteigenschaften) | jeder Stil-Wert nur für dieses Objekt: Stichabstand, Stichlänge, Mindeststich am Rand, Zugausgleich, Auto Spacing, Kurzstiche, Unterlage-Werte, Lauf fest/variabel, Vernähen/Verbinder – Aufbau wie `einstellungen` des Designs (ohne Stoff). Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt. Anzeige: Eigenschaften-Fenster des Objekts, Standard = Wert des Designs/Stoffs, geänderte Werte markieren und einzeln zurücksetzen | `einstellungen` am Objekt (Pfade wie `PARAMETER.md`, Ebene „beide“) | X |
 | Verstärken (Double Run) | an/aus – gleiche Stiche rückwärts noch einmal | `doppellauf` | X |
 | Auto Jump | an/aus, Höchststich (12,7 mm), Sprunglänge (7 mm); kleiner Höchststich = „Satin mit mehr Loft“ | `auto_jump` | X |
 | Reihenfolge der Objekte | Reihenfolge im JSON = Stickreihenfolge; Liste wie die „Color Film“ des Originals (Nr, Farbe, Art, Name), Ziehen zum Umordnen | Reihenfolge `objekte` | E |
@@ -111,8 +112,7 @@ Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DA
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
 **SVG-Import** (vorgezogen): Design aus Inkscape laden – Flächen, Konturen, Farben und Reihenfolge werden
-übernommen, Stichart je Form automatisch nach Breite (schmale Flächen als `satinflaeche`) und in der App änderbar · **Werte je Objekt** (Stichabstand,
-Länge, Zugausgleich … am einzelnen Objekt, Expertenmodus) · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
+übernommen, Stichart je Form automatisch nach Breite (schmale Flächen als `satinflaeche`) und in der App änderbar · Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·
 Magic Wand, PhotoSnap · Ausrichten, Gruppieren, Kranz, Kaleidoskop · eigene Rahmen, fremde Stickdateien ·
 Vorlagen/Stile speichern · Kreuzstich.

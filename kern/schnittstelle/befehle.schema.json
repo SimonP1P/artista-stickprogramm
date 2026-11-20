@@ -89,6 +89,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
         "einstich": {
           "anyOf": [
             {
@@ -421,6 +432,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
         "einstich": {
           "anyOf": [
             {
@@ -567,492 +589,15 @@
       "description": "**Ein Design**: Rahmen, Stoff, Garnkarte, Objekte. Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben.",
       "properties": {
         "einstellungen": {
-          "additionalProperties": false,
-          "default": null,
-          "description": "Einzelwerte des Stoffs/Stils überschreiben, z. B. {\"satin\": {\"zugausgleich\": 0.3}} (Parameterkatalog)",
-          "properties": {
-            "lauf": {
-              "additionalProperties": false,
-              "properties": {
-                "ecke_grad": {
-                  "default": 30.0,
-                  "description": "ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).\nFormen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).",
-                  "format": "double",
-                  "type": "number"
-                },
-                "laenge": {
-                  "default": 2.5,
-                  "description": "Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "min_laenge": {
-                  "default": 0.8,
-                  "description": "min. 0,8 mm (AMT 0x27a8, hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "sehnenabstand": {
-                  "default": 0.09,
-                  "description": "Chord Gap bei variabler Länge (Lauf in Flächen, hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "variabel": {
-                  "default": false,
-                  "description": "„feste Länge“ ist Standard (hoch)",
-                  "type": "boolean"
-                }
-              },
-              "type": "object"
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
             },
-            "satin": {
-              "additionalProperties": false,
-              "properties": {
-                "abstand_fest": {
-                  "default": 0.4,
-                  "description": "AMT 0x2723 (hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "auto_spacing": {
-                  "default": true,
-                  "type": "boolean"
-                },
-                "faktor": {
-                  "default": 1.0,
-                  "description": "Stoff-/Stilfaktor AMT 0x2736 (hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "kurzstiche": {
-                  "additionalProperties": false,
-                  "default": {
-                    "an": false,
-                    "faktoren": [
-                      0.8,
-                      0.85,
-                      0.72,
-                      0.7,
-                      0.9,
-                      0.7,
-                      0.7,
-                      0.9,
-                      0.8,
-                      0.7,
-                      0.7,
-                      0.87,
-                      0.65,
-                      0.83,
-                      0.7
-                    ],
-                    "max_gruppe": 5,
-                    "schwelle": 0.5,
-                    "zufall": true
-                  },
-                  "description": "Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2)",
-                  "properties": {
-                    "an": {
-                      "default": false,
-                      "type": "boolean"
-                    },
-                    "faktoren": {
-                      "default": [
-                        0.8,
-                        0.85,
-                        0.72,
-                        0.7,
-                        0.9,
-                        0.7,
-                        0.7,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.7,
-                        0.87,
-                        0.65,
-                        0.83,
-                        0.7
-                      ],
-                      "description": "0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5)",
-                      "items": {
-                        "format": "double",
-                        "type": "number"
-                      },
-                      "type": "array"
-                    },
-                    "max_gruppe": {
-                      "default": 5,
-                      "description": "0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0)",
-                      "format": "uint",
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "schwelle": {
-                      "default": 0.5,
-                      "description": "0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand\nzusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)",
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "zufall": {
-                      "default": true,
-                      "description": "0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660)",
-                      "type": "boolean"
-                    }
-                  },
-                  "type": "object"
-                },
-                "zickzack_abstand": {
-                  "default": 2.0,
-                  "description": "Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei\nEinstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,\n`Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "zugausgleich": {
-                  "default": 0.2,
-                  "description": "Handbuch S. 199 „automatically set at 0.2 mm“ (hoch)",
-                  "format": "double",
-                  "type": "number"
-                }
-              },
-              "type": "object"
-            },
-            "stoff": {
-              "default": "0 Software Defaults",
-              "type": "string"
-            },
-            "tatami": {
-              "additionalProperties": false,
-              "properties": {
-                "abstand": {
-                  "default": 0.4,
-                  "description": "Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward\nrows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,\n`Analyse_Teil3/06_messungen_tatami.md`)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "laenge": {
-                  "default": 4.0,
-                  "description": "Stichlänge AMT 0x2717 (hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "laufweg": {
-                  "additionalProperties": false,
-                  "default": {
-                    "min_laenge": 0.4,
-                    "sehnenabstand": 0.08888888888888889
-                  },
-                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
-                  "properties": {
-                    "min_laenge": {
-                      "default": 0.4,
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "sehnenabstand": {
-                      "default": 0.08888888888888889,
-                      "format": "double",
-                      "type": "number"
-                    }
-                  },
-                  "type": "object"
-                },
-                "laufweg_laenge": {
-                  "default": 1.8,
-                  "description": "Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich\n0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer\nmit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere\n(`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).",
-                  "format": "double",
-                  "type": "number"
-                },
-                "min_rand": {
-                  "default": 0.4,
-                  "description": "Mindeststich am Rand AMT 0x2718 (hoch)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "versatz": {
-                  "default": 0.25,
-                  "description": "Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen\nbei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "versatz2": {
-                  "default": null,
-                  "description": "Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`\n(gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.",
-                  "format": "double",
-                  "type": [
-                    "number",
-                    "null"
-                  ]
-                },
-                "winkel": {
-                  "default": 45.0,
-                  "description": "Stichwinkel (eigene Festlegung)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "zufall": {
-                  "default": 0.0,
-                  "description": "Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns\n„Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20\nStep-Muster des Dialogs haben 0.",
-                  "format": "double",
-                  "type": "number"
-                },
-                "zugausgleich": {
-                  "default": 0.2,
-                  "description": "wie Satin (Handbuch S. 199)",
-                  "format": "double",
-                  "type": "number"
-                }
-              },
-              "type": "object"
-            },
-            "unterlage": {
-              "additionalProperties": false,
-              "properties": {
-                "auto_an": {
-                  "default": false,
-                  "description": "**Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile\ntragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);\nMOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch\n(Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.",
-                  "type": "boolean"
-                },
-                "auto_art": {
-                  "default": [
-                    "zickzack"
-                  ],
-                  "description": "Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und\nEasyStitch-Stile).",
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "doppelzickzack_laenge": {
-                  "default": 7.0,
-                  "description": "AMT 0x2745/0x2724/0x2725 (mittel)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "doppelzickzack_lauf": {
-                  "additionalProperties": false,
-                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
-                  "properties": {
-                    "min_laenge": {
-                      "default": 0.9944444444444445,
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "sehnenabstand": {
-                      "default": 0.08888888888888889,
-                      "format": "double",
-                      "type": "number"
-                    }
-                  },
-                  "type": "object"
-                },
-                "edge_walk_laenge": {
-                  "default": 2.2,
-                  "description": "AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,\nLäufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "edge_walk_lauf": {
-                  "additionalProperties": false,
-                  "description": "Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und\nSehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):",
-                  "properties": {
-                    "min_laenge": {
-                      "default": 0.4,
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "sehnenabstand": {
-                      "default": 0.07222222222222222,
-                      "format": "double",
-                      "type": "number"
-                    }
-                  },
-                  "type": "object"
-                },
-                "mittellauf_laenge": {
-                  "default": 2.2,
-                  "description": "AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "mittellauf_lauf": {
-                  "additionalProperties": false,
-                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
-                  "properties": {
-                    "min_laenge": {
-                      "default": 0.7277777777777777,
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "sehnenabstand": {
-                      "default": 0.06111111111111111,
-                      "format": "double",
-                      "type": "number"
-                    }
-                  },
-                  "type": "object"
-                },
-                "rand": {
-                  "default": 0.2,
-                  "description": "Unterlagenrand AMT 0x2769/0x276a (mittel)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "rueck_lauf_laenge": {
-                  "default": 3.0,
-                  "description": "„+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "tatami_abstand": {
-                  "default": 3.0,
-                  "description": "Tatami-Unterlage AMT 0x275a (mittel)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "tatami_laenge": {
-                  "default": 4.0,
-                  "format": "double",
-                  "type": "number"
-                },
-                "tatami_randlauf": {
-                  "default": 2.5,
-                  "format": "double",
-                  "type": "number"
-                },
-                "tatami_randlauf_lauf": {
-                  "additionalProperties": false,
-                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
-                  "properties": {
-                    "min_laenge": {
-                      "default": 0.4,
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "sehnenabstand": {
-                      "default": 0.07222222222222222,
-                      "format": "double",
-                      "type": "number"
-                    }
-                  },
-                  "type": "object"
-                },
-                "tatami_winkel_versatz": {
-                  "default": 90.0,
-                  "description": "Winkel 90° zur Deckstichrichtung (AMT 0x2759)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "zickzack_laenge": {
-                  "default": 5.0,
-                  "description": "AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "zickzack_lauf": {
-                  "additionalProperties": false,
-                  "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
-                  "properties": {
-                    "min_laenge": {
-                      "default": 0.4,
-                      "format": "double",
-                      "type": "number"
-                    },
-                    "sehnenabstand": {
-                      "default": 0.2,
-                      "format": "double",
-                      "type": "number"
-                    }
-                  },
-                  "type": "object"
-                },
-                "zugausgleich": {
-                  "default": 0.2,
-                  "description": "AMT 0x2743 (hoch)",
-                  "format": "double",
-                  "type": "number"
-                }
-              },
-              "type": "object"
-            },
-            "verbinder": {
-              "additionalProperties": false,
-              "description": "Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.\nZuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.",
-              "properties": {
-                "anfang_bei_langem_verbinder": {
-                  "default": true,
-                  "description": "Tie In If: „Previous Connector Longer Than“ (0x272d = 1) …",
-                  "type": "boolean"
-                },
-                "anfang_immer": {
-                  "default": false,
-                  "description": "Tie In: „Always Tie In“ (0x2753 = 0)",
-                  "type": "boolean"
-                },
-                "anfang_nach_trim_farbwechsel": {
-                  "default": true,
-                  "description": "Tie In If: „After Trim / Color Change“ (0x2750 = 1)",
-                  "type": "boolean"
-                },
-                "anfang_verbinder_ab": {
-                  "default": 3.0,
-                  "description": "… Länge (0x2755 = 3,0 mm)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "ende_bei_langem_verbinder": {
-                  "default": true,
-                  "description": "Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …",
-                  "type": "boolean"
-                },
-                "ende_immer": {
-                  "default": false,
-                  "description": "Tie Off: „Always Tie Off“ (0x2752 = 0)",
-                  "type": "boolean"
-                },
-                "ende_verbinder_ab": {
-                  "default": 3.0,
-                  "description": "… Länge (0x2754 = 3,0 mm)",
-                  "format": "double",
-                  "type": "number"
-                },
-                "ende_vor_trim_farbwechsel": {
-                  "default": true,
-                  "description": "Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)",
-                  "type": "boolean"
-                },
-                "letztes_objekt_vernaehen": {
-                  "default": false,
-                  "description": "„Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht",
-                  "type": "boolean"
-                },
-                "trim_ab": {
-                  "default": 3.0,
-                  "description": "Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).\nDie artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.",
-                  "format": "double",
-                  "type": "number"
-                },
-                "vernaeh_stiche": {
-                  "default": 2,
-                  "description": "Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)",
-                  "format": "uint",
-                  "minimum": 0,
-                  "type": "integer"
-                },
-                "vernaeh_stichlaenge": {
-                  "default": 1.0,
-                  "description": "Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel)",
-                  "format": "double",
-                  "type": "number"
-                }
-              },
-              "type": "object"
+            {
+              "type": "null"
             }
-          },
-          "type": [
-            "object",
-            "null"
-          ]
+          ],
+          "description": "Einzelwerte des Stoffs/Stils überschreiben, z. B. {\"satin\": {\"zugausgleich\": 0.3}} (Parameterkatalog)"
         },
         "ende": {
           "anyOf": [
@@ -1165,6 +710,493 @@
     "DesignWert": {
       "$ref": "#/$defs/DesignJson",
       "description": "Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text)."
+    },
+    "EinstellungenJson": {
+      "additionalProperties": false,
+      "description": "Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design",
+      "properties": {
+        "lauf": {
+          "additionalProperties": false,
+          "properties": {
+            "ecke_grad": {
+              "default": 30.0,
+              "description": "ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).\nFormen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).",
+              "format": "double",
+              "type": "number"
+            },
+            "laenge": {
+              "default": 2.5,
+              "description": "Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "min_laenge": {
+              "default": 0.8,
+              "description": "min. 0,8 mm (AMT 0x27a8, hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "sehnenabstand": {
+              "default": 0.09,
+              "description": "Chord Gap bei variabler Länge (Lauf in Flächen, hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "variabel": {
+              "default": false,
+              "description": "„feste Länge“ ist Standard (hoch)",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
+        "satin": {
+          "additionalProperties": false,
+          "properties": {
+            "abstand_fest": {
+              "default": 0.4,
+              "description": "AMT 0x2723 (hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "auto_spacing": {
+              "default": true,
+              "type": "boolean"
+            },
+            "faktor": {
+              "default": 1.0,
+              "description": "Stoff-/Stilfaktor AMT 0x2736 (hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "kurzstiche": {
+              "additionalProperties": false,
+              "default": {
+                "an": false,
+                "faktoren": [
+                  0.8,
+                  0.85,
+                  0.72,
+                  0.7,
+                  0.9,
+                  0.7,
+                  0.7,
+                  0.9,
+                  0.8,
+                  0.7,
+                  0.7,
+                  0.87,
+                  0.65,
+                  0.83,
+                  0.7
+                ],
+                "max_gruppe": 5,
+                "schwelle": 0.5,
+                "zufall": true
+              },
+              "description": "Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2)",
+              "properties": {
+                "an": {
+                  "default": false,
+                  "type": "boolean"
+                },
+                "faktoren": {
+                  "default": [
+                    0.8,
+                    0.85,
+                    0.72,
+                    0.7,
+                    0.9,
+                    0.7,
+                    0.7,
+                    0.9,
+                    0.8,
+                    0.7,
+                    0.7,
+                    0.87,
+                    0.65,
+                    0.83,
+                    0.7
+                  ],
+                  "description": "0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5)",
+                  "items": {
+                    "format": "double",
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                "max_gruppe": {
+                  "default": 5,
+                  "description": "0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0)",
+                  "format": "uint",
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "schwelle": {
+                  "default": 0.5,
+                  "description": "0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand\nzusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)",
+                  "format": "double",
+                  "type": "number"
+                },
+                "zufall": {
+                  "default": true,
+                  "description": "0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660)",
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            },
+            "zickzack_abstand": {
+              "default": 2.0,
+              "description": "Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei\nEinstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,\n`Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)",
+              "format": "double",
+              "type": "number"
+            },
+            "zugausgleich": {
+              "default": 0.2,
+              "description": "Handbuch S. 199 „automatically set at 0.2 mm“ (hoch)",
+              "format": "double",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "stoff": {
+          "default": "0 Software Defaults",
+          "type": "string"
+        },
+        "tatami": {
+          "additionalProperties": false,
+          "properties": {
+            "abstand": {
+              "default": 0.4,
+              "description": "Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward\nrows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,\n`Analyse_Teil3/06_messungen_tatami.md`)",
+              "format": "double",
+              "type": "number"
+            },
+            "laenge": {
+              "default": 4.0,
+              "description": "Stichlänge AMT 0x2717 (hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "laufweg": {
+              "additionalProperties": false,
+              "default": {
+                "min_laenge": 0.4,
+                "sehnenabstand": 0.08888888888888889
+              },
+              "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+              "properties": {
+                "min_laenge": {
+                  "default": 0.4,
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.08888888888888889,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "laufweg_laenge": {
+              "default": 1.8,
+              "description": "Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich\n0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer\nmit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere\n(`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).",
+              "format": "double",
+              "type": "number"
+            },
+            "min_rand": {
+              "default": 0.4,
+              "description": "Mindeststich am Rand AMT 0x2718 (hoch)",
+              "format": "double",
+              "type": "number"
+            },
+            "versatz": {
+              "default": 0.25,
+              "description": "Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen\nbei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)",
+              "format": "double",
+              "type": "number"
+            },
+            "versatz2": {
+              "default": null,
+              "description": "Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`\n(gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.",
+              "format": "double",
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "winkel": {
+              "default": 45.0,
+              "description": "Stichwinkel (eigene Festlegung)",
+              "format": "double",
+              "type": "number"
+            },
+            "zufall": {
+              "default": 0.0,
+              "description": "Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns\n„Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20\nStep-Muster des Dialogs haben 0.",
+              "format": "double",
+              "type": "number"
+            },
+            "zugausgleich": {
+              "default": 0.2,
+              "description": "wie Satin (Handbuch S. 199)",
+              "format": "double",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "unterlage": {
+          "additionalProperties": false,
+          "properties": {
+            "auto_an": {
+              "default": false,
+              "description": "**Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile\ntragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);\nMOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch\n(Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.",
+              "type": "boolean"
+            },
+            "auto_art": {
+              "default": [
+                "zickzack"
+              ],
+              "description": "Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und\nEasyStitch-Stile).",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "doppelzickzack_laenge": {
+              "default": 7.0,
+              "description": "AMT 0x2745/0x2724/0x2725 (mittel)",
+              "format": "double",
+              "type": "number"
+            },
+            "doppelzickzack_lauf": {
+              "additionalProperties": false,
+              "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+              "properties": {
+                "min_laenge": {
+                  "default": 0.9944444444444445,
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.08888888888888889,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "edge_walk_laenge": {
+              "default": 2.2,
+              "description": "AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,\nLäufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)",
+              "format": "double",
+              "type": "number"
+            },
+            "edge_walk_lauf": {
+              "additionalProperties": false,
+              "description": "Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und\nSehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):",
+              "properties": {
+                "min_laenge": {
+                  "default": 0.4,
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.07222222222222222,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "mittellauf_laenge": {
+              "default": 2.2,
+              "description": "AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04)",
+              "format": "double",
+              "type": "number"
+            },
+            "mittellauf_lauf": {
+              "additionalProperties": false,
+              "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+              "properties": {
+                "min_laenge": {
+                  "default": 0.7277777777777777,
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.06111111111111111,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "rand": {
+              "default": 0.2,
+              "description": "Unterlagenrand AMT 0x2769/0x276a (mittel)",
+              "format": "double",
+              "type": "number"
+            },
+            "rueck_lauf_laenge": {
+              "default": 3.0,
+              "description": "„+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel)",
+              "format": "double",
+              "type": "number"
+            },
+            "tatami_abstand": {
+              "default": 3.0,
+              "description": "Tatami-Unterlage AMT 0x275a (mittel)",
+              "format": "double",
+              "type": "number"
+            },
+            "tatami_laenge": {
+              "default": 4.0,
+              "format": "double",
+              "type": "number"
+            },
+            "tatami_randlauf": {
+              "default": 2.5,
+              "format": "double",
+              "type": "number"
+            },
+            "tatami_randlauf_lauf": {
+              "additionalProperties": false,
+              "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+              "properties": {
+                "min_laenge": {
+                  "default": 0.4,
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.07222222222222222,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "tatami_winkel_versatz": {
+              "default": 90.0,
+              "description": "Winkel 90° zur Deckstichrichtung (AMT 0x2759)",
+              "format": "double",
+              "type": "number"
+            },
+            "zickzack_laenge": {
+              "default": 5.0,
+              "description": "AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2)",
+              "format": "double",
+              "type": "number"
+            },
+            "zickzack_lauf": {
+              "additionalProperties": false,
+              "description": "Mindeststich und Sehnenabstand eines variablen Laufs.",
+              "properties": {
+                "min_laenge": {
+                  "default": 0.4,
+                  "format": "double",
+                  "type": "number"
+                },
+                "sehnenabstand": {
+                  "default": 0.2,
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "zugausgleich": {
+              "default": 0.2,
+              "description": "AMT 0x2743 (hoch)",
+              "format": "double",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "verbinder": {
+          "additionalProperties": false,
+          "description": "Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.\nZuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.",
+          "properties": {
+            "anfang_bei_langem_verbinder": {
+              "default": true,
+              "description": "Tie In If: „Previous Connector Longer Than“ (0x272d = 1) …",
+              "type": "boolean"
+            },
+            "anfang_immer": {
+              "default": false,
+              "description": "Tie In: „Always Tie In“ (0x2753 = 0)",
+              "type": "boolean"
+            },
+            "anfang_nach_trim_farbwechsel": {
+              "default": true,
+              "description": "Tie In If: „After Trim / Color Change“ (0x2750 = 1)",
+              "type": "boolean"
+            },
+            "anfang_verbinder_ab": {
+              "default": 3.0,
+              "description": "… Länge (0x2755 = 3,0 mm)",
+              "format": "double",
+              "type": "number"
+            },
+            "ende_bei_langem_verbinder": {
+              "default": true,
+              "description": "Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …",
+              "type": "boolean"
+            },
+            "ende_immer": {
+              "default": false,
+              "description": "Tie Off: „Always Tie Off“ (0x2752 = 0)",
+              "type": "boolean"
+            },
+            "ende_verbinder_ab": {
+              "default": 3.0,
+              "description": "… Länge (0x2754 = 3,0 mm)",
+              "format": "double",
+              "type": "number"
+            },
+            "ende_vor_trim_farbwechsel": {
+              "default": true,
+              "description": "Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)",
+              "type": "boolean"
+            },
+            "letztes_objekt_vernaehen": {
+              "default": false,
+              "description": "„Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht",
+              "type": "boolean"
+            },
+            "trim_ab": {
+              "default": 3.0,
+              "description": "Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).\nDie artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.",
+              "format": "double",
+              "type": "number"
+            },
+            "vernaeh_stiche": {
+              "default": 2,
+              "description": "Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)",
+              "format": "uint",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "vernaeh_stichlaenge": {
+              "default": 1.0,
+              "description": "Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel)",
+              "format": "double",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "Ende": {
       "description": "Endpunkt des Designs (Dialog „Start and End“)",
@@ -1852,6 +1884,17 @@
             "null"
           ]
         },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
         "einstich": {
           "anyOf": [
             {
@@ -1977,6 +2020,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
         },
         "einstich": {
           "anyOf": [
@@ -2277,6 +2331,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
         },
         "einstich": {
           "anyOf": [
@@ -3150,6 +3215,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
         "einstich": {
           "anyOf": [
             {
@@ -3283,6 +3359,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
         "einstich": {
           "anyOf": [
             {
@@ -3405,6 +3492,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
         },
         "einstich": {
           "anyOf": [
@@ -3751,6 +3849,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
         "einstich": {
           "anyOf": [
             {
@@ -3925,6 +4034,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
         },
         "einstich": {
           "anyOf": [
@@ -4195,6 +4315,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
         },
         "einstich": {
           "anyOf": [
