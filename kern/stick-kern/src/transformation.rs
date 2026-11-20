@@ -1,0 +1,375 @@
+//! Transformationen (Roadmap Phase 4b.1) wie „Arranging and Transforming Objects“ im Original (Handbuch Kap. 15):
+//! Skalieren, Drehen, Spiegeln, Schrägstellen und Verschieben – je Objekt und für das ganze Design.
+//!
+//! Wie im Original werden **die Formen** transformiert und die Stiche danach **neu berechnet** (Dichte, Satinabstand
+//! und Stichlängen bleiben, die Anzahl der Stiche ändert sich). Bezugspunkt ist die Mitte des umschließenden Rechtecks
+//! (Original: Drehen/Skalieren um die Mitte der Auswahl). Stichwinkel drehen und spiegeln mit; Satinbreiten von
+//! Satin- und Blanket-Linien skalieren mit der Fläche (√|det|); Musterteilung und Stichwerte bleiben (eigene
+//! Festlegungen, wo das Handbuch nichts sagt). Reihenfolge: Spiegeln → Skalieren → Schrägstellen → Drehen → Verschieben.
+
+use crate::design::{Objekt, ObjektArt};
+use crate::geometrie::{Linie, Punkt, p};
+use serde::Deserialize;
+
+/// Transformation in der JSON-Form (`"transform"` am Objekt oder am Design).
+#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Transformation {
+    /// Skalierung in %: eine Zahl (beide Richtungen) oder [x, y]
+    #[serde(default)]
+    pub skalieren: Option<Skalierung>,
+    /// Drehung in Grad gegen den Uhrzeiger
+    #[serde(default)]
+    pub drehen: f64,
+    /// „links_rechts“ (Mirror Horizontal), „oben_unten“ (Mirror Vertical) oder „beide“
+    #[serde(default)]
+    pub spiegeln: Option<String>,
+    /// Schrägstellen in Grad (x verschiebt sich mit y, wie Skew im Original)
+    #[serde(default)]
+    pub schraeg: f64,
+    /// Verschieben in mm
+    #[serde(default)]
+    pub verschieben: Option<Punkt>,
+}
+
+#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[serde(untagged)]
+pub enum Skalierung {
+    Gleich(f64),
+    Getrennt([f64; 2]),
+}
+
+/// Affine Abbildung x' = a·x + b·y + e, y' = c·x + d·y + f.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Matrix {
+    pub a: f64,
+    pub b: f64,
+    pub c: f64,
+    pub d: f64,
+    pub e: f64,
+    pub f: f64,
+}
+
+impl Matrix {
+    pub const EINS: Matrix = Matrix {
+        a: 1.0,
+        b: 0.0,
+        c: 0.0,
+        d: 1.0,
+        e: 0.0,
+        f: 0.0,
+    };
+
+    /// self nach m (erst m, dann self)
+    fn nach(&self, m: &Matrix) -> Matrix {
+        Matrix {
+            a: self.a * m.a + self.b * m.c,
+            b: self.a * m.b + self.b * m.d,
+            c: self.c * m.a + self.d * m.c,
+            d: self.c * m.b + self.d * m.d,
+            e: self.a * m.e + self.b * m.f + self.e,
+            f: self.c * m.e + self.d * m.f + self.f,
+        }
+    }
+
+    pub fn punkt(&self, q: Punkt) -> Punkt {
+        p(
+            self.a * q.x + self.b * q.y + self.e,
+            self.c * q.x + self.d * q.y + self.f,
+        )
+    }
+
+    fn linie(&self, l: &[Punkt]) -> Linie {
+        l.iter().map(|&q| self.punkt(q)).collect()
+    }
+
+    pub fn det(&self) -> f64 {
+        self.a * self.d - self.b * self.c
+    }
+
+    /// Richtung (Grad) nach der Abbildung
+    fn winkel(&self, grad: f64) -> f64 {
+        let (s, c) = grad.to_radians().sin_cos();
+        let (x, y) = (self.a * c + self.b * s, self.c * c + self.d * s);
+        y.atan2(x).to_degrees().rem_euclid(180.0)
+    }
+}
+
+impl Transformation {
+    pub fn ist_leer(&self) -> bool {
+        *self == Transformation::default()
+    }
+
+    /// Matrix um den Bezugspunkt `mitte`.
+    pub fn matrix(&self, mitte: Punkt) -> Result<Matrix, String> {
+        let (sx, sy) = match self.skalieren {
+            None => (1.0, 1.0),
+            Some(Skalierung::Gleich(s)) => (s / 100.0, s / 100.0),
+            Some(Skalierung::Getrennt([x, y])) => (x / 100.0, y / 100.0),
+        };
+        if sx <= 0.0 || sy <= 0.0 {
+            return Err("Skalierung muss größer als 0 % sein".into());
+        }
+        let (mx, my) = match self.spiegeln.as_deref() {
+            None => (1.0, 1.0),
+            Some("links_rechts") => (-1.0, 1.0),
+            Some("oben_unten") => (1.0, -1.0),
+            Some("beide") => (-1.0, -1.0),
+            Some(x) => return Err(format!("Spiegeln „{x}“ unbekannt (links_rechts, oben_unten, beide)")),
+        };
+        let k = self.schraeg.to_radians().tan();
+        let (s, c) = self.drehen.to_radians().sin_cos();
+        let v = self.verschieben.unwrap_or(p(0.0, 0.0));
+        let schieben = |dx: f64, dy: f64| Matrix {
+            e: dx,
+            f: dy,
+            ..Matrix::EINS
+        };
+        let lineare = Matrix {
+            a: c,
+            b: -s,
+            c: s,
+            d: c,
+            e: 0.0,
+            f: 0.0,
+        }
+        .nach(&Matrix { b: k, ..Matrix::EINS })
+        .nach(&Matrix {
+            a: sx * mx,
+            d: sy * my,
+            ..Matrix::EINS
+        });
+        Ok(schieben(mitte.x + v.x, mitte.y + v.y)
+            .nach(&lineare)
+            .nach(&schieben(-mitte.x, -mitte.y)))
+    }
+}
+
+/// Alle Formpunkte eines Objekts (für den Bezugspunkt).
+pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
+    match art {
+        ObjektArt::Lauf { punkte, .. } | ObjektArt::SatinLinie { punkte, .. } | ObjektArt::Blanket { punkte, .. } => {
+            out.extend(punkte)
+        }
+        ObjektArt::Satin { seite_a, seite_b, .. } => {
+            out.extend(seite_a);
+            out.extend(seite_b);
+        }
+        ObjektArt::Tatami { umriss, loecher, .. } | ObjektArt::Musterfuellung { umriss, loecher, .. } => {
+            out.extend(umriss);
+            out.extend(loecher.iter().flatten());
+        }
+        ObjektArt::Gruppe { teile, .. } => teile.iter().for_each(|t| formpunkte(&t.art, out)),
+        ObjektArt::Applikation(v) => {
+            out.extend(&v.umriss);
+            out.extend(v.loecher.iter().flatten());
+        }
+        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } => {}
+    }
+}
+
+/// Mitte des umschließenden Rechtecks.
+pub fn mitte(objekte: &[Objekt]) -> Punkt {
+    let mut pts = Vec::new();
+    objekte.iter().for_each(|o| formpunkte(&o.art, &mut pts));
+    if pts.is_empty() {
+        return p(0.0, 0.0);
+    }
+    let (x0, x1) = pts
+        .iter()
+        .fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
+    let (y0, y1) = pts
+        .iter()
+        .fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
+    p((x0 + x1) / 2.0, (y0 + y1) / 2.0)
+}
+
+/// Objekt abbilden; `winkel_standard` = Stichwinkel der Füllung, wenn das Objekt keinen eigenen hat.
+pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
+    let flaeche = m.det().abs().sqrt();
+    let gespiegelt = m.det() < 0.0;
+    let art = match &o.art {
+        ObjektArt::Lauf {
+            punkte,
+            ecken,
+            laenge,
+            dreifach,
+            geschlossen,
+        } => ObjektArt::Lauf {
+            punkte: m.linie(punkte),
+            ecken: ecken.clone(),
+            laenge: *laenge,
+            dreifach: *dreifach,
+            geschlossen: *geschlossen,
+        },
+        ObjektArt::Satin {
+            seite_a,
+            seite_b,
+            unterlage,
+            optionen,
+        } => ObjektArt::Satin {
+            seite_a: m.linie(seite_a),
+            seite_b: m.linie(seite_b),
+            unterlage: unterlage.clone(),
+            optionen: optionen.clone(),
+        },
+        ObjektArt::SatinLinie {
+            punkte,
+            breite,
+            unterlage,
+        } => ObjektArt::SatinLinie {
+            punkte: m.linie(punkte),
+            breite: breite * flaeche,
+            unterlage: unterlage.clone(),
+        },
+        ObjektArt::Blanket {
+            punkte,
+            geschlossen,
+            abstand,
+            breite,
+            mittig,
+        } => {
+            // gespiegelt: Laufrichtung umkehren, damit die Zähne auf derselben Seite der Form bleiben
+            let mut q = m.linie(punkte);
+            if gespiegelt {
+                q.reverse();
+            }
+            ObjektArt::Blanket {
+                punkte: q,
+                geschlossen: *geschlossen,
+                abstand: *abstand,
+                breite: breite * flaeche,
+                mittig: *mittig,
+            }
+        }
+        ObjektArt::Tatami {
+            umriss,
+            loecher,
+            winkel,
+            unterlage,
+            aussparen,
+        } => ObjektArt::Tatami {
+            umriss: m.linie(umriss),
+            loecher: loecher.iter().map(|l| m.linie(l)).collect(),
+            winkel: Some(m.winkel(winkel.unwrap_or(winkel_standard))),
+            unterlage: *unterlage,
+            aussparen: aussparen.clone(),
+        },
+        ObjektArt::Musterfuellung {
+            umriss,
+            loecher,
+            muster,
+            winkel,
+            groesse,
+            unterlage,
+            aussparen,
+        } => {
+            let w = winkel
+                .or_else(|| crate::muster::finden(muster).and_then(|x| x.winkel))
+                .unwrap_or(winkel_standard);
+            ObjektArt::Musterfuellung {
+                umriss: m.linie(umriss),
+                loecher: loecher.iter().map(|l| m.linie(l)).collect(),
+                muster: muster.clone(),
+                winkel: Some(m.winkel(w)),
+                groesse: *groesse,
+                unterlage: *unterlage,
+                aussparen: aussparen.clone(),
+            }
+        }
+        ObjektArt::Gruppe {
+            teile,
+            umrisse,
+            laufweg,
+        } => ObjektArt::Gruppe {
+            teile: teile.iter().map(|t| abbilden(t, m, winkel_standard)).collect(),
+            umrisse: umrisse.iter().map(|l| m.linie(l)).collect(),
+            laufweg: *laufweg,
+        },
+        andere => andere.clone(),
+    };
+    Objekt {
+        farbe: o.farbe.clone(),
+        name: o.name.clone(),
+        art,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::geometrie::abstand;
+
+    #[test]
+    fn matrix_um_die_mitte() {
+        let t = Transformation {
+            drehen: 90.0,
+            ..Default::default()
+        };
+        let m = t.matrix(p(10.0, 0.0)).unwrap();
+        let q = m.punkt(p(12.0, 0.0));
+        assert!(abstand(q, p(10.0, 2.0)) < 1e-9, "{q:?}");
+        assert!((m.winkel(0.0) - 90.0).abs() < 1e-9);
+        let s = Transformation {
+            skalieren: Some(Skalierung::Getrennt([200.0, 50.0])),
+            spiegeln: Some("links_rechts".into()),
+            ..Default::default()
+        };
+        let m = s.matrix(p(0.0, 0.0)).unwrap();
+        assert_eq!(m.punkt(p(1.0, 2.0)), p(-2.0, 1.0));
+        assert!(m.det() < 0.0);
+        assert!(
+            Transformation {
+                spiegeln: Some("quer".into()),
+                ..Default::default()
+            }
+            .matrix(p(0.0, 0.0))
+            .is_err()
+        );
+    }
+
+    /// Objekt drehen und skalieren, Design als Ganzes verkleinern – Stiche werden neu berechnet
+    #[test]
+    fn transform_im_design() {
+        let json = r##"{"rahmen": "artista 130 x 100", "objekte": [
+            {"art": "tatami", "name": "Balken", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 40, "hoehe": 10}},
+             "transform": {"drehen": 90}},
+            {"art": "satinlinie", "name": "Linie", "punkte": [[-20, 25], [20, 25]], "breite": 3,
+             "transform": {"skalieren": 50}}
+        ]}"##;
+        let d = crate::Design::aus_json(json).unwrap();
+        let (obj, _) = d.objekte_aufgeloest().unwrap();
+        let mut pts = Vec::new();
+        formpunkte(&obj[0].art, &mut pts);
+        let breite =
+            pts.iter().map(|q| q.x).fold(f64::MIN, f64::max) - pts.iter().map(|q| q.x).fold(f64::MAX, f64::min);
+        assert!((breite - 10.0).abs() < 1e-9, "gedreht: Breite {breite}");
+        let ObjektArt::SatinLinie { punkte, breite, .. } = &obj[1].art else {
+            panic!()
+        };
+        assert!((abstand(punkte[0], punkte[1]) - 20.0).abs() < 1e-9 && (breite - 1.5).abs() < 1e-9);
+        // ganzes Design auf 50 %: halb so groß, deutlich weniger Stiche (Dichte bleibt)
+        let voll = d.berechnen().unwrap().stiche.len();
+        let klein =
+            crate::Design::aus_json(&json.replace(r#""rahmen""#, r#""transform": {"skalieren": 50}, "rahmen""#))
+                .unwrap()
+                .berechnen()
+                .unwrap()
+                .stiche
+                .len();
+        assert!(klein * 2 < voll, "{klein} gegen {voll}");
+    }
+
+    #[test]
+    fn oval_als_form() {
+        let d = crate::Design::aus_json(
+            r##"{"objekte": [{"art": "tatami", "umriss": {"oval": {"mitte": [5, 0], "breite": 40, "hoehe": 20}}}]}"##,
+        )
+        .unwrap();
+        let mut pts = Vec::new();
+        formpunkte(&d.objekte[0].art, &mut pts);
+        let bx = pts.iter().map(|q| q.x).fold(f64::MIN, f64::max) - pts.iter().map(|q| q.x).fold(f64::MAX, f64::min);
+        let by = pts.iter().map(|q| q.y).fold(f64::MIN, f64::max) - pts.iter().map(|q| q.y).fold(f64::MAX, f64::min);
+        assert!((bx - 40.0).abs() < 0.05 && (by - 20.0).abs() < 0.05, "{bx} × {by}");
+    }
+}

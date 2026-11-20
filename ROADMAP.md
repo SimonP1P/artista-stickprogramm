@@ -139,7 +139,7 @@ Wenn alles erledigt ist: Parameterkatalog (Merkliste M1).
 
 | # | Block | Inhalt | Stand |
 |---|---|---|---|
-| 4b.1 | **Transformationen** | Skalieren, Drehen, Spiegeln, Schrägstellen je Objekt und für das ganze Design – Stiche immer neu berechnen (Kap. 15); Oval als Form | ⬜ |
+| 4b.1 | **Transformationen** | Skalieren, Drehen, Spiegeln, Schrägstellen je Objekt und für das ganze Design – Stiche immer neu berechnen (Kap. 15); Oval als Form | ✅ 20.11. `"transform"`, `stick-kern::transformation` |
 | 4b.2 | **Schrift vollständig** | Säulenreihenfolge (🟡), mehrere Zeilen, Zeilenabstand, Leerzeichen, Auto Jump aus, Unterlage bei kleiner Schrift; Kursiv/Fett; Grundlinien Kreis/Bogen/senkrecht/eigene; Buchstaben einzeln (Abstand, Lage, Farbe, Winkel); Stichart je Schrift (Satin/Step/Fancy); Monogramme; Elastic Lettering (Kap. 18–21) | 🟡 |
 | 4b.3 | **Linien** | Satin-Kontur mit Versatz, Double Run (Verstärken) | ⬜ |
 | 4b.4 | **Flächen** | Step-Muster (Nr. 1 …), mehrere Stichwinkel (Turning Fill), Zickzack-Füllung, Tatami-Kurzstiche | ⬜ |

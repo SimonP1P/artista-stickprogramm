@@ -70,9 +70,9 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 ## E. Formen und Bearbeitung (Kap. 7, 14–17)
 | Funktion | Stand | Bemerkung |
 |---|---|---|
-| Offene/geschlossene Kurve, Kreis/Oval, Rechteck, Bézier | ✅ | Formen im Design-JSON (Oval ⬜) |
+| Offene/geschlossene Kurve, Kreis/Oval, Rechteck, Bézier | ✅ | Formen im Design-JSON (`oval` seit 20.11.) |
 | Löcher (Add Holes), Aussparen/Wiederherstellen | ✅ | |
-| **Skalieren, Drehen, Spiegeln, Schrägstellen** je Objekt und Design (Stiche neu) | ⬜ | Kap. 15 – Grundlage für die Oberfläche |
+| **Skalieren, Drehen, Spiegeln, Schrägstellen** je Objekt und Design (Stiche neu) | ✅ | `"transform"` (20.11.) |
 | Ausrichten, Gruppieren | ⬜ | Kap. 15 |
 | Mirror-Merge, Wreath (Kranz), Kaleidoscope | ⬜ | Kap. 15 |
 | Stichwinkel ändern, Ein-/Ausstich je Objekt setzen | 🟡 | Winkel ✅, Ein-/Ausstich ⬜ |

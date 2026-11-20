@@ -40,6 +40,7 @@ Koordinaten in **mm**, Ursprung = **Rahmenmitte**, **+y nach oben**. Beispiel: [
 | `tatami` | `umriss`, `loecher`, `winkel` (45°), `unterlage` (true) | Füllung mit Tatami-Unterlage |
 | `text` (nur Rust-Kern) | `text`, `alphabet`, `hoehe`, `breite` (%), `abstand`, `position`, `ausrichtung`, `unterlage` | Original-Alphabet (ESB) |
 | `tatami`/`muster`: Aussparen (nur Rust-Kern) | `aussparen` (Liste von Objektnamen), `ueberlappung` (mm, Standard 0) | Knockout wie „Remove Overlay Stitching“ |
+| `transform` an jedem Objekt und oben im Design (nur Rust-Kern) | `skalieren` (% oder [x, y]), `drehen` (Grad), `spiegeln` (`links_rechts`/`oben_unten`/`beide`), `schraeg` (Grad), `verschieben` ([dx, dy] mm) | um die Mitte; Stiche werden neu berechnet; Form `oval` (`mitte`, `breite`, `hoehe`) |
 | `muster` (nur Rust-Kern) | `umriss`, `loecher`, `muster` (Name/Nummer, `stick muster`), `winkel`, `groesse` (%), `unterlage` | Füllmuster (Program Split) |
 | `applikation` (nur Rust-Kern) | `umriss`, `loecher`, `farbe` (Abdeckung), `breite` (2,5), `abstand`, `heft_breite` (3,0), `heft_abstand` (2,0), `platz_laenge` (2,0), `abdeckung` (`satin`/`blanket`), `stil` (`vorgeschnitten`/`zuschneiden`) | Platzierung → (Schnittlinie) → Stopp → Heften → Stopp → Satin- oder Blanket-Abdeckung |
 | `blanket` (nur Rust-Kern) | `punkte`, `geschlossen`, `abstand` (2,0), `breite` (3,0), `versatz` (`mitte`/`seite`) | Blanket (Langettenstich, Stil 0x2727) |

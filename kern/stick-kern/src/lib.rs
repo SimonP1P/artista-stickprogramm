@@ -16,6 +16,7 @@ pub mod schrift;
 pub mod schrift_ttf;
 pub mod sticharten;
 pub mod stiche;
+pub mod transformation;
 
 pub use design::Design;
 pub use stiche::{Art, Stich, StichFolge};

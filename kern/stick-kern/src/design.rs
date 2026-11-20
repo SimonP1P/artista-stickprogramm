@@ -19,6 +19,7 @@ use crate::sticharten::satin::{mittellinie, paare_bilden, satin, seiten_aus_mitt
 use crate::sticharten::tatami::{tatami, tatami_mit_teilung};
 use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, satin_unterlage};
 use crate::stiche::StichFolge;
+use crate::transformation::{Transformation, abbilden, mitte as formmitte};
 use serde::Deserialize;
 use serde_json::Value;
 use std::collections::BTreeMap;
@@ -46,6 +47,14 @@ pub enum Form {
         breite: f64,
         hoehe: f64,
     },
+    /// Ellipse („Circle/Oval“ des Originals) mit Breite und Höhe in mm
+    Oval {
+        mitte: Punkt,
+        breite: f64,
+        hoehe: f64,
+        #[serde(default)]
+        start: f64,
+    },
     Bogen {
         mitte: Punkt,
         radius: f64,
@@ -62,6 +71,19 @@ impl PunktAngabe {
             PunktAngabe::Liste(l) => l.clone(),
             PunktAngabe::Form(Form::Kreis { mitte, radius, start }) => kreis(*mitte, *radius, 0.02, *start),
             PunktAngabe::Form(Form::Rechteck { mitte, breite, hoehe }) => rechteck(*mitte, *breite, *hoehe),
+            PunktAngabe::Form(Form::Oval {
+                mitte,
+                breite,
+                hoehe,
+                start,
+            }) => {
+                // Kreis mit dem größeren Halbmesser, in der anderen Richtung gestaucht (Sehnenfehler bleibt ≤ 0,02 mm)
+                let r = breite.max(*hoehe) / 2.0;
+                kreis(p(0.0, 0.0), r, 0.02, *start)
+                    .into_iter()
+                    .map(|q| p(mitte.x + q.x * breite / 2.0 / r, mitte.y + q.y * hoehe / 2.0 / r))
+                    .collect()
+            }
             PunktAngabe::Form(Form::Bogen {
                 mitte,
                 radius,
@@ -972,6 +994,10 @@ pub struct Design {
     pub ende: Bezugspunkt,
     /// geladene Computer-Schriften (Name wie im Design); füllt der Aufrufer, siehe `ttf_bedarf`
     pub ttf_schriften: BTreeMap<String, TtfSchrift>,
+    /// Transformation je Objekt (Nummer in `objekte`), JSON `"transform"` am Objekt (`transformation.rs`)
+    pub transformationen: BTreeMap<usize, Transformation>,
+    /// Transformation des ganzen Designs (um seine Mitte), JSON `"transform"` oben im Design
+    pub transformation: Transformation,
 }
 
 impl Design {
@@ -1152,7 +1178,30 @@ impl Design {
                 },
             })
             .collect();
+        let transform_lesen = |t: &Value, wo: &str| -> Result<Transformation, String> {
+            let t: Transformation =
+                serde_json::from_value(t.clone()).map_err(|e| format!("{wo}: transform ungültig: {e}"))?;
+            t.matrix(p(0.0, 0.0)).map_err(|e| format!("{wo}: {e}"))?;
+            Ok(t)
+        };
+        let mut transformationen = BTreeMap::new();
+        if let Some(liste) = v.get("objekte").and_then(Value::as_array) {
+            for (i, o) in liste.iter().enumerate() {
+                if let Some(t) = o.get("transform") {
+                    let t = transform_lesen(t, &format!("Objekt {}", i + 1))?;
+                    if !t.ist_leer() {
+                        transformationen.insert(i, t);
+                    }
+                }
+            }
+        }
+        let transformation = match v.get("transform") {
+            Some(t) => transform_lesen(t, "Design")?,
+            None => Transformation::default(),
+        };
         Ok(Design {
+            transformationen,
+            transformation,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
             einstellungen: e,
@@ -1232,7 +1281,26 @@ impl Design {
             }
             herkunft.resize(out.len(), nr);
         }
+        let out = self.transformieren(out, &herkunft)?;
         Ok((self.aussparen_aufloesen(out, &herkunft)?, fehlend))
+    }
+
+    /// Transformationen anwenden: erst je Objekt (um die Mitte seiner aufgelösten Teile), dann das ganze Design.
+    fn transformieren(&self, mut out: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
+        let ws = self.einstellungen.tatami.winkel;
+        for (nr, t) in &self.transformationen {
+            let idx: Vec<usize> = (0..out.len()).filter(|&j| herkunft[j] == *nr).collect();
+            let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
+            let m = t.matrix(formmitte(&teil))?;
+            for &j in &idx {
+                out[j] = abbilden(&out[j], &m, ws);
+            }
+        }
+        if !self.transformation.ist_leer() {
+            let m = self.transformation.matrix(formmitte(&out))?;
+            out = out.iter().map(|o| abbilden(o, &m, ws)).collect();
+        }
+        Ok(out)
     }
 
     /// Aussparungen (Knockout) auflösen: Füllflächen mit `aussparen` verlieren die Flächen der genannten Objekte;
