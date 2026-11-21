@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – In Knoten umwandeln (W5-Rest, Commit COMMIT)
+## 21.11.2026 – In Knoten umwandeln (W5-Rest, Commit 6d1c625)
 - **Neu:** Befehl `in_knoten_umwandeln {design, objekt}` → neues Objekt-JSON: Kreis/Oval/Bogen werden
   `{"verbinden": [{"bezier": [p0, p1, p2, p3]}, …]}` (Knoten mit Anfassern wie im Original), Rechteck wird Eckpunkte,
   `transform` wird auf die Knoten angewandt und entfällt (Stichwinkel `winkel`, Satin-/Blanket-/Applikationsbreiten
@@ -91,5 +91,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `3a464f6` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `6d1c625` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
