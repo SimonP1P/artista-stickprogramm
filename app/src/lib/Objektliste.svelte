@@ -12,8 +12,7 @@
 
   const e = $derived(arbeit.ergebnis);
   function garnVon(i: number) {
-    const k = e?.bloecke.findIndex((b) => b.objekte.includes(i)) ?? -1;
-    const g = k >= 0 ? e?.garne[k] : undefined;
+    const g = e ? arbeit.garnVon(i) : undefined;
     return g ? `${g.nummer} ${g.name}` : "";
   }
   /** Objekte, über denen i liegt (später gestickt, überdeckt) */

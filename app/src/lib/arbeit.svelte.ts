@@ -8,6 +8,7 @@ import {
   type DesignJson,
   type Ergebnis,
   type Fehler,
+  type GarnInfo,
   type ObjektForm,
   type ObjektJson,
   type Pruefung,
@@ -50,6 +51,8 @@ type StartOptionen = {
   modus?: Modus;
   dunkel?: boolean;
   auswahl?: number;
+  /** gewählter Buchstabe (Nr.) des Objekts `auswahl` – nur für Bildschirmfotos */
+  buchstabe?: number;
   ansicht?: Ansicht;
   /** nur für Bildschirmfotos (app/werkzeuge/bildschirmfoto.py) */
   schritt?: number;
@@ -73,6 +76,8 @@ class Arbeit {
   dunkel = $state(false);
   /** gewählte Objekte (Nummern ab 0, Klickfolge) */
   auswahl = $state<number[]>([]);
+  /** gewählter Buchstabe eines Texts (W9: Klick auf den Buchstaben des gewählten Texts, `Ergebnis.buchstabe`) */
+  buchstabe = $state<{ objekt: number; nr: number } | null>(null);
   /** Datei des Designs (null = noch nicht gespeichert) */
   pfad = $state<string | null>(null);
   geaendert = $state(false);
@@ -110,6 +115,17 @@ class Arbeit {
   get objekte(): ObjektJson[] {
     return this.design.objekte ?? [];
   }
+  /** Garn eines Objekts: Farbblock mit der Farbe des Objekts (nicht der eines einzeln gefärbten Buchstabens), sonst
+   *  der erste Block, in dem es vorkommt */
+  garnVon(i: number): GarnInfo | undefined {
+    const e = this.ergebnis;
+    if (!e || i < 0) return undefined;
+    const farbe = String((this.objekte[i] as { farbe?: string } | undefined)?.farbe ?? "").toLowerCase();
+    const drin = (b: { objekt: number; objekte: number[] }) => b.objekt === i || b.objekte.includes(i);
+    let k = e.bloecke.findIndex((b, n) => drin(b) && (e.farben[n] ?? "").toLowerCase() === farbe);
+    if (k < 0) k = e.bloecke.findIndex(drin);
+    return k >= 0 ? e.garne[k] : undefined;
+  }
   /** erstes gewähltes Objekt oder -1 */
   get gewaehlt(): number {
     return this.auswahl.length ? this.auswahl[0] : -1;
@@ -137,6 +153,8 @@ class Arbeit {
       }
     }
     if (typeof start.auswahl === "number") this.auswahl = [start.auswahl];
+    if (typeof start.auswahl === "number" && typeof start.buchstabe === "number")
+      this.buchstabe = { objekt: start.auswahl, nr: start.buchstabe };
     await this.berechnen();
     if (start.dialog) this.dialog = start.dialog;
   }
@@ -279,6 +297,7 @@ class Arbeit {
   }
 
   waehlen(i: number | null, hinzufuegen = false) {
+    this.buchstabe = null;
     if (i === null || i < 0) this.auswahl = [];
     else if (hinzufuegen)
       this.auswahl = this.auswahl.includes(i) ? this.auswahl.filter((x) => x !== i) : [...this.auswahl, i];

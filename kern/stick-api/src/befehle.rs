@@ -453,6 +453,9 @@ pub struct Ergebnis {
     pub stiche: Vec<Stich>,
     /// je Stich die Nummer des Objekts (ab 0) – zum Auswählen und Hervorheben
     pub objekt: Vec<usize>,
+    /// je Stich die Nummer des Buchstabens bei Text/Monogramm (1 = erster ohne Leerraum und `^`, wie
+    /// `buchstaben[].nr`), 0 = kein Buchstabe – zum Anklicken einzelner Buchstaben
+    pub buchstabe: Vec<usize>,
     /// Farbe je Farbblock „#rrggbb“ (Block i beginnt nach dem i-ten Farbwechsel)
     pub farben: Vec<String>,
     /// Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“); Feld `garn` am Objekt hat Vorrang
@@ -530,7 +533,7 @@ pub(crate) fn bloecke_von(design: &stick_kern::Design, folge: &StichFolge) -> Ve
 pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehler> {
     let design = k.design(&e)?;
     let fehlend = design.fehlende_zeichen()?;
-    let folge = design.berechnen()?;
+    let (folge, buchstabe) = design.berechnen_mit_buchstaben()?;
     let bloecke = bloecke_von(&design, &folge);
     let garne = if design.garnkarte == "keine" {
         Vec::new()
@@ -614,6 +617,7 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
         begrenzung: folge.begrenzung().map(|(a, b, c, d)| [a, b, c, d]),
         garne,
         bloecke,
+        buchstabe,
         objekt: folge.objekt,
         farben: folge.farben,
         stiche: folge.stiche,

@@ -154,6 +154,25 @@ fn alphabete_und_step_muster_fuer_auswahllisten() {
 /// Maschinen-Befehle mit der Simulation (schreibt nur in die Simulation): prüfen, planen, senden mit Fortschritt,
 /// Liste, lesen; Fehlercodes.
 #[test]
+fn buchstabe_je_stich() {
+    let k = kontext();
+    let d = json!({"objekte": [
+        {"art": "lauf", "punkte": [[-40, -30], [-30, -30]]},
+        {"art": "text", "text": "A B^C", "alphabet": "Swiss Block", "hoehe": 12, "farben": ["#ff0000"],
+         "buchstaben": [{"nr": 2, "transform": {"drehen": 10}}]}
+    ]});
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap();
+    let b: Vec<u64> = serde_json::from_value(e["buchstabe"].clone()).unwrap();
+    let o: Vec<u64> = serde_json::from_value(e["objekt"].clone()).unwrap();
+    assert_eq!(b.len(), o.len());
+    // Lauf ohne Buchstaben, Text mit den Nummern 1, 2, 3 – in Stickfolge
+    assert!(b.iter().zip(&o).all(|(&b, &o)| (o == 0) == (b == 0)));
+    let mut folge: Vec<u64> = b.iter().copied().filter(|&x| x > 0).collect();
+    folge.dedup();
+    assert_eq!(folge, vec![1, 2, 3]);
+}
+
+#[test]
 fn in_knoten_umwandeln() {
     let k = kontext();
     let d = json!({"objekte": [

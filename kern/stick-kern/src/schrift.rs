@@ -971,6 +971,20 @@ pub fn text_setzen(
     winkel_standard: f64,
     satz: impl Fn(&TextVorgabe) -> (Vec<Objekt>, Vec<usize>, Vec<char>),
 ) -> (Vec<Objekt>, Vec<char>) {
+    let (o, f, _) = text_setzen_nr(v, abstand, zusatz, winkel_standard, satz);
+    (o, f)
+}
+
+/// Wie `text_setzen`, dazu je Objekt die Nummer seines Buchstabens (1 = erster, ohne Leerraum und `^`, wie
+/// `buchstaben[].nr`) – für „einzelne Buchstaben“ in der Oberfläche (W9).
+pub fn text_setzen_nr(
+    v: &TextVorgabe,
+    abstand: f64,
+    zusatz: Option<&TextZusatz>,
+    winkel_standard: f64,
+    satz: impl Fn(&TextVorgabe) -> (Vec<Objekt>, Vec<usize>, Vec<char>),
+) -> (Vec<Objekt>, Vec<char>, Vec<usize>) {
+    let mut nummern = Vec::new();
     let mitte = v.position;
     let schritt = v.hoehe * (1.0 + v.zeilenabstand.unwrap_or(ZEILENABSTAND_ANTEIL));
     let g = v.grundlinie.as_ref();
@@ -1070,12 +1084,13 @@ pub fn text_setzen(
                 }
             }
             out.push(o);
+            nummern.push(n);
         }
     }
     if let Some(h) = zusatz.and_then(|z| z.huelle.as_ref()) {
         out = h.anwenden(out);
     }
-    (out, fehlend)
+    (out, fehlend, nummern)
 }
 
 impl TextVorgabe {

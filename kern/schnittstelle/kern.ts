@@ -606,6 +606,11 @@ export type Ergebnis = {
   begrenzung?: number[] | null;
   /** je Farbblock: Objekte, Garn von Hand, Lagen einer Applikation */
   bloecke: FarbBlock[];
+  /**
+   * je Stich die Nummer des Buchstabens bei Text/Monogramm (1 = erster ohne Leerraum und `^`, wie
+   * `buchstaben[].nr`), 0 = kein Buchstabe – zum Anklicken einzelner Buchstaben
+   */
+  buchstabe: number[];
   /** Datengröße für die Maschine in Byte (Stichdaten + Anhang wie beim Senden) */
   daten_bytes: number;
   /** Grenze der Datengröße in Byte (Kapazität der artista 185, `DATEN_GRENZE`) */

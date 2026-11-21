@@ -97,9 +97,7 @@
 
   /** Garn des Farbblocks, mit dem ein Objekt beginnt (Anzeige „jetzt: …“) */
   function garnVon(o: number): GarnInfo | undefined {
-    const e = arbeit.ergebnis;
-    const k = e?.bloecke.findIndex((b) => b.objekt === o || b.objekte.includes(o)) ?? -1;
-    return k >= 0 ? e?.garne[k] : undefined;
+    return arbeit.garnVon(o);
   }
   function garnSetzen(o: number, g: GarnInfo) {
     arbeit.aendern((d) => {

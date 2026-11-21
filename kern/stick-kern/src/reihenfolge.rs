@@ -230,7 +230,7 @@ pub fn farbwechsel(farben: &[String], folge: &[usize]) -> usize {
 /// (gemeinsame Fläche ≥ `MIN_UEBERDECKUNG`; Laufstich als Band, `aussparen::belegt`). Texte zählen mit ihren
 /// Buchstaben, Aussparungen sind berücksichtigt (ausgesparte Flächen überdecken die Schrift nicht). Eigene Erweiterung.
 pub fn ueberdeckungen(d: &Design) -> Result<Vec<(usize, usize)>, String> {
-    let (objekte, _, herkunft) = d.aufgeloest_mit_herkunft()?;
+    let (objekte, _, herkunft, _) = d.aufgeloest_mit_herkunft()?;
     type Teil = (usize, Vec<Kontur>, [f64; 4]);
     let teile: Vec<Teil> = objekte
         .iter()

@@ -15,6 +15,13 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Buchstabe je Stich (W9, Commit COMMIT)
+- **Neu:** `design_berechnen` liefert `buchstabe` – je Stich die Nummer des Buchstabens bei Text/Computer-Schrift/
+  Monogramm (1 = erster ohne Leerraum und `^`, wie `buchstaben[].nr`), 0 = kein Buchstabe.
+- **Oberfläche:** umgesetzt – gewählten Text in der Vorschau noch einmal auf einen Buchstaben klicken → Buchstabe
+  hervorgehoben, Inspektor-Abschnitt „Einzelne Buchstaben“ (Farbe, Größe, Drehen, Verschieben, Zurücksetzen; Liste
+  der geänderten). Garn eines Objekts = Farbblock mit der Objektfarbe (`arbeit.garnVon`).
+
 ## 21.11.2026 – In Knoten umwandeln (W5-Rest, Commit 6d1c625)
 - **Neu:** Befehl `in_knoten_umwandeln {design, objekt}` → neues Objekt-JSON: Kreis/Oval/Bogen werden
   `{"verbinden": [{"bezier": [p0, p1, p2, p3]}, …]}` (Knoten mit Anfassern wie im Original), Rechteck wird Eckpunkte,

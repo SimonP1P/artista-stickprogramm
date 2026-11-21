@@ -139,12 +139,12 @@
 
   // Stiche je (Objekt, Farbblock) als Pfad; Sprünge und Farbwechsel beginnen einen neuen Teilpfad
   const zuege = $derived.by(() => {
-    const out: { o: number; farbe: string; d: string }[] = [];
+    const out: { o: number; b: number; farbe: string; d: string }[] = [];
     const sprungD: string[] = [];
     const punkteD: string[] = [];
     if (!e) return { zuege: out, spruenge: "", einstiche: "", aussen: "", nadel: null as [number, number] | null };
     let block = 0;
-    let aktuell: { o: number; farbe: string; d: string } | null = null;
+    let aktuell: { o: number; b: number; farbe: string; d: string } | null = null;
     let vorher: [number, number] | null = null;
     let springen = false;
     let nadel: [number, number] | null = null;
@@ -166,9 +166,10 @@
         continue;
       }
       const o = e.objekt[i] ?? 0;
+      const b = e.buchstabe?.[i] ?? 0;
       let neuerPfad = springen;
-      if (!aktuell || aktuell.o !== o) {
-        aktuell = { o, farbe: (e.farben[block] ?? "#000000").toLowerCase(), d: "" };
+      if (!aktuell || aktuell.o !== o || aktuell.b !== b) {
+        aktuell = { o, b, farbe: (e.farben[block] ?? "#000000").toLowerCase(), d: "" };
         out.push(aktuell);
         neuerPfad = true;
       }
@@ -317,7 +318,15 @@
     if (!bewegt && ev.button === 0) {
       // Pointer-Capture lenkt das Ziel um – Element unter dem Zeiger suchen
       const ziel = document.elementFromPoint(ev.clientX, ev.clientY);
-      arbeit.waehlen(objektAusZiel(ziel), ev.shiftKey || ev.ctrlKey || ev.metaKey);
+      const o = objektAusZiel(ziel);
+      const b = Number(ziel?.closest?.("[data-b]")?.getAttribute("data-b") ?? 0);
+      const mehr = ev.shiftKey || ev.ctrlKey || ev.metaKey;
+      // Klick auf einen Buchstaben des schon gewählten Texts: Buchstabe wählen (W9, nur Experte)
+      if (!mehr && o !== null && b > 0 && arbeit.modus === "experte" && arbeit.auswahl.length === 1 && arbeit.auswahl[0] === o) {
+        arbeit.buchstabe = arbeit.buchstabe?.objekt === o && arbeit.buchstabe.nr === b ? null : { objekt: o, nr: b };
+        return;
+      }
+      arbeit.waehlen(o, mehr);
     }
   }
   function rad(ev: WheelEvent) {
@@ -398,7 +407,10 @@
           : hell(z.farbe) > 0.8
             ? schattieren(z.farbe, -0.45)
             : schattieren(z.farbe, -0.38)}
-      <g data-o={z.o} opacity={gewaehlt.length && !gewaehlt.includes(z.o) ? 0.28 : 1} style="cursor:{gewaehlt.includes(z.o) ? 'move' : 'pointer'}" transform={gewaehlt.includes(z.o) && griffTransform ? griffTransform : undefined}>
+      {#if arbeit.buchstabe && arbeit.buchstabe.objekt === z.o && arbeit.buchstabe.nr === z.b && gewaehlt.includes(z.o)}
+        <path d={z.d} fill="none" stroke={farben.akzent} stroke-width="1.4" stroke-opacity=".55" stroke-linejoin="round" stroke-linecap="round" pointer-events="none" transform={griffTransform || undefined} />
+      {/if}
+      <g data-o={z.o} data-b={z.b || undefined} opacity={gewaehlt.length && !gewaehlt.includes(z.o) ? 0.28 : 1} style="cursor:{gewaehlt.includes(z.o) ? 'move' : 'pointer'}" transform={gewaehlt.includes(z.o) && griffTransform ? griffTransform : undefined}>
         <path d={z.d} fill="none" stroke="transparent" stroke-width="1.6" pointer-events="stroke" />
         <path d={z.d} fill="none" stroke={rand} stroke-width=".34" stroke-linejoin="round" stroke-linecap="round" pointer-events="none" />
         <path d={z.d} fill="none" stroke={z.farbe} stroke-width=".2" stroke-linejoin="round" stroke-linecap="round" pointer-events="none" />

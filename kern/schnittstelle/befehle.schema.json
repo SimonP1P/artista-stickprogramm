@@ -1380,6 +1380,15 @@
           },
           "type": "array"
         },
+        "buchstabe": {
+          "description": "je Stich die Nummer des Buchstabens bei Text/Monogramm (1 = erster ohne Leerraum und `^`, wie\n`buchstaben[].nr`), 0 = kein Buchstabe – zum Anklicken einzelner Buchstaben",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
         "daten_bytes": {
           "description": "Datengröße für die Maschine in Byte (Stichdaten + Anhang wie beim Senden)",
           "format": "uint",
@@ -1452,6 +1461,7 @@
         "stoff",
         "stiche",
         "objekt",
+        "buchstabe",
         "farben",
         "garne",
         "bloecke",

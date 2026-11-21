@@ -11,7 +11,7 @@ use crate::knopfloch::{KnopflochVorgabe, Vorlage, knopfloch_objekt};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_je_teil};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{
-    Alphabet, Buchstabe, SchriftStichart, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen,
+    Alphabet, Buchstabe, SchriftStichart, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen_nr,
 };
 use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte_idx};
 use crate::sticharten::blanket::blanket;
@@ -454,7 +454,11 @@ fn satin_wege(
 
 /// Aufgelöste Objekte, fehlende Zeichen, Herkunft (Nummer des Objekts im Design) je Objekt
 /// (aufgelöste Objekte, fehlende Zeichen je Objektnummer, Herkunft je aufgelöstem Objekt)
-pub(crate) type Aufgeloest = (Vec<Objekt>, Vec<(usize, char)>, Vec<usize>);
+/// Aufgelöste Objekte, fehlende Zeichen (Objekt, Zeichen), je Objekt die Nummer im Design und die Nummer des
+/// Buchstabens (0 = kein Buchstabe).
+pub(crate) type Aufgeloest = (Vec<Objekt>, Vec<(usize, char)>, Vec<usize>, Vec<usize>);
+/// Objekte mit Nummer im Design und Buchstabennummer.
+type MitHerkunft = (Vec<Objekt>, Vec<usize>, Vec<usize>);
 
 /// Double Run: dieselben Stiche rückwärts anhängen (beginnen, wo das Objekt endet – kein Verbindungsstich).
 fn doppellauf(wege: &mut Vec<Linie>) {
@@ -1379,14 +1383,14 @@ impl Design {
     /// Objekte mit aufgelösten Texten (Buchstaben als Satin-/Lauf-Objekte). Fehlende Zeichen werden übersprungen
     /// und im zweiten Wert gemeldet.
     pub fn objekte_aufgeloest(&self) -> Result<(Vec<Objekt>, Vec<char>), String> {
-        let (o, f, _) = self.aufgeloest_mit_herkunft()?;
+        let (o, f, _, _) = self.aufgeloest_mit_herkunft()?;
         Ok((o, f.into_iter().map(|(_, z)| z).collect()))
     }
 
     /// Zeichen, die das Alphabet bzw. die Schrift nicht hat, je Objekt (Nummer in `objekte`, ab 0) – in der Reihenfolge
     /// des Texts, ohne Doppelte.
     pub fn fehlende_zeichen(&self) -> Result<Vec<(usize, String)>, String> {
-        let (_, f, _) = self.aufgeloest_mit_herkunft()?;
+        let (_, f, _, _) = self.aufgeloest_mit_herkunft()?;
         let mut out: Vec<(usize, String)> = Vec::new();
         for (nr, z) in f {
             match out.iter_mut().find(|(n, _)| *n == nr) {
@@ -1400,10 +1404,10 @@ impl Design {
 
     /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
     pub(crate) fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
-        let (out, fehlend, herkunft) = self.ungedreht_aufgeloest()?;
+        let (out, fehlend, herkunft, buchstabe) = self.ungedreht_aufgeloest()?;
         let out = self.transformieren(out, &herkunft)?;
-        let (out, herkunft) = self.aussparen_aufloesen(out, &herkunft)?;
-        Ok((out, fehlend, herkunft))
+        let (out, herkunft, buchstabe) = self.aussparen_aufloesen(out, &herkunft, &buchstabe)?;
+        Ok((out, fehlend, herkunft, buchstabe))
     }
 
     /// Matrix der Transformation von Objekt `nr` (`"transform"`, um die Mitte seiner aufgelösten Teile wie in
@@ -1412,7 +1416,7 @@ impl Design {
         let Some(t) = self.transformationen.get(&nr) else {
             return Ok(None);
         };
-        let (out, _, herkunft) = self.ungedreht_aufgeloest()?;
+        let (out, _, herkunft, _) = self.ungedreht_aufgeloest()?;
         let teil: Vec<Objekt> = out
             .into_iter()
             .zip(herkunft)
@@ -1425,6 +1429,7 @@ impl Design {
     /// Objekte aufgelöst (Text, Knopfloch, Applikation, Satinfläche), noch ohne Transformation und Aussparen.
     fn ungedreht_aufgeloest(&self) -> Result<Aufgeloest, String> {
         let mut out = Vec::new();
+        let mut buchstabe: Vec<usize> = Vec::new();
         let mut fehlend = Vec::new();
         // je aufgelöstem Objekt: Nummer des Objekts im Design (für das Aussparen nach Namen)
         let mut herkunft: Vec<usize> = Vec::new();
@@ -1437,7 +1442,7 @@ impl Design {
                         .or_else(|| self.alphabete.values().find(|a| a.name.eq_ignore_ascii_case(alphabet)))
                         .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
                     let abstand = vorgabe.abstand.unwrap_or(a.abstand_anteil * vorgabe.hoehe);
-                    let (obj, f) = text_setzen(
+                    let (obj, f, nummern) = text_setzen_nr(
                         vorgabe,
                         abstand,
                         self.buchstaben.get(&nr),
@@ -1445,6 +1450,7 @@ impl Design {
                         |z| text_objekte_idx(a, z),
                     );
                     out.extend(obj);
+                    buchstabe.extend(nummern);
                     fehlend.extend(f.into_iter().map(|z| (nr, z)));
                 }
                 ObjektArt::Knopfloch(k) => {
@@ -1515,7 +1521,7 @@ impl Design {
                     let abstand = vorgabe
                         .abstand
                         .unwrap_or(crate::schrift::BUCHSTABENABSTAND_ANTEIL * vorgabe.hoehe);
-                    let (obj, f) = text_setzen(
+                    let (obj, f, nummern) = text_setzen_nr(
                         vorgabe,
                         abstand,
                         self.buchstaben.get(&nr),
@@ -1523,13 +1529,15 @@ impl Design {
                         |z| ttf_text_objekte_idx(s, z, stichart),
                     );
                     out.extend(obj);
+                    buchstabe.extend(nummern);
                     fehlend.extend(f.into_iter().map(|z| (nr, z)));
                 }
                 _ => out.push(o.clone()),
             }
             herkunft.resize(out.len(), nr);
+            buchstabe.resize(out.len(), 0);
         }
-        Ok((out, fehlend, herkunft))
+        Ok((out, fehlend, herkunft, buchstabe))
     }
 
     /// Transformationen anwenden: erst je Objekt (um die Mitte seiner aufgelösten Teile), dann das ganze Design.
@@ -1556,7 +1564,8 @@ impl Design {
         &self,
         objekte: Vec<Objekt>,
         herkunft: &[usize],
-    ) -> Result<(Vec<Objekt>, Vec<usize>), String> {
+        buchstabe: &[usize],
+    ) -> Result<MitHerkunft, String> {
         let mut neu: Vec<Option<Vec<Teil>>> = Vec::with_capacity(objekte.len());
         for (i, o) in objekte.iter().enumerate() {
             let (umriss, loecher, a) = match &o.art {
@@ -1595,10 +1604,12 @@ impl Design {
         }
         let mut out = Vec::with_capacity(objekte.len());
         let mut her = Vec::with_capacity(objekte.len());
-        for ((o, n), &h) in objekte.into_iter().zip(neu).zip(herkunft) {
+        let mut bu = Vec::with_capacity(objekte.len());
+        for (((o, n), &h), &b) in objekte.into_iter().zip(neu).zip(herkunft).zip(buchstabe) {
             let Some(teile) = n else {
                 out.push(o);
                 her.push(h);
+                bu.push(b);
                 continue;
             };
             for (u, l) in teile {
@@ -1620,16 +1631,23 @@ impl Design {
                 }
                 out.push(t);
                 her.push(h);
+                bu.push(b);
             }
         }
-        Ok((out, her))
+        Ok((out, her, bu))
     }
 
     /// Stiche berechnen: Objekte -> Wege -> verbinden -> Bernina-Regeln (Mindeststich, Auto Jump).
     pub fn berechnen(&self) -> Result<StichFolge, String> {
-        let (objekte, _, herkunft) = self.aufgeloest_mit_herkunft()?;
-        // je Teil: Farbe, Wege, eigene Auto-Jump-Werte, Nummer des Objekts im Design
-        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>, usize)>;
+        Ok(self.berechnen_mit_buchstaben()?.0)
+    }
+
+    /// Wie `berechnen`, dazu je Stich die Nummer des Buchstabens (1 = erster, wie `buchstaben[].nr`; 0 = kein
+    /// Buchstabe) – für „einzelne Buchstaben“ per Klick in der Oberfläche (W9).
+    pub fn berechnen_mit_buchstaben(&self) -> Result<(StichFolge, Vec<usize>), String> {
+        let (objekte, _, herkunft, buchstabe) = self.aufgeloest_mit_herkunft()?;
+        // je Teil: Farbe, Wege, eigene Auto-Jump-Werte, Nummer des Objekts im Design, Nummer des Buchstabens
+        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>, usize, usize)>;
         let teile_ab = |start: Punkt| -> Result<Teile, String> {
             let mut teile = Vec::new();
             let mut pos = start;
@@ -1694,7 +1712,7 @@ impl Design {
                 };
                 if let Some(letzter) = wege.last().and_then(|w| w.last()) {
                     pos = *letzter;
-                    teile.push((obj.farbe.clone(), wege, eigen, *h));
+                    teile.push((obj.farbe.clone(), wege, eigen, *h, buchstabe[k]));
                 }
             }
             Ok(teile)
@@ -1702,7 +1720,7 @@ impl Design {
         let null = p(0.0, 0.0);
         let mut teile = teile_ab(null)?;
         // Mitte bzw. Unterkante des Designs aus den Stichen (umschließendes Rechteck)
-        let punkte = || teile.iter().flat_map(|(_, w, _, _)| w.iter().flatten());
+        let punkte = || teile.iter().flat_map(|(_, w, _, _, _)| w.iter().flatten());
         let (x0, x1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
         let (y0, y1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
         let (mitte, unten) = if x0 <= x1 {
@@ -1712,7 +1730,7 @@ impl Design {
         };
         let erster = teile
             .first()
-            .and_then(|(_, w, _, _)| w.first())
+            .and_then(|(_, w, _, _, _)| w.first())
             .and_then(|l| l.first())
             .copied();
         let start = match self.start {
@@ -1725,7 +1743,8 @@ impl Design {
             teile = teile_ab(start)?;
         }
         let herkunft: Vec<usize> = teile.iter().map(|t| t.3).collect();
-        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _)| ((f, w), a)).unzip();
+        let buchstabe_teil: Vec<usize> = teile.iter().map(|t| t.4).collect();
+        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _, _)| ((f, w), a)).unzip();
         // Verbinder je Teil: eigene Werte des Objekts (im Original trägt jedes Objekt seinen Verbinder 0x272a)
         let verbinder: Vec<Option<&crate::einstellungen::VerbinderEinstellung>> = herkunft
             .iter()
@@ -1733,7 +1752,8 @@ impl Design {
             .collect();
         let folge = wege_verbinden_je_teil(&teile, &self.einstellungen.verbinder, start, &auto_jump, &verbinder);
         let mut folge = bernina_regeln(&folge);
-        // Teil → Objekt im Design
+        // Teil → Buchstabe, Teil → Objekt im Design
+        let mut buchstabe: Vec<usize> = folge.objekt.iter().map(|&t| buchstabe_teil[t]).collect();
         for o in &mut folge.objekt {
             *o = herkunft[*o];
         }
@@ -1751,17 +1771,19 @@ impl Design {
             folge.sprung(z);
             if let Some(&o) = folge.objekt.last() {
                 folge.objekt.push(o);
+                buchstabe.push(buchstabe.last().copied().unwrap_or(0));
             }
         }
         debug_assert!(folge.objekt.len() == folge.stiche.len());
-        Ok(folge)
+        debug_assert!(buchstabe.len() == folge.objekt.len());
+        Ok((folge, buchstabe))
     }
 
     /// **Formen je Objekt** für die Oberfläche (Zeichnen, Auswahl, Griffe): aufgelöste Umrisse, Löcher, Linien und
     /// Satinseiten nach Text-Satz, Transformation und Aussparen – gruppiert nach der Nummer des Objekts im Design.
     /// Ein Objekt ohne Form (z. B. Text ohne bekannte Zeichen) fehlt in der Liste nicht, es hat nur keine Linien.
     pub fn formen(&self) -> Result<Vec<ObjektForm>, String> {
-        let (objekte, _, herkunft) = self.aufgeloest_mit_herkunft()?;
+        let (objekte, _, herkunft, _) = self.aufgeloest_mit_herkunft()?;
         let mut out: Vec<ObjektForm> = self
             .objekte
             .iter()

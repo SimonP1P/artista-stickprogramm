@@ -65,6 +65,7 @@ def main():
     a.add_argument("--experte", action="store_true")
     a.add_argument("--dunkel", action="store_true")
     a.add_argument("--auswahl", type=int)
+    a.add_argument("--buchstabe", type=int, help="gewählter Buchstabe (Nr.) des Objekts --auswahl")
     a.add_argument("--ansicht")
     a.add_argument("--schritt", type=int)
     a.add_argument("--reiter", choices=["objekt", "design", "einzelwerte", "json"])
@@ -132,6 +133,8 @@ def main():
         start["dialog"] = json.loads(o.dialog)
     if o.auswahl is not None:
         start["auswahl"] = o.auswahl
+    if o.buchstabe is not None:
+        start["buchstabe"] = o.buchstabe
     vorspann = f"""<script>
 window.__START__ = {json.dumps(start)};
 const ANTWORTEN = {json.dumps(antworten)};

@@ -13,6 +13,7 @@
   import Abschnitt from "./Abschnitt.svelte";
   import Einzelwerte from "./Einzelwerte.svelte";
   import JsonReiter from "./JsonReiter.svelte";
+  import Buchstaben from "./Buchstaben.svelte";
 
   type Reiter = "objekt" | "design" | "einzelwerte" | "json";
   // Startreiter: Startoption `reiter` (Bildschirmfotos), sonst „Objekt“
@@ -40,7 +41,8 @@
     knopfloch: ["typ", "laenge", "winkel"],
   };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump"]);
+  const GESONDERT = new Set(["art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben"]);
+  const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
   const MIT_STEP = new Set(["tatami", "text", "ttf", "monogramm"]);
 
   const i = $derived(arbeit.auswahl.length === 1 ? arbeit.auswahl[0] : -1);
@@ -60,11 +62,7 @@
   const formFelder = $derived(felder.filter((f) => f.typ === "komplex" && !GESONDERT.has(f.name) && !eNamen.includes(f.name)));
 
   const e = $derived(arbeit.ergebnis);
-  const garn = $derived.by(() => {
-    if (!e || i < 0) return undefined;
-    const k = e.bloecke.findIndex((b) => b.objekte.includes(i));
-    return k >= 0 ? e.garne[k] : undefined;
-  });
+  const garn = $derived(e ? arbeit.garnVon(i) : undefined);
 
   function setzen(name: string, v: unknown, gruppe?: string) {
     const nr = i;
@@ -210,6 +208,12 @@
         {#if fein.length}
           <Abschnitt titel="Stichart – Feinheiten" offen={false}>
             {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} setzen={(v) => setzen(f.name, v)} x />{/each}
+          </Abschnitt>
+        {/if}
+
+        {#if SCHRIFT.has(o.art)}
+          <Abschnitt titel="Einzelne Buchstaben" rechts={(o.buchstaben as unknown[] | undefined)?.length ? `${(o.buchstaben as unknown[]).length} geändert` : ""} offen={arbeit.buchstabe?.objekt === i}>
+            <Buchstaben nr={i} />
           </Abschnitt>
         {/if}
 

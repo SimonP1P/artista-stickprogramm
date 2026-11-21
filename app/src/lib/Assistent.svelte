@@ -42,11 +42,7 @@
   const fehlend = $derived(
     (e?.hinweise ?? []).filter((h) => h.art === "fehlende_zeichen" && h.objekt === haupt).map((h) => h.meldung),
   );
-  const hauptGarn = $derived.by(() => {
-    if (!e || haupt < 0) return undefined;
-    const k = e.bloecke.findIndex((b) => b.objekt === haupt || b.objekte.includes(haupt));
-    return k >= 0 ? e.garne[k] : undefined;
-  });
+  const hauptGarn = $derived(e ? arbeit.garnVon(haupt) : undefined);
 
   const transform = $derived(arbeit.design.transform ?? {});
   const skalierung = $derived(

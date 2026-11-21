@@ -628,6 +628,7 @@ pub fn maschine_lesen(k: &Kontext, e: LeseEingabe) -> Result<GelesenInfo, Fehler
             daten_grenze: crate::befehle::DATEN_GRENZE,
             hinweise: Vec::new(),
             objekt: vec![0; n],
+            buchstabe: vec![0; n],
             farben: std::mem::take(&mut folge.farben),
             stiche: folge.stiche,
         },
