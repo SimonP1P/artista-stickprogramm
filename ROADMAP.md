@@ -77,6 +77,9 @@ kennzeichnen, Bericht 20 §4), danach 4b.8 Effekte … Dabei jeweils CLAUDE.md �
   nötig: EZSTITCH.DLL, MOD1.DLL, GEOMETRY.DLL, IMPORT.DLL sind lesbar.
 - Offen aus 4b.5 (Bericht 16 §5): Platzierung von „Sequence By Color“ bei Teilauswahl, Ausstich in Flächen wie das
   Original, Bedeutung „Auto Sequence“.
+- **Abgleich mit allgemeinen Stickregeln (21.11.2026, Bericht 22):** Vorschlag 1) Kalibrierblatt am Gerät (Verzug,
+  Vernähen), 2) Bild umwandeln mit Closest Join, 3) Verbindertyp „Run“ (weniger Sprungfäden – die 185 schneidet nicht),
+  4) Blackwork Run (4b.9); Zug-/Schubausgleich nach Breite nur nach Messung. Entscheidung des Nutzers offen.
 - Offen aus 4b.17-Baustein (Bericht 17 §6): Einzelregeln `SignificantTriangles`/Schnittstufen (Überlappung an
   Abzweigungen ✅ 21.11.). Prüfdaten: `art_autosatin.py export/vergleich`
   (54 Säulen aus `Samples/AutoDigitizing`, Vergleich mit `stick saeulen`).
