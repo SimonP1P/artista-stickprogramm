@@ -56,6 +56,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Füllmuster (Fancy) | Umriss, Muster (242, Liste `kern/stick-kern/daten/fuellmuster.json`), Winkel, Größe (100 %) | `muster` | E |
 | Blanket (Langette) | Linie, Abstand (2 mm), Breite (3 mm), mittig/seitlich | `blanket` | E (Werte X) |
 | Applikation | Umriss; Abdeckung Satin/Blanket; vorgeschnitten / im Rahmen zuschneiden; Breiten (2,5/3,0 mm) | `applikation` | E (Werte X) |
+| Knopfloch | Werkzeug „Knopfloch einfügen“: Klick setzt die **Mitte des Schlitzes**; Typ (9: Standard, Standard schmal, Rund, Stretch/dehnbar, Heirloom, rundes Ende, Auge eckig/rund/spitz – Vorschaubilder sinnvoll), Schlitzlänge (20 mm, 3–60), Winkel (90° = senkrecht; Griffe zum Drehen/Ziehen wie „Reshape“), Raupenabstand (ohne Angabe wie die Vorlage: 0,5 mm, Heirloom 1,5 mm; 0,2–2,0). **Einarbeiten** in eine Fläche darunter („Merge Buttonhole“): Name des Knopflochs in `aussparen` der Fläche (Fläche wird bis zur Raupenmitte ausgespart). Braucht den Alphabet-Ordner (`ButtonHoles.ESB`) | `knopfloch` (`typ`, `position`, `laenge`, `winkel`, `abstand`) | E (Abstand X) |
 
 ## 4. Schrift
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
@@ -113,7 +114,7 @@ Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DA
 `SCHNITTSTELLE.md`).
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
-Knopflöcher · Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
+Motivlinien und Motivfüllungen · Effekte (ausgefranster Rand, Welle, Farbverlauf,
 Farben mischen) · Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling) · Applikation-Feinheiten ·
 Magic Wand, PhotoSnap · Ausrichten, Gruppieren, Kranz, Kaleidoskop · eigene Rahmen, fremde Stickdateien ·
 Vorlagen/Stile speichern · Kreuzstich.

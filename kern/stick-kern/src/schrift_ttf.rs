@@ -191,6 +191,7 @@ pub fn ttf_text_objekte_idx(
                                     kurzstiche: Some(true),
                                     step: false,
                                     zickzack: false,
+                                    zugausgleich: None,
                                 },
                             },
                         });

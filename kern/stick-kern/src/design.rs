@@ -7,6 +7,7 @@ use crate::applikation::{ApplikationVorgabe, applikation_objekte};
 use crate::aussparen::{Aussparen, Teil, bedeckt, flaeche_minus};
 use crate::einstellungen::{Einstellungen, SatinEinstellung, TatamiEinstellung, fuer_stoff};
 use crate::geometrie::{Linie, Punkt, abstand, abstand_punkt_strecke, im_polygon, p, zwischen};
+use crate::knopfloch::{KnopflochVorgabe, Vorlage, knopfloch_objekt};
 use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_je_teil};
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{
@@ -398,6 +399,17 @@ pub enum ObjektArt {
         /// Stichlänge des Laufwegs in mm (Alphabet: Lauf 0x271c in der Füllung, 3,0 mm)
         laufweg: f64,
     },
+    /// Knopfloch (Vorlage aus ButtonHoles.ESB, `knopfloch.rs`); wird vor dem Berechnen zu einer `Kette` aufgelöst
+    Knopfloch(KnopflochVorgabe),
+    /// Teile in fester Reihenfolge, ohne Sprünge zu einem Zug verbunden (Knopfloch). Satinteile beginnen an dem Ende,
+    /// das dem vorigen Stich am nächsten liegt (am Musterdesign beobachtet). `loch` = Fläche zum Aussparen
+    /// (Merge Buttonhole: mittlerer Umriss).
+    Kette {
+        teile: Vec<Objekt>,
+        /// je Teil: darf rückwärts gestickt werden (Raupen)
+        umkehrbar: Vec<bool>,
+        loch: Option<Linie>,
+    },
 }
 
 /// Einstellungen einer Satinsäule, die vom Stil abweichen (wie die Effekte am Objekt im Original).
@@ -413,6 +425,8 @@ pub struct SatinOptionen {
     pub step: bool,
     /// Zickzack statt Satin (Stichart „Zigzag“ 0x2724): fester Abstand `zickzack_abstand`, ohne Kurzstiche
     pub zickzack: bool,
+    /// Zugausgleich je Seite in mm (None = Stil); Knopfloch-Vorlagen: 0x8c = 0,17 mm
+    pub zugausgleich: Option<f64>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -475,6 +489,9 @@ fn satin_getrennt(
     }
     if let Some(k) = o.kurzstiche {
         satin_e.kurzstiche.an = k;
+    }
+    if let Some(z) = o.zugausgleich {
+        satin_e.zugausgleich = z;
     }
     let arten = match unterlage {
         Unterlage::Auto => auto_satin_unterlage(&e.unterlage),
@@ -849,6 +866,69 @@ fn gruppe_wege(
     Ok(out)
 }
 
+/// Teile einer Kette (Knopfloch) nacheinander zu **einem** Zug verbinden. Satinsäulen in der Richtung, deren Anfang
+/// dem vorigen Ende am nächsten liegt (Musterdesign `Buttonholes.ART`: Raupen beginnen dort, wo der vorige Teil
+/// endet; Läufe und Handstiche wie in der Vorlage).
+fn kette_wege(
+    teile: &[Objekt],
+    umkehrbar: &[bool],
+    e: &Einstellungen,
+    start: Option<Punkt>,
+) -> Result<Vec<Linie>, String> {
+    let mut zug: Linie = Vec::new();
+    for (k, t) in teile.iter().enumerate() {
+        let ende = zug.last().copied().or(start);
+        let vor = t.wege(e, None)?;
+        let rueck_art = match &t.art {
+            ObjektArt::Satin {
+                seite_a,
+                seite_b,
+                unterlage,
+                optionen,
+            } => Some(ObjektArt::Satin {
+                seite_a: seite_a.iter().rev().copied().collect(),
+                seite_b: seite_b.iter().rev().copied().collect(),
+                unterlage: unterlage.clone(),
+                optionen: optionen.clone(),
+            }),
+            ObjektArt::Lauf {
+                punkte,
+                ecken,
+                laenge,
+                dreifach,
+                geschlossen,
+            } => Some(ObjektArt::Lauf {
+                punkte: punkte.iter().rev().copied().collect(),
+                ecken: ecken.iter().rev().copied().collect(),
+                laenge: *laenge,
+                dreifach: *dreifach,
+                geschlossen: *geschlossen,
+            }),
+            _ => None,
+        }
+        .filter(|_| umkehrbar.get(k).copied().unwrap_or(false));
+        let wege: Vec<Linie> = match rueck_art {
+            Some(art) => {
+                let rueck = Objekt { art, ..t.clone() }.wege(e, None)?;
+                let anfang = |w: &[Linie]| w.first().and_then(|l| l.first()).copied();
+                match (ende, anfang(&vor), anfang(&rueck)) {
+                    (Some(q), Some(a), Some(b)) if abstand(q, b) < abstand(q, a) => rueck,
+                    _ => vor,
+                }
+            }
+            None => vor,
+        };
+        for w in wege {
+            let ueberspringen = usize::from(
+                zug.last()
+                    .is_some_and(|&l| w.first().is_some_and(|&f| abstand(l, f) < 1e-9)),
+            );
+            zug.extend(w.into_iter().skip(ueberspringen));
+        }
+    }
+    Ok(if zug.is_empty() { vec![] } else { vec![zug] })
+}
+
 impl Objekt {
     pub fn wege(&self, e: &Einstellungen, start: Option<Punkt>) -> Result<Vec<Linie>, String> {
         match &self.art {
@@ -891,6 +971,8 @@ impl Objekt {
                 umrisse,
                 laufweg,
             } => gruppe_wege(teile, umrisse, *laufweg, e, start),
+            ObjektArt::Kette { teile, umkehrbar, .. } => kette_wege(teile, umkehrbar, e, start),
+            ObjektArt::Knopfloch(_) => Err("Knopfloch wurde nicht aufgelöst".into()),
             ObjektArt::Blanket {
                 punkte,
                 geschlossen,
@@ -990,6 +1072,9 @@ pub struct Design {
     pub ende: Bezugspunkt,
     /// geladene Computer-Schriften (Name wie im Design); füllt der Aufrufer, siehe `ttf_bedarf`
     pub ttf_schriften: BTreeMap<String, TtfSchrift>,
+    /// geladene Knopfloch-Vorlagen (Name wie in ButtonHoles.ESB, „Standard“); füllt der Aufrufer, siehe
+    /// `knopfloch_bedarf`
+    pub knopfloecher: BTreeMap<String, Vorlage>,
     /// Transformation je Objekt (Nummer in `objekte`), JSON `"transform"` am Objekt (`transformation.rs`)
     pub transformationen: BTreeMap<usize, Transformation>,
     /// Transformation des ganzen Designs (um seine Mitte), JSON `"transform"` oben im Design
@@ -1240,6 +1325,7 @@ impl Design {
             start: d.start.map(Bezugspunkt::from).unwrap_or_default(),
             ende: d.ende.map(Bezugspunkt::from).unwrap_or_default(),
             ttf_schriften: BTreeMap::new(),
+            knopfloecher: BTreeMap::new(),
         })
     }
 
@@ -1261,6 +1347,11 @@ impl Design {
         n.sort();
         n.dedup();
         n
+    }
+
+    /// Braucht das Design Knopfloch-Vorlagen (ButtonHoles.ESB)?
+    pub fn knopfloch_bedarf(&self) -> bool {
+        self.objekte.iter().any(|o| matches!(o.art, ObjektArt::Knopfloch(_)))
     }
 
     /// Computer-Schriften, die das Design braucht: Name → benutzte Zeichen (zum Laden durch den Aufrufer).
@@ -1305,6 +1396,19 @@ impl Design {
                     );
                     out.extend(obj);
                     fehlend.extend(f);
+                }
+                ObjektArt::Knopfloch(k) => {
+                    let v = self
+                        .knopfloecher
+                        .get(&k.vorlage)
+                        .ok_or_else(|| format!("Knopfloch-Vorlage „{}“ nicht geladen (ButtonHoles.ESB)", k.vorlage))?;
+                    k.pruefen().map_err(|e| format!("Objekt {}: {e}", nr + 1))?;
+                    out.push(knopfloch_objekt(
+                        v,
+                        k,
+                        &o.farbe,
+                        if o.name.is_empty() { "Knopfloch" } else { &o.name },
+                    ));
                 }
                 ObjektArt::Applikation(v) => {
                     out.extend(applikation_objekte(
@@ -1740,8 +1844,16 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
                 form_linien(&t.art, out);
             }
         }
+        ObjektArt::Kette { teile, loch, .. } => {
+            if let Some(l) = loch {
+                linie(FormArt::Loch, l, true);
+            }
+            for t in teile {
+                form_linien(&t.art, out);
+            }
+        }
         // werden vor dem Zeichnen aufgelöst
-        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } => {}
+        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } | ObjektArt::Knopfloch(_) => {}
     }
 }
 
@@ -1772,6 +1884,7 @@ fn satin_optionen(
         kurzstiche,
         step: false,
         zickzack: stichart == Some(SatinStichart::Zickzack),
+        zugausgleich: None,
     }
 }
 
@@ -1869,6 +1982,19 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                 farbe: a.g.farbe,
             }
         }
+        ObjektJson::Knopfloch(k) => Objekt {
+            farbe: k.g.farbe,
+            name: k.g.name,
+            art: ObjektArt::Knopfloch(KnopflochVorgabe {
+                vorlage: crate::knopfloch::vorlage_name(k.typ.text())
+                    .unwrap_or("Standard")
+                    .to_string(),
+                mitte: k.position.unwrap_or(p(0.0, 0.0)),
+                laenge: k.laenge,
+                abstand: k.abstand,
+                winkel: k.winkel,
+            }),
+        },
         ObjektJson::Blanket(b) => Objekt {
             farbe: b.g.farbe,
             name: b.g.name,

@@ -180,6 +180,8 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
             out.extend(&v.umriss);
             out.extend(v.loecher.iter().flatten());
         }
+        ObjektArt::Kette { teile, .. } => teile.iter().for_each(|t| formpunkte(&t.art, out)),
+        ObjektArt::Knopfloch(k) => out.push(k.mitte),
         ObjektArt::Text { .. } | ObjektArt::TtfText { .. } => {}
     }
 }
@@ -336,6 +338,11 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             teile: teile.iter().map(|t| abbilden(t, m, winkel_standard)).collect(),
             umrisse: umrisse.iter().map(|l| m.linie(l)).collect(),
             laufweg: *laufweg,
+        },
+        ObjektArt::Kette { teile, umkehrbar, loch } => ObjektArt::Kette {
+            teile: teile.iter().map(|t| abbilden(t, m, winkel_standard)).collect(),
+            umkehrbar: umkehrbar.clone(),
+            loch: loch.as_ref().map(|l| m.linie(l)),
         },
         andere => andere.clone(),
     };
@@ -519,6 +526,11 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             teile: teile.iter().map(|t| verformen(t, f, seg)).collect(),
             umrisse: umrisse.iter().map(|l| lin(l, true)).collect(),
             laufweg: *laufweg,
+        },
+        ObjektArt::Kette { teile, umkehrbar, loch } => ObjektArt::Kette {
+            teile: teile.iter().map(|t| verformen(t, f, seg)).collect(),
+            umkehrbar: umkehrbar.clone(),
+            loch: loch.as_ref().map(|l| lin(l, true)),
         },
         andere => andere.clone(),
     };

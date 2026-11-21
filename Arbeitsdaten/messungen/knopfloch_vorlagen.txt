@@ -1,0 +1,85 @@
+  standard         Standard        Typ 0x3ff9  Schlitz 19.36 mm
+      Unten Handstiche: 6 Punkte, x -1.41 … -0.37, y -0.32 … -0.31
+      Raupe Lauf Some(2.5): 25 Punkte, x -1.41 … -0.22, y -0.32 … 19.63
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x -2.54 … -0.54, y -0.33 … 19.56
+      Raupe Lauf Some(2.5): 25 Punkte, x 1.73 … 2.92, y -0.26 … 19.57
+      Oben Handstiche: 7 Punkte, x -2.57 … 2.89, y 19.56 … 19.66
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x 0.72 … 2.72, y -0.30 … 19.57
+      Unten Handstiche: 7 Punkte, x -2.57 … 2.90, y -0.46 … -0.30
+      Unten Handstiche: 4 Punkte, x 0.53 … 2.89, y -0.32 … -0.29
+  standard_schmal  Standard Narrow Typ 0x3ffa  Schlitz 19.61 mm
+      Unten Handstiche: 6 Punkte, x -0.98 … 0.06, y -0.22 … -0.21
+      Raupe Lauf Some(2.5): 25 Punkte, x -1.02 … -0.13, y -0.22 … 19.67
+      Raupe Satin Abstand Some(0.5) Unterlage []: 44 Punkte, x -1.87 … -0.37, y -0.23 … 19.66
+      Raupe Lauf Some(2.5): 25 Punkte, x 1.11 … 2.03, y -0.16 … 19.76
+      Oben Handstiche: 7 Punkte, x -2.15 … 2.13, y 19.61 … 19.76
+      Raupe Satin Abstand Some(0.5) Unterlage []: 44 Punkte, x 0.36 … 1.87, y -0.20 … 19.67
+      Unten Handstiche: 6 Punkte, x -2.13 … 2.15, y -0.42 … -0.19
+      Unten Handstiche: 4 Punkte, x 0.08 … 2.15, y -0.21 … -0.18
+  rund             Round           Typ 0x3ffb  Schlitz 22.79 mm
+      Unten Handstiche: 7 Punkte, x -1.48 … -1.39, y -0.23 … 1.58
+      Unten Lauf Some(2.5): 73 Punkte, x -1.48 … 1.65, y -1.47 … 1.58
+      Unten Satin Abstand Some(0.5) Unterlage []: 30 Punkte, x -2.48 … 2.64, y -2.46 … 1.65
+      Raupe Lauf Some(2.5): 13 Punkte, x 1.65 … 1.65, y 1.56 … 21.45
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x 0.65 … 2.65, y 1.56 … 21.45
+      Oben Satin Abstand Some(0.5) Unterlage []: 30 Punkte, x -2.46 … 2.59, y 21.39 … 25.42
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x -2.46 … -0.46, y 1.56 … 21.45
+      Oben Handstiche: 7 Punkte, x -2.63 … -2.51, y 20.14 … 21.44
+  dehnbar          Stretch         Typ 0x4000  Schlitz 19.58 mm
+      Unten Handstiche: 5 Punkte, x -1.46 … -0.44, y -0.32 … 0.61
+      Raupe Lauf Some(2.5): 13 Punkte, x -0.57 … -0.57, y -0.33 … 19.72
+      Raupe Lauf Some(4.0): 361 Punkte, x -2.56 … -0.56, y -0.30 … 19.70
+      Raupe Lauf Some(2.5): 37 Punkte, x -2.47 … 2.58, y -0.38 … 19.77
+      Oben Handstiche: 7 Punkte, x -2.57 … 2.58, y 19.70 … 19.92
+      Raupe Lauf Some(4.0): 361 Punkte, x 0.56 … 2.56, y -0.30 … 19.70
+      Unten Handstiche: 6 Punkte, x -2.58 … 2.57, y -0.47 … -0.30
+      Unten Handstiche: 4 Punkte, x -2.57 … -1.80, y -0.47 … -0.46
+  heirloom         Heirloom        Typ 0x4001  Schlitz 19.42 mm
+      Unten Handstiche: 5 Punkte, x -1.64 … -0.63, y -0.22 … -0.17
+      Raupe Lauf Some(2.5): 13 Punkte, x -0.64 … -0.57, y -0.18 … 19.62
+      Raupe Blanket Abstand Some(1.5): 42 Punkte, x -2.64 … -0.59, y -0.22 … 19.64
+      Raupe Lauf Some(2.5): 13 Punkte, x 0.61 … 0.61, y -0.23 … 19.72
+      Oben Handstiche: 7 Punkte, x -2.77 … 2.94, y 19.65 … 19.74
+      Raupe Blanket Abstand Some(1.5): 42 Punkte, x 0.57 … 2.61, y -0.22 … 19.64
+      Unten Handstiche: 8 Punkte, x -2.86 … 2.86, y -0.36 … -0.22
+      Unten Handstiche: 4 Punkte, x 0.58 … 2.83, y -0.36 … -0.22
+  rundes_ende      Round End       Typ 0x3ffc  Schlitz 21.01 mm
+      Unten Handstiche: 5 Punkte, x -1.52 … -0.35, y 0.88 … 1.35
+      Unten Lauf Some(2.5): 73 Punkte, x -1.53 … 1.60, y -1.70 … 1.34
+      Unten Satin Abstand Some(0.5) Unterlage []: 30 Punkte, x -2.53 … 2.59, y -2.70 … 1.42
+      Raupe Lauf Some(2.5): 13 Punkte, x 1.60 … 1.60, y 1.33 … 21.22
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x 0.60 … 2.60, y 1.33 … 21.22
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x -2.51 … -0.51, y 1.33 … 21.22
+      Oben Handstiche: 7 Punkte, x -2.69 … 2.81, y 21.25 … 21.35
+      Oben Handstiche: 4 Punkte, x 0.42 … 2.76, y 21.19 … 21.25
+  auge_eckig       Keyhole Square  Typ 0x3ffd  Schlitz 22.06 mm
+      Unten Handstiche: 5 Punkte, x -1.83 … -1.53, y 1.74 … 2.49
+      Unten Lauf Some(2.5): 73 Punkte, x -2.22 … 2.12, y -1.39 … 2.48
+      Unten Satin Abstand Some(0.5) Unterlage []: 38 Punkte, x -3.22 … 3.12, y -2.39 … 2.56
+      Raupe Lauf Some(2.5): 13 Punkte, x 1.58 … 1.58, y 2.43 … 22.32
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x 0.58 … 2.58, y 2.43 … 22.32
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x -2.53 … -0.53, y 2.42 … 22.31
+      Oben Handstiche: 7 Punkte, x -2.73 … 2.73, y 22.30 … 22.39
+      Oben Handstiche: 4 Punkte, x 0.42 … 2.73, y 22.31 … 22.38
+  auge_rund        Keyhole Round   Typ 0x3ffe  Schlitz 24.13 mm
+      Unten Handstiche: 5 Punkte, x -1.63 … -1.51, y 1.90 … 2.51
+      Unten Lauf Some(2.5): 73 Punkte, x -2.21 … 2.14, y -1.37 … 2.51
+      Unten Satin Abstand Some(0.5) Unterlage []: 38 Punkte, x -3.20 … 3.14, y -2.37 … 2.58
+      Raupe Lauf Some(2.5): 13 Punkte, x 1.60 … 1.60, y 2.45 … 22.34
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x 0.60 … 2.60, y 2.45 … 22.34
+      Oben Lauf Some(2.5): 73 Punkte, x -1.62 … 1.51, y 22.20 … 25.25
+      Oben Satin Abstand Some(0.5) Unterlage []: 30 Punkte, x -2.61 … 2.51, y 22.13 … 26.25
+      Raupe Satin Abstand Some(0.5) Unterlage []: 42 Punkte, x -2.51 … -0.51, y 2.44 … 22.33
+      Oben Handstiche: 6 Punkte, x -0.36 … -0.34, y 21.71 … 22.33
+  auge_spitz       Keyhole Point   Typ 0x3fff  Schlitz 23.57 mm
+      Unten Handstiche: 5 Punkte, x -2.21 … -1.71, y 0.68 … 2.08
+      Unten Satin Abstand Some(0.5) Unterlage ["mittellauf"]: 38 Punkte, x -3.19 … 3.15, y -2.45 … 2.50
+      Raupe Lauf Some(2.5): 13 Punkte, x 1.66 … 1.66, y 2.37 … 22.26
+      Raupe Satin Abstand Some(0.5) Unterlage ["mittellauf"]: 42 Punkte, x 0.61 … 2.61, y 2.37 … 22.26
+      Oben Satin Abstand Some(0.5) Unterlage ["mittellauf"]: 10 Punkte, x -0.44 … 2.81, y 22.11 … 24.06
+      Oben Lauf Some(2.5): 25 Punkte, x -1.52 … -0.61, y 22.29 … 24.00
+      Raupe Lauf Some(2.5): 13 Punkte, x -1.50 … -1.50, y 2.37 … 22.26
+      Raupe Satin Abstand Some(0.5) Unterlage ["mittellauf"]: 42 Punkte, x -2.50 … -0.50, y 2.37 … 22.26
+      Oben Satin Abstand Some(0.5) Unterlage ["mittellauf"]: 10 Punkte, x -2.66 … 0.59, y 22.11 … 24.06
+      Oben Satin Abstand Some(0.5) Unterlage ["mittellauf"]: 4 Punkte, x -0.83 … 1.03, y 24.07 … 25.06
+      Oben Handstiche: 4 Punkte, x 1.20 … 1.21, y 24.09 … 25.05

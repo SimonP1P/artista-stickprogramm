@@ -1846,6 +1846,182 @@
       ],
       "type": "object"
     },
+    "KnopflochJson": {
+      "description": "Knopfloch (Handbuch Kap. 23 „Adding buttonholes“): Vorlage aus `ButtonHoles.ESB`, auf Schlitzlänge gestreckt.",
+      "properties": {
+        "abstand": {
+          "default": null,
+          "description": "Raupenabstand in mm, 0,2 … 2,0 („Bead Stitch Spacing“); gilt nur für die Raupen, nicht die Enden. Ohne Angabe\nwie die Vorlage (0,5 mm; Heirloom 1,5 mm)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "laenge": {
+          "default": 20.0,
+          "description": "Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)",
+          "format": "double",
+          "type": "number"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Mitte des Schlitzes [x, y] in mm (ohne Angabe: Rahmenmitte)"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "typ": {
+          "$ref": "#/$defs/KnopflochTyp",
+          "default": "standard",
+          "description": "Typ (Standard „standard“ wie das Original)"
+        },
+        "winkel": {
+          "default": 90.0,
+          "description": "Richtung des Schlitzes in Grad („Angle“; 90 = senkrecht, Standard wie das Original)",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "KnopflochTyp": {
+      "description": "Knopfloch-Typ (Dialog „Buttonhole Type“; Vorlagen aus `ButtonHoles.ESB`)",
+      "oneOf": [
+        {
+          "const": "standard",
+          "description": "Standard (zwei Raupen, Riegel oben und unten)",
+          "type": "string"
+        },
+        {
+          "const": "standard_schmal",
+          "description": "Standard Narrow (schmale Raupen)",
+          "type": "string"
+        },
+        {
+          "const": "rund",
+          "description": "Round (beide Enden rund)",
+          "type": "string"
+        },
+        {
+          "const": "dehnbar",
+          "description": "Stretch (dehnbar, Zickzack-Läufe statt Satin)",
+          "type": "string"
+        },
+        {
+          "const": "heirloom",
+          "description": "Heirloom (Raupen mit Kreuzstichen)",
+          "type": "string"
+        },
+        {
+          "const": "rundes_ende",
+          "description": "Round End (ein Ende rund)",
+          "type": "string"
+        },
+        {
+          "const": "auge_eckig",
+          "description": "Keyhole Square (Augenknopfloch, eckiges Auge)",
+          "type": "string"
+        },
+        {
+          "const": "auge_rund",
+          "description": "Keyhole Round (Augenknopfloch, rundes Auge)",
+          "type": "string"
+        },
+        {
+          "const": "auge_spitz",
+          "description": "Keyhole Point (Augenknopfloch, spitzes Auge)",
+          "type": "string"
+        }
+      ]
+    },
     "LaufJson": {
       "description": "Laufstich bzw. Dreifachstich entlang einer Linie.",
       "properties": {
@@ -2661,6 +2837,20 @@
           "properties": {
             "art": {
               "const": "muster",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/KnopflochJson",
+          "description": "Knopfloch (9 Typen; in Flächen einarbeiten: Namen des Knopflochs in `aussparen` der Fläche)",
+          "properties": {
+            "art": {
+              "const": "knopfloch",
               "type": "string"
             }
           },

@@ -1,0 +1,9 @@
+standard         Einstiche Kern  215 Original  246 | Kern→Orig Median 0.10 90% 0.22 | Orig→Kern Median 0.09 90% 0.23
+standard_schmal  Einstiche Kern  215 Original  230 | Kern→Orig Median 0.09 90% 0.22 | Orig→Kern Median 0.09 90% 0.22
+rund             Einstiche Kern  253 Original  300 | Kern→Orig Median 0.15 90% 0.25 | Orig→Kern Median 0.15 90% 0.27
+rundes_ende      Einstiche Kern  237 Original  271 | Kern→Orig Median 0.07 90% 0.20 | Orig→Kern Median 0.08 90% 0.30
+auge_eckig       Einstiche Kern  244 Original  295 | Kern→Orig Median 0.08 90% 0.24 | Orig→Kern Median 0.09 90% 0.39
+auge_rund        Einstiche Kern  261 Original  335 | Kern→Orig Median 0.09 90% 0.24 | Orig→Kern Median 0.11 90% 0.36
+auge_spitz       Einstiche Kern  341 Original  299 | Kern→Orig Median 0.10 90% 0.39 | Orig→Kern Median 0.08 90% 0.24
+dehnbar          Einstiche Kern  106 Original  117 | Kern→Orig Median 0.05 90% 0.06 | Orig→Kern Median 0.05 90% 0.06
+heirloom         Einstiche Kern  131 Original  155 | Kern→Orig Median 0.04 90% 0.08 | Orig→Kern Median 0.05 90% 0.10

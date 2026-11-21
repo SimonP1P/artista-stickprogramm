@@ -587,12 +587,65 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | svg DATEI.svg [--breite MM] [--rahmen NAME] [--ohne-aussparen] [-o DESIGN.json] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | knopfloecher [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | svg DATEI.svg [--breite MM] [--rahmen NAME] [--ohne-aussparen] [-o DESIGN.json] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
             let ordner = option(args, "-o").unwrap_or_else(|| ".".into());
             erzeugen(Path::new(design), Path::new(&ordner), &alphabet_ordner(args))
+        }
+        Some("knopfloecher") => {
+            let ordner = args
+                .get(1)
+                .filter(|a| !a.starts_with('-'))
+                .map(PathBuf::from)
+                .unwrap_or_else(|| alphabet_ordner(args));
+            let datei = esb::knopfloch_datei(&ordner)
+                .ok_or_else(|| format!("ButtonHoles.ESB nicht in {}", ordner.display()))?;
+            let v = esb::knopfloecher_laden(&datei)?;
+            for (json, name, nr, dialog) in stick_kern::knopfloch::TYPEN {
+                let Some(t) = v.get(name) else {
+                    println!("  {json:<16} fehlt in ButtonHoles.ESB");
+                    continue;
+                };
+                println!("  {json:<16} {dialog:<15} Typ {nr:#06x}  Schlitz {:.2} mm", t.laenge);
+                for teil in &t.teile {
+                    use stick_kern::knopfloch::TeilArt;
+                    let (art, pts) = match &teil.art {
+                        TeilArt::Handstiche(l) => ("Handstiche".to_string(), l.clone()),
+                        TeilArt::Lauf { punkte, laenge, .. } => (format!("Lauf {laenge:?}"), punkte.clone()),
+                        TeilArt::Satin {
+                            seite_a,
+                            seite_b,
+                            abstand,
+                            unterlagen,
+                            ..
+                        } => (
+                            format!("Satin Abstand {abstand:?} Unterlage {unterlagen:?}"),
+                            seite_a.iter().chain(seite_b).copied().collect(),
+                        ),
+                        TeilArt::Blanket {
+                            ruecken,
+                            aussen,
+                            abstand,
+                        } => (
+                            format!("Blanket Abstand {abstand:?}"),
+                            ruecken.iter().chain(aussen).copied().collect(),
+                        ),
+                    };
+                    let (x0, x1, y0, y1) = pts
+                        .iter()
+                        .fold((f64::MAX, f64::MIN, f64::MAX, f64::MIN), |(a, b, c, d), q| {
+                            (a.min(q.x), b.max(q.x), c.min(q.y), d.max(q.y))
+                        });
+                    println!(
+                        "      {:?} {art}: {} Punkte, x {x0:.2} … {x1:.2}, y {y0:.2} … {y1:.2}",
+                        teil.lage,
+                        pts.len()
+                    );
+                }
+            }
+            Ok(true)
         }
         Some("alphabete") => {
             let ordner = args

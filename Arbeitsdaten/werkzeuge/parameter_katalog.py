@@ -27,7 +27,7 @@ def P(id_, gruppe, name, wirkung, *, ebene='design', gilt=(), d=None, o=None, ei
 STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Knit Heavy Weight', 'Terry Medium Weight',
           'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
 ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'satinflaeche', 'tatami', 'muster', 'blanket', 'applikation', 'text',
-        'ttf', 'monogramm']
+        'ttf', 'monogramm', 'knopfloch']
 V = 'Vorschlag (eigene Festlegung)'
 
 # ---------------------------------------------------------------- Design
@@ -297,6 +297,22 @@ P('objekt.appl.heft_abstand', G, 'Heftstich: Abstand', '', ebene='objekt', gilt=
   einheit='mm', std=2.0, quelle=Q)
 P('objekt.appl.platz_laenge', G, 'Platzierungslinie: Stichlänge', '', ebene='objekt', gilt=['applikation'],
   o='platz_laenge', einheit='mm', std=2.0, quelle=Q)
+G = 'Knopfloch'
+Q = 'MOD1 AllButtonHolesValues 0x10028060 (hoch); Bericht Analyse_Teil3/19'
+P('objekt.knopfloch.typ', G, 'Knopfloch-Typ', 'Vorlage aus ButtonHoles.ESB (9 Typen)', ebene='objekt',
+  gilt=['knopfloch'], o='typ', einheit='Auswahl', std='standard',
+  werte=['standard', 'standard_schmal', 'rund', 'dehnbar', 'heirloom', 'rundes_ende', 'auge_eckig', 'auge_rund',
+         'auge_spitz'], quelle=Q + ', Typ 0x3ff9', modus='einfach')
+P('objekt.knopfloch.position', G, 'Lage', 'Mitte des Schlitzes [x, y]', ebene='objekt', gilt=['knopfloch'],
+  o='position', einheit='mm', std=None, quelle=V, modus='einfach')
+P('objekt.knopfloch.laenge', G, 'Schlitzlänge', 'Raupen werden gestreckt, oberes Ende rückt nach (Slit Length)',
+  ebene='objekt', gilt=['knopfloch'], o='laenge', einheit='mm', std=20.0, bereich=[3, 60],
+  quelle=Q + ', 3600 = 20 mm; Bereich eigene Festlegung', modus='einfach')
+P('objekt.knopfloch.winkel', G, 'Winkel', 'Richtung des Schlitzes, 90° = senkrecht (Angle)', ebene='objekt',
+  gilt=['knopfloch'], o='winkel', einheit='Grad', std=90.0, quelle=Q + ', π/2', modus='einfach')
+P('objekt.knopfloch.abstand', G, 'Raupenabstand', 'Dichte der Raupen (Bead Stitch Spacing); Enden bleiben wie die '
+  'Vorlage; ohne Angabe wie die Vorlage (0,5 mm, Heirloom 1,5 mm)', ebene='objekt', gilt=['knopfloch'], o='abstand',
+  einheit='mm', std=None, bereich=[0.2, 2.0], quelle=Q + ', 90 = 0,5 mm; Musterdesign Buttonholes.ART')
 
 # ---------------------------------------------------------------- Schrift
 G = 'Schrift'

@@ -289,7 +289,10 @@ mod tests {
             assert!((a.x - b.x).abs() < 1e-9, "Stich A → B quer: {a:?} {b:?}");
         }
         // ohne die letzte Stelle (Endkante)
-        paare[..paare.len() - 1].windows(2).map(|w| w[1].0.x - w[0].0.x).collect()
+        paare[..paare.len() - 1]
+            .windows(2)
+            .map(|w| w[1].0.x - w[0].0.x)
+            .collect()
     }
 
     #[test]
@@ -323,7 +326,11 @@ mod tests {
             abstand_fest: 0.40,
             ..Default::default()
         };
-        assert!(vorschub(&satin(&a, &b, &e).unwrap()).iter().all(|d| (d - 0.40).abs() < 1e-9));
+        assert!(
+            vorschub(&satin(&a, &b, &e).unwrap())
+                .iter()
+                .all(|d| (d - 0.40).abs() < 1e-9)
+        );
         let e2 = fuer_stoff("Knit Medium Weight").unwrap().satin;
         assert!(
             vorschub(&satin(&a, &b, &e2).unwrap())

@@ -239,6 +239,18 @@ Fläche mit Füllmuster (Program Split / Fancy Fill; 242 Muster, Befehl `fuellmu
 | `unterlage` | boolean |  | – | Unterlage an/aus (ohne Angabe: Stil) |
 | `winkel` | number |  | – | Stichwinkel (ohne Angabe: Winkel aus dem Musternamen, sonst der Füllung) |
 
+### `knopfloch` – Knopfloch (9 Typen; in Flächen einarbeiten: Namen des Knopflochs in `aussparen` der Fläche)
+
+Knopfloch (Handbuch Kap. 23 „Adding buttonholes“): Vorlage aus `ButtonHoles.ESB`, auf Schlitzlänge gestreckt.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `abstand` | number |  | – | Raupenabstand in mm, 0,2 … 2,0 („Bead Stitch Spacing“); gilt nur für die Raupen, nicht die Enden. Ohne Angabe wie die Vorlage (0,5 mm; Heirloom 1,5 mm) |
+| `laenge` | number |  | `20.0` | Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original) |
+| `position` | Punkt |  | – | Mitte des Schlitzes [x, y] in mm (ohne Angabe: Rahmenmitte) |
+| `typ` | KnopflochTyp |  | `"standard"` | Typ (Standard „standard“ wie das Original) |
+| `winkel` | number |  | `90.0` | Richtung des Schlitzes in Grad („Angle“; 90 = senkrecht, Standard wie das Original) |
+
 ## 3. Auswahlwerte
 
 **Abdeckung** – Abdeckstich der Applikation
@@ -282,6 +294,18 @@ Fläche mit Füllmuster (Program Split / Fancy Fill; 242 Muster, Befehl `fuellmu
 
 - `"gerade"` – gerade Kanten (Wimpel, schräg): oben/unten = [links, rechts]
 - `"gebogen"` – gebogene Kanten (Bogen, Bauch): oben/unten = Mitte oder [links, Mitte, rechts]
+
+**KnopflochTyp** – Knopfloch-Typ (Dialog „Buttonhole Type“; Vorlagen aus `ButtonHoles.ESB`)
+
+- `"standard"` – Standard (zwei Raupen, Riegel oben und unten)
+- `"standard_schmal"` – Standard Narrow (schmale Raupen)
+- `"rund"` – Round (beide Enden rund)
+- `"dehnbar"` – Stretch (dehnbar, Zickzack-Läufe statt Satin)
+- `"heirloom"` – Heirloom (Raupen mit Kreuzstichen)
+- `"rundes_ende"` – Round End (ein Ende rund)
+- `"auge_eckig"` – Keyhole Square (Augenknopfloch, eckiges Auge)
+- `"auge_rund"` – Keyhole Round (Augenknopfloch, rundes Auge)
+- `"auge_spitz"` – Keyhole Point (Augenknopfloch, spitzes Auge)
 
 **MonogrammRahmen** – Rahmen um ein Monogramm
 

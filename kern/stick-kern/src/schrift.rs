@@ -236,6 +236,36 @@ pub fn saeule_seiten(u: &Umriss, w: &[Winkellinie]) -> Option<(Zug, Zug)> {
     Some((sa, sb))
 }
 
+/// Satinsäule aus **zwei Schienen** (InputCCurve mit EmbroideryPatch, z. B. Knopflöcher in `ButtonHoles.ESB`):
+/// Winkellinie k verbindet Schiene 1 bei Segment `a` + `x` mit Schiene 2 bei Segment `c` + `y`. Zwischen zwei
+/// Winkellinien werden beide Teilwege mit gleich vielen Punkten abgetastet (1 Punkt je mm, wie `saeule_seiten`).
+/// Ohne Winkellinien: beide Schienen ganz (Zuordnung nach relativer Bogenlänge beim Sticken).
+pub fn schienen_seiten(r1: &Umriss, r2: &Umriss, w: &[Winkellinie]) -> Option<(Zug, Zug)> {
+    if r1.knoten.len() < 2 || r2.knoten.len() < 2 {
+        return None;
+    }
+    if w.len() < 2 {
+        return Some((umriss_punkte(r1), umriss_punkte(r2)));
+    }
+    let (mut sa, mut sb) = (Vec::new(), Vec::new());
+    for k in 0..w.len() - 1 {
+        let (a0, a1) = (w[k].a as f64 + w[k].x, w[k + 1].a as f64 + w[k + 1].x);
+        let (b0, b1) = (w[k].c as f64 + w[k].y, w[k + 1].c as f64 + w[k + 1].y);
+        let wa = weg(r1, a0, a1, if a1 >= a0 { 1.0 } else { -1.0 });
+        let wb = weg(r2, b0, b1, if b1 >= b0 { 1.0 } else { -1.0 });
+        let (ka, kb) = (kumuliert(&wa), kumuliert(&wb));
+        let (la, lb) = (*ka.last().unwrap(), *kb.last().unwrap());
+        let teile = ((la.max(lb) / EINHEIT).ceil() as usize).max(1);
+        let letzte = k == w.len() - 2;
+        for i in 0..(teile + usize::from(letzte)) {
+            let t = i as f64 / teile as f64;
+            sa.push(bei(&wa, &ka, t * la));
+            sb.push(bei(&wb, &kb, t * lb));
+        }
+    }
+    Some((sa, sb))
+}
+
 /// Umriss als Punktliste (Alphabet-Einheiten), je Segment 12 Teilstücke.
 pub fn umriss_punkte(u: &Umriss) -> Vec<(f64, f64)> {
     let n = segmente(u);
@@ -1105,6 +1135,7 @@ fn satin_optionen(abstand: Option<f64>, auto_spacing: bool) -> SatinOptionen {
         kurzstiche: Some(true),
         step: false,
         zickzack: false,
+        zugausgleich: None,
     }
 }
 
@@ -1341,7 +1372,8 @@ mod tests {
                 faktor: Some(0.9),
                 kurzstiche: Some(true),
                 step: false,
-                zickzack: false
+                zickzack: false,
+                zugausgleich: None,
             }
         );
         // Maßstab 25/50 = 0,5: Säule 5 mm lang; zweites I beginnt bei −10 + 5 + 2,5 (10 % von 25 mm)

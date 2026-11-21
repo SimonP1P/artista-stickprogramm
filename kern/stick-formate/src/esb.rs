@@ -10,7 +10,11 @@ use flate2::read::ZlibDecoder;
 use std::collections::BTreeMap;
 use std::io::Read;
 use std::path::{Path, PathBuf};
-use stick_kern::schrift::{Alphabet, EINHEIT, Knoten, Stichart, Umriss, Winkellinie, Zeichen, ZeichenObjekt};
+use stick_kern::geometrie::{Linie, p};
+use stick_kern::knopfloch::{Lage, Teil, TeilArt, UmrissArt, Vorlage};
+use stick_kern::schrift::{
+    Alphabet, EINHEIT, Knoten, Stichart, Umriss, Winkellinie, Zeichen, ZeichenObjekt, schienen_seiten, umriss_punkte,
+};
 
 /// Format-Schlüssel der ESB-Alphabete (Format-ID 0xD2, Analyse/code/05)
 const FORMAT_SCHLUESSEL_ESB: u32 = 0x0024_70e8;
@@ -485,9 +489,305 @@ pub fn verzeichnis(ordner: &Path) -> Vec<(String, PathBuf)> {
     out
 }
 
-/// Die Alphabete, die die Texte eines Designs brauchen, aus einem Ordner laden (Name wie im Kopf oder Dateiname,
+// ---------------------------------------------------------------- Knopfloch-Vorlagen (ButtonHoles.ESB)
+
+/// Ein Objekt einer Knopfloch-Vorlage beim Lesen
+#[derive(Default)]
+struct RohTeil {
+    klasse: u32,
+    name: Option<String>,
+    formen: Vec<Umriss>,
+    /// Schienen des eingebetteten EmbroideryPatch (nur InputCCurve 0x0c)
+    schienen: Vec<Umriss>,
+    winkel: Vec<Winkellinie>,
+    im_kind: bool,
+    abstand: Option<f64>,
+    lauf: Option<f64>,
+    unterlagen: Vec<String>,
+    zugausgleich: Option<f64>,
+    kurzstiche: bool,
+    /// Blanket 0x1a (Stichart 0x2727) statt Satin
+    blanket: bool,
+    /// Lauf der Füllliste 0x2748 erwartet (der erste Lauf danach ist die Stichart, nicht der Verbinder)
+    in_fuellung: bool,
+}
+
+/// Eine Vorlage aus ButtonHoles.ESB lesen (Aufbau `Analyse_Teil3/19_knopfloecher.md` §2): Objekte ManualObject 0x0b,
+/// EmbroideryCurve 0x05, InputCCurve 0x0c (Basisklasse 0x05 direkt danach, eingebetteter EmbroideryPatch 0x06 mit
+/// Winkellinien und zwei Schienen); Name im Datensatz 0x28; Stichart über Verweise wie bei den Alphabeten.
+pub fn knopfloch_vorlage_lesen(d: &[u8]) -> Result<Vorlage, String> {
+    let kopf: Vec<u32> = (0..9).filter_map(|k| u32_bei(d, 4 * k)).collect();
+    if kopf.len() < 9 || kopf[0] != 0x0d0a_1a0d || kopf[1] != 0xeaae_8356 {
+        return Err("Zeichen-Kopf ungültig".into());
+    }
+    let folge = saetze_lesen(d, 0x24);
+    let mut grundlinie: Option<[f64; 4]> = None;
+    let mut name = String::new();
+    let mut teile: Vec<RohTeil> = Vec::new();
+    let mut vorige = 0u32;
+    for (idx, s) in folge.iter().enumerate() {
+        if !s.verweis {
+            match s.klasse {
+                0x2e if grundlinie.is_none() => {
+                    let mut i = 0;
+                    let w: Vec<f64> = (0..4)
+                        .filter_map(|_| packed_wort_s(&s.daten, &mut i))
+                        .map(|v| v as f64)
+                        .collect();
+                    if w.len() == 4 {
+                        grundlinie = Some([w[0], w[1], w[2], w[3]]);
+                    }
+                    continue;
+                }
+                0x3a if name.is_empty() => {
+                    let n = u32_bei(&s.daten, 0).unwrap_or(0) as usize;
+                    let utf: Vec<u16> = (0..n)
+                        .filter_map(|k| {
+                            s.daten
+                                .get(4 + 2 * k..6 + 2 * k)
+                                .map(|b| u16::from_le_bytes([b[0], b[1]]))
+                        })
+                        .collect();
+                    name = String::from_utf16_lossy(&utf);
+                    continue;
+                }
+                // 0x05 direkt hinter 0x0c ist dessen Basisklasse
+                0x05 if idx > 0 && !folge[idx - 1].verweis && folge[idx - 1].klasse == 0x0c => continue,
+                0x05 | 0x0b | 0x0c | 0x08 => {
+                    teile.push(RohTeil {
+                        klasse: s.klasse,
+                        ..Default::default()
+                    });
+                    continue;
+                }
+                0x06 => {
+                    // Kind einer InputCCurve (deren Schienen) – oder eigenständige Säule mit zwei Schienen
+                    match teile.last_mut().filter(|t| t.klasse == 0x0c && !t.im_kind) {
+                        Some(t) => {
+                            t.im_kind = true;
+                            t.winkel = winkellinien(&s.daten);
+                        }
+                        None => teile.push(RohTeil {
+                            klasse: 0x06,
+                            winkel: winkellinien(&s.daten),
+                            ..Default::default()
+                        }),
+                    }
+                    continue;
+                }
+                0x28 => {
+                    if let Some(t) = teile.last_mut().filter(|t| !t.im_kind && t.name.is_none()) {
+                        t.name = Some(String::from_utf8_lossy(&s.daten).into_owned());
+                    }
+                    continue;
+                }
+                0x01 => {
+                    let mut i = 0;
+                    if let Some(t) = teile.last_mut()
+                        && let Some(f) = packed(&s.daten, &mut i)
+                        && let Some(kn) = knoten_lesen(&s.daten, &mut i)
+                    {
+                        let u = Umriss {
+                            geschlossen: f & 1 == 1,
+                            knoten: kn,
+                        };
+                        if t.im_kind {
+                            t.schienen.push(u)
+                        } else {
+                            t.formen.push(u)
+                        }
+                    }
+                    continue;
+                }
+                _ => {}
+            }
+        }
+        let Some(t) = teile.last_mut() else { continue };
+        let mut blaetter = Vec::new();
+        aufloesen(&folge, idx, 0, &mut blaetter);
+        for &b in &blaetter {
+            let sb = &folge[b];
+            match sb.klasse {
+                0x15 if (vorige == 0x16 || vorige == 0x1a) && t.abstand.is_none() => {
+                    t.abstand = u32_bei(&sb.daten, 0).map(|v| v as f64 / EINHEIT)
+                }
+                0x1a => t.blanket = true,
+                0x0d if sb.daten.get(0..2) == Some(&[0x48, 0x27]) => t.in_fuellung = true,
+                // Verweise auf Verbinder ziehen fremde Listen mit; die eigene Liste des Objekts kommt zuletzt
+                0x18 | 0x19 if t.in_fuellung => {
+                    t.lauf = u32_bei(&sb.daten, 0).map(|v| v as f64 / EINHEIT);
+                    t.in_fuellung = false;
+                }
+                // Zugausgleich (float, Einheiten): 31 = 0,17 mm je Seite, am Musterdesign gemessen (Bericht 19 §3)
+                0x8c if t.zugausgleich.is_none() => {
+                    t.zugausgleich = sb
+                        .daten
+                        .get(0..4)
+                        .map(|x| f32::from_le_bytes([x[0], x[1], x[2], x[3]]) as f64 / EINHEIT)
+                }
+                0x23 => t.kurzstiche = true,
+                0x1d..=0x20 => {
+                    let n = match sb.klasse {
+                        0x1d => "zickzack",
+                        0x1e => "doppelzickzack",
+                        0x1f => "mittellauf",
+                        _ => "edge_walk",
+                    };
+                    if !t.unterlagen.iter().any(|u| u == n) {
+                        t.unterlagen.push(n.into());
+                    }
+                }
+                _ => {}
+            }
+            vorige = sb.klasse;
+        }
+    }
+    let [x1, y1, x2, y2] = grundlinie.ok_or("Grundlinie fehlt (0x2e)")?;
+    // Vorlage → mm, Ursprung unterer Schlitzpunkt, Schlitz längs +y
+    let w = std::f64::consts::FRAC_PI_2 - (y2 - y1).atan2(x2 - x1);
+    let (sn, cs) = w.sin_cos();
+    let abb = |q: (f64, f64)| {
+        let (x, y) = ((q.0 - x1) / EINHEIT, (q.1 - y1) / EINHEIT);
+        p(x * cs - y * sn, x * sn + y * cs)
+    };
+    let lin = |l: &[(f64, f64)]| -> Linie { l.iter().map(|&q| abb(q)).collect() };
+    let mut vorlage = Vorlage {
+        name,
+        laenge: (x2 - x1).hypot(y2 - y1) / EINHEIT,
+        teile: Vec::new(),
+        umrisse: Vec::new(),
+    };
+    for t in teile.into_iter().filter(|t| t.klasse != 0x08) {
+        let n = t.name.clone().unwrap_or_default();
+        let kern = n.trim_start_matches('<').trim_end_matches('>');
+        let mut z = kern.chars();
+        let lage = match z.next() {
+            Some('U') => Lage::Oben,
+            Some('B') => Lage::Raupe,
+            _ => Lage::Unten,
+        };
+        let umriss_art = match z.next() {
+            Some('E') => Some(UmrissArt::Aussen),
+            Some('I') => Some(UmrissArt::Innen),
+            Some('M') => Some(UmrissArt::Mitte),
+            _ => None,
+        };
+        if let Some(a) = umriss_art {
+            for f in &t.formen {
+                vorlage.umrisse.push((a, lage, lin(&umriss_punkte(f))));
+            }
+            continue;
+        }
+        let art = match t.klasse {
+            0x0b => {
+                let Some(f) = t.formen.first() else { continue };
+                TeilArt::Handstiche(f.knoten.iter().map(|k| abb(k.punkt)).collect())
+            }
+            0x0c | 0x06 => {
+                // eigenständige Säule (0x06): Schienen sind ihre eigenen Formen
+                let schienen = if t.klasse == 0x06 { &t.formen } else { &t.schienen };
+                let (Some(r1), Some(r2)) = (schienen.first(), schienen.get(1)) else {
+                    continue;
+                };
+                let Some((a, b)) = schienen_seiten(r1, r2, &t.winkel) else {
+                    continue;
+                };
+                if t.blanket {
+                    // Rücken an der Schiene näher am Schlitz (Musterdesign: Heirloom, Rücken an der Schlitzkante)
+                    let (a, b) = (lin(&a), lin(&b));
+                    let mitte_x = |l: &Linie| l.iter().map(|q| q.x.abs()).sum::<f64>() / l.len().max(1) as f64;
+                    let (ruecken, aussen) = if mitte_x(&a) <= mitte_x(&b) { (a, b) } else { (b, a) };
+                    vorlage.teile.push(Teil {
+                        lage,
+                        art: TeilArt::Blanket {
+                            ruecken,
+                            aussen,
+                            abstand: t.abstand,
+                        },
+                    });
+                    continue;
+                }
+                TeilArt::Satin {
+                    seite_a: lin(&a),
+                    seite_b: lin(&b),
+                    abstand: t.abstand,
+                    zugausgleich: t.zugausgleich,
+                    kurzstiche: t.kurzstiche,
+                    unterlagen: t.unterlagen.clone(),
+                }
+            }
+            _ => {
+                let Some(f) = t.formen.first() else { continue };
+                // Knoten ohne Anfasser = Eckpunkt (Einstich), Kurven mit 12 Teilstücken
+                let pts = umriss_punkte(f);
+                let ecken: Vec<bool> = (0..pts.len())
+                    .map(|i| {
+                        (i % 12 == 0 && f.knoten.get(i / 12).is_none_or(|k| k.ein.is_none() && k.aus.is_none()))
+                            || i == pts.len() - 1
+                    })
+                    .collect();
+                TeilArt::Lauf {
+                    punkte: lin(&pts),
+                    ecken,
+                    laenge: t.lauf,
+                }
+            }
+        };
+        vorlage.teile.push(Teil { lage, art });
+    }
+    Ok(vorlage)
+}
+
+/// Alle Knopfloch-Vorlagen aus `ButtonHoles.ESB` (Name → Vorlage, z. B. „Standard“).
+pub fn knopfloecher_laden(pfad: &Path) -> Result<BTreeMap<String, Vorlage>, String> {
+    let mut datei = cfb::open(pfad).map_err(|e| format!("{}: {e}", pfad.display()))?;
+    let eintraege: Vec<String> = datei
+        .read_root_storage()
+        .filter(|e| e.is_stream())
+        .map(|e| e.name().to_string())
+        .collect();
+    let mut out = BTreeMap::new();
+    for n in eintraege {
+        if n.ends_with("HEADER") || n == "AUX_INFO" {
+            continue;
+        }
+        let mut roh = Vec::new();
+        datei
+            .open_stream(format!("/{n}"))
+            .and_then(|mut s| s.read_to_end(&mut roh))
+            .map_err(|e| format!("{}: Stream {n}: {e}", pfad.display()))?;
+        if let Some(d) = stream_entschluesseln(&roh)
+            && let Ok(v) = knopfloch_vorlage_lesen(&d)
+        {
+            out.insert(v.name.clone(), v);
+        }
+    }
+    if out.is_empty() {
+        return Err(format!("{}: keine Knopfloch-Vorlagen gefunden", pfad.display()));
+    }
+    Ok(out)
+}
+
+/// Pfad von `ButtonHoles.ESB` im Alphabet-Ordner (ohne Groß-/Kleinschreibung).
+pub fn knopfloch_datei(ordner: &Path) -> Option<PathBuf> {
+    std::fs::read_dir(ordner).ok()?.flatten().map(|e| e.path()).find(|p| {
+        p.file_name()
+            .is_some_and(|n| n.to_string_lossy().eq_ignore_ascii_case("ButtonHoles.ESB"))
+    })
+}
+
+/// Die Alphabete (und Knopfloch-Vorlagen), die das Design braucht, aus einem Ordner laden (Name wie im Kopf oder Dateiname,
 /// ohne Groß-/Kleinschreibung).
 pub fn design_alphabete_laden(design: &mut stick_kern::Design, ordner: &Path) -> Result<(), String> {
+    if design.knopfloch_bedarf() && design.knopfloecher.is_empty() {
+        let p = knopfloch_datei(ordner).ok_or_else(|| {
+            format!(
+                "Knopfloch-Vorlagen ButtonHoles.ESB nicht im Ordner {} gefunden",
+                ordner.display()
+            )
+        })?;
+        design.knopfloecher = knopfloecher_laden(&p)?;
+    }
     let namen = design.alphabet_namen();
     if namen.is_empty() {
         return Ok(());
@@ -534,6 +834,65 @@ mod tests {
         assert_eq!(packed(&d, &mut i), Some(0x37));
         assert_eq!(packed(&d, &mut i), Some(0x27 | (2 << 7)));
         assert_eq!(i, 3);
+    }
+
+    /// Mit der Original-CD: alle 9 Knopfloch-Vorlagen lesen (Bericht 19 §2).
+    #[test]
+    fn knopfloecher_von_der_cd() {
+        let p = Path::new("F:/Entwicklung/artista_ziel/Main/PROGRAM/wletter/ButtonHoles.ESB");
+        if !p.exists() {
+            return;
+        }
+        let v = knopfloecher_laden(p).unwrap();
+        for (_, name, _, _) in stick_kern::knopfloch::TYPEN {
+            let t = v.get(name).unwrap_or_else(|| panic!("{name} fehlt"));
+            assert!(!t.teile.is_empty(), "{name}: keine Teile");
+            assert!(
+                t.umrisse.iter().any(|u| u.0 == UmrissArt::Mitte),
+                "{name}: kein mittlerer Umriss"
+            );
+        }
+        let s = &v["Standard"];
+        assert!((s.laenge - 19.36).abs() < 0.01, "{}", s.laenge);
+        // Standard: Vernähen, Lauf, Raupe, Lauf, Riegel oben, Raupe, Riegel unten, Vernähen
+        let arten: String = s
+            .teile
+            .iter()
+            .map(|t| match t.art {
+                TeilArt::Handstiche(_) => 'h',
+                TeilArt::Lauf { .. } => 'l',
+                TeilArt::Satin { .. } => 's',
+                TeilArt::Blanket { .. } => 'b',
+            })
+            .collect();
+        assert_eq!(arten, "hlslhshh");
+        let TeilArt::Satin {
+            abstand, zugausgleich, ..
+        } = &s.teile[2].art
+        else {
+            panic!()
+        };
+        assert_eq!(*abstand, Some(0.5));
+        assert!((zugausgleich.unwrap() - 31.0 / 180.0).abs() < 1e-6);
+        // Heirloom: Raupen als Blanket 1,5 mm; Stretch: Zickzack-Läufe 4,0 mm; Keyhole Point: Spitze als Säulen
+        assert!(
+            v["Heirloom"]
+                .teile
+                .iter()
+                .any(|t| matches!(t.art, TeilArt::Blanket { abstand: Some(a), .. } if (a - 1.5).abs() < 1e-9))
+        );
+        assert!(
+            v["Stretch"]
+                .teile
+                .iter()
+                .any(|t| matches!(t.art, TeilArt::Lauf { laenge: Some(l), .. } if (l - 4.0).abs() < 1e-9))
+        );
+        let spitz = v["KeyholePoint"]
+            .teile
+            .iter()
+            .filter(|t| matches!(t.art, TeilArt::Satin { .. }))
+            .count();
+        assert_eq!(spitz, 6);
     }
 
     /// Mit der Original-CD (entpackt unter F:\Entwicklung\artista_ziel): Drifter vollständig lesen.

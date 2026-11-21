@@ -710,6 +710,66 @@ export type HuelleJson = {
   unten?: (Griffe | null);
 };
 
+/** Knopfloch (Handbuch Kap. 23 „Adding buttonholes“): Vorlage aus `ButtonHoles.ESB`, auf Schlitzlänge gestreckt. */
+export type KnopflochJson = {
+  /**
+   * Raupenabstand in mm, 0,2 … 2,0 („Bead Stitch Spacing“); gilt nur für die Raupen, nicht die Enden. Ohne Angabe
+   * wie die Vorlage (0,5 mm; Heirloom 1,5 mm)
+   */
+  abstand?: number | null;
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)
+   * @default 20.0
+   */
+  laenge?: number;
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  /** Mitte des Schlitzes [x, y] in mm (ohne Angabe: Rahmenmitte) */
+  position?: (Punkt | null);
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * Typ (Standard „standard“ wie das Original)
+   * @default "standard"
+   */
+  typ?: KnopflochTyp;
+  /**
+   * Richtung des Schlitzes in Grad („Angle“; 90 = senkrecht, Standard wie das Original)
+   * @default 90.0
+   */
+  winkel?: number;
+};
+
+/** Knopfloch-Typ (Dialog „Buttonhole Type“; Vorlagen aus `ButtonHoles.ESB`) */
+export type KnopflochTyp = ("standard" | "standard_schmal" | "rund" | "dehnbar" | "heirloom" | "rundes_ende" | "auge_eckig" | "auge_rund" | "auge_spitz");
+
 /** Laufstich bzw. Dreifachstich entlang einer Linie. */
 export type LaufJson = {
   /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
@@ -961,6 +1021,8 @@ export type ObjektJson = ((LaufJson & {
   art: "applikation";
 }) | (MusterJson & {
   art: "muster";
+}) | (KnopflochJson & {
+  art: "knopfloch";
 }));
 
 /** Ein einstellbarer Wert des Parameterkatalogs (`PARAMETER.md`). */

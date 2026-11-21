@@ -14,10 +14,10 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
-| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.5 ✅, 4b.17 SVG einlesen ✅, 4b.8/4b.11 begonnen, 4b.6–4b.15 offen · Parameterkatalog `PARAMETER.md` (156 Parameter) | 🟡 |
+| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.17 SVG einlesen ✅, 4b.8/4b.11 begonnen, 4b.7–4b.15 offen · Parameterkatalog `PARAMETER.md` (161 Parameter) | 🟡 |
 | 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
 
-## Übergabe für die nächste Sitzung (Stand 21.11.2026)
+## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
 
 **Zuletzt erledigt (20.11.):** Phase 4b.1–4b.4 (Transformationen, Schrift vollständig, Linien, Flächen), Messungen an
@@ -41,8 +41,20 @@ Originals (Vorlagen ↔ Stile `<PRESET_EASYSTITCH>` über die Flags belegt; Lauf
 Flächen 0,40 mm bestätigt), Dicke = größter Innenkreis (`saeulen::dicke`, eigene Festlegung), Überdeckung aussparen,
 Closest Join; Bericht `Analyse_Teil3/18`. Offen dort §5 (Thin/Thick Lines, Breitenmaß des Originals).
 
-**Nächster Schritt:** die übrigen Blöcke in Tabellen-Reihenfolge: **4b.6 Knopflöcher**, 4b.7 Motive, 4b.8 Effekte …
-Dabei jeweils CLAUDE.md §4 Regel 7 (Schnittstelle) beachten.
+**Erledigt 21.11. (spät): Satin „gerade quer + schräg vor“** – gegen die gespeicherten Stichlinien von 125 Säulen
+gemessen (`Analyse_Teil3/04` §5, `art_satinmuster.py`): A und B einer Stelle liegen auf derselben Stichlinie. Im Kern für
+alle Satinsäulen (Referenz-Stufe 11); Step-Reihen in Säulen und Zickzack 0x2724 unverändert (nicht gemessen).
+
+**Erledigt 21.11. (spät): 4b.6 Knopflöcher** – 9 Typen aus `ButtonHoles.ESB`, Verfahren und Standardwerte aus MOD1,
+gegen das Musterdesign `Buttonholes.ART` gemessen; JSON `"art": "knopfloch"`, CLI `stick knopfloecher`, Beispiel
+`stickprogramm/beispiele/knopfloecher.json`; Bericht `Analyse_Teil3/19`. Offen dort §6 (Merge im Code bestätigen,
+Vernähen je Teil).
+
+**Neue UI-Entwürfe** liegen seit 21.11. auf GitHub: `UI_Mockups/2026-11-21_final/` (README, UEBERGABE*.md, drei
+`.dc.html`) – noch nicht angesehen/abgeglichen (Merkliste M3).
+
+**Nächster Schritt:** die übrigen Blöcke in Tabellen-Reihenfolge: **4b.7 Motive** (Pattern Run/Fill, Kap. 25), 4b.8
+Effekte … Dabei jeweils CLAUDE.md §4 Regel 7 (Schnittstelle) beachten.
 
 **Hinweise aus der letzten Sitzung (20.11.):**
 - **Freigabe des Nutzers:** Programmcode des Originals darf bei Bedarf entschlüsselt werden (ARTISTA.EXE ist mit
@@ -101,6 +113,7 @@ Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Te
 | V5 | Dauerhaft speichern (0x10 → schreiben → 0x200), danach in der Designliste und am Display prüfen | Person: Display, ggf. löschen am Gerät | ⬜ (eigene Zustimmung nötig) |
 | V7 | **Platzierung prüfen:** ein Design außerhalb der Rahmenmitte mit `"start": "designmitte"` senden – landet es an der gezeichneten Stelle oder zentriert? Entscheidet den Standard für `start`/`ende` | Person: Display/Rahmen ansehen | ⬜ |
 | V8 | **SVG-Probe:** `stickprogramm/beispiele/blume.svg` mit `stick svg` einlesen (Blume aus Inkscape: Tatami mit Aussparung, Satinflächen, Laufstiche, Ring mit Loch; 90 × 84 mm, Rahmen 130 × 100) und sticken – passen Flächen, Satin der Blätter, Aussparungen ohne Lücken? Foto | Person, Material (Stoff + Vlies) | ⬜ (vorbereitet 21.11.) |
+| V9 | **Knopflöcher:** `stickprogramm/beispiele/knopfloecher.json` (alle 9 Typen + 2 eingearbeitete in einer Fläche; mit `--alphabete …/wletter` erzeugen) auf festem Stoff mit Vlies sticken, Schlitz aufschneiden – Raupen dicht genug, Riegel fest, Fläche am Schlitz sauber? Foto | Person, Material (Stoff + Vlies) | ⬜ (vorbereitet 21.11.) |
 | V6 | **Prüfmuster 2 – neue Sticharten** (`stickprogramm/beispiele/pruefmuster2.json`: Füllmuster Raute + Herz, Tatami-Kreis mit ausgesparter Schrift „Ab“, Applikation „Trim in Place“ mit Blanket, Blanket-Linie; 78 × 82 mm, 8 Farben) sticken und fotografieren: `START_STICKEN.bat Pruefmuster2_puffer.bin` – bei der Applikation nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie zuschneiden | Person, Material (Stoff + Vlies + Applikationsstoff) | ⬜ (vorbereitet 20.11.) |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
@@ -203,7 +216,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.5 | **Reihenfolge** | nach Farbe, an Anfang/Ende, automatisch – mit Prüfung, ob sich Objekte überdecken (Kap. 14); Ein-/Ausstich je Objekt setzbar | ✅ 20.11. `stick_kern::reihenfolge` + CLI `stick reihenfolge`: wie ausgewählt (MOD1 Resequence: Block an die Stelle des ersten ausgewählten Objekts), an Anfang/Ende, nach Nummer, nach Farbe (Farbfolge wählbar); **Überdeckungsprüfung = eigene Erweiterung** (Original prüft nicht): Warnung, wenn ein Objekt unter eine Fläche gerät, und Sortieren nach Farbe, das Überdeckungen beachtet (`--ueberdeckung`) · ✅ Ein-/Ausstich je Objekt (`einstich`/`ausstich`) und Closest Join (`kuerzeste_verbindung`, MOD1/GEOMETRY FindExitEntry) · gemessen: Original stickt ohne Eingriff wie digitalisiert (Bericht 16) · „automatisch“ im Handbuch Kap. 14 = Blackwork Run → 4b.9 |
 | 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ✅ 21.11.: `"einstellungen"` an jedem Objekt, Aufbau wie am Design ohne `stoff` (Stoff → Design → Objekt → Felder direkt am Objekt); gilt für Lauf, Satin, Tatami, Unterlagen **und Verbinder** (Vernähen je Objekt, `wege_verbinden_je_teil`); Beleg: jedes ART-Objekt trägt eine eigene Kopie des Stil-Baums (`Analyse_Teil3/03` §4, hoch); `Design::einstellungen_fuer(nr)`; Katalog: 66 Parameter Ebene „beide“ mit `json_objekt` = `einstellungen.…`; Schema-Typ `EinstellungenJson` |
 | 4b.17 | **SVG-Import** (Erweiterung, Wunsch Nutzer 20.11.: in Inkscape zeichnen → laden → sticken) | SVG lesen (freie Bibliothek `usvg`: Gruppen, Verschiebungen, Stile, Formen → Pfade); gefüllte Pfade → Flächen mit Löchern (Füllregel), Konturen → Lauf/Dreifach/Satinlinie nach Strichbreite; Stichart nach Breite wie EasyStitch des Originals (Linie ≤ 0,3 mm Lauf, ≤ 2 mm kräftige Linie; Fläche ≤ 8 mm Satin, ≤ 12 mm Tatami 1, darüber Tatami 2); Zeichenreihenfolge = Stickreihenfolge, Überdeckungen aussparen, Farben → Garnkarte, Maßstab in mm (viewBox/width). Hinweise: Text in Pfade umwandeln, Verläufe/Transparenz → Hauptfarbe; schmale Flächen als Satin brauchen eine berechnete Stichrichtung (s. u.). CLI `stick svg`, später Befehl für die App. **Baustein „Satin-Stichrichtung automatisch“ (gehört dazu, zuerst bauen):** für eine beliebige schmale Form Mittellinie und Winkellinien selbst bestimmen (bei den Alphabeten liefert das Original sie mit), daraus Seiten A/B wie bei den Säulen; Verzweigungen (z. B. „Y“-Form) in mehrere Säulen teilen. Vorbild im Original: Auto Digitizer / EasyStitch „Satin“ für Flächen ≤ 8 mm – Verfahren dort nachsehen (Code, Musterdesigns aus „AutoDigitizing“). Wird auch für 4b.11 (Bild → Umrisse mit Satin) gebraucht | 🟡 Baustein ✅ 20.11.: `stick_kern::saeulen` nach EZSTITCH (Abtastung 1 mm/0,1 × Breite/0,05 mm, Triangulation, Sternschnitt an Abzweigungen, Stichlinien nach Krümmung), EmbroideryPatch-Stichlinien entschlüsselt, an 54 Säulen des Auto Digitizers geprüft (54/54 eine Säule, Richtung Median 4,4°), JSON `satinflaeche`, TrueType `"stichart": "satin"` (Break Angle 87°), CLI `stick saeulen` (Bericht 17) · ✅ 21.11. **SVG lesen**: `stick-vektor::svg` (`usvg`), Stichart nach Breite `stick-vektor::easystitch` mit den Werten der EasyStitch-Stile, `saeulen::dicke`, Überdeckung aussparen, Closest Join, CLI `stick svg`, Befehl `svg_lesen` (Bericht 18) |
-| 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ⬜ |
+| 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ✅ 21.11.: 9 Typen = Zeichen von `ButtonHoles.ESB` (Teile `<L>`/`<U>`/`<B>`, Umrisse E/I/M), Länge/Raupenabstand/Winkel und Standardwerte (20 mm, 0,5 mm, 90°) aus MOD1, gegen `Samples/Reference/Buttonholes.ART` gemessen (Median 0,04–0,15 mm); `stick_kern::knopfloch`, `esb::knopfloecher_laden`, `"art": "knopfloch"`, CLI `stick knopfloecher`; Einarbeiten über `aussparen` mit dem Mittelumriss (Sicherheit niedrig, Bericht 19 §5). Dabei gefunden und für alle Satinsäulen umgesetzt: **Satin gerade quer + schräg vor** (`Analyse_Teil3/04` §5, Referenz-Stufe 11) |
 | 4b.7 | **Motive** | Pattern Run (Motivlinie), Pattern Fill (Motivfüllung), eigene Muster/Sets (Kap. 25) | ⬜ |
 | 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | 🟡 Loft ✅ (= Auto Jump mit kleinem Höchststich, Handbuch) · Rest ⬜ |
 | 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ⬜ |

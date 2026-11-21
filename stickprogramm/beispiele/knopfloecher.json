@@ -1,0 +1,140 @@
+{
+  "name": "Knopfloecher",
+  "rahmen": "artista 130 x 100 Rotated",
+  "stoff": "Woven Medium Weight",
+  "objekte": [
+    {
+      "art": "tatami",
+      "name": "Leiste",
+      "farbe": "#3060a0",
+      "umriss": {
+        "rechteck": {
+          "mitte": [
+            0,
+            -25
+          ],
+          "breite": 70,
+          "hoehe": 30
+        }
+      },
+      "aussparen": [
+        "Loch links",
+        "Loch rechts"
+      ]
+    },
+    {
+      "art": "knopfloch",
+      "typ": "standard",
+      "position": [
+        -36,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "standard"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "standard_schmal",
+      "position": [
+        -27,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "standard_schmal"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "rund",
+      "position": [
+        -18,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "rund"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "dehnbar",
+      "position": [
+        -9,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "dehnbar"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "heirloom",
+      "position": [
+        0,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "heirloom"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "rundes_ende",
+      "position": [
+        9,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "rundes_ende"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "auge_eckig",
+      "position": [
+        18,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "auge_eckig"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "auge_rund",
+      "position": [
+        27,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "auge_rund"
+    },
+    {
+      "art": "knopfloch",
+      "typ": "auge_spitz",
+      "position": [
+        36,
+        20
+      ],
+      "farbe": "#202020",
+      "name": "auge_spitz"
+    },
+    {
+      "art": "knopfloch",
+      "name": "Loch links",
+      "position": [
+        -15,
+        -25
+      ],
+      "winkel": 0,
+      "laenge": 18,
+      "farbe": "#f0f0f0"
+    },
+    {
+      "art": "knopfloch",
+      "name": "Loch rechts",
+      "typ": "auge_rund",
+      "position": [
+        15,
+        -25
+      ],
+      "winkel": 0,
+      "laenge": 18,
+      "abstand": 0.4,
+      "farbe": "#f0f0f0"
+    }
+  ]
+}

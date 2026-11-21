@@ -121,6 +121,30 @@ auswahl! {
 }
 
 auswahl! {
+    /// Knopfloch-Typ (Dialog „Buttonhole Type“; Vorlagen aus `ButtonHoles.ESB`)
+    pub enum KnopflochTyp {
+        /// Standard (zwei Raupen, Riegel oben und unten)
+        Standard = "standard",
+        /// Standard Narrow (schmale Raupen)
+        StandardSchmal = "standard_schmal",
+        /// Round (beide Enden rund)
+        Rund = "rund",
+        /// Stretch (dehnbar, Zickzack-Läufe statt Satin)
+        Dehnbar = "dehnbar",
+        /// Heirloom (Raupen mit Kreuzstichen)
+        Heirloom = "heirloom",
+        /// Round End (ein Ende rund)
+        RundesEnde = "rundes_ende",
+        /// Keyhole Square (Augenknopfloch, eckiges Auge)
+        AugeEckig = "auge_eckig",
+        /// Keyhole Round (Augenknopfloch, rundes Auge)
+        AugeRund = "auge_rund",
+        /// Keyhole Point (Augenknopfloch, spitzes Auge)
+        AugeSpitz = "auge_spitz",
+    }
+}
+
+auswahl! {
     /// Ausrichtung eines Texts
     pub enum Ausrichtung {
         Links = "links",
@@ -824,6 +848,39 @@ pub struct MusterJson {
     pub g: Gemeinsam,
 }
 
+/// Knopfloch (Handbuch Kap. 23 „Adding buttonholes“): Vorlage aus `ButtonHoles.ESB`, auf Schlitzlänge gestreckt.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct KnopflochJson {
+    /// Typ (Standard „standard“ wie das Original)
+    #[serde(default = "knopfloch_typ")]
+    pub typ: KnopflochTyp,
+    /// Mitte des Schlitzes [x, y] in mm (ohne Angabe: Rahmenmitte)
+    #[serde(default)]
+    pub position: Option<Punkt>,
+    /// Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)
+    #[serde(default = "knopfloch_laenge")]
+    pub laenge: f64,
+    /// Raupenabstand in mm, 0,2 … 2,0 („Bead Stitch Spacing“); gilt nur für die Raupen, nicht die Enden. Ohne Angabe
+    /// wie die Vorlage (0,5 mm; Heirloom 1,5 mm)
+    #[serde(default)]
+    pub abstand: Option<f64>,
+    /// Richtung des Schlitzes in Grad („Angle“; 90 = senkrecht, Standard wie das Original)
+    #[serde(default = "knopfloch_winkel")]
+    pub winkel: f64,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+fn knopfloch_typ() -> KnopflochTyp {
+    KnopflochTyp::Standard
+}
+fn knopfloch_laenge() -> f64 {
+    crate::knopfloch::STANDARD_LAENGE
+}
+fn knopfloch_winkel() -> f64 {
+    crate::knopfloch::STANDARD_WINKEL
+}
+
 /// Ein Stickobjekt. `art` wählt die Objektart; Reihenfolge in `objekte` = Stickreihenfolge.
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 #[serde(tag = "art", rename_all = "lowercase")]
@@ -852,6 +909,8 @@ pub enum ObjektJson {
     Applikation(ApplikationJson),
     /// Fläche mit Füllmuster
     Muster(MusterJson),
+    /// Knopfloch (9 Typen; in Flächen einarbeiten: Namen des Knopflochs in `aussparen` der Fläche)
+    Knopfloch(KnopflochJson),
 }
 
 impl ObjektJson {
@@ -869,6 +928,7 @@ impl ObjektJson {
             ObjektJson::Monogramm(x) => &x.g,
             ObjektJson::Applikation(x) => &x.g,
             ObjektJson::Muster(x) => &x.g,
+            ObjektJson::Knopfloch(x) => &x.g,
         }
     }
 }

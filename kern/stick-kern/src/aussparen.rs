@@ -83,6 +83,9 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
             ..
         } if punkte.len() >= 3 => flaeche(punkte, &[]),
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| bedeckt(&t.art, u)).collect(),
+        // Knopfloch: Loch = mittlerer Umriss (Merge Buttonhole, `knopfloch.rs`), sonst die Teile
+        ObjektArt::Kette { loch: Some(l), .. } => flaeche(l, &[]),
+        ObjektArt::Kette { teile, .. } => teile.iter().flat_map(|t| bedeckt(&t.art, u)).collect(),
         ObjektArt::Wendefuellung { umriss, .. } => flaeche(umriss, &[]),
         ObjektArt::SatinFlaeche { umriss, loecher, .. } => flaeche(umriss, loecher),
         ObjektArt::Blanket {
@@ -135,6 +138,7 @@ pub fn belegt(art: &ObjektArt) -> Vec<Kontur> {
             saeule(&a, &b, 0.0)
         }
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| belegt(&t.art)).collect(),
+        ObjektArt::Kette { teile, .. } => teile.iter().flat_map(|t| belegt(&t.art)).collect(),
         _ => bedeckt(art, 0.0),
     }
 }

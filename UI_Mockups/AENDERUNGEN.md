@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Knopflöcher (ROADMAP 4b.6, Commit folgt)
+- **Neu:** Objektart `knopfloch` mit `typ` (9 Werte: `standard`, `standard_schmal`, `rund`, `dehnbar`, `heirloom`,
+  `rundes_ende`, `auge_eckig`, `auge_rund`, `auge_spitz`), `position` (Mitte des Schlitzes), `laenge` (20 mm, 3–60),
+  `winkel` (90° = senkrecht), `abstand` (Raupenabstand, ohne Angabe wie die Vorlage) – Felder in `SCHNITTSTELLE.md`.
+- **Einarbeiten** („Merge Buttonhole“): Name des Knopflochs in `aussparen` einer Tatami-/Musterfläche.
+- Braucht den Alphabet-Ordner (lädt `ButtonHoles.ESB` wie die Alphabete) – keine neuen Befehle.
+- `design_formen`: Knopfloch liefert die Formen seiner Teile und den Mittelumriss als `loch`.
+- **Oberfläche:** Werkzeug „Knopfloch einfügen“ (Klick = Schlitzmitte), Eigenschaften Typ (mit Vorschaubildern),
+  Länge, Winkel (Griffe zum Drehen/Strecken), Raupenabstand im Expertenmodus; „In Fläche einarbeiten“ setzt
+  `aussparen` an der Fläche darunter. Beschreibung: `FUNKTIONEN.md` §3.
+
 ## 21.11.2026 – Satin sticht „gerade quer + schräg vor“ (Messung, Commit ccd9c68)
 - **Geändert:** nur die berechneten Stiche jeder Satinsäule (A und B einer Stelle auf derselben Stichlinie, wie im
   Original gemessen, `Analyse_Teil3/04` §5). Keine neuen Felder oder Befehle.

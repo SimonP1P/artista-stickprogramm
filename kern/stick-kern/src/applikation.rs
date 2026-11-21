@@ -142,6 +142,7 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                     kurzstiche: Some(false),
                     step: false,
                     zickzack: false,
+                    zugausgleich: None,
                 },
             },
         });
@@ -172,6 +173,7 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                     kurzstiche: None,
                     step: false,
                     zickzack: false,
+                    zugausgleich: None,
                 },
             }
         };
