@@ -1479,8 +1479,13 @@ impl Design {
             }
             let step = auto && laengster > crate::schrift::AUTO_STEP_AB_MM;
             if step {
+                let ttf = matches!(o.art, ObjektArt::TtfText { .. });
                 for &j in &idx {
-                    out[j] = crate::schrift::auf_step(out[j].clone());
+                    out[j] = if ttf {
+                        crate::schrift::auf_tatami(out[j].clone())
+                    } else {
+                        crate::schrift::auf_step(out[j].clone())
+                    };
                 }
             }
             info.push((nr, laengster, step));

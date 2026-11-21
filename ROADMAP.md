@@ -295,7 +295,8 @@ in Satin hatten keine Unterlage – jetzt wie im Original Auto-Unterlage des Sti
 Arten, auch Stichart `auto` für Computer-Schriften. **Vorwahl für neue Texte, Computer-Schriften und Monogramme:
 Mittellauf + Zickzack** (Entscheidung Nutzer, eigene Festlegung); einfacher Modus Häkchen „Stabilisieren“, Experte zwei
 Häkchen. `schrift_wechseln` behält Unterlage und Stichart. **Offen (Vor Ort):** „Anna“ in Arial Black 20 mm auf Strick
-mit und ohne Stabilisieren sticken.
+mit und ohne Stabilisieren sticken. **Behoben (21.11.):** Computer-Schriften mit überlappenden Konturen (variable
+Schriften, Google Sans „A“ zerrissen ab 25 mm) – Nicht-Null-Regel; Step bei „auto“ je Buchstabe als eine Fläche.
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),

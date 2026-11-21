@@ -818,6 +818,68 @@ pub fn auf_step(o: Objekt) -> Objekt {
     stichart_anwenden(o, &SchriftStichart::Step)
 }
 
+/// Computer-Schrift nach der Entscheidung von „auto“ auf Step: jeder Buchstabe als **eine** Tatami-Fläche mit Löchern
+/// (Vereinigung seiner Säulen = Umriss des Zeichens), Stichwinkel des Stils, Step-Unterlage, wenn die Säulen eine
+/// Unterlage hatten. **Eigene Festlegung** (21.11.2026): Step-Reihen in den Teilstücken der automatischen Zerlegung
+/// (`saeulen.rs`) liegen an Spitzen und Abzweigungen kreuz und quer (Google Sans „A“ bei 25 mm); die Alphabete des
+/// Originals bleiben bei Step je Säule.
+pub fn auf_tatami(o: Objekt) -> Objekt {
+    let Objekt { farbe, name, art } = o;
+    let ObjektArt::Gruppe { teile, umrisse, laufweg } = art else {
+        return Objekt { farbe, name, art };
+    };
+    let unterlage = teile.iter().any(|t| {
+        matches!(&t.art, ObjektArt::Satin { unterlage, .. } if *unterlage != Unterlage::Arten(Vec::new()))
+    });
+    let (teile, umrisse) = flaechen_fuellen(teile, umrisse, &farbe, &name, &|umriss, loecher| ObjektArt::Tatami {
+        umriss,
+        loecher,
+        winkel: None,
+        unterlage: Some(unterlage),
+        aussparen: Default::default(),
+    });
+    Objekt { farbe, name, art: ObjektArt::Gruppe { teile, umrisse, laufweg } }
+}
+
+/// Säulen und Flächen eines Buchstabens zu Flächen vereinigen und mit `art` füllen; andere Teile (Läufe) bleiben dahinter.
+fn flaechen_fuellen(
+    teile: Vec<Objekt>,
+    umrisse: Vec<Linie>,
+    farbe: &str,
+    name: &str,
+    art: &dyn Fn(Linie, Vec<Linie>) -> ObjektArt,
+) -> (Vec<Objekt>, Vec<Linie>) {
+    let mut flaechen = Vec::new();
+    let (mut neu, mut neu_umrisse) = (Vec::new(), Vec::new());
+    for (i, t) in teile.into_iter().enumerate() {
+        match &t.art {
+            ObjektArt::Satin { .. } => {
+                if let Some(u) = umrisse.get(i).filter(|u| u.len() >= 3) {
+                    flaechen.push(crate::aussparen::ring_kontur(u));
+                } else {
+                    flaechen.extend(crate::aussparen::bedeckt(&t.art, 0.0));
+                }
+            }
+            ObjektArt::Tatami { .. } | ObjektArt::Musterfuellung { .. } => {
+                flaechen.extend(crate::aussparen::bedeckt(&t.art, 0.0));
+            }
+            _ => {
+                neu_umrisse.push(umrisse.get(i).cloned().unwrap_or_default());
+                neu.push(t);
+            }
+        }
+    }
+    let mut teile: Vec<Objekt> = Vec::new();
+    let mut ringe: Vec<Linie> = Vec::new();
+    for (umriss, loecher) in crate::aussparen::vereinigen(&flaechen) {
+        ringe.push(umriss.clone());
+        teile.push(Objekt { farbe: farbe.to_string(), name: name.to_string(), art: art(umriss, loecher) });
+    }
+    teile.extend(neu);
+    ringe.extend(neu_umrisse);
+    (teile, ringe)
+}
+
 /// Stichart einer Schrift (Handbuch Kap. 20 „Applying different stitch types to lettering objects“: Standard Satin,
 /// auch Step oder Fancy).
 #[derive(Clone, Debug, PartialEq)]
@@ -866,49 +928,15 @@ fn stichart_anwenden(o: Objekt, st: &SchriftStichart) -> Objekt {
             muster,
             winkel,
             groesse,
-        } => {
-            let mut flaechen = Vec::new();
-            let (mut neu, mut neu_umrisse) = (Vec::new(), Vec::new());
-            for (i, t) in teile.into_iter().enumerate() {
-                match &t.art {
-                    ObjektArt::Satin { .. } => {
-                        if let Some(u) = umrisse.get(i).filter(|u| u.len() >= 3) {
-                            flaechen.push(crate::aussparen::ring_kontur(u));
-                        } else {
-                            flaechen.extend(crate::aussparen::bedeckt(&t.art, 0.0));
-                        }
-                    }
-                    ObjektArt::Tatami { .. } | ObjektArt::Musterfuellung { .. } => {
-                        flaechen.extend(crate::aussparen::bedeckt(&t.art, 0.0));
-                    }
-                    _ => {
-                        neu_umrisse.push(umrisse.get(i).cloned().unwrap_or_default());
-                        neu.push(t);
-                    }
-                }
-            }
-            let mut teile: Vec<Objekt> = Vec::new();
-            let mut ringe: Vec<Linie> = Vec::new();
-            for (umriss, loecher) in crate::aussparen::vereinigen(&flaechen) {
-                ringe.push(umriss.clone());
-                teile.push(Objekt {
-                    farbe: farbe.clone(),
-                    name: name.clone(),
-                    art: ObjektArt::Musterfuellung {
-                        umriss,
-                        loecher,
-                        muster: muster.clone(),
-                        winkel: *winkel,
-                        groesse: *groesse,
-                        unterlage: None,
-                        aussparen: Default::default(),
-                    },
-                });
-            }
-            teile.extend(neu);
-            ringe.extend(neu_umrisse);
-            (teile, ringe)
-        }
+        } => flaechen_fuellen(teile, umrisse, &farbe, &name, &|umriss, loecher| ObjektArt::Musterfuellung {
+            umriss,
+            loecher,
+            muster: muster.clone(),
+            winkel: *winkel,
+            groesse: *groesse,
+            unterlage: None,
+            aussparen: Default::default(),
+        }),
     };
     Objekt {
         farbe,

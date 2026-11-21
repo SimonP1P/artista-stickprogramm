@@ -180,6 +180,22 @@ pub fn ring_kontur(r: &[Punkt]) -> Kontur {
     kontur(r, true)
 }
 
+/// Ringe einer Schrift nach der Nicht-Null-Regel (wie TrueType/CFF gefüllt werden) zu Flächen mit Löchern vereinigen:
+/// überlappende Konturen werden eine Fläche (variable Schriften wie Google Sans zeichnen das „A“ aus dem Λ und zwei
+/// Hälften des Querbalkens, die darüber liegen), gegenläufige innere Ringe werden Löcher. Teile, größter zuerst.
+pub fn vereinigen_nonzero(ringe: &[Linie]) -> Vec<Teil> {
+    let k: Vec<Kontur> = ringe
+        .iter()
+        .map(|r| geschlossen_ohne_endpunkt(r).iter().map(|a| [a.x, a.y]).collect::<Kontur>())
+        .filter(|k| k.len() >= 3)
+        .collect();
+    if k.is_empty() {
+        return Vec::new();
+    }
+    let leer: Vec<Kontur> = Vec::new();
+    teile_aus(k.overlay(&leer, OverlayRule::Union, FillRule::NonZero))
+}
+
 /// Vereinigung von Flächen (Konturen wie aus `bedeckt`/`ring_kontur`, Nicht-Null-Regel): Teile, größter zuerst.
 pub fn vereinigen(konturen: &[Kontur]) -> Vec<Teil> {
     if konturen.is_empty() {

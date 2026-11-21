@@ -15,6 +15,12 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Computer-Schrift: überlappende Konturen, Step bei „auto“ (Fehler gemeldet vom Nutzer; Commit COMMIT)
+- **Nur Kern, keine Feldänderung:** Ringe einer Computer-Schrift werden nach der Nicht-Null-Regel vereinigt (variable
+  Schriften wie Google Sans: das „A“ war bei 25 mm zerrissen, Querbalken fehlte). Schaltet `stichart: "auto"` eine
+  Computer-Schrift auf Step, wird jeder Buchstabe eine Tatami-Fläche statt Step je Säulenstück.
+- **Oberfläche:** nichts zu tun.
+
 ## 21.11.2026 – Unterlage für jede Schrift, Vorwahl Mittellauf + Zickzack (Wunsch Nutzer; Commit b88e5ff)
 - **Geändert (Feld):** `ttf.unterlage` nimmt jetzt dieselben Werte wie `text.unterlage` (`"auto"` Standard, `"keine"`,
   Arten-Liste); `true`/`false` aus alten Dateien gelten weiter (auto/keine). Typ `UnterlageJson` hat dafür die Variante

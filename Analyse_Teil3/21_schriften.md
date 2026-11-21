@@ -101,6 +101,19 @@ Computer-Schrift ohne Angabe, Lauf und Dreifach → auto (Bericht 10 §8).
 wie beim Text (`"auto"`, `"keine"`, Arten), alte Dateien mit `true`/`false` gelten als auto/keine. Stichart **auto**
 gibt es jetzt auch für Computer-Schriften (Satin, ab 8 mm Satinstich der ganze Text Step).
 
+**Überlappende Konturen (21.11.2026, Fehler gemeldet vom Nutzer):** Variable Schriften (z. B. Google Sans) zeichnen
+Buchstaben aus übereinanderliegenden Strichen – das „A“ = Λ + zwei Hälften des Querbalkens, alle in derselben
+Drehrichtung. Der Kern ordnete die Ringe nach Verschachtelung; eine Balkenhälfte, deren erster Punkt auf dem Bein lag,
+wurde zum Loch. Folge bei 25 mm: Satinsäulen über das ganze Dreieck, Satinstiche über 8 mm, „auto“ schaltete auf Step
+und das „A“ war zerrissen. Jetzt werden die Ringe nach der **Nicht-Null-Regel** (wie TrueType/CFF gefüllt werden)
+vereinigt (`aussparen::vereinigen_nonzero`), auch für Lauf/Dreifach (keine Linien durch die Überlappung). Google Sans
+„Anna“ bleibt bis ~30 mm Satin.
+
+**Step bei „auto“ für Computer-Schriften — eigene Festlegung:** jeder Buchstabe als **eine** Tatami-Fläche
+(Vereinigung seiner Säulen = Umriss), Stichwinkel des Stils, Step-Unterlage, wenn Unterlage gewählt
+(`schrift::auf_tatami`). Step-Reihen je Teilstück der automatischen Zerlegung lagen an Spitzen und Abzweigungen kreuz
+und quer. Die Original-Alphabete bleiben bei Step je Säule (Handbuch Kap. 20).
+
 ## 6. Stile aller Schriften — eigene Einordnung (Sicherheit: Geschmack, nicht messbar)
 Datei `kern/stick-formate/daten/schrift_stile.json` (von Hand gepflegt), Kern `stick-formate::schriftstile`, Befehl
 `schrift_stile`; jede Liste trägt `stile` je Schrift.

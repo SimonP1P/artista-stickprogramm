@@ -49,9 +49,20 @@ pub enum TtfStichart {
     Satin { unterlage: crate::design::Unterlage, auto: bool },
 }
 
-/// Ringe nach Verschachtelung ordnen (gerade Tiefe = Umriss, ungerade = Loch): (Umriss, Löcher). Unabhängig von der
-/// Drehrichtung (TrueType und CFF zeichnen Außenringe verschieden herum).
+/// Ringe eines Zeichens zu Flächen: (Umriss, Löcher), gefüllt nach der Nicht-Null-Regel wie in TrueType/CFF
+/// (`aussparen::vereinigen_nonzero`). Überlappende Konturen variabler Schriften werden dabei eine Fläche – vorher galt
+/// die Verschachtelung (gerade Tiefe = Umriss), und ein Querbalken, der auf dem Bein beginnt, wurde zum Loch
+/// (Google Sans „A“, 21.11.2026). Fällt nichts heraus (entartete Ringe), gilt weiter die Verschachtelung.
 pub fn ringe_ordnen(ringe: &[Linie]) -> Vec<(Linie, Vec<Linie>)> {
+    let v = crate::aussparen::vereinigen_nonzero(ringe);
+    if !v.is_empty() {
+        return v;
+    }
+    ringe_verschachtelt(ringe)
+}
+
+/// Ringe nach Verschachtelung ordnen (gerade Tiefe = Umriss, ungerade = Loch), unabhängig von der Drehrichtung.
+fn ringe_verschachtelt(ringe: &[Linie]) -> Vec<(Linie, Vec<Linie>)> {
     let flaeche = |r: &Linie| -> f64 {
         (0..r.len())
             .map(|i| {
@@ -201,6 +212,8 @@ pub fn ttf_text_objekte_idx(
                 }
             }
             TtfStichart::Lauf { laenge, dreifach } => {
+                // Umrisse der vereinigten Fläche: keine Linien durch überlappende Striche
+                let ringe: Vec<Linie> = ringe_ordnen(&ringe).into_iter().flat_map(|(u, l)| std::iter::once(u).chain(l)).collect();
                 for r in ringe {
                     let n = r.len();
                     // Einstich an Ecken (Knick > 30°), nicht an den Zwischenpunkten der Kurven
@@ -362,6 +375,70 @@ mod tests {
             panic!()
         };
         assert!(!teile.is_empty() && teile.iter().all(|t| matches!(t.art, ObjektArt::Satin { .. })));
+    }
+
+    /// Variable Schrift (Google Sans „A“ bei 25 mm): Λ und zwei Hälften des Querbalkens als überlappende Konturen in
+    /// gleicher Drehrichtung. Nach der Nicht-Null-Regel eine Fläche mit **einem** Loch (Dreieck über dem Balken); die
+    /// Verschachtelung machte eine Balkenhälfte zum Loch.
+    #[test]
+    fn ueberlappende_konturen() {
+        let r = |v: &[(f64, f64)]| -> Linie { v.iter().map(|&(x, y)| p(x, y)).collect() };
+        let ringe = vec![
+            r(&[(-11.17, 0.0), (-1.68, 25.0), (1.68, 25.0), (11.17, 0.0), (7.93, 0.0), (1.05, 18.68), (0.07, 21.37),
+                (-0.07, 21.37), (-1.05, 18.68), (-7.93, 0.0)]),
+            r(&[(-0.35, 6.88), (-0.35, 9.67), (5.41, 9.67), (6.42, 6.88)]),
+            r(&[(-7.12, 6.88), (-6.11, 9.67), (-0.35, 9.67), (-0.35, 6.88)]),
+        ];
+        let f = ringe_ordnen(&ringe);
+        assert_eq!(f.len(), 1, "eine Fläche");
+        assert_eq!(f[0].1.len(), 1, "ein Loch über dem Querbalken");
+        let loch_unten = f[0].1[0].iter().map(|q| q.y).fold(f64::MAX, f64::min);
+        assert!((loch_unten - 9.67).abs() < 0.01, "Loch beginnt am Querbalken: {loch_unten}");
+        // Satin: der Balken ist eine eigene Säule, keine Säule überspannt das Loch
+        let (o, _) = ttf_text_objekte(&schrift_mit('A', ringe, 25.0), &vorgabe("A"), &TtfStichart::Satin {
+            unterlage: crate::design::Unterlage::Auto,
+            auto: false,
+        });
+        let ObjektArt::Gruppe { teile, .. } = &o[0].art else { panic!() };
+        let laengster = teile
+            .iter()
+            .filter_map(|t| match &t.art {
+                ObjektArt::Satin { seite_a, seite_b, .. } => {
+                    seite_a.iter().zip(seite_b).map(|(a, b)| (a.x - b.x).hypot(a.y - b.y)).reduce(f64::max)
+                }
+                _ => None,
+            })
+            .fold(0.0, f64::max);
+        assert!(laengster < 6.0, "längste Sehne {laengster} mm");
+    }
+
+    /// Schrift mit einem Zeichen aus Ringen in mm bei Versalhöhe `hoehe` mm (Vorgabe 14 mm → Faktor 14/hoehe).
+    fn schrift_mit(ch: char, ringe: Vec<Linie>, hoehe: f64) -> TtfSchrift {
+        let mut zeichen = BTreeMap::new();
+        let k = 700.0 / hoehe;
+        zeichen.insert(
+            ch,
+            TtfZeichen { ringe: ringe.iter().map(|r| r.iter().map(|q| (q.x * k, q.y * k)).collect()).collect(), vorschub: 800.0 },
+        );
+        TtfSchrift { name: "Test".into(), versal_hoehe: 700.0, leerzeichen: 300.0, zeichen }
+    }
+
+    /// „auto“ → Step bei Computer-Schrift: jeder Buchstabe eine Tatami-Fläche (Vereinigung der Säulen), Loch bleibt,
+    /// Unterlage an, wenn die Säulen eine hatten
+    #[test]
+    fn auto_step_als_flaeche() {
+        let (o, _) = ttf_text_objekte(&schrift(), &vorgabe("O"), &TtfStichart::Satin {
+            unterlage: crate::design::Unterlage::Auto,
+            auto: true,
+        });
+        let g = crate::schrift::auf_tatami(o[0].clone());
+        let ObjektArt::Gruppe { teile, umrisse, .. } = &g.art else { panic!() };
+        assert_eq!((teile.len(), umrisse.len()), (1, 1));
+        let ObjektArt::Tatami { umriss, loecher, unterlage, .. } = &teile[0].art else { panic!() };
+        assert_eq!((loecher.len(), *unterlage), (1, Some(true)));
+        let fl = |r: &Linie| crate::geometrie::flaeche_vorzeichen(r).abs();
+        // 14 × 14 mm mit Loch 6 × 6 mm
+        assert!((fl(umriss) - fl(&loecher[0]) - (196.0 - 36.0)).abs() < 1.0, "{}", fl(umriss) - fl(&loecher[0]));
     }
 
     #[test]
