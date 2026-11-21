@@ -21,6 +21,7 @@
 pub mod befehle;
 pub mod erzeugen;
 pub mod maschine;
+pub mod schriften;
 
 use schemars::{JsonSchema, Schema, SchemaGenerator};
 use serde::Serialize;
@@ -120,6 +121,8 @@ pub struct Kontext {
     motive_geladen: Mutex<HashMap<String, stick_kern::motiv::Motivsatz>>,
     /// Zustand der Maschinen-Befehle (Abbrechen, Sperre, Fortschritt, Mitschnitte)
     pub(crate) maschine: maschine::MaschinenZustand,
+    /// Schriften: Ablage für Google Fonts, Verzeichnis und Strichstärken (zwischengespeichert)
+    pub(crate) schriften_zustand: schriften::SchriftZustand,
 }
 
 impl Kontext {
@@ -137,6 +140,7 @@ impl Kontext {
             schriften: Vec::new(),
             geladen: Mutex::new(HashMap::new()),
             maschine: Default::default(),
+            schriften_zustand: Default::default(),
         }
     }
 
@@ -179,7 +183,7 @@ impl Kontext {
             let s = self.motivsatz(&n)?;
             design.motivsaetze.insert(n, s);
         }
-        stick_formate::ttf::design_schriften_laden(&mut design, &self.schriften)?;
+        self.ttf_laden(&mut design)?;
         Ok(design)
     }
 
@@ -293,8 +297,16 @@ befehle! {
     garnkarte_garne: befehle::GarnkartenName => Vec<befehle::GarnInfo>,
     /// Füllmuster (242) mit Linien einer Kachel für die Vorschau
     fuellmuster_liste: befehle::Leer => Vec<befehle::MusterInfo>,
-    /// installierte Computer-Schriften (TrueType/OpenType)
-    schriften_liste: befehle::Leer => Vec<befehle::SchriftInfo>,
+    /// installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts
+    schriften_liste: schriften::SchriftenListeEingabe => Vec<schriften::SchriftInfo>,
+    /// Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“
+    google_schriften_liste: befehle::Leer => schriften::GoogleKatalog,
+    /// Google-Schrift herunterladen (Internet) in die Ablage des Programms – danach wie eine installierte Schrift
+    google_schrift_laden: schriften::GoogleLadenEingabe => schriften::SchriftInfo,
+    /// Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“
+    schrift_vorschau: schriften::SchriftVorschauEingabe => schriften::SchriftVorschau,
+    /// Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben
+    schrift_wechseln: schriften::SchriftWechselEingabe => befehle::ObjektWert,
     /// Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln
     step_muster_liste: befehle::Leer => Vec<befehle::StepMusterInfo>,
     /// Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch
@@ -364,6 +376,7 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
 mod befehle_aller {
     pub use crate::befehle::*;
     pub use crate::maschine::*;
+    pub use crate::schriften::*;
 }
 
 #[cfg(test)]

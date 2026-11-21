@@ -6,6 +6,8 @@ import {
   type AlphabetInfo,
   type AlphabetVorschau,
   type GarnInfo,
+  type GoogleKatalog,
+  type SchriftVorschau,
   type MusterInfo,
   type SchriftInfo,
   type StoffInfo,
@@ -17,6 +19,11 @@ class Listen {
   garnkarten = $state.raw<string[]>([]);
   muster = $state.raw<MusterInfo[]>([]);
   schriften = $state.raw<SchriftInfo[]>([]);
+  google = $state.raw<GoogleKatalog | null>(null);
+  /** Favoriten der Schriftauswahl: „a:Alphabet“, „s:Computer-Schrift“, „g:Google-Familie“ (nur auf diesem Rechner) */
+  favoriten = $state<string[]>(favoritenLesen());
+  #google: Promise<void> | null = null;
+  #schriftVorschau = new Map<string, Promise<SchriftVorschau>>();
   #muster: Promise<void> | null = null;
   #schriften: Promise<void> | null = null;
   #garne = new Map<string, Promise<GarnInfo[]>>();
@@ -40,12 +47,56 @@ class Listen {
     return this.#muster;
   }
 
-  /** Computer-Schriften des Systems – bei Bedarf (kann dauern) */
-  schriftenLaden(): Promise<void> {
-    this.#schriften ??= kern("schriften_liste", {}).then((m) => {
+  /** Computer-Schriften des Systems und heruntergeladene Google Fonts – bei Bedarf (das erste Mal kann es dauern) */
+  schriftenLaden(neu = false): Promise<void> {
+    if (neu) this.#schriften = null;
+    this.#schriften ??= kern("schriften_liste", { neu_einlesen: neu }).then((m) => {
       this.schriften = m;
     });
+    this.#schriften.catch(() => (this.#schriften = null));
     return this.#schriften;
+  }
+
+  /** Katalog der Google Fonts (im Programm mitgeliefert, ohne Internet) */
+  googleLaden(): Promise<void> {
+    this.#google ??= kern("google_schriften_liste", {}).then((g) => {
+      this.google = g;
+    });
+    return this.#google;
+  }
+
+  /** Google-Schrift herunterladen (Internet); danach Listen neu, Ergebnis = Name für das Design */
+  async googleHerunterladen(familie: string): Promise<string> {
+    const s = await kern("google_schrift_laden", { familie });
+    const g = this.google;
+    if (g) this.google = { ...g, schriften: g.schriften.map((x) => (x.familie === familie ? { ...x, geladen: true } : x)) };
+    await this.schriftenLaden(true);
+    return s.name;
+  }
+
+  /** Vorschau einer Computer-Schrift mit Stickbarkeit (zwischengespeichert je Schrift und Text) */
+  schriftVorschau(schrift: string, text = "Abc"): Promise<SchriftVorschau> {
+    const k = `${schrift}\u0000${text}`;
+    let p = this.#schriftVorschau.get(k);
+    if (!p) {
+      p = kern("schrift_vorschau", { schrift, text });
+      this.#schriftVorschau.set(k, p);
+      p.catch(() => this.#schriftVorschau.delete(k));
+    }
+    return p;
+  }
+
+  istFavorit(id: string): boolean {
+    return this.favoriten.includes(id);
+  }
+
+  favoritUmschalten(id: string) {
+    this.favoriten = this.istFavorit(id) ? this.favoriten.filter((x) => x !== id) : [...this.favoriten, id];
+    try {
+      localStorage.setItem(FAVORITEN, JSON.stringify(this.favoriten));
+    } catch {
+      /* ohne Speicher */
+    }
   }
 
   garne(karte: string): Promise<GarnInfo[]> {
@@ -58,17 +109,30 @@ class Listen {
     return p;
   }
 
-  alphabetVorschau(alphabet: string): Promise<AlphabetVorschau> {
-    let p = this.#vorschau.get(alphabet);
+  alphabetVorschau(alphabet: string, text = "Aa Bb"): Promise<AlphabetVorschau> {
+    const k = `${alphabet}\u0000${text}`;
+    let p = this.#vorschau.get(k);
     if (!p) {
-      p = kern("alphabet_vorschau", { alphabet, text: "Aa Bb" });
-      this.#vorschau.set(alphabet, p);
+      p = kern("alphabet_vorschau", { alphabet, text });
+      this.#vorschau.set(k, p);
+      p.catch(() => this.#vorschau.delete(k));
     }
     return p;
   }
 
   alphabet(name: string | undefined): AlphabetInfo | undefined {
     return this.alphabete.find((a) => a.name === name);
+  }
+}
+
+const FAVORITEN = "schrift_favoriten";
+
+function favoritenLesen(): string[] {
+  try {
+    const x = JSON.parse(localStorage.getItem(FAVORITEN) ?? "[]");
+    return Array.isArray(x) ? x.filter((y) => typeof y === "string") : [];
+  } catch {
+    return [];
   }
 }
 

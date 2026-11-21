@@ -9,7 +9,7 @@
   import Statusleiste from "$lib/Statusleiste.svelte";
   import Vorschau from "$lib/Vorschau.svelte";
   import Assistent from "$lib/Assistent.svelte";
-  import AlphabetDialog from "$lib/dialoge/AlphabetDialog.svelte";
+  import SchriftDialog from "$lib/dialoge/SchriftDialog.svelte";
   import GarnDialog from "$lib/dialoge/GarnDialog.svelte";
   import EinlesenDialog from "$lib/dialoge/EinlesenDialog.svelte";
   import type { GarnInfo } from "$kern/kern";
@@ -596,17 +596,17 @@
   {#if maschine.dialogOffen}<SendenDialog />{/if}
   {#if maschine.stickenDialog}<StickenDialog />{/if}
   {#if maschine.listeOffen}<AusMaschineDialog />{/if}
-  {#if arbeit.dialog?.art === "alphabet"}
+  {#if arbeit.dialog?.art === "schrift"}
     {@const o = arbeit.dialog.objekt}
     {@const x = arbeit.objekte[o]}
-    <AlphabetDialog
-      aktuell={x && "alphabet" in x ? x.alphabet : undefined}
-      waehlen={(name) => {
-        arbeit.aendern((d) => {
-          const y = d.objekte?.[o];
-          if (y && "alphabet" in y) y.alphabet = name;
-        });
+    <SchriftDialog
+      start={arbeit.dialog.reiter}
+      aktuell={x && "alphabet" in x ? { alphabet: x.alphabet } : x && "schrift" in x ? { schrift: x.schrift } : {}}
+      text={x && "text" in x ? x.text : undefined}
+      hoehe={x && "hoehe" in x ? x.hoehe : undefined}
+      waehlen={(w) => {
         arbeit.dialog = null;
+        arbeit.schriftWechseln(o, w);
       }}
       schliessen={() => (arbeit.dialog = null)}
     />

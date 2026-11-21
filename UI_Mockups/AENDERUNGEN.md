@@ -15,6 +15,21 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Schrift wählen: Computer-Schriften, Google Fonts, Favoriten, „stickbar ab“ (Wunsch Nutzer; Commit siehe Git-Log „Schriftauswahl“)
+- **Neue Befehle:** `google_schriften_liste` (Katalog 1 833 Familien + Stil-Filter), `google_schrift_laden {familie}`
+  (Internet; Datei in den Datenordner, danach offline), `schrift_vorschau {schrift, text?, hoehe?}` (Umrisse,
+  fehlende Zeichen, `stickbarkeit {stickbar_ab, duenn, dick}`), `schrift_wechseln {design, objekt, alphabet|schrift}`
+  (Text ↔ Computer-Schrift, gemeinsame Felder bleiben).
+- **Geändert:** `schriften_liste {neu_einlesen?}` liefert jetzt auch heruntergeladene Google Fonts (`heruntergeladen`)
+  und nur Schriften mit lateinischen Buchstaben; Namen älterer Apple-Schriften (MacRoman) werden gelesen; interne
+  macOS-Schriften („.…“) fehlen. Das Verzeichnis wird zwischengespeichert. Die App setzt die Ablage
+  (`Kontext::schriften_ablage`, Datenordner `…/schriften`).
+- **Oberfläche:** umgesetzt – Dialog „Schrift wählen“ (`SchriftDialog.svelte`, ersetzt den Alphabet-Dialog) mit Reitern
+  Stick-Alphabete · Auf dem Computer · Google Fonts · ★ Favoriten, Suche, Stil-Filtern, Vorschautext, gefüllten
+  Buchstaben, Stern (`localStorage` „schrift_favoriten“), „stickbar ab … mm“ (orange, wenn die Höhe kleiner ist).
+  Einfacher Modus: Knopf „Schrift“ auch für Computer-Schriften, Warnung unter der Höhe; Inspektor: Knopf statt
+  Auswahlliste. Google-Vorschau vor dem Laden nur mit dem festen Wort „Stickerei“ (Datenschutz).
+
 ## 21.11.2026 – Schrift: Stichart „automatisch“ (Wunsch Nutzer: große Schrift nicht als lockerer Satin; Commit db84764)
 - **Neu:** `stichart: "auto"` an `text` und `monogramm`: Satin, solange kein Satinstich (nach Höhe, Transformation,
   Verzerrung) länger als **8 mm** wird, sonst der ganze Text **Step** (eigene Erweiterung; Grenze wie EasyStitch,

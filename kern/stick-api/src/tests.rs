@@ -499,3 +499,59 @@ fn schrift_stichart_auto() {
     // Größe über die Transformation zählt mit
     assert_eq!(arten(&rechne(15.0, "auto", Some(600.0))), ["schrift_step"]);
 }
+
+/// Schriftauswahl: Google-Katalog, Schrift wechseln (Alphabet ↔ Computer-Schrift), Vorschau mit Stickbarkeit
+#[test]
+fn schriften_auswahl() {
+    let k = kontext();
+    let g = ausfuehren(&k, "google_schriften_liste", json!({})).unwrap();
+    assert!(g["schriften"].as_array().unwrap().len() > 1500);
+    assert!(g["stile"].as_array().unwrap().iter().any(|s| s == "Gotisch"));
+
+    let d = json!({"objekte": [{"art": "text", "text": "Mia", "alphabet": "Drifter", "hoehe": 20, "stichart": "auto",
+                                 "farbe": "#ff0000", "ausrichtung": "links", "name": "Name"}]});
+    let o = ausfuehren(&k, "schrift_wechseln", json!({"design": d, "objekt": 0, "schrift": "Arial"})).unwrap();
+    assert_eq!(o["art"], "ttf");
+    assert_eq!(o["schrift"], "Arial");
+    assert_eq!((o["text"].clone(), o["farbe"].clone(), o["ausrichtung"].clone()), (json!("Mia"), json!("#ff0000"), json!("links")));
+    assert!(o.get("stichart").is_none() && o.get("alphabet").is_none());
+    let t = ausfuehren(&k, "schrift_wechseln", json!({"design": {"objekte": [o]}, "objekt": 0, "alphabet": "Lisa"})).unwrap();
+    assert_eq!((t["art"].clone(), t["alphabet"].clone()), (json!("text"), json!("Lisa")));
+    assert!(t.get("schrift").is_none());
+    assert!(ausfuehren(&k, "schrift_wechseln", json!({"design": d, "objekt": 0})).is_err());
+
+    let liste = ausfuehren(&k, "schriften_liste", json!({})).unwrap();
+    let namen: Vec<String> = liste.as_array().unwrap().iter().map(|s| s["name"].as_str().unwrap().to_string()).collect();
+    let Some(name) = namen.iter().find(|n| *n == "Arial").or(namen.first()) else {
+        eprintln!("übersprungen: keine Schriften installiert");
+        return;
+    };
+    let v = ausfuehren(&k, "schrift_vorschau", json!({"schrift": name, "text": "Abc"})).unwrap();
+    assert!(!v["linien"].as_array().unwrap().is_empty());
+    if name == "Arial" {
+        let ab = v["stickbarkeit"]["stickbar_ab"].as_f64().unwrap();
+        assert!((6.0..=10.0).contains(&ab), "Arial stickbar ab {ab}");
+    }
+}
+
+/// Google-Schrift herunterladen (braucht Internet): `cargo test -p stick-api google_laden -- --ignored`
+#[test]
+#[ignore]
+fn google_laden() {
+    let ablage = std::env::temp_dir().join("artista_schriften_test");
+    let _ = std::fs::remove_dir_all(&ablage);
+    let k = kontext();
+    k.schriften_ablage(ablage.clone());
+    let s = ausfuehren(&k, "google_schrift_laden", json!({"familie": "Pirata One"})).unwrap();
+    assert_eq!(s["name"], "Pirata One");
+    assert_eq!(s["heruntergeladen"], true);
+    let g = ausfuehren(&k, "google_schriften_liste", json!({})).unwrap();
+    let p = g["schriften"].as_array().unwrap().iter().find(|x| x["familie"] == "Pirata One").unwrap().clone();
+    assert_eq!(p["geladen"], true);
+    let d = json!({"objekte": [{"art": "ttf", "text": "Mia", "schrift": "Pirata One", "hoehe": 30}]});
+    let e = ausfuehren(&k, "design_berechnen", json!({"design": d})).unwrap();
+    assert!(e["stiche"].as_array().unwrap().len() > 100);
+    let v = ausfuehren(&k, "schrift_vorschau", json!({"schrift": "Pirata One", "text": "Mia"})).unwrap();
+    eprintln!("Pirata One stickbar ab {}", v["stickbarkeit"]["stickbar_ab"]);
+    let _ = std::fs::remove_dir_all(&ablage);
+}

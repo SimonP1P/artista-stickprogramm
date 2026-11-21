@@ -9,7 +9,7 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::path::PathBuf;
-use stick_formate::{esb, exp, garnkarte, ttf};
+use stick_formate::{esb, exp, garnkarte};
 use stick_kern::design::ObjektForm;
 use stick_kern::einstellungen::STOFFE;
 use stick_kern::format::{DesignJson, ObjektJson};
@@ -309,33 +309,6 @@ pub fn fuellmuster_liste(_: &Kontext, _: Leer) -> Result<Vec<MusterInfo>, Fehler
             a: m.a,
             b: m.b,
             zuege: m.zuege.clone(),
-        })
-        .collect())
-}
-
-/// Computer-Schrift (TrueType/OpenType).
-#[derive(Debug, Serialize, JsonSchema)]
-pub struct SchriftInfo {
-    /// Name wie im Design-Feld `schrift` („Arial Bold“)
-    pub name: String,
-    pub familie: String,
-    pub stil: String,
-    pub pfad: String,
-}
-
-pub fn schriften_liste(k: &Kontext, _: Leer) -> Result<Vec<SchriftInfo>, Fehler> {
-    let ordner = if k.schriften.is_empty() {
-        ttf::system_ordner()
-    } else {
-        k.schriften.clone()
-    };
-    Ok(ttf::verzeichnis(&ordner)
-        .into_iter()
-        .map(|e| SchriftInfo {
-            name: e.name,
-            familie: e.familie,
-            stil: e.stil,
-            pfad: e.pfad.display().to_string(),
         })
         .collect())
 }

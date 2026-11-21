@@ -1,7 +1,7 @@
 <script lang="ts">
   // Einfacher Modus: Assistent in 4 Schritten (UEBERGABE §2/§3 „Assistent“). Jede Eingabe ändert das Design-JSON;
   // Stiche, Größe, Garne und Prüfungen kommen aus dem Kern (`design_berechnen`).
-  import type { ObjektJson, TextJson, MonogrammJson, Transformation } from "$kern/kern";
+  import type { ObjektJson, TextJson, TtfJson, MonogrammJson, Transformation } from "$kern/kern";
   import { arbeit } from "./arbeit.svelte";
   import { designEinfuegen, expExportieren, oeffnen, speichern } from "./dateien.svelte";
   import Icon from "./Icon.svelte";
@@ -10,7 +10,8 @@
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
   import { ANLEITUNG_RAHMEN, maschine, SIMULATION } from "./maschine.svelte";
 
-  type Text = TextJson & { art: "text" };
+  /** Text mit Original-Alphabet oder Computer-Schrift (gleiche Felder für Text, Höhe, Satz) */
+  type Text = (TextJson & { art: "text" }) | (TtfJson & { art: "ttf" });
   type Mono = MonogrammJson & { art: "monogramm" };
 
   // Senden gibt es auf Windows und Mac (Mac: USB-Seriell-Adapter; Wunsch Nutzer 21.11.2026)
@@ -55,12 +56,23 @@
   const haupt = $derived.by(() => {
     if (!el || el.gruppe || el.objekte.length !== 1) return -1;
     const a = arbeit.objekte[el.objekte[0]]?.art;
-    return a === "text" || a === "monogramm" ? el.objekte[0] : -1;
+    return a === "text" || a === "ttf" || a === "monogramm" ? el.objekte[0] : -1;
   });
   const objekt = $derived(haupt >= 0 ? arbeit.objekte[haupt] : undefined);
-  const text = $derived(objekt?.art === "text" ? (objekt as Text) : undefined);
+  const text = $derived(objekt?.art === "text" || objekt?.art === "ttf" ? (objekt as Text) : undefined);
   const mono = $derived(objekt?.art === "monogramm" ? (objekt as Mono) : undefined);
-  const alphabet = $derived(listen.alphabet(text?.alphabet));
+  const alphabet = $derived(listen.alphabet(text?.art === "text" ? text.alphabet : undefined));
+  // Computer-Schrift: „stickbar ab … mm“ aus dem Kern (eigene Messung, `schrift_vorschau`)
+  let ttfStickbarAb = $state<number | null>(null);
+  $effect(() => {
+    ttfStickbarAb = null;
+    const n = text?.art === "ttf" ? text.schrift : null;
+    if (n)
+      listen
+        .schriftVorschau(n)
+        .then((v) => (text?.art === "ttf" && text.schrift === n ? (ttfStickbarAb = v.stickbarkeit?.stickbar_ab ?? null) : null))
+        .catch(() => {});
+  });
   const fehlend = $derived(
     (e?.hinweise ?? []).filter((h) => h.art === "fehlende_zeichen" && h.objekt === haupt).map((h) => h.meldung),
   );
@@ -197,11 +209,13 @@
     (e?.hinweise ?? []).find((h) => (h.art === "schrift_step" || h.art === "lange_satinstiche") && h.objekt === haupt),
   );
   function satinErzwingen(an: boolean) {
-    objektAendern((o) => ((o as Text).stichart = an ? "satin" : "auto"));
+    objektAendern((o) => ((o as TextJson).stichart = an ? "satin" : "auto"));
   }
 
   const hoeheWarnung = $derived.by(() => {
     const h = text?.hoehe ?? 18;
+    if (ttfStickbarAb != null && h < ttfStickbarAb)
+      return `Feine Striche – diese Schrift ist erst ab ${zahl(ttfStickbarAb)} mm gut stickbar.`;
     if (!alphabet || alphabet.min_hoehe == null) return null;
     if (h < alphabet.min_hoehe) return `Kleiner als empfohlen (ab ${zahl(alphabet.min_hoehe)} mm) – Details können zulaufen.`;
     if (stichHinweis || stichart === "auto" || stichart === "step" || stichart === "muster") return null;
@@ -351,7 +365,7 @@
           <p class="mut" style="margin:0 0 12px">Am häufigsten: ein Name oder Monogramm. Weitere Elemente kannst du danach hinzufügen.</p>
         {/if}
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px">
-          <button class="big" onclick={textEinfuegen}><Icon d={ART.text[1]} groesse="l" /><b style="font-weight:500">Text</b><span class="mut small">Name, Spruch – 50 Alphabete</span></button>
+          <button class="big" onclick={textEinfuegen}><Icon d={ART.text[1]} groesse="l" /><b style="font-weight:500">Text</b><span class="mut small">Name, Spruch – Stick-Alphabete, eigene und Google-Schriften</span></button>
           <button class="big" onclick={monogrammEinfuegen}><Icon d={ART.monogramm[1]} groesse="l" /><b style="font-weight:500">Monogramm</b><span class="mut small">2–3 Initialen, mit Rahmen</span></button>
           <button class="big" onclick={() => (arbeit.dialog = { art: "bild" })}><Icon d={IC.bild} groesse="l" /><b style="font-weight:500">Bild umwandeln</b><span class="mut small">PNG / JPG → Stickflächen</span></button>
           <button class="big" onclick={() => (arbeit.dialog = { art: "svg" })}><Icon d={IC.bezier} groesse="l" /><b style="font-weight:500">SVG einlesen</b><span class="mut small">Zeichnung aus Inkscape</span></button>
@@ -413,10 +427,11 @@
           <div class="warnbox" style="margin:-4px 0 12px"><Icon d={IC.warnung} /><span>{f}</span></div>
         {/each}
         <div class="field" style="margin-bottom:12px">
-          <label for="aalpha">Alphabet</label>
-          <button id="aalpha" class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "alphabet", objekt: haupt })} style="min-height:40px">
-            <span class="t"><b style="font-weight:500">{text.alphabet}</b>
-              {#if alphabet?.min_hoehe != null}<span class="mut small"> · empfohlen {zahl(alphabet.min_hoehe)}–{alphabet.max_hoehe != null ? zahl(alphabet.max_hoehe) : "?"} mm</span>{/if}</span>
+          <label for="aalpha">Schrift</label>
+          <button id="aalpha" class="btn btn-secondary pick" title="Stick-Alphabete, Schriften des Computers und Google Fonts" onclick={() => (arbeit.dialog = { art: "schrift", objekt: haupt })} style="min-height:40px">
+            <span class="t"><b style="font-weight:500">{text.art === "text" ? text.alphabet : text.schrift}</b>
+              {#if alphabet?.min_hoehe != null}<span class="mut small"> · empfohlen {zahl(alphabet.min_hoehe)}–{alphabet.max_hoehe != null ? zahl(alphabet.max_hoehe) : "?"} mm</span>
+              {:else if ttfStickbarAb != null}<span class="mut small"> · Computer-Schrift, stickbar ab {zahl(ttfStickbarAb)} mm</span>{/if}</span>
             <Icon d={IC.chevronRechts} />
           </button>
         </div>

@@ -67,8 +67,10 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 ## 4. Schrift
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
 |---|---|---|---|
+| **Schrift wählen** (Dialog, beide Modi) | Reiter **Stick-Alphabete** (50) · **Auf dem Computer** (installierte + heruntergeladene Schriften mit lateinischen Buchstaben) · **Google Fonts** (1 833, Katalog im Programm) · **★ Favoriten** (Stern an jeder Kachel, `localStorage` „schrift_favoriten“, Kennung `a:`/`s:`/`g:` + Name); Suche (Name, Stil), **Stil-Filter** bei Google (Gotisch, Schreibschrift, Handschrift, Pinsel, Modern, Klassisch, Elegant, Verspielt, Kindlich, Vintage, Kräftig, Rund, Technik, Schablone, Pixel, Verziert, Weihnachten, Valentinstag, Halloween – eigene Zuordnung der Google-Tags), **Vorschautext** (Standard: erste Zeile des Texts). Wechsel Alphabet ↔ Computer-Schrift über `schrift_wechseln` (Text, Höhe, Satz bleiben; neuer Original-Text bekommt `stichart: "auto"`) | `text.alphabet` / `ttf.schrift` | E |
 | Original-Alphabet | 50 Alphabete mit empfohlener Höhe (Handbuch, `alphabete_liste`: `min_hoehe`/`max_hoehe`) und Vorschau (`alphabet_vorschau`: Umrisse eines Probetexts, Zeichenvorrat) | `text` + `alphabet` | E |
-| Computer-Schrift (TTF/OTF) | Schriftname; Stichart Tatami/Lauf/Dreifach/Muster/**Satin** (Säulen wie die TrueType-Umwandlung des Originals) | `ttf` + `schrift` | E (Stichart X) |
+| Computer-Schrift (TTF/OTF) | Schriftname; Stichart Tatami/Lauf/Dreifach/Muster/**Satin** (Säulen wie die TrueType-Umwandlung des Originals). **„stickbar ab … mm“** (`schrift_vorschau.stickbarkeit`, eigene Messung: dünnster Strich ≥ 0,8 mm wie bei den Original-Alphabeten an ihrer kleinsten empfohlenen Höhe) an der Kachel, im einfachen Modus am Schrift-Knopf und als Warnung unter der Höhe | `ttf` + `schrift` | E (Stichart X) |
+| Google Fonts laden | Klick auf eine Google-Kachel lädt **eine** Datei (aufrecht, Regular) aus github.com/google/fonts in den Datenordner des Programms (`…/schriften`), danach ohne Internet. Vorschau vor dem Laden: Web-Schrift von fonts.googleapis.com mit festem Wort „Stickerei“ – an Google geht nur der Schriftname, nie der Text des Anwenders. Freie Lizenzen (OFL/Apache/UFL) | `google_schrift_laden` → `ttf.schrift` = Familie | E |
 | Höhe, Breite, Buchstabenabstand | Höhe (10 mm), Breite (100 %), Abstand (aus dem Alphabet) | `hoehe`, `breite`, `abstand` | E (Abstand X) |
 | Ausrichtung | links, mitte, rechts, Blocksatz (nur mit fester Grundlinienlänge) | `ausrichtung` | E |
 | Mehrere Zeilen | Zeilenumbruch; Zeilenabstand (60 %), Wortabstand (25 %) | `text` mit `\n`, `zeilenabstand`, `wortabstand` | E (Abstände X) |
@@ -105,7 +107,11 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `step_muster_liste` | Kacheln der Step-Muster 1–20 (Einstiche einer Probefläche, vom Kern berechnet) |
 | `garnkarte_garne` | Garn je Farbe von Hand wählen (alle Garne einer Karte mit Farbe, Nummer, Name) |
 | `fuellmuster_liste` | Auswahl der 242 Füllmuster mit Vorschau-Kacheln (Linien einer Kachel + Gitter A/B) |
-| `schriften_liste` | Auswahl der Computer-Schriften (installierte TrueType/OpenType) |
+| `schriften_liste` | Reiter „Auf dem Computer“: installierte TrueType/OpenType mit lateinischen Buchstaben + heruntergeladene Google Fonts (`heruntergeladen`); `neu_einlesen` nach dem Installieren einer Schrift |
+| `google_schriften_liste` | Reiter „Google Fonts“: Katalog (Familie, Kategorie, Stile, Größe, Lizenz, `geladen`) und die Stil-Filter in fester Reihenfolge |
+| `google_schrift_laden` | Klick auf eine Google-Kachel: Datei herunterladen (Internet), prüfen, ablegen → `SchriftInfo` (Name für `ttf.schrift`) |
+| `schrift_vorschau` | Kachel einer Computer-Schrift: Umrisse des Probetexts (gefüllt zeichnen, Nonzero), fehlende Zeichen, `stickbarkeit` (`stickbar_ab`, `duenn`, `dick` in mm) |
+| `schrift_wechseln` | Wahl im Dialog „Schrift wählen“: Text ↔ Computer-Schrift umstellen (gemeinsame Felder bleiben) → neues Objekt |
 | `parameter_katalog` | Formulare für Einstellungen und Expertenmodus (Standard, Bereich, Einheit, Modus) |
 | `beispiel_design` | Beispiel zum Ausprobieren |
 | `design_schema` | Design-Format zur Laufzeit (dasselbe wie `design.schema.json`) |

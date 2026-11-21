@@ -76,6 +76,7 @@ def main():
     a.add_argument("--groesse", default="1280x800")
     a.add_argument("--stick")
     a.add_argument("--browser")
+    a.add_argument("--budget", type=int, default=6000, help="virtuelle Wartezeit in ms (Standard 6000)")
     o = a.parse_args()
 
     stick = stick_finden(o.stick)
@@ -106,10 +107,22 @@ def main():
         antworten["garnkarte_garne:" + karte] = api(stick, "garnkarte_garne", {"name": karte})
     for satz in sorted({x.get("satz", "Heirloom") for x in design.get("objekte", []) if x.get("art") == "motivlinie"}):
         antworten["motivsatz_motive:" + satz] = api(stick, "motivsatz_motive", {"satz": satz})
-    if o.dialog and json.loads(o.dialog).get("art") == "alphabet":
+    for s_ in sorted({x["schrift"] for x in design.get("objekte", []) if x.get("art") == "ttf" and x.get("schrift")}):
+        antworten["schrift_vorschau:" + s_] = api(stick, "schrift_vorschau", {"schrift": s_, "text": "Abc"})
+    if o.dialog and json.loads(o.dialog).get("art") == "schrift":
+        # Dialog „Schrift wählen“: Vorschauen mit dem Text des Objekts; Reiter „computer“ nur die ersten 20 Schriften
+        d_ = json.loads(o.dialog)
+        obj = design.get("objekte", [{}])[d_.get("objekt", 0)]
+        probe = (obj.get("text") or "").split("\n")[0].replace("^", "").strip()[:24] or "Anna"
         for a_ in antworten["alphabete_liste"]:
             antworten["alphabet_vorschau:" + a_["name"]] = api(
-                stick, "alphabet_vorschau", {"alphabet": a_["name"], "text": "Aa Bb"})
+                stick, "alphabet_vorschau", {"alphabet": a_["name"], "text": probe})
+        antworten["schriften_liste"] = api(stick, "schriften_liste", {})
+        antworten["google_schriften_liste"] = api(stick, "google_schriften_liste", {})
+        if d_.get("reiter") == "computer":
+            for s_ in antworten["schriften_liste"][:20]:
+                antworten["schrift_vorschau:" + s_["name"]] = api(
+                    stick, "schrift_vorschau", {"schrift": s_["name"], "text": probe})
 
     if o.dialog and json.loads(o.dialog).get("art") == "bild" and json.loads(o.dialog).get("pfad"):
         d_ = json.loads(o.dialog)
@@ -146,13 +159,22 @@ def main():
         start["buchstabe"] = o.buchstabe
     vorspann = f"""<script>
 window.__START__ = {json.dumps(start)};
+// Chrome headless verbraucht die virtuelle Zeit schon vor dem Start der App – danach meldet IntersectionObserver
+// nichts mehr. Fürs Bild gilt jedes beobachtete Element sofort als sichtbar (Schriftauswahl lädt Vorschauen erst dann).
+window.IntersectionObserver = class {{
+  constructor(cb) {{ this.cb = cb; }}
+  observe(el) {{ queueMicrotask(() => this.cb([{{ isIntersecting: true, target: el }}], this)); }}
+  unobserve() {{}}
+  disconnect() {{}}
+  takeRecords() {{ return []; }}
+}};
 const ANTWORTEN = {json.dumps(antworten)};
 window.__TAURI_INTERNALS__ = {{
   transformCallback: () => 0,
   invoke: (cmd, args) => {{
     if (cmd !== "kern") return Promise.reject({{ meldung: "Bildschirmfoto: Befehl " + cmd, objekt: null }});
     const d = args.daten || {{}};
-    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.name || d.satz || "")] ?? ANTWORTEN[args.befehl];
+    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.schrift || d.name || d.satz || "")] ?? ANTWORTEN[args.befehl];
     if (a === undefined) return Promise.reject({{ meldung: "Bildschirmfoto: " + args.befehl + " nicht vorbereitet", objekt: null }});
     if (a && a.__fehler__) return Promise.reject(a.__fehler__);
     return Promise.resolve(JSON.parse(JSON.stringify(a)));
@@ -173,7 +195,7 @@ window.__TAURI_INTERNALS__ = {{
     url = "file:///" + index.replace(os.sep, "/").lstrip("/") + "#/"
     subprocess.run(
         [browser, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files",
-         f"--user-data-dir={os.path.join(tmp, 'profil')}", f"--window-size={b},{h}", "--virtual-time-budget=6000",
+         f"--user-data-dir={os.path.join(tmp, 'profil')}", f"--window-size={b},{h}", f"--virtual-time-budget={o.budget}",
          f"--screenshot={ziel}", url],
         capture_output=True,
     )

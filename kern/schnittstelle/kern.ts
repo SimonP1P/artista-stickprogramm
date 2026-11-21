@@ -875,6 +875,36 @@ export type GelesenInfo = {
   sitzung: Sitzung;
 };
 
+/** Katalog der Google Fonts (freie Lizenzen; nach Beliebtheit sortiert). */
+export type GoogleKatalog = {
+  schriften: GoogleSchriftInfo[];
+  /** Stand des Katalogs (Datum) */
+  stand: string;
+  /** alle Stile in Anzeigereihenfolge (Filter der Oberfläche) */
+  stile: string[];
+};
+
+/** Eingabe von `google_schrift_laden`. */
+export type GoogleLadenEingabe = {
+  /** Familie wie im Katalog („Parisienne“) */
+  familie: string;
+};
+
+/** Eine Schrift aus dem Katalog der Google Fonts. */
+export type GoogleSchriftInfo = {
+  /** Name der Familie – nach dem Herunterladen auch der Name für das Design-Feld `schrift` */
+  familie: string;
+  /** schon heruntergeladen */
+  geladen: boolean;
+  /** Größe der Datei in Byte */
+  groesse: number;
+  /** Ohne Serifen, Mit Serifen, Zierschrift, Handschrift, Schreibmaschine */
+  kategorie: string;
+  lizenz: string;
+  /** Stile (deutsche Namen aus `GoogleKatalog::stile`) */
+  stile: string[];
+};
+
 /** Griffe einer Kante beim Verzerren: eine Zahl (Mitte) oder Liste [links, rechts] bzw. [links, Mitte, rechts] in mm. */
 export type Griffe = (number | number[]);
 
@@ -1784,6 +1814,8 @@ export type SatinStichart = ("satin" | "zickzack");
 /** Computer-Schrift (TrueType/OpenType). */
 export type SchriftInfo = {
   familie: string;
+  /** aus Google Fonts heruntergeladen (liegt in der Ablage des Programms) */
+  heruntergeladen: boolean;
   /** Name wie im Design-Feld `schrift` („Arial Bold“) */
   name: string;
   pfad: string;
@@ -1792,6 +1824,48 @@ export type SchriftInfo = {
 
 /** Stichart einer Schrift mit Original-Alphabet */
 export type SchriftStichart = ("satin" | "auto" | "step" | "muster");
+
+/** Vorschau einer Computer-Schrift. */
+export type SchriftVorschau = {
+  /** umschließendes Rechteck [x0, y0, x1, y1] in mm */
+  begrenzung?: number[] | null;
+  /** Zeichen des Probetexts, die die Schrift nicht hat */
+  fehlende_zeichen: string;
+  /** Umrisse des Probetexts in mm (geschlossene Linien, füllen nach Nonzero-Regel) */
+  linien: FormLinie[];
+  /** fehlt, wenn die Schrift nicht messbar ist */
+  stickbarkeit?: (Stickbarkeit | null);
+};
+
+/** Eingabe von `schrift_vorschau`. */
+export type SchriftVorschauEingabe = {
+  /** Höhe in mm (Standard 10) */
+  hoehe?: number | null;
+  /** Name wie im Design-Feld `schrift` (installiert oder heruntergeladen) */
+  schrift: string;
+  /** Probetext (Standard „Abc“) */
+  text?: string | null;
+};
+
+/** Eingabe von `schrift_wechseln`: genau eins von `alphabet` und `schrift`. */
+export type SchriftWechselEingabe = {
+  /** neues Original-Alphabet → Objekt wird `text` */
+  alphabet?: string | null;
+  design: DesignWert;
+  /** Nummer des Objekts (Text oder Computer-Schrift, ab 0) */
+  objekt: number;
+  /** neue Computer-Schrift → Objekt wird `ttf` */
+  schrift?: string | null;
+};
+
+/** Eingabe von `schriften_liste`. */
+export type SchriftenListeEingabe = {
+  /**
+   * Schriftordner neu lesen (z. B. nach dem Installieren einer Schrift im System)
+   * @default false
+   */
+  neu_einlesen?: boolean;
+};
 
 /** Design an die Maschine: Design, Anschluss, Wahl. */
 export type SendeEingabe = {
@@ -1912,6 +1986,19 @@ export type StichartErgebnis = {
   hinweise: string[];
   /** das Objekt mit neuer Stichart (ersetzt das alte; Stiche danach neu berechnen) */
   objekt: ObjektWert;
+};
+
+/** Wie gut sich eine Schrift sticken lässt (eigene Erweiterung, `stick_kern::stickbarkeit`). */
+export type Stickbarkeit = {
+  /** dicke Striche in Teilen der Höhe (10 % der Strichlänge sind dicker) */
+  dick: number;
+  /** dünne Striche in Teilen der Höhe (10 % der Strichlänge sind dünner) */
+  duenn: number;
+  /**
+   * kleinste Höhe der Großbuchstaben in mm, ab der die dünnen Striche mindestens 0,8 mm breit sind (kalibriert an
+   * den empfohlenen Höhen der Original-Alphabete)
+   */
+  stickbar_ab: number;
 };
 
 /** Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog). */
@@ -2304,6 +2391,10 @@ export interface Befehle {
   garnkarten_liste: { eingabe: Leer; ausgabe: string[] };
   /** Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern */
   gelesen_exp_speichern: { eingabe: ExpZiel; ausgabe: number };
+  /** Google-Schrift herunterladen (Internet) in die Ablage des Programms – danach wie eine installierte Schrift */
+  google_schrift_laden: { eingabe: GoogleLadenEingabe; ausgabe: SchriftInfo };
+  /** Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“ */
+  google_schriften_liste: { eingabe: Leer; ausgabe: GoogleKatalog };
   /** Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug */
   in_knoten_umwandeln: { eingabe: ObjektEingabe; ausgabe: ObjektWert };
   /** Laufende Maschinen-Aktion abbrechen */
@@ -2332,8 +2423,12 @@ export interface Befehle {
   reihenfolge_aendern: { eingabe: ReihenfolgeEingabe; ausgabe: ReihenfolgeErgebnis };
   /** Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) */
   saeulen_vorschau: { eingabe: SaeulenEingabe; ausgabe: SaeuleInfo[] };
-  /** installierte Computer-Schriften (TrueType/OpenType) */
-  schriften_liste: { eingabe: Leer; ausgabe: SchriftInfo[] };
+  /** Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“ */
+  schrift_vorschau: { eingabe: SchriftVorschauEingabe; ausgabe: SchriftVorschau };
+  /** Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben */
+  schrift_wechseln: { eingabe: SchriftWechselEingabe; ausgabe: ObjektWert };
+  /** installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts */
+  schriften_liste: { eingabe: SchriftenListeEingabe; ausgabe: SchriftInfo[] };
   /** Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln */
   step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
   /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt */
@@ -2366,6 +2461,8 @@ export const BEFEHLE = [
   "garnkarte_garne",
   "garnkarten_liste",
   "gelesen_exp_speichern",
+  "google_schrift_laden",
+  "google_schriften_liste",
   "in_knoten_umwandeln",
   "maschine_abbrechen",
   "maschine_lesen",
@@ -2380,6 +2477,8 @@ export const BEFEHLE = [
   "rahmen_liste",
   "reihenfolge_aendern",
   "saeulen_vorschau",
+  "schrift_vorschau",
+  "schrift_wechseln",
   "schriften_liste",
   "step_muster_liste",
   "stichart_aendern",

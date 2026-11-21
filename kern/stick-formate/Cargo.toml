@@ -11,3 +11,5 @@ ttf-parser = "0.25"
 stick-kern.workspace = true
 cfb = "0.10"
 flate2 = "1"
+serde.workspace = true
+serde_json.workspace = true

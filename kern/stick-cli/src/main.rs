@@ -879,6 +879,61 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
             println!("  {} Schriften", liste.len());
             Ok(true)
         }
+        Some("stickbarkeit") => {
+            use stick_kern::stickbarkeit::{MIN_STRICH_MM, PROBE, alphabet_flaechen, stickbar_ab, strichstaerken};
+            if args.iter().any(|a| a == "--kalibrieren") {
+                // Kalibrierung: dünnster Strich bei der kleinsten empfohlenen Höhe des Originals
+                let mut werte = Vec::new();
+                println!("  {:<24} {:>7} {:>7} {:>9} {:>13}", "Alphabet", "dünn", "dick", "min mm", "Strich bei min");
+                for (_, pfad) in esb::verzeichnis(&alphabet_ordner(args)) {
+                    let a = esb::laden(&pfad)?;
+                    let (z, bezug) = alphabet_flaechen(&a, PROBE);
+                    let Some(st) = strichstaerken(&z, bezug) else { continue };
+                    let min = stick_kern::schrift::empfohlene_hoehe(&a.name).map(|h| h.0);
+                    let strich = min.map(|m| st.duenn * m);
+                    println!(
+                        "  {:<24} {:>7.4} {:>7.4} {:>9} {:>13}",
+                        a.name,
+                        st.duenn,
+                        st.dick,
+                        min.map_or("–".into(), |m| format!("{m:.0}")),
+                        strich.map_or("–".into(), |x| format!("{x:.2} mm"))
+                    );
+                    if let Some(x) = strich {
+                        werte.push(x);
+                    }
+                }
+                werte.sort_by(f64::total_cmp);
+                if !werte.is_empty() {
+                    let n = werte.len();
+                    let median = if n % 2 == 1 { werte[n / 2] } else { (werte[n / 2 - 1] + werte[n / 2]) / 2.0 };
+                    println!(
+                        "  {n} Alphabete: Median {median:.2} mm, Viertel {:.2}–{:.2} mm (MIN_STRICH_MM = {MIN_STRICH_MM})",
+                        werte[n / 4],
+                        werte[3 * n / 4]
+                    );
+                }
+                return Ok(true);
+            }
+            let liste = ttf::verzeichnis(&match schrift_ordner(args) {
+                o if o.is_empty() => ttf::system_ordner(),
+                o => o,
+            });
+            let namen: Vec<&String> = args[1..].iter().filter(|a| !a.starts_with('-')).collect();
+            for e in liste.iter().filter(|e| namen.is_empty() || namen.iter().any(|n| e.name.eq_ignore_ascii_case(n) || e.familie.eq_ignore_ascii_case(n))) {
+                match ttf::strichstaerken(e) {
+                    Some(st) => println!(
+                        "  {:<44} dünn {:.4}  dick {:.4}  stickbar ab {:>3.0} mm",
+                        e.name,
+                        st.duenn,
+                        st.dick,
+                        stickbar_ab(&st)
+                    ),
+                    None => println!("  {:<44} –", e.name),
+                }
+            }
+            Ok(true)
+        }
         Some("garnkarten") => {
             let ordner = garnkarten_ordner(args);
             let liste = garnkarte::verzeichnis(&ordner);

@@ -18,9 +18,11 @@ import {
 } from "$kern/kern";
 
 export type Modus = "einfach" | "experte";
+/** Wahl im Dialog „Schrift wählen“: Original-Alphabet oder Computer-Schrift */
+export type SchriftWahl = { alphabet?: string; schrift?: string };
 /** offener Dialog (gerendert in +page.svelte) */
 export type OffenerDialog =
-  | { art: "alphabet"; objekt: number }
+  | { art: "schrift"; objekt: number; reiter?: "alphabete" | "computer" | "google" | "favoriten" }
   | { art: "garn"; objekt: number; titel?: string; /** alle diese Objekte bekommen das Garn (z. B. eine Farbe eines Bilds) */ alle?: number[] }
   | { art: "bild"; pfad?: string }
   | { art: "svg" }
@@ -390,6 +392,21 @@ class Arbeit {
    * Stichart der Objekte `nummern` wechseln (Kern `stichart_aendern`; Form, Farbe, Gruppe … bleiben). Nicht
    * wechselbare Objekte (Text, Säule …) werden übergangen; Fehler und Hinweise erscheinen als Meldung.
    */
+  /**
+   * Schrift eines Texts wechseln (Kern `schrift_wechseln`): Original-Alphabet ↔ Computer-Schrift, Text und Satz
+   * bleiben. Wird daraus ein Text mit Original-Alphabet, bekommt er Stichart „automatisch“ wie jeder neue Text.
+   */
+  async schriftWechseln(i: number, wahl: SchriftWahl) {
+    const design = $state.snapshot(this.design) as DesignJson;
+    try {
+      const x = (await kern("schrift_wechseln", { design, objekt: i, ...wahl })) as ObjektJson;
+      if (x.art === "text" && design.objekte?.[i]?.art !== "text") x.stichart = "auto";
+      this.aendern((d) => (d.objekte![i] = x));
+    } catch (e) {
+      this.zeige(alsFehler(e).meldung, "err");
+    }
+  }
+
   async stichartAendern(nummern: number[], art: string) {
     let design = $state.snapshot(this.design) as DesignJson;
     const neu = new Map<number, ObjektJson>();

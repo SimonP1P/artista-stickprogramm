@@ -146,6 +146,15 @@ pub fn schrift_aus_daten(name: &str, daten: &[u8], index: u32, zeichen: &BTreeSe
     Ok(s)
 }
 
+/// Strichstärken einer Schrift (`stick_kern::stickbarkeit`, Probezeichen `PROBE`).
+pub fn strichstaerken(e: &SchriftEintrag) -> Option<stick_kern::stickbarkeit::Strichstaerken> {
+    use stick_kern::stickbarkeit::{PROBE, strichstaerken, ttf_flaechen};
+    let daten = std::fs::read(&e.pfad).ok()?;
+    let s = schrift_aus_daten(&e.name, &daten, e.index, &PROBE.chars().collect()).ok()?;
+    let (z, bezug) = ttf_flaechen(&s, PROBE);
+    strichstaerken(&z, bezug)
+}
+
 /// Ordner mit installierten Schriften (Windows, macOS, Linux).
 pub fn system_ordner() -> Vec<PathBuf> {
     let mut v = Vec::new();
@@ -171,16 +180,39 @@ pub fn system_ordner() -> Vec<PathBuf> {
     v.into_iter().filter(|p| p.is_dir()).collect()
 }
 
+/// Obere Hälfte (0x80–0xFF) der Kodierung MacRoman – Namen älterer Apple-Schriften stehen nur so in der Datei.
+const MAC_ROMAN: &str = "ÄÅÇÉÑÖÜáàâäãåçéèêëíìîïñóòôöõúùûü†°¢£§•¶ß®©™´¨≠ÆØ∞±≤≥¥µ∂∑∏π∫ªºΩæø¿¡¬√ƒ≈∆«»…\u{a0}ÀÃÕŒœ–—“”‘’÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰ÂÊÁËÈÍÎÏÌÓÔ\u{f8ff}ÒÚÛÙıˆ˜¯˘˙˚¸˝˛ˇ";
+
+/// Text eines Namenseintrags: Unicode (Windows/Unicode-Plattform) oder MacRoman (Mac-Plattform, Kodierung 0).
+fn name_text(n: &ttf_parser::name::Name) -> Option<String> {
+    if let Some(t) = n.to_string() {
+        return Some(t);
+    }
+    if n.platform_id == ttf_parser::PlatformId::Macintosh && n.encoding_id == 0 {
+        let oben: Vec<char> = MAC_ROMAN.chars().collect();
+        return Some(n.name.iter().map(|&b| if b < 0x80 { b as char } else { oben[b as usize - 0x80] }).collect());
+    }
+    None
+}
+
 fn namen(face: &Face) -> (String, String, String) {
+    // je Namensart: Englisch (Windows 0x0409, Mac 0) vor anderen Sprachen
     let lies = |ids: &[u16]| -> Option<String> {
         for &id in ids {
             let mut beste: Option<String> = None;
             for n in face.names().into_iter().filter(|n| n.name_id == id) {
-                if let Some(t) = n.to_string() {
-                    if n.language_id == 0x0409 {
+                if let Some(t) = name_text(&n).map(|t| t.trim().to_string()).filter(|t| !t.is_empty()) {
+                    let englisch = match n.platform_id {
+                        ttf_parser::PlatformId::Windows => n.language_id == 0x0409,
+                        ttf_parser::PlatformId::Macintosh => n.language_id == 0,
+                        _ => false,
+                    };
+                    if englisch && n.platform_id == ttf_parser::PlatformId::Windows {
                         return Some(t);
                     }
-                    beste.get_or_insert(t);
+                    if englisch || beste.is_none() {
+                        beste = Some(t);
+                    }
                 }
             }
             if beste.is_some() {
@@ -195,7 +227,11 @@ fn namen(face: &Face) -> (String, String, String) {
     (voll, familie, stil)
 }
 
-/// Alle Schriften in den Ordnern (rekursiv), nach Namen sortiert.
+/// Schriftdateien über dieser Größe (Byte) werden nicht gelesen.
+pub const GROESSTE_DATEI: u64 = 40_000_000;
+
+/// Alle Schriften mit lateinischen Buchstaben in den Ordnern (rekursiv), nach Namen sortiert; Dateien über
+/// `GROESSTE_DATEI` und interne Schriften von macOS („.…“) fehlen.
 pub fn verzeichnis(ordner: &[PathBuf]) -> Vec<SchriftEintrag> {
     fn dateien(o: &Path, out: &mut Vec<PathBuf>, tiefe: usize) {
         let Ok(it) = std::fs::read_dir(o) else { return };
@@ -217,11 +253,20 @@ pub fn verzeichnis(ordner: &[PathBuf]) -> Vec<SchriftEintrag> {
     }
     let mut v = Vec::new();
     for pfad in pfade {
+        // sehr große Dateien (Emoji, CJK-Sammlungen) sind für Stickschrift ohne Nutzen und kosten Sekunden
+        if std::fs::metadata(&pfad).is_ok_and(|m| m.len() > GROESSTE_DATEI) {
+            continue;
+        }
         let Ok(daten) = std::fs::read(&pfad) else { continue };
         let anzahl = ttf_parser::fonts_in_collection(&daten).unwrap_or(1);
         for index in 0..anzahl {
             if let Ok(face) = Face::parse(&daten, index) {
                 let (name, familie, stil) = namen(&face);
+                // „.SF NS“, „.Aqua Kana“ …: interne Schriften von macOS, nicht für Anwender gedacht; ohne lateinische
+                // Buchstaben (arabische, Braille-, Symbolschriften …) für Stickschrift ohne Nutzen
+                if name.is_empty() || name.starts_with('.') || !"AZaz".chars().all(|c| face.glyph_index(c).is_some()) {
+                    continue;
+                }
                 v.push(SchriftEintrag {
                     name,
                     familie,
@@ -273,8 +318,7 @@ pub fn finden(name: &str, liste: &[SchriftEintrag]) -> Option<SchriftEintrag> {
 /// Die Computer-Schriften laden, die das Design braucht (`Design::ttf_bedarf`), aus den Ordnern (sonst
 /// [`system_ordner`]).
 pub fn design_schriften_laden(design: &mut Design, ordner: &[PathBuf]) -> Result<(), String> {
-    let bedarf = design.ttf_bedarf();
-    if bedarf.is_empty() {
+    if design.ttf_bedarf().is_empty() {
         return Ok(());
     }
     let ordner = if ordner.is_empty() {
@@ -282,9 +326,14 @@ pub fn design_schriften_laden(design: &mut Design, ordner: &[PathBuf]) -> Result
     } else {
         ordner.to_vec()
     };
-    let liste = verzeichnis(&ordner);
+    design_schriften_laden_aus(design, &verzeichnis(&ordner))
+}
+
+/// Wie `design_schriften_laden`, aus einem schon gelesenen Verzeichnis (Zwischenspeicher der Oberfläche).
+pub fn design_schriften_laden_aus(design: &mut Design, liste: &[SchriftEintrag]) -> Result<(), String> {
+    let bedarf = design.ttf_bedarf();
     for (name, zeichen) in bedarf {
-        let e = finden(&name, &liste)
+        let e = finden(&name, liste)
             .ok_or_else(|| format!("Schrift „{name}“ nicht gefunden (installierte Schriften: stick schriften)"))?;
         let daten = std::fs::read(&e.pfad).map_err(|err| format!("{}: {err}", e.pfad.display()))?;
         design

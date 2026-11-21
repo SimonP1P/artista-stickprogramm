@@ -492,6 +492,8 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `garnkarte_garne` | GarnkartenName | GarnInfo[] | Garne einer Garnkarte (für die Auswahl von Hand) |
 | `garnkarten_liste` | Leer | string[] | Namen der Garnkarten (32 der CD) |
 | `gelesen_exp_speichern` | ExpZiel | number | Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern |
+| `google_schrift_laden` | GoogleLadenEingabe | SchriftInfo | Google-Schrift herunterladen (Internet) in die Ablage des Programms – danach wie eine installierte Schrift |
+| `google_schriften_liste` | Leer | GoogleKatalog | Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“ |
 | `in_knoten_umwandeln` | ObjektEingabe | ObjektWert | Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug |
 | `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen |
 | `maschine_lesen` | LeseEingabe | GelesenInfo | Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen |
@@ -506,7 +508,9 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |
 | `saeulen_vorschau` | SaeulenEingabe | SaeuleInfo[] | Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) |
-| `schriften_liste` | Leer | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) |
+| `schrift_vorschau` | SchriftVorschauEingabe | SchriftVorschau | Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“ |
+| `schrift_wechseln` | SchriftWechselEingabe | ObjektWert | Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben |
+| `schriften_liste` | SchriftenListeEingabe | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts |
 | `step_muster_liste` | Leer | StepMusterInfo[] | Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln |
 | `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt |
 | `stoffe_liste` | Leer | StoffInfo[] | Stoffe (8 + Software Defaults) mit den wichtigsten Werten |

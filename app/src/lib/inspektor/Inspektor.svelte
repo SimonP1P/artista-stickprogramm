@@ -183,8 +183,8 @@
           {#each oben as f (f.name)}
             {#if f.name === "alphabet"}
               <div class="frow">
-                <span class="fl">Alphabet</span>
-                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "alphabet", objekt: i })}><span class="t">{String(o.alphabet ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
+                <span class="fl">Schrift</span>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "schrift", objekt: i })}><span class="t">{String(o.alphabet ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
               </div>
             {:else if f.name === "text"}
               <div class="frow">
@@ -206,13 +206,8 @@
               </div>
             {:else if f.name === "schrift"}
               <div class="frow">
-                <label class="fl" for="ischrift">Schrift</label>
-                <div class="fc">
-                  <select id="ischrift" class="input sm" value={String(o.schrift ?? "")} onchange={(ev) => setzen("schrift", (ev.currentTarget as HTMLSelectElement).value)}>
-                    {#if !listen.schriften.some((s) => s.name === o.schrift)}<option value={String(o.schrift ?? "")}>{String(o.schrift ?? "")}</option>{/if}
-                    {#each listen.schriften as s (s.pfad)}<option value={s.name}>{s.name}</option>{/each}
-                  </select>
-                </div>
+                <span class="fl">Schrift</span>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "schrift", objekt: i })}><span class="t">{String(o.schrift ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
               </div>
             {:else if f.name === "muster"}
               <div class="frow">

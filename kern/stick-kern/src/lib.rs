@@ -39,6 +39,7 @@ pub mod saeulen;
 pub mod schrift;
 pub mod schrift_ttf;
 pub mod sticharten;
+pub mod stickbarkeit;
 pub mod stiche;
 pub mod transformation;
 pub mod umwandeln;

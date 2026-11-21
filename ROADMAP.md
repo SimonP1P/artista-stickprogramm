@@ -56,7 +56,8 @@ dort seit 21.11. in `~/.cargo`, `CARGO_TARGET_DIR=kern/target`); Bildschirmfotos
 `app/werkzeuge/bildschirmfoto.py` (das Terminal darf auf dem Mac keine Bildschirmaufnahme). **Maschine am Gerät
 erprobt** – Vor Ort **V10** ✅ 21.11. (gesendet und gestickt, Bericht Nutzer). Offene Kern-Schritte der Oberfläche:
 W12 (Phase 5); **W5-Rest ✅ 21.11.** (Befehl `in_knoten_umwandeln`, Knoten mit Bézier-Anfassern), **W9 ✅ 21.11.**
-(Buchstabe je Stich, einzelne Buchstaben per Klick).
+(Buchstabe je Stich, einzelne Buchstaben per Klick). **Schriftauswahl mit Google Fonts und „stickbar ab“ ✅ 21.11.**
+(Phase 5, `Analyse_Teil3/21`); als Nächstes Stil-Einordnung der Original-Alphabete und installierten Schriften.
 Merkliste M1: Aufteilung des Parameterkatalogs nach einfach/experte **vom Nutzer bestätigt (21.11.)**.
 
 **Erledigt 21.11.: 4b.7 Motivlinie (Pattern Run)** – 14 Motivsätze der CD (`userletw/`, Ressource
@@ -277,6 +278,14 @@ ganzen Text (eigene Erweiterung); einfacher Modus mit Schalter „Trotzdem Satin
 neue Oberfläche hat an der artista 185 gesendet und gestickt (Bericht Nutzer). Den Hinweis am Ende des Stickens zeigt
 die Maschine selbst (Firmware, nicht änderbar) – Wunsch „100 Zufallssprüche“ daher im Ergebnis des Sende-Dialogs
 (`app/src/lib/sprueche.ts`).
+**Schriften (21.11., Wunsch Nutzer „mehr und modernere Schriften, suchen, Favoriten, nach Stil“):** Dialog **„Schrift
+wählen“** für beide Modi – Stick-Alphabete · Computer-Schriften (installiert, nur mit lateinischen Buchstaben; Namen auch
+aus MacRoman) · **Google Fonts** (1 833, Katalog im Programm, Herunterladen per Klick in den Datenordner, danach ohne
+Internet) · ★ Favoriten; Suche, 19 Stil-Filter (Gotisch, Schreibschrift, Modern …), Vorschau mit eigenem Text, gefüllte
+Buchstaben; **„stickbar ab … mm“** je Computer-Schrift (dünnster Strich ≥ 0,8 mm, geeicht an den 47 Original-Alphabeten
+mit empfohlener Höhe – eigene Erweiterung); Wechsel Alphabet ↔ Computer-Schrift (`schrift_wechseln`). Bericht
+`Analyse_Teil3/21_schriften.md`. **Nächster Schritt (Nutzer, „4 danach“):** Original-Alphabete und installierte
+Schriften nach Stil einordnen (Google-Einordnung, Liste der Windows-Standardschriften, eigene Stile).
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),

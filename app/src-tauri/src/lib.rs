@@ -63,6 +63,10 @@ pub fn run() {
             if let Ok(log) = app.path().app_log_dir() {
                 k.mitschnitte_nach(log);
             }
+            // heruntergeladene Google Fonts bleiben im Datenordner des Programms (nicht im System installiert)
+            if let Ok(daten) = app.path().app_data_dir() {
+                k.schriften_ablage(daten.join("schriften"));
+            }
             app.manage(Arc::new(k));
 
             // Hauptfenster mit Startoptionen (Datei öffnen, Modus, Darstellung) – für „Öffnen mit“ und Bildschirmfotos

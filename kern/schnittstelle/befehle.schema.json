@@ -2235,6 +2235,90 @@
       ],
       "type": "object"
     },
+    "GoogleKatalog": {
+      "description": "Katalog der Google Fonts (freie Lizenzen; nach Beliebtheit sortiert).",
+      "properties": {
+        "schriften": {
+          "items": {
+            "$ref": "#/$defs/GoogleSchriftInfo"
+          },
+          "type": "array"
+        },
+        "stand": {
+          "description": "Stand des Katalogs (Datum)",
+          "type": "string"
+        },
+        "stile": {
+          "description": "alle Stile in Anzeigereihenfolge (Filter der Oberfläche)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "stand",
+        "stile",
+        "schriften"
+      ],
+      "type": "object"
+    },
+    "GoogleLadenEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `google_schrift_laden`.",
+      "properties": {
+        "familie": {
+          "description": "Familie wie im Katalog („Parisienne“)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "familie"
+      ],
+      "type": "object"
+    },
+    "GoogleSchriftInfo": {
+      "description": "Eine Schrift aus dem Katalog der Google Fonts.",
+      "properties": {
+        "familie": {
+          "description": "Name der Familie – nach dem Herunterladen auch der Name für das Design-Feld `schrift`",
+          "type": "string"
+        },
+        "geladen": {
+          "description": "schon heruntergeladen",
+          "type": "boolean"
+        },
+        "groesse": {
+          "description": "Größe der Datei in Byte",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "kategorie": {
+          "description": "Ohne Serifen, Mit Serifen, Zierschrift, Handschrift, Schreibmaschine",
+          "type": "string"
+        },
+        "lizenz": {
+          "type": "string"
+        },
+        "stile": {
+          "description": "Stile (deutsche Namen aus `GoogleKatalog::stile`)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "familie",
+        "kategorie",
+        "stile",
+        "groesse",
+        "lizenz",
+        "geladen"
+      ],
+      "type": "object"
+    },
     "Griffe": {
       "anyOf": [
         {
@@ -5026,6 +5110,10 @@
         "familie": {
           "type": "string"
         },
+        "heruntergeladen": {
+          "description": "aus Google Fonts heruntergeladen (liegt in der Ablage des Programms)",
+          "type": "boolean"
+        },
         "name": {
           "description": "Name wie im Design-Feld `schrift` („Arial Bold“)",
           "type": "string"
@@ -5041,7 +5129,8 @@
         "name",
         "familie",
         "stil",
-        "pfad"
+        "pfad",
+        "heruntergeladen"
       ],
       "type": "object"
     },
@@ -5069,6 +5158,130 @@
           "type": "string"
         }
       ]
+    },
+    "SchriftVorschau": {
+      "description": "Vorschau einer Computer-Schrift.",
+      "properties": {
+        "begrenzung": {
+          "description": "umschließendes Rechteck [x0, y0, x1, y1] in mm",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "fehlende_zeichen": {
+          "description": "Zeichen des Probetexts, die die Schrift nicht hat",
+          "type": "string"
+        },
+        "linien": {
+          "description": "Umrisse des Probetexts in mm (geschlossene Linien, füllen nach Nonzero-Regel)",
+          "items": {
+            "$ref": "#/$defs/FormLinie"
+          },
+          "type": "array"
+        },
+        "stickbarkeit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Stickbarkeit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "fehlt, wenn die Schrift nicht messbar ist"
+        }
+      },
+      "required": [
+        "linien",
+        "fehlende_zeichen"
+      ],
+      "type": "object"
+    },
+    "SchriftVorschauEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `schrift_vorschau`.",
+      "properties": {
+        "hoehe": {
+          "default": null,
+          "description": "Höhe in mm (Standard 10)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "schrift": {
+          "description": "Name wie im Design-Feld `schrift` (installiert oder heruntergeladen)",
+          "type": "string"
+        },
+        "text": {
+          "default": null,
+          "description": "Probetext (Standard „Abc“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "schrift"
+      ],
+      "type": "object"
+    },
+    "SchriftWechselEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `schrift_wechseln`: genau eins von `alphabet` und `schrift`.",
+      "properties": {
+        "alphabet": {
+          "default": null,
+          "description": "neues Original-Alphabet → Objekt wird `text`",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts (Text oder Computer-Schrift, ab 0)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "schrift": {
+          "default": null,
+          "description": "neue Computer-Schrift → Objekt wird `ttf`",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "design",
+        "objekt"
+      ],
+      "type": "object"
+    },
+    "SchriftenListeEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `schriften_liste`.",
+      "properties": {
+        "neu_einlesen": {
+          "default": false,
+          "description": "Schriftordner neu lesen (z. B. nach dem Installieren einer Schrift im System)",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     },
     "SendeEingabe": {
       "additionalProperties": false,
@@ -5465,6 +5678,32 @@
       "required": [
         "objekt",
         "hinweise"
+      ],
+      "type": "object"
+    },
+    "Stickbarkeit": {
+      "description": "Wie gut sich eine Schrift sticken lässt (eigene Erweiterung, `stick_kern::stickbarkeit`).",
+      "properties": {
+        "dick": {
+          "description": "dicke Striche in Teilen der Höhe (10 % der Strichlänge sind dicker)",
+          "format": "double",
+          "type": "number"
+        },
+        "duenn": {
+          "description": "dünne Striche in Teilen der Höhe (10 % der Strichlänge sind dünner)",
+          "format": "double",
+          "type": "number"
+        },
+        "stickbar_ab": {
+          "description": "kleinste Höhe der Großbuchstaben in mm, ab der die dünnen Striche mindestens 0,8 mm breit sind (kalibriert an\nden empfohlenen Höhen der Original-Alphabete)",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "stickbar_ab",
+        "duenn",
+        "dick"
       ],
       "type": "object"
     },
@@ -6588,6 +6827,24 @@
         "$ref": "#/$defs/ExpZiel"
       }
     },
+    "google_schrift_laden": {
+      "ausgabe": {
+        "$ref": "#/$defs/SchriftInfo"
+      },
+      "beschreibung": "Google-Schrift herunterladen (Internet) in die Ablage des Programms – danach wie eine installierte Schrift",
+      "eingabe": {
+        "$ref": "#/$defs/GoogleLadenEingabe"
+      }
+    },
+    "google_schriften_liste": {
+      "ausgabe": {
+        "$ref": "#/$defs/GoogleKatalog"
+      },
+      "beschreibung": "Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
     "in_knoten_umwandeln": {
       "ausgabe": {
         "$ref": "#/$defs/ObjektWert"
@@ -6732,6 +6989,24 @@
         "$ref": "#/$defs/SaeulenEingabe"
       }
     },
+    "schrift_vorschau": {
+      "ausgabe": {
+        "$ref": "#/$defs/SchriftVorschau"
+      },
+      "beschreibung": "Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“",
+      "eingabe": {
+        "$ref": "#/$defs/SchriftVorschauEingabe"
+      }
+    },
+    "schrift_wechseln": {
+      "ausgabe": {
+        "$ref": "#/$defs/ObjektWert"
+      },
+      "beschreibung": "Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben",
+      "eingabe": {
+        "$ref": "#/$defs/SchriftWechselEingabe"
+      }
+    },
     "schriften_liste": {
       "ausgabe": {
         "items": {
@@ -6739,9 +7014,9 @@
         },
         "type": "array"
       },
-      "beschreibung": "installierte Computer-Schriften (TrueType/OpenType)",
+      "beschreibung": "installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts",
       "eingabe": {
-        "$ref": "#/$defs/Leer"
+        "$ref": "#/$defs/SchriftenListeEingabe"
       }
     },
     "step_muster_liste": {
