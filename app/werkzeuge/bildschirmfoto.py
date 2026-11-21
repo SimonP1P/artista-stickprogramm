@@ -67,6 +67,8 @@ def main():
     a.add_argument("--auswahl", type=int)
     a.add_argument("--ansicht")
     a.add_argument("--schritt", type=int)
+    a.add_argument("--maschine", choices=["anschluss", "plan", "fertig", "sticken", "liste"],
+                   help="Maschinen-Ablauf mit der Simulation bis zu dieser Stufe")
     a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
     a.add_argument("--groesse", default="1280x800")
     a.add_argument("--stick")
@@ -84,6 +86,16 @@ def main():
         antworten[b] = api(stick, b, {"design": design})
     for b in ("alphabete_liste", "stoffe_liste", "garnkarten_liste"):
         antworten[b] = api(stick, b, {})
+    sim = {"port": "", "simulation": True}
+    antworten["maschine_ports"] = []
+    if o.maschine:
+        ein = {"design": design, **sim, "wahl": {"icon": True, "farben": True, "sticken": False}}
+        antworten["maschine_planen"] = api(stick, "maschine_planen", ein)
+        antworten["maschine_senden"] = api(stick, "maschine_senden", ein)
+        if o.maschine == "liste":
+            antworten["maschine_liste"] = api(stick, "maschine_liste", sim)
+            nr = antworten["maschine_liste"]["designs"][0]["nr"]
+            antworten["maschine_lesen"] = api(stick, "maschine_lesen", {**sim, "nr": nr})
     karte = design.get("garnkarte", "Default")
     if karte != "keine":
         antworten["garnkarte_garne:" + karte] = api(stick, "garnkarte_garne", {"name": karte})
@@ -106,6 +118,8 @@ def main():
         start["ansicht"] = o.ansicht
     if o.schritt:
         start["schritt"] = o.schritt
+    if o.maschine:
+        start["maschine"] = o.maschine
     if o.dialog:
         start["dialog"] = json.loads(o.dialog)
     if o.auswahl is not None:

@@ -8,6 +8,7 @@
   import { ART, IC } from "./icons";
   import { garnText, listen, STOFF_TEXT } from "./listen.svelte";
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
+  import { ANLEITUNG_RAHMEN, maschine, SIMULATION } from "./maschine.svelte";
 
   let { istMac }: { istMac: boolean } = $props();
 
@@ -428,7 +429,34 @@
         <p class="mut" style="margin:0 0 12px">Auf diesem Mac ist keine Maschine angeschlossen. Das Design zum Sticken am Windows-PC speichern.</p>
       {:else}
         <h2 style="font-size:25px; margin:0 0 2px">An die Maschine senden</h2>
-        <div class="note" style="margin:0 0 12px">Senden mit Plan, Bestätigung und Fortschritt folgt in Etappe E3. Bis dahin: speichern oder als EXP exportieren.</div>
+        <p class="mut" style="margin:0 0 12px">Erst wird nur gelesen und ein Plan gezeigt. Geschrieben wird erst nach deiner Bestätigung.</p>
+        <div class="field" style="margin-bottom:10px">
+          <label for="aport">Anschluss</label>
+          <select id="aport" class="input" value={maschine.port} onchange={(e) => maschine.portSetzen((e.currentTarget as HTMLSelectElement).value)}>
+            {#each maschine.ports as p (p)}<option value={p}>{p}</option>{/each}
+            <option value={SIMULATION}>Simulation (ohne Maschine)</option>
+          </select>
+        </div>
+        {#if maschine.simulation}
+          <div class="simbox" style="margin-bottom:10px"><Icon d={IC.monitor} /><span><b>Simulation:</b> zum Ausprobieren ohne Maschine. Es wird nichts gesendet.</span></div>
+        {/if}
+        <button class="btn btn-secondary" style="width:100%; margin-bottom:8px" disabled={maschine.laeuft} onclick={() => maschine.pruefen()}>
+          {maschine.laeuft ? "Prüfe …" : "Maschine prüfen (nur lesen, ≈ 4 s)"}
+        </button>
+        {#if maschine.info}
+          <div class="okbox" style="margin-bottom:12px"><Icon d={IC.haken} /><span>Firmware {maschine.info.sitzung.naehmaschine} · Stickmodul erreicht · {maschine.info.farbbereich.text}</span></div>
+        {:else if maschine.pruefFehler}
+          <div class="errbox" style="margin-bottom:12px"><Icon d={IC.fehler} /><span>{maschine.pruefFehler.meldung}</span></div>
+        {/if}
+        <div class="note" style="margin-bottom:12px">
+          <b style="font-weight:500">Nach einem Rahmenwechsel an der Maschine:</b>
+          <ol style="margin:6px 0 0; padding-left:20px">{#each ANLEITUNG_RAHMEN as a (a)}<li style="margin-bottom:2px">{a}</li>{/each}</ol>
+        </div>
+        <button class="btn btn-primary blueprint btn-block" style="min-height:42px; font-size:16px; width:100%" disabled={!!maschine.sperrgrund} onclick={() => maschine.sendenOeffnen()}>
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Plan anzeigen …
+        </button>
+        {#if maschine.sperrgrund}<p class="small" style="color:var(--err); margin:6px 0 0">{maschine.sperrgrund}</p>{/if}
+        <p class="mut small" style="margin:8px 0 14px">Das Design bleibt nur bis zum Ausschalten in der Maschine – dauerhaft speichern ist noch nicht möglich.</p>
       {/if}
       <div style="display:flex; flex-direction:column; gap:8px">
         <button class="big" onclick={() => speichern()}><b style="font-weight:500">Design speichern</b><span class="mut small">eigenes Format (JSON) – zum Weiterbearbeiten</span></button>

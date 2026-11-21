@@ -19,8 +19,8 @@ fn testdesign() -> Sendedaten {
     Sendedaten::aus_exp("Testquadrat", &exp, false)
 }
 
-fn ohne_fortschritt() -> impl FnMut(&str, usize, usize) {
-    |_: &str, _: usize, _: usize| {}
+fn ohne_fortschritt() -> impl FnMut(&str, usize, usize, usize) {
+    |_: &str, _: usize, _: usize, _: usize| {}
 }
 
 #[test]

@@ -20,12 +20,8 @@ tauri-build = { version = "2", features = [] }
 [dependencies]
 tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
-serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tauri-plugin-dialog = "2"
-stick-kern = { version = "0.1.0", path = "../../kern/stick-kern" }
-stick-formate = { version = "0.1.0", path = "../../kern/stick-formate" }
-stick-maschine = { version = "0.1.0", path = "../../kern/stick-maschine" }
 stick-api = { version = "0.1.0", path = "../../kern/stick-api" }
 
 

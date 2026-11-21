@@ -48,7 +48,8 @@ impl Status {
 }
 
 /// Fortschritt großer Lese-/Schreibvorgänge: (was, erledigt, gesamt).
-pub type Fortschritt<'a> = &'a mut dyn FnMut(&str, usize, usize);
+/// Fortschritt großer Lese-/Schreibvorgänge: (was, erledigt, gesamt, Wiederholungen bisher).
+pub type Fortschritt<'a> = &'a mut dyn FnMut(&str, usize, usize, usize);
 
 /// Verbindung zur Maschine über eine [`Leitung`], mit Mitschnitt.
 pub struct Verbindung<L: Leitung> {
@@ -471,7 +472,7 @@ impl<L: Leitung> Verbindung<L> {
                 return Err(format!("{was}: Lesen bei Offset {} fehlgeschlagen", v.len()));
             };
             v.extend(&b[..b.len().min(rest)]);
-            f(was, v.len(), len);
+            f(was, v.len(), len, wdh);
         }
         self.stumm = false;
         let s = (self.l.jetzt_ms() - start) as f64 / 1000.0;
@@ -537,7 +538,7 @@ impl<L: Leitung> Verbindung<L> {
                 kleine += 1;
             }
             pos += n;
-            f(was, pos, daten.len());
+            f(was, pos, daten.len(), wdh);
         }
         self.stumm = false;
         let s = (self.l.jetzt_ms() - start) as f64 / 1000.0;

@@ -15,11 +15,12 @@
 //! Aus denselben Typen entstehen `kern/schnittstelle/` (JSON-Schemas, `kern.ts`) und `SCHNITTSTELLE.md`
 //! (`stick api exportieren`). Die Tests schlagen fehl, wenn diese Dateien veraltet sind.
 //!
-//! Die Befehle für die Maschine (`maschine_*`: Port, Fortschritt als Ereignis) liegen noch in der App
-//! (`app/src-tauri/src/lib.rs`) und kommen hierher, wenn die neue Oberfläche sie braucht.
+//! Die Befehle für die Maschine (`maschine_*`, Modul [`maschine`]) laufen ebenfalls hierüber; den Fortschritt meldet
+//! die App als Ereignis `maschine_fortschritt` ([`Kontext::fortschritt_melden`]).
 
 pub mod befehle;
 pub mod erzeugen;
+pub mod maschine;
 
 use schemars::{JsonSchema, Schema, SchemaGenerator};
 use serde::Serialize;
@@ -37,6 +38,44 @@ pub struct Fehler {
     pub meldung: String,
     /// Nummer des Objekts in `objekte` (ab 0), wenn bekannt
     pub objekt: Option<usize>,
+    /// Art des Fehlers bei Maschinen-Befehlen (für Zustände und nächste Schritte in der Oberfläche)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub code: Option<FehlerCode>,
+}
+
+/// Art eines Fehlers der Maschine (ANFORDERUNGEN §4.2).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum FehlerCode {
+    /// keine Verbindung: Kabel, Port, Maschine aus
+    KeineVerbindung,
+    /// Stickmodul nicht erreicht
+    Stickmodul,
+    /// Maschine antwortet nicht mehr (aus- und einschalten)
+    AntwortetNicht,
+    /// zurückgelesen weicht ab – Senden abgebrochen, nichts gestickt
+    ZurueckgelesenWeichtAb,
+    /// Garnfarbtabelle passt nicht
+    Farbtabelle,
+    /// Design zu groß für die Maschine
+    ZuGross,
+    /// Design außerhalb des Stickfelds
+    Ausserhalb,
+    /// vom Anwender abgebrochen
+    Abgebrochen,
+    /// es läuft schon eine Aktion mit der Maschine
+    Belegt,
+}
+
+impl Fehler {
+    /// Fehler mit Code (Maschine).
+    pub fn mit_code(meldung: impl Into<String>, code: FehlerCode) -> Fehler {
+        Fehler {
+            meldung: meldung.into(),
+            objekt: None,
+            code: Some(code),
+        }
+    }
 }
 
 impl From<String> for Fehler {
@@ -47,7 +86,11 @@ impl From<String> for Fehler {
             let ziffern: String = rest.chars().take_while(char::is_ascii_digit).collect();
             ziffern.parse::<usize>().ok().filter(|&n| n >= 1).map(|n| n - 1)
         });
-        Fehler { meldung, objekt }
+        Fehler {
+            meldung,
+            objekt,
+            code: None,
+        }
     }
 }
 
@@ -72,6 +115,8 @@ pub struct Kontext {
     /// Ordner der Computer-Schriften (leer = Schriften des Systems)
     pub schriften: Vec<PathBuf>,
     geladen: Mutex<HashMap<String, Alphabet>>,
+    /// Zustand der Maschinen-Befehle (Abbrechen, Sperre, Fortschritt, Mitschnitte)
+    pub(crate) maschine: maschine::MaschinenZustand,
 }
 
 impl Kontext {
@@ -81,6 +126,7 @@ impl Kontext {
             garnkarten,
             schriften: Vec::new(),
             geladen: Mutex::new(HashMap::new()),
+            maschine: Default::default(),
         }
     }
 
@@ -187,7 +233,7 @@ macro_rules! befehle {
                 ausgabe: |g| g.subschema_for::<$aus>(),
                 lauf: |k, v| {
                     let e: $ein = eingabe_lesen(v)?;
-                    let a: $aus = befehle::$name(k, e)?;
+                    let a: $aus = befehle_aller::$name(k, e)?;
                     serde_json::to_value(a).map_err(|x| Fehler::from(x.to_string()))
                 },
             }),+]
@@ -242,6 +288,22 @@ befehle! {
     datei_lesen: befehle::Pfad => String,
     /// Textdatei schreiben
     text_speichern: befehle::TextDatei => (),
+    /// Maschine: serielle Ports (COM…)
+    maschine_ports: befehle::Leer => Vec<String>,
+    /// Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen
+    maschine_pruefen: maschine::Anschluss => maschine::MaschinenInfo,
+    /// Senden planen – nur lesen: Prüfungen wie das Original, geplante Schreibzugriffe zum Bestätigen
+    maschine_planen: maschine::SendeEingabe => maschine::SendePlanInfo,
+    /// **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt)
+    maschine_senden: maschine::SendeEingabe => maschine::SendeInfo,
+    /// Laufende Maschinen-Aktion abbrechen
+    maschine_abbrechen: befehle::Leer => bool,
+    /// Designliste der Maschine – nur lesen
+    maschine_liste: maschine::Anschluss => maschine::ListenInfo,
+    /// Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen
+    maschine_lesen: maschine::LeseEingabe => maschine::GelesenInfo,
+    /// Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern
+    gelesen_exp_speichern: maschine::ExpZiel => usize,
 }
 
 /// Befehl ausführen: Eingabe und Ausgabe als JSON (Typen: `kern/schnittstelle/befehle.schema.json`).
@@ -251,6 +313,12 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
         .find(|b| b.name == befehl)
         .ok_or_else(|| Fehler::from(format!("Befehl „{befehl}“ unbekannt")))?;
     (b.lauf)(k, daten)
+}
+
+/// Alle Befehlsfunktionen unter einem Namen (für `befehle!`).
+mod befehle_aller {
+    pub use crate::befehle::*;
+    pub use crate::maschine::*;
 }
 
 #[cfg(test)]

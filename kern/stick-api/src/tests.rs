@@ -151,6 +151,51 @@ fn alphabete_und_step_muster_fuer_auswahllisten() {
     );
 }
 
+/// Maschinen-Befehle mit der Simulation (schreibt nur in die Simulation): prüfen, planen, senden mit Fortschritt,
+/// Liste, lesen; Fehlercodes.
+#[test]
+fn maschine_in_der_simulation() {
+    let k = kontext();
+    let mitschnitte = std::env::temp_dir().join("stick_api_test_mitschnitte");
+    k.mitschnitte_nach(mitschnitte.clone());
+    let gemeldet = std::sync::Arc::new(std::sync::Mutex::new(Vec::new()));
+    let g = gemeldet.clone();
+    k.fortschritt_melden(move |f| g.lock().unwrap().push(f.was.clone()));
+    let sim = json!({"port": "", "simulation": true});
+    let p = ausfuehren(&k, "maschine_pruefen", sim.clone()).unwrap();
+    assert_eq!(p["sitzung"]["port"], "Simulation");
+    assert_eq!(p["sitzung"]["verlassen"], true);
+    let design = json!({"name": "Test", "garnkarte": "Isacord 40 wt-numerical", "objekte": [
+        {"art": "satinlinie", "punkte": [[-10, 0], [10, 0]], "farbe": "#ffffff", "garn": "0015"}
+    ]});
+    let wahl = json!({"icon": true, "farben": true, "sticken": false});
+    let ein = json!({"design": design, "port": "", "simulation": true, "wahl": wahl});
+    let plan = ausfuehren(&k, "maschine_planen", ein.clone()).unwrap();
+    assert!(plan["bytes_daten"].as_u64().unwrap() > 0);
+    assert_eq!(plan["garne"][0]["nummer"], 15, "Garn von Hand in der Garnfarbtabelle");
+    let s = ausfuehren(&k, "maschine_senden", ein).unwrap();
+    assert!(s["gestickt"].is_null());
+    assert!(
+        gemeldet.lock().unwrap().iter().any(|w| w == "DATEN"),
+        "Fortschritt gemeldet"
+    );
+    let l = ausfuehren(&k, "maschine_liste", sim.clone()).unwrap();
+    assert!(!l["designs"].as_array().unwrap().is_empty());
+    let nr = l["designs"][0]["nr"].clone();
+    let r = ausfuehren(&k, "maschine_lesen", json!({"simulation": true, "nr": nr})).unwrap();
+    assert!(!r["ergebnis"]["stiche"].as_array().unwrap().is_empty());
+    let ziel = mitschnitte.join("gelesen.exp");
+    let n = ausfuehren(&k, "gelesen_exp_speichern", json!({"pfad": ziel.display().to_string()})).unwrap();
+    assert!(n.as_u64().unwrap() > 0);
+    // außerhalb des Stickfelds → Fehler mit Code, nichts verbunden
+    let weit = json!({"design": {"objekte": [{"art": "lauf", "punkte": [[0, 0], [300, 0]]}]},
+        "port": "", "simulation": true, "wahl": wahl});
+    let f = ausfuehren(&k, "maschine_planen", weit).unwrap_err();
+    assert_eq!(f.code, Some(FehlerCode::Ausserhalb), "{f}");
+    // ohne laufende Aktion: Abbrechen meldet „lief nicht“
+    assert_eq!(ausfuehren(&k, "maschine_abbrechen", json!({})).unwrap(), json!(false));
+}
+
 /// Wächter 1: die erzeugten Dateien (`kern/schnittstelle/`, `SCHNITTSTELLE.md`) passen zum Code.
 /// Neu erzeugen: `stick api exportieren` oder `STICK_API_SCHREIBEN=1 cargo test -p stick-api`.
 #[test]

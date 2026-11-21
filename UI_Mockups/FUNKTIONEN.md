@@ -115,7 +115,12 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `bild_umwandeln` | Bild → Umrisse (Auto-Digitalisieren): neues Design aus einem Bild |
 | `svg_lesen` | SVG-Datei (Inkscape) → neues Design; Zählung je Stichart und Hinweise für die Anzeige |
 | `datei_lesen`, `text_speichern` | Design öffnen/speichern |
-| Maschine: `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` | noch als eigene Befehle in der App (`app/src-tauri/src/lib.rs`), kommen später in `stick-api` |
+| `maschine_ports`, `maschine_pruefen` | Anschluss wählen (COM-Port oder Simulation), Maschine prüfen (nur lesen: Firmware, Garnfarbtabelle) |
+| `maschine_planen` | Senden Stufe 1: nur lesen, Prüfungen wie das Original, Liste der Schreibzugriffe mit Größe, Garne an der Maschine – zum Bestätigen |
+| `maschine_senden` | Senden Stufe 2 (**schreibt**, nur nach Bestätigung); mit `wahl.sticken` Befehl 0x08 (Rahmen fährt – nur nach Gefahrendialog „Person an der Maschine“); Fortschritt als Ereignis `maschine_fortschritt` `{was, erledigt, gesamt, wiederholungen}` |
+| `maschine_abbrechen` | „Abbrechen“ während des Sendens/Lesens (PC-Modus wird trotzdem verlassen) |
+| `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` | „Designs aus der Maschine“: Liste, eines lesen (Befehl 0x400, nur lesen) und ansehen, als EXP speichern |
+| Fehler der Maschine | `{meldung, code}` mit `code` = `keine_verbindung`, `stickmodul`, `antwortet_nicht`, `zurueckgelesen_weicht_ab`, `farbtabelle`, `zu_gross`, `ausserhalb`, `abgebrochen`, `belegt` – je Code Zustand und nächste Schritte zeigen |
 
 Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DATEI.json` (Eingabe wie in
 `SCHNITTSTELLE.md`).

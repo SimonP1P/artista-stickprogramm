@@ -10,6 +10,7 @@ publish.workspace = true
 stick-kern.workspace = true
 stick-formate.workspace = true
 stick-vektor.workspace = true
+stick-maschine.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 schemars.workspace = true

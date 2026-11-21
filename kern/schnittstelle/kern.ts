@@ -37,6 +37,20 @@ export type AlphabetVorschauEingabe = {
   text?: string | null;
 };
 
+/** Anschluss: COM-Port oder Simulation (ohne Maschine, es wird nichts gesendet). */
+export type Anschluss = {
+  /**
+   * Name des Ports (z. B. „COM3“); bei `simulation` ohne Bedeutung
+   * @default ""
+   */
+  port?: string;
+  /**
+   * Simulation statt echter Maschine
+   * @default false
+   */
+  simulation?: boolean;
+};
+
 /** Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`). */
 export type ApplikationJson = {
   abdeckung?: (Abdeckung | null);
@@ -623,6 +637,11 @@ export type ExpEingabe = {
   stoff?: string | null;
 };
 
+/** Zieldatei. */
+export type ExpZiel = {
+  pfad: string;
+};
+
 /** Ein Farbblock (Abschnitt zwischen zwei Farbwechseln = ein Stopp an der Maschine). */
 export type FarbBlock = {
   /**
@@ -638,15 +657,30 @@ export type FarbBlock = {
   von_hand: boolean;
 };
 
+/** Garnfarbbereich der Maschine (Schritt 12 des Originals). */
+export type FarbInfo = {
+  farben: MaschinenGarn[];
+  groesse: number;
+  /** höchste Farbanzahl der Tabelle (artista 185: 60) */
+  max_farben: number;
+  /** Zustand in Worten */
+  text: string;
+};
+
 /**
  * Fehler eines Befehls: Meldung (deutsch) und, wenn er zu einem Objekt gehört, dessen Nummer (ab 0) – damit die
  * Oberfläche das Objekt markieren kann.
  */
 export type Fehler = {
+  /** Art des Fehlers bei Maschinen-Befehlen (für Zustände und nächste Schritte in der Oberfläche) */
+  code?: (FehlerCode | null);
   meldung: string;
   /** Nummer des Objekts in `objekte` (ab 0), wenn bekannt */
   objekt?: number | null;
 };
+
+/** Art eines Fehlers der Maschine (ANFORDERUNGEN §4.2). */
+export type FehlerCode = ("keine_verbindung" | "stickmodul" | "antwortet_nicht" | "zurueckgelesen_weicht_ab" | "farbtabelle" | "zu_gross" | "ausserhalb" | "abgebrochen" | "belegt");
 
 /** Form statt Punktliste, z. B. `{"kreis": {"mitte": [0, 0], "radius": 10}}`. */
 export type Form = ({
@@ -700,6 +734,16 @@ export type FormLinie = {
   punkte: Punkt[];
 };
 
+/** Fortschritt großer Lese-/Schreibvorgänge (Ereignis `maschine_fortschritt` der App). */
+export type Fortschritt = {
+  erledigt: number;
+  gesamt: number;
+  /** Teil („DATEN“, „ICON“, „Garnfarbtabelle“ …) */
+  was: string;
+  /** Wiederholungen bisher in diesem Teil (Übertragungsfehler werden automatisch wiederholt) */
+  wiederholungen: number;
+};
+
 /** Garn einer Garnkarte. */
 export type GarnInfo = {
   marke: string;
@@ -713,6 +757,16 @@ export type GarnInfo = {
 /** Name einer Garnkarte. */
 export type GarnkartenName = {
   name: string;
+};
+
+/** Aus der Maschine gelesenes Design zum Ansehen (Vorschau wie `design_berechnen`). */
+export type GelesenInfo = {
+  bytes: number;
+  ergebnis: Ergebnis;
+  /** Garnfarben, die die Maschine nach dem Laden in die Garnfarbtabelle legt */
+  garne: MaschinenGarn[];
+  nr: number;
+  sitzung: Sitzung;
 };
 
 /** Griffe einer Kante beim Verzerren: eine Zahl (Mitte) oder Liste [links, rechts] bzw. [links, Mitte, rechts] in mm. */
@@ -907,6 +961,44 @@ export type LaufJson = {
 
 /** Keine Eingabe. */
 export type Leer = Record<string, unknown>;
+
+/** Design Nr. … aus der Maschine lesen. */
+export type LeseEingabe = {
+  /** Nummer in der Designliste (ab 1) */
+  nr: number;
+  /** @default "" */
+  port?: string;
+  /** @default false */
+  simulation?: boolean;
+};
+
+/** Ergebnis von `maschine_liste`. */
+export type ListenInfo = {
+  designs: ListenZeile[];
+  sitzung: Sitzung;
+};
+
+/** Eintrag der Designliste der Maschine. */
+export type ListenZeile = {
+  flags: number;
+  name: string;
+  nr: number;
+};
+
+/** Garn der Maschine (Eintrag der Garnfarbtabelle). */
+export type MaschinenGarn = {
+  marke: string;
+  name: string;
+  nummer: number;
+  /** Farbe „#rrggbb“ */
+  rgb: string;
+};
+
+/** Ergebnis von `maschine_pruefen`. */
+export type MaschinenInfo = {
+  farbbereich: FarbInfo;
+  sitzung: Sitzung;
+};
 
 /**
  * Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im
@@ -1415,6 +1507,67 @@ export type SchriftInfo = {
 /** Stichart einer Schrift mit Original-Alphabet */
 export type SchriftStichart = ("satin" | "step" | "muster");
 
+/** Design an die Maschine: Design, Anschluss, Wahl. */
+export type SendeEingabe = {
+  design: DesignWert;
+  port: string;
+  /** @default false */
+  simulation?: boolean;
+  wahl: SendeWahl;
+};
+
+/** Ergebnis von `maschine_senden`. */
+export type SendeInfo = {
+  /** Befehl 0x08 bestätigt (None = nicht gestickt) */
+  gestickt?: boolean | null;
+  schritte: string[];
+  sitzung: Sitzung;
+};
+
+/** Plan des Sendens (nur gelesen) – zum Bestätigen. */
+export type SendePlanInfo = {
+  /** Größe der Teile in Byte: Daten (Puffer), Vorschaubild, Garnfarbtabelle (0 = wird nicht geschrieben) */
+  bytes_daten: number;
+  bytes_farben: number;
+  bytes_icon: number;
+  farbbereich?: (FarbInfo | null);
+  /** Garne, die an der Maschine erscheinen (je Farbblock) */
+  garne: MaschinenGarn[];
+  hinweise: string[];
+  /** geplante Schreibzugriffe in Worten (DATEN, ICON, INFO, Garnfarbtabelle, Befehl 0x08) */
+  schritte: string[];
+  sitzung: Sitzung;
+};
+
+/** Was beim Senden geschrieben wird (die INFO-Felder immer, wie das Original). */
+export type SendeWahl = {
+  /** Garnfarbtabelle mitsenden (Garnnamen am Display) */
+  farben: boolean;
+  /** Vorschaubild (ICON 72 × 62) mitsenden */
+  icon: boolean;
+  /**
+   * danach sticken (Befehl 0x08, „sticken ohne speichern“) – **nur** nach dem Gefahrendialog („Person an der
+   * Maschine“, Rahmen fährt)
+   */
+  sticken: boolean;
+};
+
+/** Angaben zu einer Sitzung mit der Maschine. */
+export type Sitzung = {
+  baud: number;
+  /** Pfad des Mitschnitts */
+  mitschnitt: string;
+  /** Firmware der Nähmaschine (z. B. „04.04“) */
+  naehmaschine: string;
+  /** Port oder „Simulation“ */
+  port: string;
+  simulation: boolean;
+  /** Firmware des Stickmoduls */
+  stickmodul: string;
+  /** PC-Modus mit 0x100 + T r M E verlassen */
+  verlassen: boolean;
+};
+
 /** Skalierung in %: eine Zahl (beide Richtungen) oder [x, y] */
 export type Skalierung = (number | number[]);
 
@@ -1824,6 +1977,22 @@ export interface Befehle {
   garnkarte_garne: { eingabe: GarnkartenName; ausgabe: GarnInfo[] };
   /** Namen der Garnkarten (32 der CD) */
   garnkarten_liste: { eingabe: Leer; ausgabe: string[] };
+  /** Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern */
+  gelesen_exp_speichern: { eingabe: ExpZiel; ausgabe: number };
+  /** Laufende Maschinen-Aktion abbrechen */
+  maschine_abbrechen: { eingabe: Leer; ausgabe: boolean };
+  /** Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen */
+  maschine_lesen: { eingabe: LeseEingabe; ausgabe: GelesenInfo };
+  /** Designliste der Maschine – nur lesen */
+  maschine_liste: { eingabe: Anschluss; ausgabe: ListenInfo };
+  /** Senden planen – nur lesen: Prüfungen wie das Original, geplante Schreibzugriffe zum Bestätigen */
+  maschine_planen: { eingabe: SendeEingabe; ausgabe: SendePlanInfo };
+  /** Maschine: serielle Ports (COM…) */
+  maschine_ports: { eingabe: Leer; ausgabe: string[] };
+  /** Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen */
+  maschine_pruefen: { eingabe: Anschluss; ausgabe: MaschinenInfo };
+  /** **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) */
+  maschine_senden: { eingabe: SendeEingabe; ausgabe: SendeInfo };
   /** Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch */
   parameter_katalog: { eingabe: Leer; ausgabe: Parameter[] };
   /** Stickrahmen der artista 185 mit Stickfeld und Umriss */
@@ -1861,6 +2030,14 @@ export const BEFEHLE = [
   "fuellmuster_liste",
   "garnkarte_garne",
   "garnkarten_liste",
+  "gelesen_exp_speichern",
+  "maschine_abbrechen",
+  "maschine_lesen",
+  "maschine_liste",
+  "maschine_planen",
+  "maschine_ports",
+  "maschine_pruefen",
+  "maschine_senden",
   "parameter_katalog",
   "rahmen_liste",
   "reihenfolge_aendern",

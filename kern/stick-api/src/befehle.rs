@@ -496,7 +496,7 @@ fn objekte_je_block(folge: &StichFolge) -> Vec<Vec<usize>> {
 }
 
 /// Farbblöcke mit Applikationslagen: je Applikation die Lagen der Reihe nach den Blöcken ihrer Farbe zuordnen.
-fn bloecke_von(design: &stick_kern::Design, folge: &StichFolge) -> Vec<FarbBlock> {
+pub(crate) fn bloecke_von(design: &stick_kern::Design, folge: &StichFolge) -> Vec<FarbBlock> {
     use std::collections::HashMap;
     let mut offen: HashMap<usize, std::collections::VecDeque<(String, stick_kern::applikation::Lage)>> = HashMap::new();
     objekte_je_block(folge)
@@ -553,6 +553,7 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
                             design.garnkarte
                         ),
                         objekt: Some(b.objekt),
+                        code: None,
                     }),
                 None => Ok(GarnInfo::from(
                     karte.naechstes(stick_formate::artista::Farbe::aus_hex(hex).rgb),

@@ -113,6 +113,23 @@
       ],
       "type": "object"
     },
+    "Anschluss": {
+      "additionalProperties": false,
+      "description": "Anschluss: COM-Port oder Simulation (ohne Maschine, es wird nichts gesendet).",
+      "properties": {
+        "port": {
+          "default": "",
+          "description": "Name des Ports (z. B. „COM3“); bei `simulation` ohne Bedeutung",
+          "type": "string"
+        },
+        "simulation": {
+          "default": false,
+          "description": "Simulation statt echter Maschine",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "ApplikationJson": {
       "description": "Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`).",
       "properties": {
@@ -1480,6 +1497,19 @@
       ],
       "type": "object"
     },
+    "ExpZiel": {
+      "additionalProperties": false,
+      "description": "Zieldatei.",
+      "properties": {
+        "pfad": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pfad"
+      ],
+      "type": "object"
+    },
     "FarbBlock": {
       "description": "Ein Farbblock (Abschnitt zwischen zwei Farbwechseln = ein Stopp an der Maschine).",
       "properties": {
@@ -1518,9 +1548,55 @@
       ],
       "type": "object"
     },
+    "FarbInfo": {
+      "description": "Garnfarbbereich der Maschine (Schritt 12 des Originals).",
+      "properties": {
+        "farben": {
+          "items": {
+            "$ref": "#/$defs/MaschinenGarn"
+          },
+          "type": "array"
+        },
+        "groesse": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_farben": {
+          "description": "höchste Farbanzahl der Tabelle (artista 185: 60)",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "text": {
+          "description": "Zustand in Worten",
+          "type": "string"
+        }
+      },
+      "required": [
+        "max_farben",
+        "groesse",
+        "text",
+        "farben"
+      ],
+      "type": "object"
+    },
     "Fehler": {
       "description": "Fehler eines Befehls: Meldung (deutsch) und, wenn er zu einem Objekt gehört, dessen Nummer (ab 0) – damit die\nOberfläche das Objekt markieren kann.",
       "properties": {
+        "code": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FehlerCode"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Art des Fehlers bei Maschinen-Befehlen (für Zustände und nächste Schritte in der Oberfläche)"
+        },
         "meldung": {
           "type": "string"
         },
@@ -1538,6 +1614,56 @@
         "meldung"
       ],
       "type": "object"
+    },
+    "FehlerCode": {
+      "description": "Art eines Fehlers der Maschine (ANFORDERUNGEN §4.2).",
+      "oneOf": [
+        {
+          "const": "keine_verbindung",
+          "description": "keine Verbindung: Kabel, Port, Maschine aus",
+          "type": "string"
+        },
+        {
+          "const": "stickmodul",
+          "description": "Stickmodul nicht erreicht",
+          "type": "string"
+        },
+        {
+          "const": "antwortet_nicht",
+          "description": "Maschine antwortet nicht mehr (aus- und einschalten)",
+          "type": "string"
+        },
+        {
+          "const": "zurueckgelesen_weicht_ab",
+          "description": "zurückgelesen weicht ab – Senden abgebrochen, nichts gestickt",
+          "type": "string"
+        },
+        {
+          "const": "farbtabelle",
+          "description": "Garnfarbtabelle passt nicht",
+          "type": "string"
+        },
+        {
+          "const": "zu_gross",
+          "description": "Design zu groß für die Maschine",
+          "type": "string"
+        },
+        {
+          "const": "ausserhalb",
+          "description": "Design außerhalb des Stickfelds",
+          "type": "string"
+        },
+        {
+          "const": "abgebrochen",
+          "description": "vom Anwender abgebrochen",
+          "type": "string"
+        },
+        {
+          "const": "belegt",
+          "description": "es läuft schon eine Aktion mit der Maschine",
+          "type": "string"
+        }
+      ]
     },
     "Form": {
       "description": "Form statt Punktliste, z. B. `{\"kreis\": {\"mitte\": [0, 0], \"radius\": 10}}`.",
@@ -1775,6 +1901,38 @@
       ],
       "type": "object"
     },
+    "Fortschritt": {
+      "description": "Fortschritt großer Lese-/Schreibvorgänge (Ereignis `maschine_fortschritt` der App).",
+      "properties": {
+        "erledigt": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "gesamt": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "was": {
+          "description": "Teil („DATEN“, „ICON“, „Garnfarbtabelle“ …)",
+          "type": "string"
+        },
+        "wiederholungen": {
+          "description": "Wiederholungen bisher in diesem Teil (Übertragungsfehler werden automatisch wiederholt)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "was",
+        "erledigt",
+        "gesamt",
+        "wiederholungen"
+      ],
+      "type": "object"
+    },
     "GarnInfo": {
       "description": "Garn einer Garnkarte.",
       "properties": {
@@ -1811,6 +1969,42 @@
       },
       "required": [
         "name"
+      ],
+      "type": "object"
+    },
+    "GelesenInfo": {
+      "description": "Aus der Maschine gelesenes Design zum Ansehen (Vorschau wie `design_berechnen`).",
+      "properties": {
+        "bytes": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "ergebnis": {
+          "$ref": "#/$defs/Ergebnis"
+        },
+        "garne": {
+          "description": "Garnfarben, die die Maschine nach dem Laden in die Garnfarbtabelle legt",
+          "items": {
+            "$ref": "#/$defs/MaschinenGarn"
+          },
+          "type": "array"
+        },
+        "nr": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sitzung": {
+          "$ref": "#/$defs/Sitzung"
+        }
+      },
+      "required": [
+        "sitzung",
+        "nr",
+        "ergebnis",
+        "garne",
+        "bytes"
       ],
       "type": "object"
     },
@@ -2405,6 +2599,118 @@
     "Leer": {
       "additionalProperties": false,
       "description": "Keine Eingabe.",
+      "type": "object"
+    },
+    "LeseEingabe": {
+      "additionalProperties": false,
+      "description": "Design Nr. … aus der Maschine lesen.",
+      "properties": {
+        "nr": {
+          "description": "Nummer in der Designliste (ab 1)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "port": {
+          "default": "",
+          "type": "string"
+        },
+        "simulation": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "nr"
+      ],
+      "type": "object"
+    },
+    "ListenInfo": {
+      "description": "Ergebnis von `maschine_liste`.",
+      "properties": {
+        "designs": {
+          "items": {
+            "$ref": "#/$defs/ListenZeile"
+          },
+          "type": "array"
+        },
+        "sitzung": {
+          "$ref": "#/$defs/Sitzung"
+        }
+      },
+      "required": [
+        "sitzung",
+        "designs"
+      ],
+      "type": "object"
+    },
+    "ListenZeile": {
+      "description": "Eintrag der Designliste der Maschine.",
+      "properties": {
+        "flags": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nr": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "nr",
+        "name",
+        "flags"
+      ],
+      "type": "object"
+    },
+    "MaschinenGarn": {
+      "description": "Garn der Maschine (Eintrag der Garnfarbtabelle).",
+      "properties": {
+        "marke": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nummer": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rgb": {
+          "description": "Farbe „#rrggbb“",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rgb",
+        "nummer",
+        "marke",
+        "name"
+      ],
+      "type": "object"
+    },
+    "MaschinenInfo": {
+      "description": "Ergebnis von `maschine_pruefen`.",
+      "properties": {
+        "farbbereich": {
+          "$ref": "#/$defs/FarbInfo"
+        },
+        "sitzung": {
+          "$ref": "#/$defs/Sitzung"
+        }
+      },
+      "required": [
+        "sitzung",
+        "farbbereich"
+      ],
       "type": "object"
     },
     "MonogrammJson": {
@@ -4135,6 +4441,188 @@
         }
       ]
     },
+    "SendeEingabe": {
+      "additionalProperties": false,
+      "description": "Design an die Maschine: Design, Anschluss, Wahl.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "port": {
+          "type": "string"
+        },
+        "simulation": {
+          "default": false,
+          "type": "boolean"
+        },
+        "wahl": {
+          "$ref": "#/$defs/SendeWahl"
+        }
+      },
+      "required": [
+        "design",
+        "port",
+        "wahl"
+      ],
+      "type": "object"
+    },
+    "SendeInfo": {
+      "description": "Ergebnis von `maschine_senden`.",
+      "properties": {
+        "gestickt": {
+          "description": "Befehl 0x08 bestätigt (None = nicht gestickt)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "schritte": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sitzung": {
+          "$ref": "#/$defs/Sitzung"
+        }
+      },
+      "required": [
+        "sitzung",
+        "schritte"
+      ],
+      "type": "object"
+    },
+    "SendePlanInfo": {
+      "description": "Plan des Sendens (nur gelesen) – zum Bestätigen.",
+      "properties": {
+        "bytes_daten": {
+          "description": "Größe der Teile in Byte: Daten (Puffer), Vorschaubild, Garnfarbtabelle (0 = wird nicht geschrieben)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bytes_farben": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bytes_icon": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "farbbereich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FarbInfo"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "garne": {
+          "description": "Garne, die an der Maschine erscheinen (je Farbblock)",
+          "items": {
+            "$ref": "#/$defs/MaschinenGarn"
+          },
+          "type": "array"
+        },
+        "hinweise": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "schritte": {
+          "description": "geplante Schreibzugriffe in Worten (DATEN, ICON, INFO, Garnfarbtabelle, Befehl 0x08)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sitzung": {
+          "$ref": "#/$defs/Sitzung"
+        }
+      },
+      "required": [
+        "sitzung",
+        "schritte",
+        "hinweise",
+        "bytes_daten",
+        "bytes_icon",
+        "bytes_farben",
+        "garne"
+      ],
+      "type": "object"
+    },
+    "SendeWahl": {
+      "additionalProperties": false,
+      "description": "Was beim Senden geschrieben wird (die INFO-Felder immer, wie das Original).",
+      "properties": {
+        "farben": {
+          "description": "Garnfarbtabelle mitsenden (Garnnamen am Display)",
+          "type": "boolean"
+        },
+        "icon": {
+          "description": "Vorschaubild (ICON 72 × 62) mitsenden",
+          "type": "boolean"
+        },
+        "sticken": {
+          "description": "danach sticken (Befehl 0x08, „sticken ohne speichern“) – **nur** nach dem Gefahrendialog („Person an der\nMaschine“, Rahmen fährt)",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "icon",
+        "farben",
+        "sticken"
+      ],
+      "type": "object"
+    },
+    "Sitzung": {
+      "description": "Angaben zu einer Sitzung mit der Maschine.",
+      "properties": {
+        "baud": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "mitschnitt": {
+          "description": "Pfad des Mitschnitts",
+          "type": "string"
+        },
+        "naehmaschine": {
+          "description": "Firmware der Nähmaschine (z. B. „04.04“)",
+          "type": "string"
+        },
+        "port": {
+          "description": "Port oder „Simulation“",
+          "type": "string"
+        },
+        "simulation": {
+          "type": "boolean"
+        },
+        "stickmodul": {
+          "description": "Firmware des Stickmoduls",
+          "type": "string"
+        },
+        "verlassen": {
+          "description": "PC-Modus mit 0x100 + T r M E verlassen",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "port",
+        "simulation",
+        "naehmaschine",
+        "stickmodul",
+        "baud",
+        "verlassen",
+        "mitschnitt"
+      ],
+      "type": "object"
+    },
     "Skalierung": {
       "anyOf": [
         {
@@ -5372,6 +5860,83 @@
         "$ref": "#/$defs/Leer"
       }
     },
+    "gelesen_exp_speichern": {
+      "ausgabe": {
+        "format": "uint",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "beschreibung": "Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern",
+      "eingabe": {
+        "$ref": "#/$defs/ExpZiel"
+      }
+    },
+    "maschine_abbrechen": {
+      "ausgabe": {
+        "type": "boolean"
+      },
+      "beschreibung": "Laufende Maschinen-Aktion abbrechen",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "maschine_lesen": {
+      "ausgabe": {
+        "$ref": "#/$defs/GelesenInfo"
+      },
+      "beschreibung": "Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen",
+      "eingabe": {
+        "$ref": "#/$defs/LeseEingabe"
+      }
+    },
+    "maschine_liste": {
+      "ausgabe": {
+        "$ref": "#/$defs/ListenInfo"
+      },
+      "beschreibung": "Designliste der Maschine – nur lesen",
+      "eingabe": {
+        "$ref": "#/$defs/Anschluss"
+      }
+    },
+    "maschine_planen": {
+      "ausgabe": {
+        "$ref": "#/$defs/SendePlanInfo"
+      },
+      "beschreibung": "Senden planen – nur lesen: Prüfungen wie das Original, geplante Schreibzugriffe zum Bestätigen",
+      "eingabe": {
+        "$ref": "#/$defs/SendeEingabe"
+      }
+    },
+    "maschine_ports": {
+      "ausgabe": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Maschine: serielle Ports (COM…)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "maschine_pruefen": {
+      "ausgabe": {
+        "$ref": "#/$defs/MaschinenInfo"
+      },
+      "beschreibung": "Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen",
+      "eingabe": {
+        "$ref": "#/$defs/Anschluss"
+      }
+    },
+    "maschine_senden": {
+      "ausgabe": {
+        "$ref": "#/$defs/SendeInfo"
+      },
+      "beschreibung": "**Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt)",
+      "eingabe": {
+        "$ref": "#/$defs/SendeEingabe"
+      }
+    },
     "parameter_katalog": {
       "ausgabe": {
         "items": {
@@ -5492,5 +6057,10 @@
     }
   },
   "description": "ERZEUGT aus dem Rust-Kern (stick-kern/src/format.rs, stick-api) – nicht von Hand ändern; neu erzeugen: stick api exportieren",
+  "ereignisse": {
+    "maschine_fortschritt": {
+      "$ref": "#/$defs/Fortschritt"
+    }
+  },
   "x-version": 1
 }

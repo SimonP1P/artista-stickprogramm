@@ -42,8 +42,8 @@ fn mitschnitt(args: &[String], art: &str, zeilen: &[String]) {
     }
 }
 
-fn fortschritt() -> impl FnMut(&str, usize, usize) {
-    |was: &str, n: usize, g: usize| {
+fn fortschritt() -> impl FnMut(&str, usize, usize, usize) {
+    |was: &str, n: usize, g: usize, _wdh: usize| {
         print!("\r  {was}: {n} von {g} Byte      ");
         if n >= g {
             println!();

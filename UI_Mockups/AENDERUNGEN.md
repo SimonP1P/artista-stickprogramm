@@ -15,6 +15,16 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Maschine in `stick-api` (Etappe E3, W10)
+- **Neu:** Befehle `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_abbrechen`,
+  `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` über `kern(…)` (vorher eigene Tauri-Befehle der App).
+- **Fehler** haben bei der Maschine `code` (`keine_verbindung`, `stickmodul`, `antwortet_nicht`,
+  `zurueckgelesen_weicht_ab`, `farbtabelle`, `zu_gross`, `ausserhalb`, `abgebrochen`, `belegt`).
+- **Ereignis** `maschine_fortschritt` jetzt mit `wiederholungen` (Typ `Fortschritt` in `kern.ts`).
+- `maschine_planen` liefert Größen der Teile (`bytes_daten`, `bytes_icon`, `bytes_farben`) und die Garne an der Maschine
+  (Garn von Hand berücksichtigt).
+- **Oberfläche:** umgesetzt in E3 (Senden in Stufen, Abbrechen, Fehlerzustände, Gefahrendialog).
+
 ## 21.11.2026 – Wünsche der Oberfläche v3 (UEBERGABE §4, Etappe E0, Commit 0d56a68)
 - **Geändert:** `hinweise` in `design_berechnen` und `design_pruefen` sind jetzt Objekte `{meldung, objekt, art}`
   (`art`: `feld` | `fehlende_zeichen` | `ausserhalb`) statt Text – Hinweis am Objekt markieren.

@@ -919,6 +919,7 @@ dependencies = [
  "serde_json",
  "stick-formate",
  "stick-kern",
+ "stick-maschine",
  "stick-vektor",
 ]
 

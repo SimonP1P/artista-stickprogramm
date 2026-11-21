@@ -49,6 +49,8 @@ type StartOptionen = {
   /** nur für Bildschirmfotos (app/werkzeuge/bildschirmfoto.py) */
   schritt?: number;
   dialog?: OffenerDialog;
+  /** Maschinen-Zustand für Bildschirmfotos: Stufe des Sendens bzw. Liste (ausgeführt in +page.svelte) */
+  maschine?: "anschluss" | "plan" | "fertig" | "sticken" | "liste";
 };
 
 const ENTPRELLEN_MS = 140;

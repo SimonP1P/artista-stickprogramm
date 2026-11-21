@@ -23,8 +23,15 @@ pub fn befehle_schema() -> Value {
             json!({ "beschreibung": b.beschreibung.trim(), "eingabe": ein, "ausgabe": aus }),
         );
     }
+    // Ereignisse an die Oberfläche (kein Befehl, aber ein Typ): `maschine_fortschritt`
+    let mut ereignisse = Map::new();
+    ereignisse.insert(
+        "maschine_fortschritt".into(),
+        g.subschema_for::<crate::maschine::Fortschritt>().to_value(),
+    );
     let defs: Map<String, Value> = g.take_definitions(true).into_iter().collect();
     json!({
+        "ereignisse": ereignisse,
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "https://artista-stickprogramm/befehle.schema.json",
         "description": ERZEUGT,
@@ -456,8 +463,10 @@ pub fn markdown(befehle: &Value) -> String {
         ));
     }
     t.push_str(
-        "\nNoch in der App (`app/src-tauri/src/lib.rs`), kommen später hierher: `maschine_ports`, `maschine_pruefen`, \
-         `maschine_planen`, `maschine_senden`, `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern`.\n",
+        "\n**Ereignis** `maschine_fortschritt` (Typ `Fortschritt`: `was`, `erledigt`, `gesamt`, `wiederholungen`): \
+         Fortschritt von `maschine_senden` und `maschine_lesen`, von der App gesendet. Fehler der Maschine tragen \
+         zusätzlich `code` (`FehlerCode`). **Sicherheit:** nur `maschine_senden` schreibt in die Maschine – erst nach \
+         `maschine_planen` und ausdrücklicher Bestätigung; `wahl.sticken` nur nach dem Gefahrendialog.\n",
     );
     t
 }

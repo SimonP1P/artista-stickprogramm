@@ -13,8 +13,12 @@
   import GarnDialog from "$lib/dialoge/GarnDialog.svelte";
   import EinlesenDialog from "$lib/dialoge/EinlesenDialog.svelte";
   import type { GarnInfo } from "$kern/kern";
+  import { maschine, SIMULATION } from "$lib/maschine.svelte";
+  import SendenDialog from "$lib/dialoge/SendenDialog.svelte";
+  import StickenDialog from "$lib/dialoge/StickenDialog.svelte";
+  import AusMaschineDialog from "$lib/dialoge/AusMaschineDialog.svelte";
 
-  let menue = $state<"datei" | null>(null);
+  let menue = $state<"datei" | "maschine" | null>(null);
   let spruenge = $state(true);
   let einstiche = $state(false);
   let raster = $state(true);
@@ -40,7 +44,7 @@
     { l: "SVG einlesen …", go: () => (arbeit.dialog = { art: "svg" }) },
     "-",
     { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
-    { l: "Designs aus der Maschine …", spaeter: "E3" },
+    { l: "Designs aus der Maschine …", go: () => maschine.listeOeffnen() },
   ];
 
   /** Garn des Farbblocks, mit dem ein Objekt beginnt (Anzeige „jetzt: …“) */
@@ -59,6 +63,25 @@
     arbeit.dialog = null;
   }
 
+  /** Startoption `maschine` (nur Bildschirmfotos, app/werkzeuge/bildschirmfoto.py): Ablauf bis zur Stufe vorführen */
+  async function maschineVorfuehren() {
+    const z = (globalThis as { __START__?: { maschine?: string } }).__START__?.maschine;
+    if (!z) return;
+    if (z === "liste") {
+      maschine.listeOeffnen();
+      await maschine.listeLesen();
+      const nr = maschine.liste?.designs[0]?.nr;
+      if (nr) await maschine.designLesen(nr);
+      return;
+    }
+    maschine.sendenOeffnen();
+    if (z === "anschluss") return;
+    await maschine.planen();
+    if (z === "plan") return;
+    await maschine.schreiben(false);
+    if (z === "sticken") maschine.stickenDialog = true;
+  }
+
   function waehle(f?: () => void) {
     menue = null;
     f?.();
@@ -68,7 +91,7 @@
     const strg = ev.ctrlKey || ev.metaKey;
     const ziel = ev.target as HTMLElement;
     const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
-    if (arbeit.dialog) return; // Dialog behandelt Esc selbst
+    if (arbeit.dialog || maschine.dialogOffen || maschine.listeOffen || maschine.stickenDialog) return; // Dialog behandelt Esc selbst
     if (ev.key === "Escape") {
       if (menue) menue = null;
       else arbeit.waehlen(null);
@@ -85,13 +108,21 @@
   }
 
   onMount(() => {
-    arbeit.starten();
+    maschine.portsLaden();
+    arbeit.starten().then(() => maschineVorfuehren());
   });
 </script>
 
 <svelte:window onkeydown={tasten} />
 
 <div class="sp" class:dunkel={arbeit.dunkel} style="height:100vh; min-width:1280px">
+  {#if maschine.simulation}
+    <div class="simband" role="status" style="flex:none; display:flex; align-items:center; gap:10px; padding:4px 14px; font-size:12.5px; font-weight:500">
+      <Icon d={IC.monitor} />
+      <span><b style="letter-spacing:.08em">SIMULATION</b> – keine echte Maschine. Es wird nichts gesendet und nichts gestickt.</span>
+      <span style="margin-left:auto">Anschluss: Simulation · Mitschnitt wird trotzdem gespeichert</span>
+    </div>
+  {/if}
   <header style="flex:none; height:48px; display:flex; align-items:center; gap:4px; padding:0 10px; border-bottom:1px solid var(--line); background:var(--color-bg); position:relative; z-index:31">
     <div style="display:flex; flex-direction:column; line-height:1.05; padding-right:10px; margin-right:2px; border-right:1px solid var(--line)">
       <span class="hd" style="font-size:17px">Stickprogramm</span>
@@ -121,8 +152,16 @@
       <label class="seg-opt"><input type="radio" name="modus" checked={arbeit.modus === "einfach"} onchange={() => (arbeit.modus = "einfach")} />Einfach</label>
       <label class="seg-opt"><input type="radio" name="modus" checked={arbeit.modus === "experte"} onchange={() => (arbeit.modus = "experte")} />Experte</label>
     </div>
-    <button class="mbtn" title="Maschine – folgt in Etappe E3" disabled style="border:1px solid var(--line); margin-left:6px; gap:7px">
-      <span aria-hidden="true" style="width:9px; height:9px; border-radius:50%; background:var(--muted)"></span>Maschine
+    <button
+      class="mbtn"
+      title={maschine.laeuft ? "Maschine arbeitet …" : maschine.info ? `Firmware ${maschine.info.sitzung.naehmaschine} · ${maschine.info.farbbereich.text}` : "Anschluss und Maschine"}
+      aria-haspopup="menu"
+      aria-expanded={menue === "maschine"}
+      onclick={() => (menue = menue === "maschine" ? null : "maschine")}
+      style="border:1px solid var(--line); margin-left:6px; gap:7px"
+    >
+      <span aria-hidden="true" style="width:9px; height:9px; border-radius:50%; background:{maschine.laeuft ? 'var(--warn)' : maschine.simulation ? 'var(--sim)' : maschine.info ? 'var(--ok)' : maschine.pruefFehler ? 'var(--err)' : 'var(--muted)'}"></span>
+      {maschine.laeuft && maschine.phase === "laeuft" ? "Sende …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}
     </button>
     {#if istMac}
       <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" onclick={expExportieren}>
@@ -130,12 +169,37 @@
         <Icon d={IC.herunterladen} />EXP exportieren
       </button>
     {:else}
-      <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled title="Senden folgt in Etappe E3">
+      <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? "An die Maschine senden (erst Plan, dann bestätigen)"} onclick={() => maschine.sendenOeffnen()}>
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <Icon d={IC.senden} />Senden …
       </button>
     {/if}
 
+    {#if menue === "maschine"}
+      <div class="menu" role="menu" aria-label="Maschine" style="right:120px; top:44px; width:300px">
+        <div class="mh">Anschluss</div>
+        <div style="padding:2px 10px 8px">
+          <select class="input sm" style="width:100%" aria-label="Anschluss" value={maschine.port} onchange={(e) => maschine.portSetzen((e.currentTarget as HTMLSelectElement).value)}>
+            {#each maschine.ports as p (p)}<option value={p}>{p}</option>{/each}
+            <option value={SIMULATION}>Simulation (ohne Maschine)</option>
+          </select>
+        </div>
+        <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.pruefen())}>Maschine prüfen (nur lesen)</button>
+        <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.listeOeffnen())}>Designs aus der Maschine …</button>
+        {#if istMac}
+          <button class="mi" role="menuitem" disabled={!!maschine.sperrgrund} onclick={() => waehle(() => maschine.sendenOeffnen())}>Senden …</button>
+        {/if}
+        {#if maschine.laeuft && !maschine.dialogOffen && maschine.phase === "laeuft"}
+          <button class="mi" role="menuitem" onclick={() => waehle(() => (maschine.dialogOffen = true))}>Fortschritt anzeigen</button>
+        {/if}
+        <div class="msep"></div>
+        <div class="small mut" style="padding:4px 10px 8px; white-space:normal">
+          {#if maschine.info}Firmware {maschine.info.sitzung.naehmaschine} · Stickmodul {maschine.info.sitzung.stickmodul} · {maschine.info.farbbereich.text}
+          {:else if maschine.pruefFehler}<span style="color:var(--err)">{maschine.pruefFehler.meldung}</span>
+          {:else}Noch nicht geprüft.{/if}
+        </div>
+      </div>
+    {/if}
     {#if menue === "datei"}
       <div class="menu" role="menu" aria-label="Datei" style="left:142px; top:44px">
         {#each dateiMenue as m, k (k)}
@@ -251,6 +315,9 @@
     </section>
   </div>
 
+  {#if maschine.dialogOffen}<SendenDialog />{/if}
+  {#if maschine.stickenDialog}<StickenDialog />{/if}
+  {#if maschine.listeOffen}<AusMaschineDialog />{/if}
   {#if arbeit.dialog?.art === "alphabet"}
     {@const o = arbeit.dialog.objekt}
     {@const x = arbeit.objekte[o]}

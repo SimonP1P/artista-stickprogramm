@@ -456,6 +456,14 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `fuellmuster_liste` | Leer | MusterInfo[] | Füllmuster (242) mit Linien einer Kachel für die Vorschau |
 | `garnkarte_garne` | GarnkartenName | GarnInfo[] | Garne einer Garnkarte (für die Auswahl von Hand) |
 | `garnkarten_liste` | Leer | string[] | Namen der Garnkarten (32 der CD) |
+| `gelesen_exp_speichern` | ExpZiel | number | Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern |
+| `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen |
+| `maschine_lesen` | LeseEingabe | GelesenInfo | Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen |
+| `maschine_liste` | Anschluss | ListenInfo | Designliste der Maschine – nur lesen |
+| `maschine_planen` | SendeEingabe | SendePlanInfo | Senden planen – nur lesen: Prüfungen wie das Original, geplante Schreibzugriffe zum Bestätigen |
+| `maschine_ports` | Leer | string[] | Maschine: serielle Ports (COM…) |
+| `maschine_pruefen` | Anschluss | MaschinenInfo | Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen |
+| `maschine_senden` | SendeEingabe | SendeInfo | **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |
 | `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |
@@ -467,4 +475,4 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `text_speichern` | TextDatei | null | Textdatei schreiben |
 | `ueberdeckungen` | DesignEingabe | number[][] | Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken |
 
-Noch in der App (`app/src-tauri/src/lib.rs`), kommen später hierher: `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern`.
+**Ereignis** `maschine_fortschritt` (Typ `Fortschritt`: `was`, `erledigt`, `gesamt`, `wiederholungen`): Fortschritt von `maschine_senden` und `maschine_lesen`, von der App gesendet. Fehler der Maschine tragen zusätzlich `code` (`FehlerCode`). **Sicherheit:** nur `maschine_senden` schreibt in die Maschine – erst nach `maschine_planen` und ausdrücklicher Bestätigung; `wahl.sticken` nur nach dem Gefahrendialog.
