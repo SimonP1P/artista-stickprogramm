@@ -245,7 +245,7 @@ ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-1
 | E1 | Grundgerüst: alte Oberfläche archivieren, Tauri-Befehl `kern`, `kern.ts` per Alias, Tokens/Barlow offline, Fensteraufbau, Design-Zustand mit Rückgängig, Berechnung entprellt, Stichvorschau mit Auswahl | ✅ 21.11. (`app/README.md`; Bildschirmfotos `app/bildschirmfotos/e1_*`; Werkzeug `app/werkzeuge/bildschirmfoto.py`, weil das Terminal auf dem Mac keine Bildschirmaufnahme darf) |
 | E2 | Einfacher Modus: Assistent 4 Schritte (Rahmen & Stoff · Gestalten · Prüfen & Garn · Speichern/Senden), Dialoge Alphabet, Garn | ✅ 21.11. (dazu Bild umwandeln, SVG einlesen; Bilder `app/bildschirmfotos/e2_*`) |
 | E3 | Maschine: Befehle nach `stick-api` (W10: Abbrechen, Wiederholungen, Fehlercodes; Garn von Hand in der Garnfarbtabelle), Senden in 4 Stufen, Sticken-Dialog, Simulation, Fehlerzustände, Anleitung, „Aus der Maschine“ – nur Simulation | ✅ 21.11. (Simulation; am Gerät offen → „Vor Ort“ V10) |
-| E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ⬜ |
+| E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ✅ 21.11. (Inspektor aus dem Schema des Kerns) |
 | E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ⬜ |
 | E6 | Formansicht mit Knoten (W5), Dunkel/Mac, ANFORDERUNGEN.md, Parameterkatalog nach Modus vorlegen (M1), „Abgeglichen bis“ | ⬜ |
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.

@@ -12,6 +12,7 @@ import {
   type ObjektJson,
   type Pruefung,
   type RahmenInfo,
+  type ReihenfolgeBefehl,
 } from "$kern/kern";
 
 export type Modus = "einfach" | "experte";
@@ -20,7 +21,9 @@ export type OffenerDialog =
   | { art: "alphabet"; objekt: number }
   | { art: "garn"; objekt: number; titel?: string }
   | { art: "bild" }
-  | { art: "svg" };
+  | { art: "svg" }
+  | { art: "nach_farbe" }
+  | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 
 /** Neues, leeres Design mit den Standardwerten des Formats (`design.schema.json`). */
@@ -79,6 +82,8 @@ class Arbeit {
   /** Fehler der letzten Berechnung; die Vorschau zeigt dann den letzten gültigen Stand */
   fehler = $state.raw<Fehler | null>(null);
   rechnet = $state(false);
+  /** Paare [früher, später] überdeckender Objekte (`ueberdeckungen`, nur Expertenmodus) */
+  ueberdeckungen = $state.raw<number[][]>([]);
   /** Dauer der letzten Berechnung in ms */
   dauer = $state<number | null>(null);
 
@@ -197,6 +202,66 @@ class Arbeit {
     this.planen(0);
   }
 
+  /** Objekt anhängen und wählen */
+  einfuegen(o: ObjektJson) {
+    this.aendern((d) => {
+      d.objekte ??= [];
+      d.objekte.push(o);
+    });
+    this.auswahl = [this.objekte.length - 1];
+  }
+
+  duplizieren() {
+    const aus = [...this.auswahl].sort((a, b) => a - b);
+    if (!aus.length) return;
+    this.aendern((d) => {
+      for (const i of aus) {
+        const kopie = JSON.parse(JSON.stringify(d.objekte![i])) as ObjektJson;
+        if (kopie.name) kopie.name = `${kopie.name} (Kopie)`;
+        d.objekte!.push(kopie);
+      }
+    });
+    const n = this.objekte.length;
+    this.auswahl = aus.map((_, k) => n - aus.length + k);
+  }
+
+  loeschen() {
+    const aus = new Set(this.auswahl);
+    if (!aus.size) return;
+    this.aendern((d) => {
+      d.objekte = (d.objekte ?? []).filter((_, i) => !aus.has(i));
+    });
+    this.auswahl = [];
+  }
+
+  /**
+   * Umordnen über den Kern (`reihenfolge_aendern`, wie Menü „Arrange“). Liegt danach ein Objekt unter einer Fläche,
+   * über der es lag, öffnet sich die Warnung (Rückgängig möglich).
+   */
+  async umordnen(befehl: ReihenfolgeBefehl) {
+    const vorher = this.#schnappschuss();
+    const namen = this.objekte.map((o, i) => o.name || `Nr. ${i + 1}`);
+    try {
+      const r = await kern("reihenfolge_aendern", { design: JSON.parse(vorher), befehl });
+      const alteAuswahl = this.auswahl;
+      this.ersetzen(r.design, this.pfad, true);
+      // Auswahl folgt den Objekten
+      this.auswahl = alteAuswahl.map((i) => r.reihenfolge.indexOf(i)).filter((i) => i >= 0);
+      if (r.vertauscht.length) this.dialog = { art: "warnung", vertauscht: r.vertauscht, namen, vorher };
+      else if (befehl.art === "nach_farbe")
+        this.zeige(`Nach Farbe sortiert: ${r.farbwechsel_vorher} → ${r.farbwechsel_nachher} Farbwechsel`, "ok");
+      return r;
+    } catch (x) {
+      this.zeige(alsFehler(x).meldung, "err");
+      return null;
+    }
+  }
+
+  /** Warnung „Rückgängig“: alte Reihenfolge wiederherstellen */
+  wiederherstellen(vorher: string) {
+    this.ersetzen(JSON.parse(vorher), this.pfad, true);
+  }
+
   waehlen(i: number | null, hinzufuegen = false) {
     if (i === null || i < 0) this.auswahl = [];
     else if (hinzufuegen)
@@ -228,6 +293,10 @@ class Arbeit {
       this.pruefung = pruefung;
       this.fehler = null;
       this.dauer = Math.round(performance.now() - t0);
+      if (this.modus === "experte")
+        kern("ueberdeckungen", { design })
+          .then((u) => nr === this.#lauf && (this.ueberdeckungen = u))
+          .catch(() => (this.ueberdeckungen = []));
     } catch (x) {
       if (nr !== this.#lauf) return;
       this.fehler = alsFehler(x);

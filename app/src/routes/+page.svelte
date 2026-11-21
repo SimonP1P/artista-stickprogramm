@@ -17,8 +17,15 @@
   import SendenDialog from "$lib/dialoge/SendenDialog.svelte";
   import StickenDialog from "$lib/dialoge/StickenDialog.svelte";
   import AusMaschineDialog from "$lib/dialoge/AusMaschineDialog.svelte";
+  import NachFarbeDialog from "$lib/dialoge/NachFarbeDialog.svelte";
+  import WarnungDialog from "$lib/dialoge/WarnungDialog.svelte";
+  import Objektliste from "$lib/Objektliste.svelte";
+  import Inspektor from "$lib/inspektor/Inspektor.svelte";
+  import { EINFUEGEN, KOMMT_NOCH, neuesObjekt } from "$lib/einfuegen";
+  import { listen } from "$lib/listen.svelte";
+  import type { ReihenfolgeBefehl } from "$kern/kern";
 
-  let menue = $state<"datei" | "maschine" | null>(null);
+  let menue = $state<"datei" | "maschine" | "einfuegen" | "anordnen" | null>(null);
   let spruenge = $state(true);
   let einstiche = $state(false);
   let raster = $state(true);
@@ -82,6 +89,42 @@
     if (z === "sticken") maschine.stickenDialog = true;
   }
 
+  async function einfuegen(art: string) {
+    let schrift: string | undefined;
+    if (art === "ttf") {
+      await listen.schriftenLaden().catch(() => {});
+      schrift = listen.schriften[0]?.name;
+      if (!schrift) return arbeit.zeige("Keine Computer-Schrift gefunden.", "err");
+    }
+    const o = neuesObjekt(art, schrift);
+    if (o) arbeit.einfuegen(o);
+  }
+
+  /** Menü Anordnen: Befehle auf die Auswahl (`reihenfolge_aendern`) */
+  const auswahlSortiert = $derived([...arbeit.auswahl].sort((a, b) => a - b));
+  const anordnenMenue = $derived.by((): { l: string; kbd?: string; go?: () => void }[] => {
+    const a = arbeit.auswahl;
+    const n = arbeit.objekte.length;
+    const erst = auswahlSortiert[0] ?? -1;
+    const letzt = auswahlSortiert.at(-1) ?? -1;
+    const um = (b: ReihenfolgeBefehl) => () => arbeit.umordnen(b);
+    const nachNummer = (vor: boolean) => () => {
+      const t = prompt(`${vor ? "Vor" : "Nach"} Objekt Nr. (1 … ${n}):`);
+      const z = t ? parseInt(t, 10) - 1 : NaN;
+      if (z >= 0 && z < n) arbeit.umordnen(vor ? { art: "vor", auswahl: [...a], ziel: z } : { art: "nach", auswahl: [...a], ziel: z });
+    };
+    return [
+      { l: "An den Anfang", go: a.length ? um({ art: "an_anfang", auswahl: [...a] }) : undefined },
+      { l: "Ans Ende", go: a.length ? um({ art: "ans_ende", auswahl: [...a] }) : undefined },
+      { l: "Eins nach vorn", kbd: "Alt+↑", go: a.length && erst > 0 ? um({ art: "vor", auswahl: [...a], ziel: erst - 1 }) : undefined },
+      { l: "Eins nach hinten", kbd: "Alt+↓", go: a.length && letzt < n - 1 ? um({ art: "nach", auswahl: [...a], ziel: letzt + 1 }) : undefined },
+      { l: "Wie ausgewählt (Klickfolge)", go: a.length > 1 ? um({ art: "wie_ausgewaehlt", auswahl: [...a] }) : undefined },
+      { l: "Vor Objekt Nr. …", go: a.length ? nachNummer(true) : undefined },
+      { l: "Nach Objekt Nr. …", go: a.length ? nachNummer(false) : undefined },
+      { l: "Nach Farbe sortieren …", go: n > 1 ? () => (arbeit.dialog = { art: "nach_farbe" }) : undefined },
+    ];
+  });
+
   function waehle(f?: () => void) {
     menue = null;
     f?.();
@@ -97,6 +140,15 @@
       else arbeit.waehlen(null);
       return;
     }
+    if (arbeit.modus === "experte" && !eingabe) {
+      if ((ev.key === "Delete" || ev.key === "Backspace") && arbeit.auswahl.length) return (ev.preventDefault(), arbeit.loeschen());
+      if (ev.altKey && (ev.key === "ArrowUp" || ev.key === "ArrowDown")) {
+        const m = anordnenMenue[ev.key === "ArrowUp" ? 2 : 3];
+        ev.preventDefault();
+        return m.go?.();
+      }
+      if (strg && ev.key.toLowerCase() === "d") return (ev.preventDefault(), arbeit.duplizieren());
+    }
     if (!strg) return;
     const k = ev.key.toLowerCase();
     if (k === "z" && !ev.shiftKey && !eingabe) (ev.preventDefault(), arbeit.zurueck());
@@ -106,6 +158,11 @@
     else if (k === "n") (ev.preventDefault(), neu());
     else if (k === "e") (ev.preventDefault(), expExportieren());
   }
+
+  // Überdeckungen (Objektliste) gibt es nur im Expertenmodus – beim Umschalten nachholen
+  $effect(() => {
+    if (arbeit.modus === "experte") arbeit.planen(0);
+  });
 
   onMount(() => {
     maschine.portsLaden();
@@ -131,6 +188,10 @@
     <button class="mbtn" aria-haspopup="menu" aria-expanded={menue === "datei"} onclick={() => (menue = menue === "datei" ? null : "datei")}>
       Datei<Icon d={IC.chevronUnten} groesse="s" />
     </button>
+    {#if arbeit.modus === "experte"}
+      <button class="mbtn" aria-haspopup="menu" aria-expanded={menue === "einfuegen"} onclick={() => (menue = menue === "einfuegen" ? null : "einfuegen")}>Einfügen<Icon d={IC.chevronUnten} groesse="s" /></button>
+      <button class="mbtn" aria-haspopup="menu" aria-expanded={menue === "anordnen"} onclick={() => (menue = menue === "anordnen" ? null : "anordnen")}>Anordnen<Icon d={IC.chevronUnten} groesse="s" /></button>
+    {/if}
     <span style="width:1px; height:22px; background:var(--line); margin:0 4px"></span>
     <button class="tb" aria-label="Rückgängig (Strg+Z)" title="Rückgängig (Strg+Z)" disabled={!arbeit.kannZurueck} onclick={() => arbeit.zurueck()}>
       <Icon d={IC.rueckgaengig} />
@@ -200,6 +261,35 @@
         </div>
       </div>
     {/if}
+    {#if menue === "einfuegen"}
+      <div class="menu" role="menu" aria-label="Einfügen" style="left:205px; top:44px; display:grid; grid-template-columns:240px 300px; padding:0">
+        <div style="padding:4px; border-right:1px solid var(--line)">
+          <div class="mh">Objekt einfügen</div>
+          {#each EINFUEGEN as x (x.art)}
+            <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(x.art))}><Icon d={ART[x.art]?.[1] ?? ""} />{ART[x.art]?.[0] ?? x.art}</button>
+          {/each}
+          <div class="msep"></div>
+          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
+          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
+        </div>
+        <div style="padding:4px; background:var(--panel)">
+          <div class="mh">Kommt noch – Platz ist vorgesehen</div>
+          {#each KOMMT_NOCH as t (t)}
+            <button class="mi" role="menuitem" disabled style="white-space:normal; align-items:flex-start"><Icon d={IC.kommtNoch} /><span style="flex:1">{t}</span><span class="soon">kommt noch</span></button>
+          {/each}
+        </div>
+      </div>
+    {/if}
+    {#if menue === "anordnen"}
+      <div class="menu" role="menu" aria-label="Anordnen" style="left:282px; top:44px">
+        <div class="mh">Stickreihenfolge – auf die Auswahl</div>
+        {#each anordnenMenue as m (m.l)}
+          <button class="mi" role="menuitem" disabled={!m.go} onclick={() => waehle(m.go)}>{m.l}{#if m.kbd}<span class="kbd">{m.kbd}</span>{/if}</button>
+        {/each}
+        <div class="msep"></div>
+        <div class="small mut" style="padding:4px 10px 8px; max-width:280px; white-space:normal">Liegt ein Objekt danach unter einer Fläche, über der es lag, warnt das Programm.</div>
+      </div>
+    {/if}
     {#if menue === "datei"}
       <div class="menu" role="menu" aria-label="Datei" style="left:142px; top:44px">
         {#each dateiMenue as m, k (k)}
@@ -234,29 +324,7 @@
     {#if arbeit.modus === "einfach"}
       <Assistent {istMac} />
     {:else}
-      <aside class="pane" aria-label="Objekte" style="width:268px; border-right:1px solid var(--line)">
-        <div class="pane-h"><span class="hd" style="font-size:17px">Objekte</span><span class="badge">{arbeit.objekte.length}</span></div>
-        <div class="scroll" role="listbox" aria-label="Objekte in Stickreihenfolge">
-          {#each arbeit.objekte as o, i (i)}
-            {@const art = ART[o.art] ?? [o.art, ""]}
-            <button
-              class="orow"
-              class:on={arbeit.auswahl.includes(i)}
-              class:err={arbeit.fehler?.objekt === i}
-              role="option"
-              aria-selected={arbeit.auswahl.includes(i)}
-              onclick={(ev) => arbeit.waehlen(i, ev.shiftKey || ev.ctrlKey || ev.metaKey)}
-            >
-              <span class="grip"><Icon d={IC.griff} groesse="s" /></span>
-              <span class="tab" style="text-align:right">{i + 1}</span>
-              <span class="sw" style="background:{o.farbe ?? '#000000'}"></span>
-              <span title={art[0]}><Icon d={art[1]} groesse="s" /></span>
-              <span class="ostack"><b>{o.name || ("text" in o ? o.text : "") || art[0]}</b><span>{art[0]}</span></span>
-              <span></span>
-            </button>
-          {/each}
-        </div>
-      </aside>
+      <Objektliste anordnen={() => (menue = "anordnen")} />
     {/if}
 
     <section aria-label="Stichvorschau" style="flex:1; min-width:0; display:flex; flex-direction:column; position:relative">
@@ -282,6 +350,18 @@
         <button class="tb" aria-label="Rahmen einpassen" title="Rahmen einpassen" onclick={() => vorschau?.einpassen()}><Icon d={IC.einpassen} /></button>
       </div>
       <div style="flex:1; min-height:0; display:flex">
+        {#if arbeit.modus === "experte"}
+          <div class="rail" role="toolbar" aria-label="Werkzeuge" aria-orientation="vertical">
+            <button class="tb" aria-pressed={true} aria-label="Auswählen" title="Auswählen"><Icon d={IC.zeiger} groesse="l" /></button>
+            <span class="sep"></span>
+            {#each EINFUEGEN as x, k (x.art)}
+              {#if k > 0 && EINFUEGEN[k - 1].gruppe !== x.gruppe}<span class="sep"></span>{/if}
+              <button class="tb" aria-label="{ART[x.art]?.[0]} einfügen" title="{ART[x.art]?.[0]} einfügen" onclick={() => einfuegen(x.art)}><Icon d={ART[x.art]?.[1] ?? ""} groesse="l" /></button>
+            {/each}
+            <span class="sep"></span>
+            <button class="tb" aria-label="Weitere Werkzeuge – kommen noch" title="Kommt noch: Motive, Effekte, Kreuzstich …" onclick={() => (menue = "einfuegen")} style="border:1px dashed var(--muted)"><Icon d={IC.kommtNoch} groesse="l" /></button>
+          </div>
+        {/if}
         <div class="stage">
           <Vorschau bind:this={vorschau} bind:zoom {spruenge} {einstiche} {raster} />
           {#if arbeit.fehler}
@@ -297,7 +377,7 @@
             {#if arbeit.modus === "experte"}
               <div class="floater" style="left:50%; top:50%; transform:translate(-50%,-50%); width:380px; padding:18px">
                 <h3 style="margin:0 0 4px; font-size:21px">Leeres Design</h3>
-                <p class="mut" style="margin:0 0 12px">Werkzeuge zum Zeichnen folgen in Etappe E4 – bis dahin:</p>
+                <p class="mut" style="margin:0 0 12px">Links ein Werkzeug wählen (fügt ein Objekt in der Rahmenmitte ein) – oder:</p>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px">
                   <button class="btn btn-secondary" onclick={oeffnen}>Öffnen …</button>
                   <button class="btn btn-secondary" onclick={beispiel}>Beispiel laden</button>
@@ -313,8 +393,13 @@
       </div>
       <Statusleiste />
     </section>
+    {#if arbeit.modus === "experte"}<Inspektor />{/if}
   </div>
 
+  {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "warnung"}
+    <WarnungDialog vertauscht={arbeit.dialog.vertauscht} namen={arbeit.dialog.namen} vorher={arbeit.dialog.vorher} schliessen={() => (arbeit.dialog = null)} />
+  {/if}
   {#if maschine.dialogOffen}<SendenDialog />{/if}
   {#if maschine.stickenDialog}<StickenDialog />{/if}
   {#if maschine.listeOffen}<AusMaschineDialog />{/if}

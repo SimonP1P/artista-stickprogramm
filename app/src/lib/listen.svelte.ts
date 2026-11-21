@@ -6,6 +6,8 @@ import {
   type AlphabetInfo,
   type AlphabetVorschau,
   type GarnInfo,
+  type MusterInfo,
+  type SchriftInfo,
   type StoffInfo,
 } from "$kern/kern";
 
@@ -13,6 +15,10 @@ class Listen {
   alphabete = $state.raw<AlphabetInfo[]>([]);
   stoffe = $state.raw<StoffInfo[]>([]);
   garnkarten = $state.raw<string[]>([]);
+  muster = $state.raw<MusterInfo[]>([]);
+  schriften = $state.raw<SchriftInfo[]>([]);
+  #muster: Promise<void> | null = null;
+  #schriften: Promise<void> | null = null;
   #garne = new Map<string, Promise<GarnInfo[]>>();
   #vorschau = new Map<string, Promise<AlphabetVorschau>>();
   #geladen: Promise<void> | null = null;
@@ -24,6 +30,22 @@ class Listen {
       kern("garnkarten_liste", {}).then((g) => (this.garnkarten = g)),
     ]).then(() => {});
     return this.#geladen;
+  }
+
+  /** Füllmuster (242) – bei Bedarf */
+  musterLaden(): Promise<void> {
+    this.#muster ??= kern("fuellmuster_liste", {}).then((m) => {
+      this.muster = m;
+    });
+    return this.#muster;
+  }
+
+  /** Computer-Schriften des Systems – bei Bedarf (kann dauern) */
+  schriftenLaden(): Promise<void> {
+    this.#schriften ??= kern("schriften_liste", {}).then((m) => {
+      this.schriften = m;
+    });
+    return this.#schriften;
   }
 
   garne(karte: string): Promise<GarnInfo[]> {
