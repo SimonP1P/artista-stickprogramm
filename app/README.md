@@ -55,6 +55,10 @@ Mac: `CARGO_TARGET_DIR="$PWD/../kern/target"` davorsetzen (**absoluter** Pfad �
 `src-tauri/` und legt sonst 2,6 GB unter `app/kern/target` an). Das gebaute Programm liegt dann in
 `kern/target/debug/artista-stickprogramm` und findet Alphabete/Garnkarten im Projektordner.
 
+**Weißes Fenster auf dem Mac (behoben 21.11.2026):** WebKit meldet bei `tauri://localhost` für `location.pathname` „/“,
+für `new URL(location.href).pathname` aber „“; das Hash-Routing von SvelteKit hielt die Seite deshalb für fremd und
+lud endlos neu. `src/app.html` stellt die Adresse vor dem Start auf `/index.html` (Windows und `file://` unberührt).
+
 ### Selbst testen (Kurzanleitung für den Nutzer)
 1. Mac: `kern/target/debug/artista-stickprogramm app/werkzeuge/beispiele/handtuch_anna.json` (aus dem Projektordner),
    oder Entwicklungsmodus: in `app/` `. ~/.cargo/env; CARGO_TARGET_DIR="$PWD/../kern/target" npm run tauri dev`.

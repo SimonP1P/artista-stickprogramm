@@ -5,6 +5,14 @@
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Artista Stickprogramm</title>
+    <script>
+      // Mac (WebKit, Adresse tauri://localhost): location.pathname ist "/", new URL(location.href).pathname aber "".
+      // Das Hash-Routing von SvelteKit hält die Seite dann für fremd und lädt endlos neu (weißes Fenster).
+      // Vor dem Start auf /index.html stellen, damit beide Werte übereinstimmen.
+      if (new URL(location.href).pathname !== location.pathname) {
+        history.replaceState(history.state, "", location.protocol + "//" + location.host + "/index.html" + location.hash);
+      }
+    </script>
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">
