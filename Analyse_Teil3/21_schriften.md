@@ -96,6 +96,24 @@ Es bleiben die gemeinsamen Felder (Lage, Farbe, Garn, Transformation …), die S
 Ausrichtung, Grundlinie …) und der Text; Felder, die es in der anderen Art nicht gibt, entfallen. Die Oberfläche setzt
 für einen neuen Original-Text `stichart: "auto"` wie bei jedem neuen Text (Bericht 10 §8).
 
-## 6. Noch offen (ROADMAP)
-- Original-Alphabete und installierte Schriften nach Stil einordnen (Wunsch Nutzer, Schritt 4): Google-Einordnung für
-  Schriften, die auch bei Google stehen, Liste für die Windows-Standardschriften, eigene Stile des Anwenders.
+## 6. Stile aller Schriften — eigene Einordnung (Sicherheit: Geschmack, nicht messbar)
+Datei `kern/stick-formate/daten/schrift_stile.json` (von Hand gepflegt), Kern `stick-formate::schriftstile`, Befehl
+`schrift_stile`; jede Liste trägt `stile` je Schrift.
+- **23 Stile:** die 19 der Google-Zuordnung (§3) in gleicher Reihenfolge, dazu **Applikation**, **Monogramm**,
+  **Großbuchstaben**, **Andere Schriften** (griechisch, hebräisch, japanisch, kyrillisch). Jeder Stil hat eine kurze
+  Erklärung (Tooltip).
+- **50 Original-Alphabete:** nach dem Aussehen eingeordnet (Kontaktbogen „Hamburg Agy“ aller Alphabete aus
+  `alphabet_vorschau`). Das Handbuch nennt keine Gruppen. Auffällig: **Jikharev** ist eine kyrillische Schreibschrift,
+  deren Buchstaben auf À–ÿ liegen (Kodierung Windows-1251); **Ketchikan**, Border, Neon, Secret Garden, Tabloid,
+  Varsity, Easy Appliqué und Diamond2/3 haben nur Großbuchstaben; Easy Appliqué, Tabloid, Varsity Applique =
+  Applikation; Diamond2/3 = Monogramm.
+- **Installierte Schriften:** 173 gängige Familien von Windows (Arial … Verdana), Microsoft Office (Algerian … Wide
+  Latin) und macOS (Academy Engraved … Zapfino) nach dem Aussehen; Suche nach Familie, vollem Namen oder längstem
+  Namensanfang („Segoe UI Semibold“ → Segoe UI). Sonst die Einordnung von Google, wenn die Familie dort steht. Am Mac
+  bleiben 62 Familien ohne Stil – fast nur Schriften für andere Sprachen (Hiragino, Sangam MN …).
+- **Google Fonts:** Zuordnung der Tags erweitert (Sans/Humanist und Grotesque → Modern, Slab Humanist/Geometric →
+  Klassisch, Sans/Glyphic → Elegant, Monospace → Technik, Theme/Distressed → Vintage); passt kein Tag, gilt die
+  Kategorie (ohne Serifen → Modern, mit Serifen → Klassisch, Monospace → Technik). Ohne Stil bleiben 75 von 1 833
+  (Zierschriften), vorher 650.
+- **Eigene Stile des Anwenders** (Oberfläche, nur auf dem Rechner, `localStorage` „schrift_stile_eigen“): neue Stile
+  anlegen („Hochzeit“) und je Schrift die Stile ändern; geänderte Schriften behalten ihre Liste, bis „Vorgabe“.

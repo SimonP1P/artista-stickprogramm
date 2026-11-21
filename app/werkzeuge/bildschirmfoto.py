@@ -119,6 +119,7 @@ def main():
                 stick, "alphabet_vorschau", {"alphabet": a_["name"], "text": probe})
         antworten["schriften_liste"] = api(stick, "schriften_liste", {})
         antworten["google_schriften_liste"] = api(stick, "google_schriften_liste", {})
+        antworten["schrift_stile"] = api(stick, "schrift_stile", {})
         if d_.get("reiter") == "computer":
             for s_ in antworten["schriften_liste"][:20]:
                 antworten["schrift_vorschau:" + s_["name"]] = api(

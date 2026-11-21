@@ -301,6 +301,8 @@ befehle! {
     schriften_liste: schriften::SchriftenListeEingabe => Vec<schriften::SchriftInfo>,
     /// Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“
     google_schriften_liste: befehle::Leer => schriften::GoogleKatalog,
+    /// Stile der Schriftauswahl (Gotisch, Schreibschrift, Modern … mit Erklärung) in Anzeigereihenfolge
+    schrift_stile: befehle::Leer => schriften::SchriftStile,
     /// Google-Schrift herunterladen (Internet) in die Ablage des Programms – danach wie eine installierte Schrift
     google_schrift_laden: schriften::GoogleLadenEingabe => schriften::SchriftInfo,
     /// Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“

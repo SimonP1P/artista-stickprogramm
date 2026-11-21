@@ -11,7 +11,8 @@ Aufnahme: nur Familien mit lateinischer Schrift („latin“) und Ordner im Repo
 „-Regular“ vor variabler Schrift (Standardinstanz) vor erster aufrechter Datei.
 
 Stile (deutsche Namen, **eigene Zuordnung** der Google-Tags – siehe STILE): Tags der Gruppe „Expressive“ zählen ab
-Gewicht 80, alle anderen ab 50. Kategorie „Handwriting“ ohne Script-Tag → „Handschrift“.
+Gewicht 80, alle anderen ab 50. Kategorie „Handwriting“ ohne Script-Tag → „Handschrift“; passt kein Tag, gilt die
+Kategorie (KATEGORIE_STIL: ohne Serifen → Modern, mit Serifen → Klassisch, Monospace → Technik).
 
 Aufruf:  python3 Arbeitsdaten/werkzeuge/google_fonts_katalog.py [ORDNER_MIT_ROHDATEN]
   ohne Ordner werden die drei Quellen geladen (ca. 12 MB, nicht im Projekt gespeichert).
@@ -41,22 +42,27 @@ KATEGORIE = {
     'Monospace': 'Schreibmaschine',
 }
 
+# letzte Stufe, wenn kein Tag passt
+KATEGORIE_STIL = {'Sans Serif': 'Modern', 'Serif': 'Klassisch', 'Monospace': 'Technik'}
+
 # Reihenfolge = Reihenfolge der Filter in der Oberfläche
 STILE = [
     ('Gotisch', ['/Theme/Blackletter', '/Theme/Medieval']),
     ('Schreibschrift', ['/Script/Formal']),
     ('Handschrift', ['/Script/Handwritten', '/Script/Informal', '/Script/Upright Script']),
     ('Pinsel', ['/Theme/Brush']),
-    ('Modern', ['/Sans/Geometric', '/Sans/Neo Grotesque', '/Sans/Superellipse', '/Expressive/Innovative']),
+    ('Modern', ['/Sans/Geometric', '/Sans/Neo Grotesque', '/Sans/Superellipse', '/Sans/Humanist', '/Sans/Grotesque',
+                '/Expressive/Innovative']),
     ('Klassisch', ['/Serif/Old Style Garalde', '/Serif/Transitional', '/Serif/Humanist Venetian', '/Serif/Scotch',
-                   '/Slab/Clarendon']),
-    ('Elegant', ['/Expressive/Sophisticated', '/Expressive/Fancy', '/Serif/Didone', '/Serif/Modern']),
+                   '/Slab/Clarendon', '/Slab/Humanist', '/Slab/Geometric']),
+    ('Elegant', ['/Expressive/Sophisticated', '/Expressive/Fancy', '/Serif/Didone', '/Serif/Modern', '/Sans/Glyphic']),
     ('Verspielt', ['/Expressive/Playful', '/Theme/Wacky', '/Theme/Blobby']),
     ('Kindlich', ['/Expressive/Childlike', '/Expressive/Cute', '/Purpose/Learn To Write']),
-    ('Vintage', ['/Expressive/Vintage', '/Theme/Art Deco', '/Theme/Art Nouveau', '/Theme/Woodtype', '/Theme/Tuscan']),
+    ('Vintage', ['/Expressive/Vintage', '/Theme/Art Deco', '/Theme/Art Nouveau', '/Theme/Woodtype', '/Theme/Tuscan',
+                 '/Theme/Distressed']),
     ('Kräftig', ['/Expressive/Loud', '/Serif/Fat Face']),
     ('Rund', ['/Sans/Rounded']),
-    ('Technik', ['/Theme/Techno', '/Expressive/Futuristic']),
+    ('Technik', ['/Theme/Techno', '/Expressive/Futuristic', '/Monospace/Monospace']),
     ('Schablone', ['/Theme/Stencil']),
     ('Pixel', ['/Theme/Pixel']),
     ('Verziert', ['/Theme/Inline', '/Theme/Shaded']),
@@ -134,6 +140,9 @@ def main():
         stile = [s for s, liste in STILE if t & set(liste)]
         if f['category'] == 'Handwriting' and not any(s in stile for s in ('Schreibschrift', 'Handschrift')):
             stile.insert(0, 'Handschrift')
+        # ohne passenden Tag: Stil aus der Kategorie (Zierschriften bleiben ohne)
+        if not stile and f['category'] in KATEGORIE_STIL:
+            stile = [KATEGORIE_STIL[f['category']]]
         schriften.append({
             'familie': f['family'],
             'kategorie': KATEGORIE.get(f['category'], f['category']),

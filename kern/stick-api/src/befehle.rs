@@ -133,6 +133,8 @@ pub struct AlphabetInfo {
     pub min_hoehe: Option<f64>,
     /// größte empfohlene Höhe in mm (Handbuch)
     pub max_hoehe: Option<f64>,
+    /// Stile (Namen aus `schrift_stile`, eigene Einordnung nach dem Aussehen)
+    pub stile: Vec<String>,
 }
 
 pub fn alphabete_liste(k: &Kontext, _: Leer) -> Result<Vec<AlphabetInfo>, Fehler> {
@@ -145,6 +147,7 @@ pub fn alphabete_liste(k: &Kontext, _: Leer) -> Result<Vec<AlphabetInfo>, Fehler
                 datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
                 min_hoehe: h.map(|x| x.0),
                 max_hoehe: h.map(|x| x.1),
+                stile: stick_formate::schriftstile::alphabet(&name),
                 name,
             }
         })

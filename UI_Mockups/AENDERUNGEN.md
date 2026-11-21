@@ -15,6 +15,13 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Stile für alle Schriften, eigene Stile (Wunsch Nutzer, Punkt 4; Commit siehe Git-Log „Stil-Einordnung“)
+- **Neu:** Befehl `schrift_stile` → `{quelle, stile: [{name, beschreibung}]}` (23 Stile in Anzeigereihenfolge).
+- **Neue Felder:** `alphabete_liste[].stile`, `schriften_liste[].stile` (eigene Einordnung von 50 Alphabeten und 173
+  Standardschriften, sonst Google). Google-Katalog: mehr Schriften mit Stil (75 statt 650 ohne).
+- **Oberfläche:** umgesetzt – Stil-Filter in allen Reitern mit Anzahl (leere ausgeblendet); Etikett an jeder Kachel
+  öffnet die Leiste „Stile für …“ (setzen/entfernen, neuer Stil, eigene löschen, „Vorgabe“); Suche findet auch Stile.
+
 ## 21.11.2026 – Schrift wählen: Computer-Schriften, Google Fonts, Favoriten, „stickbar ab“ (Wunsch Nutzer; Commit ab8505d)
 - **Neue Befehle:** `google_schriften_liste` (Katalog 1 833 Familien + Stil-Filter), `google_schrift_laden {familie}`
   (Internet; Datei in den Datenordner, danach offline), `schrift_vorschau {schrift, text?, hoehe?}` (Umrisse,

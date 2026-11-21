@@ -40,11 +40,19 @@
         "name": {
           "description": "Name wie im Design-Feld `alphabet`",
           "type": "string"
+        },
+        "stile": {
+          "description": "Stile (Namen aus `schrift_stile`, eigene Einordnung nach dem Aussehen)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "required": [
         "name",
-        "datei"
+        "datei",
+        "stile"
       ],
       "type": "object"
     },
@@ -5123,6 +5131,13 @@
         },
         "stil": {
           "type": "string"
+        },
+        "stile": {
+          "description": "Stile (Namen aus `schrift_stile`): eigene Einordnung gängiger Schriften, sonst die von Google, sonst leer",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "required": [
@@ -5130,7 +5145,8 @@
         "familie",
         "stil",
         "pfad",
-        "heruntergeladen"
+        "heruntergeladen",
+        "stile"
       ],
       "type": "object"
     },
@@ -5158,6 +5174,27 @@
           "type": "string"
         }
       ]
+    },
+    "SchriftStile": {
+      "description": "Stile der Schriftauswahl (eigene Einordnung, `Analyse_Teil3/21_schriften.md` §6).",
+      "properties": {
+        "quelle": {
+          "description": "Woher die Einordnung stammt",
+          "type": "string"
+        },
+        "stile": {
+          "description": "alle Stile in Anzeigereihenfolge (Filter der Oberfläche)",
+          "items": {
+            "$ref": "#/$defs/StilInfo"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "quelle",
+        "stile"
+      ],
+      "type": "object"
     },
     "SchriftVorschau": {
       "description": "Vorschau einer Computer-Schrift.",
@@ -5704,6 +5741,24 @@
         "stickbar_ab",
         "duenn",
         "dick"
+      ],
+      "type": "object"
+    },
+    "StilInfo": {
+      "description": "Ein Stil der Schriftauswahl.",
+      "properties": {
+        "beschreibung": {
+          "description": "kurze Erklärung für den Anwender (Tooltip)",
+          "type": "string"
+        },
+        "name": {
+          "description": "„Gotisch“, „Schreibschrift“ … – so in den Feldern `stile` der Listen",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "beschreibung"
       ],
       "type": "object"
     },
@@ -6987,6 +7042,15 @@
       "beschreibung": "Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung)",
       "eingabe": {
         "$ref": "#/$defs/SaeulenEingabe"
+      }
+    },
+    "schrift_stile": {
+      "ausgabe": {
+        "$ref": "#/$defs/SchriftStile"
+      },
+      "beschreibung": "Stile der Schriftauswahl (Gotisch, Schreibschrift, Modern … mit Erklärung) in Anzeigereihenfolge",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
       }
     },
     "schrift_vorschau": {

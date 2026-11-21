@@ -15,6 +15,8 @@ export type AlphabetInfo = {
   min_hoehe?: number | null;
   /** Name wie im Design-Feld `alphabet` */
   name: string;
+  /** Stile (Namen aus `schrift_stile`, eigene Einordnung nach dem Aussehen) */
+  stile: string[];
 };
 
 /** Umrisse eines Probetexts und der Zeichenvorrat des Alphabets. */
@@ -1820,10 +1822,20 @@ export type SchriftInfo = {
   name: string;
   pfad: string;
   stil: string;
+  /** Stile (Namen aus `schrift_stile`): eigene Einordnung gängiger Schriften, sonst die von Google, sonst leer */
+  stile: string[];
 };
 
 /** Stichart einer Schrift mit Original-Alphabet */
 export type SchriftStichart = ("satin" | "auto" | "step" | "muster");
+
+/** Stile der Schriftauswahl (eigene Einordnung, `Analyse_Teil3/21_schriften.md` §6). */
+export type SchriftStile = {
+  /** Woher die Einordnung stammt */
+  quelle: string;
+  /** alle Stile in Anzeigereihenfolge (Filter der Oberfläche) */
+  stile: StilInfo[];
+};
 
 /** Vorschau einer Computer-Schrift. */
 export type SchriftVorschau = {
@@ -1999,6 +2011,14 @@ export type Stickbarkeit = {
    * den empfohlenen Höhen der Original-Alphabete)
    */
   stickbar_ab: number;
+};
+
+/** Ein Stil der Schriftauswahl. */
+export type StilInfo = {
+  /** kurze Erklärung für den Anwender (Tooltip) */
+  beschreibung: string;
+  /** „Gotisch“, „Schreibschrift“ … – so in den Feldern `stile` der Listen */
+  name: string;
 };
 
 /** Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog). */
@@ -2423,6 +2443,8 @@ export interface Befehle {
   reihenfolge_aendern: { eingabe: ReihenfolgeEingabe; ausgabe: ReihenfolgeErgebnis };
   /** Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) */
   saeulen_vorschau: { eingabe: SaeulenEingabe; ausgabe: SaeuleInfo[] };
+  /** Stile der Schriftauswahl (Gotisch, Schreibschrift, Modern … mit Erklärung) in Anzeigereihenfolge */
+  schrift_stile: { eingabe: Leer; ausgabe: SchriftStile };
   /** Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“ */
   schrift_vorschau: { eingabe: SchriftVorschauEingabe; ausgabe: SchriftVorschau };
   /** Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben */
@@ -2477,6 +2499,7 @@ export const BEFEHLE = [
   "rahmen_liste",
   "reihenfolge_aendern",
   "saeulen_vorschau",
+  "schrift_stile",
   "schrift_vorschau",
   "schrift_wechseln",
   "schriften_liste",

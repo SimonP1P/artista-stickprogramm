@@ -10,6 +10,7 @@ import {
   type SchriftVorschau,
   type MusterInfo,
   type SchriftInfo,
+  type StilInfo,
   type StoffInfo,
 } from "$kern/kern";
 
@@ -21,8 +22,16 @@ class Listen {
   schriften = $state.raw<SchriftInfo[]>([]);
   google = $state.raw<GoogleKatalog | null>(null);
   /** Favoriten der Schriftauswahl: „a:Alphabet“, „s:Computer-Schrift“, „g:Google-Familie“ (nur auf diesem Rechner) */
-  favoriten = $state<string[]>(favoritenLesen());
+  favoriten = $state<string[]>(lesen(FAVORITEN, []));
+  /** Stile der Schriftauswahl aus dem Kern (Reihenfolge der Filter, Erklärung) */
+  stile = $state.raw<StilInfo[]>([]);
+  /**
+   * Eigene Stile des Anwenders (nur auf diesem Rechner): Namen neuer Stile und je Schrift (Kennung wie bei den
+   * Favoriten) die vollständige Stil-Liste, wenn der Anwender sie geändert hat.
+   */
+  eigeneStile = $state<EigeneStile>(eigeneLesen());
   #google: Promise<void> | null = null;
+  #stile: Promise<void> | null = null;
   #schriftVorschau = new Map<string, Promise<SchriftVorschau>>();
   #muster: Promise<void> | null = null;
   #schriften: Promise<void> | null = null;
@@ -86,17 +95,54 @@ class Listen {
     return p;
   }
 
+  /** Stile der Schriftauswahl – bei Bedarf */
+  stileLaden(): Promise<void> {
+    this.#stile ??= kern("schrift_stile", {}).then((x) => {
+      this.stile = x.stile;
+    });
+    return this.#stile;
+  }
+
+  /** Stile einer Schrift: vom Anwender geändert, sonst die Vorgabe des Kerns */
+  stileVon(id: string, vorgabe: string[]): string[] {
+    return this.eigeneStile.zuordnung[id] ?? vorgabe;
+  }
+
+  /** Stile einer Schrift setzen; `null` = zurück zur Vorgabe des Kerns */
+  stileSetzen(id: string, stile: string[] | null) {
+    const z = { ...this.eigeneStile.zuordnung };
+    if (stile) z[id] = stile;
+    else delete z[id];
+    this.eigeneStile = { ...this.eigeneStile, zuordnung: z };
+    schreiben(EIGENE_STILE, this.eigeneStile);
+  }
+
+  eigenenStilAnlegen(name: string): string | null {
+    const n = name.trim();
+    if (!n) return null;
+    const vorhanden = [...this.stile.map((x) => x.name), ...this.eigeneStile.namen].find((x) => x.toLowerCase() === n.toLowerCase());
+    if (vorhanden) return vorhanden;
+    this.eigeneStile = { ...this.eigeneStile, namen: [...this.eigeneStile.namen, n] };
+    schreiben(EIGENE_STILE, this.eigeneStile);
+    return n;
+  }
+
+  /** eigenen Stil löschen (auch aus allen Zuordnungen) */
+  eigenenStilEntfernen(name: string) {
+    const zuordnung = Object.fromEntries(
+      Object.entries(this.eigeneStile.zuordnung).map(([k, v]) => [k, v.filter((x) => x !== name)]),
+    );
+    this.eigeneStile = { namen: this.eigeneStile.namen.filter((x) => x !== name), zuordnung };
+    schreiben(EIGENE_STILE, this.eigeneStile);
+  }
+
   istFavorit(id: string): boolean {
     return this.favoriten.includes(id);
   }
 
   favoritUmschalten(id: string) {
     this.favoriten = this.istFavorit(id) ? this.favoriten.filter((x) => x !== id) : [...this.favoriten, id];
-    try {
-      localStorage.setItem(FAVORITEN, JSON.stringify(this.favoriten));
-    } catch {
-      /* ohne Speicher */
-    }
+    schreiben(FAVORITEN, this.favoriten);
   }
 
   garne(karte: string): Promise<GarnInfo[]> {
@@ -126,13 +172,33 @@ class Listen {
 }
 
 const FAVORITEN = "schrift_favoriten";
+const EIGENE_STILE = "schrift_stile_eigen";
 
-function favoritenLesen(): string[] {
+type EigeneStile = { namen: string[]; zuordnung: Record<string, string[]> };
+
+/** Gespeicherten Wert lesen (localStorage, nur auf diesem Rechner); falscher Typ → Vorgabe */
+function lesen<T>(schluessel: string, vorgabe: T): T {
   try {
-    const x = JSON.parse(localStorage.getItem(FAVORITEN) ?? "[]");
-    return Array.isArray(x) ? x.filter((y) => typeof y === "string") : [];
+    const x = JSON.parse(localStorage.getItem(schluessel) ?? "null");
+    return x !== null && typeof x === typeof vorgabe && Array.isArray(x) === Array.isArray(vorgabe) ? x : vorgabe;
   } catch {
-    return [];
+    return vorgabe;
+  }
+}
+
+function eigeneLesen(): EigeneStile {
+  const e = lesen<Partial<EigeneStile>>(EIGENE_STILE, {});
+  return {
+    namen: Array.isArray(e.namen) ? e.namen.filter((x) => typeof x === "string") : [],
+    zuordnung: e.zuordnung && typeof e.zuordnung === "object" && !Array.isArray(e.zuordnung) ? e.zuordnung : {},
+  };
+}
+
+function schreiben(schluessel: string, wert: unknown) {
+  try {
+    localStorage.setItem(schluessel, JSON.stringify(wert));
+  } catch {
+    /* ohne Speicher */
   }
 }
 

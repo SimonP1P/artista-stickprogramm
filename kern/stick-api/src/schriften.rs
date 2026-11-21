@@ -13,7 +13,7 @@ use serde_json::Value;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::sync::Mutex;
-use stick_formate::google_fonts;
+use stick_formate::{google_fonts, schriftstile};
 use stick_formate::ttf::{self, SchriftEintrag};
 use stick_kern::format::ObjektJson;
 use stick_kern::stickbarkeit::{Strichstaerken, stickbar_ab};
@@ -133,6 +133,8 @@ pub struct SchriftInfo {
     pub pfad: String,
     /// aus Google Fonts heruntergeladen (liegt in der Ablage des Programms)
     pub heruntergeladen: bool,
+    /// Stile (Namen aus `schrift_stile`): eigene Einordnung gängiger Schriften, sonst die von Google, sonst leer
+    pub stile: Vec<String>,
 }
 
 /// Eingabe von `schriften_liste`.
@@ -151,6 +153,7 @@ fn info(e: &SchriftEintrag, ablage: &Path) -> SchriftInfo {
         stil: e.stil.clone(),
         pfad: e.pfad.display().to_string(),
         heruntergeladen: e.pfad.starts_with(ablage),
+        stile: schriftstile::schrift(&e.familie, &e.name),
     }
 }
 
@@ -178,6 +181,36 @@ pub struct GoogleSchriftInfo {
     pub lizenz: String,
     /// schon heruntergeladen
     pub geladen: bool,
+}
+
+/// Ein Stil der Schriftauswahl.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct StilInfo {
+    /// „Gotisch“, „Schreibschrift“ … – so in den Feldern `stile` der Listen
+    pub name: String,
+    /// kurze Erklärung für den Anwender (Tooltip)
+    pub beschreibung: String,
+}
+
+/// Stile der Schriftauswahl (eigene Einordnung, `Analyse_Teil3/21_schriften.md` §6).
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct SchriftStile {
+    /// Woher die Einordnung stammt
+    pub quelle: String,
+    /// alle Stile in Anzeigereihenfolge (Filter der Oberfläche)
+    pub stile: Vec<StilInfo>,
+}
+
+pub fn schrift_stile(_: &Kontext, _: crate::befehle::Leer) -> Result<SchriftStile, Fehler> {
+    let d = schriftstile::daten();
+    Ok(SchriftStile {
+        quelle: d.quelle.clone(),
+        stile: d
+            .stile
+            .iter()
+            .map(|s| StilInfo { name: s.name.clone(), beschreibung: s.beschreibung.clone() })
+            .collect(),
+    })
 }
 
 /// Katalog der Google Fonts (freie Lizenzen; nach Beliebtheit sortiert).

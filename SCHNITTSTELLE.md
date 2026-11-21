@@ -508,6 +508,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |
 | `saeulen_vorschau` | SaeulenEingabe | SaeuleInfo[] | Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) |
+| `schrift_stile` | Leer | SchriftStile | Stile der Schriftauswahl (Gotisch, Schreibschrift, Modern … mit Erklärung) in Anzeigereihenfolge |
 | `schrift_vorschau` | SchriftVorschauEingabe | SchriftVorschau | Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“ |
 | `schrift_wechseln` | SchriftWechselEingabe | ObjektWert | Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben |
 | `schriften_liste` | SchriftenListeEingabe | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts |

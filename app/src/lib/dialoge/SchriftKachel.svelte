@@ -37,6 +37,10 @@
     /** Höhe des Texts (mm) – Warnung, wenn kleiner als „stickbar ab“ */
     hoehe?: number;
     favorit: string;
+    /** Stile der Schrift (Tooltip) */
+    stile?: string[];
+    /** Stile dieser Schrift ändern (Leiste im Dialog) */
+    stileAendern?: () => void;
     waehlen: () => void;
   };
   let p: Props = $props();
@@ -108,7 +112,7 @@
       <span class="gprobe" style="font-family:'{p.name}', var(--font-body)">{GOOGLE_PROBE}</span>
     {/if}
   </span>
-  <b class="nm" title={p.name}>{p.name}</b>
+  <b class="nm" title={p.stile?.length ? `${p.name} – ${p.stile.join(", ")}` : p.name}>{p.name}</b>
   {#if stick}
     <span class="small" class:warn={zuKlein} title="eigene Messung: ab dieser Höhe sind die dünnen Striche mindestens 0,8 mm breit (wie bei den Original-Alphabeten)">
       stickbar ab {zahl(stick.stickbar_ab)} mm{zuKlein ? ` · jetzt ${zahl(p.hoehe ?? 0)} mm` : ""}
@@ -119,6 +123,21 @@
   {#if v?.fehlende_zeichen}<span class="small warn">fehlt: {v.fehlende_zeichen}</span>{/if}
   {#if p.quelle === "google" && !p.geladen}
     <span class="laden small">{p.laedt ? "wird geladen …" : "↓ laden und verwenden"}</span>
+  {/if}
+  {#if p.stileAendern}
+    <button
+      class="etikett"
+      title={p.stile?.length ? `Stile: ${p.stile.join(", ")} – ändern` : "Stile festlegen"}
+      onclick={(e) => {
+        e.stopPropagation();
+        p.stileAendern?.();
+      }}
+      onkeydown={(e) => e.stopPropagation()}
+    >
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8zM7 7h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+      </svg>
+    </button>
   {/if}
   <button
     class="stern"
@@ -154,7 +173,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-right: 18px;
+  }
+  /* Platz für Etikett und Stern unten rechts */
+  .kachel > span:not(.aimg) {
+    padding-right: 50px;
   }
   .zeile {
     overflow: hidden;
@@ -172,6 +194,23 @@
     max-width: 100%;
   }
   .laden {
+    color: var(--color-accent);
+  }
+  .etikett {
+    position: absolute;
+    right: 28px;
+    bottom: 4px;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: color-mix(in srgb, var(--color-text) 40%, transparent);
+    cursor: pointer;
+  }
+  .etikett:hover {
     color: var(--color-accent);
   }
   .stern {
