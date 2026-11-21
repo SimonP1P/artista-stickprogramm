@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **167 Parameter**: 42 einfach, 79 experte, 46 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **172 Parameter**: 45 einfach, 79 experte, 48 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -247,10 +247,15 @@ Stand 21.11.2026 · **167 Parameter**: 42 einfach, 79 experte, 46 automatisch. E
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
 | **Breite** | Breite des Ergebnisses (Höhe folgt) |  |  | 80 mm |  |  | werkzeug | einfach | stick-vektor (eigene Festlegung) |
-| **Farben** | Zahl der Farben nach der Reduktion |  |  | 6 Anzahl |  |  | werkzeug | einfach | stick-vektor (eigene Festlegung) |
-| **Kleinste Fläche** | kleinere Flächen entfallen |  |  | 4 mm² |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
-| **Glättung** | Toleranz der Vereinfachung |  |  | 0,2 mm |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
-| **Hintergrund weglassen** | häufigste Randfarbe entfällt |  |  | an |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
+| **Farben** | Zahl der Farben im Bild nach der Reduktion (k-Means im Lab-Raum), auch die weggelassenen |  |  | 8 Anzahl |  |  | werkzeug | einfach | stick-vektor (eigene Festlegung) |
+| **Vereinfachen** | kantenerhaltendes Glätten vor der Farbreduktion (Kuwahara); 0 = aus |  |  | 2 Stufe 0–5 |  |  | werkzeug | einfach | Schritt nach Handbuch Kap. 12 „Image clean up“, Verfahren eigene Festlegung |
+| **Farben weglassen** | Farben, die nicht gestickt werden; ohne Wahl: fast weiße häufigste Randfarbe |  |  | weißer Hintergrund Farbliste |  |  | werkzeug | einfach | Auto Digitizer „Omitted Colors“, „white background omitted“ (Handbuch S. 117) |
+| **Garnfarben** | Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000) |  |  | an |  |  | werkzeug | einfach | eigene Festlegung (Zuordnung wie `garnkarte`) |
+| **Stichart der Flächen** | „step“ alles Tatami, „auto“ wie EasyStitch (bis 8 mm Satin) |  |  | step |  |  | werkzeug | experte | Auto Digitizer „Fills: Auto/Step“ (Handbuch S. 118); Standard Step eigene Festlegung |
+| **Kleinste Fläche** | kleinere Flächen gehen in der Nachbarfarbe auf (keine Löcher) |  |  | 4 mm² |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
+| **Glättung** | Toleranz der Vereinfachung der Umrisse |  |  | 0,2 mm |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
+| **Zugausgleich** | für alle umgewandelten Flächen (fest) |  |  | 0,4 mm |  |  | werkzeug | automatisch | Handbuch S. 116 „Change the pull compensation to 0.4mm when using Auto Digitizer“; EasyStitch-Stile 0x273d |
+| **Unterlage** | an für alle umgewandelten Flächen (fest) |  |  | an |  |  | werkzeug | automatisch | Handbuch S. 116 „Always remember to apply underlays“ |
 
 ## SVG einlesen
 

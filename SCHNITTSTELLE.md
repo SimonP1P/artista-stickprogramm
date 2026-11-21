@@ -479,6 +479,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `alphabete_liste` | Leer | AlphabetInfo[] | Original-Alphabete (50) |
 | `beispiel_design` | Leer | DesignWert | Beispieldesign mit allen Sticharten der ersten Ausbaustufe |
 | `bild_umwandeln` | BildEingabe | BildErgebnis | Bild in Stickflächen umwandeln (neues Design) |
+| `bild_vorschau` | BildEingabe | BildVorschau | Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln |
 | `datei_lesen` | Pfad | string | Textdatei lesen |
 | `design_berechnen` | DesignEingabe | Ergebnis | Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet) |
 | `design_einfuegen` | EinfuegenEingabe | EinfuegenErgebnis | Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element) |

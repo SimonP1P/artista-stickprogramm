@@ -399,7 +399,7 @@
     },
     "BildEingabe": {
       "additionalProperties": false,
-      "description": "Bild in Stickflächen umwandeln (eigene Festlegung, Auto Digitizer des Originals nicht nachgebaut).",
+      "description": "Bild in Stickflächen umwandeln wie der „Auto Digitizer“ des Originals (Schritte nach Handbuch Kap. 12/13, Verfahren\neigene Festlegung – `stick-vektor`). Dieselbe Eingabe nimmt `bild_vorschau`.",
       "properties": {
         "breite": {
           "default": null,
@@ -412,7 +412,7 @@
         },
         "farben": {
           "default": null,
-          "description": "Zahl der Farben (Standard 6)",
+          "description": "Zahl der Farben im Bild, auch die weggelassenen (Standard 8; mit Garnkarte können es weniger werden, wenn zwei\nFarben dasselbe Garn bekommen)",
           "format": "uint",
           "minimum": 0,
           "type": [
@@ -420,9 +420,28 @@
             "null"
           ]
         },
+        "fuellung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BildFuellung"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Stichart der Flächen: „step“ (Standard, alles Step/Tatami – bei Fotos am saubersten) oder „auto“ (wie\nEasyStitch/„Fills: Auto“: bis 8 mm dick Satinfläche, darüber Step – für Logos und Zeichnungen)"
+        },
+        "garnkarte": {
+          "default": null,
+          "description": "Garnkarte (Name wie `garnkarten_liste`): Farben auf die nächsten Garne der Karte ziehen (CIEDE2000), gleiche Garne\nwerden eine Farbe; die Objekte bekommen `garn`. Ohne Angabe oder „keine“: Farben des Bildes",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "glaettung": {
           "default": null,
-          "description": "Glättung in mm (Standard 0,2)",
+          "description": "Glättung der Umrisse in mm (Standard 0,2)",
           "format": "double",
           "type": [
             "number",
@@ -431,7 +450,7 @@
         },
         "min_flaeche": {
           "default": null,
-          "description": "kleinste Fläche in mm² (Standard 4)",
+          "description": "kleinste Fläche in mm² (Standard 4) – kleinere gehen in der Nachbarfarbe auf (keine Löcher)",
           "format": "double",
           "type": [
             "number",
@@ -440,7 +459,7 @@
         },
         "mit_hintergrund": {
           "default": false,
-          "description": "Hintergrund mitsticken",
+          "description": "veraltet: alles sticken (wie `weglassen: []`)",
           "type": "boolean"
         },
         "pfad": {
@@ -452,6 +471,27 @@
           "description": "Rahmen des neuen Designs",
           "type": [
             "string",
+            "null"
+          ]
+        },
+        "vereinfachen": {
+          "default": null,
+          "description": "Bild vereinfachen 0–5 (Standard 2): glättet Fotorauschen und feine Details vor der Farbreduktion, Kanten bleiben\nscharf (wie „Artwork Preparation“ im Original: Rauschen entfernen, unnötige Details weglassen)",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "weglassen": {
+          "default": null,
+          "description": "Farben, die **nicht** gestickt werden („Omitted Colors“ im Original), als „#rrggbb“ wie in `bild_vorschau`.\nOhne Angabe: Vorschlag des Programms (weißer Hintergrund wie „white background omitted“); leere Liste = alles\nsticken",
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
             "null"
           ]
         }
@@ -472,7 +512,7 @@
         },
         "design": {
           "$ref": "#/$defs/DesignWert",
-          "description": "neues Design (Tatami-Flächen nach Farben)"
+          "description": "neues Design (Satin- und Step-Flächen nach Farben)"
         },
         "farben": {
           "format": "uint",
@@ -488,14 +528,100 @@
           "format": "uint32",
           "minimum": 0,
           "type": "integer"
+        },
+        "klassen": {
+          "additionalProperties": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "description": "Zahl der Objekte je Objektart (`satinflaeche`, `tatami`)",
+          "type": "object"
         }
       },
       "required": [
         "design",
         "flaechen",
         "farben",
+        "klassen",
         "breite_px",
         "hoehe_px"
+      ],
+      "type": "object"
+    },
+    "BildFarbe": {
+      "description": "Eine Farbe des vorbereiteten Bildes.",
+      "properties": {
+        "anteil": {
+          "description": "Anteil am Bild in Prozent",
+          "format": "double",
+          "type": "number"
+        },
+        "farbe": {
+          "description": "„#rrggbb“ – genau so in der Vorschau (zum Weglassen in `weglassen` angeben)",
+          "type": "string"
+        },
+        "garn": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GarnInfo"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "nächstes Garn der Karte (mit `garnkarte`)"
+        },
+        "weglassen": {
+          "description": "wird weggelassen (Vorschlag oder `weglassen`)",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "farbe",
+        "anteil",
+        "weglassen"
+      ],
+      "type": "object"
+    },
+    "BildFuellung": {
+      "description": "Stichart der Flächen beim Bild umwandeln.",
+      "enum": [
+        "auto",
+        "step"
+      ],
+      "type": "string"
+    },
+    "BildVorschau": {
+      "description": "Ergebnis von `bild_vorschau`.",
+      "properties": {
+        "bild": {
+          "description": "das vereinfachte Bild mit den reduzierten Farben als PNG („data:image/png;base64,…“) – weggelassene Farben sind\nenthalten, die Oberfläche blendet sie aus",
+          "type": "string"
+        },
+        "breite_px": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "farben": {
+          "description": "Farben, häufigste zuerst",
+          "items": {
+            "$ref": "#/$defs/BildFarbe"
+          },
+          "type": "array"
+        },
+        "hoehe_px": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bild",
+        "breite_px",
+        "hoehe_px",
+        "farben"
       ],
       "type": "object"
     },
@@ -6313,6 +6439,15 @@
         "$ref": "#/$defs/BildErgebnis"
       },
       "beschreibung": "Bild in Stickflächen umwandeln (neues Design)",
+      "eingabe": {
+        "$ref": "#/$defs/BildEingabe"
+      }
+    },
+    "bild_vorschau": {
+      "ausgabe": {
+        "$ref": "#/$defs/BildVorschau"
+      },
+      "beschreibung": "Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln",
       "eingabe": {
         "$ref": "#/$defs/BildEingabe"
       }

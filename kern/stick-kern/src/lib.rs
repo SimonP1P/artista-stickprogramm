@@ -25,6 +25,7 @@ pub mod design;
 pub mod ein_ausstich;
 pub mod einheiten;
 pub mod einstellungen;
+pub mod farbe;
 pub mod format;
 pub mod geometrie;
 pub mod knopfloch;

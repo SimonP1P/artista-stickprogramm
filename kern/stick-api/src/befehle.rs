@@ -885,7 +885,8 @@ pub fn saeulen_vorschau(_: &Kontext, e: SaeulenEingabe) -> Result<Vec<SaeuleInfo
         .collect())
 }
 
-/// Bild in Stickflächen umwandeln (eigene Festlegung, Auto Digitizer des Originals nicht nachgebaut).
+/// Bild in Stickflächen umwandeln wie der „Auto Digitizer“ des Originals (Schritte nach Handbuch Kap. 12/13, Verfahren
+/// eigene Festlegung – `stick-vektor`). Dieselbe Eingabe nimmt `bild_vorschau`.
 #[derive(Debug, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct BildEingabe {
@@ -894,16 +895,34 @@ pub struct BildEingabe {
     /// Breite des Ergebnisses in mm (Standard 80)
     #[serde(default)]
     pub breite: Option<f64>,
-    /// Zahl der Farben (Standard 6)
+    /// Zahl der Farben im Bild, auch die weggelassenen (Standard 8; mit Garnkarte können es weniger werden, wenn zwei
+    /// Farben dasselbe Garn bekommen)
     #[serde(default)]
     pub farben: Option<usize>,
-    /// kleinste Fläche in mm² (Standard 4)
+    /// Bild vereinfachen 0–5 (Standard 2): glättet Fotorauschen und feine Details vor der Farbreduktion, Kanten bleiben
+    /// scharf (wie „Artwork Preparation“ im Original: Rauschen entfernen, unnötige Details weglassen)
+    #[serde(default)]
+    pub vereinfachen: Option<u32>,
+    /// kleinste Fläche in mm² (Standard 4) – kleinere gehen in der Nachbarfarbe auf (keine Löcher)
     #[serde(default)]
     pub min_flaeche: Option<f64>,
-    /// Glättung in mm (Standard 0,2)
+    /// Glättung der Umrisse in mm (Standard 0,2)
     #[serde(default)]
     pub glaettung: Option<f64>,
-    /// Hintergrund mitsticken
+    /// Farben, die **nicht** gestickt werden („Omitted Colors“ im Original), als „#rrggbb“ wie in `bild_vorschau`.
+    /// Ohne Angabe: Vorschlag des Programms (weißer Hintergrund wie „white background omitted“); leere Liste = alles
+    /// sticken
+    #[serde(default)]
+    pub weglassen: Option<Vec<String>>,
+    /// Garnkarte (Name wie `garnkarten_liste`): Farben auf die nächsten Garne der Karte ziehen (CIEDE2000), gleiche Garne
+    /// werden eine Farbe; die Objekte bekommen `garn`. Ohne Angabe oder „keine“: Farben des Bildes
+    #[serde(default)]
+    pub garnkarte: Option<String>,
+    /// Stichart der Flächen: „step“ (Standard, alles Step/Tatami – bei Fotos am saubersten) oder „auto“ (wie
+    /// EasyStitch/„Fills: Auto“: bis 8 mm dick Satinfläche, darüber Step – für Logos und Zeichnungen)
+    #[serde(default)]
+    pub fuellung: Option<BildFuellung>,
+    /// veraltet: alles sticken (wie `weglassen: []`)
     #[serde(default)]
     pub mit_hintergrund: bool,
     /// Rahmen des neuen Designs
@@ -911,39 +930,164 @@ pub struct BildEingabe {
     pub rahmen: Option<String>,
 }
 
+/// Stichart der Flächen beim Bild umwandeln.
+#[derive(Debug, Clone, Copy, Deserialize, JsonSchema)]
+#[serde(rename_all = "lowercase")]
+pub enum BildFuellung {
+    Auto,
+    Step,
+}
+
+/// Eine Farbe des vorbereiteten Bildes.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct BildFarbe {
+    /// „#rrggbb“ – genau so in der Vorschau (zum Weglassen in `weglassen` angeben)
+    pub farbe: String,
+    /// Anteil am Bild in Prozent
+    pub anteil: f64,
+    /// wird weggelassen (Vorschlag oder `weglassen`)
+    pub weglassen: bool,
+    /// nächstes Garn der Karte (mit `garnkarte`)
+    pub garn: Option<GarnInfo>,
+}
+
+/// Ergebnis von `bild_vorschau`.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct BildVorschau {
+    /// das vereinfachte Bild mit den reduzierten Farben als PNG („data:image/png;base64,…“) – weggelassene Farben sind
+    /// enthalten, die Oberfläche blendet sie aus
+    pub bild: String,
+    pub breite_px: u32,
+    pub hoehe_px: u32,
+    /// Farben, häufigste zuerst
+    pub farben: Vec<BildFarbe>,
+}
+
 /// Ergebnis der Bildumwandlung.
 #[derive(Debug, Serialize, JsonSchema)]
 pub struct BildErgebnis {
-    /// neues Design (Tatami-Flächen nach Farben)
+    /// neues Design (Satin- und Step-Flächen nach Farben)
     pub design: DesignWert,
     pub flaechen: usize,
     pub farben: usize,
+    /// Zahl der Objekte je Objektart (`satinflaeche`, `tatami`)
+    pub klassen: std::collections::BTreeMap<String, usize>,
     /// Bildgröße in Punkten
     pub breite_px: u32,
     pub hoehe_px: u32,
 }
 
-pub fn bild_umwandeln(_: &Kontext, e: BildEingabe) -> Result<BildErgebnis, Fehler> {
+fn hex_farbe(t: &str) -> Result<[u8; 3], Fehler> {
+    let h = t.trim().trim_start_matches('#');
+    if h.len() != 6 || !h.chars().all(|c| c.is_ascii_hexdigit()) {
+        return Err(format!("Farbe „{t}“: erwartet „#rrggbb“").into());
+    }
+    Ok([0, 2, 4].map(|i| u8::from_str_radix(&h[i..i + 2], 16).unwrap_or(0)))
+}
+
+fn hex(c: [u8; 3]) -> String {
+    format!("#{:02x}{:02x}{:02x}", c[0], c[1], c[2])
+}
+
+/// Base64 (für das Vorschaubild als data-URL)
+fn base64(daten: &[u8]) -> String {
+    const Z: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    let mut out = String::with_capacity(daten.len().div_ceil(3) * 4);
+    for b in daten.chunks(3) {
+        let n = (u32::from(b[0]) << 16) | (u32::from(*b.get(1).unwrap_or(&0)) << 8) | u32::from(*b.get(2).unwrap_or(&0));
+        for i in 0..4 {
+            if i <= b.len() {
+                out.push(Z[(n >> (18 - 6 * i) & 63) as usize] as char);
+            } else {
+                out.push('=');
+            }
+        }
+    }
+    out
+}
+
+/// Eingabe → Optionen von `stick-vektor` (+ Garnkarte, wenn angegeben)
+fn bild_optionen(k: &Kontext, e: &BildEingabe) -> Result<(stick_vektor::BildOptionen, Option<garnkarte::Garnkarte>), Fehler> {
     let st = stick_vektor::BildOptionen::default();
-    let o = stick_vektor::BildOptionen {
-        breite_mm: e.breite.unwrap_or(st.breite_mm),
-        farben: e.farben.unwrap_or(st.farben),
-        min_flaeche: e.min_flaeche.unwrap_or(st.min_flaeche),
-        glaettung: e.glaettung.unwrap_or(st.glaettung),
-        ohne_hintergrund: !e.mit_hintergrund,
+    let karte = match e.garnkarte.as_deref() {
+        None | Some("") | Some("keine") => None,
+        Some(n) => Some(garnkarte::laden(&k.garnkarten, n)?),
     };
+    let weglassen = match &e.weglassen {
+        Some(l) => Some(l.iter().map(|t| hex_farbe(t)).collect::<Result<Vec<_>, _>>()?),
+        None if e.mit_hintergrund => Some(Vec::new()),
+        None => None,
+    };
+    Ok((
+        stick_vektor::BildOptionen {
+            breite_mm: e.breite.unwrap_or(st.breite_mm),
+            farben: e.farben.unwrap_or(st.farben),
+            min_flaeche: e.min_flaeche.unwrap_or(st.min_flaeche),
+            glaettung: e.glaettung.unwrap_or(st.glaettung),
+            vereinfachen: e.vereinfachen.unwrap_or(st.vereinfachen),
+            weglassen,
+            palette: karte.as_ref().map(|k| k.garne.iter().map(|g| g.rgb).collect()),
+            fuellung: match e.fuellung {
+                Some(BildFuellung::Auto) => stick_vektor::Fuellung::Auto,
+                _ => stick_vektor::Fuellung::Step,
+            },
+        },
+        karte,
+    ))
+}
+
+/// Vorschau der Bildumwandlung: vereinfachtes Bild und Farbliste (zum Weglassen wählen), bevor Stiche entstehen.
+pub fn bild_vorschau(k: &Kontext, e: BildEingabe) -> Result<BildVorschau, Fehler> {
+    let (o, karte) = bild_optionen(k, &e)?;
+    let bild = stick_vektor::bild_laden(&PathBuf::from(&e.pfad))?;
+    let v = stick_vektor::vorbereiten(&bild, &o);
+    let weg = v.weggelassen(&o);
+    let summe = v.punkte.iter().sum::<usize>().max(1) as f64;
+    Ok(BildVorschau {
+        bild: format!("data:image/png;base64,{}", base64(&v.png())),
+        breite_px: v.breite as u32,
+        hoehe_px: v.hoehe as u32,
+        farben: v
+            .farben
+            .iter()
+            .enumerate()
+            .map(|(i, c)| BildFarbe {
+                farbe: hex(*c),
+                anteil: (1000.0 * v.punkte[i] as f64 / summe).round() / 10.0,
+                weglassen: weg.contains(&i),
+                garn: karte.as_ref().map(|kt| GarnInfo::from(kt.naechstes(*c))),
+            })
+            .collect(),
+    })
+}
+
+pub fn bild_umwandeln(k: &Kontext, e: BildEingabe) -> Result<BildErgebnis, Fehler> {
+    let (o, karte) = bild_optionen(k, &e)?;
     let pfad = PathBuf::from(&e.pfad);
     let bild = stick_vektor::bild_laden(&pfad)?;
-    let f = stick_vektor::ordnen(stick_vektor::vektorisieren(&bild, &o));
+    let v = stick_vektor::vorbereiten(&bild, &o);
+    let f = stick_vektor::ordnen(stick_vektor::umrisse(&v, &o));
     let stamm = pfad.file_stem().unwrap_or_default().to_string_lossy().to_string();
-    let rahmen = e.rahmen.unwrap_or_else(|| "artista 130 x 100".into());
+    let rahmen = e.rahmen.clone().unwrap_or_else(|| "artista 130 x 100".into());
+    let (mut design, klassen) = stick_vektor::design_json_mit(&f, &stamm, &rahmen, o.fuellung);
+    // mit Garnkarte: Garn je Objekt festhalten (Farbe ist genau die des Garns)
+    if let (Some(kt), Some(objekte)) = (&karte, design.get_mut("objekte").and_then(Value::as_array_mut)) {
+        for ob in objekte {
+            if let Some(c) = ob.get("farbe").and_then(Value::as_str).and_then(|t| hex_farbe(t).ok())
+                && let Some(g) = kt.garne.iter().find(|g| g.rgb == c)
+            {
+                ob["garn"] = Value::from(g.nummer.clone());
+            }
+        }
+    }
     let mut farben: Vec<[u8; 3]> = f.iter().map(|x| x.farbe).collect();
     farben.sort();
     farben.dedup();
     Ok(BildErgebnis {
-        design: DesignWert(stick_vektor::design_json(&f, &stamm, &rahmen)),
+        design: DesignWert(design),
         flaechen: f.len(),
         farben: farben.len(),
+        klassen,
         breite_px: bild.width(),
         hoehe_px: bild.height(),
     })

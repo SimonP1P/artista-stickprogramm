@@ -744,7 +744,9 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
         }
         Some("bild") => {
             let pfad = PathBuf::from(args.get(1).ok_or(
-                "stick bild BILD [--breite MM] [--farben N] [--rahmen NAME] [--mit-hintergrund] [-o DESIGN.json]",
+                "stick bild BILD [--breite MM] [--farben N] [--vereinfachen 0-5] [--min-flaeche MM2] [--glaettung MM] \
+                 [--fuellung step|auto] [--garnkarte KARTE.tch] [--weglassen '#rrggbb,…'] [--mit-hintergrund] \
+                 [--rahmen NAME] [--vorschau BILD.png] [-o DESIGN.json]",
             )?);
             let st = stick_vektor::BildOptionen::default();
             let zahl = |n: &str, v: f64| {
@@ -752,37 +754,72 @@ fn ausfuehren(args: &[String]) -> Result<bool, String> {
                     .and_then(|x| x.replace(',', ".").parse().ok())
                     .unwrap_or(v)
             };
+            let hex = |t: &str| -> Option<[u8; 3]> {
+                let t = t.trim().trim_start_matches('#');
+                (t.len() == 6).then(|| [0, 2, 4].map(|i| u8::from_str_radix(&t[i..i + 2], 16).unwrap_or(0)))
+            };
+            let weglassen = if args.iter().any(|a| a == "--mit-hintergrund") {
+                Some(Vec::new())
+            } else {
+                option(args, "--weglassen").map(|t| t.split(',').filter_map(hex).collect())
+            };
+            let palette = match option(args, "--garnkarte") {
+                Some(k) => Some(
+                    stick_formate::garnkarte::Garnkarte::lesen(Path::new(&k))?
+                        .garne
+                        .iter()
+                        .map(|g| g.rgb)
+                        .collect(),
+                ),
+                None => None,
+            };
             let o = stick_vektor::BildOptionen {
                 breite_mm: zahl("--breite", st.breite_mm),
                 farben: zahl("--farben", st.farben as f64) as usize,
                 min_flaeche: zahl("--min-flaeche", st.min_flaeche),
                 glaettung: zahl("--glaettung", st.glaettung),
-                ohne_hintergrund: !args.iter().any(|a| a == "--mit-hintergrund"),
+                vereinfachen: zahl("--vereinfachen", f64::from(st.vereinfachen)) as u32,
+                weglassen,
+                palette,
+                fuellung: if option(args, "--fuellung").as_deref() == Some("auto") {
+                    stick_vektor::Fuellung::Auto
+                } else {
+                    stick_vektor::Fuellung::Step
+                },
             };
             let bild = stick_vektor::bild_laden(&pfad)?;
-            let f = stick_vektor::ordnen(stick_vektor::vektorisieren(&bild, &o));
+            let v = stick_vektor::vorbereiten(&bild, &o);
+            if let Some(vs) = option(args, "--vorschau") {
+                std::fs::write(&vs, v.png()).map_err(|e| format!("{vs}: {e}"))?;
+            }
+            let weg = v.weggelassen(&o);
+            for (i, c) in v.farben.iter().enumerate() {
+                println!(
+                    "  Farbe #{:02x}{:02x}{:02x}  {:5.1} %{}",
+                    c[0],
+                    c[1],
+                    c[2],
+                    100.0 * v.punkte[i] as f64 / v.punkte.iter().sum::<usize>().max(1) as f64,
+                    if weg.contains(&i) { "  (weggelassen)" } else { "" }
+                );
+            }
+            let f = stick_vektor::ordnen(stick_vektor::umrisse(&v, &o));
             let stamm = pfad.file_stem().unwrap_or_default().to_string_lossy().to_string();
             let rahmen = option(args, "--rahmen").unwrap_or_else(|| "artista 130 x 100".into());
-            let json = stick_vektor::design_json(&f, &stamm, &rahmen);
+            let (json, klassen) = stick_vektor::design_json_mit(&f, &stamm, &rahmen, o.fuellung);
             let ziel = option(args, "-o")
                 .map(PathBuf::from)
                 .unwrap_or_else(|| pfad.with_extension("json"));
             std::fs::write(&ziel, serde_json::to_string_pretty(&json).map_err(|e| e.to_string())?)
                 .map_err(|e| format!("{}: {e}", ziel.display()))?;
-            let mut farben: Vec<[u8; 3]> = f.iter().map(|x| x.farbe).collect();
-            farben.dedup();
             println!(
-                "  {} Flächen in {} Farben, Bild {} × {} Punkte → {:.0} mm breit",
+                "  {} Flächen ({klassen:?}), Bild {} × {} Punkte → {:.0} mm breit",
                 f.len(),
-                farben.len(),
                 bild.width(),
                 bild.height(),
                 o.breite_mm
             );
-            println!(
-                "  Design: {} (Tatami-Flächen, mit „stick erzeugen“ berechnen)",
-                ziel.display()
-            );
+            println!("  Design: {} (mit „stick erzeugen“ berechnen)", ziel.display());
             Ok(true)
         }
         Some("parameter") => {

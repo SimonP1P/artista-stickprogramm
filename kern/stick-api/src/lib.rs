@@ -325,6 +325,8 @@ befehle! {
     design_einfuegen: befehle::EinfuegenEingabe => befehle::EinfuegenErgebnis,
     /// Bild in Stickflächen umwandeln (neues Design)
     bild_umwandeln: befehle::BildEingabe => befehle::BildErgebnis,
+    /// Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln
+    bild_vorschau: befehle::BildEingabe => befehle::BildVorschau,
     /// SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design
     svg_lesen: befehle::SvgEingabe => befehle::SvgErgebnis,
     /// Textdatei lesen

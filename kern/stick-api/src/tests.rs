@@ -417,3 +417,48 @@ fn stichart_wechseln() {
         ausfuehren(&k, "design_berechnen", json!({"design": d2})).unwrap_or_else(|e| panic!("{nr} {art}: {e:?}"));
     }
 }
+
+/// Bild: Vorschau mit Farbliste, Weglassen nach Farbe, Garnkarte, Unterlage an
+#[test]
+fn bild_vorschau_und_umwandeln() {
+    let k = kontext();
+    let pfad = std::env::temp_dir().join(format!("stick_bild_test_{}.png", std::process::id()));
+    let mut b = image::RgbaImage::from_pixel(200, 100, image::Rgba([255, 255, 255, 255]));
+    for y in 20..80u32 {
+        for x in 20..90u32 {
+            b.put_pixel(x, y, image::Rgba([200, 30, 30, 255]));
+        }
+        for x in 110..180u32 {
+            b.put_pixel(x, y, image::Rgba([30, 60, 200, 255]));
+        }
+    }
+    b.save(&pfad).unwrap();
+    let p = pfad.to_string_lossy().to_string();
+    let v = ausfuehren(&k, "bild_vorschau", json!({"pfad": p, "farben": 3, "breite": 100})).unwrap();
+    assert!(v["bild"].as_str().unwrap().starts_with("data:image/png;base64,"));
+    let farben = v["farben"].as_array().unwrap();
+    assert_eq!(farben.len(), 3);
+    let weiss = farben.iter().find(|f| f["weglassen"] == true).expect("Weiß vorgeschlagen");
+    assert_eq!(weiss["farbe"], "#ffffff");
+    // Vorschlag: 2 Flächen; alles sticken: 3; Rot weglassen: 2 (Weiß + Blau)
+    let n = |extra: Value| {
+        let mut e = json!({"pfad": p, "farben": 3, "breite": 100});
+        e.as_object_mut().unwrap().extend(extra.as_object().unwrap().clone());
+        let r = ausfuehren(&k, "bild_umwandeln", e).unwrap();
+        r["design"]["objekte"].as_array().unwrap().clone()
+    };
+    let o = n(json!({}));
+    assert_eq!(o.len(), 2);
+    assert!(o.iter().all(|x| x["art"] == "tatami" && x["unterlage"] == true));
+    assert_eq!(n(json!({"weglassen": []})).len(), 3);
+    let rot = farben.iter().find(|f| f["farbe"].as_str().unwrap().starts_with("#c")).unwrap()["farbe"].clone();
+    assert!(n(json!({"weglassen": [rot]})).iter().all(|x| x["farbe"] != rot));
+    // Garnkarte Default: Farben = Garne, Objekte tragen die Nummer
+    let g = ausfuehren(&k, "bild_vorschau", json!({"pfad": p, "farben": 3, "garnkarte": "Default"})).unwrap();
+    assert!(g["farben"][0]["garn"]["nummer"].is_string());
+    let og = n(json!({"garnkarte": "Default"}));
+    assert!(og.iter().all(|x| x["garn"].is_string()));
+    // Satin für schmale Flächen auf Wunsch
+    assert!(n(json!({"fuellung": "auto"})).iter().any(|x| x["art"] == "tatami" || x["art"] == "satinflaeche"));
+    let _ = std::fs::remove_file(&pfad);
+}

@@ -420,15 +420,29 @@ for k, name, w, einh, std, quelle in [
 
 # ---------------------------------------------------------------- Bild → Umrisse
 G = 'Bild → Umrisse'
-for k, name, w, einh, std, modus in [
-    ('breite_mm', 'Breite', 'Breite des Ergebnisses (Höhe folgt)', 'mm', 80.0, 'einfach'),
-    ('farben', 'Farben', 'Zahl der Farben nach der Reduktion', 'Anzahl', 6, 'einfach'),
-    ('min_flaeche', 'Kleinste Fläche', 'kleinere Flächen entfallen', 'mm²', 4.0, 'experte'),
-    ('glaettung', 'Glättung', 'Toleranz der Vereinfachung', 'mm', 0.2, 'experte'),
-    ('ohne_hintergrund', 'Hintergrund weglassen', 'häufigste Randfarbe entfällt', 'an/aus', True, 'experte'),
+for k, name, w, einh, std, modus, quelle in [
+    ('breite_mm', 'Breite', 'Breite des Ergebnisses (Höhe folgt)', 'mm', 80.0, 'einfach', 'stick-vektor (eigene Festlegung)'),
+    ('farben', 'Farben', 'Zahl der Farben im Bild nach der Reduktion (k-Means im Lab-Raum), auch die weggelassenen',
+     'Anzahl', 8, 'einfach', 'stick-vektor (eigene Festlegung)'),
+    ('vereinfachen', 'Vereinfachen', 'kantenerhaltendes Glätten vor der Farbreduktion (Kuwahara); 0 = aus',
+     'Stufe 0–5', 2, 'einfach', 'Schritt nach Handbuch Kap. 12 „Image clean up“, Verfahren eigene Festlegung'),
+    ('weglassen', 'Farben weglassen', 'Farben, die nicht gestickt werden; ohne Wahl: fast weiße häufigste Randfarbe',
+     'Farbliste', 'weißer Hintergrund', 'einfach', 'Auto Digitizer „Omitted Colors“, „white background omitted“ '
+     '(Handbuch S. 117)'),
+    ('garnkarte', 'Garnfarben', 'Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000)',
+     'an/aus', True, 'einfach', 'eigene Festlegung (Zuordnung wie `garnkarte`)'),
+    ('fuellung', 'Stichart der Flächen', '„step“ alles Tatami, „auto“ wie EasyStitch (bis 8 mm Satin)', 'Auswahl',
+     'step', 'experte', 'Auto Digitizer „Fills: Auto/Step“ (Handbuch S. 118); Standard Step eigene Festlegung'),
+    ('min_flaeche', 'Kleinste Fläche', 'kleinere Flächen gehen in der Nachbarfarbe auf (keine Löcher)', 'mm²', 4.0,
+     'experte', 'stick-vektor (eigene Festlegung)'),
+    ('glaettung', 'Glättung', 'Toleranz der Vereinfachung der Umrisse', 'mm', 0.2, 'experte',
+     'stick-vektor (eigene Festlegung)'),
+    ('zugausgleich', 'Zugausgleich', 'für alle umgewandelten Flächen (fest)', 'mm', 0.40, 'automatisch',
+     'Handbuch S. 116 „Change the pull compensation to 0.4mm when using Auto Digitizer“; EasyStitch-Stile 0x273d'),
+    ('unterlage', 'Unterlage', 'an für alle umgewandelten Flächen (fest)', 'an/aus', True, 'automatisch',
+     'Handbuch S. 116 „Always remember to apply underlays“'),
 ]:
-    P(f'bild.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle='stick-vektor (eigene Festlegung)',
-      modus=modus)
+    P(f'bild.{k}', G, name, w, ebene='werkzeug', einheit=einh, std=std, quelle=quelle, modus=modus)
 
 # ---------------------------------------------------------------- SVG einlesen (ROADMAP 4b.17, Analyse_Teil3/18)
 G = 'SVG einlesen'

@@ -914,6 +914,7 @@ dependencies = [
 name = "stick-api"
 version = "0.1.0"
 dependencies = [
+ "image",
  "schemars",
  "serde",
  "serde_json",

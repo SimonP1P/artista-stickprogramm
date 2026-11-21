@@ -130,18 +130,34 @@ export type AutoJumpWerte = {
   sprung?: number | null;
 };
 
-/** Bild in Stickflächen umwandeln (eigene Festlegung, Auto Digitizer des Originals nicht nachgebaut). */
+/**
+ * Bild in Stickflächen umwandeln wie der „Auto Digitizer“ des Originals (Schritte nach Handbuch Kap. 12/13, Verfahren
+ * eigene Festlegung – `stick-vektor`). Dieselbe Eingabe nimmt `bild_vorschau`.
+ */
 export type BildEingabe = {
   /** Breite des Ergebnisses in mm (Standard 80) */
   breite?: number | null;
-  /** Zahl der Farben (Standard 6) */
+  /**
+   * Zahl der Farben im Bild, auch die weggelassenen (Standard 8; mit Garnkarte können es weniger werden, wenn zwei
+   * Farben dasselbe Garn bekommen)
+   */
   farben?: number | null;
-  /** Glättung in mm (Standard 0,2) */
+  /**
+   * Stichart der Flächen: „step“ (Standard, alles Step/Tatami – bei Fotos am saubersten) oder „auto“ (wie
+   * EasyStitch/„Fills: Auto“: bis 8 mm dick Satinfläche, darüber Step – für Logos und Zeichnungen)
+   */
+  fuellung?: (BildFuellung | null);
+  /**
+   * Garnkarte (Name wie `garnkarten_liste`): Farben auf die nächsten Garne der Karte ziehen (CIEDE2000), gleiche Garne
+   * werden eine Farbe; die Objekte bekommen `garn`. Ohne Angabe oder „keine“: Farben des Bildes
+   */
+  garnkarte?: string | null;
+  /** Glättung der Umrisse in mm (Standard 0,2) */
   glaettung?: number | null;
-  /** kleinste Fläche in mm² (Standard 4) */
+  /** kleinste Fläche in mm² (Standard 4) – kleinere gehen in der Nachbarfarbe auf (keine Löcher) */
   min_flaeche?: number | null;
   /**
-   * Hintergrund mitsticken
+   * veraltet: alles sticken (wie `weglassen: []`)
    * @default false
    */
   mit_hintergrund?: boolean;
@@ -149,16 +165,57 @@ export type BildEingabe = {
   pfad: string;
   /** Rahmen des neuen Designs */
   rahmen?: string | null;
+  /**
+   * Bild vereinfachen 0–5 (Standard 2): glättet Fotorauschen und feine Details vor der Farbreduktion, Kanten bleiben
+   * scharf (wie „Artwork Preparation“ im Original: Rauschen entfernen, unnötige Details weglassen)
+   */
+  vereinfachen?: number | null;
+  /**
+   * Farben, die **nicht** gestickt werden („Omitted Colors“ im Original), als „#rrggbb“ wie in `bild_vorschau`.
+   * Ohne Angabe: Vorschlag des Programms (weißer Hintergrund wie „white background omitted“); leere Liste = alles
+   * sticken
+   */
+  weglassen?: string[] | null;
 };
 
 /** Ergebnis der Bildumwandlung. */
 export type BildErgebnis = {
   /** Bildgröße in Punkten */
   breite_px: number;
-  /** neues Design (Tatami-Flächen nach Farben) */
+  /** neues Design (Satin- und Step-Flächen nach Farben) */
   design: DesignWert;
   farben: number;
   flaechen: number;
+  hoehe_px: number;
+  /** Zahl der Objekte je Objektart (`satinflaeche`, `tatami`) */
+  klassen: Record<string, number>;
+};
+
+/** Eine Farbe des vorbereiteten Bildes. */
+export type BildFarbe = {
+  /** Anteil am Bild in Prozent */
+  anteil: number;
+  /** „#rrggbb“ – genau so in der Vorschau (zum Weglassen in `weglassen` angeben) */
+  farbe: string;
+  /** nächstes Garn der Karte (mit `garnkarte`) */
+  garn?: (GarnInfo | null);
+  /** wird weggelassen (Vorschlag oder `weglassen`) */
+  weglassen: boolean;
+};
+
+/** Stichart der Flächen beim Bild umwandeln. */
+export type BildFuellung = "auto" | "step";
+
+/** Ergebnis von `bild_vorschau`. */
+export type BildVorschau = {
+  /**
+   * das vereinfachte Bild mit den reduzierten Farben als PNG („data:image/png;base64,…“) – weggelassene Farben sind
+   * enthalten, die Oberfläche blendet sie aus
+   */
+  bild: string;
+  breite_px: number;
+  /** Farben, häufigste zuerst */
+  farben: BildFarbe[];
   hoehe_px: number;
 };
 
@@ -2220,6 +2277,8 @@ export interface Befehle {
   beispiel_design: { eingabe: Leer; ausgabe: DesignWert };
   /** Bild in Stickflächen umwandeln (neues Design) */
   bild_umwandeln: { eingabe: BildEingabe; ausgabe: BildErgebnis };
+  /** Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln */
+  bild_vorschau: { eingabe: BildEingabe; ausgabe: BildVorschau };
   /** Textdatei lesen */
   datei_lesen: { eingabe: Pfad; ausgabe: string };
   /** Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet) */
@@ -2292,6 +2351,7 @@ export const BEFEHLE = [
   "alphabete_liste",
   "beispiel_design",
   "bild_umwandeln",
+  "bild_vorschau",
   "datei_lesen",
   "design_berechnen",
   "design_einfuegen",
