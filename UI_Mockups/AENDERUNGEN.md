@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Computer-Schrift: überlappende Konturen, Step bei „auto“ (Fehler gemeldet vom Nutzer; Commit COMMIT)
+## 21.11.2026 – Computer-Schrift: überlappende Konturen, Step bei „auto“ (Fehler gemeldet vom Nutzer; Commit 59afa4f)
 - **Nur Kern, keine Feldänderung:** Ringe einer Computer-Schrift werden nach der Nicht-Null-Regel vereinigt (variable
   Schriften wie Google Sans: das „A“ war bei 25 mm zerrissen, Querbalken fehlte). Schaltet `stichart: "auto"` eine
   Computer-Schrift auf Step, wird jeder Buchstabe eine Tatami-Fläche statt Step je Säulenstück.
@@ -189,5 +189,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `b88e5ff` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `59afa4f` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
