@@ -18,7 +18,7 @@
     raster?: boolean;
     zoom?: number;
     /** Werkzeug: auswählen/ziehen oder Ein-/Ausstich des gewählten Objekts setzen */
-    werkzeug?: "auswahl" | "einstich" | "ausstich";
+    werkzeug?: "auswahl" | "einstich" | "ausstich" | "knoten";
     /** Abspielen: nur die ersten `bis` Stiche zeigen (null = alle) */
     bis?: number | null;
   } = $props();
@@ -33,6 +33,62 @@
   /** Live-Vorschau der Griffe (SVG-Transformation der gewählten Objekte, nur Anzeige) */
   let griffTransform = $state("");
   let griffWert = $state<{ dx: number; dy: number; f: number; grad: number }>({ dx: 0, dy: 0, f: 1, grad: 0 });
+
+  // ---- Knoten-Werkzeug (W5, Teil Oberfläche): Punktlisten direkt aus dem JSON des gewählten Objekts
+  type Liste = { feld: string; loch: number | null; punkte: number[][] };
+  const KNOTEN_FELDER = ["punkte", "umriss", "seite_a", "seite_b"];
+  const istPunktliste = (v: unknown): v is number[][] =>
+    Array.isArray(v) && v.length > 0 && v.every((p) => Array.isArray(p) && p.length === 2 && p.every((z) => typeof z === "number"));
+  const knotenObjekt = $derived(werkzeug === "knoten" && arbeit.auswahl.length === 1 ? arbeit.auswahl[0] : -1);
+  /** bearbeitbare Listen; null = Objekt hat eine Transformation oder Formen statt Punkten */
+  const knotenListen = $derived.by((): Liste[] | null => {
+    if (knotenObjekt < 0) return [];
+    const o = arbeit.objekte[knotenObjekt] as Record<string, unknown> | undefined;
+    if (!o) return [];
+    const t = o.transform as Record<string, unknown> | undefined;
+    const identisch =
+      !t ||
+      ((t.skalieren == null || t.skalieren === 100) && !t.drehen && !t.schraeg && !t.spiegeln &&
+        (!Array.isArray(t.verschieben) || (t.verschieben[0] === 0 && t.verschieben[1] === 0)));
+    if (!identisch) return null;
+    const l: Liste[] = [];
+    for (const f of KNOTEN_FELDER) if (istPunktliste(o[f])) l.push({ feld: f, loch: null, punkte: o[f] as number[][] });
+    if (Array.isArray(o.loecher)) (o.loecher as unknown[]).forEach((x, k) => istPunktliste(x) && l.push({ feld: "loecher", loch: k, punkte: x }));
+    return l;
+  });
+  let knotenZiehen: { liste: number; punkt: number; p: [number, number] } | null = $state(null);
+  let knotenGewaehlt = $state<{ liste: number; punkt: number } | null>(null);
+
+  function knotenSchreiben(f: (pkte: number[][]) => void, liste: number) {
+    const l = knotenListen?.[liste];
+    if (!l) return;
+    const nr = knotenObjekt;
+    arbeit.aendern((d) => {
+      const o = d.objekte![nr] as Record<string, unknown>;
+      const ziel = (l.loch === null ? o[l.feld] : (o.loecher as unknown[])[l.loch]) as number[][];
+      f(ziel);
+    });
+  }
+  /** gewählten Knoten löschen bzw. nach ihm einen in der Mitte zur nächsten Ecke einfügen (Tasten Entf / Einfg) */
+  export function knotenTaste(taste: string): boolean {
+    const g = knotenGewaehlt;
+    if (!g || !knotenListen) return false;
+    const l = knotenListen[g.liste];
+    if (!l) return false;
+    if (taste === "Delete" || taste === "Backspace") {
+      if (l.punkte.length <= 2) return true;
+      knotenSchreiben((p) => p.splice(g.punkt, 1), g.liste);
+      knotenGewaehlt = null;
+      return true;
+    }
+    if (taste === "Insert" || taste === "+") {
+      const a = l.punkte[g.punkt], b = l.punkte[(g.punkt + 1) % l.punkte.length];
+      knotenSchreiben((p) => p.splice(g.punkt + 1, 0, [Math.round(((a[0] + b[0]) / 2) * 100) / 100, Math.round(((a[1] + b[1]) / 2) * 100) / 100]), g.liste);
+      knotenGewaehlt = { liste: g.liste, punkt: g.punkt + 1 };
+      return true;
+    }
+    return false;
+  }
 
   /** Bildschirmpunkt → mm (y nach oben) über die Abbildung des SVG */
   function mm(ev: PointerEvent): [number, number] {
@@ -168,6 +224,13 @@
     const griff = ziel?.getAttribute("data-griff");
     const o = ziel?.getAttribute("data-o");
     const p = mm(ev);
+    const knoten = ziel?.getAttribute("data-knoten");
+    if (ev.button === 0 && knoten) {
+      const [l, k] = knoten.split(":").map(Number);
+      knotenZiehen = { liste: l, punkt: k, p };
+      knotenGewaehlt = { liste: l, punkt: k };
+      return;
+    }
     if (ev.button === 0 && arbeit.ansicht !== "abspielen") {
       // Ein-/Ausstich setzen
       if (werkzeug !== "auswahl" && arbeit.auswahl.length === 1) {
@@ -192,6 +255,10 @@
     ziehen = { art: "ansicht", x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false };
   }
   function bewegen(ev: PointerEvent) {
+    if (knotenZiehen && svg) {
+      knotenZiehen = { ...knotenZiehen, p: mm(ev) };
+      return;
+    }
     if (!ziehen || !svg) return;
     if (ziehen.art === "ansicht") {
       const dx = ev.clientX - ziehen.x, dy = ev.clientY - ziehen.y;
@@ -222,6 +289,13 @@
     }
   }
   function hoch(ev: PointerEvent) {
+    if (knotenZiehen) {
+      const k = knotenZiehen;
+      knotenZiehen = null;
+      const r = (v: number) => Math.round(v * 100) / 100;
+      knotenSchreiben((p) => (p[k.punkt] = [r(k.p[0]), r(k.p[1])]), k.liste);
+      return;
+    }
     const war = ziehen;
     ziehen = null;
     if (!war) return;
@@ -350,6 +424,16 @@
     {/if}
   {/if}
 
+  {#if knotenListen && knotenListen.length}
+    {#each knotenListen as l, li (li)}
+      {@const pk = l.punkte.map((q, k) => (knotenZiehen && knotenZiehen.liste === li && knotenZiehen.punkt === k ? knotenZiehen.p : q))}
+      <path d={pk.map(([x, y], k) => `${k ? "L" : "M"}${x} ${-y}`).join("") + (l.feld === "punkte" || l.feld.startsWith("seite") ? "" : "Z")} fill="none" stroke={farben.akzent} stroke-width=".3" stroke-dasharray="1 .6" pointer-events="none" />
+      {#each pk as [x, y], k (k)}
+        {@const an = knotenGewaehlt?.liste === li && knotenGewaehlt.punkt === k}
+        <rect x={x - 1 / Math.sqrt(zoom)} y={-y - 1 / Math.sqrt(zoom)} width={2 / Math.sqrt(zoom)} height={2 / Math.sqrt(zoom)} fill={an ? farben.akzent : farben.griff} stroke={farben.akzent} stroke-width=".35" data-knoten="{li}:{k}" style="cursor:move" />
+      {/each}
+    {/each}
+  {/if}
   {#if zuege.nadel}
     {@const [nx, ny] = zuege.nadel}
     <g stroke={dk ? "#fff" : "#111"} stroke-width=".3" pointer-events="none">
@@ -376,7 +460,7 @@
     {@const my = (Y0 + Y1) / 2}
     <g transform={griffTransform || undefined}>
       <rect x={X0} y={Y0} width={X1 - X0} height={Y1 - Y0} fill="none" stroke={farben.akzent} stroke-width=".35" stroke-dasharray="1.6 1" pointer-events="none" />
-      {#if begrenzungen.length === 1 && arbeit.ansicht !== "abspielen"}
+      {#if begrenzungen.length === 1 && arbeit.ansicht !== "abspielen" && werkzeug !== "knoten"}
         {#each [[X0, Y0], [mx, Y0], [X1, Y0], [X1, my], [X1, Y1], [mx, Y1], [X0, Y1], [X0, my]] as [x, y], j (j)}
           <rect
             x={x - 1.1 / Math.sqrt(zoom)}

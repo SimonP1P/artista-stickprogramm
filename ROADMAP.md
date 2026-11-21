@@ -15,7 +15,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.17 SVG einlesen ✅, 4b.8/4b.11 begonnen, 4b.7–4b.15 offen · Parameterkatalog `PARAMETER.md` (161 Parameter) | 🟡 |
-| 5 Maschine im Programm | serieller Port aus Rust ✅, „Senden“ in der Oberfläche ✅ (Schreiben am Gerät offen), Designs aus der Maschine öffnen ✅, Garnfarbkarten ✅, Mac-Programm | 🟡 |
+| 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (Maschine nur in der Simulation erprobt; am Gerät: Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅) | 🟡 |
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -50,9 +50,13 @@ gegen das Musterdesign `Buttonholes.ART` gemessen; JSON `"art": "knopfloch"`, CL
 `stickprogramm/beispiele/knopfloecher.json`; Bericht `Analyse_Teil3/19`. Offen dort §6 (Merge im Code bestätigen,
 Vernähen je Teil).
 
-**Neue Oberfläche (21.11.):** Entwurf v3 archiviert unter `UI_Mockups/v3_2026-11-21/` (Merkliste M3 ✅) und
-**verbindlich** – die Sperre „App nicht ändern“ ist aufgehoben. Abgleich mit `SCHNITTSTELLE.md` und Etappenplan:
-mit dem Nutzer abstimmen, dann umsetzen (Phase 5).
+**Neue Oberfläche (21.11.) ✅:** Entwurf v3 (`UI_Mockups/v3_2026-11-21/`) in `app/` umgesetzt, Etappen **E0–E6**
+(Tabelle in Phase 5, Stand je Etappe und Bildschirmfotos in `app/README.md`). Gebaut und geprüft auf dem **Mac** (Rust
+dort seit 21.11. in `~/.cargo`, `CARGO_TARGET_DIR=kern/target`); Bildschirmfotos ohne Fenster mit
+`app/werkzeuge/bildschirmfoto.py` (das Terminal darf auf dem Mac keine Bildschirmaufnahme). **Maschine nur in der
+Simulation erprobt** – nächster Gerätetest: Vor Ort **V10** (nach Zustimmung). Offene Kern-Schritte der Oberfläche:
+W9, W5-Rest, W12 (Phase 5). Merkliste M1: Parameterkatalog nach Modus dem Nutzer vorgelegt (21.11.) – wartet auf seine
+Festlegung, was einfach/experte ist.
 
 **Nächster Schritt:** die übrigen Blöcke in Tabellen-Reihenfolge: **4b.7 Motive** (Pattern Run/Fill, Kap. 25), 4b.8
 Effekte … Dabei jeweils CLAUDE.md §4 Regel 7 (Schnittstelle) beachten.
@@ -247,7 +251,9 @@ ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-1
 | E3 | Maschine: Befehle nach `stick-api` (W10: Abbrechen, Wiederholungen, Fehlercodes; Garn von Hand in der Garnfarbtabelle), Senden in 4 Stufen, Sticken-Dialog, Simulation, Fehlerzustände, Anleitung, „Aus der Maschine“ – nur Simulation | ✅ 21.11. (Simulation; am Gerät offen → „Vor Ort“ V10) |
 | E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ✅ 21.11. (Inspektor aus dem Schema des Kerns) |
 | E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ✅ 21.11. ohne W9 – **W9 „Buchstabe je Stich“ verschoben:** braucht im Kern eine Buchstabennummer durch Satz, Aussparen und Säulenreihenfolge der Schrift (eigener Kern-Schritt); bis dahin einzelne Buchstaben über den Reiter JSON (`buchstaben`) |
-| E6 | Formansicht mit Knoten (W5), Dunkel/Mac, ANFORDERUNGEN.md, Parameterkatalog nach Modus vorlegen (M1), „Abgeglichen bis“ | ⬜ |
+| E6 | Formansicht mit Knoten (W5), Dunkel/Mac, ANFORDERUNGEN.md, Parameterkatalog nach Modus vorlegen (M1), „Abgeglichen bis“ | ✅ 21.11. (Knoten für Punktlisten; offen im Kern: W5-Rest „Form/Transformation → Punkte“, W9) |
+
+**Offen nach E6 (Kern-Schritte):** W9 Buchstabe je Stich · W5-Rest: Befehl, der Form und Transformation eines Objekts in Punktlisten umwandelt (dann Knoten für alle Objekte) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –
   verbinden, Liste lesen, Design lesen, Garnfarbbereich, planen, senden; CLI `stick maschine …`; **am Gerät lesend

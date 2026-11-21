@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Maschine in `stick-api` (Etappe E3, W10)
+## 21.11.2026 – Maschine in `stick-api` (Etappe E3, W10, Commit 3a464f6)
 - **Neu:** Befehle `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_abbrechen`,
   `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` über `kern(…)` (vorher eigene Tauri-Befehle der App).
 - **Fehler** haben bei der Maschine `code` (`keine_verbindung`, `stickmodul`, `antwortet_nicht`,
@@ -81,4 +81,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** – (die neue Oberfläche ist noch nicht gebaut; beim ersten Bau den dann aktuellen Commit eintragen)
+**Abgeglichen bis:** `3a464f6` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.

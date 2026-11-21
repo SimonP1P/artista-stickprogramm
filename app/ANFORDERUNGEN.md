@@ -1,9 +1,10 @@
 # Anforderungen an das Programm – Grundlage für die neue Oberfläche (UX/UI)
 
-**Stand: 20.11.2026.** Die Oberfläche wird **komplett neu gestaltet** (Mockup durch Claude Design). Dieses Dokument
-beschreibt, **was** das Programm können muss – nicht, wie es aussieht. Die heutige Oberfläche in `app/src/` ist ein
-funktionaler Prototyp; Aufbau, Anordnung und Optik sind für das neue Design **nicht** bindend. Die Rechenlogik
-(Rust-Kern `kern/`, Tauri-Befehle `app/src-tauri/src/lib.rs`) bleibt und wird bei Bedarf erweitert.
+**Stand: 21.11.2026.** Die Oberfläche ist nach dem Entwurf **v3** (Claude Design, `UI_Mockups/v3_2026-11-21/UEBERGABE.md`)
+neu gebaut (Etappen E0–E6, `ROADMAP.md` Phase 5; Stand und Bildschirmfotos `app/README.md`). Dieses Dokument beschreibt
+weiter, **was** das Programm können muss; **wie** es aussieht, legt der Entwurf v3 fest. Die Antworten auf die offenen
+Fragen (§7) stehen in UEBERGABE §6 und sind umgesetzt. Die Rechenlogik liegt im Rust-Kern `kern/`; die Oberfläche
+ruft ihn über **einen** Tauri-Befehl `kern` auf (§5).
 
 Kennzeichnung: **M** = muss (gibt es schon im Kern/Programm) · **S** = soll (bald) · **P** = geplant (Roadmap
 Phase 4/5, das Design soll Platz dafür vorsehen).
@@ -193,28 +194,13 @@ Kurze Anleitung im Programm, z. B. als Schritt vor/nach dem Senden:
 - Die artista 185 schneidet Verbindungsfäden **nicht** selbst ab → nach dem Sticken von Hand schneiden.
 - Farbstopps: Garn wechseln, wenn die Maschine anhält (Farbliste mit Garnnamen anzeigen).
 
-## 5. Was der Rechenkern heute liefert (Tauri-Befehle)
-Alle in `app/src-tauri/src/lib.rs`, Typen in `app/src/lib/typen.ts`. Erweiterbar, wenn das Design mehr braucht.
-
-| Befehl | Eingabe | Ausgabe |
-|---|---|---|
-| `rahmen_liste` | – | Rahmen: Name, Breite, Höhe, Umriss (Polygon), Hinweis |
-| `stoffe_liste` | – | Namen der Stoffe |
-| `alphabete_liste` | – | Alphabete: Name, Datei |
-| `garnkarten_liste` | – | Namen der Garnkarten |
-| `beispiel_design` | – | Design-JSON |
-| `design_berechnen` | Design-JSON | Ergebnis: Name, Rahmen, Stoff, **Stiche** (x, y, Art Stich/Sprung/Farbwechsel), Farben, **Garne je Farbe**, Statistik, Zahl außerhalb, fehlende Zeichen |
-| `datei_lesen` / `text_speichern` / `exp_speichern` | Pfad (+ Text/JSON) | Text bzw. Byte-Zahl |
-| `maschine_ports` | – | COM-Ports |
-| `maschine_pruefen` | Port, Simulation | Sitzung (Firmware, Baud, PC-Modus verlassen, Mitschnitt) + Garnfarbbereich der Maschine |
-| `maschine_planen` | Design, Port, Simulation, Wahl (Icon, Farben, Sticken) | geplante Schreibzugriffe, Hinweise, Garnfarbbereich |
-| `maschine_senden` | wie planen | Ergebnisliste, gestickt ja/nein; **Fortschritt als Ereignis** `maschine_fortschritt` (was, erledigt, gesamt) |
-| `maschine_liste` | Port, Simulation | Designs der Maschine: Nr., Name, Flags |
-| `maschine_lesen` | Port, Simulation, Nr. | Ergebnis wie `design_berechnen` + Garne der Maschine |
-| `gelesen_exp_speichern` | Pfad | Byte-Zahl |
-
-Weitere vorhandene Daten für das Design: Icons der Maschine (72 × 62 Punkte, aus den Stichen gezeichnet),
-Garnfarben aller Karten (RGB), Rahmenformen, empfohlene Alphabet-Höhen (`Analyse/daten/alphabets.md`).
+## 5. Was der Rechenkern liefert
+**Maßgeblich ist `SCHNITTSTELLE.md`** (aus dem Code erzeugt, immer aktuell): alle Felder des Design-JSON und alle
+Befehle mit Ein-/Ausgabe – auch die Maschinen-Befehle (`maschine_*`, seit E3 in `kern/stick-api`) und das Ereignis
+`maschine_fortschritt`. Die Oberfläche ruft sie über `kern(name, eingabe)` aus `kern/schnittstelle/kern.ts` auf
+(TypeScript-Typen, per Alias `$kern` eingebunden). Was jede Funktion für den Anwender bedeutet und in welchem Modus sie
+erscheint: `UI_Mockups/FUNKTIONEN.md`; jeder einstellbare Wert: `PARAMETER.md`; was sich für die Oberfläche geändert
+hat: `UI_Mockups/AENDERUNGEN.md`.
 
 ## 6. Nicht-funktionale Anforderungen
 - **Sprache Deutsch**, Maße in **mm** mit Komma (deutsches Zahlenformat).
@@ -225,7 +211,7 @@ Garnfarben aller Karten (RGB), Rahmenformen, empfohlene Alphabet-Höhen (`Analys
   (Garnfarben immer mit Namen/Nummer).
 - Die Stickvorschau ist das Herzstück und braucht die größte Fläche.
 
-## 7. Offene Fragen für das Design
+## 7. Offene Fragen für das Design (beantwortet: UEBERGABE §6, umgesetzt in E1–E5)
 1. Ein Fenster mit Bereichen oder geführter Ablauf (Schritte 1–4) – oder beides (Assistent für Einsteiger, freie
    Ansicht für Fortgeschrittene)?
 2. Wo leben Objektliste, Eigenschaften und Garnliste (Seitenleisten, Paletten, Inspektor)?

@@ -32,7 +32,8 @@
   let raster = $state(true);
   let zoom = $state(1);
   let vorschau: Vorschau | undefined = $state();
-  let werkzeug = $state<"auswahl" | "einstich" | "ausstich">("auswahl");
+  type Werkzeug = "auswahl" | "einstich" | "ausstich" | "knoten";
+  let werkzeug = $state<Werkzeug>((globalThis as { __START__?: { werkzeug?: Werkzeug } }).__START__?.werkzeug ?? "auswahl");
 
   // Abspielen: Stickfolge Stich für Stich (nur Darstellung, keine Maschinen-Simulation)
   let bis = $state(0);
@@ -88,6 +89,8 @@
     "-",
     { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
     { l: "Designs aus der Maschine …", go: () => maschine.listeOeffnen() },
+    "-",
+    { l: "Darstellung hell/dunkel umschalten", go: () => (arbeit.dunkel = !arbeit.dunkel) },
   ];
 
   /** Garn des Farbblocks, mit dem ein Objekt beginnt (Anzeige „jetzt: …“) */
@@ -178,6 +181,7 @@
       return;
     }
     if (arbeit.modus === "experte" && !eingabe) {
+      if (werkzeug === "knoten" && vorschau?.knotenTaste(ev.key)) return ev.preventDefault();
       if ((ev.key === "Delete" || ev.key === "Backspace") && arbeit.auswahl.length) return (ev.preventDefault(), arbeit.loeschen());
       if (ev.altKey && (ev.key === "ArrowUp" || ev.key === "ArrowDown")) {
         const m = anordnenMenue[ev.key === "ArrowUp" ? 2 : 3];
@@ -397,6 +401,7 @@
         {#if arbeit.modus === "experte"}
           <div class="rail" role="toolbar" aria-label="Werkzeuge" aria-orientation="vertical">
             <button class="tb" aria-pressed={werkzeug === "auswahl"} aria-label="Auswählen und Griffe" title="Auswählen, ziehen, Griffe (skalieren, drehen)" onclick={() => (werkzeug = "auswahl")}><Icon d={IC.zeiger} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "knoten"} disabled={arbeit.auswahl.length !== 1} aria-label="Knoten bearbeiten" title="Knoten bearbeiten (ziehen; Entf löscht, Einfg fügt ein)" onclick={() => ((werkzeug = "knoten"), (arbeit.ansicht = "form"))}><Icon d={IC.knoten} groesse="l" /></button>
             <button class="tb" aria-pressed={werkzeug === "einstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Einstich setzen" title="Einstich des gewählten Objekts setzen" onclick={() => (werkzeug = "einstich")}><Icon d={IC.einaus} groesse="l" /></button>
             <button class="tb" aria-pressed={werkzeug === "ausstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Ausstich setzen" title="Ausstich des gewählten Objekts setzen" onclick={() => (werkzeug = "ausstich")} style="transform:scaleX(-1)"><Icon d={IC.einaus} groesse="l" /></button>
             <span class="sep"></span>
@@ -410,7 +415,12 @@
         {/if}
         <div class="stage">
           <Vorschau bind:this={vorschau} bind:zoom bind:werkzeug {spruenge} {einstiche} {raster} bis={arbeit.ansicht === "abspielen" ? bis : null} />
-          {#if werkzeug !== "auswahl"}
+          {#if werkzeug === "knoten"}
+            <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px; max-width:520px">
+              <b style="font-weight:500">Knoten</b> – Punkte ziehen · gewählten Punkt mit Entf löschen, mit Einfg (oder +) dahinter einen einfügen · Esc beendet.
+              Formen wie Kreis/Rechteck und Objekte mit Größe/Drehung: Werte im Inspektor bzw. JSON (Umwandeln in Punkte kommt noch).
+            </div>
+          {:else if werkzeug !== "auswahl"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px">
               <b style="font-weight:500">{werkzeug === "einstich" ? "Einstich" : "Ausstich"} setzen</b> – in die Vorschau klicken (Esc bricht ab)
             </div>

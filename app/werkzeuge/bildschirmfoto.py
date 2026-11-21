@@ -68,6 +68,7 @@ def main():
     a.add_argument("--ansicht")
     a.add_argument("--schritt", type=int)
     a.add_argument("--reiter", choices=["objekt", "design", "einzelwerte", "json"])
+    a.add_argument("--werkzeug", choices=["auswahl", "einstich", "ausstich", "knoten"])
     a.add_argument("--maschine", choices=["anschluss", "plan", "fertig", "sticken", "liste"],
                    help="Maschinen-Ablauf mit der Simulation bis zu dieser Stufe")
     a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
@@ -123,6 +124,8 @@ def main():
         start["schritt"] = o.schritt
     if o.reiter:
         start["reiter"] = o.reiter
+    if o.werkzeug:
+        start["werkzeug"] = o.werkzeug
     if o.maschine:
         start["maschine"] = o.maschine
     if o.dialog:
