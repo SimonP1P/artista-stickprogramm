@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-9e5505de-eae7-4188-b8df-5ce3df1e30b6/styles.css">
+<script src="_ds/industry-9e5505de-eae7-4188-b8df-5ce3df1e30b6/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<style>html,body{margin:0;height:100%}body{overflow:hidden}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent)}input[type=range]{accent-color:var(--color-accent)}i.corner{position:absolute}input[type=checkbox]{accent-color:var(--color-accent);width:16px;height:16px;margin:0}</style>
+</helmet>
+<div style="height:100vh; min-width:900px; display:flex; flex-direction:column; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:14px; line-height:1.45">
+
+  <header class="nav" style="flex:none; display:flex; align-items:center; gap:16px; padding:10px 18px; border-bottom:1px solid var(--color-divider)">
+    <div style="display:flex; flex-direction:column; line-height:1.1; flex:none">
+      <span class="nav-brand" style="font-size:19px; margin:0; white-space:nowrap">Artista Stickprogramm</span>
+      <span style="font-size:11px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">BERNINA artista 185</span>
+    </div>
+    <button class="btn btn-ghost" onClick="{{ goProjekte }}" style="gap:6px; flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path></svg>Projekte</button>
+    <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:140px; overflow:hidden">
+      <input class="input" style="width:100%; max-width:220px; flex:1 1 auto; min-width:120px; min-height:32px; padding-top:4px; padding-bottom:4px" value="{{ d.name }}" onChange="{{ onName }}">
+      <sc-if value="{{ showKunde }}" hint-placeholder-val="{{ true }}"><span class="tag tag-neutral" style="white-space:nowrap; min-width:0; overflow:hidden"><span style="overflow:hidden; text-overflow:ellipsis">Kunde: {{ d.kunde }} · {{ d.stueck }} Stück</span></span></sc-if>
+    </div>
+    <div class="seg" style="flex:none">
+      <label class="seg-opt"><input type="radio" name="mode" checked="{{ isWizard }}" onChange="{{ setEinfach }}">Einfach</label>
+      <label class="seg-opt"><input type="radio" name="mode" checked="{{ isWork }}" onChange="{{ setErweitert }}">Erweitert</label>
+    </div>
+    <span class="tag tag-accent" title="{{ machineLabel }}" style="display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex:none"><span style="width:7px; height:7px; border-radius:50%; background:{{ machineDot }}"></span><span>{{ machineShort }}</span></span>
+    <button class="btn btn-secondary" onClick="{{ save }}" style="flex:none">Speichern</button>
+    <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
+      <button class="btn btn-primary blueprint" onClick="{{ goSenden }}" style="gap:8px; flex:none"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"></path></svg>Senden</button>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ showStepper }}" hint-placeholder-val="{{ true }}">
+    <nav style="flex:none; display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); border-bottom:1px solid var(--color-divider)">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <button onClick="{{ s.go }}" style="display:flex; align-items:center; gap:10px; padding:12px 16px; background:transparent; border:0; border-bottom:3px solid {{ s.bar }}; margin-bottom:-1px; cursor:pointer; font:inherit; color:{{ s.fg }}; text-align:left; min-width:0">
+          <span style="flex:none; width:24px; height:24px; display:grid; place-items:center; border:1px solid {{ s.ring }}; background:{{ s.numBg }}; color:{{ s.numFg }}; font-size:12px; font-variant-numeric:tabular-nums">{{ s.mark }}</span>
+          <span style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ s.label }}</span>
+        </button>
+      </sc-for>
+    </nav>
+  </sc-if>
+
+  <div style="flex:1; min-height:0; display:flex; position:relative">
+
+    <aside style="flex:none; width:{{ panelW }}; overflow:auto; border-right:1px solid var(--color-divider); padding:18px 20px 40px">
+      <sc-if value="{{ scr.gestalten }}" hint-placeholder-val="{{ true }}">
+        <sc-if value="{{ isWizard }}" hint-placeholder-val="{{ true }}">
+          <h2 style="font-size:26px; margin:0 0 4px">Was möchtest du sticken?</h2>
+          <p style="margin:0 0 16px; color:color-mix(in srgb, var(--color-text) 70%, transparent)">Einfügen, dann auf der Fläche verschieben, an den Ecken größer ziehen und Flächen anklicken, um Farbe und Stichart zu ändern.</p>
+        </sc-if>
+        <div class="seg" style="display:flex; margin-bottom:16px">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3"><label class="seg-opt" style="flex:1; padding-left:8px; padding-right:8px"><input type="radio" name="tab" checked="{{ t.on }}" onChange="{{ t.pick }}">{{ t.label }}</label></sc-for>
+        </div>
+
+        <sc-if value="{{ tab.ebenen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; border:1px solid var(--color-divider)">
+            <sc-for list="{{ layers }}" as="l" hint-placeholder-count="2">
+              <div style="border-bottom:1px solid var(--color-divider)">
+                <div style="display:flex; align-items:center; background:{{ l.bg }}; border-left:3px solid {{ l.bar }}">
+                  <button onClick="{{ l.pick }}" style="flex:1; min-width:0; display:flex; align-items:center; gap:8px; padding:8px 10px; border:0; background:transparent; color:inherit; font:inherit; text-align:left; cursor:pointer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="flex:none"><path d="{{ l.icon }}"></path></svg>
+                    <span style="flex:1; font-size:13.5px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ l.name }}</span>
+                    <span style="font-size:11.5px; font-variant-numeric:tabular-nums; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ l.size }}</span>
+                  </button>
+                  <button class="btn btn-icon btn-ghost" title="Löschen" onClick="{{ l.del }}" style="width:28px; height:28px; margin-right:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"></path></svg></button>
+                </div>
+                <sc-for list="{{ l.areas }}" as="a" hint-placeholder-count="2">
+                  <button onClick="{{ a.pick }}" style="width:100%; display:flex; align-items:center; gap:8px; padding:5px 10px 5px 36px; border:0; border-left:3px solid {{ a.bar }}; background:{{ a.bg }}; color:inherit; font:inherit; text-align:left; cursor:pointer">
+                    <span style="flex:none; width:14px; height:14px; border-radius:50%; background:{{ a.hex }}; border:1px solid var(--color-divider)"></span>
+                    <span style="flex:1; font-size:12.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ a.title }}</span>
+                    <span style="font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ a.st }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:10px 0 0; font-size:12px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">Objekt oder Fläche anklicken – rechts erscheinen ihre Parameter.</p>
+        </sc-if>
+
+        <sc-if value="{{ tab.bibliothek }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px">
+            <div style="position:relative">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="position:absolute; left:11px; top:10px; opacity:.55"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3"></path></svg>
+              <input class="input" placeholder="Motiv suchen, z. B. Herz" value="{{ suche }}" onChange="{{ onSuche }}" style="padding-left:34px">
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px">
+              <sc-for list="{{ kats }}" as="k" hint-placeholder-count="6"><button class="{{ k.cls }}" onClick="{{ k.pick }}" style="cursor:pointer; font:inherit; font-size:12px">{{ k.label }}</button></sc-for>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(104px, 1fr)); gap:14px">
+            <sc-for list="{{ motifs }}" as="m" hint-placeholder-count="8">
+              <button class="blueprint" onClick="{{ m.pick }}" title="Einfügen" style="display:flex; flex-direction:column; gap:8px; padding:8px; background:transparent; border:1px solid var(--color-divider); cursor:pointer; text-align:left; font:inherit; color:inherit">
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                <canvas data-th="{{ m.key }}" data-fab="#f3efe6" style="width:100%; aspect-ratio:1; display:block"></canvas>
+                <span style="display:flex; flex-direction:column; gap:1px; padding:0 2px 2px">
+                  <span style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px">{{ m.name }}</span>
+                  <span style="font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ m.meta }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ tab.bild }}" hint-placeholder-val="{{ false }}">
+          <div style="height:180px; position:relative; margin-bottom:16px"><image-slot id="logo-import" shape="rect" fit="contain" placeholder="Logo oder Bild hierher ziehen (PNG, JPG, SVG)"></image-slot></div>
+          <div style="display:flex; flex-direction:column; gap:16px">
+            <div class="field">
+              <label>Farben reduzieren auf {{ imp.n }}</label>
+              <input type="range" min="2" max="6" value="{{ imp.n }}" onChange="{{ onImpN }}" style="width:100%">
+            </div>
+            <label style="display:flex; gap:8px; align-items:center; cursor:pointer"><input type="checkbox" checked="{{ imp.bg }}" onChange="{{ onImpBg }}">Hintergrund entfernen</label>
+            <div class="field">
+              <label>Garne automatisch gewählt</label>
+              <div style="display:flex; flex-direction:column; border:1px solid var(--color-divider)">
+                <sc-for list="{{ impRows }}" as="r" hint-placeholder-count="3">
+                  <div style="display:flex; align-items:center; gap:8px; padding:8px 10px; border-bottom:1px solid var(--color-divider)">
+                    <span title="Farbe im Bild" style="width:16px; height:16px; flex:none; background:{{ r.src }}; border:1px solid var(--color-divider)"></span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="flex:none; opacity:.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                    <span style="width:20px; height:20px; flex:none; border-radius:50%; background:{{ r.hex }}; border:1px solid var(--color-divider)"></span>
+                    <span style="flex:1; font-size:12.5px; font-variant-numeric:tabular-nums">{{ r.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block blueprint" onClick="{{ digitalisieren }}"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Digitalisieren und einfügen</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ tab.text }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:16px">
+            <div class="field">
+              <label>{{ txLabel }}</label>
+              <input class="input" value="{{ tx.text }}" onChange="{{ onTxText }}" placeholder="Text eingeben" style="font-size:18px; min-height:44px">
+            </div>
+            <div class="field">
+              <label>Schrift</label>
+              <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:8px">
+                <sc-for list="{{ schriften }}" as="f" hint-placeholder-count="8">
+                  <button onClick="{{ f.pick }}" style="display:flex; flex-direction:column; gap:2px; padding:9px 11px; text-align:left; cursor:pointer; color:inherit; background:{{ f.bg }}; border:1px solid {{ f.bc }}">
+                    <span style="font:{{ f.preview }}; line-height:1.15; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ f.sample }}</span>
+                    <span style="font-family:var(--font-body); font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ f.name }} · ab {{ f.min }} mm</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+            <button class="btn btn-primary blueprint" onClick="{{ insertText }}" style="align-self:flex-start"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>{{ insertLabel }}</button>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ scr.rahmen }}" hint-placeholder-val="{{ false }}">
+        <h2 style="font-size:26px; margin:0 0 4px">Rahmen wählen</h2>
+        <p style="margin:0; color:color-mix(in srgb, var(--color-text) 70%, transparent)">Nimm den kleinsten Rahmen, in den dein Design passt. Rechts kannst du das ganze Design an den Ecken größer oder kleiner ziehen.</p>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:12px 0 16px">
+          <span class="tag tag-outline"><span>Dein Design: {{ designSize }}</span></span>
+          <label style="display:flex; gap:8px; align-items:center; cursor:pointer; font-size:13px"><input type="checkbox" checked="{{ d.gedreht }}" onChange="{{ onGedreht }}">Quer einspannen</label>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:12px">
+          <sc-for list="{{ hoops }}" as="h" hint-placeholder-count="6">
+            <button class="blueprint" onClick="{{ h.pick }}" style="display:flex; flex-direction:column; gap:10px; padding:12px; text-align:left; cursor:pointer; color:inherit; font:inherit; background:{{ h.bg }}; border:1px solid {{ h.bc }}; opacity:{{ h.op }}">
+              <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+              <span style="height:80px; display:grid; place-items:center">
+                <span style="width:{{ h.sw }}; height:{{ h.sh }}; border:3px solid var(--color-neutral-400); border-radius:{{ h.rad }}; display:grid; place-items:center">
+                  <span style="width:{{ h.dw }}; height:{{ h.dh }}; border:1.5px dashed {{ h.dc }}"></span>
+                </span>
+              </span>
+              <span style="display:flex; flex-direction:column; gap:2px">
+                <span style="display:flex; gap:6px; align-items:center; justify-content:space-between">
+                  <span style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px">{{ h.name }}</span>
+                  <sc-if value="{{ h.rec }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent">Empfohlen</span></sc-if>
+                  <sc-if value="{{ h.small }}" hint-placeholder-val="{{ false }}"><span class="tag tag-neutral">zu klein</span></sc-if>
+                </span>
+                <span style="font-size:12px; font-variant-numeric:tabular-nums">Stickfeld {{ h.dims }}</span>
+                <span style="font-size:12px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ h.use }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px">
+          <button class="btn btn-primary blueprint" onClick="{{ fitHoop }}"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Ins Stickfeld einpassen</button>
+          <button class="btn btn-secondary" onClick="{{ centerAll }}">Zentrieren</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ scr.stoff }}" hint-placeholder-val="{{ false }}">
+        <h2 style="font-size:26px; margin:0 0 4px">Worauf stickst du?</h2>
+        <p style="margin:0 0 14px; color:color-mix(in srgb, var(--color-text) 70%, transparent)">Der Stoff bestimmt Stichdichte, Unterlage und Zugausgleich. Im Zweifel „Standard“.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:8px">
+          <sc-for list="{{ stoffe }}" as="s" hint-placeholder-count="9">
+            <button onClick="{{ s.pick }}" style="display:flex; gap:10px; align-items:flex-start; padding:10px; text-align:left; cursor:pointer; color:inherit; font:inherit; background:{{ s.bg }}; border:1px solid {{ s.bc }}">
+              <span style="flex:none; width:30px; height:30px; background:{{ s.farbe }}; border:1px solid var(--color-divider)"></span>
+              <span style="display:flex; flex-direction:column; gap:1px; min-width:0">
+                <span style="font-size:13.5px; font-weight:500">{{ s.name }}</span>
+                <span style="font-size:12px; color:color-mix(in srgb, var(--color-text) 65%, transparent)">z. B. {{ s.bsp }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+        <p style="margin:14px 0 0; font-size:12.5px; color:color-mix(in srgb, var(--color-text) 65%, transparent)">Tipp (eigene Empfehlung, nicht aus dem Original): {{ vliesTipp }}</p>
+      </sc-if>
+
+      <sc-if value="{{ scr.vorschau }}" hint-placeholder-val="{{ false }}">
+        <h2 style="font-size:26px; margin:0 0 4px">Vorschau &amp; Reihenfolge</h2>
+        <p style="margin:0 0 6px; color:color-mix(in srgb, var(--color-text) 70%, transparent)">So stickt die Maschine. Farben in der Liste an den Griffen verschieben, um die Reihenfolge zu ändern.</p>
+        <div style="display:flex; align-items:center; gap:10px; margin:12px 0 8px">
+          <button class="btn btn-icon btn-primary blueprint" onClick="{{ togglePlay }}" title="Abspielen"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="{{ playIcon }}"></path></svg></button>
+          <button class="btn btn-icon btn-secondary" onClick="{{ simStart }}" title="Zum Anfang"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M19 20 9 12l10-8v16ZM5 19V5"></path></svg></button>
+          <input type="range" min="0" max="1000" value="{{ simVal }}" onChange="{{ onSim }}" style="flex:1">
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px">
+          <span style="font-size:13px; font-variant-numeric:tabular-nums; white-space:nowrap">Stich {{ simNow }} von {{ statStiche }}</span>
+          <div class="seg">
+            <sc-for list="{{ speedOpts }}" as="o" hint-placeholder-count="3"><label class="seg-opt" style="padding:4px 10px; font-size:12px"><input type="radio" name="speed" checked="{{ o.on }}" onChange="{{ o.pick }}">{{ o.label }}</label></sc-for>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; border:1px solid var(--color-divider)">
+          <sc-for list="{{ seq }}" as="g" hint-placeholder-count="4">
+            <div draggable="true" onDragStart="{{ g.dstart }}" onDragOver="{{ g.dover }}" onDrop="{{ g.drop }}" onDragEnd="{{ g.dend }}" style="display:flex; flex-direction:column; gap:5px; padding:8px 10px; border-bottom:1px solid var(--color-divider); border-top:2px solid {{ g.dropLine }}; background:var(--color-bg); cursor:grab">
+              <div style="display:flex; align-items:center; gap:10px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="flex:none; opacity:.5"><path d="M9 5h.01M9 12h.01M9 19h.01M15 5h.01M15 12h.01M15 19h.01"></path></svg>
+                <span style="width:16px; font-size:12px; text-align:right; font-variant-numeric:tabular-nums; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ g.n }}</span>
+                <span style="flex:none; width:22px; height:22px; border-radius:50%; background:{{ g.hex }}; border:1px solid var(--color-divider)"></span>
+                <span style="flex:1; min-width:0; display:flex; flex-direction:column">
+                  <span style="font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-variant-numeric:tabular-nums">{{ g.label }}</span>
+                  <span style="font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent); font-variant-numeric:tabular-nums">{{ g.sub }}</span>
+                </span>
+                <sc-if value="{{ g.same }}" hint-placeholder-val="{{ false }}"><span class="tag tag-neutral">kein Wechsel</span></sc-if>
+              </div>
+              <div style="height:3px; margin-left:24px; background:var(--color-divider)"><div style="height:3px; width:{{ g.pct }}; background:var(--color-accent)"></div></div>
+            </div>
+          </sc-for>
+        </div>
+        <label style="display:flex; gap:8px; align-items:center; cursor:pointer; margin-top:12px; font-size:13px"><input type="checkbox" checked="{{ d.merge }}" onChange="{{ onMerge }}">Gleiche Farben ohne Garnwechsel (nur wenn nichts dazwischen überlappt)</label>
+        <p style="margin:6px 0 14px; font-size:12.5px; color:color-mix(in srgb, var(--color-text) 65%, transparent)">Was später gestickt wird, liegt oben.</p>
+        <table class="table" style="font-variant-numeric:tabular-nums">
+          <tbody>
+            <tr><td>Stiche</td><td style="text-align:right">{{ statStiche }}</td></tr>
+            <tr><td>Garnwechsel</td><td style="text-align:right">{{ statWechsel }}</td></tr>
+            <tr><td>Größe</td><td style="text-align:right">{{ designSize }}</td></tr>
+            <tr><td>Stickzeit (Schätzung)</td><td style="text-align:right">{{ statZeit }}</td></tr>
+          </tbody>
+        </table>
+      </sc-if>
+
+      <sc-if value="{{ scr.senden }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}"><button class="btn btn-ghost" onClick="{{ backToWork }}" style="margin:-6px 0 10px -4px; gap:4px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m15 18-6-6 6-6"></path></svg>Zurück zum Bearbeiten</button></sc-if>
+        <h2 style="font-size:24px; margin:0 0 14px">An die Maschine senden</h2>
+        <div class="card blueprint" style="margin-bottom:18px; gap:10px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex; align-items:center; gap:12px">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="flex:none"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path></svg>
+            <div style="flex:1">
+              <div class="card-title">BERNINA artista 185</div>
+              <div style="font-size:12px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ portInfo }}</div>
+            </div>
+            <select class="input" value="{{ send.port }}" onChange="{{ onPort }}" style="width:auto; min-height:32px; padding-top:3px; padding-bottom:3px">
+              <option value="COM3">COM3</option>
+              <option value="Simulation">Simulation</option>
+            </select>
+          </div>
+        </div>
+        <sc-if value="{{ sendIdle }}" hint-placeholder-val="{{ true }}">
+          <div class="field" style="margin-bottom:16px">
+            <label>Kurz prüfen</label>
+            <div style="display:flex; flex-direction:column; gap:9px">
+              <sc-for list="{{ checks }}" as="c" hint-placeholder-count="3"><label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer; font-size:13.5px"><input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="margin-top:2px">{{ c.label }}</label></sc-for>
+            </div>
+          </div>
+          <label style="display:flex; gap:10px; align-items:center; cursor:pointer; margin-bottom:16px; font-size:13.5px"><input type="checkbox" checked="{{ send.sticken }}" onChange="{{ tSticken }}">Danach sofort sticken (Rahmen fährt los)</label>
+          <sc-if value="{{ notFits }}" hint-placeholder-val="{{ false }}"><p style="margin:0 0 12px; font-size:13px; color:var(--color-accent-800)">{{ fitText }} – erst einpassen.</p></sc-if>
+          <button class="btn btn-primary btn-block blueprint" disabled="{{ sendDisabled }}" onClick="{{ startSend }}" style="min-height:44px; font-size:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Senden</button>
+        </sc-if>
+        <sc-if value="{{ sendBusy }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:18px">
+            <sc-for list="{{ phases }}" as="p" hint-placeholder-count="3">
+              <div style="display:flex; flex-direction:column; gap:6px">
+                <div style="display:flex; align-items:center; gap:10px; font-size:13.5px; color:{{ p.fg }}">
+                  <span style="flex:none; width:20px; height:20px; display:grid; place-items:center; border-radius:50%; border:1px solid {{ p.ring }}; color:var(--color-accent)">
+                    <sc-if value="{{ p.done }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+                    <sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}"><span style="width:8px; height:8px; border-radius:50%; background:var(--color-accent)"></span></sc-if>
+                  </span>
+                  <span style="flex:1">{{ p.label }}</span>
+                  <span style="font-size:12px; font-variant-numeric:tabular-nums">{{ p.info }}</span>
+                </div>
+                <sc-if value="{{ p.bar }}" hint-placeholder-val="{{ false }}"><div style="height:4px; margin-left:30px; background:var(--color-divider)"><div style="height:4px; width:{{ p.pct }}; background:var(--color-accent)"></div></div></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ sendDone }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:12px 14px; margin-bottom:18px; border:1px solid var(--color-accent); display:flex; flex-direction:column; gap:4px">
+            <strong style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:18px">{{ doneTitle }}</strong>
+            <span style="font-size:13px">Bei jedem Farbwechsel hält die Maschine an – Haken setzen, wenn eine Farbe fertig ist.</span>
+          </div>
+          <div style="display:flex; flex-direction:column; border:1px solid var(--color-divider)">
+            <sc-for list="{{ stops }}" as="s" hint-placeholder-count="4">
+              <label style="display:flex; align-items:center; gap:10px; padding:9px 10px; border-bottom:1px solid var(--color-divider); cursor:pointer; background:{{ s.bg }}; border-left:3px solid {{ s.bar }}">
+                <input type="checkbox" checked="{{ s.done }}" onChange="{{ s.toggle }}">
+                <span style="width:20px; height:20px; border-radius:50%; background:{{ s.hex }}; border:1px solid var(--color-divider)"></span>
+                <span style="flex:1; display:flex; flex-direction:column">
+                  <span style="font-size:13.5px; font-variant-numeric:tabular-nums">{{ s.label }}</span>
+                  <span style="font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ s.sub }}</span>
+                </span>
+                <sc-if value="{{ s.cur }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent">Jetzt</span></sc-if>
+              </label>
+            </sc-for>
+          </div>
+          <button class="btn btn-secondary" onClick="{{ resetSend }}" style="margin-top:14px">Nochmal senden</button>
+        </sc-if>
+      </sc-if>
+    </aside>
+
+    <main style="flex:1; min-width:0; display:flex; flex-direction:column">
+      <sc-if value="{{ showToolbar }}" hint-placeholder-val="{{ true }}">
+        <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:none; display:flex; align-items:center; gap:10px; padding:6px 10px; border-bottom:1px solid var(--color-divider); overflow:hidden; white-space:nowrap">
+            <div class="seg" style="flex:none">
+              <sc-for list="{{ vmodes }}" as="v" hint-placeholder-count="3"><label class="seg-opt" style="padding:4px 10px; font-size:12.5px"><input type="radio" name="vmode" checked="{{ v.on }}" onChange="{{ v.pick }}">{{ v.label }}</label></sc-for>
+            </div>
+            <label style="flex:none; display:flex; gap:6px; align-items:center; cursor:pointer; font-size:12.5px"><input type="checkbox" checked="{{ showHoop }}" onChange="{{ tHoop }}">Rahmen</label>
+            <sc-if value="{{ isSim }}" hint-placeholder-val="{{ false }}">
+              <button class="btn btn-icon btn-secondary" onClick="{{ togglePlay }}" title="Abspielen" style="width:30px; height:30px; flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="{{ playIcon }}"></path></svg></button>
+              <input type="range" min="0" max="1000" value="{{ simVal }}" onChange="{{ onSim }}" style="flex:1 1 120px; min-width:60px">
+              <span style="flex:none; font-size:12px; font-variant-numeric:tabular-nums; white-space:nowrap">{{ simNow }} / {{ statStiche }}</span>
+            </sc-if>
+          </div>
+          </sc-if>
+          <div style="flex:none; display:flex; align-items:center; gap:10px; padding:6px 10px; border-bottom:1px solid var(--color-divider); overflow:hidden; white-space:nowrap">
+          <span style="flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; font-size:12px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ canvasInfo }}</span>
+          <sc-if value="{{ showFit }}" hint-placeholder-val="{{ false }}"><span class="{{ fitCls }}" style="flex:none; white-space:nowrap">{{ fitText }}</span></sc-if>
+          <div style="flex:none; display:flex; align-items:center; border:1px solid var(--color-divider)">
+            <button class="btn btn-icon btn-ghost" onClick="{{ zoomOut }}" title="Verkleinern" style="width:30px; height:30px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M5 12h14"></path></svg></button>
+            <span style="min-width:46px; text-align:center; font-size:12.5px; font-variant-numeric:tabular-nums">{{ zoomPct }}</span>
+            <button class="btn btn-icon btn-ghost" onClick="{{ zoomIn }}" title="Vergrößern" style="width:30px; height:30px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></button>
+          </div>
+          <button class="btn btn-secondary" onClick="{{ zoomFit }}" style="flex:none; padding:4px 10px; font-size:12.5px; gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"></path></svg>Einpassen</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasHelp }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:none; display:flex; flex-wrap:wrap; gap:2px 14px; padding:5px 12px; border-bottom:1px solid var(--color-divider); font-size:12px; color:color-mix(in srgb, var(--color-text) 75%, transparent)">
+          <sc-for list="{{ helpItems }}" as="h" hint-placeholder-count="4"><span style="white-space:nowrap"><strong>{{ h.k }}</strong> {{ h.v }}</span></sc-for>
+        </div>
+      </sc-if>
+      <div ref="{{ wrapRef }}" style="flex:1; min-height:0; position:relative; background:var(--color-surface); overflow:hidden">
+        <canvas ref="{{ cvRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onHover }}" style="position:absolute; inset:0; width:100%; height:100%; touch-action:none"></canvas>
+      </div>
+      <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none; display:flex; align-items:center; gap:12px; padding:8px 14px; border-top:1px solid var(--color-divider); overflow:hidden">
+          <span style="flex:none; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 60%, transparent)">Reihenfolge</span>
+          <div style="display:flex; gap:6px; flex:1 1 160px; min-width:120px; overflow-x:auto; scrollbar-width:none">
+            <sc-for list="{{ seq }}" as="g" hint-placeholder-count="4"><span draggable="true" onDragStart="{{ g.dstart }}" onDragOver="{{ g.dover }}" onDrop="{{ g.drop }}" onDragEnd="{{ g.dend }}" title="{{ g.label }} – ziehen zum Umsortieren" style="display:inline-flex; align-items:center; gap:6px; padding:3px 9px 3px 4px; border:1px solid var(--color-divider); border-left:2px solid {{ g.dropLine }}; border-radius:999px; font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; cursor:grab; background:var(--color-bg)"><span style="width:16px; height:16px; border-radius:50%; background:{{ g.hex }}; border:1px solid var(--color-divider)"></span>{{ g.n }}</span></sc-for>
+          </div>
+          <span style="flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; font-size:12.5px; font-variant-numeric:tabular-nums; white-space:nowrap">{{ statWechsel }} Garnwechsel · {{ statZeit }}</span>
+        </div>
+      </sc-if>
+    </main>
+
+    <sc-if value="{{ showInspector }}" hint-placeholder-val="{{ true }}">
+      <aside style="flex:none; width:min(290px, 30vw); min-width:240px; overflow:auto; border-left:1px solid var(--color-divider); padding:16px 16px 40px">
+        <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="flex:none"><path d="{{ selIcon }}"></path></svg>
+            <h3 style="flex:1; font-size:19px; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ selName }}</h3>
+            <button class="btn btn-icon btn-ghost" title="Duplizieren" onClick="{{ dup }}" style="width:30px; height:30px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M8 8h12v12H8zM4 16V4h12"></path></svg></button>
+            <button class="btn btn-icon btn-ghost" title="Löschen" onClick="{{ delSel }}" style="width:30px; height:30px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"></path></svg></button>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px">
+            <div class="field">
+              <label>Flächen – anklicken für Farbe</label>
+              <div style="display:flex; flex-direction:column; border:1px solid var(--color-divider)">
+                <sc-for list="{{ areas }}" as="a" hint-placeholder-count="3">
+                  <div style="display:flex; flex-direction:column; gap:6px; padding:7px 9px; border-bottom:1px solid var(--color-divider); border-left:3px solid {{ a.bar }}; background:{{ a.bg }}">
+                    <button onClick="{{ a.pick }}" style="display:flex; align-items:center; gap:10px; padding:0; border:0; background:transparent; color:inherit; font:inherit; text-align:left; cursor:pointer">
+                      <span style="flex:none; width:22px; height:22px; border-radius:50%; background:{{ a.hex }}; border:1px solid var(--color-divider)"></span>
+                      <span style="flex:1; display:flex; flex-direction:column; min-width:0">
+                        <span style="font-size:12px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ a.title }}</span>
+                        <span style="font-size:13px; font-variant-numeric:tabular-nums; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ a.label }}</span>
+                      </span>
+                    </button>
+                    <select class="input" onChange="{{ a.onSt }}" style="min-height:28px; padding:2px 8px; font-size:12.5px">
+                      <sc-for list="{{ a.opts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}" selected="{{ o.sel }}">{{ o.l }}</option></sc-for>
+                    </select>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <sc-if value="{{ hasArea }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:10px; padding:12px; border:1px solid var(--color-accent)">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:8px">
+                  <span style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px">Garn wählen</span>
+                  <span class="tag tag-neutral">140 Farben</span>
+                </div>
+                <input class="input" placeholder="Nr. oder Name" value="{{ palQ }}" onChange="{{ onPalQ }}" style="min-height:32px">
+                <div style="display:flex; flex-wrap:wrap; gap:4px">
+                  <sc-for list="{{ fams }}" as="f" hint-placeholder-count="15"><button title="{{ f.name }}" onClick="{{ f.pick }}" style="width:20px; height:20px; padding:0; cursor:pointer; border-radius:50%; background:{{ f.hex }}; border:1px solid var(--color-divider); box-shadow:{{ f.ring }}"></button></sc-for>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(10, minmax(0,1fr)); gap:3px">
+                  <sc-for list="{{ palette }}" as="p" hint-placeholder-count="40"><button title="{{ p.title }}" onClick="{{ p.pick }}" style="aspect-ratio:1; padding:0; cursor:pointer; background:{{ p.hex }}; border:1px solid rgba(0,0,0,.12); box-shadow:{{ p.ring }}"></button></sc-for>
+                </div>
+                <span style="font-size:12px; font-variant-numeric:tabular-nums; color:color-mix(in srgb, var(--color-text) 65%, transparent)">{{ palHint }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ selIsText }}" hint-placeholder-val="{{ false }}">
+              <div class="field"><label>Text</label><input class="input" value="{{ so.text }}" onChange="{{ onSelText }}"></div>
+            </sc-if>
+            <div class="field">
+              <label>{{ sizeLabel }}</label>
+              <sc-if value="{{ selIsMotiv }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex; gap:6px; align-items:center">
+                  <span style="font-size:12px">B</span><input class="input" type="number" value="{{ so.w }}" onChange="{{ onW }}" style="width:72px; font-variant-numeric:tabular-nums">
+                  <span style="font-size:12px">H</span><input class="input" type="number" value="{{ so.h }}" onChange="{{ onH }}" style="width:72px; font-variant-numeric:tabular-nums">
+                  <span style="font-size:12px">mm</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ selIsText }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; gap:6px; align-items:center"><input class="input" type="number" value="{{ so.h }}" onChange="{{ onTH }}" style="width:72px; font-variant-numeric:tabular-nums"><span style="font-size:12px">mm hoch</span></div>
+                <p style="margin:4px 0 0; font-size:12px; color:{{ txRecColor }}">{{ txRec }}</p>
+              </sc-if>
+            </div>
+            <div class="field">
+              <label>Drehung {{ so.rot }}°</label>
+              <div style="display:flex; gap:8px; align-items:center">
+                <input type="range" min="-180" max="180" value="{{ so.rot }}" onChange="{{ onRot }}" style="flex:1">
+                <button class="btn btn-secondary" onClick="{{ rot0 }}" style="padding:3px 8px; font-size:12px">0°</button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noSel }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-size:19px; margin:0 0 8px">Nichts ausgewählt</h3>
+          <p style="margin:0; font-size:13px; color:color-mix(in srgb, var(--color-text) 65%, transparent)">Klick auf ein Motiv oder einen Text. Ein zweiter Klick auf eine Fläche wählt deren Farbe und Stichart.</p>
+        </sc-if>
+      </aside>
+    </sc-if>
+
+    <sc-if value="{{ showParams }}" hint-placeholder-val="{{ false }}">
+      <aside style="flex:none; width:min(320px, 32vw); min-width:260px; overflow:auto; border-left:1px solid var(--color-divider)">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:8px; padding:12px 14px 10px; border-bottom:1px solid var(--color-divider)">
+          <h3 style="font-size:19px; margin:0">Parameter</h3>
+          <span style="font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ paramCtx }}</span>
+        </div>
+        <sc-for list="{{ psecs }}" as="sec" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid var(--color-divider)">
+            <button onClick="{{ sec.toggle }}" style="width:100%; display:flex; align-items:center; gap:8px; padding:9px 14px; border:0; background:transparent; color:inherit; font:inherit; cursor:pointer; text-align:left">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="flex:none"><path d="{{ sec.chev }}"></path></svg>
+              <span style="flex:1; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:14px; letter-spacing:.04em; text-transform:uppercase">{{ sec.title }}</span>
+              <span style="font-size:11.5px; color:color-mix(in srgb, var(--color-text) 55%, transparent)">{{ sec.note }}</span>
+            </button>
+            <sc-if value="{{ sec.open }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:0 14px 10px">
+                <sc-for list="{{ sec.rows }}" as="r" hint-placeholder-count="3">
+                  <div style="display:flex; align-items:center; gap:8px; min-height:32px; border-top:1px solid color-mix(in srgb, var(--color-text) 7%, transparent)">
+                    <span title="{{ r.hint }}" style="flex:1; min-width:0; font-size:12.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ r.label }}</span>
+                    <div style="flex:none; width:118px; display:flex; align-items:center; gap:4px; justify-content:flex-end">
+                      <sc-if value="{{ r.isNum }}" hint-placeholder-val="{{ true }}"><input class="input" type="number" step="{{ r.step }}" value="{{ r.value }}" onChange="{{ r.set }}" style="min-height:26px; width:72px; padding:2px 6px; font-size:12.5px; text-align:right; font-variant-numeric:tabular-nums"></sc-if>
+                      <sc-if value="{{ r.isSel }}" hint-placeholder-val="{{ false }}"><select class="input" onChange="{{ r.set }}" style="min-height:26px; width:118px; padding:2px 6px; font-size:12.5px"><sc-for list="{{ r.opts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}" selected="{{ o.sel }}">{{ o.l }}</option></sc-for></select></sc-if>
+                      <sc-if value="{{ r.isBool }}" hint-placeholder-val="{{ false }}"><input type="checkbox" checked="{{ r.value }}" onChange="{{ r.set }}"></sc-if>
+                      <sc-if value="{{ r.isText }}" hint-placeholder-val="{{ false }}"><input class="input" value="{{ r.value }}" onChange="{{ r.set }}" style="min-height:26px; width:118px; padding:2px 6px; font-size:12.5px"></sc-if>
+                      <sc-if value="{{ r.hasUnit }}" hint-placeholder-val="{{ true }}"><span style="width:20px; font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ r.unit }}</span></sc-if>
+                    </div>
+                    <button title="{{ r.resetTitle }}" onClick="{{ r.reset }}" style="flex:none; width:14px; height:14px; padding:0; border:0; background:transparent; cursor:pointer; display:grid; place-items:center"><span style="width:7px; height:7px; border-radius:50%; background:{{ r.dot }}"></span></button>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ sec.hasActions }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; gap:6px; flex-wrap:wrap; padding-top:8px">
+                    <sc-for list="{{ sec.actions }}" as="a" hint-placeholder-count="2"><button class="btn btn-secondary" onClick="{{ a.go }}" style="padding:4px 9px; font-size:12px">{{ a.label }}</button></sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <p style="margin:12px 14px 30px; font-size:11.5px; color:color-mix(in srgb, var(--color-text) 60%, transparent)">Punkt = vom Standard abweichend, Klick setzt zurück. Platzhalter – der Parameterkatalog (Einheit, Standard, Bereich, Quelle) folgt.</p>
+      </aside>
+    </sc-if>
+
+    <sc-if value="{{ scr.projekte }}" hint-placeholder-val="{{ false }}">
+      <section style="position:absolute; inset:0; z-index:5; background:var(--color-bg); overflow:auto; padding:30px 40px 60px">
+        <div style="max-width:1180px; margin:0 auto">
+          <div style="display:flex; align-items:flex-end; gap:16px; margin-bottom:22px; flex-wrap:wrap">
+            <div style="flex:1; min-width:260px">
+              <h1 style="font-size:40px; margin:0 0 4px">Projekte</h1>
+              <p style="margin:0; color:color-mix(in srgb, var(--color-text) 65%, transparent)">Eigene Designs und Kundenaufträge.</p>
+            </div>
+            <div class="seg">
+              <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="4"><label class="seg-opt"><input type="radio" name="pf" checked="{{ f.on }}" onChange="{{ f.pick }}">{{ f.label }}</label></sc-for>
+            </div>
+            <button class="btn btn-secondary" onClick="{{ closeProjekte }}">Schließen</button>
+            <button class="btn btn-primary blueprint" onClick="{{ newProject }}" style="gap:7px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg>Neues Projekt</button>
+          </div>
+          <table class="table" style="font-variant-numeric:tabular-nums">
+            <thead><tr><th style="width:76px"></th><th>Projekt</th><th>Kunde</th><th style="text-align:right">Stück</th><th>Rahmen</th><th style="text-align:right">Stiche</th><th>Geändert</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <sc-for list="{{ projekte }}" as="p" hint-placeholder-count="5">
+                <tr onClick="{{ p.open }}" style="cursor:pointer">
+                  <td><canvas data-th="{{ p.key }}" data-fab="{{ p.fab }}" style="width:60px; height:60px; display:block; border:1px solid var(--color-divider)"></canvas></td>
+                  <td><span style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:16px">{{ p.name }}</span></td>
+                  <td>{{ p.kunde }}</td>
+                  <td style="text-align:right">{{ p.stueck }}</td>
+                  <td>{{ p.hoop }}</td>
+                  <td style="text-align:right">{{ p.stiche }}</td>
+                  <td>{{ p.datum }}</td>
+                  <td><span class="{{ p.cls }}">{{ p.status }}</span></td>
+                  <td style="text-align:right"><button class="btn btn-ghost" onClick="{{ p.open }}">Öffnen</button></td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ showWizardNav }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:none; display:flex; align-items:center; gap:14px; padding:12px 22px; border-top:1px solid var(--color-divider)">
+      <button class="btn btn-secondary" onClick="{{ back }}" disabled="{{ atFirst }}" style="gap:6px; min-height:40px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m15 18-6-6 6-6"></path></svg>Zurück</button>
+      <span style="flex:1; min-width:0; font-size:13px; color:color-mix(in srgb, var(--color-text) 65%, transparent)">{{ stepHint }}</span>
+      <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
+        <button class="btn btn-primary blueprint" onClick="{{ next }}" style="gap:6px; min-height:40px; padding-left:18px; padding-right:14px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Weiter: {{ nextLabel }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m9 18 6-6-6-6"></path></svg></button>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <footer style="flex:none; display:flex; gap:16px; align-items:center; padding:5px 18px; font-size:12px; border-top:1px solid var(--color-divider); color:color-mix(in srgb, var(--color-text) 70%, transparent); font-variant-numeric:tabular-nums">
+    <span style="flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ meldung }}</span>
+    <span style="flex:none; white-space:nowrap">{{ statStiche }} Stiche · {{ designSize }}</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ablauf&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;einfach&quot;,&quot;erweitert&quot;],&quot;default&quot;:&quot;einfach&quot;,&quot;tsType&quot;:&quot;'einfach'|'erweitert'&quot;,&quot;section&quot;:&quot;Darstellung&quot;},&quot;startscreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;projekte&quot;,&quot;gestalten&quot;,&quot;rahmen&quot;,&quot;stoff&quot;,&quot;vorschau&quot;,&quot;senden&quot;],&quot;default&quot;:&quot;gestalten&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Darstellung&quot;}}">
+const HOOPS = [
+  { id: 'h40', name: 'artista 40 × 60', w: 60, h: 40, oval: false, use: 'Kragen, Brusttasche, Initialen' },
+  { id: 'h50', name: 'artista 50 × 72 Freiarm', w: 72, h: 50, oval: true, use: 'Ärmel, Hosenbeine' },
+  { id: 'h130', name: 'artista 130 × 100', w: 100, h: 130, oval: false, use: 'Logos, Brust, Babysachen' },
+  { id: 'h200', name: 'artista 200 × 155', w: 155, h: 200, oval: false, use: 'Kissen, Taschen, Rücken' },
+  { id: 'h255', name: 'artista 255 × 145 Oval', w: 145, h: 255, oval: true, use: 'Decken, Jackenrücken' },
+  { id: 'h400', name: 'artista 400 × 150 MEGA', w: 150, h: 400, oval: false, use: 'Lange Schriftzüge, Bordüren' },
+];
+// Die 8 Stoffe des Originals + Software Defaults (kern/stick-kern/src/einstellungen.rs): satin, tatami, zug
+const STOFFE = [
+  { id: 'std', name: 'Standard', bsp: 'wenn unsicher', farbe: '#f3efe6', v: [0.40, 0.40, 0.20], vlies: 'Reißvlies' },
+  { id: 'kl', name: 'Strick leicht', bsp: 'T-Shirt, Jersey', farbe: '#c9ccd1', v: [0.43, 0.45, 0.20], vlies: 'Schneidvlies' },
+  { id: 'km', name: 'Strick mittel', bsp: 'Sweat, Polo', farbe: '#8e9aa6', v: [0.44, 0.45, 0.25], vlies: 'Schneidvlies' },
+  { id: 'ks', name: 'Strick schwer', bsp: 'Fleece, Strickjacke', farbe: '#7d2f35', v: [0.38, 0.40, 0.25], vlies: 'Schneidvlies' },
+  { id: 'tm', name: 'Frottee mittel', bsp: 'Handtuch', farbe: '#efe6d6', v: [0.42, 0.42, 0.25], vlies: 'Reißvlies + Wasserfolie oben' },
+  { id: 'ts', name: 'Frottee schwer', bsp: 'Bademantel', farbe: '#d9cbb3', v: [0.38, 0.38, 0.25], vlies: 'Reißvlies + Wasserfolie oben' },
+  { id: 'gl', name: 'Gewebe leicht', bsp: 'Bluse, Hemd', farbe: '#ece3ea', v: [0.42, 0.45, 0.20], vlies: 'Abwaschvlies' },
+  { id: 'gm', name: 'Gewebe mittel', bsp: 'Baumwolle, Leinen', farbe: '#f4f1ea', v: [0.43, 0.40, 0.25], vlies: 'Reißvlies' },
+  { id: 'gs', name: 'Gewebe schwer', bsp: 'Jeans, Canvas', farbe: '#45607f', v: [0.38, 0.38, 0.25], vlies: 'Reißvlies' },
+];
+const FAM = [['Grau', 0, 0], ['Beige', 38, 30], ['Braun', 24, 45], ['Gelb', 48, 90], ['Orange', 26, 88], ['Rot', 356, 75], ['Rosa', 335, 65], ['Bordeaux', 345, 50], ['Lila', 275, 45], ['Blau', 222, 65], ['Hellblau', 200, 70], ['Türkis', 178, 60], ['Grün', 125, 45], ['Oliv', 72, 42]];
+const hsl2hex = (h, s, l) => { s /= 100; l /= 100; const k = n => (n + h / 30) % 12, a = s * Math.min(l, 1 - l), f = n => l - a * Math.max(-1, Math.min(k(n) - 3, 9 - k(n), 1)); return '#' + [f(0), f(8), f(4)].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join(''); };
+const GARNE = []; FAM.forEach(([name, h, s], fi) => { for (let i = 0; i < 10; i++) GARNE.push({ nr: String((fi + 1) * 100 + i + 1).padStart(4, '0'), name: `${name} ${i + 1}`, fam: name, hex: hsl2hex(h, s, fi === 0 ? 97 - i * 9.8 : 86 - i * 7) }); });
+const lab = hex => { const n = parseInt(hex.slice(1), 16); const [r, g, b] = [n >> 16, (n >> 8) & 255, n & 255].map(v => { v /= 255; return v > 0.04045 ? ((v + 0.055) / 1.055) ** 2.4 : v / 12.92; }); const f = t => t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116; const x = f((r * 0.4124 + g * 0.3576 + b * 0.1805) / 0.95047), y = f(r * 0.2126 + g * 0.7152 + b * 0.0722), z = f((r * 0.0193 + g * 0.1192 + b * 0.9505) / 1.08883); return [116 * y - 16, 500 * (x - y), 200 * (y - z)]; };
+const LABS = GARNE.map(g => lab(g.hex));
+const nearest = hex => { const L = lab(hex); let bi = 0, bd = 1e9; LABS.forEach((q, i) => { const d = (q[0] - L[0]) ** 2 + (q[1] - L[1]) ** 2 + (q[2] - L[2]) ** 2; if (d < bd) { bd = d; bi = i; } }); return GARNE[bi]; };
+const snap = cols => cols.map(c => nearest(c).hex);
+const gl = hex => { const g = nearest(hex); return `Nr. ${g.nr} · ${g.name}`; };
+const SCHRIFTEN = [
+  { id: 'block', name: 'Block', min: 6, css: px => `900 ${px}px "Arial Black", Arial, sans-serif`, cap: 0.72 },
+  { id: 'schreib', name: 'Schreibschrift', min: 8, css: px => `italic 400 ${px}px "Brush Script MT", "Segoe Script", "Apple Chancery", cursive`, cap: 0.62 },
+  { id: 'antiqua', name: 'Antiqua', min: 8, css: px => `400 ${px}px "Times New Roman", Times, serif`, cap: 0.66 },
+  { id: 'college', name: 'College', min: 8, css: px => `700 ${px}px Impact, "Arial Narrow", sans-serif`, cap: 0.78 },
+  { id: 'fraktur', name: 'Fraktur', min: 12, css: px => `700 ${px}px "Old English Text MT", "Luminari", serif`, cap: 0.68 },
+  { id: 'rund', name: 'Rund', min: 6, css: px => `700 ${px}px Verdana, sans-serif`, cap: 0.73 },
+  { id: 'kursiv', name: 'Kursiv', min: 7, css: px => `italic 700 ${px}px Georgia, serif`, cap: 0.7 },
+  { id: 'elegant', name: 'Elegant', min: 8, css: px => `italic 400 ${px}px Palatino, "Palatino Linotype", serif`, cap: 0.68 },
+];
+const IMP_SRC = ['#20407a', '#d4a640', '#fbfbf7', '#cf1730', '#4a8e3c', '#151515'];
+const I = { motiv: 'M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7Z', text: 'M4 7V4h16v3M9 20h6M12 4v16', play: 'M6 3l14 9-14 9V3Z', pause: 'M6 4h4v16H6zM14 4h4v16h-4z', open: 'm6 9 6 6 6-6', closed: 'm9 18 6-6-6-6' };
+const STEPS = [['gestalten', 'Gestalten'], ['rahmen', 'Rahmen'], ['stoff', 'Stoff'], ['vorschau', 'Vorschau'], ['senden', 'Senden']];
+const HINTS = ['Motive, Bilder und Text einfügen; Größe, Farben und Stichart direkt anpassen.', 'Rahmen wählen und das ganze Design einpassen.', 'Stoff wählen – Dichte und Unterlage passen sich an.', 'Stiche prüfen und die Farbreihenfolge festlegen.', 'Maschine verbinden und Design übertragen.'];
+const ST_ALL = [['auto', 'Automatisch'], ['satin', 'Satin'], ['tatami', 'Füllung (Tatami)'], ['muster', 'Füllmuster'], ['lauf', 'Linie (Lauf)']];
+const ST_NAME = { satin: 'Satin', tatami: 'Füllung', muster: 'Füllmuster', lauf: 'Linie' };
+const UL = [['auto', 'Automatisch'], ['mittel', 'Mittellauf'], ['edge', 'Edge Walk'], ['zz', 'Zickzack'], ['dzz', 'Doppel-Zickzack'], ['step', 'Step'], ['keine', 'keine']];
+// Platzhalter-Katalog: [key, label, unit, default, step | options]
+const PK = {
+  satin: [['abstand', 'Stichabstand', 'mm', 0.40, 0.05], ['autoAbstand', 'Auto-Abstand', '', true], ['kurz', 'Kurzstiche in Kurven', '', true], ['split', 'Auto-Split ab', 'mm', 12.7, 0.1]],
+  tatami: [['abstand', 'Stichabstand', 'mm', 0.40, 0.05], ['laenge', 'Stichlänge', 'mm', 4.0, 0.1], ['winkel', 'Stichwinkel', '°', 45, 5], ['versatz', 'Versatzmuster', '', '1', [['1', 'Nr. 1'], ['2', 'Nr. 2'], ['3', 'Nr. 3']]]],
+  muster: [['nr', 'Muster', 'Nr', 1, 1], ['abstand', 'Stichabstand', 'mm', 0.60, 0.05], ['winkel', 'Stichwinkel', '°', 45, 5]],
+  lauf: [['laenge', 'Stichlänge', 'mm', 2.5, 0.1], ['dreifach', 'Dreifachstich', '', false]],
+  unterlage: [['ulTyp', 'Art', '', 'auto', UL], ['ulAbstand', 'Abstand', 'mm', 2.0, 0.1], ['ulRand', 'Randabstand', 'mm', 0.4, 0.1]],
+  zug: [['zugAuto', 'Automatisch (nach Stoff)', '', true], ['zug', 'Wert', 'mm', 0.20, 0.05]],
+  ende: [['vernaehen', 'Vernähen', '', true], ['autoJump', 'Auto Jump', '', true], ['minStich', 'Mindeststich', 'mm', 0.3, 0.1]],
+};
+
+function sample() {
+  return { name: 'Vereinslogo TSV', kunde: 'TSV Lindenau', stueck: 12, hoop: 'h130', gedreht: false, stoff: 'gm', merge: true, order: null,
+    objs: [{ t: 'motiv', m: 'wappen', name: 'Wappen', w: 56, h: 66, x: 0, y: -14, rot: 0, st: 'auto', colors: snap(['#1f3a6b', '#c8a24a', '#f7f6f2']) },
+      { t: 'text', name: 'Text', text: 'TSV LINDENAU', font: 'block', h: 7, breite: 100, x: 0, y: 34, rot: 0, colors: snap(['#1f3a6b']) }] };
+}
+const D = o => ({ kunde: 'privat', stueck: 1, gedreht: false, merge: true, order: null, ...o, objs: o.objs.map(x => ({ st: 'auto', ...x, colors: snap(x.colors) })) });
+const PROJEKTE = [
+  { id: 1, datum: '20.11.2026', status: 'Entwurf', d: sample() },
+  { id: 2, datum: '17.11.2026', status: 'Gestickt', d: D({ name: 'Babydecke Anna', hoop: 'h200', stoff: 'tm', objs: [{ t: 'motiv', m: 'herz', name: 'Herz', w: 34, h: 31, x: 0, y: -30, rot: 0, colors: ['#d94f70', '#c8102e'] }, { t: 'text', name: 'Text', text: 'Anna', font: 'schreib', h: 26, breite: 100, x: 0, y: 14, rot: 0, colors: ['#d94f70'] }] }) },
+  { id: 3, datum: '14.11.2026', status: 'Gesendet', d: D({ name: 'Schürzen Café Ahorn', kunde: 'Café Ahorn', stueck: 6, hoop: 'h130', stoff: 'gs', objs: [{ t: 'motiv', m: 'blatt', name: 'Blatt', w: 50, h: 50, x: 0, y: -16, rot: 0, colors: ['#c8a24a', '#e8e1c8'] }, { t: 'text', name: 'Text', text: 'Café Ahorn', font: 'antiqua', h: 9, breite: 100, x: 0, y: 26, rot: 0, colors: ['#f7f6f2'] }] }) },
+  { id: 4, datum: '09.11.2026', status: 'Gestickt', d: D({ name: 'Kissen Blütenkranz', hoop: 'h200', stoff: 'gm', objs: [{ t: 'motiv', m: 'kranz', name: 'Kranz', w: 110, h: 110, x: 0, y: 0, rot: 0, colors: ['#4f8a3a', '#c8102e'] }, { t: 'motiv', m: 'bluete', name: 'Blüte', w: 44, h: 44, x: 0, y: 0, rot: 0, colors: ['#d94f70', '#f2c14e'] }] }) },
+  { id: 5, datum: '02.11.2026', status: 'Entwurf', d: D({ name: 'Halstücher Bello', kunde: 'Pfotenglück', stueck: 20, hoop: 'h40', stoff: 'gl', objs: [{ t: 'motiv', m: 'pfote', name: 'Pfote', w: 26, h: 26, x: -16, y: 0, rot: -12, colors: ['#5a3e2b'] }, { t: 'text', name: 'Text', text: 'BELLO', font: 'college', h: 9, breite: 100, x: 13, y: 0, rot: 0, colors: ['#5a3e2b'] }] }) },
+];
+const nf = n => Math.round(n).toLocaleString('de-DE');
+const mm1 = v => (Math.round(v * 10) / 10).toLocaleString('de-DE', { maximumFractionDigits: 1 });
+const SEL = 'var(--color-accent)', DIV = 'var(--color-divider)', TINT = 'color-mix(in srgb, var(--color-accent) 9%, transparent)', MUTED = 'color-mix(in srgb, var(--color-text) 55%, transparent)';
+const RING = '0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent)';
+
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.q = Object.fromEntries(new URLSearchParams(location.search));
+    this.state = { mode: null, screen: null, tab: 'bibliothek', d: sample(), sel: 0, area: -1, kat: 'Alle', suche: '', palQ: '', palFam: null,
+      zoom: 1, center: null, vmode: 'form', showHoop: true, closed: {}, dragI: -1, dropAt: -1,
+      sim: { play: false, pos: 1, speed: 5 }, send: { port: 'COM3', phase: 'bereit', prog: 0, sticken: false, done: [], checks: [false, false, false] },
+      imp: { n: 3, bg: true }, draft: { text: 'Anna', font: 'schreib', h: 20, breite: 100, colors: snap(['#1f3a6b']) }, projFilter: 'Alle', meldung: '' };
+  }
+  componentDidMount() {
+    import('./stich.js').then(E => { const f = {}; SCHRIFTEN.forEach(s => f[s.id] = s); E.setFonts(f); this.E = E; this.forceUpdate(); });
+    this.onMove = e => this.dragMove(e); this.onUp = e => this.dragUp(e);
+    window.addEventListener('pointermove', this.onMove); window.addEventListener('pointerup', this.onUp);
+    document.fonts && document.fonts.ready.then(() => this.forceUpdate());
+  }
+  componentWillUnmount() { window.removeEventListener('pointermove', this.onMove); window.removeEventListener('pointerup', this.onUp); this.ro && this.ro.disconnect(); cancelAnimationFrame(this.raf); clearInterval(this.sendT); }
+  componentDidUpdate() { this.paint(); this.paintThumbs(); }
+  mode() { return this.state.mode || this.q.flow || this.props.ablauf || 'einfach'; }
+  screen() { const s = this.state.screen || this.q.screen || this.props.startscreen || 'gestalten'; if (this.mode() === 'erweitert' && !['gestalten', 'senden', 'projekte'].includes(s)) return 'gestalten'; return s; }
+  hoopDims(d = this.state.d) { const h = HOOPS.find(x => x.id === d.hoop) || HOOPS[2]; return d.gedreht ? { w: h.h, h: h.w, oval: h.oval } : { w: h.w, h: h.h, oval: h.oval }; }
+  built() { if (!this.E) return null; const d = this.state.d, hd = this.hoopDims(d), k = JSON.stringify([d.objs, d.order, hd]); if (this._bk !== k) { this._bk = k; this._b = this.E.build(d, hd); } return this._b; }
+  // Ansicht je Modus/Schritt
+  vstate() {
+    const scr = this.screen(), st = this.state, work = this.mode() === 'erweitert';
+    if (work) { const sim = st.vmode === 'sim'; return { hoop: st.showHoop || sim || st.vmode === 'stiche', flat: st.vmode === 'form', sim, edit: !sim, zoomable: true, rulers: true }; }
+    if (scr === 'gestalten') return { hoop: false, flat: true, edit: true, zoomable: true, rulers: true };
+    if (scr === 'rahmen') return { hoop: true, group: true, zoomable: true };
+    if (scr === 'vorschau') return { hoop: true, sim: true, zoomable: true };
+    return { hoop: true };
+  }
+  paint() {
+    const cv = this.cv, w = this.wrap, b = this.built(); if (!cv || !w || !b) return;
+    const r = w.getBoundingClientRect(), dpr = window.devicePixelRatio || 1, W = Math.round(r.width * dpr), H = Math.round(r.height * dpr);
+    if (!W || !H) return; if (cv.width !== W) cv.width = W; if (cv.height !== H) cv.height = H;
+    const cs = getComputedStyle(document.documentElement), v = n => cs.getPropertyValue(n).trim();
+    const st = this.state, V = this.vstate(), stoff = STOFFE.find(s => s.id === st.d.stoff) || STOFFE[0], o = st.d.objs[st.sel], D = this.drag;
+    if (!V.hoop && !D) { this._ext = Math.max(100, Math.max(b.bw, b.bh) + 50); this._autoC = [b.bcx, b.bcy]; }
+    const center = V.zoomable ? (st.center || (V.hoop ? [0, 0] : this._autoC || [0, 0])) : [0, 0], zoom = V.zoomable ? st.zoom : 1;
+    let label = '';
+    if (o && D && V.edit && (D.mode === 'scale' || D.mode === 'rot')) label = D.mode === 'rot' ? `${o.rot}°` : o.t === 'text' ? `${mm1(o.h)} mm hoch` : `${Math.round(o.w)} × ${Math.round(o.h)} mm`;
+    if (V.group && D && D.mode === 'gscale') label = Math.round(D.k * 100) + ' %';
+    this.E.draw(cv, b, { hoop: V.hoop ? this.hoopDims() : null, view: { w: this._ext || 160, h: this._ext || 160 }, zoom, center, fabric: stoff.farbe, flat: !!V.flat,
+      limit: V.sim ? Math.round(st.sim.pos * b.total) : null, grid: true, sheen: true, sel: V.edit ? st.sel : -1, label, font: v('--font-body'), dpr, group: !!V.group, rulers: false, edgeRulers: !!V.rulers || !!V.group,
+      theme: { ring: v('--color-neutral-300') || '#ccc', ringEdge: v('--color-neutral-500') || '#999', accent: v('--color-accent') || '#58a', ink: v('--color-text') || '#222', bg: v('--color-bg') || '#fff' } });
+  }
+  paintThumbs() {
+    if (!this.E || !this.thumbs) return; const dpr = window.devicePixelRatio || 1;
+    document.querySelectorAll('canvas[data-th]').forEach(c => { const k = c.getAttribute('data-th'), des = this.thumbs[k]; if (!des) return; const W = Math.round((c.clientWidth || 120) * dpr), H = Math.round((c.clientHeight || 120) * dpr), sig = k + W; if (c._sig === sig) return; c._sig = sig; c.width = W; c.height = H; this.E.thumb(c, des, c.getAttribute('data-fab') || '#f3efe6'); });
+  }
+  setD(patch) { this.setState(s => ({ d: { ...s.d, ...(typeof patch === 'function' ? patch(s.d) : patch) } })); }
+  setObj(i, patch) { this.setState(s => { const objs = s.d.objs.slice(); if (!objs[i]) return null; objs[i] = { ...objs[i], ...(typeof patch === 'function' ? patch(objs[i]) : patch) }; return { d: { ...s.d, objs } }; }); }
+  go(screen) { this.setState({ screen, area: -1, zoom: 1, center: null }); }
+  setWrap(el) { if (el === this.wrap) return; this.ro && this.ro.disconnect(); this.wrap = el; if (el) { this.ro = new ResizeObserver(() => this.paint()); this.ro.observe(el); } }
+  setCv(el) { this.cv = el; if (el && !el._wl) { el._wl = 1; el.addEventListener('wheel', e => this.wheel(e), { passive: false }); } }
+  pt(e) { const cv = this.cv, r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1, v = cv._view; const px = (e.clientX - r.left) * dpr, py = (e.clientY - r.top) * dpr; return { px, py, mx: (px - v.cx) / v.s, my: (py - v.cy) / v.s, toPx: p => [v.cx + p[0] * v.s, v.cy + p[1] * v.s], tol: 11 * dpr }; }
+  curCenter() { const V = this.vstate(); return this.state.center || (V.hoop ? [0, 0] : this._autoC || [0, 0]); }
+  wheel(e) {
+    if (!this.cv || !this.cv._view || !this.vstate().zoomable) return; e.preventDefault();
+    const P = this.pt(e), z = this.state.zoom, z2 = Math.max(0.25, Math.min(8, z * Math.exp(-e.deltaY * 0.0015))), C = this.curCenter();
+    this.setState({ zoom: z2, center: [P.mx - (P.mx - C[0]) * z / z2, P.my - (P.my - C[1]) * z / z2] });
+  }
+  zoomBy(k) { const z2 = Math.max(0.25, Math.min(8, this.state.zoom * k)); this.setState({ zoom: z2, center: this.curCenter() }); }
+  handleAt(P) {
+    const H = this.cv && this.cv._handles; if (!H) return null;
+    if (H.rot) { const rp = P.toPx(H.rot); if (Math.hypot(P.px - rp[0], P.py - rp[1]) < P.tol) return 'rot'; }
+    for (const k of H.corners) { const kp = P.toPx(k); if (Math.hypot(P.px - kp[0], P.py - kp[1]) < P.tol) return 'scale'; }
+    return null;
+  }
+  canvasDown(e) {
+    const b = this.built(), V = this.vstate(); if (!b || !this.cv || !this.cv._view) return;
+    const P = this.pt(e), st = this.state, o = st.d.objs[st.sel], H = this.cv._handles, pan = () => { if (V.zoomable) this.drag = { mode: 'pan', cx: e.clientX, cy: e.clientY, c0: this.curCenter() }; };
+    if (V.group) {
+      const snapObjs = JSON.parse(JSON.stringify(st.d.objs));
+      if (H && this.handleAt(P) === 'scale') { this.drag = { mode: 'gscale', c: H.center, d0: Math.hypot(P.mx - H.center[0], P.my - H.center[1]), objs: snapObjs, k: 1 }; return; }
+      if (H) { const [x0, y0] = H.corners[0], [x1, y1] = H.corners[2]; if (P.mx >= x0 - 2 && P.mx <= x1 + 2 && P.my >= y0 - 2 && P.my <= y1 + 2) { this.drag = { mode: 'gmove', cx: e.clientX, cy: e.clientY, objs: snapObjs }; return; } }
+      return pan();
+    }
+    if (!V.edit) return pan();
+    const h = o && this.handleAt(P);
+    if (h === 'rot') { this.drag = { mode: 'rot', i: st.sel, c: H.center, a0: Math.atan2(P.my - H.center[1], P.mx - H.center[0]), r0: o.rot || 0 }; return; }
+    if (h === 'scale') { this.drag = { mode: 'scale', i: st.sel, c: H.center, d0: Math.hypot(P.mx - H.center[0], P.my - H.center[1]), w0: o.w, h0: o.h }; return; }
+    const i = this.E.hit(b, P.mx, P.my);
+    if (i < 0) { this.setState({ sel: -1, area: -1 }); return pan(); }
+    const ob = st.d.objs[i]; this.drag = { mode: 'move', i, cx: e.clientX, cy: e.clientY, x: ob.x, y: ob.y, moved: false, wasSel: i === st.sel, mx: P.mx, my: P.my };
+    if (i !== st.sel) this.setState({ sel: i, area: -1 });
+  }
+  dragMove(e) {
+    const D = this.drag; if (!D || !this.cv || !this.cv._view) return; const v = this.cv._view, dpr = window.devicePixelRatio || 1;
+    const dx = (e.clientX - (D.cx || 0)) * dpr / v.s, dy = (e.clientY - (D.cy || 0)) * dpr / v.s;
+    if (D.mode === 'pan') { this.setState({ center: [D.c0[0] - dx, D.c0[1] - dy] }); return; }
+    if (D.mode === 'move') { if (Math.hypot(e.clientX - D.cx, e.clientY - D.cy) > 3) D.moved = true; if (D.moved) this.setObj(D.i, { x: Math.round((D.x + dx) * 2) / 2, y: Math.round((D.y + dy) * 2) / 2 }); return; }
+    if (D.mode === 'gmove') { this.setD({ objs: D.objs.map(o => ({ ...o, x: Math.round((o.x + dx) * 2) / 2, y: Math.round((o.y + dy) * 2) / 2 })) }); return; }
+    const P = this.pt(e);
+    if (D.mode === 'gscale') { const k = Math.max(0.1, Math.hypot(P.mx - D.c[0], P.my - D.c[1]) / (D.d0 || 1)), c = D.c; D.k = k;
+      this.setD({ objs: D.objs.map(o => ({ ...o, x: Math.round((c[0] + (o.x - c[0]) * k) * 2) / 2, y: Math.round((c[1] + (o.y - c[1]) * k) * 2) / 2, h: Math.round(o.h * k * 10) / 10, ...(o.t === 'text' ? {} : { w: Math.round(o.w * k * 10) / 10 }) })) }); return; }
+    if (D.mode === 'scale') { const k = Math.max(0.08, Math.hypot(P.mx - D.c[0], P.my - D.c[1]) / (D.d0 || 1)), o = this.state.d.objs[D.i]; this.setObj(D.i, o.t === 'text' ? { h: Math.max(3, Math.round(D.h0 * k * 2) / 2) } : { w: Math.max(5, Math.round(D.w0 * k)), h: Math.max(5, Math.round(D.h0 * k)) }); }
+    if (D.mode === 'rot') { let deg = D.r0 + (Math.atan2(P.my - D.c[1], P.mx - D.c[0]) - D.a0) * 180 / Math.PI; const sn = Math.round(deg / 15) * 15; if (Math.abs(deg - sn) < 4) deg = sn; this.setObj(D.i, { rot: ((Math.round(deg) + 540) % 360) - 180 }); }
+  }
+  dragUp() {
+    const D = this.drag; this.drag = null; if (!D) return;
+    if (D.mode === 'move' && !D.moved && D.wasSel) { const c = this.E.hitBlock(this.built(), D.i, D.mx, D.my); if (c >= 0) this.setState({ area: c, palFam: null, palQ: '' }); }
+    else this.forceUpdate();
+  }
+  hover(e) {
+    if (this.drag || !this.cv || !this.cv._view) return; const V = this.vstate(), P = this.pt(e), H = this.cv._handles;
+    if (V.group) { const ins = H && P.mx >= H.corners[0][0] && P.mx <= H.corners[2][0] && P.my >= H.corners[0][1] && P.my <= H.corners[2][1]; this.cv.style.cursor = H && this.handleAt(P) ? 'nwse-resize' : ins ? 'move' : V.zoomable ? 'grab' : 'default'; return; }
+    if (!V.edit) { this.cv.style.cursor = V.zoomable ? 'grab' : 'default'; return; }
+    const h = this.handleAt(P); if (h) { this.cv.style.cursor = h === 'rot' ? 'alias' : 'nwse-resize'; return; }
+    const b = this.built(); this.cv.style.cursor = b && this.E.hit(b, P.mx, P.my) >= 0 ? 'move' : 'grab';
+  }
+  addObj(o, msg) { const s = this.state, objs = s.d.objs.concat([o]); this.setState({ d: { ...s.d, objs, order: null }, sel: objs.length - 1, area: -1, meldung: msg }); }
+  pickMotif(M) { const n = this.state.d.objs.length; this.addObj({ t: 'motiv', m: M.id, name: M.name, w: M.w, h: M.h, x: n ? 12 * (n % 3) : 0, y: n ? 12 * (n % 3) : 0, rot: 0, st: 'auto', colors: snap(M.farben) }, `„${M.name}“ eingefügt.`); }
+  insertText(tx) { const b = this.built(), y = b && b.objs.length ? Math.round(b.bcy + b.bh / 2 + tx.h) : 0; this.addObj({ t: 'text', name: 'Text', text: tx.text || 'Text', font: tx.font, h: tx.h, breite: tx.breite || 100, colors: tx.colors.slice(), x: 0, y, rot: 0, st: 'auto' }, `Text „${tx.text}“ eingefügt.`); }
+  removeObj(i) { const s = this.state; if (i < 0) return; const objs = s.d.objs.filter((_, k) => k !== i); this.setState({ d: { ...s.d, objs, order: null }, sel: -1, area: -1 }); }
+  moveBlockTo(i, j) { const b = this.built(); if (!b || i === j || i < 0) return; const keys = b.blocks.map(x => x.key); const [k] = keys.splice(i, 1); keys.splice(j > i ? j - 1 : j, 0, k); this.setD({ order: keys }); }
+  scaleAll(k, fit) {
+    const b = this.built(); if (!b || !b.objs.length) return; const hd = this.hoopDims(), m = hd.oval ? 0.82 : 1;
+    if (fit) k = Math.min((hd.w * m - 16) / b.bw, (hd.h * m - 16) / b.bh); const cx = fit ? b.bcx : 0, cy = fit ? b.bcy : 0;
+    this.setD(d => ({ objs: d.objs.map(o => ({ ...o, x: Math.round((o.x - cx) * k * 2) / 2, y: Math.round((o.y - cy) * k * 2) / 2, h: Math.round(o.h * k * 10) / 10, ...(o.t === 'text' ? {} : { w: Math.round(o.w * k * 10) / 10 }) })) }));
+  }
+  centerAll() { const b = this.built(); if (!b) return; this.setD(d => ({ objs: d.objs.map(o => ({ ...o, x: Math.round((o.x - b.bcx) * 2) / 2, y: Math.round((o.y - b.bcy) * 2) / 2 })) })); }
+  setPar(i, c, key, val) { this.setObj(i, o => { const par = { ...(o.par || {}) }; const pc = { ...(par[c] || {}) }; if (val === undefined) delete pc[key]; else pc[key] = val; par[c] = pc; return { par }; }); }
+  setStc(i, c, val) { this.setObj(i, o => ({ stc: { ...(o.stc || {}), [c]: val } })); }
+  togglePlay() { const sim = this.state.sim, play = !sim.play, pos = play && sim.pos >= 1 ? 0 : sim.pos; this.setState({ sim: { ...sim, play, pos } }, () => { cancelAnimationFrame(this.raf); if (play) this.raf = requestAnimationFrame(() => this.tick()); }); }
+  tick() { const s = this.state.sim, b = this.built(); if (!s.play || !b) return; const pos = s.pos + s.speed * 6 / Math.max(1, b.total); if (pos >= 1) { this.setState({ sim: { ...s, pos: 1, play: false } }); return; } this.setState({ sim: { ...s, pos } }); this.raf = requestAnimationFrame(() => this.tick()); }
+  startSend() { clearInterval(this.sendT); let t = 0; const set = (phase, prog) => this.setState(s => ({ send: { ...s.send, phase, prog } })); set('verbinden', 0); this.sendT = setInterval(() => { t += 100; if (t < 900) set('verbinden', 0); else if (t < 4900) set('uebertragen', (t - 900) / 4000); else { set('fertig', 1); clearInterval(this.sendT); this.setState({ meldung: 'Übertragen.' }); } }, 100); }
+
+  paramSections(selO, b) {
+    const st = this.state, d = st.d, sections = [], sec = (id, title, rows, note, actions) => sections.push({ title, note: note || '', rows, open: !st.closed[id], chev: st.closed[id] ? I.closed : I.open, toggle: () => this.setState(s => ({ closed: { ...s.closed, [id]: !s.closed[id] } })), hasActions: !!(actions && actions.length), actions: actions || [] });
+    const row = (label, kind, value, set, extra = {}) => ({ label, hint: extra.hint || label, isNum: kind === 'num', isSel: kind === 'sel', isBool: kind === 'bool', isText: kind === 'text', value, set, unit: extra.unit || '', hasUnit: !!extra.unit, step: extra.step || 1, opts: (extra.opts || []).map(([v, l]) => ({ v, l, sel: String(v) === String(value) })), dot: extra.mod ? 'var(--color-accent)' : 'transparent', reset: extra.reset || (() => {}), resetTitle: extra.mod ? 'Auf Standard zurücksetzen' : '' });
+    const num = e => parseFloat(e.target.value);
+    sec('design', 'Design', [
+      row('Rahmen', 'sel', d.hoop, e => this.setD({ hoop: e.target.value }), { opts: HOOPS.map(h => [h.id, h.name.replace('artista ', '')]) }),
+      row('Quer eingespannt', 'bool', !!d.gedreht, () => this.setD(x => ({ gedreht: !x.gedreht }))),
+      row('Stoff', 'sel', d.stoff, e => this.setD({ stoff: e.target.value }), { opts: STOFFE.map(s => [s.id, s.name]) }),
+      row('Garnsystem', 'sel', 'p140', () => {}, { opts: [['p140', '140 Farben (Platzh.)']] }),
+      row('Gleiche Farben zusammen', 'bool', !!d.merge, () => this.setD(x => ({ merge: !x.merge }))),
+    ], b ? `${mm1(b.bw)} × ${mm1(b.bh)} mm` : '', [{ label: 'Einpassen', go: () => this.scaleAll(1, true) }, { label: '−10 %', go: () => this.scaleAll(1 / 1.1) }, { label: '+10 %', go: () => this.scaleAll(1.1) }, { label: 'Zentrieren', go: () => this.centerAll() }]);
+    if (!selO) return sections;
+    const i = st.sel, isT = selO.t === 'text';
+    const objRows = [row('Position X', 'num', selO.x, e => this.setObj(i, { x: num(e) || 0 }), { unit: 'mm', step: 0.5 }), row('Position Y', 'num', selO.y, e => this.setObj(i, { y: num(e) || 0 }), { unit: 'mm', step: 0.5 })];
+    if (isT) objRows.push(row('Text', 'text', selO.text, e => this.setObj(i, { text: e.target.value })), row('Schrift', 'sel', selO.font, e => this.setObj(i, { font: e.target.value }), { opts: SCHRIFTEN.map(f => [f.id, f.name]) }), row('Höhe', 'num', selO.h, e => this.setObj(i, { h: num(e) || 1 }), { unit: 'mm', step: 0.5 }), row('Breite', 'num', selO.breite || 100, e => this.setObj(i, { breite: num(e) || 100 }), { unit: '%', step: 5, mod: (selO.breite || 100) !== 100, reset: () => this.setObj(i, { breite: 100 }) }));
+    else objRows.push(row('Breite', 'num', selO.w, e => { const w = num(e) || 1; this.setObj(i, { w, h: Math.round(selO.h * w / selO.w * 10) / 10 }); }, { unit: 'mm' }), row('Höhe', 'num', selO.h, e => { const h = num(e) || 1; this.setObj(i, { h, w: Math.round(selO.w * h / selO.h * 10) / 10 }); }, { unit: 'mm' }));
+    objRows.push(row('Drehung', 'num', selO.rot || 0, e => this.setObj(i, { rot: num(e) || 0 }), { unit: '°', step: 5, mod: !!selO.rot, reset: () => this.setObj(i, { rot: 0 }) }));
+    sec('obj', isT ? 'Schrift' : 'Objekt', objRows, isT ? `„${selO.text}“` : selO.name);
+    const c = st.area >= 0 && st.area < selO.colors.length ? st.area : 0, par = (selO.par && selO.par[c]) || {}, stc = (selO.stc && selO.stc[c]) || selO.st || 'auto';
+    const ob = b && b.objs[i], res = ob && ob.res ? ob.res[c] : 'satin', eff = stc === 'auto' ? res : (stc === 'fuell' ? 'tatami' : stc);
+    const pRow = ([key, label, unit, def, ex]) => { const val = par[key] ?? def, mod = par[key] !== undefined && par[key] !== def, reset = () => this.setPar(i, c, key, undefined);
+      if (typeof def === 'boolean') return row(label, 'bool', val, () => this.setPar(i, c, key, !val), { mod, reset });
+      if (Array.isArray(ex)) return row(label, 'sel', val, e => this.setPar(i, c, key, e.target.value), { opts: ex, mod, reset });
+      return row(label, 'num', val, e => { const n = num(e); this.setPar(i, c, key, isNaN(n) ? undefined : n); }, { unit, step: ex, mod, reset }); };
+    sec('stich', `Fläche ${c + 1} – Stichart`, [row('Stichart', 'sel', stc, e => this.setStc(i, c, e.target.value), { opts: isT ? [['auto', 'Automatisch (Satin)'], ['satin', 'Satin'], ['tatami', 'Füllung (Tatami)']] : ST_ALL.map(([v, l]) => [v, v === 'auto' ? `Automatisch (${ST_NAME[res] || res})` : l]), mod: stc !== 'auto', reset: () => this.setStc(i, c, 'auto') })].concat((PK[eff] || []).map(pRow)), garnLabel(selO.colors[c]));
+    sec('ul', 'Unterlage', PK.unterlage.map(pRow)); sec('zug', 'Zugausgleich', PK.zug.map(pRow)); sec('ende', 'Ein-/Ausstich', PK.ende.map(pRow));
+    return sections;
+  }
+
+  renderVals() {
+    const st = this.state, d = st.d, isWizard = this.mode() === 'einfach', isWork = !isWizard, scrId = this.screen(), b = this.built(), E = this.E, V = this.vstate();
+    const scr = {}; ['projekte', 'gestalten', 'rahmen', 'stoff', 'vorschau', 'senden'].forEach(k => scr[k] = k === scrId);
+    const stepIdx = STEPS.findIndex(s => s[0] === scrId), total = b ? b.total : 0, over = b ? b.over : 0, fits = over < 0.05, blocks = b ? b.blocks : [];
+    let wechsel = 0; blocks.forEach((x, i) => { if (i && (!d.merge || x.hex !== blocks[i - 1].hex)) wechsel++; });
+    const zeit = total ? `ca. ${Math.max(1, Math.round(total / 550 + wechsel * 0.8))} min` : '–';
+    const designSize = b && b.objs.length ? `${mm1(b.bw)} × ${mm1(b.bh)} mm` : '–';
+    const fitText = !b ? '…' : fits ? 'Passt in den Rahmen' : `Ragt ${mm1(over)} mm über das Stickfeld`;
+    const hoop = HOOPS.find(h => h.id === d.hoop) || HOOPS[2], stoff = STOFFE.find(s => s.id === d.stoff) || STOFFE[0], selO = d.objs[st.sel];
+    const thumbs = {}; this.thumbs = thumbs;
+    const motifs = E ? E.MOTIVE.filter(m => (st.kat === 'Alle' || m.kat === st.kat) && (!st.suche || m.name.toLowerCase().includes(st.suche.toLowerCase()))).map(m => { const key = 'm:' + m.id; thumbs[key] = { objs: [{ t: 'motiv', m: m.id, w: m.w, h: m.h, x: 0, y: 0, rot: 0, st: 'auto', colors: snap(m.farben) }] }; return { key, name: m.name, meta: `${m.farben.length} ${m.farben.length > 1 ? 'Farben' : 'Farbe'} · ${m.kat}`, pick: () => this.pickMotif(m) }; }) : [];
+    const txEditing = selO && selO.t === 'text', tx = txEditing ? selO : st.draft, setTx = patch => txEditing ? this.setObj(st.sel, patch) : this.setState(s => ({ draft: { ...s.draft, ...patch } }));
+    const selFont = SCHRIFTEN.find(f => f.id === (selO && selO.font)) || SCHRIFTEN[0];
+    const bw = b ? b.bw : 0, bh = b ? b.bh : 0, fitsHoop = h => { const w = d.gedreht ? h.h : h.w, hh = d.gedreht ? h.w : h.h; return bw <= w + 0.01 && bh <= hh + 0.01; };
+    const rec = HOOPS.filter(fitsHoop).sort((a, c) => a.w * a.h - c.w * c.h)[0];
+    const hoops = HOOPS.map(h => { const w = d.gedreht ? h.h : h.w, hh = d.gedreht ? h.w : h.h, k = 70 / Math.max(w, hh), on = h.id === d.hoop, ok = fitsHoop(h);
+      return { name: h.name, use: h.use, dims: `${w} × ${hh} mm`, sw: Math.round(w * k) + 'px', sh: Math.round(hh * k) + 'px', rad: h.oval ? '999px' : '4px', dw: Math.round(Math.min(bw * k, w * k + 10)) + 'px', dh: Math.round(Math.min(bh * k, hh * k + 10)) + 'px', dc: ok ? 'var(--color-accent)' : 'var(--color-neutral-600)', rec: !!rec && rec.id === h.id, small: !ok, bc: on ? SEL : DIV, bg: on ? TINT : 'transparent', op: ok || on ? 1 : 0.6, pick: () => this.setD({ hoop: h.id }) }; });
+    let acc = 0; const done = Math.round(st.sim.pos * total);
+    const seq = blocks.map((x, i) => { const p = Math.max(0, Math.min(1, (done - acc) / (x.n || 1))); acc += x.n; const o = d.objs[x.oi] || {};
+      return { n: i + 1, hex: x.hex, label: gl(x.hex), sub: `${nf(x.n)} Stiche · ${o.t === 'text' ? 'Text' : o.name || ''}`, same: d.merge && i > 0 && blocks[i - 1].hex === x.hex, pct: Math.round(p * 100) + '%', dropLine: st.dropAt === i && st.dragI !== i ? SEL : 'transparent',
+        dstart: e => { e.dataTransfer && (e.dataTransfer.effectAllowed = 'move'); try { e.dataTransfer.setData('text/plain', String(i)); } catch (_) {} this.setState({ dragI: i }); },
+        dover: e => { e.preventDefault(); if (st.dropAt !== i) this.setState({ dropAt: i }); }, drop: e => { e.preventDefault(); this.moveBlockTo(this.state.dragI, i); this.setState({ dragI: -1, dropAt: -1 }); }, dend: () => this.setState({ dragI: -1, dropAt: -1 }) }; });
+    // Einfach-Inspector
+    const areaIdx = selO && st.area >= 0 && st.area < (selO.colors || []).length ? st.area : -1, ob = b && selO ? b.objs[st.sel] : null;
+    const areas = selO ? (selO.colors || []).map((hex, c) => { const stc = (selO.stc && selO.stc[c]) || selO.st || 'auto', res = ob && ob.res ? ob.res[c] : 'satin';
+      const opts = selO.t === 'text' ? [['auto', 'Stichart: Automatisch (Satin)'], ['satin', 'Satin'], ['tatami', 'Füllung']] : [['auto', `Stichart: Automatisch (${ST_NAME[res] || res})`], ['satin', 'Satin'], ['tatami', 'Füllung'], ['lauf', 'Linie (nur Kontur)']];
+      return { hex, title: selO.t === 'text' ? 'Schrift' : `Fläche ${c + 1}`, label: gl(hex), bar: c === areaIdx ? SEL : 'transparent', bg: c === areaIdx ? TINT : 'transparent', pick: () => this.setState({ area: c === areaIdx ? -1 : c, palFam: null, palQ: '' }), st: stc === 'fuell' ? 'tatami' : stc, onSt: e => this.setStc(st.sel, c, e.target.value), opts: opts.map(([v, l]) => ({ v, l, sel: v === (stc === 'fuell' ? 'tatami' : stc) })) }; }) : [];
+    const curHex = areaIdx >= 0 ? selO.colors[areaIdx] : null, q = st.palQ.trim().toLowerCase();
+    const palList = GARNE.filter(g => (!st.palFam || g.fam === st.palFam) && (!q || g.nr.includes(q) || g.name.toLowerCase().includes(q)));
+    const palette = palList.map(g => ({ hex: g.hex, title: `Nr. ${g.nr} · ${g.name}`, ring: g.hex === curHex ? RING : 'none', pick: () => { const colors = selO.colors.slice(); colors[areaIdx] = g.hex; this.setObj(st.sel, { colors }); this.setState({ meldung: `Farbe geändert: Nr. ${g.nr} · ${g.name}` }); } }));
+    const fams = [{ name: 'Alle', hex: 'conic-gradient(#d33,#eb3,#4a4,#39c,#83c,#d33)', ring: !st.palFam ? RING : 'none', pick: () => this.setState({ palFam: null }) }].concat(FAM.map(([name], fi) => ({ name, hex: GARNE[fi * 10 + 4].hex, ring: st.palFam === name ? RING : 'none', pick: () => this.setState({ palFam: name }) })));
+    const so = selO ? { w: Math.round(selO.w || 0), h: selO.h, rot: selO.rot || 0, text: selO.text || '' } : { w: 0, h: 0, rot: 0, text: '' }, num = e => parseFloat(e.target.value) || 0, inRange = selO && selO.t === 'text' ? selO.h >= selFont.min : true;
+    // Ebenen (Erweitert)
+    const layers = d.objs.map((o, i) => { const oo = b && b.objs[i]; return { name: o.t === 'text' ? `„${o.text}“` : o.name, icon: o.t === 'text' ? I.text : I.motiv, size: o.t === 'text' ? `${mm1(o.h)} mm` : `${Math.round(o.w)} × ${Math.round(o.h)}`, bg: i === st.sel && areaIdx < 0 ? TINT : 'transparent', bar: i === st.sel ? SEL : 'transparent', pick: () => this.setState({ sel: i, area: -1 }), del: () => this.removeObj(i),
+      areas: (o.colors || []).map((hex, c) => { const stc = (o.stc && o.stc[c]) || o.st || 'auto', res = oo && oo.res ? oo.res[c] : ''; return { hex, title: `${o.t === 'text' ? 'Schrift' : 'Fläche ' + (c + 1)} · ${gl(hex)}`, st: stc === 'auto' ? `Auto · ${ST_NAME[res] || res}` : ST_NAME[stc === 'fuell' ? 'tatami' : stc] || stc, bar: i === st.sel && c === st.area ? SEL : 'transparent', bg: i === st.sel && c === st.area ? TINT : 'transparent', pick: () => this.setState({ sel: i, area: c }) }; }) }; });
+    // Senden
+    const sd = st.send, bytes = Math.round(total * 2.4 + 1400), phIdx = { bereit: -1, verbinden: 0, uebertragen: 1, fertig: 2 }[sd.phase];
+    const phases = [['Verbinden', sd.port], ['Design übertragen', `${mm1(bytes * Math.min(1, sd.prog) / 1024)} von ${mm1(bytes / 1024)} KB`], ['Fertig', '']].map(([label, info], i) => ({ label, info: i <= phIdx ? info : '', done: i < phIdx || phIdx === 2, active: i === phIdx && phIdx < 2, bar: i === 1 && phIdx >= 1, pct: Math.round((phIdx > 1 ? 1 : sd.prog) * 100) + '%', fg: i <= phIdx ? 'var(--color-text)' : MUTED, ring: i <= phIdx ? SEL : DIV }));
+    const curStop = blocks.findIndex((x, i) => !sd.done[i]);
+    const stops = blocks.map((x, i) => ({ hex: x.hex, label: `${i + 1}. ${gl(x.hex)}`, sub: i === curStop && i > 0 ? `Garn wechseln · ${nf(x.n)} Stiche` : `${nf(x.n)} Stiche`, done: !!sd.done[i], cur: i === curStop, bg: i === curStop ? TINT : 'transparent', bar: i === curStop ? SEL : 'transparent', toggle: () => this.setState(s => { const dn = s.send.done.slice(); dn[i] = !dn[i]; return { send: { ...s.send, done: dn } }; }) }));
+    const checks = [`Rahmen ${hoop.name.replace('artista ', '')} eingesetzt`, `Stoff mit Vlies eingespannt (${stoff.name})`, blocks[0] ? `Erstes Garn eingefädelt: ${gl(blocks[0].hex)}` : 'Garn eingefädelt'].map((label, i) => ({ label, on: sd.checks[i], toggle: () => this.setState(s => { const c = s.send.checks.slice(); c[i] = !c[i]; return { send: { ...s.send, checks: c } }; }) }));
+    const projekte = PROJEKTE.filter(p => st.projFilter === 'Alle' || p.status === st.projFilter || (st.projFilter === 'Entwürfe' && p.status === 'Entwurf')).map(p => { const key = 'p:' + p.id; thumbs[key] = p.d; const h = HOOPS.find(x => x.id === p.d.hoop), pb = E ? E.build(p.d, { w: 999, h: 999 }) : null;
+      return { key, fab: (STOFFE.find(s => s.id === p.d.stoff) || STOFFE[0]).farbe, name: p.d.name, kunde: p.d.kunde, stueck: p.d.stueck, hoop: h ? h.name.replace('artista ', '') : '', stiche: pb ? nf(pb.total) : '–', datum: p.datum, status: p.status, cls: p.status === 'Entwurf' ? 'tag tag-neutral' : p.status === 'Gesendet' ? 'tag tag-outline' : 'tag tag-accent',
+        open: e => { e && e.stopPropagation && e.stopPropagation(); this.setState({ d: JSON.parse(JSON.stringify(p.d)), sel: -1, area: -1, screen: 'gestalten', zoom: 1, center: null, meldung: `Geöffnet: ${p.d.name}`, send: { ...st.send, phase: 'bereit', prog: 0, done: [] } }); } }; });
+    const art = scrId === 'gestalten', tabIds = isWork ? [['ebenen', 'Ebenen'], ['bibliothek', 'Motive'], ['bild', 'Bild'], ['text', 'Text']] : [['bibliothek', 'Bibliothek'], ['bild', 'Bild / Logo'], ['text', 'Text']], tabCur = !isWork && st.tab === 'ebenen' ? 'bibliothek' : st.tab;
+    const helpItems = isWizard && art ? [{ k: 'Ziehen', v: 'verschieben' }, { k: 'Ecke', v: 'größer / kleiner' }, { k: 'Kreis', v: 'drehen' }, { k: 'Fläche anklicken', v: 'Farbe & Stichart' }, { k: 'Mausrad', v: 'zoomen' }] : isWizard && scrId === 'rahmen' ? [{ k: 'Ziehen', v: 'verschiebt alles' }, { k: 'Ecke', v: 'skaliert alles gemeinsam' }, { k: 'Mausrad', v: 'zoomen' }] : [];
+    return {
+      d, scr, isWizard, isWork, hasKunde: !!d.kunde && d.kunde !== 'privat', showKunde: isWizard && !!d.kunde && d.kunde !== 'privat', panelW: isWizard ? (art ? 'min(380px, 30vw)' : 'min(380px, 34vw)') : 'min(300px, 26vw)',
+      onName: e => this.setD({ name: e.target.value }), setEinfach: () => this.setState({ mode: 'einfach', screen: scrId === 'projekte' ? 'gestalten' : scrId }), setErweitert: () => this.setState({ mode: 'erweitert', tab: 'ebenen', zoom: 1, center: null }),
+      machineShort: sd.phase === 'bereit' ? `${sd.port} · bereit` : sd.phase === 'fertig' ? 'übertragen' : 'überträgt …', machineLabel: `artista 185 · ${sd.port}`, machineDot: sd.phase === 'bereit' || sd.phase === 'fertig' ? 'var(--color-accent)' : 'var(--color-accent-300)',
+      save: () => this.setState({ meldung: `Gespeichert: ${d.name} · ${new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}` }),
+      goProjekte: () => this.setState({ screen: 'projekte', prev: scrId }), closeProjekte: () => this.go(st.prev && st.prev !== 'projekte' ? st.prev : 'gestalten'), goSenden: () => this.go('senden'), backToWork: () => this.go('gestalten'),
+      showStepper: isWizard && scrId !== 'projekte',
+      steps: STEPS.map(([id, label], i) => { const cur = i === stepIdx, dn = i < stepIdx; return { label, mark: dn ? '✓' : String(i + 1), go: () => this.go(id), bar: cur ? SEL : 'transparent', fg: cur || dn ? 'var(--color-text)' : MUTED, ring: cur || dn ? SEL : DIV, numBg: cur ? SEL : 'transparent', numFg: cur ? 'var(--color-bg)' : dn ? 'var(--color-accent)' : MUTED }; }),
+      tabs: tabIds.map(([id, label]) => ({ label, on: tabCur === id, pick: () => this.setState({ tab: id }) })), tab: { ebenen: tabCur === 'ebenen', bibliothek: tabCur === 'bibliothek', bild: tabCur === 'bild', text: tabCur === 'text' }, layers,
+      suche: st.suche, onSuche: e => this.setState({ suche: e.target.value }), kats: ['Alle', 'Natur', 'Formen', 'Embleme', 'Tiere', 'Bordüren'].map(k => ({ label: k, cls: k === st.kat ? 'tag tag-accent' : 'tag tag-outline', pick: () => this.setState({ kat: k }) })), motifs,
+      imp: st.imp, onImpN: e => this.setState(s => ({ imp: { ...s.imp, n: +e.target.value } })), onImpBg: () => this.setState(s => ({ imp: { ...s.imp, bg: !s.imp.bg } })),
+      impRows: IMP_SRC.slice(0, st.imp.n).map(src => { const g = nearest(src); return { src, hex: g.hex, label: `Nr. ${g.nr} · ${g.name}` }; }),
+      digitalisieren: () => this.addObj({ t: 'motiv', m: 'abzeichen', name: 'Logo (digitalisiert)', w: 64, h: 64, x: 0, y: 0, rot: 0, st: 'auto', colors: snap(IMP_SRC.slice(0, 3)) }, `Logo mit ${st.imp.n} Farben digitalisiert und eingefügt.`),
+      tx, txLabel: txEditing ? 'Gewählten Text bearbeiten' : 'Neuer Text', onTxText: e => setTx({ text: e.target.value }),
+      schriften: SCHRIFTEN.map(f => ({ name: f.name, min: f.min, sample: tx.text || f.name, preview: f.css(20), bc: f.id === tx.font ? SEL : DIV, bg: f.id === tx.font ? TINT : 'transparent', pick: () => setTx({ font: f.id }) })),
+      insertText: () => this.insertText(tx), insertLabel: txEditing ? 'Als neuen Text einfügen' : 'Text einfügen',
+      designSize, onGedreht: () => this.setD(x => ({ gedreht: !x.gedreht })), hoops, fitHoop: () => this.scaleAll(1, true), centerAll: () => this.centerAll(),
+      stoffe: STOFFE.map(s => ({ ...s, bc: s.id === d.stoff ? SEL : DIV, bg: s.id === d.stoff ? TINT : 'transparent', pick: () => this.setD({ stoff: s.id }) })), vliesTipp: `${stoff.name} → ${stoff.vlies}.`,
+      seq, onMerge: () => this.setD(x => ({ merge: !x.merge })),
+      showInspector: isWizard && art, hasSel: !!selO, noSel: !selO, selIsMotiv: !!selO && selO.t === 'motiv', selIsText: !!selO && selO.t === 'text', so,
+      selIcon: selO && selO.t === 'text' ? I.text : I.motiv, selName: selO ? (selO.t === 'text' ? `„${selO.text}“` : selO.name) : '',
+      dup: () => selO && this.addObj({ ...JSON.parse(JSON.stringify(selO)), x: selO.x + 8, y: selO.y + 8 }, 'Dupliziert.'), delSel: () => this.removeObj(st.sel),
+      areas, hasArea: areaIdx >= 0, palQ: st.palQ, onPalQ: e => this.setState({ palQ: e.target.value }), fams, palette, palHint: curHex ? `Aktuell: ${gl(curHex)} · ${palList.length} angezeigt` : '',
+      onSelText: e => this.setObj(st.sel, { text: e.target.value }), sizeLabel: selO && selO.t === 'text' ? 'Buchstabenhöhe' : 'Größe (Ecken ziehen oder eingeben)',
+      onW: e => { const w = num(e); if (selO && selO.w) this.setObj(st.sel, { w, h: Math.round(selO.h * w / selO.w * 10) / 10 }); }, onH: e => { const h = num(e); if (selO && selO.h) this.setObj(st.sel, { h, w: Math.round(selO.w * h / selO.h * 10) / 10 }); }, onTH: e => this.setObj(st.sel, { h: num(e) }),
+      txRec: `${selFont.name}: ab ${selFont.min} mm gut lesbar${inRange ? '' : ' – kleiner wird unsauber'}`, txRecColor: inRange ? MUTED : 'var(--color-accent-800)',
+      onRot: e => this.setObj(st.sel, { rot: num(e) }), rot0: () => this.setObj(st.sel, { rot: 0 }),
+      showParams: isWork && scrId === 'gestalten', psecs: isWork ? this.paramSections(selO, b) : [], paramCtx: selO ? (st.area >= 0 ? `Fläche ${st.area + 1}` : 'Objekt') : 'Design',
+      showToolbar: V.zoomable && scrId !== 'projekte', vmodes: [['form', 'Form'], ['stiche', 'Stiche'], ['sim', 'Simulation']].map(([id, label]) => ({ label, on: st.vmode === id, pick: () => this.setState({ vmode: id, sim: id === 'sim' ? { ...st.sim, pos: 0 } : st.sim }) })),
+      showHoop: st.showHoop, tHoop: () => this.setState(s => ({ showHoop: !s.showHoop, center: null, zoom: 1 })), isSim: st.vmode === 'sim',
+      zoomPct: Math.round(st.zoom * 100) + ' %', zoomIn: () => this.zoomBy(1.25), zoomOut: () => this.zoomBy(0.8), zoomFit: () => this.setState({ zoom: 1, center: null }),
+      togglePlay: () => this.togglePlay(), playIcon: st.sim.play ? I.pause : I.play, simStart: () => this.setState(s => ({ sim: { ...s.sim, pos: 0, play: false } })),
+      simVal: Math.round(st.sim.pos * 1000), onSim: e => this.setState(s => ({ sim: { ...s.sim, pos: +e.target.value / 1000 } })), simNow: nf(done),
+      speedOpts: [1, 5, 20].map(k => ({ label: k + '×', on: st.sim.speed === k, pick: () => this.setState(s => ({ sim: { ...s.sim, speed: k } })) })),
+      statStiche: nf(total), statWechsel: String(wechsel), statZeit: zeit,
+      send: sd, portInfo: sd.port === 'COM3' ? 'Über USB-Kabel verbunden' : 'Ohne Maschine ausprobieren', onPort: e => this.setState(s => ({ send: { ...s.send, port: e.target.value } })), checks,
+      tSticken: () => this.setState(s => ({ send: { ...s.send, sticken: !s.send.sticken } })), notFits: !fits, sendDisabled: !fits || !total, startSend: () => this.startSend(),
+      sendIdle: sd.phase === 'bereit', sendBusy: sd.phase !== 'bereit', sendDone: sd.phase === 'fertig', phases, stops, doneTitle: sd.sticken ? 'Übertragen – die Maschine stickt' : 'Übertragen – Start an der Maschine drücken',
+      resetSend: () => this.setState(s => ({ send: { ...s.send, phase: 'bereit', prog: 0, done: [] } })),
+      wrapRef: el => this.setWrap(el), cvRef: el => this.setCv(el), onDown: e => this.canvasDown(e), onHover: e => this.hover(e),
+      showTags: !(V.rulers && !V.hoop), canvasTags: [], canvasInfo: V.hoop ? `Rahmen ${hoop.name.replace('artista ', '')}${d.gedreht ? ' quer' : ''} · ${stoff.name}` : '',
+      showFit: !!V.hoop, hasHelp: helpItems.length > 0, fitText, fitCls: fits ? 'tag tag-accent' : 'tag tag-outline', helpItems,
+      projFilters: ['Alle', 'Entwürfe', 'Gesendet', 'Gestickt'].map(f => ({ label: f, on: st.projFilter === f, pick: () => this.setState({ projFilter: f }) })), projekte,
+      newProject: () => this.setState({ d: { name: 'Neues Projekt', kunde: '', stueck: 1, hoop: 'h130', stoff: 'std', gedreht: false, merge: true, order: null, objs: [] }, sel: -1, area: -1, screen: 'gestalten', tab: 'bibliothek', zoom: 1, center: null, meldung: 'Neues Projekt angelegt.' }),
+      showWizardNav: isWizard && scrId !== 'projekte', atFirst: stepIdx <= 0, hasNext: stepIdx >= 0 && stepIdx < STEPS.length - 1, nextLabel: STEPS[Math.min(STEPS.length - 1, stepIdx + 1)][1],
+      stepHint: stepIdx >= 0 ? `Schritt ${stepIdx + 1} von 5 · ${HINTS[stepIdx]}` : '', back: () => this.go(STEPS[Math.max(0, stepIdx - 1)][0]), next: () => this.go(STEPS[Math.min(4, stepIdx + 1)][0]),
+      meldung: st.meldung || `Design „${d.name}“`,
+    };
+  }
+}
+function garnLabel(hex) { return hex ? gl(hex) : ''; }
+</script>
+</body>
+</html>
