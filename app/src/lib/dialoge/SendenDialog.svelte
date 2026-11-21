@@ -8,8 +8,16 @@
   import { garnText } from "../listen.svelte";
   import { ANLEITUNG_RAHMEN, maschine, naechsteSchritte, SIMULATION } from "../maschine.svelte";
   import { ganz } from "../zahl";
+  import { zufallsSpruch } from "../sprueche";
+  import { untrack } from "svelte";
 
   const STUFEN = ["1 Anschluss", "2 Plan prüfen", "3 Übertragen", "4 Ergebnis"];
+
+  // Zufallsspruch im Ergebnis (Wunsch Nutzer; die Meldung am Ende des Stickens zeigt die Maschine selbst)
+  let spruch = $state("");
+  $effect(() => {
+    if (maschine.phase === "fertig") untrack(() => (spruch = zufallsSpruch(spruch)));
+  });
   const stufe = $derived(
     { anschluss: 0, plan: 1, laeuft: 2, fertig: 3, fehler: maschine.plan ? 2 : 0 }[maschine.phase],
   );
@@ -139,6 +147,13 @@
           <span><b style="font-weight:600">{maschine.bericht.gestickt ? "Gesendet – die Maschine stickt." : maschine.bericht.gestickt === false ? "Gesendet – Sticken nicht bestätigt." : "Gesendet."}</b>
             Alles geschrieben und zurückgelesen – stimmt. PC-Modus verlassen: {maschine.bericht.sitzung.verlassen ? "bestätigt" : "nicht bestätigt"}.</span>
         </div>
+        {#if spruch}
+          <button
+            class="btn btn-ghost"
+            style="display:block; width:100%; text-align:left; margin:0 0 10px; padding:8px 11px; font-size:14px; font-style:italic; color:var(--color-accent); white-space:normal"
+            title="Noch ein Spruch"
+            onclick={() => (spruch = zufallsSpruch(spruch))}>„{spruch}“</button>
+        {/if}
         {#each maschine.bericht.schritte as s (s)}
           <div class="tl done"><span class="dot"><Icon d={IC.haken} /></span><span>{s}</span><span></span></div>
         {/each}

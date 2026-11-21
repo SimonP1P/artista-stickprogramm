@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Schrift: Stichart „automatisch“ (Wunsch Nutzer: große Schrift nicht als lockerer Satin; Commit COMMIT)
+## 21.11.2026 – Schrift: Stichart „automatisch“ (Wunsch Nutzer: große Schrift nicht als lockerer Satin; Commit db84764)
 - **Neu:** `stichart: "auto"` an `text` und `monogramm`: Satin, solange kein Satinstich (nach Höhe, Transformation,
   Verzerrung) länger als **8 mm** wird, sonst der ganze Text **Step** (eigene Erweiterung; Grenze wie EasyStitch,
   Handbuch S. 118). Ohne Angabe bleibt Satin wie im Original.
@@ -148,5 +148,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `19c8b6e` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `db84764` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
