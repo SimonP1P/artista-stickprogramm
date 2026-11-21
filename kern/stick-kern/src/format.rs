@@ -386,7 +386,9 @@ impl PunktAngabe {
 
     /// Punkte samt Markierung „Eckpunkt“ (wie beim Digitalisieren im Original: Eckpunkt oder Kurvenpunkt).
     /// Punktlisten und Rechteckecken sind Eckpunkte; Kreis, Bogen und Bézier liefern Kurvenpunkte, nur ihre Enden
-    /// sind Ecken. Beim Verbinden zählt die Nahtstelle als Ecke (eigene Festlegung).
+    /// sind Ecken. Beim Verbinden zählt die Nahtstelle als Ecke – außer zwischen zwei Bézierstücken, die ohne Knick
+    /// ineinander übergehen (Anfasser auf einer Linie, < 1°): das ist ein Kurvenknoten wie im Original (eigene
+    /// Festlegung; so bleiben in Knoten umgewandelte Kreise ohne Ecken, `umwandeln`).
     pub fn punkte_mit_ecken(&self) -> (Linie, Vec<bool>) {
         match self {
             PunktAngabe::Liste(_) | PunktAngabe::Form(Form::Rechteck { .. }) => {
@@ -396,12 +398,14 @@ impl PunktAngabe {
             }
             PunktAngabe::Form(Form::Verbinden(teile)) => {
                 let (mut out, mut ecken): (Linie, Vec<bool>) = (Vec::new(), Vec::new());
+                let mut vorher: Option<&PunktAngabe> = None;
                 for t in teile {
                     let (pts, e) = t.punkte_mit_ecken();
                     let start = usize::from(matches!((out.last(), pts.first()), (Some(l), Some(f)) if l == f));
                     if let (1, Some(letzte)) = (start, ecken.last_mut()) {
-                        *letzte = true;
+                        *letzte = !vorher.is_some_and(|v| ohne_knick(v, t));
                     }
+                    vorher = Some(t);
                     out.extend_from_slice(&pts[start..]);
                     ecken.extend_from_slice(&e[start..]);
                 }
@@ -414,6 +418,21 @@ impl PunktAngabe {
             }
         }
     }
+}
+
+/// Gehen zwei Bézierstücke ohne Knick ineinander über (Richtung am Ende von `a` = Richtung am Anfang von `b`)?
+fn ohne_knick(a: &PunktAngabe, b: &PunktAngabe) -> bool {
+    let (PunktAngabe::Form(Form::Bezier(a)), PunktAngabe::Form(Form::Bezier(b))) = (a, b) else {
+        return false;
+    };
+    let (u, v) = ((a[3].x - a[2].x, a[3].y - a[2].y), (b[1].x - b[0].x, b[1].y - b[0].y));
+    let (lu, lv) = (u.0.hypot(u.1), v.0.hypot(v.1));
+    if lu < 1e-9 || lv < 1e-9 {
+        return false;
+    }
+    let kreuz = (u.0 * v.1 - u.1 * v.0) / (lu * lv);
+    let punkt = (u.0 * v.0 + u.1 * v.1) / (lu * lv);
+    punkt > 0.0 && kreuz.abs() < 1f64.to_radians().sin()
 }
 
 // ---------------------------------------------------------------- Standardwerte

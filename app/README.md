@@ -24,7 +24,7 @@
 | E3 Maschine | Maschinen-Befehle in `kern/stick-api` (App hat nur noch `kern`); Maschinen-Knopf im Kopf (Anschluss, Prüfen, Designs aus der Maschine), Simulationsband; **Senden in 4 Stufen**: Anschluss (+ Anleitung nach Rahmenwechsel, Pflicht-Haken, wenn der Rahmen seit dem letzten Senden gewechselt hat) → Plan nur gelesen (Schreibzugriffe mit Größe, Vorschaubild/Garnfarben wählbar, Hinweise) → „Bestätigen und schreiben“ → Übertragen (Fortschritt je Teil, Wiederholungen, **Abbrechen**, „Im Hintergrund weiter“) → Ergebnis (Farbfolge mit Garnen, Mitschnitt); Fehler mit Code und nächsten Schritten; **Sticken nur über den Gefahrendialog** (3 Haken; überträgt erneut und gibt Befehl 0x08); „Designs aus der Maschine“ (Liste, lesen, ansehen, EXP); Assistent Schritt 4; Senden gesperrt mit Grund. Am Gerät noch nicht erprobt – nur Simulation | ✅ 21.11.2026 (Simulation) |
 | E4 Experte I | Menüs **Einfügen** (alle 13 Objektarten inkl. Knopfloch, Bild, SVG; „kommt noch“ deaktiviert) und **Anordnen** (an Anfang/Ende, eins vor/zurück, wie ausgewählt, vor/nach Nr., nach Farbe mit Farbfolge, Überdeckung und Vorschau der Farbwechsel) über `reihenfolge_aendern`, **Warnung bei Überdeckung** mit Rückgängig; Werkzeugleiste (fügt Objekte mit Startform ein); **Objektliste** (Color Film: Ziehen, Duplizieren, Löschen, Marken „über N“ aus `ueberdeckungen`, Fehler); **Inspektor** Objekt (Felder aus dem Schema des Kerns: oben die E-Felder je Art, „Stichart – Feinheiten“ mit X, Garn, Alphabet, Schrift, Füllmuster, Step-Muster, Aussparen, Größe und Lage, Verstärken, Auto Jump, Ein-/Ausstich) und Design (Rahmen, Stoff, Garnkarte, ganzes Design, Start/Ende, kürzeste Verbindung, Kennzahlen, Farbstopps); Tasten Entf, Strg+D, Alt+↑/↓ | ✅ 21.11.2026 |
 | E5 Experte II | Vorschau: **Griffe** (gewählte Objekte ziehen = verschieben, Eckgriffe = skalieren, Drehgriff = drehen, Umschalt = 15°-Schritte; Live-Vorschau, danach rechnet der Kern neu), Pfeiltasten 0,5/5 mm, **Ein-/Ausstich setzen** (Werkzeuge, Marken E/A); **Abspielen** (Stickfolge mit Nadel, Farbstopp-Marken, Regler); Inspektor **Einzelwerte** (Parameterkatalog, Ebene Design/Objekt, Herkunft Standard/Stoff/Design/geändert, Zurücksetzen) und **JSON** (Prüfung beim Tippen mit `design_pruefen`, Übernehmen); Dialoge **Füllmuster** (Kacheln aus `fuellmuster_liste`) und **Step-Muster** (Kacheln aus `step_muster_liste`) | ✅ 21.11.2026 |
-| E6 Abschluss | **Knoten-Werkzeug** (W5, Oberfläche: Punkte der Punktlisten `punkte`/`umriss`/`seite_a`/`seite_b`/Löcher ziehen, Entf löscht, Einfg fügt ein – bei Objekten ohne Transformation; Formen und transformierte Objekte: Umwandeln in Punkte fehlt noch im Kern), Darstellung hell/dunkel (Menü Datei, sonst wie das System), Mac: EXP statt Senden, Maschine nur als Simulation | ✅ 21.11.2026 |
+| E6 Abschluss | **Knoten-Werkzeug** (W5, Oberfläche: Punkte der Punktlisten `punkte`/`umriss`/`seite_a`/`seite_b`/Löcher ziehen, Entf löscht, Einfg fügt ein – bei Objekten ohne Transformation; **seit W5-Rest:** Bézier-Knoten mit Anfassern (□ Knoten, ○ Anfasser; Nahtstellen ziehen beide Stücke mit), Knopf „In Knoten umwandeln“ für Formen und transformierte Objekte → Kern `in_knoten_umwandeln`; Logik `src/lib/knoten.ts` – nur JSON, keine Geometrie), Darstellung hell/dunkel (Menü Datei, sonst wie das System), Mac: EXP statt Senden, Maschine nur als Simulation | ✅ 21.11.2026 |
 
 ## Ordner
 | Pfad | Inhalt |
@@ -48,8 +48,22 @@ cd app
 npm install                                   # einmalig
 npm run check                                 # Typprüfung (svelte-check)
 npm run tauri dev                             # Entwicklungsmodus
-npm run tauri build -- --debug --no-bundle    # Programm bauen (Mac: CARGO_TARGET_DIR=../kern/target)
+npm run tauri build -- --debug --no-bundle    # Programm bauen
 ```
+Mac: `CARGO_TARGET_DIR="$PWD/../kern/target"` davorsetzen (**absoluter** Pfad – ein relativer gilt für Cargo ab
+`src-tauri/` und legt sonst 2,6 GB unter `app/kern/target` an). Das gebaute Programm liegt dann in
+`kern/target/debug/artista-stickprogramm` und findet Alphabete/Garnkarten im Projektordner.
+
+### Selbst testen (Kurzanleitung für den Nutzer)
+1. Mac: `kern/target/debug/artista-stickprogramm app/werkzeuge/beispiele/handtuch_anna.json` (aus dem Projektordner),
+   oder Entwicklungsmodus: in `app/` `. ~/.cargo/env; CARGO_TARGET_DIR="$PWD/../kern/target" npm run tauri dev`.
+   Windows: wie oben bauen, Programm `F:\Entwicklung\target\debug\artista-stickprogramm.exe`.
+2. **Einfach:** Rahmen/Stoff → Text oder Monogramm → Farbstopps/Garn → Speichern/EXP.
+3. **Experte:** Einfügen, Griffe in der Vorschau, Inspektor (Objekt, Design, Einzelwerte, JSON), Anordnen,
+   Abspielen, Knoten-Werkzeug (bei Kreisen erst „In Knoten umwandeln“).
+4. **Maschine:** Anschluss „Simulation“ ist voreingestellt – Senden-Ablauf gefahrlos durchspielen. Mit COM3 spricht das
+   Programm mit der echten Maschine (Schreiben nur nach Bestätigung, Sticken nur über den Gefahrendialog; Ablauf
+   `../ROADMAP.md` „Vor Ort“ V10).
 Startoptionen: `artista-stickprogramm [DESIGN.json] [--experte] [--dunkel|--hell] [--auswahl N]` (Datei öffnen, Modus,
 Darstellung, gewähltes Objekt – für „Öffnen mit“ und Bildschirmfotos).
 

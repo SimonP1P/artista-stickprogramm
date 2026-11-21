@@ -154,6 +154,20 @@ fn alphabete_und_step_muster_fuer_auswahllisten() {
 /// Maschinen-Befehle mit der Simulation (schreibt nur in die Simulation): prüfen, planen, senden mit Fortschritt,
 /// Liste, lesen; Fehlercodes.
 #[test]
+fn in_knoten_umwandeln() {
+    let k = kontext();
+    let d = json!({"objekte": [
+        {"art": "tatami", "umriss": {"kreis": {"mitte": [0, 0], "radius": 10}}, "transform": {"drehen": 20}},
+        {"art": "text", "text": "A", "alphabet": "Swiss Block"}
+    ]});
+    let o = ausfuehren(&k, "in_knoten_umwandeln", json!({"design": d, "objekt": 0})).unwrap();
+    assert!(o.get("transform").is_none());
+    assert_eq!(o["umriss"]["verbinden"].as_array().unwrap().len(), 4);
+    let f = ausfuehren(&k, "in_knoten_umwandeln", json!({"design": d, "objekt": 1})).unwrap_err();
+    assert_eq!(f.objekt, Some(1));
+}
+
+#[test]
 fn maschine_in_der_simulation() {
     let k = kontext();
     let mitschnitte = std::env::temp_dir().join("stick_api_test_mitschnitte");

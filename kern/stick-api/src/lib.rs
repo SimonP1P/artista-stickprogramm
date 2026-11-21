@@ -272,6 +272,8 @@ befehle! {
     design_berechnen: befehle::DesignEingabe => befehle::Ergebnis,
     /// Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus
     design_formen: befehle::DesignEingabe => Vec<stick_kern::design::ObjektForm>,
+    /// Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug
+    in_knoten_umwandeln: befehle::ObjektEingabe => befehle::ObjektWert,
     /// Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes)
     exp_speichern: befehle::ExpEingabe => usize,
     /// Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe

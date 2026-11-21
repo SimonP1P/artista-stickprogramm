@@ -108,6 +108,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `design_pruefen` | schnelle Prüfung beim Tippen (Fehler mit Objektnummer, Hinweise), ohne Stiche |
 | `design_berechnen` | Stichvorschau, Kennzahlen, Garne – bei jeder Änderung |
 | `design_formen` | Formansicht und Griffe zum Bearbeiten mit der Maus |
+| `in_knoten_umwandeln` | Knoten-Werkzeug: „In Knoten umwandeln“ – Kreis/Oval/Bogen werden Bézierstücke (Knoten mit Anfassern wie im Original), Rechteck wird Eckpunkte, `transform` wird auf die Knoten angewandt (Stichwinkel, Satinbreiten mitgeführt); Ergebnis ersetzt das Objekt. Modus experte. Text/Monogramm/Knopfloch: Fehler (keine Knoten) |
 | `exp_speichern` | Datei → Stickdatei speichern |
 | `reihenfolge_aendern` | Menü „Anordnen“: nach Farbe, an Anfang/Ende, wie ausgewählt, vor/nach Nummer – mit Warnungen bei Überdeckung |
 | `ueberdeckungen` | Anzeige, welche Objekte sich überdecken (z. B. in der Objektliste) |

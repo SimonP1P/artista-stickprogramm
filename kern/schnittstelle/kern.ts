@@ -1175,6 +1175,13 @@ export type MusterJson = {
   winkel?: number | null;
 };
 
+/** Ein Objekt eines Designs. */
+export type ObjektEingabe = {
+  design: DesignWert;
+  /** Nummer des Objekts (ab 0) */
+  objekt: number;
+};
+
 /** Formen eines Objekts des Designs (`Design::formen`). */
 export type ObjektForm = {
   /** Ausstich [x, y], wenn gesetzt */
@@ -1218,6 +1225,9 @@ export type ObjektJson = ((LaufJson & {
 }) | (KnopflochJson & {
   art: "knopfloch";
 }));
+
+/** Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`). */
+export type ObjektWert = ObjektJson;
 
 /** Ein einstellbarer Wert des Parameterkatalogs (`PARAMETER.md`). */
 export type Parameter = {
@@ -1979,6 +1989,8 @@ export interface Befehle {
   garnkarten_liste: { eingabe: Leer; ausgabe: string[] };
   /** Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern */
   gelesen_exp_speichern: { eingabe: ExpZiel; ausgabe: number };
+  /** Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug */
+  in_knoten_umwandeln: { eingabe: ObjektEingabe; ausgabe: ObjektWert };
   /** Laufende Maschinen-Aktion abbrechen */
   maschine_abbrechen: { eingabe: Leer; ausgabe: boolean };
   /** Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen */
@@ -2031,6 +2043,7 @@ export const BEFEHLE = [
   "garnkarte_garne",
   "garnkarten_liste",
   "gelesen_exp_speichern",
+  "in_knoten_umwandeln",
   "maschine_abbrechen",
   "maschine_lesen",
   "maschine_liste",

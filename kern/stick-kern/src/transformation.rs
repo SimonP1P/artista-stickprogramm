@@ -91,7 +91,7 @@ impl Matrix {
         )
     }
 
-    fn linie(&self, l: &[Punkt]) -> Linie {
+    pub fn linie(&self, l: &[Punkt]) -> Linie {
         l.iter().map(|&q| self.punkt(q)).collect()
     }
 
@@ -100,7 +100,7 @@ impl Matrix {
     }
 
     /// Richtung (Grad) nach der Abbildung
-    fn winkel(&self, grad: f64) -> f64 {
+    pub fn winkel(&self, grad: f64) -> f64 {
         let (s, c) = grad.to_radians().sin_cos();
         let (x, y) = (self.a * c + self.b * s, self.c * c + self.d * s);
         y.atan2(x).to_degrees().rem_euclid(180.0)

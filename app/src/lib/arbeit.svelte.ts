@@ -259,6 +259,20 @@ class Arbeit {
     }
   }
 
+  /** Knoten-Werkzeug: Formen und Transformation des Objekts `nr` vom Kern in Knoten umwandeln lassen
+   *  (`in_knoten_umwandeln`); Rückgängig möglich. */
+  async inKnoten(nr: number) {
+    try {
+      const o = await kern("in_knoten_umwandeln", { design: JSON.parse(this.#schnappschuss()), objekt: nr });
+      this.aendern((d) => {
+        d.objekte![nr] = o;
+      });
+      this.zeige("In Knoten umgewandelt – Stiche neu berechnet", "ok");
+    } catch (x) {
+      this.zeige(alsFehler(x).meldung, "err");
+    }
+  }
+
   /** Warnung „Rückgängig“: alte Reihenfolge wiederherstellen */
   wiederherstellen(vorher: string) {
     this.ersetzen(JSON.parse(vorher), this.pfad, true);

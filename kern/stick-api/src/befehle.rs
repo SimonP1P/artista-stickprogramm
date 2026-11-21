@@ -12,7 +12,7 @@ use std::path::PathBuf;
 use stick_formate::{esb, exp, garnkarte, ttf};
 use stick_kern::design::ObjektForm;
 use stick_kern::einstellungen::STOFFE;
-use stick_kern::format::DesignJson;
+use stick_kern::format::{DesignJson, ObjektJson};
 use stick_kern::geometrie::Punkt;
 use stick_kern::parameter::Parameter;
 use stick_kern::rahmen::{Rahmen, alle_rahmen};
@@ -622,6 +622,38 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
 
 pub fn design_formen(k: &Kontext, e: DesignEingabe) -> Result<Vec<ObjektForm>, Fehler> {
     Ok(k.design(&e)?.formen()?)
+}
+
+/// Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`).
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
+#[serde(transparent)]
+pub struct ObjektWert(#[schemars(with = "ObjektJson")] pub Value);
+
+/// Ein Objekt eines Designs.
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct ObjektEingabe {
+    pub design: DesignWert,
+    /// Nummer des Objekts (ab 0)
+    pub objekt: usize,
+}
+
+/// Objekt in Knoten umwandeln (Knoten-Werkzeug): Kreis, Oval, Bogen → Bézierstücke, Rechteck → Eckpunkte,
+/// `transform` auf die Knoten angewandt (Stichwinkel und Satinbreiten mitgeführt). Ergebnis ersetzt das Objekt;
+/// Stiche danach wie gewohnt neu berechnen. Text, Monogramm, Knopfloch: Fehler (keine Knoten).
+pub fn in_knoten_umwandeln(k: &Kontext, e: ObjektEingabe) -> Result<ObjektWert, Fehler> {
+    let eingabe = DesignEingabe {
+        design: e.design,
+        rahmen: None,
+        stoff: None,
+    };
+    let d = k.design(&eingabe)?;
+    stick_kern::umwandeln::in_punkte(&d, &eingabe.design.0, e.objekt)
+        .map(ObjektWert)
+        .map_err(|m| Fehler {
+            objekt: Some(e.objekt),
+            ..Fehler::from(m)
+        })
 }
 
 /// Design und Zieldatei.

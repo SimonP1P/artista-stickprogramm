@@ -24,6 +24,7 @@
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import { EINFUEGEN, KOMMT_NOCH, neuesObjekt } from "$lib/einfuegen";
   import { listen } from "$lib/listen.svelte";
+  import { knotenBild } from "$lib/knoten";
   import type { ReihenfolgeBefehl } from "$kern/kern";
 
   let menue = $state<"datei" | "maschine" | "einfuegen" | "anordnen" | null>(null);
@@ -34,6 +35,7 @@
   let vorschau: Vorschau | undefined = $state();
   type Werkzeug = "auswahl" | "einstich" | "ausstich" | "knoten";
   let werkzeug = $state<Werkzeug>((globalThis as { __START__?: { werkzeug?: Werkzeug } }).__START__?.werkzeug ?? "auswahl");
+  const knotenZustand = $derived(werkzeug === "knoten" && arbeit.auswahl.length === 1 ? knotenBild(arbeit.objekte[arbeit.auswahl[0]]) : { knoten: [], linien: [], umwandeln: false });
 
   // Abspielen: Stickfolge Stich für Stich (nur Darstellung, keine Maschinen-Simulation)
   let bis = $state(0);
@@ -417,8 +419,13 @@
           <Vorschau bind:this={vorschau} bind:zoom bind:werkzeug {spruenge} {einstiche} {raster} bis={arbeit.ansicht === "abspielen" ? bis : null} />
           {#if werkzeug === "knoten"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px; max-width:520px">
-              <b style="font-weight:500">Knoten</b> – Punkte ziehen · gewählten Punkt mit Entf löschen, mit Einfg (oder +) dahinter einen einfügen · Esc beendet.
-              Formen wie Kreis/Rechteck und Objekte mit Größe/Drehung: Werte im Inspektor bzw. JSON (Umwandeln in Punkte kommt noch).
+              {#if knotenZustand.umwandeln}
+                <div style="display:flex; gap:10px; align-items:center; margin-bottom:6px">
+                  <span style="flex:1">Dieses Objekt hat {knotenZustand.knoten.length ? "auch " : ""}Formen (Kreis, Oval, Bogen, Rechteck) oder Größe/Drehung – zum Bearbeiten erst in Knoten umwandeln.</span>
+                  <button class="btn btn-primary" style="min-height:28px; padding:2px 10px" onclick={() => arbeit.inKnoten(arbeit.auswahl[0])}>In Knoten umwandeln</button>
+                </div>
+              {/if}
+              <b style="font-weight:500">Knoten</b> – Knoten (□) und Anfasser (○) ziehen · in Punktlisten: gewählten Punkt mit Entf löschen, mit Einfg (oder +) dahinter einen einfügen · Esc beendet.
             </div>
           {:else if werkzeug !== "auswahl"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px">

@@ -3197,6 +3197,26 @@
       ],
       "type": "object"
     },
+    "ObjektEingabe": {
+      "additionalProperties": false,
+      "description": "Ein Objekt eines Designs.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts (ab 0)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "design",
+        "objekt"
+      ],
+      "type": "object"
+    },
     "ObjektForm": {
       "description": "Formen eines Objekts des Designs (`Design::formen`).",
       "properties": {
@@ -3448,6 +3468,10 @@
           "type": "object"
         }
       ]
+    },
+    "ObjektWert": {
+      "$ref": "#/$defs/ObjektJson",
+      "description": "Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`)."
     },
     "Parameter": {
       "additionalProperties": false,
@@ -5869,6 +5893,15 @@
       "beschreibung": "Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern",
       "eingabe": {
         "$ref": "#/$defs/ExpZiel"
+      }
+    },
+    "in_knoten_umwandeln": {
+      "ausgabe": {
+        "$ref": "#/$defs/ObjektWert"
+      },
+      "beschreibung": "Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug",
+      "eingabe": {
+        "$ref": "#/$defs/ObjektEingabe"
       }
     },
     "maschine_abbrechen": {

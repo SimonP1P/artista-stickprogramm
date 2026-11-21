@@ -15,6 +15,16 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – In Knoten umwandeln (W5-Rest, Commit COMMIT)
+- **Neu:** Befehl `in_knoten_umwandeln {design, objekt}` → neues Objekt-JSON: Kreis/Oval/Bogen werden
+  `{"verbinden": [{"bezier": [p0, p1, p2, p3]}, …]}` (Knoten mit Anfassern wie im Original), Rechteck wird Eckpunkte,
+  `transform` wird auf die Knoten angewandt und entfällt (Stichwinkel `winkel`, Satin-/Blanket-/Applikationsbreiten
+  werden mitgeführt). Text, Monogramm, Knopfloch: Fehler mit `objekt`.
+- **Kern:** Zwei Bézierstücke, die ohne Knick ineinander übergehen, bilden beim Lauf einen Kurvenknoten (keine Ecke) –
+  umgewandelte Kreise sticken wie vorher.
+- **Oberfläche:** umgesetzt – Knoten-Werkzeug zeigt Bézier-Knoten (□) und Anfasser (○), Knopf „In Knoten umwandeln“
+  (`src/lib/knoten.ts`, `arbeit.inKnoten`).
+
 ## 21.11.2026 – Maschine in `stick-api` (Etappe E3, W10, Commit 3a464f6)
 - **Neu:** Befehle `maschine_ports`, `maschine_pruefen`, `maschine_planen`, `maschine_senden`, `maschine_abbrechen`,
   `maschine_liste`, `maschine_lesen`, `gelesen_exp_speichern` über `kern(…)` (vorher eigene Tauri-Befehle der App).

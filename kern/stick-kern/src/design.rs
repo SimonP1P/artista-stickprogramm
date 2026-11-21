@@ -1400,6 +1400,30 @@ impl Design {
 
     /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
     pub(crate) fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
+        let (out, fehlend, herkunft) = self.ungedreht_aufgeloest()?;
+        let out = self.transformieren(out, &herkunft)?;
+        let (out, herkunft) = self.aussparen_aufloesen(out, &herkunft)?;
+        Ok((out, fehlend, herkunft))
+    }
+
+    /// Matrix der Transformation von Objekt `nr` (`"transform"`, um die Mitte seiner aufgelösten Teile wie in
+    /// `transformieren`); `None` ohne Transformation. Für `umwandeln::in_punkte`.
+    pub fn objekt_matrix(&self, nr: usize) -> Result<Option<crate::transformation::Matrix>, String> {
+        let Some(t) = self.transformationen.get(&nr) else {
+            return Ok(None);
+        };
+        let (out, _, herkunft) = self.ungedreht_aufgeloest()?;
+        let teil: Vec<Objekt> = out
+            .into_iter()
+            .zip(herkunft)
+            .filter(|(_, h)| *h == nr)
+            .map(|(o, _)| o)
+            .collect();
+        Ok(Some(t.matrix(formmitte(&teil))?))
+    }
+
+    /// Objekte aufgelöst (Text, Knopfloch, Applikation, Satinfläche), noch ohne Transformation und Aussparen.
+    fn ungedreht_aufgeloest(&self) -> Result<Aufgeloest, String> {
         let mut out = Vec::new();
         let mut fehlend = Vec::new();
         // je aufgelöstem Objekt: Nummer des Objekts im Design (für das Aussparen nach Namen)
@@ -1505,8 +1529,6 @@ impl Design {
             }
             herkunft.resize(out.len(), nr);
         }
-        let out = self.transformieren(out, &herkunft)?;
-        let (out, herkunft) = self.aussparen_aufloesen(out, &herkunft)?;
         Ok((out, fehlend, herkunft))
     }
 

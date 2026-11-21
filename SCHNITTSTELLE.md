@@ -457,6 +457,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `garnkarte_garne` | GarnkartenName | GarnInfo[] | Garne einer Garnkarte (für die Auswahl von Hand) |
 | `garnkarten_liste` | Leer | string[] | Namen der Garnkarten (32 der CD) |
 | `gelesen_exp_speichern` | ExpZiel | number | Stichdaten des zuletzt gelesenen Maschinendesigns als EXP speichern |
+| `in_knoten_umwandeln` | ObjektEingabe | ObjektWert | Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug |
 | `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen |
 | `maschine_lesen` | LeseEingabe | GelesenInfo | Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen |
 | `maschine_liste` | Anschluss | ListenInfo | Designliste der Maschine – nur lesen |
