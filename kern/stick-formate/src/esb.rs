@@ -12,6 +12,7 @@ use std::io::Read;
 use std::path::{Path, PathBuf};
 use stick_kern::geometrie::{Linie, p};
 use stick_kern::knopfloch::{Lage, Teil, TeilArt, UmrissArt, Vorlage};
+use stick_kern::motiv::Motivsatz;
 use stick_kern::schrift::{
     Alphabet, EINHEIT, Knoten, Stichart, Umriss, Winkellinie, Zeichen, ZeichenObjekt, schienen_seiten, umriss_punkte,
 };
@@ -268,6 +269,11 @@ type ArtFunde = (Option<Option<f64>>, bool, Option<Option<f64>>, bool);
 
 /// Einen entschlüsselten Zeichen-Stream lesen (IMPORT.DLL 0x100c6230).
 pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
+    zeichen_mit_namen(d).map(|(_, z)| z)
+}
+
+/// Wie `zeichen_lesen`, dazu der ganze Name aus 0x3a (Motive: „709“, „a701“; Alphabete: ein Zeichen).
+pub fn zeichen_mit_namen(d: &[u8]) -> Result<(String, Zeichen), String> {
     let kopf: Vec<u32> = (0..9).filter_map(|k| u32_bei(d, 4 * k)).collect();
     if kopf.len() < 9
         || kopf[0] != 0x0d0a_1a0d
@@ -279,6 +285,7 @@ pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
     let folge = saetze_lesen(d, 0x24);
     let mut grundlinie = None;
     let mut zeichen = None;
+    let mut zeichen_name = String::new();
     let mut objekte: Vec<ZeichenObjekt> = Vec::new();
     // je Objekt: (Satin gesehen, Tatami, Lauf) zum Bestimmen der Stichart
     let mut arten: Vec<ArtFunde> = Vec::new();
@@ -304,7 +311,9 @@ pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
                             .map(|b| u16::from_le_bytes([b[0], b[1]]))
                     })
                     .collect();
-                zeichen = String::from_utf16_lossy(&utf).chars().next();
+                let name = String::from_utf16_lossy(&utf);
+                zeichen = name.chars().next();
+                zeichen_name = name;
             }
             continue;
         }
@@ -395,11 +404,14 @@ pub fn zeichen_lesen(d: &[u8]) -> Result<Zeichen, String> {
     }
     // Gruppen (0x08) und Objekte ohne Form tragen keine Stiche
     objekte.retain(|o| !o.umrisse.is_empty());
-    Ok(Zeichen {
-        zeichen: zeichen.ok_or("Zeichen fehlt (0x3a)")?,
-        grundlinie: grundlinie.ok_or("Grundlinie fehlt (0x2e)")?,
-        objekte,
-    })
+    Ok((
+        zeichen_name,
+        Zeichen {
+            zeichen: zeichen.ok_or("Zeichen fehlt (0x3a)")?,
+            grundlinie: grundlinie.ok_or("Grundlinie fehlt (0x2e)")?,
+            objekte,
+        },
+    ))
 }
 
 /// Kopf `\x06HEADER` (IMPORT.DLL 0x100040f0): Name und Buchstabenabstand (Anteil der Höhe).
@@ -487,6 +499,88 @@ pub fn verzeichnis(ordner: &Path) -> Vec<(String, PathBuf)> {
     }
     out.sort_by_key(|a| a.0.to_lowercase());
     out
+}
+
+// ---------------------------------------------------------------- Motivsätze (Ordner userletw/)
+
+/// Einen Motivsatz (Pattern Set, Handbuch Kap. 25; Ordner `userletw/`) laden: gleicher Aufbau wie ein Alphabet, die
+/// Streams heißen nach dem Motivnamen (UTF-16 hex, z. B. `003700300039` = „709“), der Name steht in 0x3a
+/// (`Analyse_Teil3/20_motive.md` §1). Defekte Motive werden übersprungen.
+pub fn motive_laden(pfad: &Path) -> Result<Motivsatz, String> {
+    let mut datei = cfb::open(pfad).map_err(|e| format!("{}: {e}", pfad.display()))?;
+    let eintraege: Vec<String> = datei
+        .read_root_storage()
+        .filter(|e| e.is_stream())
+        .map(|e| e.name().to_string())
+        .collect();
+    let mut name = String::new();
+    let mut motive = BTreeMap::new();
+    for n in eintraege {
+        let mut roh = Vec::new();
+        datei
+            .open_stream(format!("/{n}"))
+            .and_then(|mut s| s.read_to_end(&mut roh))
+            .map_err(|e| format!("{}: Stream {n}: {e}", pfad.display()))?;
+        if n.ends_with("HEADER") {
+            name = kopf_lesen(&roh)?.0;
+            continue;
+        }
+        if n.len() % 4 != 0 || !n.chars().all(|c| c.is_ascii_hexdigit()) {
+            continue; // AUX_INFO u. ä.
+        }
+        if let Some(d) = stream_entschluesseln(&roh)
+            && let Ok((m, z)) = zeichen_mit_namen(&d)
+            && !z.objekte.is_empty()
+        {
+            motive.insert(m, z);
+        }
+    }
+    if name.is_empty() {
+        name = pfad
+            .file_stem()
+            .map(|s| s.to_string_lossy().into_owned())
+            .unwrap_or_default();
+    }
+    Ok(Motivsatz { name, motive })
+}
+
+/// Ordner der Motivsätze neben dem Alphabet-Ordner: `motive/` daneben (Programm), `userletw/` daneben (entpackte CD)
+/// oder Unterordner gleichen Namens.
+pub fn motiv_ordner(alphabete: &Path) -> Option<PathBuf> {
+    let eltern = alphabete.parent().map(Path::to_path_buf).unwrap_or_default();
+    [
+        eltern.join("motive"),
+        eltern.join("userletw"),
+        alphabete.join("motive"),
+        alphabete.join("userletw"),
+    ]
+    .into_iter()
+    .find(|p| p.is_dir())
+}
+
+/// Die Motivsätze, die das Design braucht, aus einem Ordner laden (Name wie im Kopf oder Dateiname).
+pub fn design_motive_laden(design: &mut stick_kern::Design, ordner: &Path) -> Result<(), String> {
+    let namen = design.motiv_namen();
+    if namen.is_empty() {
+        return Ok(());
+    }
+    let liste = verzeichnis(ordner);
+    for n in namen {
+        if design.motivsaetze.contains_key(&n) {
+            continue;
+        }
+        let pfad = liste
+            .iter()
+            .find(|(name, p)| {
+                name.trim_start_matches('_').eq_ignore_ascii_case(n.trim_start_matches('_'))
+                    || p.file_stem()
+                        .is_some_and(|s| s.to_string_lossy().eq_ignore_ascii_case(&n))
+            })
+            .map(|(_, p)| p.clone())
+            .ok_or_else(|| format!("Motivsatz „{n}“ nicht im Ordner {} gefunden", ordner.display()))?;
+        design.motivsaetze.insert(n, motive_laden(&pfad)?);
+    }
+    Ok(())
 }
 
 // ---------------------------------------------------------------- Knopfloch-Vorlagen (ButtonHoles.ESB)

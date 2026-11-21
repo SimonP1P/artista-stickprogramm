@@ -281,6 +281,30 @@ pub fn umriss_punkte(u: &Umriss) -> Vec<(f64, f64)> {
     out
 }
 
+/// Punkte eines Laufs mit Stich auf jedem Knoten (Motive, `Analyse_Teil3/07` §1: das Original sticht Eckpunkte genau
+/// an): gerade Segmente (ohne Anfasser) nur mit ihren Endpunkten, Bézier-Segmente mit 12 Zwischenpunkten.
+pub fn lauf_punkte(u: &Umriss) -> (Vec<(f64, f64)>, Vec<bool>) {
+    let n = segmente(u);
+    let k = u.knoten.len();
+    let (mut pts, mut ecken) = (Vec::new(), Vec::new());
+    for s in 0..n {
+        let (a, b) = (&u.knoten[s], &u.knoten[(s + 1) % k]);
+        pts.push(a.punkt);
+        ecken.push(true);
+        if a.aus.is_some() || b.ein.is_some() {
+            for i in 1..12 {
+                pts.push(segment_punkt(u, s, i as f64 / 12.0));
+                ecken.push(false);
+            }
+        }
+    }
+    if let Some(l) = u.knoten.get(if u.geschlossen { 0 } else { k.saturating_sub(1) }) {
+        pts.push(l.punkt);
+        ecken.push(true);
+    }
+    (pts, ecken)
+}
+
 // ---------------------------------------------------------------- Textsatz
 
 /// Vorgaben für einen Text (wie Object Properties – Lettering im Original).
@@ -1143,15 +1167,98 @@ fn unterlage_fuer(o: &ZeichenObjekt, v: &TextVorgabe) -> Unterlage {
     }
 }
 
-fn satin_optionen(abstand: Option<f64>, auto_spacing: bool) -> SatinOptionen {
+fn satin_optionen(abstand: Option<f64>, auto_spacing: bool, faktor: f64) -> SatinOptionen {
     SatinOptionen {
         abstand: if auto_spacing { None } else { abstand },
-        faktor: Some(SCHRIFT_FAKTOR),
+        faktor: Some(faktor),
         kurzstiche: Some(true),
         step: false,
         zickzack: false,
         zugausgleich: None,
     }
+}
+
+/// Objekte eines Zeichens (Alphabet oder Motiv) über die Abbildung `abb` (Alphabet-Einheiten → mm) in Teile des
+/// Rechenkerns umsetzen: Teile, Umrisse der Teile (für Laufwege, leer bei Läufen) und Stichlänge des Laufwegs.
+pub(crate) fn zeichen_teile(
+    z: &Zeichen,
+    abb: &dyn Fn((f64, f64)) -> Punkt,
+    unterlage: &dyn Fn(&ZeichenObjekt) -> Unterlage,
+    faktor: f64,
+    farbe: &str,
+    name: &str,
+    ecken_an_knoten: bool,
+) -> (Vec<Objekt>, Vec<Linie>, f64) {
+    let abb_linie = |l: &[(f64, f64)]| -> Linie { l.iter().map(|&q| abb(q)).collect() };
+    let mut teile: Vec<Objekt> = Vec::new();
+    let mut umrisse: Vec<Linie> = Vec::new();
+    let mut laufweg = SCHRIFT_LAUFWEG;
+    for o in &z.objekte {
+        if let Some(l) = o.laufweg {
+            laufweg = l;
+        }
+        let art = match (&o.stichart, o.klasse) {
+            (Stichart::Satin { abstand, auto_spacing }, 0x06) => {
+                let Some(u) = o.umrisse.first() else { continue };
+                let Some((a, b)) = saeule_seiten(u, &o.winkel) else {
+                    continue;
+                };
+                umrisse.push(abb_linie(&umriss_punkte(u)));
+                ObjektArt::Satin {
+                    seite_a: abb_linie(&a),
+                    seite_b: abb_linie(&b),
+                    unterlage: unterlage(o),
+                    optionen: satin_optionen(*abstand, *auto_spacing, faktor),
+                }
+            }
+            (Stichart::Satin { abstand, auto_spacing }, 0x0c) if o.umrisse.len() >= 2 => {
+                let (a, b) = (umriss_punkte(&o.umrisse[0]), umriss_punkte(&o.umrisse[1]));
+                umrisse.push(abb_linie(&a.iter().chain(b.iter().rev()).copied().collect::<Vec<_>>()));
+                ObjektArt::Satin {
+                    seite_a: abb_linie(&a),
+                    seite_b: abb_linie(&b),
+                    unterlage: unterlage(o),
+                    optionen: satin_optionen(*abstand, *auto_spacing, faktor),
+                }
+            }
+            (Stichart::Tatami, _) => {
+                let Some(u) = o.umrisse.first() else { continue };
+                umrisse.push(abb_linie(&umriss_punkte(u)));
+                ObjektArt::Tatami {
+                    umriss: abb_linie(&umriss_punkte(u)),
+                    loecher: o.umrisse[1..].iter().map(|l| abb_linie(&umriss_punkte(l))).collect(),
+                    winkel: None,
+                    unterlage: Some(!o.unterlagen.is_empty()),
+                    aussparen: Default::default(),
+                }
+            }
+            (Stichart::Lauf { laenge }, _) => {
+                let Some(u) = o.umrisse.first() else { continue };
+                umrisse.push(Vec::new());
+                let (roh, ecken) = if ecken_an_knoten {
+                    lauf_punkte(u)
+                } else {
+                    let r = umriss_punkte(u);
+                    let n = r.len();
+                    (r, vec![false; n])
+                };
+                ObjektArt::Lauf {
+                    punkte: abb_linie(&roh),
+                    ecken,
+                    laenge: *laenge,
+                    dreifach: false,
+                    geschlossen: u.geschlossen,
+                }
+            }
+            _ => continue,
+        };
+        teile.push(Objekt {
+            farbe: farbe.to_string(),
+            name: name.to_string(),
+            art,
+        });
+    }
+    (teile, umrisse, laufweg)
 }
 
 /// Text in Stickobjekte des Rechenkerns umsetzen. Liefert die Objekte und die Zeichen ohne Entsprechung im Alphabet.
@@ -1202,70 +1309,15 @@ pub fn text_objekte_idx(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<
         };
         let [gx, gy, gx2, _] = z.grundlinie;
         let abb = |q: (f64, f64)| p(x + (q.0 - gx) * sx, v.position.y + (q.1 - gy) * s);
-        let abb_linie = |l: &[(f64, f64)]| -> Linie { l.iter().map(|&q| abb(q)).collect() };
-        let mut teile: Vec<Objekt> = Vec::new();
-        let mut umrisse: Vec<Linie> = Vec::new();
-        let mut laufweg = SCHRIFT_LAUFWEG;
-        for o in &z.objekte {
-            if let Some(l) = o.laufweg {
-                laufweg = l;
-            }
-            let art = match (&o.stichart, o.klasse) {
-                (Stichart::Satin { abstand, auto_spacing }, 0x06) => {
-                    let Some(u) = o.umrisse.first() else { continue };
-                    let Some((a, b)) = saeule_seiten(u, &o.winkel) else {
-                        continue;
-                    };
-                    umrisse.push(abb_linie(&umriss_punkte(u)));
-                    ObjektArt::Satin {
-                        seite_a: abb_linie(&a),
-                        seite_b: abb_linie(&b),
-                        unterlage: unterlage_fuer(o, v),
-                        optionen: satin_optionen(*abstand, *auto_spacing),
-                    }
-                }
-                (Stichart::Satin { abstand, auto_spacing }, 0x0c) if o.umrisse.len() >= 2 => {
-                    let (a, b) = (umriss_punkte(&o.umrisse[0]), umriss_punkte(&o.umrisse[1]));
-                    umrisse.push(abb_linie(&a.iter().chain(b.iter().rev()).copied().collect::<Vec<_>>()));
-                    ObjektArt::Satin {
-                        seite_a: abb_linie(&a),
-                        seite_b: abb_linie(&b),
-                        unterlage: unterlage_fuer(o, v),
-                        optionen: satin_optionen(*abstand, *auto_spacing),
-                    }
-                }
-                (Stichart::Tatami, _) => {
-                    let Some(u) = o.umrisse.first() else { continue };
-                    umrisse.push(abb_linie(&umriss_punkte(u)));
-                    ObjektArt::Tatami {
-                        umriss: abb_linie(&umriss_punkte(u)),
-                        loecher: o.umrisse[1..].iter().map(|l| abb_linie(&umriss_punkte(l))).collect(),
-                        winkel: None,
-                        unterlage: Some(!o.unterlagen.is_empty()),
-                        aussparen: Default::default(),
-                    }
-                }
-                (Stichart::Lauf { laenge }, _) => {
-                    let Some(u) = o.umrisse.first() else { continue };
-                    umrisse.push(Vec::new());
-                    let pts = abb_linie(&umriss_punkte(u));
-                    let n = pts.len();
-                    ObjektArt::Lauf {
-                        punkte: pts,
-                        ecken: vec![false; n],
-                        laenge: *laenge,
-                        dreifach: false,
-                        geschlossen: u.geschlossen,
-                    }
-                }
-                _ => continue,
-            };
-            teile.push(Objekt {
-                farbe: v.farbe.clone(),
-                name: format!("{} {}", alpha.name, ch),
-                art,
-            });
-        }
+        let (teile, umrisse, laufweg) = zeichen_teile(
+            z,
+            &abb,
+            &|o| unterlage_fuer(o, v),
+            SCHRIFT_FAKTOR,
+            &v.farbe,
+            &format!("{} {}", alpha.name, ch),
+            false,
+        );
         if !teile.is_empty() {
             objekte.push(Objekt {
                 farbe: v.farbe.clone(),
@@ -1807,7 +1859,7 @@ mod tests {
                 seite_a: a,
                 seite_b: b,
                 unterlage: Unterlage::Arten(vec![]),
-                optionen: satin_optionen(None, true),
+                optionen: satin_optionen(None, true, SCHRIFT_FAKTOR),
             },
         };
         let rechteck = |x0: f64, y0: f64, x1: f64, y1: f64| vec![p(x0, y0), p(x1, y0), p(x1, y1), p(x0, y1)];

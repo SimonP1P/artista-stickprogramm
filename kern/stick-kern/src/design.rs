@@ -401,6 +401,8 @@ pub enum ObjektArt {
     },
     /// Knopfloch (Vorlage aus ButtonHoles.ESB, `knopfloch.rs`); wird vor dem Berechnen zu einer `Kette` aufgelöst
     Knopfloch(KnopflochVorgabe),
+    /// Motivlinie (Pattern Run, `motiv.rs`); wird vor dem Berechnen zu einer `Kette` aufgelöst
+    Motivlinie(crate::motiv::MotivVorgabe),
     /// Teile in fester Reihenfolge, ohne Sprünge zu einem Zug verbunden (Knopfloch). Satinteile beginnen an dem Ende,
     /// das dem vorigen Stich am nächsten liegt (am Musterdesign beobachtet). `loch` = Fläche zum Aussparen
     /// (Merge Buttonhole: mittlerer Umriss).
@@ -978,6 +980,7 @@ impl Objekt {
             } => gruppe_wege(teile, umrisse, *laufweg, e, start),
             ObjektArt::Kette { teile, umkehrbar, .. } => kette_wege(teile, umkehrbar, e, start),
             ObjektArt::Knopfloch(_) => Err("Knopfloch wurde nicht aufgelöst".into()),
+            ObjektArt::Motivlinie(_) => Err("Motivlinie wurde nicht aufgelöst".into()),
             ObjektArt::Blanket {
                 punkte,
                 geschlossen,
@@ -1080,6 +1083,8 @@ pub struct Design {
     /// geladene Knopfloch-Vorlagen (Name wie in ButtonHoles.ESB, „Standard“); füllt der Aufrufer, siehe
     /// `knopfloch_bedarf`
     pub knopfloecher: BTreeMap<String, Vorlage>,
+    /// geladene Motivsätze (Name wie im Design-Feld `satz`); füllt der Aufrufer, siehe `motiv_namen`
+    pub motivsaetze: BTreeMap<String, crate::motiv::Motivsatz>,
     /// Transformation je Objekt (Nummer in `objekte`), JSON `"transform"` am Objekt (`transformation.rs`)
     pub transformationen: BTreeMap<usize, Transformation>,
     /// Transformation des ganzen Designs (um seine Mitte), JSON `"transform"` oben im Design
@@ -1341,6 +1346,7 @@ impl Design {
             ende: d.ende.map(Bezugspunkt::from).unwrap_or_default(),
             ttf_schriften: BTreeMap::new(),
             knopfloecher: BTreeMap::new(),
+            motivsaetze: BTreeMap::new(),
         })
     }
 
@@ -1356,6 +1362,21 @@ impl Design {
             .iter()
             .filter_map(|o| match &o.art {
                 ObjektArt::Text { alphabet, .. } => Some(alphabet.clone()),
+                _ => None,
+            })
+            .collect();
+        n.sort();
+        n.dedup();
+        n
+    }
+
+    /// Namen der Motivsätze, die die Motivlinien des Designs brauchen.
+    pub fn motiv_namen(&self) -> Vec<String> {
+        let mut n: Vec<String> = self
+            .objekte
+            .iter()
+            .filter_map(|o| match &o.art {
+                ObjektArt::Motivlinie(m) => Some(m.satz.clone()),
                 _ => None,
             })
             .collect();
@@ -1465,6 +1486,26 @@ impl Design {
                         &o.farbe,
                         if o.name.is_empty() { "Knopfloch" } else { &o.name },
                     ));
+                }
+                ObjektArt::Motivlinie(m) => {
+                    let satz = self
+                        .motivsaetze
+                        .get(&m.satz)
+                        .or_else(|| {
+                            self.motivsaetze.values().find(|s| {
+                                s.name.trim_start_matches('_').eq_ignore_ascii_case(m.satz.trim_start_matches('_'))
+                            })
+                        })
+                        .ok_or_else(|| format!("Motivsatz „{}“ nicht geladen", m.satz))?;
+                    out.push(
+                        crate::motiv::motivlinie_objekt(
+                            satz,
+                            m,
+                            &o.farbe,
+                            if o.name.is_empty() { "Motivlinie" } else { &o.name },
+                        )
+                        .map_err(|e| format!("Objekt {}: {e}", nr + 1))?,
+                    );
                 }
                 ObjektArt::Applikation(v) => {
                     out.extend(applikation_objekte(
@@ -1923,6 +1964,7 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
             }
         }
         // werden vor dem Zeichnen aufgelöst
+        ObjektArt::Motivlinie(m) => linie(FormArt::Linie, &m.linie, m.geschlossen),
         ObjektArt::Text { .. } | ObjektArt::TtfText { .. } | ObjektArt::Knopfloch(_) => {}
     }
 }
@@ -2052,6 +2094,19 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                 farbe: a.g.farbe,
             }
         }
+        ObjektJson::Motivlinie(m) => Objekt {
+            art: ObjektArt::Motivlinie(crate::motiv::MotivVorgabe {
+                satz: m.satz,
+                motiv: m.motiv,
+                linie: m.punkte.punkte(),
+                geschlossen: m.geschlossen,
+                groesse: m.groesse,
+                abstand: m.abstand,
+                spiegeln: m.spiegeln,
+            }),
+            farbe: m.g.farbe,
+            name: m.g.name,
+        },
         ObjektJson::Knopfloch(k) => Objekt {
             farbe: k.g.farbe,
             name: k.g.name,

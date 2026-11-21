@@ -895,6 +895,40 @@ pub struct KnopflochJson {
     pub g: Gemeinsam,
 }
 
+/// Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (`motive_liste`) wird entlang der Linie
+/// wiederholt. Anzahl = Linienlänge / Abstand gerundet, die Motive werden gleichmäßig verteilt (wie das Original).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct MotivlinieJson {
+    pub punkte: PunktAngabe,
+    /// Linie schließen (Motive ringsum)
+    #[serde(default)]
+    pub geschlossen: bool,
+    /// Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung)
+    #[serde(default = "motiv_satz")]
+    pub satz: String,
+    /// Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)
+    #[serde(default = "motiv_name")]
+    pub motiv: String,
+    /// Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz
+    #[serde(default)]
+    pub groesse: Option<f64>,
+    /// Wiederholabstand in mm („Spacing“); ohne Angabe = Größe (Motive stoßen aneinander)
+    #[serde(default)]
+    pub abstand: Option<f64>,
+    /// Motive auf die andere Seite der Linie spiegeln
+    #[serde(default)]
+    pub spiegeln: bool,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+fn motiv_satz() -> String {
+    "Heirloom".into()
+}
+fn motiv_name() -> String {
+    "705".into()
+}
+
 fn knopfloch_typ() -> KnopflochTyp {
     KnopflochTyp::Standard
 }
@@ -935,6 +969,8 @@ pub enum ObjektJson {
     Muster(MusterJson),
     /// Knopfloch (9 Typen; in Flächen einarbeiten: Namen des Knopflochs in `aussparen` der Fläche)
     Knopfloch(KnopflochJson),
+    /// Motivlinie (Motiv aus einem Motivsatz entlang einer Linie)
+    Motivlinie(MotivlinieJson),
 }
 
 impl ObjektJson {
@@ -953,6 +989,7 @@ impl ObjektJson {
             ObjektJson::Applikation(x) => &x.g,
             ObjektJson::Muster(x) => &x.g,
             ObjektJson::Knopfloch(x) => &x.g,
+            ObjektJson::Motivlinie(x) => &x.g,
         }
     }
 }

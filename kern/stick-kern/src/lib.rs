@@ -28,6 +28,7 @@ pub mod einstellungen;
 pub mod format;
 pub mod geometrie;
 pub mod knopfloch;
+pub mod motiv;
 pub mod muster;
 pub mod nachbearbeitung;
 pub mod parameter;
