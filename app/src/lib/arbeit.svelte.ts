@@ -23,6 +23,8 @@ export type OffenerDialog =
   | { art: "bild" }
   | { art: "svg" }
   | { art: "nach_farbe" }
+  | { art: "muster"; objekt: number }
+  | { art: "step"; objekt: number }
   | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 

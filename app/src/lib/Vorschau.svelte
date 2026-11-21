@@ -10,11 +10,36 @@
     einstiche = false,
     raster = true,
     zoom = $bindable(1),
-  }: { spruenge?: boolean; einstiche?: boolean; raster?: boolean; zoom?: number } = $props();
+    werkzeug = $bindable("auswahl"),
+    bis = null,
+  }: {
+    spruenge?: boolean;
+    einstiche?: boolean;
+    raster?: boolean;
+    zoom?: number;
+    /** Werkzeug: auswählen/ziehen oder Ein-/Ausstich des gewählten Objekts setzen */
+    werkzeug?: "auswahl" | "einstich" | "ausstich";
+    /** Abspielen: nur die ersten `bis` Stiche zeigen (null = alle) */
+    bis?: number | null;
+  } = $props();
 
   let svg: SVGSVGElement | undefined = $state();
   let mitte = $state<[number, number]>([0, 0]);
-  let ziehen: { x: number; y: number; m: [number, number]; bewegt: boolean } | null = null;
+  /** laufende Maus-Aktion: Ansicht verschieben, Objekte verschieben, skalieren, drehen */
+  type Ziehen =
+    | { art: "ansicht"; x: number; y: number; m: [number, number]; bewegt: boolean }
+    | { art: "objekt" | "skalieren" | "drehen"; start: [number, number]; mitte: [number, number]; bewegt: boolean };
+  let ziehen: Ziehen | null = null;
+  /** Live-Vorschau der Griffe (SVG-Transformation der gewählten Objekte, nur Anzeige) */
+  let griffTransform = $state("");
+  let griffWert = $state<{ dx: number; dy: number; f: number; grad: number }>({ dx: 0, dy: 0, f: 1, grad: 0 });
+
+  /** Bildschirmpunkt → mm (y nach oben) über die Abbildung des SVG */
+  function mm(ev: PointerEvent): [number, number] {
+    const m = svg!.getScreenCTM()!.inverse();
+    const p = new DOMPoint(ev.clientX, ev.clientY).matrixTransform(m);
+    return [p.x, -p.y];
+  }
 
   const e = $derived(arbeit.ergebnis);
   const rahmen = $derived(e?.rahmen ?? arbeit.rahmenListe.find((r) => r.name === arbeit.design.rahmen) ?? null);
@@ -70,13 +95,16 @@
     const out: { o: number; farbe: string; d: string }[] = [];
     const sprungD: string[] = [];
     const punkteD: string[] = [];
-    if (!e) return { zuege: out, spruenge: "", einstiche: "", aussen: "" };
+    if (!e) return { zuege: out, spruenge: "", einstiche: "", aussen: "", nadel: null as [number, number] | null };
     let block = 0;
     let aktuell: { o: number; farbe: string; d: string } | null = null;
     let vorher: [number, number] | null = null;
     let springen = false;
-    for (let i = 0; i < e.stiche.length; i++) {
+    let nadel: [number, number] | null = null;
+    const ende = bis === null ? e.stiche.length : Math.min(bis, e.stiche.length);
+    for (let i = 0; i < ende; i++) {
       const s = e.stiche[i];
+      nadel = [s.x, s.y];
       const x = s.x.toFixed(2), y = (-s.y).toFixed(2);
       if (s.art === "farbwechsel") {
         block++;
@@ -109,7 +137,7 @@
       .map((i) => e.stiche[i])
       .map((s) => `M${(s.x - 0.5).toFixed(1)} ${(-s.y - 0.5).toFixed(1)}l1 1m0 -1l-1 1`)
       .join("");
-    return { zuege: out, spruenge: sprungD.join(""), einstiche: punkteD.join(""), aussen };
+    return { zuege: out, spruenge: sprungD.join(""), einstiche: punkteD.join(""), aussen, nadel: bis === null ? null : nadel };
   });
 
   const gewaehlt = $derived(arbeit.ansicht !== "abspielen" ? arbeit.auswahl : []);
@@ -127,24 +155,101 @@
     return el ? Number(el.getAttribute("data-o")) : null;
   }
 
+  /** Mitte der Begrenzung des gewählten Objekts (aus `design_formen`) */
+  function auswahlMitte(): [number, number] | null {
+    const b = begrenzungen[0];
+    return b ? [(b[0] + b[2]) / 2, (b[1] + b[3]) / 2] : null;
+  }
+
   function runter(ev: PointerEvent) {
     if (ev.button !== 0 && ev.button !== 1) return;
-    ziehen = { x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false };
     svg?.setPointerCapture(ev.pointerId);
+    const ziel = (ev.target as Element | null)?.closest?.("[data-griff],[data-o]");
+    const griff = ziel?.getAttribute("data-griff");
+    const o = ziel?.getAttribute("data-o");
+    const p = mm(ev);
+    if (ev.button === 0 && arbeit.ansicht !== "abspielen") {
+      // Ein-/Ausstich setzen
+      if (werkzeug !== "auswahl" && arbeit.auswahl.length === 1) {
+        const i = arbeit.auswahl[0];
+        const feld = werkzeug;
+        arbeit.aendern((d) => {
+          (d.objekte![i] as Record<string, unknown>)[feld] = [Math.round(p[0] * 10) / 10, Math.round(p[1] * 10) / 10];
+        });
+        werkzeug = "auswahl";
+        return;
+      }
+      const m = auswahlMitte();
+      if ((griff === "ecke" || griff === "dreh") && m) {
+        ziehen = { art: griff === "ecke" ? "skalieren" : "drehen", start: p, mitte: m, bewegt: false };
+        return;
+      }
+      if (o !== null && o !== undefined && arbeit.auswahl.includes(Number(o)) && !ev.shiftKey && !ev.ctrlKey && !ev.metaKey) {
+        ziehen = { art: "objekt", start: p, mitte: m ?? p, bewegt: false };
+        return;
+      }
+    }
+    ziehen = { art: "ansicht", x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false };
   }
   function bewegen(ev: PointerEvent) {
     if (!ziehen || !svg) return;
-    const dx = ev.clientX - ziehen.x, dy = ev.clientY - ziehen.y;
-    if (!ziehen.bewegt && Math.hypot(dx, dy) < 4) return;
+    if (ziehen.art === "ansicht") {
+      const dx = ev.clientX - ziehen.x, dy = ev.clientY - ziehen.y;
+      if (!ziehen.bewegt && Math.hypot(dx, dy) < 4) return;
+      ziehen.bewegt = true;
+      const s = ausschnitt.w / svg.clientWidth;
+      const k = Math.max(s, ausschnitt.h / svg.clientHeight);
+      mitte = [ziehen.m[0] - dx * k, ziehen.m[1] + dy * k];
+      return;
+    }
+    const p = mm(ev);
+    const [sx, sy] = ziehen.start;
+    const [cx, cy] = ziehen.mitte;
+    if (!ziehen.bewegt && Math.hypot(p[0] - sx, p[1] - sy) < 0.4 / zoom) return;
     ziehen.bewegt = true;
-    const s = ausschnitt.w / svg.clientWidth;
-    const k = Math.max(s, ausschnitt.h / svg.clientHeight);
-    mitte = [ziehen.m[0] - dx * k, ziehen.m[1] + dy * k];
+    if (ziehen.art === "objekt") {
+      griffWert = { dx: p[0] - sx, dy: p[1] - sy, f: 1, grad: 0 };
+      griffTransform = `translate(${griffWert.dx} ${-griffWert.dy})`;
+    } else if (ziehen.art === "skalieren") {
+      const f = Math.max(0.05, Math.hypot(p[0] - cx, p[1] - cy) / Math.max(0.01, Math.hypot(sx - cx, sy - cy)));
+      griffWert = { dx: 0, dy: 0, f, grad: 0 };
+      griffTransform = `translate(${cx} ${-cy}) scale(${f}) translate(${-cx} ${cy})`;
+    } else {
+      let grad = ((Math.atan2(p[1] - cy, p[0] - cx) - Math.atan2(sy - cy, sx - cx)) * 180) / Math.PI;
+      if (ev.shiftKey) grad = Math.round(grad / 15) * 15;
+      griffWert = { dx: 0, dy: 0, f: 1, grad };
+      griffTransform = `rotate(${-grad} ${cx} ${-cy})`;
+    }
   }
   function hoch(ev: PointerEvent) {
     const war = ziehen;
     ziehen = null;
-    if (war && !war.bewegt && ev.button === 0) {
+    if (!war) return;
+    if (war.art !== "ansicht" && war.bewegt) {
+      // Griffe: Wert ins JSON (Transformation des Objekts) – der Kern rechnet die Stiche neu
+      const w = griffWert;
+      const auswahl = [...arbeit.auswahl];
+      arbeit.aendern((d) => {
+        for (const i of war.art === "objekt" ? auswahl : auswahl.slice(0, 1)) {
+          const o = d.objekte![i];
+          o.transform ??= {};
+          const t = o.transform!;
+          const r = (v: number) => Math.round(v * 100) / 100;
+          if (war.art === "objekt") {
+            const [vx, vy] = t.verschieben ?? [0, 0];
+            t.verschieben = [r(vx + w.dx), r(vy + w.dy)];
+          } else if (war.art === "skalieren") {
+            const alt = Array.isArray(t.skalieren) ? (t.skalieren[0] ?? 100) : (t.skalieren ?? 100);
+            t.skalieren = r(alt * w.f);
+          } else t.drehen = r((t.drehen ?? 0) + w.grad);
+        }
+      });
+      griffTransform = "";
+      return;
+    }
+    griffTransform = "";
+    const bewegt = war.art === "ansicht" ? war.bewegt : war.bewegt;
+    if (!bewegt && ev.button === 0) {
       // Pointer-Capture lenkt das Ziel um – Element unter dem Zeiger suchen
       const ziel = document.elementFromPoint(ev.clientX, ev.clientY);
       arbeit.waehlen(objektAusZiel(ziel), ev.shiftKey || ev.ctrlKey || ev.metaKey);
@@ -170,6 +275,7 @@
   onpointermove={bewegen}
   onpointerup={hoch}
   onwheel={rad}
+  style="cursor:{werkzeug !== 'auswahl' ? 'crosshair' : 'default'}"
 >
   <rect x={ausschnitt.x - 500} y={ausschnitt.y - 500} width={ausschnitt.w + 1000} height={ausschnitt.h + 1000} fill={farben.grund} />
   {#if rahmen}
@@ -193,7 +299,7 @@
       {@const farbe = (f.farbe || "#000000").toLowerCase()}
       {@const strich =
         dk && hell(farbe) < 0.25 ? schattieren(farbe, 0.55) : hell(farbe) > 0.8 ? schattieren(farbe, -0.5) : farbe}
-      <g data-o={f.objekt} opacity={gewaehlt.length && !an ? 0.45 : 1} style="cursor:pointer">
+      <g data-o={f.objekt} opacity={gewaehlt.length && !an ? 0.45 : 1} style="cursor:{an ? 'move' : 'pointer'}" transform={an && griffTransform ? griffTransform : undefined}>
         {#each f.linien as l, k (k)}
           <path
             d={l.punkte.map(([x, y], j) => `${j ? "L" : "M"}${x.toFixed(2)} ${(-y).toFixed(2)}`).join("") + (l.geschlossen ? "Z" : "")}
@@ -227,7 +333,7 @@
           : hell(z.farbe) > 0.8
             ? schattieren(z.farbe, -0.45)
             : schattieren(z.farbe, -0.38)}
-      <g data-o={z.o} opacity={gewaehlt.length && !gewaehlt.includes(z.o) ? 0.28 : 1} style="cursor:pointer">
+      <g data-o={z.o} opacity={gewaehlt.length && !gewaehlt.includes(z.o) ? 0.28 : 1} style="cursor:{gewaehlt.includes(z.o) ? 'move' : 'pointer'}" transform={gewaehlt.includes(z.o) && griffTransform ? griffTransform : undefined}>
         <path d={z.d} fill="none" stroke="transparent" stroke-width="1.6" pointer-events="stroke" />
         <path d={z.d} fill="none" stroke={rand} stroke-width=".34" stroke-linejoin="round" stroke-linecap="round" pointer-events="none" />
         <path d={z.d} fill="none" stroke={z.farbe} stroke-width=".2" stroke-linejoin="round" stroke-linecap="round" pointer-events="none" />
@@ -244,6 +350,22 @@
     {/if}
   {/if}
 
+  {#if zuege.nadel}
+    {@const [nx, ny] = zuege.nadel}
+    <g stroke={dk ? "#fff" : "#111"} stroke-width=".3" pointer-events="none">
+      <circle cx={nx} cy={-ny} r="2.2" fill="none" /><path d="M{nx - 4} {-ny}h8M{nx} {-ny - 4}v8" />
+    </g>
+  {/if}
+  {#if arbeit.ansicht === "stiche" && gewaehlt.length === 1}
+    {@const o = arbeit.objekte[gewaehlt[0]]}
+    {#if o?.einstich}
+      <g pointer-events="none"><circle cx={o.einstich[0]} cy={-o.einstich[1]} r="2.4" fill="#2f6f3e" stroke="#fff" stroke-width=".4" /><text x={o.einstich[0]} y={-o.einstich[1] + 1.1} font-size="2.8" text-anchor="middle" fill="#fff" font-weight="700" font-family="Barlow, sans-serif">E</text></g>
+    {/if}
+    {#if o?.ausstich}
+      <g pointer-events="none"><rect x={o.ausstich[0] - 2.3} y={-o.ausstich[1] - 2.3} width="4.6" height="4.6" fill="#9b1c1c" stroke="#fff" stroke-width=".4" /><text x={o.ausstich[0]} y={-o.ausstich[1] + 1.1} font-size="2.8" text-anchor="middle" fill="#fff" font-weight="700" font-family="Barlow, sans-serif">A</text></g>
+    {/if}
+  {/if}
+
   {#each begrenzungen as [x0, y0, x1, y1], k (k)}
     {@const p = 1.5}
     {@const X0 = x0 - p}
@@ -252,17 +374,27 @@
     {@const Y1 = -y0 + p}
     {@const mx = (X0 + X1) / 2}
     {@const my = (Y0 + Y1) / 2}
-    <g pointer-events="none">
-      <rect x={X0} y={Y0} width={X1 - X0} height={Y1 - Y0} fill="none" stroke={farben.akzent} stroke-width=".35" stroke-dasharray="1.6 1" />
-      {#if begrenzungen.length === 1}
+    <g transform={griffTransform || undefined}>
+      <rect x={X0} y={Y0} width={X1 - X0} height={Y1 - Y0} fill="none" stroke={farben.akzent} stroke-width=".35" stroke-dasharray="1.6 1" pointer-events="none" />
+      {#if begrenzungen.length === 1 && arbeit.ansicht !== "abspielen"}
         {#each [[X0, Y0], [mx, Y0], [X1, Y0], [X1, my], [X1, Y1], [mx, Y1], [X0, Y1], [X0, my]] as [x, y], j (j)}
-          <rect x={x - 1.1} y={y - 1.1} width="2.2" height="2.2" fill={farben.griff} stroke={farben.akzent} stroke-width=".4" />
+          <rect
+            x={x - 1.1 / Math.sqrt(zoom)}
+            y={y - 1.1 / Math.sqrt(zoom)}
+            width={2.2 / Math.sqrt(zoom)}
+            height={2.2 / Math.sqrt(zoom)}
+            fill={farben.griff}
+            stroke={farben.akzent}
+            stroke-width=".4"
+            data-griff={j % 2 === 0 ? "ecke" : undefined}
+            style={j % 2 === 0 ? "cursor:nwse-resize" : "pointer-events:none"}
+          />
         {/each}
-        <path d="M{mx} {Y0}V{Y0 - 5}" stroke={farben.akzent} stroke-width=".35" />
-        <circle cx={mx} cy={Y0 - 6.2} r="1.3" fill={farben.griff} stroke={farben.akzent} stroke-width=".4" />
+        <path d="M{mx} {Y0}V{Y0 - 5}" stroke={farben.akzent} stroke-width=".35" pointer-events="none" />
+        <circle cx={mx} cy={Y0 - 6.2} r={1.3 / Math.sqrt(zoom)} fill={farben.griff} stroke={farben.akzent} stroke-width=".4" data-griff="dreh" style="cursor:grab" />
         <rect x={mx - 13} y={Y1 + 2} width="26" height="5" fill={farben.akzent} />
-        <text x={mx} y={Y1 + 5.6} font-size="3" text-anchor="middle" fill="#fff" font-family="Barlow, sans-serif">
-          {zahlFest(x1 - x0)} × {zahlFest(y1 - y0)} mm
+        <text x={mx} y={Y1 + 5.6} font-size="3" text-anchor="middle" fill="#fff" font-family="Barlow, sans-serif" pointer-events="none">
+          {#if griffTransform && griffWert.f !== 1}{zahl(griffWert.f * 100, 0)} %{:else if griffTransform && griffWert.grad}{zahl(griffWert.grad, 0)}°{:else}{zahlFest(x1 - x0)} × {zahlFest(y1 - y0)} mm{/if}
         </text>
       {/if}
     </g>

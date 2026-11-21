@@ -246,7 +246,7 @@ ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-1
 | E2 | Einfacher Modus: Assistent 4 Schritte (Rahmen & Stoff · Gestalten · Prüfen & Garn · Speichern/Senden), Dialoge Alphabet, Garn | ✅ 21.11. (dazu Bild umwandeln, SVG einlesen; Bilder `app/bildschirmfotos/e2_*`) |
 | E3 | Maschine: Befehle nach `stick-api` (W10: Abbrechen, Wiederholungen, Fehlercodes; Garn von Hand in der Garnfarbtabelle), Senden in 4 Stufen, Sticken-Dialog, Simulation, Fehlerzustände, Anleitung, „Aus der Maschine“ – nur Simulation | ✅ 21.11. (Simulation; am Gerät offen → „Vor Ort“ V10) |
 | E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ✅ 21.11. (Inspektor aus dem Schema des Kerns) |
-| E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ⬜ |
+| E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ✅ 21.11. ohne W9 – **W9 „Buchstabe je Stich“ verschoben:** braucht im Kern eine Buchstabennummer durch Satz, Aussparen und Säulenreihenfolge der Schrift (eigener Kern-Schritt); bis dahin einzelne Buchstaben über den Reiter JSON (`buchstaben`) |
 | E6 | Formansicht mit Knoten (W5), Dunkel/Mac, ANFORDERUNGEN.md, Parameterkatalog nach Modus vorlegen (M1), „Abgeglichen bis“ | ⬜ |
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –

@@ -11,9 +11,12 @@
   import { ganz, lesen, zahl, zahlFest } from "../zahl";
   import Feldzeile from "./Feldzeile.svelte";
   import Abschnitt from "./Abschnitt.svelte";
+  import Einzelwerte from "./Einzelwerte.svelte";
+  import JsonReiter from "./JsonReiter.svelte";
 
   type Reiter = "objekt" | "design" | "einzelwerte" | "json";
-  let reiter = $state<Reiter>("objekt");
+  // Startreiter: Startoption `reiter` (Bildschirmfotos), sonst „Objekt“
+  let reiter = $state<Reiter>((globalThis as { __START__?: { reiter?: Reiter } }).__START__?.reiter ?? "objekt");
 
   $effect(() => {
     schema.laden();
@@ -177,27 +180,14 @@
               </div>
             {:else if f.name === "muster"}
               <div class="frow">
-                <label class="fl" for="imuster">Füllmuster</label>
-                <div class="fc">
-                  <select id="imuster" class="input sm" value={String(o.muster ?? "")} onchange={(ev) => setzen("muster", (ev.currentTarget as HTMLSelectElement).value)}>
-                    {#if !listen.muster.some((m) => m.name === o.muster)}<option value={String(o.muster ?? "")}>{String(o.muster ?? "")}</option>{/if}
-                    {#each listen.muster as m (m.name)}<option value={m.name}>{m.name}</option>{/each}
-                  </select>
-                </div>
-                <div class="fhelp">Auswahl mit Vorschau-Kacheln folgt (E5)</div>
+                <span class="fl">Füllmuster</span>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "muster", objekt: i })}><span class="t">{String(o.muster ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
               </div>
             {:else if f.name === "step_muster"}
               <div class="frow">
-                <label class="fl" for="istep">Step-Muster</label>
-                <div class="fc">
-                  <select id="istep" class="input sm" value={o.step_muster == null ? "" : String(o.step_muster)} onchange={(ev) => {
-                    const v = (ev.currentTarget as HTMLSelectElement).value;
-                    setzen("step_muster", v === "" ? undefined : Number(v));
-                  }}>
-                    <option value="">wie Stoff/Stil</option>
-                    {#each Array.from({ length: 20 }, (_, k) => k + 1) as n (n)}<option value={String(n)}>Nr. {n}{n === 1 ? " (gleichmäßig)" : ""}</option>{/each}
-                  </select>
-                </div>
+                <span class="fl">Step-Muster</span>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "step", objekt: i })}><span class="t">{o.step_muster == null ? "wie Stoff/Stil" : `Nr. ${o.step_muster}`}</span><Icon d={IC.chevronRechts} /></button></div>
+                <div class="fhelp">1 = gleichmäßig</div>
               </div>
             {:else if f.name === "aussparen"}
               <div class="frow" style="align-items:start">
@@ -330,10 +320,10 @@
           {/each}
         </Abschnitt>
       {/if}
+    {:else if reiter === "einzelwerte"}
+      <Einzelwerte />
     {:else}
-      <div class="note" style="margin:14px">
-        {reiter === "einzelwerte" ? "Einzelwerte (Parameterkatalog, Werte je Objekt mit Herkunft) folgen in Etappe E5." : "JSON-Ansicht des Objekts mit Prüfung folgt in Etappe E5."}
-      </div>
+      <JsonReiter />
     {/if}
   </div>
 </aside>

@@ -19,6 +19,7 @@
   import AusMaschineDialog from "$lib/dialoge/AusMaschineDialog.svelte";
   import NachFarbeDialog from "$lib/dialoge/NachFarbeDialog.svelte";
   import WarnungDialog from "$lib/dialoge/WarnungDialog.svelte";
+  import MusterDialog from "$lib/dialoge/MusterDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import { EINFUEGEN, KOMMT_NOCH, neuesObjekt } from "$lib/einfuegen";
@@ -31,6 +32,41 @@
   let raster = $state(true);
   let zoom = $state(1);
   let vorschau: Vorschau | undefined = $state();
+  let werkzeug = $state<"auswahl" | "einstich" | "ausstich">("auswahl");
+
+  // Abspielen: Stickfolge Stich für Stich (nur Darstellung, keine Maschinen-Simulation)
+  let bis = $state(0);
+  let spielt = $state(false);
+  const gesamt = $derived(arbeit.ergebnis?.stiche.length ?? 0);
+  const stopps = $derived(
+    (arbeit.ergebnis?.stiche ?? []).flatMap((s, i) => (s.art === "farbwechsel" ? [i] : [])),
+  );
+  $effect(() => {
+    if (!spielt) return;
+    let id = 0;
+    const schritt = () => {
+      bis = Math.min(gesamt, bis + Math.max(3, Math.round(gesamt / 600)));
+      if (bis >= gesamt) spielt = false;
+      else id = requestAnimationFrame(schritt);
+    };
+    id = requestAnimationFrame(schritt);
+    return () => cancelAnimationFrame(id);
+  });
+  $effect(() => {
+    if (arbeit.ansicht !== "abspielen") spielt = false;
+  });
+
+  /** Pfeiltasten: gewählte Objekte um 0,5 mm (Umschalt: 5 mm) verschieben */
+  function pfeil(dx: number, dy: number) {
+    const aus = [...arbeit.auswahl];
+    arbeit.aendern((d) => {
+      for (const i of aus) {
+        const t = (d.objekte![i].transform ??= {});
+        const [vx, vy] = t.verschieben ?? [0, 0];
+        t.verschieben = [Math.round((vx + dx) * 100) / 100, Math.round((vy + dy) * 100) / 100];
+      }
+    }, "pfeil");
+  }
 
   const istMac = typeof navigator !== "undefined" && /Mac/i.test(navigator.platform || navigator.userAgent);
   const leer = $derived(arbeit.objekte.length === 0);
@@ -136,7 +172,8 @@
     const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
     if (arbeit.dialog || maschine.dialogOffen || maschine.listeOffen || maschine.stickenDialog) return; // Dialog behandelt Esc selbst
     if (ev.key === "Escape") {
-      if (menue) menue = null;
+      if (werkzeug !== "auswahl") werkzeug = "auswahl";
+      else if (menue) menue = null;
       else arbeit.waehlen(null);
       return;
     }
@@ -148,6 +185,12 @@
         return m.go?.();
       }
       if (strg && ev.key.toLowerCase() === "d") return (ev.preventDefault(), arbeit.duplizieren());
+      const pf: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
+      if (pf[ev.key] && !ev.altKey && arbeit.auswahl.length) {
+        const k = ev.shiftKey ? 5 : 0.5;
+        ev.preventDefault();
+        return pfeil(pf[ev.key][0] * k, pf[ev.key][1] * k);
+      }
     }
     if (!strg) return;
     const k = ev.key.toLowerCase();
@@ -334,6 +377,7 @@
           {#if arbeit.modus === "experte"}
             <label class="seg-opt"><input type="radio" name="ansicht" checked={arbeit.ansicht === "form"} onchange={() => (arbeit.ansicht = "form")} />Form</label>
           {/if}
+          <label class="seg-opt"><input type="radio" name="ansicht" checked={arbeit.ansicht === "abspielen"} onchange={() => ((arbeit.ansicht = "abspielen"), (bis = 0), (spielt = true))} />Abspielen</label>
         </div>
         <span style="width:6px"></span>
         <button class="mbtn tgl" aria-pressed={spruenge} onclick={() => (spruenge = !spruenge)} style="height:28px; font-size:12.5px; padding:0 8px; flex:none">Sprünge</button>
@@ -352,7 +396,9 @@
       <div style="flex:1; min-height:0; display:flex">
         {#if arbeit.modus === "experte"}
           <div class="rail" role="toolbar" aria-label="Werkzeuge" aria-orientation="vertical">
-            <button class="tb" aria-pressed={true} aria-label="Auswählen" title="Auswählen"><Icon d={IC.zeiger} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "auswahl"} aria-label="Auswählen und Griffe" title="Auswählen, ziehen, Griffe (skalieren, drehen)" onclick={() => (werkzeug = "auswahl")}><Icon d={IC.zeiger} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "einstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Einstich setzen" title="Einstich des gewählten Objekts setzen" onclick={() => (werkzeug = "einstich")}><Icon d={IC.einaus} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "ausstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Ausstich setzen" title="Ausstich des gewählten Objekts setzen" onclick={() => (werkzeug = "ausstich")} style="transform:scaleX(-1)"><Icon d={IC.einaus} groesse="l" /></button>
             <span class="sep"></span>
             {#each EINFUEGEN as x, k (x.art)}
               {#if k > 0 && EINFUEGEN[k - 1].gruppe !== x.gruppe}<span class="sep"></span>{/if}
@@ -363,7 +409,28 @@
           </div>
         {/if}
         <div class="stage">
-          <Vorschau bind:this={vorschau} bind:zoom {spruenge} {einstiche} {raster} />
+          <Vorschau bind:this={vorschau} bind:zoom bind:werkzeug {spruenge} {einstiche} {raster} bis={arbeit.ansicht === "abspielen" ? bis : null} />
+          {#if werkzeug !== "auswahl"}
+            <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px">
+              <b style="font-weight:500">{werkzeug === "einstich" ? "Einstich" : "Ausstich"} setzen</b> – in die Vorschau klicken (Esc bricht ab)
+            </div>
+          {/if}
+          {#if arbeit.ansicht === "abspielen"}
+            <div class="floater" style="left:12px; right:12px; bottom:12px; padding:8px 12px">
+              <div style="display:flex; align-items:center; gap:10px">
+                <button class="btn btn-primary" style="min-width:110px" onclick={() => (bis >= gesamt && (bis = 0), (spielt = !spielt))}>
+                  <Icon d={spielt ? IC.pause : IC.abspielen} />{spielt ? "Anhalten" : "Abspielen"}
+                </button>
+                <div style="flex:1; position:relative; padding-top:10px">
+                  {#each stopps as st, k (k)}
+                    <span title="Farbwechsel {k + 1}" style="position:absolute; top:0; left:{(st / Math.max(1, gesamt)) * 100}%; width:10px; height:8px; margin-left:-1px; background:{arbeit.ergebnis?.farben[k + 1] ?? '#000'}; border:1px solid rgba(0,0,0,.4)"></span>
+                  {/each}
+                  <input type="range" min="0" max={gesamt} value={bis} oninput={(ev) => ((spielt = false), (bis = Number((ev.currentTarget as HTMLInputElement).value)))} aria-label="Stickfolge" style="width:100%; accent-color:var(--color-accent)" />
+                </div>
+              </div>
+              <div class="small mut tab" style="margin-top:2px">Stich {bis.toLocaleString("de-DE")} von {gesamt.toLocaleString("de-DE")} · Abspielen zeigt nur die Reihenfolge – es ist keine Maschinen-Simulation.</div>
+            </div>
+          {/if}
           {#if arbeit.fehler}
             <div class="fbanner errbox" role="alert" style="align-items:center; box-shadow:var(--shadow-sm)">
               <Icon d={IC.fehler} />
@@ -396,6 +463,25 @@
     {#if arbeit.modus === "experte"}<Inspektor />{/if}
   </div>
 
+  {#if arbeit.dialog?.art === "muster" || arbeit.dialog?.art === "step"}
+    {@const d = arbeit.dialog}
+    {@const x = arbeit.objekte[d.objekt] as Record<string, unknown> | undefined}
+    <MusterDialog
+      art={d.art}
+      aktuell={(d.art === "muster" ? x?.muster : x?.step_muster) as string | number | null | undefined}
+      waehlen={(w) => {
+        const feld = d.art === "muster" ? "muster" : "step_muster";
+        arbeit.aendern((dd) => {
+          const y = dd.objekte?.[d.objekt] as Record<string, unknown> | undefined;
+          if (!y) return;
+          if (w === null) delete y[feld];
+          else y[feld] = w;
+        });
+        arbeit.dialog = null;
+      }}
+      schliessen={() => (arbeit.dialog = null)}
+    />
+  {/if}
   {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "warnung"}
     <WarnungDialog vertauscht={arbeit.dialog.vertauscht} namen={arbeit.dialog.namen} vorher={arbeit.dialog.vorher} schliessen={() => (arbeit.dialog = null)} />
