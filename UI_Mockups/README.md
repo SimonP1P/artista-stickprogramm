@@ -13,6 +13,8 @@ sind **nicht** die App (`app/` bleibt unverändert, bis die neue Oberfläche fes
 0. **`SCHNITTSTELLE.md`** (Hauptordner, **aus dem Code erzeugt**, immer aktuell) – alle Felder des Design-JSON je
    Objektart mit Typ, Standard, Auswahlwerten und Beschreibung, dazu alle Befehle mit Ein-/Ausgabe. Für Programme:
    `kern/schnittstelle/design.schema.json`, `befehle.schema.json`, **`kern.ts`** (TypeScript-Typen + Aufruf `kern(…)`).
+0a. **`UI_Mockups/AENDERUNGEN.md`** – was im Kern neu ist und was die Oberfläche tun muss (neueste zuerst, mit
+   „Abgeglichen bis“).
 1. **`UI_Mockups/FUNKTIONEN.md`** – jede Funktion des Kerns: was der Anwender einstellt, Standardwert, JSON-Feld,
    Vorschlag einfach/experte; fehlende App-Befehle; was noch kommt.
 2. **`PARAMETER.md`** – Parameterkatalog: jeder einstellbare Wert (132) mit Standard, Bereich, Quelle, Werten je Stoff

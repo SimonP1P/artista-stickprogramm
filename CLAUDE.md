@@ -71,6 +71,7 @@
 | **UI-Mockups** (Claude Design, archiviert; Hinweise aus der Analyse für die Gestaltung) | `UI_Mockups/` (`README.md`, Stände je Ordner) |
 | **Parameterkatalog** (jeder einstellbare Wert: Standard, Bereich, Quelle, Werte je Stoff, Modus einfach/experte/automatisch; Tests halten ihn aktuell; bei neuen Werten `Arbeitsdaten/werkzeuge/parameter_katalog.py` ergänzen, dann `stick parameter --markdown > PARAMETER.md`) | `PARAMETER.md`, `kern/stick-kern/daten/parameter.json`, `kern/stick-kern/src/parameter.rs` |
 | **Schnittstelle Kern ↔ Oberfläche** (ROADMAP 4b.0): Design-Format = `kern/stick-kern/src/format.rs` (einzige Quelle, Doc-Kommentare = Beschreibung), Befehle = `kern/stick-api` (ein Tauri-Befehl `kern`, Verteiler `ausfuehren`); **erzeugt** (nicht von Hand ändern): `SCHNITTSTELLE.md` (lesbare Feld- und Befehlsliste), `kern/schnittstelle/` (`design.schema.json`, `befehle.schema.json`, `kern.ts`); Objektnummer je Stich, Formen je Objekt (`Design::formen`); CLI `stick api` | `SCHNITTSTELLE.md`, `kern/stick-api/src/lib.rs` |
+| **Änderungen für die Oberfläche** (Liste neueste zuerst, „Abgeglichen bis“ = Stand der Oberfläche) | `UI_Mockups/AENDERUNGEN.md` |
 | **Funktionsübersicht für Designer und Frontend** (jede Funktion, Einstellungen, Standard, JSON-Feld, einfach/experte, fehlende App-Befehle; bei jeder neuen Funktion pflegen) | `UI_Mockups/FUNKTIONEN.md` |
 | **Merkliste für den Nutzer** (u. a. M1: Parameterkatalog einfach/experte melden, wenn alle Funktionen fertig) | `ROADMAP.md` „Merkliste für den Nutzer“ |
 | **Anforderungen an die neue Oberfläche** (UX/UI wird komplett neu gestaltet – Mockup von Claude Design; bis dahin **an der App nichts ändern**, nur Kern/Befehle) | `app/ANFORDERUNGEN.md` |
@@ -111,7 +112,9 @@
    - danach **`stick api exportieren`** (bzw. `cargo run -p stick-cli -- api exportieren`) und die erzeugten Dateien
      (`SCHNITTSTELLE.md`, `kern/schnittstelle/*`) mitcommitten;
    - **von Hand pflegen** (nicht automatisch): `UI_Mockups/FUNKTIONEN.md` (was der Anwender einstellt, Standard,
-     JSON-Feld, Modus einfach/experte), Parameterkatalog (`parameter_katalog.py` → `PARAMETER.md`), ROADMAP;
+     JSON-Feld, Modus einfach/experte), Parameterkatalog (`parameter_katalog.py` → `PARAMETER.md`), ROADMAP und
+     **`UI_Mockups/AENDERUNGEN.md`** (Eintrag oben: Datum, Block, Commit, was neu ist, was die Oberfläche tun muss –
+     so erfährt der UI-Entwickler davon; Commit-Kennung nach dem Commit nachtragen);
    - Wächter-Tests in `stick-api` schlagen fehl, wenn die erzeugten Dateien veraltet sind, wenn `FUNKTIONEN.md` eine
      Objektart oder einen Befehl nicht nennt oder der Parameterkatalog ein Feld nennt, das es im Format nicht gibt –
      nicht abschalten, sondern die Doku nachziehen.

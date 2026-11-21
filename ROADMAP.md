@@ -70,7 +70,8 @@ Dabei jeweils CLAUDE.md §4 Regel 7 (Schnittstelle) beachten.
      (Tests `stick_kern::parameter` schlagen fehl, wenn ein Design-Wert fehlt oder ein Standard nicht stimmt),
   4. `Analyse_Teil3/15_funktionsinventur.md`, diese Roadmap (Phase-4b-Tabelle), Fundstellen in `Analyse_Teil3/…`,
   5. **Schnittstelle** (CLAUDE.md §4 Regel 7): Felder nur in `stick-kern/src/format.rs`, Befehle nur in `stick-api`,
-     dann `stick api exportieren` und `SCHNITTSTELLE.md` + `kern/schnittstelle/*` mitcommitten,
+     dann `stick api exportieren` und `SCHNITTSTELLE.md` + `kern/schnittstelle/*` mitcommitten; Eintrag in
+     `UI_Mockups/AENDERUNGEN.md` (für den UI-Entwickler),
   6. ändert sich die Stichberechnung der Referenz-Designs: `kern/testdaten/referenz/` ersetzen und im dortigen
      `README.md` als neue Stufe eintragen.
 - Commit + Push nach jedem Schritt, Nachricht auf Deutsch (Trailer: Co-Authored-By / Claude-Session).
