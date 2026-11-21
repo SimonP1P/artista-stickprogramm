@@ -85,6 +85,8 @@ class Arbeit {
 
   // Ergebnisse des Kerns (nicht tief reaktiv – groß)
   ergebnis = $state.raw<Ergebnis | null>(null);
+  /** zählt jede fertige Berechnung (Ergebnis oder Fehler) – die Vorschau hält die Live-Griffe bis zur nächsten */
+  stand = $state(0);
   formen = $state.raw<ObjektForm[]>([]);
   pruefung = $state.raw<Pruefung | null>(null);
   /** Fehler der letzten Berechnung; die Vorschau zeigt dann den letzten gültigen Stand */
@@ -329,6 +331,7 @@ class Arbeit {
       this.pruefung = pruefung;
       this.fehler = null;
       this.dauer = Math.round(performance.now() - t0);
+      this.stand++;
       if (this.modus === "experte")
         kern("ueberdeckungen", { design })
           .then((u) => nr === this.#lauf && (this.ueberdeckungen = u))
@@ -336,6 +339,7 @@ class Arbeit {
     } catch (x) {
       if (nr !== this.#lauf) return;
       this.fehler = alsFehler(x);
+      this.stand++;
       // Prüfung trotzdem holen (Hinweise), Fehler bleibt sichtbar
       kern("design_pruefen", { design })
         .then((p) => nr === this.#lauf && (this.pruefung = p))

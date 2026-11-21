@@ -107,12 +107,6 @@
     return null;
   });
   const BAND_MIN = 3, BAND_MAX = 120;
-  const band = $derived.by(() => {
-    if (!alphabet || alphabet.min_hoehe == null) return null;
-    const a = (alphabet.min_hoehe - BAND_MIN) / (BAND_MAX - BAND_MIN);
-    const b = ((alphabet.max_hoehe ?? alphabet.min_hoehe) - BAND_MIN) / (BAND_MAX - BAND_MIN);
-    return { l: `${a * 100}%`, w: `${Math.max(1, (b - a) * 100)}%` };
-  });
 
   /** Design in die Mitte: Verschiebung um die Mitte der Stiche (Begrenzung aus dem Kern) */
   function mittig() {
@@ -282,7 +276,6 @@
           <label for="ahoehe">Höhe der Buchstaben</label>
           <div style="display:flex; align-items:center; gap:10px">
             <div class="range" style="flex:1">
-              {#if band}<span class="band" style="left:{band.l}; width:{band.w}" title="empfohlen"></span>{/if}
               <input
                 type="range"
                 min={BAND_MIN}
@@ -308,7 +301,6 @@
               }}
             /><span class="unit">mm</span>
           </div>
-          <div class="small mut" style="margin-top:2px">grünes Band = empfohlene Höhe des Alphabets (Handbuch)</div>
           {#if hoeheWarnung}<div class="warnbox" style="margin-top:6px"><Icon d={IC.warnung} /><span>{hoeheWarnung}</span></div>{/if}
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px">

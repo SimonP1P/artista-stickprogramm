@@ -181,9 +181,11 @@
       else arbeit.waehlen(null);
       return;
     }
+    if (arbeit.modus === "experte" && !eingabe && werkzeug === "knoten" && vorschau?.knotenTaste(ev.key)) return ev.preventDefault();
+    // Entf (Windows) bzw. Löschtaste (Mac, ⌫) löscht die gewählten Objekte – in beiden Modi
+    if (!eingabe && (ev.key === "Delete" || ev.key === "Backspace") && arbeit.auswahl.length && arbeit.ansicht !== "abspielen")
+      return (ev.preventDefault(), arbeit.loeschen());
     if (arbeit.modus === "experte" && !eingabe) {
-      if (werkzeug === "knoten" && vorschau?.knotenTaste(ev.key)) return ev.preventDefault();
-      if ((ev.key === "Delete" || ev.key === "Backspace") && arbeit.auswahl.length) return (ev.preventDefault(), arbeit.loeschen());
       if (ev.altKey && (ev.key === "ArrowUp" || ev.key === "ArrowDown")) {
         const m = anordnenMenue[ev.key === "ArrowUp" ? 2 : 3];
         ev.preventDefault();

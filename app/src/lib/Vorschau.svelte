@@ -34,6 +34,21 @@
   /** Live-Vorschau der Griffe (SVG-Transformation der gewählten Objekte, nur Anzeige) */
   let griffTransform = $state("");
   let griffWert = $state<{ dx: number; dy: number; f: number; grad: number }>({ dx: 0, dy: 0, f: 1, grad: 0 });
+  /** Stand der Berechnung beim Loslassen eines Griffs; die Live-Ansicht bleibt, bis ein neueres Ergebnis da ist */
+  let griffHaltenBis = $state<number | null>(null);
+  $effect(() => {
+    if (griffHaltenBis === null) return;
+    if (arbeit.stand !== griffHaltenBis) {
+      griffTransform = "";
+      griffHaltenBis = null;
+      return;
+    }
+    const t = setTimeout(() => {
+      griffTransform = "";
+      griffHaltenBis = null;
+    }, 4000);
+    return () => clearTimeout(t);
+  });
 
   // ---- Knoten-Werkzeug (W5): Knoten aus dem JSON des gewählten Objekts (Punktlisten, Bézier-Knoten mit Anfassern,
   // `knoten.ts`); Formen und Transformationen wandelt der Kern um (Knopf „In Knoten umwandeln“, `in_knoten_umwandeln`)
@@ -235,6 +250,8 @@
         return;
       }
       const m = auswahlMitte();
+      griffHaltenBis = null;
+      griffTransform = "";
       if ((griff === "ecke" || griff === "dreh") && m) {
         ziehen = { art: griff === "ecke" ? "skalieren" : "drehen", start: p, mitte: m, bewegt: false };
         return;
@@ -310,7 +327,8 @@
           } else t.drehen = r((t.drehen ?? 0) + w.grad);
         }
       });
-      griffTransform = "";
+      // Live-Ansicht stehen lassen, bis der Kern die neuen Stiche liefert – sonst springt das Objekt kurz zurück
+      griffHaltenBis = arbeit.stand;
       return;
     }
     griffTransform = "";
