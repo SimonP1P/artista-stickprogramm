@@ -171,9 +171,13 @@ P('unterlage.auto_an', G, 'Unterlage automatisch', 'Auto Underlay an/aus (Schrif
 P('unterlage.auto_art', G, 'Art der Auto-Unterlage', 'vorgewählte Unterlage', d='einstellungen.unterlage.auto_art',
   einheit='Auswahl', std=['zickzack'], werte=['mittellauf', 'edge_walk', 'zickzack', 'doppelzickzack'],
   quelle='Stil-Bit 0x0001 = Zickzack')
-P('objekt.unterlage_saeule', G, 'Unterlage der Säule/Schrift', 'auto, keine oder Arten (z. B. edge_walk+zickzack)',
-  ebene='objekt', gilt=['satin', 'satinlinie', 'text'], o='unterlage', einheit='Auswahl', std='auto',
-  werte=['auto', 'keine', 'mittellauf', 'edge_walk', 'zickzack', 'doppelzickzack'], quelle='Handbuch Kap. 22')
+P('objekt.unterlage_saeule', G, 'Unterlage der Säule/Schrift', 'auto, keine oder Arten (z. B. edge_walk+zickzack). '
+  'Schrift (auch Computer-Schrift, Monogramm): auto = Stil „Schrift“ (Zickzack); die Oberfläche wählt für neue Texte '
+  'Mittellauf + Zickzack vor (Entscheidung Nutzer 21.11.2026); einfacher Modus ein Häkchen „Stabilisieren“ '
+  '(an = beide, aus = keine), Experte zwei Häkchen', ebene='objekt',
+  gilt=['satin', 'satinlinie', 'text', 'ttf', 'monogramm'], o='unterlage', einheit='Auswahl', std='auto',
+  werte=['auto', 'keine', 'mittellauf', 'edge_walk', 'zickzack', 'doppelzickzack'],
+  quelle='Handbuch Kap. 22, S. 186 (kleine Schrift: aus); Stil Schrift 0x27a7 (Analyse_Teil3/05)', modus='einfach')
 P('unterlage.rand', G, 'Abstand zum Rand', 'Unterlage bleibt so weit innen', d='einstellungen.unterlage.rand',
   einheit='mm', std=0.20, bereich=[0.0, 2.0], quelle='AMT 0x2769/0x276a (mittel)')
 P('unterlage.zugausgleich', G, 'Zugausgleich der Unterlage', '', d='einstellungen.unterlage.zugausgleich', einheit='mm',
@@ -377,7 +381,7 @@ P('schrift.farben', G, 'Farbwechsel im Text', '^ im Text wechselt zur nächsten 
 P('schrift.buchstaben', G, 'Einzelne Buchstaben', 'Farbe, verschieben, drehen, skalieren, Winkellinien je Buchstabe',
   ebene='objekt', gilt=T, o='buchstaben', einheit='Liste', std=[], quelle='Handbuch Kap. 19/20')
 P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step, Füllmuster oder automatisch (Satin, ab 8 mm '
-  'Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung). '
+  'Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach, Satin (Säulen wie die TrueType-Umwandlung) oder auto. '
   'Einfacher Modus: neue Texte „auto“, Schalter „Trotzdem Satin“', ebene='objekt',
   gilt=['text', 'monogramm', 'ttf'], o='stichart', einheit='Auswahl', std='satin',
   werte=['satin', 'auto', 'step', 'muster', 'tatami', 'lauf', 'dreifach'],
@@ -385,7 +389,7 @@ P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step, Füllm
          'Erweiterung', modus='einfach')
 P('schrift.auto_step_ab', G, 'Step ab Stichlänge (Stichart auto)', 'wird ein Satinstich der Schrift (nach Größe und '
   'Transformation) länger, stickt der ganze Text Step; darüber ohne „auto“ ein Hinweis', ebene='objekt',
-  gilt=['text', 'monogramm'], einheit='mm', std=8.0,
+  gilt=['text', 'monogramm', 'ttf'], einheit='mm', std=8.0,
   quelle='eigene Erweiterung; Grenze wie EasyStitch (NORMAL.AMT 0x3f54, Analyse/code/10 §C), Handbuch S. 118 '
          '(Satin nicht über 7 mm); Konstante schrift::AUTO_STEP_AB_MM', modus='automatisch')
 P('schrift.elastisch', G, 'Verzerren (Elastic)', 'gerade (Wimpel) oder gebogen (Bogen), Griffe oben/unten',

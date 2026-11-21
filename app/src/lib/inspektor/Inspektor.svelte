@@ -27,9 +27,9 @@
 
   /** Felder, die im oberen Abschnitt stehen (Modus E laut UEBERGABE §3 / FUNKTIONEN.md) */
   const E_FELDER: Record<string, string[]> = {
-    text: ["text", "alphabet", "hoehe", "ausrichtung", "kursiv", "grundlinie"],
-    ttf: ["text", "schrift", "hoehe", "ausrichtung", "kursiv", "grundlinie"],
-    monogramm: ["initialen", "hoehe", "rahmen", "rahmen_farbe"],
+    text: ["text", "alphabet", "hoehe", "ausrichtung", "kursiv", "grundlinie", "unterlage"],
+    ttf: ["text", "schrift", "hoehe", "ausrichtung", "kursiv", "grundlinie", "unterlage"],
+    monogramm: ["initialen", "hoehe", "rahmen", "rahmen_farbe", "unterlage"],
     lauf: ["geschlossen"],
     dreifach: ["geschlossen"],
     satin: ["stichart"],
@@ -238,14 +238,14 @@
                 <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
-              <Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "motivlinie" && f.name === "groesse" ? "Motivgröße" : undefined} setzen={(v) => setzen(f.name, v)} />
+              <Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "motivlinie" && f.name === "groesse" ? "Motivgröße" : undefined} haken={SCHRIFT.has(o.art)} setzen={(v) => setzen(f.name, v)} />
             {/if}
           {/each}
         </Abschnitt>
 
         {#if fein.length}
           <Abschnitt titel="Stichart – Feinheiten" offen={false}>
-            {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} setzen={(v) => setzen(f.name, v)} x />{/each}
+            {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} haken={SCHRIFT.has(o.art)} setzen={(v) => setzen(f.name, v)} x />{/each}
           </Abschnitt>
         {/if}
 

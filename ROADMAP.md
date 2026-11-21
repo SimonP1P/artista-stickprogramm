@@ -57,7 +57,9 @@ dort seit 21.11. in `~/.cargo`, `CARGO_TARGET_DIR=kern/target`); Bildschirmfotos
 erprobt** – Vor Ort **V10** ✅ 21.11. (gesendet und gestickt, Bericht Nutzer). Offene Kern-Schritte der Oberfläche:
 W12 (Phase 5); **W5-Rest ✅ 21.11.** (Befehl `in_knoten_umwandeln`, Knoten mit Bézier-Anfassern), **W9 ✅ 21.11.**
 (Buchstabe je Stich, einzelne Buchstaben per Klick). **Schriftauswahl mit Google Fonts und „stickbar ab“ ✅ 21.11.**
-(Phase 5, `Analyse_Teil3/21`) mit Stil-Einordnung aller Schriften und eigenen Stilen.
+(Phase 5, `Analyse_Teil3/21`) mit Stil-Einordnung aller Schriften und eigenen Stilen. **Unterlage für alle Schriften
+✅ 21.11.** (Computer-Schriften mit Auto-Unterlage wie das Original; neue Texte Mittellauf + Zickzack vorgewählt,
+Häkchen „Stabilisieren“ bzw. Mittellauf/Zickzack – Bericht 10 §3); Gerätetest dazu offen.
 Merkliste M1: Aufteilung des Parameterkatalogs nach einfach/experte **vom Nutzer bestätigt (21.11.)**.
 
 **Erledigt 21.11.: 4b.7 Motivlinie (Pattern Run)** – 14 Motivsätze der CD (`userletw/`, Ressource
@@ -130,6 +132,7 @@ Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Te
 | V8 | **SVG-Probe:** `stickprogramm/beispiele/blume.svg` mit `stick svg` einlesen (Blume aus Inkscape: Tatami mit Aussparung, Satinflächen, Laufstiche, Ring mit Loch; 90 × 84 mm, Rahmen 130 × 100) und sticken – passen Flächen, Satin der Blätter, Aussparungen ohne Lücken? Foto | Person, Material (Stoff + Vlies) | ⬜ (vorbereitet 21.11.) |
 | V9 | **Knopflöcher:** `stickprogramm/beispiele/knopfloecher.json` (alle 9 Typen + 2 eingearbeitete in einer Fläche; mit `--alphabete …/wletter` erzeugen) auf festem Stoff mit Vlies sticken, Schlitz aufschneiden – Raupen dicht genug, Riegel fest, Fläche am Schlitz sauber? Foto | Person, Material (Stoff + Vlies) | ⬜ (vorbereitet 21.11.) |
 | V10 | **Neue Oberfläche am Gerät** (nach Zustimmung): Windows-PC, App bauen, Anschluss COM3 – 1. „Maschine prüfen“ (nur lesen), 2. „Designs aus der Maschine“ Liste + ein Design lesen (nur lesen), 3. Senden ohne Sticken (Plan → Bestätigen), 4. „Abbrechen“ während des Sendens probieren, 5. erst dann mit Person an der Maschine „Jetzt sticken …“ | Person: Display, Rahmen, Start | ✅ 21.11. (Bericht Nutzer: COM3 gefunden, eingestellt, gesendet, **sauber gestickt**; Einzelschritte 1–4 nicht gemeldet; `Analyse_Teil2/07`) |
+| V11 | **Unterlage bei Computer-Schrift:** „Anna“ in Arial Black, 20 mm, Stichart auto, auf Strick (mit Vlies) zweimal sticken – mit Häkchen „Stabilisieren“ (Mittellauf + Zickzack) und ohne. Liegen die Buchstaben mit Unterlage glatter und höher, ohne dass Kanten ausfransen? Foto | Person, Material (Strickstoff + Vlies) | ⬜ (vorbereitet 21.11.) |
 | V6 | **Prüfmuster 2 – neue Sticharten** (`stickprogramm/beispiele/pruefmuster2.json`: Füllmuster Raute + Herz, Tatami-Kreis mit ausgesparter Schrift „Ab“, Applikation „Trim in Place“ mit Blanket, Blanket-Linie; 78 × 82 mm, 8 Farben) sticken und fotografieren: `START_STICKEN.bat Pruefmuster2_puffer.bin` – bei der Applikation nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie zuschneiden | Person, Material (Stoff + Vlies + Applikationsstoff) | ⬜ (vorbereitet 20.11.) |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
@@ -287,6 +290,12 @@ mit empfohlener Höhe – eigene Erweiterung); Wechsel Alphabet ↔ Computer-Sch
 `Analyse_Teil3/21_schriften.md`. **Stil-Einordnung ✅ (Punkt 4):** 23 Stile in allen Reitern mit Anzahl; 50
 Original-Alphabete und 173 Standardschriften (Windows, Office, macOS) nach dem Aussehen eingeordnet, sonst die
 Einordnung von Google; eigene Stile des Anwenders (Etikett an der Kachel).
+**Unterlage für jede Schrift (21.11., Wunsch Nutzer „Mittellinie und Zickzack für jede Schriftart“):** Computer-Schriften
+in Satin hatten keine Unterlage – jetzt wie im Original Auto-Unterlage des Stils „Schrift“ (Zickzack) bzw. die gewählten
+Arten, auch Stichart `auto` für Computer-Schriften. **Vorwahl für neue Texte, Computer-Schriften und Monogramme:
+Mittellauf + Zickzack** (Entscheidung Nutzer, eigene Festlegung); einfacher Modus Häkchen „Stabilisieren“, Experte zwei
+Häkchen. `schrift_wechseln` behält Unterlage und Stichart. **Offen (Vor Ort):** „Anna“ in Arial Black 20 mm auf Strick
+mit und ohne Stabilisieren sticken.
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),

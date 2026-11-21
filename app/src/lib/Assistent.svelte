@@ -8,6 +8,7 @@
   import { ART, IC } from "./icons";
   import { garnText, listen, STOFF_TEXT } from "./listen.svelte";
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
+  import { SCHRIFT_UNTERLAGE } from "./einfuegen";
   import { ANLEITUNG_RAHMEN, maschine, SIMULATION } from "./maschine.svelte";
 
   /** Text mit Original-Alphabet oder Computer-Schrift (gleiche Felder für Text, Höhe, Satz) */
@@ -178,14 +179,14 @@
   function textEinfuegen() {
     arbeit.aendern((d) => {
       d.objekte ??= [];
-      d.objekte.push({ art: "text", name: "Anna", text: "Anna", alphabet: STANDARD_ALPHABET, hoehe: 20, stichart: "auto", farbe: STANDARD_FARBE });
+      d.objekte.push({ art: "text", name: "Anna", text: "Anna", alphabet: STANDARD_ALPHABET, hoehe: 20, stichart: "auto", unterlage: SCHRIFT_UNTERLAGE, farbe: STANDARD_FARBE });
     });
     arbeit.auswahl = [arbeit.objekte.length - 1];
   }
   function monogrammEinfuegen() {
     arbeit.aendern((d) => {
       d.objekte ??= [];
-      d.objekte.push({ art: "monogramm", name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", stichart: "auto", farbe: STANDARD_FARBE });
+      d.objekte.push({ art: "monogramm", name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", stichart: "auto", unterlage: SCHRIFT_UNTERLAGE, farbe: STANDARD_FARBE });
     });
     arbeit.auswahl = [arbeit.objekte.length - 1];
   }
@@ -208,6 +209,15 @@
   const stichHinweis = $derived(
     (e?.hinweise ?? []).find((h) => (h.art === "schrift_step" || h.art === "lange_satinstiche") && h.objekt === haupt),
   );
+  // Unterlage (Stabilisieren): ein Häkchen für Mittellauf + Zickzack; aus = keine (Handbuch S. 186: bei kleiner
+  // Schrift abschalten). Im Expertenmodus einzeln (Inspektor).
+  const stabil = $derived.by(() => {
+    const u = (objekt as Text | Mono | undefined)?.unterlage as unknown;
+    return !(u === "keine" || u === false || (Array.isArray(u) && u.length === 0));
+  });
+  function stabilSetzen(an: boolean) {
+    objektAendern((o) => ((o as Text).unterlage = an ? [...SCHRIFT_UNTERLAGE] : "keine"));
+  }
   function satinErzwingen(an: boolean) {
     objektAendern((o) => ((o as TextJson).stichart = an ? "satin" : "auto"));
   }
@@ -466,6 +476,7 @@
           </div>
           {#if hoeheWarnung}<div class="warnbox" style="margin-top:6px"><Icon d={IC.warnung} /><span>{hoeheWarnung}</span></div>{/if}
           {@render stichSchalter()}
+          {@render stabilisieren()}
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px">
           <div class="field">
@@ -532,6 +543,7 @@
             /><span class="unit">mm</span>
           </div>
           {@render stichSchalter()}
+          {@render stabilisieren()}
         </div>
         {@render garnWahl()}
         {@render elGroesse()}
@@ -661,6 +673,15 @@
     </label>
     </div>
   {/if}
+{/snippet}
+
+{#snippet stabilisieren()}
+  <div>
+    <label class="chk" style="margin-top:8px" title="Mittellauf und Zickzack unter den Buchstaben halten den Stoff fest und heben die Stiche an. Bei sehr kleiner Schrift abschalten, sonst laufen die Buchstaben zu.">
+      <input type="checkbox" checked={stabil} onchange={(ev) => stabilSetzen((ev.currentTarget as HTMLInputElement).checked)} />
+      <span>Stabilisieren <span class="mut small">– Mittellauf und Zickzack unter den Buchstaben</span></span>
+    </label>
+  </div>
 {/snippet}
 
 {#snippet garnWahl()}

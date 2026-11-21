@@ -58,6 +58,14 @@ Park–Miller als Annahme für `ACMRandomNumber`). Standard aus, Schrift an, je 
 - Die Art hängt **nicht** von der Säulenbreite ab: Zeichensätze der Maschine (von Bernina erstellt) haben Mittellauf
   (Drifter 4,1 mm, Lisa 2,0 mm, Blackboard, Swiss Block, Zurich) oder Zickzack (Alice 2,3 mm, Bamboo 4,3 mm) – Wahl je
   Alphabet beim Erstellen, keine Regel in Code oder Dateien.
+- **Computer-Schriften (TrueType)** sind im Original Schrift-Objekte (Handbuch S. 190) und bekommen dieselbe
+  Auto-Unterlage wie die Alphabete. ✅ Kern seit 21.11.2026: `ttf` mit Stichart Satin/auto → Zickzack (`"auto"`) oder die
+  gewählten Arten, Tatami → Step-Unterlage; vorher hatten TTF-Säulen **keine** Unterlage (Arial Black „Anna“ 25 mm:
+  1 935 Stiche ohne, 2 342 mit Zickzack, 2 665 mit Mittellauf + Zickzack).
+- **Eigene Festlegung (Entscheidung des Nutzers, 21.11.2026):** Die Oberfläche wählt für **neue** Texte,
+  Computer-Schriften und Monogramme **Mittellauf + Zickzack** vor (Original: nur Zickzack). Einfacher Modus ein Häkchen
+  „Stabilisieren“ (beide an/aus), Expertenmodus zwei Häkchen. Der Kern selbst bleibt beim Original (`"auto"` = Zickzack).
+  Offen: Gerätetest (kleine/große Schrift auf Strick, mit und ohne Mittellauf).
 
 ## 4. Laufwege und Reihenfolge — Sicherheit: hoch (Messung), Wegführung mittel
 - **Flächen:** Teilbereiche einer Tatami-Fläche mit Laufstichen (1,8 mm, variabel) verbinden, etwa die Hälfte am Rand

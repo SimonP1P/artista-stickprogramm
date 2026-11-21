@@ -399,8 +399,8 @@ class Arbeit {
   async schriftWechseln(i: number, wahl: SchriftWahl) {
     const design = $state.snapshot(this.design) as DesignJson;
     try {
+      // Stichart und Unterlage übernimmt der Kern (auto bleibt auto, Tatami ↔ Step)
       const x = (await kern("schrift_wechseln", { design, objekt: i, ...wahl })) as ObjektJson;
-      if (x.art === "text" && design.objekte?.[i]?.art !== "text") x.stichart = "auto";
       this.aendern((d) => (d.objekte![i] = x));
     } catch (e) {
       this.zeige(alsFehler(e).meldung, "err");

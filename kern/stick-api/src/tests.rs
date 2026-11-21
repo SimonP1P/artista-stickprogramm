@@ -509,15 +509,24 @@ fn schriften_auswahl() {
     assert!(g["stile"].as_array().unwrap().iter().any(|s| s == "Gotisch"));
 
     let d = json!({"objekte": [{"art": "text", "text": "Mia", "alphabet": "Drifter", "hoehe": 20, "stichart": "auto",
+                                 "unterlage": ["mittellauf", "zickzack"],
                                  "farbe": "#ff0000", "ausrichtung": "links", "name": "Name"}]});
     let o = ausfuehren(&k, "schrift_wechseln", json!({"design": d, "objekt": 0, "schrift": "Arial"})).unwrap();
     assert_eq!(o["art"], "ttf");
     assert_eq!(o["schrift"], "Arial");
     assert_eq!((o["text"].clone(), o["farbe"].clone(), o["ausrichtung"].clone()), (json!("Mia"), json!("#ff0000"), json!("links")));
-    assert!(o.get("stichart").is_none() && o.get("alphabet").is_none());
+    // Stichart „auto“ und Unterlage bleiben
+    assert_eq!((o["stichart"].clone(), o["unterlage"].clone()), (json!("auto"), json!(["mittellauf", "zickzack"])));
+    assert!(o.get("alphabet").is_none());
     let t = ausfuehren(&k, "schrift_wechseln", json!({"design": {"objekte": [o]}, "objekt": 0, "alphabet": "Lisa"})).unwrap();
-    assert_eq!((t["art"].clone(), t["alphabet"].clone()), (json!("text"), json!("Lisa")));
+    assert_eq!((t["art"].clone(), t["alphabet"].clone(), t["stichart"].clone()), (json!("text"), json!("Lisa"), json!("auto")));
     assert!(t.get("schrift").is_none());
+    // Computer-Schrift ohne Stichart (Vorgabe Tatami) → auto; ausdrücklich Tatami → Step
+    let ttf = |x: serde_json::Value| json!({"objekte": [x]});
+    let t2 = ausfuehren(&k, "schrift_wechseln", json!({"design": ttf(json!({"art": "ttf", "text": "A", "schrift": "Arial"})), "objekt": 0, "alphabet": "Lisa"})).unwrap();
+    assert_eq!(t2["stichart"], "auto");
+    let t3 = ausfuehren(&k, "schrift_wechseln", json!({"design": ttf(json!({"art": "ttf", "text": "A", "schrift": "Arial", "stichart": "tatami"})), "objekt": 0, "alphabet": "Lisa"})).unwrap();
+    assert_eq!(t3["stichart"], "step");
     assert!(ausfuehren(&k, "schrift_wechseln", json!({"design": d, "objekt": 0})).is_err());
 
     let liste = ausfuehren(&k, "schriften_liste", json!({})).unwrap();
@@ -528,6 +537,17 @@ fn schriften_auswahl() {
     };
     let v = ausfuehren(&k, "schrift_vorschau", json!({"schrift": name, "text": "Abc"})).unwrap();
     assert!(!v["linien"].as_array().unwrap().is_empty());
+
+    // Unterlage der Computer-Schrift in Satin (Stil „Schrift“ wie im Original; Mittellauf + Zickzack = Vorgabe der
+    // Oberfläche): keine < auto (Zickzack) < Mittellauf + Zickzack; alte Schreibweise true/false = auto/keine
+    let stiche = |u: serde_json::Value| -> usize {
+        let d = json!({"rahmen": "artista 130 x 100", "objekte": [{"art": "ttf", "text": "Anna", "schrift": name,
+                       "hoehe": 20, "stichart": "satin", "unterlage": u}]});
+        ausfuehren(&k, "design_berechnen", json!({"design": d})).unwrap()["stiche"].as_array().unwrap().len()
+    };
+    let (keine, auto, beide) = (stiche(json!("keine")), stiche(json!("auto")), stiche(json!(["mittellauf", "zickzack"])));
+    assert!(keine < auto && auto < beide, "{name}: keine {keine}, auto {auto}, beide {beide}");
+    assert_eq!((stiche(json!(true)), stiche(json!(false))), (auto, keine));
     if name == "Arial" {
         let ab = v["stickbarkeit"]["stickbar_ab"].as_f64().unwrap();
         assert!((6.0..=10.0).contains(&ab), "Arial stickbar ab {ab}");

@@ -179,7 +179,7 @@ Text mit einer Computer-Schrift (TrueType/OpenType, Befehl `schriften_liste`).
 | `schrift` | string | ja | – | Name der Schrift („Arial“, „Arial Bold“) oder Pfad einer .ttf/.otf-Datei |
 | `stichart` | TtfStichart |  | `"tatami"` |  |
 | `text` | string | ja | – | Text; `\n` = neue Zeile, `^` = Farbwechsel |
-| `unterlage` | boolean |  | – | Unterlage an/aus (Tatami, Satin; ohne Angabe: Stil) |
+| `unterlage` | UnterlageJson |  | – | Unterlage: `"auto"` (Standard, Stil „Schrift“ wie im Original: Zickzack unter den Satinsäulen, Step unter Flächen), `"keine"` oder Arten in Stickfolge für Satin/auto, z. B. `["mittellauf", "zickzack"]` (Tatami: jede Liste = an). `true`/`false` (alte Schreibweise) = auto/keine. |
 | `winkel` | number |  | – | Stichwinkel (Tatami, Muster) |
 | `wortabstand` | number |  | – | Wortabstand in % der Höhe (Vorlage 25) |
 | `zeilenabstand` | number |  | – | Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\n` im Text |
@@ -367,6 +367,7 @@ Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (
 - `"lauf"` – Umriss als Laufstich
 - `"dreifach"` – Umriss als Dreifachstich
 - `"satin"` – Satinsäulen wie die TrueType-Umwandlung des Originals
+- `"auto"` – Satinsäulen; würde ein Satinstich nach Größe/Transformation länger als 8 mm, der ganze Text Step – wie Stichart „auto“ der Texte (eigene Erweiterung, `Analyse_Teil3/10` §8)
 - `"muster"` – Füllmuster (Feld `muster`)
 
 **UnterlageArt** – Art einer Unterlage (in Stickfolge)

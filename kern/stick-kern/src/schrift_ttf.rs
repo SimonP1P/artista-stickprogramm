@@ -44,8 +44,9 @@ pub enum TtfStichart {
     /// nur die Umrisse
     Lauf { laenge: Option<f64>, dreifach: bool },
     /// Satinsäulen mit automatischer Stichrichtung wie die TrueType-Umwandlung des Originals (Turning, Break Angle
-    /// 87°, `saeulen.rs`); Unterlage: None = Auto Underlay, Some(false) = keine
-    Satin { unterlage: Option<bool> },
+    /// 87°, `saeulen.rs`). Unterlage: Auto = Stil „Schrift“ (Zickzack, wie die Alphabete), sonst die Arten.
+    /// `auto`: Stichart „auto“ – zu lange Satinstiche machen den Text zu Step (`Design::schrift_auto_anwenden`).
+    Satin { unterlage: crate::design::Unterlage, auto: bool },
 }
 
 /// Ringe nach Verschachtelung ordnen (gerade Tiefe = Umriss, ungerade = Loch): (Umriss, Löcher). Unabhängig von der
@@ -162,7 +163,7 @@ pub fn ttf_text_objekte_idx(
                     });
                 }
             }
-            TtfStichart::Satin { unterlage } => {
+            TtfStichart::Satin { unterlage, .. } => {
                 let werte = crate::saeulen::SaeulenWerte {
                     knickwinkel: crate::saeulen::KNICKWINKEL_TURNING,
                     ..Default::default()
@@ -179,10 +180,11 @@ pub fn ttf_text_objekte_idx(
                             art: ObjektArt::Satin {
                                 seite_a: x.seite_a,
                                 seite_b: x.seite_b,
-                                unterlage: if *unterlage == Some(false) {
-                                    crate::design::Unterlage::Arten(Vec::new())
-                                } else {
-                                    crate::design::Unterlage::Auto
+                                unterlage: match unterlage {
+                                    crate::design::Unterlage::Auto => crate::design::Unterlage::Arten(vec![
+                                        crate::schrift::SCHRIFT_UNTERLAGE.into(),
+                                    ]),
+                                    u => u.clone(),
                                 },
                                 // Schrift: Auto Spacing × 0,9 und Kurzstiche wie die Alphabete (`schrift.rs`)
                                 optionen: crate::design::SatinOptionen {
@@ -327,7 +329,7 @@ mod tests {
     /// Stichart Satin (TrueType-Umwandlung): „I“ = eine Säule quer zum Balken, „O“ = Ring als Säule(n)
     #[test]
     fn satin_wie_turning() {
-        let (o, _) = ttf_text_objekte(&schrift(), &vorgabe("IO"), &TtfStichart::Satin { unterlage: None });
+        let (o, _) = ttf_text_objekte(&schrift(), &vorgabe("IO"), &TtfStichart::Satin { unterlage: crate::design::Unterlage::Auto, auto: false });
         assert_eq!(o.len(), 2);
         let ObjektArt::Gruppe { teile, .. } = &o[0].art else {
             panic!()

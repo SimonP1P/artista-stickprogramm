@@ -2,10 +2,29 @@
 // (`kreis`, `rechteck` …) bzw. wenige Startpunkte – die Oberfläche rechnet keine Geometrie. Danach im Inspektor bzw. in
 // der Formansicht anpassen.
 
-import type { ObjektJson } from "$kern/kern";
+import type { ObjektJson, UnterlageArt, UnterlageJson } from "$kern/kern";
 import { IC } from "./icons";
 
 export const STANDARD_FARBE = "#004780";
+/** Unterlage neuer Texte: Mittellauf + Zickzack (Entscheidung des Nutzers 21.11.2026; das Original wählt im Stil
+ *  „Schrift“ nur Zickzack vor – `Analyse_Teil3/10` §3). */
+export const SCHRIFT_UNTERLAGE: UnterlageArt[] = ["mittellauf", "zickzack"];
+
+/** Unterlage eines Texts als Häkchen: „auto“/ohne Angabe = Stil „Schrift“ (Zickzack), true/false = alte Schreibweise */
+export function unterlageHaken(u: unknown): { mittellauf: boolean; zickzack: boolean; andere: UnterlageArt[] } {
+  if (Array.isArray(u)) {
+    const l = u as UnterlageArt[];
+    return { mittellauf: l.includes("mittellauf"), zickzack: l.includes("zickzack"), andere: l.filter((x) => x !== "mittellauf" && x !== "zickzack") };
+  }
+  const aus = u === "keine" || u === false;
+  return { mittellauf: false, zickzack: !aus, andere: [] };
+}
+
+/** Häkchen → Wert für `unterlage` (Mittellauf zuerst, dann übrige Arten, Zickzack zuletzt; nichts = „keine“) */
+export function unterlageAusHaken(h: { mittellauf: boolean; zickzack: boolean; andere: UnterlageArt[] }): UnterlageJson {
+  const l: UnterlageArt[] = [...(h.mittellauf ? ["mittellauf" as const] : []), ...h.andere, ...(h.zickzack ? ["zickzack" as const] : [])];
+  return l.length ? l : "keine";
+}
 
 /**
  * Werkzeugleiste und Menü „Einfügen“ nach dem Original (Wunsch Nutzer 21.11.2026): **Formen** wie die Design-Leiste
@@ -110,11 +129,11 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
   ];
   switch (art) {
     case "text":
-      return { art, name: "Text", text: "Text", alphabet: "Swiss Block", hoehe: 15, stichart: "auto", farbe };
+      return { art, name: "Text", text: "Text", alphabet: "Swiss Block", hoehe: 15, stichart: "auto", unterlage: SCHRIFT_UNTERLAGE, farbe };
     case "ttf":
-      return schrift ? { art, name: "Text", text: "Text", schrift, hoehe: 15, farbe } : null;
+      return schrift ? { art, name: "Text", text: "Text", schrift, hoehe: 15, stichart: "auto", unterlage: SCHRIFT_UNTERLAGE, farbe } : null;
     case "monogramm":
-      return { art, name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", stichart: "auto", farbe };
+      return { art, name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", stichart: "auto", unterlage: SCHRIFT_UNTERLAGE, farbe };
     case "lauf":
     case "dreifach":
       return { art, name: art === "lauf" ? "Laufstich" : "Dreifachstich", punkte: linie, farbe };

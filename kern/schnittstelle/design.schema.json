@@ -3777,11 +3777,8 @@
           "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
         },
         "unterlage": {
-          "description": "Unterlage an/aus (Tatami, Satin; ohne Angabe: Stil)",
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "$ref": "#/$defs/UnterlageJson",
+          "description": "Unterlage: `\"auto\"` (Standard, Stil „Schrift“ wie im Original: Zickzack unter den Satinsäulen, Step unter\nFlächen), `\"keine\"` oder Arten in Stickfolge für Satin/auto, z. B. `[\"mittellauf\", \"zickzack\"]` (Tatami: jede\nListe = an). `true`/`false` (alte Schreibweise) = auto/keine."
         },
         "winkel": {
           "description": "Stichwinkel (Tatami, Muster)",
@@ -3838,6 +3835,11 @@
           "type": "string"
         },
         {
+          "const": "auto",
+          "description": "Satinsäulen; würde ein Satinstich nach Größe/Transformation länger als 8 mm, der ganze Text Step – wie\nStichart „auto“ der Texte (eigene Erweiterung, `Analyse_Teil3/10` §8)",
+          "type": "string"
+        },
+        {
           "const": "muster",
           "description": "Füllmuster (Feld `muster`)",
           "type": "string"
@@ -3881,6 +3883,10 @@
             "$ref": "#/$defs/UnterlageArt"
           },
           "type": "array"
+        },
+        {
+          "description": "an/aus – alte Schreibweise der Computer-Schrift: `true` = \"auto\", `false` = \"keine\"",
+          "type": "boolean"
         }
       ],
       "description": "Unterlage: `\"auto\"` (Standard, wie „Auto Underlay“ des Stils), `\"keine\"` oder eine Liste der Arten in Stickfolge.\nAlte Schreibweise: Arten mit „+“ verbunden (`\"edge_walk+zickzack\"`)."

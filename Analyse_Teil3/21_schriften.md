@@ -93,8 +93,13 @@ nur die Form; Garnstärke, Stoff und Stichart verschieben die Grenze.
 ## 5. Schrift wechseln — eigene Festlegung
 `schrift_wechseln {design, objekt, alphabet | schrift}`: Text mit Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`).
 Es bleiben die gemeinsamen Felder (Lage, Farbe, Garn, Transformation …), die Schrift-Optionen (Höhe, Breite, Abstände,
-Ausrichtung, Grundlinie …) und der Text; Felder, die es in der anderen Art nicht gibt, entfallen. Die Oberfläche setzt
-für einen neuen Original-Text `stichart: "auto"` wie bei jedem neuen Text (Bericht 10 §8).
+Ausrichtung, Grundlinie, Füllmuster …), der Text, die **Unterlage** und der Stichwinkel; Felder, die es in der anderen Art
+nicht gibt, entfallen. **Stichart:** auto, Satin und Muster bleiben; Step ↔ Tatami; Text ohne Angabe (= Satin) → Satin;
+Computer-Schrift ohne Angabe, Lauf und Dreifach → auto (Bericht 10 §8).
+
+**Unterlage der Computer-Schrift (21.11.2026):** wie die Alphabete (Bericht 10 §3) – `unterlage` nimmt dieselben Werte
+wie beim Text (`"auto"`, `"keine"`, Arten), alte Dateien mit `true`/`false` gelten als auto/keine. Stichart **auto**
+gibt es jetzt auch für Computer-Schriften (Satin, ab 8 mm Satinstich der ganze Text Step).
 
 ## 6. Stile aller Schriften — eigene Einordnung (Sicherheit: Geschmack, nicht messbar)
 Datei `kern/stick-formate/daten/schrift_stile.json` (von Hand gepflegt), Kern `stick-formate::schriftstile`, Befehl

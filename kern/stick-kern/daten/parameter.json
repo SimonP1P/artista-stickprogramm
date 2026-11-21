@@ -1380,12 +1380,14 @@
    "id": "objekt.unterlage_saeule",
    "gruppe": "Unterlage",
    "name": "Unterlage der Säule/Schrift",
-   "wirkung": "auto, keine oder Arten (z. B. edge_walk+zickzack)",
+   "wirkung": "auto, keine oder Arten (z. B. edge_walk+zickzack). Schrift (auch Computer-Schrift, Monogramm): auto = Stil „Schrift“ (Zickzack); die Oberfläche wählt für neue Texte Mittellauf + Zickzack vor (Entscheidung Nutzer 21.11.2026); einfacher Modus ein Häkchen „Stabilisieren“ (an = beide, aus = keine), Experte zwei Häkchen",
    "ebene": "objekt",
    "gilt_fuer": [
     "satin",
     "satinlinie",
-    "text"
+    "text",
+    "ttf",
+    "monogramm"
    ],
    "json_design": null,
    "json_objekt": "unterlage",
@@ -1401,8 +1403,8 @@
     "doppelzickzack"
    ],
    "stoff": false,
-   "quelle": "Handbuch Kap. 22",
-   "modus": "experte"
+   "quelle": "Handbuch Kap. 22, S. 186 (kleine Schrift: aus); Stil Schrift 0x27a7 (Analyse_Teil3/05)",
+   "modus": "einfach"
   },
   {
    "id": "unterlage.rand",
@@ -3714,7 +3716,7 @@
    "id": "schrift.stichart",
    "gruppe": "Schrift",
    "name": "Stichart der Schrift",
-   "wirkung": "Satin (Alphabet), Step, Füllmuster oder automatisch (Satin, ab 8 mm Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung). Einfacher Modus: neue Texte „auto“, Schalter „Trotzdem Satin“",
+   "wirkung": "Satin (Alphabet), Step, Füllmuster oder automatisch (Satin, ab 8 mm Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach, Satin (Säulen wie die TrueType-Umwandlung) oder auto. Einfacher Modus: neue Texte „auto“, Schalter „Trotzdem Satin“",
    "ebene": "objekt",
    "gilt_fuer": [
     "text",
@@ -3747,7 +3749,8 @@
    "ebene": "objekt",
    "gilt_fuer": [
     "text",
-    "monogramm"
+    "monogramm",
+    "ttf"
    ],
    "json_design": null,
    "json_objekt": null,

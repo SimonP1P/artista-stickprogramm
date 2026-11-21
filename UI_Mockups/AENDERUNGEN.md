@@ -15,6 +15,19 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Unterlage für jede Schrift, Vorwahl Mittellauf + Zickzack (Wunsch Nutzer; Commit COMMIT)
+- **Geändert (Feld):** `ttf.unterlage` nimmt jetzt dieselben Werte wie `text.unterlage` (`"auto"` Standard, `"keine"`,
+  Arten-Liste); `true`/`false` aus alten Dateien gelten weiter (auto/keine). Typ `UnterlageJson` hat dafür die Variante
+  `boolean`. Computer-Schriften in Satin bekommen jetzt die Auto-Unterlage des Stils „Schrift“ (vorher keine).
+- **Neu (Auswahlwert):** `ttf.stichart: "auto"` wie bei Texten (Satin, ab 8 mm Satinstich Step; Hinweise
+  `schrift_step`/`lange_satinstiche` jetzt auch für Computer-Schriften).
+- **Geändert (Befehl):** `schrift_wechseln` behält `unterlage` und `winkel` und übersetzt die Stichart (auto/Satin/Muster
+  bleiben, Step ↔ Tatami, sonst auto).
+- **Oberfläche:** umgesetzt – neue Texte, Computer-Schriften und Monogramme mit `unterlage: ["mittellauf", "zickzack"]`
+  (neue Computer-Schriften auch `stichart: "auto"`); einfacher Modus Häkchen „Stabilisieren“ unter der Höhe; Experte zwei
+  Häkchen „Mittellauf“/„Zickzack“ oben im Inspektor (Text, Computer-Schrift, Monogramm); `arbeit.schriftWechseln` setzt
+  die Stichart nicht mehr selbst.
+
 ## 21.11.2026 – Stile für alle Schriften, eigene Stile (Wunsch Nutzer, Punkt 4; Commit 3bde3f4)
 - **Neu:** Befehl `schrift_stile` → `{quelle, stile: [{name, beschreibung}]}` (23 Stile in Anzeigereihenfolge).
 - **Neue Felder:** `alphabete_liste[].stile`, `schriften_liste[].stile` (eigene Einordnung von 50 Alphabeten und 173

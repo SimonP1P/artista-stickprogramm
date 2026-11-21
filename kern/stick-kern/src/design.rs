@@ -300,6 +300,8 @@ impl From<UnterlageJson> for Unterlage {
             UnterlageJson::Text(t) if t == "keine" => Unterlage::Arten(vec![]),
             UnterlageJson::Text(t) => Unterlage::Arten(t.split('+').map(|s| s.trim().to_string()).collect()),
             UnterlageJson::Liste(l) => Unterlage::Arten(l),
+            UnterlageJson::Schalter(true) => Unterlage::Auto,
+            UnterlageJson::Schalter(false) => Unterlage::Arten(vec![]),
         }
     }
 }
@@ -1448,7 +1450,7 @@ impl Design {
         Ok(out)
     }
 
-    /// Satinstiche der Texte (Original-Alphabete, Monogramme) nach Größe und Transformation: je Text (Nummer in
+    /// Satinstiche der Texte (Original-Alphabete, Monogramme, Computer-Schriften in Satin) nach Größe und Transformation: je Text (Nummer in
     /// `objekte`) der längste Satinstich in mm und ob Stichart „auto“ ihn deshalb auf Step stellt
     /// (`schrift::AUTO_STEP_AB_MM`). Texte, die schon Step/Muster sind, fehlen.
     pub fn schrift_satinstiche(&self) -> Result<Vec<(usize, f64, bool)>, String> {
@@ -1462,16 +1464,19 @@ impl Design {
     fn schrift_auto_anwenden(&self, out: &mut [Objekt], herkunft: &[usize]) -> Vec<(usize, f64, bool)> {
         let mut info = Vec::new();
         for (nr, o) in self.objekte.iter().enumerate() {
-            if !matches!(o.art, ObjektArt::Text { .. }) {
-                continue;
-            }
+            let auto = match &o.art {
+                ObjektArt::Text { .. } => {
+                    self.buchstaben.get(&nr).and_then(|z| z.stichart.as_ref()) == Some(&SchriftStichart::Auto)
+                }
+                ObjektArt::TtfText { stichart, .. } => matches!(stichart, TtfStichart::Satin { auto: true, .. }),
+                _ => continue,
+            };
             let idx: Vec<usize> = (0..out.len()).filter(|&j| herkunft.get(j) == Some(&nr)).collect();
             let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
             let laengster = crate::schrift::laengster_satinstich(&teil);
             if laengster <= 0.0 {
                 continue;
             }
-            let auto = self.buchstaben.get(&nr).and_then(|z| z.stichart.as_ref()) == Some(&SchriftStichart::Auto);
             let step = auto && laengster > crate::schrift::AUTO_STEP_AB_MM;
             if step {
                 for &j in &idx {
@@ -2103,6 +2108,7 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
         }
         ObjektJson::Ttf(t) => {
             let name = if t.g.name.is_empty() { t.text.clone() } else { t.g.name };
+            let unterlage = Unterlage::from(t.unterlage);
             let stichart = match t.stichart {
                 crate::format::TtfStichart::Lauf => TtfStichart::Lauf {
                     laenge: t.laenge,
@@ -2112,10 +2118,12 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     laenge: t.laenge,
                     dreifach: true,
                 },
-                crate::format::TtfStichart::Satin => TtfStichart::Satin { unterlage: t.unterlage },
+                crate::format::TtfStichart::Satin => TtfStichart::Satin { unterlage, auto: false },
+                crate::format::TtfStichart::Auto => TtfStichart::Satin { unterlage, auto: true },
+                // Stil „Schrift“: Auto-Unterlage an (Flächen: Step) – nur „keine“ schaltet sie ab
                 crate::format::TtfStichart::Tatami | crate::format::TtfStichart::Muster => TtfStichart::Tatami {
                     winkel: t.winkel,
-                    unterlage: t.unterlage,
+                    unterlage: Some(unterlage != Unterlage::Arten(vec![])),
                 },
             };
             Objekt {

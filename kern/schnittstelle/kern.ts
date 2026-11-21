@@ -2346,8 +2346,12 @@ export type TtfJson = {
   text: string;
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
-  /** Unterlage an/aus (Tatami, Satin; ohne Angabe: Stil) */
-  unterlage?: boolean | null;
+  /**
+   * Unterlage: `"auto"` (Standard, Stil „Schrift“ wie im Original: Zickzack unter den Satinsäulen, Step unter
+   * Flächen), `"keine"` oder Arten in Stickfolge für Satin/auto, z. B. `["mittellauf", "zickzack"]` (Tatami: jede
+   * Liste = an). `true`/`false` (alte Schreibweise) = auto/keine.
+   */
+  unterlage?: UnterlageJson;
   /** Stichwinkel (Tatami, Muster) */
   winkel?: number | null;
   /** Wortabstand in % der Höhe (Vorlage 25) */
@@ -2357,7 +2361,7 @@ export type TtfJson = {
 };
 
 /** Stichart einer Computer-Schrift */
-export type TtfStichart = ("tatami" | "lauf" | "dreifach" | "satin" | "muster");
+export type TtfStichart = ("tatami" | "lauf" | "dreifach" | "satin" | "auto" | "muster");
 
 /** Art einer Unterlage (in Stickfolge) */
 export type UnterlageArt = ("mittellauf" | "edge_walk" | "zickzack" | "doppelzickzack");
@@ -2366,7 +2370,7 @@ export type UnterlageArt = ("mittellauf" | "edge_walk" | "zickzack" | "doppelzic
  * Unterlage: `"auto"` (Standard, wie „Auto Underlay“ des Stils), `"keine"` oder eine Liste der Arten in Stickfolge.
  * Alte Schreibweise: Arten mit „+“ verbunden (`"edge_walk+zickzack"`).
  */
-export type UnterlageJson = (UnterlageWahl | UnterlageArt[]);
+export type UnterlageJson = (UnterlageWahl | UnterlageArt[] | boolean);
 
 /** Unterlage automatisch oder keine */
 export type UnterlageWahl = ("auto" | "keine");

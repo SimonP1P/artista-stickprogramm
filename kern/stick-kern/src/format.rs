@@ -194,6 +194,9 @@ auswahl! {
         Dreifach = "dreifach",
         /// Satinsäulen wie die TrueType-Umwandlung des Originals
         Satin = "satin",
+        /// Satinsäulen; würde ein Satinstich nach Größe/Transformation länger als 8 mm, der ganze Text Step – wie
+        /// Stichart „auto“ der Texte (eigene Erweiterung, `Analyse_Teil3/10` §8)
+        Auto = "auto",
         /// Füllmuster (Feld `muster`)
         Muster = "muster",
     }
@@ -501,6 +504,8 @@ pub enum UnterlageJson {
     Text(#[schemars(with = "UnterlageWahl")] String),
     /// Arten in Stickfolge, z. B. ["edge_walk", "zickzack"]
     Liste(#[schemars(with = "Vec<UnterlageArt>")] Vec<String>),
+    /// an/aus – alte Schreibweise der Computer-Schrift: `true` = "auto", `false` = "keine"
+    Schalter(bool),
 }
 
 /// Auto Jump eines Objekts: `true`/`false` oder Werte in mm.
@@ -812,8 +817,11 @@ pub struct TtfJson {
     pub stichart: TtfStichart,
     /// Stichwinkel (Tatami, Muster)
     pub winkel: Option<f64>,
-    /// Unterlage an/aus (Tatami, Satin; ohne Angabe: Stil)
-    pub unterlage: Option<bool>,
+    /// Unterlage: `"auto"` (Standard, Stil „Schrift“ wie im Original: Zickzack unter den Satinsäulen, Step unter
+    /// Flächen), `"keine"` oder Arten in Stickfolge für Satin/auto, z. B. `["mittellauf", "zickzack"]` (Tatami: jede
+    /// Liste = an). `true`/`false` (alte Schreibweise) = auto/keine.
+    #[serde(default = "auto")]
+    pub unterlage: UnterlageJson,
     /// Stichlänge bei Lauf/Dreifach in mm
     pub laenge: Option<f64>,
     #[serde(flatten)]

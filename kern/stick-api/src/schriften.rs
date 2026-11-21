@@ -403,9 +403,10 @@ fn felder<T: JsonSchema>() -> Vec<String> {
         .unwrap_or_default()
 }
 
-/// Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`). Text, Höhe, Satz
+/// Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`). Text, Höhe, Unterlage, Satz
 /// (Ausrichtung, Grundlinie, Abstände, Farben, Buchstaben, Verzerren) und gemeinsame Felder (Farbe, Garn, Name,
-/// Transformation, Gruppe …) bleiben; Stichart, Winkel und Unterlage nehmen die Standardwerte der neuen Art.
+/// Transformation, Gruppe …) bleiben. Stichart: auto ↔ auto, satin ↔ satin, Step ↔ Tatami, Muster ↔ Muster; Text ohne
+/// Angabe (= Satin) → satin; Computer-Schrift ohne Angabe, Lauf, Dreifach → auto.
 pub fn schrift_wechseln(_: &Kontext, e: SchriftWechselEingabe) -> Result<ObjektWert, Fehler> {
     let alt = e
         .design
@@ -433,11 +434,24 @@ pub fn schrift_wechseln(_: &Kontext, e: SchriftWechselEingabe) -> Result<ObjektW
         o.insert("art".into(), zu.into());
         let mut mit = felder::<stick_kern::format::Gemeinsam>();
         mit.extend(felder::<stick_kern::format::SchriftOptionen>());
-        mit.extend(["text".to_string(), "hoehe".to_string()]);
+        mit.extend(["text".to_string(), "hoehe".to_string(), "unterlage".to_string()]);
         for k in mit {
             if let Some(v) = alt.get(&k) {
                 o.insert(k, v.clone());
             }
+        }
+        let neu_art = match (zu, alt.get("stichart").and_then(Value::as_str)) {
+            (_, Some(a @ ("auto" | "satin" | "muster"))) => a,
+            ("ttf", Some("step")) => "tatami",
+            ("text", Some("tatami")) => "step",
+            // Text ohne Angabe ist Satin (Original); Computer-Schrift ohne Angabe nur Vorgabe → auto
+            ("ttf", None) => "satin",
+            _ => "auto",
+        };
+        o.insert("stichart".into(), neu_art.into());
+        // Stichwinkel gilt in beiden Arten (Füllmuster steckt in den Schrift-Optionen)
+        if let Some(v) = alt.get("winkel") {
+            o.insert("winkel".into(), v.clone());
         }
         o.insert(feld.into(), wert.into());
         Value::Object(o)
