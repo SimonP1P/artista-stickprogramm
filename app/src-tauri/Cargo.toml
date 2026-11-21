@@ -26,6 +26,7 @@ tauri-plugin-dialog = "2"
 stick-kern = { version = "0.1.0", path = "../../kern/stick-kern" }
 stick-formate = { version = "0.1.0", path = "../../kern/stick-formate" }
 stick-maschine = { version = "0.1.0", path = "../../kern/stick-maschine" }
+stick-api = { version = "0.1.0", path = "../../kern/stick-api" }
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration

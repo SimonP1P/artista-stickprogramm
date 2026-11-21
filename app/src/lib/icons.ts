@@ -1,0 +1,55 @@
+// Icons der Oberfläche: Pfade aus dem Entwurf v3 (UI_Mockups/v3_2026-11-21, Konstanten ART/IC und Lucide-Pfade,
+// Strich 1,5). Gezeichnet von Icon.svelte (viewBox 0 0 24 24).
+
+export const IC = {
+  chevronUnten: "m6 9 6 6 6-6",
+  chevronRechts: "m9 18 6-6-6-6",
+  rueckgaengig: "M9 14 4 9l5-5M4 9h10.5a5.5 5.5 0 0 1 0 11H11",
+  wiederholen: "m15 14 5-5-5-5M20 9H9.5a5.5 5.5 0 0 0 0 11H13",
+  senden: "M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z",
+  herunterladen: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3",
+  verkleinern: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3M8 11h6",
+  vergroessern: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3M11 8v6M8 11h6",
+  einpassen: "M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3",
+  fehler: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM15 9l-6 6M9 9l6 6",
+  info: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 8v4M12 16h.01",
+  warnung: "M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0ZM12 9v4M12 17h.01",
+  haken: "M20 6 9 17l-5-5",
+  kreuz: "M18 6 6 18M6 6l12 12",
+  monitor: "M2 3h20v14H2ZM8 21h8M12 17v4",
+  ordner: "M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z",
+  kopieren: "M8 8h12v12H8ZM16 8V4H4v12h4",
+  papierkorb: "M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6",
+  griff: "M9 5h.01M9 12h.01M9 19h.01M15 5h.01M15 12h.01M15 19h.01",
+  abspielen: "M6 3l14 9-14 9Z",
+  pause: "M6 4h4v16H6ZM14 4h4v16h-4Z",
+  zuruecksetzen: "M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5",
+  // Werkzeuge (IC des Entwurfs)
+  zeiger: "M4 4l7 17 2.5-7.5L21 11Z",
+  knoten:
+    "M12 19l7-7 3 3-7 7ZM18 13l-1.5-7.5L2 2l3.5 14.5L13 18ZM2 2l7.6 7.6M13 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z",
+  winkel: "M3 21h18M3 21 15 5M9 21a8 8 0 0 0-2.2-5.4",
+  einaus: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3",
+  kreis: "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
+  rechteck: "M3 5h18v14H3Z",
+  bezier: "M4 20C4 9 20 15 20 4M2 18h4v4H2ZM18 2h4v4h-4Z",
+  bild: "M3 3h18v18H3ZM10 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM21 15l-5-5L5 21",
+  kommtNoch: "M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z",
+} as const;
+
+/** Objektarten: Anzeigename und Icon (Konstante ART des Entwurfs; Knopfloch ergänzt, 4b.6). */
+export const ART: Record<string, [string, string]> = {
+  lauf: ["Laufstich", "M3 12h3M9 12h3M15 12h3M21 12h0"],
+  dreifach: ["Dreifachstich", "M3 9h18M3 12h18M3 15h18"],
+  satin: ["Satinsäule", "M7 3v18M17 3v18M7 6l10 3M7 10l10 3M7 14l10 3M7 18l10 3"],
+  satinlinie: ["Satinlinie", "M3 16l3-8 3 8 3-8 3 8 3-8 3 8"],
+  tatami: ["Fläche (Tatami)", "M3 3h18v18H3ZM3 9l6-6M3 15L15 3M3 21 21 3M9 21l12-12M15 21l6-6"],
+  satinflaeche: ["Satinfläche", "M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1Z"],
+  muster: ["Füllmuster", "M3 3h18v18H3ZM3 9h18M3 15h18M9 3v18M15 3v18"],
+  blanket: ["Blanket", "M3 18h18M5 18v-8M9 18v-8M13 18v-8M17 18v-8"],
+  applikation: ["Applikation", "M12 3l8 4.5v9L12 21l-8-4.5v-9ZM12 7.5l4.5 2.5v4.5L12 17l-4.5-2.5V10Z"],
+  text: ["Text (Alphabet)", "M4 7V4h16v3M9 20h6M12 4v16"],
+  ttf: ["Text (Computer-Schrift)", "M4 7V4h16v3M9 20h6M12 4v16M17 14h4M19 12v4"],
+  monogramm: ["Monogramm", "M4 20V4l8 10 8-10v16"],
+  knopfloch: ["Knopfloch", "M9 3h6v18H9ZM12 7v10M9 3h6M9 21h6"],
+};

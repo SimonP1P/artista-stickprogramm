@@ -1,1020 +1,242 @@
 <script lang="ts">
-  import { invoke } from "@tauri-apps/api/core";
-  import { listen } from "@tauri-apps/api/event";
-  import { open, save } from "@tauri-apps/plugin-dialog";
-  import { onMount, untrack } from "svelte";
+  // Hauptfenster nach Entwurf v3 (UI_Mockups/v3_2026-11-21/UEBERGABE.md §2): Kopf · links Assistent (einfach) bzw.
+  // Objektliste (Experte) · Mitte Stichvorschau · rechts Inspektor (Experte) · Statusleiste.
+  import { onMount } from "svelte";
+  import { arbeit } from "$lib/arbeit.svelte";
+  import { beispiel, dateiname, expExportieren, neu, oeffnen, speichern } from "$lib/dateien.svelte";
+  import Icon from "$lib/Icon.svelte";
+  import { ART, IC } from "$lib/icons";
+  import Statusleiste from "$lib/Statusleiste.svelte";
   import Vorschau from "$lib/Vorschau.svelte";
-  import { empfohleneHoehe } from "$lib/alphabet_hoehen";
-  import type {
-    AlphabetInfo,
-    Ergebnis,
-    Fortschritt,
-    GelesenInfo,
-    ListenInfo,
-    MaschinenInfo,
-    PlanInfo,
-    RahmenInfo,
-    SendeInfo,
-  } from "$lib/typen";
 
-  let rahmenListe = $state<RahmenInfo[]>([]);
-  let stoffe = $state<string[]>([]);
-  let jsonText = $state("");
-  let ergebnis = $state<Ergebnis | null>(null);
-  let fehler = $state("");
-  let meldung = $state("");
-  let rechnet = $state(false);
-  let zeigeSpruenge = $state(true);
-  let zeigeEinstiche = $state(false);
-  let dateiPfad = $state<string | null>(null);
-  let vorschau: Vorschau;
+  let menue = $state<"datei" | null>(null);
+  let spruenge = $state(true);
+  let einstiche = $state(false);
+  let raster = $state(true);
+  let zoom = $state(1);
+  let vorschau: Vorschau | undefined = $state();
 
-  // Das JSON ist die einzige Quelle: Rahmen und Stoff werden darin gesetzt.
-  let design = $derived.by(() => {
-    try {
-      const v = JSON.parse(jsonText);
-      return v && typeof v === "object" && !Array.isArray(v) ? v : null;
-    } catch {
-      return null;
-    }
-  });
-  let rahmenWahl = $derived<string>(design?.rahmen ?? "artista 130 x 100");
-  let stoffWahl = $derived<string>(design?.stoff ?? "0 Software Defaults");
-  let garnkarteWahl = $derived<string>(design?.garnkarte ?? "Default");
-  let garnkarten = $state<string[]>([]);
-  let rahmenInfo = $derived(rahmenListe.find((r) => r.name === rahmenWahl));
-
-  function feldSetzen(feld: "rahmen" | "stoff" | "garnkarte", wert: string) {
-    if (!design) {
-      fehler = "Das Design-JSON ist ungültig – erst korrigieren.";
-      return;
-    }
-    jsonText = JSON.stringify({ ...design, [feld]: wert }, null, 2);
-  }
-
-  // ---- Schrift mit den Original-Alphabeten (kern/stick-kern/src/schrift.rs)
-  let alphabete = $state<AlphabetInfo[]>([]);
-  let textWahl = $state(-1); // Index des bearbeiteten Text-Objekts, -1 = neuer Text
-  let tText = $state("Anna");
-  let tAlphabet = $state("Drifter");
-  let tHoehe = $state(20);
-  let tBreite = $state(100);
-  let tFarbe = $state("#1f3a93");
-  let tUnterlage = $state("auto"); // auto = wie Stil „Schrift“ (Zickzack)
-  let textObjekte = $derived(
-    ((design?.objekte ?? []) as any[]).map((o, i) => ({ o, i })).filter((x) => x.o?.art === "text"),
+  const istMac = typeof navigator !== "undefined" && /Mac/i.test(navigator.platform || navigator.userAgent);
+  const leer = $derived(arbeit.objekte.length === 0);
+  const kopfInfo = $derived(
+    [arbeit.design.rahmen?.replace(/^artista /, ""), arbeit.design.stoff].filter(Boolean).join(" · ") +
+      (arbeit.pfad ? ` · ${dateiname(arbeit.pfad)}${arbeit.geaendert ? " *" : ""}` : arbeit.geaendert ? " · nicht gespeichert" : ""),
   );
-  let empfohlen = $derived(empfohleneHoehe(tAlphabet));
 
-  function textObjekt(alt?: any) {
-    return {
-      ...(alt ?? {}),
-      art: "text",
-      text: tText,
-      alphabet: tAlphabet,
-      hoehe: Number(tHoehe) || 20,
-      breite: Number(tBreite) || 100,
-      farbe: tFarbe,
-      unterlage: tUnterlage,
-      position: alt?.position ?? [0, 0],
-    };
+  type Eintrag = { l: string; go?: () => void; kbd?: string; spaeter?: string } | "-";
+  const dateiMenue: Eintrag[] = [
+    { l: "Neu", go: neu, kbd: "Strg+N" },
+    { l: "Öffnen …", go: oeffnen, kbd: "Strg+O" },
+    { l: "Speichern", go: () => speichern(), kbd: "Strg+S" },
+    { l: "Speichern unter …", go: () => speichern(true) },
+    "-",
+    { l: "Beispiel laden", go: beispiel },
+    { l: "Bild umwandeln …", spaeter: "E2" },
+    { l: "SVG einlesen …", spaeter: "E2" },
+    "-",
+    { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
+    { l: "Designs aus der Maschine …", spaeter: "E3" },
+  ];
+
+  function waehle(f?: () => void) {
+    menue = null;
+    f?.();
   }
 
-  function objekteSetzen(objekte: any[]) {
-    jsonText = JSON.stringify({ ...design, objekte }, null, 2);
-  }
-
-  function textEinfuegen() {
-    if (!design) {
-      fehler = "Das Design-JSON ist ungültig – erst korrigieren.";
+  function tasten(ev: KeyboardEvent) {
+    const strg = ev.ctrlKey || ev.metaKey;
+    const ziel = ev.target as HTMLElement;
+    const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
+    if (ev.key === "Escape") {
+      if (menue) menue = null;
+      else arbeit.waehlen(null);
       return;
     }
-    const objekte = [...(design.objekte ?? [])];
-    objekte.push(textObjekt());
-    objekteSetzen(objekte);
-    textWahl = objekte.length - 1;
-    meldung = `Text „${tText}“ eingefügt.`;
-  }
-
-  function textWaehlen(i: number) {
-    textWahl = i;
-    const o = i >= 0 ? design?.objekte?.[i] : null;
-    if (o) {
-      tText = o.text ?? "";
-      tAlphabet = o.alphabet ?? tAlphabet;
-      tHoehe = o.hoehe ?? 20;
-      tBreite = o.breite ?? 100;
-      tFarbe = o.farbe ?? "#000000";
-      tUnterlage = o.unterlage ?? "auto";
-    }
-  }
-
-  function textEntfernen() {
-    if (textWahl < 0 || !design) return;
-    objekteSetzen((design.objekte ?? []).filter((_: any, i: number) => i !== textWahl));
-    textWahl = -1;
-  }
-
-  // Bearbeiteter Text folgt den Eingaben sofort (Vorschau beim Tippen)
-  $effect(() => {
-    void [tText, tAlphabet, tHoehe, tBreite, tFarbe, tUnterlage];
-    untrack(() => {
-      if (textWahl < 0 || !design) return;
-      const objekte = [...(design.objekte ?? [])];
-      if (objekte[textWahl]?.art !== "text") return;
-      objekte[textWahl] = textObjekt(objekte[textWahl]);
-      const neu = JSON.stringify({ ...design, objekte }, null, 2);
-      if (neu !== jsonText) jsonText = neu;
-    });
-  });
-
-  function neu() {
-    jsonText = JSON.stringify({ name: "Neues Design", rahmen: rahmenWahl, stoff: stoffWahl, objekte: [] }, null, 2);
-    dateiPfad = null;
-    textWahl = -1;
-    meldung = "Neues, leeres Design – zum Beispiel einen Text einfügen.";
-  }
-
-  // Neu berechnen, sobald sich das Design ändert (kurz verzögert beim Tippen)
-  let zeitgeber: ReturnType<typeof setTimeout> | undefined;
-  let laufNr = 0;
-  $effect(() => {
-    const text = jsonText;
-    clearTimeout(zeitgeber);
-    if (!text.trim()) return;
-    zeitgeber = setTimeout(() => berechnen(text), 250);
-  });
-
-  async function berechnen(text: string) {
-    const nr = ++laufNr;
-    rechnet = true;
-    try {
-      const e = await invoke<Ergebnis>("design_berechnen", { json: text });
-      if (nr === laufNr) {
-        ergebnis = e;
-        ansicht = null; // eigenes Design geändert: wieder dessen Vorschau
-        fehler = "";
-      }
-    } catch (e) {
-      if (nr === laufNr) fehler = String(e);
-    } finally {
-      if (nr === laufNr) rechnet = false;
-    }
-  }
-
-  function dateiname() {
-    return (ergebnis?.name ?? "Design").replace(/\s+/g, "_");
-  }
-
-  async function beispiel() {
-    jsonText = await invoke<string>("beispiel_design");
-    dateiPfad = null;
-    textWahl = -1;
-    meldung = "Beispieldesign geladen.";
-    vorschau?.einpassen();
-  }
-
-  async function oeffnen() {
-    const pfad = await open({ multiple: false, directory: false, filters: [{ name: "Design (JSON)", extensions: ["json"] }] });
-    if (typeof pfad !== "string") return;
-    try {
-      jsonText = await invoke<string>("datei_lesen", { pfad });
-      dateiPfad = pfad;
-      textWahl = -1;
-      meldung = `Geöffnet: ${pfad}`;
-      vorschau?.einpassen();
-    } catch (e) {
-      fehler = String(e);
-    }
-  }
-
-  async function designSpeichern() {
-    const pfad = await save({
-      defaultPath: dateiPfad ?? `${dateiname()}.json`,
-      filters: [{ name: "Design (JSON)", extensions: ["json"] }],
-    });
-    if (!pfad) return;
-    try {
-      await invoke("text_speichern", { pfad, text: jsonText });
-      dateiPfad = pfad;
-      meldung = `Design gespeichert: ${pfad}`;
-    } catch (e) {
-      fehler = String(e);
-    }
-  }
-
-  async function expSpeichern() {
-    const pfad = await save({ defaultPath: `${dateiname()}.exp`, filters: [{ name: "Stickdatei (EXP)", extensions: ["exp"] }] });
-    if (!pfad) return;
-    try {
-      const bytes = await invoke<number>("exp_speichern", { json: jsonText, pfad });
-      meldung = `EXP gespeichert: ${pfad} (${bytes} Byte)`;
-    } catch (e) {
-      fehler = String(e);
-    }
-  }
-
-  // ---- Schritt 4: an die Maschine (kern/stick-maschine, Protokoll der Testprogramme v3.6/v4.1)
-  const SIM = "Simulation";
-  let ports = $state<string[]>([]);
-  let port = $state(SIM);
-  let simulation = $derived(port === SIM);
-  let mitIcon = $state(true);
-  let mitFarben = $state(true);
-  let sticken = $state(false);
-  let maschinenInfo = $state<MaschinenInfo | null>(null);
-  let plan = $state<PlanInfo | null>(null);
-  let personDa = $state(false);
-  let sendeErgebnis = $state<SendeInfo | null>(null);
-  let maschineArbeitet = $state(""); // leer = frei, sonst was gerade läuft
-  let fortschritt = $state<Fortschritt | null>(null);
-
-  const wahl = () => ({ icon: mitIcon, farben: mitFarben, sticken });
-
-  async function maschinePruefen() {
-    maschineArbeitet = "Verbinde und lese …";
-    maschinenInfo = null;
-    fehler = "";
-    try {
-      maschinenInfo = await invoke<MaschinenInfo>("maschine_pruefen", { port, simulation });
-      meldung = `Maschine geprüft (${maschinenInfo.sitzung.port}) – nur gelesen, nichts geschrieben.`;
-    } catch (e) {
-      fehler = String(e);
-    } finally {
-      maschineArbeitet = "";
-    }
-  }
-
-  // Senden in zwei Schritten: erst planen (nur lesen), dann nach Bestätigung im Dialog schreiben
-  async function sendenPlanen() {
-    maschineArbeitet = "Prüfe Design und Maschine (nur lesen) …";
-    plan = null;
-    personDa = false;
-    sendeErgebnis = null;
-    fehler = "";
-    try {
-      plan = await invoke<PlanInfo>("maschine_planen", { json: jsonText, port, simulation, wahl: wahl() });
-    } catch (e) {
-      fehler = String(e);
-    } finally {
-      maschineArbeitet = "";
-    }
-  }
-
-  async function sendenBestaetigt() {
-    if (!plan || (sticken && !personDa)) return;
-    plan = null;
-    maschineArbeitet = "Sende …";
-    fortschritt = null;
-    fehler = "";
-    try {
-      sendeErgebnis = await invoke<SendeInfo>("maschine_senden", { json: jsonText, port, simulation, wahl: wahl() });
-      meldung =
-        sendeErgebnis.gestickt === true
-          ? "Gesendet – die Maschine hat das Design übernommen. Zum Sticken die Start-Taste an der Maschine drücken."
-          : "Gesendet, zurückgelesen und geprüft.";
-    } catch (e) {
-      fehler = String(e);
-    } finally {
-      maschineArbeitet = "";
-      fortschritt = null;
-    }
-  }
-
-  // Designs aus der Maschine ansehen (nur lesen: Liste, Befehl 0x400)
-  let maschinenListe = $state<ListenInfo | null>(null);
-  let ansicht = $state<GelesenInfo | null>(null); // gelesenes Design in der Vorschau statt des eigenen
-
-  async function listeLesen() {
-    maschineArbeitet = "Lese die Designliste der Maschine …";
-    fehler = "";
-    try {
-      maschinenListe = await invoke<ListenInfo>("maschine_liste", { port, simulation });
-    } catch (e) {
-      fehler = String(e);
-    } finally {
-      maschineArbeitet = "";
-    }
-  }
-
-  async function designLesen(nr: number) {
-    maschinenListe = null;
-    maschineArbeitet = `Lese Design Nr. ${nr} aus der Maschine …`;
-    fortschritt = null;
-    fehler = "";
-    try {
-      const g = await invoke<GelesenInfo>("maschine_lesen", { port, simulation, nr });
-      ansicht = g;
-      ergebnis = g.ergebnis;
-      meldung = `Design Nr. ${nr} gelesen (${g.bytes} Byte) – nur zum Ansehen; „Zurück“ zeigt wieder das eigene Design.`;
-      vorschau?.einpassen();
-    } catch (e) {
-      fehler = String(e);
-    } finally {
-      maschineArbeitet = "";
-      fortschritt = null;
-    }
-  }
-
-  function ansichtSchliessen() {
-    ansicht = null;
-    berechnen(jsonText);
-  }
-
-  async function gelesenSpeichern() {
-    if (!ansicht) return;
-    const pfad = await save({ defaultPath: `Maschine_Nr${String(ansicht.nr).padStart(2, "0")}.exp`, filters: [{ name: "Stickdatei (EXP)", extensions: ["exp"] }] });
-    if (!pfad) return;
-    try {
-      const bytes = await invoke<number>("gelesen_exp_speichern", { pfad });
-      meldung = `EXP gespeichert: ${pfad} (${bytes} Byte)`;
-    } catch (e) {
-      fehler = String(e);
-    }
+    if (!strg) return;
+    const k = ev.key.toLowerCase();
+    if (k === "z" && !ev.shiftKey && !eingabe) (ev.preventDefault(), arbeit.zurueck());
+    else if ((k === "y" || (k === "z" && ev.shiftKey)) && !eingabe) (ev.preventDefault(), arbeit.vor());
+    else if (k === "s") (ev.preventDefault(), speichern(ev.shiftKey));
+    else if (k === "o") (ev.preventDefault(), oeffnen());
+    else if (k === "n") (ev.preventDefault(), neu());
+    else if (k === "e") (ev.preventDefault(), expExportieren());
   }
 
   onMount(() => {
-    let weg: (() => void) | undefined;
-    listen<Fortschritt>("maschine_fortschritt", (e) => (fortschritt = e.payload)).then((f) => (weg = f));
-    return () => weg?.();
+    arbeit.starten();
   });
-
-  onMount(async () => {
-    try {
-      ports = await invoke<string[]>("maschine_ports");
-    } catch {
-      ports = [];
-    }
-    port = ports.includes("COM3") ? "COM3" : (ports[0] ?? SIM);
-  });
-
-  onMount(async () => {
-    rahmenListe = await invoke<RahmenInfo[]>("rahmen_liste");
-    stoffe = await invoke<string[]>("stoffe_liste");
-    alphabete = await invoke<AlphabetInfo[]>("alphabete_liste");
-    garnkarten = await invoke<string[]>("garnkarten_liste");
-    if (alphabete.length && !alphabete.some((a) => a.name === tAlphabet)) tAlphabet = alphabete[0].name;
-    await beispiel();
-  });
-
-  const mm = (v: number) => v.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  const mm2 = (v: number) => v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 </script>
 
-<div class="programm">
-  <header>
-    <div class="titel">
-      <strong>Artista Stickprogramm</strong>
-      <span>BERNINA artista 185</span>
-    </div>
-    <div class="knoepfe">
-      <button onclick={neu}>Neu</button>
-      <button onclick={beispiel}>Beispiel</button>
-      <button onclick={oeffnen}>Öffnen…</button>
-      <button onclick={designSpeichern}>Design speichern…</button>
-      <button class="haupt" onclick={expSpeichern} disabled={!ergebnis || !!fehler}>EXP speichern…</button>
-    </div>
-  </header>
+<svelte:window onkeydown={tasten} />
 
-  <aside class="links">
-    <section>
-      <h2><span class="nr">1</span> Rahmen</h2>
-      <select value={rahmenWahl} onchange={(e) => feldSetzen("rahmen", e.currentTarget.value)}>
-        {#each rahmenListe as r (r.name)}
-          <option value={r.name}>{r.name}</option>
-        {/each}
-      </select>
-      {#if rahmenInfo}
-        <p class="klein">Stickfeld {mm(rahmenInfo.breite)} × {mm(rahmenInfo.hoehe)} mm{rahmenInfo.hinweis ? ` · ${rahmenInfo.hinweis}` : ""}</p>
-      {/if}
-    </section>
-    <section>
-      <h2><span class="nr">2</span> Stoff</h2>
-      <select value={stoffWahl} onchange={(e) => feldSetzen("stoff", e.currentTarget.value)}>
-        {#each stoffe as s (s)}
-          <option value={s}>{s}</option>
-        {/each}
-      </select>
-      <p class="klein">Stichabstände und Zugausgleich wie im Original (Fabric Settings).</p>
-      <h3>Garnkarte</h3>
-      <select value={garnkarteWahl} onchange={(e) => feldSetzen("garnkarte", e.currentTarget.value)}>
-        {#each garnkarten as g (g)}
-          <option value={g}>{g}</option>
-        {/each}
-        <option value="keine">keine (nur Bildschirmfarben)</option>
-      </select>
-      <p class="klein">Jede Farbe bekommt das nächste Garn der Karte (Marke, Nummer, Name) – so steht es an der Maschine.</p>
-    </section>
-    <section class="schrift">
-      <h2><span class="nr">3</span> Design anpassen</h2>
-      <h3>Schrift</h3>
-      <select value={textWahl} onchange={(e) => textWaehlen(Number(e.currentTarget.value))}>
-        <option value={-1}>Neuer Text …</option>
-        {#each textObjekte as t (t.i)}
-          <option value={t.i}>„{t.o.text}“ – {t.o.alphabet}, {t.o.hoehe ?? 20} mm</option>
-        {/each}
-      </select>
-      <input class="textfeld" type="text" bind:value={tText} placeholder="Text eingeben" />
-      <select bind:value={tAlphabet}>
-        {#each alphabete as a (a.datei)}
-          <option value={a.name}>{a.name}</option>
-        {/each}
-      </select>
-      <div class="zeile">
-        <label>Höhe <input type="number" min="1" max="200" step="1" bind:value={tHoehe} /> mm</label>
-        <label>Breite <input type="number" min="30" max="300" step="5" bind:value={tBreite} /> %</label>
-        <input type="color" bind:value={tFarbe} title="Garnfarbe (Vorschau)" />
-      </div>
-      <label class="zeile"
-        >Unterlage
-        <select bind:value={tUnterlage} class="schmal">
-          <option value="auto">Auto (Zickzack, wie Original)</option>
-          <option value="mittellauf">Mittellauf</option>
-          <option value="edge_walk">Edge Walk</option>
-          <option value="zickzack">Zickzack</option>
-          <option value="keine">keine (kleine Schrift)</option>
-        </select>
-      </label>
-      {#if empfohlen}
-        <p class="klein" class:warnung-klein={tHoehe < empfohlen[0] || tHoehe > empfohlen[1]}>
-          Empfohlen für {tAlphabet}: {empfohlen[0]}–{empfohlen[1]} mm (Handbuch, Alphabet Samples)
-        </p>
-      {/if}
-      <div class="zeile">
-        {#if textWahl < 0}
-          <button onclick={textEinfuegen} disabled={!tText.trim()}>Text einfügen</button>
-        {:else}
-          <button onclick={textEinfuegen} disabled={!tText.trim()}>Als neuen Text einfügen</button>
-          <button onclick={textEntfernen}>Entfernen</button>
-        {/if}
-      </div>
-    </section>
-    <section class="editor">
-      <h3>Alle Objekte (JSON)</h3>
-      <textarea bind:value={jsonText} spellcheck="false" autocomplete="off"></textarea>
-      <p class="klein">Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Format: <code>stickprogramm/README.md</code></p>
-    </section>
-  </aside>
-
-  <main>
-    <Vorschau bind:this={vorschau} {ergebnis} spruenge={zeigeSpruenge} einstiche={zeigeEinstiche} />
-    <div class="werkzeug">
-      <label><input type="checkbox" bind:checked={zeigeSpruenge} /> Sprünge</label>
-      <label><input type="checkbox" bind:checked={zeigeEinstiche} /> Einstiche</label>
-      <button onclick={() => vorschau?.einpassen()}>Einpassen</button>
-      <span class="hinweis">Mausrad: Zoom · Ziehen: verschieben · Doppelklick: einpassen</span>
+<div class="sp" class:dunkel={arbeit.dunkel} style="height:100vh; min-width:1280px">
+  <header style="flex:none; height:48px; display:flex; align-items:center; gap:4px; padding:0 10px; border-bottom:1px solid var(--line); background:var(--color-bg); position:relative; z-index:31">
+    <div style="display:flex; flex-direction:column; line-height:1.05; padding-right:10px; margin-right:2px; border-right:1px solid var(--line)">
+      <span class="hd" style="font-size:17px">Stickprogramm</span>
+      <span class="mut" style="font-size:11px">für BERNINA artista 185</span>
     </div>
-    {#if rechnet}<div class="rechnet">rechnet …</div>{/if}
-    {#if ansicht}
-      <div class="ansicht">
-        <span>Ansicht: {ansicht.ergebnis.name} – nur ansehen</span>
-        {#each ansicht.garne as g, i (i)}
-          <span class="garn-klein" title="{g.marke} {g.nummer}"><span class="feld" style:background={g.rgb}></span>{g.name || g.marke}</span>
+    <button class="mbtn" aria-haspopup="menu" aria-expanded={menue === "datei"} onclick={() => (menue = menue === "datei" ? null : "datei")}>
+      Datei<Icon d={IC.chevronUnten} groesse="s" />
+    </button>
+    <span style="width:1px; height:22px; background:var(--line); margin:0 4px"></span>
+    <button class="tb" aria-label="Rückgängig (Strg+Z)" title="Rückgängig (Strg+Z)" disabled={!arbeit.kannZurueck} onclick={() => arbeit.zurueck()}>
+      <Icon d={IC.rueckgaengig} />
+    </button>
+    <button class="tb" aria-label="Wiederholen (Strg+Y)" title="Wiederholen (Strg+Y)" disabled={!arbeit.kannVor} onclick={() => arbeit.vor()}>
+      <Icon d={IC.wiederholen} />
+    </button>
+    <div style="flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:10px">
+      <input
+        class="input sm"
+        aria-label="Name des Designs"
+        style="width:190px; font-weight:500"
+        value={arbeit.design.name ?? ""}
+        onchange={(ev) => arbeit.aendern((d) => (d.name = (ev.currentTarget as HTMLInputElement).value), "name")}
+      />
+      <span class="mut small" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0">{kopfInfo}</span>
+    </div>
+    <div class="seg seg-sm" role="radiogroup" aria-label="Modus">
+      <label class="seg-opt"><input type="radio" name="modus" checked={arbeit.modus === "einfach"} onchange={() => (arbeit.modus = "einfach")} />Einfach</label>
+      <label class="seg-opt"><input type="radio" name="modus" checked={arbeit.modus === "experte"} onchange={() => (arbeit.modus = "experte")} />Experte</label>
+    </div>
+    <button class="mbtn" title="Maschine – folgt in Etappe E3" disabled style="border:1px solid var(--line); margin-left:6px; gap:7px">
+      <span aria-hidden="true" style="width:9px; height:9px; border-radius:50%; background:var(--muted)"></span>Maschine
+    </button>
+    {#if istMac}
+      <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" onclick={expExportieren}>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <Icon d={IC.herunterladen} />EXP exportieren
+      </button>
+    {:else}
+      <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled title="Senden folgt in Etappe E3">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <Icon d={IC.senden} />Senden …
+      </button>
+    {/if}
+
+    {#if menue === "datei"}
+      <div class="menu" role="menu" aria-label="Datei" style="left:142px; top:44px">
+        {#each dateiMenue as m, k (k)}
+          {#if m === "-"}
+            <div class="msep"></div>
+          {:else}
+            <button class="mi" role="menuitem" disabled={!m.go} onclick={() => waehle(m.go)}>
+              {m.l}
+              {#if m.spaeter}<span class="soon" style="margin-left:auto">folgt ({m.spaeter})</span>{/if}
+              {#if m.kbd}<span class="kbd">{m.kbd}</span>{/if}
+            </button>
+          {/if}
         {/each}
-        <button onclick={gelesenSpeichern}>Als EXP speichern …</button>
-        <button onclick={ansichtSchliessen}>Zurück zum eigenen Design</button>
       </div>
     {/if}
-  </main>
+  </header>
+  {#if menue}<div class="shade" role="presentation" onclick={() => (menue = null)}></div>{/if}
 
-  <aside class="rechts">
-    <section>
-      <h2>Design</h2>
-      {#if ergebnis}
-        <dl>
-          <dt>Name</dt><dd>{ergebnis.name}</dd>
-          <dt>Stiche</dt><dd>{ergebnis.statistik.stiche.toLocaleString("de-DE")}</dd>
-          <dt>Sprünge</dt><dd>{ergebnis.statistik.spruenge}</dd>
-          <dt>Farbwechsel</dt><dd>{ergebnis.statistik.farbwechsel}</dd>
-          <dt>Größe</dt><dd>{mm(ergebnis.statistik.breite)} × {mm(ergebnis.statistik.hoehe)} mm</dd>
-          <dt>Stichlänge</dt><dd>{mm2(ergebnis.statistik.min_stich)} – {mm2(ergebnis.statistik.max_stich)} mm</dd>
-        </dl>
-        <h3>Farben</h3>
-        <ol class="farben">
-          {#each ergebnis.farben as f, i (i)}
-            {@const g = ergebnis.garne?.[i]}
-            <li>
-              <span class="feld" style:background={f}></span>{i + 1}.
-              {#if g}<span class="feld" style:background={g.rgb} title="Garnfarbe"></span><span class="garnname"
-                  >{g.marke} {g.nummer} {g.name}</span
-                >{:else}{f}{/if}
-            </li>
+  {#if arbeit.meldung}
+    <div
+      class={arbeit.meldung.art === "err" ? "errbox" : arbeit.meldung.art === "ok" ? "okbox" : "note"}
+      role={arbeit.meldung.art === "err" ? "alert" : "status"}
+      style="position:absolute; top:56px; left:50%; transform:translateX(-50%); z-index:45; box-shadow:var(--shadow-md); align-items:center; max-width:640px"
+    >
+      <Icon d={arbeit.meldung.art === "err" ? IC.fehler : IC.haken} />
+      <span style="flex:1">{arbeit.meldung.text}</span>
+      <button class="tb sm" aria-label="Schließen" onclick={() => (arbeit.meldung = null)}><Icon d={IC.kreuz} groesse="s" /></button>
+    </div>
+  {/if}
+
+  <div style="flex:1; min-height:0; display:flex">
+    {#if arbeit.modus === "einfach"}
+      <aside class="pane" aria-label="Assistent" style="width:360px; border-right:1px solid var(--line)">
+        <nav aria-label="Schritte" style="flex:none; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-bottom:1px solid var(--line); background:var(--color-bg)">
+          {#each ["Rahmen & Stoff", "Gestalten", "Prüfen & Garn", istMac ? "Speichern" : "Senden"] as s, k (k)}
+            <button class="stp" class:cur={k === 0} style="flex-direction:column; align-items:flex-start; gap:3px; font-size:12px">
+              <span class="n">{k + 1}</span><span style="white-space:nowrap">{s}</span>
+            </button>
           {/each}
-        </ol>
-        {#if ergebnis.fehlende_zeichen}
-          <p class="warnung">Nicht im Alphabet: „{ergebnis.fehlende_zeichen}“</p>
-        {/if}
-        {#if ergebnis.ausserhalb > 0}
-          <p class="warnung">{ergebnis.ausserhalb} Einstiche liegen außerhalb des Stickfelds!</p>
-        {:else}
-          <p class="ok">Passt in den Rahmen.</p>
-        {/if}
-      {:else}
-        <p class="klein">Noch kein Design berechnet.</p>
-      {/if}
-    </section>
-    <section class="maschine">
-      <h2><span class="nr">4</span> An die Maschine</h2>
-      <label class="zeile"
-        >Anschluss
-        <select bind:value={port} class="schmal" disabled={!!maschineArbeitet}>
-          {#each ports as p (p)}
-            <option value={p}>{p}</option>
-          {/each}
-          <option value={SIM}>{SIM} (ohne Maschine)</option>
-        </select>
-      </label>
-      <div class="zeile">
-        <button onclick={maschinePruefen} disabled={!!maschineArbeitet}>Maschine prüfen</button>
-        <button onclick={listeLesen} disabled={!!maschineArbeitet}>Designs der Maschine …</button>
-      </div>
-      {#if maschinenInfo}
-        <div class="kasten">
-          <div>Nähmaschine {maschinenInfo.sitzung.naehmaschine} · Stickmodul {maschinenInfo.sitzung.stickmodul}</div>
-          <div class="klein">Garnfarben: {maschinenInfo.farbbereich.text}</div>
-          {#each maschinenInfo.farbbereich.farben as g, i (i)}
-            <div class="garn"><span class="feld" style:background={g.rgb}></span>{g.marke} {g.nummer} {g.name}</div>
-          {/each}
+        </nav>
+        <div class="scroll" style="padding:16px">
+          <div class="note">Der Assistent folgt in Etappe E2. Bis dahin: Datei › Öffnen oder Beispiel laden.</div>
         </div>
-      {/if}
-      <label><input type="checkbox" bind:checked={mitIcon} disabled={!!maschineArbeitet} /> Icon mitsenden</label>
-      <label><input type="checkbox" bind:checked={mitFarben} disabled={!!maschineArbeitet} /> Garnfarben mitsenden</label>
-      <label class="stickwahl"
-        ><input type="checkbox" bind:checked={sticken} disabled={!!maschineArbeitet} /> danach sticken (Rahmen fährt –
-        nur mit Person an der Maschine)</label
-      >
-      <button
-        class="haupt"
-        onclick={sendenPlanen}
-        disabled={!!maschineArbeitet || !!ansicht || !ergebnis || !!fehler || ergebnis.ausserhalb > 0}>Senden …</button
-      >
-      {#if ansicht}<p class="klein">Gesendet wird das eigene Design – erst „Zurück“ über der Vorschau.</p>{/if}
-      {#if maschineArbeitet}
-        <p class="klein">{maschineArbeitet}</p>
-        {#if fortschritt}
-          <progress max={fortschritt.gesamt} value={fortschritt.erledigt}></progress>
-          <p class="klein">{fortschritt.was}: {fortschritt.erledigt} von {fortschritt.gesamt} Byte</p>
-        {/if}
-      {/if}
-      {#if sendeErgebnis}
-        <ul class="schritte">
-          {#each sendeErgebnis.schritte as s, i (i)}
-            <li>{s}</li>
-          {/each}
-          <li>PC-Modus verlassen: {sendeErgebnis.sitzung.verlassen ? "bestätigt" : "NICHT bestätigt – Maschine aus/ein"}</li>
-        </ul>
-        <p class="klein" title={sendeErgebnis.sitzung.mitschnitt}>Mitschnitt gespeichert</p>
-      {/if}
-      <p class="klein">Es wird nichts dauerhaft in der Maschine gespeichert; vor dem Schreiben kommt eine Rückfrage.</p>
-    </section>
-  </aside>
-
-  {#if maschinenListe}
-    <div class="schleier">
-      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="liste-titel">
-        <h2 id="liste-titel">Designs der Maschine ({maschinenListe.designs.length})</h2>
-        <p class="klein">
-          Anschluss {maschinenListe.sitzung.port} · Lesen dauert je nach Größe einige Sekunden bis etwa eine Minute (≈ 1,5 KB/s).
-        </p>
-        <div class="liste">
-          {#each maschinenListe.designs as d (d.nr)}
-            <button class="listen-zeile" onclick={() => designLesen(d.nr)}>
-              <span class="nr-spalte">{d.nr}</span><span>{d.name || "–"}</span><span class="klein">Flags 0x{d.flags
-                  .toString(16)
-                  .toUpperCase()
-                  .padStart(2, "0")}</span>
+      </aside>
+    {:else}
+      <aside class="pane" aria-label="Objekte" style="width:268px; border-right:1px solid var(--line)">
+        <div class="pane-h"><span class="hd" style="font-size:17px">Objekte</span><span class="badge">{arbeit.objekte.length}</span></div>
+        <div class="scroll" role="listbox" aria-label="Objekte in Stickreihenfolge">
+          {#each arbeit.objekte as o, i (i)}
+            {@const art = ART[o.art] ?? [o.art, ""]}
+            <button
+              class="orow"
+              class:on={arbeit.auswahl.includes(i)}
+              class:err={arbeit.fehler?.objekt === i}
+              role="option"
+              aria-selected={arbeit.auswahl.includes(i)}
+              onclick={(ev) => arbeit.waehlen(i, ev.shiftKey || ev.ctrlKey || ev.metaKey)}
+            >
+              <span class="grip"><Icon d={IC.griff} groesse="s" /></span>
+              <span class="tab" style="text-align:right">{i + 1}</span>
+              <span class="sw" style="background:{o.farbe ?? '#000000'}"></span>
+              <span title={art[0]}><Icon d={art[1]} groesse="s" /></span>
+              <span class="ostack"><b>{o.name || ("text" in o ? o.text : "") || art[0]}</b><span>{art[0]}</span></span>
+              <span></span>
             </button>
           {/each}
         </div>
-        <div class="dialog-knoepfe">
-          <button onclick={() => (maschinenListe = null)}>Schließen</button>
+      </aside>
+    {/if}
+
+    <section aria-label="Stichvorschau" style="flex:1; min-width:0; display:flex; flex-direction:column; position:relative">
+      <div class="vbar">
+        <div class="seg seg-sm" role="radiogroup" aria-label="Ansicht" style="flex:none">
+          <label class="seg-opt"><input type="radio" name="ansicht" checked={arbeit.ansicht === "stiche"} onchange={() => (arbeit.ansicht = "stiche")} />Stiche</label>
+          {#if arbeit.modus === "experte"}
+            <label class="seg-opt"><input type="radio" name="ansicht" checked={arbeit.ansicht === "form"} onchange={() => (arbeit.ansicht = "form")} />Form</label>
+          {/if}
+        </div>
+        <span style="width:6px"></span>
+        <button class="mbtn tgl" aria-pressed={spruenge} onclick={() => (spruenge = !spruenge)} style="height:28px; font-size:12.5px; padding:0 8px; flex:none">Sprünge</button>
+        <button class="mbtn tgl" aria-pressed={einstiche} onclick={() => (einstiche = !einstiche)} style="height:28px; font-size:12.5px; padding:0 8px; flex:none">Einstiche</button>
+        <button class="mbtn tgl" aria-pressed={raster} onclick={() => (raster = !raster)} style="height:28px; font-size:12.5px; padding:0 8px; flex:none">Raster</button>
+        <span style="flex:1"></span>
+        <span class="mut small tab" aria-live="polite" title="Stiche neu berechnet (design_berechnen)" style="white-space:nowrap">
+          ↻ {arbeit.rechnet ? "…" : arbeit.dauer !== null ? `${arbeit.dauer} ms` : "–"}
+        </span>
+        <span style="width:1px; height:20px; background:var(--line); margin:0 4px"></span>
+        <button class="tb" aria-label="Verkleinern" onclick={() => (zoom = Math.max(0.25, zoom / 1.25))}><Icon d={IC.verkleinern} /></button>
+        <span class="tab small" style="width:46px; text-align:center; white-space:nowrap">{Math.round(zoom * 100)} %</span>
+        <button class="tb" aria-label="Vergrößern" onclick={() => (zoom = Math.min(40, zoom * 1.25))}><Icon d={IC.vergroessern} /></button>
+        <button class="tb" aria-label="Rahmen einpassen" title="Rahmen einpassen" onclick={() => vorschau?.einpassen()}><Icon d={IC.einpassen} /></button>
+      </div>
+      <div style="flex:1; min-height:0; display:flex">
+        <div class="stage">
+          <Vorschau bind:this={vorschau} bind:zoom {spruenge} {einstiche} {raster} />
+          {#if arbeit.fehler}
+            <div class="fbanner errbox" role="alert" style="align-items:center; box-shadow:var(--shadow-sm)">
+              <Icon d={IC.fehler} />
+              <span style="flex:1"><b style="font-weight:600">Kann nicht berechnet werden.</b> {arbeit.fehler.meldung} Die Vorschau zeigt den letzten gültigen Stand.</span>
+              {#if arbeit.fehler.objekt !== null && arbeit.fehler.objekt !== undefined}
+                <button class="btn btn-secondary" style="min-height:28px; padding:2px 10px; color:inherit" onclick={() => arbeit.waehlen(arbeit.fehler?.objekt ?? null)}>Zum Objekt</button>
+              {/if}
+            </div>
+          {/if}
+          {#if leer && !arbeit.rechnet}
+            {#if arbeit.modus === "experte"}
+              <div class="floater" style="left:50%; top:50%; transform:translate(-50%,-50%); width:380px; padding:18px">
+                <h3 style="margin:0 0 4px; font-size:21px">Leeres Design</h3>
+                <p class="mut" style="margin:0 0 12px">Werkzeuge zum Zeichnen folgen in Etappe E4 – bis dahin:</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px">
+                  <button class="btn btn-secondary" onclick={oeffnen}>Öffnen …</button>
+                  <button class="btn btn-secondary" onclick={beispiel}>Beispiel laden</button>
+                </div>
+              </div>
+            {:else}
+              <div class="floater" style="left:50%; top:calc(50% + 40px); transform:translate(-50%,0); padding:10px 14px; font-size:13px">
+                Noch nichts im Rahmen – im Schritt „Gestalten“ Text oder Monogramm einfügen.
+              </div>
+            {/if}
+          {/if}
         </div>
       </div>
-    </div>
-  {/if}
-
-  {#if plan}
-    <div class="schleier">
-      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-titel">
-        <h2 id="dialog-titel">An die Maschine senden?</h2>
-        <p>
-          Anschluss <strong>{plan.sitzung.port}</strong> · Nähmaschine {plan.sitzung.naehmaschine} · Stickmodul
-          {plan.sitzung.stickmodul}
-        </p>
-        <h3>Das wird geschrieben</h3>
-        <ul>
-          {#each plan.schritte as s, i (i)}
-            <li>{s}</li>
-          {/each}
-        </ul>
-        {#if plan.hinweise.length}
-          <h3>Hinweise</h3>
-          <ul class="hinweise">
-            {#each plan.hinweise as h, i (i)}
-              <li>{h}</li>
-            {/each}
-          </ul>
-        {/if}
-        {#if plan.farbbereich}
-          <p class="klein">Garnfarben in der Maschine jetzt: {plan.farbbereich.text}</p>
-        {/if}
-        {#if !simulation && (mitIcon || mitFarben)}
-          <p class="klein">Icon und Garnfarbtabelle sind an der echten Maschine noch nicht geschrieben worden (Gerätetest offen).</p>
-        {/if}
-        {#if sticken}
-          <div class="achtung">
-            <strong>Danach Befehl 0x08 – sticken ohne speichern: der Rahmen kann sofort fahren.</strong>
-            <label
-              ><input type="checkbox" bind:checked={personDa} /> Es ist jemand an der Maschine: Rahmen eingesetzt, Nadel oben,
-              Hände weg vom Nadelbereich.</label
-            >
-          </div>
-        {/if}
-        <div class="dialog-knoepfe">
-          <button onclick={() => (plan = null)}>Abbrechen</button>
-          <button class="haupt" onclick={sendenBestaetigt} disabled={sticken && !personDa}>Jetzt schreiben</button>
-        </div>
-      </div>
-    </div>
-  {/if}
-
-  <footer>
-    {#if fehler}<span class="fehler">{fehler}</span>{:else}<span>{meldung}</span>{/if}
-  </footer>
+      <Statusleiste />
+    </section>
+  </div>
 </div>
-
-<style>
-  :global(html, body) {
-    margin: 0;
-    height: 100%;
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    font-size: 14px;
-    color: #1d2329;
-    background: #f4f5f7;
-  }
-  .programm {
-    display: grid;
-    grid-template-columns: 340px 1fr 270px;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: "kopf kopf kopf" "links mitte rechts" "fuss fuss fuss";
-    height: 100vh;
-  }
-  header {
-    grid-area: kopf;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 14px;
-    background: #22303c;
-    color: #fff;
-  }
-  .titel strong {
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  .titel span {
-    opacity: 0.7;
-  }
-  .knoepfe {
-    display: flex;
-    gap: 6px;
-  }
-  button {
-    font: inherit;
-    padding: 5px 12px;
-    border: 1px solid #b8c0c8;
-    border-radius: 5px;
-    background: #fff;
-    color: #1d2329;
-    cursor: pointer;
-  }
-  button:hover:not(:disabled) {
-    background: #eef2f6;
-  }
-  button:disabled {
-    opacity: 0.5;
-    cursor: default;
-  }
-  button.haupt {
-    background: #2e7d32;
-    border-color: #2e7d32;
-    color: #fff;
-  }
-  aside {
-    overflow: auto;
-    background: #fff;
-    padding: 6px 14px;
-  }
-  .links {
-    grid-area: links;
-    border-right: 1px solid #dde1e5;
-    display: flex;
-    flex-direction: column;
-  }
-  .rechts {
-    grid-area: rechts;
-    border-left: 1px solid #dde1e5;
-  }
-  section {
-    margin-bottom: 14px;
-  }
-  .editor {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 200px;
-  }
-  .schrift {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .schrift h3 {
-    margin: 2px 0 0;
-  }
-  .textfeld {
-    font: inherit;
-    font-size: 15px;
-    padding: 5px 6px;
-    border: 1px solid #c9d0d6;
-    border-radius: 4px;
-  }
-  .zeile {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .zeile input[type="number"] {
-    width: 56px;
-    font: inherit;
-    padding: 2px 4px;
-  }
-  .zeile input[type="color"] {
-    width: 34px;
-    height: 26px;
-    padding: 0;
-    border: 1px solid #c9d0d6;
-  }
-  select.schmal {
-    width: auto;
-    flex: 1;
-  }
-  .warnung-klein {
-    color: #b71c1c;
-  }
-  h2 {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #4a5662;
-    margin: 10px 0 6px;
-  }
-  h3 {
-    font-size: 13px;
-    margin: 12px 0 4px;
-  }
-  .nr {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    line-height: 18px;
-    text-align: center;
-    border-radius: 50%;
-    background: #22303c;
-    color: #fff;
-    font-size: 11px;
-    margin-right: 4px;
-  }
-  select {
-    width: 100%;
-    font: inherit;
-    padding: 4px;
-  }
-  textarea {
-    flex: 1;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: Consolas, "Cascadia Mono", monospace;
-    font-size: 12px;
-    resize: none;
-    padding: 6px;
-    border: 1px solid #c9d0d6;
-    border-radius: 4px;
-  }
-  .klein {
-    font-size: 12px;
-    color: #5d6b78;
-    margin: 4px 0;
-  }
-  main {
-    grid-area: mitte;
-    position: relative;
-    overflow: hidden;
-  }
-  .werkzeug {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 4px 10px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  }
-  .hinweis {
-    font-size: 12px;
-    color: #6b7783;
-  }
-  .rechnet {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    font-size: 12px;
-    color: #6b7783;
-  }
-  dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 3px 10px;
-    margin: 0;
-  }
-  dt {
-    color: #5d6b78;
-  }
-  dd {
-    margin: 0;
-    text-align: right;
-  }
-  .farben {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .farben li {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin: 2px 0;
-    font-family: Consolas, monospace;
-    font-size: 12px;
-  }
-  .garnname {
-    font-family: "Segoe UI", system-ui, sans-serif;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .feld {
-    flex: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  .warnung {
-    color: #b71c1c;
-    font-weight: 600;
-  }
-  .ok {
-    color: #2e7d32;
-  }
-  footer {
-    grid-area: fuss;
-    padding: 4px 14px;
-    font-size: 12px;
-    background: #e9ecef;
-    border-top: 1px solid #dde1e5;
-    min-height: 18px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .fehler {
-    color: #b71c1c;
-  }
-  .maschine {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .maschine label {
-    font-size: 13px;
-  }
-  .stickwahl {
-    color: #8a4b00;
-  }
-  .kasten {
-    background: #f4f6f8;
-    border: 1px solid #dde1e5;
-    border-radius: 5px;
-    padding: 6px 8px;
-    font-size: 12px;
-  }
-  .garn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 2px;
-  }
-  progress {
-    width: 100%;
-  }
-  .schritte {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 12px;
-  }
-  .schleier {
-    position: fixed;
-    inset: 0;
-    background: rgba(20, 28, 36, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
-  .dialog {
-    background: #fff;
-    border-radius: 8px;
-    padding: 14px 20px 16px;
-    width: min(620px, 92vw);
-    max-height: 86vh;
-    overflow: auto;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
-  .dialog h2 {
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 17px;
-    color: #1d2329;
-    margin-top: 4px;
-  }
-  .dialog ul {
-    margin: 4px 0;
-    padding-left: 20px;
-    font-size: 13px;
-  }
-  .hinweise {
-    color: #5d6b78;
-  }
-  .achtung {
-    margin: 10px 0;
-    padding: 8px 10px;
-    border: 1px solid #e0a040;
-    background: #fff6e5;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .ansicht {
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    background: #fff6e5;
-    border: 1px solid #e0a040;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-  }
-  .garn-klein {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-  }
-  .liste {
-    max-height: 55vh;
-    overflow: auto;
-    border: 1px solid #dde1e5;
-    border-radius: 5px;
-  }
-  .listen-zeile {
-    display: grid;
-    grid-template-columns: 40px 1fr auto;
-    gap: 8px;
-    width: 100%;
-    text-align: left;
-    border: 0;
-    border-bottom: 1px solid #eef0f2;
-    border-radius: 0;
-  }
-  .nr-spalte {
-    color: #5d6b78;
-    text-align: right;
-  }
-  .dialog-knoepfe {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 12px;
-  }
-</style>

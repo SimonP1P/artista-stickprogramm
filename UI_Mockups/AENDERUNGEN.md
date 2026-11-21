@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Wünsche der Oberfläche v3 (UEBERGABE §4, Etappe E0)
+## 21.11.2026 – Wünsche der Oberfläche v3 (UEBERGABE §4, Etappe E0, Commit 0d56a68)
 - **Geändert:** `hinweise` in `design_berechnen` und `design_pruefen` sind jetzt Objekte `{meldung, objekt, art}`
   (`art`: `feld` | `fehlende_zeichen` | `ausserhalb`) statt Text – Hinweis am Objekt markieren.
 - **Neu im Ergebnis:** `begrenzung` [x0, y0, x1, y1] (Einpassen, Mittig), `ausserhalb_stiche` (Stichnummern zum

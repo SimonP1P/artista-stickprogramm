@@ -1,25 +1,52 @@
-# Artista Stickprogramm – Programm (Tauri 2 + Svelte + Rust)
+# Artista Stickprogramm – Programm (Tauri 2 + SvelteKit + Rust)
 
-> **Die Oberfläche wird nach Entwurf v3 neu gebaut** (`../UI_Mockups/v3_2026-11-21/UEBERGABE.md`, verbindlich seit 21.11.2026). Anforderungen:
-> [`ANFORDERUNGEN.md`](ANFORDERUNGEN.md). Die heutige Oberfläche ist ein funktionaler Prototyp.
+> **Neue Oberfläche nach Entwurf v3** (`../UI_Mockups/v3_2026-11-21/UEBERGABE.md`, verbindlich seit 21.11.2026), Umsetzung
+> in Etappen E0–E6 (`../ROADMAP.md` Phase 5). Die alte Oberfläche (Prototyp vom 19./20.11.) liegt unter
+> `archiv/prototyp_2026-11-19/` – nur zum Nachschlagen, nicht mehr im Bau.
 
-Stand 19.11.2026: erste Oberfläche mit Rust-Kern (`../kern/`): **1 Rahmen** und **2 Stoff** wählen, **3 Design anpassen** (**Schrift** mit den 50 Original-Alphabeten: Text, Alphabet, Höhe, Breite, Farbe – Vorschau beim Tippen; dazu JSON-Editor, Neuberechnung beim Tippen), Stichvorschau (Zoom, Verschieben, Sprünge/Einstiche), Statistik, Farben, Prüfung „passt in den Rahmen“, Design öffnen/speichern, **EXP speichern**. **4 An die Maschine** (20.11.2026, Phase 5): Anschluss wählen (COM-Port oder **Simulation**), **Maschine prüfen** (nur lesen: Firmware, Garnfarbtabelle), **Senden …** = erst planen (nur lesen, Prüfungen wie das Original), dann Dialog mit allen Schreibzugriffen und **Jetzt schreiben** (DATEN, ICON, INFO-Felder, Garnfarbtabelle, zurücklesen); optional danach sticken (Befehl 0x08) nur mit Häkchen „Es ist jemand an der Maschine“. **Garnkarte** (Abschnitt 2, Feld `garnkarte` im Design, Standard `Default`): jede Farbe bekommt das nächste Garn der Karte (CIEDE2000), die Farbliste zeigt Marke, Nummer, Name – so geht es in die Garnfarbtabelle der Maschine; die 32 Karten der CD liegen in `src-tauri/garnkarten/`. **Designs der Maschine …**: Liste der gespeicherten Designs, eines lesen (Befehl 0x400, nur lesen) und mit den Garnfarben der Maschine in der Vorschau ansehen, als EXP speichern. Mitschnitte unter `%LOCALAPPDATA%\de.artista.stickprogramm\logs`. Am Gerät erprobt: prüfen und planen (lesend); Schreiben aus dem Programm noch nicht (Liste „Vor Ort“ in `../ROADMAP.md`). Aufbau und Plan: `../ARCHITECTURE.md`.
+## Grundsätze
+- **Ein Tauri-Befehl `kern`** (`src-tauri/src/lib.rs`) reicht alles an `stick_api::ausfuehren` weiter (Rechnung im
+  Hintergrund). Die Oberfläche ruft nur `kern(…)` aus `kern/schnittstelle/kern.ts` auf – eingebunden per Alias
+  **`$kern`** (`svelte.config.js`), nicht kopiert; die Typen passen damit immer zum Kern.
+- **Keine Geometrie und keine Stichberechnung in TypeScript:** Vorschau aus `design_berechnen`, Formen/Griffe aus
+  `design_formen`, Auswahl über `objekt` je Stich (Trefferprüfung des Browsers auf den Pfaden je Objekt), Fehler als
+  `{meldung, objekt}`, Hinweise mit Objektnummer.
+- Fehlt ein Feld oder Befehl: im Kern ergänzen (`CLAUDE.md` §4 Regel 7), dann `stick api exportieren`.
+- Die Maschinen-Befehle (`maschine_*`) stehen noch als eigene Tauri-Befehle in `src-tauri/src/lib.rs`; sie ziehen in
+  Etappe E3 nach `kern/stick-api` um. Schreiben/Sticken nur nach Plan + Bestätigung (`ANFORDERUNGEN.md` §4).
 
-## Starten (Windows-PC)
-Voraussetzungen siehe `../ARCHITECTURE.md` §5 (Rust und Node auf F:\Entwicklung, VS Build Tools 2019, Windows SDK im PATH).
-```powershell
-cd app
-npm install                                   # einmalig
-npm run tauri dev                             # Entwicklungsmodus mit Live-Neuladen
-npm run tauri build -- --debug --no-bundle    # Programm bauen -> F:\Entwicklung\target\debug\artista-stickprogramm.exe
-```
-Hinweis: Nach dem Einrichten der Umgebungsvariablen ein neues Terminal öffnen, sonst fehlen `cargo`/`node` im PATH.
+## Stand
+| Etappe | Inhalt | Stand |
+|---|---|---|
+| E1 Grundgerüst | Fensteraufbau (Kopf, Assistent/Objektliste, Vorschau, Statusleiste), Modus Einfach/Experte, Hell/Dunkel, Datei-Menü (Neu, Öffnen, Speichern, Beispiel, EXP), Rückgängig/Wiederholen (Strg+Z/Y, Tippen zusammengefasst), Berechnung entprellt (140 ms) mit Verwerfen veralteter Antworten, Stichvorschau (Zoom, Verschieben, Sprünge/Einstiche/Raster, Auswahl per Klick, Auswahlrahmen mit Maß, Formansicht, Einstiche außerhalb, Fehler am Objekt), Statusleiste (Kennzahlen, Datengröße/145 KB, Stickzeit als Schätzung, Hinweise mit „Zeigen“) | ✅ 21.11.2026 |
+| E2–E6 | siehe `../ROADMAP.md` Phase 5 | ⬜ |
 
 ## Ordner
 | Pfad | Inhalt |
 |---|---|
-| `src/` | Oberfläche (SvelteKit, TypeScript): `routes/+page.svelte` (Hauptfenster), `lib/Vorschau.svelte` (Stichvorschau), `lib/typen.ts` |
-| `src-tauri/` | Rust-Teil des Programms (Fenster, Befehle an den Rechenkern): `src/lib.rs` – rahmen_liste, stoffe_liste, beispiel_design, design_berechnen, datei_lesen, text_speichern, exp_speichern, **maschine_ports, maschine_pruefen, maschine_planen, maschine_senden, maschine_liste, maschine_lesen, gelesen_exp_speichern** (über `kern/stick-maschine`, Fortschritt als Ereignis `maschine_fortschritt`) |
-| `src-tauri/alphabete/` | die 50 Original-Alphabete (ESB) der CD, als Ressource mitgeliefert (`HERKUNFT.md`) |
-| `src/lib/alphabet_hoehen.ts` | empfohlene Buchstabenhöhen je Alphabet (Handbuch) |
-| `src-tauri/tauri.conf.json` | Programmname, Fenster, Kennung `de.artista.stickprogramm` |
+| `src/routes/+page.svelte` | Hauptfenster |
+| `src/lib/arbeit.svelte.ts` | Zustand: Design-JSON, Verlauf, Auswahl, Modus, Ergebnisse des Kerns, Startoptionen |
+| `src/lib/dateien.svelte.ts` | Menü Datei (Dialoge von Tauri, Lesen/Schreiben über den Kern) |
+| `src/lib/Vorschau.svelte`, `Statusleiste.svelte`, `Icon.svelte`, `icons.ts`, `zahl.ts` | Bausteine |
+| `src/lib/stil/industry.css`, `app.css` | Designsystem „Industry“ und Stile des Entwurfs (unverändert übernommen); Schriften Barlow über `@fontsource` (offline) |
+| `src-tauri/` | Rust-Teil: Befehl `kern`, Maschinen-Befehle, Fenster mit Startoptionen; Ressourcen `alphabete/` (50 ESB), `garnkarten/` (32 .tch) |
+| `werkzeuge/bildschirmfoto.py` | Bildschirmfoto ohne Fenster (gebaute Oberfläche in Chrome/Edge headless, Antworten aus `stick api`) |
+| `bildschirmfotos/` | Bilder je Etappe |
+| `archiv/prototyp_2026-11-19/` | alte Oberfläche |
+
+## Starten und bauen
+Mac (Rust in `~/.cargo`, seit 21.11.2026) und Windows-PC (Umgebung `../ARCHITECTURE.md` §5, `CLAUDE.md` §5):
+```sh
+cd app
+npm install                                   # einmalig
+npm run check                                 # Typprüfung (svelte-check)
+npm run tauri dev                             # Entwicklungsmodus
+npm run tauri build -- --debug --no-bundle    # Programm bauen (Mac: CARGO_TARGET_DIR=../kern/target)
+```
+Startoptionen: `artista-stickprogramm [DESIGN.json] [--experte] [--dunkel|--hell] [--auswahl N]` (Datei öffnen, Modus,
+Darstellung, gewähltes Objekt – für „Öffnen mit“ und Bildschirmfotos).
+
+Bildschirmfoto: `npm run build` und `cargo build -p stick-cli` (in `kern/`), dann
+`python3 werkzeuge/bildschirmfoto.py ../stickprogramm/beispiele/beispiel.json bildschirmfotos/x.png --experte --auswahl 2`
+(Optionen `--ansicht form`, `--dunkel`, `--groesse 1280x800`). Echte Fensterfotos auf dem Mac bräuchten die
+Berechtigung „Bildschirmaufnahme“ für das Terminal.

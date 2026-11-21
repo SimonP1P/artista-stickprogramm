@@ -719,6 +719,47 @@ async fn gelesen_exp_speichern(pfad: String, gelesen: State<'_, Gelesen>) -> Res
     Ok(exp.len())
 }
 
+/// **Der** Befehl der Oberfläche an den Rechenkern: reicht an `stick_api::ausfuehren` weiter (ROADMAP 4b.0,
+/// `kern/stick-api/src/lib.rs`). Die Oberfläche ruft ihn nur über `kern(…)` aus `kern/schnittstelle/kern.ts` auf;
+/// gerechnet wird im Hintergrund, damit das Fenster beim Tippen nicht hängt.
+#[tauri::command]
+async fn kern(
+    befehl: String,
+    daten: Value,
+    k: State<'_, std::sync::Arc<stick_api::Kontext>>,
+) -> Result<Value, stick_api::Fehler> {
+    let k = k.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || stick_api::ausfuehren(&k, &befehl, daten))
+        .await
+        .map_err(|e| stick_api::Fehler::from(e.to_string()))?
+}
+
+/// Startoptionen aus der Befehlszeile als JSON für die Oberfläche (`window.__START__`, `app/src/lib/arbeit.svelte.ts`).
+fn startoptionen(args: impl Iterator<Item = String>) -> Value {
+    let mut o = serde_json::Map::new();
+    let mut args = args.peekable();
+    while let Some(a) = args.next() {
+        match a.as_str() {
+            "--experte" => {
+                o.insert("modus".into(), "experte".into());
+            }
+            "--dunkel" | "--hell" => {
+                o.insert("dunkel".into(), (a == "--dunkel").into());
+            }
+            "--auswahl" => {
+                if let Some(n) = args.next().and_then(|n| n.parse::<u64>().ok()) {
+                    o.insert("auswahl".into(), n.into());
+                }
+            }
+            _ if !a.starts_with('-') => {
+                o.insert("datei".into(), a.into());
+            }
+            _ => {}
+        }
+    }
+    Value::Object(o)
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -730,13 +771,34 @@ pub fn run() {
                 ordner,
                 geladen: Mutex::new(HashMap::new()),
             });
+            // Hauptfenster mit Startoptionen (Datei öffnen, Modus, Darstellung): `artista-stickprogramm [DATEI.json]
+            // [--experte] [--dunkel|--hell] [--auswahl N]` – für „Öffnen mit“ und für Bildschirmfotos/Tests
+            let fenster = app
+                .config()
+                .app
+                .windows
+                .iter()
+                .find(|w| w.label == "main")
+                .cloned()
+                .ok_or("Fenster „main“ fehlt in tauri.conf.json")?;
+            tauri::WebviewWindowBuilder::from_config(app.handle(), &fenster)?
+                .initialization_script(format!(
+                    "window.__START__ = {};",
+                    startoptionen(std::env::args().skip(1))
+                ))
+                .build()?;
             app.manage(Gelesen(Mutex::new(None)));
+            let ressourcen = app.path().resource_dir().ok();
+            app.manage(std::sync::Arc::new(stick_api::Kontext::finden(
+                ressourcen.as_deref(),
+            )));
             app.manage(Garnkarten {
                 ordner: Garnkarten::finden(app.path().resource_dir().ok()),
             });
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            kern,
             rahmen_liste,
             stoffe_liste,
             alphabete_liste,

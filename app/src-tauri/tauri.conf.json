@@ -18,7 +18,9 @@
         "minWidth": 1000,
         "minHeight": 600,
         "maximized": true,
-        "center": true
+        "center": true,
+        "create": false,
+        "label": "main"
       }
     ],
     "security": {
