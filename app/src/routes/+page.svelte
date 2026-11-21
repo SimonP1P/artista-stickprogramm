@@ -605,8 +605,9 @@
       text={x && "text" in x ? x.text : undefined}
       hoehe={x && "hoehe" in x ? x.hoehe : undefined}
       waehlen={(w) => {
-        arbeit.dialog = null;
+        // erst die Nummer lesen: `o` hängt am offenen Dialog und ist danach nicht mehr lesbar
         arbeit.schriftWechseln(o, w);
+        arbeit.dialog = null;
       }}
       schliessen={() => (arbeit.dialog = null)}
     />
