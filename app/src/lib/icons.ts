@@ -34,6 +34,9 @@ export const IC = {
   rechteck: "M3 5h18v14H3Z",
   bezier: "M4 20C4 9 20 15 20 4M2 18h4v4H2ZM18 2h4v4h-4Z",
   bild: "M3 3h18v18H3ZM10 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM21 15l-5-5L5 21",
+  liste: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01",
+  plus: "M12 5v14M5 12h14",
+  zurueck: "m15 18-6-6 6-6",
   kommtNoch: "M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z",
 } as const;
 

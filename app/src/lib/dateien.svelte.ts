@@ -36,6 +36,25 @@ export async function oeffnen() {
   }
 }
 
+/** Gespeichertes Design als **ein Element** (Gruppe) ins aktuelle einfügen – „Insert Design“ des Originals */
+export async function designEinfuegen() {
+  const pfad = await open({ multiple: false, directory: false, filters: DESIGN_FILTER });
+  if (typeof pfad !== "string") return;
+  try {
+    const einfuegen = JSON.parse(await kern("datei_lesen", { pfad })) as DesignJson;
+    const r = await kern("design_einfuegen", {
+      design: $state.snapshot(arbeit.design) as DesignJson,
+      einfuegen,
+      gruppe: { name: dateiname(pfad).replace(/\.json$/i, ""), herkunft: "gruppiert" },
+    });
+    arbeit.ersetzen(r.design, arbeit.pfad, true);
+    arbeit.auswahl = r.objekte;
+    arbeit.zeige(`Eingefügt: ${dateiname(pfad)}`, "ok");
+  } catch (x) {
+    arbeit.zeige(`Einfügen fehlgeschlagen: ${x instanceof SyntaxError ? x.message : alsFehler(x).meldung}`, "err");
+  }
+}
+
 export async function speichern(unter = false) {
   let pfad = arbeit.pfad;
   if (unter || !pfad) {

@@ -36,6 +36,11 @@ impl SeriellerPort {
         let mut v: Vec<String> = serialport::available_ports()
             .map(|l| l.into_iter().map(|p| p.port_name).collect())
             .unwrap_or_default();
+        // Mac: nur die „cu.“-Geräte (zum Hinauswählen; „tty.“ wartet auf das Trägersignal), ohne Bluetooth und
+        // Debug-Konsole – ein USB-Seriell-Adapter erscheint als /dev/cu.usbserial… (eigene Festlegung)
+        if cfg!(target_os = "macos") {
+            v.retain(|n| n.starts_with("/dev/cu.") && !n.contains("Bluetooth") && !n.contains("debug-console"));
+        }
         v.sort();
         v.dedup();
         v

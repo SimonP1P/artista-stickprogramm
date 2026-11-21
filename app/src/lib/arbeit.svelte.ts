@@ -14,13 +14,14 @@ import {
   type Pruefung,
   type RahmenInfo,
   type ReihenfolgeBefehl,
+  type Transformation,
 } from "$kern/kern";
 
 export type Modus = "einfach" | "experte";
 /** offener Dialog (gerendert in +page.svelte) */
 export type OffenerDialog =
   | { art: "alphabet"; objekt: number }
-  | { art: "garn"; objekt: number; titel?: string }
+  | { art: "garn"; objekt: number; titel?: string; /** alle diese Objekte bekommen das Garn (z. B. eine Farbe eines Bilds) */ alle?: number[] }
   | { art: "bild" }
   | { art: "svg" }
   | { art: "nach_farbe" }
@@ -61,6 +62,40 @@ type StartOptionen = {
   /** Maschinen-Zustand für Bildschirmfotos: Stufe des Sendens bzw. Liste (ausgeführt in +page.svelte) */
   maschine?: "anschluss" | "plan" | "fertig" | "sticken" | "liste";
 };
+
+/** Element des einfachen Modus: eine Gruppe oder ein einzelnes Objekt */
+export type Element = {
+  /** Schlüssel der Gruppe (sonst ein einzelnes Objekt) */
+  gruppe?: string;
+  /** Objektart bzw. Herkunft der Gruppe (bild, svg, gruppiert) */
+  art: string;
+  /** Objektnummern */
+  objekte: number[];
+  name: string;
+};
+
+/** Anzeigename eines Objekts: Name, sonst Text/Initialen, sonst Nr. */
+export function objektName(o: ObjektJson | undefined, i: number): string {
+  if (!o) return `Nr. ${i + 1}`;
+  const x = o as { name?: string; text?: string; initialen?: string };
+  return x.name || x.text?.split("\n")[0] || x.initialen || `Nr. ${i + 1}`;
+}
+
+/** freier Gruppenschlüssel g1, g2 … */
+function freierSchluessel(gruppen: Record<string, unknown>): string {
+  let n = 1;
+  while (`g${n}` in gruppen) n++;
+  return `g${n}`;
+}
+
+/** Gruppen ohne Objekte entfernen */
+function gruppenAufraeumen(d: DesignJson) {
+  if (!d.gruppen) return;
+  const zahl = new Map<string, number>();
+  for (const o of d.objekte ?? []) if (o.gruppe) zahl.set(o.gruppe, (zahl.get(o.gruppe) ?? 0) + 1);
+  for (const k of Object.keys(d.gruppen)) if (!zahl.get(k)) delete d.gruppen[k];
+  if (!Object.keys(d.gruppen).length) delete d.gruppen;
+}
 
 const ENTPRELLEN_MS = 140;
 const ZUSAMMENFASSEN_MS = 900;
@@ -134,6 +169,109 @@ class Arbeit {
     return this.auswahl.length ? this.auswahl[0] : -1;
   }
 
+  // ------------------------------------------------------------------ Gruppen und Elemente
+  /** Gruppe eines Objekts („Group“ des Originals, Feld `gruppe`) */
+  gruppeVon(i: number): string | undefined {
+    return this.objekte[i]?.gruppe ?? undefined;
+  }
+  /** Objekte einer Gruppe (Nummern) */
+  mitglieder(g: string): number[] {
+    return this.objekte.flatMap((o, i) => (o.gruppe === g ? [i] : []));
+  }
+  /** Gruppe, wenn genau alle Objekte einer Gruppe gewählt sind – dann wirken Griffe, Pfeiltasten, Größe und Drehen
+   *  auf die Transformation der Gruppe */
+  get auswahlGruppe(): string | null {
+    const g = this.auswahl.length ? this.gruppeVon(this.auswahl[0]) : undefined;
+    if (!g) return null;
+    const m = this.mitglieder(g);
+    return m.length === this.auswahl.length && m.every((i) => this.auswahl.includes(i)) ? g : null;
+  }
+  /**
+   * Elemente für den einfachen Modus: jede Gruppe ist **ein** Element (z. B. ein umgewandeltes Bild), jedes Objekt
+   * ohne Gruppe ein eigenes – in Stickreihenfolge des ersten Objekts.
+   */
+  get elemente(): Element[] {
+    const out: Element[] = [];
+    this.objekte.forEach((o, i) => {
+      const g = o.gruppe ?? undefined;
+      const da = g ? out.find((e) => e.gruppe === g) : undefined;
+      if (da) return void da.objekte.push(i);
+      const info = g ? this.design.gruppen?.[g] : undefined;
+      out.push({
+        gruppe: g,
+        art: g ? (info?.herkunft ?? "gruppiert") : o.art,
+        objekte: [i],
+        name: g ? info?.name || "Gruppe" : objektName(o, i),
+      });
+    });
+    return out;
+  }
+  /** Element, zu dem die Auswahl gehört (ganz oder teilweise) */
+  get elementGewaehlt(): Element | undefined {
+    const i = this.gewaehlt;
+    return i < 0 ? undefined : this.elemente.find((e) => e.objekte.includes(i));
+  }
+  /** Element wählen (alle seine Objekte) */
+  elementWaehlen(e: Element | undefined) {
+    this.buchstabe = null;
+    this.auswahl = e ? [...e.objekte] : [];
+  }
+  /**
+   * Transformation der Auswahl ändern: bei einer ganzen Gruppe die der Gruppe (um ihre Mitte), sonst die jedes
+   * gewählten Objekts (`nurErstes`: nur das erste – Skalieren/Drehen mit dem Griff).
+   */
+  auswahlTransformieren(f: (t: Transformation) => void, gruppe?: string, nurErstes = false) {
+    const g = this.auswahlGruppe;
+    const aus = [...this.auswahl];
+    this.aendern((d) => {
+      if (g && d.gruppen?.[g]) return void f((d.gruppen[g].transform ??= {}));
+      for (const i of nurErstes ? aus.slice(0, 1) : aus) f((d.objekte![i].transform ??= {}));
+    }, gruppe);
+  }
+
+  /** Gewählte Objekte zu einer neuen Gruppe zusammenfassen („Group“) */
+  gruppieren(name = "Gruppe") {
+    const aus = [...this.auswahl];
+    if (aus.length < 2) return;
+    this.aendern((d) => {
+      d.gruppen ??= {};
+      const k = freierSchluessel(d.gruppen);
+      d.gruppen[k] = { name, herkunft: "gruppiert" };
+      for (const i of aus) d.objekte![i].gruppe = k;
+      gruppenAufraeumen(d);
+    });
+  }
+  /** Gruppe der gewählten Objekte auflösen („Ungroup“): die Transformation der Gruppe geht an jedes Objekt über,
+   *  wenn es selbst keine hat (sonst bleibt sie dort und die der Gruppe entfällt – Hinweis) */
+  gruppeAufloesen() {
+    const gruppen = new Set(this.auswahl.map((i) => this.gruppeVon(i)).filter((g): g is string => !!g));
+    if (!gruppen.size) return;
+    let verloren = false;
+    this.aendern((d) => {
+      for (const g of gruppen) {
+        const t = d.gruppen?.[g]?.transform;
+        const leer = !t || Object.keys(t).length === 0;
+        for (const o of d.objekte ?? []) {
+          if (o.gruppe !== g) continue;
+          delete o.gruppe;
+          // nur eine reine Verschiebung lässt sich verlustfrei an jedes Objekt geben (Drehen/Skalieren wirkt dort um
+          // die Mitte des Objekts statt um die der Gruppe)
+          if (!leer && t) {
+            const nurSchieben = Object.keys(t).every((k) => k === "verschieben");
+            if (nurSchieben && t.verschieben) {
+              const ot = (o.transform ??= {});
+              const [vx, vy] = ot.verschieben ?? [0, 0];
+              ot.verschieben = [vx + t.verschieben[0], vy + t.verschieben[1]];
+            } else verloren = true;
+          }
+        }
+        delete d.gruppen?.[g];
+      }
+      gruppenAufraeumen(d);
+    });
+    if (verloren) this.zeige("Gruppe aufgelöst – Größe/Drehung der Gruppe gilt jetzt nicht mehr (Rückgängig möglich)", "info");
+  }
+
   /** Start: Listen laden, Startoptionen der Befehlszeile (`window.__START__`, gesetzt von src-tauri) anwenden. */
   async starten() {
     const start = (globalThis as { __START__?: StartOptionen }).__START__ ?? {};
@@ -155,7 +293,7 @@ class Arbeit {
         this.zeige(`Öffnen fehlgeschlagen: ${x instanceof SyntaxError ? x.message : alsFehler(x).meldung}`, "err");
       }
     }
-    if (typeof start.auswahl === "number") this.auswahl = [start.auswahl];
+    if (typeof start.auswahl === "number") this.waehlen(start.auswahl);
     if (typeof start.auswahl === "number" && typeof start.buchstabe === "number")
       this.buchstabe = { objekt: start.auswahl, nr: start.buchstabe };
     await this.berechnen();
@@ -238,9 +376,20 @@ class Arbeit {
     const aus = [...this.auswahl].sort((a, b) => a - b);
     if (!aus.length) return;
     this.aendern((d) => {
+      // eine kopierte Gruppe wird eine neue Gruppe
+      const neueGruppe = new Map<string, string>();
       for (const i of aus) {
         const kopie = JSON.parse(JSON.stringify(d.objekte![i])) as ObjektJson;
         if (kopie.name) kopie.name = `${kopie.name} (Kopie)`;
+        const g = kopie.gruppe;
+        if (g && d.gruppen?.[g]) {
+          if (!neueGruppe.has(g)) {
+            const k = freierSchluessel(d.gruppen);
+            d.gruppen[k] = { ...JSON.parse(JSON.stringify(d.gruppen[g])), name: `${d.gruppen[g].name ?? "Gruppe"} (Kopie)` };
+            neueGruppe.set(g, k);
+          }
+          kopie.gruppe = neueGruppe.get(g);
+        }
         d.objekte!.push(kopie);
       }
     });
@@ -253,6 +402,7 @@ class Arbeit {
     if (!aus.size) return;
     this.aendern((d) => {
       d.objekte = (d.objekte ?? []).filter((_, i) => !aus.has(i));
+      gruppenAufraeumen(d);
     });
     this.auswahl = [];
   }
@@ -299,12 +449,18 @@ class Arbeit {
     this.ersetzen(JSON.parse(vorher), this.pfad, true);
   }
 
-  waehlen(i: number | null, hinzufuegen = false) {
+  /** Objekt wählen; gehört es zu einer Gruppe, wird die ganze Gruppe gewählt (wie im Original), außer `einzeln`
+   *  (Objektliste im Expertenmodus) */
+  waehlen(i: number | null, hinzufuegen = false, einzeln = false) {
     this.buchstabe = null;
-    if (i === null || i < 0) this.auswahl = [];
-    else if (hinzufuegen)
-      this.auswahl = this.auswahl.includes(i) ? this.auswahl.filter((x) => x !== i) : [...this.auswahl, i];
-    else this.auswahl = [i];
+    if (i === null || i < 0) return void (this.auswahl = []);
+    const g = einzeln ? undefined : this.gruppeVon(i);
+    const neu = g ? this.mitglieder(g) : [i];
+    if (hinzufuegen)
+      this.auswahl = this.auswahl.includes(i)
+        ? this.auswahl.filter((x) => !neu.includes(x))
+        : [...this.auswahl, ...neu.filter((x) => !this.auswahl.includes(x))];
+    else this.auswahl = neu;
   }
 
   /** Neuberechnung planen (entprellt, beim Tippen) */

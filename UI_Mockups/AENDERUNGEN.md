@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Gruppen und „Design einfügen“ (Test des Nutzers, Commit 08b469a)
+- **Neu:** Feld `gruppe` an jedem Objekt (Schlüssel) und `gruppen` am Design `{name, herkunft: gruppiert|bild|svg,
+  transform}` – „Group“ des Originals (Handbuch S. 134, ART `EmbroideryGroup`). Transformationen: je Objekt → je Gruppe
+  (um die Mitte ihrer Objekte) → ganzes Design. Befehl `design_einfuegen {design, einfuegen, gruppe?}` wie „Insert
+  Design“: hängt Objekte an, auf Wunsch als eine Gruppe; doppelte Namen → „Name (2)“, `aussparen` zieht mit.
+- **Oberfläche:** umgesetzt – Klick wählt die ganze Gruppe (Objektliste: einzeln), ein Rahmen mit Griffen wirkt auf
+  `gruppen[k].transform`, Pfeiltasten ebenso; Anordnen → Gruppieren/Gruppe auflösen (Strg+G / Strg+Umschalt+G);
+  Bild/SVG-Dialog und „Design einfügen“ fügen als Gruppe ein (Häkchen „Design ersetzen“ für das alte Verhalten);
+  einfacher Modus Schritt 2 mit **Elementen** (Liste, Hinzufügen, Bearbeiten: Name, Größe, Drehen, Mittig, Garn je
+  Farbe, Löschen).
+
 ## 21.11.2026 – Motivlinie (4b.7, Commit 205e6be)
 - **Neu:** Objektart `motivlinie` (`punkte`, `geschlossen`, `satz`, `motiv`, `groesse`, `abstand`, `spiegeln`) –
   Motiv aus einem Motivsatz entlang einer Linie, Anzahl/Verteilung wie das Original. Befehle `motive_liste` (14 Sätze)
@@ -106,5 +117,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `205e6be` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `08b469a` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.

@@ -62,17 +62,12 @@
 
   /** Pfeiltasten: gewählte Objekte um 0,5 mm (Umschalt: 5 mm) verschieben */
   function pfeil(dx: number, dy: number) {
-    const aus = [...arbeit.auswahl];
-    arbeit.aendern((d) => {
-      for (const i of aus) {
-        const t = (d.objekte![i].transform ??= {});
-        const [vx, vy] = t.verschieben ?? [0, 0];
-        t.verschieben = [Math.round((vx + dx) * 100) / 100, Math.round((vy + dy) * 100) / 100];
-      }
+    arbeit.auswahlTransformieren((t) => {
+      const [vx, vy] = t.verschieben ?? [0, 0];
+      t.verschieben = [Math.round((vx + dx) * 100) / 100, Math.round((vy + dy) * 100) / 100];
     }, "pfeil");
   }
 
-  const istMac = typeof navigator !== "undefined" && /Mac/i.test(navigator.platform || navigator.userAgent);
   const leer = $derived(arbeit.objekte.length === 0);
   const kopfInfo = $derived(
     [arbeit.design.rahmen?.replace(/^artista /, ""), arbeit.design.stoff].filter(Boolean).join(" · ") +
@@ -100,12 +95,14 @@
   function garnVon(o: number): GarnInfo | undefined {
     return arbeit.garnVon(o);
   }
-  function garnSetzen(o: number, g: GarnInfo) {
+  function garnSetzen(o: number, g: GarnInfo, alle?: number[]) {
     arbeit.aendern((d) => {
-      const x = d.objekte?.[o];
-      if (!x) return;
-      x.garn = g.nummer;
-      x.farbe = g.rgb;
+      for (const i of alle?.length ? alle : [o]) {
+        const x = d.objekte?.[i];
+        if (!x) continue;
+        x.garn = g.nummer;
+        x.farbe = g.rgb;
+      }
     });
     arbeit.dialog = null;
   }
@@ -162,6 +159,8 @@
       { l: "Vor Objekt Nr. …", go: a.length ? nachNummer(true) : undefined },
       { l: "Nach Objekt Nr. …", go: a.length ? nachNummer(false) : undefined },
       { l: "Nach Farbe sortieren …", go: n > 1 ? () => (arbeit.dialog = { art: "nach_farbe" }) : undefined },
+      { l: "Gruppieren", kbd: "Strg+G", go: a.length > 1 && !arbeit.auswahlGruppe ? () => arbeit.gruppieren() : undefined },
+      { l: "Gruppe auflösen", kbd: "Strg+Umschalt+G", go: a.some((i) => arbeit.gruppeVon(i)) ? () => arbeit.gruppeAufloesen() : undefined },
     ];
   });
 
@@ -192,6 +191,7 @@
         return m.go?.();
       }
       if (strg && ev.key.toLowerCase() === "d") return (ev.preventDefault(), arbeit.duplizieren());
+      if (strg && ev.key.toLowerCase() === "g") return (ev.preventDefault(), ev.shiftKey ? arbeit.gruppeAufloesen() : arbeit.gruppieren());
       const pf: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
       if (pf[ev.key] && !ev.altKey && arbeit.auswahl.length) {
         const k = ev.shiftKey ? 5 : 0.5;
@@ -274,17 +274,10 @@
       <span aria-hidden="true" style="width:9px; height:9px; border-radius:50%; background:{maschine.laeuft ? 'var(--warn)' : maschine.simulation ? 'var(--sim)' : maschine.info ? 'var(--ok)' : maschine.pruefFehler ? 'var(--err)' : 'var(--muted)'}"></span>
       {maschine.laeuft && maschine.phase === "laeuft" ? "Sende …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}
     </button>
-    {#if istMac}
-      <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" onclick={expExportieren}>
-        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <Icon d={IC.herunterladen} />EXP exportieren
-      </button>
-    {:else}
-      <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? "An die Maschine senden (erst Plan, dann bestätigen)"} onclick={() => maschine.sendenOeffnen()}>
-        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <Icon d={IC.senden} />Senden …
-      </button>
-    {/if}
+    <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? "An die Maschine senden (erst Plan, dann bestätigen)"} onclick={() => maschine.sendenOeffnen()}>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <Icon d={IC.senden} />Senden …
+    </button>
 
     {#if menue === "maschine"}
       <div class="menu" role="menu" aria-label="Maschine" style="right:120px; top:44px; width:300px">
@@ -297,9 +290,6 @@
         </div>
         <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.pruefen())}>Maschine prüfen (nur lesen)</button>
         <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.listeOeffnen())}>Designs aus der Maschine …</button>
-        {#if istMac}
-          <button class="mi" role="menuitem" disabled={!!maschine.sperrgrund} onclick={() => waehle(() => maschine.sendenOeffnen())}>Senden …</button>
-        {/if}
         {#if maschine.laeuft && !maschine.dialogOffen && maschine.phase === "laeuft"}
           <button class="mi" role="menuitem" onclick={() => waehle(() => (maschine.dialogOffen = true))}>Fortschritt anzeigen</button>
         {/if}
@@ -372,7 +362,7 @@
 
   <div style="flex:1; min-height:0; display:flex">
     {#if arbeit.modus === "einfach"}
-      <Assistent {istMac} />
+      <Assistent />
     {:else}
       <Objektliste anordnen={() => (menue = "anordnen")} />
     {/if}
@@ -544,7 +534,7 @@
     <GarnDialog
       untertitel={arbeit.dialog.titel ?? arbeit.objekte[o]?.name ?? ""}
       aktuell={garnVon(o)}
-      waehlen={(g) => garnSetzen(o, g)}
+      waehlen={(g) => garnSetzen(o, g, arbeit.dialog?.art === "garn" ? arbeit.dialog.alle : undefined)}
       schliessen={() => (arbeit.dialog = null)}
     />
   {:else if arbeit.dialog?.art === "bild" || arbeit.dialog?.art === "svg"}

@@ -15,7 +15,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, **4b.7 Motivlinie ✅** (Motivfüllung offen), 4b.17 SVG einlesen ✅, 4b.8/4b.11 begonnen, 4b.8–4b.15 offen · Parameterkatalog `PARAMETER.md` (167 Parameter) | 🟡 |
-| 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (Maschine nur in der Simulation erprobt; am Gerät: Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅) | 🟡 |
+| 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (Maschine nur in der Simulation erprobt; am Gerät: Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -259,6 +259,14 @@ ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-1
 | E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ✅ 21.11. (Inspektor aus dem Schema des Kerns) |
 | E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ✅ 21.11.; **W9 ✅ 21.11. (nachgeholt):** Kern liefert je Stich die Buchstabennummer (`Ergebnis.buchstabe`, aus `text_setzen_nr` durch Transformation und Aussparen gereicht); Oberfläche: Text wählen, Buchstaben anklicken → Inspektor „Einzelne Buchstaben“ (Farbe, Größe, Drehen, Verschieben, Zurücksetzen) |
 | E6 | Formansicht mit Knoten (W5), Dunkel/Mac, ANFORDERUNGEN.md, Parameterkatalog nach Modus vorlegen (M1), „Abgeglichen bis“ | ✅ 21.11. (Knoten für Punktlisten; W5-Rest ✅ 21.11.: Befehl `in_knoten_umwandeln` – Kreis/Oval/Bogen → Bézier-Knoten mit Anfassern wie im Original, Transformation auf die Knoten angewandt, Knoten-Werkzeug zieht Knoten und Anfasser) |
+
+**Erster Test des Nutzers auf dem Mac (21.11.2026) – umgesetzt:** weißes Fenster behoben (WebKit + Hash-Routing,
+`app/src/app.html`); Entf/⌫ löscht auch im einfachen Modus; Griffe springen nach dem Loslassen nicht mehr zurück;
+grünes Höhenband entfernt; **Elemente** in Schritt 2 (Kacheln → Element bearbeiten, „Elemente (n)“ mit Liste,
+„+ Hinzufügen“ öffnet die Kacheln; Bild/SVG/Design werden als **Gruppe** eingefügt statt das Design zu ersetzen –
+Kern: `gruppe`/`gruppen` wie „Group“ des Originals, Befehl `design_einfuegen` wie „Insert Design“); Gruppieren/Auflösen
+im Expertenmodus (Strg+G); **Senden auch am Mac** (USB-Seriell-Adapter, Ports `/dev/cu.*`). Offen aus dem Test: Bild
+wurde „nur schwarz-weiß“ – Bild des Nutzers ansehen.
 
 **Offen nach E6 (Kern-Schritte):** ~~W9~~ ✅ 21.11. · ~~W5-Rest~~ ✅ 21.11. (`stick-kern::umwandeln`) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.

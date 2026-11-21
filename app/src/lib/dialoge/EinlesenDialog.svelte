@@ -3,7 +3,7 @@
   // einlesen (`svg_lesen`, Stichart nach Breite wie EasyStitch des Originals). Ergebnis: neues Design.
   import { open } from "@tauri-apps/plugin-dialog";
   import { kern, type DesignJson } from "$kern/kern";
-  import { arbeit, alsFehler } from "../arbeit.svelte";
+  import { arbeit, alsFehler, leeresDesign } from "../arbeit.svelte";
   import { dateiname } from "../dateien.svelte";
   import Dialog from "../Dialog.svelte";
   import { lesen } from "../zahl";
@@ -23,6 +23,8 @@
   let hintergrund = $state(false);
   let aussparen = $state(true);
   let kuerzeste = $state(true);
+  /** bisheriges Design ersetzen statt als Element hinzufügen (Standard: hinzufügen, wie „Insert Design“) */
+  let ersetzen = $state(false);
   let laeuft = $state(false);
   let fehler = $state<string | null>(null);
   let hinweise = $state<string[]>([]);
@@ -37,6 +39,11 @@
           : [{ name: "SVG (z. B. aus Inkscape)", extensions: ["svg"] }],
     });
     if (typeof p === "string") pfad = p;
+  }
+
+  function rahmenStoff() {
+    const d = arbeit.design;
+    return { name: d.name ?? "Design", rahmen: d.rahmen, stoff: d.stoff, garnkarte: d.garnkarte };
   }
 
   async function umwandeln() {
@@ -69,10 +76,15 @@
         design = e.design;
         hinweise = e.hinweise;
       }
-      design.stoff ??= arbeit.design.stoff;
-      design.garnkarte ??= arbeit.design.garnkarte;
-      arbeit.ersetzen(design, null, true);
-      arbeit.auswahl = [];
+      // als **ein Element** einfügen: alle Objekte in einer Gruppe (Größe/Drehen/Lage gelten für das ganze Bild)
+      const ziel = ersetzen || !arbeit.objekte.length ? { ...leeresDesign(), ...rahmenStoff() } : $state.snapshot(arbeit.design);
+      const r = await kern("design_einfuegen", {
+        design: ziel as DesignJson,
+        einfuegen: design,
+        gruppe: { name: pfad ? dateiname(pfad).replace(/\.[^.]+$/, "") : art, herkunft: art },
+      });
+      arbeit.ersetzen(r.design, ersetzen || !arbeit.objekte.length ? null : arbeit.pfad, true);
+      arbeit.auswahl = r.objekte;
       if (hinweise.length) arbeit.zeige(`Eingelesen mit ${hinweise.length} Hinweis(en): ${hinweise.join(" · ")}`, "info");
       schliessen();
     } catch (x) {
@@ -128,7 +140,12 @@
       <label class="frow" style="padding:0"><span class="fl">Überdeckung <span class="xt">X</span></span><span class="fc"><input type="checkbox" bind:checked={aussparen} /> aussparen (wie die SVG aussieht)</span></label>
       <label class="frow" style="padding:0"><span class="fl">Verbindung <span class="xt">X</span></span><span class="fc"><input type="checkbox" bind:checked={kuerzeste} /> kürzeste (Closest Join)</span></label>
     {/if}
-    <div class="note small">Rahmen des neuen Designs: {arbeit.design.rahmen}. Das bisherige Design wird ersetzt (Rückgängig möglich).</div>
+    {#if arbeit.objekte.length}
+      <label class="frow" style="padding:0"><span class="fl">Bisheriges</span><span class="fc"><input type="checkbox" bind:checked={ersetzen} /> Design ersetzen (sonst als Element hinzufügen)</span></label>
+    {/if}
+    <div class="note small">
+      {art === "bild" ? "Das Bild" : "Die Zeichnung"} wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Element hinzugefügt"} – als Gruppe: Größe, Drehen und Lage gelten für alles zusammen. Rückgängig möglich.
+    </div>
     {#if fehler}<div class="errbox">{fehler}</div>{/if}
   </div>
   {#snippet fuss()}

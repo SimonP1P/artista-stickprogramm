@@ -68,14 +68,14 @@
             fallen(i);
           }}
           ondragend={() => ((ziehe = null), (ziel = null))}
-          onclick={(ev) => arbeit.waehlen(i, ev.shiftKey || ev.ctrlKey || ev.metaKey)}
+          onclick={(ev) => arbeit.waehlen(i, ev.shiftKey || ev.ctrlKey || ev.metaKey, true)}
           aria-label="Objekt {i + 1}: {art[0]}, {titel(o, i)}"
         >
           <span class="grip"><Icon d={IC.griff} groesse="s" /></span>
           <span class="tab mut" style="text-align:right">{i + 1}</span>
           <span class="sw" style="background:{o.farbe ?? '#000000'}"></span>
           <span title={art[0]}><Icon d={art[1]} /></span>
-          <span class="ostack"><b>{titel(o, i)}</b><span>{art[0]}{garnVon(i) ? ` · ${garnVon(i)}` : ""}</span></span>
+          <span class="ostack"><b>{titel(o, i)}</b><span>{art[0]}{garnVon(i) ? ` · ${garnVon(i)}` : ""}{o.gruppe ? ` · Gruppe ${arbeit.design.gruppen?.[o.gruppe]?.name || o.gruppe}` : ""}</span></span>
           <span style="display:flex; flex-direction:column; gap:2px; align-items:flex-end">
             {#if arbeit.fehler?.objekt === i}<span class="badge err">Fehler</span>{/if}
             {#if ue.length}<span class="badge" title="liegt über {ue.map((x) => `Nr. ${x + 1}`).join(', ')}">über {ue.map((x) => x + 1).join(", ")}</span>{/if}

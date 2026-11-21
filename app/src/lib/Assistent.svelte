@@ -3,19 +3,18 @@
   // Stiche, Größe, Garne und Prüfungen kommen aus dem Kern (`design_berechnen`).
   import type { ObjektJson, TextJson, MonogrammJson, Transformation } from "$kern/kern";
   import { arbeit } from "./arbeit.svelte";
-  import { expExportieren, oeffnen, speichern } from "./dateien.svelte";
+  import { designEinfuegen, expExportieren, oeffnen, speichern } from "./dateien.svelte";
   import Icon from "./Icon.svelte";
   import { ART, IC } from "./icons";
   import { garnText, listen, STOFF_TEXT } from "./listen.svelte";
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
   import { ANLEITUNG_RAHMEN, maschine, SIMULATION } from "./maschine.svelte";
 
-  let { istMac }: { istMac: boolean } = $props();
-
   type Text = TextJson & { art: "text" };
   type Mono = MonogrammJson & { art: "monogramm" };
 
-  const SCHRITTE = $derived(["Rahmen & Stoff", "Gestalten", "Prüfen & Garn", istMac ? "Speichern" : "Senden"]);
+  // Senden gibt es auf Windows und Mac (Mac: USB-Seriell-Adapter; Wunsch Nutzer 21.11.2026)
+  const SCHRITTE = ["Rahmen & Stoff", "Gestalten", "Prüfen & Garn", "Senden"];
   const STANDARD_ALPHABET = "Drifter";
   const STANDARD_FARBE = "#004780";
 
@@ -28,12 +27,35 @@
   const quer = $derived(/ Rotated$/.test(arbeit.design.rahmen ?? ""));
   const rahmenBasis = $derived(arbeit.rahmenListe.filter((r) => !/ Rotated$/.test(r.name)));
 
-  /** Objekt, das der Assistent bearbeitet: gewählter Text/Monogramm, sonst der erste */
+  // ---- Schritt 2: Elemente (Wunsch Nutzer 21.11.: Kacheln → Element bearbeiten → „Elemente (n)“ mit Liste und
+  // „+ Element hinzufügen“). Ein Element = eine Gruppe (Bild, SVG, eingefügtes Design) oder ein einzelnes Objekt.
+  let hinzufuegen = $state(false);
+  let liste = $state(false);
+  const elemente = $derived(arbeit.elemente);
+  const el = $derived(arbeit.elementGewaehlt);
+  // neue Auswahl (Klick in die Vorschau, neues Element) → dessen Bearbeitung zeigen
+  let letzteAuswahl = "";
+  $effect(() => {
+    const k = arbeit.auswahl.join(",");
+    if (k === letzteAuswahl) return;
+    letzteAuswahl = k;
+    if (arbeit.auswahl.length) {
+      liste = false;
+      hinzufuegen = false;
+    }
+  });
+  let anzahlVorher = arbeit.objekte.length;
+  $effect(() => {
+    const n = arbeit.objekte.length;
+    if (n > anzahlVorher) hinzufuegen = false;
+    anzahlVorher = n;
+  });
+
+  /** Objekt, das der Text-/Monogramm-Teil bearbeitet: das gewählte Element, wenn es ein Text/Monogramm ist */
   const haupt = $derived.by(() => {
-    const o = arbeit.objekte;
-    const g = arbeit.gewaehlt;
-    if (g >= 0 && (o[g]?.art === "text" || o[g]?.art === "monogramm")) return g;
-    return o.findIndex((x) => x.art === "text" || x.art === "monogramm");
+    if (!el || el.gruppe || el.objekte.length !== 1) return -1;
+    const a = arbeit.objekte[el.objekte[0]]?.art;
+    return a === "text" || a === "monogramm" ? el.objekte[0] : -1;
   });
   const objekt = $derived(haupt >= 0 ? arbeit.objekte[haupt] : undefined);
   const text = $derived(objekt?.art === "text" ? (objekt as Text) : undefined);
@@ -47,6 +69,76 @@
   const transform = $derived(arbeit.design.transform ?? {});
   const skalierung = $derived(
     Array.isArray(transform.skalieren) ? (transform.skalieren[0] ?? 100) : (transform.skalieren ?? 100),
+  );
+
+  const sicht = $derived(
+    !arbeit.objekte.length || hinzufuegen ? "kacheln" : liste || !el ? "liste" : text ? "text" : mono ? "mono" : "element",
+  );
+
+  /** Transformation des gewählten Elements: der Gruppe bzw. des Objekts */
+  const elTransform = $derived(
+    (el ? (el.gruppe ? arbeit.design.gruppen?.[el.gruppe]?.transform : arbeit.objekte[el.objekte[0]]?.transform) : undefined) ?? {},
+  );
+  function elTransformAendern(f: (t: Transformation) => void, gruppe?: string) {
+    const e = el;
+    if (!e) return;
+    arbeit.aendern((d) => {
+      if (e.gruppe) {
+        const g = d.gruppen?.[e.gruppe];
+        if (g) f((g.transform ??= {}));
+      } else f((d.objekte![e.objekte[0]].transform ??= {}));
+    }, gruppe);
+  }
+  /** Begrenzung des Elements (aus `design_formen` des Kerns) */
+  const elBegrenzung = $derived.by(() => {
+    const b = (el?.objekte ?? []).map((i) => arbeit.formen.find((f) => f.objekt === i)?.begrenzung).filter((x): x is number[] => !!x);
+    if (!b.length) return null;
+    return [Math.min(...b.map((x) => x[0])), Math.min(...b.map((x) => x[1])), Math.max(...b.map((x) => x[2])), Math.max(...b.map((x) => x[3]))];
+  });
+  /** Element in die Mitte des Rahmens */
+  function elMittig() {
+    const b = elBegrenzung;
+    if (!b) return;
+    const [mx, my] = [(b[0] + b[2]) / 2, (b[1] + b[3]) / 2];
+    elTransformAendern((t) => {
+      const [vx, vy] = t.verschieben ?? [0, 0];
+      t.verschieben = [round(vx - mx), round(vy - my)];
+    });
+  }
+  /** Farben des Elements: gleiche Farbe = ein Eintrag (ein Bild hat oft mehrere Flächen derselben Farbe) */
+  const elFarben = $derived.by(() => {
+    const m = new Map<string, number[]>();
+    for (const i of el?.objekte ?? []) {
+      const f = String(arbeit.objekte[i]?.farbe ?? "#000000").toLowerCase();
+      m.set(f, [...(m.get(f) ?? []), i]);
+    }
+    return [...m].map(([farbe, objekte]) => ({ farbe, objekte, garn: e ? arbeit.garnVon(objekte[0]) : undefined }));
+  });
+  const elName = $derived(el ? (el.gruppe ? (arbeit.design.gruppen?.[el.gruppe]?.name ?? "") : (arbeit.objekte[el.objekte[0]]?.name ?? "")) : "");
+  function elUmbenennen(n: string) {
+    const e = el;
+    if (!e) return;
+    arbeit.aendern((d) => {
+      if (e.gruppe) {
+        const g = d.gruppen?.[e.gruppe];
+        if (g) g.name = n;
+      } else d.objekte![e.objekte[0]].name = n;
+    }, "elname");
+  }
+  function elLoeschen() {
+    if (!el) return;
+    arbeit.elementWaehlen(el);
+    arbeit.loeschen();
+    liste = true;
+  }
+  const EL_ART: Record<string, [string, string]> = {
+    bild: ["Bild", IC.bild],
+    svg: ["Zeichnung (SVG)", IC.bezier],
+    gruppiert: ["Gruppe", IC.ordner],
+  };
+  const elArt = (e: { art: string }) => EL_ART[e.art] ?? ART[e.art] ?? [e.art, IC.kommtNoch];
+  const elSkalierung = $derived(
+    Array.isArray(elTransform.skalieren) ? (elTransform.skalieren[0] ?? 100) : (elTransform.skalieren ?? 100),
   );
 
   function objektAendern(f: (o: ObjektJson) => void, gruppe?: string) {
@@ -158,7 +250,7 @@
     }),
   );
 
-  const weiterText = $derived(["Weiter: Gestalten", "Weiter: Prüfen", istMac ? "Weiter: Speichern" : "Weiter: Senden"]);
+  const weiterText = ["Weiter: Gestalten", "Weiter: Prüfen", "Weiter: Senden"];
 </script>
 
 <aside class="pane" aria-label="Assistent" style="width:360px; border-right:1px solid var(--line)">
@@ -228,22 +320,67 @@
         Abreißvlies, bei dehnbarem Stoff Schneide- oder Bügelvlies; bei Frottee zusätzlich wasserlösliche Folie oben.
       </div>
     {:else if arbeit.schritt === 2}
-      {#if !objekt}
-        <h2 style="font-size:25px; margin:0 0 2px">Was möchtest du sticken?</h2>
-        <p class="mut" style="margin:0 0 12px">Am häufigsten: ein Name oder Monogramm.</p>
+      {#if arbeit.objekte.length}
+        <div style="display:flex; gap:6px; margin:-4px 0 14px">
+          <button class="btn btn-secondary" class:on={sicht === "liste"} aria-pressed={sicht === "liste"} onclick={() => ((liste = true), (hinzufuegen = false))}>
+            <Icon d={IC.liste} />Elemente ({elemente.length})
+          </button>
+          <span style="flex:1"></span>
+          <button class="btn btn-secondary" class:on={sicht === "kacheln"} aria-pressed={sicht === "kacheln"} onclick={() => (hinzufuegen = true)}>
+            <Icon d={IC.plus} />Hinzufügen
+          </button>
+        </div>
+      {/if}
+      {#if sicht === "kacheln"}
+        {#if arbeit.objekte.length}
+          <h2 style="font-size:25px; margin:0 0 2px">Element hinzufügen</h2>
+          <p class="mut" style="margin:0 0 12px">Was soll zum Design dazukommen?</p>
+        {:else}
+          <h2 style="font-size:25px; margin:0 0 2px">Was möchtest du sticken?</h2>
+          <p class="mut" style="margin:0 0 12px">Am häufigsten: ein Name oder Monogramm. Weitere Elemente kannst du danach hinzufügen.</p>
+        {/if}
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px">
           <button class="big" onclick={textEinfuegen}><Icon d={ART.text[1]} groesse="l" /><b style="font-weight:500">Text</b><span class="mut small">Name, Spruch – 50 Alphabete</span></button>
           <button class="big" onclick={monogrammEinfuegen}><Icon d={ART.monogramm[1]} groesse="l" /><b style="font-weight:500">Monogramm</b><span class="mut small">2–3 Initialen, mit Rahmen</span></button>
           <button class="big" onclick={() => (arbeit.dialog = { art: "bild" })}><Icon d={IC.bild} groesse="l" /><b style="font-weight:500">Bild umwandeln</b><span class="mut small">PNG / JPG → Stickflächen</span></button>
           <button class="big" onclick={() => (arbeit.dialog = { art: "svg" })}><Icon d={IC.bezier} groesse="l" /><b style="font-weight:500">SVG einlesen</b><span class="mut small">Zeichnung aus Inkscape</span></button>
-          <button class="big" onclick={oeffnen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design öffnen</b><span class="mut small">gespeichertes Design (JSON)</span></button>
+          {#if arbeit.objekte.length}
+            <button class="big" onclick={designEinfuegen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design einfügen</b><span class="mut small">gespeichertes Design (JSON) dazu</span></button>
+          {:else}
+            <button class="big" onclick={oeffnen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design öffnen</b><span class="mut small">gespeichertes Design (JSON)</span></button>
+          {/if}
           <button class="big" disabled><Icon d={IC.kommtNoch} groesse="l" /><span><b style="font-weight:500">Motiv aus Sammlung</b> <span class="soon">kommt noch</span></span><span class="small">Formen selbst zeichnen: Expertenmodus</span></button>
         </div>
         {#if arbeit.objekte.length}
-          <div class="note" style="margin-top:12px">Das Design enthält {arbeit.objekte.length} Objekt(e) ohne Text – bearbeiten im Expertenmodus.</div>
+          <button class="btn btn-ghost" style="margin-top:10px" onclick={() => (hinzufuegen = false)}>Abbrechen</button>
         {/if}
-      {:else if text}
-        <h2 style="font-size:25px; margin:0 0 10px">Text</h2>
+      {:else if sicht === "liste"}
+        <h2 style="font-size:25px; margin:0 0 2px">Elemente</h2>
+        <p class="mut" style="margin:0 0 10px">Antippen zum Bearbeiten. Gestickt wird von oben nach unten.</p>
+        <ol class="ol" aria-label="Elemente" style="border:1px solid var(--line); background:var(--color-bg); margin-bottom:10px">
+          {#each elemente as x, k (x.gruppe ?? `o${x.objekte[0]}`)}
+            {@const [artName, artIcon] = elArt(x)}
+            {@const farben = [...new Set(x.objekte.map((i) => String(arbeit.objekte[i]?.farbe ?? "#000000").toLowerCase()))]}
+            <li style="display:flex; align-items:center; border-bottom:1px solid color-mix(in srgb,var(--color-text) 7%,transparent)">
+              <button class="rk" style="border:0; flex:1; min-width:0" onclick={() => arbeit.elementWaehlen(x)}>
+                <span class="mut tab" style="width:16px">{k + 1}</span>
+                <Icon d={artIcon} />
+                <span style="display:flex; flex-direction:column; min-width:0; flex:1">
+                  <b style="font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{x.name}</b>
+                  <span class="mut small">{artName}{x.gruppe ? ` · ${x.objekte.length} Teile` : ""}</span>
+                </span>
+                <span style="display:flex; gap:2px">{#each farben.slice(0, 6) as f (f)}<span class="sw" style="background:{f}"></span>{/each}{#if farben.length > 6}<span class="mut small">+{farben.length - 6}</span>{/if}</span>
+              </button>
+              <button class="btn btn-ghost" title="Element löschen" aria-label="{x.name} löschen" style="padding:4px 8px" onclick={() => (arbeit.elementWaehlen(x), arbeit.loeschen(), (liste = true))}><Icon d={IC.papierkorb} /></button>
+            </li>
+          {/each}
+        </ol>
+        <button class="btn btn-secondary" style="width:100%; margin-bottom:16px" onclick={() => (hinzufuegen = true)}><Icon d={IC.plus} />Element hinzufügen</button>
+        <h3 style="font-size:19px; margin:0 0 6px">Ganzes Design</h3>
+        {@render groesseDrehen()}
+        {@render passung()}
+      {:else if sicht === "text" && text}
+        {@render elKopf("Text")}
         <div class="field" style="margin-bottom:12px">
           <label for="atxt">Text <span class="mut">(neue Zeile mit Eingabe)</span></label>
           <textarea
@@ -322,10 +459,11 @@
           </div>
         </div>
         {@render garnWahl()}
-        {@render groesseDrehen()}
+        {@render elGroesse()}
         {@render passung()}
-      {:else if mono}
-        <h2 style="font-size:25px; margin:0 0 10px">Monogramm</h2>
+        {@render elAktionen()}
+      {:else if sicht === "mono" && mono}
+        {@render elKopf("Monogramm")}
         <div class="field" style="margin-bottom:12px">
           <label for="ainit">Initialen <span class="mut">(2 oder 3 Buchstaben A–Z)</span></label>
           <input
@@ -368,8 +506,31 @@
           </div>
         </div>
         {@render garnWahl()}
-        {@render groesseDrehen()}
+        {@render elGroesse()}
         {@render passung()}
+        {@render elAktionen()}
+      {:else if el}
+        {@render elKopf(elArt(el)[0])}
+        <div class="field" style="margin-bottom:12px">
+          <label for="elname">Name</label>
+          <input id="elname" class="input" value={elName} oninput={(ev) => elUmbenennen((ev.currentTarget as HTMLInputElement).value)} />
+        </div>
+        {@render elGroesse()}
+        <div class="field" style="margin-bottom:12px">
+          <span class="fl">Farben {elFarben.length > 1 ? `(${elFarben.length})` : ""}</span>
+          <div style="display:flex; flex-direction:column; gap:4px">
+            {#each elFarben as f (f.farbe)}
+              <button class="btn btn-secondary pick" style="min-height:36px" onclick={() => (arbeit.dialog = { art: "garn", objekt: f.objekte[0], alle: f.objekte, titel: `${elName || elArt(el)[0]} · ${f.objekte.length} ${f.objekte.length === 1 ? "Fläche" : "Flächen"}` })}>
+                <span class="sw l" style="background:{f.garn?.rgb ?? f.farbe}"></span>
+                <span class="t">{f.garn ? garnText(f.garn) : f.farbe}</span>
+                <Icon d={IC.chevronRechts} />
+              </button>
+            {/each}
+          </div>
+        </div>
+        {@render passung()}
+        <p class="mut small" style="margin:10px 0 0">Einzelne Flächen, Sticharten und Formen ändern: im Expertenmodus.</p>
+        {@render elAktionen()}
       {/if}
     {:else if arbeit.schritt === 3}
       <h2 style="font-size:25px; margin:0 0 2px">Prüfen und Garn</h2>
@@ -412,10 +573,6 @@
         </ul>
       </div>
     {:else}
-      {#if istMac}
-        <h2 style="font-size:25px; margin:0 0 2px">Speichern und exportieren</h2>
-        <p class="mut" style="margin:0 0 12px">Auf diesem Mac ist keine Maschine angeschlossen. Das Design zum Sticken am Windows-PC speichern.</p>
-      {:else}
         <h2 style="font-size:25px; margin:0 0 2px">An die Maschine senden</h2>
         <p class="mut" style="margin:0 0 12px">Erst wird nur gelesen und ein Plan gezeigt. Geschrieben wird erst nach deiner Bestätigung.</p>
         <div class="field" style="margin-bottom:10px">
@@ -445,12 +602,11 @@
         </button>
         {#if maschine.sperrgrund}<p class="small" style="color:var(--err); margin:6px 0 0">{maschine.sperrgrund}</p>{/if}
         <p class="mut small" style="margin:8px 0 14px">Das Design bleibt nur bis zum Ausschalten in der Maschine – dauerhaft speichern ist noch nicht möglich.</p>
-      {/if}
       <div style="display:flex; flex-direction:column; gap:8px">
         <button class="big" onclick={() => speichern()}><b style="font-weight:500">Design speichern</b><span class="mut small">eigenes Format (JSON) – zum Weiterbearbeiten</span></button>
         <button class="big" onclick={expExportieren}><b style="font-weight:500">Stickdatei exportieren (EXP)</b><span class="mut small">Bernina-Format – Stiche ohne Garnnamen</span></button>
       </div>
-      {#if istMac}<div class="note" style="margin-top:12px">Senden an die Maschine gibt es nur unter Windows mit Kabel (COM-Port).</div>{/if}
+      <div class="note" style="margin-top:12px">Mac: Die Maschine hängt über einen USB-Seriell-Adapter (RS-232) am Mac; der Anschluss erscheint dann in der Liste (z. B. /dev/cu.usbserial…).</div>
     {/if}
   </div>
 
@@ -474,10 +630,62 @@
   </div>
 {/snippet}
 
+{#snippet elKopf(titel: string)}
+  <div style="display:flex; align-items:center; gap:6px; margin:0 0 10px">
+    <button class="btn btn-ghost" style="padding:2px 4px" title="Alle Elemente" aria-label="Alle Elemente" onclick={() => (liste = true)}><Icon d={IC.zurueck} /></button>
+    <h2 style="font-size:25px; margin:0">{titel}</h2>
+  </div>
+{/snippet}
+
+{#snippet elGroesse()}
+  <div style="display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:end; margin-bottom:12px">
+    <div class="field">
+      <label for="elgr">Größe</label>
+      <div class="fc">
+        <input
+          id="elgr"
+          class="input sm num"
+          inputmode="decimal"
+          value={zahl(elSkalierung)}
+          onchange={(ev) => {
+            const v = lesen((ev.currentTarget as HTMLInputElement).value);
+            if (v && v > 0) elTransformAendern((t) => (t.skalieren = v));
+          }}
+        /><span class="unit">%</span>
+      </div>
+    </div>
+    <div class="field">
+      <label for="eldr">Drehen</label>
+      <div class="fc">
+        <input
+          id="eldr"
+          class="input sm num"
+          inputmode="decimal"
+          value={zahl(elTransform.drehen ?? 0)}
+          onchange={(ev) => {
+            const v = lesen((ev.currentTarget as HTMLInputElement).value);
+            if (v !== null) elTransformAendern((t) => (t.drehen = v));
+          }}
+        /><span class="unit">°</span>
+      </div>
+    </div>
+    <button class="btn btn-secondary" style="min-height:30px" onclick={elMittig} disabled={!elBegrenzung} title="Element in die Mitte des Rahmens">Mittig</button>
+  </div>
+  <p class="mut small" style="margin:-6px 0 12px">Ziehen in der Vorschau verschiebt, die Ecken ändern die Größe, der Punkt oben dreht.</p>
+{/snippet}
+
+{#snippet elAktionen()}
+  <div style="display:flex; gap:8px; margin-top:14px">
+    <button class="btn btn-secondary" onclick={() => (hinzufuegen = true)}><Icon d={IC.plus} />Element hinzufügen</button>
+    <span style="flex:1"></span>
+    <button class="btn btn-ghost" style="color:var(--err)" onclick={elLoeschen}><Icon d={IC.papierkorb} />Löschen</button>
+  </div>
+{/snippet}
+
 {#snippet groesseDrehen()}
   <div style="display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:end; margin-bottom:12px">
     <div class="field">
-      <label for="agr">Größe des Designs</label>
+      <label for="agr">Größe</label>
       <div class="fc">
         <input
           id="agr"

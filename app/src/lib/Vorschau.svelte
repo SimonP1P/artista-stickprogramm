@@ -204,9 +204,13 @@
   });
 
   const gewaehlt = $derived(arbeit.ansicht !== "abspielen" ? arbeit.auswahl : []);
-  const begrenzungen = $derived(
-    gewaehlt.map((i) => arbeit.formen.find((f) => f.objekt === i)?.begrenzung).filter((b): b is number[] => !!b),
-  );
+  const begrenzungen = $derived.by(() => {
+    const b = gewaehlt.map((i) => arbeit.formen.find((f) => f.objekt === i)?.begrenzung).filter((b): b is number[] => !!b);
+    // ganze Gruppe gewählt: ein gemeinsamer Rahmen mit Griffen (Umriss der Begrenzungen des Kerns)
+    if (arbeit.auswahlGruppe && b.length > 1)
+      return [[Math.min(...b.map((x) => x[0])), Math.min(...b.map((x) => x[1])), Math.max(...b.map((x) => x[2])), Math.max(...b.map((x) => x[3]))]];
+    return b;
+  });
   const fehlerBox = $derived.by(() => {
     const o = arbeit.fehler?.objekt;
     if (o === null || o === undefined) return null;
@@ -311,13 +315,9 @@
     if (war.art !== "ansicht" && war.bewegt) {
       // Griffe: Wert ins JSON (Transformation des Objekts) – der Kern rechnet die Stiche neu
       const w = griffWert;
-      const auswahl = [...arbeit.auswahl];
-      arbeit.aendern((d) => {
-        for (const i of war.art === "objekt" ? auswahl : auswahl.slice(0, 1)) {
-          const o = d.objekte![i];
-          o.transform ??= {};
-          const t = o.transform!;
-          const r = (v: number) => Math.round(v * 100) / 100;
+      const r = (v: number) => Math.round(v * 100) / 100;
+      arbeit.auswahlTransformieren(
+        (t) => {
           if (war.art === "objekt") {
             const [vx, vy] = t.verschieben ?? [0, 0];
             t.verschieben = [r(vx + w.dx), r(vy + w.dy)];
@@ -325,8 +325,10 @@
             const alt = Array.isArray(t.skalieren) ? (t.skalieren[0] ?? 100) : (t.skalieren ?? 100);
             t.skalieren = r(alt * w.f);
           } else t.drehen = r((t.drehen ?? 0) + w.grad);
-        }
-      });
+        },
+        undefined,
+        war.art !== "objekt",
+      );
       // Live-Ansicht stehen lassen, bis der Kern die neuen Stiche liefert – sonst springt das Objekt kurz zurück
       griffHaltenBis = arbeit.stand;
       return;

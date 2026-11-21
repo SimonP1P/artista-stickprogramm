@@ -121,7 +121,17 @@
           <p style="margin:6px 0 0">
             {arbeit.auswahl.length > 1 ? `${arbeit.auswahl.length} Objekte gewählt – Duplizieren, Löschen und Anordnen gelten für alle.` : "Kein Objekt gewählt. Objekt in der Vorschau oder in der Liste anklicken."}
           </p>
-          <p class="small" style="margin:6px 0 0">Rahmen, Stoff, Garnkarte und das ganze Design: Reiter „Design“.</p>
+          {#if arbeit.auswahlGruppe}
+            {@const g = arbeit.auswahlGruppe}
+            <p style="margin:10px 0 0; color:var(--color-text)">
+              Gruppe „{arbeit.design.gruppen?.[g]?.name || g}“: Verschieben, Größe und Drehen gelten für die ganze Gruppe.
+            </p>
+            <p class="small" style="margin:4px 0 8px">Einzelnes Objekt bearbeiten: in der Objektliste anklicken.</p>
+            <button class="btn btn-secondary" onclick={() => arbeit.gruppeAufloesen()}>Gruppe auflösen</button>
+          {:else if arbeit.auswahl.length > 1}
+            <button class="btn btn-secondary" style="margin-top:10px" onclick={() => arbeit.gruppieren()}>Gruppieren</button>
+          {/if}
+          <p class="small" style="margin:10px 0 0">Rahmen, Stoff, Garnkarte und das ganze Design: Reiter „Design“.</p>
         </div>
       {:else}
         <div class="frow" style="padding-top:10px">
