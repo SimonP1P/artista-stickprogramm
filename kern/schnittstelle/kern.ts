@@ -1837,6 +1837,23 @@ export type Stich = {
   y: number;
 };
 
+/** Stichart eines Objekts wechseln. */
+export type StichartEingabe = {
+  /** neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster */
+  art: string;
+  design: DesignWert;
+  /** Nummer des Objekts (ab 0) */
+  objekt: number;
+};
+
+/** Ergebnis von `stichart_aendern`. */
+export type StichartErgebnis = {
+  /** Hinweise (z. B. Löcher entfallen beim Wechsel zur Linie) */
+  hinweise: string[];
+  /** das Objekt mit neuer Stichart (ersetzt das alte; Stiche danach neu berechnen) */
+  objekt: ObjektWert;
+};
+
 /** Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog). */
 export type StoffInfo = {
   /** Auto-Spacing-Faktor */
@@ -2257,6 +2274,8 @@ export interface Befehle {
   schriften_liste: { eingabe: Leer; ausgabe: SchriftInfo[] };
   /** Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln */
   step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
+  /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt */
+  stichart_aendern: { eingabe: StichartEingabe; ausgabe: StichartErgebnis };
   /** Stoffe (8 + Software Defaults) mit den wichtigsten Werten */
   stoffe_liste: { eingabe: Leer; ausgabe: StoffInfo[] };
   /** SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design */
@@ -2300,6 +2319,7 @@ export const BEFEHLE = [
   "saeulen_vorschau",
   "schriften_liste",
   "step_muster_liste",
+  "stichart_aendern",
   "stoffe_liste",
   "svg_lesen",
   "text_speichern",

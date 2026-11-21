@@ -117,6 +117,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `reihenfolge_aendern` | Menü „Anordnen“: nach Farbe, an Anfang/Ende, wie ausgewählt, vor/nach Nummer – mit Warnungen bei Überdeckung |
 | `ueberdeckungen` | Anzeige, welche Objekte sich überdecken (z. B. in der Objektliste) |
 | `saeulen_vorschau` | Vorschau der automatischen Satin-Stichrichtung einer Fläche (optional) |
+| `stichart_aendern` | **Stichart wechseln** wie im Original („Outline/Fill“ + Stichart-Liste, Handbuch S. 63/64: jederzeit änderbar): Umriss `lauf`, `dreifach`, `satinlinie`, `blanket`, `motivlinie` · Füllung `tatami`, `satinflaeche`, `muster`. Form, Farbe, Name, Garn, Transformation, Gruppe bleiben; offene Linie → Füllung: Fehler; Füllung → Linie: Löcher entfallen (Hinweis). Oberfläche: Inspektor oben „Stichart“, Werkzeugleiste „Neue Formen: Füllung/Umriss + Stichart“. Modus E |
 | `design_einfuegen` | „Insert Design“: ein Design (Ergebnis von `bild_umwandeln`/`svg_lesen` oder eine Datei) ins aktuelle einfügen, auf Wunsch als **eine Gruppe** (`gruppe: {name, herkunft}`); doppelte Namen werden „Name (2)“, `aussparen` zieht mit; Transformation des eingefügten Designs wird die der Gruppe. Ergebnis: Design, Nummern der neuen Objekte, Gruppenschlüssel. Einfacher Modus: „+ Element hinzufügen“ → Bild/SVG/Design öffnen. Modus E |
 | `bild_umwandeln` | Bild → Umrisse (Auto-Digitalisieren): neues Design aus einem Bild |
 | `svg_lesen` | SVG-Datei (Inkscape) → neues Design; Zählung je Stichart und Hinweise für die Anzeige |

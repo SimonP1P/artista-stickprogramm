@@ -5273,6 +5273,52 @@
       ],
       "type": "object"
     },
+    "StichartEingabe": {
+      "additionalProperties": false,
+      "description": "Stichart eines Objekts wechseln.",
+      "properties": {
+        "art": {
+          "description": "neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster",
+          "type": "string"
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts (ab 0)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "design",
+        "objekt",
+        "art"
+      ],
+      "type": "object"
+    },
+    "StichartErgebnis": {
+      "description": "Ergebnis von `stichart_aendern`.",
+      "properties": {
+        "hinweise": {
+          "description": "Hinweise (z. B. Löcher entfallen beim Wechsel zur Linie)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "objekt": {
+          "$ref": "#/$defs/ObjektWert",
+          "description": "das Objekt mit neuer Stichart (ersetzt das alte; Stiche danach neu berechnen)"
+        }
+      },
+      "required": [
+        "objekt",
+        "hinweise"
+      ],
+      "type": "object"
+    },
     "StoffInfo": {
       "description": "Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog).",
       "properties": {
@@ -6550,6 +6596,15 @@
       "beschreibung": "Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln",
       "eingabe": {
         "$ref": "#/$defs/Leer"
+      }
+    },
+    "stichart_aendern": {
+      "ausgabe": {
+        "$ref": "#/$defs/StichartErgebnis"
+      },
+      "beschreibung": "Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt",
+      "eingabe": {
+        "$ref": "#/$defs/StichartEingabe"
       }
     },
     "stoffe_liste": {

@@ -378,3 +378,42 @@ fn design_einfuegen_als_gruppe() {
     assert_eq!(r2["design"]["objekte"][3]["name"], "Blatt (3)");
     ausfuehren(&k, "design_berechnen", json!({"design": r2["design"]})).unwrap();
 }
+
+/// Stichart wechseln: Fläche ↔ Linie, Form und gemeinsame Felder bleiben; offene Linie lässt sich nicht füllen.
+#[test]
+fn stichart_wechseln() {
+    let k = kontext();
+    let d = json!({"gruppen": {"g1": {"name": "x"}}, "objekte": [
+        {"art": "tatami", "name": "Kreis", "farbe": "#ff0000", "gruppe": "g1", "winkel": 30,
+         "transform": {"drehen": 10}, "umriss": {"kreis": {"mitte": [0, 0], "radius": 10}},
+         "loecher": [{"kreis": {"mitte": [0, 0], "radius": 3}}]},
+        {"art": "lauf", "punkte": [[0, 0], [10, 0], [10, 10]]},
+        {"art": "tatami", "umriss": [[0, 0], [20, 0], [20, 20], [0, 20]]}
+    ]});
+    let wechsel = |nr: usize, art: &str| ausfuehren(&k, "stichart_aendern", json!({"design": d, "objekt": nr, "art": art}));
+    // Fläche → Muster: Löcher und Winkel bleiben, Muster bekommt einen Standard
+    let m = wechsel(0, "muster").unwrap();
+    assert_eq!(m["objekt"]["loecher"].as_array().unwrap().len(), 1);
+    assert_eq!(m["objekt"]["winkel"], 30);
+    assert_eq!(m["objekt"]["muster"], "001");
+    assert_eq!(m["objekt"]["gruppe"], "g1");
+    assert_eq!(m["objekt"]["farbe"], "#ff0000");
+    // Fläche → Laufstich: Umriss wird Linie, Löcher entfallen mit Hinweis
+    let l = wechsel(0, "lauf").unwrap();
+    assert!(l["objekt"]["punkte"]["kreis"].is_object());
+    assert_eq!(l["hinweise"].as_array().unwrap().len(), 1);
+    assert_eq!(l["objekt"]["transform"]["drehen"], 10);
+    // Vieleck-Fläche → Satinlinie: zum ersten Punkt zurückgeführt; → Blanket: geschlossen
+    let s = wechsel(2, "satinlinie").unwrap();
+    assert!(s["objekt"]["punkte"]["verbinden"].is_array());
+    assert_eq!(wechsel(2, "blanket").unwrap()["objekt"]["geschlossen"], true);
+    // offene Linie → Fläche: Fehler; Text: Fehler
+    assert!(wechsel(1, "tatami").is_err());
+    assert!(wechsel(1, "dreifach").is_ok());
+    // alle Ergebnisse rechnen
+    for (nr, art) in [(0, "satinflaeche"), (0, "satinlinie"), (0, "motivlinie"), (2, "satinlinie"), (2, "lauf")] {
+        let mut d2 = d.clone();
+        d2["objekte"][nr] = wechsel(nr, art).unwrap()["objekt"].clone();
+        ausfuehren(&k, "design_berechnen", json!({"design": d2})).unwrap_or_else(|e| panic!("{nr} {art}: {e:?}"));
+    }
+}

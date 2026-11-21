@@ -1170,3 +1170,126 @@ pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErg
     stick_kern::Design::aus_value(&ziel).map_err(|x| Fehler::from(format!("Ergebnis: {x}")))?;
     Ok(EinfuegenErgebnis { design: DesignWert(ziel), objekte: (von..bis).collect(), gruppe: neue_gruppe })
 }
+
+/// Sticharten für Linien („Outline“ des Originals): Geometrie in `punkte`.
+pub const UMRISS_ARTEN: [&str; 5] = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie"];
+/// Sticharten für geschlossene Formen („Fill“ des Originals): Geometrie in `umriss` (+ `loecher`).
+pub const FUELL_ARTEN: [&str; 3] = ["tatami", "satinflaeche", "muster"];
+
+/// Stichart eines Objekts wechseln.
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct StichartEingabe {
+    pub design: DesignWert,
+    /// Nummer des Objekts (ab 0)
+    pub objekt: usize,
+    /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster
+    pub art: String,
+}
+
+/// Ergebnis von `stichart_aendern`.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct StichartErgebnis {
+    /// das Objekt mit neuer Stichart (ersetzt das alte; Stiche danach neu berechnen)
+    pub objekt: ObjektWert,
+    /// Hinweise (z. B. Löcher entfallen beim Wechsel zur Linie)
+    pub hinweise: Vec<String>,
+}
+
+/// Stichart wechseln wie „Outline/Fill“ + Stichart-Liste im Original (Handbuch S. 63/64: „You can change it at any
+/// stage“): die Form bleibt, gemeinsame Felder (Farbe, Name, Garn, Transformation, Gruppe, Werte je Objekt …) bleiben,
+/// passende Felder (Löcher, Winkel, Aussparen, Versatz, Breite, geschlossen) gehen mit, der Rest nimmt die Standardwerte.
+/// Linie → Füllung nur bei geschlossener Linie (offene Linien lassen sich im Original nicht füllen). Füllung → Linie:
+/// der Umriss wird eine geschlossene Linie, Löcher entfallen (Hinweis). Satinsäule, Text, Applikation, Knopfloch: Fehler.
+pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgebnis, Fehler> {
+    use stick_kern::format::{Gemeinsam, PunktAngabe};
+    let alt = e
+        .design
+        .0
+        .get("objekte")
+        .and_then(|o| o.get(e.objekt))
+        .cloned()
+        .ok_or_else(|| Fehler::from(format!("Objekt {} gibt es nicht", e.objekt + 1)))?;
+    let von = alt.get("art").and_then(Value::as_str).unwrap_or("").to_string();
+    let ist = |a: &str, l: &[&str]| l.contains(&a);
+    let alle: Vec<&str> = UMRISS_ARTEN.iter().chain(FUELL_ARTEN.iter()).copied().collect();
+    if !ist(&von, &alle) {
+        return Err(format!("Stichart wechseln geht bei Linien und Flächen, nicht bei „{von}“").into());
+    }
+    if !ist(&e.art, &alle) {
+        return Err(format!("Unbekannte Stichart „{}“ (erlaubt: {})", e.art, alle.join(", ")).into());
+    }
+    let von_flaeche = ist(&von, &FUELL_ARTEN);
+    let zu_flaeche = ist(&e.art, &FUELL_ARTEN);
+    let mut neu = serde_json::Map::new();
+    neu.insert("art".into(), e.art.clone().into());
+    // gemeinsame Felder (aus dem Schema von `Gemeinsam`, bleibt so von selbst aktuell)
+    let schema = schemars::schema_for!(Gemeinsam);
+    let gemeinsam: Vec<String> = schema
+        .as_value()
+        .get("properties")
+        .and_then(Value::as_object)
+        .map(|p| p.keys().cloned().collect())
+        .unwrap_or_default();
+    let o = alt.as_object().ok_or("Objekt ist kein JSON-Objekt")?;
+    for k in &gemeinsam {
+        if let Some(v) = o.get(k) {
+            neu.insert(k.clone(), v.clone());
+        }
+    }
+    let mut hinweise = Vec::new();
+    // Geometrie
+    let geo = o
+        .get(if von_flaeche { "umriss" } else { "punkte" })
+        .cloned()
+        .ok_or("Objekt ohne Form")?;
+    let angabe: PunktAngabe =
+        serde_json::from_value(geo.clone()).map_err(|x| Fehler::from(format!("Form ungültig: {x}")))?;
+    let pts = angabe.punkte();
+    let zu = |a: &stick_kern::geometrie::Punkt, b: &stick_kern::geometrie::Punkt| (a.x - b.x).hypot(a.y - b.y) < 1e-6;
+    let von_hause_zu = pts.len() > 2 && zu(&pts[0], &pts[pts.len() - 1]);
+    let geschlossen = von_flaeche || o.get("geschlossen").and_then(Value::as_bool).unwrap_or(false) || von_hause_zu;
+    const MIT_GESCHLOSSEN: [&str; 4] = ["lauf", "dreifach", "blanket", "motivlinie"];
+    if zu_flaeche {
+        if !geschlossen {
+            return Err("Eine offene Linie lässt sich nicht füllen – erst schließen (Feld „geschlossen“) oder eine \
+                        geschlossene Form verwenden"
+                .into());
+        }
+        neu.insert("umriss".into(), geo);
+    } else if von_flaeche && !ist(&e.art, &MIT_GESCHLOSSEN) && !von_hause_zu {
+        // Satinlinie kennt kein „geschlossen“: Linie zum ersten Punkt zurückführen
+        let p0 = pts.first().ok_or("Form ohne Punkte")?;
+        neu.insert("punkte".into(), serde_json::json!({ "verbinden": [geo, [[p0.x, p0.y]]] }));
+    } else {
+        neu.insert("punkte".into(), geo);
+    }
+    if !zu_flaeche && geschlossen && ist(&e.art, &MIT_GESCHLOSSEN) && !von_hause_zu {
+        neu.insert("geschlossen".into(), true.into());
+    }
+    if von_flaeche && !zu_flaeche && o.get("loecher").and_then(Value::as_array).is_some_and(|l| !l.is_empty()) {
+        hinweise.push("Die Löcher der Fläche entfallen – die Linie folgt nur dem äußeren Umriss".into());
+    }
+    // passende Felder mitnehmen, wenn die neue Art sie kennt
+    let felder: &[&str] = match e.art.as_str() {
+        "tatami" => &["loecher", "winkel", "aussparen", "ueberlappung"],
+        "muster" => &["loecher", "winkel", "aussparen", "ueberlappung"],
+        "satinflaeche" => &["loecher"],
+        "satinlinie" => &["breite", "versatz"],
+        "blanket" => &["breite", "versatz"],
+        "lauf" | "dreifach" => &["laenge"],
+        _ => &[],
+    };
+    for k in felder {
+        if let Some(v) = o.get(*k).filter(|_| zu_flaeche == von_flaeche || *k == "loecher" && zu_flaeche) {
+            neu.insert((*k).into(), v.clone());
+        }
+    }
+    if e.art == "muster" {
+        neu.entry("muster").or_insert_with(|| "001".into());
+    }
+    let neu = Value::Object(neu);
+    // Ergebnis muss ein gültiges Objekt sein
+    serde_json::from_value::<ObjektJson>(neu.clone()).map_err(|x| Fehler::from(format!("Ergebnis ungültig: {x}")))?;
+    Ok(StichartErgebnis { objekt: ObjektWert(neu), hinweise })
+}
