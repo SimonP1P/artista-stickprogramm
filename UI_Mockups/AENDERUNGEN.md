@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Motivlinie (4b.7, Commit COMMIT)
+## 21.11.2026 – Motivlinie (4b.7, Commit 205e6be)
 - **Neu:** Objektart `motivlinie` (`punkte`, `geschlossen`, `satz`, `motiv`, `groesse`, `abstand`, `spiegeln`) –
   Motiv aus einem Motivsatz entlang einer Linie, Anzahl/Verteilung wie das Original. Befehle `motive_liste` (14 Sätze)
   und `motivsatz_motive {satz}` (je Motiv Name, Länge, Höhe, Linien in mm für Vorschaubilder).
@@ -106,5 +106,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `a393218` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `205e6be` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
