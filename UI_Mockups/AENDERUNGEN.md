@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Buchstabe je Stich (W9, Commit COMMIT)
+## 21.11.2026 – Buchstabe je Stich (W9, Commit a393218)
 - **Neu:** `design_berechnen` liefert `buchstabe` – je Stich die Nummer des Buchstabens bei Text/Computer-Schrift/
   Monogramm (1 = erster ohne Leerraum und `^`, wie `buchstaben[].nr`), 0 = kein Buchstabe.
 - **Oberfläche:** umgesetzt – gewählten Text in der Vorschau noch einmal auf einen Buchstaben klicken → Buchstabe
@@ -98,5 +98,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `6d1c625` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `a393218` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
