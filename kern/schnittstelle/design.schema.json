@@ -100,6 +100,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "heft_abstand": {
           "description": "Abstand des Heftstichs in mm",
           "format": "double",
@@ -321,6 +329,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "geschlossen": {
           "default": false,
@@ -1391,6 +1407,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "laenge": {
           "default": 20.0,
           "description": "Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)",
@@ -1565,6 +1589,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "geschlossen": {
           "default": false,
           "description": "Linie schließen (zurück zum ersten Punkt)",
@@ -1715,6 +1747,14 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
@@ -1942,6 +1982,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "default": 100.0,
@@ -2303,6 +2351,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "knickwinkel": {
           "description": "Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType)",
           "format": "double",
@@ -2447,6 +2503,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)",
           "type": [
@@ -2572,6 +2636,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "name": {
           "default": "",
@@ -2796,6 +2868,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)",
           "type": [
@@ -2984,6 +3064,14 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
@@ -3265,6 +3353,14 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",

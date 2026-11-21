@@ -129,17 +129,80 @@ pub struct AlphabetInfo {
     /// Name wie im Design-Feld `alphabet`
     pub name: String,
     pub datei: String,
+    /// kleinste empfohlene Höhe in mm (Handbuch „Alphabet Samples“; fehlt, wenn das Handbuch keine nennt)
+    pub min_hoehe: Option<f64>,
+    /// größte empfohlene Höhe in mm (Handbuch)
+    pub max_hoehe: Option<f64>,
 }
 
 pub fn alphabete_liste(k: &Kontext, _: Leer) -> Result<Vec<AlphabetInfo>, Fehler> {
     Ok(esb::verzeichnis(&k.alphabete)
         .into_iter()
         .filter(|(n, _)| n != "ButtonHoles")
-        .map(|(name, p)| AlphabetInfo {
-            name,
-            datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
+        .map(|(name, p)| {
+            let h = stick_kern::schrift::empfohlene_hoehe(&name);
+            AlphabetInfo {
+                datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
+                min_hoehe: h.map(|x| x.0),
+                max_hoehe: h.map(|x| x.1),
+                name,
+            }
         })
         .collect())
+}
+
+/// Alphabet und Probetext für die Vorschau.
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct AlphabetVorschauEingabe {
+    /// Name wie im Design-Feld `alphabet`
+    pub alphabet: String,
+    /// Probetext (Standard „Abc“)
+    #[serde(default)]
+    pub text: Option<String>,
+    /// Höhe in mm (Standard 10)
+    #[serde(default)]
+    pub hoehe: Option<f64>,
+}
+
+/// Umrisse eines Probetexts und der Zeichenvorrat des Alphabets.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct AlphabetVorschau {
+    /// alle Zeichen, die das Alphabet hat
+    pub zeichen: String,
+    /// Linien des Probetexts (Umrisse, Satinseiten …) in mm, wie `design_formen`
+    pub linien: Vec<stick_kern::design::FormLinie>,
+    /// umschließendes Rechteck [x0, y0, x1, y1] in mm
+    pub begrenzung: Option<[f64; 4]>,
+}
+
+/// Vorschau eines Original-Alphabets: Umrisse des Probetexts (aus der ESB-Datei) und Zeichenvorrat.
+pub fn alphabet_vorschau(k: &Kontext, e: AlphabetVorschauEingabe) -> Result<AlphabetVorschau, Fehler> {
+    let text = e.text.unwrap_or_else(|| "Abc".into());
+    let design = serde_json::json!({
+        "garnkarte": "keine",
+        "objekte": [{"art": "text", "alphabet": e.alphabet, "text": text, "hoehe": e.hoehe.unwrap_or(10.0)}]
+    });
+    let d = k.design(&DesignEingabe {
+        design: DesignWert(design),
+        rahmen: Some("artista 400 x 150 MEGA".into()),
+        stoff: None,
+    })?;
+    let zeichen = d
+        .alphabete
+        .values()
+        .next()
+        .map(|a| a.zeichen.keys().collect())
+        .unwrap_or_default();
+    let f = d.formen()?.into_iter().next();
+    Ok(AlphabetVorschau {
+        zeichen,
+        begrenzung: f
+            .as_ref()
+            .and_then(|f| f.begrenzung.as_ref())
+            .and_then(|b| b.as_slice().try_into().ok()),
+        linien: f.map(|f| f.linien).unwrap_or_default(),
+    })
 }
 
 pub fn garnkarten_liste(k: &Kontext, _: Leer) -> Result<Vec<String>, Fehler> {
@@ -219,6 +282,42 @@ pub fn schriften_liste(k: &Kontext, _: Leer) -> Result<Vec<SchriftInfo>, Fehler>
         .collect())
 }
 
+/// Step-Muster des Dialogs „Fill Stitch“ mit den Einstichen einer Probefläche.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct StepMusterInfo {
+    /// Nummer 1–20 (Design-Feld `step_muster`)
+    pub nr: usize,
+    /// Reihenversatz in Teilen der Stichlänge (AMT 0x2719)
+    pub versatz: f64,
+    /// zweiter Reihenversatz, abwechselnd (AMT 0x271a)
+    pub versatz2: f64,
+    /// Einstiche einer Tatami-Probefläche 12 × 8 mm (Software Defaults, Winkel 0°), in mm – für Vorschau-Kacheln
+    pub einstiche: Vec<Punkt>,
+}
+
+/// Step-Muster 1–20 (Tabelle aus DIALOG.DLL) mit Einstichen einer Probefläche, berechnet vom Kern.
+pub fn step_muster_liste(_: &Kontext, _: Leer) -> Result<Vec<StepMusterInfo>, Fehler> {
+    use stick_kern::geometrie::p;
+    let umriss = vec![p(0.0, 0.0), p(12.0, 0.0), p(12.0, 8.0), p(0.0, 8.0)];
+    let basis = stick_kern::einstellungen::fuer_stoff("0 Software Defaults")?.tatami;
+    stick_kern::einstellungen::STEP_MUSTER
+        .iter()
+        .enumerate()
+        .map(|(i, &(v1, v2))| {
+            let mut t = basis.clone();
+            t.step_muster(i + 1)?;
+            let wege = stick_kern::sticharten::tatami::tatami(&umriss, &[], &t, Some(0.0), None);
+            Ok(StepMusterInfo {
+                nr: i + 1,
+                versatz: v1,
+                versatz2: v2,
+                einstiche: wege.into_iter().flatten().collect(),
+            })
+        })
+        .collect::<Result<_, String>>()
+        .map_err(Fehler::from)
+}
+
 pub fn parameter_katalog(_: &Kontext, _: Leer) -> Result<Vec<Parameter>, Fehler> {
     Ok(stick_kern::parameter::katalog())
 }
@@ -239,17 +338,52 @@ pub fn design_schema(_: &Kontext, _: Leer) -> Result<Value, Fehler> {
 
 // ---------------------------------------------------------------- Design
 
+/// Art eines Hinweises.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum HinweisArt {
+    /// Feld, das der Kern nicht liest (Tippfehler?)
+    Feld,
+    /// Zeichen, die das Alphabet bzw. die Schrift nicht hat
+    FehlendeZeichen,
+    /// Einstiche außerhalb des Stickfelds
+    Ausserhalb,
+}
+
+/// Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört.
+#[derive(Clone, Debug, Serialize, JsonSchema)]
+pub struct Hinweis {
+    pub meldung: String,
+    /// Nummer des Objekts in `objekte` (ab 0), wenn bekannt
+    pub objekt: Option<usize>,
+    pub art: HinweisArt,
+}
+
+fn feld_hinweise(design: &Value) -> Vec<Hinweis> {
+    crate::erzeugen::unbekannte_felder(design)
+        .into_iter()
+        .map(|m| {
+            let f = Fehler::from(m);
+            Hinweis {
+                meldung: f.meldung,
+                objekt: f.objekt,
+                art: HinweisArt::Feld,
+            }
+        })
+        .collect()
+}
+
 /// Ergebnis der Prüfung eines Designs (ohne Stiche zu berechnen).
 #[derive(Debug, Serialize, JsonSchema)]
 pub struct Pruefung {
     /// Fehler, der das Berechnen verhindert (None = in Ordnung)
     pub fehler: Option<Fehler>,
     /// Hinweise, z. B. Felder, die der Kern nicht liest (Tippfehler?)
-    pub hinweise: Vec<String>,
+    pub hinweise: Vec<Hinweis>,
 }
 
 pub fn design_pruefen(k: &Kontext, e: DesignEingabe) -> Result<Pruefung, Fehler> {
-    let hinweise = crate::erzeugen::unbekannte_felder(&e.design.0);
+    let hinweise = feld_hinweise(&e.design.0);
     Ok(Pruefung {
         fehler: k.design(&e).err(),
         hinweise,
@@ -290,6 +424,25 @@ pub(crate) fn statistik_von(folge: &StichFolge) -> Statistik {
     }
 }
 
+/// Grenze für die Daten eines Designs in Byte: Kapazität des Maschinenspeichers, an der artista 185 gelesen
+/// (Verwaltungsblock +0x1A = 145 426; Original 0x100044ad nimmt das Maximum, `Analyse_Teil2/07`, hoch). Beim Senden
+/// prüft `maschine_planen` gegen den Wert der angeschlossenen Maschine.
+pub const DATEN_GRENZE: usize = 145_426;
+
+/// Ein Farbblock (Abschnitt zwischen zwei Farbwechseln = ein Stopp an der Maschine).
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct FarbBlock {
+    /// Nummer des Objekts (ab 0), mit dem der Block beginnt
+    pub objekt: usize,
+    /// alle Objekte (ab 0), die in diesem Block Stiche haben
+    pub objekte: Vec<usize>,
+    /// Garn von Hand gewählt (Feld `garn`) statt nächstes Garn der Karte
+    pub von_hand: bool,
+    /// Applikation: Lagen in diesem Block (Platzierung, Schnittlinie, Heften, Abdecken) – für die Anleitung
+    /// („nach diesem Block: Stoff auflegen / zuschneiden“); leer bei anderen Objekten
+    pub applikation: Vec<stick_kern::applikation::Lage>,
+}
+
 /// Berechnetes Design: Stiche, Farben, Garne, Kennzahlen, Prüfungen.
 #[derive(Debug, Serialize, JsonSchema)]
 pub struct Ergebnis {
@@ -302,21 +455,83 @@ pub struct Ergebnis {
     pub objekt: Vec<usize>,
     /// Farbe je Farbblock „#rrggbb“ (Block i beginnt nach dem i-ten Farbwechsel)
     pub farben: Vec<String>,
-    /// Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“)
+    /// Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“); Feld `garn` am Objekt hat Vorrang
     pub garne: Vec<GarnInfo>,
+    /// je Farbblock: Objekte, Garn von Hand, Lagen einer Applikation
+    pub bloecke: Vec<FarbBlock>,
     pub statistik: Statistik,
+    /// umschließendes Rechteck der Stiche [x0, y0, x1, y1] in mm (für Einpassen und Mittig); fehlt ohne Stiche
+    pub begrenzung: Option<[f64; 4]>,
     /// Zahl der Einstiche außerhalb des Stickfelds (muss 0 sein zum Senden)
     pub ausserhalb: usize,
+    /// Nummern der Stiche (in `stiche`) außerhalb des Stickfelds – zum Markieren
+    pub ausserhalb_stiche: Vec<usize>,
     /// Zeichen eines Texts, die das Alphabet nicht hat
     pub fehlende_zeichen: String,
-    /// Hinweise (z. B. Felder, die der Kern nicht liest)
-    pub hinweise: Vec<String>,
+    /// Datengröße für die Maschine in Byte (Stichdaten + Anhang wie beim Senden)
+    pub daten_bytes: usize,
+    /// Grenze der Datengröße in Byte (Kapazität der artista 185, `DATEN_GRENZE`)
+    pub daten_grenze: usize,
+    /// Hinweise mit Objektnummer (Felder, die der Kern nicht liest; fehlende Zeichen; außerhalb des Stickfelds)
+    pub hinweise: Vec<Hinweis>,
+}
+
+/// Objekte je Farbblock (Block i beginnt nach dem i-ten Farbwechsel), in der Reihenfolge ihres ersten Stichs.
+fn objekte_je_block(folge: &StichFolge) -> Vec<Vec<usize>> {
+    let mut out = vec![Vec::new(); folge.farben.len().max(1)];
+    let mut block = 0;
+    for (i, s) in folge.stiche.iter().enumerate() {
+        if s.art == Art::Farbwechsel {
+            block += 1;
+            continue;
+        }
+        if let (Some(&o), Some(b)) = (folge.objekt.get(i), out.get_mut(block))
+            && !b.contains(&o)
+        {
+            b.push(o);
+        }
+    }
+    out.truncate(folge.farben.len());
+    out
+}
+
+/// Farbblöcke mit Applikationslagen: je Applikation die Lagen der Reihe nach den Blöcken ihrer Farbe zuordnen.
+fn bloecke_von(design: &stick_kern::Design, folge: &StichFolge) -> Vec<FarbBlock> {
+    use std::collections::HashMap;
+    let mut offen: HashMap<usize, std::collections::VecDeque<(String, stick_kern::applikation::Lage)>> = HashMap::new();
+    objekte_je_block(folge)
+        .into_iter()
+        .enumerate()
+        .map(|(b, objekte)| {
+            let farbe = folge.farben.get(b).map(|f| f.to_ascii_lowercase()).unwrap_or_default();
+            let mut applikation = Vec::new();
+            for &o in &objekte {
+                if let Some(stick_kern::design::ObjektArt::Applikation(v)) = design.objekte.get(o).map(|x| &x.art) {
+                    let q = offen
+                        .entry(o)
+                        .or_insert_with(|| stick_kern::applikation::lagen(v).into());
+                    while q.front().is_some_and(|(f, _)| *f == farbe) {
+                        if let Some((_, l)) = q.pop_front() {
+                            applikation.push(l);
+                        }
+                    }
+                }
+            }
+            FarbBlock {
+                objekt: objekte.first().copied().unwrap_or(0),
+                von_hand: objekte.first().is_some_and(|o| design.garn.contains_key(o)),
+                objekte,
+                applikation,
+            }
+        })
+        .collect()
 }
 
 pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehler> {
     let design = k.design(&e)?;
-    let (_, fehlend) = design.objekte_aufgeloest()?;
+    let fehlend = design.fehlende_zeichen()?;
     let folge = design.berechnen()?;
+    let bloecke = bloecke_von(&design, &folge);
     let garne = if design.garnkarte == "keine" {
         Vec::new()
     } else {
@@ -324,18 +539,80 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
         folge
             .farben
             .iter()
-            .map(|hex| GarnInfo::from(karte.naechstes(stick_formate::artista::Farbe::aus_hex(hex).rgb)))
-            .collect()
+            .zip(&bloecke)
+            .map(|(hex, b)| match design.garn.get(&b.objekt) {
+                Some(nr) => karte
+                    .garne
+                    .iter()
+                    .find(|g| g.nummer == *nr)
+                    .map(GarnInfo::from)
+                    .ok_or_else(|| Fehler {
+                        meldung: format!(
+                            "Objekt {}: Garn „{nr}“ gibt es in der Garnkarte „{}“ nicht",
+                            b.objekt + 1,
+                            design.garnkarte
+                        ),
+                        objekt: Some(b.objekt),
+                    }),
+                None => Ok(GarnInfo::from(
+                    karte.naechstes(stick_formate::artista::Farbe::aus_hex(hex).rgb),
+                )),
+            })
+            .collect::<Result<_, _>>()?
     };
+    let ausserhalb_stiche: Vec<usize> = folge
+        .stiche
+        .iter()
+        .enumerate()
+        .filter(|(_, s)| !design.rahmen.enthaelt(s.p()))
+        .map(|(i, _)| i)
+        .collect();
+    let mut hinweise = feld_hinweise(&e.design.0);
+    for (o, z) in &fehlend {
+        hinweise.push(Hinweis {
+            meldung: format!("Objekt {}: Zeichen „{z}“ fehlen im Alphabet", o + 1),
+            objekt: Some(*o),
+            art: HinweisArt::FehlendeZeichen,
+        });
+    }
+    let mut aussen_je_objekt: Vec<(usize, usize)> = Vec::new();
+    for &i in &ausserhalb_stiche {
+        let o = folge.objekt.get(i).copied().unwrap_or(0);
+        match aussen_je_objekt.iter_mut().find(|(x, _)| *x == o) {
+            Some((_, n)) => *n += 1,
+            None => aussen_je_objekt.push((o, 1)),
+        }
+    }
+    for (o, n) in aussen_je_objekt {
+        hinweise.push(Hinweis {
+            meldung: format!("Objekt {}: {n} Einstiche außerhalb des Stickfelds", o + 1),
+            objekt: Some(o),
+            art: HinweisArt::Ausserhalb,
+        });
+    }
+    let daten = stick_formate::artista::Sendedaten::eigenes_design(&design.name, &folge, false);
+    let mut fehlende_zeichen = String::new();
+    for (_, z) in &fehlend {
+        for c in z.chars() {
+            if !fehlende_zeichen.contains(c) {
+                fehlende_zeichen.push(c);
+            }
+        }
+    }
     Ok(Ergebnis {
         name: design.name.clone(),
         rahmen: RahmenInfo::from(&design.rahmen),
         stoff: design.einstellungen.stoff.clone(),
-        ausserhalb: design.ausserhalb(&folge).len(),
-        fehlende_zeichen: fehlend.into_iter().collect(),
-        hinweise: crate::erzeugen::unbekannte_felder(&e.design.0),
+        ausserhalb: ausserhalb_stiche.len(),
+        ausserhalb_stiche,
+        fehlende_zeichen,
+        daten_bytes: daten.puffer.stiche.len() + daten.puffer.anhang.len() + 2,
+        daten_grenze: DATEN_GRENZE,
+        hinweise,
         statistik: statistik_von(&folge),
+        begrenzung: folge.begrenzung().map(|(a, b, c, d)| [a, b, c, d]),
         garne,
+        bloecke,
         objekt: folge.objekt,
         farben: folge.farben,
         stiche: folge.stiche,

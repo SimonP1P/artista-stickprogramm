@@ -3,7 +3,7 @@
 **Für wen:** Designer (Claude Design) und Frontend-Entwickler. **Was:** jede Funktion, die der Rechenkern kann – was
 der Anwender einstellt, Standardwert, wo es im Design-JSON steht. Technische Feldliste (aus dem Code erzeugt, immer
 aktuell): **`SCHNITTSTELLE.md`**, maschinenlesbar `kern/schnittstelle/`. Was noch kommt: `ROADMAP.md` Phase 4b. Vorbild-Funktionen:
-`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 21.11.2026** (4b.17 SVG einlesen; 4b.16 Werte je Objekt; 4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
+`Analyse_Teil3/15_funktionsinventur.md`. **Stand: 21.11.2026** (Wünsche der Oberfläche v3: Hinweise mit Objektnummer, Farbblöcke, Garn von Hand, Alphabet-Vorschau, Step-Muster-Kacheln; 4b.6 Knopflöcher; 4b.17 SVG einlesen; 4b.16 Werte je Objekt; 4b.0: Befehle über `stick-api`, erzeugte Feldliste `SCHNITTSTELLE.md`) – wird bei jeder neuen Funktion ergänzt.
 
 **Modus:** **E** = im einfachen Modus sichtbar, **X** = nur Expertenmodus, **A** = automatisch (Anwender sieht nur
 das Ergebnis). **Alle einzelnen Werte** (Stichabstand, Zugausgleich, Unterlagen, Vernähen …) mit Standard, Bereich,
@@ -13,7 +13,11 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 - Die Oberfläche hält **ein Design als JSON** (Formen in mm, Ursprung Rahmenmitte, +y oben) und schickt es bei jeder
   Änderung an den Befehl `design_berechnen`. Zurück kommen alle Stiche, **je Stich die Objektnummer** (Auswahl und
   Hervorheben), Farben, Garne, Statistik (Stiche, Sprünge, Größe), fehlende Zeichen, die Zahl der Einstiche außerhalb
-  des Rahmens und Hinweise (z. B. Felder, die der Kern nicht liest).
+  des Rahmens (dazu `ausserhalb_stiche` zum Markieren), `begrenzung` (für Einpassen/Mittig), Datengröße
+  (`daten_bytes` gegen `daten_grenze` 145 426 Byte der artista 185), je Farbblock `bloecke` (Objekte, Garn von Hand,
+  Lagen einer Applikation für die Anleitung an den Stopps) und Hinweise **mit Objektnummer** (`{meldung, objekt, art}`:
+  Feld nicht gelesen, fehlende Zeichen, außerhalb). Stickzeit liefert der Kern nicht (keine Quelle) – nur als
+  gekennzeichnete Schätzung anzeigen.
 - Zum Bearbeiten mit der Maus liefert `design_formen` je Objekt die fertigen Umrisse, Löcher, Linien, Satinseiten,
   Winkellinien, das umschließende Rechteck und Ein-/Ausstich – die Oberfläche rechnet keine Geometrie selbst.
 - **Stiche werden immer neu berechnet** (nie skaliert): Größe, Drehung, Stoff usw. ändern das JSON, nicht die Stiche.
@@ -34,6 +38,7 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 | Rahmen | Auswahl aus der Liste (artista 130 × 100) | `rahmen` | E |
 | Stoff | 8 Stoffe + Software Defaults; ändert Dichte, Unterlage, Zugausgleich | `stoff` | E |
 | Garnkarte | Auswahl (Default), Farben werden dem nächsten Garn zugeordnet | `garnkarte` | E |
+| **Garn von Hand** | Garn aus der Karte wählen (Liste `garnkarte_garne`); setzt `garn` = Nummer und `farbe` = Farbe des Garns; „von Hand“ ist im Ergebnis erkennbar (`bloecke[i].von_hand`). Ohne Angabe: nächstes Garn zur Farbe | `garn` am Objekt | E |
 | Ganzes Design skalieren, drehen, spiegeln, schräg, verschieben | Prozent / Grad / Richtung / mm | `transform` oben | E |
 | Start und Ende | Rahmenmitte, Designmitte, unten Mitte, erster/letzter Stich | `start`, `ende` | X |
 | **SVG einlesen** (z. B. aus Inkscape) | Datei wählen; Breite in mm (Standard: Größe aus der SVG), Rahmen; „Überdeckung aussparen“ (an: was in der SVG oben liegt, spart darunterliegende Flächen aus), „kürzeste Verbindung“ (an). Ergebnis: neues Design, Stichart je Form nach Breite wie EasyStitch des Originals (Linie bis 2 mm Laufstich, Fläche bis 8 mm Satinfläche, darüber Tatami), danach jedes Objekt normal änderbar. Hinweise anzeigen (Text nicht umgewandelt, Verläufe, zu groß für den Rahmen) | Befehl `svg_lesen` → Design | E (Optionen X) |
@@ -61,7 +66,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 ## 4. Schrift
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
 |---|---|---|---|
-| Original-Alphabet | 50 Alphabete (`Analyse/daten/alphabets.md`, Bilder `Arbeitsdaten/alphabete/`) | `text` + `alphabet` | E |
+| Original-Alphabet | 50 Alphabete mit empfohlener Höhe (Handbuch, `alphabete_liste`: `min_hoehe`/`max_hoehe`) und Vorschau (`alphabet_vorschau`: Umrisse eines Probetexts, Zeichenvorrat) | `text` + `alphabet` | E |
 | Computer-Schrift (TTF/OTF) | Schriftname; Stichart Tatami/Lauf/Dreifach/Muster/**Satin** (Säulen wie die TrueType-Umwandlung des Originals) | `ttf` + `schrift` | E (Stichart X) |
 | Höhe, Breite, Buchstabenabstand | Höhe (10 mm), Breite (100 %), Abstand (aus dem Alphabet) | `hoehe`, `breite`, `abstand` | E (Abstand X) |
 | Ausrichtung | links, mitte, rechts, Blocksatz (nur mit fester Grundlinienlänge) | `ausrichtung` | E |
@@ -91,7 +96,9 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 ## 6. Befehle (`kern/stick-api`, Ein-/Ausgabe in `SCHNITTSTELLE.md` §5)
 | Befehl | Wofür in der Oberfläche |
 |---|---|
-| `rahmen_liste`, `stoffe_liste`, `alphabete_liste`, `garnkarten_liste` | Auswahllisten Schritt 1 (Rahmen, Stoff) und Schrift/Garn |
+| `rahmen_liste`, `stoffe_liste`, `alphabete_liste`, `garnkarten_liste` | Auswahllisten Schritt 1 (Rahmen, Stoff) und Schrift/Garn; Alphabete mit empfohlener Höhe (Band am Höhenregler) |
+| `alphabet_vorschau` | Bild eines Alphabets im Auswahldialog (Umrisse von „Abc“ oder eigenem Probetext) und Zeichenvorrat |
+| `step_muster_liste` | Kacheln der Step-Muster 1–20 (Einstiche einer Probefläche, vom Kern berechnet) |
 | `garnkarte_garne` | Garn je Farbe von Hand wählen (alle Garne einer Karte mit Farbe, Nummer, Name) |
 | `fuellmuster_liste` | Auswahl der 242 Füllmuster mit Vorschau-Kacheln (Linien einer Kachel + Gitter A/B) |
 | `schriften_liste` | Auswahl der Computer-Schriften (installierte TrueType/OpenType) |

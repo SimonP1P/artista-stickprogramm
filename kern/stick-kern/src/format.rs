@@ -509,6 +509,11 @@ pub struct Gemeinsam {
     /// Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)
     #[serde(default)]
     pub step_muster: Option<usize>,
+    /// **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+    /// „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+    /// die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+    #[serde(default)]
+    pub garn: Option<String>,
     /// Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort
     #[serde(default)]
     pub einstich: Option<Punkt>,

@@ -236,6 +236,18 @@ Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau
 **20.11.2026:** Die Oberfläche wird komplett neu gestaltet (Mockup von Claude Design, Zugriff auf das Repository);
 Anforderungen in `app/ANFORDERUNGEN.md`. **21.11.2026: Entwurf v3 ist fertig und verbindlich, die Sperre für die App
 ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-11-21/UEBERGABE.md`.
+
+**Neue Oberfläche v3 – Etappen (vom Nutzer freigegeben 21.11.2026; gebaut auf dem Mac, Rust dort eingerichtet):**
+| Etappe | Inhalt | Stand |
+|---|---|---|
+| E0 | Kern-Wünsche (UEBERGABE §4): Hinweise mit Objektnummer (W2), Begrenzung (W6), Datengröße gegen 145 426 Byte (W8), Garn von Hand `garn` (W3), Farbblöcke mit Applikationslagen (W11), Alphabete mit empfohlener Höhe + `alphabet_vorschau` (W1), `step_muster_liste` (W7); W4 war schon erfüllt | ✅ 21.11. |
+| E1 | Grundgerüst: alte Oberfläche archivieren, Tauri-Befehl `kern`, `kern.ts` per Alias, Tokens/Barlow offline, Fensteraufbau, Design-Zustand mit Rückgängig, Berechnung entprellt, Stichvorschau mit Auswahl | ⬜ |
+| E2 | Einfacher Modus: Assistent 4 Schritte (Rahmen & Stoff · Gestalten · Prüfen & Garn · Speichern/Senden), Dialoge Alphabet, Garn | ⬜ |
+| E3 | Maschine: Befehle nach `stick-api` (W10: Abbrechen, Wiederholungen, Fehlercodes; Garn von Hand in der Garnfarbtabelle), Senden in 4 Stufen, Sticken-Dialog, Simulation, Fehlerzustände, Anleitung, „Aus der Maschine“ – nur Simulation | ⬜ |
+| E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ⬜ |
+| E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ⬜ |
+| E6 | Formansicht mit Knoten (W5), Dunkel/Mac, ANFORDERUNGEN.md, Parameterkatalog nach Modus vorlegen (M1), „Abgeglichen bis“ | ⬜ |
+Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –
   verbinden, Liste lesen, Design lesen, Garnfarbbereich, planen, senden; CLI `stick maschine …`; **am Gerät lesend
   erprobt** (prüfen 3,8 s, Liste, Nr. 47 mit vollständigem Icon)

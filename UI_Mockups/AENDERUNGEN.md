@@ -15,6 +15,18 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Wünsche der Oberfläche v3 (UEBERGABE §4, Etappe E0)
+- **Geändert:** `hinweise` in `design_berechnen` und `design_pruefen` sind jetzt Objekte `{meldung, objekt, art}`
+  (`art`: `feld` | `fehlende_zeichen` | `ausserhalb`) statt Text – Hinweis am Objekt markieren.
+- **Neu im Ergebnis:** `begrenzung` [x0, y0, x1, y1] (Einpassen, Mittig), `ausserhalb_stiche` (Stichnummern zum
+  Markieren), `daten_bytes` / `daten_grenze` (Datengröße gegen 145 426 Byte), `bloecke` je Farbblock (`objekt`,
+  `objekte`, `von_hand`, `applikation` = Lagen `platzierung`/`schnittlinie`/`heften`/`abdecken` für die Anleitung
+  „Stoff auflegen“, „zuschneiden“).
+- **Neues Feld** `garn` an jedem Objekt: Garn von Hand (Nummer der Garnkarte); Oberfläche setzt dazu `farbe`.
+- **Neue Befehle:** `alphabet_vorschau` (Umrisse eines Probetexts, Zeichenvorrat), `step_muster_liste` (Kacheln der
+  Step-Muster 1–20). `alphabete_liste` liefert `min_hoehe`/`max_hoehe` (Handbuch; Zurich ohne Angabe).
+- Wunsch 4 (Marke der Isacord-Karten) war schon erfüllt: `marke` = Marke der ersten Zeile („Isacord 40“).
+
 ## 21.11.2026 – Knopflöcher (ROADMAP 4b.6, Commit 7de0a07)
 - **Neu:** Objektart `knopfloch` mit `typ` (9 Werte: `standard`, `standard_schmal`, `rund`, `dehnbar`, `heirloom`,
   `rundes_ende`, `auge_eckig`, `auge_rund`, `auge_spitz`), `position` (Mitte des Schlitzes), `laenge` (20 mm, 3–60),

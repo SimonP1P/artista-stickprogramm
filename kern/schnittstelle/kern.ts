@@ -9,8 +9,32 @@ export type Abdeckung = ("satin" | "blanket");
 /** Original-Alphabet (ESB-Datei). */
 export type AlphabetInfo = {
   datei: string;
+  /** größte empfohlene Höhe in mm (Handbuch) */
+  max_hoehe?: number | null;
+  /** kleinste empfohlene Höhe in mm (Handbuch „Alphabet Samples“; fehlt, wenn das Handbuch keine nennt) */
+  min_hoehe?: number | null;
   /** Name wie im Design-Feld `alphabet` */
   name: string;
+};
+
+/** Umrisse eines Probetexts und der Zeichenvorrat des Alphabets. */
+export type AlphabetVorschau = {
+  /** umschließendes Rechteck [x0, y0, x1, y1] in mm */
+  begrenzung?: number[] | null;
+  /** Linien des Probetexts (Umrisse, Satinseiten …) in mm, wie `design_formen` */
+  linien: FormLinie[];
+  /** alle Zeichen, die das Alphabet hat */
+  zeichen: string;
+};
+
+/** Alphabet und Probetext für die Vorschau. */
+export type AlphabetVorschauEingabe = {
+  /** Name wie im Design-Feld `alphabet` */
+  alphabet: string;
+  /** Höhe in mm (Standard 10) */
+  hoehe?: number | null;
+  /** Probetext (Standard „Abc“) */
+  text?: string | null;
 };
 
 /** Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`). */
@@ -42,6 +66,12 @@ export type ApplikationJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Abstand des Heftstichs in mm */
   heft_abstand?: number | null;
   /** Breite des Heftstichs in mm */
@@ -140,6 +170,12 @@ export type BlanketJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** @default false */
   geschlossen?: boolean;
   /**
@@ -550,14 +586,24 @@ export type Ende = ("rahmenmitte" | "designmitte" | "unten_mitte" | "letzter_sti
 export type Ergebnis = {
   /** Zahl der Einstiche außerhalb des Stickfelds (muss 0 sein zum Senden) */
   ausserhalb: number;
+  /** Nummern der Stiche (in `stiche`) außerhalb des Stickfelds – zum Markieren */
+  ausserhalb_stiche: number[];
+  /** umschließendes Rechteck der Stiche [x0, y0, x1, y1] in mm (für Einpassen und Mittig); fehlt ohne Stiche */
+  begrenzung?: number[] | null;
+  /** je Farbblock: Objekte, Garn von Hand, Lagen einer Applikation */
+  bloecke: FarbBlock[];
+  /** Datengröße für die Maschine in Byte (Stichdaten + Anhang wie beim Senden) */
+  daten_bytes: number;
+  /** Grenze der Datengröße in Byte (Kapazität der artista 185, `DATEN_GRENZE`) */
+  daten_grenze: number;
   /** Farbe je Farbblock „#rrggbb“ (Block i beginnt nach dem i-ten Farbwechsel) */
   farben: string[];
   /** Zeichen eines Texts, die das Alphabet nicht hat */
   fehlende_zeichen: string;
-  /** Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“) */
+  /** Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“); Feld `garn` am Objekt hat Vorrang */
   garne: GarnInfo[];
-  /** Hinweise (z. B. Felder, die der Kern nicht liest) */
-  hinweise: string[];
+  /** Hinweise mit Objektnummer (Felder, die der Kern nicht liest; fehlende Zeichen; außerhalb des Stickfelds) */
+  hinweise: Hinweis[];
   name: string;
   /** je Stich die Nummer des Objekts (ab 0) – zum Auswählen und Hervorheben */
   objekt: number[];
@@ -575,6 +621,21 @@ export type ExpEingabe = {
   pfad: string;
   rahmen?: string | null;
   stoff?: string | null;
+};
+
+/** Ein Farbblock (Abschnitt zwischen zwei Farbwechseln = ein Stopp an der Maschine). */
+export type FarbBlock = {
+  /**
+   * Applikation: Lagen in diesem Block (Platzierung, Schnittlinie, Heften, Abdecken) – für die Anleitung
+   * („nach diesem Block: Stoff auflegen / zuschneiden“); leer bei anderen Objekten
+   */
+  applikation: Lage[];
+  /** Nummer des Objekts (ab 0), mit dem der Block beginnt */
+  objekt: number;
+  /** alle Objekte (ab 0), die in diesem Block Stiche haben */
+  objekte: number[];
+  /** Garn von Hand gewählt (Feld `garn`) statt nächstes Garn der Karte */
+  von_hand: boolean;
 };
 
 /**
@@ -695,6 +756,17 @@ export type GrundlinieLage = ("oben" | "unten");
 /** Stand der Buchstaben zur Grundlinie (Position Above/Through/Below) */
 export type GrundlinieStand = "ueber" | "durch" | "unter";
 
+/** Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört. */
+export type Hinweis = {
+  art: HinweisArt;
+  meldung: string;
+  /** Nummer des Objekts in `objekte` (ab 0), wenn bekannt */
+  objekt?: number | null;
+};
+
+/** Art eines Hinweises. */
+export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb");
+
 /** Form der Verzerrung (Elastic Lettering) */
 export type HuelleArt = ("gerade" | "gebogen");
 
@@ -740,6 +812,12 @@ export type KnopflochJson = {
    */
   farbe?: string;
   /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
    * Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)
    * @default 20.0
    */
@@ -770,6 +848,12 @@ export type KnopflochJson = {
 /** Knopfloch-Typ (Dialog „Buttonhole Type“; Vorlagen aus `ButtonHoles.ESB`) */
 export type KnopflochTyp = ("standard" | "standard_schmal" | "rund" | "dehnbar" | "heirloom" | "rundes_ende" | "auge_eckig" | "auge_rund" | "auge_spitz");
 
+/**
+ * Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):
+ * nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie bzw. dem Heften zuschneiden, dann Abdecken.
+ */
+export type Lage = ("platzierung" | "schnittlinie" | "heften" | "abdecken");
+
 /** Laufstich bzw. Dreifachstich entlang einer Linie. */
 export type LaufJson = {
   /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
@@ -796,6 +880,12 @@ export type LaufJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /**
    * Linie schließen (zurück zum ersten Punkt)
    * @default false
@@ -863,6 +953,12 @@ export type MonogrammJson = {
    * @default []
    */
   farben?: string[];
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Größe des Füllmusters in % (Stichart „muster“, Standard 100) */
   groesse?: number | null;
   /** Grundlinie (ohne Angabe: gerade waagrecht) */
@@ -952,6 +1048,12 @@ export type MusterJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /**
    * Größe des Musters in %
    * @default 100.0
@@ -1062,7 +1164,7 @@ export type Pruefung = {
   /** Fehler, der das Berechnen verhindert (None = in Ordnung) */
   fehler?: (Fehler | null);
   /** Hinweise, z. B. Felder, die der Kern nicht liest (Tippfehler?) */
-  hinweise: string[];
+  hinweise: Hinweis[];
 };
 
 /** [x, y] in mm, Ursprung Rahmenmitte, +y nach oben */
@@ -1175,6 +1277,12 @@ export type SatinFlaecheJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType) */
   knickwinkel?: number | null;
   /** Kurzstiche an Innenkurven */
@@ -1222,6 +1330,12 @@ export type SatinJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus) */
   kurzstiche?: boolean | null;
   /**
@@ -1265,6 +1379,12 @@ export type SatinLinieJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
    * @default ""
@@ -1317,6 +1437,18 @@ export type Statistik = {
   min_stich: number;
   spruenge: number;
   stiche: number;
+};
+
+/** Step-Muster des Dialogs „Fill Stitch“ mit den Einstichen einer Probefläche. */
+export type StepMusterInfo = {
+  /** Einstiche einer Tatami-Probefläche 12 × 8 mm (Software Defaults, Winkel 0°), in mm – für Vorschau-Kacheln */
+  einstiche: Punkt[];
+  /** Nummer 1–20 (Design-Feld `step_muster`) */
+  nr: number;
+  /** Reihenversatz in Teilen der Stichlänge (AMT 0x2719) */
+  versatz: number;
+  /** zweiter Reihenversatz, abwechselnd (AMT 0x271a) */
+  versatz2: number;
 };
 
 /** Ein Stich: Position in mm (Ursprung Rahmenmitte, +y oben) und Art. */
@@ -1401,6 +1533,12 @@ export type TatamiJson = {
    * @default "#000000"
    */
   farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil) */
   kurzstiche?: boolean | null;
   loecher?: PunktAngabe[];
@@ -1479,6 +1617,12 @@ export type TextJson = {
    * @default []
    */
   farben?: string[];
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Größe des Füllmusters in % (Stichart „muster“, Standard 100) */
   groesse?: number | null;
   /** Grundlinie (ohne Angabe: gerade waagrecht) */
@@ -1580,6 +1724,12 @@ export type TtfJson = {
    * @default []
    */
   farben?: string[];
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
   /** Größe des Füllmusters in % (Stichart „muster“, Standard 100) */
   groesse?: number | null;
   /** Grundlinie (ohne Angabe: gerade waagrecht) */
@@ -1648,6 +1798,8 @@ export type Design = DesignJson;
 
 /** Alle Befehle des Kerns mit Ein- und Ausgabe. */
 export interface Befehle {
+  /** Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat */
+  alphabet_vorschau: { eingabe: AlphabetVorschauEingabe; ausgabe: AlphabetVorschau };
   /** Original-Alphabete (50) */
   alphabete_liste: { eingabe: Leer; ausgabe: AlphabetInfo[] };
   /** Beispieldesign mit allen Sticharten der ersten Ausbaustufe */
@@ -1682,6 +1834,8 @@ export interface Befehle {
   saeulen_vorschau: { eingabe: SaeulenEingabe; ausgabe: SaeuleInfo[] };
   /** installierte Computer-Schriften (TrueType/OpenType) */
   schriften_liste: { eingabe: Leer; ausgabe: SchriftInfo[] };
+  /** Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln */
+  step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
   /** Stoffe (8 + Software Defaults) mit den wichtigsten Werten */
   stoffe_liste: { eingabe: Leer; ausgabe: StoffInfo[] };
   /** SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design */
@@ -1694,6 +1848,7 @@ export interface Befehle {
 
 /** Namen aller Befehle. */
 export const BEFEHLE = [
+  "alphabet_vorschau",
   "alphabete_liste",
   "beispiel_design",
   "bild_umwandeln",
@@ -1711,6 +1866,7 @@ export const BEFEHLE = [
   "reihenfolge_aendern",
   "saeulen_vorschau",
   "schriften_liste",
+  "step_muster_liste",
   "stoffe_liste",
   "svg_lesen",
   "text_speichern",

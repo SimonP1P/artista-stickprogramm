@@ -21,6 +21,22 @@
         "datei": {
           "type": "string"
         },
+        "max_hoehe": {
+          "description": "größte empfohlene Höhe in mm (Handbuch)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "min_hoehe": {
+          "description": "kleinste empfohlene Höhe in mm (Handbuch „Alphabet Samples“; fehlt, wenn das Handbuch keine nennt)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
         "name": {
           "description": "Name wie im Design-Feld `alphabet`",
           "type": "string"
@@ -29,6 +45,71 @@
       "required": [
         "name",
         "datei"
+      ],
+      "type": "object"
+    },
+    "AlphabetVorschau": {
+      "description": "Umrisse eines Probetexts und der Zeichenvorrat des Alphabets.",
+      "properties": {
+        "begrenzung": {
+          "description": "umschließendes Rechteck [x0, y0, x1, y1] in mm",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "linien": {
+          "description": "Linien des Probetexts (Umrisse, Satinseiten …) in mm, wie `design_formen`",
+          "items": {
+            "$ref": "#/$defs/FormLinie"
+          },
+          "type": "array"
+        },
+        "zeichen": {
+          "description": "alle Zeichen, die das Alphabet hat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "zeichen",
+        "linien"
+      ],
+      "type": "object"
+    },
+    "AlphabetVorschauEingabe": {
+      "additionalProperties": false,
+      "description": "Alphabet und Probetext für die Vorschau.",
+      "properties": {
+        "alphabet": {
+          "description": "Name wie im Design-Feld `alphabet`",
+          "type": "string"
+        },
+        "hoehe": {
+          "default": null,
+          "description": "Höhe in mm (Standard 10)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "text": {
+          "default": null,
+          "description": "Probetext (Standard „Abc“)",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "alphabet"
       ],
       "type": "object"
     },
@@ -116,6 +197,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "heft_abstand": {
           "description": "Abstand des Heftstichs in mm",
@@ -459,6 +548,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "geschlossen": {
           "default": false,
@@ -1237,6 +1334,47 @@
           "minimum": 0,
           "type": "integer"
         },
+        "ausserhalb_stiche": {
+          "description": "Nummern der Stiche (in `stiche`) außerhalb des Stickfelds – zum Markieren",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "begrenzung": {
+          "description": "umschließendes Rechteck der Stiche [x0, y0, x1, y1] in mm (für Einpassen und Mittig); fehlt ohne Stiche",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "bloecke": {
+          "description": "je Farbblock: Objekte, Garn von Hand, Lagen einer Applikation",
+          "items": {
+            "$ref": "#/$defs/FarbBlock"
+          },
+          "type": "array"
+        },
+        "daten_bytes": {
+          "description": "Datengröße für die Maschine in Byte (Stichdaten + Anhang wie beim Senden)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "daten_grenze": {
+          "description": "Grenze der Datengröße in Byte (Kapazität der artista 185, `DATEN_GRENZE`)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
         "farben": {
           "description": "Farbe je Farbblock „#rrggbb“ (Block i beginnt nach dem i-ten Farbwechsel)",
           "items": {
@@ -1249,16 +1387,16 @@
           "type": "string"
         },
         "garne": {
-          "description": "Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“)",
+          "description": "Garn je Farbblock aus der Garnkarte des Designs (leer bei „keine“); Feld `garn` am Objekt hat Vorrang",
           "items": {
             "$ref": "#/$defs/GarnInfo"
           },
           "type": "array"
         },
         "hinweise": {
-          "description": "Hinweise (z. B. Felder, die der Kern nicht liest)",
+          "description": "Hinweise mit Objektnummer (Felder, die der Kern nicht liest; fehlende Zeichen; außerhalb des Stickfelds)",
           "items": {
-            "type": "string"
+            "$ref": "#/$defs/Hinweis"
           },
           "type": "array"
         },
@@ -1299,9 +1437,13 @@
         "objekt",
         "farben",
         "garne",
+        "bloecke",
         "statistik",
         "ausserhalb",
+        "ausserhalb_stiche",
         "fehlende_zeichen",
+        "daten_bytes",
+        "daten_grenze",
         "hinweise"
       ],
       "type": "object"
@@ -1335,6 +1477,44 @@
       "required": [
         "design",
         "pfad"
+      ],
+      "type": "object"
+    },
+    "FarbBlock": {
+      "description": "Ein Farbblock (Abschnitt zwischen zwei Farbwechseln = ein Stopp an der Maschine).",
+      "properties": {
+        "applikation": {
+          "description": "Applikation: Lagen in diesem Block (Platzierung, Schnittlinie, Heften, Abdecken) – für die Anleitung\n(„nach diesem Block: Stoff auflegen / zuschneiden“); leer bei anderen Objekten",
+          "items": {
+            "$ref": "#/$defs/Lage"
+          },
+          "type": "array"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts (ab 0), mit dem der Block beginnt",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "objekte": {
+          "description": "alle Objekte (ab 0), die in diesem Block Stiche haben",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "von_hand": {
+          "description": "Garn von Hand gewählt (Feld `garn`) statt nächstes Garn der Karte",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "objekt",
+        "objekte",
+        "von_hand",
+        "applikation"
       ],
       "type": "object"
     },
@@ -1796,6 +1976,51 @@
       ],
       "type": "string"
     },
+    "Hinweis": {
+      "description": "Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört.",
+      "properties": {
+        "art": {
+          "$ref": "#/$defs/HinweisArt"
+        },
+        "meldung": {
+          "type": "string"
+        },
+        "objekt": {
+          "description": "Nummer des Objekts in `objekte` (ab 0), wenn bekannt",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "meldung",
+        "art"
+      ],
+      "type": "object"
+    },
+    "HinweisArt": {
+      "description": "Art eines Hinweises.",
+      "oneOf": [
+        {
+          "const": "feld",
+          "description": "Feld, das der Kern nicht liest (Tippfehler?)",
+          "type": "string"
+        },
+        {
+          "const": "fehlende_zeichen",
+          "description": "Zeichen, die das Alphabet bzw. die Schrift nicht hat",
+          "type": "string"
+        },
+        {
+          "const": "ausserhalb",
+          "description": "Einstiche außerhalb des Stickfelds",
+          "type": "string"
+        }
+      ]
+    },
     "HuelleArt": {
       "description": "Form der Verzerrung (Elastic Lettering)",
       "oneOf": [
@@ -1914,6 +2139,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "laenge": {
           "default": 20.0,
           "description": "Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)",
@@ -2022,6 +2255,31 @@
         }
       ]
     },
+    "Lage": {
+      "description": "Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):\nnach der Platzierungslinie Stoff auflegen, nach der Schnittlinie bzw. dem Heften zuschneiden, dann Abdecken.",
+      "oneOf": [
+        {
+          "const": "platzierung",
+          "description": "Platzierungslinie („Applique Guide“) – danach Stoff auflegen",
+          "type": "string"
+        },
+        {
+          "const": "schnittlinie",
+          "description": "Schnittlinie (Stil „zuschneiden“ / Trim in Place) – danach zuschneiden",
+          "type": "string"
+        },
+        {
+          "const": "heften",
+          "description": "Heftstich („Tack“) – bei Pre-cut danach überstehenden Stoff zuschneiden",
+          "type": "string"
+        },
+        {
+          "const": "abdecken",
+          "description": "Abdeckstich (Satin bzw. Blanket)",
+          "type": "string"
+        }
+      ]
+    },
     "LaufJson": {
       "description": "Laufstich bzw. Dreifachstich entlang einer Linie.",
       "properties": {
@@ -2087,6 +2345,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "geschlossen": {
           "default": false,
@@ -2243,6 +2509,14 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
@@ -2535,6 +2809,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "default": 100.0,
@@ -2985,7 +3267,7 @@
         "hinweise": {
           "description": "Hinweise, z. B. Felder, die der Kern nicht liest (Tippfehler?)",
           "items": {
-            "type": "string"
+            "$ref": "#/$defs/Hinweis"
           },
           "type": "array"
         }
@@ -3441,6 +3723,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "knickwinkel": {
           "description": "Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType)",
           "format": "double",
@@ -3585,6 +3875,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)",
           "type": [
@@ -3710,6 +4008,14 @@
           "default": "#000000",
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "name": {
           "default": "",
@@ -3942,6 +4248,41 @@
       ],
       "type": "object"
     },
+    "StepMusterInfo": {
+      "description": "Step-Muster des Dialogs „Fill Stitch“ mit den Einstichen einer Probefläche.",
+      "properties": {
+        "einstiche": {
+          "description": "Einstiche einer Tatami-Probefläche 12 × 8 mm (Software Defaults, Winkel 0°), in mm – für Vorschau-Kacheln",
+          "items": {
+            "$ref": "#/$defs/Punkt"
+          },
+          "type": "array"
+        },
+        "nr": {
+          "description": "Nummer 1–20 (Design-Feld `step_muster`)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "versatz": {
+          "description": "Reihenversatz in Teilen der Stichlänge (AMT 0x2719)",
+          "format": "double",
+          "type": "number"
+        },
+        "versatz2": {
+          "description": "zweiter Reihenversatz, abwechselnd (AMT 0x271a)",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "nr",
+        "versatz",
+        "versatz2",
+        "einstiche"
+      ],
+      "type": "object"
+    },
     "Stich": {
       "description": "Ein Stich: Position in mm (Ursprung Rahmenmitte, +y oben) und Art.",
       "properties": {
@@ -4150,6 +4491,14 @@
           "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
           "type": "string"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)",
           "type": [
@@ -4354,6 +4703,14 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "groesse": {
           "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
@@ -4636,6 +4993,14 @@
           },
           "type": "array"
         },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "groesse": {
           "description": "Größe des Füllmusters in % (Stichart „muster“, Standard 100)",
           "format": "double",
@@ -4875,6 +5240,15 @@
   "$id": "https://artista-stickprogramm/befehle.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "befehle": {
+    "alphabet_vorschau": {
+      "ausgabe": {
+        "$ref": "#/$defs/AlphabetVorschau"
+      },
+      "beschreibung": "Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat",
+      "eingabe": {
+        "$ref": "#/$defs/AlphabetVorschauEingabe"
+      }
+    },
     "alphabete_liste": {
       "ausgabe": {
         "items": {
@@ -5051,6 +5425,18 @@
         "type": "array"
       },
       "beschreibung": "installierte Computer-Schriften (TrueType/OpenType)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "step_muster_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/StepMusterInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln",
       "eingabe": {
         "$ref": "#/$defs/Leer"
       }

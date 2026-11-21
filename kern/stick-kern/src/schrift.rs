@@ -1268,6 +1268,80 @@ pub fn text_objekte_idx(alpha: &Alphabet, v: &TextVorgabe) -> (Vec<Objekt>, Vec<
     (objekte, idx, fehlend)
 }
 
+// ---------------------------------------------------------------- empfohlene Höhen
+
+/// Empfohlene Buchstabenhöhen (min, max in mm) der Original-Alphabete: Handbuch „Alphabet Samples“ (PDF-S. 380 ff.,
+/// `Analyse/daten/alphabets.md`, Sicherheit hoch). Schlüssel: Name klein ohne Sonderzeichen.
+const EMPFOHLENE_HOEHEN: [(&str, f64, f64); 49] = [
+    ("alice", 8.0, 50.0),
+    ("anniversary", 13.0, 75.0),
+    ("bamboo", 8.0, 40.0),
+    ("blackboard", 8.0, 50.0),
+    ("bordercaps", 13.0, 38.0),
+    ("castle", 10.0, 40.0),
+    ("chicago", 6.0, 75.0),
+    ("childsplay", 13.0, 30.0),
+    ("christopher", 8.0, 30.0),
+    ("craft", 10.0, 50.0),
+    ("creativecross", 30.0, 100.0),
+    ("cursive", 7.0, 60.0),
+    ("diamond2", 18.0, 100.0),
+    ("diamond3", 18.0, 100.0),
+    ("drifter", 6.0, 40.0),
+    ("easyappliqu", 30.0, 100.0),
+    ("empress", 13.0, 60.0),
+    ("fortress", 6.0, 40.0),
+    ("greek2", 8.0, 50.0),
+    ("greekionic", 10.0, 50.0),
+    ("guinevere", 13.0, 50.0),
+    ("hebrew2", 8.0, 40.0),
+    ("hebrewdavid", 7.0, 40.0),
+    ("hiragana", 13.0, 50.0),
+    ("island", 8.0, 50.0),
+    ("jikharev", 8.0, 50.0),
+    ("katakana", 13.0, 50.0),
+    ("ketchikan", 8.0, 30.0),
+    ("kingcharles", 8.0, 50.0),
+    ("lisa", 13.0, 75.0),
+    ("london", 8.0, 50.0),
+    ("medley", 7.0, 40.0),
+    ("neon", 18.0, 75.0),
+    ("nightowl", 6.0, 50.0),
+    ("oldeenglish", 13.0, 50.0),
+    ("prestige", 5.0, 50.0),
+    ("quiltingtext", 4.0, 6.0),
+    ("romansmall", 4.0, 6.0),
+    ("roundedblock", 8.0, 45.0),
+    ("russiantextbook", 8.0, 45.0),
+    ("scanner", 7.0, 40.0),
+    ("secretgarden", 38.0, 90.0),
+    ("swissblock", 6.0, 60.0),
+    ("tabloid", 30.0, 75.0),
+    ("technicalblock", 8.0, 50.0),
+    ("tiffany", 7.0, 35.0),
+    ("varsityapplique", 30.0, 75.0),
+    ("varsityblock", 6.0, 35.0),
+    ("victoria", 10.0, 50.0),
+];
+
+/// Empfohlene Höhe (min, max) in mm für ein Alphabet (Name wie im Design-Feld `alphabet`) – Handbuch.
+pub fn empfohlene_hoehe(name: &str) -> Option<(f64, f64)> {
+    let k: String = name
+        .to_lowercase()
+        .chars()
+        .filter(char::is_ascii_alphanumeric)
+        .collect();
+    let finde = |s: &str| {
+        EMPFOHLENE_HOEHEN
+            .iter()
+            .find(|(n, _, _)| *n == s)
+            .map(|&(_, a, b)| (a, b))
+    };
+    finde(&k)
+        .or_else(|| k.strip_suffix("caps").and_then(finde))
+        .or_else(|| finde(&format!("{k}caps")))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

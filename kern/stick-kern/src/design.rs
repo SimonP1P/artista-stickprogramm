@@ -453,7 +453,8 @@ fn satin_wege(
 }
 
 /// Aufgelöste Objekte, fehlende Zeichen, Herkunft (Nummer des Objekts im Design) je Objekt
-pub(crate) type Aufgeloest = (Vec<Objekt>, Vec<char>, Vec<usize>);
+/// (aufgelöste Objekte, fehlende Zeichen je Objektnummer, Herkunft je aufgelöstem Objekt)
+pub(crate) type Aufgeloest = (Vec<Objekt>, Vec<(usize, char)>, Vec<usize>);
 
 /// Double Run: dieselben Stiche rückwärts anhängen (beginnen, wo das Objekt endet – kein Verbindungsstich).
 fn doppellauf(wege: &mut Vec<Linie>) {
@@ -1089,6 +1090,8 @@ pub struct Design {
     pub auto_jump: BTreeMap<usize, AutoJump>,
     /// Step-Muster 1–20 je Objekt (Nummer in `objekte`), JSON `"step_muster"` – für Tatami-Flächen und Step in Schrift
     pub step_muster: BTreeMap<usize, usize>,
+    /// Garn von Hand je Objekt (Nummer in `objekte`), JSON `"garn"`: Nummer in der Garnkarte – ordnet der Aufrufer zu
+    pub garn: BTreeMap<usize, String>,
     /// Einstich je Objekt (Nummer in `objekte`), JSON `"einstich": [x, y]` – „entry point“ (`ein_ausstich`)
     pub einstich: BTreeMap<usize, Punkt>,
     /// Ausstich je Objekt, JSON `"ausstich": [x, y]` – „exit point“
@@ -1205,6 +1208,7 @@ impl Design {
         let mut doppellauf = std::collections::BTreeSet::new();
         let mut auto_jump = BTreeMap::new();
         let mut step_muster = BTreeMap::new();
+        let mut garn = BTreeMap::new();
         let mut einstich = BTreeMap::new();
         let mut ausstich = BTreeMap::new();
         let mut objekt_einstellungen = BTreeMap::new();
@@ -1241,6 +1245,12 @@ impl Design {
                     .step_muster(nr)
                     .map_err(|e| format!("{wo}: {e}"))?;
                 step_muster.insert(i, nr);
+            }
+            if let Some(n) = &g.garn {
+                if n.trim().is_empty() {
+                    return Err(format!("{wo}: garn: Nummer fehlt"));
+                }
+                garn.insert(i, n.trim().to_string());
             }
             if let Some(q) = g.einstich {
                 einstich.insert(i, q);
@@ -1312,6 +1322,7 @@ impl Design {
             doppellauf,
             auto_jump,
             step_muster,
+            garn,
             einstich,
             ausstich,
             kuerzeste_verbindung: d.kuerzeste_verbindung,
@@ -1369,7 +1380,22 @@ impl Design {
     /// und im zweiten Wert gemeldet.
     pub fn objekte_aufgeloest(&self) -> Result<(Vec<Objekt>, Vec<char>), String> {
         let (o, f, _) = self.aufgeloest_mit_herkunft()?;
-        Ok((o, f))
+        Ok((o, f.into_iter().map(|(_, z)| z).collect()))
+    }
+
+    /// Zeichen, die das Alphabet bzw. die Schrift nicht hat, je Objekt (Nummer in `objekte`, ab 0) – in der Reihenfolge
+    /// des Texts, ohne Doppelte.
+    pub fn fehlende_zeichen(&self) -> Result<Vec<(usize, String)>, String> {
+        let (_, f, _) = self.aufgeloest_mit_herkunft()?;
+        let mut out: Vec<(usize, String)> = Vec::new();
+        for (nr, z) in f {
+            match out.iter_mut().find(|(n, _)| *n == nr) {
+                Some((_, s)) if !s.contains(z) => s.push(z),
+                Some(_) => {}
+                None => out.push((nr, z.to_string())),
+            }
+        }
+        Ok(out)
     }
 
     /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
@@ -1395,7 +1421,7 @@ impl Design {
                         |z| text_objekte_idx(a, z),
                     );
                     out.extend(obj);
-                    fehlend.extend(f);
+                    fehlend.extend(f.into_iter().map(|z| (nr, z)));
                 }
                 ObjektArt::Knopfloch(k) => {
                     let v = self
@@ -1473,7 +1499,7 @@ impl Design {
                         |z| ttf_text_objekte_idx(s, z, stichart),
                     );
                     out.extend(obj);
-                    fehlend.extend(f);
+                    fehlend.extend(f.into_iter().map(|z| (nr, z)));
                 }
                 _ => out.push(o.clone()),
             }

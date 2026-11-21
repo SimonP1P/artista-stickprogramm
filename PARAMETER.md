@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **161 Parameter**: 37 einfach, 78 experte, 46 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **162 Parameter**: 38 einfach, 78 experte, 46 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -13,6 +13,7 @@ Stand 21.11.2026 · **161 Parameter**: 37 einfach, 78 experte, 46 automatisch. E
 | **Rahmen** | Stickrahmen; legt das Stickfeld fest |  | `rahmen` | artista 130 x 100 |  |  | design | einfach | Rahmenliste der Software (Analyse/daten/hoops_table.md); Befehl rahmen_liste |
 | **Stoff** | ändert Satin-/Step-Abstand, Zugausgleich, Unterlagen, Step-Versatz, Trim |  | `stoff` | 0 Software Defaults | 0 Software Defaults, Knit Light Weight, Knit Medium Weight, Knit Heavy Weight, Terry Medium Weight, Terry Heavy Weight, Woven Light Weight, Woven Medium Weight, Woven Heavy Weight |  | design | einfach | Stile in NORMAL.AMT (Analyse/code/10 §E) |
 | **Garnkarte** | Farben werden dem nächsten Garn der Karte zugeordnet |  | `garnkarte` | Default |  |  | design | einfach | Garnkarten .tch; die Maschine nutzt Default.tch; Befehl garnkarten_liste |
+| **Garn von Hand** | Garn der Karte für dieses Objekt (statt nächstes Garn zur Farbe) | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm, knopfloch | Objekt: `garn` | – |  |  | objekt | einfach | Feldform eigene Festlegung; Garnauswahl aus der Karte wie im Original (Handbuch Kap. 10) |
 | **Startpunkt** | wo der erste Stich beginnt |  | `start` | rahmenmitte | rahmenmitte, designmitte, unten_mitte, erster_stich |  | design | experte | Dialog „Start and End“ (Handbuch PDF-S. 205); Standard bis Gerätetest V7 eigene Festlegung |
 | **Endpunkt** | wohin der Rahmen nach dem letzten Stich fährt |  | `ende` | rahmenmitte | rahmenmitte, designmitte, unten_mitte, start, letzter_stich |  | design | experte | Dialog „Start and End“; 34 von 51 Maschinendesigns enden auf 0,0 |
 

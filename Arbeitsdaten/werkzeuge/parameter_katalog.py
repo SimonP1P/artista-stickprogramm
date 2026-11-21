@@ -41,6 +41,9 @@ P('design.stoff', G, 'Stoff', 'ändert Satin-/Step-Abstand, Zugausgleich, Unterl
 P('design.garnkarte', G, 'Garnkarte', 'Farben werden dem nächsten Garn der Karte zugeordnet', d='garnkarte',
   einheit='Auswahl', std='Default', quelle='Garnkarten .tch; die Maschine nutzt Default.tch; Befehl garnkarten_liste',
   modus='einfach')
+P('objekt.garn', G, 'Garn von Hand', 'Garn der Karte für dieses Objekt (statt nächstes Garn zur Farbe)',
+  ebene='objekt', gilt=ALLE, o='garn', einheit='Nummer', std=None,
+  quelle='Feldform eigene Festlegung; Garnauswahl aus der Karte wie im Original (Handbuch Kap. 10)', modus='einfach')
 P('design.start', G, 'Startpunkt', 'wo der erste Stich beginnt', d='start', einheit='Auswahl', std='rahmenmitte',
   werte=['rahmenmitte', 'designmitte', 'unten_mitte', 'erster_stich'],
   quelle='Dialog „Start and End“ (Handbuch PDF-S. 205); Standard bis Gerätetest V7 eigene Festlegung')

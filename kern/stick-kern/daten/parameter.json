@@ -63,6 +63,37 @@
    "modus": "einfach"
   },
   {
+   "id": "objekt.garn",
+   "gruppe": "Design",
+   "name": "Garn von Hand",
+   "wirkung": "Garn der Karte für dieses Objekt (statt nächstes Garn zur Farbe)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "lauf",
+    "dreifach",
+    "satin",
+    "satinlinie",
+    "satinflaeche",
+    "tatami",
+    "muster",
+    "blanket",
+    "applikation",
+    "text",
+    "ttf",
+    "monogramm",
+    "knopfloch"
+   ],
+   "json_design": null,
+   "json_objekt": "garn",
+   "einheit": "Nummer",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Feldform eigene Festlegung; Garnauswahl aus der Karte wie im Original (Handbuch Kap. 10)",
+   "modus": "einfach"
+  },
+  {
    "id": "design.start",
    "gruppe": "Design",
    "name": "Startpunkt",

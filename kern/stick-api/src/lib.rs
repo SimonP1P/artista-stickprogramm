@@ -202,6 +202,8 @@ befehle! {
     stoffe_liste: befehle::Leer => Vec<befehle::StoffInfo>,
     /// Original-Alphabete (50)
     alphabete_liste: befehle::Leer => Vec<befehle::AlphabetInfo>,
+    /// Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat
+    alphabet_vorschau: befehle::AlphabetVorschauEingabe => befehle::AlphabetVorschau,
     /// Namen der Garnkarten (32 der CD)
     garnkarten_liste: befehle::Leer => Vec<String>,
     /// Garne einer Garnkarte (für die Auswahl von Hand)
@@ -210,6 +212,8 @@ befehle! {
     fuellmuster_liste: befehle::Leer => Vec<befehle::MusterInfo>,
     /// installierte Computer-Schriften (TrueType/OpenType)
     schriften_liste: befehle::Leer => Vec<befehle::SchriftInfo>,
+    /// Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln
+    step_muster_liste: befehle::Leer => Vec<befehle::StepMusterInfo>,
     /// Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch
     parameter_katalog: befehle::Leer => Vec<stick_kern::parameter::Parameter>,
     /// Beispieldesign mit allen Sticharten der ersten Ausbaustufe

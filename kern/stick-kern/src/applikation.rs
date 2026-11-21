@@ -186,6 +186,42 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
     out
 }
 
+/// Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):
+/// nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie bzw. dem Heften zuschneiden, dann Abdecken.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Serialize, schemars::JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum Lage {
+    /// Platzierungslinie („Applique Guide“) – danach Stoff auflegen
+    Platzierung,
+    /// Schnittlinie (Stil „zuschneiden“ / Trim in Place) – danach zuschneiden
+    Schnittlinie,
+    /// Heftstich („Tack“) – bei Pre-cut danach überstehenden Stoff zuschneiden
+    Heften,
+    /// Abdeckstich (Satin bzw. Blanket)
+    Abdecken,
+}
+
+/// Lagen der Applikation in Stickreihenfolge mit ihrer Farbe (= Farbblock an der Maschine). Aus denselben Objekten
+/// wie [`applikation_objekte`] abgeleitet, damit Anleitung und Stiche nie auseinanderlaufen.
+pub fn lagen(v: &ApplikationVorgabe) -> Vec<(String, Lage)> {
+    let mut out: Vec<(String, Lage)> = Vec::new();
+    for o in applikation_objekte(v, "") {
+        let lage = match o.name.rsplit(": ").next().unwrap_or_default() {
+            "Platzierung" => Lage::Platzierung,
+            "Schnittlinie" => Lage::Schnittlinie,
+            "Heften" => Lage::Heften,
+            _ => Lage::Abdecken,
+        };
+        if out
+            .last()
+            .is_none_or(|(f, l)| !f.eq_ignore_ascii_case(&o.farbe) || *l != lage)
+        {
+            out.push((o.farbe.to_ascii_lowercase(), lage));
+        }
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

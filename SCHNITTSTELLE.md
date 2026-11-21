@@ -34,6 +34,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `einstellungen` | EinstellungenJson |  | – | **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}. Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`) |
 | `einstich` | Punkt |  | – | Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort |
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet) |
+| `garn` | string |  | – | **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B. „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte) |
 | `name` | string |  | `""` | Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text |
 | `step_muster` | number |  | – | Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) |
 | `transform` | Transformation |  | – | Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet |
@@ -442,6 +443,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 
 | Befehl | Eingabe | Ausgabe | Beschreibung |
 |---|---|---|---|
+| `alphabet_vorschau` | AlphabetVorschauEingabe | AlphabetVorschau | Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat |
 | `alphabete_liste` | Leer | AlphabetInfo[] | Original-Alphabete (50) |
 | `beispiel_design` | Leer | DesignWert | Beispieldesign mit allen Sticharten der ersten Ausbaustufe |
 | `bild_umwandeln` | BildEingabe | BildErgebnis | Bild in Stickflächen umwandeln (neues Design) |
@@ -459,6 +461,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |
 | `saeulen_vorschau` | SaeulenEingabe | SaeuleInfo[] | Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) |
 | `schriften_liste` | Leer | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) |
+| `step_muster_liste` | Leer | StepMusterInfo[] | Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln |
 | `stoffe_liste` | Leer | StoffInfo[] | Stoffe (8 + Software Defaults) mit den wichtigsten Werten |
 | `svg_lesen` | SvgEingabe | SvgErgebnis | SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design |
 | `text_speichern` | TextDatei | null | Textdatei schreiben |

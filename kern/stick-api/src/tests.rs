@@ -78,6 +78,79 @@ fn unbekannte_felder_als_hinweis() {
     assert!(h[0].contains("„nmae“") && h[1].contains("Objekt 1 (tatami)") && h[1].contains("„winkle“"));
 }
 
+/// Wünsche der Oberfläche v3 (UEBERGABE §4): Hinweise mit Objektnummer, Begrenzung, Datengröße, Garn von Hand,
+/// Farbblöcke mit Applikationslagen.
+#[test]
+fn ergebnis_fuer_die_oberflaeche() {
+    let k = kontext();
+    let design = json!({"garnkarte": "Isacord 40 wt-numerical", "objekte": [
+        {"art": "text", "alphabet": "Swiss Block", "text": "A€b", "garn": "0010", "farbe": "#ffffff", "fo": 1},
+        {"art": "applikation", "umriss": [[-30, -30], [30, -30], [30, 30], [-30, 30]], "farbe": "#c0392b",
+         "stil": "zuschneiden"},
+        {"art": "lauf", "punkte": [[0, 0], [200, 0]]}
+    ]});
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": design })).unwrap();
+    let h = e["hinweise"].as_array().unwrap();
+    let arten: Vec<(&str, u64)> = h
+        .iter()
+        .map(|x| (x["art"].as_str().unwrap(), x["objekt"].as_u64().unwrap()))
+        .collect();
+    assert_eq!(
+        arten,
+        [("feld", 0), ("fehlende_zeichen", 0), ("ausserhalb", 2)],
+        "{h:?}"
+    );
+    assert_eq!(e["fehlende_zeichen"], "€");
+    let aussen = e["ausserhalb_stiche"].as_array().unwrap();
+    assert_eq!(aussen.len() as u64, e["ausserhalb"].as_u64().unwrap());
+    assert!(aussen.iter().all(|i| e["objekt"][i.as_u64().unwrap() as usize] == 2));
+    assert_eq!(e["begrenzung"][2], 200.0);
+    assert!(e["daten_bytes"].as_u64().unwrap() > 1000);
+    assert_eq!(e["daten_grenze"], befehle::DATEN_GRENZE);
+    // Garn von Hand: Nummer der Karte statt nächster Farbe
+    assert_eq!(e["garne"][0]["nummer"], "0010");
+    let b = e["bloecke"].as_array().unwrap();
+    assert_eq!(b.len(), e["farben"].as_array().unwrap().len());
+    assert_eq!(b[0]["von_hand"], true);
+    let lagen: Vec<&str> = b
+        .iter()
+        .flat_map(|x| x["applikation"].as_array().unwrap())
+        .map(|l| l.as_str().unwrap())
+        .collect();
+    assert_eq!(lagen, ["platzierung", "schnittlinie", "heften", "abdecken"]);
+    // unbekanntes Garn → Fehler mit Objektnummer
+    let mut falsch = design.clone();
+    falsch["objekte"][0]["garn"] = json!("9999x");
+    let f = ausfuehren(&k, "design_berechnen", json!({ "design": falsch })).unwrap_err();
+    assert_eq!(f.objekt, Some(0), "{f}");
+}
+
+#[test]
+fn alphabete_und_step_muster_fuer_auswahllisten() {
+    let k = kontext();
+    let a = ausfuehren(&k, "alphabete_liste", Value::Null).unwrap();
+    let ohne: Vec<&str> = a
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|x| x["min_hoehe"].is_null())
+        .map(|x| x["name"].as_str().unwrap())
+        .collect();
+    // Handbuch nennt für Zurich keine größte Höhe (alphabets.md: „6 mm | ?“)
+    assert_eq!(ohne, ["Zurich"]);
+    let v = ausfuehren(&k, "alphabet_vorschau", json!({"alphabet": "Swiss Block"})).unwrap();
+    assert!(v["zeichen"].as_str().unwrap().contains('A'));
+    assert!(!v["linien"].as_array().unwrap().is_empty());
+    let s = ausfuehren(&k, "step_muster_liste", Value::Null).unwrap();
+    let s = s.as_array().unwrap();
+    assert_eq!(s.len(), 20);
+    assert!(s.iter().all(|m| m["einstiche"].as_array().unwrap().len() > 50));
+    assert_ne!(
+        s[0]["einstiche"], s[7]["einstiche"],
+        "Muster 1 und 8 sehen verschieden aus"
+    );
+}
+
 /// Wächter 1: die erzeugten Dateien (`kern/schnittstelle/`, `SCHNITTSTELLE.md`) passen zum Code.
 /// Neu erzeugen: `stick api exportieren` oder `STICK_API_SCHREIBEN=1 cargo test -p stick-api`.
 #[test]
