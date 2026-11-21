@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Satin sticht „gerade quer + schräg vor“ (Messung, Commit 9cf2b99)
+## 21.11.2026 – Satin sticht „gerade quer + schräg vor“ (Messung, Commit ccd9c68)
 - **Geändert:** nur die berechneten Stiche jeder Satinsäule (A und B einer Stelle auf derselben Stichlinie, wie im
   Original gemessen, `Analyse_Teil3/04` §5). Keine neuen Felder oder Befehle.
 - **Oberfläche:** nichts zu tun; Stichvorschau und Stichzahl ändern sich minimal.
