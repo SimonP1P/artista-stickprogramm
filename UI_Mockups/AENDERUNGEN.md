@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Satin-Fächer an Innenspitzen gleichmäßig (Fehler gemeldet vom Nutzer; Commit …)
+## 21.11.2026 – Satin-Fächer an Innenspitzen gleichmäßig (Fehler gemeldet vom Nutzer; Commit 954e683)
 - **Nur Kern, keine Feldänderung:** Computer-Schrift in Satin/auto und `satinflaeche`: Fächer an der Innenseite von
   Spitzen und Kehren bleiben Fächer (keine einseitigen „Finger“ mehr innen am „A“, „V“, „W“). Original-Alphabete
   unverändert.
