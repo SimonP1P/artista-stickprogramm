@@ -914,10 +914,14 @@ pub struct BildEingabe {
     /// sticken
     #[serde(default)]
     pub weglassen: Option<Vec<String>>,
-    /// Garnkarte (Name wie `garnkarten_liste`): Farben auf die nächsten Garne der Karte ziehen (CIEDE2000), gleiche Garne
-    /// werden eine Farbe; die Objekte bekommen `garn`. Ohne Angabe oder „keine“: Farben des Bildes
+    /// Garnkarte (Name wie `garnkarten_liste`): nennt zu jeder Farbe das nächste Garn (CIEDE2000) und zieht die Farben
+    /// auf diese Garne (`garnfarben`); gleiche Garne werden eine Farbe, die Objekte bekommen `garn`. Ohne Angabe oder
+    /// „keine“: Farben des Bildes
     #[serde(default)]
     pub garnkarte: Option<String>,
+    /// Farben auf die Garne der Karte ziehen (Standard an; aus = Farben des Bildes, die Garne nur als Hinweis)
+    #[serde(default)]
+    pub garnfarben: Option<bool>,
     /// Stichart der Flächen: „step“ (Standard, alles Step/Tatami – bei Fotos am saubersten) oder „auto“ (wie
     /// EasyStitch/„Fills: Auto“: bis 8 mm dick Satinfläche, darüber Step – für Logos und Zeichnungen)
     #[serde(default)]
@@ -947,7 +951,7 @@ pub struct BildFarbe {
     pub anteil: f64,
     /// wird weggelassen (Vorschlag oder `weglassen`)
     pub weglassen: bool,
-    /// nächstes Garn der Karte (mit `garnkarte`)
+    /// nächstes Garn der Karte (mit `garnkarte`; mit `garnfarben` ist die Farbe genau dieses Garn)
     pub garn: Option<GarnInfo>,
 }
 
@@ -1026,7 +1030,10 @@ fn bild_optionen(k: &Kontext, e: &BildEingabe) -> Result<(stick_vektor::BildOpti
             glaettung: e.glaettung.unwrap_or(st.glaettung),
             vereinfachen: e.vereinfachen.unwrap_or(st.vereinfachen),
             weglassen,
-            palette: karte.as_ref().map(|k| k.garne.iter().map(|g| g.rgb).collect()),
+            palette: karte
+                .as_ref()
+                .filter(|_| e.garnfarben.unwrap_or(true))
+                .map(|k| k.garne.iter().map(|g| g.rgb).collect()),
             fuellung: match e.fuellung {
                 Some(BildFuellung::Auto) => stick_vektor::Fuellung::Auto,
                 _ => stick_vektor::Fuellung::Step,
@@ -1070,7 +1077,8 @@ pub fn bild_umwandeln(k: &Kontext, e: BildEingabe) -> Result<BildErgebnis, Fehle
     let stamm = pfad.file_stem().unwrap_or_default().to_string_lossy().to_string();
     let rahmen = e.rahmen.clone().unwrap_or_else(|| "artista 130 x 100".into());
     let (mut design, klassen) = stick_vektor::design_json_mit(&f, &stamm, &rahmen, o.fuellung);
-    // mit Garnkarte: Garn je Objekt festhalten (Farbe ist genau die des Garns)
+    // mit Garnfarben: Garn je Objekt festhalten (Farbe ist genau die des Garns)
+    let karte = karte.filter(|_| o.palette.is_some());
     if let (Some(kt), Some(objekte)) = (&karte, design.get_mut("objekte").and_then(Value::as_array_mut)) {
         for ob in objekte {
             if let Some(c) = ob.get("farbe").and_then(Value::as_str).and_then(|t| hex_farbe(t).ok())

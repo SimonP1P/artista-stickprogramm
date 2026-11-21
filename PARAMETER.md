@@ -250,7 +250,7 @@ Stand 21.11.2026 · **172 Parameter**: 45 einfach, 79 experte, 48 automatisch. E
 | **Farben** | Zahl der Farben im Bild nach der Reduktion (k-Means im Lab-Raum), auch die weggelassenen |  |  | 8 Anzahl |  |  | werkzeug | einfach | stick-vektor (eigene Festlegung) |
 | **Vereinfachen** | kantenerhaltendes Glätten vor der Farbreduktion (Kuwahara); 0 = aus |  |  | 2 Stufe 0–5 |  |  | werkzeug | einfach | Schritt nach Handbuch Kap. 12 „Image clean up“, Verfahren eigene Festlegung |
 | **Farben weglassen** | Farben, die nicht gestickt werden; ohne Wahl: fast weiße häufigste Randfarbe |  |  | weißer Hintergrund Farbliste |  |  | werkzeug | einfach | Auto Digitizer „Omitted Colors“, „white background omitted“ (Handbuch S. 117) |
-| **Garnfarben** | Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000) |  |  | an |  |  | werkzeug | einfach | eigene Festlegung (Zuordnung wie `garnkarte`) |
+| **Garnfarben** | Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000); Oberfläche: aus bei der Karte „Default“ (nur 19 Grundfarben) |  |  | an |  |  | werkzeug | einfach | eigene Festlegung (Zuordnung wie `garnkarte`) |
 | **Stichart der Flächen** | „step“ alles Tatami, „auto“ wie EasyStitch (bis 8 mm Satin) |  |  | step |  |  | werkzeug | experte | Auto Digitizer „Fills: Auto/Step“ (Handbuch S. 118); Standard Step eigene Festlegung |
 | **Kleinste Fläche** | kleinere Flächen gehen in der Nachbarfarbe auf (keine Löcher) |  |  | 4 mm² |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |
 | **Glättung** | Toleranz der Vereinfachung der Umrisse |  |  | 0,2 mm |  |  | werkzeug | experte | stick-vektor (eigene Festlegung) |

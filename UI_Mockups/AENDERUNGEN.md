@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Bild umwandeln verbessert (Wunsch Nutzer: Foto „noch nicht brauchbar“, leere Stellen; Commit 19c8b6e)
+- **Neu:** Befehl `bild_vorschau` (gleiche Eingabe wie `bild_umwandeln`) → vereinfachtes Bild als PNG-data-URL und
+  Farbliste `{farbe, anteil, weglassen, garn}`.
+- **`bild_umwandeln` neu/geändert:** `vereinfachen` 0–5 (Standard 2), `weglassen` („#rrggbb“-Liste, ohne Angabe
+  Vorschlag weißer Hintergrund, `[]` = alles sticken), `garnkarte` + `garnfarben`, `fuellung` „step“ (Standard) /
+  „auto“; `farben` zählt jetzt **alle** Farben (Standard 8); kleine Flächen gehen in der Nachbarfarbe auf; Ergebnis
+  hat `klassen`. Objekte: Zugausgleich 0,40 mm, Unterlage an (Handbuch S. 116). `mit_hintergrund` veraltet.
+- **Oberfläche:** umgesetzt – Dialog „Bild umwandeln“ zweispaltig: links das vereinfachte Bild (weggelassene Farben
+  kariert), rechts Breite, Farben, Vereinfachen, Garnfarben, Farbliste mit Haken; Experte: Stichart, kleinste Fläche,
+  Glättung. Programm-Bau: Rechenkern auch im Debug-Bau optimiert (`app/src-tauri/Cargo.toml`).
+
 ## 21.11.2026 – Stichart wechseln, Werkzeugleiste nach Formen (Wunsch Nutzer, Commit 49eb027)
 - **Neu:** Befehl `stichart_aendern {design, objekt, art}` → `{objekt, hinweise}`: Umriss `lauf`, `dreifach`,
   `satinlinie`, `blanket`, `motivlinie` ↔ Füllung `tatami`, `satinflaeche`, `muster`; Form und gemeinsame Felder bleiben
@@ -127,5 +138,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `49eb027` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `19c8b6e` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.

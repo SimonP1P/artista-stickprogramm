@@ -429,8 +429,9 @@ for k, name, w, einh, std, modus, quelle in [
     ('weglassen', 'Farben weglassen', 'Farben, die nicht gestickt werden; ohne Wahl: fast weiße häufigste Randfarbe',
      'Farbliste', 'weißer Hintergrund', 'einfach', 'Auto Digitizer „Omitted Colors“, „white background omitted“ '
      '(Handbuch S. 117)'),
-    ('garnkarte', 'Garnfarben', 'Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000)',
-     'an/aus', True, 'einfach', 'eigene Festlegung (Zuordnung wie `garnkarte`)'),
+    ('garnfarben', 'Garnfarben', 'Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000); '
+     'Oberfläche: aus bei der Karte „Default“ (nur 19 Grundfarben)', 'an/aus', True, 'einfach',
+     'eigene Festlegung (Zuordnung wie `garnkarte`)'),
     ('fuellung', 'Stichart der Flächen', '„step“ alles Tatami, „auto“ wie EasyStitch (bis 8 mm Satin)', 'Auswahl',
      'step', 'experte', 'Auto Digitizer „Fills: Auto/Step“ (Handbuch S. 118); Standard Step eigene Festlegung'),
     ('min_flaeche', 'Kleinste Fläche', 'kleinere Flächen gehen in der Nachbarfarbe auf (keine Löcher)', 'mm²', 4.0,

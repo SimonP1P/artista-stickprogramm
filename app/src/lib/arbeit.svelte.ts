@@ -22,7 +22,7 @@ export type Modus = "einfach" | "experte";
 export type OffenerDialog =
   | { art: "alphabet"; objekt: number }
   | { art: "garn"; objekt: number; titel?: string; /** alle diese Objekte bekommen das Garn (z. B. eine Farbe eines Bilds) */ alle?: number[] }
-  | { art: "bild" }
+  | { art: "bild"; pfad?: string }
   | { art: "svg" }
   | { art: "nach_farbe" }
   | { art: "muster"; objekt: number }

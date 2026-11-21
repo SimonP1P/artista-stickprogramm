@@ -4046,10 +4046,10 @@
    "modus": "einfach"
   },
   {
-   "id": "bild.garnkarte",
+   "id": "bild.garnfarben",
    "gruppe": "Bild → Umrisse",
    "name": "Garnfarben",
-   "wirkung": "Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000)",
+   "wirkung": "Farben auf die nächsten Garne der Garnkarte des Designs ziehen (CIEDE2000); Oberfläche: aus bei der Karte „Default“ (nur 19 Grundfarben)",
    "ebene": "werkzeug",
    "gilt_fuer": [],
    "json_design": null,

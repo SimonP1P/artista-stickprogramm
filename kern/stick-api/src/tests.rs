@@ -458,6 +458,10 @@ fn bild_vorschau_und_umwandeln() {
     assert!(g["farben"][0]["garn"]["nummer"].is_string());
     let og = n(json!({"garnkarte": "Default"}));
     assert!(og.iter().all(|x| x["garn"].is_string()));
+    // Garnfarben aus: Farben des Bildes, Garn nur als Hinweis in der Vorschau
+    let h = ausfuehren(&k, "bild_vorschau", json!({"pfad": p, "farben": 3, "garnkarte": "Default", "garnfarben": false})).unwrap();
+    assert!(h["farben"].as_array().unwrap().iter().any(|f| f["farbe"] == "#c81e1e" && f["garn"]["name"].is_string()));
+    assert!(n(json!({"garnkarte": "Default", "garnfarben": false})).iter().all(|x| x.get("garn").is_none()));
     // Satin für schmale Flächen auf Wunsch
     assert!(n(json!({"fuellung": "auto"})).iter().any(|x| x["art"] == "tatami" || x["art"] == "satinflaeche"));
     let _ = std::fs::remove_file(&pfad);

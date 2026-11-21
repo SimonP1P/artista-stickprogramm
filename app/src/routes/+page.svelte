@@ -619,6 +619,6 @@
       schliessen={() => (arbeit.dialog = null)}
     />
   {:else if arbeit.dialog?.art === "bild" || arbeit.dialog?.art === "svg"}
-    <EinlesenDialog art={arbeit.dialog.art} schliessen={() => (arbeit.dialog = null)} />
+    <EinlesenDialog art={arbeit.dialog.art} startPfad={arbeit.dialog.art === "bild" ? arbeit.dialog.pfad : undefined} schliessen={() => (arbeit.dialog = null)} />
   {/if}
 </div>

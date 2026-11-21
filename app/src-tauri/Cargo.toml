@@ -32,3 +32,8 @@ lto = true
 opt-level = 3
 panic = "abort"
 strip = true
+
+# Rechenkern (stick-api, stick-vektor, Bildbibliotheken) auch im Debug-Bau optimiert übersetzen: ein Foto mit 35
+# Millionen Punkten zu laden und umzuwandeln dauert sonst sehr lange. Das Programm selbst bleibt ein Debug-Bau.
+[profile.dev.package."*"]
+opt-level = 2

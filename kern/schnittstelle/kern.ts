@@ -147,9 +147,12 @@ export type BildEingabe = {
    * EasyStitch/„Fills: Auto“: bis 8 mm dick Satinfläche, darüber Step – für Logos und Zeichnungen)
    */
   fuellung?: (BildFuellung | null);
+  /** Farben auf die Garne der Karte ziehen (Standard an; aus = Farben des Bildes, die Garne nur als Hinweis) */
+  garnfarben?: boolean | null;
   /**
-   * Garnkarte (Name wie `garnkarten_liste`): Farben auf die nächsten Garne der Karte ziehen (CIEDE2000), gleiche Garne
-   * werden eine Farbe; die Objekte bekommen `garn`. Ohne Angabe oder „keine“: Farben des Bildes
+   * Garnkarte (Name wie `garnkarten_liste`): nennt zu jeder Farbe das nächste Garn (CIEDE2000) und zieht die Farben
+   * auf diese Garne (`garnfarben`); gleiche Garne werden eine Farbe, die Objekte bekommen `garn`. Ohne Angabe oder
+   * „keine“: Farben des Bildes
    */
   garnkarte?: string | null;
   /** Glättung der Umrisse in mm (Standard 0,2) */
@@ -197,7 +200,7 @@ export type BildFarbe = {
   anteil: number;
   /** „#rrggbb“ – genau so in der Vorschau (zum Weglassen in `weglassen` angeben) */
   farbe: string;
-  /** nächstes Garn der Karte (mit `garnkarte`) */
+  /** nächstes Garn der Karte (mit `garnkarte`; mit `garnfarben` ist die Farbe genau dieses Garn) */
   garn?: (GarnInfo | null);
   /** wird weggelassen (Vorschlag oder `weglassen`) */
   weglassen: boolean;

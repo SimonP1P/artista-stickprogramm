@@ -111,6 +111,13 @@ def main():
             antworten["alphabet_vorschau:" + a_["name"]] = api(
                 stick, "alphabet_vorschau", {"alphabet": a_["name"], "text": "Aa Bb"})
 
+    if o.dialog and json.loads(o.dialog).get("art") == "bild" and json.loads(o.dialog).get("pfad"):
+        d_ = json.loads(o.dialog)
+        antworten["bild_vorschau"] = api(stick, "bild_vorschau", {
+            "pfad": d_["pfad"], "breite": d_.get("breite", 80), "farben": 8, "vereinfachen": 2,
+            "min_flaeche": 4, "glaettung": 0.2, **({"garnkarte": karte} if karte != "keine" else {}),
+            "garnfarben": karte not in ("Default", "keine")})
+
     build = os.path.join(APP, "build")
     if not os.path.exists(os.path.join(build, "index.html")):
         sys.exit("app/build fehlt – erst `npm run build`")

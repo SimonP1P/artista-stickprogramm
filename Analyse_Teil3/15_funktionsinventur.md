@@ -96,7 +96,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Funktion | Stand | Bemerkung |
 |---|---|---|
 | Bild laden, zuschneiden, Farben reduzieren | 🟡 | `stick-vektor` |
-| Auto Digitizer (Bild → Objekte mit Stichart) | 🟡 | Flächen ✅, Satin-Zerlegung schmaler Flächen ✅ 20.11. (`satinflaeche`, Bericht 17 – in `stick bild` noch nicht genutzt), Linien ⬜, maßstabsfrei ⬜ (M2) |
+| Auto Digitizer (Bild → Objekte mit Stichart) | 🟡 | Flächen ✅, Satin-Zerlegung schmaler Flächen ✅ 20.11. (`satinflaeche`, Bericht 17); 21.11.: Vorbereitung (vereinfachen, Lab-Farben, Garnfarben, kleine Flächen zuschlagen), „Omitted Colors“, „Fills: Auto/Step“, Zugausgleich 0,4 + Unterlage (Handbuch S. 116–118) ✅ – Verfahren eigene Festlegung; Linien/„Details“ ⬜, maßstabsfrei ⬜ (M2) |
 | Magic Wand (Fläche/Kontur per Klick) | ⬜ | Kap. 13 |
 | PhotoSnap (Foto → Stiche) | ⬜ | Kap. 13 |
 | Scanner | ➖ | heute Bilddatei |

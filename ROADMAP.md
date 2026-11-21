@@ -207,7 +207,12 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 8. 🟡 Bild → Umrisse – ✅ 20.11.2026 erste Stufe `stick-vektor` / CLI `stick bild`: Farben reduzieren (k-Means),
    Hintergrund weg, Flächen mit Löchern verfolgen (`imageproc`, Suzuki–Abe), vereinfachen, als Tatami-Flächen nach
    Farbe geordnet (alles **eigene Festlegung**, Auto Digitizer des Originals nicht analysiert); an „Apples-pocket.bmp“
-   der CD erprobt · ⬜ dünne Linien als Lauf/Satin (EasyStitch-Schwellen), schmale Flächen als Satin, Strichbilder
+   der CD erprobt · ✅ 21.11.2026 zweite Stufe (Nutzer-Test mit einem Foto: „noch nicht brauchbar“, leere Stellen):
+   Vorbereitung nach Handbuch Kap. 12 (vereinfachen = Kuwahara, k-Means im Lab-Raum, Garnfarben, kleine Flächen der
+   Nachbarfarbe zuschlagen statt weglassen), Farben weglassen wie „Omitted Colors“ (Vorschlag nur weißer Hintergrund),
+   „Fills: Step/Auto“ (Standard Step – Satin franst bei Fotos aus und rechnet 10× länger), Zugausgleich 0,4 mm und
+   Unterlage (Handbuch S. 116), Befehl `bild_vorschau` + Dialog mit Vorschau · ⬜ dünne Linien als Lauf/Satin
+   („Details“), PhotoSnap für Fotos (Original: Satinreihen mit wechselndem Abstand – erst analysieren), Strichbilder
 9. ✅ 20.11.2026 Knockout/Aussparen wie „Remove Overlay Stitching“/„Lettering Remove Overlay“: Loch = Fläche des
    oberen Objekts (an den Musterdesigns exakt gemessen), `"aussparen"`/`"ueberlappung"` an Tatami/Muster
    (`Analyse_Teil3/14`, `stick-kern::aussparen`)
@@ -265,8 +270,8 @@ ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-1
 grünes Höhenband entfernt; **Elemente** in Schritt 2 (Kacheln → Element bearbeiten, „Elemente (n)“ mit Liste,
 „+ Hinzufügen“ öffnet die Kacheln; Bild/SVG/Design werden als **Gruppe** eingefügt statt das Design zu ersetzen –
 Kern: `gruppe`/`gruppen` wie „Group“ des Originals, Befehl `design_einfuegen` wie „Insert Design“); Gruppieren/Auflösen
-im Expertenmodus (Strg+G); **Senden auch am Mac** (USB-Seriell-Adapter, Ports `/dev/cu.*`). Offen aus dem Test: Bild
-wurde „nur schwarz-weiß“ – Bild des Nutzers ansehen.
+im Expertenmodus (Strg+G); **Senden auch am Mac** (USB-Seriell-Adapter, Ports `/dev/cu.*`). Bild „nur schwarz-weiß“:
+war das Bild des Nutzers. **Bild umwandeln verbessert** (21.11., Phase 4 Punkt 8): Dialog mit Vorschau und Farbliste.
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),
