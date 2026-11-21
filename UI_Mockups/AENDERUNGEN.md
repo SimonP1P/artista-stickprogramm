@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Stile für alle Schriften, eigene Stile (Wunsch Nutzer, Punkt 4; Commit siehe Git-Log „Stil-Einordnung“)
+## 21.11.2026 – Stile für alle Schriften, eigene Stile (Wunsch Nutzer, Punkt 4; Commit 3bde3f4)
 - **Neu:** Befehl `schrift_stile` → `{quelle, stile: [{name, beschreibung}]}` (23 Stile in Anzeigereihenfolge).
 - **Neue Felder:** `alphabete_liste[].stile`, `schriften_liste[].stile` (eigene Einordnung von 50 Alphabeten und 173
   Standardschriften, sonst Google). Google-Katalog: mehr Schriften mit Stil (75 statt 650 ohne).
@@ -170,5 +170,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `ab8505d` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `3bde3f4` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
