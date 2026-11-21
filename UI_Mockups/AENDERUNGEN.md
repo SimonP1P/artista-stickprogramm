@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Schrift wählen: Computer-Schriften, Google Fonts, Favoriten, „stickbar ab“ (Wunsch Nutzer; Commit siehe Git-Log „Schriftauswahl“)
+## 21.11.2026 – Schrift wählen: Computer-Schriften, Google Fonts, Favoriten, „stickbar ab“ (Wunsch Nutzer; Commit ab8505d)
 - **Neue Befehle:** `google_schriften_liste` (Katalog 1 833 Familien + Stil-Filter), `google_schrift_laden {familie}`
   (Internet; Datei in den Datenordner, danach offline), `schrift_vorschau {schrift, text?, hoehe?}` (Umrisse,
   fehlende Zeichen, `stickbarkeit {stickbar_ab, duenn, dick}`), `schrift_wechseln {design, objekt, alphabet|schrift}`
@@ -163,5 +163,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `db84764` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `ab8505d` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
