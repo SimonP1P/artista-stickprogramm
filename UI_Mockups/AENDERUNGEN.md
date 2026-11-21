@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Unterlage für jede Schrift, Vorwahl Mittellauf + Zickzack (Wunsch Nutzer; Commit COMMIT)
+## 21.11.2026 – Unterlage für jede Schrift, Vorwahl Mittellauf + Zickzack (Wunsch Nutzer; Commit b88e5ff)
 - **Geändert (Feld):** `ttf.unterlage` nimmt jetzt dieselben Werte wie `text.unterlage` (`"auto"` Standard, `"keine"`,
   Arten-Liste); `true`/`false` aus alten Dateien gelten weiter (auto/keine). Typ `UnterlageJson` hat dafür die Variante
   `boolean`. Computer-Schriften in Satin bekommen jetzt die Auto-Unterlage des Stils „Schrift“ (vorher keine).
@@ -183,5 +183,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `3bde3f4` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `b88e5ff` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
