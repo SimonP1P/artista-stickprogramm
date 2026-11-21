@@ -15,6 +15,16 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Schrift: Stichart „automatisch“ (Wunsch Nutzer: große Schrift nicht als lockerer Satin; Commit COMMIT)
+- **Neu:** `stichart: "auto"` an `text` und `monogramm`: Satin, solange kein Satinstich (nach Höhe, Transformation,
+  Verzerrung) länger als **8 mm** wird, sonst der ganze Text **Step** (eigene Erweiterung; Grenze wie EasyStitch,
+  Handbuch S. 118). Ohne Angabe bleibt Satin wie im Original.
+- **Neue Hinweisarten** in `design_berechnen.hinweise`: `schrift_step` (Info: „auto“ hat Step gewählt) und
+  `lange_satinstiche` (Warnung: Satin mit Stichen über 8 mm).
+- **Oberfläche:** umgesetzt – neue Texte/Monogramme mit `stichart: "auto"`; einfacher Modus unter der Höhe Info bzw.
+  Warnung und Schalter „Trotzdem Satin“; Statusleiste zeigt `schrift_step` als Info (grün). Expertenmodus: Auswahl
+  „auto“ im Inspektor (aus dem Schema).
+
 ## 21.11.2026 – Bild umwandeln verbessert (Wunsch Nutzer: Foto „noch nicht brauchbar“, leere Stellen; Commit 19c8b6e)
 - **Neu:** Befehl `bild_vorschau` (gleiche Eingabe wie `bild_umwandeln`) → vereinfachtes Bild als PNG-data-URL und
   Farbliste `{farbe, anteil, weglassen, garn}`.

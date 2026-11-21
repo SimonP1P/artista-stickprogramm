@@ -12,7 +12,7 @@
   let offen = $state(false);
   const e = $derived(arbeit.ergebnis);
 
-  type Eintrag = { text: string; art: "err" | "warn"; objekt: number | null };
+  type Eintrag = { text: string; art: "err" | "warn" | "ok"; objekt: number | null };
   const eintraege = $derived.by((): Eintrag[] => {
     const l: Eintrag[] = [];
     if (arbeit.fehler) l.push({ text: arbeit.fehler.meldung, art: "err", objekt: arbeit.fehler.objekt ?? null });
@@ -24,7 +24,11 @@
       });
     const hinweise = arbeit.fehler ? (arbeit.pruefung?.hinweise ?? []) : (e?.hinweise ?? []);
     for (const h of hinweise)
-      l.push({ text: h.meldung, art: h.art === "ausserhalb" ? "err" : "warn", objekt: h.objekt ?? null });
+      l.push({
+        text: h.meldung,
+        art: h.art === "ausserhalb" ? "err" : h.art === "schrift_step" ? "ok" : "warn",
+        objekt: h.objekt ?? null,
+      });
     return l;
   });
   const fehlerZahl = $derived(eintraege.filter((x) => x.art === "err").length);

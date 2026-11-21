@@ -941,7 +941,7 @@ export type Hinweis = {
 };
 
 /** Art eines Hinweises. */
-export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb");
+export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb" | "schrift_step" | "lange_satinstiche");
 
 /** Form der Verzerrung (Elastic Lettering) */
 export type HuelleArt = ("gerade" | "gebogen");
@@ -1791,7 +1791,7 @@ export type SchriftInfo = {
 };
 
 /** Stichart einer Schrift mit Original-Alphabet */
-export type SchriftStichart = ("satin" | "step" | "muster");
+export type SchriftStichart = ("satin" | "auto" | "step" | "muster");
 
 /** Design an die Maschine: Design, Anschluss, Wahl. */
 export type SendeEingabe = {

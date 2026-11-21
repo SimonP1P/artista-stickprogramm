@@ -344,6 +344,7 @@ Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (
 **SchriftStichart** – Stichart einer Schrift mit Original-Alphabet
 
 - `"satin"` – Satin (Standard, wie das Alphabet)
+- `"auto"` – automatisch: Satin, solange kein Satinstich länger als 8 mm wird, sonst der ganze Text Step (eigene Erweiterung – das Original wechselt bei Schrift nicht selbst; Grenze wie EasyStitch, Handbuch S. 118)
 - `"step"` – Step: Reihen folgen den Stichwinkeln der Säulen
 - `"muster"` – Füllmuster über die Buchstabenfläche (Feld `muster`)
 

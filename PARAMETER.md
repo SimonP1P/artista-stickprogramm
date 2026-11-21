@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **172 Parameter**: 45 einfach, 79 experte, 48 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **173 Parameter**: 46 einfach, 78 experte, 49 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -222,7 +222,8 @@ Stand 21.11.2026 · **172 Parameter**: 45 einfach, 79 experte, 48 automatisch. E
 | **Eigene Kurve** |  | text, ttf, monogramm | Objekt: `grundlinie.punkte` | – |  |  | objekt | experte | Dialog „Layout“ (DLG 1039) |
 | **Farbwechsel im Text** | ^ im Text wechselt zur nächsten Farbe der Liste | text, ttf, monogramm | Objekt: `farben` | [] Farbliste |  |  | objekt | einfach | Handbuch S. 158 |
 | **Einzelne Buchstaben** | Farbe, verschieben, drehen, skalieren, Winkellinien je Buchstabe | text, ttf, monogramm | Objekt: `buchstaben` | [] Liste |  |  | objekt | experte | Handbuch Kap. 19/20 |
-| **Stichart der Schrift** | Satin (Alphabet), Step oder Füllmuster; Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung) | text, ttf | Objekt: `stichart` | satin | satin, step, muster, tatami, lauf, dreifach |  | objekt | experte | Handbuch Kap. 20; Verteilung Vorschlag (eigene Festlegung); ttf satin: EZSTITCH Turning (Analyse_Teil3/17) |
+| **Stichart der Schrift** | Satin (Alphabet), Step, Füllmuster oder automatisch (Satin, ab 8 mm Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung). Einfacher Modus: neue Texte „auto“, Schalter „Trotzdem Satin“ | text, monogramm, ttf | Objekt: `stichart` | satin | satin, auto, step, muster, tatami, lauf, dreifach |  | objekt | einfach | Handbuch Kap. 20; Verteilung Vorschlag (eigene Festlegung); ttf satin: EZSTITCH Turning (Analyse_Teil3/17); auto = eigene Erweiterung |
+| **Step ab Stichlänge (Stichart auto)** | wird ein Satinstich der Schrift (nach Größe und Transformation) länger, stickt der ganze Text Step; darüber ohne „auto“ ein Hinweis | text, monogramm |  | 8 mm |  |  | objekt | automatisch | eigene Erweiterung; Grenze wie EasyStitch (NORMAL.AMT 0x3f54, Analyse/code/10 §C), Handbuch S. 118 (Satin nicht über 7 mm); Konstante schrift::AUTO_STEP_AB_MM |
 | **Verzerren (Elastic)** | gerade (Wimpel) oder gebogen (Bogen), Griffe oben/unten | text, ttf, monogramm | Objekt: `elastisch` | – |  |  | objekt | einfach | Handbuch Kap. 21; Kantenform Vorschlag (eigene Festlegung) |
 | **Initialen** | 2 oder 3 Buchstaben | monogramm | Objekt: `initialen` | – |  |  | objekt | einfach | Diamond2/Diamond3 (Analyse_Teil3/09 §7) |
 | **Monogramm-Rahmen** | Raute, Zier oder keiner | monogramm | Objekt: `rahmen` | keine | raute, zier, keine |  | objekt | einfach | Analyse_Teil3/09 §7 |

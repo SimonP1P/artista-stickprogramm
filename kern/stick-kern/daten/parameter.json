@@ -3714,10 +3714,11 @@
    "id": "schrift.stichart",
    "gruppe": "Schrift",
    "name": "Stichart der Schrift",
-   "wirkung": "Satin (Alphabet), Step oder Füllmuster; Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung)",
+   "wirkung": "Satin (Alphabet), Step, Füllmuster oder automatisch (Satin, ab 8 mm Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung). Einfacher Modus: neue Texte „auto“, Schalter „Trotzdem Satin“",
    "ebene": "objekt",
    "gilt_fuer": [
     "text",
+    "monogramm",
     "ttf"
    ],
    "json_design": null,
@@ -3727,6 +3728,7 @@
    "bereich": null,
    "werte": [
     "satin",
+    "auto",
     "step",
     "muster",
     "tatami",
@@ -3734,8 +3736,28 @@
     "dreifach"
    ],
    "stoff": false,
-   "quelle": "Handbuch Kap. 20; Verteilung Vorschlag (eigene Festlegung); ttf satin: EZSTITCH Turning (Analyse_Teil3/17)",
-   "modus": "experte"
+   "quelle": "Handbuch Kap. 20; Verteilung Vorschlag (eigene Festlegung); ttf satin: EZSTITCH Turning (Analyse_Teil3/17); auto = eigene Erweiterung",
+   "modus": "einfach"
+  },
+  {
+   "id": "schrift.auto_step_ab",
+   "gruppe": "Schrift",
+   "name": "Step ab Stichlänge (Stichart auto)",
+   "wirkung": "wird ein Satinstich der Schrift (nach Größe und Transformation) länger, stickt der ganze Text Step; darüber ohne „auto“ ein Hinweis",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "text",
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": 8.0,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Erweiterung; Grenze wie EasyStitch (NORMAL.AMT 0x3f54, Analyse/code/10 §C), Handbuch S. 118 (Satin nicht über 7 mm); Konstante schrift::AUTO_STEP_AB_MM",
+   "modus": "automatisch"
   },
   {
    "id": "schrift.elastisch",

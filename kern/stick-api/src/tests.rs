@@ -466,3 +466,36 @@ fn bild_vorschau_und_umwandeln() {
     assert!(n(json!({"fuellung": "auto"})).iter().any(|x| x["art"] == "tatami" || x["art"] == "satinflaeche"));
     let _ = std::fs::remove_file(&pfad);
 }
+
+/// Schrift mit Stichart „auto“: klein Satin, groß Step (ganzer Text); Satin groß gibt eine Warnung
+#[test]
+fn schrift_stichart_auto() {
+    let k = kontext();
+    let rechne = |hoehe: f64, stichart: &str, skalieren: Option<f64>| {
+        let mut t = json!({"art": "text", "text": "HM", "alphabet": "Swiss Block", "hoehe": hoehe, "stichart": stichart});
+        if let Some(f) = skalieren {
+            t["transform"] = json!({"skalieren": [f, f]});
+        }
+        let d = json!({"rahmen": "artista 200 x 155", "objekte": [t]});
+        ausfuehren(&k, "design_berechnen", json!({"design": d})).unwrap()
+    };
+    let arten = |e: &Value| -> Vec<String> {
+        e["hinweise"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|h| h["art"].as_str().unwrap().to_string())
+            .filter(|a| a != "ausserhalb")
+            .collect()
+    };
+    let klein = rechne(15.0, "auto", None);
+    assert!(arten(&klein).is_empty(), "15 mm bleibt Satin: {:?}", klein["hinweise"]);
+    let gross = rechne(90.0, "auto", None);
+    assert_eq!(arten(&gross), ["schrift_step"], "{:?}", gross["hinweise"]);
+    // Step hat mehr Stiche als Satin gleicher Größe
+    let satin = rechne(90.0, "satin", None);
+    assert_eq!(arten(&satin), ["lange_satinstiche"]);
+    assert_ne!(gross["statistik"]["stiche"], satin["statistik"]["stiche"]);
+    // Größe über die Transformation zählt mit
+    assert_eq!(arten(&rechne(15.0, "auto", Some(600.0))), ["schrift_step"]);
+}

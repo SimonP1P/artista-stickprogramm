@@ -173,6 +173,9 @@ auswahl! {
     pub enum SchriftStichart {
         /// Satin (Standard, wie das Alphabet)
         Satin = "satin",
+        /// automatisch: Satin, solange kein Satinstich länger als 8 mm wird, sonst der ganze Text Step (eigene
+        /// Erweiterung – das Original wechselt bei Schrift nicht selbst; Grenze wie EasyStitch, Handbuch S. 118)
+        Auto = "auto",
         /// Step: Reihen folgen den Stichwinkeln der Säulen
         Step = "step",
         /// Füllmuster über die Buchstabenfläche (Feld `muster`)

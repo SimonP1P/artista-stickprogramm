@@ -16,7 +16,7 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
   des Rahmens (dazu `ausserhalb_stiche` zum Markieren), `begrenzung` (für Einpassen/Mittig), Datengröße
   (`daten_bytes` gegen `daten_grenze` 145 426 Byte der artista 185), je Farbblock `bloecke` (Objekte, Garn von Hand,
   Lagen einer Applikation für die Anleitung an den Stopps) und Hinweise **mit Objektnummer** (`{meldung, objekt, art}`:
-  Feld nicht gelesen, fehlende Zeichen, außerhalb). Stickzeit liefert der Kern nicht (keine Quelle) – nur als
+  Feld nicht gelesen, fehlende Zeichen, außerhalb; Schrift `schrift_step` = Info, `lange_satinstiche` = Warnung). Stickzeit liefert der Kern nicht (keine Quelle) – nur als
   gekennzeichnete Schätzung anzeigen.
 - Zum Bearbeiten mit der Maus liefert `design_formen` je Objekt die fertigen Umrisse, Löcher, Linien, Satinseiten,
   Winkellinien, das umschließende Rechteck und Ein-/Ausstich – die Oberfläche rechnet keine Geometrie selbst.
@@ -76,7 +76,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Grundlinie | gerade (Winkel, Länge), Kreis oben/unten, Oval, Bogen, senkrecht, eigene Kurve, Wappen (oben–Mitte–unten); Text über/auf/unter der Linie | `grundlinie` | E (Feinwerte X) |
 | Farbwechsel im Text | `^` zwischen Buchstaben, Farbliste | `^` im Text, `farben` | E |
 | Einzelne Buchstaben | Farbe, verschieben, drehen, skalieren; neue Stichwinkel (Winkellinien ziehen). Auswahl per Klick auf den Buchstaben: `design_berechnen` liefert je Stich `buchstabe` (Nr. wie `buchstaben[].nr`, 0 = kein Buchstabe) | `buchstaben` | X |
-| Stichart der Schrift | Satin (Standard), Step, Füllmuster | `stichart` | X |
+| Stichart der Schrift | Satin (Standard des Originals), Step, Füllmuster, **automatisch** (`auto`: Satin, bis ein Satinstich nach Größe/Transformation länger als 8 mm würde, dann der ganze Text Step – eigene Erweiterung). Neue Texte und Monogramme der Oberfläche bekommen `auto`. Einfacher Modus: bei Hinweis `schrift_step` grüne Info „wird mit Step gestickt“, bei `lange_satinstiche` Warnung; jeweils Schalter **„Trotzdem Satin“** (an = `satin`, aus = `auto`) | `stichart` (auch am `monogramm`) | E (Schalter) / X (Auswahl) |
 | Monogramm | 2 oder 3 Initialen, Rahmen Raute / Zier / keiner, Rahmenfarbe; Höhe (18 mm) | `monogramm` | E |
 | Verzerren (Elastic) | gerade (Wimpel/schräg) oder gebogen (Bogen/Bauch), Griffe oben/unten | `elastisch` | E |
 | Unterlage | automatisch / aus (kleine Schrift) / Arten | `unterlage` | X |

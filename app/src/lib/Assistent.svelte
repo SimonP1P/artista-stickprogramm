@@ -166,14 +166,14 @@
   function textEinfuegen() {
     arbeit.aendern((d) => {
       d.objekte ??= [];
-      d.objekte.push({ art: "text", name: "Anna", text: "Anna", alphabet: STANDARD_ALPHABET, hoehe: 20, farbe: STANDARD_FARBE });
+      d.objekte.push({ art: "text", name: "Anna", text: "Anna", alphabet: STANDARD_ALPHABET, hoehe: 20, stichart: "auto", farbe: STANDARD_FARBE });
     });
     arbeit.auswahl = [arbeit.objekte.length - 1];
   }
   function monogrammEinfuegen() {
     arbeit.aendern((d) => {
       d.objekte ??= [];
-      d.objekte.push({ art: "monogramm", name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", farbe: STANDARD_FARBE });
+      d.objekte.push({ art: "monogramm", name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", stichart: "auto", farbe: STANDARD_FARBE });
     });
     arbeit.auswahl = [arbeit.objekte.length - 1];
   }
@@ -190,10 +190,21 @@
     });
   }
 
+  // Stichart „auto“ (Kern: Satin, bis ein Satinstich länger als 8 mm würde, dann der ganze Text Step – eigene
+  // Erweiterung, Handbuch Kap. 20 / S. 118). Der Kern misst und meldet; hier nur Anzeige und Schalter „trotzdem Satin“.
+  const stichart = $derived((objekt as Text | Mono | undefined)?.stichart);
+  const stichHinweis = $derived(
+    (e?.hinweise ?? []).find((h) => (h.art === "schrift_step" || h.art === "lange_satinstiche") && h.objekt === haupt),
+  );
+  function satinErzwingen(an: boolean) {
+    objektAendern((o) => ((o as Text).stichart = an ? "satin" : "auto"));
+  }
+
   const hoeheWarnung = $derived.by(() => {
     const h = text?.hoehe ?? 18;
     if (!alphabet || alphabet.min_hoehe == null) return null;
     if (h < alphabet.min_hoehe) return `Kleiner als empfohlen (ab ${zahl(alphabet.min_hoehe)} mm) – Details können zulaufen.`;
+    if (stichHinweis || stichart === "auto" || stichart === "step" || stichart === "muster") return null;
     if (alphabet.max_hoehe != null && h > alphabet.max_hoehe)
       return `Größer als empfohlen (bis ${zahl(alphabet.max_hoehe)} mm) – lange Satinstiche können locker werden.`;
     return null;
@@ -439,6 +450,7 @@
             /><span class="unit">mm</span>
           </div>
           {#if hoeheWarnung}<div class="warnbox" style="margin-top:6px"><Icon d={IC.warnung} /><span>{hoeheWarnung}</span></div>{/if}
+          {@render stichSchalter()}
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px">
           <div class="field">
@@ -504,6 +516,7 @@
               }}
             /><span class="unit">mm</span>
           </div>
+          {@render stichSchalter()}
         </div>
         {@render garnWahl()}
         {@render elGroesse()}
@@ -618,6 +631,22 @@
     {/if}
   </div>
 </aside>
+
+{#snippet stichSchalter()}
+  {#if stichHinweis && (stichart == null || stichart === "auto" || stichart === "satin")}
+    <div>
+    {#if stichHinweis.art === "schrift_step"}
+      <div class="okbox" style="margin-top:6px"><Icon d={IC.info} /><span>Ab dieser Größe wird die Schrift mit <b style="font-weight:600">Step</b> gestickt, damit die Stiche fest liegen.</span></div>
+    {:else}
+      <div class="warnbox" style="margin-top:6px"><Icon d={IC.warnung} /><span>Die Satinstiche werden so lang, dass sie locker liegen und hängen bleiben können.</span></div>
+    {/if}
+    <label class="chk" style="margin-top:6px" title="Satin glänzt schöner, Step liegt fester. Ab 8 mm Stichlänge stickt das Programm sonst Step.">
+      <input type="checkbox" checked={stichart !== "auto"} onchange={(ev) => satinErzwingen((ev.currentTarget as HTMLInputElement).checked)} />
+      <span>Trotzdem Satin <span class="mut small">– glänzt mehr, lange Stiche liegen aber locker</span></span>
+    </label>
+    </div>
+  {/if}
+{/snippet}
 
 {#snippet garnWahl()}
   <div class="field" style="margin-bottom:12px">

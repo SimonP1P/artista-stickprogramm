@@ -272,6 +272,8 @@ grünes Höhenband entfernt; **Elemente** in Schritt 2 (Kacheln → Element bear
 Kern: `gruppe`/`gruppen` wie „Group“ des Originals, Befehl `design_einfuegen` wie „Insert Design“); Gruppieren/Auflösen
 im Expertenmodus (Strg+G); **Senden auch am Mac** (USB-Seriell-Adapter, Ports `/dev/cu.*`). Bild „nur schwarz-weiß“:
 war das Bild des Nutzers. **Bild umwandeln verbessert** (21.11., Phase 4 Punkt 8): Dialog mit Vorschau und Farbliste.
+**Schrift „automatisch“** (21.11., Wunsch Nutzer): `stichart: "auto"` – Satin bis 8 mm Stichlänge, darüber Step für den
+ganzen Text (eigene Erweiterung); einfacher Modus mit Schalter „Trotzdem Satin“.
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),

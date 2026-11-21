@@ -376,11 +376,18 @@ P('schrift.farben', G, 'Farbwechsel im Text', '^ im Text wechselt zur nächsten 
   o='farben', einheit='Farbliste', std=[], quelle='Handbuch S. 158', modus='einfach')
 P('schrift.buchstaben', G, 'Einzelne Buchstaben', 'Farbe, verschieben, drehen, skalieren, Winkellinien je Buchstabe',
   ebene='objekt', gilt=T, o='buchstaben', einheit='Liste', std=[], quelle='Handbuch Kap. 19/20')
-P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step oder Füllmuster; Computer-Schrift: Tatami, '
-  'Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung)', ebene='objekt',
-  gilt=['text', 'ttf'], o='stichart', einheit='Auswahl', std='satin', werte=['satin', 'step', 'muster', 'tatami', 'lauf',
-                                                                             'dreifach'],
-  quelle='Handbuch Kap. 20; Verteilung ' + V + '; ttf satin: EZSTITCH Turning (Analyse_Teil3/17)')
+P('schrift.stichart', G, 'Stichart der Schrift', 'Satin (Alphabet), Step, Füllmuster oder automatisch (Satin, ab 8 mm '
+  'Stichlänge Step); Computer-Schrift: Tatami, Lauf, Dreifach oder Satin (Säulen wie die TrueType-Umwandlung). '
+  'Einfacher Modus: neue Texte „auto“, Schalter „Trotzdem Satin“', ebene='objekt',
+  gilt=['text', 'monogramm', 'ttf'], o='stichart', einheit='Auswahl', std='satin',
+  werte=['satin', 'auto', 'step', 'muster', 'tatami', 'lauf', 'dreifach'],
+  quelle='Handbuch Kap. 20; Verteilung ' + V + '; ttf satin: EZSTITCH Turning (Analyse_Teil3/17); auto = eigene '
+         'Erweiterung', modus='einfach')
+P('schrift.auto_step_ab', G, 'Step ab Stichlänge (Stichart auto)', 'wird ein Satinstich der Schrift (nach Größe und '
+  'Transformation) länger, stickt der ganze Text Step; darüber ohne „auto“ ein Hinweis', ebene='objekt',
+  gilt=['text', 'monogramm'], einheit='mm', std=8.0,
+  quelle='eigene Erweiterung; Grenze wie EasyStitch (NORMAL.AMT 0x3f54, Analyse/code/10 §C), Handbuch S. 118 '
+         '(Satin nicht über 7 mm); Konstante schrift::AUTO_STEP_AB_MM', modus='automatisch')
 P('schrift.elastisch', G, 'Verzerren (Elastic)', 'gerade (Wimpel) oder gebogen (Bogen), Griffe oben/unten',
   ebene='objekt', gilt=T, o='elastisch', einheit='Griffe mm', std=None, quelle='Handbuch Kap. 21; Kantenform ' + V,
   modus='einfach')

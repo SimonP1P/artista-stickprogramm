@@ -1296,6 +1296,7 @@ impl Design {
                 ObjektJson::Text(t) => {
                     let stichart = match t.stichart {
                         None | Some(crate::format::SchriftStichart::Satin) => None,
+                        Some(crate::format::SchriftStichart::Auto) => Some(SchriftStichart::Auto),
                         Some(crate::format::SchriftStichart::Step) => Some(SchriftStichart::Step),
                         Some(crate::format::SchriftStichart::Muster) => {
                             Some(schrift_muster(&wo, &t.schrift, t.winkel)?)
@@ -1447,10 +1448,46 @@ impl Design {
         Ok(out)
     }
 
+    /// Satinstiche der Texte (Original-Alphabete, Monogramme) nach Größe und Transformation: je Text (Nummer in
+    /// `objekte`) der längste Satinstich in mm und ob Stichart „auto“ ihn deshalb auf Step stellt
+    /// (`schrift::AUTO_STEP_AB_MM`). Texte, die schon Step/Muster sind, fehlen.
+    pub fn schrift_satinstiche(&self) -> Result<Vec<(usize, f64, bool)>, String> {
+        let (out, _, herkunft, _) = self.ungedreht_aufgeloest()?;
+        let mut out = self.transformieren(out, &herkunft)?;
+        Ok(self.schrift_auto_anwenden(&mut out, &herkunft))
+    }
+
+    /// Stichart „auto“ der Texte entscheiden (nach der Transformation, weil Größe und Verzerrung die Stichlänge
+    /// bestimmen) und anwenden; Ergebnis wie `schrift_satinstiche`.
+    fn schrift_auto_anwenden(&self, out: &mut [Objekt], herkunft: &[usize]) -> Vec<(usize, f64, bool)> {
+        let mut info = Vec::new();
+        for (nr, o) in self.objekte.iter().enumerate() {
+            if !matches!(o.art, ObjektArt::Text { .. }) {
+                continue;
+            }
+            let idx: Vec<usize> = (0..out.len()).filter(|&j| herkunft.get(j) == Some(&nr)).collect();
+            let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
+            let laengster = crate::schrift::laengster_satinstich(&teil);
+            if laengster <= 0.0 {
+                continue;
+            }
+            let auto = self.buchstaben.get(&nr).and_then(|z| z.stichart.as_ref()) == Some(&SchriftStichart::Auto);
+            let step = auto && laengster > crate::schrift::AUTO_STEP_AB_MM;
+            if step {
+                for &j in &idx {
+                    out[j] = crate::schrift::auf_step(out[j].clone());
+                }
+            }
+            info.push((nr, laengster, step));
+        }
+        info
+    }
+
     /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
     pub(crate) fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
         let (out, fehlend, herkunft, buchstabe) = self.ungedreht_aufgeloest()?;
-        let out = self.transformieren(out, &herkunft)?;
+        let mut out = self.transformieren(out, &herkunft)?;
+        self.schrift_auto_anwenden(&mut out, &herkunft);
         let (out, herkunft, buchstabe) = self.aussparen_aufloesen(out, &herkunft, &buchstabe)?;
         Ok((out, fehlend, herkunft, buchstabe))
     }

@@ -110,11 +110,11 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
   ];
   switch (art) {
     case "text":
-      return { art, name: "Text", text: "Text", alphabet: "Swiss Block", hoehe: 15, farbe };
+      return { art, name: "Text", text: "Text", alphabet: "Swiss Block", hoehe: 15, stichart: "auto", farbe };
     case "ttf":
       return schrift ? { art, name: "Text", text: "Text", schrift, hoehe: 15, farbe } : null;
     case "monogramm":
-      return { art, name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", farbe };
+      return { art, name: "Monogramm", initialen: "AB", hoehe: 30, rahmen: "raute", stichart: "auto", farbe };
     case "lauf":
     case "dreifach":
       return { art, name: art === "lauf" ? "Laufstich" : "Dreifachstich", punkte: linie, farbe };

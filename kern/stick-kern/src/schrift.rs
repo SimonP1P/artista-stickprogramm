@@ -774,10 +774,57 @@ impl Huelle {
     }
 }
 
+/// Stichart „auto“ einer Schrift: wird ein Satinstich länger als dies (mm), stickt der ganze Text Step. **Eigene
+/// Erweiterung** – das Original stickt Schrift als Satin und wechselt nicht selbst (Handbuch Kap. 20: Step „particularly
+/// suitable for filling large, irregular lettering shapes“, von Hand). Grenze wie EasyStitch: Flächen bis 8,0 mm Breite
+/// Satin, breitere Tatami (NORMAL.AMT Tabelle 0x3f54, `Analyse/code/10` §C, hoch); Handbuch S. 118: „Do not use Satin
+/// fill for areas where the stitch length exceeds 7mm“.
+pub const AUTO_STEP_AB_MM: f64 = 8.0;
+
+/// Längster Satinstich (Abstand der gepaarten Punkte beider Seiten jeder Satinsäule, ohne Zugausgleich) in mm; Säulen,
+/// die schon Step sind, zählen nicht.
+pub fn laengster_satinstich(objekte: &[Objekt]) -> f64 {
+    fn rek(a: &ObjektArt, m: &mut f64) {
+        match a {
+            ObjektArt::Satin {
+                seite_a,
+                seite_b,
+                optionen,
+                ..
+            } if !optionen.step => {
+                if let Ok((x, y)) = crate::sticharten::satin::paare_bilden(seite_a, seite_b) {
+                    for (p, q) in x.iter().zip(&y) {
+                        *m = m.max((p.x - q.x).hypot(p.y - q.y));
+                    }
+                }
+            }
+            ObjektArt::Gruppe { teile, .. } => {
+                for t in teile {
+                    rek(&t.art, m);
+                }
+            }
+            _ => {}
+        }
+    }
+    let mut m = 0.0;
+    for o in objekte {
+        rek(&o.art, &mut m);
+    }
+    m
+}
+
+/// Satinsäulen auf Step stellen (wie Stichart „step“), z. B. nach der Entscheidung von „auto“.
+pub fn auf_step(o: Objekt) -> Objekt {
+    stichart_anwenden(o, &SchriftStichart::Step)
+}
+
 /// Stichart einer Schrift (Handbuch Kap. 20 „Applying different stitch types to lettering objects“: Standard Satin,
 /// auch Step oder Fancy).
 #[derive(Clone, Debug, PartialEq)]
 pub enum SchriftStichart {
+    /// automatisch (`AUTO_STEP_AB_MM`): entschieden für den ganzen Text nach Größe und Transformation
+    /// (`Design::schrift_auto`); beim Setzen der Buchstaben bleibt Satin
+    Auto,
     /// Step: die Satinsäulen werden mit Step-Reihen gefüllt, die den Stichwinkeln folgen (`step_reihen`)
     Step,
     /// Fancy: Füllmuster (`muster.rs`) über die ganze Fläche jedes Buchstabens; `winkel` = Drehung des Musters
@@ -802,6 +849,7 @@ fn stichart_anwenden(o: Objekt, st: &SchriftStichart) -> Objekt {
         return Objekt { farbe, name, art };
     };
     let (teile, umrisse) = match st {
+        SchriftStichart::Auto => (teile, umrisse),
         SchriftStichart::Step => (
             teile
                 .into_iter()

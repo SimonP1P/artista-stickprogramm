@@ -2494,6 +2494,16 @@
           "const": "ausserhalb",
           "description": "Einstiche außerhalb des Stickfelds",
           "type": "string"
+        },
+        {
+          "const": "schrift_step",
+          "description": "Info: Schrift mit Stichart „auto“ wird Step, weil Satinstiche länger als 8 mm würden (kein Problem)",
+          "type": "string"
+        },
+        {
+          "const": "lange_satinstiche",
+          "description": "Schrift mit Satinstichen über 8 mm – können locker liegen; Step oder „auto“ empfohlen",
+          "type": "string"
         }
       ]
     },
@@ -5041,6 +5051,11 @@
         {
           "const": "satin",
           "description": "Satin (Standard, wie das Alphabet)",
+          "type": "string"
+        },
+        {
+          "const": "auto",
+          "description": "automatisch: Satin, solange kein Satinstich länger als 8 mm wird, sonst der ganze Text Step (eigene\nErweiterung – das Original wechselt bei Schrift nicht selbst; Grenze wie EasyStitch, Handbuch S. 118)",
           "type": "string"
         },
         {

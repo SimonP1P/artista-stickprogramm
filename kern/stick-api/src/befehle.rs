@@ -406,6 +406,10 @@ pub enum HinweisArt {
     FehlendeZeichen,
     /// Einstiche außerhalb des Stickfelds
     Ausserhalb,
+    /// Info: Schrift mit Stichart „auto“ wird Step, weil Satinstiche länger als 8 mm würden (kein Problem)
+    SchriftStep,
+    /// Schrift mit Satinstichen über 8 mm – können locker liegen; Step oder „auto“ empfohlen
+    LangeSatinstiche,
 }
 
 /// Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört.
@@ -636,6 +640,35 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
             objekt: Some(*o),
             art: HinweisArt::FehlendeZeichen,
         });
+    }
+    let mm = |x: f64| format!("{x:.1}").replace('.', ",");
+    for (o, laengster, step) in design.schrift_satinstiche()? {
+        let grenze = stick_kern::schrift::AUTO_STEP_AB_MM;
+        if step {
+            hinweise.push(Hinweis {
+                meldung: format!(
+                    "Objekt {}: Schrift wird mit Step gestickt, damit die Stiche fest liegen – Satinstiche wären bis {} mm \
+                     lang (Satin bis {} mm)",
+                    o + 1,
+                    mm(laengster),
+                    mm(grenze)
+                ),
+                objekt: Some(o),
+                art: HinweisArt::SchriftStep,
+            });
+        } else if laengster > grenze {
+            hinweise.push(Hinweis {
+                meldung: format!(
+                    "Objekt {}: Satinstiche bis {} mm lang – können locker liegen; Stichart Step oder „automatisch“ \
+                     empfohlen (Satin bis {} mm)",
+                    o + 1,
+                    mm(laengster),
+                    mm(grenze)
+                ),
+                objekt: Some(o),
+                art: HinweisArt::LangeSatinstiche,
+            });
+        }
     }
     let mut aussen_je_objekt: Vec<(usize, usize)> = Vec::new();
     for &i in &ausserhalb_stiche {

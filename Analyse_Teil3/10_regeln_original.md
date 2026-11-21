@@ -120,6 +120,16 @@ Maschinen-Zeichensätzen: Bernina hat diese mit **festem Abstand 0,40 mm** (geme
 Auto-Spacing-Tabelle 1,06), ohne Zugausgleich und mit eigener Unterlagenwahl gestickt; die V4-Software (und der Kern)
 nimmt Auto Spacing × 0,9 und Zickzack. ✅ / offen: Unterlagen-zuerst-Reihenfolge, Leerzeichen, Auto Jump aus.
 
+**Lange Satinstiche in Schrift (21.11.2026):** Das Original stickt Schrift als Satin und wechselt **nicht selbst** zu Step
+(Handbuch Kap. 20: Step/Special Satin „for large, irregular lettering shapes“ – von Hand); ein wirksames Auto Split gibt
+es nicht (§5). Gemessen mit dem Kern (Text „AHMOW“, Stichart Satin, je Alphabet bei der **empfohlenen Maximalhöhe**,
+`alphabets.md`): längster Satinstich bei 45 der 49 Alphabete mit Maximalhöhe **über 8 mm**, meist 9–16 mm (Swiss Block 60 mm → 11,8 mm,
+Drifter 40 mm → 13,0 mm, Lisa 75 mm → 16,2 mm, Victoria 50 mm → 23,6 mm); nur Creative Cross, Hiragana, Quilting Text,
+Roman-Small bleiben darunter. Das Original nimmt bis zur Maximalhöhe also lange Satinstiche hin. **Eigene Erweiterung**
+`stichart: "auto"` (Kern `schrift::AUTO_STEP_AB_MM` = 8 mm wie EasyStitch, Handbuch S. 118 „Satin nicht über 7 mm“):
+ganzer Text Step, sobald ein Satinstich nach Größe und Transformation länger wird – strenger als das Original;
+„Trotzdem Satin“ (= `satin`) gibt das Verhalten des Originals. Sicherheit: Messung hoch, Grenze eigene Festlegung.
+
 ## 9. Offene Regeln (Reihenfolge der Bearbeitung)
 1. Buchstaben: ✅ erst alle Unterlagen (rückwärts), dann Säulen (Bericht 11); ⬜ Säulenreihenfolge und Start/Ende wie das
    Original („closest join“) – braucht Text/Alphabet der LetterText-Objekte.

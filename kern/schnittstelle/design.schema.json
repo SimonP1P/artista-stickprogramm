@@ -3016,6 +3016,11 @@
           "type": "string"
         },
         {
+          "const": "auto",
+          "description": "automatisch: Satin, solange kein Satinstich länger als 8 mm wird, sonst der ganze Text Step (eigene\nErweiterung – das Original wechselt bei Schrift nicht selbst; Grenze wie EasyStitch, Handbuch S. 118)",
+          "type": "string"
+        },
+        {
           "const": "step",
           "description": "Step: Reihen folgen den Stichwinkeln der Säulen",
           "type": "string"
