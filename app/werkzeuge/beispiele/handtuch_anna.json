@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "Handtuch Anna",
+  "rahmen": "artista 130 x 100 Rotated",
+  "stoff": "Terry Medium Weight",
+  "garnkarte": "Isacord 40 wt-numerical",
+  "objekte": [
+    { "art": "text", "name": "Anna", "farbe": "#004780", "text": "Anna", "alphabet": "Drifter", "hoehe": 25, "ausrichtung": "mitte" }
+  ]
+}

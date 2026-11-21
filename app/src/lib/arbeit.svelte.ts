@@ -15,6 +15,12 @@ import {
 } from "$kern/kern";
 
 export type Modus = "einfach" | "experte";
+/** offener Dialog (gerendert in +page.svelte) */
+export type OffenerDialog =
+  | { art: "alphabet"; objekt: number }
+  | { art: "garn"; objekt: number; titel?: string }
+  | { art: "bild" }
+  | { art: "svg" };
 export type Ansicht = "stiche" | "form" | "abspielen";
 
 /** Neues, leeres Design mit den Standardwerten des Formats (`design.schema.json`). */
@@ -34,7 +40,16 @@ export function alsFehler(x: unknown): Fehler {
 }
 
 /** Startoptionen aus der Befehlszeile: `artista-stickprogramm [DATEI.json] [--experte] [--dunkel|--hell] [--auswahl N]` */
-type StartOptionen = { datei?: string; modus?: Modus; dunkel?: boolean; auswahl?: number; ansicht?: Ansicht };
+type StartOptionen = {
+  datei?: string;
+  modus?: Modus;
+  dunkel?: boolean;
+  auswahl?: number;
+  ansicht?: Ansicht;
+  /** nur für Bildschirmfotos (app/werkzeuge/bildschirmfoto.py) */
+  schritt?: number;
+  dialog?: OffenerDialog;
+};
 
 const ENTPRELLEN_MS = 140;
 const ZUSAMMENFASSEN_MS = 900;
@@ -45,6 +60,9 @@ class Arbeit {
   design = $state<DesignJson>(leeresDesign());
   modus = $state<Modus>("einfach");
   ansicht = $state<Ansicht>("stiche");
+  /** Schritt des Assistenten (einfacher Modus): 1 Rahmen & Stoff · 2 Gestalten · 3 Prüfen & Garn · 4 Senden */
+  schritt = $state(1);
+  dialog = $state<OffenerDialog | null>(null);
   dunkel = $state(false);
   /** gewählte Objekte (Nummern ab 0, Klickfolge) */
   auswahl = $state<number[]>([]);
@@ -95,6 +113,7 @@ class Arbeit {
     // Darstellung: Startoption, sonst wie das System
     this.dunkel = start.dunkel ?? globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
     if (start.ansicht) this.ansicht = start.ansicht;
+    if (start.schritt) this.schritt = start.schritt;
     try {
       this.rahmenListe = await kern("rahmen_liste", {});
     } catch (x) {
@@ -109,7 +128,8 @@ class Arbeit {
       }
     }
     if (typeof start.auswahl === "number") this.auswahl = [start.auswahl];
-    this.berechnen();
+    await this.berechnen();
+    if (start.dialog) this.dialog = start.dialog;
   }
 
   zeige(text: string, art: "ok" | "err" | "info" = "info") {

@@ -19,7 +19,8 @@
 | Etappe | Inhalt | Stand |
 |---|---|---|
 | E1 Grundgerüst | Fensteraufbau (Kopf, Assistent/Objektliste, Vorschau, Statusleiste), Modus Einfach/Experte, Hell/Dunkel, Datei-Menü (Neu, Öffnen, Speichern, Beispiel, EXP), Rückgängig/Wiederholen (Strg+Z/Y, Tippen zusammengefasst), Berechnung entprellt (140 ms) mit Verwerfen veralteter Antworten, Stichvorschau (Zoom, Verschieben, Sprünge/Einstiche/Raster, Auswahl per Klick, Auswahlrahmen mit Maß, Formansicht, Einstiche außerhalb, Fehler am Objekt), Statusleiste (Kennzahlen, Datengröße/145 KB, Stickzeit als Schätzung, Hinweise mit „Zeigen“) | ✅ 21.11.2026 |
-| E2–E6 | siehe `../ROADMAP.md` Phase 5 | ⬜ |
+| E2 Einfacher Modus | Assistent in 4 Schritten: **1** Rahmen-Karten (Umriss aus `rahmen_liste`), „quer einspannen“, 8 Stoffe + Software Defaults mit Werten (`stoffe_liste`) · **2** Startkacheln Text, Monogramm, Bild umwandeln, SVG einlesen, Öffnen; Text (Alphabet-Dialog mit Vorschau aus den ESB-Umrissen und empfohlener Höhe, Höhe mit grünem Band, Ausrichtung, Form gerade/Bogen, Garn, Größe/Drehen des Designs, Mittig, Einpassen, fehlende Zeichen, Passt/Passt nicht); Monogramm (Initialen, Rahmen, Höhe) · **3** Farbstopps mit Garn (Marke · Nummer · Name), „Garn ändern“ (Garn von Hand, Garnkarte wählbar), Applikations-Anleitung je Stopp, Kennzahlen, Hinweise für die Person an der Maschine · **4** Speichern/EXP (Senden folgt in E3) | ✅ 21.11.2026 |
+| E3–E6 | siehe `../ROADMAP.md` Phase 5 | ⬜ |
 
 ## Ordner
 | Pfad | Inhalt |
@@ -48,5 +49,5 @@ Darstellung, gewähltes Objekt – für „Öffnen mit“ und Bildschirmfotos).
 
 Bildschirmfoto: `npm run build` und `cargo build -p stick-cli` (in `kern/`), dann
 `python3 werkzeuge/bildschirmfoto.py ../stickprogramm/beispiele/beispiel.json bildschirmfotos/x.png --experte --auswahl 2`
-(Optionen `--ansicht form`, `--dunkel`, `--groesse 1280x800`). Echte Fensterfotos auf dem Mac bräuchten die
+(Optionen `--ansicht form`, `--dunkel`, `--schritt 2`, `--dialog '{"art":"alphabet","objekt":0}'`, `--groesse 1280x800`; Beispiel `werkzeuge/beispiele/handtuch_anna.json`). Echte Fensterfotos auf dem Mac bräuchten die
 Berechtigung „Bildschirmaufnahme“ für das Terminal.

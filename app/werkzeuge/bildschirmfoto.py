@@ -66,6 +66,8 @@ def main():
     a.add_argument("--dunkel", action="store_true")
     a.add_argument("--auswahl", type=int)
     a.add_argument("--ansicht")
+    a.add_argument("--schritt", type=int)
+    a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
     a.add_argument("--groesse", default="1280x800")
     a.add_argument("--stick")
     a.add_argument("--browser")
@@ -80,6 +82,15 @@ def main():
     }
     for b in ("design_berechnen", "design_formen", "design_pruefen"):
         antworten[b] = api(stick, b, {"design": design})
+    for b in ("alphabete_liste", "stoffe_liste", "garnkarten_liste"):
+        antworten[b] = api(stick, b, {})
+    karte = design.get("garnkarte", "Default")
+    if karte != "keine":
+        antworten["garnkarte_garne:" + karte] = api(stick, "garnkarte_garne", {"name": karte})
+    if o.dialog and json.loads(o.dialog).get("art") == "alphabet":
+        for a_ in antworten["alphabete_liste"]:
+            antworten["alphabet_vorschau:" + a_["name"]] = api(
+                stick, "alphabet_vorschau", {"alphabet": a_["name"], "text": "Aa Bb"})
 
     build = os.path.join(APP, "build")
     if not os.path.exists(os.path.join(build, "index.html")):
@@ -93,6 +104,10 @@ def main():
     start["dunkel"] = o.dunkel
     if o.ansicht:
         start["ansicht"] = o.ansicht
+    if o.schritt:
+        start["schritt"] = o.schritt
+    if o.dialog:
+        start["dialog"] = json.loads(o.dialog)
     if o.auswahl is not None:
         start["auswahl"] = o.auswahl
     vorspann = f"""<script>
@@ -102,7 +117,8 @@ window.__TAURI_INTERNALS__ = {{
   transformCallback: () => 0,
   invoke: (cmd, args) => {{
     if (cmd !== "kern") return Promise.reject({{ meldung: "Bildschirmfoto: Befehl " + cmd, objekt: null }});
-    const a = ANTWORTEN[args.befehl];
+    const d = args.daten || {{}};
+    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.name || "")] ?? ANTWORTEN[args.befehl];
     if (a === undefined) return Promise.reject({{ meldung: "Bildschirmfoto: " + args.befehl + " nicht vorbereitet", objekt: null }});
     if (a && a.__fehler__) return Promise.reject(a.__fehler__);
     return Promise.resolve(JSON.parse(JSON.stringify(a)));

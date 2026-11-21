@@ -242,7 +242,7 @@ ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-1
 |---|---|---|
 | E0 | Kern-Wünsche (UEBERGABE §4): Hinweise mit Objektnummer (W2), Begrenzung (W6), Datengröße gegen 145 426 Byte (W8), Garn von Hand `garn` (W3), Farbblöcke mit Applikationslagen (W11), Alphabete mit empfohlener Höhe + `alphabet_vorschau` (W1), `step_muster_liste` (W7); W4 war schon erfüllt | ✅ 21.11. (0d56a68) |
 | E1 | Grundgerüst: alte Oberfläche archivieren, Tauri-Befehl `kern`, `kern.ts` per Alias, Tokens/Barlow offline, Fensteraufbau, Design-Zustand mit Rückgängig, Berechnung entprellt, Stichvorschau mit Auswahl | ✅ 21.11. (`app/README.md`; Bildschirmfotos `app/bildschirmfotos/e1_*`; Werkzeug `app/werkzeuge/bildschirmfoto.py`, weil das Terminal auf dem Mac keine Bildschirmaufnahme darf) |
-| E2 | Einfacher Modus: Assistent 4 Schritte (Rahmen & Stoff · Gestalten · Prüfen & Garn · Speichern/Senden), Dialoge Alphabet, Garn | ⬜ |
+| E2 | Einfacher Modus: Assistent 4 Schritte (Rahmen & Stoff · Gestalten · Prüfen & Garn · Speichern/Senden), Dialoge Alphabet, Garn | ✅ 21.11. (dazu Bild umwandeln, SVG einlesen; Bilder `app/bildschirmfotos/e2_*`) |
 | E3 | Maschine: Befehle nach `stick-api` (W10: Abbrechen, Wiederholungen, Fehlercodes; Garn von Hand in der Garnfarbtabelle), Senden in 4 Stufen, Sticken-Dialog, Simulation, Fehlerzustände, Anleitung, „Aus der Maschine“ – nur Simulation | ⬜ |
 | E4 | Experte I: Objektliste (Color Film), Anordnen mit Überdeckungswarnung, Werkzeugleiste/Einfügen (alle Objektarten inkl. Knopfloch, SVG), Inspektor Objekt/Design | ⬜ |
 | E5 | Experte II: Griffe (verschieben, skalieren, drehen), Ein-/Ausstich, Einzelwerte, JSON, Abspielen, Füllmuster-/Step-Dialog, einzelne Buchstaben (W9) | ⬜ |

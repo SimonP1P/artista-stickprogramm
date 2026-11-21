@@ -8,6 +8,11 @@
   import { ART, IC } from "$lib/icons";
   import Statusleiste from "$lib/Statusleiste.svelte";
   import Vorschau from "$lib/Vorschau.svelte";
+  import Assistent from "$lib/Assistent.svelte";
+  import AlphabetDialog from "$lib/dialoge/AlphabetDialog.svelte";
+  import GarnDialog from "$lib/dialoge/GarnDialog.svelte";
+  import EinlesenDialog from "$lib/dialoge/EinlesenDialog.svelte";
+  import type { GarnInfo } from "$kern/kern";
 
   let menue = $state<"datei" | null>(null);
   let spruenge = $state(true);
@@ -31,12 +36,28 @@
     { l: "Speichern unter …", go: () => speichern(true) },
     "-",
     { l: "Beispiel laden", go: beispiel },
-    { l: "Bild umwandeln …", spaeter: "E2" },
-    { l: "SVG einlesen …", spaeter: "E2" },
+    { l: "Bild umwandeln …", go: () => (arbeit.dialog = { art: "bild" }) },
+    { l: "SVG einlesen …", go: () => (arbeit.dialog = { art: "svg" }) },
     "-",
     { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
     { l: "Designs aus der Maschine …", spaeter: "E3" },
   ];
+
+  /** Garn des Farbblocks, mit dem ein Objekt beginnt (Anzeige „jetzt: …“) */
+  function garnVon(o: number): GarnInfo | undefined {
+    const e = arbeit.ergebnis;
+    const k = e?.bloecke.findIndex((b) => b.objekt === o || b.objekte.includes(o)) ?? -1;
+    return k >= 0 ? e?.garne[k] : undefined;
+  }
+  function garnSetzen(o: number, g: GarnInfo) {
+    arbeit.aendern((d) => {
+      const x = d.objekte?.[o];
+      if (!x) return;
+      x.garn = g.nummer;
+      x.farbe = g.rgb;
+    });
+    arbeit.dialog = null;
+  }
 
   function waehle(f?: () => void) {
     menue = null;
@@ -47,6 +68,7 @@
     const strg = ev.ctrlKey || ev.metaKey;
     const ziel = ev.target as HTMLElement;
     const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
+    if (arbeit.dialog) return; // Dialog behandelt Esc selbst
     if (ev.key === "Escape") {
       if (menue) menue = null;
       else arbeit.waehlen(null);
@@ -146,18 +168,7 @@
 
   <div style="flex:1; min-height:0; display:flex">
     {#if arbeit.modus === "einfach"}
-      <aside class="pane" aria-label="Assistent" style="width:360px; border-right:1px solid var(--line)">
-        <nav aria-label="Schritte" style="flex:none; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-bottom:1px solid var(--line); background:var(--color-bg)">
-          {#each ["Rahmen & Stoff", "Gestalten", "Prüfen & Garn", istMac ? "Speichern" : "Senden"] as s, k (k)}
-            <button class="stp" class:cur={k === 0} style="flex-direction:column; align-items:flex-start; gap:3px; font-size:12px">
-              <span class="n">{k + 1}</span><span style="white-space:nowrap">{s}</span>
-            </button>
-          {/each}
-        </nav>
-        <div class="scroll" style="padding:16px">
-          <div class="note">Der Assistent folgt in Etappe E2. Bis dahin: Datei › Öffnen oder Beispiel laden.</div>
-        </div>
-      </aside>
+      <Assistent {istMac} />
     {:else}
       <aside class="pane" aria-label="Objekte" style="width:268px; border-right:1px solid var(--line)">
         <div class="pane-h"><span class="hd" style="font-size:17px">Objekte</span><span class="badge">{arbeit.objekte.length}</span></div>
@@ -239,4 +250,30 @@
       <Statusleiste />
     </section>
   </div>
+
+  {#if arbeit.dialog?.art === "alphabet"}
+    {@const o = arbeit.dialog.objekt}
+    {@const x = arbeit.objekte[o]}
+    <AlphabetDialog
+      aktuell={x && "alphabet" in x ? x.alphabet : undefined}
+      waehlen={(name) => {
+        arbeit.aendern((d) => {
+          const y = d.objekte?.[o];
+          if (y && "alphabet" in y) y.alphabet = name;
+        });
+        arbeit.dialog = null;
+      }}
+      schliessen={() => (arbeit.dialog = null)}
+    />
+  {:else if arbeit.dialog?.art === "garn"}
+    {@const o = arbeit.dialog.objekt}
+    <GarnDialog
+      untertitel={arbeit.dialog.titel ?? arbeit.objekte[o]?.name ?? ""}
+      aktuell={garnVon(o)}
+      waehlen={(g) => garnSetzen(o, g)}
+      schliessen={() => (arbeit.dialog = null)}
+    />
+  {:else if arbeit.dialog?.art === "bild" || arbeit.dialog?.art === "svg"}
+    <EinlesenDialog art={arbeit.dialog.art} schliessen={() => (arbeit.dialog = null)} />
+  {/if}
 </div>
