@@ -15,6 +15,12 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Satin-Fächer an Innenspitzen gleichmäßig (Fehler gemeldet vom Nutzer; Commit …)
+- **Nur Kern, keine Feldänderung:** Computer-Schrift in Satin/auto und `satinflaeche`: Fächer an der Innenseite von
+  Spitzen und Kehren bleiben Fächer (keine einseitigen „Finger“ mehr innen am „A“, „V“, „W“). Original-Alphabete
+  unverändert.
+- **Oberfläche:** nichts zu tun.
+
 ## 21.11.2026 – Satinsäulen überlappen an Schnitten (Fehler gemeldet vom Nutzer; Commit e332611)
 - **Nur Kern, keine Feldänderung:** Computer-Schrift in Satin/auto und `satinflaeche` mit `knickwinkel` > 0: Säulen
   überlappen an Teilungen und Abzweigungen 0,3 mm (Original „Create Overlaps“) – kein Spalt mehr an Spitzen.

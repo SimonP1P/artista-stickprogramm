@@ -77,8 +77,8 @@ kennzeichnen, Bericht 20 §4), danach 4b.8 Effekte … Dabei jeweils CLAUDE.md �
   nötig: EZSTITCH.DLL, MOD1.DLL, GEOMETRY.DLL, IMPORT.DLL sind lesbar.
 - Offen aus 4b.5 (Bericht 16 §5): Platzierung von „Sequence By Color“ bei Teilauswahl, Ausstich in Flächen wie das
   Original, Bedeutung „Auto Sequence“.
-- Offen aus 4b.17-Baustein (Bericht 17 §6): Einzelregeln `SignificantTriangles`/Schnittstufen, Überlappung an
-  Abzweigungen („Create Overlaps“, „T“-Abzweigungen 0,3 mm). Prüfdaten: `art_autosatin.py export/vergleich`
+- Offen aus 4b.17-Baustein (Bericht 17 §6): Einzelregeln `SignificantTriangles`/Schnittstufen (Überlappung an
+  Abzweigungen ✅ 21.11.). Prüfdaten: `art_autosatin.py export/vergleich`
   (54 Säulen aus `Samples/AutoDigitizing`, Vergleich mit `stick saeulen`).
 
 **Arbeitsweise (vom Nutzer festgelegt):**
@@ -297,7 +297,9 @@ Mittellauf + Zickzack** (Entscheidung Nutzer, eigene Festlegung); einfacher Modu
 Häkchen. `schrift_wechseln` behält Unterlage und Stichart. **Offen (Vor Ort):** „Anna“ in Arial Black 20 mm auf Strick
 mit und ohne Stabilisieren sticken. **Behoben (21.11.):** Computer-Schriften mit überlappenden Konturen (variable
 Schriften, Google Sans „A“ zerrissen ab 25 mm) – Nicht-Null-Regel; Step bei „auto“ je Buchstabe als eine Fläche;
-Säulen der TrueType-Umwandlung überlappen an Schnitten 0,3 mm (Spalt an der Spitze des „A“, Bericht 17 §6.2).
+Säulen der TrueType-Umwandlung überlappen an Schnitten 0,3 mm (Spalt an der Spitze des „A“, Bericht 17 §6.2);
+einseitige „Finger“ innen an Spitzen („A“, „V“, „W“) – Satin übernimmt die Paare der Zerlegung, Fächer um Randpunkte
+mit fester erster/letzter Linie (Bericht 17 §4, Bericht 21 §5; Auto Digitizer 54/54 unverändert, Alphabete byte-gleich).
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),

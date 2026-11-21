@@ -75,6 +75,20 @@ pub const KNICKWINKEL_TURNING: f64 = 87.0;
 /// blieb an der Spitze des „A“ (Teilung am Knick, Fächer) ein Spalt (21.11.2026).
 pub const UEBERLAPPUNG_TURNING: f64 = 0.3;
 
+/// Fächer ab diesem Winkel (Grad zwischen erster und letzter Sehne um denselben Randpunkt) bekommen an beiden Enden
+/// eine feste Stichlinie (**eigene Festlegung**).
+const FAECHER_WINKEL: f64 = 20.0;
+
+/// Winkel (Grad) zwischen zwei Sehnen, die beide am Punkt `v` enden.
+fn faecher_winkel(n: &Netz, a: (usize, usize), b: (usize, usize), v: usize) -> f64 {
+    let anderer = |s: (usize, usize)| if s.0 == v { s.1 } else { s.0 };
+    let q = n.pkt[v];
+    let (x, y) = (n.pkt[anderer(a)], n.pkt[anderer(b)]);
+    let w = |r: Punkt| (r.y - q.y).atan2(r.x - q.x);
+    let d = (w(x) - w(y)).abs().to_degrees();
+    if d > 180.0 { 360.0 - d } else { d }
+}
+
 /// Teile, deren Fläche unter diesem Anteil der ganzen Form liegt (und unter `SPLITTER_MM2`), entfallen – Splitter aus
 /// sich selbst berührenden Umrissen (**eigene Festlegung**).
 const SPLITTER_ANTEIL: f64 = 0.02;
@@ -793,7 +807,10 @@ pub fn zerlegen(umriss: &[Punkt], loecher: &[Linie], o: &SaeulenWerte) -> Result
                 .unwrap_or(0);
             (von, bis) = (l, l);
         }
-        // feste Stellen: Anfang, Ende, Randecken (bei einem Fächer um eine Ecke die mittlere Sehne)
+        // feste Stellen: Anfang, Ende, Randecken (bei einem Fächer um eine Ecke die mittlere Sehne); Fächer um einen
+        // anderen Randpunkt (Innenseite einer Kehre, Spitze innen am „A“): erste und letzte Sehne, damit die Stiche dort
+        // vom Punkt ausstrahlen statt über die Kante verteilt zu dicht zu liegen (**eigene Festlegung**, 21.11.2026 –
+        // vorher hing es vom Zufall der Linienauswahl ab, links und rechts am „A“ verschieden)
         let mut fest = vec![von, bis];
         let mut i = von;
         while i <= bis {
@@ -805,8 +822,22 @@ pub fn zerlegen(umriss: &[Punkt], loecher: &[Linie], o: &SaeulenWerte) -> Result
                 }
                 fest.push((i + j) / 2);
                 i = j + 1;
-            } else {
-                i += 1;
+                continue;
+            }
+            let faecher = [s[i].0, s[i].1].into_iter().map(|v| {
+                let mut j = i;
+                while j < bis && (s[j + 1].0 == v || s[j + 1].1 == v) {
+                    j += 1;
+                }
+                (v, j)
+            });
+            match faecher.max_by_key(|&(_, j)| j) {
+                Some((v, j)) if j >= i + 2 && faecher_winkel(&netz, s[i], s[j], v) >= FAECHER_WINKEL => {
+                    fest.push(i);
+                    fest.push(j);
+                    i = j + 1;
+                }
+                _ => i += 1,
             }
         }
         fest.sort_unstable();

@@ -412,6 +412,34 @@ mod tests {
         assert!(mit > ohne + 1.0, "mit {mit}, ohne {ohne}");
     }
 
+    /// Das „A“ ist spiegelgleich, also auch seine Zerlegung: beide Beine laufen oben als Fächer in die Innenspitze
+    /// (vorher hing das von der Linienauswahl ab – links verteilt, rechts Fächer)
+    #[test]
+    fn a_zerlegung_spiegelgleich() {
+        let f = ringe_ordnen(&a_google_sans());
+        let w = crate::saeulen::SaeulenWerte {
+            knickwinkel: crate::saeulen::KNICKWINKEL_TURNING,
+            ueberlappung: crate::saeulen::UEBERLAPPUNG_TURNING,
+            ..Default::default()
+        };
+        let s = crate::saeulen::zerlegen(&f[0].0, &f[0].1, &w).unwrap();
+        // beide oberen Säulen (linkes und rechtes Bein): viele Paare enden in der Innenspitze (Fächer)
+        let oben: Vec<_> = s.iter().filter(|x| x.umriss.iter().any(|q| q.y > 24.9)).collect();
+        assert_eq!(oben.len(), 2);
+        for x in oben {
+            let n = x
+                .seite_b
+                .iter()
+                .filter(|q| (q.y - 21.37).abs() < 0.01 && q.x.abs() < 0.1)
+                .count()
+                + x.seite_a
+                    .iter()
+                    .filter(|q| (q.y - 21.37).abs() < 0.01 && q.x.abs() < 0.1)
+                    .count();
+            assert!(n >= 10, "Fächer an der Innenspitze: {n} Punkte");
+        }
+    }
+
     #[test]
     fn ueberlappende_konturen() {
         let ringe = a_google_sans();

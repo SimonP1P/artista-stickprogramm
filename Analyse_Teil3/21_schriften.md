@@ -113,6 +113,15 @@ vereinigt (`aussparen::vereinigen_nonzero`), auch für Lauf/Dreifach (keine Lini
 wie im Original („Create Overlaps“, Bericht 17 §6.2) – vorher stießen sie aneinander, an der Spitze des „A“ blieb ein
 keilförmiger Spalt.
 
+**„Finger“ an der Innenspitze (21.11.2026, Nutzer: „warum nur auf einer Seite?“):** Innen an der Spitze des „A“
+(Google Sans 25 mm, Satin) standen nur links abwechselnd kurze und lange Stiche über die Kante. Erste Erklärung
+(gewollter Zugausgleich) war falsch. Ursache: (1) Die Satinberechnung paarte die Seiten der Säulen neu nach Bogenlänge
+und verschmierte so den Fächer der linken Säule über 3 mm der Innenkante – die Stiche lagen dort zu dicht, die
+Kurzstich-Regel des Originals kürzte jeden zweiten; (2) ob überhaupt ein Fächer entsteht, hing von der zufälligen
+Triangulation ab (rechts ja, links nein). Behoben: Paare der Zerlegung bleiben erhalten, Fächer um einen Randpunkt
+bekommen feste erste/letzte Stichlinie (Bericht 17 §4 Punkt 6 und 8). Beide Beine laufen jetzt gleich als Fächer in
+die Innenspitze; Original-Alphabete unverändert (byte-gleich geprüft), Auto Digitizer unverändert (54/54, 4,4°).
+
 **Step bei „auto“ für Computer-Schriften — eigene Festlegung:** jeder Buchstabe als **eine** Tatami-Fläche
 (Vereinigung seiner Säulen = Umriss), Stichwinkel des Stils, Step-Unterlage, wenn Unterlage gewählt
 (`schrift::auf_tatami`). Step-Reihen je Teilstück der automatischen Zerlegung lagen an Spitzen und Abzweigungen kreuz

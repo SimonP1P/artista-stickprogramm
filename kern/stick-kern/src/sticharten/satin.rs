@@ -39,6 +39,27 @@ fn runden9(t: f64) -> f64 {
 }
 
 pub fn paare_bilden(seite_a: &[Punkt], seite_b: &[Punkt]) -> Result<(Linie, Linie), String> {
+    // Gleich viele Punkte = schon gepaart (z. B. aus der Zerlegung `saeulen.rs`: im Fächer steht auf einer Seite
+    // mehrmals derselbe Punkt). Paare behalten, nur doppelte Paare weglassen. Bis 21.11.2026 wurden die Seiten einzeln
+    // entdoppelt und neu nach Bogenlänge gepaart – das verschmierte Fächer über die ganze Säule (Stiche schräg, an der
+    // Innenkante zu dicht, Kurzstiche als „Finger“ innen an der Spitze des „A“).
+    if seite_a.len() == seite_b.len() {
+        let (mut a, mut b): (Linie, Linie) = (Vec::new(), Vec::new());
+        for (&q, &r) in seite_a.iter().zip(seite_b) {
+            if let (Some(&x), Some(&y)) = (a.last(), b.last())
+                && abstand(x, q) < 1e-9
+                && abstand(y, r) < 1e-9
+            {
+                continue;
+            }
+            a.push(q);
+            b.push(r);
+        }
+        let laenge = |l: &Linie| kumuliert(l).last().copied().unwrap_or(0.0);
+        if a.len() >= 2 && (laenge(&a) > 1e-9 || laenge(&b) > 1e-9) {
+            return Ok((a, b));
+        }
+    }
     let (a, b) = (ohne_doppelte(seite_a), ohne_doppelte(seite_b));
     if a.len() < 2 || b.len() < 2 {
         return Err("Satinsäule: jede Seite braucht mindestens 2 Punkte".into());
@@ -345,6 +366,20 @@ mod tests {
         let pts = satin_einstiche(&a, &b, &SatinEinstellung::default(), false).unwrap();
         let dx: Vec<f64> = pts[..pts.len() - 1].windows(2).map(|w| w[1].x - w[0].x).collect();
         assert!(dx.iter().all(|d| (d - 0.20).abs() < 1e-9));
+    }
+
+    /// Gleich viele Punkte = schon gepaart: ein Fächer (Seite B bleibt auf einem Punkt) wird nicht über die Säule
+    /// verschmiert
+    #[test]
+    fn faecher_bleibt_gepaart() {
+        let a = vec![p(0.0, 4.0), p(1.0, 4.0), p(2.0, 4.0), p(3.0, 3.0), p(4.0, 2.0)];
+        let b = vec![p(1.0, 0.0), p(1.0, 0.0), p(1.0, 0.0), p(2.0, -0.5), p(4.0, -1.0)];
+        let (pa, pb) = paare_bilden(&a, &b).unwrap();
+        assert_eq!((pa.len(), pb.len()), (5, 5));
+        assert!(pb[..3].iter().all(|q| abstand(*q, p(1.0, 0.0)) < 1e-12));
+        // ungleich viele Punkte: weiter nach Bogenlänge
+        let (qa, qb) = paare_bilden(&a[..3], &b[2..]).unwrap();
+        assert_eq!(qa.len(), qb.len());
     }
 
     #[test]

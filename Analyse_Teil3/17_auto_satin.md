@@ -68,10 +68,18 @@ dicke Linien der Bilder, 0,3–0,9 mm breit).
    Festlegung**).
 6. Stichlinien = innere Kanten, ausgewählt nach Douglas-Peucker auf der Mittellinie mit **0,3 × Breite** (eingestellt
    an §3: 4,3 × Breite Abstand, Original 4,2); Randecken < 120° erzwingen eine Linie (mittlere Sehne des Fächers).
+   Ein Fächer um einen anderen Randpunkt (Innenseite einer Kehre, Innenspitze des „A“) ab 20° Öffnung erzwingt seine
+   erste und letzte Sehne (**eigene Festlegung**, 21.11.2026; vorher entschied die zufällige Lage der Dreiecke, ob dort
+   ein Fächer entstand – links und rechts am „A“ verschieden). An den 54 Säulen des Auto Digitizers ändert das nichts
+   (§5 unverändert).
 7. Teilung am Knick nur, wenn eingestellt (`knickwinkel`; 0 = nie wie der Auto Digitizer, 87° = TrueType); gemessen
    zwischen gewählten Linien, die mindestens eine Breite entfernt liegen.
 8. Seiten A/B: zwischen den Stichlinien nach relativer Bogenlänge (wie die Wendefüllung), je Randpunkt und
-   mindestens alle 1 mm ein Paar; Splitter (unter 2 % der Fläche und unter 0,5 mm²) entfallen.
+   mindestens alle 1 mm ein Paar; Splitter (unter 2 % der Fläche und unter 0,5 mm²) entfallen. Die Satinberechnung
+   übernimmt diese Paare unverändert (`satin::paare_bilden`: gleich viele Punkte = schon gepaart; im Fächer steht auf
+   einer Seite mehrmals derselbe Punkt). Bis 21.11.2026 wurden die Seiten dort einzeln entdoppelt und neu nach
+   Bogenlänge gepaart – das verschmierte jeden Fächer über die ganze Säule: Stiche schräg, an der Innenkante zu dicht,
+   Kurzstiche als „Finger“ an der Innenspitze des „A“ und im „V“.
 
 Verwendung: JSON `{"art": "satinflaeche", "umriss", "loecher", "unterlage", "abstand", "faktor", "kurzstiche",
 "stichart", "knickwinkel"}` → Gruppe aus Satinsäulen, verbunden wie ein Buchstabe (Laufweg 1,8 mm, Lauf 0x271c der
