@@ -297,9 +297,10 @@
         class:done={arbeit.schritt > k + 1}
         aria-current={arbeit.schritt === k + 1 ? "step" : undefined}
         onclick={() => (arbeit.schritt = k + 1)}
-        style="flex-direction:column; align-items:flex-start; gap:3px; font-size:12px"
+        style="flex-direction:column; align-items:center; justify-content:flex-start; gap:3px; font-size:12px; padding:9px 3px; text-align:center"
       >
-        <span class="n">{k + 1}</span><span style="white-space:nowrap">{s}</span>
+        <!-- Nummer mittig; die Beschriftung bricht notfalls um statt abgeschnitten zu werden (Spalte nur 90 px) -->
+        <span class="n">{k + 1}</span><span style="line-height:1.25; text-wrap:balance; overflow-wrap:anywhere">{s}</span>
       </button>
     {/each}
   </nav>
