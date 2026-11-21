@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Knopflöcher (ROADMAP 4b.6, Commit folgt)
+## 21.11.2026 – Knopflöcher (ROADMAP 4b.6, Commit 7de0a07)
 - **Neu:** Objektart `knopfloch` mit `typ` (9 Werte: `standard`, `standard_schmal`, `rund`, `dehnbar`, `heirloom`,
   `rundes_ende`, `auge_eckig`, `auge_rund`, `auge_spitz`), `position` (Mitte des Schlitzes), `laenge` (20 mm, 3–60),
   `winkel` (90° = senkrecht), `abstand` (Raupenabstand, ohne Angabe wie die Vorlage) – Felder in `SCHNITTSTELLE.md`.
