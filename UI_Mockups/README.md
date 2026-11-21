@@ -1,11 +1,13 @@
 # UI-Mockups (Claude Design) – Archiv
 
 Die Mockups der neuen Oberfläche entstehen mit Claude Design (Nutzer). Hier liegen die Stände zum Nachschlagen; sie
-sind **nicht** die App (`app/` bleibt unverändert, bis die neue Oberfläche feststeht).
+sind **nicht** die App. **Seit 21.11.2026 ist v3 der verbindliche Entwurf** und wird in `app/` umgesetzt (Sperre
+„an der App nichts ändern“ aufgehoben, Nutzer 21.11.2026).
 
 | Stand | Ordner | Inhalt |
 |---|---|---|
 | v1 + v2, 20.11.2026 | `v1_2026-11-20/` | `Stickprogramm.dc.html` (v1: 6 Schritte Motiv → Senden), `Stickprogramm v2.dc.html` (v2: Gestalten, Rahmen, Stoff & Reihenfolge, Vorschau, Senden; Einfach/Erweitert), `Vergleich Designsysteme.dc.html`; Bildschirmfotos in `screenshots/` |
+| **v3 final, 21.11.2026 – wird umgesetzt** | `v3_2026-11-21/` | **`UEBERGABE.md`** (Abgleich, Bildschirme/Komponenten, Zuordnung Bedienelement → Feld/Befehl, Wünsche an den Kern §4, Tokens/Icons, Antworten auf ANFORDERUNGEN §7, Sicherheit), `Stickprogramm v3 Zustaende.dc.html` (Einstieg: 34 Zustände), `Stickprogramm v3 Kern.dc.html` (klickbar, `?zustand=…`), `Stickprogramm v3 Vorentwurf.dc.html` (überholt); Originale: Claude-Design-Artefakt `claude.ai/artifact/EX9at2hhDFeDCM1zneVLgC`. `_ds/industry-…` und `stich.js` aus v1 ergänzt (fehlten im Upload); die gleichen Kopien `UEBERGABE_1/2.md` entfernt. Stand des Entwurfs: `main` vom 21.11. ca. 0:30 – **Knopflöcher (4b.6) sind darin noch nicht enthalten** |
 
 Öffnen: die `.dc.html` im Browser (Ordner muss vollständig sein, `support.js` und `_ds/` werden nachgeladen).
 

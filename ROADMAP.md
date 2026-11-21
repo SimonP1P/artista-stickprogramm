@@ -50,8 +50,9 @@ gegen das Musterdesign `Buttonholes.ART` gemessen; JSON `"art": "knopfloch"`, CL
 `stickprogramm/beispiele/knopfloecher.json`; Bericht `Analyse_Teil3/19`. Offen dort §6 (Merge im Code bestätigen,
 Vernähen je Teil).
 
-**Neue UI-Entwürfe** liegen seit 21.11. auf GitHub: `UI_Mockups/2026-11-21_final/` (README, UEBERGABE*.md, drei
-`.dc.html`) – noch nicht angesehen/abgeglichen (Merkliste M3).
+**Neue Oberfläche (21.11.):** Entwurf v3 archiviert unter `UI_Mockups/v3_2026-11-21/` (Merkliste M3 ✅) und
+**verbindlich** – die Sperre „App nicht ändern“ ist aufgehoben. Abgleich mit `SCHNITTSTELLE.md` und Etappenplan:
+mit dem Nutzer abstimmen, dann umsetzen (Phase 5).
 
 **Nächster Schritt:** die übrigen Blöcke in Tabellen-Reihenfolge: **4b.7 Motive** (Pattern Run/Fill, Kap. 25), 4b.8
 Effekte … Dabei jeweils CLAUDE.md §4 Regel 7 (Schnittstelle) beachten.
@@ -71,8 +72,10 @@ Effekte … Dabei jeweils CLAUDE.md §4 Regel 7 (Schnittstelle) beachten.
   `Arbeitsdaten/werkzeuge/rdis.py`, capstone/pefile im `venv`), Handbuch `Arbeitsdaten/texte/man_raw_pg.txt`,
   **Messung an den 287 Musterdesigns** (`F:/Entwicklung/artista_ziel/Main/Samples`, Werkzeuge `Arbeitsdaten/werkzeuge/art_*.py`,
   Python mit `venv/Scripts/python.exe`). Eigene Festlegungen nur als markierte Notlösung.
-- **App (`app/`) und `app/ANFORDERUNGEN.md` nicht ändern** – neue Funktionen nur im Kern/CLI; die Oberfläche gestaltet
-  der Nutzer mit Claude Design neu.
+- **Oberfläche (21.11.2026):** Die Sperre „App nicht ändern“ ist **aufgehoben** – der Entwurf v3
+  (`UI_Mockups/v3_2026-11-21/UEBERGABE.md`) wird in `app/` umgesetzt. Die Oberfläche rechnet keine Geometrie und keine
+  Stiche; sie ruft den Kern nur über `kern(…)` aus `kern/schnittstelle/kern.ts` (per Alias eingebunden). Fehlt ein
+  Feld/Befehl: im Kern ergänzen (Regel 7). Maschinen-Abläufe der alten Oberfläche bleiben erhalten.
 - Nach jedem Schritt: `cargo test --workspace`, `cargo clippy --workspace --all-targets -- -D warnings` (Umgebung
   CLAUDE.md §5), App mit `cargo check` in `app/src-tauri`; Doku pflegen:
   1. `stickprogramm/README.md` „Design beschreiben (JSON)“ (neue Felder),
@@ -99,7 +102,7 @@ Schreib-/Löschbefehle nur nach ausdrücklicher Zustimmung (CLAUDE.md §4 Regel 
 |---|---|---|---|
 | M1 | **Parameterkatalog melden:** Sobald alle Funktionen entwickelt sind, dem Nutzer sagen, **welche Parameter man verändern kann und könnte** – was einstellbar sein **kann** und was einstellbar sein **sollte**, getrennt nach **einfachem Modus** und **Expertenmodus** der App. Als eine Liste für Designer und Backend: maschinenlesbar aus dem Kern (z. B. `kern/parameter.json`) plus lesbare Fassung (`PARAMETER.md`); je Parameter Name, Gruppe (Stoff, Satin, Tatami, Füllmuster, Unterlage, Zugausgleich, Kurzstiche, Laufwege, Verbinder/Vernähen, Schrift, Applikation, Bild → Umrisse, Maschine …), gilt für (Design/Objektart), Einheit, Standard, Bereich, Quelle (Original-Fundstelle oder eigene Festlegung), Modus (einfach/experte/intern), Wirkung. Der Nutzer liefert dazu noch seine Parameterwünsche. | wenn Phase 4 fertig | 🟡 **angelegt 20.11.** (Wunsch Nutzer: schon jetzt): `PARAMETER.md`, `kern/stick-kern/daten/parameter.json` (132 Parameter: 31 einfach, 70 experte, 31 automatisch), CLI `stick parameter`; Tests halten ihn aktuell; wird mit jeder Funktion ergänzt; offen: Parameterwünsche des Nutzers, je Objekt überschreibbare Werte nachrüsten |
 | M2 | **Bild → Umrisse maßstabsfrei machen:** Umrisse ohne feste Breite liefern; Stichart (EasyStitch nach Breite in mm), Wegfall kleiner Details und Abstände erst beim Berechnen nach der endgültigen Größe entscheiden (heute legt `stick bild --breite` die Größe vorab fest) | mit dem Ausbau von Punkt 8 | ⬜ |
-| M3 | Neue UI-Mockups ansehen und unter `UI_Mockups/` archivieren (v1/v2 liegen dort, Hinweise in `UI_Mockups/README.md`); App erst ändern, wenn die Oberfläche feststeht | laufend | 🟡 |
+| M3 | Neue UI-Mockups ansehen und unter `UI_Mockups/` archivieren (v1/v2 liegen dort, Hinweise in `UI_Mockups/README.md`); App erst ändern, wenn die Oberfläche feststeht | laufend | ✅ 21.11.: v3 unter `UI_Mockups/v3_2026-11-21/`, verbindlich, Sperre aufgehoben |
 
 ## Vor Ort – wartet auf eine Person an der Maschine (Stand 20.11.2026)
 Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rahmen/Stoff, Start-Taste, Aus/Ein).
@@ -231,7 +234,8 @@ Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau
 
 ## Phase 5 – Maschine im Programm und Komfort
 **20.11.2026:** Die Oberfläche wird komplett neu gestaltet (Mockup von Claude Design, Zugriff auf das Repository);
-Anforderungen in `app/ANFORDERUNGEN.md`. Bis zum neuen Design keine Änderungen an der App, neue Funktionen nur im Kern.
+Anforderungen in `app/ANFORDERUNGEN.md`. **21.11.2026: Entwurf v3 ist fertig und verbindlich, die Sperre für die App
+ist aufgehoben** (Nutzer); Umsetzung in Etappen, Übergabe `UI_Mockups/v3_2026-11-21/UEBERGABE.md`.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –
   verbinden, Liste lesen, Design lesen, Garnfarbbereich, planen, senden; CLI `stick maschine …`; **am Gerät lesend
   erprobt** (prüfen 3,8 s, Liste, Nr. 47 mit vollständigem Icon)
