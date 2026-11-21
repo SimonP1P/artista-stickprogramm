@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Satinsäulen überlappen an Schnitten (Fehler gemeldet vom Nutzer; Commit COMMIT)
+## 21.11.2026 – Satinsäulen überlappen an Schnitten (Fehler gemeldet vom Nutzer; Commit e332611)
 - **Nur Kern, keine Feldänderung:** Computer-Schrift in Satin/auto und `satinflaeche` mit `knickwinkel` > 0: Säulen
   überlappen an Teilungen und Abzweigungen 0,3 mm (Original „Create Overlaps“) – kein Spalt mehr an Spitzen.
 - **Oberfläche:** nichts zu tun.
@@ -194,5 +194,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `59afa4f` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `e332611` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.
