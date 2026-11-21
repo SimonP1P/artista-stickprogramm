@@ -156,11 +156,11 @@ pub fn motivlinie_objekt(satz: &Motivsatz, v: &MotivVorgabe, farbe: &str, name: 
         return Err(format!("Motiv „{}“: Grundlinie ohne Länge", v.motiv));
     }
     let groesse = v.groesse.unwrap_or(l0 / EINHEIT);
-    if !(groesse > 0.0) {
+    if groesse.is_nan() || groesse <= 0.0 {
         return Err("Motivgröße muss größer als 0 sein".into());
     }
     let abstand = v.abstand.unwrap_or(groesse);
-    if !(abstand > 0.0) {
+    if abstand.is_nan() || abstand <= 0.0 {
         return Err("Motivabstand muss größer als 0 sein".into());
     }
     let w0 = (y2 - y1).atan2(x2 - x1);

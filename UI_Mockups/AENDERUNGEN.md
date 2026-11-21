@@ -15,6 +15,14 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Motivlinie (4b.7, Commit COMMIT)
+- **Neu:** Objektart `motivlinie` (`punkte`, `geschlossen`, `satz`, `motiv`, `groesse`, `abstand`, `spiegeln`) –
+  Motiv aus einem Motivsatz entlang einer Linie, Anzahl/Verteilung wie das Original. Befehle `motive_liste` (14 Sätze)
+  und `motivsatz_motive {satz}` (je Motiv Name, Länge, Höhe, Linien in mm für Vorschaubilder).
+- **Programm:** Ressource `app/src-tauri/motive/` (14 ESB), in `tauri.conf.json` gebündelt; `STICK_MOTIVE` überschreibt.
+- **Oberfläche:** umgesetzt – Einfügen → Motivlinie, Inspektor-Zeile „Motiv“ öffnet `MotivDialog` (Satz wählen,
+  Kacheln), Felder Motivgröße/Spiegeln/Geschlossen oben, Abstand bei den Feinheiten. Knoten-Werkzeug wie beim Lauf.
+
 ## 21.11.2026 – Buchstabe je Stich (W9, Commit a393218)
 - **Neu:** `design_berechnen` liefert `buchstabe` – je Stich die Nummer des Buchstabens bei Text/Computer-Schrift/
   Monogramm (1 = erster ohne Leerraum und `^`, wie `buchstaben[].nr`), 0 = kein Buchstabe.

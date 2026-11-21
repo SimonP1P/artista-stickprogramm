@@ -52,4 +52,5 @@ export const ART: Record<string, [string, string]> = {
   ttf: ["Text (Computer-Schrift)", "M4 7V4h16v3M9 20h6M12 4v16M17 14h4M19 12v4"],
   monogramm: ["Monogramm", "M4 20V4l8 10 8-10v16"],
   knopfloch: ["Knopfloch", "M9 3h6v18H9ZM12 7v10M9 3h6M9 21h6"],
+  motivlinie: ["Motivlinie", "M2 15c2-6 5-6 5 0s3 6 5 0 3-6 5 0 3 6 5 0M2 18h20"],
 };

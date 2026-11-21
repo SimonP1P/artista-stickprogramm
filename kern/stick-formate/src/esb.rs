@@ -504,7 +504,8 @@ pub fn verzeichnis(ordner: &Path) -> Vec<(String, PathBuf)> {
 // ---------------------------------------------------------------- Motivsätze (Ordner userletw/)
 
 /// Einen Motivsatz (Pattern Set, Handbuch Kap. 25; Ordner `userletw/`) laden: gleicher Aufbau wie ein Alphabet, die
-/// Streams heißen nach dem Motivnamen (UTF-16 hex, z. B. `003700300039` = „709“), der Name steht in 0x3a
+/// Streams heißen nach dem Motivnamen (UTF-16 hex, z. B. `003700300039` = „709“; Candlewicking `_CW004a`: Klartext
+/// mit vorangestelltem U+FFFF), der Name steht in 0x3a
 /// (`Analyse_Teil3/20_motive.md` §1). Defekte Motive werden übersprungen.
 pub fn motive_laden(pfad: &Path) -> Result<Motivsatz, String> {
     let mut datei = cfb::open(pfad).map_err(|e| format!("{}: {e}", pfad.display()))?;
@@ -525,8 +526,8 @@ pub fn motive_laden(pfad: &Path) -> Result<Motivsatz, String> {
             name = kopf_lesen(&roh)?.0;
             continue;
         }
-        if n.len() % 4 != 0 || !n.chars().all(|c| c.is_ascii_hexdigit()) {
-            continue; // AUX_INFO u. ä.
+        if n.eq_ignore_ascii_case("AUX_INFO") {
+            continue;
         }
         if let Some(d) = stream_entschluesseln(&roh)
             && let Ok((m, z)) = zeichen_mit_namen(&d)
@@ -987,6 +988,25 @@ mod tests {
             .filter(|t| matches!(t.art, TeilArt::Satin { .. }))
             .count();
         assert_eq!(spitz, 6);
+    }
+
+    /// Motivsatz Heirloom aus den Ressourcen des Programms (Kopie von `userletw/` der CD).
+    #[test]
+    fn motivsatz_heirloom() {
+        let p = Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/../../app/src-tauri/motive/Heirloom.ESB"));
+        let s = motive_laden(p).unwrap();
+        assert_eq!(s.name, "Heirloom");
+        assert_eq!(s.motive.len(), 20);
+        let m = &s.motive["709"];
+        assert_eq!(m.grundlinie, [-9900.0, -3420.0, -8820.0, -3420.0]);
+        assert!(matches!(m.objekte[0].stichart, Stichart::Lauf { .. }));
+        assert!(s.motive.contains_key("a701"));
+        // alle 14 Sätze lesbar, jeder mit Motiven
+        let alle = verzeichnis(p.parent().unwrap());
+        assert_eq!(alle.len(), 14);
+        for (n, q) in alle {
+            assert!(!motive_laden(&q).unwrap().motive.is_empty(), "{n}");
+        }
     }
 
     /// Mit der Original-CD (entpackt unter F:\Entwicklung\artista_ziel): Drifter vollständig lesen.

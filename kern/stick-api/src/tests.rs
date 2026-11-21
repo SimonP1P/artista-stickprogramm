@@ -173,6 +173,27 @@ fn buchstabe_je_stich() {
 }
 
 #[test]
+fn motivlinie() {
+    let k = kontext();
+    let l = ausfuehren(&k, "motive_liste", json!({})).unwrap();
+    assert_eq!(l.as_array().unwrap().len(), 14);
+    let m = ausfuehren(&k, "motivsatz_motive", json!({"satz": "Heirloom"})).unwrap();
+    let m705 = m.as_array().unwrap().iter().find(|x| x["name"] == "705").unwrap();
+    assert!((m705["laenge"].as_f64().unwrap() - 2037.0 / 180.0).abs() < 0.02);
+    assert!(!m705["linien"].as_array().unwrap().is_empty());
+    // 100 mm Linie, Motiv 705 (11,32 mm) → round(8,83) = 9 Kopien
+    let d = json!({"objekte": [{"art": "motivlinie", "satz": "Heirloom", "motiv": "705", "punkte": [[-50, 0], [50, 0]]}]});
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap();
+    let b: [f64; 4] = serde_json::from_value(e["begrenzung"].clone()).unwrap();
+    let (lo, hi) = (b[0], b[2]);
+    assert!(lo > -50.5 && hi < 50.5 + 11.4 - 100.0 / 9.0 + 0.5, "{lo} … {hi}");
+    // unbekanntes Motiv → Fehler mit Objektnummer
+    let d = json!({"objekte": [{"art": "motivlinie", "satz": "Heirloom", "motiv": "xyz", "punkte": [[0, 0], [10, 0]]}]});
+    let f = ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap_err();
+    assert_eq!(f.objekt, Some(0));
+}
+
+#[test]
 fn in_knoten_umwandeln() {
     let k = kontext();
     let d = json!({"objekte": [

@@ -21,11 +21,12 @@ export const EINFUEGEN: { art: string; gruppe: 1 | 2 }[] = [
   { art: "blanket", gruppe: 2 },
   { art: "applikation", gruppe: 2 },
   { art: "knopfloch", gruppe: 2 },
+  { art: "motivlinie", gruppe: 2 },
 ];
 
 /** FUNKTIONEN.md §7 – Platz vorgesehen, deaktiviert */
 export const KOMMT_NOCH = [
-  "Motivlinien und Motivfüllungen",
+  "Motivfüllungen",
   "Effekte (Fransen, Welle, Farbverlauf, Farben mischen)",
   "Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling)",
   "Kreuzstich",
@@ -82,6 +83,18 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
       return { art, name: "Applikation", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
     case "knopfloch":
       return { art, name: "Knopfloch", typ: "standard", position: [0, 0], laenge: 20, farbe };
+    case "motivlinie":
+      return {
+        art,
+        name: "Motivlinie",
+        punkte: [
+          [-30, 0],
+          [30, 0],
+        ],
+        satz: "Heirloom",
+        motiv: "705",
+        farbe,
+      };
     default:
       return null;
   }

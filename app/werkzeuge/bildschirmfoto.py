@@ -88,7 +88,7 @@ def main():
     for b in ("design_berechnen", "design_formen", "design_pruefen"):
         antworten[b] = api(stick, b, {"design": design})
     for b in ("alphabete_liste", "stoffe_liste", "garnkarten_liste", "design_schema", "fuellmuster_liste",
-              "step_muster_liste", "parameter_katalog"):
+              "step_muster_liste", "parameter_katalog", "motive_liste"):
         antworten[b] = api(stick, b, {})
     antworten["ueberdeckungen"] = api(stick, "ueberdeckungen", {"design": design})
     sim = {"port": "", "simulation": True}
@@ -104,6 +104,8 @@ def main():
     karte = design.get("garnkarte", "Default")
     if karte != "keine":
         antworten["garnkarte_garne:" + karte] = api(stick, "garnkarte_garne", {"name": karte})
+    for satz in sorted({x.get("satz", "Heirloom") for x in design.get("objekte", []) if x.get("art") == "motivlinie"}):
+        antworten["motivsatz_motive:" + satz] = api(stick, "motivsatz_motive", {"satz": satz})
     if o.dialog and json.loads(o.dialog).get("art") == "alphabet":
         for a_ in antworten["alphabete_liste"]:
             antworten["alphabet_vorschau:" + a_["name"]] = api(
@@ -143,7 +145,7 @@ window.__TAURI_INTERNALS__ = {{
   invoke: (cmd, args) => {{
     if (cmd !== "kern") return Promise.reject({{ meldung: "Bildschirmfoto: Befehl " + cmd, objekt: null }});
     const d = args.daten || {{}};
-    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.name || "")] ?? ANTWORTEN[args.befehl];
+    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.name || d.satz || "")] ?? ANTWORTEN[args.befehl];
     if (a === undefined) return Promise.reject({{ meldung: "Bildschirmfoto: " + args.befehl + " nicht vorbereitet", objekt: null }});
     if (a && a.__fehler__) return Promise.reject(a.__fehler__);
     return Promise.resolve(JSON.parse(JSON.stringify(a)));

@@ -62,6 +62,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Blanket (Langette) | Linie, Abstand (2 mm), Breite (3 mm), mittig/seitlich | `blanket` | E (Werte X) |
 | Applikation | Umriss; Abdeckung Satin/Blanket; vorgeschnitten / im Rahmen zuschneiden; Breiten (2,5/3,0 mm) | `applikation` | E (Werte X) |
 | Knopfloch | Werkzeug „Knopfloch einfügen“: Klick setzt die **Mitte des Schlitzes**; Typ (9: Standard, Standard schmal, Rund, Stretch/dehnbar, Heirloom, rundes Ende, Auge eckig/rund/spitz – Vorschaubilder sinnvoll), Schlitzlänge (20 mm, 3–60), Winkel (90° = senkrecht; Griffe zum Drehen/Ziehen wie „Reshape“), Raupenabstand (ohne Angabe wie die Vorlage: 0,5 mm, Heirloom 1,5 mm; 0,2–2,0). **Einarbeiten** in eine Fläche darunter („Merge Buttonhole“): Name des Knopflochs in `aussparen` der Fläche (Fläche wird bis zur Raupenmitte ausgespart). Braucht den Alphabet-Ordner (`ButtonHoles.ESB`) | `knopfloch` (`typ`, `position`, `laenge`, `winkel`, `abstand`) | E (Abstand X) |
+| Motivlinie | Werkzeug „Motivlinie“ (Handbuch Kap. 25 „Pattern Run“): Linie zeichnen wie beim Lauf (offen/geschlossen, Kreis, Bézier); **Motivsatz** (14, `motive_liste`) und **Motiv** wählen – Auswahl mit Vorschaubildern aus `motivsatz_motive` (Linien in mm, Grundlinie von [0,0] nach [laenge,0]); Größe = Länge eines Motivs entlang der Linie (ohne Angabe wie im Satz), Abstand (ohne Angabe = Größe), Spiegeln. Anzahl und Verteilung macht der Kern wie das Original (gerundet, gleichmäßig verteilt) | `motivlinie` (`punkte`, `geschlossen`, `satz`, `motiv`, `groesse`, `abstand`, `spiegeln`) | E (Abstand X) |
 
 ## 4. Schrift
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
@@ -98,6 +99,8 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 |---|---|
 | `rahmen_liste`, `stoffe_liste`, `alphabete_liste`, `garnkarten_liste` | Auswahllisten Schritt 1 (Rahmen, Stoff) und Schrift/Garn; Alphabete mit empfohlener Höhe (Band am Höhenregler) |
 | `alphabet_vorschau` | Bild eines Alphabets im Auswahldialog (Umrisse von „Abc“ oder eigenem Probetext) und Zeichenvorrat |
+| `motive_liste` | Auswahl des Motivsatzes (14 der CD) |
+| `motivsatz_motive` | Auswahl des Motivs mit Vorschaubild (Linien je Motiv, Länge, Höhe) |
 | `step_muster_liste` | Kacheln der Step-Muster 1–20 (Einstiche einer Probefläche, vom Kern berechnet) |
 | `garnkarte_garne` | Garn je Farbe von Hand wählen (alle Garne einer Karte mit Farbe, Nummer, Name) |
 | `fuellmuster_liste` | Auswahl der 242 Füllmuster mit Vorschau-Kacheln (Linien einer Kachel + Gitter A/B) |

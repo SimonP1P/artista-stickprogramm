@@ -2994,6 +2994,212 @@
         }
       ]
     },
+    "MotivInfo": {
+      "description": "Ein Motiv mit Linien für die Vorschau (mm, Grundlinie von [0, 0] nach [laenge, 0], +y nach oben).",
+      "properties": {
+        "hoehe": {
+          "description": "Höhe quer zur Grundlinie (mm)",
+          "format": "double",
+          "type": "number"
+        },
+        "laenge": {
+          "description": "Länge der Grundlinie = Größe im Motivsatz (mm)",
+          "format": "double",
+          "type": "number"
+        },
+        "linien": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Punkt"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Name wie im Design-Feld `motiv`",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "laenge",
+        "hoehe",
+        "linien"
+      ],
+      "type": "object"
+    },
+    "MotivlinieJson": {
+      "description": "Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (`motive_liste`) wird entlang der Linie\nwiederholt. Anzahl = Linienlänge / Abstand gerundet, die Motive werden gleichmäßig verteilt (wie das Original).",
+      "properties": {
+        "abstand": {
+          "default": null,
+          "description": "Wiederholabstand in mm („Spacing“); ohne Angabe = Größe (Motive stoßen aneinander)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geschlossen": {
+          "default": false,
+          "description": "Linie schließen (Motive ringsum)",
+          "type": "boolean"
+        },
+        "groesse": {
+          "default": null,
+          "description": "Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "motiv": {
+          "default": "705",
+          "description": "Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "punkte": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "satz": {
+          "default": "Heirloom",
+          "description": "Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung)",
+          "type": "string"
+        },
+        "spiegeln": {
+          "default": false,
+          "description": "Motive auf die andere Seite der Linie spiegeln",
+          "type": "boolean"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        }
+      },
+      "required": [
+        "punkte"
+      ],
+      "type": "object"
+    },
+    "MotivsatzInfo": {
+      "description": "Motivsatz (Pattern Set, Ordner `userletw/` der CD; Handbuch Kap. 25).",
+      "properties": {
+        "datei": {
+          "type": "string"
+        },
+        "name": {
+          "description": "Name wie im Design-Feld `satz` der Motivlinie",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "datei"
+      ],
+      "type": "object"
+    },
+    "MotivsatzName": {
+      "additionalProperties": false,
+      "description": "Name eines Motivsatzes.",
+      "properties": {
+        "satz": {
+          "description": "Name wie in `motive_liste`",
+          "type": "string"
+        }
+      },
+      "required": [
+        "satz"
+      ],
+      "type": "object"
+    },
     "MusterInfo": {
       "description": "Füllmuster mit den Linien einer Kachel (für Vorschau-Kacheln).",
       "properties": {
@@ -3469,6 +3675,20 @@
           "properties": {
             "art": {
               "const": "knopfloch",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/MotivlinieJson",
+          "description": "Motivlinie (Motiv aus einem Motivsatz entlang einer Linie)",
+          "properties": {
+            "art": {
+              "const": "motivlinie",
               "type": "string"
             }
           },
@@ -5978,6 +6198,30 @@
       "beschreibung": "**Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt)",
       "eingabe": {
         "$ref": "#/$defs/SendeEingabe"
+      }
+    },
+    "motive_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/MotivsatzInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Motivsätze (14 der CD) für die Motivlinie",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
+      }
+    },
+    "motivsatz_motive": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/MotivInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Motive eines Motivsatzes mit Maßen und Linien für die Vorschau",
+      "eingabe": {
+        "$ref": "#/$defs/MotivsatzName"
       }
     },
     "parameter_katalog": {

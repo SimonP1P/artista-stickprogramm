@@ -20,6 +20,7 @@
   import NachFarbeDialog from "$lib/dialoge/NachFarbeDialog.svelte";
   import WarnungDialog from "$lib/dialoge/WarnungDialog.svelte";
   import MusterDialog from "$lib/dialoge/MusterDialog.svelte";
+  import MotivDialog from "$lib/dialoge/MotivDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import { EINFUEGEN, KOMMT_NOCH, neuesObjekt } from "$lib/einfuegen";
@@ -491,6 +492,24 @@
           if (!y) return;
           if (w === null) delete y[feld];
           else y[feld] = w;
+        });
+        arbeit.dialog = null;
+      }}
+      schliessen={() => (arbeit.dialog = null)}
+    />
+  {/if}
+  {#if arbeit.dialog?.art === "motiv"}
+    {@const d = arbeit.dialog}
+    {@const x = arbeit.objekte[d.objekt] as Record<string, unknown> | undefined}
+    <MotivDialog
+      satz={String(x?.satz ?? "Heirloom")}
+      motiv={String(x?.motiv ?? "705")}
+      waehlen={(satz, motiv) => {
+        arbeit.aendern((dd) => {
+          const y = dd.objekte?.[d.objekt] as Record<string, unknown> | undefined;
+          if (!y) return;
+          y.satz = satz;
+          y.motiv = motiv;
         });
         arbeit.dialog = null;
       }}

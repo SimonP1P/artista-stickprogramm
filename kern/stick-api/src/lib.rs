@@ -115,15 +115,25 @@ pub struct Kontext {
     /// Ordner der Computer-Schriften (leer = Schriften des Systems)
     pub schriften: Vec<PathBuf>,
     geladen: Mutex<HashMap<String, Alphabet>>,
+    /// Motivsätze (ESB aus `userletw/`): `STICK_MOTIVE`, sonst Ordner `motive` neben den Alphabeten
+    pub motive: PathBuf,
+    motive_geladen: Mutex<HashMap<String, stick_kern::motiv::Motivsatz>>,
     /// Zustand der Maschinen-Befehle (Abbrechen, Sperre, Fortschritt, Mitschnitte)
     pub(crate) maschine: maschine::MaschinenZustand,
 }
 
 impl Kontext {
     pub fn neu(alphabete: PathBuf, garnkarten: PathBuf) -> Kontext {
+        let motive = std::env::var("STICK_MOTIVE")
+            .map(PathBuf::from)
+            .ok()
+            .or_else(|| stick_formate::esb::motiv_ordner(&alphabete))
+            .unwrap_or_else(|| alphabete.with_file_name("motive"));
         Kontext {
             alphabete,
             garnkarten,
+            motive,
+            motive_geladen: Mutex::new(HashMap::new()),
             schriften: Vec::new(),
             geladen: Mutex::new(HashMap::new()),
             maschine: Default::default(),
@@ -165,8 +175,31 @@ impl Kontext {
         }
         let mut design = Design::aus_value(&v)?;
         self.alphabete_einsetzen(&mut design)?;
+        for n in design.motiv_namen() {
+            let s = self.motivsatz(&n)?;
+            design.motivsaetze.insert(n, s);
+        }
         stick_formate::ttf::design_schriften_laden(&mut design, &self.schriften)?;
         Ok(design)
+    }
+
+    /// Motivsatz nach Namen (Kopf oder Dateiname) laden, zwischengespeichert.
+    pub fn motivsatz(&self, name: &str) -> Result<stick_kern::motiv::Motivsatz, Fehler> {
+        let mut g = self.motive_geladen.lock().map_err(|e| Fehler::from(e.to_string()))?;
+        if let Some(s) = g.get(name) {
+            return Ok(s.clone());
+        }
+        let ohne = |x: &str| x.trim_start_matches('_').to_lowercase();
+        let pfad = stick_formate::esb::verzeichnis(&self.motive)
+            .into_iter()
+            .find(|(n, p)| {
+                ohne(n) == ohne(name) || p.file_stem().is_some_and(|s| ohne(&s.to_string_lossy()) == ohne(name))
+            })
+            .map(|(_, p)| p)
+            .ok_or_else(|| format!("Motivsatz „{name}“ nicht im Ordner {} gefunden", self.motive.display()))?;
+        let s = stick_formate::esb::motive_laden(&pfad)?;
+        g.insert(name.to_string(), s.clone());
+        Ok(s)
     }
 
     fn alphabete_einsetzen(&self, design: &mut Design) -> Result<(), Fehler> {
@@ -248,6 +281,10 @@ befehle! {
     stoffe_liste: befehle::Leer => Vec<befehle::StoffInfo>,
     /// Original-Alphabete (50)
     alphabete_liste: befehle::Leer => Vec<befehle::AlphabetInfo>,
+    /// Motivsätze (14 der CD) für die Motivlinie
+    motive_liste: befehle::Leer => Vec<befehle::MotivsatzInfo>,
+    /// Motive eines Motivsatzes mit Maßen und Linien für die Vorschau
+    motivsatz_motive: befehle::MotivsatzName => Vec<befehle::MotivInfo>,
     /// Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat
     alphabet_vorschau: befehle::AlphabetVorschauEingabe => befehle::AlphabetVorschau,
     /// Namen der Garnkarten (32 der CD)

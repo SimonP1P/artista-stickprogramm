@@ -39,9 +39,10 @@
     muster: ["muster", "winkel", "aussparen"],
     applikation: ["abdeckung", "stil"],
     knopfloch: ["typ", "laenge", "winkel"],
+    motivlinie: ["motiv", "groesse", "spiegeln", "geschlossen"],
   };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben"]);
+  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
   const MIT_STEP = new Set(["tatami", "text", "ttf", "monogramm"]);
 
@@ -181,6 +182,11 @@
                 <span class="fl">Füllmuster</span>
                 <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "muster", objekt: i })}><span class="t">{String(o.muster ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
               </div>
+            {:else if f.name === "motiv"}
+              <div class="frow">
+                <span class="fl">Motiv</span>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "motiv", objekt: i })}><span class="t">{String(o.satz ?? "Heirloom").replace(/^_/, "")} · {String(o.motiv ?? "705")}</span><Icon d={IC.chevronRechts} /></button></div>
+              </div>
             {:else if f.name === "step_muster"}
               <div class="frow">
                 <span class="fl">Step-Muster</span>
@@ -200,7 +206,7 @@
                 <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
-              <Feldzeile feld={f} wert={o[f.name]} setzen={(v) => setzen(f.name, v)} />
+              <Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "motivlinie" && f.name === "groesse" ? "Motivgröße" : undefined} setzen={(v) => setzen(f.name, v)} />
             {/if}
           {/each}
         </Abschnitt>

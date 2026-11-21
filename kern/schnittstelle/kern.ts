@@ -1100,6 +1100,99 @@ export type MonogrammJson = {
 /** Rahmen um ein Monogramm */
 export type MonogrammRahmen = ("raute" | "zier" | "keine");
 
+/** Ein Motiv mit Linien für die Vorschau (mm, Grundlinie von [0, 0] nach [laenge, 0], +y nach oben). */
+export type MotivInfo = {
+  /** Höhe quer zur Grundlinie (mm) */
+  hoehe: number;
+  /** Länge der Grundlinie = Größe im Motivsatz (mm) */
+  laenge: number;
+  linien: Punkt[][];
+  /** Name wie im Design-Feld `motiv` */
+  name: string;
+};
+
+/**
+ * Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (`motive_liste`) wird entlang der Linie
+ * wiederholt. Anzahl = Linienlänge / Abstand gerundet, die Motive werden gleichmäßig verteilt (wie das Original).
+ */
+export type MotivlinieJson = {
+  /** Wiederholabstand in mm („Spacing“); ohne Angabe = Größe (Motive stoßen aneinander) */
+  abstand?: number | null;
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * Linie schließen (Motive ringsum)
+   * @default false
+   */
+  geschlossen?: boolean;
+  /** Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz */
+  groesse?: number | null;
+  /**
+   * Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)
+   * @default "705"
+   */
+  motiv?: string;
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  punkte: PunktAngabe;
+  /**
+   * Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung)
+   * @default "Heirloom"
+   */
+  satz?: string;
+  /**
+   * Motive auf die andere Seite der Linie spiegeln
+   * @default false
+   */
+  spiegeln?: boolean;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+};
+
+/** Motivsatz (Pattern Set, Ordner `userletw/` der CD; Handbuch Kap. 25). */
+export type MotivsatzInfo = {
+  datei: string;
+  /** Name wie im Design-Feld `satz` der Motivlinie */
+  name: string;
+};
+
+/** Name eines Motivsatzes. */
+export type MotivsatzName = {
+  /** Name wie in `motive_liste` */
+  satz: string;
+};
+
 /** Füllmuster mit den Linien einer Kachel (für Vorschau-Kacheln). */
 export type MusterInfo = {
   /** Gittervektor A in mm (das Muster wiederholt sich um i·A + j·B) */
@@ -1229,6 +1322,8 @@ export type ObjektJson = ((LaufJson & {
   art: "muster";
 }) | (KnopflochJson & {
   art: "knopfloch";
+}) | (MotivlinieJson & {
+  art: "motivlinie";
 }));
 
 /** Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`). */
@@ -2010,6 +2105,10 @@ export interface Befehle {
   maschine_pruefen: { eingabe: Anschluss; ausgabe: MaschinenInfo };
   /** **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) */
   maschine_senden: { eingabe: SendeEingabe; ausgabe: SendeInfo };
+  /** Motivsätze (14 der CD) für die Motivlinie */
+  motive_liste: { eingabe: Leer; ausgabe: MotivsatzInfo[] };
+  /** Motive eines Motivsatzes mit Maßen und Linien für die Vorschau */
+  motivsatz_motive: { eingabe: MotivsatzName; ausgabe: MotivInfo[] };
   /** Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch */
   parameter_katalog: { eingabe: Leer; ausgabe: Parameter[] };
   /** Stickrahmen der artista 185 mit Stickfeld und Umriss */
@@ -2056,6 +2155,8 @@ export const BEFEHLE = [
   "maschine_ports",
   "maschine_pruefen",
   "maschine_senden",
+  "motive_liste",
+  "motivsatz_motive",
   "parameter_katalog",
   "rahmen_liste",
   "reihenfolge_aendern",

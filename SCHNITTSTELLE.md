@@ -252,6 +252,20 @@ Knopfloch (Handbuch Kap. 23 „Adding buttonholes“): Vorlage aus `ButtonHoles.
 | `typ` | KnopflochTyp |  | `"standard"` | Typ (Standard „standard“ wie das Original) |
 | `winkel` | number |  | `90.0` | Richtung des Schlitzes in Grad („Angle“; 90 = senkrecht, Standard wie das Original) |
 
+### `motivlinie` – Motivlinie (Motiv aus einem Motivsatz entlang einer Linie)
+
+Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (`motive_liste`) wird entlang der Linie wiederholt. Anzahl = Linienlänge / Abstand gerundet, die Motive werden gleichmäßig verteilt (wie das Original).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `abstand` | number |  | – | Wiederholabstand in mm („Spacing“); ohne Angabe = Größe (Motive stoßen aneinander) |
+| `geschlossen` | boolean |  | `false` | Linie schließen (Motive ringsum) |
+| `groesse` | number |  | – | Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz |
+| `motiv` | string |  | `"705"` | Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung) |
+| `punkte` | PunktAngabe | ja | – |  |
+| `satz` | string |  | `"Heirloom"` | Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung) |
+| `spiegeln` | boolean |  | `false` | Motive auf die andere Seite der Linie spiegeln |
+
 ## 3. Auswahlwerte
 
 **Abdeckung** – Abdeckstich der Applikation
@@ -465,6 +479,8 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `maschine_ports` | Leer | string[] | Maschine: serielle Ports (COM…) |
 | `maschine_pruefen` | Anschluss | MaschinenInfo | Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen |
 | `maschine_senden` | SendeEingabe | SendeInfo | **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) |
+| `motive_liste` | Leer | MotivsatzInfo[] | Motivsätze (14 der CD) für die Motivlinie |
+| `motivsatz_motive` | MotivsatzName | MotivInfo[] | Motive eines Motivsatzes mit Maßen und Linien für die Vorschau |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |
 | `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |

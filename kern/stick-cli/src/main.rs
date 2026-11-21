@@ -70,6 +70,19 @@ fn option(args: &[String], name: &str) -> Option<String> {
         .and_then(|i| args.get(i + 1).cloned())
 }
 
+/// Motivsätze für Motivlinien: Ordner `STICK_MOTIVE`, sonst `motive`/`userletw` neben den Alphabeten.
+fn motive_laden(design: &mut Design, alphabete: &Path) -> Result<(), String> {
+    if design.motiv_namen().is_empty() {
+        return Ok(());
+    }
+    let ordner = std::env::var("STICK_MOTIVE")
+        .map(PathBuf::from)
+        .ok()
+        .or_else(|| esb::motiv_ordner(alphabete))
+        .ok_or("Ordner der Motivsätze nicht gefunden (STICK_MOTIVE setzen)")?;
+    esb::design_motive_laden(design, &ordner)
+}
+
 /// Ordner der Alphabete: Schalter --alphabete, sonst Umgebungsvariable STICK_ALPHABETE, sonst „alphabete“.
 fn alphabet_ordner(args: &[String]) -> PathBuf {
     option(args, "--alphabete")
@@ -102,6 +115,7 @@ fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool,
     let text = std::fs::read_to_string(design_pfad).map_err(|e| format!("{}: {e}", design_pfad.display()))?;
     let mut design = Design::aus_json(&text)?;
     esb::design_alphabete_laden(&mut design, alphabete)?;
+    motive_laden(&mut design, alphabete)?;
     ttf::design_schriften_laden(&mut design, &[])?;
     let (_, fehlend) = design.objekte_aufgeloest()?;
     if !fehlend.is_empty() {
@@ -257,6 +271,7 @@ fn reihenfolge(args: &[String], hilfe: &str) -> Result<bool, String> {
     let design = (|| -> Result<Design, String> {
         let mut d = Design::aus_value(&v)?;
         esb::design_alphabete_laden(&mut d, &alphabet_ordner(args))?;
+        motive_laden(&mut d, &alphabet_ordner(args))?;
         ttf::design_schriften_laden(&mut d, &schrift_ordner(args))?;
         Ok(d)
     })();
@@ -444,6 +459,7 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
             }
             let mut design = Design::aus_json(&text)?;
             esb::design_alphabete_laden(&mut design, &alphabet_ordner(args))?;
+            motive_laden(&mut design, &alphabet_ordner(args))?;
             ttf::design_schriften_laden(&mut design, &schrift_ordner(args))?;
             let f = design.berechnen()?;
             println!("{}", statistik(&f));

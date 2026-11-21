@@ -1,0 +1,174 @@
+ Children 1.ART   901    L=22163 size=2786 L/size=7.96 cnt=9 ncop=10 starts=[0, 2770, 5541]..[19393, 22179, 19618] lastend=22179 off=1 step=2772.4 L/n=2770.4 (L-size)/(n-1)=2768.1
+ Children 1.ART   907    L=21180 size=3533 L/size=5.99 cnt=7 ncop=8 starts=[1, 3531, 7061]..[17651, 21138, 9934] lastend=21138 off=-1 step=3522.8 L/n=3530.0 (L-size)/(n-1)=3529.4
+ Children 1.ART   910    L=22183 size=3937 L/size=5.63 cnt=7 ncop=8 starts=[1, 3698, 7395]..[18486, 22423, 11154] lastend=22423 off=-0 step=3737.0 L/n=3697.2 (L-size)/(n-1)=3649.2
+ Children 1.ART   914    L=20861 size=3478 L/size=6.00 cnt=7 ncop=8 starts=[0, 3477, 6954]..[17384, 20846, 8584] lastend=20846 off=0 step=3474.3 L/n=3476.8 (L-size)/(n-1)=3476.6
+ Children 1.ART   905    L=22254 size=1361 L/size=16.35 cnt=17 ncop=18 starts=[0, 1391, 2782]..[20863, 22223, 10389] lastend=22223 off=0 step=1388.9 L/n=1390.9 (L-size)/(n-1)=1392.9
+ Children 1.ART   909    L=21432 size=3062 L/size=7.00 cnt=8 ncop=9 starts=[0, 3061, 6123]..[18370, 21493, 10009] lastend=21493 off=-1 step=3070.4 L/n=3061.7 (L-size)/(n-1)=3061.7
+ Children 1.ART   911    L=22148 size=4412 L/size=5.02 cnt=6 ncop=7 starts=[0, 4430, 8859]..[17718, 22130, 7722] lastend=22130 off=0 step=4426.0 L/n=4429.6 (L-size)/(n-1)=4434.0
+ Children 1.ART   929    L=22148 size=1802 L/size=12.29 cnt=13 ncop=13 starts=[0, 1846, 3691]..[18457, 20302, 22104] lastend=22104 off=0 step=1845.6 L/n=1845.7 (L-size)/(n-1)=1849.6
+ Corners 1.ART    Cnr001 L=2072 size=9090 L/size=0.23 cnt=2 ncop=3 starts=[-2473, 6617, -22757]..[-2473, 6617, -22757] lastend=6617 off=0 step=9090.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 1.ART    Cnr004 L=2072 size=9130 L/size=0.23 cnt=2 ncop=3 starts=[-2493, 6637, -25127]..[-2493, 6637, -25127] lastend=6637 off=0 step=9130.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 1.ART    Cnr005 L=2072 size=9009 L/size=0.23 cnt=2 ncop=3 starts=[-2433, 6576, -47195]..[-2433, 6576, -47195] lastend=6576 off=0 step=9009.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 1.ART    Cnr002 L=2072 size=9130 L/size=0.23 cnt=2 ncop=3 starts=[-2493, 6637, -49047]..[-2493, 6637, -49047] lastend=6637 off=0 step=9130.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 1.ART    Cnr003 L=2072 size=9090 L/size=0.23 cnt=2 ncop=3 starts=[-2473, 6617, 630]..[-2473, 6617, 630] lastend=6617 off=0 step=9090.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 1.ART    Cnr006 L=2072 size=5992 L/size=0.35 cnt=2 ncop=2 starts=[-925, 5069]..[-925, 5069] lastend=5069 off=0 step=0.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 2.ART    Cnr007 L=2072 size=9130 L/size=0.23 cnt=2 ncop=3 starts=[-2494, 6637, 42315]..[-2494, 6637, 42315] lastend=6637 off=0 step=9131.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 2.ART    Cnr010 L=2072 size=5549 L/size=0.37 cnt=2 ncop=3 starts=[-703, 4847, 37373]..[-703, 4847, 37373] lastend=4847 off=0 step=5550.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 2.ART    Cnr011 L=2072 size=5431 L/size=0.38 cnt=2 ncop=3 starts=[-642, 4787, 20653]..[-642, 4787, 20653] lastend=4787 off=0 step=5429.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 2.ART    Cnr008 L=2072 size=8968 L/size=0.23 cnt=2 ncop=3 starts=[-2412, 6556, 16909]..[-2412, 6556, 16909] lastend=6556 off=0 step=8968.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 2.ART    Cnr009 L=2072 size=9212 L/size=0.22 cnt=2 ncop=3 starts=[-2534, 6679, 59151]..[-2534, 6679, 59151] lastend=6679 off=0 step=9213.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 2.ART    Cnr012 L=2072 size=9090 L/size=0.23 cnt=2 ncop=2 starts=[-2472, 6617]..[-2472, 6617] lastend=6617 off=0 step=0.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 3.ART    Cnr013 L=2072 size=9049 L/size=0.23 cnt=2 ncop=3 starts=[-2452, 6597, -43089]..[-2452, 6597, -43089] lastend=6597 off=0 step=9049.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 3.ART    Cnr016 L=2072 size=9068 L/size=0.23 cnt=2 ncop=3 starts=[-2462, 6606, -42634]..[-2462, 6606, -42634] lastend=6606 off=0 step=9068.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 3.ART    Cnr017 L=2072 size=6374 L/size=0.33 cnt=2 ncop=3 starts=[-1115, 5258, 79882]..[-1115, 5258, 79882] lastend=5258 off=0 step=6373.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 3.ART    Cnr014 L=2072 size=9130 L/size=0.23 cnt=2 ncop=3 starts=[-2493, 6637, -72189]..[-2493, 6637, -72189] lastend=6637 off=0 step=9130.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 3.ART    Cnr015 L=2072 size=9050 L/size=0.23 cnt=2 ncop=3 starts=[-2453, 6597, -15787]..[-2453, 6597, -15787] lastend=6597 off=0 step=9050.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Corners 3.ART    Cnr018 L=2072 size=9131 L/size=0.23 cnt=2 ncop=2 starts=[-2494, 6638]..[-2494, 6638] lastend=6638 off=0 step=0.0 L/n=2072.0 (L-size)/(n-1)=0.0
+ Cross 1.ART      301    L=22148 size=1175 L/size=18.85 cnt=20 ncop=21 starts=[-1, 1165, 2331]..[20982, 22157, 9270] lastend=22157 off=-0 step=1166.2 L/n=1165.7 (L-size)/(n-1)=1165.2
+ Cross 1.ART      303    L=22148 size=830 L/size=26.68 cnt=28 ncop=29 starts=[0, 820, 1641]..[21328, 22158, 11062] lastend=22158 off=0 step=820.7 L/n=820.3 (L-size)/(n-1)=819.9
+ Cross 1.ART      309    L=22183 size=623 L/size=35.61 cnt=37 ncop=38 starts=[0, 616, 1232]..[21567, 22189, 14660] lastend=22189 off=0 step=616.4 L/n=616.2 (L-size)/(n-1)=616.0
+ Cross 1.ART      313    L=22095 size=396 L/size=55.80 cnt=57 ncop=58 starts=[1, 395, 790]..[21701, 22370, 25931] lastend=22370 off=-0 step=399.4 L/n=394.6 (L-size)/(n-1)=394.5
+ Cross 1.ART      302    L=22254 size=1051 L/size=21.17 cnt=22 ncop=23 starts=[0, 1060, 2120]..[21195, 22246, -4420] lastend=22246 off=0 step=1059.3 L/n=1059.7 (L-size)/(n-1)=1060.2
+ Cross 1.ART      305    L=22148 size=2533 L/size=8.74 cnt=10 ncop=11 starts=[0, 2461, 4922]..[19687, 22219, 9445] lastend=22219 off=0 step=2468.8 L/n=2460.9 (L-size)/(n-1)=2451.9
+ Cross 1.ART      311    L=22464 size=558 L/size=40.26 cnt=41 ncop=41 starts=[0, 561, 1123]..[21340, 21902, 22423] lastend=22423 off=0 step=561.6 L/n=561.6 (L-size)/(n-1)=561.7
+ Cross 2.ART      b301   L=19795 size=2519 L/size=7.86 cnt=9 ncop=10 starts=[0, 2474, 4948]..[17320, 19805, -474] lastend=19805 off=-1 step=2475.6 L/n=2474.4 (L-size)/(n-1)=2467.9
+ Cross 2.ART      b303   L=20486 size=1628 L/size=12.58 cnt=14 ncop=15 starts=[0, 1576, 3153]..[18910, 20508, -10737] lastend=20508 off=0 step=1577.5 L/n=1575.8 (L-size)/(n-1)=1571.5
+ Cross 2.ART      b305   L=20517 size=1545 L/size=13.28 cnt=15 ncop=16 starts=[0, 1467, 2932]..[19052, 20566, -2079] lastend=20566 off=0 step=1469.0 L/n=1578.2 (L-size)/(n-1)=1581.0
+ Cross 2.ART      b307   L=20434 size=2088 L/size=9.79 cnt=11 ncop=12 starts=[0, 2044, 4087]..[18390, 20360, -8419] lastend=20360 off=-1 step=2036.0 L/n=2043.4 (L-size)/(n-1)=2038.4
+ Cross 2.ART      b309   L=20434 size=1622 L/size=12.60 cnt=14 ncop=15 starts=[0, 1571, 3143]..[18862, 20454, -9743] lastend=20454 off=-1 step=1573.4 L/n=1571.8 (L-size)/(n-1)=1567.7
+ Cross 2.ART      b302   L=18485 size=2880 L/size=6.42 cnt=8 ncop=9 starts=[0, 2640, 5281]..[15845, 18496, 11728] lastend=18496 off=0 step=2642.3 L/n=3080.8 (L-size)/(n-1)=3120.9
+ Cross 2.ART      b304   L=20486 size=720 L/size=28.44 cnt=30 ncop=31 starts=[0, 706, 1413]..[19780, 20487, -24313] lastend=20487 off=0 step=706.4 L/n=731.6 (L-size)/(n-1)=732.1
+ Cross 2.ART      b306   L=20776 size=544 L/size=38.21 cnt=40 ncop=41 starts=[-1, 532, 1065]..[20243, 20776, -8799] lastend=20776 off=-0 step=532.7 L/n=546.7 (L-size)/(n-1)=546.8
+ Cross 2.ART      b308   L=20434 size=1818 L/size=11.24 cnt=12 ncop=13 starts=[0, 1858, 3716]..[18576, 20705, -11838] lastend=20705 off=-1 step=1882.3 L/n=1857.6 (L-size)/(n-1)=1861.6
+ Cross 2.ART      b310   L=20434 size=980 L/size=20.86 cnt=22 ncop=22 starts=[-1, 973, 1945]..[18487, 19460, 20423] lastend=20423 off=0 step=973.1 L/n=973.0 (L-size)/(n-1)=972.7
+ Embellishment 1. 601    L=20160 size=1123 L/size=17.95 cnt=19 ncop=20 starts=[-1, 1119, 2239]..[19040, 20163, -5861] lastend=20163 off=-0 step=1120.2 L/n=1120.0 (L-size)/(n-1)=1119.8
+ Embellishment 1. 608    L=19894 size=289 L/size=68.94 cnt=70 ncop=71 starts=[-1, 288, 576]..[19605, 19910, 8925] lastend=19910 off=0 step=288.6 L/n=288.3 (L-size)/(n-1)=288.3
+ Embellishment 1. 612    L=21257 size=1066 L/size=19.94 cnt=21 ncop=22 starts=[0, 1063, 2126]..[20195, 21258, 9189] lastend=21258 off=0 step=1062.9 L/n=1062.9 (L-size)/(n-1)=1062.7
+ Embellishment 1. 618    L=21414 size=1532 L/size=13.98 cnt=15 ncop=16 starts=[0, 1530, 3059]..[19885, 21256, -5186] lastend=21256 off=0 step=1518.3 L/n=1529.6 (L-size)/(n-1)=1529.4
+ Embellishment 1. 605    L=20532 size=1800 L/size=11.41 cnt=12 ncop=13 starts=[-1, 1866, 3733]..[18665, 20514, 10970] lastend=20514 off=-0 step=1865.0 L/n=1866.5 (L-size)/(n-1)=1873.2
+ Embellishment 1. 610    L=20863 size=1069 L/size=19.52 cnt=21 ncop=22 starts=[0, 1043, 2086]..[19820, 20876, 9665] lastend=20876 off=-1 step=1043.8 L/n=1043.2 (L-size)/(n-1)=1041.8
+ Embellishment 1. 614    L=20149 size=2880 L/size=7.00 cnt=8 ncop=8 starts=[0, 2879, 5757]..[14393, 17271, 20130] lastend=20130 off=0 step=2878.5 L/n=2878.4 (L-size)/(n-1)=2878.2
+ Embellishment 2. 637    L=20277 size=3348 L/size=6.06 cnt=7 ncop=8 starts=[0, 3380, 6759]..[16898, 20247, 9071] lastend=20247 off=0 step=3374.5 L/n=3379.5 (L-size)/(n-1)=3385.8
+ Embellishment 2. 644    L=20428 size=2232 L/size=9.15 cnt=10 ncop=11 starts=[0, 2270, 4540]..[18158, 20428, 7569] lastend=20428 off=0 step=2269.8 L/n=2269.8 (L-size)/(n-1)=2274.5
+ Embellishment 2. 653    L=21407 size=434 L/size=49.32 cnt=50 ncop=51 starts=[0, 437, 874]..[20970, 21404, 9264] lastend=21404 off=0 step=436.8 L/n=436.9 (L-size)/(n-1)=436.9
+ Embellishment 2. 629    L=18826 size=1940 L/size=9.70 cnt=11 ncop=12 starts=[0, 1883, 3765]..[16943, 18883, 23938] lastend=18883 off=-1 step=1888.3 L/n=1882.6 (L-size)/(n-1)=1876.2
+ Embellishment 2. 641    L=21430 size=3294 L/size=6.51 cnt=8 ncop=9 starts=[1, 3062, 6123]..[18369, 21540, -283] lastend=21540 off=-0 step=3077.0 L/n=3061.4 (L-size)/(n-1)=3022.7
+ Embellishment 2. 648    L=22082 size=2232 L/size=9.89 cnt=11 ncop=11 starts=[0, 2208, 4416]..[17666, 19874, 22090] lastend=22090 off=0 step=2208.2 L/n=2208.2 (L-size)/(n-1)=2205.6
+ Heirloom 1.ART   705    L=22148 size=2038 L/size=10.87 cnt=12 ncop=13 starts=[0, 2013, 4027]..[20135, 22173, -1609] lastend=22173 off=0 step=2015.7 L/n=2013.5 (L-size)/(n-1)=2011.0
+ Heirloom 1.ART   709    L=22148 size=1057 L/size=20.95 cnt=22 ncop=23 starts=[0, 1055, 2109]..[21093, 22149, -12250] lastend=22149 off=0 step=1054.7 L/n=1054.7 (L-size)/(n-1)=1054.6
+ Heirloom 1.ART   711    L=22183 size=360 L/size=61.62 cnt=63 ncop=64 starts=[0, 357, 715]..[21826, 22185, 6837] lastend=22185 off=0 step=357.8 L/n=357.8 (L-size)/(n-1)=357.8
+ Heirloom 1.ART   718    L=22148 size=2835 L/size=7.81 cnt=9 ncop=10 starts=[0, 2769, 5537]..[19380, 22216, -4431] lastend=22216 off=-1 step=2777.0 L/n=2768.5 (L-size)/(n-1)=2759.0
+ Heirloom 1.ART   724    L=22148 size=1071 L/size=20.68 cnt=22 ncop=23 starts=[-1, 1054, 2109]..[21094, 22165, 7577] lastend=22165 off=0 step=1055.5 L/n=1054.7 (L-size)/(n-1)=1053.9
+ Heirloom 1.ART   706    L=22254 size=2227 L/size=9.99 cnt=11 ncop=12 starts=[-1, 2225, 4450]..[20029, 22256, -1629] lastend=22256 off=0 step=2225.7 L/n=2225.4 (L-size)/(n-1)=2225.2
+ Heirloom 1.ART   710    L=22148 size=1476 L/size=15.01 cnt=16 ncop=17 starts=[0, 1477, 2953]..[20671, 22147, 7144] lastend=22147 off=0 step=1476.5 L/n=1476.5 (L-size)/(n-1)=1476.6
+ Heirloom 1.ART   717    L=22148 size=2783 L/size=7.96 cnt=9 ncop=10 starts=[0, 2769, 5537]..[19380, 22164, 6084] lastend=22164 off=0 step=2770.5 L/n=2768.5 (L-size)/(n-1)=2766.4
+ Heirloom 1.ART   719    L=22148 size=4464 L/size=4.96 cnt=6 ncop=7 starts=[0, 4430, 8859]..[17718, 22168, 7609] lastend=22168 off=0 step=4433.6 L/n=4429.6 (L-size)/(n-1)=4421.0
+ Heirloom 2.ART   728    L=20531 size=2948 L/size=6.96 cnt=8 ncop=9 starts=[-1, 2933, 5867]..[17598, 20543, -2861] lastend=20543 off=0 step=2934.9 L/n=2933.0 (L-size)/(n-1)=2930.5
+ Heirloom 2.ART   733    L=20492 size=2578 L/size=7.95 cnt=9 ncop=10 starts=[-1, 2561, 5122]..[17931, 20510, -9326] lastend=20510 off=-0 step=2563.9 L/n=2561.5 (L-size)/(n-1)=2559.2
+ Heirloom 2.ART   a701   L=21582 size=3600 L/size=6.00 cnt=7 ncop=8 starts=[0, 3597, 7194]..[17985, 21585, -10491] lastend=21585 off=0 step=3597.5 L/n=3597.0 (L-size)/(n-1)=3596.4
+ Heirloom 2.ART   a703   L=20531 size=1078 L/size=19.05 cnt=20 ncop=21 starts=[0, 1080, 2161]..[19451, 20530, -11273] lastend=20530 off=0 step=1080.5 L/n=1080.6 (L-size)/(n-1)=1080.7
+ Heirloom 2.ART   732    L=20490 size=2057 L/size=9.96 cnt=11 ncop=12 starts=[0, 2049, 4098]..[18442, 20495, 6149] lastend=20495 off=0 step=2049.5 L/n=2049.0 (L-size)/(n-1)=2048.1
+ Heirloom 2.ART   738    L=20491 size=2048 L/size=10.01 cnt=11 ncop=12 starts=[0, 2049, 4098]..[18442, 20490, -10123] lastend=20490 off=0 step=2049.0 L/n=2049.1 (L-size)/(n-1)=2049.2
+ Heirloom 2.ART   a702   L=20491 size=675 L/size=30.36 cnt=31 ncop=32 starts=[0, 683, 1366]..[19808, 20483, -9509] lastend=20483 off=0 step=682.8 L/n=683.0 (L-size)/(n-1)=683.3
+ Heirloom 2.ART   a704   L=20491 size=2331 L/size=8.79 cnt=10 ncop=11 starts=[0, 2276, 4553]..[18215, 20546, -14233] lastend=20546 off=0 step=2282.9 L/n=2276.8 (L-size)/(n-1)=2270.0
+ Heirloom 2.ART   a706   L=20730 size=1577 L/size=13.15 cnt=14 ncop=14 starts=[0, 1594, 3189]..[17541, 19136, 20713] lastend=20713 off=-1 step=1594.7 L/n=1594.6 (L-size)/(n-1)=1596.1
+ Home Dec 1.ART   401    L=22478 size=954 L/size=23.56 cnt=25 ncop=26 starts=[0, 936, 1872]..[21541, 22499, 9129] lastend=22499 off=0 step=937.5 L/n=936.6 (L-size)/(n-1)=935.8
+ Home Dec 1.ART   403    L=22536 size=528 L/size=42.68 cnt=44 ncop=45 starts=[1, 524, 1048]..[22013, 22541, -6946] lastend=22541 off=1 step=524.2 L/n=524.1 (L-size)/(n-1)=524.0
+ Home Dec 1.ART   406    L=22536 size=2259 L/size=9.98 cnt=11 ncop=12 starts=[0, 2254, 4507]..[20282, 22542, 6921] lastend=22542 off=0 step=2254.2 L/n=2253.6 (L-size)/(n-1)=2253.0
+ Home Dec 1.ART   409    L=22537 size=3244 L/size=6.95 cnt=8 ncop=9 starts=[1, 3220, 6440]..[19318, 22553, 14110] lastend=22553 off=0 step=3221.7 L/n=3219.6 (L-size)/(n-1)=3215.5
+ Home Dec 1.ART   412    L=22536 size=1188 L/size=18.97 cnt=20 ncop=21 starts=[0, 1186, 2372]..[21350, 22488, 12105] lastend=22488 off=0 step=1183.6 L/n=1186.1 (L-size)/(n-1)=1186.0
+ Home Dec 1.ART   414    L=22536 size=2957 L/size=7.62 cnt=9 ncop=10 starts=[1, 2818, 5635]..[19720, 22677, 382] lastend=22677 off=0 step=2834.5 L/n=2817.0 (L-size)/(n-1)=2797.0
+ Home Dec 1.ART   402    L=22536 size=1724 L/size=13.07 cnt=14 ncop=15 starts=[-1, 1733, 3467]..[20802, 22526, -7245] lastend=22526 off=0 step=1732.8 L/n=1733.5 (L-size)/(n-1)=1734.3
+ Home Dec 1.ART   405    L=22536 size=1488 L/size=15.15 cnt=16 ncop=17 starts=[0, 1502, 3005]..[21034, 22522, 4962] lastend=22522 off=0 step=1501.5 L/n=1502.4 (L-size)/(n-1)=1503.4
+ Home Dec 1.ART   407    L=22536 size=1881 L/size=11.98 cnt=13 ncop=14 starts=[1, 1879, 3757]..[20658, 22543, 5086] lastend=22543 off=0 step=1878.5 L/n=1878.0 (L-size)/(n-1)=1877.7
+ Home Dec 1.ART   411    L=22478 size=2263 L/size=9.93 cnt=11 ncop=12 starts=[0, 2248, 4496]..[20230, 22492, 23387] lastend=22492 off=0 step=2249.2 L/n=2247.8 (L-size)/(n-1)=2246.1
+ Home Dec 1.ART   413    L=22536 size=2821 L/size=7.99 cnt=9 ncop=9 starts=[0, 2817, 5634]..[16902, 19719, 22539] lastend=22539 off=0 step=2817.0 L/n=2817.0 (L-size)/(n-1)=2816.4
+ Home Dec 2.ART   415    L=21546 size=2120 L/size=10.16 cnt=11 ncop=12 starts=[0, 2155, 4309]..[19391, 21511, 6254] lastend=21511 off=0 step=2151.1 L/n=2154.6 (L-size)/(n-1)=2158.4
+ Home Dec 2.ART   417    L=22536 size=1267 L/size=17.79 cnt=19 ncop=20 starts=[0, 1252, 2504]..[21284, 22551, 7605] lastend=22551 off=0 step=1252.8 L/n=1252.0 (L-size)/(n-1)=1251.1
+ Home Dec 2.ART   424    L=22536 size=1174 L/size=19.20 cnt=20 ncop=21 starts=[0, 1186, 2372]..[21350, 22522, -2544] lastend=22522 off=0 step=1185.4 L/n=1186.1 (L-size)/(n-1)=1186.8
+ Home Dec 2.ART   426    L=22537 size=2272 L/size=9.92 cnt=11 ncop=12 starts=[0, 2254, 4507]..[20283, 22555, 7605] lastend=22555 off=0 step=2255.5 L/n=2253.7 (L-size)/(n-1)=2251.7
+ Home Dec 2.ART   429    L=22536 size=1489 L/size=15.13 cnt=16 ncop=17 starts=[1, 1503, 3005]..[21034, 22523, -6355] lastend=22523 off=0 step=1501.5 L/n=1502.4 (L-size)/(n-1)=1503.4
+ Home Dec 2.ART   416    L=22478 size=1879 L/size=11.96 cnt=13 ncop=14 starts=[-1, 1873, 3746]..[20604, 22463, -1806] lastend=22463 off=0 step=1872.0 L/n=1873.2 (L-size)/(n-1)=1872.6
+ Home Dec 2.ART   422    L=22536 size=2869 L/size=7.86 cnt=9 ncop=10 starts=[0, 2817, 5634]..[19719, 22587, 22287] lastend=22587 off=0 step=2823.4 L/n=2817.0 (L-size)/(n-1)=2809.6
+ Home Dec 2.ART   425    L=22536 size=1102 L/size=20.45 cnt=21 ncop=22 starts=[1, 1127, 2254]..[21410, 22513, 21980] lastend=22513 off=0 step=1125.6 L/n=1126.8 (L-size)/(n-1)=1128.1
+ Home Dec 2.ART   427    L=22478 size=1555 L/size=14.46 cnt=15 ncop=16 starts=[1, 1606, 3212]..[20873, 22428, 388] lastend=22428 off=0 step=1601.9 L/n=1605.6 (L-size)/(n-1)=1609.5
+ Home Dec 2.ART   430    L=22536 size=1330 L/size=16.94 cnt=18 ncop=18 starts=[0, 1326, 2651]..[19885, 21210, 22456] lastend=22456 off=0 step=1325.6 L/n=1325.6 (L-size)/(n-1)=1325.4
+ Home Dec 3.ART   431    L=20660 size=3478 L/size=5.94 cnt=7 ncop=8 starts=[0, 3443, 6887]..[17217, 20695, -10141] lastend=20695 off=0 step=3449.2 L/n=3443.3 (L-size)/(n-1)=3436.4
+ Home Dec 3.ART   a402   L=20702 size=430 L/size=48.14 cnt=49 ncop=50 starts=[0, 431, 863]..[20271, 20701, -15910] lastend=20701 off=0 step=431.3 L/n=431.3 (L-size)/(n-1)=431.3
+ Home Dec 3.ART   a404   L=20702 size=1724 L/size=12.01 cnt=13 ncop=14 starts=[0, 1725, 3450]..[18976, 20659, -23385] lastend=20659 off=0 step=1721.6 L/n=1725.2 (L-size)/(n-1)=1725.3
+ Home Dec 3.ART   a406   L=20703 size=1885 L/size=10.98 cnt=12 ncop=13 starts=[0, 1882, 3764]..[18821, 20629, -2725] lastend=20629 off=0 step=1875.4 L/n=1882.1 (L-size)/(n-1)=1881.8
+ Home Dec 3.ART   a408   L=20702 size=4185 L/size=4.95 cnt=6 ncop=7 starts=[-1, 4140, 8280]..[16561, 22722, -8737] lastend=22722 off=0 step=4544.6 L/n=4140.4 (L-size)/(n-1)=4129.2
+ Home Dec 3.ART   a401   L=20649 size=1483 L/size=13.92 cnt=15 ncop=16 starts=[0, 1474, 2949]..[19174, 20647, -11813] lastend=20647 off=1 step=1474.8 L/n=1474.9 (L-size)/(n-1)=1474.3
+ Home Dec 3.ART   a403   L=20702 size=1478 L/size=14.01 cnt=15 ncop=16 starts=[0, 1479, 2957]..[19223, 20653, -16338] lastend=20653 off=0 step=1475.2 L/n=1478.7 (L-size)/(n-1)=1478.8
+ Home Dec 3.ART   a405   L=20702 size=1724 L/size=12.01 cnt=13 ncop=14 starts=[0, 1725, 3450]..[18977, 20653, -25299] lastend=20653 off=0 step=1721.1 L/n=1725.2 (L-size)/(n-1)=1725.3
+ Home Dec 3.ART   a407   L=20649 size=3470 L/size=5.95 cnt=7 ncop=8 starts=[0, 3441, 6883]..[17208, 20662, -14277] lastend=20662 off=0 step=3443.7 L/n=3441.5 (L-size)/(n-1)=3435.8
+ Home Dec 3.ART   a409   L=20703 size=3501 L/size=5.91 cnt=7 ncop=7 starts=[0, 3450, 6901]..[13802, 17252, 20699] lastend=20699 off=-1 step=3450.4 L/n=3450.5 (L-size)/(n-1)=3440.4
+ Misc.1.ART       10     L=21600 size=1075 L/size=20.09 cnt=21 ncop=22 starts=[1, 1081, 2161]..[20521, 21594, -2516] lastend=21594 off=0 step=1079.7 L/n=1080.0 (L-size)/(n-1)=1080.3
+ Misc.1.ART       12     L=21600 size=972 L/size=22.22 cnt=23 ncop=24 starts=[1, 982, 1964]..[20619, 21592, 3533] lastend=21592 off=0 step=981.4 L/n=981.8 (L-size)/(n-1)=982.3
+ Misc.1.ART       21     L=20916 size=3420 L/size=6.12 cnt=7 ncop=8 starts=[0, 3486, 6972]..[17430, 20902, -5756] lastend=20902 off=0 step=3483.7 L/n=3486.0 (L-size)/(n-1)=3499.2
+ Misc.1.ART       11     L=21600 size=2691 L/size=8.03 cnt=9 ncop=10 starts=[1, 2701, 5401]..[18901, 21592, 32] lastend=21592 off=0 step=2698.9 L/n=2700.0 (L-size)/(n-1)=2701.3
+ Misc.1.ART       13     L=21433 size=1350 L/size=15.88 cnt=17 ncop=18 starts=[0, 1340, 2680]..[20094, 21647, 5294] lastend=21647 off=0 step=1352.9 L/n=1339.6 (L-size)/(n-1)=1338.9
+ Misc.1.ART       29     L=20263 size=2880 L/size=7.04 cnt=8 ncop=8 starts=[0, 2895, 5789]..[14474, 17368, 20280] lastend=20280 off=0 step=2894.7 L/n=2894.7 (L-size)/(n-1)=2897.2
+ Misc.2.ART       Star   L=18904 size=1787 L/size=10.58 cnt=12 ncop=13 starts=[0, 1719, 3437]..[17185, 18973, 627] lastend=18973 off=0 step=1724.8 L/n=1718.5 (L-size)/(n-1)=1711.7
+ Misc.2.ART       Heart  L=17143 size=1498 L/size=11.44 cnt=12 ncop=13 starts=[-1, 1558, 3116]..[15584, 17081, -25124] lastend=17081 off=0 step=1552.9 L/n=1558.5 (L-size)/(n-1)=1564.5
+ Misc.2.ART       Blanket L=15147 size=553 L/size=27.39 cnt=28 ncop=29 starts=[1, 562, 1122]..[14586, 15137, -8215] lastend=15137 off=0 step=560.6 L/n=561.0 (L-size)/(n-1)=561.3
+ Misc.2.ART       Pinstit L=16908 size=173 L/size=97.73 cnt=99 ncop=100 starts=[0, 172, 345]..[16735, 16910, -6473] lastend=16910 off=0 step=172.6 L/n=172.5 (L-size)/(n-1)=172.5
+ Misc.2.ART       3wave  L=16614 size=3272 L/size=5.08 cnt=6 ncop=7 starts=[0, 3322, 6645]..[13291, 16564, 1993] lastend=16564 off=0 step=3312.8 L/n=3322.8 (L-size)/(n-1)=3335.5
+ Misc.2.ART       Wedge  L=15499 size=1652 L/size=9.38 cnt=10 ncop=11 starts=[-1, 1722, 3444]..[13776, 15429, 2139] lastend=15429 off=0 step=1714.5 L/n=1722.1 (L-size)/(n-1)=1730.9
+ Misc.2.ART       Feather L=15323 size=965 L/size=15.88 cnt=17 ncop=17 starts=[0, 957, 1915]..[13407, 14365, 15330] lastend=15330 off=0 step=957.7 L/n=957.7 (L-size)/(n-1)=957.2
+ Nature 1.ART     101    L=21600 size=1530 L/size=14.12 cnt=15 ncop=16 starts=[0, 1543, 3086]..[20057, 21649, 3399] lastend=21649 off=0 step=1546.4 L/n=1542.9 (L-size)/(n-1)=1543.8
+ Nature 1.ART     103    L=23092 size=4635 L/size=4.98 cnt=6 ncop=7 starts=[0, 4618, 9237]..[18474, 23104, 10609] lastend=23104 off=0 step=4620.8 L/n=4618.4 (L-size)/(n-1)=4614.4
+ Nature 1.ART     111    L=19740 size=1791 L/size=11.02 cnt=12 ncop=13 starts=[0, 1795, 3589]..[17945, 19747, 17929] lastend=19747 off=0 step=1795.2 L/n=1794.5 (L-size)/(n-1)=1794.9
+ Nature 1.ART     113    L=20434 size=1471 L/size=13.89 cnt=15 ncop=16 starts=[-1, 1459, 2919]..[18974, 20443, 9740] lastend=20443 off=0 step=1460.3 L/n=1459.6 (L-size)/(n-1)=1458.7
+ Nature 1.ART     102    L=21570 size=1514 L/size=14.25 cnt=15 ncop=16 starts=[0, 1541, 3081]..[20029, 21542, 11597] lastend=21542 off=0 step=1538.7 L/n=1540.7 (L-size)/(n-1)=1542.8
+ Nature 1.ART     106    L=19491 size=2430 L/size=8.02 cnt=9 ncop=10 starts=[0, 2436, 4873]..[17055, 19479, 19756] lastend=19479 off=0 step=2434.9 L/n=2436.4 (L-size)/(n-1)=2437.3
+ Nature 1.ART     112    L=20776 size=1636 L/size=12.70 cnt=14 ncop=15 starts=[0, 1598, 3196]..[19178, 20812, 8896] lastend=20812 off=0 step=1600.9 L/n=1598.2 (L-size)/(n-1)=1595.0
+ Nature 1.ART     114    L=20434 size=2133 L/size=9.58 cnt=11 ncop=11 starts=[0, 2043, 4087]..[16347, 18391, 20523] lastend=20523 off=0 step=2043.4 L/n=2043.4 (L-size)/(n-1)=2033.4
+ Nature 2.ART     115    L=21600 size=2173 L/size=9.94 cnt=11 ncop=12 starts=[-1, 2159, 4320]..[19440, 21611, 1145] lastend=21611 off=-1 step=2161.2 L/n=2160.0 (L-size)/(n-1)=2158.6
+ Nature 2.ART     118    L=24359 size=3528 L/size=6.90 cnt=8 ncop=9 starts=[0, 3480, 6960]..[20879, 24391, 20517] lastend=24391 off=0 step=3484.4 L/n=3479.9 (L-size)/(n-1)=3471.8
+ Nature 2.ART     124    L=19740 size=3029 L/size=6.52 cnt=8 ncop=9 starts=[-1, 2819, 5640]..[16920, 19949, -6763] lastend=19949 off=0 step=2850.0 L/n=2820.0 (L-size)/(n-1)=2785.2
+ Nature 2.ART     135    L=22388 size=3731 L/size=6.00 cnt=7 ncop=8 starts=[-1, 3731, 7462]..[18656, 22381, 9888] lastend=22381 off=0 step=3730.3 L/n=3731.3 (L-size)/(n-1)=3731.4
+ Nature 2.ART     117    L=21570 size=4322 L/size=4.99 cnt=6 ncop=7 starts=[0, 4314, 8628]..[17256, 21578, 19271] lastend=21578 off=1 step=4315.6 L/n=4314.0 (L-size)/(n-1)=4312.0
+ Nature 2.ART     119    L=21785 size=4320 L/size=5.04 cnt=6 ncop=7 starts=[-1, 4356, 8713]..[17427, 21782, 26584] lastend=21782 off=0 step=4356.6 L/n=4357.0 (L-size)/(n-1)=4366.3
+ Nature 2.ART     129    L=22688 size=7704 L/size=2.94 cnt=4 ncop=5 starts=[0, 7563, 15125]..[15125, 22663, 20326] lastend=22663 off=-1 step=7554.3 L/n=7562.7 (L-size)/(n-1)=7492.0
+ Nature 2.ART     136    L=21041 size=1888 L/size=11.14 cnt=12 ncop=12 starts=[0, 1913, 3826]..[17215, 19128, 21018] lastend=21018 off=0 step=1912.8 L/n=1912.8 (L-size)/(n-1)=1915.3
+ Quilting 1.ART   327    L=19800 size=3285 L/size=6.03 cnt=7 ncop=8 starts=[1, 3301, 6600]..[16501, 19786, 16687] lastend=19786 off=0 step=3297.5 L/n=3300.0 (L-size)/(n-1)=3303.0
+ Quilting 1.ART   330    L=19747 size=506 L/size=39.03 cnt=40 ncop=41 starts=[0, 506, 1013]..[19241, 19747, 16137] lastend=19747 off=0 step=506.3 L/n=506.3 (L-size)/(n-1)=506.3
+ Quilting 1.ART   333    L=19747 size=1055 L/size=18.72 cnt=20 ncop=21 starts=[0, 1039, 2079]..[18708, 19764, 26694] lastend=19764 off=-1 step=1040.2 L/n=1039.3 (L-size)/(n-1)=1038.4
+ Quilting 1.ART   336    L=19716 size=1867 L/size=10.56 cnt=12 ncop=13 starts=[0, 1792, 3584]..[17924, 19793, 10791] lastend=19793 off=-1 step=1799.4 L/n=1792.4 (L-size)/(n-1)=1784.9
+ Quilting 1.ART   338    L=19747 size=1847 L/size=10.69 cnt=12 ncop=13 starts=[0, 1795, 3590]..[17952, 19799, 16694] lastend=19799 off=-1 step=1799.9 L/n=1795.2 (L-size)/(n-1)=1790.0
+ Quilting 1.ART   328    L=19778 size=878 L/size=22.53 cnt=24 ncop=25 starts=[0, 860, 1720]..[18918, 19800, 12011] lastend=19800 off=0 step=860.9 L/n=859.9 (L-size)/(n-1)=859.1
+ Quilting 1.ART   332    L=19747 size=997 L/size=19.81 cnt=21 ncop=22 starts=[0, 987, 1975]..[18760, 19758, 16189] lastend=19758 off=0 step=987.9 L/n=987.4 (L-size)/(n-1)=986.8
+ Quilting 1.ART   334    L=19809 size=988 L/size=20.05 cnt=21 ncop=22 starts=[0, 990, 1980]..[18819, 19808, 14957] lastend=19808 off=0 step=990.4 L/n=990.5 (L-size)/(n-1)=990.6
+ Quilting 1.ART   337    L=19747 size=1310 L/size=15.07 cnt=16 ncop=17 starts=[0, 1316, 2632]..[18431, 19742, 16191] lastend=19742 off=-1 step=1316.1 L/n=1316.5 (L-size)/(n-1)=1316.9
+ Quilting 1.ART   339    L=19747 size=842 L/size=23.45 cnt=24 ncop=24 starts=[0, 858, 1717]..[18030, 18889, 19732] lastend=19732 off=0 step=858.6 L/n=858.6 (L-size)/(n-1)=859.3
+ Quilting 2.ART   340    L=17960 size=1357 L/size=13.24 cnt=14 ncop=15 starts=[-1, 1381, 2763]..[16578, 17935, 16237] lastend=17935 off=-0 step=1379.7 L/n=1381.6 (L-size)/(n-1)=1383.6
+ Quilting 2.ART   343    L=17960 size=1895 L/size=9.48 cnt=10 ncop=11 starts=[-1, 1996, 3991]..[15963, 17858, 184] lastend=17858 off=-0 step=1984.4 L/n=1995.6 (L-size)/(n-1)=2008.2
+ Quilting 2.ART   a302   L=18023 size=1458 L/size=12.36 cnt=13 ncop=14 starts=[0, 1502, 3004]..[16521, 17981, 3972] lastend=17981 off=0 step=1498.4 L/n=1501.9 (L-size)/(n-1)=1505.9
+ Quilting 2.ART   a304   L=17960 size=493 L/size=36.43 cnt=37 ncop=38 starts=[0, 499, 998]..[17460, 17953, 2870] lastend=17953 off=0 step=498.7 L/n=498.9 (L-size)/(n-1)=499.1
+ Quilting 2.ART   a306   L=17960 size=651 L/size=27.59 cnt=29 ncop=30 starts=[-1, 641, 1283]..[17318, 17968, 16096] lastend=17968 off=-0 step=641.8 L/n=641.4 (L-size)/(n-1)=641.1
+ Quilting 2.ART   342    L=17960 size=1079 L/size=16.64 cnt=18 ncop=19 starts=[-1, 1056, 2113]..[16903, 17983, -25252] lastend=17983 off=-0 step=1057.9 L/n=1056.5 (L-size)/(n-1)=1055.1
+ Quilting 2.ART   a301   L=17645 size=1606 L/size=10.99 cnt=12 ncop=13 starts=[0, 1604, 3208]..[16041, 17647, 1455] lastend=17647 off=0 step=1604.3 L/n=1604.1 (L-size)/(n-1)=1603.9
+ Quilting 2.ART   a303   L=18000 size=1804 L/size=9.98 cnt=11 ncop=12 starts=[0, 1800, 3600]..[16200, 18004, 3952] lastend=18004 off=0 step=1800.4 L/n=1800.0 (L-size)/(n-1)=1799.6
+ Quilting 2.ART   a305   L=17960 size=642 L/size=27.97 cnt=29 ncop=30 starts=[-1, 641, 1283]..[17318, 17961, 3912] lastend=17961 off=-0 step=641.5 L/n=641.4 (L-size)/(n-1)=641.4
+ Quilting 2.ART   a307   L=17960 size=2639 L/size=6.81 cnt=8 ncop=8 starts=[0, 2566, 5131]..[12828, 15394, 18034] lastend=18034 off=1 step=2565.7 L/n=2565.8 (L-size)/(n-1)=2553.5
+ Quilting 3.ART   a308   L=17960 size=1451 L/size=12.38 cnt=13 ncop=14 starts=[-1, 1496, 2993]..[16463, 17912, 2239] lastend=17912 off=-0 step=1492.8 L/n=1496.7 (L-size)/(n-1)=1500.8
+ Quilting 3.ART   a310   L=17960 size=1800 L/size=9.98 cnt=11 ncop=12 starts=[-1, 1795, 3591]..[16163, 17962, 19138] lastend=17962 off=-0 step=1796.3 L/n=1796.0 (L-size)/(n-1)=1795.6
+ Quilting 3.ART   a312   L=18023 size=326 L/size=55.29 cnt=56 ncop=57 starts=[0, 328, 655]..[17695, 18021, 25212] lastend=18021 off=0 step=327.7 L/n=327.7 (L-size)/(n-1)=327.7
+ Quilting 3.ART   a314   L=17960 size=499 L/size=35.99 cnt=37 ncop=38 starts=[0, 499, 998]..[17461, 17959, 27236] lastend=17959 off=0 step=498.9 L/n=498.9 (L-size)/(n-1)=498.9
+ Quilting 3.ART   a316   L=17960 size=355 L/size=50.59 cnt=52 ncop=53 starts=[0, 352, 704]..[17608, 17962, 2177] lastend=17962 off=0 step=352.2 L/n=352.2 (L-size)/(n-1)=352.1
+ Quilting 3.ART   a309   L=17960 size=2828 L/size=6.35 cnt=7 ncop=8 starts=[-1, 2993, 5986]..[14966, 17795, 18424] lastend=17795 off=-0 step=2966.0 L/n=2993.4 (L-size)/(n-1)=3026.5
+ Quilting 3.ART   a311   L=17645 size=418 L/size=42.21 cnt=43 ncop=44 starts=[1, 421, 841]..[17225, 17642, 23130] lastend=17642 off=0 step=420.0 L/n=420.1 (L-size)/(n-1)=420.2
+ Quilting 3.ART   a313   L=18000 size=994 L/size=18.11 cnt=19 ncop=20 starts=[0, 1000, 2000]..[17000, 17992, 37439] lastend=17992 off=0 step=999.6 L/n=1000.0 (L-size)/(n-1)=1000.4
+ Quilting 3.ART   a315   L=17960 size=432 L/size=41.57 cnt=43 ncop=43 starts=[1, 428, 856]..[17105, 17533, 17966] lastend=17966 off=1 step=427.6 L/n=427.6 (L-size)/(n-1)=427.5
+ Satin-Quilt 1.AR 501    L=22021 size=5483 L/size=4.02 cnt=5 ncop=6 starts=[-1, 5505, 11011]..[16516, 21957, 21738] lastend=21957 off=-3 step=5489.5 L/n=5505.3 (L-size)/(n-1)=5512.8
+ Satin-Quilt 1.AR 506    L=22296 size=11116 L/size=2.01 cnt=3 ncop=4 starts=[0, 11147, 22326]..[11147, 22326, 14027] lastend=22326 off=0 step=11163.0 L/n=11148.0 (L-size)/(n-1)=11180.5
+ Satin-Quilt 1.AR 508    L=22867 size=7655 L/size=2.99 cnt=4 ncop=5 starts=[0, 7623, 15246]..[15246, 22885, -29436] lastend=22885 off=0 step=7628.3 L/n=7622.3 (L-size)/(n-1)=7605.9
+ Satin-Quilt 1.AR 503    L=22949 size=8100 L/size=2.83 cnt=4 ncop=5 starts=[0, 7650, 15299]..[15299, 23399, 6155] lastend=23399 off=0 step=7799.7 L/n=7649.7 (L-size)/(n-1)=7424.5
+ Satin-Quilt 1.AR 507    L=22937 size=7645 L/size=3.00 cnt=4 ncop=5 starts=[1, 7646, 15292]..[15292, 22925, 33203] lastend=22925 off=0 step=7641.3 L/n=7645.7 (L-size)/(n-1)=7646.0
+ Satin-Quilt 1.AR 509    L=22119 size=5455 L/size=4.06 cnt=5 ncop=5 starts=[0, 5531, 11060]..[11060, 16590, 22100] lastend=22100 off=0 step=5530.0 L/n=5529.8 (L-size)/(n-1)=5554.8
+ Satin-Quilt 2.AR 511    L=22021 size=11016 L/size=2.00 cnt=3 ncop=4 starts=[0, 11010, 21990]..[11010, 21990, -9028] lastend=21990 off=-5 step=10995.0 L/n=11010.5 (L-size)/(n-1)=11005.0
+ Satin-Quilt 2.AR 513    L=23006 size=5777 L/size=3.98 cnt=5 ncop=6 starts=[0, 5751, 11504]..[17255, 22944, 7143] lastend=22944 off=0 step=5736.0 L/n=5751.5 (L-size)/(n-1)=5742.9
+ Satin-Quilt 2.AR 515    L=22119 size=3287 L/size=6.73 cnt=8 ncop=9 starts=[0, 3160, 6320]..[18960, 22247, -9999] lastend=22247 off=0 step=3178.2 L/n=3159.9 (L-size)/(n-1)=3138.7
+ Satin-Quilt 2.AR 512    L=21865 size=13500 L/size=1.62 cnt=3 ncop=4 starts=[-1, 10932, 21747]..[10932, 21747, -2299] lastend=21747 off=0 step=10874.0 L/n=10932.5 (L-size)/(n-1)=8365.0
+ Satin-Quilt 2.AR 514    L=22843 size=11688 L/size=1.95 cnt=3 ncop=3 starts=[0, 11421, 23096]..[0, 11421, 23096] lastend=23096 off=0 step=11421.0 L/n=11421.5 (L-size)/(n-1)=11155.0

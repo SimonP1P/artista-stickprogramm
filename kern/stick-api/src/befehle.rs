@@ -151,6 +151,64 @@ pub fn alphabete_liste(k: &Kontext, _: Leer) -> Result<Vec<AlphabetInfo>, Fehler
         .collect())
 }
 
+/// Motivsatz (Pattern Set, Ordner `userletw/` der CD; Handbuch Kap. 25).
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct MotivsatzInfo {
+    /// Name wie im Design-Feld `satz` der Motivlinie
+    pub name: String,
+    pub datei: String,
+}
+
+pub fn motive_liste(k: &Kontext, _: Leer) -> Result<Vec<MotivsatzInfo>, Fehler> {
+    Ok(esb::verzeichnis(&k.motive)
+        .into_iter()
+        .map(|(name, p)| MotivsatzInfo {
+            datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
+            name,
+        })
+        .collect())
+}
+
+/// Name eines Motivsatzes.
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct MotivsatzName {
+    /// Name wie in `motive_liste`
+    pub satz: String,
+}
+
+/// Ein Motiv mit Linien für die Vorschau (mm, Grundlinie von [0, 0] nach [laenge, 0], +y nach oben).
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct MotivInfo {
+    /// Name wie im Design-Feld `motiv`
+    pub name: String,
+    /// Länge der Grundlinie = Größe im Motivsatz (mm)
+    pub laenge: f64,
+    /// Höhe quer zur Grundlinie (mm)
+    pub hoehe: f64,
+    pub linien: Vec<Vec<Punkt>>,
+}
+
+pub fn motivsatz_motive(k: &Kontext, e: MotivsatzName) -> Result<Vec<MotivInfo>, Fehler> {
+    let s = k.motivsatz(&e.satz)?;
+    let r = |v: f64| (v * 100.0).round() / 100.0;
+    Ok(s.motive
+        .iter()
+        .map(|(name, z)| {
+            let (laenge, hoehe) = stick_kern::motiv::motiv_masse(z);
+            MotivInfo {
+                name: name.clone(),
+                laenge: r(laenge),
+                hoehe: r(hoehe),
+                linien: stick_kern::motiv::motiv_linien(z)
+                    .into_iter()
+                    .map(|l| l.into_iter().map(|q| stick_kern::geometrie::p(r(q.x), r(q.y))).collect())
+                    .collect(),
+            }
+        })
+        .collect())
+}
+
 /// Alphabet und Probetext für die Vorschau.
 #[derive(Debug, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]

@@ -27,7 +27,7 @@ def P(id_, gruppe, name, wirkung, *, ebene='design', gilt=(), d=None, o=None, ei
 STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Knit Heavy Weight', 'Terry Medium Weight',
           'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
 ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'satinflaeche', 'tatami', 'muster', 'blanket', 'applikation', 'text',
-        'ttf', 'monogramm', 'knopfloch']
+        'ttf', 'monogramm', 'knopfloch', 'motivlinie']
 V = 'Vorschlag (eigene Festlegung)'
 
 # ---------------------------------------------------------------- Design
@@ -316,6 +316,23 @@ P('objekt.knopfloch.winkel', G, 'Winkel', 'Richtung des Schlitzes, 90° = senkre
 P('objekt.knopfloch.abstand', G, 'Raupenabstand', 'Dichte der Raupen (Bead Stitch Spacing); Enden bleiben wie die '
   'Vorlage; ohne Angabe wie die Vorlage (0,5 mm, Heirloom 1,5 mm)', ebene='objekt', gilt=['knopfloch'], o='abstand',
   einheit='mm', std=None, bereich=[0.2, 2.0], quelle=Q + ', 90 = 0,5 mm; Musterdesign Buttonholes.ART')
+G = 'Motivlinie'
+Q = 'Musterdesigns „Sampler - Pattern Outlines“ (Analyse_Teil3/20, hoch); Handbuch Kap. 25'
+P('objekt.motiv.satz', G, 'Motivsatz', 'einer der 14 Motivsätze der CD (userletw)', ebene='objekt', gilt=['motivlinie'],
+  o='satz', einheit='Auswahl', std='Heirloom', quelle='Befehl motive_liste; Standard eigene Festlegung',
+  modus='einfach')
+P('objekt.motiv.motiv', G, 'Motiv', 'Motiv im Satz (Auswahl mit Vorschau)', ebene='objekt', gilt=['motivlinie'],
+  o='motiv', einheit='Auswahl', std='705', quelle='Befehl motivsatz_motive; Standard eigene Festlegung',
+  modus='einfach')
+P('objekt.motiv.groesse', G, 'Größe', 'Länge eines Motivs entlang der Linie (Size); Höhe wächst mit',
+  ebene='objekt', gilt=['motivlinie'], o='groesse', einheit='mm', std=None,
+  quelle=Q + ': Größe = Grundlinie der Kopie, ohne Angabe wie im Motivsatz', modus='einfach')
+P('objekt.motiv.abstand', G, 'Abstand', 'Wiederholabstand (Spacing); Anzahl = Linienlänge / Abstand gerundet, '
+  'Motive gleichmäßig verteilt', ebene='objekt', gilt=['motivlinie'], o='abstand', einheit='mm', std=None,
+  quelle=Q + ': Verteilung gemessen; Abstand ≠ Größe nicht gemessen (mittel)', modus='experte')
+P('objekt.motiv.spiegeln', G, 'Spiegeln', 'Motive auf die andere Seite der Linie', ebene='objekt',
+  gilt=['motivlinie'], o='spiegeln', einheit='an/aus', std=False, quelle=V + ' (Handbuch: Orientation)',
+  modus='einfach')
 
 # ---------------------------------------------------------------- Schrift
 G = 'Schrift'
