@@ -23,12 +23,27 @@
   import MotivDialog from "$lib/dialoge/MotivDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
-  import { EINFUEGEN, KOMMT_NOCH, neuesObjekt } from "$lib/einfuegen";
+  import {
+    BESONDERE,
+    FORMEN,
+    formObjekt,
+    FUELLUNG,
+    KOMMT_NOCH,
+    neuesObjekt,
+    SCHRIFT,
+    STICHART_HILFE,
+    STICHART_NAME,
+    UMRISS,
+    type FormWerkzeug,
+  } from "$lib/einfuegen";
+  import { WECHSELBAR } from "$lib/arbeit.svelte";
   import { listen } from "$lib/listen.svelte";
   import { knotenBild } from "$lib/knoten";
   import type { ReihenfolgeBefehl } from "$kern/kern";
 
-  let menue = $state<"datei" | "maschine" | "einfuegen" | "anordnen" | null>(null);
+  let menue = $state<"datei" | "maschine" | "einfuegen" | "anordnen" | "fuellung" | "umriss" | null>(null);
+  /** Lage des Stichart-Menüs neben der Werkzeugleiste */
+  let stichartPos = $state({ x: 0, y: 0 });
   let spruenge = $state(true);
   let einstiche = $state(false);
   let raster = $state(true);
@@ -136,6 +151,34 @@
     const o = neuesObjekt(art, schrift);
     if (o) arbeit.einfuegen(o);
   }
+
+  /** Form-Werkzeug: Form mit der vorgewählten Stichart einfügen (Umriss über den Kern `stichart_aendern`) */
+  async function formEinfuegen(form: FormWerkzeug) {
+    const { objekt, umriss } = formObjekt(form, arbeit.vorwahl);
+    arbeit.einfuegen(objekt);
+    if (umriss) await arbeit.stichartAendern([arbeit.objekte.length - 1], umriss);
+  }
+  /** Stichart-Menü (Füllung/Umriss) neben der Werkzeugleiste öffnen */
+  function stichartMenue(modus: "fuellung" | "umriss", ev: MouseEvent) {
+    arbeit.vorwahl.modus = modus;
+    const r = (ev.currentTarget as HTMLElement).getBoundingClientRect();
+    stichartPos = { x: r.right + 6, y: r.top };
+    menue = menue === modus ? null : modus;
+  }
+  /** Stichart wählen: Vorwahl für neue Formen und – wie im Original – für die gewählten Linien/Flächen */
+  function stichartWaehlen(modus: "fuellung" | "umriss", art: string) {
+    arbeit.vorwahl.modus = modus;
+    arbeit.vorwahl[modus] = art;
+    const passend = arbeit.auswahl.filter((i) => WECHSELBAR.includes(arbeit.objekte[i]?.art ?? ""));
+    if (passend.length) arbeit.stichartAendern(passend, art);
+  }
+  const auswahlWechselbar = $derived(arbeit.auswahl.some((i) => WECHSELBAR.includes(arbeit.objekte[i]?.art ?? "")));
+  const formTitel = (f: (typeof FORMEN)[number]) =>
+    f.form === "linie"
+      ? `${f.name} – wird ${STICHART_NAME[arbeit.vorwahl.umriss]} (Umriss)`
+      : f.form === "saeule"
+        ? `${f.name} – ${f.hilfe}`
+        : `${f.name} – wird ${arbeit.vorwahl.modus === "fuellung" ? `Fläche: ${STICHART_NAME[arbeit.vorwahl.fuellung]}` : `Umriss: ${STICHART_NAME[arbeit.vorwahl.umriss]}`}`;
 
   /** Menü Anordnen: Befehle auf die Auswahl (`reihenfolge_aendern`) */
   const auswahlSortiert = $derived([...arbeit.auswahl].sort((a, b) => a - b));
@@ -304,9 +347,19 @@
     {#if menue === "einfuegen"}
       <div class="menu" role="menu" aria-label="Einfügen" style="left:205px; top:44px; display:grid; grid-template-columns:240px 300px; padding:0">
         <div style="padding:4px; border-right:1px solid var(--line)">
-          <div class="mh">Objekt einfügen</div>
-          {#each EINFUEGEN as x (x.art)}
-            <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(x.art))}><Icon d={ART[x.art]?.[1] ?? ""} />{ART[x.art]?.[0] ?? x.art}</button>
+          <div class="mh">Form – {arbeit.vorwahl.modus === "fuellung" ? `Fläche: ${STICHART_NAME[arbeit.vorwahl.fuellung]}` : `Umriss: ${STICHART_NAME[arbeit.vorwahl.umriss]}`}</div>
+          {#each FORMEN as f (f.form)}
+            <button class="mi" role="menuitem" onclick={() => waehle(() => formEinfuegen(f.form))}><Icon d={f.icon} />{f.name}</button>
+          {/each}
+          <div class="msep"></div>
+          <div class="mh">Schrift</div>
+          {#each SCHRIFT as a (a)}
+            <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(a))}><Icon d={ART[a][1]} />{ART[a][0]}</button>
+          {/each}
+          <div class="msep"></div>
+          <div class="mh">Besondere</div>
+          {#each BESONDERE as a (a)}
+            <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(a))}><Icon d={ART[a][1]} />{ART[a][0]}</button>
           {/each}
           <div class="msep"></div>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
@@ -347,6 +400,24 @@
     {/if}
   </header>
   {#if menue}<div class="shade" role="presentation" onclick={() => (menue = null)}></div>{/if}
+  {#if menue === "fuellung" || menue === "umriss"}
+    {@const modus = menue}
+    <div class="menu" role="menu" aria-label={modus === "fuellung" ? "Stichart Füllung" : "Stichart Umriss"} style="position:fixed; left:{stichartPos.x}px; top:{stichartPos.y}px; width:340px">
+      <div class="mh">{modus === "fuellung" ? "Füllung (Fläche)" : "Umriss (Linie)"} – Stichart</div>
+      {#each modus === "fuellung" ? FUELLUNG : UMRISS as a (a)}
+        {@const an = arbeit.vorwahl[modus] === a}
+        <button class="mi" role="menuitemradio" aria-checked={an} onclick={() => waehle(() => stichartWaehlen(modus, a))} style="white-space:normal">
+          <Icon d={ART[a]?.[1] ?? ""} />
+          <span style="flex:1"><b style="font-weight:500">{STICHART_NAME[a]}</b> <span class="mut small">– {STICHART_HILFE[a]}</span></span>
+          {#if an}<Icon d={IC.haken} />{/if}
+        </button>
+      {/each}
+      <div class="msep"></div>
+      <div class="small mut" style="padding:4px 10px 8px; white-space:normal">
+        Gilt für neue Formen{auswahlWechselbar ? " und für die gewählten Linien/Flächen (Form bleibt)" : ""}. Wie im Original jederzeit änderbar.
+      </div>
+    </div>
+  {/if}
 
   {#if arbeit.meldung}
     <div
@@ -392,18 +463,28 @@
       </div>
       <div style="flex:1; min-height:0; display:flex">
         {#if arbeit.modus === "experte"}
-          <div class="rail" role="toolbar" aria-label="Werkzeuge" aria-orientation="vertical">
-            <button class="tb" aria-pressed={werkzeug === "auswahl"} aria-label="Auswählen und Griffe" title="Auswählen, ziehen, Griffe (skalieren, drehen)" onclick={() => (werkzeug = "auswahl")}><Icon d={IC.zeiger} groesse="l" /></button>
-            <button class="tb" aria-pressed={werkzeug === "knoten"} disabled={arbeit.auswahl.length !== 1} aria-label="Knoten bearbeiten" title="Knoten bearbeiten (ziehen; Entf löscht, Einfg fügt ein)" onclick={() => ((werkzeug = "knoten"), (arbeit.ansicht = "form"))}><Icon d={IC.knoten} groesse="l" /></button>
-            <button class="tb" aria-pressed={werkzeug === "einstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Einstich setzen" title="Einstich des gewählten Objekts setzen" onclick={() => (werkzeug = "einstich")}><Icon d={IC.einaus} groesse="l" /></button>
-            <button class="tb" aria-pressed={werkzeug === "ausstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Ausstich setzen" title="Ausstich des gewählten Objekts setzen" onclick={() => (werkzeug = "ausstich")} style="transform:scaleX(-1)"><Icon d={IC.einaus} groesse="l" /></button>
+          <div class="rail" role="toolbar" aria-label="Werkzeuge" aria-orientation="vertical" data-tip-rechts>
+            <button class="tb" aria-pressed={werkzeug === "auswahl"} aria-label="Auswählen und Griffe" title="Auswählen, ziehen, Griffe (skalieren, drehen) · Esc" onclick={() => (werkzeug = "auswahl")}><Icon d={IC.zeiger} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "knoten"} disabled={arbeit.auswahl.length !== 1} aria-label="Knoten bearbeiten" title="Knoten bearbeiten – Punkte ziehen; Entf löscht, Einfg fügt ein" onclick={() => ((werkzeug = "knoten"), (arbeit.ansicht = "form"))}><Icon d={IC.knoten} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "einstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Einstich setzen" title="Einstich (E) des gewählten Objekts setzen – hier beginnt es" onclick={() => (werkzeug = "einstich")}><Icon d={IC.einstich} groesse="l" /></button>
+            <button class="tb" aria-pressed={werkzeug === "ausstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Ausstich setzen" title="Ausstich (A) des gewählten Objekts setzen – hier endet es" onclick={() => (werkzeug = "ausstich")}><Icon d={IC.ausstich} groesse="l" /></button>
             <span class="sep"></span>
-            {#each EINFUEGEN as x, k (x.art)}
-              {#if k > 0 && EINFUEGEN[k - 1].gruppe !== x.gruppe}<span class="sep"></span>{/if}
-              <button class="tb" aria-label="{ART[x.art]?.[0]} einfügen" title="{ART[x.art]?.[0]} einfügen" onclick={() => einfuegen(x.art)}><Icon d={ART[x.art]?.[1] ?? ""} groesse="l" /></button>
+            <button class="tb stw" class:an={arbeit.vorwahl.modus === "fuellung"} aria-haspopup="menu" aria-expanded={menue === "fuellung"} aria-label="Füllung: {STICHART_NAME[arbeit.vorwahl.fuellung]}" title="Füllung: {STICHART_NAME[arbeit.vorwahl.fuellung]} – neue Formen werden Flächen · Klick: Stichart wählen (auch für die Auswahl)" onclick={(ev) => stichartMenue("fuellung", ev)}><Icon d={ART[arbeit.vorwahl.fuellung]?.[1] ?? ""} groesse="l" /><span class="stw-l">Fläche</span></button>
+            <button class="tb stw" class:an={arbeit.vorwahl.modus === "umriss"} aria-haspopup="menu" aria-expanded={menue === "umriss"} aria-label="Umriss: {STICHART_NAME[arbeit.vorwahl.umriss]}" title="Umriss: {STICHART_NAME[arbeit.vorwahl.umriss]} – Linien und, wenn gewählt, Formen als Umriss · Klick: Stichart wählen (auch für die Auswahl)" onclick={(ev) => stichartMenue("umriss", ev)}><Icon d={ART[arbeit.vorwahl.umriss]?.[1] ?? ""} groesse="l" /><span class="stw-l">Umriss</span></button>
+            <span class="sep"></span>
+            {#each FORMEN as f (f.form)}
+              <button class="tb" aria-label="{f.name} einfügen" title={formTitel(f)} onclick={() => formEinfuegen(f.form)}><Icon d={f.icon} groesse="l" /></button>
             {/each}
             <span class="sep"></span>
-            <button class="tb" aria-label="Weitere Werkzeuge – kommen noch" title="Kommt noch: Motive, Effekte, Kreuzstich …" onclick={() => (menue = "einfuegen")} style="border:1px dashed var(--muted)"><Icon d={IC.kommtNoch} groesse="l" /></button>
+            {#each ["text", "monogramm"] as a (a)}
+              <button class="tb" aria-label="{ART[a][0]} einfügen" title="{ART[a][0]} einfügen" onclick={() => einfuegen(a)}><Icon d={ART[a][1]} groesse="l" /></button>
+            {/each}
+            <span class="sep"></span>
+            {#each BESONDERE as a (a)}
+              <button class="tb" aria-label="{ART[a][0]} einfügen" title="{ART[a][0]} einfügen" onclick={() => einfuegen(a)}><Icon d={ART[a][1]} groesse="l" /></button>
+            {/each}
+            <span class="sep"></span>
+            <button class="tb" aria-label="Weitere Werkzeuge – kommen noch" title="Kommt noch: mit der Maus zeichnen, Motivfüllung, Effekte, Kreuzstich …" onclick={() => (menue = "einfuegen")} style="border:1px dashed var(--muted)"><Icon d={IC.kommtNoch} groesse="l" /></button>
           </div>
         {/if}
         <div class="stage">

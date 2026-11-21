@@ -15,6 +15,16 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Stichart wechseln, Werkzeugleiste nach Formen (Wunsch Nutzer, Commit 49eb027)
+- **Neu:** Befehl `stichart_aendern {design, objekt, art}` → `{objekt, hinweise}`: Umriss `lauf`, `dreifach`,
+  `satinlinie`, `blanket`, `motivlinie` ↔ Füllung `tatami`, `satinflaeche`, `muster`; Form und gemeinsame Felder bleiben
+  (Handbuch S. 63/64 „You can change it at any stage“). Offene Linie → Füllung: Fehler.
+- **Oberfläche:** umgesetzt – Werkzeugleiste mit **Formen** (Linie, Kreis/Oval, Rechteck, freie Form, Säule – wie die
+  Design-Leiste des Originals, S. 58), Text/Monogramm, Applikation/Knopfloch; darüber **Füllung/Umriss** mit
+  Stichart-Menü (Vorwahl für neue Formen, gilt auch für die Auswahl); Inspektor oben „Stichart“ und „Umrandung dazu“
+  (eigene Erweiterung: Linie gleicher Form, gruppiert); Menü Einfügen nach Formen/Schrift/Besondere; schnelle Tooltips
+  (`Tooltip.svelte`, 0,18 s); neue Symbole (Formen, Sticharten, E/A).
+
 ## 21.11.2026 – Gruppen und „Design einfügen“ (Test des Nutzers, Commit 08b469a)
 - **Neu:** Feld `gruppe` an jedem Objekt (Schlüssel) und `gruppen` am Design `{name, herkunft: gruppiert|bild|svg,
   transform}` – „Group“ des Originals (Handbuch S. 134, ART `EmbroideryGroup`). Transformationen: je Objekt → je Gruppe
@@ -117,5 +127,5 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-**Abgeglichen bis:** `08b469a` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
+**Abgeglichen bis:** `49eb027` (21.11.2026) – die Oberfläche v3 (`app/`, Etappen E0–E6) setzt alle Einträge bis hier um.
 Offen geblieben: W9 „Buchstabe je Stich“ (Kern) und das Umwandeln „Form/Transformation → Punkte“ für das Knoten-Werkzeug (W5, Kern); siehe `ROADMAP.md` Phase 5.

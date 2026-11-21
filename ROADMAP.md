@@ -268,6 +268,11 @@ Kern: `gruppe`/`gruppen` wie „Group“ des Originals, Befehl `design_einfuegen
 im Expertenmodus (Strg+G); **Senden auch am Mac** (USB-Seriell-Adapter, Ports `/dev/cu.*`). Offen aus dem Test: Bild
 wurde „nur schwarz-weiß“ – Bild des Nutzers ansehen.
 
+**Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
+Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),
+schnelle Tooltips, neue Symbole ✅. **Nächster Oberflächen-Schritt:** Formen mit der Maus zeichnen (Punkt für Punkt,
+links = Ecke, rechts = Kurve wie im Original, S. 58) statt Probeform in der Mitte.
+
 **Offen nach E6 (Kern-Schritte):** ~~W9~~ ✅ 21.11. · ~~W5-Rest~~ ✅ 21.11. (`stick-kern::umwandeln`) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –

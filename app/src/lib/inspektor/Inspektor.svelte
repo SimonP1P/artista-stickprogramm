@@ -3,7 +3,8 @@
   // dem Schema des Kerns; welche Felder im einfachen Teil stehen, legt die Liste E_FELDER fest (UEBERGABE §3 „E“),
   // alles Weitere erscheint unter „Stichart – Feinheiten“ mit der Marke X.
   import type { ObjektJson, Transformation } from "$kern/kern";
-  import { arbeit } from "../arbeit.svelte";
+  import { arbeit, WECHSELBAR } from "../arbeit.svelte";
+  import { FUELLUNG, STICHART_NAME, UMRISS } from "../einfuegen";
   import Icon from "../Icon.svelte";
   import { ART, IC } from "../icons";
   import { garnText, listen, STOFF_TEXT } from "../listen.svelte";
@@ -138,6 +139,32 @@
           <span class="fl tab">Nr. {i + 1}</span>
           <span class="fc"><Icon d={ART[o.art]?.[1] ?? ""} />{ART[o.art]?.[0] ?? o.art}</span>
         </div>
+        {#if WECHSELBAR.includes(o.art)}
+          <!-- Stichart wechseln wie „Outline/Fill“ + Liste im Original (Handbuch S. 63/64); Form bleibt (Kern) -->
+          <div class="frow">
+            <label class="fl" for="istichart">Stichart</label>
+            <div class="fc">
+              <select id="istichart" class="input sm" value={o.art} onchange={(ev) => arbeit.stichartAendern([i], (ev.currentTarget as HTMLSelectElement).value)}>
+                <optgroup label="Füllung (Fläche)">
+                  {#each FUELLUNG as a (a)}<option value={a}>{STICHART_NAME[a]} – Fläche</option>{/each}
+                </optgroup>
+                <optgroup label="Umriss (Linie)">
+                  {#each UMRISS as a (a)}<option value={a}>{STICHART_NAME[a]} – Linie</option>{/each}
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          {#if (FUELLUNG as readonly string[]).includes(o.art)}
+            <div class="frow">
+              <span class="fl"></span>
+              <div class="fc">
+                <button class="btn btn-secondary" style="min-height:28px" title="Legt eine Linie mit derselben Form dahinter an ({STICHART_NAME[arbeit.vorwahl.umriss]}, wie die Umriss-Vorwahl) und gruppiert beide – im Original zwei Objekte von Hand" onclick={() => arbeit.umrandungDazu(i)}>
+                  <Icon d={IC.plus} />Umrandung dazu
+                </button>
+              </div>
+            </div>
+          {/if}
+        {/if}
         <div class="frow">
           <label class="fl" for="iname">Name</label>
           <div class="fc"><input id="iname" class="input sm" value={o.name ?? ""} onchange={(ev) => setzen("name", (ev.currentTarget as HTMLInputElement).value || undefined)} /></div>

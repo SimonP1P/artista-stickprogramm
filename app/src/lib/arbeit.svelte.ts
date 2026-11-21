@@ -81,6 +81,21 @@ export function objektName(o: ObjektJson | undefined, i: number): string {
   return x.name || x.text?.split("\n")[0] || x.initialen || `Nr. ${i + 1}`;
 }
 
+/** Objektarten, deren Stichart sich wechseln lässt (Kern `stichart_aendern`) */
+export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "tatami", "satinflaeche", "muster"];
+/** Standardname je Stichart (neue Objekte); ein Objekt mit Standardnamen bekommt beim Wechsel den neuen */
+export const STANDARD_NAME: Record<string, string> = {
+  lauf: "Laufstich",
+  dreifach: "Dreifachstich",
+  satinlinie: "Satinlinie",
+  blanket: "Blanket",
+  motivlinie: "Motivlinie",
+  tatami: "Fläche",
+  satinflaeche: "Satinfläche",
+  muster: "Füllmuster",
+};
+const STANDARD_NAMEN = Object.values(STANDARD_NAME);
+
 /** freier Gruppenschlüssel g1, g2 … */
 function freierSchluessel(gruppen: Record<string, unknown>): string {
   let n = 1;
@@ -134,6 +149,13 @@ class Arbeit {
 
   // Listen des Kerns (einmal geladen)
   rahmenListe = $state.raw<RahmenInfo[]>([]);
+
+  /** Vorwahl der Stichart für neue Formen (wie „Outline/Fill“ + Stichart-Liste des Originals) */
+  vorwahl = $state<{ modus: "fuellung" | "umriss"; fuellung: string; umriss: string }>({
+    modus: "fuellung",
+    fuellung: "tatami",
+    umriss: "lauf",
+  });
 
   /** Meldung oben (z. B. „gespeichert“, Fehler beim Öffnen) */
   meldung = $state<{ text: string; art: "ok" | "err" | "info" } | null>(null);
@@ -364,6 +386,61 @@ class Arbeit {
   }
 
   /** Objekt anhängen und wählen */
+  /**
+   * Stichart der Objekte `nummern` wechseln (Kern `stichart_aendern`; Form, Farbe, Gruppe … bleiben). Nicht
+   * wechselbare Objekte (Text, Säule …) werden übergangen; Fehler und Hinweise erscheinen als Meldung.
+   */
+  async stichartAendern(nummern: number[], art: string) {
+    let design = $state.snapshot(this.design) as DesignJson;
+    const neu = new Map<number, ObjektJson>();
+    const meldungen: string[] = [];
+    for (const i of nummern) {
+      const o = design.objekte?.[i];
+      if (!o || !WECHSELBAR.includes(o.art) || o.art === art) continue;
+      try {
+        const r = await kern("stichart_aendern", { design, objekt: i, art });
+        const x = r.objekt as ObjektJson;
+        if (!o.name || STANDARD_NAMEN.includes(o.name)) x.name = STANDARD_NAME[art] ?? o.name;
+        neu.set(i, x);
+        design = { ...design, objekte: design.objekte!.map((y, k) => (k === i ? x : y)) };
+        meldungen.push(...r.hinweise);
+      } catch (x) {
+        meldungen.push(alsFehler(x).meldung);
+      }
+    }
+    if (neu.size) this.aendern((d) => neu.forEach((x, i) => (d.objekte![i] = x)));
+    if (meldungen.length) this.zeige([...new Set(meldungen)].join(" · "), neu.size ? "info" : "err");
+  }
+
+  /**
+   * „Umrandung dazu“ (eigene Erweiterung – im Original zwei Objekte von Hand, Handbuch S. 114): hinter der Fläche `i`
+   * eine Linie mit derselben Form und der Umriss-Stichart der Vorwahl; beide werden gruppiert.
+   */
+  async umrandungDazu(i: number, art = this.vorwahl.umriss) {
+    const design = $state.snapshot(this.design) as DesignJson;
+    try {
+      const r = await kern("stichart_aendern", { design, objekt: i, art });
+      const linie = r.objekt as ObjektJson;
+      linie.name = `${STANDARD_NAME[art] ?? "Umrandung"} (Umrandung)`;
+      delete linie.einstich;
+      delete linie.ausstich;
+      this.aendern((d) => {
+        const o = d.objekte![i];
+        if (!o.gruppe) {
+          d.gruppen ??= {};
+          const k = freierSchluessel(d.gruppen);
+          d.gruppen[k] = { name: o.name || "Fläche mit Umrandung", herkunft: "gruppiert" };
+          o.gruppe = k;
+        }
+        linie.gruppe = o.gruppe;
+        d.objekte!.splice(i + 1, 0, linie);
+      });
+      this.waehlen(i);
+    } catch (x) {
+      this.zeige(alsFehler(x).meldung, "err");
+    }
+  }
+
   einfuegen(o: ObjektJson) {
     this.aendern((d) => {
       d.objekte ??= [];

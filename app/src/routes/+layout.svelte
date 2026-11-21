@@ -7,8 +7,10 @@
   import "@fontsource/barlow-condensed/600.css";
   import "$lib/stil/industry.css";
   import "$lib/stil/app.css";
+  import Tooltip from "$lib/Tooltip.svelte";
 
   let { children } = $props();
 </script>
 
 {@render children()}
+<Tooltip />
