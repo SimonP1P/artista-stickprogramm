@@ -320,4 +320,15 @@ Das Protokoll der Testprogramme ist nach Rust übertragen (`kern/stick-maschine`
 **Folgerung:** Alle Schreibwege des Originals für „Embroider“ (Schritte 7–12) funktionieren an der artista 185 – aus dem
 Testprogramm und aus dem Rust-Kern der App. Offen ist nur, was das Display mit Icon und Garnfarben zeigt.
 
+## Neue Oberfläche am Gerät – Vor Ort V10 (21.11.2026, Bericht des Nutzers)
+Der Nutzer hat das Programm (Oberfläche v3, Rust-Kern) auf dem Windows-PC an der artista 185 benutzt.
+| Schritt | Ergebnis | Sicherheit |
+|---|---|---|
+| Anschluss | Maschine an **COM3** gefunden | hoch (Bericht) |
+| Gestalten | „alles so eingestellt, wie ich wollte“ | hoch (Bericht) |
+| Senden + Sticken | Design gesendet, die Maschine hat es **sauber gestickt** | hoch (Bericht) |
+| Ende | Display zeigt am Ende einen Hinweis sinngemäß „Design fertig gestickt“ – **Meldung der Maschine** (weder im Programm noch im Original-PC-Programm vorhanden; Wortlaut nicht notiert) | mittel |
+| Mitschnitt | liegt im Log-Ordner des Programms auf dem Windows-PC (noch nicht ins Repo übernommen) | – |
 
+**Folgerung:** Der Weg Programm → `stick-api` → `stick-maschine` → artista 185 funktioniert am Gerät bis zum Sticken.
+Welche Einzelschritte von V10 (Prüfen, Liste lesen, Abbrechen) dabei liefen, ist nicht gemeldet.

@@ -15,7 +15,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
 | 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, **4b.7 Motivlinie ✅** (Motivfüllung offen), 4b.17 SVG einlesen ✅, 4b.8/4b.11 begonnen, 4b.8–4b.15 offen · Parameterkatalog `PARAMETER.md` (167 Parameter) | 🟡 |
-| 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (Maschine nur in der Simulation erprobt; am Gerät: Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
+| 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (**am Gerät gesendet und gestickt 21.11.**, Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -53,8 +53,8 @@ Vernähen je Teil).
 **Neue Oberfläche (21.11.) ✅:** Entwurf v3 (`UI_Mockups/v3_2026-11-21/`) in `app/` umgesetzt, Etappen **E0–E6**
 (Tabelle in Phase 5, Stand je Etappe und Bildschirmfotos in `app/README.md`). Gebaut und geprüft auf dem **Mac** (Rust
 dort seit 21.11. in `~/.cargo`, `CARGO_TARGET_DIR=kern/target`); Bildschirmfotos ohne Fenster mit
-`app/werkzeuge/bildschirmfoto.py` (das Terminal darf auf dem Mac keine Bildschirmaufnahme). **Maschine nur in der
-Simulation erprobt** – nächster Gerätetest: Vor Ort **V10** (nach Zustimmung). Offene Kern-Schritte der Oberfläche:
+`app/werkzeuge/bildschirmfoto.py` (das Terminal darf auf dem Mac keine Bildschirmaufnahme). **Maschine am Gerät
+erprobt** – Vor Ort **V10** ✅ 21.11. (gesendet und gestickt, Bericht Nutzer). Offene Kern-Schritte der Oberfläche:
 W12 (Phase 5); **W5-Rest ✅ 21.11.** (Befehl `in_knoten_umwandeln`, Knoten mit Bézier-Anfassern), **W9 ✅ 21.11.**
 (Buchstabe je Stich, einzelne Buchstaben per Klick).
 Merkliste M1: Aufteilung des Parameterkatalogs nach einfach/experte **vom Nutzer bestätigt (21.11.)**.
@@ -273,7 +273,10 @@ Kern: `gruppe`/`gruppen` wie „Group“ des Originals, Befehl `design_einfuegen
 im Expertenmodus (Strg+G); **Senden auch am Mac** (USB-Seriell-Adapter, Ports `/dev/cu.*`). Bild „nur schwarz-weiß“:
 war das Bild des Nutzers. **Bild umwandeln verbessert** (21.11., Phase 4 Punkt 8): Dialog mit Vorschau und Farbliste.
 **Schrift „automatisch“** (21.11., Wunsch Nutzer): `stichart: "auto"` – Satin bis 8 mm Stichlänge, darüber Step für den
-ganzen Text (eigene Erweiterung); einfacher Modus mit Schalter „Trotzdem Satin“.
+ganzen Text (eigene Erweiterung); einfacher Modus mit Schalter „Trotzdem Satin“. **Am Gerät (V10, 21.11.):** die
+neue Oberfläche hat an der artista 185 gesendet und gestickt (Bericht Nutzer). Den Hinweis am Ende des Stickens zeigt
+die Maschine selbst (Firmware, nicht änderbar) – Wunsch „100 Zufallssprüche“ daher im Ergebnis des Sende-Dialogs
+(`app/src/lib/sprueche.ts`).
 
 **Werkzeuge nach dem Original (21.11.2026, Wunsch Nutzer):** Formen-Werkzeuge + Stichart getrennt (Füllung/Umriss,
 Handbuch S. 58/63/64), Stichart jederzeit wechseln (Kern `stichart_aendern`), „Umrandung dazu“ (eigene Erweiterung),
