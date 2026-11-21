@@ -600,6 +600,35 @@ mod tests {
         assert!(klein * 2 < voll, "{klein} gegen {voll}");
     }
 
+    /// Gruppe („Group“): zwei Flächen werden gemeinsam um die Mitte der Gruppe skaliert, verschoben – der Abstand
+    /// zwischen ihnen wächst mit; ein Objekt außerhalb der Gruppe bleibt. Unbekannte Gruppe ist ein Fehler.
+    #[test]
+    fn gruppe_gemeinsam_transformieren() {
+        let json = r##"{"gruppen": {"b": {"name": "Bild", "herkunft": "bild", "transform": {"skalieren": 200, "verschieben": [5, 0]}}},
+          "objekte": [
+            {"art": "tatami", "gruppe": "b", "umriss": {"rechteck": {"mitte": [-10, 0], "breite": 4, "hoehe": 4}}},
+            {"art": "tatami", "gruppe": "b", "umriss": {"rechteck": {"mitte": [10, 0], "breite": 4, "hoehe": 4}}},
+            {"art": "tatami", "umriss": {"rechteck": {"mitte": [0, 30], "breite": 4, "hoehe": 4}}}
+        ]}"##;
+        let d = crate::Design::aus_json(json).unwrap();
+        let (obj, _) = d.objekte_aufgeloest().unwrap();
+        let m = |o: &Objekt| {
+            let mut pts = Vec::new();
+            formpunkte(&o.art, &mut pts);
+            let x0 = pts.iter().map(|q| q.x).fold(f64::MAX, f64::min);
+            let x1 = pts.iter().map(|q| q.x).fold(f64::MIN, f64::max);
+            let y0 = pts.iter().map(|q| q.y).fold(f64::MAX, f64::min);
+            let y1 = pts.iter().map(|q| q.y).fold(f64::MIN, f64::max);
+            ((x0 + x1) / 2.0, (y0 + y1) / 2.0, x1 - x0)
+        };
+        let (a, b, c) = (m(&obj[0]), m(&obj[1]), m(&obj[2]));
+        assert!((a.0 + 15.0).abs() < 1e-9 && (b.0 - 25.0).abs() < 1e-9, "{a:?} {b:?}");
+        assert!((a.2 - 8.0).abs() < 1e-9 && (b.2 - 8.0).abs() < 1e-9);
+        assert!((c.0).abs() < 1e-9 && (c.1 - 30.0).abs() < 1e-9 && (c.2 - 4.0).abs() < 1e-9);
+        let falsch = json.replace(r#""gruppe": "b", "umriss": {"rechteck": {"mitte": [10"#, r#""gruppe": "x", "umriss": {"rechteck": {"mitte": [10"#);
+        assert!(crate::Design::aus_json(&falsch).unwrap_err().contains("gruppe „x“"));
+    }
+
     #[test]
     fn oval_als_form() {
         let d = crate::Design::aus_json(

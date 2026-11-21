@@ -81,6 +81,18 @@ pub fn fehler_deutsch(m: &str) -> String {
 // ---------------------------------------------------------------- Auswahlfelder
 
 auswahl! {
+    /// Woher eine Gruppe stammt (nur für die Anzeige in der Oberfläche)
+    pub enum GruppenHerkunft {
+        /// von Hand gruppiert („Group“, Standard)
+        Gruppiert = "gruppiert",
+        /// Bild umwandeln (`bild_umwandeln`)
+        Bild = "bild",
+        /// SVG einlesen (`svg_lesen`)
+        Svg = "svg",
+    }
+}
+
+auswahl! {
     /// Stichart einer Satinsäule, Satinlinie oder Satinfläche
     pub enum SatinStichart {
         /// Satin (Standard)
@@ -519,6 +531,11 @@ pub struct Gemeinsam {
     /// Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet
     #[serde(default)]
     pub transform: Option<Transformation>,
+    /// **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+    /// Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+    /// Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+    #[serde(default)]
+    pub gruppe: Option<String>,
     /// Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
     #[serde(default)]
     pub doppellauf: bool,
@@ -1032,6 +1049,25 @@ pub struct DesignJson {
     #[serde(default)]
     pub kuerzeste_verbindung: bool,
     /// Transformation des ganzen Designs (um seine Mitte)
+    #[serde(default)]
+    pub transform: Option<Transformation>,
+    /// **Gruppen** („Group“ im Original): Schlüssel → Name und Transformation. Objekte nennen ihre Gruppe im Feld
+    /// `gruppe`. Reihenfolge der Transformationen: je Objekt → je Gruppe (um die Mitte ihrer Objekte) → ganzes Design
+    #[serde(default)]
+    pub gruppen: std::collections::BTreeMap<String, GruppeJson>,
+}
+
+/// Eine Gruppe von Objekten (Feld `gruppen` des Designs).
+#[derive(Clone, Debug, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct GruppeJson {
+    /// Name der Gruppe (Elementliste der Oberfläche), z. B. der Dateiname des Bilds
+    #[serde(default)]
+    pub name: String,
+    /// Herkunft (nur Anzeige)
+    #[serde(default)]
+    pub herkunft: Option<GruppenHerkunft>,
+    /// Verschieben, Skalieren, Drehen … der ganzen Gruppe um die Mitte ihrer Objekte – Stiche werden neu berechnet
     #[serde(default)]
     pub transform: Option<Transformation>,
 }

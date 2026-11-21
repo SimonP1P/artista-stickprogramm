@@ -353,3 +353,28 @@ fn parameterkatalog_passt_zum_format() {
         "Parameterkatalog nennt Felder, die das Format nicht hat: {falsch:#?}"
     );
 }
+
+/// „Insert Design“: Objekte anhängen, als Gruppe; doppelte Namen und `aussparen` werden mitgezogen.
+#[test]
+fn design_einfuegen_als_gruppe() {
+    let k = kontext();
+    let basis = json!({"objekte": [{"art": "text", "text": "Anna", "alphabet": "Drifter", "hoehe": 10, "name": "Blatt"}]});
+    let bild = json!({"transform": {"skalieren": 50}, "objekte": [
+        {"art": "tatami", "name": "Blatt", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 20, "hoehe": 20}}},
+        {"art": "tatami", "name": "Stiel", "aussparen": ["Blatt"], "umriss": {"rechteck": {"mitte": [5, 0], "breite": 20, "hoehe": 20}}}
+    ]});
+    let r = ausfuehren(&k, "design_einfuegen", json!({"design": basis, "einfuegen": bild, "gruppe": {"name": "blume.png", "herkunft": "bild"}})).unwrap();
+    assert_eq!(r["objekte"], json!([1, 2]));
+    assert_eq!(r["gruppe"], "g1");
+    let d = &r["design"];
+    assert_eq!(d["objekte"][1]["name"], "Blatt (2)");
+    assert_eq!(d["objekte"][2]["aussparen"], json!(["Blatt (2)"]));
+    assert_eq!(d["objekte"][2]["gruppe"], "g1");
+    assert_eq!(d["gruppen"]["g1"]["transform"]["skalieren"], 50);
+    assert_eq!(d["gruppen"]["g1"]["herkunft"], "bild");
+    // noch einmal: neue Gruppe g2
+    let r2 = ausfuehren(&k, "design_einfuegen", json!({"design": d, "einfuegen": bild, "gruppe": {"name": "b"}})).unwrap();
+    assert_eq!(r2["gruppe"], "g2");
+    assert_eq!(r2["design"]["objekte"][3]["name"], "Blatt (3)");
+    ausfuehren(&k, "design_berechnen", json!({"design": r2["design"]})).unwrap();
+}

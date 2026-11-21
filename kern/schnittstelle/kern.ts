@@ -86,6 +86,12 @@ export type ApplikationJson = {
    * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
    */
   garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /** Abstand des Heftstichs in mm */
   heft_abstand?: number | null;
   /** Breite des Heftstichs in mm */
@@ -193,6 +199,12 @@ export type BlanketJson = {
   /** @default false */
   geschlossen?: boolean;
   /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
    * @default ""
    */
@@ -242,6 +254,11 @@ export type DesignJson = {
    */
   garnkarte?: string;
   /**
+   * **Gruppen** („Group“ im Original): Schlüssel → Name und Transformation. Objekte nennen ihre Gruppe im Feld
+   * `gruppe`. Reihenfolge der Transformationen: je Objekt → je Gruppe (um die Mitte ihrer Objekte) → ganzes Design
+   */
+  gruppen?: Record<string, GruppeJson>;
+  /**
    * Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift)
    * @default false
    */
@@ -273,6 +290,30 @@ export type DesignJson = {
 
 /** Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text). */
 export type DesignWert = DesignJson;
+
+/** Ein Design in ein anderes einfügen. */
+export type EinfuegenEingabe = {
+  /** Design, in das eingefügt wird */
+  design: DesignWert;
+  /** Design, dessen Objekte angehängt werden (z. B. Ergebnis von `bild_umwandeln`/`svg_lesen` oder eine Datei) */
+  einfuegen: DesignWert;
+  /**
+   * Alle eingefügten Objekte zu **einer** Gruppe zusammenfassen (Transformation des eingefügten Designs wird die
+   * der Gruppe). Hat das eingefügte Design schon Gruppen, bleiben diese stattdessen erhalten (keine verschachtelten
+   * Gruppen)
+   */
+  gruppe?: (NeueGruppe | null);
+};
+
+/** Ergebnis von `design_einfuegen`. */
+export type EinfuegenErgebnis = {
+  /** zusammengefügtes Design */
+  design: DesignWert;
+  /** Schlüssel der neuen Gruppe (wenn gruppiert) */
+  gruppe?: string | null;
+  /** Nummern der eingefügten Objekte im neuen Design */
+  objekte: number[];
+};
 
 /** Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design */
 export type EinstellungenJson = {
@@ -815,6 +856,22 @@ export type GrundlinieLage = ("oben" | "unten");
 /** Stand der Buchstaben zur Grundlinie (Position Above/Through/Below) */
 export type GrundlinieStand = "ueber" | "durch" | "unter";
 
+/** Eine Gruppe von Objekten (Feld `gruppen` des Designs). */
+export type GruppeJson = {
+  /** Herkunft (nur Anzeige) */
+  herkunft?: (GruppenHerkunft | null);
+  /**
+   * Name der Gruppe (Elementliste der Oberfläche), z. B. der Dateiname des Bilds
+   * @default ""
+   */
+  name?: string;
+  /** Verschieben, Skalieren, Drehen … der ganzen Gruppe um die Mitte ihrer Objekte – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+};
+
+/** Woher eine Gruppe stammt (nur für die Anzeige in der Oberfläche) */
+export type GruppenHerkunft = ("gruppiert" | "bild" | "svg");
+
 /** Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört. */
 export type Hinweis = {
   art: HinweisArt;
@@ -876,6 +933,12 @@ export type KnopflochJson = {
    * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
    */
   garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /**
    * Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)
    * @default 20.0
@@ -950,6 +1013,12 @@ export type LaufJson = {
    * @default false
    */
   geschlossen?: boolean;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /** Stichlänge in mm (ohne Angabe: Stil, 2,5 mm) */
   laenge?: number | null;
   /**
@@ -1061,6 +1130,12 @@ export type MonogrammJson = {
   /** Grundlinie (ohne Angabe: gerade waagrecht) */
   grundlinie?: (GrundlinieJson | null);
   /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /**
    * Höhe in mm (18 = kleinste empfohlene Höhe von Diamond2/3)
    * @default 18.0
    */
@@ -1153,6 +1228,12 @@ export type MotivlinieJson = {
   geschlossen?: boolean;
   /** Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz */
   groesse?: number | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /**
    * Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)
    * @default "705"
@@ -1249,6 +1330,12 @@ export type MusterJson = {
    * @default 100.0
    */
   groesse?: number;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   loecher?: PunktAngabe[];
   /** Name des Musters („001 Diamond (90)“) oder seine Nummer („001“) */
   muster: string;
@@ -1271,6 +1358,17 @@ export type MusterJson = {
   unterlage?: boolean | null;
   /** Stichwinkel (ohne Angabe: Winkel aus dem Musternamen, sonst der Füllung) */
   winkel?: number | null;
+};
+
+/** Neue Gruppe beim Einfügen (`design_einfuegen`). */
+export type NeueGruppe = {
+  /** Herkunft (nur Anzeige) */
+  herkunft?: (GruppenHerkunft | null);
+  /**
+   * Name der Gruppe (Elementliste), z. B. der Dateiname
+   * @default ""
+   */
+  name?: string;
 };
 
 /** Ein Objekt eines Designs. */
@@ -1485,6 +1583,12 @@ export type SatinFlaecheJson = {
    * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
    */
   garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /** Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType) */
   knickwinkel?: number | null;
   /** Kurzstiche an Innenkurven */
@@ -1538,6 +1642,12 @@ export type SatinJson = {
    * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
    */
   garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /** Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus) */
   kurzstiche?: boolean | null;
   /**
@@ -1587,6 +1697,12 @@ export type SatinLinieJson = {
    * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
    */
   garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
    * @default ""
@@ -1802,6 +1918,12 @@ export type TatamiJson = {
    * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
    */
   garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /** Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil) */
   kurzstiche?: boolean | null;
   loecher?: PunktAngabe[];
@@ -1890,6 +2012,12 @@ export type TextJson = {
   groesse?: number | null;
   /** Grundlinie (ohne Angabe: gerade waagrecht) */
   grundlinie?: (GrundlinieJson | null);
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
   /**
    * Buchstabenhöhe in mm (Original 1–200 mm; Vorlage 10)
    * @default 10.0
@@ -1998,6 +2126,12 @@ export type TtfJson = {
   /** Grundlinie (ohne Angabe: gerade waagrecht) */
   grundlinie?: (GrundlinieJson | null);
   /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /**
    * Höhe der Großbuchstaben in mm
    * @default 10.0
    */
@@ -2073,6 +2207,8 @@ export interface Befehle {
   datei_lesen: { eingabe: Pfad; ausgabe: string };
   /** Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet) */
   design_berechnen: { eingabe: DesignEingabe; ausgabe: Ergebnis };
+  /** Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element) */
+  design_einfuegen: { eingabe: EinfuegenEingabe; ausgabe: EinfuegenErgebnis };
   /** Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus */
   design_formen: { eingabe: DesignEingabe; ausgabe: ObjektForm[] };
   /** Design prüfen, ohne Stiche zu berechnen: Fehler (mit Objektnummer) und Hinweise */
@@ -2139,6 +2275,7 @@ export const BEFEHLE = [
   "bild_umwandeln",
   "datei_lesen",
   "design_berechnen",
+  "design_einfuegen",
   "design_formen",
   "design_pruefen",
   "design_schema",

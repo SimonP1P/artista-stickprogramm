@@ -319,6 +319,8 @@ befehle! {
     ueberdeckungen: befehle::DesignEingabe => Vec<[usize; 2]>,
     /// Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung)
     saeulen_vorschau: befehle::SaeulenEingabe => Vec<befehle::SaeuleInfo>,
+    /// Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element)
+    design_einfuegen: befehle::EinfuegenEingabe => befehle::EinfuegenErgebnis,
     /// Bild in Stickflächen umwandeln (neues Design)
     bild_umwandeln: befehle::BildEingabe => befehle::BildErgebnis,
     /// SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design

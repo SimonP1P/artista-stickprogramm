@@ -1089,6 +1089,9 @@ pub struct Design {
     pub transformationen: BTreeMap<usize, Transformation>,
     /// Transformation des ganzen Designs (um seine Mitte), JSON `"transform"` oben im Design
     pub transformation: Transformation,
+    /// Gruppen („Group“ im Original): Objektnummern (in `objekte`) und Transformation der Gruppe (um die Mitte ihrer
+    /// Objekte), JSON `"gruppen"` am Design und `"gruppe"` am Objekt. Nur Gruppen mit Transformation
+    pub gruppen: Vec<(Vec<usize>, Transformation)>,
     /// Farben für `^` und einzelne Buchstaben je Text (Nummer in `objekte`), JSON `"farben"`/`"buchstaben"`
     pub buchstaben: BTreeMap<usize, TextZusatz>,
     /// Double Run (Handbuch Kap. 23 „Reinforcing outlines“): diese Objekte (Nummer in `objekte`) werden nach dem
@@ -1221,9 +1224,16 @@ impl Design {
         let mut einstich = BTreeMap::new();
         let mut ausstich = BTreeMap::new();
         let mut objekt_einstellungen = BTreeMap::new();
+        let mut gruppe_von: Vec<Option<String>> = Vec::with_capacity(roh.len());
         for (i, o) in roh.iter().enumerate() {
             let wo = format!("Objekt {}", i + 1);
             let g = o.gemeinsam();
+            if let Some(k) = &g.gruppe
+                && !d.gruppen.contains_key(k)
+            {
+                return Err(format!("{wo}: gruppe „{k}“ fehlt in „gruppen“ des Designs"));
+            }
+            gruppe_von.push(g.gruppe.clone());
             if let Some(t) = &g.transform {
                 transform_pruefen(t, &format!("{wo}: transform"))?;
                 if !t.ist_leer() {
@@ -1324,9 +1334,23 @@ impl Design {
         }
         let transformation = d.transform.unwrap_or_default();
         transform_pruefen(&transformation, "Design: transform")?;
+        let mut gruppen = Vec::new();
+        for (schluessel, g) in &d.gruppen {
+            let Some(t) = g.transform.as_ref().filter(|t| !t.ist_leer()) else {
+                continue;
+            };
+            transform_pruefen(t, &format!("Gruppe „{schluessel}“: transform"))?;
+            let nr: Vec<usize> = (0..gruppe_von.len())
+                .filter(|&i| gruppe_von[i].as_deref() == Some(schluessel.as_str()))
+                .collect();
+            if !nr.is_empty() {
+                gruppen.push((nr, t.clone()));
+            }
+        }
         Ok(Design {
             transformationen,
             transformation,
+            gruppen,
             buchstaben,
             doppellauf,
             auto_jump,
@@ -1581,11 +1605,21 @@ impl Design {
         Ok((out, fehlend, herkunft, buchstabe))
     }
 
-    /// Transformationen anwenden: erst je Objekt (um die Mitte seiner aufgelösten Teile), dann das ganze Design.
+    /// Transformationen anwenden: erst je Objekt (um die Mitte seiner aufgelösten Teile), dann je Gruppe, dann das ganze
+    /// Design.
     fn transformieren(&self, mut out: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
         let ws = self.einstellungen.tatami.winkel;
         for (nr, t) in &self.transformationen {
             let idx: Vec<usize> = (0..out.len()).filter(|&j| herkunft[j] == *nr).collect();
+            let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
+            let m = t.matrix(formmitte(&teil))?;
+            for &j in &idx {
+                out[j] = abbilden(&out[j], &m, ws);
+            }
+        }
+        // dann je Gruppe um die Mitte ihrer (schon transformierten) Objekte
+        for (nr, t) in &self.gruppen {
+            let idx: Vec<usize> = (0..out.len()).filter(|&j| nr.contains(&herkunft[j])).collect();
             let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
             let m = t.matrix(formmitte(&teil))?;
             for &j in &idx {

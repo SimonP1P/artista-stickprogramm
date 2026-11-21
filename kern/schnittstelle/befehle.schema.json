@@ -223,6 +223,14 @@
             "null"
           ]
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "heft_abstand": {
           "description": "Abstand des Heftstichs in mm",
           "format": "double",
@@ -578,6 +586,14 @@
           "default": false,
           "type": "boolean"
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "name": {
           "default": "",
           "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
@@ -730,6 +746,13 @@
           "description": "Garnkarte (Befehl `garnkarten_liste`): jede Farbe → nächstes Garn; „keine“ = ohne (Standard „Default“ wie die\nMaschine)",
           "type": "string"
         },
+        "gruppen": {
+          "additionalProperties": {
+            "$ref": "#/$defs/GruppeJson"
+          },
+          "description": "**Gruppen** („Group“ im Original): Schlüssel → Name und Transformation. Objekte nennen ihre Gruppe im Feld\n`gruppe`. Reihenfolge der Transformationen: je Objekt → je Gruppe (um die Mitte ihrer Objekte) → ganzes Design",
+          "type": "object"
+        },
         "kuerzeste_verbindung": {
           "default": false,
           "description": "Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift)",
@@ -824,6 +847,66 @@
     "DesignWert": {
       "$ref": "#/$defs/DesignJson",
       "description": "Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text)."
+    },
+    "EinfuegenEingabe": {
+      "additionalProperties": false,
+      "description": "Ein Design in ein anderes einfügen.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "Design, in das eingefügt wird"
+        },
+        "einfuegen": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "Design, dessen Objekte angehängt werden (z. B. Ergebnis von `bild_umwandeln`/`svg_lesen` oder eine Datei)"
+        },
+        "gruppe": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NeueGruppe"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Alle eingefügten Objekte zu **einer** Gruppe zusammenfassen (Transformation des eingefügten Designs wird die\nder Gruppe). Hat das eingefügte Design schon Gruppen, bleiben diese stattdessen erhalten (keine verschachtelten\nGruppen)"
+        }
+      },
+      "required": [
+        "design",
+        "einfuegen"
+      ],
+      "type": "object"
+    },
+    "EinfuegenErgebnis": {
+      "description": "Ergebnis von `design_einfuegen`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "zusammengefügtes Design"
+        },
+        "gruppe": {
+          "description": "Schlüssel der neuen Gruppe (wenn gruppiert)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "objekte": {
+          "description": "Nummern der eingefügten Objekte im neuen Design",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "design",
+        "objekte"
+      ],
+      "type": "object"
     },
     "EinstellungenJson": {
       "additionalProperties": false,
@@ -2180,6 +2263,61 @@
       ],
       "type": "string"
     },
+    "GruppeJson": {
+      "additionalProperties": false,
+      "description": "Eine Gruppe von Objekten (Feld `gruppen` des Designs).",
+      "properties": {
+        "herkunft": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GruppenHerkunft"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Herkunft (nur Anzeige)"
+        },
+        "name": {
+          "default": "",
+          "description": "Name der Gruppe (Elementliste der Oberfläche), z. B. der Dateiname des Bilds",
+          "type": "string"
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Verschieben, Skalieren, Drehen … der ganzen Gruppe um die Mitte ihrer Objekte – Stiche werden neu berechnet"
+        }
+      },
+      "type": "object"
+    },
+    "GruppenHerkunft": {
+      "description": "Woher eine Gruppe stammt (nur für die Anzeige in der Oberfläche)",
+      "oneOf": [
+        {
+          "const": "gruppiert",
+          "description": "von Hand gruppiert („Group“, Standard)",
+          "type": "string"
+        },
+        {
+          "const": "bild",
+          "description": "Bild umwandeln (`bild_umwandeln`)",
+          "type": "string"
+        },
+        {
+          "const": "svg",
+          "description": "SVG einlesen (`svg_lesen`)",
+          "type": "string"
+        }
+      ]
+    },
     "Hinweis": {
       "description": "Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört.",
       "properties": {
@@ -2346,6 +2484,14 @@
         "garn": {
           "default": null,
           "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
           "type": [
             "string",
             "null"
@@ -2562,6 +2708,14 @@
           "default": false,
           "description": "Linie schließen (zurück zum ersten Punkt)",
           "type": "boolean"
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "laenge": {
           "description": "Stichlänge in mm (ohne Angabe: Stil, 2,5 mm)",
@@ -2853,6 +3007,14 @@
           ],
           "description": "Grundlinie (ohne Angabe: gerade waagrecht)"
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "hoehe": {
           "default": 18.0,
           "description": "Höhe in mm (18 = kleinste empfohlene Höhe von Diamond2/3)",
@@ -3119,6 +3281,14 @@
             "null"
           ]
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "motiv": {
           "default": "705",
           "description": "Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)",
@@ -3346,6 +3516,14 @@
           "format": "double",
           "type": "number"
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "loecher": {
           "items": {
             "$ref": "#/$defs/PunktAngabe"
@@ -3411,6 +3589,30 @@
         "umriss",
         "muster"
       ],
+      "type": "object"
+    },
+    "NeueGruppe": {
+      "additionalProperties": false,
+      "description": "Neue Gruppe beim Einfügen (`design_einfuegen`).",
+      "properties": {
+        "herkunft": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GruppenHerkunft"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Herkunft (nur Anzeige)"
+        },
+        "name": {
+          "default": "",
+          "description": "Name der Gruppe (Elementliste), z. B. der Dateiname",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "ObjektEingabe": {
@@ -4291,6 +4493,14 @@
             "null"
           ]
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "knickwinkel": {
           "description": "Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType)",
           "format": "double",
@@ -4443,6 +4653,14 @@
             "null"
           ]
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)",
           "type": [
@@ -4572,6 +4790,14 @@
         "garn": {
           "default": null,
           "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
           "type": [
             "string",
             "null"
@@ -5241,6 +5467,14 @@
             "null"
           ]
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)",
           "type": [
@@ -5472,6 +5706,14 @@
             }
           ],
           "description": "Grundlinie (ohne Angabe: gerade waagrecht)"
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "hoehe": {
           "default": 10.0,
@@ -5762,6 +6004,14 @@
           ],
           "description": "Grundlinie (ohne Angabe: gerade waagrecht)"
         },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "hoehe": {
           "default": 10.0,
           "description": "Höhe der Großbuchstaben in mm",
@@ -6037,6 +6287,15 @@
       "beschreibung": "Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet)",
       "eingabe": {
         "$ref": "#/$defs/DesignEingabe"
+      }
+    },
+    "design_einfuegen": {
+      "ausgabe": {
+        "$ref": "#/$defs/EinfuegenErgebnis"
+      },
+      "beschreibung": "Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element)",
+      "eingabe": {
+        "$ref": "#/$defs/EinfuegenEingabe"
       }
     },
     "design_formen": {

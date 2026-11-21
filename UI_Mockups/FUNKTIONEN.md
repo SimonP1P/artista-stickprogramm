@@ -85,6 +85,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
 |---|---|---|---|
 | Skalieren, drehen, spiegeln, schräg, verschieben | Prozent / Grad / Richtung / mm | `transform` | E |
+| **Gruppe** („Group“, Handbuch S. 134) | Objekte zu einem Element zusammenfassen: gemeinsam wählen, verschieben, skalieren, drehen (um die Mitte der Gruppe); „Gruppe auflösen“ im Expertenmodus. Bild/SVG/Datei werden beim Einfügen gleich gruppiert. Einfacher Modus: eine Gruppe = ein Element in der Elementliste | `gruppe` am Objekt (Schlüssel), `gruppen` am Design: `{name, herkunft (gruppiert/bild/svg), transform}` | E |
 | Aussparen (Knockout) | Füllfläche spart darüberliegende Objekte aus, Überlappung (0 mm) | `aussparen`, `ueberlappung` | E (Überlappung X) |
 | **Werte je Objekt** (Objekteigenschaften) | jeder Stil-Wert nur für dieses Objekt: Stichabstand, Stichlänge, Mindeststich am Rand, Zugausgleich, Auto Spacing, Kurzstiche, Unterlage-Werte, Lauf fest/variabel, Vernähen/Verbinder – Aufbau wie `einstellungen` des Designs (ohne Stoff). Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt. Anzeige: Eigenschaften-Fenster des Objekts, Standard = Wert des Designs/Stoffs, geänderte Werte markieren und einzeln zurücksetzen | `einstellungen` am Objekt (Pfade wie `PARAMETER.md`, Ebene „beide“) | X |
 | Verstärken (Double Run) | an/aus – gleiche Stiche rückwärts noch einmal | `doppellauf` | X |
@@ -116,6 +117,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `reihenfolge_aendern` | Menü „Anordnen“: nach Farbe, an Anfang/Ende, wie ausgewählt, vor/nach Nummer – mit Warnungen bei Überdeckung |
 | `ueberdeckungen` | Anzeige, welche Objekte sich überdecken (z. B. in der Objektliste) |
 | `saeulen_vorschau` | Vorschau der automatischen Satin-Stichrichtung einer Fläche (optional) |
+| `design_einfuegen` | „Insert Design“: ein Design (Ergebnis von `bild_umwandeln`/`svg_lesen` oder eine Datei) ins aktuelle einfügen, auf Wunsch als **eine Gruppe** (`gruppe: {name, herkunft}`); doppelte Namen werden „Name (2)“, `aussparen` zieht mit; Transformation des eingefügten Designs wird die der Gruppe. Ergebnis: Design, Nummern der neuen Objekte, Gruppenschlüssel. Einfacher Modus: „+ Element hinzufügen“ → Bild/SVG/Design öffnen. Modus E |
 | `bild_umwandeln` | Bild → Umrisse (Auto-Digitalisieren): neues Design aus einem Bild |
 | `svg_lesen` | SVG-Datei (Inkscape) → neues Design; Zählung je Stichart und Hinweise für die Anzeige |
 | `datei_lesen`, `text_speichern` | Design öffnen/speichern |

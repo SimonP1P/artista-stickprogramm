@@ -1030,3 +1030,143 @@ pub struct TextDatei {
 pub fn text_speichern(_: &Kontext, e: TextDatei) -> Result<(), Fehler> {
     std::fs::write(&e.pfad, e.text).map_err(|x| Fehler::from(format!("{}: {x}", e.pfad)))
 }
+
+/// Neue Gruppe beim Einfügen (`design_einfuegen`).
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct NeueGruppe {
+    /// Name der Gruppe (Elementliste), z. B. der Dateiname
+    #[serde(default)]
+    pub name: String,
+    /// Herkunft (nur Anzeige)
+    #[serde(default)]
+    pub herkunft: Option<stick_kern::format::GruppenHerkunft>,
+}
+
+/// Ein Design in ein anderes einfügen.
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct EinfuegenEingabe {
+    /// Design, in das eingefügt wird
+    pub design: DesignWert,
+    /// Design, dessen Objekte angehängt werden (z. B. Ergebnis von `bild_umwandeln`/`svg_lesen` oder eine Datei)
+    pub einfuegen: DesignWert,
+    /// Alle eingefügten Objekte zu **einer** Gruppe zusammenfassen (Transformation des eingefügten Designs wird die
+    /// der Gruppe). Hat das eingefügte Design schon Gruppen, bleiben diese stattdessen erhalten (keine verschachtelten
+    /// Gruppen)
+    #[serde(default)]
+    pub gruppe: Option<NeueGruppe>,
+}
+
+/// Ergebnis von `design_einfuegen`.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct EinfuegenErgebnis {
+    /// zusammengefügtes Design
+    pub design: DesignWert,
+    /// Nummern der eingefügten Objekte im neuen Design
+    pub objekte: Vec<usize>,
+    /// Schlüssel der neuen Gruppe (wenn gruppiert)
+    pub gruppe: Option<String>,
+}
+
+/// Design einfügen wie „Insert Design“ des Originals (Handbuch S. 135 „Combining designs“): die Objekte werden
+/// hinten angehängt, Farben bleiben (gleiche Farbe = gleiches Garn); das Handbuch rät, das eingefügte Design zu
+/// gruppieren (S. 134) – mit `gruppe` geschieht das gleich. Doppelte Objektnamen bekommen „(2)“ … angehängt, damit
+/// `aussparen` (nach Namen) eindeutig bleibt; Gruppenschlüssel werden eindeutig gemacht.
+pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErgebnis, Fehler> {
+    use std::collections::{BTreeMap, BTreeSet};
+    let mut ziel = e.design.0;
+    let neu = e.einfuegen.0;
+    // beide müssen gültige Designs sein
+    stick_kern::Design::aus_value(&ziel).map_err(|x| Fehler::from(format!("Design: {x}")))?;
+    stick_kern::Design::aus_value(&neu).map_err(|x| Fehler::from(format!("Einzufügendes Design: {x}")))?;
+    let zo = ziel.as_object_mut().ok_or("Das Design muss ein JSON-Objekt sein")?;
+    let leer = Value::Object(Default::default());
+    let mut objekte: Vec<Value> = zo.get("objekte").and_then(Value::as_array).cloned().unwrap_or_default();
+    let mut gruppen = zo.get("gruppen").and_then(Value::as_object).cloned().unwrap_or_default();
+    let mut namen: BTreeSet<String> = objekte
+        .iter()
+        .filter_map(|o| o.get("name").and_then(Value::as_str).map(str::to_string))
+        .collect();
+    let eindeutig = |basis: &str, belegt: &dyn Fn(&str) -> bool| -> String {
+        if !belegt(basis) {
+            return basis.to_string();
+        }
+        (2..).map(|n| format!("{basis} ({n})")).find(|k| !belegt(k)).unwrap()
+    };
+
+    let n_neu = neu.get("objekte").and_then(Value::as_array).cloned().unwrap_or_default();
+    let neu_gruppen = neu.get("gruppen").and_then(Value::as_object).cloned().unwrap_or_default();
+    // Objektnamen eindeutig machen, `aussparen` mitziehen
+    let mut umbenannt: BTreeMap<String, String> = BTreeMap::new();
+    let mut eingefuegt: Vec<Value> = Vec::with_capacity(n_neu.len());
+    for o in n_neu {
+        let mut o = o;
+        if let Some(n) = o.get("name").and_then(Value::as_str).filter(|n| !n.is_empty()).map(str::to_string) {
+            let k = eindeutig(&n, &|x| namen.contains(x));
+            namen.insert(k.clone());
+            if k != n {
+                umbenannt.entry(n).or_insert_with(|| k.clone());
+                o["name"] = k.into();
+            }
+        }
+        eingefuegt.push(o);
+    }
+    for o in &mut eingefuegt {
+        if let Some(a) = o.get_mut("aussparen").and_then(Value::as_array_mut) {
+            for x in a.iter_mut() {
+                if let Some(k) = x.as_str().and_then(|s| umbenannt.get(s)) {
+                    *x = k.clone().into();
+                }
+            }
+        }
+    }
+
+    let gruppe_frei = |gruppen: &serde_json::Map<String, Value>, basis: &str| -> String {
+        (1..).map(|n| format!("{basis}{n}")).find(|k| !gruppen.contains_key(k)).unwrap()
+    };
+    let mut neue_gruppe = None;
+    if let (Some(g), true) = (&e.gruppe, neu_gruppen.is_empty()) {
+        let k = gruppe_frei(&gruppen, "g");
+        let mut eintrag = serde_json::Map::new();
+        eintrag.insert("name".into(), g.name.clone().into());
+        if let Some(h) = g.herkunft {
+            eintrag.insert("herkunft".into(), serde_json::to_value(h).map_err(|x| Fehler::from(x.to_string()))?);
+        }
+        if let Some(t) = neu.get("transform").filter(|t| t.as_object().is_some_and(|m| !m.is_empty())) {
+            eintrag.insert("transform".into(), t.clone());
+        }
+        gruppen.insert(k.clone(), Value::Object(eintrag));
+        for o in &mut eingefuegt {
+            o["gruppe"] = k.clone().into();
+        }
+        neue_gruppe = Some(k);
+    } else {
+        // vorhandene Gruppen übernehmen, Schlüssel eindeutig
+        let mut schluessel: BTreeMap<String, String> = BTreeMap::new();
+        for (k, v) in &neu_gruppen {
+            let neu_k = if gruppen.contains_key(k) { gruppe_frei(&gruppen, &format!("{k}_")) } else { k.clone() };
+            gruppen.insert(neu_k.clone(), v.clone());
+            schluessel.insert(k.clone(), neu_k);
+        }
+        for o in &mut eingefuegt {
+            if let Some(k) = o.get("gruppe").and_then(Value::as_str).and_then(|k| schluessel.get(k)) {
+                o["gruppe"] = k.clone().into();
+            }
+        }
+        if neu.get("transform").is_some_and(|t| t != &leer && !t.is_null()) {
+            return Err("Das einzufügende Design hat eine eigene Transformation und Gruppen – bitte zuerst in einer \
+                        Gruppe zusammenfassen"
+                .into());
+        }
+    }
+    let von = objekte.len();
+    objekte.extend(eingefuegt);
+    let bis = objekte.len();
+    zo.insert("objekte".into(), objekte.into());
+    if !gruppen.is_empty() {
+        zo.insert("gruppen".into(), gruppen.into());
+    }
+    stick_kern::Design::aus_value(&ziel).map_err(|x| Fehler::from(format!("Ergebnis: {x}")))?;
+    Ok(EinfuegenErgebnis { design: DesignWert(ziel), objekte: (von..bis).collect(), gruppe: neue_gruppe })
+}

@@ -13,6 +13,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `einstellungen` | EinstellungenJson |  | – | Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog) |
 | `ende` | Ende |  | – | Endpunkt (Standard: Sprung zurück zur Rahmenmitte) |
 | `garnkarte` | string |  | `"Default"` | Garnkarte (Befehl `garnkarten_liste`): jede Farbe → nächstes Garn; „keine“ = ohne (Standard „Default“ wie die Maschine) |
+| `gruppen` | Record<string, GruppeJson> |  | – | **Gruppen** („Group“ im Original): Schlüssel → Name und Transformation. Objekte nennen ihre Gruppe im Feld `gruppe`. Reihenfolge der Transformationen: je Objekt → je Gruppe (um die Mitte ihrer Objekte) → ganzes Design |
 | `kuerzeste_verbindung` | boolean |  | `false` | Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift) |
 | `name` | string |  | `"Design"` | Name des Designs (erscheint in der Designliste der Maschine) |
 | `objekte` | ObjektJson[] |  | – | Stickobjekte in Stickreihenfolge |
@@ -35,6 +36,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `einstich` | Punkt |  | – | Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort |
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet) |
 | `garn` | string |  | – | **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B. „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte) |
+| `gruppe` | string |  | – | **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element) |
 | `name` | string |  | `""` | Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text |
 | `step_muster` | number |  | – | Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) |
 | `transform` | Transformation |  | – | Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet |
@@ -305,6 +307,12 @@ Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (
 - `"durch"`
 - `"unter"`
 
+**GruppenHerkunft** – Woher eine Gruppe stammt (nur für die Anzeige in der Oberfläche)
+
+- `"gruppiert"` – von Hand gruppiert („Group“, Standard)
+- `"bild"` – Bild umwandeln (`bild_umwandeln`)
+- `"svg"` – SVG einlesen (`svg_lesen`)
+
 **HuelleArt** – Form der Verzerrung (Elastic Lettering)
 
 - `"gerade"` – gerade Kanten (Wimpel, schräg): oben/unten = [links, rechts]
@@ -429,6 +437,16 @@ Grundlinie eines Texts (`schrift::Grundlinie`; Dialog „Layout“ des Originals
 | `stand` | GrundlinieStand |  | – | ueber \| durch \| unter (Standard: über der CW-, unter der CCW-Grundlinie) |
 | `winkel` | number |  | – | Kreis: Justif. Angle (Grad); gerade: Line Angle |
 
+### GruppeJson
+
+Eine Gruppe von Objekten (Feld `gruppen` des Designs).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `herkunft` | GruppenHerkunft |  | – | Herkunft (nur Anzeige) |
+| `name` | string |  | `""` | Name der Gruppe (Elementliste der Oberfläche), z. B. der Dateiname des Bilds |
+| `transform` | Transformation |  | – | Verschieben, Skalieren, Drehen … der ganzen Gruppe um die Mitte ihrer Objekte – Stiche werden neu berechnet |
+
 ### HuelleJson
 
 Elastic Lettering: `{"art": "gerade", "oben": [links, rechts], "unten": [links, rechts]}` oder `{"art": "gebogen", "oben": mitte \| [links, mitte, rechts], "unten": …}` (mm, + nach oben).
@@ -463,6 +481,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `bild_umwandeln` | BildEingabe | BildErgebnis | Bild in Stickflächen umwandeln (neues Design) |
 | `datei_lesen` | Pfad | string | Textdatei lesen |
 | `design_berechnen` | DesignEingabe | Ergebnis | Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet) |
+| `design_einfuegen` | EinfuegenEingabe | EinfuegenErgebnis | Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element) |
 | `design_formen` | DesignEingabe | ObjektForm[] | Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus |
 | `design_pruefen` | DesignEingabe | Pruefung | Design prüfen, ohne Stiche zu berechnen: Fehler (mit Objektnummer) und Hinweise |
 | `design_schema` | Leer | unknown | JSON-Schema des Design-Formats (Felder, Standardwerte, Auswahlwerte, Beschreibungen) |
