@@ -109,6 +109,10 @@ und das „A“ war zerrissen. Jetzt werden die Ringe nach der **Nicht-Null-Rege
 vereinigt (`aussparen::vereinigen_nonzero`), auch für Lauf/Dreifach (keine Linien durch die Überlappung). Google Sans
 „Anna“ bleibt bis ~30 mm Satin.
 
+**Spalt zwischen Säulen (21.11.2026):** Die Säulen der TrueType-Umwandlung überlappen jetzt an den Schnitten 0,3 mm
+wie im Original („Create Overlaps“, Bericht 17 §6.2) – vorher stießen sie aneinander, an der Spitze des „A“ blieb ein
+keilförmiger Spalt.
+
 **Step bei „auto“ für Computer-Schriften — eigene Festlegung:** jeder Buchstabe als **eine** Tatami-Fläche
 (Vereinigung seiner Säulen = Umriss), Stichwinkel des Stils, Step-Unterlage, wenn Unterlage gewählt
 (`schrift::auf_tatami`). Step-Reihen je Teilstück der automatischen Zerlegung lagen an Spitzen und Abzweigungen kreuz

@@ -92,6 +92,11 @@ Die größeren Abweichungen liegen in Kehren und an den Enden (Fächer anders ve
 ## 6. Offen
 1. Einzelregeln von `SignificantTriangles` und den Schnittstufen (Kosinus-Schwellen §2) genau übertragen – nur, wenn
    die Ergebnisse an Formen abweichen, die die 54 Säulen nicht abdecken (breite Abzweigungen, Serifen der Schriften).
-2. Überlappung an Abzweigungen („Create Overlaps“, „T“-Abzweigungen 0,3 mm) – derzeit stoßen die Säulen am
-   Sternschnitt aneinander.
+2. ~~Überlappung an Abzweigungen~~ **umgesetzt 21.11.2026** (`SaeulenWerte::ueberlappung`,
+   `UEBERLAPPUNG_TURNING` = 0,3 mm aus TurningConversionValues „T“ 54; Zuordnung zu „Create Overlaps“ erschlossen,
+   Sicherheit mittel): Bei der Turning-Umwandlung (TrueType, Satinfläche mit Teilung am Knick) läuft eine Säule an einer
+   Teilung am Knick 0,3 mm (auf der Mittellinie) in die nächste hinein, am Sternschnitt endet sie 0,3 mm hinter dem
+   Schwerpunkt (nur innerhalb der Fläche). Anlass: Spalt an der Spitze des „A“ (Google Sans 25 mm) zwischen der linken
+   Säule und dem Fächer der rechten. Der Auto Digitizer bleibt ohne Überlappung (gemessen §3). Ob das Original auch
+   am Formende oder je Seite anders überlappt, ist offen.
 3. Wahl der Stichart nach Breite (EasyStitch: Fläche ≤ 8 mm Satin) beim SVG-Import (`saeulen::groesste_breite`).

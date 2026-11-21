@@ -177,6 +177,7 @@ pub fn ttf_text_objekte_idx(
             TtfStichart::Satin { unterlage, .. } => {
                 let werte = crate::saeulen::SaeulenWerte {
                     knickwinkel: crate::saeulen::KNICKWINKEL_TURNING,
+                    ueberlappung: crate::saeulen::UEBERLAPPUNG_TURNING,
                     ..Default::default()
                 };
                 for (umriss, loecher) in ringe_ordnen(&ringe) {
@@ -380,15 +381,40 @@ mod tests {
     /// Variable Schrift (Google Sans „A“ bei 25 mm): Λ und zwei Hälften des Querbalkens als überlappende Konturen in
     /// gleicher Drehrichtung. Nach der Nicht-Null-Regel eine Fläche mit **einem** Loch (Dreieck über dem Balken); die
     /// Verschachtelung machte eine Balkenhälfte zum Loch.
-    #[test]
-    fn ueberlappende_konturen() {
+    fn a_google_sans() -> Vec<Linie> {
         let r = |v: &[(f64, f64)]| -> Linie { v.iter().map(|&(x, y)| p(x, y)).collect() };
-        let ringe = vec![
+        vec![
             r(&[(-11.17, 0.0), (-1.68, 25.0), (1.68, 25.0), (11.17, 0.0), (7.93, 0.0), (1.05, 18.68), (0.07, 21.37),
                 (-0.07, 21.37), (-1.05, 18.68), (-7.93, 0.0)]),
             r(&[(-0.35, 6.88), (-0.35, 9.67), (5.41, 9.67), (6.42, 6.88)]),
             r(&[(-7.12, 6.88), (-6.11, 9.67), (-0.35, 9.67), (-0.35, 6.88)]),
-        ];
+        ]
+    }
+
+    /// Turning-Umwandlung: Säulen überlappen an den Schnitten (Knick an der Spitze, Sterne am Querbalken) – ohne
+    /// Überlappung decken sie genau die Fläche und an der Spitze blieb ein Spalt
+    #[test]
+    fn saeulen_ueberlappen() {
+        let f = ringe_ordnen(&a_google_sans());
+        let (u, l) = &f[0];
+        let fl = |r: &Linie| crate::geometrie::flaeche_vorzeichen(r).abs();
+        let summe = |ueberlappung: f64| -> f64 {
+            let w = crate::saeulen::SaeulenWerte {
+                knickwinkel: crate::saeulen::KNICKWINKEL_TURNING,
+                ueberlappung,
+                ..Default::default()
+            };
+            crate::saeulen::zerlegen(u, l, &w).unwrap().iter().map(|s| fl(&s.umriss)).sum()
+        };
+        let flaeche = fl(u) - fl(&l[0]);
+        let (ohne, mit) = (summe(0.0), summe(crate::saeulen::UEBERLAPPUNG_TURNING));
+        assert!((ohne - flaeche).abs() < 0.02 * flaeche, "ohne {ohne}, Fläche {flaeche}");
+        assert!(mit > ohne + 1.0, "mit {mit}, ohne {ohne}");
+    }
+
+    #[test]
+    fn ueberlappende_konturen() {
+        let ringe = a_google_sans();
         let f = ringe_ordnen(&ringe);
         assert_eq!(f.len(), 1, "eine Fläche");
         assert_eq!(f[0].1.len(), 1, "ein Loch über dem Querbalken");

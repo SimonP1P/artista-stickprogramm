@@ -46,6 +46,10 @@ pub struct SaeulenWerte {
     /// Auswahl der Stichlinien: Abweichung der Mittellinie als Anteil der Breite (eigene Festlegung; an den 54
     /// automatisch erzeugten Säulen eingestellt: 0,3 ergibt 4,4 × Breite Linienabstand, Original 4,2)
     pub linien_toleranz: f64,
+    /// Säulen an Schnitten (Teilung am Knick, Sternschnitt an Abzweigungen) so weit (mm, auf der Mittellinie) in die
+    /// Nachbarsäule verlängern, dass sie überlappen statt nur aneinanderzustoßen – „Create Overlaps“ der
+    /// Turning-Umwandlung (`UEBERLAPPUNG_TURNING`); 0 = stoßen aneinander (Auto Digitizer, gemessen §3).
+    pub ueberlappung: f64,
 }
 
 impl Default for SaeulenWerte {
@@ -57,12 +61,19 @@ impl Default for SaeulenWerte {
             knickwinkel: 0.0,
             eckwinkel: 120.0,
             linien_toleranz: 0.3,
+            ueberlappung: 0.0,
         }
     }
 }
 
 /// Break Angle der Turning-Umwandlung (TrueType/AutoFont): TurningConversionValues +8 = 87° (MOD1 0x101f5bc0).
 pub const KNICKWINKEL_TURNING: f64 = 87.0;
+
+/// Überlappung an Schnitten der Turning-Umwandlung: TurningConversionValues „T“ 54 = 0,3 mm (MOD1 0x101f5bc0, Dialog
+/// „Conversion Values“ mit „Create Overlaps“). Sicherheit mittel: Wert aus dem Code, Zuordnung zu den Überlappungen aus
+/// dem Dialog erschlossen; die Länge wird hier auf der Mittellinie gemessen (**eigene Festlegung**). Ohne Überlappung
+/// blieb an der Spitze des „A“ (Teilung am Knick, Fächer) ein Spalt (21.11.2026).
+pub const UEBERLAPPUNG_TURNING: f64 = 0.3;
 
 /// Teile, deren Fläche unter diesem Anteil der ganzen Form liegt (und unter `SPLITTER_MM2`), entfallen – Splitter aus
 /// sich selbst berührenden Umrissen (**eigene Festlegung**).
@@ -830,9 +841,21 @@ pub fn zerlegen(umriss: &[Punkt], loecher: &[Linie], o: &SaeulenWerte) -> Result
             let tol = 0.2 * b_med;
             let mut abschnitte: Vec<(Linie, Linie)> = Vec::new();
             let f = sel[0];
+            // Sternschnitt: Spitze um die Überlappung über den Schwerpunkt hinaus (nur innerhalb der Fläche)
+            let stern = |t: usize, i: usize| {
+                let q = schwerpunkt(t);
+                let mitte = p((pa(i).x + pb(i).x) / 2.0, (pa(i).y + pb(i).y) / 2.0);
+                let d = abstand(mitte, q);
+                if o.ueberlappung <= 0.0 || d < 1e-9 {
+                    return q;
+                }
+                let u = o.ueberlappung / d;
+                let weiter = p(q.x + (q.x - mitte.x) * u, q.y + (q.y - mitte.y) * u);
+                if im_polygon(weiter, &ringe) { weiter } else { q }
+            };
             match anfang {
                 Ende::Stern(t) => {
-                    let q = schwerpunkt(t);
+                    let q = stern(t, f);
                     abschnitte.push((vec![q, pa(f)], vec![q, pb(f)]));
                 }
                 Ende::Rand => {
@@ -855,8 +878,19 @@ pub fn zerlegen(umriss: &[Punkt], loecher: &[Linie], o: &SaeulenWerte) -> Result
             let l = *sel.last().unwrap();
             match ende {
                 Ende::Stern(t) => {
-                    let q = schwerpunkt(t);
+                    let q = stern(t, l);
                     abschnitte.push((vec![pa(l), q], vec![pb(l), q]));
+                }
+                // Teilung am Knick: in die nächste Säule hinein verlängern (Überlappung)
+                Ende::Keins if o.ueberlappung > 0.0 => {
+                    let bis = (l + 1..s.len())
+                        .find(|&i| kum[i] - kum[l] >= o.ueberlappung)
+                        .unwrap_or(s.len() - 1);
+                    if bis > l {
+                        let a = seite(&netz, (l..=bis).map(|i| s[i].0));
+                        let b = seite(&netz, (l..=bis).map(|i| s[i].1));
+                        abschnitte.push((a, b));
+                    }
                 }
                 Ende::Rand => {
                     let koerper: Vec<usize> = (sel[0]..l).flat_map(|i| [s[i].0, s[i].1]).collect();

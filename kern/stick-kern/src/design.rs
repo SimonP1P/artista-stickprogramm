@@ -1591,8 +1591,10 @@ impl Design {
                     optionen,
                     knickwinkel,
                 } => {
+                    // mit Teilung am Knick wie die Turning-Umwandlung: Säulen überlappen an den Schnitten
                     let werte = crate::saeulen::SaeulenWerte {
                         knickwinkel: *knickwinkel,
+                        ueberlappung: if *knickwinkel > 0.0 { crate::saeulen::UEBERLAPPUNG_TURNING } else { 0.0 },
                         ..Default::default()
                     };
                     let s = crate::saeulen::zerlegen(umriss, loecher, &werte)
