@@ -15,6 +15,11 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Satin sticht „gerade quer + schräg vor“ (Messung, Commit folgt)
+- **Geändert:** nur die berechneten Stiche jeder Satinsäule (A und B einer Stelle auf derselben Stichlinie, wie im
+  Original gemessen, `Analyse_Teil3/04` §5). Keine neuen Felder oder Befehle.
+- **Oberfläche:** nichts zu tun; Stichvorschau und Stichzahl ändern sich minimal.
+
 ## 21.11.2026 – SVG einlesen (ROADMAP 4b.17, Commit a4ec447)
 - **Neu:** Befehl `svg_lesen` – SVG-Datei (z. B. aus Inkscape) → neues Design. Eingabe: `pfad`, optional `breite`
   (mm), `rahmen`, `aussparen` (Standard an), `kuerzeste_verbindung` (Standard an). Ausgabe: `design`, `breite`,

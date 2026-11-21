@@ -7,6 +7,8 @@
 - Zwei Fehler im bisherigen Stand sind gefunden und im Rust-Kern behoben:
   1. **Satinabstand** = Weg zwischen zwei Einstichen **auf derselben Seite**. Der Kern war bisher halb so dicht.
   2. **0x2746 = Mittellauf (Center Run), 0x2747 = Edge Walk.** Die beiden waren bisher vertauscht.
+  3. (21.11.2026, §5) **Satin sticht „gerade quer + schräg vor“**: A und B einer Stelle liegen auf derselben
+     Stichlinie, der Rückstich rückt um den ganzen Abstand vor. Der Kern stickte bisher symmetrischen Zickzack.
 
 Werkzeug: `Arbeitsdaten/werkzeuge/art_messen.py` (`zuordnung`, `satin --alle`, `unterlagen --alle`). Grundlage sind die
 285 ART-Musterdesigns unter `Main/Samples/` der entpackten Software (`F:\Entwicklung\artista_ziel`).
@@ -96,7 +98,29 @@ Rohergebnis: `Arbeitsdaten/messungen/boegen_musterdesigns.txt` (`art_messen.py b
 Referenz-Stufe 6 den Fortschritt auf der längeren Seite (`satin.rs`); vorher war es das Mittel beider Seiten, eine
 eigene Festlegung.
 
-## 5. Offen
+## 5. Einstichmuster: gerade quer + schräg vor — Sicherheit: hoch (21.11.2026)
+**Frage:** Rückt jeder Einstich um den halben Abstand vor (symmetrischer Zickzack, so rechnete der Kern bis
+21.11.2026), oder liegen die Einstiche beider Seiten an derselben Stelle (ein Stich quer, einer schräg)? Aus den
+Stichen allein ist das nicht zu trennen – bei schrägen Stichlinien ist auch der „quere“ Stich schräg. Deshalb gemessen
+**gegen die gespeicherten Stichlinien** der Säulen (EmbroideryPatch 0x06, Umrissstellen, [17](17_auto_satin.md)).
+
+**Verfahren** (`Arbeitsdaten/werkzeuge/art_satinmuster.py`, Rohergebnis `Arbeitsdaten/messungen/satinmuster_musterdesigns.txt`):
+je Paar benachbarter Stichlinien, die fast parallel sind (< 3°, Länge ≥ 1,5 mm, Längenunterschied ≤ 0,3 mm), die
+Einstiche dazwischen auf die Säulenrichtung (senkrecht zur Stichlinie) projizieren; für drei aufeinanderfolgende
+Einstiche a, b, c: r = (t_b − t_a) / (t_c − t_a). Symmetrischer Zickzack → r ≈ 0,5; gerade quer + schräg → r ≈ 0 oder 1.
+
+**Ergebnis:** 3869 Säulen mit Stichlinien, 125 mit genug geraden Abschnitten. Verteilung von r: **1126 bei 0,0 und 1134
+bei 1,0**, bei 0,5 nur **12**; je Säule Median von min(r, 1 − r) = **0,066** (Quartile 0,02–0,11). Dazu die
+Knopflöcher im Muster `Samples/Reference/Buttonholes.ART` ([19](19_knopfloecher.md)): gerade Raupen mit waagrechten
+Stichlinien, Einstiche (−2,71 | 19,71), (−0,37 | 19,71), (−2,71 | 19,21) … – jeder zweite Stich exakt quer.
+
+**Folgerung:** An jeder Stelle stickt das Original A und B auf derselben Stichlinie, dann schräg zur nächsten Stelle
+(ganzer Abstand). Der Abstand auf derselben Seite (§3) bleibt gleich, nur die Lage der Einstiche der Gegenseite ändert
+sich. Im Kern seit Referenz-Stufe 11 (`satin.rs`, `satin_quer`). **Nicht** geändert (nicht gemessen): Step-Reihen in
+Säulen (Schrift „Step“, Reihen parallel wie Tatami) und der Zickzack-Deckstich 0x2724. Wie das Original das Säulenende
+abschließt, ist nicht gemessen (Kern: letzte Stelle auf die Endkante, **eigene Festlegung**).
+
+## 6. Offen
 1. ~~**Auto Spacing**~~ – geklärt in [05](05_effekte_und_unterlagen.md): Effekt 0x21 am Satin. (Frage war: Welcher Wert schaltet es ein? Ist es in „Software Defaults“ ein? Suchen: Lesefunktion von Klasse
    0x16/0x15 gegen die Stil-Kennungen 0x2734/0x27ab.
 2. ~~**Unterlagen ein/aus**~~ – geklärt in [05](05_effekte_und_unterlagen.md) (im Objekt stehen nur aktive; Voreinstellung über Stil-Flags). In Flower stehen Edge Walk und Mittellauf in jedem Objekt und werden beide gestickt. Wie ist

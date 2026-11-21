@@ -15,7 +15,7 @@ use crate::schrift::{
 use crate::schrift_ttf::{TtfSchrift, TtfStichart, ttf_text_objekte_idx};
 use crate::sticharten::blanket::blanket;
 use crate::sticharten::lauf::{dreifach, laufstich_mit_ecken};
-use crate::sticharten::satin::{mittellinie, paare_bilden, satin, satinlinie_seiten};
+use crate::sticharten::satin::{mittellinie, paare_bilden, satin_einstiche, satinlinie_seiten};
 use crate::sticharten::tatami::{tatami, tatami_mit_teilung};
 use crate::sticharten::unterlagen::{auto_satin_unterlage, flaechen_unterlage, satin_unterlage};
 use crate::stiche::StichFolge;
@@ -496,9 +496,10 @@ fn satin_getrennt(
         se.auto_spacing = false;
         se.abstand_fest = e.tatami.abstand;
         se.zugausgleich = e.tatami.zugausgleich;
-        crate::sticharten::satin::step_reihen(&satin(&a, &b, &se)?, &e.tatami)
+        crate::sticharten::satin::step_reihen(&satin_einstiche(&a, &b, &se, false)?, &e.tatami)
     } else {
-        satin(&a, &b, &satin_e)?
+        // Zickzack (0x2724) wie bisher symmetrisch, Satin gerade quer + schräg vor (`satin.rs`)
+        satin_einstiche(&a, &b, &satin_e, !o.zickzack)?
     };
     Ok((unter, deck))
 }
@@ -940,7 +941,10 @@ impl Objekt {
                 // Kurzstiche wie bei Satin auf die Reihen, danach Teilung in Step-Stiche (Effekt im allgemeinen
                 // Füllgenerator, `Analyse_Teil3/10` §1–2)
                 se.kurzstiche.an = kurzstiche.unwrap_or(e.satin.kurzstiche.an);
-                wege.push(crate::sticharten::satin::step_reihen(&satin(&a, &b, &se)?, &e.tatami));
+                wege.push(crate::sticharten::satin::step_reihen(
+                    &satin_einstiche(&a, &b, &se, false)?,
+                    &e.tatami,
+                ));
                 Ok(wege)
             }
             ObjektArt::Musterfuellung {

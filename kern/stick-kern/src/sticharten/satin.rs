@@ -90,12 +90,31 @@ pub fn mittellinie(a: &[Punkt], b: &[Punkt]) -> Linie {
 ///
 /// Abstand aus Auto Spacing (Breite an der Stelle) bzw. fest. Wie im Original ist der Abstand der Weg zwischen
 /// zwei Einstichen **auf derselben Seite** (Handbuch PDF-S. 68; an 184 000 Satinstichen der Musterdesigns gemessen,
-/// `Analyse_Teil3/04_messungen_satin.md`), jeder Einstich rückt also um den halben Abstand vor. Gemessen wird der
-/// Fortschritt auf der **längeren Seite** (Außenseite im Bogen): dort entspricht der Weg in den Musterdesigns dem
-/// Abstand in allen Krümmungen (Median 1,00–1,08), auf der Mitte nur 0,64–0,99 (`Analyse_Teil3/04` §4).
-/// Zugausgleich verlängert jeden Stich an beiden Enden.
+/// `Analyse_Teil3/04_messungen_satin.md`). Gemessen wird der Fortschritt auf der **längeren Seite** (Außenseite im
+/// Bogen): dort entspricht der Weg in den Musterdesigns dem Abstand in allen Krümmungen (Median 1,00–1,08), auf der
+/// Mitte nur 0,64–0,99 (`Analyse_Teil3/04` §4). Zugausgleich verlängert jeden Stich an beiden Enden.
+///
+/// **Gerade quer + schräg vor** (`Analyse_Teil3/04` §5, gemessen an 125 Säulen mit gespeicherten Stichlinien, hoch):
+/// Je Stelle liegen die Einstiche auf A und B auf **derselben Stichlinie** – der Stich A → B liegt quer in
+/// Stichrichtung, der Stich B → nächstes A rückt um den ganzen Abstand vor. (Bis 21.11.2026 rückte jeder Einstich um
+/// den halben Abstand vor – symmetrischer Zickzack, so im Original nicht beobachtet.)
 pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, String> {
+    satin_einstiche(seite_a, seite_b, e, true)
+}
+
+/// Einstiche wie `satin`; `quer = false`: jeder Einstich rückt um den halben Abstand vor (symmetrischer Zickzack) –
+/// für Step-Reihen in Säulen (Reihen parallel wie bei Tatami) und den Zickzack-Deckstich 0x2724 (nicht gemessen,
+/// bisheriges Verfahren beibehalten).
+pub fn satin_einstiche(
+    seite_a: &[Punkt],
+    seite_b: &[Punkt],
+    e: &SatinEinstellung,
+    quer: bool,
+) -> Result<Linie, String> {
     let (a, b) = paare_bilden(seite_a, seite_b)?;
+    if quer {
+        return satin_quer(&a, &b, e);
+    }
     let zg = e.zugausgleich;
     let einstich = |pa: Punkt, pb: Punkt, auf_a: bool| -> Punkt {
         if auf_a {
@@ -135,6 +154,56 @@ pub fn satin(seite_a: &[Punkt], seite_b: &[Punkt], e: &SatinEinstellung) -> Resu
     let ende = einstich(*a.last().unwrap(), *b.last().unwrap(), seite);
     if abstand(*out.last().unwrap(), ende) > 1e-6 {
         out.push(ende);
+    }
+    Ok(out)
+}
+
+/// Satin „gerade quer + schräg vor“: an jeder Stelle t die Einstiche A(t), B(t); von Stelle zu Stelle der ganze
+/// Abstand (auf der längeren Seite). Die letzte Stelle liegt auf der Endkante; bleibt bis dorthin weniger als der
+/// halbe Abstand, rückt die letzte Stelle auf die Endkante statt eine weitere anzuhängen (**eigene Festlegung**).
+fn satin_quer(a: &[Punkt], b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, String> {
+    let zg = e.zugausgleich;
+    let paar = |pa: Punkt, pb: Punkt| -> [Punkt; 2] {
+        [
+            verschieben(pa, richtung(pb, pa), zg),
+            verschieben(pb, richtung(pa, pb), zg),
+        ]
+    };
+    let mut out: Linie = paar(a[0], b[0]).to_vec();
+    let mut gelaufen = 0.0; // Weg seit der letzten Stelle (über Segmentgrenzen hinweg)
+    let mut letzter_abstand = e.abstand(abstand(a[0], b[0]));
+    for i in 0..a.len() - 1 {
+        let seg = abstand(a[i], a[i + 1]).max(abstand(b[i], b[i + 1]));
+        if seg < 1e-9 {
+            continue;
+        }
+        let mut t = 0.0;
+        loop {
+            let (pa, pb) = (zwischen(a[i], a[i + 1], t), zwischen(b[i], b[i + 1], t));
+            let s = e.abstand(abstand(pa, pb));
+            let noetig = (s - gelaufen).max(0.0);
+            let frei = (1.0 - t) * seg;
+            if noetig > frei + 1e-9 {
+                gelaufen += frei;
+                break;
+            }
+            t += noetig / seg;
+            gelaufen = 0.0;
+            letzter_abstand = s;
+            let (pa, pb) = (zwischen(a[i], a[i + 1], t), zwischen(b[i], b[i + 1], t));
+            out.extend(paar(pa, pb));
+        }
+    }
+    kurzstiche(&mut out, e);
+    let ende = paar(*a.last().unwrap(), *b.last().unwrap());
+    let n = out.len();
+    if gelaufen > 1e-6 {
+        if gelaufen < letzter_abstand / 2.0 && n >= 4 {
+            out[n - 2] = ende[0];
+            out[n - 1] = ende[1];
+        } else {
+            out.extend(ende);
+        }
     }
     Ok(out)
 }
@@ -213,29 +282,37 @@ mod tests {
         )
     }
 
-    fn dx(pts: &[Punkt]) -> Vec<f64> {
-        pts[..pts.len() - 1].windows(2).map(|w| w[1].x - w[0].x).collect()
+    /// Vorschub von Stelle zu Stelle (gerade Säule längs x): Paare (A, B) liegen auf derselben Stichlinie
+    fn vorschub(pts: &[Punkt]) -> Vec<f64> {
+        let paare: Vec<(Punkt, Punkt)> = pts.chunks(2).map(|c| (c[0], c[1])).collect();
+        for (a, b) in &paare {
+            assert!((a.x - b.x).abs() < 1e-9, "Stich A → B quer: {a:?} {b:?}");
+        }
+        // ohne die letzte Stelle (Endkante)
+        paare[..paare.len() - 1].windows(2).map(|w| w[1].0.x - w[0].0.x).collect()
     }
 
     #[test]
     fn abstand_und_seitenwechsel() {
         let (a, b) = gerade(4.0);
         let pts = satin(&a, &b, &SatinEinstellung::default()).unwrap();
-        for (i, q) in pts[..pts.len() - 1].iter().enumerate() {
+        assert_eq!(pts.len() % 2, 0);
+        for (i, q) in pts.iter().enumerate() {
             let soll = if i % 2 == 0 { 2.2 } else { -2.2 };
             assert!((q.y - soll).abs() < 1e-9);
         }
-        // 0,40 mm zwischen zwei Einstichen derselben Seite, also 0,20 mm Vorschub je Einstich
-        assert!(dx(&pts).iter().all(|d| (d - 0.20).abs() < 1e-9));
-        assert!((pts.len() as f64 - (20.0 / 0.20 + 2.0)).abs() <= 1.0);
+        // 0,40 mm zwischen zwei Einstichen derselben Seite; A und B einer Stelle auf derselben Stichlinie
+        assert!(vorschub(&pts).iter().all(|d| (d - 0.40).abs() < 1e-9));
+        assert!((pts.len() as f64 - 2.0 * (20.0 / 0.40 + 1.0)).abs() <= 2.0);
         assert!((pts.last().unwrap().x - 20.0).abs() < 1e-9);
+        assert!((pts[pts.len() - 2].x - 20.0).abs() < 1e-9);
     }
 
     #[test]
     fn schmale_bahn_lockerer() {
         let (a, b) = gerade(0.5);
         let pts = satin(&a, &b, &SatinEinstellung::default()).unwrap();
-        assert!(dx(&pts).iter().all(|d| (d - 0.51 / 2.0).abs() < 1e-9));
+        assert!(vorschub(&pts).iter().all(|d| (d - 0.51).abs() < 1e-9));
     }
 
     #[test]
@@ -246,13 +323,21 @@ mod tests {
             abstand_fest: 0.40,
             ..Default::default()
         };
-        assert!(dx(&satin(&a, &b, &e).unwrap()).iter().all(|d| (d - 0.20).abs() < 1e-9));
+        assert!(vorschub(&satin(&a, &b, &e).unwrap()).iter().all(|d| (d - 0.40).abs() < 1e-9));
         let e2 = fuer_stoff("Knit Medium Weight").unwrap().satin;
         assert!(
-            dx(&satin(&a, &b, &e2).unwrap())
+            vorschub(&satin(&a, &b, &e2).unwrap())
                 .iter()
-                .all(|d| (d - 0.46 * 1.10 / 2.0).abs() < 1e-9)
+                .all(|d| (d - 0.46 * 1.10).abs() < 1e-9)
         );
+    }
+
+    #[test]
+    fn zickzack_wie_bisher_symmetrisch() {
+        let (a, b) = gerade(4.0);
+        let pts = satin_einstiche(&a, &b, &SatinEinstellung::default(), false).unwrap();
+        let dx: Vec<f64> = pts[..pts.len() - 1].windows(2).map(|w| w[1].x - w[0].x).collect();
+        assert!(dx.iter().all(|d| (d - 0.20).abs() < 1e-9));
     }
 
     #[test]
