@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Kreuzstich (Nachtauftrag N9, 4b.15; Commit COMMIT)
+## 22.11.2026 – Kreuzstich (Nachtauftrag N9, 4b.15; Commit c47aa42)
 - **Neue Objektart `kreuzstich`:** `umriss`/`loecher` (wahlweise), `zellen` ([[Spalte, Reihe]], zusätzlich),
   `kreuz` (`voll` … `knoten`, 10 Arten), `ecke` (`unten_links` … `oben_rechts`), `richtung` (`steigend`/`fallend`),
   `faeden` (2/4/6), `groesse` (mm, Standard 2,54), `kontur` (`keine`/`linie`/`kreuz`), `fuellen` (an). Zelle [i, j] =
