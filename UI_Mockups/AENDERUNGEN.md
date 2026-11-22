@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Eigene Rahmen (Nachtauftrag N7b, 4b.13; Commit COMMIT)
+## 22.11.2026 – Eigene Rahmen (Nachtauftrag N7b, 4b.13; Commit 3722874)
 - **Neues Design-Feld `eigener_rahmen`** `{name, form: "rechteck"|"oval", breite, hoehe, gerade}` (mm; Oval: `hoehe` =
   Gesamthöhe, `gerade` = gerader Mittelteil, 0 = Ellipse). Ist es gesetzt, gilt es statt `rahmen`; `rahmen` trägt dann
   denselben Namen. **Schema:** `rahmen` ist jetzt ein freier Text (Rahmen der 185 als `examples`, nicht mehr `enum`).
