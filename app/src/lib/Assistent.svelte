@@ -84,8 +84,20 @@
     Array.isArray(transform.skalieren) ? (transform.skalieren[0] ?? 100) : (transform.skalieren ?? 100),
   );
 
+  /** Elemente, zu denen die Auswahl gehört (Auswahlrechteck, Strg+A, Umschalt-Klick) */
+  const gewaehlteElemente = $derived(elemente.filter((x) => x.objekte.some((i) => arbeit.auswahl.includes(i))));
   const sicht = $derived(
-    !arbeit.objekte.length || hinzufuegen ? "kacheln" : liste || !el ? "liste" : text ? "text" : mono ? "mono" : "element",
+    !arbeit.objekte.length || hinzufuegen
+      ? "kacheln"
+      : liste || !el
+        ? "liste"
+        : gewaehlteElemente.length > 1
+          ? "mehrere"
+          : text
+            ? "text"
+            : mono
+              ? "mono"
+              : "element",
   );
 
   /** Transformation des gewählten Elements: der Gruppe bzw. des Objekts */
@@ -415,6 +427,27 @@
         <h3 style="font-size:19px; margin:0 0 6px">Ganzes Design</h3>
         {@render groesseDrehen()}
         {@render passung()}
+      {:else if sicht === "mehrere"}
+        {@render elKopf(`${gewaehlteElemente.length} Elemente gewählt`)}
+        <p class="mut" style="margin:0 0 10px">In der Vorschau ziehen verschiebt alle zusammen. Gruppiert werden sie zu einem Element.</p>
+        <ul class="ol" aria-label="Gewählte Elemente" style="border:1px solid var(--line); background:var(--color-bg); margin:0 0 12px; padding:0; list-style:none">
+          {#each gewaehlteElemente as x (x.gruppe ?? `o${x.objekte[0]}`)}
+            {@const [artName, artIcon] = elArt(x)}
+            <li class="rk" style="cursor:default; border-bottom:1px solid color-mix(in srgb,var(--color-text) 7%,transparent)">
+              <Icon d={artIcon} />
+              <span style="display:flex; flex-direction:column; min-width:0; flex:1">
+                <b style="font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{x.name}</b>
+                <span class="mut small">{artName}</span>
+              </span>
+            </li>
+          {/each}
+        </ul>
+        <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <button class="btn btn-primary" title="Strg+G" onclick={() => arbeit.gruppieren()}><Icon d={IC.ordner} />Gruppieren</button>
+          <button class="btn btn-secondary" title="Esc" onclick={() => arbeit.waehlen(null)}>Auswahl aufheben</button>
+          <span style="flex:1"></span>
+          <button class="btn btn-ghost" style="color:var(--err)" title="Entf" onclick={() => (arbeit.loeschen(), (liste = true))}><Icon d={IC.papierkorb} />Löschen</button>
+        </div>
       {:else if sicht === "text" && text}
         {@render elKopf("Text")}
         <div class="field" style="margin-bottom:12px">
@@ -741,8 +774,11 @@
 {/snippet}
 
 {#snippet elAktionen()}
-  <div style="display:flex; gap:8px; margin-top:14px">
+  <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap">
     <button class="btn btn-secondary" onclick={() => (hinzufuegen = true)}><Icon d={IC.plus} />Element hinzufügen</button>
+    {#if el?.gruppe && arbeit.design.gruppen?.[el.gruppe]?.herkunft === "gruppiert"}
+      <button class="btn btn-secondary" title="Strg+Umschalt+G" onclick={() => (arbeit.elementWaehlen(el), arbeit.gruppeAufloesen())}>Gruppe auflösen</button>
+    {/if}
     <span style="flex:1"></span>
     <button class="btn btn-ghost" style="color:var(--err)" onclick={elLoeschen}><Icon d={IC.papierkorb} />Löschen</button>
   </div>

@@ -1,6 +1,11 @@
 /* Stile der Oberfläche v3 – aus dem Entwurf UI_Mockups/v3_2026-11-21/Stickprogramm v3 Kern.dc.html übernommen.
    Wurzel: .sp (hell), .sp.dunkel (dunkel). Tokens: UEBERGABE.md §5. */
 html,body{margin:0;height:100%}body{overflow:hidden;background:var(--color-bg)}
+/* Programm statt Webseite (Nutzer 21.11.2026: „man soll nicht sehen, dass es ein Browser ist“): kein Markieren von
+   Text außer in Eingabefeldern, kein Ziehen von Bildern, kein Nachfedern beim Scrollen, Pfeil statt Text-Cursor */
+html,body{overscroll-behavior:none;-webkit-user-select:none;user-select:none;cursor:default;-webkit-tap-highlight-color:transparent}
+input,textarea,[contenteditable]{-webkit-user-select:text;user-select:text}
+img,svg,a{-webkit-user-drag:none}
 .sp{--muted:#55585b;--line:var(--color-divider);--warn:#8a4300;--warn-bg:#fff3df;--err:#b42318;--err-bg:#fdeceb;--ok:#2b6a3b;--ok-bg:#e6f2e9;--sim:#5b3d91;--sim-bg:#efe9f8;--danger:#9b1c1c;--panel:#f7f7f8;
   position:relative;display:flex;flex-direction:column;min-width:1280px;overflow:hidden;font-family:var(--font-body);font-size:13.5px;line-height:1.4;color:var(--color-text);background:var(--color-bg)}
 .sp.dunkel{--color-bg:#16191c;--color-surface:#1f2327;--color-text:#e6e8ea;--color-divider:rgba(230,232,234,.18);--color-accent:#7fa6cc;--color-accent-100:#1f3346;--color-accent-600:#94bce3;--color-accent-700:#b5d9fd;--color-accent-800:#d6ebff;--color-neutral-100:#24282c;--color-neutral-800:#d4d4d7;

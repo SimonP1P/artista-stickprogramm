@@ -234,7 +234,6 @@
         return m.go?.();
       }
       if (strg && ev.key.toLowerCase() === "d") return (ev.preventDefault(), arbeit.duplizieren());
-      if (strg && ev.key.toLowerCase() === "g") return (ev.preventDefault(), ev.shiftKey ? arbeit.gruppeAufloesen() : arbeit.gruppieren());
       const pf: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
       if (pf[ev.key] && !ev.altKey && arbeit.auswahl.length) {
         const k = ev.shiftKey ? 5 : 0.5;
@@ -244,6 +243,9 @@
     }
     if (!strg) return;
     const k = ev.key.toLowerCase();
+    // Strg+A wählt alle Objekte (Original „Select All“), nicht den Text der Seite; Strg+G gruppieren – beide Modi
+    if (k === "a" && !eingabe && arbeit.ansicht !== "abspielen") return (ev.preventDefault(), arbeit.alleWaehlen());
+    if (k === "g" && !eingabe) return (ev.preventDefault(), ev.shiftKey ? arbeit.gruppeAufloesen() : arbeit.gruppieren());
     if (k === "z" && !ev.shiftKey && !eingabe) (ev.preventDefault(), arbeit.zurueck());
     else if ((k === "y" || (k === "z" && ev.shiftKey)) && !eingabe) (ev.preventDefault(), arbeit.vor());
     else if (k === "s") (ev.preventDefault(), speichern(ev.shiftKey));

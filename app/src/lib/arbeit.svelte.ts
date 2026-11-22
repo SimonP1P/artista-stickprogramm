@@ -106,6 +106,30 @@ function freierSchluessel(gruppen: Record<string, unknown>): string {
 }
 
 /** Gruppen ohne Objekte entfernen */
+/**
+ * Gruppe `g` auflösen: die Objekte verlieren `gruppe`, eine reine Verschiebung der Gruppe geht an jedes Objekt über
+ * (Drehen/Skalieren wirkt dort um die Mitte des Objekts statt um die der Gruppe und lässt sich nicht verlustfrei
+ * übertragen). Ergebnis: `true`, wenn dabei Größe/Drehung der Gruppe verloren geht.
+ */
+function gruppeInObjekte(d: DesignJson, g: string): boolean {
+  const t = d.gruppen?.[g]?.transform;
+  const leer = !t || Object.keys(t).length === 0;
+  let verloren = false;
+  for (const o of d.objekte ?? []) {
+    if (o.gruppe !== g) continue;
+    delete o.gruppe;
+    if (leer || !t) continue;
+    const nurSchieben = Object.keys(t).every((k) => k === "verschieben");
+    if (nurSchieben && t.verschieben) {
+      const ot = (o.transform ??= {});
+      const [vx, vy] = ot.verschieben ?? [0, 0];
+      ot.verschieben = [vx + t.verschieben[0], vy + t.verschieben[1]];
+    } else verloren = true;
+  }
+  delete d.gruppen?.[g];
+  return verloren;
+}
+
 function gruppenAufraeumen(d: DesignJson) {
   if (!d.gruppen) return;
   const zahl = new Map<string, number>();
@@ -256,14 +280,20 @@ class Arbeit {
   /** Gewählte Objekte zu einer neuen Gruppe zusammenfassen („Group“) */
   gruppieren(name = "Gruppe") {
     const aus = [...this.auswahl];
-    if (aus.length < 2) return;
+    if (aus.length < 2 || this.auswahlGruppe) return;
+    // Gruppen in Gruppen gibt es nicht (ein Feld `gruppe` je Objekt): alte Gruppen der Auswahl erst auflösen
+    const alt = new Set(aus.map((i) => this.gruppeVon(i)).filter((g): g is string => !!g));
+    let verloren = false;
     this.aendern((d) => {
+      for (const g of alt) verloren = gruppeInObjekte(d, g) || verloren;
       d.gruppen ??= {};
       const k = freierSchluessel(d.gruppen);
       d.gruppen[k] = { name, herkunft: "gruppiert" };
       for (const i of aus) d.objekte![i].gruppe = k;
       gruppenAufraeumen(d);
     });
+    this.auswahl = aus;
+    if (verloren) this.zeige("Gruppiert – Größe/Drehung der alten Gruppe gilt jetzt nicht mehr (Rückgängig möglich)", "info");
   }
   /** Gruppe der gewählten Objekte auflösen („Ungroup“): die Transformation der Gruppe geht an jedes Objekt über,
    *  wenn es selbst keine hat (sonst bleibt sie dort und die der Gruppe entfällt – Hinweis) */
@@ -272,25 +302,7 @@ class Arbeit {
     if (!gruppen.size) return;
     let verloren = false;
     this.aendern((d) => {
-      for (const g of gruppen) {
-        const t = d.gruppen?.[g]?.transform;
-        const leer = !t || Object.keys(t).length === 0;
-        for (const o of d.objekte ?? []) {
-          if (o.gruppe !== g) continue;
-          delete o.gruppe;
-          // nur eine reine Verschiebung lässt sich verlustfrei an jedes Objekt geben (Drehen/Skalieren wirkt dort um
-          // die Mitte des Objekts statt um die der Gruppe)
-          if (!leer && t) {
-            const nurSchieben = Object.keys(t).every((k) => k === "verschieben");
-            if (nurSchieben && t.verschieben) {
-              const ot = (o.transform ??= {});
-              const [vx, vy] = ot.verschieben ?? [0, 0];
-              ot.verschieben = [vx + t.verschieben[0], vy + t.verschieben[1]];
-            } else verloren = true;
-          }
-        }
-        delete d.gruppen?.[g];
-      }
+      for (const g of gruppen) verloren = gruppeInObjekte(d, g) || verloren;
       gruppenAufraeumen(d);
     });
     if (verloren) this.zeige("Gruppe aufgelöst – Größe/Drehung der Gruppe gilt jetzt nicht mehr (Rückgängig möglich)", "info");
@@ -555,6 +567,31 @@ class Arbeit {
         ? this.auswahl.filter((x) => !neu.includes(x))
         : [...this.auswahl, ...neu.filter((x) => !this.auswahl.includes(x))];
     else this.auswahl = neu;
+  }
+
+  /** Alle Objekte wählen („Select All“, Strg+A – Handbuch S. 41) */
+  alleWaehlen() {
+    this.buchstabe = null;
+    this.auswahl = this.objekte.map((_, i) => i);
+  }
+
+  /**
+   * Auswahlrechteck („Selecting objects with a bounding box“, Handbuch S. 42): gewählt werden die Objekte, die ganz im
+   * Rechteck liegen (Begrenzung aus `design_formen`). Wie im Original gilt das nicht für Gruppen: liegt ein Teil einer
+   * Gruppe ganz im Rechteck, wird die ganze Gruppe gewählt (Auslegung von „Unless they have already been grouped“).
+   * `hinzufuegen` (Umschalt/Strg): zur bisherigen Auswahl dazu.
+   */
+  imRechteckWaehlen([x0, y0, x1, y1]: [number, number, number, number], hinzufuegen = false) {
+    this.buchstabe = null;
+    const drin = new Set<number>();
+    for (const f of this.formen) {
+      const b = f.begrenzung;
+      if (!b || b[0] < x0 || b[1] < y0 || b[2] > x1 || b[3] > y1) continue;
+      const g = this.gruppeVon(f.objekt);
+      for (const i of g ? this.mitglieder(g) : [f.objekt]) drin.add(i);
+    }
+    const neu = hinzufuegen ? new Set([...this.auswahl, ...drin]) : drin;
+    this.auswahl = [...neu].sort((a, b) => a - b);
   }
 
   /** Neuberechnung planen (entprellt, beim Tippen) */

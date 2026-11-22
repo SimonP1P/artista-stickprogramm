@@ -29,8 +29,27 @@
   /** laufende Maus-Aktion: Ansicht verschieben, Objekte verschieben, skalieren, drehen */
   type Ziehen =
     | { art: "ansicht"; x: number; y: number; m: [number, number]; bewegt: boolean }
+    | { art: "rechteck"; start: [number, number]; mehr: boolean; bewegt: boolean }
     | { art: "objekt" | "skalieren" | "drehen"; start: [number, number]; mitte: [number, number]; bewegt: boolean };
   let ziehen: Ziehen | null = null;
+  /** Auswahlrechteck während des Ziehens (mm: x0, y0, x1, y1) */
+  let band = $state<[number, number, number, number] | null>(null);
+  /** Leertaste gedrückt (Zeiger über der Vorschau): Ziehen verschiebt die Ansicht */
+  let leertaste = $state(false);
+  let zeigerDrin = false;
+  /** beim Drücken erst gewählt – der Klick wählt dann keinen einzelnen Buchstaben (W9) */
+  let frischGewaehlt = false;
+  function istEingabe(t: EventTarget | null) {
+    return !!(t as HTMLElement | null)?.closest?.("input, textarea, select, [contenteditable]");
+  }
+  function tasteRunter(ev: KeyboardEvent) {
+    if (ev.code !== "Space" || !zeigerDrin || istEingabe(ev.target)) return;
+    ev.preventDefault();
+    leertaste = true;
+  }
+  function tasteHoch(ev: KeyboardEvent) {
+    if (ev.code === "Space") leertaste = false;
+  }
   /** Live-Vorschau der Griffe (SVG-Transformation der gewählten Objekte, nur Anzeige) */
   let griffTransform = $state("");
   let griffWert = $state<{ dx: number; dy: number; f: number; grad: number }>({ dx: 0, dy: 0, f: 1, grad: 0 });
@@ -230,6 +249,7 @@
 
   function runter(ev: PointerEvent) {
     if (ev.button !== 0 && ev.button !== 1) return;
+    frischGewaehlt = false;
     svg?.setPointerCapture(ev.pointerId);
     const ziel = (ev.target as Element | null)?.closest?.("[data-griff],[data-o]");
     const griff = ziel?.getAttribute("data-griff");
@@ -242,9 +262,14 @@
       knotenGewaehlt = k;
       return;
     }
+    // Ansicht verschieben: mittlere Maustaste oder Leertaste + Ziehen
+    if (ev.button === 1 || leertaste) {
+      ziehen = { art: "ansicht", x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false };
+      return;
+    }
     if (ev.button === 0 && arbeit.ansicht !== "abspielen") {
       // Ein-/Ausstich setzen
-      if (werkzeug !== "auswahl" && arbeit.auswahl.length === 1) {
+      if ((werkzeug === "einstich" || werkzeug === "ausstich") && arbeit.auswahl.length === 1) {
         const i = arbeit.auswahl[0];
         const feld = werkzeug;
         arbeit.aendern((d) => {
@@ -260,8 +285,17 @@
         ziehen = { art: griff === "ecke" ? "skalieren" : "drehen", start: p, mitte: m, bewegt: false };
         return;
       }
-      if (o !== null && o !== undefined && arbeit.auswahl.includes(Number(o)) && !ev.shiftKey && !ev.ctrlKey && !ev.metaKey) {
+      const mehr = ev.shiftKey || ev.ctrlKey || ev.metaKey;
+      if (o !== null && o !== undefined && !mehr) {
+        // nicht gewähltes Objekt anfassen: wählen und gleich verschieben können
+        frischGewaehlt = !arbeit.auswahl.includes(Number(o));
+        if (frischGewaehlt) arbeit.waehlen(Number(o));
         ziehen = { art: "objekt", start: p, mitte: m ?? p, bewegt: false };
+        return;
+      }
+      // freie Fläche: Auswahlrechteck (Original: „drag a bounding box around the objects“)
+      if ((o === null || o === undefined) && werkzeug === "auswahl") {
+        ziehen = { art: "rechteck", start: p, mehr, bewegt: false };
         return;
       }
     }
@@ -284,6 +318,12 @@
     }
     const p = mm(ev);
     const [sx, sy] = ziehen.start;
+    if (ziehen.art === "rechteck") {
+      if (!ziehen.bewegt && Math.hypot(p[0] - sx, p[1] - sy) < 1 / zoom) return;
+      ziehen.bewegt = true;
+      band = [Math.min(sx, p[0]), Math.min(sy, p[1]), Math.max(sx, p[0]), Math.max(sy, p[1])];
+      return;
+    }
     const [cx, cy] = ziehen.mitte;
     if (!ziehen.bewegt && Math.hypot(p[0] - sx, p[1] - sy) < 0.4 / zoom) return;
     ziehen.bewegt = true;
@@ -312,6 +352,13 @@
     const war = ziehen;
     ziehen = null;
     if (!war) return;
+    if (war.art === "rechteck") {
+      const b = band;
+      band = null;
+      if (war.bewegt && b) return arbeit.imRechteckWaehlen(b, war.mehr);
+      if (!war.mehr) arbeit.waehlen(null);
+      return;
+    }
     if (war.art !== "ansicht" && war.bewegt) {
       // Griffe: Wert ins JSON (Transformation des Objekts) – der Kern rechnet die Stiche neu
       const w = griffWert;
@@ -341,6 +388,7 @@
       const o = objektAusZiel(ziel);
       const b = Number(ziel?.closest?.("[data-b]")?.getAttribute("data-b") ?? 0);
       const mehr = ev.shiftKey || ev.ctrlKey || ev.metaKey;
+      if (frischGewaehlt) return void (frischGewaehlt = false);
       // Klick auf einen Buchstaben des schon gewählten Texts: Buchstabe wählen (W9, nur Experte)
       if (!mehr && o !== null && b > 0 && arbeit.modus === "experte" && arbeit.auswahl.length === 1 && arbeit.auswahl[0] === o) {
         arbeit.buchstabe = arbeit.buchstabe?.objekt === o && arbeit.buchstabe.nr === b ? null : { objekt: o, nr: b };
@@ -359,6 +407,9 @@
   }
 </script>
 
+<svelte:window onkeydown={tasteRunter} onkeyup={tasteHoch} onblur={() => (leertaste = false)} />
+
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions (Zeichenfläche; mittlere Maustaste ohne Auto-Scroll) -->
 <svg
   bind:this={svg}
   role="img"
@@ -368,8 +419,11 @@
   onpointerdown={runter}
   onpointermove={bewegen}
   onpointerup={hoch}
+  onmousedown={(e) => e.button === 1 && e.preventDefault()}
+  onpointerenter={() => (zeigerDrin = true)}
+  onpointerleave={() => (zeigerDrin = false)}
   onwheel={rad}
-  style="cursor:{werkzeug !== 'auswahl' ? 'crosshair' : 'default'}"
+  style="cursor:{leertaste ? 'grab' : werkzeug !== 'auswahl' ? 'crosshair' : 'default'}"
 >
   <rect x={ausschnitt.x - 500} y={ausschnitt.y - 500} width={ausschnitt.w + 1000} height={ausschnitt.h + 1000} fill={farben.grund} />
   {#if rahmen}
@@ -512,6 +566,11 @@
       {/if}
     </g>
   {/each}
+
+  {#if band}
+    {@const [x0, y0, x1, y1] = band}
+    <rect x={x0} y={-y1} width={x1 - x0} height={y1 - y0} fill={farben.akzent} fill-opacity=".08" stroke={farben.akzent} stroke-width={0.3 / Math.sqrt(zoom)} stroke-dasharray="1.2 .8" pointer-events="none" />
+  {/if}
 
   {#if fehlerBox && arbeit.fehler}
     {@const [x0, y0, x1, y1] = fehlerBox}
