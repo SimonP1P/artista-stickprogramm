@@ -6273,6 +6273,14 @@
         "integer",
         "null"
       ]
+    },
+    "vorlage": {
+      "default": null,
+      "description": "Vorlage, aus der das Design entstand (Handbuch Kap. 9: „the template from which the design was created“) – nur\nzur Anzeige und als Vorschlag bei „Werte in Vorlage speichern“; die Werte selbst stehen in `einstellungen`",
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "title": "Design",

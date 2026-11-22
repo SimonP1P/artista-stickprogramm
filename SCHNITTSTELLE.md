@@ -23,6 +23,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `stoff` | "0 Software Defaults" \| "Knit Light Weight" \| "Knit Medium Weight" \| "Knit Heavy Weight" \| "Terry Medium Weight" \| "Terry Heavy Weight" \| "Woven Light Weight" \| "Woven Medium Weight" \| "Woven Heavy Weight" |  | `"0 Software Defaults"` | Stoff: ändert Dichte, Unterlage, Zugausgleich (8 Stoffe + Software Defaults) |
 | `transform` | Transformation |  | – | Transformation des ganzen Designs (um seine Mitte) |
 | `version` | number |  | – | Fassung des Formats (ohne Angabe: aktuelle Fassung) |
+| `vorlage` | string |  | – | Vorlage, aus der das Design entstand (Handbuch Kap. 9: „the template from which the design was created“) – nur zur Anzeige und als Vorschlag bei „Werte in Vorlage speichern“; die Werte selbst stehen in `einstellungen` |
 
 ## 2. Objekte (`objekte`, Feld `art`)
 
@@ -766,6 +767,10 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `svg_lesen` | SvgEingabe | SvgErgebnis | SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design |
 | `text_speichern` | TextDatei | null | Textdatei schreiben |
 | `ueberdeckungen` | DesignEingabe | number[][] | Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken |
+| `vorlage_loeschen` | VorlageName | VorlageInfo[] | Vorlage löschen (Normal → zurück zur Werkseinstellung); Ergebnis: neue Liste |
+| `vorlage_neu` | VorlageName | DesignWert | Neues Design aus einer Vorlage (Kopie mit Name „Design“) |
+| `vorlage_speichern` | VorlageSpeichernEingabe | VorlageInfo[] | Design als Vorlage speichern (`umfang` ganz) oder nur seine Werte in eine Vorlage (`werte`); Ergebnis: neue Liste |
+| `vorlagen_liste` | Leer | VorlageInfo[] | Vorlagen (Handbuch Kap. 9): Normal zuerst (ohne Datei = Werkseinstellung) |
 | `welle_vorschlag` | ObjektEingabe | unknown | Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`) |
 | `zauberstab` | ZauberstabEingabe | ZauberstabErgebnis | Zauberstab (Magic Wand): angeklickte Flächen des vorbereiteten Bildes als Fläche oder Umriss (neues Design) |
 

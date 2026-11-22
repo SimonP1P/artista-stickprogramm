@@ -109,7 +109,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Garnkarten, Garn suchen/zuordnen | ✅ | CIEDE2000 |
 | Eigene Garnkarten, Farben mischen | ⬜ 🖥 | |
 | Stoffe (8 + Defaults) | ✅ | |
-| Vorlagen/Stile speichern (Templates, NORMAL) | ⬜ | Kap. 9 – hängt am Parameterkatalog |
+| Vorlagen/Stile speichern (Templates, NORMAL) | ✅ 22.11. (N8, Bericht 28): Vorlagen als Design-JSON, Neu = Normal, Neu aus Vorlage, Als Vorlage speichern, Werte in Vorlage, Objekt ↔ Design ↔ Vorlage wie default/current/existing; Stile als eigene Funktion ➖ (artista bietet sie nicht an) | Kap. 9 |
 
 ## I. Dateien und Maschine (Kap. 28–30)
 | Funktion | Stand | Bemerkung |

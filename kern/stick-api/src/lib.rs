@@ -28,6 +28,7 @@ pub mod maschine;
 pub mod motive;
 pub mod rahmen;
 pub mod schriften;
+pub mod vorlagen;
 pub mod stickdateien;
 
 use schemars::{JsonSchema, Schema, SchemaGenerator};
@@ -136,6 +137,8 @@ pub struct Kontext {
     pub(crate) motiv_zustand: motive::MotivZustand,
     /// Ablage der eigenen Rahmen (App: Datenordner/rahmen.json)
     pub(crate) rahmen_zustand: rahmen::RahmenZustand,
+    /// Ablage der Vorlagen (App: Datenordner/vorlagen)
+    pub(crate) vorlagen_zustand: vorlagen::VorlagenZustand,
 }
 
 impl Kontext {
@@ -157,6 +160,7 @@ impl Kontext {
             schriften_zustand: Default::default(),
             motiv_zustand: Default::default(),
             rahmen_zustand: Default::default(),
+            vorlagen_zustand: Default::default(),
         }
     }
 
@@ -332,6 +336,14 @@ befehle! {
     rahmen_speichern: rahmen::RahmenSpeichernEingabe => Vec<befehle::RahmenInfo>,
     /// Eigenen Rahmen löschen; Ergebnis: neue Rahmenliste
     rahmen_loeschen: rahmen::RahmenLoeschenEingabe => Vec<befehle::RahmenInfo>,
+    /// Vorlagen (Handbuch Kap. 9): Normal zuerst (ohne Datei = Werkseinstellung)
+    vorlagen_liste: befehle::Leer => Vec<vorlagen::VorlageInfo>,
+    /// Design als Vorlage speichern (`umfang` ganz) oder nur seine Werte in eine Vorlage (`werte`); Ergebnis: neue Liste
+    vorlage_speichern: vorlagen::VorlageSpeichernEingabe => Vec<vorlagen::VorlageInfo>,
+    /// Neues Design aus einer Vorlage (Kopie mit Name „Design“)
+    vorlage_neu: vorlagen::VorlageName => befehle::DesignWert,
+    /// Vorlage löschen (Normal → zurück zur Werkseinstellung); Ergebnis: neue Liste
+    vorlage_loeschen: vorlagen::VorlageName => Vec<vorlagen::VorlageInfo>,
     /// Stoffe (8 + Software Defaults) mit den wichtigsten Werten
     stoffe_liste: befehle::Leer => Vec<befehle::StoffInfo>,
     /// Original-Alphabete (50)
@@ -470,6 +482,7 @@ mod befehle_aller {
     pub use crate::motive::*;
     pub use crate::rahmen::*;
     pub use crate::schriften::*;
+    pub use crate::vorlagen::*;
     pub use crate::stickdateien::*;
 }
 

@@ -77,6 +77,36 @@
       if (Object.keys(wurzel.einstellungen as Baum).length === 0) delete wurzel.einstellungen;
     }, `ew:${p.id}`);
   }
+  // Handbuch Kap. 9: „You can make the properties of a selected object into new current properties or new defaults.
+  // You can also apply current properties to existing objects.“
+  function mischen(ziel: Baum, quelle: Baum) {
+    for (const [k, v] of Object.entries(quelle)) {
+      if (v && typeof v === "object" && !Array.isArray(v)) {
+        if (!ziel[k] || typeof ziel[k] !== "object") ziel[k] = {};
+        mischen(ziel[k] as Baum, v as Baum);
+      } else ziel[k] = v;
+    }
+  }
+  const objektWerte = $derived(o?.einstellungen && Object.keys(o.einstellungen).length ? o.einstellungen : null);
+  const gewaehlteMitWerten = $derived(arbeit.auswahl.filter((n) => arbeit.objekte[n]?.einstellungen));
+  function alsDesignwerte() {
+    const nr = i;
+    arbeit.aendern((d) => {
+      const ob = d.objekte![nr] as Baum;
+      d.einstellungen ??= {};
+      mischen(d.einstellungen as Baum, ob.einstellungen as Baum);
+      delete ob.einstellungen;
+    });
+    arbeit.zeige(`Werte von Objekt Nr. ${nr + 1} sind jetzt die Werte des Designs`, "ok");
+  }
+  function designwerteAnwenden() {
+    const nrn = [...gewaehlteMitWerten];
+    arbeit.aendern((d) => {
+      for (const n of nrn) delete (d.objekte![n] as Baum).einstellungen;
+    });
+    arbeit.zeige(`${nrn.length} ${nrn.length === 1 ? "Objekt nutzt" : "Objekte nutzen"} jetzt die Werte des Designs`, "ok");
+  }
+
   const anzeigen = (v: unknown) =>
     typeof v === "number" ? zahl(v, 3) : typeof v === "boolean" ? (v ? "an" : "aus") : v == null ? "–" : String(v);
 </script>
@@ -88,6 +118,15 @@
   </div>
   <span class="mut small">Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt. Leeres Feld = geerbter Wert.</span>
   <label class="small" style="display:flex; gap:6px; align-items:center"><input type="checkbox" bind:checked={alle} />auch automatische Werte zeigen</label>
+  <div style="display:flex; flex-wrap:wrap; gap:6px">
+    {#if ebene === "objekt"}
+      <button class="btn btn-secondary" style="font-size:12px" disabled={!objektWerte} title="Die geänderten Werte dieses Objekts werden die Werte des ganzen Designs (gelten dann für alle Objekte ohne eigene Werte)" onclick={alsDesignwerte}>Als Werte des Designs übernehmen</button>
+    {/if}
+    <button class="btn btn-secondary" style="font-size:12px" disabled={!gewaehlteMitWerten.length} title="Eigene Werte der gewählten Objekte löschen – sie nutzen dann die Werte des Designs" onclick={designwerteAnwenden}>Designwerte auf Auswahl anwenden{gewaehlteMitWerten.length ? ` (${gewaehlteMitWerten.length})` : ""}</button>
+    {#if ebene === "design"}
+      <button class="btn btn-secondary" style="font-size:12px" title="Die Werte des Designs in eine Vorlage speichern – sie gelten für neue Designs aus dieser Vorlage" onclick={() => (arbeit.dialog = { art: "vorlagen", modus: "werte" })}>In Vorlage speichern …</button>
+    {/if}
+  </div>
 </div>
 
 {#each gruppen as g (g)}

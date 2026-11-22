@@ -51,6 +51,7 @@ export type OffenerDialog =
   | { art: "kopieren"; weg: "spiegeln" | "kranz" }
   | { art: "nummer"; vor: boolean }
   | { art: "eigene_rahmen" }
+  | { art: "vorlagen"; modus: "neu" | "speichern" | "werte" }
   | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 

@@ -70,6 +70,8 @@ pub fn run() {
                 k.motive_ablage(daten.join("motive"));
                 // eigene Rahmen (Create custom hoop)
                 k.rahmen_ablage(daten.join("rahmen.json"));
+                // Vorlagen (Templates, Handbuch Kap. 9)
+                k.vorlagen_ablage(daten.join("vorlagen"));
             }
             app.manage(Arc::new(k));
 

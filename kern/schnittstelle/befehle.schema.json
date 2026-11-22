@@ -1464,6 +1464,14 @@
             "integer",
             "null"
           ]
+        },
+        "vorlage": {
+          "default": null,
+          "description": "Vorlage, aus der das Design entstand (Handbuch Kap. 9: „the template from which the design was created“) – nur\nzur Anzeige und als Vorschlag bei „Werte in Vorlage speichern“; die Werte selbst stehen in `einstellungen`",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "title": "Design",
@@ -9709,6 +9717,114 @@
         }
       ]
     },
+    "VorlageInfo": {
+      "description": "Eintrag der Vorlagenliste.",
+      "properties": {
+        "garnkarte": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "objekte": {
+          "description": "Zahl der Objekte (z. B. Mustertext)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rahmen": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "standard": {
+          "description": "Standardvorlage für „Neu“",
+          "type": "boolean"
+        },
+        "stoff": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "werk": {
+          "description": "Werkseinstellung (keine Datei – nur bei Normal)",
+          "type": "boolean"
+        },
+        "werte": {
+          "description": "Zahl der gespeicherten Einzelwerte (`einstellungen`)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "standard",
+        "werk",
+        "objekte",
+        "werte"
+      ],
+      "type": "object"
+    },
+    "VorlageName": {
+      "additionalProperties": false,
+      "description": "Eingabe von `vorlage_neu`/`vorlage_loeschen`.",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "VorlageSpeichernEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `vorlage_speichern`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "name": {
+          "description": "Name der Vorlage („Normal“ = Standardvorlage für „Neu“)",
+          "type": "string"
+        },
+        "objekte": {
+          "default": true,
+          "description": "bei `ganz`: Objekte mitspeichern (z. B. Mustertext); ohne = nur Werte, Rahmen, Stoff, Garnkarte",
+          "type": "boolean"
+        },
+        "umfang": {
+          "$ref": "#/$defs/VorlageUmfang"
+        }
+      },
+      "required": [
+        "design",
+        "name"
+      ],
+      "type": "object"
+    },
+    "VorlageUmfang": {
+      "description": "Was in die Vorlage kommt",
+      "oneOf": [
+        {
+          "const": "ganz",
+          "description": "das ganze Design: Werte, Rahmen, Stoff, Garnkarte und Objekte („Save As … Templates (AMT)“)",
+          "type": "string"
+        },
+        {
+          "const": "werte",
+          "description": "nur die Werte (`einstellungen`) in eine vorhandene Vorlage – Objekte und Rest der Vorlage bleiben („Save“ im\nDialog Object Properties: „Only the current object properties … are saved to the template“)",
+          "type": "string"
+        }
+      ]
+    },
     "WirksamerWert": {
       "description": "Wert eines Felds, mit dem der Kern rechnet, wenn das Feld leer ist.",
       "properties": {
@@ -10432,6 +10548,51 @@
       "beschreibung": "Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken",
       "eingabe": {
         "$ref": "#/$defs/DesignEingabe"
+      }
+    },
+    "vorlage_loeschen": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/VorlageInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Vorlage löschen (Normal → zurück zur Werkseinstellung); Ergebnis: neue Liste",
+      "eingabe": {
+        "$ref": "#/$defs/VorlageName"
+      }
+    },
+    "vorlage_neu": {
+      "ausgabe": {
+        "$ref": "#/$defs/DesignWert"
+      },
+      "beschreibung": "Neues Design aus einer Vorlage (Kopie mit Name „Design“)",
+      "eingabe": {
+        "$ref": "#/$defs/VorlageName"
+      }
+    },
+    "vorlage_speichern": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/VorlageInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Design als Vorlage speichern (`umfang` ganz) oder nur seine Werte in eine Vorlage (`werte`); Ergebnis: neue Liste",
+      "eingabe": {
+        "$ref": "#/$defs/VorlageSpeichernEingabe"
+      }
+    },
+    "vorlagen_liste": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/VorlageInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Vorlagen (Handbuch Kap. 9): Normal zuerst (ohne Datei = Werkseinstellung)",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
       }
     },
     "welle_vorschlag": {

@@ -549,6 +549,11 @@ export type DesignJson = {
   transform?: (Transformation | null);
   /** Fassung des Formats (ohne Angabe: aktuelle Fassung) */
   version?: number | null;
+  /**
+   * Vorlage, aus der das Design entstand (Handbuch Kap. 9: „the template from which the design was created“) – nur
+   * zur Anzeige und als Vorschlag bei „Werte in Vorlage speichern“; die Werte selbst stehen in `einstellungen`
+   */
+  vorlage?: string | null;
 };
 
 /** Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text). */
@@ -3714,6 +3719,43 @@ export type VerlaufJson = {
 /** Lage einer Linie zur gezeichneten Linie */
 export type Versatz = ("mitte" | "seite");
 
+/** Eintrag der Vorlagenliste. */
+export type VorlageInfo = {
+  garnkarte?: string | null;
+  name: string;
+  /** Zahl der Objekte (z. B. Mustertext) */
+  objekte: number;
+  rahmen?: string | null;
+  /** Standardvorlage für „Neu“ */
+  standard: boolean;
+  stoff?: string | null;
+  /** Werkseinstellung (keine Datei – nur bei Normal) */
+  werk: boolean;
+  /** Zahl der gespeicherten Einzelwerte (`einstellungen`) */
+  werte: number;
+};
+
+/** Eingabe von `vorlage_neu`/`vorlage_loeschen`. */
+export type VorlageName = {
+  name: string;
+};
+
+/** Eingabe von `vorlage_speichern`. */
+export type VorlageSpeichernEingabe = {
+  design: DesignWert;
+  /** Name der Vorlage („Normal“ = Standardvorlage für „Neu“) */
+  name: string;
+  /**
+   * bei `ganz`: Objekte mitspeichern (z. B. Mustertext); ohne = nur Werte, Rahmen, Stoff, Garnkarte
+   * @default true
+   */
+  objekte?: boolean;
+  umfang?: VorlageUmfang;
+};
+
+/** Was in die Vorlage kommt */
+export type VorlageUmfang = ("ganz" | "werte");
+
 /** Wert eines Felds, mit dem der Kern rechnet, wenn das Feld leer ist. */
 export type WirksamerWert = {
   /** Feld des Objekts wie im Design-JSON (z. B. „winkel“, „step_muster“) */
@@ -3882,6 +3924,14 @@ export interface Befehle {
   text_speichern: { eingabe: TextDatei; ausgabe: null };
   /** Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken */
   ueberdeckungen: { eingabe: DesignEingabe; ausgabe: number[][] };
+  /** Vorlage löschen (Normal → zurück zur Werkseinstellung); Ergebnis: neue Liste */
+  vorlage_loeschen: { eingabe: VorlageName; ausgabe: VorlageInfo[] };
+  /** Neues Design aus einer Vorlage (Kopie mit Name „Design“) */
+  vorlage_neu: { eingabe: VorlageName; ausgabe: DesignWert };
+  /** Design als Vorlage speichern (`umfang` ganz) oder nur seine Werte in eine Vorlage (`werte`); Ergebnis: neue Liste */
+  vorlage_speichern: { eingabe: VorlageSpeichernEingabe; ausgabe: VorlageInfo[] };
+  /** Vorlagen (Handbuch Kap. 9): Normal zuerst (ohne Datei = Werkseinstellung) */
+  vorlagen_liste: { eingabe: Leer; ausgabe: VorlageInfo[] };
   /** Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`) */
   welle_vorschlag: { eingabe: ObjektEingabe; ausgabe: unknown };
   /** Zauberstab (Magic Wand): angeklickte Flächen des vorbereiteten Bildes als Fläche oder Umriss (neues Design) */
@@ -3947,6 +3997,10 @@ export const BEFEHLE = [
   "svg_lesen",
   "text_speichern",
   "ueberdeckungen",
+  "vorlage_loeschen",
+  "vorlage_neu",
+  "vorlage_speichern",
+  "vorlagen_liste",
   "welle_vorschlag",
   "zauberstab",
 ] as const;

@@ -45,6 +45,8 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 | **SVG einlesen** (z. B. aus Inkscape) | Datei wählen; Breite in mm (Standard: Größe aus der SVG), Rahmen; „Überdeckung aussparen“ (an: was in der SVG oben liegt, spart darunterliegende Flächen aus), „kürzeste Verbindung“ (an). Ergebnis: neues Design, Stichart je Form nach Breite wie EasyStitch des Originals (Linie bis 2 mm Laufstich, Fläche bis 8 mm Satinfläche, darüber Tatami), danach jedes Objekt normal änderbar. Hinweise anzeigen (Text nicht umgewandelt, Verläufe, zu groß für den Rahmen) | Befehl `svg_lesen` → Design | E (Optionen X) |
 | Kürzeste Verbindung (Closest Join) | an/aus (aus = wie gezeichnet): jedes Objekt beginnt nahe dem vorigen Ende, Linien werden dafür umgedreht, geschlossene Formen gedreht – weniger Sprünge | `kuerzeste_verbindung` | X |
 | Einzelwerte überschreiben (ganzes Design) | z. B. Satin-Zugausgleich; Werte im Parameterkatalog | `einstellungen` | X |
+| **Vorlagen** (Templates, Handbuch Kap. 9) | **Datei → „Neu“** beginnt mit der Vorlage **Normal** (ohne gespeicherte Normal: Werkseinstellung; Rahmen und Stoff bleiben). **Datei → „Neu aus Vorlage …“**: Liste der Vorlagen (Einzelwerte, Stoff, Zahl der Objekte), Doppelklick oder „Neues Design“; löschen mit Rückfrage, bei Normal „Werkseinstellung“ (Revert). **Datei → „Als Vorlage speichern …“**: Name (vorhandene zur Auswahl, gleicher Name ersetzt mit Warnung), „Objekte mitspeichern“ (an, wenn das Design Objekte hat) – Name „Normal“ = Vorlage für „Neu“. Ablage im Datenordner (`vorlagen/<Name>.json`). Das Design merkt sich seine Vorlage (`vorlage`) | `vorlage`, Befehle `vorlagen_liste`, `vorlage_neu`, `vorlage_speichern`, `vorlage_loeschen` | E |
+| Werte zwischen Objekt, Design und Vorlage (Handbuch Kap. 9: default / current / existing) | Reiter **Einzelwerte**: Ebene Objekt → „**Als Werte des Designs übernehmen**“ (geänderte Werte des Objekts werden die des Designs); „**Designwerte auf Auswahl anwenden (n)**“ (eigene Werte der gewählten Objekte löschen); Ebene Design → „**In Vorlage speichern …**“ (nur die Einzelwerte in eine Vorlage, Vorschlag = Vorlage des Designs; Objekte der Vorlage bleiben) | `einstellungen` (Design/Objekt), Befehl `vorlage_speichern` mit `umfang: "werte"` | X |
 
 ## 3. Objekte (Sticharten)
 Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbinden`, `pfad` (Referenzpunkte: `[x, y]` =
@@ -126,6 +128,7 @@ Eckpunkt, `{"kurve": [x, y]}` = Kurvenpunkt, `geschlossen`). Alle Objekte: `farb
 | `alphabet_vorschau` | Bild eines Alphabets im Auswahldialog (Umrisse von „Abc“ oder eigenem Probetext) und Zeichenvorrat |
 | `motive_liste` | Auswahl des Motivsatzes (14 der CD + eigene, `eigen`) |
 | `motiv_speichern` | Anordnen → „Als Motiv speichern …“: Objekte als Motiv in einen eigenen Satz (Datenordner) |
+| `vorlagen_liste`, `vorlage_neu`, `vorlage_speichern`, `vorlage_loeschen` | Datei → „Neu“ (Vorlage Normal), „Neu aus Vorlage …“, „Als Vorlage speichern …“; Einzelwerte → „In Vorlage speichern …“ |
 | `rahmen_speichern`, `rahmen_loeschen` | Dialog „Eigene Rahmen“: speichern (gleicher Name ersetzt) bzw. löschen; Ergebnis = neue Rahmenliste |
 | `motiv_loeschen` | Dialog „Motiv wählen“: Motiv eines eigenen Satzes löschen (× mit Rückfrage) |
 | `objekt_werte` | Inspektor (Experte): für leere Felder des gewählten Objekts der Wert, mit dem der Kern rechnet, und die Herkunft (`stil` = Stoff/Design/Objekt-Einstellungen, `alphabet`, `muster`, `motivsatz`, `vorlage`, `schrift`) – steht grau im Feld statt „Stil“; Auto Spacing als Spanne („auto 0,40–0,51“) |
@@ -180,4 +183,4 @@ Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DA
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
 Auto Digitizer „Details“ (dünne Linien als Doppellauf/Satinlinie über die Mittellinie) · Bild als Vorlage hinter dem Design (Zauberstab direkt auf der Leinwand) · Ankerpunkt von Mirror-Merge/Kranz direkt auf der Leinwand ziehen · HUS-Dateien lesen (Beispieldatei fehlt) ·
-Vorlagen/Stile speichern · Kreuzstich.
+Hintergrundfarbe (auch in Vorlagen) · ART-Designs mit Objekten öffnen · Kreuzstich.

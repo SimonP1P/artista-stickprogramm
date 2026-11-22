@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Vorlagen (Nachtauftrag N8, 4b.14; Commit COMMIT)
+- **Neues Design-Feld `vorlage`** (Text, nur Anzeige/Vorschlag): Vorlage, aus der das Design entstand.
+- **Neue Befehle:** `vorlagen_liste` → `[{name, standard, werk, rahmen, stoff, garnkarte, objekte, werte}]` (Normal
+  immer vorn; `werk` = keine Datei), `vorlage_neu` `{name}` → Design (Kopie, Name „Design“), `vorlage_speichern`
+  `{design, name, umfang: "ganz"|"werte", objekte}` → Liste, `vorlage_loeschen` `{name}` → Liste (Normal löschen =
+  Werkseinstellung).
+- **Oberfläche (umgesetzt):** Datei → „Neu“ nimmt die Vorlage Normal (Rahmen/Stoff bleiben), neu „Neu aus Vorlage …“
+  und „Als Vorlage speichern …“ (`VorlagenDialog`, `arbeit.dialog = {art: "vorlagen", modus}`); Reiter Einzelwerte:
+  „Als Werte des Designs übernehmen“, „Designwerte auf Auswahl anwenden“, „In Vorlage speichern …“. Tauri: Ablage
+  `<Datenordner>/vorlagen`. `neu()` in `dateien.svelte.ts` ist jetzt `async`.
+
 ## 22.11.2026 – Eigene Rahmen (Nachtauftrag N7b, 4b.13; Commit 3722874)
 - **Neues Design-Feld `eigener_rahmen`** `{name, form: "rechteck"|"oval", breite, hoehe, gerade}` (mm; Oval: `hoehe` =
   Gesamthöhe, `gerade` = gerader Mittelteil, 0 = Ellipse). Ist es gesetzt, gilt es statt `rahmen`; `rahmen` trägt dann

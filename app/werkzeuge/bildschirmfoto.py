@@ -99,7 +99,7 @@ def main():
     for b in ("design_berechnen", "design_formen", "design_pruefen"):
         antworten[b] = api(stick, b, {"design": design})
     for b in ("alphabete_liste", "stoffe_liste", "garnkarten_liste", "design_schema", "fuellmuster_liste",
-              "step_muster_liste", "parameter_katalog", "motive_liste", "craft_vorlagen"):
+              "step_muster_liste", "parameter_katalog", "motive_liste", "craft_vorlagen", "vorlagen_liste"):
         antworten[b] = api(stick, b, {})
     antworten["ueberdeckungen"] = api(stick, "ueberdeckungen", {"design": design})
     if o.auswahl is not None:

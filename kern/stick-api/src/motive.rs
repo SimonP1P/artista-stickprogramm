@@ -27,7 +27,7 @@ impl Default for MotivZustand {
 }
 
 /// Dateiname eines Satzes: Buchstaben, Ziffern, Leerzeichen, - und _ bleiben, alles andere wird _.
-fn dateiname(name: &str) -> String {
+pub(crate) fn dateiname(name: &str) -> String {
     let s: String = name
         .trim()
         .chars()

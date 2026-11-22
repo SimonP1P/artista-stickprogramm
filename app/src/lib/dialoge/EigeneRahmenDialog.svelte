@@ -113,7 +113,7 @@
         <path d={mega.form.map(([x, y], j) => `${j ? "L" : "M"}${x} ${-y}`).join("") + "Z"} fill="none" stroke="var(--color-text-muted, #888)" stroke-width={sicht / 150} stroke-dasharray="{sicht / 40} {sicht / 60}" />
         <text x={-mega.breite / 2} y={-mega.hoehe / 2 - sicht / 50} font-size={sicht / 16} fill="var(--color-text-muted, #888)">{mega.name.replace(/^artista /, "")}</text>
       {/if}
-      {#if pfad}<path d={pfad} fill="color-mix(in srgb, var(--accent, #2563eb) 10%, transparent)" stroke="var(--accent, #2563eb)" stroke-width={sicht / 90} />{/if}
+      {#if pfad}<path d={pfad} fill="var(--color-accent-100)" stroke="var(--color-accent)" stroke-width={sicht / 90} />{/if}
     </svg>
   </div>
   {#if fehler}<div class="errbox" style="margin-top:10px">{fehler}</div>{/if}

@@ -971,3 +971,41 @@ fn eigene_rahmen() {
     assert_eq!(l.as_array().unwrap().len(), vorher);
     let _ = std::fs::remove_file(&datei);
 }
+
+#[test]
+fn vorlagen() {
+    let k = kontext();
+    let ordner = std::env::temp_dir().join(format!("stick_api_test_vorlagen_{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&ordner);
+    k.vorlagen_ablage(ordner.clone());
+    // ohne Datei: Normal als Werkseinstellung
+    let l = ausfuehren(&k, "vorlagen_liste", json!({})).unwrap();
+    assert_eq!(l.as_array().unwrap().len(), 1);
+    assert_eq!(l[0]["werk"], true);
+    let neu = ausfuehren(&k, "vorlage_neu", json!({"name": "normal"})).unwrap();
+    assert_eq!(neu["vorlage"], "Normal");
+    // ganzes Design als Vorlage, mit Objekten
+    let d = json!({"name": "Mütze", "stoff": "Knit Heavy Weight", "einstellungen": {"satin": {"zugausgleich": 0.3}},
+        "objekte": [{"art": "lauf", "punkte": [[0, 0], [10, 0]]}]});
+    let l = ausfuehren(&k, "vorlage_speichern", json!({"design": d, "name": "Mützen"})).unwrap();
+    let m = l.as_array().unwrap().iter().find(|v| v["name"] == "Mützen").unwrap();
+    assert_eq!((m["objekte"].as_u64(), m["werte"].as_u64()), (Some(1), Some(1)));
+    let n = ausfuehren(&k, "vorlage_neu", json!({"name": "Mützen"})).unwrap();
+    assert_eq!((n["name"].as_str(), n["vorlage"].as_str()), (Some("Design"), Some("Mützen")));
+    assert_eq!(n["einstellungen"]["satin"]["zugausgleich"], 0.3);
+    // nur Werte: Objekte der Vorlage bleiben, Werte werden ersetzt
+    let d2 = json!({"einstellungen": {"lauf": {"laenge": 2.0}}});
+    ausfuehren(&k, "vorlage_speichern", json!({"design": d2, "name": "Mützen", "umfang": "werte"})).unwrap();
+    let n = ausfuehren(&k, "vorlage_neu", json!({"name": "Mützen"})).unwrap();
+    assert_eq!(n["objekte"].as_array().unwrap().len(), 1);
+    assert_eq!(n["einstellungen"], json!({"lauf": {"laenge": 2.0}}));
+    // Normal mit Werten: steht vorn, nicht mehr Werkseinstellung; löschen = zurück
+    ausfuehren(&k, "vorlage_speichern", json!({"design": d2, "name": "Normal", "umfang": "werte"})).unwrap();
+    let l = ausfuehren(&k, "vorlagen_liste", json!({})).unwrap();
+    assert_eq!((l[0]["name"].as_str(), l[0]["werk"].as_bool()), (Some("Normal"), Some(false)));
+    let l = ausfuehren(&k, "vorlage_loeschen", json!({"name": "Normal"})).unwrap();
+    assert_eq!(l[0]["werk"], true);
+    // ungültiges Design wird nicht gespeichert
+    assert!(ausfuehren(&k, "vorlage_speichern", json!({"design": {"objekte": [{"art": "gibtsnicht"}]}, "name": "X"})).is_err());
+    let _ = std::fs::remove_dir_all(&ordner);
+}

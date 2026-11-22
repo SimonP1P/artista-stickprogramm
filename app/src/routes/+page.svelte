@@ -27,6 +27,7 @@
   import NummerDialog from "$lib/dialoge/NummerDialog.svelte";
   import RahmenDialog from "$lib/dialoge/RahmenDialog.svelte";
   import EigeneRahmenDialog from "$lib/dialoge/EigeneRahmenDialog.svelte";
+  import VorlagenDialog from "$lib/dialoge/VorlagenDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import {
@@ -103,9 +104,11 @@
   type Eintrag = { l: string; go?: () => void; kbd?: string; spaeter?: string } | "-";
   const dateiMenue: Eintrag[] = [
     { l: "Neu", go: neu, kbd: "Strg+N" },
+    { l: "Neu aus Vorlage …", go: () => (arbeit.dialog = { art: "vorlagen", modus: "neu" }) },
     { l: "Öffnen … (auch DST, PES, JEF, VP3, EXP)", go: oeffnen, kbd: "Strg+O" },
     { l: "Speichern", go: () => speichern(), kbd: "Strg+S" },
     { l: "Speichern unter …", go: () => speichern(true) },
+    { l: "Als Vorlage speichern …", go: () => (arbeit.dialog = { art: "vorlagen", modus: "speichern" }) },
     "-",
     { l: "Beispiel laden", go: beispiel },
     { l: "Bild umwandeln …", go: () => (arbeit.dialog = { art: "bild" }) },
@@ -668,6 +671,7 @@
   {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "motiv_speichern"}<MotivSpeichernDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "kopieren"}<KopierenDialog weg={arbeit.dialog.weg} schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "vorlagen"}<VorlagenDialog modus={arbeit.dialog.modus} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "eigene_rahmen"}<EigeneRahmenDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "nummer"}<NummerDialog vor={arbeit.dialog.vor} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "farben_mischen"}<FarbenMischenDialog objekt={arbeit.dialog.objekt} schliessen={() => (arbeit.dialog = null)} />{/if}

@@ -1636,6 +1636,10 @@ pub struct DesignJson {
     /// `gruppe`. Reihenfolge der Transformationen: je Objekt → je Gruppe (um die Mitte ihrer Objekte) → ganzes Design
     #[serde(default)]
     pub gruppen: std::collections::BTreeMap<String, GruppeJson>,
+    /// Vorlage, aus der das Design entstand (Handbuch Kap. 9: „the template from which the design was created“) – nur
+    /// zur Anzeige und als Vorschlag bei „Werte in Vorlage speichern“; die Werte selbst stehen in `einstellungen`
+    #[serde(default)]
+    pub vorlage: Option<String>,
 }
 
 /// Eine Gruppe von Objekten (Feld `gruppen` des Designs).

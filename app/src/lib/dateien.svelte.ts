@@ -31,15 +31,42 @@ function nachfragenVerwerfen(): boolean {
   return !arbeit.geaendert || confirm("Ungespeicherte Änderungen verwerfen?");
 }
 
-export function neu() {
+/** Vorlage holen (Kern `vorlage_neu`); fehlt sie, gilt das leere Design */
+async function ausVorlage(name: string): Promise<DesignJson> {
+  try {
+    return { ...leeresDesign(), ...(await kern("vorlage_neu", { name })) };
+  } catch {
+    return leeresDesign();
+  }
+}
+
+/** Neu = Kopie der Vorlage Normal (Handbuch Kap. 9); Rahmen und Stoff bleiben wie im bisherigen Design */
+export async function neu() {
   if (!nachfragenVerwerfen()) return;
-  const d = leeresDesign();
+  const d = await ausVorlage("Normal");
   // Rahmen und Stoff behalten – sie hängen an der Maschine bzw. am Material, nicht am Design
   d.rahmen = arbeit.design.rahmen ?? d.rahmen;
   if (arbeit.design.eigener_rahmen) d.eigener_rahmen = { ...arbeit.design.eigener_rahmen };
+  else delete d.eigener_rahmen;
   d.stoff = arbeit.design.stoff ?? d.stoff;
   arbeit.ersetzen(d, null, false);
   arbeit.auswahl = [];
+}
+
+/** Neu aus Vorlage („New“ mit Vorlagenliste): Werte, Stoff, Rahmen, Garnkarte und Objekte der Vorlage */
+export async function neuAusVorlage(name: string) {
+  if (!nachfragenVerwerfen()) return;
+  const v = await kern("vorlage_neu", { name });
+  const d: DesignJson = { ...leeresDesign(), ...v };
+  // ohne Angabe in der Vorlage: Rahmen und Stoff wie bisher
+  if (!v.rahmen) {
+    d.rahmen = arbeit.design.rahmen ?? d.rahmen;
+    if (arbeit.design.eigener_rahmen) d.eigener_rahmen = { ...arbeit.design.eigener_rahmen };
+  }
+  if (!v.stoff) d.stoff = arbeit.design.stoff ?? d.stoff;
+  arbeit.ersetzen(d, null, false);
+  arbeit.auswahl = [];
+  arbeit.zeige(`Neues Design aus der Vorlage „${name}“`, "ok");
 }
 
 export async function oeffnen() {
