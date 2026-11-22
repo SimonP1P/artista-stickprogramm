@@ -124,7 +124,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 ## J. Eigene Programme
 | Funktion | Stand | Bemerkung |
 |---|---|---|
-| Cross Stitch (Kap. 34–37: Raster, Auto Stitch, Magic Wand, Buchstaben, Ränder) | ⬜ | eigenes Modul, großer Umfang |
+| Cross Stitch (Kap. 34–37: Raster, Auto Stitch, Magic Wand, Buchstaben, Ränder) | 🟡 Objektart `kreuzstich` mit allen 10 Kreuzarten, Fäden, Kreuzgröße, Kontur; Bild → Kreuzstich (N9, Bericht 29); offen: Zellen malen, Kreuzstich-Buchstaben/-Ränder, Stichfolge des Originals messen | als Objektart statt eigenem Programm (Nutzer 22.11.) |
 | Portfolio (Dateiverwaltung, Kataloge) | 🖥 | Projekte in der Oberfläche |
 | Quilter | ➖ | eigenes Programm, Hilfe auf der CD defekt; erst bei Bedarf |
 | Ansicht, Zoom, Raster, Messen, Auswahl, Rückgängig, Stichvorschau | 🖥 | Oberfläche |

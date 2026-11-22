@@ -2,6 +2,7 @@
 
 pub mod blanket;
 pub mod handstich;
+pub mod kreuzstich;
 pub mod lauf;
 pub mod satin;
 pub mod stippling;

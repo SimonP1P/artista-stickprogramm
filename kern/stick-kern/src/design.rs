@@ -499,6 +499,13 @@ pub enum ObjektArt {
         laenge: f64,
         abstand: f64,
     },
+    /// Kreuzstich: Fläche und/oder einzelne Zellen auf festem Raster (`sticharten::kreuzstich`)
+    Kreuzstich {
+        umriss: Linie,
+        loecher: Vec<Linie>,
+        zellen: Vec<(i32, i32)>,
+        werte: crate::sticharten::kreuzstich::Werte,
+    },
     /// Blackwork Run: Linien (mit Eckmarken), automatisch zu Zügen verbunden (`blackwork.rs`)
     Blackwork {
         linien: Vec<(Linie, Vec<bool>)>,
@@ -1124,6 +1131,12 @@ impl Objekt {
             } => Ok(crate::sticharten::stippling::stippling(
                 umriss, loecher, *laenge, *abstand, &e.lauf, start,
             )),
+            ObjektArt::Kreuzstich {
+                umriss,
+                loecher,
+                zellen,
+                werte,
+            } => Ok(crate::sticharten::kreuzstich::kreuzstich(umriss, loecher, zellen, werte)),
             ObjektArt::Blackwork { linien, stich } => Ok(crate::blackwork::blackwork_wege(linien, start)
                 .into_iter()
                 .map(|(l, ecken)| stich.stiche(&l, &ecken, e))
@@ -2653,6 +2666,26 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
                 linie(FormArt::Loch, l, true);
             }
         }
+        ObjektArt::Kreuzstich {
+            umriss,
+            loecher,
+            zellen,
+            werte,
+        } => {
+            if umriss.len() >= 3 {
+                linie(FormArt::Umriss, umriss, true);
+                for l in loecher {
+                    linie(FormArt::Loch, l, true);
+                }
+            }
+            // einzelne Zellen ohne Fläche: ihr Rand (Rasterlinien) als Form
+            if !zellen.is_empty() {
+                let z: std::collections::BTreeSet<_> = zellen.iter().copied().collect();
+                for ring in crate::sticharten::kreuzstich::randlinien(&z, werte.raster) {
+                    linie(if umriss.len() >= 3 { FormArt::Linie } else { FormArt::Umriss }, &ring, true);
+                }
+            }
+        }
         ObjektArt::Satin { seite_a, seite_b, .. } => {
             linie(FormArt::SeiteA, seite_a, false);
             linie(FormArt::SeiteB, seite_b, false);
@@ -2841,6 +2874,17 @@ fn bereiche_pruefen(o: &ObjektJson) -> Result<(), String> {
         ObjektJson::Stippling(t) => {
             bereich("laenge", t.laenge, 0.5, 12.7)?;
             bereich("abstand", t.abstand, 0.5, 20.0)
+        }
+        ObjektJson::Kreuzstich(t) => {
+            use crate::sticharten::kreuzstich as k;
+            bereich("groesse", Some(t.groesse), k::RASTER_MIN, k::RASTER_MAX)?;
+            if ![2, 4, 6].contains(&t.faeden) {
+                return Err(format!("faeden: {} – erlaubt 2, 4 oder 6", t.faeden));
+            }
+            if t.umriss.is_none() && t.zellen.is_empty() {
+                return Err("Kreuzstich braucht eine Fläche (`umriss`) oder Zellen (`zellen`)".into());
+            }
+            Ok(())
         }
         ObjektJson::Blackwork(b) => {
             if b.linien.is_empty() {
@@ -3119,6 +3163,48 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     ecken,
                     geschlossen: t.geschlossen,
                     stich: stielstich_werte(t.breite, t.abstand, t.winkel, t.dreifach, t.staerke),
+                },
+            }
+        }
+        ObjektJson::Kreuzstich(t) => {
+            use crate::format::{KreuzArt as A, KreuzEcke as E, KreuzKontur as U};
+            use crate::sticharten::kreuzstich as k;
+            Objekt {
+                farbe: t.g.farbe,
+                name: t.g.name,
+                art: ObjektArt::Kreuzstich {
+                    umriss: t.umriss.as_ref().map(|u| u.punkte()).unwrap_or_default(),
+                    loecher: t.loecher.iter().map(|l| l.punkte()).collect(),
+                    zellen: t.zellen.iter().map(|z| (z[0], z[1])).collect(),
+                    werte: k::Werte {
+                        raster: t.groesse,
+                        art: match t.kreuz {
+                            A::Voll => k::Art::Voll,
+                            A::Dreiviertel => k::Art::Dreiviertel,
+                            A::Halb => k::Art::Halb,
+                            A::Viertel => k::Art::Viertel,
+                            A::Mini => k::Art::Mini,
+                            A::Aufrecht => k::Art::Aufrecht,
+                            A::Doppelt => k::Art::Doppelt,
+                            A::Laengs => k::Art::Laengs,
+                            A::Quer => k::Art::Quer,
+                            A::Knoten => k::Art::Knoten,
+                        },
+                        ecke: match t.ecke {
+                            E::UntenLinks => k::Ecke::UntenLinks,
+                            E::UntenRechts => k::Ecke::UntenRechts,
+                            E::ObenLinks => k::Ecke::ObenLinks,
+                            E::ObenRechts => k::Ecke::ObenRechts,
+                        },
+                        steigend: t.richtung == crate::format::KreuzRichtung::Steigend,
+                        durchgaenge: usize::from(t.faeden / 2).clamp(1, 3),
+                        fuellen: t.fuellen,
+                        umrandung: match t.kontur {
+                            U::Keine => k::Umrandung::Keine,
+                            U::Linie => k::Umrandung::Linie,
+                            U::Kreuz => k::Umrandung::Kreuz,
+                        },
+                    },
                 },
             }
         }

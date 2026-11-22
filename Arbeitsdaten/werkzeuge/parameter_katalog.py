@@ -28,7 +28,7 @@ STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Kni
           'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
 ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'satinflaeche', 'tatami', 'muster', 'blanket', 'applikation', 'text',
         'ttf', 'monogramm', 'knopfloch', 'motivlinie', 'motivfuellung', 'rueckstich', 'stielstich', 'stippling',
-        'blackwork']
+        'blackwork', 'kreuzstich']
 V = 'Vorschlag (eigene Festlegung)'
 
 # ---------------------------------------------------------------- Design
@@ -511,6 +511,39 @@ P('zauberstab.stichart', 'Zauberstab', 'Stichart des nächsten Klicks', 'Fläche
   'Lauf/Dreifach/Satinlinie', ebene='werkzeug', einheit='Auswahl', std='step',
   werte=['step', 'satin', 'auto', 'lauf', 'dreifach', 'satinlinie'],
   quelle='Handbuch S. 114–115 (Magic Wand: Stichart vor dem Klick)', modus='einfach')
+G = 'Kreuzstich'
+Q = 'Handbuch Kap. 34–37; Formulare BLOT.EXE/XSLang.DLL (Analyse_Teil3/29, hoch)'
+KS = ['kreuzstich']
+P('objekt.kreuzstich.kreuz', G, 'Kreuz', 'Art der Kreuze: voll, ¾, ½, ¼, Mini, aufrecht, doppelt, längs, quer, '
+  'Knoten', ebene='objekt', gilt=KS, o='kreuz', einheit='Auswahl', std='voll',
+  werte=['voll', 'dreiviertel', 'halb', 'viertel', 'mini', 'aufrecht', 'doppelt', 'laengs', 'quer', 'knoten'],
+  quelle=Q + ': Liste FillStyle', modus='einfach')
+P('objekt.kreuzstich.ecke', G, 'Ecke / Hälfte', 'Viertel der Zelle bei ¾, ¼, Mini; Seite bei länglichen Kreuzen',
+  ebene='objekt', gilt=KS, o='ecke', einheit='Auswahl', std='unten_links',
+  werte=['unten_links', 'unten_rechts', 'oben_links', 'oben_rechts'],
+  quelle=Q + ': „Select the quadrants to be filled“; Standard ' + V, modus='einfach')
+P('objekt.kreuzstich.richtung', G, 'Richtung', 'Halbkreuz „/“ oder „\\“', ebene='objekt', gilt=KS, o='richtung',
+  einheit='Auswahl', std='steigend', werte=['steigend', 'fallend'], quelle='Handbuch S. 308; Standard ' + V,
+  modus='einfach')
+P('objekt.kreuzstich.faeden', G, 'Fäden', '2 = einmal, 4 = zweimal, 6 = dreimal gestickt', ebene='objekt', gilt=KS,
+  o='faeden', einheit='Auswahl', std=2, werte=['2', '4', '6'], quelle='Handbuch S. 318 (Threads-Liste, hoch)',
+  modus='einfach')
+P('objekt.kreuzstich.groesse', G, 'Kreuzgröße', 'Kantenlänge eines Kreuzes (Fabric Count): 2,54 mm = 10 je Zoll',
+  ebene='objekt', gilt=KS, o='groesse', einheit='mm', std=2.54, bereich=[1, 8],
+  quelle='Handbuch S. 317–318 (Beispiel 10 je Zoll); Standard und Bereich ' + V, modus='einfach')
+P('objekt.kreuzstich.kontur', G, 'Kontur', 'keine, Linie auf dem Raster (Single Line) oder Kreuze entlang des '
+  'Umrisses (Current Cross Type)', ebene='objekt', gilt=KS, o='kontur', einheit='Auswahl', std='keine',
+  werte=['keine', 'linie', 'kreuz'], quelle=Q + ': Liste OutlineStyle', modus='einfach')
+P('objekt.kreuzstich.fuellen', G, 'Füllen', 'aus = nur die Kontur', ebene='objekt', gilt=KS, o='fuellen',
+  einheit='an/aus', std=True, quelle=Q + ': Fill an/aus')
+P('kreuzstich.uebergang', G, 'Übergänge', 'Verbindungen nur auf Rasterlinien an gestickten Kreuzen, bis 16 Kreuze '
+  'weit, sonst Sprung', ebene='werkzeug', einheit='Kreuze', std=16, quelle=V + ' (Stichfolge des Originals nicht '
+  'gemessen, Analyse_Teil3/29 §2)', modus='automatisch')
+P('kreuzstich.knoten', G, 'Französischer Knoten', 'sechs Stiche dieser Länge um die Zellmitte', ebene='werkzeug',
+  einheit='mm', std=0.5, quelle=V, modus='automatisch')
+P('kreuzstich_bild.farben', G, 'Farben (Bild → Kreuzstich)', 'höchstens so viele Farben; ein Bildpunkt = ein Kreuz',
+  ebene='werkzeug', einheit='Anzahl', std=8, bereich=[2, 64],
+  quelle='Formular TAutoStitchImageForm („Restricted“ 2 … 255); Standard und Obergrenze ' + V, modus='einfach')
 G = 'Effekte'
 Q = 'IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23)'
 FX = ['tatami', 'muster', 'satin', 'satinlinie', 'satinflaeche']

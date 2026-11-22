@@ -1009,3 +1009,61 @@ fn vorlagen() {
     assert!(ausfuehren(&k, "vorlage_speichern", json!({"design": {"objekte": [{"art": "gibtsnicht"}]}, "name": "X"})).is_err());
     let _ = std::fs::remove_dir_all(&ordner);
 }
+
+#[test]
+fn kreuzstich() {
+    let k = kontext();
+    // Fläche 10 × 10 mm auf Raster 2,5 mm = 16 Kreuze; dazu zwei einzelne Zellen
+    let d = json!({"objekte": [
+        {"art": "kreuzstich", "umriss": [[0, 0], [10, 0], [10, 10], [0, 10]], "groesse": 2.5, "zellen": [[10, 10], [11, 10]]},
+        {"art": "kreuzstich", "zellen": [[-3, -3]], "kreuz": "halb", "richtung": "fallend", "faeden": 4, "kontur": "linie"},
+        {"art": "tatami", "umriss": [[20, 0], [30, 0], [30, 10], [20, 10]]}
+    ]});
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap();
+    assert!(e["stiche"].as_array().unwrap().len() > 30);
+    // Formen: Umriss + Rand der einzelnen Zellen
+    let f = ausfuehren(&k, "design_formen", json!({ "design": d })).unwrap();
+    assert!(f.as_array().unwrap().len() >= 2);
+    // ungültig: Fäden 3, weder Fläche noch Zellen
+    let falsch = json!({"objekte": [{"art": "kreuzstich", "zellen": [[0, 0]], "faeden": 3}]});
+    assert!(ausfuehren(&k, "design_berechnen", json!({ "design": falsch })).is_err());
+    let leer = json!({"objekte": [{"art": "kreuzstich"}]});
+    assert!(ausfuehren(&k, "design_berechnen", json!({ "design": leer })).is_err());
+    // Stichart wechseln: Tatami → Kreuzstich und zurück
+    let r = ausfuehren(&k, "stichart_aendern", json!({"design": d, "objekt": 2, "art": "kreuzstich"})).unwrap();
+    assert_eq!(r["objekt"]["art"], "kreuzstich");
+    assert!(r["objekt"]["umriss"].is_array());
+    let d2 = json!({"objekte": [r["objekt"].clone()]});
+    let r2 = ausfuehren(&k, "stichart_aendern", json!({"design": d2, "objekt": 0, "art": "tatami"})).unwrap();
+    assert_eq!(r2["objekt"]["art"], "tatami");
+    // Drehen um 90°: Zellen bleiben auf dem Raster
+    let gedreht = json!({"objekte": [{"art": "kreuzstich", "zellen": [[0, 0], [1, 0], [2, 0]], "transform": {"drehen": 90}}]});
+    assert!(ausfuehren(&k, "design_berechnen", json!({ "design": gedreht })).is_ok());
+
+    // Bild → Kreuzstich: weiß mit rotem und blauem Block
+    let pfad = std::env::temp_dir().join(format!("stick_kreuz_test_{}.png", std::process::id()));
+    let mut b = image::RgbaImage::from_pixel(40, 20, image::Rgba([255, 255, 255, 255]));
+    for y in 4..16u32 {
+        for x in 4..16u32 {
+            b.put_pixel(x, y, image::Rgba([210, 20, 20, 255]));
+        }
+        for x in 24..36u32 {
+            b.put_pixel(x, y, image::Rgba([20, 40, 200, 255]));
+        }
+    }
+    b.save(&pfad).unwrap();
+    let p = pfad.to_string_lossy().to_string();
+    let v = ausfuehren(&k, "kreuzstich_vorschau", json!({"pfad": p, "breite": 50.8, "farben": 3})).unwrap();
+    assert_eq!(v["breite_px"], 20);
+    assert_eq!(v["hoehe_px"], 10);
+    let r = ausfuehren(&k, "kreuzstich_bild", json!({"pfad": p, "breite": 50.8, "farben": 3})).unwrap();
+    let _ = std::fs::remove_file(&pfad);
+    assert_eq!(r["spalten"], 20);
+    assert_eq!(r["farben"], 2, "weißer Hintergrund fällt weg: {}", r["design"]);
+    let o = r["design"]["objekte"].as_array().unwrap();
+    assert!(o.iter().all(|x| x["art"] == "kreuzstich"));
+    let kreuze = r["kreuze"].as_u64().unwrap();
+    assert!((60..=80).contains(&kreuze), "{kreuze}");
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": r["design"] })).unwrap();
+    assert!(!e["stiche"].as_array().unwrap().is_empty());
+}

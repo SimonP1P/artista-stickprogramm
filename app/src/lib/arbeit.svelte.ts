@@ -40,7 +40,7 @@ export type OffenerDialog =
       rahmen?: number;
     }
   | { art: "rahmen"; objekt: number }
-  | { art: "bild"; pfad?: string; modus?: "auto" | "zauber" | "photo" }
+  | { art: "bild"; pfad?: string; modus?: "auto" | "zauber" | "photo" | "kreuz" }
   | { art: "svg" }
   | { art: "nach_farbe" }
   | { art: "muster"; objekt: number }
@@ -107,9 +107,9 @@ export function objektName(o: ObjektJson | undefined, i: number): string {
 
 /** Objektarten, deren Stichart sich wechseln lässt (Kern `stichart_aendern`) */
 /** Objektarten mit Fläche: dort wirkt `umrandung` (Kern: `aussparen::bedeckt`); Linien haben keine */
-export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation", "stippling"];
+export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation", "stippling", "kreuzstich"];
 
-export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich", "tatami", "satinflaeche", "muster", "motivfuellung", "stippling"];
+export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich", "tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich"];
 /** Standardname je Stichart (neue Objekte); ein Objekt mit Standardnamen bekommt beim Wechsel den neuen */
 export const STANDARD_NAME: Record<string, string> = {
   lauf: "Laufstich",
@@ -124,6 +124,7 @@ export const STANDARD_NAME: Record<string, string> = {
   rueckstich: "Rückstich",
   stielstich: "Stielstich",
   stippling: "Stippling",
+  kreuzstich: "Kreuzstich",
 };
 const STANDARD_NAMEN = Object.values(STANDARD_NAME);
 

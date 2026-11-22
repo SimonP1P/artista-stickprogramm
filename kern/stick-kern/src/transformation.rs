@@ -157,6 +157,20 @@ impl Transformation {
 }
 
 /// Alle Formpunkte eines Objekts (für den Bezugspunkt).
+/// Einzelne Kreuzstich-Zellen abbilden: Mitte abbilden, auf die nächste Zelle runden (doppelte entfallen).
+fn zellen_abbilden(zellen: &[(i32, i32)], r: f64, f: impl Fn(Punkt) -> Punkt) -> Vec<(i32, i32)> {
+    let mut out: Vec<(i32, i32)> = zellen
+        .iter()
+        .map(|&(i, j)| {
+            let q = f(crate::geometrie::p((f64::from(i) + 0.5) * r, (f64::from(j) + 0.5) * r));
+            ((q.x / r).floor() as i32, (q.y / r).floor() as i32)
+        })
+        .collect();
+    let mut gesehen = std::collections::HashSet::new();
+    out.retain(|z| gesehen.insert(*z));
+    out
+}
+
 pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
     match art {
         ObjektArt::Lauf { punkte, .. }
@@ -175,6 +189,20 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
         ObjektArt::Stippling { umriss, loecher, .. } => {
             out.extend(umriss);
             out.extend(loecher.iter().flatten());
+        }
+        ObjektArt::Kreuzstich {
+            umriss,
+            loecher,
+            zellen,
+            werte,
+        } => {
+            out.extend(umriss);
+            out.extend(loecher.iter().flatten());
+            let r = werte.raster;
+            for &(i, j) in zellen {
+                out.push(crate::geometrie::p(f64::from(i) * r, f64::from(j) * r));
+                out.push(crate::geometrie::p(f64::from(i + 1) * r, f64::from(j + 1) * r));
+            }
         }
         ObjektArt::Satin { seite_a, seite_b, .. } => {
             out.extend(seite_a);
@@ -380,6 +408,19 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
         ObjektArt::Blackwork { linien, stich } => ObjektArt::Blackwork {
             linien: linien.iter().map(|(l, e)| (m.linie(l), e.clone())).collect(),
             stich: stich.clone(),
+        },
+        // Kreuzstich: das Raster bleibt fest; die Fläche wird abgebildet, einzelne Zellen über ihre Mitte
+        // (gerundet auf die nächste Zelle – eigene Festlegung)
+        ObjektArt::Kreuzstich {
+            umriss,
+            loecher,
+            zellen,
+            werte,
+        } => ObjektArt::Kreuzstich {
+            umriss: m.linie(umriss),
+            loecher: loecher.iter().map(|l| m.linie(l)).collect(),
+            zellen: zellen_abbilden(zellen, werte.raster, |q| m.punkt(q)),
+            werte: werte.clone(),
         },
         ObjektArt::Stippling {
             umriss,
@@ -615,6 +656,17 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
                 })
                 .collect(),
             stich: stich.clone(),
+        },
+        ObjektArt::Kreuzstich {
+            umriss,
+            loecher,
+            zellen,
+            werte,
+        } => ObjektArt::Kreuzstich {
+            umriss: lin(umriss, true),
+            loecher: loecher.iter().map(|l| lin(l, true)).collect(),
+            zellen: zellen_abbilden(zellen, werte.raster, f),
+            werte: werte.clone(),
         },
         ObjektArt::Stippling {
             umriss,

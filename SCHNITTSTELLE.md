@@ -334,6 +334,23 @@ Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden 
 | `loecher` | PunktAngabe[] |  | – |  |
 | `umriss` | PunktAngabe | ja | – |  |
 
+### `kreuzstich` – Kreuzstich auf einem Raster (Fläche und/oder einzelne Zellen)
+
+**Kreuzstich** (Handbuch Kap. 34–37, Programmteil „Cross Stitch“ des Originals): Kreuze auf einem festen Raster aus Quadraten. Gefüllt werden die Zellen, deren Mitte in der Fläche liegt, dazu einzelne Zellen aus `zellen`. Das Raster liegt fest am Design (Zelle [i, j] = i·groesse … (i+1)·groesse); Verschieben und Drehen bewegen die Fläche, die Kreuze bleiben auf dem Raster.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `ecke` | KreuzEcke |  | `"unten_links"` | Viertel bzw. Seite für Viertel-, Dreiviertel-, Mini- und längliche Kreuze |
+| `faeden` | number |  | `2` | Fäden („Threads“) 2, 4 oder 6 = jedes Kreuz einmal, zweimal, dreimal gestickt |
+| `fuellen` | boolean |  | `true` | Fläche füllen („Fill“); aus = nur der Umriss |
+| `groesse` | number |  | `2.54` | Kreuzgröße = Rasterweite (Kantenlänge eines Kreuzes) in mm, 1 … 8; Standard 2,54 = 10 Kreuze je Zoll („Fabric Count“ des Originals) |
+| `kontur` | KreuzKontur |  | `"keine"` | Kontur („Outline“): keine, Linie auf dem Raster, Kreuze entlang des Umrisses |
+| `kreuz` | KreuzArt |  | `"voll"` | Art des Kreuzes (Standard voll) |
+| `loecher` | PunktAngabe[] |  | – |  |
+| `richtung` | KreuzRichtung |  | `"steigend"` | Halbkreuz: „/“ oder „\“ |
+| `umriss` | PunktAngabe |  | – | Fläche (ohne Fläche: nur die Zellen aus `zellen`) |
+| `zellen` | number[][] |  | `[]` | einzelne Zellen [Spalte, Reihe] zusätzlich zur Fläche (Spalte i = x von i·groesse bis (i+1)·groesse) |
+
 ### `blackwork` – Blackwork Run: mehrere Linien als ein automatisch geordneter Zug
 
 Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** Objekt; die Reihenfolge ergibt sich automatisch (ein Zug je zusammenhängendem Netz, Abschnitte nur doppelt, wo es nötig ist, ein Ein- und ein Ausstich). Jede Linie bleibt einzeln formbar. Werte der Stichart wie bei `lauf`, `rueckstich`, `stielstich`.
@@ -442,6 +459,37 @@ PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Ab
 - `"auge_eckig"` – Keyhole Square (Augenknopfloch, eckiges Auge)
 - `"auge_rund"` – Keyhole Round (Augenknopfloch, rundes Auge)
 - `"auge_spitz"` – Keyhole Point (Augenknopfloch, spitzes Auge)
+
+**KreuzArt** – Art des Kreuzes (Liste „FillStyle“ des Kreuzstich-Programms des Originals)
+
+- `"voll"` – Full Cross: zwei Diagonalen
+- `"dreiviertel"` – 3/4 Cross: Viertel zur Mitte + langer Schenkel
+- `"halb"` – 1/2 Cross: eine Diagonale (Feld `richtung`)
+- `"viertel"` – 1/4 Cross: von der Ecke zur Mitte (`ecke`)
+- `"mini"` – Mini Cross: kleines Kreuz im Viertel (`ecke`)
+- `"aufrecht"` – Upright Cross: senkrecht + waagrecht („+“)
+- `"doppelt"` – Double Cross: Kreuz + aufrechtes Kreuz (Stern)
+- `"laengs"` – Elongated Vertical Cross: Kreuz in der linken oder rechten Hälfte (Seite von `ecke`)
+- `"quer"` – Elongated Horizontal Cross: Kreuz in der unteren oder oberen Hälfte (Seite von `ecke`)
+- `"knoten"` – French Knot: kleiner Knoten in der Zellmitte
+
+**KreuzEcke** – Ecke bzw. Viertel einer Zelle („Select the quadrants to be filled“)
+
+- `"unten_links"`
+- `"unten_rechts"`
+- `"oben_links"`
+- `"oben_rechts"`
+
+**KreuzKontur** – Kontur eines Kreuzstich-Objekts (Liste „OutlineStyle“ des Originals)
+
+- `"keine"` – kein Umriss
+- `"linie"` – Single Line: Laufstich auf den Rasterlinien um die Kreuze
+- `"kreuz"` – Current Cross Type: Kreuze auf allen Zellen, durch die der Umriss läuft
+
+**KreuzRichtung** – Richtung des Halbkreuzes
+
+- `"steigend"` – „/“
+- `"fallend"` – „\“
 
 **MonogrammRahmen** – Rahmen um ein Monogramm
 
@@ -734,6 +782,8 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `google_schriften_liste` | Leer | GoogleKatalog | Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“ |
 | `in_knoten_umwandeln` | ObjektEingabe | ObjektWert | Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug |
 | `kranz` | KranzEingabe | KopienErgebnis | Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt |
+| `kreuzstich_bild` | KreuzstichBildEingabe | KreuzstichBildErgebnis | Bild → Kreuzstich: neues Design, je Farbe ein Kreuzstich-Objekt mit seinen Zellen |
+| `kreuzstich_vorschau` | KreuzstichBildEingabe | BildVorschau | Bild → Kreuzstich wie „Auto Stitch Image“: Vorschau auf dem Raster (ein Bildpunkt je Kreuz) und Farbliste |
 | `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen |
 | `maschine_lesen` | LeseEingabe | GelesenInfo | Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen |
 | `maschine_liste` | Anschluss | ListenInfo | Designliste der Maschine – nur lesen |

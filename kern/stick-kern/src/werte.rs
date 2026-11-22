@@ -131,6 +131,11 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
             w.push(wert("abstand_min", json!(ps::ABSTAND_MIN), "vorlage"));
             w.push(wert("abstand_max", json!(ps::ABSTAND_MAX), "vorlage"));
         }
+        ObjektJson::Kreuzstich(_) => {
+            use crate::sticharten::kreuzstich as k;
+            w.push(wert("groesse", json!(k::RASTER), "handbuch"));
+            w.push(wert("faeden", json!(2), "handbuch"));
+        }
         ObjektJson::Stippling(_) => {
             use crate::sticharten::stippling as s;
             w.push(wert("laenge", json!(s::LAENGE), "handbuch"));

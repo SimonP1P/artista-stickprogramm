@@ -1072,6 +1072,126 @@ pub struct StipplingJson {
 }
 
 auswahl! {
+    /// Art des Kreuzes (Liste „FillStyle“ des Kreuzstich-Programms des Originals)
+    pub enum KreuzArt {
+        /// Full Cross: zwei Diagonalen
+        Voll = "voll",
+        /// 3/4 Cross: Viertel zur Mitte + langer Schenkel
+        Dreiviertel = "dreiviertel",
+        /// 1/2 Cross: eine Diagonale (Feld `richtung`)
+        Halb = "halb",
+        /// 1/4 Cross: von der Ecke zur Mitte (`ecke`)
+        Viertel = "viertel",
+        /// Mini Cross: kleines Kreuz im Viertel (`ecke`)
+        Mini = "mini",
+        /// Upright Cross: senkrecht + waagrecht („+“)
+        Aufrecht = "aufrecht",
+        /// Double Cross: Kreuz + aufrechtes Kreuz (Stern)
+        Doppelt = "doppelt",
+        /// Elongated Vertical Cross: Kreuz in der linken oder rechten Hälfte (Seite von `ecke`)
+        Laengs = "laengs",
+        /// Elongated Horizontal Cross: Kreuz in der unteren oder oberen Hälfte (Seite von `ecke`)
+        Quer = "quer",
+        /// French Knot: kleiner Knoten in der Zellmitte
+        Knoten = "knoten",
+    }
+}
+
+auswahl! {
+    /// Ecke bzw. Viertel einer Zelle („Select the quadrants to be filled“)
+    pub enum KreuzEcke {
+        UntenLinks = "unten_links",
+        UntenRechts = "unten_rechts",
+        ObenLinks = "oben_links",
+        ObenRechts = "oben_rechts",
+    }
+}
+
+auswahl! {
+    /// Richtung des Halbkreuzes
+    pub enum KreuzRichtung {
+        /// „/“
+        Steigend = "steigend",
+        /// „\“
+        Fallend = "fallend",
+    }
+}
+
+auswahl! {
+    /// Kontur eines Kreuzstich-Objekts (Liste „OutlineStyle“ des Originals)
+    pub enum KreuzKontur {
+        /// kein Umriss
+        Keine = "keine",
+        /// Single Line: Laufstich auf den Rasterlinien um die Kreuze
+        Linie = "linie",
+        /// Current Cross Type: Kreuze auf allen Zellen, durch die der Umriss läuft
+        Kreuz = "kreuz",
+    }
+}
+
+fn kreuz_art() -> KreuzArt {
+    KreuzArt::Voll
+}
+fn kreuz_ecke() -> KreuzEcke {
+    KreuzEcke::UntenLinks
+}
+fn kreuz_richtung() -> KreuzRichtung {
+    KreuzRichtung::Steigend
+}
+fn kreuz_kontur() -> KreuzKontur {
+    KreuzKontur::Keine
+}
+fn kreuz_raster() -> f64 {
+    crate::sticharten::kreuzstich::RASTER
+}
+fn kreuz_faeden() -> u8 {
+    2
+}
+fn wahr() -> bool {
+    true
+}
+
+/// **Kreuzstich** (Handbuch Kap. 34–37, Programmteil „Cross Stitch“ des Originals): Kreuze auf einem festen Raster aus
+/// Quadraten. Gefüllt werden die Zellen, deren Mitte in der Fläche liegt, dazu einzelne Zellen aus `zellen`. Das Raster
+/// liegt fest am Design (Zelle [i, j] = i·groesse … (i+1)·groesse); Verschieben und Drehen bewegen die Fläche, die
+/// Kreuze bleiben auf dem Raster.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct KreuzstichJson {
+    /// Fläche (ohne Fläche: nur die Zellen aus `zellen`)
+    #[serde(default)]
+    pub umriss: Option<PunktAngabe>,
+    #[serde(default)]
+    pub loecher: Vec<PunktAngabe>,
+    /// einzelne Zellen [Spalte, Reihe] zusätzlich zur Fläche (Spalte i = x von i·groesse bis (i+1)·groesse)
+    #[serde(default)]
+    pub zellen: Vec<[i32; 2]>,
+    /// Kreuzgröße = Rasterweite (Kantenlänge eines Kreuzes) in mm, 1 … 8; Standard 2,54 = 10 Kreuze je Zoll
+    /// („Fabric Count“ des Originals)
+    #[serde(default = "kreuz_raster")]
+    pub groesse: f64,
+    /// Art des Kreuzes (Standard voll)
+    #[serde(default = "kreuz_art")]
+    pub kreuz: KreuzArt,
+    /// Viertel bzw. Seite für Viertel-, Dreiviertel-, Mini- und längliche Kreuze
+    #[serde(default = "kreuz_ecke")]
+    pub ecke: KreuzEcke,
+    /// Halbkreuz: „/“ oder „\“
+    #[serde(default = "kreuz_richtung")]
+    pub richtung: KreuzRichtung,
+    /// Fäden („Threads“) 2, 4 oder 6 = jedes Kreuz einmal, zweimal, dreimal gestickt
+    #[serde(default = "kreuz_faeden")]
+    pub faeden: u8,
+    /// Fläche füllen („Fill“); aus = nur der Umriss
+    #[serde(default = "wahr")]
+    pub fuellen: bool,
+    /// Kontur („Outline“): keine, Linie auf dem Raster, Kreuze entlang des Umrisses
+    #[serde(default = "kreuz_kontur")]
+    pub kontur: KreuzKontur,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+auswahl! {
     /// Stichart eines Blackwork-Zugs
     pub enum BlackworkStich {
         /// Laufstich (Standard)
@@ -1520,6 +1640,8 @@ pub enum ObjektJson {
     Stielstich(StielstichJson),
     /// Stippling (mäandernde Laufstichfüllung)
     Stippling(StipplingJson),
+    /// Kreuzstich auf einem Raster (Fläche und/oder einzelne Zellen)
+    Kreuzstich(KreuzstichJson),
     /// Blackwork Run: mehrere Linien als ein automatisch geordneter Zug
     Blackwork(BlackworkJson),
     /// PhotoSnap: Foto als Reihen von Zickzackstichen mit wechselndem Abstand (Befehl `photosnap` legt es an)
@@ -1549,6 +1671,7 @@ impl ObjektJson {
             ObjektJson::Rueckstich(x) => &x.g,
             ObjektJson::Stielstich(x) => &x.g,
             ObjektJson::Stippling(x) => &x.g,
+            ObjektJson::Kreuzstich(x) => &x.g,
             ObjektJson::Blackwork(x) => &x.g,
             ObjektJson::Photosnap(x) => &x.g,
             ObjektJson::Stiche(x) => &x.g,

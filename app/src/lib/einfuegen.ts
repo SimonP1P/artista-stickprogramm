@@ -46,7 +46,7 @@ export const BESONDERE = ["applikation", "knopfloch"] as const;
 
 /** Sticharten für Linien („Outline“) und Flächen („Fill“) – wie `UMRISS_ARTEN`/`FUELL_ARTEN` im Kern */
 export const UMRISS = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich"] as const;
-export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling"] as const;
+export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich"] as const;
 export const STICHART_NAME: Record<string, string> = {
   lauf: "Laufstich",
   dreifach: "Dreifachstich",
@@ -60,6 +60,7 @@ export const STICHART_NAME: Record<string, string> = {
   rueckstich: "Rückstich",
   stielstich: "Stielstich",
   stippling: "Stippling",
+  kreuzstich: "Kreuzstich",
 };
 export const STICHART_HILFE: Record<string, string> = {
   lauf: "eine Stichreihe – dünne Linien",
@@ -74,6 +75,7 @@ export const STICHART_HILFE: Record<string, string> = {
   rueckstich: "feine Linie wie von Hand – Vor- und Rückstiche",
   stielstich: "Kordel aus schrägen Stichen – Stiele, Ranken",
   stippling: "mäandernde Laufstichlinie über die Fläche",
+  kreuzstich: "Kreuze auf einem Raster wie von Hand gestickt",
 };
 export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string };
 
@@ -137,6 +139,8 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
       return { art, name: "Stielstich", punkte: linie, farbe };
     case "stippling":
       return { art, name: "Stippling", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
+    case "kreuzstich":
+      return { art, name: "Kreuzstich", umriss: { kreis: { mitte: [0, 0], radius: 15 } }, farbe };
     case "applikation":
       return { art, name: "Applikation", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
     case "knopfloch":

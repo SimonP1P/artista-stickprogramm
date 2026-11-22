@@ -22,6 +22,7 @@ pub mod befehle;
 pub mod anordnen;
 pub mod automatik;
 pub mod craft;
+pub mod kreuzstich;
 pub mod effekte;
 pub mod erzeugen;
 pub mod maschine;
@@ -433,6 +434,10 @@ befehle! {
     zauberstab: automatik::ZauberstabEingabe => automatik::ZauberstabErgebnis,
     /// PhotoSnap: Foto als Reihen von Zickzackstichen (einfarbig oder vier Farblagen) – neues Design mit einem Objekt
     photosnap: automatik::PhotosnapEingabe => automatik::PhotosnapErgebnis,
+    /// Bild → Kreuzstich wie „Auto Stitch Image“: Vorschau auf dem Raster (ein Bildpunkt je Kreuz) und Farbliste
+    kreuzstich_vorschau: kreuzstich::KreuzstichBildEingabe => befehle::BildVorschau,
+    /// Bild → Kreuzstich: neues Design, je Farbe ein Kreuzstich-Objekt mit seinen Zellen
+    kreuzstich_bild: kreuzstich::KreuzstichBildEingabe => kreuzstich::KreuzstichBildErgebnis,
     /// SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design
     svg_lesen: befehle::SvgEingabe => befehle::SvgErgebnis,
     /// Fremde Stickdatei öffnen (DST, PES, PEC, JEF, VP3, EXP): neues Design mit festen Stichen je Farbe (Objektart
@@ -478,6 +483,7 @@ mod befehle_aller {
     pub use crate::anordnen::*;
     pub use crate::automatik::*;
     pub use crate::craft::*;
+    pub use crate::kreuzstich::*;
     pub use crate::effekte::*;
     pub use crate::motive::*;
     pub use crate::rahmen::*;

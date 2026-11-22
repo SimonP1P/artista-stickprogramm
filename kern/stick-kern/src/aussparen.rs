@@ -88,6 +88,22 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
             ..
         } if punkte.len() >= 3 => flaeche(punkte, &[]),
         ObjektArt::Stippling { umriss, loecher, .. } => flaeche(umriss, loecher),
+        // Kreuzstich: bedeckt sind die Zellen (Rand auf dem Raster; außen gegen, Löcher mit dem Uhrzeiger)
+        ObjektArt::Kreuzstich {
+            umriss,
+            loecher,
+            zellen,
+            werte,
+        } => {
+            use crate::sticharten::kreuzstich as k;
+            k::randlinien(&k::alle_zellen(umriss, loecher, zellen, werte), werte.raster)
+                .iter()
+                .map(|r| {
+                    let aussen = flaeche_vorzeichen(r) > 0.0;
+                    kontur(&versatz_ring(r, if aussen { u } else { -u }, 3.0), aussen)
+                })
+                .collect()
+        }
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| bedeckt(&t.art, u)).collect(),
         // Knopfloch: Loch = mittlerer Umriss (Merge Buttonhole, `knopfloch.rs`), sonst die Teile
         ObjektArt::Kette { loch: Some(l), .. } => flaeche(l, &[]),

@@ -196,6 +196,7 @@ fn umrisse(art: &ObjektArt) -> Vec<&Linie> {
         | ObjektArt::Musterfuellung { umriss, .. }
         | ObjektArt::Wendefuellung { umriss, .. }
         | ObjektArt::Stippling { umriss, .. } => vec![umriss],
+        ObjektArt::Kreuzstich { umriss, .. } if umriss.len() >= 3 => vec![umriss],
         ObjektArt::Gruppe { umrisse, .. } => umrisse.iter().collect(),
         ObjektArt::Blackwork { linien, .. } => linien.iter().map(|(l, _)| l).collect(),
         _ => Vec::new(),

@@ -114,6 +114,7 @@
     { l: "Bild umwandeln …", go: () => (arbeit.dialog = { art: "bild" }) },
     { l: "Zauberstab (Flächen im Bild anklicken) …", go: () => (arbeit.dialog = { art: "bild", modus: "zauber" }) },
     { l: "PhotoSnap (Foto) …", go: () => (arbeit.dialog = { art: "bild", modus: "photo" }) },
+    { l: "Kreuzstich aus Bild …", go: () => (arbeit.dialog = { art: "bild", modus: "kreuz" }) },
     { l: "SVG einlesen …", go: () => (arbeit.dialog = { art: "svg" }) },
     "-",
     { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
@@ -419,6 +420,7 @@
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "zauber" }))}><Icon d={IC.zauberstab} />Zauberstab …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "photo" }))}><Icon d={ART.photosnap[1]} />PhotoSnap (Foto) …</button>
+          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "kreuz" }))}><Icon d={ART.kreuzstich[1]} />Kreuzstich aus Bild …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
           <button class="mi" role="menuitem" title="Gespeichertes Design (JSON) oder fremde Stickdatei (DST, PES, JEF, VP3, EXP) als ein Element" onclick={() => waehle(designEinfuegen)}><Icon d={ART.stiche[1]} />Design oder Stickdatei einfügen …</button>
         </div>

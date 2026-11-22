@@ -15,6 +15,22 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Kreuzstich (Nachtauftrag N9, 4b.15; Commit COMMIT)
+- **Neue Objektart `kreuzstich`:** `umriss`/`loecher` (wahlweise), `zellen` ([[Spalte, Reihe]], zusätzlich),
+  `kreuz` (`voll` … `knoten`, 10 Arten), `ecke` (`unten_links` … `oben_rechts`), `richtung` (`steigend`/`fallend`),
+  `faeden` (2/4/6), `groesse` (mm, Standard 2,54), `kontur` (`keine`/`linie`/`kreuz`), `fuellen` (an). Zelle [i, j] =
+  x von i·groesse bis (i+1)·groesse. Formen (`design_formen`): Umriss und Löcher; ohne Fläche der Rand der Zellen.
+- **`stichart_aendern`** kennt `kreuzstich` als Füllung (Löcher gehen mit).
+- **Neue Befehle:** `kreuzstich_vorschau` (Eingabe `{pfad, breite, groesse, farben, weglassen, garnkarte, garnfarben}`,
+  Ausgabe wie `bild_vorschau`) und `kreuzstich_bild` (dazu `kreuz`, `faeden`, `rahmen` → `{design, spalten, reihen,
+  kreuze, farben, breite, hoehe}`).
+- `objekt_werte` liefert für `kreuzstich` `groesse` (2,54) und `faeden` (2), Herkunft `handbuch`.
+- **Oberfläche (umgesetzt):** „Kreuzstich“ in der Liste Füllung (`FUELLUNG`, `WECHSELBAR`, `MIT_FLAECHE`, Symbol
+  `ART.kreuzstich`); Inspektor oben Kreuz, Ecke/Hälfte (nur Teilkreuze), Richtung (nur Halbkreuz), Fäden,
+  Kreuzgröße, Kontur; `zellen` nicht im Inspektor. Dialog „Bild umwandeln“ mit viertem Weg **Kreuzstich**
+  (`arbeit.dialog = {art: "bild", modus: "kreuz"}`, Menü Datei und Einfügen „Kreuzstich aus Bild …“). Offen:
+  Zellen mit der Maus malen.
+
 ## 22.11.2026 – Vorlagen (Nachtauftrag N8, 4b.14; Commit 7a996a8)
 - **Neues Design-Feld `vorlage`** (Text, nur Anzeige/Vorschlag): Vorlage, aus der das Design entstand.
 - **Neue Befehle:** `vorlagen_liste` → `[{name, standard, werk, rahmen, stoff, garnkarte, objekte, werte}]` (Normal

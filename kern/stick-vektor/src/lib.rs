@@ -462,6 +462,11 @@ fn kleine_zuschlagen(z: &mut [Option<usize>], w: usize, h: usize, min_px: usize)
     }
 }
 
+/// Bild auf genau `w` × `h` Punkte bringen (z. B. ein Punkt je Kreuz beim Kreuzstich).
+pub fn auf_groesse(bild: &RgbaImage, w: u32, h: u32) -> RgbaImage {
+    image::imageops::resize(bild, w.max(1), h.max(1), image::imageops::FilterType::Triangle)
+}
+
 /// Bild vorbereiten: verkleinern, vereinfachen, Farben reduzieren (ggf. auf Garnfarben), glätten, kleine Flächen
 /// zuschlagen, Vorschlag zum Weglassen bestimmen.
 pub fn vorbereiten(bild: &RgbaImage, o: &BildOptionen) -> Vorbereitet {

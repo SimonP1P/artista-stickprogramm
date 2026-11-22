@@ -49,6 +49,8 @@
     rueckstich: ["laenge", "geschlossen"],
     stielstich: ["breite", "abstand", "geschlossen"],
     stippling: ["abstand", "laenge"],
+    // Kreuzstich (N9): Art, Ecke/Richtung (nur wo sie gelten), Fäden, Größe, Kontur; „Füllen“ unter X
+    kreuzstich: ["kreuz", "ecke", "richtung", "faeden", "groesse", "kontur"],
     blackwork: ["stich", "laenge"],
     // PhotoSnap (N5): Auflösung, Stoff, Winkel, Farblagen oben; kleinster/größter Abstand unter X
     photosnap: ["aufloesung", "hintergrund", "winkel", "lagen"],
@@ -57,6 +59,9 @@
   };
   /** Applikation: Breite/Abstand meinen den Abdeckstich, Versatz den Schieberegler „innen ↔ außen“ */
   const PHOTO_NAMEN: Record<string, string> = { winkel: "Winkel der Reihen", lagen: "Farblagen" };
+  const KREUZ_NAMEN: Record<string, string> = { kreuz: "Kreuz", ecke: "Ecke / Hälfte", richtung: "Richtung", faeden: "Fäden", groesse: "Kreuzgröße", kontur: "Kontur", fuellen: "Füllen" };
+  /** Kreuzstich: Ecke nur bei Teilkreuzen, Richtung nur beim Halbkreuz */
+  const MIT_ECKE = ["dreiviertel", "viertel", "mini", "laengs", "quer"];
   const APPLIKATION_NAMEN: Record<string, string> = {
     breite: "Breite Abdeckstich",
     abstand: "Abstand Abdeckstich",
@@ -65,7 +70,7 @@
   /** Motivfüllung: Winkel und Versatz meinen hier die Reihen */
   const MOTIVFUELLUNG_NAMEN: Record<string, string> = { winkel: "Drehung der Reihen", versatz: "Reihenversatz" };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["raster", "stiche", "satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe", "effekte"]);
+  const GESONDERT = new Set(["raster", "stiche", "satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe", "effekte", "zellen"]);
   /** Objektarten mit Effekten (Verlauf, Rand; Welle nur Flächen) – Kern `effekte` */
   const MIT_EFFEKTEN = new Set(["tatami", "muster", "satin", "satinlinie", "satinflaeche"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
@@ -77,7 +82,9 @@
   const eNamen = $derived(o ? (E_FELDER[o.art === "monogramm" && o.vorlage ? "monogramm_vorlage" : o.art] ?? []) : []);
   /** Felder, die beim Monogramm je nach Rahmen nicht gelten (Diamond ↔ Katalog) */
   const ungueltig = $derived(
-    o?.art !== "monogramm"
+    o?.art === "kreuzstich"
+      ? [...(MIT_ECKE.includes((o.kreuz as string) ?? "voll") ? [] : ["ecke"]), ...(o.kreuz === "halb" ? [] : ["richtung"])]
+      : o?.art !== "monogramm"
       ? []
       : o.vorlage
         ? ["hoehe", "rahmen", "rahmen_farbe", "alphabet", "wortabstand", "zeilenabstand", "abstand"]
@@ -87,7 +94,7 @@
   $effect(() => {
     if (o?.art === "monogramm") listen.monogrammeLaden().catch(() => {});
   });
-  const oben = $derived(eNamen.map((n) => felder.find((f) => f.name === n)).filter((f): f is Feld => !!f));
+  const oben = $derived(eNamen.filter((n) => !ungueltig.includes(n)).map((n) => felder.find((f) => f.name === n)).filter((f): f is Feld => !!f));
   const fein = $derived(
     felder.filter(
       (f) =>
@@ -315,14 +322,14 @@
                 <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
-              <Feldzeile feld={f} wert={o[f.name]} beschriftung={(o.art === "motivlinie" || o.art === "motivfuellung") && f.name === "groesse" ? "Motivgröße" : o.art === "motivfuellung" ? MOTIVFUELLUNG_NAMEN[f.name] : o.art === "applikation" ? APPLIKATION_NAMEN[f.name] : o.art === "photosnap" ? PHOTO_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
+              <Feldzeile feld={f} wert={o[f.name]} beschriftung={(o.art === "motivlinie" || o.art === "motivfuellung") && f.name === "groesse" ? "Motivgröße" : o.art === "motivfuellung" ? MOTIVFUELLUNG_NAMEN[f.name] : o.art === "applikation" ? APPLIKATION_NAMEN[f.name] : o.art === "photosnap" ? PHOTO_NAMEN[f.name] : o.art === "kreuzstich" ? KREUZ_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
             {/if}
           {/each}
         </Abschnitt>
 
         {#if fein.length}
           <Abschnitt titel="Stichart – Feinheiten" offen={false}>
-            {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />{/each}
+            {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "kreuzstich" ? KREUZ_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />{/each}
           </Abschnitt>
         {/if}
 

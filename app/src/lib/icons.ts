@@ -80,6 +80,7 @@ export const ART: Record<string, [string, string]> = {
   rueckstich: ["Rückstich", "M2 12h5M6 10.6h5M10 12h5M14 10.6h5M18 12h4"],
   stielstich: ["Stielstich", "M2 15l4-6M5 15l4-6M8 15l4-6M11 15l4-6M14 15l4-6M17 15l4-6"],
   stippling: ["Stippling", "M3 3h18v18H3ZM6 17c0-4 3-4 3-1s3 3 3-1-3-4 0-6 4 0 4 3 2 4 3 1"],
+  kreuzstich: ["Kreuzstich", "M4 4l7 7M11 4l-7 7M13 4l7 7M20 4l-7 7M4 13l7 7M11 13l-7 7M13 13l7 7M20 13l-7 7"],
   blackwork: ["Blackwork (Linien in einem Zug)", "M4 20L12 4l8 16M7 14h10M3 9h18"],
   photosnap: ["PhotoSnap (Foto)", "M3 7h4l2-3h6l2 3h4v13H3ZM8 13l2-2 2 2 2-2 2 2"],
   stiche: ["Stichdaten (Stickdatei)", "M5 3h9l5 5v13H5ZM14 3v5h5M8 17l2-4 2 4 2-4 2 4"],

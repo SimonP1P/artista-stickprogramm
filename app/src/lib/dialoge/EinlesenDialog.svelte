@@ -19,15 +19,16 @@
     schliessen,
     startPfad,
     startModus,
-  }: { art: "bild" | "svg"; schliessen: () => void; startPfad?: string; startModus?: "auto" | "zauber" | "photo" } = $props();
+  }: { art: "bild" | "svg"; schliessen: () => void; startPfad?: string; startModus?: "auto" | "zauber" | "photo" | "kreuz" } = $props();
 
   /** Weg beim Bild: alles umwandeln (Auto Digitizer), Flächen anklicken (Zauberstab) oder PhotoSnap */
   // svelte-ignore state_referenced_locally
-  let modus = $state<"auto" | "zauber" | "photo">(startModus ?? "auto");
+  let modus = $state<"auto" | "zauber" | "photo" | "kreuz">(startModus ?? "auto");
   const MODI = [
     ["auto", "Alles umwandeln"],
     ["zauber", "Zauberstab"],
     ["photo", "PhotoSnap"],
+    ["kreuz", "Kreuzstich"],
   ] as const;
 
   // ---- Zauberstab: Klicks (Lage 0 … 1 im Vorschaubild) mit Stichart; jede getroffene Fläche wird ein Objekt ----
@@ -47,6 +48,11 @@
   let hintergrund = $state<"hell" | "dunkel">("hell");
   let aufloesung = $state<"grob" | "mittel" | "fein">("mittel");
   let photoWinkel = $state("0");
+
+  // ---- Kreuzstich (wie „Auto Stitch Image“ des Kreuzstich-Programms im Original): ein Bildpunkt = ein Kreuz ----
+  let kreuzGroesse = $state("2,54");
+  let kreuzArt = $state<"voll" | "halb">("voll");
+  let faeden = $state<2 | 4 | 6>(2);
 
   const experte = $derived(arbeit.modus === "experte");
   // svelte-ignore state_referenced_locally
@@ -97,16 +103,27 @@
     };
   }
 
+  function kreuzEingabe() {
+    return {
+      pfad: pfad!,
+      breite: lesen(breite) ?? undefined,
+      groesse: lesen(kreuzGroesse) ?? undefined,
+      farben: Math.max(2, Math.min(32, Math.round(farben))),
+      garnkarte: karte !== "keine" ? karte : undefined,
+      garnfarben: mitKarte,
+    };
+  }
+
   const rgb = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
   const abstand = (a: string, b: string) => {
     const [x, y] = [rgb(a), rgb(b)];
     return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]);
   };
 
-  async function vorschauRechnen(e: ReturnType<typeof eingabe>, nr: number) {
+  async function vorschauRechnen(rechnen: () => Promise<BildVorschau>, nr: number) {
     laedt = true;
     try {
-      const v = await kern("bild_vorschau", e);
+      const v = await rechnen();
       if (nr !== anfrage) return;
       vorschau = v;
       fehler = null;
@@ -126,13 +143,15 @@
   // ältere Antworten verfallen
   $effect(() => {
     if (art !== "bild" || !pfad) return;
-    const e = eingabe();
+    const ke = modus === "kreuz" ? kreuzEingabe() : null;
+    const be = eingabe();
+    const rechnen = () => (ke ? kern("kreuzstich_vorschau", ke) : kern("bild_vorschau", be));
     const nr = ++anfrage;
     if (!untrack(() => vorschau)) {
-      vorschauRechnen(e, nr);
+      vorschauRechnen(rechnen, nr);
       return;
     }
-    const t = setTimeout(() => vorschauRechnen(e, nr), 250);
+    const t = setTimeout(() => vorschauRechnen(rechnen, nr), 250);
     return () => clearTimeout(t);
   });
 
@@ -148,7 +167,7 @@
   $effect(() => {
     const v = vorschau;
     // weggelassene Farben nur beim Umwandeln ausblenden; Zauberstab: angeklickte Flächen markieren
-    const aus = new Set(modus === "auto" ? weg : []);
+    const aus = new Set(modus === "auto" || modus === "kreuz" ? weg : []);
     const markiert = modus === "zauber" ? klicks.map((k) => ({ ...k })) : [];
     const c = leinwand;
     if (!v || !c) return;
@@ -255,6 +274,9 @@
         const e = await kern("zauberstab", { bild: { ...eingabe(), rahmen }, klicks: klicks.map(({ x, y, stichart }) => ({ x, y, stichart })) });
         design = e.design;
         hinweise = e.hinweise;
+      } else if (art === "bild" && modus === "kreuz") {
+        const e = await kern("kreuzstich_bild", { ...kreuzEingabe(), weglassen: vorschau ? [...weg] : undefined, kreuz: kreuzArt, faeden, rahmen });
+        design = e.design;
       } else if (art === "bild" && modus === "photo") {
         const e = await kern("photosnap", {
           pfad,
@@ -308,7 +330,7 @@
   const STUFEN = ["aus", "sehr fein", "fein", "mittel", "grob", "sehr grob"];
 </script>
 
-<Dialog titel={art === "svg" ? "SVG einlesen" : modus === "zauber" ? "Zauberstab" : modus === "photo" ? "PhotoSnap" : "Bild umwandeln"} breite={art === "bild" ? 880 : 480} {schliessen}>
+<Dialog titel={art === "svg" ? "SVG einlesen" : modus === "zauber" ? "Zauberstab" : modus === "photo" ? "PhotoSnap" : modus === "kreuz" ? "Kreuzstich aus Bild" : "Bild umwandeln"} breite={art === "bild" ? 880 : 480} {schliessen}>
   {#if art === "bild"}
     <div class="bild-dlg">
       <!-- links: vereinfachtes Bild -->
@@ -320,6 +342,7 @@
               bind:this={leinwand}
               class:zauber={modus === "zauber"}
               class:grau={modus === "photo" && !farbig}
+              style={modus === "kreuz" ? `width:min(100%, ${(420 * vorschau.breite_px) / vorschau.hoehe_px}px); height:auto` : undefined}
               aria-label="Vorschau des vereinfachten Bildes"
               onclick={klick}
             ></canvas>
@@ -337,10 +360,14 @@
           {:else if modus === "photo"}
             PhotoSnap stickt das Bild als Reihen von Zickzackstichen: dunkle Stellen dicht, helle locker – wie ein
             Zeilendrucker. {farbig ? "Vier Farblagen (Cyan, Magenta, Gelb, Schwarz)." : "Eine Farbe (Graustufen)."}
+          {:else if modus === "kreuz"}
+            Jeder Bildpunkt wird ein Kreuz, jede Farbe ein Kreuzstich-Objekt. Kariert = Stoff bleibt frei.
+            {#if vorschau}{vorschau.breite_px} × {vorschau.hoehe_px} Kreuze.{/if}
           {:else}
             So wird das Bild gestickt: jede Fläche eine Farbe. Kariert = Stoff bleibt frei (Farbe weggelassen).
           {/if}
-          {#if vorschau && hoeheMm}Größe {zahl(lesen(breite) ?? 0, 1)} × {zahl(hoeheMm, 1)} mm.{/if}
+          {#if vorschau && modus === "kreuz" && lesen(kreuzGroesse)}Größe {zahl(vorschau.breite_px * (lesen(kreuzGroesse) ?? 0), 1)} × {zahl(vorschau.hoehe_px * (lesen(kreuzGroesse) ?? 0), 1)} mm.
+          {:else if vorschau && hoeheMm}Größe {zahl(lesen(breite) ?? 0, 1)} × {zahl(hoeheMm, 1)} mm.{/if}
         </p>
       </div>
       <!-- rechts: Einstellungen -->
@@ -364,10 +391,11 @@
         <div class="frow" style="padding:0">
           <label class="fl" for="bfarben">Farben</label>
           <div class="fc" style="gap:8px">
-            <input id="bfarben" type="range" min="2" max="16" step="1" bind:value={farben} style="flex:1" />
+            <input id="bfarben" type="range" min="2" max={modus === "kreuz" ? 32 : 16} step="1" bind:value={farben} style="flex:1" />
             <span class="tab" style="width:22px; text-align:right">{farben}</span>
           </div>
         </div>
+        {#if modus !== "kreuz"}
         <div class="frow" style="padding:0">
           <label class="fl" for="bvereinf" title="Glättet Fotorauschen und feine Einzelheiten, Kanten bleiben scharf – wie „Artwork Preparation“ im Original">Vereinfachen</label>
           <div class="fc" style="gap:8px">
@@ -375,6 +403,32 @@
             <span class="small" style="width:62px">{STUFEN[vereinfachen]}</span>
           </div>
         </div>
+        {/if}
+        {/if}
+        {#if modus === "kreuz"}
+          <div class="frow" style="padding:0">
+            <span class="fl" title="Kantenlänge eines Kreuzes – „Fabric Count“ im Original: 10 Kreuze je Zoll = 2,54 mm">Kreuzgröße</span>
+            <div class="fc"><input class="input sm num" inputmode="decimal" bind:value={kreuzGroesse} style="width:80px" /><span class="unit">mm</span></div>
+          </div>
+          <div class="frow" style="padding:0">
+            <span class="fl">Kreuz</span>
+            <div class="fc">
+              <div class="seg seg-sm" role="radiogroup" aria-label="Kreuz" style="display:flex; width:100%">
+                <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="kart" checked={kreuzArt === "voll"} onchange={() => (kreuzArt = "voll")} />voll ✕</label>
+                <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="kart" checked={kreuzArt === "halb"} onchange={() => (kreuzArt = "halb")} />halb ╱</label>
+              </div>
+            </div>
+          </div>
+          <div class="frow" style="padding:0">
+            <span class="fl" title="Wie dick die Kreuze wirken: 2 Fäden = einmal gestickt, 4 = zweimal, 6 = dreimal (Threads im Original)">Fäden</span>
+            <div class="fc">
+              <select class="input sm" bind:value={faeden}>
+                <option value={2}>2 – einmal</option>
+                <option value={4}>4 – zweimal</option>
+                <option value={6}>6 – dreimal</option>
+              </select>
+            </div>
+          </div>
         {/if}
         {#if modus === "photo"}
           <div class="frow" style="padding:0">
@@ -442,7 +496,7 @@
             {/each}
           </div>
         {/if}
-        {#if experte && modus !== "photo"}
+        {#if experte && modus !== "photo" && modus !== "kreuz"}
           {#if modus === "auto"}
             <div class="frow" style="padding:0">
               <span class="fl">Stichart <span class="xt">X</span></span>
@@ -464,7 +518,7 @@
           </div>
         {/if}
 
-        {#if vorschau && modus === "auto"}
+        {#if vorschau && (modus === "auto" || modus === "kreuz")}
           <div class="mh" style="padding:6px 0 2px">Farben – Haken = wird gestickt</div>
           <div class="bild-farben">
             {#each vorschau.farben as f (f.farbe)}
@@ -487,7 +541,9 @@
       </div>
     </div>
     <div class="note small" style="margin-top:10px">
-      {#if modus === "photo"}
+      {#if modus === "kreuz"}
+        Das Bild wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Element hinzugefügt"} – je Farbe ein Kreuzstich-Objekt in einer Gruppe. Kreuz, Fäden und Kontur lassen sich danach im Inspektor ändern. Rückgängig möglich.
+      {:else if modus === "photo"}
         PhotoSnap wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Objekt hinzugefügt"}; Auflösung, Stoff, Winkel und Farblagen lassen sich danach im Inspektor ändern. Rückgängig möglich.
       {:else}
         Das Bild wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Element hinzugefügt"} – als Gruppe: Größe, Drehen und Lage gelten für alles zusammen. Zugausgleich 0,4 mm und Unterlage wie vom Handbuch empfohlen; Reihenfolge nach kürzesten Wegen (Closest Join wie der Auto Digitizer). Rückgängig möglich.
@@ -530,7 +586,7 @@
   {#snippet fuss()}
     <button class="btn btn-secondary" onclick={schliessen}>Abbrechen</button>
     <button class="btn btn-primary" disabled={!pfad || laeuft || (art === "bild" && !vorschau) || (art === "bild" && modus === "zauber" && !klicks.length)} onclick={umwandeln}
-      >{laeuft ? "Wandle um …" : art === "svg" ? "Einlesen" : modus === "zauber" ? `Übernehmen (${klicks.length})` : modus === "photo" ? "PhotoSnap anlegen" : "Umwandeln"}</button
+      >{laeuft ? "Wandle um …" : art === "svg" ? "Einlesen" : modus === "zauber" ? `Übernehmen (${klicks.length})` : modus === "photo" ? "PhotoSnap anlegen" : modus === "kreuz" ? "Kreuzstich anlegen" : "Umwandeln"}</button
     >
   {/snippet}
 </Dialog>

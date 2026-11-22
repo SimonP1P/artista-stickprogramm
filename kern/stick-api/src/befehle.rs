@@ -1447,7 +1447,7 @@ pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErg
 pub const UMRISS_ARTEN: [&str; 7] =
     ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich"];
 /// Sticharten für geschlossene Formen („Fill“ des Originals): Geometrie in `umriss` (+ `loecher`).
-pub const FUELL_ARTEN: [&str; 5] = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling"];
+pub const FUELL_ARTEN: [&str; 6] = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich"];
 
 /// Stichart eines Objekts wechseln.
 #[derive(Debug, Deserialize, JsonSchema)]
@@ -1457,7 +1457,7 @@ pub struct StichartEingabe {
     /// Nummer des Objekts (ab 0)
     pub objekt: usize,
     /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,
-    /// satinflaeche, muster, motivfuellung, stippling
+    /// satinflaeche, muster, motivfuellung, stippling, kreuzstich
     pub art: String,
 }
 
@@ -1549,7 +1549,7 @@ pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgeb
         "tatami" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "muster" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "satinflaeche" => &["loecher"],
-        "motivfuellung" | "stippling" => &["loecher"],
+        "motivfuellung" | "stippling" | "kreuzstich" => &["loecher"],
         "satinlinie" => &["breite", "versatz"],
         "blanket" => &["breite", "versatz"],
         "lauf" | "dreifach" => &["laenge"],

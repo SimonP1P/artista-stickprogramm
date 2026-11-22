@@ -162,6 +162,10 @@ def main():
             "pfad": d_["pfad"], "breite": d_.get("breite", 80), "farben": 8, "vereinfachen": 2,
             "min_flaeche": 4, "glaettung": 0.2, **({"garnkarte": karte} if karte != "keine" else {}),
             "garnfarben": karte not in ("Default", "keine")})
+        if d_.get("modus") == "kreuz":
+            antworten["kreuzstich_vorschau"] = api(stick, "kreuzstich_vorschau", {
+                "pfad": d_["pfad"], "breite": d_.get("breite", 80), "groesse": 2.54, "farben": 8,
+                **({"garnkarte": karte} if karte != "keine" else {}), "garnfarben": karte not in ("Default", "keine")})
 
     if dialog_art == "kopieren":
         # Dialog Mirror-Merge/Kranz: Ergebnis mit dem Vorschlag des Dialogs (Anker wie in KopierenDialog.svelte) und

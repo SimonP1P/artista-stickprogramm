@@ -1402,6 +1402,173 @@ export type KranzEingabe = {
   zusammenfuehren?: boolean;
 };
 
+/** Art des Kreuzes (Liste „FillStyle“ des Kreuzstich-Programms des Originals) */
+export type KreuzArt = ("voll" | "dreiviertel" | "halb" | "viertel" | "mini" | "aufrecht" | "doppelt" | "laengs" | "quer" | "knoten");
+
+/** Ecke bzw. Viertel einer Zelle („Select the quadrants to be filled“) */
+export type KreuzEcke = "unten_links" | "unten_rechts" | "oben_links" | "oben_rechts";
+
+/** Kontur eines Kreuzstich-Objekts (Liste „OutlineStyle“ des Originals) */
+export type KreuzKontur = ("keine" | "linie" | "kreuz");
+
+/** Richtung des Halbkreuzes */
+export type KreuzRichtung = ("steigend" | "fallend");
+
+/** Eingabe von `kreuzstich_vorschau` und `kreuzstich_bild`. */
+export type KreuzstichBildEingabe = {
+  /** Breite des Ergebnisses in mm (Standard 80; die Höhe folgt dem Bild) */
+  breite?: number | null;
+  /** Fäden 2, 4, 6 (Standard 2) */
+  faeden?: number | null;
+  /** höchstens so viele Farben (2 … 64; Original „Restricted“ 2 … 255; Standard 8) */
+  farben?: number | null;
+  /** Farben auf die Garne der Karte ziehen (Standard an, wenn eine Garnkarte angegeben ist) */
+  garnfarben?: boolean | null;
+  /** Garnkarte („Specific Thread Chart“) */
+  garnkarte?: string | null;
+  /** Kreuzgröße (Rasterweite) in mm (Standard 2,54 = 10 Kreuze je Zoll) */
+  groesse?: number | null;
+  /** Art der Kreuze (Standard voll) */
+  kreuz?: (KreuzArt | null);
+  /** Bilddatei (PNG, JPG, BMP, GIF) */
+  pfad: string;
+  /** Rahmen des neuen Designs */
+  rahmen?: string | null;
+  /**
+   * Farben, die nicht gestickt werden („#rrggbb“ aus der Vorschau); ohne Angabe: Vorschlag (weißer Hintergrund –
+   * „Omit Background“); `[]` = alles sticken
+   */
+  weglassen?: string[] | null;
+};
+
+/** Ergebnis von `kreuzstich_bild`. */
+export type KreuzstichBildErgebnis = {
+  /** Größe in mm */
+  breite: number;
+  /** neues Design: je Farbe ein Kreuzstich-Objekt (`zellen`), Mitte des Bildes auf der Rahmenmitte */
+  design: DesignWert;
+  farben: number;
+  hoehe: number;
+  /** Zahl der Kreuze */
+  kreuze: number;
+  reihen: number;
+  spalten: number;
+};
+
+/**
+ * **Kreuzstich** (Handbuch Kap. 34–37, Programmteil „Cross Stitch“ des Originals): Kreuze auf einem festen Raster aus
+ * Quadraten. Gefüllt werden die Zellen, deren Mitte in der Fläche liegt, dazu einzelne Zellen aus `zellen`. Das Raster
+ * liegt fest am Design (Zelle [i, j] = i·groesse … (i+1)·groesse); Verschieben und Drehen bewegen die Fläche, die
+ * Kreuze bleiben auf dem Raster.
+ */
+export type KreuzstichJson = {
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * Viertel bzw. Seite für Viertel-, Dreiviertel-, Mini- und längliche Kreuze
+   * @default "unten_links"
+   */
+  ecke?: KreuzEcke;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Fäden („Threads“) 2, 4 oder 6 = jedes Kreuz einmal, zweimal, dreimal gestickt
+   * @default 2
+   */
+  faeden?: number;
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * Fläche füllen („Fill“); aus = nur der Umriss
+   * @default true
+   */
+  fuellen?: boolean;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * Kreuzgröße = Rasterweite (Kantenlänge eines Kreuzes) in mm, 1 … 8; Standard 2,54 = 10 Kreuze je Zoll
+   * („Fabric Count“ des Originals)
+   * @default 2.54
+   */
+  groesse?: number;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /**
+   * Kontur („Outline“): keine, Linie auf dem Raster, Kreuze entlang des Umrisses
+   * @default "keine"
+   */
+  kontur?: KreuzKontur;
+  /**
+   * Art des Kreuzes (Standard voll)
+   * @default "voll"
+   */
+  kreuz?: KreuzArt;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
+  loecher?: PunktAngabe[];
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  /**
+   * Halbkreuz: „/“ oder „\“
+   * @default "steigend"
+   */
+  richtung?: KreuzRichtung;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  /** Fläche (ohne Fläche: nur die Zellen aus `zellen`) */
+  umriss?: (PunktAngabe | null);
+  /**
+   * einzelne Zellen [Spalte, Reihe] zusätzlich zur Fläche (Spalte i = x von i·groesse bis (i+1)·groesse)
+   * @default []
+   */
+  zellen?: number[][];
+};
+
 /**
  * Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):
  * nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie bzw. dem Heften zuschneiden, dann Abdecken.
@@ -2109,6 +2276,8 @@ export type ObjektJson = ((LaufJson & {
   art: "stielstich";
 }) | (StipplingJson & {
   art: "stippling";
+}) | (KreuzstichJson & {
+  art: "kreuzstich";
 }) | (BlackworkJson & {
   art: "blackwork";
 }) | (PhotosnapJson & {
@@ -2939,7 +3108,7 @@ export type Stich = {
 export type StichartEingabe = {
   /**
    * neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,
-   * satinflaeche, muster, motivfuellung, stippling
+   * satinflaeche, muster, motivfuellung, stippling, kreuzstich
    */
   art: string;
   design: DesignWert;
@@ -3858,6 +4027,10 @@ export interface Befehle {
   in_knoten_umwandeln: { eingabe: ObjektEingabe; ausgabe: ObjektWert };
   /** Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt */
   kranz: { eingabe: KranzEingabe; ausgabe: KopienErgebnis };
+  /** Bild → Kreuzstich: neues Design, je Farbe ein Kreuzstich-Objekt mit seinen Zellen */
+  kreuzstich_bild: { eingabe: KreuzstichBildEingabe; ausgabe: KreuzstichBildErgebnis };
+  /** Bild → Kreuzstich wie „Auto Stitch Image“: Vorschau auf dem Raster (ein Bildpunkt je Kreuz) und Farbliste */
+  kreuzstich_vorschau: { eingabe: KreuzstichBildEingabe; ausgabe: BildVorschau };
   /** Laufende Maschinen-Aktion abbrechen */
   maschine_abbrechen: { eingabe: Leer; ausgabe: boolean };
   /** Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen */
@@ -3964,6 +4137,8 @@ export const BEFEHLE = [
   "google_schriften_liste",
   "in_knoten_umwandeln",
   "kranz",
+  "kreuzstich_bild",
+  "kreuzstich_vorschau",
   "maschine_abbrechen",
   "maschine_lesen",
   "maschine_liste",

@@ -14,7 +14,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
-| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.7 Motive ✅, 4b.8 Effekte ✅, 4b.9 Craft Stitches ✅, 4b.10 Applikation ✅, **4b.11 Zauberstab/PhotoSnap ✅**, **4b.12 Anordnen ✅** (Nachtauftrag N0–N6), 4b.17 SVG einlesen ✅, 4b.13–4b.15 offen (Nachtauftrag läuft) · Parameterkatalog `PARAMETER.md` (227 Parameter) | 🟡 |
+| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.7 Motive ✅, 4b.8 Effekte ✅, 4b.9 Craft Stitches ✅, 4b.10 Applikation ✅, **4b.11 Zauberstab/PhotoSnap ✅**, **4b.12 Anordnen ✅** (Nachtauftrag N0–N6), 4b.13 Dateien/Rahmen 🟡 (ART mit Objekten offen), **4b.14 Vorlagen ✅**, **4b.15 Kreuzstich ✅**, 4b.17 SVG einlesen ✅ (Nachtauftrag läuft: N10) · Parameterkatalog `PARAMETER.md` (251 Parameter) | 🟡 |
 | 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (**am Gerät gesendet und gestickt 21.11.**, Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
 
 ## Nachtauftrag 22.11.2026 – HIER ZUERST LESEN (Stand wird nach jedem Schritt nachgetragen)
@@ -44,7 +44,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N6 | 4b.12 Anordnen: **Ausrichten** (7 Knöpfe am zuletzt gewählten, Gruppen als Ganzes; Befehl `ausrichten`), **Mirror-Merge** (waagrecht/senkrecht/beides; `spiegeln_kopieren`), **Kranz/Kaleidoskop** (`kranz`; DESVIEW `MirrorMergeView*::GetReflectionTransforms`: −i·2π/n, ungerade Kopien gespiegelt), Rückfrage „Überlappende zusammenführen?“ (STR 4159, Vereinigung eigene Festlegung); Dialog mit Vorschau und Klick für den Ankerpunkt; „Vor/Nach Objekt Nr.“ ohne Browser-Abfrage; Bericht `Analyse_Teil3/26` | ✅ 22.11. |
 | N7 | 4b.13 Dateien/Rahmen: **a) fremde Stickdateien ✅** (DST, PES/PEC, JEF, VP3, EXP → Objektart `stiche` je Farbe, Grade D, ohne Zusatz-Vernähen, Hinweis ab ±5 % Größe; Farben aus den Original-Karten `Thread Colors - PES/SEW.tch`; Befehl `stickdatei_lesen`; Datei → Öffnen, Einfügen → „Design oder Stickdatei einfügen …“; Bericht `Analyse_Teil3/27`; HUS offen – Beispieldatei), **b) eigene Rahmen ✅** (Rechteck/Oval nach Handbuch Kap. 6, Feld `eigener_rahmen`, Befehle `rahmen_speichern`/`rahmen_loeschen`, Ablage `rahmen.json`; Senden nennt den passenden Rahmen der 185, passt keiner → nicht senden; Bericht 27 §5), c) ART mit Objekten → **nach N10** (braucht Twofish im Kern und die Umsetzung der Objekte; zurückgestellt, damit 4b.14/4b.15 zuerst fertig werden) | 🟡 a ✅ b ✅ |
 | N8 | 4b.14 Vorlagen: **Datei → Neu** = Vorlage Normal, **Neu aus Vorlage …**, **Als Vorlage speichern …** (mit/ohne Objekte), Einzelwerte → **In Vorlage speichern …** (nur Werte), **Als Werte des Designs übernehmen**, **Designwerte auf Auswahl anwenden** (default/current/existing nach Handbuch Kap. 9); Befehle `vorlagen_liste`, `vorlage_neu`, `vorlage_speichern`, `vorlage_loeschen`; Feld `vorlage`; Ablage `vorlagen/`; Stile: artista bietet sie nicht an (nur RESENU) → über Vorlagen; Bericht `Analyse_Teil3/28` | ✅ |
-| N9 | 4b.15 Kreuzstich | ⬜ |
+| N9 | 4b.15 Kreuzstich: Objektart `kreuzstich` (Raster fest am Design, Zelle gehört dazu, wenn ihre Mitte in der Fläche liegt; 10 Kreuzarten wie `FillStyle` des Originals, Ecke/Richtung, Fäden 2/4/6, Kreuzgröße 2,54 mm = 10 je Zoll, Kontur Single Line / Current Cross Type, einzelne `zellen`); Stichfolge eigene Festlegung (Zickzack-Reihen, Halbkreuze als Diagonalketten, Übergänge nur auf Rasterlinien); **Bild → Kreuzstich** (`kreuzstich_vorschau`/`kreuzstich_bild`, vierter Weg im Dialog „Bild umwandeln“); Formulare von `BLOT.EXE` mit `dfm_lesen.py` gelesen, ARX-Beispiele gepackt (nicht lesbar); Bericht `Analyse_Teil3/29`. Offen: Zellen malen, Kreuzstich-Buchstaben | ✅ 22.11. |
 | N10 | Verbinder als Laufstich (Bericht 22) | ⬜ |
 
 **Gesammelte Fragen an den Nutzer (am Ende stellen):**
@@ -76,6 +76,11 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
   werden? Beim Zusammenführen überlappender Kopien entsteht **ein** Objekt (Umriss vereinigt, Stichwinkel des
   Originals) – wie das Original es macht, ist nicht gelesen. Der Ankerpunkt wird im Dialog (Zahlen oder Klick in die
   Vorschau) gesetzt statt direkt auf der Leinwand – reicht das?
+- **Kreuzstich (N9):** Die Stichfolge ist eigene Festlegung (Zickzack-Reihen, Übergänge nur auf Rasterlinien) – die
+  Beispiele der CD (`*.ARX`) sind gepackt und ließen sich nicht lesen. Hast du ein Kreuzstich-Design aus dem Original,
+  das wir vor Ort sticken oder senden und zurücklesen könnten? Standard-Kreuzgröße ist 2,54 mm (10 Kreuze je Zoll, das
+  Handbuch-Beispiel) – passt das für deine Stoffe? Soll als Nächstes ein **Malwerkzeug** kommen (Kreuze mit der Maus
+  setzen/löschen wie im Original), und brauchst du die Kreuzstich-Buchstaben?
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -316,7 +321,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ✅ 22.11. (N6, `Analyse_Teil3/26`) |
 | 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ⬜ |
 | 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ⬜ |
-| 4b.15 | **Kreuzstich** | eigenes Modul (Kap. 34–37) | ⬜ |
+| 4b.15 | **Kreuzstich** | Objektart `kreuzstich` + Bild → Kreuzstich (Nachtauftrag N9, Bericht 29); offen: Zellen malen, Buchstaben/Ränder | ✅ |
 Nicht nötig: Designkarte/Magic Box, Scanner, Quilter (eigenes Programm), nur in Strings vorhandene Sticharten (Coil,
 Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau, Druck, Portfolio) → neue Oberfläche.
 

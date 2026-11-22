@@ -2038,6 +2038,307 @@
         }
       ]
     },
+    "KreuzArt": {
+      "description": "Art des Kreuzes (Liste „FillStyle“ des Kreuzstich-Programms des Originals)",
+      "oneOf": [
+        {
+          "const": "voll",
+          "description": "Full Cross: zwei Diagonalen",
+          "type": "string"
+        },
+        {
+          "const": "dreiviertel",
+          "description": "3/4 Cross: Viertel zur Mitte + langer Schenkel",
+          "type": "string"
+        },
+        {
+          "const": "halb",
+          "description": "1/2 Cross: eine Diagonale (Feld `richtung`)",
+          "type": "string"
+        },
+        {
+          "const": "viertel",
+          "description": "1/4 Cross: von der Ecke zur Mitte (`ecke`)",
+          "type": "string"
+        },
+        {
+          "const": "mini",
+          "description": "Mini Cross: kleines Kreuz im Viertel (`ecke`)",
+          "type": "string"
+        },
+        {
+          "const": "aufrecht",
+          "description": "Upright Cross: senkrecht + waagrecht („+“)",
+          "type": "string"
+        },
+        {
+          "const": "doppelt",
+          "description": "Double Cross: Kreuz + aufrechtes Kreuz (Stern)",
+          "type": "string"
+        },
+        {
+          "const": "laengs",
+          "description": "Elongated Vertical Cross: Kreuz in der linken oder rechten Hälfte (Seite von `ecke`)",
+          "type": "string"
+        },
+        {
+          "const": "quer",
+          "description": "Elongated Horizontal Cross: Kreuz in der unteren oder oberen Hälfte (Seite von `ecke`)",
+          "type": "string"
+        },
+        {
+          "const": "knoten",
+          "description": "French Knot: kleiner Knoten in der Zellmitte",
+          "type": "string"
+        }
+      ]
+    },
+    "KreuzEcke": {
+      "description": "Ecke bzw. Viertel einer Zelle („Select the quadrants to be filled“)",
+      "enum": [
+        "unten_links",
+        "unten_rechts",
+        "oben_links",
+        "oben_rechts"
+      ],
+      "type": "string"
+    },
+    "KreuzKontur": {
+      "description": "Kontur eines Kreuzstich-Objekts (Liste „OutlineStyle“ des Originals)",
+      "oneOf": [
+        {
+          "const": "keine",
+          "description": "kein Umriss",
+          "type": "string"
+        },
+        {
+          "const": "linie",
+          "description": "Single Line: Laufstich auf den Rasterlinien um die Kreuze",
+          "type": "string"
+        },
+        {
+          "const": "kreuz",
+          "description": "Current Cross Type: Kreuze auf allen Zellen, durch die der Umriss läuft",
+          "type": "string"
+        }
+      ]
+    },
+    "KreuzRichtung": {
+      "description": "Richtung des Halbkreuzes",
+      "oneOf": [
+        {
+          "const": "steigend",
+          "description": "„/“",
+          "type": "string"
+        },
+        {
+          "const": "fallend",
+          "description": "„\\“",
+          "type": "string"
+        }
+      ]
+    },
+    "KreuzstichJson": {
+      "description": "**Kreuzstich** (Handbuch Kap. 34–37, Programmteil „Cross Stitch“ des Originals): Kreuze auf einem festen Raster aus\nQuadraten. Gefüllt werden die Zellen, deren Mitte in der Fläche liegt, dazu einzelne Zellen aus `zellen`. Das Raster\nliegt fest am Design (Zelle [i, j] = i·groesse … (i+1)·groesse); Verschieben und Drehen bewegen die Fläche, die\nKreuze bleiben auf dem Raster.",
+      "properties": {
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "ecke": {
+          "$ref": "#/$defs/KreuzEcke",
+          "default": "unten_links",
+          "description": "Viertel bzw. Seite für Viertel-, Dreiviertel-, Mini- und längliche Kreuze"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "faeden": {
+          "default": 2,
+          "description": "Fäden („Threads“) 2, 4 oder 6 = jedes Kreuz einmal, zweimal, dreimal gestickt",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "fuellen": {
+          "default": true,
+          "description": "Fläche füllen („Fill“); aus = nur der Umriss",
+          "type": "boolean"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "groesse": {
+          "default": 2.54,
+          "description": "Kreuzgröße = Rasterweite (Kantenlänge eines Kreuzes) in mm, 1 … 8; Standard 2,54 = 10 Kreuze je Zoll\n(„Fabric Count“ des Originals)",
+          "format": "double",
+          "type": "number"
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kontur": {
+          "$ref": "#/$defs/KreuzKontur",
+          "default": "keine",
+          "description": "Kontur („Outline“): keine, Linie auf dem Raster, Kreuze entlang des Umrisses"
+        },
+        "kreuz": {
+          "$ref": "#/$defs/KreuzArt",
+          "default": "voll",
+          "description": "Art des Kreuzes (Standard voll)"
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "richtung": {
+          "$ref": "#/$defs/KreuzRichtung",
+          "default": "steigend",
+          "description": "Halbkreuz: „/“ oder „\\“"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        },
+        "umriss": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PunktAngabe"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Fläche (ohne Fläche: nur die Zellen aus `zellen`)"
+        },
+        "zellen": {
+          "default": [],
+          "description": "einzelne Zellen [Spalte, Reihe] zusätzlich zur Fläche (Spalte i = x von i·groesse bis (i+1)·groesse)",
+          "items": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "LaufJson": {
       "description": "Laufstich bzw. Dreifachstich entlang einer Linie.",
       "properties": {
@@ -3335,6 +3636,20 @@
           "properties": {
             "art": {
               "const": "stippling",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/KreuzstichJson",
+          "description": "Kreuzstich auf einem Raster (Fläche und/oder einzelne Zellen)",
+          "properties": {
+            "art": {
+              "const": "kreuzstich",
               "type": "string"
             }
           },

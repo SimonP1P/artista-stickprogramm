@@ -144,7 +144,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "garn",
@@ -226,7 +227,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "transform.skalieren",
    "json_objekt": "transform.skalieren",
@@ -266,7 +268,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "transform.drehen",
    "json_objekt": "transform.drehen",
@@ -306,7 +309,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "transform.spiegeln",
    "json_objekt": "transform.spiegeln",
@@ -347,7 +351,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "transform.schraeg",
    "json_objekt": "transform.schraeg",
@@ -387,7 +392,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "transform.verschieben",
    "json_objekt": "transform.verschieben",
@@ -427,7 +433,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.auto_spacing",
    "json_objekt": "einstellungen.satin.auto_spacing",
@@ -508,7 +515,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.zugausgleich",
    "json_objekt": "einstellungen.satin.zugausgleich",
@@ -548,7 +556,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.zickzack_abstand",
    "json_objekt": "einstellungen.satin.zickzack_abstand",
@@ -608,7 +617,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.kurzstiche.schwelle",
    "json_objekt": "einstellungen.satin.kurzstiche.schwelle",
@@ -645,7 +655,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.kurzstiche.zufall",
    "json_objekt": "einstellungen.satin.kurzstiche.zufall",
@@ -682,7 +693,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.kurzstiche.max_gruppe",
    "json_objekt": "einstellungen.satin.kurzstiche.max_gruppe",
@@ -719,7 +731,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.satin.kurzstiche.faktoren",
    "json_objekt": "einstellungen.satin.kurzstiche.faktoren",
@@ -839,7 +852,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.abstand",
    "json_objekt": "einstellungen.tatami.abstand",
@@ -879,7 +893,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.laenge",
    "json_objekt": "einstellungen.tatami.laenge",
@@ -919,7 +934,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.min_rand",
    "json_objekt": "einstellungen.tatami.min_rand",
@@ -959,7 +975,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.versatz",
    "json_objekt": "einstellungen.tatami.versatz",
@@ -996,7 +1013,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.versatz2",
    "json_objekt": "einstellungen.tatami.versatz2",
@@ -1033,7 +1051,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.zufall",
    "json_objekt": "einstellungen.tatami.zufall",
@@ -1094,7 +1113,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.zugausgleich",
    "json_objekt": "einstellungen.tatami.zugausgleich",
@@ -1134,7 +1154,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.laufweg_laenge",
    "json_objekt": "einstellungen.tatami.laufweg_laenge",
@@ -1171,7 +1192,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.laufweg.min_laenge",
    "json_objekt": "einstellungen.tatami.laufweg.min_laenge",
@@ -1208,7 +1230,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.tatami.laufweg.sehnenabstand",
    "json_objekt": "einstellungen.tatami.laufweg.sehnenabstand",
@@ -1374,7 +1397,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.lauf.min_laenge",
    "json_objekt": "einstellungen.lauf.min_laenge",
@@ -1411,7 +1435,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.lauf.variabel",
    "json_objekt": "einstellungen.lauf.variabel",
@@ -1448,7 +1473,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.lauf.sehnenabstand",
    "json_objekt": "einstellungen.lauf.sehnenabstand",
@@ -1485,7 +1511,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.lauf.ecke_grad",
    "json_objekt": "einstellungen.lauf.ecke_grad",
@@ -1522,7 +1549,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.auto_an",
    "json_objekt": "einstellungen.unterlage.auto_an",
@@ -1559,7 +1587,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.auto_art",
    "json_objekt": "einstellungen.unterlage.auto_art",
@@ -1633,7 +1662,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.rand",
    "json_objekt": "einstellungen.unterlage.rand",
@@ -1673,7 +1703,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.zugausgleich",
    "json_objekt": "einstellungen.unterlage.zugausgleich",
@@ -1710,7 +1741,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_laenge",
    "json_objekt": "einstellungen.unterlage.edge_walk_laenge",
@@ -1747,7 +1779,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_laenge",
    "json_objekt": "einstellungen.unterlage.mittellauf_laenge",
@@ -1784,7 +1817,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.zickzack_laenge",
    "json_objekt": "einstellungen.unterlage.zickzack_laenge",
@@ -1821,7 +1855,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_laenge",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_laenge",
@@ -1858,7 +1893,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.rueck_lauf_laenge",
    "json_objekt": "einstellungen.unterlage.rueck_lauf_laenge",
@@ -1895,7 +1931,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.tatami_abstand",
    "json_objekt": "einstellungen.unterlage.tatami_abstand",
@@ -1932,7 +1969,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.tatami_laenge",
    "json_objekt": "einstellungen.unterlage.tatami_laenge",
@@ -1969,7 +2007,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf",
@@ -2006,7 +2045,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.tatami_winkel_versatz",
    "json_objekt": "einstellungen.unterlage.tatami_winkel_versatz",
@@ -2043,7 +2083,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.edge_walk_lauf.min_laenge",
@@ -2080,7 +2121,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.edge_walk_lauf.sehnenabstand",
@@ -2117,7 +2159,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.mittellauf_lauf.min_laenge",
@@ -2154,7 +2197,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.mittellauf_lauf.sehnenabstand",
@@ -2191,7 +2235,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.zickzack_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.zickzack_lauf.min_laenge",
@@ -2228,7 +2273,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.zickzack_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.zickzack_lauf.sehnenabstand",
@@ -2265,7 +2311,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_lauf.min_laenge",
@@ -2302,7 +2349,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_lauf.sehnenabstand",
@@ -2339,7 +2387,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf_lauf.min_laenge",
@@ -2376,7 +2425,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf_lauf.sehnenabstand",
@@ -2413,7 +2463,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.anfang_immer",
    "json_objekt": "einstellungen.verbinder.anfang_immer",
@@ -2450,7 +2501,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.anfang_nach_trim_farbwechsel",
    "json_objekt": "einstellungen.verbinder.anfang_nach_trim_farbwechsel",
@@ -2487,7 +2539,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.anfang_bei_langem_verbinder",
    "json_objekt": "einstellungen.verbinder.anfang_bei_langem_verbinder",
@@ -2524,7 +2577,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.anfang_verbinder_ab",
    "json_objekt": "einstellungen.verbinder.anfang_verbinder_ab",
@@ -2561,7 +2615,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.ende_immer",
    "json_objekt": "einstellungen.verbinder.ende_immer",
@@ -2598,7 +2653,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.ende_vor_trim_farbwechsel",
    "json_objekt": "einstellungen.verbinder.ende_vor_trim_farbwechsel",
@@ -2635,7 +2691,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.ende_bei_langem_verbinder",
    "json_objekt": "einstellungen.verbinder.ende_bei_langem_verbinder",
@@ -2672,7 +2729,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.ende_verbinder_ab",
    "json_objekt": "einstellungen.verbinder.ende_verbinder_ab",
@@ -2709,7 +2767,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.letztes_objekt_vernaehen",
    "json_objekt": "einstellungen.verbinder.letztes_objekt_vernaehen",
@@ -2746,7 +2805,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.trim_ab",
    "json_objekt": "einstellungen.verbinder.trim_ab",
@@ -2783,7 +2843,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.vernaeh_stichlaenge",
    "json_objekt": "einstellungen.verbinder.vernaeh_stichlaenge",
@@ -2820,7 +2881,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": "einstellungen.verbinder.vernaeh_stiche",
    "json_objekt": "einstellungen.verbinder.vernaeh_stiche",
@@ -2857,7 +2919,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "auto_jump",
@@ -2894,7 +2957,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "auto_jump.max",
@@ -2934,7 +2998,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "auto_jump.sprung",
@@ -3008,7 +3073,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "doppellauf",
@@ -3338,7 +3404,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "einstich",
@@ -3375,7 +3442,8 @@
     "rueckstich",
     "stielstich",
     "stippling",
-    "blackwork"
+    "blackwork",
+    "kreuzstich"
    ],
    "json_design": null,
    "json_objekt": "ausstich",
@@ -3413,6 +3481,7 @@
     "stielstich",
     "stippling",
     "blackwork",
+    "kreuzstich",
     "photosnap"
    ],
    "json_design": null,
@@ -4750,6 +4819,223 @@
    ],
    "stoff": false,
    "quelle": "Handbuch S. 114–115 (Magic Wand: Stichart vor dem Klick)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.kreuz",
+   "gruppe": "Kreuzstich",
+   "name": "Kreuz",
+   "wirkung": "Art der Kreuze: voll, ¾, ½, ¼, Mini, aufrecht, doppelt, längs, quer, Knoten",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "kreuz",
+   "einheit": "Auswahl",
+   "standard": "voll",
+   "bereich": null,
+   "werte": [
+    "voll",
+    "dreiviertel",
+    "halb",
+    "viertel",
+    "mini",
+    "aufrecht",
+    "doppelt",
+    "laengs",
+    "quer",
+    "knoten"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 34–37; Formulare BLOT.EXE/XSLang.DLL (Analyse_Teil3/29, hoch): Liste FillStyle",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.ecke",
+   "gruppe": "Kreuzstich",
+   "name": "Ecke / Hälfte",
+   "wirkung": "Viertel der Zelle bei ¾, ¼, Mini; Seite bei länglichen Kreuzen",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "ecke",
+   "einheit": "Auswahl",
+   "standard": "unten_links",
+   "bereich": null,
+   "werte": [
+    "unten_links",
+    "unten_rechts",
+    "oben_links",
+    "oben_rechts"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 34–37; Formulare BLOT.EXE/XSLang.DLL (Analyse_Teil3/29, hoch): „Select the quadrants to be filled“; Standard Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.richtung",
+   "gruppe": "Kreuzstich",
+   "name": "Richtung",
+   "wirkung": "Halbkreuz „/“ oder „\\“",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "richtung",
+   "einheit": "Auswahl",
+   "standard": "steigend",
+   "bereich": null,
+   "werte": [
+    "steigend",
+    "fallend"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch S. 308; Standard Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.faeden",
+   "gruppe": "Kreuzstich",
+   "name": "Fäden",
+   "wirkung": "2 = einmal, 4 = zweimal, 6 = dreimal gestickt",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "faeden",
+   "einheit": "Auswahl",
+   "standard": 2,
+   "bereich": null,
+   "werte": [
+    "2",
+    "4",
+    "6"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch S. 318 (Threads-Liste, hoch)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.groesse",
+   "gruppe": "Kreuzstich",
+   "name": "Kreuzgröße",
+   "wirkung": "Kantenlänge eines Kreuzes (Fabric Count): 2,54 mm = 10 je Zoll",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "groesse",
+   "einheit": "mm",
+   "standard": 2.54,
+   "bereich": [
+    1,
+    8
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch S. 317–318 (Beispiel 10 je Zoll); Standard und Bereich Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.kontur",
+   "gruppe": "Kreuzstich",
+   "name": "Kontur",
+   "wirkung": "keine, Linie auf dem Raster (Single Line) oder Kreuze entlang des Umrisses (Current Cross Type)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "kontur",
+   "einheit": "Auswahl",
+   "standard": "keine",
+   "bereich": null,
+   "werte": [
+    "keine",
+    "linie",
+    "kreuz"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 34–37; Formulare BLOT.EXE/XSLang.DLL (Analyse_Teil3/29, hoch): Liste OutlineStyle",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.kreuzstich.fuellen",
+   "gruppe": "Kreuzstich",
+   "name": "Füllen",
+   "wirkung": "aus = nur die Kontur",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "kreuzstich"
+   ],
+   "json_design": null,
+   "json_objekt": "fuellen",
+   "einheit": "an/aus",
+   "standard": true,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 34–37; Formulare BLOT.EXE/XSLang.DLL (Analyse_Teil3/29, hoch): Fill an/aus",
+   "modus": "experte"
+  },
+  {
+   "id": "kreuzstich.uebergang",
+   "gruppe": "Kreuzstich",
+   "name": "Übergänge",
+   "wirkung": "Verbindungen nur auf Rasterlinien an gestickten Kreuzen, bis 16 Kreuze weit, sonst Sprung",
+   "ebene": "werkzeug",
+   "gilt_fuer": [],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "Kreuze",
+   "standard": 16,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Vorschlag (eigene Festlegung) (Stichfolge des Originals nicht gemessen, Analyse_Teil3/29 §2)",
+   "modus": "automatisch"
+  },
+  {
+   "id": "kreuzstich.knoten",
+   "gruppe": "Kreuzstich",
+   "name": "Französischer Knoten",
+   "wirkung": "sechs Stiche dieser Länge um die Zellmitte",
+   "ebene": "werkzeug",
+   "gilt_fuer": [],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": 0.5,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Vorschlag (eigene Festlegung)",
+   "modus": "automatisch"
+  },
+  {
+   "id": "kreuzstich_bild.farben",
+   "gruppe": "Kreuzstich",
+   "name": "Farben (Bild → Kreuzstich)",
+   "wirkung": "höchstens so viele Farben; ein Bildpunkt = ein Kreuz",
+   "ebene": "werkzeug",
+   "gilt_fuer": [],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "Anzahl",
+   "standard": 8,
+   "bereich": [
+    2,
+    64
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Formular TAutoStitchImageForm („Restricted“ 2 … 255); Standard und Obergrenze Vorschlag (eigene Festlegung)",
    "modus": "einfach"
   },
   {
