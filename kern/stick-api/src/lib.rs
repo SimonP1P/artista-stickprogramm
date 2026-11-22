@@ -26,6 +26,7 @@ pub mod effekte;
 pub mod erzeugen;
 pub mod maschine;
 pub mod motive;
+pub mod rahmen;
 pub mod schriften;
 pub mod stickdateien;
 
@@ -133,6 +134,8 @@ pub struct Kontext {
     pub(crate) schriften_zustand: schriften::SchriftZustand,
     /// Ablage der eigenen Motivsätze (App: Datenordner/motive)
     pub(crate) motiv_zustand: motive::MotivZustand,
+    /// Ablage der eigenen Rahmen (App: Datenordner/rahmen.json)
+    pub(crate) rahmen_zustand: rahmen::RahmenZustand,
 }
 
 impl Kontext {
@@ -153,6 +156,7 @@ impl Kontext {
             maschine: Default::default(),
             schriften_zustand: Default::default(),
             motiv_zustand: Default::default(),
+            rahmen_zustand: Default::default(),
         }
     }
 
@@ -184,6 +188,15 @@ impl Kontext {
         let mut v = e.design.0.clone();
         let o = v.as_object_mut().ok_or("Das Design muss ein JSON-Objekt sein")?;
         if let Some(r) = &e.rahmen {
+            // Rahmen der Oberfläche: Rahmen der 185 oder eigener aus der Ablage
+            match self.eigene_rahmen().into_iter().find(|x| &x.name == r) {
+                Some(eigen) => {
+                    o.insert("eigener_rahmen".into(), serde_json::to_value(eigen).unwrap_or_default());
+                }
+                None => {
+                    o.remove("eigener_rahmen");
+                }
+            }
             o.insert("rahmen".into(), r.clone().into());
         }
         if let Some(s) = &e.stoff {
@@ -313,8 +326,12 @@ macro_rules! befehle {
 }
 
 befehle! {
-    /// Stickrahmen der artista 185 mit Stickfeld und Umriss
+    /// Stickrahmen der artista 185 mit Stickfeld und Umriss, danach die eigenen Rahmen (Feld `eigen`)
     rahmen_liste: befehle::Leer => Vec<befehle::RahmenInfo>,
+    /// Eigenen Rahmen speichern (Rechteck/Oval, Handbuch Kap. 6) – gleicher Name ersetzt; Ergebnis: neue Rahmenliste
+    rahmen_speichern: rahmen::RahmenSpeichernEingabe => Vec<befehle::RahmenInfo>,
+    /// Eigenen Rahmen löschen; Ergebnis: neue Rahmenliste
+    rahmen_loeschen: rahmen::RahmenLoeschenEingabe => Vec<befehle::RahmenInfo>,
     /// Stoffe (8 + Software Defaults) mit den wichtigsten Werten
     stoffe_liste: befehle::Leer => Vec<befehle::StoffInfo>,
     /// Original-Alphabete (50)
@@ -451,6 +468,7 @@ mod befehle_aller {
     pub use crate::craft::*;
     pub use crate::effekte::*;
     pub use crate::motive::*;
+    pub use crate::rahmen::*;
     pub use crate::schriften::*;
     pub use crate::stickdateien::*;
 }

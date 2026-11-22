@@ -486,10 +486,19 @@
       <Abschnitt titel="Rahmen, Stoff, Garn">
         <div class="frow">
           <label class="fl" for="drahmen">Rahmen</label>
-          <div class="fc"><select id="drahmen" class="input sm" value={arbeit.design.rahmen ?? ""} onchange={(ev) => arbeit.aendern((d) => (d.rahmen = (ev.currentTarget as HTMLSelectElement).value as typeof d.rahmen))}>
-            {#each arbeit.rahmenListe as r (r.name)}<option value={r.name}>{r.name}</option>{/each}
-          </select></div>
-          <div class="fhelp">{arbeit.rahmenListe.find((r) => r.name === arbeit.design.rahmen)?.hinweis ?? ""}</div>
+          <div class="fc"><select id="drahmen" class="input sm" value={arbeit.design.rahmen ?? ""} onchange={(ev) => arbeit.rahmenWaehlen((ev.currentTarget as HTMLSelectElement).value)}>
+            <optgroup label="artista 185">
+              {#each arbeit.rahmenListe.filter((r) => !r.eigen) as r (r.name)}<option value={r.name}>{r.name}</option>{/each}
+            </optgroup>
+            {#if arbeit.rahmenListe.some((r) => r.eigen) || arbeit.design.eigener_rahmen}
+              <optgroup label="Eigene Rahmen">
+                {#each arbeit.rahmenListe.filter((r) => r.eigen) as r (r.name)}<option value={r.name}>{r.name}</option>{/each}
+                {#if arbeit.design.eigener_rahmen && !arbeit.rahmenListe.some((r) => r.name === arbeit.design.eigener_rahmen?.name)}<option value={arbeit.design.eigener_rahmen.name}>{arbeit.design.eigener_rahmen.name} (nur in diesem Design)</option>{/if}
+              </optgroup>
+            {/if}
+          </select>
+          <button class="btn btn-ghost" style="font-size:12px; white-space:nowrap" title="Rahmen nach eigenen Maßen anlegen, ändern, löschen" onclick={() => (arbeit.dialog = { art: "eigene_rahmen" })}>Eigene …</button></div>
+          <div class="fhelp">{arbeit.design.eigener_rahmen ? `eigener Rahmen ${zahl(arbeit.design.eigener_rahmen.breite)} × ${zahl(arbeit.design.eigener_rahmen.hoehe)} mm – die artista 185 kennt ihn nicht; beim Senden nennt das Programm einen passenden Rahmen der 185` : (arbeit.rahmen?.hinweis ?? "")}</div>
         </div>
         <div class="frow">
           <label class="fl" for="dstoff">Stoff</label>

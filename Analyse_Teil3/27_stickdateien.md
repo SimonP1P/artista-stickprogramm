@@ -60,8 +60,33 @@ nichts anderes passt (eigene Festlegung). Passt nichts, gilt der größte Rahmen
 Eine freie Formatbibliothek (pyembroidery) als Gegenprobe ließ sich in dieser Sitzung nicht installieren (Freigabe
 fehlt). Mit je einer echten Datei pro Format lassen sich die Leser endgültig prüfen.
 
-## 4. Offen
+## 4. Offen (Stickdateien)
 - HUS lesen (Dekompression) – braucht eine Beispieldatei.
 - VP3 an einer echten Datei prüfen; JEF-Farbnummern über 30.
 - Objektumwandlung (Grade C) – vom Nutzer nicht gewünscht (Entscheidung 22.11.2026).
 - Einzelne Stiche bearbeiten (Stitch Edit) – nicht umgesetzt.
+
+## 5. Eigene Rahmen (N7b) — Handbuch Kap. 6 S. 49–52 (Sicherheit hoch für die Bedienung)
+Original: Options > Hoop, „New Hoop“, Format **Rectangle** (Height, Width), **Oval** (Rectangle Height, Total Height,
+Width), **Sliding** (Sewing Field, Total Height, Width) und **3-Position** (Höhen je Position); „Save Hoop As“ mit Namen.
+Rechteck: gestrichelte schwarze Linie; Oval: schwarzer gestrichelter Umriss.
+
+Umsetzung:
+- **Rechteck und Oval.** Sliding und 3-Position sind Rahmen anderer Maschinen und für die 185 kein Ziel.
+- Oval im Kern (`Rahmen::eigener`): gerader Mittelteil `gerade` mm hoch, oben und unten je eine Halbellipse bis zur
+  Gesamthöhe; `gerade` = 0 ergibt eine Ellipse. Die genaue Rundung des Originals steht nicht im Handbuch (eigene
+  Festlegung, mittel). Der Oval-Rahmen der 185 selbst kommt weiter aus `hooplibr.dsc`.
+- Maße 10 … 1000 mm (eigene Festlegung). Gestalten geht damit auch größer als der MEGA-Rahmen.
+- Ablage `<Datenordner>/rahmen.json` (eigene Festlegung; das Original schreibt `hooplibr.dsc`). Ein Design mit eigenem
+  Rahmen trägt dessen Maße im Feld `eigener_rahmen` mit und lässt sich darum auch ohne die Ablage öffnen.
+- **Senden (Entscheidung des Nutzers 22.11.2026):**
+  - Die artista 185 kennt eigene Rahmen nicht. Das Handbuch sagt sinngemäß schon zum gedrehten Rahmen: „When you
+    send the design to the machine, however, it does not recognize the hoop in the rotated position“ (S. 49).
+  - Deshalb sucht das Programm den kleinsten Rahmen der 185, in den alle Einstiche passen (Freiarm zuletzt), und nennt
+    ihn im Plan: „bitte diesen Rahmen einspannen“.
+  - Passt keiner, wird nicht gesendet (Fehlercode `ausserhalb`).
+  - Gesendet werden dieselben Daten wie sonst: die Maschine bekommt Stiche relativ zur Mitte, keinen Rahmen.
+- Oberfläche (Modus E):
+  - Assistent Schritt 1: eigene Rahmen in der Liste, Knopf „Eigener Rahmen …“;
+  - Inspektor, Reiter Design: Auswahl mit den Gruppen „artista 185“ und „Eigene Rahmen“, Knopf „Eigene …“;
+  - Dialog mit Vorschau neben dem MEGA-Rahmen.

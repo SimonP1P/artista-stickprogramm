@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 22.11.2026 · **238 Parameter**: 71 einfach, 109 experte, 58 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 22.11.2026 · **241 Parameter**: 74 einfach, 109 experte, 58 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -11,6 +11,9 @@ Stand 22.11.2026 · **238 Parameter**: 71 einfach, 109 experte, 58 automatisch. 
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
 | **Rahmen** | Stickrahmen; legt das Stickfeld fest |  | `rahmen` | artista 130 x 100 |  |  | design | einfach | Rahmenliste der Software (Analyse/daten/hoops_table.md); Befehl rahmen_liste |
+| **Eigener Rahmen: Breite** | Stickfeld eines eigenen Rahmens (Rechteck/Oval) |  | `eigener_rahmen.breite` | – | 10 … 1000 |  | design | einfach | Handbuch Kap. 6 S. 49–51 (Creating custom hoops); Bereich eigene Festlegung |
+| **Eigener Rahmen: Höhe** | Oval: Gesamthöhe („Total Height“) |  | `eigener_rahmen.hoehe` | – | 10 … 1000 |  | design | einfach | Handbuch Kap. 6 S. 49–51; Bereich eigene Festlegung |
+| **Eigener Rahmen: gerader Teil** | Oval: Höhe des geraden Mittelteils („Rectangle Height“), 0 = Ellipse |  | `eigener_rahmen.gerade` | 0 mm |  |  | design | einfach | Handbuch Kap. 6 S. 50 |
 | **Stoff** | ändert Satin-/Step-Abstand, Zugausgleich, Unterlagen, Step-Versatz, Trim |  | `stoff` | 0 Software Defaults | 0 Software Defaults, Knit Light Weight, Knit Medium Weight, Knit Heavy Weight, Terry Medium Weight, Terry Heavy Weight, Woven Light Weight, Woven Medium Weight, Woven Heavy Weight |  | design | einfach | Stile in NORMAL.AMT (Analyse/code/10 §E) |
 | **Garnkarte** | Farben werden dem nächsten Garn der Karte zugeordnet |  | `garnkarte` | Default |  |  | design | einfach | Garnkarten .tch; die Maschine nutzt Default.tch; Befehl garnkarten_liste |
 | **Garn von Hand** | Garn der Karte für dieses Objekt (statt nächstes Garn zur Farbe) | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm, knopfloch, motivlinie, motivfuellung, rueckstich, stielstich, stippling, blackwork | Objekt: `garn` | – |  |  | objekt | einfach | Feldform eigene Festlegung; Garnauswahl aus der Karte wie im Original (Handbuch Kap. 10) |

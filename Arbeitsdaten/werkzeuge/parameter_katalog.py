@@ -36,6 +36,15 @@ G = 'Design'
 P('design.rahmen', G, 'Rahmen', 'Stickrahmen; legt das Stickfeld fest', d='rahmen', einheit='Auswahl',
   std='artista 130 x 100', quelle='Rahmenliste der Software (Analyse/daten/hoops_table.md); Befehl rahmen_liste',
   modus='einfach')
+P('design.eigener_rahmen.breite', G, 'Eigener Rahmen: Breite', 'Stickfeld eines eigenen Rahmens (Rechteck/Oval)',
+  d='eigener_rahmen.breite', einheit='mm', std=None, bereich=(10, 1000),
+  quelle='Handbuch Kap. 6 S. 49–51 (Creating custom hoops); Bereich eigene Festlegung', modus='einfach')
+P('design.eigener_rahmen.hoehe', G, 'Eigener Rahmen: Höhe', 'Oval: Gesamthöhe („Total Height“)',
+  d='eigener_rahmen.hoehe', einheit='mm', std=None, bereich=(10, 1000),
+  quelle='Handbuch Kap. 6 S. 49–51; Bereich eigene Festlegung', modus='einfach')
+P('design.eigener_rahmen.gerade', G, 'Eigener Rahmen: gerader Teil', 'Oval: Höhe des geraden Mittelteils '
+  '(„Rectangle Height“), 0 = Ellipse', d='eigener_rahmen.gerade', einheit='mm', std=0,
+  quelle='Handbuch Kap. 6 S. 50', modus='einfach')
 P('design.stoff', G, 'Stoff', 'ändert Satin-/Step-Abstand, Zugausgleich, Unterlagen, Step-Versatz, Trim', d='stoff',
   einheit='Auswahl', std='0 Software Defaults', werte=STOFFE, quelle='Stile in NORMAL.AMT (Analyse/code/10 §E)',
   modus='einfach')

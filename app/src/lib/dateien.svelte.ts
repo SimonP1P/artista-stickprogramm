@@ -36,6 +36,7 @@ export function neu() {
   const d = leeresDesign();
   // Rahmen und Stoff behalten – sie hängen an der Maschine bzw. am Material, nicht am Design
   d.rahmen = arbeit.design.rahmen ?? d.rahmen;
+  if (arbeit.design.eigener_rahmen) d.eigener_rahmen = { ...arbeit.design.eigener_rahmen };
   d.stoff = arbeit.design.stoff ?? d.stoff;
   arbeit.ersetzen(d, null, false);
   arbeit.auswahl = [];

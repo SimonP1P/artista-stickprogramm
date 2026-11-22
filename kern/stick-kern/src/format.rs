@@ -1556,6 +1556,39 @@ impl ObjektJson {
     }
 }
 
+auswahl! {
+    /// Form eines eigenen Rahmens (Handbuch Kap. 6: Format Rectangle / Oval)
+    pub enum RahmenForm {
+        /// Rechteck Breite × Höhe
+        Rechteck = "rechteck",
+        /// Oval: gerader Mittelteil (`gerade`), oben und unten rund bis zur Höhe
+        Oval = "oval",
+    }
+}
+
+fn rahmen_form() -> RahmenForm {
+    RahmenForm::Rechteck
+}
+
+/// **Eigener Rahmen** (Handbuch Kap. 6 S. 49–51 „Creating custom hoops“): Stickfeld nach eigenen Maßen. Zum Gestalten
+/// frei; beim Senden prüft das Programm, in welchen Rahmen der artista 185 die Stiche passen, und nennt ihn (passt
+/// keiner, wird nicht gesendet). Die Liste der eigenen Rahmen verwalten `rahmen_speichern`/`rahmen_loeschen`.
+#[derive(Clone, Debug, PartialEq, Deserialize, serde::Serialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct EigenerRahmenJson {
+    /// Name (Rahmenliste; nicht der Name eines Rahmens der 185)
+    pub name: String,
+    #[serde(default = "rahmen_form")]
+    pub form: RahmenForm,
+    /// Breite des Stickfelds in mm (10 … 1000)
+    pub breite: f64,
+    /// Höhe des Stickfelds in mm (10 … 1000; Oval: Gesamthöhe „Total Height“)
+    pub hoehe: f64,
+    /// Oval: Höhe des geraden Mittelteils in mm („Rectangle Height“; 0 = Ellipse)
+    #[serde(default)]
+    pub gerade: f64,
+}
+
 /// **Ein Design**: Rahmen, Stoff, Garnkarte, Objekte. Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben.
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 #[schemars(title = "Design")]
@@ -1566,10 +1599,13 @@ pub struct DesignJson {
     /// Name des Designs (erscheint in der Designliste der Maschine)
     #[serde(default = "design_name")]
     pub name: String,
-    /// Stickrahmen (Befehl `rahmen_liste`)
+    /// Stickrahmen (Befehl `rahmen_liste`); bei einem eigenen Rahmen sein Name (gilt dann `eigener_rahmen`)
     #[serde(default = "standard_rahmen")]
     #[schemars(schema_with = "rahmen_schema")]
     pub rahmen: String,
+    /// **Eigener Rahmen** (Rechteck/Oval nach eigenen Maßen): ist das Feld gesetzt, gilt es statt `rahmen`
+    #[serde(default)]
+    pub eigener_rahmen: Option<EigenerRahmenJson>,
     /// Stoff: ändert Dichte, Unterlage, Zugausgleich (8 Stoffe + Software Defaults)
     #[serde(default = "standard_stoff")]
     #[schemars(schema_with = "stoff_schema")]
@@ -1619,7 +1655,8 @@ pub struct GruppeJson {
 
 fn rahmen_schema(_: &mut SchemaGenerator) -> Schema {
     let namen: Vec<String> = crate::rahmen::alle_rahmen().into_iter().map(|r| r.name).collect();
-    json_schema!({ "type": "string", "enum": namen, "default": standard_rahmen() })
+    // Rahmen der 185 als Beispiele – ein eigener Rahmen (`eigener_rahmen`) hat einen freien Namen
+    json_schema!({ "type": "string", "examples": namen, "default": standard_rahmen() })
 }
 
 fn stoff_schema(_: &mut SchemaGenerator) -> Schema {

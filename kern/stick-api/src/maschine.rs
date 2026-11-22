@@ -446,7 +446,8 @@ fn mit_maschine<T>(
 
 /// Was das Original für dieses Design senden würde: Puffer, Icon, INFO-Felder, Garnfarben (Garn von Hand `garn` vor
 /// dem nächsten Garn der Karte).
-fn sendedaten(k: &Kontext, design: DesignWert) -> Result<(Sendedaten, Design), Fehler> {
+/// Dritter Wert: Hinweise für den Plan (z. B. eigener Rahmen → Rahmen der 185).
+fn sendedaten(k: &Kontext, design: DesignWert) -> Result<(Sendedaten, Design, Vec<String>), Fehler> {
     let d = k.design(&DesignEingabe {
         design,
         rahmen: None,
@@ -459,6 +460,27 @@ fn sendedaten(k: &Kontext, design: DesignWert) -> Result<(Sendedaten, Design), F
             format!("{aussen} Einstiche liegen außerhalb des Stickfelds – erst anpassen"),
             FehlerCode::Ausserhalb,
         ));
+    }
+    // Eigener Rahmen (Nutzer 22.11.2026): zum Gestalten frei – gesendet wird nur, was in einen Rahmen der 185 passt
+    let mut hinweise = Vec::new();
+    if d.rahmen.eigen {
+        match rahmen_fuer_185(&folge) {
+            Some(r) => hinweise.push(format!(
+                "Eigener Rahmen „{}“ – die artista 185 kennt ihn nicht. Die Stiche passen in den Rahmen „{}“: bitte \
+                 diesen Rahmen einspannen.",
+                d.rahmen.name, r.name
+            )),
+            None => {
+                return Err(Fehler::mit_code(
+                    format!(
+                        "Eigener Rahmen „{}“: die Stiche passen in keinen Rahmen der artista 185 – erst verkleinern \
+                         oder aufteilen",
+                        d.rahmen.name
+                    ),
+                    FehlerCode::Ausserhalb,
+                ));
+            }
+        }
     }
     let mut s = Sendedaten::eigenes_design(&d.name, &folge, false);
     if d.garnkarte != "keine" {
@@ -476,7 +498,7 @@ fn sendedaten(k: &Kontext, design: DesignWert) -> Result<(Sendedaten, Design), F
         }
         s.garne_zuordnen(&karte);
     }
-    Ok((s, d))
+    Ok((s, d, hinweise))
 }
 
 fn anschluss(port: &str, simulation: bool) -> Anschluss {
@@ -503,13 +525,14 @@ pub fn maschine_pruefen(k: &Kontext, a: Anschluss) -> Result<MaschinenInfo, Fehl
 
 /// Nur lesen: Senden planen (Prüfungen wie das Original, Garnfarbbereich) – zum Bestätigen.
 pub fn maschine_planen(k: &Kontext, e: SendeEingabe) -> Result<SendePlanInfo, Fehler> {
-    let (s, _) = sendedaten(k, e.design)?;
+    let (s, _, mut hinweise) = sendedaten(k, e.design)?;
     let o: SendeOptionen = e.wahl.into();
     let (plan, sitzung) = mit_maschine(k, &anschluss(&e.port, e.simulation), "planen", |m, _| m.planen(&s, &o))?;
+    hinweise.extend(plan.hinweise);
     Ok(SendePlanInfo {
         sitzung,
         schritte: plan.schritte,
-        hinweise: plan.hinweise,
+        hinweise,
         farbbereich: plan.farbbereich.as_ref().map(FarbInfo::from),
         bytes_daten: s.puffer.bytes().len(),
         bytes_icon: if plan.icon_schreiben { s.icon.bytes().len() } else { 0 },
@@ -525,7 +548,7 @@ pub fn maschine_planen(k: &Kontext, e: SendeEingabe) -> Result<SendePlanInfo, Fe
 /// **Schreibt in die Maschine** (DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08). Nur nach der
 /// Bestätigung des Plans aufrufen. Fortschritt über den Melder (App: Ereignis `maschine_fortschritt`).
 pub fn maschine_senden(k: &Kontext, e: SendeEingabe) -> Result<SendeInfo, Fehler> {
-    let (s, _) = sendedaten(k, e.design)?;
+    let (s, _, _) = sendedaten(k, e.design)?;
     let o: SendeOptionen = e.wahl.into();
     let (b, sitzung) = mit_maschine(k, &anschluss(&e.port, e.simulation), "senden", |m, f| {
         m.senden(&s, &o, f)
@@ -561,6 +584,17 @@ pub fn maschine_liste(k: &Kontext, a: Anschluss) -> Result<ListenInfo, Fehler> {
             })
             .collect(),
     })
+}
+
+/// Kleinster Rahmen der 185, in den alle Einstiche passen (Freiarm zuletzt); `None`, wenn keiner passt.
+fn rahmen_fuer_185(folge: &StichFolge) -> Option<Rahmen> {
+    let mut alle = alle_rahmen();
+    alle.sort_by(|a, b| {
+        (a.breite * a.hoehe)
+            .total_cmp(&(b.breite * b.hoehe))
+            .then(a.name.contains("Free Arm").cmp(&b.name.contains("Free Arm")))
+    });
+    alle.into_iter().find(|r| folge.stiche.iter().all(|s| r.enthaelt(s.p())))
 }
 
 /// Kleinster Rahmen, in den alle Einstiche passen (sonst der größte).

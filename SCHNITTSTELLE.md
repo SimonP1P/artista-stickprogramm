@@ -10,6 +10,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 
 | Feld | Typ | Pflicht | Standard | Beschreibung |
 |---|---|---|---|---|
+| `eigener_rahmen` | EigenerRahmenJson |  | – | **Eigener Rahmen** (Rechteck/Oval nach eigenen Maßen): ist das Feld gesetzt, gilt es statt `rahmen` |
 | `einstellungen` | EinstellungenJson |  | – | Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog) |
 | `ende` | Ende |  | – | Endpunkt (Standard: Sprung zurück zur Rahmenmitte) |
 | `garnkarte` | string |  | `"Default"` | Garnkarte (Befehl `garnkarten_liste`): jede Farbe → nächstes Garn; „keine“ = ohne (Standard „Default“ wie die Maschine) |
@@ -17,7 +18,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `kuerzeste_verbindung` | boolean |  | `false` | Closest Join: jedes Objekt ohne eigenen Einstich beginnt nahe dem vorigen Ende (nicht bei Schrift) |
 | `name` | string |  | `"Design"` | Name des Designs (erscheint in der Designliste der Maschine) |
 | `objekte` | ObjektJson[] |  | – | Stickobjekte in Stickreihenfolge |
-| `rahmen` | "artista 255 x 145 Oval" \| "artista 255 x 145 Oval Rotated" \| "artista 200 x 155" \| "artista 200 x 155 Rotated" \| "artista 130 x 100" \| "artista 130 x 100 Rotated" \| "artista 50 x 72 Free Arm" \| "artista 50 x 72 Free Arm Rotated" \| "artista 50 x 72 Normal" \| "artista 50 x 72 Normal Rotated" \| "artista 40 x 60" \| "artista 40 x 60 Rotated" \| "artista 400 x 150 MEGA" \| "artista 400 x 150 MEGA Rotated" |  | `"artista 130 x 100"` | Stickrahmen (Befehl `rahmen_liste`) |
+| `rahmen` | string |  | `"artista 130 x 100"` | Stickrahmen (Befehl `rahmen_liste`); bei einem eigenen Rahmen sein Name (gilt dann `eigener_rahmen`) |
 | `start` | Start |  | – | Startpunkt (Standard: Rahmenmitte) |
 | `stoff` | "0 Software Defaults" \| "Knit Light Weight" \| "Knit Medium Weight" \| "Knit Heavy Weight" \| "Terry Medium Weight" \| "Terry Heavy Weight" \| "Woven Light Weight" \| "Woven Medium Weight" \| "Woven Heavy Weight" |  | `"0 Software Defaults"` | Stoff: ändert Dichte, Unterlage, Zugausgleich (8 Stoffe + Software Defaults) |
 | `transform` | Transformation |  | – | Transformation des ganzen Designs (um seine Mitte) |
@@ -474,6 +475,11 @@ PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Ab
 - `"konvex_konkav"` – S-Kurve zunehmend („Convex - Concave“; Kurvenform eigene Festlegung)
 - `"konkav_konvex"` – S-Kurve abnehmend („Concave - Convex“; Kurvenform eigene Festlegung)
 
+**RahmenForm** – Form eines eigenen Rahmens (Handbuch Kap. 6: Format Rectangle / Oval)
+
+- `"rechteck"` – Rechteck Breite × Höhe
+- `"oval"` – Oval: gerader Mittelteil (`gerade`), oben und unten rund bis zur Höhe
+
 **RandSeite** – Seite des ausgefransten Rands, in Stichrichtung gesehen (Dialog „Textured Edge“: Left, Both, Right)
 
 - `"links"` – Anfang der Reihen (bei Satin: Seite A)
@@ -568,6 +574,18 @@ Effekte eines Objekts (`stick_kern::effekte`, Bericht `Analyse_Teil3/23_effekte.
 | `rand` | RandJson |  | – | **Ausgefranster Rand** (Textured Edge): Reihen- bzw. Stichenden streuen um den Rand (Handbuch S. 213–214) |
 | `verlauf` | VerlaufJson |  | – | **Verlauf** (Gradient Fill): Abstand wechselt quer über die Fläche bzw. entlang der Säule zwischen `min` und `max`; der Abstand des Objekts gilt dann nicht (Handbuch S. 218) |
 | `welle` | PunktAngabe |  | – | **Welle** (Wave Effect): Leitlinie [[x, y], …] in mm quer durch die Fläche, die Reihen folgen ihr (nur `tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen) |
+
+### EigenerRahmenJson
+
+**Eigener Rahmen** (Handbuch Kap. 6 S. 49–51 „Creating custom hoops“): Stickfeld nach eigenen Maßen. Zum Gestalten frei; beim Senden prüft das Programm, in welchen Rahmen der artista 185 die Stiche passen, und nennt ihn (passt keiner, wird nicht gesendet). Die Liste der eigenen Rahmen verwalten `rahmen_speichern`/`rahmen_loeschen`.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `breite` | number | ja | – | Breite des Stickfelds in mm (10 … 1000) |
+| `form` | RahmenForm |  | `"rechteck"` |  |
+| `gerade` | number |  | `0.0` | Oval: Höhe des geraden Mittelteils in mm („Rectangle Height“; 0 = Ellipse) |
+| `hoehe` | number | ja | – | Höhe des Stickfelds in mm (10 … 1000; Oval: Gesamthöhe „Total Height“) |
+| `name` | string | ja | – | Name (Rahmenliste; nicht der Name eines Rahmens der 185) |
 
 ### EinstellungenJson
 
@@ -730,7 +748,9 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `objekt_werte` | ObjektEingabe | WirksamerWert[] | Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet, Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“ |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |
 | `photosnap` | PhotosnapEingabe | PhotosnapErgebnis | PhotoSnap: Foto als Reihen von Zickzackstichen (einfarbig oder vier Farblagen) – neues Design mit einem Objekt |
-| `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
+| `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss, danach die eigenen Rahmen (Feld `eigen`) |
+| `rahmen_loeschen` | RahmenLoeschenEingabe | RahmenInfo[] | Eigenen Rahmen löschen; Ergebnis: neue Rahmenliste |
+| `rahmen_speichern` | RahmenSpeichernEingabe | RahmenInfo[] | Eigenen Rahmen speichern (Rechteck/Oval, Handbuch Kap. 6) – gleicher Name ersetzt; Ergebnis: neue Rahmenliste |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |
 | `saeulen_vorschau` | SaeulenEingabe | SaeuleInfo[] | Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) |
 | `schrift_stile` | Leer | SchriftStile | Stile der Schriftauswahl (Gotisch, Schreibschrift, Modern … mit Erklärung) in Anzeigereihenfolge |

@@ -240,7 +240,7 @@
 
   function rahmenStoff() {
     const d = arbeit.design;
-    return { name: d.name ?? "Design", rahmen: d.rahmen, stoff: d.stoff, garnkarte: d.garnkarte };
+    return { name: d.name ?? "Design", rahmen: d.rahmen, eigener_rahmen: d.eigener_rahmen ? { ...d.eigener_rahmen } : undefined, stoff: d.stoff, garnkarte: d.garnkarte };
   }
 
   async function umwandeln() {

@@ -15,7 +15,7 @@ use stick_kern::einstellungen::STOFFE;
 use stick_kern::format::{DesignJson, ObjektJson};
 use stick_kern::geometrie::Punkt;
 use stick_kern::parameter::Parameter;
-use stick_kern::rahmen::{Rahmen, alle_rahmen};
+use stick_kern::rahmen::Rahmen;
 use stick_kern::{Art, Stich, StichFolge};
 
 // ---------------------------------------------------------------- gemeinsame Typen
@@ -54,6 +54,8 @@ pub struct RahmenInfo {
     /// Umriss des Stickfelds [[x, y], …] in mm
     pub form: Vec<Punkt>,
     pub hinweis: String,
+    /// eigener Rahmen: seine Angabe (für `eigener_rahmen` im Design); ohne = Rahmen der artista 185
+    pub eigen: Option<stick_kern::format::EigenerRahmenJson>,
 }
 
 impl From<&Rahmen> for RahmenInfo {
@@ -64,6 +66,7 @@ impl From<&Rahmen> for RahmenInfo {
             hoehe: r.hoehe,
             form: r.form.clone(),
             hinweis: r.hinweis.clone(),
+            eigen: None,
         }
     }
 }
@@ -92,9 +95,6 @@ impl From<&garnkarte::Garn> for GarnInfo {
 
 // ---------------------------------------------------------------- Listen
 
-pub fn rahmen_liste(_: &Kontext, _: Leer) -> Result<Vec<RahmenInfo>, Fehler> {
-    Ok(alle_rahmen().iter().map(RahmenInfo::from).collect())
-}
 
 /// Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog).
 #[derive(Debug, Serialize, JsonSchema)]

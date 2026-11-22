@@ -50,6 +50,7 @@ export type OffenerDialog =
   | { art: "farben_mischen"; objekt: number }
   | { art: "kopieren"; weg: "spiegeln" | "kranz" }
   | { art: "nummer"; vor: boolean }
+  | { art: "eigene_rahmen" }
   | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 
@@ -218,6 +219,24 @@ class Arbeit {
   #letzteGruppe: { name: string; zeit: number } | null = null;
   #zeitgeber: ReturnType<typeof setTimeout> | null = null;
   #lauf = 0;
+
+  /**
+   * Rahmen wählen: Rahmen der 185 oder eigener (Liste `rahmen_liste`, Feld `eigen`). Ein eigener Rahmen kommt mit
+   * seinen Maßen ins Design (`eigener_rahmen`), damit die Datei ihn auch ohne die Ablage kennt.
+   */
+  rahmenWaehlen(name: string) {
+    const r = this.rahmenListe.find((x) => x.name === name);
+    this.aendern((d) => {
+      d.rahmen = name;
+      if (r?.eigen) d.eigener_rahmen = { ...r.eigen };
+      else delete d.eigener_rahmen;
+    });
+  }
+
+  /** Rahmen des Designs – auch ein eigener, der (noch) nicht in der Liste steht */
+  get rahmen(): RahmenInfo | undefined {
+    return this.ergebnis?.rahmen ?? this.rahmenListe.find((r) => r.name === this.design.rahmen);
+  }
 
   get kannZurueck() {
     return this.#zurueck.length > 0;

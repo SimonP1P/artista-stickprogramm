@@ -96,7 +96,7 @@
   });
 
   // Vorschau: Rahmen, Formen, Anker
-  const rahmen = $derived(arbeit.rahmenListe.find((r) => r.name === arbeit.design.rahmen));
+  const rahmen = $derived(arbeit.rahmen);
   const ansicht = $derived.by(() => {
     const xs: number[] = [anker.x];
     const ys: number[] = [anker.y];

@@ -35,7 +35,8 @@ Quelle und Modus stehen im **Parameterkatalog `PARAMETER.md`** (maschinenlesbar 
 ## 2. Rahmen, Stoff, Garn, Design als Ganzes
 | Funktion | Anwender stellt ein (Standard) | JSON | Modus |
 |---|---|---|---|
-| Rahmen | Auswahl aus der Liste (artista 130 × 100) | `rahmen` | E |
+| Rahmen | Auswahl aus der Liste (artista 130 × 100); eigene Rahmen stehen darunter („eigener Rahmen“) | `rahmen` | E |
+| **Eigene Rahmen** | Knopf „Eigener Rahmen …“ (Assistent Schritt 1) bzw. „Eigene …“ neben der Rahmenauswahl (Inspektor, Reiter Design): **Name, Form Rechteck/Oval, Breite, Höhe** (Oval: Gesamthöhe und **gerader Teil**, 0 = Ellipse), je 10 … 1000 mm (Standard 200 × 200 Rechteck) – Handbuch Kap. 6 „Creating custom hoops“. Vorschau mit dem größten Rahmen der 185 zum Vergleich; „Speichern“ / „Speichern und wählen“, gespeicherte laden und löschen. Ablage im Datenordner (`rahmen.json`). Ein gewählter eigener Rahmen kommt mit seinen Maßen ins Design (`eigener_rahmen`). **Senden:** die artista 185 kennt eigene Rahmen nicht – der Plan nennt den kleinsten Rahmen der 185, in den die Stiche passen („bitte diesen Rahmen einspannen“); passt keiner, wird nicht gesendet (Fehler „außerhalb“). Quer einspannen ist bei eigenen Rahmen gesperrt (Breite/Höhe tauschen) | `eigener_rahmen` (`name`, `form`, `breite`, `hoehe`, `gerade`), Befehle `rahmen_speichern`, `rahmen_loeschen` | E |
 | Stoff | 8 Stoffe + Software Defaults; ändert Dichte, Unterlage, Zugausgleich | `stoff` | E |
 | Garnkarte | Auswahl (Default), Farben werden dem nächsten Garn zugeordnet | `garnkarte` | E |
 | **Garn von Hand** | Garn aus der Karte wählen (Liste `garnkarte_garne`); setzt `garn` = Nummer und `farbe` = Farbe des Garns; „von Hand“ ist im Ergebnis erkennbar (`bloecke[i].von_hand`). Ohne Angabe: nächstes Garn zur Farbe | `garn` am Objekt | E |
@@ -125,6 +126,7 @@ Eckpunkt, `{"kurve": [x, y]}` = Kurvenpunkt, `geschlossen`). Alle Objekte: `farb
 | `alphabet_vorschau` | Bild eines Alphabets im Auswahldialog (Umrisse von „Abc“ oder eigenem Probetext) und Zeichenvorrat |
 | `motive_liste` | Auswahl des Motivsatzes (14 der CD + eigene, `eigen`) |
 | `motiv_speichern` | Anordnen → „Als Motiv speichern …“: Objekte als Motiv in einen eigenen Satz (Datenordner) |
+| `rahmen_speichern`, `rahmen_loeschen` | Dialog „Eigene Rahmen“: speichern (gleicher Name ersetzt) bzw. löschen; Ergebnis = neue Rahmenliste |
 | `motiv_loeschen` | Dialog „Motiv wählen“: Motiv eines eigenen Satzes löschen (× mit Rückfrage) |
 | `objekt_werte` | Inspektor (Experte): für leere Felder des gewählten Objekts der Wert, mit dem der Kern rechnet, und die Herkunft (`stil` = Stoff/Design/Objekt-Einstellungen, `alphabet`, `muster`, `motivsatz`, `vorlage`, `schrift`) – steht grau im Feld statt „Stil“; Auto Spacing als Spanne („auto 0,40–0,51“) |
 | `monogramm_rahmen` | Dialog „Rahmen wählen“: Kategorien und die 47 Rahmen (Name, Kategorie, Beschreibung, Schriftvorschlag, Versalhöhen, Zahl der Initialen, Größe, Farben, SVG-Zeichnung für die Kachel) |
@@ -177,5 +179,5 @@ Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DA
 `SCHNITTSTELLE.md`).
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
-Auto Digitizer „Details“ (dünne Linien als Doppellauf/Satinlinie über die Mittellinie) · Bild als Vorlage hinter dem Design (Zauberstab direkt auf der Leinwand) · Ankerpunkt von Mirror-Merge/Kranz direkt auf der Leinwand ziehen · eigene Rahmen · HUS-Dateien lesen (Beispieldatei fehlt) ·
+Auto Digitizer „Details“ (dünne Linien als Doppellauf/Satinlinie über die Mittellinie) · Bild als Vorlage hinter dem Design (Zauberstab direkt auf der Leinwand) · Ankerpunkt von Mirror-Merge/Kranz direkt auf der Leinwand ziehen · HUS-Dateien lesen (Beispieldatei fehlt) ·
 Vorlagen/Stile speichern · Kreuzstich.

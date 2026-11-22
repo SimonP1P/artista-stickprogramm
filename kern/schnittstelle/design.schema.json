@@ -793,6 +793,42 @@
       },
       "type": "object"
     },
+    "EigenerRahmenJson": {
+      "additionalProperties": false,
+      "description": "**Eigener Rahmen** (Handbuch Kap. 6 S. 49–51 „Creating custom hoops“): Stickfeld nach eigenen Maßen. Zum Gestalten\nfrei; beim Senden prüft das Programm, in welchen Rahmen der artista 185 die Stiche passen, und nennt ihn (passt\nkeiner, wird nicht gesendet). Die Liste der eigenen Rahmen verwalten `rahmen_speichern`/`rahmen_loeschen`.",
+      "properties": {
+        "breite": {
+          "description": "Breite des Stickfelds in mm (10 … 1000)",
+          "format": "double",
+          "type": "number"
+        },
+        "form": {
+          "$ref": "#/$defs/RahmenForm",
+          "default": "rechteck"
+        },
+        "gerade": {
+          "default": 0.0,
+          "description": "Oval: Höhe des geraden Mittelteils in mm („Rectangle Height“; 0 = Ellipse)",
+          "format": "double",
+          "type": "number"
+        },
+        "hoehe": {
+          "description": "Höhe des Stickfelds in mm (10 … 1000; Oval: Gesamthöhe „Total Height“)",
+          "format": "double",
+          "type": "number"
+        },
+        "name": {
+          "description": "Name (Rahmenliste; nicht der Name eines Rahmens der 185)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "breite",
+        "hoehe"
+      ],
+      "type": "object"
+    },
     "EinstellungenJson": {
       "additionalProperties": false,
       "description": "Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design",
@@ -3740,6 +3776,21 @@
       ],
       "description": "Punkte einer Linie oder Fläche: Punktliste `[[x, y], …]` in mm oder eine Form."
     },
+    "RahmenForm": {
+      "description": "Form eines eigenen Rahmens (Handbuch Kap. 6: Format Rectangle / Oval)",
+      "oneOf": [
+        {
+          "const": "rechteck",
+          "description": "Rechteck Breite × Höhe",
+          "type": "string"
+        },
+        {
+          "const": "oval",
+          "description": "Oval: gerader Mittelteil (`gerade`), oben und unten rund bis zur Höhe",
+          "type": "string"
+        }
+      ]
+    },
     "RandJson": {
       "additionalProperties": false,
       "description": "Ausgefranster Rand (Textured Edge, ART-Datensatz 0x32: Seite, Spanne, Texture). Standard wie der Effekt-Datensatz\nim Stil der Musterdesigns (Seite 2, Spanne 1,5 mm).",
@@ -6089,6 +6140,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "ERZEUGT aus dem Rust-Kern (stick-kern/src/format.rs, stick-api) – nicht von Hand ändern; neu erzeugen: stick api exportieren",
   "properties": {
+    "eigener_rahmen": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EigenerRahmenJson"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "**Eigener Rahmen** (Rechteck/Oval nach eigenen Maßen): ist das Feld gesetzt, gilt es statt `rahmen`"
+    },
     "einstellungen": {
       "anyOf": [
         {
@@ -6143,8 +6206,8 @@
     },
     "rahmen": {
       "default": "artista 130 x 100",
-      "description": "Stickrahmen (Befehl `rahmen_liste`)",
-      "enum": [
+      "description": "Stickrahmen (Befehl `rahmen_liste`); bei einem eigenen Rahmen sein Name (gilt dann `eigener_rahmen`)",
+      "examples": [
         "artista 255 x 145 Oval",
         "artista 255 x 145 Oval Rotated",
         "artista 200 x 155",

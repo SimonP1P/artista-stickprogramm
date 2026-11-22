@@ -26,6 +26,7 @@
   import KopierenDialog from "$lib/dialoge/KopierenDialog.svelte";
   import NummerDialog from "$lib/dialoge/NummerDialog.svelte";
   import RahmenDialog from "$lib/dialoge/RahmenDialog.svelte";
+  import EigeneRahmenDialog from "$lib/dialoge/EigeneRahmenDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import {
@@ -667,6 +668,7 @@
   {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "motiv_speichern"}<MotivSpeichernDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "kopieren"}<KopierenDialog weg={arbeit.dialog.weg} schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "eigene_rahmen"}<EigeneRahmenDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "nummer"}<NummerDialog vor={arbeit.dialog.vor} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "farben_mischen"}<FarbenMischenDialog objekt={arbeit.dialog.objekt} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "warnung"}

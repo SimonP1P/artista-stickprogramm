@@ -105,7 +105,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Funktion | Stand | Bemerkung |
 |---|---|---|
 | Rahmenliste, Ausrichtung | ✅ | welche Rahmen die 185 annimmt: prüfen |
-| Eigene Rahmen (Rechteck, Oval, Sliding, 3-Position) | ⬜ | Kap. 6 |
+| Eigene Rahmen (Rechteck, Oval, Sliding, 3-Position) | ✅ Rechteck und Oval (N7b, Bericht 27 §5); beim Senden Rahmen der 185 genannt; Sliding/3-Position ➖ (andere Maschinen) | Kap. 6 |
 | Garnkarten, Garn suchen/zuordnen | ✅ | CIEDE2000 |
 | Eigene Garnkarten, Farben mischen | ⬜ 🖥 | |
 | Stoffe (8 + Defaults) | ✅ | |

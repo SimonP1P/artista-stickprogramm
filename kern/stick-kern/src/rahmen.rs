@@ -45,7 +45,14 @@ pub struct Rahmen {
     /// Umriss des Stickfelds
     pub form: Linie,
     pub hinweis: String,
+    /// eigener Rahmen (nicht in der Liste der artista 185)
+    pub eigen: bool,
 }
+
+/// Kleinste und größte Seite eines eigenen Rahmens in mm (eigene Festlegung: auch größer als jeder Rahmen der 185,
+/// damit sich große Designs gestalten lassen – gesendet wird nur, was in einen Rahmen der 185 passt)
+pub const EIGEN_MIN: f64 = 10.0;
+pub const EIGEN_MAX: f64 = 1000.0;
 
 impl Rahmen {
     fn neu(name: &str, breite: f64, hoehe: f64, form: Option<Linie>, hinweis: &str) -> Rahmen {
@@ -55,7 +62,48 @@ impl Rahmen {
             hoehe,
             form: form.unwrap_or_else(|| rechteck(p(0.0, 0.0), breite, hoehe)),
             hinweis: hinweis.into(),
+            eigen: false,
         }
+    }
+
+    /// **Eigener Rahmen** (Handbuch Kap. 6 S. 49–51 „Creating custom hoops“): Rechteck Breite × Höhe, oder Oval mit
+    /// geradem Mittelteil `gerade` mm hoch („Rectangle Height“) und oben/unten Halbellipsen bis zur Gesamthöhe
+    /// („Total Height“); `gerade` = 0 ergibt eine Ellipse.
+    pub fn eigener(name: &str, oval: bool, breite: f64, hoehe: f64, gerade: f64) -> Result<Rahmen, String> {
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("eigener_rahmen: Name fehlt".into());
+        }
+        for (feld, v) in [("breite", breite), ("hoehe", hoehe)] {
+            if !(EIGEN_MIN..=EIGEN_MAX).contains(&v) {
+                return Err(format!("eigener_rahmen: {feld} {v} mm außerhalb {EIGEN_MIN} … {EIGEN_MAX}"));
+            }
+        }
+        if oval && !(0.0..hoehe).contains(&gerade) {
+            return Err(format!("eigener_rahmen: gerade {gerade} mm muss kleiner als die Höhe sein"));
+        }
+        let form = if oval {
+            let (a, g) = (breite / 2.0, gerade / 2.0);
+            let c = (hoehe - gerade) / 2.0;
+            let n = 48;
+            let bogen = |mitte: f64, von: f64| -> Vec<Punkt> {
+                (0..=n)
+                    .map(|i| {
+                        let w = von + PI * i as f64 / n as f64;
+                        p(a * w.cos(), mitte + c * w.sin())
+                    })
+                    .collect()
+            };
+            let mut f = bogen(g, 0.0);
+            f.extend(bogen(-g, PI));
+            f.dedup_by(|x, y| (x.x - y.x).abs() < 1e-9 && (x.y - y.y).abs() < 1e-9);
+            Some(f)
+        } else {
+            None
+        };
+        let mut r = Rahmen::neu(name, breite, hoehe, form, "eigener Rahmen – die artista 185 kennt ihn nicht");
+        r.eigen = true;
+        Ok(r)
     }
 
     pub fn enthaelt(&self, q: Punkt) -> bool {
@@ -77,6 +125,7 @@ impl Rahmen {
             hoehe: self.breite,
             form: self.form.iter().map(|&q| drehen(q, 90.0, p(0.0, 0.0))).collect(),
             hinweis: self.hinweis.clone(),
+            eigen: self.eigen,
         }
     }
 }
@@ -138,5 +187,19 @@ mod tests {
         assert!(g.enthaelt(p(127.0, 0.0)) && !g.enthaelt(p(0.0, 127.0)));
         assert!(rahmen("artista 130 x 100 Rotated").is_ok());
         assert!(rahmen("Brother").is_err());
+    }
+
+    #[test]
+    fn eigene() {
+        let r = Rahmen::eigener("Kissen", false, 300.0, 200.0, 0.0).unwrap();
+        assert!(r.eigen && r.enthaelt(p(149.0, 99.0)) && !r.enthaelt(p(151.0, 0.0)));
+        let o = Rahmen::eigener("Oval", true, 100.0, 160.0, 60.0).unwrap();
+        // gerader Teil ±30 mm bei x = ±50, Scheitel bei y = ±80
+        assert!(o.enthaelt(p(49.9, 29.0)) && o.enthaelt(p(0.0, 79.9)) && !o.enthaelt(p(49.0, 75.0)));
+        let e = Rahmen::eigener("Ellipse", true, 100.0, 60.0, 0.0).unwrap();
+        assert!(e.enthaelt(p(49.9, 0.0)) && !e.enthaelt(p(40.0, 25.0)));
+        assert!(Rahmen::eigener("", false, 100.0, 100.0, 0.0).is_err());
+        assert!(Rahmen::eigener("x", false, 5.0, 100.0, 0.0).is_err());
+        assert!(Rahmen::eigener("x", true, 100.0, 100.0, 100.0).is_err());
     }
 }

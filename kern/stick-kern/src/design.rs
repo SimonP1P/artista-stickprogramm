@@ -1606,7 +1606,16 @@ impl Design {
             kuerzeste,
             objekt_einstellungen,
             name: d.name,
-            rahmen: rahmen(&d.rahmen)?,
+            rahmen: match &d.eigener_rahmen {
+                Some(e) => crate::rahmen::Rahmen::eigener(
+                    &e.name,
+                    e.form == crate::format::RahmenForm::Oval,
+                    e.breite,
+                    e.hoehe,
+                    e.gerade,
+                )?,
+                None => rahmen(&d.rahmen)?,
+            },
             garnkarte: d.garnkarte,
             einstellungen: e,
             objekte,

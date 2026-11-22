@@ -19,6 +19,63 @@
    "modus": "einfach"
   },
   {
+   "id": "design.eigener_rahmen.breite",
+   "gruppe": "Design",
+   "name": "Eigener Rahmen: Breite",
+   "wirkung": "Stickfeld eines eigenen Rahmens (Rechteck/Oval)",
+   "ebene": "design",
+   "gilt_fuer": [],
+   "json_design": "eigener_rahmen.breite",
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": null,
+   "bereich": [
+    10,
+    1000
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 6 S. 49–51 (Creating custom hoops); Bereich eigene Festlegung",
+   "modus": "einfach"
+  },
+  {
+   "id": "design.eigener_rahmen.hoehe",
+   "gruppe": "Design",
+   "name": "Eigener Rahmen: Höhe",
+   "wirkung": "Oval: Gesamthöhe („Total Height“)",
+   "ebene": "design",
+   "gilt_fuer": [],
+   "json_design": "eigener_rahmen.hoehe",
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": null,
+   "bereich": [
+    10,
+    1000
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 6 S. 49–51; Bereich eigene Festlegung",
+   "modus": "einfach"
+  },
+  {
+   "id": "design.eigener_rahmen.gerade",
+   "gruppe": "Design",
+   "name": "Eigener Rahmen: gerader Teil",
+   "wirkung": "Oval: Höhe des geraden Mittelteils („Rectangle Height“), 0 = Ellipse",
+   "ebene": "design",
+   "gilt_fuer": [],
+   "json_design": "eigener_rahmen.gerade",
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": 0,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch Kap. 6 S. 50",
+   "modus": "einfach"
+  },
+  {
    "id": "design.stoff",
    "gruppe": "Design",
    "name": "Stoff",

@@ -504,6 +504,8 @@ export type DesignEingabe = {
 
 /** **Ein Design**: Rahmen, Stoff, Garnkarte, Objekte. Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. */
 export type DesignJson = {
+  /** **Eigener Rahmen** (Rechteck/Oval nach eigenen Maßen): ist das Feld gesetzt, gilt es statt `rahmen` */
+  eigener_rahmen?: (EigenerRahmenJson | null);
   /** Einzelwerte des Stoffs/Stils überschreiben, z. B. {"satin": {"zugausgleich": 0.3}} (Parameterkatalog) */
   einstellungen?: (EinstellungenJson | null);
   /** Endpunkt (Standard: Sprung zurück zur Rahmenmitte) */
@@ -532,10 +534,10 @@ export type DesignJson = {
   /** Stickobjekte in Stickreihenfolge */
   objekte?: ObjektJson[];
   /**
-   * Stickrahmen (Befehl `rahmen_liste`)
+   * Stickrahmen (Befehl `rahmen_liste`); bei einem eigenen Rahmen sein Name (gilt dann `eigener_rahmen`)
    * @default "artista 130 x 100"
    */
-  rahmen?: "artista 255 x 145 Oval" | "artista 255 x 145 Oval Rotated" | "artista 200 x 155" | "artista 200 x 155 Rotated" | "artista 130 x 100" | "artista 130 x 100 Rotated" | "artista 50 x 72 Free Arm" | "artista 50 x 72 Free Arm Rotated" | "artista 50 x 72 Normal" | "artista 50 x 72 Normal Rotated" | "artista 40 x 60" | "artista 40 x 60 Rotated" | "artista 400 x 150 MEGA" | "artista 400 x 150 MEGA Rotated";
+  rahmen?: string;
   /** Startpunkt (Standard: Rahmenmitte) */
   start?: (Start | null);
   /**
@@ -566,6 +568,27 @@ export type EffekteJson = {
    * `tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen)
    */
   welle?: (PunktAngabe | null);
+};
+
+/**
+ * **Eigener Rahmen** (Handbuch Kap. 6 S. 49–51 „Creating custom hoops“): Stickfeld nach eigenen Maßen. Zum Gestalten
+ * frei; beim Senden prüft das Programm, in welchen Rahmen der artista 185 die Stiche passen, und nennt ihn (passt
+ * keiner, wird nicht gesendet). Die Liste der eigenen Rahmen verwalten `rahmen_speichern`/`rahmen_loeschen`.
+ */
+export type EigenerRahmenJson = {
+  /** Breite des Stickfelds in mm (10 … 1000) */
+  breite: number;
+  /** @default "rechteck" */
+  form?: RahmenForm;
+  /**
+   * Oval: Höhe des geraden Mittelteils in mm („Rectangle Height“; 0 = Ellipse)
+   * @default 0.0
+   */
+  gerade?: number;
+  /** Höhe des Stickfelds in mm (10 … 1000; Oval: Gesamthöhe „Total Height“) */
+  hoehe: number;
+  /** Name (Rahmenliste; nicht der Name eines Rahmens der 185) */
+  name: string;
 };
 
 /** Ein Design in ein anderes einfügen. */
@@ -2294,16 +2317,31 @@ export type Punkt = number[];
 /** Punkte einer Linie oder Fläche: Punktliste `[[x, y], …]` in mm oder eine Form. */
 export type PunktAngabe = (Punkt[] | Form);
 
+/** Form eines eigenen Rahmens (Handbuch Kap. 6: Format Rectangle / Oval) */
+export type RahmenForm = ("rechteck" | "oval");
+
 /** Stickrahmen: Stickfeld und Umriss. */
 export type RahmenInfo = {
   /** Stickfeld x in mm */
   breite: number;
+  /** eigener Rahmen: seine Angabe (für `eigener_rahmen` im Design); ohne = Rahmen der artista 185 */
+  eigen?: (EigenerRahmenJson | null);
   /** Umriss des Stickfelds [[x, y], …] in mm */
   form: Punkt[];
   hinweis: string;
   /** Stickfeld y in mm */
   hoehe: number;
   name: string;
+};
+
+/** Eingabe von `rahmen_loeschen`. */
+export type RahmenLoeschenEingabe = {
+  name: string;
+};
+
+/** Eingabe von `rahmen_speichern`. */
+export type RahmenSpeichernEingabe = {
+  rahmen: EigenerRahmenJson;
 };
 
 /**
@@ -3808,8 +3846,12 @@ export interface Befehle {
   parameter_katalog: { eingabe: Leer; ausgabe: Parameter[] };
   /** PhotoSnap: Foto als Reihen von Zickzackstichen (einfarbig oder vier Farblagen) – neues Design mit einem Objekt */
   photosnap: { eingabe: PhotosnapEingabe; ausgabe: PhotosnapErgebnis };
-  /** Stickrahmen der artista 185 mit Stickfeld und Umriss */
+  /** Stickrahmen der artista 185 mit Stickfeld und Umriss, danach die eigenen Rahmen (Feld `eigen`) */
   rahmen_liste: { eingabe: Leer; ausgabe: RahmenInfo[] };
+  /** Eigenen Rahmen löschen; Ergebnis: neue Rahmenliste */
+  rahmen_loeschen: { eingabe: RahmenLoeschenEingabe; ausgabe: RahmenInfo[] };
+  /** Eigenen Rahmen speichern (Rechteck/Oval, Handbuch Kap. 6) – gleicher Name ersetzt; Ergebnis: neue Rahmenliste */
+  rahmen_speichern: { eingabe: RahmenSpeichernEingabe; ausgabe: RahmenInfo[] };
   /** Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe */
   reihenfolge_aendern: { eingabe: ReihenfolgeEingabe; ausgabe: ReihenfolgeErgebnis };
   /** Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) */
@@ -3888,6 +3930,8 @@ export const BEFEHLE = [
   "parameter_katalog",
   "photosnap",
   "rahmen_liste",
+  "rahmen_loeschen",
+  "rahmen_speichern",
   "reihenfolge_aendern",
   "saeulen_vorschau",
   "schrift_stile",

@@ -1,7 +1,7 @@
 <script lang="ts">
   // Einfacher Modus: Assistent in 4 Schritten (UEBERGABE §2/§3 „Assistent“). Jede Eingabe ändert das Design-JSON;
   // Stiche, Größe, Garne und Prüfungen kommen aus dem Kern (`design_berechnen`).
-  import type { ObjektJson, TextJson, TtfJson, MonogrammJson, Transformation } from "$kern/kern";
+  import type { ObjektJson, TextJson, TtfJson, MonogrammJson, Transformation, RahmenInfo } from "$kern/kern";
   import { arbeit } from "./arbeit.svelte";
   import { designEinfuegen, expExportieren, oeffnen, speichern } from "./dateien.svelte";
   import Icon from "./Icon.svelte";
@@ -25,8 +25,9 @@
   });
 
   const e = $derived(arbeit.ergebnis);
-  const rahmen = $derived(arbeit.rahmenListe.find((r) => r.name === arbeit.design.rahmen));
-  const quer = $derived(/ Rotated$/.test(arbeit.design.rahmen ?? ""));
+  const rahmen = $derived(arbeit.rahmen);
+  const eigen = $derived(!!arbeit.design.eigener_rahmen);
+  const quer = $derived(!eigen && / Rotated$/.test(arbeit.design.rahmen ?? ""));
   const rahmenBasis = $derived(arbeit.rahmenListe.filter((r) => !/ Rotated$/.test(r.name)));
 
   // ---- Schritt 2: Elemente (Wunsch Nutzer 21.11.: Kacheln → Element bearbeiten → „Elemente (n)“ mit Liste und
@@ -225,14 +226,13 @@
     }, gruppe);
   }
 
-  function rahmenWaehlen(basis: string) {
-    arbeit.aendern((d) => {
-      d.rahmen = (quer ? `${basis} Rotated` : basis) as typeof d.rahmen;
-    });
+  function rahmenWaehlen(r: RahmenInfo) {
+    // eigener Rahmen: wie angelegt (quer = eigener Rahmen mit vertauschten Maßen)
+    arbeit.rahmenWaehlen(r.eigen ? r.name : quer ? `${r.name} Rotated` : r.name);
   }
   function querUmschalten(an: boolean) {
     const basis = (arbeit.design.rahmen ?? "artista 130 x 100").replace(/ Rotated$/, "");
-    arbeit.aendern((d) => (d.rahmen = (an ? `${basis} Rotated` : basis) as typeof d.rahmen));
+    arbeit.rahmenWaehlen(an ? `${basis} Rotated` : basis);
   }
 
   function textEinfuegen() {
@@ -382,8 +382,8 @@
       <p class="mut" style="margin:0 0 12px">Welcher Rahmen ist an der Maschine eingesetzt?</p>
       <div style="display:flex; flex-direction:column; gap:6px">
         {#each rahmenBasis as r (r.name)}
-          {@const an = (arbeit.design.rahmen ?? "").replace(/ Rotated$/, "") === r.name}
-          <button class="rk" class:on={an} aria-pressed={an} onclick={() => rahmenWaehlen(r.name)}>
+          {@const an = r.eigen ? eigen && arbeit.design.rahmen === r.name : !eigen && (arbeit.design.rahmen ?? "").replace(/ Rotated$/, "") === r.name}
+          <button class="rk" class:on={an} aria-pressed={an} onclick={() => rahmenWaehlen(r)}>
             <span class="pic" aria-hidden="true">
               <svg viewBox="{-r.breite / 2 - 2} {-r.hoehe / 2 - 2} {r.breite + 4} {r.hoehe + 4}" style="width:46px; height:46px">
                 <path
@@ -398,16 +398,20 @@
               <span class="hd" style="font-size:16px">
                 {r.name.replace(/^artista /, "").replace(/ x /, " × ")}
                 {#if r.name === "artista 130 x 100"}<span class="tag tag-accent" style="margin-left:8px; font-family:var(--font-body); font-weight:400">Standard</span>{/if}
+                {#if r.eigen}<span class="tag" style="margin-left:8px; font-family:var(--font-body); font-weight:400" title="Die artista 185 kennt diesen Rahmen nicht – beim Senden nennt das Programm einen passenden Rahmen der 185">eigener Rahmen</span>{/if}
               </span>
               <span class="mut small">Stickfeld {zahl(r.breite)} × {zahl(r.hoehe)} mm{r.hinweis ? ` · ${r.hinweis}` : ""}</span>
             </span>
           </button>
         {/each}
       </div>
-      <label style="display:flex; gap:8px; align-items:center; margin:10px 0 18px; font-size:13px">
-        <input type="checkbox" checked={quer} onchange={(ev) => querUmschalten((ev.currentTarget as HTMLInputElement).checked)} style="width:16px; height:16px; accent-color:var(--color-accent)" />
-        Rahmen quer einspannen (um 90° gedreht)
-      </label>
+      <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; margin:10px 0 18px; font-size:13px">
+        <label style="display:flex; gap:8px; align-items:center" class:mut={eigen} title={eigen ? "Eigener Rahmen: Breite und Höhe im Dialog „Eigener Rahmen …“ tauschen" : ""}>
+          <input type="checkbox" checked={quer} disabled={eigen} onchange={(ev) => querUmschalten((ev.currentTarget as HTMLInputElement).checked)} style="width:16px; height:16px; accent-color:var(--color-accent)" />
+          Rahmen quer einspannen (um 90° gedreht)
+        </label>
+        <button class="btn btn-ghost" style="font-size:13px" title="Rahmen nach eigenen Maßen (Rechteck oder Oval) – zum Gestalten; die artista 185 stickt in ihren eigenen Rahmen" onclick={() => (arbeit.dialog = { art: "eigene_rahmen" })}>Eigener Rahmen …</button>
+      </div>
       <h3 style="font-size:19px; margin:0 0 6px">Stoff</h3>
       <p class="mut small" style="margin:0 0 8px">Der Stoff ändert Dichte, Unterlage und Zugausgleich – die Stiche werden sofort neu berechnet.</p>
       <div role="radiogroup" aria-label="Stoff" style="display:flex; flex-direction:column; gap:5px">

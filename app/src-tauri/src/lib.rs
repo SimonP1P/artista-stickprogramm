@@ -68,6 +68,8 @@ pub fn run() {
                 k.schriften_ablage(daten.join("schriften"));
                 // eigene Motivsätze (Create Pattern) ebenfalls im Datenordner
                 k.motive_ablage(daten.join("motive"));
+                // eigene Rahmen (Create custom hoop)
+                k.rahmen_ablage(daten.join("rahmen.json"));
             }
             app.manage(Arc::new(k));
 

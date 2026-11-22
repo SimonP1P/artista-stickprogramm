@@ -15,6 +15,22 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Eigene Rahmen (Nachtauftrag N7b, 4b.13; Commit COMMIT)
+- **Neues Design-Feld `eigener_rahmen`** `{name, form: "rechteck"|"oval", breite, hoehe, gerade}` (mm; Oval: `hoehe` =
+  Gesamthöhe, `gerade` = gerader Mittelteil, 0 = Ellipse). Ist es gesetzt, gilt es statt `rahmen`; `rahmen` trägt dann
+  denselben Namen. **Schema:** `rahmen` ist jetzt ein freier Text (Rahmen der 185 als `examples`, nicht mehr `enum`).
+- **Neue Befehle:** `rahmen_speichern` `{rahmen}` und `rahmen_loeschen` `{name}` → neue Rahmenliste. `rahmen_liste`
+  liefert die eigenen Rahmen hinter denen der 185, mit dem neuen Feld `eigen` (Angabe für `eigener_rahmen`; bei
+  Rahmen der 185 fehlt es).
+- `DesignEingabe.rahmen` mit dem Namen eines eigenen Rahmens setzt `eigener_rahmen` aus der Ablage.
+- **Senden:** bei eigenem Rahmen steht im Plan (`hinweise`) der Rahmen der 185, in den die Stiche passen; passt keiner
+  → Fehler mit Code `ausserhalb`.
+- **Oberfläche (umgesetzt):** Dialog „Eigene Rahmen“ (`arbeit.dialog = {art: "eigene_rahmen"}`), `arbeit.rahmenWaehlen(name)`
+  setzt bzw. entfernt `eigener_rahmen`, `arbeit.rahmen` = Rahmen des Designs (auch ein eigener). Assistent: eigene
+  Rahmen in der Liste (Marke „eigener Rahmen“), Knopf „Eigener Rahmen …“, „quer einspannen“ bei eigenen gesperrt.
+  Inspektor: Auswahl mit Gruppen, Knopf „Eigene …“. Neu/Bild/SVG übernehmen den eigenen Rahmen. Tauri: Ablage
+  `<Datenordner>/rahmen.json`.
+
 ## 22.11.2026 – Fremde Stickdateien öffnen (Nachtauftrag N7a, 4b.13; Commit 2b1599a)
 - **Neue Objektart `stiche`** (Stichdaten, wie „Grade D“ im Original): Felder `stiche` (Base64 – vom Kern erzeugt,
   nicht von Hand bearbeiten) und `quelle` (Anzeige, z. B. „rose.pes (PES)“), dazu alle gemeinsamen Felder (`farbe`,

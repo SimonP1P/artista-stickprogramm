@@ -933,3 +933,41 @@ fn craft_stitches() {
     assert_eq!(r["objekt"]["art"], "stippling");
     assert_eq!(r["objekt"]["loecher"].as_array().unwrap().len(), 1);
 }
+
+#[test]
+fn eigene_rahmen() {
+    let k = kontext();
+    let datei = std::env::temp_dir().join(format!("stick_api_test_rahmen_{}.json", std::process::id()));
+    let _ = std::fs::remove_file(&datei);
+    k.rahmen_ablage(datei.clone());
+    let vorher = ausfuehren(&k, "rahmen_liste", json!({})).unwrap().as_array().unwrap().len();
+    let kissen = json!({"name": "Kissen 300", "form": "rechteck", "breite": 500, "hoehe": 300});
+    let l = ausfuehren(&k, "rahmen_speichern", json!({"rahmen": kissen})).unwrap();
+    assert_eq!(l.as_array().unwrap().len(), vorher + 1);
+    let e = l.as_array().unwrap().iter().find(|r| r["name"] == "Kissen 300").unwrap();
+    assert_eq!(e["eigen"]["breite"], 500.0);
+    // Name eines Rahmens der 185 ist nicht erlaubt; Oval braucht gerade < hoehe
+    assert!(ausfuehren(&k, "rahmen_speichern", json!({"rahmen": {"name": "artista 130 x 100", "breite": 50, "hoehe": 50}})).is_err());
+    assert!(ausfuehren(&k, "rahmen_speichern", json!({"rahmen": {"name": "O", "form": "oval", "breite": 50, "hoehe": 50, "gerade": 60}})).is_err());
+    // Design im eigenen Rahmen: 440 mm breit – größer als jeder Rahmen der 185 (MEGA 400)
+    let gross = json!({"rahmen": "Kissen 300", "eigener_rahmen": kissen,
+        "objekte": [{"art": "lauf", "punkte": [[-220, 0], [220, 0]]}]});
+    let r = ausfuehren(&k, "design_berechnen", json!({"design": gross})).unwrap();
+    assert_eq!(r["ausserhalb"], 0);
+    assert_eq!(r["rahmen"]["name"], "Kissen 300");
+    // Rahmen der Oberfläche: Name aus der Ablage setzt `eigener_rahmen`
+    let r = ausfuehren(&k, "design_berechnen", json!({"design": {"objekte": []}, "rahmen": "Kissen 300"})).unwrap();
+    assert_eq!(r["rahmen"]["breite"], 500.0);
+    // Senden: passt in keinen Rahmen der 185 → Fehler; kleines Design → Hinweis mit Rahmen der 185
+    let wahl = json!({"icon": true, "farben": true, "sticken": false});
+    let f = ausfuehren(&k, "maschine_planen", json!({"design": gross, "port": "", "simulation": true, "wahl": wahl})).unwrap_err();
+    assert_eq!(f.code, Some(FehlerCode::Ausserhalb), "{f}");
+    let klein = json!({"rahmen": "Kissen 300", "eigener_rahmen": kissen,
+        "objekte": [{"art": "lauf", "punkte": [[-40, 0], [40, 0]]}]});
+    let plan = ausfuehren(&k, "maschine_planen", json!({"design": klein, "port": "", "simulation": true, "wahl": wahl})).unwrap();
+    let h = plan["hinweise"].as_array().unwrap();
+    assert!(h[0].as_str().unwrap().contains("Rahmen „artista"), "{h:?}");
+    let l = ausfuehren(&k, "rahmen_loeschen", json!({"name": "Kissen 300"})).unwrap();
+    assert_eq!(l.as_array().unwrap().len(), vorher);
+    let _ = std::fs::remove_file(&datei);
+}

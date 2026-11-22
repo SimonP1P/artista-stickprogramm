@@ -1331,6 +1331,18 @@
     "DesignJson": {
       "description": "**Ein Design**: Rahmen, Stoff, Garnkarte, Objekte. Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben.",
       "properties": {
+        "eigener_rahmen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EigenerRahmenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "**Eigener Rahmen** (Rechteck/Oval nach eigenen Maßen): ist das Feld gesetzt, gilt es statt `rahmen`"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -1385,8 +1397,8 @@
         },
         "rahmen": {
           "default": "artista 130 x 100",
-          "description": "Stickrahmen (Befehl `rahmen_liste`)",
-          "enum": [
+          "description": "Stickrahmen (Befehl `rahmen_liste`); bei einem eigenen Rahmen sein Name (gilt dann `eigener_rahmen`)",
+          "examples": [
             "artista 255 x 145 Oval",
             "artista 255 x 145 Oval Rotated",
             "artista 200 x 155",
@@ -1499,6 +1511,42 @@
           "description": "**Welle** (Wave Effect): Leitlinie [[x, y], …] in mm quer durch die Fläche, die Reihen folgen ihr (nur\n`tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen)"
         }
       },
+      "type": "object"
+    },
+    "EigenerRahmenJson": {
+      "additionalProperties": false,
+      "description": "**Eigener Rahmen** (Handbuch Kap. 6 S. 49–51 „Creating custom hoops“): Stickfeld nach eigenen Maßen. Zum Gestalten\nfrei; beim Senden prüft das Programm, in welchen Rahmen der artista 185 die Stiche passen, und nennt ihn (passt\nkeiner, wird nicht gesendet). Die Liste der eigenen Rahmen verwalten `rahmen_speichern`/`rahmen_loeschen`.",
+      "properties": {
+        "breite": {
+          "description": "Breite des Stickfelds in mm (10 … 1000)",
+          "format": "double",
+          "type": "number"
+        },
+        "form": {
+          "$ref": "#/$defs/RahmenForm",
+          "default": "rechteck"
+        },
+        "gerade": {
+          "default": 0.0,
+          "description": "Oval: Höhe des geraden Mittelteils in mm („Rectangle Height“; 0 = Ellipse)",
+          "format": "double",
+          "type": "number"
+        },
+        "hoehe": {
+          "description": "Höhe des Stickfelds in mm (10 … 1000; Oval: Gesamthöhe „Total Height“)",
+          "format": "double",
+          "type": "number"
+        },
+        "name": {
+          "description": "Name (Rahmenliste; nicht der Name eines Rahmens der 185)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "breite",
+        "hoehe"
+      ],
       "type": "object"
     },
     "EinfuegenEingabe": {
@@ -6111,6 +6159,21 @@
       ],
       "description": "Punkte einer Linie oder Fläche: Punktliste `[[x, y], …]` in mm oder eine Form."
     },
+    "RahmenForm": {
+      "description": "Form eines eigenen Rahmens (Handbuch Kap. 6: Format Rectangle / Oval)",
+      "oneOf": [
+        {
+          "const": "rechteck",
+          "description": "Rechteck Breite × Höhe",
+          "type": "string"
+        },
+        {
+          "const": "oval",
+          "description": "Oval: gerader Mittelteil (`gerade`), oben und unten rund bis zur Höhe",
+          "type": "string"
+        }
+      ]
+    },
     "RahmenInfo": {
       "description": "Stickrahmen: Stickfeld und Umriss.",
       "properties": {
@@ -6118,6 +6181,17 @@
           "description": "Stickfeld x in mm",
           "format": "double",
           "type": "number"
+        },
+        "eigen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EigenerRahmenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "eigener Rahmen: seine Angabe (für `eigener_rahmen` im Design); ohne = Rahmen der artista 185"
         },
         "form": {
           "description": "Umriss des Stickfelds [[x, y], …] in mm",
@@ -6144,6 +6218,32 @@
         "hoehe",
         "form",
         "hinweis"
+      ],
+      "type": "object"
+    },
+    "RahmenLoeschenEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `rahmen_loeschen`.",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "RahmenSpeichernEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `rahmen_speichern`.",
+      "properties": {
+        "rahmen": {
+          "$ref": "#/$defs/EigenerRahmenJson"
+        }
+      },
+      "required": [
+        "rahmen"
       ],
       "type": "object"
     },
@@ -10145,9 +10245,33 @@
         },
         "type": "array"
       },
-      "beschreibung": "Stickrahmen der artista 185 mit Stickfeld und Umriss",
+      "beschreibung": "Stickrahmen der artista 185 mit Stickfeld und Umriss, danach die eigenen Rahmen (Feld `eigen`)",
       "eingabe": {
         "$ref": "#/$defs/Leer"
+      }
+    },
+    "rahmen_loeschen": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/RahmenInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Eigenen Rahmen löschen; Ergebnis: neue Rahmenliste",
+      "eingabe": {
+        "$ref": "#/$defs/RahmenLoeschenEingabe"
+      }
+    },
+    "rahmen_speichern": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/RahmenInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Eigenen Rahmen speichern (Rechteck/Oval, Handbuch Kap. 6) – gleicher Name ersetzt; Ergebnis: neue Rahmenliste",
+      "eingabe": {
+        "$ref": "#/$defs/RahmenSpeichernEingabe"
       }
     },
     "reihenfolge_aendern": {
