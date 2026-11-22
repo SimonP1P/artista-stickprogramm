@@ -121,7 +121,7 @@ Gruppe rückwärts, dann die Säulen vorwärts.
 
 | # | Maßnahme | Nutzen | Aufwand | Grundlage |
 |---|---|---|---|---|
-| 1 | **Kalibrierblatt am Gerät** (siehe §1) auf 2 Stoffen sticken und messen: Verzug, Lücken Umriss/Füllung, halten die Vernähstiche | entscheidet, ob §1 überhaupt nötig ist | klein (Design erzeugen ~1 h; Person vor Ort) | Gerätetest = höchste Quelle |
+| 1 | **Kalibrierblatt am Gerät** (siehe §1) auf 2 Stoffen sticken und messen: Verzug, Lücken Umriss/Füllung, halten die Vernähstiche | entscheidet, ob §1 überhaupt nötig ist | klein (Design vorbereitet: `stickprogramm/beispiele/kalibrierblatt.json`, ROADMAP Vor Ort V12/V13; Person vor Ort) | Gerätetest = höchste Quelle |
 | 2 | **Bild umwandeln mit Closest Join** | kürzere Verbindungen, weniger Fäden | sehr klein | Handbuch (Auto Digitizer), Code FindExitEntry |
 | 3 | **Verbindertyp „Run“** analysieren (Tag im Dialog „Connectors“, Wegführung in MOD1) und umsetzen, zuerst zwischen Buchstaben | weniger Sprungfäden – auf der 185 der größte Gewinn, weil sie nicht schneidet | mittel | Original-Dialog vorhanden |
 | 4 | **Blackwork Run** (Euler-Weg über Liniennetze, 4b.9) | Linienzeichnungen in einem Zug | mittel | Handbuch S. 133 |

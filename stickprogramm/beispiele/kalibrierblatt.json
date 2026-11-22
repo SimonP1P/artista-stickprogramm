@@ -1,0 +1,52 @@
+{
+  "name": "Kalibrierblatt",
+  "rahmen": "artista 130 x 100",
+  "stoff": "Woven Medium Weight",
+  "objekte": [
+    {"art": "satinlinie", "name": "quer 1 mm", "farbe": "#1f3a93", "breite": 1, "unterlage": "auto", "punkte": [[-42, 55], [-12, 55]]},
+    {"art": "satinlinie", "name": "quer 2 mm", "farbe": "#1f3a93", "breite": 2, "unterlage": "auto", "punkte": [[-42, 50], [-12, 50]]},
+    {"art": "satinlinie", "name": "quer 4 mm", "farbe": "#1f3a93", "breite": 4, "unterlage": "auto", "punkte": [[-42, 43], [-12, 43]]},
+    {"art": "satinlinie", "name": "quer 8 mm", "farbe": "#1f3a93", "breite": 8, "unterlage": "auto", "punkte": [[-42, 33], [-12, 33]]},
+    {"art": "satinlinie", "name": "längs 1 mm", "farbe": "#1f3a93", "breite": 1, "unterlage": "auto", "punkte": [[0, 25], [0, 55]]},
+    {"art": "satinlinie", "name": "längs 2 mm", "farbe": "#1f3a93", "breite": 2, "unterlage": "auto", "punkte": [[6, 25], [6, 55]]},
+    {"art": "satinlinie", "name": "längs 4 mm", "farbe": "#1f3a93", "breite": 4, "unterlage": "auto", "punkte": [[14, 25], [14, 55]]},
+    {"art": "satinlinie", "name": "längs 8 mm", "farbe": "#1f3a93", "breite": 8, "unterlage": "auto", "punkte": [[27, 25], [27, 55]]},
+    {
+      "art": "tatami",
+      "name": "Quadrat 30 mm",
+      "farbe": "#c0392b",
+      "umriss": {"rechteck": {"mitte": [-22, 0], "breite": 30, "hoehe": 30}}
+    },
+    {
+      "art": "tatami",
+      "name": "Kreis 30 mm",
+      "farbe": "#c0392b",
+      "umriss": {"kreis": {"mitte": [22, 0], "radius": 15}}
+    },
+    {
+      "art": "lauf",
+      "name": "Umriss Quadrat",
+      "farbe": "#1b2631",
+      "geschlossen": true,
+      "punkte": {"rechteck": {"mitte": [-22, 0], "breite": 30, "hoehe": 30}}
+    },
+    {
+      "art": "lauf",
+      "name": "Umriss Kreis",
+      "farbe": "#1b2631",
+      "geschlossen": true,
+      "punkte": {"kreis": {"mitte": [22, 0], "radius": 15}}
+    },
+    {
+      "art": "text",
+      "name": "Vernähen",
+      "text": "A B C",
+      "alphabet": "Swiss Block",
+      "hoehe": 12,
+      "breite": 80,
+      "farbe": "#27ae60",
+      "unterlage": "auto",
+      "position": [0, -38]
+    }
+  ]
+}
