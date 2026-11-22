@@ -17,6 +17,39 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, **4b.7 Motivlinie ✅** (Motivfüllung offen), 4b.17 SVG einlesen ✅, 4b.8/4b.11 begonnen, 4b.8–4b.15 offen · Parameterkatalog `PARAMETER.md` (167 Parameter) | 🟡 |
 | 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (**am Gerät gesendet und gestickt 21.11.**, Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
 
+## Nachtauftrag 22.11.2026 – HIER ZUERST LESEN (Stand wird nach jedem Schritt nachgetragen)
+**Auftrag des Nutzers (22.11.2026, nachts):** 4b.7 bis 4b.15 selbstständig nacheinander abarbeiten, jede Funktion im
+üblichen Stil in die Oberfläche (Modus einfach/experte/automatisch selbst entscheiden), nach jedem Schritt committen
+und pushen, Stand hier festhalten. Fragen **sammeln** (Liste unten) und erst stellen, wenn alles erledigt ist. Bei
+Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an die Maschine senden.**
+
+**Entscheidungen des Nutzers (alle Vorschläge angenommen, 22.11.2026):**
+1. **Formen mit der Maus zeichnen** zuerst (Punkt für Punkt wie im Original, links = Ecke, rechts = Kurve, Handbuch S. 58).
+2. **Fremde Stickdateien:** lesen DST, PES, JEF, VP3, HUS, EXP (nur Stiche, ohne Objekte); schreiben bleibt EXP + Senden.
+3. **Eigene Rahmen:** zum Gestalten erlaubt; beim Senden Warnung, wenn die 185 den Rahmen nicht kennt – gesendet wird
+   in einen passenden Rahmen der 185.
+4. **Kreuzstich** als Objektart im Programm (Raster, Kreuz, Halbkreuz, Rückstich, Bild → Kreuzstich), kein eigenes Programm.
+5. **Bericht 22:** Verbinder als Laufstich statt Sprung und kürzeste Wege bei „Bild umwandeln“ mitnehmen, wo es passt;
+   Kalibrierblatt bleibt vor Ort.
+
+**Reihenfolge und Stand:**
+| # | Schritt | Stand |
+|---|---|---|
+| N0 | Formen mit der Maus zeichnen (Experte) | ⬜ |
+| N1 | 4b.7 Motivfüllung + eigene Motive | ⬜ |
+| N2 | 4b.8 Effekte (Textured Edge, Wave, Gradient/Open Fill, Color Blending) | ⬜ |
+| N3 | 4b.9 Craft Stitches (Blackwork, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling) | ⬜ |
+| N4 | 4b.10 Applikation Rest (Versatz, Partial Appliqué) | ⬜ |
+| N5 | 4b.11 Automatik (Bild → Umrisse/Satin, Magic Wand, PhotoSnap) + kürzeste Wege | ⬜ |
+| N6 | 4b.12 Anordnen (Ausrichten, Mirror-Merge, Kranz, Kaleidoskop) | ⬜ |
+| N7 | 4b.13 Dateien/Rahmen (fremde Stickdateien, ART mit Objekten, eigene Rahmen) | ⬜ |
+| N8 | 4b.14 Vorlagen (Stile speichern) | ⬜ |
+| N9 | 4b.15 Kreuzstich | ⬜ |
+| N10 | Verbinder als Laufstich (Bericht 22) | ⬜ |
+
+**Gesammelte Fragen an den Nutzer (am Ende stellen):**
+- (noch keine)
+
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
 
