@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Fremde Stickdateien öffnen (Nachtauftrag N7a, 4b.13; Commit COMMIT)
+## 22.11.2026 – Fremde Stickdateien öffnen (Nachtauftrag N7a, 4b.13; Commit 2b1599a)
 - **Neue Objektart `stiche`** (Stichdaten, wie „Grade D“ im Original): Felder `stiche` (Base64 – vom Kern erzeugt,
   nicht von Hand bearbeiten) und `quelle` (Anzeige, z. B. „rose.pes (PES)“), dazu alle gemeinsamen Felder (`farbe`,
   `garn`, `name`, `transform`, `gruppe` …). Feste Einstiche: nicht neu berechnet, nicht zusätzlich vernäht.
