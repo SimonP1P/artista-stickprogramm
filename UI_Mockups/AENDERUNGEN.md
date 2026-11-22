@@ -15,6 +15,20 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – ART-Designs des Originals mit Objekten öffnen (Nachtauftrag N11, 4b.13c; Commit COMMIT)
+- `stickdatei_lesen` liest jetzt auch **`.art`** (Original-Designs der artista V4, z. B. die 287 Musterdesigns der CD).
+  - Ergebnis: je Objekt des Originals ein Objekt `stiche` mit seinen echten Stichen.
+  - Name „Objektart · Marke Nummer Garnname“, Farbe aus der Garnbibliothek des Designs.
+  - Auto-Digitalisier-Designs ohne lesbare Objekte: ein Objekt mit Hinweis.
+- `stickdatei_endungen` liefert zusätzlich `art`.
+- **Neues Feld im Ergebnis:** `objekte` = Zahl der Objekte. Bei Stickdateien ist das je Farbe eins, bei ART die Objekte
+  des Originals. `farben` zählt jetzt Farbwechsel + 1; bei den bisherigen Formaten ändert sich dadurch nichts.
+- **Oberfläche (umgesetzt):**
+  - `dateien.svelte.ts`: Endung `art` in der Liste;
+  - eigener Filter „Original-Design artista V4 (ART)“ im Öffnen-Dialog;
+  - die Meldung nennt „…, N Objekte“, wenn es mehr Objekte als Farben sind.
+- Keine neuen Design-Felder; Objektart `stiche` wie bisher.
+
 ## 22.11.2026 – Verbinder als Laufstich (Nachtauftrag N10, Bericht 22 #3; Commit 0a3e48a)
 - **Neue Einstellungen** unter `einstellungen.verbinder` (Design und je Objekt):
   - `art` – Verbinder zum nächsten Objekt;

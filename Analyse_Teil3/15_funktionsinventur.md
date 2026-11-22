@@ -117,7 +117,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 |---|---|---|
 | An die Maschine senden, aus der Maschine lesen | ✅ | seriell, artista 185 |
 | EXP schreiben/lesen | ✅ | |
-| ART-Designs öffnen (Objekte) | 🟡 | Werkzeuge in Python, nicht im Kern |
+| ART-Designs öffnen (Objekte) | ✅ je Objekt des Originals feste Stiche + Garn + Objektart (N11, Bericht 27 §6); Umwandlung in bearbeitbare Objekte offen | Kern `stick-formate::art` |
 | Fremde Stickdateien öffnen (ohne Objekterkennung, Grade D) | ✅ DST, PES/PEC, JEF, VP3, EXP (N7, Bericht 27); HUS offen; mit Objekterkennung und PES speichern ➖ (Nutzer 22.11.) | Kap. 28 |
 | Designkarte, Magic Box | ➖ | Ziel ist nur das Kabel an der 185 |
 | Druck (Arbeitsblatt) | ⬜ 🖥 | |

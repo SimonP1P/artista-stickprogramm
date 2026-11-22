@@ -8649,7 +8649,7 @@
       "description": "Eingabe von `stickdatei_lesen`.",
       "properties": {
         "pfad": {
-          "description": "Stickdatei (Endung .dst, .pes, .pec, .jef, .vp3, .exp)",
+          "description": "Stickdatei (Endung .art, .dst, .pes, .pec, .jef, .vp3, .exp)",
           "type": "string"
         },
         "rahmen": {
@@ -8676,16 +8676,16 @@
         },
         "design": {
           "$ref": "#/$defs/DesignWert",
-          "description": "neues Design: ein Objekt `stiche` je Farbe, Mitte des Designs = Rahmenmitte"
+          "description": "neues Design: ein Objekt `stiche` je Farbe (ART: je Objekt des Originals), Mitte des Designs = Rahmenmitte"
         },
         "farben": {
-          "description": "Zahl der Farben",
+          "description": "Zahl der Farben (Farbwechsel + 1)",
           "format": "uint",
           "minimum": 0,
           "type": "integer"
         },
         "format": {
-          "description": "Format („DST“, „PES“ …)",
+          "description": "Format („ART“, „DST“, „PES“ …)",
           "type": "string"
         },
         "hinweise": {
@@ -8699,6 +8699,12 @@
           "format": "double",
           "type": "number"
         },
+        "objekte": {
+          "description": "Zahl der Objekte (Stickdateien: je Farbe eins; ART: Objekte des Originals)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
         "stiche": {
           "description": "Zahl der Einstiche",
           "format": "uint",
@@ -8711,6 +8717,7 @@
         "format",
         "stiche",
         "farben",
+        "objekte",
         "breite",
         "hoehe",
         "hinweise"

@@ -9,9 +9,11 @@
 //! in der Datei nur als Nummer: PES-Nummer → Farbname nach dem PEC-Format, Farbname → RGB aus der Original-Garnkarte
 //! `Thread Colors - PES.tch`; JEF-Nummer → Janome-Garnnummer, RGB aus `Thread Colors - SEW.tch` (Janome) des Originals.
 //! DST und EXP haben keine Farben (Standardfolge der Original-Karte `Default.tch`).
+//!
+//! ART-Designs des Originals liest `crate::art` (je Objekt des Originals ein Block, N11, Bericht 27 §6).
 
 /// Endungen, die `lesen` kennt (klein geschrieben).
-pub const ENDUNGEN: &[&str] = &["dst", "pes", "pec", "jef", "vp3", "exp"];
+pub const ENDUNGEN: &[&str] = &["art", "dst", "pes", "pec", "jef", "vp3", "exp"];
 
 /// Ein Farbblock: Einstiche in Zügen (ein Zug endet an einem Sprung oder Fadenschnitt).
 #[derive(Debug, Clone, PartialEq)]
@@ -50,7 +52,7 @@ impl Stickdatei {
 }
 
 /// Standardfolge ohne Farben in der Datei: die 20 Farben der Original-Karte `Default.tch` (Analyse/daten/garnkarten).
-const STANDARD: [[u8; 3]; 20] = [
+pub(crate) const STANDARD: [[u8; 3]; 20] = [
     [0, 255, 0],
     [0, 0, 255],
     [255, 0, 0],
@@ -241,14 +243,18 @@ impl Sammler {
             bloecke: self.bloecke,
             hinweise,
         };
-        // Mitte des Designs auf 0,0
-        if let Some((x0, y0, x1, y1)) = d.grenzen() {
-            let (mx, my) = ((x0 + x1) / 2.0, (y0 + y1) / 2.0);
-            for q in d.bloecke.iter_mut().flat_map(|b| &mut b.zuege).flatten() {
-                *q = (rund(q.0 - mx), rund(q.1 - my));
-            }
-        }
+        zentrieren(&mut d);
         d
+    }
+}
+
+/// Mitte des Designs auf 0,0
+pub(crate) fn zentrieren(d: &mut Stickdatei) {
+    if let Some((x0, y0, x1, y1)) = d.grenzen() {
+        let (mx, my) = ((x0 + x1) / 2.0, (y0 + y1) / 2.0);
+        for q in d.bloecke.iter_mut().flat_map(|b| &mut b.zuege).flatten() {
+            *q = (rund(q.0 - mx), rund(q.1 - my));
+        }
     }
 }
 
@@ -275,7 +281,8 @@ pub fn lesen(daten: &[u8], endung: &str) -> Result<Stickdatei, String> {
         "jef" => jef(daten),
         "vp3" => vp3(daten),
         "exp" => exp(daten),
-        e => Err(format!("Format „{e}“ wird nicht gelesen (möglich: DST, PES, PEC, JEF, VP3, EXP)")),
+        "art" => crate::art::lesen(daten),
+        e => Err(format!("Format „{e}“ wird nicht gelesen (möglich: ART, DST, PES, PEC, JEF, VP3, EXP)")),
     }?;
     if d.bloecke.is_empty() {
         return Err(format!("{}: keine Stiche in der Datei", d.format));

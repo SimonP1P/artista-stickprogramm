@@ -3239,7 +3239,7 @@ export type Stickbarkeit = {
 
 /** Eingabe von `stickdatei_lesen`. */
 export type StickdateiEingabe = {
-  /** Stickdatei (Endung .dst, .pes, .pec, .jef, .vp3, .exp) */
+  /** Stickdatei (Endung .art, .dst, .pes, .pec, .jef, .vp3, .exp) */
   pfad: string;
   /** Rahmen des neuen Designs (ohne Angabe: der kleinste Rahmen der 185, in den alle Stiche passen) */
   rahmen?: string | null;
@@ -3249,15 +3249,17 @@ export type StickdateiEingabe = {
 export type StickdateiErgebnis = {
   /** Größe in mm */
   breite: number;
-  /** neues Design: ein Objekt `stiche` je Farbe, Mitte des Designs = Rahmenmitte */
+  /** neues Design: ein Objekt `stiche` je Farbe (ART: je Objekt des Originals), Mitte des Designs = Rahmenmitte */
   design: DesignWert;
-  /** Zahl der Farben */
+  /** Zahl der Farben (Farbwechsel + 1) */
   farben: number;
-  /** Format („DST“, „PES“ …) */
+  /** Format („ART“, „DST“, „PES“ …) */
   format: string;
   /** Hinweise (unbekannte Farbnummer, größer als jeder Rahmen …) */
   hinweise: string[];
   hoehe: number;
+  /** Zahl der Objekte (Stickdateien: je Farbe eins; ART: Objekte des Originals) */
+  objekte: number;
   /** Zahl der Einstiche */
   stiche: number;
 };

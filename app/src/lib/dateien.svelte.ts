@@ -1,6 +1,7 @@
 // Menü „Datei“: Neu, Öffnen, Speichern, Beispiel, Stickdatei (EXP). Dateien liest und schreibt der Kern
 // (`datei_lesen`, `text_speichern`, `exp_speichern`), die Auswahl der Datei der Dialog von Tauri. Fremde Stickdateien
-// (DST, PES, JEF, VP3, EXP) öffnet `stickdatei_lesen` als feste Stiche je Farbe (Objektart `stiche`).
+// (DST, PES, JEF, VP3, EXP) öffnet `stickdatei_lesen` als feste Stiche je Farbe (Objektart `stiche`), Original-Designs
+// (ART der artista V4) als feste Stiche je Objekt des Originals mit Garnfarbe.
 
 import { open, save } from "@tauri-apps/plugin-dialog";
 import { kern, type DesignJson } from "$kern/kern";
@@ -8,11 +9,12 @@ import { arbeit, alsFehler, leeresDesign } from "./arbeit.svelte";
 
 const DESIGN_FILTER = [{ name: "Stickdesign (JSON)", extensions: ["json"] }];
 /** Endungen von `stickdatei_lesen` (Kern `stickdatei_endungen`) */
-const STICK_ENDUNGEN = ["dst", "pes", "pec", "jef", "vp3", "exp"];
+const STICK_ENDUNGEN = ["art", "dst", "pes", "pec", "jef", "vp3", "exp"];
 const OEFFNEN_FILTER = [
   { name: "Stickdesign oder Stickdatei", extensions: ["json", ...STICK_ENDUNGEN, ...STICK_ENDUNGEN.map((e) => e.toUpperCase())] },
   ...DESIGN_FILTER,
-  { name: "Stickdatei (DST, PES, JEF, VP3, EXP)", extensions: [...STICK_ENDUNGEN, ...STICK_ENDUNGEN.map((e) => e.toUpperCase())] },
+  { name: "Original-Design artista V4 (ART)", extensions: ["art", "ART"] },
+  { name: "Stickdatei (DST, PES, JEF, VP3, EXP)", extensions: STICK_ENDUNGEN.filter((e) => e !== "art").flatMap((e) => [e, e.toUpperCase()]) },
 ];
 
 const istStickdatei = (pfad: string) => STICK_ENDUNGEN.includes(pfad.split(".").pop()?.toLowerCase() ?? "");
@@ -22,7 +24,9 @@ async function stickdatei(pfad: string): Promise<{ design: DesignJson; meldung: 
   const r = await kern("stickdatei_lesen", { pfad });
   const mm = (x: number) => x.toLocaleString("de-DE", { maximumFractionDigits: 1 });
   const meldung =
-    `${r.format}: ${r.stiche.toLocaleString("de-DE")} Stiche, ${r.farben} ${r.farben === 1 ? "Farbe" : "Farben"}, ${mm(r.breite)} × ${mm(r.hoehe)} mm` +
+    `${r.format}: ${r.stiche.toLocaleString("de-DE")} Stiche, ${r.farben} ${r.farben === 1 ? "Farbe" : "Farben"}` +
+    (r.objekte !== r.farben ? `, ${r.objekte} Objekte` : "") +
+    `, ${mm(r.breite)} × ${mm(r.hoehe)} mm` +
     (r.hinweise.length ? ` – ${r.hinweise.join(" · ")}` : "");
   return { design: r.design, meldung };
 }

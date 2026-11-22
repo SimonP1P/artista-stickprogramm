@@ -59,7 +59,12 @@ fn tabelle(key: u32, umgekehrt: bool) -> [u8; 256] {
 
 /// Zeichen-Stream entschlüsseln: Substitution, dann u32 Länge + zlib.
 pub fn stream_entschluesseln(roh: &[u8]) -> Option<Vec<u8>> {
-    let key = schluessel_ableiten(FORMAT_SCHLUESSEL_ESB, 0, 0);
+    substitution_entschluesseln(roh, FORMAT_SCHLUESSEL_ESB)
+}
+
+/// Stream mit Format-Schlüssel entschlüsseln (beide Tabellen-Richtungen), dann u32 Länge + zlib (`Analyse/code/05`).
+pub(crate) fn substitution_entschluesseln(roh: &[u8], format: u32) -> Option<Vec<u8>> {
+    let key = schluessel_ableiten(format, 0, 0);
     for umgekehrt in [false, true] {
         let t = tabelle(key, umgekehrt);
         let d: Vec<u8> = roh.iter().map(|&b| t[b as usize]).collect();
@@ -77,7 +82,7 @@ pub fn stream_entschluesseln(roh: &[u8]) -> Option<Vec<u8>> {
 
 // ---------------------------------------------------------------- gepackte Zahlen (WESSYS)
 
-fn packed(d: &[u8], i: &mut usize) -> Option<u64> {
+pub(crate) fn packed(d: &[u8], i: &mut usize) -> Option<u64> {
     let mut b = *d.get(*i)? as u64;
     *i += 1;
     let mut v = b;
@@ -91,7 +96,7 @@ fn packed(d: &[u8], i: &mut usize) -> Option<u64> {
     Some(v)
 }
 
-fn packed_wort(d: &[u8], i: &mut usize) -> Option<u64> {
+pub(crate) fn packed_wort(d: &[u8], i: &mut usize) -> Option<u64> {
     let mut v = *d.get(*i)? as u64 | ((*d.get(*i + 1)? as u64) << 8);
     *i += 2;
     if v & 0x8000 != 0 {

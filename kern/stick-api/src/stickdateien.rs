@@ -1,6 +1,7 @@
 //! Fremde Stickdateien öffnen (Nachtauftrag N7, ROADMAP 4b.13; Handbuch Kap. 28 „Opening stitch files without object
 //! conversion“, `Analyse_Teil3/27_stickdateien.md`): DST, PES/PEC, JEF, VP3, EXP → Design mit einem Objekt `stiche`
-//! je Farbe (feste Einstiche, „Grade D“).
+//! je Farbe (feste Einstiche, „Grade D“). ART-Designs der artista V4 (N11, Bericht 27 §6): ein Objekt `stiche` je
+//! Objekt des Originals, mit Objektart und Garn im Namen und der Garnfarbe.
 
 use crate::befehle::{DesignWert, hex};
 use crate::{Fehler, Kontext};
@@ -15,7 +16,7 @@ use stick_kern::geometrie::p;
 #[derive(Debug, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct StickdateiEingabe {
-    /// Stickdatei (Endung .dst, .pes, .pec, .jef, .vp3, .exp)
+    /// Stickdatei (Endung .art, .dst, .pes, .pec, .jef, .vp3, .exp)
     pub pfad: String,
     /// Rahmen des neuen Designs (ohne Angabe: der kleinste Rahmen der 185, in den alle Stiche passen)
     #[serde(default)]
@@ -25,14 +26,16 @@ pub struct StickdateiEingabe {
 /// Ergebnis von `stickdatei_lesen`.
 #[derive(Debug, Serialize, JsonSchema)]
 pub struct StickdateiErgebnis {
-    /// neues Design: ein Objekt `stiche` je Farbe, Mitte des Designs = Rahmenmitte
+    /// neues Design: ein Objekt `stiche` je Farbe (ART: je Objekt des Originals), Mitte des Designs = Rahmenmitte
     pub design: DesignWert,
-    /// Format („DST“, „PES“ …)
+    /// Format („ART“, „DST“, „PES“ …)
     pub format: String,
     /// Zahl der Einstiche
     pub stiche: usize,
-    /// Zahl der Farben
+    /// Zahl der Farben (Farbwechsel + 1)
     pub farben: usize,
+    /// Zahl der Objekte (Stickdateien: je Farbe eins; ART: Objekte des Originals)
+    pub objekte: usize,
     /// Größe in mm
     pub breite: f64,
     pub hoehe: f64,
@@ -86,6 +89,8 @@ pub fn stickdatei_lesen(_: &Kontext, e: StickdateiEingabe) -> Result<StickdateiE
         .enumerate()
         .map(|(k, b)| {
             let name = match (&b.name, einfarbig) {
+                // ART: Objektart · Garn (die Nummer zeigt die Objektliste)
+                (Some(n), _) if s.format == "ART" => n.clone(),
                 (Some(n), _) => format!("{} – {n}", k + 1),
                 (None, true) => stamm.clone(),
                 (None, false) => format!("Farbe {}", k + 1),
@@ -98,7 +103,8 @@ pub fn stickdatei_lesen(_: &Kontext, e: StickdateiEingabe) -> Result<StickdateiE
         design: DesignWert(json!({"name": s.name.clone().unwrap_or(stamm), "rahmen": rahmen, "objekte": objekte})),
         format: s.format.to_string(),
         stiche: s.stiche(),
-        farben: s.bloecke.len(),
+        farben: s.bloecke.windows(2).filter(|w| w[0].farbe != w[1].farbe).count() + usize::from(!s.bloecke.is_empty()),
+        objekte: s.bloecke.len(),
         breite: x1 - x0,
         hoehe: y1 - y0,
         hinweise,

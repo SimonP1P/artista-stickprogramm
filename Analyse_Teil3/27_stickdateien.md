@@ -1,6 +1,6 @@
 # 27 – Fremde Stickdateien, eigene Rahmen, ART mit Objekten
 
-Stand 22.11.2026 (Nachtauftrag N7, ROADMAP 4b.13).
+Stand 22.11.2026 (Nachtauftrag N7 und N11, ROADMAP 4b.13).
 
 Quellen:
 - Handbuch Kap. 28 „Processing Files of Different Formats“ (gedruckte S. 255–257) und Kap. 30 (Formatliste Magic
@@ -90,3 +90,100 @@ Umsetzung:
   - Assistent Schritt 1: eigene Rahmen in der Liste, Knopf „Eigener Rahmen …“;
   - Inspektor, Reiter Design: Auswahl mit den Gruppen „artista 185“ und „Eigene Rahmen“, Knopf „Eigene …“;
   - Dialog mit Vorschau neben dem MEGA-Rahmen.
+
+## 6. ART-Designs des Originals mit Objekten öffnen (N11, ROADMAP 4b.13c)
+Ziel: die 287 Musterdesigns der CD (und eigene ART-Designs aus der artista V4) im Programm öffnen, mit den
+**Objekten des Originals** – je Objekt seine echten Stiche, seine Garnfarbe und seine Art.
+
+Kern:
+- `stick-formate::art` (Leser);
+- angebunden an `stickdatei_lesen` (Endung `.art`, Liste `ENDUNGEN`);
+- Test mit `kern/testdaten/art/Seal.ART` (Kopie aus `Samples/` der CD).
+
+### 6.1 Entschlüsseln — Sicherheit: hoch (`Analyse/code/05`, Werkzeuge `art_lesen.py`, `art_decrypt.py`)
+- OLE-Datei.
+  - **Neuere ART:** Stream `DesignDocument` = Twofish-128-CFB1. Schlüssel „1d43f2ae“ + Format-Schlüssel 0x01c0d932
+    (Format-ID 0xD0) + zweimal 0, IV `a885f60d87e90b71c20a81bcc3498af1`.
+  - **Ältere ART:** Stream `Contents` = Substitution mit demselben Format-Schlüssel, wie bei ESB.
+  - Danach jeweils u32 Länge + zlib.
+- **Twofish jetzt im Rust-Kern:**
+  - Referenz-Aufbau (q0/q1 aus den Nibble-Tabellen, MDS, RS, Schlüssel-S-Boxen vorab als Tabellen);
+  - geprüft mit dem Testvektor der Spezifikation (Schlüssel 0, Klartext 0 → `9F589F5C…`);
+  - CFB1 wie `twofish_cfb1.c`: je Bit ein Block.
+
+### 6.2 Datenblock — Sicherheit: hoch (Berichte 02/03)
+- Kopf: 29 × u32 (Magic 0x193866de, Prüfsumme = Summe der ersten 28).
+- Abschnitt 1: Stichpunkte (h[5] Stück ab h[6]; x in 1/180 mm, **y in 1/360 mm**).
+- Abschnitt 2: Segmente (h[8] Stück ab h[9]; Art und Stichzahl).
+- Objektteil ab h[14]: Datensätze im gepackten Rahmen.
+
+### 6.3 Neu gelesen: Objekt → Stiche, Objekt → Garn
+**Objekt → Segmente** — Sicherheit: hoch (Maschinencode + alle Musterdesigns):
+- Jedes Objekt der Objektliste (nach Datensatz 0x0a) hat einen Datensatz der Klasse **0x03**. Leser IMPORT.DLL
+  **0x10017180**:
+  - 4 gepackte Wörter: Ein- und Ausstich;
+  - gepackte Anzahl n, dann n gepackte Wörter = **Nummern der Stichsegmente**;
+  - gepackte Anzahl der Farbfolgen, u16;
+  - je Farbfolge 2 Byte, ab Dateiversion 0x2b ein **i32 = Garnnummer**, dann weitere Werte (nicht gebraucht).
+- **Segmentnummer + 1 = Segment in Abschnitt 2.**
+  - Mit +1 liegt jedes Objekt genau zwischen zwei Verbinder-Segmenten (Art 0).
+  - Geprüft an 286 lesbaren Musterdesigns: In 282 gehört **jedes Stich-Segment (Art 1) nach dem ersten Objekt zu
+    genau einem Objekt**.
+  - Ausnahme ist Segment 0 mit 2 Stichen vor dem ersten Objekt (in allen 286). Diese Stiche liegen auf dem ersten
+    Einstich (Länge ≈ 0) und markieren den Anfang. Sie fallen weg.
+- Die übrigen 4 Designs (Butterfly1, Duck1, Tulip1, Tulip2 – Auto-Digitalisierung) haben nur das AutoStartEnd-Objekt
+  0x71. Sie öffnen als ein Objekt mit allen Stichen und Hinweis.
+- Das AutoStartEnd-Objekt (0x71) trägt nur den Verbinder zum Anfangs-/Endpunkt und wird übersprungen.
+
+**Garnbibliothek** — Sicherheit: hoch:
+- Klasse **0x41**, Leser IMPORT.DLL **0x10039e60**;
+- u16 Anzahl, je Garn: R, G, B, 0, drei Längen, dann Nummer, Marke und Name hintereinander, 0;
+- in allen 283 Designs mit Garnbibliothek liegt jede Garnnummer aus 0x03 innerhalb der Bibliothek.
+
+**Art des Objekts:**
+- Es zählt die letzte Objektklasse vor dem Datensatz 0x03 (Klassen und Namen wie `art_design.py`).
+- Füllungen wie MotifFill 0x3d gehören zum Objekt und zählen nicht.
+- Deutsche Namen:
+
+| Klasse | Name |
+|---|---|
+| 0x05 | Linie |
+| 0x06, 0x07 | Fläche |
+| 0x0c | Satinsäule |
+| 0x36 | Ellipse |
+| 0x37 | Ring |
+| 0x38 | Stern |
+| 0x2f | Buchstabe |
+| 0x30, 0x7b | Text |
+| 0x7a | Motivlinie |
+| 0x72, 0x73, 0x93 | Applikation |
+| 0x95 | Knopfloch |
+| 0x08, 0x49 | Gruppe |
+| 0x0b | Manuelle Stiche |
+
+### 6.4 Umsetzung (eigene Festlegungen markiert)
+- Je Objekt des Originals ein Objekt `stiche` (wie Grade D, §2):
+  - Name „Objektart · Marke Nummer Garnname“, z. B. „Fläche · Sulky 1176 med. dk. Avocado“;
+  - Farbe = RGB des Garns; ohne Garn die Standardfolge.
+- Stiche der Segmente mit Art 1 werden gestickt.
+- **Segmente mit Art 0 (Verbinder) werden Sprünge** und teilen den Zug. Eigene Festlegung, Sicherheit mittel: Ihre
+  Stichlängen häufen sich bei 6,5–7,0 mm, also bei der Sprunglänge 0x2712 der Stile.
+- Ein Stich-Segment ohne Objekt gehört zum Objekt davor. Das kam in den Musterdesigns nicht vor.
+- Die Designmitte liegt auf 0,0. Rahmen und Hinweise wie bei den anderen Stickdateien.
+- Die Stiche werden **nicht neu berechnet**, sondern sind die des Originals. So lässt sich jedes Original-Musterdesign
+  unverändert sticken und senden.
+
+### 6.5 Geprüft
+- Alle 287 Musterdesigns öffnen ohne Fehler (0,01–1,4 s).
+- 5 HT-Designs sind größer als jeder Rahmen der 185; sie öffnen mit Hinweis.
+- Rose (36 Objekte, 9 Farben) und Seal (9 Objekte) als Vorschau und in der App angesehen: Lage, Ausrichtung und
+  Garnfarben sind stimmig.
+  - Ein Bild-für-Bild-Vergleich mit der Vorschau des Originals steht aus.
+  - „Sampler Alphabets 1“ öffnet mit 6 Textobjekten; das Bild ist nicht angesehen.
+
+### 6.6 Offen
+- **Objekte als bearbeitbare Objekte** (Grade A): Umrisse und Werte als `lauf`/`satin`/`tatami`/`text` umwandeln
+  statt fester Stiche. Die Bausteine dafür gibt es (Bericht 03: Formen als Bézier-Knoten, Satin-/Lauf-/Tatami-Parameter;
+  Werkzeuge `art_objekte.py`, `art_design.py`). Die Zuordnung aller 131 Klassen ist aber eine eigene, große Aufgabe.
+  Steht als Frage an den Nutzer in der ROADMAP.
+- Weitere Werte je Farbfolge im Datensatz 0x03 (nach der Garnnummer) sind nicht entschlüsselt.
