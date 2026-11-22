@@ -388,6 +388,86 @@
         }
       ]
     },
+    "AusrichtArt": {
+      "description": "Ausrichten (Arrange-Leiste des Originals) – nach dem zuletzt gewählten Objekt",
+      "oneOf": [
+        {
+          "const": "links",
+          "description": "linke Kanten (Align Left)",
+          "type": "string"
+        },
+        {
+          "const": "rechts",
+          "description": "rechte Kanten (Align Right)",
+          "type": "string"
+        },
+        {
+          "const": "oben",
+          "description": "obere Kanten (Align Top)",
+          "type": "string"
+        },
+        {
+          "const": "unten",
+          "description": "untere Kanten (Align Bottom)",
+          "type": "string"
+        },
+        {
+          "const": "mitte_senkrecht",
+          "description": "Mitten senkrecht übereinander (Align Centers Vertical: gleiche waagrechte Lage der Mitte)",
+          "type": "string"
+        },
+        {
+          "const": "mitte_waagrecht",
+          "description": "Mitten waagrecht nebeneinander (Align Centers Horizontal: gleiche Höhe der Mitte)",
+          "type": "string"
+        },
+        {
+          "const": "mitte",
+          "description": "Mitten aufeinander (Align Centers)",
+          "type": "string"
+        }
+      ]
+    },
+    "AusrichtenEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `ausrichten`.",
+      "properties": {
+        "art": {
+          "$ref": "#/$defs/AusrichtArt"
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "objekte": {
+          "description": "gewählte Objekte in Klickfolge; das **zuletzt** gewählte ist der Bezug (wie im Original). Gruppen zählen als\nGanzes",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "design",
+        "objekte",
+        "art"
+      ],
+      "type": "object"
+    },
+    "AusrichtenErgebnis": {
+      "description": "Ergebnis von `ausrichten`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "geändertes Design (Objekte bzw. Gruppen verschoben)"
+        }
+      },
+      "required": [
+        "design"
+      ],
+      "type": "object"
+    },
     "Ausrichtung": {
       "description": "Ausrichtung eines Texts",
       "oneOf": [
@@ -3415,6 +3495,86 @@
           "type": "string"
         }
       ]
+    },
+    "KopienErgebnis": {
+      "description": "Ergebnis von `spiegeln_kopieren` und `kranz`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "geändertes Design mit den Kopien (direkt hinter der Auswahl)"
+        },
+        "neu": {
+          "description": "Nummern der neuen Objekte (für die Auswahl danach)",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ueberlappt": {
+          "description": "eine Kopie überlappt eine Fläche – die Oberfläche fragt wie das Original „Überlappende Objekte\nzusammenführen?“",
+          "type": "boolean"
+        },
+        "zusammengefuehrt": {
+          "description": "Zahl der zusammengeführten Flächen",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "design",
+        "neu",
+        "ueberlappt",
+        "zusammengefuehrt"
+      ],
+      "type": "object"
+    },
+    "KranzEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `kranz` (Wreath).",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "kaleidoskop": {
+          "default": false,
+          "description": "Kaleidoskop: jede zweite Kopie gespiegelt (nur gerade Punktzahl)",
+          "type": "boolean"
+        },
+        "mitte": {
+          "$ref": "#/$defs/Punkt",
+          "description": "Mittelpunkt [x, y] in mm (Anzeige)"
+        },
+        "objekte": {
+          "description": "gewählte Objekte (Gruppen als Ganzes)",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "punkte": {
+          "default": 6,
+          "description": "Punkte des Kranzes (Original + Kopien), 2 bis 36; Standard 6 wie im Handbuch-Beispiel",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "zusammenfuehren": {
+          "default": false,
+          "description": "überlappende Flächen vereinigen (wie `spiegeln_kopieren`)",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "design",
+        "objekte",
+        "mitte"
+      ],
+      "type": "object"
     },
     "Lage": {
       "description": "Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):\nnach der Platzierungslinie Stoff auflegen, nach der Schnittlinie bzw. dem Heften zuschneiden, dann Abdecken.",
@@ -7473,6 +7633,44 @@
         }
       ]
     },
+    "SpiegelnKopierenEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe von `spiegeln_kopieren` (Mirror-Merge).",
+      "properties": {
+        "achse": {
+          "$ref": "#/$defs/Punkt",
+          "description": "Ankerpunkt [x, y] in mm (Anzeige): die Spiegellinie(n) gehen durch ihn"
+        },
+        "art": {
+          "$ref": "#/$defs/Spiegeln",
+          "description": "`links_rechts` = an einer senkrechten Linie (Mirror-Merge Horizontal), `oben_unten` = an einer waagrechten\n(Vertical), `beide` = drei Kopien (Horizontal & Vertical)"
+        },
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "objekte": {
+          "description": "gewählte Objekte (Gruppen als Ganzes)",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "zusammenfuehren": {
+          "default": false,
+          "description": "überlappende Flächen (Step, Muster, Stippling, Satinfläche) mit dem Original zu einem Objekt vereinigen",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "design",
+        "objekte",
+        "art",
+        "achse"
+      ],
+      "type": "object"
+    },
     "Start": {
       "description": "Startpunkt des Designs (Dialog „Start and End“)",
       "oneOf": [
@@ -9334,6 +9532,15 @@
         "$ref": "#/$defs/Leer"
       }
     },
+    "ausrichten": {
+      "ausgabe": {
+        "$ref": "#/$defs/AusrichtenErgebnis"
+      },
+      "beschreibung": "Ausrichten (links, rechts, oben, unten, Mitten) nach dem zuletzt gewählten Objekt – Gruppen als Ganzes",
+      "eingabe": {
+        "$ref": "#/$defs/AusrichtenEingabe"
+      }
+    },
     "beispiel_design": {
       "ausgabe": {
         "$ref": "#/$defs/DesignWert"
@@ -9529,6 +9736,15 @@
       "beschreibung": "Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug",
       "eingabe": {
         "$ref": "#/$defs/ObjektEingabe"
+      }
+    },
+    "kranz": {
+      "ausgabe": {
+        "$ref": "#/$defs/KopienErgebnis"
+      },
+      "beschreibung": "Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt",
+      "eingabe": {
+        "$ref": "#/$defs/KranzEingabe"
       }
     },
     "maschine_abbrechen": {
@@ -9754,6 +9970,15 @@
       "beschreibung": "installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts",
       "eingabe": {
         "$ref": "#/$defs/SchriftenListeEingabe"
+      }
+    },
+    "spiegeln_kopieren": {
+      "ausgabe": {
+        "$ref": "#/$defs/KopienErgebnis"
+      },
+      "beschreibung": "Mirror-Merge: gespiegelte Kopie(n) der Auswahl an einer Linie durch den Ankerpunkt, auf Wunsch zusammengeführt",
+      "eingabe": {
+        "$ref": "#/$defs/SpiegelnKopierenEingabe"
       }
     },
     "step_muster_liste": {

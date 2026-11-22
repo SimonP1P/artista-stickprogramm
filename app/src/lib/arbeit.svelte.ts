@@ -5,6 +5,7 @@
 import {
   kern,
   istFehler,
+  type AusrichtArt,
   type DesignJson,
   type Ergebnis,
   type Fehler,
@@ -47,6 +48,8 @@ export type OffenerDialog =
   | { art: "motiv"; objekt: number }
   | { art: "motiv_speichern" }
   | { art: "farben_mischen"; objekt: number }
+  | { art: "kopieren"; weg: "spiegeln" | "kranz" }
+  | { art: "nummer"; vor: boolean }
   | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 
@@ -643,6 +646,21 @@ class Arbeit {
       gruppenAufraeumen(d);
     });
     this.auswahl = [];
+  }
+
+  /** Zahl der gewählten Einheiten (Gruppe = eine) – Ausrichten braucht mindestens zwei */
+  get auswahlEinheiten(): number {
+    return new Set(this.auswahl.map((i) => this.gruppeVon(i) ?? `#${i}`)).size;
+  }
+
+  /** Ausrichten nach dem zuletzt gewählten Objekt (Kern `ausrichten`, Arrange-Leiste des Originals) */
+  async ausrichten(art: AusrichtArt) {
+    try {
+      const r = await kern("ausrichten", { design: JSON.parse(this.#schnappschuss()), objekte: [...this.auswahl], art });
+      this.ersetzen(r.design, this.pfad, true);
+    } catch (x) {
+      this.zeige(alsFehler(x).meldung, "err");
+    }
   }
 
   /** gewählte Applikationen */

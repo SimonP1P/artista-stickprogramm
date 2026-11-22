@@ -33,6 +33,16 @@ export const IC = {
   rechteck: "M3 5h18v14H3Z",
   bezier: "M4 20C4 9 20 15 20 4M2 18h4v4H2ZM18 2h4v4h-4Z",
   bild: "M3 3h18v18H3ZM10 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM21 15l-5-5L5 21",
+  // Ausrichten (Arrange-Leiste): Bezugslinie + zwei Balken
+  ausrLinks: "M4 3v18M8 6h11v4H8ZM8 14h7v4H8Z",
+  ausrRechts: "M20 3v18M5 6h11v4H5ZM9 14h7v4H9Z",
+  ausrOben: "M3 4h18M6 8h4v11H6ZM14 8h4v7h-4Z",
+  ausrUnten: "M3 20h18M6 5h4v11H6ZM14 9h4v7h-4Z",
+  ausrMitteSenkrecht: "M12 3v18M6 6h12v4H6ZM8 14h8v4H8Z",
+  ausrMitteWaagrecht: "M3 12h18M6 6h4v12H6ZM14 8h4v8h-4Z",
+  ausrMitte: "M12 3v18M3 12h18M7 7h10v10H7Z",
+  spiegelnKopie: "M12 3v18M4 7l5 5-5 5ZM20 7l-5 5 5 5Z",
+  kranz: "M12 4a2 2 0 1 0 0 .01M18.9 8a2 2 0 1 0 0 .01M18.9 16a2 2 0 1 0 0 .01M12 20a2 2 0 1 0 0 .01M5.1 16a2 2 0 1 0 0 .01M5.1 8a2 2 0 1 0 0 .01",
   zauberstab: "M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8 19 13M15 9h.01M17.8 6.2 19 5M3 21l9-9M12.2 6.2 11 5",
   // Formen (Werkzeugleiste, wie die Design-Leiste des Originals: Open Curve, Circle/Oval, Rectangle, Closed Curve,
   // Block Digitizing)

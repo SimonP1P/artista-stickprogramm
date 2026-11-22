@@ -684,6 +684,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 |---|---|---|---|
 | `alphabet_vorschau` | AlphabetVorschauEingabe | AlphabetVorschau | Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat |
 | `alphabete_liste` | Leer | AlphabetInfo[] | Original-Alphabete (50) |
+| `ausrichten` | AusrichtenEingabe | AusrichtenErgebnis | Ausrichten (links, rechts, oben, unten, Mitten) nach dem zuletzt gewählten Objekt – Gruppen als Ganzes |
 | `beispiel_design` | Leer | DesignWert | Beispieldesign mit allen Sticharten der ersten Ausbaustufe |
 | `bild_umwandeln` | BildEingabe | BildErgebnis | Bild in Stickflächen umwandeln (neues Design) |
 | `bild_vorschau` | BildEingabe | BildVorschau | Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln |
@@ -704,6 +705,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `google_schrift_laden` | GoogleLadenEingabe | SchriftInfo | Google-Schrift herunterladen (Internet) in die Ablage des Programms – danach wie eine installierte Schrift |
 | `google_schriften_liste` | Leer | GoogleKatalog | Katalog der Google Fonts (1 833 Schriften, freie Lizenzen) mit Stilen zum Filtern und „geladen“ |
 | `in_knoten_umwandeln` | ObjektEingabe | ObjektWert | Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug |
+| `kranz` | KranzEingabe | KopienErgebnis | Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt |
 | `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen |
 | `maschine_lesen` | LeseEingabe | GelesenInfo | Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen |
 | `maschine_liste` | Anschluss | ListenInfo | Designliste der Maschine – nur lesen |
@@ -726,6 +728,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `schrift_vorschau` | SchriftVorschauEingabe | SchriftVorschau | Vorschau einer Computer-Schrift (Umrisse eines Probetexts) mit „stickbar ab … mm“ |
 | `schrift_wechseln` | SchriftWechselEingabe | ObjektWert | Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben |
 | `schriften_liste` | SchriftenListeEingabe | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts |
+| `spiegeln_kopieren` | SpiegelnKopierenEingabe | KopienErgebnis | Mirror-Merge: gespiegelte Kopie(n) der Auswahl an einer Linie durch den Ankerpunkt, auf Wunsch zusammengeführt |
 | `step_muster_liste` | Leer | StepMusterInfo[] | Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln |
 | `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt |
 | `stoffe_liste` | Leer | StoffInfo[] | Stoffe (8 + Software Defaults) mit den wichtigsten Werten |

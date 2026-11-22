@@ -309,6 +309,31 @@ P('reihenfolge.min_ueberdeckung', G, 'Überdeckung ab', 'kleinere gemeinsame Fl�
 P('reihenfolge.linie_breite', G, 'Breite einer Linie bei der Prüfung', 'Laufstich zählt als Band dieser Breite',
   ebene='werkzeug', einheit='mm', std=0.5, quelle='eigene Festlegung', modus='automatisch')
 
+# Anordnen (Nachtauftrag N6, Analyse_Teil3/26)
+Q6 = 'DESVIEW MirrorMergeView*::GetReflectionTransforms (Analyse_Teil3/26)'
+P('ausrichten.art', 'Anordnen', 'Ausrichten', 'Kanten oder Mitten der gewählten Objekte an das zuletzt gewählte',
+  ebene='werkzeug', einheit='Auswahl', std=None,
+  werte=['links', 'rechts', 'oben', 'unten', 'mitte_senkrecht', 'mitte_waagrecht', 'mitte'],
+  quelle='Arrange-Leiste BERESENU STR 33233–33239; Handbuch S. 135 („aligned with the last object selected“)')
+P('spiegeln.art', 'Anordnen', 'Mirror-Merge Richtung', 'waagrecht = Kopie links/rechts, senkrecht = oben/unten, '
+  'beides = drei Kopien', ebene='werkzeug', einheit='Auswahl', std='links_rechts',
+  werte=['links_rechts', 'oben_unten', 'beide'], quelle=Q6 + ' (hoch); Vorgabe eigene Festlegung')
+P('spiegeln.achse', 'Anordnen', 'Ankerpunkt', 'Punkt, durch den die Spiegellinie geht; Vorschlag rechte bzw. untere '
+  'Kante der Auswahl', ebene='werkzeug', einheit='mm', std=None,
+  quelle='Handbuch S. 141 (Bezugslinie, Klick setzt Anker); Vorschlag eigene Festlegung')
+P('kranz.punkte', 'Anordnen', 'Punkte des Kranzes', 'Original + Kopien rundherum, je 360°/n gedreht (im '
+  'Uhrzeigersinn)', ebene='werkzeug', einheit='Anzahl', std=6, bereich=[2, 36],
+  quelle=Q6 + ' (Drehung −i·2π/n, hoch); Vorgabe Handbuch-Beispiel „six-point wreath“, Bereich eigene Festlegung')
+P('kranz.kaleidoskop', 'Anordnen', 'Kaleidoskop', 'jede zweite Kopie an der Bezugslinie gespiegelt; nur gerade Zahl',
+  ebene='werkzeug', einheit='an/aus', std=False, quelle=Q6 + ' (Mirror bei ungeradem i, hoch); Handbuch S. 142')
+P('kranz.mitte', 'Anordnen', 'Mittelpunkt', 'Mitte des Kranzes; Vorschlag unter der Auswahl, Kopien berühren sich '
+  'nicht', ebene='werkzeug', einheit='mm', std=None, quelle='Handbuch S. 141; Vorschlag eigene Festlegung')
+P('anordnen.zusammenfuehren', 'Anordnen', 'Überlappende zusammenführen', 'Step-, Muster-, Stippling- und '
+  'Satinflächen, die sich mit ihrer Kopie überlappen, werden ein Objekt', ebene='werkzeug', einheit='an/aus',
+  std=False, quelle='RESENU STR 4159 (Rückfrage, hoch); Verfahren eigene Festlegung (Analyse_Teil3/26 §4)')
+P('anordnen.ueberlappung_min', 'Anordnen', 'Überlappung ab', 'kleinere gemeinsame Flächen zählen nicht als '
+  'Überlappung', ebene='werkzeug', einheit='mm²', std=0.5, quelle='eigene Festlegung', modus='automatisch')
+
 # ---------------------------------------------------------------- Blanket, Applikation
 G = 'Blanket'
 P('objekt.blanket.abstand', G, 'Zahnabstand', '', ebene='objekt', gilt=['blanket'], o='abstand', einheit='mm', std=2.0,

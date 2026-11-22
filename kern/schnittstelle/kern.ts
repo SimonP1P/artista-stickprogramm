@@ -152,6 +152,26 @@ export type ApplikationStil = ("vorgeschnitten" | "zuschneiden");
 
 export type Art = ("stich" | "sprung" | "farbwechsel");
 
+/** Ausrichten (Arrange-Leiste des Originals) – nach dem zuletzt gewählten Objekt */
+export type AusrichtArt = ("links" | "rechts" | "oben" | "unten" | "mitte_senkrecht" | "mitte_waagrecht" | "mitte");
+
+/** Eingabe von `ausrichten`. */
+export type AusrichtenEingabe = {
+  art: AusrichtArt;
+  design: DesignWert;
+  /**
+   * gewählte Objekte in Klickfolge; das **zuletzt** gewählte ist der Bezug (wie im Original). Gruppen zählen als
+   * Ganzes
+   */
+  objekte: number[];
+};
+
+/** Ergebnis von `ausrichten`. */
+export type AusrichtenErgebnis = {
+  /** geändertes Design (Objekte bzw. Gruppen verschoben) */
+  design: DesignWert;
+};
+
 /** Ausrichtung eines Texts */
 export type Ausrichtung = (("links" | "rechts") | "mitte" | "block");
 
@@ -1314,6 +1334,45 @@ export type KnopflochJson = {
 
 /** Knopfloch-Typ (Dialog „Buttonhole Type“; Vorlagen aus `ButtonHoles.ESB`) */
 export type KnopflochTyp = ("standard" | "standard_schmal" | "rund" | "dehnbar" | "heirloom" | "rundes_ende" | "auge_eckig" | "auge_rund" | "auge_spitz");
+
+/** Ergebnis von `spiegeln_kopieren` und `kranz`. */
+export type KopienErgebnis = {
+  /** geändertes Design mit den Kopien (direkt hinter der Auswahl) */
+  design: DesignWert;
+  /** Nummern der neuen Objekte (für die Auswahl danach) */
+  neu: number[];
+  /**
+   * eine Kopie überlappt eine Fläche – die Oberfläche fragt wie das Original „Überlappende Objekte
+   * zusammenführen?“
+   */
+  ueberlappt: boolean;
+  /** Zahl der zusammengeführten Flächen */
+  zusammengefuehrt: number;
+};
+
+/** Eingabe von `kranz` (Wreath). */
+export type KranzEingabe = {
+  design: DesignWert;
+  /**
+   * Kaleidoskop: jede zweite Kopie gespiegelt (nur gerade Punktzahl)
+   * @default false
+   */
+  kaleidoskop?: boolean;
+  /** Mittelpunkt [x, y] in mm (Anzeige) */
+  mitte: Punkt;
+  /** gewählte Objekte (Gruppen als Ganzes) */
+  objekte: number[];
+  /**
+   * Punkte des Kranzes (Original + Kopien), 2 bis 36; Standard 6 wie im Handbuch-Beispiel
+   * @default 6
+   */
+  punkte?: number;
+  /**
+   * überlappende Flächen vereinigen (wie `spiegeln_kopieren`)
+   * @default false
+   */
+  zusammenfuehren?: boolean;
+};
 
 /**
  * Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):
@@ -2775,6 +2834,25 @@ export type Skalierung = (number | number[]);
 /** Spiegeln (Mirror) */
 export type Spiegeln = ("links_rechts" | "oben_unten" | "beide");
 
+/** Eingabe von `spiegeln_kopieren` (Mirror-Merge). */
+export type SpiegelnKopierenEingabe = {
+  /** Ankerpunkt [x, y] in mm (Anzeige): die Spiegellinie(n) gehen durch ihn */
+  achse: Punkt;
+  /**
+   * `links_rechts` = an einer senkrechten Linie (Mirror-Merge Horizontal), `oben_unten` = an einer waagrechten
+   * (Vertical), `beide` = drei Kopien (Horizontal & Vertical)
+   */
+  art: Spiegeln;
+  design: DesignWert;
+  /** gewählte Objekte (Gruppen als Ganzes) */
+  objekte: number[];
+  /**
+   * überlappende Flächen (Step, Muster, Stippling, Satinfläche) mit dem Original zu einem Objekt vereinigen
+   * @default false
+   */
+  zusammenfuehren?: boolean;
+};
+
 /** Startpunkt des Designs (Dialog „Start and End“) */
 export type Start = ("rahmenmitte" | "designmitte" | "unten_mitte" | "erster_stich");
 
@@ -3553,6 +3631,8 @@ export interface Befehle {
   alphabet_vorschau: { eingabe: AlphabetVorschauEingabe; ausgabe: AlphabetVorschau };
   /** Original-Alphabete (50) */
   alphabete_liste: { eingabe: Leer; ausgabe: AlphabetInfo[] };
+  /** Ausrichten (links, rechts, oben, unten, Mitten) nach dem zuletzt gewählten Objekt – Gruppen als Ganzes */
+  ausrichten: { eingabe: AusrichtenEingabe; ausgabe: AusrichtenErgebnis };
   /** Beispieldesign mit allen Sticharten der ersten Ausbaustufe */
   beispiel_design: { eingabe: Leer; ausgabe: DesignWert };
   /** Bild in Stickflächen umwandeln (neues Design) */
@@ -3593,6 +3673,8 @@ export interface Befehle {
   google_schriften_liste: { eingabe: Leer; ausgabe: GoogleKatalog };
   /** Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug */
   in_knoten_umwandeln: { eingabe: ObjektEingabe; ausgabe: ObjektWert };
+  /** Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt */
+  kranz: { eingabe: KranzEingabe; ausgabe: KopienErgebnis };
   /** Laufende Maschinen-Aktion abbrechen */
   maschine_abbrechen: { eingabe: Leer; ausgabe: boolean };
   /** Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen */
@@ -3637,6 +3719,8 @@ export interface Befehle {
   schrift_wechseln: { eingabe: SchriftWechselEingabe; ausgabe: ObjektWert };
   /** installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts */
   schriften_liste: { eingabe: SchriftenListeEingabe; ausgabe: SchriftInfo[] };
+  /** Mirror-Merge: gespiegelte Kopie(n) der Auswahl an einer Linie durch den Ankerpunkt, auf Wunsch zusammengeführt */
+  spiegeln_kopieren: { eingabe: SpiegelnKopierenEingabe; ausgabe: KopienErgebnis };
   /** Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln */
   step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
   /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt */
@@ -3659,6 +3743,7 @@ export interface Befehle {
 export const BEFEHLE = [
   "alphabet_vorschau",
   "alphabete_liste",
+  "ausrichten",
   "beispiel_design",
   "bild_umwandeln",
   "bild_vorschau",
@@ -3679,6 +3764,7 @@ export const BEFEHLE = [
   "google_schrift_laden",
   "google_schriften_liste",
   "in_knoten_umwandeln",
+  "kranz",
   "maschine_abbrechen",
   "maschine_lesen",
   "maschine_liste",
@@ -3701,6 +3787,7 @@ export const BEFEHLE = [
   "schrift_vorschau",
   "schrift_wechseln",
   "schriften_liste",
+  "spiegeln_kopieren",
   "step_muster_liste",
   "stichart_aendern",
   "stoffe_liste",

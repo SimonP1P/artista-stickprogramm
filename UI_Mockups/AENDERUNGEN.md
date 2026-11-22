@@ -15,6 +15,27 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Anordnen: Ausrichten, Mirror-Merge, Kranz/Kaleidoskop (Nachtauftrag N6, 4b.12; Commit COMMIT)
+- **Neue Befehle** (keine neuen Design-Felder):
+  - `ausrichten` `{design, objekte, art}` → `{design}`: Kanten/Mitten an das **zuletzt** gewählte Objekt (Reihenfolge in
+    `objekte` = Klickfolge). Gruppen zählen als Ganzes und werden über `gruppen[k].transform.verschieben` bewegt.
+  - `spiegeln_kopieren` `{design, objekte, art: links_rechts|oben_unten|beide, achse: [x, y], zusammenfuehren}` und
+    `kranz` `{design, objekte, punkte (6), kaleidoskop, mitte: [x, y], zusammenfuehren}` →
+    `{design, neu, ueberlappt, zusammengefuehrt}`.
+  - Die Kopien stehen direkt hinter der Auswahl und tragen die zusammengesetzte `transform` (Stiche werden neu
+    berechnet). Gruppen werden als neue Gruppe kopiert.
+  - `ueberlappt` = eine Fläche überlappt ihre Kopie. Dann fragt die Oberfläche „zusammenführen?“ und ruft mit
+    `zusammenfuehren: true` erneut.
+  - Koordinaten von Achse/Mitte wie in `design_formen` (Anzeige).
+- **Oberfläche (umgesetzt):**
+  - Menü Anordnen: Abschnitt „Ausrichten – am zuletzt gewählten“ mit 7 Knöpfen (ab zwei Einheiten) und Abschnitt
+    „Kopieren“ mit „Spiegeln und kopieren (Mirror-Merge) …“ und „Kranz / Kaleidoskop …“.
+  - Dialog `KopierenDialog.svelte` mit Vorschau: Original kräftig, Kopien hell. Ein Klick setzt Achse bzw. Mitte, die
+    Zahlenfelder gehen auch; dazu „Vorschlag wiederherstellen“ und die Rückfrage zum Zusammenführen. Nach Übernehmen
+    sind Original + Kopien gewählt.
+  - „Vor/Nach Objekt Nr. …“ öffnet `NummerDialog.svelte` statt der Browser-Abfrage.
+  - `app/src/lib/formpfade.ts` (Pfade aus `ObjektForm.linien`) wird von Umrissbild und Kopieren-Dialog geteilt.
+
 ## 22.11.2026 – Zauberstab, PhotoSnap, kürzeste Wege (Nachtauftrag N5, 4b.11; Commit 71d232d)
 - **Neue Objektart `photosnap`** (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen. Felder `raster` (vom Befehl
   `photosnap` erzeugt: `breite`, `hoehe`, `mm`, `lagen[{farbe, werte (Base64, Deckung 0–255)}]` – nicht von Hand

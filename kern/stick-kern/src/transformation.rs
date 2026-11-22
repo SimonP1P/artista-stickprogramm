@@ -73,7 +73,7 @@ impl Matrix {
     };
 
     /// self nach m (erst m, dann self)
-    fn nach(&self, m: &Matrix) -> Matrix {
+    pub fn nach(&self, m: &Matrix) -> Matrix {
         Matrix {
             a: self.a * m.a + self.b * m.c,
             b: self.a * m.b + self.b * m.d,

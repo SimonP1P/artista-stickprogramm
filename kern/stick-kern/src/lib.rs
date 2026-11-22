@@ -19,6 +19,7 @@ macro_rules! auswahl {
     };
 }
 
+pub mod anordnen;
 pub mod applikation;
 pub mod aussparen;
 pub mod blackwork;

@@ -74,8 +74,8 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Offene/geschlossene Kurve, Kreis/Oval, Rechteck, Bézier | ✅ | Formen im Design-JSON (`oval` seit 20.11.) |
 | Löcher (Add Holes), Aussparen/Wiederherstellen | ✅ | |
 | **Skalieren, Drehen, Spiegeln, Schrägstellen** je Objekt und Design (Stiche neu) | ✅ | `"transform"` (20.11.) |
-| Ausrichten, Gruppieren | ⬜ | Kap. 15 |
-| Mirror-Merge, Wreath (Kranz), Kaleidoscope | ⬜ | Kap. 15 |
+| Ausrichten, Gruppieren | ✅ (Ausrichten N6 `ausrichten`, Gruppen `gruppen`; Bericht 26) | Kap. 15 |
+| Mirror-Merge, Wreath (Kranz), Kaleidoscope | ✅ (N6 `spiegeln_kopieren`, `kranz`; Zusammenführen eigene Festlegung; Bericht 26) | Kap. 15 |
 | Stichwinkel ändern, Ein-/Ausstich je Objekt setzen | ✅ | Winkel ✅; Ein-/Ausstich ✅ 20.11. (`einstich`/`ausstich`, Closest Join `kuerzeste_verbindung`; Umsetzung je Objektart eigene Festlegung, Bericht 16) |
 | Reihenfolge: wie ausgewählt, an Anfang/Ende, nach Farbe, nach Nummer | ✅ | 20.11. `stick_kern::reihenfolge`, CLI `stick reihenfolge` (Kap. 14; Resequence MOD1 0x1006db20, Bericht 16) |
 | Prüfung auf Überdeckungen beim Umordnen | ✅ | 20.11. **eigene Erweiterung** (Original prüft nicht): Warnung + Sortieren nach Farbe mit `--ueberdeckung` |

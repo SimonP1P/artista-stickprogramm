@@ -575,6 +575,48 @@ fn bild_vorschau_und_umwandeln() {
     let _ = std::fs::remove_file(&pfad);
 }
 
+/// Anordnen (N6): Ausrichten, Mirror-Merge, Kranz – auch mit Text (Alphabet aus dem Kontext) und Gruppen
+#[test]
+fn anordnen_befehle() {
+    let k = kontext();
+    let d = json!({"rahmen": "artista 200 x 155", "objekte": [
+        {"art": "tatami", "name": "A", "umriss": [[0, 0], [10, 0], [10, 10], [0, 10]]},
+        {"art": "text", "text": "Hi", "alphabet": "Swiss Block", "hoehe": 10, "transform": {"verschieben": [30, 20]}},
+        {"art": "lauf", "punkte": [[-30, -5], [-20, -5]], "gruppe": "g1"},
+        {"art": "lauf", "punkte": [[-30, -9], [-20, -9]], "gruppe": "g1"}
+    ], "gruppen": {"g1": {"name": "Linien"}}});
+    let formen = |d: &Value| ausfuehren(&k, "design_formen", json!({"design": d})).unwrap();
+    // Unterkanten an A ausrichten (zuletzt gewählt)
+    let r = ausfuehren(&k, "ausrichten", json!({"design": d, "objekte": [1, 2, 0], "art": "unten"})).unwrap();
+    let f = formen(&r["design"]);
+    let unten = |i: usize| f[i]["begrenzung"][1].as_f64().unwrap();
+    assert!(unten(1).abs() < 1e-3 && unten(3).abs() < 1e-3, "{} {}", unten(1), unten(3));
+    // die Gruppe wurde als Ganzes verschoben (über ihre Transformation)
+    assert!(r["design"]["gruppen"]["g1"]["transform"]["verschieben"].is_array());
+    // Mirror-Merge des Texts: Kopie direkt dahinter
+    let r = ausfuehren(&k, "spiegeln_kopieren",
+        json!({"design": d, "objekte": [1], "art": "links_rechts", "achse": [60, 0]})).unwrap();
+    assert_eq!(r["neu"], json!([2]));
+    assert_eq!(r["design"]["objekte"][2]["art"], "text");
+    ausfuehren(&k, "design_berechnen", json!({"design": r["design"]})).unwrap();
+    // Kranz mit Kaleidoskop aus der Gruppe: 3 Kopien der Gruppe = 6 neue Objekte, 3 neue Gruppen
+    let r = ausfuehren(&k, "kranz",
+        json!({"design": d, "objekte": [2], "punkte": 4, "kaleidoskop": true, "mitte": [-25, 20]})).unwrap();
+    assert_eq!(r["neu"].as_array().unwrap().len(), 6);
+    assert_eq!(r["design"]["gruppen"].as_object().unwrap().len(), 4);
+    ausfuehren(&k, "design_berechnen", json!({"design": r["design"]})).unwrap();
+    // Überlappung gemeldet, zusammengeführt ein Objekt
+    let r = ausfuehren(&k, "spiegeln_kopieren",
+        json!({"design": d, "objekte": [0], "art": "oben_unten", "achse": [0, 8]})).unwrap();
+    assert_eq!(r["ueberlappt"], true);
+    let r = ausfuehren(&k, "spiegeln_kopieren",
+        json!({"design": d, "objekte": [0], "art": "oben_unten", "achse": [0, 8], "zusammenfuehren": true})).unwrap();
+    assert_eq!(r["zusammengefuehrt"], 1);
+    assert_eq!(r["design"]["objekte"].as_array().unwrap().len(), 4);
+    // Kaleidoskop mit ungerader Zahl → Fehler
+    assert!(ausfuehren(&k, "kranz", json!({"design": d, "objekte": [0], "punkte": 5, "kaleidoskop": true, "mitte": [0, 0]})).is_err());
+}
+
 /// Zauberstab (Flächen anklicken) und PhotoSnap (N5); eingefügt in ein Design trägt jedes Objekt Closest Join
 #[test]
 fn zauberstab_und_photosnap() {

@@ -19,6 +19,7 @@
 //! die App als Ereignis `maschine_fortschritt` ([`Kontext::fortschritt_melden`]).
 
 pub mod befehle;
+pub mod anordnen;
 pub mod automatik;
 pub mod craft;
 pub mod effekte;
@@ -386,6 +387,12 @@ befehle! {
     craft_vorlagen: befehle::Leer => Vec<craft::CraftVorlage>,
     /// Blackwork Run: gewählte Linien zu einem automatisch geordneten Objekt zusammenfassen (Stichart des ersten)
     blackwork_lauf: craft::BlackworkEingabe => craft::BlackworkErgebnis,
+    /// Ausrichten (links, rechts, oben, unten, Mitten) nach dem zuletzt gewählten Objekt – Gruppen als Ganzes
+    ausrichten: anordnen::AusrichtenEingabe => anordnen::AusrichtenErgebnis,
+    /// Mirror-Merge: gespiegelte Kopie(n) der Auswahl an einer Linie durch den Ankerpunkt, auf Wunsch zusammengeführt
+    spiegeln_kopieren: anordnen::SpiegelnKopierenEingabe => anordnen::KopienErgebnis,
+    /// Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt
+    kranz: anordnen::KranzEingabe => anordnen::KopienErgebnis,
     /// Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element)
     design_einfuegen: befehle::EinfuegenEingabe => befehle::EinfuegenErgebnis,
     /// Bild in Stickflächen umwandeln (neues Design)
@@ -433,6 +440,7 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
 mod befehle_aller {
     pub use crate::befehle::*;
     pub use crate::maschine::*;
+    pub use crate::anordnen::*;
     pub use crate::automatik::*;
     pub use crate::craft::*;
     pub use crate::effekte::*;

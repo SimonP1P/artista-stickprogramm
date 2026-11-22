@@ -2122,7 +2122,18 @@ impl Design {
 
     /// Transformationen anwenden: erst je Objekt (um die Mitte seiner aufgelösten Teile), dann je Gruppe, dann das ganze
     /// Design.
-    fn transformieren(&self, mut out: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
+    fn transformieren(&self, out: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
+        let out = self.objekte_transformieren(out, herkunft)?;
+        let mut out = self.gruppen_transformieren(out, herkunft)?;
+        if let Some(m) = self.design_matrix(&out)? {
+            let ws = self.einstellungen.tatami.winkel;
+            out = out.iter().map(|o| abbilden(o, &m, ws)).collect();
+        }
+        Ok(out)
+    }
+
+    /// je Objekt um die Mitte seiner Teile (erster Schritt von `transformieren`)
+    fn objekte_transformieren(&self, mut out: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
         let ws = self.einstellungen.tatami.winkel;
         for (nr, t) in &self.transformationen {
             let idx: Vec<usize> = (0..out.len()).filter(|&j| herkunft[j] == *nr).collect();
@@ -2132,7 +2143,12 @@ impl Design {
                 out[j] = abbilden(&out[j], &m, ws);
             }
         }
-        // dann je Gruppe um die Mitte ihrer (schon transformierten) Objekte
+        Ok(out)
+    }
+
+    /// je Gruppe um die Mitte ihrer (schon transformierten) Objekte (zweiter Schritt von `transformieren`)
+    fn gruppen_transformieren(&self, mut out: Vec<Objekt>, herkunft: &[usize]) -> Result<Vec<Objekt>, String> {
+        let ws = self.einstellungen.tatami.winkel;
         for (nr, t) in &self.gruppen {
             let idx: Vec<usize> = (0..out.len()).filter(|&j| nr.contains(&herkunft[j])).collect();
             let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
@@ -2141,11 +2157,57 @@ impl Design {
                 out[j] = abbilden(&out[j], &m, ws);
             }
         }
-        if !self.transformation.ist_leer() {
-            let m = self.transformation.matrix(formmitte(&out))?;
-            out = out.iter().map(|o| abbilden(o, &m, ws)).collect();
-        }
         Ok(out)
+    }
+
+    /// Matrix der Transformation des ganzen Designs um die Mitte nach Objekt- und Gruppen-Transformationen
+    fn design_matrix(&self, out: &[Objekt]) -> Result<Option<crate::transformation::Matrix>, String> {
+        if self.transformation.ist_leer() {
+            return Ok(None);
+        }
+        Ok(Some(self.transformation.matrix(formmitte(out))?))
+    }
+
+    /// Bezugspunkte der Transformationen wie in `transformieren` – für „Anordnen“ (`anordnen.rs`): je Objekt die Mitte
+    /// seiner Teile vor der eigenen Transformation, je Objektmenge (Gruppe) die Mitte nach den
+    /// Objekt-Transformationen, dazu die Matrix der Design-Transformation (falls vorhanden).
+    pub fn bezugspunkte(&self, mengen: &[Vec<usize>]) -> Result<Bezugspunkte, String> {
+        let (out, _, herkunft, _) = self.ungedreht_aufgeloest()?;
+        let teile = |out: &[Objekt], nr: &dyn Fn(usize) -> bool| -> Vec<Objekt> {
+            out.iter().zip(&herkunft).filter(|(_, h)| nr(**h)).map(|(o, _)| o.clone()).collect()
+        };
+        let objekte = (0..self.objekte.len()).map(|i| formmitte(&teile(&out, &|h| h == i))).collect();
+        let out = self.objekte_transformieren(out, &herkunft)?;
+        let mengen = mengen.iter().map(|m| formmitte(&teile(&out, &|h| m.contains(&h)))).collect();
+        let out = self.gruppen_transformieren(out, &herkunft)?;
+        Ok(Bezugspunkte {
+            objekte,
+            mengen,
+            design: self.design_matrix(&out)?,
+        })
+    }
+
+    /// Fläche je Objekt nach seiner eigenen Transformation (vor Gruppe und Design; ohne Aussparen) als Konturen –
+    /// nur Step-, Muster-, Stippling- und Satinflächen – und der Stichwinkel der ersten Fläche (für „Anordnen“:
+    /// überlappende Kopien zusammenführen).
+    pub fn flaechen_eigen(&self) -> Result<Vec<(Vec<crate::aussparen::Kontur>, Option<f64>)>, String> {
+        let (out, _, herkunft, _) = self.ungedreht_aufgeloest()?;
+        let out = self.objekte_transformieren(out, &herkunft)?;
+        let mut je: Vec<(Vec<crate::aussparen::Kontur>, Option<f64>)> = vec![(Vec::new(), None); self.objekte.len()];
+        for (o, &h) in out.iter().zip(&herkunft) {
+            let Some(e) = je.get_mut(h) else { continue };
+            match &o.art {
+                ObjektArt::Tatami { winkel, .. } | ObjektArt::Musterfuellung { winkel, .. } => {
+                    e.1 = e.1.or(*winkel);
+                    e.0.extend(crate::aussparen::bedeckt(&o.art, 0.0));
+                }
+                ObjektArt::Stippling { .. } | ObjektArt::SatinFlaeche { .. } => {
+                    e.0.extend(crate::aussparen::bedeckt(&o.art, 0.0))
+                }
+                _ => {}
+            }
+        }
+        Ok(je)
     }
 
     /// Teil-Abdeckung (Partial Appliqué, `applikation::teil_abdecken`): Abdeckstiche von Applikationen mit
@@ -2478,6 +2540,17 @@ pub struct FormLinie {
     pub punkte: Vec<Punkt>,
     /// letzter Punkt mit dem ersten verbunden
     pub geschlossen: bool,
+}
+
+/// Bezugspunkte der Transformationen (`Design::bezugspunkte`).
+#[derive(Clone, Debug)]
+pub struct Bezugspunkte {
+    /// je Objekt: Mitte seiner Teile vor der eigenen Transformation
+    pub objekte: Vec<Punkt>,
+    /// je angefragter Objektmenge: Mitte nach den Objekt-Transformationen (Bezugspunkt einer Gruppe)
+    pub mengen: Vec<Punkt>,
+    /// Matrix der Transformation des ganzen Designs (None = keine)
+    pub design: Option<crate::transformation::Matrix>,
 }
 
 /// Formen eines Objekts des Designs (`Design::formen`).

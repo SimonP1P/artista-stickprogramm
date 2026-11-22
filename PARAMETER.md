@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 22.11.2026 · **227 Parameter**: 71 einfach, 102 experte, 54 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 22.11.2026 · **235 Parameter**: 71 einfach, 109 experte, 55 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -165,6 +165,19 @@ Stand 22.11.2026 · **227 Parameter**: 71 einfach, 102 experte, 54 automatisch. 
 | **Überdeckung beachten** | beim Sortieren nach Farbe behalten Objekte, die sich überdecken, ihre Reihenfolge |  |  | aus |  |  | werkzeug | einfach | eigene Erweiterung (das Original prüft nicht, Analyse_Teil3/16_reihenfolge.md) |
 | **Überdeckung ab** | kleinere gemeinsame Flächen zählen nicht |  |  | 0,5 mm² |  |  | werkzeug | automatisch | eigene Festlegung |
 | **Breite einer Linie bei der Prüfung** | Laufstich zählt als Band dieser Breite |  |  | 0,5 mm |  |  | werkzeug | automatisch | eigene Festlegung |
+
+## Anordnen
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Ausrichten** | Kanten oder Mitten der gewählten Objekte an das zuletzt gewählte |  |  | – | links, rechts, oben, unten, mitte_senkrecht, mitte_waagrecht, mitte |  | werkzeug | experte | Arrange-Leiste BERESENU STR 33233–33239; Handbuch S. 135 („aligned with the last object selected“) |
+| **Mirror-Merge Richtung** | waagrecht = Kopie links/rechts, senkrecht = oben/unten, beides = drei Kopien |  |  | links_rechts | links_rechts, oben_unten, beide |  | werkzeug | experte | DESVIEW MirrorMergeView*::GetReflectionTransforms (Analyse_Teil3/26) (hoch); Vorgabe eigene Festlegung |
+| **Ankerpunkt** | Punkt, durch den die Spiegellinie geht; Vorschlag rechte bzw. untere Kante der Auswahl |  |  | – |  |  | werkzeug | experte | Handbuch S. 141 (Bezugslinie, Klick setzt Anker); Vorschlag eigene Festlegung |
+| **Punkte des Kranzes** | Original + Kopien rundherum, je 360°/n gedreht (im Uhrzeigersinn) |  |  | 6 Anzahl | 2 … 36 |  | werkzeug | experte | DESVIEW MirrorMergeView*::GetReflectionTransforms (Analyse_Teil3/26) (Drehung −i·2π/n, hoch); Vorgabe Handbuch-Beispiel „six-point wreath“, Bereich eigene Festlegung |
+| **Kaleidoskop** | jede zweite Kopie an der Bezugslinie gespiegelt; nur gerade Zahl |  |  | aus |  |  | werkzeug | experte | DESVIEW MirrorMergeView*::GetReflectionTransforms (Analyse_Teil3/26) (Mirror bei ungeradem i, hoch); Handbuch S. 142 |
+| **Mittelpunkt** | Mitte des Kranzes; Vorschlag unter der Auswahl, Kopien berühren sich nicht |  |  | – |  |  | werkzeug | experte | Handbuch S. 141; Vorschlag eigene Festlegung |
+| **Überlappende zusammenführen** | Step-, Muster-, Stippling- und Satinflächen, die sich mit ihrer Kopie überlappen, werden ein Objekt |  |  | aus |  |  | werkzeug | experte | RESENU STR 4159 (Rückfrage, hoch); Verfahren eigene Festlegung (Analyse_Teil3/26 §4) |
+| **Überlappung ab** | kleinere gemeinsame Flächen zählen nicht als Überlappung |  |  | 0,5 mm² |  |  | werkzeug | automatisch | eigene Festlegung |
 
 ## Blanket
 

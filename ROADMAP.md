@@ -14,7 +14,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 1 Prototyp | Stichberechnung in Python (Referenz für den Rust-Kern) | ✅ |
 | 2 Übertragung | **Lesen ✅** · **Senden ✅ – eigenes Design am 19.11.2026 gestickt** · Farben/Icon wie das Original **vorbereitet** (v4.1, Gerätetest offen) · offen: dauerhaft speichern | 🟡 fast fertig |
 | 3 Grundgerüst | Tauri + Svelte + Rust-Kern, erste Oberfläche | ✅ |
-| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.7 Motive ✅, 4b.8 Effekte ✅, 4b.9 Craft Stitches ✅, 4b.10 Applikation ✅, **4b.11 Zauberstab/PhotoSnap ✅** (Nachtauftrag N0–N5), 4b.17 SVG einlesen ✅, 4b.12–4b.15 offen (Nachtauftrag läuft) · Parameterkatalog `PARAMETER.md` (227 Parameter) | 🟡 |
+| 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.7 Motive ✅, 4b.8 Effekte ✅, 4b.9 Craft Stitches ✅, 4b.10 Applikation ✅, **4b.11 Zauberstab/PhotoSnap ✅**, **4b.12 Anordnen ✅** (Nachtauftrag N0–N6), 4b.17 SVG einlesen ✅, 4b.13–4b.15 offen (Nachtauftrag läuft) · Parameterkatalog `PARAMETER.md` (227 Parameter) | 🟡 |
 | 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (**am Gerät gesendet und gestickt 21.11.**, Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
 
 ## Nachtauftrag 22.11.2026 – HIER ZUERST LESEN (Stand wird nach jedem Schritt nachgetragen)
@@ -41,7 +41,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N3 | 4b.9 Craft Stitches: **Rückstich** und **Stielstich** nach MOD1 (`sticharten/handstich.rs`), **Stippling** (eigener Mäander, `sticharten/stippling.rs`), **Blackwork Run** (Netz, Euler-Weg, `blackwork.rs`; Anordnen → „Blackwork Run“, Befehl `blackwork_lauf`), Einfügen → „Craft Stitches“ mit 8 Vorlagen (`craft_vorlagen`: Blackwork/Candlewicking-Rand und -Füllung, Lacework = Motivlinie/-füllung mit `_BW004a`/`_CW004a`/`_LW004a`); Objektarten `rueckstich`/`stielstich`/`stippling`/`blackwork`, auch über „Stichart wechseln“; **Korrektur:** 0x2798 = Motivlinie, 0x27ee = Motivfüllung, Standard beider **NP004a K0001a** (vorher Children 901/Heirloom 705); Bericht `Analyse_Teil3/24` | ✅ 22.11. |
 | N4 | 4b.10 Applikation: Vorgaben wie das Original (`AutoAppliqueValues` gelesen: Abdeckung Satin 5,0 / 0,5 mm, Heften Zickzack 4,0 / 5,0 mm, Platzierung 1,5 mm, Pre-Cut), **Versatz** innen/außen (Schieberegler −100 … 100 %, für Abdeckung und Heften), **Teil-Abdeckung** (Partial Appliqué; Inspektor + Anordnen-Menü); Frame Out (12 mm) gefunden, nicht umgesetzt (Frage); Bericht 12 §8 | ✅ 22.11. |
 | N5 | 4b.11 Automatik: **Zauberstab** (Magic Wand: Flächen im Bild anklicken → Fläche Step/Satin/Auto oder Umriss Lauf/Dreifach/Satinlinie; Befehl `zauberstab`, im Dialog „Bild umwandeln“), **PhotoSnap** (Objektart `photosnap`, `PhotoValues`/Stil 0x2828 aus MOD1 gelesen, einfarbig oder 4 Farblagen gekreuzt/versetzt; Befehl `photosnap`), **kürzeste Wege** (2-opt bei Bild umwandeln, `kuerzeste` je Objekt beim Einfügen); Bericht `Analyse_Teil3/25`. Offen: „Details“ (Mittellinien), Bild hinter dem Design (M2) | ✅ 22.11. |
-| N6 | 4b.12 Anordnen (Ausrichten, Mirror-Merge, Kranz, Kaleidoskop) | ⬜ |
+| N6 | 4b.12 Anordnen: **Ausrichten** (7 Knöpfe am zuletzt gewählten, Gruppen als Ganzes; Befehl `ausrichten`), **Mirror-Merge** (waagrecht/senkrecht/beides; `spiegeln_kopieren`), **Kranz/Kaleidoskop** (`kranz`; DESVIEW `MirrorMergeView*::GetReflectionTransforms`: −i·2π/n, ungerade Kopien gespiegelt), Rückfrage „Überlappende zusammenführen?“ (STR 4159, Vereinigung eigene Festlegung); Dialog mit Vorschau und Klick für den Ankerpunkt; „Vor/Nach Objekt Nr.“ ohne Browser-Abfrage; Bericht `Analyse_Teil3/26` | ✅ 22.11. |
 | N7 | 4b.13 Dateien/Rahmen (fremde Stickdateien, ART mit Objekten, eigene Rahmen) | ⬜ |
 | N8 | 4b.14 Vorlagen (Stile speichern) | ⬜ |
 | N9 | 4b.15 Kreuzstich | ⬜ |
@@ -67,6 +67,11 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
   0°, das Handbuch-Bild zeigt 45° – welcher Standard? Helle Stellen bekommen noch lockere Stiche (10 mm Abstand, nach
   Handbuch „Max Width … lightest part“) – oder sollen ganz weiße Stellen frei bleiben? Die Abstandsregel selbst ist
   eigene Festlegung; ein Probestich vor Ort würde zeigen, ob der Kontrast stimmt.
+- **Anordnen (N6):** Die Kopien von Mirror-Merge und Kranz kommen in der Stickreihenfolge direkt hinter die Auswahl
+  (beim Kranz im Uhrzeigersinn) – am Original nicht gemessen. Passt das, oder sollen sie z. B. nach Farbe einsortiert
+  werden? Beim Zusammenführen überlappender Kopien entsteht **ein** Objekt (Umriss vereinigt, Stichwinkel des
+  Originals) – wie das Original es macht, ist nicht gelesen. Der Ankerpunkt wird im Dialog (Zahlen oder Klick in die
+  Vorschau) gesetzt statt direkt auf der Leinwand – reicht das?
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -304,7 +309,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ✅ 22.11. (N3) Rückstich/Stielstich nach MOD1, Stippling + Blackwork Run eigene Festlegung, Vorlagen aus den Stilen; `Analyse_Teil3/24` |
 | 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ✅ 22.11. (N4) Vorgaben aus `AutoAppliqueValues`, `versatz`, `teilabdeckung`; Frame Out offen; Vorlage drucken offen |
 | 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin – mit dem Baustein „Satin-Stichrichtung automatisch“ aus 4b.17 –, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 ✅ 22.11. (N5): Magic Wand (`zauberstab`), PhotoSnap (`photosnap`), kürzeste Wege (2-opt, `kuerzeste`), Bericht 25 · offen: „Details“ (Mittellinien als Doppellauf/Satinlinie), Bild hinter dem Design + M2 |
-| 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ⬜ |
+| 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ✅ 22.11. (N6, `Analyse_Teil3/26`) |
 | 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ⬜ |
 | 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ⬜ |
 | 4b.15 | **Kreuzstich** | eigenes Modul (Kap. 34–37) | ⬜ |

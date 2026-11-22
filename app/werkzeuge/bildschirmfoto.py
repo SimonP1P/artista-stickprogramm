@@ -163,6 +163,26 @@ def main():
             "min_flaeche": 4, "glaettung": 0.2, **({"garnkarte": karte} if karte != "keine" else {}),
             "garnfarben": karte not in ("Default", "keine")})
 
+    if dialog_art == "kopieren":
+        # Dialog Mirror-Merge/Kranz: Ergebnis mit dem Vorschlag des Dialogs (Anker wie in KopierenDialog.svelte) und
+        # seine Formen (Schlüssel „design_formen@<Zahl der Objekte>“)
+        import math
+        d_ = json.loads(o.dialog)
+        nr = o.auswahl or 0
+        b = antworten["design_formen"][nr]["begrenzung"]
+        bw, bh = b[2] - b[0], b[3] - b[1]
+        if d_.get("weg") == "kranz":
+            r_ = max(bh / 2 + 2, max(bw, bh) * 1.1 / (2 * math.sin(math.pi / 6)))
+            erg = api(stick, "kranz", {"design": design, "objekte": [nr], "punkte": 6,
+                                       "mitte": [round((b[0] + b[2]) / 2, 2), round((b[1] + b[3]) / 2 - r_, 2)]})
+            antworten["kranz"] = erg
+        else:
+            erg = api(stick, "spiegeln_kopieren", {"design": design, "objekte": [nr], "art": "links_rechts",
+                                                   "achse": [round(b[2], 2), round(b[1], 2)]})
+            antworten["spiegeln_kopieren"] = erg
+        antworten["design_formen@%d" % len(erg["design"]["objekte"])] = api(stick, "design_formen",
+                                                                             {"design": erg["design"]})
+
     build = os.path.join(APP, "build")
     if not os.path.exists(os.path.join(build, "index.html")):
         sys.exit("app/build fehlt – erst `npm run build`")
@@ -208,7 +228,8 @@ window.__TAURI_INTERNALS__ = {{
   invoke: (cmd, args) => {{
     if (cmd !== "kern") return Promise.reject({{ meldung: "Bildschirmfoto: Befehl " + cmd, objekt: null }});
     const d = args.daten || {{}};
-    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.schrift || d.name || d.satz || "")] ?? ANTWORTEN[args.befehl];
+    const a = ANTWORTEN[args.befehl + ":" + (d.alphabet || d.schrift || d.name || d.satz || "")]
+      ?? ANTWORTEN[args.befehl + "@" + (d.design && d.design.objekte ? d.design.objekte.length : "")] ?? ANTWORTEN[args.befehl];
     if (a === undefined) return Promise.reject({{ meldung: "Bildschirmfoto: " + args.befehl + " nicht vorbereitet", objekt: null }});
     if (a && a.__fehler__) return Promise.reject(a.__fehler__);
     return Promise.resolve(JSON.parse(JSON.stringify(a)));

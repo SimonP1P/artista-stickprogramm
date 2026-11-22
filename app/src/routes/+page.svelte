@@ -23,6 +23,8 @@
   import MotivDialog from "$lib/dialoge/MotivDialog.svelte";
   import MotivSpeichernDialog from "$lib/dialoge/MotivSpeichernDialog.svelte";
   import FarbenMischenDialog from "$lib/dialoge/FarbenMischenDialog.svelte";
+  import KopierenDialog from "$lib/dialoge/KopierenDialog.svelte";
+  import NummerDialog from "$lib/dialoge/NummerDialog.svelte";
   import RahmenDialog from "$lib/dialoge/RahmenDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
@@ -43,7 +45,7 @@
   import { listen } from "$lib/listen.svelte";
   import { knotenBild } from "$lib/knoten";
   import { formAusPunkten, ZEICHEN_HILFE, type ZeichenPunkt } from "$lib/zeichnen";
-  import type { ReihenfolgeBefehl } from "$kern/kern";
+  import type { AusrichtArt, ReihenfolgeBefehl } from "$kern/kern";
 
   let menue = $state<"datei" | "maschine" | "einfuegen" | "anordnen" | "fuellung" | "umriss" | null>(null);
   /** Lage des Stichart-Menüs neben der Werkzeugleiste */
@@ -223,11 +225,7 @@
     const erst = auswahlSortiert[0] ?? -1;
     const letzt = auswahlSortiert.at(-1) ?? -1;
     const um = (b: ReihenfolgeBefehl) => () => arbeit.umordnen(b);
-    const nachNummer = (vor: boolean) => () => {
-      const t = prompt(`${vor ? "Vor" : "Nach"} Objekt Nr. (1 … ${n}):`);
-      const z = t ? parseInt(t, 10) - 1 : NaN;
-      if (z >= 0 && z < n) arbeit.umordnen(vor ? { art: "vor", auswahl: [...a], ziel: z } : { art: "nach", auswahl: [...a], ziel: z });
-    };
+    const nachNummer = (vor: boolean) => () => (arbeit.dialog = { art: "nummer", vor });
     return [
       { l: "An den Anfang", go: a.length ? um({ art: "an_anfang", auswahl: [...a] }) : undefined },
       { l: "Ans Ende", go: a.length ? um({ art: "ans_ende", auswahl: [...a] }) : undefined },
@@ -244,6 +242,17 @@
       { l: "Teil-Abdeckung (Partial Appliqué)", go: arbeit.auswahlApplikationen.length > 1 ? () => arbeit.teilAbdeckung() : undefined },
     ];
   });
+
+  /** Ausrichten (Arrange-Leiste des Originals, STR 33233–33239): nach dem zuletzt gewählten Objekt */
+  const AUSRICHTEN: [AusrichtArt, string, string][] = [
+    ["links", IC.ausrLinks, "Linke Kanten"],
+    ["mitte_senkrecht", IC.ausrMitteSenkrecht, "Mitten senkrecht übereinander"],
+    ["rechts", IC.ausrRechts, "Rechte Kanten"],
+    ["oben", IC.ausrOben, "Obere Kanten"],
+    ["mitte_waagrecht", IC.ausrMitteWaagrecht, "Mitten waagrecht nebeneinander"],
+    ["unten", IC.ausrUnten, "Untere Kanten"],
+    ["mitte", IC.ausrMitte, "Mitten aufeinander"],
+  ];
 
   function waehle(f?: () => void) {
     menue = null;
@@ -430,8 +439,17 @@
         {#each anordnenMenue as m (m.l)}
           <button class="mi" role="menuitem" disabled={!m.go} onclick={() => waehle(m.go)}>{m.l}{#if m.kbd}<span class="kbd">{m.kbd}</span>{/if}</button>
         {/each}
+        <div class="small mut" style="padding:2px 10px 6px; max-width:280px; white-space:normal">Liegt ein Objekt danach unter einer Fläche, über der es lag, warnt das Programm.</div>
         <div class="msep"></div>
-        <div class="small mut" style="padding:4px 10px 8px; max-width:280px; white-space:normal">Liegt ein Objekt danach unter einer Fläche, über der es lag, warnt das Programm.</div>
+        <div class="mh">Ausrichten – am zuletzt gewählten</div>
+        <div class="ausr" role="group" aria-label="Ausrichten">
+          {#each AUSRICHTEN as [art, d, l] (art)}
+            <button class="tb" role="menuitem" title={l} aria-label={l} disabled={arbeit.auswahlEinheiten < 2} onclick={() => waehle(() => arbeit.ausrichten(art))}><Icon {d} /></button>
+          {/each}
+        </div>
+        <div class="mh">Kopieren</div>
+        <button class="mi" role="menuitem" disabled={!arbeit.auswahl.length} onclick={() => waehle(() => (arbeit.dialog = { art: "kopieren", weg: "spiegeln" }))}><Icon d={IC.spiegelnKopie} />Spiegeln und kopieren (Mirror-Merge) …</button>
+        <button class="mi" role="menuitem" disabled={!arbeit.auswahl.length} onclick={() => waehle(() => (arbeit.dialog = { art: "kopieren", weg: "kranz" }))}><Icon d={IC.kranz} />Kranz / Kaleidoskop …</button>
       </div>
     {/if}
     {#if menue === "datei"}
@@ -647,6 +665,8 @@
   {/if}
   {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "motiv_speichern"}<MotivSpeichernDialog schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "kopieren"}<KopierenDialog weg={arbeit.dialog.weg} schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "nummer"}<NummerDialog vor={arbeit.dialog.vor} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "farben_mischen"}<FarbenMischenDialog objekt={arbeit.dialog.objekt} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "warnung"}
     <WarnungDialog vertauscht={arbeit.dialog.vertauscht} namen={arbeit.dialog.namen} vorher={arbeit.dialog.vorher} schliessen={() => (arbeit.dialog = null)} />
