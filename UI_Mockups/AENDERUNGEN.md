@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Dicke Umrandung im einfachen Modus (Wunsch Nutzer; Commit siehe unten)
+- **Neue Felder in `umrandung`:** `breite_anteil` (Breite der Satinkante in % der Buchstabenhöhe, 1–30, nur
+  Text/Monogramm, gilt statt `breite`; Größe/Skalieren von Objekt, Gruppe und Design zählt mit; mindestens 1 mm) und
+  `aussen` (Satinkante außen: Innenkante `einzug` mm in der Fläche, Kante wächst nach außen; ohne: Mitte der Kante
+  `einzug` mm innen wie bisher). Bedeutung vorhandener Felder unverändert.
+- **Kern:** Haarfugen zwischen Buchstabenteilen werden vor dem Versatz geschlossen (keine Stacheln mehr bei schmal
+  gestellter Schrift); jeder Buchstabe/jede Fläche wird einzeln versetzt, außen mit runden Ecken.
+- **Oberfläche (umgesetzt):** Häkchen „Umrandung“ steht bei Text und Monogramm **unter „Stabilisieren“** und setzt
+  `{art: "satin", aussen: true, breite_anteil: 6}` (Flächen/Bilder: `breite: 2`). Inspektor: Umschalter „Lage“ (auf der
+  Kante / außen) und bei Text Breite in „% der Höhe“ (leer = feste Breite in mm).
+
 ## 21.11.2026 – Umrandung um Flächen und Buchstaben (Wunsch Nutzer; Commit 793357f)
 - **Neues Feld an jedem Objekt:** `umrandung` (`format::UmrandungJson`): `art` lauf | **dreifach** | satin, `farbe`
   (Standard schwarz), `einzug` (Standard 0,3 mm nach innen, eigene Festlegung), `breite` (Satinkante, Standard 2 mm),

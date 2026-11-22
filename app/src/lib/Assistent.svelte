@@ -86,6 +86,8 @@
 
   /** Elemente, zu denen die Auswahl gehört (Auswahlrechteck, Strg+A, Umschalt-Klick) */
   const gewaehlteElemente = $derived(elemente.filter((x) => x.objekte.some((i) => arbeit.auswahl.includes(i))));
+  /** Breite der Umrandung im einfachen Modus: Prozent der Buchstabenhöhe (Nutzer 21.11.2026: 50 mm → 3 mm) */
+  const UMRANDUNG_ANTEIL = 6;
   const sicht = $derived(
     !arbeit.objekte.length || hinzufuegen
       ? "kacheln"
@@ -523,6 +525,7 @@
           {#if hoeheWarnung}<div class="warnbox" style="margin-top:6px"><Icon d={IC.warnung} /><span>{hoeheWarnung}</span></div>{/if}
           {@render stichSchalter()}
           {@render stabilisieren()}
+          {@render umrandung()}
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px">
           <div class="field">
@@ -543,7 +546,6 @@
           </div>
         </div>
         {@render garnWahl()}
-        {@render umrandung()}
         {@render elGroesse()}
         {@render passung()}
         {@render elAktionen()}
@@ -591,9 +593,9 @@
           </div>
           {@render stichSchalter()}
           {@render stabilisieren()}
+          {@render umrandung()}
         </div>
         {@render garnWahl()}
-        {@render umrandung()}
         {@render elGroesse()}
         {@render passung()}
         {@render elAktionen()}
@@ -739,10 +741,26 @@
     {@const u = fl.map((i) => arbeit.objekte[i]?.umrandung).find((x) => !!x)}
     {@const mit = fl.find((i) => !!arbeit.objekte[i]?.umrandung) ?? fl[0]}
     {@const ug = arbeit.umrandungGarn(mit)}
-    <div style="margin-bottom:12px">
-      <label class="chk" title="Eine Linie um {text || mono ? 'jeden Buchstaben' : fl.length > 1 ? 'jede Fläche' : 'die Fläche'}, leicht nach innen versetzt, damit nach dem Sticken keine Lücke zur Füllung bleibt. Stichart, Breite und Versatz: Expertenmodus.">
-        <input type="checkbox" checked={!!u} onchange={(ev) => arbeit.umrandungSetzen(fl, (ev.currentTarget as HTMLInputElement).checked ? () => {} : null)} />
-        <span>Umrandung <span class="mut small">– Linie um {text || mono ? "jeden Buchstaben" : fl.length > 1 ? "jede Fläche" : "die Fläche"}</span></span>
+    {@const schrift = !!(text || mono)}
+    <div style="margin-bottom:12px; margin-top:{schrift ? 8 : 0}px">
+      <label class="chk" title={schrift ? "Dicke Satinkante außen um jeden Buchstaben: 6 % der Buchstabenhöhe (50 mm → 3 mm, mindestens 1 mm), wächst beim Vergrößern mit; die Buchstabenfarbe bleibt sichtbar. Stichart, Breite und Lage: Expertenmodus." : "Satinkante 2 mm außen um die Fläche; die Farbe der Fläche bleibt sichtbar. Stichart, Breite und Lage: Expertenmodus."}>
+        <input
+          type="checkbox"
+          checked={!!u}
+          onchange={(ev) =>
+            arbeit.umrandungSetzen(
+              fl,
+              (ev.currentTarget as HTMLInputElement).checked
+                ? (x) => {
+                    x.art = "satin";
+                    x.aussen = true;
+                    if (schrift) x.breite_anteil = UMRANDUNG_ANTEIL;
+                    else x.breite = 2;
+                  }
+                : null,
+            )}
+        />
+        <span>Umrandung <span class="mut small">– dicke Kante um {schrift ? "jeden Buchstaben" : fl.length > 1 ? "jede Fläche" : "die Fläche"}</span></span>
       </label>
       {#if u}
         <button class="btn btn-secondary pick" style="min-height:36px; margin-top:6px" onclick={() => (arbeit.dialog = { art: "garn", objekt: mit, alle: fl, umrandung: true, titel: `${elName || (el ? elArt(el)[0] : "")} · Umrandung` })}>

@@ -250,7 +250,8 @@ P('objekt.doppellauf', G, 'Verstärken (Double Run)', 'gleiche Stiche rückwärt
   o='doppellauf', einheit='an/aus', std=False, quelle='Handbuch Kap. 23')
 FL = ['tatami', 'satinflaeche', 'muster', 'satin', 'satinlinie', 'blanket', 'text', 'ttf', 'monogramm', 'applikation']
 QU = 'eigene Erweiterung (Nutzer 21.11.2026); im Original eine zweite Linie von Hand (Handbuch S. 114)'
-P('objekt.umrandung', G, 'Umrandung', 'Linie um die Fläche (Text: um jeden Buchstaben), gestickt nach dem Objekt',
+P('objekt.umrandung', G, 'Umrandung', 'Linie um die Fläche (Text: um jeden Buchstaben), gestickt nach dem Objekt; '
+  'das Häkchen im einfachen Modus setzt eine dicke Satinkante außen (Text 6 % der Buchstabenhöhe, Flächen 2 mm)',
   ebene='objekt', gilt=FL, o='umrandung', einheit='an/aus', std=False, quelle=QU, modus='einfach')
 P('objekt.umrandung.farbe', G, 'Umrandung: Garn', 'Farbe der Umrandung (eigener Farbblock)', ebene='objekt', gilt=FL,
   o='umrandung.farbe', einheit='#rrggbb', std='#000000', quelle=QU + '; ' + V, modus='einfach')
@@ -262,6 +263,13 @@ P('objekt.umrandung.einzug', G, 'Umrandung: nach innen', 'Versatz der Linie in d
   bereich=[0, 3], quelle=V + ' – am Kalibrierblatt (Vor Ort V12) prüfen')
 P('objekt.umrandung.breite', G, 'Umrandung: Breite der Satinkante', 'nur bei Stichart Satinkante', ebene='objekt',
   gilt=FL, o='umrandung.breite', einheit='mm', std=2.0, bereich=[0.5, 10], quelle='wie Satinlinie (Standard 2 mm)')
+P('objekt.umrandung.breite_anteil', G, 'Umrandung: Breite in % der Buchstabenhöhe', 'nur Text/Monogramm mit '
+  'Satinkante, gilt statt der Breite in mm; Größe/Skalieren zählt mit, mindestens 1 mm', ebene='objekt',
+  gilt=['text', 'ttf', 'monogramm'], o='umrandung.breite_anteil', einheit='%', std=None, bereich=[1, 30],
+  quelle=V + ' – Wunsch Nutzer 21.11.2026 (50 mm → 3 mm = 6 %, im einfachen Modus gesetzt)')
+P('objekt.umrandung.aussen', G, 'Umrandung: Satinkante außen', 'Innenkante liegt „nach innen“ mm in der Fläche, die '
+  'Kante wächst nach außen, die Farbe bleibt ganz sichtbar; sonst liegt die Mitte der Kante auf dem Rand',
+  ebene='objekt', gilt=FL, o='umrandung.aussen', einheit='an/aus', std=False, quelle=V + ' (im einfachen Modus an)')
 P('objekt.umrandung.laenge', G, 'Umrandung: Stichlänge', 'Lauf/Dreifach; ohne Angabe Stil', ebene='objekt', gilt=FL,
   o='umrandung.laenge', einheit='mm', std=None, bereich=[0.3, 12.7], quelle='Stil Lauf (Software Defaults 2,5 mm)')
 P('objekt.aussparen', G, 'Aussparen (Knockout)', 'Fläche spart die genannten Objekte aus', ebene='objekt',

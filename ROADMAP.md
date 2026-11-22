@@ -315,7 +315,9 @@ links = Ecke, rechts = Kurve wie im Original, S. 58) statt Probeform in der Mitt
 **Auswahl und Umrandung (21.11.2026, Wunsch Nutzer):** Strg+A alle Objekte, Auswahlrechteck (Handbuch S. 41–42),
 Gruppieren in beiden Modi, Programm ohne Browser-Verhalten ✅. **Umrandung** als Feld `umrandung` am Objekt (eigene
 Erweiterung): Linie um Fläche/Buchstaben, 0,3 mm nach innen (eigene Festlegung), Dreifach schwarz als Standard;
-einfacher Modus Häkchen, Experte Stichart/Garn/Versatz/Breite ✅. **Offen:** Versatz am Gerät prüfen (Vor Ort V12).
+einfacher Modus Häkchen, Experte Stichart/Garn/Versatz/Breite ✅. **Dicke Umrandung** im einfachen Modus (Nutzer
+21.11.2026): Satinkante außen, Breite 6 % der Buchstabenhöhe (`breite_anteil`, `aussen`), Häkchen unter „Stabilisieren“
+✅. **Offen:** Versatz am Gerät prüfen (Vor Ort V12); Dichte, wo sich die Kanten benachbarter Buchstaben überlappen.
 
 **Offen nach E6 (Kern-Schritte):** ~~W9~~ ✅ 21.11. · ~~W5-Rest~~ ✅ 21.11. (`stick-kern::umwandeln`) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.

@@ -1124,9 +1124,13 @@ pub struct Design {
 /// angenommen): das Original kennt keine automatische Umrandung; der Wert liegt zwischen dem Zugausgleich der Stoffe
 /// (0,20–0,25 mm) und der Überlappung der Satinsäulen (0,3 mm). Am Gerät mit dem Kalibrierblatt (Vor Ort V12) prüfen.
 pub const UMRANDUNG_EINZUG: f64 = 0.3;
+/// Schmalste Satinkante bei Breite in Prozent der Buchstabenhöhe (mm). **Eigene Festlegung**: schmaler wirkt die Kante
+/// nicht mehr „dick“ und die Satinstiche werden sehr kurz.
+pub const UMRANDUNG_MIN_BREITE: f64 = 1.0;
 
 /// Umrandung eines Objekts (JSON `"umrandung"`, eigene Erweiterung, `format::UmrandungJson`): Linie um die Fläche des
-/// Objekts, um `einzug` nach innen versetzt, gestickt gleich nach dem Objekt.
+/// Objekts, um `einzug` nach innen versetzt (Satinkante `aussen`: Innenkante `einzug` in der Fläche), gestickt gleich
+/// nach dem Objekt.
 #[derive(Clone, Debug, PartialEq)]
 pub struct Umrandung {
     pub art: crate::format::UmrandungArt,
@@ -1134,6 +1138,10 @@ pub struct Umrandung {
     pub einzug: f64,
     /// Breite der Satinkante (nur Satin)
     pub breite: f64,
+    /// Breite in Prozent der Buchstabenhöhe (nur Text; gilt statt `breite`)
+    pub breite_anteil: Option<f64>,
+    /// Satinkante außen (Innenkante `einzug` in der Fläche)
+    pub aussen: bool,
     /// Stichlänge bei Lauf/Dreifach (None = Stil)
     pub laenge: Option<f64>,
 }
@@ -1273,6 +1281,9 @@ impl Design {
                 if !(0.5..=10.0).contains(&u.breite) {
                     return Err(format!("{wo}: umrandung: breite zwischen 0,5 und 10 mm"));
                 }
+                if u.breite_anteil.is_some_and(|a| !(1.0..=30.0).contains(&a)) {
+                    return Err(format!("{wo}: umrandung: breite_anteil zwischen 1 und 30 %"));
+                }
                 if u.laenge.is_some_and(|l| {
                     !(crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM).contains(&l)
                 }) {
@@ -1285,6 +1296,8 @@ impl Design {
                         farbe: u.farbe.clone(),
                         einzug: u.einzug,
                         breite: u.breite,
+                        breite_anteil: u.breite_anteil,
+                        aussen: u.aussen,
                         laenge: u.laenge,
                     },
                 );
@@ -1548,6 +1561,32 @@ impl Design {
         Ok((out, fehlend, herkunft, buchstabe))
     }
 
+    /// Breite der Satinkante: bei `breite_anteil` an Text/Monogramm Prozent der Buchstabenhöhe mal Vergrößerung (Objekt,
+    /// Gruppe, ganzes Design), mindestens `UMRANDUNG_MIN_BREITE`, höchstens 10 mm; sonst `breite`.
+    fn umrandung_breite(&self, nr: usize, u: &Umrandung) -> f64 {
+        let (Some(anteil), Some(ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. })) =
+            (u.breite_anteil, self.objekte.get(nr).map(|o| &o.art))
+        else {
+            return u.breite;
+        };
+        // Flächenmaßstab der Transformationen (Verschieben/Mitte ändern ihn nicht): Wurzel der Determinante
+        let faktor = |t: &Transformation| {
+            t.matrix(crate::geometrie::p(0.0, 0.0))
+                .map(|m| m.det().abs().sqrt())
+                .unwrap_or(1.0)
+        };
+        let mut f = self.transformationen.get(&nr).map(faktor).unwrap_or(1.0);
+        for (nummern, t) in &self.gruppen {
+            if nummern.contains(&nr) {
+                f *= faktor(t);
+            }
+        }
+        if !self.transformation.ist_leer() {
+            f *= faktor(&self.transformation);
+        }
+        (vorgabe.hoehe * f * anteil / 100.0).clamp(UMRANDUNG_MIN_BREITE, 10.0)
+    }
+
     /// Umrandungen (eigene Erweiterung): hinter dem letzten aufgelösten Teil eines Objekts mit `umrandung` je Ring der
     /// vereinigten, nach innen versetzten Fläche aller seiner Teile ein geschlossener Lauf/Dreifach bzw. eine
     /// Satinlinie in der Farbe der Umrandung (Herkunft = das Objekt, kein Buchstabe).
@@ -1568,7 +1607,17 @@ impl Design {
                 .flat_map(|(o, _)| crate::aussparen::bedeckt(&o.art, 0.0))
                 .collect();
             let name = format!("{} (Umrandung)", objekte[letzter].name);
-            let ringe = crate::aussparen::umrandung_ringe(&konturen, u.einzug);
+            let u = &Umrandung {
+                breite: self.umrandung_breite(nr, u),
+                ..u.clone()
+            };
+            // Mitte der Linie: nach innen um `einzug`; Satinkante außen: halbe Breite nach außen, Innenkante in der Fläche
+            let versatz = if u.aussen && u.art == crate::format::UmrandungArt::Satin {
+                u.breite / 2.0 - u.einzug
+            } else {
+                -u.einzug
+            };
+            let ringe = crate::aussparen::umrandung_ringe(&konturen, versatz);
             nach.insert(letzter, ringe.into_iter().map(|r| umrandung_objekt(r, u, &name)).collect());
         }
         let mut out = Vec::with_capacity(objekte.len());
@@ -2577,7 +2626,38 @@ mod tests {
         let (obj, ..) = d.aufgeloest_mit_herkunft().unwrap();
         assert!(matches!(obj[1].art, ObjektArt::SatinLinie { breite, .. } if (breite - 1.5).abs() < 1e-9));
         assert_eq!(obj[1].farbe, "#123456");
-        for falsch in [r#"{"einzug": 4}"#, r#"{"breite": 0.2}"#, r#"{"laenge": 20}"#, r#"{"art": "x"}"#] {
+        // Satinkante außen: 3 mm breit, Innenkante 0,3 mm in der Fläche → Mittellinie 1,2 mm außen (20 → 22,4 mm);
+        // das Loch bekommt seine Kante nach innen (6 → 3,6 mm)
+        let d = Design::aus_json(
+            r##"{"objekte": [{"art": "tatami", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 20, "hoehe": 20}},
+                "loecher": [{"rechteck": {"mitte": [0, 0], "breite": 6, "hoehe": 6}}],
+                "umrandung": {"art": "satin", "breite": 3, "aussen": true}}]}"##,
+        )
+        .unwrap();
+        let (obj, ..) = d.aufgeloest_mit_herkunft().unwrap();
+        let weiten: Vec<f64> = obj[1..]
+            .iter()
+            .map(|o| {
+                let ObjektArt::SatinLinie { punkte, .. } = &o.art else { panic!() };
+                let (x0, _, x1, _) = crate::geometrie::begrenzung(punkte.iter().copied()).unwrap();
+                x1 - x0
+            })
+            .collect();
+        assert!((weiten[0] - 22.4).abs() < 0.02 && (weiten[1] - 3.6).abs() < 0.02, "{weiten:?}");
+        // Breite in Prozent der Buchstabenhöhe: 6 % von 50 mm = 3 mm, mit Skalieren 50 % → 1,5 mm, 10 mm → mindestens 1 mm
+        let mut d = Design::aus_json(
+            r##"{"objekte": [{"art": "text", "text": "A", "alphabet": "x", "hoehe": 50,
+                "umrandung": {"art": "satin", "breite_anteil": 6}},
+                {"art": "text", "text": "A", "alphabet": "x", "hoehe": 50, "transform": {"skalieren": 50},
+                "umrandung": {"art": "satin", "breite_anteil": 6}},
+                {"art": "text", "text": "A", "alphabet": "x", "hoehe": 10, "umrandung": {"art": "satin", "breite_anteil": 6}}]}"##,
+        )
+        .unwrap();
+        let b: Vec<f64> = (0..3).map(|nr| d.umrandung_breite(nr, &d.umrandung[&nr])).collect();
+        assert!((b[0] - 3.0).abs() < 1e-9 && (b[1] - 1.5).abs() < 1e-9 && (b[2] - 1.0).abs() < 1e-9, "{b:?}");
+        d.umrandung.get_mut(&0).unwrap().breite_anteil = None;
+        assert!((d.umrandung_breite(0, &d.umrandung[&0]) - 2.0).abs() < 1e-9);
+        for falsch in [r#"{"einzug": 4}"#, r#"{"breite": 0.2}"#, r#"{"laenge": 20}"#, r#"{"art": "x"}"#, r#"{"breite_anteil": 40}"#] {
             let j = format!(r#"{{"objekte": [{{"art": "tatami", "umriss": [[0, 0], [5, 0], [5, 5]], "umrandung": {falsch}}}]}}"#);
             assert!(Design::aus_json(&j).is_err(), "{falsch}");
         }

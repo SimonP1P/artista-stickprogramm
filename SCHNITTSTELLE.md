@@ -485,8 +485,10 @@ Transformation in der JSON-Form (`"transform"` am Objekt oder am Design).
 | Feld | Typ | Pflicht | Standard | Beschreibung |
 |---|---|---|---|---|
 | `art` | UmrandungArt |  | `"dreifach"` | Stichart der Linie (Standard Dreifach) |
+| `aussen` | boolean |  | `false` | Satinkante **außen** um die Fläche (nur bei `art` satin): die Innenkante liegt `einzug` mm in der Fläche, die Kante wächst nach außen, die Farbe des Objekts bleibt ganz sichtbar (dicke Umrandung im einfachen Modus). Ohne: Mitte der Kante `einzug` mm in der Fläche (eigene Festlegung, Wunsch Nutzer 21.11.2026) |
 | `breite` | number |  | `2.0` | Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie) |
-| `einzug` | number |  | `0.3` | Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen) |
+| `breite_anteil` | number |  | – | Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`; Größe/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm (Wunsch Nutzer 21.11.2026, eigene Festlegung) |
+| `einzug` | number |  | `0.3` | Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen); bei `aussen`: wie weit die Innenkante der Satinkante in der Fläche liegt |
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (Standard schwarz) |
 | `laenge` | number |  | – | Stichlänge in mm bei Lauf/Dreifach, 0,3 … 12,7 (ohne Angabe: Stil) |
 

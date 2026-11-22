@@ -2637,7 +2637,7 @@
    "id": "objekt.umrandung",
    "gruppe": "Bearbeiten",
    "name": "Umrandung",
-   "wirkung": "Linie um die Fläche (Text: um jeden Buchstaben), gestickt nach dem Objekt",
+   "wirkung": "Linie um die Fläche (Text: um jeden Buchstaben), gestickt nach dem Objekt; das Häkchen im einfachen Modus setzt eine dicke Satinkante außen (Text 6 % der Buchstabenhöhe, Flächen 2 mm)",
    "ebene": "objekt",
    "gilt_fuer": [
     "tatami",
@@ -2781,6 +2781,58 @@
    "werte": [],
    "stoff": false,
    "quelle": "wie Satinlinie (Standard 2 mm)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.umrandung.breite_anteil",
+   "gruppe": "Bearbeiten",
+   "name": "Umrandung: Breite in % der Buchstabenhöhe",
+   "wirkung": "nur Text/Monogramm mit Satinkante, gilt statt der Breite in mm; Größe/Skalieren zählt mit, mindestens 1 mm",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "text",
+    "ttf",
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": "umrandung.breite_anteil",
+   "einheit": "%",
+   "standard": null,
+   "bereich": [
+    1,
+    30
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Vorschlag (eigene Festlegung) – Wunsch Nutzer 21.11.2026 (50 mm → 3 mm = 6 %, im einfachen Modus gesetzt)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.umrandung.aussen",
+   "gruppe": "Bearbeiten",
+   "name": "Umrandung: Satinkante außen",
+   "wirkung": "Innenkante liegt „nach innen“ mm in der Fläche, die Kante wächst nach außen, die Farbe bleibt ganz sichtbar; sonst liegt die Mitte der Kante auf dem Rand",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "tatami",
+    "satinflaeche",
+    "muster",
+    "satin",
+    "satinlinie",
+    "blanket",
+    "text",
+    "ttf",
+    "monogramm",
+    "applikation"
+   ],
+   "json_design": null,
+   "json_objekt": "umrandung.aussen",
+   "einheit": "an/aus",
+   "standard": false,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Vorschlag (eigene Festlegung) (im einfachen Modus an)",
    "modus": "experte"
   },
   {

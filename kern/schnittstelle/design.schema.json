@@ -4018,15 +4018,29 @@
           "default": "dreifach",
           "description": "Stichart der Linie (Standard Dreifach)"
         },
+        "aussen": {
+          "default": false,
+          "description": "Satinkante **außen** um die Fläche (nur bei `art` satin): die Innenkante liegt `einzug` mm in der Fläche, die\nKante wächst nach außen, die Farbe des Objekts bleibt ganz sichtbar (dicke Umrandung im einfachen Modus). Ohne:\nMitte der Kante `einzug` mm in der Fläche (eigene Festlegung, Wunsch Nutzer 21.11.2026)",
+          "type": "boolean"
+        },
         "breite": {
           "default": 2.0,
           "description": "Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)",
           "format": "double",
           "type": "number"
         },
+        "breite_anteil": {
+          "default": null,
+          "description": "Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`;\nGröße/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm (Wunsch\nNutzer 21.11.2026, eigene Festlegung)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
         "einzug": {
           "default": 0.3,
-          "description": "Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen)",
+          "description": "Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen); bei\n`aussen`: wie weit die Innenkante der Satinkante in der Fläche liegt",
           "format": "double",
           "type": "number"
         },

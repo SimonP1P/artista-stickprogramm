@@ -226,10 +226,11 @@ pub fn flaechen_aus_ringen(ringe: &[Linie], gerade_ungerade: bool) -> Vec<Teil> 
     teile_aus(subj.overlay(&leer, OverlayRule::Subject, regel))
 }
 
-/// **Umrandung** (eigene Erweiterung, `design::Umrandung`): Ringe um die vereinigte Fläche der Konturen, um `einzug`
-/// mm nach innen versetzt (Versatz mit `i_overlay`, Gehrungsecken). Je Teil erst der Umriss, dann seine Löcher; Teile
-/// von links nach rechts (Schrift: Buchstabe für Buchstabe). Ringe geschlossen (letzter Punkt = erster).
-pub fn umrandung_ringe(konturen: &[Kontur], einzug: f64) -> Vec<Linie> {
+/// **Umrandung** (eigene Erweiterung, `design::Umrandung`): Ringe um die vereinigte Fläche der Konturen, je Teil
+/// (Buchstabe, Fläche) um `versatz` mm versetzt – negativ nach innen (Gehrungsecken), positiv nach außen (runde Ecken,
+/// für die dicke Kante außen; benachbarte Buchstaben behalten je ihre eigene Kante). Je Teil erst der Umriss, dann seine
+/// Löcher; Teile von links nach rechts (Schrift: Buchstabe für Buchstabe). Ringe geschlossen (letzter Punkt = erster).
+pub fn umrandung_ringe(konturen: &[Kontur], versatz: f64) -> Vec<Linie> {
     use i_overlay::mesh::float::outline::offset::OutlineOffset;
     use i_overlay::mesh::float::style::{LineJoin, OutlineStyle};
     if konturen.is_empty() {
@@ -237,26 +238,60 @@ pub fn umrandung_ringe(konturen: &[Kontur], einzug: f64) -> Vec<Linie> {
     }
     let leer: Vec<Kontur> = Vec::new();
     let vereint = konturen.to_vec().overlay(&leer, OverlayRule::Union, FillRule::NonZero);
-    let formen = if einzug > 1e-6 {
-        // Gehrung bis 20° Innenwinkel, spitzere Ecken abgeschrägt (eigene Festlegung)
-        let stil = OutlineStyle::new(-einzug).line_join(LineJoin::Miter(20f64.to_radians()));
-        vereint.outline(&stil)
-    } else {
-        vereint
+    // Gehrung bis 20° Innenwinkel, spitzere Ecken abgeschrägt; nach außen runde Ecken (eigene Festlegung)
+    let versetzen = |f: Vec<Vec<Kontur>>, d: f64, rund: bool| -> Vec<Vec<Kontur>> {
+        if d.abs() < 1e-6 {
+            return f;
+        }
+        let ecke = if rund { LineJoin::Round(0.2) } else { LineJoin::Miter(20f64.to_radians()) };
+        f.outline(&OutlineStyle::new(d).line_join(ecke))
     };
-    let mut teile = teile_aus(formen);
+    // Haarfugen schließen: Teile eines Buchstabens stoßen (z. B. bei schmaler gestellter Schrift) nicht immer ganz
+    // bündig aneinander; ohne Schließen würde der Versatz aus jeder Fuge einen Stachel machen. Erst um UMRANDUNG_FUGE
+    // nach außen, dann wieder nach innen.
+    let geschlossen = versetzen(versetzen(vereint, UMRANDUNG_FUGE, false), -UMRANDUNG_FUGE, false);
+    let mut teile: Vec<Teil> = teile_aus(geschlossen)
+        .iter()
+        .flat_map(|t| teile_aus(versetzen(vec![teile_konturen(std::slice::from_ref(t))], versatz, versatz > 0.0)))
+        .collect();
     let links = |r: &Linie| r.iter().map(|q| q.x).fold(f64::INFINITY, f64::min);
     teile.sort_by(|a, b| links(&a.0).total_cmp(&links(&b.0)));
     teile
         .into_iter()
         .flat_map(|(u, l)| std::iter::once(u).chain(l))
-        .map(|mut r| {
+        .map(|r| {
+            let mut r = ring_glaetten(r);
             if let Some(&q) = r.first() {
                 r.push(q);
             }
             r
         })
+        .filter(|r| r.len() >= 4)
         .collect()
+}
+
+/// Haarfugen bis zur doppelten Breite schließt die Umrandung (mm, **eigene Festlegung**).
+pub const UMRANDUNG_FUGE: f64 = 0.15;
+
+/// Offenen Ring (ohne Wiederholung des ersten Punkts) bereinigen: Punkte näher als 0,05 mm am Vorgänger fallen weg,
+/// ebenso Stacheln (Richtungswechsel über 170°) – beides gäbe bei Satinkanten wilde Stiche (eigene Festlegung).
+fn ring_glaetten(mut r: Linie) -> Linie {
+    loop {
+        let n = r.len();
+        if n < 3 {
+            return r;
+        }
+        let weg = (0..n).find(|&i| {
+            let (a, b, c) = (r[(i + n - 1) % n], r[i], r[(i + 1) % n]);
+            crate::geometrie::abstand(a, b) < 0.05 || crate::geometrie::knick_grad(a, b, c) > 170.0
+        });
+        match weg {
+            Some(i) => {
+                r.remove(i);
+            }
+            None => return r,
+        }
+    }
 }
 
 /// Teile als Konturen (außen gegen den Uhrzeiger, Löcher im Uhrzeiger), z. B. zum Ausschneiden.

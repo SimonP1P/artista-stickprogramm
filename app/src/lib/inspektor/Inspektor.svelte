@@ -285,26 +285,56 @@
                   </button>
                 </div>
               </div>
+              {@const aussen = (u.art ?? "dreifach") === "satin" && !!u.aussen}
+              {#if (u.art ?? "dreifach") === "satin"}
+                <div class="frow">
+                  <span class="fl">Lage</span>
+                  <div class="fc">
+                    <div class="seg seg-sm" role="radiogroup" aria-label="Lage der Satinkante" style="display:flex; width:100%">
+                      <label class="seg-opt" style="flex:1; justify-content:center; padding-inline:4px"><input type="radio" name="iumlage" checked={!aussen} onchange={() => arbeit.umrandungSetzen([i], (x) => delete x.aussen)} />auf der Kante</label>
+                      <label class="seg-opt" style="flex:1; justify-content:center; padding-inline:4px"><input type="radio" name="iumlage" checked={aussen} onchange={() => arbeit.umrandungSetzen([i], (x) => (x.aussen = true))} />außen</label>
+                    </div>
+                  </div>
+                  <div class="fhelp">{aussen ? "Kante wächst nach außen, die Farbe der Fläche bleibt ganz sichtbar" : "Mitte der Kante liegt auf dem Rand (leicht innen), die Kante deckt den Rand der Fläche"}</div>
+                </div>
+              {/if}
               <div class="frow">
-                <label class="fl" for="iumein">Nach innen<span class="xt">X</span></label>
+                <label class="fl" for="iumein">{aussen ? "In der Fläche" : "Nach innen"}<span class="xt">X</span></label>
                 <div class="fc">
                   <input id="iumein" class="input sm num" style="width:70px" value={zahl(u.einzug ?? 0.3)} onchange={(ev) => {
                     const v = lesen((ev.currentTarget as HTMLInputElement).value);
                     if (v !== null && v >= 0 && v <= 3) arbeit.umrandungSetzen([i], (x) => (x.einzug = v));
                   }} /><span class="unit">mm</span>
                 </div>
-                <div class="fhelp">0 … 3 mm, Standard 0,3 (eigene Festlegung): die Linie liegt so weit innen, dass nach dem Sticken keine Lücke zur Füllung bleibt</div>
+                <div class="fhelp">0 … 3 mm, Standard 0,3 (eigene Festlegung): {aussen ? "so weit reicht die Innenkante in die Fläche" : "die Linie liegt so weit innen"}, damit nach dem Sticken keine Lücke zur Füllung bleibt</div>
               </div>
               {#if (u.art ?? "dreifach") === "satin"}
-                <div class="frow">
-                  <label class="fl" for="iumbr">Breite</label>
-                  <div class="fc">
-                    <input id="iumbr" class="input sm num" style="width:70px" value={zahl(u.breite ?? 2)} onchange={(ev) => {
-                      const v = lesen((ev.currentTarget as HTMLInputElement).value);
-                      if (v !== null && v >= 0.5 && v <= 10) arbeit.umrandungSetzen([i], (x) => (x.breite = v));
-                    }} /><span class="unit">mm</span>
+                {@const schrift = o.art === "text" || o.art === "ttf" || o.art === "monogramm"}
+                {#if schrift}
+                  <div class="frow">
+                    <label class="fl" for="iumant">Breite</label>
+                    <div class="fc">
+                      <input id="iumant" class="input sm num" style="width:70px" placeholder="fest" value={u.breite_anteil != null ? zahl(u.breite_anteil) : ""} onchange={(ev) => {
+                        const s = (ev.currentTarget as HTMLInputElement).value.trim();
+                        const v = s ? lesen(s) : null;
+                        if (!s) arbeit.umrandungSetzen([i], (x) => delete x.breite_anteil);
+                        else if (v !== null && v >= 1 && v <= 30) arbeit.umrandungSetzen([i], (x) => (x.breite_anteil = v));
+                      }} /><span class="unit">% der Höhe</span>
+                    </div>
+                    <div class="fhelp">z. B. 6 % → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm; leer = feste Breite in mm</div>
                   </div>
-                </div>
+                {/if}
+                {#if !schrift || u.breite_anteil == null}
+                  <div class="frow">
+                    <label class="fl" for="iumbr">{schrift ? "feste Breite" : "Breite"}</label>
+                    <div class="fc">
+                      <input id="iumbr" class="input sm num" style="width:70px" value={zahl(u.breite ?? 2)} onchange={(ev) => {
+                        const v = lesen((ev.currentTarget as HTMLInputElement).value);
+                        if (v !== null && v >= 0.5 && v <= 10) arbeit.umrandungSetzen([i], (x) => (x.breite = v));
+                      }} /><span class="unit">mm</span>
+                    </div>
+                  </div>
+                {/if}
               {:else}
                 <div class="frow">
                   <label class="fl" for="iumlg">Stichlänge<span class="xt">X</span></label>

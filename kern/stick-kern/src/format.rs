@@ -563,12 +563,23 @@ pub struct UmrandungJson {
     /// Garnfarbe „#rrggbb“ (Standard schwarz)
     #[serde(default = "schwarz")]
     pub farbe: String,
-    /// Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen)
+    /// Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen); bei
+    /// `aussen`: wie weit die Innenkante der Satinkante in der Fläche liegt
     #[serde(default = "umrandung_einzug")]
     pub einzug: f64,
     /// Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)
     #[serde(default = "umrandung_breite")]
     pub breite: f64,
+    /// Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`;
+    /// Größe/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm (Wunsch
+    /// Nutzer 21.11.2026, eigene Festlegung)
+    #[serde(default)]
+    pub breite_anteil: Option<f64>,
+    /// Satinkante **außen** um die Fläche (nur bei `art` satin): die Innenkante liegt `einzug` mm in der Fläche, die
+    /// Kante wächst nach außen, die Farbe des Objekts bleibt ganz sichtbar (dicke Umrandung im einfachen Modus). Ohne:
+    /// Mitte der Kante `einzug` mm in der Fläche (eigene Festlegung, Wunsch Nutzer 21.11.2026)
+    #[serde(default)]
+    pub aussen: bool,
     /// Stichlänge in mm bei Lauf/Dreifach, 0,3 … 12,7 (ohne Angabe: Stil)
     #[serde(default)]
     pub laenge: Option<f64>,
