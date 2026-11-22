@@ -536,6 +536,15 @@ fn objekte_je_block(folge: &StichFolge) -> Vec<Vec<usize>> {
     out
 }
 
+/// Garn von Hand (`garn`) für einen Farbblock des Objekts – nur, wenn der Block die Farbe des Objekts hat. Blöcke in
+/// anderer Farbe (Umrandung, einzeln gefärbte Buchstaben, Lagen der Applikation) bekommen das nächste Garn der Karte.
+pub(crate) fn hand_garn<'a>(design: &'a stick_kern::Design, objekt: usize, farbe: &str) -> Option<&'a String> {
+    design
+        .garn
+        .get(&objekt)
+        .filter(|_| design.objekte.get(objekt).is_some_and(|o| o.farbe.eq_ignore_ascii_case(farbe)))
+}
+
 /// Farbblöcke mit Applikationslagen: je Applikation die Lagen der Reihe nach den Blöcken ihrer Farbe zuordnen.
 pub(crate) fn bloecke_von(design: &stick_kern::Design, folge: &StichFolge) -> Vec<FarbBlock> {
     use std::collections::HashMap;
@@ -560,7 +569,7 @@ pub(crate) fn bloecke_von(design: &stick_kern::Design, folge: &StichFolge) -> Ve
             }
             FarbBlock {
                 objekt: objekte.first().copied().unwrap_or(0),
-                von_hand: objekte.first().is_some_and(|o| design.garn.contains_key(o)),
+                von_hand: objekte.first().is_some_and(|&o| hand_garn(design, o, &farbe).is_some()),
                 objekte,
                 applikation,
             }
@@ -581,7 +590,7 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
             .farben
             .iter()
             .zip(&bloecke)
-            .map(|(hex, b)| match design.garn.get(&b.objekt) {
+            .map(|(hex, b)| match hand_garn(&design, b.objekt, hex) {
                 Some(nr) => karte
                     .garne
                     .iter()

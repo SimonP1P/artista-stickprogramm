@@ -111,6 +111,11 @@ export type ApplikationJson = {
   stil?: (ApplikationStil | null);
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   umriss: PunktAngabe;
 };
 
@@ -276,6 +281,11 @@ export type BlanketJson = {
   step_muster?: number | null;
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   versatz?: (Versatz | null);
 };
 
@@ -1053,6 +1063,11 @@ export type KnopflochJson = {
    */
   typ?: KnopflochTyp;
   /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  /**
    * Richtung des Schlitzes in Grad („Angle“; 90 = senkrecht, Standard wie das Original)
    * @default 90.0
    */
@@ -1123,6 +1138,11 @@ export type LaufJson = {
   step_muster?: number | null;
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
 };
 
 /** Keine Eingabe. */
@@ -1256,6 +1276,11 @@ export type MonogrammJson = {
   stichart?: (SchriftStichart | null);
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   unterlage?: UnterlageJson;
   winkel?: number | null;
   /** Wortabstand in % der Höhe (Vorlage 25) */
@@ -1351,6 +1376,11 @@ export type MotivlinieJson = {
   step_muster?: number | null;
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
 };
 
 /** Motivsatz (Pattern Set, Ordner `userletw/` der CD; Handbuch Kap. 25). */
@@ -1445,6 +1475,11 @@ export type MusterJson = {
    * @default 0.0
    */
   ueberlappung?: number;
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   umriss: PunktAngabe;
   /** Unterlage an/aus (ohne Angabe: Stil) */
   unterlage?: boolean | null;
@@ -1696,6 +1731,11 @@ export type SatinFlaecheJson = {
   stichart?: (SatinStichart | null);
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   umriss: PunktAngabe;
   unterlage?: UnterlageJson;
 };
@@ -1754,6 +1794,11 @@ export type SatinJson = {
   stichart?: (SatinStichart | null);
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   unterlage?: UnterlageJson;
 };
 
@@ -1806,6 +1851,11 @@ export type SatinLinieJson = {
   stichart?: (SatinStichart | null);
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   unterlage?: UnterlageJson;
   versatz?: (Versatz | null);
 };
@@ -2125,6 +2175,11 @@ export type TatamiJson = {
    * @default 0.0
    */
   ueberlappung?: number;
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   umriss: PunktAngabe;
   /** Unterlage an/aus (ohne Angabe: Auto Underlay des Stils) */
   unterlage?: boolean | null;
@@ -2228,6 +2283,11 @@ export type TextJson = {
   text: string;
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
   /** Unterlage (auto = wie Stil Schrift: Zickzack) */
   unterlage?: UnterlageJson;
   /** Stichwinkel der Musterfüllung (Stichart „muster“) */
@@ -2347,6 +2407,11 @@ export type TtfJson = {
   /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
   transform?: (Transformation | null);
   /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  /**
    * Unterlage: `"auto"` (Standard, Stil „Schrift“ wie im Original: Zickzack unter den Satinsäulen, Step unter
    * Flächen), `"keine"` oder Arten in Stickfolge für Satin/auto, z. B. `["mittellauf", "zickzack"]` (Tatami: jede
    * Liste = an). `true`/`false` (alte Schreibweise) = auto/keine.
@@ -2362,6 +2427,41 @@ export type TtfJson = {
 
 /** Stichart einer Computer-Schrift */
 export type TtfStichart = ("tatami" | "lauf" | "dreifach" | "satin" | "auto" | "muster");
+
+/** Stichart der Umrandung */
+export type UmrandungArt = ("lauf" | "dreifach" | "satin");
+
+/**
+ * **Umrandung** – eigene Erweiterung (Wunsch Nutzer 21.11.2026; im Original legt man dafür von Hand eine zweite Linie
+ * an, Handbuch S. 114): eine Linie um die Fläche des Objekts, gestickt gleich nach dem Objekt in eigener Farbe. Bei
+ * Text läuft sie um jeden Buchstaben, bei mehreren Teilen um jeden Teil (Löcher bekommen auch eine Linie). Sie liegt um
+ * `einzug` nach innen, damit nach dem Zusammenziehen des Stoffs keine Lücke zwischen Füllung und Umrandung bleibt.
+ * Wirkt bei Objekten mit Fläche (Flächen, Satin, Satinlinie, Text, Monogramm, Applikation); offene Linien haben keine.
+ */
+export type UmrandungJson = {
+  /**
+   * Stichart der Linie (Standard Dreifach)
+   * @default "dreifach"
+   */
+  art?: UmrandungArt;
+  /**
+   * Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)
+   * @default 2.0
+   */
+  breite?: number;
+  /**
+   * Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen)
+   * @default 0.3
+   */
+  einzug?: number;
+  /**
+   * Garnfarbe „#rrggbb“ (Standard schwarz)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /** Stichlänge in mm bei Lauf/Dreifach, 0,3 … 12,7 (ohne Angabe: Stil) */
+  laenge?: number | null;
+};
 
 /** Art einer Unterlage (in Stickfolge) */
 export type UnterlageArt = ("mittellauf" | "edge_walk" | "zickzack" | "doppelzickzack");

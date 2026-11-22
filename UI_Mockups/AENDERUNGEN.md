@@ -15,6 +15,19 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Umrandung um Flächen und Buchstaben (Wunsch Nutzer; Commit siehe unten)
+- **Neues Feld an jedem Objekt:** `umrandung` (`format::UmrandungJson`): `art` lauf | **dreifach** | satin, `farbe`
+  (Standard schwarz), `einzug` (Standard 0,3 mm nach innen, eigene Festlegung), `breite` (Satinkante, Standard 2 mm),
+  `laenge` (Lauf/Dreifach, ohne Angabe Stil). Feld vorhanden = an; `{}` = alle Standardwerte. Der Kern hängt hinter
+  dem Objekt je Ring der vereinigten, nach innen versetzten Fläche eine Linie an (Text: jeder Buchstabe mit Innenräumen;
+  Objektnummer je Stich = das Objekt; `buchstabe` = 0). Wirkt nur bei Objekten mit Fläche.
+- **Garn von Hand** (`garn`) gilt nur noch für Farbblöcke in der Farbe des Objekts – Umrandung, einzeln gefärbte
+  Buchstaben und Applikationslagen bekommen das nächste Garn der Karte (`design_berechnen`, Senden).
+- **Oberfläche (umgesetzt):** einfacher Modus Häkchen „Umrandung“ + Garn-Knopf (Text, Monogramm, Element/Gruppe),
+  Experte Abschnitt „Umrandung“ im Inspektor; Garn-Dialog mit `umrandung: true` setzt `umrandung.farbe`; Schritt 3
+  „Garn ändern“ beim Block der Umrandung ändert die Umrandung. „Umrandung dazu“ (eigene Linie) heißt jetzt „Umrandung
+  als eigene Linie“.
+
 ## 21.11.2026 – Satin-Fächer an Innenspitzen gleichmäßig (Fehler gemeldet vom Nutzer; Commit 954e683)
 - **Nur Kern, keine Feldänderung:** Computer-Schrift in Satin/auto und `satinflaeche`: Fächer an der Innenseite von
   Spitzen und Kehren bleiben Fächer (keine einseitigen „Finger“ mehr innen am „A“, „V“, „W“). Original-Alphabete

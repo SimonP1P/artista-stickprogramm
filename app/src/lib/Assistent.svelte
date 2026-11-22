@@ -293,7 +293,19 @@
         const o = arbeit.objekte[i];
         return o?.name || ("text" in (o ?? {}) ? (o as Text).text : "") || ART[o?.art ?? ""]?.[0] || `Nr. ${i + 1}`;
       });
-      return { k, farbe, garn: e!.garne[k], b, namen, lagen: (b?.applikation ?? []).map((l) => LAGE_TEXT[l] ?? l) };
+      // Block in der Farbe der Umrandung (nicht der des Objekts): „Garn ändern“ wirkt auf die Umrandung
+      const o = b ? arbeit.objekte[b.objekt] : undefined;
+      const f = farbe.toLowerCase();
+      const umrandung = !!o?.umrandung && (o.umrandung.farbe ?? "#000000").toLowerCase() === f && String(o.farbe ?? "#000000").toLowerCase() !== f;
+      return {
+        k,
+        farbe,
+        garn: e!.garne[k],
+        b,
+        namen: umrandung ? namen.map((n) => `${n} (Umrandung)`) : namen,
+        umrandung,
+        lagen: (b?.applikation ?? []).map((l) => LAGE_TEXT[l] ?? l),
+      };
     }),
   );
 
@@ -531,6 +543,7 @@
           </div>
         </div>
         {@render garnWahl()}
+        {@render umrandung()}
         {@render elGroesse()}
         {@render passung()}
         {@render elAktionen()}
@@ -580,6 +593,7 @@
           {@render stabilisieren()}
         </div>
         {@render garnWahl()}
+        {@render umrandung()}
         {@render elGroesse()}
         {@render passung()}
         {@render elAktionen()}
@@ -602,6 +616,7 @@
             {/each}
           </div>
         </div>
+        {@render umrandung()}
         {@render passung()}
         <p class="mut small" style="margin:10px 0 0">Einzelne Flächen, Sticharten und Formen ändern: im Expertenmodus.</p>
         {@render elAktionen()}
@@ -618,7 +633,7 @@
               <span class="mut small">{b.namen.join(", ")}{b.b?.von_hand ? " · von Hand gewählt" : ""}</span>
               {#each b.lagen as l (l)}<span class="small" style="display:block; color:var(--warn)">Applikation: {l}</span>{/each}
             </span>
-            <button class="btn btn-secondary" style="min-height:28px; padding:2px 10px" disabled={!b.b} onclick={() => b.b && (arbeit.dialog = { art: "garn", objekt: b.b.objekt, titel: `Farbe ${b.k + 1} · ${b.namen[0] ?? ""}` })}>Garn ändern</button>
+            <button class="btn btn-secondary" style="min-height:28px; padding:2px 10px" disabled={!b.b} onclick={() => b.b && (arbeit.dialog = { art: "garn", objekt: b.b.objekt, titel: `Farbe ${b.k + 1} · ${b.namen[0] ?? ""}`, ...(b.umrandung ? { umrandung: true, alle: b.b.objekte } : {}) })}>Garn ändern</button>
           </li>
         {:else}
           <li class="mut" style="padding:10px">Noch keine Stiche.</li>
@@ -716,6 +731,28 @@
       <span>Stabilisieren <span class="mut small">– Mittellauf und Zickzack unter den Buchstaben</span></span>
     </label>
   </div>
+{/snippet}
+
+{#snippet umrandung()}
+  {@const fl = el ? arbeit.mitFlaeche(el.objekte) : []}
+  {#if fl.length}
+    {@const u = fl.map((i) => arbeit.objekte[i]?.umrandung).find((x) => !!x)}
+    {@const mit = fl.find((i) => !!arbeit.objekte[i]?.umrandung) ?? fl[0]}
+    {@const ug = arbeit.umrandungGarn(mit)}
+    <div style="margin-bottom:12px">
+      <label class="chk" title="Eine Linie um {text || mono ? 'jeden Buchstaben' : fl.length > 1 ? 'jede Fläche' : 'die Fläche'}, leicht nach innen versetzt, damit nach dem Sticken keine Lücke zur Füllung bleibt. Stichart, Breite und Versatz: Expertenmodus.">
+        <input type="checkbox" checked={!!u} onchange={(ev) => arbeit.umrandungSetzen(fl, (ev.currentTarget as HTMLInputElement).checked ? () => {} : null)} />
+        <span>Umrandung <span class="mut small">– Linie um {text || mono ? "jeden Buchstaben" : fl.length > 1 ? "jede Fläche" : "die Fläche"}</span></span>
+      </label>
+      {#if u}
+        <button class="btn btn-secondary pick" style="min-height:36px; margin-top:6px" onclick={() => (arbeit.dialog = { art: "garn", objekt: mit, alle: fl, umrandung: true, titel: `${elName || (el ? elArt(el)[0] : "")} · Umrandung` })}>
+          <span class="sw l" style="background:{ug?.rgb ?? u.farbe ?? '#000000'}"></span>
+          <span class="t">{ug ? garnText(ug) : (u.farbe ?? "#000000")}</span>
+          <Icon d={IC.chevronRechts} />
+        </button>
+      {/if}
+    </div>
+  {/if}
 {/snippet}
 
 {#snippet garnWahl()}

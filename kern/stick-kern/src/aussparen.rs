@@ -226,6 +226,39 @@ pub fn flaechen_aus_ringen(ringe: &[Linie], gerade_ungerade: bool) -> Vec<Teil> 
     teile_aus(subj.overlay(&leer, OverlayRule::Subject, regel))
 }
 
+/// **Umrandung** (eigene Erweiterung, `design::Umrandung`): Ringe um die vereinigte Fläche der Konturen, um `einzug`
+/// mm nach innen versetzt (Versatz mit `i_overlay`, Gehrungsecken). Je Teil erst der Umriss, dann seine Löcher; Teile
+/// von links nach rechts (Schrift: Buchstabe für Buchstabe). Ringe geschlossen (letzter Punkt = erster).
+pub fn umrandung_ringe(konturen: &[Kontur], einzug: f64) -> Vec<Linie> {
+    use i_overlay::mesh::float::outline::offset::OutlineOffset;
+    use i_overlay::mesh::float::style::{LineJoin, OutlineStyle};
+    if konturen.is_empty() {
+        return Vec::new();
+    }
+    let leer: Vec<Kontur> = Vec::new();
+    let vereint = konturen.to_vec().overlay(&leer, OverlayRule::Union, FillRule::NonZero);
+    let formen = if einzug > 1e-6 {
+        // Gehrung bis 20° Innenwinkel, spitzere Ecken abgeschrägt (eigene Festlegung)
+        let stil = OutlineStyle::new(-einzug).line_join(LineJoin::Miter(20f64.to_radians()));
+        vereint.outline(&stil)
+    } else {
+        vereint
+    };
+    let mut teile = teile_aus(formen);
+    let links = |r: &Linie| r.iter().map(|q| q.x).fold(f64::INFINITY, f64::min);
+    teile.sort_by(|a, b| links(&a.0).total_cmp(&links(&b.0)));
+    teile
+        .into_iter()
+        .flat_map(|(u, l)| std::iter::once(u).chain(l))
+        .map(|mut r| {
+            if let Some(&q) = r.first() {
+                r.push(q);
+            }
+            r
+        })
+        .collect()
+}
+
 /// Teile als Konturen (außen gegen den Uhrzeiger, Löcher im Uhrzeiger), z. B. zum Ausschneiden.
 pub fn teile_konturen(teile: &[Teil]) -> Vec<Kontur> {
     teile

@@ -15,6 +15,7 @@ import {
   type RahmenInfo,
   type ReihenfolgeBefehl,
   type Transformation,
+  type UmrandungJson,
 } from "$kern/kern";
 
 export type Modus = "einfach" | "experte";
@@ -23,7 +24,15 @@ export type SchriftWahl = { alphabet?: string; schrift?: string };
 /** offener Dialog (gerendert in +page.svelte) */
 export type OffenerDialog =
   | { art: "schrift"; objekt: number; reiter?: "alphabete" | "computer" | "google" | "favoriten" }
-  | { art: "garn"; objekt: number; titel?: string; /** alle diese Objekte bekommen das Garn (z. B. eine Farbe eines Bilds) */ alle?: number[] }
+  | {
+      art: "garn";
+      objekt: number;
+      titel?: string;
+      /** alle diese Objekte bekommen das Garn (z. B. eine Farbe eines Bilds) */
+      alle?: number[];
+      /** Garn für die Umrandung (`umrandung.farbe`) statt für das Objekt */
+      umrandung?: boolean;
+    }
   | { art: "bild"; pfad?: string }
   | { art: "svg" }
   | { art: "nach_farbe" }
@@ -84,6 +93,9 @@ export function objektName(o: ObjektJson | undefined, i: number): string {
 }
 
 /** Objektarten, deren Stichart sich wechseln lässt (Kern `stichart_aendern`) */
+/** Objektarten mit Fläche: dort wirkt `umrandung` (Kern: `aussparen::bedeckt`); Linien haben keine */
+export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation"];
+
 export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "tatami", "satinflaeche", "muster"];
 /** Standardname je Stichart (neue Objekte); ein Objekt mit Standardnamen bekommt beim Wechsel den neuen */
 export const STANDARD_NAME: Record<string, string> = {
@@ -212,6 +224,44 @@ class Arbeit {
     if (k < 0) k = e.bloecke.findIndex(drin);
     return k >= 0 ? e.garne[k] : undefined;
   }
+  /** Garn der Umrandung eines Objekts: Farbblock des Objekts in der Farbe der Umrandung */
+  umrandungGarn(i: number): GarnInfo | undefined {
+    const e = this.ergebnis;
+    const u = this.objekte[i]?.umrandung;
+    if (!e || !u) return undefined;
+    const farbe = (u.farbe ?? "#000000").toLowerCase();
+    const k = e.bloecke.findIndex((b, n) => (b.objekt === i || b.objekte.includes(i)) && (e.farben[n] ?? "").toLowerCase() === farbe);
+    return k >= 0 ? e.garne[k] : undefined;
+  }
+  /** Objekte aus `nummern`, die eine Umrandung haben können (Fläche) */
+  mitFlaeche(nummern: number[]): number[] {
+    return nummern.filter((i) => MIT_FLAECHE.includes(this.objekte[i]?.art ?? ""));
+  }
+  /**
+   * Umrandung (eigene Erweiterung, Kern `umrandung`) an den Objekten mit Fläche ein- oder ausschalten bzw. ändern:
+   * `f` bekommt die bisherige Umrandung (oder `{}` beim Einschalten) und ändert sie; `null` schaltet aus. Eine Gruppe
+   * (z. B. ein umgewandeltes Bild) bekommt sie an jeder Fläche – Linien zwischen den Farben wie bei einer Zeichnung.
+   */
+  umrandungSetzen(nummern: number[], f: ((u: UmrandungJson) => void) | null) {
+    const ziel = this.mitFlaeche(nummern);
+    if (!ziel.length) return;
+    // gemeinsame Werte: die der ersten Fläche, die schon eine Umrandung hat
+    const vorlage = ziel.map((i) => this.objekte[i]?.umrandung).find((u) => !!u);
+    this.aendern((d) => {
+      for (const i of ziel) {
+        const o = d.objekte?.[i];
+        if (!o) continue;
+        if (!f) {
+          delete o.umrandung;
+          continue;
+        }
+        const u: UmrandungJson = { ...(o.umrandung ?? (vorlage ? JSON.parse(JSON.stringify(vorlage)) : {})) };
+        f(u);
+        o.umrandung = u;
+      }
+    });
+  }
+
   /** erstes gewähltes Objekt oder -1 */
   get gewaehlt(): number {
     return this.auswahl.length ? this.auswahl[0] : -1;

@@ -464,8 +464,8 @@ fn sendedaten(k: &Kontext, design: DesignWert) -> Result<(Sendedaten, Design), F
     if d.garnkarte != "keine" {
         let karte = garnkarte::laden(&k.garnkarten, &d.garnkarte)?;
         let bloecke = crate::befehle::bloecke_von(&d, &folge);
-        for (f, b) in s.farben.iter_mut().zip(&bloecke) {
-            if let Some(nr) = d.garn.get(&b.objekt) {
+        for ((f, b), hex) in s.farben.iter_mut().zip(&bloecke).zip(&folge.farben) {
+            if let Some(nr) = crate::befehle::hand_garn(&d, b.objekt, hex) {
                 let g = karte.garne.iter().find(|g| g.nummer == *nr).ok_or_else(|| Fehler {
                     meldung: format!("Objekt {}: Garn „{nr}“ gibt es in der Garnkarte nicht", b.objekt + 1),
                     objekt: Some(b.objekt),

@@ -2,8 +2,8 @@
   // Inspektor (Expertenmodus, UEBERGABE §2/§3): Reiter Objekt · Design · Einzelwerte · JSON. Felder und Auswahlwerte aus
   // dem Schema des Kerns; welche Felder im einfachen Teil stehen, legt die Liste E_FELDER fest (UEBERGABE §3 „E“),
   // alles Weitere erscheint unter „Stichart – Feinheiten“ mit der Marke X.
-  import type { ObjektJson, Transformation } from "$kern/kern";
-  import { arbeit, WECHSELBAR } from "../arbeit.svelte";
+  import type { ObjektJson, Transformation, UmrandungJson } from "$kern/kern";
+  import { arbeit, MIT_FLAECHE, WECHSELBAR } from "../arbeit.svelte";
   import { FUELLUNG, STICHART_NAME, UMRISS } from "../einfuegen";
   import Icon from "../Icon.svelte";
   import { ART, IC } from "../icons";
@@ -43,7 +43,7 @@
     motivlinie: ["motiv", "groesse", "spiegeln", "geschlossen"],
   };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben"]);
+  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
   const MIT_STEP = new Set(["tatami", "text", "ttf", "monogramm"]);
 
@@ -159,7 +159,7 @@
               <span class="fl"></span>
               <div class="fc">
                 <button class="btn btn-secondary" style="min-height:28px" title="Legt eine Linie mit derselben Form dahinter an ({STICHART_NAME[arbeit.vorwahl.umriss]}, wie die Umriss-Vorwahl) und gruppiert beide – im Original zwei Objekte von Hand" onclick={() => arbeit.umrandungDazu(i)}>
-                  <Icon d={IC.plus} />Umrandung dazu
+                  <Icon d={IC.plus} />Umrandung als eigene Linie
                 </button>
               </div>
             </div>
@@ -252,6 +252,73 @@
         {#if SCHRIFT.has(o.art)}
           <Abschnitt titel="Einzelne Buchstaben" rechts={(o.buchstaben as unknown[] | undefined)?.length ? `${(o.buchstaben as unknown[]).length} geändert` : ""} offen={arbeit.buchstabe?.objekt === i}>
             <Buchstaben nr={i} />
+          </Abschnitt>
+        {/if}
+
+        {#if MIT_FLAECHE.includes(o.art)}
+          {@const u = o.umrandung as UmrandungJson | null | undefined}
+          {@const ug = arbeit.umrandungGarn(i)}
+          <!-- Umrandung (eigene Erweiterung, Kern `umrandung`): Linie um die Fläche, nach innen versetzt -->
+          <Abschnitt titel="Umrandung" offen={!!u}>
+            <div class="frow">
+              <label class="fl" for="ium">Umrandung</label>
+              <div class="fc">
+                <input id="ium" type="checkbox" checked={!!u} onchange={(ev) => arbeit.umrandungSetzen([i], (ev.currentTarget as HTMLInputElement).checked ? () => {} : null)} style="width:16px; height:16px" />
+                {o.art === "text" || o.art === "ttf" || o.art === "monogramm" ? "um jeden Buchstaben" : "um die Fläche"}
+              </div>
+              <div class="fhelp">eigene Erweiterung – im Original eine zweite Linie von Hand</div>
+            </div>
+            {#if u}
+              <div class="frow">
+                <label class="fl" for="iumart">Stichart</label>
+                <div class="fc">
+                  <select id="iumart" class="input sm" value={u.art ?? "dreifach"} onchange={(ev) => arbeit.umrandungSetzen([i], (x) => (x.art = (ev.currentTarget as HTMLSelectElement).value as UmrandungJson["art"]))}>
+                    <option value="lauf">Lauf (dünn)</option><option value="dreifach">Dreifach (kräftig)</option><option value="satin">Satinkante</option>
+                  </select>
+                </div>
+              </div>
+              <div class="frow">
+                <span class="fl">Garn</span>
+                <div class="fc">
+                  <button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "garn", objekt: i, umrandung: true, titel: `${o.name || ART[o.art]?.[0] || ""} · Umrandung` })}>
+                    <span class="sw" style="background:{ug?.rgb ?? u.farbe ?? '#000'}"></span><span class="t">{ug ? garnText(ug) : (u.farbe ?? "#000000")}</span><Icon d={IC.chevronRechts} />
+                  </button>
+                </div>
+              </div>
+              <div class="frow">
+                <label class="fl" for="iumein">Nach innen<span class="xt">X</span></label>
+                <div class="fc">
+                  <input id="iumein" class="input sm num" style="width:70px" value={zahl(u.einzug ?? 0.3)} onchange={(ev) => {
+                    const v = lesen((ev.currentTarget as HTMLInputElement).value);
+                    if (v !== null && v >= 0 && v <= 3) arbeit.umrandungSetzen([i], (x) => (x.einzug = v));
+                  }} /><span class="unit">mm</span>
+                </div>
+                <div class="fhelp">0 … 3 mm, Standard 0,3 (eigene Festlegung): die Linie liegt so weit innen, dass nach dem Sticken keine Lücke zur Füllung bleibt</div>
+              </div>
+              {#if (u.art ?? "dreifach") === "satin"}
+                <div class="frow">
+                  <label class="fl" for="iumbr">Breite</label>
+                  <div class="fc">
+                    <input id="iumbr" class="input sm num" style="width:70px" value={zahl(u.breite ?? 2)} onchange={(ev) => {
+                      const v = lesen((ev.currentTarget as HTMLInputElement).value);
+                      if (v !== null && v >= 0.5 && v <= 10) arbeit.umrandungSetzen([i], (x) => (x.breite = v));
+                    }} /><span class="unit">mm</span>
+                  </div>
+                </div>
+              {:else}
+                <div class="frow">
+                  <label class="fl" for="iumlg">Stichlänge<span class="xt">X</span></label>
+                  <div class="fc">
+                    <input id="iumlg" class="input sm num" style="width:70px" placeholder="Stil" value={u.laenge != null ? zahl(u.laenge) : ""} onchange={(ev) => {
+                      const s = (ev.currentTarget as HTMLInputElement).value.trim();
+                      const v = s ? lesen(s) : null;
+                      if (!s) arbeit.umrandungSetzen([i], (x) => delete x.laenge);
+                      else if (v !== null && v >= 0.3 && v <= 12.7) arbeit.umrandungSetzen([i], (x) => (x.laenge = v));
+                    }} /><span class="unit">mm</span>
+                  </div>
+                </div>
+              {/if}
+            {/if}
           </Abschnitt>
         {/if}
 

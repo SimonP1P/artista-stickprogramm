@@ -1100,6 +1100,8 @@ pub struct Design {
     /// Sticken mit umgekehrter Stichfolge noch einmal gestickt, gleiche Farbe, ohne Verbindungsstiche. JSON
     /// `"doppellauf": true` am Objekt.
     pub doppellauf: std::collections::BTreeSet<usize>,
+    /// Umrandung je Objekt (Nummer in `objekte`), JSON `"umrandung"` am Objekt – eigene Erweiterung
+    pub umrandung: BTreeMap<usize, Umrandung>,
     /// Auto Jump je Objekt (Nummer in `objekte`), JSON `"auto_jump"`; ohne Angabe: Standard des Stils
     pub auto_jump: BTreeMap<usize, AutoJump>,
     /// Step-Muster 1–20 je Objekt (Nummer in `objekte`), JSON `"step_muster"` – für Tatami-Flächen und Step in Schrift
@@ -1116,6 +1118,24 @@ pub struct Design {
     /// (Stoff → Design → Objekt). Wie im Original: jedes Objekt einer ART-Datei trägt eine eigene Kopie des Stil-Baums
     /// (Lauf, Satin, Tatami, Unterlagen, Verbinder; `Analyse_Teil3/03` §4, hoch)
     pub objekt_einstellungen: BTreeMap<usize, Einstellungen>,
+}
+
+/// Versatz der Umrandung nach innen in mm (Standard). **Eigene Festlegung** (Nutzer 21.11.2026: Vorschlag
+/// angenommen): das Original kennt keine automatische Umrandung; der Wert liegt zwischen dem Zugausgleich der Stoffe
+/// (0,20–0,25 mm) und der Überlappung der Satinsäulen (0,3 mm). Am Gerät mit dem Kalibrierblatt (Vor Ort V12) prüfen.
+pub const UMRANDUNG_EINZUG: f64 = 0.3;
+
+/// Umrandung eines Objekts (JSON `"umrandung"`, eigene Erweiterung, `format::UmrandungJson`): Linie um die Fläche des
+/// Objekts, um `einzug` nach innen versetzt, gestickt gleich nach dem Objekt.
+#[derive(Clone, Debug, PartialEq)]
+pub struct Umrandung {
+    pub art: crate::format::UmrandungArt,
+    pub farbe: String,
+    pub einzug: f64,
+    /// Breite der Satinkante (nur Satin)
+    pub breite: f64,
+    /// Stichlänge bei Lauf/Dreifach (None = Stil)
+    pub laenge: Option<f64>,
 }
 
 /// Auto Jump eines Objekts (Effects-Dialog, Handbuch Kap. 22 „Preserving long stitches with Auto Jump“): lange Stiche
@@ -1220,6 +1240,7 @@ impl Design {
         // Felder, die jedes Objekt haben kann (Abschnitt „Bearbeiten“)
         let mut transformationen = BTreeMap::new();
         let mut doppellauf = std::collections::BTreeSet::new();
+        let mut umrandung = BTreeMap::new();
         let mut auto_jump = BTreeMap::new();
         let mut step_muster = BTreeMap::new();
         let mut garn = BTreeMap::new();
@@ -1244,6 +1265,29 @@ impl Design {
             }
             if g.doppellauf {
                 doppellauf.insert(i);
+            }
+            if let Some(u) = &g.umrandung {
+                if !(0.0..=3.0).contains(&u.einzug) {
+                    return Err(format!("{wo}: umrandung: einzug zwischen 0 und 3 mm"));
+                }
+                if !(0.5..=10.0).contains(&u.breite) {
+                    return Err(format!("{wo}: umrandung: breite zwischen 0,5 und 10 mm"));
+                }
+                if u.laenge.is_some_and(|l| {
+                    !(crate::einheiten::MIN_STICH_MM..=crate::einheiten::MAX_STICH_MM).contains(&l)
+                }) {
+                    return Err(format!("{wo}: umrandung: laenge zwischen 0,3 und 12,7 mm"));
+                }
+                umrandung.insert(
+                    i,
+                    Umrandung {
+                        art: u.art,
+                        farbe: u.farbe.clone(),
+                        einzug: u.einzug,
+                        breite: u.breite,
+                        laenge: u.laenge,
+                    },
+                );
             }
             if let Some(aj) = g.auto_jump {
                 let s = AutoJump::default();
@@ -1356,6 +1400,7 @@ impl Design {
             gruppen,
             buchstaben,
             doppellauf,
+            umrandung,
             auto_jump,
             step_muster,
             garn,
@@ -1499,7 +1544,46 @@ impl Design {
         let mut out = self.transformieren(out, &herkunft)?;
         self.schrift_auto_anwenden(&mut out, &herkunft);
         let (out, herkunft, buchstabe) = self.aussparen_aufloesen(out, &herkunft, &buchstabe)?;
+        let (out, herkunft, buchstabe) = self.umrandungen_anhaengen(out, herkunft, buchstabe);
         Ok((out, fehlend, herkunft, buchstabe))
+    }
+
+    /// Umrandungen (eigene Erweiterung): hinter dem letzten aufgelösten Teil eines Objekts mit `umrandung` je Ring der
+    /// vereinigten, nach innen versetzten Fläche aller seiner Teile ein geschlossener Lauf/Dreifach bzw. eine
+    /// Satinlinie in der Farbe der Umrandung (Herkunft = das Objekt, kein Buchstabe).
+    fn umrandungen_anhaengen(&self, objekte: Vec<Objekt>, herkunft: Vec<usize>, buchstabe: Vec<usize>) -> MitHerkunft {
+        if self.umrandung.is_empty() {
+            return (objekte, herkunft, buchstabe);
+        }
+        // je Objekt mit Umrandung: Ringe, angehängt hinter seinem letzten Teil
+        let mut nach: BTreeMap<usize, Vec<Objekt>> = BTreeMap::new();
+        for (&nr, u) in &self.umrandung {
+            let Some(letzter) = herkunft.iter().rposition(|&h| h == nr) else {
+                continue;
+            };
+            let konturen: Vec<crate::aussparen::Kontur> = objekte
+                .iter()
+                .zip(&herkunft)
+                .filter(|(_, h)| **h == nr)
+                .flat_map(|(o, _)| crate::aussparen::bedeckt(&o.art, 0.0))
+                .collect();
+            let name = format!("{} (Umrandung)", objekte[letzter].name);
+            let ringe = crate::aussparen::umrandung_ringe(&konturen, u.einzug);
+            nach.insert(letzter, ringe.into_iter().map(|r| umrandung_objekt(r, u, &name)).collect());
+        }
+        let mut out = Vec::with_capacity(objekte.len());
+        let (mut her, mut bu) = (Vec::with_capacity(objekte.len()), Vec::with_capacity(objekte.len()));
+        for (k, ((o, h), b)) in objekte.into_iter().zip(herkunft).zip(buchstabe).enumerate() {
+            out.push(o);
+            her.push(h);
+            bu.push(b);
+            for r in nach.remove(&k).unwrap_or_default() {
+                out.push(r);
+                her.push(h);
+                bu.push(0);
+            }
+        }
+        (out, her, bu)
     }
 
     /// Matrix der Transformation von Objekt `nr` (`"transform"`, um die Mitte seiner aufgelösten Teile wie in
@@ -2052,6 +2136,40 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
     }
 }
 
+/// Ein Ring der Umrandung als Objekt: Lauf/Dreifach mit Einstich an Ecken (Knick > 30°, wie Platzierungslinie der
+/// Applikation) oder Satinlinie mittig auf dem Ring mit Auto-Unterlage.
+fn umrandung_objekt(ring: Linie, u: &Umrandung, name: &str) -> Objekt {
+    use crate::format::UmrandungArt;
+    let art = match u.art {
+        UmrandungArt::Lauf | UmrandungArt::Dreifach => {
+            let n = ring.len().saturating_sub(1).max(1);
+            let mut ecken: Vec<bool> = (0..n)
+                .map(|i| crate::geometrie::knick_grad(ring[(i + n - 1) % n], ring[i], ring[(i + 1) % n]) > 30.0)
+                .collect();
+            ecken.push(ecken[0]);
+            ObjektArt::Lauf {
+                punkte: ring,
+                ecken,
+                laenge: u.laenge,
+                dreifach: u.art == UmrandungArt::Dreifach,
+                geschlossen: true,
+            }
+        }
+        UmrandungArt::Satin => ObjektArt::SatinLinie {
+            punkte: ring,
+            breite: u.breite,
+            unterlage: Unterlage::Auto,
+            mittig: true,
+            optionen: SatinOptionen::default(),
+        },
+    };
+    Objekt {
+        farbe: u.farbe.clone(),
+        name: name.to_string(),
+        art,
+    }
+}
+
 fn lauf_objekt(l: LaufJson, art_dreifach: bool) -> Objekt {
     let (punkte, ecken) = l.punkte.punkte_mit_ecken();
     Objekt {
@@ -2415,6 +2533,54 @@ mod tests {
             Design::aus_json(r#"{"objekte": [{"art": "satinlinie", "punkte": [[0, 0], [1, 0]], "versatz": "x"}]}"#)
                 .is_err()
         );
+    }
+
+    /// Umrandung (eigene Erweiterung): Ring je Umriss und Loch, 0,3 mm nach innen, hinter dem Objekt in eigener Farbe,
+    /// Satinkante als Satinlinie; ungültige Werte werden abgelehnt
+    #[test]
+    fn umrandung_um_flaeche() {
+        let d = Design::aus_json(
+            r##"{"objekte": [{"art": "tatami", "farbe": "#ff0000", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 20,
+                "hoehe": 20}}, "loecher": [{"rechteck": {"mitte": [0, 0], "breite": 6, "hoehe": 6}}],
+                "umrandung": {}}, {"art": "lauf", "punkte": [[30, 0], [40, 0]]}]}"##,
+        )
+        .unwrap();
+        let (obj, _, herkunft, buchstabe) = d.aufgeloest_mit_herkunft().unwrap();
+        assert_eq!(herkunft, vec![0, 0, 0, 1]);
+        assert_eq!(buchstabe[1..3], [0, 0]);
+        let mut weiten = Vec::new();
+        for o in &obj[1..3] {
+            assert_eq!(o.farbe, "#000000");
+            let ObjektArt::Lauf {
+                punkte,
+                dreifach: true,
+                geschlossen: true,
+                ..
+            } = &o.art
+            else {
+                panic!("{:?}", o.art)
+            };
+            let (x0, _, x1, _) = crate::geometrie::begrenzung(punkte.iter().copied()).unwrap();
+            weiten.push(x1 - x0);
+        }
+        // Umriss 20 → 19,4 mm, Loch 6 → 6,6 mm (beide 0,3 mm in die Fläche)
+        assert!((weiten[0] - 19.4).abs() < 0.02 && (weiten[1] - 6.6).abs() < 0.02, "{weiten:?}");
+        // eigener Farbblock nach der Fläche
+        let st = d.berechnen().unwrap();
+        assert_eq!(st.farben[..2], ["#ff0000".to_string(), "#000000".to_string()]);
+
+        let d = Design::aus_json(
+            r##"{"objekte": [{"art": "tatami", "umriss": {"kreis": {"mitte": [0, 0], "radius": 10}},
+                "umrandung": {"art": "satin", "breite": 1.5, "einzug": 0, "farbe": "#123456"}}]}"##,
+        )
+        .unwrap();
+        let (obj, ..) = d.aufgeloest_mit_herkunft().unwrap();
+        assert!(matches!(obj[1].art, ObjektArt::SatinLinie { breite, .. } if (breite - 1.5).abs() < 1e-9));
+        assert_eq!(obj[1].farbe, "#123456");
+        for falsch in [r#"{"einzug": 4}"#, r#"{"breite": 0.2}"#, r#"{"laenge": 20}"#, r#"{"art": "x"}"#] {
+            let j = format!(r#"{{"objekte": [{{"art": "tatami", "umriss": [[0, 0], [5, 0], [5, 5]], "umrandung": {falsch}}}]}}"#);
+            assert!(Design::aus_json(&j).is_err(), "{falsch}");
+        }
     }
 
     /// Auto Jump je Objekt: an (Sprünge), aus (echte Stiche ≤ 12,7 mm), eigene Werte (Sprünge ab 6 mm)

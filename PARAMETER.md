@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **173 Parameter**: 47 einfach, 77 experte, 49 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **179 Parameter**: 49 einfach, 81 experte, 49 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -142,6 +142,12 @@ Stand 21.11.2026 · **173 Parameter**: 47 einfach, 77 experte, 49 automatisch. E
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
 | **Verstärken (Double Run)** | gleiche Stiche rückwärts noch einmal | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm, knopfloch, motivlinie | Objekt: `doppellauf` | aus |  |  | objekt | experte | Handbuch Kap. 23 |
+| **Umrandung** | Linie um die Fläche (Text: um jeden Buchstaben), gestickt nach dem Objekt | tatami, satinflaeche, muster, satin, satinlinie, blanket, text, ttf, monogramm, applikation | Objekt: `umrandung` | aus |  |  | objekt | einfach | eigene Erweiterung (Nutzer 21.11.2026); im Original eine zweite Linie von Hand (Handbuch S. 114) |
+| **Umrandung: Garn** | Farbe der Umrandung (eigener Farbblock) | tatami, satinflaeche, muster, satin, satinlinie, blanket, text, ttf, monogramm, applikation | Objekt: `umrandung.farbe` | #000000 #rrggbb |  |  | objekt | einfach | eigene Erweiterung (Nutzer 21.11.2026); im Original eine zweite Linie von Hand (Handbuch S. 114); Vorschlag (eigene Festlegung) |
+| **Umrandung: Stichart** | Lauf (dünn), Dreifach (kräftig), Satinkante | tatami, satinflaeche, muster, satin, satinlinie, blanket, text, ttf, monogramm, applikation | Objekt: `umrandung.art` | dreifach | lauf, dreifach, satin |  | objekt | experte | eigene Erweiterung (Nutzer 21.11.2026); im Original eine zweite Linie von Hand (Handbuch S. 114); Vorschlag (eigene Festlegung) |
+| **Umrandung: nach innen** | Versatz der Linie in die Fläche, damit nach dem Sticken keine Lücke zur Füllung bleibt | tatami, satinflaeche, muster, satin, satinlinie, blanket, text, ttf, monogramm, applikation | Objekt: `umrandung.einzug` | 0,3 mm | 0 … 3 |  | objekt | experte | Vorschlag (eigene Festlegung) – am Kalibrierblatt (Vor Ort V12) prüfen |
+| **Umrandung: Breite der Satinkante** | nur bei Stichart Satinkante | tatami, satinflaeche, muster, satin, satinlinie, blanket, text, ttf, monogramm, applikation | Objekt: `umrandung.breite` | 2 mm | 0,5 … 10 |  | objekt | experte | wie Satinlinie (Standard 2 mm) |
+| **Umrandung: Stichlänge** | Lauf/Dreifach; ohne Angabe Stil | tatami, satinflaeche, muster, satin, satinlinie, blanket, text, ttf, monogramm, applikation | Objekt: `umrandung.laenge` | – | 0,3 … 12,7 |  | objekt | experte | Stil Lauf (Software Defaults 2,5 mm) |
 | **Aussparen (Knockout)** | Fläche spart die genannten Objekte aus | tatami, muster | Objekt: `aussparen` | [] Objektnamen |  |  | objekt | einfach | Remove Overlay (Analyse_Teil3/14) |
 | **Überlappung beim Aussparen** | Loch bleibt um so viel kleiner | tatami, muster | Objekt: `ueberlappung` | 0 mm | 0 … 3 |  | objekt | experte | Analyse_Teil3/14 |
 

@@ -615,10 +615,17 @@
     />
   {:else if arbeit.dialog?.art === "garn"}
     {@const o = arbeit.dialog.objekt}
+    {@const furUmrandung = !!arbeit.dialog.umrandung}
     <GarnDialog
+      titel={furUmrandung ? "Garn der Umrandung" : undefined}
       untertitel={arbeit.dialog.titel ?? arbeit.objekte[o]?.name ?? ""}
-      aktuell={garnVon(o)}
-      waehlen={(g) => garnSetzen(o, g, arbeit.dialog?.art === "garn" ? arbeit.dialog.alle : undefined)}
+      aktuell={furUmrandung ? arbeit.umrandungGarn(o) : garnVon(o)}
+      waehlen={(g) => {
+        const alle = arbeit.dialog?.art === "garn" ? arbeit.dialog.alle : undefined;
+        if (!furUmrandung) return garnSetzen(o, g, alle);
+        arbeit.umrandungSetzen(alle?.length ? alle : [o], (u) => (u.farbe = g.rgb));
+        arbeit.dialog = null;
+      }}
       schliessen={() => (arbeit.dialog = null)}
     />
   {:else if arbeit.dialog?.art === "bild" || arbeit.dialog?.art === "svg"}

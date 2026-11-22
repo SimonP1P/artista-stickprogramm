@@ -40,6 +40,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `name` | string |  | `""` | Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text |
 | `step_muster` | number |  | – | Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) |
 | `transform` | Transformation |  | – | Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet |
+| `umrandung` | UmrandungJson |  | – | **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz, 0,3 mm nach innen |
 
 ### `lauf` – Laufstich
 
@@ -370,6 +371,12 @@ Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (
 - `"auto"` – Satinsäulen; würde ein Satinstich nach Größe/Transformation länger als 8 mm, der ganze Text Step – wie Stichart „auto“ der Texte (eigene Erweiterung, `Analyse_Teil3/10` §8)
 - `"muster"` – Füllmuster (Feld `muster`)
 
+**UmrandungArt** – Stichart der Umrandung
+
+- `"lauf"` – Laufstich (dünne Linie)
+- `"dreifach"` – Dreifachstich (kräftige Linie, Standard)
+- `"satin"` – Satinkante
+
 **UnterlageArt** – Art einer Unterlage (in Stickfolge)
 
 - `"mittellauf"` – Mittellauf (0x2746)
@@ -470,6 +477,18 @@ Transformation in der JSON-Form (`"transform"` am Objekt oder am Design).
 | `skalieren` | Skalierung |  | – | Skalierung in %: eine Zahl (beide Richtungen) oder [x, y] |
 | `spiegeln` | Spiegeln |  | – |  |
 | `verschieben` | Punkt |  | – | Verschieben in mm |
+
+### UmrandungJson
+
+**Umrandung** – eigene Erweiterung (Wunsch Nutzer 21.11.2026; im Original legt man dafür von Hand eine zweite Linie an, Handbuch S. 114): eine Linie um die Fläche des Objekts, gestickt gleich nach dem Objekt in eigener Farbe. Bei Text läuft sie um jeden Buchstaben, bei mehreren Teilen um jeden Teil (Löcher bekommen auch eine Linie). Sie liegt um `einzug` nach innen, damit nach dem Zusammenziehen des Stoffs keine Lücke zwischen Füllung und Umrandung bleibt. Wirkt bei Objekten mit Fläche (Flächen, Satin, Satinlinie, Text, Monogramm, Applikation); offene Linien haben keine.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `art` | UmrandungArt |  | `"dreifach"` | Stichart der Linie (Standard Dreifach) |
+| `breite` | number |  | `2.0` | Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie) |
+| `einzug` | number |  | `0.3` | Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen) |
+| `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (Standard schwarz) |
+| `laenge` | number |  | – | Stichlänge in mm bei Lauf/Dreifach, 0,3 … 12,7 (ohne Angabe: Stil) |
 
 ## 5. Befehle
 

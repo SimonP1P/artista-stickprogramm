@@ -527,6 +527,53 @@ pub struct AutoJumpWerte {
     pub sprung: Option<f64>,
 }
 
+auswahl! {
+    /// Stichart der Umrandung
+    pub enum UmrandungArt {
+        /// Laufstich (dünne Linie)
+        Lauf = "lauf",
+        /// Dreifachstich (kräftige Linie, Standard)
+        Dreifach = "dreifach",
+        /// Satinkante
+        Satin = "satin",
+    }
+}
+
+fn umrandung_art() -> UmrandungArt {
+    UmrandungArt::Dreifach
+}
+fn umrandung_einzug() -> f64 {
+    crate::design::UMRANDUNG_EINZUG
+}
+fn umrandung_breite() -> f64 {
+    2.0
+}
+
+/// **Umrandung** – eigene Erweiterung (Wunsch Nutzer 21.11.2026; im Original legt man dafür von Hand eine zweite Linie
+/// an, Handbuch S. 114): eine Linie um die Fläche des Objekts, gestickt gleich nach dem Objekt in eigener Farbe. Bei
+/// Text läuft sie um jeden Buchstaben, bei mehreren Teilen um jeden Teil (Löcher bekommen auch eine Linie). Sie liegt um
+/// `einzug` nach innen, damit nach dem Zusammenziehen des Stoffs keine Lücke zwischen Füllung und Umrandung bleibt.
+/// Wirkt bei Objekten mit Fläche (Flächen, Satin, Satinlinie, Text, Monogramm, Applikation); offene Linien haben keine.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct UmrandungJson {
+    /// Stichart der Linie (Standard Dreifach)
+    #[serde(default = "umrandung_art")]
+    pub art: UmrandungArt,
+    /// Garnfarbe „#rrggbb“ (Standard schwarz)
+    #[serde(default = "schwarz")]
+    pub farbe: String,
+    /// Versatz der Linie nach innen in mm, 0 … 3 (Standard 0,3 – eigene Festlegung, am Kalibrierblatt V12 prüfen)
+    #[serde(default = "umrandung_einzug")]
+    pub einzug: f64,
+    /// Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)
+    #[serde(default = "umrandung_breite")]
+    pub breite: f64,
+    /// Stichlänge in mm bei Lauf/Dreifach, 0,3 … 12,7 (ohne Angabe: Stil)
+    #[serde(default)]
+    pub laenge: Option<f64>,
+}
+
 /// Felder, die **jedes** Objekt haben kann (Funktionsübersicht §5 „Bearbeiten“).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct Gemeinsam {
@@ -547,6 +594,10 @@ pub struct Gemeinsam {
     /// Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
     #[serde(default)]
     pub doppellauf: bool,
+    /// **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+    /// 0,3 mm nach innen
+    #[serde(default)]
+    pub umrandung: Option<UmrandungJson>,
     /// Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)
     #[serde(default)]
     pub auto_jump: Option<AutoJumpJson>,

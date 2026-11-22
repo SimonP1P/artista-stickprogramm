@@ -248,6 +248,22 @@ P('maschine.max_stich', G, 'Längster Stich', 'Maschinengrenze artista 185', ebe
 G = 'Bearbeiten'
 P('objekt.doppellauf', G, 'Verstärken (Double Run)', 'gleiche Stiche rückwärts noch einmal', ebene='objekt', gilt=ALLE,
   o='doppellauf', einheit='an/aus', std=False, quelle='Handbuch Kap. 23')
+FL = ['tatami', 'satinflaeche', 'muster', 'satin', 'satinlinie', 'blanket', 'text', 'ttf', 'monogramm', 'applikation']
+QU = 'eigene Erweiterung (Nutzer 21.11.2026); im Original eine zweite Linie von Hand (Handbuch S. 114)'
+P('objekt.umrandung', G, 'Umrandung', 'Linie um die Fläche (Text: um jeden Buchstaben), gestickt nach dem Objekt',
+  ebene='objekt', gilt=FL, o='umrandung', einheit='an/aus', std=False, quelle=QU, modus='einfach')
+P('objekt.umrandung.farbe', G, 'Umrandung: Garn', 'Farbe der Umrandung (eigener Farbblock)', ebene='objekt', gilt=FL,
+  o='umrandung.farbe', einheit='#rrggbb', std='#000000', quelle=QU + '; ' + V, modus='einfach')
+P('objekt.umrandung.art', G, 'Umrandung: Stichart', 'Lauf (dünn), Dreifach (kräftig), Satinkante', ebene='objekt',
+  gilt=FL, o='umrandung.art', einheit='Auswahl', std='dreifach', werte=['lauf', 'dreifach', 'satin'],
+  quelle=QU + '; ' + V)
+P('objekt.umrandung.einzug', G, 'Umrandung: nach innen', 'Versatz der Linie in die Fläche, damit nach dem Sticken '
+  'keine Lücke zur Füllung bleibt', ebene='objekt', gilt=FL, o='umrandung.einzug', einheit='mm', std=0.3,
+  bereich=[0, 3], quelle=V + ' – am Kalibrierblatt (Vor Ort V12) prüfen')
+P('objekt.umrandung.breite', G, 'Umrandung: Breite der Satinkante', 'nur bei Stichart Satinkante', ebene='objekt',
+  gilt=FL, o='umrandung.breite', einheit='mm', std=2.0, bereich=[0.5, 10], quelle='wie Satinlinie (Standard 2 mm)')
+P('objekt.umrandung.laenge', G, 'Umrandung: Stichlänge', 'Lauf/Dreifach; ohne Angabe Stil', ebene='objekt', gilt=FL,
+  o='umrandung.laenge', einheit='mm', std=None, bereich=[0.3, 12.7], quelle='Stil Lauf (Software Defaults 2,5 mm)')
 P('objekt.aussparen', G, 'Aussparen (Knockout)', 'Fläche spart die genannten Objekte aus', ebene='objekt',
   gilt=['tatami', 'muster'], o='aussparen', einheit='Objektnamen', std=[], quelle='Remove Overlay (Analyse_Teil3/14)',
   modus='einfach')
