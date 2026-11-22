@@ -1332,6 +1332,21 @@ pub struct PhotosnapJson {
     pub g: Gemeinsam,
 }
 
+/// **Stichdaten** aus einer fremden Stickdatei (DST, PES, JEF, VP3, EXP; Befehl `stickdatei_lesen`): feste Einstiche
+/// wie „Grade D“ im Original – werden nicht neu berechnet und nicht zusätzlich vernäht. Transformationen bewegen die
+/// Einstiche; Skalieren ändert die Dichte, nicht die Stichzahl (Hinweis ab ±5 % wie im Handbuch S. 256).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct SticheJson {
+    /// Einstiche, Base64 (vom Befehl `stickdatei_lesen` erzeugt – nicht von Hand bearbeiten): Datensätze x, y als i16
+    /// in 0,1 mm, +y oben; (−32768, 0) beginnt einen neuen Zug (Sprung)
+    pub stiche: String,
+    /// Herkunft, z. B. „rose.pes (PES)“ – nur zur Anzeige
+    #[serde(default)]
+    pub quelle: Option<String>,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
 /// Fläche mit Füllmuster (Program Split / Fancy Fill; 242 Muster, Befehl `fuellmuster_liste`).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct MusterJson {
@@ -1509,6 +1524,8 @@ pub enum ObjektJson {
     Blackwork(BlackworkJson),
     /// PhotoSnap: Foto als Reihen von Zickzackstichen mit wechselndem Abstand (Befehl `photosnap` legt es an)
     Photosnap(PhotosnapJson),
+    /// Stichdaten aus einer fremden Stickdatei (feste Einstiche, Befehl `stickdatei_lesen` legt sie an)
+    Stiche(SticheJson),
 }
 
 impl ObjektJson {
@@ -1534,6 +1551,7 @@ impl ObjektJson {
             ObjektJson::Stippling(x) => &x.g,
             ObjektJson::Blackwork(x) => &x.g,
             ObjektJson::Photosnap(x) => &x.g,
+            ObjektJson::Stiche(x) => &x.g,
         }
     }
 }

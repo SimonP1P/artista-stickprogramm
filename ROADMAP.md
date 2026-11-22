@@ -42,7 +42,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N4 | 4b.10 Applikation: Vorgaben wie das Original (`AutoAppliqueValues` gelesen: Abdeckung Satin 5,0 / 0,5 mm, Heften Zickzack 4,0 / 5,0 mm, Platzierung 1,5 mm, Pre-Cut), **Versatz** innen/außen (Schieberegler −100 … 100 %, für Abdeckung und Heften), **Teil-Abdeckung** (Partial Appliqué; Inspektor + Anordnen-Menü); Frame Out (12 mm) gefunden, nicht umgesetzt (Frage); Bericht 12 §8 | ✅ 22.11. |
 | N5 | 4b.11 Automatik: **Zauberstab** (Magic Wand: Flächen im Bild anklicken → Fläche Step/Satin/Auto oder Umriss Lauf/Dreifach/Satinlinie; Befehl `zauberstab`, im Dialog „Bild umwandeln“), **PhotoSnap** (Objektart `photosnap`, `PhotoValues`/Stil 0x2828 aus MOD1 gelesen, einfarbig oder 4 Farblagen gekreuzt/versetzt; Befehl `photosnap`), **kürzeste Wege** (2-opt bei Bild umwandeln, `kuerzeste` je Objekt beim Einfügen); Bericht `Analyse_Teil3/25`. Offen: „Details“ (Mittellinien), Bild hinter dem Design (M2) | ✅ 22.11. |
 | N6 | 4b.12 Anordnen: **Ausrichten** (7 Knöpfe am zuletzt gewählten, Gruppen als Ganzes; Befehl `ausrichten`), **Mirror-Merge** (waagrecht/senkrecht/beides; `spiegeln_kopieren`), **Kranz/Kaleidoskop** (`kranz`; DESVIEW `MirrorMergeView*::GetReflectionTransforms`: −i·2π/n, ungerade Kopien gespiegelt), Rückfrage „Überlappende zusammenführen?“ (STR 4159, Vereinigung eigene Festlegung); Dialog mit Vorschau und Klick für den Ankerpunkt; „Vor/Nach Objekt Nr.“ ohne Browser-Abfrage; Bericht `Analyse_Teil3/26` | ✅ 22.11. |
-| N7 | 4b.13 Dateien/Rahmen (fremde Stickdateien, ART mit Objekten, eigene Rahmen) | ⬜ |
+| N7 | 4b.13 Dateien/Rahmen: **a) fremde Stickdateien ✅** (DST, PES/PEC, JEF, VP3, EXP → Objektart `stiche` je Farbe, Grade D, ohne Zusatz-Vernähen, Hinweis ab ±5 % Größe; Farben aus den Original-Karten `Thread Colors - PES/SEW.tch`; Befehl `stickdatei_lesen`; Datei → Öffnen, Einfügen → „Design oder Stickdatei einfügen …“; Bericht `Analyse_Teil3/27`; HUS offen – Beispieldatei), b) eigene Rahmen, c) ART mit Objekten | 🟡 a ✅, weiter mit b |
 | N8 | 4b.14 Vorlagen (Stile speichern) | ⬜ |
 | N9 | 4b.15 Kreuzstich | ⬜ |
 | N10 | Verbinder als Laufstich (Bericht 22) | ⬜ |
@@ -67,6 +67,10 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
   0°, das Handbuch-Bild zeigt 45° – welcher Standard? Helle Stellen bekommen noch lockere Stiche (10 mm Abstand, nach
   Handbuch „Max Width … lightest part“) – oder sollen ganz weiße Stellen frei bleiben? Die Abstandsregel selbst ist
   eigene Festlegung; ein Probestich vor Ort würde zeigen, ob der Kontrast stimmt.
+- **Stickdateien (N7):** HUS-Dateien sind komprimiert; ohne Beispieldatei lässt sich das Lesen nicht prüfen – hast du
+  eine HUS-, VP3- und JEF-Datei (z. B. ein Gratis-Design aus dem Netz), damit ich die Leser an echten Dateien prüfe?
+  VP3 ist nur nach der Formatbeschreibung gebaut. Die freie Bibliothek pyembroidery als Gegenprobe durfte ich nicht
+  installieren – soll ich das künftig dürfen (nur im Scratchpad, nur zum Testen)?
 - **Anordnen (N6):** Die Kopien von Mirror-Merge und Kranz kommen in der Stickreihenfolge direkt hinter die Auswahl
   (beim Kranz im Uhrzeigersinn) – am Original nicht gemessen. Passt das, oder sollen sie z. B. nach Farbe einsortiert
   werden? Beim Zusammenführen überlappender Kopien entsteht **ein** Objekt (Umriss vereinigt, Stichwinkel des

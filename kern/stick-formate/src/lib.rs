@@ -7,5 +7,6 @@ pub mod exp;
 pub mod garnkarte;
 pub mod google_fonts;
 pub mod schriftstile;
+pub mod stickdatei;
 pub mod svg;
 pub mod ttf;

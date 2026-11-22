@@ -452,6 +452,8 @@ pub enum HinweisArt {
     SchriftStep,
     /// Schrift mit Satinstichen über 8 mm – können locker liegen; Step oder „auto“ empfohlen
     LangeSatinstiche,
+    /// Stichdaten aus einer fremden Datei um mehr als ±5 % skaliert – Stichzahl bleibt, Dichte ändert sich
+    StichdatenSkaliert,
 }
 
 /// Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört.
@@ -720,6 +722,18 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
                 art: HinweisArt::LangeSatinstiche,
             });
         }
+    }
+    for (o, abw) in design.stichdaten_skaliert() {
+        hinweise.push(Hinweis {
+            meldung: format!(
+                "Objekt {}: Stichdaten um bis zu {} % in der Größe geändert – die Stichzahl bleibt gleich, die Dichte \
+                 ändert sich (das Original empfiehlt höchstens ±5 %)",
+                o + 1,
+                (abw * 100.0).round()
+            ),
+            objekt: Some(o),
+            art: HinweisArt::StichdatenSkaliert,
+        });
     }
     let mut aussen_je_objekt: Vec<(usize, usize)> = Vec::new();
     for &i in &ausserhalb_stiche {

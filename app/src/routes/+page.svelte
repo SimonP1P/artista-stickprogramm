@@ -3,7 +3,7 @@
   // Objektliste (Experte) · Mitte Stichvorschau · rechts Inspektor (Experte) · Statusleiste.
   import { onMount } from "svelte";
   import { arbeit } from "$lib/arbeit.svelte";
-  import { beispiel, dateiname, expExportieren, neu, oeffnen, speichern } from "$lib/dateien.svelte";
+  import { beispiel, dateiname, designEinfuegen, expExportieren, neu, oeffnen, speichern } from "$lib/dateien.svelte";
   import Icon from "$lib/Icon.svelte";
   import { ART, IC } from "$lib/icons";
   import Statusleiste from "$lib/Statusleiste.svelte";
@@ -102,7 +102,7 @@
   type Eintrag = { l: string; go?: () => void; kbd?: string; spaeter?: string } | "-";
   const dateiMenue: Eintrag[] = [
     { l: "Neu", go: neu, kbd: "Strg+N" },
-    { l: "Öffnen …", go: oeffnen, kbd: "Strg+O" },
+    { l: "Öffnen … (auch DST, PES, JEF, VP3, EXP)", go: oeffnen, kbd: "Strg+O" },
     { l: "Speichern", go: () => speichern(), kbd: "Strg+S" },
     { l: "Speichern unter …", go: () => speichern(true) },
     "-",
@@ -416,6 +416,7 @@
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "zauber" }))}><Icon d={IC.zauberstab} />Zauberstab …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "photo" }))}><Icon d={ART.photosnap[1]} />PhotoSnap (Foto) …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
+          <button class="mi" role="menuitem" title="Gespeichertes Design (JSON) oder fremde Stickdatei (DST, PES, JEF, VP3, EXP) als ein Element" onclick={() => waehle(designEinfuegen)}><Icon d={ART.stiche[1]} />Design oder Stickdatei einfügen …</button>
         </div>
         <div style="padding:4px; background:var(--panel)">
           <div class="mh">Craft Stitches – Handstich-Optik</div>

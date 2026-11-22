@@ -1228,7 +1228,7 @@ export type Hinweis = {
 };
 
 /** Art eines Hinweises. */
-export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb" | "schrift_step" | "lange_satinstiche");
+export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb" | "schrift_step" | "lange_satinstiche" | "stichdaten_skaliert");
 
 /** Form der Verzerrung (Elastic Lettering) */
 export type HuelleArt = ("gerade" | "gebogen");
@@ -2085,6 +2085,8 @@ export type ObjektJson = ((LaufJson & {
   art: "blackwork";
 }) | (PhotosnapJson & {
   art: "photosnap";
+}) | (SticheJson & {
+  art: "stiche";
 }));
 
 /** Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`). */
@@ -2910,6 +2912,82 @@ export type StichartErgebnis = {
   objekt: ObjektWert;
 };
 
+/**
+ * **Stichdaten** aus einer fremden Stickdatei (DST, PES, JEF, VP3, EXP; Befehl `stickdatei_lesen`): feste Einstiche
+ * wie „Grade D“ im Original – werden nicht neu berechnet und nicht zusätzlich vernäht. Transformationen bewegen die
+ * Einstiche; Skalieren ändert die Dichte, nicht die Stichzahl (Hinweis ab ±5 % wie im Handbuch S. 256).
+ */
+export type SticheJson = {
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  /** Herkunft, z. B. „rose.pes (PES)“ – nur zur Anzeige */
+  quelle?: string | null;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /**
+   * Einstiche, Base64 (vom Befehl `stickdatei_lesen` erzeugt – nicht von Hand bearbeiten): Datensätze x, y als i16
+   * in 0,1 mm, +y oben; (−32768, 0) beginnt einen neuen Zug (Sprung)
+   */
+  stiche: string;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+};
+
 /** Wie gut sich eine Schrift sticken lässt (eigene Erweiterung, `stick_kern::stickbarkeit`). */
 export type Stickbarkeit = {
   /** dicke Striche in Teilen der Höhe (10 % der Strichlänge sind dicker) */
@@ -2921,6 +2999,31 @@ export type Stickbarkeit = {
    * den empfohlenen Höhen der Original-Alphabete)
    */
   stickbar_ab: number;
+};
+
+/** Eingabe von `stickdatei_lesen`. */
+export type StickdateiEingabe = {
+  /** Stickdatei (Endung .dst, .pes, .pec, .jef, .vp3, .exp) */
+  pfad: string;
+  /** Rahmen des neuen Designs (ohne Angabe: der kleinste Rahmen der 185, in den alle Stiche passen) */
+  rahmen?: string | null;
+};
+
+/** Ergebnis von `stickdatei_lesen`. */
+export type StickdateiErgebnis = {
+  /** Größe in mm */
+  breite: number;
+  /** neues Design: ein Objekt `stiche` je Farbe, Mitte des Designs = Rahmenmitte */
+  design: DesignWert;
+  /** Zahl der Farben */
+  farben: number;
+  /** Format („DST“, „PES“ …) */
+  format: string;
+  /** Hinweise (unbekannte Farbnummer, größer als jeder Rahmen …) */
+  hinweise: string[];
+  hoehe: number;
+  /** Zahl der Einstiche */
+  stiche: number;
 };
 
 /**
@@ -3725,6 +3828,10 @@ export interface Befehle {
   step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
   /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt */
   stichart_aendern: { eingabe: StichartEingabe; ausgabe: StichartErgebnis };
+  /** Endungen der Stickdateien, die `stickdatei_lesen` kennt (für den Dateidialog) */
+  stickdatei_endungen: { eingabe: Leer; ausgabe: string[] };
+  /** Fremde Stickdatei öffnen (DST, PES, PEC, JEF, VP3, EXP): neues Design mit festen Stichen je Farbe (Objektart `stiche`, wie „Grade D“ im Original), kleinster passender Rahmen der 185 */
+  stickdatei_lesen: { eingabe: StickdateiEingabe; ausgabe: StickdateiErgebnis };
   /** Stoffe (8 + Software Defaults) mit den wichtigsten Werten */
   stoffe_liste: { eingabe: Leer; ausgabe: StoffInfo[] };
   /** SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design */
@@ -3790,6 +3897,8 @@ export const BEFEHLE = [
   "spiegeln_kopieren",
   "step_muster_liste",
   "stichart_aendern",
+  "stickdatei_endungen",
+  "stickdatei_lesen",
   "stoffe_liste",
   "svg_lesen",
   "text_speichern",

@@ -52,6 +52,8 @@
     blackwork: ["stich", "laenge"],
     // PhotoSnap (N5): Auflösung, Stoff, Winkel, Farblagen oben; kleinster/größter Abstand unter X
     photosnap: ["aufloesung", "hintergrund", "winkel", "lagen"],
+    // Stichdaten (N7): nur Herkunft und Hinweis – Stiche werden nicht neu berechnet
+    stiche: ["quelle"],
   };
   /** Applikation: Breite/Abstand meinen den Abdeckstich, Versatz den Schieberegler „innen ↔ außen“ */
   const PHOTO_NAMEN: Record<string, string> = { winkel: "Winkel der Reihen", lagen: "Farblagen" };
@@ -63,7 +65,7 @@
   /** Motivfüllung: Winkel und Versatz meinen hier die Reihen */
   const MOTIVFUELLUNG_NAMEN: Record<string, string> = { winkel: "Drehung der Reihen", versatz: "Reihenversatz" };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["raster", "satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe", "effekte"]);
+  const GESONDERT = new Set(["raster", "stiche", "satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe", "effekte"]);
   /** Objektarten mit Effekten (Verlauf, Rand; Welle nur Flächen) – Kern `effekte` */
   const MIT_EFFEKTEN = new Set(["tatami", "muster", "satin", "satinlinie", "satinflaeche"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
@@ -287,6 +289,12 @@
               <div class="frow">
                 <span class="fl">Motiv</span>
                 <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "motiv", objekt: i })}><span class="t">{String(o.satz ?? (o.art === "motivfuellung" ? "Children" : "Heirloom")).replace(/^_/, "")} · {String(o.motiv ?? (o.art === "motivfuellung" ? "901" : "705"))}</span><Icon d={IC.chevronRechts} /></button></div>
+              </div>
+            {:else if f.name === "quelle"}
+              <div class="frow">
+                <span class="fl">Herkunft</span>
+                <div class="fc"><span class="small">{String(o.quelle ?? "Stickdatei")} · ≈ {Math.round((String(o.stiche ?? "").length * 3) / 16).toLocaleString("de-DE")} Einstiche</span></div>
+                <div class="fhelp">Feste Stiche aus der Datei (wie „Grade D“ im Original): Größe ändern ändert die Dichte, nicht die Stichzahl – höchstens ±5 % empfohlen.</div>
               </div>
             {:else if f.name === "step_muster"}
               <div class="frow">
@@ -551,7 +559,7 @@
       const v = lesen((ev.currentTarget as HTMLInputElement).value);
       if (v && v > 0) transformSetzen((x) => (x.skalieren = v), ganzesDesign);
     }} /><span class="unit">%</span></div>
-    <div class="fhelp">Stiche werden neu berechnet, nie skaliert</div>
+    <div class="fhelp">{!ganzesDesign && o?.art === "stiche" ? "Feste Stiche: Dichte ändert sich, Stichzahl bleibt (±5 % empfohlen)" : ganzesDesign && arbeit.objekte.some((x) => x.art === "stiche") ? "Stiche werden neu berechnet – feste Stiche aus Dateien nur gedehnt" : "Stiche werden neu berechnet, nie skaliert"}</div>
   </div>
   <div class="frow">
     <label class="fl" for="td-{ganzesDesign}">Drehen</label>

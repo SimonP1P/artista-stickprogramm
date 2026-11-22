@@ -334,6 +334,17 @@ P('anordnen.zusammenfuehren', 'Anordnen', 'Überlappende zusammenführen', 'Step
 P('anordnen.ueberlappung_min', 'Anordnen', 'Überlappung ab', 'kleinere gemeinsame Flächen zählen nicht als '
   'Überlappung', ebene='werkzeug', einheit='mm²', std=0.5, quelle='eigene Festlegung', modus='automatisch')
 
+# Fremde Stickdateien (Nachtauftrag N7, Analyse_Teil3/27)
+P('stickdatei.rahmen', 'Dateien', 'Rahmen beim Öffnen', 'kleinster Rahmen der 185, in den das Design passt '
+  '(Freiarm nur, wenn nichts anderes passt)', ebene='werkzeug', einheit='Auswahl', std=None,
+  quelle='eigene Festlegung (Analyse_Teil3/27 §2)', modus='automatisch')
+P('stiche.skalieren_hinweis', 'Dateien', 'Hinweis beim Skalieren fester Stiche', 'ab dieser Größenänderung meldet '
+  'das Programm, dass sich die Dichte ändert (Stichzahl bleibt)', ebene='werkzeug', einheit='%', std=5,
+  quelle='Handbuch Kap. 28 S. 256 („more than ±5 %“)', modus='automatisch')
+P('stiche.vernaehen', 'Dateien', 'Vernähen fester Stiche', 'Stichdaten aus Dateien werden nicht zusätzlich '
+  'vernäht (die Datei hat ihr eigenes)', ebene='werkzeug', einheit='an/aus', std=False,
+  quelle='eigene Festlegung (Grade D: Stiche unverändert, Handbuch S. 256)', modus='automatisch')
+
 # ---------------------------------------------------------------- Blanket, Applikation
 G = 'Blanket'
 P('objekt.blanket.abstand', G, 'Zahnabstand', '', ebene='objekt', gilt=['blanket'], o='abstand', einheit='mm', std=2.0,

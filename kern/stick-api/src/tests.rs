@@ -575,6 +575,49 @@ fn bild_vorschau_und_umwandeln() {
     let _ = std::fs::remove_file(&pfad);
 }
 
+/// Fremde Stickdatei (N7): DST lesen → Objekte `stiche` je Farbe, Stiche unverändert (ohne Vernähen), Hinweis
+/// beim Skalieren über ±5 %
+#[test]
+fn stickdatei_dst() {
+    let k = kontext();
+    // DST: 512 Byte Kopf, Datensätze (dx, dy, Art) – +1 x: 01 00 03, +9 x: 04 00 03, Sprung: Bit 0x80 in Byte 3
+    let mut d = b"LA:Probe          \r".to_vec();
+    d.resize(512, b' ');
+    let x9 = [0x04u8, 0x00, 0x03];
+    for _ in 0..5 {
+        d.extend(x9); // 5 Stiche à 0,9 mm nach rechts
+    }
+    d.extend([0x04, 0x00, 0x83]); // Sprung 0,9 mm
+    d.extend([0x00, 0x00, 0xC3]); // Farbwechsel
+    d.extend([0x80, 0x00, 0x03]); // 0,1 mm nach oben (kurz)
+    d.extend(x9);
+    d.extend([0x00, 0x00, 0xF3]);
+    let pfad = std::env::temp_dir().join(format!("stick_dst_test_{}.dst", std::process::id()));
+    std::fs::write(&pfad, &d).unwrap();
+    let r = ausfuehren(&k, "stickdatei_lesen", json!({"pfad": pfad.to_string_lossy()})).unwrap();
+    std::fs::remove_file(&pfad).ok();
+    assert_eq!(r["format"], "DST");
+    assert_eq!(r["farben"], 2);
+    assert_eq!(r["stiche"], 7);
+    assert_eq!(r["design"]["name"], "Probe");
+    assert_eq!(r["design"]["rahmen"], "artista 40 x 60");
+    let o = &r["design"]["objekte"];
+    assert_eq!(o[0]["art"], "stiche");
+    assert_eq!(o[1]["name"], "Farbe 2");
+    // Berechnen: genau die Einstiche der Datei (+ Sprung zum Anfang, Farbwechsel, Sprung zurück), kein Vernähen
+    let b = ausfuehren(&k, "design_berechnen", json!({"design": r["design"]})).unwrap();
+    let stiche = b["statistik"]["stiche"].as_u64().unwrap();
+    assert!(stiche <= 8, "{}", b["statistik"]);
+    // skaliert um 20 % → Hinweis
+    let mut g = r["design"].clone();
+    g["objekte"][0]["transform"] = json!({"skalieren": 120});
+    let b = ausfuehren(&k, "design_berechnen", json!({"design": g})).unwrap();
+    assert!(b["hinweise"].as_array().unwrap().iter().any(|h| h["art"] == "stichdaten_skaliert"), "{}", b["hinweise"]);
+    let formen = ausfuehren(&k, "design_formen", json!({"design": g})).unwrap();
+    assert!(formen[0]["begrenzung"].is_array());
+    assert!(ausfuehren(&k, "stickdatei_lesen", json!({"pfad": "x.hus"})).is_err());
+}
+
 /// Anordnen (N6): Ausrichten, Mirror-Merge, Kranz – auch mit Text (Alphabet aus dem Kontext) und Gruppen
 #[test]
 fn anordnen_befehle() {

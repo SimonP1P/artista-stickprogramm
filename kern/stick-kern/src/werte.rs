@@ -121,6 +121,7 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
         ObjektJson::Lauf(_) | ObjektJson::Dreifach(_) => w.push(wert("laenge", json!(e.lauf.laenge), "stil")),
         ObjektJson::Rueckstich(_) => rueckstich_werte(&mut w),
         ObjektJson::Stielstich(_) => stielstich_werte(&mut w),
+        ObjektJson::Stiche(_) => {}
         ObjektJson::Photosnap(_) => {
             use crate::photosnap as ps;
             w.push(wert("aufloesung", json!("mittel"), "vorlage"));

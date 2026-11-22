@@ -452,7 +452,7 @@
           <button class="big" onclick={() => (arbeit.dialog = { art: "bild" })}><Icon d={IC.bild} groesse="l" /><b style="font-weight:500">Bild umwandeln</b><span class="mut small">PNG / JPG → Stickflächen</span></button>
           <button class="big" onclick={() => (arbeit.dialog = { art: "svg" })}><Icon d={IC.bezier} groesse="l" /><b style="font-weight:500">SVG einlesen</b><span class="mut small">Zeichnung aus Inkscape</span></button>
           {#if arbeit.objekte.length}
-            <button class="big" onclick={designEinfuegen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design einfügen</b><span class="mut small">gespeichertes Design (JSON) dazu</span></button>
+            <button class="big" onclick={designEinfuegen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design einfügen</b><span class="mut small">gespeichertes Design oder Stickdatei (DST, PES …) dazu</span></button>
           {:else}
             <button class="big" onclick={oeffnen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design öffnen</b><span class="mut small">gespeichertes Design (JSON)</span></button>
           {/if}

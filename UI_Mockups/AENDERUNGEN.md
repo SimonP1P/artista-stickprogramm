@@ -15,6 +15,20 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Fremde Stickdateien öffnen (Nachtauftrag N7a, 4b.13; Commit COMMIT)
+- **Neue Objektart `stiche`** (Stichdaten, wie „Grade D“ im Original): Felder `stiche` (Base64 – vom Kern erzeugt,
+  nicht von Hand bearbeiten) und `quelle` (Anzeige, z. B. „rose.pes (PES)“), dazu alle gemeinsamen Felder (`farbe`,
+  `garn`, `name`, `transform`, `gruppe` …). Feste Einstiche: nicht neu berechnet, nicht zusätzlich vernäht.
+- **Neue Befehle:** `stickdatei_lesen` `{pfad, rahmen?}` → `{design, format, stiche, farben, breite, hoehe, hinweise}`
+  (ein Objekt je Farbe, kleinster passender Rahmen) und `stickdatei_endungen` (Liste für den Dateidialog).
+- **Neuer Hinweis** in `design_berechnen`: `art: "stichdaten_skaliert"`, wenn Stichdaten um mehr als ±5 % in der Größe
+  geändert sind.
+- **Oberfläche (umgesetzt):** Datei → „Öffnen …“ nimmt auch DST/PES/PEC/JEF/VP3/EXP (neues, ungespeichertes Design;
+  Meldung mit Format, Stichen, Farben, Größe). Einfügen → „Design oder Stickdatei einfügen …“ (als ein Element; auch im
+  Assistenten). Objektliste mit Symbol „Stichdaten (Stickdatei)“. Inspektor: Garn, Herkunft mit Zahl der Einstiche,
+  Hinweis zur Größe; der Hilfetext bei „Größe“ sagt für Stichdaten, dass sich die Dichte ändert.
+- Korrektur in `FUNKTIONEN.md`: Ausrichten, Mirror-Merge, Kranz sind Modus **X** (nur Experte), nicht E.
+
 ## 22.11.2026 – Anordnen: Ausrichten, Mirror-Merge, Kranz/Kaleidoskop (Nachtauftrag N6, 4b.12; Commit 76ec4f1)
 - **Neue Befehle** (keine neuen Design-Felder):
   - `ausrichten` `{design, objekte, art}` → `{design}`: Kanten/Mitten an das **zuletzt** gewählte Objekt (Reihenfolge in

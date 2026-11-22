@@ -363,6 +363,15 @@ PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Ab
 | `raster` | PhotoRasterJson | ja | – |  |
 | `winkel` | number |  | – | Winkel der Reihen in Grad (Standard 0 wie im Original; das Handbuch-Beispiel zeigt 45°) |
 
+### `stiche` – Stichdaten aus einer fremden Stickdatei (feste Einstiche, Befehl `stickdatei_lesen` legt sie an)
+
+**Stichdaten** aus einer fremden Stickdatei (DST, PES, JEF, VP3, EXP; Befehl `stickdatei_lesen`): feste Einstiche wie „Grade D“ im Original – werden nicht neu berechnet und nicht zusätzlich vernäht. Transformationen bewegen die Einstiche; Skalieren ändert die Dichte, nicht die Stichzahl (Hinweis ab ±5 % wie im Handbuch S. 256).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `quelle` | string |  | – | Herkunft, z. B. „rose.pes (PES)“ – nur zur Anzeige |
+| `stiche` | string | ja | – | Einstiche, Base64 (vom Befehl `stickdatei_lesen` erzeugt – nicht von Hand bearbeiten): Datensätze x, y als i16 in 0,1 mm, +y oben; (−32768, 0) beginnt einen neuen Zug (Sprung) |
+
 ## 3. Auswahlwerte
 
 **Abdeckung** – Abdeckstich der Applikation
@@ -731,6 +740,8 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `spiegeln_kopieren` | SpiegelnKopierenEingabe | KopienErgebnis | Mirror-Merge: gespiegelte Kopie(n) der Auswahl an einer Linie durch den Ankerpunkt, auf Wunsch zusammengeführt |
 | `step_muster_liste` | Leer | StepMusterInfo[] | Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln |
 | `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt |
+| `stickdatei_endungen` | Leer | string[] | Endungen der Stickdateien, die `stickdatei_lesen` kennt (für den Dateidialog) |
+| `stickdatei_lesen` | StickdateiEingabe | StickdateiErgebnis | Fremde Stickdatei öffnen (DST, PES, PEC, JEF, VP3, EXP): neues Design mit festen Stichen je Farbe (Objektart `stiche`, wie „Grade D“ im Original), kleinster passender Rahmen der 185 |
 | `stoffe_liste` | Leer | StoffInfo[] | Stoffe (8 + Software Defaults) mit den wichtigsten Werten |
 | `svg_lesen` | SvgEingabe | SvgErgebnis | SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design |
 | `text_speichern` | TextDatei | null | Textdatei schreiben |

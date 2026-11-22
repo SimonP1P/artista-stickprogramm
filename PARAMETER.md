@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 22.11.2026 · **235 Parameter**: 71 einfach, 109 experte, 55 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 22.11.2026 · **238 Parameter**: 71 einfach, 109 experte, 58 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -178,6 +178,14 @@ Stand 22.11.2026 · **235 Parameter**: 71 einfach, 109 experte, 55 automatisch. 
 | **Mittelpunkt** | Mitte des Kranzes; Vorschlag unter der Auswahl, Kopien berühren sich nicht |  |  | – |  |  | werkzeug | experte | Handbuch S. 141; Vorschlag eigene Festlegung |
 | **Überlappende zusammenführen** | Step-, Muster-, Stippling- und Satinflächen, die sich mit ihrer Kopie überlappen, werden ein Objekt |  |  | aus |  |  | werkzeug | experte | RESENU STR 4159 (Rückfrage, hoch); Verfahren eigene Festlegung (Analyse_Teil3/26 §4) |
 | **Überlappung ab** | kleinere gemeinsame Flächen zählen nicht als Überlappung |  |  | 0,5 mm² |  |  | werkzeug | automatisch | eigene Festlegung |
+
+## Dateien
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Rahmen beim Öffnen** | kleinster Rahmen der 185, in den das Design passt (Freiarm nur, wenn nichts anderes passt) |  |  | – |  |  | werkzeug | automatisch | eigene Festlegung (Analyse_Teil3/27 §2) |
+| **Hinweis beim Skalieren fester Stiche** | ab dieser Größenänderung meldet das Programm, dass sich die Dichte ändert (Stichzahl bleibt) |  |  | 5 % |  |  | werkzeug | automatisch | Handbuch Kap. 28 S. 256 („more than ±5 %“) |
+| **Vernähen fester Stiche** | Stichdaten aus Dateien werden nicht zusätzlich vernäht (die Datei hat ihr eigenes) |  |  | aus |  |  | werkzeug | automatisch | eigene Festlegung (Grade D: Stiche unverändert, Handbuch S. 256) |
 
 ## Blanket
 

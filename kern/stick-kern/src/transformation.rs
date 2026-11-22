@@ -164,6 +164,7 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
         | ObjektArt::Blanket { punkte, .. }
         | ObjektArt::Handstich { punkte, .. } => out.extend(punkte),
         ObjektArt::Blackwork { linien, .. } => linien.iter().for_each(|(l, _)| out.extend(l)),
+        ObjektArt::Stiche { zuege } => zuege.iter().for_each(|z| out.extend(z)),
         ObjektArt::Photosnap(v) => {
             let (w, h) = v.groesse();
             out.extend([
@@ -390,6 +391,9 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             loecher: loecher.iter().map(|l| m.linie(l)).collect(),
             laenge: *laenge,
             abstand: *abstand,
+        },
+        ObjektArt::Stiche { zuege } => ObjektArt::Stiche {
+            zuege: zuege.iter().map(|z| m.linie(z)).collect(),
         },
         andere => andere.clone(),
     };
@@ -622,6 +626,9 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             loecher: loecher.iter().map(|l| lin(l, true)).collect(),
             laenge: *laenge,
             abstand: *abstand,
+        },
+        ObjektArt::Stiche { zuege } => ObjektArt::Stiche {
+            zuege: zuege.iter().map(|z| z.iter().map(|&q| f(q)).collect()).collect(),
         },
         andere => andere.clone(),
     };

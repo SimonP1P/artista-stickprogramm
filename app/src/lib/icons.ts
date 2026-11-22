@@ -82,4 +82,5 @@ export const ART: Record<string, [string, string]> = {
   stippling: ["Stippling", "M3 3h18v18H3ZM6 17c0-4 3-4 3-1s3 3 3-1-3-4 0-6 4 0 4 3 2 4 3 1"],
   blackwork: ["Blackwork (Linien in einem Zug)", "M4 20L12 4l8 16M7 14h10M3 9h18"],
   photosnap: ["PhotoSnap (Foto)", "M3 7h4l2-3h6l2 3h4v13H3ZM8 13l2-2 2 2 2-2 2 2"],
+  stiche: ["Stichdaten (Stickdatei)", "M5 3h9l5 5v13H5ZM14 3v5h5M8 17l2-4 2 4 2-4 2 4"],
 };

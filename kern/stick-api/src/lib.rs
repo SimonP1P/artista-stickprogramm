@@ -27,6 +27,7 @@ pub mod erzeugen;
 pub mod maschine;
 pub mod motive;
 pub mod schriften;
+pub mod stickdateien;
 
 use schemars::{JsonSchema, Schema, SchemaGenerator};
 use serde::Serialize;
@@ -405,6 +406,11 @@ befehle! {
     photosnap: automatik::PhotosnapEingabe => automatik::PhotosnapErgebnis,
     /// SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design
     svg_lesen: befehle::SvgEingabe => befehle::SvgErgebnis,
+    /// Fremde Stickdatei öffnen (DST, PES, PEC, JEF, VP3, EXP): neues Design mit festen Stichen je Farbe (Objektart
+    /// `stiche`, wie „Grade D“ im Original), kleinster passender Rahmen der 185
+    stickdatei_lesen: stickdateien::StickdateiEingabe => stickdateien::StickdateiErgebnis,
+    /// Endungen der Stickdateien, die `stickdatei_lesen` kennt (für den Dateidialog)
+    stickdatei_endungen: befehle::Leer => Vec<String>,
     /// Textdatei lesen
     datei_lesen: befehle::Pfad => String,
     /// Textdatei schreiben
@@ -446,6 +452,7 @@ mod befehle_aller {
     pub use crate::effekte::*;
     pub use crate::motive::*;
     pub use crate::schriften::*;
+    pub use crate::stickdateien::*;
 }
 
 #[cfg(test)]

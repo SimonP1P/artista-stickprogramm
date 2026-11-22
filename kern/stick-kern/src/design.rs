@@ -449,6 +449,8 @@ pub enum ObjektArt {
     Applikation(ApplikationVorgabe),
     /// PhotoSnap (`photosnap.rs`); wird vor dem Berechnen in eine Laufstich-Zickzackfolge je Farblage aufgelöst
     Photosnap(crate::photosnap::PhotoVorgabe),
+    /// Stichdaten aus einer fremden Datei (`stichdaten.rs`): Züge fester Einstiche, unverändert gestickt
+    Stiche { zuege: Vec<Linie> },
     /// Text mit einer Computer-Schrift (TrueType/OpenType); wird vor dem Berechnen aufgelöst
     TtfText {
         schrift: String,
@@ -1126,6 +1128,7 @@ impl Objekt {
                 .into_iter()
                 .map(|(l, ecken)| stich.stiche(&l, &ecken, e))
                 .collect()),
+            ObjektArt::Stiche { zuege } => Ok(zuege.clone()),
             ObjektArt::Knopfloch(_) => Err("Knopfloch wurde nicht aufgelöst".into()),
             ObjektArt::Motivlinie(_) => Err("Motivlinie wurde nicht aufgelöst".into()),
             ObjektArt::Motivfuellung(_) => Err("Motivfüllung wurde nicht aufgelöst".into()),
@@ -1901,6 +1904,38 @@ impl Design {
         Ok(Some(t.matrix(formmitte(&teil))?))
     }
 
+    /// Stichdaten-Objekte (`stiche`), deren Größe sich durch Transformationen (Objekt, Gruppe, Design) um mehr als
+    /// ±5 % ändert: (Nummer, größte Abweichung des Maßstabs, z. B. 0,2 = 20 %). Hinweis wie im Handbuch S. 256: Die
+    /// Stichzahl bleibt, die Dichte ändert sich.
+    pub fn stichdaten_skaliert(&self) -> Vec<(usize, f64)> {
+        use crate::transformation::{Matrix, Transformation};
+        let lin = |t: &Transformation| t.matrix(p(0.0, 0.0)).unwrap_or(Matrix::EINS);
+        let mut out = Vec::new();
+        for (nr, o) in self.objekte.iter().enumerate() {
+            if !matches!(o.art, ObjektArt::Stiche { .. }) {
+                continue;
+            }
+            let mut m = self.transformationen.get(&nr).map(lin).unwrap_or(Matrix::EINS);
+            for (mitglieder, t) in &self.gruppen {
+                if mitglieder.contains(&nr) {
+                    m = lin(t).nach(&m);
+                }
+            }
+            m = lin(&self.transformation).nach(&m);
+            // Singulärwerte der linearen Abbildung = Maßstab in den Hauptrichtungen
+            let t = m.a * m.a + m.b * m.b + m.c * m.c + m.d * m.d;
+            let det = m.a * m.d - m.b * m.c;
+            let w = (t * t - 4.0 * det * det).max(0.0).sqrt();
+            let s1 = ((t + w) / 2.0).sqrt();
+            let s2 = ((t - w) / 2.0).max(0.0).sqrt();
+            let abw = (s1 - 1.0).abs().max((s2 - 1.0).abs());
+            if abw > crate::stichdaten::SKALIEREN_HINWEIS + 1e-9 {
+                out.push((nr, abw));
+            }
+        }
+        out
+    }
+
     /// Objekte aufgelöst (Text, Knopfloch, Applikation, Satinfläche), noch ohne Transformation und Aussparen.
     fn ungedreht_aufgeloest(&self) -> Result<Aufgeloest, String> {
         let mut out = Vec::new();
@@ -2438,10 +2473,18 @@ impl Design {
         let herkunft: Vec<usize> = teile.iter().map(|t| t.3).collect();
         let buchstabe_teil: Vec<usize> = teile.iter().map(|t| t.4).collect();
         let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _, _)| ((f, w), a)).unzip();
-        // Verbinder je Teil: eigene Werte des Objekts (im Original trägt jedes Objekt seinen Verbinder 0x272a)
+        // Verbinder je Teil: eigene Werte des Objekts (im Original trägt jedes Objekt seinen Verbinder 0x272a).
+        // Stichdaten aus fremden Dateien haben ihr eigenes Vernähen – dort keins dazu (`stichdaten.rs`)
+        let ohne_vernaehen = crate::einstellungen::VerbinderEinstellung {
+            vernaeh_stiche: 0,
+            ..self.einstellungen.verbinder.clone()
+        };
         let verbinder: Vec<Option<&crate::einstellungen::VerbinderEinstellung>> = herkunft
             .iter()
-            .map(|h| self.objekt_einstellungen.get(h).map(|e| &e.verbinder))
+            .map(|h| match self.objekte.get(*h).map(|o| &o.art) {
+                Some(ObjektArt::Stiche { .. }) => Some(&ohne_vernaehen),
+                _ => self.objekt_einstellungen.get(h).map(|e| &e.verbinder),
+            })
             .collect();
         let folge = wege_verbinden_je_teil(&teile, &self.einstellungen.verbinder, start, &auto_jump, &verbinder);
         let mut folge = bernina_regeln(&folge);
@@ -2627,6 +2670,7 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
                 linie(FormArt::Loch, l, true);
             }
         }
+        ObjektArt::Stiche { zuege } => linie(FormArt::Umriss, &crate::stichdaten::huelle(zuege), true),
         ObjektArt::Photosnap(v) => {
             // Bildrand
             let (w, h) = v.groesse();
@@ -2801,6 +2845,7 @@ fn bereiche_pruefen(o: &ObjektJson) -> Result<(), String> {
             bereich("winkel", b.winkel, 10.0, 90.0)?;
             striche(b.striche)
         }
+        ObjektJson::Stiche(f) => crate::stichdaten::dekodieren(&f.stiche).map(|_| ()),
         ObjektJson::Photosnap(f) => {
             bereich("abstand_min", f.abstand_min, 0.4, 5.0)?;
             bereich("abstand_max", f.abstand_max, 1.0, 12.0)?;
@@ -3099,6 +3144,14 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                 },
             }
         }
+        ObjektJson::Stiche(f) => Objekt {
+            farbe: f.g.farbe,
+            name: f.g.name,
+            // geprüft in `bereiche_pruefen`
+            art: ObjektArt::Stiche {
+                zuege: crate::stichdaten::dekodieren(&f.stiche).unwrap_or_default(),
+            },
+        },
         ObjektJson::Photosnap(f) => {
             use crate::format::{PhotoAufloesung, PhotoHintergrund, PhotoLagen};
             use crate::photosnap as ps;
