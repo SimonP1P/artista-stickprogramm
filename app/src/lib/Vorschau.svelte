@@ -28,7 +28,7 @@
   let mitte = $state<[number, number]>([0, 0]);
   /** laufende Maus-Aktion: Ansicht verschieben, Objekte verschieben, skalieren, drehen */
   type Ziehen =
-    | { art: "ansicht"; x: number; y: number; m: [number, number]; bewegt: boolean }
+    | { art: "ansicht"; x: number; y: number; m: [number, number]; bewegt: boolean; nurKlick?: boolean }
     | { art: "rechteck"; start: [number, number]; mehr: boolean; bewegt: boolean }
     | { art: "objekt" | "skalieren" | "drehen"; start: [number, number]; mitte: [number, number]; bewegt: boolean };
   let ziehen: Ziehen | null = null;
@@ -250,13 +250,18 @@
   function runter(ev: PointerEvent) {
     if (ev.button !== 0 && ev.button !== 1) return;
     frischGewaehlt = false;
-    svg?.setPointerCapture(ev.pointerId);
+    try {
+      svg?.setPointerCapture(ev.pointerId);
+    } catch {
+      // nachgespielte Zeiger (Bildschirmfoto-Werkzeug) haben keine echte Zeiger-Nummer
+    }
     const ziel = (ev.target as Element | null)?.closest?.("[data-griff],[data-o]");
     const griff = ziel?.getAttribute("data-griff");
     const o = ziel?.getAttribute("data-o");
     const p = mm(ev);
-    const knoten = ziel?.getAttribute("data-knoten");
-    if (ev.button === 0 && knoten) {
+    // Knoten haben weder data-griff noch data-o – eigens suchen (sonst verschob der Klick das ganze Objekt)
+    const knoten = (ev.target as Element | null)?.closest?.("[data-knoten]")?.getAttribute("data-knoten");
+    if (ev.button === 0 && knoten && werkzeug === "knoten") {
       const k = Number(knoten);
       knotenZiehen = { k, p: knotenBasis?.knoten[k]?.p ?? p };
       knotenGewaehlt = k;
@@ -286,6 +291,17 @@
         return;
       }
       const mehr = ev.shiftKey || ev.ctrlKey || ev.metaKey;
+      // Knoten-Werkzeug: Objekt anklicken wählt es (seine Knoten erscheinen), Ziehen verschiebt es nicht – nur die
+      // Knoten selbst werden gezogen; Ziehen auf freier Fläche oder am Objekt: Auswahlrechteck
+      if (werkzeug === "knoten") {
+        if (o !== null && o !== undefined && !arbeit.auswahl.includes(Number(o))) {
+          arbeit.waehlen(Number(o));
+          frischGewaehlt = true;
+        }
+        knotenGewaehlt = null;
+        ziehen = { art: "rechteck", start: p, mehr, bewegt: false };
+        return;
+      }
       if (o !== null && o !== undefined && !mehr) {
         // nicht gewähltes Objekt anfassen: wählen und gleich verschieben können
         frischGewaehlt = !arbeit.auswahl.includes(Number(o));
@@ -299,7 +315,9 @@
         return;
       }
     }
-    ziehen = { art: "ansicht", x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false };
+    // linke Taste verschiebt die Ansicht nicht (Wunsch Nutzer 21.11.2026: nur mittlere Taste, Leertaste, Touchpad) –
+    // nur Klick (z. B. beim Abspielen ein Objekt wählen)
+    ziehen = { art: "ansicht", x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false, nurKlick: true };
   }
   function bewegen(ev: PointerEvent) {
     if (knotenZiehen && svg) {
@@ -311,6 +329,7 @@
       const dx = ev.clientX - ziehen.x, dy = ev.clientY - ziehen.y;
       if (!ziehen.bewegt && Math.hypot(dx, dy) < 4) return;
       ziehen.bewegt = true;
+      if (ziehen.nurKlick) return;
       const s = ausschnitt.w / svg.clientWidth;
       const k = Math.max(s, ausschnitt.h / svg.clientHeight);
       mitte = [ziehen.m[0] - dx * k, ziehen.m[1] + dy * k];
@@ -356,6 +375,9 @@
       const b = band;
       band = null;
       if (war.bewegt && b) return arbeit.imRechteckWaehlen(b, war.mehr);
+      if (frischGewaehlt) return void (frischGewaehlt = false);
+      // Knoten-Werkzeug: Klick auf das gewählte Objekt behält die Auswahl
+      if (werkzeug === "knoten" && objektAusZiel(document.elementFromPoint(ev.clientX, ev.clientY)) !== null) return;
       if (!war.mehr) arbeit.waehlen(null);
       return;
     }
@@ -397,9 +419,34 @@
       arbeit.waehlen(o, mehr);
     }
   }
+  /** Bildschirmpunkt → mm für Rad-Ereignisse */
+  function mmAus(x: number, y: number): [number, number] {
+    const p = new DOMPoint(x, y).matrixTransform(svg!.getScreenCTM()!.inverse());
+    return [p.x, -p.y];
+  }
+  /** auf `neu` zoomen, der Punkt unter dem Zeiger bleibt stehen */
+  function zoomUm(neu: number, x: number, y: number) {
+    const z = Math.min(40, Math.max(0.25, neu));
+    const [px, py] = mmAus(x, y);
+    const f = zoom / z;
+    mitte = [px - (px - mitte[0]) * f, py - (py - mitte[1]) * f];
+    zoom = z;
+  }
+  /**
+   * Rad und Touchpad wie in Zeichenprogrammen: Mausrad zoomt (um den Zeiger), Touchpad mit zwei Fingern verschiebt die
+   * Ansicht, Zwei-Finger-Zoom (Pinch, kommt als Rad mit Strg) bzw. Strg/⌘ + Rad zoomt. Mausrad und Touchpad
+   * unterscheiden: ein Mausrad liefert `wheelDeltaY` in Vielfachen von 120 (WebKit/Chromium), das Touchpad nicht.
+   */
   function rad(ev: WheelEvent) {
     ev.preventDefault();
-    zoom = Math.min(40, Math.max(0.25, zoom * (ev.deltaY < 0 ? 1.15 : 1 / 1.15)));
+    if (!svg) return;
+    if (ev.ctrlKey || ev.metaKey) return zoomUm(zoom * Math.exp(-ev.deltaY * 0.01), ev.clientX, ev.clientY);
+    const wd = (ev as WheelEvent & { wheelDeltaY?: number; wheelDeltaX?: number });
+    const mausrad =
+      ev.deltaMode === 1 || (!ev.deltaX && !!wd.wheelDeltaY && wd.wheelDeltaY % 120 === 0 && !wd.wheelDeltaX);
+    if (mausrad) return zoomUm(zoom * (ev.deltaY < 0 ? 1.15 : 1 / 1.15), ev.clientX, ev.clientY);
+    const k = Math.max(ausschnitt.w / svg.clientWidth, ausschnitt.h / svg.clientHeight);
+    mitte = [mitte[0] + ev.deltaX * k, mitte[1] - ev.deltaY * k];
   }
   export function einpassen() {
     zoom = 1;

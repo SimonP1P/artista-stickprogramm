@@ -13,6 +13,7 @@ Aufruf (aus app/):
   '[{"wo": "button[aria-label=\"Alle Elemente\"]", "nach": 2500}, {"wo": "ol[aria-label=Elemente] button", "text": "Mond"}]'
 Je Schritt: CSS-Selektor `wo`, optional `text` (Element, dessen Text ihn enthält), `nach` = Wartezeit in ms vor dem
 Klick (nur erster Schritt, Standard 1500); sonst wartet ein Schritt, bis Svelte gezeichnet hat und es das Element gibt.
+`ziehen: [dx, dy]` zieht statt zu klicken (Pixel, von der Mitte des Elements).
 Klicks und Fehler gibt das Werkzeug aus der Konsole der Seite aus.
 """
 import argparse
@@ -214,6 +215,18 @@ const KLICKS = {json.dumps(json.loads(o.klicks) if o.klicks else [])};
   const s = KLICKS[k];
   const finden = () => [...document.querySelectorAll(s.wo)].find((e) => !s.text || e.textContent.includes(s.text));
   const klicken = (el) => {{
+    if (s.ziehen) {{
+      // Ziehen: von der Mitte des Elements um [dx, dy] Pixel (Bewegung und Loslassen gehen an die Zeichenfläche)
+      const r = el.getBoundingClientRect();
+      const x = r.left + r.width / 2, y = r.top + r.height / 2;
+      const flaeche = el.closest("svg") || el;
+      console.log("Bildschirmfoto: Ziehen", k + 1, s.wo, s.text || "", JSON.stringify(s.ziehen));
+      const ev = (typ, cx, cy) => new PointerEvent(typ, {{ bubbles: true, button: typ === "pointermove" ? -1 : 0, buttons: 1, clientX: cx, clientY: cy, pointerId: 1 }});
+      el.dispatchEvent(ev("pointerdown", x, y));
+      for (let i = 1; i <= 5; i++) flaeche.dispatchEvent(ev("pointermove", x + (s.ziehen[0] * i) / 5, y + (s.ziehen[1] * i) / 5));
+      flaeche.dispatchEvent(ev("pointerup", x + s.ziehen[0], y + s.ziehen[1]));
+      return schritt(k + 1);
+    }}
     console.log("Bildschirmfoto: Klick", k + 1, s.wo, s.text || "");
     for (const typ of ["pointerdown", "mousedown", "pointerup", "mouseup"]) el.dispatchEvent(new PointerEvent(typ, {{ bubbles: true, button: 0 }}));
     el.click();
