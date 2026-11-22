@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Zauberstab, PhotoSnap, kürzeste Wege (Nachtauftrag N5, 4b.11; Commit COMMIT)
+## 22.11.2026 – Zauberstab, PhotoSnap, kürzeste Wege (Nachtauftrag N5, 4b.11; Commit 71d232d)
 - **Neue Objektart `photosnap`** (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen. Felder `raster` (vom Befehl
   `photosnap` erzeugt: `breite`, `hoehe`, `mm`, `lagen[{farbe, werte (Base64, Deckung 0–255)}]` – nicht von Hand
   bearbeiten), `aufloesung` grob/mittel/fein, `hintergrund` hell/dunkel, `winkel`, `lagen` gekreuzt/versetzt,
