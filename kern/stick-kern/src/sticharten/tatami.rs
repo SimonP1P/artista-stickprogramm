@@ -9,10 +9,15 @@
 //!    verlängert jede Reihe an beiden Enden.
 //! 5. Bereiche in der Reihenfolge des geringsten Weges; dazwischen ein Laufweg am Rand wie im Original
 //!    (`Analyse_Teil3/08_laufwege_flaechen.md`), nur wenn kein gemeinsamer Rand erreichbar ist ein Sprung.
+//!
+//! Effekte (`crate::effekte`, Handbuch Kap. 24): **Verlauf** = Reihenlagen mit wechselndem Abstand, **ausgefranster
+//! Rand** = Reihenenden gestreut, **Welle** = Fläche entlang der Leitlinie verzerrt (Einstiche folgen der Linie, die
+//! Stiche dazwischen bleiben gerade – darum rät das Handbuch zu Stichlängen ≤ 4 mm, S. 217).
 
 use super::lauf::laufstich;
 use crate::einstellungen::{LaufEinstellung, TatamiEinstellung};
 use crate::geometrie::{Linie, Punkt, abstand, drehen, gegen_uhrzeiger, geschlossen_ohne_endpunkt, p, zwischen};
+use crate::effekte::Welle;
 use crate::muster::Teilung;
 use std::collections::HashMap;
 
@@ -227,7 +232,7 @@ pub fn raster(k: i64, x0: f64, x1: f64, e: &TatamiEinstellung) -> Vec<f64> {
 
 fn bereich_sticken(
     b: &Bereich,
-    y0: f64,
+    ys: &[f64],
     e: &TatamiEinstellung,
     von_oben: bool,
     links_start: bool,
@@ -241,7 +246,7 @@ fn bereich_sticken(
     let mut out: Linie = Vec::new();
     let mut vorwaerts = links_start;
     for (k, x0, x1) in reihen {
-        let y = y0 + k as f64 * e.reihenabstand();
+        let y = ys[k as usize];
         let pts = reihe(k, x0, x1, y, e, vorwaerts, teilung);
         if let Some(&a) = out.last() {
             // Übergang zur nächsten Reihe: ggf. in Stiche ≤ Stichlänge teilen
@@ -285,35 +290,59 @@ pub fn tatami_mit_teilung(
     let null = p(0.0, 0.0);
     let mut ringe = vec![gegen_uhrzeiger(umriss)];
     ringe.extend(loecher.iter().map(|l| geschlossen_ohne_endpunkt(l)));
+    // Welle: Leitlinie im gedrehten Rahmen; die Fläche wird um ihre Höhe verschoben (y − g(x)), gefüllt und zurück
+    let welle = e
+        .effekte
+        .welle
+        .as_ref()
+        .and_then(|l| Welle::neu(&l.iter().map(|&q| drehen(q, -w, null)).collect::<Vec<_>>()));
     let gedreht: Vec<Linie> = ringe
         .iter()
-        .map(|r| r.iter().map(|&q| drehen(q, -w, null)).collect())
+        .map(|r| {
+            let r: Linie = r.iter().map(|&q| drehen(q, -w, null)).collect();
+            match &welle {
+                Some(g) => verdichten(&r, 0.5).into_iter().map(|q| p(q.x, q.y - g.hoehe(q.x))).collect(),
+                None => r,
+            }
+        })
         .collect();
     if gedreht[0].len() < 3 {
         return Vec::new();
     }
     let y_min = gedreht[0].iter().map(|q| q.y).fold(f64::INFINITY, f64::min);
     let y_max = gedreht[0].iter().map(|q| q.y).fold(f64::NEG_INFINITY, f64::max);
-    let ra = e.reihenabstand();
-    let y0 = y_min + ra / 2.0;
+    // Reihenlagen: fester halber Abstand oder Verlauf (Gradient Fill)
+    let ys: Vec<f64> = match &e.effekte.verlauf {
+        Some(v) => v.reihen(y_min, y_max),
+        None => {
+            let ra = e.reihenabstand();
+            (0..)
+                .map(|k| y_min + ra / 2.0 + k as f64 * ra)
+                .take_while(|&y| y < y_max)
+                .collect()
+        }
+    };
+    // Ausgefranster Rand (Textured Edge): Enden je Reihe nach innen (+) oder außen (−) verschoben
+    let rand = e.effekte.rand.as_ref().map(|r| r.versaetze(ys.len()));
     let mut reihen = Vec::new();
-    let mut k: i64 = 0;
-    while y0 + k as f64 * ra < y_max {
-        let y = y0 + k as f64 * ra;
+    for (k, &y) in ys.iter().enumerate() {
         let xs = schnitte(&gedreht, y);
+        let (vl, vr) = rand.as_ref().map_or((0.0, 0.0), |r| r[k]);
         let mut abschnitte = Vec::new();
         let mut i = 0;
         while i + 1 < xs.len() {
-            let (x0, x1) = (xs[i] - e.zugausgleich, xs[i + 1] + e.zugausgleich);
+            let (mut x0, mut x1) = (xs[i] - e.zugausgleich, xs[i + 1] + e.zugausgleich);
+            if x1 - x0 - vl - vr >= 0.3 {
+                (x0, x1) = (x0 + vl, x1 - vr);
+            }
             if x1 - x0 >= 0.3 {
                 abschnitte.push((x0, x1));
             }
             i += 2;
         }
         if !abschnitte.is_empty() {
-            reihen.push((k, abschnitte));
+            reihen.push((k as i64, abschnitte));
         }
-        k += 1;
     }
     let mut offen = bereiche(&reihen);
 
@@ -328,7 +357,7 @@ pub fn tatami_mit_teilung(
                 } else {
                     &b.reihen[0]
                 };
-                let y = y0 + kz as f64 * ra;
+                let y = ys[kz as usize];
                 for links in [true, false] {
                     let q = if links { p(x0, y) } else { p(x1, y) };
                     let d = pos.map_or(0.0, |s| abstand(s, q));
@@ -340,7 +369,7 @@ pub fn tatami_mit_teilung(
         }
         let (_, bi, von_oben, links) = best.unwrap();
         let b = offen.remove(bi);
-        let weg = bereich_sticken(&b, y0, e, von_oben, links, teilung.as_ref());
+        let weg = bereich_sticken(&b, &ys, e, von_oben, links, teilung.as_ref());
         // Teilbereiche mit einem Laufweg am Rand verbinden statt mit einem Sprung (wie im Original)
         let verbunden = match (wege.last_mut(), pos, weg.first()) {
             (Some(letzter), Some(von), Some(&nach)) => match laufweg(von, nach, &gedreht, e) {
@@ -359,8 +388,27 @@ pub fn tatami_mit_teilung(
         }
     }
     wege.into_iter()
-        .map(|weg| weg.into_iter().map(|q| drehen(q, w, null)).collect())
+        .map(|weg| {
+            weg.into_iter()
+                .map(|q| {
+                    let q = welle.as_ref().map_or(q, |g| p(q.x, q.y + g.hoehe(q.x)));
+                    drehen(q, w, null)
+                })
+                .collect()
+        })
         .collect()
+}
+
+/// Ring so teilen, dass keine Kante länger als `max` ist (für die Verzerrung der Welle).
+fn verdichten(ring: &[Punkt], max: f64) -> Linie {
+    let n = ring.len();
+    let mut out = Vec::with_capacity(n * 2);
+    for i in 0..n {
+        let (a, b) = (ring[i], ring[(i + 1) % n]);
+        let m = (abstand(a, b) / max).ceil().max(1.0) as usize;
+        out.extend((0..m).map(|j| zwischen(a, b, j as f64 / m as f64)));
+    }
+    out
 }
 
 #[cfg(test)]
@@ -478,6 +526,57 @@ mod tests {
         for (a, b) in stiche(&wege) {
             let m = p((a.x + b.x) / 2.0, (a.y + b.y) / 2.0);
             assert!(im_polygon(m, &ringe) || rand_abstand(m, &ringe) <= 0.25);
+        }
+    }
+
+    /// Effekte: Verlauf (Reihenabstand wächst linear), ausgefranster Rand (nur rechts), Welle (Reihen folgen der Linie)
+    #[test]
+    fn effekte_verlauf_rand_welle() {
+        use crate::effekte::{Effekte, Profil, Rand, RandSeite, Verlauf};
+        let basis = TatamiEinstellung {
+            winkel: 0.0,
+            zugausgleich: 0.0,
+            ..Default::default()
+        };
+        let reihen_y = |wege: &[Linie]| {
+            let mut ys: Vec<f64> = wege.iter().flatten().map(|q| (q.y * 1000.0).round() / 1000.0).collect();
+            ys.sort_by(f64::total_cmp);
+            ys.dedup();
+            ys
+        };
+        // Verlauf 0,4 → 2,0 mm von unten nach oben: Nachbarreihen 0,2 … 1,0 mm
+        let mut e = basis.clone();
+        e.effekte = Effekte {
+            verlauf: Some(Verlauf { profil: Profil::Linear, min: 0.4, max: 2.0 }),
+            ..Default::default()
+        };
+        let ys = reihen_y(&tatami(&rechteck(p(0.0, 0.0), 20.0, 20.0), &[], &e, None, None));
+        let d: Vec<f64> = ys.windows(2).map(|w| w[1] - w[0]).collect();
+        assert!(d[0] < 0.25 && *d.last().unwrap() > 0.85, "{d:?}");
+        assert!(ys.len() < 60, "weniger Reihen als mit festem Abstand 0,4 mm (100): {}", ys.len());
+        // Rand rechts, Spanne 1 mm: linke Enden bleiben auf −10, rechte streuen in 10 ± 1
+        let mut e = basis.clone();
+        e.effekte.rand = Some(Rand { seite: RandSeite::Rechts, spanne: 1.0, glaette: 0.0 });
+        let wege = tatami(&rechteck(p(0.0, 0.0), 20.0, 10.0), &[], &e, None, None);
+        let xs: Vec<f64> = wege.iter().flatten().map(|q| q.x).collect();
+        let x_min = xs.iter().copied().fold(f64::INFINITY, f64::min);
+        assert!((x_min + 10.0).abs() < 1e-9, "{x_min}");
+        let rechts: Vec<f64> = xs.iter().copied().filter(|&x| x > 8.5).collect();
+        assert!(rechts.iter().all(|&x| x <= 11.0 + 1e-9) && rechts.iter().any(|&x| x > 10.5) && rechts.iter().any(|&x| x < 9.5));
+        // Welle: Bogen 0 → 3 → 0 mm; jede Reihe liegt auf y − g(x) = konst (Einstiche folgen der Linie)
+        let mut e = basis.clone();
+        e.effekte.welle = Some(vec![p(-15.0, 0.0), p(0.0, 3.0), p(15.0, 0.0)]);
+        let g = crate::effekte::Welle::neu(&[p(-15.0, 0.0), p(0.0, 3.0), p(15.0, 0.0)]).unwrap();
+        let wege = tatami(&rechteck(p(0.0, 0.0), 20.0, 10.0), &[], &e, None, None);
+        let mut v: Vec<f64> = wege.iter().flatten().map(|q| ((q.y - g.hoehe(q.x)) * 1000.0).round() / 1000.0).collect();
+        v.sort_by(f64::total_cmp);
+        v.dedup();
+        // Reihen ganz in der Fläche (unter dem Bogen, y − g < 5 − 3): gleichmäßig 0,2 mm; darüber schneidet die
+        // Oberkante die Reihen, deren Enden liegen auf dem Rand
+        let innen: Vec<f64> = v.iter().copied().filter(|&x| x < 1.95).collect();
+        assert!(innen.len() > 40 && innen.windows(2).all(|w| (w[1] - w[0] - 0.2).abs() < 1e-3), "{v:?}");
+        for q in wege.iter().flatten() {
+            assert!(q.x.abs() <= 10.0 + 1e-6 && q.y.abs() <= 5.0 + 1e-6, "{q:?}");
         }
     }
 

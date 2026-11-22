@@ -19,6 +19,7 @@
 //! die App als Ereignis `maschine_fortschritt` ([`Kontext::fortschritt_melden`]).
 
 pub mod befehle;
+pub mod effekte;
 pub mod erzeugen;
 pub mod maschine;
 pub mod motive;
@@ -320,6 +321,11 @@ befehle! {
     motiv_speichern: motive::MotivSpeichernEingabe => befehle::MotivsatzInfo,
     /// Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach
     motiv_loeschen: motive::MotivLoeschenEingabe => Vec<befehle::MotivsatzInfo>,
+    /// Farben mischen (Color Blending): Objekt in zwei Lagen mit gegenläufigem Verlauf teilen, obere Lage in der
+    /// zweiten Farbe, beide gruppiert
+    farben_mischen: effekte::FarbenMischenEingabe => effekte::FarbenMischenErgebnis,
+    /// Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`)
+    welle_vorschlag: befehle::ObjektEingabe => serde_json::Value,
     /// Motive eines Motivsatzes mit Maßen und Linien für die Vorschau
     motivsatz_motive: befehle::MotivsatzName => Vec<befehle::MotivInfo>,
     /// Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und
@@ -417,6 +423,7 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
 mod befehle_aller {
     pub use crate::befehle::*;
     pub use crate::maschine::*;
+    pub use crate::effekte::*;
     pub use crate::motive::*;
     pub use crate::schriften::*;
 }

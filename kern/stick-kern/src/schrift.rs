@@ -837,6 +837,7 @@ pub fn auf_tatami(o: Objekt) -> Objekt {
         winkel: None,
         unterlage: Some(unterlage),
         aussparen: Default::default(),
+        welle: None,
     });
     Objekt { farbe, name, art: ObjektArt::Gruppe { teile, umrisse, laufweg } }
 }
@@ -936,6 +937,7 @@ fn stichart_anwenden(o: Objekt, st: &SchriftStichart) -> Objekt {
             groesse: *groesse,
             unterlage: None,
             aussparen: Default::default(),
+            welle: None,
         }),
     };
     Objekt {
@@ -1306,6 +1308,7 @@ pub(crate) fn zeichen_teile(
                     winkel: None,
                     unterlage: Some(!o.unterlagen.is_empty()),
                     aussparen: Default::default(),
+                    welle: None,
                 }
             }
             (Stichart::Lauf { laenge }, _) => {
@@ -1725,6 +1728,7 @@ mod tests {
                     winkel: None,
                     unterlage: None,
                     aussparen: Default::default(),
+                    welle: None,
                 },
             };
             o.push(Objekt {

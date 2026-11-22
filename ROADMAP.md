@@ -37,7 +37,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 |---|---|---|
 | N0 | Formen mit der Maus zeichnen (Experte): Klick Ecke / Rechtsklick Kurve, ⌫, Enter, Esc; Kreis/Oval, Rechteck (Strg = Quadrat), Säule paarweise; Kern-Form `pfad`; Knoten-Werkzeug Rechtsklick Ecke ↔ Kurve | ✅ 22.11. |
 | N1 | 4b.7 Motivfüllung (Standard Children 901 wie das Original, Abschneiden nach Handbuch) + eigene Motive (Anordnen → „Als Motiv speichern …“, löschen im Motiv-Dialog) | ✅ 22.11. |
-| N2 | 4b.8 Effekte (Textured Edge, Wave, Gradient/Open Fill, Color Blending) | ⬜ |
+| N2 | 4b.8 Effekte: Verlauf (Gradient Fill, 8 Profile), ausgefranster Rand (Textured Edge), Welle (Wave Effect mit Leitlinie, im Knoten-Werkzeug formbar), Farben mischen (Color Blending, Dialog); Open Fill = Laufwege am Rand (schon so); Inspektor-Abschnitt „Effekte“ (Experte); Bericht `Analyse_Teil3/23` | ✅ 22.11. |
 | N3 | 4b.9 Craft Stitches (Blackwork, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling) | ⬜ |
 | N4 | 4b.10 Applikation Rest (Versatz, Partial Appliqué) | ⬜ |
 | N5 | 4b.11 Automatik (Bild → Umrisse/Satin, Magic Wand, PhotoSnap) + kürzeste Wege | ⬜ |
@@ -48,7 +48,9 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N10 | Verbinder als Laufstich (Bericht 22) | ⬜ |
 
 **Gesammelte Fragen an den Nutzer (am Ende stellen):**
-- (noch keine)
+- **Effekte (N2):** Wo der Verlauf beginnt und wie die gekrümmten Profile genau aussehen, ist eigene Festlegung
+  (Messung nur linear, Bericht 23 §6). Reicht das, oder soll das Kalibrierblatt vor Ort einen Verlauf mitsticken?
+  Beim Farben mischen bekommt die obere Lage automatisch keine Unterlage (Handbuch-Tipp) – so lassen?
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -282,7 +284,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.17 | **SVG-Import** (Erweiterung, Wunsch Nutzer 20.11.: in Inkscape zeichnen → laden → sticken) | SVG lesen (freie Bibliothek `usvg`: Gruppen, Verschiebungen, Stile, Formen → Pfade); gefüllte Pfade → Flächen mit Löchern (Füllregel), Konturen → Lauf/Dreifach/Satinlinie nach Strichbreite; Stichart nach Breite wie EasyStitch des Originals (Linie ≤ 0,3 mm Lauf, ≤ 2 mm kräftige Linie; Fläche ≤ 8 mm Satin, ≤ 12 mm Tatami 1, darüber Tatami 2); Zeichenreihenfolge = Stickreihenfolge, Überdeckungen aussparen, Farben → Garnkarte, Maßstab in mm (viewBox/width). Hinweise: Text in Pfade umwandeln, Verläufe/Transparenz → Hauptfarbe; schmale Flächen als Satin brauchen eine berechnete Stichrichtung (s. u.). CLI `stick svg`, später Befehl für die App. **Baustein „Satin-Stichrichtung automatisch“ (gehört dazu, zuerst bauen):** für eine beliebige schmale Form Mittellinie und Winkellinien selbst bestimmen (bei den Alphabeten liefert das Original sie mit), daraus Seiten A/B wie bei den Säulen; Verzweigungen (z. B. „Y“-Form) in mehrere Säulen teilen. Vorbild im Original: Auto Digitizer / EasyStitch „Satin“ für Flächen ≤ 8 mm – Verfahren dort nachsehen (Code, Musterdesigns aus „AutoDigitizing“). Wird auch für 4b.11 (Bild → Umrisse mit Satin) gebraucht | 🟡 Baustein ✅ 20.11.: `stick_kern::saeulen` nach EZSTITCH (Abtastung 1 mm/0,1 × Breite/0,05 mm, Triangulation, Sternschnitt an Abzweigungen, Stichlinien nach Krümmung), EmbroideryPatch-Stichlinien entschlüsselt, an 54 Säulen des Auto Digitizers geprüft (54/54 eine Säule, Richtung Median 4,4°), JSON `satinflaeche`, TrueType `"stichart": "satin"` (Break Angle 87°), CLI `stick saeulen` (Bericht 17) · ✅ 21.11. **SVG lesen**: `stick-vektor::svg` (`usvg`), Stichart nach Breite `stick-vektor::easystitch` mit den Werten der EasyStitch-Stile, `saeulen::dicke`, Überdeckung aussparen, Closest Join, CLI `stick svg`, Befehl `svg_lesen` (Bericht 18) |
 | 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ✅ 21.11.: 9 Typen = Zeichen von `ButtonHoles.ESB` (Teile `<L>`/`<U>`/`<B>`, Umrisse E/I/M), Länge/Raupenabstand/Winkel und Standardwerte (20 mm, 0,5 mm, 90°) aus MOD1, gegen `Samples/Reference/Buttonholes.ART` gemessen (Median 0,04–0,15 mm); `stick_kern::knopfloch`, `esb::knopfloecher_laden`, `"art": "knopfloch"`, CLI `stick knopfloecher`; Einarbeiten über `aussparen` mit dem Mittelumriss (Sicherheit niedrig, Bericht 19 §5). Dabei gefunden und für alle Satinsäulen umgesetzt: **Satin gerade quer + schräg vor** (`Analyse_Teil3/04` §5, Referenz-Stufe 11) |
 | 4b.7 | **Motive** | Pattern Run (Motivlinie) ✅ 21.11. (`Analyse_Teil3/20`), Pattern Fill (Motivfüllung) ⬜, eigene Muster/Sets (Kap. 25) ⬜ | 🟡 |
-| 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | 🟡 Loft ✅ (= Auto Jump mit kleinem Höchststich, Handbuch) · Rest ⬜ |
+| 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | ✅ 22.11. Loft (= Auto Jump mit kleinem Höchststich) · `effekte` (Verlauf, Rand, Welle) · `farben_mischen` · Open Fill = Laufwege am Rand (Bericht 23) |
 | 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ⬜ |
 | 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ⬜ |
 | 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin – mit dem Baustein „Satin-Stichrichtung automatisch“ aus 4b.17 –, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 |

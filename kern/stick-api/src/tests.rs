@@ -217,6 +217,54 @@ fn motivfuellung() {
     assert_eq!(ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap_err().objekt, Some(0));
 }
 
+/// Effekte am Objekt (Verlauf, Rand, Welle) und Farben mischen (Color Blending)
+#[test]
+fn effekte_und_farben_mischen() {
+    let k = kontext();
+    let flaeche = json!({"art": "tatami", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 40, "hoehe": 30}}, "farbe": "#c00000"});
+    let stiche = |d: &serde_json::Value| ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap()["stiche"].as_array().unwrap().len();
+    let ohne = stiche(&json!({"objekte": [flaeche.clone()]}));
+    let mut mit = flaeche.clone();
+    mit["effekte"] = json!({"verlauf": {}, "rand": {"seite": "beide"}, "welle": [[-25, 0], [0, 4], [25, 0]]});
+    let n = stiche(&json!({"objekte": [mit.clone()]}));
+    assert!(n < ohne * 2 / 3, "Verlauf 0,4 → 2,0 mm: weniger Stiche ({n} gegen {ohne})");
+    // falsche Werte → Fehler mit Objektnummer
+    let mut falsch = flaeche.clone();
+    falsch["effekte"] = json!({"verlauf": {"max": 20}});
+    assert_eq!(ausfuehren(&k, "design_berechnen", json!({"design": {"objekte": [falsch]}})).unwrap_err().objekt, Some(0));
+    // Satin mit Verlauf
+    let satin = json!({"art": "satin", "seite_a": [[0, 0], [40, 0]], "seite_b": [[0, 4], [40, 4]], "effekte": {"verlauf": {"profil": "abnehmend"}}});
+    assert!(stiche(&json!({"objekte": [satin]})) > 20);
+    // Farben mischen: zwei Lagen, gegenläufige Profile, obere Lage andere Farbe ohne Unterlage, gruppiert
+    let d = json!({"objekte": [{"art": "lauf", "punkte": [[0, 0], [10, 0]]}, flaeche]});
+    let r = ausfuehren(&k, "farben_mischen", json!({"design": d, "objekt": 1, "farbe": "#ffd000", "profil": "konvex"})).unwrap();
+    let o = r["design"]["objekte"].as_array().unwrap();
+    assert_eq!(o.len(), 3);
+    assert_eq!(r["objekte"], json!([1, 2]));
+    assert_eq!(o[1]["effekte"]["verlauf"]["profil"], "konvex");
+    assert_eq!(o[2]["effekte"]["verlauf"]["profil"], "konkav");
+    assert_eq!(o[2]["farbe"], "#ffd000");
+    assert_eq!(o[2]["unterlage"], false);
+    assert!((o[2]["effekte"]["verlauf"]["max"].as_f64().unwrap() - 2.2).abs() < 1e-9);
+    assert_eq!(o[1]["gruppe"], o[2]["gruppe"]);
+    assert!(r["design"]["gruppen"][r["gruppe"].as_str().unwrap()].is_object());
+    stiche(&r["design"]);
+    // Welle vorschlagen: Pfad mit Kurvenpunkt quer durch die Fläche; mit Transformation → in Knoten umwandeln nimmt
+    // die Leitlinie mit
+    let w = ausfuehren(&k, "welle_vorschlag", json!({"design": {"objekte": [flaeche]}, "objekt": 0})).unwrap();
+    assert_eq!(w["pfad"]["punkte"].as_array().unwrap().len(), 3);
+    let mut gedreht = flaeche.clone();
+    gedreht["effekte"] = json!({"welle": w});
+    gedreht["transform"] = json!({"verschieben": [5, 0]});
+    let u = ausfuehren(&k, "in_knoten_umwandeln", json!({"design": {"objekte": [gedreht]}, "objekt": 0})).unwrap();
+    // Pfad wird zu Bézierstücken (wie der Umriss), um 5 mm verschoben
+    let a0 = u["effekte"]["welle"]["verbinden"][0]["bezier"][0][0].as_f64().unwrap();
+    assert!((a0 - (w["pfad"]["punkte"][0][0].as_f64().unwrap() + 5.0)).abs() < 1e-6, "{u}");
+    // Lauf kann nicht gemischt werden
+    let f = ausfuehren(&k, "farben_mischen", json!({"design": d, "objekt": 0, "farbe": "#ffd000"})).unwrap_err();
+    assert_eq!(f.objekt, Some(0));
+}
+
 /// Eigene Motive (Create Pattern): speichern, in Motivlinie/Motivfüllung benutzen, löschen
 #[test]
 fn eigene_motive() {

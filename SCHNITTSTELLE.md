@@ -32,6 +32,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `ausstich` | Punkt |  | – | Ausstich („exit point“) [x, y] in mm: das Objekt endet dort |
 | `auto_jump` | AutoJumpJson |  | – | Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) |
 | `doppellauf` | boolean |  | `false` | Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder |
+| `effekte` | EffekteJson |  | – | **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei Flächen), sonst ohne Wirkung. An = Feld vorhanden |
 | `einstellungen` | EinstellungenJson |  | – | **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}. Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`) |
 | `einstich` | Punkt |  | – | Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort |
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet) |
@@ -358,6 +359,23 @@ Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsa
 - `"zier"` – Zierwinkel
 - `"keine"` – kein Rahmen (Standard)
 
+**Profil** – Profil des Verlaufs (Dialog „Gradient Fill“: Linear, Dec-Linear, Convex, Concave; „Color Blending“ zusätzlich Inc_Exp/Dec-Exp und Convex-Concave/Concave-Convex). Abstand vom kleinsten zum größten Wert über die Fläche
+
+- `"linear"` – vom kleinsten zum größten Abstand, gleichmäßig („Linear“, Datensatz 1)
+- `"abnehmend"` – vom größten zum kleinsten Abstand („Dec-Linear“, Datensatz 2)
+- `"konvex"` – zunehmend, erst schnell, dann langsam („Convex“, Datensatz 3; Kurvenform eigene Festlegung)
+- `"konkav"` – abnehmend, erst schnell, dann langsam („Concave“, Datensatz 4; Kurvenform eigene Festlegung)
+- `"exp_zunehmend"` – zunehmend, erst langsam, dann schnell („Inc_Exp“, nur Farben mischen; Kurvenform eigene Festlegung)
+- `"exp_abnehmend"` – abnehmend, erst langsam, dann schnell („Dec-Exp“; Kurvenform eigene Festlegung)
+- `"konvex_konkav"` – S-Kurve zunehmend („Convex - Concave“; Kurvenform eigene Festlegung)
+- `"konkav_konvex"` – S-Kurve abnehmend („Concave - Convex“; Kurvenform eigene Festlegung)
+
+**RandSeite** – Seite des ausgefransten Rands, in Stichrichtung gesehen (Dialog „Textured Edge“: Left, Both, Right)
+
+- `"links"` – Anfang der Reihen (bei Satin: Seite A)
+- `"rechts"` – Ende der Reihen (bei Satin: Seite B; Standard wie das Original: Seite 2)
+- `"beide"` – beide Seiten
+
 **SatinStichart** – Stichart einer Satinsäule, Satinlinie oder Satinfläche
 
 - `"satin"` – Satin (Standard)
@@ -437,6 +455,16 @@ Einzelner Buchstabe eines Texts (`"buchstaben"`).
 | `transform` | Transformation |  | – | verschieben, drehen, skalieren … um die Mitte des Buchstabens |
 | `winkellinien` | Punkt[][] |  | `[]` | neue Stichwinkel: Strecken [[x1, y1], [x2, y2]] quer über die Säulen |
 
+### EffekteJson
+
+Effekte eines Objekts (`stick_kern::effekte`, Bericht `Analyse_Teil3/23_effekte.md`).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `rand` | RandJson |  | – | **Ausgefranster Rand** (Textured Edge): Reihen- bzw. Stichenden streuen um den Rand (Handbuch S. 213–214) |
+| `verlauf` | VerlaufJson |  | – | **Verlauf** (Gradient Fill): Abstand wechselt quer über die Fläche bzw. entlang der Säule zwischen `min` und `max`; der Abstand des Objekts gilt dann nicht (Handbuch S. 218) |
+| `welle` | PunktAngabe |  | – | **Welle** (Wave Effect): Leitlinie [[x, y], …] in mm quer durch die Fläche, die Reihen folgen ihr (nur `tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen) |
+
 ### EinstellungenJson
 
 Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design
@@ -487,6 +515,16 @@ Elastic Lettering: `{"art": "gerade", "oben": [links, rechts], "unten": [links, 
 | `oben` | Griffe |  | – | Verschiebung der oberen Kante in mm |
 | `unten` | Griffe |  | – | Verschiebung der unteren Kante in mm |
 
+### RandJson
+
+Ausgefranster Rand (Textured Edge, ART-Datensatz 0x32: Seite, Spanne, Texture). Standard wie der Effekt-Datensatz im Stil der Musterdesigns (Seite 2, Spanne 1,5 mm).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `glaette` | number |  | `0.1` | Glätte 0 … 1 („Texture“-Regler: 0 = rau, jede Reihe frei; 1 = glatt) |
+| `seite` | RandSeite |  | `"rechts"` | Seite in Stichrichtung (links = Anfang der Reihen bzw. Satin-Seite A) |
+| `spanne` | number |  | `1.5` | Spanne in mm („Span“): Enden streuen bis so weit nach innen und außen (0,1 … 10) |
+
 ### Transformation
 
 Transformation in der JSON-Form (`"transform"` am Objekt oder am Design).
@@ -513,6 +551,16 @@ Transformation in der JSON-Form (`"transform"` am Objekt oder am Design).
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (Standard schwarz) |
 | `laenge` | number |  | – | Stichlänge in mm bei Lauf/Dreifach, 0,3 … 12,7 (ohne Angabe: Stil) |
 
+### VerlaufJson
+
+Verlauf (Gradient Fill, ART-Datensatz 0x34). Standard wie der Effekt-Datensatz im Stil der Musterdesigns (0,4 / 2,0 mm, Profil 1).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `max` | number |  | `2.0` | größter Abstand in mm (offenste Stelle, „Maximum Spacing“; 0,1 … 10) |
+| `min` | number |  | `0.4` | kleinster Abstand in mm (dichteste Stelle; 0,1 … 10) |
+| `profil` | Profil |  | `"linear"` | Profil (Dialog „Gradient Fill“ und „Color Blending“) |
+
 ## 5. Befehle
 
 Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Befehl `kern`, Einbindung siehe `kern/stick-api/src/lib.rs`); zum Ausprobieren ohne Oberfläche: `stick api NAME '{…}'`. Fehler: `{meldung, objekt}`.
@@ -531,6 +579,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `design_pruefen` | DesignEingabe | Pruefung | Design prüfen, ohne Stiche zu berechnen: Fehler (mit Objektnummer) und Hinweise |
 | `design_schema` | Leer | unknown | JSON-Schema des Design-Formats (Felder, Standardwerte, Auswahlwerte, Beschreibungen) |
 | `exp_speichern` | ExpEingabe | number | Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes) |
+| `farben_mischen` | FarbenMischenEingabe | FarbenMischenErgebnis | Farben mischen (Color Blending): Objekt in zwei Lagen mit gegenläufigem Verlauf teilen, obere Lage in der zweiten Farbe, beide gruppiert |
 | `fuellmuster_liste` | Leer | MusterInfo[] | Füllmuster (242) mit Linien einer Kachel für die Vorschau |
 | `garnkarte_garne` | GarnkartenName | GarnInfo[] | Garne einer Garnkarte (für die Auswahl von Hand) |
 | `garnkarten_liste` | Leer | string[] | Namen der Garnkarten (32 der CD) |
@@ -565,5 +614,6 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `svg_lesen` | SvgEingabe | SvgErgebnis | SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design |
 | `text_speichern` | TextDatei | null | Textdatei schreiben |
 | `ueberdeckungen` | DesignEingabe | number[][] | Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken |
+| `welle_vorschlag` | ObjektEingabe | unknown | Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`) |
 
 **Ereignis** `maschine_fortschritt` (Typ `Fortschritt`: `was`, `erledigt`, `gesamt`, `wiederholungen`): Fortschritt von `maschine_senden` und `maschine_lesen`, von der App gesendet. Fehler der Maschine tragen zusätzlich `code` (`FehlerCode`). **Sicherheit:** nur `maschine_senden` schreibt in die Maschine – erst nach `maschine_planen` und ausdrücklicher Bestätigung; `wahl.sticken` nur nach dem Gefahrendialog.

@@ -94,6 +94,10 @@ pub struct SatinEinstellung {
     /// `Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)
     #[serde(default = "zickzack_abstand")]
     pub zickzack_abstand: f64,
+    /// Effekte des Objekts (Verlauf, ausgefranster Rand; `crate::effekte`) – kein Stilwert
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub effekte: crate::effekte::Effekte,
 }
 
 fn zickzack_abstand() -> f64 {
@@ -109,6 +113,7 @@ impl Default for SatinEinstellung {
             zugausgleich: 0.20,
             kurzstiche: KurzstichEinstellung::default(),
             zickzack_abstand: zickzack_abstand(),
+            effekte: Default::default(),
         }
     }
 }
@@ -198,6 +203,10 @@ pub struct TatamiEinstellung {
     pub laufweg_laenge: f64,
     #[serde(default = "laufweg_grenzen")]
     pub laufweg: LaufGrenzen,
+    /// Effekte des Objekts (Verlauf, ausgefranster Rand, Welle; `crate::effekte`) – kein Stilwert
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub effekte: crate::effekte::Effekte,
 }
 
 fn laufweg_laenge() -> f64 {
@@ -277,6 +286,7 @@ impl Default for TatamiEinstellung {
             zugausgleich: 0.20,
             laufweg_laenge: laufweg_laenge(),
             laufweg: laufweg_grenzen(),
+            effekte: Default::default(),
         }
     }
 }

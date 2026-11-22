@@ -46,6 +46,7 @@ export type OffenerDialog =
   | { art: "step"; objekt: number }
   | { art: "motiv"; objekt: number }
   | { art: "motiv_speichern" }
+  | { art: "farben_mischen"; objekt: number }
   | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 

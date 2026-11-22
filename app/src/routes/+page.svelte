@@ -22,6 +22,7 @@
   import MusterDialog from "$lib/dialoge/MusterDialog.svelte";
   import MotivDialog from "$lib/dialoge/MotivDialog.svelte";
   import MotivSpeichernDialog from "$lib/dialoge/MotivSpeichernDialog.svelte";
+  import FarbenMischenDialog from "$lib/dialoge/FarbenMischenDialog.svelte";
   import RahmenDialog from "$lib/dialoge/RahmenDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
@@ -620,6 +621,7 @@
   {/if}
   {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "motiv_speichern"}<MotivSpeichernDialog schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "farben_mischen"}<FarbenMischenDialog objekt={arbeit.dialog.objekt} schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "warnung"}
     <WarnungDialog vertauscht={arbeit.dialog.vertauscht} namen={arbeit.dialog.namen} vorher={arbeit.dialog.vorher} schliessen={() => (arbeit.dialog = null)} />
   {/if}

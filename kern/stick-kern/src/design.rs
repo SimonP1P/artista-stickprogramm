@@ -420,6 +420,8 @@ pub enum ObjektArt {
         unterlage: Option<bool>,
         /// Flächen anderer Objekte aussparen (Knockout, `aussparen.rs`); wird vor dem Berechnen aufgelöst
         aussparen: Aussparen,
+        /// Leitlinie des Wave-Effekts (`effekte`): die Reihen folgen ihr
+        welle: Option<Linie>,
     },
     /// Text mit einem Original-Alphabet; wird vor dem Berechnen in Satin-/Lauf-Objekte aufgelöst
     Text { alphabet: String, vorgabe: TextVorgabe },
@@ -440,6 +442,8 @@ pub enum ObjektArt {
         groesse: f64,
         unterlage: Option<bool>,
         aussparen: Aussparen,
+        /// Leitlinie des Wave-Effekts
+        welle: Option<Linie>,
     },
     /// Applikation (Platzierung, Heften, Abdecken mit Stopps); wird vor dem Berechnen aufgelöst
     Applikation(ApplikationVorgabe),
@@ -1073,6 +1077,7 @@ impl Objekt {
                 loecher,
                 winkel,
                 unterlage,
+                welle,
                 ..
             } => {
                 let w = winkel.unwrap_or(e.tatami.winkel);
@@ -1082,7 +1087,9 @@ impl Objekt {
                     wege.extend(flaechen_unterlage(umriss, loecher, w, &e.unterlage, start));
                     start = wege.last().and_then(|l: &Linie| l.last().copied());
                 }
-                wege.extend(tatami(umriss, loecher, &e.tatami, Some(w), start));
+                let mut te = e.tatami.clone();
+                te.effekte.welle = welle.clone();
+                wege.extend(tatami(umriss, loecher, &te, Some(w), start));
                 Ok(wege)
             }
             ObjektArt::Wendefuellung {
@@ -1120,6 +1127,7 @@ impl Objekt {
                 winkel,
                 groesse,
                 unterlage,
+                welle,
                 ..
             } => {
                 let m = crate::muster::finden(muster).ok_or_else(|| format!("Füllmuster „{muster}“ gibt es nicht"))?;
@@ -1131,7 +1139,9 @@ impl Objekt {
                     start = wege.last().and_then(|l: &Linie| l.last().copied());
                 }
                 let t = m.teilung(*groesse);
-                wege.extend(tatami_mit_teilung(umriss, loecher, &e.tatami, Some(w), start, Some(&t)));
+                let mut te = e.tatami.clone();
+                te.effekte.welle = welle.clone();
+                wege.extend(tatami_mit_teilung(umriss, loecher, &te, Some(w), start, Some(&t)));
                 Ok(wege)
             }
         }
@@ -1428,6 +1438,15 @@ impl Design {
                     .ueberschreiben(&w.0)
                     .map_err(|x| format!("{wo}: einstellungen: {x}"))?;
                 objekt_einstellungen.insert(i, eigene);
+            }
+            if let Some(fx) = &g.effekte {
+                let effekte = effekte_lesen(fx).map_err(|x| format!("{wo}: effekte: {x}"))?;
+                if effekte.verlauf.is_some() || effekte.rand.is_some() {
+                    let mut eigene = objekt_einstellungen.remove(&i).unwrap_or_else(|| e.clone());
+                    eigene.tatami.effekte = effekte.clone();
+                    eigene.satin.effekte = effekte;
+                    objekt_einstellungen.insert(i, eigene);
+                }
             }
         }
 
@@ -2486,6 +2505,44 @@ fn lauf_objekt(l: LaufJson, art_dreifach: bool) -> Objekt {
     }
 }
 
+/// Effekte aus dem JSON prüfen (Bereiche wie die Dialoge: Abstände 0,1 … 10 mm, Spanne 0,1 … 10 mm, Glätte 0 … 1).
+fn effekte_lesen(fx: &crate::format::EffekteJson) -> Result<crate::effekte::Effekte, String> {
+    let verlauf = match &fx.verlauf {
+        Some(v) => {
+            if !(0.1..=10.0).contains(&v.min) || !(0.1..=10.0).contains(&v.max) {
+                return Err("verlauf: min und max zwischen 0,1 und 10 mm".into());
+            }
+            Some(crate::effekte::Verlauf {
+                profil: v.profil,
+                min: v.min,
+                max: v.max,
+            })
+        }
+        None => None,
+    };
+    let rand = match &fx.rand {
+        Some(r) => {
+            if !(0.1..=10.0).contains(&r.spanne) {
+                return Err("rand: spanne zwischen 0,1 und 10 mm".into());
+            }
+            if !(0.0..=1.0).contains(&r.glaette) {
+                return Err("rand: glaette zwischen 0 und 1".into());
+            }
+            Some(crate::effekte::Rand {
+                seite: r.seite,
+                spanne: r.spanne,
+                glaette: r.glaette,
+            })
+        }
+        None => None,
+    };
+    Ok(crate::effekte::Effekte {
+        verlauf,
+        rand,
+        welle: None,
+    })
+}
+
 fn satin_optionen(
     abstand: Option<f64>,
     faktor: Option<f64>,
@@ -2578,6 +2635,7 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     namen: m.aussparen,
                     ueberlappung: m.ueberlappung,
                 },
+                welle: m.g.effekte.as_ref().and_then(|x| x.welle.as_ref()).map(PunktAngabe::punkte),
             },
         },
         ObjektJson::Applikation(a) => {
@@ -2695,6 +2753,7 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     namen: t.aussparen,
                     ueberlappung: t.ueberlappung,
                 },
+                welle: t.g.effekte.as_ref().and_then(|x| x.welle.as_ref()).map(PunktAngabe::punkte),
             },
         },
     }

@@ -170,6 +170,7 @@ pub fn ttf_text_objekte_idx(
                             winkel: *winkel,
                             unterlage: *unterlage,
                             aussparen: Default::default(),
+                            welle: None,
                         },
                     });
                 }

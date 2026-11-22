@@ -402,6 +402,7 @@ mod tests {
                     winkel: None,
                     unterlage: None,
                     aussparen: Default::default(),
+                    welle: None,
                 },
             };
             (vec![o], vec![], vec![1])

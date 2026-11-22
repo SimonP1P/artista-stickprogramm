@@ -279,12 +279,14 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             winkel,
             unterlage,
             aussparen,
+            welle,
         } => ObjektArt::Tatami {
             umriss: m.linie(umriss),
             loecher: loecher.iter().map(|l| m.linie(l)).collect(),
             winkel: Some(m.winkel(winkel.unwrap_or(winkel_standard))),
             unterlage: *unterlage,
             aussparen: aussparen.clone(),
+            welle: welle.as_ref().map(|l| m.linie(l)),
         },
         ObjektArt::Musterfuellung {
             umriss,
@@ -294,6 +296,7 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             groesse,
             unterlage,
             aussparen,
+            welle,
         } => {
             let w = winkel
                 .or_else(|| crate::muster::finden(muster).and_then(|x| x.winkel))
@@ -306,6 +309,7 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
                 groesse: *groesse,
                 unterlage: *unterlage,
                 aussparen: aussparen.clone(),
+                welle: welle.as_ref().map(|l| m.linie(l)),
             }
         }
         ObjektArt::SatinFlaeche {
@@ -472,12 +476,14 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             winkel,
             unterlage,
             aussparen,
+            welle,
         } => ObjektArt::Tatami {
             umriss: lin(umriss, true),
             loecher: loecher.iter().map(|l| lin(l, true)).collect(),
             winkel: *winkel,
             unterlage: *unterlage,
             aussparen: aussparen.clone(),
+            welle: welle.as_ref().map(|l| lin(l, false)),
         },
         ObjektArt::Musterfuellung {
             umriss,
@@ -487,6 +493,7 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             groesse,
             unterlage,
             aussparen,
+            welle,
         } => ObjektArt::Musterfuellung {
             umriss: lin(umriss, true),
             loecher: loecher.iter().map(|l| lin(l, true)).collect(),
@@ -495,6 +502,7 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             groesse: *groesse,
             unterlage: *unterlage,
             aussparen: aussparen.clone(),
+            welle: welle.as_ref().map(|l| lin(l, false)),
         },
         ObjektArt::SatinFlaeche {
             umriss,
@@ -656,6 +664,7 @@ mod tests {
                 winkel: None,
                 unterlage: None,
                 aussparen: Default::default(),
+                welle: None,
             },
         };
         let zeile = TextVorgabe {

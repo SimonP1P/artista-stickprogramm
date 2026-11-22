@@ -45,10 +45,10 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Kurzstiche (Satin) | ✅ | Satin; seit 20.11. auch Step-Flächen mit Winkellinien und Step-Schrift (gerade Tatami-Reihen haben keine Innenkurven) |
 | Auto Jump, Mindeststich, Vernähen | ✅ | |
 | „Säule mit mehr Loft“ (erhöhter Satin, Kap. 22) | ✅ | laut Handbuch Auto Jump mit kleinem Höchststich (z. B. 6 mm) + Unterlage: `"auto_jump": {"max": 6}` |
-| Textured Edge (ausgefranster Rand) | ⬜ | Kap. 23/24 |
-| Wave Effect (Füllung entlang einer Kurve) | ⬜ | Kap. 24/26 |
-| Gradient Fill, Open Fill | ⬜ | Kap. 24 |
-| Color Blending (zwei Farben ineinander) | ⬜ | Kap. 24 |
+| Textured Edge (ausgefranster Rand) | ✅ 22.11. `effekte.rand` | Kap. 23/24, Bericht 23 |
+| Wave Effect (Füllung entlang einer Kurve) | ✅ 22.11. `effekte.welle` | Kap. 24/26, Bericht 23 |
+| Gradient Fill, Open Fill | ✅ 22.11. `effekte.verlauf`; Open Fill = Laufwege am Rand | Kap. 24, Bericht 23 |
+| Color Blending (zwei Farben ineinander) | ✅ 22.11. Befehl `farben_mischen` | Kap. 24, Bericht 23 |
 
 ## D. Schrift (Kap. 18–21)
 | Funktion | Stand | Bemerkung |

@@ -384,6 +384,34 @@ P('objekt.motivfuellung.versatz', G, 'Reihenversatz', 'jede Reihe um so viel wei
 P('objekt.motivfuellung.winkel', G, 'Drehung der Reihen', 'dreht das Raster (Stichwinkel wirkt nicht)',
   ebene='objekt', gilt=['motivfuellung'], o='winkel', einheit='°', std=0, bereich=[-180, 180],
   quelle=Q + ': „The stitch angle has no effect on pattern layout“', modus='experte')
+G = 'Effekte'
+Q = 'IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23)'
+FX = ['tatami', 'muster', 'satin', 'satinlinie', 'satinflaeche']
+P('objekt.effekte.verlauf.profil', G, 'Verlauf: Profil', 'Verlauf des Abstands über die Fläche bzw. entlang der Säule '
+  '(Gradient Fill)', ebene='objekt', gilt=FX, o='effekte.verlauf.profil', einheit='Auswahl', std='linear',
+  werte=['linear', 'abnehmend', 'konvex', 'konkav', 'exp_zunehmend', 'exp_abnehmend', 'konvex_konkav',
+         'konkav_konvex'],
+  quelle=Q + ': GradientSpacingEffect 0x34, Profil-Byte 1–4, Stil 4800680101 = Profil 1; Formeln und Richtung ' + V,
+  modus='experte')
+P('objekt.effekte.verlauf.min', G, 'Verlauf: Abstand dicht', 'kleinster Abstand', ebene='objekt', gilt=FX,
+  o='effekte.verlauf.min', einheit='mm', std=0.4, bereich=[0.1, 10],
+  quelle=Q + ': Stil 0x48 = 72 = 0,4 mm; Tomatos.ART gemessen (linear)', modus='experte')
+P('objekt.effekte.verlauf.max', G, 'Verlauf: Abstand offen', 'größter Abstand (Maximum Spacing)', ebene='objekt',
+  gilt=FX, o='effekte.verlauf.max', einheit='mm', std=2.0, bereich=[0.1, 10],
+  quelle=Q + ': Stil 0x168 = 360 = 2,0 mm (0x2789/0x278a)', modus='experte')
+P('objekt.effekte.rand.seite', G, 'Ausgefranster Rand: Seite', 'links, beide, rechts (in Stichrichtung; Satin: links = '
+  'Seite A)', ebene='objekt', gilt=FX, o='effekte.rand.seite', einheit='Auswahl', std='rechts',
+  werte=['links', 'rechts', 'beide'], quelle=Q + ': JaggedEdgeEffect 0x32, Seite 2 = rechts (Tomatos.ART: eine Seite '
+  'gestreut)', modus='experte')
+P('objekt.effekte.rand.spanne', G, 'Ausgefranster Rand: Spanne', 'so weit streuen die Enden (Span)', ebene='objekt',
+  gilt=FX, o='effekte.rand.spanne', einheit='mm', std=1.5, bereich=[0.1, 10],
+  quelle=Q + ': Stil 270 = 1,5 mm', modus='experte')
+P('objekt.effekte.rand.glaette', G, 'Ausgefranster Rand: Glätte', '0 = rau (jede Reihe frei), 1 = glatt (Texture)',
+  ebene='objekt', gilt=FX, o='effekte.rand.glaette', einheit='0 … 1', std=0.1, bereich=[0, 1],
+  quelle=Q + ': Stil 0,1; Zufall/Glättung ' + V, modus='experte')
+P('objekt.effekte.welle', G, 'Welle: Leitlinie', 'Reihen folgen der Linie (Wave Effect); Einschalten legt eine Linie '
+  'mit Bogen an (welle_vorschlag)', ebene='objekt', gilt=['tatami', 'muster'], o='effekte.welle', einheit='Linie',
+  std=None, quelle=Q + ': CurveFillEffect 0x6b/0x6d + OneCurveD2Wrap 0x6e; Vorschlag ' + V, modus='experte')
 
 # ---------------------------------------------------------------- Schrift
 G = 'Schrift'

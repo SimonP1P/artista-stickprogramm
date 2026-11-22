@@ -737,6 +737,80 @@ pub struct Gemeinsam {
     /// Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
     #[serde(default)]
     pub einstellungen: Option<EinstellungenJson>,
+    /// **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+    /// Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+    /// Flächen), sonst ohne Wirkung. An = Feld vorhanden
+    #[serde(default)]
+    pub effekte: Option<EffekteJson>,
+}
+
+/// Effekte eines Objekts (`stick_kern::effekte`, Bericht `Analyse_Teil3/23_effekte.md`).
+#[derive(Clone, Debug, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct EffekteJson {
+    /// **Verlauf** (Gradient Fill): Abstand wechselt quer über die Fläche bzw. entlang der Säule zwischen `min` und
+    /// `max`; der Abstand des Objekts gilt dann nicht (Handbuch S. 218)
+    #[serde(default)]
+    pub verlauf: Option<VerlaufJson>,
+    /// **Ausgefranster Rand** (Textured Edge): Reihen- bzw. Stichenden streuen um den Rand (Handbuch S. 213–214)
+    #[serde(default)]
+    pub rand: Option<RandJson>,
+    /// **Welle** (Wave Effect): Leitlinie [[x, y], …] in mm quer durch die Fläche, die Reihen folgen ihr (nur
+    /// `tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen)
+    #[serde(default)]
+    pub welle: Option<PunktAngabe>,
+}
+
+/// Verlauf (Gradient Fill, ART-Datensatz 0x34). Standard wie der Effekt-Datensatz im Stil der Musterdesigns
+/// (0,4 / 2,0 mm, Profil 1).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct VerlaufJson {
+    /// Profil (Dialog „Gradient Fill“ und „Color Blending“)
+    #[serde(default = "profil_linear")]
+    pub profil: crate::effekte::Profil,
+    /// kleinster Abstand in mm (dichteste Stelle; 0,1 … 10)
+    #[serde(default = "verlauf_min")]
+    pub min: f64,
+    /// größter Abstand in mm (offenste Stelle, „Maximum Spacing“; 0,1 … 10)
+    #[serde(default = "verlauf_max")]
+    pub max: f64,
+}
+
+fn profil_linear() -> crate::effekte::Profil {
+    crate::effekte::Profil::Linear
+}
+fn verlauf_min() -> f64 {
+    0.4
+}
+fn verlauf_max() -> f64 {
+    2.0
+}
+
+/// Ausgefranster Rand (Textured Edge, ART-Datensatz 0x32: Seite, Spanne, Texture). Standard wie der Effekt-Datensatz
+/// im Stil der Musterdesigns (Seite 2, Spanne 1,5 mm).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct RandJson {
+    /// Seite in Stichrichtung (links = Anfang der Reihen bzw. Satin-Seite A)
+    #[serde(default = "rand_rechts")]
+    pub seite: crate::effekte::RandSeite,
+    /// Spanne in mm („Span“): Enden streuen bis so weit nach innen und außen (0,1 … 10)
+    #[serde(default = "rand_spanne")]
+    pub spanne: f64,
+    /// Glätte 0 … 1 („Texture“-Regler: 0 = rau, jede Reihe frei; 1 = glatt)
+    #[serde(default = "rand_glaette")]
+    pub glaette: f64,
+}
+
+fn rand_rechts() -> crate::effekte::RandSeite {
+    crate::effekte::RandSeite::Rechts
+}
+fn rand_spanne() -> f64 {
+    1.5
+}
+fn rand_glaette() -> f64 {
+    0.1
 }
 
 /// Grundlinie eines Texts (`schrift::Grundlinie`; Dialog „Layout“ des Originals). Beim Kreis ist `position` des Texts

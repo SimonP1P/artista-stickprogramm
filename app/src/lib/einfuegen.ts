@@ -73,7 +73,6 @@ export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: 
 
 /** FUNKTIONEN.md §7 – Platz vorgesehen, deaktiviert */
 export const KOMMT_NOCH = [
-  "Effekte (Fransen, Welle, Farbverlauf, Farben mischen)",
   "Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling)",
   "Kreuzstich",
   "Magic Wand, PhotoSnap",

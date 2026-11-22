@@ -270,6 +270,7 @@ mod tests {
             winkel: None,
             unterlage: None,
             aussparen: Default::default(),
+            welle: None,
         };
         assert_eq!(start_hinweis(&t, None, Some(p(31.0, 11.0))), Some(p(0.0, 0.0)));
         assert_eq!(

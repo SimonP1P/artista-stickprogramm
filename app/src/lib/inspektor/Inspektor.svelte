@@ -15,6 +15,7 @@
   import Einzelwerte from "./Einzelwerte.svelte";
   import JsonReiter from "./JsonReiter.svelte";
   import Buchstaben from "./Buchstaben.svelte";
+  import Effekte from "./Effekte.svelte";
 
   type Reiter = "objekt" | "design" | "einzelwerte" | "json";
   // Startreiter: Startoption `reiter` (Bildschirmfotos), sonst „Objekt“
@@ -48,7 +49,9 @@
   /** Motivfüllung: Winkel und Versatz meinen hier die Reihen */
   const MOTIVFUELLUNG_NAMEN: Record<string, string> = { winkel: "Drehung der Reihen", versatz: "Reihenversatz" };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe"]);
+  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe", "effekte"]);
+  /** Objektarten mit Effekten (Verlauf, Rand; Welle nur Flächen) – Kern `effekte` */
+  const MIT_EFFEKTEN = new Set(["tatami", "muster", "satin", "satinlinie", "satinflaeche"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
   const MIT_STEP = new Set(["tatami", "text", "ttf", "monogramm"]);
 
@@ -401,6 +404,14 @@
                 </div>
               {/if}
             {/if}
+          </Abschnitt>
+        {/if}
+
+        {#if MIT_EFFEKTEN.has(o.art)}
+          {@const fx = o.effekte as { verlauf?: unknown; rand?: unknown; welle?: unknown } | null | undefined}
+          {@const an = [fx?.verlauf && "Verlauf", fx?.rand && "Rand", fx?.welle && "Welle"].filter(Boolean).join(", ")}
+          <Abschnitt titel="Effekte" rechts={an} offen={!!an}>
+            <Effekte nr={i} {o} />
           </Abschnitt>
         {/if}
 

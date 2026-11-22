@@ -114,6 +114,9 @@ export function knotenBild(objekt: unknown): KnotenBild {
     f === "umriss",
   ]);
   if (Array.isArray(o.loecher)) o.loecher.forEach((l, i) => felder.push([["loecher", i], l, true]));
+  // Leitlinie des Wave-Effekts (Kern `effekte.welle`) – wie ein offener Pfad bearbeitbar
+  const fx = o.effekte as Baum | null | undefined;
+  if (fx && fx.welle != null) felder.push([["effekte", "welle"], fx.welle, false]);
   if (!felder.length) return leer;
   if (!ohneTransformation(o.transform)) return { ...leer, umwandeln: true };
   const knoten: Knoten[] = [];

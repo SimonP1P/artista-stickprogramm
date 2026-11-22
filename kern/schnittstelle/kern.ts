@@ -70,6 +70,12 @@ export type ApplikationJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -245,6 +251,12 @@ export type BlanketJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -362,6 +374,22 @@ export type DesignJson = {
 
 /** Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text). */
 export type DesignWert = DesignJson;
+
+/** Effekte eines Objekts (`stick_kern::effekte`, Bericht `Analyse_Teil3/23_effekte.md`). */
+export type EffekteJson = {
+  /** **Ausgefranster Rand** (Textured Edge): Reihen- bzw. Stichenden streuen um den Rand (Handbuch S. 213–214) */
+  rand?: (RandJson | null);
+  /**
+   * **Verlauf** (Gradient Fill): Abstand wechselt quer über die Fläche bzw. entlang der Säule zwischen `min` und
+   * `max`; der Abstand des Objekts gilt dann nicht (Handbuch S. 218)
+   */
+  verlauf?: (VerlaufJson | null);
+  /**
+   * **Welle** (Wave Effect): Leitlinie [[x, y], …] in mm quer durch die Fläche, die Reihen folgen ihr (nur
+   * `tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen)
+   */
+  welle?: (PunktAngabe | null);
+};
 
 /** Ein Design in ein anderes einfügen. */
 export type EinfuegenEingabe = {
@@ -785,6 +813,36 @@ export type FarbInfo = {
   text: string;
 };
 
+/** Eingabe für `farben_mischen`. */
+export type FarbenMischenEingabe = {
+  design: DesignWert;
+  /** Farbe der oberen Lage „#rrggbb“ */
+  farbe: string;
+  /** größter Abstand der oberen Lage in mm (Standard 2,2 wie der Stil) */
+  max_oben?: number | null;
+  /** größter Abstand der unteren Lage in mm (Standard 2,0 wie der Stil) */
+  max_unten?: number | null;
+  /** kleinster Abstand beider Lagen in mm (Standard 0,4) */
+  min?: number | null;
+  /** Nummer des Objekts (ab 0): Step-, Muster- oder Satinfläche, Satinsäule oder Satinlinie */
+  objekt: number;
+  /**
+   * Profil der unteren Lage (die obere bekommt das Gegenstück; Dialog „Color Blending“)
+   * @default "linear"
+   */
+  profil?: Profil;
+};
+
+/** Ergebnis von `farben_mischen`. */
+export type FarbenMischenErgebnis = {
+  /** geändertes Design */
+  design: DesignWert;
+  /** Schlüssel der neuen Gruppe */
+  gruppe: string;
+  /** Nummern der beiden Lagen (unten, oben) */
+  objekte: number[];
+};
+
 /**
  * Fehler eines Befehls: Meldung (deutsch) und, wenn er zu einem Objekt gehört, dessen Nummer (ab 0) – damit die
  * Oberfläche das Objekt markieren kann.
@@ -1027,6 +1085,12 @@ export type KnopflochJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -1106,6 +1170,12 @@ export type LaufJson = {
   doppellauf?: boolean;
   /** Dreifachstich (bei art „dreifach“ immer) */
   dreifach?: boolean | null;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -1224,6 +1294,12 @@ export type MonogrammJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -1403,6 +1479,12 @@ export type MotivfuellungJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -1488,6 +1570,12 @@ export type MotivlinieJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -1599,6 +1687,12 @@ export type MusterJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -1764,6 +1858,12 @@ export type PfadPunkt = (Punkt | {
   kurve: Punkt;
 });
 
+/**
+ * Profil des Verlaufs (Dialog „Gradient Fill“: Linear, Dec-Linear, Convex, Concave; „Color Blending“ zusätzlich
+ * Inc_Exp/Dec-Exp und Convex-Concave/Concave-Convex). Abstand vom kleinsten zum größten Wert über die Fläche
+ */
+export type Profil = ("linear" | "abnehmend" | "konvex" | "konkav" | "exp_zunehmend" | "exp_abnehmend" | "konvex_konkav" | "konkav_konvex");
+
 /** Ergebnis der Prüfung eines Designs (ohne Stiche zu berechnen). */
 export type Pruefung = {
   /** Fehler, der das Berechnen verhindert (None = in Ordnung) */
@@ -1789,6 +1889,31 @@ export type RahmenInfo = {
   hoehe: number;
   name: string;
 };
+
+/**
+ * Ausgefranster Rand (Textured Edge, ART-Datensatz 0x32: Seite, Spanne, Texture). Standard wie der Effekt-Datensatz
+ * im Stil der Musterdesigns (Seite 2, Spanne 1,5 mm).
+ */
+export type RandJson = {
+  /**
+   * Glätte 0 … 1 („Texture“-Regler: 0 = rau, jede Reihe frei; 1 = glatt)
+   * @default 0.1
+   */
+  glaette?: number;
+  /**
+   * Seite in Stichrichtung (links = Anfang der Reihen bzw. Satin-Seite A)
+   * @default "rechts"
+   */
+  seite?: RandSeite;
+  /**
+   * Spanne in mm („Span“): Enden streuen bis so weit nach innen und außen (0,1 … 10)
+   * @default 1.5
+   */
+  spanne?: number;
+};
+
+/** Seite des ausgefransten Rands, in Stichrichtung gesehen (Dialog „Textured Edge“: Left, Both, Right) */
+export type RandSeite = ("links" | "rechts" | "beide");
 
 /** Umordnen wie Menü „Arrange“ des Originals (Objektnummern ab 0). */
 export type ReihenfolgeBefehl = ({
@@ -1868,6 +1993,12 @@ export type SatinFlaecheJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -1932,6 +2063,12 @@ export type SatinJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -1993,6 +2130,12 @@ export type SatinLinieJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -2315,6 +2458,12 @@ export type TatamiJson = {
    */
   doppellauf?: boolean;
   /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
    * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -2402,6 +2551,12 @@ export type TextJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -2520,6 +2675,12 @@ export type TtfJson = {
    * @default false
    */
   doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
   /**
    * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
    * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
@@ -2672,6 +2833,28 @@ export type UnterlageJson = (UnterlageWahl | UnterlageArt[] | boolean);
 /** Unterlage automatisch oder keine */
 export type UnterlageWahl = ("auto" | "keine");
 
+/**
+ * Verlauf (Gradient Fill, ART-Datensatz 0x34). Standard wie der Effekt-Datensatz im Stil der Musterdesigns
+ * (0,4 / 2,0 mm, Profil 1).
+ */
+export type VerlaufJson = {
+  /**
+   * größter Abstand in mm (offenste Stelle, „Maximum Spacing“; 0,1 … 10)
+   * @default 2.0
+   */
+  max?: number;
+  /**
+   * kleinster Abstand in mm (dichteste Stelle; 0,1 … 10)
+   * @default 0.4
+   */
+  min?: number;
+  /**
+   * Profil (Dialog „Gradient Fill“ und „Color Blending“)
+   * @default "linear"
+   */
+  profil?: Profil;
+};
+
 /** Lage einer Linie zur gezeichneten Linie */
 export type Versatz = ("mitte" | "seite");
 
@@ -2722,6 +2905,8 @@ export interface Befehle {
   design_schema: { eingabe: Leer; ausgabe: unknown };
   /** Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes) */
   exp_speichern: { eingabe: ExpEingabe; ausgabe: number };
+  /** Farben mischen (Color Blending): Objekt in zwei Lagen mit gegenläufigem Verlauf teilen, obere Lage in der zweiten Farbe, beide gruppiert */
+  farben_mischen: { eingabe: FarbenMischenEingabe; ausgabe: FarbenMischenErgebnis };
   /** Füllmuster (242) mit Linien einer Kachel für die Vorschau */
   fuellmuster_liste: { eingabe: Leer; ausgabe: MusterInfo[] };
   /** Garne einer Garnkarte (für die Auswahl von Hand) */
@@ -2790,6 +2975,8 @@ export interface Befehle {
   text_speichern: { eingabe: TextDatei; ausgabe: null };
   /** Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken */
   ueberdeckungen: { eingabe: DesignEingabe; ausgabe: number[][] };
+  /** Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`) */
+  welle_vorschlag: { eingabe: ObjektEingabe; ausgabe: unknown };
 }
 
 /** Namen aller Befehle. */
@@ -2806,6 +2993,7 @@ export const BEFEHLE = [
   "design_pruefen",
   "design_schema",
   "exp_speichern",
+  "farben_mischen",
   "fuellmuster_liste",
   "garnkarte_garne",
   "garnkarten_liste",
@@ -2840,6 +3028,7 @@ export const BEFEHLE = [
   "svg_lesen",
   "text_speichern",
   "ueberdeckungen",
+  "welle_vorschlag",
 ] as const;
 
 /** Fehler eines Befehls (Meldung deutsch, Objektnummer ab 0 wenn bekannt). */

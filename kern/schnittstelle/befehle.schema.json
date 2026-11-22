@@ -195,6 +195,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -699,6 +710,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -1011,6 +1033,46 @@
     "DesignWert": {
       "$ref": "#/$defs/DesignJson",
       "description": "Ein Design im Format `design.schema.json` (als JSON-Objekt, nicht als Text)."
+    },
+    "EffekteJson": {
+      "additionalProperties": false,
+      "description": "Effekte eines Objekts (`stick_kern::effekte`, Bericht `Analyse_Teil3/23_effekte.md`).",
+      "properties": {
+        "rand": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RandJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Ausgefranster Rand** (Textured Edge): Reihen- bzw. Stichenden streuen um den Rand (Handbuch S. 213–214)"
+        },
+        "verlauf": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VerlaufJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Verlauf** (Gradient Fill): Abstand wechselt quer über die Fläche bzw. entlang der Säule zwischen `min` und\n`max`; der Abstand des Objekts gilt dann nicht (Handbuch S. 218)"
+        },
+        "welle": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PunktAngabe"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Welle** (Wave Effect): Leitlinie [[x, y], …] in mm quer durch die Fläche, die Reihen folgen ihr (nur\n`tatami` und `muster`; Handbuch S. 217–218: Stichlänge ≤ 4 mm empfohlen)"
+        }
+      },
+      "type": "object"
     },
     "EinfuegenEingabe": {
       "additionalProperties": false,
@@ -1837,6 +1899,93 @@
         "groesse",
         "text",
         "farben"
+      ],
+      "type": "object"
+    },
+    "FarbenMischenEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe für `farben_mischen`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "farbe": {
+          "description": "Farbe der oberen Lage „#rrggbb“",
+          "type": "string"
+        },
+        "max_oben": {
+          "default": null,
+          "description": "größter Abstand der oberen Lage in mm (Standard 2,2 wie der Stil)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_unten": {
+          "default": null,
+          "description": "größter Abstand der unteren Lage in mm (Standard 2,0 wie der Stil)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "min": {
+          "default": null,
+          "description": "kleinster Abstand beider Lagen in mm (Standard 0,4)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "objekt": {
+          "description": "Nummer des Objekts (ab 0): Step-, Muster- oder Satinfläche, Satinsäule oder Satinlinie",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "profil": {
+          "$ref": "#/$defs/Profil",
+          "default": "linear",
+          "description": "Profil der unteren Lage (die obere bekommt das Gegenstück; Dialog „Color Blending“)"
+        }
+      },
+      "required": [
+        "design",
+        "objekt",
+        "farbe"
+      ],
+      "type": "object"
+    },
+    "FarbenMischenErgebnis": {
+      "description": "Ergebnis von `farben_mischen`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert",
+          "description": "geändertes Design"
+        },
+        "gruppe": {
+          "description": "Schlüssel der neuen Gruppe",
+          "type": "string"
+        },
+        "objekte": {
+          "description": "Nummern der beiden Lagen (unten, oben)",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        }
+      },
+      "required": [
+        "design",
+        "objekte",
+        "gruppe"
       ],
       "type": "object"
     },
@@ -2741,6 +2890,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -2966,6 +3126,17 @@
             "boolean",
             "null"
           ]
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -3249,6 +3420,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -3741,6 +3923,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -3925,6 +4118,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -4184,6 +4388,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -4767,6 +4982,51 @@
       ],
       "description": "Referenzpunkt eines Pfads: Eckpunkt `[x, y]` oder Kurvenpunkt `{\"kurve\": [x, y]}`."
     },
+    "Profil": {
+      "description": "Profil des Verlaufs (Dialog „Gradient Fill“: Linear, Dec-Linear, Convex, Concave; „Color Blending“ zusätzlich\nInc_Exp/Dec-Exp und Convex-Concave/Concave-Convex). Abstand vom kleinsten zum größten Wert über die Fläche",
+      "oneOf": [
+        {
+          "const": "linear",
+          "description": "vom kleinsten zum größten Abstand, gleichmäßig („Linear“, Datensatz 1)",
+          "type": "string"
+        },
+        {
+          "const": "abnehmend",
+          "description": "vom größten zum kleinsten Abstand („Dec-Linear“, Datensatz 2)",
+          "type": "string"
+        },
+        {
+          "const": "konvex",
+          "description": "zunehmend, erst schnell, dann langsam („Convex“, Datensatz 3; Kurvenform eigene Festlegung)",
+          "type": "string"
+        },
+        {
+          "const": "konkav",
+          "description": "abnehmend, erst schnell, dann langsam („Concave“, Datensatz 4; Kurvenform eigene Festlegung)",
+          "type": "string"
+        },
+        {
+          "const": "exp_zunehmend",
+          "description": "zunehmend, erst langsam, dann schnell („Inc_Exp“, nur Farben mischen; Kurvenform eigene Festlegung)",
+          "type": "string"
+        },
+        {
+          "const": "exp_abnehmend",
+          "description": "abnehmend, erst langsam, dann schnell („Dec-Exp“; Kurvenform eigene Festlegung)",
+          "type": "string"
+        },
+        {
+          "const": "konvex_konkav",
+          "description": "S-Kurve zunehmend („Convex - Concave“; Kurvenform eigene Festlegung)",
+          "type": "string"
+        },
+        {
+          "const": "konkav_konvex",
+          "description": "S-Kurve abnehmend („Concave - Convex“; Kurvenform eigene Festlegung)",
+          "type": "string"
+        }
+      ]
+    },
     "Pruefung": {
       "description": "Ergebnis der Prüfung eines Designs (ohne Stiche zu berechnen).",
       "properties": {
@@ -4854,6 +5114,50 @@
         "hinweis"
       ],
       "type": "object"
+    },
+    "RandJson": {
+      "additionalProperties": false,
+      "description": "Ausgefranster Rand (Textured Edge, ART-Datensatz 0x32: Seite, Spanne, Texture). Standard wie der Effekt-Datensatz\nim Stil der Musterdesigns (Seite 2, Spanne 1,5 mm).",
+      "properties": {
+        "glaette": {
+          "default": 0.1,
+          "description": "Glätte 0 … 1 („Texture“-Regler: 0 = rau, jede Reihe frei; 1 = glatt)",
+          "format": "double",
+          "type": "number"
+        },
+        "seite": {
+          "$ref": "#/$defs/RandSeite",
+          "default": "rechts",
+          "description": "Seite in Stichrichtung (links = Anfang der Reihen bzw. Satin-Seite A)"
+        },
+        "spanne": {
+          "default": 1.5,
+          "description": "Spanne in mm („Span“): Enden streuen bis so weit nach innen und außen (0,1 … 10)",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "RandSeite": {
+      "description": "Seite des ausgefransten Rands, in Stichrichtung gesehen (Dialog „Textured Edge“: Left, Both, Right)",
+      "oneOf": [
+        {
+          "const": "links",
+          "description": "Anfang der Reihen (bei Satin: Seite A)",
+          "type": "string"
+        },
+        {
+          "const": "rechts",
+          "description": "Ende der Reihen (bei Satin: Seite B; Standard wie das Original: Seite 2)",
+          "type": "string"
+        },
+        {
+          "const": "beide",
+          "description": "beide Seiten",
+          "type": "string"
+        }
+      ]
     },
     "ReihenfolgeBefehl": {
       "description": "Umordnen wie Menü „Arrange“ des Originals (Objektnummern ab 0).",
@@ -5204,6 +5508,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -5375,6 +5690,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -5535,6 +5861,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -6472,6 +6809,17 @@
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
         },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
         "einstellungen": {
           "anyOf": [
             {
@@ -6684,6 +7032,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -6992,6 +7351,17 @@
           "default": false,
           "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
           "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
         },
         "einstellungen": {
           "anyOf": [
@@ -7365,6 +7735,30 @@
         }
       ]
     },
+    "VerlaufJson": {
+      "additionalProperties": false,
+      "description": "Verlauf (Gradient Fill, ART-Datensatz 0x34). Standard wie der Effekt-Datensatz im Stil der Musterdesigns\n(0,4 / 2,0 mm, Profil 1).",
+      "properties": {
+        "max": {
+          "default": 2.0,
+          "description": "größter Abstand in mm (offenste Stelle, „Maximum Spacing“; 0,1 … 10)",
+          "format": "double",
+          "type": "number"
+        },
+        "min": {
+          "default": 0.4,
+          "description": "kleinster Abstand in mm (dichteste Stelle; 0,1 … 10)",
+          "format": "double",
+          "type": "number"
+        },
+        "profil": {
+          "$ref": "#/$defs/Profil",
+          "default": "linear",
+          "description": "Profil (Dialog „Gradient Fill“ und „Color Blending“)"
+        }
+      },
+      "type": "object"
+    },
     "Versatz": {
       "description": "Lage einer Linie zur gezeichneten Linie",
       "oneOf": [
@@ -7524,6 +7918,15 @@
       "beschreibung": "Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes)",
       "eingabe": {
         "$ref": "#/$defs/ExpEingabe"
+      }
+    },
+    "farben_mischen": {
+      "ausgabe": {
+        "$ref": "#/$defs/FarbenMischenErgebnis"
+      },
+      "beschreibung": "Farben mischen (Color Blending): Objekt in zwei Lagen mit gegenläufigem Verlauf teilen, obere Lage in der zweiten Farbe, beide gruppiert",
+      "eingabe": {
+        "$ref": "#/$defs/FarbenMischenEingabe"
       }
     },
     "fuellmuster_liste": {
@@ -7884,6 +8287,13 @@
       "beschreibung": "Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken",
       "eingabe": {
         "$ref": "#/$defs/DesignEingabe"
+      }
+    },
+    "welle_vorschlag": {
+      "ausgabe": true,
+      "beschreibung": "Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`)",
+      "eingabe": {
+        "$ref": "#/$defs/ObjektEingabe"
       }
     }
   },

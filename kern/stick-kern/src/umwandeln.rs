@@ -235,6 +235,13 @@ pub fn in_punkte(design: &Design, json: &Value, nr: usize) -> Result<Value, Stri
         let l: Result<Vec<Value>, String> = l.iter().map(|v| feld_umwandeln(v, &m, false)).collect();
         neu.insert("loecher".into(), Value::Array(l?));
     }
+    // Leitlinie der Welle (Effekt) mit dem Objekt umwandeln
+    if let Some(w) = obj.get("effekte").and_then(|x| x.get("welle")).filter(|w| !w.is_null()) {
+        let w = feld_umwandeln(w, &m, false)?;
+        if let Some(fx) = neu.get_mut("effekte").and_then(Value::as_object_mut) {
+            fx.insert("welle".into(), w);
+        }
+    }
     if let Some(l) = obj.get("winkellinien").and_then(Value::as_array) {
         let l: Result<Vec<Value>, String> = l
             .iter()

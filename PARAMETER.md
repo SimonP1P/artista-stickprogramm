@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **196 Parameter**: 57 einfach, 87 experte, 52 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **203 Parameter**: 57 einfach, 94 experte, 52 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -216,6 +216,18 @@ Stand 21.11.2026 · **196 Parameter**: 57 einfach, 87 experte, 52 automatisch. E
 | **Reihenabstand** | Abstand der Reihen (row spacing) | motivfuellung | Objekt: `reihenabstand` | – |  |  | objekt | experte | NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b6 = 1000 ≈ Höhe des Motivs (5,55 mm); ohne Angabe Höhe |
 | **Reihenversatz** | jede Reihe um so viel weiter verschoben (row offset) | motivfuellung | Objekt: `versatz` | 0 mm |  |  | objekt | experte | NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: Leitmotiv-Matrix 0x3abe = Einheitsmatrix (kein Versatz) |
 | **Drehung der Reihen** | dreht das Raster (Stichwinkel wirkt nicht) | motivfuellung | Objekt: `winkel` | 0 ° | -180 … 180 |  | objekt | experte | NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: „The stitch angle has no effect on pattern layout“ |
+
+## Effekte
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Verlauf: Profil** | Verlauf des Abstands über die Fläche bzw. entlang der Säule (Gradient Fill) | tatami, muster, satin, satinlinie, satinflaeche | Objekt: `effekte.verlauf.profil` | linear | linear, abnehmend, konvex, konkav, exp_zunehmend, exp_abnehmend, konvex_konkav, konkav_konvex |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): GradientSpacingEffect 0x34, Profil-Byte 1–4, Stil 4800680101 = Profil 1; Formeln und Richtung Vorschlag (eigene Festlegung) |
+| **Verlauf: Abstand dicht** | kleinster Abstand | tatami, muster, satin, satinlinie, satinflaeche | Objekt: `effekte.verlauf.min` | 0,4 mm | 0,1 … 10 |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): Stil 0x48 = 72 = 0,4 mm; Tomatos.ART gemessen (linear) |
+| **Verlauf: Abstand offen** | größter Abstand (Maximum Spacing) | tatami, muster, satin, satinlinie, satinflaeche | Objekt: `effekte.verlauf.max` | 2 mm | 0,1 … 10 |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): Stil 0x168 = 360 = 2,0 mm (0x2789/0x278a) |
+| **Ausgefranster Rand: Seite** | links, beide, rechts (in Stichrichtung; Satin: links = Seite A) | tatami, muster, satin, satinlinie, satinflaeche | Objekt: `effekte.rand.seite` | rechts | links, rechts, beide |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): JaggedEdgeEffect 0x32, Seite 2 = rechts (Tomatos.ART: eine Seite gestreut) |
+| **Ausgefranster Rand: Spanne** | so weit streuen die Enden (Span) | tatami, muster, satin, satinlinie, satinflaeche | Objekt: `effekte.rand.spanne` | 1,5 mm | 0,1 … 10 |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): Stil 270 = 1,5 mm |
+| **Ausgefranster Rand: Glätte** | 0 = rau (jede Reihe frei), 1 = glatt (Texture) | tatami, muster, satin, satinlinie, satinflaeche | Objekt: `effekte.rand.glaette` | 0,1 0 … 1 | 0 … 1 |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): Stil 0,1; Zufall/Glättung Vorschlag (eigene Festlegung) |
+| **Welle: Leitlinie** | Reihen folgen der Linie (Wave Effect); Einschalten legt eine Linie mit Bogen an (welle_vorschlag) | tatami, muster | Objekt: `effekte.welle` | – |  |  | objekt | experte | IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23): CurveFillEffect 0x6b/0x6d + OneCurveD2Wrap 0x6e; Vorschlag Vorschlag (eigene Festlegung) |
 
 ## Schrift
 

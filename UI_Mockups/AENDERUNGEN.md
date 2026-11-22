@@ -15,6 +15,19 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Effekte und Farben mischen (Nachtauftrag N2, 4b.8; Commit …)
+- **Neues Feld `effekte`** an `tatami`, `muster`, `satin`, `satinlinie`, `satinflaeche` (`format.rs` `EffekteJson`,
+  Kern `stick-kern::effekte`): `verlauf` {`profil` (8 Werte, Standard `linear`), `min` 0,4, `max` 2,0 mm} · `rand`
+  {`seite` links/rechts/beide (Standard rechts), `spanne` 1,5 mm, `glaette` 0 … 1 (0,1)} · `welle` = Punktangabe
+  der Leitlinie (nur `tatami`/`muster`). Leeres Objekt `{}` = Standardwerte. Fehler mit Objektnummer bei Werten außerhalb.
+- `in_knoten_umwandeln` wandelt `effekte.welle` mit dem Objekt um (wird zu Bézierstücken).
+- **Neue Befehle** `farben_mischen` (`{design, objekt, farbe, profil?, min?, max_unten?, max_oben?}` →
+  `{design, objekte: [unten, oben], gruppe}`) und `welle_vorschlag` (`{design, objekt}` → Punktangabe für
+  `effekte.welle`).
+- **Oberfläche (umgesetzt):** Inspektor-Abschnitt „Effekte“ (Experte; Verlauf, Ausgefranster Rand, Welle, Knopf
+  „Zweite Farbe dazu …“), Leitlinie im Knoten-Werkzeug, Dialog „Farben mischen“ (`FarbenMischenDialog`, Garn der
+  oberen Lage, Profil mit Gegenstück, Abstände, Vorschau der Lagen); „Effekte“ aus „Kommt noch“ entfernt.
+
 ## 22.11.2026 – Motivfüllung und eigene Motive (Nachtauftrag N1, 4b.7; Commit ffb6249)
 - **Neue Objektart `motivfuellung`** (`format.rs` `MotivfuellungJson`, Kern `motiv::motivfuellung_objekte`): Felder
   `umriss`, `loecher`, `satz` (Standard „Children“), `motiv` („901“), `groesse`, `spaltenabstand`, `reihenabstand`,

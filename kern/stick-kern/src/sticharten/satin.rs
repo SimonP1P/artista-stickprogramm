@@ -148,6 +148,8 @@ pub fn satin_einstiche(
     let mut out: Linie = vec![einstich(a[0], b[0], true)];
     let mut seite = false; // nächster Einstich auf B
     let mut gelaufen = 0.0; // Weg seit dem letzten Einstich (über Segmentgrenzen hinweg)
+    let gesamt = saeulen_laenge(&a, &b);
+    let mut bisher = 0.0;
     for i in 0..a.len() - 1 {
         let seg = abstand(a[i], a[i + 1]).max(abstand(b[i], b[i + 1]));
         if seg < 1e-9 {
@@ -156,7 +158,8 @@ pub fn satin_einstiche(
         let mut t = 0.0;
         loop {
             let (pa, pb) = (zwischen(a[i], a[i + 1], t), zwischen(b[i], b[i + 1], t));
-            let noetig = (e.abstand(abstand(pa, pb)) / 2.0 - gelaufen).max(0.0);
+            let s = abstand_an(e, abstand(pa, pb), (bisher + t * seg) / gesamt);
+            let noetig = (s / 2.0 - gelaufen).max(0.0);
             let frei = (1.0 - t) * seg;
             if noetig > frei + 1e-9 {
                 gelaufen += frei;
@@ -168,6 +171,7 @@ pub fn satin_einstiche(
             out.push(einstich(pa, pb, seite));
             seite = !seite;
         }
+        bisher += seg;
     }
     // Kurzstiche nur an den regelmäßigen Einstichen, vor dem Abschluss an der Endkante
     kurzstiche(&mut out, e);
@@ -176,7 +180,48 @@ pub fn satin_einstiche(
     if abstand(*out.last().unwrap(), ende) > 1e-6 {
         out.push(ende);
     }
+    rand_streuen(&mut out, e);
     Ok(out)
+}
+
+/// Länge einer Säule (je Abschnitt die längere Seite) – Bezug für den Verlauf.
+fn saeulen_laenge(a: &[Punkt], b: &[Punkt]) -> f64 {
+    let l: f64 = (0..a.len() - 1)
+        .map(|i| abstand(a[i], a[i + 1]).max(abstand(b[i], b[i + 1])))
+        .sum();
+    l.max(1e-9)
+}
+
+/// Abstand an der Stelle `t` (0 = Säulenanfang, 1 = Ende): Verlauf (Gradient Fill, der feste Abstand gilt dann nicht)
+/// oder Auto Spacing / fester Abstand nach der Breite.
+fn abstand_an(e: &SatinEinstellung, breite: f64, t: f64) -> f64 {
+    match &e.effekte.verlauf {
+        Some(v) => v.abstand(t),
+        None => e.abstand(breite),
+    }
+}
+
+/// Ausgefranster Rand (Textured Edge): Einstiche liegen abwechselnd auf A (gerade Stelle) und B; je Stelle rückt der
+/// Einstich auf der gewählten Seite um den Versatz zum Partner hin (+) oder von ihm weg (−). Stiche bleiben ≥ 0,3 mm.
+fn rand_streuen(out: &mut [Punkt], e: &SatinEinstellung) {
+    let Some(r) = &e.effekte.rand else {
+        return;
+    };
+    let n = out.len();
+    if n < 2 {
+        return;
+    }
+    let v = r.versaetze(n / 2 + 1);
+    let alt = out.to_vec();
+    for i in 0..n {
+        let partner = if i + 1 < n { alt[i + 1] } else { alt[i - 1] };
+        let d = if i % 2 == 0 { v[i / 2].0 } else { v[i / 2].1 };
+        let l = abstand(alt[i], partner);
+        if d.abs() < 1e-12 || l < 1e-9 || l - d < 0.3 {
+            continue;
+        }
+        out[i] = zwischen(alt[i], partner, d / l);
+    }
 }
 
 /// Satin „gerade quer + schräg vor“: an jeder Stelle t die Einstiche A(t), B(t); von Stelle zu Stelle der ganze
@@ -192,7 +237,9 @@ fn satin_quer(a: &[Punkt], b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, S
     };
     let mut out: Linie = paar(a[0], b[0]).to_vec();
     let mut gelaufen = 0.0; // Weg seit der letzten Stelle (über Segmentgrenzen hinweg)
-    let mut letzter_abstand = e.abstand(abstand(a[0], b[0]));
+    let mut letzter_abstand = abstand_an(e, abstand(a[0], b[0]), 0.0);
+    let gesamt = saeulen_laenge(a, b);
+    let mut bisher = 0.0;
     for i in 0..a.len() - 1 {
         let seg = abstand(a[i], a[i + 1]).max(abstand(b[i], b[i + 1]));
         if seg < 1e-9 {
@@ -201,7 +248,7 @@ fn satin_quer(a: &[Punkt], b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, S
         let mut t = 0.0;
         loop {
             let (pa, pb) = (zwischen(a[i], a[i + 1], t), zwischen(b[i], b[i + 1], t));
-            let s = e.abstand(abstand(pa, pb));
+            let s = abstand_an(e, abstand(pa, pb), (bisher + t * seg) / gesamt);
             let noetig = (s - gelaufen).max(0.0);
             let frei = (1.0 - t) * seg;
             if noetig > frei + 1e-9 {
@@ -214,6 +261,7 @@ fn satin_quer(a: &[Punkt], b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, S
             let (pa, pb) = (zwischen(a[i], a[i + 1], t), zwischen(b[i], b[i + 1], t));
             out.extend(paar(pa, pb));
         }
+        bisher += seg;
     }
     kurzstiche(&mut out, e);
     let ende = paar(*a.last().unwrap(), *b.last().unwrap());
@@ -226,6 +274,7 @@ fn satin_quer(a: &[Punkt], b: &[Punkt], e: &SatinEinstellung) -> Result<Linie, S
             out.extend(ende);
         }
     }
+    rand_streuen(&mut out, e);
     Ok(out)
 }
 
@@ -337,6 +386,26 @@ mod tests {
         let (a, b) = gerade(0.5);
         let pts = satin(&a, &b, &SatinEinstellung::default()).unwrap();
         assert!(vorschub(&pts).iter().all(|d| (d - 0.51).abs() < 1e-9));
+    }
+
+    /// Verlauf entlang der Säule: Abstand wächst vom Anfang zum Ende; Rand auf Seite B streut die B-Einstiche
+    #[test]
+    fn effekte_verlauf_und_rand() {
+        use crate::effekte::{Profil, Rand, RandSeite, Verlauf};
+        let (a, b) = (vec![p(0.0, 0.0), p(40.0, 0.0)], vec![p(0.0, 4.0), p(40.0, 4.0)]);
+        let mut e = SatinEinstellung::default();
+        e.effekte.verlauf = Some(Verlauf { profil: Profil::Linear, min: 0.4, max: 2.0 });
+        let pts = satin(&a, &b, &e).unwrap();
+        let xs: Vec<f64> = pts.iter().step_by(2).map(|q| q.x).collect();
+        let d: Vec<f64> = xs.windows(2).map(|w| w[1] - w[0]).filter(|&x| x > 1e-6).collect();
+        assert!(d[0] < 0.5 && d[d.len() - 2] > 1.6, "{d:?}");
+        let mut e = SatinEinstellung::default();
+        e.effekte.rand = Some(Rand { seite: RandSeite::Rechts, spanne: 1.0, glaette: 0.0 });
+        let pts = satin(&a, &b, &e).unwrap();
+        let ya: Vec<f64> = pts.iter().step_by(2).map(|q| q.y).collect();
+        let yb: Vec<f64> = pts.iter().skip(1).step_by(2).map(|q| q.y).collect();
+        assert!(ya.iter().all(|&y| (y + 0.2).abs() < 1e-9), "A bleibt: {ya:?}");
+        assert!(yb.iter().any(|&y| y < 3.7) && yb.iter().any(|&y| y > 4.6) && yb.iter().all(|&y| y <= 5.2 + 1e-9));
     }
 
     #[test]

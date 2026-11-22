@@ -22,9 +22,9 @@ spätere Objekte verweisen darauf). Beispiel: der eingebettete Stil jedes Muster
 | **0x21** | 11 × float Breite, 11 × float Abstand (1/180 mm), dahinter 7 float | **AutoSpacingEffect**: Breiten 0,01 / 0,5 / 1 / 1,5 / 2 / 3 / 4 / 5 / 6 / 7 / 8 mm → Abstände 0,54 / 0,51 / 0,49 / 0,47 / 0,46 / 0,42 / 0,40 / 0,37 / 0,36 / 0,34 / 0,34 mm – identisch mit der Stil-Tabelle 0x2776 (`Analyse/code/10` §A); in allen 66 Objekten mit Effekt gleich |
 | **0x22** | float | **Abstandsfaktor** (0x2736): 1,0; bei Schrift-Objekten **0,9** |
 | **0x23** | float 0,5, Byte 1, long 5, long 15, 15 × float | **ShortStitchesEffect** (Fabrik ruft MOD1 `ShortStitchesEffect::init`); entspricht Stil-Eintrag 0x273a (0x2819 = 0,5, 0x281a = 1, 0x281b = 5, Liste 0x281c mit 15 Werten) |
-| 0x24 | float 30,0, Byte | offen (Winkel 30°?) |
+| 0x24 | float 30,0, Byte | PullCompensationEffectOld (Klassenname, [23](23_effekte.md) §1) |
 | 0x26 | leer | offen |
-| 0x6a | short, short, double 1,309 (75°), long 90, double 0,785 (45°), long 1, long 1440 (8 mm) | offen (Ecken/Teilung?) |
+| 0x6a | short, short, double 1,309 (75°), long 90, double 0,785 (45°), long 1, long 1440 (8 mm) | SmartCornerEffect (Klassenname, [23](23_effekte.md) §1) |
 
 **Messung** (`art_messen.py effekte --alle`, Rohergebnis `Arbeitsdaten/messungen/effekte_musterdesigns.txt`, Auswertung wie [04](04_messungen_satin.md) §3, je Stich Verhältnis gemessen/erwartet):
 | Satinobjekte | Stiche | Verhältnis zu Tabelle(Breite) × Faktor | Verhältnis zum festen Abstand |
