@@ -46,6 +46,19 @@
       hinzufuegen = false;
     }
   });
+  /** Zur Liste der Elemente: Auswahl aufheben (Nutzer 21.11.2026 – sonst blieb das Element markiert und ein Klick in
+   * der Liste auf dasselbe Element tat nichts) */
+  function zurListe() {
+    arbeit.elementWaehlen(undefined);
+    liste = true;
+    hinzufuegen = false;
+  }
+  /** Element aus der Liste öffnen – auch wenn es schon gewählt ist */
+  function elementOeffnen(x: (typeof elemente)[number]) {
+    arbeit.elementWaehlen(x);
+    liste = false;
+    hinzufuegen = false;
+  }
   let anzahlVorher = arbeit.objekte.length;
   $effect(() => {
     const n = arbeit.objekte.length;
@@ -384,7 +397,7 @@
     {:else if arbeit.schritt === 2}
       {#if arbeit.objekte.length}
         <div style="display:flex; gap:6px; margin:-4px 0 14px">
-          <button class="btn btn-secondary" class:on={sicht === "liste"} aria-pressed={sicht === "liste"} onclick={() => ((liste = true), (hinzufuegen = false))}>
+          <button class="btn btn-secondary" class:on={sicht === "liste"} aria-pressed={sicht === "liste"} onclick={zurListe}>
             <Icon d={IC.liste} />Elemente ({elemente.length})
           </button>
           <span style="flex:1"></span>
@@ -424,7 +437,7 @@
             {@const [artName, artIcon] = elArt(x)}
             {@const farben = [...new Set(x.objekte.map((i) => String(arbeit.objekte[i]?.farbe ?? "#000000").toLowerCase()))]}
             <li style="display:flex; align-items:center; border-bottom:1px solid color-mix(in srgb,var(--color-text) 7%,transparent)">
-              <button class="rk" style="border:0; flex:1; min-width:0" onclick={() => arbeit.elementWaehlen(x)}>
+              <button class="rk" style="border:0; flex:1; min-width:0" onclick={() => elementOeffnen(x)}>
                 <span class="mut tab" style="width:16px">{k + 1}</span>
                 <Icon d={artIcon} />
                 <span style="display:flex; flex-direction:column; min-width:0; flex:1">
@@ -791,7 +804,7 @@
 
 {#snippet elKopf(titel: string)}
   <div style="display:flex; align-items:center; gap:6px; margin:0 0 10px">
-    <button class="btn btn-ghost" style="padding:2px 4px" title="Alle Elemente" aria-label="Alle Elemente" onclick={() => (liste = true)}><Icon d={IC.zurueck} /></button>
+    <button class="btn btn-ghost" style="padding:2px 4px" title="Alle Elemente" aria-label="Alle Elemente" onclick={zurListe}><Icon d={IC.zurueck} /></button>
     <h2 style="font-size:25px; margin:0">{titel}</h2>
   </div>
 {/snippet}

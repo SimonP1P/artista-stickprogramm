@@ -7,7 +7,13 @@ Oberfläche als Fehler.
 
 Aufruf (aus app/):
   python3 werkzeuge/bildschirmfoto.py DESIGN.json ZIEL.png [--experte] [--dunkel] [--auswahl N] [--ansicht form]
-          [--groesse 1280x800] [--stick PFAD] [--browser PFAD]
+          [--groesse 1280x800] [--stick PFAD] [--browser PFAD] [--klicks JSON]
+
+--klicks spielt Bedienschritte vor dem Bild nach (Fehlersuche ohne Fenster), z. B.
+  '[{"wo": "button[aria-label=\"Alle Elemente\"]", "nach": 2500}, {"wo": "ol[aria-label=Elemente] button", "text": "Mond"}]'
+Je Schritt: CSS-Selektor `wo`, optional `text` (Element, dessen Text ihn enthält), `nach` = Wartezeit in ms vor dem
+Klick (nur erster Schritt, Standard 1500); sonst wartet ein Schritt, bis Svelte gezeichnet hat und es das Element gibt.
+Klicks und Fehler gibt das Werkzeug aus der Konsole der Seite aus.
 """
 import argparse
 import json
@@ -77,6 +83,7 @@ def main():
     a.add_argument("--stick")
     a.add_argument("--browser")
     a.add_argument("--budget", type=int, default=6000, help="virtuelle Wartezeit in ms (Standard 6000)")
+    a.add_argument("--klicks", help="Bedienschritte als JSON-Liste (siehe oben)")
     o = a.parse_args()
 
     stick = stick_finden(o.stick)
@@ -181,6 +188,34 @@ window.__TAURI_INTERNALS__ = {{
     return Promise.resolve(JSON.parse(JSON.stringify(a)));
   }},
 }};
+// Bedienschritte (--klicks): nacheinander klicken, wie mit der Maus (pointerdown/up + click)
+const KLICKS = {json.dumps(json.loads(o.klicks) if o.klicks else [])};
+// Warten auf das Element über Änderungen am DOM und Mikrotasks: Zeitgeber laufen in Chrome headless nur, solange die
+// virtuelle Zeit reicht – während die App lädt, ist sie oft schon verbraucht. Nur der erste Schritt und Schritte mit
+// `nach` warten mit einem Zeitgeber.
+(function schritt(k) {{
+  if (k >= KLICKS.length) return;
+  const s = KLICKS[k];
+  const finden = () => [...document.querySelectorAll(s.wo)].find((e) => !s.text || e.textContent.includes(s.text));
+  const klicken = (el) => {{
+    console.log("Bildschirmfoto: Klick", k + 1, s.wo, s.text || "");
+    for (const typ of ["pointerdown", "mousedown", "pointerup", "mouseup"]) el.dispatchEvent(new PointerEvent(typ, {{ bubbles: true, button: 0 }}));
+    el.click();
+    schritt(k + 1);
+  }};
+  const los = async () => {{
+    for (let i = 0; i < 20; i++) await Promise.resolve(); // Svelte die Änderungen des letzten Klicks zeichnen lassen
+    const el = finden();
+    if (el) return klicken(el);
+    const mo = new MutationObserver(() => {{
+      const x = finden();
+      if (x) {{ mo.disconnect(); klicken(x); }}
+    }});
+    mo.observe(document, {{ subtree: true, childList: true, attributes: true }});
+  }};
+  if (k === 0 || s.nach) setTimeout(los, s.nach ?? 1500);
+  else los();
+}})(0);
 </script>"""
     index = os.path.join(seite, "index.html")
     html = open(index, encoding="utf-8").read().replace("<head>", "<head>" + vorspann, 1)
@@ -194,12 +229,17 @@ window.__TAURI_INTERNALS__ = {{
     b, h = o.groesse.split("x")
     ziel = os.path.abspath(o.ziel)
     url = "file:///" + index.replace(os.sep, "/").lstrip("/") + "#/"
-    subprocess.run(
+    r = subprocess.run(
         [browser, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files",
          f"--user-data-dir={os.path.join(tmp, 'profil')}", f"--window-size={b},{h}", f"--virtual-time-budget={o.budget}",
-         f"--screenshot={ziel}", url],
-        capture_output=True,
+         "--enable-logging=stderr", "--v=0", f"--screenshot={ziel}", url],
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
     )
+    if o.klicks:
+        # Konsole der Seite (Klicks, Fehler) für die Fehlersuche
+        for z in r.stderr.splitlines():
+            if "CONSOLE" in z or "Bildschirmfoto" in z:
+                print(z[z.find("\"") if "\"" in z else 0:][:300])
     shutil.rmtree(tmp, ignore_errors=True)
     print(ziel if os.path.exists(ziel) else "kein Bild entstanden")
 
