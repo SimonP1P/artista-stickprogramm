@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Wirksame Werte im Inspektor (Wunsch Nutzer; Commit NACHTRAGEN)
+## 21.11.2026 – Wirksame Werte im Inspektor (Wunsch Nutzer; Commit 6f3b47f)
 - **Neuer Befehl `objekt_werte`** (`{design, objekt}` → Liste `{feld, wert, text, herkunft}`, `stick_kern::werte`): für
   leere Felder der Wert, mit dem der Kern rechnet – Stoff → Design → Objekt-Einstellungen (Stichwinkel, Stichlänge,
   Faktor, Kurzstiche, Unterlage an/aus, Step-Muster; passt der Versatz zu keinem der 20 Muster, z. B. bei den Stoffen
