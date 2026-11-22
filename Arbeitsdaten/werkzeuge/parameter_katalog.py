@@ -242,6 +242,25 @@ for k, name, w, std, einh, tag in [
 ]:
     P(f'verbinder.{k}', G, name, w, d=f'einstellungen.verbinder.{k}', einheit=einh, std=std, stoff=(k == 'trim_ab'),
       quelle=f'{Q}; {tag}')
+Q2 = 'Dialog „Connectors“: Knöpfe Jump/Run = Tag 0x2805 (DIALOG.DLL 0x10036450, hoch), Wert 0 in allen 22 Stilen'
+P('verbinder.art', G, 'Verbinder zum nächsten Objekt',
+  'Sprung wie das Original; Lauf = gerader Laufstich („Run“, kein Vernähen davor, kein Faden zum Abschneiden); '
+  'verdeckt = Lauf nur, wo später gestickte Flächen ihn bedecken (eigene Erweiterung)',
+  d='einstellungen.verbinder.art', einheit='Auswahl', std='sprung', werte=('sprung', 'lauf', 'verdeckt'),
+  quelle=f'{Q2}; „Connector After Object“ 0x2803', modus='einfach')
+P('verbinder.lauf_laenge', G, 'Lauf-Verbinder: Stichlänge', 'Stichlänge des Laufs zum nächsten Objekt',
+  d='einstellungen.verbinder.lauf_laenge', einheit='mm', std=12.7, bereich=[0.3, 12.7],
+  quelle='0x2803 → 0x2711 = 2286 (12,7 mm), Feld neben „Run“ (DIALOG.DLL 0x100360a0, hoch)')
+P('verbinder.innen_art', G, 'Verbinder im Objekt',
+  'zwischen Teilen eines Objekts, z. B. Buchstaben eines Textes; Werte wie „Verbinder zum nächsten Objekt“',
+  d='einstellungen.verbinder.innen_art', einheit='Auswahl', std='sprung', werte=('sprung', 'lauf', 'verdeckt'),
+  quelle=f'{Q2}; „Connector Inside Object“ 0x2804')
+P('verbinder.innen_lauf_laenge', G, 'Lauf-Verbinder im Objekt: Stichlänge', 'Stichlänge des Laufs im Objekt',
+  d='einstellungen.verbinder.innen_lauf_laenge', einheit='mm', std=1.8, bereich=[0.3, 12.7],
+  quelle='0x2804 → 0x2711 = 324 (1,8 mm) (DIALOG.DLL 0x100360a0, hoch)')
+P('verbinder.verdeckt_rand', G, 'Verdeckt: Enden und Einzug',
+  'Enden je 0,5 mm frei, bedeckte Flächen 0,3 mm verkleinert, Prüfpunkte alle 0,5 mm',
+  einheit='mm', std=0.5, quelle=V, modus='automatisch')
 
 # ---------------------------------------------------------------- Auto Jump, Maschine, Bearbeiten
 G = 'Auto Jump und Maschine'

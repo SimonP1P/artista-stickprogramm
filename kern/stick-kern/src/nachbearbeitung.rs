@@ -1,7 +1,8 @@
 //! Regeln des Maschinenformats „Bernina“ und Verbinden der Wege zu einer Stichfolge.
 
 use crate::einheiten::{AUTO_JUMP_TEILLAENGE_MM, MAX_STICH_MM, MIN_STICH_MM};
-use crate::einstellungen::VerbinderEinstellung;
+use crate::aussparen::Kontur;
+use crate::einstellungen::{VerbinderArt, VerbinderEinstellung};
 use crate::geometrie::{Linie, Punkt, abstand, p, richtung, verschieben};
 use crate::stiche::{Art, Stich, StichFolge};
 
@@ -66,6 +67,138 @@ pub fn wege_verbinden_je_teil(
     auto_jump: &[Option<(f64, f64)>],
     eigene: &[Option<&VerbinderEinstellung>],
 ) -> StichFolge {
+    let zusatz = Zusatz {
+        auto_jump,
+        eigene,
+        ..Zusatz::default()
+    };
+    wege_verbinden_zusatz(teile, standard, start, &zusatz)
+}
+
+/// Fläche, die ein Verbinder für den Typ `verdeckt` höchstens frei lassen darf: Enden je 0,5 mm (dort liegen Aus- und
+/// Einstich am Rand der Objekte; eigene Festlegung).
+pub const VERDECKT_ENDEN_MM: f64 = 0.5;
+/// Die bedeckten Flächen werden für `verdeckt` um diesen Wert verkleinert, damit der Lauf nicht auf der Kante liegt
+/// (eigene Festlegung).
+pub const VERDECKT_EINZUG_MM: f64 = 0.3;
+/// Abstand der Prüfpunkte entlang des Verbinders (eigene Festlegung)
+const VERDECKT_SCHRITT_MM: f64 = 0.5;
+
+/// Flächen, die die Teile bedecken (`aussparen::bedeckt`, um `VERDECKT_EINZUG_MM` verkleinert), für den
+/// Verbindertyp `verdeckt`: ein Lauf-Verbinder ist verdeckt, wenn er ganz unter Teilen liegt, die nach ihm gestickt
+/// werden.
+#[derive(Debug, Default, Clone)]
+pub struct Abdeckung {
+    teile: Vec<(Kasten, Vec<Kontur>)>,
+}
+
+#[derive(Debug, Clone, Copy)]
+struct Kasten {
+    x0: f64,
+    y0: f64,
+    x1: f64,
+    y1: f64,
+}
+
+impl Abdeckung {
+    /// `teile[k]` = Konturen des Teils k (Nicht-Null-Regel, wie `aussparen::bedeckt`)
+    pub fn neu(teile: Vec<Vec<Kontur>>) -> Self {
+        let teile = teile
+            .into_iter()
+            .map(|k| {
+                let mut b = Kasten {
+                    x0: f64::MAX,
+                    y0: f64::MAX,
+                    x1: f64::MIN,
+                    y1: f64::MIN,
+                };
+                for q in k.iter().flatten() {
+                    b = Kasten {
+                        x0: b.x0.min(q[0]),
+                        y0: b.y0.min(q[1]),
+                        x1: b.x1.max(q[0]),
+                        y1: b.y1.max(q[1]),
+                    };
+                }
+                (b, k)
+            })
+            .collect();
+        Abdeckung { teile }
+    }
+
+    /// Liegt der Punkt unter einem der Teile ab Nummer `ab`?
+    fn bedeckt(&self, q: Punkt, ab: usize) -> bool {
+        self.teile.iter().skip(ab).any(|(b, k)| {
+            q.x >= b.x0 && q.x <= b.x1 && q.y >= b.y0 && q.y <= b.y1 && k.iter().map(|r| windung(r, q)).sum::<i32>() != 0
+        })
+    }
+
+    /// Liegt die Strecke a → b (bis auf die Enden) ganz unter Teilen ab Nummer `ab`?
+    pub fn verdeckt(&self, a: Punkt, b: Punkt, ab: usize) -> bool {
+        let d = abstand(a, b);
+        let n = (d / VERDECKT_SCHRITT_MM).ceil().max(1.0) as usize;
+        (1..n)
+            .map(|k| k as f64 / n as f64)
+            .filter(|t| d * t >= VERDECKT_ENDEN_MM && d * (1.0 - t) >= VERDECKT_ENDEN_MM)
+            .all(|t| self.bedeckt(p(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t), ab))
+    }
+}
+
+/// Umlaufzahl eines Rings um den Punkt q (positiv gegen den Uhrzeiger)
+fn windung(r: &[[f64; 2]], q: Punkt) -> i32 {
+    let n = r.len();
+    let mut w = 0;
+    for i in 0..n {
+        let (a, b) = (r[i], r[(i + 1) % n]);
+        let kreuz = (b[0] - a[0]) * (q.y - a[1]) - (q.x - a[0]) * (b[1] - a[1]);
+        if a[1] <= q.y {
+            if b[1] > q.y && kreuz > 0.0 {
+                w += 1;
+            }
+        } else if b[1] <= q.y && kreuz < 0.0 {
+            w -= 1;
+        }
+    }
+    w
+}
+
+/// Zusatzangaben für `wege_verbinden_zusatz`; alles darf fehlen.
+#[derive(Default)]
+pub struct Zusatz<'a> {
+    /// eigene Auto-Jump-Werte je Teil (Höchststich, Sprunglänge in mm)
+    pub auto_jump: &'a [Option<(f64, f64)>],
+    /// eigene Verbinder-Werte je Teil
+    pub eigene: &'a [Option<&'a VerbinderEinstellung>],
+    /// Nummer des Objekts je Teil: Teile desselben Objekts (z. B. Buchstaben eines Textes) verbindet der Verbinder
+    /// „innerhalb des Objekts“; ohne Angabe ist jedes Teil ein eigenes Objekt
+    pub objekt: &'a [usize],
+    /// bedeckte Flächen je Teil für den Verbindertyp `verdeckt`; ohne Angabe bleibt `verdeckt` ein Sprung
+    pub abdeckung: Option<&'a Abdeckung>,
+}
+
+/// Zwischenstiche eines Lauf-Verbinders von a nach b (ohne a und b), gleich lang, höchstens `laenge`.
+pub fn lauf_verbinder(a: Punkt, b: Punkt, laenge: f64) -> Linie {
+    let l = laenge.clamp(MIN_STICH_MM, MAX_STICH_MM);
+    let n = (abstand(a, b) / l - 1e-9).ceil().max(1.0) as usize;
+    (1..n)
+        .map(|k| {
+            let t = k as f64 / n as f64;
+            p(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t)
+        })
+        .collect()
+}
+
+/// Wege verbinden wie `wege_verbinden_je_teil`, dazu der Verbindertyp „Run“ des Originals (`VerbinderEinstellung::art`
+/// zum nächsten Objekt, `innen_art` innerhalb des Objekts): ein Lauf-Verbinder wird als gerader Laufstich gestickt;
+/// vor ihm wird nicht vernäht (Tie Off im Original bei „Run“ gesperrt), nach ihm nur bei „immer vernähen“ (eigene
+/// Festlegung: ein Lauf ist kein langer Verbinder und kein Trim). Bei Farbwechsel bleibt es ein Sprung.
+pub fn wege_verbinden_zusatz(
+    teile: &[(String, Vec<Linie>)],
+    standard: &VerbinderEinstellung,
+    start: Punkt,
+    zusatz: &Zusatz,
+) -> StichFolge {
+    let (auto_jump, eigene) = (zusatz.auto_jump, zusatz.eigene);
     let alle: Vec<(&str, &Linie)> = teile
         .iter()
         .flat_map(|(f, wege)| wege.iter().filter(|w| !w.is_empty()).map(move |w| (f.as_str(), w)))
@@ -79,10 +212,40 @@ pub fn wege_verbinden_je_teil(
     if alle.is_empty() {
         return folge;
     }
+    let werte = |t: usize| eigene.get(t).copied().flatten().unwrap_or(standard);
+    let objekt = |t: usize| zusatz.objekt.get(t).copied().unwrap_or(t);
+    // Lauf-Verbinder vor Weg i: Stichlänge, sonst None (Sprung). Typ und Länge gehören zum Objekt davor
+    // („Connector After Object“) bzw. zum Objekt selbst („Connector Inside Object“).
+    let lauf: Vec<Option<f64>> = (0..alle.len())
+        .map(|i| {
+            if i == 0 || alle[i - 1].0 != alle[i].0 {
+                return None;
+            }
+            let (ta, tb) = (teil_nr[i - 1], teil_nr[i]);
+            let e = werte(ta);
+            let (art, laenge) = if objekt(ta) == objekt(tb) {
+                (e.innen_art, e.innen_lauf_laenge)
+            } else {
+                (e.art, e.lauf_laenge)
+            };
+            let (a, b) = (*alle[i - 1].1.last().unwrap(), alle[i].1[0]);
+            let ja = match art {
+                VerbinderArt::Sprung => false,
+                VerbinderArt::Lauf => true,
+                // verdeckt durch das nächste Teil selbst und alle späteren (innerhalb eines Teils nur spätere Teile)
+                VerbinderArt::Verdeckt => zusatz
+                    .abdeckung
+                    .is_some_and(|d| d.verdeckt(a, b, if ta == tb { tb + 1 } else { tb })),
+            };
+            ja.then_some(laenge)
+        })
+        .collect();
     folge.farben.push(alle[0].0.to_string());
     let mut pos = start;
     for (i, &(farbe, weg)) in alle.iter().enumerate() {
-        let e = eigene.get(teil_nr[i]).copied().flatten().unwrap_or(standard);
+        let e = werte(teil_nr[i]);
+        let lauf_davor = lauf[i].is_some();
+        let lauf_danach = lauf.get(i + 1).is_some_and(|l| l.is_some());
         let vorher = if i > 0 { Some(alle[i - 1]) } else { None };
         let nachher = alle.get(i + 1).copied();
         let verbinder_davor = vorher.map(|(_, vw)| abstand(*vw.last().unwrap(), weg[0]));
@@ -92,12 +255,14 @@ pub fn wege_verbinden_je_teil(
         let trim_davor = verbinder_davor.is_none_or(|d| d > e.trim_ab);
         let trim_danach = verbinder_danach.is_some_and(|d| d > e.trim_ab);
         let anfang_vernaehen = e.anfang_immer
-            || (e.anfang_nach_trim_farbwechsel && (trim_davor || farbwechsel_davor))
-            || (e.anfang_bei_langem_verbinder && verbinder_davor.is_some_and(|d| d > e.anfang_verbinder_ab));
-        let ende_vernaehen = e.ende_immer
-            || (e.ende_vor_trim_farbwechsel && (trim_danach || farbwechsel_danach))
-            || (e.ende_bei_langem_verbinder && verbinder_danach.is_some_and(|d| d > e.ende_verbinder_ab))
-            || (nachher.is_none() && e.letztes_objekt_vernaehen);
+            || (!lauf_davor
+                && ((e.anfang_nach_trim_farbwechsel && (trim_davor || farbwechsel_davor))
+                    || (e.anfang_bei_langem_verbinder && verbinder_davor.is_some_and(|d| d > e.anfang_verbinder_ab))));
+        let ende_vernaehen = !lauf_danach
+            && (e.ende_immer
+                || (e.ende_vor_trim_farbwechsel && (trim_danach || farbwechsel_danach))
+                || (e.ende_bei_langem_verbinder && verbinder_danach.is_some_and(|d| d > e.ende_verbinder_ab))
+                || (nachher.is_none() && e.letztes_objekt_vernaehen));
         let mut w = weg.clone();
         if anfang_vernaehen {
             w = vernaehen_anfang(&w, e);
@@ -108,7 +273,11 @@ pub fn wege_verbinden_je_teil(
         if vorher.is_some_and(|(vf, _)| vf != farbe) {
             folge.farbwechsel(farbe);
         }
-        if abstand(pos, w[0]) > 1e-9 {
+        if let Some(l) = lauf[i] {
+            for q in lauf_verbinder(pos, w[0], l) {
+                folge.stich(q);
+            }
+        } else if abstand(pos, w[0]) > 1e-9 {
             folge.sprung(w[0]);
         }
         let aj = auto_jump.get(teil_nr[i]).copied().flatten();

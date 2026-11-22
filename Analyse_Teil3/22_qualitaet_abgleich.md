@@ -71,8 +71,10 @@ Gruppe rückwärts, dann die Säulen vorwärts.
 - **Sprünge zwischen Objekten und zwischen Buchstaben.** Beispiel „Anna“ + „Sky“ (Computer-Schrift): 8 Sprünge, vier
   Original-Alphabete mit 24 Buchstaben: 38 Sprünge. Die artista 185 **schneidet nicht** (DFL `trims_for_jump = 0`) –
   jeder Sprung ist ein Faden, der von Hand abgeschnitten werden muss. Das ist der größte praktische Qualitätsverlust.
-  Das Original kennt dafür im Dialog „Connectors“ den **Verbindertyp „Run“** (Jump/Run) – im Kern **nicht umgesetzt**,
-  Tag und Wegführung noch nicht analysiert.
+  Das Original kennt dafür im Dialog „Connectors“ den **Verbindertyp „Run“** (Jump/Run). **Umgesetzt am 22.11.2026
+  (N10):** Tag 0x2805, Werte 0x2711/0x2712 je Verbinder nach dem Objekt und im Objekt. Wählbar sind `sprung`, `lauf`
+  und `verdeckt` (eigene Erweiterung: Lauf nur unter später gestickten Flächen). Details in Bericht 01 §1a.
+  Standard bleibt Sprung wie im Original.
 - **Bild umwandeln** (`stick-vektor`, Auto Digitizer) setzt `kuerzeste_verbindung` nicht – laut Handbuch nutzt gerade
   der Auto Digitizer Closest Join.
 - **Blackwork Run** (Linien eines Netzes in einem Zug, jede Kante höchstens zweimal = Euler-Weg): im Original vorhanden
@@ -123,7 +125,7 @@ Gruppe rückwärts, dann die Säulen vorwärts.
 |---|---|---|---|---|
 | 1 | **Kalibrierblatt am Gerät** (siehe §1) auf 2 Stoffen sticken und messen: Verzug, Lücken Umriss/Füllung, halten die Vernähstiche | entscheidet, ob §1 überhaupt nötig ist | klein (Design vorbereitet: `stickprogramm/beispiele/kalibrierblatt.json`, ROADMAP Vor Ort V12/V13; Person vor Ort) | Gerätetest = höchste Quelle |
 | 2 | **Bild umwandeln mit Closest Join** | kürzere Verbindungen, weniger Fäden | sehr klein | Handbuch (Auto Digitizer), Code FindExitEntry |
-| 3 | **Verbindertyp „Run“** analysieren (Tag im Dialog „Connectors“, Wegführung in MOD1) und umsetzen, zuerst zwischen Buchstaben | weniger Sprungfäden – auf der 185 der größte Gewinn, weil sie nicht schneidet | mittel | Original-Dialog vorhanden |
+| 3 | ✅ 22.11. **Verbindertyp „Run“** (Tag 0x2805, Bericht 01 §1a; `einstellungen.verbinder.art`/`innen_art`: sprung/lauf/verdeckt) | weniger Sprungfäden – auf der 185 der größte Gewinn, weil sie nicht schneidet | mittel | Original-Dialog vorhanden |
 | 4 | **Blackwork Run** (Euler-Weg über Liniennetze, 4b.9) | Linienzeichnungen in einem Zug | mittel | Handbuch S. 133 |
 | 5 | Zug-/Schubausgleich nach §1 – nur wenn #1 Verzug zeigt | Formtreue auf Strick | mittel | eigene Erweiterung, kalibriert |
 | 6 | Wave Effect | gestalterisch | mittel–groß | Handbuch Kap. 24/26 |

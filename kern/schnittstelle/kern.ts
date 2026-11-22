@@ -896,6 +896,14 @@ export type EinstellungenJson = {
      */
     anfang_verbinder_ab?: number;
     /**
+     * Verbindertyp zum nächsten Objekt („Connector After Object“ 0x2803, Tag 0x2805; in allen 22 Stilen 0 = Jump):
+     * `sprung` wie das Original, `lauf` = „Run“ (gerader Laufstich, kein Vernähen davor – im Original sind die
+     * Tie-Off-Felder bei „Run“ gesperrt, DIALOG.DLL 0x10036ea0), `verdeckt` = eigene Erweiterung: Lauf nur, wo später
+     * gestickte Flächen ihn ganz bedecken, sonst Sprung. Bei Farbwechsel immer Sprung.
+     * @default "sprung"
+     */
+    art?: "sprung" | "lauf" | "verdeckt";
+    /**
      * Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …
      * @default true
      */
@@ -915,6 +923,22 @@ export type EinstellungenJson = {
      * @default true
      */
     ende_vor_trim_farbwechsel?: boolean;
+    /**
+     * Verbindertyp innerhalb des Objekts – zwischen Teilen eines Objekts, z. B. Buchstaben eines Textes („Connector
+     * Inside Object“ 0x2804, Tag 0x2805 = 0 = Jump); Werte wie `art`
+     * @default "sprung"
+     */
+    innen_art?: "sprung" | "lauf" | "verdeckt";
+    /**
+     * Stichlänge des Lauf-Verbinders innerhalb des Objekts (0x2804 → 0x2711 = 1,8 mm, wie die Laufwege in Flächen)
+     * @default 1.8
+     */
+    innen_lauf_laenge?: number;
+    /**
+     * Stichlänge des Lauf-Verbinders zum nächsten Objekt (0x2803 → 0x2711 = 12,7 mm, Feld neben „Run“)
+     * @default 12.7
+     */
+    lauf_laenge?: number;
     /**
      * „Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht
      * @default false

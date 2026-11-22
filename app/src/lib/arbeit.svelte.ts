@@ -172,6 +172,19 @@ const ENTPRELLEN_MS = 140;
 const ZUSAMMENFASSEN_MS = 900;
 const VERLAUF_MAX = 200;
 
+export type VerbinderArt = "sprung" | "lauf" | "verdeckt";
+export const VERBINDER_NAME: Record<VerbinderArt, string> = {
+  sprung: "Sprung (wie das Original)",
+  verdeckt: "Laufstich, wo verdeckt",
+  lauf: "Laufstich überall",
+};
+export const VERBINDER_HILFE: Record<VerbinderArt | "gemischt", string> = {
+  sprung: "die 185 schneidet nicht – jeder Sprung ist ein Faden zum Abschneiden",
+  verdeckt: "Laufstich nur, wo später gestickte Flächen ihn bedecken, sonst Sprung",
+  lauf: "kein Faden zum Abschneiden; der Laufstich bleibt sichtbar, wo nichts ihn bedeckt",
+  gemischt: "zwischen und in Objekten verschieden – siehe Reiter Einzelwerte",
+};
+
 class Arbeit {
   /** das Design, das die Oberfläche bearbeitet */
   design = $state<DesignJson>(leeresDesign());
@@ -232,6 +245,32 @@ class Arbeit {
       d.rahmen = name;
       if (r?.eigen) d.eigener_rahmen = { ...r.eigen };
       else delete d.eigener_rahmen;
+    });
+  }
+
+  /**
+   * Verbindertyp (N10, Dialog „Connectors“ des Originals: Jump/Run): einfach = für Verbinder zwischen und in Objekten
+   * gleich; getrennt einstellbar unter Einzelwerte (`einstellungen.verbinder.art` / `innen_art`).
+   */
+  get verbinderArt(): VerbinderArt | "gemischt" {
+    const v = this.design.einstellungen?.verbinder;
+    const a = v?.art ?? "sprung";
+    return a === (v?.innen_art ?? "sprung") ? a : "gemischt";
+  }
+
+  verbinderSetzen(v: VerbinderArt) {
+    this.aendern((d) => {
+      const e = (d.einstellungen ??= {});
+      const vb = (e.verbinder ??= {});
+      if (v === "sprung") {
+        delete vb.art;
+        delete vb.innen_art;
+      } else {
+        vb.art = v;
+        vb.innen_art = v;
+      }
+      if (!Object.keys(vb).length) delete e.verbinder;
+      if (!Object.keys(e).length) delete d.einstellungen;
     });
   }
 

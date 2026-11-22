@@ -2,7 +2,7 @@
   // Einfacher Modus: Assistent in 4 Schritten (UEBERGABE §2/§3 „Assistent“). Jede Eingabe ändert das Design-JSON;
   // Stiche, Größe, Garne und Prüfungen kommen aus dem Kern (`design_berechnen`).
   import type { ObjektJson, TextJson, TtfJson, MonogrammJson, Transformation, RahmenInfo } from "$kern/kern";
-  import { arbeit } from "./arbeit.svelte";
+  import { arbeit, VERBINDER_HILFE, VERBINDER_NAME, type VerbinderArt } from "./arbeit.svelte";
   import { designEinfuegen, expExportieren, oeffnen, speichern } from "./dateien.svelte";
   import Icon from "./Icon.svelte";
   import { ART, IC } from "./icons";
@@ -741,6 +741,14 @@
           <div><span class="mut small">Farben</span><b>{e.farben.length}</b></div>
           <div><span class="mut small">Größe</span><b>{zahlFest(e.statistik.breite)} × {zahlFest(e.statistik.hoehe)} mm</b></div>
           <div title="geschätzt: 0,4 s je Stich (keine Quelle)"><span class="mut small">Stickzeit*</span><b>≈ {ganz((e.statistik.stiche * 0.4) / 60)} min</b></div>
+        </div>
+        <div class="field" style="margin-bottom:14px">
+          <label for="averb">Verbindungsfäden · {ganz(e.statistik.spruenge)} {e.statistik.spruenge === 1 ? "Sprung" : "Sprünge"}</label>
+          <select id="averb" class="input" value={arbeit.verbinderArt} onchange={(ev) => arbeit.verbinderSetzen((ev.currentTarget as HTMLSelectElement).value as VerbinderArt)}>
+            {#each Object.entries(VERBINDER_NAME) as [w, l] (w)}<option value={w}>{l}</option>{/each}
+            {#if arbeit.verbinderArt === "gemischt"}<option value="gemischt" disabled>eigene Werte (Experte → Einzelwerte)</option>{/if}
+          </select>
+          <span class="mut small">{VERBINDER_HILFE[arbeit.verbinderArt]}</span>
         </div>
       {/if}
       <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:14px">

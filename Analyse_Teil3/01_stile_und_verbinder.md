@@ -46,6 +46,68 @@ Die artista 185 schneidet nicht (DFL `trims_for_jump = 0`); „Trim“ zählt nu
 Der Designanfang wird wie „nach Trim“ behandelt (Annahme, mittel: es gibt keine Option „Tie In First Object“, wohl
 aber „Always Tie Off Last Object“).
 
+## 1a. Verbindertyp Jump / Run (Connector Type and Values) — Sicherheit: hoch (Code, Stilwerte), mittel (Bedeutung 0x2711)
+Gelesen am 22.11.2026 (Nachtauftrag N10) in DIALOG.DLL, MOD1.DLL und den 22 Stilen von NORMAL.AMT:
+- **Zwei Verbinder je Stil:** Die Liste 0x2734 enthält **0x2803 „Connector After Object“** und **0x2804 „Connector Inside
+  Object“** mit je einem eigenen Satz 0x272a. Die Auswahlliste 1686 oben im Dialog wird aus der Tabelle DIALOG.DLL
+  0x1017fa30 gefüllt: `[0x2803, STR 2949]`, `[0x2804, STR 2950]`. RESENU: STR 2949 „Connector After Object“, STR 2950
+  „Connector Inside Object“.
+- **Typ = Tag 0x2805** (DIALOG.DLL 0x10036450):
+  - Wert 0 → Knopf „Jump“ (1704) gedrückt;
+  - sonst → „Run“ (1706);
+  - Flag `[+5] & 0x20` = gemischte Auswahl.
+  - MOD1 legt 0x2805 im Verbinder-Satz an (0x101f739e) und liest ihn zusammen mit 0x2711/0x2712 (0x102001cd).
+- **Felder** (DIALOG.DLL 0x100360a0):
+  - Eingabe 1691 neben „Jump“ = **0x2712**;
+  - Eingabe 1688 neben „Run“ = **0x2711**.
+- **Sperren** (DIALOG.DLL 0x10036ea0):
+  - Bei „Jump“ ist nur 1691 offen. Bei „Run“ ist nur 1688 offen.
+  - Mit „Run“ sind außerdem die Gruppen **Trim** (1431–1433) und **Tie Off** (1423–1425) gesperrt.
+  - Tie In bleibt offen.
+
+| Satz | 0x2805 Typ | 0x2712 (Jump) | 0x2711 (Run) | Vernähen / Trim |
+|---|---|---|---|---|
+| 0x2803 nach dem Objekt | **0 = Jump** (alle 22 Stile) | 7,0 mm (1260) | **12,7 mm** (2286) | wie Abschnitt 1 |
+| 0x2804 im Objekt | **0 = Jump** (alle 22 Stile) | 7,0 mm | **1,8 mm** (324) | alles aus (0x2753/0x2750/0x272d/0x2752/0x2733/0x272c = 0), Trim ab 2,0 mm (0x272e = 360) |
+
+Handbuch S. 126/127:
+- „Connectors can be jumps or run stitches.“
+- „Long jump connectors have needle jumps of 7mm along their length“
+- „The default connector jump length is the same as that set for Auto Jump“
+
+Damit ist 0x2712 die Sprunglänge (hoch). 0x2711 ist bei „Run“ nach Lage und Werten die Stichlänge des Laufs (mittel):
+- Im Objekt 1,8 mm, wie die Laufwege in Flächen (Abschnitt 4).
+- Nach dem Objekt 12,7 mm = längster Stich.
+
+Wie MOD1 einen Run-Verbinder genau führt, ist nicht gelesen (gerade Linie oder Weg um Flächen herum). Das Original
+stickt ohnehin standardmäßig Sprünge.
+
+**Umsetzung im Kern** (`einstellungen.verbinder`, `nachbearbeitung::wege_verbinden_zusatz`):
+- `art` = Typ zum nächsten Objekt (0x2803) und `innen_art` = Typ im Objekt (0x2804). Ein Verbinder gilt als „im
+  Objekt“, wenn beide Teile zum selben Objekt gehören, z. B. Buchstaben eines Textes.
+- Werte:
+  - `sprung` (Standard = Original);
+  - `lauf` (Run);
+  - `verdeckt` – **eigene Erweiterung**: Lauf nur, wo die Strecke ganz unter Flächen liegt, die danach gestickt werden.
+    Bei einem Verbinder zum nächsten Objekt zählt dieses Objekt mit, im Objekt nur die späteren Teile. Die bedeckten
+    Flächen kommen aus `aussparen::bedeckt`, verkleinert um 0,3 mm; die Enden bleiben je 0,5 mm frei; geprüft wird alle
+    0,5 mm.
+- `lauf_laenge` 12,7 mm und `innen_lauf_laenge` 1,8 mm wie 0x2711. Der Lauf ist gerade, in gleich lange Stiche geteilt
+  (eigene Festlegung).
+- Vernähen:
+  - Vor einem Lauf-Verbinder wird nicht vernäht – Tie Off ist im Original bei „Run“ gesperrt.
+  - Nach ihm nur bei „immer vernähen“. Ein Lauf ist kein langer Verbinder und kein Trim (eigene Festlegung, mittel).
+- Bei Farbwechsel bleibt es immer ein Sprung.
+- Stichdaten aus fremden Dateien behalten ihre Sprünge.
+- Noch nicht nachgebaut: Im Original hat der Verbinder **im** Objekt eigene Vernäh-Werte (alles aus). Der Kern nutzt
+  für beide die Werte „nach dem Objekt“ wie bisher – Messung an den Musterdesigns offen.
+
+Wirkung (22.11.2026):
+- Testdesign `vergleich_beispiel`: 9 Sprünge → 5 mit `lauf`.
+- Lorbeer-Rahmen aus SVG (18 Satinlinien): 19 → 3.
+- `verdeckt` ändert dort nichts, weil keine spätere Fläche die Wege bedeckt. Es wirkt bei übereinanderliegenden Flächen,
+  z. B. Details auf einem Hintergrund.
+
 ## 2. Läufe der Unterlagen — Sicherheit: hoch (Werte), hoch (Bedeutung „variabel“ über Dialog 1819)
 *Korrektur 19.11.2026:* 0x2746 ist der **Mittellauf (Center Run)**, 0x2747 der **Edge Walk** – bisher vertauscht; Belege in [04](04_messungen_satin.md) §2.
 Alle Unterlagen-Läufe haben „Variable Run Length“ = 1 (0x271e) mit eigenem Mindeststich (0x2767) und Sehnenabstand (0x2768):

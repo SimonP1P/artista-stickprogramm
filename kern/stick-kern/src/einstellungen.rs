@@ -421,6 +421,41 @@ pub struct VerbinderEinstellung {
     pub vernaeh_stichlaenge: f64,
     /// Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel)
     pub vernaeh_stiche: usize,
+    /// Verbindertyp zum nächsten Objekt („Connector After Object“ 0x2803, Tag 0x2805; in allen 22 Stilen 0 = Jump):
+    /// `sprung` wie das Original, `lauf` = „Run“ (gerader Laufstich, kein Vernähen davor – im Original sind die
+    /// Tie-Off-Felder bei „Run“ gesperrt, DIALOG.DLL 0x10036ea0), `verdeckt` = eigene Erweiterung: Lauf nur, wo später
+    /// gestickte Flächen ihn ganz bedecken, sonst Sprung. Bei Farbwechsel immer Sprung.
+    #[serde(default)]
+    pub art: VerbinderArt,
+    /// Stichlänge des Lauf-Verbinders zum nächsten Objekt (0x2803 → 0x2711 = 12,7 mm, Feld neben „Run“)
+    #[serde(default = "lauf_laenge_nach")]
+    pub lauf_laenge: f64,
+    /// Verbindertyp innerhalb des Objekts – zwischen Teilen eines Objekts, z. B. Buchstaben eines Textes („Connector
+    /// Inside Object“ 0x2804, Tag 0x2805 = 0 = Jump); Werte wie `art`
+    #[serde(default)]
+    pub innen_art: VerbinderArt,
+    /// Stichlänge des Lauf-Verbinders innerhalb des Objekts (0x2804 → 0x2711 = 1,8 mm, wie die Laufwege in Flächen)
+    #[serde(default = "lauf_laenge_innen")]
+    pub innen_lauf_laenge: f64,
+}
+
+auswahl! {
+    /// Verbindertyp (Dialog „Connectors“, Knöpfe „Jump“/„Run“ = Tag 0x2805; `verdeckt` = eigene Erweiterung)
+    #[derive(Default)]
+    pub enum VerbinderArt {
+        #[default]
+        Sprung = "sprung",
+        Lauf = "lauf",
+        Verdeckt = "verdeckt",
+    }
+}
+
+fn lauf_laenge_nach() -> f64 {
+    12.7
+}
+
+fn lauf_laenge_innen() -> f64 {
+    1.8
 }
 
 impl Default for VerbinderEinstellung {
@@ -438,6 +473,10 @@ impl Default for VerbinderEinstellung {
             trim_ab: 3.0,
             vernaeh_stichlaenge: 1.0,
             vernaeh_stiche: 2,
+            art: VerbinderArt::Sprung,
+            lauf_laenge: lauf_laenge_nach(),
+            innen_art: VerbinderArt::Sprung,
+            innen_lauf_laenge: lauf_laenge_innen(),
         }
     }
 }

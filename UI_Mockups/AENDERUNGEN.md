@@ -15,6 +15,23 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Verbinder als Laufstich (Nachtauftrag N10, Bericht 22 #3; Commit COMMIT)
+- **Neue Einstellungen** unter `einstellungen.verbinder` (Design und je Objekt):
+  - `art` – Verbinder zum nächsten Objekt;
+  - `innen_art` – Verbinder zwischen Teilen eines Objekts, z. B. Buchstaben;
+  - Werte jeweils `sprung` (Standard, wie das Original), `lauf` (Run), `verdeckt` (Lauf nur unter später gestickten
+    Flächen);
+  - `lauf_laenge` (12,7 mm) und `innen_lauf_laenge` (1,8 mm).
+- Lauf-Verbinder sind normale Stiche in `design_berechnen`. `statistik.spruenge` sinkt entsprechend. Vor einem Lauf wird
+  nicht vernäht.
+- **Oberfläche (umgesetzt):**
+  - Schritt 3 „Prüfen & Garn“: Auswahl „Verbindungsfäden“ mit der Zahl der Sprünge;
+  - Inspektor Reiter Design: Zeile „Verbinder“;
+  - Helfer `arbeit.verbinderArt` und `arbeit.verbinderSetzen` setzen `art` und `innen_art` gemeinsam;
+  - verschiedene Werte zeigen „eigene Werte“;
+  - Einzelwerte zeigen alle vier Felder.
+- Parameterkatalog: 256 Parameter.
+
 ## 22.11.2026 – Kreuzstich (Nachtauftrag N9, 4b.15; Commit c47aa42)
 - **Neue Objektart `kreuzstich`:** `umriss`/`loecher` (wahlweise), `zellen` ([[Spalte, Reihe]], zusätzlich),
   `kreuz` (`voll` … `knoten`, 10 Arten), `ecke` (`unten_links` … `oben_rechts`), `richtung` (`steigend`/`fallend`),

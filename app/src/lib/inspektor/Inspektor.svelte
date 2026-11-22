@@ -3,7 +3,7 @@
   // dem Schema des Kerns; welche Felder im einfachen Teil stehen, legt die Liste E_FELDER fest (UEBERGABE §3 „E“),
   // alles Weitere erscheint unter „Stichart – Feinheiten“ mit der Marke X.
   import { kern, type DesignJson, type ObjektJson, type Transformation, type UmrandungJson, type WirksamerWert } from "$kern/kern";
-  import { arbeit, MIT_FLAECHE, WECHSELBAR } from "../arbeit.svelte";
+  import { arbeit, MIT_FLAECHE, VERBINDER_HILFE, VERBINDER_NAME, WECHSELBAR, type VerbinderArt } from "../arbeit.svelte";
   import { FUELLUNG, STICHART_NAME, UMRISS } from "../einfuegen";
   import Icon from "../Icon.svelte";
   import { ART, IC } from "../icons";
@@ -538,6 +538,14 @@
         <div class="frow">
           <label class="fl" for="dkv">Kürzeste Verbindung<span class="xt">X</span></label>
           <div class="fc"><input id="dkv" type="checkbox" checked={arbeit.design.kuerzeste_verbindung === true} onchange={(ev) => arbeit.aendern((d) => (d.kuerzeste_verbindung = (ev.currentTarget as HTMLInputElement).checked))} style="width:16px; height:16px" /> Closest Join</div>
+        </div>
+        <div class="frow">
+          <label class="fl" for="dvb" title="Dialog „Connectors“ des Originals: Jump oder Run">Verbinder</label>
+          <div class="fc"><select id="dvb" class="input sm" value={arbeit.verbinderArt} onchange={(ev) => arbeit.verbinderSetzen((ev.currentTarget as HTMLSelectElement).value as VerbinderArt)}>
+            {#each Object.entries(VERBINDER_NAME) as [w, l] (w)}<option value={w}>{l}</option>{/each}
+            {#if arbeit.verbinderArt === "gemischt"}<option value="gemischt" disabled>eigene Werte (Einzelwerte)</option>{/if}
+          </select></div>
+          <div class="fhelp">{VERBINDER_HILFE[arbeit.verbinderArt]}</div>
         </div>
       </Abschnitt>
       {#if e}

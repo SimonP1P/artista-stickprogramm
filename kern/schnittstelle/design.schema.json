@@ -1262,6 +1262,16 @@
               "format": "double",
               "type": "number"
             },
+            "art": {
+              "default": "sprung",
+              "description": "Verbindertyp zum nächsten Objekt („Connector After Object“ 0x2803, Tag 0x2805; in allen 22 Stilen 0 = Jump):\n`sprung` wie das Original, `lauf` = „Run“ (gerader Laufstich, kein Vernähen davor – im Original sind die\nTie-Off-Felder bei „Run“ gesperrt, DIALOG.DLL 0x10036ea0), `verdeckt` = eigene Erweiterung: Lauf nur, wo später\ngestickte Flächen ihn ganz bedecken, sonst Sprung. Bei Farbwechsel immer Sprung.",
+              "enum": [
+                "sprung",
+                "lauf",
+                "verdeckt"
+              ],
+              "type": "string"
+            },
             "ende_bei_langem_verbinder": {
               "default": true,
               "description": "Tie Off If: „Next Connector Longer Than“ (0x272c = 1) …",
@@ -1282,6 +1292,28 @@
               "default": true,
               "description": "Tie Off If: „Before Trim / Color Change“ (0x2733 = 1)",
               "type": "boolean"
+            },
+            "innen_art": {
+              "default": "sprung",
+              "description": "Verbindertyp innerhalb des Objekts – zwischen Teilen eines Objekts, z. B. Buchstaben eines Textes („Connector\nInside Object“ 0x2804, Tag 0x2805 = 0 = Jump); Werte wie `art`",
+              "enum": [
+                "sprung",
+                "lauf",
+                "verdeckt"
+              ],
+              "type": "string"
+            },
+            "innen_lauf_laenge": {
+              "default": 1.8,
+              "description": "Stichlänge des Lauf-Verbinders innerhalb des Objekts (0x2804 → 0x2711 = 1,8 mm, wie die Laufwege in Flächen)",
+              "format": "double",
+              "type": "number"
+            },
+            "lauf_laenge": {
+              "default": 12.7,
+              "description": "Stichlänge des Lauf-Verbinders zum nächsten Objekt (0x2803 → 0x2711 = 12,7 mm, Feld neben „Run“)",
+              "format": "double",
+              "type": "number"
             },
             "letztes_objekt_vernaehen": {
               "default": false,

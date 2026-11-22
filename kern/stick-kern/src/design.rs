@@ -8,7 +8,7 @@ use crate::aussparen::{Aussparen, Teil, bedeckt, flaeche_minus};
 use crate::einstellungen::{Einstellungen, SatinEinstellung, TatamiEinstellung, fuer_stoff};
 use crate::geometrie::{Linie, Punkt, abstand, abstand_punkt_strecke, im_polygon, p, zwischen};
 use crate::knopfloch::{KnopflochVorgabe, Vorlage, knopfloch_objekt};
-use crate::nachbearbeitung::{bernina_regeln, wege_verbinden_je_teil};
+use crate::nachbearbeitung::bernina_regeln;
 use crate::rahmen::{Rahmen, rahmen};
 use crate::schrift::{
     Alphabet, Buchstabe, SchriftStichart, TextVorgabe, TextZusatz, buchstaben_zahl, text_objekte_idx, text_setzen_nr,
@@ -2396,8 +2396,9 @@ impl Design {
     /// Buchstabe) – für „einzelne Buchstaben“ per Klick in der Oberfläche (W9).
     pub fn berechnen_mit_buchstaben(&self) -> Result<(StichFolge, Vec<usize>), String> {
         let (objekte, _, herkunft, buchstabe) = self.aufgeloest_mit_herkunft()?;
-        // je Teil: Farbe, Wege, eigene Auto-Jump-Werte, Nummer des Objekts im Design, Nummer des Buchstabens
-        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>, usize, usize)>;
+        // je Teil: Farbe, Wege, eigene Auto-Jump-Werte, Nummer des Objekts im Design, Nummer des Buchstabens, Nummer
+        // des aufgelösten Objekts
+        type Teile = Vec<(String, Vec<Linie>, Option<(f64, f64)>, usize, usize, usize)>;
         let teile_ab = |start: Punkt| -> Result<Teile, String> {
             let mut teile = Vec::new();
             let mut pos = start;
@@ -2462,7 +2463,7 @@ impl Design {
                 };
                 if let Some(letzter) = wege.last().and_then(|w| w.last()) {
                     pos = *letzter;
-                    teile.push((obj.farbe.clone(), wege, eigen, *h, buchstabe[k]));
+                    teile.push((obj.farbe.clone(), wege, eigen, *h, buchstabe[k], k));
                 }
             }
             Ok(teile)
@@ -2470,7 +2471,7 @@ impl Design {
         let null = p(0.0, 0.0);
         let mut teile = teile_ab(null)?;
         // Mitte bzw. Unterkante des Designs aus den Stichen (umschließendes Rechteck)
-        let punkte = || teile.iter().flat_map(|(_, w, _, _, _)| w.iter().flatten());
+        let punkte = || teile.iter().flat_map(|(_, w, _, _, _, _)| w.iter().flatten());
         let (x0, x1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.x), b.max(q.x)));
         let (y0, y1) = punkte().fold((f64::MAX, f64::MIN), |(a, b), q| (a.min(q.y), b.max(q.y)));
         let (mitte, unten) = if x0 <= x1 {
@@ -2480,7 +2481,7 @@ impl Design {
         };
         let erster = teile
             .first()
-            .and_then(|(_, w, _, _, _)| w.first())
+            .and_then(|(_, w, _, _, _, _)| w.first())
             .and_then(|l| l.first())
             .copied();
         let start = match self.start {
@@ -2494,11 +2495,14 @@ impl Design {
         }
         let herkunft: Vec<usize> = teile.iter().map(|t| t.3).collect();
         let buchstabe_teil: Vec<usize> = teile.iter().map(|t| t.4).collect();
-        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _, _)| ((f, w), a)).unzip();
+        let aufgeloest: Vec<usize> = teile.iter().map(|t| t.5).collect();
+        let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _, _, _)| ((f, w), a)).unzip();
         // Verbinder je Teil: eigene Werte des Objekts (im Original trägt jedes Objekt seinen Verbinder 0x272a).
         // Stichdaten aus fremden Dateien haben ihr eigenes Vernähen – dort keins dazu (`stichdaten.rs`)
         let ohne_vernaehen = crate::einstellungen::VerbinderEinstellung {
             vernaeh_stiche: 0,
+            art: crate::einstellungen::VerbinderArt::Sprung,
+            innen_art: crate::einstellungen::VerbinderArt::Sprung,
             ..self.einstellungen.verbinder.clone()
         };
         let verbinder: Vec<Option<&crate::einstellungen::VerbinderEinstellung>> = herkunft
@@ -2508,7 +2512,30 @@ impl Design {
                 _ => self.objekt_einstellungen.get(h).map(|e| &e.verbinder),
             })
             .collect();
-        let folge = wege_verbinden_je_teil(&teile, &self.einstellungen.verbinder, start, &auto_jump, &verbinder);
+        // Verbindertyp „verdeckt“: bedeckte Flächen je Teil nur berechnen, wenn ein Verbinder ihn nutzt
+        let verdeckt = |v: &crate::einstellungen::VerbinderEinstellung| {
+            use crate::einstellungen::VerbinderArt::Verdeckt;
+            v.art == Verdeckt || v.innen_art == Verdeckt
+        };
+        let abdeckung = (verdeckt(&self.einstellungen.verbinder) || verbinder.iter().flatten().any(|v| verdeckt(v)))
+            .then(|| {
+                crate::nachbearbeitung::Abdeckung::neu(
+                    aufgeloest
+                        .iter()
+                        .map(|&k| {
+                            crate::aussparen::bedeckt(&objekte[k].art, crate::nachbearbeitung::VERDECKT_EINZUG_MM)
+                        })
+                        .collect(),
+                )
+            });
+        let zusatz = crate::nachbearbeitung::Zusatz {
+            auto_jump: &auto_jump,
+            eigene: &verbinder,
+            objekt: &herkunft,
+            abdeckung: abdeckung.as_ref(),
+        };
+        let folge =
+            crate::nachbearbeitung::wege_verbinden_zusatz(&teile, &self.einstellungen.verbinder, start, &zusatz);
         let mut folge = bernina_regeln(&folge);
         // Teil → Buchstabe, Teil → Objekt im Design
         let mut buchstabe: Vec<usize> = folge.objekt.iter().map(|&t| buchstabe_teil[t]).collect();
@@ -3345,6 +3372,7 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
 mod tests {
     use super::*;
     use crate::einstellungen::fuer_stoff;
+    use crate::nachbearbeitung::Abdeckung;
 
     fn saeule(x0: f64, x1: f64, y0: f64, y1: f64, waagrecht: bool) -> (Objekt, Linie) {
         // Seiten A/B und Umriss eines Rechtecks; waagrecht: von x0 nach x1, sonst von y0 nach y1
@@ -3883,6 +3911,67 @@ mod tests {
     }
 
     /// Werte je Objekt (ROADMAP 4b.16): Stil-Werte am einzelnen Objekt überschreiben – nur dieses Objekt ändert sich
+    #[test]
+    fn verbinder_lauf() {
+        // zwei Flächen gleicher Farbe; B liegt rechts daneben oder deckt A ganz ab
+        let design = |art: &str, b: &str| {
+            Design::aus_json(&format!(
+                r##"{{"einstellungen": {{"verbinder": {{"art": "{art}"}}}}, "objekte": [
+                    {{"art": "tatami", "umriss": {{"rechteck": {{"mitte": [0, 0], "breite": 8, "hoehe": 8}}}},
+                      "unterlage": false}},
+                    {{"art": "tatami", "umriss": {{"rechteck": {b}}}, "unterlage": false}}]}}"##
+            ))
+            .unwrap()
+        };
+        let daneben = r#"{"mitte": [40, 0], "breite": 20, "hoehe": 20}"#;
+        let darueber = r#"{"mitte": [3, 3], "breite": 30, "hoehe": 30}"#;
+        let spruenge = |d: &Design| d.berechnen().unwrap().anzahl(crate::Art::Sprung);
+        let laengster = |d: &Design| {
+            let f = d.berechnen().unwrap();
+            f.stiche
+                .windows(2)
+                .filter(|w| w[1].art == crate::Art::Stich)
+                .map(|w| abstand(w[0].p(), w[1].p()))
+                .fold(0.0, f64::max)
+        };
+        let sprung = spruenge(&design("sprung", daneben));
+        let lauf = design("lauf", daneben);
+        assert!(spruenge(&lauf) < sprung, "Lauf statt Sprung: {} gegen {sprung}", spruenge(&lauf));
+        assert!(laengster(&lauf) <= 12.7 + 1e-9);
+        // verdeckt: neben der Fläche bleibt es ein Sprung, unter der späteren Fläche wird es ein Lauf
+        assert_eq!(spruenge(&design("verdeckt", daneben)), sprung);
+        assert!(spruenge(&design("verdeckt", darueber)) < spruenge(&design("sprung", darueber)));
+        // Vernähen: mit Sprung Anfang A, Ende A, Anfang B (je 4 Stiche); mit Lauf nur Anfang A
+        let vernaeht = |art: &str| {
+            let stiche = |v: &str| {
+                Design::aus_json(&format!(
+                    r##"{{"einstellungen": {{"verbinder": {{"art": "{art}"{v}}}}}, "objekte": [
+                        {{"art": "lauf", "punkte": [[0, 0], [10, 0]]}}, {{"art": "lauf", "punkte": [[20, 0], [30, 0]]}}]}}"##
+                ))
+                .unwrap()
+                .berechnen()
+                .unwrap()
+                .anzahl(crate::Art::Stich)
+            };
+            stiche("") - stiche(r#", "vernaeh_stiche": 0"#)
+        };
+        assert_eq!(vernaeht("sprung"), 12);
+        assert_eq!(vernaeht("lauf"), 4);
+        // Farbwechsel: immer Sprung
+        let bunt = Design::aus_json(
+            r##"{"einstellungen": {"verbinder": {"art": "lauf"}}, "objekte": [
+                {"art": "lauf", "punkte": [[0, 0], [10, 0]], "farbe": "#ff0000"},
+                {"art": "lauf", "punkte": [[20, 0], [30, 0]], "farbe": "#0000ff"}]}"##,
+        )
+        .unwrap();
+        let f = bunt.berechnen().unwrap();
+        assert!(f.anzahl(crate::Art::Sprung) >= 2, "Farbwechsel mit Sprung");
+        // innerhalb des Objekts: eigener Typ
+        let a = Abdeckung::neu(vec![]);
+        assert!(!a.verdeckt(p(0.0, 0.0), p(10.0, 0.0), 0));
+        assert!(a.verdeckt(p(0.0, 0.0), p(0.8, 0.0), 0), "kurze Verbinder: nur Enden");
+    }
+
     #[test]
     fn werte_je_objekt() {
         let flaeche = |extra: &str| {
