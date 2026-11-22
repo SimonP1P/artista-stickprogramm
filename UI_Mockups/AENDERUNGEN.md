@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Applikation: Vorgaben des Originals, Versatz, Teil-Abdeckung (Nachtauftrag N4, 4b.10; Commit COMMIT_N4)
+## 22.11.2026 – Applikation: Vorgaben des Originals, Versatz, Teil-Abdeckung (Nachtauftrag N4, 4b.10; Commit 00823c2)
 - **Neue Felder** an `applikation`: `versatz` (%, −100 außen … 0 mittig … 100 innen; gilt für Abdeck- und Heftstich,
   bei Blanket ohne Wirkung) und `teilabdeckung` (bool, Partial Appliqué: kein Abdeckstich, wo eine spätere Applikation
   den Rand überdeckt). Bereichsprüfung mit Objektnummer für alle Zahlenfelder der Applikation.
