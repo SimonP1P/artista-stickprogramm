@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Craft Stitches (Nachtauftrag N3, 4b.9; Commit COMMIT_N3)
+## 22.11.2026 – Craft Stitches (Nachtauftrag N3, 4b.9; Commit d956fd2)
 - **Neue Objektarten** (`format.rs`): `rueckstich` (`punkte`, `geschlossen`, `laenge`, `staerke`, `ueberlappung` in %,
   `striche` 3|5), `stielstich` (`punkte`, `geschlossen`, `breite`, `abstand`, `winkel`, `dreifach`, `staerke`),
   `stippling` (`umriss`, `loecher`, `laenge`, `abstand`), `blackwork` (`linien` = Liste von Formen, `stich`
