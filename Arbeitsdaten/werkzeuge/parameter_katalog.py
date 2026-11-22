@@ -27,7 +27,7 @@ def P(id_, gruppe, name, wirkung, *, ebene='design', gilt=(), d=None, o=None, ei
 STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Knit Heavy Weight', 'Terry Medium Weight',
           'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
 ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'satinflaeche', 'tatami', 'muster', 'blanket', 'applikation', 'text',
-        'ttf', 'monogramm', 'knopfloch', 'motivlinie']
+        'ttf', 'monogramm', 'knopfloch', 'motivlinie', 'motivfuellung']
 V = 'Vorschlag (eigene Festlegung)'
 
 # ---------------------------------------------------------------- Design
@@ -362,6 +362,28 @@ P('objekt.motiv.abstand', G, 'Abstand', 'Wiederholabstand (Spacing); Anzahl = Li
 P('objekt.motiv.spiegeln', G, 'Spiegeln', 'Motive auf die andere Seite der Linie', ebene='objekt',
   gilt=['motivlinie'], o='spiegeln', einheit='an/aus', std=False, quelle=V + ' (Handbuch: Orientation)',
   modus='einfach')
+G = 'Motivfüllung'
+Q = 'NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229'
+P('objekt.motivfuellung.satz', G, 'Motivsatz', 'Motivsatz der CD oder eigener Satz', ebene='objekt',
+  gilt=['motivfuellung'], o='satz', einheit='Auswahl', std='Children', quelle=Q + ': 0x27b0 = Children',
+  modus='einfach')
+P('objekt.motivfuellung.motiv', G, 'Motiv', 'Motiv im Satz (Auswahl mit Vorschau)', ebene='objekt',
+  gilt=['motivfuellung'], o='motiv', einheit='Auswahl', std='901', quelle=Q + ': 0x27b1 = 901', modus='einfach')
+P('objekt.motivfuellung.groesse', G, 'Motivgröße', 'Länge der Grundlinie eines Motivs; Höhe und Abstände wachsen mit',
+  ebene='objekt', gilt=['motivfuellung'], o='groesse', einheit='mm', std=None,
+  quelle=Q + ': 0x27df = 2786 = Grundlinie von 901; ohne Angabe wie im Motivsatz', modus='einfach')
+P('objekt.motivfuellung.spaltenabstand', G, 'Spaltenabstand', 'Abstand der Motive in einer Reihe (column spacing)',
+  ebene='objekt', gilt=['motivfuellung'], o='spaltenabstand', einheit='mm', std=None,
+  quelle=Q + ': 0x27b9 = 2781 ≈ Breite des Motivs (15,45 mm); ohne Angabe Breite', modus='experte')
+P('objekt.motivfuellung.reihenabstand', G, 'Reihenabstand', 'Abstand der Reihen (row spacing)', ebene='objekt',
+  gilt=['motivfuellung'], o='reihenabstand', einheit='mm', std=None,
+  quelle=Q + ': 0x27b6 = 1000 ≈ Höhe des Motivs (5,55 mm); ohne Angabe Höhe', modus='experte')
+P('objekt.motivfuellung.versatz', G, 'Reihenversatz', 'jede Reihe um so viel weiter verschoben (row offset)',
+  ebene='objekt', gilt=['motivfuellung'], o='versatz', einheit='mm', std=0,
+  quelle=Q + ': Leitmotiv-Matrix 0x3abe = Einheitsmatrix (kein Versatz)', modus='experte')
+P('objekt.motivfuellung.winkel', G, 'Drehung der Reihen', 'dreht das Raster (Stichwinkel wirkt nicht)',
+  ebene='objekt', gilt=['motivfuellung'], o='winkel', einheit='°', std=0, bereich=[-180, 180],
+  quelle=Q + ': „The stitch angle has no effect on pattern layout“', modus='experte')
 
 # ---------------------------------------------------------------- Schrift
 G = 'Schrift'

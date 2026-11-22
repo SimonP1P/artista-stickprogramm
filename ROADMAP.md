@@ -36,7 +36,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | # | Schritt | Stand |
 |---|---|---|
 | N0 | Formen mit der Maus zeichnen (Experte): Klick Ecke / Rechtsklick Kurve, ⌫, Enter, Esc; Kreis/Oval, Rechteck (Strg = Quadrat), Säule paarweise; Kern-Form `pfad`; Knoten-Werkzeug Rechtsklick Ecke ↔ Kurve | ✅ 22.11. |
-| N1 | 4b.7 Motivfüllung + eigene Motive | ⬜ |
+| N1 | 4b.7 Motivfüllung (Standard Children 901 wie das Original, Abschneiden nach Handbuch) + eigene Motive (Anordnen → „Als Motiv speichern …“, löschen im Motiv-Dialog) | ✅ 22.11. |
 | N2 | 4b.8 Effekte (Textured Edge, Wave, Gradient/Open Fill, Color Blending) | ⬜ |
 | N3 | 4b.9 Craft Stitches (Blackwork, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling) | ⬜ |
 | N4 | 4b.10 Applikation Rest (Versatz, Partial Appliqué) | ⬜ |

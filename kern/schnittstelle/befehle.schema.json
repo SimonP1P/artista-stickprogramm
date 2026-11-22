@@ -3639,6 +3639,253 @@
       ],
       "type": "object"
     },
+    "MotivLoeschenEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe für `motiv_loeschen`.",
+      "properties": {
+        "motiv": {
+          "description": "Motiv im Satz",
+          "type": "string"
+        },
+        "satz": {
+          "description": "eigener Motivsatz",
+          "type": "string"
+        }
+      },
+      "required": [
+        "satz",
+        "motiv"
+      ],
+      "type": "object"
+    },
+    "MotivSpeichernEingabe": {
+      "additionalProperties": false,
+      "description": "Eingabe für `motiv_speichern`.",
+      "properties": {
+        "design": {
+          "$ref": "#/$defs/DesignWert"
+        },
+        "grundlinie": {
+          "default": null,
+          "description": "Bezugspunkte [[x1, y1], [x2, y2]] in mm (Handbuch: „Reference points set the standard orientation … and the\nspacing“). Ohne Angabe: linke und rechte Kante der Objekte auf halber Höhe (eigene Festlegung)",
+          "items": {
+            "items": {
+              "format": "double",
+              "type": "number"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "Name des Motivs im Satz (vorhandenes gleichen Namens wird ersetzt – vorher nachfragen)",
+          "type": "string"
+        },
+        "objekte": {
+          "description": "Nummern der Objekte (ab 0), die zusammen das Motiv bilden (Läufe, Satinsäulen, Flächen)",
+          "items": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "satz": {
+          "description": "Name des eigenen Motivsatzes (neu oder vorhanden; nicht der Name eines Satzes der CD)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "design",
+        "objekte",
+        "satz",
+        "name"
+      ],
+      "type": "object"
+    },
+    "MotivfuellungJson": {
+      "description": "Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsatz wird in parallelen Reihen über die\nFläche wiederholt. Motive, die mehr als zur Hälfte über den Rand ragen, werden am Rand abgeschnitten.",
+      "properties": {
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "groesse": {
+          "default": null,
+          "description": "Länge eines Motivs (Grundlinie) in mm; ohne Angabe: Größe im Motivsatz",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "motiv": {
+          "default": "901",
+          "description": "Motiv im Satz (Standard „901“ wie das Original)",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "reihenabstand": {
+          "default": null,
+          "description": "Abstand der Reihen in mm („row spacing“); ohne Angabe: Höhe des Motivs",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "satz": {
+          "default": "Children",
+          "description": "Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original)",
+          "type": "string"
+        },
+        "spaltenabstand": {
+          "default": null,
+          "description": "Abstand der Motive in einer Reihe in mm („column spacing“); ohne Angabe: Breite des Motivs",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        },
+        "umriss": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "versatz": {
+          "default": 0.0,
+          "description": "Reihenversatz in mm („row offset“): jede Reihe um so viel weiter verschoben als die vorige (0 = Spalten\ngenau untereinander; halber Spaltenabstand = versetzt wie Ziegel)",
+          "format": "double",
+          "type": "number"
+        },
+        "winkel": {
+          "default": 0.0,
+          "description": "Drehung der Reihen in Grad (der Stichwinkel wirkt hier nicht, Handbuch S. 227)",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "umriss"
+      ],
+      "type": "object"
+    },
     "MotivlinieJson": {
       "description": "Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (`motive_liste`) wird entlang der Linie\nwiederholt. Anzahl = Linienlänge / Abstand gerundet, die Motive werden gleichmäßig verteilt (wie das Original).",
       "properties": {
@@ -3804,6 +4051,10 @@
         "datei": {
           "type": "string"
         },
+        "eigen": {
+          "description": "eigener Motivsatz (Datenordner; Motive lassen sich löschen) statt Satz der CD",
+          "type": "boolean"
+        },
         "name": {
           "description": "Name wie im Design-Feld `satz` der Motivlinie",
           "type": "string"
@@ -3811,7 +4062,8 @@
       },
       "required": [
         "name",
-        "datei"
+        "datei",
+        "eigen"
       ],
       "type": "object"
     },
@@ -4361,6 +4613,20 @@
           "properties": {
             "art": {
               "const": "motivlinie",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/MotivfuellungJson",
+          "description": "Motivfüllung (Motiv aus einem Motivsatz in Reihen über die Fläche)",
+          "properties": {
+            "art": {
+              "const": "motivfuellung",
               "type": "string"
             }
           },
@@ -5963,7 +6229,7 @@
       "description": "Stichart eines Objekts wechseln.",
       "properties": {
         "art": {
-          "description": "neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster",
+          "description": "neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster,\nmotivfuellung",
           "type": "string"
         },
         "design": {
@@ -7409,6 +7675,27 @@
         "$ref": "#/$defs/Leer"
       }
     },
+    "motiv_loeschen": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/MotivsatzInfo"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach",
+      "eingabe": {
+        "$ref": "#/$defs/MotivLoeschenEingabe"
+      }
+    },
+    "motiv_speichern": {
+      "ausgabe": {
+        "$ref": "#/$defs/MotivsatzInfo"
+      },
+      "beschreibung": "Ausgewählte Objekte als Motiv in einen eigenen Motivsatz speichern (Create Pattern; Ablage im Datenordner)",
+      "eingabe": {
+        "$ref": "#/$defs/MotivSpeichernEingabe"
+      }
+    },
     "motive_liste": {
       "ausgabe": {
         "items": {
@@ -7416,7 +7703,7 @@
         },
         "type": "array"
       },
-      "beschreibung": "Motivsätze (14 der CD) für die Motivlinie",
+      "beschreibung": "Motivsätze (14 der CD und eigene) für Motivlinie und Motivfüllung",
       "eingabe": {
         "$ref": "#/$defs/Leer"
       }
@@ -7545,7 +7832,7 @@
       "ausgabe": {
         "$ref": "#/$defs/StichartErgebnis"
       },
-      "beschreibung": "Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt",
+      "beschreibung": "Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt",
       "eingabe": {
         "$ref": "#/$defs/StichartEingabe"
       }

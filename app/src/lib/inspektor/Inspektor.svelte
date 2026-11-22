@@ -43,7 +43,10 @@
     applikation: ["abdeckung", "stil"],
     knopfloch: ["typ", "laenge", "winkel"],
     motivlinie: ["motiv", "groesse", "spiegeln", "geschlossen"],
+    motivfuellung: ["motiv", "groesse", "spaltenabstand", "reihenabstand", "versatz", "winkel"],
   };
+  /** Motivfüllung: Winkel und Versatz meinen hier die Reihen */
+  const MOTIVFUELLUNG_NAMEN: Record<string, string> = { winkel: "Drehung der Reihen", versatz: "Reihenversatz" };
   /** an anderer Stelle bearbeitet */
   const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
@@ -266,7 +269,7 @@
             {:else if f.name === "motiv"}
               <div class="frow">
                 <span class="fl">Motiv</span>
-                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "motiv", objekt: i })}><span class="t">{String(o.satz ?? "Heirloom").replace(/^_/, "")} · {String(o.motiv ?? "705")}</span><Icon d={IC.chevronRechts} /></button></div>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "motiv", objekt: i })}><span class="t">{String(o.satz ?? (o.art === "motivfuellung" ? "Children" : "Heirloom")).replace(/^_/, "")} · {String(o.motiv ?? (o.art === "motivfuellung" ? "901" : "705"))}</span><Icon d={IC.chevronRechts} /></button></div>
               </div>
             {:else if f.name === "step_muster"}
               <div class="frow">
@@ -287,7 +290,7 @@
                 <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
-              <Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "motivlinie" && f.name === "groesse" ? "Motivgröße" : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
+              <Feldzeile feld={f} wert={o[f.name]} beschriftung={(o.art === "motivlinie" || o.art === "motivfuellung") && f.name === "groesse" ? "Motivgröße" : o.art === "motivfuellung" ? MOTIVFUELLUNG_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
             {/if}
           {/each}
         </Abschnitt>

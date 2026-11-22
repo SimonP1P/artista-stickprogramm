@@ -45,6 +45,7 @@ export type OffenerDialog =
   | { art: "muster"; objekt: number }
   | { art: "step"; objekt: number }
   | { art: "motiv"; objekt: number }
+  | { art: "motiv_speichern" }
   | { art: "warnung"; vertauscht: number[][]; namen: string[]; vorher: string };
 export type Ansicht = "stiche" | "form" | "abspielen";
 
@@ -102,7 +103,7 @@ export function objektName(o: ObjektJson | undefined, i: number): string {
 /** Objektarten mit Fläche: dort wirkt `umrandung` (Kern: `aussparen::bedeckt`); Linien haben keine */
 export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation"];
 
-export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "tatami", "satinflaeche", "muster"];
+export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "tatami", "satinflaeche", "muster", "motivfuellung"];
 /** Standardname je Stichart (neue Objekte); ein Objekt mit Standardnamen bekommt beim Wechsel den neuen */
 export const STANDARD_NAME: Record<string, string> = {
   lauf: "Laufstich",
@@ -113,6 +114,7 @@ export const STANDARD_NAME: Record<string, string> = {
   tatami: "Fläche",
   satinflaeche: "Satinfläche",
   muster: "Füllmuster",
+  motivfuellung: "Motivfüllung",
 };
 const STANDARD_NAMEN = Object.values(STANDARD_NAME);
 

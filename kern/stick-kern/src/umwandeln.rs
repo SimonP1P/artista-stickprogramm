@@ -82,6 +82,55 @@ fn stuecke(a: &PunktAngabe, out: &mut Vec<Stueck>) {
     }
 }
 
+/// Punktangabe als Umriss aus Bézier-Knoten (wie die Objekte der Alphabete und Motivsätze): Punktlisten → Eckpunkte
+/// ohne Anfasser, Bézierstücke → Anfasser am vorigen und am nächsten Knoten. `abb` bildet mm in die Einheiten des
+/// Umrisses ab (Motive: 1/180 mm).
+pub fn knoten_umriss(a: &PunktAngabe, geschlossen: bool, abb: &dyn Fn(Punkt) -> (f64, f64)) -> crate::schrift::Umriss {
+    use crate::schrift::Knoten;
+    let mut s = Vec::new();
+    stuecke(a, &mut s);
+    let mut knoten: Vec<Knoten> = Vec::new();
+    let anhaengen = |knoten: &mut Vec<Knoten>, q: Punkt, ein: Option<Punkt>| {
+        let k = abb(q);
+        if let Some(l) = knoten.last_mut()
+            && (l.punkt.0 - k.0).hypot(l.punkt.1 - k.1) < 1e-6
+        {
+            if ein.is_some() {
+                l.ein = ein.map(abb);
+            }
+            return;
+        }
+        knoten.push(Knoten {
+            ein: ein.map(abb),
+            punkt: k,
+            aus: None,
+        });
+    };
+    for t in &s {
+        match t {
+            Stueck::Liste(l) => l.iter().for_each(|&q| anhaengen(&mut knoten, q, None)),
+            Stueck::Bezier(b) => {
+                anhaengen(&mut knoten, b[0], None);
+                if let Some(l) = knoten.last_mut() {
+                    l.aus = Some(abb(b[1]));
+                }
+                anhaengen(&mut knoten, b[3], Some(b[2]));
+            }
+        }
+    }
+    // Ring: letzter Knoten = erster → zusammenlegen (Anfasser „ein“ wandert zum ersten)
+    if geschlossen && knoten.len() > 2 {
+        let (a, b) = (knoten[0].punkt, knoten[knoten.len() - 1].punkt);
+        if (a.0 - b.0).hypot(a.1 - b.1) < 1e-6 {
+            let letzter = knoten.pop().unwrap();
+            if letzter.ein.is_some() {
+                knoten[0].ein = letzter.ein;
+            }
+        }
+    }
+    crate::schrift::Umriss { geschlossen, knoten }
+}
+
 fn runden(q: Punkt) -> Value {
     let r = |v: f64| {
         let x = (v * 10_000.0).round() / 10_000.0;

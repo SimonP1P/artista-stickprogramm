@@ -274,6 +274,22 @@ Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (
 | `satz` | string |  | `"Heirloom"` | Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung) |
 | `spiegeln` | boolean |  | `false` | Motive auf die andere Seite der Linie spiegeln |
 
+### `motivfuellung` – Motivfüllung (Motiv aus einem Motivsatz in Reihen über die Fläche)
+
+Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsatz wird in parallelen Reihen über die Fläche wiederholt. Motive, die mehr als zur Hälfte über den Rand ragen, werden am Rand abgeschnitten.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `groesse` | number |  | – | Länge eines Motivs (Grundlinie) in mm; ohne Angabe: Größe im Motivsatz |
+| `loecher` | PunktAngabe[] |  | – |  |
+| `motiv` | string |  | `"901"` | Motiv im Satz (Standard „901“ wie das Original) |
+| `reihenabstand` | number |  | – | Abstand der Reihen in mm („row spacing“); ohne Angabe: Höhe des Motivs |
+| `satz` | string |  | `"Children"` | Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original) |
+| `spaltenabstand` | number |  | – | Abstand der Motive in einer Reihe in mm („column spacing“); ohne Angabe: Breite des Motivs |
+| `umriss` | PunktAngabe | ja | – |  |
+| `versatz` | number |  | `0.0` | Reihenversatz in mm („row offset“): jede Reihe um so viel weiter verschoben als die vorige (0 = Spalten genau untereinander; halber Spaltenabstand = versetzt wie Ziegel) |
+| `winkel` | number |  | `0.0` | Drehung der Reihen in Grad (der Stichwinkel wirkt hier nicht, Handbuch S. 227) |
+
 ## 3. Auswahlwerte
 
 **Abdeckung** – Abdeckstich der Applikation
@@ -530,7 +546,9 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `maschine_pruefen` | Anschluss | MaschinenInfo | Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen |
 | `maschine_senden` | SendeEingabe | SendeInfo | **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) |
 | `monogramm_rahmen` | Leer | MonogrammKatalog | Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag |
-| `motive_liste` | Leer | MotivsatzInfo[] | Motivsätze (14 der CD) für die Motivlinie |
+| `motiv_loeschen` | MotivLoeschenEingabe | MotivsatzInfo[] | Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach |
+| `motiv_speichern` | MotivSpeichernEingabe | MotivsatzInfo | Ausgewählte Objekte als Motiv in einen eigenen Motivsatz speichern (Create Pattern; Ablage im Datenordner) |
+| `motive_liste` | Leer | MotivsatzInfo[] | Motivsätze (14 der CD und eigene) für Motivlinie und Motivfüllung |
 | `motivsatz_motive` | MotivsatzName | MotivInfo[] | Motive eines Motivsatzes mit Maßen und Linien für die Vorschau |
 | `objekt_werte` | ObjektEingabe | WirksamerWert[] | Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet, Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“ |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |
@@ -542,7 +560,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `schrift_wechseln` | SchriftWechselEingabe | ObjektWert | Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben |
 | `schriften_liste` | SchriftenListeEingabe | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts |
 | `step_muster_liste` | Leer | StepMusterInfo[] | Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln |
-| `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt |
+| `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt |
 | `stoffe_liste` | Leer | StoffInfo[] | Stoffe (8 + Software Defaults) mit den wichtigsten Werten |
 | `svg_lesen` | SvgEingabe | SvgErgebnis | SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design |
 | `text_speichern` | TextDatei | null | Textdatei schreiben |

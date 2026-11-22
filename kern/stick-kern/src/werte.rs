@@ -235,6 +235,23 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
                 w.push(wert("abstand", json!(m.groesse.map(r2).unwrap_or(g)), "motivsatz"));
             }
         }
+        ObjektJson::Motivfuellung(m) => {
+            let satz = d.motivsaetze.get(&m.satz).or_else(|| {
+                d.motivsaetze
+                    .values()
+                    .find(|s| s.name.trim_start_matches('_').eq_ignore_ascii_case(m.satz.trim_start_matches('_')))
+            });
+            if let Some(z) = satz.and_then(|s| s.motive.get(&m.motiv)) {
+                let [x1, y1, x2, y2] = z.grundlinie;
+                let l0 = (x2 - x1).hypot(y2 - y1) / crate::schrift::EINHEIT;
+                w.push(wert("groesse", json!(r2(l0)), "motivsatz"));
+                if let Some((a, b, c, e)) = crate::motiv::motiv_kasten(z) {
+                    let f = m.groesse.map_or(1.0, |g| g / l0);
+                    w.push(wert("spaltenabstand", json!(r2((b - a) * f)), "motivsatz"));
+                    w.push(wert("reihenabstand", json!(r2((e - c) * f)), "motivsatz"));
+                }
+            }
+        }
     }
     Ok(w)
 }

@@ -1364,6 +1364,114 @@ export type MotivInfo = {
   name: string;
 };
 
+/** Eingabe für `motiv_loeschen`. */
+export type MotivLoeschenEingabe = {
+  /** Motiv im Satz */
+  motiv: string;
+  /** eigener Motivsatz */
+  satz: string;
+};
+
+/** Eingabe für `motiv_speichern`. */
+export type MotivSpeichernEingabe = {
+  design: DesignWert;
+  /**
+   * Bezugspunkte [[x1, y1], [x2, y2]] in mm (Handbuch: „Reference points set the standard orientation … and the
+   * spacing“). Ohne Angabe: linke und rechte Kante der Objekte auf halber Höhe (eigene Festlegung)
+   */
+  grundlinie?: number[][] | null;
+  /** Name des Motivs im Satz (vorhandenes gleichen Namens wird ersetzt – vorher nachfragen) */
+  name: string;
+  /** Nummern der Objekte (ab 0), die zusammen das Motiv bilden (Läufe, Satinsäulen, Flächen) */
+  objekte: number[];
+  /** Name des eigenen Motivsatzes (neu oder vorhanden; nicht der Name eines Satzes der CD) */
+  satz: string;
+};
+
+/**
+ * Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsatz wird in parallelen Reihen über die
+ * Fläche wiederholt. Motive, die mehr als zur Hälfte über den Rand ragen, werden am Rand abgeschnitten.
+ */
+export type MotivfuellungJson = {
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /** Länge eines Motivs (Grundlinie) in mm; ohne Angabe: Größe im Motivsatz */
+  groesse?: number | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  loecher?: PunktAngabe[];
+  /**
+   * Motiv im Satz (Standard „901“ wie das Original)
+   * @default "901"
+   */
+  motiv?: string;
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  /** Abstand der Reihen in mm („row spacing“); ohne Angabe: Höhe des Motivs */
+  reihenabstand?: number | null;
+  /**
+   * Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original)
+   * @default "Children"
+   */
+  satz?: string;
+  /** Abstand der Motive in einer Reihe in mm („column spacing“); ohne Angabe: Breite des Motivs */
+  spaltenabstand?: number | null;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  umriss: PunktAngabe;
+  /**
+   * Reihenversatz in mm („row offset“): jede Reihe um so viel weiter verschoben als die vorige (0 = Spalten
+   * genau untereinander; halber Spaltenabstand = versetzt wie Ziegel)
+   * @default 0.0
+   */
+  versatz?: number;
+  /**
+   * Drehung der Reihen in Grad (der Stichwinkel wirkt hier nicht, Handbuch S. 227)
+   * @default 0.0
+   */
+  winkel?: number;
+};
+
 /**
  * Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (`motive_liste`) wird entlang der Linie
  * wiederholt. Anzahl = Linienlänge / Abstand gerundet, die Motive werden gleichmäßig verteilt (wie das Original).
@@ -1447,6 +1555,8 @@ export type MotivlinieJson = {
 /** Motivsatz (Pattern Set, Ordner `userletw/` der CD; Handbuch Kap. 25). */
 export type MotivsatzInfo = {
   datei: string;
+  /** eigener Motivsatz (Datenordner; Motive lassen sich löschen) statt Satz der CD */
+  eigen: boolean;
   /** Name wie im Design-Feld `satz` der Motivlinie */
   name: string;
 };
@@ -1610,6 +1720,8 @@ export type ObjektJson = ((LaufJson & {
   art: "knopfloch";
 }) | (MotivlinieJson & {
   art: "motivlinie";
+}) | (MotivfuellungJson & {
+  art: "motivfuellung";
 }));
 
 /** Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`). */
@@ -2101,7 +2213,10 @@ export type Stich = {
 
 /** Stichart eines Objekts wechseln. */
 export type StichartEingabe = {
-  /** neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster */
+  /**
+   * neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster,
+   * motivfuellung
+   */
   art: string;
   design: DesignWert;
   /** Nummer des Objekts (ab 0) */
@@ -2637,7 +2752,11 @@ export interface Befehle {
   maschine_senden: { eingabe: SendeEingabe; ausgabe: SendeInfo };
   /** Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag */
   monogramm_rahmen: { eingabe: Leer; ausgabe: MonogrammKatalog };
-  /** Motivsätze (14 der CD) für die Motivlinie */
+  /** Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach */
+  motiv_loeschen: { eingabe: MotivLoeschenEingabe; ausgabe: MotivsatzInfo[] };
+  /** Ausgewählte Objekte als Motiv in einen eigenen Motivsatz speichern (Create Pattern; Ablage im Datenordner) */
+  motiv_speichern: { eingabe: MotivSpeichernEingabe; ausgabe: MotivsatzInfo };
+  /** Motivsätze (14 der CD und eigene) für Motivlinie und Motivfüllung */
   motive_liste: { eingabe: Leer; ausgabe: MotivsatzInfo[] };
   /** Motive eines Motivsatzes mit Maßen und Linien für die Vorschau */
   motivsatz_motive: { eingabe: MotivsatzName; ausgabe: MotivInfo[] };
@@ -2661,7 +2780,7 @@ export interface Befehle {
   schriften_liste: { eingabe: SchriftenListeEingabe; ausgabe: SchriftInfo[] };
   /** Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln */
   step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
-  /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt */
+  /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt */
   stichart_aendern: { eingabe: StichartEingabe; ausgabe: StichartErgebnis };
   /** Stoffe (8 + Software Defaults) mit den wichtigsten Werten */
   stoffe_liste: { eingabe: Leer; ausgabe: StoffInfo[] };
@@ -2702,6 +2821,8 @@ export const BEFEHLE = [
   "maschine_pruefen",
   "maschine_senden",
   "monogramm_rahmen",
+  "motiv_loeschen",
+  "motiv_speichern",
   "motive_liste",
   "motivsatz_motive",
   "objekt_werte",

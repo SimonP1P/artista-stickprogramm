@@ -217,16 +217,25 @@ pub struct MotivsatzInfo {
     /// Name wie im Design-Feld `satz` der Motivlinie
     pub name: String,
     pub datei: String,
+    /// eigener Motivsatz (Datenordner; Motive lassen sich löschen) statt Satz der CD
+    pub eigen: bool,
 }
 
 pub fn motive_liste(k: &Kontext, _: Leer) -> Result<Vec<MotivsatzInfo>, Fehler> {
-    Ok(esb::verzeichnis(&k.motive)
+    let mut l: Vec<MotivsatzInfo> = esb::verzeichnis(&k.motive)
         .into_iter()
         .map(|(name, p)| MotivsatzInfo {
             datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
             name,
+            eigen: false,
         })
-        .collect())
+        .collect();
+    l.extend(k.eigene_saetze().into_iter().map(|(s, p)| MotivsatzInfo {
+        datei: p.file_name().unwrap_or_default().to_string_lossy().into(),
+        name: s.name,
+        eigen: true,
+    }));
+    Ok(l)
 }
 
 /// Name eines Motivsatzes.
@@ -1416,7 +1425,7 @@ pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErg
 /// Sticharten für Linien („Outline“ des Originals): Geometrie in `punkte`.
 pub const UMRISS_ARTEN: [&str; 5] = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie"];
 /// Sticharten für geschlossene Formen („Fill“ des Originals): Geometrie in `umriss` (+ `loecher`).
-pub const FUELL_ARTEN: [&str; 3] = ["tatami", "satinflaeche", "muster"];
+pub const FUELL_ARTEN: [&str; 4] = ["tatami", "satinflaeche", "muster", "motivfuellung"];
 
 /// Stichart eines Objekts wechseln.
 #[derive(Debug, Deserialize, JsonSchema)]
@@ -1425,7 +1434,8 @@ pub struct StichartEingabe {
     pub design: DesignWert,
     /// Nummer des Objekts (ab 0)
     pub objekt: usize,
-    /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster
+    /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster,
+    /// motivfuellung
     pub art: String,
 }
 
@@ -1517,6 +1527,7 @@ pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgeb
         "tatami" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "muster" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "satinflaeche" => &["loecher"],
+        "motivfuellung" => &["loecher"],
         "satinlinie" => &["breite", "versatz"],
         "blanket" => &["breite", "versatz"],
         "lauf" | "dreifach" => &["laenge"],
@@ -1529,6 +1540,15 @@ pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgeb
     }
     if e.art == "muster" {
         neu.entry("muster").or_insert_with(|| "001".into());
+    }
+    // Motivlinie ↔ Motivfüllung: dasselbe Motiv behalten
+    const MOTIV: [&str; 2] = ["motivlinie", "motivfuellung"];
+    if ist(&von, &MOTIV) && ist(&e.art, &MOTIV) {
+        for k in ["satz", "motiv", "groesse"] {
+            if let Some(v) = o.get(k) {
+                neu.insert(k.into(), v.clone());
+            }
+        }
     }
     let neu = Value::Object(neu);
     // Ergebnis muss ein gültiges Objekt sein

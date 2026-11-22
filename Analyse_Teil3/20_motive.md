@@ -57,8 +57,30 @@ auf jeden Knoten (wie Bericht 07). Alle Teile aller Kopien werden ohne Sprünge 
    mittel.
 2. **Eckmotive** (Corners): Lage bei zu kurzer Linie.
 3. **Motivfüllung (Pattern Fill)**: Objekt MotifFill 0x3d (Datensatz 0x3f mit Abständen, z. B. `0000 a005 a005` =
-   1440/1440). Das einzige Musterdesign mit Motivfüllungen (House2) benutzt den Satz „MOTIFS“, der auf der CD fehlt →
-   Raster nicht messbar; Umsetzung nach Handbuch S. 227–229 (Reihen-/Spaltenabstand, Reihenversatz, Abschneiden am
-   Rand) mit Kennzeichnung als eigene Festlegung.
+   1440/1440). Das einzige Musterdesign mit Motivfüllungen (House2, zwei Objekte mit 0x2798 „MOTIFS“/„21“) benutzt den
+   Satz „MOTIFS“, der auf der CD fehlt → Raster nicht messbar. **Umgesetzt 22.11.2026** (§5).
 4. Sonderarten BW004a/CW004a/LW004a (Blackwork, Candlewicking, Lacework) haben eigene Stil-Teile (0x2828 … 0x2855) –
    Teil von „Craft Stitches“.
+
+## 5. Motivfüllung im Kern (22.11.2026, Nachtauftrag N1)
+**Standardwerte — Sicherheit: hoch (gelesen).** `<PRESET_STANDARD_MOTIF_FILL>` 0x2798: Satz 0x27b0 = „Children“,
+Motiv 0x27b1 = „901“, **0x27df = 2786** = Länge der Grundlinie von Children 901 (15,48 mm, `motivsatz_motive`),
+**0x27b9 = 2781** ≈ Breite des Motivkastens (Kern: 15,45 mm), **0x27b6 = 1000** ≈ Höhe des Motivkastens (5,55 mm);
+Leitmotiv-Matrix 0x3abe = (1, 0, 0, 1, 0, 0) = keine Drehung/Scherung/Verschiebung. Gedeutet: Spaltenabstand =
+Breite, Reihenabstand = Höhe des Motivs (Motive Kante an Kante) – mittel (ein Beispiel, Zuordnung 0x27b6/0x27b9 über
+die Zahlenwerte).
+
+**Regeln — Handbuch S. 227–229, Umsetzung `stick-kern/src/motiv.rs` (`motivfuellung_objekte`):**
+- Motive in parallelen Reihen; Spalten-/Reihenabstand, Reihenversatz (jede Reihe um den Versatz weiter – „Changing the
+  offset distorts the rows“), Größe, Drehung der Reihen („The stitch angle has no effect on pattern layout“).
+- „If more than half a pattern is outside the boundary, it will be clipped along the boundary“: Anteil nach der
+  Länge der Motivlinien; mehr als die Hälfte draußen → am Rand abgeschnitten, sonst bleibt das Motiv ganz (Deutung,
+  mittel). Motive ganz draußen entfallen.
+- **Eigene Festlegungen:** Raster mittig im Flächenkasten (im Original über die Leitmotive verschiebbar); Reihen von
+  oben nach unten, in der Reihe links → rechts (Motive sind „from left to right“ digitalisiert, S. 230); Motive mit
+  Lücke ≤ 1 mm ohne Sprung verbunden, sonst Sprung.
+
+**Eigene Motive (Create Pattern, S. 230–231):** Objekte (Lauf, Satinsäule, Fläche) werden in Knoten umgewandelt und als
+eigener Satz im Datenordner gespeichert (`stick-api/src/motive.rs`, JSON statt ESB – eigene Erweiterung); Bezugspunkte
+ohne Angabe linke/rechte Kante auf halber Höhe (eigene Festlegung; im Original angeklickt). Flächen werden im Motiv
+Step-Flächen, Dreifach wird Lauf (eigene Festlegung).

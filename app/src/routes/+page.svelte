@@ -21,6 +21,7 @@
   import WarnungDialog from "$lib/dialoge/WarnungDialog.svelte";
   import MusterDialog from "$lib/dialoge/MusterDialog.svelte";
   import MotivDialog from "$lib/dialoge/MotivDialog.svelte";
+  import MotivSpeichernDialog from "$lib/dialoge/MotivSpeichernDialog.svelte";
   import RahmenDialog from "$lib/dialoge/RahmenDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
@@ -223,6 +224,7 @@
       { l: "Nach Farbe sortieren …", go: n > 1 ? () => (arbeit.dialog = { art: "nach_farbe" }) : undefined },
       { l: "Gruppieren", kbd: "Strg+G", go: a.length > 1 && !arbeit.auswahlGruppe ? () => arbeit.gruppieren() : undefined },
       { l: "Gruppe auflösen", kbd: "Strg+Umschalt+G", go: a.some((i) => arbeit.gruppeVon(i)) ? () => arbeit.gruppeAufloesen() : undefined },
+      { l: "Als Motiv speichern …", go: a.length ? () => (arbeit.dialog = { art: "motiv_speichern" }) : undefined },
     ];
   });
 
@@ -602,8 +604,8 @@
     {@const d = arbeit.dialog}
     {@const x = arbeit.objekte[d.objekt] as Record<string, unknown> | undefined}
     <MotivDialog
-      satz={String(x?.satz ?? "Heirloom")}
-      motiv={String(x?.motiv ?? "705")}
+      satz={String(x?.satz ?? (x?.art === "motivfuellung" ? "Children" : "Heirloom"))}
+      motiv={String(x?.motiv ?? (x?.art === "motivfuellung" ? "901" : "705"))}
       waehlen={(satz, motiv) => {
         arbeit.aendern((dd) => {
           const y = dd.objekte?.[d.objekt] as Record<string, unknown> | undefined;
@@ -617,6 +619,7 @@
     />
   {/if}
   {#if arbeit.dialog?.art === "nach_farbe"}<NachFarbeDialog schliessen={() => (arbeit.dialog = null)} />{/if}
+  {#if arbeit.dialog?.art === "motiv_speichern"}<MotivSpeichernDialog schliessen={() => (arbeit.dialog = null)} />{/if}
   {#if arbeit.dialog?.art === "warnung"}
     <WarnungDialog vertauscht={arbeit.dialog.vertauscht} namen={arbeit.dialog.namen} vorher={arbeit.dialog.vorher} schliessen={() => (arbeit.dialog = null)} />
   {/if}

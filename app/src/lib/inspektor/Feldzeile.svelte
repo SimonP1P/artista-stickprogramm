@@ -75,6 +75,8 @@
     vorlage: "Rahmen",
     rahmen_farben: "Garn Rahmen",
     initialen: "Initialen",
+    spaltenabstand: "Spaltenabstand",
+    reihenabstand: "Reihenabstand",
     dreifach: "Dreifach",
     text: "Text",
     alphabet: "Alphabet",

@@ -1136,6 +1136,46 @@ pub struct MotivlinieJson {
     pub g: Gemeinsam,
 }
 
+/// Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsatz wird in parallelen Reihen über die
+/// Fläche wiederholt. Motive, die mehr als zur Hälfte über den Rand ragen, werden am Rand abgeschnitten.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct MotivfuellungJson {
+    pub umriss: PunktAngabe,
+    #[serde(default)]
+    pub loecher: Vec<PunktAngabe>,
+    /// Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original)
+    #[serde(default = "fuell_satz")]
+    pub satz: String,
+    /// Motiv im Satz (Standard „901“ wie das Original)
+    #[serde(default = "fuell_motiv")]
+    pub motiv: String,
+    /// Länge eines Motivs (Grundlinie) in mm; ohne Angabe: Größe im Motivsatz
+    #[serde(default)]
+    pub groesse: Option<f64>,
+    /// Abstand der Motive in einer Reihe in mm („column spacing“); ohne Angabe: Breite des Motivs
+    #[serde(default)]
+    pub spaltenabstand: Option<f64>,
+    /// Abstand der Reihen in mm („row spacing“); ohne Angabe: Höhe des Motivs
+    #[serde(default)]
+    pub reihenabstand: Option<f64>,
+    /// Reihenversatz in mm („row offset“): jede Reihe um so viel weiter verschoben als die vorige (0 = Spalten
+    /// genau untereinander; halber Spaltenabstand = versetzt wie Ziegel)
+    #[serde(default)]
+    pub versatz: f64,
+    /// Drehung der Reihen in Grad (der Stichwinkel wirkt hier nicht, Handbuch S. 227)
+    #[serde(default)]
+    pub winkel: f64,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+fn fuell_satz() -> String {
+    crate::motiv::FUELL_SATZ.into()
+}
+fn fuell_motiv() -> String {
+    crate::motiv::FUELL_MOTIV.into()
+}
+
 fn motiv_satz() -> String {
     "Heirloom".into()
 }
@@ -1185,6 +1225,8 @@ pub enum ObjektJson {
     Knopfloch(KnopflochJson),
     /// Motivlinie (Motiv aus einem Motivsatz entlang einer Linie)
     Motivlinie(MotivlinieJson),
+    /// Motivfüllung (Motiv aus einem Motivsatz in Reihen über die Fläche)
+    Motivfuellung(MotivfuellungJson),
 }
 
 impl ObjektJson {
@@ -1204,6 +1246,7 @@ impl ObjektJson {
             ObjektJson::Muster(x) => &x.g,
             ObjektJson::Knopfloch(x) => &x.g,
             ObjektJson::Motivlinie(x) => &x.g,
+            ObjektJson::Motivfuellung(x) => &x.g,
         }
     }
 }

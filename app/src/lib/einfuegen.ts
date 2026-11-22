@@ -46,7 +46,7 @@ export const BESONDERE = ["applikation", "knopfloch"] as const;
 
 /** Sticharten für Linien („Outline“) und Flächen („Fill“) – wie `UMRISS_ARTEN`/`FUELL_ARTEN` im Kern */
 export const UMRISS = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie"] as const;
-export const FUELLUNG = ["tatami", "satinflaeche", "muster"] as const;
+export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung"] as const;
 export const STICHART_NAME: Record<string, string> = {
   lauf: "Laufstich",
   dreifach: "Dreifachstich",
@@ -56,6 +56,7 @@ export const STICHART_NAME: Record<string, string> = {
   tatami: "Step (Tatami)",
   satinflaeche: "Satin",
   muster: "Füllmuster",
+  motivfuellung: "Motive",
 };
 export const STICHART_HILFE: Record<string, string> = {
   lauf: "eine Stichreihe – dünne Linien",
@@ -66,12 +67,12 @@ export const STICHART_HILFE: Record<string, string> = {
   tatami: "für große, unregelmäßige Flächen",
   satinflaeche: "für schmale Flächen bis ~8 mm, glänzend",
   muster: "Fläche mit Muster (242 Muster)",
+  motivfuellung: "Motive in Reihen über die Fläche",
 };
 export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string };
 
 /** FUNKTIONEN.md §7 – Platz vorgesehen, deaktiviert */
 export const KOMMT_NOCH = [
-  "Motivfüllungen",
   "Effekte (Fransen, Welle, Farbverlauf, Farben mischen)",
   "Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling)",
   "Kreuzstich",
@@ -122,6 +123,8 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
       return { art, name: "Satinfläche", umriss: { rechteck: { mitte: [0, 0], breite: 30, hoehe: 6 } }, farbe };
     case "muster":
       return { art, name: "Füllmuster", umriss: { kreis: { mitte: [0, 0], radius: 15 } }, muster: "001", farbe };
+    case "motivfuellung":
+      return { art, name: "Motivfüllung", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
     case "blanket":
       return { art, name: "Blanket", punkte: linie, farbe };
     case "applikation":

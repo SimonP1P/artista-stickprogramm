@@ -21,6 +21,7 @@
 pub mod befehle;
 pub mod erzeugen;
 pub mod maschine;
+pub mod motive;
 pub mod schriften;
 
 use schemars::{JsonSchema, Schema, SchemaGenerator};
@@ -125,6 +126,8 @@ pub struct Kontext {
     pub(crate) maschine: maschine::MaschinenZustand,
     /// Schriften: Ablage für Google Fonts, Verzeichnis und Strichstärken (zwischengespeichert)
     pub(crate) schriften_zustand: schriften::SchriftZustand,
+    /// Ablage der eigenen Motivsätze (App: Datenordner/motive)
+    pub(crate) motiv_zustand: motive::MotivZustand,
 }
 
 impl Kontext {
@@ -144,6 +147,7 @@ impl Kontext {
             geladen: Mutex::new(HashMap::new()),
             maschine: Default::default(),
             schriften_zustand: Default::default(),
+            motiv_zustand: Default::default(),
         }
     }
 
@@ -206,11 +210,17 @@ impl Kontext {
         Ok(r)
     }
 
-    /// Motivsatz nach Namen (Kopf oder Dateiname) laden, zwischengespeichert.
+    /// Motivsatz nach Namen (Kopf oder Dateiname) laden, zwischengespeichert. Eigene Motivsätze (Datenordner)
+    /// zuerst, dann die der CD.
     pub fn motivsatz(&self, name: &str) -> Result<stick_kern::motiv::Motivsatz, Fehler> {
         let mut g = self.motive_geladen.lock().map_err(|e| Fehler::from(e.to_string()))?;
         if let Some(s) = g.get(name) {
             return Ok(s.clone());
+        }
+        if let Some(e) = self.eigener_satz(name) {
+            let s = stick_kern::motiv::eigener_satz(&e)?;
+            g.insert(name.to_string(), s.clone());
+            return Ok(s);
         }
         let ohne = |x: &str| x.trim_start_matches('_').to_lowercase();
         let pfad = stick_formate::esb::verzeichnis(&self.motive)
@@ -304,8 +314,12 @@ befehle! {
     stoffe_liste: befehle::Leer => Vec<befehle::StoffInfo>,
     /// Original-Alphabete (50)
     alphabete_liste: befehle::Leer => Vec<befehle::AlphabetInfo>,
-    /// Motivsätze (14 der CD) für die Motivlinie
+    /// Motivsätze (14 der CD und eigene) für Motivlinie und Motivfüllung
     motive_liste: befehle::Leer => Vec<befehle::MotivsatzInfo>,
+    /// Ausgewählte Objekte als Motiv in einen eigenen Motivsatz speichern (Create Pattern; Ablage im Datenordner)
+    motiv_speichern: motive::MotivSpeichernEingabe => befehle::MotivsatzInfo,
+    /// Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach
+    motiv_loeschen: motive::MotivLoeschenEingabe => Vec<befehle::MotivsatzInfo>,
     /// Motive eines Motivsatzes mit Maßen und Linien für die Vorschau
     motivsatz_motive: befehle::MotivsatzName => Vec<befehle::MotivInfo>,
     /// Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und
@@ -358,7 +372,7 @@ befehle! {
     ueberdeckungen: befehle::DesignEingabe => Vec<[usize; 2]>,
     /// Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung)
     saeulen_vorschau: befehle::SaeulenEingabe => Vec<befehle::SaeuleInfo>,
-    /// Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster) – Form bleibt
+    /// Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt
     stichart_aendern: befehle::StichartEingabe => befehle::StichartErgebnis,
     /// Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element)
     design_einfuegen: befehle::EinfuegenEingabe => befehle::EinfuegenErgebnis,
@@ -403,6 +417,7 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
 mod befehle_aller {
     pub use crate::befehle::*;
     pub use crate::maschine::*;
+    pub use crate::motive::*;
     pub use crate::schriften::*;
 }
 

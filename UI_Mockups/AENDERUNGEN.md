@@ -15,6 +15,18 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Motivfüllung und eigene Motive (Nachtauftrag N1, 4b.7; Commit …)
+- **Neue Objektart `motivfuellung`** (`format.rs` `MotivfuellungJson`, Kern `motiv::motivfuellung_objekte`): Felder
+  `umriss`, `loecher`, `satz` (Standard „Children“), `motiv` („901“), `groesse`, `spaltenabstand`, `reihenabstand`,
+  `versatz`, `winkel`. Standardwerte aus dem Original-Stil, Abschneide-Regel aus dem Handbuch (Bericht 20 §4).
+- `stichart_aendern` kennt `motivfuellung` als Füllung; `objekt_werte` liefert Größe, Spalten- und Reihenabstand.
+- **Neue Befehle** `motiv_speichern` (`{design, objekte, satz, name, grundlinie?}` → `MotivsatzInfo`) und
+  `motiv_loeschen` (`{satz, motiv}` → Liste der Sätze); `motive_liste` hat neu `eigen`. Ablage der eigenen Sätze:
+  Datenordner `motive/` (App setzt `motive_ablage`).
+- **Oberfläche (umgesetzt):** Füllung „Motive“ in der Stichart-Wahl, Inspektor (Motiv, Motivgröße, Spalten-/
+  Reihenabstand, Reihenversatz, Drehung der Reihen), Anordnen → „Als Motiv speichern …“ (`MotivSpeichernDialog`),
+  „Motiv wählen“ mit Gruppe „Eigene Motive“ und Löschen (×, Rückfrage im Dialog).
+
 ## 22.11.2026 – Formen mit der Maus zeichnen (Nachtauftrag N0; Commit dfc1bd4)
 - **Neue Form `pfad`** (`format.rs` `Form::Pfad`, `PfadPunkt`): Referenzpunkte wie beim Digitalisieren im Original –
   `[x, y]` Eckpunkt, `{"kurve": [x, y]}` Kurvenpunkt, `geschlossen` (Ring). Ecke–Ecke = Gerade, sonst Bézier mit

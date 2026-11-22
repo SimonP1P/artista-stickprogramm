@@ -475,6 +475,8 @@ pub enum ObjektArt {
     MonogrammVorlage(crate::monogramm::MonogrammVorgabe),
     /// Motivlinie (Pattern Run, `motiv.rs`); wird vor dem Berechnen zu einer `Kette` aufgelöst
     Motivlinie(crate::motiv::MotivVorgabe),
+    /// Motivfüllung (Pattern Fill, `motiv.rs`); wird vor dem Berechnen zu `Kette`n aufgelöst
+    Motivfuellung(crate::motiv::MotivFuellVorgabe),
     /// Teile in fester Reihenfolge, ohne Sprünge zu einem Zug verbunden (Knopfloch). Satinteile beginnen an dem Ende,
     /// das dem vorigen Stich am nächsten liegt (am Musterdesign beobachtet). `loch` = Fläche zum Aussparen
     /// (Merge Buttonhole: mittlerer Umriss).
@@ -1053,6 +1055,7 @@ impl Objekt {
             ObjektArt::Kette { teile, umkehrbar, .. } => kette_wege(teile, umkehrbar, e, start),
             ObjektArt::Knopfloch(_) => Err("Knopfloch wurde nicht aufgelöst".into()),
             ObjektArt::Motivlinie(_) => Err("Motivlinie wurde nicht aufgelöst".into()),
+            ObjektArt::Motivfuellung(_) => Err("Motivfüllung wurde nicht aufgelöst".into()),
             ObjektArt::Blanket {
                 punkte,
                 geschlossen,
@@ -1548,6 +1551,7 @@ impl Design {
             .iter()
             .filter_map(|o| match &o.art {
                 ObjektArt::Motivlinie(m) => Some(m.satz.clone()),
+                ObjektArt::Motivfuellung(m) => Some(m.satz.clone()),
                 _ => None,
             })
             .collect();
@@ -1879,6 +1883,26 @@ impl Design {
                         &o.farbe,
                         if o.name.is_empty() { "Knopfloch" } else { &o.name },
                     ));
+                }
+                ObjektArt::Motivfuellung(m) => {
+                    let satz = self
+                        .motivsaetze
+                        .get(&m.satz)
+                        .or_else(|| {
+                            self.motivsaetze.values().find(|s| {
+                                s.name.trim_start_matches('_').eq_ignore_ascii_case(m.satz.trim_start_matches('_'))
+                            })
+                        })
+                        .ok_or_else(|| format!("Motivsatz „{}“ nicht geladen", m.satz))?;
+                    out.extend(
+                        crate::motiv::motivfuellung_objekte(
+                            satz,
+                            m,
+                            &o.farbe,
+                            if o.name.is_empty() { "Motivfüllung" } else { &o.name },
+                        )
+                        .map_err(|e| format!("Objekt {}: {e}", nr + 1))?,
+                    );
                 }
                 ObjektArt::Motivlinie(m) => {
                     let satz = self
@@ -2370,6 +2394,12 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
         }
         // werden vor dem Zeichnen aufgelöst
         ObjektArt::Motivlinie(m) => linie(FormArt::Linie, &m.linie, m.geschlossen),
+        ObjektArt::Motivfuellung(m) => {
+            linie(FormArt::Umriss, &m.umriss, true);
+            for l in &m.loecher {
+                linie(FormArt::Loch, l, true);
+            }
+        }
         ObjektArt::Text { .. } | ObjektArt::TtfText { .. } | ObjektArt::Knopfloch(_) | ObjektArt::MonogrammVorlage(_) => {}
     }
 }
@@ -2569,6 +2599,21 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                 farbe: a.g.farbe,
             }
         }
+        ObjektJson::Motivfuellung(m) => Objekt {
+            art: ObjektArt::Motivfuellung(crate::motiv::MotivFuellVorgabe {
+                satz: m.satz,
+                motiv: m.motiv,
+                umriss: m.umriss.punkte(),
+                loecher: m.loecher.iter().map(|l| l.punkte()).collect(),
+                groesse: m.groesse,
+                spaltenabstand: m.spaltenabstand,
+                reihenabstand: m.reihenabstand,
+                versatz: m.versatz,
+                winkel: m.winkel,
+            }),
+            farbe: m.g.farbe,
+            name: m.g.name,
+        },
         ObjektJson::Motivlinie(m) => Objekt {
             art: ObjektArt::Motivlinie(crate::motiv::MotivVorgabe {
                 satz: m.satz,

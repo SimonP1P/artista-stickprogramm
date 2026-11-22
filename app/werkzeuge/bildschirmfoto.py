@@ -118,7 +118,9 @@ def main():
     karte = design.get("garnkarte", "Default")
     if karte != "keine":
         antworten["garnkarte_garne:" + karte] = api(stick, "garnkarte_garne", {"name": karte})
-    for satz in sorted({x.get("satz", "Heirloom") for x in design.get("objekte", []) if x.get("art") == "motivlinie"}):
+    standard_satz = {"motivlinie": "Heirloom", "motivfuellung": "Children"}
+    for satz in sorted({x.get("satz", standard_satz[x["art"]]) for x in design.get("objekte", [])
+                        if x.get("art") in standard_satz}):
         antworten["motivsatz_motive:" + satz] = api(stick, "motivsatz_motive", {"satz": satz})
     for s_ in sorted({x["schrift"] for x in design.get("objekte", []) if x.get("art") == "ttf" and x.get("schrift")}):
         antworten["schrift_vorschau:" + s_] = api(stick, "schrift_vorschau", {"schrift": s_, "text": "Abc"})

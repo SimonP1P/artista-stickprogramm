@@ -65,4 +65,5 @@ export const ART: Record<string, [string, string]> = {
   monogramm: ["Monogramm", "M4 20V4l8 10 8-10v16"],
   knopfloch: ["Knopfloch", "M8 3h8v18H8ZM12 6.5v11M8 6.5h8M8 17.5h8"],
   motivlinie: ["Motivlinie", "M2 15c2-6 5-6 5 0s3 6 5 0 3-6 5 0 3 6 5 0M2 18h20"],
+  motivfuellung: ["Motivfüllung", "M3 3h18v18H3ZM5 9c1.2-3 2.8-3 4 0s2.8 3 4 0 2.8-3 4 0M5 16c1.2-3 2.8-3 4 0s2.8 3 4 0 2.8-3 4 0"],
 };

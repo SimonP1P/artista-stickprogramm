@@ -82,7 +82,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "garn",
@@ -159,7 +160,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "transform.skalieren",
    "json_objekt": "transform.skalieren",
@@ -194,7 +196,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "transform.drehen",
    "json_objekt": "transform.drehen",
@@ -229,7 +232,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "transform.spiegeln",
    "json_objekt": "transform.spiegeln",
@@ -265,7 +269,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "transform.schraeg",
    "json_objekt": "transform.schraeg",
@@ -300,7 +305,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "transform.verschieben",
    "json_objekt": "transform.verschieben",
@@ -335,7 +341,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.auto_spacing",
    "json_objekt": "einstellungen.satin.auto_spacing",
@@ -411,7 +418,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.zugausgleich",
    "json_objekt": "einstellungen.satin.zugausgleich",
@@ -446,7 +454,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.zickzack_abstand",
    "json_objekt": "einstellungen.satin.zickzack_abstand",
@@ -501,7 +510,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.kurzstiche.schwelle",
    "json_objekt": "einstellungen.satin.kurzstiche.schwelle",
@@ -533,7 +543,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.kurzstiche.zufall",
    "json_objekt": "einstellungen.satin.kurzstiche.zufall",
@@ -565,7 +576,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.kurzstiche.max_gruppe",
    "json_objekt": "einstellungen.satin.kurzstiche.max_gruppe",
@@ -597,7 +609,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.satin.kurzstiche.faktoren",
    "json_objekt": "einstellungen.satin.kurzstiche.faktoren",
@@ -712,7 +725,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.abstand",
    "json_objekt": "einstellungen.tatami.abstand",
@@ -747,7 +761,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.laenge",
    "json_objekt": "einstellungen.tatami.laenge",
@@ -782,7 +797,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.min_rand",
    "json_objekt": "einstellungen.tatami.min_rand",
@@ -817,7 +833,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.versatz",
    "json_objekt": "einstellungen.tatami.versatz",
@@ -849,7 +866,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.versatz2",
    "json_objekt": "einstellungen.tatami.versatz2",
@@ -881,7 +899,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.zufall",
    "json_objekt": "einstellungen.tatami.zufall",
@@ -937,7 +956,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.zugausgleich",
    "json_objekt": "einstellungen.tatami.zugausgleich",
@@ -972,7 +992,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.laufweg_laenge",
    "json_objekt": "einstellungen.tatami.laufweg_laenge",
@@ -1004,7 +1025,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.laufweg.min_laenge",
    "json_objekt": "einstellungen.tatami.laufweg.min_laenge",
@@ -1036,7 +1058,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.tatami.laufweg.sehnenabstand",
    "json_objekt": "einstellungen.tatami.laufweg.sehnenabstand",
@@ -1197,7 +1220,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.lauf.min_laenge",
    "json_objekt": "einstellungen.lauf.min_laenge",
@@ -1229,7 +1253,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.lauf.variabel",
    "json_objekt": "einstellungen.lauf.variabel",
@@ -1261,7 +1286,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.lauf.sehnenabstand",
    "json_objekt": "einstellungen.lauf.sehnenabstand",
@@ -1293,7 +1319,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.lauf.ecke_grad",
    "json_objekt": "einstellungen.lauf.ecke_grad",
@@ -1325,7 +1352,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.auto_an",
    "json_objekt": "einstellungen.unterlage.auto_an",
@@ -1357,7 +1385,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.auto_art",
    "json_objekt": "einstellungen.unterlage.auto_art",
@@ -1426,7 +1455,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.rand",
    "json_objekt": "einstellungen.unterlage.rand",
@@ -1461,7 +1491,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.zugausgleich",
    "json_objekt": "einstellungen.unterlage.zugausgleich",
@@ -1493,7 +1524,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_laenge",
    "json_objekt": "einstellungen.unterlage.edge_walk_laenge",
@@ -1525,7 +1557,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_laenge",
    "json_objekt": "einstellungen.unterlage.mittellauf_laenge",
@@ -1557,7 +1590,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.zickzack_laenge",
    "json_objekt": "einstellungen.unterlage.zickzack_laenge",
@@ -1589,7 +1623,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_laenge",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_laenge",
@@ -1621,7 +1656,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.rueck_lauf_laenge",
    "json_objekt": "einstellungen.unterlage.rueck_lauf_laenge",
@@ -1653,7 +1689,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.tatami_abstand",
    "json_objekt": "einstellungen.unterlage.tatami_abstand",
@@ -1685,7 +1722,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.tatami_laenge",
    "json_objekt": "einstellungen.unterlage.tatami_laenge",
@@ -1717,7 +1755,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf",
@@ -1749,7 +1788,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.tatami_winkel_versatz",
    "json_objekt": "einstellungen.unterlage.tatami_winkel_versatz",
@@ -1781,7 +1821,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.edge_walk_lauf.min_laenge",
@@ -1813,7 +1854,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.edge_walk_lauf.sehnenabstand",
@@ -1845,7 +1887,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.mittellauf_lauf.min_laenge",
@@ -1877,7 +1920,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.mittellauf_lauf.sehnenabstand",
@@ -1909,7 +1953,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.zickzack_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.zickzack_lauf.min_laenge",
@@ -1941,7 +1986,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.zickzack_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.zickzack_lauf.sehnenabstand",
@@ -1973,7 +2019,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_lauf.min_laenge",
@@ -2005,7 +2052,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_lauf.sehnenabstand",
@@ -2037,7 +2085,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf_lauf.min_laenge",
@@ -2069,7 +2118,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf_lauf.sehnenabstand",
@@ -2101,7 +2151,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.anfang_immer",
    "json_objekt": "einstellungen.verbinder.anfang_immer",
@@ -2133,7 +2184,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.anfang_nach_trim_farbwechsel",
    "json_objekt": "einstellungen.verbinder.anfang_nach_trim_farbwechsel",
@@ -2165,7 +2217,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.anfang_bei_langem_verbinder",
    "json_objekt": "einstellungen.verbinder.anfang_bei_langem_verbinder",
@@ -2197,7 +2250,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.anfang_verbinder_ab",
    "json_objekt": "einstellungen.verbinder.anfang_verbinder_ab",
@@ -2229,7 +2283,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.ende_immer",
    "json_objekt": "einstellungen.verbinder.ende_immer",
@@ -2261,7 +2316,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.ende_vor_trim_farbwechsel",
    "json_objekt": "einstellungen.verbinder.ende_vor_trim_farbwechsel",
@@ -2293,7 +2349,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.ende_bei_langem_verbinder",
    "json_objekt": "einstellungen.verbinder.ende_bei_langem_verbinder",
@@ -2325,7 +2382,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.ende_verbinder_ab",
    "json_objekt": "einstellungen.verbinder.ende_verbinder_ab",
@@ -2357,7 +2415,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.letztes_objekt_vernaehen",
    "json_objekt": "einstellungen.verbinder.letztes_objekt_vernaehen",
@@ -2389,7 +2448,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.trim_ab",
    "json_objekt": "einstellungen.verbinder.trim_ab",
@@ -2421,7 +2481,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.vernaeh_stichlaenge",
    "json_objekt": "einstellungen.verbinder.vernaeh_stichlaenge",
@@ -2453,7 +2514,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": "einstellungen.verbinder.vernaeh_stiche",
    "json_objekt": "einstellungen.verbinder.vernaeh_stiche",
@@ -2485,7 +2547,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "auto_jump",
@@ -2517,7 +2580,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "auto_jump.max",
@@ -2552,7 +2616,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "auto_jump.sprung",
@@ -2621,7 +2686,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "doppellauf",
@@ -2946,7 +3012,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "einstich",
@@ -2978,7 +3045,8 @@
     "ttf",
     "monogramm",
     "knopfloch",
-    "motivlinie"
+    "motivlinie",
+    "motivfuellung"
    ],
    "json_design": null,
    "json_objekt": "ausstich",
@@ -3471,6 +3539,142 @@
    "stoff": false,
    "quelle": "Vorschlag (eigene Festlegung) (Handbuch: Orientation)",
    "modus": "einfach"
+  },
+  {
+   "id": "objekt.motivfuellung.satz",
+   "gruppe": "Motivfüllung",
+   "name": "Motivsatz",
+   "wirkung": "Motivsatz der CD oder eigener Satz",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "satz",
+   "einheit": "Auswahl",
+   "standard": "Children",
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b0 = Children",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.motivfuellung.motiv",
+   "gruppe": "Motivfüllung",
+   "name": "Motiv",
+   "wirkung": "Motiv im Satz (Auswahl mit Vorschau)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "motiv",
+   "einheit": "Auswahl",
+   "standard": "901",
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b1 = 901",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.motivfuellung.groesse",
+   "gruppe": "Motivfüllung",
+   "name": "Motivgröße",
+   "wirkung": "Länge der Grundlinie eines Motivs; Höhe und Abstände wachsen mit",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "groesse",
+   "einheit": "mm",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27df = 2786 = Grundlinie von 901; ohne Angabe wie im Motivsatz",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.motivfuellung.spaltenabstand",
+   "gruppe": "Motivfüllung",
+   "name": "Spaltenabstand",
+   "wirkung": "Abstand der Motive in einer Reihe (column spacing)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "spaltenabstand",
+   "einheit": "mm",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b9 = 2781 ≈ Breite des Motivs (15,45 mm); ohne Angabe Breite",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.motivfuellung.reihenabstand",
+   "gruppe": "Motivfüllung",
+   "name": "Reihenabstand",
+   "wirkung": "Abstand der Reihen (row spacing)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "reihenabstand",
+   "einheit": "mm",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b6 = 1000 ≈ Höhe des Motivs (5,55 mm); ohne Angabe Höhe",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.motivfuellung.versatz",
+   "gruppe": "Motivfüllung",
+   "name": "Reihenversatz",
+   "wirkung": "jede Reihe um so viel weiter verschoben (row offset)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "versatz",
+   "einheit": "mm",
+   "standard": 0,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: Leitmotiv-Matrix 0x3abe = Einheitsmatrix (kein Versatz)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.motivfuellung.winkel",
+   "gruppe": "Motivfüllung",
+   "name": "Drehung der Reihen",
+   "wirkung": "dreht das Raster (Stichwinkel wirkt nicht)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "motivfuellung"
+   ],
+   "json_design": null,
+   "json_objekt": "winkel",
+   "einheit": "°",
+   "standard": 0,
+   "bereich": [
+    -180,
+    180
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: „The stitch angle has no effect on pattern layout“",
+   "modus": "experte"
   },
   {
    "id": "schrift.alphabet",

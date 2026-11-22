@@ -66,6 +66,8 @@ pub fn run() {
             // heruntergeladene Google Fonts bleiben im Datenordner des Programms (nicht im System installiert)
             if let Ok(daten) = app.path().app_data_dir() {
                 k.schriften_ablage(daten.join("schriften"));
+                // eigene Motivsätze (Create Pattern) ebenfalls im Datenordner
+                k.motive_ablage(daten.join("motive"));
             }
             app.manage(Arc::new(k));
 

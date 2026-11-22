@@ -193,6 +193,67 @@ fn motivlinie() {
     assert_eq!(f.objekt, Some(0));
 }
 
+/// Motivfüllung: Standard wie das Original (Children 901), Raster Kante an Kante, Motive bleiben in der Fläche
+/// (abgeschnitten, wenn mehr als zur Hälfte draußen; ganz, wenn höchstens zur Hälfte draußen)
+#[test]
+fn motivfuellung() {
+    let k = kontext();
+    let d = json!({"objekte": [{"art": "motivfuellung", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 60, "hoehe": 40}}}]});
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": d.clone() })).unwrap();
+    let b: [f64; 4] = serde_json::from_value(e["begrenzung"].clone()).unwrap();
+    // ganze Motive ragen höchstens mit der halben Stichlänge über den Rand – nach dem Kasten (15,5 × 5,6 mm) weniger
+    // als ein ganzes Motiv
+    assert!(b[0] > -30.0 - 15.5 && b[2] < 30.0 + 15.5 && b[1] > -20.0 - 5.6 && b[3] < 20.0 + 5.6, "{b:?}");
+    assert!(b[2] - b[0] > 55.0 && b[3] - b[1] > 35.0, "Fläche gefüllt: {b:?}");
+    // wirksame Werte: Größe und Abstände aus dem Motivsatz
+    let w = ausfuehren(&k, "objekt_werte", json!({"design": d, "objekt": 0})).unwrap();
+    let wert = |f: &str| w.as_array().unwrap().iter().find(|x| x["feld"] == f).unwrap()["wert"].as_f64().unwrap();
+    assert!((wert("groesse") - 2786.0 / 180.0).abs() < 0.02);
+    // wie das Original: Spalten 2781, Reihen 1000 (1/180 mm) ≈ Kasten des Motivs
+    assert!((wert("spaltenabstand") - 2781.0 / 180.0).abs() < 0.15, "{}", wert("spaltenabstand"));
+    assert!((wert("reihenabstand") - 1000.0 / 180.0).abs() < 0.15, "{}", wert("reihenabstand"));
+    // Fläche ohne Platz für ein Motiv → Fehler mit Objektnummer
+    let d = json!({"objekte": [{"art": "motivfuellung", "umriss": [[0, 0], [0.5, 0], [0.5, 0.5]]}]});
+    assert_eq!(ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap_err().objekt, Some(0));
+}
+
+/// Eigene Motive (Create Pattern): speichern, in Motivlinie/Motivfüllung benutzen, löschen
+#[test]
+fn eigene_motive() {
+    let k = kontext();
+    let ablage = std::env::temp_dir().join(format!("stick_api_test_motive_{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&ablage);
+    k.motive_ablage(ablage.clone());
+    // Zickzack-Lauf (gedreht über transform) + kleiner Kreis als Fläche
+    let d = json!({"objekte": [
+        {"art": "lauf", "punkte": [[0, 0], [2, 3], [4, 0], [6, 3], [8, 0]], "transform": {"verschieben": [10, 0]}},
+        {"art": "tatami", "umriss": {"kreis": {"mitte": [14, 1.5], "radius": 1}}},
+        {"art": "text", "text": "A", "alphabet": "Swiss Block"}
+    ]});
+    // Name eines Satzes der CD ist gesperrt, Text kann kein Motiv sein
+    assert!(ausfuehren(&k, "motiv_speichern", json!({"design": d, "objekte": [0], "satz": "Heirloom", "name": "z"})).is_err());
+    let f = ausfuehren(&k, "motiv_speichern", json!({"design": d, "objekte": [2], "satz": "Meine", "name": "z"})).unwrap_err();
+    assert_eq!(f.objekt, Some(2), "{}", f.meldung);
+    let i = ausfuehren(&k, "motiv_speichern", json!({"design": d, "objekte": [0, 1], "satz": "Meine", "name": "Zack"})).unwrap();
+    assert_eq!(i["eigen"], true);
+    let l = ausfuehren(&k, "motive_liste", json!({})).unwrap();
+    assert!(l.as_array().unwrap().iter().any(|s| s["name"] == "Meine" && s["eigen"] == true));
+    let m = ausfuehren(&k, "motivsatz_motive", json!({"satz": "Meine"})).unwrap();
+    // Grundlinie = Breite der Objekte (Zickzack 10 … 18 mm nach der Verschiebung) auf halber Höhe
+    assert!((m[0]["laenge"].as_f64().unwrap() - 8.0).abs() < 0.05, "{}", m[0]["laenge"]);
+    let d2 = json!({"objekte": [
+        {"art": "motivlinie", "satz": "Meine", "motiv": "Zack", "punkte": [[-20, 0], [20, 0]]},
+        {"art": "motivfuellung", "satz": "Meine", "motiv": "Zack", "umriss": {"rechteck": {"mitte": [0, -20], "breite": 30, "hoehe": 15}}}
+    ]});
+    let e = ausfuehren(&k, "design_berechnen", json!({ "design": d2 })).unwrap();
+    assert!(e["stiche"].as_array().is_some_and(|s| s.len() > 100), "Stiche aus dem eigenen Motiv");
+    // löschen: Motiv weg, mit dem letzten Motiv auch der Satz
+    let l = ausfuehren(&k, "motiv_loeschen", json!({"satz": "Meine", "motiv": "Zack"})).unwrap();
+    assert!(!l.as_array().unwrap().iter().any(|s| s["name"] == "Meine"));
+    assert!(ausfuehren(&k, "motiv_loeschen", json!({"satz": "Heirloom", "motiv": "705"})).is_err());
+    let _ = std::fs::remove_dir_all(&ablage);
+}
+
 #[test]
 fn in_knoten_umwandeln() {
     let k = kontext();

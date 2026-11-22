@@ -199,6 +199,397 @@ pub fn motivlinie_objekt(satz: &Motivsatz, v: &MotivVorgabe, farbe: &str, name: 
     })
 }
 
+// ---------------------------------------------------------------- Motivfüllung (Pattern Fill)
+
+/// Standard der Motivfüllung wie das Original (NORMAL.AMT `<PRESET_STANDARD_MOTIF_FILL>`, 0x2798: Satz „Children“,
+/// Motiv „901“, Reihen-/Spaltenabstand 0x27b6/0x27b9 = 1000/2781 ≈ Höhe/Breite des Motivs; Bericht 20 §2).
+pub const FUELL_SATZ: &str = "Children";
+pub const FUELL_MOTIV: &str = "901";
+/// Lücke zwischen zwei Motiven, bis zu der sie ohne Sprung verbunden werden (mm, eigene Festlegung)
+pub const FUELL_VERBINDEN_BIS: f64 = 1.0;
+
+/// Vorgaben einer Motivfüllung (Handbuch S. 227–229 „Pattern Fill“: Motive in parallelen Reihen; Spalten-/
+/// Reihenabstand, Reihenversatz, Größe und Drehung über die Leitmotive).
+#[derive(Clone, Debug, PartialEq)]
+pub struct MotivFuellVorgabe {
+    pub satz: String,
+    pub motiv: String,
+    /// Fläche in mm (aufgelöst) und Löcher
+    pub umriss: Linie,
+    pub loecher: Vec<Linie>,
+    /// Länge der Grundlinie eines Motivs in mm; None = Größe im Motivsatz
+    pub groesse: Option<f64>,
+    /// Abstand der Motive in einer Reihe (mm); None = Breite des Motivs (wie das Original: 0x27b9 ≈ Breite)
+    pub spaltenabstand: Option<f64>,
+    /// Abstand der Reihen (mm); None = Höhe des Motivs (0x27b6 ≈ Höhe)
+    pub reihenabstand: Option<f64>,
+    /// Reihenversatz in mm: jede Reihe um so viel weiter verschoben als die vorige („row offset … distorts the rows“)
+    pub versatz: f64,
+    /// Drehung der Reihen in Grad (Leitmotiv in der Mitte; „The stitch angle has no effect on pattern layout“)
+    pub winkel: f64,
+}
+
+/// Kasten der Motivlinien (mm, Grundlinie von (0, 0) nach (Länge, 0), Größe im Satz): (u_min, u_max, t_min, t_max).
+pub fn motiv_kasten(z: &Zeichen) -> Option<(f64, f64, f64, f64)> {
+    let l = motiv_linien(z);
+    let pts = l.iter().flatten();
+    let (mut a, mut b, mut c, mut d) = (f64::MAX, f64::MIN, f64::MAX, f64::MIN);
+    for q in pts {
+        a = a.min(q.x);
+        b = b.max(q.x);
+        c = c.min(q.y);
+        d = d.max(q.y);
+    }
+    (b >= a && d >= c).then_some((a, b, c, d))
+}
+
+/// Strecke a–b an den Rändern der Fläche teilen; Stücke mit Mitte in der Fläche (Löcher zählen als außen).
+fn innen_stuecke(linie: &[Punkt], ringe: &[Linie]) -> Vec<Linie> {
+    let mut out: Vec<Linie> = Vec::new();
+    let mut akt: Linie = Vec::new();
+    for w in linie.windows(2) {
+        let (a, b) = (w[0], w[1]);
+        let mut ts = vec![0.0, 1.0];
+        for r in ringe {
+            let n = r.len();
+            for i in 0..n {
+                let (c, d) = (r[i], r[(i + 1) % n]);
+                let den = (b.x - a.x) * (d.y - c.y) - (b.y - a.y) * (d.x - c.x);
+                if den.abs() < 1e-12 {
+                    continue;
+                }
+                let t = ((c.x - a.x) * (d.y - c.y) - (c.y - a.y) * (d.x - c.x)) / den;
+                let u = ((c.x - a.x) * (b.y - a.y) - (c.y - a.y) * (b.x - a.x)) / den;
+                if (0.0..=1.0).contains(&t) && (0.0..=1.0).contains(&u) {
+                    ts.push(t);
+                }
+            }
+        }
+        ts.sort_by(f64::total_cmp);
+        for t in ts.windows(2) {
+            if t[1] - t[0] < 1e-9 {
+                continue;
+            }
+            let bei = |s: f64| p(a.x + (b.x - a.x) * s, a.y + (b.y - a.y) * s);
+            let (q0, q1) = (bei(t[0]), bei(t[1]));
+            if crate::geometrie::im_polygon(bei((t[0] + t[1]) / 2.0), ringe) {
+                if akt.last().is_none_or(|l| crate::geometrie::abstand(*l, q0) > 1e-9) {
+                    if akt.len() >= 2 {
+                        out.push(std::mem::take(&mut akt));
+                    }
+                    akt = vec![q0];
+                }
+                akt.push(q1);
+            } else if akt.len() >= 2 {
+                out.push(std::mem::take(&mut akt));
+            } else {
+                akt.clear();
+            }
+        }
+    }
+    if akt.len() >= 2 {
+        out.push(akt);
+    }
+    out
+}
+
+/// Linie eines Teils (für Längen und das Abschneiden): Lauf = Punkte, Satin = beide Seiten.
+fn teil_linien(o: &Objekt) -> Vec<Linie> {
+    match &o.art {
+        ObjektArt::Lauf { punkte, geschlossen, .. } => {
+            let mut l = punkte.clone();
+            if *geschlossen && let Some(&a) = l.first() {
+                l.push(a);
+            }
+            vec![l]
+        }
+        ObjektArt::Satin { seite_a, seite_b, .. } => vec![seite_a.clone(), seite_b.clone()],
+        _ => vec![],
+    }
+}
+
+/// Lagen der Motive einer Motivfüllung: je Reihe (oben nach unten) die Motive von links nach rechts als Ursprung der
+/// Grundlinie (u, t im gedrehten Rahmen). Das Raster liegt mit einem Motiv in der Mitte des Flächenkastens (eigene
+/// Festlegung – im Original legen es die Leitmotive fest, Handbuch S. 228).
+#[allow(clippy::too_many_arguments)]
+fn fuell_lagen(
+    ringe: &[Linie],
+    winkel: f64,
+    kasten: (f64, f64, f64, f64),
+    sp: f64,
+    ra: f64,
+    versatz: f64,
+) -> Vec<Vec<(f64, f64)>> {
+    let w = winkel.to_radians();
+    let (c, s) = (w.cos(), w.sin());
+    let (mut u0, mut u1, mut t0, mut t1) = (f64::MAX, f64::MIN, f64::MAX, f64::MIN);
+    for q in ringe.iter().flatten() {
+        let (u, t) = (q.x * c + q.y * s, -q.x * s + q.y * c);
+        u0 = u0.min(u);
+        u1 = u1.max(u);
+        t0 = t0.min(t);
+        t1 = t1.max(t);
+    }
+    if u1 < u0 {
+        return vec![];
+    }
+    let (km, kt) = ((kasten.0 + kasten.1) / 2.0, (kasten.2 + kasten.3) / 2.0);
+    let (uc, tc) = ((u0 + u1) / 2.0 - km, (t0 + t1) / 2.0 - kt);
+    let (hb, hh) = (kasten.1 - kasten.0, kasten.3 - kasten.2);
+    let r_von = ((t0 - tc - hh) / ra).floor() as i64;
+    let r_bis = ((t1 - tc + hh) / ra).ceil() as i64;
+    let mut reihen = Vec::new();
+    for r in (r_von..=r_bis).rev() {
+        let t = tc + r as f64 * ra;
+        let schub = r as f64 * versatz;
+        let c_von = ((u0 - uc - schub - hb) / sp).floor() as i64;
+        let c_bis = ((u1 - uc - schub + hb) / sp).ceil() as i64;
+        reihen.push((c_von..=c_bis).map(|k| (uc + schub + k as f64 * sp, t)).collect());
+    }
+    reihen
+}
+
+/// Motivfüllung in Stickobjekte umsetzen (Handbuch S. 227: „repeats patterns in parallel rows to fill the shape“).
+/// Reihe für Reihe, in der Reihe von links nach rechts (Motive sind „from left to right“ digitalisiert, S. 230).
+/// Ragt ein Motiv **mehr als zur Hälfte** über den Rand, wird es am Rand abgeschnitten („If more than half a pattern
+/// is outside the boundary, it will be clipped along the boundary“, S. 227); sonst bleibt es ganz (Deutung, mittel).
+/// Motive, die aneinanderstoßen (Lücke ≤ 1 mm), werden ohne Sprung verbunden; dazwischen Sprung (eigene Festlegung).
+pub fn motivfuellung_objekte(satz: &Motivsatz, v: &MotivFuellVorgabe, farbe: &str, name: &str) -> Result<Vec<Objekt>, String> {
+    let z = satz
+        .motive
+        .get(&v.motiv)
+        .ok_or_else(|| format!("Motiv „{}“ nicht im Motivsatz „{}“", v.motiv, satz.name))?;
+    let [x1, y1, x2, y2] = z.grundlinie;
+    let l0 = (x2 - x1).hypot(y2 - y1);
+    if l0 <= 0.0 {
+        return Err(format!("Motiv „{}“: Grundlinie ohne Länge", v.motiv));
+    }
+    let groesse = v.groesse.unwrap_or(l0 / EINHEIT);
+    if groesse.is_nan() || groesse <= 0.0 {
+        return Err("Motivgröße muss größer als 0 sein".into());
+    }
+    let f = groesse / (l0 / EINHEIT);
+    let k0 = motiv_kasten(z).ok_or("Motiv ohne Linien")?;
+    let kasten = (k0.0 * f, k0.1 * f, k0.2 * f, k0.3 * f);
+    let sp = v.spaltenabstand.unwrap_or(kasten.1 - kasten.0);
+    let ra = v.reihenabstand.unwrap_or(kasten.3 - kasten.2);
+    if !(sp > 0.3 && ra > 0.3) {
+        return Err("Spalten- und Reihenabstand müssen größer als 0,3 mm sein".into());
+    }
+    if v.umriss.len() < 3 {
+        return Err("Motivfüllung braucht eine geschlossene Fläche".into());
+    }
+    let mut ringe = vec![v.umriss.clone()];
+    ringe.extend(v.loecher.iter().filter(|l| l.len() >= 3).cloned());
+    let lagen = fuell_lagen(&ringe, v.winkel, kasten, sp, ra, v.versatz);
+    let anzahl: usize = lagen.iter().map(|r| r.len()).sum();
+    if anzahl > 20_000 {
+        return Err(format!("Motivfüllung: {anzahl} Motive – Motiv zu klein für die Fläche"));
+    }
+    let w0 = (y2 - y1).atan2(x2 - x1);
+    let (c0, s0) = (w0.cos(), w0.sin());
+    let kk = f / EINHEIT;
+    let w = v.winkel.to_radians();
+    let (c, s) = (w.cos(), w.sin());
+    let keine = |_: &crate::schrift::ZeichenObjekt| Unterlage::Arten(vec![]);
+    let eigene = |o: &crate::schrift::ZeichenObjekt| Unterlage::Arten(o.unterlagen.clone());
+    let unterlage: &dyn Fn(&crate::schrift::ZeichenObjekt) -> Unterlage =
+        if z.objekte.iter().any(|o| !o.unterlagen.is_empty()) { &eigene } else { &keine };
+
+    // Teile mit Markierung „gehört zum vorigen Teil derselben Kopie“ (wird ohne Sprung angeschlossen)
+    let mut folge: Vec<(Objekt, bool)> = Vec::new();
+    for reihe in &lagen {
+        for &(ou, ot) in reihe {
+            let abb = |q: (f64, f64)| -> Punkt {
+                let (dx, dy) = (q.0 - x1, q.1 - y1);
+                let u = ou + (dx * c0 + dy * s0) * kk;
+                let t = ot + (-dx * s0 + dy * c0) * kk;
+                p(u * c - t * s, u * s + t * c)
+            };
+            let (teile, _, _) = zeichen_teile(z, &abb, unterlage, MOTIV_FAKTOR, farbe, name, true);
+            let lang = |l: &Linie| crate::geometrie::laenge(l);
+            let gesamt: f64 = teile.iter().flat_map(teil_linien).map(|l| lang(&l)).sum();
+            let innen: f64 = teile
+                .iter()
+                .flat_map(teil_linien)
+                .flat_map(|l| innen_stuecke(&l, &ringe))
+                .map(|l| lang(&l))
+                .sum();
+            if gesamt <= 0.0 || innen <= 1e-6 {
+                continue;
+            }
+            if innen >= gesamt * 0.5 - 1e-9 {
+                // höchstens zur Hälfte draußen: ganzes Motiv
+                for (i, t) in teile.into_iter().enumerate() {
+                    folge.push((t, i > 0));
+                }
+                continue;
+            }
+            // mehr als zur Hälfte draußen: am Rand abschneiden
+            for t in teile {
+                match &t.art {
+                    ObjektArt::Lauf { laenge, dreifach, .. } => {
+                        for l in teil_linien(&t).iter().flat_map(|l| innen_stuecke(l, &ringe)) {
+                            if lang(&l) < 0.3 {
+                                continue;
+                            }
+                            let n = l.len();
+                            folge.push((
+                                Objekt {
+                                    art: ObjektArt::Lauf {
+                                        punkte: l,
+                                        ecken: vec![true; n],
+                                        laenge: *laenge,
+                                        dreifach: *dreifach,
+                                        geschlossen: false,
+                                    },
+                                    ..t.clone()
+                                },
+                                false,
+                            ));
+                        }
+                    }
+                    _ => {
+                        let l = teil_linien(&t);
+                        let pts: Vec<Punkt> = l.iter().flatten().copied().collect();
+                        if pts.is_empty() {
+                            continue;
+                        }
+                        let m = p(
+                            pts.iter().map(|q| q.x).sum::<f64>() / pts.len() as f64,
+                            pts.iter().map(|q| q.y).sum::<f64>() / pts.len() as f64,
+                        );
+                        if crate::geometrie::im_polygon(m, &ringe) {
+                            folge.push((t, false));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if folge.is_empty() {
+        return Err("Motivfüllung: kein Motiv liegt in der Fläche (Fläche zu klein?)".into());
+    }
+    // zu Ketten zusammenfassen: neue Kette (= Sprung), wenn ein Teil weiter als 1 mm vom vorigen Ende beginnt
+    let ende = |o: &Objekt| teil_linien(o).first().and_then(|l| l.last().copied());
+    let anfang = |o: &Objekt| teil_linien(o).first().and_then(|l| l.first().copied());
+    let mut ketten: Vec<Vec<Objekt>> = Vec::new();
+    for (t, gehoert) in folge {
+        let nah = match (ketten.last().and_then(|k| k.last()).and_then(ende), anfang(&t)) {
+            (Some(a), Some(b)) => crate::geometrie::abstand(a, b) <= FUELL_VERBINDEN_BIS,
+            _ => false,
+        };
+        if (gehoert || nah) && let Some(k) = ketten.last_mut() {
+            k.push(t);
+        } else {
+            ketten.push(vec![t]);
+        }
+    }
+    Ok(ketten
+        .into_iter()
+        .map(|teile| {
+            let n = teile.len();
+            Objekt {
+                farbe: farbe.to_string(),
+                name: name.to_string(),
+                art: ObjektArt::Kette {
+                    teile,
+                    umkehrbar: vec![false; n],
+                    loch: None,
+                },
+            }
+        })
+        .collect())
+}
+
+// ---------------------------------------------------------------- Eigene Motive (Create Pattern)
+
+/// Ein eigenes Motiv (Handbuch S. 230–231 „Create Pattern“): Objekte des Designs (JSON ohne Transformation, Formen
+/// als Punktlisten/Bézier wie nach `in_knoten_umwandeln`) und die Grundlinie aus zwei Bezugspunkten in mm.
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, schemars::JsonSchema)]
+pub struct EigenesMotiv {
+    pub name: String,
+    /// Bezugspunkte [[x1, y1], [x2, y2]] in mm: Lage und Wiederholabstand des Motivs
+    pub grundlinie: [[f64; 2]; 2],
+    pub objekte: Vec<serde_json::Value>,
+}
+
+/// Eigener Motivsatz (Datei `<Datenordner>/motive/<Name>.json`; eigene Erweiterung – das Original speichert ESB).
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize, schemars::JsonSchema)]
+pub struct EigenerSatz {
+    pub name: String,
+    pub motive: Vec<EigenesMotiv>,
+}
+
+/// Objekt eines eigenen Motivs in ein Objekt des Motivsatzes umsetzen (Einheiten 1/180 mm). Läufe bleiben Läufe
+/// (Dreifach wird einfach), Satinsäulen bleiben Säulen, Flächen werden Step-Flächen (eigene Festlegung – im Original
+/// behält ein Motiv seine Objekte).
+fn eigenes_objekt(v: &serde_json::Value) -> Result<crate::schrift::ZeichenObjekt, String> {
+    use crate::format::ObjektJson;
+    use crate::schrift::{Stichart, ZeichenObjekt};
+    let o: ObjektJson = serde_json::from_value(v.clone()).map_err(|e| format!("Motiv: {e}"))?;
+    let abb = |q: Punkt| (q.x * EINHEIT, q.y * EINHEIT);
+    let um = |a: &crate::format::PunktAngabe, g: bool| crate::umwandeln::knoten_umriss(a, g, &abb);
+    let neu = |klasse: u32, umrisse, stichart| ZeichenObjekt {
+        klasse,
+        umrisse,
+        winkel: vec![],
+        stichart,
+        unterlagen: vec![],
+        laufweg: None,
+    };
+    Ok(match &o {
+        ObjektJson::Lauf(l) | ObjektJson::Dreifach(l) => {
+            neu(0x05, vec![um(&l.punkte, l.geschlossen)], Stichart::Lauf { laenge: l.laenge })
+        }
+        ObjektJson::Satin(s) => neu(
+            0x0c,
+            vec![um(&s.seite_a, false), um(&s.seite_b, false)],
+            Stichart::Satin {
+                abstand: s.abstand,
+                auto_spacing: s.abstand.is_none(),
+            },
+        ),
+        ObjektJson::Tatami(f) => {
+            let mut u = vec![um(&f.umriss, true)];
+            u.extend(f.loecher.iter().map(|l| um(l, true)));
+            neu(0x06, u, Stichart::Tatami)
+        }
+        ObjektJson::Muster(f) => {
+            let mut u = vec![um(&f.umriss, true)];
+            u.extend(f.loecher.iter().map(|l| um(l, true)));
+            neu(0x06, u, Stichart::Tatami)
+        }
+        ObjektJson::Satinflaeche(f) => {
+            let mut u = vec![um(&f.umriss, true)];
+            u.extend(f.loecher.iter().map(|l| um(l, true)));
+            neu(0x06, u, Stichart::Tatami)
+        }
+        _ => return Err("Motive können nur aus Läufen, Satinsäulen und Flächen bestehen".into()),
+    })
+}
+
+/// Eigenen Motivsatz in einen Motivsatz des Kerns umsetzen.
+pub fn eigener_satz(s: &EigenerSatz) -> Result<Motivsatz, String> {
+    let mut motive = BTreeMap::new();
+    for m in &s.motive {
+        let objekte: Result<Vec<_>, String> = m.objekte.iter().map(eigenes_objekt).collect();
+        let [a, b] = m.grundlinie;
+        motive.insert(
+            m.name.clone(),
+            Zeichen {
+                zeichen: ' ',
+                grundlinie: [a[0] * EINHEIT, a[1] * EINHEIT, b[0] * EINHEIT, b[1] * EINHEIT],
+                objekte: objekte.map_err(|e| format!("Motiv „{}“: {e}", m.name))?,
+            },
+        );
+    }
+    Ok(Motivsatz {
+        name: s.name.clone(),
+        motive,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
