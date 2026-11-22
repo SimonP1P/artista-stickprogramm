@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Umrandung bei kleiner Schrift (Fehler gemeldet vom Nutzer; Commit siehe unten)
+## 21.11.2026 – Umrandung bei kleiner Schrift (Fehler gemeldet vom Nutzer; Commit 70b62e4)
 - **Kern, keine neuen Felder:** Satinkante der Umrandung ist jetzt ein **Band**, das in Satinsäulen zerlegt wird
   (`saeulen::zerlegen` wie `satinflaeche`, Teilung am Knick 87°, Überlappung 0,3 mm) – keine Stichsterne mehr an engen
   Kurven und kleinen Innenräumen. Ergibt `breite_anteil` weniger als 1 mm (Schrift unter 17 mm bei 6 %), wird die
