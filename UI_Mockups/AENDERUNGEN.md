@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – ART-Designs des Originals mit Objekten öffnen (Nachtauftrag N11, 4b.13c; Commit COMMIT)
+## 22.11.2026 – ART-Designs des Originals mit Objekten öffnen (Nachtauftrag N11, 4b.13c; Commit 71cd891)
 - `stickdatei_lesen` liest jetzt auch **`.art`** (Original-Designs der artista V4, z. B. die 287 Musterdesigns der CD).
   - Ergebnis: je Objekt des Originals ein Objekt `stiche` mit seinen echten Stichen.
   - Name „Objektart · Marke Nummer Garnname“, Farbe aus der Garnbibliothek des Designs.
