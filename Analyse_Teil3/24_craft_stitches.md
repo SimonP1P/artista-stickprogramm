@@ -133,5 +133,5 @@ zurückgeführt. Das neue Objekt steht an der Stelle des ersten.
 - Stippling über die Mittelachse wie das Original (MOD1 0x101a4970 ff.); Werte im Dokument +0x138.
 - Stippling mit anderen Sticharten als Laufstich – im Original nicht geprüft.
 - „Double Run“ (Doppellauf als eigene Stichart) – im Kern nur als Folge des Blackwork-Wegs.
-- Stilteile 0x2828 und 0x2830 unbekannt (0x2830 möglicherweise Kreuzstich, ROADMAP 4b.15).
+- Stilteil 0x2830 unbekannt (möglicherweise Kreuzstich, ROADMAP 4b.15). **0x2828 = PhotoSnap-Stichart** (N5, [25](25_automatik.md) §3.1).
 - Stielstich: Zuordnung Breite/Abstand am Gerät prüfen (Kalibrierblatt).

@@ -575,6 +575,76 @@ fn bild_vorschau_und_umwandeln() {
     let _ = std::fs::remove_file(&pfad);
 }
 
+/// Zauberstab (Flächen anklicken) und PhotoSnap (N5); eingefügt in ein Design trägt jedes Objekt Closest Join
+#[test]
+fn zauberstab_und_photosnap() {
+    let k = kontext();
+    let pfad = std::env::temp_dir().join(format!("stick_zauber_test_{}.png", std::process::id()));
+    // weiß, roter Rahmen mit Loch (links), blaues Quadrat (rechts), grauer Verlauf unten
+    let mut b = image::RgbaImage::from_pixel(200, 120, image::Rgba([255, 255, 255, 255]));
+    for y in 10..70u32 {
+        for x in 10..190u32 {
+            let rahmen = x < 90 && !((25..75).contains(&x) && (25..55).contains(&y));
+            if rahmen {
+                b.put_pixel(x, y, image::Rgba([200, 30, 30, 255]));
+            } else if x >= 110 {
+                b.put_pixel(x, y, image::Rgba([30, 60, 200, 255]));
+            }
+        }
+    }
+    for y in 80..115u32 {
+        for x in 0..200u32 {
+            let g = (255 * x / 199) as u8;
+            b.put_pixel(x, y, image::Rgba([g, g, g, 255]));
+        }
+    }
+    b.save(&pfad).unwrap();
+    let p = pfad.to_string_lossy().to_string();
+    let bild = json!({"pfad": p, "farben": 4, "vereinfachen": 0, "breite": 100});
+    // Klick auf den roten Rahmen (Fläche Step) und auf das blaue Quadrat (Umriss Lauf)
+    let r = ausfuehren(&k, "zauberstab", json!({"bild": bild, "klicks": [
+        {"x": 15.0 / 200.0, "y": 40.0 / 120.0, "stichart": "step"},
+        {"x": 150.0 / 200.0, "y": 40.0 / 120.0, "stichart": "lauf"},
+        {"x": 150.0 / 200.0, "y": 5.0 / 120.0, "stichart": "satin"}
+    ]})).unwrap();
+    let o = r["design"]["objekte"].as_array().unwrap();
+    assert_eq!(o.len(), 3, "{o:?}");
+    assert_eq!(o[0]["art"], "tatami");
+    assert_eq!(o[0]["loecher"].as_array().unwrap().len(), 1, "Rahmen mit Loch");
+    assert_eq!(o[1]["art"], "lauf");
+    assert_eq!(o[1]["geschlossen"], true);
+    // der dritte Klick traf den weißen Hintergrund: eine große Fläche mit Löchern
+    assert_eq!(o[2]["art"], "satinflaeche");
+    assert_eq!(r["design"]["kuerzeste_verbindung"], true);
+    ausfuehren(&k, "design_berechnen", json!({"design": r["design"]})).unwrap();
+    // eingefügt in ein Design ohne Closest Join: die neuen Objekte tragen `kuerzeste`
+    let basis = json!({"rahmen": "artista 200 x 155", "objekte": [{"art": "lauf", "punkte": [[-50, 50], [-40, 50]]}]});
+    let e = ausfuehren(&k, "design_einfuegen", json!({"design": basis, "einfuegen": r["design"]})).unwrap();
+    let eo = e["design"]["objekte"].as_array().unwrap();
+    assert!(eo[0].get("kuerzeste").is_none() && eo[1..].iter().all(|x| x["kuerzeste"] == true));
+    // kein Klick getroffen → Fehler mit Hinweis
+    assert!(ausfuehren(&k, "zauberstab", json!({"bild": bild, "klicks": []})).is_err());
+
+    // PhotoSnap einfarbig und farbig
+    for (farbig, lagen) in [(false, 1), (true, 4)] {
+        let r = ausfuehren(&k, "photosnap", json!({"pfad": p, "breite": 60, "farbig": farbig, "winkel": 30})).unwrap();
+        assert_eq!(r["lagen"], lagen);
+        let o = &r["design"]["objekte"][0];
+        assert_eq!(o["art"], "photosnap");
+        assert_eq!(o["raster"]["breite"], 120);
+        let e = ausfuehren(&k, "design_berechnen", json!({"design": r["design"]})).unwrap();
+        assert_eq!(e["bloecke"].as_array().unwrap().len(), lagen, "{e}");
+        // Inspektor: wirksame Werte
+        let w = ausfuehren(&k, "objekt_werte", json!({"design": r["design"], "objekt": 0})).unwrap();
+        assert!(w.as_array().unwrap().iter().any(|x| x["feld"] == "aufloesung" && x["wert"] == "mittel"));
+    }
+    // beschädigtes Raster wird gemeldet
+    let mut d = ausfuehren(&k, "photosnap", json!({"pfad": p, "breite": 30})).unwrap()["design"].clone();
+    d["objekte"][0]["raster"]["lagen"][0]["werte"] = json!("AAAA");
+    assert!(ausfuehren(&k, "design_berechnen", json!({"design": d})).is_err());
+    let _ = std::fs::remove_file(&pfad);
+}
+
 /// Schrift mit Stichart „auto“: klein Satin, groß Step (ganzer Text); Satin groß gibt eine Warnung
 #[test]
 fn schrift_stichart_auto() {

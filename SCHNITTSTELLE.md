@@ -38,6 +38,7 @@ Koordinaten in mm, Ursprung = Rahmenmitte, +y nach oben. Objektnummern in Befehl
 | `farbe` | string |  | `"#000000"` | Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet) |
 | `garn` | string |  | – | **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B. „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte) |
 | `gruppe` | string |  | – | **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element) |
+| `kuerzeste` | boolean |  | `false` | **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116) |
 | `name` | string |  | `""` | Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text |
 | `step_muster` | number |  | – | Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) |
 | `transform` | Transformation |  | – | Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet |
@@ -348,6 +349,20 @@ Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** O
 | `ueberlappung` | number |  | – | Rückstich: Überlappung in % (50) |
 | `winkel` | number |  | – | Stielstich: Winkel in Grad (50) |
 
+### `photosnap` – PhotoSnap: Foto als Reihen von Zickzackstichen mit wechselndem Abstand (Befehl `photosnap` legt es an)
+
+PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Abstand der Helligkeit folgt („line printer“). Bildmitte = Mitte des Objekts; Lage und Größe über `transform`.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `abstand_max` | number |  | – | größter Abstand in mm an den hellsten Stellen (1 … 12; Standard 10 – Stil 0x2828) |
+| `abstand_min` | number |  | – | kleinster Abstand in mm an den dunkelsten Stellen (0,4 … 5; Standard 0,8 – Stil 0x2828) |
+| `aufloesung` | PhotoAufloesung |  | – | Auflösung = Breite der Reihen (Standard mittel 2,0 mm) |
+| `hintergrund` | PhotoHintergrund |  | – | Stoff hell (Standard) oder dunkel |
+| `lagen` | PhotoLagen |  | – | Farblagen gekreuzt (Standard) oder versetzt |
+| `raster` | PhotoRasterJson | ja | – |  |
+| `winkel` | number |  | – | Winkel der Reihen in Grad (Standard 0 wie im Original; das Handbuch-Beispiel zeigt 45°) |
+
 ## 3. Auswahlwerte
 
 **Abdeckung** – Abdeckstich der Applikation
@@ -422,6 +437,22 @@ Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** O
 - `"raute"` – Raute
 - `"zier"` – Zierwinkel
 - `"keine"` – kein Rahmen (Standard)
+
+**PhotoAufloesung** – Auflösung von PhotoSnap = Breite der Stichreihen
+
+- `"grob"` – grob (Reihen 3,0 mm)
+- `"mittel"` – mittel (Reihen 2,0 mm, Standard)
+- `"fein"` – fein (Reihen 1,0 mm)
+
+**PhotoHintergrund** – Stoff hinter PhotoSnap
+
+- `"hell"` – heller Stoff: dunkle Stellen bekommen viel Faden (Standard)
+- `"dunkel"` – dunkler Stoff: helle Stellen bekommen viel Faden
+
+**PhotoLagen** – Lage der Farbschichten von PhotoSnap zueinander (nur mit mehreren Lagen)
+
+- `"gekreuzt"` – je Lage 45° weiter gedreht: 0°, 45°, 90°, 135° (Standard)
+- `"versetzt"` – gleiche Richtung, Reihen je Lage 0,4 mm versetzt
 
 **Profil** – Profil des Verlaufs (Dialog „Gradient Fill“: Linear, Dec-Linear, Convex, Concave; „Color Blending“ zusätzlich Inc_Exp/Dec-Exp und Convex-Concave/Concave-Convex). Abstand vom kleinsten zum größten Wert über die Fläche
 
@@ -579,6 +610,26 @@ Elastic Lettering: `{"art": "gerade", "oben": [links, rechts], "unten": [links, 
 | `oben` | Griffe |  | – | Verschiebung der oberen Kante in mm |
 | `unten` | Griffe |  | – | Verschiebung der unteren Kante in mm |
 
+### PhotoLageJson
+
+Eine Farblage von PhotoSnap.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `farbe` | string | ja | – | Garnfarbe der Lage „#rrggbb“ (bei nur einer Lage gilt `farbe` des Objekts) |
+| `werte` | string | ja | – | Deckung je Bildpunkt als Base64 (ein Byte je Punkt, zeilenweise von oben; 0 = kein Faden, 255 = voll – für hellen Stoff) |
+
+### PhotoRasterJson
+
+Bildraster von PhotoSnap (vom Befehl `photosnap` erzeugt, nicht von Hand).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `breite` | number | ja | – | Bildpunkte waagrecht |
+| `hoehe` | number | ja | – | Bildpunkte senkrecht |
+| `lagen` | PhotoLageJson[] | ja | – | Farblagen in Stickreihenfolge: eine (Graustufen) oder vier (Cyan, Magenta, Gelb, Schwarz) |
+| `mm` | number | ja | – | Größe eines Bildpunkts in mm |
+
 ### RandJson
 
 Ausgefranster Rand (Textured Edge, ART-Datensatz 0x32: Seite, Spanne, Texture). Standard wie der Effekt-Datensatz im Stil der Musterdesigns (Seite 2, Spanne 1,5 mm).
@@ -667,6 +718,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `motivsatz_motive` | MotivsatzName | MotivInfo[] | Motive eines Motivsatzes mit Maßen und Linien für die Vorschau |
 | `objekt_werte` | ObjektEingabe | WirksamerWert[] | Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet, Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“ |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |
+| `photosnap` | PhotosnapEingabe | PhotosnapErgebnis | PhotoSnap: Foto als Reihen von Zickzackstichen (einfarbig oder vier Farblagen) – neues Design mit einem Objekt |
 | `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |
 | `saeulen_vorschau` | SaeulenEingabe | SaeuleInfo[] | Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung) |
@@ -681,5 +733,6 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `text_speichern` | TextDatei | null | Textdatei schreiben |
 | `ueberdeckungen` | DesignEingabe | number[][] | Paare [früher, später] gestickter Objekte, deren Flächen sich überdecken |
 | `welle_vorschlag` | ObjektEingabe | unknown | Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`) |
+| `zauberstab` | ZauberstabEingabe | ZauberstabErgebnis | Zauberstab (Magic Wand): angeklickte Flächen des vorbereiteten Bildes als Fläche oder Umriss (neues Design) |
 
 **Ereignis** `maschine_fortschritt` (Typ `Fortschritt`: `was`, `erledigt`, `gesamt`, `wiederholungen`): Fortschritt von `maschine_senden` und `maschine_lesen`, von der App gesendet. Fehler der Maschine tragen zusätzlich `code` (`FehlerCode`). **Sicherheit:** nur `maschine_senden` schreibt in die Maschine – erst nach `maschine_planen` und ausdrücklicher Bestätigung; `wahl.sticken` nur nach dem Gefahrendialog.

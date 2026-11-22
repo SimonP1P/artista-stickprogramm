@@ -294,6 +294,10 @@ P('objekt.einstich', G, 'Einstich (entry point)', 'Objekt beginnt hier bzw. am n
 P('objekt.ausstich', G, 'Ausstich (exit point)', 'Objekt endet hier bzw. so nah wie die Form erlaubt', ebene='objekt',
   gilt=ALLE, o='ausstich', einheit='mm [x, y]', std=None,
   quelle='Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (' + Q + ')')
+P('objekt.kuerzeste', G, 'Closest Join je Objekt', 'wie „Kürzeste Verbindung“, nur für dieses Objekt; setzen Bild '
+  'umwandeln, Zauberstab und SVG einlesen beim Einfügen', ebene='objekt', gilt=ALLE + ['photosnap'], o='kuerzeste',
+  einheit='an/aus', std=False, quelle='Handbuch S. 116 (Auto Digitizer: closest join); je Objekt eigene Festlegung '
+  '(Analyse_Teil3/25 §1)', modus='automatisch')
 P('reihenfolge.farben', G, 'Farbreihenfolge beim Sortieren', 'gewünschte Folge der Farben (Move Up/Down), übrige '
   'Farben in der Reihenfolge ihres ersten Auftretens', ebene='werkzeug', einheit='Farbliste', std=[],
   quelle='Dialog „Sequence By Color“ (Handbuch Kap. 14); Befehl reihenfolge --nach-farbe')
@@ -430,6 +434,38 @@ P('objekt.blackwork.stich', G, 'Stichart (Blackwork)', 'Stichart der verbundenen
   werte=['lauf', 'dreifach', 'rueckstich', 'stielstich'],
   quelle='Handbuch S. 131–132 (Blackwork Run: Einfach-/Dreifachlauf, Stielstich, Rückstich); Reihenfolge ' + V,
   modus='einfach')
+G = 'PhotoSnap'
+Q = 'MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3)'
+PS = ['photosnap']
+P('objekt.photosnap.aufloesung', G, 'Auflösung', 'Breite der Stichreihen: grob 3, mittel 2, fein 1 mm', ebene='objekt',
+  gilt=PS, o='aufloesung', einheit='Auswahl', std='mittel', werte=['grob', 'mittel', 'fein'],
+  quelle='Handbuch S. 119 (Coarse/Medium/Fine); mittel 2,0 mm = 0x3ee5 = 360 (niedrig); grob/fein ' + V,
+  modus='einfach')
+P('objekt.photosnap.hintergrund', G, 'Stoff', 'hell: dunkle Stellen bekommen viel Faden; dunkel: helle Stellen',
+  ebene='objekt', gilt=PS, o='hintergrund', einheit='Auswahl', std='hell', werte=['hell', 'dunkel'],
+  quelle=Q + ': 0x3ee8 = 1; Handbuch S. 120 Background Light/Dark', modus='einfach')
+P('objekt.photosnap.winkel', G, 'Winkel der Reihen', 'Richtung der Stichreihen', ebene='objekt', gilt=PS, o='winkel',
+  einheit='°', std=0.0, bereich=[-360, 360], quelle=Q + ': 0x3eeb, Vorgabe 0 im Konstruktor (Handbuch-Bild 45°)',
+  modus='einfach')
+P('objekt.photosnap.lagen', G, 'Farblagen', 'gekreuzt: je Lage 45° mehr; versetzt: gleicher Winkel, Reihen je Lage '
+  '0,4 mm verschoben', ebene='objekt', gilt=PS, o='lagen', einheit='Auswahl', std='gekreuzt',
+  werte=['gekreuzt', 'versetzt'], quelle=Q + ': Modus 1 = 0/45/90/135° (0x10120890), Modus 2 = 72/144/216 '
+  '(0x101209e0) (hoch)', modus='einfach')
+P('objekt.photosnap.abstand_min', G, 'Abstand dunkel', 'Abstand der Zickzackstiche an der dunkelsten Stelle',
+  ebene='objekt', gilt=PS, o='abstand_min', einheit='mm', std=0.8, bereich=[0.4, 5],
+  quelle='Stil 0x2828 Feld 0x282a = 144 (Zuordnung niedrig)')
+P('objekt.photosnap.abstand_max', G, 'Abstand hell', 'Abstand an der hellsten Stelle (größter Abstand)',
+  ebene='objekt', gilt=PS, o='abstand_max', einheit='mm', std=10.0, bereich=[1, 12],
+  quelle='Stil 0x2828 Feld 0x282f = 1800 (Zuordnung niedrig); Handbuch „Max Width … lightest part“')
+P('photosnap.farbig', G, 'Farbe', 'einfarbig (Graustufen) oder vier Farblagen Cyan, Magenta, Gelb, Schwarz',
+  ebene='werkzeug', einheit='an/aus', std=False, quelle=Q + ': 0x3ee9 = 1 einfarbig; farbig Split_CMYK (hoch)',
+  modus='einfach')
+P('photosnap.raster', G, 'Rasterpunkt', 'Größe eines Bildpunkts im gespeicherten Raster', ebene='werkzeug',
+  einheit='mm', std=0.5, quelle=V, modus='automatisch')
+P('zauberstab.stichart', 'Zauberstab', 'Stichart des nächsten Klicks', 'Fläche Step/Satin/Auto oder Umriss '
+  'Lauf/Dreifach/Satinlinie', ebene='werkzeug', einheit='Auswahl', std='step',
+  werte=['step', 'satin', 'auto', 'lauf', 'dreifach', 'satinlinie'],
+  quelle='Handbuch S. 114–115 (Magic Wand: Stichart vor dem Klick)', modus='einfach')
 G = 'Effekte'
 Q = 'IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23)'
 FX = ['tatami', 'muster', 'satin', 'satinlinie', 'satinflaeche']
@@ -647,5 +683,5 @@ for e in K:
 ids = [e['id'] for e in K]
 assert len(ids) == len(set(ids)), 'doppelte IDs'
 with open(ZIEL, 'w', encoding='utf-8') as f:
-    json.dump({'stand': '21.11.2026', 'parameter': K}, f, ensure_ascii=False, indent=1)
+    json.dump({'stand': '22.11.2026', 'parameter': K}, f, ensure_ascii=False, indent=1)
 print(len(K), 'Parameter ->', os.path.normpath(ZIEL))

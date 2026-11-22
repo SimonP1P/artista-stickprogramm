@@ -19,6 +19,7 @@
 //! die App als Ereignis `maschine_fortschritt` ([`Kontext::fortschritt_melden`]).
 
 pub mod befehle;
+pub mod automatik;
 pub mod craft;
 pub mod effekte;
 pub mod erzeugen;
@@ -391,6 +392,10 @@ befehle! {
     bild_umwandeln: befehle::BildEingabe => befehle::BildErgebnis,
     /// Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln
     bild_vorschau: befehle::BildEingabe => befehle::BildVorschau,
+    /// Zauberstab (Magic Wand): angeklickte Flächen des vorbereiteten Bildes als Fläche oder Umriss (neues Design)
+    zauberstab: automatik::ZauberstabEingabe => automatik::ZauberstabErgebnis,
+    /// PhotoSnap: Foto als Reihen von Zickzackstichen (einfarbig oder vier Farblagen) – neues Design mit einem Objekt
+    photosnap: automatik::PhotosnapEingabe => automatik::PhotosnapErgebnis,
     /// SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design
     svg_lesen: befehle::SvgEingabe => befehle::SvgErgebnis,
     /// Textdatei lesen
@@ -428,6 +433,7 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
 mod befehle_aller {
     pub use crate::befehle::*;
     pub use crate::maschine::*;
+    pub use crate::automatik::*;
     pub use crate::craft::*;
     pub use crate::effekte::*;
     pub use crate::motive::*;

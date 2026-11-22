@@ -106,6 +106,8 @@
     "-",
     { l: "Beispiel laden", go: beispiel },
     { l: "Bild umwandeln …", go: () => (arbeit.dialog = { art: "bild" }) },
+    { l: "Zauberstab (Flächen im Bild anklicken) …", go: () => (arbeit.dialog = { art: "bild", modus: "zauber" }) },
+    { l: "PhotoSnap (Foto) …", go: () => (arbeit.dialog = { art: "bild", modus: "photo" }) },
     { l: "SVG einlesen …", go: () => (arbeit.dialog = { art: "svg" }) },
     "-",
     { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
@@ -402,6 +404,8 @@
           {/each}
           <div class="msep"></div>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
+          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "zauber" }))}><Icon d={IC.zauberstab} />Zauberstab …</button>
+          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "photo" }))}><Icon d={ART.photosnap[1]} />PhotoSnap (Foto) …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
         </div>
         <div style="padding:4px; background:var(--panel)">
@@ -715,6 +719,6 @@
       schliessen={() => (arbeit.dialog = null)}
     />
   {:else if arbeit.dialog?.art === "bild" || arbeit.dialog?.art === "svg"}
-    <EinlesenDialog art={arbeit.dialog.art} startPfad={arbeit.dialog.art === "bild" ? arbeit.dialog.pfad : undefined} schliessen={() => (arbeit.dialog = null)} />
+    <EinlesenDialog art={arbeit.dialog.art} startPfad={arbeit.dialog.art === "bild" ? arbeit.dialog.pfad : undefined} startModus={arbeit.dialog.art === "bild" ? arbeit.dialog.modus : undefined} schliessen={() => (arbeit.dialog = null)} />
   {/if}
 </div>

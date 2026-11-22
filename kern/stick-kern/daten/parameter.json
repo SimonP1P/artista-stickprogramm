@@ -1,5 +1,5 @@
 {
- "stand": "21.11.2026",
+ "stand": "22.11.2026",
  "parameter": [
   {
    "id": "design.rahmen",
@@ -3331,6 +3331,44 @@
    "modus": "experte"
   },
   {
+   "id": "objekt.kuerzeste",
+   "gruppe": "Reihenfolge",
+   "name": "Closest Join je Objekt",
+   "wirkung": "wie „Kürzeste Verbindung“, nur für dieses Objekt; setzen Bild umwandeln, Zauberstab und SVG einlesen beim Einfügen",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "lauf",
+    "dreifach",
+    "satin",
+    "satinlinie",
+    "satinflaeche",
+    "tatami",
+    "muster",
+    "blanket",
+    "applikation",
+    "text",
+    "ttf",
+    "monogramm",
+    "knopfloch",
+    "motivlinie",
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork",
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "kuerzeste",
+   "einheit": "an/aus",
+   "standard": false,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch S. 116 (Auto Digitizer: closest join); je Objekt eigene Festlegung (Analyse_Teil3/25 §1)",
+   "modus": "automatisch"
+  },
+  {
    "id": "reihenfolge.farben",
    "gruppe": "Reihenfolge",
    "name": "Farbreihenfolge beim Sortieren",
@@ -4262,6 +4300,197 @@
    ],
    "stoff": false,
    "quelle": "Handbuch S. 131–132 (Blackwork Run: Einfach-/Dreifachlauf, Stielstich, Rückstich); Reihenfolge Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.photosnap.aufloesung",
+   "gruppe": "PhotoSnap",
+   "name": "Auflösung",
+   "wirkung": "Breite der Stichreihen: grob 3, mittel 2, fein 1 mm",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "aufloesung",
+   "einheit": "Auswahl",
+   "standard": "mittel",
+   "bereich": null,
+   "werte": [
+    "grob",
+    "mittel",
+    "fein"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch S. 119 (Coarse/Medium/Fine); mittel 2,0 mm = 0x3ee5 = 360 (niedrig); grob/fein Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.photosnap.hintergrund",
+   "gruppe": "PhotoSnap",
+   "name": "Stoff",
+   "wirkung": "hell: dunkle Stellen bekommen viel Faden; dunkel: helle Stellen",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "hintergrund",
+   "einheit": "Auswahl",
+   "standard": "hell",
+   "bereich": null,
+   "werte": [
+    "hell",
+    "dunkel"
+   ],
+   "stoff": false,
+   "quelle": "MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): 0x3ee8 = 1; Handbuch S. 120 Background Light/Dark",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.photosnap.winkel",
+   "gruppe": "PhotoSnap",
+   "name": "Winkel der Reihen",
+   "wirkung": "Richtung der Stichreihen",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "winkel",
+   "einheit": "°",
+   "standard": 0.0,
+   "bereich": [
+    -360,
+    360
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): 0x3eeb, Vorgabe 0 im Konstruktor (Handbuch-Bild 45°)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.photosnap.lagen",
+   "gruppe": "PhotoSnap",
+   "name": "Farblagen",
+   "wirkung": "gekreuzt: je Lage 45° mehr; versetzt: gleicher Winkel, Reihen je Lage 0,4 mm verschoben",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "lagen",
+   "einheit": "Auswahl",
+   "standard": "gekreuzt",
+   "bereich": null,
+   "werte": [
+    "gekreuzt",
+    "versetzt"
+   ],
+   "stoff": false,
+   "quelle": "MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): Modus 1 = 0/45/90/135° (0x10120890), Modus 2 = 72/144/216 (0x101209e0) (hoch)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.photosnap.abstand_min",
+   "gruppe": "PhotoSnap",
+   "name": "Abstand dunkel",
+   "wirkung": "Abstand der Zickzackstiche an der dunkelsten Stelle",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "abstand_min",
+   "einheit": "mm",
+   "standard": 0.8,
+   "bereich": [
+    0.4,
+    5
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Stil 0x2828 Feld 0x282a = 144 (Zuordnung niedrig)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.photosnap.abstand_max",
+   "gruppe": "PhotoSnap",
+   "name": "Abstand hell",
+   "wirkung": "Abstand an der hellsten Stelle (größter Abstand)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "photosnap"
+   ],
+   "json_design": null,
+   "json_objekt": "abstand_max",
+   "einheit": "mm",
+   "standard": 10.0,
+   "bereich": [
+    1,
+    12
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Stil 0x2828 Feld 0x282f = 1800 (Zuordnung niedrig); Handbuch „Max Width … lightest part“",
+   "modus": "experte"
+  },
+  {
+   "id": "photosnap.farbig",
+   "gruppe": "PhotoSnap",
+   "name": "Farbe",
+   "wirkung": "einfarbig (Graustufen) oder vier Farblagen Cyan, Magenta, Gelb, Schwarz",
+   "ebene": "werkzeug",
+   "gilt_fuer": [],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "an/aus",
+   "standard": false,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): 0x3ee9 = 1 einfarbig; farbig Split_CMYK (hoch)",
+   "modus": "einfach"
+  },
+  {
+   "id": "photosnap.raster",
+   "gruppe": "PhotoSnap",
+   "name": "Rasterpunkt",
+   "wirkung": "Größe eines Bildpunkts im gespeicherten Raster",
+   "ebene": "werkzeug",
+   "gilt_fuer": [],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": 0.5,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "Vorschlag (eigene Festlegung)",
+   "modus": "automatisch"
+  },
+  {
+   "id": "zauberstab.stichart",
+   "gruppe": "Zauberstab",
+   "name": "Stichart des nächsten Klicks",
+   "wirkung": "Fläche Step/Satin/Auto oder Umriss Lauf/Dreifach/Satinlinie",
+   "ebene": "werkzeug",
+   "gilt_fuer": [],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "Auswahl",
+   "standard": "step",
+   "bereich": null,
+   "werte": [
+    "step",
+    "satin",
+    "auto",
+    "lauf",
+    "dreifach",
+    "satinlinie"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch S. 114–115 (Magic Wand: Stichart vor dem Klick)",
    "modus": "einfach"
   },
   {

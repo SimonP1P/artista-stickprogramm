@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **217 Parameter**: 65 einfach, 100 experte, 52 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 22.11.2026 · **227 Parameter**: 71 einfach, 102 experte, 54 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -160,6 +160,7 @@ Stand 21.11.2026 · **217 Parameter**: 65 einfach, 100 experte, 52 automatisch. 
 | **Kürzeste Verbindung (Closest Join)** | jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (Linien umgedreht, geschlossene Formen gedreht; Schrift ausgenommen) |  | `kuerzeste_verbindung` | aus |  |  | design | experte | MOD1 ResequenceByClosestJoin 0x1006d0c0, GEOMETRY FindExitEntry (hoch); im Original Option von Resequence und Auto Digitizer, sonst „wie digitalisiert“ (Messung Analyse_Teil3/16_reihenfolge.md) |
 | **Einstich (entry point)** | Objekt beginnt hier bzw. am nächsten Punkt der Form | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm, knopfloch, motivlinie, motivfuellung, rueckstich, stielstich, stippling, blackwork | Objekt: `einstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (entry point, Reshape); Umsetzung je Objektart eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
 | **Ausstich (exit point)** | Objekt endet hier bzw. so nah wie die Form erlaubt | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm, knopfloch, motivlinie, motivfuellung, rueckstich, stielstich, stippling, blackwork | Objekt: `ausstich` | – |  |  | objekt | experte | Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (Analyse_Teil3/16_reihenfolge.md) |
+| **Closest Join je Objekt** | wie „Kürzeste Verbindung“, nur für dieses Objekt; setzen Bild umwandeln, Zauberstab und SVG einlesen beim Einfügen | lauf, dreifach, satin, satinlinie, satinflaeche, tatami, muster, blanket, applikation, text, ttf, monogramm, knopfloch, motivlinie, motivfuellung, rueckstich, stielstich, stippling, blackwork, photosnap | Objekt: `kuerzeste` | aus |  |  | objekt | automatisch | Handbuch S. 116 (Auto Digitizer: closest join); je Objekt eigene Festlegung (Analyse_Teil3/25 §1) |
 | **Farbreihenfolge beim Sortieren** | gewünschte Folge der Farben (Move Up/Down), übrige Farben in der Reihenfolge ihres ersten Auftretens |  |  | [] Farbliste |  |  | werkzeug | experte | Dialog „Sequence By Color“ (Handbuch Kap. 14); Befehl reihenfolge --nach-farbe |
 | **Überdeckung beachten** | beim Sortieren nach Farbe behalten Objekte, die sich überdecken, ihre Reihenfolge |  |  | aus |  |  | werkzeug | einfach | eigene Erweiterung (das Original prüft nicht, Analyse_Teil3/16_reihenfolge.md) |
 | **Überdeckung ab** | kleinere gemeinsame Flächen zählen nicht |  |  | 0,5 mm² |  |  | werkzeug | automatisch | eigene Festlegung |
@@ -235,6 +236,25 @@ Stand 21.11.2026 · **217 Parameter**: 65 einfach, 100 experte, 52 automatisch. 
 | **Abstand** | Abstand der Bahnen der mäandernden Linie | stippling | Objekt: `abstand` | 3 mm | 0,5 … 20 |  | objekt | einfach | Handbuch S. 242–243 (Beispielwerte, niedrig); Verfahren Vorschlag (eigene Festlegung) |
 | **Stichlänge** | Länge der Laufstiche | stippling | Objekt: `laenge` | 2 mm | 0,5 … 12,7 |  | objekt | einfach | Handbuch S. 242–243 (niedrig) |
 | **Stichart (Blackwork)** | Stichart der verbundenen Linien; Werte wie beim Objekt dieser Art | blackwork | Objekt: `stich` | lauf | lauf, dreifach, rueckstich, stielstich |  | objekt | einfach | Handbuch S. 131–132 (Blackwork Run: Einfach-/Dreifachlauf, Stielstich, Rückstich); Reihenfolge Vorschlag (eigene Festlegung) |
+
+## PhotoSnap
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Auflösung** | Breite der Stichreihen: grob 3, mittel 2, fein 1 mm | photosnap | Objekt: `aufloesung` | mittel | grob, mittel, fein |  | objekt | einfach | Handbuch S. 119 (Coarse/Medium/Fine); mittel 2,0 mm = 0x3ee5 = 360 (niedrig); grob/fein Vorschlag (eigene Festlegung) |
+| **Stoff** | hell: dunkle Stellen bekommen viel Faden; dunkel: helle Stellen | photosnap | Objekt: `hintergrund` | hell | hell, dunkel |  | objekt | einfach | MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): 0x3ee8 = 1; Handbuch S. 120 Background Light/Dark |
+| **Winkel der Reihen** | Richtung der Stichreihen | photosnap | Objekt: `winkel` | 0 ° | -360 … 360 |  | objekt | einfach | MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): 0x3eeb, Vorgabe 0 im Konstruktor (Handbuch-Bild 45°) |
+| **Farblagen** | gekreuzt: je Lage 45° mehr; versetzt: gleicher Winkel, Reihen je Lage 0,4 mm verschoben | photosnap | Objekt: `lagen` | gekreuzt | gekreuzt, versetzt |  | objekt | einfach | MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): Modus 1 = 0/45/90/135° (0x10120890), Modus 2 = 72/144/216 (0x101209e0) (hoch) |
+| **Abstand dunkel** | Abstand der Zickzackstiche an der dunkelsten Stelle | photosnap | Objekt: `abstand_min` | 0,8 mm | 0,4 … 5 |  | objekt | experte | Stil 0x2828 Feld 0x282a = 144 (Zuordnung niedrig) |
+| **Abstand hell** | Abstand an der hellsten Stelle (größter Abstand) | photosnap | Objekt: `abstand_max` | 10 mm | 1 … 12 |  | objekt | experte | Stil 0x2828 Feld 0x282f = 1800 (Zuordnung niedrig); Handbuch „Max Width … lightest part“ |
+| **Farbe** | einfarbig (Graustufen) oder vier Farblagen Cyan, Magenta, Gelb, Schwarz |  |  | aus |  |  | werkzeug | einfach | MOD1 PhotoValues 0x10122d50 / GenerateComponents 0x10120aa0, NORMAL.AMT 0x3ee4 (Analyse_Teil3/25 §3): 0x3ee9 = 1 einfarbig; farbig Split_CMYK (hoch) |
+| **Rasterpunkt** | Größe eines Bildpunkts im gespeicherten Raster |  |  | 0,5 mm |  |  | werkzeug | automatisch | Vorschlag (eigene Festlegung) |
+
+## Zauberstab
+
+| Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
+|---|---|---|---|---|---|---|---|---|---|
+| **Stichart des nächsten Klicks** | Fläche Step/Satin/Auto oder Umriss Lauf/Dreifach/Satinlinie |  |  | step | step, satin, auto, lauf, dreifach, satinlinie |  | werkzeug | einfach | Handbuch S. 114–115 (Magic Wand: Stichart vor dem Klick) |
 
 ## Effekte
 

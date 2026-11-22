@@ -121,6 +121,15 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
         ObjektJson::Lauf(_) | ObjektJson::Dreifach(_) => w.push(wert("laenge", json!(e.lauf.laenge), "stil")),
         ObjektJson::Rueckstich(_) => rueckstich_werte(&mut w),
         ObjektJson::Stielstich(_) => stielstich_werte(&mut w),
+        ObjektJson::Photosnap(_) => {
+            use crate::photosnap as ps;
+            w.push(wert("aufloesung", json!("mittel"), "vorlage"));
+            w.push(wert("hintergrund", json!("hell"), "vorlage"));
+            w.push(wert("lagen", json!("gekreuzt"), "vorlage"));
+            w.push(wert("winkel", json!(0.0), "vorlage"));
+            w.push(wert("abstand_min", json!(ps::ABSTAND_MIN), "vorlage"));
+            w.push(wert("abstand_max", json!(ps::ABSTAND_MAX), "vorlage"));
+        }
         ObjektJson::Stippling(_) => {
             use crate::sticharten::stippling as s;
             w.push(wert("laenge", json!(s::LAENGE), "handbuch"));
@@ -222,6 +231,8 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
         }
         ObjektJson::Applikation(_) => {
             if let Some(ObjektArt::Applikation(a)) = aufgeloest {
+                w.push(wert("abdeckung", json!(if a.blanket { "blanket" } else { "satin" }), "vorlage"));
+                w.push(wert("stil", json!(if a.zuschneiden { "zuschneiden" } else { "vorgeschnitten" }), "vorlage"));
                 w.push(wert("breite", json!(a.breite), "vorlage"));
                 w.push(wert("heft_breite", json!(a.heft_breite), "vorlage"));
                 w.push(wert("heft_abstand", json!(a.heft_abstand), "vorlage"));

@@ -143,6 +143,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "loecher": {
           "items": {
             "$ref": "#/$defs/PunktAngabe"
@@ -407,6 +412,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "laenge": {
           "description": "Stichlänge in mm (Lauf/Dreifach: Stil 2,5; Rückstich 3,0)",
           "format": "double",
@@ -634,6 +644,11 @@
             "string",
             "null"
           ]
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "name": {
           "default": "",
@@ -1863,6 +1878,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "laenge": {
           "default": 20.0,
           "description": "Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)",
@@ -2079,6 +2099,11 @@
             "string",
             "null"
           ]
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "laenge": {
           "description": "Stichlänge in mm (ohne Angabe: Stil, 2,5 mm)",
@@ -2299,6 +2324,11 @@
         "initialen": {
           "description": "2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen",
           "type": "string"
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "kursiv": {
           "default": 0.0,
@@ -2567,6 +2597,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "loecher": {
           "items": {
             "$ref": "#/$defs/PunktAngabe"
@@ -2768,6 +2803,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "motiv": {
           "default": "K0001a",
           "description": "Motiv im Satz, z. B. „705“ (Standard „K0001a“ wie das Original)",
@@ -2928,6 +2968,11 @@
             "string",
             "null"
           ]
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "loecher": {
           "items": {
@@ -3275,6 +3320,20 @@
             "art"
           ],
           "type": "object"
+        },
+        {
+          "$ref": "#/$defs/PhotosnapJson",
+          "description": "PhotoSnap: Foto als Reihen von Zickzackstichen mit wechselndem Abstand (Befehl `photosnap` legt es an)",
+          "properties": {
+            "art": {
+              "const": "photosnap",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
         }
       ]
     },
@@ -3296,6 +3355,306 @@
         }
       ],
       "description": "Referenzpunkt eines Pfads: Eckpunkt `[x, y]` oder Kurvenpunkt `{\"kurve\": [x, y]}`."
+    },
+    "PhotoAufloesung": {
+      "description": "Auflösung von PhotoSnap = Breite der Stichreihen",
+      "oneOf": [
+        {
+          "const": "grob",
+          "description": "grob (Reihen 3,0 mm)",
+          "type": "string"
+        },
+        {
+          "const": "mittel",
+          "description": "mittel (Reihen 2,0 mm, Standard)",
+          "type": "string"
+        },
+        {
+          "const": "fein",
+          "description": "fein (Reihen 1,0 mm)",
+          "type": "string"
+        }
+      ]
+    },
+    "PhotoHintergrund": {
+      "description": "Stoff hinter PhotoSnap",
+      "oneOf": [
+        {
+          "const": "hell",
+          "description": "heller Stoff: dunkle Stellen bekommen viel Faden (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "dunkel",
+          "description": "dunkler Stoff: helle Stellen bekommen viel Faden",
+          "type": "string"
+        }
+      ]
+    },
+    "PhotoLageJson": {
+      "additionalProperties": false,
+      "description": "Eine Farblage von PhotoSnap.",
+      "properties": {
+        "farbe": {
+          "description": "Garnfarbe der Lage „#rrggbb“ (bei nur einer Lage gilt `farbe` des Objekts)",
+          "type": "string"
+        },
+        "werte": {
+          "description": "Deckung je Bildpunkt als Base64 (ein Byte je Punkt, zeilenweise von oben; 0 = kein Faden, 255 = voll – für\nhellen Stoff)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "farbe",
+        "werte"
+      ],
+      "type": "object"
+    },
+    "PhotoLagen": {
+      "description": "Lage der Farbschichten von PhotoSnap zueinander (nur mit mehreren Lagen)",
+      "oneOf": [
+        {
+          "const": "gekreuzt",
+          "description": "je Lage 45° weiter gedreht: 0°, 45°, 90°, 135° (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "versetzt",
+          "description": "gleiche Richtung, Reihen je Lage 0,4 mm versetzt",
+          "type": "string"
+        }
+      ]
+    },
+    "PhotoRasterJson": {
+      "additionalProperties": false,
+      "description": "Bildraster von PhotoSnap (vom Befehl `photosnap` erzeugt, nicht von Hand).",
+      "properties": {
+        "breite": {
+          "description": "Bildpunkte waagrecht",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hoehe": {
+          "description": "Bildpunkte senkrecht",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lagen": {
+          "description": "Farblagen in Stickreihenfolge: eine (Graustufen) oder vier (Cyan, Magenta, Gelb, Schwarz)",
+          "items": {
+            "$ref": "#/$defs/PhotoLageJson"
+          },
+          "type": "array"
+        },
+        "mm": {
+          "description": "Größe eines Bildpunkts in mm",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "breite",
+        "hoehe",
+        "mm",
+        "lagen"
+      ],
+      "type": "object"
+    },
+    "PhotosnapJson": {
+      "description": "PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Abstand der Helligkeit folgt („line\nprinter“). Bildmitte = Mitte des Objekts; Lage und Größe über `transform`.",
+      "properties": {
+        "abstand_max": {
+          "description": "größter Abstand in mm an den hellsten Stellen (1 … 12; Standard 10 – Stil 0x2828)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "abstand_min": {
+          "description": "kleinster Abstand in mm an den dunkelsten Stellen (0,4 … 5; Standard 0,8 – Stil 0x2828)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "aufloesung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PhotoAufloesung"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auflösung = Breite der Reihen (Standard mittel 2,0 mm)"
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hintergrund": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PhotoHintergrund"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Stoff hell (Standard) oder dunkel"
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
+        "lagen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PhotoLagen"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Farblagen gekreuzt (Standard) oder versetzt"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "raster": {
+          "$ref": "#/$defs/PhotoRasterJson"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        },
+        "winkel": {
+          "description": "Winkel der Reihen in Grad (Standard 0 wie im Original; das Handbuch-Beispiel zeigt 45°)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "raster"
+      ],
+      "type": "object"
     },
     "Profil": {
       "description": "Profil des Verlaufs (Dialog „Gradient Fill“: Linear, Dec-Linear, Convex, Concave; „Color Blending“ zusätzlich\nInc_Exp/Dec-Exp und Convex-Concave/Concave-Convex). Abstand vom kleinsten zum größten Wert über die Fläche",
@@ -3502,6 +3861,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "laenge": {
           "description": "Stichlänge in mm (0,5 … 12,7; Original 3,0)",
           "format": "double",
@@ -3692,6 +4056,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven",
           "type": [
@@ -3866,6 +4235,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus)",
           "type": [
@@ -4029,6 +4403,11 @@
             "string",
             "null"
           ]
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "name": {
           "default": "",
@@ -4316,6 +4695,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "name": {
           "default": "",
           "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
@@ -4472,6 +4856,11 @@
             "null"
           ]
         },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
+        },
         "laenge": {
           "description": "Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0)",
           "format": "double",
@@ -4625,6 +5014,11 @@
             "string",
             "null"
           ]
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "kurzstiche": {
           "description": "Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil)",
@@ -4877,6 +5271,11 @@
           "description": "Buchstabenhöhe in mm (Original 1–200 mm; Vorlage 10)",
           "format": "double",
           "type": "number"
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "kursiv": {
           "default": 0.0,
@@ -5196,6 +5595,11 @@
           "description": "Höhe der Großbuchstaben in mm",
           "format": "double",
           "type": "number"
+        },
+        "kuerzeste": {
+          "default": false,
+          "description": "**Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie\n`kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes\nDesign einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)",
+          "type": "boolean"
         },
         "kursiv": {
           "default": 0.0,

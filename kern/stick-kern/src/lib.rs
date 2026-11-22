@@ -36,6 +36,7 @@ pub mod motiv;
 pub mod muster;
 pub mod nachbearbeitung;
 pub mod parameter;
+pub mod photosnap;
 pub mod rahmen;
 pub mod reihenfolge;
 pub mod saeulen;

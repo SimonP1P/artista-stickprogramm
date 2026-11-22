@@ -164,6 +164,13 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
         | ObjektArt::Blanket { punkte, .. }
         | ObjektArt::Handstich { punkte, .. } => out.extend(punkte),
         ObjektArt::Blackwork { linien, .. } => linien.iter().for_each(|(l, _)| out.extend(l)),
+        ObjektArt::Photosnap(v) => {
+            let (w, h) = v.groesse();
+            out.extend([
+                crate::geometrie::p(-w / 2.0, -h / 2.0),
+                crate::geometrie::p(w / 2.0, h / 2.0),
+            ]);
+        }
         ObjektArt::Stippling { umriss, loecher, .. } => {
             out.extend(umriss);
             out.extend(loecher.iter().flatten());

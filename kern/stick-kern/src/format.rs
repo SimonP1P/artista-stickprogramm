@@ -123,6 +123,38 @@ auswahl! {
 }
 
 auswahl! {
+    /// Auflösung von PhotoSnap = Breite der Stichreihen
+    pub enum PhotoAufloesung {
+        /// grob (Reihen 3,0 mm)
+        Grob = "grob",
+        /// mittel (Reihen 2,0 mm, Standard)
+        Mittel = "mittel",
+        /// fein (Reihen 1,0 mm)
+        Fein = "fein",
+    }
+}
+
+auswahl! {
+    /// Stoff hinter PhotoSnap
+    pub enum PhotoHintergrund {
+        /// heller Stoff: dunkle Stellen bekommen viel Faden (Standard)
+        Hell = "hell",
+        /// dunkler Stoff: helle Stellen bekommen viel Faden
+        Dunkel = "dunkel",
+    }
+}
+
+auswahl! {
+    /// Lage der Farbschichten von PhotoSnap zueinander (nur mit mehreren Lagen)
+    pub enum PhotoLagen {
+        /// je Lage 45° weiter gedreht: 0°, 45°, 90°, 135° (Standard)
+        Gekreuzt = "gekreuzt",
+        /// gleiche Richtung, Reihen je Lage 0,4 mm versetzt
+        Versetzt = "versetzt",
+    }
+}
+
+auswahl! {
     /// Arbeitsweise der Applikation
     pub enum ApplikationStil {
         /// Stoff vorgeschnitten („Pre-cut“, Standard)
@@ -732,6 +764,11 @@ pub struct Gemeinsam {
     /// Ausstich („exit point“) [x, y] in mm: das Objekt endet dort
     #[serde(default)]
     pub ausstich: Option<Punkt>,
+    /// **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+    /// `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+    /// Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+    #[serde(default)]
+    pub kuerzeste: bool,
     /// **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
     /// `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
     /// Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
@@ -1249,6 +1286,52 @@ pub struct ApplikationJson {
     pub g: Gemeinsam,
 }
 
+/// Eine Farblage von PhotoSnap.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PhotoLageJson {
+    /// Garnfarbe der Lage „#rrggbb“ (bei nur einer Lage gilt `farbe` des Objekts)
+    pub farbe: String,
+    /// Deckung je Bildpunkt als Base64 (ein Byte je Punkt, zeilenweise von oben; 0 = kein Faden, 255 = voll – für
+    /// hellen Stoff)
+    pub werte: String,
+}
+
+/// Bildraster von PhotoSnap (vom Befehl `photosnap` erzeugt, nicht von Hand).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PhotoRasterJson {
+    /// Bildpunkte waagrecht
+    pub breite: usize,
+    /// Bildpunkte senkrecht
+    pub hoehe: usize,
+    /// Größe eines Bildpunkts in mm
+    pub mm: f64,
+    /// Farblagen in Stickreihenfolge: eine (Graustufen) oder vier (Cyan, Magenta, Gelb, Schwarz)
+    pub lagen: Vec<PhotoLageJson>,
+}
+
+/// PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Abstand der Helligkeit folgt („line
+/// printer“). Bildmitte = Mitte des Objekts; Lage und Größe über `transform`.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct PhotosnapJson {
+    pub raster: PhotoRasterJson,
+    /// Auflösung = Breite der Reihen (Standard mittel 2,0 mm)
+    pub aufloesung: Option<PhotoAufloesung>,
+    /// Stoff hell (Standard) oder dunkel
+    pub hintergrund: Option<PhotoHintergrund>,
+    /// Winkel der Reihen in Grad (Standard 0 wie im Original; das Handbuch-Beispiel zeigt 45°)
+    pub winkel: Option<f64>,
+    /// Farblagen gekreuzt (Standard) oder versetzt
+    pub lagen: Option<PhotoLagen>,
+    /// kleinster Abstand in mm an den dunkelsten Stellen (0,4 … 5; Standard 0,8 – Stil 0x2828)
+    pub abstand_min: Option<f64>,
+    /// größter Abstand in mm an den hellsten Stellen (1 … 12; Standard 10 – Stil 0x2828)
+    pub abstand_max: Option<f64>,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
 /// Fläche mit Füllmuster (Program Split / Fancy Fill; 242 Muster, Befehl `fuellmuster_liste`).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct MusterJson {
@@ -1424,6 +1507,8 @@ pub enum ObjektJson {
     Stippling(StipplingJson),
     /// Blackwork Run: mehrere Linien als ein automatisch geordneter Zug
     Blackwork(BlackworkJson),
+    /// PhotoSnap: Foto als Reihen von Zickzackstichen mit wechselndem Abstand (Befehl `photosnap` legt es an)
+    Photosnap(PhotosnapJson),
 }
 
 impl ObjektJson {
@@ -1448,6 +1533,7 @@ impl ObjektJson {
             ObjektJson::Stielstich(x) => &x.g,
             ObjektJson::Stippling(x) => &x.g,
             ObjektJson::Blackwork(x) => &x.g,
+            ObjektJson::Photosnap(x) => &x.g,
         }
     }
 }

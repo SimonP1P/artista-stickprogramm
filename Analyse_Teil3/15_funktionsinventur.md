@@ -96,9 +96,9 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Funktion | Stand | Bemerkung |
 |---|---|---|
 | Bild laden, zuschneiden, Farben reduzieren | 🟡 | `stick-vektor` |
-| Auto Digitizer (Bild → Objekte mit Stichart) | 🟡 | Flächen ✅, Satin-Zerlegung schmaler Flächen ✅ 20.11. (`satinflaeche`, Bericht 17); 21.11.: Vorbereitung (vereinfachen, Lab-Farben, Garnfarben, kleine Flächen zuschlagen), „Omitted Colors“, „Fills: Auto/Step“, Zugausgleich 0,4 + Unterlage (Handbuch S. 116–118) ✅ – Verfahren eigene Festlegung; Linien/„Details“ ⬜, maßstabsfrei ⬜ (M2) |
-| Magic Wand (Fläche/Kontur per Klick) | ⬜ | Kap. 13 |
-| PhotoSnap (Foto → Stiche) | ⬜ | Kap. 13 |
+| Auto Digitizer (Bild → Objekte mit Stichart) | 🟡 | Flächen ✅, Satin-Zerlegung schmaler Flächen ✅ 20.11. (`satinflaeche`, Bericht 17); 21.11.: Vorbereitung (vereinfachen, Lab-Farben, Garnfarben, kleine Flächen zuschlagen), „Omitted Colors“, „Fills: Auto/Step“, Zugausgleich 0,4 + Unterlage (Handbuch S. 116–118) ✅ – Verfahren eigene Festlegung; Linien/„Details“ ⬜, maßstabsfrei ⬜ (M2); 22.11. (N5): Closest Join + Reihenfolge 2-opt ✅, `kuerzeste` je Objekt beim Einfügen (Bericht 25 §1) |
+| Magic Wand (Fläche/Kontur per Klick) | ✅ | 22.11. (N5): Befehl `zauberstab`, im Dialog „Bild umwandeln“ (kein Bild hinter dem Design – Abweichung, Bericht 25 §2) |
+| PhotoSnap (Foto → Stiche) | ✅ | 22.11. (N5): Objektart `photosnap`, Werte aus `PhotoValues`/Stil 0x2828, Lagen gekreuzt/versetzt aus MOD1; Abstandsverfahren eigene Festlegung (Bericht 25 §3) |
 | Scanner | ➖ | heute Bilddatei |
 
 ## H. Rahmen, Farben, Stoffe (Kap. 6, 10, 22)

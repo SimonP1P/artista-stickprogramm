@@ -36,6 +36,11 @@
     vorlage: "Vorlage des Originals",
     schrift: "Schrift",
   };
+  /** leere Auswahl: Standard des Schemas, sonst der wirksame Wert des Kerns (`objekt_werte`) */
+  const auswahlStandard = $derived.by(() => {
+    const s = feld.standard ?? (typeof wirksam?.wert === "string" ? wirksam.wert : undefined);
+    return s ? `Standard (${s})` : "Standard";
+  });
   /** Anzeige des wirksamen Werts (Zahl, an/aus oder Text des Kerns) */
   const wirkText = $derived.by(() => {
     if (!wirksam) return null;
@@ -89,6 +94,10 @@
     knickwinkel_: "Knickwinkel",
     stich: "Stichart",
     teilabdeckung: "Teil-Abdeckung",
+    aufloesung: "Auflösung",
+    hintergrund: "Stoff",
+    abstand_min: "Abstand dunkel",
+    abstand_max: "Abstand hell",
     staerke: "Stärke",
     striche: "Striche",
   };
@@ -157,7 +166,7 @@
         const v = (e.currentTarget as HTMLSelectElement).value;
         setzen(v === "" ? undefined : v);
       }}>
-        <option value="">{feld.standard ? `Standard (${feld.standard})` : "Standard"}</option>
+        <option value="">{auswahlStandard}</option>
         {#each feld.werte as w (w.wert)}<option value={w.wert}>{w.text}</option>{/each}
       </select>
     {:else if feld.typ === "unterlage" && haken}

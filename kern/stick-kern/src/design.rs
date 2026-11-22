@@ -447,6 +447,8 @@ pub enum ObjektArt {
     },
     /// Applikation (Platzierung, Heften, Abdecken mit Stopps); wird vor dem Berechnen aufgelöst
     Applikation(ApplikationVorgabe),
+    /// PhotoSnap (`photosnap.rs`); wird vor dem Berechnen in eine Laufstich-Zickzackfolge je Farblage aufgelöst
+    Photosnap(crate::photosnap::PhotoVorgabe),
     /// Text mit einer Computer-Schrift (TrueType/OpenType); wird vor dem Berechnen aufgelöst
     TtfText {
         schrift: String,
@@ -1138,6 +1140,7 @@ impl Objekt {
             ObjektArt::TtfText { schrift, .. } => Err(format!("Text mit Schrift „{schrift}“ wurde nicht aufgelöst")),
             ObjektArt::MonogrammVorlage(m) => Err(format!("Monogramm „{}“ wurde nicht aufgelöst", m.vorlage)),
             ObjektArt::Applikation(_) => Err("Applikation wurde nicht aufgelöst".into()),
+            ObjektArt::Photosnap(_) => Err("PhotoSnap wurde nicht aufgelöst".into()),
             ObjektArt::SatinFlaeche { .. } => Err("Satinfläche wurde nicht aufgelöst".into()),
             ObjektArt::Tatami {
                 umriss,
@@ -1267,6 +1270,8 @@ pub struct Design {
     pub ausstich: BTreeMap<usize, Punkt>,
     /// Closest Join für alle Objekte ohne eigenen Einstich (außer Schrift), JSON `"kuerzeste_verbindung": true`
     pub kuerzeste_verbindung: bool,
+    /// Closest Join nur für diese Objekte (Nummer in `objekte`), JSON `"kuerzeste": true` am Objekt
+    pub kuerzeste: std::collections::BTreeSet<usize>,
     /// Werte je Objekt (Nummer in `objekte`), JSON `"einstellungen"` am Objekt: vollständige Einstellungen
     /// (Stoff → Design → Objekt). Wie im Original: jedes Objekt einer ART-Datei trägt eine eigene Kopie des Stil-Baums
     /// (Lauf, Satin, Tatami, Unterlagen, Verbinder; `Analyse_Teil3/03` §4, hoch)
@@ -1416,6 +1421,7 @@ impl Design {
         let mut garn = BTreeMap::new();
         let mut einstich = BTreeMap::new();
         let mut ausstich = BTreeMap::new();
+        let mut kuerzeste = std::collections::BTreeSet::new();
         let mut objekt_einstellungen = BTreeMap::new();
         let mut gruppe_von: Vec<Option<String>> = Vec::with_capacity(roh.len());
         for (i, o) in roh.iter().enumerate() {
@@ -1497,6 +1503,9 @@ impl Design {
             }
             if let Some(q) = g.ausstich {
                 ausstich.insert(i, q);
+            }
+            if g.kuerzeste {
+                kuerzeste.insert(i);
             }
             if let Some(w) = &g.einstellungen {
                 if w.0.get("stoff").is_some() {
@@ -1591,6 +1600,7 @@ impl Design {
             einstich,
             ausstich,
             kuerzeste_verbindung: d.kuerzeste_verbindung,
+            kuerzeste,
             objekt_einstellungen,
             name: d.name,
             rahmen: rahmen(&d.rahmen)?,
@@ -2018,6 +2028,28 @@ impl Design {
                         if o.name.is_empty() { "Applikation" } else { &o.name },
                     ));
                 }
+                ObjektArt::Photosnap(v) => {
+                    // je Farblage ein Zug aus festen Einstichen (alle Punkte Ecken, Stichlänge bis 12,7 mm)
+                    let name = if o.name.is_empty() { "PhotoSnap" } else { &o.name };
+                    let einzeln = v.lagen.len() == 1;
+                    for (l, lage) in v.lagen.iter().enumerate() {
+                        let punkte = crate::photosnap::lage_stiche(v, l);
+                        if punkte.len() < 2 {
+                            continue;
+                        }
+                        out.push(Objekt {
+                            farbe: if einzeln { o.farbe.clone() } else { lage.farbe.clone() },
+                            name: if einzeln { name.to_string() } else { format!("{name}: Lage {}", l + 1) },
+                            art: ObjektArt::Lauf {
+                                ecken: vec![true; punkte.len()],
+                                punkte,
+                                laenge: Some(12.7),
+                                dreifach: false,
+                                geschlossen: false,
+                            },
+                        });
+                    }
+                }
                 ObjektArt::SatinFlaeche {
                     umriss,
                     loecher,
@@ -2261,7 +2293,7 @@ impl Design {
                     Some(ObjektArt::Text { .. } | ObjektArt::TtfText { .. })
                 );
                 let ein = if erster { self.einstich.get(h).copied() } else { None }
-                    .or_else(|| (self.kuerzeste_verbindung && !schrift).then_some(pos));
+                    .or_else(|| ((self.kuerzeste_verbindung || self.kuerzeste.contains(h)) && !schrift).then_some(pos));
                 let aus = if letzter { self.ausstich.get(h).copied() } else { None };
                 let ausgerichtet;
                 let obj = if ein.is_some() || aus.is_some() {
@@ -2522,6 +2554,12 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
                 linie(FormArt::Loch, l, true);
             }
         }
+        ObjektArt::Photosnap(v) => {
+            // Bildrand
+            let (w, h) = v.groesse();
+            let r = vec![p(-w / 2.0, -h / 2.0), p(w / 2.0, -h / 2.0), p(w / 2.0, h / 2.0), p(-w / 2.0, h / 2.0)];
+            linie(FormArt::Umriss, &r, true);
+        }
         ObjektArt::Gruppe { teile, .. } => {
             for t in teile {
                 form_linien(&t.art, out);
@@ -2689,6 +2727,25 @@ fn bereiche_pruefen(o: &ObjektJson) -> Result<(), String> {
             bereich("abstand", b.abstand, 0.2, 10.0)?;
             bereich("winkel", b.winkel, 10.0, 90.0)?;
             striche(b.striche)
+        }
+        ObjektJson::Photosnap(f) => {
+            bereich("abstand_min", f.abstand_min, 0.4, 5.0)?;
+            bereich("abstand_max", f.abstand_max, 1.0, 12.0)?;
+            bereich("winkel", f.winkel, -360.0, 360.0)?;
+            let r = &f.raster;
+            if r.breite == 0 || r.hoehe == 0 || !(0.05..=5.0).contains(&r.mm) {
+                return Err("raster: Größe ungültig".into());
+            }
+            if r.lagen.is_empty() || r.lagen.len() > 4 {
+                return Err("raster: eine bis vier Lagen".into());
+            }
+            for (i, l) in r.lagen.iter().enumerate() {
+                let n = crate::photosnap::base64_lesen(&l.werte).map_err(|x| format!("raster: Lage {}: {x}", i + 1))?;
+                if n.len() != r.breite * r.hoehe {
+                    return Err(format!("raster: Lage {}: {} Werte statt {}", i + 1, n.len(), r.breite * r.hoehe));
+                }
+            }
+            Ok(())
         }
         ObjektJson::Applikation(a) => {
             bereich("breite", a.breite, 0.5, 10.0)?;
@@ -2967,6 +3024,39 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     linien: b.linien.iter().map(|l| l.punkte_mit_ecken()).collect(),
                     stich,
                 },
+            }
+        }
+        ObjektJson::Photosnap(f) => {
+            use crate::format::{PhotoAufloesung, PhotoHintergrund, PhotoLagen};
+            use crate::photosnap as ps;
+            Objekt {
+                farbe: f.g.farbe,
+                name: f.g.name,
+                art: ObjektArt::Photosnap(ps::PhotoVorgabe {
+                    breite_px: f.raster.breite,
+                    hoehe_px: f.raster.hoehe,
+                    mm_px: f.raster.mm,
+                    // geprüft in `bereiche_pruefen`
+                    lagen: f
+                        .raster
+                        .lagen
+                        .iter()
+                        .map(|l| ps::PhotoLage {
+                            farbe: l.farbe.clone(),
+                            werte: ps::base64_lesen(&l.werte).unwrap_or_default(),
+                        })
+                        .collect(),
+                    winkel: f.winkel.unwrap_or(0.0),
+                    reihe: match f.aufloesung {
+                        Some(PhotoAufloesung::Grob) => ps::REIHE_GROB,
+                        Some(PhotoAufloesung::Fein) => ps::REIHE_FEIN,
+                        _ => ps::REIHE_MITTEL,
+                    },
+                    dunkel: f.hintergrund == Some(PhotoHintergrund::Dunkel),
+                    versetzt: f.lagen == Some(PhotoLagen::Versetzt),
+                    abstand_min: f.abstand_min.unwrap_or(ps::ABSTAND_MIN),
+                    abstand_max: f.abstand_max.unwrap_or(ps::ABSTAND_MAX),
+                }),
             }
         }
         ObjektJson::Blanket(b) => Objekt {

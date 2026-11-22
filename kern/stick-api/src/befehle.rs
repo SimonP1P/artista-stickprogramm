@@ -1080,7 +1080,7 @@ pub struct BildErgebnis {
     pub hoehe_px: u32,
 }
 
-fn hex_farbe(t: &str) -> Result<[u8; 3], Fehler> {
+pub(crate) fn hex_farbe(t: &str) -> Result<[u8; 3], Fehler> {
     let h = t.trim().trim_start_matches('#');
     if h.len() != 6 || !h.chars().all(|c| c.is_ascii_hexdigit()) {
         return Err(format!("Farbe „{t}“: erwartet „#rrggbb“").into());
@@ -1088,12 +1088,12 @@ fn hex_farbe(t: &str) -> Result<[u8; 3], Fehler> {
     Ok([0, 2, 4].map(|i| u8::from_str_radix(&h[i..i + 2], 16).unwrap_or(0)))
 }
 
-fn hex(c: [u8; 3]) -> String {
+pub(crate) fn hex(c: [u8; 3]) -> String {
     format!("#{:02x}{:02x}{:02x}", c[0], c[1], c[2])
 }
 
 /// Base64 (für das Vorschaubild als data-URL)
-fn base64(daten: &[u8]) -> String {
+pub(crate) fn base64(daten: &[u8]) -> String {
     const Z: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     let mut out = String::with_capacity(daten.len().div_ceil(3) * 4);
     for b in daten.chunks(3) {
@@ -1110,7 +1110,7 @@ fn base64(daten: &[u8]) -> String {
 }
 
 /// Eingabe → Optionen von `stick-vektor` (+ Garnkarte, wenn angegeben)
-fn bild_optionen(k: &Kontext, e: &BildEingabe) -> Result<(stick_vektor::BildOptionen, Option<garnkarte::Garnkarte>), Fehler> {
+pub(crate) fn bild_optionen(k: &Kontext, e: &BildEingabe) -> Result<(stick_vektor::BildOptionen, Option<garnkarte::Garnkarte>), Fehler> {
     let st = stick_vektor::BildOptionen::default();
     let karte = match e.garnkarte.as_deref() {
         None | Some("") | Some("keine") => None,
@@ -1362,6 +1362,13 @@ pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErg
             }
         }
         eingefuegt.push(o);
+    }
+    // Closest Join des eingefügten Designs gilt nur für seine Objekte (das Ziel behält seine Reihenfolge)
+    let ziel_kuerzeste = zo.get("kuerzeste_verbindung").and_then(Value::as_bool).unwrap_or(false);
+    if neu.get("kuerzeste_verbindung").and_then(Value::as_bool).unwrap_or(false) && !ziel_kuerzeste {
+        for o in &mut eingefuegt {
+            o["kuerzeste"] = true.into();
+        }
     }
     for o in &mut eingefuegt {
         if let Some(a) = o.get_mut("aussparen").and_then(Value::as_array_mut) {

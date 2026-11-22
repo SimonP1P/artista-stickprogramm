@@ -581,58 +581,127 @@ pub fn ist_weiss(c: [u8; 3]) -> bool {
     l >= 90.0 && a.hypot(b) <= 10.0
 }
 
-/// Umrisse der nicht weggelassenen Farben.
-pub fn umrisse(v: &Vorbereitet, o: &BildOptionen) -> Vec<Flaeche> {
-    let (w, h, z) = (v.breite, v.hoehe, &v.zuordnung);
-    let weg = v.weggelassen(o);
+/// Flächen (Umriss + Löcher) einer Maske verfolgen: `drin(x, y)` = Bildpunkt gehört dazu.
+fn flaechen_aus_maske(v: &Vorbereitet, o: &BildOptionen, farbe: [u8; 3], drin: &dyn Fn(usize, usize) -> bool) -> Vec<Flaeche> {
+    let (w, h) = (v.breite, v.hoehe);
     let mm = v.mm_px;
     let zu_mm = |x: f64, y: f64| p((x - w as f64 / 2.0) * mm, (h as f64 / 2.0 - y) * mm);
+    // Maske mit einem Punkt Rand (Konturen am Bildrand schließen)
+    let mut maske = image::GrayImage::new(w as u32 + 2, h as u32 + 2);
+    for y in 0..h {
+        for x in 0..w {
+            if drin(x, y) {
+                maske.put_pixel(x as u32 + 1, y as u32 + 1, image::Luma([255]));
+            }
+        }
+    }
+    let konturen = find_contours::<i32>(&maske);
+    let ring = |k: usize| -> Linie {
+        let pts: Linie = konturen[k]
+            .points
+            .iter()
+            .map(|q| zu_mm(f64::from(q.x) - 1.0 + 0.5, f64::from(q.y) - 1.0 + 0.5))
+            .collect();
+        vereinfachen(&pts, o.glaettung)
+    };
+    // Reste unter 1 mm² (EasyStitch: kleinere Objekte entfallen) – größere sind schon zugeschlagen
+    let min = easystitch::MIN_FLAECHE_MM2;
+    let mut out = Vec::new();
+    for (k, kt) in konturen.iter().enumerate() {
+        if kt.border_type != BorderType::Outer {
+            continue;
+        }
+        let umriss = ring(k);
+        let a = flaeche(&umriss);
+        if umriss.len() < 3 || a < min {
+            continue;
+        }
+        let loecher: Vec<Linie> = konturen
+            .iter()
+            .enumerate()
+            .filter(|(_, l)| l.border_type == BorderType::Hole && l.parent == Some(k))
+            .map(|(i, _)| ring(i))
+            .filter(|l| l.len() >= 3 && flaeche(l) >= min)
+            .collect();
+        let netto = a - loecher.iter().map(|l| flaeche(l)).sum::<f64>();
+        out.push(Flaeche { farbe, umriss, loecher, flaeche: netto });
+    }
+    out
+}
+
+/// Umrisse der nicht weggelassenen Farben.
+pub fn umrisse(v: &Vorbereitet, o: &BildOptionen) -> Vec<Flaeche> {
+    let (w, z) = (v.breite, &v.zuordnung);
+    let weg = v.weggelassen(o);
     let mut out = Vec::new();
     for (c, farbe) in v.farben.iter().enumerate() {
         if weg.contains(&c) {
             continue;
         }
-        // Maske mit einem Punkt Rand (Konturen am Bildrand schließen)
-        let mut maske = image::GrayImage::new(w as u32 + 2, h as u32 + 2);
-        for y in 0..h {
-            for x in 0..w {
-                if z[y * w + x] == Some(c) {
-                    maske.put_pixel(x as u32 + 1, y as u32 + 1, image::Luma([255]));
-                }
-            }
-        }
-        let konturen = find_contours::<i32>(&maske);
-        let ring = |k: usize| -> Linie {
-            let pts: Linie = konturen[k]
-                .points
-                .iter()
-                .map(|q| zu_mm(f64::from(q.x) - 1.0 + 0.5, f64::from(q.y) - 1.0 + 0.5))
-                .collect();
-            vereinfachen(&pts, o.glaettung)
-        };
-        // Reste unter 1 mm² (EasyStitch: kleinere Objekte entfallen) – größere sind schon zugeschlagen
-        let min = easystitch::MIN_FLAECHE_MM2;
-        for (k, kt) in konturen.iter().enumerate() {
-            if kt.border_type != BorderType::Outer {
-                continue;
-            }
-            let umriss = ring(k);
-            let a = flaeche(&umriss);
-            if umriss.len() < 3 || a < min {
-                continue;
-            }
-            let loecher: Vec<Linie> = konturen
-                .iter()
-                .enumerate()
-                .filter(|(_, l)| l.border_type == BorderType::Hole && l.parent == Some(k))
-                .map(|(i, _)| ring(i))
-                .filter(|l| l.len() >= 3 && flaeche(l) >= min)
-                .collect();
-            let netto = a - loecher.iter().map(|l| flaeche(l)).sum::<f64>();
-            out.push(Flaeche { farbe: *farbe, umriss, loecher, flaeche: netto });
-        }
+        out.extend(flaechen_aus_maske(v, o, *farbe, &|x, y| z[y * w + x] == Some(c)));
     }
     out
+}
+
+/// **Zauberstab** („Magic Wand“, Handbuch S. 114–115: „click in the area … the shape is filled“): die zusammenhängende
+/// Fläche gleicher Farbe am Bildpunkt (x, y) – Nachbarn über die Kanten (4er-Nachbarschaft), Löcher = Inseln anderer
+/// Farben. `None` = durchsichtiger Punkt oder außerhalb. Verfahren eigene Festlegung (Code des Originals nicht gelesen).
+pub fn bereich_bei(v: &Vorbereitet, o: &BildOptionen, x: usize, y: usize) -> Option<Flaeche> {
+    let (w, h, z) = (v.breite, v.hoehe, &v.zuordnung);
+    if x >= w || y >= h {
+        return None;
+    }
+    let c = z[y * w + x]?;
+    let mut drin = vec![false; w * h];
+    let mut stapel = vec![(x, y)];
+    drin[y * w + x] = true;
+    while let Some((a, b)) = stapel.pop() {
+        let nachbarn = [
+            (a.wrapping_sub(1), b),
+            (a + 1, b),
+            (a, b.wrapping_sub(1)),
+            (a, b + 1),
+        ];
+        for (nx, ny) in nachbarn {
+            if nx < w && ny < h && !drin[ny * w + nx] && z[ny * w + nx] == Some(c) {
+                drin[ny * w + nx] = true;
+                stapel.push((nx, ny));
+            }
+        }
+    }
+    flaechen_aus_maske(v, o, v.farben[c], &|a, b| drin[b * w + a])
+        .into_iter()
+        .max_by(|a, b| a.flaeche.total_cmp(&b.flaeche))
+}
+
+/// Raster für PhotoSnap (`stick_kern::photosnap`): Bild auf `breite_mm` bei `mm_px` je Punkt verkleinern und je Punkt
+/// die Deckung 0 … 255 berechnen – einfarbig: 255 − Helligkeit (Graustufen wie `ConvertToGrayScale`, Gewichte
+/// 0,299/0,587/0,114), farbig: Cyan, Magenta, Gelb, Schwarz (`Split_CMYK`; Formel K = 1 − max(R, G, B), C = (1 − R − K)
+/// / (1 − K) … – übliche Umrechnung, eigene Festlegung). Durchsichtige Punkte bekommen keinen Faden.
+/// Ergebnis: (Breite, Höhe in Punkten, Lagen).
+pub fn photo_raster(bild: &RgbaImage, breite_mm: f64, mm_px: f64, farbig: bool) -> (usize, usize, Vec<Vec<u8>>) {
+    let w = ((breite_mm / mm_px).round() as u32).clamp(4, 2000);
+    let h = ((f64::from(w) * f64::from(bild.height()) / f64::from(bild.width().max(1))).round() as u32).clamp(4, 2000);
+    let klein = image::imageops::resize(bild, w, h, image::imageops::FilterType::Triangle);
+    let n = (w * h) as usize;
+    let mut lagen = vec![vec![0u8; n]; if farbig { 4 } else { 1 }];
+    for (i, px) in klein.pixels().enumerate() {
+        let [r, g, b, a] = px.0.map(|x| f64::from(x) / 255.0);
+        let werte: Vec<f64> = if farbig {
+            let k = 1.0 - r.max(g).max(b);
+            if k >= 1.0 - 1e-9 {
+                vec![0.0, 0.0, 0.0, 1.0]
+            } else {
+                vec![(1.0 - r - k) / (1.0 - k), (1.0 - g - k) / (1.0 - k), (1.0 - b - k) / (1.0 - k), k]
+            }
+        } else {
+            vec![1.0 - (0.299 * r + 0.587 * g + 0.114 * b)]
+        };
+        for (l, v) in werte.iter().enumerate() {
+            lagen[l][i] = (v * a * 255.0).round().clamp(0.0, 255.0) as u8;
+        }
+    }
+    (w as usize, h as usize, lagen)
 }
 
 /// Bild in Farbflächen zerlegen (`vorbereiten` + `umrisse`).
@@ -669,24 +738,63 @@ pub fn ordnen(mut f: Vec<Flaeche>) -> Vec<Flaeche> {
                 true
             }
         });
+        // nächster Nachbar ab dem Ende der vorigen Farbe, dann 2-opt (Wege kürzen, solange sich zwei Strecken durch
+        // Umdrehen des Stücks dazwischen verkürzen lassen) – eigene Festlegung; das Original ordnet „based on closest
+        // join“ (Handbuch S. 116), Verfahren nicht gelesen
+        let mut folge: Vec<Flaeche> = Vec::with_capacity(rest.len());
+        let mut p0 = pos;
         while !rest.is_empty() {
             let i = (0..rest.len())
                 .min_by(|&a, &b| {
-                    let d = |k: usize| (mitte(&rest[k]).x - pos.x).hypot(mitte(&rest[k]).y - pos.y);
+                    let d = |k: usize| (mitte(&rest[k]).x - p0.x).hypot(mitte(&rest[k]).y - p0.y);
                     d(a).total_cmp(&d(b))
                 })
                 .unwrap();
             let x = rest.remove(i);
-            pos = mitte(&x);
-            out.push(x);
+            p0 = mitte(&x);
+            folge.push(x);
         }
+        let mut m: Vec<Punkt> = std::iter::once(pos).chain(folge.iter().map(mitte)).collect();
+        zwei_opt(&mut m, &mut folge);
+        if let Some(l) = folge.last() {
+            pos = mitte(l);
+        }
+        out.extend(folge);
     }
     out
 }
 
+/// 2-opt für einen offenen Weg mit festem Anfang `m[0]`: dreht Stücke um, solange der Weg kürzer wird. `m[k + 1]` ist
+/// die Mitte von `f[k]`.
+fn zwei_opt(m: &mut [Punkt], f: &mut [Flaeche]) {
+    let d = |a: Punkt, b: Punkt| (a.x - b.x).hypot(a.y - b.y);
+    let n = m.len();
+    if n < 4 {
+        return;
+    }
+    for _ in 0..50 {
+        let mut besser = false;
+        for i in 0..n - 2 {
+            for j in i + 2..n {
+                // Kanten (i, i+1) und (j, j+1) – am offenen Ende fehlt (j, j+1)
+                let alt = d(m[i], m[i + 1]) + if j + 1 < n { d(m[j], m[j + 1]) } else { 0.0 };
+                let neu = d(m[i], m[j]) + if j + 1 < n { d(m[i + 1], m[j + 1]) } else { 0.0 };
+                if neu + 1e-9 < alt {
+                    m[i + 1..=j].reverse();
+                    f[i..j].reverse();
+                    besser = true;
+                }
+            }
+        }
+        if !besser {
+            break;
+        }
+    }
+}
+
 /// Design-JSON aus den Flächen. Stichart nach `fuellung`: „auto“ wie EasyStitch (Dicke ≤ 8 mm → Satinfläche,
 /// darüber Tatami), „step“ alles Tatami; Werte der EasyStitch-Stile (Tatami-Abstand 0,45 mm, Zugausgleich 0,40 mm),
-/// Unterlage an (Handbuch S. 116).
+/// Unterlage an (Handbuch S. 116); Closest Join an (ebenda: „stitching sequence based on closest join“).
 /// Zweites Ergebnis: Zahl der Objekte je Stichart.
 pub fn design_json_mit(
     flaechen: &[Flaeche],
@@ -694,30 +802,37 @@ pub fn design_json_mit(
     rahmen: &str,
     fuellung: Fuellung,
 ) -> (Value, std::collections::BTreeMap<String, usize>) {
-    use easystitch::{SATIN_BIS_MM, TATAMI_ABSTAND_MM, ZUGAUSGLEICH_MM, punkte_json};
+    use easystitch::SATIN_BIS_MM;
     let mut klassen = std::collections::BTreeMap::new();
     let objekte: Vec<Value> = flaechen
         .iter()
         .enumerate()
         .map(|(i, f)| {
-            let farbe = format!("#{:02x}{:02x}{:02x}", f.farbe[0], f.farbe[1], f.farbe[2]);
-            let loecher: Vec<Value> = f.loecher.iter().map(|l| punkte_json(l)).collect();
             let satin = fuellung == Fuellung::Auto
                 && stick_kern::saeulen::dicke(&f.umriss, &f.loecher).is_ok_and(|d| d <= SATIN_BIS_MM);
-            let o = if satin {
-                json!({"art": "satinflaeche", "name": format!("Satin {}", i + 1), "farbe": farbe,
-                       "umriss": punkte_json(&f.umriss), "loecher": loecher,
-                       "unterlage": "auto", "einstellungen": {"satin": {"zugausgleich": ZUGAUSGLEICH_MM}}})
-            } else {
-                json!({"art": "tatami", "name": format!("Fläche {}", i + 1), "farbe": farbe,
-                       "umriss": punkte_json(&f.umriss), "loecher": loecher, "unterlage": true,
-                       "einstellungen": {"tatami": {"abstand": TATAMI_ABSTAND_MM, "zugausgleich": ZUGAUSGLEICH_MM}}})
-            };
             *klassen.entry(if satin { "satinflaeche" } else { "tatami" }.to_string()).or_insert(0) += 1;
-            o
+            flaeche_objekt(f, i + 1, satin)
         })
         .collect();
-    (json!({"name": name, "rahmen": rahmen, "objekte": objekte}), klassen)
+    // Auto Digitizer: „determines the stitching sequence based on closest join“ (Handbuch S. 116)
+    (json!({"name": name, "rahmen": rahmen, "kuerzeste_verbindung": true, "objekte": objekte}), klassen)
+}
+
+/// Objekt-JSON einer Fläche wie beim Auto Digitizer: Satinfläche (`satin`) oder Step, Werte der EasyStitch-Stile,
+/// Unterlage an. `nr` zählt im Namen.
+pub fn flaeche_objekt(f: &Flaeche, nr: usize, satin: bool) -> Value {
+    use easystitch::{TATAMI_ABSTAND_MM, ZUGAUSGLEICH_MM, punkte_json};
+    let farbe = format!("#{:02x}{:02x}{:02x}", f.farbe[0], f.farbe[1], f.farbe[2]);
+    let loecher: Vec<Value> = f.loecher.iter().map(|l| punkte_json(l)).collect();
+    if satin {
+        json!({"art": "satinflaeche", "name": format!("Satin {nr}"), "farbe": farbe,
+               "umriss": punkte_json(&f.umriss), "loecher": loecher,
+               "unterlage": "auto", "einstellungen": {"satin": {"zugausgleich": ZUGAUSGLEICH_MM}}})
+    } else {
+        json!({"art": "tatami", "name": format!("Fläche {nr}"), "farbe": farbe,
+               "umriss": punkte_json(&f.umriss), "loecher": loecher, "unterlage": true,
+               "einstellungen": {"tatami": {"abstand": TATAMI_ABSTAND_MM, "zugausgleich": ZUGAUSGLEICH_MM}}})
+    }
 }
 
 /// Design-JSON mit der Standard-Stichart (Step).
@@ -745,6 +860,25 @@ mod tests {
             }
         }
         b
+    }
+
+    /// Zauberstab: Klick auf den Ring liefert ihn mit Loch, Klick ins Quadrat nur das Quadrat, Klick auf durchsichtig nichts
+    #[test]
+    fn zauberstab_bereich() {
+        let o = BildOptionen {
+            breite_mm: 100.0,
+            farben: 3,
+            ..Default::default()
+        };
+        let v = vorbereiten(&testbild(), &o);
+        let ring = bereich_bei(&v, &o, 75 * v.breite / 200, 50 * v.hoehe / 100).unwrap();
+        assert_eq!(ring.loecher.len(), 1);
+        assert!(ring.farbe[0] > 150, "{:?}", ring.farbe);
+        let q = bereich_bei(&v, &o, 150 * v.breite / 200, 50 * v.hoehe / 100).unwrap();
+        assert!(q.loecher.is_empty() && q.farbe[2] > 150);
+        // 60 × 60 Punkte bei 0,5 mm je Punkt = 30 × 30 mm
+        assert!((q.flaeche - 900.0).abs() < 60.0, "{}", q.flaeche);
+        assert!(bereich_bei(&v, &o, 10_000, 0).is_none());
     }
 
     #[test]

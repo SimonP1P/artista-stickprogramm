@@ -1,18 +1,52 @@
 <script lang="ts">
   // Bild umwandeln wie der „Auto Digitizer“ des Originals (`bild_vorschau` + `bild_umwandeln`; Schritte nach Handbuch
-  // Kap. 12/13, Verfahren eigene Festlegung) und SVG einlesen (`svg_lesen`, Stichart nach Breite wie EasyStitch).
+  // Kap. 12/13, Verfahren eigene Festlegung), **Zauberstab** (Magic Wand: Flächen im vorbereiteten Bild anklicken,
+  // `zauberstab`), **PhotoSnap** (Foto als Zickzackreihen, `photosnap`) und SVG einlesen (`svg_lesen`, Stichart nach
+  // Breite wie EasyStitch).
   // Bild: links das vereinfachte Bild, rechts Einstellungen und die Farbliste – je Farbe sticken oder weglassen
   // („Omitted Colors“). Weggelassene Farben blendet nur die Anzeige aus (Leinwand), gerechnet wird im Kern.
   import { untrack } from "svelte";
   import { open } from "@tauri-apps/plugin-dialog";
-  import { kern, type BildVorschau, type DesignJson } from "$kern/kern";
+  import { kern, type BildVorschau, type DesignJson, type ZauberStich } from "$kern/kern";
   import { arbeit, alsFehler, leeresDesign } from "../arbeit.svelte";
   import { dateiname } from "../dateien.svelte";
   import Dialog from "../Dialog.svelte";
   import { garnText } from "../listen.svelte";
   import { lesen, zahl } from "../zahl";
 
-  let { art, schliessen, startPfad }: { art: "bild" | "svg"; schliessen: () => void; startPfad?: string } = $props();
+  let {
+    art,
+    schliessen,
+    startPfad,
+    startModus,
+  }: { art: "bild" | "svg"; schliessen: () => void; startPfad?: string; startModus?: "auto" | "zauber" | "photo" } = $props();
+
+  /** Weg beim Bild: alles umwandeln (Auto Digitizer), Flächen anklicken (Zauberstab) oder PhotoSnap */
+  // svelte-ignore state_referenced_locally
+  let modus = $state<"auto" | "zauber" | "photo">(startModus ?? "auto");
+  const MODI = [
+    ["auto", "Alles umwandeln"],
+    ["zauber", "Zauberstab"],
+    ["photo", "PhotoSnap"],
+  ] as const;
+
+  // ---- Zauberstab: Klicks (Lage 0 … 1 im Vorschaubild) mit Stichart; jede getroffene Fläche wird ein Objekt ----
+  const ZAUBER_STICH: [ZauberStich, string][] = [
+    ["step", "Fläche – Step"],
+    ["satin", "Fläche – Satin"],
+    ["auto", "Fläche – Auto (bis 8 mm Satin)"],
+    ["lauf", "Umriss – Laufstich"],
+    ["dreifach", "Umriss – Dreifachstich"],
+    ["satinlinie", "Umriss – Satinlinie"],
+  ];
+  let zauberStich = $state<ZauberStich>("step");
+  let klicks = $state<{ x: number; y: number; stichart: ZauberStich; farbe: string }[]>([]);
+
+  // ---- PhotoSnap ----
+  let farbig = $state(false);
+  let hintergrund = $state<"hell" | "dunkel">("hell");
+  let aufloesung = $state<"grob" | "mittel" | "fein">("mittel");
+  let photoWinkel = $state("0");
 
   const experte = $derived(arbeit.modus === "experte");
   // svelte-ignore state_referenced_locally
@@ -54,8 +88,8 @@
     return {
       pfad: pfad!,
       breite: lesen(breite) ?? undefined,
-      farben: Math.max(2, Math.min(24, Math.round(farben))),
-      vereinfachen,
+      farben: modus === "photo" ? 16 : Math.max(2, Math.min(24, Math.round(farben))),
+      vereinfachen: modus === "photo" ? 0 : vereinfachen,
       min_flaeche: lesen(minFlaeche) ?? undefined,
       glaettung: lesen(glaettung) ?? undefined,
       garnkarte: karte !== "keine" ? karte : undefined,
@@ -109,9 +143,13 @@
 
   // Anzeige: vereinfachtes Bild, weggelassene Farben durchsichtig (Stoff sichtbar)
   let leinwand: HTMLCanvasElement | undefined = $state();
+  /** Bildpunkte des vorbereiteten Bildes (ohne Ausblenden) – für die Farbe am Klickpunkt und das Markieren */
+  let basis: ImageData | null = null;
   $effect(() => {
     const v = vorschau;
-    const aus = new Set(weg);
+    // weggelassene Farben nur beim Umwandeln ausblenden; Zauberstab: angeklickte Flächen markieren
+    const aus = new Set(modus === "auto" ? weg : []);
+    const markiert = modus === "zauber" ? klicks.map((k) => ({ ...k })) : [];
     const c = leinwand;
     if (!v || !c) return;
     const img = new Image();
@@ -122,14 +160,64 @@
       if (!g) return;
       g.clearRect(0, 0, c.width, c.height);
       g.drawImage(img, 0, 0);
-      if (!aus.size) return;
+      basis = g.getImageData(0, 0, c.width, c.height);
+      if (!aus.size && !markiert.length) return;
       const d = g.getImageData(0, 0, c.width, c.height);
       const hex = (i: number) => "#" + [0, 1, 2].map((k) => d.data[i + k].toString(16).padStart(2, "0")).join("");
-      for (let i = 0; i < d.data.length; i += 4) if (d.data[i + 3] && aus.has(hex(i))) d.data[i + 3] = 0;
+      if (aus.size) for (let i = 0; i < d.data.length; i += 4) if (d.data[i + 3] && aus.has(hex(i))) d.data[i + 3] = 0;
+      for (const k of markiert) {
+        const m = flaeche(basis, Math.floor(k.x * c.width), Math.floor(k.y * c.height));
+        // schraffiert markieren: jede zweite Diagonale abdunkeln
+        for (let i = 0; i < m.length; i++)
+          if (m[i] && ((i % c.width) + Math.floor(i / c.width)) % 6 < 3) {
+            d.data[i * 4] = 255;
+            d.data[i * 4 + 1] = 255;
+            d.data[i * 4 + 2] = 255;
+          }
+      }
       g.putImageData(d, 0, 0);
     };
     img.src = v.bild;
   });
+
+  /** zusammenhängende Fläche gleicher Farbe (4er-Nachbarschaft) wie der Zauberstab im Kern */
+  function flaeche(b: ImageData, x0: number, y0: number): Uint8Array {
+    const { width: w, height: h, data } = b;
+    const m = new Uint8Array(w * h);
+    if (x0 < 0 || y0 < 0 || x0 >= w || y0 >= h) return m;
+    const s0 = (y0 * w + x0) * 4;
+    if (!data[s0 + 3]) return m;
+    const gleich = (i: number) => data[i * 4 + 3] > 0 && data[i * 4] === data[s0] && data[i * 4 + 1] === data[s0 + 1] && data[i * 4 + 2] === data[s0 + 2];
+    const stapel = [y0 * w + x0];
+    m[y0 * w + x0] = 1;
+    while (stapel.length) {
+      const i = stapel.pop()!;
+      const x = i % w;
+      for (const n of [x > 0 ? i - 1 : -1, x < w - 1 ? i + 1 : -1, i - w, i + w])
+        if (n >= 0 && n < w * h && !m[n] && gleich(n)) {
+          m[n] = 1;
+          stapel.push(n);
+        }
+    }
+    return m;
+  }
+
+  function klick(ev: MouseEvent) {
+    if (modus !== "zauber" || !leinwand || !basis) return;
+    const r = leinwand.getBoundingClientRect();
+    const x = (ev.clientX - r.left) / r.width;
+    const y = (ev.clientY - r.top) / r.height;
+    const px = Math.floor(x * leinwand.width);
+    const py = Math.floor(y * leinwand.height);
+    const i = (py * leinwand.width + px) * 4;
+    if (!basis.data[i + 3]) return;
+    const farbe = "#" + [0, 1, 2].map((k) => basis!.data[i + k].toString(16).padStart(2, "0")).join("");
+    // dieselbe Fläche noch einmal: Stichart ersetzen statt doppelt
+    const m = flaeche(basis, px, py);
+    const schon = klicks.findIndex((k) => m[Math.floor(k.y * leinwand!.height) * leinwand!.width + Math.floor(k.x * leinwand!.width)]);
+    if (schon >= 0) klicks[schon].stichart = zauberStich;
+    else klicks.push({ x, y, stichart: zauberStich, farbe });
+  }
 
   const hoeheMm = $derived(vorschau && lesen(breite) ? ((lesen(breite) ?? 0) * vorschau.hoehe_px) / vorschau.breite_px : null);
 
@@ -146,6 +234,7 @@
       pfad = p;
       vorschau = null;
       wahl = null;
+      klicks = [];
     }
   }
 
@@ -162,7 +251,23 @@
     const rahmen = arbeit.design.rahmen;
     try {
       let design: DesignJson;
-      if (art === "bild") {
+      if (art === "bild" && modus === "zauber") {
+        const e = await kern("zauberstab", { bild: { ...eingabe(), rahmen }, klicks: klicks.map(({ x, y, stichart }) => ({ x, y, stichart })) });
+        design = e.design;
+        hinweise = e.hinweise;
+      } else if (art === "bild" && modus === "photo") {
+        const e = await kern("photosnap", {
+          pfad,
+          breite: lesen(breite) ?? undefined,
+          farbig,
+          garnkarte: mitKarte ? karte : undefined,
+          aufloesung,
+          hintergrund,
+          winkel: lesen(photoWinkel) ?? 0,
+          rahmen,
+        });
+        design = e.design;
+      } else if (art === "bild") {
         const e = await kern("bild_umwandeln", {
           ...eingabe(),
           weglassen: vorschau ? [...weg] : undefined,
@@ -183,10 +288,11 @@
       }
       // als **ein Element** einfügen: alle Objekte in einer Gruppe (Größe/Drehen/Lage gelten für das ganze Bild)
       const ziel = ersetzen || !arbeit.objekte.length ? { ...leeresDesign(), ...rahmenStoff() } : $state.snapshot(arbeit.design);
+      // PhotoSnap ist ein Objekt – keine Gruppe nötig
       const r = await kern("design_einfuegen", {
         design: ziel as DesignJson,
         einfuegen: design,
-        gruppe: { name: pfad ? dateiname(pfad).replace(/\.[^.]+$/, "") : art, herkunft: art },
+        gruppe: modus === "photo" && art === "bild" ? undefined : { name: pfad ? dateiname(pfad).replace(/\.[^.]+$/, "") : art, herkunft: art },
       });
       arbeit.ersetzen(r.design, ersetzen || !arbeit.objekte.length ? null : arbeit.pfad, true);
       arbeit.auswahl = r.objekte;
@@ -202,14 +308,21 @@
   const STUFEN = ["aus", "sehr fein", "fein", "mittel", "grob", "sehr grob"];
 </script>
 
-<Dialog titel={art === "bild" ? "Bild umwandeln" : "SVG einlesen"} breite={art === "bild" ? 880 : 480} {schliessen}>
+<Dialog titel={art === "svg" ? "SVG einlesen" : modus === "zauber" ? "Zauberstab" : modus === "photo" ? "PhotoSnap" : "Bild umwandeln"} breite={art === "bild" ? 880 : 480} {schliessen}>
   {#if art === "bild"}
     <div class="bild-dlg">
       <!-- links: vereinfachtes Bild -->
       <div class="bild-links">
         <div class="bild-feld" class:leer={!vorschau}>
           {#if vorschau}
-            <canvas bind:this={leinwand} aria-label="Vorschau des vereinfachten Bildes"></canvas>
+            <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+            <canvas
+              bind:this={leinwand}
+              class:zauber={modus === "zauber"}
+              class:grau={modus === "photo" && !farbig}
+              aria-label="Vorschau des vereinfachten Bildes"
+              onclick={klick}
+            ></canvas>
           {:else if pfad}
             <span class="mut small">{laedt ? "Bild wird vorbereitet …" : ""}</span>
           {:else}
@@ -218,12 +331,25 @@
           {#if laedt && vorschau}<span class="bild-laedt small">rechnet …</span>{/if}
         </div>
         <p class="mut small" style="margin:6px 0 0">
-          So wird das Bild gestickt: jede Fläche eine Farbe. Kariert = Stoff bleibt frei (Farbe weggelassen).
+          {#if modus === "zauber"}
+            Fläche anklicken – jede angeklickte Fläche wird ein Objekt mit der gewählten Stichart, in der Reihenfolge der
+            Klicks (wie der Zauberstab im Original). Schraffiert = gewählt; noch einmal klicken ändert die Stichart.
+          {:else if modus === "photo"}
+            PhotoSnap stickt das Bild als Reihen von Zickzackstichen: dunkle Stellen dicht, helle locker – wie ein
+            Zeilendrucker. {farbig ? "Vier Farblagen (Cyan, Magenta, Gelb, Schwarz)." : "Eine Farbe (Graustufen)."}
+          {:else}
+            So wird das Bild gestickt: jede Fläche eine Farbe. Kariert = Stoff bleibt frei (Farbe weggelassen).
+          {/if}
           {#if vorschau && hoeheMm}Größe {zahl(lesen(breite) ?? 0, 1)} × {zahl(hoeheMm, 1)} mm.{/if}
         </p>
       </div>
       <!-- rechts: Einstellungen -->
       <div class="bild-rechts">
+        <div class="seg seg-sm" role="radiogroup" aria-label="Weg" style="display:flex">
+          {#each MODI as [w, l] (w)}
+            <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="bmodus" checked={modus === w} onchange={() => (modus = w)} />{l}</label>
+          {/each}
+        </div>
         <div class="frow" style="padding:0">
           <span class="fl">Datei</span>
           <div class="fc">
@@ -234,6 +360,7 @@
           <span class="fl">Breite</span>
           <div class="fc"><input class="input sm num" inputmode="decimal" bind:value={breite} style="width:80px" /><span class="unit">mm</span></div>
         </div>
+        {#if modus !== "photo"}
         <div class="frow" style="padding:0">
           <label class="fl" for="bfarben">Farben</label>
           <div class="fc" style="gap:8px">
@@ -248,6 +375,41 @@
             <span class="small" style="width:62px">{STUFEN[vereinfachen]}</span>
           </div>
         </div>
+        {/if}
+        {#if modus === "photo"}
+          <div class="frow" style="padding:0">
+            <span class="fl">Farbe</span>
+            <div class="fc">
+              <div class="seg seg-sm" role="radiogroup" aria-label="Farbe" style="display:flex; width:100%">
+                <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="pfarbe" checked={!farbig} onchange={() => (farbig = false)} />einfarbig</label>
+                <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="pfarbe" checked={farbig} onchange={() => (farbig = true)} />4 Farblagen</label>
+              </div>
+            </div>
+          </div>
+          <div class="frow" style="padding:0">
+            <span class="fl" title="Heller Stoff: dunkle Stellen bekommen viel Faden; dunkler Stoff: helle Stellen">Stoff</span>
+            <div class="fc">
+              <select class="input sm" bind:value={hintergrund}>
+                <option value="hell">hell</option>
+                <option value="dunkel">dunkel</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow" style="padding:0">
+            <span class="fl" title="Breite der Stichreihen: grob 3 mm, mittel 2 mm, fein 1 mm">Auflösung</span>
+            <div class="fc">
+              <select class="input sm" bind:value={aufloesung}>
+                <option value="grob">grob (3 mm)</option>
+                <option value="mittel">mittel (2 mm)</option>
+                <option value="fein">fein (1 mm)</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow" style="padding:0">
+            <span class="fl">Winkel</span>
+            <div class="fc"><input class="input sm num" inputmode="decimal" bind:value={photoWinkel} style="width:80px" /><span class="unit">°</span></div>
+          </div>
+        {/if}
         <label class="frow" style="padding:0" title="Jede Farbe wird das nächste Garn der Garnkarte – gleiche Garne werden eine Farbe">
           <span class="fl">Garnfarben</span>
           <span class="fc"><input type="checkbox" bind:checked={garnfarben} disabled={karte === "keine"} /> aus der Karte „{karte}“</span>
@@ -255,16 +417,43 @@
         {#if garnfarben && karte === "Default"}
           <p class="small mut" style="margin:-4px 0 0">„Default“ hat nur 19 Grundfarben – für Fotos besser eine echte Garnkarte (Isacord, Madeira …) im Schritt „Prüfen &amp; Garn“ wählen.</p>
         {/if}
-        {#if experte}
+        {#if modus === "zauber"}
           <div class="frow" style="padding:0">
-            <span class="fl">Stichart <span class="xt">X</span></span>
+            <span class="fl">Stichart</span>
             <div class="fc">
-              <select class="input sm" bind:value={fuellung}>
-                <option value="step">Step – sauber bei Fotos</option>
-                <option value="auto">Auto – schmale Flächen Satin (Logos)</option>
+              <select class="input sm" bind:value={zauberStich} title="Gilt für den nächsten Klick (wie die Stichart vor dem Zauberstab im Original)">
+                {#each ZAUBER_STICH as [w, l] (w)}<option value={w}>{l}</option>{/each}
               </select>
             </div>
           </div>
+          <div class="mh" style="padding:6px 0 2px">Angeklickt – Reihenfolge = Stickreihenfolge</div>
+          <div class="bild-farben">
+            {#each klicks as k, n (n)}
+              <div class="bild-farbe" style="cursor:default">
+                <span class="small tab" style="width:16px">{n + 1}</span>
+                <span class="sw" style="background:{k.farbe}"></span>
+                <select class="input sm" style="flex:1; min-width:0" bind:value={k.stichart}>
+                  {#each ZAUBER_STICH as [w, l] (w)}<option value={w}>{l}</option>{/each}
+                </select>
+                <button class="btn btn-ghost btn-sm" title="Entfernen" aria-label="Entfernen" onclick={() => klicks.splice(n, 1)}>×</button>
+              </div>
+            {:else}
+              <p class="small mut" style="margin:6px 8px">Noch keine Fläche – links ins Bild klicken.</p>
+            {/each}
+          </div>
+        {/if}
+        {#if experte && modus !== "photo"}
+          {#if modus === "auto"}
+            <div class="frow" style="padding:0">
+              <span class="fl">Stichart <span class="xt">X</span></span>
+              <div class="fc">
+                <select class="input sm" bind:value={fuellung}>
+                  <option value="step">Step – sauber bei Fotos</option>
+                  <option value="auto">Auto – schmale Flächen Satin (Logos)</option>
+                </select>
+              </div>
+            </div>
+          {/if}
           <div class="frow" style="padding:0">
             <span class="fl">Kleinste Fläche <span class="xt">X</span></span>
             <div class="fc"><input class="input sm num" inputmode="decimal" bind:value={minFlaeche} style="width:80px" /><span class="unit">mm²</span></div>
@@ -275,7 +464,7 @@
           </div>
         {/if}
 
-        {#if vorschau}
+        {#if vorschau && modus === "auto"}
           <div class="mh" style="padding:6px 0 2px">Farben – Haken = wird gestickt</div>
           <div class="bild-farben">
             {#each vorschau.farben as f (f.farbe)}
@@ -298,7 +487,11 @@
       </div>
     </div>
     <div class="note small" style="margin-top:10px">
-      Das Bild wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Element hinzugefügt"} – als Gruppe: Größe, Drehen und Lage gelten für alles zusammen. Zugausgleich 0,4 mm und Unterlage wie vom Handbuch empfohlen. Rückgängig möglich.
+      {#if modus === "photo"}
+        PhotoSnap wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Objekt hinzugefügt"}; Auflösung, Stoff, Winkel und Farblagen lassen sich danach im Inspektor ändern. Rückgängig möglich.
+      {:else}
+        Das Bild wird {ersetzen || !arbeit.objekte.length ? "das neue Design" : "als neues Element hinzugefügt"} – als Gruppe: Größe, Drehen und Lage gelten für alles zusammen. Zugausgleich 0,4 mm und Unterlage wie vom Handbuch empfohlen; Reihenfolge nach kürzesten Wegen (Closest Join wie der Auto Digitizer). Rückgängig möglich.
+      {/if}
     </div>
     {#if fehler}<div class="errbox" style="margin-top:8px">{fehler}</div>{/if}
   {:else}
@@ -336,7 +529,9 @@
   {/if}
   {#snippet fuss()}
     <button class="btn btn-secondary" onclick={schliessen}>Abbrechen</button>
-    <button class="btn btn-primary" disabled={!pfad || laeuft || (art === "bild" && !vorschau)} onclick={umwandeln}>{laeuft ? "Wandle um …" : art === "bild" ? "Umwandeln" : "Einlesen"}</button>
+    <button class="btn btn-primary" disabled={!pfad || laeuft || (art === "bild" && !vorschau) || (art === "bild" && modus === "zauber" && !klicks.length)} onclick={umwandeln}
+      >{laeuft ? "Wandle um …" : art === "svg" ? "Einlesen" : modus === "zauber" ? `Übernehmen (${klicks.length})` : modus === "photo" ? "PhotoSnap anlegen" : "Umwandeln"}</button
+    >
   {/snippet}
 </Dialog>
 
@@ -365,6 +560,12 @@
     max-width: 100%;
     max-height: 420px;
     image-rendering: pixelated;
+  }
+  .bild-feld canvas.zauber {
+    cursor: crosshair;
+  }
+  .bild-feld canvas.grau {
+    filter: grayscale(1);
   }
   .bild-laedt {
     position: absolute;

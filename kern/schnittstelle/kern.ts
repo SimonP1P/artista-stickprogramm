@@ -107,6 +107,13 @@ export type ApplikationJson = {
   heft_abstand?: number | null;
   /** Breite des Zickzack-Heftstichs in mm (0,5 … 10; Original 4,0) */
   heft_breite?: number | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   loecher?: PunktAngabe[];
   /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
@@ -319,6 +326,13 @@ export type BlackworkJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Stichlänge in mm (Lauf/Dreifach: Stil 2,5; Rückstich 3,0) */
   laenge?: number | null;
   /** die Linien (mindestens eine) */
@@ -403,6 +417,13 @@ export type BlanketJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
    * @default ""
@@ -1252,6 +1273,13 @@ export type KnopflochJson = {
    */
   gruppe?: string | null;
   /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
+  /**
    * Schlitzlänge in mm, 3 … 60 („Slit Length“, Standard 20 wie das Original)
    * @default 20.0
    */
@@ -1342,6 +1370,13 @@ export type LaufJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Stichlänge in mm (ohne Angabe: Stil, 2,5 mm) */
   laenge?: number | null;
   /**
@@ -1479,6 +1514,13 @@ export type MonogrammJson = {
   hoehe?: number;
   /** 2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen */
   initialen: string;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /**
    * Kursiv in Grad (−45 … 45)
    * @default 0.0
@@ -1647,6 +1689,13 @@ export type MotivfuellungJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   loecher?: PunktAngabe[];
   /**
    * Motiv im Satz (Standard „K0001a“ wie das Original)
@@ -1744,6 +1793,13 @@ export type MotivlinieJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /**
    * Motiv im Satz, z. B. „705“ (Standard „K0001a“ wie das Original)
    * @default "K0001a"
@@ -1860,6 +1916,13 @@ export type MusterJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   loecher?: PunktAngabe[];
   /** Name des Musters („001 Diamond (90)“) oder seine Nummer („001“) */
   muster: string;
@@ -1961,6 +2024,8 @@ export type ObjektJson = ((LaufJson & {
   art: "stippling";
 }) | (BlackworkJson & {
   art: "blackwork";
+}) | (PhotosnapJson & {
+  art: "photosnap";
 }));
 
 /** Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`). */
@@ -2002,6 +2067,151 @@ export type Pfad = {
 export type PfadPunkt = (Punkt | {
   kurve: Punkt;
 });
+
+/** Auflösung von PhotoSnap = Breite der Stichreihen */
+export type PhotoAufloesung = ("grob" | "mittel" | "fein");
+
+/** Stoff hinter PhotoSnap */
+export type PhotoHintergrund = ("hell" | "dunkel");
+
+/** Eine Farblage von PhotoSnap. */
+export type PhotoLageJson = {
+  /** Garnfarbe der Lage „#rrggbb“ (bei nur einer Lage gilt `farbe` des Objekts) */
+  farbe: string;
+  /**
+   * Deckung je Bildpunkt als Base64 (ein Byte je Punkt, zeilenweise von oben; 0 = kein Faden, 255 = voll – für
+   * hellen Stoff)
+   */
+  werte: string;
+};
+
+/** Lage der Farbschichten von PhotoSnap zueinander (nur mit mehreren Lagen) */
+export type PhotoLagen = ("gekreuzt" | "versetzt");
+
+/** Bildraster von PhotoSnap (vom Befehl `photosnap` erzeugt, nicht von Hand). */
+export type PhotoRasterJson = {
+  /** Bildpunkte waagrecht */
+  breite: number;
+  /** Bildpunkte senkrecht */
+  hoehe: number;
+  /** Farblagen in Stickreihenfolge: eine (Graustufen) oder vier (Cyan, Magenta, Gelb, Schwarz) */
+  lagen: PhotoLageJson[];
+  /** Größe eines Bildpunkts in mm */
+  mm: number;
+};
+
+/** Eingabe von `photosnap`. */
+export type PhotosnapEingabe = {
+  aufloesung?: (PhotoAufloesung | null);
+  /** Breite in mm (Standard 80) */
+  breite?: number | null;
+  /**
+   * farbig in vier Lagen (Cyan, Magenta, Gelb, Schwarz) statt einfarbig (Standard einfarbig wie im Original)
+   * @default false
+   */
+  farbig?: boolean;
+  /** Garnkarte: die Lagen bekommen die nächsten Garne (CIEDE2000); ohne Angabe die Druckfarben */
+  garnkarte?: string | null;
+  hintergrund?: (PhotoHintergrund | null);
+  /** Bilddatei (PNG, JPG, BMP …) */
+  pfad: string;
+  /** Rahmen des neuen Designs */
+  rahmen?: string | null;
+  /** Winkel der Reihen in Grad (Standard 0) */
+  winkel?: number | null;
+};
+
+/** Ergebnis von `photosnap`. */
+export type PhotosnapErgebnis = {
+  /** Größe in mm */
+  breite: number;
+  /** neues Design mit einem Objekt `photosnap` */
+  design: DesignWert;
+  hoehe: number;
+  /** Zahl der Farblagen (1 oder 4) */
+  lagen: number;
+};
+
+/**
+ * PhotoSnap (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen, deren Abstand der Helligkeit folgt („line
+ * printer“). Bildmitte = Mitte des Objekts; Lage und Größe über `transform`.
+ */
+export type PhotosnapJson = {
+  /** größter Abstand in mm an den hellsten Stellen (1 … 12; Standard 10 – Stil 0x2828) */
+  abstand_max?: number | null;
+  /** kleinster Abstand in mm an den dunkelsten Stellen (0,4 … 5; Standard 0,8 – Stil 0x2828) */
+  abstand_min?: number | null;
+  /** Auflösung = Breite der Reihen (Standard mittel 2,0 mm) */
+  aufloesung?: (PhotoAufloesung | null);
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /** Stoff hell (Standard) oder dunkel */
+  hintergrund?: (PhotoHintergrund | null);
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
+  /** Farblagen gekreuzt (Standard) oder versetzt */
+  lagen?: (PhotoLagen | null);
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  raster: PhotoRasterJson;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  /** Winkel der Reihen in Grad (Standard 0 wie im Original; das Handbuch-Beispiel zeigt 45°) */
+  winkel?: number | null;
+};
 
 /**
  * Profil des Verlaufs (Dialog „Gradient Fill“: Linear, Dec-Linear, Convex, Concave; „Color Blending“ zusätzlich
@@ -2155,6 +2365,13 @@ export type RueckstichJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Stichlänge in mm (0,5 … 12,7; Original 3,0) */
   laenge?: number | null;
   /**
@@ -2247,6 +2464,13 @@ export type SatinFlaecheJson = {
   gruppe?: string | null;
   /** Säulen an Knicken teilen: Innenwinkel in Grad, 0 … 180 (0 = nie wie der Auto Digitizer; 87 = TrueType) */
   knickwinkel?: number | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Kurzstiche an Innenkurven */
   kurzstiche?: boolean | null;
   loecher?: PunktAngabe[];
@@ -2315,6 +2539,13 @@ export type SatinJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Kurzstiche an Innenkurven (Effekt 0x273a; Software Defaults: aus) */
   kurzstiche?: boolean | null;
   /**
@@ -2381,6 +2612,13 @@ export type SatinLinieJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
    * @default ""
@@ -2664,6 +2902,13 @@ export type StielstichJson = {
    */
   gruppe?: string | null;
   /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
+  /**
    * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
    * @default ""
    */
@@ -2739,6 +2984,13 @@ export type StipplingJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0) */
   laenge?: number | null;
   loecher?: PunktAngabe[];
@@ -2852,6 +3104,13 @@ export type TatamiJson = {
    * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
    */
   gruppe?: string | null;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /** Kurzstiche an Innenkurven (nur mit Winkellinien wirksam; ohne Angabe: Stil) */
   kurzstiche?: boolean | null;
   loecher?: PunktAngabe[];
@@ -2962,6 +3221,13 @@ export type TextJson = {
    * @default 10.0
    */
   hoehe?: number;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /**
    * Kursiv in Grad (−45 … 45)
    * @default 0.0
@@ -3086,6 +3352,13 @@ export type TtfJson = {
    * @default 10.0
    */
   hoehe?: number;
+  /**
+   * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
+   * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
+   * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)
+   * @default false
+   */
+  kuerzeste?: boolean;
   /**
    * Kursiv in Grad (−45 … 45)
    * @default 0.0
@@ -3240,6 +3513,37 @@ export type WirksamerWert = {
   wert?: unknown;
 };
 
+/** Ein Klick des Zauberstabs. */
+export type ZauberKlick = {
+  stichart: ZauberStich;
+  /** Lage im Vorschaubild von `bild_vorschau`, 0 … 1 von links */
+  x: number;
+  /** Lage im Vorschaubild, 0 … 1 von oben */
+  y: number;
+};
+
+/**
+ * Stichart einer angeklickten Fläche (wie die gewählte Stichart vor dem Klick im Original: Füllstich → Fläche,
+ * Konturstich → Umriss).
+ */
+export type ZauberStich = ("step" | "satin" | "auto" | "lauf" | "dreifach" | "satinlinie");
+
+/** Eingabe von `zauberstab`: das Bild wie bei `bild_vorschau` und die Klicks. */
+export type ZauberstabEingabe = {
+  bild: BildEingabe;
+  klicks: ZauberKlick[];
+};
+
+/** Ergebnis von `zauberstab`. */
+export type ZauberstabErgebnis = {
+  /** neues Design mit einem Objekt je getroffener Fläche (Koordinaten wie bei `bild_umwandeln`: Bildmitte = 0) */
+  design: DesignWert;
+  /** Klicks ohne Fläche (durchsichtig oder zu klein) */
+  hinweise: string[];
+  /** Zahl der Objekte */
+  objekte: number;
+};
+
 /** Ein Design (Wurzel von design.schema.json). */
 export type Design = DesignJson;
 
@@ -3317,6 +3621,8 @@ export interface Befehle {
   objekt_werte: { eingabe: ObjektEingabe; ausgabe: WirksamerWert[] };
   /** Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch */
   parameter_katalog: { eingabe: Leer; ausgabe: Parameter[] };
+  /** PhotoSnap: Foto als Reihen von Zickzackstichen (einfarbig oder vier Farblagen) – neues Design mit einem Objekt */
+  photosnap: { eingabe: PhotosnapEingabe; ausgabe: PhotosnapErgebnis };
   /** Stickrahmen der artista 185 mit Stickfeld und Umriss */
   rahmen_liste: { eingabe: Leer; ausgabe: RahmenInfo[] };
   /** Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe */
@@ -3345,6 +3651,8 @@ export interface Befehle {
   ueberdeckungen: { eingabe: DesignEingabe; ausgabe: number[][] };
   /** Leitlinie für den Wave-Effekt vorschlagen (Objektkoordinaten, für `effekte.welle`) */
   welle_vorschlag: { eingabe: ObjektEingabe; ausgabe: unknown };
+  /** Zauberstab (Magic Wand): angeklickte Flächen des vorbereiteten Bildes als Fläche oder Umriss (neues Design) */
+  zauberstab: { eingabe: ZauberstabEingabe; ausgabe: ZauberstabErgebnis };
 }
 
 /** Namen aller Befehle. */
@@ -3385,6 +3693,7 @@ export const BEFEHLE = [
   "motivsatz_motive",
   "objekt_werte",
   "parameter_katalog",
+  "photosnap",
   "rahmen_liste",
   "reihenfolge_aendern",
   "saeulen_vorschau",
@@ -3399,6 +3708,7 @@ export const BEFEHLE = [
   "text_speichern",
   "ueberdeckungen",
   "welle_vorschlag",
+  "zauberstab",
 ] as const;
 
 /** Fehler eines Befehls (Meldung deutsch, Objektnummer ab 0 wenn bekannt). */

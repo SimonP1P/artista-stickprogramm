@@ -15,6 +15,23 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Zauberstab, PhotoSnap, kürzeste Wege (Nachtauftrag N5, 4b.11; Commit COMMIT)
+- **Neue Objektart `photosnap`** (Handbuch S. 119–120): Foto als Reihen von Zickzackstichen. Felder `raster` (vom Befehl
+  `photosnap` erzeugt: `breite`, `hoehe`, `mm`, `lagen[{farbe, werte (Base64, Deckung 0–255)}]` – nicht von Hand
+  bearbeiten), `aufloesung` grob/mittel/fein, `hintergrund` hell/dunkel, `winkel`, `lagen` gekreuzt/versetzt,
+  `abstand_min`/`abstand_max`. Jede Farblage wird ein Farbblock. Größe über `transform`.
+- **Neue Befehle:** `zauberstab` (Klicks im Vorschaubild → Design mit einem Objekt je Fläche/Umriss) und `photosnap`
+  (Bild → Design mit einem `photosnap`-Objekt).
+- **Neues Feld an jedem Objekt:** `kuerzeste` (bool) = Closest Join nur für dieses Objekt. `design_einfuegen` setzt es auf
+  die eingefügten Objekte, wenn das eingefügte Design `kuerzeste_verbindung` hat und das Ziel nicht.
+- `bild_umwandeln`: Flächen einer Farbe in kürzerer Reihenfolge (2-opt), `kuerzeste_verbindung` an.
+- `objekt_werte` liefert für Auswahlfelder von PhotoSnap und Applikation den wirksamen Wert (z. B. `aufloesung` „mittel“).
+- **Oberfläche (umgesetzt):** Dialog „Bild umwandeln“ mit drei Wegen oben (Alles umwandeln / Zauberstab / PhotoSnap);
+  Zauberstab: Stichart wählen, ins Bild klicken (schraffiert markiert), Liste der Klicks mit Stichart und Entfernen;
+  PhotoSnap: einfarbig/4 Farblagen, Stoff, Auflösung, Winkel, Garnfarben. Menüs Datei und Einfügen: „Zauberstab …“,
+  „PhotoSnap (Foto) …“. Inspektor PhotoSnap: Auflösung, Stoff, Winkel der Reihen, Farblagen (einfach), Abstände (X).
+  Leere Auswahlfelder zeigen „Standard (wirksamer Wert)“.
+
 ## 22.11.2026 – Applikation: Vorgaben des Originals, Versatz, Teil-Abdeckung (Nachtauftrag N4, 4b.10; Commit 00823c2)
 - **Neue Felder** an `applikation`: `versatz` (%, −100 außen … 0 mittig … 100 innen; gilt für Abdeck- und Heftstich,
   bei Blanket ohne Wirkung) und `teilabdeckung` (bool, Partial Appliqué: kein Abdeckstich, wo eine spätere Applikation

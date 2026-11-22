@@ -39,7 +39,7 @@ export type OffenerDialog =
       rahmen?: number;
     }
   | { art: "rahmen"; objekt: number }
-  | { art: "bild"; pfad?: string }
+  | { art: "bild"; pfad?: string; modus?: "auto" | "zauber" | "photo" }
   | { art: "svg" }
   | { art: "nach_farbe" }
   | { art: "muster"; objekt: number }

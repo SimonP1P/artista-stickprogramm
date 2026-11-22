@@ -33,6 +33,7 @@ export const IC = {
   rechteck: "M3 5h18v14H3Z",
   bezier: "M4 20C4 9 20 15 20 4M2 18h4v4H2ZM18 2h4v4h-4Z",
   bild: "M3 3h18v18H3ZM10 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM21 15l-5-5L5 21",
+  zauberstab: "M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8 19 13M15 9h.01M17.8 6.2 19 5M3 21l9-9M12.2 6.2 11 5",
   // Formen (Werkzeugleiste, wie die Design-Leiste des Originals: Open Curve, Circle/Oval, Rectangle, Closed Curve,
   // Block Digitizing)
   formLinie: "M3 18C7 6 11 21 15 10s4-5 6-5M2 16.5h2v2H2ZM20 4h2v2h-2Z",
@@ -70,4 +71,5 @@ export const ART: Record<string, [string, string]> = {
   stielstich: ["Stielstich", "M2 15l4-6M5 15l4-6M8 15l4-6M11 15l4-6M14 15l4-6M17 15l4-6"],
   stippling: ["Stippling", "M3 3h18v18H3ZM6 17c0-4 3-4 3-1s3 3 3-1-3-4 0-6 4 0 4 3 2 4 3 1"],
   blackwork: ["Blackwork (Linien in einem Zug)", "M4 20L12 4l8 16M7 14h10M3 9h18"],
+  photosnap: ["PhotoSnap (Foto)", "M3 7h4l2-3h6l2 3h4v13H3ZM8 13l2-2 2 2 2-2 2 2"],
 };
