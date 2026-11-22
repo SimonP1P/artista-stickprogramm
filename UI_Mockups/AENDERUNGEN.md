@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Formen mit der Maus zeichnen (Nachtauftrag N0; Commit …)
+## 22.11.2026 – Formen mit der Maus zeichnen (Nachtauftrag N0; Commit dfc1bd4)
 - **Neue Form `pfad`** (`format.rs` `Form::Pfad`, `PfadPunkt`): Referenzpunkte wie beim Digitalisieren im Original –
   `[x, y]` Eckpunkt, `{"kurve": [x, y]}` Kurvenpunkt, `geschlossen` (Ring). Ecke–Ecke = Gerade, sonst Bézier mit
   Catmull-Rom-Tangenten (eigene Festlegung). Überall erlaubt, wo eine Punktangabe steht (`punkte`, `umriss`,
