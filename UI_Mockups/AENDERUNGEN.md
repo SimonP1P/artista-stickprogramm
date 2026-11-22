@@ -15,6 +15,16 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Formen mit der Maus zeichnen (Nachtauftrag N0; Commit …)
+- **Neue Form `pfad`** (`format.rs` `Form::Pfad`, `PfadPunkt`): Referenzpunkte wie beim Digitalisieren im Original –
+  `[x, y]` Eckpunkt, `{"kurve": [x, y]}` Kurvenpunkt, `geschlossen` (Ring). Ecke–Ecke = Gerade, sonst Bézier mit
+  Catmull-Rom-Tangenten (eigene Festlegung). Überall erlaubt, wo eine Punktangabe steht (`punkte`, `umriss`,
+  `seite_a`/`seite_b`, Löcher). `in_knoten_umwandeln` macht daraus Punktlisten und Bézierstücke (Kurvenpunkte bleiben
+  glatte Knoten). Kein neuer Befehl.
+- **Oberfläche (umgesetzt):** Form-Werkzeuge zeichnen statt Probeformen einzufügen (`src/lib/zeichnen.ts`, Vorschau
+  Werkzeug `zeichnen`): Klick Ecke, Rechtsklick Kurve, ⌫ zurück, Enter/„Fertig“, Esc; Kreis/Oval, Rechteck (Strg =
+  Quadrat), Säule paarweise. Knoten-Werkzeug: Rechtsklick auf einen Knoten = Ecke ↔ Kurve, Kurvenpunkte rund.
+
 ## 21.11.2026 – Wirksame Werte im Inspektor (Wunsch Nutzer; Commit 6f3b47f)
 - **Neuer Befehl `objekt_werte`** (`{design, objekt}` → Liste `{feld, wert, text, herkunft}`, `stick_kern::werte`): für
   leere Felder der Wert, mit dem der Kern rechnet – Stoff → Design → Objekt-Einstellungen (Stichwinkel, Stichlänge,

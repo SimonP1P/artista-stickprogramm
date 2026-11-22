@@ -838,6 +838,16 @@ export type Form = ({
   bezier: Punkt[];
 } | {
   verbinden: PunktAngabe[];
+} | {
+  pfad: {
+    /**
+     * letzter Punkt mit dem ersten verbunden (Flächen, geschlossene Linien)
+     * @default false
+     */
+    geschlossen?: boolean;
+    /** Referenzpunkte: [x, y] = Eckpunkt, {"kurve": [x, y]} = Kurvenpunkt */
+    punkte: PfadPunkt[];
+  };
 });
 
 /** Bedeutung einer Linie in der Formansicht */
@@ -1636,6 +1646,11 @@ export type Parameter = {
 export type Pfad = {
   pfad: string;
 };
+
+/** Referenzpunkt eines Pfads: Eckpunkt `[x, y]` oder Kurvenpunkt `{"kurve": [x, y]}`. */
+export type PfadPunkt = (Punkt | {
+  kurve: Punkt;
+});
 
 /** Ergebnis der Prüfung eines Designs (ohne Stiche zu berechnen). */
 export type Pruefung = {

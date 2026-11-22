@@ -27,7 +27,6 @@
   import {
     BESONDERE,
     FORMEN,
-    formObjekt,
     FUELLUNG,
     KOMMT_NOCH,
     neuesObjekt,
@@ -40,6 +39,7 @@
   import { WECHSELBAR } from "$lib/arbeit.svelte";
   import { listen } from "$lib/listen.svelte";
   import { knotenBild } from "$lib/knoten";
+  import { formAusPunkten, ZEICHEN_HILFE, type ZeichenPunkt } from "$lib/zeichnen";
   import type { ReihenfolgeBefehl } from "$kern/kern";
 
   let menue = $state<"datei" | "maschine" | "einfuegen" | "anordnen" | "fuellung" | "umriss" | null>(null);
@@ -50,8 +50,12 @@
   let raster = $state(true);
   let zoom = $state(1);
   let vorschau: Vorschau | undefined = $state();
-  type Werkzeug = "auswahl" | "einstich" | "ausstich" | "knoten";
+  type Werkzeug = "auswahl" | "einstich" | "ausstich" | "knoten" | "zeichnen";
   let werkzeug = $state<Werkzeug>((globalThis as { __START__?: { werkzeug?: Werkzeug } }).__START__?.werkzeug ?? "auswahl");
+  /** Form beim Zeichnen mit der Maus (Nachtauftrag N0) */
+  let zeichenForm = $state<FormWerkzeug>(
+    (globalThis as { __START__?: { zeichenForm?: FormWerkzeug } }).__START__?.zeichenForm ?? "linie",
+  );
   const knotenZustand = $derived(werkzeug === "knoten" && arbeit.auswahl.length === 1 ? knotenBild(arbeit.objekte[arbeit.auswahl[0]]) : { knoten: [], linien: [], umwandeln: false });
 
   // Abspielen: Stickfolge Stich für Stich (nur Darstellung, keine Maschinen-Simulation)
@@ -160,11 +164,18 @@
     if (o) arbeit.einfuegen(o);
   }
 
-  /** Form-Werkzeug: Form mit der vorgewählten Stichart einfügen (Umriss über den Kern `stichart_aendern`) */
-  async function formEinfuegen(form: FormWerkzeug) {
-    const { objekt, umriss } = formObjekt(form, arbeit.vorwahl);
-    arbeit.einfuegen(objekt);
-    if (umriss) await arbeit.stichartAendern([arbeit.objekte.length - 1], umriss);
+  /** Form-Werkzeug: mit der Maus zeichnen (Punkt für Punkt wie im Original, Handbuch S. 58) */
+  function formZeichnen(form: FormWerkzeug) {
+    zeichenForm = form;
+    werkzeug = "zeichnen";
+    arbeit.ansicht = arbeit.ansicht === "abspielen" ? "stiche" : arbeit.ansicht;
+  }
+  /** Gezeichnete Form als Objekt mit der vorgewählten Stichart einfügen (Umriss über den Kern `stichart_aendern`) */
+  async function gezeichnet(form: FormWerkzeug, punkte: ZeichenPunkt[], quadrat: boolean) {
+    const r = formAusPunkten(form, punkte, arbeit.vorwahl, quadrat);
+    if (!r) return arbeit.zeige("Form zu klein – bitte noch einmal zeichnen.", "info");
+    arbeit.einfuegen(r.objekt);
+    if (r.umriss) await arbeit.stichartAendern([arbeit.objekte.length - 1], r.umriss);
   }
   /** Stichart-Menü (Füllung/Umriss) neben der Werkzeugleiste öffnen */
   function stichartMenue(modus: "fuellung" | "umriss", ev: MouseEvent) {
@@ -225,6 +236,7 @@
     const ziel = ev.target as HTMLElement;
     const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
     if (arbeit.dialog || maschine.dialogOffen || maschine.listeOffen || maschine.stickenDialog) return; // Dialog behandelt Esc selbst
+    if (!eingabe && werkzeug === "zeichnen" && vorschau?.zeichenTaste(ev.key)) return ev.preventDefault();
     if (ev.key === "Escape") {
       if (werkzeug !== "auswahl") werkzeug = "auswahl";
       else if (menue) menue = null;
@@ -357,9 +369,9 @@
     {#if menue === "einfuegen"}
       <div class="menu" role="menu" aria-label="Einfügen" style="left:205px; top:44px; display:grid; grid-template-columns:240px 300px; padding:0">
         <div style="padding:4px; border-right:1px solid var(--line)">
-          <div class="mh">Form – {arbeit.vorwahl.modus === "fuellung" ? `Fläche: ${STICHART_NAME[arbeit.vorwahl.fuellung]}` : `Umriss: ${STICHART_NAME[arbeit.vorwahl.umriss]}`}</div>
+          <div class="mh">Form zeichnen – {arbeit.vorwahl.modus === "fuellung" ? `Fläche: ${STICHART_NAME[arbeit.vorwahl.fuellung]}` : `Umriss: ${STICHART_NAME[arbeit.vorwahl.umriss]}`}</div>
           {#each FORMEN as f (f.form)}
-            <button class="mi" role="menuitem" onclick={() => waehle(() => formEinfuegen(f.form))}><Icon d={f.icon} />{f.name}</button>
+            <button class="mi" role="menuitem" onclick={() => waehle(() => formZeichnen(f.form))}><Icon d={f.icon} />{f.name}</button>
           {/each}
           <div class="msep"></div>
           <div class="mh">Schrift</div>
@@ -483,7 +495,7 @@
             <button class="tb stw" class:an={arbeit.vorwahl.modus === "umriss"} aria-haspopup="menu" aria-expanded={menue === "umriss"} aria-label="Umriss: {STICHART_NAME[arbeit.vorwahl.umriss]}" title="Umriss: {STICHART_NAME[arbeit.vorwahl.umriss]} – Linien und, wenn gewählt, Formen als Umriss · Klick: Stichart wählen (auch für die Auswahl)" onclick={(ev) => stichartMenue("umriss", ev)}><Icon d={ART[arbeit.vorwahl.umriss]?.[1] ?? ""} groesse="l" /><span class="stw-l">Umriss</span></button>
             <span class="sep"></span>
             {#each FORMEN as f (f.form)}
-              <button class="tb" aria-label="{f.name} einfügen" title={formTitel(f)} onclick={() => formEinfuegen(f.form)}><Icon d={f.icon} groesse="l" /></button>
+              <button class="tb" aria-pressed={werkzeug === "zeichnen" && zeichenForm === f.form} aria-label="{f.name} zeichnen" title={formTitel(f)} onclick={() => formZeichnen(f.form)}><Icon d={f.icon} groesse="l" /></button>
             {/each}
             <span class="sep"></span>
             {#each ["text", "monogramm"] as a (a)}
@@ -498,7 +510,7 @@
           </div>
         {/if}
         <div class="stage">
-          <Vorschau bind:this={vorschau} bind:zoom bind:werkzeug {spruenge} {einstiche} {raster} bis={arbeit.ansicht === "abspielen" ? bis : null} />
+          <Vorschau bind:this={vorschau} bind:zoom bind:werkzeug {zeichenForm} {gezeichnet} {spruenge} {einstiche} {raster} bis={arbeit.ansicht === "abspielen" ? bis : null} />
           {#if werkzeug === "knoten"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px; max-width:520px">
               {#if knotenZustand.umwandeln}
@@ -507,7 +519,12 @@
                   <button class="btn btn-primary" style="min-height:28px; padding:2px 10px" onclick={() => arbeit.inKnoten(arbeit.auswahl[0])}>In Knoten umwandeln</button>
                 </div>
               {/if}
-              <b style="font-weight:500">Knoten</b> – Knoten (□) und Anfasser (○) ziehen · in Punktlisten: gewählten Punkt mit Entf löschen, mit Einfg (oder +) dahinter einen einfügen · Esc beendet.
+              <b style="font-weight:500">Knoten</b> – Knoten (□ Ecke, ◯ Kurvenpunkt) und Anfasser (○) ziehen · Rechtsklick auf einen Knoten: Ecke ↔ Kurve · gewählten Punkt mit Entf löschen, mit Einfg (oder +) dahinter einen einfügen · Esc beendet.
+            </div>
+          {:else if werkzeug === "zeichnen"}
+            <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px; max-width:560px; display:flex; gap:10px; align-items:center">
+              <span style="flex:1"><b style="font-weight:500">{FORMEN.find((f) => f.form === zeichenForm)?.name} zeichnen</b> – {ZEICHEN_HILFE[zeichenForm]} · ⌫ letzter Punkt zurück · Esc beendet</span>
+              <button class="btn btn-primary" style="min-height:28px; padding:2px 10px" onclick={() => vorschau?.zeichnenAbschliessen()}>Fertig</button>
             </div>
           {:else if werkzeug !== "auswahl"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px">
@@ -539,11 +556,11 @@
               {/if}
             </div>
           {/if}
-          {#if leer && !arbeit.rechnet}
+          {#if leer && !arbeit.rechnet && werkzeug !== "zeichnen"}
             {#if arbeit.modus === "experte"}
               <div class="floater" style="left:50%; top:50%; transform:translate(-50%,-50%); width:380px; padding:18px">
                 <h3 style="margin:0 0 4px; font-size:21px">Leeres Design</h3>
-                <p class="mut" style="margin:0 0 12px">Links ein Werkzeug wählen (fügt ein Objekt in der Rahmenmitte ein) – oder:</p>
+                <p class="mut" style="margin:0 0 12px">Links eine Form wählen und Punkt für Punkt zeichnen, Schrift oder Monogramm einfügen – oder:</p>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px">
                   <button class="btn btn-secondary" onclick={oeffnen}>Öffnen …</button>
                   <button class="btn btn-secondary" onclick={beispiel}>Beispiel laden</button>

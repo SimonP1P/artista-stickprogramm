@@ -4,7 +4,9 @@
   // Objektnummer (`Ergebnis.objekt` je Stich), die Trefferprüfung macht der Browser. Darstellung wie Entwurf v3.
   import { arbeit } from "./arbeit.svelte";
   import { zahl, zahlFest } from "./zahl";
-  import { knotenBild, knotenListe, knotenSetzen } from "./knoten";
+  import { knotenBild, knotenListe, knotenSetzen, knotenUmschalten, lage } from "./knoten";
+  import { AUTOMATISCH_FERTIG, MINDESTENS, pfadD, type ZeichenPunkt } from "./zeichnen";
+  import type { FormWerkzeug } from "./einfuegen";
 
   let {
     spruenge = true,
@@ -12,6 +14,8 @@
     raster = true,
     zoom = $bindable(1),
     werkzeug = $bindable("auswahl"),
+    zeichenForm = "linie",
+    gezeichnet,
     bis = null,
   }: {
     spruenge?: boolean;
@@ -19,7 +23,11 @@
     raster?: boolean;
     zoom?: number;
     /** Werkzeug: auswählen/ziehen oder Ein-/Ausstich des gewählten Objekts setzen */
-    werkzeug?: "auswahl" | "einstich" | "ausstich" | "knoten";
+    werkzeug?: "auswahl" | "einstich" | "ausstich" | "knoten" | "zeichnen";
+    /** Form beim Zeichnen mit der Maus (Werkzeug „zeichnen“) */
+    zeichenForm?: FormWerkzeug;
+    /** Zeichnen fertig: Referenzpunkte der Form (Strg/⌘ beim letzten Klick = Quadrat) */
+    gezeichnet?: (form: FormWerkzeug, punkte: ZeichenPunkt[], quadrat: boolean) => void;
     /** Abspielen: nur die ersten `bis` Stiche zeigen (null = alle) */
     bis?: number | null;
   } = $props();
@@ -100,20 +108,97 @@
     if (!liste || !k.liste) return taste === "Delete" || taste === "Backspace" || taste === "Insert" || taste === "+";
     const i = k.liste.index;
     const pfad = k.liste.pfad;
-    const lesen = (o: unknown) => pfad.reduce<unknown>((x, t) => (x as Record<string, unknown>)[t as string], o) as number[][];
+    const lesen = (o: unknown) => pfad.reduce<unknown>((x, t) => (x as Record<string, unknown>)[t as string], o) as unknown[];
     if (taste === "Delete" || taste === "Backspace") {
       if (liste.length > 2) knotenAendern((o) => lesen(o).splice(i, 1));
       knotenGewaehlt = null;
       return true;
     }
     if (taste === "Insert" || taste === "+") {
-      const a = liste[i], b = liste[(i + 1) % liste.length];
+      const a = lage(liste[i]), b = lage(liste[(i + 1) % liste.length]);
       knotenAendern((o) => lesen(o).splice(i + 1, 0, [rundenKnoten((a[0] + b[0]) / 2), rundenKnoten((a[1] + b[1]) / 2)]));
       knotenGewaehlt = g! + 1;
       return true;
     }
     return false;
   }
+
+  // ---- Zeichnen mit der Maus (Nachtauftrag N0, Handbuch S. 58–62): linke Taste = Eckpunkt, rechte = Kurvenpunkt
+  let zeichenPunkte = $state<ZeichenPunkt[]>([]);
+  let zeichenZeiger = $state<[number, number] | null>(null);
+  let zeichenQuadrat = $state(false);
+  $effect(() => {
+    // Werkzeug oder Form gewechselt: angefangene Form verwerfen
+    void werkzeug;
+    void zeichenForm;
+    zeichenPunkte = [];
+  });
+  function zeichnenFertig() {
+    const pts = zeichenPunkte;
+    if (pts.length < MINDESTENS[zeichenForm]) return false;
+    zeichenPunkte = [];
+    gezeichnet?.(zeichenForm, pts, zeichenQuadrat);
+    return true;
+  }
+  /** Tasten beim Zeichnen: Enter beendet, ⌫ nimmt den letzten Punkt zurück, Esc verwirft die angefangene Form */
+  export function zeichenTaste(taste: string): boolean {
+    if (werkzeug !== "zeichnen") return false;
+    if (taste === "Enter") return zeichnenFertig() || true;
+    if (taste === "Backspace" || taste === "Delete") {
+      zeichenPunkte = zeichenPunkte.slice(0, -1);
+      return true;
+    }
+    if (taste === "Escape" && zeichenPunkte.length) {
+      zeichenPunkte = [];
+      return true;
+    }
+    return false;
+  }
+  export function zeichnenAbschliessen() {
+    zeichnenFertig();
+  }
+  export const zeichenAnzahl = () => zeichenPunkte.length;
+  /** Vorschau der angefangenen Form (mit dem Zeiger als nächstem Punkt) */
+  const zeichenBild = $derived.by(() => {
+    if (werkzeug !== "zeichnen") return null;
+    const pts = zeichenPunkte;
+    const z = zeichenZeiger;
+    const mitZeiger = z ? [...pts, { p: z, kurve: false }] : pts;
+    if (!mitZeiger.length) return null;
+    const f = zeichenForm;
+    if (f === "kreis" && mitZeiger.length >= 2) {
+      const [c, r1] = [mitZeiger[0].p, mitZeiger[1].p];
+      const a = Math.hypot(r1[0] - c[0], r1[1] - c[1]);
+      let b = a;
+      if (mitZeiger.length >= 3 && a > 0) {
+        const r2 = mitZeiger[2].p;
+        const [ux, uy] = [(r1[0] - c[0]) / a, (r1[1] - c[1]) / a];
+        b = Math.abs((r2[0] - c[0]) * -uy + (r2[1] - c[1]) * ux);
+      }
+      const grad = (Math.atan2(r1[1] - c[1], r1[0] - c[0]) * 180) / Math.PI;
+      return { ellipse: { c, a, b, grad }, d: `M${c[0]} ${-c[1]}L${r1[0]} ${-r1[1]}`, punkte: pts };
+    }
+    if (f === "rechteck" && mitZeiger.length >= 2) {
+      const [p0, p1] = [mitZeiger[0].p, mitZeiger[1].p];
+      let [dx, dy] = [p1[0] - p0[0], p1[1] - p0[1]];
+      if (zeichenQuadrat) {
+        const s_ = Math.max(Math.abs(dx), Math.abs(dy));
+        [dx, dy] = [Math.sign(dx || 1) * s_, Math.sign(dy || 1) * s_];
+      }
+      const [x0, y0, x1, y1] = [p0[0], p0[1], p0[0] + dx, p0[1] + dy];
+      return { d: `M${x0} ${-y0}L${x1} ${-y0}L${x1} ${-y1}L${x0} ${-y1}Z`, punkte: pts };
+    }
+    if (f === "saeule") {
+      const a = mitZeiger.filter((_, i) => i % 2 === 0);
+      const b = mitZeiger.filter((_, i) => i % 2 === 1);
+      const paare = a
+        .slice(0, b.length)
+        .map((x, i) => `M${x.p[0]} ${-x.p[1]}L${b[i].p[0]} ${-b[i].p[1]}`)
+        .join("");
+      return { d: pfadD(a, false) + (b.length ? pfadD(b, false) : ""), paare, punkte: pts };
+    }
+    return { d: pfadD(mitZeiger, f === "frei" && mitZeiger.length > 2), punkte: pts };
+  });
 
   /** Bildschirmpunkt → mm (y nach oben) über die Abbildung des SVG */
   function mm(ev: PointerEvent): [number, number] {
@@ -248,6 +333,30 @@
   }
 
   function runter(ev: PointerEvent) {
+    // Zeichnen: linke Taste Eckpunkt, rechte Kurvenpunkt (mittlere Taste/Leertaste verschieben weiter die Ansicht)
+    if (werkzeug === "zeichnen" && (ev.button === 0 || ev.button === 2) && !leertaste && arbeit.ansicht !== "abspielen") {
+      ev.preventDefault();
+      const q = mm(ev);
+      const r = (v: number) => Math.round(v * 100) / 100;
+      zeichenQuadrat = ev.ctrlKey || ev.metaKey;
+      // Kreis, Rechteck und Säule: Kurvenpunkte nur bei Linie, Form und Säule
+      const kurve = ev.button === 2 && (zeichenForm === "linie" || zeichenForm === "frei" || zeichenForm === "saeule");
+      zeichenPunkte = [...zeichenPunkte, { p: [r(q[0]), r(q[1])], kurve }];
+      const auto = AUTOMATISCH_FERTIG[zeichenForm];
+      if (auto && zeichenPunkte.length >= auto) zeichnenFertig();
+      return;
+    }
+    // Knoten-Werkzeug: Rechtsklick auf einen Knoten schaltet Ecke ↔ Kurve um (wie die Punktarten im Original)
+    if (ev.button === 2 && werkzeug === "knoten") {
+      const kn = (ev.target as Element | null)?.closest?.("[data-knoten]")?.getAttribute("data-knoten");
+      const k = kn != null ? knotenBasis?.knoten[Number(kn)] : undefined;
+      if (k) {
+        ev.preventDefault();
+        knotenAendern((o) => void knotenUmschalten(o, k));
+        knotenGewaehlt = Number(kn);
+      }
+      return;
+    }
     if (ev.button !== 0 && ev.button !== 1) return;
     frischGewaehlt = false;
     try {
@@ -320,6 +429,11 @@
     ziehen = { art: "ansicht", x: ev.clientX, y: ev.clientY, m: [...mitte], bewegt: false, nurKlick: true };
   }
   function bewegen(ev: PointerEvent) {
+    if (werkzeug === "zeichnen" && svg && !ziehen) {
+      zeichenZeiger = mm(ev);
+      zeichenQuadrat = ev.ctrlKey || ev.metaKey;
+      return;
+    }
     if (knotenZiehen && svg) {
       knotenZiehen = { ...knotenZiehen, p: mm(ev) };
       return;
@@ -468,7 +582,8 @@
   onpointerup={hoch}
   onmousedown={(e) => e.button === 1 && e.preventDefault()}
   onpointerenter={() => (zeigerDrin = true)}
-  onpointerleave={() => (zeigerDrin = false)}
+  onpointerleave={() => ((zeigerDrin = false), (zeichenZeiger = null))}
+  oncontextmenu={(e) => e.preventDefault()}
   onwheel={rad}
   style="cursor:{leertaste ? 'grab' : werkzeug !== 'auswahl' ? 'crosshair' : 'default'}"
 >
@@ -559,10 +674,32 @@
       {#if k.anfasser && k.anker}
         <line x1={k.anker[0]} y1={-k.anker[1]} x2={x} y2={-y} stroke={farben.akzent} stroke-width=".2" pointer-events="none" />
         <circle cx={x} cy={-y} r={0.8 * g} fill={an ? farben.akzent : farben.griff} stroke={farben.akzent} stroke-width=".3" data-knoten={i} style="cursor:move" />
+      {:else if k.kurve}
+        <!-- Kurvenpunkt eines Pfads: rund und größer als ein Anfasser (Rechtsklick = Eckpunkt) -->
+        <circle cx={x} cy={-y} r={1.1 * g} fill={an ? farben.akzent : farben.griff} stroke={farben.akzent} stroke-width=".4" data-knoten={i} style="cursor:move" />
       {:else}
         <rect x={x - g} y={-y - g} width={2 * g} height={2 * g} fill={an ? farben.akzent : farben.griff} stroke={farben.akzent} stroke-width=".35" data-knoten={i} style="cursor:move" />
       {/if}
     {/each}
+  {/if}
+  {#if zeichenBild}
+    <!-- Zeichnen: angefangene Form mit dem Zeiger als nächstem Punkt (nur Anzeige) -->
+    {@const g = 1 / Math.sqrt(zoom)}
+    <g pointer-events="none">
+      {#if zeichenBild.ellipse}
+        {@const el = zeichenBild.ellipse}
+        <ellipse cx={el.c[0]} cy={-el.c[1]} rx={el.a} ry={el.b} transform="rotate({-el.grad} {el.c[0]} {-el.c[1]})" fill="none" stroke={farben.akzent} stroke-width=".35" />
+      {/if}
+      <path d={zeichenBild.d} fill="none" stroke={farben.akzent} stroke-width=".35" stroke-dasharray={zeichenBild.ellipse ? "1 .6" : undefined} />
+      {#if zeichenBild.paare}<path d={zeichenBild.paare} fill="none" stroke={farben.akzent} stroke-width=".2" stroke-dasharray="1 .6" />{/if}
+      {#each zeichenBild.punkte as z, i (i)}
+        {#if z.kurve}
+          <circle cx={z.p[0]} cy={-z.p[1]} r={1.1 * g} fill={farben.griff} stroke={farben.akzent} stroke-width=".4" />
+        {:else}
+          <rect x={z.p[0] - g} y={-z.p[1] - g} width={2 * g} height={2 * g} fill={farben.griff} stroke={farben.akzent} stroke-width=".35" />
+        {/if}
+      {/each}
+    </g>
   {/if}
   {#if zuege.nadel}
     {@const [nx, ny] = zuege.nadel}

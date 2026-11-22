@@ -1162,6 +1162,36 @@
             "verbinden"
           ],
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "**Pfad aus Referenzpunkten** wie beim Digitalisieren im Original (Handbuch S. 58: linke Maustaste = Eckpunkt,\nrechte = Kurvenpunkt; zwei Eckpunkte verbindet eine Gerade, an Kurvenpunkten läuft die Linie glatt durch).\nKurvenstücke: kubische Bézier mit Catmull-Rom-Tangenten (eigene Festlegung – wie das Original Kurvenpunkte\nin Bézier umsetzt, ist nicht analysiert). Geschlossen: Ring ohne doppelten Endpunkt",
+          "properties": {
+            "pfad": {
+              "properties": {
+                "geschlossen": {
+                  "default": false,
+                  "description": "letzter Punkt mit dem ersten verbunden (Flächen, geschlossene Linien)",
+                  "type": "boolean"
+                },
+                "punkte": {
+                  "description": "Referenzpunkte: [x, y] = Eckpunkt, {\"kurve\": [x, y]} = Kurvenpunkt",
+                  "items": {
+                    "$ref": "#/$defs/PfadPunkt"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "punkte"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "pfad"
+          ],
+          "type": "object"
         }
       ]
     },
@@ -2629,6 +2659,25 @@
           "type": "object"
         }
       ]
+    },
+    "PfadPunkt": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Punkt"
+        },
+        {
+          "properties": {
+            "kurve": {
+              "$ref": "#/$defs/Punkt"
+            }
+          },
+          "required": [
+            "kurve"
+          ],
+          "type": "object"
+        }
+      ],
+      "description": "Referenzpunkt eines Pfads: Eckpunkt `[x, y]` oder Kurvenpunkt `{\"kurve\": [x, y]}`."
     },
     "Punkt": {
       "description": "[x, y] in mm, Ursprung Rahmenmitte, +y nach oben",

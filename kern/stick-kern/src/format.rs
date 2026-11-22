@@ -362,6 +362,108 @@ pub enum Form {
     Bezier([Punkt; 4]),
     /// mehrere Stücke hintereinander (Punktlisten oder Formen)
     Verbinden(Vec<PunktAngabe>),
+    /// **Pfad aus Referenzpunkten** wie beim Digitalisieren im Original (Handbuch S. 58: linke Maustaste = Eckpunkt,
+    /// rechte = Kurvenpunkt; zwei Eckpunkte verbindet eine Gerade, an Kurvenpunkten läuft die Linie glatt durch).
+    /// Kurvenstücke: kubische Bézier mit Catmull-Rom-Tangenten (eigene Festlegung – wie das Original Kurvenpunkte
+    /// in Bézier umsetzt, ist nicht analysiert). Geschlossen: Ring ohne doppelten Endpunkt
+    Pfad {
+        /// Referenzpunkte: [x, y] = Eckpunkt, {"kurve": [x, y]} = Kurvenpunkt
+        punkte: Vec<PfadPunkt>,
+        /// letzter Punkt mit dem ersten verbunden (Flächen, geschlossene Linien)
+        #[serde(default)]
+        geschlossen: bool,
+    },
+}
+
+/// Referenzpunkt eines Pfads: Eckpunkt `[x, y]` oder Kurvenpunkt `{"kurve": [x, y]}`.
+#[derive(Clone, Copy, Debug, Deserialize, JsonSchema, PartialEq)]
+#[serde(untagged)]
+pub enum PfadPunkt {
+    Ecke(Punkt),
+    Kurve { kurve: Punkt },
+}
+impl PfadPunkt {
+    pub fn p(&self) -> Punkt {
+        match self {
+            PfadPunkt::Ecke(q) | PfadPunkt::Kurve { kurve: q } => *q,
+        }
+    }
+    pub fn ist_kurve(&self) -> bool {
+        matches!(self, PfadPunkt::Kurve { .. })
+    }
+}
+
+/// Stück eines Pfads: Gerade zwischen zwei Eckpunkten oder Bézier.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum PfadStueck {
+    Gerade(Punkt, Punkt),
+    Bezier([Punkt; 4]),
+}
+
+/// Referenzpunkte → Stücke. Tangente an einem Kurvenpunkt: (nächster − voriger) / 2 (Catmull-Rom; an offenen Enden
+/// einseitig), an Eckpunkten keine – zwei Eckpunkte ergeben eine Gerade (eigene Festlegung, siehe `Form::Pfad`).
+pub fn pfad_stuecke(punkte: &[PfadPunkt], geschlossen: bool) -> Vec<PfadStueck> {
+    let n = punkte.len();
+    if n < 2 {
+        return Vec::new();
+    }
+    let q = |i: usize| punkte[i].p();
+    let tangente = |i: usize| -> (f64, f64) {
+        if !punkte[i].ist_kurve() {
+            return (0.0, 0.0);
+        }
+        let (vor, nach) = if geschlossen {
+            ((i + n - 1) % n, (i + 1) % n)
+        } else {
+            (i.saturating_sub(1), (i + 1).min(n - 1))
+        };
+        let f = if !geschlossen && (i == 0 || i == n - 1) { 1.0 } else { 0.5 };
+        ((q(nach).x - q(vor).x) * f, (q(nach).y - q(vor).y) * f)
+    };
+    let m = if geschlossen { n } else { n - 1 };
+    (0..m)
+        .map(|i| {
+            let j = (i + 1) % n;
+            if !punkte[i].ist_kurve() && !punkte[j].ist_kurve() {
+                return PfadStueck::Gerade(q(i), q(j));
+            }
+            let (ti, tj) = (tangente(i), tangente(j));
+            PfadStueck::Bezier([
+                q(i),
+                p(q(i).x + ti.0 / 3.0, q(i).y + ti.1 / 3.0),
+                p(q(j).x - tj.0 / 3.0, q(j).y - tj.1 / 3.0),
+                q(j),
+            ])
+        })
+        .collect()
+}
+
+/// Pfad als Punkte mit Eckmarken (Referenz-Eckpunkte = Ecke; Ring ohne doppelten Endpunkt).
+fn pfad_punkte(punkte: &[PfadPunkt], geschlossen: bool) -> (Linie, Vec<bool>) {
+    let (mut out, mut ecken): (Linie, Vec<bool>) = (Vec::new(), Vec::new());
+    if punkte.len() == 1 {
+        return (vec![punkte[0].p()], vec![true]);
+    }
+    let stuecke = pfad_stuecke(punkte, geschlossen);
+    let n = punkte.len();
+    for (i, s) in stuecke.iter().enumerate() {
+        let pts = match s {
+            PfadStueck::Gerade(a, b) => vec![*a, *b],
+            PfadStueck::Bezier(b) => bezier(b[0], b[1], b[2], b[3], 32),
+        };
+        let start = usize::from(!out.is_empty());
+        for (k, x) in pts.iter().enumerate().skip(start) {
+            out.push(*x);
+            let ende = k + 1 == pts.len();
+            ecken.push(if k == 0 { !punkte[i].ist_kurve() } else if ende { !punkte[(i + 1) % n].ist_kurve() } else { false });
+        }
+    }
+    if geschlossen && out.len() > 1 {
+        // Ring: der letzte Punkt ist wieder der erste
+        out.pop();
+        ecken.pop();
+    }
+    (out, ecken)
 }
 
 impl PunktAngabe {
@@ -390,6 +492,7 @@ impl PunktAngabe {
                 bis,
             }) => bogen(*mitte, *radius, *von, *bis, 0.02),
             PunktAngabe::Form(Form::Bezier(q)) => bezier(q[0], q[1], q[2], q[3], 32),
+            PunktAngabe::Form(Form::Pfad { punkte, geschlossen }) => pfad_punkte(punkte, *geschlossen).0,
             PunktAngabe::Form(Form::Verbinden(teile)) => {
                 let mut out: Linie = Vec::new();
                 for t in teile {
@@ -414,6 +517,7 @@ impl PunktAngabe {
                 let n = pts.len();
                 (pts, vec![true; n])
             }
+            PunktAngabe::Form(Form::Pfad { punkte, geschlossen }) => pfad_punkte(punkte, *geschlossen),
             PunktAngabe::Form(Form::Verbinden(teile)) => {
                 let (mut out, mut ecken): (Linie, Vec<bool>) = (Vec::new(), Vec::new());
                 let mut vorher: Option<&PunktAngabe> = None;
@@ -1304,5 +1408,35 @@ mod tests {
         .unwrap();
         let defs = s["$defs"].as_object().unwrap();
         assert!(defs.contains_key("ObjektJson") && defs.contains_key("Punkt"));
+    }
+
+    /// Pfad aus Referenzpunkten: Eckpunkte → Geraden, Kurvenpunkte → glatte Bézier; geschlossen = Ring
+    #[test]
+    fn pfad_ecken_und_kurven() {
+        let a: PunktAngabe = serde_json::from_value(serde_json::json!(
+            {"pfad": {"punkte": [[0, 0], [10, 0], [10, 10]]}}
+        ))
+        .unwrap();
+        let (pts, ecken) = a.punkte_mit_ecken();
+        assert_eq!(pts.len(), 3);
+        assert_eq!(ecken, vec![true, true, true]);
+        // Kurvenpunkt in der Mitte: viele Punkte, nur die Enden sind Ecken, die Linie geht durch den Kurvenpunkt
+        let k: PunktAngabe = serde_json::from_value(serde_json::json!(
+            {"pfad": {"punkte": [[0, 0], {"kurve": [10, 5]}, [20, 0]]}}
+        ))
+        .unwrap();
+        let (pts, ecken) = k.punkte_mit_ecken();
+        assert!(pts.len() > 30);
+        assert!(ecken[0] && *ecken.last().unwrap() && ecken.iter().filter(|e| **e).count() == 2);
+        assert!(pts.iter().any(|q| (q.x - 10.0).abs() < 1e-9 && (q.y - 5.0).abs() < 1e-9));
+        // geschlossen: Ring ohne doppelten Endpunkt, Kurve um alle vier Punkte
+        let r: PunktAngabe = serde_json::from_value(serde_json::json!(
+            {"pfad": {"punkte": [{"kurve": [0, 10]}, {"kurve": [10, 0]}, {"kurve": [0, -10]}, {"kurve": [-10, 0]}], "geschlossen": true}}
+        ))
+        .unwrap();
+        let pts = r.punkte();
+        assert_ne!(pts.first(), pts.last());
+        let r_max = pts.iter().map(|q| q.x.hypot(q.y)).fold(0.0, f64::max);
+        assert!(r_max > 9.9 && r_max < 11.5, "{r_max}");
     }
 }

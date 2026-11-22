@@ -13,7 +13,8 @@ Aufruf (aus app/):
   '[{"wo": "button[aria-label=\"Alle Elemente\"]", "nach": 2500}, {"wo": "ol[aria-label=Elemente] button", "text": "Mond"}]'
 Je Schritt: CSS-Selektor `wo`, optional `text` (Element, dessen Text ihn enthält), `nach` = Wartezeit in ms vor dem
 Klick (nur erster Schritt, Standard 1500); sonst wartet ein Schritt, bis Svelte gezeichnet hat und es das Element gibt.
-`ziehen: [dx, dy]` zieht statt zu klicken (Pixel, von der Mitte des Elements).
+`ziehen: [dx, dy]` zieht statt zu klicken (Pixel, von der Mitte des Elements); `bei: [dx, dy]` klickt an diese Stelle
+(mit `knopf`: 0 links, 2 rechts); `taste: "Enter"` drückt eine Taste (ohne `wo`).
 Klicks und Fehler gibt das Werkzeug aus der Konsole der Seite aus.
 """
 import argparse
@@ -76,7 +77,8 @@ def main():
     a.add_argument("--ansicht")
     a.add_argument("--schritt", type=int)
     a.add_argument("--reiter", choices=["objekt", "design", "einzelwerte", "json"])
-    a.add_argument("--werkzeug", choices=["auswahl", "einstich", "ausstich", "knoten"])
+    a.add_argument("--werkzeug", choices=["auswahl", "einstich", "ausstich", "knoten", "zeichnen"])
+    a.add_argument("--zeichenform", choices=["linie", "frei", "saeule", "kreis", "rechteck"], help="Form beim Werkzeug zeichnen")
     a.add_argument("--maschine", choices=["anschluss", "plan", "fertig", "sticken", "liste"],
                    help="Maschinen-Ablauf mit der Simulation bis zu dieser Stufe")
     a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
@@ -177,6 +179,8 @@ def main():
         start["reiter"] = o.reiter
     if o.werkzeug:
         start["werkzeug"] = o.werkzeug
+    if o.zeichenform:
+        start["zeichenForm"] = o.zeichenform
     if o.maschine:
         start["maschine"] = o.maschine
     if o.dialog:
@@ -216,7 +220,7 @@ const KLICKS = {json.dumps(json.loads(o.klicks) if o.klicks else [])};
 (function schritt(k) {{
   if (k >= KLICKS.length) return;
   const s = KLICKS[k];
-  const finden = () => [...document.querySelectorAll(s.wo)].find((e) => !s.text || e.textContent.includes(s.text));
+  const finden = () => s.taste && !s.wo ? document.body : [...document.querySelectorAll(s.wo)].find((e) => !s.text || e.textContent.includes(s.text));
   const klicken = (el) => {{
     if (s.ziehen) {{
       // Ziehen: von der Mitte des Elements um [dx, dy] Pixel (Bewegung und Loslassen gehen an die Zeichenfläche)
@@ -230,7 +234,21 @@ const KLICKS = {json.dumps(json.loads(o.klicks) if o.klicks else [])};
       flaeche.dispatchEvent(ev("pointerup", x + s.ziehen[0], y + s.ziehen[1]));
       return schritt(k + 1);
     }}
-    console.log("Bildschirmfoto: Klick", k + 1, s.wo, s.text || "");
+    if (s.taste) {{
+      // Taste (z. B. Enter) an das Fenster
+      console.log("Bildschirmfoto: Taste", k + 1, s.taste);
+      window.dispatchEvent(new KeyboardEvent("keydown", {{ key: s.taste, bubbles: true }}));
+      return schritt(k + 1);
+    }}
+    console.log("Bildschirmfoto: Klick", k + 1, s.wo, s.text || "", s.bei ? JSON.stringify(s.bei) : "");
+    if (s.bei) {{
+      // Klick an eine Stelle relativ zur Mitte des Elements (Pixel), `knopf` 0 = links, 2 = rechts
+      const r = el.getBoundingClientRect();
+      const o = {{ bubbles: true, button: s.knopf || 0, buttons: 1, clientX: r.left + r.width / 2 + s.bei[0], clientY: r.top + r.height / 2 + s.bei[1], pointerId: 1 }};
+      el.dispatchEvent(new PointerEvent("pointerdown", o));
+      el.dispatchEvent(new PointerEvent("pointerup", o));
+      return schritt(k + 1);
+    }}
     for (const typ of ["pointerdown", "mousedown", "pointerup", "mouseup"]) el.dispatchEvent(new PointerEvent(typ, {{ bubbles: true, button: 0 }}));
     el.click();
     schritt(k + 1);

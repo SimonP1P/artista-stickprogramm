@@ -67,6 +67,18 @@ fn stuecke(a: &PunktAngabe, out: &mut Vec<Stueck>) {
         }
         PunktAngabe::Form(Form::Bezier(q)) => out.push(Stueck::Bezier(*q)),
         PunktAngabe::Form(Form::Verbinden(teile)) => teile.iter().for_each(|t| stuecke(t, out)),
+        PunktAngabe::Form(Form::Pfad { punkte, geschlossen }) => {
+            for s in crate::format::pfad_stuecke(punkte, *geschlossen) {
+                match s {
+                    crate::format::PfadStueck::Gerade(a, b) => match out.last_mut() {
+                        // Geraden hintereinander in einer Punktliste (Eckpunkte des Knoten-Werkzeugs)
+                        Some(Stueck::Liste(l)) if l.last() == Some(&a) => l.push(b),
+                        _ => out.push(Stueck::Liste(vec![a, b])),
+                    },
+                    crate::format::PfadStueck::Bezier(q) => out.push(Stueck::Bezier(q)),
+                }
+            }
+        }
     }
 }
 

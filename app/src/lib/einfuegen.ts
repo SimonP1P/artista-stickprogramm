@@ -69,45 +69,8 @@ export const STICHART_HILFE: Record<string, string> = {
 };
 export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string };
 
-/**
- * Neues Objekt für ein Form-Werkzeug. Geschlossene Formen entstehen als Fläche der Vorwahl; soll es ein Umriss werden,
- * wandelt der Aufrufer sie mit `stichart_aendern` um (Form-Logik nur im Kern).
- */
-export function formObjekt(form: FormWerkzeug, v: Vorwahl): { objekt: ObjektJson; umriss: string | null } {
-  const farbe = STANDARD_FARBE;
-  const fuell = v.fuellung;
-  const flaeche = (umriss: unknown) =>
-    ({ art: fuell, name: STICHART_NAME[fuell] === "Satin" ? "Satinfläche" : "Fläche", umriss, farbe, ...(fuell === "muster" ? { muster: "001" } : {}) }) as ObjektJson;
-  const umriss = v.modus === "umriss" ? v.umriss : null;
-  switch (form) {
-    case "linie": {
-      const o = neuesObjekt(v.umriss);
-      return { objekt: o ?? (neuesObjekt("lauf") as ObjektJson), umriss: null };
-    }
-    case "kreis":
-      return { objekt: flaeche({ kreis: { mitte: [0, 0], radius: 15 } }), umriss };
-    case "rechteck":
-      return { objekt: flaeche({ rechteck: { mitte: [0, 0], breite: 40, hoehe: 25 } }), umriss };
-    case "frei":
-      return {
-        objekt: flaeche([
-          [-18, -8],
-          [-4, -14],
-          [16, -10],
-          [20, 4],
-          [6, 14],
-          [-14, 10],
-        ]),
-        umriss,
-      };
-    case "saeule":
-      return { objekt: neuesObjekt("satin") as ObjektJson, umriss: null };
-  }
-}
-
 /** FUNKTIONEN.md §7 – Platz vorgesehen, deaktiviert */
 export const KOMMT_NOCH = [
-  "Formen mit der Maus zeichnen (Punkt für Punkt)",
   "Motivfüllungen",
   "Effekte (Fransen, Welle, Farbverlauf, Farben mischen)",
   "Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling)",
