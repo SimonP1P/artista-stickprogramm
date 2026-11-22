@@ -39,7 +39,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N1 | 4b.7 Motivfüllung (Standard Children 901 – in N3 korrigiert auf NP004a K0001a, Abschneiden nach Handbuch) + eigene Motive (Anordnen → „Als Motiv speichern …“, löschen im Motiv-Dialog) | ✅ 22.11. |
 | N2 | 4b.8 Effekte: Verlauf (Gradient Fill, 8 Profile), ausgefranster Rand (Textured Edge), Welle (Wave Effect mit Leitlinie, im Knoten-Werkzeug formbar), Farben mischen (Color Blending, Dialog); Open Fill = Laufwege am Rand (schon so); Inspektor-Abschnitt „Effekte“ (Experte); Bericht `Analyse_Teil3/23` | ✅ 22.11. |
 | N3 | 4b.9 Craft Stitches: **Rückstich** und **Stielstich** nach MOD1 (`sticharten/handstich.rs`), **Stippling** (eigener Mäander, `sticharten/stippling.rs`), **Blackwork Run** (Netz, Euler-Weg, `blackwork.rs`; Anordnen → „Blackwork Run“, Befehl `blackwork_lauf`), Einfügen → „Craft Stitches“ mit 8 Vorlagen (`craft_vorlagen`: Blackwork/Candlewicking-Rand und -Füllung, Lacework = Motivlinie/-füllung mit `_BW004a`/`_CW004a`/`_LW004a`); Objektarten `rueckstich`/`stielstich`/`stippling`/`blackwork`, auch über „Stichart wechseln“; **Korrektur:** 0x2798 = Motivlinie, 0x27ee = Motivfüllung, Standard beider **NP004a K0001a** (vorher Children 901/Heirloom 705); Bericht `Analyse_Teil3/24` | ✅ 22.11. |
-| N4 | 4b.10 Applikation Rest (Versatz, Partial Appliqué) | ⬜ |
+| N4 | 4b.10 Applikation: Vorgaben wie das Original (`AutoAppliqueValues` gelesen: Abdeckung Satin 5,0 / 0,5 mm, Heften Zickzack 4,0 / 5,0 mm, Platzierung 1,5 mm, Pre-Cut), **Versatz** innen/außen (Schieberegler −100 … 100 %, für Abdeckung und Heften), **Teil-Abdeckung** (Partial Appliqué; Inspektor + Anordnen-Menü); Frame Out (12 mm) gefunden, nicht umgesetzt (Frage); Bericht 12 §8 | ✅ 22.11. |
 | N5 | 4b.11 Automatik (Bild → Umrisse/Satin, Magic Wand, PhotoSnap) + kürzeste Wege | ⬜ |
 | N6 | 4b.12 Anordnen (Ausrichten, Mirror-Merge, Kranz, Kaleidoskop) | ⬜ |
 | N7 | 4b.13 Dateien/Rahmen (fremde Stickdateien, ART mit Objekten, eigene Rahmen) | ⬜ |
@@ -56,6 +56,11 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
   noch entschlüsselt werden? Beim Stielstich ist die Zuordnung Breite ↔ Abstand nur „mittel“ – ein Probestich vor Ort
   (Kalibrierblatt) würde sie klären. Der Standard der Motive ist jetzt NP004a K0001a wie im Original (vorher Children
   901 bzw. Heirloom 705) – alte Designs ohne Motivangabe sehen damit anders aus. In Ordnung?
+- **Applikation (N4):** Die Vorgaben sind jetzt die des Originals (Abdeckung Satin **5,0 mm** breit statt 2,5 mm,
+  Heftstich 4,0 mm mit 5,0 mm Abstand, Platzierung 1,5 mm). 5 mm ist deutlich breiter als bisher – so lassen oder
+  für die 185 schmaler vorgeben? Das Original kennt außerdem **„Frame Out“**: nach der Platzierungslinie fährt der
+  Rahmen 12 mm über die Applikation, damit man den Stoff leichter auflegt. Nicht umgesetzt, weil unklar ist, ob die
+  185 das bekommt – gewünscht? (ließe sich vor Ort mit einem Probestück prüfen)
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -291,7 +296,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.7 | **Motive** | Pattern Run (Motivlinie) ✅ 21.11. (`Analyse_Teil3/20`), Pattern Fill (Motivfüllung) ⬜, eigene Muster/Sets (Kap. 25) ⬜ | 🟡 |
 | 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | ✅ 22.11. Loft (= Auto Jump mit kleinem Höchststich) · `effekte` (Verlauf, Rand, Welle) · `farben_mischen` · Open Fill = Laufwege am Rand (Bericht 23) |
 | 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ✅ 22.11. (N3) Rückstich/Stielstich nach MOD1, Stippling + Blackwork Run eigene Festlegung, Vorlagen aus den Stilen; `Analyse_Teil3/24` |
-| 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ⬜ |
+| 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ✅ 22.11. (N4) Vorgaben aus `AutoAppliqueValues`, `versatz`, `teilabdeckung`; Frame Out offen; Vorlage drucken offen |
 | 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin – mit dem Baustein „Satin-Stichrichtung automatisch“ aus 4b.17 –, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 |
 | 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ⬜ |
 | 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ⬜ |

@@ -314,22 +314,29 @@ P('objekt.blanket.breite', G, 'Zahnbreite', '', ebene='objekt', gilt=['blanket']
 P('objekt.blanket.versatz', G, 'Lage', 'mittig oder zur Seite', ebene='objekt', gilt=['blanket'], o='versatz',
   einheit='Auswahl', std='mitte', werte=['mitte', 'seite'], quelle='Dialog Center/Offset')
 G = 'Applikation'
-Q = 'Easy Appliqué (Analyse_Teil3/12)'
+Q = 'AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch)'
 P('objekt.appl.abdeckung', G, 'Abdeckung', 'Satin oder Blanket', ebene='objekt', gilt=['applikation'], o='abdeckung',
-  einheit='Auswahl', std='satin', werte=['satin', 'blanket'], quelle=Q, modus='einfach')
+  einheit='Auswahl', std='satin', werte=['satin', 'blanket'], quelle=Q + ': 0x3f2f = 0x2721 Satin', modus='einfach')
 P('objekt.appl.stil', G, 'Stoff zuschneiden', 'vorgeschnitten oder im Rahmen zuschneiden (mit Schnittlinie)',
   ebene='objekt', gilt=['applikation'], o='stil', einheit='Auswahl', std='vorgeschnitten',
-  werte=['vorgeschnitten', 'zuschneiden'], quelle=Q, modus='einfach')
+  werte=['vorgeschnitten', 'zuschneiden'], quelle=Q + ': 0x3f31 = 1 = Pre-Cut', modus='einfach')
+P('objekt.appl.versatz', G, 'Versatz', 'Abdeck- und Heftstich gegen die Platzierungslinie: −100 ganz außen, 0 mittig, '
+  '100 ganz im Stoff (bei Blanket immer innen)', ebene='objekt', gilt=['applikation'], o='versatz', einheit='%', std=0,
+  bereich=[-100, 100], quelle=Q + ': 0x3f28/0x3f1e = 0, Schieberegler −1 … +1 in 21 Stufen', modus='einfach')
+P('objekt.appl.teilabdeckung', G, 'Teil-Abdeckung', 'kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt '
+  '(Partial Appliqué)', ebene='objekt', gilt=['applikation'], o='teilabdeckung', einheit='an/aus', std=False,
+  quelle=Q + ': 0x3f26 = 0; Handbuch S. 248–249; Schnitt eigene Festlegung', modus='einfach')
 P('objekt.appl.breite', G, 'Breite der Abdeckung', '', ebene='objekt', gilt=['applikation'], o='breite', einheit='mm',
-  std=2.5, bereich=[1, 8], quelle=Q)
-P('objekt.appl.abstand', G, 'Abstand der Abdeckung', 'fester Satinabstand (ohne Angabe: Stil)', ebene='objekt',
-  gilt=['applikation'], o='abstand', einheit='mm', std=None, quelle=Q)
-P('objekt.appl.heft_breite', G, 'Heftstich: Breite', '', ebene='objekt', gilt=['applikation'], o='heft_breite',
-  einheit='mm', std=3.0, quelle=Q)
+  std=5.0, bereich=[0.5, 10], quelle=Q + ': 0x3f27 = 900')
+P('objekt.appl.abstand', G, 'Abstand der Abdeckung', 'Satinabstand bzw. Abstand der Blanket-Zähne', ebene='objekt',
+  gilt=['applikation'], o='abstand', einheit='mm', std=0.5, bereich=[0.2, 10],
+  quelle=Q + ': 0x3f30 = 90 (Satin); Blanket ohne Angabe 2,0 (Stil 0x2728, eigene Festlegung)')
+P('objekt.appl.heft_breite', G, 'Heftstich: Breite', 'Zickzack', ebene='objekt', gilt=['applikation'], o='heft_breite',
+  einheit='mm', std=4.0, bereich=[0.5, 10], quelle=Q + ': 0x3f1d = 720')
 P('objekt.appl.heft_abstand', G, 'Heftstich: Abstand', '', ebene='objekt', gilt=['applikation'], o='heft_abstand',
-  einheit='mm', std=2.0, quelle=Q)
+  einheit='mm', std=5.0, bereich=[0.5, 12.7], quelle=Q + ': 0x3f21 = 900')
 P('objekt.appl.platz_laenge', G, 'Platzierungslinie: Stichlänge', '', ebene='objekt', gilt=['applikation'],
-  o='platz_laenge', einheit='mm', std=2.0, quelle=Q)
+  o='platz_laenge', einheit='mm', std=1.5, bereich=[0.5, 12.7], quelle=Q + ': 0x3f1a = 270')
 G = 'Knopfloch'
 Q = 'MOD1 AllButtonHolesValues 0x10028060 (hoch); Bericht Analyse_Teil3/19'
 P('objekt.knopfloch.typ', G, 'Knopfloch-Typ', 'Vorlage aus ButtonHoles.ESB (9 Typen)', ebene='objekt',

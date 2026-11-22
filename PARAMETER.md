@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **215 Parameter**: 63 einfach, 100 experte, 52 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **217 Parameter**: 65 einfach, 100 experte, 52 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -177,13 +177,15 @@ Stand 21.11.2026 · **215 Parameter**: 63 einfach, 100 experte, 52 automatisch. 
 
 | Parameter | Wirkung | gilt für | JSON | Standard | Bereich / Auswahl | Stoff | Ebene | Modus | Quelle |
 |---|---|---|---|---|---|---|---|---|---|
-| **Abdeckung** | Satin oder Blanket | applikation | Objekt: `abdeckung` | satin | satin, blanket |  | objekt | einfach | Easy Appliqué (Analyse_Teil3/12) |
-| **Stoff zuschneiden** | vorgeschnitten oder im Rahmen zuschneiden (mit Schnittlinie) | applikation | Objekt: `stil` | vorgeschnitten | vorgeschnitten, zuschneiden |  | objekt | einfach | Easy Appliqué (Analyse_Teil3/12) |
-| **Breite der Abdeckung** |  | applikation | Objekt: `breite` | 2,5 mm | 1 … 8 |  | objekt | experte | Easy Appliqué (Analyse_Teil3/12) |
-| **Abstand der Abdeckung** | fester Satinabstand (ohne Angabe: Stil) | applikation | Objekt: `abstand` | – |  |  | objekt | experte | Easy Appliqué (Analyse_Teil3/12) |
-| **Heftstich: Breite** |  | applikation | Objekt: `heft_breite` | 3 mm |  |  | objekt | experte | Easy Appliqué (Analyse_Teil3/12) |
-| **Heftstich: Abstand** |  | applikation | Objekt: `heft_abstand` | 2 mm |  |  | objekt | experte | Easy Appliqué (Analyse_Teil3/12) |
-| **Platzierungslinie: Stichlänge** |  | applikation | Objekt: `platz_laenge` | 2 mm |  |  | objekt | experte | Easy Appliqué (Analyse_Teil3/12) |
+| **Abdeckung** | Satin oder Blanket | applikation | Objekt: `abdeckung` | satin | satin, blanket |  | objekt | einfach | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f2f = 0x2721 Satin |
+| **Stoff zuschneiden** | vorgeschnitten oder im Rahmen zuschneiden (mit Schnittlinie) | applikation | Objekt: `stil` | vorgeschnitten | vorgeschnitten, zuschneiden |  | objekt | einfach | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f31 = 1 = Pre-Cut |
+| **Versatz** | Abdeck- und Heftstich gegen die Platzierungslinie: −100 ganz außen, 0 mittig, 100 ganz im Stoff (bei Blanket immer innen) | applikation | Objekt: `versatz` | 0 % | -100 … 100 |  | objekt | einfach | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f28/0x3f1e = 0, Schieberegler −1 … +1 in 21 Stufen |
+| **Teil-Abdeckung** | kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt (Partial Appliqué) | applikation | Objekt: `teilabdeckung` | aus |  |  | objekt | einfach | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f26 = 0; Handbuch S. 248–249; Schnitt eigene Festlegung |
+| **Breite der Abdeckung** |  | applikation | Objekt: `breite` | 5 mm | 0,5 … 10 |  | objekt | experte | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f27 = 900 |
+| **Abstand der Abdeckung** | Satinabstand bzw. Abstand der Blanket-Zähne | applikation | Objekt: `abstand` | 0,5 mm | 0,2 … 10 |  | objekt | experte | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f30 = 90 (Satin); Blanket ohne Angabe 2,0 (Stil 0x2728, eigene Festlegung) |
+| **Heftstich: Breite** | Zickzack | applikation | Objekt: `heft_breite` | 4 mm | 0,5 … 10 |  | objekt | experte | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f1d = 720 |
+| **Heftstich: Abstand** |  | applikation | Objekt: `heft_abstand` | 5 mm | 0,5 … 12,7 |  | objekt | experte | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f21 = 900 |
+| **Platzierungslinie: Stichlänge** |  | applikation | Objekt: `platz_laenge` | 1,5 mm | 0,5 … 12,7 |  | objekt | experte | AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f1a = 270 |
 
 ## Knopfloch
 

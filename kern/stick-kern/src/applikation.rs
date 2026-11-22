@@ -6,19 +6,27 @@
 //! - Lagen und Stopps: Handbuch; die Stopps sind die drei „Garne“ der Original-Garnkarte `Applique.tch`
 //!   („Applique Guide“, „Place Applique & Tack“, „Trim Applique & Cover“) – so zeigt die Maschine beim Anhalten an,
 //!   was zu tun ist. Hoch.
-//! - Platzierungslinie Lauf 2,0 mm, Heftstich Zickzack 3,0 mm breit mit 2,0 mm Abstand: Original-Alphabet
-//!   „Easy Appliqué“ (Stile 0x271c 360, 0x2724 540, Abstand 360). Mittel (Werte eines Alphabets, nicht der
-//!   Auto-Appliqué-Vorgabe, die noch nicht gefunden ist).
-//! - Abdeckstich Satin **2,5 mm** breit, mittig auf dem Umriss: Handbuch-Beispiel (S. 247: „Satin Width 2.5 mm“);
-//!   **eigene Festlegung** bis die Vorgabe des Originals (`AutoAppliqueValues`, MOD1) gefunden ist.
+//! - **Vorgaben wie „Auto Appliqué“** (`AutoAppliqueValues`, Konstruktor MOD1 0x101f3c70 = NORMAL.AMT DataItem 0x3f19,
+//!   Zuordnung über den Dialog BERESENU DLG 1455 – hoch, Bericht 12 §8): Platzierungslinie Lauf **1,5 mm**
+//!   (0x3f1a), Heftstich Zickzack **4,0 mm** breit (0x3f1d) mit **5,0 mm** Abstand (0x3f21), Abdeckstich Satin
+//!   **5,0 mm** breit (0x3f27) mit **0,5 mm** Abstand (0x3f30), Stil **Pre-cut** (0x3f31 = 1), Versatz 0 (mittig,
+//!   0x3f28), ohne Teil-Abdeckung (0x3f26). Bis 22.11.2026 galten die Werte des Alphabets „Easy Appliqué“ (2,0 /
+//!   3,0 / 2,0 mm) und 2,5 mm (Handbuch-Beispiel).
+//! - **Versatz** (Schieberegler „Inside ↔ Outside“, −1 … +1 in 21 Stufen; derselbe Wert für Abdeck- und Heftstich,
+//!   DIALOG.DLL 0x1001ce70/0x1001d36e): +1 = Band ganz im Stoff, 0 = mittig auf der Platzierungslinie, −1 = ganz
+//!   außen. Bei Blanket gesperrt („always 100% inside“, Handbuch S. 248).
+//! - **Teil-Abdeckung** (Partial Appliqué, Handbuch S. 248–249, `AppliqueOverlapProcessor`): der Abdeckstich entfällt,
+//!   wo eine spätere Applikation den Rand überdeckt – „overlapping effect without doubling-up borders“. Platzierung
+//!   und Heften bleiben ganz (eigene Festlegung; das Original schneidet über `FormIntersections`, nicht gelesen).
 //! - Stil „Pre-cut“ (Standard, ohne Schnittlinie) oder „Trim in Place“ (`zuschneiden`): nach der Platzierungslinie
 //!   eine **Schnittlinie** (Handbuch S. 246/248: „Place the fabric patch after the placement line has been stitched,
 //!   then trim after the cutting line has been stitched“). Schnittlinie = Lauf 2,0 mm auf dem Umriss in der Farbe
 //!   „Place Applique & Tack“, der Heftstich folgt nach dem Zuschneiden in „Trim Applique & Cover“ (Stichlänge und
-//!   Zuordnung der Stopps: **eigene Festlegung**; Standard Pre-cut: eigene Festlegung, `AutoAppliqueValues` offen).
+//!   Zuordnung der Stopps: **eigene Festlegung**).
 //! - Abdeckung **Blanket** (Handbuch S. 247): ohne Heftstich („Tacking is not used with blanket cover stitch“), Zähne
 //!   nach innen in den Applikationsstoff (Schieberegler: „Blanket immer innen“), Rücken auf dem Umriss; Breite wie die
-//!   Abdeckbreite, Abstand 2,0 mm (Vorlage 0x2728).
+//!   Abdeckbreite, Abstand ohne Angabe 2,0 mm (Vorlage 0x2728; die 0,5 mm der Satin-Vorgabe wären für Blanket zu dicht
+//!   – eigene Festlegung).
 
 use crate::design::{Objekt, ObjektArt, SatinOptionen, Unterlage};
 use crate::geometrie::{Linie, flaeche_vorzeichen, geschlossen_ohne_endpunkt, knick_grad, versatz_ring};
@@ -27,6 +35,17 @@ use crate::geometrie::{Linie, flaeche_vorzeichen, geschlossen_ohne_endpunkt, kni
 pub const FARBE_FUEHRUNG: &str = "#ff3cac";
 pub const FARBE_HEFTEN: &str = "#1a8c67";
 pub const FARBE_ABDECKEN: &str = "#5500aa";
+
+/// Stichlänge der Platzierungslinie (0x3f1a = 270)
+pub const PLATZ_LAENGE: f64 = 1.5;
+/// Breite des Zickzack-Heftstichs (0x3f1d = 720)
+pub const HEFT_BREITE: f64 = 4.0;
+/// Abstand des Heftstichs (0x3f21 = 900)
+pub const HEFT_ABSTAND: f64 = 5.0;
+/// Breite des Abdeckstichs (0x3f27 = 900)
+pub const BREITE: f64 = 5.0;
+/// Satinabstand des Abdeckstichs (0x3f30 = 90)
+pub const ABSTAND: f64 = 0.5;
 
 /// Vorgaben einer Applikation (mm).
 #[derive(Clone, Debug, PartialEq)]
@@ -39,7 +58,7 @@ pub struct ApplikationVorgabe {
     pub farbe: String,
     /// Breite des Abdeck-Satins
     pub breite: f64,
-    /// fester Satinabstand des Abdeckstichs (None = Stoff/Auto Spacing)
+    /// Abstand des Abdeckstichs (None = Vorgabe: Satin 0,5 mm, Blanket 2,0 mm)
     pub abstand: Option<f64>,
     /// Breite und Abstand des Zickzack-Heftstichs
     pub heft_breite: f64,
@@ -50,6 +69,10 @@ pub struct ApplikationVorgabe {
     pub blanket: bool,
     /// „Trim in Place“: Schnittlinie nach der Platzierungslinie
     pub zuschneiden: bool,
+    /// Versatz von Abdeck- und Heftstich gegen die Platzierungslinie: −1 (außen) … 0 (mittig) … +1 (im Stoff)
+    pub versatz: f64,
+    /// Teil-Abdeckung: kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt
+    pub teilabdeckung: bool,
 }
 
 impl Default for ApplikationVorgabe {
@@ -58,29 +81,39 @@ impl Default for ApplikationVorgabe {
             umriss: Vec::new(),
             loecher: Vec::new(),
             farbe: "#000000".into(),
-            breite: 2.5,
+            breite: BREITE,
             abstand: None,
-            heft_breite: 3.0,
-            heft_abstand: 2.0,
-            platz_laenge: 2.0,
+            heft_breite: HEFT_BREITE,
+            heft_abstand: HEFT_ABSTAND,
+            platz_laenge: PLATZ_LAENGE,
             blanket: false,
             zuschneiden: false,
+            versatz: 0.0,
+            teilabdeckung: false,
         }
     }
 }
 
-/// Säule der Breite `breite` mittig auf einem geschlossenen Ring: (Seite innen, Seite außen), geschlossen,
-/// Punkt für Punkt zugeordnet.
-fn ring_saeule(ring: &[crate::geometrie::Punkt], breite: f64) -> (Linie, Linie) {
+/// Säule der Breite `breite` auf einem geschlossenen Ring, geschlossen und Punkt für Punkt zugeordnet. `versatz`
+/// −1 … +1 schiebt das Band in den Stoff (+1: ganz innen) bzw. hinaus (−1); `loch` = der Ring ist ein Loch (der Stoff
+/// liegt außerhalb). Rückgabe (Seite zum Ringinneren, Seite nach außen).
+fn ring_saeule(ring: &[crate::geometrie::Punkt], breite: f64, versatz: f64, loch: bool) -> (Linie, Linie) {
     let schliessen = |mut l: Linie| {
         if let Some(&q) = l.first() {
             l.push(q);
         }
         l
     };
+    // Anteil im Stoff
+    let f = (1.0 + versatz.clamp(-1.0, 1.0)) / 2.0;
+    let (rein, raus) = if loch {
+        ((1.0 - f) * breite, -f * breite)
+    } else {
+        (f * breite, -(1.0 - f) * breite)
+    };
     (
-        schliessen(versatz_ring(ring, breite / 2.0, 4.0)),
-        schliessen(versatz_ring(ring, -breite / 2.0, 4.0)),
+        schliessen(versatz_ring(ring, rein, 4.0)),
+        schliessen(versatz_ring(ring, raus, 4.0)),
     )
 }
 
@@ -127,8 +160,8 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
     }
     // Heften (nicht bei Blanket); bei „Trim in Place“ nach dem Zuschneiden
     let heft_farbe = if v.zuschneiden { FARBE_ABDECKEN } else { FARBE_HEFTEN };
-    for r in ringe.iter().filter(|_| !v.blanket) {
-        let (a, b) = ring_saeule(r, v.heft_breite);
+    for (i, r) in ringe.iter().enumerate().filter(|_| !v.blanket) {
+        let (a, b) = ring_saeule(r, v.heft_breite, v.versatz, i > 0);
         out.push(Objekt {
             farbe: heft_farbe.into(),
             name: format!("{name}: Heften"),
@@ -162,13 +195,13 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
                 mittig: false,
             }
         } else {
-            let (a, b) = ring_saeule(r, v.breite);
+            let (a, b) = ring_saeule(r, v.breite, v.versatz, i > 0);
             ObjektArt::Satin {
                 seite_a: a,
                 seite_b: b,
                 unterlage: Unterlage::Arten(Vec::new()),
                 optionen: SatinOptionen {
-                    abstand: v.abstand,
+                    abstand: Some(v.abstand.unwrap_or(ABSTAND)),
                     faktor: None,
                     kurzstiche: None,
                     step: false,
@@ -184,6 +217,95 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
         });
     }
     out
+}
+
+/// Teil-Abdeckung (Partial Appliqué): einen Abdeckstich (geschlossene Satinsäule oder Blanket-Ring) dort weglassen, wo
+/// `bedeckt` gilt (Punkt liegt im Stoff einer späteren Applikation). Die übrigen Stücke werden offene Objekte; jedes
+/// reicht einen Punkt weit unter den Rand der oberen Applikation, damit keine Lücke bleibt. `None` = unverändert.
+pub fn teil_abdecken(art: &ObjektArt, bedeckt: &dyn Fn(crate::geometrie::Punkt) -> bool) -> Option<Vec<ObjektArt>> {
+    // Stücke der offenen Indexfolge 0..n eines Rings, deren Punkt frei ist (mit je einem bedeckten Nachbarn)
+    let stuecke = |frei: &[bool]| -> Option<Vec<Vec<usize>>> {
+        let n = frei.len();
+        let start = frei.iter().position(|f| !f)?;
+        if frei.iter().all(|f| !f) {
+            return Some(Vec::new());
+        }
+        let mut out = Vec::new();
+        let mut cur: Vec<usize> = Vec::new();
+        for k in 0..=n {
+            let i = (start + k) % n;
+            if frei[i] && k < n {
+                if cur.is_empty() {
+                    cur.push((i + n - 1) % n);
+                }
+                cur.push(i);
+            } else if !cur.is_empty() {
+                cur.push(i);
+                out.push(std::mem::take(&mut cur));
+            }
+        }
+        Some(out)
+    };
+    match art {
+        ObjektArt::Satin {
+            seite_a,
+            seite_b,
+            unterlage,
+            optionen,
+        } if seite_a.len() == seite_b.len() && seite_a.len() > 3 && seite_a.first() == seite_a.last() => {
+            let n = seite_a.len() - 1;
+            let frei: Vec<bool> = (0..n)
+                .map(|i| !bedeckt(crate::geometrie::zwischen(seite_a[i], seite_b[i], 0.5)))
+                .collect();
+            if frei.iter().all(|&f| f) {
+                return None;
+            }
+            let teile = stuecke(&frei)?;
+            Some(
+                teile
+                    .into_iter()
+                    .filter(|t| t.len() >= 2)
+                    .map(|t| ObjektArt::Satin {
+                        seite_a: t.iter().map(|&i| seite_a[i]).collect(),
+                        seite_b: t.iter().map(|&i| seite_b[i]).collect(),
+                        unterlage: unterlage.clone(),
+                        optionen: optionen.clone(),
+                    })
+                    .collect(),
+            )
+        }
+        ObjektArt::Blanket {
+            punkte,
+            geschlossen: true,
+            abstand,
+            breite,
+            mittig,
+        } => {
+            let q = geschlossen_ohne_endpunkt(punkte);
+            if q.len() < 3 {
+                return None;
+            }
+            let frei: Vec<bool> = q.iter().map(|&x| !bedeckt(x)).collect();
+            if frei.iter().all(|&f| f) {
+                return None;
+            }
+            let teile = stuecke(&frei)?;
+            Some(
+                teile
+                    .into_iter()
+                    .filter(|t| t.len() >= 2)
+                    .map(|t| ObjektArt::Blanket {
+                        punkte: t.iter().map(|&i| q[i]).collect(),
+                        geschlossen: false,
+                        abstand: *abstand,
+                        breite: *breite,
+                        mittig: *mittig,
+                    })
+                    .collect(),
+            )
+        }
+        _ => None,
+    }
 }
 
 /// Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):
@@ -250,16 +372,78 @@ mod tests {
                 "#c0392b"
             ]
         );
-        // Abdeck-Säule: 2,5 mm breit, mittig auf dem Kreis
+        // Abdeck-Säule: 5,0 mm breit (Vorgabe des Originals), mittig auf dem Kreis
         let ObjektArt::Satin { seite_a, seite_b, .. } = &o[4].art else {
             panic!()
         };
         let w = abstand(seite_a[0], seite_b[0]);
         let r = abstand(p(0.0, 0.0), crate::geometrie::zwischen(seite_a[0], seite_b[0], 0.5));
         assert!(
-            (w - 2.5).abs() < 0.01 && (r - 20.0).abs() < 0.05,
+            (w - BREITE).abs() < 0.02 && (r - 20.0).abs() < 0.05,
             "Breite {w}, Radius {r}"
         );
+    }
+
+    /// Versatz: +1 = Band ganz im Stoff (beim Loch außerhalb des Lochs), −1 = ganz außen
+    #[test]
+    fn versatz_innen_aussen() {
+        let radien = |versatz: f64, nr: usize| {
+            let v = ApplikationVorgabe {
+                umriss: kreis(p(0.0, 0.0), 20.0, 0.05, 0.0),
+                loecher: vec![kreis(p(0.0, 0.0), 8.0, 0.05, 0.0)],
+                versatz,
+                ..Default::default()
+            };
+            let o = applikation_objekte(&v, "V");
+            let ObjektArt::Satin { seite_a, seite_b, .. } = &o[nr].art else {
+                panic!()
+            };
+            let (ra, rb) = (abstand(p(0.0, 0.0), seite_a[0]), abstand(p(0.0, 0.0), seite_b[0]));
+            (ra.min(rb), ra.max(rb))
+        };
+        // Umriss (Abdecken = Objekt 4): innen 15 … 20, außen 20 … 25
+        let (a, b) = radien(1.0, 4);
+        assert!((a - 15.0).abs() < 0.05 && (b - 20.0).abs() < 0.05, "{a} {b}");
+        let (a, b) = radien(-1.0, 4);
+        assert!((a - 20.0).abs() < 0.05 && (b - 25.0).abs() < 0.05, "{a} {b}");
+        // Loch (Objekt 5): im Stoff = außerhalb des Lochs, 8 … 13
+        let (a, b) = radien(1.0, 5);
+        assert!((a - 8.0).abs() < 0.05 && (b - 13.0).abs() < 0.05, "{a} {b}");
+        // Heftstich (Objekt 2) mit demselben Versatz: 4 mm im Stoff
+        let (a, b) = radien(1.0, 2);
+        assert!((a - 16.0).abs() < 0.05 && (b - 20.0).abs() < 0.05, "{a} {b}");
+    }
+
+    /// Teil-Abdeckung: die untere Applikation verliert den Abdeckstich unter der oberen, nicht mehr
+    #[test]
+    fn teilabdeckung_unter_der_oberen() {
+        let json = |teil: bool| {
+            format!(
+                r##"{{"rahmen": "artista 130 x 100", "objekte": [
+                {{"art": "applikation", "umriss": {{"kreis": {{"mitte": [-10, 0], "radius": 15}}}}, "farbe": "#2e86c1",
+                  "teilabdeckung": {teil}}},
+                {{"art": "applikation", "umriss": {{"kreis": {{"mitte": [10, 0], "radius": 15}}}}, "farbe": "#c0392b"}}
+            ]}}"##
+            )
+        };
+        let voll = Design::aus_json(&json(false)).unwrap().berechnen().unwrap();
+        let teil = Design::aus_json(&json(true)).unwrap().berechnen().unwrap();
+        // Abdeckstiche der unteren (blau) – rechts von x = 0 liegt die obere
+        let blau = |f: &crate::StichFolge| {
+            f.farbbloecke()
+                .into_iter()
+                .filter(|(c, _)| c.eq_ignore_ascii_case("#2e86c1"))
+                .flat_map(|(_, s)| s)
+                .filter(|s| s.art == crate::Art::Stich)
+                .collect::<Vec<_>>()
+        };
+        let (bv, bt) = (blau(&voll), blau(&teil));
+        assert!(bv.iter().any(|s| s.x > 3.0), "ohne Teil-Abdeckung ganz herum");
+        // unter der oberen nur bis knapp hinter den Rand (ein Punkt Überstand)
+        assert!(bt.iter().all(|s| s.x < 3.0), "{:?}", bt.iter().map(|s| s.x).fold(f64::MIN, f64::max));
+        assert!(bt.len() < bv.len() * 9 / 10 && bt.len() > bv.len() / 2, "{} von {}", bt.len(), bv.len());
+        // Platzierung und Heften bleiben ganz
+        assert_eq!(voll.farben, teil.farben);
     }
 
     #[test]

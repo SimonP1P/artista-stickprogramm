@@ -239,6 +239,7 @@
       { l: "Gruppe auflösen", kbd: "Strg+Umschalt+G", go: a.some((i) => arbeit.gruppeVon(i)) ? () => arbeit.gruppeAufloesen() : undefined },
       { l: "Als Motiv speichern …", go: a.length ? () => (arbeit.dialog = { art: "motiv_speichern" }) : undefined },
       { l: "Blackwork Run (Linien in einem Zug)", go: arbeit.blackworkFaehig.length > 1 ? () => arbeit.blackworkLauf() : undefined },
+      { l: "Teil-Abdeckung (Partial Appliqué)", go: arbeit.auswahlApplikationen.length > 1 ? () => arbeit.teilAbdeckung() : undefined },
     ];
   });
 

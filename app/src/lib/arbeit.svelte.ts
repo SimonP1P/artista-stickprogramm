@@ -645,6 +645,21 @@ class Arbeit {
     this.auswahl = [];
   }
 
+  /** gewählte Applikationen */
+  get auswahlApplikationen(): number[] {
+    return this.auswahl.filter((i) => this.objekte[i]?.art === "applikation");
+  }
+
+  /**
+   * Partial Appliqué (Handbuch S. 248): bei allen gewählten Applikationen die Teil-Abdeckung einschalten – der
+   * Abdeckstich entfällt, wo eine spätere Applikation den Rand überdeckt (Kern `teilabdeckung`).
+   */
+  teilAbdeckung() {
+    const nummern = this.auswahlApplikationen;
+    this.aendern((d) => nummern.forEach((i) => ((d.objekte![i] as { teilabdeckung?: boolean }).teilabdeckung = true)));
+    this.zeige(`Teil-Abdeckung bei ${nummern.length} Applikation${nummern.length === 1 ? "" : "en"} eingeschaltet – die oberen überdecken die Ränder der unteren.`, "ok");
+  }
+
   /** Objektarten, die Blackwork Run verbinden kann (Kern `blackwork_lauf`) */
   get blackworkFaehig(): number[] {
     return this.auswahl.filter((i) => ["lauf", "dreifach", "rueckstich", "stielstich", "blackwork"].includes(this.objekte[i]?.art ?? ""));

@@ -220,19 +220,21 @@ Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Dia
 
 ### `applikation` – Applikation
 
-Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`).
+Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`). Ohne Angabe gelten die Vorgaben von „Auto Appliqué“ im Original (`AutoAppliqueValues`).
 
 | Feld | Typ | Pflicht | Standard | Beschreibung |
 |---|---|---|---|---|
 | `abdeckung` | Abdeckung |  | – |  |
-| `abstand` | number |  | – | fester Satinabstand des Abdeckstichs in mm |
-| `breite` | number |  | – | Breite des Abdeck-Satins in mm (Standard 2,5) |
-| `heft_abstand` | number |  | – | Abstand des Heftstichs in mm |
-| `heft_breite` | number |  | – | Breite des Heftstichs in mm |
+| `abstand` | number |  | – | Abstand des Abdeckstichs in mm (0,2 … 10; Original Satin 0,5, Blanket 2,0) |
+| `breite` | number |  | – | Breite des Abdeckstichs in mm (0,5 … 10; Original 5,0) |
+| `heft_abstand` | number |  | – | Abstand des Heftstichs in mm (0,5 … 12,7; Original 5,0) |
+| `heft_breite` | number |  | – | Breite des Zickzack-Heftstichs in mm (0,5 … 10; Original 4,0) |
 | `loecher` | PunktAngabe[] |  | – |  |
-| `platz_laenge` | number |  | – | Stichlänge der Platzierungslinie in mm |
+| `platz_laenge` | number |  | – | Stichlänge der Platzierungslinie in mm (0,5 … 12,7; Original 1,5) |
 | `stil` | ApplikationStil |  | – |  |
+| `teilabdeckung` | boolean |  | `false` | Teil-Abdeckung (Partial Appliqué): kein Abdeckstich, wo eine spätere Applikation im Design den Rand überdeckt – überlappende Stoffteile ohne doppelte Ränder |
 | `umriss` | PunktAngabe | ja | – |  |
+| `versatz` | number |  | – | Versatz von Abdeck- und Heftstich gegen die Platzierungslinie in % (Schieberegler „Inside ↔ Outside“ des Originals): −100 = ganz außen, 0 = mittig (Standard), 100 = ganz im Stoff. Bei Blanket ohne Wirkung (immer innen). |
 
 ### `muster` – Fläche mit Füllmuster
 

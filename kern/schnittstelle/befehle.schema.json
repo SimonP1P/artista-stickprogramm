@@ -139,7 +139,7 @@
       "type": "object"
     },
     "ApplikationJson": {
-      "description": "Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`).",
+      "description": "Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`). Ohne Angabe gelten die Vorgaben von\n„Auto Appliqué“ im Original (`AutoAppliqueValues`).",
       "properties": {
         "abdeckung": {
           "anyOf": [
@@ -152,7 +152,7 @@
           ]
         },
         "abstand": {
-          "description": "fester Satinabstand des Abdeckstichs in mm",
+          "description": "Abstand des Abdeckstichs in mm (0,2 … 10; Original Satin 0,5, Blanket 2,0)",
           "format": "double",
           "type": [
             "number",
@@ -183,7 +183,7 @@
           "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
         },
         "breite": {
-          "description": "Breite des Abdeck-Satins in mm (Standard 2,5)",
+          "description": "Breite des Abdeckstichs in mm (0,5 … 10; Original 5,0)",
           "format": "double",
           "type": [
             "number",
@@ -251,7 +251,7 @@
           ]
         },
         "heft_abstand": {
-          "description": "Abstand des Heftstichs in mm",
+          "description": "Abstand des Heftstichs in mm (0,5 … 12,7; Original 5,0)",
           "format": "double",
           "type": [
             "number",
@@ -259,7 +259,7 @@
           ]
         },
         "heft_breite": {
-          "description": "Breite des Heftstichs in mm",
+          "description": "Breite des Zickzack-Heftstichs in mm (0,5 … 10; Original 4,0)",
           "format": "double",
           "type": [
             "number",
@@ -278,7 +278,7 @@
           "type": "string"
         },
         "platz_laenge": {
-          "description": "Stichlänge der Platzierungslinie in mm",
+          "description": "Stichlänge der Platzierungslinie in mm (0,5 … 12,7; Original 1,5)",
           "format": "double",
           "type": [
             "number",
@@ -305,6 +305,11 @@
             }
           ]
         },
+        "teilabdeckung": {
+          "default": false,
+          "description": "Teil-Abdeckung (Partial Appliqué): kein Abdeckstich, wo eine spätere Applikation im Design den Rand überdeckt –\nüberlappende Stoffteile ohne doppelte Ränder",
+          "type": "boolean"
+        },
         "transform": {
           "anyOf": [
             {
@@ -329,6 +334,14 @@
         },
         "umriss": {
           "$ref": "#/$defs/PunktAngabe"
+        },
+        "versatz": {
+          "description": "Versatz von Abdeck- und Heftstich gegen die Platzierungslinie in % (Schieberegler „Inside ↔ Outside“ des\nOriginals): −100 = ganz außen, 0 = mittig (Standard), 100 = ganz im Stoff. Bei Blanket ohne Wirkung (immer\ninnen).",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
         }
       },
       "required": [

@@ -1218,24 +1218,33 @@ pub struct MonogrammJson {
     pub g: Gemeinsam,
 }
 
-/// Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`).
+/// Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikation.rs`). Ohne Angabe gelten die Vorgaben von
+/// „Auto Appliqué“ im Original (`AutoAppliqueValues`).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct ApplikationJson {
     pub umriss: PunktAngabe,
     #[serde(default)]
     pub loecher: Vec<PunktAngabe>,
-    /// Breite des Abdeck-Satins in mm (Standard 2,5)
+    /// Breite des Abdeckstichs in mm (0,5 … 10; Original 5,0)
     pub breite: Option<f64>,
-    /// fester Satinabstand des Abdeckstichs in mm
+    /// Abstand des Abdeckstichs in mm (0,2 … 10; Original Satin 0,5, Blanket 2,0)
     pub abstand: Option<f64>,
-    /// Breite des Heftstichs in mm
+    /// Breite des Zickzack-Heftstichs in mm (0,5 … 10; Original 4,0)
     pub heft_breite: Option<f64>,
-    /// Abstand des Heftstichs in mm
+    /// Abstand des Heftstichs in mm (0,5 … 12,7; Original 5,0)
     pub heft_abstand: Option<f64>,
-    /// Stichlänge der Platzierungslinie in mm
+    /// Stichlänge der Platzierungslinie in mm (0,5 … 12,7; Original 1,5)
     pub platz_laenge: Option<f64>,
     pub abdeckung: Option<Abdeckung>,
     pub stil: Option<ApplikationStil>,
+    /// Versatz von Abdeck- und Heftstich gegen die Platzierungslinie in % (Schieberegler „Inside ↔ Outside“ des
+    /// Originals): −100 = ganz außen, 0 = mittig (Standard), 100 = ganz im Stoff. Bei Blanket ohne Wirkung (immer
+    /// innen).
+    pub versatz: Option<f64>,
+    /// Teil-Abdeckung (Partial Appliqué): kein Abdeckstich, wo eine spätere Applikation im Design den Rand überdeckt –
+    /// überlappende Stoffteile ohne doppelte Ränder
+    #[serde(default)]
+    pub teilabdeckung: bool,
     #[serde(flatten)]
     pub g: Gemeinsam,
 }

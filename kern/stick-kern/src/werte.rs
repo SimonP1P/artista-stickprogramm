@@ -226,10 +226,13 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
                 w.push(wert("heft_breite", json!(a.heft_breite), "vorlage"));
                 w.push(wert("heft_abstand", json!(a.heft_abstand), "vorlage"));
                 w.push(wert("platz_laenge", json!(a.platz_laenge), "vorlage"));
-            }
-            match auto_text(e, None, None) {
-                Some(t) => w.push(text("abstand", t, "stil")),
-                None => w.push(wert("abstand", json!(e.satin.abstand_fest), "stil")),
+                let abstand = a.abstand.unwrap_or(if a.blanket {
+                    crate::sticharten::blanket::ABSTAND
+                } else {
+                    crate::applikation::ABSTAND
+                });
+                w.push(wert("abstand", json!(abstand), "vorlage"));
+                w.push(wert("versatz", json!(r2(a.versatz * 100.0)), "vorlage"));
             }
         }
         ObjektJson::Knopfloch(k) => {

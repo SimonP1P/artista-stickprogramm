@@ -41,7 +41,7 @@
     tatami: ["winkel", "step_muster", "aussparen"],
     satinflaeche: ["stichart"],
     muster: ["muster", "winkel", "aussparen"],
-    applikation: ["abdeckung", "stil"],
+    applikation: ["abdeckung", "stil", "versatz", "teilabdeckung"],
     knopfloch: ["typ", "laenge", "winkel"],
     motivlinie: ["motiv", "groesse", "spiegeln", "geschlossen"],
     motivfuellung: ["motiv", "groesse", "spaltenabstand", "reihenabstand", "versatz", "winkel"],
@@ -50,6 +50,12 @@
     stielstich: ["breite", "abstand", "geschlossen"],
     stippling: ["abstand", "laenge"],
     blackwork: ["stich", "laenge"],
+  };
+  /** Applikation: Breite/Abstand meinen den Abdeckstich, Versatz den Schieberegler „innen ↔ außen“ */
+  const APPLIKATION_NAMEN: Record<string, string> = {
+    breite: "Breite Abdeckstich",
+    abstand: "Abstand Abdeckstich",
+    versatz: "Versatz (außen − / innen +)",
   };
   /** Motivfüllung: Winkel und Versatz meinen hier die Reihen */
   const MOTIVFUELLUNG_NAMEN: Record<string, string> = { winkel: "Drehung der Reihen", versatz: "Reihenversatz" };
@@ -298,7 +304,7 @@
                 <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
-              <Feldzeile feld={f} wert={o[f.name]} beschriftung={(o.art === "motivlinie" || o.art === "motivfuellung") && f.name === "groesse" ? "Motivgröße" : o.art === "motivfuellung" ? MOTIVFUELLUNG_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
+              <Feldzeile feld={f} wert={o[f.name]} beschriftung={(o.art === "motivlinie" || o.art === "motivfuellung") && f.name === "groesse" ? "Motivgröße" : o.art === "motivfuellung" ? MOTIVFUELLUNG_NAMEN[f.name] : o.art === "applikation" ? APPLIKATION_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
             {/if}
           {/each}
         </Abschnitt>

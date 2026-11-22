@@ -1399,7 +1399,7 @@ impl Design {
                     "{wo}: Fläche mit Winkellinien: ohne Löcher und Aussparen (noch nicht möglich)"
                 ));
             }
-            craft_pruefen(o).map_err(|x| format!("{wo}: {x}"))?;
+            bereiche_pruefen(o).map_err(|x| format!("{wo}: {x}"))?;
             if let ObjektJson::Satinflaeche(s) = o
                 && s.knickwinkel.is_some_and(|k| !(0.0..180.0).contains(&k))
             {
@@ -1772,7 +1772,8 @@ impl Design {
     /// Wie `objekte_aufgeloest`, dazu je Objekt die Nummer des Objekts im Design, aus dem es stammt.
     pub(crate) fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
         let (out, fehlend, herkunft, buchstabe) = self.ungedreht_aufgeloest()?;
-        let mut out = self.transformieren(out, &herkunft)?;
+        let out = self.transformieren(out, &herkunft)?;
+        let (mut out, herkunft, buchstabe) = self.teilabdeckung_anwenden(out, &herkunft, &buchstabe);
         self.schrift_auto_anwenden(&mut out, &herkunft, &buchstabe);
         let (out, herkunft, buchstabe) = self.aussparen_aufloesen(out, &herkunft, &buchstabe)?;
         let (out, herkunft, buchstabe) = self.umrandungen_anhaengen(out, herkunft, buchstabe);
@@ -2113,6 +2114,47 @@ impl Design {
             out = out.iter().map(|o| abbilden(o, &m, ws)).collect();
         }
         Ok(out)
+    }
+
+    /// Teil-Abdeckung (Partial Appliqué, `applikation::teil_abdecken`): Abdeckstiche von Applikationen mit
+    /// `teilabdeckung` entfallen, wo der Stoff einer späteren Applikation liegt (ihre Platzierungsringe, nach der
+    /// Transformation in Designkoordinaten).
+    fn teilabdeckung_anwenden(&self, objekte: Vec<Objekt>, herkunft: &[usize], buchstabe: &[usize]) -> MitHerkunft {
+        let applikation = |nr: usize| match self.objekte.get(nr).map(|o| &o.art) {
+            Some(ObjektArt::Applikation(v)) => Some(v.teilabdeckung),
+            _ => None,
+        };
+        if !herkunft.iter().any(|&h| applikation(h) == Some(true)) {
+            return (objekte, herkunft.to_vec(), buchstabe.to_vec());
+        }
+        let mut stoff: std::collections::BTreeMap<usize, Vec<Linie>> = Default::default();
+        for (o, &h) in objekte.iter().zip(herkunft) {
+            if applikation(h).is_some()
+                && o.name.ends_with(": Platzierung")
+                && let ObjektArt::Lauf { punkte, .. } = &o.art
+            {
+                stoff.entry(h).or_default().push(punkte.clone());
+            }
+        }
+        let (mut out, mut her, mut bu) = (Vec::new(), Vec::new(), Vec::new());
+        for ((o, &h), &b) in objekte.into_iter().zip(herkunft).zip(buchstabe) {
+            if applikation(h) == Some(true) && o.name.ends_with(": Abdecken") {
+                let spaeter: Vec<&Vec<Linie>> = stoff.range(h + 1..).map(|(_, r)| r).collect();
+                let bedeckt = |q: Punkt| spaeter.iter().any(|r| crate::geometrie::im_polygon(q, r));
+                if let Some(teile) = crate::applikation::teil_abdecken(&o.art, &bedeckt) {
+                    for art in teile {
+                        out.push(Objekt { art, ..o.clone() });
+                        her.push(h);
+                        bu.push(b);
+                    }
+                    continue;
+                }
+            }
+            out.push(o);
+            her.push(h);
+            bu.push(b);
+        }
+        (out, her, bu)
     }
 
     /// Aussparungen (Knockout) auflösen: Füllflächen mit `aussparen` verlieren die Flächen der genannten Objekte;
@@ -2606,8 +2648,9 @@ fn stielstich_werte(
     }
 }
 
-/// Bereiche der Craft-Stitch-Werte prüfen (wie die Dialoge des Originals, Grenzen teils eigene Festlegung).
-fn craft_pruefen(o: &ObjektJson) -> Result<(), String> {
+/// Bereiche der Werte von Craft Stitches und Applikation prüfen (wie die Dialoge des Originals, Grenzen teils eigene
+/// Festlegung).
+fn bereiche_pruefen(o: &ObjektJson) -> Result<(), String> {
     let bereich = |n: &str, v: Option<f64>, a: f64, b: f64| -> Result<(), String> {
         match v {
             Some(x) if !(a..=b).contains(&x) => Err(format!("{n} zwischen {a} und {b}").replace('.', ",")),
@@ -2646,6 +2689,14 @@ fn craft_pruefen(o: &ObjektJson) -> Result<(), String> {
             bereich("abstand", b.abstand, 0.2, 10.0)?;
             bereich("winkel", b.winkel, 10.0, 90.0)?;
             striche(b.striche)
+        }
+        ObjektJson::Applikation(a) => {
+            bereich("breite", a.breite, 0.5, 10.0)?;
+            bereich("abstand", a.abstand, 0.2, 10.0)?;
+            bereich("heft_breite", a.heft_breite, 0.5, 10.0)?;
+            bereich("heft_abstand", a.heft_abstand, 0.5, 12.7)?;
+            bereich("platz_laenge", a.platz_laenge, 0.5, 12.7)?;
+            bereich("versatz", a.versatz, -100.0, 100.0)
         }
         _ => Ok(()),
     }
@@ -2814,6 +2865,8 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     platz_laenge: a.platz_laenge.unwrap_or(st.platz_laenge),
                     blanket: a.abdeckung == Some(crate::format::Abdeckung::Blanket),
                     zuschneiden: a.stil == Some(crate::format::ApplikationStil::Zuschneiden),
+                    versatz: a.versatz.unwrap_or(0.0) / 100.0,
+                    teilabdeckung: a.teilabdeckung,
                 }),
                 farbe: a.g.farbe,
             }

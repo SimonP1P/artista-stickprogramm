@@ -88,6 +88,7 @@
     aussparen: "Aussparen",
     knickwinkel_: "Knickwinkel",
     stich: "Stichart",
+    teilabdeckung: "Teil-Abdeckung",
     staerke: "Stärke",
     striche: "Striche",
   };

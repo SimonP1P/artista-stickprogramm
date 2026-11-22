@@ -88,8 +88,8 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Funktion | Stand | Bemerkung |
 |---|---|---|
 | Auto Appliqué: Platzierung, Schnittlinie, Heften, Abdecken Satin/Blanket | ✅ | |
-| Versatz innen/außen, Vorgabewerte AutoAppliqueValues | ⬜ | |
-| Partial Appliqué (Teil-Abdeckung) | ⬜ | |
+| Versatz innen/außen, Vorgabewerte AutoAppliqueValues | ✅ 22.11. `versatz`, Vorgaben aus MOD1 0x101f3c70 | Bericht 12 §8 |
+| Partial Appliqué (Teil-Abdeckung) | ✅ 22.11. `teilabdeckung` (Schnitt eigene Festlegung) | Bericht 12 §8 |
 | Applikationsvorlage drucken | ⬜ 🖥 | Schnittmuster 1:1 |
 
 ## G. Automatisches Digitalisieren (Kap. 11–13)

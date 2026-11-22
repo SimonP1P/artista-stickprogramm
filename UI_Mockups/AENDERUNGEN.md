@@ -15,6 +15,18 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Applikation: Vorgaben des Originals, Versatz, Teil-Abdeckung (Nachtauftrag N4, 4b.10; Commit COMMIT_N4)
+- **Neue Felder** an `applikation`: `versatz` (%, −100 außen … 0 mittig … 100 innen; gilt für Abdeck- und Heftstich,
+  bei Blanket ohne Wirkung) und `teilabdeckung` (bool, Partial Appliqué: kein Abdeckstich, wo eine spätere Applikation
+  den Rand überdeckt). Bereichsprüfung mit Objektnummer für alle Zahlenfelder der Applikation.
+- **Geänderte Standards (Bedeutung):** Ohne Angabe gelten jetzt die Vorgaben von „Auto Appliqué“ im Original
+  (`AutoAppliqueValues`): Abdeckung **5,0 mm** (vorher 2,5), Abstand Satin **0,5 mm** fest (vorher Stoff/Auto Spacing),
+  Heftstich **4,0 / 5,0 mm** (vorher 3,0 / 2,0), Platzierung **1,5 mm** (vorher 2,0). Format-Version nicht erhöht –
+  Werte ohne Angabe sind Vorgaben, keine geänderte Feldbedeutung; alte Dateien mit Angaben bleiben gleich.
+- `objekt_werte` liefert für die Applikation zusätzlich `abstand` (Satin 0,5 / Blanket 2,0) und `versatz`.
+- **Oberfläche (umgesetzt):** Inspektor oben Abdeckung, Stil, **Versatz (außen − / innen +)**, **Teil-Abdeckung**;
+  Anordnen → „Teil-Abdeckung (Partial Appliqué)“ (ab zwei gewählten Applikationen).
+
 ## 22.11.2026 – Craft Stitches (Nachtauftrag N3, 4b.9; Commit d956fd2)
 - **Neue Objektarten** (`format.rs`): `rueckstich` (`punkte`, `geschlossen`, `laenge`, `staerke`, `ueberlappung` in %,
   `striche` 3|5), `stielstich` (`punkte`, `geschlossen`, `breite`, `abstand`, `winkel`, `dreifach`, `staerke`),

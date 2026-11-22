@@ -3483,7 +3483,7 @@
     "blanket"
    ],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f2f = 0x2721 Satin",
    "modus": "einfach"
   },
   {
@@ -3505,7 +3505,48 @@
     "zuschneiden"
    ],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f31 = 1 = Pre-Cut",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.appl.versatz",
+   "gruppe": "Applikation",
+   "name": "Versatz",
+   "wirkung": "Abdeck- und Heftstich gegen die Platzierungslinie: −100 ganz außen, 0 mittig, 100 ganz im Stoff (bei Blanket immer innen)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "applikation"
+   ],
+   "json_design": null,
+   "json_objekt": "versatz",
+   "einheit": "%",
+   "standard": 0,
+   "bereich": [
+    -100,
+    100
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f28/0x3f1e = 0, Schieberegler −1 … +1 in 21 Stufen",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.appl.teilabdeckung",
+   "gruppe": "Applikation",
+   "name": "Teil-Abdeckung",
+   "wirkung": "kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt (Partial Appliqué)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "applikation"
+   ],
+   "json_design": null,
+   "json_objekt": "teilabdeckung",
+   "einheit": "an/aus",
+   "standard": false,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f26 = 0; Handbuch S. 248–249; Schnitt eigene Festlegung",
    "modus": "einfach"
   },
   {
@@ -3520,21 +3561,21 @@
    "json_design": null,
    "json_objekt": "breite",
    "einheit": "mm",
-   "standard": 2.5,
+   "standard": 5.0,
    "bereich": [
-    1,
-    8
+    0.5,
+    10
    ],
    "werte": [],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f27 = 900",
    "modus": "experte"
   },
   {
    "id": "objekt.appl.abstand",
    "gruppe": "Applikation",
    "name": "Abstand der Abdeckung",
-   "wirkung": "fester Satinabstand (ohne Angabe: Stil)",
+   "wirkung": "Satinabstand bzw. Abstand der Blanket-Zähne",
    "ebene": "objekt",
    "gilt_fuer": [
     "applikation"
@@ -3542,18 +3583,21 @@
    "json_design": null,
    "json_objekt": "abstand",
    "einheit": "mm",
-   "standard": null,
-   "bereich": null,
+   "standard": 0.5,
+   "bereich": [
+    0.2,
+    10
+   ],
    "werte": [],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f30 = 90 (Satin); Blanket ohne Angabe 2,0 (Stil 0x2728, eigene Festlegung)",
    "modus": "experte"
   },
   {
    "id": "objekt.appl.heft_breite",
    "gruppe": "Applikation",
    "name": "Heftstich: Breite",
-   "wirkung": "",
+   "wirkung": "Zickzack",
    "ebene": "objekt",
    "gilt_fuer": [
     "applikation"
@@ -3561,11 +3605,14 @@
    "json_design": null,
    "json_objekt": "heft_breite",
    "einheit": "mm",
-   "standard": 3.0,
-   "bereich": null,
+   "standard": 4.0,
+   "bereich": [
+    0.5,
+    10
+   ],
    "werte": [],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f1d = 720",
    "modus": "experte"
   },
   {
@@ -3580,11 +3627,14 @@
    "json_design": null,
    "json_objekt": "heft_abstand",
    "einheit": "mm",
-   "standard": 2.0,
-   "bereich": null,
+   "standard": 5.0,
+   "bereich": [
+    0.5,
+    12.7
+   ],
    "werte": [],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f21 = 900",
    "modus": "experte"
   },
   {
@@ -3599,11 +3649,14 @@
    "json_design": null,
    "json_objekt": "platz_laenge",
    "einheit": "mm",
-   "standard": 2.0,
-   "bereich": null,
+   "standard": 1.5,
+   "bereich": [
+    0.5,
+    12.7
+   ],
    "werte": [],
    "stoff": false,
-   "quelle": "Easy Appliqué (Analyse_Teil3/12)",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f1a = 270",
    "modus": "experte"
   },
   {
