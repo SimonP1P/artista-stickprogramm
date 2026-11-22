@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Verbinder als Laufstich (Nachtauftrag N10, Bericht 22 #3; Commit COMMIT)
+## 22.11.2026 – Verbinder als Laufstich (Nachtauftrag N10, Bericht 22 #3; Commit 0a3e48a)
 - **Neue Einstellungen** unter `einstellungen.verbinder` (Design und je Objekt):
   - `art` – Verbinder zum nächsten Objekt;
   - `innen_art` – Verbinder zwischen Teilen eines Objekts, z. B. Buchstaben;
