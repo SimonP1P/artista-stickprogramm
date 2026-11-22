@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Dicke Umrandung im einfachen Modus (Wunsch Nutzer; Commit siehe unten)
+## 21.11.2026 – Dicke Umrandung im einfachen Modus (Wunsch Nutzer; Commit e714bad)
 - **Neue Felder in `umrandung`:** `breite_anteil` (Breite der Satinkante in % der Buchstabenhöhe, 1–30, nur
   Text/Monogramm, gilt statt `breite`; Größe/Skalieren von Objekt, Gruppe und Design zählt mit; mindestens 1 mm) und
   `aussen` (Satinkante außen: Innenkante `einzug` mm in der Fläche, Kante wächst nach außen; ohne: Mitte der Kante
