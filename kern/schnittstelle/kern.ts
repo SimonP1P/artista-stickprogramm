@@ -2452,14 +2452,16 @@ export type UmrandungJson = {
    */
   aussen?: boolean;
   /**
-   * Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)
+   * Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie). Die Kante ist ein Band
+   * um die Fläche, in Satinsäulen zerlegt wie „Satin automatisch“ (`satinflaeche`)
    * @default 2.0
    */
   breite?: number;
   /**
    * Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`;
-   * Größe/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm (Wunsch
-   * Nutzer 21.11.2026, eigene Festlegung)
+   * Größe/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben; unter 1 mm wird daraus eine
+   * kräftige Linie (Dreifach, Stichlänge 12 % der Höhe, 1–2,5 mm) wie bei EasyStitch (Wunsch Nutzer 21.11.2026,
+   * eigene Festlegung)
    */
   breite_anteil?: number | null;
   /**

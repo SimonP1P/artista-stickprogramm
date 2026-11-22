@@ -226,48 +226,74 @@ pub fn flaechen_aus_ringen(ringe: &[Linie], gerade_ungerade: bool) -> Vec<Teil> 
     teile_aus(subj.overlay(&leer, OverlayRule::Subject, regel))
 }
 
-/// **Umrandung** (eigene Erweiterung, `design::Umrandung`): Ringe um die vereinigte Fläche der Konturen, je Teil
-/// (Buchstabe, Fläche) um `versatz` mm versetzt – negativ nach innen (Gehrungsecken), positiv nach außen (runde Ecken,
-/// für die dicke Kante außen; benachbarte Buchstaben behalten je ihre eigene Kante). Je Teil erst der Umriss, dann seine
-/// Löcher; Teile von links nach rechts (Schrift: Buchstabe für Buchstabe). Ringe geschlossen (letzter Punkt = erster).
-pub fn umrandung_ringe(konturen: &[Kontur], versatz: f64) -> Vec<Linie> {
-    use i_overlay::mesh::float::outline::offset::OutlineOffset;
-    use i_overlay::mesh::float::style::{LineJoin, OutlineStyle};
+/// Fläche je Teil (Buchstabe, Fläche) für die **Umrandung** (eigene Erweiterung, `design::Umrandung`): Konturen
+/// vereinigt, Haarfugen geschlossen – Teile eines Buchstabens stoßen (z. B. bei schmaler gestellter Schrift) nicht immer
+/// ganz bündig aneinander; ohne Schließen würde der Versatz aus jeder Fuge einen Stachel machen (erst um
+/// `UMRANDUNG_FUGE` nach außen, dann wieder nach innen).
+fn umrandung_teile(konturen: &[Kontur]) -> Vec<Teil> {
     if konturen.is_empty() {
         return Vec::new();
     }
     let leer: Vec<Kontur> = Vec::new();
     let vereint = konturen.to_vec().overlay(&leer, OverlayRule::Union, FillRule::NonZero);
-    // Gehrung bis 20° Innenwinkel, spitzere Ecken abgeschrägt; nach außen runde Ecken (eigene Festlegung)
-    let versetzen = |f: Vec<Vec<Kontur>>, d: f64, rund: bool| -> Vec<Vec<Kontur>> {
-        if d.abs() < 1e-6 {
-            return f;
-        }
-        let ecke = if rund { LineJoin::Round(0.2) } else { LineJoin::Miter(20f64.to_radians()) };
-        f.outline(&OutlineStyle::new(d).line_join(ecke))
-    };
-    // Haarfugen schließen: Teile eines Buchstabens stoßen (z. B. bei schmaler gestellter Schrift) nicht immer ganz
-    // bündig aneinander; ohne Schließen würde der Versatz aus jeder Fuge einen Stachel machen. Erst um UMRANDUNG_FUGE
-    // nach außen, dann wieder nach innen.
-    let geschlossen = versetzen(versetzen(vereint, UMRANDUNG_FUGE, false), -UMRANDUNG_FUGE, false);
-    let mut teile: Vec<Teil> = teile_aus(geschlossen)
-        .iter()
-        .flat_map(|t| teile_aus(versetzen(vec![teile_konturen(std::slice::from_ref(t))], versatz, versatz > 0.0)))
-        .collect();
+    teile_aus(versetzt(versetzt(vereint, UMRANDUNG_FUGE), -UMRANDUNG_FUGE))
+}
+
+/// Formen um `d` mm versetzt: negativ nach innen (Gehrung bis 20° Innenwinkel, spitzere Ecken abgeschrägt), positiv
+/// nach außen mit runden Ecken (eigene Festlegung).
+fn versetzt(f: Vec<Vec<Kontur>>, d: f64) -> Vec<Vec<Kontur>> {
+    use i_overlay::mesh::float::outline::offset::OutlineOffset;
+    use i_overlay::mesh::float::style::{LineJoin, OutlineStyle};
+    if d.abs() < 1e-6 {
+        return f;
+    }
+    let ecke = if d > 0.0 { LineJoin::Round(0.2) } else { LineJoin::Miter(20f64.to_radians()) };
+    f.outline(&OutlineStyle::new(d).line_join(ecke))
+}
+
+/// Teile von links nach rechts (Schrift: Buchstabe für Buchstabe), Ringe bereinigt (`ring_glaetten`, offen).
+fn umrandung_ordnen(mut teile: Vec<Teil>) -> Vec<Teil> {
     let links = |r: &Linie| r.iter().map(|q| q.x).fold(f64::INFINITY, f64::min);
     teile.sort_by(|a, b| links(&a.0).total_cmp(&links(&b.0)));
     teile
         .into_iter()
+        .map(|(u, l)| (ring_glaetten(u), l.into_iter().map(ring_glaetten).filter(|r| r.len() >= 3).collect()))
+        .filter(|(u, _)| u.len() >= 3)
+        .collect()
+}
+
+/// **Umrandung als Linie** (Lauf/Dreifach): Ringe um die Fläche, je Teil um `versatz` mm versetzt (negativ = nach
+/// innen). Je Teil erst der Umriss, dann seine Löcher. Ringe geschlossen (letzter Punkt = erster).
+pub fn umrandung_ringe(konturen: &[Kontur], versatz: f64) -> Vec<Linie> {
+    let teile: Vec<Teil> = umrandung_teile(konturen)
+        .iter()
+        .flat_map(|t| teile_aus(versetzt(vec![teile_konturen(std::slice::from_ref(t))], versatz)))
+        .collect();
+    umrandung_ordnen(teile)
+        .into_iter()
         .flat_map(|(u, l)| std::iter::once(u).chain(l))
-        .map(|r| {
-            let mut r = ring_glaetten(r);
-            if let Some(&q) = r.first() {
-                r.push(q);
-            }
+        .map(|mut r| {
+            r.push(r[0]);
             r
         })
-        .filter(|r| r.len() >= 4)
         .collect()
+}
+
+/// **Umrandung als Satinkante**: Band je Teil zwischen dem um `aussen` und dem um `innen` mm versetzten Rand (positiv =
+/// nach außen), z. B. außen Breite − 0,3, innen −0,3. Benachbarte Buchstaben behalten je ihr eigenes Band (sie dürfen
+/// sich überlappen). Ergebnis als Flächen (Umriss, Löcher) für die Zerlegung in Satinsäulen (`saeulen::zerlegen`) –
+/// so laufen die Stiche auch um enge Kurven und kleine Innenräume quer zum Band.
+pub fn umrandung_baender(konturen: &[Kontur], aussen: f64, innen: f64) -> Vec<Teil> {
+    let teile: Vec<Teil> = umrandung_teile(konturen)
+        .iter()
+        .flat_map(|t| {
+            let form = vec![teile_konturen(std::slice::from_ref(t))];
+            let gross: Vec<Kontur> = versetzt(form.clone(), aussen).concat();
+            let klein: Vec<Kontur> = versetzt(form, innen).concat();
+            teile_aus(gross.overlay(&klein, OverlayRule::Difference, FillRule::NonZero))
+        })
+        .collect();
+    umrandung_ordnen(teile)
 }
 
 /// Haarfugen bis zur doppelten Breite schließt die Umrandung (mm, **eigene Festlegung**).

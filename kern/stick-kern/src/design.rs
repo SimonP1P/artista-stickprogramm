@@ -1124,9 +1124,14 @@ pub struct Design {
 /// angenommen): das Original kennt keine automatische Umrandung; der Wert liegt zwischen dem Zugausgleich der Stoffe
 /// (0,20–0,25 mm) und der Überlappung der Satinsäulen (0,3 mm). Am Gerät mit dem Kalibrierblatt (Vor Ort V12) prüfen.
 pub const UMRANDUNG_EINZUG: f64 = 0.3;
-/// Schmalste Satinkante bei Breite in Prozent der Buchstabenhöhe (mm). **Eigene Festlegung**: schmaler wirkt die Kante
-/// nicht mehr „dick“ und die Satinstiche werden sehr kurz.
+/// Schmalste Satinkante bei Breite in Prozent der Buchstabenhöhe (mm): schmaler wird die Umrandung eine kräftige Linie
+/// (Dreifach) – wie EasyStitch schmale Formen nicht zu Satin, sondern zu Linien macht (`Analyse/code/10` §C, dort
+/// unter 2 mm). Der Wert 1 mm ist **eigene Festlegung** (Satin um kleine Buchstaben wird sonst ein Stichgewirr, Nutzer
+/// 21.11.2026: Drifter 8 mm hoch).
 pub const UMRANDUNG_MIN_BREITE: f64 = 1.0;
+/// Stichlänge dieser kräftigen Linie als Anteil der Buchstabenhöhe, 1,0 … 2,5 mm (8 mm hohe Schrift → 1 mm), damit die
+/// Linie den Rundungen kleiner Buchstaben folgt statt Sehnen zu ziehen. **Eigene Festlegung**.
+pub const UMRANDUNG_LINIE_ANTEIL: f64 = 0.12;
 
 /// Umrandung eines Objekts (JSON `"umrandung"`, eigene Erweiterung, `format::UmrandungJson`): Linie um die Fläche des
 /// Objekts, um `einzug` nach innen versetzt (Satinkante `aussen`: Innenkante `einzug` in der Fläche), gestickt gleich
@@ -1562,7 +1567,7 @@ impl Design {
     }
 
     /// Breite der Satinkante: bei `breite_anteil` an Text/Monogramm Prozent der Buchstabenhöhe mal Vergrößerung (Objekt,
-    /// Gruppe, ganzes Design), mindestens `UMRANDUNG_MIN_BREITE`, höchstens 10 mm; sonst `breite`.
+    /// Gruppe, ganzes Design), höchstens 10 mm (unter `UMRANDUNG_MIN_BREITE` wird daraus eine Linie); sonst `breite`.
     fn umrandung_breite(&self, nr: usize, u: &Umrandung) -> f64 {
         let (Some(anteil), Some(ObjektArt::Text { vorgabe, .. } | ObjektArt::TtfText { vorgabe, .. })) =
             (u.breite_anteil, self.objekte.get(nr).map(|o| &o.art))
@@ -1584,7 +1589,7 @@ impl Design {
         if !self.transformation.ist_leer() {
             f *= faktor(&self.transformation);
         }
-        (vorgabe.hoehe * f * anteil / 100.0).clamp(UMRANDUNG_MIN_BREITE, 10.0)
+        (vorgabe.hoehe * f * anteil / 100.0).min(10.0)
     }
 
     /// Umrandungen (eigene Erweiterung): hinter dem letzten aufgelösten Teil eines Objekts mit `umrandung` je Ring der
@@ -1607,18 +1612,39 @@ impl Design {
                 .flat_map(|(o, _)| crate::aussparen::bedeckt(&o.art, 0.0))
                 .collect();
             let name = format!("{} (Umrandung)", objekte[letzter].name);
-            let u = &Umrandung {
-                breite: self.umrandung_breite(nr, u),
-                ..u.clone()
-            };
-            // Mitte der Linie: nach innen um `einzug`; Satinkante außen: halbe Breite nach außen, Innenkante in der Fläche
-            let versatz = if u.aussen && u.art == crate::format::UmrandungArt::Satin {
-                u.breite / 2.0 - u.einzug
+            let breite = self.umrandung_breite(nr, u);
+            // zu kleine Schrift für eine Satinkante in Prozent der Höhe: kräftige Linie (Dreifach) statt Satin
+            let zu_schmal = u.art == crate::format::UmrandungArt::Satin
+                && u.breite_anteil.is_some_and(|a| breite < UMRANDUNG_MIN_BREITE && a > 0.0);
+            let u = &if zu_schmal {
+                let hoehe = breite * 100.0 / u.breite_anteil.unwrap_or(1.0);
+                Umrandung {
+                    art: crate::format::UmrandungArt::Dreifach,
+                    laenge: u.laenge.or(Some((hoehe * UMRANDUNG_LINIE_ANTEIL).clamp(1.0, 2.5))),
+                    ..u.clone()
+                }
             } else {
-                -u.einzug
+                Umrandung { breite, ..u.clone() }
             };
-            let ringe = crate::aussparen::umrandung_ringe(&konturen, versatz);
-            nach.insert(letzter, ringe.into_iter().map(|r| umrandung_objekt(r, u, &name)).collect());
+            let neu = if u.art == crate::format::UmrandungArt::Satin {
+                // Band: außen bis Breite − einzug, innen einzug in der Fläche; „auf der Kante“: Mitte einzug innen
+                let (aussen, innen) = if u.aussen {
+                    (u.breite - u.einzug, -u.einzug)
+                } else {
+                    (u.breite / 2.0 - u.einzug, -u.breite / 2.0 - u.einzug)
+                };
+                let laufweg = self.einstellungen_fuer(nr).tatami.laufweg_laenge;
+                crate::aussparen::umrandung_baender(&konturen, aussen, innen)
+                    .into_iter()
+                    .map(|(umriss, loecher)| umrandung_satin(umriss, loecher, u, &name, laufweg))
+                    .collect()
+            } else {
+                crate::aussparen::umrandung_ringe(&konturen, -u.einzug)
+                    .into_iter()
+                    .map(|r| umrandung_lauf(r, u, &name))
+                    .collect()
+            };
+            nach.insert(letzter, neu);
         }
         let mut out = Vec::with_capacity(objekte.len());
         let (mut her, mut bu) = (Vec::with_capacity(objekte.len()), Vec::with_capacity(objekte.len()));
@@ -2187,30 +2213,63 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
 
 /// Ein Ring der Umrandung als Objekt: Lauf/Dreifach mit Einstich an Ecken (Knick > 30°, wie Platzierungslinie der
 /// Applikation) oder Satinlinie mittig auf dem Ring mit Auto-Unterlage.
-fn umrandung_objekt(ring: Linie, u: &Umrandung, name: &str) -> Objekt {
-    use crate::format::UmrandungArt;
-    let art = match u.art {
-        UmrandungArt::Lauf | UmrandungArt::Dreifach => {
-            let n = ring.len().saturating_sub(1).max(1);
-            let mut ecken: Vec<bool> = (0..n)
-                .map(|i| crate::geometrie::knick_grad(ring[(i + n - 1) % n], ring[i], ring[(i + 1) % n]) > 30.0)
-                .collect();
-            ecken.push(ecken[0]);
-            ObjektArt::Lauf {
-                punkte: ring,
-                ecken,
-                laenge: u.laenge,
-                dreifach: u.art == UmrandungArt::Dreifach,
-                geschlossen: true,
+fn umrandung_lauf(ring: Linie, u: &Umrandung, name: &str) -> Objekt {
+    let n = ring.len().saturating_sub(1).max(1);
+    let mut ecken: Vec<bool> = (0..n)
+        .map(|i| crate::geometrie::knick_grad(ring[(i + n - 1) % n], ring[i], ring[(i + 1) % n]) > 30.0)
+        .collect();
+    ecken.push(ecken[0]);
+    Objekt {
+        farbe: u.farbe.clone(),
+        name: name.to_string(),
+        art: ObjektArt::Lauf {
+            punkte: ring,
+            ecken,
+            laenge: u.laenge,
+            dreifach: u.art == crate::format::UmrandungArt::Dreifach,
+            geschlossen: true,
+        },
+    }
+}
+
+/// Satinkante der Umrandung: Band in Satinsäulen zerlegt wie eine Satinfläche mit Teilung am Knick (Turning-Umwandlung,
+/// `saeulen::KNICKWINKEL_TURNING`, Säulen überlappen an Schnitten), Säulen nach Nähe mit Laufweg verbunden. Lässt sich
+/// ein Band nicht zerlegen, wird es als Satinlinie entlang seines äußeren Rands gestickt (Notlösung).
+fn umrandung_satin(umriss: Linie, loecher: Vec<Linie>, u: &Umrandung, name: &str, laufweg: f64) -> Objekt {
+    let werte = crate::saeulen::SaeulenWerte {
+        knickwinkel: crate::saeulen::KNICKWINKEL_TURNING,
+        ueberlappung: crate::saeulen::UEBERLAPPUNG_TURNING,
+        ..Default::default()
+    };
+    let art = match crate::saeulen::zerlegen(&umriss, &loecher, &werte) {
+        Ok(s) if !s.is_empty() => ObjektArt::Gruppe {
+            teile: s
+                .iter()
+                .map(|x| Objekt {
+                    farbe: u.farbe.clone(),
+                    name: name.to_string(),
+                    art: ObjektArt::Satin {
+                        seite_a: x.seite_a.clone(),
+                        seite_b: x.seite_b.clone(),
+                        unterlage: Unterlage::Auto,
+                        optionen: SatinOptionen::default(),
+                    },
+                })
+                .collect(),
+            umrisse: s.into_iter().map(|x| x.umriss).collect(),
+            laufweg,
+        },
+        _ => {
+            let mut punkte = umriss;
+            punkte.push(punkte[0]);
+            ObjektArt::SatinLinie {
+                punkte,
+                breite: u.breite.min(2.0),
+                unterlage: Unterlage::Auto,
+                mittig: true,
+                optionen: SatinOptionen::default(),
             }
         }
-        UmrandungArt::Satin => ObjektArt::SatinLinie {
-            punkte: ring,
-            breite: u.breite,
-            unterlage: Unterlage::Auto,
-            mittig: true,
-            optionen: SatinOptionen::default(),
-        },
     };
     Objekt {
         farbe: u.farbe.clone(),
@@ -2623,28 +2682,33 @@ mod tests {
                 "umrandung": {"art": "satin", "breite": 1.5, "einzug": 0, "farbe": "#123456"}}]}"##,
         )
         .unwrap();
+        // Satinkante = Band in Satinsäulen; Umrisse der Säulen ergeben die Ausdehnung des Bands
+        let band = |o: &Objekt| -> (f64, f64) {
+            let ObjektArt::Gruppe { teile, umrisse, .. } = &o.art else { panic!("{:?}", o.art) };
+            assert!(teile.iter().all(|t| matches!(t.art, ObjektArt::Satin { .. })));
+            let (x0, _, x1, _) = crate::geometrie::begrenzung(umrisse.iter().flatten().copied()).unwrap();
+            (x0, x1)
+        };
         let (obj, ..) = d.aufgeloest_mit_herkunft().unwrap();
-        assert!(matches!(obj[1].art, ObjektArt::SatinLinie { breite, .. } if (breite - 1.5).abs() < 1e-9));
+        // auf der Kante, 1,5 mm breit, einzug 0: Band von Radius 9,25 bis 10,75
+        let (x0, x1) = band(&obj[1]);
+        assert!((x1 - x0 - 21.5).abs() < 0.1, "{x0} {x1}");
         assert_eq!(obj[1].farbe, "#123456");
-        // Satinkante außen: 3 mm breit, Innenkante 0,3 mm in der Fläche → Mittellinie 1,2 mm außen (20 → 22,4 mm);
-        // das Loch bekommt seine Kante nach innen (6 → 3,6 mm)
+        // Satinkante außen: 3 mm breit, Innenkante 0,3 mm in der Fläche → Band außen 2,7 mm über den Rand (20 → 25,4 mm)
         let d = Design::aus_json(
             r##"{"objekte": [{"art": "tatami", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 20, "hoehe": 20}},
-                "loecher": [{"rechteck": {"mitte": [0, 0], "breite": 6, "hoehe": 6}}],
+                "loecher": [{"rechteck": {"mitte": [0, 0], "breite": 8, "hoehe": 8}}],
                 "umrandung": {"art": "satin", "breite": 3, "aussen": true}}]}"##,
         )
         .unwrap();
         let (obj, ..) = d.aufgeloest_mit_herkunft().unwrap();
-        let weiten: Vec<f64> = obj[1..]
-            .iter()
-            .map(|o| {
-                let ObjektArt::SatinLinie { punkte, .. } = &o.art else { panic!() };
-                let (x0, _, x1, _) = crate::geometrie::begrenzung(punkte.iter().copied()).unwrap();
-                x1 - x0
-            })
-            .collect();
-        assert!((weiten[0] - 22.4).abs() < 0.02 && (weiten[1] - 3.6).abs() < 0.02, "{weiten:?}");
-        // Breite in Prozent der Buchstabenhöhe: 6 % von 50 mm = 3 mm, mit Skalieren 50 % → 1,5 mm, 10 mm → mindestens 1 mm
+        let (x0, x1) = band(&obj[1]);
+        assert!((x1 - x0 - 25.4).abs() < 0.1, "{x0} {x1}");
+        // das Loch (8 mm) bekommt sein Band nach innen: 8 + 0,6 → 8,6 mm außen, 8 − 5,4 = 2,6 mm innen frei
+        let (x0, x1) = band(&obj[2]);
+        assert!((x1 - x0 - 8.6).abs() < 0.1, "{x0} {x1}");
+        // Breite in Prozent der Buchstabenhöhe: 6 % von 50 mm = 3 mm, mit Skalieren 50 % → 1,5 mm, 10 mm → 0,6 mm (unter
+        // 1 mm wird daraus eine kräftige Linie, Test `umrandung_kleine_schrift`)
         let mut d = Design::aus_json(
             r##"{"objekte": [{"art": "text", "text": "A", "alphabet": "x", "hoehe": 50,
                 "umrandung": {"art": "satin", "breite_anteil": 6}},
@@ -2654,7 +2718,7 @@ mod tests {
         )
         .unwrap();
         let b: Vec<f64> = (0..3).map(|nr| d.umrandung_breite(nr, &d.umrandung[&nr])).collect();
-        assert!((b[0] - 3.0).abs() < 1e-9 && (b[1] - 1.5).abs() < 1e-9 && (b[2] - 1.0).abs() < 1e-9, "{b:?}");
+        assert!((b[0] - 3.0).abs() < 1e-9 && (b[1] - 1.5).abs() < 1e-9 && (b[2] - 0.6).abs() < 1e-9, "{b:?}");
         d.umrandung.get_mut(&0).unwrap().breite_anteil = None;
         assert!((d.umrandung_breite(0, &d.umrandung[&0]) - 2.0).abs() < 1e-9);
         for falsch in [r#"{"einzug": 4}"#, r#"{"breite": 0.2}"#, r#"{"laenge": 20}"#, r#"{"art": "x"}"#, r#"{"breite_anteil": 40}"#] {

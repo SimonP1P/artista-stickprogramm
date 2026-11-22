@@ -575,3 +575,36 @@ fn google_laden() {
     eprintln!("Pirata One stickbar ab {}", v["stickbarkeit"]["stickbar_ab"]);
     let _ = std::fs::remove_dir_all(&ablage);
 }
+
+/// Dicke Umrandung (eigene Erweiterung, Nutzer 21.11.2026): Satinkante außen in Prozent der Buchstabenhöhe wird als Band
+/// in Satinsäulen zerlegt; bei kleiner Schrift (unter 1 mm Kante) wird daraus eine kräftige Linie statt Satin
+#[test]
+fn umrandung_kleine_schrift() {
+    use stick_kern::design::{Design, ObjektArt};
+    let k = kontext();
+    let arten = |skalieren: f64| {
+        let mut d = Design::aus_json(
+            &json!({"objekte": [{"art": "text", "text": "anne", "alphabet": "Drifter", "hoehe": 20,
+                "transform": {"skalieren": skalieren}, "umrandung": {"art": "satin", "breite_anteil": 6, "aussen": true}}]})
+            .to_string(),
+        )
+        .unwrap();
+        k.alphabete_einsetzen(&mut d).unwrap();
+        let (obj, _) = d.objekte_aufgeloest().unwrap();
+        obj.into_iter()
+            .filter(|o| o.name.ends_with("(Umrandung)"))
+            .map(|o| match o.art {
+                ObjektArt::Gruppe { teile, .. } if teile.iter().all(|t| matches!(t.art, ObjektArt::Satin { .. })) => "satin",
+                // kräftige Linie mit kurzen Stichen: 8 mm Schrift → 1 mm
+                ObjektArt::Lauf { dreifach: true, laenge: Some(l), .. } if (l - 1.0).abs() < 1e-9 => "dreifach",
+                _ => "anders",
+            })
+            .collect::<Vec<_>>()
+    };
+    // 20 mm: 1,2 mm Satinkante – je Buchstabe ein Band (a, n, n, e; Innenräume gehören zum Band oder sind eigene Bänder)
+    let gross = arten(100.0);
+    assert!(gross.len() >= 4 && gross.iter().all(|&a| a == "satin"), "{gross:?}");
+    // 40 % → 8 mm: 0,48 mm wäre zu schmal → Dreifach um jeden Buchstaben und Innenraum
+    let klein = arten(40.0);
+    assert!(klein.len() >= 4 && klein.iter().all(|&a| a == "dreifach"), "{klein:?}");
+}

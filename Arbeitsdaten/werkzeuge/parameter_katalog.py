@@ -264,7 +264,8 @@ P('objekt.umrandung.einzug', G, 'Umrandung: nach innen', 'Versatz der Linie in d
 P('objekt.umrandung.breite', G, 'Umrandung: Breite der Satinkante', 'nur bei Stichart Satinkante', ebene='objekt',
   gilt=FL, o='umrandung.breite', einheit='mm', std=2.0, bereich=[0.5, 10], quelle='wie Satinlinie (Standard 2 mm)')
 P('objekt.umrandung.breite_anteil', G, 'Umrandung: Breite in % der Buchstabenhöhe', 'nur Text/Monogramm mit '
-  'Satinkante, gilt statt der Breite in mm; Größe/Skalieren zählt mit, mindestens 1 mm', ebene='objekt',
+  'Satinkante, gilt statt der Breite in mm; Größe/Skalieren zählt mit; unter 1 mm wird daraus eine kräftige Linie '
+  '(Dreifach, Stichlänge 12 % der Höhe)', ebene='objekt',
   gilt=['text', 'ttf', 'monogramm'], o='umrandung.breite_anteil', einheit='%', std=None, bereich=[1, 30],
   quelle=V + ' – Wunsch Nutzer 21.11.2026 (50 mm → 3 mm = 6 %, im einfachen Modus gesetzt)')
 P('objekt.umrandung.aussen', G, 'Umrandung: Satinkante außen', 'Innenkante liegt „nach innen“ mm in der Fläche, die '

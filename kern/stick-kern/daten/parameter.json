@@ -2787,7 +2787,7 @@
    "id": "objekt.umrandung.breite_anteil",
    "gruppe": "Bearbeiten",
    "name": "Umrandung: Breite in % der Buchstabenhöhe",
-   "wirkung": "nur Text/Monogramm mit Satinkante, gilt statt der Breite in mm; Größe/Skalieren zählt mit, mindestens 1 mm",
+   "wirkung": "nur Text/Monogramm mit Satinkante, gilt statt der Breite in mm; Größe/Skalieren zählt mit; unter 1 mm wird daraus eine kräftige Linie (Dreifach, Stichlänge 12 % der Höhe)",
    "ebene": "objekt",
    "gilt_fuer": [
     "text",

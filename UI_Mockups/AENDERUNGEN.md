@@ -15,6 +15,15 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Umrandung bei kleiner Schrift (Fehler gemeldet vom Nutzer; Commit siehe unten)
+- **Kern, keine neuen Felder:** Satinkante der Umrandung ist jetzt ein **Band**, das in Satinsäulen zerlegt wird
+  (`saeulen::zerlegen` wie `satinflaeche`, Teilung am Knick 87°, Überlappung 0,3 mm) – keine Stichsterne mehr an engen
+  Kurven und kleinen Innenräumen. Ergibt `breite_anteil` weniger als 1 mm (Schrift unter 17 mm bei 6 %), wird die
+  Umrandung eine **kräftige Linie** (Dreifach, Stichlänge 12 % der Höhe, 1–2,5 mm) statt Satin; die frühere Untergrenze
+  1 mm entfällt.
+- **Oberfläche (umgesetzt):** Hinweis unter dem Häkchen „Umrandung“, wenn die Schrift dafür zu klein ist (Höhe ×
+  Größe des Elements × Größe des Designs).
+
 ## 21.11.2026 – Dicke Umrandung im einfachen Modus (Wunsch Nutzer; Commit e714bad)
 - **Neue Felder in `umrandung`:** `breite_anteil` (Breite der Satinkante in % der Buchstabenhöhe, 1–30, nur
   Text/Monogramm, gilt statt `breite`; Größe/Skalieren von Objekt, Gruppe und Design zählt mit; mindestens 1 mm) und

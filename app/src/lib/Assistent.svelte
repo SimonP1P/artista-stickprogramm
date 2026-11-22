@@ -742,8 +742,10 @@
     {@const mit = fl.find((i) => !!arbeit.objekte[i]?.umrandung) ?? fl[0]}
     {@const ug = arbeit.umrandungGarn(mit)}
     {@const schrift = !!(text || mono)}
+    {@const hoehe = (Number((arbeit.objekte[mit] as { hoehe?: number })?.hoehe) || 0) * (elSkalierung / 100) * (skalierung / 100)}
+    {@const alsLinie = schrift && u?.art === "satin" && !!u.breite_anteil && hoehe > 0 && (hoehe * u.breite_anteil) / 100 < 1}
     <div style="margin-bottom:12px; margin-top:{schrift ? 8 : 0}px">
-      <label class="chk" title={schrift ? "Dicke Satinkante außen um jeden Buchstaben: 6 % der Buchstabenhöhe (50 mm → 3 mm, mindestens 1 mm), wächst beim Vergrößern mit; die Buchstabenfarbe bleibt sichtbar. Stichart, Breite und Lage: Expertenmodus." : "Satinkante 2 mm außen um die Fläche; die Farbe der Fläche bleibt sichtbar. Stichart, Breite und Lage: Expertenmodus."}>
+      <label class="chk" title={schrift ? "Dicke Satinkante außen um jeden Buchstaben: 6 % der Buchstabenhöhe (50 mm → 3 mm), wächst beim Vergrößern mit; die Buchstabenfarbe bleibt sichtbar. Unter 17 mm Schrifthöhe wäre die Kante schmaler als 1 mm – dann wird sie eine kräftige Linie (Dreifach). Stichart, Breite und Lage: Expertenmodus." : "Satinkante 2 mm außen um die Fläche; die Farbe der Fläche bleibt sichtbar. Stichart, Breite und Lage: Expertenmodus."}>
         <input
           type="checkbox"
           checked={!!u}
@@ -760,8 +762,11 @@
                 : null,
             )}
         />
-        <span>Umrandung <span class="mut small">– dicke Kante um {schrift ? "jeden Buchstaben" : fl.length > 1 ? "jede Fläche" : "die Fläche"}</span></span>
+        <span>Umrandung <span class="mut small">– {alsLinie ? "Linie" : "dicke Kante"} um {schrift ? "jeden Buchstaben" : fl.length > 1 ? "jede Fläche" : "die Fläche"}</span></span>
       </label>
+      {#if alsLinie}
+        <div class="mut small" style="margin-top:4px">Schrift {zahl(hoehe)} mm hoch – für eine dicke Kante zu klein (ab 17 mm). Sie wird als kräftige Linie gestickt.</div>
+      {/if}
       {#if u}
         <button class="btn btn-secondary pick" style="min-height:36px; margin-top:6px" onclick={() => (arbeit.dialog = { art: "garn", objekt: mit, alle: fl, umrandung: true, titel: `${elName || (el ? elArt(el)[0] : "")} · Umrandung` })}>
           <span class="sw l" style="background:{ug?.rgb ?? u.farbe ?? '#000000'}"></span>

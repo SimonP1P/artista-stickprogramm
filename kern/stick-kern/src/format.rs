@@ -567,12 +567,14 @@ pub struct UmrandungJson {
     /// `aussen`: wie weit die Innenkante der Satinkante in der Fläche liegt
     #[serde(default = "umrandung_einzug")]
     pub einzug: f64,
-    /// Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)
+    /// Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie). Die Kante ist ein Band
+    /// um die Fläche, in Satinsäulen zerlegt wie „Satin automatisch“ (`satinflaeche`)
     #[serde(default = "umrandung_breite")]
     pub breite: f64,
     /// Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`;
-    /// Größe/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm (Wunsch
-    /// Nutzer 21.11.2026, eigene Festlegung)
+    /// Größe/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben; unter 1 mm wird daraus eine
+    /// kräftige Linie (Dreifach, Stichlänge 12 % der Höhe, 1–2,5 mm) wie bei EasyStitch (Wunsch Nutzer 21.11.2026,
+    /// eigene Festlegung)
     #[serde(default)]
     pub breite_anteil: Option<f64>,
     /// Satinkante **außen** um die Fläche (nur bei `art` satin): die Innenkante liegt `einzug` mm in der Fläche, die

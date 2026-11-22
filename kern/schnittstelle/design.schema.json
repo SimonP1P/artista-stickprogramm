@@ -4025,13 +4025,13 @@
         },
         "breite": {
           "default": 2.0,
-          "description": "Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie)",
+          "description": "Breite der Satinkante in mm, 0,5 … 10 (nur bei `art` satin; Standard 2 wie die Satinlinie). Die Kante ist ein Band\num die Fläche, in Satinsäulen zerlegt wie „Satin automatisch“ (`satinflaeche`)",
           "format": "double",
           "type": "number"
         },
         "breite_anteil": {
           "default": null,
-          "description": "Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`;\nGröße/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm (Wunsch\nNutzer 21.11.2026, eigene Festlegung)",
+          "description": "Breite der Satinkante in **Prozent der Buchstabenhöhe**, 1 … 30 (nur Text und Monogramm, gilt statt `breite`;\nGröße/Skalieren zählt mit). Einfacher Modus: 6 → 3 mm bei 50 mm hohen Buchstaben; unter 1 mm wird daraus eine\nkräftige Linie (Dreifach, Stichlänge 12 % der Höhe, 1–2,5 mm) wie bei EasyStitch (Wunsch Nutzer 21.11.2026,\neigene Festlegung)",
           "format": "double",
           "type": [
             "number",
