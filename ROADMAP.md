@@ -337,6 +337,11 @@ Serifenschriften (Cormorant, Bodoni Moda, Playfair, Italiana) haben Haarstriche 
 stickbar; die Vorlagen sehen 16–27 mm vor → Warnung im Programm, kräftigere Schrift wählen. **Offen (Vor Ort):** ein
 Monogramm mit Rahmen sticken (Satinkanten 2–4 mm, Perlen als kräftige Linie).
 
+**Inspektor „Feinheiten“ (21.11.2026, Wunsch Nutzer):** X-Marken entfernt, Erklärung als „?“ beim Darüberfahren,
+deutsche Namen, Vorlagewerte (Wortabstand 25, Zeilenabstand 60, Mustergröße 100) ✅. **Offen (nächster Schritt):**
+Kern-Befehl, der je Objekt die **tatsächlich verwendeten Werte** liefert (Stil → Stoff → Design → Objekt, z. B.
+Stichwinkel 45°, Step-Muster, Buchstabenabstand = Anteil des Alphabets × Höhe), damit statt „Stil“ überall Zahlen stehen.
+
 **Offen nach E6 (Kern-Schritte):** ~~W9~~ ✅ 21.11. · ~~W5-Rest~~ ✅ 21.11. (`stick-kern::umwandeln`) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.
 - ✅ 20.11.2026 `stick-maschine` (Rust, `kern/stick-maschine`): Protokoll der Testprogramme v3.6/v4.1 mit Simulation –

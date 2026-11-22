@@ -55,7 +55,22 @@
     initialen: "Initialen",
     dreifach: "Dreifach",
     text: "Text",
+    alphabet: "Alphabet",
+    muster: "Füllmuster",
+    step_muster: "Step-Muster",
+    schrift: "Schrift",
+    motiv: "Motiv",
+    spiegeln: "Spiegeln",
+    aussparen: "Aussparen",
+    knickwinkel_: "Knickwinkel",
   };
+  /** Vorlagewerte, die nicht im Schema stehen (Kern: schrift.rs WORTABSTAND_ANTEIL 0,25, ZEILENABSTAND_ANTEIL 0,6;
+   *  Mustergröße 100 %) – Anzeige statt „Stil“. Werte nach Stil/Stoff liefert der Kern noch nicht (offen). */
+  const VORGABE: Record<string, number> = { wortabstand: 25, zeilenabstand: 60, groesse: 100 };
+  /** Erklärung für das „?“: Beschreibung aus dem Schema ohne JSON-Schreibweise */
+  const hilfe = $derived(
+    (feld.beschreibung ?? "").replace(/`([^`]*)`/g, "„$1“").replace(/\\n/g, "Zeilenumbruch").trim(),
+  );
   const titel = $derived(beschriftung ?? NAMEN[feld.name] ?? feld.name);
   const id = $derived(`f-${feld.name}`);
 
@@ -74,7 +89,7 @@
 </script>
 
 <div class="frow">
-  <label class="fl" for={id} title={feld.beschreibung}>{titel}{#if x}<span class="xt" title="nur im Expertenmodus">X</span>{/if}</label>
+  <label class="fl" for={id}>{titel}{#if hilfe}<span class="frage" title={hilfe} aria-label={hilfe}>?</span>{/if}</label>
   <div class="fc">
     {#if feld.typ === "zahl" || feld.typ === "ganz"}
       <input
@@ -83,7 +98,7 @@
         style="width:90px"
         inputmode="decimal"
         value={typeof wert === "number" ? zahl(wert, 3) : ""}
-        placeholder={typeof feld.standard === "number" ? zahl(feld.standard, 3) : "Stil"}
+        placeholder={typeof feld.standard === "number" ? zahl(feld.standard, 3) : feld.name in VORGABE ? zahl(VORGABE[feld.name], 3) : "Stil"}
         onchange={(e) => {
           const t = (e.currentTarget as HTMLInputElement).value.trim();
           if (t === "") return setzen(undefined);
@@ -132,10 +147,29 @@
       <span class="mut small">im Reiter JSON bzw. in der Formansicht</span>
     {/if}
   </div>
-  {#if feld.typ !== "komplex" && !(haken && feld.typ === "unterlage") && feld.beschreibung && feld.beschreibung.length <= 110}<div class="fhelp">{feld.beschreibung}</div>{/if}
 </div>
 
 <style>
+  /* kleines „?“ hinter der Beschriftung: Erklärung beim Darüberfahren (schnelle Tooltips, Tooltip.svelte) */
+  .frage {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    opacity: 0.5;
+    cursor: help;
+    vertical-align: 1px;
+  }
+  .frage:hover {
+    opacity: 1;
+  }
   .haken {
     display: flex;
     flex-wrap: wrap;

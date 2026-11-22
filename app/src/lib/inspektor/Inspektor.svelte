@@ -45,7 +45,7 @@
     motivlinie: ["motiv", "groesse", "spiegeln", "geschlossen"],
   };
   /** an anderer Stelle bearbeitet */
-  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung"]);
+  const GESONDERT = new Set(["satz", "art", "name", "farbe", "garn", "transform", "einstellungen", "einstich", "ausstich", "doppellauf", "auto_jump", "buchstaben", "umrandung", "gruppe"]);
   const SCHRIFT = new Set(["text", "ttf", "monogramm"]);
   const MIT_STEP = new Set(["tatami", "text", "ttf", "monogramm"]);
 
@@ -58,8 +58,8 @@
     o?.art !== "monogramm"
       ? []
       : o.vorlage
-        ? ["hoehe", "rahmen", "rahmen_farbe"]
-        : ["vorlage", "schrift", "alphabet", "rahmen_groesse", "rahmen_farben"],
+        ? ["hoehe", "rahmen", "rahmen_farbe", "alphabet", "wortabstand", "zeilenabstand"]
+        : ["vorlage", "schrift", "alphabet", "rahmen_groesse", "rahmen_farben", "wortabstand", "zeilenabstand"],
   );
   const monoVorlage = $derived(o?.art === "monogramm" ? listen.monogrammRahmen(o.vorlage as string | undefined) : undefined);
   $effect(() => {
