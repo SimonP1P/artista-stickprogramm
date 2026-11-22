@@ -83,6 +83,9 @@ pub fn run() {
                     "window.__START__ = {};",
                     startoptionen(std::env::args().skip(1))
                 ))
+                // kein „Inspect Element“ im Rechtsklick-Menü (Nutzerwunsch 21.11.2026); zur Fehlersuche mit
+                // Umgebungsvariable ARTISTA_INSPEKTOR=1 starten
+                .devtools(std::env::var_os("ARTISTA_INSPEKTOR").is_some())
                 .build()?;
             Ok(())
         })
