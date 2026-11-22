@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Umrandung um Flächen und Buchstaben (Wunsch Nutzer; Commit siehe unten)
+## 21.11.2026 – Umrandung um Flächen und Buchstaben (Wunsch Nutzer; Commit 793357f)
 - **Neues Feld an jedem Objekt:** `umrandung` (`format::UmrandungJson`): `art` lauf | **dreifach** | satin, `farbe`
   (Standard schwarz), `einzug` (Standard 0,3 mm nach innen, eigene Festlegung), `breite` (Satinkante, Standard 2 mm),
   `laenge` (Lauf/Dreifach, ohne Angabe Stil). Feld vorhanden = an; `{}` = alle Standardwerte. Der Kern hängt hinter
