@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Effekte und Farben mischen (Nachtauftrag N2, 4b.8; Commit …)
+## 22.11.2026 – Effekte und Farben mischen (Nachtauftrag N2, 4b.8; Commit 47fd38a)
 - **Neues Feld `effekte`** an `tatami`, `muster`, `satin`, `satinlinie`, `satinflaeche` (`format.rs` `EffekteJson`,
   Kern `stick-kern::effekte`): `verlauf` {`profil` (8 Werte, Standard `linear`), `min` 0,4, `max` 2,0 mm} · `rand`
   {`seite` links/rechts/beide (Standard rechts), `spanne` 1,5 mm, `glaette` 0 … 1 (0,1)} · `welle` = Punktangabe
