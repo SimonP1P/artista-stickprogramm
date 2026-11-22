@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Vorlagen (Nachtauftrag N8, 4b.14; Commit COMMIT)
+## 22.11.2026 – Vorlagen (Nachtauftrag N8, 4b.14; Commit 7a996a8)
 - **Neues Design-Feld `vorlage`** (Text, nur Anzeige/Vorschlag): Vorlage, aus der das Design entstand.
 - **Neue Befehle:** `vorlagen_liste` → `[{name, standard, werk, rahmen, stoff, garnkarte, objekte, werte}]` (Normal
   immer vorn; `werk` = keine Datei), `vorlage_neu` `{name}` → Design (Kopie, Name „Design“), `vorlage_speichern`
