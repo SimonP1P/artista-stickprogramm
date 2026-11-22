@@ -1423,9 +1423,10 @@ pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErg
 }
 
 /// Sticharten für Linien („Outline“ des Originals): Geometrie in `punkte`.
-pub const UMRISS_ARTEN: [&str; 5] = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie"];
+pub const UMRISS_ARTEN: [&str; 7] =
+    ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich"];
 /// Sticharten für geschlossene Formen („Fill“ des Originals): Geometrie in `umriss` (+ `loecher`).
-pub const FUELL_ARTEN: [&str; 4] = ["tatami", "satinflaeche", "muster", "motivfuellung"];
+pub const FUELL_ARTEN: [&str; 5] = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling"];
 
 /// Stichart eines Objekts wechseln.
 #[derive(Debug, Deserialize, JsonSchema)]
@@ -1434,8 +1435,8 @@ pub struct StichartEingabe {
     pub design: DesignWert,
     /// Nummer des Objekts (ab 0)
     pub objekt: usize,
-    /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster,
-    /// motivfuellung
+    /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,
+    /// satinflaeche, muster, motivfuellung, stippling
     pub art: String,
 }
 
@@ -1501,7 +1502,7 @@ pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgeb
     let zu = |a: &stick_kern::geometrie::Punkt, b: &stick_kern::geometrie::Punkt| (a.x - b.x).hypot(a.y - b.y) < 1e-6;
     let von_hause_zu = pts.len() > 2 && zu(&pts[0], &pts[pts.len() - 1]);
     let geschlossen = von_flaeche || o.get("geschlossen").and_then(Value::as_bool).unwrap_or(false) || von_hause_zu;
-    const MIT_GESCHLOSSEN: [&str; 4] = ["lauf", "dreifach", "blanket", "motivlinie"];
+    const MIT_GESCHLOSSEN: [&str; 6] = ["lauf", "dreifach", "blanket", "motivlinie", "rueckstich", "stielstich"];
     if zu_flaeche {
         if !geschlossen {
             return Err("Eine offene Linie lässt sich nicht füllen – erst schließen (Feld „geschlossen“) oder eine \
@@ -1527,7 +1528,7 @@ pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgeb
         "tatami" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "muster" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "satinflaeche" => &["loecher"],
-        "motivfuellung" => &["loecher"],
+        "motivfuellung" | "stippling" => &["loecher"],
         "satinlinie" => &["breite", "versatz"],
         "blanket" => &["breite", "versatz"],
         "lauf" | "dreifach" => &["laenge"],

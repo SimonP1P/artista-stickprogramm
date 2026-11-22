@@ -115,6 +115,12 @@ pub fn ausrichten(art: &ObjektArt, ein: Option<Punkt>, aus: Option<Punkt>) -> Ob
             ecken,
             geschlossen,
             ..
+        }
+        | ObjektArt::Handstich {
+            punkte,
+            ecken,
+            geschlossen,
+            ..
         } => {
             if *geschlossen || ist_ring(punkte) {
                 let mit_ende = !*geschlossen;
@@ -188,8 +194,10 @@ fn umrisse(art: &ObjektArt) -> Vec<&Linie> {
     match art {
         ObjektArt::Tatami { umriss, .. }
         | ObjektArt::Musterfuellung { umriss, .. }
-        | ObjektArt::Wendefuellung { umriss, .. } => vec![umriss],
+        | ObjektArt::Wendefuellung { umriss, .. }
+        | ObjektArt::Stippling { umriss, .. } => vec![umriss],
         ObjektArt::Gruppe { umrisse, .. } => umrisse.iter().collect(),
+        ObjektArt::Blackwork { linien, .. } => linien.iter().map(|(l, _)| l).collect(),
         _ => Vec::new(),
     }
 }

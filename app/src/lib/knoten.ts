@@ -114,6 +114,8 @@ export function knotenBild(objekt: unknown): KnotenBild {
     f === "umriss",
   ]);
   if (Array.isArray(o.loecher)) o.loecher.forEach((l, i) => felder.push([["loecher", i], l, true]));
+  // Blackwork: jede Linie einzeln formbar (Handbuch S. 131 „all component objects have individual reshape points“)
+  if (Array.isArray(o.linien)) o.linien.forEach((l, i) => felder.push([["linien", i], l, false]));
   // Leitlinie des Wave-Effekts (Kern `effekte.welle`) – wie ein offener Pfad bearbeitbar
   const fx = o.effekte as Baum | null | undefined;
   if (fx && fx.welle != null) felder.push([["effekte", "welle"], fx.welle, false]);

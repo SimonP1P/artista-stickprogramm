@@ -45,8 +45,8 @@ export const SCHRIFT = ["text", "ttf", "monogramm"] as const;
 export const BESONDERE = ["applikation", "knopfloch"] as const;
 
 /** Sticharten für Linien („Outline“) und Flächen („Fill“) – wie `UMRISS_ARTEN`/`FUELL_ARTEN` im Kern */
-export const UMRISS = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie"] as const;
-export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung"] as const;
+export const UMRISS = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich"] as const;
+export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling"] as const;
 export const STICHART_NAME: Record<string, string> = {
   lauf: "Laufstich",
   dreifach: "Dreifachstich",
@@ -57,6 +57,9 @@ export const STICHART_NAME: Record<string, string> = {
   satinflaeche: "Satin",
   muster: "Füllmuster",
   motivfuellung: "Motive",
+  rueckstich: "Rückstich",
+  stielstich: "Stielstich",
+  stippling: "Stippling",
 };
 export const STICHART_HILFE: Record<string, string> = {
   lauf: "eine Stichreihe – dünne Linien",
@@ -68,12 +71,14 @@ export const STICHART_HILFE: Record<string, string> = {
   satinflaeche: "für schmale Flächen bis ~8 mm, glänzend",
   muster: "Fläche mit Muster (242 Muster)",
   motivfuellung: "Motive in Reihen über die Fläche",
+  rueckstich: "feine Linie wie von Hand – Vor- und Rückstiche",
+  stielstich: "Kordel aus schrägen Stichen – Stiele, Ranken",
+  stippling: "mäandernde Laufstichlinie über die Fläche",
 };
 export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string };
 
 /** FUNKTIONEN.md §7 – Platz vorgesehen, deaktiviert */
 export const KOMMT_NOCH = [
-  "Craft Stitches (Blackwork, Rückstich, Stielstich, Candlewicking, Stippling)",
   "Kreuzstich",
   "Magic Wand, PhotoSnap",
   "Ausrichten, Kranz, Kaleidoskop",
@@ -126,6 +131,12 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
       return { art, name: "Motivfüllung", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
     case "blanket":
       return { art, name: "Blanket", punkte: linie, farbe };
+    case "rueckstich":
+      return { art, name: "Rückstich", punkte: linie, farbe };
+    case "stielstich":
+      return { art, name: "Stielstich", punkte: linie, farbe };
+    case "stippling":
+      return { art, name: "Stippling", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
     case "applikation":
       return { art, name: "Applikation", umriss: { kreis: { mitte: [0, 0], radius: 20 } }, farbe };
     case "knopfloch":
@@ -138,8 +149,6 @@ export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
           [-30, 0],
           [30, 0],
         ],
-        satz: "Heirloom",
-        motiv: "705",
         farbe,
       };
     default:

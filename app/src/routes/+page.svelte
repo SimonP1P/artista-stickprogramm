@@ -12,7 +12,7 @@
   import SchriftDialog from "$lib/dialoge/SchriftDialog.svelte";
   import GarnDialog from "$lib/dialoge/GarnDialog.svelte";
   import EinlesenDialog from "$lib/dialoge/EinlesenDialog.svelte";
-  import type { GarnInfo } from "$kern/kern";
+  import type { CraftVorlage, GarnInfo, ObjektJson } from "$kern/kern";
   import { maschine, SIMULATION } from "$lib/maschine.svelte";
   import SendenDialog from "$lib/dialoge/SendenDialog.svelte";
   import StickenDialog from "$lib/dialoge/StickenDialog.svelte";
@@ -33,6 +33,7 @@
     KOMMT_NOCH,
     neuesObjekt,
     SCHRIFT,
+    STANDARD_FARBE,
     STICHART_HILFE,
     STICHART_NAME,
     UMRISS,
@@ -166,6 +167,17 @@
     if (o) arbeit.einfuegen(o);
   }
 
+  /** Craft-Stitch-Vorlage (Kern `craft_vorlagen`) einfügen: Linie bzw. Fläche in der Rahmenmitte mit den Werten des Originals */
+  function craftEinfuegen(v: CraftVorlage) {
+    const form =
+      v.form === "linie"
+        ? { punkte: [[-25, -6], [-8, 6], [8, -6], [25, 6]] }
+        : { umriss: { kreis: { mitte: [0, 0], radius: 20 } } };
+    arbeit.einfuegen({ ...(v.felder as object), ...form, name: v.name, farbe: STANDARD_FARBE } as ObjektJson);
+  }
+  // Vorlagen gleich beim Start laden, damit das Menü sofort vollständig ist
+  $effect(() => void listen.craftLaden().catch(() => {}));
+
   /** Form-Werkzeug: mit der Maus zeichnen (Punkt für Punkt wie im Original, Handbuch S. 58) */
   function formZeichnen(form: FormWerkzeug) {
     zeichenForm = form;
@@ -226,6 +238,7 @@
       { l: "Gruppieren", kbd: "Strg+G", go: a.length > 1 && !arbeit.auswahlGruppe ? () => arbeit.gruppieren() : undefined },
       { l: "Gruppe auflösen", kbd: "Strg+Umschalt+G", go: a.some((i) => arbeit.gruppeVon(i)) ? () => arbeit.gruppeAufloesen() : undefined },
       { l: "Als Motiv speichern …", go: a.length ? () => (arbeit.dialog = { art: "motiv_speichern" }) : undefined },
+      { l: "Blackwork Run (Linien in einem Zug)", go: arbeit.blackworkFaehig.length > 1 ? () => arbeit.blackworkLauf() : undefined },
     ];
   });
 
@@ -391,6 +404,14 @@
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
         </div>
         <div style="padding:4px; background:var(--panel)">
+          <div class="mh">Craft Stitches – Handstich-Optik</div>
+          {#each listen.craft as v (v.id)}
+            <button class="mi" role="menuitem" title={v.beschreibung} onclick={() => waehle(() => craftEinfuegen(v))}>
+              <Icon d={ART[(v.felder as { art: string }).art]?.[1] ?? ""} /><span style="flex:1">{v.name}</span><span class="mut small">{v.form === "linie" ? "Linie" : "Fläche"}</span>
+            </button>
+          {/each}
+          <div class="small mut" style="padding:2px 10px 6px; white-space:normal">Linien in einem Zug: mehrere Linien wählen → Anordnen → „Blackwork Run“.</div>
+          <div class="msep"></div>
           <div class="mh">Kommt noch – Platz ist vorgesehen</div>
           {#each KOMMT_NOCH as t (t)}
             <button class="mi" role="menuitem" disabled style="white-space:normal; align-items:flex-start"><Icon d={IC.kommtNoch} /><span style="flex:1">{t}</span><span class="soon">kommt noch</span></button>

@@ -5,6 +5,7 @@ import {
   kern,
   type AlphabetInfo,
   type AlphabetVorschau,
+  type CraftVorlage,
   type GarnInfo,
   type GoogleKatalog,
   type MonogrammKatalog,
@@ -29,6 +30,9 @@ class Listen {
   favoriten = $state<string[]>(lesen(FAVORITEN, []));
   /** Stile der Schriftauswahl aus dem Kern (Reihenfolge der Filter, Erklärung) */
   stile = $state.raw<StilInfo[]>([]);
+  /** Vorlagen der Craft-Stitch-Leiste (Kern `craft_vorlagen`) */
+  craft = $state.raw<CraftVorlage[]>([]);
+  #craft: Promise<void> | null = null;
   /**
    * Eigene Stile des Anwenders (nur auf diesem Rechner): Namen neuer Stile und je Schrift (Kennung wie bei den
    * Favoriten) die vollständige Stil-Liste, wenn der Anwender sie geändert hat.
@@ -51,6 +55,14 @@ class Listen {
       kern("garnkarten_liste", {}).then((g) => (this.garnkarten = g)),
     ]).then(() => {});
     return this.#geladen;
+  }
+
+  /** Craft-Stitch-Vorlagen – bei Bedarf */
+  craftLaden(): Promise<void> {
+    this.#craft ??= kern("craft_vorlagen", {}).then((c) => {
+      this.craft = c;
+    });
+    return this.#craft;
   }
 
   /** Füllmuster (242) – bei Bedarf */

@@ -27,7 +27,8 @@ def P(id_, gruppe, name, wirkung, *, ebene='design', gilt=(), d=None, o=None, ei
 STOFFE = ['0 Software Defaults', 'Knit Light Weight', 'Knit Medium Weight', 'Knit Heavy Weight', 'Terry Medium Weight',
           'Terry Heavy Weight', 'Woven Light Weight', 'Woven Medium Weight', 'Woven Heavy Weight']
 ALLE = ['lauf', 'dreifach', 'satin', 'satinlinie', 'satinflaeche', 'tatami', 'muster', 'blanket', 'applikation', 'text',
-        'ttf', 'monogramm', 'knopfloch', 'motivlinie', 'motivfuellung']
+        'ttf', 'monogramm', 'knopfloch', 'motivlinie', 'motivfuellung', 'rueckstich', 'stielstich', 'stippling',
+        'blackwork']
 V = 'Vorschlag (eigene Festlegung)'
 
 # ---------------------------------------------------------------- Design
@@ -348,10 +349,12 @@ P('objekt.knopfloch.abstand', G, 'Raupenabstand', 'Dichte der Raupen (Bead Stitc
 G = 'Motivlinie'
 Q = 'Musterdesigns „Sampler - Pattern Outlines“ (Analyse_Teil3/20, hoch); Handbuch Kap. 25'
 P('objekt.motiv.satz', G, 'Motivsatz', 'einer der 14 Motivsätze der CD (userletw)', ebene='objekt', gilt=['motivlinie'],
-  o='satz', einheit='Auswahl', std='Heirloom', quelle='Befehl motive_liste; Standard eigene Festlegung',
+  o='satz', einheit='Auswahl', std='NP004a',
+  quelle='Befehl motive_liste; Standard NORMAL.AMT <PRESET_STANDARD_MOTIF_RUN> 0x2798 (Analyse_Teil3/24 §1)',
   modus='einfach')
 P('objekt.motiv.motiv', G, 'Motiv', 'Motiv im Satz (Auswahl mit Vorschau)', ebene='objekt', gilt=['motivlinie'],
-  o='motiv', einheit='Auswahl', std='705', quelle='Befehl motivsatz_motive; Standard eigene Festlegung',
+  o='motiv', einheit='Auswahl', std='K0001a',
+  quelle='Befehl motivsatz_motive; Standard <PRESET_STANDARD_MOTIF_RUN> (Analyse_Teil3/24 §1)',
   modus='einfach')
 P('objekt.motiv.groesse', G, 'Größe', 'Länge eines Motivs entlang der Linie (Size); Höhe wächst mit',
   ebene='objekt', gilt=['motivlinie'], o='groesse', einheit='mm', std=None,
@@ -363,27 +366,63 @@ P('objekt.motiv.spiegeln', G, 'Spiegeln', 'Motive auf die andere Seite der Linie
   gilt=['motivlinie'], o='spiegeln', einheit='an/aus', std=False, quelle=V + ' (Handbuch: Orientation)',
   modus='einfach')
 G = 'Motivfüllung'
-Q = 'NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229'
+Q = 'NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229'
 P('objekt.motivfuellung.satz', G, 'Motivsatz', 'Motivsatz der CD oder eigener Satz', ebene='objekt',
-  gilt=['motivfuellung'], o='satz', einheit='Auswahl', std='Children', quelle=Q + ': 0x27b0 = Children',
+  gilt=['motivfuellung'], o='satz', einheit='Auswahl', std='NP004a', quelle=Q + ': Satz NP004a',
   modus='einfach')
 P('objekt.motivfuellung.motiv', G, 'Motiv', 'Motiv im Satz (Auswahl mit Vorschau)', ebene='objekt',
-  gilt=['motivfuellung'], o='motiv', einheit='Auswahl', std='901', quelle=Q + ': 0x27b1 = 901', modus='einfach')
+  gilt=['motivfuellung'], o='motiv', einheit='Auswahl', std='K0001a', quelle=Q + ': Motiv K0001a', modus='einfach')
 P('objekt.motivfuellung.groesse', G, 'Motivgröße', 'Länge der Grundlinie eines Motivs; Höhe und Abstände wachsen mit',
   ebene='objekt', gilt=['motivfuellung'], o='groesse', einheit='mm', std=None,
-  quelle=Q + ': 0x27df = 2786 = Grundlinie von 901; ohne Angabe wie im Motivsatz', modus='einfach')
+  quelle=Q + ': 0x3ab8 = 2158 (12,0 mm, Motiv K0001a); ohne Angabe wie im Motivsatz', modus='einfach')
 P('objekt.motivfuellung.spaltenabstand', G, 'Spaltenabstand', 'Abstand der Motive in einer Reihe (column spacing)',
   ebene='objekt', gilt=['motivfuellung'], o='spaltenabstand', einheit='mm', std=None,
-  quelle=Q + ': 0x27b9 = 2781 ≈ Breite des Motivs (15,45 mm); ohne Angabe Breite', modus='experte')
+  quelle=Q + ': 0x27b9 = 2158 = Kante an Kante; ohne Angabe Breite des Motivs', modus='experte')
 P('objekt.motivfuellung.reihenabstand', G, 'Reihenabstand', 'Abstand der Reihen (row spacing)', ebene='objekt',
   gilt=['motivfuellung'], o='reihenabstand', einheit='mm', std=None,
-  quelle=Q + ': 0x27b6 = 1000 ≈ Höhe des Motivs (5,55 mm); ohne Angabe Höhe', modus='experte')
+  quelle=Q + ': 0x27b6 = 2158 = Kante an Kante; ohne Angabe Höhe des Motivs', modus='experte')
 P('objekt.motivfuellung.versatz', G, 'Reihenversatz', 'jede Reihe um so viel weiter verschoben (row offset)',
   ebene='objekt', gilt=['motivfuellung'], o='versatz', einheit='mm', std=0,
   quelle=Q + ': Leitmotiv-Matrix 0x3abe = Einheitsmatrix (kein Versatz)', modus='experte')
 P('objekt.motivfuellung.winkel', G, 'Drehung der Reihen', 'dreht das Raster (Stichwinkel wirkt nicht)',
   ebene='objekt', gilt=['motivfuellung'], o='winkel', einheit='°', std=0, bereich=[-180, 180],
   quelle=Q + ': „The stitch angle has no effect on pattern layout“', modus='experte')
+G = 'Craft Stitches'
+Q = 'NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24)'
+P('objekt.rueckstich.laenge', G, 'Länge', 'Länge eines Rückstichs (Abstand der Punkte entlang der Linie)',
+  ebene='objekt', gilt=['rueckstich'], o='laenge', einheit='mm', std=3.0, bereich=[0.5, 12.7],
+  quelle=Q + ': 0x2851 = 540 = 3,0 mm (hoch)', modus='einfach')
+P('objekt.rueckstich.striche', G, 'Striche', 'Fäden je Stich: 3 (Hin, Rück, Hin) oder 5', ebene='objekt',
+  gilt=['rueckstich'], o='striche', einheit='Anzahl', std=3, bereich=[3, 5], quelle=Q + ': 0x2854 = 3 (hoch)',
+  modus='experte')
+P('objekt.rueckstich.staerke', G, 'Stärke', 'Seitenversatz der Striche – wie dick die Linie wirkt', ebene='objekt',
+  gilt=['rueckstich'], o='staerke', einheit='mm', std=0.2, bereich=[0, 1], quelle=Q + ': 0x2852 = 36 = 0,2 mm (hoch)',
+  modus='experte')
+P('objekt.rueckstich.ueberlappung', G, 'Überlappung', 'wie weit ein Stich in den vorigen zurückreicht',
+  ebene='objekt', gilt=['rueckstich'], o='ueberlappung', einheit='%', std=50, bereich=[0, 100],
+  quelle=Q + ': 0x2853 = 0,5 (hoch)', modus='experte')
+P('objekt.stielstich.breite', G, 'Breite', 'Breite der Kordel', ebene='objekt', gilt=['stielstich'], o='breite',
+  einheit='mm', std=2.0, bereich=[0.5, 10], quelle=Q + ': 0x2857 = 360 = 2,0 mm (Zuordnung mittel)', modus='einfach')
+P('objekt.stielstich.abstand', G, 'Abstand', 'Abstand der Stiche entlang der Linie', ebene='objekt',
+  gilt=['stielstich'], o='abstand', einheit='mm', std=1.5, bereich=[0.2, 10],
+  quelle=Q + ': 0x2859 = 270 = 1,5 mm (mittel)', modus='einfach')
+P('objekt.stielstich.winkel', G, 'Stichwinkel', 'Neigung der Stiche zur Linie; in engen Kurven steiler',
+  ebene='objekt', gilt=['stielstich'], o='winkel', einheit='°', std=50, bereich=[10, 90],
+  quelle=Q + ': 0x285a = 50° (mittel)', modus='experte')
+P('objekt.stielstich.dreifach', G, 'Dreifach', 'jeder Stich mit Hin-Rück-Hin – Seil-Optik', ebene='objekt',
+  gilt=['stielstich'], o='dreifach', einheit='an/aus', std=True, quelle=Q + ': 0x2858 = 3 (mittel)', modus='experte')
+P('objekt.stielstich.staerke', G, 'Stärke', 'Versatz der Dreifach-Striche', ebene='objekt', gilt=['stielstich'],
+  o='staerke', einheit='mm', std=0.2, bereich=[0, 1], quelle=Q + ': 0x2856 = 36 = 0,2 mm (mittel)', modus='experte')
+P('objekt.stippling.abstand', G, 'Abstand', 'Abstand der Bahnen der mäandernden Linie', ebene='objekt',
+  gilt=['stippling'], o='abstand', einheit='mm', std=3.0, bereich=[0.5, 20],
+  quelle='Handbuch S. 242–243 (Beispielwerte, niedrig); Verfahren ' + V, modus='einfach')
+P('objekt.stippling.laenge', G, 'Stichlänge', 'Länge der Laufstiche', ebene='objekt', gilt=['stippling'],
+  o='laenge', einheit='mm', std=2.0, bereich=[0.5, 12.7], quelle='Handbuch S. 242–243 (niedrig)', modus='einfach')
+P('objekt.blackwork.stich', G, 'Stichart (Blackwork)', 'Stichart der verbundenen Linien; Werte wie beim Objekt '
+  'dieser Art', ebene='objekt', gilt=['blackwork'], o='stich', einheit='Auswahl', std='lauf',
+  werte=['lauf', 'dreifach', 'rueckstich', 'stielstich'],
+  quelle='Handbuch S. 131–132 (Blackwork Run: Einfach-/Dreifachlauf, Stielstich, Rückstich); Reihenfolge ' + V,
+  modus='einfach')
 G = 'Effekte'
 Q = 'IMPORT.DLL Effekt-Datensätze (Analyse_Teil3/23)'
 FX = ['tatami', 'muster', 'satin', 'satinlinie', 'satinflaeche']

@@ -22,7 +22,7 @@ pub struct WirksamerWert {
     /// Anzeige statt `wert`, z. B. „auto 0,40–0,51“
     pub text: Option<String>,
     /// Herkunft: `stil` (Stoff/Design/Objekt-Einstellungen), `alphabet`, `muster` (Füllmuster), `motivsatz`,
-    /// `vorlage` (feste Vorlage des Originals), `schrift` (Computer-Schrift)
+    /// `vorlage` (feste Vorlage des Originals), `schrift` (Computer-Schrift), `handbuch` (Beispielwert des Handbuchs)
     pub herkunft: String,
 }
 
@@ -119,6 +119,20 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
     };
     match &o {
         ObjektJson::Lauf(_) | ObjektJson::Dreifach(_) => w.push(wert("laenge", json!(e.lauf.laenge), "stil")),
+        ObjektJson::Rueckstich(_) => rueckstich_werte(&mut w),
+        ObjektJson::Stielstich(_) => stielstich_werte(&mut w),
+        ObjektJson::Stippling(_) => {
+            use crate::sticharten::stippling as s;
+            w.push(wert("laenge", json!(s::LAENGE), "handbuch"));
+            w.push(wert("abstand", json!(s::ABSTAND), "handbuch"));
+        }
+        ObjektJson::Blackwork(b) => match b.stich {
+            crate::format::BlackworkStich::Lauf | crate::format::BlackworkStich::Dreifach => {
+                w.push(wert("laenge", json!(e.lauf.laenge), "stil"))
+            }
+            crate::format::BlackworkStich::Rueckstich => rueckstich_werte(&mut w),
+            crate::format::BlackworkStich::Stielstich => stielstich_werte(&mut w),
+        },
         ObjektJson::Satin(s) => {
             let breiten = match aufgeloest {
                 Some(ObjektArt::Satin { seite_a, seite_b, .. }) if !seite_a.is_empty() => {
@@ -254,6 +268,25 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
         }
     }
     Ok(w)
+}
+
+/// Rückstich: Werte des Stils 0x2850 (Überlappung in %).
+fn rueckstich_werte(w: &mut Vec<WirksamerWert>) {
+    use crate::sticharten::handstich as h;
+    w.push(wert("laenge", json!(h::RUECK_LAENGE), "stil"));
+    w.push(wert("staerke", json!(h::RUECK_STAERKE), "stil"));
+    w.push(wert("ueberlappung", json!(h::RUECK_UEBERLAPPUNG * 100.0), "stil"));
+    w.push(wert("striche", json!(h::RUECK_STRICHE), "stil"));
+}
+
+/// Stielstich: Werte des Stils 0x2855.
+fn stielstich_werte(w: &mut Vec<WirksamerWert>) {
+    use crate::sticharten::handstich as h;
+    w.push(wert("breite", json!(h::STIEL_BREITE), "stil"));
+    w.push(wert("abstand", json!(h::STIEL_ABSTAND), "stil"));
+    w.push(wert("winkel", json!(h::STIEL_WINKEL), "stil"));
+    w.push(wert("dreifach", json!(h::STIEL_DREIFACH), "stil"));
+    w.push(wert("staerke", json!(h::STIEL_STAERKE), "stil"));
 }
 
 /// Werte, die Text, Computer-Schrift und Monogramm gemeinsam haben: Wort-/Zeilenabstand (Vorlage), Mustergröße und

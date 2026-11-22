@@ -1,5 +1,5 @@
 """Klassen der Effekte in IMPORT.DLL finden: Vtabellen mit CreateData-Thunks → Klassenname (Analyse_Teil3/23 §1).
-Aufruf: python import_klassen.py IMPORT.DLL"""
+Aufruf: python import_klassen.py IMPORT.DLL KLASSE [KLASSE …] (hex, z. B. 0x32 0x34)"""
 import sys, struct, re, pefile, capstone
 pe = pefile.PE(sys.argv[1]); base = pe.OPTIONAL_HEADER.ImageBase
 iat = {}

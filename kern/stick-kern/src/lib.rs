@@ -21,6 +21,7 @@ macro_rules! auswahl {
 
 pub mod applikation;
 pub mod aussparen;
+pub mod blackwork;
 pub mod design;
 pub mod effekte;
 pub mod ein_ausstich;

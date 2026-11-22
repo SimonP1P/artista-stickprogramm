@@ -15,6 +15,25 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Craft Stitches (Nachtauftrag N3, 4b.9; Commit COMMIT_N3)
+- **Neue Objektarten** (`format.rs`): `rueckstich` (`punkte`, `geschlossen`, `laenge`, `staerke`, `ueberlappung` in %,
+  `striche` 3|5), `stielstich` (`punkte`, `geschlossen`, `breite`, `abstand`, `winkel`, `dreifach`, `staerke`),
+  `stippling` (`umriss`, `loecher`, `laenge`, `abstand`), `blackwork` (`linien` = Liste von Formen, `stich`
+  `lauf`/`dreifach`/`rueckstich`/`stielstich` und deren Werte). Ohne Angabe gelten die Werte des Originals
+  (`objekt_werte` liefert sie). Werte außerhalb des Bereichs → Fehler mit Objektnummer.
+- `stichart_aendern` kennt `rueckstich`, `stielstich` (Umriss) und `stippling` (Füllung).
+- **Neue Befehle** `craft_vorlagen` (Liste der 8 Vorlagen der Craft-Stitch-Leiste: `id`, `name`, `original`, `form`
+  „linie“/„flaeche“, `felder`, `beschreibung`) und `blackwork_lauf` (`{design, objekte}` → `{design, objekt,
+  hinweise}`).
+- **Geänderter Standard (Bedeutung):** `motivlinie` und `motivfuellung` ohne `satz`/`motiv` nehmen jetzt **NP004a /
+  K0001a** wie das Original (vorher Children 901 bzw. Heirloom 705; Bericht 20 hatte die Stilteile vertauscht, Bericht
+  24 §1). Format-Version nicht erhöht: Die Oberfläche schreibt `satz`/`motiv` bei neuen Objekten nicht mehr aus, ältere
+  Dateien mit ausgeschriebenem Satz bleiben gleich; nur Dateien ohne Angabe sticken anders.
+- **Oberfläche (umgesetzt):** Einfügen → „Craft Stitches“ (Vorlagen aus `craft_vorlagen`, Linie bzw. Kreis in der
+  Rahmenmitte), Stichart-Menüs Umriss/Füllung mit Rückstich, Stielstich, Stippling, Inspektor-Felder (oben Länge/Breite/
+  Abstand, Feinheiten unter X), Anordnen → „Blackwork Run“ (ab zwei geeigneten Linien), Knoten-Werkzeug je
+  Blackwork-Linie, Icons; „Craft Stitches“ aus „Kommt noch“ entfernt.
+
 ## 22.11.2026 – Effekte und Farben mischen (Nachtauftrag N2, 4b.8; Commit 47fd38a)
 - **Neues Feld `effekte`** an `tatami`, `muster`, `satin`, `satinlinie`, `satinflaeche` (`format.rs` `EffekteJson`,
   Kern `stick-kern::effekte`): `verlauf` {`profil` (8 Werte, Standard `linear`), `min` 0,4, `max` 2,0 mm} · `rand`

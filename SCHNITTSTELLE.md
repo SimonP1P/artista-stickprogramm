@@ -270,9 +270,9 @@ Motivlinie (Handbuch Kap. 25 „Pattern Run“): ein Motiv aus einem Motivsatz (
 | `abstand` | number |  | – | Wiederholabstand in mm („Spacing“); ohne Angabe = Größe (Motive stoßen aneinander) |
 | `geschlossen` | boolean |  | `false` | Linie schließen (Motive ringsum) |
 | `groesse` | number |  | – | Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz |
-| `motiv` | string |  | `"705"` | Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung) |
+| `motiv` | string |  | `"K0001a"` | Motiv im Satz, z. B. „705“ (Standard „K0001a“ wie das Original) |
 | `punkte` | PunktAngabe | ja | – |  |
-| `satz` | string |  | `"Heirloom"` | Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung) |
+| `satz` | string |  | `"NP004a"` | Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „NP004a“ wie das Original, `<PRESET_STANDARD_MOTIF_RUN>`) |
 | `spiegeln` | boolean |  | `false` | Motive auf die andere Seite der Linie spiegeln |
 
 ### `motivfuellung` – Motivfüllung (Motiv aus einem Motivsatz in Reihen über die Fläche)
@@ -283,13 +283,68 @@ Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsa
 |---|---|---|---|---|
 | `groesse` | number |  | – | Länge eines Motivs (Grundlinie) in mm; ohne Angabe: Größe im Motivsatz |
 | `loecher` | PunktAngabe[] |  | – |  |
-| `motiv` | string |  | `"901"` | Motiv im Satz (Standard „901“ wie das Original) |
+| `motiv` | string |  | `"K0001a"` | Motiv im Satz (Standard „K0001a“ wie das Original) |
 | `reihenabstand` | number |  | – | Abstand der Reihen in mm („row spacing“); ohne Angabe: Höhe des Motivs |
-| `satz` | string |  | `"Children"` | Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original) |
+| `satz` | string |  | `"NP004a"` | Motivsatz (Befehl `motive_liste`; Standard „NP004a“ wie das Original, `<PRESET_STANDARD_MOTIF_FILL>`) |
 | `spaltenabstand` | number |  | – | Abstand der Motive in einer Reihe in mm („column spacing“); ohne Angabe: Breite des Motivs |
 | `umriss` | PunktAngabe | ja | – |  |
 | `versatz` | number |  | `0.0` | Reihenversatz in mm („row offset“): jede Reihe um so viel weiter verschoben als die vorige (0 = Spalten genau untereinander; halber Spaltenabstand = versetzt wie Ziegel) |
 | `winkel` | number |  | `0.0` | Drehung der Reihen in Grad (der Stichwinkel wirkt hier nicht, Handbuch S. 227) |
+
+### `rueckstich` – Rückstich (Backstitch)
+
+Rückstich (Backstitch, Craft Stitch 0x2850): Stiche vor und zurück mit Überlappung, wie von Hand gestickt – eine feine, durchgehende Linie. Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `geschlossen` | boolean |  | `false` | Linie schließen (zurück zum ersten Punkt) |
+| `laenge` | number |  | – | Stichlänge in mm (0,5 … 12,7; Original 3,0) |
+| `punkte` | PunktAngabe | ja | – |  |
+| `staerke` | number |  | – | Fadenstärke in mm = Abstand der Hin- und Rückstiche (0 … 1; Original 0,2) |
+| `striche` | number |  | – | Striche je Stich: 3 oder 5 (Original 3) |
+| `ueberlappung` | number |  | – | Überlappung in % des Stichs, um die jeder Rückstich in den vorigen greift (0 … 100; Original 50) |
+
+### `stielstich` – Stielstich (Stemstitch)
+
+Stielstich (Stemstitch, Craft Stitch 0x2855): schräge, sich überlappende Stiche zu einer kordelartigen Linie. Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `abstand` | number |  | – | Abstand der Stiche in mm, quer zu den Stichen gemessen (0,2 … 10; Original 1,5) |
+| `breite` | number |  | – | Linienstärke in mm = Breite der Kordel (0,5 … 10; Original 2,0) |
+| `dreifach` | boolean |  | – | dreifach („Triple“: drei Fäden nebeneinander) statt einfach (Original: dreifach) |
+| `geschlossen` | boolean |  | `false` | Linie schließen (zurück zum ersten Punkt) |
+| `punkte` | PunktAngabe | ja | – |  |
+| `staerke` | number |  | – | Fadenstärke in mm = Abstand der drei Fäden bei dreifach (0 … 1; Original 0,2) |
+| `winkel` | number |  | – | Winkel der Stiche zur Linie in Grad (10 … 90; Original 50) |
+
+### `stippling` – Stippling (mäandernde Laufstichfüllung)
+
+Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht kreuzt.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `abstand` | number |  | – | Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0) |
+| `laenge` | number |  | – | Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0) |
+| `loecher` | PunktAngabe[] |  | – |  |
+| `umriss` | PunktAngabe | ja | – |  |
+
+### `blackwork` – Blackwork Run: mehrere Linien als ein automatisch geordneter Zug
+
+Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** Objekt; die Reihenfolge ergibt sich automatisch (ein Zug je zusammenhängendem Netz, Abschnitte nur doppelt, wo es nötig ist, ein Ein- und ein Ausstich). Jede Linie bleibt einzeln formbar. Werte der Stichart wie bei `lauf`, `rueckstich`, `stielstich`.
+
+| Feld | Typ | Pflicht | Standard | Beschreibung |
+|---|---|---|---|---|
+| `abstand` | number |  | – | Stielstich: Abstand in mm (1,5) |
+| `breite` | number |  | – | Stielstich: Linienstärke in mm (2,0) |
+| `dreifach` | boolean |  | – | Stielstich: dreifach (ja) |
+| `laenge` | number |  | – | Stichlänge in mm (Lauf/Dreifach: Stil 2,5; Rückstich 3,0) |
+| `linien` | PunktAngabe[] | ja | – | die Linien (mindestens eine) |
+| `staerke` | number |  | – | Rückstich/Stielstich: Fadenstärke in mm (0,2) |
+| `stich` | BlackworkStich |  | `"lauf"` | Stichart aller Linien (Standard Laufstich) |
+| `striche` | number |  | – | Rückstich: 3 oder 5 Striche (3) |
+| `ueberlappung` | number |  | – | Rückstich: Überlappung in % (50) |
+| `winkel` | number |  | – | Stielstich: Winkel in Grad (50) |
 
 ## 3. Auswahlwerte
 
@@ -302,6 +357,13 @@ Motivfüllung (Handbuch Kap. 25 „Pattern Fill“): ein Motiv aus einem Motivsa
 
 - `"vorgeschnitten"` – Stoff vorgeschnitten („Pre-cut“, Standard)
 - `"zuschneiden"` – im Rahmen zuschneiden („Trim in Place“, mit Schnittlinie)
+
+**BlackworkStich** – Stichart eines Blackwork-Zugs
+
+- `"lauf"` – Laufstich (Standard)
+- `"dreifach"` – Dreifachstich
+- `"rueckstich"` – Rückstich
+- `"stielstich"` – Stielstich
 
 **Ende** – Endpunkt des Designs (Dialog „Start and End“)
 
@@ -572,6 +634,8 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `beispiel_design` | Leer | DesignWert | Beispieldesign mit allen Sticharten der ersten Ausbaustufe |
 | `bild_umwandeln` | BildEingabe | BildErgebnis | Bild in Stickflächen umwandeln (neues Design) |
 | `bild_vorschau` | BildEingabe | BildVorschau | Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln |
+| `blackwork_lauf` | BlackworkEingabe | BlackworkErgebnis | Blackwork Run: gewählte Linien zu einem automatisch geordneten Objekt zusammenfassen (Stichart des ersten) |
+| `craft_vorlagen` | Leer | CraftVorlage[] | Vorlagen der Craft-Stitch-Leiste (Rückstich, Stielstich, Blackwork, Candlewicking, Lacework, Stippling) mit den Werten des Originals |
 | `datei_lesen` | Pfad | string | Textdatei lesen |
 | `design_berechnen` | DesignEingabe | Ergebnis | Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet) |
 | `design_einfuegen` | EinfuegenEingabe | EinfuegenErgebnis | Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element) |
@@ -609,7 +673,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `schrift_wechseln` | SchriftWechselEingabe | ObjektWert | Schrift eines Texts wechseln: Original-Alphabet (`text`) ↔ Computer-Schrift (`ttf`), Text und Satz bleiben |
 | `schriften_liste` | SchriftenListeEingabe | SchriftInfo[] | installierte Computer-Schriften (TrueType/OpenType) und heruntergeladene Google Fonts |
 | `step_muster_liste` | Leer | StepMusterInfo[] | Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln |
-| `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt |
+| `stichart_aendern` | StichartEingabe | StichartErgebnis | Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt |
 | `stoffe_liste` | Leer | StoffInfo[] | Stoffe (8 + Software Defaults) mit den wichtigsten Werten |
 | `svg_lesen` | SvgEingabe | SvgErgebnis | SVG-Datei einlesen (z. B. aus Inkscape): Stichart nach Breite wie EasyStitch, neues Design |
 | `text_speichern` | TextDatei | null | Textdatei schreiben |

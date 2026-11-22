@@ -83,7 +83,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "garn",
@@ -161,7 +165,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "transform.skalieren",
    "json_objekt": "transform.skalieren",
@@ -197,7 +205,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "transform.drehen",
    "json_objekt": "transform.drehen",
@@ -233,7 +245,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "transform.spiegeln",
    "json_objekt": "transform.spiegeln",
@@ -270,7 +286,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "transform.schraeg",
    "json_objekt": "transform.schraeg",
@@ -306,7 +326,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "transform.verschieben",
    "json_objekt": "transform.verschieben",
@@ -342,7 +366,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.auto_spacing",
    "json_objekt": "einstellungen.satin.auto_spacing",
@@ -419,7 +447,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.zugausgleich",
    "json_objekt": "einstellungen.satin.zugausgleich",
@@ -455,7 +487,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.zickzack_abstand",
    "json_objekt": "einstellungen.satin.zickzack_abstand",
@@ -511,7 +547,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.kurzstiche.schwelle",
    "json_objekt": "einstellungen.satin.kurzstiche.schwelle",
@@ -544,7 +584,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.kurzstiche.zufall",
    "json_objekt": "einstellungen.satin.kurzstiche.zufall",
@@ -577,7 +621,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.kurzstiche.max_gruppe",
    "json_objekt": "einstellungen.satin.kurzstiche.max_gruppe",
@@ -610,7 +658,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.satin.kurzstiche.faktoren",
    "json_objekt": "einstellungen.satin.kurzstiche.faktoren",
@@ -726,7 +778,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.abstand",
    "json_objekt": "einstellungen.tatami.abstand",
@@ -762,7 +818,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.laenge",
    "json_objekt": "einstellungen.tatami.laenge",
@@ -798,7 +858,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.min_rand",
    "json_objekt": "einstellungen.tatami.min_rand",
@@ -834,7 +898,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.versatz",
    "json_objekt": "einstellungen.tatami.versatz",
@@ -867,7 +935,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.versatz2",
    "json_objekt": "einstellungen.tatami.versatz2",
@@ -900,7 +972,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.zufall",
    "json_objekt": "einstellungen.tatami.zufall",
@@ -957,7 +1033,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.zugausgleich",
    "json_objekt": "einstellungen.tatami.zugausgleich",
@@ -993,7 +1073,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.laufweg_laenge",
    "json_objekt": "einstellungen.tatami.laufweg_laenge",
@@ -1026,7 +1110,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.laufweg.min_laenge",
    "json_objekt": "einstellungen.tatami.laufweg.min_laenge",
@@ -1059,7 +1147,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.tatami.laufweg.sehnenabstand",
    "json_objekt": "einstellungen.tatami.laufweg.sehnenabstand",
@@ -1221,7 +1313,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.lauf.min_laenge",
    "json_objekt": "einstellungen.lauf.min_laenge",
@@ -1254,7 +1350,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.lauf.variabel",
    "json_objekt": "einstellungen.lauf.variabel",
@@ -1287,7 +1387,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.lauf.sehnenabstand",
    "json_objekt": "einstellungen.lauf.sehnenabstand",
@@ -1320,7 +1424,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.lauf.ecke_grad",
    "json_objekt": "einstellungen.lauf.ecke_grad",
@@ -1353,7 +1461,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.auto_an",
    "json_objekt": "einstellungen.unterlage.auto_an",
@@ -1386,7 +1498,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.auto_art",
    "json_objekt": "einstellungen.unterlage.auto_art",
@@ -1456,7 +1572,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.rand",
    "json_objekt": "einstellungen.unterlage.rand",
@@ -1492,7 +1612,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.zugausgleich",
    "json_objekt": "einstellungen.unterlage.zugausgleich",
@@ -1525,7 +1649,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_laenge",
    "json_objekt": "einstellungen.unterlage.edge_walk_laenge",
@@ -1558,7 +1686,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_laenge",
    "json_objekt": "einstellungen.unterlage.mittellauf_laenge",
@@ -1591,7 +1723,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.zickzack_laenge",
    "json_objekt": "einstellungen.unterlage.zickzack_laenge",
@@ -1624,7 +1760,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_laenge",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_laenge",
@@ -1657,7 +1797,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.rueck_lauf_laenge",
    "json_objekt": "einstellungen.unterlage.rueck_lauf_laenge",
@@ -1690,7 +1834,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.tatami_abstand",
    "json_objekt": "einstellungen.unterlage.tatami_abstand",
@@ -1723,7 +1871,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.tatami_laenge",
    "json_objekt": "einstellungen.unterlage.tatami_laenge",
@@ -1756,7 +1908,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf",
@@ -1789,7 +1945,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.tatami_winkel_versatz",
    "json_objekt": "einstellungen.unterlage.tatami_winkel_versatz",
@@ -1822,7 +1982,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.edge_walk_lauf.min_laenge",
@@ -1855,7 +2019,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.edge_walk_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.edge_walk_lauf.sehnenabstand",
@@ -1888,7 +2056,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.mittellauf_lauf.min_laenge",
@@ -1921,7 +2093,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.mittellauf_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.mittellauf_lauf.sehnenabstand",
@@ -1954,7 +2130,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.zickzack_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.zickzack_lauf.min_laenge",
@@ -1987,7 +2167,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.zickzack_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.zickzack_lauf.sehnenabstand",
@@ -2020,7 +2204,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_lauf.min_laenge",
@@ -2053,7 +2241,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.doppelzickzack_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.doppelzickzack_lauf.sehnenabstand",
@@ -2086,7 +2278,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf_lauf.min_laenge",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf_lauf.min_laenge",
@@ -2119,7 +2315,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.unterlage.tatami_randlauf_lauf.sehnenabstand",
    "json_objekt": "einstellungen.unterlage.tatami_randlauf_lauf.sehnenabstand",
@@ -2152,7 +2352,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.anfang_immer",
    "json_objekt": "einstellungen.verbinder.anfang_immer",
@@ -2185,7 +2389,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.anfang_nach_trim_farbwechsel",
    "json_objekt": "einstellungen.verbinder.anfang_nach_trim_farbwechsel",
@@ -2218,7 +2426,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.anfang_bei_langem_verbinder",
    "json_objekt": "einstellungen.verbinder.anfang_bei_langem_verbinder",
@@ -2251,7 +2463,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.anfang_verbinder_ab",
    "json_objekt": "einstellungen.verbinder.anfang_verbinder_ab",
@@ -2284,7 +2500,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.ende_immer",
    "json_objekt": "einstellungen.verbinder.ende_immer",
@@ -2317,7 +2537,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.ende_vor_trim_farbwechsel",
    "json_objekt": "einstellungen.verbinder.ende_vor_trim_farbwechsel",
@@ -2350,7 +2574,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.ende_bei_langem_verbinder",
    "json_objekt": "einstellungen.verbinder.ende_bei_langem_verbinder",
@@ -2383,7 +2611,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.ende_verbinder_ab",
    "json_objekt": "einstellungen.verbinder.ende_verbinder_ab",
@@ -2416,7 +2648,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.letztes_objekt_vernaehen",
    "json_objekt": "einstellungen.verbinder.letztes_objekt_vernaehen",
@@ -2449,7 +2685,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.trim_ab",
    "json_objekt": "einstellungen.verbinder.trim_ab",
@@ -2482,7 +2722,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.vernaeh_stichlaenge",
    "json_objekt": "einstellungen.verbinder.vernaeh_stichlaenge",
@@ -2515,7 +2759,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": "einstellungen.verbinder.vernaeh_stiche",
    "json_objekt": "einstellungen.verbinder.vernaeh_stiche",
@@ -2548,7 +2796,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "auto_jump",
@@ -2581,7 +2833,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "auto_jump.max",
@@ -2617,7 +2873,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "auto_jump.sprung",
@@ -2687,7 +2947,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "doppellauf",
@@ -3013,7 +3277,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "einstich",
@@ -3046,7 +3314,11 @@
     "monogramm",
     "knopfloch",
     "motivlinie",
-    "motivfuellung"
+    "motivfuellung",
+    "rueckstich",
+    "stielstich",
+    "stippling",
+    "blackwork"
    ],
    "json_design": null,
    "json_objekt": "ausstich",
@@ -3457,11 +3729,11 @@
    "json_design": null,
    "json_objekt": "satz",
    "einheit": "Auswahl",
-   "standard": "Heirloom",
+   "standard": "NP004a",
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "Befehl motive_liste; Standard eigene Festlegung",
+   "quelle": "Befehl motive_liste; Standard NORMAL.AMT <PRESET_STANDARD_MOTIF_RUN> 0x2798 (Analyse_Teil3/24 §1)",
    "modus": "einfach"
   },
   {
@@ -3476,11 +3748,11 @@
    "json_design": null,
    "json_objekt": "motiv",
    "einheit": "Auswahl",
-   "standard": "705",
+   "standard": "K0001a",
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "Befehl motivsatz_motive; Standard eigene Festlegung",
+   "quelle": "Befehl motivsatz_motive; Standard <PRESET_STANDARD_MOTIF_RUN> (Analyse_Teil3/24 §1)",
    "modus": "einfach"
   },
   {
@@ -3552,11 +3824,11 @@
    "json_design": null,
    "json_objekt": "satz",
    "einheit": "Auswahl",
-   "standard": "Children",
+   "standard": "NP004a",
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b0 = Children",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: Satz NP004a",
    "modus": "einfach"
   },
   {
@@ -3571,11 +3843,11 @@
    "json_design": null,
    "json_objekt": "motiv",
    "einheit": "Auswahl",
-   "standard": "901",
+   "standard": "K0001a",
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b1 = 901",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: Motiv K0001a",
    "modus": "einfach"
   },
   {
@@ -3594,7 +3866,7 @@
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27df = 2786 = Grundlinie von 901; ohne Angabe wie im Motivsatz",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: 0x3ab8 = 2158 (12,0 mm, Motiv K0001a); ohne Angabe wie im Motivsatz",
    "modus": "einfach"
   },
   {
@@ -3613,7 +3885,7 @@
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b9 = 2781 ≈ Breite des Motivs (15,45 mm); ohne Angabe Breite",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: 0x27b9 = 2158 = Kante an Kante; ohne Angabe Breite des Motivs",
    "modus": "experte"
   },
   {
@@ -3632,7 +3904,7 @@
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: 0x27b6 = 1000 ≈ Höhe des Motivs (5,55 mm); ohne Angabe Höhe",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: 0x27b6 = 2158 = Kante an Kante; ohne Angabe Höhe des Motivs",
    "modus": "experte"
   },
   {
@@ -3651,7 +3923,7 @@
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: Leitmotiv-Matrix 0x3abe = Einheitsmatrix (kein Versatz)",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: Leitmotiv-Matrix 0x3abe = Einheitsmatrix (kein Versatz)",
    "modus": "experte"
   },
   {
@@ -3673,8 +3945,271 @@
    ],
    "werte": [],
    "stoff": false,
-   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x2798 (Analyse_Teil3/20 §2/§4); Handbuch S. 227–229: „The stitch angle has no effect on pattern layout“",
+   "quelle": "NORMAL.AMT <PRESET_STANDARD_MOTIF_FILL> 0x27ee (Analyse_Teil3/24 §1, korrigiert Bericht 20); Handbuch S. 227–229: „The stitch angle has no effect on pattern layout“",
    "modus": "experte"
+  },
+  {
+   "id": "objekt.rueckstich.laenge",
+   "gruppe": "Craft Stitches",
+   "name": "Länge",
+   "wirkung": "Länge eines Rückstichs (Abstand der Punkte entlang der Linie)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "rueckstich"
+   ],
+   "json_design": null,
+   "json_objekt": "laenge",
+   "einheit": "mm",
+   "standard": 3.0,
+   "bereich": [
+    0.5,
+    12.7
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2851 = 540 = 3,0 mm (hoch)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.rueckstich.striche",
+   "gruppe": "Craft Stitches",
+   "name": "Striche",
+   "wirkung": "Fäden je Stich: 3 (Hin, Rück, Hin) oder 5",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "rueckstich"
+   ],
+   "json_design": null,
+   "json_objekt": "striche",
+   "einheit": "Anzahl",
+   "standard": 3,
+   "bereich": [
+    3,
+    5
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2854 = 3 (hoch)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.rueckstich.staerke",
+   "gruppe": "Craft Stitches",
+   "name": "Stärke",
+   "wirkung": "Seitenversatz der Striche – wie dick die Linie wirkt",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "rueckstich"
+   ],
+   "json_design": null,
+   "json_objekt": "staerke",
+   "einheit": "mm",
+   "standard": 0.2,
+   "bereich": [
+    0,
+    1
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2852 = 36 = 0,2 mm (hoch)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.rueckstich.ueberlappung",
+   "gruppe": "Craft Stitches",
+   "name": "Überlappung",
+   "wirkung": "wie weit ein Stich in den vorigen zurückreicht",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "rueckstich"
+   ],
+   "json_design": null,
+   "json_objekt": "ueberlappung",
+   "einheit": "%",
+   "standard": 50,
+   "bereich": [
+    0,
+    100
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2853 = 0,5 (hoch)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.stielstich.breite",
+   "gruppe": "Craft Stitches",
+   "name": "Breite",
+   "wirkung": "Breite der Kordel",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stielstich"
+   ],
+   "json_design": null,
+   "json_objekt": "breite",
+   "einheit": "mm",
+   "standard": 2.0,
+   "bereich": [
+    0.5,
+    10
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2857 = 360 = 2,0 mm (Zuordnung mittel)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.stielstich.abstand",
+   "gruppe": "Craft Stitches",
+   "name": "Abstand",
+   "wirkung": "Abstand der Stiche entlang der Linie",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stielstich"
+   ],
+   "json_design": null,
+   "json_objekt": "abstand",
+   "einheit": "mm",
+   "standard": 1.5,
+   "bereich": [
+    0.2,
+    10
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2859 = 270 = 1,5 mm (mittel)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.stielstich.winkel",
+   "gruppe": "Craft Stitches",
+   "name": "Stichwinkel",
+   "wirkung": "Neigung der Stiche zur Linie; in engen Kurven steiler",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stielstich"
+   ],
+   "json_design": null,
+   "json_objekt": "winkel",
+   "einheit": "°",
+   "standard": 50,
+   "bereich": [
+    10,
+    90
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x285a = 50° (mittel)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.stielstich.dreifach",
+   "gruppe": "Craft Stitches",
+   "name": "Dreifach",
+   "wirkung": "jeder Stich mit Hin-Rück-Hin – Seil-Optik",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stielstich"
+   ],
+   "json_design": null,
+   "json_objekt": "dreifach",
+   "einheit": "an/aus",
+   "standard": true,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2858 = 3 (mittel)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.stielstich.staerke",
+   "gruppe": "Craft Stitches",
+   "name": "Stärke",
+   "wirkung": "Versatz der Dreifach-Striche",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stielstich"
+   ],
+   "json_design": null,
+   "json_objekt": "staerke",
+   "einheit": "mm",
+   "standard": 0.2,
+   "bereich": [
+    0,
+    1
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2856 = 36 = 0,2 mm (mittel)",
+   "modus": "experte"
+  },
+  {
+   "id": "objekt.stippling.abstand",
+   "gruppe": "Craft Stitches",
+   "name": "Abstand",
+   "wirkung": "Abstand der Bahnen der mäandernden Linie",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stippling"
+   ],
+   "json_design": null,
+   "json_objekt": "abstand",
+   "einheit": "mm",
+   "standard": 3.0,
+   "bereich": [
+    0.5,
+    20
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch S. 242–243 (Beispielwerte, niedrig); Verfahren Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.stippling.laenge",
+   "gruppe": "Craft Stitches",
+   "name": "Stichlänge",
+   "wirkung": "Länge der Laufstiche",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "stippling"
+   ],
+   "json_design": null,
+   "json_objekt": "laenge",
+   "einheit": "mm",
+   "standard": 2.0,
+   "bereich": [
+    0.5,
+    12.7
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "Handbuch S. 242–243 (niedrig)",
+   "modus": "einfach"
+  },
+  {
+   "id": "objekt.blackwork.stich",
+   "gruppe": "Craft Stitches",
+   "name": "Stichart (Blackwork)",
+   "wirkung": "Stichart der verbundenen Linien; Werte wie beim Objekt dieser Art",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "blackwork"
+   ],
+   "json_design": null,
+   "json_objekt": "stich",
+   "einheit": "Auswahl",
+   "standard": "lauf",
+   "bereich": null,
+   "werte": [
+    "lauf",
+    "dreifach",
+    "rueckstich",
+    "stielstich"
+   ],
+   "stoff": false,
+   "quelle": "Handbuch S. 131–132 (Blackwork Run: Einfach-/Dreifachlauf, Stielstich, Rückstich); Reihenfolge Vorschlag (eigene Festlegung)",
+   "modus": "einfach"
   },
   {
    "id": "objekt.effekte.verlauf.profil",

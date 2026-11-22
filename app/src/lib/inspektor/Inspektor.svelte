@@ -45,6 +45,11 @@
     knopfloch: ["typ", "laenge", "winkel"],
     motivlinie: ["motiv", "groesse", "spiegeln", "geschlossen"],
     motivfuellung: ["motiv", "groesse", "spaltenabstand", "reihenabstand", "versatz", "winkel"],
+    // Craft Stitches (N3): Länge/Breite oben, Feinheiten (Stärke, Überlappung, Striche, Winkel …) unter X
+    rueckstich: ["laenge", "geschlossen"],
+    stielstich: ["breite", "abstand", "geschlossen"],
+    stippling: ["abstand", "laenge"],
+    blackwork: ["stich", "laenge"],
   };
   /** Motivfüllung: Winkel und Versatz meinen hier die Reihen */
   const MOTIVFUELLUNG_NAMEN: Record<string, string> = { winkel: "Drehung der Reihen", versatz: "Reihenversatz" };

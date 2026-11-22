@@ -36,9 +36,9 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | # | Schritt | Stand |
 |---|---|---|
 | N0 | Formen mit der Maus zeichnen (Experte): Klick Ecke / Rechtsklick Kurve, ⌫, Enter, Esc; Kreis/Oval, Rechteck (Strg = Quadrat), Säule paarweise; Kern-Form `pfad`; Knoten-Werkzeug Rechtsklick Ecke ↔ Kurve | ✅ 22.11. |
-| N1 | 4b.7 Motivfüllung (Standard Children 901 wie das Original, Abschneiden nach Handbuch) + eigene Motive (Anordnen → „Als Motiv speichern …“, löschen im Motiv-Dialog) | ✅ 22.11. |
+| N1 | 4b.7 Motivfüllung (Standard Children 901 – in N3 korrigiert auf NP004a K0001a, Abschneiden nach Handbuch) + eigene Motive (Anordnen → „Als Motiv speichern …“, löschen im Motiv-Dialog) | ✅ 22.11. |
 | N2 | 4b.8 Effekte: Verlauf (Gradient Fill, 8 Profile), ausgefranster Rand (Textured Edge), Welle (Wave Effect mit Leitlinie, im Knoten-Werkzeug formbar), Farben mischen (Color Blending, Dialog); Open Fill = Laufwege am Rand (schon so); Inspektor-Abschnitt „Effekte“ (Experte); Bericht `Analyse_Teil3/23` | ✅ 22.11. |
-| N3 | 4b.9 Craft Stitches (Blackwork, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling) | 🟡 in Arbeit: Analyse fertig – Rückstich `BackStitchFill::AddRunPoint` (MOD1 0x1001d960) und Stielstich `StemStitchFill` (0x1019d9e0/0x1019d6a0) entschlüsselt, Stilwerte 0x2850/0x2855; Blackwork/Candlewicking/Lacework = Motivlinie/-füllung mit `_BW004a`/`_CW004a`/`_LW004a` (`<PRESET_MOTIF_*>`); Stipple = Mittelachsen-Verfahren (nicht nachgebaut → eigener Mäander); Blackwork Run = Netz überlappender Linien (S. 131). Nächstes: Kern `sticharten/handstich.rs`, `stippling.rs`, `blackwork.rs`, Objektarten `rueckstich`/`stielstich`/`stippling`/`blackwork` |
+| N3 | 4b.9 Craft Stitches: **Rückstich** und **Stielstich** nach MOD1 (`sticharten/handstich.rs`), **Stippling** (eigener Mäander, `sticharten/stippling.rs`), **Blackwork Run** (Netz, Euler-Weg, `blackwork.rs`; Anordnen → „Blackwork Run“, Befehl `blackwork_lauf`), Einfügen → „Craft Stitches“ mit 8 Vorlagen (`craft_vorlagen`: Blackwork/Candlewicking-Rand und -Füllung, Lacework = Motivlinie/-füllung mit `_BW004a`/`_CW004a`/`_LW004a`); Objektarten `rueckstich`/`stielstich`/`stippling`/`blackwork`, auch über „Stichart wechseln“; **Korrektur:** 0x2798 = Motivlinie, 0x27ee = Motivfüllung, Standard beider **NP004a K0001a** (vorher Children 901/Heirloom 705); Bericht `Analyse_Teil3/24` | ✅ 22.11. |
 | N4 | 4b.10 Applikation Rest (Versatz, Partial Appliqué) | ⬜ |
 | N5 | 4b.11 Automatik (Bild → Umrisse/Satin, Magic Wand, PhotoSnap) + kürzeste Wege | ⬜ |
 | N6 | 4b.12 Anordnen (Ausrichten, Mirror-Merge, Kranz, Kaleidoskop) | ⬜ |
@@ -51,6 +51,11 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 - **Effekte (N2):** Wo der Verlauf beginnt und wie die gekrümmten Profile genau aussehen, ist eigene Festlegung
   (Messung nur linear, Bericht 23 §6). Reicht das, oder soll das Kalibrierblatt vor Ort einen Verlauf mitsticken?
   Beim Farben mischen bekommt die obere Lage automatisch keine Unterlage (Handbuch-Tipp) – so lassen?
+- **Craft Stitches (N3):** Stippling ist ein eigener Mäander (das Original rechnet über die Mittelachse, nicht
+  nachgebaut); Vorgaben 2,0 / 3,0 mm aus dem Handbuch-Beispiel. Gefällt das Bild, oder soll das Original-Verfahren
+  noch entschlüsselt werden? Beim Stielstich ist die Zuordnung Breite ↔ Abstand nur „mittel“ – ein Probestich vor Ort
+  (Kalibrierblatt) würde sie klären. Der Standard der Motive ist jetzt NP004a K0001a wie im Original (vorher Children
+  901 bzw. Heirloom 705) – alte Designs ohne Motivangabe sehen damit anders aus. In Ordnung?
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
@@ -285,7 +290,7 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ✅ 21.11.: 9 Typen = Zeichen von `ButtonHoles.ESB` (Teile `<L>`/`<U>`/`<B>`, Umrisse E/I/M), Länge/Raupenabstand/Winkel und Standardwerte (20 mm, 0,5 mm, 90°) aus MOD1, gegen `Samples/Reference/Buttonholes.ART` gemessen (Median 0,04–0,15 mm); `stick_kern::knopfloch`, `esb::knopfloecher_laden`, `"art": "knopfloch"`, CLI `stick knopfloecher`; Einarbeiten über `aussparen` mit dem Mittelumriss (Sicherheit niedrig, Bericht 19 §5). Dabei gefunden und für alle Satinsäulen umgesetzt: **Satin gerade quer + schräg vor** (`Analyse_Teil3/04` §5, Referenz-Stufe 11) |
 | 4b.7 | **Motive** | Pattern Run (Motivlinie) ✅ 21.11. (`Analyse_Teil3/20`), Pattern Fill (Motivfüllung) ⬜, eigene Muster/Sets (Kap. 25) ⬜ | 🟡 |
 | 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | ✅ 22.11. Loft (= Auto Jump mit kleinem Höchststich) · `effekte` (Verlauf, Rand, Welle) · `farben_mischen` · Open Fill = Laufwege am Rand (Bericht 23) |
-| 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ⬜ |
+| 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ✅ 22.11. (N3) Rückstich/Stielstich nach MOD1, Stippling + Blackwork Run eigene Festlegung, Vorlagen aus den Stilen; `Analyse_Teil3/24` |
 | 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ⬜ |
 | 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin – mit dem Baustein „Satin-Stichrichtung automatisch“ aus 4b.17 –, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 |
 | 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ⬜ |

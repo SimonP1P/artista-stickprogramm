@@ -235,6 +235,111 @@ export type BildVorschau = {
   hoehe_px: number;
 };
 
+/** Eingabe für `blackwork_lauf`. */
+export type BlackworkEingabe = {
+  design: DesignWert;
+  /** Nummern der Objekte (ab 0); das erste geeignete gibt Stichart, Farbe und Effekte vor */
+  objekte: number[];
+};
+
+/** Ergebnis von `blackwork_lauf`. */
+export type BlackworkErgebnis = {
+  /** geändertes Design */
+  design: DesignWert;
+  /** Hinweise (z. B. ausgelassene Objekte) */
+  hinweise: string[];
+  /** Nummer des neuen Blackwork-Objekts */
+  objekt: number;
+};
+
+/**
+ * Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** Objekt; die Reihenfolge ergibt sich
+ * automatisch (ein Zug je zusammenhängendem Netz, Abschnitte nur doppelt, wo es nötig ist, ein Ein- und ein
+ * Ausstich). Jede Linie bleibt einzeln formbar. Werte der Stichart wie bei `lauf`, `rueckstich`, `stielstich`.
+ */
+export type BlackworkJson = {
+  /** Stielstich: Abstand in mm (1,5) */
+  abstand?: number | null;
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /** Stielstich: Linienstärke in mm (2,0) */
+  breite?: number | null;
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /** Stielstich: dreifach (ja) */
+  dreifach?: boolean | null;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /** Stichlänge in mm (Lauf/Dreifach: Stil 2,5; Rückstich 3,0) */
+  laenge?: number | null;
+  /** die Linien (mindestens eine) */
+  linien: PunktAngabe[];
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  /** Rückstich/Stielstich: Fadenstärke in mm (0,2) */
+  staerke?: number | null;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /**
+   * Stichart aller Linien (Standard Laufstich)
+   * @default "lauf"
+   */
+  stich?: BlackworkStich;
+  /** Rückstich: 3 oder 5 Striche (3) */
+  striche?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /** Rückstich: Überlappung in % (50) */
+  ueberlappung?: number | null;
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  /** Stielstich: Winkel in Grad (50) */
+  winkel?: number | null;
+};
+
+/** Stichart eines Blackwork-Zugs */
+export type BlackworkStich = ("lauf" | "dreifach" | "rueckstich" | "stielstich");
+
 /** Blanket (Langettenstich, 0x2727) entlang einer Linie. */
 export type BlanketJson = {
   /** Abstand der Zähne in mm (Vorlage 2,0) */
@@ -314,6 +419,22 @@ export type BuchstabeJson = {
    * @default []
    */
   winkellinien?: Punkt[][];
+};
+
+/** Eine Vorlage der Craft-Stitch-Leiste. */
+export type CraftVorlage = {
+  /** kurze Beschreibung (Handbuch) */
+  beschreibung: string;
+  /** Felder des neuen Objekts ohne Form (`art` und Werte); die Oberfläche ergänzt `punkte` bzw. `umriss` */
+  felder: unknown;
+  /** „linie“ (offene oder geschlossene Linie) oder „flaeche“ (geschlossene Form) */
+  form: string;
+  /** Schlüssel (stabil), z. B. „blackwork_rand“ */
+  id: string;
+  /** Name für die Oberfläche */
+  name: string;
+  /** Name im Original (Werkzeugleiste) */
+  original: string;
 };
 
 /** Ein Design und optional Rahmen/Stoff aus der Oberfläche (haben Vorrang vor den Angaben im Design). */
@@ -1513,8 +1634,8 @@ export type MotivfuellungJson = {
   gruppe?: string | null;
   loecher?: PunktAngabe[];
   /**
-   * Motiv im Satz (Standard „901“ wie das Original)
-   * @default "901"
+   * Motiv im Satz (Standard „K0001a“ wie das Original)
+   * @default "K0001a"
    */
   motiv?: string;
   /**
@@ -1525,8 +1646,8 @@ export type MotivfuellungJson = {
   /** Abstand der Reihen in mm („row spacing“); ohne Angabe: Höhe des Motivs */
   reihenabstand?: number | null;
   /**
-   * Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original)
-   * @default "Children"
+   * Motivsatz (Befehl `motive_liste`; Standard „NP004a“ wie das Original, `<PRESET_STANDARD_MOTIF_FILL>`)
+   * @default "NP004a"
    */
   satz?: string;
   /** Abstand der Motive in einer Reihe in mm („column spacing“); ohne Angabe: Breite des Motivs */
@@ -1609,8 +1730,8 @@ export type MotivlinieJson = {
    */
   gruppe?: string | null;
   /**
-   * Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)
-   * @default "705"
+   * Motiv im Satz, z. B. „705“ (Standard „K0001a“ wie das Original)
+   * @default "K0001a"
    */
   motiv?: string;
   /**
@@ -1620,8 +1741,9 @@ export type MotivlinieJson = {
   name?: string;
   punkte: PunktAngabe;
   /**
-   * Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung)
-   * @default "Heirloom"
+   * Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „NP004a“ wie das Original,
+   * `<PRESET_STANDARD_MOTIF_RUN>`)
+   * @default "NP004a"
    */
   satz?: string;
   /**
@@ -1816,6 +1938,14 @@ export type ObjektJson = ((LaufJson & {
   art: "motivlinie";
 }) | (MotivfuellungJson & {
   art: "motivfuellung";
+}) | (RueckstichJson & {
+  art: "rueckstich";
+}) | (StielstichJson & {
+  art: "stielstich";
+}) | (StipplingJson & {
+  art: "stippling";
+}) | (BlackworkJson & {
+  art: "blackwork";
 }));
 
 /** Ein Objekt im Format `design.schema.json` (Eintrag in `objekte`). */
@@ -1958,6 +2088,81 @@ export type ReihenfolgeErgebnis = {
   reihenfolge: number[];
   /** Warnungen: [oben, unten] (bisherige Nummern) – `oben` lag über `unten` und liegt jetzt darunter */
   vertauscht: number[][];
+};
+
+/**
+ * Rückstich (Backstitch, Craft Stitch 0x2850): Stiche vor und zurück mit Überlappung, wie von Hand gestickt – eine
+ * feine, durchgehende Linie. Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).
+ */
+export type RueckstichJson = {
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * Linie schließen (zurück zum ersten Punkt)
+   * @default false
+   */
+  geschlossen?: boolean;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /** Stichlänge in mm (0,5 … 12,7; Original 3,0) */
+  laenge?: number | null;
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  punkte: PunktAngabe;
+  /** Fadenstärke in mm = Abstand der Hin- und Rückstiche (0 … 1; Original 0,2) */
+  staerke?: number | null;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Striche je Stich: 3 oder 5 (Original 3) */
+  striche?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /** Überlappung in % des Stichs, um die jeder Rückstich in den vorigen greift (0 … 100; Original 50) */
+  ueberlappung?: number | null;
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
 };
 
 /** Eine Satinsäule der Zerlegung. */
@@ -2357,8 +2562,8 @@ export type Stich = {
 /** Stichart eines Objekts wechseln. */
 export type StichartEingabe = {
   /**
-   * neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie · Füllung tatami, satinflaeche, muster,
-   * motivfuellung
+   * neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,
+   * satinflaeche, muster, motivfuellung, stippling
    */
   art: string;
   design: DesignWert;
@@ -2387,12 +2592,156 @@ export type Stickbarkeit = {
   stickbar_ab: number;
 };
 
+/**
+ * Stielstich (Stemstitch, Craft Stitch 0x2855): schräge, sich überlappende Stiche zu einer kordelartigen Linie.
+ * Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).
+ */
+export type StielstichJson = {
+  /** Abstand der Stiche in mm, quer zu den Stichen gemessen (0,2 … 10; Original 1,5) */
+  abstand?: number | null;
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /** Linienstärke in mm = Breite der Kordel (0,5 … 10; Original 2,0) */
+  breite?: number | null;
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /** dreifach („Triple“: drei Fäden nebeneinander) statt einfach (Original: dreifach) */
+  dreifach?: boolean | null;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * Linie schließen (zurück zum ersten Punkt)
+   * @default false
+   */
+  geschlossen?: boolean;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  punkte: PunktAngabe;
+  /** Fadenstärke in mm = Abstand der drei Fäden bei dreifach (0 … 1; Original 0,2) */
+  staerke?: number | null;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  /** Winkel der Stiche zur Linie in Grad (10 … 90; Original 50) */
+  winkel?: number | null;
+};
+
 /** Ein Stil der Schriftauswahl. */
 export type StilInfo = {
   /** kurze Erklärung für den Anwender (Tooltip) */
   beschreibung: string;
   /** „Gotisch“, „Schreibschrift“ … – so in den Feldern `stile` der Listen */
   name: string;
+};
+
+/**
+ * Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht
+ * kreuzt.
+ */
+export type StipplingJson = {
+  /** Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0) */
+  abstand?: number | null;
+  /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
+  ausstich?: (Punkt | null);
+  /** Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm) */
+  auto_jump?: (AutoJumpJson | null);
+  /**
+   * Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder
+   * @default false
+   */
+  doppellauf?: boolean;
+  /**
+   * **Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei
+   * Step- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei
+   * Flächen), sonst ohne Wirkung. An = Feld vorhanden
+   */
+  effekte?: (EffekteJson | null);
+  /**
+   * **Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie
+   * `einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {"tatami": {"abstand": 0.5}}.
+   * Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)
+   */
+  einstellungen?: (EinstellungenJson | null);
+  /** Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort */
+  einstich?: (Punkt | null);
+  /**
+   * Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)
+   * @default "#000000"
+   */
+  farbe?: string;
+  /**
+   * **Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.
+   * „0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf
+   * die Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)
+   */
+  garn?: string | null;
+  /**
+   * **Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des
+   * Designs. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der
+   * Gruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)
+   */
+  gruppe?: string | null;
+  /** Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0) */
+  laenge?: number | null;
+  loecher?: PunktAngabe[];
+  /**
+   * Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text
+   * @default ""
+   */
+  name?: string;
+  /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
+  step_muster?: number | null;
+  /** Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet */
+  transform?: (Transformation | null);
+  /**
+   * **Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,
+   * 0,3 mm nach innen
+   */
+  umrandung?: (UmrandungJson | null);
+  umriss: PunktAngabe;
 };
 
 /** Stoff mit den Werten, die er ändert (alle Werte je Stoff: Parameterkatalog). */
@@ -2864,7 +3213,7 @@ export type WirksamerWert = {
   feld: string;
   /**
    * Herkunft: `stil` (Stoff/Design/Objekt-Einstellungen), `alphabet`, `muster` (Füllmuster), `motivsatz`,
-   * `vorlage` (feste Vorlage des Originals), `schrift` (Computer-Schrift)
+   * `vorlage` (feste Vorlage des Originals), `schrift` (Computer-Schrift), `handbuch` (Beispielwert des Handbuchs)
    */
   herkunft: string;
   /** Anzeige statt `wert`, z. B. „auto 0,40–0,51“ */
@@ -2891,6 +3240,10 @@ export interface Befehle {
   bild_umwandeln: { eingabe: BildEingabe; ausgabe: BildErgebnis };
   /** Vorschau der Bildumwandlung: vereinfachtes Bild (PNG) und Farbliste zum Weglassen – vor dem Umwandeln */
   bild_vorschau: { eingabe: BildEingabe; ausgabe: BildVorschau };
+  /** Blackwork Run: gewählte Linien zu einem automatisch geordneten Objekt zusammenfassen (Stichart des ersten) */
+  blackwork_lauf: { eingabe: BlackworkEingabe; ausgabe: BlackworkErgebnis };
+  /** Vorlagen der Craft-Stitch-Leiste (Rückstich, Stielstich, Blackwork, Candlewicking, Lacework, Stippling) mit den Werten des Originals */
+  craft_vorlagen: { eingabe: Leer; ausgabe: CraftVorlage[] };
   /** Textdatei lesen */
   datei_lesen: { eingabe: Pfad; ausgabe: string };
   /** Stiche berechnen – bei jeder Änderung am Design aufrufen (Stiche werden nie skaliert, immer neu berechnet) */
@@ -2965,7 +3318,7 @@ export interface Befehle {
   schriften_liste: { eingabe: SchriftenListeEingabe; ausgabe: SchriftInfo[] };
   /** Step-Muster 1–20 (Tabelle des Originals) mit Einstichen einer Probefläche für Vorschau-Kacheln */
   step_muster_liste: { eingabe: Leer; ausgabe: StepMusterInfo[] };
-  /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt */
+  /** Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt */
   stichart_aendern: { eingabe: StichartEingabe; ausgabe: StichartErgebnis };
   /** Stoffe (8 + Software Defaults) mit den wichtigsten Werten */
   stoffe_liste: { eingabe: Leer; ausgabe: StoffInfo[] };
@@ -2986,6 +3339,8 @@ export const BEFEHLE = [
   "beispiel_design",
   "bild_umwandeln",
   "bild_vorschau",
+  "blackwork_lauf",
+  "craft_vorlagen",
   "datei_lesen",
   "design_berechnen",
   "design_einfuegen",

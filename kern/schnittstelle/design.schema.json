@@ -285,6 +285,237 @@
       },
       "type": "object"
     },
+    "BlackworkJson": {
+      "description": "Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** Objekt; die Reihenfolge ergibt sich\nautomatisch (ein Zug je zusammenhängendem Netz, Abschnitte nur doppelt, wo es nötig ist, ein Ein- und ein\nAusstich). Jede Linie bleibt einzeln formbar. Werte der Stichart wie bei `lauf`, `rueckstich`, `stielstich`.",
+      "properties": {
+        "abstand": {
+          "description": "Stielstich: Abstand in mm (1,5)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "description": "Stielstich: Linienstärke in mm (2,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "dreifach": {
+          "description": "Stielstich: dreifach (ja)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "laenge": {
+          "description": "Stichlänge in mm (Lauf/Dreifach: Stil 2,5; Rückstich 3,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "linien": {
+          "description": "die Linien (mindestens eine)",
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "staerke": {
+          "description": "Rückstich/Stielstich: Fadenstärke in mm (0,2)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stich": {
+          "$ref": "#/$defs/BlackworkStich",
+          "default": "lauf",
+          "description": "Stichart aller Linien (Standard Laufstich)"
+        },
+        "striche": {
+          "description": "Rückstich: 3 oder 5 Striche (3)",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "ueberlappung": {
+          "description": "Rückstich: Überlappung in % (50)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        },
+        "winkel": {
+          "description": "Stielstich: Winkel in Grad (50)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "linien"
+      ],
+      "type": "object"
+    },
+    "BlackworkStich": {
+      "description": "Stichart eines Blackwork-Zugs",
+      "oneOf": [
+        {
+          "const": "lauf",
+          "description": "Laufstich (Standard)",
+          "type": "string"
+        },
+        {
+          "const": "dreifach",
+          "description": "Dreifachstich",
+          "type": "string"
+        },
+        {
+          "const": "rueckstich",
+          "description": "Rückstich",
+          "type": "string"
+        },
+        {
+          "const": "stielstich",
+          "description": "Stielstich",
+          "type": "string"
+        }
+      ]
+    },
     "BlanketJson": {
       "description": "Blanket (Langettenstich, 0x2727) entlang einer Linie.",
       "properties": {
@@ -2330,8 +2561,8 @@
           "type": "array"
         },
         "motiv": {
-          "default": "901",
-          "description": "Motiv im Satz (Standard „901“ wie das Original)",
+          "default": "K0001a",
+          "description": "Motiv im Satz (Standard „K0001a“ wie das Original)",
           "type": "string"
         },
         "name": {
@@ -2349,8 +2580,8 @@
           ]
         },
         "satz": {
-          "default": "Children",
-          "description": "Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original)",
+          "default": "NP004a",
+          "description": "Motivsatz (Befehl `motive_liste`; Standard „NP004a“ wie das Original, `<PRESET_STANDARD_MOTIF_FILL>`)",
           "type": "string"
         },
         "spaltenabstand": {
@@ -2525,8 +2756,8 @@
           ]
         },
         "motiv": {
-          "default": "705",
-          "description": "Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)",
+          "default": "K0001a",
+          "description": "Motiv im Satz, z. B. „705“ (Standard „K0001a“ wie das Original)",
           "type": "string"
         },
         "name": {
@@ -2538,8 +2769,8 @@
           "$ref": "#/$defs/PunktAngabe"
         },
         "satz": {
-          "default": "Heirloom",
-          "description": "Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung)",
+          "default": "NP004a",
+          "description": "Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „NP004a“ wie das Original,\n`<PRESET_STANDARD_MOTIF_RUN>`)",
           "type": "string"
         },
         "spiegeln": {
@@ -2975,6 +3206,62 @@
             "art"
           ],
           "type": "object"
+        },
+        {
+          "$ref": "#/$defs/RueckstichJson",
+          "description": "Rückstich (Backstitch)",
+          "properties": {
+            "art": {
+              "const": "rueckstich",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/StielstichJson",
+          "description": "Stielstich (Stemstitch)",
+          "properties": {
+            "art": {
+              "const": "stielstich",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/StipplingJson",
+          "description": "Stippling (mäandernde Laufstichfüllung)",
+          "properties": {
+            "art": {
+              "const": "stippling",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "#/$defs/BlackworkJson",
+          "description": "Blackwork Run: mehrere Linien als ein automatisch geordneter Zug",
+          "properties": {
+            "art": {
+              "const": "blackwork",
+              "type": "string"
+            }
+          },
+          "required": [
+            "art"
+          ],
+          "type": "object"
         }
       ]
     },
@@ -3110,6 +3397,177 @@
           "type": "string"
         }
       ]
+    },
+    "RueckstichJson": {
+      "description": "Rückstich (Backstitch, Craft Stitch 0x2850): Stiche vor und zurück mit Überlappung, wie von Hand gestickt – eine\nfeine, durchgehende Linie. Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).",
+      "properties": {
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geschlossen": {
+          "default": false,
+          "description": "Linie schließen (zurück zum ersten Punkt)",
+          "type": "boolean"
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "laenge": {
+          "description": "Stichlänge in mm (0,5 … 12,7; Original 3,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "punkte": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "staerke": {
+          "description": "Fadenstärke in mm = Abstand der Hin- und Rückstiche (0 … 1; Original 0,2)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "striche": {
+          "description": "Striche je Stich: 3 oder 5 (Original 3)",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "ueberlappung": {
+          "description": "Überlappung in % des Stichs, um die jeder Rückstich in den vorigen greift (0 … 100; Original 50)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        }
+      },
+      "required": [
+        "punkte"
+      ],
+      "type": "object"
     },
     "SatinFlaecheJson": {
       "description": "Fläche als Satinsäulen mit automatischer Stichrichtung (`saeulen.rs`, ROADMAP 4b.17).",
@@ -3730,6 +4188,336 @@
           "type": "string"
         }
       ]
+    },
+    "StielstichJson": {
+      "description": "Stielstich (Stemstitch, Craft Stitch 0x2855): schräge, sich überlappende Stiche zu einer kordelartigen Linie.\nOhne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).",
+      "properties": {
+        "abstand": {
+          "description": "Abstand der Stiche in mm, quer zu den Stichen gemessen (0,2 … 10; Original 1,5)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "breite": {
+          "description": "Linienstärke in mm = Breite der Kordel (0,5 … 10; Original 2,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "dreifach": {
+          "description": "dreifach („Triple“: drei Fäden nebeneinander) statt einfach (Original: dreifach)",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geschlossen": {
+          "default": false,
+          "description": "Linie schließen (zurück zum ersten Punkt)",
+          "type": "boolean"
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "punkte": {
+          "$ref": "#/$defs/PunktAngabe"
+        },
+        "staerke": {
+          "description": "Fadenstärke in mm = Abstand der drei Fäden bei dreifach (0 … 1; Original 0,2)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        },
+        "winkel": {
+          "description": "Winkel der Stiche zur Linie in Grad (10 … 90; Original 50)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "punkte"
+      ],
+      "type": "object"
+    },
+    "StipplingJson": {
+      "description": "Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht\nkreuzt.",
+      "properties": {
+        "abstand": {
+          "description": "Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ausstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ausstich („exit point“) [x, y] in mm: das Objekt endet dort"
+        },
+        "auto_jump": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AutoJumpJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auto Jump (ohne Angabe: Stil – bei Schrift aus, sonst an mit 12,7 / 7,0 mm)"
+        },
+        "doppellauf": {
+          "default": false,
+          "description": "Verstärken (Double Run): dieselben Stiche rückwärts noch einmal, gleiche Farbe, ohne Verbinder",
+          "type": "boolean"
+        },
+        "effekte": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EffekteJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Effekte** (Handbuch Kap. 24, Objekteigenschaften → „Effects“): Verlauf, ausgefranster Rand, Welle. Wirken bei\nStep- und Musterflächen (`tatami`, `muster`) und Satin (`satin`, `satinlinie`, `satinflaeche`; Welle nur bei\nFlächen), sonst ohne Wirkung. An = Feld vorhanden"
+        },
+        "einstellungen": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EinstellungenJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Werte je Objekt** (Objekteigenschaften): Stil-Werte nur für dieses Objekt überschreiben, Aufbau wie\n`einstellungen` des Designs (lauf, satin, tatami, unterlage, verbinder), z. B. {\"tatami\": {\"abstand\": 0.5}}.\nReihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt (z. B. `abstand`, `laenge`, `winkel`)"
+        },
+        "einstich": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Punkt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Einstich („entry point“) [x, y] in mm: das Objekt beginnt dort"
+        },
+        "farbe": {
+          "default": "#000000",
+          "description": "Garnfarbe „#rrggbb“ (wird der Garnkarte zugeordnet)",
+          "type": "string"
+        },
+        "garn": {
+          "default": null,
+          "description": "**Garn von Hand:** Nummer des Garns in der Garnkarte des Designs (Befehl `garnkarte_garne`, Feld `nummer`, z. B.\n„0010“). Ohne Angabe wird `farbe` dem nächsten Garn der Karte zugeordnet. Die Oberfläche setzt `farbe` dabei auf\ndie Farbe des Garns. Feldform: eigene Festlegung (im Original wählt man das Garn je Farbe aus der Karte)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gruppe": {
+          "default": null,
+          "description": "**Gruppe** („Group“ im Original, Handbuch S. 134; im ART-Format `EmbroideryGroup`): Schlüssel in `gruppen` des\nDesigns. Objekte derselben Gruppe werden in der Oberfläche zusammen gewählt und mit der Transformation der\nGruppe gemeinsam verschoben, skaliert und gedreht (z. B. ein umgewandeltes Bild als ein Element)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "laenge": {
+          "description": "Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0)",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "loecher": {
+          "items": {
+            "$ref": "#/$defs/PunktAngabe"
+          },
+          "type": "array"
+        },
+        "name": {
+          "default": "",
+          "description": "Name des Objekts (Objektliste; `aussparen` nennt Objekte beim Namen). Bei Text ohne Angabe: der Text",
+          "type": "string"
+        },
+        "step_muster": {
+          "default": null,
+          "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Transformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Skalieren, Drehen, Spiegeln, Schrägstellen, Verschieben um die Mitte des Objekts – Stiche werden neu berechnet"
+        },
+        "umrandung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UmrandungJson"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "**Umrandung** um die Fläche (eigene Erweiterung): an = Feld vorhanden, z. B. `{}` für Dreifachstich schwarz,\n0,3 mm nach innen"
+        },
+        "umriss": {
+          "$ref": "#/$defs/PunktAngabe"
+        }
+      },
+      "required": [
+        "umriss"
+      ],
+      "type": "object"
     },
     "TatamiJson": {
       "description": "Tatami-Fläche (Step) mit Löchern; mit `winkellinien` Fläche mit mehreren Stichwinkeln (Turning).",

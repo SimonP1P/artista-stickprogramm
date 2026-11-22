@@ -18,10 +18,16 @@ Stand 21.11.2026. Handbuch Kap. 25 „Pattern Runs and Fills“ (PDF-S. 225–23
 ## 2. Stile — Sicherheit: mittel (Werte gelesen, Zuordnung teils erschlossen)
 NORMAL.AMT `<PRESET_STANDARD_MOTIF_RUN>`, `<PRESET_MOTIF_RUN_1/2>`, `<PRESET_STANDARD_MOTIF_FILL>`, `<PRESET_MOTIF_FILL_1…3>`
 (`Analyse/daten/entschluesselt/styles.txt`):
-- Motivlinie = Kontur-Stichart **0x27ee** (unter 0x27a6/0x2748): Motiv `0x27ef/0x2801` (Satz 0x27b0, Name 0x27b1, z. B.
-  „70084s“), Größe 0x3ab8/0x3aba (1638 × 990 = 9,1 × 5,5 mm), Abstand 0x3ac2/…/0x27b6, 0x27b9 = 0.
-- Motivfüllung = Füll-Stichart **0x2798** (unter 0x27a8): Satz/Motiv (z. B. „_BW004a“/„B0001a“, „Children“/„901“),
-  0x27b6/0x27b9 = Spalten-/Reihenabstand (= Motivgröße, 1440 bzw. 1000/2781), Laufweg 0x271d.
+> **Korrektur 22.11.2026 (Bericht [24](24_craft_stitches.md) §1):** Die beiden Sticharten waren hier vertauscht.
+> Richtig: **0x2798 = Motivlinie**, **0x27ee = Motivfüllung**. Beleg: Jeder Motivstil setzt seine eigenen Werte (Flag 0)
+> unter der gemeinten Stichart; `Children`/`901` unter 0x2798 der Füllstile ist nur geerbt (Flag 0x2000). House2.ART
+> trägt am MotifFill-Objekt 0x27ee. Standard beider Arten: **NP004a / K0001a**.
+
+- Motivlinie = Stichart **0x2798**: Satz 0x27b0, Motiv 0x27b1, 0x27b6/0x27b9 (z. B. 1440), Abstand 0x27df
+  (`<PRESET_STANDARD_MOTIF_RUN>`: NP004a/K0001a, 2146 = 11,92 mm), Laufweg 0x271d.
+- Motivfüllung = Stichart **0x27ee**: Motiv `0x27ef/0x2801` (Satz 0x27b0, Name 0x27b1), Größe 0x3ab8/0x3aba,
+  Spalten-/Reihenabstand 0x27b6/0x27b9 (`<PRESET_STANDARD_MOTIF_FILL>`: NP004a/K0001a, 2158/2158; die Werte
+  „70084s“ 1638 × 990 mit Abstand 0 stehen in den Linienstilen und gelten dort nicht).
 - Auto-Spacing-Faktor im Motivstil 0x2736 = 1,0 (Kern `MOTIV_FAKTOR`).
 
 ## 3. Motivlinie im Design — Sicherheit: hoch (gemessen, 156 Linien)
@@ -57,13 +63,17 @@ auf jeden Knoten (wie Bericht 07). Alle Teile aller Kopien werden ohne Sprünge 
    mittel.
 2. **Eckmotive** (Corners): Lage bei zu kurzer Linie.
 3. **Motivfüllung (Pattern Fill)**: Objekt MotifFill 0x3d (Datensatz 0x3f mit Abständen, z. B. `0000 a005 a005` =
-   1440/1440). Das einzige Musterdesign mit Motivfüllungen (House2, zwei Objekte mit 0x2798 „MOTIFS“/„21“) benutzt den
-   Satz „MOTIFS“, der auf der CD fehlt → Raster nicht messbar. **Umgesetzt 22.11.2026** (§5).
+   1440/1440). Das einzige Musterdesign mit einer Motivfüllung (House2) hat ein MotifFill-Objekt mit 0x27ee; die
+   Einträge 0x2798 „MOTIFS“/„21“ sind Motivlinien (korrigiert 22.11.2026). Der Satz „MOTIFS“ fehlt auf der CD →
+   Raster nicht messbar. **Umgesetzt 22.11.2026** (§5).
 4. Sonderarten BW004a/CW004a/LW004a (Blackwork, Candlewicking, Lacework) haben eigene Stil-Teile (0x2828 … 0x2855) –
-   Teil von „Craft Stitches“.
+   Teil von „Craft Stitches“ → Bericht [24](24_craft_stitches.md) (umgesetzt 22.11.2026, N3).
 
 ## 5. Motivfüllung im Kern (22.11.2026, Nachtauftrag N1)
-**Standardwerte — Sicherheit: hoch (gelesen).** `<PRESET_STANDARD_MOTIF_FILL>` 0x2798: Satz 0x27b0 = „Children“,
+> **Überholt (22.11.2026, N3):** Die folgenden Werte sind die *geerbten* Werte der Linien-Stichart 0x2798. Der Standard
+> der Motivfüllung ist **NP004a / K0001a**, Größe 0x3ab8 = 2158, Raster 2158/2158 (Bericht 24 §1); so im Kern.
+
+**Standardwerte (alt, N1).** `<PRESET_STANDARD_MOTIF_FILL>` 0x2798: Satz 0x27b0 = „Children“,
 Motiv 0x27b1 = „901“, **0x27df = 2786** = Länge der Grundlinie von Children 901 (15,48 mm, `motivsatz_motive`),
 **0x27b9 = 2781** ≈ Breite des Motivkastens (Kern: 15,45 mm), **0x27b6 = 1000** ≈ Höhe des Motivkastens (5,55 mm);
 Leitmotiv-Matrix 0x3abe = (1, 0, 0, 1, 0, 0) = keine Drehung/Scherung/Verschiebung. Gedeutet: Spaltenabstand =

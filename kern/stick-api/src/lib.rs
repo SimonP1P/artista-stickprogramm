@@ -19,6 +19,7 @@
 //! die App als Ereignis `maschine_fortschritt` ([`Kontext::fortschritt_melden`]).
 
 pub mod befehle;
+pub mod craft;
 pub mod effekte;
 pub mod erzeugen;
 pub mod maschine;
@@ -378,8 +379,12 @@ befehle! {
     ueberdeckungen: befehle::DesignEingabe => Vec<[usize; 2]>,
     /// Fläche in Satinsäulen zerlegen (Vorschau der automatischen Stichrichtung)
     saeulen_vorschau: befehle::SaeulenEingabe => Vec<befehle::SaeuleInfo>,
-    /// Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie · Füllung: tatami, satinflaeche, muster, motivfuellung) – Form bleibt
+    /// Stichart wechseln (Umriss: lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung: tatami, satinflaeche, muster, motivfuellung, stippling) – Form bleibt
     stichart_aendern: befehle::StichartEingabe => befehle::StichartErgebnis,
+    /// Vorlagen der Craft-Stitch-Leiste (Rückstich, Stielstich, Blackwork, Candlewicking, Lacework, Stippling) mit den Werten des Originals
+    craft_vorlagen: befehle::Leer => Vec<craft::CraftVorlage>,
+    /// Blackwork Run: gewählte Linien zu einem automatisch geordneten Objekt zusammenfassen (Stichart des ersten)
+    blackwork_lauf: craft::BlackworkEingabe => craft::BlackworkErgebnis,
     /// Design einfügen wie „Insert Design“: Objekte anhängen, auf Wunsch als eine Gruppe (Bild, SVG, Datei als Element)
     design_einfuegen: befehle::EinfuegenEingabe => befehle::EinfuegenErgebnis,
     /// Bild in Stickflächen umwandeln (neues Design)
@@ -423,6 +428,7 @@ pub fn ausfuehren(k: &Kontext, befehl: &str, daten: Value) -> Result<Value, Fehl
 mod befehle_aller {
     pub use crate::befehle::*;
     pub use crate::maschine::*;
+    pub use crate::craft::*;
     pub use crate::effekte::*;
     pub use crate::motive::*;
     pub use crate::schriften::*;

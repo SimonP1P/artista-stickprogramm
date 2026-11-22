@@ -20,9 +20,9 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Double Run (Verstärken, rückwärts doppelt) | ✅ | 20.11. `doppellauf` an jedem Objekt (Kap. 23) |
 | Objekteigenschaften: Stil-Werte je Objekt (Abstand, Länge, Zugausgleich, Unterlage, Verbinder …) | ✅ | 21.11. `einstellungen` am Objekt (ROADMAP 4b.16); Beleg: jedes ART-Objekt trägt eine eigene Kopie des Stil-Baums (`Analyse_Teil3/03` §4, hoch) |
 | Pattern Run (Motivlinie), Muster/Skalierung/Abstand, eigene Muster | ⬜ | Kap. 25, „Motif Run“ |
-| Blackwork Run / Blackwork Border | ⬜ | Kap. 26 |
-| Backstitch, Stemstitch (Rück-, Stielstich) | ⬜ | Kap. 26, Klassen 0x97/0x96 |
-| Candlewicking Border | ⬜ | Kap. 26 |
+| Blackwork Run / Blackwork Border | ✅ 22.11. `blackwork` (Netz, Euler-Weg – eigene Festlegung), Rand = Motivlinie `_BW004a` | Kap. 26, Bericht 24 §1/§5 |
+| Backstitch, Stemstitch (Rück-, Stielstich) | ✅ 22.11. `rueckstich` (MOD1 0x1001d960, hoch), `stielstich` (mittel) | Kap. 26, Klassen 0x97/0x96, Bericht 24 §2/§3 |
+| Candlewicking Border | ✅ 22.11. Motivlinie `_CW004a` Knot-3mm, Abstand 7,0 mm | Kap. 26, Bericht 24 §1 |
 
 ## B. Sticharten für Flächen (Kap. 8, 24–26)
 | Funktion | Stand | Bemerkung |
@@ -34,7 +34,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Zickzack-Füllung („Zigzag“, Stil 0x2724) | ✅ | 20.11. `stichart: zickzack` an `satin`/`satinlinie`, Abstand 0x2725 (2,0 mm, Stoffe 1,0 mm) |
 | Fancy Fill (Program Split), Abstand, Winkel | ✅ | `muster`, 242 Muster |
 | Pattern Fill (Motivfüllung), Layout am Bildschirm, eigene Sets | ⬜ | Kap. 25, „Motif Fill“ 0x3d |
-| Blackwork Fill, Candlewicking Fill, Lacework, Stippling | ⬜ | Kap. 26 |
+| Blackwork Fill, Candlewicking Fill, Lacework, Stippling | ✅ 22.11. Motivfüllung mit den Werten der Stile; `stippling` eigene Festlegung | Kap. 26, Bericht 24 §1/§4 |
 | Contour, Coil, Island Coil, Straight, Perpendicular Fill, Trapunto | ➖ | nur Strings, im Handbuch nicht beschrieben |
 
 ## C. Effekte (Kap. 22–24)
@@ -79,7 +79,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Stichwinkel ändern, Ein-/Ausstich je Objekt setzen | ✅ | Winkel ✅; Ein-/Ausstich ✅ 20.11. (`einstich`/`ausstich`, Closest Join `kuerzeste_verbindung`; Umsetzung je Objektart eigene Festlegung, Bericht 16) |
 | Reihenfolge: wie ausgewählt, an Anfang/Ende, nach Farbe, nach Nummer | ✅ | 20.11. `stick_kern::reihenfolge`, CLI `stick reihenfolge` (Kap. 14; Resequence MOD1 0x1006db20, Bericht 16) |
 | Prüfung auf Überdeckungen beim Umordnen | ✅ | 20.11. **eigene Erweiterung** (Original prüft nicht): Warnung + Sortieren nach Farbe mit `--ueberdeckung` |
-| Automatic sequencing (Blackwork Run: überlappende Linien zu einem Objekt) | ⬜ | Kap. 14 „Automatic sequencing“ = Craft Stitch Blackwork Run → ROADMAP 4b.9 |
+| Automatic sequencing (Blackwork Run: überlappende Linien zu einem Objekt) | ✅ 22.11. `blackwork_lauf` | Kap. 14 „Automatic sequencing“ = Craft Stitch Blackwork Run → ROADMAP 4b.9 |
 | Stiche einzeln einfügen/verschieben/löschen | ⬜ 🖥 | Kap. 17 |
 | Start und Ende des Designs | ✅ | `start`/`ende` |
 | Knopflöcher (einfügen, Typ, Länge, Dichte, verbinden) | ✅ | 21.11. 9 Typen aus ButtonHoles.ESB, Länge/Abstand/Winkel wie MOD1, Einarbeiten über `aussparen` (Mittelumriss, niedrig); `"art": "knopfloch"`, Bericht 19 |

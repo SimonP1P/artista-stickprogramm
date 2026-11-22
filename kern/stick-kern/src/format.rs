@@ -977,6 +977,111 @@ pub struct BlanketJson {
     pub g: Gemeinsam,
 }
 
+/// Rückstich (Backstitch, Craft Stitch 0x2850): Stiche vor und zurück mit Überlappung, wie von Hand gestickt – eine
+/// feine, durchgehende Linie. Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct RueckstichJson {
+    pub punkte: PunktAngabe,
+    /// Linie schließen (zurück zum ersten Punkt)
+    #[serde(default)]
+    pub geschlossen: bool,
+    /// Stichlänge in mm (0,5 … 12,7; Original 3,0)
+    pub laenge: Option<f64>,
+    /// Fadenstärke in mm = Abstand der Hin- und Rückstiche (0 … 1; Original 0,2)
+    pub staerke: Option<f64>,
+    /// Überlappung in % des Stichs, um die jeder Rückstich in den vorigen greift (0 … 100; Original 50)
+    pub ueberlappung: Option<f64>,
+    /// Striche je Stich: 3 oder 5 (Original 3)
+    pub striche: Option<u8>,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+/// Stielstich (Stemstitch, Craft Stitch 0x2855): schräge, sich überlappende Stiche zu einer kordelartigen Linie.
+/// Ohne Angabe gelten die Werte des Originals (Stil `<0 Software Defaults>`).
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct StielstichJson {
+    pub punkte: PunktAngabe,
+    /// Linie schließen (zurück zum ersten Punkt)
+    #[serde(default)]
+    pub geschlossen: bool,
+    /// Linienstärke in mm = Breite der Kordel (0,5 … 10; Original 2,0)
+    pub breite: Option<f64>,
+    /// Abstand der Stiche in mm, quer zu den Stichen gemessen (0,2 … 10; Original 1,5)
+    pub abstand: Option<f64>,
+    /// Winkel der Stiche zur Linie in Grad (10 … 90; Original 50)
+    pub winkel: Option<f64>,
+    /// dreifach („Triple“: drei Fäden nebeneinander) statt einfach (Original: dreifach)
+    pub dreifach: Option<bool>,
+    /// Fadenstärke in mm = Abstand der drei Fäden bei dreifach (0 … 1; Original 0,2)
+    pub staerke: Option<f64>,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+/// Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht
+/// kreuzt.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct StipplingJson {
+    pub umriss: PunktAngabe,
+    #[serde(default)]
+    pub loecher: Vec<PunktAngabe>,
+    /// Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0)
+    pub laenge: Option<f64>,
+    /// Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0)
+    pub abstand: Option<f64>,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
+auswahl! {
+    /// Stichart eines Blackwork-Zugs
+    pub enum BlackworkStich {
+        /// Laufstich (Standard)
+        Lauf = "lauf",
+        /// Dreifachstich
+        Dreifach = "dreifach",
+        /// Rückstich
+        Rueckstich = "rueckstich",
+        /// Stielstich
+        Stielstich = "stielstich",
+    }
+}
+
+fn blackwork_stich() -> BlackworkStich {
+    BlackworkStich::Lauf
+}
+
+/// Blackwork Run (Handbuch S. 131): mehrere sich überlappende Linien als **ein** Objekt; die Reihenfolge ergibt sich
+/// automatisch (ein Zug je zusammenhängendem Netz, Abschnitte nur doppelt, wo es nötig ist, ein Ein- und ein
+/// Ausstich). Jede Linie bleibt einzeln formbar. Werte der Stichart wie bei `lauf`, `rueckstich`, `stielstich`.
+#[derive(Clone, Debug, Deserialize, JsonSchema)]
+pub struct BlackworkJson {
+    /// die Linien (mindestens eine)
+    pub linien: Vec<PunktAngabe>,
+    /// Stichart aller Linien (Standard Laufstich)
+    #[serde(default = "blackwork_stich")]
+    pub stich: BlackworkStich,
+    /// Stichlänge in mm (Lauf/Dreifach: Stil 2,5; Rückstich 3,0)
+    pub laenge: Option<f64>,
+    /// Rückstich/Stielstich: Fadenstärke in mm (0,2)
+    pub staerke: Option<f64>,
+    /// Rückstich: Überlappung in % (50)
+    pub ueberlappung: Option<f64>,
+    /// Rückstich: 3 oder 5 Striche (3)
+    pub striche: Option<u8>,
+    /// Stielstich: Linienstärke in mm (2,0)
+    pub breite: Option<f64>,
+    /// Stielstich: Abstand in mm (1,5)
+    pub abstand: Option<f64>,
+    /// Stielstich: Winkel in Grad (50)
+    pub winkel: Option<f64>,
+    /// Stielstich: dreifach (ja)
+    pub dreifach: Option<bool>,
+    #[serde(flatten)]
+    pub g: Gemeinsam,
+}
+
 /// Tatami-Fläche (Step) mit Löchern; mit `winkellinien` Fläche mit mehreren Stichwinkeln (Turning).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct TatamiJson {
@@ -1191,10 +1296,11 @@ pub struct MotivlinieJson {
     /// Linie schließen (Motive ringsum)
     #[serde(default)]
     pub geschlossen: bool,
-    /// Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „Heirloom“ – eigene Festlegung)
+    /// Motivsatz, z. B. „Heirloom“ (Befehl `motive_liste`; Standard „NP004a“ wie das Original,
+    /// `<PRESET_STANDARD_MOTIF_RUN>`)
     #[serde(default = "motiv_satz")]
     pub satz: String,
-    /// Motiv im Satz, z. B. „705“ (Standard „705“ – eigene Festlegung)
+    /// Motiv im Satz, z. B. „705“ (Standard „K0001a“ wie das Original)
     #[serde(default = "motiv_name")]
     pub motiv: String,
     /// Länge eines Motivs entlang der Linie in mm („Size“); ohne Angabe: Größe im Motivsatz
@@ -1217,10 +1323,10 @@ pub struct MotivfuellungJson {
     pub umriss: PunktAngabe,
     #[serde(default)]
     pub loecher: Vec<PunktAngabe>,
-    /// Motivsatz (Befehl `motive_liste`; Standard „Children“ wie das Original)
+    /// Motivsatz (Befehl `motive_liste`; Standard „NP004a“ wie das Original, `<PRESET_STANDARD_MOTIF_FILL>`)
     #[serde(default = "fuell_satz")]
     pub satz: String,
-    /// Motiv im Satz (Standard „901“ wie das Original)
+    /// Motiv im Satz (Standard „K0001a“ wie das Original)
     #[serde(default = "fuell_motiv")]
     pub motiv: String,
     /// Länge eines Motivs (Grundlinie) in mm; ohne Angabe: Größe im Motivsatz
@@ -1251,10 +1357,10 @@ fn fuell_motiv() -> String {
 }
 
 fn motiv_satz() -> String {
-    "Heirloom".into()
+    crate::motiv::LINIE_SATZ.into()
 }
 fn motiv_name() -> String {
-    "705".into()
+    crate::motiv::LINIE_MOTIV.into()
 }
 
 fn knopfloch_typ() -> KnopflochTyp {
@@ -1301,6 +1407,14 @@ pub enum ObjektJson {
     Motivlinie(MotivlinieJson),
     /// Motivfüllung (Motiv aus einem Motivsatz in Reihen über die Fläche)
     Motivfuellung(MotivfuellungJson),
+    /// Rückstich (Backstitch)
+    Rueckstich(RueckstichJson),
+    /// Stielstich (Stemstitch)
+    Stielstich(StielstichJson),
+    /// Stippling (mäandernde Laufstichfüllung)
+    Stippling(StipplingJson),
+    /// Blackwork Run: mehrere Linien als ein automatisch geordneter Zug
+    Blackwork(BlackworkJson),
 }
 
 impl ObjektJson {
@@ -1321,6 +1435,10 @@ impl ObjektJson {
             ObjektJson::Knopfloch(x) => &x.g,
             ObjektJson::Motivlinie(x) => &x.g,
             ObjektJson::Motivfuellung(x) => &x.g,
+            ObjektJson::Rueckstich(x) => &x.g,
+            ObjektJson::Stielstich(x) => &x.g,
+            ObjektJson::Stippling(x) => &x.g,
+            ObjektJson::Blackwork(x) => &x.g,
         }
     }
 }

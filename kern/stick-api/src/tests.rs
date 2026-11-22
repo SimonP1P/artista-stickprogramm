@@ -193,7 +193,7 @@ fn motivlinie() {
     assert_eq!(f.objekt, Some(0));
 }
 
-/// Motivfüllung: Standard wie das Original (Children 901), Raster Kante an Kante, Motive bleiben in der Fläche
+/// Motivfüllung: Standard wie das Original (NP004a K0001a), Raster Kante an Kante, Motive bleiben in der Fläche
 /// (abgeschnitten, wenn mehr als zur Hälfte draußen; ganz, wenn höchstens zur Hälfte draußen)
 #[test]
 fn motivfuellung() {
@@ -201,19 +201,18 @@ fn motivfuellung() {
     let d = json!({"objekte": [{"art": "motivfuellung", "umriss": {"rechteck": {"mitte": [0, 0], "breite": 60, "hoehe": 40}}}]});
     let e = ausfuehren(&k, "design_berechnen", json!({ "design": d.clone() })).unwrap();
     let b: [f64; 4] = serde_json::from_value(e["begrenzung"].clone()).unwrap();
-    // ganze Motive ragen höchstens mit der halben Stichlänge über den Rand – nach dem Kasten (15,5 × 5,6 mm) weniger
-    // als ein ganzes Motiv
-    assert!(b[0] > -30.0 - 15.5 && b[2] < 30.0 + 15.5 && b[1] > -20.0 - 5.6 && b[3] < 20.0 + 5.6, "{b:?}");
+    // ganze Motive ragen höchstens zur Hälfte über den Rand – nach dem Kasten (12 × 12 mm) weniger als ein ganzes Motiv
+    assert!(b[0] > -30.0 - 12.0 && b[2] < 30.0 + 12.0 && b[1] > -20.0 - 12.0 && b[3] < 20.0 + 12.0, "{b:?}");
     assert!(b[2] - b[0] > 55.0 && b[3] - b[1] > 35.0, "Fläche gefüllt: {b:?}");
     // wirksame Werte: Größe und Abstände aus dem Motivsatz
     let w = ausfuehren(&k, "objekt_werte", json!({"design": d, "objekt": 0})).unwrap();
     let wert = |f: &str| w.as_array().unwrap().iter().find(|x| x["feld"] == f).unwrap()["wert"].as_f64().unwrap();
-    assert!((wert("groesse") - 2786.0 / 180.0).abs() < 0.02);
-    // wie das Original: Spalten 2781, Reihen 1000 (1/180 mm) ≈ Kasten des Motivs
-    assert!((wert("spaltenabstand") - 2781.0 / 180.0).abs() < 0.15, "{}", wert("spaltenabstand"));
-    assert!((wert("reihenabstand") - 1000.0 / 180.0).abs() < 0.15, "{}", wert("reihenabstand"));
+    assert!((wert("groesse") - 2146.0 / 180.0).abs() < 0.02, "{}", wert("groesse"));
+    // wie das Original (`<PRESET_STANDARD_MOTIF_FILL>`): Spalten und Reihen 2158 (1/180 mm) ≈ Kasten des Motivs
+    assert!((wert("spaltenabstand") - 2158.0 / 180.0).abs() < 0.15, "{}", wert("spaltenabstand"));
+    assert!((wert("reihenabstand") - 2158.0 / 180.0).abs() < 0.15, "{}", wert("reihenabstand"));
     // Fläche ohne Platz für ein Motiv → Fehler mit Objektnummer
-    let d = json!({"objekte": [{"art": "motivfuellung", "umriss": [[0, 0], [0.5, 0], [0.5, 0.5]]}]});
+    let d = json!({"objekte": [{"art": "motivfuellung", "satz": "Children", "motiv": "901", "umriss": [[0, 0], [0.5, 0], [0.5, 0.5]]}]});
     assert_eq!(ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap_err().objekt, Some(0));
 }
 
@@ -716,4 +715,66 @@ fn umrandung_kleine_schrift() {
     // 40 % → 8 mm: 0,48 mm wäre zu schmal → Dreifach um jeden Buchstaben und Innenraum
     let klein = arten(40.0);
     assert!(klein.len() >= 4 && klein.iter().all(|&a| a == "dreifach"), "{klein:?}");
+}
+
+/// Craft Stitches: Vorlagen rechnen mit einer Form, Rückstich/Stielstich/Stippling mit Werten des Originals,
+/// Blackwork Run fasst Linien zusammen, Stichart wechseln kennt die neuen Arten
+#[test]
+fn craft_stitches() {
+    let k = kontext();
+    let v = ausfuehren(&k, "craft_vorlagen", json!({})).unwrap();
+    let v = v.as_array().unwrap();
+    assert_eq!(v.len(), 8);
+    for x in v {
+        let mut o = x["felder"].clone();
+        if x["form"] == "linie" {
+            o["punkte"] = json!([[-30, 0], [0, 10], [30, 0]]);
+        } else {
+            o["umriss"] = json!({"rechteck": {"mitte": [0, 0], "breite": 40, "hoehe": 30}});
+        }
+        let e = ausfuehren(&k, "design_berechnen", json!({"design": {"objekte": [o]}}))
+            .unwrap_or_else(|f| panic!("{}: {}", x["id"], f.meldung));
+        assert!(e["stiche"].as_array().unwrap().len() > 20, "{}", x["id"]);
+    }
+    // wirksame Werte des Rückstichs aus dem Stil
+    let d = json!({"objekte": [{"art": "rueckstich", "punkte": [[0, 0], [30, 0]]}]});
+    let w = ausfuehren(&k, "objekt_werte", json!({"design": d, "objekt": 0})).unwrap();
+    let wert = |f: &str| w.as_array().unwrap().iter().find(|x| x["feld"] == f).unwrap()["wert"].clone();
+    assert_eq!(wert("laenge"), json!(3.0));
+    assert_eq!(wert("ueberlappung"), json!(50.0));
+    // Werte außerhalb des Bereichs → Fehler mit Objektnummer
+    let d = json!({"objekte": [{"art": "rueckstich", "punkte": [[0, 0], [30, 0]], "striche": 4}]});
+    assert_eq!(ausfuehren(&k, "design_berechnen", json!({ "design": d })).unwrap_err().objekt, Some(0));
+    // Blackwork Run: zwei Läufe und eine Satinlinie (ausgelassen) → ein Objekt mit zwei Linien
+    let d = json!({"objekte": [
+        {"art": "satinlinie", "punkte": [[0, 30], [20, 30]]},
+        {"art": "rueckstich", "punkte": [[-20, 0], [20, 0]], "farbe": "#112233", "striche": 5},
+        {"art": "lauf", "punkte": {"kreis": {"mitte": [0, 0], "radius": 10}}, "transform": {"verschieben": [5, 0]}}
+    ]});
+    let r = ausfuehren(&k, "blackwork_lauf", json!({"design": d, "objekte": [1, 2, 0]})).unwrap();
+    assert_eq!(r["objekt"], json!(1));
+    assert_eq!(r["hinweise"].as_array().unwrap().len(), 1);
+    let o = &r["design"]["objekte"][1];
+    assert_eq!(o["art"], "blackwork");
+    assert_eq!(o["stich"], "rueckstich");
+    assert_eq!(o["striche"], json!(5));
+    assert_eq!(o["farbe"], "#112233");
+    assert_eq!(o["linien"].as_array().unwrap().len(), 2);
+    assert_eq!(r["design"]["objekte"].as_array().unwrap().len(), 2);
+    let e = ausfuehren(&k, "design_berechnen", json!({"design": r["design"].clone()})).unwrap();
+    // Kreis verschoben (Transformation angewandt): rechts bis 15 mm
+    let b: [f64; 4] = serde_json::from_value(e["begrenzung"].clone()).unwrap();
+    assert!(b[2] > 19.0 && b[3] > 29.0, "{b:?}");
+    // nur ein Objekt → Fehler
+    assert!(ausfuehren(&k, "blackwork_lauf", json!({"design": d, "objekte": [1, 0]})).is_err());
+    // Stichart wechseln: Lauf → Rückstich, Tatami → Stippling
+    let d = json!({"objekte": [
+        {"art": "lauf", "punkte": [[0, 0], [20, 0]], "geschlossen": false},
+        {"art": "tatami", "umriss": {"kreis": {"mitte": [0, 0], "radius": 10}}, "loecher": [{"kreis": {"mitte": [0, 0], "radius": 3}}]}
+    ]});
+    let r = ausfuehren(&k, "stichart_aendern", json!({"design": d, "objekt": 0, "art": "rueckstich"})).unwrap();
+    assert_eq!(r["objekt"]["art"], "rueckstich");
+    let r = ausfuehren(&k, "stichart_aendern", json!({"design": d, "objekt": 1, "art": "stippling"})).unwrap();
+    assert_eq!(r["objekt"]["art"], "stippling");
+    assert_eq!(r["objekt"]["loecher"].as_array().unwrap().len(), 1);
 }

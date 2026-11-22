@@ -102,9 +102,9 @@ export function objektName(o: ObjektJson | undefined, i: number): string {
 
 /** Objektarten, deren Stichart sich wechseln lässt (Kern `stichart_aendern`) */
 /** Objektarten mit Fläche: dort wirkt `umrandung` (Kern: `aussparen::bedeckt`); Linien haben keine */
-export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation"];
+export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation", "stippling"];
 
-export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "tatami", "satinflaeche", "muster", "motivfuellung"];
+export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich", "tatami", "satinflaeche", "muster", "motivfuellung", "stippling"];
 /** Standardname je Stichart (neue Objekte); ein Objekt mit Standardnamen bekommt beim Wechsel den neuen */
 export const STANDARD_NAME: Record<string, string> = {
   lauf: "Laufstich",
@@ -116,6 +116,9 @@ export const STANDARD_NAME: Record<string, string> = {
   satinflaeche: "Satinfläche",
   muster: "Füllmuster",
   motivfuellung: "Motivfüllung",
+  rueckstich: "Rückstich",
+  stielstich: "Stielstich",
+  stippling: "Stippling",
 };
 const STANDARD_NAMEN = Object.values(STANDARD_NAME);
 
@@ -640,6 +643,26 @@ class Arbeit {
       gruppenAufraeumen(d);
     });
     this.auswahl = [];
+  }
+
+  /** Objektarten, die Blackwork Run verbinden kann (Kern `blackwork_lauf`) */
+  get blackworkFaehig(): number[] {
+    return this.auswahl.filter((i) => ["lauf", "dreifach", "rueckstich", "stielstich", "blackwork"].includes(this.objekte[i]?.art ?? ""));
+  }
+
+  /**
+   * Blackwork Run (Handbuch S. 131): gewählte Linien zu einem automatisch geordneten Objekt; Stichart, Farbe und Effekte
+   * des ersten gewählten Objekts (Klickfolge = Reihenfolge der Auswahl).
+   */
+  async blackworkLauf() {
+    try {
+      const r = await kern("blackwork_lauf", { design: JSON.parse(this.#schnappschuss()), objekte: [...this.auswahl] });
+      this.ersetzen(r.design, this.pfad, true);
+      this.auswahl = [r.objekt];
+      this.zeige(["Blackwork: Linien zu einem Zug verbunden", ...r.hinweise].join(" · "), r.hinweise.length ? "info" : "ok");
+    } catch (x) {
+      this.zeige(alsFehler(x).meldung, "err");
+    }
   }
 
   /**

@@ -81,7 +81,13 @@ pub fn bedeckt(art: &ObjektArt, u: f64) -> Vec<Kontur> {
             punkte,
             geschlossen: true,
             ..
+        }
+        | ObjektArt::Handstich {
+            punkte,
+            geschlossen: true,
+            ..
         } if punkte.len() >= 3 => flaeche(punkte, &[]),
+        ObjektArt::Stippling { umriss, loecher, .. } => flaeche(umriss, loecher),
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| bedeckt(&t.art, u)).collect(),
         // Knopfloch: Loch = mittlerer Umriss (Merge Buttonhole, `knopfloch.rs`), sonst die Teile
         ObjektArt::Kette { loch: Some(l), .. } => flaeche(l, &[]),
@@ -136,6 +142,34 @@ pub fn belegt(art: &ObjektArt) -> Vec<Kontur> {
             }
             let (a, b) = seiten_aus_mittellinie(&l, LINIE_BREITE);
             saeule(&a, &b, 0.0)
+        }
+        // Handstiche: Band in der Breite des Stichs (mindestens wie ein Laufstich)
+        ObjektArt::Handstich {
+            punkte,
+            geschlossen,
+            stich,
+            ..
+        } if punkte.len() >= 2 => {
+            let mut l = punkte.clone();
+            if *geschlossen && l.len() >= 3 {
+                l.push(l[0]);
+            }
+            let (a, b) = seiten_aus_mittellinie(&l, stich.breite().max(LINIE_BREITE));
+            saeule(&a, &b, 0.0)
+        }
+        ObjektArt::Blackwork { linien, stich } => {
+            let breite = match stich {
+                crate::design::Linienstich::Hand(h) => h.breite().max(LINIE_BREITE),
+                _ => LINIE_BREITE,
+            };
+            linien
+                .iter()
+                .filter(|(l, _)| l.len() >= 2)
+                .flat_map(|(l, _)| {
+                    let (a, b) = seiten_aus_mittellinie(l, breite);
+                    saeule(&a, &b, 0.0)
+                })
+                .collect()
         }
         ObjektArt::Gruppe { teile, .. } => teile.iter().flat_map(|t| belegt(&t.art)).collect(),
         ObjektArt::Kette { teile, .. } => teile.iter().flat_map(|t| belegt(&t.art)).collect(),

@@ -66,4 +66,8 @@ export const ART: Record<string, [string, string]> = {
   knopfloch: ["Knopfloch", "M8 3h8v18H8ZM12 6.5v11M8 6.5h8M8 17.5h8"],
   motivlinie: ["Motivlinie", "M2 15c2-6 5-6 5 0s3 6 5 0 3-6 5 0 3 6 5 0M2 18h20"],
   motivfuellung: ["Motivfüllung", "M3 3h18v18H3ZM5 9c1.2-3 2.8-3 4 0s2.8 3 4 0 2.8-3 4 0M5 16c1.2-3 2.8-3 4 0s2.8 3 4 0 2.8-3 4 0"],
+  rueckstich: ["Rückstich", "M2 12h5M6 10.6h5M10 12h5M14 10.6h5M18 12h4"],
+  stielstich: ["Stielstich", "M2 15l4-6M5 15l4-6M8 15l4-6M11 15l4-6M14 15l4-6M17 15l4-6"],
+  stippling: ["Stippling", "M3 3h18v18H3ZM6 17c0-4 3-4 3-1s3 3 3-1-3-4 0-6 4 0 4 3 2 4 3 1"],
+  blackwork: ["Blackwork (Linien in einem Zug)", "M4 20L12 4l8 16M7 14h10M3 9h18"],
 };

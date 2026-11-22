@@ -159,8 +159,14 @@ impl Transformation {
 /// Alle Formpunkte eines Objekts (für den Bezugspunkt).
 pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
     match art {
-        ObjektArt::Lauf { punkte, .. } | ObjektArt::SatinLinie { punkte, .. } | ObjektArt::Blanket { punkte, .. } => {
-            out.extend(punkte)
+        ObjektArt::Lauf { punkte, .. }
+        | ObjektArt::SatinLinie { punkte, .. }
+        | ObjektArt::Blanket { punkte, .. }
+        | ObjektArt::Handstich { punkte, .. } => out.extend(punkte),
+        ObjektArt::Blackwork { linien, .. } => linien.iter().for_each(|(l, _)| out.extend(l)),
+        ObjektArt::Stippling { umriss, loecher, .. } => {
+            out.extend(umriss);
+            out.extend(loecher.iter().flatten());
         }
         ObjektArt::Satin { seite_a, seite_b, .. } => {
             out.extend(seite_a);
@@ -349,6 +355,34 @@ pub fn abbilden(o: &Objekt, m: &Matrix, winkel_standard: f64) -> Objekt {
             teile: teile.iter().map(|t| abbilden(t, m, winkel_standard)).collect(),
             umkehrbar: umkehrbar.clone(),
             loch: loch.as_ref().map(|l| m.linie(l)),
+        },
+        // Werte des Handstichs (Breite, Abstand) bleiben wie bei Satin- und Blanketlinien nicht skaliert: die Stiche
+        // werden neu berechnet (eigene Festlegung wie Musterteilung und Stichwerte)
+        ObjektArt::Handstich {
+            punkte,
+            ecken,
+            geschlossen,
+            stich,
+        } => ObjektArt::Handstich {
+            punkte: m.linie(punkte),
+            ecken: ecken.clone(),
+            geschlossen: *geschlossen,
+            stich: stich.clone(),
+        },
+        ObjektArt::Blackwork { linien, stich } => ObjektArt::Blackwork {
+            linien: linien.iter().map(|(l, e)| (m.linie(l), e.clone())).collect(),
+            stich: stich.clone(),
+        },
+        ObjektArt::Stippling {
+            umriss,
+            loecher,
+            laenge,
+            abstand,
+        } => ObjektArt::Stippling {
+            umriss: m.linie(umriss),
+            loecher: loecher.iter().map(|l| m.linie(l)).collect(),
+            laenge: *laenge,
+            abstand: *abstand,
         },
         andere => andere.clone(),
     };
@@ -541,6 +575,46 @@ pub fn verformen(o: &Objekt, f: &dyn Fn(Punkt) -> Punkt, seg: f64) -> Objekt {
             teile: teile.iter().map(|t| verformen(t, f, seg)).collect(),
             umkehrbar: umkehrbar.clone(),
             loch: loch.as_ref().map(|l| lin(l, true)),
+        },
+        ObjektArt::Handstich {
+            punkte,
+            ecken,
+            geschlossen,
+            stich,
+        } => {
+            let (q, alt) = teilen(punkte, seg, *geschlossen);
+            let mut e = ecken.iter();
+            ObjektArt::Handstich {
+                punkte: q.into_iter().map(f).collect(),
+                ecken: alt.iter().map(|&a| a && *e.next().unwrap_or(&false)).collect(),
+                geschlossen: *geschlossen,
+                stich: stich.clone(),
+            }
+        }
+        ObjektArt::Blackwork { linien, stich } => ObjektArt::Blackwork {
+            linien: linien
+                .iter()
+                .map(|(l, ecken)| {
+                    let (q, alt) = teilen(l, seg, false);
+                    let mut e = ecken.iter();
+                    (
+                        q.into_iter().map(f).collect(),
+                        alt.iter().map(|&a| a && *e.next().unwrap_or(&false)).collect(),
+                    )
+                })
+                .collect(),
+            stich: stich.clone(),
+        },
+        ObjektArt::Stippling {
+            umriss,
+            loecher,
+            laenge,
+            abstand,
+        } => ObjektArt::Stippling {
+            umriss: lin(umriss, true),
+            loecher: loecher.iter().map(|l| lin(l, true)).collect(),
+            laenge: *laenge,
+            abstand: *abstand,
         },
         andere => andere.clone(),
     };

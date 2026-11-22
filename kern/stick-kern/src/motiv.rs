@@ -201,10 +201,15 @@ pub fn motivlinie_objekt(satz: &Motivsatz, v: &MotivVorgabe, farbe: &str, name: 
 
 // ---------------------------------------------------------------- Motivfüllung (Pattern Fill)
 
-/// Standard der Motivfüllung wie das Original (NORMAL.AMT `<PRESET_STANDARD_MOTIF_FILL>`, 0x2798: Satz „Children“,
-/// Motiv „901“, Reihen-/Spaltenabstand 0x27b6/0x27b9 = 1000/2781 ≈ Höhe/Breite des Motivs; Bericht 20 §2).
-pub const FUELL_SATZ: &str = "Children";
-pub const FUELL_MOTIV: &str = "901";
+/// Standard der Motivfüllung wie das Original (NORMAL.AMT `<PRESET_STANDARD_MOTIF_FILL>`, Füll-Stichart 0x27ee: Satz
+/// „NP004a“, Motiv „K0001a“, Größe 0x3ab8 = 2158 = 12,0 mm = Höhe des Motivs, Spalten-/Reihenabstand 0x27b6/0x27b9 =
+/// 2158 = Kante an Kante; Bericht 20 §2, korrigiert 22.11.2026 in Bericht 24 §1).
+pub const FUELL_SATZ: &str = "NP004a";
+pub const FUELL_MOTIV: &str = "K0001a";
+/// Standard der Motivlinie wie das Original (`<PRESET_STANDARD_MOTIF_RUN>`, Kontur-Stichart 0x2798: Satz „NP004a“,
+/// Motiv „K0001a“, Abstand 0x27df = 2146 = 11,92 mm = Länge der Grundlinie).
+pub const LINIE_SATZ: &str = "NP004a";
+pub const LINIE_MOTIV: &str = "K0001a";
 /// Lücke zwischen zwei Motiven, bis zu der sie ohne Sprung verbunden werden (mm, eigene Festlegung)
 pub const FUELL_VERBINDEN_BIS: f64 = 1.0;
 

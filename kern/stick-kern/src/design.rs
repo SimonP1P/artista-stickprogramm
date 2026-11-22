@@ -481,6 +481,25 @@ pub enum ObjektArt {
     Motivlinie(crate::motiv::MotivVorgabe),
     /// Motivfüllung (Pattern Fill, `motiv.rs`); wird vor dem Berechnen zu `Kette`n aufgelöst
     Motivfuellung(crate::motiv::MotivFuellVorgabe),
+    /// Rückstich oder Stielstich entlang einer Linie (Craft Stitches, `sticharten::handstich`)
+    Handstich {
+        punkte: Linie,
+        ecken: Vec<bool>,
+        geschlossen: bool,
+        stich: crate::sticharten::handstich::Handstich,
+    },
+    /// Stippling: Fläche mit mäandernder Laufstichlinie (`sticharten::stippling`)
+    Stippling {
+        umriss: Linie,
+        loecher: Vec<Linie>,
+        laenge: f64,
+        abstand: f64,
+    },
+    /// Blackwork Run: Linien (mit Eckmarken), automatisch zu Zügen verbunden (`blackwork.rs`)
+    Blackwork {
+        linien: Vec<(Linie, Vec<bool>)>,
+        stich: Linienstich,
+    },
     /// Teile in fester Reihenfolge, ohne Sprünge zu einem Zug verbunden (Knopfloch). Satinteile beginnen an dem Ende,
     /// das dem vorigen Stich am nächsten liegt (am Musterdesign beobachtet). `loch` = Fläche zum Aussparen
     /// (Merge Buttonhole: mittlerer Umriss).
@@ -490,6 +509,26 @@ pub enum ObjektArt {
         umkehrbar: Vec<bool>,
         loch: Option<Linie>,
     },
+}
+
+/// Stichart einer Linie im Blackwork-Zug.
+#[derive(Clone, Debug, PartialEq)]
+pub enum Linienstich {
+    Lauf { laenge: Option<f64>, dreifach: bool },
+    Hand(crate::sticharten::handstich::Handstich),
+}
+
+impl Linienstich {
+    /// Stiche entlang einer Linie mit Eckmarken.
+    pub fn stiche(&self, linie: &[Punkt], ecken: &[bool], e: &Einstellungen) -> Linie {
+        match self {
+            Linienstich::Lauf { laenge, dreifach: drei } => {
+                let l = laufstich_mit_ecken(linie, Some(ecken), &e.lauf, *laenge);
+                if *drei { dreifach(&l) } else { l }
+            }
+            Linienstich::Hand(h) => h.stiche(linie, Some(ecken), &e.lauf),
+        }
+    }
 }
 
 /// Einstellungen einer Satinsäule, die vom Stil abweichen (wie die Effekte am Objekt im Original).
@@ -1057,6 +1096,34 @@ impl Objekt {
                 laufweg,
             } => gruppe_wege(teile, umrisse, *laufweg, e, start),
             ObjektArt::Kette { teile, umkehrbar, .. } => kette_wege(teile, umkehrbar, e, start),
+            ObjektArt::Handstich {
+                punkte,
+                ecken,
+                geschlossen,
+                stich,
+            } => {
+                let (mut pts, mut ecken) = (punkte.clone(), ecken.clone());
+                if ecken.len() != pts.len() {
+                    ecken = vec![true; pts.len()];
+                }
+                if *geschlossen && !pts.is_empty() && abstand(pts[0], *pts.last().unwrap()) > 1e-9 {
+                    pts.push(pts[0]);
+                    ecken.push(true);
+                }
+                Ok(vec![stich.stiche(&pts, Some(&ecken), &e.lauf)])
+            }
+            ObjektArt::Stippling {
+                umriss,
+                loecher,
+                laenge,
+                abstand,
+            } => Ok(crate::sticharten::stippling::stippling(
+                umriss, loecher, *laenge, *abstand, &e.lauf, start,
+            )),
+            ObjektArt::Blackwork { linien, stich } => Ok(crate::blackwork::blackwork_wege(linien, start)
+                .into_iter()
+                .map(|(l, ecken)| stich.stiche(&l, &ecken, e))
+                .collect()),
             ObjektArt::Knopfloch(_) => Err("Knopfloch wurde nicht aufgelöst".into()),
             ObjektArt::Motivlinie(_) => Err("Motivlinie wurde nicht aufgelöst".into()),
             ObjektArt::Motivfuellung(_) => Err("Motivfüllung wurde nicht aufgelöst".into()),
@@ -1332,6 +1399,7 @@ impl Design {
                     "{wo}: Fläche mit Winkellinien: ohne Löcher und Aussparen (noch nicht möglich)"
                 ));
             }
+            craft_pruefen(o).map_err(|x| format!("{wo}: {x}"))?;
             if let ObjektJson::Satinflaeche(s) = o
                 && s.knickwinkel.is_some_and(|k| !(0.0..180.0).contains(&k))
             {
@@ -2372,6 +2440,20 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
             punkte, geschlossen, ..
         } => linie(FormArt::Linie, punkte, *geschlossen),
         ObjektArt::SatinLinie { punkte, .. } => linie(FormArt::Linie, punkte, false),
+        ObjektArt::Handstich {
+            punkte, geschlossen, ..
+        } => linie(FormArt::Linie, punkte, *geschlossen),
+        ObjektArt::Blackwork { linien, .. } => {
+            for (l, _) in linien {
+                linie(FormArt::Linie, l, false);
+            }
+        }
+        ObjektArt::Stippling { umriss, loecher, .. } => {
+            linie(FormArt::Umriss, umriss, true);
+            for l in loecher {
+                linie(FormArt::Loch, l, true);
+            }
+        }
         ObjektArt::Satin { seite_a, seite_b, .. } => {
             linie(FormArt::SeiteA, seite_a, false);
             linie(FormArt::SeiteB, seite_b, false);
@@ -2487,6 +2569,85 @@ fn umrandung_satin(umriss: Linie, loecher: Vec<Linie>, u: &Umrandung, name: &str
         farbe: u.farbe.clone(),
         name: name.to_string(),
         art,
+    }
+}
+
+/// Rückstich mit den Werten des Originals, wo nichts angegeben ist (Überlappung im JSON in %).
+fn rueckstich_werte(
+    laenge: Option<f64>,
+    staerke: Option<f64>,
+    ueberlappung: Option<f64>,
+    striche: Option<u8>,
+) -> crate::sticharten::handstich::Handstich {
+    use crate::sticharten::handstich as h;
+    h::Handstich::Rueckstich {
+        laenge: laenge.unwrap_or(h::RUECK_LAENGE),
+        staerke: staerke.unwrap_or(h::RUECK_STAERKE),
+        ueberlappung: ueberlappung.map_or(h::RUECK_UEBERLAPPUNG, |u| u / 100.0),
+        striche: striche.unwrap_or(h::RUECK_STRICHE),
+    }
+}
+
+/// Stielstich mit den Werten des Originals, wo nichts angegeben ist.
+fn stielstich_werte(
+    breite: Option<f64>,
+    abstand: Option<f64>,
+    winkel: Option<f64>,
+    dreifach: Option<bool>,
+    staerke: Option<f64>,
+) -> crate::sticharten::handstich::Handstich {
+    use crate::sticharten::handstich as h;
+    h::Handstich::Stielstich {
+        breite: breite.unwrap_or(h::STIEL_BREITE),
+        abstand: abstand.unwrap_or(h::STIEL_ABSTAND),
+        winkel: winkel.unwrap_or(h::STIEL_WINKEL),
+        dreifach: dreifach.unwrap_or(h::STIEL_DREIFACH),
+        staerke: staerke.unwrap_or(h::STIEL_STAERKE),
+    }
+}
+
+/// Bereiche der Craft-Stitch-Werte prüfen (wie die Dialoge des Originals, Grenzen teils eigene Festlegung).
+fn craft_pruefen(o: &ObjektJson) -> Result<(), String> {
+    let bereich = |n: &str, v: Option<f64>, a: f64, b: f64| -> Result<(), String> {
+        match v {
+            Some(x) if !(a..=b).contains(&x) => Err(format!("{n} zwischen {a} und {b}").replace('.', ",")),
+            _ => Ok(()),
+        }
+    };
+    let striche = |s: Option<u8>| match s {
+        Some(x) if x != 3 && x != 5 => Err("striche: 3 oder 5".to_string()),
+        _ => Ok(()),
+    };
+    match o {
+        ObjektJson::Rueckstich(r) => {
+            bereich("laenge", r.laenge, 0.5, 12.7)?;
+            bereich("staerke", r.staerke, 0.0, 1.0)?;
+            bereich("ueberlappung", r.ueberlappung, 0.0, 100.0)?;
+            striche(r.striche)
+        }
+        ObjektJson::Stielstich(t) => {
+            bereich("breite", t.breite, 0.5, 10.0)?;
+            bereich("abstand", t.abstand, 0.2, 10.0)?;
+            bereich("winkel", t.winkel, 10.0, 90.0)?;
+            bereich("staerke", t.staerke, 0.0, 1.0)
+        }
+        ObjektJson::Stippling(t) => {
+            bereich("laenge", t.laenge, 0.5, 12.7)?;
+            bereich("abstand", t.abstand, 0.5, 20.0)
+        }
+        ObjektJson::Blackwork(b) => {
+            if b.linien.is_empty() {
+                return Err("linien: mindestens eine Linie".into());
+            }
+            bereich("laenge", b.laenge, 0.5, 12.7)?;
+            bereich("staerke", b.staerke, 0.0, 1.0)?;
+            bereich("ueberlappung", b.ueberlappung, 0.0, 100.0)?;
+            bereich("breite", b.breite, 0.5, 10.0)?;
+            bereich("abstand", b.abstand, 0.2, 10.0)?;
+            bereich("winkel", b.winkel, 10.0, 90.0)?;
+            striche(b.striche)
+        }
+        _ => Ok(()),
     }
 }
 
@@ -2698,6 +2859,63 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                 winkel: k.winkel,
             }),
         },
+        ObjektJson::Rueckstich(r) => {
+            let (punkte, ecken) = r.punkte.punkte_mit_ecken();
+            Objekt {
+                farbe: r.g.farbe,
+                name: r.g.name,
+                art: ObjektArt::Handstich {
+                    punkte,
+                    ecken,
+                    geschlossen: r.geschlossen,
+                    stich: rueckstich_werte(r.laenge, r.staerke, r.ueberlappung, r.striche),
+                },
+            }
+        }
+        ObjektJson::Stielstich(t) => {
+            let (punkte, ecken) = t.punkte.punkte_mit_ecken();
+            Objekt {
+                farbe: t.g.farbe,
+                name: t.g.name,
+                art: ObjektArt::Handstich {
+                    punkte,
+                    ecken,
+                    geschlossen: t.geschlossen,
+                    stich: stielstich_werte(t.breite, t.abstand, t.winkel, t.dreifach, t.staerke),
+                },
+            }
+        }
+        ObjektJson::Stippling(t) => Objekt {
+            farbe: t.g.farbe,
+            name: t.g.name,
+            art: ObjektArt::Stippling {
+                umriss: t.umriss.punkte(),
+                loecher: t.loecher.iter().map(|l| l.punkte()).collect(),
+                laenge: t.laenge.unwrap_or(crate::sticharten::stippling::LAENGE),
+                abstand: t.abstand.unwrap_or(crate::sticharten::stippling::ABSTAND),
+            },
+        },
+        ObjektJson::Blackwork(b) => {
+            use crate::format::BlackworkStich;
+            let stich = match b.stich {
+                BlackworkStich::Lauf => Linienstich::Lauf { laenge: b.laenge, dreifach: false },
+                BlackworkStich::Dreifach => Linienstich::Lauf { laenge: b.laenge, dreifach: true },
+                BlackworkStich::Rueckstich => {
+                    Linienstich::Hand(rueckstich_werte(b.laenge, b.staerke, b.ueberlappung, b.striche))
+                }
+                BlackworkStich::Stielstich => {
+                    Linienstich::Hand(stielstich_werte(b.breite, b.abstand, b.winkel, b.dreifach, b.staerke))
+                }
+            };
+            Objekt {
+                farbe: b.g.farbe,
+                name: b.g.name,
+                art: ObjektArt::Blackwork {
+                    linien: b.linien.iter().map(|l| l.punkte_mit_ecken()).collect(),
+                    stich,
+                },
+            }
+        }
         ObjektJson::Blanket(b) => Objekt {
             farbe: b.g.farbe,
             name: b.g.name,

@@ -87,6 +87,9 @@
     spiegeln: "Spiegeln",
     aussparen: "Aussparen",
     knickwinkel_: "Knickwinkel",
+    stich: "Stichart",
+    staerke: "Stärke",
+    striche: "Striche",
   };
   /** Vorlagewerte, die nicht im Schema stehen (Kern: schrift.rs WORTABSTAND_ANTEIL 0,25, ZEILENABSTAND_ANTEIL 0,6;
    *  Mustergröße 100 %) – Anzeige statt „Stil“. Werte nach Stil/Stoff liefert der Kern noch nicht (offen). */

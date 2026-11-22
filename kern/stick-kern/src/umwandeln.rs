@@ -185,6 +185,7 @@ pub fn umwandelbar(objekt: &Value) -> bool {
             .iter()
             .any(|f| o.get(*f).is_some_and(form))
         || o.get("loecher").and_then(Value::as_array).is_some_and(|l| l.iter().any(form))
+        || o.get("linien").and_then(Value::as_array).is_some_and(|l| l.iter().any(form))
 }
 
 /// Objekt Nr. `nr` (ab 0) des Designs in Knoten umwandeln: Formen → Punktlisten bzw. Bézierstücke, Transformation
@@ -231,9 +232,11 @@ pub fn in_punkte(design: &Design, json: &Value, nr: usize) -> Result<Value, Stri
             neu.insert(f.into(), feld_umwandeln(v, &m, umkehren)?);
         }
     }
-    if let Some(l) = obj.get("loecher").and_then(Value::as_array) {
-        let l: Result<Vec<Value>, String> = l.iter().map(|v| feld_umwandeln(v, &m, false)).collect();
-        neu.insert("loecher".into(), Value::Array(l?));
+    for f in ["loecher", "linien"] {
+        if let Some(l) = obj.get(f).and_then(Value::as_array) {
+            let l: Result<Vec<Value>, String> = l.iter().map(|v| feld_umwandeln(v, &m, false)).collect();
+            neu.insert(f.into(), Value::Array(l?));
+        }
     }
     // Leitlinie der Welle (Effekt) mit dem Objekt umwandeln
     if let Some(w) = obj.get("effekte").and_then(|x| x.get("welle")).filter(|w| !w.is_null()) {
