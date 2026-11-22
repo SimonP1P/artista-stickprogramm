@@ -278,7 +278,7 @@ pub fn google_schrift_laden(k: &Kontext, e: GoogleLadenEingabe) -> Result<Schrif
             .read_to_vec()
             .map_err(|x| Fehler::from(format!("Herunterladen von „{}“ abgebrochen: {x}", g.familie)))?;
         // muss eine lesbare Schrift sein
-        ttf::schrift_aus_daten(&g.familie, &daten, 0, &"Aa".chars().collect())
+        ttf::schrift_aus_daten(&g.familie, &daten, 0, None, &"Aa".chars().collect())
             .map_err(|x| Fehler::from(format!("Datei von Google ist keine lesbare Schrift: {x}")))?;
         let tmp = ziel.with_extension("laden");
         std::fs::write(&tmp, &daten).map_err(|x| Fehler::from(format!("{}: {x}", tmp.display())))?;

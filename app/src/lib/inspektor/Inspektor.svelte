@@ -30,6 +30,8 @@
     text: ["text", "alphabet", "hoehe", "ausrichtung", "kursiv", "grundlinie", "unterlage"],
     ttf: ["text", "schrift", "hoehe", "ausrichtung", "kursiv", "grundlinie", "unterlage"],
     monogramm: ["initialen", "hoehe", "rahmen", "rahmen_farbe", "unterlage"],
+    // Monogramm mit Rahmen aus dem Katalog (eigene Erweiterung): andere Felder als mit Diamond
+    monogramm_vorlage: ["initialen", "vorlage", "schrift", "rahmen_groesse", "rahmen_farben", "unterlage"],
     lauf: ["geschlossen"],
     dreifach: ["geschlossen"],
     satin: ["stichart"],
@@ -50,13 +52,26 @@
   const i = $derived(arbeit.auswahl.length === 1 ? arbeit.auswahl[0] : -1);
   const o = $derived(i >= 0 ? (arbeit.objekte[i] as ObjektJson & Record<string, unknown>) : undefined);
   const felder = $derived(o && schema.bereit ? schema.felder(o.art) : []);
-  const eNamen = $derived(o ? (E_FELDER[o.art] ?? []) : []);
+  const eNamen = $derived(o ? (E_FELDER[o.art === "monogramm" && o.vorlage ? "monogramm_vorlage" : o.art] ?? []) : []);
+  /** Felder, die beim Monogramm je nach Rahmen nicht gelten (Diamond ↔ Katalog) */
+  const ungueltig = $derived(
+    o?.art !== "monogramm"
+      ? []
+      : o.vorlage
+        ? ["hoehe", "rahmen", "rahmen_farbe"]
+        : ["vorlage", "schrift", "alphabet", "rahmen_groesse", "rahmen_farben"],
+  );
+  const monoVorlage = $derived(o?.art === "monogramm" ? listen.monogrammRahmen(o.vorlage as string | undefined) : undefined);
+  $effect(() => {
+    if (o?.art === "monogramm") listen.monogrammeLaden().catch(() => {});
+  });
   const oben = $derived(eNamen.map((n) => felder.find((f) => f.name === n)).filter((f): f is Feld => !!f));
   const fein = $derived(
     felder.filter(
       (f) =>
         !eNamen.includes(f.name) &&
         !GESONDERT.has(f.name) &&
+        !ungueltig.includes(f.name) &&
         f.typ !== "komplex" &&
         (f.name !== "step_muster" || MIT_STEP.has(o?.art ?? "")),
     ),
@@ -207,7 +222,26 @@
             {:else if f.name === "schrift"}
               <div class="frow">
                 <span class="fl">Schrift</span>
-                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "schrift", objekt: i })}><span class="t">{String(o.schrift ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "schrift", objekt: i })}><span class="t">{String(o.alphabet ?? o.schrift ?? monoVorlage?.schrift ?? "")}</span><Icon d={IC.chevronRechts} /></button></div>
+                {#if o.art === "monogramm" && !o.schrift && !o.alphabet}<div class="fhelp">Vorschlag des Rahmens</div>{/if}
+              </div>
+            {:else if f.name === "vorlage" || (f.name === "rahmen" && o.art === "monogramm")}
+              <div class="frow">
+                <span class="fl">Rahmen</span>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "rahmen", objekt: i })}><span class="t">{String(o.vorlage ?? ({ raute: "Raute", zier: "Zierwinkel" } as Record<string, string>)[String(o.rahmen)] ?? "ohne Rahmen")}</span><Icon d={IC.chevronRechts} /></button></div>
+                <div class="fhelp">{monoVorlage ? `${monoVorlage.kategorie} · Katalog` : "Original BERNINA (Diamond)"}</div>
+              </div>
+            {:else if f.name === "rahmen_farben"}
+              <div class="frow" style="align-items:start">
+                <span class="fl">Garn Rahmen</span>
+                <div class="fc" style="flex-direction:column; align-items:stretch; gap:4px">
+                  {#each (monoVorlage?.farben ?? []).map((x, k) => ((o.rahmen_farben as string[] | undefined)?.[k] || x)) as x, k (k)}
+                    {@const g = arbeit.farbGarn(i, x)}
+                    <button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "garn", objekt: i, rahmen: k })}>
+                      <span class="sw" style="background:{g?.rgb ?? x}"></span><span class="t">{g ? garnText(g) : x}</span><Icon d={IC.chevronRechts} />
+                    </button>
+                  {/each}
+                </div>
               </div>
             {:else if f.name === "muster"}
               <div class="frow">

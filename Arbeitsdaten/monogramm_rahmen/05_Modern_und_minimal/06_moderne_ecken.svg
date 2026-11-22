@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="90mm" viewBox="0 0 90 90">
+  <path d="M8 29 L8 8 L29 8" fill="none" stroke="#465660" stroke-width="3.40" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M14 26 L14 14 L26 14" fill="none" stroke="#BE8C67" stroke-width="2.50" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M8 61 L8 82 L29 82" fill="none" stroke="#465660" stroke-width="3.40" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M14 64 L14 76 L26 76" fill="none" stroke="#BE8C67" stroke-width="2.50" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M82 29 L82 8 L61 8" fill="none" stroke="#465660" stroke-width="3.40" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M76 26 L76 14 L64 14" fill="none" stroke="#BE8C67" stroke-width="2.50" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M82 61 L82 82 L61 82" fill="none" stroke="#465660" stroke-width="3.40" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M76 64 L76 76 L64 76" fill="none" stroke="#BE8C67" stroke-width="2.50" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M38 9 L52 9" fill="none" stroke="#465660" stroke-width="3.00" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M38 81 L52 81" fill="none" stroke="#465660" stroke-width="3.00" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M9 38 L9 52" fill="none" stroke="#465660" stroke-width="3.00" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M81 38 L81 52" fill="none" stroke="#465660" stroke-width="3.00" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

@@ -183,7 +183,7 @@ pub fn formpunkte(art: &ObjektArt, out: &mut Vec<Punkt>) {
         ObjektArt::Kette { teile, .. } => teile.iter().for_each(|t| formpunkte(&t.art, out)),
         ObjektArt::Knopfloch(k) => out.push(k.mitte),
         ObjektArt::Motivlinie(m) => out.extend(&m.linie),
-        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } => {}
+        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } | ObjektArt::MonogrammVorlage(_) => {}
     }
 }
 

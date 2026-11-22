@@ -9,6 +9,7 @@ import {
   type Ergebnis,
   type Fehler,
   type GarnInfo,
+  type MonogrammJson,
   type ObjektForm,
   type ObjektJson,
   type Pruefung,
@@ -17,6 +18,8 @@ import {
   type Transformation,
   type UmrandungJson,
 } from "$kern/kern";
+import { listen } from "./listen.svelte";
+import type { RahmenWahl } from "./dialoge/RahmenDialog.svelte";
 
 export type Modus = "einfach" | "experte";
 /** Wahl im Dialog „Schrift wählen“: Original-Alphabet oder Computer-Schrift */
@@ -32,7 +35,10 @@ export type OffenerDialog =
       alle?: number[];
       /** Garn für die Umrandung (`umrandung.farbe`) statt für das Objekt */
       umrandung?: boolean;
+      /** Garn für eine Farbe des Monogramm-Rahmens (Nummer in `rahmen_farben`) statt für die Initialen */
+      rahmen?: number;
     }
+  | { art: "rahmen"; objekt: number }
   | { art: "bild"; pfad?: string }
   | { art: "svg" }
   | { art: "nach_farbe" }
@@ -222,6 +228,14 @@ class Arbeit {
     const drin = (b: { objekt: number; objekte: number[] }) => b.objekt === i || b.objekte.includes(i);
     let k = e.bloecke.findIndex((b, n) => drin(b) && (e.farben[n] ?? "").toLowerCase() === farbe);
     if (k < 0) k = e.bloecke.findIndex(drin);
+    return k >= 0 ? e.garne[k] : undefined;
+  }
+  /** Garn einer Farbe eines Objekts (z. B. einer Farbe des Monogramm-Rahmens): Farbblock des Objekts in dieser Farbe */
+  farbGarn(i: number, farbe: string): GarnInfo | undefined {
+    const e = this.ergebnis;
+    if (!e) return undefined;
+    const f = farbe.toLowerCase();
+    const k = e.bloecke.findIndex((b, n) => (b.objekt === i || b.objekte.includes(i)) && (e.farben[n] ?? "").toLowerCase() === f);
     return k >= 0 ? e.garne[k] : undefined;
   }
   /** Garn der Umrandung eines Objekts: Farbblock des Objekts in der Farbe der Umrandung */
@@ -467,6 +481,68 @@ class Arbeit {
     } catch (e) {
       this.zeige(alsFehler(e).meldung, "err");
     }
+  }
+
+  /**
+   * Rahmen eines Monogramms wählen (Dialog „Rahmen wählen“). Rahmen aus dem Katalog (eigene Erweiterung): die Schrift
+   * der Vorlage wird bei Bedarf von Google Fonts geladen; eine selbst gewählte Schrift bleibt, ebenso von Hand gewählte
+   * Garne – sonst Initialen und Rahmen in den Farben der Vorlage. Rahmen des Originals: Diamond2/3 (Raute, Zierwinkel,
+   * ohne).
+   */
+  async monogrammRahmen(i: number, wahl: RahmenWahl) {
+    const alt = this.objekte[i] as (MonogrammJson & { art: string }) | undefined;
+    if (alt?.art !== "monogramm") return;
+    if ("rahmen" in wahl) {
+      this.aendern((d) => {
+        const x = d.objekte![i] as MonogrammJson;
+        for (const k of ["vorlage", "schrift", "alphabet", "rahmen_groesse", "rahmen_farben"] as const) delete x[k];
+        x.rahmen = wahl.rahmen;
+        x.initialen = x.initialen.toUpperCase();
+      });
+      return;
+    }
+    try {
+      await listen.monogrammeLaden();
+      const r = listen.monogrammRahmen(wahl.vorlage);
+      if (!r) return;
+      const vorher = listen.monogrammRahmen(alt.vorlage);
+      // eigene Schrift: Alphabet oder eine andere als die der bisherigen Vorlage
+      const eigen = !!alt.alphabet || (!!alt.schrift && alt.schrift !== vorher?.schrift);
+      if (!eigen) {
+        await listen.schriftenLaden();
+        if (!listen.schriftVorhanden(r.schrift)) {
+          this.zeige(`Schrift „${r.schrift}“ wird von Google Fonts geladen …`, "info");
+          await listen.googleHerunterladen(r.schrift);
+        }
+      }
+      this.aendern((d) => {
+        const x = d.objekte![i] as MonogrammJson & { garn?: string };
+        x.vorlage = r.name;
+        if (!eigen) {
+          x.schrift = r.schrift;
+          delete x.alphabet;
+        }
+        delete x.rahmen;
+        delete x.rahmen_farbe;
+        if (!x.garn && r.farben[0]) x.farbe = r.farben[0];
+      });
+    } catch (e) {
+      this.zeige(alsFehler(e).meldung, "err");
+    }
+  }
+
+  /** Schrift der Initialen eines Monogramms mit Rahmen aus dem Katalog (Computer-Schrift oder Original-Alphabet) */
+  monogrammSchrift(i: number, wahl: SchriftWahl) {
+    this.aendern((d) => {
+      const x = d.objekte![i] as MonogrammJson;
+      if (wahl.alphabet) {
+        x.alphabet = wahl.alphabet;
+        delete x.schrift;
+      } else if (wahl.schrift) {
+        x.schrift = wahl.schrift;
+        delete x.alphabet;
+      }
+    });
   }
 
   async stichartAendern(nummern: number[], art: string) {

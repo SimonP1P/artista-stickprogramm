@@ -7,6 +7,8 @@ import {
   type AlphabetVorschau,
   type GarnInfo,
   type GoogleKatalog,
+  type MonogrammKatalog,
+  type MonogrammRahmenInfo,
   type SchriftVorschau,
   type MusterInfo,
   type SchriftInfo,
@@ -21,6 +23,8 @@ class Listen {
   muster = $state.raw<MusterInfo[]>([]);
   schriften = $state.raw<SchriftInfo[]>([]);
   google = $state.raw<GoogleKatalog | null>(null);
+  /** Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, im Programm mitgeliefert) */
+  monogramme = $state.raw<MonogrammKatalog | null>(null);
   /** Favoriten der Schriftauswahl: „a:Alphabet“, „s:Computer-Schrift“, „g:Google-Familie“ (nur auf diesem Rechner) */
   favoriten = $state<string[]>(lesen(FAVORITEN, []));
   /** Stile der Schriftauswahl aus dem Kern (Reihenfolge der Filter, Erklärung) */
@@ -31,6 +35,7 @@ class Listen {
    */
   eigeneStile = $state<EigeneStile>(eigeneLesen());
   #google: Promise<void> | null = null;
+  #monogramme: Promise<void> | null = null;
   #stile: Promise<void> | null = null;
   #schriftVorschau = new Map<string, Promise<SchriftVorschau>>();
   #muster: Promise<void> | null = null;
@@ -72,6 +77,26 @@ class Listen {
       this.google = g;
     });
     return this.#google;
+  }
+
+  /** Katalog der Monogramm-Rahmen – bei Bedarf */
+  monogrammeLaden(): Promise<void> {
+    this.#monogramme ??= kern("monogramm_rahmen", {}).then((k) => {
+      this.monogramme = k;
+    });
+    this.#monogramme.catch(() => (this.#monogramme = null));
+    return this.#monogramme;
+  }
+
+  /** Rahmen aus dem Katalog nach Namen (Katalog muss geladen sein) */
+  monogrammRahmen(name: string | null | undefined): MonogrammRahmenInfo | undefined {
+    return name ? this.monogramme?.rahmen.find((r) => r.name.toLowerCase() === name.toLowerCase()) : undefined;
+  }
+
+  /** Ist eine Computer-Schrift dieser Familie (oder dieses Namens) auf dem Rechner bzw. heruntergeladen? */
+  schriftVorhanden(name: string): boolean {
+    const n = name.toLowerCase();
+    return this.schriften.some((s) => s.name.toLowerCase() === n || s.familie.toLowerCase() === n);
   }
 
   /** Google-Schrift herunterladen (Internet); danach Listen neu, Ergebnis = Name für das Design */

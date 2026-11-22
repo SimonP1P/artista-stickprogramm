@@ -187,11 +187,12 @@ Text mit einer Computer-Schrift (TrueType/OpenType, Befehl `schriften_liste`).
 
 ### `monogramm` – Monogramm
 
-Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im Kern zu einem Text – alle Schrift-Einstellungen gelten.
+Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im Kern zu einem Text – alle Schrift-Einstellungen gelten. **Mit `vorlage`** (eigene Erweiterung): Rahmen aus dem Katalog der Monogramm-Rahmen, Initialen in einer Computer-Schrift oder einem Alphabet (`monogramm.rs`).
 
 | Feld | Typ | Pflicht | Standard | Beschreibung |
 |---|---|---|---|---|
 | `abstand` | number |  | – | Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe) |
+| `alphabet` | string |  | – | Original-Alphabet der Initialen (nur mit `vorlage`, statt `schrift`) |
 | `ausrichtung` | Ausrichtung |  | `"mitte"` |  |
 | `breite` | number |  | `100.0` | Breite in % der Höhe |
 | `buchstaben` | BuchstabeJson[] |  | – | einzelne Buchstaben: Farbe, Transformation, Stichwinkel |
@@ -200,14 +201,18 @@ Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Dia
 | `groesse` | number |  | – | Größe des Füllmusters in % (Stichart „muster“, Standard 100) |
 | `grundlinie` | GrundlinieJson |  | – | Grundlinie (ohne Angabe: gerade waagrecht) |
 | `hoehe` | number |  | `18.0` | Höhe in mm (18 = kleinste empfohlene Höhe von Diamond2/3) |
-| `initialen` | string | ja | – | 2 oder 3 Buchstaben A–Z |
+| `initialen` | string | ja | – | 2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen |
 | `kursiv` | number |  | `0.0` | Kursiv in Grad (−45 … 45) |
 | `muster` | string |  | – | Füllmuster bei Stichart „muster“: Name („001 Diamond (90)“) oder Nummer („001“) |
 | `position` | Punkt |  | – | Bezugspunkt auf der Grundlinie [x, y] in mm (Kreis: Kreismitte) |
 | `rahmen` | MonogrammRahmen |  | – |  |
 | `rahmen_farbe` | string |  | – | Farbe des Rahmens (nur mit Rahmen) |
+| `rahmen_farben` | string[] |  | `[]` | Farben des Rahmens statt der Farben der Vorlage: 1., 2., 3. Farbe der Vorlage (nur mit `vorlage`; fehlende bleiben, wie sie sind) |
+| `rahmen_groesse` | number |  | – | Größe des Rahmens in mm: längere Seite (nur mit `vorlage`; ohne Angabe wie gezeichnet, 70–88 mm). Die Initialen wachsen mit |
+| `schrift` | string |  | – | Computer-Schrift der Initialen (nur mit `vorlage`; ohne Angabe: Schriftvorschlag der Vorlage, Google Fonts) |
 | `stichart` | SchriftStichart |  | – |  |
 | `unterlage` | UnterlageJson |  | – |  |
+| `vorlage` | string |  | – | **Rahmen aus dem Katalog** (eigene Erweiterung): Name eines Monogramm-Rahmens (Befehl `monogramm_rahmen`, z. B. „Doppeloval“). Dann stehen die Initialen in der Computer-Schrift `schrift` (ohne Angabe: Schrift der Vorlage) oder im Alphabet `alphabet`, Höhen nach der Vorlage, mittig im Rahmen und so weit verkleinert, dass rundum 2 mm frei bleiben. `rahmen`, `rahmen_farbe` und `hoehe` gelten dann nicht |
 | `winkel` | number |  | – |  |
 | `wortabstand` | number |  | – | Wortabstand in % der Höhe (Vorlage 25) |
 | `zeilenabstand` | number |  | – | Zeilenabstand (Lücke) in % der Höhe (Vorlage 60); Zeilen trennt `\n` im Text |
@@ -524,6 +529,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `maschine_ports` | Leer | string[] | Maschine: serielle Ports (COM…) |
 | `maschine_pruefen` | Anschluss | MaschinenInfo | Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen |
 | `maschine_senden` | SendeEingabe | SendeInfo | **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) |
+| `monogramm_rahmen` | Leer | MonogrammKatalog | Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag |
 | `motive_liste` | Leer | MotivsatzInfo[] | Motivsätze (14 der CD) für die Motivlinie |
 | `motivsatz_motive` | MotivsatzName | MotivInfo[] | Motive eines Motivsatzes mit Maßen und Linien für die Vorschau |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |

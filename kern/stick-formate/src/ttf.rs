@@ -17,7 +17,15 @@ pub struct SchriftEintrag {
     pub pfad: PathBuf,
     /// Index in einer Sammlung (.ttc), sonst 0
     pub index: u32,
+    /// Variable Schrift: Strichstärke (Achse `wght`), die gesetzt wird; None = Grundeinstellung der Datei
+    pub gewicht: Option<u16>,
 }
+
+/// Strichstärken, die eine variable Schrift zusätzlich anbietet, wenn ihre Grundeinstellung eine andere ist: viele
+/// Google Fonts liegen als variable Datei vor, deren Grundeinstellung die dünnste Stärke ist („Montserrat Thin“,
+/// „Cormorant Garamond Light“) – zum Sticken zu dünn. Wer die Familie wählt, bekommt „Regular“ (`finden`).
+/// Auswahl Regular/Bold: **eigene Festlegung**.
+pub const STAERKEN: [(u16, &str); 2] = [(400, "Regular"), (700, "Bold")];
 
 /// Umrisse sammeln; Kurven gleichmäßig in Strecken zerlegt (Toleranz in Schrift-Einheiten).
 struct Sammler {
@@ -100,8 +108,18 @@ impl OutlineBuilder for Sammler {
 }
 
 /// Schrift aus den Bytes einer Datei: nur die gebrauchten Zeichen. Höhe der Großbuchstaben aus OS/2, sonst aus dem „H“.
-pub fn schrift_aus_daten(name: &str, daten: &[u8], index: u32, zeichen: &BTreeSet<char>) -> Result<TtfSchrift, String> {
-    let face = Face::parse(daten, index).map_err(|e| format!("Schrift „{name}“: {e}"))?;
+/// `gewicht`: Strichstärke einer variablen Schrift (Achse `wght`, `SchriftEintrag::gewicht`).
+pub fn schrift_aus_daten(
+    name: &str,
+    daten: &[u8],
+    index: u32,
+    gewicht: Option<u16>,
+    zeichen: &BTreeSet<char>,
+) -> Result<TtfSchrift, String> {
+    let mut face = Face::parse(daten, index).map_err(|e| format!("Schrift „{name}“: {e}"))?;
+    if let Some(w) = gewicht {
+        face.set_variation(ttf_parser::Tag::from_bytes(b"wght"), f32::from(w));
+    }
     let upem = f64::from(face.units_per_em());
     let toleranz = (upem / 1000.0).max(0.5);
     let h_hoehe = face
@@ -150,7 +168,7 @@ pub fn schrift_aus_daten(name: &str, daten: &[u8], index: u32, zeichen: &BTreeSe
 pub fn strichstaerken(e: &SchriftEintrag) -> Option<stick_kern::stickbarkeit::Strichstaerken> {
     use stick_kern::stickbarkeit::{PROBE, strichstaerken, ttf_flaechen};
     let daten = std::fs::read(&e.pfad).ok()?;
-    let s = schrift_aus_daten(&e.name, &daten, e.index, &PROBE.chars().collect()).ok()?;
+    let s = schrift_aus_daten(&e.name, &daten, e.index, e.gewicht, &PROBE.chars().collect()).ok()?;
     let (z, bezug) = ttf_flaechen(&s, PROBE);
     strichstaerken(&z, bezug)
 }
@@ -267,12 +285,33 @@ pub fn verzeichnis(ordner: &[PathBuf]) -> Vec<SchriftEintrag> {
                 if name.is_empty() || name.starts_with('.') || !"AZaz".chars().all(|c| face.glyph_index(c).is_some()) {
                     continue;
                 }
+                // variable Schrift mit anderer Grundeinstellung: dazu Regular und Bold (`STAERKEN`)
+                if let Some(achse) = face
+                    .variation_axes()
+                    .into_iter()
+                    .find(|a| a.tag == ttf_parser::Tag::from_bytes(b"wght"))
+                {
+                    for (w, s) in STAERKEN {
+                        let wf = f32::from(w);
+                        if (achse.min_value..=achse.max_value).contains(&wf) && (achse.def_value - wf).abs() > 0.5 {
+                            v.push(SchriftEintrag {
+                                name: format!("{familie} {s}"),
+                                familie: familie.clone(),
+                                stil: s.into(),
+                                pfad: pfad.clone(),
+                                index,
+                                gewicht: Some(w),
+                            });
+                        }
+                    }
+                }
                 v.push(SchriftEintrag {
                     name,
                     familie,
                     stil,
                     pfad: pfad.clone(),
                     index,
+                    gewicht: None,
                 });
             }
         }
@@ -292,6 +331,7 @@ pub fn finden(name: &str, liste: &[SchriftEintrag]) -> Option<SchriftEintrag> {
             stil: String::new(),
             pfad: datei.to_path_buf(),
             index: 0,
+            gewicht: None,
         });
     }
     let gleich = |a: &str| a.eq_ignore_ascii_case(name);
@@ -338,7 +378,7 @@ pub fn design_schriften_laden_aus(design: &mut Design, liste: &[SchriftEintrag])
         let daten = std::fs::read(&e.pfad).map_err(|err| format!("{}: {err}", e.pfad.display()))?;
         design
             .ttf_schriften
-            .insert(name.clone(), schrift_aus_daten(&name, &daten, e.index, &zeichen)?);
+            .insert(name.clone(), schrift_aus_daten(&name, &daten, e.index, e.gewicht, &zeichen)?);
     }
     Ok(())
 }

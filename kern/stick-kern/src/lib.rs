@@ -29,6 +29,7 @@ pub mod farbe;
 pub mod format;
 pub mod geometrie;
 pub mod knopfloch;
+pub mod monogramm;
 pub mod motiv;
 pub mod muster;
 pub mod nachbearbeitung;

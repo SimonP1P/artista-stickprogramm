@@ -895,15 +895,33 @@ pub struct TtfJson {
 }
 
 /// Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im
-/// Kern zu einem Text – alle Schrift-Einstellungen gelten.
+/// Kern zu einem Text – alle Schrift-Einstellungen gelten. **Mit `vorlage`** (eigene Erweiterung): Rahmen aus dem
+/// Katalog der Monogramm-Rahmen, Initialen in einer Computer-Schrift oder einem Alphabet (`monogramm.rs`).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct MonogrammJson {
-    /// 2 oder 3 Buchstaben A–Z
+    /// 2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen
     pub initialen: String,
     #[serde(default)]
     pub rahmen: Option<MonogrammRahmen>,
     /// Farbe des Rahmens (nur mit Rahmen)
     pub rahmen_farbe: Option<String>,
+    /// **Rahmen aus dem Katalog** (eigene Erweiterung): Name eines Monogramm-Rahmens (Befehl `monogramm_rahmen`, z. B.
+    /// „Doppeloval“). Dann stehen die Initialen in der Computer-Schrift `schrift` (ohne Angabe: Schrift der Vorlage)
+    /// oder im Alphabet `alphabet`, Höhen nach der Vorlage, mittig im Rahmen und so weit verkleinert, dass rundum 2 mm
+    /// frei bleiben. `rahmen`, `rahmen_farbe` und `hoehe` gelten dann nicht
+    pub vorlage: Option<String>,
+    /// Computer-Schrift der Initialen (nur mit `vorlage`; ohne Angabe: Schriftvorschlag der Vorlage, Google Fonts)
+    #[serde(rename = "schrift")]
+    pub ttf: Option<String>,
+    /// Original-Alphabet der Initialen (nur mit `vorlage`, statt `schrift`)
+    pub alphabet: Option<String>,
+    /// Größe des Rahmens in mm: längere Seite (nur mit `vorlage`; ohne Angabe wie gezeichnet, 70–88 mm). Die
+    /// Initialen wachsen mit
+    pub rahmen_groesse: Option<f64>,
+    /// Farben des Rahmens statt der Farben der Vorlage: 1., 2., 3. Farbe der Vorlage (nur mit `vorlage`; fehlende
+    /// bleiben, wie sie sind)
+    #[serde(default)]
+    pub rahmen_farben: Vec<String>,
     /// Höhe in mm (18 = kleinste empfohlene Höhe von Diamond2/3)
     #[serde(default = "monogramm_hoehe")]
     pub hoehe: f64,

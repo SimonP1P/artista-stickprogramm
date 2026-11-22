@@ -132,6 +132,22 @@ def main():
                 antworten["schrift_vorschau:" + s_["name"]] = api(
                     stick, "schrift_vorschau", {"schrift": s_["name"], "text": probe})
 
+    # Monogramm mit Rahmen aus dem Katalog: Katalog, Vorschau der Schrift (stickbar ab); Dialog „Rahmen wählen“: dazu
+    # die Rahmen des Originals (Diamond2)
+    dialog_art = json.loads(o.dialog).get("art") if o.dialog else None
+    if dialog_art == "rahmen" or any(x.get("art") == "monogramm" for x in design.get("objekte", [])):
+        antworten["monogramm_rahmen"] = api(stick, "monogramm_rahmen", {})
+        antworten.setdefault("schriften_liste", api(stick, "schriften_liste", {}))
+        for x in design.get("objekte", []):
+            if x.get("art") != "monogramm" or not x.get("vorlage") or x.get("alphabet"):
+                continue
+            r_ = next((r for r in antworten["monogramm_rahmen"]["rahmen"] if r["name"].lower() == x["vorlage"].lower()), {})
+            s_ = x.get("schrift") or r_.get("schrift")
+            if s_:
+                antworten["schrift_vorschau:" + s_] = api(stick, "schrift_vorschau", {"schrift": s_, "text": "Abc"})
+    if dialog_art == "rahmen":
+        antworten["alphabet_vorschau:Diamond2"] = api(stick, "alphabet_vorschau", {"alphabet": "Diamond2", "text": "Ab]"})
+
     if o.dialog and json.loads(o.dialog).get("art") == "bild" and json.loads(o.dialog).get("pfad"):
         d_ = json.loads(o.dialog)
         antworten["bild_vorschau"] = api(stick, "bild_vorschau", {

@@ -21,6 +21,7 @@
   import WarnungDialog from "$lib/dialoge/WarnungDialog.svelte";
   import MusterDialog from "$lib/dialoge/MusterDialog.svelte";
   import MotivDialog from "$lib/dialoge/MotivDialog.svelte";
+  import RahmenDialog from "$lib/dialoge/RahmenDialog.svelte";
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import {
@@ -107,6 +108,13 @@
   ];
 
   /** Garn des Farbblocks, mit dem ein Objekt beginnt (Anzeige „jetzt: …“) */
+  /** Farben des Monogramm-Rahmens aus dem Katalog: eigene (`rahmen_farben`), sonst die der Vorlage */
+  function monogrammRahmenFarben(o: number): string[] {
+    const x = arbeit.objekte[o];
+    if (x?.art !== "monogramm") return [];
+    const v = listen.monogrammRahmen(x.vorlage);
+    return (v?.farben ?? []).map((f, k) => x.rahmen_farben?.[k] || f);
+  }
   function garnVon(o: number): GarnInfo | undefined {
     return arbeit.garnVon(o);
   }
@@ -598,17 +606,39 @@
   {#if maschine.dialogOffen}<SendenDialog />{/if}
   {#if maschine.stickenDialog}<StickenDialog />{/if}
   {#if maschine.listeOffen}<AusMaschineDialog />{/if}
-  {#if arbeit.dialog?.art === "schrift"}
+  {#if arbeit.dialog?.art === "rahmen"}
     {@const o = arbeit.dialog.objekt}
     {@const x = arbeit.objekte[o]}
+    <RahmenDialog
+      aktuell={x?.art === "monogramm" ? { vorlage: x.vorlage ?? undefined, rahmen: x.rahmen ?? undefined } : {}}
+      waehlen={(w) => {
+        arbeit.monogrammRahmen(o, w);
+        arbeit.dialog = null;
+      }}
+      schliessen={() => (arbeit.dialog = null)}
+    />
+  {:else if arbeit.dialog?.art === "schrift"}
+    {@const o = arbeit.dialog.objekt}
+    {@const x = arbeit.objekte[o]}
+    {@const mono = x?.art === "monogramm" ? x : undefined}
+    {@const vorlage = listen.monogrammRahmen(mono?.vorlage)}
     <SchriftDialog
       start={arbeit.dialog.reiter}
-      aktuell={x && "alphabet" in x ? { alphabet: x.alphabet } : x && "schrift" in x ? { schrift: x.schrift } : {}}
-      text={x && "text" in x ? x.text : undefined}
-      hoehe={x && "hoehe" in x ? x.hoehe : undefined}
+      aktuell={mono
+        ? mono.alphabet
+          ? { alphabet: mono.alphabet }
+          : { schrift: mono.schrift ?? vorlage?.schrift ?? undefined }
+        : x && "alphabet" in x
+          ? { alphabet: x.alphabet ?? undefined }
+          : x && "schrift" in x
+            ? { schrift: x.schrift ?? undefined }
+            : {}}
+      text={mono ? mono.initialen : x && "text" in x ? x.text : undefined}
+      hoehe={mono && vorlage ? (Math.min(...vorlage.hoehen) * (mono.rahmen_groesse ?? vorlage.groesse)) / vorlage.groesse : x && "hoehe" in x ? x.hoehe : undefined}
       waehlen={(w) => {
         // erst die Nummer lesen: `o` hängt am offenen Dialog und ist danach nicht mehr lesbar
-        arbeit.schriftWechseln(o, w);
+        if (mono) arbeit.monogrammSchrift(o, w);
+        else arbeit.schriftWechseln(o, w);
         arbeit.dialog = null;
       }}
       schliessen={() => (arbeit.dialog = null)}
@@ -616,12 +646,24 @@
   {:else if arbeit.dialog?.art === "garn"}
     {@const o = arbeit.dialog.objekt}
     {@const furUmrandung = !!arbeit.dialog.umrandung}
+    {@const rahmenNr = arbeit.dialog.rahmen}
+    {@const rahmenFarbe = rahmenNr != null ? monogrammRahmenFarben(o)[rahmenNr] : undefined}
     <GarnDialog
-      titel={furUmrandung ? "Garn der Umrandung" : undefined}
+      titel={furUmrandung ? "Garn der Umrandung" : rahmenNr != null ? `Garn des Rahmens (Farbe ${rahmenNr + 1})` : undefined}
       untertitel={arbeit.dialog.titel ?? arbeit.objekte[o]?.name ?? ""}
-      aktuell={furUmrandung ? arbeit.umrandungGarn(o) : garnVon(o)}
+      aktuell={furUmrandung ? arbeit.umrandungGarn(o) : rahmenFarbe ? arbeit.farbGarn(o, rahmenFarbe) : garnVon(o)}
       waehlen={(g) => {
         const alle = arbeit.dialog?.art === "garn" ? arbeit.dialog.alle : undefined;
+        if (rahmenNr != null) {
+          const farben = monogrammRahmenFarben(o);
+          farben[rahmenNr] = g.rgb;
+          arbeit.aendern((d) => {
+            const x = d.objekte?.[o];
+            if (x?.art === "monogramm") x.rahmen_farben = farben;
+          });
+          arbeit.dialog = null;
+          return;
+        }
         if (!furUmrandung) return garnSetzen(o, g, alle);
         arbeit.umrandungSetzen(alle?.length ? alle : [o], (u) => (u.farbe = g.rgb));
         arbeit.dialog = null;

@@ -143,6 +143,17 @@ pub fn belegt(art: &ObjektArt) -> Vec<Kontur> {
     }
 }
 
+/// Fläche, die Objekte im Stickbild belegen (`belegt`), vereinigt und um `rand` mm vergrößert (runde Ecken) – z. B.
+/// der Bereich um einen Monogramm-Rahmen, in den die Initialen nicht reichen dürfen (`monogramm.rs`).
+pub fn belegt_mit_rand(arten: &[&ObjektArt], rand: f64) -> Vec<Kontur> {
+    let k: Vec<Kontur> = arten.iter().flat_map(|a| belegt(a)).filter(|r| r.len() >= 3).collect();
+    if k.is_empty() {
+        return Vec::new();
+    }
+    let leer: Vec<Kontur> = Vec::new();
+    versetzt(k.overlay(&leer, OverlayRule::Union, FillRule::NonZero), rand).concat()
+}
+
 /// Größe der gemeinsamen Fläche zweier Konturlisten (mm², Nicht-Null-Regel).
 pub fn schnittflaeche(a: &[Kontur], b: &[Kontur]) -> f64 {
     if a.is_empty() || b.is_empty() {

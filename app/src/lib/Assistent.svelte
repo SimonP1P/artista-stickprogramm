@@ -92,6 +92,26 @@
   );
   const hauptGarn = $derived(e ? arbeit.garnVon(haupt) : undefined);
 
+  // Monogramm mit Rahmen aus dem Katalog (eigene Erweiterung, Dialog „Rahmen wählen“)
+  const RAHMEN_ORIGINAL: Record<string, string> = { raute: "Raute", zier: "Zierwinkel", keine: "ohne Rahmen" };
+  const monoVorlage = $derived(mono?.vorlage ? listen.monogrammRahmen(mono.vorlage) : undefined);
+  $effect(() => {
+    if (mono?.vorlage) listen.monogrammeLaden().catch(() => {});
+  });
+  const monoSchrift = $derived(mono ? (mono.alphabet ?? mono.schrift ?? monoVorlage?.schrift) : undefined);
+  let monoStickbarAb = $state<number | null>(null);
+  $effect(() => {
+    monoStickbarAb = null;
+    const n = mono?.vorlage && !mono.alphabet ? monoSchrift : undefined;
+    if (n)
+      listen
+        .schriftVorschau(n)
+        .then((v) => (monoSchrift === n ? (monoStickbarAb = v.stickbarkeit?.stickbar_ab ?? null) : null))
+        .catch(() => {});
+  });
+  const monoRahmenFarben = $derived(monoVorlage ? monoVorlage.farben.map((f, k) => mono?.rahmen_farben?.[k] || f) : []);
+  const svgBild = (svg: string) => `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+
   const transform = $derived(arbeit.design.transform ?? {});
   const skalierung = $derived(
     Array.isArray(transform.skalieren) ? (transform.skalieren[0] ?? 100) : (transform.skalieren ?? 100),
@@ -179,6 +199,18 @@
   const elArt = (e: { art: string }) => EL_ART[e.art] ?? ART[e.art] ?? [e.art, IC.kommtNoch];
   const elSkalierung = $derived(
     Array.isArray(elTransform.skalieren) ? (elTransform.skalieren[0] ?? 100) : (elTransform.skalieren ?? 100),
+  );
+  /** kleinste Initiale (Versalhöhe der Vorlage bei der gewählten Rahmengröße und Vergrößerung; der Kern verkleinert
+   *  die Initialen u. U. noch, damit sie in den Rahmen passen) */
+  const monoKleinste = $derived(
+    monoVorlage
+      ? ((Math.min(...monoVorlage.hoehen) * (mono?.rahmen_groesse ?? monoVorlage.groesse)) / monoVorlage.groesse) * (elSkalierung / 100) * (skalierung / 100)
+      : 0,
+  );
+  const monoWarnung = $derived(
+    monoStickbarAb != null && monoKleinste > 0 && monoKleinste < monoStickbarAb
+      ? `Feine Striche – „${monoSchrift}“ ist erst ab ${zahl(monoStickbarAb)} mm gut stickbar, die kleinste Initiale ist hier höchstens ${zahl(monoKleinste)} mm hoch. Größeren Rahmen oder kräftigere Schrift wählen.`
+      : null,
   );
 
   function objektAendern(f: (o: ObjektJson) => void, gruppe?: string) {
@@ -565,7 +597,7 @@
       {:else if sicht === "mono" && mono}
         {@render elKopf("Monogramm")}
         <div class="field" style="margin-bottom:12px">
-          <label for="ainit">Initialen <span class="mut">(2 oder 3 Buchstaben A–Z)</span></label>
+          <label for="ainit">Initialen <span class="mut">({mono.vorlage ? "1 bis 3 Zeichen" : "2 oder 3 Buchstaben A–Z"})</span></label>
           <input
             id="ainit"
             class="input"
@@ -573,7 +605,8 @@
             maxlength="3"
             value={mono.initialen}
             oninput={(ev) => {
-              const v = (ev.currentTarget as HTMLInputElement).value.toUpperCase();
+              const roh = (ev.currentTarget as HTMLInputElement).value;
+              const v = mono?.vorlage ? roh : roh.toUpperCase();
               objektAendern((o) => {
                 (o as Mono).initialen = v;
                 o.name = v;
@@ -582,13 +615,56 @@
           />
         </div>
         <div class="field" style="margin-bottom:12px">
-          <span class="fl">Rahmen</span>
-          <div class="seg seg-sm" role="radiogroup" aria-label="Rahmen des Monogramms" style="display:flex">
-            {#each [["raute", "Raute"], ["zier", "Zier"], ["keine", "keiner"]] as [w, l] (w)}
-              <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="mrahmen" checked={(mono.rahmen ?? "keine") === w} onchange={() => objektAendern((o) => ((o as Mono).rahmen = w as Mono["rahmen"]))} />{l}</label>
-            {/each}
-          </div>
+          <label for="amrahmen">Rahmen</label>
+          <button id="amrahmen" class="btn btn-secondary pick" style="min-height:44px" title="Rahmen des Originals und 47 Rahmen aus dem Katalog" onclick={() => (arbeit.dialog = { art: "rahmen", objekt: haupt })}>
+            {#if monoVorlage}<img class="rmini" src={svgBild(monoVorlage.svg)} alt="" draggable="false" />{/if}
+            <span class="t"><b style="font-weight:500">{mono.vorlage ?? RAHMEN_ORIGINAL[mono.rahmen ?? "keine"]}</b><span class="mut small"> · {monoVorlage ? monoVorlage.kategorie : mono.vorlage ? "" : "Original BERNINA"}</span></span>
+            <Icon d={IC.chevronRechts} />
+          </button>
         </div>
+        {#if mono.vorlage}
+          <div class="field" style="margin-bottom:12px">
+            <label for="amschrift">Schrift der Initialen</label>
+            <button id="amschrift" class="btn btn-secondary pick" style="min-height:40px" title="Stick-Alphabete, Schriften des Computers und Google Fonts" onclick={() => (arbeit.dialog = { art: "schrift", objekt: haupt })}>
+              <span class="t"><b style="font-weight:500">{monoSchrift ?? ""}</b>{#if !mono.alphabet && !mono.schrift}<span class="mut small"> · Vorschlag des Rahmens</span>{/if}{#if monoStickbarAb != null}<span class="mut small"> · stickbar ab {zahl(monoStickbarAb)} mm</span>{/if}</span>
+              <Icon d={IC.chevronRechts} />
+            </button>
+            {#if monoWarnung}<div class="warnbox" style="margin-top:6px"><Icon d={IC.warnung} /><span>{monoWarnung}</span></div>{/if}
+          </div>
+          <div class="field" style="margin-bottom:12px">
+            <label for="amgr">Größe des Rahmens</label>
+            <div class="fc">
+              <input
+                id="amgr"
+                class="input sm num"
+                style="width:80px"
+                inputmode="decimal"
+                value={zahl(mono.rahmen_groesse ?? monoVorlage?.groesse ?? 80)}
+                onchange={(ev) => {
+                  const v = lesen((ev.currentTarget as HTMLInputElement).value);
+                  if (v && v >= 10) objektAendern((o) => ((o as Mono).rahmen_groesse = v));
+                }}
+              /><span class="unit">mm</span>
+              <span class="mut small" style="margin-left:8px">längere Seite – die Initialen wachsen mit</span>
+            </div>
+            {@render stichSchalter()}
+            {@render stabilisieren()}
+          </div>
+          {@render garnWahl("Garn der Initialen")}
+          <div class="field" style="margin-bottom:12px">
+            <span class="fl">Garn des Rahmens {monoRahmenFarben.length > 1 ? `(${monoRahmenFarben.length} Farben)` : ""}</span>
+            <div style="display:flex; flex-direction:column; gap:4px">
+              {#each monoRahmenFarben as f, k (k)}
+                {@const g = arbeit.farbGarn(haupt, f)}
+                <button class="btn btn-secondary pick" style="min-height:36px" onclick={() => (arbeit.dialog = { art: "garn", objekt: haupt, rahmen: k })}>
+                  <span class="sw l" style="background:{g?.rgb ?? f}"></span>
+                  <span class="t">{g ? garnText(g) : f}</span>
+                  <Icon d={IC.chevronRechts} />
+                </button>
+              {/each}
+            </div>
+          </div>
+        {:else}
         <div class="field" style="margin-bottom:12px">
           <label for="mhoehe">Höhe</label>
           <div class="fc">
@@ -609,6 +685,7 @@
           {@render umrandung()}
         </div>
         {@render garnWahl()}
+        {/if}
         {@render elGroesse()}
         {@render passung()}
         {@render elAktionen()}
@@ -791,9 +868,9 @@
   {/if}
 {/snippet}
 
-{#snippet garnWahl()}
+{#snippet garnWahl(titel = "Garnfarbe")}
   <div class="field" style="margin-bottom:12px">
-    <label for="agarn">Garnfarbe</label>
+    <label for="agarn">{titel}</label>
     <button id="agarn" class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "garn", objekt: haupt })} style="min-height:40px">
       <span class="sw l" style="background:{hauptGarn?.rgb ?? objekt?.farbe ?? '#000000'}"></span>
       <span class="t">{hauptGarn ? garnText(hauptGarn) : (objekt?.farbe ?? "")}</span>
@@ -906,3 +983,14 @@
     <div class="okbox"><Icon d={IC.haken} /><span>Passt: {groesseText}</span></div>
   {/if}
 {/snippet}
+
+<style>
+  /* kleine Vorschau des Monogramm-Rahmens im Knopf „Rahmen“ */
+  .rmini {
+    width: 30px;
+    height: 30px;
+    flex: none;
+    background: #fff;
+    border: 1px solid var(--line);
+  }
+</style>

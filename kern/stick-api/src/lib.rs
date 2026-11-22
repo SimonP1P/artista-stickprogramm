@@ -119,6 +119,8 @@ pub struct Kontext {
     /// Motivsätze (ESB aus `userletw/`): `STICK_MOTIVE`, sonst Ordner `motive` neben den Alphabeten
     pub motive: PathBuf,
     motive_geladen: Mutex<HashMap<String, stick_kern::motiv::Motivsatz>>,
+    /// Monogramm-Rahmen aus dem Katalog (`stick_vektor::monogramm`), zwischengespeichert
+    monogramm_geladen: Mutex<HashMap<String, stick_kern::monogramm::RahmenVorlage>>,
     /// Zustand der Maschinen-Befehle (Abbrechen, Sperre, Fortschritt, Mitschnitte)
     pub(crate) maschine: maschine::MaschinenZustand,
     /// Schriften: Ablage für Google Fonts, Verzeichnis und Strichstärken (zwischengespeichert)
@@ -137,6 +139,7 @@ impl Kontext {
             garnkarten,
             motive,
             motive_geladen: Mutex::new(HashMap::new()),
+            monogramm_geladen: Mutex::new(HashMap::new()),
             schriften: Vec::new(),
             geladen: Mutex::new(HashMap::new()),
             maschine: Default::default(),
@@ -166,8 +169,8 @@ impl Kontext {
         )
     }
 
-    /// Design aus der Eingabe: Rahmen/Stoff der Oberfläche einsetzen, Alphabete (zwischengespeichert) und
-    /// Computer-Schriften laden.
+    /// Design aus der Eingabe: Rahmen/Stoff der Oberfläche einsetzen, Alphabete, Motivsätze und Monogramm-Rahmen
+    /// (zwischengespeichert) und Computer-Schriften laden.
     pub fn design(&self, e: &befehle::DesignEingabe) -> Result<Design, Fehler> {
         let mut v = e.design.0.clone();
         let o = v.as_object_mut().ok_or("Das Design muss ein JSON-Objekt sein")?;
@@ -183,8 +186,24 @@ impl Kontext {
             let s = self.motivsatz(&n)?;
             design.motivsaetze.insert(n, s);
         }
+        // vor den Schriften: ohne eigene Schrift nimmt ein Monogramm die der Vorlage
+        for n in design.monogramm_vorlagen() {
+            let r = self.monogramm_rahmen(&n)?;
+            design.monogramm_rahmen.insert(n, r);
+        }
         self.ttf_laden(&mut design)?;
         Ok(design)
+    }
+
+    /// Monogramm-Rahmen aus dem Katalog als Vorlage für den Kern, zwischengespeichert.
+    pub fn monogramm_rahmen(&self, name: &str) -> Result<stick_kern::monogramm::RahmenVorlage, Fehler> {
+        let mut g = self.monogramm_geladen.lock().map_err(|e| Fehler::from(e.to_string()))?;
+        if let Some(r) = g.get(name) {
+            return Ok(r.clone());
+        }
+        let r = stick_vektor::monogramm::vorlage(name)?;
+        g.insert(name.to_string(), r.clone());
+        Ok(r)
     }
 
     /// Motivsatz nach Namen (Kopf oder Dateiname) laden, zwischengespeichert.
@@ -289,6 +308,9 @@ befehle! {
     motive_liste: befehle::Leer => Vec<befehle::MotivsatzInfo>,
     /// Motive eines Motivsatzes mit Maßen und Linien für die Vorschau
     motivsatz_motive: befehle::MotivsatzName => Vec<befehle::MotivInfo>,
+    /// Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und
+    /// Schriftvorschlag
+    monogramm_rahmen: befehle::Leer => befehle::MonogrammKatalog,
     /// Vorschau eines Original-Alphabets: Umrisse eines Probetexts und Zeichenvorrat
     alphabet_vorschau: befehle::AlphabetVorschauEingabe => befehle::AlphabetVorschau,
     /// Namen der Garnkarten (32 der CD)

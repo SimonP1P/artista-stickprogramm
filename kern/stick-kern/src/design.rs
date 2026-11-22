@@ -124,6 +124,73 @@ fn monogramm_als_text(m: MonogrammJson) -> Result<TextJson, String> {
     })
 }
 
+/// Monogramm mit Rahmen aus dem Katalog prüfen (`monogramm.rs`): 1–3 Initialen, Schrift oder Alphabet, Größe.
+fn monogramm_vorlage_pruefen(m: &MonogrammJson) -> Result<(), String> {
+    let n = m.initialen.chars().filter(|c| !c.is_whitespace()).count();
+    if !(1..=3).contains(&n) {
+        return Err("initialen: 1 bis 3 Zeichen (Monogramm mit vorlage)".into());
+    }
+    if m.ttf.is_some() && m.alphabet.is_some() {
+        return Err("Monogramm: schrift oder alphabet, nicht beides".into());
+    }
+    if m.rahmen_groesse.is_some_and(|g| !(10.0..=400.0).contains(&g)) {
+        return Err("rahmen_groesse: 10 … 400 mm".into());
+    }
+    Ok(())
+}
+
+/// Monogramm mit Rahmen aus dem Katalog → `ObjektArt::MonogrammVorlage`. Stichart der Initialen: ohne Angabe „auto“
+/// (Satin, zu lange Satinstiche → Step/Tatami), „muster“ wie „step“; Unterlage wie bei Text.
+fn monogramm_vorlage_objekt(m: MonogrammJson) -> Objekt {
+    use crate::format::SchriftStichart as S;
+    let unterlage = Unterlage::from(m.unterlage);
+    let schrift = match m.alphabet {
+        Some(alphabet) => crate::monogramm::InitialenSchrift::Alphabet {
+            alphabet,
+            stichart: match m.stichart {
+                Some(S::Satin) => None,
+                Some(S::Step | S::Muster) => Some(SchriftStichart::Step),
+                Some(S::Auto) | None => Some(SchriftStichart::Auto),
+            },
+        },
+        None => crate::monogramm::InitialenSchrift::Ttf {
+            schrift: m.ttf,
+            stichart: match m.stichart {
+                Some(S::Satin) => TtfStichart::Satin {
+                    unterlage: unterlage.clone(),
+                    auto: false,
+                },
+                Some(S::Step | S::Muster) => TtfStichart::Tatami {
+                    winkel: m.winkel,
+                    unterlage: Some(unterlage != Unterlage::Arten(vec![])),
+                },
+                Some(S::Auto) | None => TtfStichart::Satin {
+                    unterlage: unterlage.clone(),
+                    auto: true,
+                },
+            },
+        },
+    };
+    let text_unterlage = match unterlage {
+        Unterlage::Auto => None,
+        Unterlage::Arten(l) => Some(l),
+    };
+    let initialen: Vec<char> = m.initialen.chars().filter(|c| !c.is_whitespace()).collect();
+    let name = if m.g.name.is_empty() { initialen.iter().collect() } else { m.g.name };
+    Objekt {
+        art: ObjektArt::MonogrammVorlage(crate::monogramm::MonogrammVorgabe {
+            vorlage: m.vorlage.unwrap_or_default(),
+            initialen,
+            schrift,
+            rahmen_groesse: m.rahmen_groesse,
+            rahmen_farben: m.rahmen_farben,
+            text: text_vorgabe(String::new(), m.hoehe, &m.g.farbe, &m.schrift, text_unterlage),
+        }),
+        name,
+        farbe: m.g.farbe,
+    }
+}
+
 fn ausrichtung_anteil(a: Ausrichtung) -> f64 {
     match a {
         Ausrichtung::Links | Ausrichtung::Block => 0.0,
@@ -403,6 +470,9 @@ pub enum ObjektArt {
     },
     /// Knopfloch (Vorlage aus ButtonHoles.ESB, `knopfloch.rs`); wird vor dem Berechnen zu einer `Kette` aufgelöst
     Knopfloch(KnopflochVorgabe),
+    /// Monogramm mit Rahmen aus dem Katalog (eigene Erweiterung, `monogramm.rs`); wird vor dem Berechnen in Initialen
+    /// und Rahmenteile aufgelöst
+    MonogrammVorlage(crate::monogramm::MonogrammVorgabe),
     /// Motivlinie (Pattern Run, `motiv.rs`); wird vor dem Berechnen zu einer `Kette` aufgelöst
     Motivlinie(crate::motiv::MotivVorgabe),
     /// Teile in fester Reihenfolge, ohne Sprünge zu einem Zug verbunden (Knopfloch). Satinteile beginnen an dem Ende,
@@ -992,6 +1062,7 @@ impl Objekt {
             } => Ok(vec![blanket(punkte, *geschlossen, *abstand, *breite, *mittig)]),
             ObjektArt::Text { alphabet, .. } => Err(format!("Text mit Alphabet „{alphabet}“ wurde nicht aufgelöst")),
             ObjektArt::TtfText { schrift, .. } => Err(format!("Text mit Schrift „{schrift}“ wurde nicht aufgelöst")),
+            ObjektArt::MonogrammVorlage(m) => Err(format!("Monogramm „{}“ wurde nicht aufgelöst", m.vorlage)),
             ObjektArt::Applikation(_) => Err("Applikation wurde nicht aufgelöst".into()),
             ObjektArt::SatinFlaeche { .. } => Err("Satinfläche wurde nicht aufgelöst".into()),
             ObjektArt::Tatami {
@@ -1087,6 +1158,8 @@ pub struct Design {
     pub knopfloecher: BTreeMap<String, Vorlage>,
     /// geladene Motivsätze (Name wie im Design-Feld `satz`); füllt der Aufrufer, siehe `motiv_namen`
     pub motivsaetze: BTreeMap<String, crate::motiv::Motivsatz>,
+    /// geladene Monogramm-Rahmen (Name wie im Design-Feld `vorlage`); füllt der Aufrufer, siehe `monogramm_vorlagen`
+    pub monogramm_rahmen: BTreeMap<String, crate::monogramm::RahmenVorlage>,
     /// Transformation je Objekt (Nummer in `objekte`), JSON `"transform"` am Objekt (`transformation.rs`)
     pub transformationen: BTreeMap<usize, Transformation>,
     /// Transformation des ganzen Designs (um seine Mitte), JSON `"transform"` oben im Design
@@ -1212,6 +1285,9 @@ impl Design {
             .into_iter()
             .enumerate()
             .map(|(i, o)| match o {
+                ObjektJson::Monogramm(m) if m.vorlage.is_some() => monogramm_vorlage_pruefen(&m)
+                    .map(|_| ObjektJson::Monogramm(m))
+                    .map_err(|e| format!("Objekt {}: {e}", i + 1)),
                 ObjektJson::Monogramm(m) => monogramm_als_text(m)
                     .map(ObjektJson::Text)
                     .map_err(|e| format!("Objekt {}: {e}", i + 1)),
@@ -1437,6 +1513,7 @@ impl Design {
             ttf_schriften: BTreeMap::new(),
             knopfloecher: BTreeMap::new(),
             motivsaetze: BTreeMap::new(),
+            monogramm_rahmen: BTreeMap::new(),
         })
     }
 
@@ -1452,6 +1529,10 @@ impl Design {
             .iter()
             .filter_map(|o| match &o.art {
                 ObjektArt::Text { alphabet, .. } => Some(alphabet.clone()),
+                ObjektArt::MonogrammVorlage(m) => match &m.schrift {
+                    crate::monogramm::InitialenSchrift::Alphabet { alphabet, .. } => Some(alphabet.clone()),
+                    _ => None,
+                },
                 _ => None,
             })
             .collect();
@@ -1475,6 +1556,21 @@ impl Design {
         n
     }
 
+    /// Namen der Monogramm-Rahmen aus dem Katalog, die das Design braucht.
+    pub fn monogramm_vorlagen(&self) -> Vec<String> {
+        let mut n: Vec<String> = self
+            .objekte
+            .iter()
+            .filter_map(|o| match &o.art {
+                ObjektArt::MonogrammVorlage(m) => Some(m.vorlage.clone()),
+                _ => None,
+            })
+            .collect();
+        n.sort();
+        n.dedup();
+        n
+    }
+
     /// Braucht das Design Knopfloch-Vorlagen (ButtonHoles.ESB)?
     pub fn knopfloch_bedarf(&self) -> bool {
         self.objekte.iter().any(|o| matches!(o.art, ObjektArt::Knopfloch(_)))
@@ -1486,6 +1582,12 @@ impl Design {
         for o in &self.objekte {
             if let ObjektArt::TtfText { schrift, vorgabe, .. } = &o.art {
                 m.entry(schrift.clone()).or_default().extend(vorgabe.text.chars());
+            }
+            // Monogramm: ohne eigene Schrift die der Vorlage (Rahmen vorher laden)
+            if let ObjektArt::MonogrammVorlage(v) = &o.art
+                && let Some(s) = v.ttf_schrift(self.monogramm_rahmen.get(&v.vorlage))
+            {
+                m.entry(s.to_string()).or_default().extend(v.initialen.iter().copied());
             }
         }
         m
@@ -1517,24 +1619,45 @@ impl Design {
     /// `objekte`) der längste Satinstich in mm und ob Stichart „auto“ ihn deshalb auf Step stellt
     /// (`schrift::AUTO_STEP_AB_MM`). Texte, die schon Step/Muster sind, fehlen.
     pub fn schrift_satinstiche(&self) -> Result<Vec<(usize, f64, bool)>, String> {
-        let (out, _, herkunft, _) = self.ungedreht_aufgeloest()?;
+        let (out, _, herkunft, buchstabe) = self.ungedreht_aufgeloest()?;
         let mut out = self.transformieren(out, &herkunft)?;
-        Ok(self.schrift_auto_anwenden(&mut out, &herkunft))
+        Ok(self.schrift_auto_anwenden(&mut out, &herkunft, &buchstabe))
     }
 
     /// Stichart „auto“ der Texte entscheiden (nach der Transformation, weil Größe und Verzerrung die Stichlänge
-    /// bestimmen) und anwenden; Ergebnis wie `schrift_satinstiche`.
-    fn schrift_auto_anwenden(&self, out: &mut [Objekt], herkunft: &[usize]) -> Vec<(usize, f64, bool)> {
+    /// bestimmen) und anwenden; Ergebnis wie `schrift_satinstiche`. Beim Monogramm mit Rahmen aus dem Katalog zählen
+    /// nur die Initialen (`buchstabe` > 0), nicht die Rahmenteile.
+    fn schrift_auto_anwenden(
+        &self,
+        out: &mut [Objekt],
+        herkunft: &[usize],
+        buchstabe: &[usize],
+    ) -> Vec<(usize, f64, bool)> {
+        use crate::monogramm::InitialenSchrift;
         let mut info = Vec::new();
         for (nr, o) in self.objekte.iter().enumerate() {
-            let auto = match &o.art {
-                ObjektArt::Text { .. } => {
-                    self.buchstaben.get(&nr).and_then(|z| z.stichart.as_ref()) == Some(&SchriftStichart::Auto)
+            let (auto, ttf, nur_initialen) = match &o.art {
+                ObjektArt::Text { .. } => (
+                    self.buchstaben.get(&nr).and_then(|z| z.stichart.as_ref()) == Some(&SchriftStichart::Auto),
+                    false,
+                    false,
+                ),
+                ObjektArt::TtfText { stichart, .. } => {
+                    (matches!(stichart, TtfStichart::Satin { auto: true, .. }), true, false)
                 }
-                ObjektArt::TtfText { stichart, .. } => matches!(stichart, TtfStichart::Satin { auto: true, .. }),
+                ObjektArt::MonogrammVorlage(m) => match &m.schrift {
+                    InitialenSchrift::Ttf { stichart, .. } => {
+                        (matches!(stichart, TtfStichart::Satin { auto: true, .. }), true, true)
+                    }
+                    InitialenSchrift::Alphabet { stichart, .. } => {
+                        (*stichart == Some(SchriftStichart::Auto), false, true)
+                    }
+                },
                 _ => continue,
             };
-            let idx: Vec<usize> = (0..out.len()).filter(|&j| herkunft.get(j) == Some(&nr)).collect();
+            let idx: Vec<usize> = (0..out.len())
+                .filter(|&j| herkunft.get(j) == Some(&nr) && (!nur_initialen || buchstabe.get(j).is_some_and(|&b| b > 0)))
+                .collect();
             let teil: Vec<Objekt> = idx.iter().map(|&j| out[j].clone()).collect();
             let laengster = crate::schrift::laengster_satinstich(&teil);
             if laengster <= 0.0 {
@@ -1542,7 +1665,6 @@ impl Design {
             }
             let step = auto && laengster > crate::schrift::AUTO_STEP_AB_MM;
             if step {
-                let ttf = matches!(o.art, ObjektArt::TtfText { .. });
                 for &j in &idx {
                     out[j] = if ttf {
                         crate::schrift::auf_tatami(out[j].clone())
@@ -1560,7 +1682,7 @@ impl Design {
     pub(crate) fn aufgeloest_mit_herkunft(&self) -> Result<Aufgeloest, String> {
         let (out, fehlend, herkunft, buchstabe) = self.ungedreht_aufgeloest()?;
         let mut out = self.transformieren(out, &herkunft)?;
-        self.schrift_auto_anwenden(&mut out, &herkunft);
+        self.schrift_auto_anwenden(&mut out, &herkunft, &buchstabe);
         let (out, herkunft, buchstabe) = self.aussparen_aufloesen(out, &herkunft, &buchstabe)?;
         let (out, herkunft, buchstabe) = self.umrandungen_anhaengen(out, herkunft, buchstabe);
         Ok((out, fehlend, herkunft, buchstabe))
@@ -1700,6 +1822,47 @@ impl Design {
                         self.einstellungen_fuer(nr).tatami.winkel,
                         |z| text_objekte_idx(a, z),
                     );
+                    out.extend(obj);
+                    buchstabe.extend(nummern);
+                    fehlend.extend(f.into_iter().map(|z| (nr, z)));
+                }
+                ObjektArt::MonogrammVorlage(m) => {
+                    let r = self
+                        .monogramm_rahmen
+                        .get(&m.vorlage)
+                        .or_else(|| self.monogramm_rahmen.values().find(|r| r.name.eq_ignore_ascii_case(&m.vorlage)))
+                        .ok_or_else(|| format!("Monogramm-Rahmen „{}“ nicht geladen", m.vorlage))?;
+                    let winkel = self.einstellungen_fuer(nr).tatami.winkel;
+                    let name = if o.name.is_empty() { "Monogramm" } else { &o.name };
+                    let (obj, nummern, f, _) = match &m.schrift {
+                        crate::monogramm::InitialenSchrift::Ttf { stichart, .. } => {
+                            let schrift = m.ttf_schrift(Some(r)).unwrap_or_default();
+                            let s = self
+                                .ttf_schriften
+                                .get(schrift)
+                                .ok_or_else(|| format!("Schrift „{schrift}“ nicht geladen"))?;
+                            crate::monogramm::aufloesen(r, m, name, winkel, |v| {
+                                let abstand = v.abstand.unwrap_or(crate::schrift::BUCHSTABENABSTAND_ANTEIL * v.hoehe);
+                                text_setzen_nr(v, abstand, None, winkel, |z| ttf_text_objekte_idx(s, z, stichart))
+                            })
+                        }
+                        crate::monogramm::InitialenSchrift::Alphabet { alphabet, stichart } => {
+                            let a = self
+                                .alphabete
+                                .get(alphabet)
+                                .or_else(|| self.alphabete.values().find(|a| a.name.eq_ignore_ascii_case(alphabet)))
+                                .ok_or_else(|| format!("Alphabet „{alphabet}“ nicht geladen"))?;
+                            let zusatz = TextZusatz {
+                                stichart: stichart.clone(),
+                                ..Default::default()
+                            };
+                            crate::monogramm::aufloesen(r, m, name, winkel, |v| {
+                                let abstand = v.abstand.unwrap_or(a.abstand_anteil * v.hoehe);
+                                text_setzen_nr(v, abstand, Some(&zusatz), winkel, |z| text_objekte_idx(a, z))
+                            })
+                        }
+                    }
+                    .map_err(|e| format!("Objekt {}: {e}", nr + 1))?;
                     out.extend(obj);
                     buchstabe.extend(nummern);
                     fehlend.extend(f.into_iter().map(|z| (nr, z)));
@@ -2207,7 +2370,7 @@ fn form_linien(art: &ObjektArt, out: &mut Vec<FormLinie>) {
         }
         // werden vor dem Zeichnen aufgelöst
         ObjektArt::Motivlinie(m) => linie(FormArt::Linie, &m.linie, m.geschlossen),
-        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } | ObjektArt::Knopfloch(_) => {}
+        ObjektArt::Text { .. } | ObjektArt::TtfText { .. } | ObjektArt::Knopfloch(_) | ObjektArt::MonogrammVorlage(_) => {}
     }
 }
 
@@ -2369,8 +2532,8 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                 farbe: t.g.farbe,
             }
         }
-        // wird vorher in Text umgeschrieben (`monogramm_als_text`)
-        ObjektJson::Monogramm(_) => unreachable!("Monogramm wird vor dem Umwandeln zu Text"),
+        // ohne Vorlage vorher in Text umgeschrieben (`monogramm_als_text`)
+        ObjektJson::Monogramm(m) => monogramm_vorlage_objekt(m),
         ObjektJson::Muster(m) => Objekt {
             farbe: m.g.farbe,
             name: m.g.name,

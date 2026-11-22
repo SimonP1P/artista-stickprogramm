@@ -3158,13 +3158,20 @@
       "type": "object"
     },
     "MonogrammJson": {
-      "description": "Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im\nKern zu einem Text – alle Schrift-Einstellungen gelten.",
+      "description": "Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im\nKern zu einem Text – alle Schrift-Einstellungen gelten. **Mit `vorlage`** (eigene Erweiterung): Rahmen aus dem\nKatalog der Monogramm-Rahmen, Initialen in einer Computer-Schrift oder einem Alphabet (`monogramm.rs`).",
       "properties": {
         "abstand": {
           "description": "Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)",
           "format": "double",
           "type": [
             "number",
+            "null"
+          ]
+        },
+        "alphabet": {
+          "description": "Original-Alphabet der Initialen (nur mit `vorlage`, statt `schrift`)",
+          "type": [
+            "string",
             "null"
           ]
         },
@@ -3302,7 +3309,7 @@
           "type": "number"
         },
         "initialen": {
-          "description": "2 oder 3 Buchstaben A–Z",
+          "description": "2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen",
           "type": "string"
         },
         "kursiv": {
@@ -3353,6 +3360,29 @@
             "null"
           ]
         },
+        "rahmen_farben": {
+          "default": [],
+          "description": "Farben des Rahmens statt der Farben der Vorlage: 1., 2., 3. Farbe der Vorlage (nur mit `vorlage`; fehlende\nbleiben, wie sie sind)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rahmen_groesse": {
+          "description": "Größe des Rahmens in mm: längere Seite (nur mit `vorlage`; ohne Angabe wie gezeichnet, 70–88 mm). Die\nInitialen wachsen mit",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "schrift": {
+          "description": "Computer-Schrift der Initialen (nur mit `vorlage`; ohne Angabe: Schriftvorschlag der Vorlage, Google Fonts)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "step_muster": {
           "default": null,
           "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
@@ -3398,6 +3428,13 @@
         "unterlage": {
           "$ref": "#/$defs/UnterlageJson"
         },
+        "vorlage": {
+          "description": "**Rahmen aus dem Katalog** (eigene Erweiterung): Name eines Monogramm-Rahmens (Befehl `monogramm_rahmen`, z. B.\n„Doppeloval“). Dann stehen die Initialen in der Computer-Schrift `schrift` (ohne Angabe: Schrift der Vorlage)\noder im Alphabet `alphabet`, Höhen nach der Vorlage, mittig im Rahmen und so weit verkleinert, dass rundum 2 mm\nfrei bleiben. `rahmen`, `rahmen_farbe` und `hoehe` gelten dann nicht",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "winkel": {
           "format": "double",
           "type": [
@@ -3427,6 +3464,29 @@
       ],
       "type": "object"
     },
+    "MonogrammKatalog": {
+      "description": "Katalog der Monogramm-Rahmen.",
+      "properties": {
+        "kategorien": {
+          "description": "Kategorien in der Reihenfolge des Entwurfs",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rahmen": {
+          "items": {
+            "$ref": "#/$defs/MonogrammRahmenInfo"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "kategorien",
+        "rahmen"
+      ],
+      "type": "object"
+    },
     "MonogrammRahmen": {
       "description": "Rahmen um ein Monogramm",
       "oneOf": [
@@ -3446,6 +3506,73 @@
           "type": "string"
         }
       ]
+    },
+    "MonogrammRahmenInfo": {
+      "description": "Monogramm-Rahmen aus dem Katalog (eigene Erweiterung, `stick_vektor::monogramm`).",
+      "properties": {
+        "beschreibung": {
+          "type": "string"
+        },
+        "buchstaben": {
+          "description": "Anzahl Initialen, für die der Rahmen gedacht ist (2 oder 3)",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "farben": {
+          "description": "Farben der Vorlage („#rrggbb“, Reihenfolge wie `rahmen_farben`)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "groesse": {
+          "description": "Größe wie gezeichnet: längere Seite in mm (Design-Feld `rahmen_groesse` ohne Angabe)",
+          "format": "double",
+          "type": "number"
+        },
+        "hoehen": {
+          "description": "Versalhöhen der Initialen in mm bei gezeichneter Größe: links, rechts bzw. links, Mitte, rechts",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "kategorie": {
+          "type": "string"
+        },
+        "name": {
+          "description": "Name wie im Design-Feld `vorlage` des Monogramms",
+          "type": "string"
+        },
+        "nr": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "schrift": {
+          "description": "Schriftvorschlag (Google Fonts, Familie) – Design-Feld `schrift`, wenn der Anwender nichts anderes wählt",
+          "type": "string"
+        },
+        "svg": {
+          "description": "Zeichnung als SVG-Text (Vorschau)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "nr",
+        "kategorie",
+        "beschreibung",
+        "schrift",
+        "hoehen",
+        "buchstaben",
+        "groesse",
+        "farben",
+        "svg"
+      ],
+      "type": "object"
     },
     "MotivInfo": {
       "description": "Ein Motiv mit Linien für die Vorschau (mm, Grundlinie von [0, 0] nach [laenge, 0], +y nach oben).",
@@ -7194,6 +7321,15 @@
       "beschreibung": "**Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt)",
       "eingabe": {
         "$ref": "#/$defs/SendeEingabe"
+      }
+    },
+    "monogramm_rahmen": {
+      "ausgabe": {
+        "$ref": "#/$defs/MonogrammKatalog"
+      },
+      "beschreibung": "Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
       }
     },
     "motive_liste": {

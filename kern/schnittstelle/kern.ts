@@ -1188,11 +1188,14 @@ export type MaschinenInfo = {
 
 /**
  * Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im
- * Kern zu einem Text – alle Schrift-Einstellungen gelten.
+ * Kern zu einem Text – alle Schrift-Einstellungen gelten. **Mit `vorlage`** (eigene Erweiterung): Rahmen aus dem
+ * Katalog der Monogramm-Rahmen, Initialen in einer Computer-Schrift oder einem Alphabet (`monogramm.rs`).
  */
 export type MonogrammJson = {
   /** Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe) */
   abstand?: number | null;
+  /** Original-Alphabet der Initialen (nur mit `vorlage`, statt `schrift`) */
+  alphabet?: string | null;
   /** @default "mitte" */
   ausrichtung?: Ausrichtung;
   /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
@@ -1252,7 +1255,7 @@ export type MonogrammJson = {
    * @default 18.0
    */
   hoehe?: number;
-  /** 2 oder 3 Buchstaben A–Z */
+  /** 2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen */
   initialen: string;
   /**
    * Kursiv in Grad (−45 … 45)
@@ -1271,6 +1274,19 @@ export type MonogrammJson = {
   rahmen?: (MonogrammRahmen | null);
   /** Farbe des Rahmens (nur mit Rahmen) */
   rahmen_farbe?: string | null;
+  /**
+   * Farben des Rahmens statt der Farben der Vorlage: 1., 2., 3. Farbe der Vorlage (nur mit `vorlage`; fehlende
+   * bleiben, wie sie sind)
+   * @default []
+   */
+  rahmen_farben?: string[];
+  /**
+   * Größe des Rahmens in mm: längere Seite (nur mit `vorlage`; ohne Angabe wie gezeichnet, 70–88 mm). Die
+   * Initialen wachsen mit
+   */
+  rahmen_groesse?: number | null;
+  /** Computer-Schrift der Initialen (nur mit `vorlage`; ohne Angabe: Schriftvorschlag der Vorlage, Google Fonts) */
+  schrift?: string | null;
   /** Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil) */
   step_muster?: number | null;
   stichart?: (SchriftStichart | null);
@@ -1282,6 +1298,13 @@ export type MonogrammJson = {
    */
   umrandung?: (UmrandungJson | null);
   unterlage?: UnterlageJson;
+  /**
+   * **Rahmen aus dem Katalog** (eigene Erweiterung): Name eines Monogramm-Rahmens (Befehl `monogramm_rahmen`, z. B.
+   * „Doppeloval“). Dann stehen die Initialen in der Computer-Schrift `schrift` (ohne Angabe: Schrift der Vorlage)
+   * oder im Alphabet `alphabet`, Höhen nach der Vorlage, mittig im Rahmen und so weit verkleinert, dass rundum 2 mm
+   * frei bleiben. `rahmen`, `rahmen_farbe` und `hoehe` gelten dann nicht
+   */
+  vorlage?: string | null;
   winkel?: number | null;
   /** Wortabstand in % der Höhe (Vorlage 25) */
   wortabstand?: number | null;
@@ -1289,8 +1312,36 @@ export type MonogrammJson = {
   zeilenabstand?: number | null;
 };
 
+/** Katalog der Monogramm-Rahmen. */
+export type MonogrammKatalog = {
+  /** Kategorien in der Reihenfolge des Entwurfs */
+  kategorien: string[];
+  rahmen: MonogrammRahmenInfo[];
+};
+
 /** Rahmen um ein Monogramm */
 export type MonogrammRahmen = ("raute" | "zier" | "keine");
+
+/** Monogramm-Rahmen aus dem Katalog (eigene Erweiterung, `stick_vektor::monogramm`). */
+export type MonogrammRahmenInfo = {
+  beschreibung: string;
+  /** Anzahl Initialen, für die der Rahmen gedacht ist (2 oder 3) */
+  buchstaben: number;
+  /** Farben der Vorlage („#rrggbb“, Reihenfolge wie `rahmen_farben`) */
+  farben: string[];
+  /** Größe wie gezeichnet: längere Seite in mm (Design-Feld `rahmen_groesse` ohne Angabe) */
+  groesse: number;
+  /** Versalhöhen der Initialen in mm bei gezeichneter Größe: links, rechts bzw. links, Mitte, rechts */
+  hoehen: number[];
+  kategorie: string;
+  /** Name wie im Design-Feld `vorlage` des Monogramms */
+  name: string;
+  nr: number;
+  /** Schriftvorschlag (Google Fonts, Familie) – Design-Feld `schrift`, wenn der Anwender nichts anderes wählt */
+  schrift: string;
+  /** Zeichnung als SVG-Text (Vorschau) */
+  svg: string;
+};
 
 /** Ein Motiv mit Linien für die Vorschau (mm, Grundlinie von [0, 0] nach [laenge, 0], +y nach oben). */
 export type MotivInfo = {
@@ -2551,6 +2602,8 @@ export interface Befehle {
   maschine_pruefen: { eingabe: Anschluss; ausgabe: MaschinenInfo };
   /** **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) */
   maschine_senden: { eingabe: SendeEingabe; ausgabe: SendeInfo };
+  /** Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag */
+  monogramm_rahmen: { eingabe: Leer; ausgabe: MonogrammKatalog };
   /** Motivsätze (14 der CD) für die Motivlinie */
   motive_liste: { eingabe: Leer; ausgabe: MotivsatzInfo[] };
   /** Motive eines Motivsatzes mit Maßen und Linien für die Vorschau */
@@ -2613,6 +2666,7 @@ export const BEFEHLE = [
   "maschine_ports",
   "maschine_pruefen",
   "maschine_senden",
+  "monogramm_rahmen",
   "motive_liste",
   "motivsatz_motive",
   "parameter_katalog",

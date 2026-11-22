@@ -154,6 +154,63 @@ pub fn alphabete_liste(k: &Kontext, _: Leer) -> Result<Vec<AlphabetInfo>, Fehler
         .collect())
 }
 
+/// Monogramm-Rahmen aus dem Katalog (eigene Erweiterung, `stick_vektor::monogramm`).
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct MonogrammRahmenInfo {
+    /// Name wie im Design-Feld `vorlage` des Monogramms
+    pub name: String,
+    pub nr: u32,
+    pub kategorie: String,
+    pub beschreibung: String,
+    /// Schriftvorschlag (Google Fonts, Familie) – Design-Feld `schrift`, wenn der Anwender nichts anderes wählt
+    pub schrift: String,
+    /// Versalhöhen der Initialen in mm bei gezeichneter Größe: links, rechts bzw. links, Mitte, rechts
+    pub hoehen: Vec<f64>,
+    /// Anzahl Initialen, für die der Rahmen gedacht ist (2 oder 3)
+    pub buchstaben: usize,
+    /// Größe wie gezeichnet: längere Seite in mm (Design-Feld `rahmen_groesse` ohne Angabe)
+    pub groesse: f64,
+    /// Farben der Vorlage („#rrggbb“, Reihenfolge wie `rahmen_farben`)
+    pub farben: Vec<String>,
+    /// Zeichnung als SVG-Text (Vorschau)
+    pub svg: String,
+}
+
+/// Katalog der Monogramm-Rahmen.
+#[derive(Debug, Serialize, JsonSchema)]
+pub struct MonogrammKatalog {
+    /// Kategorien in der Reihenfolge des Entwurfs
+    pub kategorien: Vec<String>,
+    pub rahmen: Vec<MonogrammRahmenInfo>,
+}
+
+pub fn monogramm_rahmen(k: &Kontext, _: Leer) -> Result<MonogrammKatalog, Fehler> {
+    let kat = stick_vektor::monogramm::katalog();
+    let rahmen = kat
+        .rahmen
+        .iter()
+        .map(|e| {
+            let v = k.monogramm_rahmen(&e.name)?;
+            Ok(MonogrammRahmenInfo {
+                name: e.name.clone(),
+                nr: e.nr,
+                kategorie: e.kategorie.clone(),
+                beschreibung: e.beschreibung.clone(),
+                schrift: e.schrift.clone(),
+                hoehen: e.hoehen.clone(),
+                buchstaben: e.hoehen.len(),
+                groesse: (v.groesse() * 10.0).round() / 10.0,
+                farben: v.farben(),
+                svg: e.svg.clone(),
+            })
+        })
+        .collect::<Result<_, Fehler>>()?;
+    Ok(MonogrammKatalog {
+        kategorien: kat.kategorien.clone(),
+        rahmen,
+    })
+}
+
 /// Motivsatz (Pattern Set, Ordner `userletw/` der CD; Handbuch Kap. 25).
 #[derive(Debug, Serialize, JsonSchema)]
 pub struct MotivsatzInfo {

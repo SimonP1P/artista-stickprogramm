@@ -1096,6 +1096,7 @@ version = "0.1.0"
 dependencies = [
  "image",
  "imageproc",
+ "serde",
  "serde_json",
  "stick-kern",
  "usvg",

@@ -427,6 +427,31 @@ P('schrift.monogramm.rahmen', G, 'Monogramm-Rahmen', 'Raute, Zier oder keiner', 
   modus='einfach')
 P('schrift.monogramm.rahmen_farbe', G, 'Rahmenfarbe', '', ebene='objekt', gilt=['monogramm'], o='rahmen_farbe',
   einheit='Farbe', std=None, quelle='Farbwechsel ^', modus='einfach')
+# Monogramm mit Rahmen aus dem Katalog (eigene Erweiterung, Nutzer 21.11.2026; stick-kern::monogramm,
+# stick-vektor::monogramm, Rahmen Arbeitsdaten/monogramm_rahmen/)
+QM = 'eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026)'
+P('schrift.monogramm.vorlage', G, 'Rahmen aus dem Katalog', 'einer der 47 Rahmen (Befehl monogramm_rahmen); mit '
+  'Vorlage 1–3 Zeichen, Schrift der Vorlage, Initialen automatisch eingepasst', ebene='objekt', gilt=['monogramm'],
+  o='vorlage', einheit='Name', std=None, quelle=QM, modus='einfach')
+P('schrift.monogramm.schrift', G, 'Schrift der Initialen', 'Computer-Schrift (TTF/OTF, Google Fonts); ohne Angabe der '
+  'Schriftvorschlag der Vorlage', ebene='objekt', gilt=['monogramm'], o='schrift', einheit='Name', std=None,
+  quelle=QM, modus='einfach')
+P('schrift.monogramm.alphabet', G, 'Stick-Alphabet der Initialen', 'statt der Computer-Schrift ein Original-Alphabet',
+  ebene='objekt', gilt=['monogramm'], o='alphabet', einheit='Name', std=None, quelle=QM, modus='einfach')
+P('schrift.monogramm.rahmen_groesse', G, 'Größe des Rahmens', 'längere Seite in mm; die Initialen wachsen mit; ohne '
+  'Angabe wie gezeichnet', ebene='objekt', gilt=['monogramm'], o='rahmen_groesse', einheit='mm', std=None,
+  bereich=[10, 200], quelle=QM + '; Rahmen gezeichnet 70–88 mm', modus='einfach')
+P('schrift.monogramm.rahmen_farben', G, 'Garne des Rahmens', 'je Farbe der Vorlage (1–3) ein Garn; leer = Farben der '
+  'Vorlage', ebene='objekt', gilt=['monogramm'], o='rahmen_farben', einheit='Farbliste', std=[], quelle=QM,
+  modus='einfach')
+P('schrift.monogramm.luecke', G, 'Lücke zwischen den Initialen', 'Anteil der größten Versalhöhe', ebene='objekt',
+  gilt=['monogramm'], einheit='%', std=8, quelle='eigene Festlegung (monogramm::LUECKE_ANTEIL)', modus='automatisch')
+P('schrift.monogramm.abstand', G, 'Abstand Initialen – Rahmen', 'die Initialen werden verkleinert, bis sie mit diesem '
+  'Abstand in den Rahmen passen (höchstens auf 30 %)', ebene='objekt', gilt=['monogramm'], einheit='mm', std=2.0,
+  quelle='eigene Festlegung (monogramm::ABSTAND, MIN_ANTEIL)', modus='automatisch')
+P('schrift.monogramm.seite_anteil', G, 'Äußere Initialen bei 3 in einem Rahmen für 2', 'Höhe der äußeren Initialen '
+  'im Verhältnis zur mittleren', ebene='objekt', gilt=['monogramm'], einheit='%', std=68,
+  quelle='eigene Festlegung (monogramm::SEITE_ANTEIL; Verhältnis der Vorlagen mit 3 Initialen)', modus='automatisch')
 P('schrift.faktor', G, 'Schrift: Auto-Spacing-Faktor', 'Schrift 10 % dichter', ebene='design', einheit='Faktor', std=0.9,
   quelle='Stil „Schrift“ (Analyse/code/10)', modus='automatisch')
 P('schrift.unterlage', G, 'Schrift: Unterlage', 'Zickzack, wenn das Alphabet keine eigene hat', ebene='design',

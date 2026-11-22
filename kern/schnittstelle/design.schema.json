@@ -1777,13 +1777,20 @@
       "type": "object"
     },
     "MonogrammJson": {
-      "description": "Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im\nKern zu einem Text – alle Schrift-Einstellungen gelten.",
+      "description": "Monogramm (Handbuch Kap. 21): 2 oder 3 Initialen mit den Alphabeten Diamond2/Diamond3, Rahmen wahlweise. Wird im\nKern zu einem Text – alle Schrift-Einstellungen gelten. **Mit `vorlage`** (eigene Erweiterung): Rahmen aus dem\nKatalog der Monogramm-Rahmen, Initialen in einer Computer-Schrift oder einem Alphabet (`monogramm.rs`).",
       "properties": {
         "abstand": {
           "description": "Buchstabenabstand in mm (ohne Angabe: Anteil des Alphabets × Höhe)",
           "format": "double",
           "type": [
             "number",
+            "null"
+          ]
+        },
+        "alphabet": {
+          "description": "Original-Alphabet der Initialen (nur mit `vorlage`, statt `schrift`)",
+          "type": [
+            "string",
             "null"
           ]
         },
@@ -1921,7 +1928,7 @@
           "type": "number"
         },
         "initialen": {
-          "description": "2 oder 3 Buchstaben A–Z",
+          "description": "2 oder 3 Buchstaben A–Z (Diamond); mit `vorlage` 1–3 Zeichen",
           "type": "string"
         },
         "kursiv": {
@@ -1972,6 +1979,29 @@
             "null"
           ]
         },
+        "rahmen_farben": {
+          "default": [],
+          "description": "Farben des Rahmens statt der Farben der Vorlage: 1., 2., 3. Farbe der Vorlage (nur mit `vorlage`; fehlende\nbleiben, wie sie sind)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rahmen_groesse": {
+          "description": "Größe des Rahmens in mm: längere Seite (nur mit `vorlage`; ohne Angabe wie gezeichnet, 70–88 mm). Die\nInitialen wachsen mit",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "schrift": {
+          "description": "Computer-Schrift der Initialen (nur mit `vorlage`; ohne Angabe: Schriftvorschlag der Vorlage, Google Fonts)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "step_muster": {
           "default": null,
           "description": "Step-Muster 1–20 für Tatami-Flächen und Step-Schrift (ohne Angabe: Stoff/Stil)",
@@ -2016,6 +2046,13 @@
         },
         "unterlage": {
           "$ref": "#/$defs/UnterlageJson"
+        },
+        "vorlage": {
+          "description": "**Rahmen aus dem Katalog** (eigene Erweiterung): Name eines Monogramm-Rahmens (Befehl `monogramm_rahmen`, z. B.\n„Doppeloval“). Dann stehen die Initialen in der Computer-Schrift `schrift` (ohne Angabe: Schrift der Vorlage)\noder im Alphabet `alphabet`, Höhen nach der Vorlage, mittig im Rahmen und so weit verkleinert, dass rundum 2 mm\nfrei bleiben. `rahmen`, `rahmen_farbe` und `hoehe` gelten dann nicht",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "winkel": {
           "format": "double",

@@ -1,0 +1,651 @@
+{
+ "quelle": "Arbeitsdaten/monogramm_rahmen (47 SVG, 8 Kategorien; Entwurf des Nutzers mit ChatGPT, 21.11.2026)",
+ "kategorien": [
+  "Klassisch & elegant",
+  "Geometrisch & Art Déco",
+  "Botanisch & natürlich",
+  "Romantisch & floral",
+  "Modern & minimal",
+  "Wappen & Siegel",
+  "Maritim & Küste",
+  "Festlich & ornamental"
+ ],
+ "rahmen": [
+  {
+   "nr": 1,
+   "name": "Doppeloval",
+   "kategorie": "Klassisch & elegant",
+   "datei": "01_doppeloval.svg",
+   "schrift": "Cormorant Garamond",
+   "hoehen": [
+    17.0,
+    27.0,
+    17.0
+   ],
+   "beschreibung": "Klassische doppelte Ovalfassung.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45 6 A39 39 0 1 1 45 84 A39 39 0 1 1 45 6 Z\" fill=\"none\" stroke=\"#324553\" stroke-width=\"3.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M45 12 A33 33 0 1 1 45 78 A33 33 0 1 1 45 12 Z\" fill=\"none\" stroke=\"#B78E5B\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M45 16 L49 20 L45 24 L41 20 Z\" fill=\"none\" stroke=\"#B78E5B\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M45 66 L49 70 L45 74 L41 70 Z\" fill=\"none\" stroke=\"#B78E5B\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 8,
+   "name": "Perlenmedaillon",
+   "kategorie": "Klassisch & elegant",
+   "datei": "08_perlenmedaillon.svg",
+   "schrift": "Prata",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Runder Medaillonrahmen mit umlaufenden Perlen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M84.00 45.00 A39.00 39.00 0 1 1 6.00 45.00 A39.00 39.00 0 1 1 84.00 45.00 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M75.20 45.00 A30.20 30.20 0 1 1 14.80 45.00 A30.20 30.20 0 1 1 75.20 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M81.75 45.00 A2.05 2.05 0 1 1 77.65 45.00 A2.05 2.05 0 1 1 81.75 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M77.10 62.35 A2.05 2.05 0 1 1 73.00 62.35 A2.05 2.05 0 1 1 77.10 62.35 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M64.40 75.05 A2.05 2.05 0 1 1 60.30 75.05 A2.05 2.05 0 1 1 64.40 75.05 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M47.05 79.70 A2.05 2.05 0 1 1 42.95 79.70 A2.05 2.05 0 1 1 47.05 79.70 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29.70 75.05 A2.05 2.05 0 1 1 25.60 75.05 A2.05 2.05 0 1 1 29.70 75.05 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M17.00 62.35 A2.05 2.05 0 1 1 12.90 62.35 A2.05 2.05 0 1 1 17.00 62.35 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M12.35 45.00 A2.05 2.05 0 1 1 8.25 45.00 A2.05 2.05 0 1 1 12.35 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M17.00 27.65 A2.05 2.05 0 1 1 12.90 27.65 A2.05 2.05 0 1 1 17.00 27.65 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29.70 14.95 A2.05 2.05 0 1 1 25.60 14.95 A2.05 2.05 0 1 1 29.70 14.95 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M47.05 10.30 A2.05 2.05 0 1 1 42.95 10.30 A2.05 2.05 0 1 1 47.05 10.30 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M64.40 14.95 A2.05 2.05 0 1 1 60.30 14.95 A2.05 2.05 0 1 1 64.40 14.95 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M77.10 27.65 A2.05 2.05 0 1 1 73.00 27.65 A2.05 2.05 0 1 1 77.10 27.65 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 9,
+   "name": "Hochoval",
+   "kategorie": "Klassisch & elegant",
+   "datei": "09_hochoval.svg",
+   "schrift": "Bodoni Moda",
+   "hoehen": [
+    16.0,
+    26.0,
+    16.0
+   ],
+   "beschreibung": "Schlankes Hochoval mit Krönung und Fuß.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M79.50 45.00 A34.50 39.00 0 1 1 10.50 45.00 A34.50 39.00 0 1 1 79.50 45.00 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72.50 45.00 A27.50 32.00 0 1 1 17.50 45.00 A27.50 32.00 0 1 1 72.50 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M32 9 Q45 2 58 9\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M32 81 Q45 88 58 81\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 4.00 L48.50 8.00 L45.00 12.00 L41.50 8.00 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 78.00 L48.50 82.00 L45.00 86.00 L41.50 82.00 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 10,
+   "name": "Antikes Rundsiegel",
+   "kategorie": "Klassisch & elegant",
+   "datei": "10_antikes_rundsiegel.svg",
+   "schrift": "Gilda Display",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Rundes Siegel mit seitlichen S-Schwüngen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M84.00 45.00 A39.00 39.00 0 1 1 6.00 45.00 A39.00 39.00 0 1 1 84.00 45.00 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M76.00 45.00 A31.00 31.00 0 1 1 14.00 45.00 A31.00 31.00 0 1 1 76.00 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M5 41 Q12 33 18 40 Q24 47 18 54\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M85 41 Q78 33 72 40 Q66 47 72 54\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 7 Q45 13 56 7\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 83 Q45 77 56 83\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 11,
+   "name": "Viktorianische Kartusche",
+   "kategorie": "Klassisch & elegant",
+   "datei": "11_viktorianische_kartusche.svg",
+   "schrift": "EB Garamond",
+   "hoehen": [
+    17.0,
+    25.0,
+    17.0
+   ],
+   "beschreibung": "Eckgeschwungener rechteckiger Prunkrahmen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M17 8 L73 8 Q82 8 82 17 L82 73 Q82 82 73 82 L17 82 Q8 82 8 73 L8 17 Q8 8 17 8 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M23 15 L67 15 Q75 15 75 23 L75 67 Q75 75 67 75 L23 75 Q15 75 15 67 L15 23 Q15 15 23 15 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 28 Q20 20 28 20 Q32 20 32 25\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 28 Q70 20 62 20 Q58 20 58 25\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 62 Q20 70 28 70 Q32 70 32 65\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 62 Q70 70 62 70 Q58 70 58 65\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 12,
+   "name": "Achtkant-Siegel",
+   "kategorie": "Klassisch & elegant",
+   "datei": "12_achtkant_siegel.svg",
+   "schrift": "Libre Baskerville",
+   "hoehen": [
+    24.0,
+    24.0
+   ],
+   "beschreibung": "Achteckiges Schausiegel mit vier Rauten.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M26.00 7.00 L64.00 7.00 L83.00 26.00 L83.00 64.00 L64.00 83.00 L26.00 83.00 L7.00 64.00 L7.00 26.00 Z\" fill=\"none\" stroke=\"#374E5A\" stroke-width=\"3.15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29.00 15.00 L61.00 15.00 L75.00 29.00 L75.00 61.00 L61.00 75.00 L29.00 75.00 L15.00 61.00 L15.00 29.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 7.70 L49.10 11.00 L45.00 14.30 L40.90 11.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 75.70 L49.10 79.00 L45.00 82.30 L40.90 79.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M11.00 40.90 L14.30 45.00 L11.00 49.10 L7.70 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M79.00 40.90 L82.30 45.00 L79.00 49.10 L75.70 45.00 Z\" fill=\"none\" stroke=\"#B49262\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 2,
+   "name": "Art-déco-Achteck",
+   "kategorie": "Geometrisch & Art Déco",
+   "datei": "02_art_deco_achteck.svg",
+   "schrift": "Cinzel",
+   "hoehen": [
+    18.0,
+    26.0,
+    18.0
+   ],
+   "beschreibung": "Geometrische Achteckfassung.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M28 7 L62 7 L83 28 L83 62 L62 83 L28 83 L7 62 L7 28 Z\" fill=\"none\" stroke=\"#313A51\" stroke-width=\"3.20\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M30 14 L60 14 L76 30 L76 60 L60 76 L30 76 L14 60 L14 30 Z\" fill=\"none\" stroke=\"#B59161\" stroke-width=\"2.40\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M20 32 L32 20\" fill=\"none\" stroke=\"#B59161\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M58 20 L70 32\" fill=\"none\" stroke=\"#B59161\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M70 58 L58 70\" fill=\"none\" stroke=\"#B59161\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M32 70 L20 58\" fill=\"none\" stroke=\"#B59161\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 13,
+   "name": "Strahlenachteck",
+   "kategorie": "Geometrisch & Art Déco",
+   "datei": "13_strahlenachteck.svg",
+   "schrift": "Cinzel",
+   "hoehen": [
+    17.0,
+    25.0,
+    17.0
+   ],
+   "beschreibung": "Achteck mit symmetrischem Strahlenfächer.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M26.00 7.00 L64.00 7.00 L83.00 26.00 L83.00 64.00 L64.00 83.00 L26.00 83.00 L7.00 64.00 L7.00 26.00 Z\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"3.15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29.00 16.00 L61.00 16.00 L74.00 29.00 L74.00 61.00 L61.00 74.00 L29.00 74.00 L16.00 61.00 L16.00 29.00 Z\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 10 L30.0 23\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 80 L30.0 67\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 10 L37.5 23\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 80 L37.5 67\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 10 L45.0 23\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 80 L45.0 67\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 10 L52.5 23\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 80 L52.5 67\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 10 L60.0 23\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 80 L60.0 67\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 14,
+   "name": "Stufenraute",
+   "kategorie": "Geometrisch & Art Déco",
+   "datei": "14_stufenraute.svg",
+   "schrift": "Poiret One",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Gestufte Raute mit geometrischer Doppelkontur.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45.00 5.00 L85.00 45.00 L45.00 85.00 L5.00 45.00 Z\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"3.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 14.00 L76.00 45.00 L45.00 76.00 L14.00 45.00 Z\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31 13 L45 8 L59 13\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31 77 L45 82 L59 77\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 15,
+   "name": "Portalbogen",
+   "kategorie": "Geometrisch & Art Déco",
+   "datei": "15_portalbogen.svg",
+   "schrift": "Marcellus SC",
+   "hoehen": [
+    18.0,
+    24.0,
+    18.0
+   ],
+   "beschreibung": "Architektonischer Bogen mit seitlichen Stufen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M13 79 L13 32 Q13 12 45 7 Q77 12 77 32 L77 79 Z\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M21 72 L21 34 Q21 20 45 15 Q69 20 69 34 L69 72\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M6 70 L6 27 L14 19\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M84 70 L84 27 L76 19\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M24 83 L66 83\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31 8 L59 8\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 16,
+   "name": "Hexagon-Portal",
+   "kategorie": "Geometrisch & Art Déco",
+   "datei": "16_hexagon_portal.svg",
+   "schrift": "Josefin Sans",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Polygonales Portal mit verbundenen Ecklinien.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45.00 4.00 L82.00 27.00 L82.00 63.00 L45.00 86.00 L8.00 63.00 L8.00 27.00 Z\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"3.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 13.00 L74.00 31.00 L74.00 59.00 L45.00 77.00 L16.00 59.00 L16.00 31.00 Z\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 4 L45 13\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 77 L45 86\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M8 31 L16 31\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M74 31 L82 31\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M8 59 L16 59\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M74 59 L82 59\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 17,
+   "name": "Diamantspiegel",
+   "kategorie": "Geometrisch & Art Déco",
+   "datei": "17_diamantspiegel.svg",
+   "schrift": "Italiana",
+   "hoehen": [
+    16.0,
+    26.0,
+    16.0
+   ],
+   "beschreibung": "Spitzovale Spiegelkontur mit Seitenstreben.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45 6 Q77 18 81 45 Q77 72 45 84 Q13 72 9 45 Q13 18 45 6 Z\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 15 Q68 23 72 45 Q68 67 45 75 Q22 67 18 45 Q22 23 45 15 Z\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M7 37 L15 37 M7 53 L15 53 M75 37 L83 37 M75 53 L83 53\" fill=\"none\" stroke=\"#33485C\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M38 8 L45 4 L52 8\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M38 82 L45 86 L52 82\" fill=\"none\" stroke=\"#C0965C\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 3,
+   "name": "Lorbeerzweige",
+   "kategorie": "Botanisch & natürlich",
+   "datei": "03_lorbeerzweige.svg",
+   "schrift": "Marcellus",
+   "hoehen": [
+    27.0,
+    27.0
+   ],
+   "beschreibung": "Seitlicher symmetrischer Lorbeer.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M22 9 C8 21 8 69 22 81\" fill=\"none\" stroke=\"#557663\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M68 9 C82 21 82 69 68 81\" fill=\"none\" stroke=\"#557663\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M15 20 C17 15 21 11 24 11 C24 17 20 21 15 20 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M75 20 C73 15 69 11 66 11 C66 17 70 21 75 20 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M15 34 C17 29 21 25 24 25 C24 31 20 35 15 34 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M75 34 C73 29 69 25 66 25 C66 31 70 35 75 34 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M15 48 C17 43 21 39 24 39 C24 45 20 49 15 48 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M75 48 C73 43 69 39 66 39 C66 45 70 49 75 48 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M15 62 C17 57 21 53 24 53 C24 59 20 63 15 62 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M75 62 C73 57 69 53 66 53 C66 59 70 63 75 62 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M15 76 C17 71 21 67 24 67 C24 73 20 77 15 76 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M75 76 C73 71 69 67 66 67 C66 73 70 77 75 76 Z\" fill=\"none\" stroke=\"#557663\" stroke-width=\"2.15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M12 27 C8 22 5 21 4 21 C5 28 8 30 12 27 Z\" fill=\"none\" stroke=\"#A48153\" stroke-width=\"2.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M78 27 C82 22 85 21 86 21 C85 28 82 30 78 27 Z\" fill=\"none\" stroke=\"#A48153\" stroke-width=\"2.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M12 43 C8 38 5 37 4 37 C5 44 8 46 12 43 Z\" fill=\"none\" stroke=\"#A48153\" stroke-width=\"2.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M78 43 C82 38 85 37 86 37 C85 44 82 46 78 43 Z\" fill=\"none\" stroke=\"#A48153\" stroke-width=\"2.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M12 59 C8 54 5 53 4 53 C5 60 8 62 12 59 Z\" fill=\"none\" stroke=\"#A48153\" stroke-width=\"2.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M78 59 C82 54 85 53 86 53 C85 60 82 62 78 59 Z\" fill=\"none\" stroke=\"#A48153\" stroke-width=\"2.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 18,
+   "name": "Olivenzweige",
+   "kategorie": "Botanisch & natürlich",
+   "datei": "18_olivenzweige.svg",
+   "schrift": "Marcellus",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Gebogene Olivenzweige mit ovalen Blättern.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M20 79 Q7 45 20 11\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 79 Q83 45 70 11\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 19 Q6 9 8 2 Q23 4 18 19 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 19 Q84 9 82 2 Q67 4 72 19 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 34 Q6 24 8 17 Q23 19 18 34 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 34 Q84 24 82 17 Q67 19 72 34 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 49 Q6 39 8 32 Q23 34 18 49 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 49 Q84 39 82 32 Q67 34 72 49 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 64 Q6 54 8 47 Q23 49 18 64 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 64 Q84 54 82 47 Q67 49 72 64 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 77 Q6 67 8 60 Q23 62 18 77 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 77 Q84 67 82 60 Q67 62 72 77 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M30 11 Q45 4 60 11\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M30 79 Q45 86 60 79\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 19,
+   "name": "Farnfächer",
+   "kategorie": "Botanisch & natürlich",
+   "datei": "19_farnfaecher.svg",
+   "schrift": "Cormorant Garamond",
+   "hoehen": [
+    16.0,
+    25.0,
+    16.0
+   ],
+   "beschreibung": "Fächerartige Farnblätter längs der Seiten.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M17 79 Q23 45 15 9\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M73 79 Q67 45 75 9\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 19 Q6 10 6 4 Q24 7 18 19 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 19 Q84 10 84 4 Q66 7 72 19 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 23 Q30 15 29 11 Q19 14 20 23 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 23 Q60 15 61 11 Q71 14 70 23 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 31 Q6 22 6 16 Q24 19 18 31 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 31 Q84 22 84 16 Q66 19 72 31 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 35 Q30 27 29 23 Q19 26 20 35 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 35 Q60 27 61 23 Q71 26 70 35 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 43 Q6 34 6 28 Q24 31 18 43 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 43 Q84 34 84 28 Q66 31 72 43 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 47 Q30 39 29 35 Q19 38 20 47 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 47 Q60 39 61 35 Q71 38 70 47 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 55 Q6 46 6 40 Q24 43 18 55 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 55 Q84 46 84 40 Q66 43 72 55 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 59 Q30 51 29 47 Q19 50 20 59 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 59 Q60 51 61 47 Q71 50 70 59 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 67 Q6 58 6 52 Q24 55 18 67 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 67 Q84 58 84 52 Q66 55 72 67 Z\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 71 Q30 63 29 59 Q19 62 20 71 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 71 Q60 63 61 59 Q71 62 70 71 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 20,
+   "name": "Eukalyptusoval",
+   "kategorie": "Botanisch & natürlich",
+   "datei": "20_eukalyptusoval.svg",
+   "schrift": "Spectral",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Runde Blattmedaillons an zwei dünnen Stielen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M18 81 C9 62 10 31 21 10\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 81 C81 62 80 31 69 10\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M22.20 20.00 A6.20 7.00 0 1 1 9.80 20.00 A6.20 7.00 0 1 1 22.20 20.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18.20 38.00 A6.20 7.00 0 1 1 5.80 38.00 A6.20 7.00 0 1 1 18.20 38.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20.20 57.00 A6.20 7.00 0 1 1 7.80 57.00 A6.20 7.00 0 1 1 20.20 57.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29.20 71.00 A6.20 7.00 0 1 1 16.80 71.00 A6.20 7.00 0 1 1 29.20 71.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M80.20 20.00 A6.20 7.00 0 1 1 67.80 20.00 A6.20 7.00 0 1 1 80.20 20.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M84.20 38.00 A6.20 7.00 0 1 1 71.80 38.00 A6.20 7.00 0 1 1 84.20 38.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M82.20 57.00 A6.20 7.00 0 1 1 69.80 57.00 A6.20 7.00 0 1 1 82.20 57.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M73.20 71.00 A6.20 7.00 0 1 1 60.80 71.00 A6.20 7.00 0 1 1 73.20 71.00 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M35 11 Q45 8 55 11\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M35 79 Q45 82 55 79\" fill=\"none\" stroke=\"#567762\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 21,
+   "name": "Weizenähren",
+   "kategorie": "Botanisch & natürlich",
+   "datei": "21_weizenaehren.svg",
+   "schrift": "Lora",
+   "hoehen": [
+    17.0,
+    26.0,
+    17.0
+   ],
+   "beschreibung": "Bündel aus stilisierten Getreideähren.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M18 81 Q13 43 22 10\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 81 Q77 43 68 10\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 22 Q6 15 12 8 Q22 11 18 22 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 22 Q84 15 78 8 Q68 11 72 22 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 33 Q6 26 12 19 Q22 22 18 33 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 33 Q84 26 78 19 Q68 22 72 33 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 44 Q6 37 12 30 Q22 33 18 44 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 44 Q84 37 78 30 Q68 33 72 44 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 55 Q6 48 12 41 Q22 44 18 55 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 55 Q84 48 78 41 Q68 44 72 55 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 66 Q6 59 12 52 Q22 55 18 66 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 66 Q84 59 78 52 Q68 55 72 66 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 77 Q6 70 12 63 Q22 66 18 77 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 77 Q84 70 78 63 Q68 66 72 77 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 22,
+   "name": "Blätterkrone",
+   "kategorie": "Botanisch & natürlich",
+   "datei": "22_blaetterkrone.svg",
+   "schrift": "Fraunces",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Blattbogen als Krone über und unter den Initialen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M10 42 Q13 16 39 9 Q45 7 51 9 Q77 16 80 42\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M10 48 Q13 74 39 81 Q45 83 51 81 Q77 74 80 48\" fill=\"none\" stroke=\"#567762\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 20 Q14 22 12 30 Q19 28 20 20 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31 12 Q25 14 23 22 Q30 20 31 12 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M59 12 Q65 14 67 22 Q60 20 59 12 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 20 Q76 22 78 30 Q71 28 70 20 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 70 Q14 68 12 60 Q19 62 20 70 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31 78 Q25 76 23 68 Q30 70 31 78 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M59 78 Q65 76 67 68 Q60 70 59 78 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M70 70 Q76 68 78 60 Q71 62 70 70 Z\" fill=\"none\" stroke=\"#BA9771\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 4,
+   "name": "Blütenrosette",
+   "kategorie": "Romantisch & floral",
+   "datei": "04_bluetenrosette.svg",
+   "schrift": "Fraunces",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Zwölfbogige Rosette mit Innenring.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45.000 5.400 C46.728 5.400 48.395 7.043 49.751 8.911 C51.107 10.780 52.194 12.556 53.593 12.931 C54.992 13.306 56.821 12.311 58.930 11.371 C61.038 10.431 63.304 9.841 64.800 10.705 C66.296 11.569 66.919 13.826 67.159 16.122 C67.399 18.418 67.452 20.500 68.476 21.524 C69.500 22.548 71.582 22.601 73.878 22.841 C76.174 23.081 78.431 23.704 79.295 25.200 C80.159 26.696 79.569 28.962 78.629 31.070 C77.689 33.179 76.694 35.008 77.069 36.407 C77.444 37.806 79.220 38.893 81.089 40.249 C82.957 41.605 84.600 43.272 84.600 45.000 C84.600 46.728 82.957 48.395 81.089 49.751 C79.220 51.107 77.444 52.194 77.069 53.593 C76.694 54.992 77.689 56.821 78.629 58.930 C79.569 61.038 80.159 63.304 79.295 64.800 C78.431 66.296 76.174 66.919 73.878 67.159 C71.582 67.399 69.500 67.452 68.476 68.476 C67.452 69.500 67.399 71.582 67.159 73.878 C66.919 76.174 66.296 78.431 64.800 79.295 C63.304 80.159 61.038 79.569 58.930 78.629 C56.821 77.689 54.992 76.694 53.593 77.069 C52.194 77.444 51.107 79.220 49.751 81.089 C48.395 82.957 46.728 84.600 45.000 84.600 C43.272 84.600 41.605 82.957 40.249 81.089 C38.893 79.220 37.806 77.444 36.407 77.069 C35.008 76.694 33.179 77.689 31.070 78.629 C28.962 79.569 26.696 80.159 25.200 79.295 C23.704 78.431 23.081 76.174 22.841 73.878 C22.601 71.582 22.548 69.500 21.524 68.476 C20.500 67.452 18.418 67.399 16.122 67.159 C13.826 66.919 11.569 66.296 10.705 64.800 C9.841 63.304 10.431 61.038 11.371 58.930 C12.311 56.821 13.306 54.992 12.931 53.593 C12.556 52.194 10.780 51.107 8.911 49.751 C7.043 48.395 5.400 46.728 5.400 45.000 C5.400 43.272 7.043 41.605 8.911 40.249 C10.780 38.893 12.556 37.806 12.931 36.407 C13.306 35.008 12.311 33.179 11.371 31.070 C10.431 28.962 9.841 26.696 10.705 25.200 C11.569 23.704 13.826 23.081 16.122 22.841 C18.418 22.601 20.500 22.548 21.524 21.524 C22.548 20.500 22.601 18.418 22.841 16.122 C23.081 13.826 23.704 11.569 25.200 10.705 C26.696 9.841 28.962 10.431 31.070 11.371 C33.179 12.311 35.008 13.306 36.407 12.931 C37.806 12.556 38.893 10.780 40.249 8.911 C41.605 7.043 43.272 5.400 45.000 5.400 Z\" fill=\"none\" stroke=\"#874D65\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M45 15 A30 30 0 1 1 45 75 A30 30 0 1 1 45 15 Z\" fill=\"none\" stroke=\"#C18E99\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 5,
+   "name": "Schleifenrahmen",
+   "kategorie": "Romantisch & floral",
+   "datei": "05_schleifenrahmen.svg",
+   "schrift": "Playfair Display",
+   "hoehen": [
+    16.0,
+    23.0,
+    16.0
+   ],
+   "beschreibung": "Abgerundete Kartusche mit Schleife.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M40 17 L25 17 Q14 17 14 28 L14 65 Q14 76 25 76 L65 76 Q76 76 76 65 L76 28 Q76 17 65 17 L50 17\" fill=\"none\" stroke=\"#486C81\" stroke-width=\"3.10\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M42 14 C35 5 25 5 26 12 C27 19 36 18 42 14 Z\" fill=\"none\" stroke=\"#B78177\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M48 14 C55 5 65 5 64 12 C63 19 54 18 48 14 Z\" fill=\"none\" stroke=\"#B78177\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M42 14 C42 11 48 11 48 14 C48 17 42 17 42 14 Z\" fill=\"none\" stroke=\"#B78177\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M43 17 Q41 22 37 26 L37 21\" fill=\"none\" stroke=\"#B78177\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M47 17 Q49 22 53 26 L53 21\" fill=\"none\" stroke=\"#B78177\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M34 69 Q45 73 56 69\" fill=\"none\" stroke=\"#486C81\" stroke-width=\"2.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 23,
+   "name": "Tulpenbogen",
+   "kategorie": "Romantisch & floral",
+   "datei": "23_tulpenbogen.svg",
+   "schrift": "Playfair Display",
+   "hoehen": [
+    16.0,
+    25.0,
+    16.0
+   ],
+   "beschreibung": "Tulpenblüte oben auf einem feinen Rankenbogen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M16 77 Q7 47 16 23 Q20 13 34 11\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M74 77 Q83 47 74 23 Q70 13 56 11\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 11 Q40 6 45 13 Q50 6 56 11\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 11 Q28 4 27 14 Q29 24 38 22 L45 13 L52 22 Q61 24 63 14 Q62 4 56 11\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M27 77 Q45 86 63 77\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 24,
+   "name": "Herzmedaillon",
+   "kategorie": "Romantisch & floral",
+   "datei": "24_herzmedaillon.svg",
+   "schrift": "DM Serif Display",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Doppelte Herzsilhouette mit schmaler Liebesraute.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45 82 C31 73 7 58 7 34 C7 11 31 4 45 22 C59 4 83 11 83 34 C83 58 59 73 45 82 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 72 C31 63 16 54 16 35 C16 18 32 17 45 32 C58 17 74 18 74 35 C74 54 59 63 45 72 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 7.70 L48.50 12.00 L45.00 16.30 L41.50 12.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M35 78 Q45 85 55 78\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 25,
+   "name": "Spitzensiegel",
+   "kategorie": "Romantisch & floral",
+   "datei": "25_spitzensiegel.svg",
+   "schrift": "Bodoni Moda",
+   "hoehen": [
+    17.0,
+    24.0,
+    17.0
+   ],
+   "beschreibung": "Rundrahmen mit acht großen Spitzenbögen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M84.00 45.00 A39.00 39.00 0 1 1 6.00 45.00 A39.00 39.00 0 1 1 84.00 45.00 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M76.00 45.00 A31.00 31.00 0 1 1 14.00 45.00 A31.00 31.00 0 1 1 76.00 45.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M83.60 45.00 A3.60 3.60 0 1 1 76.40 45.00 A3.60 3.60 0 1 1 83.60 45.00 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M73.35 69.75 A3.60 3.60 0 1 1 66.15 69.75 A3.60 3.60 0 1 1 73.35 69.75 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M48.60 80.00 A3.60 3.60 0 1 1 41.40 80.00 A3.60 3.60 0 1 1 48.60 80.00 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M23.85 69.75 A3.60 3.60 0 1 1 16.65 69.75 A3.60 3.60 0 1 1 23.85 69.75 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M13.60 45.00 A3.60 3.60 0 1 1 6.40 45.00 A3.60 3.60 0 1 1 13.60 45.00 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M23.85 20.25 A3.60 3.60 0 1 1 16.65 20.25 A3.60 3.60 0 1 1 23.85 20.25 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M48.60 10.00 A3.60 3.60 0 1 1 41.40 10.00 A3.60 3.60 0 1 1 48.60 10.00 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M73.35 20.25 A3.60 3.60 0 1 1 66.15 20.25 A3.60 3.60 0 1 1 73.35 20.25 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"2.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 26,
+   "name": "Blütenkette",
+   "kategorie": "Romantisch & floral",
+   "datei": "26_bluetenkette.svg",
+   "schrift": "Yeseva One",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Anmutige Ovalkartusche mit Blütenperlen an der Krone.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M16 17 Q45 2 74 17 Q84 45 74 73 Q45 88 16 73 Q6 45 16 17 Z\" fill=\"none\" stroke=\"#8D536B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M22 23 Q45 12 68 23 Q77 45 68 67 Q45 78 22 67 Q13 45 22 23 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31.20 12.00 A4.20 3.60 0 1 1 22.80 12.00 A4.20 3.60 0 1 1 31.20 12.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M49.20 9.00 A4.20 3.60 0 1 1 40.80 9.00 A4.20 3.60 0 1 1 49.20 9.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M67.20 12.00 A4.20 3.60 0 1 1 58.80 12.00 A4.20 3.60 0 1 1 67.20 12.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31.20 78.00 A4.20 3.60 0 1 1 22.80 78.00 A4.20 3.60 0 1 1 31.20 78.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M49.20 81.00 A4.20 3.60 0 1 1 40.80 81.00 A4.20 3.60 0 1 1 49.20 81.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M67.20 78.00 A4.20 3.60 0 1 1 58.80 78.00 A4.20 3.60 0 1 1 67.20 78.00 Z\" fill=\"none\" stroke=\"#C392A4\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 6,
+   "name": "Moderne Ecken",
+   "kategorie": "Modern & minimal",
+   "datei": "06_moderne_ecken.svg",
+   "schrift": "DM Sans",
+   "hoehen": [
+    21.0,
+    21.0,
+    21.0
+   ],
+   "beschreibung": "Offene geometrische Eckklammern.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M8 29 L8 8 L29 8\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.40\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M14 26 L14 14 L26 14\" fill=\"none\" stroke=\"#BE8C67\" stroke-width=\"2.50\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M8 61 L8 82 L29 82\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.40\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M14 64 L14 76 L26 76\" fill=\"none\" stroke=\"#BE8C67\" stroke-width=\"2.50\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M82 29 L82 8 L61 8\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.40\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M76 26 L76 14 L64 14\" fill=\"none\" stroke=\"#BE8C67\" stroke-width=\"2.50\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M82 61 L82 82 L61 82\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.40\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M76 64 L76 76 L64 76\" fill=\"none\" stroke=\"#BE8C67\" stroke-width=\"2.50\" stroke-linejoin=\"miter\" stroke-linecap=\"round\"/>\n  <path d=\"M38 9 L52 9\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M38 81 L52 81\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M9 38 L9 52\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M81 38 L81 52\" fill=\"none\" stroke=\"#465660\" stroke-width=\"3.00\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 27,
+   "name": "Versatzquadrat",
+   "kategorie": "Modern & minimal",
+   "datei": "27_versatzquadrat.svg",
+   "schrift": "Montserrat",
+   "hoehen": [
+    20.0,
+    20.0,
+    20.0
+   ],
+   "beschreibung": "Zwei offene Quadrate mit kontrolliertem Versatz.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M8 34 L8 8 L34 8 M56 8 L82 8 L82 34 M82 56 L82 82 L56 82 M34 82 L8 82 L8 56\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"3.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M16 29 L16 16 L29 16 M61 16 L74 16 L74 29 M74 61 L74 74 L61 74 M29 74 L16 74 L16 61\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M38 7 L52 7 M38 83 L52 83\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 28,
+   "name": "Kreissegmente",
+   "kategorie": "Modern & minimal",
+   "datei": "28_kreissegmente.svg",
+   "schrift": "Jost",
+   "hoehen": [
+    28.0,
+    28.0
+   ],
+   "beschreibung": "Vier voneinander abgesetzte Kreisbogensegmente.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M66 14 A36 36 0 0 1 76 69\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M24 76 A36 36 0 0 1 14 21\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M25 14 A36 36 0 0 1 57 10\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M65 76 A36 36 0 0 1 33 80\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 6 L45 12 M45 78 L45 84\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 29,
+   "name": "Swiss Grid",
+   "kategorie": "Modern & minimal",
+   "datei": "29_swiss_grid.svg",
+   "schrift": "Outfit",
+   "hoehen": [
+    20.0,
+    20.0,
+    20.0
+   ],
+   "beschreibung": "Rasterartige Ecken mit typografischer Klarheit.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M29 9 L9 9 L9 29 M61 9 L81 9 L81 29 M9 61 L9 81 L29 81 M81 61 L81 81 L61 81\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"3.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M35 9 L55 9 M35 81 L55 81 M9 35 L9 55 M81 35 L81 55\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M17 24 L17 17 L24 17 M66 17 L73 17 L73 24 M17 66 L17 73 L24 73 M66 73 L73 73 L73 66\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 30,
+   "name": "Kapselquadrat",
+   "kategorie": "Modern & minimal",
+   "datei": "30_kapselquadrat.svg",
+   "schrift": "Manrope",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Abgerundete, exakt geschachtelte Quadrate.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M29 10 L61 10 Q80 10 80 29 L80 61 Q80 80 61 80 L29 80 Q10 80 10 61 L10 29 Q10 10 29 10 Z\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29 18 L61 18 Q72 18 72 29 L72 61 Q72 72 61 72 L29 72 Q18 72 18 61 L18 29 Q18 18 29 18 Z\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M33 6 L57 6 M33 84 L57 84\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 31,
+   "name": "Schwebende Klammern",
+   "kategorie": "Modern & minimal",
+   "datei": "31_schwebende_klammern.svg",
+   "schrift": "Josefin Sans",
+   "hoehen": [
+    20.0,
+    20.0,
+    20.0
+   ],
+   "beschreibung": "Luftige Klammerfragmente mit betontem Kopf und Fuß.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M32 8 L8 8 L8 32 M58 8 L82 8 L82 32 M8 58 L8 82 L32 82 M82 58 L82 82 L58 82\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M28 18 L18 18 L18 28 M62 18 L72 18 L72 28 M18 62 L18 72 L28 72 M72 62 L72 72 L62 72\" fill=\"none\" stroke=\"#A77F66\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M35 12 L45 7 L55 12 M35 78 L45 83 L55 78\" fill=\"none\" stroke=\"#445C6A\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 7,
+   "name": "Wappenschild",
+   "kategorie": "Wappen & Siegel",
+   "datei": "07_wappenschild.svg",
+   "schrift": "Libre Baskerville",
+   "hoehen": [
+    23.0,
+    23.0
+   ],
+   "beschreibung": "Doppelt gerahmtes Wappenschild.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M20 10 L70 10 Q80 16 80 28 L80 52 Q79 72 45 85 Q11 72 10 52 L10 28 Q10 16 20 10 Z\" fill=\"none\" stroke=\"#38675D\" stroke-width=\"3.20\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M23 17 L67 17 Q73 20 73 29 L73 51 Q72 67 45 77 Q18 67 17 51 L17 29 Q17 20 23 17 Z\" fill=\"none\" stroke=\"#BC9465\" stroke-width=\"2.40\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M38 24 L45 29 L52 24\" fill=\"none\" stroke=\"#BC9465\" stroke-width=\"2.30\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n  <path d=\"M39 67 L45 71 L51 67\" fill=\"none\" stroke=\"#BC9465\" stroke-width=\"2.30\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 32,
+   "name": "Königsschild",
+   "kategorie": "Wappen & Siegel",
+   "datei": "32_koenigsschild.svg",
+   "schrift": "Cinzel",
+   "hoehen": [
+    18.0,
+    25.0,
+    18.0
+   ],
+   "beschreibung": "Gekrönter Schild mit kräftiger Außenkante.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M14 24 L76 24 L76 55 Q72 73 45 85 Q18 73 14 55 Z\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"3.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M22 31 L68 31 L68 54 Q65 66 45 76 Q25 66 22 54 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M31.00 18.00 L31.00 11.00 L39.00 16.00 L45.00 6.00 L51.00 16.00 L59.00 11.00 L59.00 18.00 Z\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29 21 L61 21\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 33,
+   "name": "Bannerkartusche",
+   "kategorie": "Wappen & Siegel",
+   "datei": "33_bannerkartusche.svg",
+   "schrift": "Cormorant SC",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Schildkartusche mit zwei flatternden Bannern.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M16 22 Q45 14 74 22 L74 68 Q45 77 16 68 Z\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M22 30 Q45 24 68 30 L68 61 Q45 68 22 61 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M12 10 L31 15 L45 11 L59 15 L78 10 L74 22 Q45 16 16 22 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M12 80 L31 75 L45 79 L59 75 L78 80 L74 68 Q45 74 16 68 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 34,
+   "name": "Turnierwappen",
+   "kategorie": "Wappen & Siegel",
+   "datei": "34_turnierwappen.svg",
+   "schrift": "Marcellus SC",
+   "hoehen": [
+    18.0,
+    24.0,
+    18.0
+   ],
+   "beschreibung": "Turnierschild mit kantigem Oberteil und Spitze.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M20 11 L70 11 L80 26 L80 53 Q78 71 45 85 Q12 71 10 53 L10 26 Z\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"3.15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M24 19 L66 19 L72 29 L72 51 Q70 64 45 76 Q20 64 18 51 L18 29 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M30 8 L36 5 L45 10 L54 5 L60 8\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M29 81 L45 87 L61 81\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 35,
+   "name": "Sternsiegel",
+   "kategorie": "Wappen & Siegel",
+   "datei": "35_sternsiegel.svg",
+   "schrift": "Prata",
+   "hoehen": [
+    24.0,
+    24.0
+   ],
+   "beschreibung": "Siegel mit vier kleinen rhombischen Sternen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45.00 5.00 L77.00 15.00 L85.00 45.00 L77.00 75.00 L45.00 85.00 L13.00 75.00 L5.00 45.00 L13.00 15.00 Z\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"3.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 15.00 L70.00 23.00 L76.00 45.00 L70.00 67.00 L45.00 75.00 L20.00 67.00 L14.00 45.00 L20.00 23.00 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 5.00 L49.00 9.00 L45.00 13.00 L41.00 9.00 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 77.00 L49.00 81.00 L45.00 85.00 L41.00 81.00 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M9.00 41.00 L13.00 45.00 L9.00 49.00 L5.00 45.00 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M81.00 41.00 L85.00 45.00 L81.00 49.00 L77.00 45.00 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 36,
+   "name": "Akademisches Emblem",
+   "kategorie": "Wappen & Siegel",
+   "datei": "36_akademisches_emblem.svg",
+   "schrift": "Alegreya SC",
+   "hoehen": [
+    18.0,
+    24.0,
+    18.0
+   ],
+   "beschreibung": "Klassisches Akademiewappen mit gestaffeltem Haupt.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M21 11 L69 11 Q78 17 78 29 L78 58 Q74 73 45 84 Q16 73 12 58 L12 29 Q12 17 21 11 Z\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M25 19 L65 19 Q70 22 70 30 L70 56 Q67 66 45 75 Q23 66 20 56 L20 30 Q20 22 25 19 Z\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M28 8 L62 8\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M33 4 L57 4\" fill=\"none\" stroke=\"#3D6159\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M26 80 L45 87 L64 80\" fill=\"none\" stroke=\"#B59A70\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 37,
+   "name": "Muschelkranz",
+   "kategorie": "Maritim & Küste",
+   "datei": "37_muschelkranz.svg",
+   "schrift": "Cormorant Garamond",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Muschelartige Bögen an Ober- und Unterkante.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M83.00 45.00 A38.00 38.00 0 1 1 7.00 45.00 A38.00 38.00 0 1 1 83.00 45.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M74.50 45.00 A29.50 29.50 0 1 1 15.50 45.00 A29.50 29.50 0 1 1 74.50 45.00 Z\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M13 12 Q18 2 23 12\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M13 78 Q18 88 23 78\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M26 12 Q31 2 36 12\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M26 78 Q31 88 36 78\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M40 12 Q45 2 50 12\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M40 78 Q45 88 50 78\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M54 12 Q59 2 64 12\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M54 78 Q59 88 64 78\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M67 12 Q72 2 77 12\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M67 78 Q72 88 77 78\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 38,
+   "name": "Wellenoval",
+   "kategorie": "Maritim & Küste",
+   "datei": "38_wellenoval.svg",
+   "schrift": "Marcellus",
+   "hoehen": [
+    17.0,
+    24.0,
+    17.0
+   ],
+   "beschreibung": "Wellenbänder oben und unten zwischen zwei Stegen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M14 23 Q7 45 14 67 M76 23 Q83 45 76 67\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M20 19 Q45 5 70 19 M20 71 Q45 85 70 71\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M19 25 Q30 17 41 25 Q52 33 63 25 Q69 22 71 24\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M19 65 Q30 57 41 65 Q52 73 63 65 Q69 62 71 64\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M10 35 Q16 41 10 47 M80 35 Q74 41 80 47\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 39,
+   "name": "Kompassrose",
+   "kategorie": "Maritim & Küste",
+   "datei": "39_kompassrose.svg",
+   "schrift": "Cinzel",
+   "hoehen": [
+    25.0,
+    25.0
+   ],
+   "beschreibung": "Vier Windrichtungen um einen freien Innenring.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M77.00 45.00 A32.00 32.00 0 1 1 13.00 45.00 A32.00 32.00 0 1 1 77.00 45.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M71.00 45.00 A26.00 26.00 0 1 1 19.00 45.00 A26.00 26.00 0 1 1 71.00 45.00 Z\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 3.00 L49.00 14.00 L45.00 19.00 L41.00 14.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 87.00 L49.00 76.00 L45.00 71.00 L41.00 76.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M3.00 45.00 L14.00 41.00 L19.00 45.00 L14.00 49.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M87.00 45.00 L76.00 41.00 L71.00 45.00 L76.00 49.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M27 14 L36 8 M54 8 L63 14 M27 76 L36 82 M54 82 L63 76\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 40,
+   "name": "Ankerbogen",
+   "kategorie": "Maritim & Küste",
+   "datei": "40_ankerbogen.svg",
+   "schrift": "Libre Baskerville",
+   "hoehen": [
+    17.0,
+    24.0,
+    17.0
+   ],
+   "beschreibung": "Bogen mit reduziertem Ankersymbol im oberen Bereich.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M15 80 L15 28 Q15 16 33 11 M75 80 L75 28 Q75 16 57 11\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M22 73 L22 32 Q22 22 33 19 M68 73 L68 32 Q68 22 57 19\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45 5 L45 22 M39 11 Q45 3 51 11 M35 17 Q45 25 55 17\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.60\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M11 72 Q45 86 79 72\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.80\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 41,
+   "name": "Seilmedaillon",
+   "kategorie": "Maritim & Küste",
+   "datei": "41_seilmedaillon.svg",
+   "schrift": "Forum",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Doppelring mit grob geflochtenen Seilbögen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M84.00 45.00 A39.00 39.00 0 1 1 6.00 45.00 A39.00 39.00 0 1 1 84.00 45.00 Z\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M75.00 45.00 A30.00 30.00 0 1 1 15.00 45.00 A30.00 30.00 0 1 1 75.00 45.00 Z\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.40\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M40 8 Q45 3 50 8\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M40 82 Q45 87 50 82\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M8 40 Q13 45 8 50\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M82 40 Q77 45 82 50\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M13 18 Q18 13 23 18\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M67 18 Q72 13 77 18\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M13 72 Q18 77 23 72\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M67 72 Q72 77 77 72\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 42,
+   "name": "Küstenwind",
+   "kategorie": "Maritim & Küste",
+   "datei": "42_kuestenwind.svg",
+   "schrift": "Jost",
+   "hoehen": [
+    18.0,
+    23.0,
+    18.0
+   ],
+   "beschreibung": "Luftige seitliche Windschwünge mit gekrümmter Krone.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M16 12 Q8 20 14 29 Q20 38 14 47 Q8 56 14 65 Q20 74 16 82\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M74 12 Q82 20 76 29 Q70 38 76 47 Q82 56 76 65 Q70 74 74 82\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M30 12 Q45 6 60 12\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.70\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M30 78 Q45 84 60 78\" fill=\"none\" stroke=\"#8AB3BC\" stroke-width=\"2.70\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M24 19 Q31 13 38 19 M52 19 Q59 13 66 19\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M24 71 Q31 77 38 71 M52 71 Q59 77 66 71\" fill=\"none\" stroke=\"#36677B\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 43,
+   "name": "Sternenkranz",
+   "kategorie": "Festlich & ornamental",
+   "datei": "43_sternenkranz.svg",
+   "schrift": "Cinzel Decorative",
+   "hoehen": [
+    16.0,
+    26.0,
+    16.0
+   ],
+   "beschreibung": "Acht große Rautensterne entlang des Rundrahmens.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M82.00 45.00 A37.00 37.00 0 1 1 8.00 45.00 A37.00 37.00 0 1 1 82.00 45.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M73.50 45.00 A28.50 28.50 0 1 1 16.50 45.00 A28.50 28.50 0 1 1 73.50 45.00 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M78.00 41.60 L81.40 45.00 L78.00 48.40 L74.60 45.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M68.33 64.93 L71.73 68.33 L68.33 71.73 L64.93 68.33 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 74.60 L48.40 78.00 L45.00 81.40 L41.60 78.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M21.67 64.93 L25.07 68.33 L21.67 71.73 L18.27 68.33 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M12.00 41.60 L15.40 45.00 L12.00 48.40 L8.60 45.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M21.67 18.27 L25.07 21.67 L21.67 25.07 L18.27 21.67 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M45.00 8.60 L48.40 12.00 L45.00 15.40 L41.60 12.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M68.33 18.27 L71.73 21.67 L68.33 25.07 L64.93 21.67 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 44,
+   "name": "Winterkranz",
+   "kategorie": "Festlich & ornamental",
+   "datei": "44_winterkranz.svg",
+   "schrift": "Cormorant SC",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Stilisierte Tannenzweige an der oberen und unteren Krone.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M13 43 Q12 17 45 8 Q78 17 77 43 M13 47 Q12 73 45 82 Q78 73 77 47\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"3.10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M25 16 L21 25 L29 25 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 11 L30 20 L38 20 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M56 11 L52 20 L60 20 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M65 16 L61 25 L69 25 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M25 74 L21 65 L29 65 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 79 L30 70 L38 70 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M56 79 L52 70 L60 70 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M65 74 L61 65 L69 65 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M10 31 L19 27 M71 27 L80 31\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M10 59 L19 63 M71 63 L80 59\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 45,
+   "name": "Festliche Sternecken",
+   "kategorie": "Festlich & ornamental",
+   "datei": "45_festliche_sternecken.svg",
+   "schrift": "Fraunces",
+   "hoehen": [
+    18.0,
+    25.0,
+    18.0
+   ],
+   "beschreibung": "Vier Sternenfunken innerhalb offener Eckfelder.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M7 33 L7 17 Q7 7 17 7 L33 7 M57 7 L73 7 Q83 7 83 17 L83 33 M83 57 L83 73 Q83 83 73 83 L57 83 M33 83 L17 83 Q7 83 7 73 L7 57\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"3.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 12 L18 24 M12 18 L24 18\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 12 L72 24 M78 18 L66 18\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M18 78 L18 66 M12 72 L24 72\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M72 78 L72 66 M78 72 L66 72\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M36 10 L54 10 M36 80 L54 80\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 46,
+   "name": "Glockenbogen",
+   "kategorie": "Festlich & ornamental",
+   "datei": "46_glockenbogen.svg",
+   "schrift": "Prata",
+   "hoehen": [
+    26.0,
+    26.0
+   ],
+   "beschreibung": "Doppeltes Festtagsglöckchen auf Rundbogen.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M14 29 Q18 14 34 10 M76 29 Q72 14 56 10\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M14 61 Q18 76 34 80 M76 61 Q72 76 56 80\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M14 29 Q7 45 14 61 M76 29 Q83 45 76 61\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.70\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M33 9 Q45 2 57 9\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M33 81 Q45 88 57 81\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.50\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M34 11 Q34 21 40 23 Q46 19 40 11 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M50 11 Q44 19 50 23 Q56 21 56 11 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M35 78 Q45 71 55 78\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  },
+  {
+   "nr": 47,
+   "name": "Konfetti-Mandala",
+   "kategorie": "Festlich & ornamental",
+   "datei": "47_konfetti_mandala.svg",
+   "schrift": "Marcellus",
+   "hoehen": [
+    17.0,
+    25.0,
+    17.0
+   ],
+   "beschreibung": "Mandalaartiger Doppelring mit Rauten und Punkten.",
+   "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"90mm\" height=\"90mm\" viewBox=\"0 0 90 90\">\n  <path d=\"M45 5 C68 5 85 22 85 45 C85 68 68 85 45 85 C22 85 5 68 5 45 C5 22 22 5 45 5 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"3.00\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M75.00 45.00 A30.00 30.00 0 1 1 15.00 45.00 A30.00 30.00 0 1 1 75.00 45.00 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M80.00 41.00 L84.00 45.00 L80.00 49.00 L76.00 45.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M62.50 71.31 L66.50 75.31 L62.50 79.31 L58.50 75.31 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M27.50 71.31 L31.50 75.31 L27.50 79.31 L23.50 75.31 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M10.00 41.00 L14.00 45.00 L10.00 49.00 L6.00 45.00 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M27.50 10.69 L31.50 14.69 L27.50 18.69 L23.50 14.69 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M62.50 10.69 L66.50 14.69 L62.50 18.69 L58.50 14.69 Z\" fill=\"none\" stroke=\"#5E527C\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M77.81 62.50 A2.50 2.50 0 1 1 72.81 62.50 A2.50 2.50 0 1 1 77.81 62.50 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M47.50 80.00 A2.50 2.50 0 1 1 42.50 80.00 A2.50 2.50 0 1 1 47.50 80.00 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M17.19 62.50 A2.50 2.50 0 1 1 12.19 62.50 A2.50 2.50 0 1 1 17.19 62.50 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M17.19 27.50 A2.50 2.50 0 1 1 12.19 27.50 A2.50 2.50 0 1 1 17.19 27.50 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M47.50 10.00 A2.50 2.50 0 1 1 42.50 10.00 A2.50 2.50 0 1 1 47.50 10.00 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M77.81 27.50 A2.50 2.50 0 1 1 72.81 27.50 A2.50 2.50 0 1 1 77.81 27.50 Z\" fill=\"none\" stroke=\"#C19A64\" stroke-width=\"2.20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+  }
+ ]
+}

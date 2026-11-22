@@ -22,6 +22,7 @@
 //!    kürzestem Weg.
 
 pub mod easystitch;
+pub mod monogramm;
 pub mod svg;
 
 use image::{Rgba, RgbaImage};

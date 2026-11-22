@@ -1,0 +1,48 @@
+﻿Nr.;Kategorie;Motiv;Dateiname;Google Font (exakter Name);Buchstaben;Buchstabenhoehen_mm (links/mitte/rechts);Mittlerer Buchstabe groesser;Beschreibung
+1;Klassisch & elegant;Doppeloval;01_doppeloval.svg;Cormorant Garamond;3;17 / 27 / 17;Ja;Klassische doppelte Ovalfassung.
+8;Klassisch & elegant;Perlenmedaillon;08_perlenmedaillon.svg;Prata;2;26 / 26;Nein;Runder Medaillonrahmen mit umlaufenden Perlen.
+9;Klassisch & elegant;Hochoval;09_hochoval.svg;Bodoni Moda;3;16 / 26 / 16;Ja;Schlankes Hochoval mit Krönung und Fuß.
+10;Klassisch & elegant;Antikes Rundsiegel;10_antikes_rundsiegel.svg;Gilda Display;2;25 / 25;Nein;Rundes Siegel mit seitlichen S-Schwüngen.
+11;Klassisch & elegant;Viktorianische Kartusche;11_viktorianische_kartusche.svg;EB Garamond;3;17 / 25 / 17;Ja;Eckgeschwungener rechteckiger Prunkrahmen.
+12;Klassisch & elegant;Achtkant-Siegel;12_achtkant_siegel.svg;Libre Baskerville;2;24 / 24;Nein;Achteckiges Schausiegel mit vier Rauten.
+2;Geometrisch & Art Déco;Art-déco-Achteck;02_art_deco_achteck.svg;Cinzel;3;18 / 26 / 18;Ja;Geometrische Achteckfassung.
+13;Geometrisch & Art Déco;Strahlenachteck;13_strahlenachteck.svg;Cinzel;3;17 / 25 / 17;Ja;Achteck mit symmetrischem Strahlenfächer.
+14;Geometrisch & Art Déco;Stufenraute;14_stufenraute.svg;Poiret One;2;25 / 25;Nein;Gestufte Raute mit geometrischer Doppelkontur.
+15;Geometrisch & Art Déco;Portalbogen;15_portalbogen.svg;Marcellus SC;3;18 / 24 / 18;Ja;Architektonischer Bogen mit seitlichen Stufen.
+16;Geometrisch & Art Déco;Hexagon-Portal;16_hexagon_portal.svg;Josefin Sans;2;25 / 25;Nein;Polygonales Portal mit verbundenen Ecklinien.
+17;Geometrisch & Art Déco;Diamantspiegel;17_diamantspiegel.svg;Italiana;3;16 / 26 / 16;Ja;Spitzovale Spiegelkontur mit Seitenstreben.
+3;Botanisch & natürlich;Lorbeerzweige;03_lorbeerzweige.svg;Marcellus;2;27 / 27;Nein;Seitlicher symmetrischer Lorbeer.
+18;Botanisch & natürlich;Olivenzweige;18_olivenzweige.svg;Marcellus;2;26 / 26;Nein;Gebogene Olivenzweige mit ovalen Blättern.
+19;Botanisch & natürlich;Farnfächer;19_farnfaecher.svg;Cormorant Garamond;3;16 / 25 / 16;Ja;Fächerartige Farnblätter längs der Seiten.
+20;Botanisch & natürlich;Eukalyptusoval;20_eukalyptusoval.svg;Spectral;2;26 / 26;Nein;Runde Blattmedaillons an zwei dünnen Stielen.
+21;Botanisch & natürlich;Weizenähren;21_weizenaehren.svg;Lora;3;17 / 26 / 17;Ja;Bündel aus stilisierten Getreideähren.
+22;Botanisch & natürlich;Blätterkrone;22_blaetterkrone.svg;Fraunces;2;25 / 25;Nein;Blattbogen als Krone über und unter den Initialen.
+4;Romantisch & floral;Blütenrosette;04_bluetenrosette.svg;Fraunces;2;25 / 25;Nein;Zwölfbogige Rosette mit Innenring.
+5;Romantisch & floral;Schleifenrahmen;05_schleifenrahmen.svg;Playfair Display;3;16 / 23 / 16;Ja;Abgerundete Kartusche mit Schleife.
+23;Romantisch & floral;Tulpenbogen;23_tulpenbogen.svg;Playfair Display;3;16 / 25 / 16;Ja;Tulpenblüte oben auf einem feinen Rankenbogen.
+24;Romantisch & floral;Herzmedaillon;24_herzmedaillon.svg;DM Serif Display;2;25 / 25;Nein;Doppelte Herzsilhouette mit schmaler Liebesraute.
+25;Romantisch & floral;Spitzensiegel;25_spitzensiegel.svg;Bodoni Moda;3;17 / 24 / 17;Ja;Rundrahmen mit acht großen Spitzenbögen.
+26;Romantisch & floral;Blütenkette;26_bluetenkette.svg;Yeseva One;2;26 / 26;Nein;Anmutige Ovalkartusche mit Blütenperlen an der Krone.
+6;Modern & minimal;Moderne Ecken;06_moderne_ecken.svg;DM Sans;3;21 / 21 / 21;Nein;Offene geometrische Eckklammern.
+27;Modern & minimal;Versatzquadrat;27_versatzquadrat.svg;Montserrat;3;20 / 20 / 20;Nein;Zwei offene Quadrate mit kontrolliertem Versatz.
+28;Modern & minimal;Kreissegmente;28_kreissegmente.svg;Jost;2;28 / 28;Nein;Vier voneinander abgesetzte Kreisbogensegmente.
+29;Modern & minimal;Swiss Grid;29_swiss_grid.svg;Outfit;3;20 / 20 / 20;Nein;Rasterartige Ecken mit typografischer Klarheit.
+30;Modern & minimal;Kapselquadrat;30_kapselquadrat.svg;Manrope;2;26 / 26;Nein;Abgerundete, exakt geschachtelte Quadrate.
+31;Modern & minimal;Schwebende Klammern;31_schwebende_klammern.svg;Josefin Sans;3;20 / 20 / 20;Nein;Luftige Klammerfragmente mit betontem Kopf und Fuß.
+7;Wappen & Siegel;Wappenschild;07_wappenschild.svg;Libre Baskerville;2;23 / 23;Nein;Doppelt gerahmtes Wappenschild.
+32;Wappen & Siegel;Königsschild;32_koenigsschild.svg;Cinzel;3;18 / 25 / 18;Ja;Gekrönter Schild mit kräftiger Außenkante.
+33;Wappen & Siegel;Bannerkartusche;33_bannerkartusche.svg;Cormorant SC;2;26 / 26;Nein;Schildkartusche mit zwei flatternden Bannern.
+34;Wappen & Siegel;Turnierwappen;34_turnierwappen.svg;Marcellus SC;3;18 / 24 / 18;Ja;Turnierschild mit kantigem Oberteil und Spitze.
+35;Wappen & Siegel;Sternsiegel;35_sternsiegel.svg;Prata;2;24 / 24;Nein;Siegel mit vier kleinen rhombischen Sternen.
+36;Wappen & Siegel;Akademisches Emblem;36_akademisches_emblem.svg;Alegreya SC;3;18 / 24 / 18;Ja;Klassisches Akademiewappen mit gestaffeltem Haupt.
+37;Maritim & Küste;Muschelkranz;37_muschelkranz.svg;Cormorant Garamond;2;26 / 26;Nein;Muschelartige Bögen an Ober- und Unterkante.
+38;Maritim & Küste;Wellenoval;38_wellenoval.svg;Marcellus;3;17 / 24 / 17;Ja;Wellenbänder oben und unten zwischen zwei Stegen.
+39;Maritim & Küste;Kompassrose;39_kompassrose.svg;Cinzel;2;25 / 25;Nein;Vier Windrichtungen um einen freien Innenring.
+40;Maritim & Küste;Ankerbogen;40_ankerbogen.svg;Libre Baskerville;3;17 / 24 / 17;Ja;Bogen mit reduziertem Ankersymbol im oberen Bereich.
+41;Maritim & Küste;Seilmedaillon;41_seilmedaillon.svg;Forum;2;26 / 26;Nein;Doppelring mit grob geflochtenen Seilbögen.
+42;Maritim & Küste;Küstenwind;42_kuestenwind.svg;Jost;3;18 / 23 / 18;Ja;Luftige seitliche Windschwünge mit gekrümmter Krone.
+43;Festlich & ornamental;Sternenkranz;43_sternenkranz.svg;Cinzel Decorative;3;16 / 26 / 16;Ja;Acht große Rautensterne entlang des Rundrahmens.
+44;Festlich & ornamental;Winterkranz;44_winterkranz.svg;Cormorant SC;2;26 / 26;Nein;Stilisierte Tannenzweige an der oberen und unteren Krone.
+45;Festlich & ornamental;Festliche Sternecken;45_festliche_sternecken.svg;Fraunces;3;18 / 25 / 18;Ja;Vier Sternenfunken innerhalb offener Eckfelder.
+46;Festlich & ornamental;Glockenbogen;46_glockenbogen.svg;Prata;2;26 / 26;Nein;Doppeltes Festtagsglöckchen auf Rundbogen.
+47;Festlich & ornamental;Konfetti-Mandala;47_konfetti_mandala.svg;Marcellus;3;17 / 25 / 17;Ja;Mandalaartiger Doppelring mit Rauten und Punkten.

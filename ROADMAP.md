@@ -57,7 +57,8 @@ dort seit 21.11. in `~/.cargo`, `CARGO_TARGET_DIR=kern/target`); Bildschirmfotos
 erprobt** – Vor Ort **V10** ✅ 21.11. (gesendet und gestickt, Bericht Nutzer). Offene Kern-Schritte der Oberfläche:
 W12 (Phase 5); **W5-Rest ✅ 21.11.** (Befehl `in_knoten_umwandeln`, Knoten mit Bézier-Anfassern), **W9 ✅ 21.11.**
 (Buchstabe je Stich, einzelne Buchstaben per Klick). **Schriftauswahl mit Google Fonts und „stickbar ab“ ✅ 21.11.**
-(Phase 5, `Analyse_Teil3/21`) mit Stil-Einordnung aller Schriften und eigenen Stilen. **Unterlage für alle Schriften
+(Phase 5, `Analyse_Teil3/21`) mit Stil-Einordnung aller Schriften und eigenen Stilen. **Monogramm-Rahmen aus dem
+Katalog ✅ 21.11.** (47 Rahmen, Dialog „Rahmen wählen“, Phase 5). **Unterlage für alle Schriften
 ✅ 21.11.** (Computer-Schriften mit Auto-Unterlage wie das Original; neue Texte Mittellauf + Zickzack vorgewählt,
 Häkchen „Stabilisieren“ bzw. Mittellauf/Zickzack – Bericht 10 §3); Gerätetest dazu offen.
 Merkliste M1: Aufteilung des Parameterkatalogs nach einfach/experte **vom Nutzer bestätigt (21.11.)**.
@@ -320,6 +321,21 @@ einfacher Modus Häkchen, Experte Stichart/Garn/Versatz/Breite ✅. **Dicke Umra
 ✅. Satinkante als Band in Satinsäulen (wie Satin automatisch), Schrift unter 17 mm → kräftige Linie ✅ (Fehler bei
 8 mm hoher Drifter-Schrift, Nutzer 21.11.2026). **Offen:** Versatz am Gerät prüfen (Vor Ort V12); Dichte, wo sich die
 Kanten benachbarter Buchstaben überlappen.
+
+**Monogramm-Rahmen aus dem Katalog (21.11.2026, Wunsch Nutzer „ähnlich wie die Schriften“) ✅:** Das Original hat nur
+Diamond2/3 mit Raute/Zierwinkel (Handbuch Kap. 21). Der Nutzer hat 47 Rahmen in 8 Kategorien mit ChatGPT entworfen (SVG
++ Schriftvorschlag aus Google Fonts + Versalhöhen; `Arbeitsdaten/monogramm_rahmen/`, Katalog
+`kern/stick-vektor/daten/monogramm_rahmen.json` aus `Arbeitsdaten/werkzeuge/monogramm_rahmen_katalog.py`). Kern:
+`stick-vektor::monogramm` (SVG → Stickobjekte wie „SVG einlesen“), `stick-kern::monogramm` (Initialen in die Mitte des
+Rahmeninneren, verkleinern bis 2 mm Abstand – eigene Festlegung; Stickfolge Initialen → Rahmen, je Farbe kürzester
+Weg), Felder `vorlage`, `schrift`/`alphabet`, `rahmen_groesse`, `rahmen_farben` am `monogramm`, Befehl
+`monogramm_rahmen`. Oberfläche: Dialog **„Rahmen wählen“** (`RahmenDialog.svelte`, Kategorien + Suche + Kacheln),
+Monogramm im einfachen Modus mit Rahmen, Schrift (Warnung „stickbar ab“), Größe, Garn je Rahmenfarbe; Inspektor.
+**Nebenbei behoben:** variable Google Fonts wurden in der dünnsten Stärke gelesen (Montserrat „Thin“, stickbar ab 32
+statt 10 mm) – jetzt Standard „Regular“ (Achse `wght` 400), dazu Einträge „… Bold“. **Befund:** Viele vorgeschlagene
+Serifenschriften (Cormorant, Bodoni Moda, Playfair, Italiana) haben Haarstriche und sind erst ab 26–69 mm Versalhöhe
+stickbar; die Vorlagen sehen 16–27 mm vor → Warnung im Programm, kräftigere Schrift wählen. **Offen (Vor Ort):** ein
+Monogramm mit Rahmen sticken (Satinkanten 2–4 mm, Perlen als kräftige Linie).
 
 **Offen nach E6 (Kern-Schritte):** ~~W9~~ ✅ 21.11. · ~~W5-Rest~~ ✅ 21.11. (`stick-kern::umwandeln`) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.

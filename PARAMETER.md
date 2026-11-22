@@ -1,6 +1,6 @@
 # Parameterkatalog
 
-Stand 21.11.2026 · **181 Parameter**: 49 einfach, 83 experte, 49 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
+Stand 21.11.2026 · **189 Parameter**: 54 einfach, 83 experte, 52 automatisch. Erzeugt mit `stick parameter --markdown` aus `kern/stick-kern/daten/parameter.json` (Quelle: `Arbeitsdaten/werkzeuge/parameter_katalog.py`) – **nicht von Hand ändern**. Die Tests im Kern prüfen, dass jeder Wert unter `einstellungen` hier steht und die Standards stimmen.
 
 **Modus:** *einfach* = im einfachen Modus sichtbar · *experte* = nur im Expertenmodus · *automatisch* = nicht anzeigen (fester oder abgeleiteter Wert, nur dokumentiert).  
 **Ebene:** *design* = gilt für das ganze Design · *objekt* = am einzelnen Objekt · *beide* = Design-Standard, am Objekt überschreibbar · *werkzeug* = Bild → Umrisse.  
@@ -236,6 +236,14 @@ Stand 21.11.2026 · **181 Parameter**: 49 einfach, 83 experte, 49 automatisch. E
 | **Initialen** | 2 oder 3 Buchstaben | monogramm | Objekt: `initialen` | – |  |  | objekt | einfach | Diamond2/Diamond3 (Analyse_Teil3/09 §7) |
 | **Monogramm-Rahmen** | Raute, Zier oder keiner | monogramm | Objekt: `rahmen` | keine | raute, zier, keine |  | objekt | einfach | Analyse_Teil3/09 §7 |
 | **Rahmenfarbe** |  | monogramm | Objekt: `rahmen_farbe` | – |  |  | objekt | einfach | Farbwechsel ^ |
+| **Rahmen aus dem Katalog** | einer der 47 Rahmen (Befehl monogramm_rahmen); mit Vorlage 1–3 Zeichen, Schrift der Vorlage, Initialen automatisch eingepasst | monogramm | Objekt: `vorlage` | – |  |  | objekt | einfach | eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026) |
+| **Schrift der Initialen** | Computer-Schrift (TTF/OTF, Google Fonts); ohne Angabe der Schriftvorschlag der Vorlage | monogramm | Objekt: `schrift` | – |  |  | objekt | einfach | eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026) |
+| **Stick-Alphabet der Initialen** | statt der Computer-Schrift ein Original-Alphabet | monogramm | Objekt: `alphabet` | – |  |  | objekt | einfach | eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026) |
+| **Größe des Rahmens** | längere Seite in mm; die Initialen wachsen mit; ohne Angabe wie gezeichnet | monogramm | Objekt: `rahmen_groesse` | – | 10 … 200 |  | objekt | einfach | eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026); Rahmen gezeichnet 70–88 mm |
+| **Garne des Rahmens** | je Farbe der Vorlage (1–3) ein Garn; leer = Farben der Vorlage | monogramm | Objekt: `rahmen_farben` | [] Farbliste |  |  | objekt | einfach | eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026) |
+| **Lücke zwischen den Initialen** | Anteil der größten Versalhöhe | monogramm |  | 8 % |  |  | objekt | automatisch | eigene Festlegung (monogramm::LUECKE_ANTEIL) |
+| **Abstand Initialen – Rahmen** | die Initialen werden verkleinert, bis sie mit diesem Abstand in den Rahmen passen (höchstens auf 30 %) | monogramm |  | 2 mm |  |  | objekt | automatisch | eigene Festlegung (monogramm::ABSTAND, MIN_ANTEIL) |
+| **Äußere Initialen bei 3 in einem Rahmen für 2** | Höhe der äußeren Initialen im Verhältnis zur mittleren | monogramm |  | 68 % |  |  | objekt | automatisch | eigene Festlegung (monogramm::SEITE_ANTEIL; Verhältnis der Vorlagen mit 3 Initialen) |
 | **Schrift: Auto-Spacing-Faktor** | Schrift 10 % dichter |  |  | 0,9 Faktor |  |  | design | automatisch | Stil „Schrift“ (Analyse/code/10) |
 | **Schrift: Unterlage** | Zickzack, wenn das Alphabet keine eigene hat |  |  | zickzack |  |  | design | automatisch | Stil „Schrift“ |
 | **Schrift: Laufweg** | Stichlänge der Wege im Buchstaben |  |  | 3 mm |  |  | design | automatisch | Lauf 0x271c im Alphabet |

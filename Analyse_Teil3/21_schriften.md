@@ -26,6 +26,10 @@ wo möglich).
   Kodierung 0). Ohne MacRoman hatten 30 Apple-Schriften (Helvetica Neue, Menlo, Apple Chancery …) keinen Namen.
 - Das Verzeichnis wird einmal gelesen und im Kontext gehalten (Mac ~1,5 s); `schriften_liste {neu_einlesen: true}`
   liest neu (z. B. nach dem Installieren einer Schrift).
+- **Variable Schriften (Achse `wght`)** – behoben 21.11.2026: Der Leser nahm die Standardlage der Datei; bei vielen
+  Google Fonts ist das die dünnste Stärke (Montserrat: „Thin“, stickbar ab 32 mm statt 10 mm). Jetzt gilt für den
+  Familiennamen **Regular (wght 400)**; liegt 700 auf der Achse, gibt es zusätzlich „… Bold“ (eigene Einträge, wie
+  ein eigener Schnitt). `finden(familie)` nimmt den Schnitt „Regular“ (Code `stick-formate::ttf`, `STAERKEN`).
 
 ## 3. Google Fonts — eigene Festlegung (Quellen öffentlich)
 - **Katalog** im Programm (`kern/stick-formate/daten/google_fonts.json`, 1 833 Familien, 355 KB), erzeugt mit
@@ -46,7 +50,8 @@ wo möglich).
   Danach ohne Internet nutzbar; im Design steht die Familie als `ttf.schrift`. Lizenzen: SIL OFL, Apache 2.0, Ubuntu
   Font Licence – alle erlauben Gesticktes auch zum Verkauf.
 - **Datenschutz:** An Google/GitHub gehen nur der Name der Schrift und der feste Probetext „Stickerei“ (Vorschau als
-  Web-Schrift vor dem Herunterladen) – nie der Text des Anwenders.
+  Web-Schrift vor dem Herunterladen) – nie der Text des Anwenders. Der Dialog „Rahmen wählen“ (Monogramm) lädt die vorgeschlagene Schrift
+  als Web-Schrift nur mit dem festen Text „ABC“.
 - Fehlt eine Schrift eines Designs auf einem anderen Rechner und steht sie im Katalog, nennt die Fehlermeldung das
   Herunterladen über „Schrift wählen → Google Fonts“.
 

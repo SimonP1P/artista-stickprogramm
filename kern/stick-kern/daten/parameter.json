@@ -4078,6 +4078,161 @@
    "modus": "einfach"
   },
   {
+   "id": "schrift.monogramm.vorlage",
+   "gruppe": "Schrift",
+   "name": "Rahmen aus dem Katalog",
+   "wirkung": "einer der 47 Rahmen (Befehl monogramm_rahmen); mit Vorlage 1–3 Zeichen, Schrift der Vorlage, Initialen automatisch eingepasst",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": "vorlage",
+   "einheit": "Name",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026)",
+   "modus": "einfach"
+  },
+  {
+   "id": "schrift.monogramm.schrift",
+   "gruppe": "Schrift",
+   "name": "Schrift der Initialen",
+   "wirkung": "Computer-Schrift (TTF/OTF, Google Fonts); ohne Angabe der Schriftvorschlag der Vorlage",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": "schrift",
+   "einheit": "Name",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026)",
+   "modus": "einfach"
+  },
+  {
+   "id": "schrift.monogramm.alphabet",
+   "gruppe": "Schrift",
+   "name": "Stick-Alphabet der Initialen",
+   "wirkung": "statt der Computer-Schrift ein Original-Alphabet",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": "alphabet",
+   "einheit": "Name",
+   "standard": null,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026)",
+   "modus": "einfach"
+  },
+  {
+   "id": "schrift.monogramm.rahmen_groesse",
+   "gruppe": "Schrift",
+   "name": "Größe des Rahmens",
+   "wirkung": "längere Seite in mm; die Initialen wachsen mit; ohne Angabe wie gezeichnet",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": "rahmen_groesse",
+   "einheit": "mm",
+   "standard": null,
+   "bereich": [
+    10,
+    200
+   ],
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026); Rahmen gezeichnet 70–88 mm",
+   "modus": "einfach"
+  },
+  {
+   "id": "schrift.monogramm.rahmen_farben",
+   "gruppe": "Schrift",
+   "name": "Garne des Rahmens",
+   "wirkung": "je Farbe der Vorlage (1–3) ein Garn; leer = Farben der Vorlage",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": "rahmen_farben",
+   "einheit": "Farbliste",
+   "standard": [],
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Erweiterung (Katalog Arbeitsdaten/monogramm_rahmen, Entwurf des Nutzers 21.11.2026)",
+   "modus": "einfach"
+  },
+  {
+   "id": "schrift.monogramm.luecke",
+   "gruppe": "Schrift",
+   "name": "Lücke zwischen den Initialen",
+   "wirkung": "Anteil der größten Versalhöhe",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "%",
+   "standard": 8,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Festlegung (monogramm::LUECKE_ANTEIL)",
+   "modus": "automatisch"
+  },
+  {
+   "id": "schrift.monogramm.abstand",
+   "gruppe": "Schrift",
+   "name": "Abstand Initialen – Rahmen",
+   "wirkung": "die Initialen werden verkleinert, bis sie mit diesem Abstand in den Rahmen passen (höchstens auf 30 %)",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "mm",
+   "standard": 2.0,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Festlegung (monogramm::ABSTAND, MIN_ANTEIL)",
+   "modus": "automatisch"
+  },
+  {
+   "id": "schrift.monogramm.seite_anteil",
+   "gruppe": "Schrift",
+   "name": "Äußere Initialen bei 3 in einem Rahmen für 2",
+   "wirkung": "Höhe der äußeren Initialen im Verhältnis zur mittleren",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "monogramm"
+   ],
+   "json_design": null,
+   "json_objekt": null,
+   "einheit": "%",
+   "standard": 68,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "eigene Festlegung (monogramm::SEITE_ANTEIL; Verhältnis der Vorlagen mit 3 Initialen)",
+   "modus": "automatisch"
+  },
+  {
    "id": "schrift.faktor",
    "gruppe": "Schrift",
    "name": "Schrift: Auto-Spacing-Faktor",

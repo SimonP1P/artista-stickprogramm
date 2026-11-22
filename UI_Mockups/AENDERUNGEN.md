@@ -15,6 +15,23 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Monogramm-Rahmen aus dem Katalog (Wunsch Nutzer; Commit NACHTRAGEN)
+- **Neue Felder am `monogramm`:** `vorlage` (Name eines der 47 Rahmen; mit Vorlage gelten 1–3 Zeichen, Groß-/
+  Kleinschreibung bleibt), `schrift` (Computer-Schrift/Google Font der Initialen; ohne Angabe der Vorschlag der
+  Vorlage) bzw. `alphabet` (Stick-Alphabet), `rahmen_groesse` (längere Seite in mm, ohne Angabe wie gezeichnet,
+  70–88 mm), `rahmen_farben` (Garn je Farbe der Vorlage, leer = Farben der Vorlage). Mit `vorlage` gelten `hoehe`,
+  `rahmen`, `rahmen_farbe` und `umrandung` nicht. Ohne `vorlage` alles wie bisher (Diamond2/3).
+- **Neuer Befehl `monogramm_rahmen`:** Kategorien und Rahmen (Name, Nr., Kategorie, Beschreibung, Schrift, Versalhöhen,
+  Zahl der Initialen, Größe, Farben, SVG für die Kachel).
+- **Stiche:** Initialen (Objekt-Buchstaben 1…n), danach die Rahmenteile (Buchstabe 0; Farbe der Initialen zuerst, je
+  Farbe kürzester Weg). Fehlt die Schrift: Fehlermeldung wie bei `ttf`.
+- **Kern, ohne neue Felder:** Variable Schriften werden in „Regular“ (wght 400) gelesen statt in der Standardlage der
+  Datei (oft „Thin“); dazu Einträge „… Bold“ in `schriften_liste`. „stickbar ab“ ändert sich dadurch für viele Google
+  Fonts (Montserrat 32 → 10 mm).
+- **Oberfläche (umgesetzt):** Dialog „Rahmen wählen“ (`RahmenDialog.svelte`), einfacher Modus und Inspektor (Rahmen,
+  Schrift mit „stickbar ab“ und Warnung, Größe, Garn je Rahmenfarbe), Dialog „Schrift wählen“ für die Initialen
+  (`arbeit.monogrammSchrift`), Garn-Dialog mit `rahmen: k`.
+
 ## 21.11.2026 – Umrandung bei kleiner Schrift (Fehler gemeldet vom Nutzer; Commit 70b62e4)
 - **Kern, keine neuen Felder:** Satinkante der Umrandung ist jetzt ein **Band**, das in Satinsäulen zerlegt wird
   (`saeulen::zerlegen` wie `satinflaeche`, Teilung am Knick 87°, Überlappung 0,3 mm) – keine Stichsterne mehr an engen

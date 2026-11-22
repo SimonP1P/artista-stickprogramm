@@ -1,6 +1,6 @@
 //! Kommandozeile zum Rechenkern:
 //!
-//!   stick erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER]  Stiche berechnen -> .exp + .svg
+//!   stick erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] [--schriften ORDNER]  Stiche berechnen -> .exp + .svg
 //!   stick alphabete [ORDNER]                               Original-Alphabete (ESB) auflisten
 //!   stick anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] EXP als SVG darstellen
 //!   stick rahmen | stoffe                                  Rahmen bzw. Stoffe auflisten
@@ -111,12 +111,13 @@ fn schrift_ordner(args: &[String]) -> Vec<PathBuf> {
         .unwrap_or_default()
 }
 
-fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path) -> Result<bool, String> {
+fn erzeugen(design_pfad: &Path, ordner: &Path, alphabete: &Path, schriften: &[PathBuf]) -> Result<bool, String> {
     let text = std::fs::read_to_string(design_pfad).map_err(|e| format!("{}: {e}", design_pfad.display()))?;
     let mut design = Design::aus_json(&text)?;
     esb::design_alphabete_laden(&mut design, alphabete)?;
     motive_laden(&mut design, alphabete)?;
-    ttf::design_schriften_laden(&mut design, &[])?;
+    stick_vektor::monogramm::design_rahmen_laden(&mut design)?;
+    ttf::design_schriften_laden(&mut design, schriften)?;
     let (_, fehlend) = design.objekte_aufgeloest()?;
     if !fehlend.is_empty() {
         println!(
@@ -272,6 +273,7 @@ fn reihenfolge(args: &[String], hilfe: &str) -> Result<bool, String> {
         let mut d = Design::aus_value(&v)?;
         esb::design_alphabete_laden(&mut d, &alphabet_ordner(args))?;
         motive_laden(&mut d, &alphabet_ordner(args))?;
+        stick_vektor::monogramm::design_rahmen_laden(&mut d)?;
         ttf::design_schriften_laden(&mut d, &schrift_ordner(args))?;
         Ok(d)
     })();
@@ -460,6 +462,7 @@ fn sendedaten_laden(eingabe: &Path, args: &[String]) -> Result<Sendedaten, Strin
             let mut design = Design::aus_json(&text)?;
             esb::design_alphabete_laden(&mut design, &alphabet_ordner(args))?;
             motive_laden(&mut design, &alphabet_ordner(args))?;
+            stick_vektor::monogramm::design_rahmen_laden(&mut design)?;
             ttf::design_schriften_laden(&mut design, &schrift_ordner(args))?;
             let f = design.berechnen()?;
             println!("{}", statistik(&f));
@@ -603,12 +606,12 @@ fn puffer_erzeugen(args: &[String], hilfe: &str) -> Result<bool, String> {
 }
 
 fn ausfuehren(args: &[String]) -> Result<bool, String> {
-    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | knopfloecher [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | svg DATEI.svg [--breite MM] [--rahmen NAME] [--ohne-aussparen] [-o DESIGN.json] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
+    let hilfe = "Befehle: erzeugen DESIGN.json [-o ORDNER] [--alphabete ORDNER] [--schriften ORDNER] | anzeigen DATEI.exp [-o DATEI.svg] [--rahmen NAME] | alphabete [ORDNER] | knopfloecher [ORDNER] | rahmen | stoffe | puffer EINGABE [-o PUFFER.bin] [--name NAME] [--ohne-anhang] [--farben-im-anhang] [--garnkarte NAME|keine] | garnkarten | schriften [--schriften ORDNER] | muster | saeulen FORMEN.json [-o AUS.json] [--svg AUS.svg] | reihenfolge DESIGN.json [--nach-farbe [FARBEN] [--ueberdeckung] | --wie-ausgewaehlt NR,… | --an-anfang NR,… | --ans-ende NR,… | --vor NR | --nach NR] [--auswahl NR,…] [-o NEU.json] | parameter [--modus einfach|experte|automatisch] [--markdown] | bild BILD [--breite MM] [--farben N] | svg DATEI.svg [--breite MM] [--rahmen NAME] [--ohne-aussparen] [-o DESIGN.json] | api [liste | exportieren | NAME [JSON|DATEI|-] [-o AUS.json]] | maschine …";
     match args.first().map(String::as_str) {
         Some("erzeugen") => {
             let design = args.get(1).ok_or(hilfe)?;
             let ordner = option(args, "-o").unwrap_or_else(|| ".".into());
-            erzeugen(Path::new(design), Path::new(&ordner), &alphabet_ordner(args))
+            erzeugen(Path::new(design), Path::new(&ordner), &alphabet_ordner(args), &schrift_ordner(args))
         }
         Some("knopfloecher") => {
             let ordner = args
