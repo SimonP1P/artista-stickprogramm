@@ -106,6 +106,7 @@ Formen: Punktliste oder `kreis`, `oval`, `rechteck`, `bogen`, `bezier`, `verbind
 | `rahmen_liste`, `stoffe_liste`, `alphabete_liste`, `garnkarten_liste` | Auswahllisten Schritt 1 (Rahmen, Stoff) und Schrift/Garn; Alphabete mit empfohlener Höhe (Band am Höhenregler) |
 | `alphabet_vorschau` | Bild eines Alphabets im Auswahldialog (Umrisse von „Abc“ oder eigenem Probetext) und Zeichenvorrat |
 | `motive_liste` | Auswahl des Motivsatzes (14 der CD) |
+| `objekt_werte` | Inspektor (Experte): für leere Felder des gewählten Objekts der Wert, mit dem der Kern rechnet, und die Herkunft (`stil` = Stoff/Design/Objekt-Einstellungen, `alphabet`, `muster`, `motivsatz`, `vorlage`, `schrift`) – steht grau im Feld statt „Stil“; Auto Spacing als Spanne („auto 0,40–0,51“) |
 | `monogramm_rahmen` | Dialog „Rahmen wählen“: Kategorien und die 47 Rahmen (Name, Kategorie, Beschreibung, Schriftvorschlag, Versalhöhen, Zahl der Initialen, Größe, Farben, SVG-Zeichnung für die Kachel) |
 | `motivsatz_motive` | Auswahl des Motivs mit Vorschaubild (Linien je Motiv, Länge, Höhe) |
 | `step_muster_liste` | Kacheln der Step-Muster 1–20 (Einstiche einer Probefläche, vom Kern berechnet) |

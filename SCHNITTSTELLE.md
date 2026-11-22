@@ -532,6 +532,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `monogramm_rahmen` | Leer | MonogrammKatalog | Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag |
 | `motive_liste` | Leer | MotivsatzInfo[] | Motivsätze (14 der CD) für die Motivlinie |
 | `motivsatz_motive` | MotivsatzName | MotivInfo[] | Motive eines Motivsatzes mit Maßen und Linien für die Vorschau |
+| `objekt_werte` | ObjektEingabe | WirksamerWert[] | Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet, Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“ |
 | `parameter_katalog` | Leer | Parameter[] | Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch |
 | `rahmen_liste` | Leer | RahmenInfo[] | Stickrahmen der artista 185 mit Stickfeld und Umriss |
 | `reihenfolge_aendern` | ReihenfolgeEingabe | ReihenfolgeErgebnis | Objekte umordnen wie Menü „Arrange“: wie ausgewählt, an Anfang/Ende, vor/nach Nummer, nach Farbe |

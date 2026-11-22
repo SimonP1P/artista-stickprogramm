@@ -2,6 +2,7 @@
   // Eine Zeile des Inspektors nach dem Schema des Kerns (UEBERGABE §2 „Feldzeile“): Beschriftung links (118 px), Wert
   // rechts, Einheit, Hilfe darunter. Leere Eingabe = Feld entfernen (Standard des Stils/Kerns gilt).
   import type { Feld } from "../schema.svelte";
+  import type { WirksamerWert } from "$kern/kern";
   import { lesen, zahl } from "../zahl";
   import { unterlageAusHaken, unterlageHaken } from "../einfuegen";
 
@@ -12,6 +13,8 @@
     beschriftung,
     x = false,
     haken = false,
+    wirksam,
+    geladen = false,
   }: {
     feld: Feld;
     wert: unknown;
@@ -20,7 +23,26 @@
     x?: boolean;
     /** Unterlage als zwei Häkchen Mittellauf/Zickzack (Texte, Monogramme) statt Auswahlliste */
     haken?: boolean;
+    /** Wert, mit dem der Kern bei leerem Feld rechnet (`objekt_werte`) – steht grau im Feld */
+    wirksam?: WirksamerWert;
+    /** wirksame Werte des Objekts sind da: ein Feld ohne Wert gilt dann gerade nicht (z. B. Stichwinkel ohne Muster) */
+    geladen?: boolean;
   } = $props();
+  const HERKUNFT: Record<string, string> = {
+    stil: "Stoff/Stil",
+    alphabet: "Alphabet",
+    muster: "Füllmuster",
+    motivsatz: "Motivsatz",
+    vorlage: "Vorlage des Originals",
+    schrift: "Schrift",
+  };
+  /** Anzeige des wirksamen Werts (Zahl, an/aus oder Text des Kerns) */
+  const wirkText = $derived.by(() => {
+    if (!wirksam) return null;
+    if (wirksam.text) return wirksam.text;
+    const w = wirksam.wert;
+    return typeof w === "number" ? zahl(w, 3) : typeof w === "boolean" ? (w ? "an" : "aus") : w == null ? null : String(w);
+  });
 
   const NAMEN: Record<string, string> = {
     abstand: "Abstand",
@@ -69,7 +91,12 @@
   const VORGABE: Record<string, number> = { wortabstand: 25, zeilenabstand: 60, groesse: 100 };
   /** Erklärung für das „?“: Beschreibung aus dem Schema ohne JSON-Schreibweise */
   const hilfe = $derived(
-    (feld.beschreibung ?? "").replace(/`([^`]*)`/g, "„$1“").replace(/\\n/g, "Zeilenumbruch").trim(),
+    [
+      (feld.beschreibung ?? "").replace(/`([^`]*)`/g, "„$1“").replace(/\\n/g, "Zeilenumbruch").trim(),
+      wirksam && wirkText ? `Leer = ${wirkText} (${HERKUNFT[wirksam.herkunft] ?? wirksam.herkunft}).` : "",
+    ]
+      .filter(Boolean)
+      .join(" "),
   );
   const titel = $derived(beschriftung ?? NAMEN[feld.name] ?? feld.name);
   const id = $derived(`f-${feld.name}`);
@@ -95,10 +122,11 @@
       <input
         {id}
         class="input sm num"
-        style="width:90px"
+        class:wirk={!!wirkText}
+        style="width:{wirkText && wirkText.length > 7 ? 130 : 90}px"
         inputmode="decimal"
         value={typeof wert === "number" ? zahl(wert, 3) : ""}
-        placeholder={typeof feld.standard === "number" ? zahl(feld.standard, 3) : feld.name in VORGABE ? zahl(VORGABE[feld.name], 3) : "Stil"}
+        placeholder={wirkText ?? (typeof feld.standard === "number" ? zahl(feld.standard, 3) : feld.name in VORGABE ? zahl(VORGABE[feld.name], 3) : geladen ? "–" : "Stil")}
         onchange={(e) => {
           const t = (e.currentTarget as HTMLInputElement).value.trim();
           if (t === "") return setzen(undefined);
@@ -113,7 +141,7 @@
           const v = (e.currentTarget as HTMLSelectElement).value;
           setzen(v === "" ? undefined : v === "an");
         }}>
-          <option value="">wie Stil</option><option value="an">an</option><option value="aus">aus</option>
+          <option value="">wie Stil{wirkText ? ` (${wirkText})` : ""}</option><option value="an">an</option><option value="aus">aus</option>
         </select>
       {:else}
         <input {id} type="checkbox" checked={wert === true || (wert === undefined && feld.standard === true)} onchange={(e) => setzen((e.currentTarget as HTMLInputElement).checked)} style="width:16px; height:16px" />
@@ -168,6 +196,11 @@
     vertical-align: 1px;
   }
   .frage:hover {
+    opacity: 1;
+  }
+  /* wirksamer Wert im leeren Feld: deutlich lesbar, aber heller als ein eingetragener Wert */
+  .wirk::placeholder {
+    color: color-mix(in srgb, var(--color-text) 62%, transparent);
     opacity: 1;
   }
   .haken {

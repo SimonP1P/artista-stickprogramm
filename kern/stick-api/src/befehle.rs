@@ -793,6 +793,21 @@ pub fn in_knoten_umwandeln(k: &Kontext, e: ObjektEingabe) -> Result<ObjektWert, 
         })
 }
 
+/// Wirksame Werte eines Objekts (Inspektor, Wunsch Nutzer 21.11.2026): für leere Felder der Wert, mit dem der Kern
+/// tatsächlich rechnet, und woher er kommt (`stick_kern::werte`).
+pub fn objekt_werte(k: &Kontext, e: ObjektEingabe) -> Result<Vec<stick_kern::werte::WirksamerWert>, Fehler> {
+    let eingabe = DesignEingabe {
+        design: e.design,
+        rahmen: None,
+        stoff: None,
+    };
+    let d = k.design(&eingabe)?;
+    stick_kern::werte::objekt_werte(&d, &eingabe.design.0, e.objekt).map_err(|m| Fehler {
+        objekt: Some(e.objekt),
+        ..Fehler::from(m)
+    })
+}
+
 /// Design und Zieldatei.
 #[derive(Debug, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]

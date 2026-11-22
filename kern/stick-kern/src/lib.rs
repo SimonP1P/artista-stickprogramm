@@ -44,6 +44,7 @@ pub mod stickbarkeit;
 pub mod stiche;
 pub mod transformation;
 pub mod umwandeln;
+pub mod werte;
 
 pub use design::Design;
 pub use stiche::{Art, Stich, StichFolge};

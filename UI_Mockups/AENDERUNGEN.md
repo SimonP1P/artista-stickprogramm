@@ -15,6 +15,18 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 21.11.2026 – Wirksame Werte im Inspektor (Wunsch Nutzer; Commit NACHTRAGEN)
+- **Neuer Befehl `objekt_werte`** (`{design, objekt}` → Liste `{feld, wert, text, herkunft}`, `stick_kern::werte`): für
+  leere Felder der Wert, mit dem der Kern rechnet – Stoff → Design → Objekt-Einstellungen (Stichwinkel, Stichlänge,
+  Faktor, Kurzstiche, Unterlage an/aus, Step-Muster; passt der Versatz zu keinem der 20 Muster, z. B. bei den Stoffen
+  0,25/0,75: Text „Versatz …“), Alphabet (Buchstabenabstand = Anteil × Höhe), Füllmuster (Winkel aus dem Namen),
+  Motivsatz (Größe, Abstand), Vorlagen (Blanket, Satinlinie, Applikation, Knopfloch, Wort-/Zeilenabstand). Auto
+  Spacing als Spanne über die Breiten der Säule („auto 0,40–0,51“). Keine neuen Felder.
+- **Oberfläche (umgesetzt):** Inspektor holt die Werte nach jeder Berechnung; leere Felder zeigen sie grau statt
+  „Stil“ („–“, wenn ein Feld gerade nicht gilt), „wie Stil (an)“ bei Auswahl an/aus, Step-Muster „wie Stoff/Stil (Nr. 1)“.
+  X-Marken entfernt, Erklärung als „?“ beim Darüberfahren (mit „Leer = … (Herkunft)“). Vorschau: Knoten lassen sich
+  ziehen (Commit 28cd950), linke Taste verschiebt die Ansicht nicht mehr, Touchpad verschiebt, Mausrad/Pinch zoomt.
+
 ## 21.11.2026 – Monogramm-Rahmen aus dem Katalog (Wunsch Nutzer; Commit 57b5d39)
 - **Neue Felder am `monogramm`:** `vorlage` (Name eines der 47 Rahmen; mit Vorlage gelten 1–3 Zeichen, Groß-/
   Kleinschreibung bleibt), `schrift` (Computer-Schrift/Google Font der Initialen; ohne Angabe der Vorschlag der

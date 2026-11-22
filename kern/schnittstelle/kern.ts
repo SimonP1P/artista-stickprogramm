@@ -2545,6 +2545,24 @@ export type UnterlageWahl = ("auto" | "keine");
 /** Lage einer Linie zur gezeichneten Linie */
 export type Versatz = ("mitte" | "seite");
 
+/** Wert eines Felds, mit dem der Kern rechnet, wenn das Feld leer ist. */
+export type WirksamerWert = {
+  /** Feld des Objekts wie im Design-JSON (z. B. „winkel“, „step_muster“) */
+  feld: string;
+  /**
+   * Herkunft: `stil` (Stoff/Design/Objekt-Einstellungen), `alphabet`, `muster` (Füllmuster), `motivsatz`,
+   * `vorlage` (feste Vorlage des Originals), `schrift` (Computer-Schrift)
+   */
+  herkunft: string;
+  /** Anzeige statt `wert`, z. B. „auto 0,40–0,51“ */
+  text?: string | null;
+  /**
+   * Wert (Zahl in der Einheit des Felds, Wahrheitswert oder Text); fehlt, wenn es nicht **ein** Wert ist (z. B.
+   * Auto Spacing ändert den Abstand mit der Breite) – dann steht die Anzeige in `text`
+   */
+  wert?: unknown;
+};
+
 /** Ein Design (Wurzel von design.schema.json). */
 export type Design = DesignJson;
 
@@ -2608,6 +2626,8 @@ export interface Befehle {
   motive_liste: { eingabe: Leer; ausgabe: MotivsatzInfo[] };
   /** Motive eines Motivsatzes mit Maßen und Linien für die Vorschau */
   motivsatz_motive: { eingabe: MotivsatzName; ausgabe: MotivInfo[] };
+  /** Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet, Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“ */
+  objekt_werte: { eingabe: ObjektEingabe; ausgabe: WirksamerWert[] };
   /** Parameterkatalog: jeder einstellbare Wert mit Standard, Bereich, Quelle, Modus einfach/experte/automatisch */
   parameter_katalog: { eingabe: Leer; ausgabe: Parameter[] };
   /** Stickrahmen der artista 185 mit Stickfeld und Umriss */
@@ -2669,6 +2689,7 @@ export const BEFEHLE = [
   "monogramm_rahmen",
   "motive_liste",
   "motivsatz_motive",
+  "objekt_werte",
   "parameter_katalog",
   "rahmen_liste",
   "reihenfolge_aendern",

@@ -100,6 +100,9 @@ def main():
               "step_muster_liste", "parameter_katalog", "motive_liste"):
         antworten[b] = api(stick, b, {})
     antworten["ueberdeckungen"] = api(stick, "ueberdeckungen", {"design": design})
+    if o.auswahl is not None:
+        # Inspektor: wirksame Werte des gewählten Objekts
+        antworten["objekt_werte"] = api(stick, "objekt_werte", {"design": design, "objekt": o.auswahl})
     sim = {"port": "", "simulation": True}
     antworten["maschine_ports"] = []
     if o.maschine:

@@ -345,6 +345,9 @@ befehle! {
     design_berechnen: befehle::DesignEingabe => befehle::Ergebnis,
     /// Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus
     design_formen: befehle::DesignEingabe => Vec<stick_kern::design::ObjektForm>,
+    /// Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet,
+    /// Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“
+    objekt_werte: befehle::ObjektEingabe => Vec<stick_kern::werte::WirksamerWert>,
     /// Objekt in Knoten umwandeln (Formen → Punkte/Bézier, Transformation angewandt) – für das Knoten-Werkzeug
     in_knoten_umwandeln: befehle::ObjektEingabe => befehle::ObjektWert,
     /// Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes)

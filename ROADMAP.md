@@ -338,9 +338,11 @@ stickbar; die Vorlagen sehen 16–27 mm vor → Warnung im Programm, kräftigere
 Monogramm mit Rahmen sticken (Satinkanten 2–4 mm, Perlen als kräftige Linie).
 
 **Inspektor „Feinheiten“ (21.11.2026, Wunsch Nutzer):** X-Marken entfernt, Erklärung als „?“ beim Darüberfahren,
-deutsche Namen, Vorlagewerte (Wortabstand 25, Zeilenabstand 60, Mustergröße 100) ✅. **Offen (nächster Schritt):**
-Kern-Befehl, der je Objekt die **tatsächlich verwendeten Werte** liefert (Stil → Stoff → Design → Objekt, z. B.
-Stichwinkel 45°, Step-Muster, Buchstabenabstand = Anteil des Alphabets × Höhe), damit statt „Stil“ überall Zahlen stehen.
+deutsche Namen, Vorlagewerte (Wortabstand 25, Zeilenabstand 60, Mustergröße 100) ✅. **Wirksame Werte ✅:** Kern-Befehl
+`objekt_werte` (`stick_kern::werte`) liefert je Objekt die tatsächlich verwendeten Werte (Stoff → Design → Objekt,
+Alphabet, Füllmuster, Motivsatz, Vorlagen; Auto Spacing als Spanne); der Inspektor zeigt sie grau in leeren Feldern.
+**Vorschau-Bedienung (Fehler gemeldet vom Nutzer) ✅:** Knoten ziehen ging nicht (Klick fand den Knoten nicht),
+linke Taste verschob die Ansicht – jetzt nur mittlere Taste/Leertaste/Touchpad, Mausrad und Pinch zoomen um den Zeiger.
 
 **Offen nach E6 (Kern-Schritte):** ~~W9~~ ✅ 21.11. · ~~W5-Rest~~ ✅ 21.11. (`stick-kern::umwandeln`) · W12 Rahmen von der Maschine lesen (Analyse, Gerätetest nur nach Zustimmung) · Neue Oberfläche am Gerät (Vor Ort V10).
 Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Gerätetest nur nach Zustimmung.

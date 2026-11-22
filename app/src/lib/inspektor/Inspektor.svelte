@@ -2,7 +2,7 @@
   // Inspektor (Expertenmodus, UEBERGABE §2/§3): Reiter Objekt · Design · Einzelwerte · JSON. Felder und Auswahlwerte aus
   // dem Schema des Kerns; welche Felder im einfachen Teil stehen, legt die Liste E_FELDER fest (UEBERGABE §3 „E“),
   // alles Weitere erscheint unter „Stichart – Feinheiten“ mit der Marke X.
-  import type { ObjektJson, Transformation, UmrandungJson } from "$kern/kern";
+  import { kern, type DesignJson, type ObjektJson, type Transformation, type UmrandungJson, type WirksamerWert } from "$kern/kern";
   import { arbeit, MIT_FLAECHE, WECHSELBAR } from "../arbeit.svelte";
   import { FUELLUNG, STICHART_NAME, UMRISS } from "../einfuegen";
   import Icon from "../Icon.svelte";
@@ -58,7 +58,7 @@
     o?.art !== "monogramm"
       ? []
       : o.vorlage
-        ? ["hoehe", "rahmen", "rahmen_farbe", "alphabet", "wortabstand", "zeilenabstand"]
+        ? ["hoehe", "rahmen", "rahmen_farbe", "alphabet", "wortabstand", "zeilenabstand", "abstand"]
         : ["vorlage", "schrift", "alphabet", "rahmen_groesse", "rahmen_farben", "wortabstand", "zeilenabstand"],
   );
   const monoVorlage = $derived(o?.art === "monogramm" ? listen.monogrammRahmen(o.vorlage as string | undefined) : undefined);
@@ -80,6 +80,21 @@
 
   const e = $derived(arbeit.ergebnis);
   const garn = $derived(e ? arbeit.garnVon(i) : undefined);
+
+  // Wirksame Werte (Kern `objekt_werte`, Wunsch Nutzer 21.11.2026): leere Felder zeigen den Wert, mit dem gestickt
+  // wird, statt „Stil“ – neu geholt mit jedem neuen Ergebnis der Berechnung
+  let wirksam = $state.raw<Record<string, WirksamerWert>>({});
+  $effect(() => {
+    const nr = i;
+    if (nr < 0 || !e) return void (wirksam = {});
+    const design = $state.snapshot(arbeit.design) as DesignJson;
+    let ab = false;
+    kern("objekt_werte", { design, objekt: nr })
+      .then((l) => !ab && (wirksam = Object.fromEntries(l.map((w) => [w.feld, w]))))
+      .catch(() => !ab && (wirksam = {}));
+    return () => (ab = true);
+  });
+  const stepWirksam = $derived(wirksam.step_muster ? (wirksam.step_muster.text ?? `Nr. ${wirksam.step_muster.wert}`) : "");
 
   function setzen(name: string, v: unknown, gruppe?: string) {
     const nr = i;
@@ -256,7 +271,7 @@
             {:else if f.name === "step_muster"}
               <div class="frow">
                 <span class="fl">Step-Muster</span>
-                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "step", objekt: i })}><span class="t">{o.step_muster == null ? "wie Stoff/Stil" : `Nr. ${o.step_muster}`}</span><Icon d={IC.chevronRechts} /></button></div>
+                <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "step", objekt: i })}><span class="t">{o.step_muster == null ? `wie Stoff/Stil${stepWirksam ? ` (${stepWirksam})` : ""}` : `Nr. ${o.step_muster}`}</span><Icon d={IC.chevronRechts} /></button></div>
                 <div class="fhelp">1 = gleichmäßig</div>
               </div>
             {:else if f.name === "aussparen"}
@@ -272,14 +287,14 @@
                 <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
-              <Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "motivlinie" && f.name === "groesse" ? "Motivgröße" : undefined} haken={SCHRIFT.has(o.art)} setzen={(v) => setzen(f.name, v)} />
+              <Feldzeile feld={f} wert={o[f.name]} beschriftung={o.art === "motivlinie" && f.name === "groesse" ? "Motivgröße" : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
             {/if}
           {/each}
         </Abschnitt>
 
         {#if fein.length}
           <Abschnitt titel="Stichart – Feinheiten" offen={false}>
-            {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} haken={SCHRIFT.has(o.art)} setzen={(v) => setzen(f.name, v)} x />{/each}
+            {#each fein as f (f.name)}<Feldzeile feld={f} wert={o[f.name]} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />{/each}
           </Abschnitt>
         {/if}
 

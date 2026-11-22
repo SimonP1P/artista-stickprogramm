@@ -7064,6 +7064,34 @@
           "type": "string"
         }
       ]
+    },
+    "WirksamerWert": {
+      "description": "Wert eines Felds, mit dem der Kern rechnet, wenn das Feld leer ist.",
+      "properties": {
+        "feld": {
+          "description": "Feld des Objekts wie im Design-JSON (z. B. „winkel“, „step_muster“)",
+          "type": "string"
+        },
+        "herkunft": {
+          "description": "Herkunft: `stil` (Stoff/Design/Objekt-Einstellungen), `alphabet`, `muster` (Füllmuster), `motivsatz`,\n`vorlage` (feste Vorlage des Originals), `schrift` (Computer-Schrift)",
+          "type": "string"
+        },
+        "text": {
+          "description": "Anzeige statt `wert`, z. B. „auto 0,40–0,51“",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "wert": {
+          "description": "Wert (Zahl in der Einheit des Felds, Wahrheitswert oder Text); fehlt, wenn es nicht **ein** Wert ist (z. B.\nAuto Spacing ändert den Abstand mit der Breite) – dann steht die Anzeige in `text`"
+        }
+      },
+      "required": [
+        "feld",
+        "herkunft"
+      ],
+      "type": "object"
     }
   },
   "$id": "https://artista-stickprogramm/befehle.schema.json",
@@ -7354,6 +7382,18 @@
       "beschreibung": "Motive eines Motivsatzes mit Maßen und Linien für die Vorschau",
       "eingabe": {
         "$ref": "#/$defs/MotivsatzName"
+      }
+    },
+    "objekt_werte": {
+      "ausgabe": {
+        "items": {
+          "$ref": "#/$defs/WirksamerWert"
+        },
+        "type": "array"
+      },
+      "beschreibung": "Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet, Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“",
+      "eingabe": {
+        "$ref": "#/$defs/ObjektEingabe"
       }
     },
     "parameter_katalog": {
