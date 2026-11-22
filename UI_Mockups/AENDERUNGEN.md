@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Motivfüllung und eigene Motive (Nachtauftrag N1, 4b.7; Commit …)
+## 22.11.2026 – Motivfüllung und eigene Motive (Nachtauftrag N1, 4b.7; Commit ffb6249)
 - **Neue Objektart `motivfuellung`** (`format.rs` `MotivfuellungJson`, Kern `motiv::motivfuellung_objekte`): Felder
   `umriss`, `loecher`, `satz` (Standard „Children“), `motiv` („901“), `groesse`, `spaltenabstand`, `reihenabstand`,
   `versatz`, `winkel`. Standardwerte aus dem Original-Stil, Abschneide-Regel aus dem Handbuch (Bericht 20 §4).
