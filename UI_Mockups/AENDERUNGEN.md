@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Anordnen: Ausrichten, Mirror-Merge, Kranz/Kaleidoskop (Nachtauftrag N6, 4b.12; Commit COMMIT)
+## 22.11.2026 – Anordnen: Ausrichten, Mirror-Merge, Kranz/Kaleidoskop (Nachtauftrag N6, 4b.12; Commit 76ec4f1)
 - **Neue Befehle** (keine neuen Design-Felder):
   - `ausrichten` `{design, objekte, art}` → `{design}`: Kanten/Mitten an das **zuletzt** gewählte Objekt (Reihenfolge in
     `objekte` = Klickfolge). Gruppen zählen als Ganzes und werden über `gruppen[k].transform.verschieben` bewegt.
