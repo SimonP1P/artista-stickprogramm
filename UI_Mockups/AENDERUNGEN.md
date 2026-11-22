@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 21.11.2026 – Monogramm-Rahmen aus dem Katalog (Wunsch Nutzer; Commit NACHTRAGEN)
+## 21.11.2026 – Monogramm-Rahmen aus dem Katalog (Wunsch Nutzer; Commit 57b5d39)
 - **Neue Felder am `monogramm`:** `vorlage` (Name eines der 47 Rahmen; mit Vorlage gelten 1–3 Zeichen, Groß-/
   Kleinschreibung bleibt), `schrift` (Computer-Schrift/Google Font der Initialen; ohne Angabe der Vorschlag der
   Vorlage) bzw. `alphabet` (Stick-Alphabet), `rahmen_groesse` (längere Seite in mm, ohne Angabe wie gezeichnet,
