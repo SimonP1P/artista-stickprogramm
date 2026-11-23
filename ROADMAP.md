@@ -303,7 +303,7 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 1. 🟡 Schrift: ✅ 20.11.2026 erst alle Unterlagen einer Säulengruppe (rückwärts), dann die Säulen – gemessen an den
    Schrift-Musterdesigns (`Analyse_Teil3/11`), im Kern umgesetzt · ⬜ Reihenfolge, Start und Ende der Säulen wie das
    Original („Closest Join“) – braucht Text/Alphabet der LetterText-Objekte
-2. ⬜ Schrift: Auto Jump aus, Breite des Leerzeichens, Zeilenabstand (aus dem Code)
+2. ✅ Schrift: Auto Jump aus (Stil), Wortabstand 0,25 und Zeilenabstand 0,6 aus der Vorlage (4b.2, 20.11.2026)
 3. ⬜ Kurzstiche bei Tatami-Flächen (niedrige Priorität: Reihenenden an der Kante liegen mindestens einen
    Reihenabstand auseinander, die Schwelle 0,5 × Abstand greift dort kaum – begründet, nicht gemessen); Gruppenbildung
    der Satin-Kurzstiche (MOD1 0x10186ad0) genau übertragen
@@ -312,14 +312,14 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
 5. 🟡 ✅ 20.11.2026 Designende wie „Start und Ende“ (Auto End: Mitte – Sprung zurück zur Rahmenmitte; Designs der
    Maschine: 34 von 51 enden auf 0,0) · ✅ 20.11.2026 Start/Ende des Designs wie „Start and End“ (Musterdesigns: Auto Start/End = Designmitte; `"start"`/`"ende"`,
    `Analyse_Teil3/10` §7) · Ein-/Ausstich **je Objekt** setzt im Original der Anwender (Reshape; „closest join“ nur beim Auto Digitizer),
-   der Kern nimmt den nächsten Einstieg zum vorigen Ende (eigene Festlegung) · ⬜ Reihenfolge der Objekte
+   der Kern nimmt den nächsten Einstieg zum vorigen Ende (eigene Festlegung) · ✅ Reihenfolge der Objekte (4b.5)
 6. 🟡 ✅ 20.11.2026 **Applikation** im Kern (`Analyse_Teil3/12`): Platzierung → Stopp → Heften → Stopp → Abdecken,
    Stopps als „Garne“ der Karte `Applique.tch` (Anweisung im Display); Werte aus „Easy Appliqué“ bzw. Handbuch ·
    ✅ 20.11.2026 Schnittlinie („Trim in Place“) und **Blanket**-Abdeckung (ohne Heftstich), Blanket auch als Kontur-
-   Stichart 0x2727 (`"art": "blanket"`) · ⬜ Teil-Applikation, Versatz innen/außen, `AutoAppliqueValues` ·
+   Stichart 0x2727 (`"art": "blanket"`) · ✅ 22.11. Teil-Applikation, Versatz innen/außen, `AutoAppliqueValues` (N4), Herausfahren (N14) ·
    ✅ 20.11.2026 **Füllmuster (Program Split / Fancy Fill)**: 242 Muster aus der Vorlage
    entschlüsselt (`Analyse_Teil3/13`), Füllung wie im Sampler gemessen (Reihen 0,20 mm, Einstiche auf den Musterlinien),
-   `"art": "muster"`, CLI `stick muster` · ⬜ Motivfüllung/Motivlinien
+   `"art": "muster"`, CLI `stick muster` · ✅ Motivlinie (21.11.) und Motivfüllung (22.11., N1)
 7. ✅ 20.11.2026 Computer-Schriften (TrueType/OpenType, auch .ttc) im Kern: alle installierten Schriften (Windows/Mac),
    Höhe = Großbuchstaben, je Buchstabe **Tatami-Fläche** mit Löchern (eigene Festlegung – Stichart des Originals für
    TrueType nicht belegt) oder Lauf-/Dreifach-Umriss; JSON `"art": "ttf"`, CLI `stick schriften`. Satin entlang der
@@ -332,7 +332,7 @@ Einzelheiten je Regel: `Analyse_Teil3/10_regeln_original.md`.
    Nachbarfarbe zuschlagen statt weglassen), Farben weglassen wie „Omitted Colors“ (Vorschlag nur weißer Hintergrund),
    „Fills: Step/Auto“ (Standard Step – Satin franst bei Fotos aus und rechnet 10× länger), Zugausgleich 0,4 mm und
    Unterlage (Handbuch S. 116), Befehl `bild_vorschau` + Dialog mit Vorschau · ⬜ dünne Linien als Lauf/Satin
-   („Details“), PhotoSnap für Fotos (Original: Satinreihen mit wechselndem Abstand – erst analysieren), Strichbilder
+   („Details“), ✅ PhotoSnap für Fotos (22.11., N5), Strichbilder
 9. ✅ 20.11.2026 Knockout/Aussparen wie „Remove Overlay Stitching“/„Lettering Remove Overlay“: Loch = Fläche des
    oberen Objekts (an den Musterdesigns exakt gemessen), `"aussparen"`/`"ueberlappung"` an Tatami/Muster
    (`Analyse_Teil3/14`, `stick-kern::aussparen`)
@@ -357,15 +357,15 @@ dem Nutzer zur Abstimmung vorlegen.
 | 4b.16 | **Werte je Objekt** | Wie die Objekteigenschaften im Original: Stil-Werte am einzelnen Objekt überschreiben – vor allem Tatami-Abstand, Stichlänge, Mindeststich am Rand, Zugausgleich (Satin/Tatami), Unterlage-Werte, Lauf-Varianten; Grundlage für den Expertenmodus je Objekt. Heute nur Design-weit (`einstellungen`), Ebene im Katalog „design“ → „beide“ (Wunsch Nutzer 20.11.) | ✅ 21.11.: `"einstellungen"` an jedem Objekt, Aufbau wie am Design ohne `stoff` (Stoff → Design → Objekt → Felder direkt am Objekt); gilt für Lauf, Satin, Tatami, Unterlagen **und Verbinder** (Vernähen je Objekt, `wege_verbinden_je_teil`); Beleg: jedes ART-Objekt trägt eine eigene Kopie des Stil-Baums (`Analyse_Teil3/03` §4, hoch); `Design::einstellungen_fuer(nr)`; Katalog: 66 Parameter Ebene „beide“ mit `json_objekt` = `einstellungen.…`; Schema-Typ `EinstellungenJson` |
 | 4b.17 | **SVG-Import** (Erweiterung, Wunsch Nutzer 20.11.: in Inkscape zeichnen → laden → sticken) | SVG lesen (freie Bibliothek `usvg`: Gruppen, Verschiebungen, Stile, Formen → Pfade); gefüllte Pfade → Flächen mit Löchern (Füllregel), Konturen → Lauf/Dreifach/Satinlinie nach Strichbreite; Stichart nach Breite wie EasyStitch des Originals (Linie ≤ 0,3 mm Lauf, ≤ 2 mm kräftige Linie; Fläche ≤ 8 mm Satin, ≤ 12 mm Tatami 1, darüber Tatami 2); Zeichenreihenfolge = Stickreihenfolge, Überdeckungen aussparen, Farben → Garnkarte, Maßstab in mm (viewBox/width). Hinweise: Text in Pfade umwandeln, Verläufe/Transparenz → Hauptfarbe; schmale Flächen als Satin brauchen eine berechnete Stichrichtung (s. u.). CLI `stick svg`, später Befehl für die App. **Baustein „Satin-Stichrichtung automatisch“ (gehört dazu, zuerst bauen):** für eine beliebige schmale Form Mittellinie und Winkellinien selbst bestimmen (bei den Alphabeten liefert das Original sie mit), daraus Seiten A/B wie bei den Säulen; Verzweigungen (z. B. „Y“-Form) in mehrere Säulen teilen. Vorbild im Original: Auto Digitizer / EasyStitch „Satin“ für Flächen ≤ 8 mm – Verfahren dort nachsehen (Code, Musterdesigns aus „AutoDigitizing“). Wird auch für 4b.11 (Bild → Umrisse mit Satin) gebraucht | 🟡 Baustein ✅ 20.11.: `stick_kern::saeulen` nach EZSTITCH (Abtastung 1 mm/0,1 × Breite/0,05 mm, Triangulation, Sternschnitt an Abzweigungen, Stichlinien nach Krümmung), EmbroideryPatch-Stichlinien entschlüsselt, an 54 Säulen des Auto Digitizers geprüft (54/54 eine Säule, Richtung Median 4,4°), JSON `satinflaeche`, TrueType `"stichart": "satin"` (Break Angle 87°), CLI `stick saeulen` (Bericht 17) · ✅ 21.11. **SVG lesen**: `stick-vektor::svg` (`usvg`), Stichart nach Breite `stick-vektor::easystitch` mit den Werten der EasyStitch-Stile, `saeulen::dicke`, Überdeckung aussparen, Closest Join, CLI `stick svg`, Befehl `svg_lesen` (Bericht 18) |
 | 4b.6 | **Knopflöcher** | einfügen, Typ, Länge, Dichte, mit Objekten verbinden (Kap. 23, Klasse 0x95) | ✅ 21.11.: 9 Typen = Zeichen von `ButtonHoles.ESB` (Teile `<L>`/`<U>`/`<B>`, Umrisse E/I/M), Länge/Raupenabstand/Winkel und Standardwerte (20 mm, 0,5 mm, 90°) aus MOD1, gegen `Samples/Reference/Buttonholes.ART` gemessen (Median 0,04–0,15 mm); `stick_kern::knopfloch`, `esb::knopfloecher_laden`, `"art": "knopfloch"`, CLI `stick knopfloecher`; Einarbeiten über `aussparen` mit dem Mittelumriss (Sicherheit niedrig, Bericht 19 §5). Dabei gefunden und für alle Satinsäulen umgesetzt: **Satin gerade quer + schräg vor** (`Analyse_Teil3/04` §5, Referenz-Stufe 11) |
-| 4b.7 | **Motive** | Pattern Run (Motivlinie) ✅ 21.11. (`Analyse_Teil3/20`), Pattern Fill (Motivfüllung) ⬜, eigene Muster/Sets (Kap. 25) ⬜ | 🟡 |
+| 4b.7 | **Motive** | Pattern Run (Motivlinie) ✅ 21.11. (`Analyse_Teil3/20`), Pattern Fill (Motivfüllung) ✅ 22.11. (N1), eigene Motive ✅ 22.11. (N1) (Kap. 25) | ✅ |
 | 4b.8 | **Effekte** | erhöhter Satin (Loft), Textured Edge, Wave Effect, Gradient/Open Fill, Color Blending (Kap. 22–24) | ✅ 22.11. Loft (= Auto Jump mit kleinem Höchststich) · `effekte` (Verlauf, Rand, Welle) · `farben_mischen` · Open Fill = Laufwege am Rand (Bericht 23) |
-| 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ✅ 22.11. (N3) Rückstich/Stielstich nach MOD1, Stippling + Blackwork Run eigene Festlegung, Vorlagen aus den Stilen; `Analyse_Teil3/24` |
+| 4b.9 | **Craft Stitches** | Blackwork Run/Border/Fill, Backstitch, Stemstitch, Candlewicking, Lacework, Stippling (Kap. 26) | ✅ 22.11. (N3) Rückstich/Stielstich nach MOD1, Blackwork Run eigene Festlegung, Vorlagen aus den Stilen; **Stippling wie das Original** ✅ 22.11. (N13); `Analyse_Teil3/24` |
 | 4b.10 | **Applikation Rest** | Versatz innen/außen, AutoAppliqueValues, Partial Appliqué (Kap. 27) | ✅ 22.11. (N4) Vorgaben aus `AutoAppliqueValues`, `versatz`, `teilabdeckung`; Frame Out ✅ (N14, `herausfahren`, Standard an); Vorlage drucken offen |
-| 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin – mit dem Baustein „Satin-Stichrichtung automatisch“ aus 4b.17 –, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 ✅ 22.11. (N5): Magic Wand (`zauberstab`), PhotoSnap (`photosnap`), kürzeste Wege (2-opt, `kuerzeste`), Bericht 25 · offen: „Details“ (Mittellinien als Doppellauf/Satinlinie), Bild hinter dem Design + M2 |
+| 4b.11 | **Automatik** | Bild → Umrisse ausbauen (Linien, Satin – mit dem Baustein „Satin-Stichrichtung automatisch“ aus 4b.17 –, maßstabsfrei = M2), Magic Wand, PhotoSnap (Kap. 11–13) | 🟡 ✅ 22.11. (N5): Magic Wand (`zauberstab`), PhotoSnap (`photosnap`), kürzeste Wege (2-opt, `kuerzeste`), Bericht 25 · offen: „Details“ (Mittellinien als Doppellauf/Satinlinie), M2 maßstabsfrei; Bild hinter dem Design gestrichen (Nutzer 22.11.) |
 | 4b.12 | **Anordnen** | Ausrichten, Gruppieren, Mirror-Merge, Kranz, Kaleidoskop (Kap. 15) | ✅ 22.11. (N6, `Analyse_Teil3/26`) |
 | 4b.13 | **Dateien/Rahmen** | ART-Designs mit Objekten öffnen (Kern), fremde Stickdateien, eigene Rahmen, welche Rahmen die 185 annimmt (Kap. 6, 28) | ✅ 22.11. (N7, N11; Bericht 27) |
-| 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ⬜ |
-| 4b.15 | **Kreuzstich** | Objektart `kreuzstich` + Bild → Kreuzstich (Nachtauftrag N9, Bericht 29); offen: Zellen malen, Buchstaben/Ränder | ✅ |
+| 4b.14 | **Vorlagen** | Stile/Vorlagen speichern wie NORMAL.AMT (Kap. 9) – zusammen mit dem Parameterkatalog | ✅ 22.11. (N8, `Analyse_Teil3/28`) |
+| 4b.15 | **Kreuzstich** | Objektart `kreuzstich` + Bild → Kreuzstich (Nachtauftrag N9, Bericht 29); Zellen malen und Buchstaben/Ränder gestrichen (Nutzer 22.11.) | ✅ |
 Nicht nötig: Designkarte/Magic Box, Scanner, Quilter (eigenes Programm), nur in Strings vorhandene Sticharten (Coil,
 Contour, Trapunto …). Reine Oberflächenaufgaben (Zoom, Auswahl, Stichvorschau, Druck, Portfolio) → neue Oberfläche.
 
@@ -459,14 +459,14 @@ Später: W12 (eingesetzten Rahmen von der Maschine lesen) – erst Analyse, Ger�
   verbinden, Liste lesen, Design lesen, Garnfarbbereich, planen, senden; CLI `stick maschine …`; **am Gerät lesend
   erprobt** (prüfen 3,8 s, Liste, Nr. 47 mit vollständigem Icon)
 - ✅ 20.11.2026 Oberfläche Schritt 4 „An die Maschine“: Anschluss/Simulation, Maschine prüfen, Senden mit Plan-Dialog
-  und Bestätigung, Sticken nur mit Häkchen „Person an der Maschine“; am Gerät geprüft und geplant (lesend) · ⬜ Schreiben
-  aus dem Programm am Gerät (Liste „Vor Ort“ V1)
+  und Bestätigung, Sticken nur mit Häkchen „Person an der Maschine“; am Gerät geprüft und geplant (lesend) · ✅ Schreiben
+  aus dem Programm am Gerät (V1 20.11., neue Oberfläche V10 21.11.: gesendet und gestickt)
 - ✅ 20.11.2026 Designs aus der Maschine öffnen: Liste, lesen (0x400), Vorschau mit den Garnfarben der Maschine, als EXP
   speichern – am Gerät erprobt (Nr. 21 mit Isacord rich brown/brass/light beige)
 - ✅ 20.11.2026 Garnfarbkarten: 32 Karten der CD, Auswahl im Programm, jede Farbe → nächstes Garn (CIEDE2000, eigene
   Festlegung) → Marke/Nummer/Name in der Garnfarbtabelle; Standard `Default.tch` wie die Maschine („Default Blue“)
-- ⬜ Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus); Garn je Farbe von Hand wählen
-- ⬜ Mac-Programm (GitHub Actions, macOS-Runner)
+- ✅ 21.11. Design in der Oberfläche anpassen (verschieben, drehen, skalieren mit der Maus – Oberfläche v3); Garn je Farbe von Hand wählen (E3)
+- ✅ 21.11. Mac-Programm: Bau und Start auf dem Mac, Senden auch am Mac · ⬜ automatischer Bau (GitHub Actions) – nur bei Bedarf
 
 ## Erledigte Phasen (Kurzbeleg)
 - **Phase 0** – Analyse der Original-Software, Formate, Werte, Protokoll, Lesetest am Gerät: `Analyse/ANALYSE.md`,
