@@ -9,14 +9,14 @@
   import { garnText, listen, STOFF_TEXT } from "./listen.svelte";
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
   import { SCHRIFT_UNTERLAGE } from "./einfuegen";
-  import { ANLEITUNG_RAHMEN, maschine, SIMULATION } from "./maschine.svelte";
+  import { maschine } from "./maschine.svelte";
 
   /** Text mit Original-Alphabet oder Computer-Schrift (gleiche Felder für Text, Höhe, Satz) */
   type Text = (TextJson & { art: "text" }) | (TtfJson & { art: "ttf" });
   type Mono = MonogrammJson & { art: "monogramm" };
 
   // Senden gibt es auf Windows und Mac (Mac: USB-Seriell-Adapter; Wunsch Nutzer 21.11.2026)
-  const SCHRITTE = ["Rahmen & Stoff", "Gestalten", "Prüfen & Garn", "Senden"];
+  const SCHRITTE = ["Rahmen & Stoff", "Gestalten", "Prüfen & Garn", "Übertragen"];
   const STANDARD_ALPHABET = "Drifter";
   const STANDARD_FARBE = "#004780";
 
@@ -356,7 +356,7 @@
     }),
   );
 
-  const weiterText = ["Weiter: Gestalten", "Weiter: Prüfen", "Weiter: Senden"];
+  const weiterText = ["Weiter: Gestalten", "Weiter: Prüfen", "Weiter: Übertragen"];
 </script>
 
 <aside class="pane" aria-label="Assistent" style="width:360px; border-right:1px solid var(--line)">
@@ -766,40 +766,23 @@
         </ul>
       </div>
     {:else}
-        <h2 style="font-size:25px; margin:0 0 2px">An die Maschine senden</h2>
-        <p class="mut" style="margin:0 0 12px">Erst wird nur gelesen und ein Plan gezeigt. Geschrieben wird erst nach deiner Bestätigung.</p>
-        <div class="field" style="margin-bottom:10px">
-          <label for="aport">Anschluss</label>
-          <select id="aport" class="input" value={maschine.port} onchange={(e) => maschine.portSetzen((e.currentTarget as HTMLSelectElement).value)}>
-            {#each maschine.ports as p (p)}<option value={p}>{p}</option>{/each}
-            <option value={SIMULATION}>Simulation (ohne Maschine)</option>
-          </select>
-        </div>
+        <h2 style="font-size:25px; margin:0 0 2px">An die Maschine übertragen</h2>
+        <p class="mut" style="margin:0 0 12px">Ein Klick – danach ist die Maschine bereit. Gestickt wird mit Start an der Maschine.</p>
         {#if maschine.simulation}
-          <div class="simbox" style="margin-bottom:10px"><Icon d={IC.monitor} /><span><b>Simulation:</b> zum Ausprobieren ohne Maschine. Es wird nichts gesendet.</span></div>
+          <div class="simbox" style="margin-bottom:10px"><Icon d={IC.monitor} /><span><b>Simulation</b> – zum Ausprobieren, es wird nichts gesendet. Anschluss oben im Menü „Simulation“ wählen.</span></div>
         {/if}
-        <button class="btn btn-secondary" style="width:100%; margin-bottom:8px" disabled={maschine.laeuft} onclick={() => maschine.pruefen()}>
-          {maschine.laeuft ? "Prüfe …" : "Maschine prüfen (nur lesen, ≈ 4 s)"}
-        </button>
-        {#if maschine.info}
-          <div class="okbox" style="margin-bottom:12px"><Icon d={IC.haken} /><span>Firmware {maschine.info.sitzung.naehmaschine} · Stickmodul erreicht · {maschine.info.farbbereich.text}</span></div>
-        {:else if maschine.pruefFehler}
-          <div class="errbox" style="margin-bottom:12px"><Icon d={IC.fehler} /><span>{maschine.pruefFehler.meldung}</span></div>
+        {#if maschine.rahmenGewechselt}
+          <div class="note" style="margin-bottom:10px">Rahmen gewechselt? An der Maschine einmal «check» drücken.</div>
         {/if}
-        <div class="note" style="margin-bottom:12px">
-          <b style="font-weight:500">Nach einem Rahmenwechsel an der Maschine:</b>
-          <ol style="margin:6px 0 0; padding-left:20px">{#each ANLEITUNG_RAHMEN as a (a)}<li style="margin-bottom:2px">{a}</li>{/each}</ol>
-        </div>
-        <button class="btn btn-primary blueprint btn-block" style="min-height:42px; font-size:16px; width:100%" disabled={!!maschine.sperrgrund} onclick={() => maschine.sendenOeffnen()}>
-          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Plan anzeigen …
+        <button class="btn btn-primary blueprint btn-block" style="min-height:46px; font-size:16px; width:100%; gap:8px" disabled={!!maschine.sperrgrund} onclick={() => maschine.uebertragen()}>
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><Icon d={IC.senden} />Übertragen
         </button>
         {#if maschine.sperrgrund}<p class="small" style="color:var(--err); margin:6px 0 0">{maschine.sperrgrund}</p>{/if}
-        <p class="mut small" style="margin:8px 0 14px">Das Design bleibt nur bis zum Ausschalten in der Maschine – dauerhaft speichern ist noch nicht möglich.</p>
+        <p class="mut small" style="margin:8px 0 14px">Das Design bleibt bis zum Ausschalten in der Maschine.</p>
       <div style="display:flex; flex-direction:column; gap:8px">
         <button class="big" onclick={() => speichern()}><b style="font-weight:500">Design speichern</b><span class="mut small">eigenes Format (JSON) – zum Weiterbearbeiten</span></button>
         <button class="big" onclick={expExportieren}><b style="font-weight:500">Stickdatei exportieren (EXP)</b><span class="mut small">Bernina-Format – Stiche ohne Garnnamen</span></button>
       </div>
-      <div class="note" style="margin-top:12px">Mac: Die Maschine hängt über einen USB-Seriell-Adapter (RS-232) am Mac; der Anschluss erscheint dann in der Liste (z. B. /dev/cu.usbserial…).</div>
     {/if}
   </div>
 

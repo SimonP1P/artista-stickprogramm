@@ -5,9 +5,12 @@
 //! Neu gegenüber der App: **Abbrechen** (`maschine_abbrechen`), Fortschritt mit **Wiederholungen**, Fehler mit **Code**
 //! (`Fehler::code`), Sperre gegen gleichzeitige Maschinen-Aktionen, Garn von Hand (`garn`) in der Garnfarbtabelle.
 //!
-//! **Sicherheit** (CLAUDE.md §4 Regel 1/1a, ANFORDERUNGEN §4): Nur `maschine_senden` schreibt in die Maschine; die
-//! Oberfläche ruft es erst nach `maschine_planen` und ausdrücklicher Bestätigung auf. Sticken (Befehl 0x08) nur mit
-//! `wahl.sticken`, das die Oberfläche nur nach dem eigenen Gefahrendialog setzt.
+//! **Sicherheit** (CLAUDE.md §4 Regel 1/1a, ANFORDERUNGEN §4): Nur `maschine_senden` schreibt in die Maschine. Die
+//! Oberfläche ruft es mit **einem** Klick „Übertragen“ auf, ohne Plan-Stufe und ohne Gefahrendialog, wie das Original
+//! (Handbuch S. 265–266; Entscheidung des Nutzers 22.11.2026, `UI_Mockups/UX_ANALYSE_2026-11-22.md`). Grund: Die Person
+//! steht ohnehin an der Maschine, nach 0x08 fährt der Rahmen nur in die Startlage, gestickt wird erst mit dem
+//! Start-Knopf. Für Claude-Sitzungen gilt Regel 1 weiter: nichts senden ohne Zustimmung. `maschine_planen` bleibt für
+//! die CLI und Tests.
 
 use crate::befehle::{DesignEingabe, DesignWert, Ergebnis, Leer, RahmenInfo, statistik_von};
 use crate::{Fehler, FehlerCode, Kontext};
@@ -45,8 +48,9 @@ pub struct SendeWahl {
     pub icon: bool,
     /// Garnfarbtabelle mitsenden (Garnnamen am Display)
     pub farben: bool,
-    /// danach sticken (Befehl 0x08, „sticken ohne speichern“) – **nur** nach dem Gefahrendialog („Person an der
-    /// Maschine“, Rahmen fährt)
+    /// danach sticken (Befehl 0x08, „sticken ohne speichern“): die Maschine zeigt das Design, der Rahmen fährt in die
+    /// Startlage, gestickt wird mit dem Start-Knopf an der Maschine. Die Oberfläche sendet immer mit `true` (ein Klick
+    /// „Übertragen“ wie das Original, Nutzer 22.11.2026)
     pub sticken: bool,
 }
 
@@ -172,6 +176,9 @@ pub struct SendePlanInfo {
 pub struct SendeInfo {
     pub sitzung: Sitzung,
     pub schritte: Vec<String>,
+    /// Hinweise für die Person an der Maschine (z. B. eigener Rahmen → diesen Rahmen der 185 einspannen; Garnfarben
+    /// nicht geschrieben)
+    pub hinweise: Vec<String>,
     /// Befehl 0x08 bestätigt (None = nicht gestickt)
     pub gestickt: Option<bool>,
 }
@@ -212,7 +219,8 @@ pub struct ExpZiel {
 /// Fortschritt großer Lese-/Schreibvorgänge (Ereignis `maschine_fortschritt` der App).
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 pub struct Fortschritt {
-    /// Teil („DATEN“, „ICON“, „Garnfarbtabelle“ …)
+    /// Teil („DATEN“, „ICON“, „Garnfarbtabelle“ … beim Lesen); beim Senden ein Gesamtbalken „Übertragung“
+    /// (Schreiben und Zurücklesen aller Teile)
     pub was: String,
     pub erledigt: usize,
     pub gesamt: usize,
@@ -545,20 +553,38 @@ pub fn maschine_planen(k: &Kontext, e: SendeEingabe) -> Result<SendePlanInfo, Fe
     })
 }
 
-/// **Schreibt in die Maschine** (DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08). Nur nach der
-/// Bestätigung des Plans aufrufen. Fortschritt über den Melder (App: Ereignis `maschine_fortschritt`).
+/// **Schreibt in die Maschine** (DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08) und verlässt
+/// den PC-Modus. Prüft vorher wie `maschine_planen` (Größe, Garnfarbtabelle). Fortschritt über den Melder (App:
+/// Ereignis `maschine_fortschritt`) als **ein** Gesamtbalken „Übertragung“. Aus einer Claude-Sitzung nur mit Zustimmung
+/// des Nutzers (CLAUDE.md Regel 1).
 pub fn maschine_senden(k: &Kontext, e: SendeEingabe) -> Result<SendeInfo, Fehler> {
-    let (s, _, _) = sendedaten(k, e.design)?;
+    let (s, _, mut hinweise) = sendedaten(k, e.design)?;
     let o: SendeOptionen = e.wahl.into();
+    // ein Balken für alles (Nutzer 22.11.2026): Schreiben + Zurücklesen aller Teile
+    let teile = s.puffer.bytes().len()
+        + if o.icon { s.icon.bytes().len() } else { 0 }
+        + if o.farben { s.farbtabelle().map(|t| t.len()).unwrap_or(0) } else { 0 };
+    let gesamt = 2 * teile;
     let (b, sitzung) = mit_maschine(k, &anschluss(&e.port, e.simulation), "senden", |m, f| {
-        m.senden(&s, &o, f)
+        let mut stand: std::collections::BTreeMap<String, (usize, usize)> = Default::default();
+        let mut gesamt_melden = |was: &str, erledigt: usize, _: usize, wdh: usize| {
+            stand.insert(was.to_string(), (erledigt, wdh));
+            let (e, w) = stand.values().fold((0, 0), |(e, w), (a, b)| (e + a, w + b));
+            f(UEBERTRAGUNG, e.min(gesamt), gesamt, w);
+        };
+        m.senden(&s, &o, &mut gesamt_melden)
     })?;
+    hinweise.extend(b.hinweise);
     Ok(SendeInfo {
         sitzung,
         schritte: b.schritte,
+        hinweise,
         gestickt: b.sticken.map(|r| r.ok),
     })
 }
+
+/// Name des Gesamtfortschritts beim Senden (`Fortschritt::was`)
+pub const UEBERTRAGUNG: &str = "Übertragung";
 
 /// Laufende Maschinen-Aktion abbrechen (die Übertragung bricht an der nächsten Stelle ab, der PC-Modus wird
 /// verlassen). Ergebnis: ob eine Aktion lief.

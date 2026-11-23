@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Übertragen mit einem Klick (UX-Analyse S1–S8; Commit …)
+- `maschine_senden` meldet den Fortschritt als **einen** Balken: `was` = „Übertragung“, `erledigt`/`gesamt` über
+  Schreiben und Zurücklesen aller Teile.
+- **Neu im Ergebnis** `SendeInfo.hinweise`: Hinweise für die Person an der Maschine, z. B. eigener Rahmen → welchen
+  Rahmen der 185 einspannen, oder Garnfarbtabelle nicht geschrieben.
+- **Oberfläche (umgesetzt):**
+  - Knopf „Übertragen“ statt „Senden …“, kein Plan, keine Häkchen, kein Gefahrendialog (`StickenDialog` entfernt).
+  - Die Oberfläche sendet immer `wahl: {icon: true, farben: true, sticken: true}`.
+  - Der Anschluss wird automatisch gesucht.
+  - Der einfache Modus heißt in Schritt 4 „Übertragen“.
+
 ## 22.11.2026 – Applikation: Herausfahren jetzt Standard an (Commit f2ed457)
 - `herausfahren` an `applikation` hat jetzt den Standard **`true`**, wie im Original (Entscheidung des Nutzers).
 - Fehlt das Feld, fährt der Rahmen vor jedem Halt heraus. Das gilt auch für ältere Designs mit Applikation. Mit

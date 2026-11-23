@@ -322,7 +322,7 @@ fn maschine_in_der_simulation() {
     k.mitschnitte_nach(mitschnitte.clone());
     let gemeldet = std::sync::Arc::new(std::sync::Mutex::new(Vec::new()));
     let g = gemeldet.clone();
-    k.fortschritt_melden(move |f| g.lock().unwrap().push(f.was.clone()));
+    k.fortschritt_melden(move |f| g.lock().unwrap().push((f.was.clone(), f.erledigt, f.gesamt)));
     let sim = json!({"port": "", "simulation": true});
     let p = ausfuehren(&k, "maschine_pruefen", sim.clone()).unwrap();
     assert_eq!(p["sitzung"]["port"], "Simulation");
@@ -335,12 +335,21 @@ fn maschine_in_der_simulation() {
     let plan = ausfuehren(&k, "maschine_planen", ein.clone()).unwrap();
     assert!(plan["bytes_daten"].as_u64().unwrap() > 0);
     assert_eq!(plan["garne"][0]["nummer"], 15, "Garn von Hand in der Garnfarbtabelle");
-    let s = ausfuehren(&k, "maschine_senden", ein).unwrap();
+    let s = ausfuehren(&k, "maschine_senden", ein.clone()).unwrap();
     assert!(s["gestickt"].is_null());
-    assert!(
-        gemeldet.lock().unwrap().iter().any(|w| w == "DATEN"),
-        "Fortschritt gemeldet"
-    );
+    assert!(s["hinweise"].as_array().unwrap().iter().all(|h| !h.as_str().unwrap().contains("0x")));
+    // ein Balken (UX-Analyse S1): nur „Übertragung“, am Ende vollständig
+    {
+        let g = gemeldet.lock().unwrap();
+        assert!(!g.is_empty() && g.iter().all(|(w, _, _)| w == "Übertragung"), "{g:?}");
+        let (_, e, n) = g.last().unwrap();
+        assert!(e == n && *n > 0, "letzter Stand {e} / {n}");
+    }
+    // ein Klick wie die Oberfläche: mit Befehl 0x08
+    let mut ein = ein;
+    ein["wahl"]["sticken"] = json!(true);
+    let s = ausfuehren(&k, "maschine_senden", ein).unwrap();
+    assert_eq!(s["gestickt"], true);
     let l = ausfuehren(&k, "maschine_liste", sim.clone()).unwrap();
     assert!(!l["designs"].as_array().unwrap().is_empty());
     let nr = l["designs"][0]["nr"].clone();

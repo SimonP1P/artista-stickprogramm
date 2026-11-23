@@ -1162,7 +1162,10 @@ export type FormLinie = {
 export type Fortschritt = {
   erledigt: number;
   gesamt: number;
-  /** Teil („DATEN“, „ICON“, „Garnfarbtabelle“ …) */
+  /**
+   * Teil („DATEN“, „ICON“, „Garnfarbtabelle“ … beim Lesen); beim Senden ein Gesamtbalken „Übertragung“
+   * (Schreiben und Zurücklesen aller Teile)
+   */
   was: string;
   /** Wiederholungen bisher in diesem Teil (Übertragungsfehler werden automatisch wiederholt) */
   wiederholungen: number;
@@ -3027,6 +3030,11 @@ export type SendeEingabe = {
 export type SendeInfo = {
   /** Befehl 0x08 bestätigt (None = nicht gestickt) */
   gestickt?: boolean | null;
+  /**
+   * Hinweise für die Person an der Maschine (z. B. eigener Rahmen → diesen Rahmen der 185 einspannen; Garnfarben
+   * nicht geschrieben)
+   */
+  hinweise: string[];
   schritte: string[];
   sitzung: Sitzung;
 };
@@ -3053,8 +3061,9 @@ export type SendeWahl = {
   /** Vorschaubild (ICON 72 × 62) mitsenden */
   icon: boolean;
   /**
-   * danach sticken (Befehl 0x08, „sticken ohne speichern“) – **nur** nach dem Gefahrendialog („Person an der
-   * Maschine“, Rahmen fährt)
+   * danach sticken (Befehl 0x08, „sticken ohne speichern“): die Maschine zeigt das Design, der Rahmen fährt in die
+   * Startlage, gestickt wird mit dem Start-Knopf an der Maschine. Die Oberfläche sendet immer mit `true` (ein Klick
+   * „Übertragen“ wie das Original, Nutzer 22.11.2026)
    */
   sticken: boolean;
 };

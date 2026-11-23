@@ -41,18 +41,20 @@ Reihenfolge, Farbe je Objekt). Ein JSON-/Experten-Bereich darf bleiben (S), muss
 ### C. Dateien – M
 Design öffnen/speichern (eigenes JSON-Format), **EXP exportieren** (Stickdatei), Beispieldesign laden, neues Design.
 
-### D. An die Maschine senden – M
-1. Anschluss wählen (COM-Port oder **Simulation** zum Ausprobieren ohne Maschine).
-2. Optional „Maschine prüfen“ (nur lesen): Firmware, aktuelle Garnfarben in der Maschine.
-3. **Senden** in zwei Stufen:
-   - **Planen (nur lesen):** Programm verbindet sich, prüft Design und Maschine und zeigt **alle geplanten
-     Schreibzugriffe** (Design-Daten, Vorschaubild/Icon, Name/Infos, Garnfarbtabelle) und Hinweise.
-   - **Bestätigen → Schreiben:** mit Fortschrittsanzeige (je Teil: geschrieben X von Y Byte, zurücklesen), danach
-     Ergebnisliste („geschrieben und zurückgelesen – stimmt“).
-4. Optional **danach sticken** (Befehl „sticken ohne speichern“): nur mit ausdrücklicher Bestätigung **„Es ist jemand
-   an der Maschine – Rahmen eingesetzt, Nadel oben, Hände weg“** (der Rahmen fährt sofort).
-5. Abschluss: PC-Modus wird immer verlassen; Ergebnis anzeigen; Mitschnitt (Log) gespeichert.
-6. Hinweise für die Person an der Maschine (siehe §4.3).
+### D. An die Maschine übertragen – M
+**Geändert am 22.11.2026 (Entscheidung des Nutzers, `UI_Mockups/UX_ANALYSE_2026-11-22.md` §1):** ein Klick wie das
+Original („Write to Machine“ → „Stitch out Selected Design“, Handbuch S. 265–266). Die frühere Stufenfolge (Plan nur
+lesen → Bestätigen → Gefahrendialog mit 3 Häkchen) stammte aus den Fernzugriffs-Regeln für Claude und entfällt in der
+Oberfläche.
+1. Knopf **„Übertragen“** (Kopfzeile, im einfachen Modus Schritt 4). Der Anschluss wird automatisch gewählt: der
+   gemerkte Port, sonst der einzige, sonst der erste, an dem eine artista antwortet (nur lesen). Port wählen und
+   **Simulation** über das Menü „Maschine“ in der Kopfzeile.
+2. Das Programm verbindet sich, prüft (Größe, Garnfarbtabelle), schreibt Design, Vorschaubild, Name und Garnfarben,
+   liest alles zurück, schaltet mit Befehl 0x08 („sticken ohne speichern“) in den Stickmodus und verlässt den PC-Modus.
+   **Ein** Fortschrittsbalken, „Abbrechen“.
+3. Am Ende: „Fertig – die Maschine ist bereit. Gestickt wird mit Start an der Maschine.“ + Garnfolge + Hinweise
+   (eigener Rahmen → welchen Rahmen einspannen; Rahmen gewechselt → «check»). Technisches nur unter „Details“.
+4. Fehler: was passiert ist, nächste Schritte, „Nochmal“ (bei Fehler der Garnfarbtabelle auch „Ohne Garnfarben“).
 
 ### E. Designs aus der Maschine – M
 Liste der gespeicherten Designs (51 Stück, mit Nummer, Name, Merkmalen) → eines lesen → **Ansicht** mit den
@@ -161,22 +163,20 @@ Maschine (**≈ 145 KB** je Design, darüber Fehler „Design is too big“).
 | Maschine prüfen (Firmware 04.04, Garnfarbtabelle) | ≈ 4 s | nein |
 | Designliste lesen (51 Designs) | ≈ 13 s | nein |
 | Design lesen (Ansicht) | ≈ 1,5 KB/s (10 s bis ~1,5 min) | nein |
-| Senden planen | ≈ 4 s | nein |
-| Senden (Design, Icon, Infos, Garnfarben, alles zurückgelesen) | Testquadrat ≈ 25 s, 6,8 KB ≈ 36 s | **ja** |
-| danach sticken (Befehl 0x08) | ≈ 1 s | **ja, Rahmen fährt** |
+| Übertragen (Design, Icon, Infos, Garnfarben, alles zurückgelesen, Befehl 0x08) | Testquadrat ≈ 25 s, 6,8 KB ≈ 36 s | **ja**, Rahmen fährt in die Startlage |
 | P: dauerhaft speichern, löschen | – | **ja** |
 
-Während eines Vorgangs: Fortschritt (Teil, Byte, Zeit), andere Maschinen-Aktionen gesperrt, Bearbeiten erlaubt.
-Nach jedem Vorgang: Ergebnis + „PC-Modus verlassen: bestätigt / nicht bestätigt (Maschine aus/ein)“, Pfad des
-Mitschnitts (für Fehleranalyse).
+Während eines Vorgangs: ein Fortschrittsbalken, andere Maschinen-Aktionen gesperrt. Nach jedem Vorgang: Ergebnis;
+Einzelschritte, PC-Modus und Pfad des Mitschnitts nur unter „Details“.
 
 ## 4. Regeln, die das Design sichtbar machen muss
 ### 4.1 Sicherheit – M
-- **Nichts wird in die Maschine geschrieben ohne ausdrückliche Bestätigung**; vor dem Schreiben eine Übersicht aller
-  Schreibzugriffe (Plan).
-- **Sticken** nur mit eigener Bestätigung „Person an der Maschine“ – deutlich als „Rahmen bewegt sich“ markiert.
-- Senden gesperrt, wenn das Design nicht in den Rahmen passt, fehlerhaft ist oder gerade eine Maschine-Aktion läuft.
-- Es wird **nichts dauerhaft** gespeichert (bis P6); das soll der Nutzer wissen.
+- **Geändert 22.11.2026:** Übertragen und Stickmodus mit **einem** Klick, ohne Plan-Stufe und ohne Gefahrendialog (wie
+  das Original). Die Person steht ohnehin an der Maschine; nach Befehl 0x08 fährt der Rahmen nur in die Startlage,
+  gestickt wird erst mit Start an der Maschine (Gerätetest 19.11.2026). Für **Claude-Sitzungen** gilt CLAUDE.md §4
+  Regel 1 unverändert.
+- Übertragen gesperrt, wenn das Design nicht in den Rahmen passt, fehlerhaft ist oder gerade eine Maschine-Aktion läuft.
+- Es wird **nichts dauerhaft** gespeichert (bis P6): „Das Design bleibt bis zum Ausschalten in der Maschine.“
 - Simulation klar als solche erkennbar (kein Verwechseln mit der echten Maschine).
 
 ### 4.2 Fehler und Zustände – M
@@ -186,9 +186,8 @@ zurückgelesen weicht ab (Senden abgebrochen, nichts gestickt) · Garnfarbtabell
 Farben) · Design zu groß · Design außerhalb des Rahmens · Alphabet/Garnkarte fehlt.
 
 ### 4.3 Hinweise für die Person an der Maschine – S
-Kurze Anleitung im Programm, z. B. als Schritt vor/nach dem Senden:
-- Nach einem **Rahmenwechsel**: Nadel und Nähfuß hoch → Display „Layout 1“ → **«check»** (Rahmen fährt und erkennt
-  den Rahmen) → «Mustermitte anzeigen» → «ok» → Nähfuß senken → Start.
+- Nach einem **Rahmenwechsel** (Rahmen ≠ beim letzten Übertragen): eine Zeile „Rahmen gewechselt? An der Maschine einmal
+  «check» drücken.“ – ohne Häkchen. Nadel, Nähfuß und Start fordert die Maschine selbst (Nutzer 22.11.2026).
 - Material: fester Stoff oder passendes Vlies (Abreißvlies, bei dehnbarem Stoff Schneide-/Bügelvlies), Stickgarn
   40 + Stick-Unterfaden.
 - Die artista 185 schneidet Verbindungsfäden **nicht** selbst ab → nach dem Sticken von Hand schneiden.

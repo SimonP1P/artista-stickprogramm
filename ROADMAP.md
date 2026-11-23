@@ -29,8 +29,8 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 - [ ] A7 **Kurzstiche** Tatami-Rand und Satin-Gruppen genau wie das Original (MOD1 0x10186ad0) – ~1 Schritt, niedrige Priorität
 - [ ] A8 **Eingesetzten Rahmen von der Maschine lesen** (W12) – ~1 Schritt Analyse; Gerätetest nur mit Zustimmung
 
-**C) Oberfläche – UX-Analyse 22.11.2026** (`UI_Mockups/UX_ANALYSE_2026-11-22.md`; nichts geändert, Entscheidung des Nutzers offen)
-- [ ] C1 Senden mit einem Knopf „Übertragen“ (S1–S8): ein Balken, keine Plan-Stufe, keine Häkchen, nur eine Übertragung
+**C) Oberfläche – UX-Analyse 22.11.2026** (`UI_Mockups/UX_ANALYSE_2026-11-22.md`; Go des Nutzers 22.11.: C1–C4, JSON-Reiter und Farbcodes bleiben)
+- [x] C1 Übertragen mit **einem** Knopf (S1–S8): ein Balken, keine Plan-Stufe, keine Häkchen, eine Übertragung inkl. 0x08, Anschluss automatisch
 - [ ] C2 Schnell erledigt: veraltete „kommt noch“-Einträge, Kasten „Leeres Design“, X-Kästchen, Entwickleranzeigen, Doppeltes
 - [ ] C3 Mittel: Applikation als Stichart, Craft-Block auflösen, Kreis/Rechteck ziehen, Stichart-Vorwahl, JSON/Einzelwerte
 - [ ] C4 Sprache: deutsche Namen statt Englisch und „wie das Original“
@@ -46,6 +46,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 - [ ] B8 Display: Garnfarben und Icon (V2, V3)
 - [ ] B9 Lage im Rahmen beim Senden (V7)
 - [ ] B10 Dauerhaft in der Maschine speichern (V5) – nur mit ausdrücklicher Zustimmung
+- [ ] B11 **Übertragen mit einem Klick** am Gerät ausprobieren (C1): Anschluss automatisch, ein Balken, Maschine danach im Stickmodus
 
 ## Nachtauftrag 22.11.2026 – HIER ZUERST LESEN (Stand wird nach jedem Schritt nachgetragen)
 **Auftrag des Nutzers (22.11.2026, nachts):** 4b.7 bis 4b.15 selbstständig nacheinander abarbeiten, jede Funktion im

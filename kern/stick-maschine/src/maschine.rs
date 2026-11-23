@@ -131,6 +131,8 @@ pub struct SendePlan {
 #[derive(Debug, Clone)]
 pub struct SendeBericht {
     pub schritte: Vec<String>,
+    /// Hinweise des Plans (z. B. Garnfarbtabelle nicht geschrieben)
+    pub hinweise: Vec<String>,
     /// Status von Befehl 0x08, falls gestickt werden sollte
     pub sticken: Option<Status>,
 }
@@ -447,8 +449,6 @@ impl<L: Leitung> Maschine<L> {
             plan.schritte
                 .push("Befehl 0x08: sticken ohne speichern (Rahmen fährt!)".into());
         }
-        plan.hinweise
-            .push("Es wird nichts dauerhaft gespeichert (kein 0x10/0x200).".into());
         plan.farbbereich = Some(fb);
         Ok(plan)
     }
@@ -472,6 +472,7 @@ impl<L: Leitung> Maschine<L> {
         let plan = self.planen(s, o)?;
         let mut bericht = SendeBericht {
             schritte: Vec::new(),
+            hinweise: plan.hinweise.clone(),
             sticken: None,
         };
         let vw = self.verwaltung.clone();

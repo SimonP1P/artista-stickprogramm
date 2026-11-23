@@ -2871,7 +2871,7 @@
           "type": "integer"
         },
         "was": {
-          "description": "Teil („DATEN“, „ICON“, „Garnfarbtabelle“ …)",
+          "description": "Teil („DATEN“, „ICON“, „Garnfarbtabelle“ … beim Lesen); beim Senden ein Gesamtbalken „Übertragung“\n(Schreiben und Zurücklesen aller Teile)",
           "type": "string"
         },
         "wiederholungen": {
@@ -8076,6 +8076,13 @@
             "null"
           ]
         },
+        "hinweise": {
+          "description": "Hinweise für die Person an der Maschine (z. B. eigener Rahmen → diesen Rahmen der 185 einspannen; Garnfarben\nnicht geschrieben)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "schritte": {
           "items": {
             "type": "string"
@@ -8088,7 +8095,8 @@
       },
       "required": [
         "sitzung",
-        "schritte"
+        "schritte",
+        "hinweise"
       ],
       "type": "object"
     },
@@ -8169,7 +8177,7 @@
           "type": "boolean"
         },
         "sticken": {
-          "description": "danach sticken (Befehl 0x08, „sticken ohne speichern“) – **nur** nach dem Gefahrendialog („Person an der\nMaschine“, Rahmen fährt)",
+          "description": "danach sticken (Befehl 0x08, „sticken ohne speichern“): die Maschine zeigt das Design, der Rahmen fährt in die\nStartlage, gestickt wird mit dem Start-Knopf an der Maschine. Die Oberfläche sendet immer mit `true` (ein Klick\n„Übertragen“ wie das Original, Nutzer 22.11.2026)",
           "type": "boolean"
         }
       },

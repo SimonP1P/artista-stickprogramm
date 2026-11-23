@@ -207,6 +207,7 @@ fn ablauf<L: Leitung>(
             for h in &plan.hinweise {
                 println!("  Hinweis: {h}");
             }
+            println!("  Hinweis: Es wird nichts dauerhaft gespeichert (kein 0x10/0x200).");
             if !args.iter().any(|a| a == "--schreiben") {
                 println!("  TROCKENLAUF: nichts geschrieben (Schalter --schreiben fehlt).");
                 return Ok(true);

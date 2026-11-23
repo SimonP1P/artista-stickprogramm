@@ -79,8 +79,8 @@ def main():
     a.add_argument("--reiter", choices=["objekt", "design", "einzelwerte", "json"])
     a.add_argument("--werkzeug", choices=["auswahl", "einstich", "ausstich", "knoten", "zeichnen"])
     a.add_argument("--zeichenform", choices=["linie", "frei", "saeule", "kreis", "rechteck"], help="Form beim Werkzeug zeichnen")
-    a.add_argument("--maschine", choices=["anschluss", "plan", "fertig", "sticken", "liste"],
-                   help="Maschinen-Ablauf mit der Simulation bis zu dieser Stufe")
+    a.add_argument("--maschine", choices=["laeuft", "fertig", "fehler", "liste"],
+                   help="Übertragen mit der Simulation (läuft, fertig, Fehler) bzw. Designs aus der Maschine")
     a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
     a.add_argument("--groesse", default="1280x800")
     a.add_argument("--stick")
@@ -108,9 +108,12 @@ def main():
     sim = {"port": "", "simulation": True}
     antworten["maschine_ports"] = []
     if o.maschine:
-        ein = {"design": design, **sim, "wahl": {"icon": True, "farben": True, "sticken": False}}
-        antworten["maschine_planen"] = api(stick, "maschine_planen", ein)
-        antworten["maschine_senden"] = api(stick, "maschine_senden", ein)
+        ein = {"design": design, **sim, "wahl": {"icon": True, "farben": True, "sticken": True}}
+        antworten["maschine_senden"] = {
+            "laeuft": {"__haengt__": True},
+            "fehler": {"__fehler__": {"meldung": "Keine Antwort auf T r M E (Mitschnitt: …)", "objekt": None,
+                                      "code": "keine_verbindung"}},
+        }.get(o.maschine) or api(stick, "maschine_senden", ein)
         if o.maschine == "liste":
             antworten["maschine_liste"] = api(stick, "maschine_liste", sim)
             nr = antworten["maschine_liste"]["designs"][0]["nr"]
@@ -236,6 +239,7 @@ window.__TAURI_INTERNALS__ = {{
       ?? ANTWORTEN[args.befehl + "@" + (d.design && d.design.objekte ? d.design.objekte.length : "")] ?? ANTWORTEN[args.befehl];
     if (a === undefined) return Promise.reject({{ meldung: "Bildschirmfoto: " + args.befehl + " nicht vorbereitet", objekt: null }});
     if (a && a.__fehler__) return Promise.reject(a.__fehler__);
+    if (a && a.__haengt__) return new Promise(() => {{}});
     return Promise.resolve(JSON.parse(JSON.stringify(a)));
   }},
 }};

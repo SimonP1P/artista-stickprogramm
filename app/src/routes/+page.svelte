@@ -15,7 +15,6 @@
   import type { CraftVorlage, GarnInfo, ObjektJson } from "$kern/kern";
   import { maschine, SIMULATION } from "$lib/maschine.svelte";
   import SendenDialog from "$lib/dialoge/SendenDialog.svelte";
-  import StickenDialog from "$lib/dialoge/StickenDialog.svelte";
   import AusMaschineDialog from "$lib/dialoge/AusMaschineDialog.svelte";
   import NachFarbeDialog from "$lib/dialoge/NachFarbeDialog.svelte";
   import WarnungDialog from "$lib/dialoge/WarnungDialog.svelte";
@@ -157,12 +156,7 @@
       if (nr) await maschine.designLesen(nr);
       return;
     }
-    maschine.sendenOeffnen();
-    if (z === "anschluss") return;
-    await maschine.planen();
-    if (z === "plan") return;
-    await maschine.schreiben(false);
-    if (z === "sticken") maschine.stickenDialog = true;
+    await maschine.uebertragen();
   }
 
   async function einfuegen(art: string) {
@@ -268,7 +262,7 @@
     const strg = ev.ctrlKey || ev.metaKey;
     const ziel = ev.target as HTMLElement;
     const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
-    if (arbeit.dialog || maschine.dialogOffen || maschine.listeOffen || maschine.stickenDialog) return; // Dialog behandelt Esc selbst
+    if (arbeit.dialog || maschine.dialogOffen || maschine.listeOffen) return; // Dialog behandelt Esc selbst
     if (!eingabe && werkzeug === "zeichnen" && vorschau?.zeichenTaste(ev.key)) return ev.preventDefault();
     if (ev.key === "Escape") {
       if (werkzeug !== "auswahl") werkzeug = "auswahl";
@@ -370,11 +364,11 @@
       style="border:1px solid var(--line); margin-left:6px; gap:7px"
     >
       <span aria-hidden="true" style="width:9px; height:9px; border-radius:50%; background:{maschine.laeuft ? 'var(--warn)' : maschine.simulation ? 'var(--sim)' : maschine.info ? 'var(--ok)' : maschine.pruefFehler ? 'var(--err)' : 'var(--muted)'}"></span>
-      {maschine.laeuft && maschine.phase === "laeuft" ? "Sende …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}
+      {maschine.laeuft && maschine.dialogOffen ? "Überträgt …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}
     </button>
-    <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? "An die Maschine senden (erst Plan, dann bestätigen)"} onclick={() => maschine.sendenOeffnen()}>
+    <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? "An die Maschine übertragen – danach ist sie bereit zum Sticken"} onclick={() => maschine.uebertragen()}>
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <Icon d={IC.senden} />Senden …
+      <Icon d={IC.senden} />Übertragen
     </button>
 
     {#if menue === "maschine"}
@@ -388,9 +382,6 @@
         </div>
         <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.pruefen())}>Maschine prüfen (nur lesen)</button>
         <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.listeOeffnen())}>Designs aus der Maschine …</button>
-        {#if maschine.laeuft && !maschine.dialogOffen && maschine.phase === "laeuft"}
-          <button class="mi" role="menuitem" onclick={() => waehle(() => (maschine.dialogOffen = true))}>Fortschritt anzeigen</button>
-        {/if}
         <div class="msep"></div>
         <div class="small mut" style="padding:4px 10px 8px; white-space:normal">
           {#if maschine.info}Firmware {maschine.info.sitzung.naehmaschine} · Stickmodul {maschine.info.sitzung.stickmodul} · {maschine.info.farbbereich.text}
@@ -681,7 +672,6 @@
     <WarnungDialog vertauscht={arbeit.dialog.vertauscht} namen={arbeit.dialog.namen} vorher={arbeit.dialog.vorher} schliessen={() => (arbeit.dialog = null)} />
   {/if}
   {#if maschine.dialogOffen}<SendenDialog />{/if}
-  {#if maschine.stickenDialog}<StickenDialog />{/if}
   {#if maschine.listeOffen}<AusMaschineDialog />{/if}
   {#if arbeit.dialog?.art === "rahmen"}
     {@const o = arbeit.dialog.objekt}
