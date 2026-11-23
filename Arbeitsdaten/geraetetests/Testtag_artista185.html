@@ -1,0 +1,407 @@
+<!doctype html><html lang=de><head><meta charset=utf-8></head><body><title>Testtag artista 185</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Werkstattblatt: eine Spalte, Karten je Test, Häkchen wie Stichmarken auf einem Schnittbogen */
+:root{
+  --bg:#f3f4f2; --paper:#ffffff; --fg:#1d2321; --mut:#5d6763; --line:#d6dbd8;
+  --accent:#1f6f5c; --accent-soft:#dcefe8; --warn:#9a5b00; --warn-soft:#fbefd9; --danger:#a3312a;
+  --f-head:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141917; --paper:#1c2220; --fg:#e6ebe8; --mut:#9aa6a1; --line:#313b37;
+  --accent:#5cc3a6; --accent-soft:#1d3a32; --warn:#e2a54a; --warn-soft:#3a2d17; --danger:#ef8a80; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --paper:#1c2220; --fg:#e6ebe8; --mut:#9aa6a1; --line:#313b37;
+  --accent:#5cc3a6; --accent-soft:#1d3a32; --warn:#e2a54a; --warn-soft:#3a2d17; --danger:#ef8a80; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:780px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px}
+h1,h2{font-family:var(--f-head);font-weight:600;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:2.3rem;line-height:1.05}
+h2{font-size:1.45rem;line-height:1.15}
+p{margin:0}
+.mut{color:var(--mut)}
+.small{font-size:.88rem}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:var(--f-head);text-transform:uppercase;letter-spacing:.12em;font-size:.85rem;color:var(--accent);font-weight:600}
+.fortschritt{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.balken{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.balken i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.zahl{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.9rem;white-space:nowrap}
+.status{font-size:.82rem;color:var(--mut)}
+.regeln{background:var(--warn-soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.regeln b{color:var(--warn)}
+.karte{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.karte.fertig{border-color:var(--accent)}
+.kopf{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.nr{font-family:var(--f-head);font-weight:700;font-size:1.45rem;color:var(--accent);min-width:1.6em}
+.kopf .tags{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.75rem;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.ziel{font-size:.95rem}
+ul.haken{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+ul.haken label{display:flex;gap:10px;align-items:flex-start;padding:6px 6px;border-radius:6px;cursor:pointer}
+ul.haken label:hover{background:var(--accent-soft)}
+ul.haken input{appearance:none;flex:none;width:20px;height:20px;margin-top:2px;border:2px solid var(--mut);border-radius:4px;display:grid;place-content:center;cursor:pointer;background:var(--paper)}
+ul.haken input:checked{background:var(--accent);border-color:var(--accent)}
+ul.haken input:checked::after{content:"";width:10px;height:5px;border:2.5px solid var(--paper);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+ul.haken input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+ul.haken input:checked + span{color:var(--mut);text-decoration:line-through;text-decoration-color:var(--line)}
+.frage{border-left:3px solid var(--accent);padding:4px 0 4px 12px;display:flex;flex-direction:column;gap:4px}
+.frage b{font-weight:600}
+textarea,input[type=text]{width:100%;font:inherit;font-size:.95rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+textarea{min-height:64px;resize:vertical}
+textarea:focus,input[type=text]:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.feldname{font-size:.82rem;color:var(--mut);font-weight:500}
+.tabelle{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 6px;text-align:left;vertical-align:middle}
+th{font-weight:600;font-size:.8rem;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+td input[type=text]{padding:5px 7px;min-width:70px;font-family:var(--f-mono);font-size:.85rem}
+td.soll{font-family:var(--f-mono);font-size:.85rem;color:var(--mut);white-space:nowrap}
+details{border-top:1px solid var(--line);padding-top:8px}
+summary{cursor:pointer;font-weight:600;font-size:.95rem}
+.spaeter .karte{opacity:.85}
+footer{font-size:.85rem;color:var(--mut)}
+@media (prefers-reduced-motion:reduce){.balken i{transition:none}}
+
+@page{size:A4;margin:14mm 13mm}
+html,body{background:#fff!important;color:#1d2321}
+body{font-size:11.5pt}
+.wrap{max-width:none;padding:0;gap:14px}
+.fortschritt,#status,body::before{display:none!important}
+h1{font-size:24pt}
+.karte{border:1px solid #bfc6c2;padding:12px 14px;gap:8px;break-inside:auto}
+.kopf,.ziel,.frage,tr,ul.haken li{break-inside:avoid}
+.kopf{break-after:avoid}
+ul.haken label{padding:3px 4px}
+ul.haken input{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+input[type=text],textarea{background:#fff;border:0;border-bottom:1px solid #9aa39f;border-radius:0;padding:6px 2px}
+input[type=text]::placeholder,textarea::placeholder{color:#a9b1ad}
+textarea{min-height:70px;border:1px solid #9aa39f;border-radius:4px;resize:none}
+.tag,.regeln,code{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.spaeter{break-before:auto}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">BERNINA artista 185 · Vor Ort</span>
+    <h1>Testtag an der Maschine</h1>
+    <p>Die Liste der Tests für die Person an der Maschine, der Reihe nach. Jedes erledigte Häkchen setzen und bei jedem Test kurz aufschreiben, was zu sehen war. Antworten und Messwerte direkt hier eintragen und das Blatt danach abfotografieren oder zurückschicken.</p>
+    <p class="status" id="status">Speicher wird verbunden …</p>
+  </header>
+
+  <div class="fortschritt">
+    <div class="balken"><i id="balken"></i></div>
+    <span class="zahl" id="zahl">0 / 0</span>
+  </div>
+
+  <div class="regeln">
+    <p><b>Drei Regeln für jeden Test</b></p>
+    <p>1. Beim Übertragen: <b>Nadel oben, Hände weg</b> vom Rahmen. Der Rahmen kann sich bewegen.</p>
+    <p>2. Immer mit <b>Vlies</b> sticken, immer <b>Stickgarn</b> (kein Nähgarn).</p>
+    <p>3. Nach jedem Stick <b>ein Foto</b> mit Lineal daneben, von oben, gutes Licht. Wenn etwas komisch aussieht, Foto vom Display.</p>
+  </div>
+
+  <main id="liste" style="display:flex;flex-direction:column;gap:20px"></main>
+
+  <section class="spaeter" style="display:flex;flex-direction:column;gap:14px">
+    <h2>Noch nicht dran</h2>
+    <p class="mut">Diese Tests kommen bei einem späteren Termin. Hier nur, damit nichts vergessen wird.</p>
+    <div id="spaeter" style="display:flex;flex-direction:column;gap:14px"></div>
+  </section>
+
+  <footer>Stand 23.11.2026 · Quelle: ROADMAP.md, Tabelle „Vor Ort“ (V2–V17). Dateien liegen im Projektordner unter <code>stickprogramm/beispiele/</code>.</footer>
+</div>
+
+<script>
+const BSP = "stickprogramm\\beispiele\\";
+const TESTS = [
+  { nr:"0", titel:"Material bereitlegen", tags:["vor dem Start"],
+    ziel:"Alles, was für den ganzen Tag gebraucht wird.",
+    schritte:[
+      "Feste Webware (z. B. Baumwolle, Leinen): mindestens 4 Stücke, je etwa 25 × 20 cm",
+      "Strickstoff (T-Shirt-Stoff): 3 Stücke",
+      "Stickvlies (Abreiß- oder Schneidvlies), genug für alle Stücke",
+      "Applikationsstoff in einer anderen Farbe, etwa 10 × 10 cm",
+      "Stickgarn in mindestens 4 gut unterscheidbaren Farben, dazu Unterfaden",
+      "Messschieber oder gutes Lineal (mm), kleine spitze Schere, Handy für Fotos",
+      "Rahmen 130 × 100 mm (mittlerer Rahmen) liegt bereit"
+    ]},
+  { nr:"1", titel:"Programm auf dem Windows-PC auf den neuesten Stand", tags:["PC","Fernwartung"],
+    ziel:"Der Windows-PC hat noch die Version vom 21.11. Das macht Simon oder Claude per Fernwartung.",
+    schritte:[
+      "Im Projektordner <code>git pull</code> ausführen",
+      "Im Ordner <code>app</code> bauen: <code>npm run tauri build -- --debug --no-bundle</code> (dauert einige Minuten)",
+      "Programm starten: <code>F:\\Entwicklung\\target\\debug\\artista-stickprogramm.exe</code>",
+      "Maschine einschalten, Stickmodul dran, PC-Kabel an COM3"
+    ],
+    notiz:true},
+  { nr:"2", titel:"Übertragen, dann „Start“", tags:["V17","V2/V3","wichtig"],
+    ziel:"Wartet die Maschine, bis im Programm „Start“ gedrückt wird? Und zeigt das Display die Garnfarben und das Bild?",
+    schritte:[
+      "Rahmen 130 × 100 einsetzen, Stoff mit Vlies einspannen",
+      "Im Programm: Datei → Öffnen → <code>"+BSP+"pruefmuster.json</code> (für diesen Test wird noch nicht gestickt)",
+      "Schritt 4 „Übertragen“ → Knopf „Übertragen“. Ein Balken läuft, dann steht da „Übertragen.“ und der Knopf „Start“",
+      "<b>Display ansehen und fotografieren</b>, solange das Programm auf „Start“ wartet",
+      "<b>1 Minute</b> warten, dann „Start“ drücken. Fährt der Rahmen in die Startlage? Zeigt das Display das Design?",
+      "Display fotografieren: stehen dort <b>Garnfarben mit Namen</b> (Isacord …) oder „no color“? Ist ein kleines Bild des Designs zu sehen?",
+      "Nicht sticken. Maschine aus und wieder ein",
+      "Noch einmal übertragen, diesmal <b>5 Minuten</b> warten, dann „Start“. Klappt es immer noch?",
+      "Ein drittes Mal übertragen und diesmal <b>„Abbrechen“</b> statt „Start“ drücken. Ist das Display danach normal, ohne dass gestickt wird?"
+    ],
+    fragen:[
+      ["Hat die Maschine nach 1 Minute das Design übernommen?","ja / nein"],
+      ["Und nach 5 Minuten?","ja / nein"],
+      ["Was zeigt das Display bei den Farben?","Garnnamen oder „no color“"],
+      ["Ist das kleine Bild des Designs zu sehen?","ja / nein"],
+      ["Nach „Abbrechen“: Display normal?","ja / nein / was war zu sehen"]
+    ]},
+  { nr:"3", titel:"Kalibrierblatt auf Webware", tags:["V12","V13","Messen"],
+    ziel:"Wie stark zieht sich der Stoff beim Sticken zusammen? Daraus stellen wir den Zugausgleich ein.",
+    schritte:[
+      "Feste Webware mit Vlies straff in den Rahmen 130 × 100",
+      "Datei → Öffnen → <code>"+BSP+"kalibrierblatt.json</code> (79 × 95 mm, 4 Farben, etwa 4 400 Stiche)",
+      "Schritt 1: Stoff auf <b>„Woven Medium Weight“</b> lassen",
+      "Übertragen → „Start“ → sticken, bei jedem Farbwechsel Garn wechseln",
+      "Stoff im Rahmen lassen, bis gemessen ist (dann verzieht er sich nicht)",
+      "Messen und unten eintragen (in mm, eine Nachkommastelle reicht)",
+      "Lücken prüfen: ist zwischen roter Füllung und schwarzem Umriss Stoff zu sehen?",
+      "Foto mit Lineal daneben"
+    ],
+    mess:"web",
+    fragen:[["Lücken zwischen roter Füllung und schwarzem Umriss?","keine / wo und wie breit"]]},
+  { nr:"4", titel:"Vernähen hält? (am Blatt aus Test 3)", tags:["V13"],
+    ziel:"Lösen sich Fäden, wenn man Sprungfäden abschneidet und am Stoff reibt?",
+    schritte:[
+      "Stoff aus dem Rahmen nehmen",
+      "Alle Sprungfäden vorne und hinten knapp abschneiden (etwa 16 Stück)",
+      "Mit dem Daumen kräftig über die Buchstaben „A B C“ und die Balken reiben",
+      "Optional: Stück waschen und noch einmal ansehen"
+    ],
+    fragen:[["Hat sich irgendwo ein Faden gelöst?","nein / wo"]]},
+  { nr:"5", titel:"Kalibrierblatt auf Strick", tags:["V12","Messen"],
+    ziel:"Dasselbe wie Test 3, aber auf dehnbarem Stoff.",
+    schritte:[
+      "Strickstoff mit Vlies einspannen (nicht dehnen beim Einspannen)",
+      "Kalibrierblatt wieder öffnen, in Schritt 1 Stoff auf <b>„Knit Medium Weight“</b> stellen",
+      "Übertragen → „Start“ → sticken",
+      "Messen wie in Test 3 und unten eintragen, Foto mit Lineal"
+    ],
+    mess:"strick",
+    fragen:[["Lücken zwischen roter Füllung und schwarzem Umriss?","keine / wo und wie breit"]]},
+  { nr:"6", titel:"Prüfmuster 1", tags:["V4"],
+    ziel:"Alle Grund-Sticharten auf einem Stück: Satin in fünf Breiten, Tatami, Laufstich, Dreifachstich, Schrift „Abc“.",
+    schritte:[
+      "Feste Webware mit Vlies, Rahmen 130 × 100",
+      "Datei → Öffnen → <code>"+BSP+"pruefmuster.json</code> (82 × 110 mm)",
+      "Übertragen → „Start“ → sticken",
+      "Foto mit Lineal"
+    ],
+    fragen:[["Wie sieht es aus? Satin glatt, Tatami ohne Lücken, Schrift lesbar?","eigene Worte"]]},
+  { nr:"7", titel:"Prüfmuster 2 mit Applikation", tags:["V6","V15"],
+    ziel:"Neue Sticharten: Füllmuster Raute und Herz, ausgesparte Schrift, Blanket-Stich und eine Applikation. Bei der Applikation fährt der Rahmen jetzt vor jedem Halt 12 mm nach oben, damit man leichter an den Stoff kommt.",
+    schritte:[
+      "Feste Webware mit Vlies, Rahmen 130 × 100",
+      "Datei → Öffnen → <code>"+BSP+"pruefmuster2.json</code> (78 × 82 mm, 8 Farben)",
+      "Übertragen → „Start“ → sticken",
+      "Applikation: nach der <b>Platzierungslinie</b> hält die Maschine. Fährt der Rahmen dabei nach oben weg? Applikationsstoff auflegen",
+      "Nach der <b>Schnittlinie</b> hält sie wieder: Applikationsstoff an der Linie knapp zuschneiden",
+      "Beim Weitersticken: fährt der Rahmen sauber zurück an die richtige Stelle?",
+      "Am Ende: deckt der breite Satinrand (5 mm) die Stoffkante gut ab, ohne dass etwas ausfranst?",
+      "Foto mit Lineal"
+    ],
+    fragen:[
+      ["Rahmen fährt beim Halt nach oben weg?","ja / nein"],
+      ["Auflegen und Zuschneiden dadurch leichter?","ja / nein / egal"],
+      ["Satinrand deckt die Kante?","ja / nein, wo nicht"]
+    ]},
+  { nr:"8", titel:"Knopflöcher", tags:["V9"],
+    ziel:"Alle 9 Knopflocharten, dazu 2 in einer Fläche eingearbeitet.",
+    schritte:[
+      "Feste Webware mit Vlies",
+      "Datei → Öffnen → <code>"+BSP+"knopfloecher.json</code>",
+      "Übertragen → „Start“ → sticken",
+      "Ein paar Schlitze vorsichtig aufschneiden (Pfeil oder Nahttrenner)",
+      "Foto"
+    ],
+    fragen:[["Raupen dicht genug, Riegel fest, Fläche am Schlitz sauber?","eigene Worte"]]},
+  { nr:"9", titel:"Blume aus einer Zeichnung (SVG)", tags:["V8"],
+    ziel:"Eine Zeichnung aus Inkscape wird automatisch in Stiche umgewandelt.",
+    schritte:[
+      "Feste Webware mit Vlies, Rahmen 130 × 100",
+      "Datei → Neu, dann Schritt 2 → Kachel „SVG einlesen“ → <code>"+BSP+"blume.svg</code>",
+      "Größe so lassen (etwa 90 × 84 mm)",
+      "Übertragen → „Start“ → sticken",
+      "Foto"
+    ],
+    fragen:[["Passen Flächen und Blätter? Ring mit Loch sauber? Lücken an den Aussparungen?","eigene Worte"]]},
+  { nr:"10", titel:"Computer-Schrift mit und ohne Stabilisieren", tags:["V11"],
+    ziel:"Liegt Schrift auf Strick mit Unterlage glatter?",
+    schritte:[
+      "Strickstoff mit Vlies",
+      "Datei → Neu, Schritt 2 → Text „Anna“",
+      "Schrift wählen → Reiter „Auf dem Computer“ → <b>Arial Black</b>, Höhe <b>20 mm</b>",
+      "Häkchen <b>„Stabilisieren“ an</b> → übertragen → sticken",
+      "Häkchen <b>„Stabilisieren“ aus</b> → daneben noch einmal sticken",
+      "Foto von beiden nebeneinander, auch schräg von der Seite"
+    ],
+    fragen:[["Welches „Anna“ sieht besser aus und warum?","mit / ohne"]]},
+  { nr:"11", titel:"Lage im Rahmen", tags:["V7","Experte"],
+    ziel:"Wenn das Design nicht in der Mitte des Rahmens liegt: stickt die Maschine es an der gezeichneten Stelle oder trotzdem in der Mitte?",
+    schritte:[
+      "Ein kleines Design öffnen (z. B. „Anna“ von Test 10)",
+      "Oben auf Experte umschalten, das Design in die <b>linke obere Ecke</b> des Rahmens ziehen",
+      "Im Inspektor Reiter „Design“ bei Start/Ende <b>Start = Designmitte</b> wählen",
+      "Übertragen → „Start“: wohin fährt der Rahmen? Zur gezeichneten Stelle oder zur Mitte?",
+      "Am Display ansehen, wo das Design liegt (Foto)",
+      "Sticken ist hier nicht nötig: „Abbrechen“ reicht"
+    ],
+    fragen:[["Wo lag das Design?","an der gezeichneten Stelle / in der Mitte"]]}
+];
+
+const SPAETER = [
+  { nr:"·", titel:"Verlauf auf dem Kalibrierblatt", tags:["V14","wartet auf A1"],
+    ziel:"Das Verlauf-Objekt wird erst noch ins Kalibrierblatt eingebaut (Aufgabe A1 am Rechner)."},
+  { nr:"·", titel:"Stippling-Probe", tags:["V16","Datei folgt"],
+    ziel:"Fläche etwa 60 × 40 mm mit Stippling 2,0 / 3,0 mm. Die Datei dafür wird noch vorbereitet."},
+  { nr:"·", titel:"Design dauerhaft in der Maschine speichern", tags:["V5","nur nach Zustimmung"],
+    ziel:"Schreibt dauerhaft in den Speicher der Maschine. Erst nach ausdrücklichem OK von Simon."}
+];
+
+const MESS = [
+  ["Satinbalken quer 1 mm, Breite","1,0"],["Satinbalken quer 2 mm, Breite","2,0"],
+  ["Satinbalken quer 4 mm, Breite","4,0"],["Satinbalken quer 8 mm, Breite","8,0"],
+  ["Satinbalken längs 1 mm, Breite","1,0"],["Satinbalken längs 2 mm, Breite","2,0"],
+  ["Satinbalken längs 4 mm, Breite","4,0"],["Satinbalken längs 8 mm, Breite","8,0"],
+  ["Balkenlänge (ein langer Balken)","30,0"],
+  ["Rotes Quadrat, Breite","30,0"],["Rotes Quadrat, Höhe","30,0"],
+  ["Kreis waagrecht","30,0"],["Kreis senkrecht","30,0"]
+];
+
+// ---------- Speicher: geteilt über db, sonst nur in diesem Browser ----------
+const stand = {};        // id -> {an?:bool, text?:string, werte?:{}}
+let db = null;
+const LS = "testtag_artista185";
+function lokalLaden(){ try{ Object.assign(stand, JSON.parse(localStorage.getItem(LS)||"{}")); }catch(e){} }
+function lokalSichern(){ try{ localStorage.setItem(LS, JSON.stringify(stand)); }catch(e){} }
+
+function sichern(id, feld){
+  stand[id] = Object.assign({}, stand[id], feld);
+  if (db){
+    db.doc("stand/"+id).set(stand[id]).catch(err=>{
+      setStatus("Konnte nicht speichern ("+(err&&err.code||"Fehler")+"). Häkchen nur in diesem Browser.");
+      lokalSichern();
+    });
+  } else lokalSichern();
+  zaehlen();
+}
+
+// ---------- Aufbau ----------
+const el = (t,a={},h="") => { const e=document.createElement(t); for(const k in a) e.setAttribute(k,a[k]); if(h) e.innerHTML=h; return e; };
+function tagsHtml(tags){ return tags.map(t=>`<span class="tag${/wichtig|wartet|Zustimmung|folgt/.test(t)?" warn":""}">${t}</span>`).join(""); }
+
+function karte(t, aktiv){
+  const k = el("section",{class:"karte","data-test":t.nr});
+  k.append(el("div",{class:"kopf"},`<span class="nr">${t.nr}</span><h2>${t.titel}</h2><span class="tags">${tagsHtml(t.tags)}</span>`));
+  k.append(el("p",{class:"ziel mut"},t.ziel));
+  if(!aktiv) return k;
+  const ul = el("ul",{class:"haken"});
+  t.schritte.forEach((s,i)=>{
+    const id = `t${t.nr}_s${i}`;
+    const li = el("li"); const lab = el("label",{for:id});
+    const cb = el("input",{type:"checkbox",id}); cb.dataset.k=id;
+    cb.addEventListener("change",()=>{ sichern(id,{an:cb.checked}); karteMarkieren(k); });
+    lab.append(cb, el("span",{},s)); li.append(lab); ul.append(li);
+  });
+  k.append(ul);
+  if (t.mess) k.append(messTabelle(t.mess));
+  (t.fragen||[]).forEach((f,i)=>{
+    const id = `t${t.nr}_f${i}`;
+    const d = el("div",{class:"frage"});
+    d.append(el("label",{for:id},`<b>${f[0]}</b>`));
+    const inp = el("input",{type:"text",id,placeholder:f[1]}); inp.dataset.t=id;
+    inp.addEventListener("change",()=>sichern(id,{text:inp.value}));
+    d.append(inp); k.append(d);
+  });
+  const nid = `t${t.nr}_notiz`;
+  k.append(el("label",{class:"feldname",for:nid},"Notizen (was auffiel, Dateiname des Fotos)"));
+  const ta = el("textarea",{id:nid,placeholder:"z. B. Faden gerissen bei Farbe 2, Foto IMG_4012"}); ta.dataset.t=nid;
+  ta.addEventListener("change",()=>sichern(nid,{text:ta.value}));
+  k.append(ta);
+  return k;
+}
+
+function messTabelle(art){
+  const box = el("div",{class:"tabelle"});
+  const tb = el("table");
+  tb.innerHTML = `<thead><tr><th>Messstelle</th><th>Soll (mm)</th><th>Gemessen (mm)</th></tr></thead>`;
+  const body = el("tbody");
+  MESS.forEach((m,i)=>{
+    const id = `m_${art}_${i}`;
+    const tr = el("tr");
+    tr.innerHTML = `<td><label for="${id}">${m[0]}</label></td><td class="soll">${m[1]}</td>`;
+    const td = el("td"); const inp = el("input",{type:"text",id,inputmode:"decimal",placeholder:"–"}); inp.dataset.t=id;
+    inp.addEventListener("change",()=>sichern(id,{text:inp.value}));
+    td.append(inp); tr.append(td); body.append(tr);
+  });
+  tb.append(body); box.append(tb); return box;
+}
+
+function karteMarkieren(k){
+  const cbs = k.querySelectorAll("input[type=checkbox]");
+  k.classList.toggle("fertig", cbs.length>0 && [...cbs].every(c=>c.checked));
+}
+
+function zaehlen(){
+  const cbs = document.querySelectorAll("#liste input[type=checkbox]");
+  const an = [...cbs].filter(c=>c.checked).length;
+  document.getElementById("zahl").textContent = `${an} / ${cbs.length}`;
+  document.getElementById("balken").style.width = (cbs.length? an/cbs.length*100 : 0)+"%";
+}
+
+function anzeigen(){
+  document.querySelectorAll("[data-k]").forEach(cb=>{ cb.checked = !!(stand[cb.dataset.k]&&stand[cb.dataset.k].an); });
+  document.querySelectorAll("[data-t]").forEach(f=>{
+    if (document.activeElement===f) return;
+    const v = stand[f.dataset.t] && stand[f.dataset.t].text; f.value = v || "";
+  });
+  document.querySelectorAll("#liste .karte").forEach(karteMarkieren);
+  zaehlen();
+}
+
+function setStatus(t){ document.getElementById("status").textContent = t; }
+
+const liste = document.getElementById("liste");
+TESTS.forEach(t=>liste.append(karte(t,true)));
+const sp = document.getElementById("spaeter");
+SPAETER.forEach(t=>sp.append(karte(t,false)));
+lokalLaden(); anzeigen();
+
+// geteilter Speicher
+(async ()=>{ return;
+  const uhr = setTimeout(()=>setStatus("Kein geteilter Speicher erreichbar: Häkchen bleiben nur in diesem Browser."),10000);
+  try{
+    db = window.claude && await window.claude.use("db");
+  }catch(e){ db = null; }
+  if(!db){ clearTimeout(uhr); setStatus("Häkchen werden nur in diesem Browser gespeichert (nicht angemeldet oder keine Berechtigung)."); return; }
+  db.collection("stand").onSnapshot(snap=>{
+    clearTimeout(uhr);
+    snap.docs.forEach(d=>{ stand[d.id] = Object.assign({}, d.data()); });
+    anzeigen();
+    setStatus("Gespeichert und geteilt: Häkchen und Notizen sieht jeder, der diese Seite öffnet.");
+  }, err=>{
+    clearTimeout(uhr);
+    db = null;
+    setStatus("Geteilter Speicher nicht lesbar ("+(err&&err.code||"Fehler")+"): Häkchen nur in diesem Browser.");
+  });
+})();
+</script>
+</body></html>
