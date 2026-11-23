@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Einfügen und Zeichnen (UX-Analyse C3: K1–K4, U1, U2), Commit (folgt)
+## 22.11.2026 – Einfügen und Zeichnen (UX-Analyse C3: K1–K4, U1, U2), Commit 036e4bd
 - **Kern:** `stichart_aendern` kennt **`applikation`** als Füllung (Umriss und Löcher bleiben, auch zurück zu
   Tatami usw.). Doku in `SCHNITTSTELLE.md`/`kern.ts` neu erzeugt.
 - **Applikation (K1):** Einfügen → „Applikation zeichnen“ (Stichart der Fläche wird Applikation, dann die freie Form
