@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Stippling wie das Original (N13, 4b.9; Commit folgt)
+## 22.11.2026 – Stippling wie das Original (N13, 4b.9; Commit 3ed8f21)
 - Objektart `stippling` rechnet jetzt nach dem Verfahren des Originals (`StippleFillInterface` in MOD1):
   - Wabengitter im Schlaufenabstand;
   - zufälliger Spannbaum;
