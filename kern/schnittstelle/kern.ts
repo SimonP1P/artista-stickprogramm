@@ -108,6 +108,14 @@ export type ApplikationJson = {
   /** Breite des Zickzack-Heftstichs in mm (0,5 … 10; Original 4,0) */
   heft_breite?: number | null;
   /**
+   * Herausfahren (Frame Out des Originals, `Applique::GetJumpoutPoint`): vor jedem Halt der Applikation (nach der
+   * Platzierungslinie, bei „Zuschneiden“ nach der Schnittlinie, nach dem Heften) fährt der Rahmen ohne Einstich
+   * 12 mm über die Mitte der Oberkante – Stoff auflegen und zuschneiden geht leichter –, danach springt er zurück.
+   * Höchstens bis zum Rand des Stickfelds. Standard aus (im Original an, sobald ein Halt eingestellt ist)
+   * @default false
+   */
+  herausfahren?: boolean;
+  /**
    * **Closest Join nur für dieses Objekt:** ohne eigenen Einstich beginnt es nahe dem vorigen Ende (wie
    * `kuerzeste_verbindung` des Designs). „Bild umwandeln“ und „SVG einlesen“ setzen es, wenn sie in ein vorhandenes
    * Design einfügen (Auto Digitizer: „determines the stitching sequence based on closest join“, Handbuch S. 116)

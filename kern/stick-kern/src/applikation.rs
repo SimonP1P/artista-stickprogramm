@@ -27,6 +27,12 @@
 //!   nach innen in den Applikationsstoff (Schieberegler: „Blanket immer innen“), Rücken auf dem Umriss; Breite wie die
 //!   Abdeckbreite, Abstand ohne Angabe 2,0 mm (Vorlage 0x2728; die 0,5 mm der Satin-Vorgabe wären für Blanket zu dicht
 //!   – eigene Festlegung).
+//! - **Herausfahren** (Frame Out, `herausfahren`; Bericht 12 §9): das Original fügt vor jedem Halt (Platzierung,
+//!   Schnittlinie, Heften: `Applique::RegenerateComponents` 0x1000e6c0, Bausteine 0x10012ca0/0x10012e50/0x10013010)
+//!   ein Handstich-Objekt der Stichart Sprung (0x2713) mit einem Punkt ein: `GetJumpoutPoint` 0x1000f2f0 = Mitte der
+//!   Oberkante (`GetFullExtents`) + Versatz 0x3f2a/0x3f2b = (0; 2160 = **12 mm**). Hoch (Code), Wirkung an der 185
+//!   offen (Vor Ort). Im Kern als Option, Standard aus (Entscheidung des Nutzers 22.11.2026); der Punkt bleibt im
+//!   Stickfeld (eigene Festlegung). Umgesetzt beim Verbinden (`design.rs`, `nachbearbeitung::Zusatz::herausfahren`).
 
 use crate::design::{Objekt, ObjektArt, SatinOptionen, Unterlage};
 use crate::geometrie::{Linie, flaeche_vorzeichen, geschlossen_ohne_endpunkt, knick_grad, versatz_ring};
@@ -46,6 +52,8 @@ pub const HEFT_ABSTAND: f64 = 5.0;
 pub const BREITE: f64 = 5.0;
 /// Satinabstand des Abdeckstichs (0x3f30 = 90)
 pub const ABSTAND: f64 = 0.5;
+/// Herausfahren: so weit über der Oberkante der Applikation (0x3f2b = 2160; 0x3f2a = 0 → Mitte)
+pub const HERAUSFAHREN: f64 = 12.0;
 
 /// Vorgaben einer Applikation (mm).
 #[derive(Clone, Debug, PartialEq)]
@@ -73,6 +81,8 @@ pub struct ApplikationVorgabe {
     pub versatz: f64,
     /// Teil-Abdeckung: kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt
     pub teilabdeckung: bool,
+    /// Herausfahren (Frame Out) vor jedem Halt
+    pub herausfahren: bool,
 }
 
 impl Default for ApplikationVorgabe {
@@ -90,6 +100,7 @@ impl Default for ApplikationVorgabe {
             zuschneiden: false,
             versatz: 0.0,
             teilabdeckung: false,
+            herausfahren: false,
         }
     }
 }
@@ -217,6 +228,31 @@ pub fn applikation_objekte(v: &ApplikationVorgabe, name: &str) -> Vec<Objekt> {
         });
     }
     out
+}
+
+/// **Herausfahr-Punkt** (Frame Out, `Applique::GetJumpoutPoint` 0x1000f2f0): Mitte der Oberkante aller Punkte der
+/// Applikation (Original: `GetFullExtents` über alle Lagen) plus 12 mm nach oben (+y). Liegt er außerhalb des
+/// Stickfelds (`im_feld`), rückt er in 0,5-mm-Schritten zur Oberkante zurück (eigene Festlegung; das Original prüft
+/// das hier nicht).
+pub fn herausfahr_punkt<'a>(
+    punkte: impl Iterator<Item = &'a crate::geometrie::Punkt>,
+    im_feld: &dyn Fn(crate::geometrie::Punkt) -> bool,
+) -> Option<crate::geometrie::Punkt> {
+    let (mut x0, mut x1, mut y1) = (f64::MAX, f64::MIN, f64::MIN);
+    for q in punkte {
+        x0 = x0.min(q.x);
+        x1 = x1.max(q.x);
+        y1 = y1.max(q.y);
+    }
+    if x0 > x1 {
+        return None;
+    }
+    let mitte = (x0 + x1) / 2.0;
+    let mut d = HERAUSFAHREN;
+    while d > 0.0 && !im_feld(crate::geometrie::p(mitte, y1 + d)) {
+        d -= 0.5;
+    }
+    Some(crate::geometrie::p(mitte, y1 + d.max(0.0)))
 }
 
 /// Teil-Abdeckung (Partial Appliqué): einen Abdeckstich (geschlossene Satinsäule oder Blanket-Ring) dort weglassen, wo
@@ -496,5 +532,48 @@ mod tests {
         let f = d.berechnen().unwrap();
         let max_r = f.stiche.iter().map(|s| abstand(s.p(), p(0.0, 0.0))).fold(0.0, f64::max);
         assert!(max_r < 20.3, "Blanket nach außen: {max_r}");
+    }
+
+    #[test]
+    fn herausfahren_vor_jedem_halt() {
+        // Halte-Punkte: (Position des Farbwechsels, Stich davor ist ein Sprung?)
+        let halte = |json: &str| {
+            let d = Design::aus_json(json).unwrap();
+            let f = d.berechnen().unwrap();
+            assert!(d.ausserhalb(&f).is_empty(), "außerhalb des Stickfelds");
+            let oben = f.stiche.iter().filter(|s| s.art == crate::Art::Stich).map(|s| s.y).fold(f64::MIN, f64::max);
+            let wechsel: Vec<(crate::geometrie::Punkt, bool)> = f
+                .stiche
+                .windows(2)
+                .filter(|w| w[1].art == crate::Art::Farbwechsel)
+                .map(|w| (w[1].p(), w[0].art == crate::Art::Sprung))
+                .collect();
+            (oben, wechsel)
+        };
+        let rechteck = |mitte_y: f64, extra: &str| {
+            format!(
+                r##"{{"rahmen": "artista 130 x 100", "objekte": [{{"art": "applikation", {extra}
+                "umriss": {{"rechteck": {{"mitte": [0, {mitte_y}], "breite": 40, "hoehe": 20}}}}, "farbe": "#2e86c1"}}]}}"##
+            )
+        };
+        // ohne: der Rahmen hält am Ende der Lage
+        let (oben, w) = halte(&rechteck(0.0, ""));
+        assert_eq!(w.len(), 2);
+        assert!(w.iter().all(|(q, _)| q.y <= oben + 1e-6));
+        // mit: vor beiden Halten Sprung zur Mitte der Oberkante + 12 mm
+        let (oben, w) = halte(&rechteck(0.0, r#""herausfahren": true,"#));
+        assert_eq!(w.len(), 2);
+        for (q, sprung) in &w {
+            assert!(sprung, "kein Sprung vor dem Halt");
+            assert!(q.x.abs() < 1e-6 && (q.y - (oben + HERAUSFAHREN)).abs() < 1e-6, "{q:?}, oben {oben}");
+        }
+        // Zuschneiden: drei Halte, alle mit Herausfahren
+        let (_, w) = halte(&rechteck(0.0, r#""herausfahren": true, "stil": "zuschneiden","#));
+        assert_eq!(w.len(), 3);
+        assert!(w.iter().all(|(q, s)| *s && q.y > 20.0));
+        // nah am oberen Rand (Stickfeld 100 × 130, bis y = 65): Punkt bleibt im Feld
+        let (oben, w) = halte(&rechteck(50.0, r#""herausfahren": true,"#));
+        assert!(oben + HERAUSFAHREN > 65.0);
+        assert!(w.iter().all(|(q, _)| q.y <= 65.0 + 1e-6 && q.y > oben), "{w:?}");
     }
 }

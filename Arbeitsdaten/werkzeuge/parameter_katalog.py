@@ -394,6 +394,12 @@ P('objekt.appl.versatz', G, 'Versatz', 'Abdeck- und Heftstich gegen die Platzier
 P('objekt.appl.teilabdeckung', G, 'Teil-Abdeckung', 'kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt '
   '(Partial Appliqué)', ebene='objekt', gilt=['applikation'], o='teilabdeckung', einheit='an/aus', std=False,
   quelle=Q + ': 0x3f26 = 0; Handbuch S. 248–249; Schnitt eigene Festlegung', modus='einfach')
+P('objekt.appl.herausfahren', G, 'Herausfahren (Frame Out)', 'vor jedem Halt fährt der Rahmen ohne Einstich 12 mm über '
+  'die Mitte der Oberkante (Stoff auflegen, zuschneiden), danach zurück; höchstens bis zum Rand des Stickfelds',
+  ebene='objekt', gilt=['applikation'], o='herausfahren', einheit='an/aus', std=False,
+  quelle=Q + ': 0x3f2a/0x3f2b = 0/2160, Applique::GetJumpoutPoint 0x1000f2f0, Sprung 0x2713 vor jedem Halt '
+  '(RegenerateComponents 0x1000e6c0, hoch); im Original an, sobald ein Halt eingestellt ist – Standard aus = '
+  'Entscheidung des Nutzers; Rand des Stickfelds eigene Festlegung')
 P('objekt.appl.breite', G, 'Breite der Abdeckung', '', ebene='objekt', gilt=['applikation'], o='breite', einheit='mm',
   std=5.0, bereich=[0.5, 10], quelle=Q + ': 0x3f27 = 900')
 P('objekt.appl.abstand', G, 'Abstand der Abdeckung', 'Satinabstand bzw. Abstand der Blanket-Zähne', ebene='objekt',

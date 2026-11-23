@@ -4099,6 +4099,25 @@
    "modus": "einfach"
   },
   {
+   "id": "objekt.appl.herausfahren",
+   "gruppe": "Applikation",
+   "name": "Herausfahren (Frame Out)",
+   "wirkung": "vor jedem Halt fährt der Rahmen ohne Einstich 12 mm über die Mitte der Oberkante (Stoff auflegen, zuschneiden), danach zurück; höchstens bis zum Rand des Stickfelds",
+   "ebene": "objekt",
+   "gilt_fuer": [
+    "applikation"
+   ],
+   "json_design": null,
+   "json_objekt": "herausfahren",
+   "einheit": "an/aus",
+   "standard": false,
+   "bereich": null,
+   "werte": [],
+   "stoff": false,
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f2a/0x3f2b = 0/2160, Applique::GetJumpoutPoint 0x1000f2f0, Sprung 0x2713 vor jedem Halt (RegenerateComponents 0x1000e6c0, hoch); im Original an, sobald ein Halt eingestellt ist – Standard aus = Entscheidung des Nutzers; Rand des Stickfelds eigene Festlegung",
+   "modus": "experte"
+  },
+  {
    "id": "objekt.appl.breite",
    "gruppe": "Applikation",
    "name": "Breite der Abdeckung",

@@ -174,6 +174,9 @@ pub struct Zusatz<'a> {
     pub objekt: &'a [usize],
     /// bedeckte Flächen je Teil für den Verbindertyp `verdeckt`; ohne Angabe bleibt `verdeckt` ein Sprung
     pub abdeckung: Option<&'a Abdeckung>,
+    /// Herausfahr-Punkt je Teil (Frame Out der Applikation): folgt auf das Teil ein Farbwechsel innerhalb desselben
+    /// Objekts, fährt der Rahmen vor dem Halt ohne Einstich dorthin
+    pub herausfahren: &'a [Option<Punkt>],
 }
 
 /// Zwischenstiche eines Lauf-Verbinders von a nach b (ohne a und b), gleich lang, höchstens `laenge`.
@@ -271,6 +274,14 @@ pub fn wege_verbinden_zusatz(
             w = vernaehen_ende(&w, e);
         }
         if vorher.is_some_and(|(vf, _)| vf != farbe) {
+            // Herausfahren (Frame Out): erst zum Herausfahr-Punkt, dort halten, dann zurück zum nächsten Weg
+            if let Some(q) = zusatz.herausfahren.get(teil_nr[i - 1]).copied().flatten()
+                && objekt(teil_nr[i - 1]) == objekt(teil_nr[i])
+                && abstand(pos, q) > 1e-9
+            {
+                folge.sprung(q);
+                pos = q;
+            }
             folge.farbwechsel(farbe);
         }
         if let Some(l) = lauf[i] {

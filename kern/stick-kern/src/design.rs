@@ -2494,6 +2494,22 @@ impl Design {
             teile = teile_ab(start)?;
         }
         let herkunft: Vec<usize> = teile.iter().map(|t| t.3).collect();
+        // Herausfahren (Frame Out) je Applikation: Punkt über allen Wegen des Objekts (`applikation::herausfahr_punkt`)
+        let mut herausfahr_punkte: BTreeMap<usize, Option<Punkt>> = BTreeMap::new();
+        for &h in &herkunft {
+            if let Some(ObjektArt::Applikation(v)) = self.objekte.get(h).map(|o| &o.art)
+                && v.herausfahren
+            {
+                herausfahr_punkte.entry(h).or_insert_with(|| {
+                    crate::applikation::herausfahr_punkt(
+                        teile.iter().filter(|t| t.3 == h).flat_map(|t| t.1.iter().flatten()),
+                        &|q| self.rahmen.enthaelt(q),
+                    )
+                });
+            }
+        }
+        let herausfahren: Vec<Option<Punkt>> =
+            herkunft.iter().map(|h| herausfahr_punkte.get(h).copied().flatten()).collect();
         let buchstabe_teil: Vec<usize> = teile.iter().map(|t| t.4).collect();
         let aufgeloest: Vec<usize> = teile.iter().map(|t| t.5).collect();
         let (teile, auto_jump): (Vec<_>, Vec<_>) = teile.into_iter().map(|(f, w, a, _, _, _)| ((f, w), a)).unzip();
@@ -2533,6 +2549,7 @@ impl Design {
             eigene: &verbinder,
             objekt: &herkunft,
             abdeckung: abdeckung.as_ref(),
+            herausfahren: &herausfahren,
         };
         let folge =
             crate::nachbearbeitung::wege_verbinden_zusatz(&teile, &self.einstellungen.verbinder, start, &zusatz);
@@ -3122,6 +3139,7 @@ fn objekt_aus_json(o: ObjektJson) -> Objekt {
                     zuschneiden: a.stil == Some(crate::format::ApplikationStil::Zuschneiden),
                     versatz: a.versatz.unwrap_or(0.0) / 100.0,
                     teilabdeckung: a.teilabdeckung,
+                    herausfahren: a.herausfahren,
                 }),
                 farbe: a.g.farbe,
             }

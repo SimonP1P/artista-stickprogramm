@@ -52,9 +52,8 @@ Festlegung**; kein Musterdesign enthält Blanket – die 0x1a-Datensätze in But
 Kern: `sticharten/blanket.rs`, Objekt `"art": "blanket"` (punkte, geschlossen, abstand, breite, versatz mitte/seite).
 
 ## 7. Offen
-- **Frame Out** (0x3f2a/0x3f2b = 0 / 2160: 12 mm über der Oberkante, `Applique::GetJumpoutPoint` 0x1000f2f0 =
-  Oberkante Mitte + Versatz): ob und wann das Original den Rahmen nach der Platzierungslinie dorthin fahren lässt, ist
-  nicht gelesen. Der BERNINA-Dialog (DLG 1455) zeigt das Feld nicht. Nicht umgesetzt (Frage an den Nutzer).
+- Frame Out: Wirkung an der 185 (Vor Ort V15); „With Stop“ (0x3f1c/0x3f1f = 1) statt Farbwechsel – die 185 hält an
+  jedem Farbwechsel, im Kern immer Farbwechsel.
 - Schnitt der Teil-Abdeckung im Original (`AppliqueOverlapProcessor::FormIntersections` 0x10014460) und Richtung
   „clockwise between the start and end points“.
 - Felder 0x3f22–0x3f25, 0x3f2c, 0x3f29 (Zählwerte/Stopps des allgemeinen Wilcom-Dialogs DLG 1246, für die 185 ohne
@@ -104,3 +103,44 @@ Quellen:
 - Platzierung und Heften bleiben ganz.
 - In der Oberfläche: Haken im Inspektor oder Anordnen → „Teil-Abdeckung (Partial Appliqué)“.
 
+## 9. Herausfahren (Frame Out) — Sicherheit: hoch (Code), Wirkung an der 185 offen
+Umsetzung N14 (22.11.2026). Quellen MOD1:
+- **Punkt:** `Applique::GetJumpoutPoint` 0x1000f2f0 = 0x1000f230 + Versatz (Applique +0xb8/+0xbc = Werte +0x54/+0x58
+  = 0x3f2a/0x3f2b = **0 / 2160**).
+  - 0x1000f230 nimmt `GetFullExtents` (0x1000f0b0, Vereinigung der Begrenzungen aller Lagen) und daraus
+    x = (links + rechts)/2, y = oberer Rand.
+  - Also **Mitte der Oberkante + 12 mm nach oben**. Gleich bei `AutoAppliqueGroup::GetJumpoutPoint` 0x1001b520 =
+    `GetTopCenter` + Versatz +0xbc/+0xc0.
+- **Wann:** `Applique::RegenerateComponents` 0x1000e6c0 baut die Lagen der Reihe nach:
+
+| Baustein | Lage | Bedingung |
+|---|---|---|
+| 0x10012bb0 | Platzierung | – |
+| 0x10012ca0 | Herausfahren | Halt nach der Platzierung (+0x74 = Werte +0x10 = 0x3f1c) ≠ 0 |
+| 0x10012d60 | Schnittlinie | Stil |
+| 0x10012e50 | Herausfahren | Stil (+0x68 = 0x3f31) = 0 (Trim in Place) und Halt nach der Platzierung ≠ 0 |
+| 0x10012f20 | Heften | – |
+| 0x10013010 | Herausfahren | Halt nach dem Heften (+0x80 = Werte +0x1c = 0x3f1f) ≠ 0 |
+| 0x100130f0 | Abdecken | – |
+
+- **Was:** 0x10011a00 legt ein `ManualObject` (Handstich) mit **einem** Punkt (`AddCuspPoint`) und der Stichart
+  **0x2713** an.
+  - 0x2713 = Sprung: im Stil steht er nur mit 0x2711/0x2712 = 12,7 / 7,0 mm, den Werten von Auto Jump. Sicherheit:
+    mittel.
+  - Bei Halt = 1 („With Stop“) kommt eine zweite Funktions-Eigenschaft dazu (`AddFuncProperty`; Stopp, nicht
+    gelesen).
+  - Der Rahmen fährt also ohne Einstich zum Punkt und hält dort an. Danach springt er zum Anfang der nächsten Lage.
+- **Folge im Original:** Die Vorgabe für beide Halte ist 2 (Farbwechsel). Das Original fährt also bei jeder
+  Applikation heraus, auch wenn der BERNINA-Dialog (DLG 1455) das Feld nicht zeigt.
+- Kein Musterdesign enthält eine Applikation (Objektklassen aller 287 ART: Linie, Fläche, Text, Manuelle Stiche,
+  Ellipse, Gruppe, Objekt, Ring). Eine Messung ist deshalb nicht möglich.
+
+**Kern** (`applikation::herausfahr_punkt`, `nachbearbeitung::Zusatz::herausfahren`, Feld `herausfahren`):
+- Vor jedem Farbwechsel innerhalb derselben Applikation kommt ein Sprung zum Punkt. Der Farbwechsel steht dann dort,
+  danach folgt der Sprung zum nächsten Weg.
+- Die Oberkante wird aus allen Stichwegen der Applikation berechnet (mit Abdeckband). Das entspricht `GetFullExtents`
+  über alle Lagen.
+- **Standard aus** (Entscheidung des Nutzers 22.11.2026: als Option, Test vor Ort). Das Original fährt immer heraus;
+  ob das an der 185 Vorteile bringt, zeigt Vor Ort V15.
+- **Eigene Festlegung:** Liegt der Punkt außerhalb des Stickfelds, rückt er in 0,5-mm-Schritten bis an die
+  Oberkante zurück. Ein Sprung aus dem Feld würde das Design für die Maschine größer machen als den Rahmen.

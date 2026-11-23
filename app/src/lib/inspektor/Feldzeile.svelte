@@ -94,6 +94,7 @@
     knickwinkel_: "Knickwinkel",
     stich: "Stichart",
     teilabdeckung: "Teil-Abdeckung",
+    herausfahren: "Herausfahren (Frame Out)",
     aufloesung: "Auflösung",
     hintergrund: "Stoff",
     abstand_min: "Abstand dunkel",

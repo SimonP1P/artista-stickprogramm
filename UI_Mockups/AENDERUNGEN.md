@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Applikation: Herausfahren / Frame Out (N14, 4b.10; Commit folgt)
+- **Neues Feld** `herausfahren` (bool, Standard `false`) an `applikation`. Ist es an, fährt der Rahmen vor jedem Halt
+  der Applikation ohne Einstich 12 mm über die Mitte der Oberkante. Das gilt nach der Platzierung, bei „zuschneiden“
+  nach der Schnittlinie und nach dem Heften. Dort hält er an und springt dann zurück.
+- Der Punkt bleibt im Stickfeld (eigene Festlegung).
+- Quelle ist `Applique::GetJumpoutPoint` des Originals; dort ist es immer an (Bericht 12 §9).
+- In der Stichfolge kommen nur ein `sprung` vor dem `farbwechsel` und einer danach hinzu.
+- Parameterkatalog: `objekt.appl.herausfahren`, Modus experte.
+- **Oberfläche (umgesetzt):** Beschriftung „Herausfahren (Frame Out)“ in `Feldzeile.svelte`. Das Feld erscheint im
+  Inspektor unter X (Experte), weil es nicht in `E_FELDER` steht.
+
 ## 22.11.2026 – Stippling wie das Original (N13, 4b.9; Commit 3ed8f21)
 - Objektart `stippling` rechnet jetzt nach dem Verfahren des Originals (`StippleFillInterface` in MOD1):
   - Wabengitter im Schlaufenabstand;
