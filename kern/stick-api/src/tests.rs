@@ -1104,3 +1104,25 @@ fn kreuzstich() {
     let e = ausfuehren(&k, "design_berechnen", json!({ "design": r["design"] })).unwrap();
     assert!(!e["stiche"].as_array().unwrap().is_empty());
 }
+
+/// Reiter „Einzelwerte“: wirksame Einstellungen = Werte des Stoffs, überschrieben vom Design (Nutzer 23.11.2026).
+#[test]
+fn einstellungen_wirksam_je_stoff() {
+    let k = kontext();
+    let wert = |d: Value| ausfuehren(&k, "einstellungen_wirksam", json!({ "design": d })).unwrap();
+    let a = wert(json!({"stoff": "0 Software Defaults", "objekte": []}));
+    assert_eq!(a["satin"]["zugausgleich"], json!(0.2), "Software Defaults: Zugausgleich 0,20 mm");
+    let stoffe = ausfuehren(&k, "stoffe_liste", json!({})).unwrap();
+    let anders = stoffe
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|s| s["name"].as_str().unwrap().to_string())
+        .map(|n| (n.clone(), wert(json!({"stoff": n, "objekte": []}))))
+        .find(|(_, e)| e["satin"]["zugausgleich"] != a["satin"]["zugausgleich"]);
+    assert!(anders.is_some(), "mindestens ein Stoff ändert den Zugausgleich");
+    // vom Design überschrieben; Objekte mit Fehlern stören nicht
+    let b = wert(json!({"stoff": "0 Software Defaults", "einstellungen": {"satin": {"zugausgleich": 0.5}},
+        "objekte": [{"art": "gibt_es_nicht"}]}));
+    assert_eq!(b["satin"]["zugausgleich"], json!(0.5));
+}

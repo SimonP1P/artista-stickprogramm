@@ -1,12 +1,14 @@
 <script lang="ts">
   // Reiter „Einzelwerte“ (UEBERGABE §3): Werte des Parameterkatalogs (`parameter_katalog`) unter `einstellungen` – für das
   // ganze Design oder je Objekt (4b.16). Herkunft: Standard · Stoff · Design · geändert; Zurücksetzen löscht den Schlüssel.
+  // Leere Felder zeigen den Wert, der gilt (Stoff/Standard/Design) – grau als Platzhalter.
   import { kern, type Parameter } from "$kern/kern";
   import { arbeit } from "../arbeit.svelte";
   import Icon from "../Icon.svelte";
   import { IC } from "../icons";
   import { lesen, zahl } from "../zahl";
   import { anwenderText } from "../text";
+  import { stoffName } from "../listen.svelte";
 
   let katalog = $state.raw<Parameter[]>([]);
   let ebene = $state<"design" | "objekt">("design");
@@ -14,6 +16,17 @@
 
   $effect(() => {
     kern("parameter_katalog", {}).then((k) => (katalog = k)).catch(() => {});
+  });
+
+  // Werte, die gelten, wenn ein Feld leer bleibt: Stoff, überschrieben vom Design (Kern `einstellungen_wirksam`) –
+  // statt „je Stoff“ steht die Zahl des gewählten Stoffs im Feld (Nutzer 23.11.2026)
+  let wirksam = $state.raw<unknown>(null);
+  const grundlage = $derived(
+    JSON.stringify({ version: arbeit.design.version, stoff: arbeit.design.stoff, einstellungen: arbeit.design.einstellungen }),
+  );
+  $effect(() => {
+    const d = JSON.parse(grundlage);
+    kern("einstellungen_wirksam", { design: d }).then((e) => (wirksam = e)).catch(() => (wirksam = null));
   });
 
   const i = $derived(arbeit.auswahl.length === 1 ? arbeit.auswahl[0] : -1);
@@ -45,12 +58,23 @@
   function wertUndHerkunft(p: Parameter) {
     const pfad = teile(p);
     const d = holen(arbeit.design.einstellungen, pfad);
+    // gilt für das Design ohne eigenen Wert: vom Kern (Stoff + Design), sonst der Standard des Katalogs
+    const gilt = holen(wirksam, pfad) ?? p.standard;
     if (ebene === "objekt" && o) {
       const w = holen(o.einstellungen, pfad);
-      if (w !== undefined) return { wert: w, herkunft: "geändert", erbt: d ?? p.standard };
+      if (w !== undefined) return { wert: w, herkunft: "geändert", erbt: gilt };
       if (d !== undefined) return { wert: undefined, herkunft: "Design", erbt: d };
     } else if (d !== undefined) return { wert: d, herkunft: "geändert", erbt: p.standard };
-    return { wert: undefined, herkunft: p.stoff ? "Stoff" : "Standard", erbt: p.standard };
+    return { wert: undefined, herkunft: p.stoff ? "Stoff" : "Standard", erbt: gilt };
+  }
+
+  /** Text im leeren Auswahlfeld: woher der Wert kommt und welcher es ist */
+  const vonText = (h: string) => (h === "Stoff" ? "vom Stoff" : h === "Design" ? "wie Design" : "Standard");
+  function herkunftTitel(h: string) {
+    if (h === "Stoff") return `Wert vom Stoff „${stoffName(arbeit.design.stoff)}“ – ändert sich mit dem Stoff. Eine Zahl eingeben überschreibt ihn.`;
+    if (h === "Design") return "Wert des ganzen Designs – eine Zahl eingeben ändert ihn nur für dieses Objekt.";
+    if (h === "geändert") return "Hier geändert – der Pfeil setzt zurück.";
+    return "Standardwert – eine Zahl eingeben überschreibt ihn.";
   }
 
   function setzen(p: Parameter, v: unknown) {
@@ -117,7 +141,7 @@
     <label class="seg-opt" style="flex:1; justify-content:center"><input type="radio" name="ewe" checked={ebene === "design"} onchange={() => (ebene = "design")} />Ganzes Design</label>
     <label class="seg-opt" style="flex:1; justify-content:center" class:aus={!o}><input type="radio" name="ewe" disabled={!o} checked={ebene === "objekt"} onchange={() => (ebene = "objekt")} />{o ? `Objekt Nr. ${i + 1}` : "Objekt (keins gewählt)"}</label>
   </div>
-  <span class="mut small">Reihenfolge: Stoff → Design → Objekt → Felder direkt am Objekt. Leeres Feld = geerbter Wert.</span>
+  <span class="mut small">Graue Werte gelten von selbst – vom Stoff „{stoffName(arbeit.design.stoff)}“ oder als Standard. Eine Zahl eingeben überschreibt sie{ebene === "objekt" ? " nur für dieses Objekt" : ""}.</span>
   <label class="small" style="display:flex; gap:6px; align-items:center"><input type="checkbox" bind:checked={alle} />auch automatische Werte zeigen</label>
   <div style="display:flex; flex-wrap:wrap; gap:6px">
     {#if ebene === "objekt"}
@@ -142,14 +166,14 @@
             const v = (ev.currentTarget as HTMLSelectElement).value;
             setzen(p, v === "" ? undefined : v === "an");
           }}>
-            <option value="">geerbt ({anzeigen(w.erbt)})</option><option value="an">an</option><option value="aus">aus</option>
+            <option value="">{vonText(w.herkunft)} ({anzeigen(w.erbt)})</option><option value="an">an</option><option value="aus">aus</option>
           </select>
         {:else if p.werte.length}
           <select class="input sm" value={typeof w.wert === "string" ? w.wert : ""} onchange={(ev) => {
             const v = (ev.currentTarget as HTMLSelectElement).value;
             setzen(p, v === "" ? undefined : v);
           }}>
-            <option value="">geerbt ({anzeigen(w.erbt)})</option>
+            <option value="">{vonText(w.herkunft)} ({anzeigen(w.erbt)})</option>
             {#each p.werte as x (x)}<option value={x}>{x}</option>{/each}
           </select>
         {:else}
@@ -158,7 +182,8 @@
             style="width:80px"
             inputmode="decimal"
             value={typeof w.wert === "number" ? zahl(w.wert, 3) : ""}
-            placeholder={p.stoff && w.herkunft === "Stoff" ? "je Stoff" : anzeigen(w.erbt)}
+            placeholder={anzeigen(w.erbt)}
+            title={herkunftTitel(w.herkunft)}
             onchange={(ev) => {
               const t = (ev.currentTarget as HTMLInputElement).value.trim();
               if (t === "") return setzen(p, undefined);
@@ -168,7 +193,7 @@
           />
           <span class="unit">{p.einheit}</span>
         {/if}
-        <span class="src" class:src-mod={w.herkunft === "geändert"} class:src-stoff={w.herkunft === "Stoff"} class:src-erbt={w.herkunft === "Design"}>{w.herkunft}</span>
+        <span class="src" class:src-mod={w.herkunft === "geändert"} class:src-stoff={w.herkunft === "Stoff"} class:src-erbt={w.herkunft === "Design"} title={herkunftTitel(w.herkunft)}>{w.herkunft}</span>
         {#if w.herkunft === "geändert"}
           <button class="tb sm" aria-label="Zurücksetzen" title="Zurücksetzen" onclick={() => setzen(p, undefined)}><Icon d={IC.zuruecksetzen} groesse="s" /></button>
         {/if}

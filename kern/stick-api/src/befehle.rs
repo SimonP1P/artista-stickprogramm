@@ -816,6 +816,24 @@ pub fn in_knoten_umwandeln(k: &Kontext, e: ObjektEingabe) -> Result<ObjektWert, 
         })
 }
 
+/// Wirksame Einstellungen des Designs: die Werte des Stoffs, überschrieben von `einstellungen` – sie gelten für jedes
+/// Objekt ohne eigene Werte. Reiter „Einzelwerte“ (Nutzer 23.11.2026): in leeren Feldern steht dieser Wert statt
+/// „je Stoff“. Gelesen werden nur `stoff` und `einstellungen` (Objekte ohne Bedeutung, Fehler darin stören nicht).
+pub fn einstellungen_wirksam(_: &Kontext, e: DesignEingabe) -> Result<stick_kern::einstellungen::Einstellungen, Fehler> {
+    let mut v = serde_json::Map::new();
+    if let Some(o) = e.design.0.as_object() {
+        for k in ["version", "stoff", "einstellungen"] {
+            if let Some(x) = o.get(k) {
+                v.insert(k.into(), x.clone());
+            }
+        }
+    }
+    if let Some(s) = &e.stoff {
+        v.insert("stoff".into(), s.clone().into());
+    }
+    Ok(stick_kern::design::Design::aus_value(&Value::Object(v))?.einstellungen)
+}
+
 /// Wirksame Werte eines Objekts (Inspektor, Wunsch Nutzer 21.11.2026): für leere Felder der Wert, mit dem der Kern
 /// tatsächlich rechnet, und woher er kommt (`stick_kern::werte`).
 pub fn objekt_werte(k: &Kontext, e: ObjektEingabe) -> Result<Vec<stick_kern::werte::WirksamerWert>, Fehler> {

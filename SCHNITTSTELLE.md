@@ -773,6 +773,7 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `design_formen` | DesignEingabe | ObjektForm[] | Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus |
 | `design_pruefen` | DesignEingabe | Pruefung | Design prüfen, ohne Stiche zu berechnen: Fehler (mit Objektnummer) und Hinweise |
 | `design_schema` | Leer | unknown | JSON-Schema des Design-Formats (Felder, Standardwerte, Auswahlwerte, Beschreibungen) |
+| `einstellungen_wirksam` | DesignEingabe | Einstellungen | Wirksame Einstellungen des Designs (Stoff, überschrieben von `einstellungen`) – Reiter „Einzelwerte“: Wert in leeren Feldern |
 | `exp_speichern` | ExpEingabe | number | Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes) |
 | `farben_mischen` | FarbenMischenEingabe | FarbenMischenErgebnis | Farben mischen (Color Blending): Objekt in zwei Lagen mit gegenläufigem Verlauf teilen, obere Lage in der zweiten Farbe, beide gruppiert |
 | `fuellmuster_liste` | Leer | MusterInfo[] | Füllmuster (242) mit Linien einer Kachel für die Vorschau |

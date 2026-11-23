@@ -399,6 +399,9 @@ befehle! {
     design_berechnen: befehle::DesignEingabe => befehle::Ergebnis,
     /// Formen je Objekt (Umrisse, Linien, Satinseiten, Ein-/Ausstich) zum Zeichnen und Bearbeiten mit der Maus
     design_formen: befehle::DesignEingabe => Vec<stick_kern::design::ObjektForm>,
+    /// Wirksame Einstellungen des Designs (Stoff, überschrieben von `einstellungen`) – Reiter „Einzelwerte“: Wert in
+    /// leeren Feldern
+    einstellungen_wirksam: befehle::DesignEingabe => stick_kern::einstellungen::Einstellungen,
     /// Wirksame Werte eines Objekts: für leere Felder der Wert, mit dem der Kern rechnet (Stil/Stoff, Alphabet,
     /// Füllmuster, Motivsatz, Vorlage) – Anzeige im Inspektor statt „Stil“
     objekt_werte: befehle::ObjektEingabe => Vec<stick_kern::werte::WirksamerWert>,

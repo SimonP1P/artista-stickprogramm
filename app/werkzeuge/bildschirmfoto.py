@@ -104,6 +104,7 @@ def main():
               "step_muster_liste", "parameter_katalog", "motive_liste", "craft_vorlagen", "vorlagen_liste"):
         antworten[b] = api(stick, b, {})
     antworten["ueberdeckungen"] = api(stick, "ueberdeckungen", {"design": design})
+    antworten["einstellungen_wirksam"] = api(stick, "einstellungen_wirksam", {"design": design})
     if o.auswahl is not None:
         # Inspektor: wirksame Werte des gewählten Objekts
         antworten["objekt_werte"] = api(stick, "objekt_werte", {"design": design, "objekt": o.auswahl})

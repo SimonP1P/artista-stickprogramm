@@ -134,6 +134,7 @@ Eckpunkt, `{"kurve": [x, y]}` = Kurvenpunkt, `geschlossen`). Alle Objekte: `farb
 | `rahmen_speichern`, `rahmen_loeschen` | Dialog „Eigene Rahmen“: speichern (gleicher Name ersetzt) bzw. löschen; Ergebnis = neue Rahmenliste |
 | `motiv_loeschen` | Dialog „Motiv wählen“: Motiv eines eigenen Satzes löschen (× mit Rückfrage) |
 | `objekt_werte` | Inspektor (Experte): für leere Felder des gewählten Objekts der Wert, mit dem der Kern rechnet, und die Herkunft (`stil` = Stoff/Design/Objekt-Einstellungen, `alphabet`, `muster`, `motivsatz`, `vorlage`, `schrift`) – steht grau im Feld statt „Stil“; Auto Spacing als Spanne („auto 0,40–0,51“) |
+| `einstellungen_wirksam` | Reiter „Einzelwerte“ (Experte): Einstellungen, die gelten, wenn ein Feld leer bleibt – Werte des gewählten Stoffs, überschrieben von `einstellungen` des Designs. Leere Felder zeigen die Zahl grau (z. B. Zugausgleich 0,25 bei „Gewebe, mittel“) statt „je Stoff“; Auswahlfelder „vom Stoff (…)“ / „Standard (…)“ / „wie Design (…)“ statt „geerbt“; Tooltip am Feld und an der Marke nennt den Stoff (Nutzer 23.11.2026) |
 | `monogramm_rahmen` | Dialog „Rahmen wählen“: Kategorien und die 47 Rahmen (Name, Kategorie, Beschreibung, Schriftvorschlag, Versalhöhen, Zahl der Initialen, Größe, Farben, SVG-Zeichnung für die Kachel) |
 | `motivsatz_motive` | Auswahl des Motivs mit Vorschaubild (Linien je Motiv, Länge, Höhe) |
 | `step_muster_liste` | Kacheln der Step-Muster 1–20 (Einstiche einer Probefläche, vom Kern berechnet) |

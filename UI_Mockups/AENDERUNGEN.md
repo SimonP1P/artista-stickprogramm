@@ -15,6 +15,14 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 23.11.2026 – Einzelwerte: Zahl statt „je Stoff“ (Rückmeldung Nutzer), Commit (folgt)
+- Neuer Befehl **`einstellungen_wirksam`** (`DesignEingabe` → `Einstellungen`): Werte des Stoffs, überschrieben von
+  `einstellungen`; liest nur `version`, `stoff`, `einstellungen`.
+- Reiter „Einzelwerte“: leere Felder zeigen den geltenden Wert grau (statt „je Stoff“); Auswahlfelder „vom Stoff (an)“,
+  „Standard (aus)“, „wie Design (…)“ statt „geerbt (…)“; Tooltip an Feld und Marke nennt den Stoff; Kopfzeile des
+  Reiters erklärt es in einem Satz. Auf Objektebene zeigen leere Felder den Wert des Designs (Stoff + Design).
+- Bildschirmfoto-Werkzeug rechnet `einstellungen_wirksam` vor.
+
 ## 22.11.2026 – Übertragen: Fenster mit Balken, dann „Start“ (Rückmeldung Nutzer), Commit 4e89485
 - **Fenster in beiden Modi** (einfacher Modus wieder mit Fenster, nicht im Schritt): Klick → Fenster, Balken läuft sofort.
 - Danach **„Übertragen.“ + Garnfolge + Knopf „Start“** (ohne weitere Bestätigung). Erst „Start“ schickt Befehl 0x08 –

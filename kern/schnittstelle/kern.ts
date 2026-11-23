@@ -629,6 +629,15 @@ export type EinfuegenErgebnis = {
   objekte: number[];
 };
 
+export type Einstellungen = {
+  lauf: LaufEinstellung;
+  satin: SatinEinstellung;
+  stoff: string;
+  tatami: TatamiEinstellung;
+  unterlage: UnterlageEinstellung;
+  verbinder: VerbinderEinstellung;
+};
+
 /** Einzelwerte des Stils überschreiben (Parameterkatalog `PARAMETER.md`); jedes Feld darf fehlen; `stoff` nur am Design */
 export type EinstellungenJson = {
   lauf?: {
@@ -1611,10 +1620,51 @@ export type KreuzstichJson = {
 };
 
 /**
+ * Kurzstiche (MOD1 `ShortStitchesEffect`, Werte aus dem Stil 0x273a; `Analyse_Teil3/10_regeln_original.md` §2).
+ * Im Stil „Software Defaults“ und bei den Stoffen **aus** (Flag 0x2001), im Stil „Schrift“ **an** (Analyse_Teil3/05).
+ */
+export type KurzstichEinstellung = {
+  an: boolean;
+  /** 0x281c: Kürzungsfaktoren als Dreieckstabelle – Gruppe aus n Stichen: n Faktoren (n = 1 … 5) */
+  faktoren: number[];
+  /** 0x281b = 5: höchstens so viele Stiche je Gruppe (MOD1 0x10186ad0) */
+  max_gruppe: number;
+  /**
+   * 0x2819 = 0,5: Stelle gilt als zu dicht, wenn zwei Nachbarstiche auf einer Seite näher als Schwelle × Abstand
+   * zusammenkommen (MOD1 0x100a858a: Effekt +0x0C × Abstand)
+   */
+  schwelle: number;
+  /** 0x281a = 1: Faktor zufällig um −0,04 / 0 / +0,04 verändert (MOD1 0x10186a60, Tabelle 0x10240660) */
+  zufall: boolean;
+};
+
+/**
  * Lage einer Applikation – für die Anleitung an den Farbstopps (Handbuch Kap. „Appliqué“, `Analyse_Teil3/12` §1):
  * nach der Platzierungslinie Stoff auflegen, nach der Schnittlinie bzw. dem Heften zuschneiden, dann Abdecken.
  */
 export type Lage = ("platzierung" | "schnittlinie" | "heften" | "abdecken");
+
+export type LaufEinstellung = {
+  /**
+   * ab diesem Knick wird an der Ecke eingestochen – nur für berechnete Linien (Unterlagen; eigene Festlegung).
+   * Formen aus dem Design: Einstich an jedem Eckpunkt wie im Original (`Analyse_Teil3/07` §1).
+   */
+  ecke_grad: number;
+  /** Kontur-Lauf 2,5 mm (AMT 0x27a8, hoch) */
+  laenge: number;
+  /** min. 0,8 mm (AMT 0x27a8, hoch) */
+  min_laenge: number;
+  /** Chord Gap bei variabler Länge (Lauf in Flächen, hoch) */
+  sehnenabstand: number;
+  /** „feste Länge“ ist Standard (hoch) */
+  variabel: boolean;
+};
+
+/** Mindeststich und Sehnenabstand eines variablen Laufs. */
+export type LaufGrenzen = {
+  min_laenge: number;
+  sehnenabstand: number;
+};
 
 /** Laufstich bzw. Dreifachstich entlang einer Linie. */
 export type LaufJson = {
@@ -2730,6 +2780,25 @@ export type SaeulenEingabe = {
   umriss: Punkt[];
 };
 
+export type SatinEinstellung = {
+  /** AMT 0x2723 (hoch) */
+  abstand_fest: number;
+  auto_spacing: boolean;
+  /** Stoff-/Stilfaktor AMT 0x2736 (hoch) */
+  faktor: number;
+  /** Kurzstiche an Innenkurven (Effekt 0x273a, `Analyse_Teil3/10` §2) */
+  kurzstiche?: KurzstichEinstellung;
+  /**
+   * Zickzack als Deckstich (Stichart „Zigzag“ 0x2724, BERESENU STR 2236): Abstand 0x2725 = Weg zwischen zwei
+   * Einstichen derselben Seite – Software Defaults 360 = 2,0 mm, alle 8 Stoffe 180 = 1,0 mm (Stil-Liste 0x27a6,
+   * `Analyse/daten/entschluesselt/styles.txt`, hoch); 0x2726 = 3,0 mm (Bedeutung offen)
+   * @default 2.0
+   */
+  zickzack_abstand?: number;
+  /** Handbuch S. 199 „automatically set at 0.2 mm“ (hoch) */
+  zugausgleich: number;
+};
+
 /** Fläche als Satinsäulen mit automatischer Stichrichtung (`saeulen.rs`, ROADMAP 4b.17). */
 export type SatinFlaecheJson = {
   /** fester Satinabstand in mm statt Auto Spacing */
@@ -3507,6 +3576,49 @@ export type SvgErgebnis = {
   klassen: Record<string, number>;
 };
 
+export type TatamiEinstellung = {
+  /**
+   * Abstand AMT 0x2716 (hoch) = Weg zwischen zwei **Hinreihen** (Handbuch PDF-S. 74: „distance between two forward
+   * rows“); benachbarte Reihen liegen beim halben Abstand (an den Musterdesigns gemessen 0,49 × bzw. 0,98 × Abstand,
+   * `Analyse_Teil3/06_messungen_tatami.md`)
+   */
+  abstand: number;
+  /** Stichlänge AMT 0x2717 (hoch) */
+  laenge: number;
+  laufweg?: LaufGrenzen;
+  /**
+   * Laufweg zwischen Teilbereichen der Fläche: Lauf 0x271c unter jeder Füllart (1,8 mm, variabel, Mindeststich
+   * 0,40 mm, Sehnenabstand 0,089 mm; hoch, `Analyse_Teil3/01` §4). Das Original verbindet Teilbereiche fast immer
+   * mit Laufstichen (92 % der Tatami-Blöcke ohne langen Stich), zu 55 % am Rand, 45 % durchs Innere
+   * (`Analyse_Teil3/08_laufwege_flaechen.md`); hier am Rand entlang (Auswahl-Regel: eigene Festlegung).
+   * @default 1.8
+   */
+  laufweg_laenge?: number;
+  /** Mindeststich am Rand AMT 0x2718 (hoch) */
+  min_rand: number;
+  /**
+   * Reihenversatz AMT 0x2719 (hoch): Raster je Reihe um diesen Anteil der Stichlänge verschoben – gemessen
+   * bei 0,25/0,25: Nachbarreihe 0,25, übernächste Reihe 0,50 (`Analyse_Teil3/06`)
+   */
+  versatz: number;
+  /**
+   * Zweiter Reihenversatz AMT 0x271a: die Reihen verschieben sich **abwechselnd** um `versatz` und `versatz2`
+   * (gemessen an den Step-Mustern 1–11 der Musterdesigns, `Analyse_Teil3/06` §5). None = wie `versatz`.
+   */
+  versatz2?: number | null;
+  /** Stichwinkel (eigene Festlegung) */
+  winkel: number;
+  /**
+   * Zufallsversatz AMT 0x271b: jeder innere Einstich um bis zu ± zufall/2 × Stichlänge verschoben (Musterdesigns
+   * „Step stitch pattern 11–20“: Stiche 0,6 … 1,4 × Länge bei 0,5); Verteilung **eigene Festlegung**. Alle 20
+   * Step-Muster des Dialogs haben 0.
+   * @default 0.0
+   */
+  zufall?: number;
+  /** wie Satin (Handbuch S. 199) */
+  zugausgleich: number;
+};
+
 /** Tatami-Fläche (Step) mit Löchern; mit `winkellinien` Fläche mit mehreren Stichwinkeln (Turning). */
 export type TatamiJson = {
   /**
@@ -3911,6 +4023,55 @@ export type UmrandungJson = {
 /** Art einer Unterlage (in Stickfolge) */
 export type UnterlageArt = ("mittellauf" | "edge_walk" | "zickzack" | "doppelzickzack");
 
+export type UnterlageEinstellung = {
+  /**
+   * **Auto Underlay** (Werkzeug „Auto Underlay“, Handbuch PDF-S. 197–198): In der Unterlagenliste 0x27a7 der Stile
+   * tragen alle Einträge Bit 0x2000 (= aus) in „Software Defaults“ und den 8 Stoffen, bei Schrift keiner (= an);
+   * MOD1 `DesignDocument::SetUnderlayOn` setzt die aktuelle Unterlage auf die vorgewählte. Sicherheit mittel-hoch
+   * (Stil-Flags + Handbuch + Code), `Analyse_Teil3/05_effekte_und_unterlagen.md`.
+   * @default false
+   */
+  auto_an?: boolean;
+  /**
+   * Vorgewählte Art der Auto-Unterlage: Eintrag mit Bit 0x0001 = Zickzack (alle Standard-, Stoff-, Schrift- und
+   * EasyStitch-Stile).
+   * @default ["zickzack"]
+   */
+  auto_art?: string[];
+  /** AMT 0x2745/0x2724/0x2725 (mittel) */
+  doppelzickzack_laenge: number;
+  doppelzickzack_lauf: LaufGrenzen;
+  /**
+   * AMT 0x2747 = „Edge Walk“ (hoch: DIALOG.DLL bindet 0x2747 an Text 2599 „Edge Walk“ in BERESENU.DLL,
+   * Läufe liegen in den Musterdesigns am Rand; Analyse_Teil3/04)
+   */
+  edge_walk_laenge: number;
+  /**
+   * Läufe der Unterlagen sind im Original „variabel“ (0x271e = 1) mit eigenem Mindeststich (0x2767) und
+   * Sehnenabstand (0x2768) je Unterlagenart (Stil „0 Software Defaults“, in allen Stilen gleich, hoch):
+   */
+  edge_walk_lauf: LaufGrenzen;
+  /** AMT 0x2746 = „Center Run“ (hoch: Text 2598, Läufe liegen auf der Säulenmitte; Analyse_Teil3/04) */
+  mittellauf_laenge: number;
+  mittellauf_lauf: LaufGrenzen;
+  /** Unterlagenrand AMT 0x2769/0x276a (mittel) */
+  rand: number;
+  /** „+ Lauf 3,0 mm“ zu Zickzack-Unterlagen (AMT 0x2744/0x271c/0x271d, mittel) */
+  rueck_lauf_laenge: number;
+  /** Tatami-Unterlage AMT 0x275a (mittel) */
+  tatami_abstand: number;
+  tatami_laenge: number;
+  tatami_randlauf: number;
+  tatami_randlauf_lauf: LaufGrenzen;
+  /** Winkel 90° zur Deckstichrichtung (AMT 0x2759) */
+  tatami_winkel_versatz: number;
+  /** AMT 0x2744/0x2724/0x2725 (mittel); Weg zwischen Einstichen derselben Seite (an den Musterdesigns gemessen, mittel-hoch, `Analyse_Teil3/07` §2) */
+  zickzack_laenge: number;
+  zickzack_lauf: LaufGrenzen;
+  /** AMT 0x2743 (hoch) */
+  zugausgleich: number;
+};
+
 /**
  * Unterlage: `"auto"` (Standard, wie „Auto Underlay“ des Stils), `"keine"` oder eine Liste der Arten in Stickfolge.
  * Alte Schreibweise: Arten mit „+“ verbunden (`"edge_walk+zickzack"`).
@@ -3919,6 +4080,67 @@ export type UnterlageJson = (UnterlageWahl | UnterlageArt[] | boolean);
 
 /** Unterlage automatisch oder keine */
 export type UnterlageWahl = ("auto" | "keine");
+
+/** Verbindertyp (Dialog „Connectors“, Knöpfe „Jump“/„Run“ = Tag 0x2805; `verdeckt` = eigene Erweiterung) */
+export type VerbinderArt = "sprung" | "lauf" | "verdeckt";
+
+/**
+ * Verbinder (Connectors) – Stil-Container AMT 0x272a, in allen 22 Stilen gleich.
+ * Zuordnung Tag ↔ Dialogfeld „Connectors“ aus DIALOG.DLL 0x10035e89–0x10036032 (hoch), Analyse_Teil3/01.
+ */
+export type VerbinderEinstellung = {
+  /** Tie In If: „Previous Connector Longer Than“ (0x272d = 1) … */
+  anfang_bei_langem_verbinder: boolean;
+  /** Tie In: „Always Tie In“ (0x2753 = 0) */
+  anfang_immer: boolean;
+  /** Tie In If: „After Trim / Color Change“ (0x2750 = 1) */
+  anfang_nach_trim_farbwechsel: boolean;
+  /** … Länge (0x2755 = 3,0 mm) */
+  anfang_verbinder_ab: number;
+  /**
+   * Verbindertyp zum nächsten Objekt („Connector After Object“ 0x2803, Tag 0x2805; in allen 22 Stilen 0 = Jump):
+   * `sprung` wie das Original, `lauf` = „Run“ (gerader Laufstich, kein Vernähen davor – im Original sind die
+   * Tie-Off-Felder bei „Run“ gesperrt, DIALOG.DLL 0x10036ea0), `verdeckt` = eigene Erweiterung: Lauf nur, wo später
+   * gestickte Flächen ihn ganz bedecken, sonst Sprung. Bei Farbwechsel immer Sprung.
+   * @default "sprung"
+   */
+  art?: VerbinderArt;
+  /** Tie Off If: „Next Connector Longer Than“ (0x272c = 1) … */
+  ende_bei_langem_verbinder: boolean;
+  /** Tie Off: „Always Tie Off“ (0x2752 = 0) */
+  ende_immer: boolean;
+  /** … Länge (0x2754 = 3,0 mm) */
+  ende_verbinder_ab: number;
+  /** Tie Off If: „Before Trim / Color Change“ (0x2733 = 1) */
+  ende_vor_trim_farbwechsel: boolean;
+  /**
+   * Verbindertyp innerhalb des Objekts – zwischen Teilen eines Objekts, z. B. Buchstaben eines Textes („Connector
+   * Inside Object“ 0x2804, Tag 0x2805 = 0 = Jump); Werte wie `art`
+   * @default "sprung"
+   */
+  innen_art?: VerbinderArt;
+  /**
+   * Stichlänge des Lauf-Verbinders innerhalb des Objekts (0x2804 → 0x2711 = 1,8 mm, wie die Laufwege in Flächen)
+   * @default 1.8
+   */
+  innen_lauf_laenge?: number;
+  /**
+   * Stichlänge des Lauf-Verbinders zum nächsten Objekt (0x2803 → 0x2711 = 12,7 mm, Feld neben „Run“)
+   * @default 12.7
+   */
+  lauf_laenge?: number;
+  /** „Always Tie Off Last Object“ (0x276c = 0): letztes Objekt wird im Original nicht vernäht */
+  letztes_objekt_vernaehen: boolean;
+  /**
+   * Trim, wenn der nächste Verbinder länger ist als (0x272b = 1, 0x272e = 3,0 mm; Stoffe 6,0 mm).
+   * Die artista 185 schneidet nicht (DFL trims_for_jump = 0); der Wert zählt nur für „nach Trim vernähen“.
+   */
+  trim_ab: number;
+  /** Anzahl der Vernähstiche (0x272f/0x275d = 2; Bedeutung aus Wert und Lage, mittel) */
+  vernaeh_stiche: number;
+  /** Länge der Vernähstiche (0x2730/0x2731 = 1,0 mm; Bedeutung aus Wert und Lage, mittel) */
+  vernaeh_stichlaenge: number;
+};
 
 /**
  * Verlauf (Gradient Fill, ART-Datensatz 0x34). Standard wie der Effekt-Datensatz im Stil der Musterdesigns
@@ -4064,6 +4286,8 @@ export interface Befehle {
   design_pruefen: { eingabe: DesignEingabe; ausgabe: Pruefung };
   /** JSON-Schema des Design-Formats (Felder, Standardwerte, Auswahlwerte, Beschreibungen) */
   design_schema: { eingabe: Leer; ausgabe: unknown };
+  /** Wirksame Einstellungen des Designs (Stoff, überschrieben von `einstellungen`) – Reiter „Einzelwerte“: Wert in leeren Feldern */
+  einstellungen_wirksam: { eingabe: DesignEingabe; ausgabe: Einstellungen };
   /** Stiche als EXP-Datei speichern (Ergebnis: Zahl der Bytes) */
   exp_speichern: { eingabe: ExpEingabe; ausgabe: number };
   /** Farben mischen (Color Blending): Objekt in zwei Lagen mit gegenläufigem Verlauf teilen, obere Lage in der zweiten Farbe, beide gruppiert */
@@ -4186,6 +4410,7 @@ export const BEFEHLE = [
   "design_formen",
   "design_pruefen",
   "design_schema",
+  "einstellungen_wirksam",
   "exp_speichern",
   "farben_mischen",
   "fuellmuster_liste",
