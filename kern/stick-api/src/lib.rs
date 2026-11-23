@@ -457,8 +457,10 @@ befehle! {
     maschine_planen: maschine::SendeEingabe => maschine::SendePlanInfo,
     /// **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt)
     maschine_senden: maschine::SendeEingabe => maschine::SendeInfo,
-    /// Laufende Maschinen-Aktion abbrechen
+    /// Laufende Maschinen-Aktion abbrechen (beim Warten auf „Start“: nicht sticken, PC-Modus verlassen)
     maschine_abbrechen: befehle::Leer => bool,
+    /// „Start“ nach dem Übertragen (Senden mit `wahl.auf_start_warten`): Befehl 0x08, der Rahmen fährt in die Startlage
+    maschine_starten: befehle::Leer => bool,
     /// Designliste der Maschine – nur lesen
     maschine_liste: maschine::Anschluss => maschine::ListenInfo,
     /// Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen

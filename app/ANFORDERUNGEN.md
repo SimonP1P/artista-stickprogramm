@@ -53,9 +53,12 @@ Oberfläche.
    **Simulation** über das Menü „Maschine“ in der Kopfzeile.
 2. Das Programm verbindet sich, prüft (Größe, Garnfarbtabelle), schreibt Design, Vorschaubild, Name und Garnfarben,
    liest alles zurück, schaltet mit Befehl 0x08 („sticken ohne speichern“) in den Stickmodus und verlässt den PC-Modus.
-   Bild und Garnfarben immer (nicht abschaltbar), Stickmodus ohne weitere Bestätigung. **Ein** Fortschrittsbalken,
-   „Abbrechen“ – im Expertenmodus in einem Fenster, im einfachen Modus **ohne Fenster** direkt in Schritt 4.
-3. Am Ende: „Fertig – die Maschine ist bereit. Gestickt wird mit Start an der Maschine.“ + Garnfolge + Hinweise
+   Bild und Garnfarben immer (nicht abschaltbar). **Ein Fenster** (beide Modi) mit **einem** Fortschrittsbalken und
+   „Abbrechen“. Danach „Übertragen.“ + Garnfolge + Knopf **„Start“** (ohne weitere Bestätigung): erst dann Befehl 0x08,
+   die Maschine übernimmt das Design und der Rahmen fährt in die Startlage (Nutzer 22.11.2026). „Abbrechen“ statt
+   „Start“ = nicht sticken.
+3. Am Ende: „Läuft – die Maschine hat das Design. Der Rahmen fährt in die Startlage, gestickt wird mit dem Startknopf
+   an der Maschine.“ + Garnfolge + Hinweise
    (eigener Rahmen → welchen Rahmen einspannen; Rahmen gewechselt → «check»). Keine Firmware-Angaben; im Fenster
    (Experte) Schritte und Mitschnitt unter „Details“.
 4. Fehler: was passiert ist, nächste Schritte, „Nochmal“.

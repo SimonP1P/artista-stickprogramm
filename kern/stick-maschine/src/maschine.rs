@@ -522,19 +522,26 @@ impl<L: Leitung> Maschine<L> {
             ));
         }
         if o.sticken {
-            let r = self.v.befehl(0x08, 3000, 7000, false);
-            bericht.schritte.push(format!(
-                "Befehl 0x08 (sticken ohne speichern): Status {}{}",
-                r.text(),
-                if r.ok {
-                    " – Maschine hat das Design übernommen"
-                } else {
-                    " – nicht bestätigt"
-                }
-            ));
-            bericht.sticken = Some(r);
+            self.sticken(&mut bericht);
         }
         Ok(bericht)
+    }
+
+    /// Befehl 0x08 („sticken ohne speichern“): die Maschine übernimmt das eben geschriebene Design, nach dem Verlassen
+    /// des PC-Modus fährt der Rahmen in die Startlage. **Nur direkt nach [`Maschine::senden`] in derselben Sitzung** und
+    /// nur mit Person an der Maschine.
+    pub fn sticken(&mut self, bericht: &mut SendeBericht) {
+        let r = self.v.befehl(0x08, 3000, 7000, false);
+        bericht.schritte.push(format!(
+            "Befehl 0x08 (sticken ohne speichern): Status {}{}",
+            r.text(),
+            if r.ok {
+                " – Maschine hat das Design übernommen"
+            } else {
+                " – nicht bestätigt"
+            }
+        ));
+        bericht.sticken = Some(r);
     }
 
     /// PC-Modus verlassen (0x100 + `T r M E`) und die Leitung zurückgeben.

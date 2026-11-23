@@ -785,13 +785,14 @@ Aufruf aus der Oberfläche: `kern("name", eingabe)` aus `kern.ts` (ein Tauri-Bef
 | `kranz` | KranzEingabe | KopienErgebnis | Kranz (Wreath): Kopien der Auswahl rund um einen Mittelpunkt, mit Kaleidoskop jede zweite gespiegelt |
 | `kreuzstich_bild` | KreuzstichBildEingabe | KreuzstichBildErgebnis | Bild → Kreuzstich: neues Design, je Farbe ein Kreuzstich-Objekt mit seinen Zellen |
 | `kreuzstich_vorschau` | KreuzstichBildEingabe | BildVorschau | Bild → Kreuzstich wie „Auto Stitch Image“: Vorschau auf dem Raster (ein Bildpunkt je Kreuz) und Farbliste |
-| `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen |
+| `maschine_abbrechen` | Leer | boolean | Laufende Maschinen-Aktion abbrechen (beim Warten auf „Start“: nicht sticken, PC-Modus verlassen) |
 | `maschine_lesen` | LeseEingabe | GelesenInfo | Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen |
 | `maschine_liste` | Anschluss | ListenInfo | Designliste der Maschine – nur lesen |
 | `maschine_planen` | SendeEingabe | SendePlanInfo | Senden planen – nur lesen: Prüfungen wie das Original, geplante Schreibzugriffe zum Bestätigen |
 | `maschine_ports` | Leer | string[] | Maschine: serielle Ports (COM…) |
 | `maschine_pruefen` | Anschluss | MaschinenInfo | Maschine prüfen – nur lesen: Firmware, Garnfarbtabelle; PC-Modus wird verlassen |
 | `maschine_senden` | SendeEingabe | SendeInfo | **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) |
+| `maschine_starten` | Leer | boolean | „Start“ nach dem Übertragen (Senden mit `wahl.auf_start_warten`): Befehl 0x08, der Rahmen fährt in die Startlage |
 | `monogramm_rahmen` | Leer | MonogrammKatalog | Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag |
 | `motiv_loeschen` | MotivLoeschenEingabe | MotivsatzInfo[] | Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach |
 | `motiv_speichern` | MotivSpeichernEingabe | MotivsatzInfo | Ausgewählte Objekte als Motiv in einen eigenen Motivsatz speichern (Create Pattern; Ablage im Datenordner) |

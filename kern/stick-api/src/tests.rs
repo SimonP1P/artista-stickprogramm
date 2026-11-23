@@ -348,8 +348,28 @@ fn maschine_in_der_simulation() {
     // ein Klick wie die Oberfläche: mit Befehl 0x08
     let mut ein = ein;
     ein["wahl"]["sticken"] = json!(true);
-    let s = ausfuehren(&k, "maschine_senden", ein).unwrap();
+    let s = ausfuehren(&k, "maschine_senden", ein.clone()).unwrap();
     assert_eq!(s["gestickt"], true);
+    // „Start“ im Fenster (Nutzer 22.11.2026): erst übertragen, „Bereit“ melden, Befehl 0x08 erst nach maschine_starten;
+    // „Abbrechen“ beim Warten: nichts gestickt
+    let mut ein = ein;
+    ein["wahl"]["auf_start_warten"] = json!(true);
+    for (befehl, gestickt) in [("maschine_starten", json!(true)), ("maschine_abbrechen", json!(null))] {
+        gemeldet.lock().unwrap().clear();
+        let s = std::thread::scope(|t| {
+            let h = t.spawn(|| ausfuehren(&k, "maschine_senden", ein.clone()));
+            let beginn = std::time::Instant::now();
+            while !gemeldet.lock().unwrap().iter().any(|(w, _, _)| w == "Bereit") {
+                assert!(beginn.elapsed().as_secs() < 60, "kein „Bereit“");
+                std::thread::sleep(std::time::Duration::from_millis(20));
+            }
+            assert_eq!(ausfuehren(&k, befehl, json!({})).unwrap(), json!(true));
+            h.join().unwrap().unwrap()
+        });
+        assert_eq!(s["gestickt"], gestickt, "{befehl}");
+        assert_eq!(s["sitzung"]["verlassen"], true);
+    }
+    assert_eq!(ausfuehren(&k, "maschine_starten", json!({})).unwrap(), json!(false), "ohne Aktion");
     let l = ausfuehren(&k, "maschine_liste", sim.clone()).unwrap();
     assert!(!l["designs"].as_array().unwrap().is_empty());
     let nr = l["designs"][0]["nr"].clone();

@@ -1,7 +1,7 @@
 <script lang="ts">
-  // Stand des Übertragens (Wunsch Nutzer 22.11.2026): ein Balken, danach „Fertig“ mit der Garnfolge, bei Fehlern die
-  // nächsten Schritte. Im Expertenmodus im Fenster (SendenDialog) mit aufklappbaren Details, im einfachen Modus direkt
-  // im Schritt „Übertragen“ des Assistenten – ohne Fenster.
+  // Stand des Übertragens im Fenster (Wünsche Nutzer 22.11.2026): ein Balken, dann „Bereit“ mit Garnfolge und dem
+  // Hinweis zu „Start“ (der Knopf steht unten im Fenster), danach „Läuft“; bei Fehlern die nächsten Schritte. Im
+  // Expertenmodus zusätzlich aufklappbare Details.
   import { arbeit } from "./arbeit.svelte";
   import Icon from "./Icon.svelte";
   import { IC } from "./icons";
@@ -22,9 +22,31 @@
   const prozent = $derived(stand ? Math.min(100, Math.round((stand.erledigt / Math.max(1, stand.gesamt)) * 100)) : 0);
   const garne = $derived(arbeit.ergebnis?.garne ?? []);
   const b = $derived(maschine.bericht);
+  const vorStart = $derived(maschine.fortschritt["Bereit"]?.hinweise ?? []);
 </script>
 
-{#if maschine.uebertraegt}
+{#snippet garnfolge()}
+  {#if garne.length === 1}
+    <div class="note" style="margin-top:10px"><span class="sw" style="display:inline-block; vertical-align:-2px; margin-right:6px; background:{garne[0].rgb}"></span>Garn: {garnText(garne[0])}</div>
+  {:else if garne.length > 1}
+    <div class="note" style="margin-top:10px">
+      <b style="font-weight:500">Garne in dieser Reihenfolge:</b>
+      <ol style="margin:6px 0 0; padding-left:20px">
+        {#each garne as g, k (k)}<li><span class="sw" style="display:inline-block; vertical-align:-2px; margin-right:6px; background:{g.rgb}"></span>{garnText(g)}</li>{/each}
+      </ol>
+    </div>
+  {/if}
+{/snippet}
+
+{#if maschine.bereit}
+  <div class="okbox" style="font-size:14px"><Icon d={IC.haken} /><span><b style="font-weight:600">Übertragen.</b> Mit „Start“ übernimmt die Maschine das Design und der Rahmen fährt in die Startlage.</span></div>
+  {#each vorStart as h (h)}<div class="warnbox" style="margin-top:8px"><Icon d={IC.warnung} /><span>{h}</span></div>{/each}
+  {@render garnfolge()}
+{:else if maschine.startet}
+  <div style="display:flex; align-items:baseline; gap:10px">
+    <span class="hd tab" style="font-size:30px">Start</span><span class="mut">Die Maschine übernimmt das Design …</span>
+  </div>
+{:else if maschine.uebertraegt}
   <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:6px">
     <span class="hd tab" style="font-size:30px">{prozent} %</span>
     <span class="mut">{maschine.phase === "suchen" ? "Suche die Maschine …" : stand ? "Übertrage …" : "Verbinde …"}</span>
@@ -36,27 +58,24 @@
 {:else if maschine.phase === "fertig" && b}
   {#if b.gestickt === false}
     <div class="warnbox" style="font-size:14px"><Icon d={IC.warnung} /><span><b style="font-weight:600">Übertragen, aber die Maschine hat das Design nicht übernommen.</b> Bitte „Nochmal“.</span></div>
+  {:else if b.gestickt == null}
+    <div class="note" style="font-size:14px"><b style="font-weight:500">Nicht gestartet.</b> Die Maschine stickt dieses Design nicht – zum Sticken nochmal übertragen.</div>
   {:else}
-    <div class="okbox" style="font-size:14px"><Icon d={IC.haken} /><span><b style="font-weight:600">Fertig – die Maschine ist bereit.</b> Gestickt wird mit Start an der Maschine.</span></div>
+    <div class="okbox" style="font-size:14px"><Icon d={IC.haken} /><span><b style="font-weight:600">Läuft – die Maschine hat das Design.</b> Der Rahmen fährt in die Startlage, gestickt wird mit dem Startknopf an der Maschine.</span></div>
   {/if}
-  {#if spruch}
+  {#if spruch && b.gestickt}
     <button
       class="btn btn-ghost"
       style="display:block; width:100%; text-align:left; margin:8px 0 0; padding:8px 11px; font-size:14px; font-style:italic; color:var(--color-accent); white-space:normal"
       title="Noch ein Spruch"
       onclick={() => (spruch = zufallsSpruch(spruch))}>„{spruch}“</button>
   {/if}
-  {#if maschine.rahmenNeu}
+  {#if maschine.rahmenNeu && b.gestickt}
     <div class="note" style="margin-top:10px">Rahmen gewechselt? An der Maschine einmal «check» drücken.</div>
   {/if}
-  {#each b.hinweise as h (h)}<div class="warnbox" style="margin-top:8px"><Icon d={IC.warnung} /><span>{h}</span></div>{/each}
-  {#if garne.length > 1}
-    <div class="note" style="margin-top:10px">
-      <b style="font-weight:500">Garne in dieser Reihenfolge:</b>
-      <ol style="margin:6px 0 0; padding-left:20px">
-        {#each garne as g, k (k)}<li><span class="sw" style="display:inline-block; vertical-align:-2px; margin-right:6px; background:{g.rgb}"></span>{garnText(g)}</li>{/each}
-      </ol>
-    </div>
+  {#if b.gestickt}
+    {#each b.hinweise as h (h)}<div class="warnbox" style="margin-top:8px"><Icon d={IC.warnung} /><span>{h}</span></div>{/each}
+    {@render garnfolge()}
   {/if}
   {#if details}
     <details class="small mut" style="margin-top:10px">

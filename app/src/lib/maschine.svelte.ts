@@ -1,6 +1,7 @@
-// Maschine in der Oberfläche: Anschluss, Übertragen mit **einem** Klick (verbinden → schreiben und zurücklesen → Befehl
-// 0x08 → PC-Modus verlassen; ein Fortschrittsbalken; wie das Original „Write to Machine“, Handbuch S. 265–266;
-// Entscheidung des Nutzers 22.11.2026, `UI_Mockups/UX_ANALYSE_2026-11-22.md`), Designs aus der Maschine.
+// Maschine in der Oberfläche: Anschluss, Übertragen mit **einem** Klick (Fenster mit einem Fortschrittsbalken:
+// verbinden → schreiben und zurücklesen → „Bereit“ → Knopf **„Start“** = Befehl 0x08, erst dann bewegt sich die
+// Maschine → PC-Modus verlassen; Entscheidungen des Nutzers 22.11.2026, `UI_Mockups/UX_ANALYSE_2026-11-22.md`),
+// Designs aus der Maschine.
 // Alle Befehle über `kern(…)` (`kern/stick-api/src/maschine.rs`). Für Claude-Sitzungen gilt CLAUDE.md §4 Regel 1 weiter.
 
 import {
@@ -45,7 +46,7 @@ class MaschinenSteuerung {
   pruefFehler = $state.raw<Fehler | null>(null);
 
   // Übertragen
-  /** Fenster „An die Maschine übertragen“ – nur im Expertenmodus (im einfachen Modus steht der Stand im Assistenten) */
+  /** Fenster „An die Maschine übertragen“ (beide Modi; im Expertenmodus mit „Details“) */
   dialogOffen = $state(false);
   /** Übertragen läuft gerade (Suchen, Verbinden, Senden) */
   uebertraegt = $state(false);
@@ -56,6 +57,8 @@ class MaschinenSteuerung {
   fehler = $state.raw<Fehler | null>(null);
   /** Rahmen seit dem letzten Übertragen gewechselt (Stand beim Start) */
   rahmenNeu = $state(false);
+  /** „Start“ gedrückt, Maschine übernimmt das Design */
+  startet = $state(false);
 
   // Designs aus der Maschine
   listeOffen = $state(false);
@@ -88,6 +91,11 @@ class MaschinenSteuerung {
     if (e.daten_bytes >= e.daten_grenze) return "Das Design ist zu groß für die Maschine.";
     return null;
   }
+  /** übertragen, wartet auf „Start“ (Kern meldet „Bereit“) */
+  get bereit() {
+    return this.laeuft && !!this.fortschritt["Bereit"] && !this.startet;
+  }
+
   /** kurzer Hinweis statt „Übertragen“ auf dem Knopf, wenn das Design so nicht gesendet werden kann */
   get sperrKurz(): string | null {
     const e = arbeit.ergebnis;
@@ -183,13 +191,14 @@ class MaschinenSteuerung {
     return false;
   }
 
-  /** **Schreibt in die Maschine** und schaltet sie in den Stickmodus – ein Klick „Übertragen“ */
+  /** **Schreibt in die Maschine**, wartet auf „Start“ (dann Stickmodus) – ein Klick „Übertragen“ */
   async uebertragen() {
     if (this.laeuft || this.sperrgrund) return;
     const design = $state.snapshot(arbeit.design) as DesignJson;
     this.laeuft = true;
     this.uebertraegt = true;
-    this.dialogOffen = arbeit.modus === "experte";
+    this.dialogOffen = true;
+    this.startet = false;
     this.phase = "laeuft";
     this.fortschritt = {};
     this.bericht = null;
@@ -204,7 +213,7 @@ class MaschinenSteuerung {
       this.bericht = await kern("maschine_senden", {
         design,
         ...this.anschluss,
-        wahl: { icon: true, farben: true, sticken: true },
+        wahl: { icon: true, farben: true, sticken: true, auf_start_warten: true },
       });
       this.phase = "fertig";
       merken("artista.letzter_rahmen", design.rahmen ?? "");
@@ -214,6 +223,18 @@ class MaschinenSteuerung {
     } finally {
       this.laeuft = false;
       this.uebertraegt = false;
+      this.startet = false;
+    }
+  }
+
+  /** „Start“: die Maschine übernimmt das Design (Befehl 0x08), der Rahmen fährt in die Startlage */
+  async starten() {
+    if (!this.bereit) return;
+    this.startet = true;
+    try {
+      await kern("maschine_starten", {});
+    } catch {
+      this.startet = false;
     }
   }
 

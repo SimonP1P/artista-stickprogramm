@@ -46,6 +46,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 - [ ] B8 Display: Garnfarben und Icon (V2, V3)
 - [ ] B9 Lage im Rahmen beim Senden (V7)
 - [ ] B10 Dauerhaft in der Maschine speichern (V5) – nur mit ausdrücklicher Zustimmung
+- [ ] B11 Übertragen mit „Start“: wartet die Maschine im PC-Modus, bis „Start“ gedrückt wird (V17)
 - [ ] B11 **Übertragen mit einem Klick** am Gerät ausprobieren (C1): Anschluss automatisch, ein Balken, Maschine danach im Stickmodus
 
 ## Nachtauftrag 22.11.2026 – HIER ZUERST LESEN (Stand wird nach jedem Schritt nachgetragen)
@@ -281,6 +282,7 @@ Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Te
 | V14 | **Verlauf (Gradient Fill) aufs Kalibrierblatt** (Antwort des Nutzers 22.11.): ein Verlauf-Objekt wird noch in `kalibrierblatt.json` ergänzt. Prüfen: wirkt der Übergang gleichmäßig, wo wird er zu locker? | Person (mit V12) | ⬜ (vorzubereiten) |
 | V15 | **Applikations-Probestück:** Abdeckung Satin 5,0 mm wie das Original (Bericht 12) – deckt sie die Stoffkante, franst nichts aus? **Herausfahren** (N14, Standard an): fährt der Rahmen vor jedem Halt 12 mm nach oben, hält er dort an, und lässt sich der Stoff so leichter auflegen und zuschneiden? Fährt er nach Start sauber zurück? (Abschalten zum Vergleich: Inspektor → X → „Herausfahren (Frame Out)“) | Person, Applikationsstoff, Schere | ⬜ |
 | V16 | **Stippling-Probe** (N13, Verfahren des Originals): Fläche ca. 60 × 40 mm mit Stippling 2,0 / 3,0 mm auf Webware mit Vlies – liegen die Schlaufen ruhig, bleibt die Linie im Umriss (Randabstand 0,5 · s eigene Festlegung)? | Person, Stoff + Vlies | ⬜ |
+| V17 | **Übertragen, dann „Start“** (Nutzer 22.11.2026): ein Design übertragen, das Fenster zeigt „Übertragen.“ und „Start“. Erst **1 Minute**, dann **5 Minuten** warten und „Start“ drücken – übernimmt die Maschine das Design und fährt der Rahmen in die Startlage? Zeigt das Display während des Wartens etwas Ungewöhnliches? Einmal „Abbrechen“ statt „Start“: Display normal, nichts gestickt? (Bisher immer 0x08 direkt nach dem Zurücklesen; ob die Maschine im PC-Modus eine Wartezeit begrenzt, ist nicht bekannt.) | Person an der Maschine | ⬜ |
 
 ## Neue Erkenntnisse, die die Roadmap ändern (19.11.2026)
 1. **Das Lesen ist fertig und hat das Format des Maschinenpuffers vollständig gezeigt** (Kopf 6N+8, Stichdaten in

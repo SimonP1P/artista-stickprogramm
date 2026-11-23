@@ -1163,6 +1163,11 @@ export type Fortschritt = {
   erledigt: number;
   gesamt: number;
   /**
+   * bei „Bereit“: Hinweise für die Person an der Maschine vor dem Start (z. B. eigener Rahmen → diesen Rahmen der
+   * 185 einspannen)
+   */
+  hinweise?: string[];
+  /**
    * Teil („DATEN“, „ICON“, „Garnfarbtabelle“ … beim Lesen); beim Senden ein Gesamtbalken „Übertragung“
    * (Schreiben und Zurücklesen aller Teile)
    */
@@ -3056,6 +3061,14 @@ export type SendePlanInfo = {
 
 /** Was beim Senden geschrieben wird (die INFO-Felder immer, wie das Original). */
 export type SendeWahl = {
+  /**
+   * mit `sticken`: Befehl 0x08 erst nach „Start“. Nach dem Übertragen meldet der Kern den Fortschritt `was` =
+   * „Bereit“ und wartet bei offenem PC-Modus, bis die Oberfläche `maschine_starten` schickt. „Abbrechen“ oder
+   * 15 Minuten ohne Start: PC-Modus verlassen, nichts gestickt (`gestickt` = null). Nutzer 22.11.2026: Knopf „Start“
+   * im Fenster, erst dann bewegt sich die Maschine
+   * @default false
+   */
+  auf_start_warten?: boolean;
   /** Garnfarbtabelle mitsenden (Garnnamen am Display) */
   farben: boolean;
   /** Vorschaubild (ICON 72 × 62) mitsenden */
@@ -4075,7 +4088,7 @@ export interface Befehle {
   kreuzstich_bild: { eingabe: KreuzstichBildEingabe; ausgabe: KreuzstichBildErgebnis };
   /** Bild → Kreuzstich wie „Auto Stitch Image“: Vorschau auf dem Raster (ein Bildpunkt je Kreuz) und Farbliste */
   kreuzstich_vorschau: { eingabe: KreuzstichBildEingabe; ausgabe: BildVorschau };
-  /** Laufende Maschinen-Aktion abbrechen */
+  /** Laufende Maschinen-Aktion abbrechen (beim Warten auf „Start“: nicht sticken, PC-Modus verlassen) */
   maschine_abbrechen: { eingabe: Leer; ausgabe: boolean };
   /** Design aus der Maschine lesen (Befehl 0x400, nur lesen) zum Ansehen */
   maschine_lesen: { eingabe: LeseEingabe; ausgabe: GelesenInfo };
@@ -4089,6 +4102,8 @@ export interface Befehle {
   maschine_pruefen: { eingabe: Anschluss; ausgabe: MaschinenInfo };
   /** **Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt) */
   maschine_senden: { eingabe: SendeEingabe; ausgabe: SendeInfo };
+  /** „Start“ nach dem Übertragen (Senden mit `wahl.auf_start_warten`): Befehl 0x08, der Rahmen fährt in die Startlage */
+  maschine_starten: { eingabe: Leer; ausgabe: boolean };
   /** Monogramm-Rahmen aus dem Katalog (47 in 8 Kategorien, eigene Erweiterung) mit Zeichnung, Farben und Schriftvorschlag */
   monogramm_rahmen: { eingabe: Leer; ausgabe: MonogrammKatalog };
   /** Motiv aus einem eigenen Motivsatz löschen (Motive der CD bleiben); liefert die Motivsätze danach */
@@ -4190,6 +4205,7 @@ export const BEFEHLE = [
   "maschine_ports",
   "maschine_pruefen",
   "maschine_senden",
+  "maschine_starten",
   "monogramm_rahmen",
   "motiv_loeschen",
   "motiv_speichern",

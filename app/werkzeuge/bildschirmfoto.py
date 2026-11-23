@@ -81,7 +81,7 @@ def main():
     a.add_argument("--reiter", choices=["objekt", "design", "einzelwerte", "json"])
     a.add_argument("--werkzeug", choices=["auswahl", "einstich", "ausstich", "knoten", "zeichnen"])
     a.add_argument("--zeichenform", choices=["linie", "frei", "saeule", "kreis", "rechteck", "knopfloch"], help="Form beim Werkzeug zeichnen")
-    a.add_argument("--maschine", choices=["laeuft", "fertig", "fehler", "liste"],
+    a.add_argument("--maschine", choices=["laeuft", "bereit", "fertig", "fehler", "liste"],
                    help="Übertragen mit der Simulation (läuft, fertig, Fehler) bzw. Designs aus der Maschine")
     a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
     a.add_argument("--groesse", default="1280x800")
@@ -110,9 +110,10 @@ def main():
     sim = {"port": "", "simulation": True}
     antworten["maschine_ports"] = []
     if o.maschine:
-        ein = {"design": design, **sim, "wahl": {"icon": True, "farben": True, "sticken": True}}
+        ein = {"design": design, **sim, "wahl": {"icon": True, "farben": True, "sticken": True}}  # ohne Warten auf Start
         antworten["maschine_senden"] = {
             "laeuft": {"__haengt__": True},
+            "bereit": {"__haengt__": True},
             "fehler": {"__fehler__": {"meldung": "Keine Antwort auf T r M E (Mitschnitt: …)", "objekt": None,
                                       "code": "keine_verbindung"}},
         }.get(o.maschine) or api(stick, "maschine_senden", ein)

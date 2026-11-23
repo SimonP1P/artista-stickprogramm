@@ -145,6 +145,12 @@
       if (nr) await maschine.designLesen(nr);
       return;
     }
+    if (z === "bereit") {
+      // Bildschirmfoto: übertragen, wartet auf „Start“ (ohne Tauri kommt das Ereignis „Bereit“ nicht)
+      maschine.uebertragen(); // setzt den Fortschritt sofort zurück, danach „Bereit“ setzen
+      maschine.fortschritt = { Bereit: { was: "Bereit", erledigt: 1, gesamt: 1, wiederholungen: 0 } };
+      return;
+    }
     await maschine.uebertragen();
   }
 
@@ -394,7 +400,7 @@
     >
       <!-- feste Breite: Einfach/Experte bleiben stehen, egal was hier steht (Wunsch Nutzer 22.11.2026) -->
       <span aria-hidden="true" style="flex:none; width:9px; height:9px; border-radius:50%; background:{maschine.laeuft ? 'var(--warn)' : maschine.simulation ? 'var(--sim)' : maschine.info ? 'var(--ok)' : maschine.pruefFehler ? 'var(--err)' : 'var(--muted)'}"></span>
-      <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{maschine.uebertraegt ? "Überträgt …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}</span>
+      <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{maschine.bereit ? "Wartet auf Start" : maschine.uebertraegt ? "Überträgt …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}</span>
     </button>
     <!-- Übertragen oben nur im Expertenmodus; im einfachen Modus im Schritt „Übertragen“. Der Knopf behält seinen Platz
          (unsichtbar), damit Einfach/Experte nicht springen (Wunsch Nutzer 22.11.2026). Passt das Design nicht, steht

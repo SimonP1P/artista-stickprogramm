@@ -15,6 +15,16 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Übertragen: Fenster mit Balken, dann „Start“ (Rückmeldung Nutzer), Commit (folgt)
+- **Fenster in beiden Modi** (einfacher Modus wieder mit Fenster, nicht im Schritt): Klick → Fenster, Balken läuft sofort.
+- Danach **„Übertragen.“ + Garnfolge + Knopf „Start“** (ohne weitere Bestätigung). Erst „Start“ schickt Befehl 0x08 –
+  dann übernimmt die Maschine das Design und der Rahmen fährt. „Abbrechen“ beim Warten = nicht sticken.
+- **Kern:** `SendeWahl.auf_start_warten` (neu, Standard false), Fortschritt `was` = „Bereit“ mit `hinweise` (z. B.
+  eigener Rahmen → diesen Rahmen einspannen), neuer Befehl **`maschine_starten`**; ohne Start nach 15 min PC-Modus
+  verlassen (eigene Festlegung). `Maschine::sticken` in `stick-maschine` herausgelöst. Test in der Simulation.
+- Oberfläche: `maschine.bereit`, `maschine.starten()`, Kopfzeile „Wartet auf Start“; Bildschirmfoto `--maschine bereit`.
+- **Am Gerät offen:** wie lange die Maschine im PC-Modus auf „Start“ wartet (`ROADMAP.md` „Vor Ort“).
+
 ## 22.11.2026 – Übertragen nachgeschärft (Rückmeldung Nutzer nach Test), Commit ae31a86
 - Knopf **„Übertragen“ oben nur im Expertenmodus**; im einfachen Modus bleibt sein Platz frei (`visibility: hidden`),
   Einfach/Experte springen nicht. Der Maschinen-Knopf hat eine feste Breite (168 px) aus demselben Grund.

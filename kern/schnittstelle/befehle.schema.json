@@ -2870,6 +2870,13 @@
           "minimum": 0,
           "type": "integer"
         },
+        "hinweise": {
+          "description": "bei „Bereit“: Hinweise für die Person an der Maschine vor dem Start (z. B. eigener Rahmen → diesen Rahmen der\n185 einspannen)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "was": {
           "description": "Teil („DATEN“, „ICON“, „Garnfarbtabelle“ … beim Lesen); beim Senden ein Gesamtbalken „Übertragung“\n(Schreiben und Zurücklesen aller Teile)",
           "type": "string"
@@ -8168,6 +8175,11 @@
       "additionalProperties": false,
       "description": "Was beim Senden geschrieben wird (die INFO-Felder immer, wie das Original).",
       "properties": {
+        "auf_start_warten": {
+          "default": false,
+          "description": "mit `sticken`: Befehl 0x08 erst nach „Start“. Nach dem Übertragen meldet der Kern den Fortschritt `was` =\n„Bereit“ und wartet bei offenem PC-Modus, bis die Oberfläche `maschine_starten` schickt. „Abbrechen“ oder\n15 Minuten ohne Start: PC-Modus verlassen, nichts gestickt (`gestickt` = null). Nutzer 22.11.2026: Knopf „Start“\nim Fenster, erst dann bewegt sich die Maschine",
+          "type": "boolean"
+        },
         "farben": {
           "description": "Garnfarbtabelle mitsenden (Garnnamen am Display)",
           "type": "boolean"
@@ -10739,7 +10751,7 @@
       "ausgabe": {
         "type": "boolean"
       },
-      "beschreibung": "Laufende Maschinen-Aktion abbrechen",
+      "beschreibung": "Laufende Maschinen-Aktion abbrechen (beim Warten auf „Start“: nicht sticken, PC-Modus verlassen)",
       "eingabe": {
         "$ref": "#/$defs/Leer"
       }
@@ -10799,6 +10811,15 @@
       "beschreibung": "**Schreibt in die Maschine** (nur nach bestätigtem Plan): DATEN, ICON, INFO, Garnfarbtabelle; mit `wahl.sticken` Befehl 0x08 (Rahmen fährt)",
       "eingabe": {
         "$ref": "#/$defs/SendeEingabe"
+      }
+    },
+    "maschine_starten": {
+      "ausgabe": {
+        "type": "boolean"
+      },
+      "beschreibung": "„Start“ nach dem Übertragen (Senden mit `wahl.auf_start_warten`): Befehl 0x08, der Rahmen fährt in die Startlage",
+      "eingabe": {
+        "$ref": "#/$defs/Leer"
       }
     },
     "monogramm_rahmen": {

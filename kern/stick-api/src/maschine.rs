@@ -52,6 +52,12 @@ pub struct SendeWahl {
     /// Startlage, gestickt wird mit dem Start-Knopf an der Maschine. Die Oberfläche sendet immer mit `true` (ein Klick
     /// „Übertragen“ wie das Original, Nutzer 22.11.2026)
     pub sticken: bool,
+    /// mit `sticken`: Befehl 0x08 erst nach „Start“. Nach dem Übertragen meldet der Kern den Fortschritt `was` =
+    /// „Bereit“ und wartet bei offenem PC-Modus, bis die Oberfläche `maschine_starten` schickt. „Abbrechen“ oder
+    /// 15 Minuten ohne Start: PC-Modus verlassen, nichts gestickt (`gestickt` = null). Nutzer 22.11.2026: Knopf „Start“
+    /// im Fenster, erst dann bewegt sich die Maschine
+    #[serde(default)]
+    pub auf_start_warten: bool,
 }
 
 impl From<SendeWahl> for SendeOptionen {
@@ -226,6 +232,10 @@ pub struct Fortschritt {
     pub gesamt: usize,
     /// Wiederholungen bisher in diesem Teil (Übertragungsfehler werden automatisch wiederholt)
     pub wiederholungen: usize,
+    /// bei „Bereit“: Hinweise für die Person an der Maschine vor dem Start (z. B. eigener Rahmen → diesen Rahmen der
+    /// 185 einspannen)
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub hinweise: Vec<String>,
 }
 
 // ---------------------------------------------------------------- Zustand
@@ -237,6 +247,8 @@ type Melder = Arc<dyn Fn(&Fortschritt) + Send + Sync>;
 pub struct MaschinenZustand {
     /// Abbrechen angefordert (gilt für die laufende Aktion)
     abbruch: Arc<AtomicBool>,
+    /// „Start“ angefordert (Senden mit `auf_start_warten`)
+    start: AtomicBool,
     /// eine Maschinen-Aktion läuft
     belegt: AtomicBool,
     /// Fortschritt an die Oberfläche (App: Ereignis `maschine_fortschritt`)
@@ -251,6 +263,7 @@ impl Default for MaschinenZustand {
     fn default() -> Self {
         MaschinenZustand {
             abbruch: Arc::new(AtomicBool::new(false)),
+            start: AtomicBool::new(false),
             belegt: AtomicBool::new(false),
             melder: std::sync::Mutex::new(None),
             mitschnitte: std::sync::Mutex::new(std::env::temp_dir().join("artista_mitschnitte")),
@@ -292,6 +305,7 @@ fn belegen(z: &MaschinenZustand) -> Result<Belegung<'_>, Fehler> {
         ));
     }
     z.abbruch.store(false, Ordering::SeqCst);
+    z.start.store(false, Ordering::SeqCst);
     Ok(Belegung(z))
 }
 
@@ -416,6 +430,7 @@ fn mit_maschine<T>(
                 erledigt,
                 gesamt,
                 wiederholungen,
+                hinweise: Vec::new(),
             });
         }
     };
@@ -565,6 +580,7 @@ pub fn maschine_senden(k: &Kontext, e: SendeEingabe) -> Result<SendeInfo, Fehler
         + if o.icon { s.icon.bytes().len() } else { 0 }
         + if o.farben { s.farbtabelle().map(|t| t.len()).unwrap_or(0) } else { 0 };
     let gesamt = 2 * teile;
+    let vorab = hinweise.clone();
     let (b, sitzung) = mit_maschine(k, &anschluss(&e.port, e.simulation), "senden", |m, f| {
         let mut stand: std::collections::BTreeMap<String, (usize, usize)> = Default::default();
         let mut gesamt_melden = |was: &str, erledigt: usize, _: usize, wdh: usize| {
@@ -572,7 +588,34 @@ pub fn maschine_senden(k: &Kontext, e: SendeEingabe) -> Result<SendeInfo, Fehler
             let (e, w) = stand.values().fold((0, 0), |(e, w), (a, b)| (e + a, w + b));
             f(UEBERTRAGUNG, e.min(gesamt), gesamt, w);
         };
-        m.senden(&s, &o, &mut gesamt_melden)
+        let warten = o.sticken && e.wahl.auf_start_warten;
+        let mut b = m.senden(
+            &s,
+            &SendeOptionen {
+                sticken: o.sticken && !warten,
+                ..o
+            },
+            &mut gesamt_melden,
+        )?;
+        if warten {
+            let melder = k.maschine.melder.lock().ok().and_then(|m| m.clone());
+            if let Some(melden) = melder {
+                melden(&Fortschritt {
+                    was: BEREIT.into(),
+                    erledigt: 1,
+                    gesamt: 1,
+                    wiederholungen: 0,
+                    hinweise: vorab.iter().chain(&b.hinweise).cloned().collect(),
+                });
+            }
+            if start_abwarten(&k.maschine) {
+                m.sticken(&mut b);
+            } else {
+                b.schritte
+                    .push("Nicht gestartet – PC-Modus verlassen, Befehl 0x08 nicht gesendet".into());
+            }
+        }
+        Ok(b)
     })?;
     hinweise.extend(b.hinweise);
     Ok(SendeInfo {
@@ -585,6 +628,40 @@ pub fn maschine_senden(k: &Kontext, e: SendeEingabe) -> Result<SendeInfo, Fehler
 
 /// Name des Gesamtfortschritts beim Senden (`Fortschritt::was`)
 pub const UEBERTRAGUNG: &str = "Übertragung";
+
+/// Fortschritt „übertragen, wartet auf Start“ (`Fortschritt::was`, Senden mit `auf_start_warten`)
+pub const BEREIT: &str = "Bereit";
+
+/// Längste Wartezeit auf „Start“ (eigene Festlegung): danach wird der PC-Modus ohne Sticken verlassen.
+const START_WARTEN_MS: u64 = 15 * 60 * 1000;
+
+/// Wartet auf „Start“ (`maschine_starten`); `false` bei „Abbrechen“ oder nach [`START_WARTEN_MS`]. Die Leitung bleibt
+/// still (am Gerät noch nicht geprüft, wie lange die Maschine im PC-Modus wartet – `ROADMAP.md` „Vor Ort“).
+fn start_abwarten(z: &MaschinenZustand) -> bool {
+    let beginn = std::time::Instant::now();
+    loop {
+        if z.abbruch.load(Ordering::SeqCst) {
+            return false;
+        }
+        if z.start.load(Ordering::SeqCst) {
+            return true;
+        }
+        if beginn.elapsed().as_millis() as u64 >= START_WARTEN_MS {
+            return false;
+        }
+        std::thread::sleep(std::time::Duration::from_millis(50));
+    }
+}
+
+/// „Start“ nach dem Übertragen (Senden mit `auf_start_warten`): die Maschine übernimmt das Design (Befehl 0x08), der
+/// Rahmen fährt in die Startlage. Ergebnis: ob eine Aktion lief.
+pub fn maschine_starten(k: &Kontext, _: Leer) -> Result<bool, Fehler> {
+    let lief = k.maschine.belegt.load(Ordering::SeqCst);
+    if lief {
+        k.maschine.start.store(true, Ordering::SeqCst);
+    }
+    Ok(lief)
+}
 
 /// Laufende Maschinen-Aktion abbrechen (die Übertragung bricht an der nächsten Stelle ab, der PC-Modus wird
 /// verlassen). Ergebnis: ob eine Aktion lief.
