@@ -8924,10 +8924,10 @@
       "type": "object"
     },
     "StipplingJson": {
-      "description": "Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht\nkreuzt.",
+      "description": "Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht\nkreuzt – Verfahren des Originals (`StippleFillInterface`: Wabengitter, zufälliger Spannbaum, Linie um den Baum).",
       "properties": {
         "abstand": {
-          "description": "Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0)",
+          "description": "Schlaufenabstand in mm = Kantenlänge des Wabengitters, um das die Linie läuft (0,5 … 20; Original 3,0)",
           "format": "double",
           "type": [
             "number",
@@ -9023,7 +9023,7 @@
           "type": "boolean"
         },
         "laenge": {
-          "description": "Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0)",
+          "description": "Stichlänge in mm (0,5 … 12,7; Original 2,0)",
           "format": "double",
           "type": [
             "number",

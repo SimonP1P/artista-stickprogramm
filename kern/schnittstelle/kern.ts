@@ -3358,10 +3358,10 @@ export type StilInfo = {
 
 /**
  * Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht
- * kreuzt.
+ * kreuzt – Verfahren des Originals (`StippleFillInterface`: Wabengitter, zufälliger Spannbaum, Linie um den Baum).
  */
 export type StipplingJson = {
-  /** Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0) */
+  /** Schlaufenabstand in mm = Kantenlänge des Wabengitters, um das die Linie läuft (0,5 … 20; Original 3,0) */
   abstand?: number | null;
   /** Ausstich („exit point“) [x, y] in mm: das Objekt endet dort */
   ausstich?: (Punkt | null);
@@ -3410,7 +3410,7 @@ export type StipplingJson = {
    * @default false
    */
   kuerzeste?: boolean;
-  /** Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0) */
+  /** Stichlänge in mm (0,5 … 12,7; Original 2,0) */
   laenge?: number | null;
   loecher?: PunktAngabe[];
   /**

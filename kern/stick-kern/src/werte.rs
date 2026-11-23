@@ -138,8 +138,8 @@ pub fn objekt_werte(d: &Design, v: &Value, nr: usize) -> Result<Vec<WirksamerWer
         }
         ObjektJson::Stippling(_) => {
             use crate::sticharten::stippling as s;
-            w.push(wert("laenge", json!(s::LAENGE), "handbuch"));
-            w.push(wert("abstand", json!(s::ABSTAND), "handbuch"));
+            w.push(wert("laenge", json!(s::LAENGE), "vorlage"));
+            w.push(wert("abstand", json!(s::ABSTAND), "vorlage"));
         }
         ObjektJson::Blackwork(b) => match b.stich {
             crate::format::BlackworkStich::Lauf | crate::format::BlackworkStich::Dreifach => {

@@ -488,11 +488,14 @@ P('objekt.stielstich.dreifach', G, 'Dreifach', 'jeder Stich mit Hin-Rück-Hin �
   gilt=['stielstich'], o='dreifach', einheit='an/aus', std=True, quelle=Q + ': 0x2858 = 3 (mittel)', modus='experte')
 P('objekt.stielstich.staerke', G, 'Stärke', 'Versatz der Dreifach-Striche', ebene='objekt', gilt=['stielstich'],
   o='staerke', einheit='mm', std=0.2, bereich=[0, 1], quelle=Q + ': 0x2856 = 36 = 0,2 mm (mittel)', modus='experte')
-P('objekt.stippling.abstand', G, 'Abstand', 'Abstand der Bahnen der mäandernden Linie', ebene='objekt',
+P('objekt.stippling.abstand', G, 'Schlaufenabstand', 'Kantenlänge des Wabengitters, um das die mäandernde Linie '
+  'läuft (Loop Spacing)', ebene='objekt',
   gilt=['stippling'], o='abstand', einheit='mm', std=3.0, bereich=[0.5, 20],
-  quelle='Handbuch S. 242–243 (Beispielwerte, niedrig); Verfahren ' + V, modus='einfach')
+  quelle='Dokument StippleFillValues 540 = 3,0 mm (MOD1, hoch); Verfahren StippleFillInterface 0x101a4590 (hoch); '
+  'Bereich Vorschlag (eigene Festlegung)', modus='einfach')
 P('objekt.stippling.laenge', G, 'Stichlänge', 'Länge der Laufstiche', ebene='objekt', gilt=['stippling'],
-  o='laenge', einheit='mm', std=2.0, bereich=[0.5, 12.7], quelle='Handbuch S. 242–243 (niedrig)', modus='einfach')
+  o='laenge', einheit='mm', std=2.0, bereich=[0.5, 12.7],
+  quelle='Dokument StippleFillValues 360 = 2,0 mm (MOD1, hoch)', modus='einfach')
 P('objekt.blackwork.stich', G, 'Stichart (Blackwork)', 'Stichart der verbundenen Linien; Werte wie beim Objekt '
   'dieser Art', ebene='objekt', gilt=['blackwork'], o='stich', einheit='Auswahl', std='lauf',
   werte=['lauf', 'dreifach', 'rueckstich', 'stielstich'],

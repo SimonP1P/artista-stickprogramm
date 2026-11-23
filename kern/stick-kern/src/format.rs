@@ -1057,15 +1057,15 @@ pub struct StielstichJson {
 }
 
 /// Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht
-/// kreuzt.
+/// kreuzt – Verfahren des Originals (`StippleFillInterface`: Wabengitter, zufälliger Spannbaum, Linie um den Baum).
 #[derive(Clone, Debug, Deserialize, JsonSchema)]
 pub struct StipplingJson {
     pub umriss: PunktAngabe,
     #[serde(default)]
     pub loecher: Vec<PunktAngabe>,
-    /// Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0)
+    /// Stichlänge in mm (0,5 … 12,7; Original 2,0)
     pub laenge: Option<f64>,
-    /// Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0)
+    /// Schlaufenabstand in mm = Kantenlänge des Wabengitters, um das die Linie läuft (0,5 … 20; Original 3,0)
     pub abstand: Option<f64>,
     #[serde(flatten)]
     pub g: Gemeinsam,

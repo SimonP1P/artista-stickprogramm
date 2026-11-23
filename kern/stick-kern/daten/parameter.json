@@ -4748,8 +4748,8 @@
   {
    "id": "objekt.stippling.abstand",
    "gruppe": "Craft Stitches",
-   "name": "Abstand",
-   "wirkung": "Abstand der Bahnen der mäandernden Linie",
+   "name": "Schlaufenabstand",
+   "wirkung": "Kantenlänge des Wabengitters, um das die mäandernde Linie läuft (Loop Spacing)",
    "ebene": "objekt",
    "gilt_fuer": [
     "stippling"
@@ -4764,7 +4764,7 @@
    ],
    "werte": [],
    "stoff": false,
-   "quelle": "Handbuch S. 242–243 (Beispielwerte, niedrig); Verfahren Vorschlag (eigene Festlegung)",
+   "quelle": "Dokument StippleFillValues 540 = 3,0 mm (MOD1, hoch); Verfahren StippleFillInterface 0x101a4590 (hoch); Bereich Vorschlag (eigene Festlegung)",
    "modus": "einfach"
   },
   {
@@ -4786,7 +4786,7 @@
    ],
    "werte": [],
    "stoff": false,
-   "quelle": "Handbuch S. 242–243 (niedrig)",
+   "quelle": "Dokument StippleFillValues 360 = 2,0 mm (MOD1, hoch)",
    "modus": "einfach"
   },
   {

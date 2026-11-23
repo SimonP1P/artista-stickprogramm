@@ -34,7 +34,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Zickzack-Füllung („Zigzag“, Stil 0x2724) | ✅ | 20.11. `stichart: zickzack` an `satin`/`satinlinie`, Abstand 0x2725 (2,0 mm, Stoffe 1,0 mm) |
 | Fancy Fill (Program Split), Abstand, Winkel | ✅ | `muster`, 242 Muster |
 | Pattern Fill (Motivfüllung), Layout am Bildschirm, eigene Sets | ⬜ | Kap. 25, „Motif Fill“ 0x3d |
-| Blackwork Fill, Candlewicking Fill, Lacework, Stippling | ✅ 22.11. Motivfüllung mit den Werten der Stile; `stippling` eigene Festlegung | Kap. 26, Bericht 24 §1/§4 |
+| Blackwork Fill, Candlewicking Fill, Lacework, Stippling | ✅ 22.11. Motivfüllung mit den Werten der Stile; `stippling` wie das Original (`StippleFillInterface`, N13) | Kap. 26, Bericht 24 §1/§4 |
 | Contour, Coil, Island Coil, Straight, Perpendicular Fill, Trapunto | ➖ | nur Strings, im Handbuch nicht beschrieben |
 
 ## C. Effekte (Kap. 22–24)

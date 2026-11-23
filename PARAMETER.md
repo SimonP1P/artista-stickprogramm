@@ -262,8 +262,8 @@ Stand 22.11.2026 · **256 Parameter**: 82 einfach, 113 experte, 61 automatisch. 
 | **Stichwinkel** | Neigung der Stiche zur Linie; in engen Kurven steiler | stielstich | Objekt: `winkel` | 50 ° | 10 … 90 |  | objekt | experte | NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x285a = 50° (mittel) |
 | **Dreifach** | jeder Stich mit Hin-Rück-Hin – Seil-Optik | stielstich | Objekt: `dreifach` | an |  |  | objekt | experte | NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2858 = 3 (mittel) |
 | **Stärke** | Versatz der Dreifach-Striche | stielstich | Objekt: `staerke` | 0,2 mm | 0 … 1 |  | objekt | experte | NORMAL.AMT Stil <0 Software Defaults>, MOD1 Rückstich 0x1001d960 (Analyse_Teil3/24): 0x2856 = 36 = 0,2 mm (mittel) |
-| **Abstand** | Abstand der Bahnen der mäandernden Linie | stippling | Objekt: `abstand` | 3 mm | 0,5 … 20 |  | objekt | einfach | Handbuch S. 242–243 (Beispielwerte, niedrig); Verfahren Vorschlag (eigene Festlegung) |
-| **Stichlänge** | Länge der Laufstiche | stippling | Objekt: `laenge` | 2 mm | 0,5 … 12,7 |  | objekt | einfach | Handbuch S. 242–243 (niedrig) |
+| **Schlaufenabstand** | Kantenlänge des Wabengitters, um das die mäandernde Linie läuft (Loop Spacing) | stippling | Objekt: `abstand` | 3 mm | 0,5 … 20 |  | objekt | einfach | Dokument StippleFillValues 540 = 3,0 mm (MOD1, hoch); Verfahren StippleFillInterface 0x101a4590 (hoch); Bereich Vorschlag (eigene Festlegung) |
+| **Stichlänge** | Länge der Laufstiche | stippling | Objekt: `laenge` | 2 mm | 0,5 … 12,7 |  | objekt | einfach | Dokument StippleFillValues 360 = 2,0 mm (MOD1, hoch) |
 | **Stichart (Blackwork)** | Stichart der verbundenen Linien; Werte wie beim Objekt dieser Art | blackwork | Objekt: `stich` | lauf | lauf, dreifach, rueckstich, stielstich |  | objekt | einfach | Handbuch S. 131–132 (Blackwork Run: Einfach-/Dreifachlauf, Stielstich, Rückstich); Reihenfolge Vorschlag (eigene Festlegung) |
 
 ## PhotoSnap

@@ -325,12 +325,12 @@ Stielstich (Stemstitch, Craft Stitch 0x2855): schräge, sich überlappende Stich
 
 ### `stippling` – Stippling (mäandernde Laufstichfüllung)
 
-Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht kreuzt.
+Stippling (Craft Stitch „Stipple“): die Fläche wird mit einer mäandernden Laufstichlinie gefüllt, die sich nicht kreuzt – Verfahren des Originals (`StippleFillInterface`: Wabengitter, zufälliger Spannbaum, Linie um den Baum).
 
 | Feld | Typ | Pflicht | Standard | Beschreibung |
 |---|---|---|---|---|
-| `abstand` | number |  | – | Schlaufenabstand in mm = Abstand benachbarter Bahnen (0,5 … 20; Handbuch-Beispiel 3,0) |
-| `laenge` | number |  | – | Stichlänge in mm (0,5 … 12,7; Handbuch-Beispiel 2,0) |
+| `abstand` | number |  | – | Schlaufenabstand in mm = Kantenlänge des Wabengitters, um das die Linie läuft (0,5 … 20; Original 3,0) |
+| `laenge` | number |  | – | Stichlänge in mm (0,5 … 12,7; Original 2,0) |
 | `loecher` | PunktAngabe[] |  | – |  |
 | `umriss` | PunktAngabe | ja | – |  |
 

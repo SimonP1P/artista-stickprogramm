@@ -15,6 +15,18 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Stippling wie das Original (N13, 4b.9; Commit folgt)
+- Objektart `stippling` rechnet jetzt nach dem Verfahren des Originals (`StippleFillInterface` in MOD1):
+  - Wabengitter im Schlaufenabstand;
+  - zufälliger Spannbaum;
+  - Linie im Uhrzeigersinn um den Baum, Bézier-geglättet;
+  - nahe Schleifen werden verbunden.
+  Das Aussehen ändert sich: runde, wurmartige Schlaufen statt des bisherigen Quadratrasters. Gleich bei jeder Berechnung.
+- **Felder unverändert** (`laenge` 2,0 mm, `abstand` 3,0 mm). Die Doku-Texte sagen jetzt „Schlaufenabstand =
+  Kantenlänge des Wabengitters“. Herkunft in `objekt_werte`: `vorlage` statt `handbuch`.
+- Parameterkatalog: Name „Schlaufenabstand“, Quellen aus dem Original (PARAMETER.md).
+- **Oberfläche:** nichts zu tun. Die Beschriftung kommt aus dem Parameterkatalog.
+
 ## 22.11.2026 – ART-Designs des Originals mit Objekten öffnen (Nachtauftrag N11, 4b.13c; Commit 71cd891)
 - `stickdatei_lesen` liest jetzt auch **`.art`** (Original-Designs der artista V4, z. B. die 287 Musterdesigns der CD).
   - Ergebnis: je Objekt des Originals ein Objekt `stiche` mit seinen echten Stichen.
