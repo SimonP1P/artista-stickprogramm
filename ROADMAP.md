@@ -17,6 +17,30 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 | 4 Alle Sticharten | Grundstock ✅ (Satin, Tatami, Lauf, Unterlagen, Laufwege, Schrift, Applikation, Füllmuster, Aussparen, Blanket) · **Phase 4b**: **4b.0 Schnittstelle für die Oberfläche ✅** (`SCHNITTSTELLE.md`, `kern.ts`, `stick-api`), **4b.16 Werte je Objekt ✅**, 4b.1–4b.6 ✅, 4b.7 Motive ✅, 4b.8 Effekte ✅, 4b.9 Craft Stitches ✅, 4b.10 Applikation ✅, **4b.11 Zauberstab/PhotoSnap ✅**, **4b.12 Anordnen ✅** (Nachtauftrag N0–N6), **4b.13 Dateien/Rahmen ✅** (fremde Stickdateien, eigene Rahmen, ART mit Objekten), **4b.14 Vorlagen ✅**, **4b.15 Kreuzstich ✅**, 4b.17 SVG einlesen ✅, **Verbinder als Laufstich ✅** (N10), **ART mit Objekten ✅** (N11) – Nachtauftrag abgeschlossen, Fragen offen · Parameterkatalog `PARAMETER.md` (256 Parameter) | 🟡 |
 | 5 Maschine im Programm + neue Oberfläche | serieller Port aus Rust ✅, **Oberfläche v3 (E0–E6) ✅ 21.11.** (**am Gerät gesendet und gestickt 21.11.**, Vor Ort V10), Designs aus der Maschine ✅, Garnfarbkarten ✅, Mac-Programm (Bau auf dem Mac ✅, läuft im Fenster ✅), **Elemente + Gruppen** ✅ 21.11., Senden auch am Mac | 🟡 |
 
+## To-dos (Stand 22.11.2026, vom Nutzer gewünscht) – Arbeit erst nach „Go“
+**A) Am Rechner, ohne Maschine**
+- [ ] A1 **Verlauf aufs Kalibrierblatt**: Verlauf-Objekt in `stickprogramm/beispiele/kalibrierblatt.json` (für V14) – klein
+- [ ] A2 **Parameterliste vorlegen** (Merkliste M1): was im einfachen und im Experten-Modus einstellbar ist – ~½ Schritt
+- [ ] A3 **Bild umwandeln – „Details“**: dünne Linien als Laufstich/Satinlinie statt Fläche (Mittellinien; Verfahren des
+  Originals nicht untersucht) – 1–2 Schritte
+- [ ] A4 **Bild → Umrisse maßstabsfrei** (M2): Stichart und kleine Details erst bei der endgültigen Größe – ~1 Schritt
+- [ ] A5 **Schrift: Satinsäulen in Stücken** wie das Original (47 % der Säulen, Bericht 11 §5/§6) – 1–2 Schritte, Ausgang unsicher
+- [ ] A6 **Applikationsvorlage drucken** (Schnittmuster 1:1) – ~½–1 Schritt
+- [ ] A7 **Kurzstiche** Tatami-Rand und Satin-Gruppen genau wie das Original (MOD1 0x10186ad0) – ~1 Schritt, niedrige Priorität
+- [ ] A8 **Eingesetzten Rahmen von der Maschine lesen** (W12) – ~1 Schritt Analyse; Gerätetest nur mit Zustimmung
+
+**B) Vor Ort an der Maschine** (Einzelheiten in der Tabelle „Vor Ort“ unten)
+- [ ] B1 Kalibrierblatt: V12 Verzug, V13 Vernähen, V14 Verlauf (braucht A1)
+- [ ] B2 Prüfmuster 1 und 2 (V4, V6)
+- [ ] B3 Applikation mit Herausfahren, Abdeckung 5,0 mm (V15)
+- [ ] B4 Stippling-Probe (V16)
+- [ ] B5 SVG-Blume (V8)
+- [ ] B6 Knopflöcher (V9)
+- [ ] B7 Computer-Schrift mit/ohne Unterlage (V11)
+- [ ] B8 Display: Garnfarben und Icon (V2, V3)
+- [ ] B9 Lage im Rahmen beim Senden (V7)
+- [ ] B10 Dauerhaft in der Maschine speichern (V5) – nur mit ausdrücklicher Zustimmung
+
 ## Nachtauftrag 22.11.2026 – HIER ZUERST LESEN (Stand wird nach jedem Schritt nachgetragen)
 **Auftrag des Nutzers (22.11.2026, nachts):** 4b.7 bis 4b.15 selbstständig nacheinander abarbeiten, jede Funktion im
 üblichen Stil in die Oberfläche (Modus einfach/experte/automatisch selbst entscheiden), nach jedem Schritt committen
