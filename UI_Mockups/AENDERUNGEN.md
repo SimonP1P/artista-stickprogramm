@@ -15,6 +15,12 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Applikation: Herausfahren jetzt Standard an (Commit folgt)
+- `herausfahren` an `applikation` hat jetzt den Standard **`true`**, wie im Original (Entscheidung des Nutzers).
+- Fehlt das Feld, fährt der Rahmen vor jedem Halt heraus. Das gilt auch für ältere Designs mit Applikation. Mit
+  `false` hält der Rahmen am Ende der Lage.
+- **Oberfläche:** nichts zu tun. Der Haken im Inspektor (X) zeigt den Standard aus dem Schema.
+
 ## 22.11.2026 – Applikation: Herausfahren / Frame Out (N14, 4b.10; Commit c130f5f)
 - **Neues Feld** `herausfahren` (bool, Standard `false`) an `applikation`. Ist es an, fährt der Rahmen vor jedem Halt
   der Applikation ohne Einstich 12 mm über die Mitte der Oberkante. Das gilt nach der Platzierung, bei „zuschneiden“

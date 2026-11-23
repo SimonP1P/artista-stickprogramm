@@ -4110,11 +4110,11 @@
    "json_design": null,
    "json_objekt": "herausfahren",
    "einheit": "an/aus",
-   "standard": false,
+   "standard": true,
    "bereich": null,
    "werte": [],
    "stoff": false,
-   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f2a/0x3f2b = 0/2160, Applique::GetJumpoutPoint 0x1000f2f0, Sprung 0x2713 vor jedem Halt (RegenerateComponents 0x1000e6c0, hoch); im Original an, sobald ein Halt eingestellt ist – Standard aus = Entscheidung des Nutzers; Rand des Stickfelds eigene Festlegung",
+   "quelle": "AutoAppliqueValues (MOD1 0x101f3c70 = NORMAL.AMT 0x3f19), Dialog DLG 1455 (Analyse_Teil3/12 §8, hoch): 0x3f2a/0x3f2b = 0/2160, Applique::GetJumpoutPoint 0x1000f2f0, Sprung 0x2713 vor jedem Halt (RegenerateComponents 0x1000e6c0, hoch); im Original an, sobald ein Halt eingestellt ist (Vorgabe) – Standard an (Nutzer 22.11.2026); Rand des Stickfelds eigene Festlegung",
    "modus": "experte"
   },
   {

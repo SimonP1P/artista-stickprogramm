@@ -1405,8 +1405,9 @@ pub struct ApplikationJson {
     /// Herausfahren (Frame Out des Originals, `Applique::GetJumpoutPoint`): vor jedem Halt der Applikation (nach der
     /// Platzierungslinie, bei „Zuschneiden“ nach der Schnittlinie, nach dem Heften) fährt der Rahmen ohne Einstich
     /// 12 mm über die Mitte der Oberkante – Stoff auflegen und zuschneiden geht leichter –, danach springt er zurück.
-    /// Höchstens bis zum Rand des Stickfelds. Standard aus (im Original an, sobald ein Halt eingestellt ist)
-    #[serde(default)]
+    /// Höchstens bis zum Rand des Stickfelds. Standard an wie im Original (dort an, sobald ein Halt eingestellt ist –
+    /// die Vorgabe); `false` = der Rahmen hält am Ende der Lage
+    #[serde(default = "wahr")]
     pub herausfahren: bool,
     #[serde(flatten)]
     pub g: Gemeinsam,

@@ -232,7 +232,7 @@ Applikation: Platzierung → Stopp → Heften → Stopp → Abdecken (`applikati
 | `breite` | number |  | – | Breite des Abdeckstichs in mm (0,5 … 10; Original 5,0) |
 | `heft_abstand` | number |  | – | Abstand des Heftstichs in mm (0,5 … 12,7; Original 5,0) |
 | `heft_breite` | number |  | – | Breite des Zickzack-Heftstichs in mm (0,5 … 10; Original 4,0) |
-| `herausfahren` | boolean |  | `false` | Herausfahren (Frame Out des Originals, `Applique::GetJumpoutPoint`): vor jedem Halt der Applikation (nach der Platzierungslinie, bei „Zuschneiden“ nach der Schnittlinie, nach dem Heften) fährt der Rahmen ohne Einstich 12 mm über die Mitte der Oberkante – Stoff auflegen und zuschneiden geht leichter –, danach springt er zurück. Höchstens bis zum Rand des Stickfelds. Standard aus (im Original an, sobald ein Halt eingestellt ist) |
+| `herausfahren` | boolean |  | `true` | Herausfahren (Frame Out des Originals, `Applique::GetJumpoutPoint`): vor jedem Halt der Applikation (nach der Platzierungslinie, bei „Zuschneiden“ nach der Schnittlinie, nach dem Heften) fährt der Rahmen ohne Einstich 12 mm über die Mitte der Oberkante – Stoff auflegen und zuschneiden geht leichter –, danach springt er zurück. Höchstens bis zum Rand des Stickfelds. Standard an wie im Original (dort an, sobald ein Halt eingestellt ist – die Vorgabe); `false` = der Rahmen hält am Ende der Lage |
 | `loecher` | PunktAngabe[] |  | – |  |
 | `platz_laenge` | number |  | – | Stichlänge der Platzierungslinie in mm (0,5 … 12,7; Original 1,5) |
 | `stil` | ApplikationStil |  | – |  |

@@ -140,7 +140,7 @@ Umsetzung N14 (22.11.2026). Quellen MOD1:
   danach folgt der Sprung zum nächsten Weg.
 - Die Oberkante wird aus allen Stichwegen der Applikation berechnet (mit Abdeckband). Das entspricht `GetFullExtents`
   über alle Lagen.
-- **Standard aus** (Entscheidung des Nutzers 22.11.2026: als Option, Test vor Ort). Das Original fährt immer heraus;
-  ob das an der 185 Vorteile bringt, zeigt Vor Ort V15.
+- **Standard an wie im Original** (Nutzer 22.11.2026; zuerst als Option mit Standard aus umgesetzt), abschaltbar mit
+  `"herausfahren": false`. Wie es an der 185 wirkt, zeigt Vor Ort V15.
 - **Eigene Festlegung:** Liegt der Punkt außerhalb des Stickfelds, rückt er in 0,5-mm-Schritten bis an die
   Oberkante zurück. Ein Sprung aus dem Feld würde das Design für die Maschine größer machen als den Rahmen.

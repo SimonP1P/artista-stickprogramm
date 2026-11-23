@@ -31,7 +31,7 @@
 //!   Schnittlinie, Heften: `Applique::RegenerateComponents` 0x1000e6c0, Bausteine 0x10012ca0/0x10012e50/0x10013010)
 //!   ein Handstich-Objekt der Stichart Sprung (0x2713) mit einem Punkt ein: `GetJumpoutPoint` 0x1000f2f0 = Mitte der
 //!   Oberkante (`GetFullExtents`) + Versatz 0x3f2a/0x3f2b = (0; 2160 = **12 mm**). Hoch (Code), Wirkung an der 185
-//!   offen (Vor Ort). Im Kern als Option, Standard aus (Entscheidung des Nutzers 22.11.2026); der Punkt bleibt im
+//!   offen (Vor Ort). Im Kern Standard an wie im Original (Nutzer 22.11.2026), abschaltbar; der Punkt bleibt im
 //!   Stickfeld (eigene Festlegung). Umgesetzt beim Verbinden (`design.rs`, `nachbearbeitung::Zusatz::herausfahren`).
 
 use crate::design::{Objekt, ObjektArt, SatinOptionen, Unterlage};
@@ -100,7 +100,7 @@ impl Default for ApplikationVorgabe {
             zuschneiden: false,
             versatz: 0.0,
             teilabdeckung: false,
-            herausfahren: false,
+            herausfahren: true,
         }
     }
 }
@@ -530,7 +530,13 @@ mod tests {
         )
         .unwrap();
         let f = d.berechnen().unwrap();
-        let max_r = f.stiche.iter().map(|s| abstand(s.p(), p(0.0, 0.0))).fold(0.0, f64::max);
+        // nur Einstiche (der Herausfahr-Sprung liegt 12 mm über der Oberkante)
+        let max_r = f
+            .stiche
+            .iter()
+            .filter(|s| s.art == crate::Art::Stich)
+            .map(|s| abstand(s.p(), p(0.0, 0.0)))
+            .fold(0.0, f64::max);
         assert!(max_r < 20.3, "Blanket nach außen: {max_r}");
     }
 
@@ -556,12 +562,12 @@ mod tests {
                 "umriss": {{"rechteck": {{"mitte": [0, {mitte_y}], "breite": 40, "hoehe": 20}}}}, "farbe": "#2e86c1"}}]}}"##
             )
         };
-        // ohne: der Rahmen hält am Ende der Lage
-        let (oben, w) = halte(&rechteck(0.0, ""));
+        // ausgeschaltet: der Rahmen hält am Ende der Lage
+        let (oben, w) = halte(&rechteck(0.0, r#""herausfahren": false,"#));
         assert_eq!(w.len(), 2);
         assert!(w.iter().all(|(q, _)| q.y <= oben + 1e-6));
-        // mit: vor beiden Halten Sprung zur Mitte der Oberkante + 12 mm
-        let (oben, w) = halte(&rechteck(0.0, r#""herausfahren": true,"#));
+        // Standard (an wie im Original): vor beiden Halten Sprung zur Mitte der Oberkante + 12 mm
+        let (oben, w) = halte(&rechteck(0.0, ""));
         assert_eq!(w.len(), 2);
         for (q, sprung) in &w {
             assert!(sprung, "kein Sprung vor dem Halt");

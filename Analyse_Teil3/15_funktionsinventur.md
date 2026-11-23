@@ -91,7 +91,7 @@ Strings sind als „nur Strings“ markiert (vermutlich Wilcom-Kern, in artista 
 | Auto Appliqué: Platzierung, Schnittlinie, Heften, Abdecken Satin/Blanket | ✅ | |
 | Versatz innen/außen, Vorgabewerte AutoAppliqueValues | ✅ 22.11. `versatz`, Vorgaben aus MOD1 0x101f3c70 | Bericht 12 §8 |
 | Partial Appliqué (Teil-Abdeckung) | ✅ 22.11. `teilabdeckung` (Schnitt eigene Festlegung) | Bericht 12 §8 |
-| Frame Out (Herausfahren vor jedem Halt) | ✅ 22.11. `herausfahren` (Option, Standard aus; Original immer an) | Bericht 12 §9 |
+| Frame Out (Herausfahren vor jedem Halt) | ✅ 22.11. `herausfahren` (Standard an wie im Original, abschaltbar) | Bericht 12 §9 |
 | Applikationsvorlage drucken | ⬜ 🖥 | Schnittmuster 1:1 |
 
 ## G. Automatisches Digitalisieren (Kap. 11–13)

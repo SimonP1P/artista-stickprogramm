@@ -267,8 +267,8 @@
           ]
         },
         "herausfahren": {
-          "default": false,
-          "description": "Herausfahren (Frame Out des Originals, `Applique::GetJumpoutPoint`): vor jedem Halt der Applikation (nach der\nPlatzierungslinie, bei „Zuschneiden“ nach der Schnittlinie, nach dem Heften) fährt der Rahmen ohne Einstich\n12 mm über die Mitte der Oberkante – Stoff auflegen und zuschneiden geht leichter –, danach springt er zurück.\nHöchstens bis zum Rand des Stickfelds. Standard aus (im Original an, sobald ein Halt eingestellt ist)",
+          "default": true,
+          "description": "Herausfahren (Frame Out des Originals, `Applique::GetJumpoutPoint`): vor jedem Halt der Applikation (nach der\nPlatzierungslinie, bei „Zuschneiden“ nach der Schnittlinie, nach dem Heften) fährt der Rahmen ohne Einstich\n12 mm über die Mitte der Oberkante – Stoff auflegen und zuschneiden geht leichter –, danach springt er zurück.\nHöchstens bis zum Rand des Stickfelds. Standard an wie im Original (dort an, sobald ein Halt eingestellt ist –\ndie Vorgabe); `false` = der Rahmen hält am Ende der Lage",
           "type": "boolean"
         },
         "kuerzeste": {
