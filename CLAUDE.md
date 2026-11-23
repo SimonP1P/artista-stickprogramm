@@ -136,6 +136,7 @@
 - **Alles** wird versioniert, auch die Original-CD (Wunsch des Nutzers); `Setup/English/setup.z` (142 MB) über **Git LFS**.
 - Nach jedem abgeschlossenen Arbeitsschritt committen und pushen (Wunsch des Nutzers). Commit-Nachrichten auf Deutsch.
 
+- **Installer (Windows .exe/.msi, Mac .dmg)** baut GitHub Actions (`.github/workflows/installer.yml`), Ergebnis als **Release-Entwurf** unter Releases. **Version zählt automatisch** (0.1.<Laufnummer>, nur im Bau gesetzt) – nicht von Hand in `tauri.conf.json` hochzählen. **Nicht bei jedem Push** bauen (private Repos: Actions-Minuten, Mac zählt ×10), sondern nur, wenn der Nutzer einen Installer möchte: `gh workflow run installer.yml`, dann `gh run watch`. Ohne Installation testen: MSI mit `msiexec /a … TARGETDIR=…` entpacken (Befehle im Chat vom 23.11.2026).
 - **Windows-PC an der Maschine:** Repo dort klonen mit `$env:GIT_LFS_SKIP_SMUDGE=1; git clone https://github.com/SimonP1P/artista-stickprogramm` (ohne 142-MB-setup.z), dann `claude` im Repo starten. Testprogramme direkt mit `powershell -ExecutionPolicy Bypass -File …ps1 -Port COM3 -OhneNachfrage` aufrufen (die J/N-Abfrage ist durch Regel 1a abgedeckt). Vor Start nach PowerShell 5.1 prüfen; Pfade mit Leerzeichen quoten.
 
 ## 5. Reproduzieren / Umgebung

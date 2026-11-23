@@ -1,12 +1,10 @@
 # Installer für Windows (.exe/.msi) und Mac (.dmg) bauen und als Entwurf unter „Releases“ ablegen.
-# Start: von Hand (Actions → „Installer bauen“ → Run workflow) oder mit einem Tag v* (z. B. git tag v0.1.0 && git push --tags).
-# Version: app/src-tauri/tauri.conf.json „version“ (bei jeder Ausgabe hochzählen).
+# Start: von Hand (Actions → „Installer bauen“ → Run workflow) oder `gh workflow run installer.yml`.
+# Version zählt automatisch: 0.1.<Laufnummer> (nur im Bau gesetzt, tauri.conf.json im Repo bleibt unverändert).
 name: Installer bauen
 
 on:
   workflow_dispatch:
-  push:
-    tags: ["v*"]
 
 permissions:
   contents: write
@@ -44,6 +42,11 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: app/src-tauri -> target
+
+      - name: Version automatisch (0.1.Laufnummer)
+        shell: bash
+        run: |
+          node -e "const fs=require('fs');const f='app/src-tauri/tauri.conf.json';const j=JSON.parse(fs.readFileSync(f,'utf8'));j.version='0.1.${{ github.run_number }}';fs.writeFileSync(f,JSON.stringify(j,null,2));console.log('Version',j.version)"
 
       - name: Oberfläche – Pakete
         working-directory: app
