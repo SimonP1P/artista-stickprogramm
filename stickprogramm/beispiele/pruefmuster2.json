@@ -1,6 +1,6 @@
 {
   "name": "Pruefmuster2",
-  "rahmen": "artista 130 x 100",
+  "rahmen": "artista 255 x 145 Oval",
   "stoff": "Woven Medium Weight",
   "objekte": [
     {"art": "muster", "name": "Füllmuster Raute", "farbe": "#2e86c1", "muster": "001 Diamond (90)",

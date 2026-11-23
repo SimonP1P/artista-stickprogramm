@@ -71,7 +71,6 @@ summary{cursor:pointer;font-weight:600;font-size:.95rem}
 .spaeter .karte{opacity:.85}
 footer{font-size:.85rem;color:var(--mut)}
 @media (prefers-reduced-motion:reduce){.balken i{transition:none}}
-
 @page{size:A4;margin:14mm 13mm}
 html,body{background:#fff!important;color:#1d2321}
 body{font-size:11.5pt}
@@ -118,7 +117,7 @@ textarea{min-height:70px;border:1px solid #9aa39f;border-radius:4px;resize:none}
     <div id="spaeter" style="display:flex;flex-direction:column;gap:14px"></div>
   </section>
 
-  <footer>Stand 23.11.2026 · Quelle: ROADMAP.md, Tabelle „Vor Ort“ (V2–V17). Dateien liegen im Projektordner unter <code>stickprogramm/beispiele/</code>.</footer>
+  <footer>Stand 23.11.2026 · alle Tests im großen Ovalrahmen 145 × 255 · Quelle: ROADMAP.md, Tabelle „Vor Ort“ (V2–V17). Dateien liegen im Projektordner unter <code>stickprogramm/beispiele/</code>.</footer>
 </div>
 
 <script>
@@ -127,13 +126,13 @@ const TESTS = [
   { nr:"0", titel:"Material bereitlegen", tags:["vor dem Start"],
     ziel:"Alles, was für den ganzen Tag gebraucht wird.",
     schritte:[
-      "Feste Webware (z. B. Baumwolle, Leinen): mindestens 4 Stücke, je etwa 25 × 20 cm",
-      "Strickstoff (T-Shirt-Stoff): 3 Stücke",
+      "Feste Webware (z. B. Baumwolle, Leinen): mindestens 4 Stücke, je etwa 30 × 40 cm (der Ovalrahmen ist groß)",
+      "Strickstoff (T-Shirt-Stoff): 3 Stücke, je etwa 30 × 40 cm",
       "Stickvlies (Abreiß- oder Schneidvlies), genug für alle Stücke",
       "Applikationsstoff in einer anderen Farbe, etwa 10 × 10 cm",
       "Stickgarn in mindestens 4 gut unterscheidbaren Farben, dazu Unterfaden",
       "Messschieber oder gutes Lineal (mm), kleine spitze Schere, Handy für Fotos",
-      "Rahmen 130 × 100 mm (mittlerer Rahmen) liegt bereit"
+      "Großer Ovalrahmen (145 × 255 mm) liegt bereit. Der kleine Rahmen 5 × 7 cm wird heute nicht gebraucht"
     ]},
   { nr:"1", titel:"Programm auf dem Windows-PC auf den neuesten Stand", tags:["PC","Fernwartung"],
     ziel:"Der Windows-PC hat noch die Version vom 21.11. Das macht Simon oder Claude per Fernwartung.",
@@ -147,7 +146,7 @@ const TESTS = [
   { nr:"2", titel:"Übertragen, dann „Start“", tags:["V17","V2/V3","wichtig"],
     ziel:"Wartet die Maschine, bis im Programm „Start“ gedrückt wird? Und zeigt das Display die Garnfarben und das Bild?",
     schritte:[
-      "Rahmen 130 × 100 einsetzen, Stoff mit Vlies einspannen",
+      "Stoff mit Vlies in den großen Ovalrahmen spannen und an der Maschine einsetzen",
       "Im Programm: Datei → Öffnen → <code>"+BSP+"pruefmuster.json</code> (für diesen Test wird noch nicht gestickt)",
       "Schritt 4 „Übertragen“ → Knopf „Übertragen“. Ein Balken läuft, dann steht da „Übertragen.“ und der Knopf „Start“",
       "<b>Display ansehen und fotografieren</b>, solange das Programm auf „Start“ wartet",
@@ -167,7 +166,7 @@ const TESTS = [
   { nr:"3", titel:"Kalibrierblatt auf Webware", tags:["V12","V13","Messen"],
     ziel:"Wie stark zieht sich der Stoff beim Sticken zusammen? Daraus stellen wir den Zugausgleich ein.",
     schritte:[
-      "Feste Webware mit Vlies straff in den Rahmen 130 × 100",
+      "Feste Webware mit Vlies straff in den großen Ovalrahmen",
       "Datei → Öffnen → <code>"+BSP+"kalibrierblatt.json</code> (79 × 95 mm, 4 Farben, etwa 4 400 Stiche)",
       "Schritt 1: Stoff auf <b>„Woven Medium Weight“</b> lassen",
       "Übertragen → „Start“ → sticken, bei jedem Farbwechsel Garn wechseln",
@@ -200,7 +199,7 @@ const TESTS = [
   { nr:"6", titel:"Prüfmuster 1", tags:["V4"],
     ziel:"Alle Grund-Sticharten auf einem Stück: Satin in fünf Breiten, Tatami, Laufstich, Dreifachstich, Schrift „Abc“.",
     schritte:[
-      "Feste Webware mit Vlies, Rahmen 130 × 100",
+      "Feste Webware mit Vlies, großer Ovalrahmen",
       "Datei → Öffnen → <code>"+BSP+"pruefmuster.json</code> (82 × 110 mm)",
       "Übertragen → „Start“ → sticken",
       "Foto mit Lineal"
@@ -209,7 +208,7 @@ const TESTS = [
   { nr:"7", titel:"Prüfmuster 2 mit Applikation", tags:["V6","V15"],
     ziel:"Neue Sticharten: Füllmuster Raute und Herz, ausgesparte Schrift, Blanket-Stich und eine Applikation. Bei der Applikation fährt der Rahmen jetzt vor jedem Halt 12 mm nach oben, damit man leichter an den Stoff kommt.",
     schritte:[
-      "Feste Webware mit Vlies, Rahmen 130 × 100",
+      "Feste Webware mit Vlies, großer Ovalrahmen",
       "Datei → Öffnen → <code>"+BSP+"pruefmuster2.json</code> (78 × 82 mm, 8 Farben)",
       "Übertragen → „Start“ → sticken",
       "Applikation: nach der <b>Platzierungslinie</b> hält die Maschine. Fährt der Rahmen dabei nach oben weg? Applikationsstoff auflegen",
@@ -226,7 +225,7 @@ const TESTS = [
   { nr:"8", titel:"Knopflöcher", tags:["V9"],
     ziel:"Alle 9 Knopflocharten, dazu 2 in einer Fläche eingearbeitet.",
     schritte:[
-      "Feste Webware mit Vlies",
+      "Feste Webware mit Vlies, großer Ovalrahmen",
       "Datei → Öffnen → <code>"+BSP+"knopfloecher.json</code>",
       "Übertragen → „Start“ → sticken",
       "Ein paar Schlitze vorsichtig aufschneiden (Pfeil oder Nahttrenner)",
@@ -236,8 +235,8 @@ const TESTS = [
   { nr:"9", titel:"Blume aus einer Zeichnung (SVG)", tags:["V8"],
     ziel:"Eine Zeichnung aus Inkscape wird automatisch in Stiche umgewandelt.",
     schritte:[
-      "Feste Webware mit Vlies, Rahmen 130 × 100",
-      "Datei → Neu, dann Schritt 2 → Kachel „SVG einlesen“ → <code>"+BSP+"blume.svg</code>",
+      "Feste Webware mit Vlies, großer Ovalrahmen",
+      "Datei → Neu, in Schritt 1 den <b>großen Ovalrahmen</b> wählen, dann Schritt 2 → Kachel „SVG einlesen“ → <code>"+BSP+"blume.svg</code>",
       "Größe so lassen (etwa 90 × 84 mm)",
       "Übertragen → „Start“ → sticken",
       "Foto"
@@ -246,8 +245,8 @@ const TESTS = [
   { nr:"10", titel:"Computer-Schrift mit und ohne Stabilisieren", tags:["V11"],
     ziel:"Liegt Schrift auf Strick mit Unterlage glatter?",
     schritte:[
-      "Strickstoff mit Vlies",
-      "Datei → Neu, Schritt 2 → Text „Anna“",
+      "Strickstoff mit Vlies, großer Ovalrahmen",
+      "Datei → Neu, in Schritt 1 den <b>großen Ovalrahmen</b> wählen, dann Schritt 2 → Text „Anna“",
       "Schrift wählen → Reiter „Auf dem Computer“ → <b>Arial Black</b>, Höhe <b>20 mm</b>",
       "Häkchen <b>„Stabilisieren“ an</b> → übertragen → sticken",
       "Häkchen <b>„Stabilisieren“ aus</b> → daneben noch einmal sticken",

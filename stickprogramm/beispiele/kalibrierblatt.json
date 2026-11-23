@@ -1,6 +1,6 @@
 {
   "name": "Kalibrierblatt",
-  "rahmen": "artista 130 x 100",
+  "rahmen": "artista 255 x 145 Oval",
   "stoff": "Woven Medium Weight",
   "objekte": [
     {"art": "satinlinie", "name": "quer 1 mm", "farbe": "#1f3a93", "breite": 1, "unterlage": "auto", "punkte": [[-42, 55], [-12, 55]]},
