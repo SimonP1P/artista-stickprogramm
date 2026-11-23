@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Applikation: Herausfahren jetzt Standard an (Commit folgt)
+## 22.11.2026 – Applikation: Herausfahren jetzt Standard an (Commit f2ed457)
 - `herausfahren` an `applikation` hat jetzt den Standard **`true`**, wie im Original (Entscheidung des Nutzers).
 - Fehlt das Feld, fährt der Rahmen vor jedem Halt heraus. Das gilt auch für ältere Designs mit Applikation. Mit
   `false` hält der Rahmen am Ende der Lage.
