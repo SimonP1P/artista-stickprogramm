@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Applikation: Herausfahren / Frame Out (N14, 4b.10; Commit folgt)
+## 22.11.2026 – Applikation: Herausfahren / Frame Out (N14, 4b.10; Commit c130f5f)
 - **Neues Feld** `herausfahren` (bool, Standard `false`) an `applikation`. Ist es an, fährt der Rahmen vor jedem Halt
   der Applikation ohne Einstich 12 mm über die Mitte der Oberkante. Das gilt nach der Platzierung, bei „zuschneiden“
   nach der Schnittlinie und nach dem Heften. Dort hält er an und springt dann zurück.
