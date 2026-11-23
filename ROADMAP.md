@@ -155,8 +155,23 @@ entschlüsseln (~1–2 Schritte, Ausgang unsicher – Nutzer fragt nach dem Nutz
 (~5–6 Schritte, + ~½ für „Original-Stiche behalten, bis man ändert“), Vor-Ort-Liste ergänzen (Verlauf,
 Applikations-Probestück). Gestrichen: Bild hinter dem Design, Kreuzstich-Malwerkzeug, Kreuzstich-Buchstaben, HUS.
 
-## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
+## Übergabe für die nächste Sitzung (Stand 23.11.2026)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
+
+**Zuletzt erledigt (22./23.11.):** UX-Analyse C1–C4 umgesetzt (`UI_Mockups/UX_ANALYSE_2026-11-22.md`), danach nach
+Rückmeldung des Nutzers:
+- **Übertragen:** Knopf oben nur im Expertenmodus (einfacher Modus: Schritt 4), ausgegraut mit „Passt nicht“/„Zu groß“;
+  Klick öffnet in beiden Modi ein Fenster mit **einem** Balken, Bild und Garnfarben immer; danach Garnfolge und Knopf
+  **„Start“** – erst dann Befehl 0x08 (Kern: `wahl.auf_start_warten`, Fortschritt „Bereit“, Befehl `maschine_starten`).
+  Keine Firmware-Angaben, kein „nichts dauerhaft“, kein „Ohne Garnfarben“. **Am Gerät offen: V17** (wie lange wartet
+  die Maschine im PC-Modus auf „Start“).
+- **Einzelwerte:** leere Felder zeigen den geltenden Wert (Befehl `einstellungen_wirksam`) statt „je Stoff“,
+  „vom Stoff/Standard/wie Design (…)“ statt „geerbt“.
+- Mac-App gebaut (`kern/target/debug/artista-stickprogramm`); **Windows-PC:** `git pull` und
+  `npm run tauri build -- --debug --no-bundle` nötig.
+- Neues nur nach „Go“ des Nutzers (er will „weiter sehen“).
+
+### Stand 21.11.2026, spät
 
 **Zuletzt erledigt (20.11.):** Phase 4b.1–4b.4 (Transformationen, Schrift vollständig, Linien, Flächen), Messungen an
 den Musterdesigns (Säulenreihenfolge der Schrift, Step-Muster, Wendefüllung), Korrektur Step-Versatz der Stoffe
