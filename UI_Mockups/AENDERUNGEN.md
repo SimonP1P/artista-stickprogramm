@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 23.11.2026 – Einzelwerte: Zahl statt „je Stoff“ (Rückmeldung Nutzer), Commit (folgt)
+## 23.11.2026 – Einzelwerte: Zahl statt „je Stoff“ (Rückmeldung Nutzer), Commit f57b9bb
 - Neuer Befehl **`einstellungen_wirksam`** (`DesignEingabe` → `Einstellungen`): Werte des Stoffs, überschrieben von
   `einstellungen`; liest nur `version`, `stoff`, `einstellungen`.
 - Reiter „Einzelwerte“: leere Felder zeigen den geltenden Wert grau (statt „je Stoff“); Auswahlfelder „vom Stoff (an)“,
