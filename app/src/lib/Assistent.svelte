@@ -10,6 +10,7 @@
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
   import { SCHRIFT_UNTERLAGE } from "./einfuegen";
   import { maschine } from "./maschine.svelte";
+  import Uebertragung from "./Uebertragung.svelte";
 
   /** Text mit Original-Alphabet oder Computer-Schrift (gleiche Felder für Text, Höhe, Satz) */
   type Text = (TextJson & { art: "text" }) | (TtfJson & { art: "ttf" });
@@ -770,14 +771,26 @@
         {#if maschine.simulation}
           <div class="simbox" style="margin-bottom:10px"><Icon d={IC.monitor} /><span><b>Simulation</b> – zum Ausprobieren, es wird nichts gesendet. Anschluss oben im Menü „Simulation“ wählen.</span></div>
         {/if}
-        {#if maschine.rahmenGewechselt}
-          <div class="note" style="margin-bottom:10px">Rahmen gewechselt? An der Maschine einmal «check» drücken.</div>
+        {#if maschine.uebertraegt || maschine.phase === "fertig" || maschine.phase === "fehler"}
+          <!-- Stand des Übertragens hier im Schritt – im einfachen Modus ohne Fenster (Wunsch Nutzer 22.11.2026) -->
+          <div style="margin-bottom:12px"><Uebertragung /></div>
+          {#if maschine.laeuft}
+            <button class="btn btn-secondary" style="width:100%" onclick={() => maschine.abbrechen()}>Abbrechen</button>
+          {:else}
+            <button class="btn {maschine.phase === 'fehler' ? 'btn-primary' : 'btn-secondary'}" style="width:100%; min-height:38px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? ""} onclick={() => maschine.uebertragen()}>
+              <Icon d={IC.senden} />{maschine.sperrKurz ?? (maschine.phase === "fehler" ? "Nochmal" : "Nochmal übertragen")}
+            </button>
+          {/if}
+        {:else}
+          {#if maschine.rahmenGewechselt}
+            <div class="note" style="margin-bottom:10px">Rahmen gewechselt? An der Maschine einmal «check» drücken.</div>
+          {/if}
+          <button class="btn btn-primary blueprint btn-block" style="min-height:46px; font-size:16px; width:100%; gap:8px" disabled={!!maschine.sperrgrund} onclick={() => maschine.uebertragen()}>
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><Icon d={IC.senden} />{maschine.sperrKurz === "Passt nicht" ? "Passt nicht in den Rahmen" : maschine.sperrKurz === "Zu groß" ? "Zu groß für die Maschine" : "Übertragen"}
+          </button>
+          {#if maschine.sperrgrund}<p class="small" style="color:var(--err); margin:6px 0 0">{maschine.sperrgrund}</p>{/if}
         {/if}
-        <button class="btn btn-primary blueprint btn-block" style="min-height:46px; font-size:16px; width:100%; gap:8px" disabled={!!maschine.sperrgrund} onclick={() => maschine.uebertragen()}>
-          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><Icon d={IC.senden} />Übertragen
-        </button>
-        {#if maschine.sperrgrund}<p class="small" style="color:var(--err); margin:6px 0 0">{maschine.sperrgrund}</p>{/if}
-        <p class="mut small" style="margin:8px 0 14px">Das Design bleibt bis zum Ausschalten in der Maschine.</p>
+        <div style="height:14px"></div>
       <div style="display:flex; flex-direction:column; gap:8px">
         <button class="big" onclick={() => speichern()}><b style="font-weight:500">Design speichern</b><span class="mut small">eigenes Format (JSON) – zum Weiterbearbeiten</span></button>
         <button class="big" onclick={expExportieren}><b style="font-weight:500">Stickdatei exportieren (EXP)</b><span class="mut small">Bernina-Format – Stiche ohne Garnnamen</span></button>

@@ -386,18 +386,29 @@
     </div>
     <button
       class="mbtn"
-      title={maschine.laeuft ? "Maschine arbeitet …" : maschine.info ? `Firmware ${maschine.info.sitzung.naehmaschine} · ${maschine.info.farbbereich.text}` : "Anschluss und Maschine"}
+      title={maschine.laeuft ? "Maschine arbeitet …" : maschine.info ? "Maschine antwortet – Anschluss und Maschine" : "Anschluss und Maschine"}
       aria-haspopup="menu"
       aria-expanded={menue === "maschine"}
       onclick={() => (menue = menue === "maschine" ? null : "maschine")}
-      style="border:1px solid var(--line); margin-left:6px; gap:7px"
+      style="border:1px solid var(--line); margin-left:6px; gap:7px; width:168px; justify-content:flex-start"
     >
-      <span aria-hidden="true" style="width:9px; height:9px; border-radius:50%; background:{maschine.laeuft ? 'var(--warn)' : maschine.simulation ? 'var(--sim)' : maschine.info ? 'var(--ok)' : maschine.pruefFehler ? 'var(--err)' : 'var(--muted)'}"></span>
-      {maschine.laeuft && maschine.dialogOffen ? "Überträgt …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}
+      <!-- feste Breite: Einfach/Experte bleiben stehen, egal was hier steht (Wunsch Nutzer 22.11.2026) -->
+      <span aria-hidden="true" style="flex:none; width:9px; height:9px; border-radius:50%; background:{maschine.laeuft ? 'var(--warn)' : maschine.simulation ? 'var(--sim)' : maschine.info ? 'var(--ok)' : maschine.pruefFehler ? 'var(--err)' : 'var(--muted)'}"></span>
+      <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{maschine.uebertraegt ? "Überträgt …" : maschine.simulation ? "Simulation" : `${maschine.port} · artista 185`}</span>
     </button>
-    <button class="btn btn-primary blueprint" style="margin-left:6px; gap:7px" disabled={!!maschine.sperrgrund} title={maschine.sperrgrund ?? "An die Maschine übertragen – danach ist sie bereit zum Sticken"} onclick={() => maschine.uebertragen()}>
+    <!-- Übertragen oben nur im Expertenmodus; im einfachen Modus im Schritt „Übertragen“. Der Knopf behält seinen Platz
+         (unsichtbar), damit Einfach/Experte nicht springen (Wunsch Nutzer 22.11.2026). Passt das Design nicht, steht
+         der Grund auf dem Knopf. -->
+    <button
+      class="btn btn-primary blueprint"
+      style="margin-left:6px; gap:7px; width:142px; justify-content:center"
+      style:visibility={arbeit.modus === "experte" ? null : "hidden"}
+      disabled={!!maschine.sperrgrund}
+      title={maschine.sperrgrund ?? "An die Maschine übertragen – danach ist sie bereit zum Sticken"}
+      onclick={() => maschine.uebertragen()}
+    >
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <Icon d={IC.senden} />Übertragen
+      <Icon d={maschine.sperrKurz ? IC.warnung : IC.senden} />{maschine.sperrKurz ?? "Übertragen"}
     </button>
 
     {#if menue === "maschine"}
@@ -413,7 +424,7 @@
         <button class="mi" role="menuitem" disabled={maschine.laeuft} onclick={() => waehle(() => maschine.listeOeffnen())}>Designs aus der Maschine …</button>
         <div class="msep"></div>
         <div class="small mut" style="padding:4px 10px 8px; white-space:normal">
-          {#if maschine.info}Firmware {maschine.info.sitzung.naehmaschine} · Stickmodul {maschine.info.sitzung.stickmodul} · {maschine.info.farbbereich.text}
+          {#if maschine.info}<span title="Firmware {maschine.info.sitzung.naehmaschine} · Stickmodul {maschine.info.sitzung.stickmodul}">Die Maschine antwortet{maschine.info.sitzung.stickmodul ? " – Stickmodul bereit" : ""}.</span>
           {:else if maschine.pruefFehler}<span style="color:var(--err)">{maschine.pruefFehler.meldung}</span>
           {:else}Noch nicht geprüft.{/if}
         </div>

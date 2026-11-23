@@ -15,6 +15,17 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Übertragen nachgeschärft (Rückmeldung Nutzer nach Test), Commit (folgt)
+- Knopf **„Übertragen“ oben nur im Expertenmodus**; im einfachen Modus bleibt sein Platz frei (`visibility: hidden`),
+  Einfach/Experte springen nicht. Der Maschinen-Knopf hat eine feste Breite (168 px) aus demselben Grund.
+- Passt das Design nicht: Knopf ausgegraut mit **„Passt nicht“** bzw. „Zu groß“ (`maschine.sperrKurz`); in Schritt 4
+  „Passt nicht in den Rahmen“.
+- **Einfacher Modus ohne Fenster:** Balken, „Fertig“, Garnfolge und Fehler stehen in Schritt 4
+  (`app/src/lib/Uebertragung.svelte`, auch im Fenster des Expertenmodus verwendet). `maschine.uebertraegt` = läuft.
+- Weg: „Das Design bleibt bis zum Ausschalten in der Maschine“, „Ohne Garnfarben“ (Bild und Farben immer),
+  Firmware in Ergebnis, Menü und Tooltip (Firmware nur noch im Tooltip von „Die Maschine antwortet“).
+- Kern unverändert.
+
 ## 22.11.2026 – Sprache (UX-Analyse C4), Commit fea865a
 - **Anzeigenamen** (`app/src/lib/listen.svelte.ts`): `rahmenName` („artista 130 × 100 quer“, Freiarm, oval, Mega),
   `stoffName` (Gewebe/Strick/Frottee, leicht/mittel/schwer), `garnkarteName` („Standard (19 Grundfarben)“,

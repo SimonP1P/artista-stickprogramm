@@ -45,10 +45,11 @@ class MaschinenSteuerung {
   pruefFehler = $state.raw<Fehler | null>(null);
 
   // Übertragen
+  /** Fenster „An die Maschine übertragen“ – nur im Expertenmodus (im einfachen Modus steht der Stand im Assistenten) */
   dialogOffen = $state(false);
+  /** Übertragen läuft gerade (Suchen, Verbinden, Senden) */
+  uebertraegt = $state(false);
   phase = $state<Phase>("laeuft");
-  /** Garnfarben mitsenden (nur nach dem Fehler „farbtabelle“ ohne) */
-  mitFarben = $state(true);
   /** Fortschritt je Teil (was → letzter Stand); beim Senden nur „Übertragung“ */
   fortschritt = $state<Record<string, Fortschritt>>({});
   bericht = $state.raw<SendeInfo | null>(null);
@@ -85,6 +86,14 @@ class MaschinenSteuerung {
     if (!arbeit.objekte.length) return "Das Design ist leer.";
     if (e.ausserhalb > 0) return `${e.ausserhalb} Einstiche liegen außerhalb des Stickfelds – erst einpassen.`;
     if (e.daten_bytes >= e.daten_grenze) return "Das Design ist zu groß für die Maschine.";
+    return null;
+  }
+  /** kurzer Hinweis statt „Übertragen“ auf dem Knopf, wenn das Design so nicht gesendet werden kann */
+  get sperrKurz(): string | null {
+    const e = arbeit.ergebnis;
+    if (!e || arbeit.rechnet) return null;
+    if (e.ausserhalb > 0) return "Passt nicht";
+    if (e.daten_bytes >= e.daten_grenze) return "Zu groß";
     return null;
   }
 
@@ -179,7 +188,8 @@ class MaschinenSteuerung {
     if (this.laeuft || this.sperrgrund) return;
     const design = $state.snapshot(arbeit.design) as DesignJson;
     this.laeuft = true;
-    this.dialogOffen = true;
+    this.uebertraegt = true;
+    this.dialogOffen = arbeit.modus === "experte";
     this.phase = "laeuft";
     this.fortschritt = {};
     this.bericht = null;
@@ -194,7 +204,7 @@ class MaschinenSteuerung {
       this.bericht = await kern("maschine_senden", {
         design,
         ...this.anschluss,
-        wahl: { icon: true, farben: this.mitFarben, sticken: true },
+        wahl: { icon: true, farben: true, sticken: true },
       });
       this.phase = "fertig";
       merken("artista.letzter_rahmen", design.rahmen ?? "");
@@ -203,7 +213,7 @@ class MaschinenSteuerung {
       this.phase = "fehler";
     } finally {
       this.laeuft = false;
-      this.mitFarben = true;
+      this.uebertraegt = false;
     }
   }
 
@@ -220,9 +230,8 @@ class MaschinenSteuerung {
     }
   }
 
-  /** nach einem Fehler gleich noch einmal (beim Fehler „farbtabelle“ ohne Garnfarben) */
-  erneut(ohneFarben = false) {
-    this.mitFarben = !ohneFarben;
+  /** nach einem Fehler gleich noch einmal */
+  erneut() {
     this.uebertragen();
   }
 
@@ -282,7 +291,7 @@ export function naechsteSchritte(f: Fehler | null): string[] {
     case "zurueckgelesen_weicht_ab":
       return ["Es wurde nichts gestickt.", "Maschine aus- und wieder einschalten.", "„Nochmal“ drücken."];
     case "farbtabelle":
-      return ["„Ohne Garnfarben“ überträgt das Design ohne Garnnamen am Display."];
+      return ["Maschine aus- und wieder einschalten, dann „Nochmal“."];
     case "zu_gross":
       return ["Design verkleinern oder in Teile aufteilen."];
     case "ausserhalb":

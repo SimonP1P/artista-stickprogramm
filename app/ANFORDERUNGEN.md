@@ -46,15 +46,19 @@ Design öffnen/speichern (eigenes JSON-Format), **EXP exportieren** (Stickdatei)
 Original („Write to Machine“ → „Stitch out Selected Design“, Handbuch S. 265–266). Die frühere Stufenfolge (Plan nur
 lesen → Bestätigen → Gefahrendialog mit 3 Häkchen) stammte aus den Fernzugriffs-Regeln für Claude und entfällt in der
 Oberfläche.
-1. Knopf **„Übertragen“** (Kopfzeile, im einfachen Modus Schritt 4). Der Anschluss wird automatisch gewählt: der
+1. Knopf **„Übertragen“**: im **Expertenmodus** in der Kopfzeile, im **einfachen Modus nur in Schritt 4** (oben
+   unsichtbar, Einfach/Experte bleiben an ihrem Platz; Nutzer 22.11.2026). Passt das Design nicht in den Rahmen, ist
+   der Knopf ausgegraut und zeigt „Passt nicht“ (bzw. „Zu groß“). Der Anschluss wird automatisch gewählt: der
    gemerkte Port, sonst der einzige, sonst der erste, an dem eine artista antwortet (nur lesen). Port wählen und
    **Simulation** über das Menü „Maschine“ in der Kopfzeile.
 2. Das Programm verbindet sich, prüft (Größe, Garnfarbtabelle), schreibt Design, Vorschaubild, Name und Garnfarben,
    liest alles zurück, schaltet mit Befehl 0x08 („sticken ohne speichern“) in den Stickmodus und verlässt den PC-Modus.
-   **Ein** Fortschrittsbalken, „Abbrechen“.
+   Bild und Garnfarben immer (nicht abschaltbar), Stickmodus ohne weitere Bestätigung. **Ein** Fortschrittsbalken,
+   „Abbrechen“ – im Expertenmodus in einem Fenster, im einfachen Modus **ohne Fenster** direkt in Schritt 4.
 3. Am Ende: „Fertig – die Maschine ist bereit. Gestickt wird mit Start an der Maschine.“ + Garnfolge + Hinweise
-   (eigener Rahmen → welchen Rahmen einspannen; Rahmen gewechselt → «check»). Technisches nur unter „Details“.
-4. Fehler: was passiert ist, nächste Schritte, „Nochmal“ (bei Fehler der Garnfarbtabelle auch „Ohne Garnfarben“).
+   (eigener Rahmen → welchen Rahmen einspannen; Rahmen gewechselt → «check»). Keine Firmware-Angaben; im Fenster
+   (Experte) Schritte und Mitschnitt unter „Details“.
+4. Fehler: was passiert ist, nächste Schritte, „Nochmal“.
 
 ### E. Designs aus der Maschine – M
 Liste der gespeicherten Designs (51 Stück, mit Nummer, Name, Merkmalen) → eines lesen → **Ansicht** mit den
@@ -176,14 +180,13 @@ Einzelschritte, PC-Modus und Pfad des Mitschnitts nur unter „Details“.
   gestickt wird erst mit Start an der Maschine (Gerätetest 19.11.2026). Für **Claude-Sitzungen** gilt CLAUDE.md §4
   Regel 1 unverändert.
 - Übertragen gesperrt, wenn das Design nicht in den Rahmen passt, fehlerhaft ist oder gerade eine Maschine-Aktion läuft.
-- Es wird **nichts dauerhaft** gespeichert (bis P6): „Das Design bleibt bis zum Ausschalten in der Maschine.“
+- Es wird nichts dauerhaft gespeichert (bis P6) – das wird **nicht** angezeigt (Nutzer 22.11.2026: „voll egal“).
 - Simulation klar als solche erkennbar (kein Verwechseln mit der echten Maschine).
 
 ### 4.2 Fehler und Zustände – M
 Keine Verbindung (Kabel/Port/Maschine aus) · Stickmodul nicht erreicht · Maschine antwortet nicht mehr (Hinweis
 „Maschine aus- und einschalten“) · Übertragungsfehler mit automatischer Wiederholung (anzeigen, nicht verstecken) ·
-zurückgelesen weicht ab (Senden abgebrochen, nichts gestickt) · Garnfarbtabelle passt nicht (Hinweis, Senden ohne
-Farben) · Design zu groß · Design außerhalb des Rahmens · Alphabet/Garnkarte fehlt.
+zurückgelesen weicht ab (Senden abgebrochen, nichts gestickt) · Garnfarbtabelle passt nicht (aus/ein, „Nochmal“) · Design zu groß · Design außerhalb des Rahmens · Alphabet/Garnkarte fehlt.
 
 ### 4.3 Hinweise für die Person an der Maschine – S
 - Nach einem **Rahmenwechsel** (Rahmen ≠ beim letzten Übertragen): eine Zeile „Rahmen gewechselt? An der Maschine einmal
