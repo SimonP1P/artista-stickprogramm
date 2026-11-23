@@ -114,6 +114,9 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 danach **N14 Frame Out** (Option, Standard aus). **ART als bearbeitbare Objekte: zurückgestellt** („brauch ich nicht …
 kann man nach hinten verschieben“). Frage zur Tatami-Kante (Wendestiche oben sichtbar, unten < 0,3 mm entfallen)
 beantwortet: so richtig.
+**Stand 22.11.2026 spät:** N13 Stippling wie das Original ✅ (3ed8f21), N14 Herausfahren ✅ (c130f5f). Offen bleiben
+nur Punkte vor Ort (V14 Verlauf aufs Kalibrierblatt, V15 Applikations-Probestück mit/ohne Herausfahren, V16
+Stippling-Probe) und die zurückgestellte Arbeit (ART bearbeitbar). Neue Arbeit erst nach „Go“.
 
 **Offen nach den Antworten (Stand vor dem Go):** Frame Out als Option (~½ Schritt), Stippling des Originals
 entschlüsseln (~1–2 Schritte, Ausgang unsicher – Nutzer fragt nach dem Nutzen), ART als bearbeitbare Objekte
