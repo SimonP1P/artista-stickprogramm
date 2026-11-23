@@ -98,16 +98,20 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 2. Craft: **Stippling des Originals weiter entschlüsseln**; Motiv-Standard NP004a K0001a bleibt.
 3. Applikation: Abdeckung 5,0 mm bleibt, Probestück vor Ort; **Frame Out umsetzen, „wenn es Sinn macht“** (Vorschlag:
    als Option, Standard aus, Test vor Ort).
-4. Zauberstab/PhotoSnap: **Bild als Vorlage hinter dem Design: ja**; PhotoSnap 0° wie das Original. Rückfrage des
-   Nutzers „weiße Stellen weiß sticken?“ – erklärt (ein Faden, Weiß = Stoff); Antwort offen.
+4. Zauberstab/PhotoSnap: PhotoSnap 0° wie das Original; helle Stellen **wie das Original** (lockere Stiche bis 10 mm,
+   so schon umgesetzt). **Bild als Vorlage hinter dem Design: nicht nötig** (zweite Antwort, 22.11.) – gestrichen.
 5. Stickdateien: keine Beispieldateien; HUS/VP3-Prüfung nicht wichtig → zurückgestellt; kein pyembroidery.
 6. Anordnen: beides bleibt so.
-7. Kreuzstich: **keine Kreuzstich-Buchstaben**; Stichfolge und 2,54 mm passen. Malwerkzeug: nicht beantwortet
-   (nachgefragt).
-8. Verbinder: Nutzer möchte zwischen zwei Buchstaben einfach springen – erklärt; Vorschlag: Standard bleibt **Sprung**
-   wie im Original, „Laufstich, wo verdeckt“ bleibt Option. Bestätigung offen.
+7. Kreuzstich: **keine Kreuzstich-Buchstaben**, **kein Malwerkzeug**; Stichfolge und 2,54 mm passen.
+8. Verbinder: **Standard bleibt Sprung** wie im Original (zwischen zwei Buchstaben wird gesprungen); „Laufstich, wo
+   verdeckt“ bleibt Einstellung für Experten; Run-Länge bleibt 12,7 mm wie im Original.
 9. ART als bearbeitbare Objekte: **erst Aufwand schätzen, Arbeit erst nach „Go“.** Schätzung im Chat vom 22.11.
    (Objekte der 287 Musterdesigns: 56 % Linien, 42 % Flächen, 1,8 % Text, Rest Ellipse/Ring/Gruppe/manuelle Stiche).
+
+**Offen nach den Antworten (wartet auf „Go“):** Frame Out als Option (~½ Schritt), Stippling des Originals
+entschlüsseln (~1–2 Schritte, Ausgang unsicher – Nutzer fragt nach dem Nutzen), ART als bearbeitbare Objekte
+(~5–6 Schritte, + ~½ für „Original-Stiche behalten, bis man ändert“), Vor-Ort-Liste ergänzen (Verlauf,
+Applikations-Probestück). Gestrichen: Bild hinter dem Design, Kreuzstich-Malwerkzeug, Kreuzstich-Buchstaben, HUS.
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).

@@ -186,5 +186,5 @@ Ausprobieren ohne Oberfläche: `stick api liste`, `stick api design_berechnen DA
 `SCHNITTSTELLE.md`).
 
 ## 7. Kommt noch (Platz vorsehen, ROADMAP Phase 4b)
-Auto Digitizer „Details“ (dünne Linien als Doppellauf/Satinlinie über die Mittellinie) · Bild als Vorlage hinter dem Design (Zauberstab direkt auf der Leinwand) · Ankerpunkt von Mirror-Merge/Kranz direkt auf der Leinwand ziehen · HUS-Dateien lesen (Beispieldatei fehlt) ·
+Auto Digitizer „Details“ (dünne Linien als Doppellauf/Satinlinie über die Mittellinie) · Ankerpunkt von Mirror-Merge/Kranz direkt auf der Leinwand ziehen · HUS-Dateien lesen (Beispieldatei fehlt) ·
 Hintergrundfarbe (auch in Vorlagen) · ART-Objekte als bearbeitbare Objekte umwandeln (Umrisse/Werte statt fester Stiche; Frage an den Nutzer).
