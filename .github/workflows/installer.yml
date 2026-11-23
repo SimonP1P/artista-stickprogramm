@@ -1,0 +1,66 @@
+# Installer für Windows (.exe/.msi) und Mac (.dmg) bauen und als Entwurf unter „Releases“ ablegen.
+# Start: von Hand (Actions → „Installer bauen“ → Run workflow) oder mit einem Tag v* (z. B. git tag v0.1.0 && git push --tags).
+# Version: app/src-tauri/tauri.conf.json „version“ (bei jeder Ausgabe hochzählen).
+name: Installer bauen
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: installer-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bauen:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            name: Windows
+          - os: macos-latest
+            name: Mac (Apple Silicon)
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      # ohne Git LFS: die 142-MB-setup.z der Original-CD wird nicht gebraucht
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: app/src-tauri -> target
+
+      - name: Oberfläche – Pakete
+        working-directory: app
+        run: npm ci
+
+      - name: Bauen und Release-Entwurf anlegen
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: app
+          tagName: v__VERSION__
+          releaseName: Artista Stickprogramm v__VERSION__
+          releaseBody: |
+            Installer zum Herunterladen (unten bei „Assets“):
+            - Windows: `…_x64-setup.exe` (Doppelklick). Warnung „Der Computer wurde durch Windows geschützt“ → „Weitere Informationen“ → „Trotzdem ausführen“.
+            - Mac: `…_aarch64.dmg` öffnen, Programm in „Programme“ ziehen. Erster Start: Rechtsklick → „Öffnen“.
+            Nicht signiert – nur für den eigenen Gebrauch.
+          releaseDraft: true
+          prerelease: false
