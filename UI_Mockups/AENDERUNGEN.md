@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Übertragen mit einem Klick (UX-Analyse S1–S8; Commit …)
+## 22.11.2026 – Übertragen mit einem Klick (UX-Analyse S1–S8; Commit ab25566)
 - `maschine_senden` meldet den Fortschritt als **einen** Balken: `was` = „Übertragung“, `erledigt`/`gesamt` über
   Schreiben und Zurücklesen aller Teile.
 - **Neu im Ergebnis** `SendeInfo.hinweise`: Hinweise für die Person an der Maschine, z. B. eigener Rahmen → welchen
