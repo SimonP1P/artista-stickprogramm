@@ -90,7 +90,7 @@
   </label>
   <p class="mut small" style="margin:2px 0 8px 128px">obere Lage: {PROFILE.find((x) => x[0] === GEGENSTUECK[profil])?.[1]}</p>
   <div class="zeile">
-    <span>Abstand<span class="xt">X</span></span>
+    <span>Abstand</span>
     <div class="werte">
       <label>dicht <input class="input sm num" value={zahl(min)} onchange={(e) => wert(e, (v) => (min = v))} aria-label="dichtester Abstand" /></label>
       <label>offen unten <input class="input sm num" value={zahl(maxU)} onchange={(e) => wert(e, (v) => (maxU = v))} aria-label="größter Abstand unten" /></label>

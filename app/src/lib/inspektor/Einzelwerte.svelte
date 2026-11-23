@@ -134,7 +134,7 @@
   {#each liste.filter((p) => p.gruppe === g) as p (p.id)}
     {@const w = wertUndHerkunft(p)}
     <div class="frow">
-      <span class="fl" title="{p.wirkung} · Quelle: {p.quelle}">{p.name}{#if p.modus === "experte"}<span class="xt">X</span>{/if}</span>
+      <span class="fl" title="{p.wirkung}{p.bereich ? ` · Bereich ${zahl(p.bereich[0], 3)} – ${zahl(p.bereich[1], 3)} ${p.einheit}` : ""} · Quelle: {p.quelle}">{p.name}</span>
       <div class="fc">
         {#if typeof p.standard === "boolean" || typeof w.wert === "boolean"}
           <select class="input sm" value={w.wert === undefined ? "" : w.wert ? "an" : "aus"} onchange={(ev) => {
@@ -172,7 +172,6 @@
           <button class="tb sm" aria-label="Zurücksetzen" title="Zurücksetzen" onclick={() => setzen(p, undefined)}><Icon d={IC.zuruecksetzen} groesse="s" /></button>
         {/if}
       </div>
-      {#if p.bereich}<div class="fhelp">Bereich {zahl(p.bereich[0], 3)} – {zahl(p.bereich[1], 3)} {p.einheit}</div>{/if}
     </div>
   {/each}
 {:else}

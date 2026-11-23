@@ -499,7 +499,7 @@
         {#if experte && modus !== "photo" && modus !== "kreuz"}
           {#if modus === "auto"}
             <div class="frow" style="padding:0">
-              <span class="fl">Stichart <span class="xt">X</span></span>
+              <span class="fl">Stichart</span>
               <div class="fc">
                 <select class="input sm" bind:value={fuellung}>
                   <option value="step">Step – sauber bei Fotos</option>
@@ -509,11 +509,11 @@
             </div>
           {/if}
           <div class="frow" style="padding:0">
-            <span class="fl">Kleinste Fläche <span class="xt">X</span></span>
+            <span class="fl">Kleinste Fläche</span>
             <div class="fc"><input class="input sm num" inputmode="decimal" bind:value={minFlaeche} style="width:80px" /><span class="unit">mm²</span></div>
           </div>
           <div class="frow" style="padding:0">
-            <span class="fl">Glättung <span class="xt">X</span></span>
+            <span class="fl">Glättung</span>
             <div class="fc"><input class="input sm num" inputmode="decimal" bind:value={glaettung} style="width:80px" /><span class="unit">mm</span></div>
           </div>
         {/if}
@@ -571,8 +571,8 @@
         </div>
       </div>
       {#if experte}
-        <label class="frow" style="padding:0"><span class="fl">Überdeckung <span class="xt">X</span></span><span class="fc"><input type="checkbox" bind:checked={aussparen} /> aussparen (wie die SVG aussieht)</span></label>
-        <label class="frow" style="padding:0"><span class="fl">Verbindung <span class="xt">X</span></span><span class="fc"><input type="checkbox" bind:checked={kuerzeste} /> kürzeste (Closest Join)</span></label>
+        <label class="frow" style="padding:0"><span class="fl">Überdeckung</span><span class="fc"><input type="checkbox" bind:checked={aussparen} /> aussparen (wie die SVG aussieht)</span></label>
+        <label class="frow" style="padding:0"><span class="fl">Verbindung</span><span class="fc"><input type="checkbox" bind:checked={kuerzeste} /> kürzeste (Closest Join)</span></label>
       {/if}
       {#if arbeit.objekte.length}
         <label class="frow" style="padding:0"><span class="fl">Bisheriges</span><span class="fc"><input type="checkbox" bind:checked={ersetzen} /> Design ersetzen (sonst als Element hinzufügen)</span></label>

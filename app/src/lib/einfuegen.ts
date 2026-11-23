@@ -79,15 +79,6 @@ export const STICHART_HILFE: Record<string, string> = {
 };
 export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string };
 
-/** FUNKTIONEN.md §7 – Platz vorgesehen, deaktiviert */
-export const KOMMT_NOCH = [
-  "Kreuzstich",
-  "Magic Wand, PhotoSnap",
-  "Ausrichten, Kranz, Kaleidoskop",
-  "Eigene Rahmen, fremde Stickdateien",
-  "Vorlagen / Stile speichern",
-];
-
 /** Neues Objekt mit Startwerten; `schrift` = erste Computer-Schrift (für `ttf`) */
 export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {
   const farbe = STANDARD_FARBE;

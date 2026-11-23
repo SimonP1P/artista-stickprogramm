@@ -33,7 +33,6 @@
     BESONDERE,
     FORMEN,
     FUELLUNG,
-    KOMMT_NOCH,
     neuesObjekt,
     SCHRIFT,
     STANDARD_FARBE,
@@ -94,7 +93,6 @@
     }, "pfeil");
   }
 
-  const leer = $derived(arbeit.objekte.length === 0);
   const kopfInfo = $derived(
     [arbeit.design.rahmen?.replace(/^artista /, ""), arbeit.design.stoff].filter(Boolean).join(" · ") +
       (arbeit.pfad ? ` · ${dateiname(arbeit.pfad)}${arbeit.geaendert ? " *" : ""}` : arbeit.geaendert ? " · nicht gespeichert" : ""),
@@ -109,16 +107,9 @@
     { l: "Speichern unter …", go: () => speichern(true) },
     { l: "Als Vorlage speichern …", go: () => (arbeit.dialog = { art: "vorlagen", modus: "speichern" }) },
     "-",
-    { l: "Beispiel laden", go: beispiel },
-    { l: "Bild umwandeln …", go: () => (arbeit.dialog = { art: "bild" }) },
-    { l: "Zauberstab (Flächen im Bild anklicken) …", go: () => (arbeit.dialog = { art: "bild", modus: "zauber" }) },
-    { l: "PhotoSnap (Foto) …", go: () => (arbeit.dialog = { art: "bild", modus: "photo" }) },
-    { l: "Kreuzstich aus Bild …", go: () => (arbeit.dialog = { art: "bild", modus: "kreuz" }) },
-    { l: "SVG einlesen …", go: () => (arbeit.dialog = { art: "svg" }) },
-    "-",
     { l: "Stickdatei exportieren (EXP) …", go: expExportieren, kbd: "Strg+E" },
-    { l: "Designs aus der Maschine …", go: () => maschine.listeOeffnen() },
     "-",
+    { l: "Beispiel laden", go: beispiel },
     { l: "Darstellung hell/dunkel umschalten", go: () => (arbeit.dunkel = !arbeit.dunkel) },
   ];
 
@@ -408,10 +399,7 @@
             <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(a))}><Icon d={ART[a][1]} />{ART[a][0]}</button>
           {/each}
           <div class="msep"></div>
-          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
-          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "zauber" }))}><Icon d={IC.zauberstab} />Zauberstab …</button>
-          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "photo" }))}><Icon d={ART.photosnap[1]} />PhotoSnap (Foto) …</button>
-          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "bild", modus: "kreuz" }))}><Icon d={ART.kreuzstich[1]} />Kreuzstich aus Bild …</button>
+          <button class="mi" role="menuitem" title="Bild in Stickflächen umwandeln – im Dialog auch Zauberstab, PhotoSnap und Kreuzstich" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
           <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
           <button class="mi" role="menuitem" title="Gespeichertes Design (JSON) oder fremde Stickdatei (DST, PES, JEF, VP3, EXP) als ein Element" onclick={() => waehle(designEinfuegen)}><Icon d={ART.stiche[1]} />Design oder Stickdatei einfügen …</button>
         </div>
@@ -423,11 +411,6 @@
             </button>
           {/each}
           <div class="small mut" style="padding:2px 10px 6px; white-space:normal">Linien in einem Zug: mehrere Linien wählen → Anordnen → „Blackwork Run“.</div>
-          <div class="msep"></div>
-          <div class="mh">Kommt noch – Platz ist vorgesehen</div>
-          {#each KOMMT_NOCH as t (t)}
-            <button class="mi" role="menuitem" disabled style="white-space:normal; align-items:flex-start"><Icon d={IC.kommtNoch} /><span style="flex:1">{t}</span><span class="soon">kommt noch</span></button>
-          {/each}
         </div>
       </div>
     {/if}
@@ -519,10 +502,6 @@
         <button class="mbtn tgl" aria-pressed={einstiche} onclick={() => (einstiche = !einstiche)} style="height:28px; font-size:12.5px; padding:0 8px; flex:none">Einstiche</button>
         <button class="mbtn tgl" aria-pressed={raster} onclick={() => (raster = !raster)} style="height:28px; font-size:12.5px; padding:0 8px; flex:none">Raster</button>
         <span style="flex:1"></span>
-        <span class="mut small tab" aria-live="polite" title="Stiche neu berechnet (design_berechnen)" style="white-space:nowrap">
-          ↻ {arbeit.rechnet ? "…" : arbeit.dauer !== null ? `${arbeit.dauer} ms` : "–"}
-        </span>
-        <span style="width:1px; height:20px; background:var(--line); margin:0 4px"></span>
         <button class="tb" aria-label="Verkleinern" onclick={() => (zoom = Math.max(0.25, zoom / 1.25))}><Icon d={IC.verkleinern} /></button>
         <span class="tab small" style="width:46px; text-align:center; white-space:nowrap">{Math.round(zoom * 100)} %</span>
         <button class="tb" aria-label="Vergrößern" onclick={() => (zoom = Math.min(40, zoom * 1.25))}><Icon d={IC.vergroessern} /></button>
@@ -550,8 +529,6 @@
             {#each BESONDERE as a (a)}
               <button class="tb" aria-label="{ART[a][0]} einfügen" title="{ART[a][0]} einfügen" onclick={() => einfuegen(a)}><Icon d={ART[a][1]} groesse="l" /></button>
             {/each}
-            <span class="sep"></span>
-            <button class="tb" aria-label="Weitere Werkzeuge – kommen noch" title="Kommt noch: mit der Maus zeichnen, Motivfüllung, Effekte, Kreuzstich …" onclick={() => (menue = "einfuegen")} style="border:1px dashed var(--muted)"><Icon d={IC.kommtNoch} groesse="l" /></button>
           </div>
         {/if}
         <div class="stage">
@@ -600,22 +577,6 @@
                 <button class="btn btn-secondary" style="min-height:28px; padding:2px 10px; color:inherit" onclick={() => arbeit.waehlen(arbeit.fehler?.objekt ?? null)}>Zum Objekt</button>
               {/if}
             </div>
-          {/if}
-          {#if leer && !arbeit.rechnet && werkzeug !== "zeichnen"}
-            {#if arbeit.modus === "experte"}
-              <div class="floater" style="left:50%; top:50%; transform:translate(-50%,-50%); width:380px; padding:18px">
-                <h3 style="margin:0 0 4px; font-size:21px">Leeres Design</h3>
-                <p class="mut" style="margin:0 0 12px">Links eine Form wählen und Punkt für Punkt zeichnen, Schrift oder Monogramm einfügen – oder:</p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px">
-                  <button class="btn btn-secondary" onclick={oeffnen}>Öffnen …</button>
-                  <button class="btn btn-secondary" onclick={beispiel}>Beispiel laden</button>
-                </div>
-              </div>
-            {:else}
-              <div class="floater" style="left:50%; top:calc(50% + 40px); transform:translate(-50%,0); padding:10px 14px; font-size:13px">
-                Noch nichts im Rahmen – im Schritt „Gestalten“ Text oder Monogramm einfügen.
-              </div>
-            {/if}
           {/if}
         </div>
       </div>

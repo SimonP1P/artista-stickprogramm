@@ -45,13 +45,12 @@
     <span><span class="k">Sprünge</span> {ganz(e.statistik.spruenge)}</span>
     <span><span class="k">Farbwechsel</span> {ganz(e.statistik.farbwechsel)}</span>
     <span>{zahlFest(e.statistik.breite)} × {zahlFest(e.statistik.hoehe)} mm</span>
-    <span title="Stickzeit geschätzt: {zahl(SEKUNDEN_JE_STICH)} s je Stich – keine Quelle für die artista 185">
-      ≈ {ganz((e.statistik.stiche * SEKUNDEN_JE_STICH) / 60)} min*
+    <span title="Stickzeit geschätzt: {zahl(SEKUNDEN_JE_STICH)} s je Stich">
+      <span class="k">Stickzeit</span> ≈ {ganz((e.statistik.stiche * SEKUNDEN_JE_STICH) / 60)} min
     </span>
-    <span title="Datengröße für die Maschine (Stichdaten + Anhang) / Kapazität der artista 185">
-      {ganz(e.daten_bytes / 1024)} / {ganz(e.daten_grenze / 1024)} KB
+    <span title="Speicher der artista 185: dieses Design braucht {ganz(e.daten_bytes / 1024)} KB von höchstens {ganz(e.daten_grenze / 1024)} KB">
+      <span class="k">Speicher</span> {Math.min(100, Math.round((100 * e.daten_bytes) / Math.max(1, e.daten_grenze)))} %
     </span>
-    <span class="k" title="* Stickzeit geschätzt (0,4 s je Stich, keine Quelle für die artista 185)">* Schätzung</span>
   {:else}
     <span class="k">{arbeit.rechnet ? "Berechne …" : "Noch nichts berechnet"}</span>
   {/if}

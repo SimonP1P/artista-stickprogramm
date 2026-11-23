@@ -105,7 +105,6 @@
         (f.name !== "step_muster" || MIT_STEP.has(o?.art ?? "")),
     ),
   );
-  const formFelder = $derived(felder.filter((f) => f.typ === "komplex" && !GESONDERT.has(f.name) && !eNamen.includes(f.name)));
 
   const e = $derived(arbeit.ergebnis);
   const garn = $derived(e ? arbeit.garnVon(i) : undefined);
@@ -247,9 +246,8 @@
               </div>
             {:else if f.name === "text"}
               <div class="frow">
-                <label class="fl" for="itext">Text</label>
+                <label class="fl" for="itext" title="Neue Zeile mit Eingabe, Farbwechsel mit ^">Text</label>
                 <div class="fc"><textarea id="itext" class="input sm" rows="2" style="width:100%" value={String(o.text ?? "")} oninput={(ev) => setzen("text", (ev.currentTarget as HTMLTextAreaElement).value, "text")}></textarea></div>
-                <div class="fhelp">neue Zeile mit Eingabe, Farbwechsel mit ^</div>
               </div>
             {:else if f.name === "grundlinie"}
               <div class="frow">
@@ -261,8 +259,17 @@
                     {/each}
                   </div>
                 </div>
-                {#if form === "andere"}<div class="fhelp">eigene Grundlinie – Feinwerte im Reiter JSON</div>{/if}
+                {#if form === "andere"}<div class="fhelp">eigene Grundlinie (aus einer Datei) – „gerade“ oder „Bogen“ ersetzt sie</div>{/if}
               </div>
+              {#if form === "oben" || form === "unten"}
+                <div class="frow">
+                  <label class="fl" for="iglr" title="Radius des Kreises, auf dem die Buchstaben stehen">Radius</label>
+                  <div class="fc"><input id="iglr" class="input sm num" style="width:90px" value={zahl((o.grundlinie as { radius?: number } | undefined)?.radius ?? 50)} onchange={(ev) => {
+                    const v = lesen((ev.currentTarget as HTMLInputElement).value);
+                    if (v !== null && v >= 5 && v <= 500) setzen("grundlinie", { ...(o.grundlinie as object), radius: v });
+                  }} /><span class="unit">mm</span></div>
+                </div>
+              {/if}
             {:else if f.name === "schrift"}
               <div class="frow">
                 <span class="fl">Schrift</span>
@@ -299,19 +306,17 @@
               </div>
             {:else if f.name === "quelle"}
               <div class="frow">
-                <span class="fl">Herkunft</span>
+                <span class="fl" title="Feste Stiche aus der Datei (wie „Grade D“ im Original): Größe ändern ändert die Dichte, nicht die Stichzahl – höchstens ±5 % empfohlen.">Herkunft</span>
                 <div class="fc"><span class="small">{String(o.quelle ?? "Stickdatei")} · ≈ {Math.round((String(o.stiche ?? "").length * 3) / 16).toLocaleString("de-DE")} Einstiche</span></div>
-                <div class="fhelp">Feste Stiche aus der Datei (wie „Grade D“ im Original): Größe ändern ändert die Dichte, nicht die Stichzahl – höchstens ±5 % empfohlen.</div>
               </div>
             {:else if f.name === "step_muster"}
               <div class="frow">
-                <span class="fl">Step-Muster</span>
+                <span class="fl" title="Einstichmuster der Step-Fläche; Nr. 1 = gleichmäßig">Step-Muster</span>
                 <div class="fc"><button class="btn btn-secondary pick" onclick={() => (arbeit.dialog = { art: "step", objekt: i })}><span class="t">{o.step_muster == null ? `wie Stoff/Stil${stepWirksam ? ` (${stepWirksam})` : ""}` : `Nr. ${o.step_muster}`}</span><Icon d={IC.chevronRechts} /></button></div>
-                <div class="fhelp">1 = gleichmäßig</div>
               </div>
             {:else if f.name === "aussparen"}
               <div class="frow" style="align-items:start">
-                <span class="fl">Aussparen</span>
+                <span class="fl" title="Die Fläche spart die gewählten Objekte aus (Knockout)">Aussparen</span>
                 <div class="fc" style="flex-direction:column; align-items:flex-start; gap:2px">
                   {#each andereNamen.filter((x) => x.name) as x (x.k)}
                     <label class="small" style="display:flex; gap:6px; align-items:center"><input type="checkbox" checked={((o.aussparen as string[] | undefined) ?? []).includes(x.name)} onchange={(ev) => aussparenUmschalten(x.name, (ev.currentTarget as HTMLInputElement).checked)} />Nr. {x.k + 1} {x.name}</label>
@@ -319,7 +324,6 @@
                     <span class="mut small">– keine Objekte mit Namen –</span>
                   {/each}
                 </div>
-                <div class="fhelp">Fläche spart die gewählten Objekte aus (Knockout)</div>
               </div>
             {:else}
               <Feldzeile feld={f} wert={o[f.name]} beschriftung={(o.art === "motivlinie" || o.art === "motivfuellung") && f.name === "groesse" ? "Motivgröße" : o.art === "motivfuellung" ? MOTIVFUELLUNG_NAMEN[f.name] : o.art === "applikation" ? APPLIKATION_NAMEN[f.name] : o.art === "photosnap" ? PHOTO_NAMEN[f.name] : o.art === "kreuzstich" ? KREUZ_NAMEN[f.name] : undefined} haken={SCHRIFT.has(o.art)} wirksam={wirksam[f.name]} geladen={Object.keys(wirksam).length > 0} setzen={(v) => setzen(f.name, v)} />
@@ -345,12 +349,11 @@
           <!-- Umrandung (eigene Erweiterung, Kern `umrandung`): Linie um die Fläche, nach innen versetzt -->
           <Abschnitt titel="Umrandung" offen={!!u}>
             <div class="frow">
-              <label class="fl" for="ium">Umrandung</label>
+              <label class="fl" for="ium" title="Linie um die Fläche bzw. jeden Buchstaben (eigene Erweiterung – im Original zieht man eine zweite Linie von Hand)">Umrandung</label>
               <div class="fc">
                 <input id="ium" type="checkbox" checked={!!u} onchange={(ev) => arbeit.umrandungSetzen([i], (ev.currentTarget as HTMLInputElement).checked ? () => {} : null)} style="width:16px; height:16px" />
                 {o.art === "text" || o.art === "ttf" || o.art === "monogramm" ? "um jeden Buchstaben" : "um die Fläche"}
               </div>
-              <div class="fhelp">eigene Erweiterung – im Original eine zweite Linie von Hand</div>
             </div>
             {#if u}
               <div class="frow">
@@ -372,31 +375,29 @@
               {@const aussen = (u.art ?? "dreifach") === "satin" && !!u.aussen}
               {#if (u.art ?? "dreifach") === "satin"}
                 <div class="frow">
-                  <span class="fl">Lage</span>
+                  <span class="fl" title="Auf der Kante: die Mitte der Kante liegt auf dem Rand und deckt ihn. Außen: die Kante wächst nach außen, die Fläche bleibt ganz sichtbar.">Lage</span>
                   <div class="fc">
                     <div class="seg seg-sm" role="radiogroup" aria-label="Lage der Satinkante" style="display:flex; width:100%">
                       <label class="seg-opt" style="flex:1; justify-content:center; padding-inline:4px"><input type="radio" name="iumlage" checked={!aussen} onchange={() => arbeit.umrandungSetzen([i], (x) => delete x.aussen)} />auf der Kante</label>
                       <label class="seg-opt" style="flex:1; justify-content:center; padding-inline:4px"><input type="radio" name="iumlage" checked={aussen} onchange={() => arbeit.umrandungSetzen([i], (x) => (x.aussen = true))} />außen</label>
                     </div>
                   </div>
-                  <div class="fhelp">{aussen ? "Kante wächst nach außen, die Farbe der Fläche bleibt ganz sichtbar" : "Mitte der Kante liegt auf dem Rand (leicht innen), die Kante deckt den Rand der Fläche"}</div>
                 </div>
               {/if}
               <div class="frow">
-                <label class="fl" for="iumein">{aussen ? "In der Fläche" : "Nach innen"}<span class="xt">X</span></label>
+                <label class="fl" for="iumein" title="0 … 3 mm, Standard 0,3 (eigene Festlegung): {aussen ? "so weit reicht die Innenkante in die Fläche" : "die Linie liegt so weit innen"}, damit nach dem Sticken keine Lücke zur Füllung bleibt">{aussen ? "In der Fläche" : "Nach innen"}</label>
                 <div class="fc">
                   <input id="iumein" class="input sm num" style="width:70px" value={zahl(u.einzug ?? 0.3)} onchange={(ev) => {
                     const v = lesen((ev.currentTarget as HTMLInputElement).value);
                     if (v !== null && v >= 0 && v <= 3) arbeit.umrandungSetzen([i], (x) => (x.einzug = v));
                   }} /><span class="unit">mm</span>
                 </div>
-                <div class="fhelp">0 … 3 mm, Standard 0,3 (eigene Festlegung): {aussen ? "so weit reicht die Innenkante in die Fläche" : "die Linie liegt so weit innen"}, damit nach dem Sticken keine Lücke zur Füllung bleibt</div>
               </div>
               {#if (u.art ?? "dreifach") === "satin"}
                 {@const schrift = o.art === "text" || o.art === "ttf" || o.art === "monogramm"}
                 {#if schrift}
                   <div class="frow">
-                    <label class="fl" for="iumant">Breite</label>
+                    <label class="fl" for="iumant" title="z. B. 6 % → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm; leer = feste Breite in mm">Breite</label>
                     <div class="fc">
                       <input id="iumant" class="input sm num" style="width:70px" placeholder="fest" value={u.breite_anteil != null ? zahl(u.breite_anteil) : ""} onchange={(ev) => {
                         const s = (ev.currentTarget as HTMLInputElement).value.trim();
@@ -405,7 +406,6 @@
                         else if (v !== null && v >= 1 && v <= 30) arbeit.umrandungSetzen([i], (x) => (x.breite_anteil = v));
                       }} /><span class="unit">% der Höhe</span>
                     </div>
-                    <div class="fhelp">z. B. 6 % → 3 mm bei 50 mm hohen Buchstaben, mindestens 1 mm; leer = feste Breite in mm</div>
                   </div>
                 {/if}
                 {#if !schrift || u.breite_anteil == null}
@@ -421,7 +421,7 @@
                 {/if}
               {:else}
                 <div class="frow">
-                  <label class="fl" for="iumlg">Stichlänge<span class="xt">X</span></label>
+                  <label class="fl" for="iumlg" title="leer = Stichlänge des Stils">Stichlänge</label>
                   <div class="fc">
                     <input id="iumlg" class="input sm num" style="width:70px" placeholder="Stil" value={u.laenge != null ? zahl(u.laenge) : ""} onchange={(ev) => {
                       const s = (ev.currentTarget as HTMLInputElement).value.trim();
@@ -450,11 +450,11 @@
 
         <Abschnitt titel="Bearbeiten" offen={false}>
           <div class="frow">
-            <label class="fl" for="idopp">Verstärken<span class="xt">X</span></label>
-            <div class="fc"><input id="idopp" type="checkbox" checked={o.doppellauf === true} onchange={(ev) => setzen("doppellauf", (ev.currentTarget as HTMLInputElement).checked || undefined)} style="width:16px; height:16px" /> Double Run</div>
+            <label class="fl" for="idopp" title="Double Run: die Linie wird zweimal gestickt (hin und zurück)">Verstärken</label>
+            <div class="fc"><input id="idopp" type="checkbox" checked={o.doppellauf === true} onchange={(ev) => setzen("doppellauf", (ev.currentTarget as HTMLInputElement).checked || undefined)} style="width:16px; height:16px" /> doppelt sticken</div>
           </div>
           <div class="frow">
-            <label class="fl" for="iaj">Auto Jump<span class="xt">X</span></label>
+            <label class="fl" for="iaj" title="Auto Jump: Stiche über 12,7 mm werden in Sprünge zu 7 mm geteilt">Lange Stiche teilen</label>
             <div class="fc">
               <select id="iaj" class="input sm" value={o.auto_jump === true ? "an" : o.auto_jump === false ? "aus" : typeof o.auto_jump === "object" && o.auto_jump ? "werte" : ""} onchange={(ev) => {
                 const v = (ev.currentTarget as HTMLSelectElement).value;
@@ -474,20 +474,15 @@
           {#each [["einstich", "Einstich"], ["ausstich", "Ausstich"]] as [k, l] (k)}
             {@const p = o[k] as number[] | null | undefined}
             <div class="frow">
-              <span class="fl">{l}<span class="xt">X</span></span>
+              <span class="fl" title="{l === "Einstich" ? "Hier beginnt das Objekt" : "Hier endet das Objekt"} – setzen mit dem Werkzeug {l === "Einstich" ? "E" : "A"} links in der Werkzeugleiste">{l}</span>
               <div class="fc">
                 {#if p}<span class="tab">{zahlFest(p[0])} / {zahlFest(p[1])} mm</span><button class="btn btn-ghost" style="font-size:12px" onclick={() => setzen(k, undefined)}>entfernen</button>
-                {:else}<span class="mut small">automatisch (Griff in der Formansicht: E5)</span>{/if}
+                {:else}<span class="mut small">automatisch</span>{/if}
               </div>
             </div>
           {/each}
         </Abschnitt>
 
-        {#if formFelder.length}
-          <div class="small mut" style="padding:10px 14px">
-            Form: {formFelder.map((f) => f.name).join(", ")} – in der Formansicht bzw. im Reiter JSON.
-          </div>
-        {/if}
       {/if}
     {:else if reiter === "design"}
       <Abschnitt titel="Rahmen, Stoff, Garn">
@@ -505,22 +500,20 @@
             {/if}
           </select>
           <button class="btn btn-ghost" style="font-size:12px; white-space:nowrap" title="Rahmen nach eigenen Maßen anlegen, ändern, löschen" onclick={() => (arbeit.dialog = { art: "eigene_rahmen" })}>Eigene …</button></div>
-          <div class="fhelp">{arbeit.design.eigener_rahmen ? `eigener Rahmen ${zahl(arbeit.design.eigener_rahmen.breite)} × ${zahl(arbeit.design.eigener_rahmen.hoehe)} mm – die artista 185 kennt ihn nicht; beim Senden nennt das Programm einen passenden Rahmen der 185` : (arbeit.rahmen?.hinweis ?? "")}</div>
+          <div class="fhelp">{arbeit.design.eigener_rahmen ? `eigener Rahmen ${zahl(arbeit.design.eigener_rahmen.breite)} × ${zahl(arbeit.design.eigener_rahmen.hoehe)} mm – die artista 185 kennt ihn nicht; beim Übertragen nennt das Programm einen passenden Rahmen der 185` : (arbeit.rahmen?.hinweis ?? "")}</div>
         </div>
         <div class="frow">
-          <label class="fl" for="dstoff">Stoff</label>
+          <label class="fl" for="dstoff" title="Der Stoff ändert Dichte, Unterlage und Zugausgleich">Stoff</label>
           <div class="fc"><select id="dstoff" class="input sm" value={arbeit.design.stoff ?? "0 Software Defaults"} onchange={(ev) => arbeit.aendern((d) => (d.stoff = (ev.currentTarget as HTMLSelectElement).value as typeof d.stoff))}>
             {#each listen.stoffe as s (s.name)}<option value={s.name}>{s.name} – {STOFF_TEXT[s.name]?.de ?? ""}</option>{/each}
           </select></div>
-          <div class="fhelp">ändert Dichte, Unterlage, Zugausgleich</div>
         </div>
         <div class="frow">
-          <label class="fl" for="dkarte">Garnkarte</label>
+          <label class="fl" for="dkarte" title="Jede Farbe bekommt das nächste Garn dieser Karte">Garnkarte</label>
           <div class="fc"><select id="dkarte" class="input sm" value={arbeit.design.garnkarte ?? "Default"} onchange={(ev) => arbeit.aendern((d) => (d.garnkarte = (ev.currentTarget as HTMLSelectElement).value))}>
             {#each listen.garnkarten as k (k)}<option value={k}>{k}</option>{/each}
             <option value="keine">keine</option>
           </select></div>
-          <div class="fhelp">jede Farbe → nächstes Garn der Karte</div>
         </div>
       </Abschnitt>
       <Abschnitt titel="Ganzes Design" rechts={e ? `${zahlFest(e.statistik.breite)} × ${zahlFest(e.statistik.hoehe)} mm` : ""}>
@@ -528,7 +521,7 @@
         {#each ["start", "ende"] as n (n)}
           {@const f = schema.designFeld(n)}
           {#if f}
-            <Feldzeile feld={f} wert={(arbeit.design as Record<string, unknown>)[n]} beschriftung={n === "start" ? "Startpunkt" : "Endpunkt"} x setzen={(v) => arbeit.aendern((d) => {
+            <Feldzeile feld={f} wert={(arbeit.design as Record<string, unknown>)[n]} beschriftung={n === "start" ? "Startpunkt" : "Endpunkt"} setzen={(v) => arbeit.aendern((d) => {
               const x = d as Record<string, unknown>;
               if (v === undefined) delete x[n];
               else x[n] = v;
@@ -536,16 +529,15 @@
           {/if}
         {/each}
         <div class="frow">
-          <label class="fl" for="dkv">Kürzeste Verbindung<span class="xt">X</span></label>
-          <div class="fc"><input id="dkv" type="checkbox" checked={arbeit.design.kuerzeste_verbindung === true} onchange={(ev) => arbeit.aendern((d) => (d.kuerzeste_verbindung = (ev.currentTarget as HTMLInputElement).checked))} style="width:16px; height:16px" /> Closest Join</div>
+          <label class="fl" for="dkv" title="Closest Join: Ein- und Ausstich jedes Objekts so legen, dass die Verbindungen am kürzesten sind">Kürzeste Verbindung</label>
+          <div class="fc"><input id="dkv" type="checkbox" checked={arbeit.design.kuerzeste_verbindung === true} onchange={(ev) => arbeit.aendern((d) => (d.kuerzeste_verbindung = (ev.currentTarget as HTMLInputElement).checked))} style="width:16px; height:16px" /></div>
         </div>
         <div class="frow">
-          <label class="fl" for="dvb" title="Dialog „Connectors“ des Originals: Jump oder Run">Verbinder</label>
+          <label class="fl" for="dvb" title={VERBINDER_HILFE[arbeit.verbinderArt]}>Verbinder</label>
           <div class="fc"><select id="dvb" class="input sm" value={arbeit.verbinderArt} onchange={(ev) => arbeit.verbinderSetzen((ev.currentTarget as HTMLSelectElement).value as VerbinderArt)}>
             {#each Object.entries(VERBINDER_NAME) as [w, l] (w)}<option value={w}>{l}</option>{/each}
             {#if arbeit.verbinderArt === "gemischt"}<option value="gemischt" disabled>eigene Werte (Einzelwerte)</option>{/if}
           </select></div>
-          <div class="fhelp">{VERBINDER_HILFE[arbeit.verbinderArt]}</div>
         </div>
       </Abschnitt>
       {#if e}
@@ -578,12 +570,11 @@
 
 {#snippet transformZeilen(t: Transformation | undefined, ganzesDesign: boolean)}
   <div class="frow">
-    <label class="fl" for="tg-{ganzesDesign}">Größe</label>
+    <label class="fl" for="tg-{ganzesDesign}" title={!ganzesDesign && o?.art === "stiche" ? "Feste Stiche: die Dichte ändert sich, die Stichzahl bleibt (±5 % empfohlen)" : ganzesDesign && arbeit.objekte.some((x) => x.art === "stiche") ? "Stiche werden neu berechnet – feste Stiche aus Dateien nur gedehnt" : "Die Stiche werden für die neue Größe neu berechnet, nicht skaliert"}>Größe</label>
     <div class="fc"><input id="tg-{ganzesDesign}" class="input sm num" style="width:90px" value={zahl(skal(t))} onchange={(ev) => {
       const v = lesen((ev.currentTarget as HTMLInputElement).value);
       if (v && v > 0) transformSetzen((x) => (x.skalieren = v), ganzesDesign);
     }} /><span class="unit">%</span></div>
-    <div class="fhelp">{!ganzesDesign && o?.art === "stiche" ? "Feste Stiche: Dichte ändert sich, Stichzahl bleibt (±5 % empfohlen)" : ganzesDesign && arbeit.objekte.some((x) => x.art === "stiche") ? "Stiche werden neu berechnet – feste Stiche aus Dateien nur gedehnt" : "Stiche werden neu berechnet, nie skaliert"}</div>
   </div>
   <div class="frow">
     <label class="fl" for="td-{ganzesDesign}">Drehen</label>
@@ -606,7 +597,7 @@
     </div>
   </div>
   <div class="frow">
-    <label class="fl" for="ts-{ganzesDesign}">Schrägstellen<span class="xt">X</span></label>
+    <label class="fl" for="ts-{ganzesDesign}" title="Neigt das Objekt seitlich (Grad)">Schrägstellen</label>
     <div class="fc"><input id="ts-{ganzesDesign}" class="input sm num" style="width:90px" value={zahl(t?.schraeg ?? 0)} onchange={(ev) => {
       const v = lesen((ev.currentTarget as HTMLInputElement).value);
       if (v !== null) transformSetzen((x) => (x.schraeg = v), ganzesDesign);

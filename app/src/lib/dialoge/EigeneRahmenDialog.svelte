@@ -77,7 +77,7 @@
     <span class="badge">{eigene.length} gespeichert</span>
   {/snippet}
   <p class="mut small" style="margin:0 0 12px">
-    Für Rahmen, die nicht in der Liste stehen (wie im Original „Create custom hoop“). Gestalten geht in jeder Größe. Die artista 185 kennt eigene Rahmen nicht: beim Senden nennt das Programm den Rahmen der 185, in den die Stiche passen – passt keiner, wird nicht gesendet.
+    Für Rahmen, die nicht in der Liste stehen (wie im Original „Create custom hoop“). Gestalten geht in jeder Größe. Die artista 185 kennt eigene Rahmen nicht: beim Übertragen nennt das Programm den Rahmen der 185, in den die Stiche passen – passt keiner, wird nicht übertragen.
   </p>
   <div class="raster">
     <div>

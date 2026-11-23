@@ -29,7 +29,8 @@ img,svg,a{-webkit-user-drag:none}
 .input.num{text-align:right;font-variant-numeric:tabular-nums}
 .input.bad{border-color:var(--err);box-shadow:inset 0 0 0 1px var(--err)}
 select.input{padding-right:4px}
-.xt{display:inline-block;margin-left:5px;font-size:9.5px;line-height:13px;padding:0 4px;border:1px solid var(--color-accent-700);color:var(--color-accent-700);vertical-align:1px;letter-spacing:.04em}
+/* Beschriftung mit Erklärung beim Darüberfahren (Tooltip.svelte macht aus title → data-tip; Nutzer 22.11.2026) */
+.fl[title],.fl[data-tip]{cursor:help;text-decoration:underline dotted color-mix(in srgb,currentColor 35%,transparent);text-underline-offset:3px}
 .soon{display:inline-block;font-size:10.5px;line-height:15px;padding:0 6px;border:1px dashed var(--muted);color:var(--muted);white-space:nowrap}
 /* Panels */
 .pane{flex:none;display:flex;flex-direction:column;min-height:0;background:var(--panel)}

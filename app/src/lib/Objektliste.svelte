@@ -83,12 +83,12 @@
         </button>
       </li>
     {:else}
-      <li class="mut small" style="padding:12px">Noch keine Objekte – Einfügen oder Werkzeug links der Vorschau.</li>
+      <li class="mut small" style="padding:12px">Noch leer – Formen, Schrift und mehr über „Einfügen“ oder die Werkzeuge links der Vorschau.</li>
     {/each}
   </ol>
   <div style="flex:none; padding:8px 12px; border-top:1px solid var(--line); font-size:12px" class="mut">
     <div style="display:flex; justify-content:space-between">
-      <span>{e?.farben.length ?? 0} Farben · {e?.statistik.farbwechsel ?? 0} Farbwechsel</span>
+      <span>{e?.farben.length ?? 0} {(e?.farben.length ?? 0) === 1 ? "Farbe" : "Farben"} · {e?.statistik.farbwechsel ?? 0} Farbwechsel</span>
       <button class="btn btn-ghost" style="font-size:12px; padding:0 4px" onclick={anordnen}>Anordnen …</button>
     </div>
     <div>Ziehen = Stickreihenfolge ändern · Alt+↑/↓</div>

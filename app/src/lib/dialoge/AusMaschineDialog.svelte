@@ -66,7 +66,7 @@
         {@const g = maschine.gelesen}
         <div>
           <b style="font-weight:500">{g.ergebnis.name}</b>
-          <div class="mut small tab">{ganz(g.ergebnis.statistik.stiche)} Stiche · {g.ergebnis.farben.length} Farben · {zahlFest(g.ergebnis.statistik.breite)} × {zahlFest(g.ergebnis.statistik.hoehe)} mm · {ganz(g.bytes)} Byte</div>
+          <div class="mut small tab">{ganz(g.ergebnis.statistik.stiche)} Stiche · {g.ergebnis.farben.length} {g.ergebnis.farben.length === 1 ? "Farbe" : "Farben"} · {zahlFest(g.ergebnis.statistik.breite)} × {zahlFest(g.ergebnis.statistik.hoehe)} mm · {ganz(g.bytes)} Byte</div>
         </div>
         <div style="flex:1; min-height:0; border:1px solid var(--line); background:var(--panel); padding:6px"><StichBild ergebnis={g.ergebnis} /></div>
         <div class="note small">Nur Ansicht mit den Garnfarben der Maschine – kein Bearbeiten. Als EXP sichern, um es aufzuheben.</div>

@@ -44,7 +44,7 @@
 
 <!-- Verlauf -->
 <div class="frow">
-  <label class="fl" for="fxv">Verlauf<span class="frage" title="Gradient Fill: der Abstand wechselt über die Fläche (bei Satin entlang der Säule) zwischen dicht und offen – für Schattierungen und Übergänge. Der Abstand des Objekts gilt dann nicht." aria-label="Hilfe Verlauf">?</span></label>
+  <label class="fl" for="fxv" title="Gradient Fill: der Abstand wechselt über die Fläche (bei Satin entlang der Säule) zwischen dicht und offen – für Schattierungen und Übergänge. Der Abstand des Objekts gilt dann nicht.">Verlauf</label>
   <div class="fc"><input id="fxv" type="checkbox" checked={!!fx?.verlauf} onchange={(ev) => aendern((e) => ((ev.currentTarget as HTMLInputElement).checked ? (e.verlauf = {}) : delete e.verlauf))} style="width:16px; height:16px" /></div>
 </div>
 {#if fx?.verlauf}
@@ -71,7 +71,7 @@
 
 <!-- Ausgefranster Rand -->
 <div class="frow">
-  <label class="fl" for="fxr">Ausgefranster Rand<span class="frage" title="Textured Edge: die Reihen- bzw. Stichenden streuen um den Rand – für Fell, Gras, weiche Kanten." aria-label="Hilfe ausgefranster Rand">?</span></label>
+  <label class="fl" for="fxr" title="Textured Edge: die Reihen- bzw. Stichenden streuen um den Rand – für Fell, Gras, weiche Kanten.">Ausgefranster Rand</label>
   <div class="fc"><input id="fxr" type="checkbox" checked={!!fx?.rand} onchange={(ev) => aendern((e) => ((ev.currentTarget as HTMLInputElement).checked ? (e.rand = {}) : delete e.rand))} style="width:16px; height:16px" /></div>
 </div>
 {#if fx?.rand}
@@ -105,7 +105,7 @@
 <!-- Welle -->
 {#if flaeche}
   <div class="frow">
-    <label class="fl" for="fxw">Welle<span class="frage" title="Wave Effect: die Reihen folgen einer Leitlinie; Dichte und Einstichmuster bleiben gleich. Stichlänge ≤ 4 mm sieht am besten aus." aria-label="Hilfe Welle">?</span></label>
+    <label class="fl" for="fxw" title="Wave Effect: die Reihen folgen einer Leitlinie; Dichte und Einstichmuster bleiben gleich. Stichlänge ≤ 4 mm sieht am besten aus.">Welle</label>
     <div class="fc"><input id="fxw" type="checkbox" checked={!!fx?.welle} onchange={(ev) => welleAn((ev.currentTarget as HTMLInputElement).checked)} style="width:16px; height:16px" /></div>
     {#if fx?.welle}<div class="fhelp">Leitlinie mit „Knoten bearbeiten“ formen (Punkte ziehen, Rechtsklick = Ecke ↔ Kurve)</div>{/if}
   </div>
@@ -113,29 +113,6 @@
 {#if fehler}<div class="errbox" style="margin:6px 0">{fehler}</div>{/if}
 
 <div class="frow">
-  <span class="fl">Farben mischen<span class="frage" title="Color Blending: das Objekt wird in zwei Lagen geteilt – unten die jetzige Farbe, oben eine zweite – mit gegenläufigem Verlauf; beide werden gruppiert." aria-label="Hilfe Farben mischen">?</span></span>
+  <span class="fl" title="Color Blending: das Objekt wird in zwei Lagen geteilt – unten die jetzige Farbe, oben eine zweite – mit gegenläufigem Verlauf; beide werden gruppiert.">Farben mischen</span>
   <div class="fc"><button class="btn btn-secondary" style="width:100%" onclick={() => (arbeit.dialog = { art: "farben_mischen", objekt: nr })}>Zweite Farbe dazu …</button></div>
 </div>
-
-<style>
-  /* Hilfe-Zeichen wie in Feldzeile.svelte */
-  .frage {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 15px;
-    height: 15px;
-    margin-left: 5px;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 1;
-    opacity: 0.5;
-    cursor: help;
-    vertical-align: 1px;
-  }
-  .frage:hover {
-    opacity: 1;
-  }
-</style>

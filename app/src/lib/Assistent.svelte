@@ -398,7 +398,7 @@
               <span class="hd" style="font-size:16px">
                 {r.name.replace(/^artista /, "").replace(/ x /, " × ")}
                 {#if r.name === "artista 130 x 100"}<span class="tag tag-accent" style="margin-left:8px; font-family:var(--font-body); font-weight:400">Standard</span>{/if}
-                {#if r.eigen}<span class="tag" style="margin-left:8px; font-family:var(--font-body); font-weight:400" title="Die artista 185 kennt diesen Rahmen nicht – beim Senden nennt das Programm einen passenden Rahmen der 185">eigener Rahmen</span>{/if}
+                {#if r.eigen}<span class="tag" style="margin-left:8px; font-family:var(--font-body); font-weight:400" title="Die artista 185 kennt diesen Rahmen nicht – beim Übertragen nennt das Programm einen passenden Rahmen der 185">eigener Rahmen</span>{/if}
               </span>
               <span class="mut small">Stickfeld {zahl(r.breite)} × {zahl(r.hoehe)} mm{r.hinweis ? ` · ${r.hinweis}` : ""}</span>
             </span>
@@ -460,7 +460,6 @@
           {:else}
             <button class="big" onclick={oeffnen}><Icon d={IC.ordner} groesse="l" /><b style="font-weight:500">Design öffnen</b><span class="mut small">gespeichertes Design (JSON)</span></button>
           {/if}
-          <button class="big" disabled><Icon d={IC.kommtNoch} groesse="l" /><span><b style="font-weight:500">Motiv aus Sammlung</b> <span class="soon">kommt noch</span></span><span class="small">Formen selbst zeichnen: Expertenmodus</span></button>
         </div>
         {#if arbeit.objekte.length}
           <button class="btn btn-ghost" style="margin-top:10px" onclick={() => (hinzufuegen = false)}>Abbrechen</button>

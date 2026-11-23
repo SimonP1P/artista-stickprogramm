@@ -1,6 +1,6 @@
 <script lang="ts">
   // Eine Zeile des Inspektors nach dem Schema des Kerns (UEBERGABE §2 „Feldzeile“): Beschriftung links (118 px), Wert
-  // rechts, Einheit, Hilfe darunter. Leere Eingabe = Feld entfernen (Standard des Stils/Kerns gilt).
+  // rechts, Einheit; die Erklärung erscheint beim Darüberfahren über die Beschriftung (Nutzer 22.11.2026). Leere Eingabe = Feld entfernen (Standard des Stils/Kerns gilt).
   import type { Feld } from "../schema.svelte";
   import type { WirksamerWert } from "$kern/kern";
   import { lesen, zahl } from "../zahl";
@@ -11,7 +11,6 @@
     wert,
     setzen,
     beschriftung,
-    x = false,
     haken = false,
     wirksam,
     geladen = false,
@@ -20,7 +19,6 @@
     wert: unknown;
     setzen: (v: unknown) => void;
     beschriftung?: string;
-    x?: boolean;
     /** Unterlage als zwei Häkchen Mittellauf/Zickzack (Texte, Monogramme) statt Auswahlliste */
     haken?: boolean;
     /** Wert, mit dem der Kern bei leerem Feld rechnet (`objekt_werte`) – steht grau im Feld */
@@ -105,7 +103,7 @@
   /** Vorlagewerte, die nicht im Schema stehen (Kern: schrift.rs WORTABSTAND_ANTEIL 0,25, ZEILENABSTAND_ANTEIL 0,6;
    *  Mustergröße 100 %) – Anzeige statt „Stil“. Werte nach Stil/Stoff liefert der Kern noch nicht (offen). */
   const VORGABE: Record<string, number> = { wortabstand: 25, zeilenabstand: 60, groesse: 100 };
-  /** Erklärung für das „?“: Beschreibung aus dem Schema ohne JSON-Schreibweise */
+  /** Erklärung beim Darüberfahren über die Beschriftung: Beschreibung aus dem Schema ohne JSON-Schreibweise */
   const hilfe = $derived(
     [
       (feld.beschreibung ?? "").replace(/`([^`]*)`/g, "„$1“").replace(/\\n/g, "Zeilenumbruch").trim(),
@@ -132,7 +130,7 @@
 </script>
 
 <div class="frow">
-  <label class="fl" for={id}>{titel}{#if hilfe}<span class="frage" title={hilfe} aria-label={hilfe}>?</span>{/if}</label>
+  <label class="fl" for={id} title={hilfe || undefined}>{titel}</label>
   <div class="fc">
     {#if feld.typ === "zahl" || feld.typ === "ganz"}
       <input
@@ -187,33 +185,11 @@
         const v = (e.currentTarget as HTMLInputElement).value;
         setzen(v === "" ? undefined : v);
       }} />
-    {:else}
-      <span class="mut small">im Reiter JSON bzw. in der Formansicht</span>
     {/if}
   </div>
 </div>
 
 <style>
-  /* kleines „?“ hinter der Beschriftung: Erklärung beim Darüberfahren (schnelle Tooltips, Tooltip.svelte) */
-  .frage {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 15px;
-    height: 15px;
-    margin-left: 5px;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 1;
-    opacity: 0.5;
-    cursor: help;
-    vertical-align: 1px;
-  }
-  .frage:hover {
-    opacity: 1;
-  }
   /* wirksamer Wert im leeren Feld: deutlich lesbar, aber heller als ein eingetragener Wert */
   .wirk::placeholder {
     color: color-mix(in srgb, var(--color-text) 62%, transparent);

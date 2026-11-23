@@ -15,6 +15,28 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Oberfläche aufgeräumt (UX-Analyse C2; nur Oberfläche, Kern unverändert)
+- **Erklärungen** stehen nicht mehr als „?“, „X“ oder graue Zeile unter dem Feld. Sie erscheinen beim
+  **Darüberfahren über den Feldnamen**, der gepunktet unterstrichen ist (`.fl[title]`, `app.css`). Das Kennzeichen „X“
+  für Experte entfällt überall.
+- **Weg:**
+  - Einfügen → „Kommt noch“;
+  - ✦ in der Werkzeugleiste;
+  - „Motiv aus Sammlung (kommt noch)“ im einfachen Modus;
+  - Kasten „Leeres Design“ bzw. „Noch nichts im Rahmen“;
+  - Rechenzeit „↻ ms“;
+  - „E5“ und „im Reiter JSON“-Hinweise im Inspektor.
+- **Menüs:**
+  - Einfügen hat nur noch **einen** Eintrag „Bild umwandeln …“; Zauberstab, PhotoSnap und Kreuzstich wählt man im Dialog.
+  - Datei enthält keine Bild- und SVG-Einträge mehr (Einfügen bzw. Schritt „Gestalten“) und kein „Designs aus der
+    Maschine“ (Menü „Maschine“).
+- **Inspektor:**
+  - „Ausrichtung“ ist eine Auswahl. Das Schema mischt `const` und `enum` in `oneOf`, `schema.svelte.ts` liest jetzt
+    beides.
+  - Bogen-Grundlinie mit **Radius**.
+  - „Auto Jump“ heißt „Lange Stiche teilen“, „Double Run“ heißt „doppelt sticken“.
+- **Statuszeile:** „Stickzeit ≈ … min“ und „Speicher … %“ statt „11 / 142 KB“ und „* Schätzung“.
+
 ## 22.11.2026 – Übertragen mit einem Klick (UX-Analyse S1–S8; Commit ab25566)
 - `maschine_senden` meldet den Fortschritt als **einen** Balken: `was` = „Übertragung“, `erledigt`/`gesamt` über
   Schreiben und Zurücklesen aller Teile.

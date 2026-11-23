@@ -30,6 +30,12 @@ export type Feld = {
   leer: boolean;
 };
 
+/** Text einer Auswahl: Beschreibung; „Standard“ allein sagt nichts → „Wert (Standard)“ */
+function auswahlText(wert: string, beschreibung?: string): string {
+  if (!beschreibung) return wert;
+  return beschreibung === "Standard" ? `${wert} (Standard)` : beschreibung;
+}
+
 class Schema {
   #s = $state.raw<S | null>(null);
   #laden: Promise<void> | null = null;
@@ -111,9 +117,16 @@ class Schema {
     const basis = { name, beschreibung, standard: roh.default ?? s.default, einheit, leer, werte: [] as Auswahlwert[] };
     // Unterlage: "auto" | "keine" | [Arten]
     if (name === "unterlage" && s.anyOf) return { ...basis, typ: "unterlage", werte: this.#unterlageWerte() };
-    const auswahl = (s.oneOf ?? []).filter((o) => o.const !== undefined);
-    if (auswahl.length && auswahl.length === (s.oneOf ?? []).length)
-      return { ...basis, typ: "auswahl", werte: auswahl.map((o) => ({ wert: o.const!, text: o.description ?? o.const! })) };
+    // Auswahl: `oneOf` aus `const` (mit Beschreibung) und `enum` (Werte ohne Beschreibung, z. B. Ausrichtung links/rechts)
+    const oneOf = s.oneOf ?? [];
+    if (oneOf.length && oneOf.every((o) => o.const !== undefined || o.enum))
+      return {
+        ...basis,
+        typ: "auswahl",
+        werte: oneOf.flatMap((o) =>
+          o.enum ? o.enum.map((e) => ({ wert: e, text: e })) : [{ wert: o.const!, text: auswahlText(o.const!, o.description) }],
+        ),
+      };
     if (s.enum) return { ...basis, typ: "auswahl", werte: s.enum.map((e) => ({ wert: e, text: e })) };
     const t = (Array.isArray(s.type) ? s.type.filter((x) => x !== "null") : [s.type])[0];
     if (t === "boolean") return { ...basis, typ: "bool" };
