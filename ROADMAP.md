@@ -47,7 +47,7 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N9 | 4b.15 Kreuzstich: Objektart `kreuzstich` (Raster fest am Design, Zelle gehört dazu, wenn ihre Mitte in der Fläche liegt; 10 Kreuzarten wie `FillStyle` des Originals, Ecke/Richtung, Fäden 2/4/6, Kreuzgröße 2,54 mm = 10 je Zoll, Kontur Single Line / Current Cross Type, einzelne `zellen`); Stichfolge eigene Festlegung (Zickzack-Reihen, Halbkreuze als Diagonalketten, Übergänge nur auf Rasterlinien); **Bild → Kreuzstich** (`kreuzstich_vorschau`/`kreuzstich_bild`, vierter Weg im Dialog „Bild umwandeln“); Formulare von `BLOT.EXE` mit `dfm_lesen.py` gelesen, ARX-Beispiele gepackt (nicht lesbar); Bericht `Analyse_Teil3/29`. Offen: Zellen malen, Kreuzstich-Buchstaben | ✅ 22.11. |
 | N10 | Verbinder als Laufstich (Bericht 22 #3): Verbindertyp des Originals gelesen (Tag **0x2805** Jump/Run, Sätze 0x2803 „nach dem Objekt“ und 0x2804 „im Objekt“, Run-Länge 0x2711 = 12,7 / 1,8 mm, mit „Run“ sind Trim und Tie Off gesperrt; alle 22 Stile = Jump); `einstellungen.verbinder.art`/`innen_art` = `sprung` (Standard) / `lauf` / `verdeckt` (eigene Erweiterung: Lauf nur unter später gestickten Flächen), `lauf_laenge`/`innen_lauf_laenge`; Oberfläche: Schritt 3 „Verbindungsfäden“ (E) mit Zahl der Sprünge, Inspektor Design, Einzelwerte; Bericht 01 §1a. Beispiel: Lorbeer-Rahmen 19 → 3 Sprünge mit `lauf`. Offen: Vernähwerte „im Objekt“ (Original: alles aus), Wegführung des Run in MOD1 | ✅ 22.11. |
 | N11 | 4b.13c **ART-Designs des Originals mit Objekten öffnen**: Twofish-128-CFB1 und Substitution im Kern (`stick-formate::art`, Testvektor geprüft), Stiche/Segmente/Objektteil; **neu gelesen:** Datensatz 0x03 (IMPORT.DLL 0x10017180) = Segmentliste je Objekt (Nummer + 1) + Garnnummer, Garnbibliothek 0x41 (0x10039e60); je Objekt des Originals ein Objekt `stiche` („Fläche · Sulky 1176 …“, Garnfarbe), Verbinder-Segmente = Sprünge (eigene Festlegung); alle 287 Musterdesigns öffnen (282 vollständig zugeordnet, 4 Auto-Digitalisier-Designs als ein Objekt); `stickdatei_lesen` + Dateifilter „Original-Design artista V4 (ART)“ (E), Ergebnisfeld `objekte`; Test mit `kern/testdaten/art/Seal.ART`; Bericht 27 §6. Offen: Umwandlung in bearbeitbare Objekte (Frage) | ✅ 22.11. |
-| N12 | Gesammelte Fragen an den Nutzer stellen (Liste unten) | ✅ gestellt 22.11., Antworten offen |
+| N12 | Gesammelte Fragen an den Nutzer stellen (Liste unten) | ✅ beantwortet 22.11. (Antworten unten); Umsetzung wartet auf „Go“ |
 
 **Gesammelte Fragen an den Nutzer (am Ende stellen):**
 - **Effekte (N2):** Wo der Verlauf beginnt und wie die gekrümmten Profile genau aussehen, ist eigene Festlegung
@@ -92,6 +92,22 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
   (Farbe, Art und Garn wie im Original; die Stiche bleiben unverändert). Sollen sie als Nächstes in **bearbeitbare
   Objekte** umgewandelt werden (Umrisse + Werte → Lauf/Satin/Tatami/Text, neu berechnet wie eigene Objekte)? Das ist
   eine größere Aufgabe (131 Objektklassen). Ein Bild-für-Bild-Vergleich mit der Vorschau des Originals steht noch aus.
+
+**Antworten des Nutzers (22.11.2026, nachmittags) – umgesetzt wird erst nach seinem „Go“:**
+1. Effekte: ja – Verlauf aufs Kalibrierblatt (Vor Ort); obere Lage beim Farben mischen ohne Unterlage bleibt.
+2. Craft: **Stippling des Originals weiter entschlüsseln**; Motiv-Standard NP004a K0001a bleibt.
+3. Applikation: Abdeckung 5,0 mm bleibt, Probestück vor Ort; **Frame Out umsetzen, „wenn es Sinn macht“** (Vorschlag:
+   als Option, Standard aus, Test vor Ort).
+4. Zauberstab/PhotoSnap: **Bild als Vorlage hinter dem Design: ja**; PhotoSnap 0° wie das Original. Rückfrage des
+   Nutzers „weiße Stellen weiß sticken?“ – erklärt (ein Faden, Weiß = Stoff); Antwort offen.
+5. Stickdateien: keine Beispieldateien; HUS/VP3-Prüfung nicht wichtig → zurückgestellt; kein pyembroidery.
+6. Anordnen: beides bleibt so.
+7. Kreuzstich: **keine Kreuzstich-Buchstaben**; Stichfolge und 2,54 mm passen. Malwerkzeug: nicht beantwortet
+   (nachgefragt).
+8. Verbinder: Nutzer möchte zwischen zwei Buchstaben einfach springen – erklärt; Vorschlag: Standard bleibt **Sprung**
+   wie im Original, „Laufstich, wo verdeckt“ bleibt Option. Bestätigung offen.
+9. ART als bearbeitbare Objekte: **erst Aufwand schätzen, Arbeit erst nach „Go“.** Schätzung im Chat vom 22.11.
+   (Objekte der 287 Musterdesigns: 56 % Linien, 42 % Flächen, 1,8 % Text, Rest Ellipse/Ring/Gruppe/manuelle Stiche).
 
 ## Übergabe für die nächste Sitzung (Stand 21.11.2026, spät)
 **Hier weitermachen.** Alles ist committet und gepusht (`main`).
