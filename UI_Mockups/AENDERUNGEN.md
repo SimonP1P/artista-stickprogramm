@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Übertragen nachgeschärft (Rückmeldung Nutzer nach Test), Commit (folgt)
+## 22.11.2026 – Übertragen nachgeschärft (Rückmeldung Nutzer nach Test), Commit ae31a86
 - Knopf **„Übertragen“ oben nur im Expertenmodus**; im einfachen Modus bleibt sein Platz frei (`visibility: hidden`),
   Einfach/Experte springen nicht. Der Maschinen-Knopf hat eine feste Breite (168 px) aus demselben Grund.
 - Passt das Design nicht: Knopf ausgegraut mit **„Passt nicht“** bzw. „Zu groß“ (`maschine.sperrKurz`); in Schritt 4
