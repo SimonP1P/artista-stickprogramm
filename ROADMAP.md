@@ -47,7 +47,9 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 | N9 | 4b.15 Kreuzstich: Objektart `kreuzstich` (Raster fest am Design, Zelle gehört dazu, wenn ihre Mitte in der Fläche liegt; 10 Kreuzarten wie `FillStyle` des Originals, Ecke/Richtung, Fäden 2/4/6, Kreuzgröße 2,54 mm = 10 je Zoll, Kontur Single Line / Current Cross Type, einzelne `zellen`); Stichfolge eigene Festlegung (Zickzack-Reihen, Halbkreuze als Diagonalketten, Übergänge nur auf Rasterlinien); **Bild → Kreuzstich** (`kreuzstich_vorschau`/`kreuzstich_bild`, vierter Weg im Dialog „Bild umwandeln“); Formulare von `BLOT.EXE` mit `dfm_lesen.py` gelesen, ARX-Beispiele gepackt (nicht lesbar); Bericht `Analyse_Teil3/29`. Offen: Zellen malen, Kreuzstich-Buchstaben | ✅ 22.11. |
 | N10 | Verbinder als Laufstich (Bericht 22 #3): Verbindertyp des Originals gelesen (Tag **0x2805** Jump/Run, Sätze 0x2803 „nach dem Objekt“ und 0x2804 „im Objekt“, Run-Länge 0x2711 = 12,7 / 1,8 mm, mit „Run“ sind Trim und Tie Off gesperrt; alle 22 Stile = Jump); `einstellungen.verbinder.art`/`innen_art` = `sprung` (Standard) / `lauf` / `verdeckt` (eigene Erweiterung: Lauf nur unter später gestickten Flächen), `lauf_laenge`/`innen_lauf_laenge`; Oberfläche: Schritt 3 „Verbindungsfäden“ (E) mit Zahl der Sprünge, Inspektor Design, Einzelwerte; Bericht 01 §1a. Beispiel: Lorbeer-Rahmen 19 → 3 Sprünge mit `lauf`. Offen: Vernähwerte „im Objekt“ (Original: alles aus), Wegführung des Run in MOD1 | ✅ 22.11. |
 | N11 | 4b.13c **ART-Designs des Originals mit Objekten öffnen**: Twofish-128-CFB1 und Substitution im Kern (`stick-formate::art`, Testvektor geprüft), Stiche/Segmente/Objektteil; **neu gelesen:** Datensatz 0x03 (IMPORT.DLL 0x10017180) = Segmentliste je Objekt (Nummer + 1) + Garnnummer, Garnbibliothek 0x41 (0x10039e60); je Objekt des Originals ein Objekt `stiche` („Fläche · Sulky 1176 …“, Garnfarbe), Verbinder-Segmente = Sprünge (eigene Festlegung); alle 287 Musterdesigns öffnen (282 vollständig zugeordnet, 4 Auto-Digitalisier-Designs als ein Objekt); `stickdatei_lesen` + Dateifilter „Original-Design artista V4 (ART)“ (E), Ergebnisfeld `objekte`; Test mit `kern/testdaten/art/Seal.ART`; Bericht 27 §6. Offen: Umwandlung in bearbeitbare Objekte (Frage) | ✅ 22.11. |
-| N12 | Gesammelte Fragen an den Nutzer stellen (Liste unten) | ✅ beantwortet 22.11. (Antworten unten); Umsetzung wartet auf „Go“ |
+| N12 | Gesammelte Fragen an den Nutzer stellen (Liste unten) | ✅ beantwortet 22.11. (Antworten unten); Go für N13/N14 |
+| N13 | 4b.9 Stippling wie das Original (MOD1 `StippleFill_MedialAxisSequence` 0x101a4970 ff., Werte im Dokument +0x138) | 🟡 begonnen |
+| N14 | Frame Out als Option (Applikation, 0x3f2a/0x3f2b = 12 mm, `GetJumpoutPoint`), Standard aus, Test vor Ort | ⬜ |
 
 **Gesammelte Fragen an den Nutzer (am Ende stellen):**
 - **Effekte (N2):** Wo der Verlauf beginnt und wie die gekrümmten Profile genau aussehen, ist eigene Festlegung
@@ -108,7 +110,12 @@ Nutzungslimit: einfach an der hier notierten Stelle weitermachen. **Nichts an di
 9. ART als bearbeitbare Objekte: **erst Aufwand schätzen, Arbeit erst nach „Go“.** Schätzung im Chat vom 22.11.
    (Objekte der 287 Musterdesigns: 56 % Linien, 42 % Flächen, 1,8 % Text, Rest Ellipse/Ring/Gruppe/manuelle Stiche).
 
-**Offen nach den Antworten (wartet auf „Go“):** Frame Out als Option (~½ Schritt), Stippling des Originals
+**Go des Nutzers (22.11.2026, abends):** „ja hol das stippling aus dem original“ → **N13 Stippling des Originals**,
+danach **N14 Frame Out** (Option, Standard aus). **ART als bearbeitbare Objekte: zurückgestellt** („brauch ich nicht …
+kann man nach hinten verschieben“). Frage zur Tatami-Kante (Wendestiche oben sichtbar, unten < 0,3 mm entfallen)
+beantwortet: so richtig.
+
+**Offen nach den Antworten (Stand vor dem Go):** Frame Out als Option (~½ Schritt), Stippling des Originals
 entschlüsseln (~1–2 Schritte, Ausgang unsicher – Nutzer fragt nach dem Nutzen), ART als bearbeitbare Objekte
 (~5–6 Schritte, + ~½ für „Original-Stiche behalten, bis man ändert“), Vor-Ort-Liste ergänzen (Verlauf,
 Applikations-Probestück). Gestrichen: Bild hinter dem Design, Kreuzstich-Malwerkzeug, Kreuzstich-Buchstaben, HUS.
