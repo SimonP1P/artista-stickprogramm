@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Sprache (UX-Analyse C4), Commit (folgt)
+## 22.11.2026 – Sprache (UX-Analyse C4), Commit fea865a
 - **Anzeigenamen** (`app/src/lib/listen.svelte.ts`): `rahmenName` („artista 130 × 100 quer“, Freiarm, oval, Mega),
   `stoffName` (Gewebe/Strick/Frottee, leicht/mittel/schwer), `garnkarteName` („Standard (19 Grundfarben)“,
   „… (nach Nummer)“/„(nach Farbton)“), `garnName`/`markeName` (20 Grundfarben der Standard-Karte auf Deutsch; Garne der
