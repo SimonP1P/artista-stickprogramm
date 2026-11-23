@@ -279,6 +279,7 @@ Schreib-/Löschbefehle nur nach ausdrücklicher Zustimmung (CLAUDE.md §4 Regel 
 ## Vor Ort – wartet auf eine Person an der Maschine (Stand 22.11.2026)
 Diese Punkte gehen nur, wenn jemand an der artista 185 ist (Display ansehen, Rahmen/Stoff, Start-Taste, Aus/Ein).
 Vorher jeweils die Zustimmung des Nutzers einholen (Regel 1a). Testprogramm: `Testprogramm_artista185_Windows_v4_1/`.
+**Anleitung zum Ausdrucken (23.11.2026):** `Arbeitsdaten/geraetetests/Testtag_artista185.pdf` (Quelle `.html` daneben; Online-Fassung mit Häkchen https://claude.ai/artifact/QnhmfZ8MGGVktiX7bxM3wj).
 | # | Aufgabe | Braucht vor Ort | Stand |
 |---|---|---|---|
 | V1 | ✅ **20.11.2026 erledigt** (v4.1 Testquadrat und Rust/App-Weg Prüfmuster: alles zurückgelesen gleich, Tabelle gültig) – **Schreibtest v4.1 ohne Sticken:** `START_SCHREIBEN.bat` (Testquadrat: DATEN + ICON + INFO + Garnfarbtabelle, zurücklesen) – oder im Programm Schritt 4 „Senden …“ → „Jetzt schreiben“ (ohne Häkchen „sticken“) | niemanden (kein 0x08) – aber Freigabe des Nutzers 20.11. | ✅ |
