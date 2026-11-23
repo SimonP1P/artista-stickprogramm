@@ -134,12 +134,15 @@ const TESTS = [
       "Messschieber oder gutes Lineal (mm), kleine spitze Schere, Handy für Fotos",
       "Großer Ovalrahmen (145 × 255 mm) liegt bereit. Der kleine Rahmen 5 × 7 cm wird heute nicht gebraucht"
     ]},
-  { nr:"1", titel:"Programm auf dem Windows-PC auf den neuesten Stand", tags:["PC","Fernwartung"],
-    ziel:"Der Windows-PC hat noch die Version vom 21.11. Das macht Simon oder Claude per Fernwartung.",
+  { nr:"1", titel:"Programm installieren und Testdateien holen", tags:["PC","Fernwartung"],
+    ziel:"Das Programm kommt als Installer von GitHub. Ein Update ist genauso: einfach die neuere setup.exe darüber installieren.",
     schritte:[
-      "Im Projektordner <code>git pull</code> ausführen",
-      "Im Ordner <code>app</code> bauen: <code>npm run tauri build -- --debug --no-bundle</code> (dauert einige Minuten)",
-      "Programm starten: <code>F:\\Entwicklung\\target\\debug\\artista-stickprogramm.exe</code>",
+      "Im Browser (bei GitHub angemeldet) <code>github.com/SimonP1P/artista-stickprogramm/releases</code> öffnen",
+      "Beim neuesten Eintrag unter „Assets“ die Datei <code>…_x64-setup.exe</code> herunterladen (nicht die .msi)",
+      "Doppelklick. Bei „Der Computer wurde durch Windows geschützt“: „Weitere Informationen“ → „Trotzdem ausführen“, dann installieren",
+      "„Artista Stickprogramm“ aus dem Startmenü starten",
+      "Kurz prüfen: Text anlegen → sind Stick-Alphabete da? Schritt 3 → sind Garnkarten da?",
+      "Testdateien holen: im Projektordner <code>git pull</code> ausführen (die Beispiele unter <code>stickprogramm\\beispiele</code> sind nicht im Installer)",
       "Maschine einschalten, Stickmodul dran, PC-Kabel an COM3"
     ],
     notiz:true},
