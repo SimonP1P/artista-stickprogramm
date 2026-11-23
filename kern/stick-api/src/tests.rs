@@ -527,8 +527,16 @@ fn stichart_wechseln() {
     // offene Linie → Fläche: Fehler; Text: Fehler
     assert!(wechsel(1, "tatami").is_err());
     assert!(wechsel(1, "dreifach").is_ok());
+    // Fläche → Applikation (UX-Analyse K1): Umriss und Löcher bleiben; Applikation → Fläche zurück
+    let a = wechsel(0, "applikation").unwrap();
+    assert!(a["objekt"]["umriss"]["kreis"].is_object());
+    assert_eq!(a["objekt"]["loecher"].as_array().unwrap().len(), 1);
+    let mut d3 = d.clone();
+    d3["objekte"][0] = a["objekt"].clone();
+    let z = ausfuehren(&k, "stichart_aendern", json!({"design": d3, "objekt": 0, "art": "tatami"})).unwrap();
+    assert!(z["objekt"]["umriss"]["kreis"].is_object());
     // alle Ergebnisse rechnen
-    for (nr, art) in [(0, "satinflaeche"), (0, "satinlinie"), (0, "motivlinie"), (2, "satinlinie"), (2, "lauf")] {
+    for (nr, art) in [(0, "satinflaeche"), (0, "satinlinie"), (0, "motivlinie"), (0, "applikation"), (2, "applikation"), (2, "satinlinie"), (2, "lauf")] {
         let mut d2 = d.clone();
         d2["objekte"][nr] = wechsel(nr, art).unwrap()["objekt"].clone();
         ausfuehren(&k, "design_berechnen", json!({"design": d2})).unwrap_or_else(|e| panic!("{nr} {art}: {e:?}"));

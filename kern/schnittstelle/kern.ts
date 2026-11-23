@@ -3150,7 +3150,7 @@ export type Stich = {
 export type StichartEingabe = {
   /**
    * neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,
-   * satinflaeche, muster, motivfuellung, stippling, kreuzstich
+   * satinflaeche, muster, motivfuellung, stippling, kreuzstich, applikation
    */
   art: string;
   design: DesignWert;

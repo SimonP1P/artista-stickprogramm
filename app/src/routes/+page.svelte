@@ -12,7 +12,7 @@
   import SchriftDialog from "$lib/dialoge/SchriftDialog.svelte";
   import GarnDialog from "$lib/dialoge/GarnDialog.svelte";
   import EinlesenDialog from "$lib/dialoge/EinlesenDialog.svelte";
-  import type { CraftVorlage, GarnInfo, ObjektJson } from "$kern/kern";
+  import type { GarnInfo, ObjektJson } from "$kern/kern";
   import { maschine, SIMULATION } from "$lib/maschine.svelte";
   import SendenDialog from "$lib/dialoge/SendenDialog.svelte";
   import AusMaschineDialog from "$lib/dialoge/AusMaschineDialog.svelte";
@@ -30,12 +30,10 @@
   import Objektliste from "$lib/Objektliste.svelte";
   import Inspektor from "$lib/inspektor/Inspektor.svelte";
   import {
-    BESONDERE,
     FORMEN,
     FUELLUNG,
     neuesObjekt,
     SCHRIFT,
-    STANDARD_FARBE,
     STICHART_HILFE,
     STICHART_NAME,
     UMRISS,
@@ -158,16 +156,35 @@
       if (!schrift) return arbeit.zeige("Keine Computer-Schrift gefunden.", "err");
     }
     const o = neuesObjekt(art, schrift);
-    if (o) arbeit.einfuegen(o);
+    if (!o) return;
+    arbeit.einfuegen(o);
+    // ein Eintrag „Text“ (UX-Analyse K4): gleich die Schrift wählen – Stick-Alphabet oder Computer-Schrift
+    if (art === "text") arbeit.dialog = { art: "schrift", objekt: arbeit.objekte.length - 1 };
   }
 
-  /** Craft-Stitch-Vorlage (Kern `craft_vorlagen`) einfügen: Linie bzw. Fläche in der Rahmenmitte mit den Werten des Originals */
-  function craftEinfuegen(v: CraftVorlage) {
-    const form =
-      v.form === "linie"
-        ? { punkte: [[-25, -6], [-8, 6], [8, -6], [25, 6]] }
-        : { umriss: { kreis: { mitte: [0, 0], radius: 20 } } };
-    arbeit.einfuegen({ ...(v.felder as object), ...form, name: v.name, farbe: STANDARD_FARBE } as ObjektJson);
+  /** Handstich-Vorlagen (Craft, `craft_vorlagen`) mit mehr als der Stichart – als Vorwahl im Stichart-Menü */
+  const craftVorlagen = (form: "linie" | "flaeche") =>
+    listen.craft.filter((v) => v.form === form && Object.keys(v.felder as object).length > 1);
+  /** Felder einer Vorlage auf Objekte legen (nach dem Wechsel der Stichart) */
+  function vorlageAnwenden(nummern: number[], id: string | undefined) {
+    const v = listen.craft.find((x) => x.id === id);
+    if (!v) return;
+    const felder = v.felder as Record<string, unknown>;
+    arbeit.aendern((d) => {
+      for (const i of nummern) {
+        const o = d.objekte?.[i] as Record<string, unknown> | undefined;
+        if (!o || o.art !== felder.art) continue;
+        Object.assign(o, felder);
+        if (!o.name || ["Motivlinie", "Motivfüllung", "Fläche", "Laufstich"].includes(String(o.name))) o.name = v.name;
+      }
+    });
+  }
+  /** „Applikation zeichnen“: Stichart der Fläche auf Applikation, dann die Form Punkt für Punkt zeichnen */
+  function applikationZeichnen() {
+    arbeit.vorwahl.modus = "fuellung";
+    arbeit.vorwahl.fuellung = "applikation";
+    arbeit.vorwahl.vorlage.fuellung = undefined;
+    formZeichnen("frei");
   }
   // Vorlagen gleich beim Start laden, damit das Menü sofort vollständig ist
   $effect(() => void listen.craftLaden().catch(() => {}));
@@ -179,33 +196,55 @@
     arbeit.ansicht = arbeit.ansicht === "abspielen" ? "stiche" : arbeit.ansicht;
   }
   /** Gezeichnete Form als Objekt mit der vorgewählten Stichart einfügen (Umriss über den Kern `stichart_aendern`) */
-  async function gezeichnet(form: FormWerkzeug, punkte: ZeichenPunkt[], quadrat: boolean) {
-    const r = formAusPunkten(form, punkte, arbeit.vorwahl, quadrat);
+  async function gezeichnet(form: FormWerkzeug, punkte: ZeichenPunkt[], quadrat: boolean, gezogen: boolean) {
+    const r = formAusPunkten(form, punkte, arbeit.vorwahl, quadrat, gezogen);
     if (!r) return arbeit.zeige("Form zu klein – bitte noch einmal zeichnen.", "info");
     arbeit.einfuegen(r.objekt);
-    if (r.umriss) await arbeit.stichartAendern([arbeit.objekte.length - 1], r.umriss);
+    const nr = arbeit.objekte.length - 1;
+    if (r.umriss) await arbeit.stichartAendern([nr], r.umriss);
+    const modus = form === "linie" || r.umriss ? "umriss" : "fuellung";
+    if (form !== "saeule" && form !== "knopfloch") vorlageAnwenden([nr], arbeit.vorwahl.vorlage[modus]);
   }
-  /** Stichart-Menü (Füllung/Umriss) neben der Werkzeugleiste öffnen */
+  /** Stichart-Menü (Fläche/Umriss) neben der Werkzeugleiste öffnen – der Klick öffnet nur das Menü; erst die Wahl einer
+   *  Stichart legt fest, ob neue Formen Fläche oder Umriss werden (UX-Analyse U1) */
   function stichartMenue(modus: "fuellung" | "umriss", ev: MouseEvent) {
-    arbeit.vorwahl.modus = modus;
     const r = (ev.currentTarget as HTMLElement).getBoundingClientRect();
     stichartPos = { x: r.right + 6, y: r.top };
     menue = menue === modus ? null : modus;
   }
   /** Stichart wählen: Vorwahl für neue Formen und – wie im Original – für die gewählten Linien/Flächen */
-  function stichartWaehlen(modus: "fuellung" | "umriss", art: string) {
+  async function stichartWaehlen(modus: "fuellung" | "umriss", art: string, vorlage?: string) {
     arbeit.vorwahl.modus = modus;
     arbeit.vorwahl[modus] = art;
+    arbeit.vorwahl.vorlage[modus] = vorlage;
     const passend = arbeit.auswahl.filter((i) => WECHSELBAR.includes(arbeit.objekte[i]?.art ?? ""));
-    if (passend.length) arbeit.stichartAendern(passend, art);
+    if (passend.length) await arbeit.stichartAendern(passend, art);
+    if (passend.length && vorlage) vorlageAnwenden(passend, vorlage);
   }
+  /** Name der Vorwahl (Stichart oder Handstich-Vorlage) und Kurzform für die Leiste */
+  const vorwahlName = (m: "fuellung" | "umriss") =>
+    listen.craft.find((v) => v.id === arbeit.vorwahl.vorlage[m])?.name ?? STICHART_NAME[arbeit.vorwahl[m]];
+  const KURZ: Record<string, string> = { tatami: "Step", satinflaeche: "Satin", muster: "Muster", motivfuellung: "Motive", stippling: "Stippling", kreuzstich: "Kreuz", applikation: "Applik.", lauf: "Lauf", dreifach: "Dreifach", satinlinie: "Satin", blanket: "Blanket", motivlinie: "Motive", rueckstich: "Rückstich", stielstich: "Stielstich" };
+  const vorwahlKurz = (m: "fuellung" | "umriss") =>
+    arbeit.vorwahl.vorlage[m] ? vorwahlName(m).split(/[- ]/)[0] : (KURZ[arbeit.vorwahl[m]] ?? vorwahlName(m));
   const auswahlWechselbar = $derived(arbeit.auswahl.some((i) => WECHSELBAR.includes(arbeit.objekte[i]?.art ?? "")));
   const formTitel = (f: (typeof FORMEN)[number]) =>
     f.form === "linie"
-      ? `${f.name} – wird ${STICHART_NAME[arbeit.vorwahl.umriss]} (Umriss)`
+      ? `${f.name} – wird Umriss: ${vorwahlName("umriss")}`
       : f.form === "saeule"
         ? `${f.name} – ${f.hilfe}`
-        : `${f.name} – wird ${arbeit.vorwahl.modus === "fuellung" ? `Fläche: ${STICHART_NAME[arbeit.vorwahl.fuellung]}` : `Umriss: ${STICHART_NAME[arbeit.vorwahl.umriss]}`}`;
+        : `${f.name} – ${zeichenZiel(f.form)}`;
+  /** was aus einer gezeichneten Form wird (Leiste, Hinweis beim Zeichnen) */
+  const zeichenZiel = (form: FormWerkzeug) =>
+    form === "linie"
+      ? `wird Umriss: ${vorwahlName("umriss")}`
+      : form === "saeule" || form === "knopfloch"
+        ? ""
+        : arbeit.vorwahl.modus === "fuellung"
+          ? arbeit.vorwahl.fuellung === "applikation"
+            ? "wird Applikation"
+            : `wird Fläche: ${vorwahlName("fuellung")}`
+          : `wird Umriss: ${vorwahlName("umriss")}`;
 
   /** Menü Anordnen: Befehle auf die Auswahl (`reihenfolge_aendern`) */
   const auswahlSortiert = $derived([...arbeit.auswahl].sort((a, b) => a - b));
@@ -382,36 +421,24 @@
       </div>
     {/if}
     {#if menue === "einfuegen"}
-      <div class="menu" role="menu" aria-label="Einfügen" style="left:205px; top:44px; display:grid; grid-template-columns:240px 300px; padding:0">
-        <div style="padding:4px; border-right:1px solid var(--line)">
-          <div class="mh">Form zeichnen – {arbeit.vorwahl.modus === "fuellung" ? `Fläche: ${STICHART_NAME[arbeit.vorwahl.fuellung]}` : `Umriss: ${STICHART_NAME[arbeit.vorwahl.umriss]}`}</div>
-          {#each FORMEN as f (f.form)}
-            <button class="mi" role="menuitem" onclick={() => waehle(() => formZeichnen(f.form))}><Icon d={f.icon} />{f.name}</button>
-          {/each}
-          <div class="msep"></div>
-          <div class="mh">Schrift</div>
-          {#each SCHRIFT as a (a)}
-            <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(a))}><Icon d={ART[a][1]} />{ART[a][0]}</button>
-          {/each}
-          <div class="msep"></div>
-          <div class="mh">Besondere</div>
-          {#each BESONDERE as a (a)}
-            <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(a))}><Icon d={ART[a][1]} />{ART[a][0]}</button>
-          {/each}
-          <div class="msep"></div>
-          <button class="mi" role="menuitem" title="Bild in Stickflächen umwandeln – im Dialog auch Zauberstab, PhotoSnap und Kreuzstich" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
-          <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
-          <button class="mi" role="menuitem" title="Gespeichertes Design (JSON) oder fremde Stickdatei (DST, PES, JEF, VP3, EXP) als ein Element" onclick={() => waehle(designEinfuegen)}><Icon d={ART.stiche[1]} />Design oder Stickdatei einfügen …</button>
-        </div>
-        <div style="padding:4px; background:var(--panel)">
-          <div class="mh">Craft Stitches – Handstich-Optik</div>
-          {#each listen.craft as v (v.id)}
-            <button class="mi" role="menuitem" title={v.beschreibung} onclick={() => waehle(() => craftEinfuegen(v))}>
-              <Icon d={ART[(v.felder as { art: string }).art]?.[1] ?? ""} /><span style="flex:1">{v.name}</span><span class="mut small">{v.form === "linie" ? "Linie" : "Fläche"}</span>
-            </button>
-          {/each}
-          <div class="small mut" style="padding:2px 10px 6px; white-space:normal">Linien in einem Zug: mehrere Linien wählen → Anordnen → „Blackwork Run“.</div>
-        </div>
+      <div class="menu" role="menu" aria-label="Einfügen" style="left:205px; top:44px; width:270px">
+        <div class="mh">Form zeichnen</div>
+        {#each FORMEN as f (f.form)}
+          <button class="mi" role="menuitem" title={formTitel(f)} onclick={() => waehle(() => formZeichnen(f.form))}><Icon d={f.icon} />{f.name}</button>
+        {/each}
+        <div class="msep"></div>
+        <div class="mh">Schrift</div>
+        {#each SCHRIFT as a (a)}
+          <button class="mi" role="menuitem" onclick={() => waehle(() => einfuegen(a))}><Icon d={ART[a][1]} />{a === "text" ? "Text" : ART[a][0]}</button>
+        {/each}
+        <div class="msep"></div>
+        <div class="mh">Besondere</div>
+        <button class="mi" role="menuitem" title="Umriss des Stoffstücks zeichnen – wird eine Applikation (Stichart „Applikation“ der Fläche)" onclick={() => waehle(applikationZeichnen)}><Icon d={ART.applikation[1]} />Applikation zeichnen</button>
+        <button class="mi" role="menuitem" title={ZEICHEN_HILFE.knopfloch} onclick={() => waehle(() => formZeichnen("knopfloch"))}><Icon d={ART.knopfloch[1]} />Knopfloch setzen</button>
+        <div class="msep"></div>
+        <button class="mi" role="menuitem" title="Bild in Stickflächen umwandeln – im Dialog auch Zauberstab, PhotoSnap und Kreuzstich" onclick={() => waehle(() => (arbeit.dialog = { art: "bild" }))}><Icon d={IC.bild} />Bild umwandeln …</button>
+        <button class="mi" role="menuitem" onclick={() => waehle(() => (arbeit.dialog = { art: "svg" }))}><Icon d={IC.bezier} />SVG einlesen …</button>
+        <button class="mi" role="menuitem" title="Gespeichertes Design (JSON) oder fremde Stickdatei (DST, PES, JEF, VP3, EXP) als ein Element" onclick={() => waehle(designEinfuegen)}><Icon d={ART.stiche[1]} />Design oder Stickdatei einfügen …</button>
       </div>
     {/if}
     {#if menue === "anordnen"}
@@ -453,18 +480,34 @@
   {#if menue === "fuellung" || menue === "umriss"}
     {@const modus = menue}
     <div class="menu" role="menu" aria-label={modus === "fuellung" ? "Stichart Füllung" : "Stichart Umriss"} style="position:fixed; left:{stichartPos.x}px; top:{stichartPos.y}px; width:340px">
-      <div class="mh">{modus === "fuellung" ? "Füllung (Fläche)" : "Umriss (Linie)"} – Stichart</div>
+      <div class="mh">{modus === "fuellung" ? "Fläche" : "Umriss"} – Stichart</div>
       {#each modus === "fuellung" ? FUELLUNG : UMRISS as a (a)}
-        {@const an = arbeit.vorwahl[modus] === a}
+        {@const an = arbeit.vorwahl[modus] === a && !arbeit.vorwahl.vorlage[modus]}
         <button class="mi" role="menuitemradio" aria-checked={an} onclick={() => waehle(() => stichartWaehlen(modus, a))} style="white-space:normal">
           <Icon d={ART[a]?.[1] ?? ""} />
           <span style="flex:1"><b style="font-weight:500">{STICHART_NAME[a]}</b> <span class="mut small">– {STICHART_HILFE[a]}</span></span>
           {#if an}<Icon d={IC.haken} />{/if}
         </button>
       {/each}
+      {#if craftVorlagen(modus === "fuellung" ? "flaeche" : "linie").length}
+        <div class="msep"></div>
+        <div class="mh">Handstich-Vorlagen</div>
+        {#each craftVorlagen(modus === "fuellung" ? "flaeche" : "linie") as v (v.id)}
+          {@const an = arbeit.vorwahl.vorlage[modus] === v.id}
+          {@const art = (v.felder as { art: string }).art}
+          <button class="mi" role="menuitemradio" aria-checked={an} title={v.beschreibung} onclick={() => waehle(() => stichartWaehlen(modus, art, v.id))} style="white-space:normal">
+            <Icon d={ART[art]?.[1] ?? ""} />
+            <span style="flex:1"><b style="font-weight:500">{v.name}</b> <span class="mut small">– {v.original}</span></span>
+            {#if an}<Icon d={IC.haken} />{/if}
+          </button>
+        {/each}
+      {/if}
       <div class="msep"></div>
       <div class="small mut" style="padding:4px 10px 8px; white-space:normal">
-        Gilt für neue Formen{auswahlWechselbar ? " und für die gewählten Linien/Flächen (Form bleibt)" : ""}. Wie im Original jederzeit änderbar.
+        {modus === "fuellung"
+          ? "Neue Kreise, Rechtecke und Formen werden Fläche mit dieser Stichart."
+          : "Für Linien. Wählt man hier, werden auch neue Kreise, Rechtecke und Formen nur als Umriss gestickt."}
+        {auswahlWechselbar ? "Die gewählten Objekte bekommen die Stichart, die Form bleibt." : ""}
       </div>
     </div>
   {/if}
@@ -515,8 +558,8 @@
             <button class="tb" aria-pressed={werkzeug === "einstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Einstich setzen" title="Einstich (E) des gewählten Objekts setzen – hier beginnt es" onclick={() => (werkzeug = "einstich")}><Icon d={IC.einstich} groesse="l" /></button>
             <button class="tb" aria-pressed={werkzeug === "ausstich"} disabled={arbeit.auswahl.length !== 1} aria-label="Ausstich setzen" title="Ausstich (A) des gewählten Objekts setzen – hier endet es" onclick={() => (werkzeug = "ausstich")}><Icon d={IC.ausstich} groesse="l" /></button>
             <span class="sep"></span>
-            <button class="tb stw" class:an={arbeit.vorwahl.modus === "fuellung"} aria-haspopup="menu" aria-expanded={menue === "fuellung"} aria-label="Füllung: {STICHART_NAME[arbeit.vorwahl.fuellung]}" title="Füllung: {STICHART_NAME[arbeit.vorwahl.fuellung]} – neue Formen werden Flächen · Klick: Stichart wählen (auch für die Auswahl)" onclick={(ev) => stichartMenue("fuellung", ev)}><Icon d={ART[arbeit.vorwahl.fuellung]?.[1] ?? ""} groesse="l" /><span class="stw-l">Fläche</span></button>
-            <button class="tb stw" class:an={arbeit.vorwahl.modus === "umriss"} aria-haspopup="menu" aria-expanded={menue === "umriss"} aria-label="Umriss: {STICHART_NAME[arbeit.vorwahl.umriss]}" title="Umriss: {STICHART_NAME[arbeit.vorwahl.umriss]} – Linien und, wenn gewählt, Formen als Umriss · Klick: Stichart wählen (auch für die Auswahl)" onclick={(ev) => stichartMenue("umriss", ev)}><Icon d={ART[arbeit.vorwahl.umriss]?.[1] ?? ""} groesse="l" /><span class="stw-l">Umriss</span></button>
+            <button class="tb stw" class:an={arbeit.vorwahl.modus === "fuellung"} aria-haspopup="menu" aria-expanded={menue === "fuellung"} aria-label="Fläche: {vorwahlName('fuellung')}" title="Fläche: {vorwahlName('fuellung')}{arbeit.vorwahl.modus === 'fuellung' ? ' – neue Kreise, Rechtecke und Formen werden Fläche' : ''} · Klick: Stichart wählen" onclick={(ev) => stichartMenue("fuellung", ev)}><Icon d={ART[arbeit.vorwahl.fuellung]?.[1] ?? ""} groesse="l" /><span class="stw-l">Fläche</span><span class="stw-w">{vorwahlKurz("fuellung")}</span></button>
+            <button class="tb stw" class:an={arbeit.vorwahl.modus === "umriss"} aria-haspopup="menu" aria-expanded={menue === "umriss"} aria-label="Umriss: {vorwahlName('umriss')}" title="Umriss: {vorwahlName('umriss')} – für Linien{arbeit.vorwahl.modus === 'umriss' ? ' und neue Kreise, Rechtecke und Formen' : ''} · Klick: Stichart wählen" onclick={(ev) => stichartMenue("umriss", ev)}><Icon d={ART[arbeit.vorwahl.umriss]?.[1] ?? ""} groesse="l" /><span class="stw-l">Umriss</span><span class="stw-w">{vorwahlKurz("umriss")}</span></button>
             <span class="sep"></span>
             {#each FORMEN as f (f.form)}
               <button class="tb" aria-pressed={werkzeug === "zeichnen" && zeichenForm === f.form} aria-label="{f.name} zeichnen" title={formTitel(f)} onclick={() => formZeichnen(f.form)}><Icon d={f.icon} groesse="l" /></button>
@@ -526,9 +569,7 @@
               <button class="tb" aria-label="{ART[a][0]} einfügen" title="{ART[a][0]} einfügen" onclick={() => einfuegen(a)}><Icon d={ART[a][1]} groesse="l" /></button>
             {/each}
             <span class="sep"></span>
-            {#each BESONDERE as a (a)}
-              <button class="tb" aria-label="{ART[a][0]} einfügen" title="{ART[a][0]} einfügen" onclick={() => einfuegen(a)}><Icon d={ART[a][1]} groesse="l" /></button>
-            {/each}
+            <button class="tb" aria-pressed={werkzeug === "zeichnen" && zeichenForm === "knopfloch"} aria-label="Knopfloch setzen" title="Knopfloch – {ZEICHEN_HILFE.knopfloch}" onclick={() => formZeichnen("knopfloch")}><Icon d={ART.knopfloch[1]} groesse="l" /></button>
           </div>
         {/if}
         <div class="stage">
@@ -545,8 +586,12 @@
             </div>
           {:else if werkzeug === "zeichnen"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px; max-width:560px; display:flex; gap:10px; align-items:center">
-              <span style="flex:1"><b style="font-weight:500">{FORMEN.find((f) => f.form === zeichenForm)?.name} zeichnen</b> – {ZEICHEN_HILFE[zeichenForm]} · ⌫ letzter Punkt zurück · Esc beendet</span>
-              <button class="btn btn-primary" style="min-height:28px; padding:2px 10px" onclick={() => vorschau?.zeichnenAbschliessen()}>Fertig</button>
+              {#if zeichenForm === "knopfloch"}
+                <span style="flex:1"><b style="font-weight:500">Knopfloch setzen</b> – {ZEICHEN_HILFE.knopfloch}</span>
+              {:else}
+                <span style="flex:1"><b style="font-weight:500">{FORMEN.find((f) => f.form === zeichenForm)?.name} zeichnen</b>{zeichenZiel(zeichenForm) ? ` · ${zeichenZiel(zeichenForm)}` : ""} – {ZEICHEN_HILFE[zeichenForm]}{zeichenForm === "kreis" || zeichenForm === "rechteck" ? "" : " · ⌫ letzter Punkt zurück"} · Esc beendet</span>
+                <button class="btn btn-primary" style="min-height:28px; padding:2px 10px" onclick={() => vorschau?.zeichnenAbschliessen()}>Fertig</button>
+              {/if}
             </div>
           {:else if werkzeug !== "auswahl"}
             <div class="floater small" style="left:12px; bottom:12px; padding:7px 10px">

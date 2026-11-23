@@ -5,7 +5,7 @@
   import { arbeit } from "./arbeit.svelte";
   import { zahl, zahlFest } from "./zahl";
   import { knotenBild, knotenListe, knotenSetzen, knotenUmschalten, lage } from "./knoten";
-  import { AUTOMATISCH_FERTIG, MINDESTENS, pfadD, type ZeichenPunkt } from "./zeichnen";
+  import { AUTOMATISCH_FERTIG, MINDESTENS, pfadD, ZIEHBAR, type ZeichenPunkt } from "./zeichnen";
   import type { FormWerkzeug } from "./einfuegen";
 
   let {
@@ -27,7 +27,7 @@
     /** Form beim Zeichnen mit der Maus (Werkzeug „zeichnen“) */
     zeichenForm?: FormWerkzeug;
     /** Zeichnen fertig: Referenzpunkte der Form (Strg/⌘ beim letzten Klick = Quadrat) */
-    gezeichnet?: (form: FormWerkzeug, punkte: ZeichenPunkt[], quadrat: boolean) => void;
+    gezeichnet?: (form: FormWerkzeug, punkte: ZeichenPunkt[], quadrat: boolean, gezogen: boolean) => void;
     /** Abspielen: nur die ersten `bis` Stiche zeigen (null = alle) */
     bis?: number | null;
   } = $props();
@@ -127,17 +127,19 @@
   let zeichenPunkte = $state<ZeichenPunkt[]>([]);
   let zeichenZeiger = $state<[number, number] | null>(null);
   let zeichenQuadrat = $state(false);
+  /** Kreis/Rechteck durch Ziehen: Bildschirmlage beim Drücken des ersten Punkts */
+  let zeichenZug = $state<{ x: number; y: number } | null>(null);
   $effect(() => {
     // Werkzeug oder Form gewechselt: angefangene Form verwerfen
     void werkzeug;
     void zeichenForm;
     zeichenPunkte = [];
   });
-  function zeichnenFertig() {
+  function zeichnenFertig(gezogen = false) {
     const pts = zeichenPunkte;
     if (pts.length < MINDESTENS[zeichenForm]) return false;
     zeichenPunkte = [];
-    gezeichnet?.(zeichenForm, pts, zeichenQuadrat);
+    gezeichnet?.(zeichenForm, pts, zeichenQuadrat, gezogen);
     return true;
   }
   /** Tasten beim Zeichnen: Enter beendet, ⌫ nimmt den letzten Punkt zurück, Esc verwirft die angefangene Form */
@@ -166,6 +168,18 @@
     const mitZeiger = z ? [...pts, { p: z, kurve: false }] : pts;
     if (!mitZeiger.length) return null;
     const f = zeichenForm;
+    if (f === "knopfloch" && z) {
+      // Umriss des Knopflochs am Zeiger (Standard 20 mm senkrecht) wie „The current buttonhole displays as an outline“
+      return { d: `M${z[0]} ${-(z[1] - 10)}L${z[0]} ${-(z[1] + 10)}M${z[0] - 2} ${-(z[1] - 10)}L${z[0] + 2} ${-(z[1] - 10)}M${z[0] - 2} ${-(z[1] + 10)}L${z[0] + 2} ${-(z[1] + 10)}`, punkte: [] };
+    }
+    if (f === "kreis" && zeichenZug && pts.length === 1 && z) {
+      // gezogen: Oval im Rechteck zwischen Anfang und Zeiger, Umschalt/Strg = Kreis
+      const [p0, p1] = [pts[0].p, z];
+      let [a, b] = [Math.abs(p1[0] - p0[0]) / 2, Math.abs(p1[1] - p0[1]) / 2];
+      if (zeichenQuadrat) a = b = Math.max(a, b);
+      const c: [number, number] = [p0[0] + Math.sign(p1[0] - p0[0] || 1) * a, p0[1] + Math.sign(p1[1] - p0[1] || 1) * b];
+      return { ellipse: { c, a, b, grad: 0 }, d: "", punkte: pts };
+    }
     if (f === "kreis" && mitZeiger.length >= 2) {
       const [c, r1] = [mitZeiger[0].p, mitZeiger[1].p];
       const a = Math.hypot(r1[0] - c[0], r1[1] - c[1]);
@@ -338,10 +352,11 @@
       ev.preventDefault();
       const q = mm(ev);
       const r = (v: number) => Math.round(v * 100) / 100;
-      zeichenQuadrat = ev.ctrlKey || ev.metaKey;
+      zeichenQuadrat = ev.ctrlKey || ev.metaKey || ev.shiftKey;
       // Kreis, Rechteck und Säule: Kurvenpunkte nur bei Linie, Form und Säule
       const kurve = ev.button === 2 && (zeichenForm === "linie" || zeichenForm === "frei" || zeichenForm === "saeule");
       zeichenPunkte = [...zeichenPunkte, { p: [r(q[0]), r(q[1])], kurve }];
+      zeichenZug = ev.button === 0 && zeichenPunkte.length === 1 && ZIEHBAR.includes(zeichenForm) ? { x: ev.clientX, y: ev.clientY } : null;
       const auto = AUTOMATISCH_FERTIG[zeichenForm];
       if (auto && zeichenPunkte.length >= auto) zeichnenFertig();
       return;
@@ -431,7 +446,7 @@
   function bewegen(ev: PointerEvent) {
     if (werkzeug === "zeichnen" && svg && !ziehen) {
       zeichenZeiger = mm(ev);
-      zeichenQuadrat = ev.ctrlKey || ev.metaKey;
+      zeichenQuadrat = ev.ctrlKey || ev.metaKey || ev.shiftKey;
       return;
     }
     if (knotenZiehen && svg) {
@@ -475,6 +490,19 @@
     }
   }
   function hoch(ev: PointerEvent) {
+    // Kreis/Rechteck gezogen (drücken, ziehen, loslassen): Loslassen setzt den zweiten Punkt und schließt ab
+    if (zeichenZug && werkzeug === "zeichnen") {
+      const z = zeichenZug;
+      zeichenZug = null;
+      if (zeichenPunkte.length === 1 && Math.hypot(ev.clientX - z.x, ev.clientY - z.y) > 6) {
+        const q = mm(ev);
+        const r = (v: number) => Math.round(v * 100) / 100;
+        zeichenQuadrat = ev.ctrlKey || ev.metaKey || ev.shiftKey;
+        zeichenPunkte = [...zeichenPunkte, { p: [r(q[0]), r(q[1])], kurve: false }];
+        zeichnenFertig(true);
+      }
+      return;
+    }
     if (knotenZiehen) {
       const z = knotenZiehen;
       knotenZiehen = null;

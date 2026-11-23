@@ -32,7 +32,7 @@ Ziel (Nutzer, 18.11.2026): eigene Digitalisier-Software nach dem Vorbild BERNINA
 **C) Oberfläche – UX-Analyse 22.11.2026** (`UI_Mockups/UX_ANALYSE_2026-11-22.md`; Go des Nutzers 22.11.: C1–C4, JSON-Reiter und Farbcodes bleiben)
 - [x] C1 Übertragen mit **einem** Knopf (S1–S8): ein Balken, keine Plan-Stufe, keine Häkchen, eine Übertragung inkl. 0x08, Anschluss automatisch
 - [x] C2 Aufgeräumt: „kommt noch“-Einträge und ✦ weg, Kasten „Leeres Design“ weg, X/?-Kästchen weg (Erklärung beim Darüberfahren über den Feldnamen), Ausrichtung als Auswahl, Radius beim Bogen, ms-Anzeige weg, Statuszeile lesbar (Stickzeit, Speicher %), doppelte Menüeinträge weg
-- [ ] C3 Mittel: Applikation als Stichart, Craft-Block auflösen, Kreis/Rechteck ziehen, Stichart-Vorwahl, JSON/Einzelwerte
+- [x] C3 Mittel (22.11.): Applikation als Stichart (K1), Craft-Vorlagen ins Stichart-Menü (K2), Knopfloch per Klick (K3), ein Eintrag „Text“ (K4), Kreis/Rechteck ziehen (U2), Vorwahl Fläche/Umriss klarer (U1); JSON-Reiter bleibt (Nutzer)
 - [ ] C4 Sprache: deutsche Namen statt Englisch und „wie das Original“
 
 **B) Vor Ort an der Maschine** (Einzelheiten in der Tabelle „Vor Ort“ unten)

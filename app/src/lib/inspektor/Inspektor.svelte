@@ -212,7 +212,7 @@
               </select>
             </div>
           </div>
-          {#if (FUELLUNG as readonly string[]).includes(o.art)}
+          {#if (FUELLUNG as readonly string[]).includes(o.art) && o.art !== "applikation"}
             <div class="frow">
               <span class="fl"></span>
               <div class="fc">

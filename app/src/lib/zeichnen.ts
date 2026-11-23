@@ -17,16 +17,19 @@ export function punktAngabe(punkte: ZeichenPunkt[], geschlossen: boolean): unkno
 }
 
 /** Wie viele Punkte eine Form mindestens braucht, bevor Enter sie abschließt */
-export const MINDESTENS: Record<FormWerkzeug, number> = { linie: 2, frei: 3, saeule: 4, kreis: 2, rechteck: 2 };
+export const MINDESTENS: Record<FormWerkzeug, number> = { linie: 2, frei: 3, saeule: 4, kreis: 2, rechteck: 2, knopfloch: 1 };
 /** Formen, die nach so vielen Klicks von selbst fertig sind (Rechteck: 2 Ecken, Oval: Mitte + 2 Radien) */
-export const AUTOMATISCH_FERTIG: Partial<Record<FormWerkzeug, number>> = { rechteck: 2, kreis: 3 };
+export const AUTOMATISCH_FERTIG: Partial<Record<FormWerkzeug, number>> = { rechteck: 2, kreis: 3, knopfloch: 1 };
+/** Formen, die man auch durch Ziehen zeichnet (drücken, ziehen, loslassen; UX-Analyse U2) */
+export const ZIEHBAR: FormWerkzeug[] = ["kreis", "rechteck"];
 
 export const ZEICHEN_HILFE: Record<FormWerkzeug, string> = {
   linie: "Klick = Eckpunkt, Rechtsklick = Kurvenpunkt · Enter beendet",
   frei: "Klick = Eckpunkt, Rechtsklick = Kurvenpunkt · Enter schließt die Form",
   saeule: "Punkte abwechselnd links und rechts der Säule setzen (je Paar eine Stichrichtung) · Enter beendet",
-  kreis: "Mitte klicken, dann Radius · Enter = Kreis, dritter Klick = Oval",
-  rechteck: "Eine Ecke klicken, dann die gegenüberliegende · Strg/⌘ = Quadrat",
+  kreis: "Ziehen = Oval, mit Umschalt = Kreis · oder Mitte und Radius klicken, Enter",
+  rechteck: "Von Ecke zu Ecke ziehen oder beide Ecken klicken · mit Umschalt = Quadrat",
+  knopfloch: "Klicken, wo ein Knopfloch hin soll – mehrmals für mehrere · Esc beendet (wie das Original)",
 };
 
 /**
@@ -38,6 +41,7 @@ export function formAusPunkten(
   punkte: ZeichenPunkt[],
   v: Vorwahl,
   quadrat = false,
+  gezogen = false,
 ): { objekt: ObjektJson; umriss: string | null } | null {
   const farbe = STANDARD_FARBE;
   const fuell = v.fuellung;
@@ -45,7 +49,7 @@ export function formAusPunkten(
   const flaeche = (u: unknown, extra: Record<string, unknown> = {}) =>
     ({
       art: fuell,
-      name: STICHART_NAME[fuell] === "Satin" ? "Satinfläche" : "Fläche",
+      name: fuell === "applikation" ? "Applikation" : STICHART_NAME[fuell] === "Satin" ? "Satinfläche" : "Fläche",
       umriss: u,
       farbe,
       ...(fuell === "muster" ? { muster: "001" } : {}),
@@ -63,6 +67,18 @@ export function formAusPunkten(
       return n < 3 ? null : { objekt: flaeche(punktAngabe(punkte, true)), umriss };
     case "kreis": {
       if (n < 2) return null;
+      if (gezogen) {
+        // gezogen (UX-Analyse U2, eigene Bedienung): Oval im Rechteck zwischen den beiden Punkten, Umschalt = Kreis
+        const [p0, p1] = [punkte[0].p, punkte[1].p];
+        let [a, b] = [Math.abs(p1[0] - p0[0]) / 2, Math.abs(p1[1] - p0[1]) / 2];
+        if (quadrat) a = b = Math.max(a, b);
+        if (a < 0.5 || b < 0.5) return null;
+        const c = punkt([p0[0] + Math.sign(p1[0] - p0[0] || 1) * a, p0[1] + Math.sign(p1[1] - p0[1] || 1) * b]);
+        return {
+          objekt: flaeche(Math.abs(a - b) < 0.01 ? { kreis: { mitte: c, radius: r2(a) } } : { oval: { mitte: c, breite: r2(2 * a), hoehe: r2(2 * b) } }),
+          umriss,
+        };
+      }
       const [c, r1] = [punkte[0].p, punkte[1].p];
       const a = Math.hypot(r1[0] - c[0], r1[1] - c[1]);
       if (a < 0.5) return null;
@@ -97,6 +113,12 @@ export function formAusPunkten(
         objekt: flaeche({ rechteck: { mitte: punkt([p0[0] + dx / 2, p0[1] + dy / 2]), breite: r2(Math.abs(dx)), hoehe: r2(Math.abs(dy)) } }),
         umriss,
       };
+    }
+    case "knopfloch": {
+      if (n < 1) return null;
+      const o = neuesObjekt("knopfloch") as ObjektJson & { position?: [number, number] };
+      o.position = punkt(punkte[0].p);
+      return { objekt: o, umriss: null };
     }
     case "saeule": {
       if (n < 4) return null;

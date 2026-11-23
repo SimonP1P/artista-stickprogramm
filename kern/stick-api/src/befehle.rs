@@ -1446,8 +1446,11 @@ pub fn design_einfuegen(_: &Kontext, e: EinfuegenEingabe) -> Result<EinfuegenErg
 /// Sticharten für Linien („Outline“ des Originals): Geometrie in `punkte`.
 pub const UMRISS_ARTEN: [&str; 7] =
     ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich"];
-/// Sticharten für geschlossene Formen („Fill“ des Originals): Geometrie in `umriss` (+ `loecher`).
-pub const FUELL_ARTEN: [&str; 6] = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich"];
+/// Sticharten für geschlossene Formen („Fill“ des Originals): Geometrie in `umriss` (+ `loecher`). Applikation gehört
+/// dazu: im Original zeichnet man mit „Auto Appliqué“ die Grenze wie eine geschlossene Form (Handbuch Kap. 27); hier
+/// kann man sie außerdem aus einer vorhandenen Fläche machen (Entscheidung des Nutzers 22.11.2026, UX-Analyse K1).
+pub const FUELL_ARTEN: [&str; 7] =
+    ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich", "applikation"];
 
 /// Stichart eines Objekts wechseln.
 #[derive(Debug, Deserialize, JsonSchema)]
@@ -1457,7 +1460,7 @@ pub struct StichartEingabe {
     /// Nummer des Objekts (ab 0)
     pub objekt: usize,
     /// neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,
-    /// satinflaeche, muster, motivfuellung, stippling, kreuzstich
+    /// satinflaeche, muster, motivfuellung, stippling, kreuzstich, applikation
     pub art: String,
 }
 
@@ -1474,7 +1477,7 @@ pub struct StichartErgebnis {
 /// stage“): die Form bleibt, gemeinsame Felder (Farbe, Name, Garn, Transformation, Gruppe, Werte je Objekt …) bleiben,
 /// passende Felder (Löcher, Winkel, Aussparen, Versatz, Breite, geschlossen) gehen mit, der Rest nimmt die Standardwerte.
 /// Linie → Füllung nur bei geschlossener Linie (offene Linien lassen sich im Original nicht füllen). Füllung → Linie:
-/// der Umriss wird eine geschlossene Linie, Löcher entfallen (Hinweis). Satinsäule, Text, Applikation, Knopfloch: Fehler.
+/// der Umriss wird eine geschlossene Linie, Löcher entfallen (Hinweis). Satinsäule, Text, Knopfloch: Fehler.
 pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgebnis, Fehler> {
     use stick_kern::format::{Gemeinsam, PunktAngabe};
     let alt = e
@@ -1549,7 +1552,7 @@ pub fn stichart_aendern(_: &Kontext, e: StichartEingabe) -> Result<StichartErgeb
         "tatami" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "muster" => &["loecher", "winkel", "aussparen", "ueberlappung"],
         "satinflaeche" => &["loecher"],
-        "motivfuellung" | "stippling" | "kreuzstich" => &["loecher"],
+        "motivfuellung" | "stippling" | "kreuzstich" | "applikation" => &["loecher"],
         "satinlinie" => &["breite", "versatz"],
         "blanket" => &["breite", "versatz"],
         "lauf" | "dreifach" => &["laenge"],

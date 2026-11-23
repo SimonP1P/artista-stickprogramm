@@ -8444,7 +8444,7 @@
       "description": "Stichart eines Objekts wechseln.",
       "properties": {
         "art": {
-          "description": "neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,\nsatinflaeche, muster, motivfuellung, stippling, kreuzstich",
+          "description": "neue Objektart: Umriss lauf, dreifach, satinlinie, blanket, motivlinie, rueckstich, stielstich · Füllung tatami,\nsatinflaeche, muster, motivfuellung, stippling, kreuzstich, applikation",
           "type": "string"
         },
         "design": {

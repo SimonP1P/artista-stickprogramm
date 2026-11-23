@@ -20,6 +20,7 @@ import {
   type UmrandungJson,
 } from "$kern/kern";
 import { listen } from "./listen.svelte";
+import type { Vorwahl } from "./einfuegen";
 import type { RahmenWahl } from "./dialoge/RahmenDialog.svelte";
 
 export type Modus = "einfach" | "experte";
@@ -109,7 +110,7 @@ export function objektName(o: ObjektJson | undefined, i: number): string {
 /** Objektarten mit Fläche: dort wirkt `umrandung` (Kern: `aussparen::bedeckt`); Linien haben keine */
 export const MIT_FLAECHE = ["tatami", "satinflaeche", "muster", "satin", "satinlinie", "blanket", "text", "ttf", "monogramm", "applikation", "stippling", "kreuzstich"];
 
-export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich", "tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich"];
+export const WECHSELBAR = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich", "tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich", "applikation"];
 /** Standardname je Stichart (neue Objekte); ein Objekt mit Standardnamen bekommt beim Wechsel den neuen */
 export const STANDARD_NAME: Record<string, string> = {
   lauf: "Laufstich",
@@ -125,6 +126,7 @@ export const STANDARD_NAME: Record<string, string> = {
   stielstich: "Stielstich",
   stippling: "Stippling",
   kreuzstich: "Kreuzstich",
+  applikation: "Applikation",
 };
 const STANDARD_NAMEN = Object.values(STANDARD_NAME);
 
@@ -220,10 +222,11 @@ class Arbeit {
   rahmenListe = $state.raw<RahmenInfo[]>([]);
 
   /** Vorwahl der Stichart für neue Formen (wie „Outline/Fill“ + Stichart-Liste des Originals) */
-  vorwahl = $state<{ modus: "fuellung" | "umriss"; fuellung: string; umriss: string }>({
+  vorwahl = $state<Vorwahl>({
     modus: "fuellung",
     fuellung: "tatami",
     umriss: "lauf",
+    vorlage: {},
   });
 
   /** Meldung oben (z. B. „gespeichert“, Fehler beim Öffnen) */
@@ -467,6 +470,8 @@ class Arbeit {
       this.buchstabe = { objekt: start.auswahl, nr: start.buchstabe };
     await this.berechnen();
     if (start.dialog) this.dialog = start.dialog;
+    // fertig geladen (das Bildschirmfoto-Werkzeug wartet darauf: `html[data-bereit]`)
+    globalThis.document?.documentElement.setAttribute("data-bereit", "");
   }
 
   zeige(text: string, art: "ok" | "err" | "info" = "info") {

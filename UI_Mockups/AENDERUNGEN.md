@@ -15,6 +15,25 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Einfügen und Zeichnen (UX-Analyse C3: K1–K4, U1, U2), Commit (folgt)
+- **Kern:** `stichart_aendern` kennt **`applikation`** als Füllung (Umriss und Löcher bleiben, auch zurück zu
+  Tatami usw.). Doku in `SCHNITTSTELLE.md`/`kern.ts` neu erzeugt.
+- **Applikation (K1):** Einfügen → „Applikation zeichnen“ (Stichart der Fläche wird Applikation, dann die freie Form
+  zeichnen); im Fläche-Menü und im Inspektor ist „Applikation“ eine Stichart. Der Knopf in der Leiste, der einen
+  festen Kreis setzte, ist weg.
+- **Craft Stitches (K2):** der Block im Einfügen-Menü ist weg. Blackwork-/Candlewicking-Rand stehen im Menü
+  **Umriss**, Blackwork-/Candlewicking-Füllung und Lacework im Menü **Fläche** unter „Handstich-Vorlagen“
+  (`craft_vorlagen`). Wahl = Vorwahl für neue Formen und Wechsel der gewählten Objekte; die Felder der Vorlage kommen
+  nach dem Stichart-Wechsel aufs Objekt. Blackwork Run bleibt unter Anordnen.
+- **Knopfloch (K3):** Werkzeug wie „Add Buttonhole“: klicken, wo es hin soll (mehrmals), Esc beendet; Umriss am Zeiger.
+- **Text (K4):** ein Eintrag „Text“; danach öffnet sich „Schrift wählen“ (Stick-Alphabet oder Computer-Schrift).
+- **Kreis/Rechteck ziehen (U2):** drücken, ziehen, loslassen; Kreis = Oval im Rechteck, Umschalt = Kreis/Quadrat.
+  Klicken wie bisher geht weiter.
+- **Vorwahl klarer (U1):** die Knöpfe „Fläche“/„Umriss“ zeigen darunter die Stichart (z. B. „Step“, „Lauf“) und
+  öffnen nur das Menü – erst die Wahl einer Stichart legt fest, was neue Formen werden. Beim Zeichnen steht im
+  Hinweis, was entsteht („wird Fläche: Step (Tatami)“). `arbeit.vorwahl` hat zusätzlich `vorlage`.
+- **Bildschirmfoto-Werkzeug:** der erste Schritt von `--klicks` wartet, bis die App geladen hat (`html[data-bereit]`).
+
 ## 22.11.2026 – Oberfläche aufgeräumt (UX-Analyse C2; nur Oberfläche, Kern unverändert)
 - **Erklärungen** stehen nicht mehr als „?“, „X“ oder graue Zeile unter dem Feld. Sie erscheinen beim
   **Darüberfahren über den Feldnamen**, der gepunktet unterstrichen ist (`.fl[title]`, `app.css`). Das Kennzeichen „X“

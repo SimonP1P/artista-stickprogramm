@@ -32,7 +32,7 @@ export function unterlageAusHaken(h: { mittellauf: boolean; zickzack: boolean; a
  * davon wie „Outline/Fill“ + Stichart-Liste (S. 63/64). Neue Formen bekommen die vorgewählte Stichart; gewechselt wird
  * über den Kern (`stichart_aendern`).
  */
-export type FormWerkzeug = "linie" | "kreis" | "rechteck" | "frei" | "saeule";
+export type FormWerkzeug = "linie" | "kreis" | "rechteck" | "frei" | "saeule" | "knopfloch";
 export const FORMEN: { form: FormWerkzeug; name: string; icon: string; hilfe: string }[] = [
   { form: "linie", name: "Linie", icon: IC.formLinie, hilfe: "Offene Linie – bekommt die Umriss-Stichart" },
   { form: "kreis", name: "Kreis / Oval", icon: IC.formKreis, hilfe: "Kreis – Füllung oder Umriss je nach Vorwahl" },
@@ -40,13 +40,12 @@ export const FORMEN: { form: FormWerkzeug; name: string; icon: string; hilfe: st
   { form: "frei", name: "Freie Form", icon: IC.formFrei, hilfe: "Geschlossene Form – Punkte danach mit dem Knoten-Werkzeug ziehen" },
   { form: "saeule", name: "Säule", icon: IC.formSaeule, hilfe: "Satinsäule mit wechselnder Breite (Block Digitizing)" },
 ];
-/** Schrift und besondere Objekte (eigene Werkzeuge wie im Original) */
-export const SCHRIFT = ["text", "ttf", "monogramm"] as const;
-export const BESONDERE = ["applikation", "knopfloch"] as const;
+/** Schrift (ein Eintrag „Text“: Stick-Alphabet oder Computer-Schrift wählt man im Dialog „Schrift wählen“) */
+export const SCHRIFT = ["text", "monogramm"] as const;
 
 /** Sticharten für Linien („Outline“) und Flächen („Fill“) – wie `UMRISS_ARTEN`/`FUELL_ARTEN` im Kern */
 export const UMRISS = ["lauf", "dreifach", "satinlinie", "blanket", "motivlinie", "rueckstich", "stielstich"] as const;
-export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich"] as const;
+export const FUELLUNG = ["tatami", "satinflaeche", "muster", "motivfuellung", "stippling", "kreuzstich", "applikation"] as const;
 export const STICHART_NAME: Record<string, string> = {
   lauf: "Laufstich",
   dreifach: "Dreifachstich",
@@ -61,6 +60,7 @@ export const STICHART_NAME: Record<string, string> = {
   stielstich: "Stielstich",
   stippling: "Stippling",
   kreuzstich: "Kreuzstich",
+  applikation: "Applikation",
 };
 export const STICHART_HILFE: Record<string, string> = {
   lauf: "eine Stichreihe – dünne Linien",
@@ -76,8 +76,10 @@ export const STICHART_HILFE: Record<string, string> = {
   stielstich: "Kordel aus schrägen Stichen – Stiele, Ranken",
   stippling: "mäandernde Laufstichlinie über die Fläche",
   kreuzstich: "Kreuze auf einem Raster wie von Hand gestickt",
+  applikation: "Stoff aufnähen: Platzierung, Halt zum Auflegen, Heften, Abdeckstich",
 };
-export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string };
+/** Vorwahl für neue Formen; `vorlage` = Handstich-Vorlage (Craft, `craft_vorlagen`) zur Stichart */
+export type Vorwahl = { modus: "fuellung" | "umriss"; fuellung: string; umriss: string; vorlage: { fuellung?: string; umriss?: string } };
 
 /** Neues Objekt mit Startwerten; `schrift` = erste Computer-Schrift (für `ttf`) */
 export function neuesObjekt(art: string, schrift?: string): ObjektJson | null {

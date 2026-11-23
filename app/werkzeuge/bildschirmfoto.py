@@ -13,6 +13,8 @@ Aufruf (aus app/):
   '[{"wo": "button[aria-label=\"Alle Elemente\"]", "nach": 2500}, {"wo": "ol[aria-label=Elemente] button", "text": "Mond"}]'
 Je Schritt: CSS-Selektor `wo`, optional `text` (Element, dessen Text ihn enthält), `nach` = Wartezeit in ms vor dem
 Klick (nur erster Schritt, Standard 1500); sonst wartet ein Schritt, bis Svelte gezeichnet hat und es das Element gibt.
+Der erste Schritt wartet außerdem, bis die App fertig geladen hat (`html[data-bereit]`) – sonst überschreibt das
+Laden des Designs, was der Schritt eingefügt hat.
 `ziehen: [dx, dy]` zieht statt zu klicken (Pixel, von der Mitte des Elements); `bei: [dx, dy]` klickt an diese Stelle
 (mit `knopf`: 0 links, 2 rechts); `taste: "Enter"` drückt eine Taste (ohne `wo`).
 Klicks und Fehler gibt das Werkzeug aus der Konsole der Seite aus.
@@ -78,7 +80,7 @@ def main():
     a.add_argument("--schritt", type=int)
     a.add_argument("--reiter", choices=["objekt", "design", "einzelwerte", "json"])
     a.add_argument("--werkzeug", choices=["auswahl", "einstich", "ausstich", "knoten", "zeichnen"])
-    a.add_argument("--zeichenform", choices=["linie", "frei", "saeule", "kreis", "rechteck"], help="Form beim Werkzeug zeichnen")
+    a.add_argument("--zeichenform", choices=["linie", "frei", "saeule", "kreis", "rechteck", "knopfloch"], help="Form beim Werkzeug zeichnen")
     a.add_argument("--maschine", choices=["laeuft", "fertig", "fehler", "liste"],
                    help="Übertragen mit der Simulation (läuft, fertig, Fehler) bzw. Designs aus der Maschine")
     a.add_argument("--dialog", help='JSON, z. B. {"art": "alphabet", "objekt": 0}')
@@ -251,7 +253,8 @@ const KLICKS = {json.dumps(json.loads(o.klicks) if o.klicks else [])};
 (function schritt(k) {{
   if (k >= KLICKS.length) return;
   const s = KLICKS[k];
-  const finden = () => s.taste && !s.wo ? document.body : [...document.querySelectorAll(s.wo)].find((e) => !s.text || e.textContent.includes(s.text));
+  const finden = () => k === 0 && !document.documentElement.hasAttribute("data-bereit") ? undefined
+    : s.taste && !s.wo ? document.body : [...document.querySelectorAll(s.wo)].find((e) => !s.text || e.textContent.includes(s.text));
   const klicken = (el) => {{
     if (s.ziehen) {{
       // Ziehen: von der Mitte des Elements um [dx, dy] Pixel (Bewegung und Loslassen gehen an die Zeichenfläche)
