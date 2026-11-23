@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 22.11.2026 – Übertragen: Fenster mit Balken, dann „Start“ (Rückmeldung Nutzer), Commit (folgt)
+## 22.11.2026 – Übertragen: Fenster mit Balken, dann „Start“ (Rückmeldung Nutzer), Commit 4e89485
 - **Fenster in beiden Modi** (einfacher Modus wieder mit Fenster, nicht im Schritt): Klick → Fenster, Balken läuft sofort.
 - Danach **„Übertragen.“ + Garnfolge + Knopf „Start“** (ohne weitere Bestätigung). Erst „Start“ schickt Befehl 0x08 –
   dann übernimmt die Maschine das Design und der Rahmen fährt. „Abbrechen“ beim Warten = nicht sticken.
