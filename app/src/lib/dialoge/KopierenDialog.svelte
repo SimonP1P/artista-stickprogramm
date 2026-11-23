@@ -151,7 +151,7 @@
   ];
 </script>
 
-<Dialog titel={art === "kranz" ? "Kranz (Wreath)" : "Spiegeln und kopieren (Mirror-Merge)"} breite={760} {schliessen}>
+<Dialog titel={art === "kranz" ? "Kranz" : "Spiegeln und kopieren"} breite={760} {schliessen}>
   <div class="kp">
     <div class="kp-bild">
       <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
@@ -193,10 +193,10 @@
         </div>
       {:else}
         <div class="frow" style="padding:0">
-          <label class="fl" for="kpunkte" title="Original + Kopien rundherum (Wreath Points)">Punkte</label>
+          <label class="fl" for="kpunkte" title="Anzahl rundherum – das Objekt und seine Kopien">Punkte</label>
           <div class="fc"><input id="kpunkte" class="input sm num" type="number" min="2" max="36" bind:value={punkte} style="width:80px" /></div>
         </div>
-        <label class="frow" style="padding:0" title="Jede zweite Kopie gespiegelt – nur bei gerader Zahl (wie im Original)">
+        <label class="frow" style="padding:0" title="Jede zweite Kopie gespiegelt – nur bei gerader Zahl">
           <span class="fl">Kaleidoskop</span>
           <span class="fc"><input type="checkbox" bind:checked={kaleidoskop} disabled={!kaleidoGeht} />{#if !kaleidoGeht}<span class="small mut" style="margin-left:6px">nur gerade Zahl</span>{/if}</span>
         </label>
@@ -215,7 +215,7 @@
       {#if ergebnis?.ueberlappt || zusammen}
         <label class="note small" style="display:flex; gap:8px; align-items:flex-start">
           <input type="checkbox" bind:checked={zusammen} />
-          <span><b>Überlappende Objekte zusammenführen?</b> (wie das Original fragt) – Step-, Muster-, Stippling- und Satinflächen, die sich mit ihrer Kopie überlappen, werden ein Objekt.</span>
+          <span><b>Überlappende Objekte zusammenführen?</b> – Step-, Muster-, Stippling- und Satinflächen, die sich mit ihrer Kopie überlappen, werden ein Objekt.</span>
         </label>
       {/if}
       {#if fehler}<p class="small" style="color:var(--err); margin:0">{fehler}</p>{/if}

@@ -50,22 +50,20 @@
 {#if fx?.verlauf}
   {@const v = fx.verlauf}
   <div class="frow">
-    <label class="fl" for="fxvp">Profil</label>
+    <label class="fl" for="fxvp" title="Anfang = Seite, an der die Reihen beginnen (quer zur Stichrichtung) bzw. Anfang der Satinsäule">Profil</label>
     <div class="fc">
       <select id="fxvp" class="input sm" value={v.profil ?? "linear"} onchange={(ev) => aendern((e) => (e.verlauf!.profil = (ev.currentTarget as HTMLSelectElement).value as never))}>
         {#each PROFILE as [w, t] (w)}<option value={w}>{t}</option>{/each}
       </select>
     </div>
-    <div class="fhelp">Anfang = Seite, an der die Reihen beginnen (quer zur Stichrichtung) bzw. Anfang der Satinsäule</div>
   </div>
   <div class="frow">
-    <label class="fl" for="fxvmin">Abstand dicht</label>
+    <label class="fl" for="fxvmin" title="Abstand an der dichtesten Stelle, 0,1 … 10 mm („Minimum Spacing“); Standard 0,4 mm">Abstand dicht</label>
     <div class="fc"><input id="fxvmin" class="input sm num" style="width:90px" placeholder="0,4" value={v.min != null ? zahl(v.min) : ""} onchange={(ev) => zahlFeld(ev, 0.1, 10, (x) => aendern((e) => (x == null ? delete e.verlauf!.min : (e.verlauf!.min = x))))} /><span class="unit">mm</span></div>
   </div>
   <div class="frow">
-    <label class="fl" for="fxvmax">Abstand offen</label>
+    <label class="fl" for="fxvmax" title="Abstand an der offensten Stelle, 0,1 … 10 mm („Maximum Spacing“); Standard 2,0 mm">Abstand offen</label>
     <div class="fc"><input id="fxvmax" class="input sm num" style="width:90px" placeholder="2,0" value={v.max != null ? zahl(v.max) : ""} onchange={(ev) => zahlFeld(ev, 0.1, 10, (x) => aendern((e) => (x == null ? delete e.verlauf!.max : (e.verlauf!.max = x))))} /><span class="unit">mm</span></div>
-    <div class="fhelp">0,1 … 10 mm („Maximum Spacing“); Standard 0,4 / 2,0 mm wie das Original</div>
   </div>
 {/if}
 
@@ -77,7 +75,7 @@
 {#if fx?.rand}
   {@const r = fx.rand}
   <div class="frow">
-    <span class="fl">Seite</span>
+    <span class="fl" title="in Stichrichtung gesehen; bei Satin links = Seite A">Seite</span>
     <div class="fc">
       <div class="seg seg-sm" role="radiogroup" aria-label="Seite des ausgefransten Rands" style="display:flex; width:100%">
         {#each [["links", "Links"], ["beide", "Beide"], ["rechts", "Rechts"]] as [w, t] (w)}
@@ -85,20 +83,17 @@
         {/each}
       </div>
     </div>
-    <div class="fhelp">in Stichrichtung gesehen; bei Satin links = Seite A</div>
   </div>
   <div class="frow">
-    <label class="fl" for="fxrsp">Spanne</label>
+    <label class="fl" for="fxrsp" title="So weit streuen die Enden nach innen und außen („Span“)">Spanne</label>
     <div class="fc"><input id="fxrsp" class="input sm num" style="width:90px" placeholder="1,5" value={r.spanne != null ? zahl(r.spanne) : ""} onchange={(ev) => zahlFeld(ev, 0.1, 10, (x) => aendern((e) => (x == null ? delete e.rand!.spanne : (e.rand!.spanne = x))))} /><span class="unit">mm</span></div>
-    <div class="fhelp">so weit streuen die Enden nach innen und außen („Span“)</div>
   </div>
   <div class="frow">
-    <label class="fl" for="fxrg">Glätte</label>
+    <label class="fl" for="fxrg" title="Links rau (jede Reihe frei), rechts glatt („Texture“)">Glätte</label>
     <div class="fc">
       <input id="fxrg" type="range" min="0" max="100" step="5" value={Math.round((r.glaette ?? 0.1) * 100)} oninput={(ev) => aendern((e) => (e.rand!.glaette = Number((ev.currentTarget as HTMLInputElement).value) / 100))} style="flex:1" />
       <span class="unit" style="width:40px; text-align:right">{Math.round((r.glaette ?? 0.1) * 100)} %</span>
     </div>
-    <div class="fhelp">links rau (jede Reihe frei), rechts glatt („Texture“)</div>
   </div>
 {/if}
 

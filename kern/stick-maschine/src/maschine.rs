@@ -316,7 +316,7 @@ impl<L: Leitung> Maschine<L> {
         let icon_len = ICON_KOPF + ic[2] as usize * ic[3] as usize;
         if len1 <= 2 || len1 + len2 + icon_len as u64 + 0x142 >= self.verwaltung.grenze() {
             return Err(format!(
-                "Längen nicht plausibel (Stiche {len1}, Anhang {len2}; Original: Fehler 19)"
+                "Längen nicht plausibel (Stiche {len1}, Anhang {len2})"
             ));
         }
         let daten = self.v.lesen_gross(
@@ -385,8 +385,9 @@ impl<L: Leitung> Maschine<L> {
         let groesse = (p.stiche.len() + p.anhang.len() + 2) as u64;
         if groesse >= self.verwaltung.grenze() {
             return Err(format!(
-                "Design zu groß: {groesse} Byte ≥ {} (Original: Fehler 31 „Design is too big“)",
-                self.verwaltung.grenze()
+                "Design zu groß für die Maschine: {} KB, höchstens {} KB",
+                groesse.div_ceil(1024),
+                self.verwaltung.grenze() / 1024
             ));
         }
         let mut plan = SendePlan {
@@ -426,10 +427,10 @@ impl<L: Leitung> Maschine<L> {
             match s.farbtabelle() {
                 None => plan
                     .hinweise
-                    .push("Design ohne Garnfarben – keine Garnfarbtabelle (wie das Original)".into()),
+                    .push("Design ohne Garnfarben – die Maschine zeigt keine Garnfarben".into()),
                 Some(t) => match fb.grenzen.pruefen(s.farben.len(), &t) {
                     Err(e) => plan.hinweise.push(format!(
-                        "Garnfarbtabelle wird nicht geschrieben (wie das Original): {e}"
+                        "Garnfarben werden nicht übertragen: {e}"
                     )),
                     Ok(()) => {
                         plan.farben_schreiben = true;

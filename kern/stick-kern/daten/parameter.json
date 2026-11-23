@@ -411,8 +411,8 @@
   {
    "id": "satin.auto_spacing",
    "gruppe": "Satin",
-   "name": "Auto Spacing",
-   "wirkung": "Stichabstand automatisch nach der Säulenbreite (schmal = lockerer)",
+   "name": "Abstand automatisch",
+   "wirkung": "Stichabstand automatisch nach der Säulenbreite (schmal = lockerer; „Auto Spacing“)",
    "ebene": "beide",
    "gilt_fuer": [
     "lauf",
@@ -471,7 +471,7 @@
   {
    "id": "satin.faktor",
    "gruppe": "Satin",
-   "name": "Auto-Spacing-Faktor",
+   "name": "Faktor für Abstand automatisch",
    "wirkung": "Faktor auf die Tabelle (Stoff, Schrift 0,9)",
    "ebene": "beide",
    "gilt_fuer": [
@@ -1565,7 +1565,7 @@
   {
    "id": "unterlage.auto_art",
    "gruppe": "Unterlage",
-   "name": "Art der Auto-Unterlage",
+   "name": "Art der automatischen Unterlage",
    "wirkung": "vorgewählte Unterlage",
    "ebene": "beide",
    "gilt_fuer": [
@@ -1719,8 +1719,8 @@
   {
    "id": "unterlage.edge_walk_laenge",
    "gruppe": "Unterlage",
-   "name": "Edge Walk: Stichlänge",
-   "wirkung": "Lauf am Rand der Säule",
+   "name": "Randlauf: Stichlänge",
+   "wirkung": "Lauf am Rand der Säule („Edge Walk“)",
    "ebene": "beide",
    "gilt_fuer": [
     "lauf",
@@ -2479,7 +2479,7 @@
   {
    "id": "verbinder.anfang_nach_trim_farbwechsel",
    "gruppe": "Verbinder und Vernähen",
-   "name": "Vernähen nach Trim/Farbwechsel",
+   "name": "Vernähen nach Fadenschnitt/Farbwechsel",
    "wirkung": "Tie In If After Trim",
    "ebene": "beide",
    "gilt_fuer": [
@@ -2631,7 +2631,7 @@
   {
    "id": "verbinder.ende_vor_trim_farbwechsel",
    "gruppe": "Verbinder und Vernähen",
-   "name": "Vernähen vor Trim/Farbwechsel",
+   "name": "Vernähen vor Fadenschnitt/Farbwechsel",
    "wirkung": "Tie Off If Before Trim",
    "ebene": "beide",
    "gilt_fuer": [
@@ -2783,8 +2783,8 @@
   {
    "id": "verbinder.trim_ab",
    "gruppe": "Verbinder und Vernähen",
-   "name": "Trim ab",
-   "wirkung": "ab dieser Verbinderlänge gilt ein Sprung als Trim (die 185 schneidet nicht)",
+   "name": "Fadenschnitt ab",
+   "wirkung": "ab dieser Verbinderlänge gilt ein Sprung als Fadenschnitt („Trim“; die 185 schneidet nicht)",
    "ebene": "beide",
    "gilt_fuer": [
     "lauf",
@@ -3079,9 +3079,9 @@
   },
   {
    "id": "objekt.auto_jump",
-   "gruppe": "Auto Jump und Maschine",
-   "name": "Auto Jump",
-   "wirkung": "lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus)",
+   "gruppe": "Lange Stiche und Maschine",
+   "name": "Lange Stiche als Sprünge",
+   "wirkung": "lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus; „Auto Jump“)",
    "ebene": "objekt",
    "gilt_fuer": [
     "lauf",
@@ -3117,8 +3117,8 @@
   },
   {
    "id": "objekt.auto_jump.max",
-   "gruppe": "Auto Jump und Maschine",
-   "name": "Auto Jump: Höchststich",
+   "gruppe": "Lange Stiche und Maschine",
+   "name": "Lange Stiche: Höchststich",
    "wirkung": "darüber Sprünge; klein (z. B. 6 mm) = Satin mit mehr Loft",
    "ebene": "objekt",
    "gilt_fuer": [
@@ -3158,8 +3158,8 @@
   },
   {
    "id": "objekt.auto_jump.sprung",
-   "gruppe": "Auto Jump und Maschine",
-   "name": "Auto Jump: Sprunglänge",
+   "gruppe": "Lange Stiche und Maschine",
+   "name": "Lange Stiche: Sprunglänge",
    "wirkung": "Länge der Teilsprünge",
    "ebene": "objekt",
    "gilt_fuer": [
@@ -3199,7 +3199,7 @@
   },
   {
    "id": "maschine.min_stich",
-   "gruppe": "Auto Jump und Maschine",
+   "gruppe": "Lange Stiche und Maschine",
    "name": "Kürzester Stich",
    "wirkung": "kürzere Stiche werden entfernt",
    "ebene": "design",
@@ -3216,7 +3216,7 @@
   },
   {
    "id": "maschine.max_stich",
-   "gruppe": "Auto Jump und Maschine",
+   "gruppe": "Lange Stiche und Maschine",
    "name": "Längster Stich",
    "wirkung": "Maschinengrenze artista 185",
    "ebene": "design",
@@ -3234,8 +3234,8 @@
   {
    "id": "objekt.doppellauf",
    "gruppe": "Bearbeiten",
-   "name": "Verstärken (Double Run)",
-   "wirkung": "gleiche Stiche rückwärts noch einmal",
+   "name": "Verstärken (zweimal gestickt)",
+   "wirkung": "gleiche Stiche rückwärts noch einmal („Double Run“)",
    "ebene": "objekt",
    "gilt_fuer": [
     "lauf",
@@ -3548,7 +3548,7 @@
   {
    "id": "design.kuerzeste_verbindung",
    "gruppe": "Reihenfolge",
-   "name": "Kürzeste Verbindung (Closest Join)",
+   "name": "Kürzeste Verbindung",
    "wirkung": "jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (Linien umgedreht, geschlossene Formen gedreht; Schrift ausgenommen)",
    "ebene": "design",
    "gilt_fuer": [],
@@ -3641,7 +3641,7 @@
   {
    "id": "objekt.kuerzeste",
    "gruppe": "Reihenfolge",
-   "name": "Closest Join je Objekt",
+   "name": "Kürzeste Verbindung je Objekt",
    "wirkung": "wie „Kürzeste Verbindung“, nur für dieses Objekt; setzen Bild umwandeln, Zauberstab und SVG einlesen beim Einfügen",
    "ebene": "objekt",
    "gilt_fuer": [
@@ -6186,7 +6186,7 @@
   {
    "id": "schrift.faktor",
    "gruppe": "Schrift",
-   "name": "Schrift: Auto-Spacing-Faktor",
+   "name": "Schrift: Faktor für Abstand automatisch",
    "wirkung": "Schrift 10 % dichter",
    "ebene": "design",
    "gilt_fuer": [],

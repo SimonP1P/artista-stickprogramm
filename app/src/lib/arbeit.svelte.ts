@@ -176,7 +176,7 @@ const VERLAUF_MAX = 200;
 
 export type VerbinderArt = "sprung" | "lauf" | "verdeckt";
 export const VERBINDER_NAME: Record<VerbinderArt, string> = {
-  sprung: "Sprung (wie das Original)",
+  sprung: "Sprung",
   verdeckt: "Laufstich, wo verdeckt",
   lauf: "Laufstich überall",
 };

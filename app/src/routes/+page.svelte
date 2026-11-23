@@ -40,7 +40,7 @@
     type FormWerkzeug,
   } from "$lib/einfuegen";
   import { WECHSELBAR } from "$lib/arbeit.svelte";
-  import { listen } from "$lib/listen.svelte";
+  import { listen, rahmenName, stoffName } from "$lib/listen.svelte";
   import { knotenBild } from "$lib/knoten";
   import { formAusPunkten, ZEICHEN_HILFE, type ZeichenPunkt } from "$lib/zeichnen";
   import type { AusrichtArt, ReihenfolgeBefehl } from "$kern/kern";
@@ -92,7 +92,7 @@
   }
 
   const kopfInfo = $derived(
-    [arbeit.design.rahmen?.replace(/^artista /, ""), arbeit.design.stoff].filter(Boolean).join(" · ") +
+    [rahmenName(arbeit.design.rahmen).replace(/^artista /, ""), stoffName(arbeit.design.stoff)].filter(Boolean).join(" · ") +
       (arbeit.pfad ? ` · ${dateiname(arbeit.pfad)}${arbeit.geaendert ? " *" : ""}` : arbeit.geaendert ? " · nicht gespeichert" : ""),
   );
 
@@ -248,7 +248,7 @@
 
   /** Menü Anordnen: Befehle auf die Auswahl (`reihenfolge_aendern`) */
   const auswahlSortiert = $derived([...arbeit.auswahl].sort((a, b) => a - b));
-  const anordnenMenue = $derived.by((): { l: string; kbd?: string; go?: () => void }[] => {
+  const anordnenMenue = $derived.by((): { l: string; kbd?: string; t?: string; go?: () => void }[] => {
     const a = arbeit.auswahl;
     const n = arbeit.objekte.length;
     const erst = auswahlSortiert[0] ?? -1;
@@ -267,8 +267,8 @@
       { l: "Gruppieren", kbd: "Strg+G", go: a.length > 1 && !arbeit.auswahlGruppe ? () => arbeit.gruppieren() : undefined },
       { l: "Gruppe auflösen", kbd: "Strg+Umschalt+G", go: a.some((i) => arbeit.gruppeVon(i)) ? () => arbeit.gruppeAufloesen() : undefined },
       { l: "Als Motiv speichern …", go: a.length ? () => (arbeit.dialog = { art: "motiv_speichern" }) : undefined },
-      { l: "Blackwork Run (Linien in einem Zug)", go: arbeit.blackworkFaehig.length > 1 ? () => arbeit.blackworkLauf() : undefined },
-      { l: "Teil-Abdeckung (Partial Appliqué)", go: arbeit.auswahlApplikationen.length > 1 ? () => arbeit.teilAbdeckung() : undefined },
+      { l: "Linien in einem Zug verbinden", t: "Gewählte Linien werden ein Objekt, das ohne Sprünge in einem Zug gestickt wird (Blackwork Run)", go: arbeit.blackworkFaehig.length > 1 ? () => arbeit.blackworkLauf() : undefined },
+      { l: "Teil-Abdeckung (Applikationen)", t: "Kein Abdeckstich, wo eine spätere Applikation den Rand überdeckt (Partial Appliqué)", go: arbeit.auswahlApplikationen.length > 1 ? () => arbeit.teilAbdeckung() : undefined },
     ];
   });
 
@@ -349,7 +349,6 @@
     <div class="simband" role="status" style="flex:none; display:flex; align-items:center; gap:10px; padding:4px 14px; font-size:12.5px; font-weight:500">
       <Icon d={IC.monitor} />
       <span><b style="letter-spacing:.08em">SIMULATION</b> – keine echte Maschine. Es wird nichts gesendet und nichts gestickt.</span>
-      <span style="margin-left:auto">Anschluss: Simulation · Mitschnitt wird trotzdem gespeichert</span>
     </div>
   {/if}
   <header style="flex:none; height:48px; display:flex; align-items:center; gap:4px; padding:0 10px; border-bottom:1px solid var(--line); background:var(--color-bg); position:relative; z-index:31">
@@ -445,7 +444,7 @@
       <div class="menu" role="menu" aria-label="Anordnen" style="left:282px; top:44px">
         <div class="mh">Stickreihenfolge – auf die Auswahl</div>
         {#each anordnenMenue as m (m.l)}
-          <button class="mi" role="menuitem" disabled={!m.go} onclick={() => waehle(m.go)}>{m.l}{#if m.kbd}<span class="kbd">{m.kbd}</span>{/if}</button>
+          <button class="mi" role="menuitem" disabled={!m.go} title={m.t} onclick={() => waehle(m.go)}>{m.l}{#if m.kbd}<span class="kbd">{m.kbd}</span>{/if}</button>
         {/each}
         <div class="small mut" style="padding:2px 10px 6px; max-width:280px; white-space:normal">Liegt ein Objekt danach unter einer Fläche, über der es lag, warnt das Programm.</div>
         <div class="msep"></div>
@@ -611,7 +610,7 @@
                   <input type="range" min="0" max={gesamt} value={bis} oninput={(ev) => ((spielt = false), (bis = Number((ev.currentTarget as HTMLInputElement).value)))} aria-label="Stickfolge" style="width:100%; accent-color:var(--color-accent)" />
                 </div>
               </div>
-              <div class="small mut tab" style="margin-top:2px">Stich {bis.toLocaleString("de-DE")} von {gesamt.toLocaleString("de-DE")} · Abspielen zeigt nur die Reihenfolge – es ist keine Maschinen-Simulation.</div>
+              <div class="small mut tab" style="margin-top:2px">Stich {bis.toLocaleString("de-DE")} von {gesamt.toLocaleString("de-DE")}</div>
             </div>
           {/if}
           {#if arbeit.fehler}

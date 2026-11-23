@@ -15,6 +15,22 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 22.11.2026 – Sprache (UX-Analyse C4), Commit (folgt)
+- **Anzeigenamen** (`app/src/lib/listen.svelte.ts`): `rahmenName` („artista 130 × 100 quer“, Freiarm, oval, Mega),
+  `stoffName` (Gewebe/Strick/Frottee, leicht/mittel/schwer), `garnkarteName` („Standard (19 Grundfarben)“,
+  „… (nach Nummer)“/„(nach Farbton)“), `garnName`/`markeName` (20 Grundfarben der Standard-Karte auf Deutsch; Garne der
+  Hersteller behalten ihre Namen). Im Design und im Kern bleiben die Originalnamen; der englische Name steht im Tooltip.
+- **Erklärungen aus dem Schema** laufen durch `anwenderText` (`app/src/lib/text.ts`): ohne Fundstellen, Hexwerte,
+  JSON-Schreibweise und „wie das Original“; Bereich und Standard in Klammern bleiben, „Original 5,0“ wird
+  „Standard 5,0“. Gilt für Feld-Tooltips, Auswahltexte und die Einzelwerte (dort ohne „Quelle“).
+- **Parameterkatalog:** deutsche Namen statt Auto Spacing, Auto Jump, Edge Walk, Trim, Double Run, Closest Join
+  (englisch in der Wirkung); Gruppe „Lange Stiche und Maschine“. `PARAMETER.md`/`parameter.json` neu erzeugt.
+- **Texte:** „wie das Original“ aus Dialogen und Meldungen des Kerns (Kaleidoskop, Maschine) entfernt; Titel „Kranz“
+  und „Spiegeln und kopieren“ ohne Englisch; Anordnen → „Linien in einem Zug verbinden“, „Teil-Abdeckung
+  (Applikationen)“ mit Tooltip; Verbinder „Sprung“. Weg: „Mitschnitt wird trotzdem gespeichert“ im Simulationsband,
+  „keine Maschinen-Simulation“ beim Abspielen. „Objekt(e)“ → richtige Einzahl/Mehrzahl.
+- **Bleibt (Nutzer):** Farbcodes wie „nächstes Garn zu #004780“, Reiter JSON.
+
 ## 22.11.2026 – Einfügen und Zeichnen (UX-Analyse C3: K1–K4, U1, U2), Commit 036e4bd
 - **Kern:** `stichart_aendern` kennt **`applikation`** als Füllung (Umriss und Löcher bleiben, auch zurück zu
   Tatami usw.). Doku in `SCHNITTSTELLE.md`/`kern.ts` neu erzeugt.

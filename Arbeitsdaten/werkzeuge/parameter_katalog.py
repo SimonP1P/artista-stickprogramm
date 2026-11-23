@@ -79,13 +79,13 @@ P('transform.verschieben', G, 'Verschieben', 'Lage im Rahmen', ebene='beide', gi
 
 # ---------------------------------------------------------------- Satin
 G = 'Satin'
-P('satin.auto_spacing', G, 'Auto Spacing', 'Stichabstand automatisch nach der Säulenbreite (schmal = lockerer)',
+P('satin.auto_spacing', G, 'Abstand automatisch', 'Stichabstand automatisch nach der Säulenbreite (schmal = lockerer; „Auto Spacing“)',
   d='einstellungen.satin.auto_spacing', einheit='an/aus', std=True,
   quelle='Effekt Auto Spacing 0x21, Tabelle nach Breite (Analyse/code/10, hoch); am Objekt aus, wenn „abstand“ gesetzt')
 P('satin.abstand_fest', G, 'Stichabstand (fest)', 'Weg zwischen zwei Einstichen derselben Seite, wenn Auto Spacing aus',
   ebene='beide', gilt=['satin'], d='einstellungen.satin.abstand_fest', o='abstand', einheit='mm', std=0.40,
   bereich=[0.2, 2.0], stoff=True, quelle='AMT 0x2723 (hoch); Bereich ' + V)
-P('satin.faktor', G, 'Auto-Spacing-Faktor', 'Faktor auf die Tabelle (Stoff, Schrift 0,9)', ebene='beide', gilt=['satin'],
+P('satin.faktor', G, 'Faktor für Abstand automatisch', 'Faktor auf die Tabelle (Stoff, Schrift 0,9)', ebene='beide', gilt=['satin'],
   d='einstellungen.satin.faktor', o='faktor', einheit='Faktor', std=1.0, bereich=[0.5, 2.0], stoff=True,
   quelle='AMT 0x2736 (hoch)')
 P('satin.zugausgleich', G, 'Zugausgleich', 'verlängert jeden Stich an beiden Enden („Fett“ = mehr Zugausgleich)',
@@ -178,7 +178,7 @@ P('lauf.ecke_grad', G, 'Eckwinkel', 'ab diesem Knick Einstich an der Ecke (nur b
 G = 'Unterlage'
 P('unterlage.auto_an', G, 'Unterlage automatisch', 'Auto Underlay an/aus (Schrift: an)', d='einstellungen.unterlage.auto_an',
   einheit='an/aus', std=False, quelle='Stil-Flags 0x2000 (Analyse_Teil3/05, mittel-hoch)', modus='einfach')
-P('unterlage.auto_art', G, 'Art der Auto-Unterlage', 'vorgewählte Unterlage', d='einstellungen.unterlage.auto_art',
+P('unterlage.auto_art', G, 'Art der automatischen Unterlage', 'vorgewählte Unterlage', d='einstellungen.unterlage.auto_art',
   einheit='Auswahl', std=['zickzack'], werte=['mittellauf', 'edge_walk', 'zickzack', 'doppelzickzack'],
   quelle='Stil-Bit 0x0001 = Zickzack')
 P('objekt.unterlage_saeule', G, 'Unterlage der Säule/Schrift', 'auto, keine oder Arten (z. B. edge_walk+zickzack). '
@@ -192,7 +192,7 @@ P('unterlage.rand', G, 'Abstand zum Rand', 'Unterlage bleibt so weit innen', d='
   einheit='mm', std=0.20, bereich=[0.0, 2.0], quelle='AMT 0x2769/0x276a (mittel)')
 P('unterlage.zugausgleich', G, 'Zugausgleich der Unterlage', '', d='einstellungen.unterlage.zugausgleich', einheit='mm',
   std=0.20, quelle='AMT 0x2743 (hoch)')
-P('unterlage.edge_walk_laenge', G, 'Edge Walk: Stichlänge', 'Lauf am Rand der Säule',
+P('unterlage.edge_walk_laenge', G, 'Randlauf: Stichlänge', 'Lauf am Rand der Säule („Edge Walk“)',
   d='einstellungen.unterlage.edge_walk_laenge', einheit='mm', std=2.2, quelle='AMT 0x2747 (hoch)')
 P('unterlage.mittellauf_laenge', G, 'Mittellauf: Stichlänge', 'Lauf auf der Säulenmitte',
   d='einstellungen.unterlage.mittellauf_laenge', einheit='mm', std=2.2, quelle='AMT 0x2746 (hoch)')
@@ -225,17 +225,17 @@ G = 'Verbinder und Vernähen'
 Q = 'Dialog „Connectors“, Stil 0x272a (DIALOG.DLL, hoch)'
 for k, name, w, std, einh, tag in [
     ('anfang_immer', 'Immer vernähen (Anfang)', 'Tie In immer', False, 'an/aus', '0x2753'),
-    ('anfang_nach_trim_farbwechsel', 'Vernähen nach Trim/Farbwechsel', 'Tie In If After Trim', True, 'an/aus', '0x2750'),
+    ('anfang_nach_trim_farbwechsel', 'Vernähen nach Fadenschnitt/Farbwechsel', 'Tie In If After Trim', True, 'an/aus', '0x2750'),
     ('anfang_bei_langem_verbinder', 'Vernähen nach langem Verbinder', 'Tie In If Previous Connector Longer', True, 'an/aus',
      '0x272d'),
     ('anfang_verbinder_ab', '… Verbinder länger als', '', 3.0, 'mm', '0x2755'),
     ('ende_immer', 'Immer vernähen (Ende)', 'Tie Off immer', False, 'an/aus', '0x2752'),
-    ('ende_vor_trim_farbwechsel', 'Vernähen vor Trim/Farbwechsel', 'Tie Off If Before Trim', True, 'an/aus', '0x2733'),
+    ('ende_vor_trim_farbwechsel', 'Vernähen vor Fadenschnitt/Farbwechsel', 'Tie Off If Before Trim', True, 'an/aus', '0x2733'),
     ('ende_bei_langem_verbinder', 'Vernähen vor langem Verbinder', 'Tie Off If Next Connector Longer', True, 'an/aus',
      '0x272c'),
     ('ende_verbinder_ab', '… Verbinder länger als', '', 3.0, 'mm', '0x2754'),
     ('letztes_objekt_vernaehen', 'Letztes Objekt vernähen', 'Always Tie Off Last Object', False, 'an/aus', '0x276c'),
-    ('trim_ab', 'Trim ab', 'ab dieser Verbinderlänge gilt ein Sprung als Trim (die 185 schneidet nicht)', 3.0, 'mm',
+    ('trim_ab', 'Fadenschnitt ab', 'ab dieser Verbinderlänge gilt ein Sprung als Fadenschnitt („Trim“; die 185 schneidet nicht)', 3.0, 'mm',
      '0x272e'),
     ('vernaeh_stichlaenge', 'Länge der Vernähstiche', '', 1.0, 'mm', '0x2730/0x2731'),
     ('vernaeh_stiche', 'Zahl der Vernähstiche', '', 2, 'Anzahl', '0x272f/0x275d'),
@@ -263,19 +263,19 @@ P('verbinder.verdeckt_rand', G, 'Verdeckt: Enden und Einzug',
   einheit='mm', std=0.5, quelle=V, modus='automatisch')
 
 # ---------------------------------------------------------------- Auto Jump, Maschine, Bearbeiten
-G = 'Auto Jump und Maschine'
-P('objekt.auto_jump', G, 'Auto Jump', 'lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus)',
+G = 'Lange Stiche und Maschine'
+P('objekt.auto_jump', G, 'Lange Stiche als Sprünge', 'lange Stiche als Sprünge statt geteilt (Standard an, Schrift aus; „Auto Jump“)',
   ebene='objekt', gilt=ALLE, o='auto_jump', einheit='an/aus', std=True, quelle='Effects-Dialog; AMT 0x2758 (hoch)')
-P('objekt.auto_jump.max', G, 'Auto Jump: Höchststich', 'darüber Sprünge; klein (z. B. 6 mm) = Satin mit mehr Loft',
+P('objekt.auto_jump.max', G, 'Lange Stiche: Höchststich', 'darüber Sprünge; klein (z. B. 6 mm) = Satin mit mehr Loft',
   ebene='objekt', gilt=ALLE, o='auto_jump.max', einheit='mm', std=12.7, bereich=[0.3, 12.7], quelle='AMT 0x2711 (hoch)')
-P('objekt.auto_jump.sprung', G, 'Auto Jump: Sprunglänge', 'Länge der Teilsprünge', ebene='objekt', gilt=ALLE,
+P('objekt.auto_jump.sprung', G, 'Lange Stiche: Sprunglänge', 'Länge der Teilsprünge', ebene='objekt', gilt=ALLE,
   o='auto_jump.sprung', einheit='mm', std=7.0, bereich=[0.3, 12.7], quelle='AMT 0x2712 (hoch)')
 P('maschine.min_stich', G, 'Kürzester Stich', 'kürzere Stiche werden entfernt', ebene='design', einheit='mm', std=0.3,
   quelle='DEFAULTS.DFL (hoch)', modus='automatisch')
 P('maschine.max_stich', G, 'Längster Stich', 'Maschinengrenze artista 185', ebene='design', einheit='mm', std=12.7,
   quelle='DEFAULTS.DFL (hoch)', modus='automatisch')
 G = 'Bearbeiten'
-P('objekt.doppellauf', G, 'Verstärken (Double Run)', 'gleiche Stiche rückwärts noch einmal', ebene='objekt', gilt=ALLE,
+P('objekt.doppellauf', G, 'Verstärken (zweimal gestickt)', 'gleiche Stiche rückwärts noch einmal („Double Run“)', ebene='objekt', gilt=ALLE,
   o='doppellauf', einheit='an/aus', std=False, quelle='Handbuch Kap. 23')
 FL = ['tatami', 'satinflaeche', 'muster', 'satin', 'satinlinie', 'blanket', 'text', 'ttf', 'monogramm', 'applikation']
 QU = 'eigene Erweiterung (Nutzer 21.11.2026); im Original eine zweite Linie von Hand (Handbuch S. 114)'
@@ -311,7 +311,7 @@ P('objekt.ueberlappung', G, 'Überlappung beim Aussparen', 'Loch bleibt um so vi
 # ---------------------------------------------------------------- Reihenfolge, Ein-/Ausstich (ROADMAP 4b.5)
 G = 'Reihenfolge'
 Q = 'Analyse_Teil3/16_reihenfolge.md'
-P('design.kuerzeste_verbindung', G, 'Kürzeste Verbindung (Closest Join)',
+P('design.kuerzeste_verbindung', G, 'Kürzeste Verbindung',
   'jedes Objekt ohne eigenen Einstich beginnt am Punkt nächst dem vorigen Ende (Linien umgedreht, geschlossene Formen '
   'gedreht; Schrift ausgenommen)', d='kuerzeste_verbindung', einheit='an/aus', std=False,
   quelle='MOD1 ResequenceByClosestJoin 0x1006d0c0, GEOMETRY FindExitEntry (hoch); im Original Option von Resequence '
@@ -322,7 +322,7 @@ P('objekt.einstich', G, 'Einstich (entry point)', 'Objekt beginnt hier bzw. am n
 P('objekt.ausstich', G, 'Ausstich (exit point)', 'Objekt endet hier bzw. so nah wie die Form erlaubt', ebene='objekt',
   gilt=ALLE, o='ausstich', einheit='mm [x, y]', std=None,
   quelle='Handbuch Kap. 7/14 (exit point); Flächen: Beginn gegenüber, eigene Festlegung (' + Q + ')')
-P('objekt.kuerzeste', G, 'Closest Join je Objekt', 'wie „Kürzeste Verbindung“, nur für dieses Objekt; setzen Bild '
+P('objekt.kuerzeste', G, 'Kürzeste Verbindung je Objekt', 'wie „Kürzeste Verbindung“, nur für dieses Objekt; setzen Bild '
   'umwandeln, Zauberstab und SVG einlesen beim Einfügen', ebene='objekt', gilt=ALLE + ['photosnap'], o='kuerzeste',
   einheit='an/aus', std=False, quelle='Handbuch S. 116 (Auto Digitizer: closest join); je Objekt eigene Festlegung '
   '(Analyse_Teil3/25 §1)', modus='automatisch')
@@ -690,7 +690,7 @@ P('schrift.monogramm.abstand', G, 'Abstand Initialen – Rahmen', 'die Initialen
 P('schrift.monogramm.seite_anteil', G, 'Äußere Initialen bei 3 in einem Rahmen für 2', 'Höhe der äußeren Initialen '
   'im Verhältnis zur mittleren', ebene='objekt', gilt=['monogramm'], einheit='%', std=68,
   quelle='eigene Festlegung (monogramm::SEITE_ANTEIL; Verhältnis der Vorlagen mit 3 Initialen)', modus='automatisch')
-P('schrift.faktor', G, 'Schrift: Auto-Spacing-Faktor', 'Schrift 10 % dichter', ebene='design', einheit='Faktor', std=0.9,
+P('schrift.faktor', G, 'Schrift: Faktor für Abstand automatisch', 'Schrift 10 % dichter', ebene='design', einheit='Faktor', std=0.9,
   quelle='Stil „Schrift“ (Analyse/code/10)', modus='automatisch')
 P('schrift.unterlage', G, 'Schrift: Unterlage', 'Zickzack, wenn das Alphabet keine eigene hat', ebene='design',
   einheit='Auswahl', std='zickzack', quelle='Stil „Schrift“', modus='automatisch')

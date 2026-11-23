@@ -6,6 +6,7 @@
   import { kern, type DesignJson, type VorlageInfo } from "$kern/kern";
   import Dialog from "../Dialog.svelte";
   import { arbeit } from "../arbeit.svelte";
+  import { stoffName } from "../listen.svelte";
   import { neuAusVorlage } from "../dateien.svelte";
 
   let { modus, schliessen }: { modus: "neu" | "speichern" | "werte"; schliessen: () => void } = $props();
@@ -36,7 +37,7 @@
   const beschreibung = (v: VorlageInfo) =>
     [
       v.werk ? "Werkseinstellung" : `${v.werte} ${v.werte === 1 ? "Einzelwert" : "Einzelwerte"}`,
-      v.stoff && !v.werk ? v.stoff : "",
+      v.stoff && !v.werk ? stoffName(v.stoff) : "",
       v.objekte ? `${v.objekte} ${v.objekte === 1 ? "Objekt" : "Objekte"}` : "",
     ]
       .filter(Boolean)

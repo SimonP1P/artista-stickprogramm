@@ -3,6 +3,7 @@
 // Änderung an der Oberfläche (im Expertenmodus).
 
 import { kern } from "$kern/kern";
+import { anwenderText } from "./text";
 
 type S = Record<string, unknown> & {
   $ref?: string;
@@ -33,7 +34,7 @@ export type Feld = {
 /** Text einer Auswahl: Beschreibung; „Standard“ allein sagt nichts → „Wert (Standard)“ */
 function auswahlText(wert: string, beschreibung?: string): string {
   if (!beschreibung) return wert;
-  return beschreibung === "Standard" ? `${wert} (Standard)` : beschreibung;
+  return beschreibung === "Standard" ? `${wert} (Standard)` : anwenderText(beschreibung) || wert;
 }
 
 class Schema {

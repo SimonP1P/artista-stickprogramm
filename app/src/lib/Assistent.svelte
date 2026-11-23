@@ -6,7 +6,7 @@
   import { designEinfuegen, expExportieren, oeffnen, speichern } from "./dateien.svelte";
   import Icon from "./Icon.svelte";
   import { ART, IC } from "./icons";
-  import { garnText, listen, STOFF_TEXT } from "./listen.svelte";
+  import { garnText, listen, rahmenName, STOFF_TEXT } from "./listen.svelte";
   import { ganz, lesen, zahl, zahlFest } from "./zahl";
   import { SCHRIFT_UNTERLAGE } from "./einfuegen";
   import { maschine } from "./maschine.svelte";
@@ -396,7 +396,7 @@
             </span>
             <span style="display:flex; flex-direction:column; min-width:0">
               <span class="hd" style="font-size:16px">
-                {r.name.replace(/^artista /, "").replace(/ x /, " × ")}
+                {rahmenName(r.name).replace(/^artista /, "")}
                 {#if r.name === "artista 130 x 100"}<span class="tag tag-accent" style="margin-left:8px; font-family:var(--font-body); font-weight:400">Standard</span>{/if}
                 {#if r.eigen}<span class="tag" style="margin-left:8px; font-family:var(--font-body); font-weight:400" title="Die artista 185 kennt diesen Rahmen nicht – beim Übertragen nennt das Programm einen passenden Rahmen der 185">eigener Rahmen</span>{/if}
               </span>
@@ -417,17 +417,17 @@
       <div role="radiogroup" aria-label="Stoff" style="display:flex; flex-direction:column; gap:5px">
         {#each listen.stoffe as s (s.name)}
           {@const t = STOFF_TEXT[s.name] ?? { de: s.name, bsp: "" }}
-          <label class="opt">
+          <label class="opt" title={s.name}>
             <input type="radio" name="stoff" checked={(arbeit.design.stoff ?? "0 Software Defaults") === s.name} onchange={() => arbeit.aendern((d) => (d.stoff = s.name as typeof d.stoff))} />
             <span style="display:flex; flex-direction:column; min-width:0">
-              <span><b style="font-weight:500">{t.de}</b> <span class="mut small">– z. B. {t.bsp}</span></span>
-              <span class="mut small">{s.name} · Satin {zahl(s.satin_abstand_fest, 2)} · Tatami {zahl(s.tatami_abstand, 2)} · Zugausgleich {zahl(s.zugausgleich, 2)} mm</span>
+              <span><b style="font-weight:500">{t.de}</b> {#if t.bsp}<span class="mut small">– z. B. {t.bsp}</span>{/if}</span>
+              <span class="mut small">Satin {zahl(s.satin_abstand_fest, 2)} · Tatami {zahl(s.tatami_abstand, 2)} · Zugausgleich {zahl(s.zugausgleich, 2)} mm</span>
             </span>
           </label>
         {/each}
       </div>
       <div class="note" style="margin-top:12px">
-        <b style="font-weight:500">Material-Tipp</b> (eigener Hinweis, nicht aus dem Original): fester Stoff oder passendes Vlies –
+        <b style="font-weight:500">Material-Tipp:</b> fester Stoff oder passendes Vlies –
         Abreißvlies, bei dehnbarem Stoff Schneide- oder Bügelvlies; bei Frottee zusätzlich wasserlösliche Folie oben.
       </div>
     {:else if arbeit.schritt === 2}

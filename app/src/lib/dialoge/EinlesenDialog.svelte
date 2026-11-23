@@ -356,7 +356,7 @@
         <p class="mut small" style="margin:6px 0 0">
           {#if modus === "zauber"}
             Fläche anklicken – jede angeklickte Fläche wird ein Objekt mit der gewählten Stichart, in der Reihenfolge der
-            Klicks (wie der Zauberstab im Original). Schraffiert = gewählt; noch einmal klicken ändert die Stichart.
+            Klicks. Schraffiert = gewählt; noch einmal klicken ändert die Stichart.
           {:else if modus === "photo"}
             PhotoSnap stickt das Bild als Reihen von Zickzackstichen: dunkle Stellen dicht, helle locker – wie ein
             Zeilendrucker. {farbig ? "Vier Farblagen (Cyan, Magenta, Gelb, Schwarz)." : "Eine Farbe (Graustufen)."}
@@ -420,7 +420,7 @@
             </div>
           </div>
           <div class="frow" style="padding:0">
-            <span class="fl" title="Wie dick die Kreuze wirken: 2 Fäden = einmal gestickt, 4 = zweimal, 6 = dreimal (Threads im Original)">Fäden</span>
+            <span class="fl" title="Wie dick die Kreuze wirken: 2 Fäden = einmal gestickt, 4 = zweimal, 6 = dreimal">Fäden</span>
             <div class="fc">
               <select class="input sm" bind:value={faeden}>
                 <option value={2}>2 – einmal</option>
@@ -469,13 +469,13 @@
           <span class="fc"><input type="checkbox" bind:checked={garnfarben} disabled={karte === "keine"} /> aus der Karte „{karte}“</span>
         </label>
         {#if garnfarben && karte === "Default"}
-          <p class="small mut" style="margin:-4px 0 0">„Default“ hat nur 19 Grundfarben – für Fotos besser eine echte Garnkarte (Isacord, Madeira …) im Schritt „Prüfen &amp; Garn“ wählen.</p>
+          <p class="small mut" style="margin:-4px 0 0">Die Standard-Garnkarte hat nur 19 Grundfarben – für Fotos besser eine echte Garnkarte (Isacord, Madeira …) im Schritt „Prüfen &amp; Garn“ wählen.</p>
         {/if}
         {#if modus === "zauber"}
           <div class="frow" style="padding:0">
             <span class="fl">Stichart</span>
             <div class="fc">
-              <select class="input sm" bind:value={zauberStich} title="Gilt für den nächsten Klick (wie die Stichart vor dem Zauberstab im Original)">
+              <select class="input sm" bind:value={zauberStich} title="Gilt für den nächsten Klick">
                 {#each ZAUBER_STICH as [w, l] (w)}<option value={w}>{l}</option>{/each}
               </select>
             </div>
@@ -532,7 +532,7 @@
             {/each}
           </div>
           {#if vorschau.farben.some((f) => f.weglassen) && weg.length}
-            <p class="small mut" style="margin:2px 0 0">Weißer Hintergrund ist zum Weglassen vorgeschlagen (wie im Original) – Haken setzen, dann wird er gestickt.</p>
+            <p class="small mut" style="margin:2px 0 0">Weißer Hintergrund ist zum Weglassen vorgeschlagen – Haken setzen, dann wird er gestickt.</p>
           {/if}
         {/if}
         {#if arbeit.objekte.length}
@@ -572,7 +572,7 @@
       </div>
       {#if experte}
         <label class="frow" style="padding:0"><span class="fl">Überdeckung</span><span class="fc"><input type="checkbox" bind:checked={aussparen} /> aussparen (wie die SVG aussieht)</span></label>
-        <label class="frow" style="padding:0"><span class="fl">Verbindung</span><span class="fc"><input type="checkbox" bind:checked={kuerzeste} /> kürzeste (Closest Join)</span></label>
+        <label class="frow" style="padding:0"><span class="fl" title="Ein- und Ausstich jeder Fläche so legen, dass die Verbindungen am kürzesten sind (Closest Join)">Verbindung</span><span class="fc"><input type="checkbox" bind:checked={kuerzeste} /> kürzeste Wege</span></label>
       {/if}
       {#if arbeit.objekte.length}
         <label class="frow" style="padding:0"><span class="fl">Bisheriges</span><span class="fc"><input type="checkbox" bind:checked={ersetzen} /> Design ersetzen (sonst als Element hinzufügen)</span></label>

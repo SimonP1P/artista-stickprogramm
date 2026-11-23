@@ -243,10 +243,10 @@ export const listen = new Listen();
 
 /** Deutsche Beschreibung der 8 Stoffe des Originals (Anzeige; Werte und Namen aus dem Kern, `stoffe_liste`). */
 export const STOFF_TEXT: Record<string, { de: string; bsp: string }> = {
-  "0 Software Defaults": { de: "Standardwerte der Software", bsp: "wenn unsicher" },
+  "0 Software Defaults": { de: "Standard (kein bestimmter Stoff)", bsp: "wenn unsicher" },
   "Knit Light Weight": { de: "Strick / Jersey, leicht", bsp: "T-Shirt" },
-  "Knit Medium Weight": { de: "Strick, mittel", bsp: "Sweatshirt, Polo" },
-  "Knit Heavy Weight": { de: "Strick, schwer", bsp: "Fleece, Strickjacke" },
+  "Knit Medium Weight": { de: "Strick / Jersey, mittel", bsp: "Sweatshirt, Polo" },
+  "Knit Heavy Weight": { de: "Strick / Jersey, schwer", bsp: "Fleece, Strickjacke" },
   "Terry Medium Weight": { de: "Frottee, mittel", bsp: "Handtuch" },
   "Terry Heavy Weight": { de: "Frottee, schwer", bsp: "Bademantel" },
   "Woven Light Weight": { de: "Gewebe, leicht", bsp: "Bluse, Hemd" },
@@ -254,5 +254,37 @@ export const STOFF_TEXT: Record<string, { de: string; bsp: string }> = {
   "Woven Heavy Weight": { de: "Gewebe, schwer", bsp: "Jeans, Canvas" },
 };
 
+// Deutsche Anzeigenamen (UX-Analyse 2.5, Paket C4): Rahmen, Stoffe und Garnkarten heißen im Design und im Kern wie
+// im Original (englisch) – die Oberfläche zeigt deutsche Namen, den Originalnamen im Tooltip.
+
+/** Stoff: deutscher Name */
+export const stoffName = (n: string | undefined) => (n ? (STOFF_TEXT[n]?.de ?? n) : "");
+/** Rahmen: „artista 130 x 100 Rotated“ → „artista 130 × 100 quer“ (eigene Rahmen bleiben, wie sie heißen) */
+export const rahmenName = (n: string | undefined) =>
+  (n ?? "")
+    .replace(/ x /g, " × ")
+    .replace(/ Rotated$/, " quer")
+    .replace(/ Free Arm\b/, " Freiarm")
+    .replace(/ Normal\b/, " normal")
+    .replace(/ Oval\b/, " oval")
+    .replace(/ MEGA\b/, " Mega");
+/** Garnkarte: deutscher Name (Marken bleiben) */
+export const garnkarteName = (n: string | undefined) =>
+  n === "Default"
+    ? "Standard (19 Grundfarben)"
+    : n === "Applique"
+      ? "Applikation"
+      : (n ?? "").replace(/-numerical$/, " (nach Nummer)").replace(/-shades$/, " (nach Farbton)");
+
+/** Grundfarben der Standard-Garnkarte („Default.tch“) auf Deutsch; Garne der Hersteller behalten ihre Namen */
+const GRUNDFARBEN: Record<string, string> = {
+  Green: "Grün", Blue: "Blau", Red: "Rot", Yellow: "Gelb", Cyan: "Cyan", Sand: "Sand", "Dark Green": "Dunkelgrün",
+  "Dark Blue": "Dunkelblau", "Dark Red": "Dunkelrot", Orange: "Orange", Purple: "Lila", Brown: "Braun", Cream: "Creme",
+  White: "Weiß", Black: "Schwarz", Pink: "Rosa", Turquoise: "Türkis", Grey: "Grau", Khaki: "Khaki", "Powder Blue": "Puderblau",
+};
+/** Name eines Garns für die Anzeige */
+export const garnName = (g: { marke: string; name: string }) => (g.marke === "Default" ? (GRUNDFARBEN[g.name] ?? g.name) : g.name);
+/** Marke für die Anzeige */
+export const markeName = (m: string) => (m === "Default" ? "Standard" : m);
 /** Garn als Text „Marke · Nummer · Name“ (Farbe nie das einzige Merkmal, UEBERGABE §5) */
-export const garnText = (g: GarnInfo | undefined) => (g ? `${g.marke} · ${g.nummer} · ${g.name}` : "–");
+export const garnText = (g: GarnInfo | undefined) => (g ? `${markeName(g.marke)} · ${g.nummer} · ${garnName(g)}` : "–");

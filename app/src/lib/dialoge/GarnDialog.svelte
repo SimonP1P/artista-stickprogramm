@@ -4,7 +4,7 @@
   import type { GarnInfo } from "$kern/kern";
   import { arbeit } from "../arbeit.svelte";
   import Dialog from "../Dialog.svelte";
-  import { garnText, listen } from "../listen.svelte";
+  import { garnkarteName, garnName, garnText, listen, markeName } from "../listen.svelte";
 
   let {
     titel = "Garn von Hand wählen",
@@ -32,7 +32,7 @@
 
   const treffer = $derived.by(() => {
     const s = suche.trim().toLowerCase();
-    return s ? garne.filter((g) => g.nummer.toLowerCase().includes(s) || g.name.toLowerCase().includes(s)) : garne;
+    return s ? garne.filter((g) => g.nummer.toLowerCase().includes(s) || g.name.toLowerCase().includes(s) || garnName(g).toLowerCase().includes(s)) : garne;
   });
 
   function karteWechseln(k: string) {
@@ -51,7 +51,7 @@
   <div style="display:flex; gap:8px; margin:-14px -16px 0; padding:10px 16px; border-bottom:1px solid var(--line)">
     <input class="input sm" style="flex:1" placeholder="Nummer oder Name, z. B. 3622 oder marine" aria-label="Garn suchen" bind:value={suche} />
     <select class="input sm" aria-label="Garnkarte" value={karte} onchange={(e) => karteWechseln((e.currentTarget as HTMLSelectElement).value)} style="width:210px">
-      {#each listen.garnkarten as k (k)}<option value={k}>{k}</option>{/each}
+      {#each listen.garnkarten as k (k)}<option value={k} title={k}>{garnkarteName(k)}</option>{/each}
       <option value="keine">keine</option>
     </select>
   </div>
@@ -63,8 +63,8 @@
       <button class="grow" class:on={aktuell?.nummer === g.nummer} onclick={() => waehlen(g)}>
         <span class="sw l" style="background:{g.rgb}"></span>
         <span class="tab">{g.nummer}</span>
-        <span>{g.name}</span>
-        <span class="mut small">{g.marke}</span>
+        <span>{garnName(g)}</span>
+        <span class="mut small">{markeName(g.marke)}</span>
       </button>
     {/each}
   </div>

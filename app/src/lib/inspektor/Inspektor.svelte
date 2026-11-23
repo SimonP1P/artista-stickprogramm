@@ -7,7 +7,7 @@
   import { FUELLUNG, STICHART_NAME, UMRISS } from "../einfuegen";
   import Icon from "../Icon.svelte";
   import { ART, IC } from "../icons";
-  import { garnText, listen, STOFF_TEXT } from "../listen.svelte";
+  import { garnkarteName, garnText, listen, rahmenName, STOFF_TEXT, stoffName } from "../listen.svelte";
   import { schema, type Feld } from "../schema.svelte";
   import { ganz, lesen, zahl, zahlFest } from "../zahl";
   import Feldzeile from "./Feldzeile.svelte";
@@ -306,7 +306,7 @@
               </div>
             {:else if f.name === "quelle"}
               <div class="frow">
-                <span class="fl" title="Feste Stiche aus der Datei (wie „Grade D“ im Original): Größe ändern ändert die Dichte, nicht die Stichzahl – höchstens ±5 % empfohlen.">Herkunft</span>
+                <span class="fl" title="Feste Stiche aus der Datei: Größe ändern ändert die Dichte, nicht die Stichzahl – höchstens ±5 % empfohlen.">Herkunft</span>
                 <div class="fc"><span class="small">{String(o.quelle ?? "Stickdatei")} · ≈ {Math.round((String(o.stiche ?? "").length * 3) / 16).toLocaleString("de-DE")} Einstiche</span></div>
               </div>
             {:else if f.name === "step_muster"}
@@ -490,7 +490,7 @@
           <label class="fl" for="drahmen">Rahmen</label>
           <div class="fc"><select id="drahmen" class="input sm" value={arbeit.design.rahmen ?? ""} onchange={(ev) => arbeit.rahmenWaehlen((ev.currentTarget as HTMLSelectElement).value)}>
             <optgroup label="artista 185">
-              {#each arbeit.rahmenListe.filter((r) => !r.eigen) as r (r.name)}<option value={r.name}>{r.name}</option>{/each}
+              {#each arbeit.rahmenListe.filter((r) => !r.eigen) as r (r.name)}<option value={r.name} title={r.name}>{rahmenName(r.name)}</option>{/each}
             </optgroup>
             {#if arbeit.rahmenListe.some((r) => r.eigen) || arbeit.design.eigener_rahmen}
               <optgroup label="Eigene Rahmen">
@@ -505,13 +505,13 @@
         <div class="frow">
           <label class="fl" for="dstoff" title="Der Stoff ändert Dichte, Unterlage und Zugausgleich">Stoff</label>
           <div class="fc"><select id="dstoff" class="input sm" value={arbeit.design.stoff ?? "0 Software Defaults"} onchange={(ev) => arbeit.aendern((d) => (d.stoff = (ev.currentTarget as HTMLSelectElement).value as typeof d.stoff))}>
-            {#each listen.stoffe as s (s.name)}<option value={s.name}>{s.name} – {STOFF_TEXT[s.name]?.de ?? ""}</option>{/each}
+            {#each listen.stoffe as s (s.name)}<option value={s.name} title={s.name}>{stoffName(s.name)}{STOFF_TEXT[s.name]?.bsp ? ` – ${STOFF_TEXT[s.name].bsp}` : ""}</option>{/each}
           </select></div>
         </div>
         <div class="frow">
           <label class="fl" for="dkarte" title="Jede Farbe bekommt das nächste Garn dieser Karte">Garnkarte</label>
           <div class="fc"><select id="dkarte" class="input sm" value={arbeit.design.garnkarte ?? "Default"} onchange={(ev) => arbeit.aendern((d) => (d.garnkarte = (ev.currentTarget as HTMLSelectElement).value))}>
-            {#each listen.garnkarten as k (k)}<option value={k}>{k}</option>{/each}
+            {#each listen.garnkarten as k (k)}<option value={k} title={k}>{garnkarteName(k)}</option>{/each}
             <option value="keine">keine</option>
           </select></div>
         </div>

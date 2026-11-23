@@ -5,6 +5,7 @@
   import type { WirksamerWert } from "$kern/kern";
   import { lesen, zahl } from "../zahl";
   import { unterlageAusHaken, unterlageHaken } from "../einfuegen";
+  import { anwenderText } from "../text";
 
   let {
     feld,
@@ -106,7 +107,7 @@
   /** Erklärung beim Darüberfahren über die Beschriftung: Beschreibung aus dem Schema ohne JSON-Schreibweise */
   const hilfe = $derived(
     [
-      (feld.beschreibung ?? "").replace(/`([^`]*)`/g, "„$1“").replace(/\\n/g, "Zeilenumbruch").trim(),
+      anwenderText(feld.beschreibung).replace(/„\\n“/g, "Zeilenumbruch"),
       wirksam && wirkText ? `Leer = ${wirkText} (${HERKUNFT[wirksam.herkunft] ?? wirksam.herkunft}).` : "",
     ]
       .filter(Boolean)

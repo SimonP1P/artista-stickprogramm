@@ -386,7 +386,7 @@ pub fn kranz(
         return Err(format!("punkte: {KRANZ_MIN} bis {KRANZ_MAX}"));
     }
     if kaleidoskop && punkte % 2 == 1 {
-        return Err("Kaleidoskop geht nur mit einer geraden Zahl von Punkten (wie im Original)".into());
+        return Err("Kaleidoskop geht nur mit einer geraden Zahl von Punkten".into());
     }
     // Linie Mittelpunkt → Objekt (Mitte der Auswahl) für das Kaleidoskop
     let es = einheiten(v, auswahl)?;

@@ -29,7 +29,7 @@ export const ZEICHEN_HILFE: Record<FormWerkzeug, string> = {
   saeule: "Punkte abwechselnd links und rechts der Säule setzen (je Paar eine Stichrichtung) · Enter beendet",
   kreis: "Ziehen = Oval, mit Umschalt = Kreis · oder Mitte und Radius klicken, Enter",
   rechteck: "Von Ecke zu Ecke ziehen oder beide Ecken klicken · mit Umschalt = Quadrat",
-  knopfloch: "Klicken, wo ein Knopfloch hin soll – mehrmals für mehrere · Esc beendet (wie das Original)",
+  knopfloch: "Klicken, wo ein Knopfloch hin soll – mehrmals für mehrere · Esc beendet",
 };
 
 /**

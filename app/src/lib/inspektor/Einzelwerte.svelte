@@ -6,6 +6,7 @@
   import Icon from "../Icon.svelte";
   import { IC } from "../icons";
   import { lesen, zahl } from "../zahl";
+  import { anwenderText } from "../text";
 
   let katalog = $state.raw<Parameter[]>([]);
   let ebene = $state<"design" | "objekt">("design");
@@ -134,7 +135,7 @@
   {#each liste.filter((p) => p.gruppe === g) as p (p.id)}
     {@const w = wertUndHerkunft(p)}
     <div class="frow">
-      <span class="fl" title="{p.wirkung}{p.bereich ? ` · Bereich ${zahl(p.bereich[0], 3)} – ${zahl(p.bereich[1], 3)} ${p.einheit}` : ""} · Quelle: {p.quelle}">{p.name}</span>
+      <span class="fl" title="{anwenderText(p.wirkung)}{p.bereich ? ` · Bereich ${zahl(p.bereich[0], 3)} – ${zahl(p.bereich[1], 3)} ${p.einheit}` : ""}">{p.name}</span>
       <div class="fc">
         {#if typeof p.standard === "boolean" || typeof w.wert === "boolean"}
           <select class="input sm" value={w.wert === undefined ? "" : w.wert ? "an" : "aus"} onchange={(ev) => {

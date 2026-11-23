@@ -66,7 +66,7 @@
   {#if vorschau}
     <div class={vorschau.warnungen ? "warnbox" : "okbox"}>
       <Icon d={vorschau.warnungen ? IC.warnung : IC.haken} />
-      <span>Farbwechsel {vorschau.vorher} → {vorschau.nachher}{vorschau.warnungen ? ` · ${vorschau.warnungen} Objekt(e) kämen unter eine Fläche` : ""}</span>
+      <span>Farbwechsel {vorschau.vorher} → {vorschau.nachher}{vorschau.warnungen ? ` · ${vorschau.warnungen} ${vorschau.warnungen === 1 ? "Objekt käme" : "Objekte kämen"} unter eine Fläche` : ""}</span>
     </div>
   {/if}
   {#snippet fuss()}

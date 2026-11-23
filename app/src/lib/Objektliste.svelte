@@ -4,6 +4,7 @@
   import { arbeit } from "./arbeit.svelte";
   import Icon from "./Icon.svelte";
   import { ART, IC } from "./icons";
+  import { garnName } from "./listen.svelte";
 
   let { anordnen }: { anordnen: () => void } = $props();
 
@@ -13,7 +14,7 @@
   const e = $derived(arbeit.ergebnis);
   function garnVon(i: number) {
     const g = e ? arbeit.garnVon(i) : undefined;
-    return g ? `${g.nummer} ${g.name}` : "";
+    return g ? `${g.nummer} ${garnName(g)}` : "";
   }
   /** Objekte, über denen i liegt (später gestickt, überdeckt) */
   function ueber(i: number) {

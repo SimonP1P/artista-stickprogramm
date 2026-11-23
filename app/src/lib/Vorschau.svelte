@@ -3,6 +3,7 @@
   // `design_formen` – rechnet selbst keine Geometrie. Auswahl per Klick auf die Stiche: jeder Pfad trägt die
   // Objektnummer (`Ergebnis.objekt` je Stich), die Trefferprüfung macht der Browser. Darstellung wie Entwurf v3.
   import { arbeit } from "./arbeit.svelte";
+  import { rahmenName } from "./listen.svelte";
   import { zahl, zahlFest } from "./zahl";
   import { knotenBild, knotenListe, knotenSetzen, knotenUmschalten, lage } from "./knoten";
   import { AUTOMATISCH_FERTIG, MINDESTENS, pfadD, ZIEHBAR, type ZeichenPunkt } from "./zeichnen";
@@ -627,7 +628,7 @@
     <path d={rahmenPfad} fill="none" stroke={farben.akzent} stroke-width=".35" stroke-dasharray="2 1.2" />
     <path d="M-3 0H3M0 -3V3" stroke={farben.akzent} stroke-width=".3" />
     <text x={-rahmen.breite / 2} y={-rahmen.hoehe / 2 - 10.5} font-size="3.4" fill={farben.beschriftung} font-family="Barlow, system-ui, sans-serif">
-      {rahmen.name} · Stickfeld {zahl(rahmen.breite)} × {zahl(rahmen.hoehe)} mm
+      {rahmenName(rahmen.name)} · Stickfeld {zahl(rahmen.breite)} × {zahl(rahmen.hoehe)} mm
     </text>
   {/if}
 
