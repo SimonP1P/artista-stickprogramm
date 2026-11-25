@@ -125,6 +125,8 @@ pub struct Kontext {
     /// Ordner der Computer-Schriften (leer = Schriften des Systems)
     pub schriften: Vec<PathBuf>,
     geladen: Mutex<HashMap<String, Alphabet>>,
+    /// Knopfloch-Vorlagen aus ButtonHoles.ESB, zwischengespeichert
+    knopfloecher_geladen: Mutex<Option<std::collections::BTreeMap<String, stick_kern::knopfloch::Vorlage>>>,
     /// Motivsätze (ESB aus `userletw/`): `STICK_MOTIVE`, sonst Ordner `motive` neben den Alphabeten
     pub motive: PathBuf,
     motive_geladen: Mutex<HashMap<String, stick_kern::motiv::Motivsatz>>,
@@ -157,6 +159,7 @@ impl Kontext {
             monogramm_geladen: Mutex::new(HashMap::new()),
             schriften: Vec::new(),
             geladen: Mutex::new(HashMap::new()),
+            knopfloecher_geladen: Mutex::new(None),
             maschine: Default::default(),
             schriften_zustand: Default::default(),
             motiv_zustand: Default::default(),
@@ -259,6 +262,17 @@ impl Kontext {
     }
 
     fn alphabete_einsetzen(&self, design: &mut Design) -> Result<(), Fehler> {
+        // Knopfloch-Vorlagen (ButtonHoles.ESB) einmal laden und zwischenspeichern
+        if design.knopfloch_bedarf() && design.knopfloecher.is_empty() {
+            let mut k = self.knopfloecher_geladen.lock().map_err(|e| Fehler::from(e.to_string()))?;
+            if k.is_none() {
+                let p = stick_formate::esb::knopfloch_datei(&self.alphabete).ok_or_else(|| {
+                    format!("Knopfloch-Vorlagen ButtonHoles.ESB nicht im Ordner {} gefunden", self.alphabete.display())
+                })?;
+                *k = Some(stick_formate::esb::knopfloecher_laden(&p)?);
+            }
+            design.knopfloecher = k.clone().unwrap_or_default();
+        }
         let namen = design.alphabet_namen();
         if namen.is_empty() {
             return Ok(());
