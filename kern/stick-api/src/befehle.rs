@@ -454,6 +454,9 @@ pub enum HinweisArt {
     LangeSatinstiche,
     /// Stichdaten aus einer fremden Datei um mehr als ±5 % skaliert – Stichzahl bleibt, Dichte ändert sich
     StichdatenSkaliert,
+    /// Objekt (meist Satin) mit vielen Stichen über dem Höchststich 12,7 mm: sie werden zu Sprüngen (Auto Jump) und
+    /// nicht gestickt – Fläche zu breit für Satin, Step empfohlen
+    SpruengeImObjekt,
 }
 
 /// Hinweis (kein Fehler – das Design lässt sich berechnen) mit der Nummer des Objekts, wenn er zu einem gehört.
@@ -734,6 +737,45 @@ pub fn design_berechnen(k: &Kontext, e: DesignEingabe) -> Result<Ergebnis, Fehle
             objekt: Some(o),
             art: HinweisArt::StichdatenSkaliert,
         });
+    }
+    // Stiche über dem Höchststich werden zu Sprüngen (Auto Jump wie das Original): bei Satin zu breit, die Fläche
+    // bleibt dann leer. Gezählt werden Sprünge innerhalb eines Objekts; Schrift hat eigene Hinweise, fremde
+    // Stichdaten bleiben, wie sie sind. Schwelle (≥ 10 Sprünge und ≥ 10 % der Stiche) eigene Festlegung.
+    let mut je_objekt: std::collections::BTreeMap<usize, (usize, usize)> = Default::default();
+    for (i, s) in folge.stiche.iter().enumerate() {
+        let o = folge.objekt.get(i).copied().unwrap_or(0);
+        let innen = i > 0 && folge.objekt.get(i - 1) == Some(&o);
+        let e = je_objekt.entry(o).or_default();
+        match s.art {
+            stick_kern::stiche::Art::Sprung if innen && folge.stiche[i - 1].art == stick_kern::stiche::Art::Stich => {
+                e.0 += 1
+            }
+            stick_kern::stiche::Art::Stich => e.1 += 1,
+            _ => {}
+        }
+    }
+    for (o, (spruenge, stiche)) in je_objekt {
+        let ausnahme = matches!(
+            design.objekte.get(o).map(|x| &x.art),
+            None | Some(
+                stick_kern::design::ObjektArt::Text { .. }
+                    | stick_kern::design::ObjektArt::TtfText { .. }
+                    | stick_kern::design::ObjektArt::MonogrammVorlage(_)
+                    | stick_kern::design::ObjektArt::Stiche { .. }
+            )
+        );
+        if !ausnahme && spruenge >= 10 && spruenge * 10 >= stiche {
+            hinweise.push(Hinweis {
+                meldung: format!(
+                    "Objekt {}: zu breit für Satin – {spruenge} Stiche wären länger als {} mm und werden \
+                     übersprungen statt gestickt; Stichart Step wählen oder die Form schmaler machen",
+                    o + 1,
+                    mm(stick_kern::einheiten::MAX_STICH_MM)
+                ),
+                objekt: Some(o),
+                art: HinweisArt::SpruengeImObjekt,
+            });
+        }
     }
     let mut aussen_je_objekt: Vec<(usize, usize)> = Vec::new();
     for &i in &ausserhalb_stiche {

@@ -1306,7 +1306,7 @@ export type Hinweis = {
 };
 
 /** Art eines Hinweises. */
-export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb" | "schrift_step" | "lange_satinstiche" | "stichdaten_skaliert");
+export type HinweisArt = ("feld" | "fehlende_zeichen" | "ausserhalb" | "schrift_step" | "lange_satinstiche" | "stichdaten_skaliert" | "spruenge_im_objekt");
 
 /** Form der Verzerrung (Elastic Lettering) */
 export type HuelleArt = ("gerade" | "gebogen");

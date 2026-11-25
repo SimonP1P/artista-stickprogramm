@@ -15,6 +15,15 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
+## 25.11.2026 – Hinweis „zu breit für Satin“, Auswahl beim Abspielen umrandet (Rückmeldung Nutzer), Commit (folgt)
+- Neue Hinweisart **`spruenge_im_objekt`** in `design_berechnen.hinweise`: ein Objekt (nicht Schrift, nicht fremde
+  Stichdaten) hat viele Stiche über 12,7 mm, die als Sprünge übersprungen werden (Auto Jump) – typisch eine zu breite
+  Satinfläche. Die Statusleiste zeigt ihn schon; empfohlen: Stichart Step.
+- Oberfläche: gewähltes Objekt auch in der Ansicht „Abspielen“ mit Rahmen markiert (ohne Griffe).
+- Weitere Oberflächen-Änderungen 24.11.: Linie/Freie Form schließen per Klick auf den ersten Punkt, Doppelklick
+  beendet; Esc wählt in einem Schritt ab (und verlässt am Mac nicht das Vollbild); gestrichelter Umriss bei
+  Motivfüllung, Stippling, Kreuzstich; Knopfloch-Vorlagen werden in der App geladen (Fix in `stick-api`).
+
 ## 23.11.2026 – Einzelwerte: Zahl statt „je Stoff“ (Rückmeldung Nutzer), Commit f57b9bb
 - Neuer Befehl **`einstellungen_wirksam`** (`DesignEingabe` → `Einstellungen`): Werte des Stoffs, überschrieben von
   `einstellungen`; liest nur `version`, `stoff`, `einstellungen`.

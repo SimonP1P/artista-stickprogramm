@@ -339,7 +339,8 @@
 
   const gewaehlt = $derived(arbeit.ansicht !== "abspielen" ? arbeit.auswahl : []);
   const begrenzungen = $derived.by(() => {
-    const b = gewaehlt.map((i) => arbeit.formen.find((f) => f.objekt === i)?.begrenzung).filter((b): b is number[] => !!b);
+    // Rahmen auch beim Abspielen (dort ohne Griffe), damit ein angeklicktes Objekt sichtbar markiert ist
+    const b = arbeit.auswahl.map((i) => arbeit.formen.find((f) => f.objekt === i)?.begrenzung).filter((b): b is number[] => !!b);
     // ganze Gruppe gewählt: ein gemeinsamer Rahmen mit Griffen (Umriss der Begrenzungen des Kerns)
     if (arbeit.auswahlGruppe && b.length > 1)
       return [[Math.min(...b.map((x) => x[0])), Math.min(...b.map((x) => x[1])), Math.max(...b.map((x) => x[2])), Math.max(...b.map((x) => x[3]))]];

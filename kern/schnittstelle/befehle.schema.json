@@ -3361,6 +3361,11 @@
           "const": "stichdaten_skaliert",
           "description": "Stichdaten aus einer fremden Datei um mehr als ±5 % skaliert – Stichzahl bleibt, Dichte ändert sich",
           "type": "string"
+        },
+        {
+          "const": "spruenge_im_objekt",
+          "description": "Objekt (meist Satin) mit vielen Stichen über dem Höchststich 12,7 mm: sie werden zu Sprüngen (Auto Jump) und\nnicht gestickt – Fläche zu breit für Satin, Step empfohlen",
+          "type": "string"
         }
       ]
     },
