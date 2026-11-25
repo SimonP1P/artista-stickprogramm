@@ -295,6 +295,9 @@
   }
 
   function tasten(ev: KeyboardEvent) {
+    // Esc gehört der App: ohne preventDefault reicht macOS die Taste ans Fenster weiter, und das verlässt den
+    // Vollbildmodus (cancelOperation). Dialoge und Werkzeuge behandeln Esc trotzdem wie bisher.
+    if (ev.key === "Escape") ev.preventDefault();
     const strg = ev.ctrlKey || ev.metaKey;
     const ziel = ev.target as HTMLElement;
     const eingabe = ziel?.closest?.("input, textarea, select, [contenteditable]");
