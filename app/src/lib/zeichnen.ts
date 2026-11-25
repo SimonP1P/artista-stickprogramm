@@ -24,8 +24,8 @@ export const AUTOMATISCH_FERTIG: Partial<Record<FormWerkzeug, number>> = { recht
 export const ZIEHBAR: FormWerkzeug[] = ["kreis", "rechteck"];
 
 export const ZEICHEN_HILFE: Record<FormWerkzeug, string> = {
-  linie: "Klick = Eckpunkt, Rechtsklick = Kurvenpunkt · Enter beendet",
-  frei: "Klick = Eckpunkt, Rechtsklick = Kurvenpunkt · Enter schließt die Form",
+  linie: "Klick = Eckpunkt, Rechtsklick = Kurvenpunkt · Klick auf den ersten Punkt schließt, Doppelklick oder Enter beendet",
+  frei: "Klick = Eckpunkt, Rechtsklick = Kurvenpunkt · Klick auf den ersten Punkt oder Enter schließt die Form",
   saeule: "Punkte abwechselnd links und rechts der Säule setzen (je Paar eine Stichrichtung) · Enter beendet",
   kreis: "Ziehen = Oval, mit Umschalt = Kreis · oder Mitte und Radius klicken, Enter",
   rechteck: "Von Ecke zu Ecke ziehen oder beide Ecken klicken · mit Umschalt = Quadrat",

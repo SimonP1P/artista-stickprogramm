@@ -157,6 +157,18 @@
     }
     return false;
   }
+  /** Fangradius in Bildschirmpunkten für „ersten Punkt treffen“ (eigene Festlegung) */
+  const FANG_PX = 9;
+  /** Liegt `q` (mm) am ersten oder letzten gesetzten Punkt? Nur bei Linie und Form mit genug Punkten. */
+  function fangPunkt(q: [number, number]): "erster" | "letzter" | null {
+    if (!svg || (zeichenForm !== "linie" && zeichenForm !== "frei")) return null;
+    const pts = zeichenPunkte;
+    const pxJeMm = Math.abs(svg.getScreenCTM()?.a ?? 1);
+    const nah = (p: [number, number]) => Math.hypot(p[0] - q[0], p[1] - q[1]) * pxJeMm <= FANG_PX;
+    if (pts.length >= (zeichenForm === "linie" ? 2 : 3) && nah(pts[0].p)) return "erster";
+    if (pts.length >= MINDESTENS[zeichenForm] && nah(pts[pts.length - 1].p)) return "letzter";
+    return null;
+  }
   export function zeichnenAbschliessen() {
     zeichnenFertig();
   }
@@ -356,6 +368,18 @@
       zeichenQuadrat = ev.ctrlKey || ev.metaKey || ev.shiftKey;
       // Kreis, Rechteck und Säule: Kurvenpunkte nur bei Linie, Form und Säule
       const kurve = ev.button === 2 && (zeichenForm === "linie" || zeichenForm === "frei" || zeichenForm === "saeule");
+      // Linie/Form: Klick auf den ersten Punkt schließt (letzter mit erstem verbunden), Klick auf den letzten
+      // Punkt (Doppelklick) beendet die Linie offen – eigene Bedienung, Wunsch Nutzer 24.11.2026
+      const fang = fangPunkt(q);
+      if (fang === "erster") {
+        if (zeichenForm === "linie") zeichenPunkte = [...zeichenPunkte, { p: zeichenPunkte[0].p, kurve: false }];
+        zeichnenFertig();
+        return;
+      }
+      if (fang === "letzter") {
+        zeichnenFertig();
+        return;
+      }
       zeichenPunkte = [...zeichenPunkte, { p: [r(q[0]), r(q[1])], kurve }];
       zeichenZug = ev.button === 0 && zeichenPunkte.length === 1 && ZIEHBAR.includes(zeichenForm) ? { x: ev.clientX, y: ev.clientY } : null;
       const auto = AUTOMATISCH_FERTIG[zeichenForm];
@@ -446,7 +470,9 @@
   }
   function bewegen(ev: PointerEvent) {
     if (werkzeug === "zeichnen" && svg && !ziehen) {
-      zeichenZeiger = mm(ev);
+      const q = mm(ev);
+      // am ersten Punkt einrasten, damit die Vorschau das Schließen zeigt
+      zeichenZeiger = fangPunkt(q) === "erster" ? zeichenPunkte[0].p : q;
       zeichenQuadrat = ev.ctrlKey || ev.metaKey || ev.shiftKey;
       return;
     }
