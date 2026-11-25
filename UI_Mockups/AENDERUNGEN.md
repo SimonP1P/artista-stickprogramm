@@ -15,7 +15,7 @@ Pflege: Claude Code trägt hier bei jeder Kern-Änderung, die die Oberfläche be
 
 ---
 
-## 25.11.2026 – Hinweis „zu breit für Satin“, Auswahl beim Abspielen umrandet (Rückmeldung Nutzer), Commit (folgt)
+## 25.11.2026 – Hinweis „zu breit für Satin“, Auswahl beim Abspielen umrandet (Rückmeldung Nutzer), Commit b842a78
 - Neue Hinweisart **`spruenge_im_objekt`** in `design_berechnen.hinweise`: ein Objekt (nicht Schrift, nicht fremde
   Stichdaten) hat viele Stiche über 12,7 mm, die als Sprünge übersprungen werden (Auto Jump) – typisch eine zu breite
   Satinfläche. Die Statusleiste zeigt ihn schon; empfohlen: Stichart Step.
