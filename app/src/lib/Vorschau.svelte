@@ -124,6 +124,9 @@
     return false;
   }
 
+  /** Objektarten, deren Umriss in der Stichansicht als gestrichelte Hilfslinie erscheint */
+  const HILFSLINIE = new Set(["motivfuellung", "stippling", "kreuzstich"]);
+
   // ---- Zeichnen mit der Maus (Nachtauftrag N0, Handbuch S. 58–62): linke Taste = Eckpunkt, rechte = Kurvenpunkt
   let zeichenPunkte = $state<ZeichenPunkt[]>([]);
   let zeichenZeiger = $state<[number, number] | null>(null);
@@ -707,6 +710,28 @@
         <path d={z.d} fill="none" stroke={z.farbe} stroke-width=".2" stroke-linejoin="round" stroke-linecap="round" pointer-events="none" />
       </g>
     {/each}
+    {#if arbeit.ansicht !== "abspielen"}
+      <!-- Hilfslinie: Umriss gestrichelt bei Füllungen, deren Stiche die Form nicht nachzeichnen (Motive, Stippling,
+           Kreuzstich) – eigene Anzeige, Wunsch Nutzer 24.11.2026 -->
+      {#each arbeit.formen as f (f.objekt)}
+        {#if HILFSLINIE.has(arbeit.objekte[f.objekt]?.art ?? "")}
+          {#each f.linien as l, k (k)}
+            {#if l.art === "umriss"}
+              <path
+                d={l.punkte.map(([x, y], j) => `${j ? "L" : "M"}${x.toFixed(2)} ${(-y).toFixed(2)}`).join("") + (l.geschlossen ? "Z" : "")}
+                fill="none"
+                stroke={farben.beschriftung}
+                stroke-width=".25"
+                stroke-dasharray="1.2 .8"
+                opacity={gewaehlt.length && !gewaehlt.includes(f.objekt) ? 0.35 : 0.8}
+                transform={gewaehlt.includes(f.objekt) && griffTransform ? griffTransform : undefined}
+                pointer-events="none"
+              />
+            {/if}
+          {/each}
+        {/if}
+      {/each}
+    {/if}
     {#if spruenge && zuege.spruenge}
       <path d={zuege.spruenge} stroke={farben.sprung} stroke-width=".18" stroke-dasharray=".9 .7" fill="none" pointer-events="none" />
     {/if}

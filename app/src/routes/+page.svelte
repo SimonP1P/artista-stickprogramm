@@ -301,9 +301,12 @@
     if (arbeit.dialog || maschine.dialogOffen || maschine.listeOffen) return; // Dialog behandelt Esc selbst
     if (!eingabe && werkzeug === "zeichnen" && vorschau?.zeichenTaste(ev.key)) return ev.preventDefault();
     if (ev.key === "Escape") {
-      if (werkzeug !== "auswahl") werkzeug = "auswahl";
-      else if (menue) menue = null;
-      else arbeit.waehlen(null);
+      // Esc (nach dem Verwerfen einer angefangenen Form) räumt alles auf einmal ab: Menü zu, Auswahl-Werkzeug,
+      // nichts gewählt, Eingabefeld verlassen – so wählt auch mehrfaches Drücken sicher ab (Nutzer 24.11.2026)
+      menue = null;
+      werkzeug = "auswahl";
+      arbeit.waehlen(null);
+      if (eingabe) (ziel as HTMLElement).blur?.();
       return;
     }
     if (arbeit.modus === "experte" && !eingabe && werkzeug === "knoten" && vorschau?.knotenTaste(ev.key)) return ev.preventDefault();
